@@ -1,0 +1,341 @@
+{
+ "brief": "A four-standard-deviation September payrolls beat, with wage growth still slowing, pushes September Fed rate-hike odds back near recent highs even though it is not a smoking gun for hiking. Bloomberg Intelligence's Childe-Freeman expects a short-term dollar lift that fades into the fourth quarter absent a signal of aggressive tightening. JPMorgan's matrix implies a 0.5-1.25% S&P drop, more than options priced in; the dollar jump drags gold lower. Natixis's Hodge says doves need roughly 20bps of disinflation in next week's CPI or the Fed hikes; BlackRock's Rosenberg ties the September 16 decision entirely to that CPI print; BMO and Fitch say the data supports hawks without clinching a hike. Fed officials Warsh and Waller signal labor is fine but inflation, not payrolls, decides the meeting, so event risk has shifted to CPI. Academy Securities' Tchir shows annualized inflation decelerating from 3.3% to 2.4% and Truflation core at 1.3%, notes an Iran-energy argument against hiking despite a limited US strike on Iranian launchers, rules out any cut, and personally expects no hike this year, trading 2-year notes and reducing risk around WIRP levels.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "The September non-farm payrolls report beat expectations by four standard deviations.",
+   "anchor": "A four standard deviation beat for non-farm payrolls this morning",
+   "topic": "September jobs report",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Wage growth in the September jobs report showed no signs of inflationary pressure and is in fact slowing.",
+   "anchor": "despite no signs of inflationary wage growth - in fact it is slowing",
+   "topic": "September jobs report",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg Intelligence",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Bloomberg Intelligence's Audrey Childe-Freeman said the NFP report's strength will validate September Fed rate-hike talk and likely give the dollar a short-term yield-driven lift.",
+   "anchor": "The strength in the latest NFP report will validate Sept. Fed rate-rise talks and most likely give the dollar a short-term-yield-driven lift.",
+   "topic": "US dollar outlook",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "short-term"
+  },
+  {
+   "bank": "Bloomberg Intelligence",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Childe-Freeman said the Fed-driven dollar upside may be contained into the fourth quarter unless the Fed signals the start of an aggressive tightening cycle.",
+   "anchor": "unless the Fed signals the beginning of an aggressive tightening cycle, the Fed-driven dollar upside may be contained into 4Q",
+   "topic": "US dollar outlook",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "JPMorgan's matrix implies a drop in the S&P 500 of between 0.5% and 1.25% following the jobs report.",
+   "anchor": "we should see a drop in the S&P of between 0.5% and 1.25%",
+   "topic": "Jobs report market reaction",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "The S&P 500 move implied by JPMorgan's matrix was significantly larger than the options market's implied move of +/-0.52%.",
+   "anchor": "Significantly more than the options market implied (+/-0.52%)",
+   "topic": "Jobs report market reaction",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "The dollar's jump after the jobs report dragged gold prices down.",
+   "anchor": "Which in turn dragged gold down",
+   "topic": "Jobs report market reaction",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Natixis",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Natixis's Christopher Hodge estimated the disinflationary CPI print needed to justify a Fed hold at about 20 basis points.",
+   "anchor": "we are putting that bogey at about 20bps",
+   "topic": "September Fed decision",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Natixis",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Hodge said that absent a sufficiently disinflationary CPI print, the Fed will likely hike in September.",
+   "anchor": "Absent that, the Fed will likely hike in September.",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "BlackRock",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "BlackRock's Jeffrey Rosenberg said the Fed's September 16 decision is entirely dependent on the CPI report.",
+   "anchor": "He still sees the Fed\u2019s Sept. 16 decision as entirely dependent on the CPI report.",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sept 16"
+  },
+  {
+   "bank": "BlackRock",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Rosenberg said that if the CPI report shows continuing progress in inflation coming down, he expects the Fed to hold.",
+   "anchor": "If that shows continuing progress in inflation coming down, then he sees the Fed holding.",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BMO Capital Markets",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "BMO Capital Markets' Vail Hartman said the jobs data supports the hawkish camp but stops short of making a definitive case for a September 16 rate hike.",
+   "anchor": "lends support to the hawkish camp, but stops shy of making a definitive case for a rate hike",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 16"
+  },
+  {
+   "bank": "Fitch Ratings",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Fitch Ratings' Olu Sonola called the jobs report unequivocally strong and said it gives the Fed room to maintain that the labor market is stable and at full employment.",
+   "anchor": "This is an unequivocally strong report, which gives the Fed ample room to maintain that the labor market is stable",
+   "topic": "September jobs report",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Fitch Ratings",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Sonola said a hot CPI print next week could push the Fed to raise the policy rate.",
+   "anchor": "a hot CPI print next week could be the whistle that pushes the Fed to move the policy rate higher",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Federal Reserve",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Fed Chairman Warsh said last week that labor markets are consistent with full employment.",
+   "anchor": "I believe the labor markets are consistent with full employment",
+   "topic": "September jobs report",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Federal Reserve",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Fed Governor Waller said yesterday that policymakers should give disinflation a chance.",
+   "anchor": "'Give disinflation a chance', was the message from Waller yesterday",
+   "topic": "September Fed decision",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Event risk has effectively migrated from the payrolls report to next week's CPI report.",
+   "anchor": "Event risk has effectively migrated from payrolls to CPI.",
+   "topic": "September Fed decision",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Principal Asset Management",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Principal Asset Management's Seema Shah said next week's CPI report is still likely to be the key swing factor for Fed policy.",
+   "anchor": "next week\u2019s CPI report is still likely to be the key swing factor for policy",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Academy Securities' Peter Tchir noted that annualizing the last two months of inflation data yields 2.4%, versus 3.3% over the trailing 12 months.",
+   "anchor": "if you take the last two months and annualize it, we are at 2.4%",
+   "topic": "US inflation trend",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Tchir cited Truflation's core inflation measure at 1.3%.",
+   "anchor": "Truflation \u201ccore\u201d is down to 1.3%.",
+   "topic": "US inflation trend",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Tchir noted an argument that the Fed shouldn't hike because of higher energy costs tied to Iran-related risk.",
+   "anchor": "we shouldn\u2019t be hiking because of higher energy costs",
+   "topic": "Middle East oil risk",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Tchir noted that the U.S. attack on Iran was limited in scope to hitting launchers aimed at the Strait of Hormuz.",
+   "anchor": "the U.S. attacked Iran, but it was limited in scope to hitting launchers",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Tchir said he cannot imagine anyone favoring a rate cut at this meeting.",
+   "anchor": "cannot imagine anyone in the cut camp for this meeting",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this meeting"
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Tchir said he would buy 2-year Treasury notes whenever WIRP pricing approaches two hikes priced in for the end-of-January meeting.",
+   "anchor": "I think you buy 2\u2019s whenever WIRP get to close to 2 hikes for end of January meeting",
+   "topic": "September Fed decision",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "end of January"
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Tchir said he would reduce risk whenever WIRP pricing for the October meeting falls under 0.5% odds of a hike.",
+   "anchor": "reduce risk, whenever WIRP for October gets to under 0.5%",
+   "topic": "September Fed decision",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Academy Securities",
+   "document": "'Good News Is Bad News': Big Jobs Beats Sends Rate-HIKE Odds Soaring; Here's What Wall Street Thinks...",
+   "claim": "Tchir said he remains in the no-hike camp for the year and thinks cuts are more likely than hikes.",
+   "anchor": "I remain in the no HIKE camp for the year (and likely CUTS before HIKES)",
+   "topic": "September Fed decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-06/15423__good-news-is-bad-news-big-jobs-beats-sends-rate-hike-odds-so.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 26,
+  "matched": 26,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
