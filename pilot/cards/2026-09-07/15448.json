@@ -1,0 +1,429 @@
+{
+ "brief": "Zero Hedge carries Goldman Sachs partner Mark Wilson's weekly note. Setup: Japanese 10yr yields are at their highest since 1996 and Gilt 30yr yields at their highest since 1998, while the VIX prints new lows for Trump's second term and MSCI World is +13% YTD, under 1% from the highs. Wilson's chain runs: Friday's payroll report makes stagflation talk hard to credit, but Waller flags next week's CPI and PPI as key. Higher global yields have been a real headwind, so apparent equity resilience masks multiple de-rating that failed to reward uniform earnings strength, and he does not resolve how much is discount rate versus an unsustainably strong earnings period. A halt to the fixed income sell-off would be unequivocally bullish for equities. Two unrelated bond drivers: geopolitical risk premia repricing oil and gas, and AI capex turning debt-funded and competing for capital. He notes focus already sits there rather than on lower oil or AI efficiency gains. Momentum reset close to 50% from late-June highs and its composition changed, so 1H leaders should not lead 2H. He would add EU defense on a 25% earnings versus price divergence, and expects rotation toward AI use-case beneficiaries.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Japanese 10-year government bond yields are at their highest level since 1996.",
+   "anchor": "Japanese 10yr yields are at their highest since 1996",
+   "topic": "global duration selloff",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "UK 30-year gilt yields are at their highest level since 1998.",
+   "anchor": "Gilt 30yr yields are at their highest since 1998",
+   "topic": "global duration selloff",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman says a halt to the fixed income sell-off and a consolidation in yields would be unequivocally bullish for equities.",
+   "anchor": "a halt to the fixed income sell-off and a consolidation in yields would be unequivocally bullish for equities",
+   "topic": "global duration selloff",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "The VIX is printing new lows for Trump's second term, excluding Christmas dates.",
+   "anchor": "the VIX is printing new lows for Trump's second term (outside of Christmas dates)",
+   "topic": "equity resilience and de-rating",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "MSCI World is up 13% year to date and sits less than 1% below its highs.",
+   "anchor": "MSCI World is +13% YTD and <1% from the highs",
+   "topic": "equity resilience and de-rating",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Equity markets have been resilient during the move higher in global yields, but interest rates have been a real headwind for equities.",
+   "anchor": "interest rates have also been a real headwind for equities",
+   "topic": "equity resilience and de-rating",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Equity multiples have de-rated and stocks have failed to reward the uniform earnings strength seen year to date.",
+   "anchor": "multiples have de-rated and stocks have failed to reward the staggeringly uniform earnings strength seen YTD",
+   "topic": "equity resilience and de-rating",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman says it is difficult to diagnose how much of the equity de-rating comes from a higher discount rate versus the market pricing an unsustainably strong earnings period.",
+   "anchor": "difficult to diagnose with precision how much of the de-rating is attributable to a higher discount rate",
+   "topic": "equity resilience and de-rating",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "The momentum factor has given up close to 50% from its late-June highs and is now down year to date, measured on Goldman's Hi-Beta Momentum pair.",
+   "anchor": "giving up close to 50% from late-June highs, and now down YTD",
+   "topic": "equity momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "The risk-transfer and indigestion from July's events weighed on August equity price formation, producing a second leg lower in momentum.",
+   "anchor": "the required risk-transfer & indigestion of July's events weighed on August price formation",
+   "topic": "equity momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "The composition of the momentum factor is changing, with software in the long leg on a 3-month lookback but still in the short leg on a 12-month lookback.",
+   "anchor": "software is in the long leg on 3mth, but still in the short leg of 12mth",
+   "topic": "equity momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman says investors should not expect first-half equity leaders to re-assert leadership in the second half.",
+   "anchor": "so do not expect 1H leaders to re-assert 2h leadership",
+   "topic": "equity momentum unwind",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2H"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "After Friday's payroll report Goldman says stagflation talk is hard to credit, with US and global growth continuing to be resilient.",
+   "anchor": "its hard to give credence to talk of 'stagflation'",
+   "topic": "US growth and inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman says next week's CPI and PPI inflation data is key, citing Waller.",
+   "anchor": "as Waller made clear, next week's CPI & PPI inflation data's key",
+   "topic": "US growth and inflation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Geopolitical risk premia and the resulting repricing of oil and gas re-asserted through August as Gulf conflict and Russia/Ukraine risk increased.",
+   "anchor": "geo-political risk premia, and the consequent re-pricing of oil & gas, has re-asserted itself through August",
+   "topic": "oil and gas risk premia",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman says market focus is already on right-tail geopolitical outcomes rather than on the risk of lower oil prices.",
+   "anchor": "rather than the risk of lower oil prices",
+   "topic": "oil and gas risk premia",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "AI investment is creating greater competition for capital as the largest capex budgets began to be debt funded, and is producing price pressures in specific areas of the economy.",
+   "anchor": "AI investment has had the dual impact of creating greater competition for capital",
+   "topic": "AI capex and capital competition",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman says the market is under-focused on the possibility of greater evidence of AI efficiency gains.",
+   "anchor": "and greater evidence of AI efficiency gains",
+   "topic": "AI capex and capital competition",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Defense stocks have traded poorly for a sustained period, and both the new tech and old tech sides of that ledger have suffered.",
+   "anchor": "its notable how poorly defense stocks have traded for a sustained period",
+   "topic": "European defense equities",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "There is a 25% divergence over the last 12 months between European defense stock earnings and share price performance.",
+   "anchor": "There's a 25% divergence over the last 12mths in European defense stock earnings vs share price performance",
+   "topic": "European defense equities",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "European defense positioning is at two-year lows, with the EU Defense long/short ratio picking up from local lows in Goldman prime data.",
+   "anchor": "EU Defense L/S ratio picking up from local lows per GS prime data",
+   "topic": "European defense equities",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman's Mark Wilson says he would be adding to European defense stocks at current levels.",
+   "anchor": "I'd be adding here.",
+   "topic": "European defense equities",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "German regional elections in Saxony take place this week, followed by elections in Sweden.",
+   "anchor": "we've got German regional elections this week (in Saxony), then in Sweden",
+   "topic": "European political calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman expects European markets to increasingly focus on the possibility of a Le Pen win in next year's French presidential election.",
+   "anchor": "European markets will increasingly focus on the possibility of a Le Pen win",
+   "topic": "European political calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "The scale of Nvidia's earnings beat and guidance raise was enormous, corroborating strengthening AI fundamentals.",
+   "anchor": "the scale of Nvidia's earnings beat & guidance raise was enormous",
+   "topic": "AI use-case rotation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Dell's results carried the same message as Nvidia's on strengthening AI fundamentals.",
+   "anchor": "DELL's results told us the same",
+   "topic": "AI use-case rotation",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "OpenAI's Astra model has had impressive reviews.",
+   "anchor": "OpenAi's Astra model has had impressive reviews",
+   "topic": "AI use-case rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Nvidia's Hugging Face acquisition points to the broad AI ecosystem having open versus closed optionality.",
+   "anchor": "Nvidia's Hugging Face acquisition tells us that broad ecosystem will have open vs closed optionality",
+   "topic": "AI use-case rotation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Tesla said on its July 22nd earnings call that CyberCab had driven 380k total miles, and that total crossed 1m miles the day before this note.",
+   "anchor": "CyberCab had driven 380k total miles, and yesterday that crossed 1m miles",
+   "topic": "AI use-case rotation",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman says the market is re-weighting from beneficiaries of AI capex spending to beneficiaries of AI use-cases and expects this to continue.",
+   "anchor": "the market's re-weighting from the beneficiaries of AI CapEx $s , to the beneficiaries of AI use-cases",
+   "topic": "AI use-case rotation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman is raising its 2030 estimates for humanoid robot units by 6 times.",
+   "anchor": "we're taking up our 2030 estimates for humanoid robot units by 6x",
+   "topic": "humanoid robot adoption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman frames 5.6% of leverage in Amazon's total cost to serve via automation by 2030 in logistics and warehouse operations.",
+   "anchor": "we frame 5.6% of leverage in Amazon's total cost to serve via automation by 2030",
+   "topic": "humanoid robot adoption",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "VIX Hits Trump-Term Lows As Yields Hit 30-Year Highs; Goldman Partner On The Markets' Paradox",
+   "claim": "Goldman estimates automation of Amazon's cost to serve yields $72b of cost savings and a 240bps EBIT margin tailwind.",
+   "anchor": "which is estimated to yield a $72b cost savings & a 240bps EBIT margin tailwind",
+   "topic": "humanoid robot adoption",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-07/15448__vix-hits-trump-term-lows-as-yields-hit-30-year-highs-goldman.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 33,
+  "matched": 33,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
