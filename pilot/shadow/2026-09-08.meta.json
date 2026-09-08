@@ -1,0 +1,45 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 2,
+ "pack": {
+  "documents": 14,
+  "cards": 574
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 108,
+  "brief_citations": 9,
+  "distinct_cards_cited": 108,
+  "card_count": 574,
+  "quintiles": [
+   30,
+   18,
+   19,
+   22,
+   19
+  ],
+  "edge_quintile_share": 0.454,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "A core print at 0.2% instead of 0.3% takes September off the table in the market's mind [c553], and a halt to the bond sell-off would be unequivocally bullish for stocks, per Goldman [c162].",
+    "cite": "c553,c162",
+    "reason": "figures not in cited card(s): ['0.3%']"
+   },
+   {
+    "sentence": "The Section 232 report is about two months overdue, and the front-loading bid survives as long as it stays unpublished [c12].",
+    "cite": "c12",
+    "reason": "figures not in cited card(s): ['232']"
+   }
+  ],
+  "leans": 3,
+  "leans_block_present": true,
+  "word_count": 1554
+ }
+}
