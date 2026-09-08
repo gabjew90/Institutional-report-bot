@@ -318,3 +318,103 @@ Labor Day is genuinely the first Monday in September), not just taken
 on STEP 7's word. The archive has no gap: last pulse 2026-09-04
 (Friday) was already reviewed; 09-05/09-06 are the weekend. Full
 report: `pulse-output/qc-headless/2026-09-07T14-06-56Z.md`.
+
+## 2026-09-08
+
+Full report: `pulse-output/qc-headless/2026-09-08T14-07-39Z.md`. Today
+shipped one hard misattribution (Goldman/ACA midterm call, correctly
+identified by the adversarial checker with a fix already written, and
+shipped anyway on budget exhaustion) — self-review's account of this
+is independently confirmed against `qc-inputs/2026-09-08…adjudication-inputs.json`
+and its own suggested fix (auto-apply a hard finding's populated
+`fix` field instead of spending a repair round) is good; not
+re-filing it separately, seconding it.
+
+- **deterministic-fixable** — the adversarial repair pass rewrites
+  sentences it was never dispatched to fix, as a side effect of fixing
+  something else. Verified by diffing each round's
+  `agent-io/2026-09-08T14-07-39Z/adversarial-prompt*.txt` snapshot
+  against the next: between round 1's input and round 1's output, two
+  sentences changed that appear in no finding or residual file — the
+  AI brief's "beat AI semiconductors by 5.4 percentage points" became
+  "rose 5.4% on the day… about twice its normal daily swing" (a
+  relative spread restated as an absolute return, which STEP 7's
+  self-review caught but mis-attributed to SCRUB), and the Nasdaq
+  close's "a fourth straight year of international lagging" became
+  "another leg of geopolitical escalation or more pressure from rising
+  bond yields" (a concrete falsifiable cost replaced with unsourced
+  narrative). SCRUB ran earlier in the pipeline and left both sentences
+  untouched (confirmed by diffing `pre-scrub/` against `scrubbed/`
+  directly) — this is a repair-pass defect, not a SCRUB defect.
+  - Fix: scope the repair agent's diff to the sentences containing the
+    dispatched findings' quoted text; reject or flag the repair output
+    if it changes lines that don't overlap any finding's `quote`.
+  - Scope: the repair-dispatch step in the synthesis routine (STEP
+    5.85's repair branch) plus a diff-check function, ~30-40 lines.
+  - Information or capability lost: a repair agent that needs to
+    adjust surrounding sentence structure to make a targeted fix read
+    naturally (e.g. re-flowing a sentence after removing a clause)
+    would be blocked or flagged unnecessarily; the check may need a
+    fuzzy overlap window (same sentence) rather than exact substring
+    containment.
+  - When this would be the wrong call: if the repair agent is
+    intentionally allowed house-keeping edits near a fix (e.g.
+    tightening a sentence it just shortened) — in which case the fix
+    is a stricter dispatch prompt ("touch only the quoted text and
+    nothing else"), not a post-hoc diff gate.
+
+- **deterministic-fixable** — the internal `## _LEANS` block's header
+  comment (`"internal — TRADE BOARD source, stripped before publish"`)
+  misdescribes the architecture and plausibly caused a wrong claim in
+  today's self-review. Verified: the published TRADE BOARD (`$VOD,
+  $SHEL, $CCJ, $SNOW, $FICO, $RWE`) contains no content that appears
+  anywhere in `drafts/` or `stitched/` for this run — it's rendered by
+  the bridge from desk-call data at post time, per CLAUDE.md's own
+  documented architecture, and `_LEANS` "feeds `pulse_leans` tracking…
+  it just no longer reaches the reader." STEP 7's self-review states
+  today's Goldman/ACA misattribution "propagated into `_LEANS` and
+  therefore into the TRADE BOARD" — the published board never carried
+  it (no $XLV line at all).
+  - Fix: reword the header to `## _LEANS (internal — pulse_leans
+    tracking source, stripped before publish)` or similar, so it no
+    longer implies a direct pipe to the rendered TRADE BOARD.
+  - Scope: one string, wherever DRAFT_USER/the STITCH template emits
+    the `_LEANS` header.
+  - Information or capability lost: none — this is a label correction.
+  - When this would be the wrong call: if there is a code path (not
+    found in `drafts/`, `stitched/`, or CLAUDE.md) where `_LEANS`
+    content genuinely does feed the rendered TRADE BOARD under some
+    condition this run didn't hit — worth a `grep -rn` for `_LEANS` in
+    `report/pulse_sections.py`/the bridge before renaming, to confirm
+    it's purely descriptive text and not read programmatically.
+
+- **observation** — `pulse-context/latest.json` staleness, now
+  tracked across 08-31, 09-01, 09-02, 09-04, and today (09-08) — a 5th+
+  occurrence, 09-03 and 09-07 unchecked/not-applicable. Today's dump:
+  `dumped_at_utc 2026-09-08T18:39:36Z`, `pdf_count: 50`,
+  `window_cutoff: 2026-09-07T18:39`, versus the actual run's
+  `pdf_count: 103` and 14:07–14:48Z window. Worse than previous
+  occurrences in one respect: the stale dump's `theme_map` contains
+  *none* of the eight themes this run's adjudication actually ran on
+  (no `us software ai moat`, `fed credibility rate hike`, `hormuz
+  strait disruptions`, etc.) — not a smaller version of the same
+  corpus, a visibly different run's output. Worked around today via
+  `qc-inputs/$TS.adjudication-inputs.json`, which is correctly
+  timestamped and was sufficient for the spot-check in this run, but a
+  future QC day where that particular file happens to lack the needed
+  theme will hit the same wall the 09-04 QC hit. Repeating the standing
+  ask: either stop overwriting `latest.json` intraday, or write a
+  run-scoped copy at commit time.
+
+- **observation** — the coverage-audit / Phase A-B clustering section
+  of STEP 7's self-review (73-theme ranking, `discovery_audit`,
+  near-miss cluster similarity scores) rests on intermediate state
+  that is not persisted anywhere under `pulse-output/` for this
+  timestamp. `pending-adjudications/2026-09-08…json` only has the 6
+  validated/selected themes, not the ranked candidate pool they came
+  from. This means no later, artifacts-only QC pass can independently
+  verify or dispute that section of any day's self-review — it can
+  only be checked by a session with access to the live run's memory.
+  Not filing a specific fix since I don't know the right persistence
+  shape (the full 73-theme list is a lot of volume for every run) —
+  flagging for a session with routine context to size.
