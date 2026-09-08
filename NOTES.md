@@ -1987,3 +1987,44 @@ ran out of room") was itself the misdiagnosis. It asserted a cause the
 code had never checked, and both the owner's read and my first fix
 followed it. Wrapper copy that names a cause is a claim, and it needs
 the same evidence as any other claim.
+
+## 2026-09-08 — The provenance guard was deleting Abe's book
+
+Owner: "check recent bot asks". Four asks since the deploy, no circling,
+but the first three are one incident:
+
+```
+00:17:37 dovahjo   "what are Abe's current holdings"
+         A: "Current book:"            guards: figure-provenance:stripped:1
+00:17:58 spockbones "Nice book"        (the book, intact, on the BANTER route)
+00:18:03 dovahjo   "You didn't show anything"
+         A: the book + "Couldn't verify these specifics against a live source"
+                                       guards: figure-provenance:all-unsourced
+```
+
+The model wrote all eight positions. The guard deleted them and shipped
+two words. The asker said so.
+
+Reproduced locally in one call, no production access needed: the answer
+writes a strike as `350(P)` and the trade log writes it as `350P`.
+`_NUM_RE` ends in a negative lookahead that refuses a number with a
+letter stuck to it, so on the EVIDENCE side `350P` yielded no figure at
+all. Every strike in the book therefore read as invented, while the
+prices (`@3.53`) matched fine. It hit the room's most common local-data
+question, and it would have hit any answer quoting a contract.
+
+Fix: `evidence_values` also reads strikes out of contract notation
+(`_OPT_STRIKE_RE`, digits followed by a single C or P, not preceded by
+a letter, so `NDXP29900C` stays one token). Widening the evidence pool
+can only make FEWER figures unsourced, never more, so it cannot cause a
+strip that was not already happening.
+
+Found while writing the regression test, unrelated and NOT fixed:
+`_close()` has a flat 0.06 floor, and a percentage is also compared as
+its /100 form, so any two percentages within SIX POINTS of each other
+match. An answer saying 10.2% is "sourced" by evidence saying 6.1%.
+That is most of the range this guard is supposed to police. Pinned in
+`test_percent_tolerance_is_loose_enough_to_pass_a_nearby_number` with
+the arithmetic, and added to the TODO rather than changed at speed:
+the floor exists for real rounding cases and needs a unit-aware
+comparison, not a smaller constant.

@@ -43,6 +43,17 @@ _INDEX_NAME_RE = re.compile(
     r"\b(?:nasdaq|russell|s&p|sp|stoxx|nikkei|ftse|dax|cac|hang seng|topix|msci)\s*-?\s*\d{2,4}\b",
     re.IGNORECASE)
 _YEAR_RE = re.compile(r"^(?:19|20)\d\d$")
+# Option-contract notation glues the strike to the contract type:
+# "TSLA 350P 09-09 @3.53" is how the trade log writes a position, and
+# how the alerts channel writes one. _NUM_RE deliberately refuses a
+# number with a letter stuck to it, so a strike written that way was
+# invisible on the EVIDENCE side while the answer wrote it as a bare
+# number ("350(P)"). Every strike then read as unsourced (2026-09-08:
+# "what are Abe's current holdings" shipped as the two words "Current
+# book:" with all eight positions stripped, and the asker replied
+# "You didn't show anything").
+_OPT_STRIKE_RE = re.compile(
+    r"(?<![A-Za-z0-9_.])(\d[\d,]*(?:\.\d+)?)[CP](?![A-Za-z0-9_])")
 
 _SCALE = {"k": 1e3, "m": 1e6, "bn": 1e9, "b": 1e9, "t": 1e12,
           "thousand": 1e3, "million": 1e6, "billion": 1e9, "trillion": 1e12}
@@ -145,6 +156,14 @@ def evidence_values(evidence: str) -> list[float]:
             vals.append(v / 100.0)
         elif suf in _SCALE:
             vals.append(v * _SCALE[suf])
+    # Strikes written in contract notation (see _OPT_STRIKE_RE). Adding
+    # to the evidence pool can only make FEWER figures unsourced, never
+    # more, so this cannot cause a strip that did not already happen.
+    for m in _OPT_STRIKE_RE.finditer(evidence or ""):
+        try:
+            vals.append(float(m.group(1).replace(",", "")))
+        except ValueError:
+            pass
     return vals
 
 

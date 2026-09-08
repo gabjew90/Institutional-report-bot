@@ -174,5 +174,56 @@ def test_a_chunk_the_footer_will_not_render_does_not_count_as_grounded():
     assert _grounding_web_source_count(NS(grounding_chunks=None)) == 0
 
 
+# --- option-contract notation (2026-09-08) --------------------------------
+
+_BOOK_ANSWER = 'Current book:\n\n- TSLA 350(P) 09-09 @3.53\n- GOOG 340(C) 09-11 @2.90\n- BE 260(C) 09-11 @7.98\n- AMAT 500(C) 09-11 @1.29\n- SLV 61(C) 09-11 @0.76\n- GLD 410(C) 09-11 @3.33\n- LITE 1000(C) 09-18 @11.00\n- WDC 500(C) 09-18 @10.70\n'
+
+# exactly what db.format_analyst_trades_for_context emits for kind=open
+_BOOK_PAYLOAD = "ABE'S CURRENTLY OPEN POSITIONS (sorted by closest expiry first):\n- TSLA 350P 09-09 @3.53\n- GOOG 340C 09-11 @2.90\n- BE 260C 09-11 @7.98\n- AMAT 500C 09-11 @1.29\n- SLV 61C 09-11 @0.76\n- GLD 410C 09-11 @3.33\n- LITE 1000C 09-18 @11.00\n- WDC 500C 09-18 @10.70\n"
+
+
+def test_a_book_read_off_the_trade_log_survives_the_guard():
+    """2026-09-08: "what are Abe's current holdings" shipped as the two
+    words "Current book:", all eight positions stripped, and the asker
+    replied "You didn't show anything". Every strike IS in the payload.
+    The payload writes it as 350P and the answer as 350(P), and the
+    evidence scanner refused to read a number with a letter stuck to it,
+    so every strike counted as invented."""
+    rep = FP.check(_BOOK_ANSWER, _BOOK_PAYLOAD)
+    assert rep.action == "none", [f.token for f in rep.unsourced]
+    assert rep.answer.count("\n- ") == 8
+
+
+def test_strikes_are_read_out_of_contract_notation():
+    vals = FP.evidence_values("- TSLA 350P 09-09 @3.53\n- LITE 1,250C 09-18 @11.00")
+    assert 350 in vals and 1250 in vals
+    assert 3.53 in vals and 11.0 in vals
+
+
+def test_a_ticker_glued_to_a_strike_is_not_read_as_a_bare_strike():
+    """NDXP29900C is one token, not the number 29900 sitting in evidence."""
+    assert 29900 not in FP.evidence_values("NDXP29900C expiring today")
+
+
+def test_the_invention_this_guard_exists_for_still_gets_caught():
+    """The 2026-09-03 LULU answer. Widening the evidence pool must not
+    widen it to figures that were never anywhere."""
+    bad = "\u2192 Historical absolute moves average **10.2%** across the prior 12 quarters."
+    assert FP.check(bad, "the chain is quiet into the print").action == "all-unsourced"
+
+
+def test_percent_tolerance_is_loose_enough_to_pass_a_nearby_number():
+    """NOT the behaviour anyone wants, pinned so the next person sees it.
+    _close() carries a flat 0.06 floor, and a percentage also compares as
+    its /100 form, so any two percentages within 6 POINTS of each other
+    match: 0.102 vs 0.061 differ by 0.041. An answer saying 10.2% is
+    therefore "sourced" by evidence saying anything from about 4% to 16%.
+    Predates the 2026-09-08 contract-notation fix and is independent of
+    it; listed in CLAUDE.md's TODO."""
+    bad = "→ Historical absolute moves average **10.2%** across the prior 12 quarters."
+    assert FP.check(bad, "the chain shows a 6.1% implied move").action == "none"
+    assert FP.check(bad, "the chain shows a 45% implied move").action == "all-unsourced"
+
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
