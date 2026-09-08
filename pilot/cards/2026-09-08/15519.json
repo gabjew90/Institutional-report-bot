@@ -1,0 +1,313 @@
+{
+ "brief": "Goldman Sachs FICC and Equities daily note for 8 Sep 2026. Stat of the day: systematic long/short funds are up 17% year to date and recorded their best month of the year. The note's one argued chain is oil. Goldman raises its Brent and WTI forecasts by $5, to $85 and $80 for Dec 2026 and to $80 and $75 for 2027, on a new assumption that Mideast shipping disruptions continue into 2027. It calls that upgrade modest for two reasons: OECD commercial land inventories, a key price driver, have barely drawn since the war began, reflecting a smaller than expected deficit amid market adaptation, and stock draws concentrated in OECD strategic reserves, on water and in China. Supply adaptation is assumed to continue, with production recovering gradually by 2027H2. The rest reports rather than argues. Buy-rated Robinhood's Rothera prediction markets venture has ranked 3rd to 5th globally by volume since its May launch and ran about $150mn annualized revenue in its first quarter, feeding above-consensus 2027E and 2028 forecasts. Planet Labs beat F2Q27 consensus and raised the low end of FY27 guidance while raising CapEx, and Goldman stays Neutral on valuation. US Labor Day observed, no major data.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Systematic long/short funds are up 17% year to date.",
+   "anchor": "Systematic long/short funds are up 17% YTD, and just recorded their best month of the year",
+   "topic": "systematic fund performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Systematic long/short funds just recorded their best month of 2026.",
+   "anchor": "Systematic long/short funds are up 17% YTD, and just recorded their best month of the year",
+   "topic": "systematic fund performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs raises its Dec 2026 Brent and WTI price forecasts by $5, to $85 and $80 per barrel.",
+   "anchor": "We raise our Brent/WTI price forecasts by $5 to $85/80 for Dec2026 and to $80/75",
+   "topic": "oil price forecast",
+   "status": "forecast",
+   "instruments": [
+    "BNO",
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs raises its 2027 Brent and WTI price forecasts to $80 and $75 per barrel.",
+   "anchor": "We raise our Brent/WTI price forecasts by $5 to $85/80 for Dec2026 and to $80/75",
+   "topic": "oil price forecast",
+   "status": "forecast",
+   "instruments": [
+    "BNO",
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "The oil forecast increase rests on a new Goldman Sachs assumption that Mideast shipping disruptions continue into 2027.",
+   "anchor": "reflecting our new assumption that Mideast shipping disruptions continue into 2027",
+   "topic": "oil price forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "OECD commercial land oil inventories, a key price driver, have barely drawn since the war began, reflecting a smaller than expected deficit amid market adaptation.",
+   "anchor": "commercial land inventories\u2014a key price driver\u2014have so far barely drawn since the war began",
+   "topic": "oil price forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Oil stock draws have concentrated in OECD strategic petroleum reserves, on water, and in China rather than in OECD commercial land inventories.",
+   "anchor": "the concentration of stocks draws in OECD SPR, on water, and in China",
+   "topic": "oil price forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs assumes Mideast oil supply adaptation continues, with production recovering gradually by 2027H2 as dark flows edge up and pipelines come online in late 2027.",
+   "anchor": "recovering by 2027H2 as (dark) flows edge up further and pipelines come online in late 2027",
+   "topic": "oil price forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027H2 to late 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs rates Robinhood Markets Buy.",
+   "anchor": "Since shortly after its May launch, Rothera, Buy-rated HOOD's predictions market JV, has",
+   "topic": "Robinhood prediction markets",
+   "status": "target",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Rothera, Robinhood's prediction markets joint venture, has been the 3rd to 5th largest global prediction markets exchange by trading volume since shortly after its May launch.",
+   "anchor": "been the 3rd-5th largest global prediction markets exchange by trading volume",
+   "topic": "Robinhood prediction markets",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Rothera generated roughly $150mn of annualized top-line revenue in its first quarter of operation.",
+   "anchor": "After ~$150mn of annualized top-line in its first quarter of operation",
+   "topic": "Robinhood prediction markets",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs expects Rothera's growth to continue, driven by liquidity depth from Robinhood's retail base plus market maker engagement, low fee rates relative to other prediction markets exchanges, and expansion by adding other brokers and products.",
+   "anchor": "we believe that Rothera's growth could continue, driven by 1) potential depth of liquidity across the exchange",
+   "topic": "Robinhood prediction markets",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs forecasts Rothera revenue of $307mn in 2027E and $444mn in 2028.",
+   "anchor": "Our 2027E/28 forecasts for $307mn/444mn of Rothera revenue",
+   "topic": "Robinhood prediction markets",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E to 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs forecasts Robinhood total prediction markets net revenue of $943mn in 2027E and $1,150mn in 2028.",
+   "anchor": "$943mn/1,150mn of total prediction markets net revenue reflect 10%/14% upside to consensus",
+   "topic": "Robinhood prediction markets",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E to 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs's Robinhood prediction markets net revenue forecasts sit 10% above consensus for 2027E and 14% above for 2028.",
+   "anchor": "$943mn/1,150mn of total prediction markets net revenue reflect 10%/14% upside to consensus",
+   "topic": "Robinhood prediction markets",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E to 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Planet Labs reported F2Q27 results ahead of consensus across key financial metrics.",
+   "anchor": "Planet Labs reported F2Q27 ahead of consensus across key financial metrics",
+   "topic": "Planet Labs earnings",
+   "status": "released",
+   "instruments": [
+    "PL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Planet Labs raised the low end of its FY27 revenue and EBITDA guidance while increasing its CapEx plan.",
+   "anchor": "The company raised the low end of its FY27 revenue and EBITDA guidance, while also increasing the CapEx plan",
+   "topic": "Planet Labs earnings",
+   "status": "released",
+   "instruments": [
+    "PL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs sees substantial long-term demand potential in satellite imaging and views Planet Labs as well positioned competitively.",
+   "anchor": "We see substantial long-term demand potential in satellite imaging and see Planet as well positioned",
+   "topic": "Planet Labs earnings",
+   "status": "forecast",
+   "instruments": [
+    "PL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs is Neutral rated on Planet Labs because current valuation reflects the risk/reward of future growth versus the pace of margin expansion and capital needs.",
+   "anchor": "current valuation reflects the risk/reward of future growth versus the pace of margin expansion and capital needs. We are Neutral rated on the stock",
+   "topic": "Planet Labs earnings",
+   "status": "target",
+   "instruments": [
+    "PL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "The 8 Sep 2026 US session is a Labor Day holiday observance.",
+   "anchor": "Market Update US Labor Day holiday observed",
+   "topic": "US session calendar",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "8 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "No major US economic data releases are scheduled for 8 Sep 2026.",
+   "anchor": "There are no major economic data releases scheduled",
+   "topic": "US session calendar",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "8 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 8 Sep 2026",
+   "claim": "Goldman Sachs holds its Communacopia and Technology Conference in San Francisco from 8 to 11 Sep 2026.",
+   "anchor": "Communacopia and Technology Conference, San Francisco, 8-11 Sep (TMT)",
+   "topic": "US session calendar",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "8-11 Sep 2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-08/15519__gs-us-daily-download-8-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
