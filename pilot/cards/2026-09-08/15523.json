@@ -1,0 +1,431 @@
+{
+ "brief": "Goldman Sachs European equity sales round-up, not a single argument. SX5E +17bps on low volume with US markets closed for Labour Day, US and Bund 10yr at 4.77% and 3.38%, Brent $98, gold $4435, bitcoin $79k. Canada's retaliatory tariffs on US goods took effect and both sides say they want a deal. Copper made a new high above $14500 on renewed US tariff risk and a tight physical market, so the GS copper mining basket should outperform as demand rises. GS raises Brent forecasts $5 to $85 and $80 for Dec 2026 and 2027, assuming Mideast shipping disruption persists into 2027, and keeps the upgrade modest because OECD commercial inventories have barely drawn since the Iran war began. That war has cost US consumers $100bn, about $760 per household since February. A GS option trader reads S&P six-month realized correlation at 11 as unsustainable and ending in an index vol convexity starburst. GS expects a fully priced 25bp ECB hike Thursday and September as the last of the cycle. Hedge fund net leverage rose but stays in the 4th percentile. Sector stance is overweight Technology, Banks, Defence, Telecoms and Renewables versus underweight Autos, Chemicals, Travel & Leisure and Healthcare.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The Euro Stoxx 50 was up 17bps on 8 September 2026, taking it to +11% year to date, on low volumes with US markets closed for Labour Day.",
+   "anchor": "SX5E +17bps (+11% ytd) on low volumes with US markets closed for Labour day",
+   "topic": "European session recap",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "US and German 10-year government bond yields were unchanged at 4.77% and 3.38%.",
+   "anchor": "rates unchanged with US/Bund 10yr at 4.77%/3.38%",
+   "topic": "European session recap",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Brent crude traded at $98, gold at $4435 and bitcoin at $79k on 8 September 2026.",
+   "anchor": "Brent $98, Gold $4435 and Bitcoin $79k",
+   "topic": "European session recap",
+   "status": "level",
+   "instruments": [
+    "BNO",
+    "GLD",
+    "IBIT"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The KOSPI rose 3%, driven by SK Hynix up 3% and Samsung up 2%.",
+   "anchor": "KOSPI +3% driven by\nSkHynix/Samsung +3%/+2%",
+   "topic": "European session recap",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs flags this week's focus events as its San Francisco technology conference starting 8 September, an Apple event on 9 September, the ECB rate decision and Oracle and Adobe earnings on Thursday, and US inflation on Friday.",
+   "anchor": "Apple\nevent tmrw, ECB rate decision (Thu), Oracle/Adobe earnings (Thu) and US inflation (Friday).",
+   "topic": "week ahead catalysts",
+   "status": "forecast",
+   "instruments": [
+    "AAPL",
+    "ORCL",
+    "ADBE"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Canadian retaliatory tariffs on a range of US goods came into effect on 8 September 2026.",
+   "anchor": "retaliatory tariffs on a range of US goods came into effect now",
+   "topic": "US Canada tariffs",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Both the US and Canada said they would like to strike a trade deal.",
+   "anchor": "both sides said they would\nlike to strike a deal",
+   "topic": "US Canada tariffs",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "US-Canada trade is the world's largest bilateral trading relationship, valued at nearly $900bn in 2025.",
+   "anchor": "the world's largest bilateral trading relationship valued at nearly $900bn in 2025",
+   "topic": "US Canada tariffs",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "US long/short hedge fund net leverage increased but remains in the 4th percentile on a one-year horizon.",
+   "anchor": "US L/S Net leverage increased but still in the 4th percentile one-year on a 1yr",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The US fundamental long/short ratio is also still in the 4th percentile on a one-year horizon.",
+   "anchor": "US Fundamental long/short ratio is also still in the 4th percentile on a 1yr horizon",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Copper reached a new all-time high above $14500, supported by renewed US tariff risks and a tight physical market.",
+   "anchor": "reached a new ATH above $14500 supported by renewed US tariff risks and a tight physical",
+   "topic": "copper breakout",
+   "status": "level",
+   "instruments": [
+    "CPER"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The Goldman Sachs Global Copper Basket (GSXGCOPP) holds 25 mining companies that derive a large share of EBITDA, meaning earnings before interest, tax, depreciation and amortisation, from copper.",
+   "anchor": "our Global Copper Basket (GSXGCOPP) comprises 25 mining companies with a large share of",
+   "topic": "copper breakout",
+   "status": "released",
+   "instruments": [
+    "COPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs expects its Global Copper Basket to outperform as copper demand increases.",
+   "anchor": "EBITDA from copper exploitation and is expected to outperform as copper demand increases",
+   "topic": "copper breakout",
+   "status": "forecast",
+   "instruments": [
+    "COPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The war with Iran has cost US consumers $100bn in higher energy prices.",
+   "anchor": "the war with Iran has now cost US consumers $100bn in higher energy prices",
+   "topic": "Iran war oil impact",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The higher energy cost from the Iran war works out at roughly $760 per US household since February.",
+   "anchor": "this is\nroughly $760 per US household since Feb.",
+   "topic": "Iran war oil impact",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since February 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs raises its Brent price forecasts by $5, to $85 for December 2026 and $80 for December 2027.",
+   "anchor": "we raise our Brent price forecasts by $5 to $85/80 for Dec2026/27",
+   "topic": "Iran war oil impact",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "December 2026 and December 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The Brent forecast raise reflects a new Goldman Sachs assumption that Mideast shipping disruptions continue into 2027.",
+   "anchor": "reflecting our new assumption that\nMideast shipping disruptions continue into 2027",
+   "topic": "Iran war oil impact",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs keeps the Brent upgrade modest because OECD commercial oil inventories have barely drawn since the war began and because it assumes Mideast supply adaptation continues.",
+   "anchor": "the price upgrade is modest because OECD commercial\noil inventories have so far barely drawn since the war began",
+   "topic": "Iran war oil impact",
+   "status": "released",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Realized correlation across the S&P over the last 6 months is 11, the lowest period in recent history according to the Goldman Sachs option trader quoted.",
+   "anchor": "realized correlation across S&P over the last 6 months is 11",
+   "topic": "S&P realized correlation",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last 6 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Only two periods in the last 25 years have seen S&P realized correlation this low: February 2007 and January 2018.",
+   "anchor": "only two periods in the last\n25yrs have seen this; Feb 2007 and Jan 2018",
+   "topic": "S&P realized correlation",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last 25 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The Goldman Sachs option trader argues correlation this low is not sustainable and has historically ended in a sharp expansion of S&P index option volatility.",
+   "anchor": "history book suggests levels this low are not sustainable and\nhave ended in a starburst of index vol convexity",
+   "topic": "S&P realized correlation",
+   "status": "forecast",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Mistral raised 3bn euros at a valuation above 21bn euros from investors led by Samsung Electronics.",
+   "anchor": "raised \u20ac3bn at a valuation of >\u20ac21bn from investors led by Samsung Electronics",
+   "topic": "Mistral funding round",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The funding round makes Mistral Europe's second-highest-valued private technology group and the fastest-growing company in Europe.",
+   "anchor": "makes Mistral\nEurope's second-highest-valued private tech group and the fastest-growing company in Europe.",
+   "topic": "Mistral funding round",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs expects a 25bps ECB hike at Thursday's rate decision, which is fully priced by the market.",
+   "anchor": "rate decision on Thursday; we expect a 25bps hike (fully priced)",
+   "topic": "ECB September decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "Thursday 10 September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs thinks September is the last ECB hike of this tightening cycle.",
+   "anchor": "we think that Sep is the last hike of this\ntightening cycle.",
+   "topic": "ECB September decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "The focus at the ECB meeting will be the updated staff projections and Lagarde's comments on the policy outlook.",
+   "anchor": "focus will be on the updated staff\nprojections and Lagarde\u2019s comments on the policy outlook",
+   "topic": "ECB September decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Thursday 10 September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs is Overweight European Technology, Banks, Defence (GSSBDEFE), Telecoms and Renewables (GSSBRNEW).",
+   "anchor": "we have Overweights in Technology, Banks, Defence (GSSBDEFE), Telecoms and",
+   "topic": "European sector allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs is Underweight European Autos, Chemicals, Travel & Leisure and Healthcare, where it expects growth to stay sluggish.",
+   "anchor": "vs Underweight in areas where we think growth will continue to be sluggish:\nAutos, Chemicals, Travel & Leisure and Healthcare.",
+   "topic": "European sector allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Vanguard's FTSE Global All-Cap UCITS ETF (VALU LN) passed $1bn in assets under management in the two weeks since it listed, with one-way inflows.",
+   "anchor": "FTSE Global All-Cap UCITS ETF (VALU LN) surpassed $1bn\nin AUM in last 2 weeks since listed with flows only one way",
+   "topic": "European retail ETF flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last 2 weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs reads the VALU LN launch as evidence that European retail investors will fund an ETF quickly given the right product and distribution, against the past view of European ETFs as institutional products.",
+   "anchor": "right distribution and you can capture AUM quickly from Retail.",
+   "topic": "European retail ETF flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs forecasts the average price of a humanoid robot falling from over $40k in 2025 to about $21k in 2035.",
+   "anchor": "we forecast the price of humanoid robots on average to fall from over $40k in 2025",
+   "topic": "humanoid robot pricing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2025 to 2035"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Duttenhoefer - Duttenhoefers Daily 8 Sep 2026",
+   "claim": "Goldman Sachs forecasts high-spec humanoid robot prices falling from about $150k in 2025 to about $50k in 2035.",
+   "anchor": "about $150k for high-spec robots) to about $21k in 2035 (and about $50k for high-spec robots).",
+   "topic": "humanoid robot pricing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2025 to 2035"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-08/15523__gs-duttenhoefer-duttenhoefers-daily-8-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
