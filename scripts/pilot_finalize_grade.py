@@ -56,7 +56,13 @@ def main() -> int:
     ap.add_argument("--raw", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--dim", required=True, choices=sorted(REQUIRED))
-    ap.add_argument("--agent", required=True, choices=["a", "b"])
+    # "tiebreak" is the third fresh agent the graders workflow runs on a
+    # dimension where a and b disagree; "owner" is a hand-written call.
+    # The scoreboard has read both since 2026-09-05 and this list did
+    # not, so all three tiebreak gradings that day were computed and
+    # then rejected at the door by argparse (2026-09-08).
+    ap.add_argument("--agent", required=True,
+                    choices=["a", "b", "tiebreak", "owner"])
     ap.add_argument("--model", required=True)
     ap.add_argument("--prompt", required=True)
     ap.add_argument("--artifact", default="")

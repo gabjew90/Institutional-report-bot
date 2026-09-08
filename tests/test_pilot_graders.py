@@ -322,5 +322,28 @@ def test_an_empty_sentence_list_is_a_failed_grade_not_a_zero_rate():
     assert "faithful_rate" not in doc, "an empty grade must not carry a 0.0 rate"
     assert r.returncode == 1
 
+def test_finalize_grade_accepts_every_agent_the_scoreboard_reads():
+    """2026-09-08: the graders workflow ran a third agent on all three
+    dimensions where a and b disagreed, and argparse rejected every one
+    of them with `invalid choice: 'tiebreak'`. Three gradings were paid
+    for and discarded, and the day still shows the disagreements. The
+    two lists have to agree."""
+    import argparse
+    import inspect
+    from scripts import pilot_finalize_grade as G
+    from scripts import pilot_scoreboard as SB
+
+    src = inspect.getsource(G.main)
+    i = src.index('"--agent"')
+    j = src.index(")", i)
+    declared = src[i:j]
+    for agent in ("a", "b", "tiebreak", "owner"):
+        assert f'"{agent}"' in declared, (agent, declared)
+
+    # and the scoreboard really does look for those two names
+    sb = inspect.getsource(SB._apply_tiebreaks)
+    assert '"owner"' in sb and '"tiebreak"' in sb
+
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

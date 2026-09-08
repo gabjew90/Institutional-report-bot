@@ -2101,3 +2101,62 @@ timestamp ("+pulse "). Almost certainly a file written by the Labor Day
 run that failed before the ready-gate fix, then swept up by the next
 run's `always()` commit. Harmless, one stale file, worth deleting if
 the pilot graders ever read that directory.
+
+## 2026-09-08 — A duplicate econ row, and three tiebreak gradings thrown away
+
+Owner: "check omnicalendar I saw a duplicate econ event", plus the
+pilot scoreboard after today's grading.
+
+**The duplicate is real and reproducible.** Rebuilding the 09-09 sheet
+locally:
+
+```
+ 8:15  ADP Weekly Employment Change
+ 8:16  ADP Weekly Employment Change
+13:01  10-y Bond Auction
+16:30  API Weekly Statistical Bulletin
+```
+
+The feed carries the same print twice, one minute apart.
+`build_calendar_day` has deduped EARNINGS since the sheet shipped (the
+`_seen` set, for a name under two sessions) and has never deduped econ
+at all. An exact (name, time) key would not have caught this, because
+the times differ; the key is the name with a five-minute window, so a
+name that genuinely recurs later in the day (a second auction, a second
+speaker) keeps its own row. If the duplicate is the one flagged
+important, the surviving row takes the higher impact with it, so a
+collapse can never quietly downgrade a print. Sheet for 09-09 now
+renders 3 rows instead of 4.
+
+**The tiebreak delegation shipped 09-05 has never once worked.** The
+graders workflow did exactly what it was built to do today: it found
+the three dimensions where the two graders disagreed (grouping,
+fidelity-shadow, fidelity-production), ran a third fresh agent on each,
+and then `pilot_finalize_grade.py` rejected all three with
+`argument --agent: invalid choice: 'tiebreak' (choose from a, b)`. The
+scoreboard has read `tiebreak` and `owner` since the same commit; the
+argparse choices list was never widened to match. Three gradings paid
+for and discarded, and the day still shows its disagreements. The
+`|| true` on the finalize call is deliberate (one bad grade must not
+kill the run) and it is what let this sit for three days. A test now
+pins the two lists against each other.
+
+**Today's grades, for the record** (all three await the tiebreak that
+will now actually run):
+
+| dim | a | b |
+|---|---|---|
+| grouping fragmented mass | 41% | 60% |
+| fidelity shadow | 93% | 80% |
+| fidelity production | 27% | 53% |
+
+Fragmentation is WORSE than the 24% of 09-04, on both graders, after
+the 09-05 topic-label rewrite. Two caveats before reading anything into
+it: the graders are 19 points apart, which is why it needs a tiebreak,
+and today's corpus was 8 documents and 574 cards against a normal 20+.
+But nothing here suggests the rewrite helped, and metric 1 is the one
+frozen metric that has never passed. Worth a hard look before DAY1
+rather than spending the single allowed post-DAY1 iteration on it.
+
+Mechanism preservation was 1.00 for BOTH arms today, the first time
+production has matched the shadow.

@@ -397,6 +397,55 @@ def lineup_signature(day: CalendarDay) -> str:
     return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
+def _econ_minutes(time_et: str) -> int | None:
+    """"8:15" -> 495. None when the string is not a clock time."""
+    try:
+        h, m = time_et.split(":")
+        return int(h) * 60 + int(m)
+    except (AttributeError, ValueError):
+        return None
+
+
+# A feed can carry the same print twice a minute apart. Observed
+# 2026-09-08 for the 09-09 sheet: "ADP Weekly Employment Change" at
+# both 8:15 and 8:16, rendered as two rows on the posted calendar.
+# Earnings have had a dedupe since the sheet shipped; econ never did.
+_ECON_DUP_WINDOW_MIN = 5
+
+
+def _dedupe_econ(rows: list[EconRow]) -> list[EconRow]:
+    """Collapse the same event listed twice within a few minutes.
+
+    Keyed on the event name, and deliberately NOT on the time: an exact
+    (name, time) key leaves the 8:15/8:16 pair untouched, which is the
+    shape that actually reaches the sheet. The window keeps a name that
+    genuinely recurs later in the day (a second auction, a second
+    speaker) as its own row. First occurrence wins; a duplicate that
+    carries the higher impact upgrades the row it merges into, so a
+    collapse never quietly downgrades a print.
+    """
+    out: list[EconRow] = []
+    for r in rows:
+        name = (r.event or "").strip().lower()
+        mins = _econ_minutes(r.time_et)
+        for kept in out:
+            if (kept.event or "").strip().lower() != name:
+                continue
+            kmins = _econ_minutes(kept.time_et)
+            if mins is None or kmins is None:
+                if kept.time_et == r.time_et:
+                    break
+                continue
+            if abs(mins - kmins) <= _ECON_DUP_WINDOW_MIN:
+                if r.important and not kept.important:
+                    kept.important = True
+                    kept.impact = r.impact
+                break
+        else:
+            out.append(r)
+    return out
+
+
 def build_calendar_day(date_iso: str) -> CalendarDay:
     """Assemble everything the renderer needs for one session date."""
     from world_context import is_us_market_holiday
@@ -415,7 +464,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
         day.econ_available = False
     else:
         rows = sorted(econ, key=lambda e: e.get("time") or "")
-        day.econ = [
+        day.econ = _dedupe_econ([
             EconRow(
                 time_et=_to_et_hhmm(e["time"]),
                 event=(e.get("event") or "").strip(),
@@ -425,7 +474,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             )
             for e in rows
             if e.get("time") and e.get("event")
-        ]
+        ])
 
     # --- earnings (holiday closed-card renders no earnings columns) ---
     if day.is_holiday:

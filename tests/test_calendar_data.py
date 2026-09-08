@@ -417,6 +417,61 @@ def test_unparseable_stamp_falls_back_to_prefix():
     assert _et_date("") == ""
 
 
+# --- econ duplicate rows (2026-09-08) -------------------------------------
+
+def _er(time_et, event, impact="low", important=False):
+    from report.calendar_data import EconRow
+    return EconRow(time_et=time_et, event=event, impact=impact,
+                   important=important)
+
+
+def test_the_same_print_a_minute_apart_collapses_to_one_row():
+    """Observed on the posted 09-09 sheet: the feed carried "ADP Weekly
+    Employment Change" at both 8:15 and 8:16 and the calendar rendered
+    two rows. Earnings have been deduped since the sheet shipped; econ
+    never was."""
+    from report.calendar_data import _dedupe_econ
+    rows = _dedupe_econ([
+        _er("8:15", "ADP Weekly Employment Change"),
+        _er("8:16", "ADP Weekly Employment Change"),
+        _er("13:01", "10-y Bond Auction"),
+    ])
+    assert [r.time_et for r in rows] == ["8:15", "13:01"], rows
+
+
+def test_the_same_name_later_in_the_day_keeps_its_own_row():
+    """A window, not a name match: a second auction or a second speaker
+    hours later is a real second event."""
+    from report.calendar_data import _dedupe_econ
+    rows = _dedupe_econ([
+        _er("10:00", "Fed Speaker"),
+        _er("14:00", "Fed Speaker"),
+    ])
+    assert [r.time_et for r in rows] == ["10:00", "14:00"]
+
+
+def test_a_collapse_never_downgrades_a_print():
+    """If the duplicate is the one flagged important, the surviving row
+    takes the higher impact with it."""
+    from report.calendar_data import _dedupe_econ
+    rows = _dedupe_econ([
+        _er("8:30", "Core PPI m/m", impact="low", important=False),
+        _er("8:31", "Core PPI m/m", impact="high", important=True),
+    ])
+    assert len(rows) == 1
+    assert rows[0].important is True and rows[0].impact == "high"
+
+
+def test_unparseable_times_fall_back_to_an_exact_match():
+    from report.calendar_data import _dedupe_econ
+    rows = _dedupe_econ([
+        _er("All Day", "Bank Holiday"),
+        _er("All Day", "Bank Holiday"),
+        _er("Tentative", "Bank Holiday"),
+    ])
+    assert [r.time_et for r in rows] == ["All Day", "Tentative"]
+
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
 
