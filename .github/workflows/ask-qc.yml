@@ -193,15 +193,34 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: |
-          claude -p "$(cat docs/superpowers/routines/pulse-qc-headless.md)"             --model sonnet             --permission-mode bypassPermissions             --max-turns 80             2>&1 | tee pulse_qc_run.log
+          # 120 turns, raised from 80 on 2026-09-08. The judge reads the
+          # pulse, walks the driver gate trail and spot-checks facts with
+          # search, and a cap it reaches costs the ENTIRE review: `claude
+          # -p` emits nothing until it finishes, so an exhausted run has
+          # 13 minutes of verification and no report to show for it.
+          # Runs that finish take 5-6 minutes; the one that died was the
+          # first pulse after a four-day gap (Thursday to Tuesday over
+          # Labor Day), which is the shape that recurs after every long
+          # weekend. Unused turns cost nothing.
+          claude -p "$(cat docs/superpowers/routines/pulse-qc-headless.md)"             --model sonnet             --permission-mode bypassPermissions             --max-turns 120             2>&1 | tee pulse_qc_run.log
           # Show the judge's tail on failure. The 2026-09-01 run died
           # on this grep and the log carried nothing about WHY, so the
           # cause had to be inferred. An unexplained gate failure is
-          # only marginally better than a silent one.
-          grep -qE '^[*#> ]*PULSE QC RESULT:' pulse_qc_run.log || {
-            echo "::error::pulse judge finished without its result line           — treating as a failed run. Its last output follows:";
-            tail -25 pulse_qc_run.log;
-            exit 1; }
+          # only marginally better than a silent one. Name the turn cap
+          # separately: "no result line" reads as a judge that forgot the
+          # format, and on 2026-09-08 it was a judge that never got to
+          # write one.
+          if ! grep -qE '^[*#> ]*PULSE QC RESULT:' pulse_qc_run.log; then
+            if grep -q "Reached max turns" pulse_qc_run.log; then
+              echo "::error::pulse judge hit its turn cap before finishing \
+          — the whole review was discarded. Raise --max-turns.";
+            else
+              echo "::error::pulse judge finished without its result line \
+          — treating as a failed run. Its last output follows:";
+            fi
+            tail -25 pulse_qc_run.log
+            exit 1
+          fi
           test -f "pulse-data/pulse-output/qc-headless/$QC_PULSE_TS.md" || {
             echo "::error::pulse report file missing"; exit 1; }
 

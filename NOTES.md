@@ -2062,3 +2062,42 @@ Verified against all three real incidents: the bulch LULU answer still
 strips its invented 10.2% history, the SansDE answer is still entirely
 unsourced, and Abe's book still survives intact. 380 unit tests, 157
 smokes.
+
+## 2026-09-08 — daily-qc's pulse judge hit its turn cap; the ask phase landed
+
+Owner: "github fail?". One red run out of twenty-two today. The whole
+pilot chain (eleven reader runs, editor, graders) was green.
+
+daily-qc got further than it has all week. Yesterday's two fixes both
+held: the ask judge's bolded result line was accepted (step 9 passed,
+`ask-qc/2026-09-07.claude.md` is committed) and the pulse-wait step
+found today's artifact and set `ready`. The pulse judge then ran for
+12.8 minutes and died on `--max-turns 80`.
+
+`claude -p` emits nothing until it finishes, so the log carries exactly
+one line, "Error: Reached max turns (80)", and the entire review is
+gone. Same structural shape as the pilot readers on 09-03: a fixed cap
+kills a long job and every bit of its work is discarded.
+
+What made today long is not the pulse, which is 11,975 bytes against
+12,181 on 09-04. It is that this was the first pulse after a four-day
+gap (Thursday to Tuesday over Labor Day), so the judge had more claims
+to spot-check and a longer gate trail to walk. Runs that finish take
+5-6 minutes. That shape recurs after every long weekend.
+
+Cap raised to 120. The failure message also now distinguishes a judge
+that ran out of turns from a judge that forgot its result line: both
+printed the same "finished without its result line" error, and only one
+of them is a formatting problem.
+
+The ask judge's own verdict for 09-07, now committed: 6 interactions,
+2 clean, 4 INFRA, all four of them the empty-answer bug diagnosed and
+fixed the same evening. It reached that on its own from the log.
+
+Also noticed, not chased: `pulse-output/qc-headless/2026-09-07T14-06-56Z.md`
+exists on pulse-data for a day with no pulse in the archive, committed
+by the 09-07 19:20 run whose commit message carries an empty pulse
+timestamp ("+pulse "). Almost certainly a file written by the Labor Day
+run that failed before the ready-gate fix, then swept up by the next
+run's `always()` commit. Harmless, one stale file, worth deleting if
+the pilot graders ever read that directory.
