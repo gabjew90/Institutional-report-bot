@@ -1,0 +1,408 @@
+{
+ "brief": "PJM and ERCOT both set all-time peak demand records this summer, but only PJM saw prices react. PJM's July heat wave pushed load to 168/162 GW gross/net of demand response, beating its 2006 record and its 154 GW forecast, with real-time prices spiking above $2,000/MWh; a smaller mid-July peak of 159 GW also topped $1,000/MWh. Forwards stayed strong even as conditions calmed afterward. ERCOT's 91 GW record, above both last year's peak and this year's forecast, saw only low-hundreds pricing because renewables and storage covered the load, and forwards have since weakened, especially after Governor Abbott's letter paused the Batch Zero review, pushing the ERCOT curve into contango. Elsewhere, MISO grew in line with forecast while New York and California undershot. Global gas turbine orders hit a record 38 GW in Q2, up 71% YoY, led by North American demand. Wolfe holds its sentiment meter flat at \"2\", flagging PJM's proposed RBP cost allocation on existing-PPA load as a risk still pending FERC, while noting CEG's tone keeps improving and Vistra's Cogentrix deal cleared FERC.",
+ "cards": [
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "PJM's peak load reached over 168 GW gross and 162 GW net of demand response during an early-July heat wave, an all-time record.",
+   "anchor": "topping out at over 168/162 GW gross/net of demand response (DR)",
+   "topic": "PJM peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "PJM's July peak beat its prior all-time record of 166 GW set in 2006 and exceeded the 154 GW forecast.",
+   "anchor": "This beat its prior 166 GW record set way back in 2006 and was well above its 154 GW forecast",
+   "topic": "PJM peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "PJM had a second, smaller peak of 159 GW in mid-July.",
+   "anchor": "PJM saw another smaller peak just a few weeks later in mid-July at 159 GW",
+   "topic": "PJM peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "PJM real-time prices spiked above $2,000/MWh on July 2 and 3 during the record peak.",
+   "anchor": "with realtime prices spiking over $2,000/MWh on both July 2/3",
+   "topic": "PJM peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "PJM real-time prices during the mid-July peak similarly topped $1,000/MWh.",
+   "anchor": "at 159 GW; prices similarly peaked over $1,000/MWh",
+   "topic": "PJM peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "PJM load and prices were tame for the rest of the summer, but forward power prices remained strong.",
+   "anchor": "Load/prices were fairly tame the rest of the summer, but forwards remained strong",
+   "topic": "PJM peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "ERCOT demand topped out at 91 GW in late July, a new all-time record.",
+   "anchor": "we saw demand top out at 91 GW in late-July, also setting a new all-time record",
+   "topic": "ERCOT peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "ERCOT's 91 GW peak came well above last year's 84 GW peak and this year's 88 GW forecast net of demand response.",
+   "anchor": "This came well above last year's 84 GW peak and this year's forecast of 88 GW (net of DR)",
+   "topic": "ERCOT peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "ERCOT real-time pricing during the record peak stayed in the low hundreds and never came close to the $5,000/MWh price cap.",
+   "anchor": "real-time pricing peaked in the low-hundreds and never came close to the $5,000/MWh cap",
+   "topic": "ERCOT peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "ERCOT forwards have weakened particularly since Governor Abbott's letter called for a pause in the Batch Zero review process.",
+   "anchor": "following Gov Abbott's letter calling for a pause in the Batch Zero review process",
+   "topic": "ERCOT peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "The ERCOT power forward curve is now in sharp contango.",
+   "anchor": "the ERCOT curve is now in sharp contango",
+   "topic": "ERCOT peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "ERCOT forwards were sharply down again last week, by 2-5% across the curve, on concerns of further delays to new load coming online.",
+   "anchor": "ERCOT forwards were sharply down again last week (2-5% across the curve)",
+   "topic": "ERCOT peak demand and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "MISO demand spiked to 125 GW, up 5 GW from last year's peak but in line with forecast.",
+   "anchor": "MISO demand spiked up to 125 GW (up 5 GW from last year's peak, but in-line with forecast)",
+   "topic": "regional ISO demand vs forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "New York peak demand came in about 500 MW below forecast.",
+   "anchor": "New York was ~500 MW below the forecast",
+   "topic": "regional ISO demand vs forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "California peak demand missed its forecast by a wide margin of 3.5 GW.",
+   "anchor": "California missed its forecast by a wide margin of 3.5 GW",
+   "topic": "regional ISO demand vs forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Global gas turbine orders in Q2 2026 were 38 GW, up 71% year-over-year and the all-time record order level for a quarter.",
+   "anchor": "global gas turbine orders in Q2 were 38 GW, up +71% YoY and the all-time record order level",
+   "topic": "gas turbine order growth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Q2 gas turbine order pace implies annualized 2026 orders of about 135 GW based on historical seasonality.",
+   "anchor": "This implies annualized orders of 135 GW, based on historical Q1/Q2 seasonality",
+   "topic": "gas turbine order growth",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Gas turbine orders from utility and IPP customers were 26 GW in Q2, up 58% year-over-year.",
+   "anchor": "Orders from utility/IPP customers in 2Q were 26 GW, up +58% YoY",
+   "topic": "gas turbine order growth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Gas turbine orders from industrial customers for aeroderivative and bridge power solutions were 10 GW in Q2, up 78% year-over-year.",
+   "anchor": "Orders from industrial customers for aeroderivatives/bridge solutions were 10 GW, up +78% YoY",
+   "topic": "gas turbine order growth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "North America's share of global gas turbine orders rose to 54% year-to-date in 2026, up from 44% in 2025, the highest since 2001.",
+   "anchor": "North American market share sits at 54% (up from 44% in 2025, which was the highest mark since 2001)",
+   "topic": "gas turbine order growth",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "North America accounts for 87% of year-to-date industrial/small gas turbine orders.",
+   "anchor": "North America accounting for 87% of YTD orders",
+   "topic": "gas turbine order growth",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "PJM intends for all load with existing power purchase agreements, including TLN's AWS deal and VST's Meta deal, to be subject to RBP cost allocation and IRAS curtailments, pending FERC.",
+   "anchor": "their intent is for all load with existing PPAs (ie: TLN/AWS and VST/META) will be subject to RBP cost allocation and IRAS curtailments",
+   "topic": "PJM/ERCOT regulatory catalysts",
+   "status": "forecast",
+   "instruments": [
+    "TLN",
+    "VST",
+    "META"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Wolfe expects the cost and curtailment risk from PJM's RBP proposal to fall on the customer rather than the IPP, and expects the underlying deals to remain intact.",
+   "anchor": "the cost/curtailment risk would fall on the customer not the IPP, and we expect the deals will remain intact",
+   "topic": "PJM/ERCOT regulatory catalysts",
+   "status": "forecast",
+   "instruments": [
+    "TLN",
+    "VST"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Oncor's two transmission lines being conditionally approved on Friday helped calm some fears about ERCOT load growth delays.",
+   "anchor": "Oncor's two lines being conditionally approved Friday helped calm some fears",
+   "topic": "PJM/ERCOT regulatory catalysts",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "FERC has 60 days to issue orders on PJM's RBP and IRAS/C&M filings, due by September 29 and October 12 respectively.",
+   "anchor": "FERC now has 60-days to issue orders on both filings (by 9/29 and 10/12 for RBP and IRAS, respectively)",
+   "topic": "PJM/ERCOT regulatory catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "by 9/29 and 10/12/2026"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Wolfe expects ERCOT to issue its final Batch Zero eligibility verification report by December 10, ahead of the December 17 PUCT meeting.",
+   "anchor": "get the final Batch Zero eligibility verification report from ERCOT by December 10",
+   "topic": "PJM/ERCOT regulatory catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "by 12/10/2026"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Wolfe holds its sentiment meter flat at a \"2\" following its trip last week to PJM and CEG.",
+   "anchor": "We hold our sentiment meter flat at a \"2\" following our trip last week to PJM/CEG",
+   "topic": "PJM/ERCOT regulatory catalysts",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "CEG's tone has continued to improve since bottoming out after its March 31 business update call.",
+   "anchor": "CEG's tone, on the other hand, has only continued to improve after bottoming out on their 3/31 business update call",
+   "topic": "PJM/ERCOT regulatory catalysts",
+   "status": "released",
+   "instruments": [
+    "CEG"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Vistra announced a $4.0 billion acquisition of Cogentrix from Quantum Energy Partners, adding 5.5 GW across PJM, New England, and ERCOT.",
+   "anchor": "VST announced their $4.0B acquisition of Cogentrix from Quantum Energy Partners on 1/5/26, with 5.5 GW across PJM, New England and ERCOT",
+   "topic": "Vistra Cogentrix acquisition",
+   "status": "released",
+   "instruments": [
+    "VST"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "FERC approved Vistra's acquisition of Cogentrix on August 5.",
+   "anchor": "FERC approved the acquisition on 8/5",
+   "topic": "Vistra Cogentrix acquisition",
+   "status": "released",
+   "instruments": [
+    "VST"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip - A peek at the peaks; new highs in PJM & ERCOT",
+   "claim": "Vistra's Cogentrix acquisition is expected to close in late 2026.",
+   "anchor": "The acquisition is expected to close in late 2026",
+   "topic": "Vistra Cogentrix acquisition",
+   "status": "forecast",
+   "instruments": [
+    "VST"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "late 2026"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-08/15478__the-wolfe-power-trip-a-peek-at-the-peaks-new-highs-in-pjm-er.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 31,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
