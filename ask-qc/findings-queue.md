@@ -247,3 +247,23 @@ no findings
   correctness didn't fire. Appears already fixed going forward per the
   commit timestamp — worth a maintainer confirming the fix is live in
   the next real deploy, no further action from this queue.
+
+## 2026-09-07
+
+no findings
+
+  Side note, not a per-turn finding: 4 of the day's 6 turns (20:48:06,
+  20:48:58, 20:49:55, 20:50:18 UTC) shipped the canned "Thought myself
+  in circles and ran out of room" wrapper — an empty/blocked
+  generation, not a model-authored bad answer, graded INFRA per ground
+  rule 3. This is the exact incident `tests/test_ask_empty_retry.py`'s
+  docstring documents ("Four of six asks in one afternoon shipped
+  [this]"), and the fix (a short-thinking/search-only retry, plus a
+  token-count discriminator that routes genuine PROHIBITED_CONTENT
+  blocks to the existing filter ladder instead of the budget-retry
+  path) lives in `discord_bot/bot.py` in this same checkout. The fix's
+  commit is timestamped 2026-09-07T21:20:37-07:00
+  (2026-09-08T04:20:37Z) — after every turn in today's log (last turn
+  20:50:18 UTC, ~7h30m before the fix). Already fixed going forward;
+  no action needed from this queue beyond a maintainer confirming the
+  fix is the one live in production.
