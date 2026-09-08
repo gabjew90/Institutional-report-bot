@@ -1,0 +1,336 @@
+{
+  "pulse_date": "2026-09-08",
+  "window_label": "since-last-daily (2026-09-04T14:47)",
+  "themes": [
+    {
+      "theme": "ai data center energy demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 8,
+        "skeptical": 3,
+        "neutral": 11
+      },
+      "consensus_view": "Banks agree AI data centers are forcing a step change in electricity demand that favors power generation, grid and nuclear suppliers, but they split on whether the spending behind it can keep being funded now that hyperscalers are borrowing instead of paying out of cash flow.",
+      "facts_agreed": [
+        {
+          "claim": "AI data centers are driving a structural increase in electricity demand, and power supply is the binding constraint on the buildout.",
+          "banks_for": [
+            "Barclays",
+            "UBS",
+            "Wolfe Research"
+          ],
+          "evidence_quotes": [
+            "AI and data centres are driving a step-change in electricity demand.",
+            "The next industrial revolution will be driven by artificial intelligence, and even the best AI ultimately needs one thing: secure and reliable energy.",
+            "The U.S. market continues to accelerate, with load growth driven largely by data centers."
+          ]
+        },
+        {
+          "claim": "Nuclear power is being funded and positioned as the reliable always-on supply for data center load.",
+          "banks_for": [
+            "Morgan Stanley Investment Management",
+            "Maxim Group"
+          ],
+          "evidence_quotes": [
+            "Nuclear sits at the intersection of all these needs, and Kazakhstan is ready to reap the benefits.",
+            "U.S. hyperscalers have collectively committed to funding billions of dollars to nuclear power projects"
+          ]
+        },
+        {
+          "claim": "The power and grid supply chain feeding data centers is treated as a multi-year spending stream rather than a short cycle.",
+          "banks_for": [
+            "The Market Ear",
+            "Barclays"
+          ],
+          "evidence_quotes": [
+            "This is a multi-year, capex-funded source of demand.",
+            "AI and data centres are driving a step-change in electricity demand."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "sustainability of the hyperscaler spending cycle behind data center energy demand",
+          "banks_for": [
+            "Goldman Sachs",
+            "Morgan Stanley Investment Management"
+          ],
+          "for_evidence": "a breakthrough in intelligence is what brings back the desire - and the necessity",
+          "banks_against": [
+            "The Market Ear",
+            "J.P. Morgan",
+            "Canaccord Genuity"
+          ],
+          "against_evidence": "with Hyperscaler free cash flow now history, the entire cycle will rely on the goodwill"
+        },
+        {
+          "claim": "whether AI infrastructure debt is an attractive entry point or a growing vulnerability",
+          "banks_for": [
+            "RBC Global Asset Management"
+          ],
+          "for_evidence": "this time will be seen as a unique opportunity to pick up high-quality assets",
+          "banks_against": [
+            "J.P. Morgan",
+            "Canaccord Genuity"
+          ],
+          "against_evidence": "rising reliance on debt to fund capital spending"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "midterm election positioning",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Ten desks flag the US midterm elections as a live macro event but only Goldman Sachs takes a view, arguing US stocks have historically gone nowhere from August into Election Day and done better in the months after it.",
+      "facts_agreed": [
+        {
+          "claim": "US equities have historically drifted sideways from early August through midterm Election Day.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "S&P 500 has generated a median return of 0% from the start of August through Election Day."
+          ]
+        },
+        {
+          "claim": "The tradable question is which policy areas become easier to pass after the election, not who wins.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The more actionable question for investors is which policy areas become easier to negotiate"
+          ]
+        },
+        {
+          "claim": "Multiple desks name the US midterms as an upcoming catalyst, watching Senate and House control, election-driven volatility, and local pushback against data centers.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "US midterm election",
+            "Midterm election volatility",
+            "US Senate control election race",
+            "Democratic House majority midterms",
+            "US midterm elections data center pushback"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "hormuz strait disruptions",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Eight desks treat the Strait of Hormuz as a live supply risk that runs through oil and gas prices, but none of them stakes a directional call on it, so the shared view is a chokepoint to watch rather than a settled trade.",
+      "facts_agreed": [
+        {
+          "claim": "Eight research desks flag the Strait of Hormuz as an active shipping and energy-supply chokepoint in this window.",
+          "banks_for": [
+            "TS Lombard",
+            "Goldman Sachs",
+            "Eastspring Investments",
+            "Generali Asset Management",
+            "The Market Ear",
+            "JPMorgan",
+            "Deutsche Bank",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz shipping blockade",
+            "Hormuz Strait shipping disruption",
+            "Strait of Hormuz supply disruptions",
+            "Strait of Hormuz energy supply security",
+            "Strait of Hormuz oil flow risks"
+          ]
+        },
+        {
+          "claim": "Desks name specific escalation routes behind the chokepoint rather than a generic risk premium, covering a US blockade of Iranian oil exports, direct US-Iran hostilities, and the Houthi threat in the Red Sea.",
+          "banks_for": [
+            "JPMorgan",
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "US blockade of Iranian oil exports",
+            "US-Iran hostilities in Strait of Hormuz",
+            "Houthi threat in Red Sea"
+          ]
+        },
+        {
+          "claim": "The same desks carry the reverse case, a reopening of the strait, inside the same subject.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Strait of Hormuz reopening"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed credibility rate hike",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 1,
+        "neutral": 7
+      },
+      "consensus_view": "Three desks treat a September Fed rate increase as a live call, with TS Lombard and Deutsche Bank expecting one so the new Fed chair proves he is not taking orders from the White House, while The Market Ear says the committee is still waiting on the next inflation report before it moves.",
+      "facts_agreed": [
+        {
+          "claim": "All three desks treat a rate increase at the September Fed meeting as a genuinely open decision rather than a settled one.",
+          "banks_for": [
+            "TS Lombard",
+            "Deutsche Bank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": [
+            "Hiking this month is a must for credibility.",
+            "a rate hike at the September meeting is the most likely policy outcome.",
+            "The center of the committee has not shifted - it is still data-dependent."
+          ]
+        },
+        {
+          "claim": "The August inflation report due next week is the input all three desks name as the one that settles the September decision.",
+          "banks_for": [
+            "TS Lombard",
+            "Deutsche Bank",
+            "The Market Ear"
+          ],
+          "evidence_quotes": []
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the Fed raises rates at the September meeting",
+          "banks_for": [
+            "Deutsche Bank",
+            "TS Lombard"
+          ],
+          "for_evidence": "a rate hike at the September meeting is the most likely policy outcome.",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "The center of the committee has not shifted - it is still data-dependent."
+        },
+        {
+          "claim": "whether protecting the Fed's reputation, rather than the incoming data, justifies a hike",
+          "banks_for": [
+            "TS Lombard"
+          ],
+          "for_evidence": "those claims, which are now everywhere, are precisely why Warsh SHOULD hike.",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "The center of the committee has not shifted - it is still data-dependent."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "geopolitical refining inflation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 7
+      },
+      "consensus_view": "Banks agree the Middle East conflict is choking fuel supply and pushing refined product and gas prices higher, and the open question is whether that is an earnings story for refiners or an inflation problem rate policy cannot fix.",
+      "facts_agreed": [
+        {
+          "claim": "Conflict-driven disruption to Middle East energy flows is tightening refined product supply and pushing prices up.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Rabobank"
+          ],
+          "evidence_quotes": [
+            "We raise estimates across European Refiners as geopolitical uncertainty amplifies structural refining tightness.",
+            "That is a structurally inflationary backdrop because refined products go into or into moving everything."
+          ]
+        },
+        {
+          "claim": "Seven desks flag the Middle East conflict and its effects on oil, energy prices and supply chains as an active driver this window without staking a directional view.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Middle East conflict impact on inflation",
+            "Middle East conflict oil shock",
+            "Iran conflict energy price impact",
+            "US/Iran conflict and tariff impacts",
+            "Middle East conflict supply chain impacts"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "what the refining squeeze means for markets: an earnings upgrade for refiners, or an inflation regime rate policy cannot fix",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "We raise estimates across European Refiners as geopolitical uncertainty amplifies structural refining tightness.",
+          "banks_against": [
+            "Rabobank"
+          ],
+          "against_evidence": "That is a structurally inflationary backdrop because refined products go into or into moving everything."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "jackson hole economic symposium",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 7
+      },
+      "consensus_view": "Seven desks treat the Jackson Hole central bank meeting as the place to watch for the Fed's next policy signal, but none of them has committed to a view on what that signal will be or how to trade it.",
+      "facts_agreed": [
+        {
+          "claim": "Seven research desks reference the Jackson Hole symposium as a venue for Federal Reserve policy signalling in this window, without any of them arguing a direction.",
+          "banks_for": [
+            "Amundi Investment Institute",
+            "Eastspring Investments",
+            "Natixis",
+            "Northern Trust",
+            "Raymond James",
+            "Tyler Durden",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "Jackson Hole Fed policy signals",
+            "Jackson Hole Fed conference",
+            "Jackson Hole conference monetary policy critique",
+            "Jackson Hole Fed remarks",
+            "Jackson Hole policy signal"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "us software ai moat",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA'"
+    },
+    {
+      "theme": "french political risk",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Morgan Stanley'"
+    }
+  ]
+}

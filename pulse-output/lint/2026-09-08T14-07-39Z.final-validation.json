@@ -1,0 +1,61 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.19% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.19",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Houthi strikes hit four Saudi cities overnight and Hormuz traffic slowed.** The attacks disrupted Saudi energy facilities and wounded 73, and shipping through the strait thinned after Iran threate"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.10% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.10",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Houthi strikes hit four Saudi cities overnight and Hormuz traffic slowed.** The attacks disrupted Saudi energy facilities and wounded 73, and shipping through the strait thinned after Iran threate"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.2% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.2",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Friday, September 11: August CPI, 8:30 ET.** Consensus is 0.4% headline and 0.2% core month over month, with Deutsche Bank at 0.38% and 0.21%. Goldman's 0.2% core threshold is a hold and TS Lombar"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.38% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.38",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Friday, September 11: August CPI, 8:30 ET.** Consensus is 0.4% headline and 0.2% core month over month, with Deutsche Bank at 0.38% and 0.21%. Goldman's 0.2% core threshold is a hold and TS Lombar"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.21% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.21",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Friday, September 11: August CPI, 8:30 ET.** Consensus is 0.4% headline and 0.2% core month over month, with Deutsche Bank at 0.38% and 0.21%. Goldman's 0.2% core threshold is a hold and TS Lombar"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.3% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.3",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Friday, September 11: August CPI, 8:30 ET.** Consensus is 0.4% headline and 0.2% core month over month, with Deutsche Bank at 0.38% and 0.21%. Goldman's 0.2% core threshold is a hold and TS Lombar"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 6,
+ "exit_code": 4
+}
