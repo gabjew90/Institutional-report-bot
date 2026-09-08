@@ -1,0 +1,102 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Summer yield selloff is post-Covid normalisation, not fiscal, and coupon income is keeping bond returns from going outright negative -> last week energy (Hormuz stalemate) drove Brent/gas higher and pushed yields to multi-year highs -> that plus a strong payrolls print lifted Fed hike odds to 62% -> DB expects Friday CPI to confirm inflation near-unchanged and an ECB hike Thursday -> risk assets and credit softened on the week, AfD's Saxony-Anhalt result adds a political risk overlay.",
+   "brief_chain": "Same: normalisation-not-fiscal yield framing with coupon cushion -> energy-driven yield/risk-asset moves last week (Hormuz, Brent, gas) -> payrolls lift Fed hike odds to 62% -> DB CPI/ECB forecasts -> AfD result -> Asia tech rally overnight with US closed for Labor Day.",
+   "distortions": [
+    {
+     "what": "Brief cites only last week's cumulative Brent move (+7.80% to $96.28) and omits this morning's fresh move (+1.05% to $97.29)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both figures show the same ongoing energy-driven yield pressure; no stance or level changes."
+    },
+    {
+     "what": "Brief omits PPI/Thursday core PCE forecast, Michigan sentiment forecast, Treasury buyback start, and the GOP convention/China data mentions",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are supporting calendar detail, not part of the stated call or invalidation."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Global yields at multi-decade highs while VIX sits at cycle lows -> Friday's payrolls undercuts stagflation talk but Waller flags next week's CPI/PPI as the real test -> rate pressure has been a real headwind, so equity 'resilience' actually masks multiple de-rating against uniform earnings, with the discount-rate-vs-unsustainable-earnings question unresolved -> a selloff halt would be unequivocally bullish, but two unrelated drivers (geopolitical oil/gas repricing, debt-funded AI capex) keep pressuring rates -> momentum has reset ~50% with changed composition, so 1H leaders shouldn't lead 2H -> Wilson would add EU defense on the earnings/price divergence and expects rotation into AI use-case beneficiaries.",
+   "brief_chain": "Same chain, same order, same conclusions and the same 'unequivocally bullish if rates halt' pivot, same two unrelated bond drivers, same momentum-reset and EU-defense/AI-use-case calls.",
+   "distortions": [
+    {
+     "what": "Brief omits the entire 4th theme's supporting evidence (Nvidia/Dell results, Hugging Face acquisition, CyberCab mileage, humanoid robot TAM upgrade) while keeping the 'AI use-case beneficiaries' conclusion",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the rotation call is preserved; the dropped items are corroborating evidence, not the call itself."
+    },
+    {
+     "what": "Brief drops 'and now down YTD' when describing the momentum reset",
+     "material": false,
+     "would_the_trade_change": "No \u2014 doesn't change the reset magnitude or the 1H/2H leadership call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d10",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Last month's goldilocks call was wrong; a bond selloff has since hit yields, but rates markets still underprice tightening even as oil/gas/food inflation pressure builds -> so either inflation falls or rate pressure persists, and persistent rate pressure forces a risk-asset adjustment -> four dislocations: Fed pricing too shallow versus ISM prices-paid signal, ECB pricing flat despite hawkish data, oil curve assumes a Hormuz reopening that keeps not happening, and equities/credit remain complacent as real yields climb with fewer cushions (rate cuts, fiscal room) available -> conclusion: the current equilibrium is unsustainable.",
+   "brief_chain": "Same: unsustainable equilibrium -> bond selloff to multi-year highs against still-shallow pricing -> Brent/gas/food inflation evidence -> the same either/or framing -> the same four dislocations with matching figures (60% hike odds, 74bps to 72bps ECB pricing, $83.2 six-month Brent, 70bps+ real yield rise) -> same conclusion.",
+   "distortions": [
+    {
+     "what": "Brief omits the historical-analogue evidence (2022, 2015-16, late-1990s cycles) and the second-round-effects/consumer-substitution point supporting dislocation #4",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the complacency call and its real-yield evidence are intact; the dropped analogues are corroboration."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "Wolfe Research",
+   "source_chain": "PJM and ERCOT both hit all-time peak demand records this summer, but only PJM prices reacted because ERCOT's load was covered by renewables/storage -> PJM's heat-wave peak (168/162 GW) beat its 2006 record and forecast with $2,000+/MWh spikes, and forwards held strong -> ERCOT's 91 GW record beat last year and forecast but priced only in the low hundreds, and its forwards have since weakened further on Abbott's Batch Zero pause, pushing the curve into contango -> elsewhere MISO matched forecast while New England/NY/CA undershot -> record Q2 gas turbine orders (38 GW, +71% YoY) confirm the demand buildout -> Wolfe holds sentiment flat at '2', flagging the PJM RBP cost-allocation risk (pending FERC) against improving CEG tone and the cleared Vistra/Cogentrix deal.",
+   "brief_chain": "Same chain and same figures throughout (168/162 GW, 154 GW forecast, $2,000/MWh, 159 GW/$1,000/MWh, 91 GW record, contango after Abbott's letter, 38 GW/+71% turbine orders, sentiment flat at '2', RBP risk vs. CEG tone and cleared Cogentrix deal).",
+   "distortions": [
+    {
+     "what": "Brief folds New England (which the source says tracked in-line with forecast) into an undifferentiated 'elsewhere' alongside NY/California, which actually missed forecast",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a minor regional load footnote, not part of the PJM/ERCOT pricing thesis or any name-level call."
+    },
+    {
+     "what": "Brief omits the utility/IPP (26 GW, +58% YoY) vs. industrial (10 GW, +78% YoY) turbine-order breakdown, keeping only the aggregate 38 GW/+71%",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the aggregate figure is accurate and is what supports the demand-buildout point; the breakdown is supporting detail."
+    },
+    {
+     "what": "Brief omits Oncor's conditionally-approved transmission lines that the source says helped calm some ERCOT fears",
+     "material": false,
+     "would_the_trade_change": "No \u2014 doesn't change the stated forwards-weakened/contango call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 8,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

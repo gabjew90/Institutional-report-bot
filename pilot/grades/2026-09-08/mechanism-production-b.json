@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt (same DB argument restated in pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt)",
+ "source_span": "Brent trades at $96, but the six-month contract sits near $83 as the curve continues to price a reopening of the Strait of Hormuz... If the blockage persists, the back end will eventually have to adjust higher, removing an important source of support for equities and credit.",
+ "source_chain": "The oil futures curve is downward-sloping because the market is pricing an eventual Strait of Hormuz reopening (front ~$96 vs 6-month ~$83) THEREFORE that reopening has been expected and dashed for six months running THEREFORE the pricing is an unsustainable bet rather than a settled fact, so if the blockage persists the 6-month (back-end) price must rise to meet reality, removing a support pillar under equities and credit. Invalidation: a real, sustained reopening of the strait \u2014 that would vindicate the curve's current pricing instead of forcing it higher.",
+ "pulse_chain": "The forward curve is priced for a Hormuz reopening that hasn't arrived in six months (Brent ~$97 spot vs $83.20 six-month) THEREFORE the market's bet has repeatedly been wrong THEREFORE the gap must resolve one of two ways by the time the six-month contract rolls (~March): downward if the strait genuinely reopens, or upward (with $USO rising) if it doesn't. Invalidation: a sustained reopening of the strait.",
+ "preserved": true,
+ "why": "The pulse reproduces DB's exact mechanism and direction (unresolved curve mispricing forces the back end higher absent a reopening) and its exact invalidation (a real reopening), just left uncredited to DB and padded with corroborating Goldman/JPMorgan detail rather than a swapped or invented mechanism.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

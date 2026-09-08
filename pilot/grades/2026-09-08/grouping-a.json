@@ -1,0 +1,195 @@
+{
+ "metric": 1,
+ "total_cards": 574,
+ "fragmentation_sets": [
+  {
+   "subject": "JPM's bullish EM equity call and country-relative pair trades (China H/A, Taiwan, LatAm, India/SEA)",
+   "labels": [
+    "em equity positioning",
+    "em country relative trades",
+    "em equity outlook"
+   ],
+   "cards": 20
+  },
+  {
+   "subject": "JPM's tactical global/international equity stance (cautious-neutral, long US/Asia vs Europe, bullish EU since May)",
+   "labels": [
+    "global equity tactical stance",
+    "international equity allocation"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "JPM's international equity long/short portfolio (supercycle longs, cyclicals, EU banks/pharma vs AI-vulnerable/EU insurance/autos shorts)",
+   "labels": [
+    "international equity sector positioning",
+    "international equity longs",
+    "international equity shorts"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "JPM's EU index/momentum hedge book (MDAX-FTSE pair, short France, gold profit-take)",
+   "labels": [
+    "equity index hedges",
+    "international equity hedges",
+    "momentum factor rotation",
+    "gold tactical positioning"
+   ],
+   "cards": 12
+  },
+  {
+   "subject": "JPM's hedge fund/investor positioning update (gross exposure, sentiment, healthcare topping, cyclicals vs defensives)",
+   "labels": [
+    "hedge fund positioning",
+    "investor positioning sentiment",
+    "cyclicals vs defensives",
+    "us health care positioning"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Deutsche Bank's case that the Fed hiking cycle is underpriced given sticky inflation and Warsh's hawkish tone",
+   "labels": [
+    "fed rate hike risk",
+    "fed hiking cycle pricing",
+    "fed rate hike pricing"
+   ],
+   "cards": 31
+  },
+  {
+   "subject": "Deutsche Bank (Jim Reid): bond yield rise is normalisation, not crisis",
+   "labels": [
+    "global bond yield normalisation",
+    "global bond yields"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "ECB hike pricing lagging gas-driven inflation risk",
+   "labels": [
+    "ecb september decision",
+    "ecb rate hikes",
+    "ecb hiking cycle pricing",
+    "ecb inflation disconnect"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "The Market Ear's copper Section 232 tariff/front-loading trade (bull mechanics and bear risks)",
+   "labels": [
+    "copper tariff squeeze",
+    "copper trade downside risks"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "Goldman's copper supply/demand balance and positioning read",
+   "labels": [
+    "copper scrap supply risk",
+    "copper positioning"
+   ],
+   "cards": 6
+  },
+  {
+   "subject": "Deutsche Bank's Hormuz-driven oil/gas price and curve-shape note",
+   "labels": [
+    "energy prices hormuz",
+    "oil curve hormuz blockage",
+    "oil curve hormuz reopening"
+   ],
+   "cards": 12
+  },
+  {
+   "subject": "JPM trading desk's view of the Iran conflict pushing oil higher",
+   "labels": [
+    "iran strikes oil",
+    "oil energy prices"
+   ],
+   "cards": 7
+  },
+  {
+   "subject": "Goldman's oil geopolitical risk-premium thesis",
+   "labels": [
+    "crude oil upside",
+    "oil gas risk premia"
+   ],
+   "cards": 4
+  },
+  {
+   "subject": "AI capex is now debt-financed at record scale, straining credit markets and crowding Treasuries",
+   "labels": [
+    "ai data center financing risk",
+    "hyperscaler debt issuance",
+    "ai capex financing"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "JPM desk's USDJPY/yen positioning and BoJ dynamics",
+   "labels": [
+    "boj yen",
+    "usd yen views",
+    "yen fed repo support"
+   ],
+   "cards": 12
+  },
+  {
+   "subject": "Equity leadership broadening away from mega-cap tech",
+   "labels": [
+    "us equity leadership rotation",
+    "tech broadening"
+   ],
+   "cards": 6
+  },
+  {
+   "subject": "Goldman: momentum factor unwind sitting beneath a calm equity index",
+   "labels": [
+    "equity momentum unwind",
+    "index vol versus factor vol"
+   ],
+   "cards": 6
+  },
+  {
+   "subject": "2026 US midterm election odds and market implications",
+   "labels": [
+    "us midterm elections",
+    "us midterms"
+   ],
+   "cards": 7
+  }
+ ],
+ "fragmented_mass_share": 0.411,
+ "mis_merges": [
+  {
+   "label": "ai capex boom",
+   "subjects": [
+    "hyperscaler capex/credit financing boom (issuance, CDS spreads, compute/electricity demand)",
+    "AI's effect on the labor market (workforce size unchanged, job postings, augmentation vs replacement)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "the labor-market angle is a distinct, debate-worthy story that risks never surfacing as its own theme while buried inside a capex/credit-market label."
+  },
+  {
+   "label": "european politics",
+   "subjects": [
+    "German Saxony-Anhalt election result (AfD surge)",
+    "JPM's short France-vs-EU-domestics equity hedge trade"
+   ],
+   "would_change_theme_selection": false,
+   "why": "both are single-card, minor items unlikely to be picked as a lead theme regardless of how they are labeled, but they are not the same subject."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmentation is severe and pervasive: many labels share near-verbatim bullets (the Fed-hiking-cycle, ECB-pricing, and Jim Reid bond-normalisation trios in particular repeat the same sentences almost word for word), and JPM's desk notes on EM, tactical stance, longs/shorts, hedges, and positioning are each split three or four ways. At ~41% fragmented mass the ledger badly overstates the number of distinct themes available to an editor.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "d9ae7367c064"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt",
+ "source_span": "the curve continues to price a reopening of the Strait of Hormuz and lower oil prices ahead. That expectation has repeatedly been pushed back. If the blockage persists, the back end will eventually have to adjust higher",
+ "source_chain": "The six-month Brent contract prices in a Strait of Hormuz reopening ($83 vs $96 spot) THEREFORE that reopening keeps failing to arrive THEREFORE if the blockage persists the back end must reprice higher, removing a support for equities and credit; invalidated only if the strait actually reopens and the curve's discount turns out to be correct.",
+ "pulse_chain": "The six-month barrel ($83.20) prices a Hormuz reopening that hasn't happened in six months, a $14 discount to the $97 spot THEREFORE the gap, not the spot price, is the trade THEREFORE if the strait stays shut the physical/refining shortage (JPM diesel and margin data) forces the gap to close upward at the March roll, dragging $USO with it; invalidated only by a sustained reopening of the strait before then.",
+ "preserved": true,
+ "why": "The pulse reproduces DB's exact mechanism (spot-vs-six-month gap pricing an unrealized Hormuz reopening, back end due to reprice higher if the blockage persists) and keeps the same invalidation (an actual sustained reopening), layering corroborating Goldman/JPM figures without reversing a step or misattributing the core argument.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

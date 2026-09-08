@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt",
+   "span": "That expectation has repeatedly been pushed back. If the blockage persists, the back end will eventually have to adjust higher",
+   "why": "DB's note is exactly this: the six-month curve prices a Hormuz reopening that keeps getting pushed back, and the physical market ('the curve is pricing relief, the physical market keeps refusing to deliver it') will force the back end higher if it doesn't arrive. 'Six months of waiting' is consistent with the conflict timeline JPM's note (15486) implies (de-escalation headlines going back to March)."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15486__iran-crude-views-from-across-jpm-and-beyond.txt",
+   "span": "Refining margins in Europe are >$40/bbl and US diesel is making new records daily",
+   "why": "The $40/bbl refining-margin figure is supported (JPM 15486), and diesel cracks are independently confirmed as record highs (JPM 15452, chart-only slide: 'EUROPEAN REFINING MARGINS AND DIESEL CRACKS HITTING RECORD HIGHS'). But no source calls diesel a 'four-year-high' \u2014 that phrase belongs to a different, unrelated figure: DB's note (15450) says 'The ISM services prices-paid index hit a four-year high in August.' The sentence borrows a real four-year-high statistic and reassigns it to diesel."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt",
+   "span": "If the blockage persists, the back end will eventually have to adjust higher, removing an important source of support for equities and credit.",
+   "why": "The inverse of DB's stated condition: the trade (curve pricing relief) only survives as long as the strait stays blocked; a sustained reopening is exactly what would remove the mispricing."
+  },
+  {
+   "id": "s4",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt",
+   "span": "Brent trades at $96, but the six-month contract sits near $83 as the curve continues to price a reopening of the Strait of Hormuz",
+   "why": "Source says the six-month contract sits 'near $83' \u2014 the sentence invents false precision ('$83.20'). Neither a March roll date nor $USO appears anywhere in the source text; both are added without support."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15448__vix-hits-trump-term-lows-as-yields-hit-30-year-highs-goldman.txt",
+   "span": "the market's re-weighting from the beneficiaries of AI CapEx $s , to the beneficiaries of AI use-cases",
+   "why": "The capacity-to-monetization rotation is a real Goldman-note idea. 'Who pays for the electricity underneath decides whether that holds' has no textual basis anywhere in the day's sources \u2014 none of the AI-power-demand documents (nuclear/utilities files) ever tie electricity cost to whether this specific equity rotation holds."
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "The day's only Morgan Stanley document (15480, 'The Four Uncertainties Facing Markets') discusses Fed ambiguity, Treasury issuance and oil forecasts \u2014 it never mentions $NOW, $TEAM, $CRM, a 'protective moat' framing, or NVDA leading AI semiconductors. No other source in the list makes this claim either."
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "No source mentions a 5.4% AI-software move, Broadcom's earnings print, a Goldman Buy rating on $SNOW, or a 36%-from-31% product revenue growth figure. The closest thing in the day's Goldman note (15448) is a qualitative 'AI CapEx to AI use-cases' rotation with no numbers attached \u2014 it does not support these specific figures."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15443__the-warsh-dilemma.txt",
+   "span": "One 25bps hike is good PR. It kills this credibility narrative and ends months of speculation about whether Warsh is a sock puppet.",
+   "why": "Matches the source's central argument almost exactly: the September decision has become a referendum on whether Warsh is independent of the White House, not a pure inflation call."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "payrolls up by +162k in August (vs. +55k expected). In addition, there were +55k of upward revisions to the previous",
+   "why": "Payroll print and revision figures match exactly. Source gives futures at '62% chance of a hike' \u2014 'near 60%' is a fair rounding, not a distortion."
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15443__the-warsh-dilemma.txt",
+   "span": "one pundit said it was a question of whether the core CPI comes in at 0.2% or 0.3% MoM",
+   "why": "The 0.2%-threshold conditional for the hike unwinding is faithful to the source. The added claim that '30-year Treasury yields fall back with it' has no support \u2014 no source in the list ties a soft CPI print to 30-year yields; the yield discussion that exists (15448) is about current levels, not a conditional reaction."
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "No document in the day's source list mentions betting-market odds on the House or Senate, or a historical 'since 1950' S&P 500 return comparison under divided vs. single-party Congress. Neither JPM 'International Market Intelligence' briefing (15438, 15452) nor any other file contains these figures."
+  },
+  {
+   "id": "s12",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15484__global-markets-strategy-regional-calls-non-us-is-ahead-so-fa.txt",
+   "span": "Regional earnings differential is narrowing. Over the past 3 years US earnings beat RoW, but this year the spread has reversed.",
+   "why": "Earnings growth shifting to rest-of-world is faithful to JPM's note. 'The US mega-cap trade is fully owned' is an added positioning claim with no support \u2014 the only positioning language in the source describes EM positioning as 'light,' not US mega-cap as crowded/fully owned."
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15484__global-markets-strategy-regional-calls-non-us-is-ahead-so-fa.txt",
+   "span": "MSCI AC World ex US is up again vs the US this year, by 4%, total return in USD",
+   "why": "The '4% ahead' figure and the qualitative 'EM equities trade near record cheap vs DM' claim are both faithful to JPM's note. But the specific multiples (10x/18x forward P/E), the 45% discount figure, and the $75 billion inflow figure appear nowhere in this document or any other source for the day \u2014 they are invented precision on top of a real but unquantified JPM chart."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15484__global-markets-strategy-regional-calls-non-us-is-ahead-so-fa.txt",
+   "span": "the risks are many, but we stay with the view that non-US equities have a good chance to outperform the US for the second year in a row",
+   "why": "The invalidation framing (geopolitical escalation, bond-yield pressure, second consecutive year of non-US outperformance) matches JPM's stated risks and call. The '45% discount' qualifier is the same unsupported figure carried over from s13 \u2014 invented, not in the source."
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "",
+   "why": "JPM's note (15484) never mentions EEM or EFA as instruments for this trade. No other source in the list does either \u2014 this is the pulse's own unattributed instrument suggestion."
+  }
+ ],
+ "faithful": 4,
+ "distorted": 7,
+ "unsupported": 4,
+ "faithful_rate": 0.267,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

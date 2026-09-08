@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "Nonfarm payrolls rose by 162k, with a further 55k of upward revisions to the previous two months. Private-sector hiring remained firm (127k)... participation increased to 61.6%",
+   "why": "All five figures (162k, expectations of 55k, 55k revisions, 127k private hiring, 61.6% participation) match the source exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15480__morgan-stanley-lays-out-the-value-of-fed-ambiguity-the-four-.txt",
+   "span": "if one thinks core inflation decelerates in 2H 2026, as we do... Morgan Stanley Economists forecast the Fed stays on hold. It is admittedly a close call.",
+   "why": "Attribution, view, timeframe, and 'close call' framing all match the Morgan Stanley source verbatim."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15443__the-warsh-dilemma.txt",
+   "span": "one pundit said it was a question of whether the core CPI comes in at 0.2% or 0.3% MoM. Fine margins!",
+   "why": "The 0.2%/0.3% CPI framing is from TS Lombard's note quoting an unnamed Bloomberg pundit, not Goldman. The sentence's 'per Goldman' attribution correctly covers only the second clause ('a halt to the bond sell-off would be unequivocally bullish for stocks' \u2014 found verbatim in the Goldman file 15448), but folds the CPI framing from a different, non-Goldman source under the same attribution, misattributing it."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "a 4th consecutive weekly gain (+7.42%) last week... to \u20ac72.00/MWh",
+   "why": "Percentage, level, and streak count all match exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15453__eye-on-the-market-rear-window.txt",
+   "span": "debt issuance by the five hyperscalers plus NVIDIA is ~$320 bn... we estimate $303 bn in ten year equivalents. That's 68% of new Treasury long duration borrowing this year.",
+   "why": "All three figures match the JPMorgan source exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15479__monthly-chartbook-the-home-straight.txt",
+   "span": "Buy-backs have turned into issuance for the hyperscalers... Hyperscaler (and related) CDS is climbing partly due to supply and [hedging demand]",
+   "why": "Both the net-issuance flip and the CDS-spread claim are directly supported."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15447__stuck-between-a-rock-a-hard-place-top-goldman-strategist-glo.txt",
+   "span": "We like buying Power Infrastructure (GSENEPOW)... We believe this may be one of the more underappreciated election-sensitive themes in US equities.",
+   "why": "Matches Goldman's stated position and framing closely."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15482__dr-copper-is-breaking-out-but-this-isnt-mainly-a-growth-sign.txt",
+   "span": "The tariff report is ~2 months overdue. Every week it sits, the front-load bid stays alive.",
+   "why": "Directly supported; document identifies the report as the Section 232 tariff action later in the text."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15479__monthly-chartbook-the-home-straight.txt",
+   "span": "the energy shock pushed it back into negative territory again",
+   "why": "Gas-level claim matches DB source 15445 ('front-end future is currently around its highest since early 2023'); deposit-rate claim matches DB source 15479 ('real adjusted ECB's deposit rate was still positive [before]... the energy shock pushed it back into negative territory')."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+   "span": "it was pricing 74bps of further hikes by the June 2027 meeting, and at time of writing, it's pricing in 72bps... natural gas futures have risen significantly, up more than +18%",
+   "why": "bps figures and gas move match 15445; GDP revision (1.8% to 2.6%) matches 15452 ('EA GDP: Revised up from 1.8% ar to 2.6%')."
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15448__vix-hits-trump-term-lows-as-yields-hit-30-year-highs-goldman.txt",
+   "span": "'momentum' has had a staggering reset this summer, giving up close to 50% from late-June highs, and now down YTD",
+   "why": "The ~50% giveback and 'down YTD' direction are faithful, but the source never gives a specific YTD figure \u2014 no '5%' or any percentage appears anywhere in this document. The precise '-5%' is invented."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15448__vix-hits-trump-term-lows-as-yields-hit-30-year-highs-goldman.txt",
+   "span": "software is in the long leg on 3mth, but still in the short leg of 12mth), so do not expect 1H leaders to re-assert 2h leadership",
+   "why": "Near-verbatim match, correctly attributed to Goldman."
+  },
+  {
+   "id": "s13",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document among the 36 listed contains any statement about hedge funds adding gross exposure, four of five days, or 'largest increase since late June.' Searched all files for 'gross exposure/leverage', 'hedge fund', 'four of the past five' \u2014 no match tied to this claim."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "the BoJ has an important meeting on Friday week, less than 36 hours after the FOMC conclusion",
+   "why": "Exact match."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15452__international-market-intelligence-morning-briefing.txt",
+   "span": "Our Derivative Strategists in HK like low premium TPX call spreads or TPX-USDJPY hybrids to position for a post-BoJ grind higher",
+   "why": "Exact match, correctly attributed to JPMorgan."
+  }
+ ],
+ "faithful": 12,
+ "distorted": 2,
+ "unsupported": 1,
+ "faithful_rate": 0.8,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

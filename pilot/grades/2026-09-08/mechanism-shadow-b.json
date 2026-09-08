@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+ "source_span": "rates markets still don't reflect the extent of the inflationary pressures ahead, with only limited tightening cycles priced in. So either inflation needs to fall, or the pressure on rates will continue.",
+ "source_chain": "ISM services prices-paid at a 4-year high (consistent with CPI >5%) plus a hawkish Warsh and a strong payrolls print show inflation pressure building, therefore Fed/ECB rate pricing (only ~60% odds of a hike, ECB pricing barely moved) is too shallow for that pressure, therefore either inflation must fall back or rate pressure continues and forces a repricing of complacent risk assets (equities/credit, which have diverged upward from real yields since April). Invalidation: the setup only holds if inflation actually falls back and the tightening cycle turns out not to be needed \u2014 DB says that's questionable because the inflation is cost-push (oil/food/gas) and central banks lack easy cushions (no room for cuts or fiscal stimulus with inflation above target and yields/debt already high).",
+ "pulse_chain": "ISM services prices-paid at a 4-year high (consistent with CPI >5%), on top of a strong payrolls beat, is what's moved Fed pricing to ~60-62% odds of a September hike, therefore this is 'the dislocation Deutsche Bank is pointing at': rates markets pricing only a shallow tightening cycle against inflation levels that have historically produced 200bps+ of first-year hikes, therefore equities have not engaged with any of it \u2014 MSCI World near highs, VIX at cycle lows, diverged from the real-yield path since the April ceasefire. Invalidation: Friday's CPI is the resolving catalyst \u2014 a core print of 0.2% instead of 0.3% takes September off the table and a halted bond selloff would be bullish for stocks (per Goldman), i.e. the dislocation resolves without a risk-asset shock only if inflation prints soft.",
+ "preserved": true,
+ "why": "The pulse keeps DB's exact three-step chain (underpriced hawkish risk from inflation data \u2192 shallow rate pricing is the named dislocation \u2192 complacent equities are exposed) attributed correctly to Deutsche Bank, and its Friday-CPI invalidation is the same condition DB itself names (inflation falling back) rather than a swapped one, even though the specific print threshold is sourced elsewhere.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+ "source_span": "rates markets still don't reflect the extent of the inflationary pressures ahead, with only limited tightening cycles priced in. So either inflation needs to fall, or the pressure on rates will continue",
+ "source_chain": "Inflation is building faster than priced (ISM services prices paid at a 4-year high, consistent with CPI above 5%) while futures price only a shallow Fed hiking cycle (~60%, then done) therefore this is a dislocation, since 4-5% inflation has historically meant 200bps+ of first-year hikes and 'one and done' cycles are rare therefore if the inflation pressure persists, risk assets (currently complacent, diverged from real yields since the April ceasefire) will be forced to adjust. Invalidation: the dislocation resolves only if inflation actually falls; otherwise pressure on rates continues.",
+ "pulse_chain": "Rates markets price only a 60-62% chance of one Fed hike in September, a shallow cycle, while the ISM services prices-paid print (4-year high, historically consistent with CPI above 5%) is what's actually moved rate pricing therefore this is the dislocation Deutsche Bank is flagging, since 4-5% inflation has historically brought 200bps+ of first-year hikes and one-and-done cycles are rare therefore equities haven't engaged with any of it (MSCI World near highs, VIX at Trump-term lows, real yields diverged from the S&P since the April ceasefire). Invalidation: Friday's core CPI print decides it \u2014 a 0.2% reading takes September off the table, a halt to the bond selloff would be bullish for stocks.",
+ "preserved": true,
+ "why": "The pulse keeps Deutsche Bank's exact three-step argument (shallow Fed pricing vs. building inflation \u2192 historically inconsistent dislocation \u2192 complacent risk assets due for adjustment) correctly attributed to Deutsche Bank, and operationalizes the same invalidation ('inflation needs to fall, or the pressure on rates will continue') as Friday's core CPI print rather than swapping or dropping it.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

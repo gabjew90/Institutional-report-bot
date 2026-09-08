@@ -1,0 +1,86 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Reid argues the summer yield sell-off is a continuation of post-Covid normalisation, not a fiscal story, and coupon income is making outright negative bond returns harder to achieve medium-term, therefore bonds are 'being bonds again' even as pressure for higher yields persists; separately, no Hormuz progress drove Brent +7.80%/gas +7.42% last week, pushing yields to multi-year highs (Bund 3.34%, US 4.78%) and weighing on risk assets, therefore Friday's strong payrolls (+162k, +55k revisions) lifted September Fed hike odds to 62%, therefore DB forecasts Aug CPI at 3.38%y/y headline (core 2.38%) and a 25bp ECB hike Thursday to 2.50% with another in December, against a backdrop of AfD's Saxony-Anhalt surge and Asia's tech-led overnight gains with the US shut for Labor Day.",
+   "brief_chain": "Same structure and figures reproduced: normalisation-not-fiscal framing with coupon income cushioning returns, last week's energy-driven yield spike (Brent +7.80% to $96.28, gas +7.42%, Bund 3.34%, US 4.78%, STOXX -0.81%, credit wider), Friday payrolls (+162k, +55k revisions) lifting Sept hike odds to 62%, DB's CPI forecast (headline +0.38% m/m to 3.38% y/y, core +0.21% m/m to 2.38% y/y), ECB 25bp hike to 2.50% Thursday plus a December hike, AfD ~44% vs CDU ~17% in Saxony-Anhalt, and overnight Asia tech strength (KOSPI +4.18%) with US markets shut.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Wilson notes JGB/Gilt yields at generational highs alongside VIX at Trump-term lows and MSCI World near record highs, therefore Friday's payrolls undercut stagflation talk but Waller flags next week's CPI/PPI as the real test, therefore rising yields have been a headwind masking multiple de-rating beneath resilient equities and uniform earnings, with the discount-rate-vs-earnings-quality question unresolved, therefore a halt to the bond sell-off would be unequivocally bullish for equities, driven by two unrelated forces (geopolitical oil/gas repricing and debt-funded AI capex competing for capital) that already dominate positioning, therefore momentum has reset ~50% with a changed composition (no 1H-to-2H carryover), leading him to add EU defense on a 25% earnings/price divergence and expect rotation from AI-capex to AI-use-case beneficiaries.",
+   "brief_chain": "Same chain reproduced: yield extremes (JGB since 1996, Gilt since 1998) with VIX at Trump-term lows and MSCI World +13%/<1% from highs; payrolls undercut stagflation talk but Waller flags CPI/PPI; yields as a headwind masking de-rating with the discount-rate/earnings-quality question left open; a halt to the sell-off would be unequivocally bullish for equities; two unrelated bond drivers (geopolitical oil/gas, debt-funded AI capex) with focus already there; momentum reset ~50% with changed composition, no 1H-2H carryover; add EU defense on the 25% divergence; expect rotation to AI use-case beneficiaries.",
+   "distortions": [
+    {
+     "what": "Brief omits the Tesla CyberCab/humanoid-robot section (mile counts, Amazon cost-savings estimate) that Wilson uses as his fourth theme's illustrative evidence.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying call (rotate from AI-capex to AI-use-case beneficiaries) survives intact without the CyberCab anecdote; it's supporting color, not the thesis."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d10",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Since last month's goldilocks call, a bond sell-off has pushed yields to multi-year highs while energy/food inflation pressure builds (Brent $96 vs $82.49 a month ago, gas near 2023 highs, food +21.5%/+18.3%/+16.8%), therefore either inflation falls or rate pressure persists, and persistent rate pressure forces a risk-asset adjustment, evidenced by four dislocations: (1) Fed pricing implies a shallow hike cycle despite ISM services prices paid at a 4-year high consistent with >5% CPI and a 60% priced hike probability; (2) ECB June-2027 pricing has barely moved (74bps\u219272bps) despite higher inflation swaps and upside growth surprises; (3) the oil curve stays steeply backwardated (6-month Brent $83.2 vs spot $96.2) on a Hormuz reopening that keeps not happening; (4) equities/credit stay complacent even as the US 10yr real yield is up 70bps+ and rate-cut/fiscal cushions are less available \u2014 therefore the current equilibrium is unsustainable.",
+   "brief_chain": "Same chain and all four dislocations reproduced with matching figures: bond sell-off since goldilocks call, Brent $96 vs $82.49 a month ago, gas near 2023 highs, food price jumps (sugar +21.5%, wheat +18.3%, corn +16.8%); either-inflation-falls-or-rates-stay-pressured logic; Fed shallow-cycle pricing vs ISM services prices paid/60% hike odds; ECB pricing stuck at 72bps vs 74bps despite hawkish data; oil curve backwardated at $83.2 6-month vs Hormuz non-reopening; equities/credit complacency against 70bps+ real yield rise and scarce policy cushions.",
+   "distortions": [
+    {
+     "what": "Brief renders the ISM services prices-paid read as 'consistent with 5% CPI' where the source says 'consistent with a CPI rate above 5%.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both versions support the same dislocation (Fed pricing too shallow given inflation signals); the rounding doesn't change the stance or its magnitude enough to alter positioning."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "Wolfe Research",
+   "source_chain": "PJM and ERCOT both set all-time peak demand records this summer, therefore PJM's July heat wave (168/162 GW gross/net, beating the 2006 record and forecast) produced real-time price spikes above $2,000/MWh with forwards staying strong, whereas ERCOT's 91 GW record was absorbed by renewables/storage into only low-hundreds pricing, and ERCOT forwards have since weakened into contango after Abbott's letter paused the Batch Zero review, while record Q2 gas turbine orders (38 GW, +71% YoY) confirm continued build-out demand, and Wolfe holds sentiment flat at '2' given a bothersome-but-FERC-pending PJM RBP cost-allocation risk on existing-PPA load, alongside improving CEG tone and the FERC-cleared Vistra/Cogentrix deal.",
+   "brief_chain": "Same chain reproduced: both ISOs hit record peaks but only PJM saw price reaction; PJM's 168/162 GW heat-wave peak beat the 2006 record and forecast with >$2,000/MWh prices and a smaller 159 GW/>$1,000/MWh mid-July peak, forwards stayed strong; ERCOT's 91 GW record priced only in the low-hundreds on renewables/storage coverage, with forwards weakening into contango after Abbott's Batch Zero pause; MISO in line with forecast while NY/CA undershot; record Q2 gas turbine orders (38 GW, +71% YoY) led by North American demand; sentiment meter flat at '2' flagging the PJM RBP cost-allocation risk pending FERC, CEG's improving tone, and the FERC-cleared Vistra/Cogentrix deal.",
+   "distortions": [
+    {
+     "what": "Brief drops that New England demand was also down from last year but in line with forecast, mentioning only that New York and California undershot.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 New England isn't a name Wolfe is calling on in this note; omitting it doesn't touch the PJM/ERCOT thesis or any covered ticker's stance."
+    },
+    {
+     "what": "Brief omits Wolfe's specific read that PJM RBP cost/curtailment risk on existing-PPA load would fall on the customer rather than the IPP, and that Wolfe expects the deals to remain intact.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief already flags the RBP risk as pending FERC and unresolved; dropping the mildly reassuring customer-not-IPP read doesn't flip sentiment off the stated flat '2,' it just loses a supporting nuance."
+    },
+    {
+     "what": "Brief omits that ERCOT forwards were down 2-5% across the curve specifically last week, and that Oncor's two transmission lines being conditionally approved Friday helped calm some fears.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's summary that ERCOT forwards have weakened into contango already captures the directional read; the weekly magnitude and the Oncor offsetting detail are secondary color."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 5,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

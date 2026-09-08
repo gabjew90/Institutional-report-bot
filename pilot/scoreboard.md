@@ -9,6 +9,10 @@ Scope limit (plan 6): ~19 HIGH PDFs/day is the lightest month on record. A passi
 | 2026-09-02 | shakedown | — | no | — | — | no | 1.00 | 100% | 1.00 | 0.00 | 46% | no | 0 | m1, m2_shadow, m2_production |
 | 2026-09-03 | VOID (stale cards) | — | no | — | — | no | 1.00 | 100% | 1.00 | 0.00 | 45% | no | 25 | m1, m2_shadow |
 | 2026-09-04 | VOID (stale cards) | 24% | yes | 87% | — | no | — | 80% | 1.00 | — | 42% | no | 8 | m2a, m3_production |
+| 2026-09-05 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
+| 2026-09-06 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
+| 2026-09-07 | shakedown | — | — | — | — | no | — | — | — | — | 42% | no | 0 |  |
+| 2026-09-08 | shakedown | — | yes | — | — | no | 0.00 | 100% | 1.00 | 1.00 | 45% | no | 0 | m1, m2_shadow, m2_production |
 
 **Void days (2):** 2026-09-03, 2026-09-04 — the editor ran with source files still unread, so the shadow pulse was written from an incomplete card set. Shown above, excluded from every metric.
 

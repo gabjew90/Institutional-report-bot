@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "payrolls up by +162k in August (vs. +55k expected). In addition, there were +55k of upward revisions... Private-sector hiring remained firm (127k)... participation increased to 61.6%",
+   "why": "Every figure (162k print, 55k expected, 55k revisions, 127k private hiring, 61.6% participation) matches the source exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15480__morgan-stanley-lays-out-the-value-of-fed-ambiguity-the-four-.txt",
+   "span": "if one thinks core inflation decelerates in 2H 2026, as we do... Morgan Stanley Economists forecast the Fed stays on hold. It is admittedly a close call.",
+   "why": "Correctly attributes the hold call, the 2H26 core deceleration rationale, the 'close call' framing, and the Warsh Jackson Hole language debate to Morgan Stanley."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15443__the-warsh-dilemma.txt",
+   "span": "one pundit said it was a question of whether the core CPI comes in at 0.2% or 0.3% MoM",
+   "why": "The 0.2%-vs-0.3% CPI framing that decides whether September is 'off the table' comes from TS Lombard quoting an unnamed Bloomberg TV pundit, not Goldman. Only the second clause (halt to the bond sell-off being unequivocally bullish) is Goldman's (15448__vix-hits...), but the sentence hangs a single 'per Goldman' attribution over both clauses, misattributing who said the CPI-threshold claim."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "relentless rise in European natural gas futures continued, with a 4th consecutive weekly gain (+7.42%) last week... to \u20ac72.00/MWh",
+   "why": "Exact match on the percentage gain, streak length, and level."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15453__eye-on-the-market-rear-window.txt",
+   "span": "debt issuance by the five hyperscalers plus NVIDIA is ~$320 bn... $303 bn in ten year equivalents. That's 68% of new Treasury long duration borrowing this year.",
+   "why": "Exact match on all three figures and the framing."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15479__monthly-chartbook-the-home-straight.txt",
+   "span": "Buy-backs have turned into issuance for the hyperscalers... Hyperscaler (and related) CDS is climbing partly due to supply and increasing Capex but also as a hedge for all things AI-related",
+   "why": "Matches the buyback-to-issuance flip and CDS-widening-on-supply/hedging-demand claims; 'increasing Capex' is compressed but not distorted."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15447__stuck-between-a-rock-a-hard-place-top-goldman-strategist-glo.txt",
+   "span": "We like buying Power Infrastructure (GSENEPOW)... We believe this may be one of the more underappreciated election-sensitive themes in US equities. The debate is increasingly moving away from whether datacenters should be built and towards who will pay for the incremental power generation",
+   "why": "Correctly attributed to Goldman, matches the power-infrastructure buy call and the 'underappreciated election theme' framing."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15482__dr-copper-is-breaking-out-but-this-isnt-mainly-a-growth-sign.txt",
+   "span": "The tariff report is ~2 months overdue. Every week it sits, the front-load bid stays alive.",
+   "why": "Matches the Section 232 overdue timeline and the front-loading-survives-while-unpublished logic."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+   "span": "European natural gas futures (EUR/MWh) have risen to their highest levels since early 2023 / the energy shock pushed it back into negative territory again (real ECB deposit rate)",
+   "why": "Both claims verified, combined from two DB documents (gas level from 15445, deposit rate from 15479), each individually accurate."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+   "span": "Back then, it was pricing 74bps of further hikes by the June 2027 meeting, and at time of writing, it's pricing in 72bps... natural gas futures have risen significantly, up more than +18%",
+   "why": "74bps-to-72bps and +18% gas figures match exactly; GDP revision (1.8% to 2.6%) confirmed separately in 15452: 'EA GDP: Revised up from 1.8% ar to 2.6%'."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15447__stuck-between-a-rock-a-hard-place-top-goldman-strategist-glo.txt",
+   "span": "momentum closed August another painful leg lower, now down 5% year-to-date",
+   "why": "5% YTD figure confirmed here; the ~50%-giveback figure confirmed in the companion Goldman note 15448 ('giving up close to 50% from late-June highs')."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15448__vix-hits-trump-term-lows-as-yields-hit-30-year-highs-goldman.txt",
+   "span": "software is in the long leg on 3mth, but still in the short leg of 12mth), so do not expect 1H leaders to re-assert 2h leadership",
+   "why": "Direct match, correctly attributed to Goldman."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15452__international-market-intelligence-morning-briefing.txt",
+   "span": "HFs added gross exposure on 4 of the past 5 days for a +1.3z increase in the past week, the highest since late June",
+   "why": "Matches days count and 'highest since late June' framing exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "the BoJ has an important meeting on Friday week, less than 36 hours after the FOMC conclusion",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15452__international-market-intelligence-morning-briefing.txt",
+   "span": "Our Derivative Strategists in HK like low premium TPX call spreads or TPX-USDJPY hybrids to position for a post-BoJ grind higher",
+   "why": "Matches exactly; document is JPMorgan's own Morning Briefing, confirming the JPM HK-strategist attribution."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

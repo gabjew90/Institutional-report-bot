@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+   "span": "we've repeatedly seen hopes for a reopening of the Strait of Hormuz not materialise over the last 6 months",
+   "why": "DB's piece explicitly frames the futures curve as pricing a reopening that has failed to arrive for six months, matching the sentence's claim and framing (the 'physical market will charge for it' is DB's own inflation-risk thesis, not an invented add)."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15486__iran-crude-views-from-across-jpm-and-beyond.txt",
+   "span": "Refining margins in Europe are >$40/bbl and US diesel is making new records daily",
+   "why": "The $40/bbl refining-margin figure is supported verbatim, but the source says US diesel is making 'new records daily' (no timeframe given, implying a longer streak); the sentence invents a specific 'four-year-high' qualifier that appears nowhere in any source file, changing a figure/claim precision that matters."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+   "span": "reflecting investor expectations that the Strait of Hormuz may well reopen in the coming months and bring down the price of oil",
+   "why": "DB frames the entire dislocation as resting on whether the Strait actually reopens; the sentence correctly identifies that as the invalidating condition for the trade."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15445__what-are-the-biggest-market-dislocations-september-2026.txt",
+   "span": "the 6-month Brent future is notably lower, at $83.2/bbl, reflecting investor expectations that the Strait of Hormuz may well reopen in the coming months",
+   "why": "The $83.20 six-month-forward figure is exact; 'rolls into March' is the correct calendar read of a 6-month future dated 7 Sept 2026, and $USO is a standard WTI-tracking proxy consistent with the pulse's cashtag convention rather than an invented fact."
+  },
+  {
+   "id": "s5",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "n/a",
+   "why": "No file in the provided source set discusses an 'AI trade' rotation from capacity-builders to companies charging for compute, or an electricity-cost framing of that shift; not a single source document contains this content."
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "n/a",
+   "why": "Searched the full provided source list for 'moat', '$NOW', '$TEAM', '$CRM', '$NVDA' AI-semis framing \u2014 no matches. The only Morgan Stanley file in the set (15480, Fed ambiguity) never mentions AI software/semis names or a moat thesis."
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "n/a",
+   "why": "'Broadcom' and 'SNOW'/'Snowflake' do not appear anywhere in the provided source-text files for 2026-09-07 or 2026-09-08; the 5.4% AI-software move and the 36%/31% Snowflake revenue-growth figures have no supporting document in this set."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15443__the-warsh-dilemma.txt",
+   "span": "Many pundits believe Warsh can't hike because it would annoy the president... it kills this credibility narrative and ends months of speculation about whether Warsh is a sock puppet",
+   "why": "The entire piece's thesis is that the September decision is a referendum on Fed independence/credibility rather than data, explicitly invoking the president and 'blatant politicization of the Fed since 2025' \u2014 a fair plain-English translation of that stance."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-07/15439__db-early-morning-reid-macro-strategy.txt",
+   "span": "payrolls up by +162k in August (vs. +55k expected). In addition, there were +55k of upward revisions to the previous two months",
+   "why": "Exact match on the print, the consensus figure, and the prior-months revision, correctly attributed to Deutsche Bank; the 60% hike-odds figure is separately confirmed in Morgan Stanley's 15480 ('Markets are pricing in 60% odds of a September rate hike')."
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "n/a",
+   "why": "No source ties a specific 0.2%-core-CPI threshold to an unwind of Fed-hike pricing and a pullback in 30-year Treasury yields; DB's file gives a +0.21% core CPI expectation but never states this causal mechanism or outcome."
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "n/a",
+   "why": "No file in the provided set mentions betting-market odds on House/Senate control, or the historical stat on S&P 500 returns under divided vs. single-party Congress since 1950; not attributable to JPMorgan or anyone else in this source set."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15484__global-markets-strategy-regional-calls-non-us-is-ahead-so-fa.txt",
+   "span": "Crowded positioning, full valuations and AI commoditization risk, may not be regional outperformer",
+   "why": "JPMorgan's own regional-call table marks the US Neutral on crowding/full valuations while showing non-US 2026 EPS growth (+36%) outpacing the US (+32%) \u2014 supporting both halves of the 'fully owned / growth moved offshore' framing."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15484__global-markets-strategy-regional-calls-non-us-is-ahead-so-fa.txt",
+   "span": "Valuations are also at a record discount, at 10x forward P/E versus approximately 18x for DM. This represents a 45% discount... around $75bn already recorded... +4%",
+   "why": "Every figure (10x vs 18x, 45% discount, $75bn EM inflow, 4% non-US outperformance YTD) is matched exactly in the JPMorgan note, correctly attributed."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-08/15484__global-markets-strategy-regional-calls-non-us-is-ahead-so-fa.txt",
+   "span": "if the Iran conflict not dramatically re-escalating, non-US stocks could finish ahead of the US, for [a 2nd consecutive year]... Rising bond yields... are [a headwind]",
+   "why": "JPMorgan explicitly conditions continued non-US outperformance on the Iran conflict not re-escalating and separately flags rising bond yields as a headwind/risk, matching the sentence's invalidation framing."
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none",
+   "span": "n/a",
+   "why": "JPMorgan's note never names $EEM or $EFA (or any ETF ticker) as the vehicle for this call; the ETF equities section only discusses generic ETF-related disclosures, not these specific tickers."
+  }
+ ],
+ "faithful": 8,
+ "distorted": 1,
+ "unsupported": 6,
+ "faithful_rate": 0.533,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}
