@@ -212,17 +212,56 @@ def test_the_invention_this_guard_exists_for_still_gets_caught():
     assert FP.check(bad, "the chain is quiet into the print").action == "all-unsourced"
 
 
-def test_percent_tolerance_is_loose_enough_to_pass_a_nearby_number():
-    """NOT the behaviour anyone wants, pinned so the next person sees it.
-    _close() carries a flat 0.06 floor, and a percentage also compares as
-    its /100 form, so any two percentages within 6 POINTS of each other
-    match: 0.102 vs 0.061 differ by 0.041. An answer saying 10.2% is
-    therefore "sourced" by evidence saying anything from about 4% to 16%.
-    Predates the 2026-09-08 contract-notation fix and is independent of
-    it; listed in CLAUDE.md's TODO."""
+def test_two_percentages_six_points_apart_are_not_the_same_figure():
+    """The 0.06 floor's blind spot, closed 2026-09-08. A percentage is
+    compared in its /100 form too, so 10.2% and 6.1% became 0.102 and
+    0.061, which are 0.041 apart and sat inside the old flat floor. The
+    guard called an invented figure sourced by any number within six
+    points of it."""
     bad = "→ Historical absolute moves average **10.2%** across the prior 12 quarters."
-    assert FP.check(bad, "the chain shows a 6.1% implied move").action == "none"
-    assert FP.check(bad, "the chain shows a 45% implied move").action == "all-unsourced"
+    assert FP.check(bad, "the chain shows a 6.1% implied move").action == "all-unsourced"
+    assert FP.check(bad, "the chain shows a 14.9% implied move").action == "all-unsourced"
+    assert FP.check(bad, "the chain shows a 10.2% implied move").action == "none"
+
+
+def test_an_answer_that_rounded_its_source_still_matches():
+    """What the floor was there for, and why a bare relative rule cannot
+    replace it: half a percent of 8.2 is 0.041, but writing 8.2 only
+    claims the source was somewhere in [8.15, 8.25). The slack comes
+    from the digits the answer actually wrote."""
+    assert FP.unsourced_figures("the move was 8.2%", "implied 8.15%")[1] == []
+    assert FP.unsourced_figures("21.4 pts", '{"pts": 21.36}')[1] == []
+    assert FP.unsourced_figures("$2.46B revenue", '{"revenue": 2460000000}')[1] == []
+    # and the slack is exactly that, not a licence for the next digit
+    assert [f.token for f in
+            FP.unsourced_figures("the move was 8.2%", "implied 8.4%")[1]] == ["8.2%"]
+
+
+def test_precision_travels_with_the_scaled_form_of_a_figure():
+    """8.1% written to a tenth of a point is known to a ten-thousandth
+    once it is compared as 0.081, not to a tenth."""
+    assert FP.unsourced_figures("an 8.1% move", '{"implied_move": 0.0812}')[1] == []
+    assert [f.token for f in
+            FP.unsourced_figures("an 8.1% move", '{"implied_move": 0.061}')[1]] == ["8.1%"]
+
+
+def test_close_is_relative_plus_the_written_precision():
+    assert FP._close(21.4, 21.36)
+    assert FP._close(137.1, 137.12)
+    assert FP._close(8.1, 8.10)
+    assert FP._close(2.46e9, 2.4605e9)
+    assert not FP._close(0.102, 0.061)     # the incident
+    assert not FP._close(0.05, 0.09)       # a small value keeps its own scale
+    assert not FP._close(0.0025, 0.0031)
+    assert FP._close(8.2, 8.15, half_unit=0.05)
+    assert not FP._close(8.2, 8.15)
+
+
+def test_half_unit_reads_the_written_precision():
+    assert FP._half_unit("8.2%") == 0.05
+    assert FP._half_unit("21.36") == 0.005
+    assert FP._half_unit("$2.46B") == 0.005
+    assert FP._half_unit("350") == 0.5
 
 
 if __name__ == "__main__":

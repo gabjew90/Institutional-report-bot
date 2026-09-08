@@ -120,20 +120,34 @@ def extract_figures(text: str) -> list[Figure]:
     return out
 
 
-def _variants(f: Figure) -> list[float]:
-    """The numeric forms a source could carry the same figure in."""
+def _variants(f: Figure) -> list[tuple[float, float]]:
+    """The numeric forms a source could carry the same figure in, each
+    with the MULTIPLIER that produced it. The multiplier is what lets a
+    tolerance derived from the written figure travel with it: 8.1% is
+    written to a tenth of a point, so its 0.081 form is known to a
+    ten-thousandth, not to a tenth."""
     v = f.value
-    vs = [v]
+    vs = [(v, 1.0)]
     if f.unit == "%":
-        vs += [v / 100.0]            # 8.1% stored as 0.081
+        vs += [(v / 100.0, 0.01)]            # 8.1% stored as 0.081
     elif f.unit == "":
-        vs += [v * 100.0]            # 0.081 written as 8.1
+        vs += [(v * 100.0, 100.0)]           # 0.081 written as 8.1
     elif f.unit in _SCALE:
-        vs += [v * _SCALE[f.unit]]   # 2.46B stored as 2460000000 or 2460 (millions)
-        vs += [v * _SCALE[f.unit] / 1e6]
+        sc = _SCALE[f.unit]
+        vs += [(v * sc, sc)]                 # 2.46B as 2460000000
+        vs += [(v * sc / 1e6, sc / 1e6)]     # or as 2460 (millions)
     elif f.unit == "bp":
-        vs += [v / 100.0, v / 10000.0]
+        vs += [(v / 100.0, 0.01), (v / 10000.0, 0.0001)]
     return vs
+
+
+def _half_unit(token: str) -> float:
+    """Half of the last digit the answer actually wrote: 8.2 was rounded
+    from somewhere in [8.15, 8.25), so 0.05 is the honest slack. A
+    figure written without a decimal point claims whole-number
+    precision."""
+    m = re.search(r"\d+\.(\d+)", token or "")
+    return 0.5 * (10.0 ** -len(m.group(1))) if m else 0.5
 
 
 def evidence_values(evidence: str) -> list[float]:
@@ -167,10 +181,32 @@ def evidence_values(evidence: str) -> list[float]:
     return vals
 
 
-def _close(a: float, b: float) -> bool:
+def _close(a: float, b: float, half_unit: float = 0.0) -> bool:
     """Rounding-tolerant equality: 21.4 vs 21.36, 137.1 vs 137.12,
-    8.1 vs 8.10. Half a percent of the value, floor 0.06."""
-    return abs(a - b) <= max(0.005 * abs(a), 0.06)
+    8.1 vs 8.10, 8.2 vs 8.15.
+
+    Two slacks and no constant. Half a percent of the larger side covers
+    a source quoted at a different scale. `half_unit` covers the answer
+    having rounded: it is half the last digit the answer wrote (see
+    _half_unit), scaled by whatever multiplier produced the variant
+    being compared.
+
+    This carried a flat 0.06 floor until 2026-09-08, and the floor was
+    the guard's blind spot rather than a detail. A percentage is
+    compared in its /100 form as well as its face form, so two
+    percentages six points apart have /100 forms 0.06 apart and the
+    floor waved them through: an answer claiming 10.2% was "sourced" by
+    evidence saying 6.1%, or by anything from roughly 4% to 16%. That is
+    most of the range a figure check exists to police, and the same
+    arithmetic covered every small decimal the sandbox produces.
+
+    A smaller constant would only move the hole, and a purely relative
+    rule is too tight in the other direction: half a percent of 8.2 is
+    0.041 while rounding to one decimal is honest to 0.05, so real
+    answers would start losing lines. Precision is a property of the
+    figure, so it is read off the figure."""
+    return abs(a - b) <= max(
+        0.005 * abs(a), 0.005 * abs(b), abs(half_unit), 1e-9)
 
 
 def unsourced_figures(answer: str, evidence: str) -> tuple[list[Figure], list[Figure]]:
@@ -178,7 +214,9 @@ def unsourced_figures(answer: str, evidence: str) -> tuple[list[Figure], list[Fi
     ev = evidence_values(evidence)
     missing = []
     for f in figs:
-        if not any(_close(var, e) for var in _variants(f) for e in ev):
+        hu = _half_unit(f.token)
+        if not any(_close(var, e, hu * mult)
+                   for var, mult in _variants(f) for e in ev):
             missing.append(f)
     return figs, missing
 

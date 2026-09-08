@@ -2028,3 +2028,37 @@ That is most of the range this guard is supposed to police. Pinned in
 the arithmetic, and added to the TODO rather than changed at speed:
 the floor exists for real rounding cases and needs a unit-aware
 comparison, not a smaller constant.
+
+## 2026-09-08 — The provenance guard's tolerance was six percentage points wide
+
+Owner: "yeah def take another look at the 0.06 thing".
+
+`_close()` allowed `max(0.005 * |a|, 0.06)`. The flat floor was the
+problem, and it was worse than it looks, because a percentage is
+compared in its /100 form as well as its face form. Two percentages six
+points apart have /100 forms 0.06 apart, so they matched. An answer
+claiming a 10.2% historical move was "sourced" by evidence saying 6.1%,
+or anything from roughly 4% to 16%. The guard exists to catch invented
+figures and it was accepting most of the plausible range for one. The
+same arithmetic covered every small decimal the sandbox produces.
+
+The first thing I tried was deleting the floor and going purely
+relative. That closes the hole and breaks honest answers: half a
+percent of 8.2 is 0.041, while an answer that writes 8.2 has only
+claimed its source was in [8.15, 8.25). Real rounding is 0.05 there, so
+lines with correctly rounded figures would start disappearing. A
+smaller constant has the same shape of problem, one hole moved.
+
+Precision is a property of the figure, so it is now read off the
+figure. `_half_unit()` takes half the last digit the answer wrote
+(8.2 -> 0.05, 21.36 -> 0.005, a bare integer -> 0.5), `_variants()`
+carries the multiplier that produced each scaled form, and the
+tolerance for a comparison is `max(half a percent of either side,
+half_unit * that multiplier)`. So 8.1% is allowed a tenth of a point on
+its face and a ten-thousandth on its 0.081 form, which is exactly what
+writing "8.1%" claims.
+
+Verified against all three real incidents: the bulch LULU answer still
+strips its invented 10.2% history, the SansDE answer is still entirely
+unsourced, and Abe's book still survives intact. 380 unit tests, 157
+smokes.
