@@ -2310,3 +2310,61 @@ Owner declined the second half (a mandatory projections prefetch when an
 image is attached in the football channel); it was built and reverted
 unmerged. The model reaches for the topic itself, now that the injected
 block and the tool doc both tell it to.
+
+## 2026-09-09 — Why metric 1 keeps failing: readers never agree on a label
+
+Measured, not inferred. For every pilot day, how many topic labels are
+used by MORE THAN ONE document, and how much card mass sits under one:
+
+| day | docs | cards | labels | shared labels | mass under a shared label | cards/label |
+|---|---|---|---|---|---|---|
+| 09-02 | 23 | 536 | 235 | 3% | 6% | 2.3 |
+| 09-03 | 23 | 911 | 270 | 11% | 36% | 3.4 |
+| 09-04 | 24 | 693 | 299 | 7% | 18% | 2.3 |
+| 09-06 | 18 | 589 | 114 | 1% | 5% | 5.2 |
+| 09-07 | 6 | 237 | 63 | 3% | 6% | 3.8 |
+| 09-08 | 16 | 591 | 124 | 2% | 7% | 4.8 |
+| 09-09 | 37 | 1304 | 304 | 8% | 22% | 4.3 |
+
+Between 64% and 95% of card mass every day sits under a label no other
+document ever used. The soft grouping key does almost no grouping.
+
+That is structural, not a prompt defect, and it follows from the design:
+each document is read in its own session and the reader invents a
+free-text `topic` blind to every label every other reader chose. Two
+readers handed the same Fed-hiking story write "fed rate hike risk" and
+"fed rate hike pricing" and the ledger has no way to know they are one
+subject. Tracing the graders' own fragmentation sets through the card
+files shows both mechanisms: Hormuz and JPM EM were ONE document split
+three ways (a prompt problem), while Fed, ECB and AI-capex financing
+were three or four documents each coining their own (an architecture
+problem).
+
+The 09-05 topic rewrite did work on the half it addressed. On
+comparable corpora, labels per day fell (299 on 09-04 with 693 cards ->
+124 on 09-08 with 591) and cards per label roughly doubled (2.3 -> 4.8).
+Within-document consolidation improved; cross-document agreement did
+not move, because no per-document prompt can move it.
+
+Two honest responses, both owner calls, both still free because DAY1 is
+not set:
+
+1. **A shared vocabulary at read time.** A committed list of ~40 market
+   subjects every reader picks from, plus a required `other:<free text>`
+   escape, with the ledger reporting how much mass lands in `other:` so
+   a bad vocabulary shows up immediately. This is NOT the post-hoc
+   normalization the spec deletes (no embeddings, no cosine, no merge
+   map) — it makes labels agree at creation instead of merging them
+   afterwards. It does change the reader contract the spec describes.
+2. **Reconsider what metric 1 gates.** Spec section 6 already decides
+   that topic labels are SOFT and only warn, while instruments and
+   figures are hard keys that block, precisely because labels "will
+   fragment sometimes". Section 8 then makes label fragmentation a
+   pass/fail criterion with a 10% cap. Those two sections disagree, and
+   they have disagreed since the spec was written. Worth resolving
+   deliberately rather than discovering it at day 10.
+
+Not resolved here. Changing a frozen metric to fit a result is the
+wrong move and I am not proposing it as a fix; the tension is real and
+predates any measurement, which is why it goes to the owner before the
+clock starts rather than after.
