@@ -1,0 +1,533 @@
+{
+ "brief": "JPMorgan Market Intelligence moves to a Tactically Cautious / Neutral stance: fundamentals stay strong but six near-term variables should chop markets sideways for 2-3 weeks. Warsh's comments make September a live meeting, with CPI on Sep 11 the more important input than Friday's payrolls because Warsh views the US as at full employment. Positioning gives no clean read and implies 3-4 choppy weeks, post-Labor Day issuance widens credit spreads which pressures equities, September screens as the worst SPX month, Momentum (JPMPURE) is down over 21% and Classic Momentum (JPPQMO) nearly 34% from June highs versus a typical 10-15% drawdown, and AVGO earnings may be spectacular without lifting AI, Memory and Semis. That argues for reducing net-longs and potentially a dollar-neutral or market-neutral approach. Today: SPX -0.6%, WTI +2.6% to $93.39 on Houthi strikes and US strikes near Kharg Island, SOXX +1.6% on OpenAI's Astra release while software fell 2.3%. The Aug 31 menu starts long NDX versus short RTY.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan Market Intelligence is moving to a Tactically Cautious / Neutral view, holding that equity fundamentals remain strong while near-term variables chop markets sideways.",
+   "anchor": "We are moving to a Tactically Cautious / Neutral view, which is to say that Equity",
+   "topic": "JPM tactical stance",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan expects the next 2-3 weeks to be choppy while economic and earnings fundamentals remain intact.",
+   "anchor": "In summary, we think market fundamentals (econ & earnings) remain intact but see the",
+   "topic": "JPM tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says the tactical view argues for reducing net-longs and potentially adopting a dollar-neutral or market-neutral approach.",
+   "anchor": "reducing net-longs and potentially adopting a $-neutral or market-neutral approach.",
+   "topic": "JPM tactical stance",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 2-3 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan flags that post-Labor Day issuance historically spikes in the two weeks after the holiday, widening credit spreads and pressuring equities.",
+   "anchor": "is a spike in issuance in the two weeks post-Labor Day driving spreads wider which can",
+   "topic": "JPM tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "two weeks post-Labor Day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says Warsh's comments make the September FOMC meeting a live meeting for a hike.",
+   "anchor": "comments now make Sep a live meeting. What is unclear is if the Fed hikes, what is the",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September meeting"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says the scale and length of any hiking cycle is unclear, including whether the Fed goes in September and December or delivers 50bp in September.",
+   "anchor": "scale / length of the hiking cycle, e.g., would he go in Sep / Dec and conclude the hikes or",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Sep and Dec meetings"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan calls NFP and CPI the critical Fed inputs, with the Sep 11 CPI print the more important of the two because Warsh views the US as at full employment.",
+   "anchor": "potentially go 50bp in Sep? NFP and CPI are the critical inputs with CPI on Sep 11 the",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep 11"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says positioning is not giving a clean read on market direction and history suggests a choppy next 3-4 weeks.",
+   "anchor": "DR is that positioning is not giving a clean read on market direction and history suggests",
+   "topic": "hedge fund positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 3-4 weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's Positioning Intel team flags that a sharp rebound in the Momentum factor is unlikely given recent activity.",
+   "anchor": "The team also have flagged that a sharp rebound in",
+   "topic": "hedge fund positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's John Schlegel highlighted a re-grossing in the momentum trade last week, with hedge funds adding to gross exposure on 4 of the last 5 days.",
+   "anchor": "momentum trade last week (HFs added to gross 4 of the last 5 days last week). Our",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's flows show fairly aggressive buying in semiconductors and optical names, consistent with tech price action.",
+   "anchor": "FLOWS are consistent with price action in tech w/ fairly aggressive buying in semis and",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's flows show shorts pressing enterprise application software and internet names.",
+   "anchor": "optical while shorts are pressing enterprise app software and internet names. Activity",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "The JPMPURE Momentum index is down more than 21% from its June all-time high.",
+   "anchor": "Momentum (JPMPURE Index) is down more than 21% from its June ATH",
+   "topic": "momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since June"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "The JPPQMO Classic Momentum index is down nearly 34% from its June all-time high.",
+   "anchor": "Momentum (JPPQMO Index) is down nearly 34% from its June ATH. These moves fall",
+   "topic": "momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since June"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says the momentum drawdowns fall outside the typical 10-15% drawdown range.",
+   "anchor": "outside the typical drawdown ranges of 10-15%.",
+   "topic": "momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says Broadcom earnings may prove spectacular yet fail to drive meaningful stock appreciation in AI, Memory and Semis.",
+   "anchor": "spectacular and fail to drive meaningful stock appreciation in AI / Memory / Semis.",
+   "topic": "AI compute bottleneck trade",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "OpenAI's Astra release drove AI compute bottleneck trades higher, with SOXX up 1.6% while software fell 2.3%.",
+   "anchor": "higher across AI compute bottleneck trades: SOXX added 1.6%; software fell 2.3%.",
+   "topic": "AI compute bottleneck trade",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's Brian Heavey says OpenAI's Astra release is the driving force refocusing investors on the AI compute bottleneck trade.",
+   "anchor": "the tech community) the driving force as investors now refocus on the AI compute",
+   "topic": "AI compute bottleneck trade",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "The Aug 31 monetization menu starts with a long NDX versus short RTY position.",
+   "anchor": "MONETIZATION MENU (AUG 31) \u2013 We start with a +NDX vs. -RTY position. Within",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [
+    "QQQ",
+    "IWM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "Within tech, J.P. Morgan likes Mag7 as the favored near-term play given the inability of AI, Memory and Semis to sustain a bid.",
+   "anchor": "Tech, we like Mag7 as the favored near-term play given the inability for AI / Memory /",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says software remains attractive, especially if semis continue to fall.",
+   "anchor": "Semis to sustain a bid. Software remains attractive especially if Semis continue to fall.",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan thinks SMID-caps are likely to underperform as part of the tactical call.",
+   "anchor": "Generally, we think that SMID-caps are likely to underperform as part of this tactical call.",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan likes Large-Cap Banks on the economic growth story plus loose financial conditions.",
+   "anchor": "we like Large-Cap Banks given the economic growth story accompanied by",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan likes Consumer Discretionary if energy prices move lower.",
+   "anchor": "loose financial conditions and Consumer Discretionary if energy prices move lower.",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "As hedges J.P. Morgan likes shorting credit ETFs and buying VIX products.",
+   "anchor": "As hedges we like shorting Credit ETFs and buying VIX products.",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says the Dollar Debasement trade may struggle until the Sep 16 Fed meeting, so switching cash positions into derivative positions makes sense.",
+   "anchor": "through the Fed Meeting on Sep 16, the Dollar Debasement trade may struggle, so",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "until Sep 16"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "In the superseded Aug 24 menu, J.P. Morgan favored spreading barbell risk from AI, Memory and Semis to include Mag7 and Software.",
+   "anchor": "AI/Memory/Semis to include Mag7/Software. Within Cyclicals, spreading risk from",
+   "topic": "JPM monetization menu",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "In the superseded Aug 24 menu, J.P. Morgan said precious metals remain attractive.",
+   "anchor": "which may extend in the near-term. Regardless, Precious Metals remain attractive. For",
+   "topic": "precious metals",
+   "status": "target",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "Gold closed up 11bps at $4,361 and silver fell 47bps to $65.44.",
+   "anchor": "$2.92, UK NatGas +359bps to \u00a31.8880, Gold +11bps to $4,361, Silver -47bps to $65.44,",
+   "topic": "precious metals",
+   "status": "released",
+   "instruments": [
+    "GLD",
+    "SLV"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "September screens as the worst performing month for the SPX, followed by Q4 as the strongest quarter of the year.",
+   "anchor": "screens as the worst performing month for the SPX followed by Q4 being the strongest",
+   "topic": "midterm election seasonality",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September and Q4"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "Since 1990 the SPX rallied 5.4%, 11.4%, 12.5% and 14.7% at 3, 6, 9 and 12 months after midterm election days.",
+   "anchor": "Since 1990, the SPX rallied +5.4%, +11.4%, +12.5%, and +14.7% at 3 month",
+   "topic": "midterm election seasonality",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 to 12 months post-election"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says Healthcare tends to be the best performing sector into midterm elections.",
+   "anchor": "Within Defensives, Healthcare tends to be the best performing sector into midterms. We",
+   "topic": "midterm election seasonality",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into midterms"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "WTI added 2.6% to $93.39 at the close, its highest since late July.",
+   "anchor": "US/IRAN \u2013 WTI added 2.6% today to $93.39 at the close, the highest since late July,",
+   "topic": "oil and Middle East",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "Saudi Arabia said operations at several energy facilities were halted by Houthi attacks, and US officials told a Fox News reporter the US hit Iranian targets near Kharg Island.",
+   "anchor": "facilities were halted by Houthi attacks; (ii) US officials told a Fox News reporter that the",
+   "topic": "oil and Middle East",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "Chinese crude oil imports rebounded 6.2% in August versus July.",
+   "anchor": "rebounded (+6.2% in August vs. July).",
+   "topic": "oil and Middle East",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "US equities closed lower with SPX -0.6%, NDX -0.1% and RTY -0.5%.",
+   "anchor": "SPX -0.6%, NDX -0.1%, RTY -0.5%. WTI +169bps at $93.03, NatGas -198bps to",
+   "topic": "equity session close",
+   "status": "released",
+   "instruments": [
+    "SPY",
+    "QQQ",
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "The 10-year Treasury yield stood at 4.788% and the VIX at 15.72.",
+   "anchor": "10Y @ 4.788%, and VIX @ 15.72.",
+   "topic": "equity session close",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "European and UK markets closed flat, with UKX -0.1%, SX5E +0.1%, SXXP -0.0% and DAX +0.0%.",
+   "anchor": "UKX -0.1%, SX5E +0.1%, SXXP -0.0%, DAX +0.0%.",
+   "topic": "equity session close",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "The NFIB Small Business Optimism index printed 98.7 versus 99.3 survey and 99.8 prior.",
+   "anchor": "SMALL BIZ SURVEY \u2013 The Small Business Optimism index hit 98.7 vs. 99.3 survey",
+   "topic": "small business survey",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "The share of owners naming labor quality or availability as their single most important problem fell 4% to 23%.",
+   "anchor": "identified \u201clabor quality or availability\u201d as their single most important problem was down",
+   "topic": "small business survey",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence | Afternoon Briefing",
+   "claim": "A net 28% of small business owners plan to increase prices over the next three months, unchanged from July and above the net 22% historical average.",
+   "anchor": "4% to 23%. On inflation (here): \u201clooking forward to the next three months, a net 28%",
+   "topic": "small business survey",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next three months"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15675__us-market-intelligence-afternoon-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 41,
+  "matched": 41,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
