@@ -1,0 +1,545 @@
+{
+ "brief": "Goldman raises its HOOD 12-month price target 15% to $142 from $124 and stays Buy, on a sensitivity analysis of Rothera, the 45/45/10 HOOD/SIG/MIAX prediction markets exchange JV launched late May. The argument: Rothera has already reached the 3rd to 5th largest DCM by notional volume and produced $17mn of revenue in 41 days of 2Q26, roughly $151mn annualized at a 45-46% pre-tax margin, therefore SIG market making plus HOOD's ~14mn monthly actives plus the lowest DCM fee rates can deepen liquidity, draw other FCMs and lift both volume and take rate, therefore margins can scale toward the 55-70% of established exchanges. Applied to 2027E: base case $307mn revenue and $5.1-5.4bn equity value, bull $359-906mn and $6.7-19.5bn (32-258% upside), bear $91-242mn and $1.0-3.6bn (35-79% downside). Because HOOD trades at 39.3x FY+2 GSe P/E, the 87th percentile since 2021, backing Rothera out leaves the rest of HOOD at 39.2-39.3x in the base case and 37.0-38.9x in the bull, which Goldman reads as more attractive. GS sits 10%/14% above consensus on 2027E/28E prediction markets revenue and 3% above the Street on total revenue. Goldman takes no view on the outstanding prediction markets litigation.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman raises its 12-month HOOD price target 15% to $142 from $124 and stays Buy rated.",
+   "anchor": "12-month PT rising 15% to $142 (from $124). We remain Buy rated on HOOD.",
+   "topic": "HOOD valuation and estimates",
+   "status": "target",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman raises its HOOD Q5-Q8 P/E multiple by 5.0x to 41.5x to account for higher market multiples.",
+   "anchor": "We increase our Q5-Q8 P/E multiple by 5.0x to 41.5x to account for higher market multiples",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "HOOD trades at 39.3x FY+2 Goldman-estimated P/E, the 87th percentile of its P/E since 2021.",
+   "anchor": "HOOD currently trades at 39.3x FY+2 GSe P/E, or a 87th %ile P/E since 2021",
+   "topic": "HOOD valuation and estimates",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Backing out base case Rothera equity value, the balance of HOOD trades at 39.2-39.3x FY+2 Goldman-estimated P/E.",
+   "anchor": "remaining HOOD equity value (based on current HOOD market cap) trades at only 39.2-39.3x FY+2 GSe P/E",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "In Goldman's bull case the balance of HOOD ex-Rothera trades at 37.0-38.9x FY+2 P/E, the 83rd to 86th percentile.",
+   "anchor": "In our bull case, the balance of HOOD would trade at only 37.0-38.9x FY+2 GSe P/E, or 83th-86th %ile levels",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "In Goldman's bear case the balance of HOOD ex-Rothera trades at 39.6-39.8x FY+2 P/E, the 87th to 88th percentile.",
+   "anchor": "In our bear case, the balance of HOOD would trade at 39.6-39.8x FY+2 GSe P/E, or 87th-88th %ile levels",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman models a 22% 2026E-28E HOOD top-line CAGR versus 14% for broker peers.",
+   "anchor": "we model a 2026E-28E top-line CAGR of 22%, vs. 14% for broker peers",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026E-2028E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman's 2027E/28E HOOD total prediction markets net revenue forecasts of $943mn/$1,150mn are 10%/14% above consensus.",
+   "anchor": "$943mn/1,150mn of total prediction markets net revenue reflect 10%/14% upside to consensus",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027E-2028E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman's 2027E and 2028E HOOD total revenue forecasts are 3% above the Street.",
+   "anchor": "Our 2027E/28 total revenue forecasts are 3% above the Street",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E-2028E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman projects total prediction markets to be 12%/14%/15% of HOOD's total 2026E/27E/28E revenue.",
+   "anchor": "We project total prediction markets to account for 12%/14%/15% of total HOOD 2026E/27E/28E revenue",
+   "topic": "HOOD valuation and estimates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026E-2028E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Rothera has been the 3rd to 5th largest global prediction markets exchange by trading volume since shortly after its May launch.",
+   "anchor": "has been the 3rd-5th largest global prediction markets exchange by trading volume",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Rothera generated $17mn of revenue in its 41 days of operation in 2Q26, or $151mn annualized.",
+   "anchor": "revenue in its 41 days of operation in 2Q26, or $151mn (on an annualized basis)",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman attributes Rothera's step up to 2bn July contracts and fall to 1bn in August to the World Cup and its conclusion.",
+   "anchor": "drove the large step up in July volumes to 2bn, and why volumes have since fallen to 1bn in August",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "As of August 2026 Rothera had 1% prediction markets share, with volumes at 2% of the Polymarket/Kalshi average.",
+   "anchor": "As of August, Rothera had 1% market share, with its volumes",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman estimates ~98% of Rothera's August contract volume was sports event contracts.",
+   "anchor": "We estimate that ~98% of its August contract volume was within sports event contracts",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Rothera ownership is split 45%/45%/10% across HOOD, SIG and MIAX, with HOOD the controlling partner.",
+   "anchor": "Rothera ownership is split 45%/45%/10% across HOOD/SIG/MIAX, with HOOD the controlling partner",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "HOOD consolidates 100% of Rothera revenue and expenses and distributes 55% of Rothera net income as non-controlling interest.",
+   "anchor": "HOOD consolidates 100% of Rothera revenue and expenses and distributes 55% of Rothera net income through non-controlling interest",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "HOOD's retail customer base of roughly 14mn monthly active users is a source of Rothera liquidity.",
+   "anchor": "HOOD's large retail customer base (~14mn monthly active users)",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Annualizing Rothera's first 41 days of revenue against HOOD's guided $50mn of 2026E Rothera expense implies a 46% pre-tax margin.",
+   "anchor": "annualizing Rothera revenue from the first 41 days of operation implies a 46% pre-tax margin",
+   "topic": "Rothera exchange ramp",
+   "status": "released",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2026E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman believes Rothera's margins could approach the 55-70% range of established derivatives exchange peers as it scales.",
+   "anchor": "we believe margins could approach the ~55-70% range of established derivatives exchange peers with greater scale",
+   "topic": "Rothera exchange ramp",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "over time"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "In Goldman's base case Rothera generates $307mn of 2027E revenue, 5% of HOOD 2027E revenue, at 1% market share.",
+   "anchor": "we estimate $307mn of Rothera revenue (5% of HOOD 2027E GSe total revenue), equating to 1% market share",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman's base case values Rothera at $5.1-5.4bn of hypothetical equity value, or $2.50-2.69 per HOOD share.",
+   "anchor": "we estimate that this equates to $5.1-5.4bn of hypothetical equity value, or $2.50-2.69 on a per share basis to HOOD",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "In Goldman's bull case Rothera generates $359-906mn of 2027E revenue at 2-4% market share.",
+   "anchor": "we estimate $359-906mn of Rothera revenue (5-13% of HOOD 2027E GSe total revenue), equating to 2-4% market share",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman's bull case values Rothera at $6.7-19.5bn of hypothetical equity value, or $3.30-9.64 per HOOD share.",
+   "anchor": "that this equates to $6.7-19.5bn of hypothetical equity value, or $3.30-9.64 per share attributed to HOOD",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "In Goldman's bear case Rothera generates $91-242mn of 2027E revenue at 0.5-1% market share.",
+   "anchor": "we estimate $91-242mn of Rothera revenue (1-4% of HOOD 2027E GSe total revenue), equating to 0.5-1% market share",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman's bear case values Rothera at $1.0-3.6bn of hypothetical equity value, or $0.52-1.76 per HOOD share, 35-79% below the base case.",
+   "anchor": "this contributes $1.0-3.6bn of hypothetical equity market value, or $0.52-1.76 per share attributable to HOOD",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman's base case assumes Rothera reaches 5% prediction markets market share by 2027E.",
+   "anchor": "This would imply Rothera reaches 5% prediction markets market share",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman projects Rothera at 2%/5%/6% of HOOD's 2026E/27E/28E total revenue.",
+   "anchor": "We project Rothera to account for 2%/5%/6% of HOOD 2026E/27E/28E revenue",
+   "topic": "Rothera valuation scenarios",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026E-2028E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman estimates HOOD customers now pay an all-in prediction markets fee rate of 1.31-1.42%, against a flat 2% previously.",
+   "anchor": "this results in an estimated all-in fee rate that customers pay of 1.31-1.42%, vs. a flat 2% fee rate previously",
+   "topic": "prediction markets fee rates",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman estimates HOOD customers save 29-34% all-in on FCM plus DCM fees under the new pricing with execution on Rothera.",
+   "anchor": "customers could save 29-34% all-in across FCM + DCM fees under the new HOOD FCM pricing + executing on Rothera",
+   "topic": "prediction markets fee rates",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Adding Rothera DCM fees raises HOOD's all-in gross prediction markets fee rate 5-14% to 1.31-1.42% from about 1.25%.",
+   "anchor": "HOOD's all-in gross prediction markets fee rate rises 5-14% to 1.31-1.42% relative to the previous fee rate of ~1.25%",
+   "topic": "prediction markets fee rates",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "After the Rothera non-controlling interest distribution, HOOD's effective all-in prediction markets fee rate could fall 5-12% to 1.11-1.19%.",
+   "anchor": "we estimate HOOD's effective all-in prediction markets fee rate could decline 5-12% (from ~1.25% to 1.11-1.19%)",
+   "topic": "prediction markets fee rates",
+   "status": "forecast",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman estimates Rothera's current two-sided fee rate range at 0.79-0.90%.",
+   "anchor": "current two-sided fee rate range (reflecting that each contract has a buyer fee and a seller fee) at 0.79-0.90%",
+   "topic": "prediction markets fee rates",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Goldman estimates Rothera retail taker one-sided fee rates at 0.38-0.42% per $1 notional contract against 1.17-1.31% for peer exchanges.",
+   "anchor": "we estimate one-sided fee rates at ~0.38-0.42% per $1 notional contract vs. ~1.17-1.31% for peers",
+   "topic": "prediction markets fee rates",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Prediction markets and online sports betting together comprise about $18bn of 2026E revenue.",
+   "anchor": "Combined, prediction markets and the OSB industry comprise ~$18bn of 2026E revenue",
+   "topic": "prediction markets industry growth",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "Industry prediction markets revenue grew at a 417% 2024 to 2026TD annualized CAGR and Goldman forecasts 21% 2027E year-over-year growth.",
+   "anchor": "Industry predictions market revenue has grown at a 417% 2024-26TD ann. CAGR, and we forecast 21% 2027E YoY growth",
+   "topic": "prediction markets industry growth",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "The US 9th Circuit Court of Appeals ruled on August 28 that Nevada litigation against prediction markets exchange Kalshi could proceed.",
+   "anchor": "the US 9th Circuit Court of Appeals ruled on August 28th that Nevada litigation against Kalshi, a prediction markets exchange, could proceed",
+   "topic": "prediction markets regulation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Robinhood Markets Inc. (HOOD): Sensitizing growth potential and value in HOOD's scaling Rothera prediction markets exchange",
+   "claim": "An ongoing 2026 CME legal challenge disputes whether perpetual futures are futures or swaps, and a swaps classification would block them from US retail customers.",
+   "anchor": "there is an ongoing 2026 legal challenge from CME as to whether perpetual futures (perps) are futures or swaps",
+   "topic": "prediction markets regulation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15580__robinhood-markets-inc-hood-sensitizing-growth-potential-and-.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 38,
+  "matched": 38,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
