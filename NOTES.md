@@ -2160,3 +2160,47 @@ rather than spending the single allowed post-DAY1 iteration on it.
 
 Mechanism preservation was 1.00 for BOTH arms today, the first time
 production has matched the shadow.
+
+## 2026-09-09 — The filter blocks are marginal, and `empty: unknown` was useless
+
+Two more things about the empty-answer path, both found by replaying
+real logged prompts.
+
+**The block is a threshold flicker, not a content verdict.** Stripping
+the `**Voice.**` heading from the 09-07 football prompts removed 44
+characters and flipped PROHIBITED_CONTENT to a clean answer. The FSA
+prompt from 09-08 behaves the same way, and its Voice section was
+already empty ("- (not needed for this question)") because the LEAN
+profile-depth path had correctly dropped the quotes. Forty-four
+characters decide it. These prompts sit on the filter's threshold, and
+what tips them over is the surrounding profile bulk, not any one
+passage. That is the shape tier 0 of the ladder was built for on
+2026-08-04 (resend the identical prompt, which passed 5/5), so routing
+these to the ladder should recover most of them on the first rung
+rather than the fourth.
+
+Worth noting for anyone reading the earlier entry: "the Voice sections
+are the trigger" was too strong. Voice is the densest slur container
+and stripping it helps, but on the FSA prompt there was nothing left in
+Voice to strip and the block still cleared. The **Retarded takes.**
+sections carry quoted slurs too, and the honest statement is that the
+prompt is near the line and the profile block as a whole is what puts
+it there.
+
+**`empty: unknown` cost a live-API replay.** The FSA ask stamped a bare
+`empty: unknown`, meaning: no prompt_feedback, no safety rating, and
+not zero generated tokens. Three different situations produce that and
+the ask log could not tell them apart, so the only way to learn
+anything was to send the prompt to the model again. The stamp now names
+each one: `no-response` (nothing came back at all), `no-usage` (a
+response with no usage block), or `no-text-genN` with the token count,
+so a thinking-only turn reads as such. A missing response also takes
+the ladder now, since resending is the right move for it and calling it
+a spent budget is not.
+
+**Live check while writing this:** five asks in the fantasy channel in
+the last hour, all clean. The channel-aware fantasy route fired on
+both screenshot asks (`shape=fantasy -> LOCAL/FACT`, prefetching the
+Sleeper roster), "rate this parlay" and a reply both routed on their
+own, and one em-dash was caught by voice cleanup. No empty-answer
+warnings in the window at all.

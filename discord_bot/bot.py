@@ -7057,15 +7057,15 @@ async def _ask_09_rank_and_regen_guards(
         # told the asker to reword — which is why two of them recovered
         # by rewording and two gave up.
         nothing_generated = False
+        _gen_tokens = None
         try:
             _um = getattr(response, "usage_metadata", None)
             if _um is not None:
-                nothing_generated = (
-                    ((getattr(_um, "thoughts_token_count", None) or 0)
-                     + (getattr(_um, "candidates_token_count", None) or 0)) == 0
-                )
+                _gen_tokens = ((getattr(_um, "thoughts_token_count", None) or 0)
+                               + (getattr(_um, "candidates_token_count", None) or 0))
+                nothing_generated = (_gen_tokens == 0)
         except Exception:
-            nothing_generated = False
+            _um, _gen_tokens, nothing_generated = None, None, False
         log.warning(
             f"/ask: empty response.text "
             f"(finish_reason={finish_reason!r}, "
@@ -7076,12 +7076,27 @@ async def _ask_09_rank_and_regen_guards(
         # Railway's log tail rotates in about an hour; the ask log is the
         # durable record. On 2026-09-07 four asks shipped the fallback
         # and the reason was already gone by the time anyone looked.
+        # The stamp has to name the cause or it is worth nothing. On
+        # 2026-09-08 "what is FSA?" stamped a bare `empty: unknown` and
+        # the log window had rotated by the time anyone looked, so the
+        # only way to learn what happened was to replay the prompt
+        # against the live model. Every branch below is now
+        # distinguishable in the ask log itself: a response object that
+        # never arrived, one that arrived without usage, and one that
+        # generated tokens but no text (with the count, so a thinking-
+        # only turn is visible as such).
+        _no_response = response is None
         _ask_meta["empty"] = (
             prompt_block or ("safety" if safety_blocked else None)
             or ("nothing-generated" if nothing_generated else None)
-            or finish_reason or "unknown"
+            or finish_reason
+            or ("no-response" if _no_response else None)
+            or ("no-usage" if _um is None else f"no-text-gen{_gen_tokens}")
         )
-        if safety_blocked or prompt_block or nothing_generated:
+        # A turn with no response object at all is not a spent budget
+        # either, and tier 0 of the ladder (resend the identical prompt)
+        # is the cheapest correct move for it.
+        if safety_blocked or prompt_block or nothing_generated or _no_response:
             # With BLOCK_NONE on all configurable categories, this
             # is Gemini's unconfigurable hard filter (CSAM, severe
             # policy).
@@ -7163,7 +7178,7 @@ async def _ask_09_rank_and_regen_guards(
             # amputate context to find it; for a flickering block
             # the cheapest correct move is to send the same thing
             # again, so a transient block costs zero context.
-            if prompt_block or safety_blocked or nothing_generated:
+            if prompt_block or safety_blocked or nothing_generated or _no_response:
                 try:
                     log.warning(
                         "/ask: tier-0 retry — resending identical "

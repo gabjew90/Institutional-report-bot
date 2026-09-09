@@ -73,7 +73,10 @@ class _Client:
         self.aio = NS(models=_Models())
 
 
-def _run(client, meta, reason="MAX_TOKENS", response=None):
+_DEFAULT = object()
+
+
+def _run(client, meta, reason="MAX_TOKENS", response=_DEFAULT):
     return asyncio.run(B._ask_09_rank_and_regen_guards(
         _ask_meta=meta,
         _tally_retry_usage=lambda *_a, **_k: None,
@@ -89,7 +92,7 @@ def _run(client, meta, reason="MAX_TOKENS", response=None):
         images=None,
         profiles_for_prompt="",
         question="was the tcu vs michigan game one of the best playoff games",
-        response=response if response is not None else _empty_response(reason),
+        response=_empty_response(reason) if response is _DEFAULT else response,
         safety_settings=None,
         separator="",
         types=types,
@@ -188,6 +191,49 @@ def test_a_spent_budget_is_not_mistaken_for_a_block():
     assert meta["empty"] == "MAX_TOKENS"
     assert meta["empty_retry"] == "short-thinking"
     assert meta.get("filter_retry") is None
+
+
+def test_every_empty_shape_names_itself_in_the_stamp():
+    """`empty: unknown` sent one investigation to the live API because
+    the ask log could not say what had happened (2026-09-08, "what is
+    FSA?"). Each shape now names itself."""
+    cases = [
+        (NS(candidates=None,
+            prompt_feedback=NS(block_reason=NS(name="PROHIBITED_CONTENT")),
+            usage_metadata=NS(thoughts_token_count=0, candidates_token_count=0)),
+         "PROHIBITED_CONTENT"),
+        (NS(candidates=[NS(finish_reason=None, safety_ratings=[])],
+            prompt_feedback=None,
+            usage_metadata=NS(thoughts_token_count=0, candidates_token_count=0)),
+         "nothing-generated"),
+        (NS(candidates=[NS(finish_reason=NS(name="MAX_TOKENS"), safety_ratings=[])],
+            prompt_feedback=None,
+            usage_metadata=NS(thoughts_token_count=1800, candidates_token_count=3200)),
+         "MAX_TOKENS"),
+        (NS(candidates=[NS(finish_reason=None, safety_ratings=[])],
+            prompt_feedback=None, usage_metadata=None),
+         "no-usage"),
+        (NS(candidates=[NS(finish_reason=None, safety_ratings=[])],
+            prompt_feedback=None,
+            usage_metadata=NS(thoughts_token_count=329, candidates_token_count=0)),
+         "no-text-gen329"),
+    ]
+    for resp, expected in cases:
+        meta = {"guards": [], "kind": "FACT", "route": "WEB"}
+        _run(_Client("\u2192 **An answer.**"), meta, response=resp)
+        assert meta["empty"] == expected, (expected, meta["empty"])
+
+
+def test_a_missing_response_takes_the_ladder_not_the_budget_wrapper():
+    """response is None means nothing came back at all. Resending the
+    identical prompt is tier 0 of the ladder and the right move; calling
+    it a spent budget is not."""
+    meta = {"guards": [], "kind": "FACT", "route": "WEB"}
+    answer, _gm = _run(_Client("\u2192 **Recovered.**"), meta, response=None)
+    assert "circles" not in answer and "Recovered" in answer
+    assert meta["empty"] == "no-response"
+    assert meta["filter_retry"] == "same-prompt"
+    assert meta.get("empty_retry") is None
 
 
 def test_the_audit_stamp_carries_the_reason_and_the_retry():
