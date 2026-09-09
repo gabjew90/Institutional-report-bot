@@ -1,0 +1,380 @@
+{
+ "brief": "BofA's weekly systematic flows monitor reports model estimates, not a directional call. Estimated CTA equity positioning stayed broadly long, with medium- and long-term trend signals near maximum on every index tracked, so the only week-over-week change was faster models trimming Russell 2000. Because sell triggers sit far from spot, roughly 1.4 percent below in Euro Stoxx 50 up to about 4 percent in Nasdaq-100, and realized volatility is subdued, BofA sees limited risk of broad systematic deleveraging. In rates, US Treasury shorts held near max while rising German yields pushed CTAs to extend Bund shorts. In FX, trend followers sold the dollar and built EUR, GBP and AUD longs. Commodity trends firmed, led by soybeans and soybean meal, with gold's short- and medium-term signals improving even as the longest-horizon models stay short. SPX hedger gamma climbed to $10.9bn, the 94th percentile, after briefly falling to $3.3bn, and next week's four expiries add a combined $3.7bn.",
+ "cards": [
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "BofA estimates CTA equity positioning remained broadly long this week, with medium- and long-term trend signals near maximum across every index tracked.",
+   "anchor": "Estimated CTA equity positioning remained broadly long this week, with medium- and",
+   "topic": "CTA equity positioning",
+   "status": "level",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "The only meaningful week-over-week change in CTA equity positioning was a softening in Russell 2000 short-term trend, consistent with faster models trimming small caps.",
+   "anchor": "meaningful week-over-week change was a softening in Russell 2000 short-term trend",
+   "topic": "CTA equity positioning",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "BofA places CTA sell triggers at declines of roughly 1.4% in the Euro Stoxx 50, about 2% in the S&P 500 and Russell 2000, about 3% in the Nikkei and about 4% in the Nasdaq-100.",
+   "anchor": "with selling accelerating on declines of roughly 1.4% in the Euro Stoxx 50, ~2% in the",
+   "topic": "CTA equity positioning",
+   "status": "level",
+   "instruments": [
+    "SPY",
+    "IWM",
+    "QQQ"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "With realized volatility still subdued, BofA sees limited risk of broad systematic deleveraging in equities.",
+   "anchor": "volatility still subdued, the risk of broad systematic deleveraging remains limited",
+   "topic": "CTA equity positioning",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "BofA's CTA model shows a long S&P 500 futures position whose sell trigger unwind could start at 7,549.",
+   "anchor": "unwinds (sell trigger) of long positions could start at 7,549",
+   "topic": "CTA equity positioning",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 5 trading sessions"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "BofA estimates systematic strategies could sell $126bn of global equities in a down market, buy $35bn if markets are flat, and buy $5bn in an up market over the week ahead.",
+   "anchor": "Systematic strategies could sell $126bn in a down market,",
+   "topic": "Systematic equity flow estimates",
+   "status": "forecast",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "subsequent week ahead"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Systematic global equity positioning across CTAs, risk parity and vol control is below median levels relative to the last five years.",
+   "anchor": "positioning across CTAs, risk parity, and vol control is now below median levels relative to the last five years",
+   "topic": "Systematic equity flow estimates",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "CTA positioning in US Treasury futures remained short and largely unchanged, with models near max short across the curve as yields drifted modestly higher.",
+   "anchor": "CTA positioning in US Treasury futures remained short and largely unchanged this week",
+   "topic": "CTA rates positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "CTAs meaningfully extended Bund shorts as German yields rose, pushing short- and long-term signals to near max short.",
+   "anchor": "where CTAs meaningfully extended Bund shorts as German yields rose",
+   "topic": "CTA rates positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "In FX the clearest CTA move was a broad shift toward selling the dollar, with trend followers building EUR, GBP and AUD longs and USD/CAD rolling over toward a long CAD stance.",
+   "anchor": "the clearest move was a broad shift toward selling the dollar, with trend",
+   "topic": "CTA FX positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "MXN remains a crowded CTA long versus the dollar, while JPY positioning stayed mixed across model speeds.",
+   "anchor": "MXN remains a crowded long versus the dollar, while JPY stayed mixed",
+   "topic": "CTA FX positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Commodity trends firmed broadly this week, led by a sharp turn higher in the agricultural complex, with soybeans and soybean meal seeing large long builds across all model speeds.",
+   "anchor": "Soybeans and soybean meal saw large long builds across all model speeds",
+   "topic": "CTA commodity positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Trend signals strengthened in oil as faster CTA models added to already-elevated longs.",
+   "anchor": "trend signals also strengthened in oil as faster models added to already-elevated",
+   "topic": "CTA commodity positioning",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "In gold, short- and medium-term CTA trend signals improved markedly, indicating faster and medium-term models have begun rebuilding longs while the longest-horizon models remain short.",
+   "anchor": "In gold, short- and medium-term trends improved markedly, suggesting",
+   "topic": "CTA commodity positioning",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Base metals CTA positioning was mixed, with copper still near max long but aluminum only partially recovered from short territory.",
+   "anchor": "Base metals were mixed, with copper still near max long but aluminum",
+   "topic": "CTA commodity positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "SPX hedger gamma climbed to $10.9bn, the 94th percentile, as of 3-Sep.",
+   "anchor": "SPX hedger gamma climbed higher to $10.9bn (94th %ile) as of 3-Sep",
+   "topic": "SPX dealer gamma",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "SPX hedger gamma briefly dipped below median levels to $3.3bn, the 42nd percentile, earlier in the week as Tuesday's high-gamma expiry rolled off.",
+   "anchor": "dipped below median levels to $3.3bn (42nd %ile) earlier in the week",
+   "topic": "SPX dealer gamma",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Roughly $4.0bn of SPX hedger gamma was set to roll off with the Friday 4-Sep expiry.",
+   "anchor": "positioning, with roughly $4.0bn of gamma set to roll off",
+   "topic": "SPX dealer gamma",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Hedgers were net long about 20k SPX contracts expiring Friday between the 7700 and 7850 strikes, a position that gained gamma as spot rallied 1.06% on Thursday.",
+   "anchor": "long ~20k contracts expiring Friday between the 7700 and 7850 strikes",
+   "topic": "SPX dealer gamma",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Next week's four SPX expiries add positively to hedger gamma, contributing a combined $3.7bn.",
+   "anchor": "expiries add positively to hedger gamma, contributing a combined $3.7bn",
+   "topic": "SPX dealer gamma",
+   "status": "forecast",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Averaged intraday over the last five days, delta-hedgers were net long $5.9bn of SPX gamma, with $3.9bn from non-expiring options, -$1.9bn from 0DTEs and $3.9bn from expiring open interest.",
+   "anchor": "delta-hedgers were net long $5.9bn of SPX gamma with +$3.9bn from non-expiring options",
+   "topic": "SPX dealer gamma",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "If delta-hedging was confined to the last 15 minutes of the trading day, SPX gamma may have been responsible for a 1.1pt, or 12%, decrease in S&P 500 e-mini realized volatility over the past month.",
+   "anchor": "(12%) decrease in S&P 500 e-mini realized vol over the past month",
+   "topic": "SPX dealer gamma",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "BofA estimates US leveraged and inverse ETFs could account for roughly $1.2bn of S&P 500 and $2.7bn of Nasdaq-100 buying or selling per 1% move in the underlying index.",
+   "anchor": "approximately $1.2bn and $2.7bn in S&P 500 and NASDAQ-100 buying (selling),",
+   "topic": "Leveraged ETF rebalance flows",
+   "status": "level",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Leveraged and inverse ETFs could account for roughly $119mn of NVDA and $101mn of MU buying or selling per 1% move in the underlying stock.",
+   "anchor": "analysis indicates that ETFs could be responsible for approximately $119mn and",
+   "topic": "Leveraged ETF rebalance flows",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "MU"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "Leveraged and inverse ETF AUM has grown to approximately $25bn for the S&P 500 and $53bn for the NASDAQ-100 since 2008.",
+   "anchor": "to approximately $25bn for the S&P 500 and $53bn for the NASDAQ-100",
+   "topic": "Leveraged ETF rebalance flows",
+   "status": "level",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Systematic Flows Monitor - Equity longs hold while CTAs sell USD and rebuild commodity longs",
+   "claim": "NVIDIA and Micron are the largest single stock leveraged and inverse ETF complexes by AUM, at approximately $5.5bn and $5.0bn outstanding.",
+   "anchor": "ETFs by AUM with approximately $5.5bn and $5.0bn outstanding, respectively",
+   "topic": "Leveraged ETF rebalance flows",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "MU"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15673__systematic-flows-monitor-equity-longs-hold-while-ctas-sell-u.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 26,
+  "matched": 26,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
