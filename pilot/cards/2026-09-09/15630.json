@@ -1,0 +1,141 @@
+{
+ "brief": "Fed Chair Kevin Warsh has turned more hawkish, telling Jackson Hole the Fed must see inflation moving to its objective clearly and at sufficient speed, and warning hikes are likely if it does not improve at a satisfactory speed. Strong August data reinforced this: nonfarm payrolls rose 162,000 versus a 55,000 consensus with a further 55,000 in upward revisions, and PCE inflation ran 3.7% year over year in July, both above expectations. Market-implied odds of a September hike rose to around 60%. UBS now expects two 25bp hikes, in September and December, taking the fed funds range to 4.00-4.25%. UBS argues this hawkish shift does not imply a worse investment outlook: the same strength in employment, AI capital spending and earnings driving the hawkishness also supports growth, so the growth hit from two hikes should be modest and growth stays near trend. UBS therefore retains a constructive outlook, favoring diversified equities despite possible short-term volatility from higher yields, and expects higher yields to narrow short-duration bonds' advantage over cash while opening entry points in medium- to long-maturity high-quality bonds, to be assessed carefully.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "Fed Chair Kevin Warsh said the Fed must be confident that underlying inflation is moving to its objective clearly and at sufficient speed.",
+   "anchor": "must be confident that underlying inflation is moving to our objective, clearly and at sufficient speed",
+   "topic": "Warsh Fed hawkish pivot",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "Warsh warned that rate hikes are likely if inflation does not improve at a satisfactory speed.",
+   "anchor": "rate hikes are likely if inflation does not improve at a \u201csatisfactory speed.\u201d",
+   "topic": "Warsh Fed hawkish pivot",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "UBS now expects two 25-basis-point Fed rate hikes, in September and December, taking the federal funds target range to 4.00-4.25%.",
+   "anchor": "25-basis-point rate hikes in September and December, taking the federal funds target range to 4.00-4.25%",
+   "topic": "Warsh Fed hawkish pivot",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "September and December 2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "Market-implied odds of a Federal Reserve rate hike at the September meeting rose to around 60% following the August employment report.",
+   "anchor": "Market-implied odds of a September rate hike rose to around 60% following the employment report",
+   "topic": "Warsh Fed hawkish pivot",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "US nonfarm payrolls rose by 162,000 in August, well above consensus expectations of 55,000.",
+   "anchor": "US nonfarm payrolls rose by 162,000 in August, compared with consensus expectations for 55,000",
+   "topic": "August labor and inflation data",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "The Fed's preferred PCE inflation measure rose 3.7% year over year in July, slightly more than expected.",
+   "anchor": "personal consumption expenditures measure of inflation rose 3.7% year over year in July, slightly more than expected",
+   "topic": "August labor and inflation data",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "UBS retains a constructive investment outlook and favors diversified equity exposure despite the more hawkish Fed stance.",
+   "anchor": "we retain a constructive investment outlook and favor diversified equity exposure",
+   "topic": "UBS equity outlook",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "UBS continues to position for further gains in equities, although higher yields could create short-term volatility and weigh on rate-sensitive areas.",
+   "anchor": "We continue to position for further gains in equities, although higher yields could create short-term volatility and weigh on rate-sensitive areas",
+   "topic": "UBS equity outlook",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "If the Fed moves onto a hiking path, the relative advantage of short-duration bonds over cash would likely narrow.",
+   "anchor": "If the Fed moves onto a hiking path, the relative advantage of short-duration bonds over cash would likely narrow",
+   "topic": "UBS bond positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "What does the Warsh era mean for Fed policy?",
+   "claim": "Recent moves higher in yields may be opening up portfolio diversification opportunities in medium- to long-maturity high-quality bonds, though entry points should be assessed carefully.",
+   "anchor": "recent moves higher in yields may be opening up portfolio diversification opportunities in medium- to long-maturity high-quality bonds",
+   "topic": "UBS bond positioning",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15630__what-does-the-warsh-era-mean-for-fed-policy.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
