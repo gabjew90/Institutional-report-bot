@@ -168,6 +168,12 @@ def fetch_players_trimmed() -> list[tuple[str, str, str, str]]:
 TOPICS = (
     "league", "standings", "matchups", "roster",
     "transactions", "draft", "trending", "projections",
+    # What players ACTUALLY scored, against what they were projected to.
+    # fetch_weekly_stats has existed since the module was written and no
+    # topic ever called it, so "what did he actually put up" was
+    # unanswerable while "what is he projected for" was not (2026-09-09,
+    # owner: "so users can ask for stats ... anything sleeper offers?").
+    "stats",
     # One manager's whole week in one payload: roster with projections
     # and slots, this week's matchup with both sides' starters, record
     # and the standings table. The prefetch for any league question
@@ -546,6 +552,59 @@ def build_topic_payload(
             for t in fetch_trending("drop")
         ]
         out["scope"] = "all of Sleeper (not just this league)"
+
+    elif topic == "stats":
+        # Results, and the projection beside them so the answer can say
+        # who beat their number rather than just who scored.
+        stats = fetch_weekly_stats(season, wk) if season else {}
+        if not stats:
+            return {
+                "status": "empty",
+                "note": (
+                    "Weekly stats are unavailable (unofficial endpoint). "
+                    "Say the data isn't available — do NOT invent points "
+                    "scored."
+                ),
+            }
+        proj = fetch_projections(season, wk) if season else {}
+        sid = _resolve_member(member or "", users_by_id)
+        slot_of: dict[str, str] = {}
+        if sid:
+            r = next(
+                (x for x in rosters if str(x.get("owner_id")) == sid), None)
+            starters = (r.get("starters") or []) if r else []
+            bench = [p for p in ((r.get("players") or []) if r else [])
+                     if p not in starters]
+            ids = list(starters) + bench
+            slot_of = {**{str(p): "starter" for p in starters},
+                       **{str(p): "bench" for p in bench}}
+            out["manager"] = _owner_label(sid, users_by_id)
+            out["note"] = (
+                "actual points scored in week %s, with the projection "
+                "beside each so the answer can name who beat or missed "
+                "their number. A player who did not play shows 0.0." % wk
+            )
+        else:
+            # No member named: the week's top scorers league-wide, which
+            # is what a question about a player in someone else's league
+            # (or a screenshot) needs.
+            ids = sorted(
+                stats, key=lambda k: (stats[k] or {}).get("pts_ppr") or 0,
+                reverse=True,
+            )[:15]
+            out["note"] = (
+                "top scorers across the NFL in week %s, not only this "
+                "league's rosters." % wk
+            )
+        names = _names(ids, resolver)
+        out["actual_ppr"] = [
+            {"player": n,
+             "pts": round((stats.get(str(i)) or {}).get("pts_ppr") or 0, 1),
+             "projected": round(
+                 (proj.get(str(i)) or {}).get("pts_ppr") or 0, 1),
+             **({"slot": slot_of[str(i)]} if str(i) in slot_of else {})}
+            for i, n in zip(ids, names)
+        ]
 
     elif topic == "projections":
         proj = fetch_projections(season, wk) if season else {}

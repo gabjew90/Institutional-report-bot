@@ -1943,7 +1943,11 @@ def _build_fantasy_league_tool():
                     "'draft' (all picks + rosters_by_manager; USE THIS for draft grading/review/who-drafted-best questions, NOT standings, which is all zeros pre-season) | 'trending' (adds/drops across "
                     "all of Sleeper) | 'projections' (projected PPR "
                     "points; optional `member` for their starters AND "
-                    "bench, slot-tagged) | 'situation' (requires `member`: "
+                    "bench, slot-tagged) | 'stats' (what players ACTUALLY "
+                    "scored that week, each with its projection beside it: "
+                    "'what did he put up', 'who beat their projection'; "
+                    "optional `member`, else the week's top scorers "
+                    "league-wide) | 'situation' (requires `member`: "
                     "that manager's whole week in one payload: roster with "
                     "projections and slots, this week's opponent with their "
                     "lineup, record, standings. Start here for any "
@@ -1963,7 +1967,7 @@ def _build_fantasy_league_tool():
                             description=(
                                 "league | standings | matchups | roster "
                                 "| transactions | draft | trending | "
-                                "projections | situation"
+                                "projections | stats | situation"
                             ),
                         ),
                         "week": types.Schema(
@@ -1974,7 +1978,7 @@ def _build_fantasy_league_tool():
                             type=types.Type.STRING,
                             description=(
                                 "Manager to look up (discord or sleeper "
-                                "name) — for roster/projections."
+                                "name) — for roster/projections/stats."
                             ),
                         ),
                     },

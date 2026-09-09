@@ -260,7 +260,13 @@ TOOL_DOCS["lookup_fantasy_league"] = _COMMON + (
     "for EVERY NFL player, not only the ones on a roster in this league. "
     "That is the topic for rating players the asker names or shows in a "
     "screenshot from an outside league (2026-09-09: three roster "
-    "screenshots were rated with adjectives and no numbers)."
+    "screenshots were rated with adjectives and no numbers).\n"
+    "topic=stats returns what players ACTUALLY scored in the week, with "
+    "each one's projection beside it — 'what did he put up', 'who beat "
+    "their projection', 'how did my team actually do'. With `member` it "
+    "is that manager's roster; without one it is the week's top scorers "
+    "across the NFL. projections is the forecast, stats is the result: "
+    "do not answer one with the other."
 )
 
 TOOL_DOCS["lookup_room_positions"] = (

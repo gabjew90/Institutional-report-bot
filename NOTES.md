@@ -2279,3 +2279,34 @@ Google was never the constraint here. `GOOGLE_POLICY[FANTASY]` has been
 True since 09-03 precisely so injuries and player news can be searched.
 The model had search and league-wide projections available and used
 neither, because nothing asked it to.
+
+### The `stats` topic: what players actually scored
+
+Owner asked whether users can ask for stats, injuries and projections
+and whether Python would work out the API calls. Two corrections worth
+recording, because the premise shapes what to build next.
+
+Sleeper access is a FIXED MENU of topics, not the API. And the Python
+sandbox has NO NETWORK (the prompt says so: pull live numbers with the
+tools first, then compute). Python cannot reach an endpoint the tools do
+not already cover. On the 02:14 screenshot ask the model DID run code
+three times — `executable_code` and `code_execution_result` are in the
+production log — and still answered in adjectives, because with an
+outside-league screenshot there were no numbers in context to compute
+on. The constraint was data, not Python, the same way the football
+questions last week had search available and never used it.
+
+The gap that was real: `fetch_weekly_stats` had existed since the module
+was written and NO topic called it. Projections were reachable, results
+were not, so "what did he actually put up" had no answer. Now
+`topic=stats` returns actual pts_ppr with each player's projection
+beside it. With `member` it is that manager's starters and bench (which
+is what "who should I have started" needs); without one it is the week's
+top scorers across the NFL, which is what a screenshot from an outside
+league needs. Unavailable endpoint returns status=empty and says so
+rather than inventing points, matching the projections branch.
+
+Owner declined the second half (a mandatory projections prefetch when an
+image is attached in the football channel); it was built and reverted
+unmerged. The model reaches for the topic itself, now that the injected
+block and the tool doc both tell it to.
