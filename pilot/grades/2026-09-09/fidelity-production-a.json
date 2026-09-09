@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15687__us-market-intelligence-morning-briefing.txt",
+   "span": "Brent hits $100 a barrel for the first time since July 24 this morning",
+   "why": "Crude hitting triple digits and Friday's CPI timing are both sourced, but 'the options market has priced almost none of it' is unsupported and cuts against GS Garrett's note that Friday's straddle is priced at 100bps, comparable to a 2022 CPI-alone session, i.e. not cheap."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15694__inverting-policy-is-warsh-s-challenge.txt (Feroli CPI breakdown) and pilot-data/pilot/source-text/2026-09-09/15630__what-does-the-warsh-era-mean-for-fed-policy.txt",
+   "span": "Chair Warsh has adopted a more hawkish stance... warned that rate hikes are likely if inflation does not improve at a 'satisfactory speed.'",
+   "why": "Motor fuel as a direct CPI line item is confirmed by the JPM/GS CPI previews (energy/motor-fuel components), and 'prices are not falling fast enough' is a fair paraphrase of Warsh's stated hawkish complaint that inflation isn't cooling at 'sufficient speed.'"
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15688__jpm-us-market-intelligence-trading-cpi-september-2026.txt; 15630__what-does-the-warsh-era-mean-for-fed-policy.txt; 15584__gs-garrett-weekend-prep-7-sep-2026.txt",
+   "span": "Airfares have risen 26-27%oya in each of the last three months / We now expect 25-basis-point rate hikes in September and December / the probability of a hike on 16sept is 60%... the gs house view maintains 'no hike'",
+   "why": "All three sub-claims match their respective sources exactly: JPM's own 26-27% airfare y/y tracking, UBS's explicit Sept+Dec hike call, and GS desk's 60% hike probability against a GS house 'no hike' view."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "n/a",
+   "why": "No source document for this reporting period mentions a $USO/$XLE call or any USO/XLE ticker; this appears to be a self-referential callback to the product's own prior edition, which is not one of today's source documents."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-09/15625__weekly-regional-view-us-signal-over-noise-to-hike-or-not-to-.txt; 15688__jpm-us-market-intelligence-trading-cpi-september-2026.txt",
+   "span": "the CPI release this Friday, 11 September, at 8:30 a.m. / [10.0%] Core MoM prints above 0.30%. SPX declines 1.5% \u2013 2.5%",
+   "why": "Both the Friday 8:30 AM ET timing and JPM's 0.30% core threshold with the 1.5-2.5% SPX decline scenario match the JPM trading desk's scenario table exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15549__eye-on-the-market-rear-window.txt",
+   "span": "hyperscalers are issuing so much debt that they may be causing a supply-demand issue at the long end of the yield curve",
+   "why": "JPM Cembalest's note directly ties hyperscaler debt issuance to long-end Treasury market pressure, supporting the 'AI trade and the 30-year are the same trade' framing."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15549__eye-on-the-market-rear-window.txt",
+   "span": "debt issuance by the five hyperscalers plus NVIDIA is ~$320 bn... That's 68% of new Treasury long duration borrowing this year",
+   "why": "Figures match JPM's Cembalest note precisely, including the $320bn issuance and the 68% share of new Treasury long-duration borrowing, correctly attributed to J.P. Morgan."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt",
+   "span": "the 30yr yield 1m avg is north of 5.2% for the first time (in earnest) since 2003",
+   "why": "The 'since 2003' record claim matches GS Garrett's note verbatim; the specific 5.24% intraday print is a live-market figure with no PDF source, flagged separately."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15549__eye-on-the-market-rear-window.txt",
+   "span": "The Treasury has its work cut out for it in trying to cap 10 year bond yields, as it tried in an August Twist operation... The ten year Treasury yield is slightly above the level when the Twist operation was announced",
+   "why": "Matches JPM Cembalest's description of the August Twist operation (buying longer bonds, funded by shorter-term issuance) and the 10-year trading above its level when announced."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15674__trading-catalysts-cpi-and-the-path-for-fed-hikes-long-end-bu.txt",
+   "span": "Large Cap Value has provided a ballast for investors... watch out for the Value Traps... which include Media and IT Services",
+   "why": "BofA's named ETFs (PWV, PVAL, AVLV) and the Media/IT Services value-trap warning both appear directly in the source, matching the sentence."
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15620__how-can-investors-find-income.txt",
+   "span": "We estimate a multi-asset income portfolio could offer an annual income of around 5-7% per year. Such a portfolio invests internationally and dynamically across cash, bonds, equities, and derivatives",
+   "why": "The 5-7% yield figure is UBS's estimate for a diversified multi-asset income portfolio (cash/bonds/equities/derivatives), not specifically for the corporate and EM credit segment as the sentence states; the Treasury forecast figures (4.25%/4.5%, +100bps on 2yr) are correctly quoted."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15674__trading-catalysts-cpi-and-the-path-for-fed-hikes-long-end-bu.txt",
+   "span": "Any catalyst that pushes credit concerns to the forefront, be it Fed rate hikes, off balance sheet financing, private lending hiccups... could hasten the pain",
+   "why": "The invalidation ('corporate borrowing costs widening') reflects BofA's own stated credit-spread risk framework for its Large Cap Value trade; the three named funds match the source's instrument table."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt",
+   "span": "realized correlation across SPX over the last six months is 11, only two periods in the last 25 years have seen corr this [low]... Feb 2007... and Jan 2018",
+   "why": "Matches GS Garrett's note exactly on the level, frequency, and named prior instances, correctly attributed to Goldman Sachs; 'volatility spiked after both' is a fair gloss of the source's 'ended in a starburst of index vol convexity.'"
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt and pilot-data/pilot/source-text/2026-09-08/15535__the-midterm-tail-risk-wall-street-is-barely-pricing.txt",
+   "span": "the lowest intraday VIX of the year (13.8) [GS Garrett] / SPX options are pricing just a 0.82% post-election move [BofA via Market Ear]",
+   "why": "The VIX 13.8 intraday low comes from a Goldman Sachs desk note, not Bank of America, but the sentence attributes both facts to a single '(Bank of America)' citation, misattributing the source of the VIX figure."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15535__the-midterm-tail-risk-wall-street-is-barely-pricing.txt",
+   "span": "BofA prefers a VIX calendar call-spread collar, selling the October 16 put and buying the November 22\u201330 call spread",
+   "why": "Matches the BofA-attributed trade call in the Market Ear digest exactly, including both option legs and dates."
+  }
+ ],
+ "faithful": 11,
+ "distorted": 3,
+ "unsupported": 1,
+ "faithful_rate": 0.733,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

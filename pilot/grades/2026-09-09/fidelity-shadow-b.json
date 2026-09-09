@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15612__strong-us-jobs-data-likely-to-tip-the-balance-for-the-fed.txt",
+   "span": "Non-farm payrolls increased by 162,000, of which private payrolls contributed 127,000, compared with consensus expectations for 55,000. Positive revisions added a further 55,000 jobs to prior months",
+   "why": "Every figure matches exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15630__what-does-the-warsh-era-mean-for-fed-policy.txt (contrasted with pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt)",
+   "span": "UBS: 'the economic resilience contributing to this shift also supports our constructive investment outlook' vs DB: 'Markets are pricing a shallow hiking cycle despite underestimating the Fed's hawkishness... The market is pricing a modest adjustment. History points to a cycle.'",
+   "why": "No bank disputes the payroll print itself; UBS and DB genuinely diverge on what a more-hawkish Warsh implies (constructive vs. underpriced-tightening), supporting the framing as a fair synthesis rather than an invented claim."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt",
+   "span": "Still underpricing the Fed... The ISM services prices-paid index hit a four-year high in August and, based on its relationship with the last inflation wave, points to CPI above 5%.",
+   "why": "Bank (DB), figure, and comparison level all match."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15668__us-daily-august-cpi-preview.txt",
+   "span": "We expect a 0.23% increase in August core CPI (vs. +0.2% consensus)",
+   "why": "Source is Goldman Sachs (\"US Daily: August CPI Preview\"); figure and month match."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15674__trading-catalysts-cpi-and-the-path-for-fed-hikes-long-end-bu.txt",
+   "span": "core CPI to rise a trend-like 0.22% m/m in August and core PCE to increase 0.24% m/m",
+   "why": "Source is BofA; both figures match exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt + pilot-data/pilot/source-text/2026-09-08/15525__gs-kaplan-back-to-school-checklist-3-sep-2026.txt",
+   "span": "the 30yr yield 1m avg is north of 5.2% for the first time (in earnest) since 2003 ... GS Rates Strats have noted that long-end yields around 5% looked reasonable, with risk premia due to Fed uncertainty, energy-driven inflation, and less effective bond hedging.",
+   "why": "Both GS-sourced facts combine correctly; 'policy uncertainty' \u2248 'Fed uncertainty', 'reduced hedging value' \u2248 'less effective bond hedging'."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15676__early-morning-reid-macro-strategy.txt",
+   "span": "the front-end future rose +3.46% to \u20ac75.80/MWh... storage... still only 67% full... storage was 79% full in 2025",
+   "why": "All three figures match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15480__morgan-stanley-lays-out-the-value-of-fed-ambiguity-the-four-.txt",
+   "span": "we have raised our 4Q26 forecasts to $100/bbl for Brent oil, and \u20ac88/MWh for Natural Gas (TTF)... our US Equity Strategists think Energy Equities offer an attractive hedge.",
+   "why": "Bank, figures, and the hedge recommendation all match."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt",
+   "span": "realized correlation across SPX over the last six months is 11",
+   "why": "Figure and window match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15595__gs-saboureault-positioning-mondays-week-36-7-sep-2026.txt",
+   "span": "US Fundamental HFs' Net Leverage remains very low, in the 4% percentile over 1 year... US L/S Gross leverage rose +1.5 pts to 208.5% (27th percentile one-year), while US L/S Net leverage increased +0.9 pts to 48.4% (4th percentile one-year)",
+   "why": "All three figures (208.5%/27th, 48.4%/4th) match; the doc's own headline explicitly calls it 'US Fundamental HFs' Net Leverage'."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15528__share-repurchase-weekly-recap-8-sep-2026.txt",
+   "span": "We project the Q3 blackout window to begin around September 15, when roughly 40% of the S&P 500 will enter their quiet periods.",
+   "why": "Date and percentage match exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15674__trading-catalysts-cpi-and-the-path-for-fed-hikes-long-end-bu.txt",
+   "span": "Oracle reports 1Q27 results on Thursday, September 10th.",
+   "why": "1Q27 is Oracle's fiscal first quarter; day matches."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15453__eye-on-the-market-rear-window.txt",
+   "span": "Oracle whose debt to equity ratio was already 500% compared to 50% for Amazon, 30% for Microsoft... since our piece, Oracle's stock and credit spreads sold off sharply",
+   "why": "All figures and the sell-off claim match verbatim (JPMorgan)."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15674__trading-catalysts-cpi-and-the-path-for-fed-hikes-long-end-bu.txt",
+   "span": "focused on three areas: (1) data center capacity deployment and the pace of RPO conversation to revenues, (2) capital expenditures and funding requirements",
+   "why": "Backlog-to-revenue conversion and funding plan are a fair paraphrase of RPO conversion and capex funding requirements."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15535__the-midterm-tail-risk-wall-street-is-barely-pricing.txt",
+   "span": "SPX options are pricing just a 0.82% post-election move... don't overpay for index protection. BofA prefers a VIX calendar call-spread collar, selling the October 16 put and buying the November 22\u201330 call spread",
+   "why": "Figure, dates, and strategy legs all match."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

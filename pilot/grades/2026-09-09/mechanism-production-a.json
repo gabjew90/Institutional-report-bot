@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text-all/2026-09-09/15577__oil-analyst-ongoing-disruptions-more-adaptation-nudging-up-o.txt",
+ "source_span": "Low visible global oil stocks and OECD SPR levels do not necessarily imply an imminent crude price spike, assuming Middle East supply continues to recover, for three reasons... Not running out.",
+ "source_chain": "Mideast shipping disruptions persist into 2027, therefore Goldman raises its Brent forecast by $5 to $85/80 for Dec2026/27 \u2014 but only modestly, because OECD inventories have barely drawn and supply is adapting; therefore (explicit section header 'Not running out') low stocks do NOT imply an imminent price spike. Invalidation is symmetric and geopolitical/supply-side: intensified Hormuz/Red Sea attacks cutting Gulf output 4mb/d below pre-war levels push Brent above $120, while output recovering 1mb/d above pre-war levels sends it into the $60s.",
+ "pulse_chain": "Brent clears $100 on tanker attacks, running about $15 above Goldman's $85 December forecast, therefore that gap 'is what a real shortage looks like before the forecasts catch up'; therefore Friday's CPI print carries the shock into a hard inflation number that decides the Sept 16 Fed hike.",
+ "preserved": false,
+ "why": "The pulse's central claim \u2014 that the spot-forecast gap signals 'a real shortage' \u2014 is the exact mechanism Goldman's note rejects by name ('Not running out', 'do not necessarily imply an imminent crude price spike'), and the pulse swaps the note's own geopolitical/supply invalidation (Hormuz escalation vs. Gulf output recovery) for an unrelated CPI-print invalidation, so the pulse presents its own theory as the bank's while dropping the bank's actual conclusion.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

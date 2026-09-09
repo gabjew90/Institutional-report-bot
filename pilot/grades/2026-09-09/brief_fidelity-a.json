@@ -1,0 +1,112 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d44",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "US-Iran escalation lifts Brent near $100 and mixes global equities, therefore desk stays tactically cautious/neutral with cheap EU index hedges since the bigger picture is still constructive, therefore regional preference stays long US/Asia over EU (US overheating, Europe recovering from stagflation, EU secular themes weak) while supercycle longs are hedged against an expected multi-week factor rotation, therefore JPY 155-160 modestly helps Japan earnings and EM stays bullish on macro/USD/AI capex with country divergence.",
+   "brief_chain": "Same chain: cautious/neutral tone plus Brent/Iran backdrop, therefore cheap EU hedges preferred, therefore long US/Asia vs EU on the stated macro drivers, therefore supercycle longs hedged via momentum options while buying dips, therefore JPY range view and Japan earnings impact, therefore bullish EM with divergence.",
+   "distortions": [
+    {
+     "what": "Brief drops that JPM has been tactically bullish EU since early May and is 'adding' hedges now rather than freshly turning defensive on EU.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 brief never claims a short/bearish EU call, only a relative long-US/Asia-over-EU preference, which matches the source's actual stance."
+    },
+    {
+     "what": "Brief omits the EM Monetization trade menu (long China H-shares vs A-shares, long KWEB, long Taiwan, LatAm/India-ASEA hedges).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are supporting trade specifics under an already-correctly-stated bullish EM view; omitting them loses detail, not direction."
+    },
+    {
+     "what": "Brief omits Positioning Intelligence section detail (US Health Care topping out, Cyclicals-vs-Defensives bottoming).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 unrelated secondary section not referenced elsewhere in the brief's claims."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d21",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "This is a non-argumentative chart deck: each caption stands alone (positioning extremes, cross-region equity/FCF/flow charts, AI/robotics/tech charts, credit/tax/demographics/streaming charts) with no synthesizing thesis connecting them.",
+   "brief_chain": "Same: brief explicitly notes the deck 'reports and does not argue' and lists the same chart groupings (positioning, cross-region equity, technology, other) with matching figures.",
+   "distortions": [
+    {
+     "what": "Brief drops the VC-in-physical-AI funding chart, the manufacturing-role and high-labor-cost demographic/manufacturing charts, and the software-loan-floor/broadly-syndicated-debt chart.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a fact-reporting deck with no stance or trade attached to any chart; dropped charts are omitted content, not distorted content, and none carry a figure's released/forecast/target status that changes."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 4
+  },
+  {
+   "id": "d9",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Summer index returns were strong (bull trend intact) but masked a severe momentum-factor unwind, therefore a catalyst-rich week ahead (BOJ/FOMC/midterms/Hormuz/CPI/PPI/ORCL) with the Fed data-dependent and House view still 'hold', therefore low VIX makes convexity cheap so the answer to event risk and deficit deterioration is to buy cheap hedges (noting this deficit episode hasn't lifted rate vol, unlike 2023), therefore several out-of-consensus strength signals (software vs NDX, private credit, L/S fund returns, TPX streak) support a near-term choppy/neutral read that turns into a post-midterm rally into year-end.",
+   "brief_chain": "Same five-step chain: strong-but-narrow summer returns and momentum unwind, catalyst-rich week with Fed on hold as house view, cheap convexity as the answer to event/deficit risk (with the 2023 rate-vol contrast preserved), out-of-consensus strength signals, choppy-then-post-midterm-rally call.",
+   "distortions": [
+    {
+     "what": "Brief omits Pasquariello's Iran/oil point (exports running at ~2/3 pre-war levels despite escalation, and that the market moved past Iran as a primary variable in March).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no trade or stance in the brief hinges on this point; it's a dropped standalone observation."
+    },
+    {
+     "what": "Brief omits the GPT-6 Astra two-sided AI-narrative discussion (strengthens and endangers the bull case; governance/power concerns growing).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 author flagged it as a follow-up topic, not a call, and the brief's other AI-adjacent claims (software vs NDX) are unaffected."
+    },
+    {
+     "what": "Brief drops minor sequencing details (ORCL earnings specifically Thursday, systematic funds' 'best month of the year' qualifier).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 compression of secondary detail, figures themselves preserved correctly."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d32",
+   "tier": "rest",
+   "bank": "Wolfe Research",
+   "source_chain": "PJM and ERCOT both hit record peak demand this summer, therefore PJM prices spiked (supply-constrained, above forecast) while ERCOT prices stayed low (renewables/storage covered load) and forwards diverged (PJM forwards strong, ERCOT forwards weakened further after Abbott's letter paused Batch Zero, pushing ERCOT into contango), therefore alongside a record gas-turbine order quarter, Wolfe holds sentiment flat at '2' given a still-FERC-pending PJM RBP cost-allocation risk offset by improving CEG tone and the cleared Vistra/Cogentrix deal.",
+   "brief_chain": "Same: both ISOs set demand records but only PJM saw price reaction, with matching PJM/ERCOT figures, gas turbine order stat, and unchanged sentiment meter citing the same RBP risk, CEG tone improvement, and Cogentrix FERC clearance.",
+   "distortions": [
+    {
+     "what": "Brief says ERCOT forwards 'have since weakened, especially after' Abbott's letter, while the source states forwards were already weak through all of 2026 and weakened further, more sharply, after the letter.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both versions point the same direction (bearish ERCOT forwards, letter as an accelerant); the trade call and instrument are unchanged."
+    },
+    {
+     "what": "Brief omits that the source expects the PPA/RBP cost-allocation risk to ultimately fall on customers rather than IPPs and that Wolfe expects the deals to remain intact despite the FERC-pending risk.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 brief still frames it correctly as a pending, unresolved risk rather than asserting a bearish call on TLN/VST/AWS/META; it just drops the reassurance, not a stance."
+    },
+    {
+     "what": "Brief omits MISO's absolute peak (125 GW, +5 GW YoY) and New England's separate in-line-with-forecast detail, folding only NY/CA into 'undershot.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no trade is attached to MISO/New England in either version; omission is a compression, and New England was correctly excluded from the 'undershot' group."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 13,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

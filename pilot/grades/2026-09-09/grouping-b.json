@@ -1,0 +1,186 @@
+{
+ "metric": 1,
+ "total_cards": 1895,
+ "fragmentation_sets": [
+  {
+   "subject": "Whether the Fed hikes in September (odds, CPI/PPI/NFP forecasts, and the data feeding the decision)",
+   "labels": [
+    "fed september hike odds",
+    "august cpi forecast",
+    "september cpi fed hike odds",
+    "fed rate hike risk",
+    "fed hike path",
+    "fed rate hike outlook",
+    "fed september hike",
+    "us rates fed pricing",
+    "fed rate hike pricing",
+    "fed policy path",
+    "fed rate hike forecast",
+    "ubs fed rate forecast",
+    "fed september decision",
+    "fed september hike decision",
+    "warsh fed hawkish pivot",
+    "september fed hike odds",
+    "fed rate path",
+    "cpi equity scenarios",
+    "us labour market nfp",
+    "august jobs report",
+    "us august jobs report",
+    "us payrolls fed hikes",
+    "august jobs inflation data",
+    "august labor inflation data",
+    "market reaction jobs data"
+   ],
+   "cards": 177
+  },
+  {
+   "subject": "Middle East (Iran/Houthi/Hormuz) conflict driving oil and European gas prices",
+   "labels": [
+    "middle east oil supply shock",
+    "middle east oil supply",
+    "oil hormuz risk",
+    "iran war oil impact",
+    "oil price forecast",
+    "oil middle east",
+    "energy risk equities",
+    "oil energy prices",
+    "iran conflict energy",
+    "energy supply disruption",
+    "middle east oil disruption",
+    "oil iran risk",
+    "oil curve hormuz reopening"
+   ],
+   "cards": 72
+  },
+  {
+   "subject": "JPM's weekly hedge fund/investor positioning note (gross exposure, sector rotation, sentiment reversal)",
+   "labels": [
+    "hedge fund positioning",
+    "hedge fund net positioning",
+    "hedge fund gross exposure",
+    "us health care positioning",
+    "cyclicals vs defensives",
+    "investor sentiment"
+   ],
+   "cards": 26
+  },
+  {
+   "subject": "JPM's international/global equity tactical stance (regional preference, supercycle longs, EU hedges)",
+   "labels": [
+    "global equity monetization",
+    "global equity tactical stance",
+    "international equity sector positioning"
+   ],
+   "cards": 29
+  },
+  {
+   "subject": "JPM bullish EM equities thesis (China H-shares, Taiwan, LatAm, India pairs)",
+   "labels": [
+    "em equity monetization",
+    "em equity positioning"
+   ],
+   "cards": 20
+  },
+  {
+   "subject": "JPM's Monetization Menu / tactically cautious US equity positioning",
+   "labels": [
+    "us equity tactical stance",
+    "jpm monetization menu",
+    "jpm tactical stance"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Hyperscaler capex driving S&P earnings growth and debt issuance crowding Treasuries (Cembalest/JPM note)",
+   "labels": [
+    "ai driven earnings growth",
+    "hyperscaler capex debt",
+    "hyperscaler debt issuance",
+    "s p 500 earnings breadth"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "JPM's hyperscaler-underperformance call track record",
+   "labels": [
+    "hyperscaler equity performance",
+    "hyperscaler underperformance call"
+   ],
+   "cards": 6
+  },
+  {
+   "subject": "JPM's 2025 call that Oracle equity/credit was overpriced",
+   "labels": [
+    "oracle valuation call",
+    "oracle valuation"
+   ],
+   "cards": 8
+  },
+  {
+   "subject": "Copper hitting new highs (GS basket/price breakout)",
+   "labels": [
+    "copper breakout",
+    "lme copper breakout"
+   ],
+   "cards": 5
+  },
+  {
+   "subject": "Copper tariff front-running trade (rally mechanics and its downside risks)",
+   "labels": [
+    "copper tariff squeeze",
+    "copper trade downside risks"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "NYC rent-stabilized landlord seizure policy under Mamdani",
+   "labels": [
+    "nyc property seizure policy",
+    "nyc property seizures"
+   ],
+   "cards": 13
+  }
+ ],
+ "fragmented_mass_share": 0.22,
+ "mis_merges": [
+  {
+   "label": "telcos cable",
+   "subjects": [
+    "T/VZ short-covering vs. durable competitive-thaw debate",
+    "Live-events/media names (LYV, FWONK, TKO, SPHR) as AI-resistant holdings"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Telecom carrier technicals and an AI-durability thesis for live-events stocks are different instrument stories that an editor would pitch as two separate themes, not one."
+  },
+  {
+   "label": "traditional media stocks",
+   "subjects": [
+    "Streaming (YouTube/Prime) taking share from legacy broadcast/cable",
+    "Paramount-Warner M&A debt/leverage and credit story"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Cord-cutting is a secular consumer-behavior thesis while the Paramount/Warner leverage figures are a distinct M&A credit story; a pulse would likely run these as separate items."
+  },
+  {
+   "label": "commodities debasement",
+   "subjects": [
+    "Generic morning market snapshot (Brent nearing $100 on Iran escalation)",
+    "GS/JPM debasement trade thesis (gold, EU miners/copper, Treasury buybacks)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The stray Iran/Brent snapshot is a single incidental card riding along with the debasement-trade cards, not enough mass to have altered which theme an editor picked."
+  }
+ ],
+ "pass": false,
+ "notes": "Given the ledger's size (1895 cards, 400+ labels), this pass prioritized the clearest, highest-confidence duplicate clusters (verified by near-verbatim overlapping bullets) rather than an exhaustive line-by-line audit of every label; card counts are best-effort tallies from visible bullets, not authoritative IDs. Fragmentation is severe and systemic, concentrated in the Fed-hike/CPI narrative and the Iran/Hormuz oil narrative, each split across a dozen-plus single-bank labels that a pulse editor would need to manually recombine to see the actual lead themes.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "d9ae7367c064"
+ },
+ "failed": false,
+ "problems": []
+}

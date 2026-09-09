@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-09/15613__strong-us-jobs-data-likely-to-tip-the-balance-for-the-fed.txt",
+ "source_span": "Our previous base case was for rates to remain unchanged through 2026. However, hawkish communication, rising inflation risks from supply bottlenecks, and August labor data have come in strong enough to change that call",
+ "source_chain": "August payrolls beat (162k vs 55k consensus, +127k private, +55k revisions) plus hawkish Fed communication and supply-driven inflation risk therefore UBS abandons its 'no hike through 2026' call and moves to two 25bp hikes (Sept+Dec, to 4.00-4.25%) therefore market-implied Sept hike odds rise from ~50% to ~60%; invalidation: if inflation readings through October average below 2% annualized (six-month rate below 2.5%), the December hike could be postponed.",
+ "pulse_chain": "August payrolls beat (162k vs 55k, +127k private, +55k revisions) keeps unemployment at 4.1% via rising participation therefore Fed hike odds rise (50%->60% spot, 63% futures) therefore banks split not on the data but on what a hawkish Fed does with it (UBS/BofA/DB lean toward a hike, GS house view and MS forecast a hold) therefore the swing variable is Friday's core CPI/PCE print against explicit numeric bars (JPM's Waller-derived 0.30% core PCE/2.8% YoY, GS Treasury desk's ~25bp core PCE line), against which GS (0.23% CPI/0.22% PCE) and BofA (0.22% CPI/0.24% PCE) forecasts both sit under the bar; invalidation: a hot core print seals the hike, a mild one lets the Fed wait.",
+ "preserved": true,
+ "why": "Every load-bearing figure and bank attribution in the theme (UBS's flip to two hikes, BofA's 75bp/forcing call, Goldman's 'no hike' house view and Treasury desk's 25bp PCE line, Morgan Stanley's close-call hold, JPM's Waller/PCE bar, and the specific CPI/PCE forecast numbers) checks out verbatim against the named banks' own notes, and the theme preserves UBS's original chain and invalidation (payrolls beat -> hawkish repricing -> CPI/PCE as the decisive, still-unresolved condition) without reversing any step or reassigning it to the wrong desk.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

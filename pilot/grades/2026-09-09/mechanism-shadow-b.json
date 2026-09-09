@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-09/15591__gs-privorotsky-basics-micro-vs-macro-europe-arc-agi-3-7-sep-.txt",
+ "source_span": "Net\u2026 more pressure on the Fed heading into Friday's CPI, which now feels pretty binary. September hike odds are back around 60%. A benign print gives them room to wait; a hot core print probably solidifies hike.",
+ "source_chain": "August payrolls come in firmer than expected with unemployment steady at 4.1%, therefore pressure builds on the Fed and September hike odds rise to ~60%, therefore Friday's CPI becomes the binary decider \u2014 invalidation: a benign print lets the Fed wait, a hot core print solidifies a hike.",
+ "pulse_chain": "August payrolls beat sharply (162k vs 55k) with unemployment held at 4.1%, therefore September hike odds jump from ~50% to ~60% (futures 63%), therefore Friday's CPI is the deciding factor, which Goldman's European desk reads as binary \u2014 invalidation: a mild print lets the Fed wait, a hot core reading likely seals the hike \u2014 with the specific decisive threshold (core PCE ~0.30%/2.8% per JPM's read of Waller, ~25bp per Goldman's Treasury desk) laid over the top and bank forecasts (UBS two hikes, BofA 75bp, DB underpricing, GS/MS hold) arrayed around it.",
+ "preserved": true,
+ "why": "The theme's setup, direction, and invalidation (binary CPI outcome deciding hike-vs-hold) reproduce Goldman's note almost verbatim, and every extension layered on top (JPM's Waller/PCE bar, Goldman Treasury's 25bp line, UBS's forecast flip, DB's ISM prices-paid argument) checks out against its own correctly-named source document even where a couple of inline citation-ID tags point to an adjacent doc rather than the true source.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15687__us-market-intelligence-morning-briefing.txt",
+   "span": "Brent hits $100 a barrel for the first time since July 24 this morning",
+   "why": "Crude reaching $100 and CPI landing Friday are both supported, but 'the options market has priced almost none of it' overstates the evidence: GS Garrett's Sep 7 note shows the Friday CPI straddle priced at 100bps, explicitly compared to the >100bps a full CPI surprise warranted in 2022 -- a real priced move, not 'almost none.'"
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15688__jpm-us-market-intelligence-trading-cpi-september-2026.txt",
+   "span": "a renewed increase in petroleum prices should have caused the total CPI energy index to rise. We expect a 2.5%m/m increase, led by a 4.2% rise in motor fuel",
+   "why": "Motor fuel as a CPI energy line item is directly sourced; the Fed chair 'not falling fast enough' framing is a fair paraphrase of Warsh's Jackson Hole line that inflation must move to target 'clearly and at sufficient speed' (UBS 15612)."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15688__jpm-us-market-intelligence-trading-cpi-september-2026.txt",
+   "span": "Airfares have risen 26-27%oya in each of the last three months",
+   "why": "JPM's 26-27% airfare figure, UBS's new September+December hike call (15612: 'raise interest rates twice in 2026, in September and December'), and GS's house view of no hike against a desk-marked 60% probability (15584) all check out."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15450__the-market-is-pricing-a-fantasy-just-as-vol-seasonality-turn.txt",
+   "span": "Brent trades at $96, but the six-month contract sits near $83 as the curve continues to price a reopening of the Strait of Hormuz",
+   "why": "The futures-curve-pricing-reopening claim is sourced, but no document anywhere in the set mentions a $USO or $XLE call, or any specific 'long crude ETF' trade published 'last week' -- the named trade itself has no supporting source."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15688__jpm-us-market-intelligence-trading-cpi-september-2026.txt",
+   "span": "[10.0%] Core MoM prints above 0.30%. SPX declines 1.5% - 2.5%",
+   "why": "Exact match to JPM's trading-desk scenario table for Friday's core CPI print and the S&P reaction."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15549__eye-on-the-market-rear-window.txt",
+   "span": "hyperscalers are issuing so much debt that they may be causing a supply-demand issue at the long end of the yield curve",
+   "why": "Opinion-shaped synthesis, but the stance (AI capex debt = long-end Treasury pressure) is JPM's own framing in the source."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15549__eye-on-the-market-rear-window.txt",
+   "span": "debt issuance by the five hyperscalers plus NVIDIA is ~$320 bn ... That's 68% of new Treasury long duration borrowing this year",
+   "why": "Exact figures match ($320bn, five hyperscalers + Nvidia, 68% of new Treasury long-duration borrowing), correctly attributed to J.P. Morgan (Cembalest)."
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt",
+   "span": "the 30yr yield 1m avg is north of 5.2% for the first time (in earnest) since 2003",
+   "why": "The one-month-average-since-2003 claim is sourced (from a Sep 7 note), but the specific 'sits at 5.24% this morning' figure is a live intraday level with no supporting document anywhere in the set."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15549__eye-on-the-market-rear-window.txt",
+   "span": "The ten year Treasury yield is slightly above the level when the Twist operation was announced on August 19",
+   "why": "August Twist operation (buying 10-30yr, financed by issuing shorter-term debt) and the 10-year still trading above its announcement-day level are both directly sourced to J.P. Morgan."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15674__trading-catalysts-cpi-and-the-path-for-fed-hikes-long-end-bu.txt",
+   "span": "Invesco Large Cap Value ETF (PWV...) ... Putnam Focused Large Cap Value ETF (PVAL...) ... Avantis US Large Cap Value ETF (AVLV...) ... watch out for the Value Traps ... which include Media and IT Services",
+   "why": "All three tickers and the Media/IT Services value-trap call match BofA's note exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15620__how-can-investors-find-income.txt",
+   "span": "We estimate a multi-asset income portfolio could offer an annual income of around 5-7% per year. Such a portfolio invests internationally and dynamically across cash, bonds, equities, and derivatives",
+   "why": "The Treasury forecast figures (4.25%/2yr, 4.5%/10yr, 100bps higher on the 2yr) are exact matches, but the 5-7% yield is UBS's estimate for a diversified multi-asset portfolio (cash/bonds/equities/derivatives), not a yield attached specifically to the corporate-and-EM-debt segment; the source also says investors 'could still earn attractive income in short-duration bonds,' not that UBS moved out of them entirely."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15674__trading-catalysts-cpi-and-the-path-for-fed-hikes-long-end-bu.txt",
+   "span": "the second half was always accompanied by negative S&P 500 returns. Large Cap Value has provided a ballast for investors",
+   "why": "Opinion-shaped closing line, but grounded in BofA's own credit-spread-widening framing for what breaks the trade."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt",
+   "span": "realized correlation across SPX over the last six months is 11, only two periods in the last 25 years have seen corr this ... Feb 2007 ... and Jan 2018 (just before \"volmageddon\")",
+   "why": "Exact match on the correlation level, the twice-in-25-years framing, and the vol-spike aftermath, correctly attributed to Goldman."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15535__the-midterm-tail-risk-wall-street-is-barely-pricing.txt",
+   "span": "SPX options are pricing just a 0.82% post-election move",
+   "why": "0.82% midterm move is an exact match to BofA/TME; VIX intraday low of 13.8 last Friday matches GS Garrett's note."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-08/15535__the-midterm-tail-risk-wall-street-is-barely-pricing.txt",
+   "span": "BofA prefers a VIX calendar call-spread collar, selling the October 16 put and buying the November 22-30 call spread, to benefit from potential pre-election vol support",
+   "why": "Trade structure (sell Oct 16 VIX put, buy Nov 22-30 call spread) matches exactly, but the source frames it entirely as a midterm-election (two-months-out) hedge, not as 'the cheap version of owning that risk into Friday' -- the sentence reassigns the catalyst from the election to Friday's CPI print."
+  }
+ ],
+ "faithful": 10,
+ "distorted": 3,
+ "unsupported": 2,
+ "faithful_rate": 0.667,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}
