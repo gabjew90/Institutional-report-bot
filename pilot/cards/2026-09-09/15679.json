@@ -1,0 +1,605 @@
+{
+ "brief": "J.P. Morgan met 22 companies at Semicon Taiwan. Its central claim is that the leading edge foundry shortage worsens in 2027 rather than eases: unfulfilled N3 demand is close to 600k wafers in 2026 and widens next year because the NVDA Rubin and Vera ramp takes 55-60% of 2027 N3 wafers versus under 10% in 1H26, CPU programs from Google, Amazon and Microsoft all sit on N3, ASIC and networking attach add more, and TSMC adding about 40% N3 capacity does not close the gap. The same overflow pushes advanced packaging capex out from TSMC to the OSATs, with TSMC CoWoS at 190-200k wfpm by end-2027, leading OSATs near 100k wfpm, and SoIC becoming the 2028 focus as NVDA Feynman adopts 3DSoIC. CoPoS tracks slower, risk production 2028 and mass production 2029, while EMIB-T progresses. Test intensity shifts to Insertion 3 and 4 if TSMC skips CPO Insertion 2, which favours Chroma and Hon Precision. Logic TCB demand is strong, HBM TCB uncertain on the SK Hynix pause and despeccing. Top equipment picks are GPTC, Chroma, ASMPT and Hon Precision.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan expects the leading edge foundry capacity shortage to worsen in 2027 as the N3 demand-supply gap widens.",
+   "anchor": "the leading edge foundry capacity shortage will likely worsen in 2027, with the N3 demand-supply gap likely to widen",
+   "topic": "N3 leading edge shortage",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan estimates unfulfilled N3 demand of close to 600k wafers in 2026, which could widen further in 2027.",
+   "anchor": "the unfulfilled N3 demand this year is close to 600k wafers in 2026, but this could widen further",
+   "topic": "N3 leading edge shortage",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 into 2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "NVIDIA is expected to take 55-60% of total N3 wafers in 2027 for the Rubin and Vera ramp, up from less than 10% in 1H26.",
+   "anchor": "with NVDA taking up 55-60% of total N3 wafers in 2027, up from less than 10% in 1H26",
+   "topic": "N3 leading edge shortage",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "TSM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "A strong CPU ramp puts NVIDIA Vera, Google Axion 2, Amazon Graviton 5 and Microsoft Cobalt 200 all on N3.",
+   "anchor": "strong CPU ramp, with NVDA Vera, Google Axion 2, Amazon Graviton 5, and MSFT Cobalt 200 all using N3",
+   "topic": "N3 leading edge shortage",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "GOOGL",
+    "AMZN",
+    "MSFT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "ASIC shipments show steady upside for TPU v8 and Trainium 3, adding to N3 demand.",
+   "anchor": "steady upside in ASIC shipments for TPU v8 (Mediatek, Broadcom) and Trainium 3 (Alchip, Annapurna)",
+   "topic": "N3 leading edge shortage",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Networking attach is increasing as most networking and XPU attach chips migrate to N3.",
+   "anchor": "increasing networking attach, with most networking and XPU attach chips migrating to N3",
+   "topic": "N3 leading edge shortage",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "TSMC is adding roughly 40% more N3 capacity, mainly from Fab 18 P9 and some output from Fab 21 P2 in Arizona.",
+   "anchor": "Even with TSMC adding ~40% N3 capacity (mainly Fab 18 P9 and some output from Fab 21 P2 in AZ)",
+   "topic": "N3 leading edge shortage",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Advanced packaging capex is now coming through from various OSAT vendors rather than only from TSMC.",
+   "anchor": "Capex for advanced packaging is now starting to come through from various OSAT vendors, rather than just TSMC.",
+   "topic": "advanced packaging capacity",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "ASE and Amkor lead advanced packaging capacity expansion, with sub-contracting orders starting to reach PTI, Xintec and other packaging vendors.",
+   "anchor": "ASE and Amkor are the leaders in capacity expansion, but we are also starting to see sub-contracting orders",
+   "topic": "advanced packaging capacity",
+   "status": "released",
+   "instruments": [
+    "ASX",
+    "AMKR"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "TSMC CoWoS capacity could reach about 190-200k wafers per month by end-2027 with limited room for meaningful upside on equipment lead times.",
+   "anchor": "TSMC\u2019s CoWoS capacity by end-27 could reach ~190-200k wfpm with limited room for meaningful upside now",
+   "topic": "advanced packaging capacity",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "end-2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Leading OSAT advanced packaging capacity could reach about 100k wafers per month, split roughly 60% ASE and 30% Amkor.",
+   "anchor": "Leading OSAT capacity could reach ~100k wfpm (likely 60% ASE, 30% Amkor)",
+   "topic": "advanced packaging capacity",
+   "status": "forecast",
+   "instruments": [
+    "ASX",
+    "AMKR"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Smaller OSATs may start contributing advanced packaging capacity in late 2027 for subcontracting on-substrate and full process orders.",
+   "anchor": "smaller OSATs may also start contributing some capacity in late 2027 for subcontracting on-substrate and full process orders",
+   "topic": "advanced packaging capacity",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "late 2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan expects SoIC to become TSMC's primary advanced packaging investment focus in 2028.",
+   "anchor": "Looking into 2028, we expect SoIC to become the primary focus of investment at TSMC",
+   "topic": "advanced packaging capacity",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "NVIDIA Feynman is likely to start using 3DSoIC for GPU-GPU stacking, probably A16 on A16 dies.",
+   "anchor": "given NVDA Feynman is likely to start using 3DSoIC for GPU-GPU stacking (A16 on A16 dies likely)",
+   "topic": "advanced packaging capacity",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "TSM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan expects 65k wafers per month of 3DSoIC capacity by end 2028.",
+   "anchor": "we expect 65k wfpm 3DSoIC capacity by end 2028",
+   "topic": "advanced packaging capacity",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "end 2028"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "TSMC's CoPoS development is tracking somewhat slower than expected.",
+   "anchor": "TSMC\u2019s CoPoS progress appears to be tracking somewhat slower than expected",
+   "topic": "CoPoS and EMIB-T roadmap",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "CoPoS is currently expected to reach only risk production in 2028, with earliest mass production in 2029.",
+   "anchor": "with current expectations only for risk production in 2028, with earliest mass production being pegged for 2029",
+   "topic": "CoPoS and EMIB-T roadmap",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2028 to 2029"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Several CoPoS engineering challenges including warpage and glass cracking remain unresolved before meaningful mass production.",
+   "anchor": "there are still several engineering challenges (warpage, glass cracking, etc) that need to be resolved before the process",
+   "topic": "CoPoS and EMIB-T roadmap",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "EMIB-T is showing steady progress despite unresolved substrate yield and process flow details.",
+   "anchor": "EMIB-T seems to be showing steady progress, even with the concerns of substrate yield and process flow details",
+   "topic": "CoPoS and EMIB-T roadmap",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan expects some AWS Trn4 volume, in addition to TPUv9 Humufish, to use EMIB-T packaging in the 2028 timeframe.",
+   "anchor": "In addition to TPUv9 Humufish, we expect some volume from AWS Trn4 to also be using the EMIB-T packaging",
+   "topic": "CoPoS and EMIB-T roadmap",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "All Ring Tech and Scientech are the key EMIB-T equipment players in Taiwan.",
+   "anchor": "Key EMIB-T equipment players in Taiwan are All Ring Tech and Scientech.",
+   "topic": "CoPoS and EMIB-T roadmap",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "TSMC is working with substrate vendors such as Kinsus on RDL-on-substrate technologies, and Broadcom is exploring similar approaches.",
+   "anchor": "TSMC is working with substrate vendors such as Kinsus to explore similar technologies, while other Fabless vendors (such as Broadcom)",
+   "topic": "CoPoS and EMIB-T roadmap",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Most participants and J.P. Morgan's checks lean towards TSMC skipping Insertion 2 Test in initial CPO production and shifting test intensity to Insertion 3 and 4 at the OSATs.",
+   "anchor": "leaning towards TSMC skipping Insertion 2 Test in initial CPO production and pushing more of the test intensity",
+   "topic": "CPO test flow",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "If TSMC skips CPO Insertion 2 Test, that would be positive for Chroma and Hon Precision given their presence in Insertion 3 and 4.",
+   "anchor": "this should be positive for Chroma, Hon Precision, given their strong presence in Insertion 3 and 4 respectively",
+   "topic": "CPO test flow",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Foundry COUPE currently uses FormFactor, and J.P. Morgan's research suggests 3-4 other prober solutions exist for silicon photonics PIC wafer testing.",
+   "anchor": "While Foundry COUPE currently uses FormFactor, our research suggests there are 3-4 other prober solutions for PIC wafer testing",
+   "topic": "CPO test flow",
+   "status": "released",
+   "instruments": [
+    "FORM"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "TSMC's wafer bonding yield is the key determinant of the CPO Insertion 2 outcome.",
+   "anchor": "For the eventual outcome of Insertion 2, the key would likely be TSMC\u2019s wafer bonding yield",
+   "topic": "CPO test flow",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan believes Chroma still holds the lead in CPO Insertion 3 testing.",
+   "anchor": "Chroma, which we believe still holds the lead in Insertion 3",
+   "topic": "CPO test flow",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Hon Precision will ship its first optical-electrical co-test handler to its tester partner in 4Q26.",
+   "anchor": "Hon Precision re-iterated that its first optical-electrical co-test handler will be shipped to the tester partner in 4Q26",
+   "topic": "CPO test flow",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan sees 2H27 as possible timing for a meaningful contribution from Hon Precision's co-test handler.",
+   "anchor": "We expect 2H27 could be a possible timing for a meaningful contribution for this co-test handler.",
+   "topic": "CPO test flow",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H27"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Most TCB vendors on the tour anticipate strong Logic TCB growth from on-substrate expansion at TSMC and OSATs, Intel EMIB buildout, and potential TCB adoption for the CoW step in CoWoS.",
+   "anchor": "Most TCB vendors in the tour are anticipating strong growth in Logic TCB, from on-substrate expansion for TSMC",
+   "topic": "TCB tool demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM",
+    "INTC"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "China is becoming a fast growing market for TCB tools as multiple Chinese OEMs build out CoWoS-like packaging solutions.",
+   "anchor": "China is becoming a fast growing market for TCB tools since multiple Chinese OEMs are starting to build out",
+   "topic": "TCB tool demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "ASMPT at TSMC and the OSATs and Kulicke & Soffa at Intel are the incumbent TCB players, while Hanmi has secured an initial evaluation at an OSAT vendor.",
+   "anchor": "ASMPT (at TSMC and OSATs) and KLIC (at Intel) are the incumbent players, but Hanmi also indicated that they",
+   "topic": "TCB tool demand",
+   "status": "released",
+   "instruments": [
+    "KLIC",
+    "INTC"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "OSATs are likely to qualify more TCB vendors, which will increase competition in TCB tools.",
+   "anchor": "OSATs are likely to qualify more TCB vendors, which will increase competition",
+   "topic": "TCB tool demand",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "HBM-related TCB demand remains uncertain because of SK Hynix's pause in back-end investment and concerns over HBM despeccing to 8Hi or 12Hi stacks.",
+   "anchor": "HBM-related TCB demand continues to remain uncertain due to SK Hynix\u2019s pause in back-end investment and recent concerns",
+   "topic": "TCB tool demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "TCB vendors expect HBM-related orders to resume from late 2026 as HBM4 based Rubin shipments accelerate.",
+   "anchor": "vendors are expecting orders to resume from late 2026, as HBM4 based Rubin shipments start accelerating",
+   "topic": "TCB tool demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "late 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan expects HBM demand from Chinese vendors to accelerate meaningfully in 2027.",
+   "anchor": "HBM demand from Chinese vendors is likely to accelerate meaningfully in 2027",
+   "topic": "TCB tool demand",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Substrate related equipment vendors report very strong orders from customers.",
+   "anchor": "Substrate related equipment vendors are indicating very strong orders coming from customers.",
+   "topic": "substrate equipment demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Eternal Precision's order backlog visibility now extends to 2030 estimated.",
+   "anchor": "backlog visibility is now extending to Year 2030e",
+   "topic": "substrate equipment demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Eternal Precision is growing capacity about 50% in the coming year.",
+   "anchor": "the fast capacity growth (+50% in the coming year)",
+   "topic": "substrate equipment demand",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "coming year"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "Demand from both new and established substrate makers is still outpacing supply of vacuum lamination tools.",
+   "anchor": "the demand (which comes from both new and established substrate makers) is still outpacing the supply",
+   "topic": "substrate equipment demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "EMIB-T brings more lamination challenges from thinner materials and drives substrate vendors to acquire higher precision bonding tools such as TCB.",
+   "anchor": "EMIB-T to bring more challenges to lamination (thinner materials), and the driving substrate vendors to acquire higher precision bonding tools",
+   "topic": "substrate equipment demand",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "CHPT, rated Overweight, discussed a future need for double-sided testing of substrates.",
+   "anchor": "CHPT (6510 TT, OW, covered by Jerry Tsai) also discussed the need for double-sided testing of substrates",
+   "topic": "substrate equipment demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan's top picks in the semiconductor equipment space are GPTC, Chroma, ASMPT and Hon Precision.",
+   "anchor": "Our top picks in the equipment space are GPTC, Chroma, ASMPT, Hon Precision.",
+   "topic": "Taiwan semicap equipment picks",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Asia Semis: Key takeaways from Semicon Taiwan",
+   "claim": "J.P. Morgan rates ASMPT, Chroma ATE, Grand Process Technology and Hon Hai Precision Overweight.",
+   "anchor": "ASMPT Ltd (0522)(0522.HK/HK$161.40/OW), Chroma ATE(2360.TW/NT$2,265.00/OW), Grand Process Technology(3131.TW/NT$2,635.00/OW), Hon Hai Precision(2317.TW/NT$251.50/OW)",
+   "topic": "Taiwan semicap equipment picks",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15679__asia-semis-key-takeaways-from-semicon-taiwan.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 44,
+  "matched": 44,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
