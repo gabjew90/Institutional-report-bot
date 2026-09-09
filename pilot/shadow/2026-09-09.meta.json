@@ -1,0 +1,60 @@
+{
+ "unread_source_files_at_edit": 4,
+ "given_up_at_edit": 2,
+ "pack": {
+  "documents": 48,
+  "cards": 1724
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 113,
+  "brief_citations": 24,
+  "distinct_cards_cited": 113,
+  "card_count": 1724,
+  "quintiles": [
+   32,
+   17,
+   23,
+   18,
+   23
+  ],
+  "edge_quintile_share": 0.487,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "BofA has core consumer prices at 0.22% [c1273] and core PCE at 0.24% [c1274].",
+    "cite": "c1273,c1274",
+    "reason": "figures not in cited card(s): ['0.22%', '0.24%']"
+   },
+   {
+    "sentence": "Morgan Stanley raised its fourth-quarter forecasts to $100 Brent and 88 euros gas [c169][c789], and its equity strategists favor energy shares as the hedge [c354].",
+    "cite": "c169,c789,c354",
+    "reason": "figures not in cited card(s): ['100b']"
+   },
+   {
+    "sentence": "The S&P straddle for Friday's inflation session is priced at 100 basis points [c187], and the MOVE index of bond market volatility closed at 73, the 14th percentile over five years [c1462].",
+    "cite": "c187,c1462",
+    "reason": "figures not in cited card(s): ['100']"
+   },
+   {
+    "sentence": "Goldman's buyback desk ran at 1.4 times the 2025 average daily volume in the week to September 4 [c498], with flow concentrated in technology, financials and health care [c1384].",
+    "cite": "c498,c1384",
+    "reason": "figures not in cited card(s): ['1.4']"
+   },
+   {
+    "sentence": "S&P options are pricing a 0.82% move after the election [c185], which is why the desk prefers cheap convexity to outright index protection: sell the October 16 VIX put and buy the November 22-30 call ",
+    "cite": "c185,c224",
+    "reason": "figures not in cited card(s): ['0.82%m']"
+   }
+  ],
+  "leans": 7,
+  "leans_block_present": true,
+  "word_count": 1838
+ }
+}
