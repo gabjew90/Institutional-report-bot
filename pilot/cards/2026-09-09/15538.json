@@ -1,0 +1,189 @@
+{
+ "brief": "J.P. Morgan Positioning Intelligence reports that aggregate positioning changed little over the past week despite market gyrations, but flags three emerging themes: further hedge fund re-grossing, a pause in US Health Care, and a bottoming of Cyclicals versus Defensives. Globally hedge funds added gross exposure on 4 of the past 5 days, a +1.3z weekly increase and the highest since late June. Net changes were muted, with flows mixed day to day and ending with a small sell skew, the same pattern as the bank's US TPM, whose positioning level remains at the 40th percentile while global hedge fund nets sit at the 40th to 50th percentile on a 5-year basis. Sentiment is turning less constructive, both retail and institutional reversing lower or pausing after prior increases. US Health Care could be topping out because retail sentiment is dropping from all-time highs, hedge funds are selling, and ETF flows are pausing at highs. On Cyclicals versus Defensives, hedge funds are buying Energy, relative net positioning is fairly neutral excluding TMT and Financials, and retail sentiment between the groups is low, so cyclicals could outperform as long as yields do not rise so quickly that equities turn very risk off.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "J.P. Morgan says aggregate investor positioning changed little over the past week despite market gyrations.",
+   "anchor": "Not a lot has changed at the aggregate level over the past week, despite market gyrations",
+   "topic": "hedge fund net positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Globally, hedge funds added gross exposure on 4 of the past 5 trading days.",
+   "anchor": "Globally HFs added gross exposure on 4 of the past 5 days",
+   "topic": "hedge fund gross exposure",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Global hedge fund gross exposure rose +1.3z over the past week, the largest weekly increase since late June.",
+   "anchor": "+1.3z increase in the past week, the highest since late June.",
+   "topic": "hedge fund gross exposure",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Hedge fund flows were mixed day to day over the past week and finished with a small sell skew.",
+   "anchor": "HF flows were mixed day-to-day but ended with a small sell",
+   "topic": "hedge fund net positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "J.P. Morgan's US TPM positioning level sits at the 40th percentile and global hedge fund net exposure sits at the 40th to 50th percentile on a 5-year basis.",
+   "anchor": "40th %-tile, while global HF nets are 40-50th %-tile on a 5yr basis.",
+   "topic": "hedge fund net positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Both retail and institutional sentiment appear to be reversing lower or pausing after prior increases.",
+   "anchor": "Both retail and institutional sentiment appear to be reversing",
+   "topic": "investor sentiment",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "J.P. Morgan says US Health Care could be topping out for now.",
+   "anchor": "US Health Care could be topping out for now",
+   "topic": "US Health Care positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "for now"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Retail sentiment toward US Health Care is starting to drop from all-time highs.",
+   "anchor": "Retail sentiment is starting to drop from ATHs, HFs are",
+   "topic": "US Health Care positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Hedge funds are selling US Health Care and ETF flows into the sector are pausing at highs.",
+   "anchor": "selling, and ETF flows are pausing at highs.",
+   "topic": "US Health Care positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "J.P. Morgan flags a bottoming of Cyclicals versus Defensives as a potential emerging theme.",
+   "anchor": "and a bottoming of Cyclicals vs. Defensives.",
+   "topic": "cyclicals vs defensives",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Hedge funds are buying Energy.",
+   "anchor": "will strong growth put cyclicals back in favor? Energy is being bought by",
+   "topic": "cyclicals vs defensives",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Relative hedge fund net positioning between Cyclicals and Defensives is fairly neutral when TMT and Financials are excluded.",
+   "anchor": "HFs and relative net positioning between the groups is fairly neutral when excluding TMT and Financials.",
+   "topic": "cyclicals vs defensives",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Retail sentiment between Cyclicals and Defensives is quite low.",
+   "anchor": "In addition, Retail sentiment between the two is quite low.",
+   "topic": "cyclicals vs defensives",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM Schlegel - Weekly Wrap Let the Re Gross Begin 7 Sep 2026",
+   "claim": "Cyclicals have the potential to outperform Defensives as long as yields do not rise so quickly that equities turn very risk off.",
+   "anchor": "present, as long as yields don't rise so quickly that equities turn very risk off.",
+   "topic": "cyclicals vs defensives",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15538__jpm-schlegel-weekly-wrap-let-the-re-gross-begin-7-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 14,
+  "matched": 14,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
