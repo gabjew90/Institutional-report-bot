@@ -470,5 +470,39 @@ def test_bot_reexports_every_tool_builder_and_executor():
         if n.startswith("_build_") and f"{n}()" in src:
             assert hasattr(B, n), n
 
+def test_an_attached_image_outranks_the_prefetched_sleeper_roster():
+    """2026-09-09: three "rate my team" asks with a screenshot of a
+    DIFFERENT league. Two came back naming the same three players from
+    the asker's Omnibeta Sleeper roster, for two different screenshots,
+    and the asker re-asked with "using the screenshot attached" and got
+    the same answer. The payload is authoritative for Omnibeta and must
+    not be authoritative for the picture."""
+    payload = {"status": "ok", "topic": "roster", "starters": ["Mahomes"]}
+    with_img = R.inject_text(R.T_FANTASY, payload, has_images=True)
+    assert "AN IMAGE IS ATTACHED" in with_img
+    assert "DIFFERENT team" in with_img
+    no_img = R.inject_text(R.T_FANTASY, payload)
+    assert "AN IMAGE IS ATTACHED" not in no_img
+    # the league-state framing survives in both
+    assert "LEAGUE STATE" in with_img and "LEAGUE STATE" in no_img
+
+
+def test_the_image_note_is_fantasy_only():
+    """Every other prefetch is a number the picture cannot contradict."""
+    for tool in (R.T_PRICE, R.T_SLATE, R.T_ROOM, R.T_ECON):
+        assert "AN IMAGE IS ATTACHED" not in R.inject_text(
+            tool, {"status": "ok"}, has_images=True), tool
+
+
+def test_the_caller_passes_the_image_flag_through():
+    from discord_bot import bot as B
+    src = B._ask_pipeline_source()
+    i = src.index("inject_text(")
+    assert "has_images=_has_attached_image" in src[i:i + 200], src[i:i + 200]
+    # and the flag is derived from the parts the images were put into
+    assert "_has_attached_image = any(" in src
+    assert "inline_data" in src
+
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

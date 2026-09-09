@@ -4639,6 +4639,14 @@ async def _ask_02_call_model_with_tools(
             text=user_content + _preflight_notes
         )
         contents[0] = types.Content(role="user", parts=initial_parts)
+    # Whether the asker attached a picture. Phase 2 never receives the
+    # `images` list, and the image parts are already in initial_parts,
+    # so read it from there rather than widening the interface. Only the
+    # fantasy prefetch cares (ask_router.inject_text).
+    _has_attached_image = any(
+        getattr(_p, "inline_data", None) is not None
+        for _p in (initial_parts or [])
+    )
 
     # Token-budget reservation BEFORE the call. /ask assembles
     # a large prompt (WHO'S TALKING + analyst log + recent chat +
@@ -4761,7 +4769,8 @@ async def _ask_02_call_model_with_tools(
         _ask_tool_log.append(_pf_tool)
         contents.append(types.Content(
             role="user",
-            parts=[types.Part.from_text(text=_ask_router.inject_text(_pf_tool, _pf_res))],
+            parts=[types.Part.from_text(text=_ask_router.inject_text(
+                _pf_tool, _pf_res, has_images=_has_attached_image))],
         ))
     _round_gm_chunks: list = []
     for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):

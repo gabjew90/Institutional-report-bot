@@ -2204,3 +2204,46 @@ both screenshot asks (`shape=fantasy -> LOCAL/FACT`, prefetching the
 Sleeper roster), "rate this parlay" and a reply both routed on their
 own, and one em-dash was caught by voice cleanup. No empty-answer
 warnings in the window at all.
+
+## 2026-09-09 — "you didn't read the screenshot": the Sleeper payload outranked the picture
+
+Owner, while I was working: "you didn't read the screenshot a few
+times". Three fantasy asks in twelve minutes, each with a roster
+screenshot of a league that is NOT Omnibeta:
+
+| time | question | players named back |
+|---|---|---|
+| 02:12 | rate my team in a half PPR league | Mahomes, Etienne, Stevenson |
+| 02:14 | **using the screenshot attached**, rate my team in a half PPR league | Allen, Chase, Collins |
+| 02:23 | **using the screenshot attached**, rate my team in a full PPR league | Mahomes, Etienne, Stevenson |
+
+Two different screenshots of two different leagues came back with the
+identical three players, and the asker had to add "using the screenshot
+attached" to get a different answer once. That is the tell: the bot was
+reading the asker's OMNIBETA Sleeper roster, not the picture.
+
+The route is working exactly as designed and that is the problem. A
+fantasy question in the football channel prefetches the asker's Sleeper
+roster and injects it with "LEAGUE STATE ... Authoritative over chat and
+SQL for that topic." Nothing in that block knows an image exists, so
+when the screenshot is a different league the payload wins.
+
+Fix: `inject_text` takes `has_images`, and for the fantasy tool only it
+appends a line saying an image is attached, that the payload is the
+Omnibeta league, and that a roster in the image is a DIFFERENT team and
+is the one being asked about. Relabelled rather than suppressed,
+because an asker can legitimately attach a picture and still be asking
+about Omnibeta.
+
+Phase 2 never receives the `images` list, so the flag is derived from
+`initial_parts`, where the image parts already are. My first version
+read `images` directly and `smoke_pyflakes_undefined` caught it as a
+guaranteed NameError on the first fantasy ask with a prefetch, before
+it could reach anyone.
+
+Not affected: yesterday's 03:08 draft-screenshot ask, which prefetched
+`topic=situation` and read the image correctly, and today's "rate this
+parlay", which pulled the screenshot out of the REPLIED-TO message and
+quoted its exact numbers ($18.98 to win $3,199.16, 13 legs). The
+reply-to-image path and the look-back path are both fine; only the
+fantasy roster injection was overriding what the model could see.

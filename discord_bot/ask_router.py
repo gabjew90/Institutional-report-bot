@@ -570,8 +570,19 @@ def filter_tools(route: Route, tools: list, *, google_tool=None) -> list:
     return out
 
 
-def inject_text(tool: str, result: dict) -> str:
-    """The authoritative block the model reads for a prefetched tool."""
+def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
+    """The authoritative block the model reads for a prefetched tool.
+
+    `has_images` matters for exactly one shape today. A fantasy question
+    prefetches the asker's OMNIBETA Sleeper roster and hands it over as
+    authoritative, which is right until the asker attaches a screenshot
+    of a DIFFERENT league and says "rate my team". On 2026-09-09 two of
+    three such asks came back describing the same three Sleeper players
+    (Mahomes, Etienne, Stevenson) for two different screenshots of two
+    different leagues, and the asker re-asked with "using the screenshot
+    attached" and got the same answer again. The payload outranked the
+    picture it was supposed to be read beside.
+    """
     import json as _json
     status = (result or {}).get("status", "ok")
     lead = {
@@ -601,4 +612,11 @@ def inject_text(tool: str, result: dict) -> str:
     }.get(tool, f"{tool.upper()}, system-fetched. Authoritative.")
     tail = (" status=error or empty means the source is unavailable: say so; do not fill the gap from memory."
             if status not in ("ok",) else "")
+    if has_images and tool == T_FANTASY:
+        tail += (" AN IMAGE IS ATTACHED TO THIS TURN. This payload is the "
+                 "asker's Omnibeta Sleeper league. If the image shows a "
+                 "roster, lineup or draft board, that is a DIFFERENT team "
+                 "and it is the one the asker means: rate what is in the "
+                 "image and use this payload only where the question is "
+                 "about Omnibeta.")
     return f"[{lead}{tail}]\n" + _json.dumps(result, default=str)[:6000]

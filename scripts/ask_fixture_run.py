@@ -390,7 +390,8 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         _stub = (fx.get("tool_stubs") or {}).get(_pf_tool) or {
             "status": "error", "error": f"fixture has no {_pf_tool} stub"}
         contents.append(types.Content(role="user", parts=[types.Part.from_text(
-            text=_ask_router.inject_text(_pf_tool, _stub))]))
+            text=_ask_router.inject_text(
+                _pf_tool, _stub, has_images=bool(fx.get("images"))))]))
         _prefetched.append(_pf_tool)
 
     resp = client.models.generate_content(
