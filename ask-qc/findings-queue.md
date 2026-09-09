@@ -267,3 +267,65 @@ no findings
   20:50:18 UTC, ~7h30m before the fix). Already fixed going forward;
   no action needed from this queue beyond a maintainer confirming the
   fix is the one live in production.
+
+## 2026-09-08
+
+- (open) 1. regex-able (garbled markdown nesting on every cashtag,
+  17:07:24 UTC turn, Ryan, "what are the major earning releases this
+  week") — answer rendered every ticker parenthetical as broken
+  nested markup, e.g. `GameStop (**\`**GME**\`**) reporting **Tuesday
+  AMC**` and `Signet Jewelers (**\`\`**SIG**\`**)**` — literal
+  asterisks and backticks around all four tickers in the answer
+  (GME, SIG, AEO, ORCL, ADBE, M, KR). Present identically in the raw
+  model output block, so this is model-authored, not a downstream
+  mangling. Route was `WEB/FACT · grounded ✅ (2 sources)`; fabrication
+  is clean (sourced, no contradiction found), the defect is pure
+  format_adherence. `scripts/validate_answer.py` returns clean (had
+  to `pip install -r requirements.txt` first — `aiohttp`/`discord.py`/
+  `pytz` were all missing in this environment and every check
+  function was silently reporting `detector unavailable`, same gap
+  the 2026-09-04 queue entry already flagged). None of the twelve
+  checks in `scripts/ask_response_validate.py` target markdown-nesting
+  corruption.
+  Candidate fixture:
+    question: "what are the major earning releases this week"
+    bad answer: "→ GameStop (**`**GME**`**) reporting **Tuesday AMC**"
+    good-answer control: "→ GameStop (**$GME**) reporting **Tuesday AMC**"
+    suggested new check (`check_markdown_nesting_corrupt`):
+      fire when the answer matches
+      `r"\*{2}\x60{1,2}\*{0,2}|\x60{1,2}\*{2}\x60{0,2}"`
+      (two-or-more asterisks directly touching one-or-more backticks,
+      in either order) — a clean bold cashtag (`**$GME**`) or code
+      span (`` `GME` ``) never puts `**` and `` ` `` adjacent, so this
+      pattern only fires on the corrupted nesting shape.
+
+  Side note, not a per-turn finding: the "Abe's holdings" thread
+  (00:17:37, 00:17:58, 00:18:03 UTC — dovahjo and spockbones asking
+  about the same `lookup_trade_log` result three times in 26 seconds)
+  hit the figure-provenance evidence-extraction gap that
+  `discord_bot/figure_provenance.py` already documents in its own
+  source comment, narrating this exact incident down to the asker's
+  "You didn't show anything" reply. The named fix (`_OPT_STRIKE_RE`,
+  recognizing glued option-contract notation like `350P` on the
+  evidence side) is timestamped `2026-09-09T08:02:38-07:00` in this
+  checkout — after every turn in today's log (first occurrence
+  00:17:37 UTC on 09-08, ~15h before the fix). This checkout has only
+  one commit, so git-blame can't date it more finely than "the
+  current deploy," but the timestamp alone post-dates the whole log.
+  Already fixed going forward per the commit-timestamp precedent set
+  for the 2026-09-04 and 2026-09-07 entries above; no action needed
+  from this queue. Full writeup with the two graded turns (one INFRA,
+  one CONCERN) in `pulse-data/ask-qc/2026-09-08.claude.md`.
+
+  A second side note, also not a queued finding: a 14:03:53 Sam turn
+  ("remind me if I have any open calls in members alert from past 7
+  days") carries two chat-attributed claims ("HOOD calls last week,"
+  "scaling Palantir $180") that don't appear anywhere in the turn's
+  visible 9,478-char prompt block, and running the live
+  `discord_bot.figure_provenance.check()` against that exact evidence
+  confirms it would strip the line. Graded CONCERN, not FAIL, and
+  deliberately left off this queue: the prompt block shown in the log
+  is the pre-tool-call prompt, not `lookup_trade_log`'s actual
+  2,561-char JSON response, so I cannot rule out the two claims are
+  legitimately sourced in a payload I can't see. See
+  `pulse-data/ask-qc/2026-09-08.claude.md` for the full reasoning.

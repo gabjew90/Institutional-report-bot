@@ -418,3 +418,65 @@ re-filing it separately, seconding it.
   Not filing a specific fix since I don't know the right persistence
   shape (the full 73-theme list is a lot of volume for every run) —
   flagging for a session with routine context to size.
+
+## 2026-09-09 — headless QC on 2026-09-09T14-07-56Z
+
+Full report: `pulse-output/qc-headless/2026-09-09T14-07-56Z.md`. STEP
+7's self-review was again deep and mostly held up on independent
+verification; today's items are two corrections to its accuracy
+section (both change the "Trust" framing for the better) plus one
+escalation of the standing `latest.json` staleness bug with a concrete
+example of it nearly producing a wrong QC conclusion.
+
+- **observation** — STEP 7 scored "A quarter-point increase to 2.65%
+  is fully priced" (WHAT TO WATCH) as "the run's one hard accuracy
+  failure... a fabricated policy rate," reasoning it's arithmetically
+  impossible from the corpus and not a live-data field. Checked
+  against the run-scoped `agent-io/2026-09-09T14-07-56Z/
+  adversarial-prompt.txt:167`: the economic calendar block carries
+  `ECB Interest Rate Decision | est=2.65% | prev=2.4%` verbatim — a
+  real Finnhub consensus estimate, injected exactly the way CLAUDE.md
+  documents calendar data feeding WHAT TO WATCH. It's also not
+  arithmetically impossible: `2.40% + 25bp = 2.65%` lines up with the
+  bank-research figures (2.25% → 2.50%) under a standard ~15bp
+  ECB deposit/refi corridor spread — plausibly the same hike on two
+  differently-named ECB rates, not a contradiction. The real,
+  smaller issue: the published bullet never says which rate it means,
+  so a reader who saw yesterday's "2.50%" has no way to know today's
+  "2.65%" isn't a walk-back. STEP 7's proposed fix (extend
+  `consensus-amnesia` to hard-fail a contradicting policy-rate level
+  vs. the previous pulse) **should not be built as specified** — it
+  would flag this exact case, two independently correct figures for
+  different rate benchmarks, as a fabrication. If someone builds this,
+  it needs a rate-series identifier (deposit vs. refi vs. whatever
+  Finnhub tracks) before it can safely hard-fail.
+- **observation** — STEP 7 also flagged the RECAP's "Iran and the US
+  hit tankers overnight and into this morning" as a "garbled
+  attribution... a reader cannot tell from this sentence who attacked
+  whom," reading it against yesterday's Houthi-vs-Saudi framing as if
+  today's pulse confused the two events. It didn't: the run's own
+  `news_snapshot` carries two live Reuters wires from this morning —
+  09:21 EDT "Iran and US hit tankers in biggest wave of attacks on
+  shipping since war began" and 09:35 EDT "Oil tanker hit in Iraqi
+  waters, as vessels get caught in US-Iran attacks." The RECAP
+  sentence is a near-verbatim rendering of the first headline,
+  reflecting a genuine overnight escalation beyond yesterday's
+  framing. Not a defect — no fix needed, filing so the "Trust" framing
+  in STEP 7's report isn't taken at face value by a later session.
+- **deterministic-fixable, escalated** — `pulse-context/latest.json`
+  staleness (08-31, 09-01, 09-02, 09-04, 09-08, now 09-09: `dumped_at_utc
+  2026-09-09T18:08:17Z`, 102 PDFs, `last-24h`, vs. the scheduled run's
+  actual 14:07:13Z / 125 PDFs). This is the 6th documented occurrence
+  and it just crossed from "inconvenient" to "actively wrong": an
+  initial pass against `latest.json` showed `yen carry-trade unwind`
+  as a 2-bank (JPMorgan, The Market Ear) cluster correctly suppressed
+  by `thin-2bank` — which would have made STEP 7's claim (3 banks:
+  Goldman Sachs, JPMorgan, The Market Ear, promoted and absent from
+  the final) look like a self-review error. Cross-checking against
+  the run-scoped `agent-io/2026-09-09T14-07-56Z/adversarial-prompt.txt`
+  showed STEP 7 was right and `latest.json` was stale. I caught this
+  one before filing it as a correction; a faster or less careful pass
+  would not have. Six occurrences with a demonstrated false-positive
+  is past "worth tracking" — either stop overwriting `latest.json`
+  intraday, or write a run-scoped copy at commit time (repeating the
+  standing ask from every prior occurrence of this item).
