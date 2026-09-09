@@ -1,0 +1,681 @@
+{
+ "brief": "Cembalest's post-mortem opens with a market update. ISM new orders less inventories is positive and S&P 500 earnings revisions sit at the high end of history, supported by Q2 hyperscaler cloud growth of AWS 37%, Azure 43% and Google Cloud 82% plus rising backlogs, so earnings breadth has widened beyond the 2024-2025 AI-only driver. He argues that breadth is contingent: hyperscaler capital spending and R&D went from $460 bn in 2024 to $870 bn over the last 12 months, earnings breadth has run ahead of what the ISM would predict, and an unusually high share of S&P 500 earnings comes from unrealized valuation gains on Anthropic and OpenAI. The S&P 500 and Nasdaq are up about 12% this year despite a roughly 50 basis point rise in ten year yields. Treasury's August Twist has not capped the ten year, and he lists three obstacles: growth strong versus Fed Funds, worsening deficits, and hyperscaler long duration issuance equal to 68% of new Treasury long duration borrowing. He then scores a year of calls as right, wrong or open, and closes with questions about NYC's planned building seizures.",
+ "cards": [
+  {
+   "claim": "ISM new orders less inventories is in positive territory and S&P 500 earnings revisions this year are at the high end of the historical range.",
+   "anchor": "earnings revisions this year are at the high end of the historical range",
+   "topic": "S&P 500 earnings breadth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "Q2 2026 hyperscaler annual cloud revenue growth was AWS 37%, Microsoft Azure 43% and Google Cloud 82%.",
+   "anchor": "season was also positive for hyperscaler annual revenue growth:  AWS 37%, Microsoft Azure 43% and Google",
+   "topic": "hyperscaler AI monetization",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "MSFT",
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2 2026"
+  },
+  {
+   "claim": "Google Cloud's backlog rose $52 bn to $514 bn and the AWS backlog rose to $496 bn, up 36% quarter on quarter, which JPMorgan reads as evidence of AI monetization.",
+   "anchor": "$52 bn to $514 bn, and the AWS backlog rose to $496 bn, up 36% q/q.",
+   "topic": "hyperscaler AI monetization",
+   "status": "released",
+   "instruments": [
+    "GOOGL",
+    "AMZN"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2 2026"
+  },
+  {
+   "claim": "S&P 500 earnings growth is more broad-based than in 2024-2025, when AI was the primary driver.",
+   "anchor": "based than it was in 2024-2025 when AI was the primary driver",
+   "topic": "S&P 500 earnings breadth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Cembalest argues S&P 500 earnings growth is highly contingent on continued hyperscaler capital spending and R&D, which rose from $460 bn in 2024 to $870 bn over the last 12 months.",
+   "anchor": "R&D which rose from $460 bn in 2024 to $870 bn over the last 12 months",
+   "topic": "hyperscaler capex and debt",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last 12 months"
+  },
+  {
+   "claim": "Since the AI capital spending boom began, the share of S&P 500 companies with positive expected earnings growth has run ahead of the improvement in ISM manufacturing surveys, which Cembalest reads as a trickle-down effect from hyperscalers.",
+   "anchor": "breadth has eclipsed the improvement in manufacturing surveys; this suggests a powerful trickle-down effect",
+   "topic": "S&P 500 earnings breadth",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "An unusually high share of S&P 500 earnings is due to unrealized valuation gains on Anthropic and OpenAI.",
+   "anchor": "earnings is due to unrealized valuation gains on Anthropic and OpenAI",
+   "topic": "S&P 500 earnings breadth",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q2 2026"
+  },
+  {
+   "claim": "The S&P 500 and the Nasdaq have gained about 12% in 2026 to date.",
+   "anchor": "The S&P 500 and the Nasdaq have gained ~12% this year",
+   "topic": "US equity 2026 returns",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "Ten year US Treasury yields have risen roughly 50 basis points this year.",
+   "anchor": "a roughly 50 basis point rise in ten year US Treasuries",
+   "topic": "Treasury long-end intervention",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "Data center delays and backlash are growing, including in Texas, which just imposed a temporary data center moratorium.",
+   "anchor": "even in Texas which just imposed a temporary data center moratorium",
+   "topic": "hyperscaler capex and debt",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "claim": "The ten year Treasury yield is slightly above where it stood when the Treasury announced its Twist operation on August 19, 2026.",
+   "anchor": "The ten year Treasury yield is slightly above the level when the Twist",
+   "topic": "Treasury long-end intervention",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since August 19, 2026"
+  },
+  {
+   "claim": "The Treasury said it will increase monthly purchases of 10 to 30 year Treasuries to at least $11 billion from $5 billion, funded by shorter term issuance or its general account cash.",
+   "anchor": "increase monthly purchases of 10 to 30 year Treasuries to at least $11",
+   "topic": "Treasury long-end intervention",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "monthly"
+  },
+  {
+   "claim": "At announced amounts the 2026 Treasury Twist would be about 25% the size of the Federal Reserve's 2011-2012 Twist.",
+   "anchor": "the 2026 Treasury Twist would be ~25% of the Fed",
+   "topic": "Treasury long-end intervention",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "The outstanding stock of Treasuries with maturities longer than 10 years has risen from $1 trillion at the time of the Fed's Twist to $5.8 trillion, so the 2026 operation may constrain rising rates less than past operations.",
+   "anchor": "the outstanding stock of Treasuries with maturities longer than 10 years has risen from $1 trillion to $5.8 trillion",
+   "topic": "Treasury long-end intervention",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "The Fed's repo facility was used in July to lend money to Japan to support the sliding Yen, without which Japan might have sold some of its long duration US Treasury holdings.",
+   "anchor": "in July to lend money to Japan to support the sliding Yen, without which Japan might have sold some of its long",
+   "topic": "Treasury long-end intervention",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "July 2026"
+  },
+  {
+   "claim": "The Yen has been declining again after rallying when the July repo facility was announced.",
+   "anchor": "note that the Yen has been declining again after rallying upon the July announcement",
+   "topic": "Treasury long-end intervention",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "since July 2026"
+  },
+  {
+   "claim": "Cembalest identifies three challenges facing the Treasury in constraining bond yields from rising: strong growth relative to the Fed Funds rate, worsening fiscal deficits and debt, and hyperscaler long end issuance.",
+   "anchor": "The Treasury faces three challenges in trying to constrain bond yields from rising",
+   "topic": "Treasury long-end intervention",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "US fiscal deficits and government debt continue to worsen despite a growing economy.",
+   "anchor": "deficits and government debt continue to worsen despite a growing economy",
+   "topic": "Treasury long-end intervention",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Current US conditions on ISM employment, prices paid and supplier delivery indices sit much closer to prior Fed tightening episodes than to prior easing episodes.",
+   "anchor": "(yellow dots) are much closer to prior Fed tightening episodes (red) than easing ones (green)",
+   "topic": "Fed policy path",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "2026 debt issuance by the five hyperscalers plus NVIDIA is about $320 bn, including SPVs on which those companies are backstop obligors for data center leases.",
+   "anchor": "In 2026 so far, debt issuance by the five hyperscalers plus NVIDIA is ~$320 bn",
+   "topic": "hyperscaler capex and debt",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "JPMorgan estimates $303 bn of 2026 hyperscaler plus NVIDIA issuance in ten year equivalents, which is 68% of new Treasury long duration borrowing this year.",
+   "anchor": "component in 2026, we estimate $303 bn in ten year equivalents",
+   "topic": "hyperscaler capex and debt",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "Cembalest argues hyperscaler debt issuance may be causing a supply-demand problem at the long end of the yield curve.",
+   "anchor": "hyperscalers are issuing so much debt that they may be causing a supply-demand issue at the long",
+   "topic": "hyperscaler capex and debt",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Meta's latest debt to EBITDA is 0.45x even including SPV financing, which Cembalest contrasts with concern over hyperscaler debt growth.",
+   "anchor": "Meta\u2019s latest debt/EBITDA is just 0.45x even when including SPV financing",
+   "topic": "hyperscaler capex and debt",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "claim": "JPMorgan's August 2025 call that healthcare was a good value play worked: since publication healthcare has tracked technology returns with larger gains in mid and small cap healthcare.",
+   "anchor": "healthcare has tracked technology returns with even greater gains in mid cap and small cap healthcare",
+   "topic": "healthcare value call",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since August 12, 2025"
+  },
+  {
+   "claim": "All healthcare subsectors have shown improved returns since August 2025 with the exception of healthcare equipment.",
+   "anchor": "subsectors of healthcare have shown improved returns with the exception of healthcare equipment",
+   "topic": "healthcare value call",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "since August 12, 2025"
+  },
+  {
+   "claim": "Hyperscalers roughly tripled the return on the S&P 500 from 2022 to 2025.",
+   "anchor": "Hyperscalers roughly tripled the return on the S&P 500 from 2022-2025",
+   "topic": "hyperscaler equity performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2022-2025"
+  },
+  {
+   "claim": "JPMorgan's 2026 Outlook flagged rising risks to hyperscalers from sharply falling free cash flow, more debt-funded capital spending, fewer buybacks and weak returns on invested capital.",
+   "anchor": "the 2026 Outlook emphasized the rising risks facing hyperscalers due to sharply falling free cash flow",
+   "topic": "hyperscaler equity performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "claim": "Hyperscalers have underperformed the tech sector, the broad market and the S&P 500 ex-tech so far in 2026, validating the January 2026 call.",
+   "anchor": "Hyperscalers underperformed the tech sector, the broad market and the S&P 500 ex-tech so far in 2026",
+   "topic": "hyperscaler equity performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "In late June 2026 JPMorgan flagged that technicals of soaring semiconductor stocks had breached levels not seen since the dot-com boom.",
+   "anchor": "the technicals of soaring semiconductor stocks had breached levels not seen",
+   "topic": "Korea semiconductor unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "June 2026"
+  },
+  {
+   "claim": "Almost immediately after the June 2026 note, Korean stocks and global semiconductors began to sell off with unwinding leverage in Asia.",
+   "anchor": "Almost immediately after the June 2026 Eye on the Market, Korean stocks and global semiconductors began",
+   "topic": "Korea semiconductor unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since June 2026"
+  },
+  {
+   "claim": "At the time of the March 2026 software call, software valuations relative to the market had reached their lowest levels since 1991.",
+   "anchor": "software valuations relative to the market reached the lowest levels since 1991",
+   "topic": "US software stocks",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "March 2026"
+  },
+  {
+   "claim": "Since the March 17, 2026 call that software was oversold, large, mid and small cap software stocks have rebounded.",
+   "anchor": "large/mid/small cap software stocks have rebounded",
+   "topic": "US software stocks",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since March 17, 2026"
+  },
+  {
+   "claim": "Cembalest argues SMRs might cost more than twice current grid power options even with nth-of-a-kind cost reductions, so the nuclear renaissance is an illusion so far.",
+   "anchor": "Even with the prospect of nth-of-a-kind cost reductions, SMRs might cost 2x+ more than current grid power",
+   "topic": "nuclear SMR economics",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Since the March 3, 2026 energy paper, a benchmark nuclear index has declined relative to renewables and oil and gas.",
+   "anchor": "a benchmark nuclear index has declined relative to renewables and oil &gas",
+   "topic": "nuclear SMR economics",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since March 3, 2026"
+  },
+  {
+   "claim": "JPMorgan sees no decline in the fundamental factors behind the dollar's reserve currency role, including its share of cross border loans, FX reserves, trade invoicing and SWIFT payments.",
+   "anchor": "fundamental factors that drive the dollar",
+   "topic": "US dollar outlook",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "The dollar drifted up in 2026 and is still flat even after the Treasury intervention, supporting the January 2026 call not to short it.",
+   "anchor": "The dollar drifted up this year and is still flat even after the Treasury intervention",
+   "topic": "US dollar outlook",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "Oracle's stock jumped 25% in September 2025 after being promised $60 billion a year from OpenAI for cloud computing Oracle had not yet built.",
+   "anchor": "In September 2025, Oracle\u2019s stock jumped by 25% after being promised $60 billion a year from OpenAI,",
+   "topic": "Oracle valuation",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2025"
+  },
+  {
+   "claim": "The OpenAI cloud commitment will require 4.5 GW of power, which Cembalest equates to four nuclear power plants.",
+   "anchor": "which will require 4.5 GW of power (i.e., the same power as four 4 nuclear power plants)",
+   "topic": "Oracle valuation",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "claim": "Oracle's debt to equity ratio was already 500% versus 50% for Amazon, 30% for Microsoft and less at Meta and Google.",
+   "anchor": "debt to equity ratio was already 500% compared to 50% for Amazon",
+   "topic": "Oracle valuation",
+   "status": "released",
+   "instruments": [
+    "ORCL",
+    "AMZN",
+    "MSFT"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2025"
+  },
+  {
+   "claim": "Since the September 24, 2025 call that Oracle equity and credit were overpriced, Oracle's stock and credit spreads have sold off sharply.",
+   "anchor": "since our piece, Oracle\u2019s stock and credit spreads sold off sharply",
+   "topic": "Oracle valuation",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since September 24, 2025"
+  },
+  {
+   "claim": "JPMorgan's September 2025 view was that the Fed's next move would be a hike rather than an ease, despite White House pressure.",
+   "anchor": "would be a hike rather than an ease, despite pressure from the White House",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next Fed move"
+  },
+  {
+   "claim": "Fed Funds futures pricing for the December 2026 contract has risen by almost 1% since the September 2, 2025 call.",
+   "anchor": "Fed Funds futures prices have risen by almost 1% for the December 2026 contract since then",
+   "topic": "Fed policy path",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "December 2026 contract"
+  },
+  {
+   "claim": "US consumers now spend more than 90 minutes a day on social networks, displacing television viewing time.",
+   "anchor": "than 90 minutes a day on social networks, displacing time that used to be spent watching television",
+   "topic": "traditional media stocks",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Since the November 5, 2025 media call, Netflix, Paramount and Fox are down and Disney and Comcast are flat while the S&P 500 rose 14%.",
+   "anchor": "Netflix is down, so is Paramount and Fox, and both Disney and Comcast are",
+   "topic": "traditional media stocks",
+   "status": "released",
+   "instruments": [
+    "NFLX",
+    "FOXA",
+    "DIS",
+    "CMCSA"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since November 5, 2025"
+  },
+  {
+   "claim": "Cembalest is puzzled by Netflix's price decline given continued strong earnings and subscriber performance, though he flags the halt to certain engagement disclosures.",
+   "anchor": "puzzled by Netflix\u2019s price decline given continued strong earnings and subscriber performance, although",
+   "topic": "traditional media stocks",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "since November 5, 2025"
+  },
+  {
+   "claim": "Warner Brothers Discovery is the only one of the tracked media stocks that is up, on the back of an offer for Paramount.",
+   "anchor": "Only Warner Brothers is up, courtesy of an offer which",
+   "topic": "traditional media stocks",
+   "status": "released",
+   "instruments": [
+    "WBD"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "since November 5, 2025"
+  },
+  {
+   "claim": "Paramount's post-closing debt is estimated at 6.5x EBITDA, a level often associated with a single-B non-investment grade credit rating.",
+   "anchor": "post-closing debt is estimated at 6.5x EBITDA, a level often associated with a single-B non-investment",
+   "topic": "traditional media stocks",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Warner's merger with Discovery produced leverage of 5.0x that fell to 3.3x by the time of the Paramount acquisition through content cuts, layoffs and price hikes.",
+   "anchor": "resulted in leveraged of 5.0x which fell to 3.3x by the time of the Paramount acquisition",
+   "topic": "traditional media stocks",
+   "status": "released",
+   "instruments": [
+    "WBD"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "claim": "JPMorgan's May 26, 2026 note identified 32 Chinese companies expected to benefit from China building home-grown alternatives to AI imports.",
+   "anchor": "China is building home-grown alternatives to AI imports",
+   "topic": "China AI equities",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "May 2026"
+  },
+  {
+   "claim": "Since the May 2026 note, the China AI basket declined and underperformed a 42-stock US AI basket, a call JPMorgan scores as wrong.",
+   "anchor": "the China AI basket declined and underperformed a 42-stock US AI basket",
+   "topic": "China AI equities",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since May 26, 2026"
+  },
+  {
+   "claim": "Declining Chicago Loop commercial property values contributed to a 16.7% Chicago residential property tax hike, the largest in 30 years.",
+   "anchor": "resulted in a 16.7% Chicago residential property tax hike, the largest in 30 years",
+   "topic": "Chicago Illinois credit",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Chicago and Illinois credit default swap spreads have both tightened since the September 24, 2025 insolvency warning, which JPMorgan scores as a wrong call.",
+   "anchor": "Credit markets show no concerns at all as both spreads have tightened (!!) since then",
+   "topic": "Chicago Illinois credit",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since September 24, 2025"
+  },
+  {
+   "claim": "Since the October 16, 2025 recommendation of Western critical mineral suppliers, a Western critical minerals index is flat and the earlier 2025 gains were missed.",
+   "anchor": "since our recommendation, a Western critical minerals index is flat",
+   "topic": "Western critical minerals",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since October 16, 2025"
+  },
+  {
+   "claim": "JPMorgan's 2026 Outlook did not foresee the outsized returns in Korea, Taiwan and Japan, even after the recent correction.",
+   "anchor": "in Korea, Taiwan and Japan in the 2026 Outlook, even when incorporating the recent correction",
+   "topic": "US vs non-US equity allocation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "JPMorgan did not highlight the possibility of a recovery in US small cap after years of underperformance.",
+   "anchor": "We did not highlight the possibility of a recovery in US small cap after years of underperformance",
+   "topic": "US small cap equities",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "JPMorgan did not highlight the opportunity in Asian and EM fixed income, which has outperformed US Treasuries and investment grade corporate bonds.",
+   "anchor": "We did not highlight the opportunity in Asian/EM fixed income which has outperformed US Treasuries and",
+   "topic": "Asian EM fixed income",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "JPMorgan's January 1, 2026 call to reduce the US equity overweight versus rest of world rested on Trump trade, dollar and deficit policy plus a large non-US P/E discount.",
+   "anchor": "particularly since non-US equities still traded at a large P/E discount to the US",
+   "topic": "US vs non-US equity allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "claim": "US and non-US equities have traded in a dead heat so far in 2026 after years of US outperformance, leaving the reduce-US-overweight call unresolved.",
+   "anchor": "US and non-US equities have traded in a dead heat so far this year after years of US outperformance",
+   "topic": "US vs non-US equity allocation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026 year to date"
+  },
+  {
+   "claim": "NYC renovation payback periods can now exceed 25 years under the 2019 laws, so landlords postpone improvements.",
+   "anchor": "postpone improvements since renovation payback periods can now exceed 25 years",
+   "topic": "NYC property seizures",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Under Mamdani's plan the city will conduct roof to cellar inspections and fine landlords, and severely delinquent landlords risk being declared negligent and subject to seizure and transfer.",
+   "anchor": "Severely delinquent landlords risk being declared negligent",
+   "topic": "NYC property seizures",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Under the NYC Article 7A program in the 1970s and 1980s, city-appointed administrators collected rents on about 6,000 buildings and redirected them toward repairs.",
+   "anchor": "appointed administrators collected rents on ~6,000 buildings and redirected them toward repairs",
+   "topic": "NYC property seizures",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "1970s and 1980s"
+  },
+  {
+   "claim": "The city held Article 7A properties for about 19 years and spent billions, while rents often did not cover expenses and conditions stayed poor.",
+   "anchor": "The city held such properties for ~19 years and spent",
+   "topic": "NYC property seizures",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "claim": "Only around 30 buildings are currently administered under the NYC Article 7A program.",
+   "anchor": "30 buildings administered under the Article 7Aa program",
+   "topic": "NYC property seizures",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "current"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15549__eye-on-the-market-rear-window.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 63,
+  "matched": 63,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
