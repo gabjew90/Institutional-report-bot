@@ -1,0 +1,203 @@
+{
+ "brief": "This TME long-weekend digest strings together five desk calls. ABN Amro: EU gas storage sits at 65% against an 82% five-year average and a 90% target, with Qatari LNG exports down roughly 96% after Strait of Hormuz disruptions. Below about 30% storage, withdrawal capacity degrades, so a cold snap toward that level could reprice TTF toward \u20ac100-150+/MWh as scarcity turns physical, a tail EUR and STOXX vol have not priced. DB's Henry Allen: rates markets underprice coming inflation pressure, so either inflation rolls over or rates rise and risk assets adjust. JPM: US real policy rates are near 2% and the dollar's yield share is at a 25-year high of 50%, projected to reach 58% on three more hikes, though JPM views the dollar as 3-4% cheap and calls shorting it an imperfect debasement trade. BofA: prefers a VIX calendar call-spread collar (sell the Oct 16 put, buy the Nov 22-30 call spread) because SPX prices only a 0.82% post-election move, flags a copper squeeze from tariff front-running plus AI grid capex, and notes a tech-fund outflow since June. GS: cheap Korea valuations and record EWZ call open interest amid a Brazil short squeeze.",
+ "cards": [
+  {
+   "bank": "ABN Amro",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "ABN Amro says EU gas storage is at 65%, well below the five-year average of 82% and the EU 90% target, after Qatari LNG exports collapsed roughly 96% on Strait of Hormuz disruptions.",
+   "anchor": "EU gas\nstorage sits at just 65%, versus a five-year average of 82% and well below the EU's 90% target.",
+   "topic": "European gas storage risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "ABN Amro",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "ABN Amro says a cold snap that pushes European gas storage toward roughly 30% could cause TTF to violently reprice toward \u20ac100-150+/MWh as the problem becomes physical scarcity.",
+   "anchor": "TTF could violently reprice toward \u20ac100\u2013\n150+/MWh as the problem shifts from expensive gas to actual physical scarcity.",
+   "topic": "European gas storage risk",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "ABN Amro",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "ABN Amro says EUR and STOXX volatility remain subdued even though the probability of \u20ac100-150/MWh gas continues to rise, a disconnect it expects to become harder to ignore.",
+   "anchor": "If the probability of \u20ac100\u2013150/MWh gas continues\nto rise, that disconnect becomes increasingly difficult to ignore.",
+   "topic": "European gas storage risk",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "DB",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "DB's Henry Allen says rates markets are still underpricing the inflation pressure ahead, with only modest central bank tightening cycles priced in.",
+   "anchor": "Rates markets are still underpricing\nthe inflation pressure ahead, with only modest tightening cycles priced across central banks.",
+   "topic": "Fed inflation rate mispricing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "JPM says the dollar now yields more than 50% of global currencies, the highest share in 25 years.",
+   "anchor": "The dollar now yields more than 50% of global currencies, the highest share in 25 years.",
+   "topic": "Dollar real yield trade",
+   "status": "released",
+   "instruments": [
+    "UUP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "JPM says three additional Fed hikes would push the dollar's share of global currency yield to 58%.",
+   "anchor": "Three\nadditional Fed hikes would push that figure to 58%.",
+   "topic": "Dollar real yield trade",
+   "status": "forecast",
+   "instruments": [
+    "UUP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "JPM estimates the dollar is trading 3-4% below fair value and says shorting the highest-real-yielding major currency is not necessarily the cleanest way to express the debasement trade.",
+   "anchor": "JPM also estimates that the dollar is trading 3\u20134% below fair value.",
+   "topic": "Dollar real yield trade",
+   "status": "target",
+   "instruments": [
+    "UUP"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "BofA prefers a VIX calendar call-spread collar, selling the October 16 put and buying the November 22-30 call spread, to benefit from potential pre-election volatility support.",
+   "anchor": "BofA prefers a VIX calendar call-spread collar, selling\nthe October 16 put and buying the November 22\u201330 call spread",
+   "topic": "US midterm election vol",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Oct 16-Nov 30 expiries"
+  },
+  {
+   "bank": "TME",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "TME says North American gross flows have turned back toward gross additions after a couple months of reductions, with both longs and shorts added lately.",
+   "anchor": "North American gross flows have turned back toward gross\nadditions, with both longs and shorts added lately.",
+   "topic": "North America positioning re-gross",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "BofA says tech funds saw their biggest outflow since June 2026.",
+   "anchor": "The biggest outflow from tech funds since Jun\u201926.",
+   "topic": "Tech fund outflows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "TME",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "TME says July pulled a record 225k tonnes of copper into US warehouses on tariff front-running while cancelled LME warrants show another 121kt preparing to leave London.",
+   "anchor": "July pulled a record 225k tonnes into US\nwarehouses, while cancelled LME warrants show another 121kt preparing to leave London.",
+   "topic": "Copper tariff squeeze",
+   "status": "released",
+   "instruments": [
+    "CPER"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "TME",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "TME says Brazil shorts have been carried out on stretchers during the latest extreme melt up.",
+   "anchor": "Shorts have been carried out on stretchers during the latest extreme melt up.",
+   "topic": "Brazil equity squeeze",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "GS says open interest in EWZ call options hit record levels last week.",
+   "anchor": "Open interest in EWZ call options hit record levels last week.",
+   "topic": "Brazil equity squeeze",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "gas is flashing red copper is squeezing and rates are pricing a fantasy",
+   "claim": "BofA says the KOSPI 200 trades at just 6.2x forward earnings, the 1st percentile versus its own 10-year history, while global peers sit around the 68th percentile.",
+   "anchor": "The KOSPI 200 trades at just 6.2x forward earnings, 1st\npercentile versus its own 10-year history, while global peers sit around the 68th percentile.",
+   "topic": "Korea valuation upside",
+   "status": "released",
+   "instruments": [
+    "EWY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15632__gas-is-flashing-red-copper-is-squeezing-and-rates-are-pricin.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 14,
+  "matched": 14,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
