@@ -608,15 +608,28 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
             "picks, waivers, trending adds, another manager's roster), call lookup_fantasy_league "
             "again with that topic rather than answering from this one. "
             "Pre-season standings are all zeros and are not a draft result. "
-            "Google may supply player news, injuries and outlooks, never league state."),
+            "Google may supply player news, injuries and outlooks, never league state. "
+            "NUMBERS OR IT IS NOT AN ANSWER: every player you rate carries this "
+            "week's projected points, a rank, or a record. For players NOT in this "
+            "league (a screenshot of another league, names in the question), call "
+            "lookup_fantasy_league topic=projections, which returns this week's "
+            "pts_ppr for EVERY NFL player and not just this league's rosters, and "
+            "rate them off those. 'Elite', 'high-floor' and 'league-winning' with no "
+            "figure beside them are adjectives, not analysis."),
     }.get(tool, f"{tool.upper()}, system-fetched. Authoritative.")
     tail = (" status=error or empty means the source is unavailable: say so; do not fill the gap from memory."
             if status not in ("ok",) else "")
-    if has_images and tool == T_FANTASY:
-        tail += (" AN IMAGE IS ATTACHED TO THIS TURN. This payload is the "
-                 "asker's Omnibeta Sleeper league. If the image shows a "
-                 "roster, lineup or draft board, that is a DIFFERENT team "
-                 "and it is the one the asker means: rate what is in the "
-                 "image and use this payload only where the question is "
-                 "about Omnibeta.")
+    if has_images:
+        # Every prefetch is injected as authoritative, and none of them
+        # were fetched by looking at the picture. A screenshot is part of
+        # the question whatever it holds: a roster, a bet slip, a chart,
+        # a fill, a stat line, an article.
+        tail += (" AN IMAGE IS ATTACHED TO THIS TURN and is part of the "
+                 "question. This payload was fetched by the system and "
+                 "does not describe the image. Read the image and answer "
+                 "about what it actually shows; where the two disagree, "
+                 "the image is the subject and this payload is background.")
+        if tool == T_FANTASY:
+            tail += (" Specifically: this payload is the asker's OMNIBETA "
+                     "league, so a roster in the image is a different team.")
     return f"[{lead}{tail}]\n" + _json.dumps(result, default=str)[:6000]

@@ -470,6 +470,30 @@ def test_bot_reexports_every_tool_builder_and_executor():
         if n.startswith("_build_") and f"{n}()" in src:
             assert hasattr(B, n), n
 
+def test_an_attached_image_is_the_subject_for_every_prefetch():
+    """Owner 2026-09-09: "not all screenshots are lineups, just consider
+    screenshots in the context in general." A bet slip, a chart, a fill
+    or an article is as much the question as a roster is, and every
+    prefetch is injected as authoritative without having seen any of
+    them."""
+    for tool in (R.T_PRICE, R.T_SLATE, R.T_ROOM, R.T_ECON, R.T_CHAIN,
+                 R.T_FANTASY):
+        txt = R.inject_text(tool, {"status": "ok"}, has_images=True)
+        assert "AN IMAGE IS ATTACHED" in txt, tool
+        assert "the image is the subject" in txt, tool
+        assert "AN IMAGE IS ATTACHED" not in R.inject_text(tool, {"status": "ok"}), tool
+
+
+def test_a_fantasy_answer_is_told_where_to_get_numbers():
+    """The other half of the same complaint: the football answers were
+    adjectives. topic=projections carries pts_ppr for every NFL player,
+    so an outside-league screenshot can be rated on real figures."""
+    txt = R.inject_text(R.T_FANTASY, {"status": "ok"})
+    assert "NUMBERS OR IT IS NOT AN ANSWER" in txt
+    assert "topic=projections" in txt
+    assert "EVERY NFL player" in txt
+
+
 def test_an_attached_image_outranks_the_prefetched_sleeper_roster():
     """2026-09-09: three "rate my team" asks with a screenshot of a
     DIFFERENT league. Two came back naming the same three players from
@@ -480,18 +504,21 @@ def test_an_attached_image_outranks_the_prefetched_sleeper_roster():
     payload = {"status": "ok", "topic": "roster", "starters": ["Mahomes"]}
     with_img = R.inject_text(R.T_FANTASY, payload, has_images=True)
     assert "AN IMAGE IS ATTACHED" in with_img
-    assert "DIFFERENT team" in with_img
+    assert "different team" in with_img
     no_img = R.inject_text(R.T_FANTASY, payload)
     assert "AN IMAGE IS ATTACHED" not in no_img
     # the league-state framing survives in both
     assert "LEAGUE STATE" in with_img and "LEAGUE STATE" in no_img
 
 
-def test_the_image_note_is_fantasy_only():
-    """Every other prefetch is a number the picture cannot contradict."""
+def test_only_fantasy_gets_the_omnibeta_clarification():
+    """The generic note goes on every tool; only fantasy has a league of
+    its own to be confused with."""
     for tool in (R.T_PRICE, R.T_SLATE, R.T_ROOM, R.T_ECON):
-        assert "AN IMAGE IS ATTACHED" not in R.inject_text(
+        assert "OMNIBETA" not in R.inject_text(
             tool, {"status": "ok"}, has_images=True), tool
+    assert "OMNIBETA" in R.inject_text(
+        R.T_FANTASY, {"status": "ok"}, has_images=True)
 
 
 def test_the_caller_passes_the_image_flag_through():

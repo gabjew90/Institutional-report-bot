@@ -2247,3 +2247,35 @@ parlay", which pulled the screenshot out of the REPLIED-TO message and
 quoted its exact numbers ($18.98 to win $3,199.16, 13 legs). The
 reply-to-image path and the look-back path are both fine; only the
 fantasy roster injection was overriding what the model could see.
+
+### Same day, owner's correction: screenshots in general, and no numbers
+
+Two things wrong with the fix above.
+
+**It was roster-shaped.** Owner: "not all screenshots are lineups, just
+consider screenshots in the context in general." Right, and the flaw is
+not specific to fantasy either. EVERY prefetch is injected as
+authoritative and NONE of them were fetched by looking at the picture,
+so a chart screenshot loses to LIVE PRICES, a fill loses to the ledger,
+an article loses to the calendar, exactly as an outside-league roster
+lost to the Sleeper payload. The note is now on every tool and says the
+image is part of the question whatever it holds and is the subject
+where the two disagree; only fantasy keeps the extra line about
+Omnibeta, because only fantasy has a league of its own to be confused
+with.
+
+**The football answers carry no numbers.** "Elite volume", "high-floor
+engine", "league-winning ceiling" — three rated rosters, not one
+projected point. The data was there the whole time:
+`lookup_fantasy_league topic=projections` returns Sleeper's weekly
+`pts_ppr` for EVERY NFL player, not just the ones on a roster in this
+league, so a screenshot from an outside league can be rated on real
+figures. Nothing told the model that, and the tool doc did not say the
+topic reached beyond the league. Both now do, and the injected block
+carries the rule: every player rated carries a projection, a rank or a
+record, and adjectives without a figure are not analysis.
+
+Google was never the constraint here. `GOOGLE_POLICY[FANTASY]` has been
+True since 09-03 precisely so injuries and player news can be searched.
+The model had search and league-wide projections available and used
+neither, because nothing asked it to.

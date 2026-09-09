@@ -255,7 +255,13 @@ TOOL_DOCS["lookup_price_history"] = (
     "fill a chart axis."
 ) + _NO_SELF_TA + _COMMON
 
-TOOL_DOCS["lookup_fantasy_league"] = _COMMON
+TOOL_DOCS["lookup_fantasy_league"] = _COMMON + (
+    "\ntopic=projections returns this week's projected points (pts_ppr) "
+    "for EVERY NFL player, not only the ones on a roster in this league. "
+    "That is the topic for rating players the asker names or shows in a "
+    "screenshot from an outside league (2026-09-09: three roster "
+    "screenshots were rated with adjectives and no numbers)."
+)
 
 TOOL_DOCS["lookup_room_positions"] = (
     "WHEN TO CALL: the asker wants to know what the ROOM is in — "
