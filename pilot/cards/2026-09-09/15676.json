@@ -1,0 +1,716 @@
+{
+ "brief": "Deutsche Bank reports the session rather than arguing a thesis, but ties one chain across assets. New attacks on Saudi energy sites, explosions near Kharg Island and the US destruction of five Iranian tankers pushed Brent to $99.34/bbl this morning, near $100 for the first time in six weeks, and lifted the 6-month Brent future 1.52% to $84.78/bbl, which the note reads as growing scepticism that oil reverts over coming months. Higher energy costs fed inflation pricing: European front-end gas rose 3.46% to 75.80 euros per MWh with storage only 67% full against 79% a year earlier, and the 1-year euro inflation swap rose to 3.40%. That backdrop dampened risk appetite, the S&P 500 fell 0.58% with over 70% of the index lower, and US front-end yields rose, the 2-year to 4.39% and the 5-year to a 19-month high of 4.56%. European sovereign yields still fell because real rates dropped even as breakevens rose. China's August producer prices accelerated to +3.8%, above the +3.6% consensus, which the note attributes to the same energy shock while domestic demand stayed subdued.",
+ "cards": [
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Deutsche Bank says markets are treading water this week because rising energy prices are dampening risk appetite.",
+   "anchor": "markets seem to be treading water this week as increases in energy prices dampen risk",
+   "topic": "Middle East oil supply shock",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Brent crude is nearing the $100 level, last seen six weeks ago.",
+   "anchor": "Brent crude is nearing the $100 level last seen six weeks ago",
+   "topic": "Middle East oil supply shock",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Brent settled up 0.95% at $97.92 a barrel yesterday after giving back some of its initial gains.",
+   "anchor": "its initial gains yesterday to settle +0.95% at $97.92/bbl",
+   "topic": "Middle East oil supply shock",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Brent is a further 1.45% higher at $99.34 a barrel this morning after touching $99.67 earlier in the session.",
+   "anchor": "have left it another +1.45% higher at $99.34/bbl this morning after touching $99.67/bbl",
+   "topic": "Middle East oil supply shock",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Saudi Arabia halted operations at multiple energy sites after they were attacked, and the Houthis claimed responsibility.",
+   "anchor": "halted operations at multiple energy sites after they were attacked. The Houthis claimed",
+   "topic": "Middle East oil supply shock",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Oil prices spiked on news of explosions near Kharg Island, which houses Iran's main oil export facilities.",
+   "anchor": "explosions near Kharg Island, which houses Iran\u2019s main oil export facilities",
+   "topic": "Middle East oil supply shock",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "US Central Command announced that US forces destroyed five Iranian tankers in response to attempted ballistic missile strikes on a US Navy warship.",
+   "anchor": "Central Command announced later that US forces destroyed five Iranian tankers",
+   "topic": "Middle East oil supply shock",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Iranian state TV cited an IRGC warning to tankers near Bahraini and Kuwaiti piers to evacuate as they will be targeted.",
+   "anchor": "Iranian state TV cited an IRGC warning to tankers in the vicinity of Bahraini and Kuwaiti piers",
+   "topic": "Middle East oil supply shock",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Iran launched missiles towards an air base in Jordan overnight.",
+   "anchor": "Iran also launched missiles towards an air base in Jordan overnight",
+   "topic": "Middle East oil supply shock",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Investors are growing more concerned about further supply disruption and are pricing a longer period of high energy prices.",
+   "anchor": "investors growing more concerned about further disruption and pricing a longer period of",
+   "topic": "Middle East oil supply shock",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 6-month Brent future rose 1.52% to $84.78 a barrel, its highest close since mid-June, and is another 1.45% higher this morning.",
+   "anchor": "the 6-month Brent future (+1.52%) closed at its highest level since mid-June",
+   "topic": "Middle East oil supply shock",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "6 months"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Deutsche Bank notes growing scepticism that oil prices will meaningfully revert over the coming months.",
+   "anchor": "So there is growing scepticism that oil prices will meaningfully revert over the coming months",
+   "topic": "Middle East oil supply shock",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "coming months"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Brent oil is quoted at 99.09, up 2.25% from the prior 04:30 GMT mark.",
+   "anchor": "(Brent Oil^ @ 99.09 // +2.25%)",
+   "topic": "Middle East oil supply shock",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The European front-end natural gas future rose 3.46% to 75.80 euros per MWh, its highest since January 2023.",
+   "anchor": "the front-end future rose +3.46% to \u20ac75.80/MWh, its highest since January 2023",
+   "topic": "European gas and inflation",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "European gas storage is only 67% full, lower than is normal for this time of year, as Europe seeks to refill ahead of winter.",
+   "anchor": "it\u2019s still only 67% full, which is lower than it\u2019s normally been",
+   "topic": "European gas and inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "European gas storage was 79% full at this point in 2025 and 93% full in 2024.",
+   "anchor": "storage was 79% full in 2025, and was 93% full in 2024",
+   "topic": "European gas and inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The European gas storage refilling shortfall is concentrated in northern continental countries, with Germany 55% full and the Netherlands 50% full.",
+   "anchor": "including Germany (55% full) and Netherlands (50% full)",
+   "topic": "European gas and inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 1-year euro inflation swap rose 2.9bps to 3.40%, its highest since May.",
+   "anchor": "with the 1yr Euro inflation swap (+2.9bps) moving back up to 3.40%, its highest since May",
+   "topic": "European gas and inflation",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10-year German breakeven inflation rate is at 2.20, up 1bp.",
+   "anchor": "(10y German Breakeven @ 2.20 // 1 bp)",
+   "topic": "European gas and inflation",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The ECB holds its policy meeting tomorrow and Deutsche Bank expects its comments on the latest energy and inflation developments to be of interest.",
+   "anchor": "The ECB's comments on the latest developments at their policy meeting tomorrow will be fascinating",
+   "topic": "ECB September meeting",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Markets price 47bp of further ECB hikes or cuts for 2026, unchanged on the day.",
+   "anchor": "(Further ECB hikes/cuts priced for 2026 @ 47 // 0 bp)",
+   "topic": "ECB September meeting",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The S&P 500 fell 0.58%, a fresh decline as US markets returned after Labor Day.",
+   "anchor": "the S&P 500 (-0.58%) posted a fresh decline as US markets returned after Labor Day",
+   "topic": "US equity session",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The S&P 500 decline was broad-based, with more than 70% of the index lower on the day.",
+   "anchor": "fell back as part of a broad-based decline, with more than 70%",
+   "topic": "US equity session",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The Nasdaq fell 0.32% and the Mag-7 fell 0.35%, smaller declines than the S&P 500.",
+   "anchor": "The Nasdaq (-0.32%) and the Mag-7 (-0.35%) saw slightly smaller declines",
+   "topic": "US equity session",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "A recovery in chipmakers sent the Philadelphia semiconductor index up 1.30% for a fourth consecutive session of gains.",
+   "anchor": "a recovery in chipmakers, which also sent the Philly semiconductor index (+1.30%) higher for",
+   "topic": "US equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "S&P 500 futures are up 0.09% and Nasdaq 100 futures are up 0.22% this morning.",
+   "anchor": "S&P 500 futures are up +0.09% with Nasdaq 100 futures",
+   "topic": "US equity session",
+   "status": "level",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The S&P 500 closed at 7674, down 0.58%.",
+   "anchor": "(S&P 500 @ 7674 // -0.58%)",
+   "topic": "US equity session",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The STOXX Europe 600 slipped 0.05%, with continental indices generally showing little movement.",
+   "anchor": "the STOXX 600 (-0.05%) slipped back again slightly",
+   "topic": "European equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The FTSE 100 and the FTSE MIB each fell 0.10%.",
+   "anchor": "the FTSE 100 (-0.10%) and FTSEMIB (-0.10%) posted modest declines",
+   "topic": "European equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The CAC 40 rose 0.14%.",
+   "anchor": "whilst the CAC 40 (+0.14%) eked out a gain",
+   "topic": "European equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Stoxx futures are around half a percent lower this morning.",
+   "anchor": "Stoxx futures are around half a percent",
+   "topic": "European equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The STOXX Europe 600 closed at 650, down 0.05%.",
+   "anchor": "(STOXX Europe 600 @ 650 // -0.05%)",
+   "topic": "European equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Tech strength is supporting the KOSPI, up 1.63% and again outperforming regional peers.",
+   "anchor": "tech continues to support the KOSPI (+1.63%) which is again outperforming regional peers",
+   "topic": "Asian equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Japan's Nikkei is up 0.07%, Hong Kong's Hang Seng up 0.02%, China's CSI 300 up 0.10% and the ASX down 0.17%, all struggling to gain traction.",
+   "anchor": "Japan's Nikkei (+0.07%), Hong Kong's Hang Seng (+0.02%), China's CSI 300 (+0.10%)",
+   "topic": "Asian equity session",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 2-year Treasury yield rose 2.8bps to a one-week high of 4.39%.",
+   "anchor": "the 2yr yield was up +2.8bps to a one-week high of 4.39%",
+   "topic": "US Treasury yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 5-year Treasury yield rose 1.8bps to close at a 19-month high of 4.56%.",
+   "anchor": "the 5yr Treasury yield (+1.8bps) closed at a 19-month high of 4.56%",
+   "topic": "US Treasury yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "5 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10-year Treasury yield rose 0.7bps to 4.79%, just shy of its 4.80% peak a week earlier, which was the highest since October 2023.",
+   "anchor": "only saw a very modest increase to 4.79%, leaving it just shy of its 4.80% peak",
+   "topic": "US Treasury yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Markets price 36bp of further Fed hikes or cuts for 2026, 2bp more than the prior day.",
+   "anchor": "(Further Fed hikes/cuts priced for 2026 @ 36 // 2 bp)",
+   "topic": "US Treasury yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10-year US real yield is at 2.41, down 1bp.",
+   "anchor": "(10y US Real Yield @ 2.41 // -1 bp)",
+   "topic": "US Treasury yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10-year US breakeven inflation rate is at 2.38, up 2bps.",
+   "anchor": "(10y US Breakevens @ 2.38 // 2 bp)",
+   "topic": "US Treasury yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The US Treasury runs an upsized long-end buyback operation tomorrow, with the size expected to be announced today.",
+   "anchor": "the US Treasury\u2019s upsized long-end buyback operation tomorrow, the size of which",
+   "topic": "US Treasury buybacks",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Bessent described the increased buyback operations announced last month as aiming to quell a fever that was building in the bond market.",
+   "anchor": "Bessent described the increased operations which were announced last month as aiming to quell a \u201cfever\u201d",
+   "topic": "US Treasury buybacks",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Yields on 10-year bunds fell 2.0bps, OATs 1.8bps and BTPs 2.2bps, so all three rallied.",
+   "anchor": "10yr bunds (-2.0bps), OATs (-1.8bps) and BTPs (-2.2bps) all rallied",
+   "topic": "European sovereign bonds",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "A reduction in real rates left European sovereign bond yields lower on the day even as inflation breakevens moved higher.",
+   "anchor": "reduction in real rates ultimately left sovereign bond yields lower on the day",
+   "topic": "European sovereign bonds",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The 10-year bund yield is at 3.37, down 2bps.",
+   "anchor": "(10yr Bund @ 3.37 // -2 bp)",
+   "topic": "European sovereign bonds",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "UK gilts underperformed European peers, with the 10-year yield down only 0.2bps, in part because gilts are more sensitive to higher oil prices.",
+   "anchor": "underperformer, with the 10yr yield only down -0.2bps",
+   "topic": "UK gilts and BoE",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Bank of England Governor Bailey warned that inflation risks remain on the upside.",
+   "anchor": "But Bank of England Governor Bailey also warned that inflation risks",
+   "topic": "UK gilts and BoE",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "China's inflation pressures picked up in August, with both factory-gate and consumer price growth accelerating.",
+   "anchor": "China's inflation pressures picked up in August, with both factory-gate",
+   "topic": "China August inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "China's producer prices rose 3.8% year-on-year in August, above the 3.6% expected and up from 3.5% in July.",
+   "anchor": "Producer prices rose +3.8% year-on-year, above economists' expectations of +3.6% and up from",
+   "topic": "China August inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "China's consumer prices rose 0.8% year-on-year in August, in line with forecasts and accelerating from July's 0.5%.",
+   "anchor": "consumer prices increased +0.8% from a year earlier, in line with forecasts and",
+   "topic": "China August inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The pickup in China's August inflation was driven largely by higher energy costs linked to Middle East supply risks, with underlying domestic demand still subdued.",
+   "anchor": "supply risks stemming from the Middle East conflict, even as underlying domestic demand remained",
+   "topic": "China August inflation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "The NFIB small business optimism index fell more than expected to 98.7 in August against 99.3 expected, after rising over June and July.",
+   "anchor": "That fell more than expected to 98.7 in August (vs. 99.3 expected)",
+   "topic": "US sentiment surveys",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "In the NY Fed Survey of Consumer Expectations, the mean probability of a higher US unemployment rate in a year rose to 44.4%, the highest since April 2020.",
+   "anchor": "rate being higher in a year rose to 44.4%, the highest in the survey since April 2020",
+   "topic": "US sentiment surveys",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Today's data releases include French industrial production for July.",
+   "anchor": "data releases include French industrial production for July",
+   "topic": "day ahead calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Bundesbank President Nagel is among today's central bank speakers.",
+   "anchor": "speakers include Bundesbank President Nagel. And today is also when the US Treasury department will",
+   "topic": "day ahead calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Early Morning Reid - Macro Strategy",
+   "claim": "Deutsche Bank lists no economic data releases scheduled for today in its key economic data table.",
+   "anchor": "There are no economic data releases scheduled today",
+   "topic": "day ahead calendar",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15676__early-morning-reid-macro-strategy.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 56,
+  "matched": 56,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
