@@ -1,0 +1,373 @@
+{
+ "brief": "Friday printed the year's lowest cash equity volume, the lowest intraday VIX at 13.8, and the second lowest average single stock vol near 30.5, but the note argues the autumn calendar of inflation and job prints, a possible Fed hike, US midterms, conferences, AI releases and earnings will lift both activity and volatility into December, with geopolitics the wildcard. The market prices a 60% chance of a 16 September hike, up from about 30% before Jackson Hole, while the GS house view stays no hike, making Tuesday's PPI and Friday's CPI the decisive datapoints. The SPX surface looks unconcerned, with the Friday straddle at 100bps. The long end is the larger risk: the 30 year yield one month average is above 5.2% for the first time since 2003, and sticky inflation, Treasury supply and term premium rebuilding can push it higher without a hike. Implied vol sits at year to date lows, six month SPX realized correlation of 11 has only two precedents in 25 years and historically ends in index vol convexity, and GS prime brokerage net and gross are back at April to May 2025 lows, which the note reads as a market not full on exposure.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Friday was the lowest cash equity volume session of the year.",
+   "anchor": "friday marked the lowest cash volume session of the year (mvoluse)",
+   "topic": "autumn calendar inflection",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Friday saw the lowest intraday VIX print of the year at 13.8.",
+   "anchor": "the lowest intraday VIX of the year (13.8)",
+   "topic": "autumn calendar inflection",
+   "status": "released",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Friday saw the second lowest average single stock volatility level of the year at roughly 30.5.",
+   "anchor": "the second lowest \u201cavg single\u201d stock volatility level of the year (~30.5)",
+   "topic": "autumn calendar inflection",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs expects the event calendar from now through December to lift both market activity and volatility levels.",
+   "anchor": "the calendar is set to inflect higher from now to december",
+   "topic": "autumn calendar inflection",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "now to December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs names geopolitics, including Iran and oil, Russia and Ukraine and a China Xi visit, as the wildcard over the autumn event calendar.",
+   "anchor": "unknowns is geopolitics \u2013 the potential for escalation or de-escalation across iran/oil, russia/ukraine,",
+   "topic": "autumn calendar inflection",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "now to December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "The August jobs number reinforced Warsh's assessment that the labor market is solid, shifting the Fed debate to inflation.",
+   "anchor": "the job number reinforced warsh\u2019s assessment that labor market is solid",
+   "topic": "September Fed hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Market-implied probability of a Fed hike on 16 September is 60%, up from about 30% before Jackson Hole.",
+   "anchor": "the probability of a hike on 16sept is 60% (up from ~30% pre Jackson hole)",
+   "topic": "September Fed hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "16 September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "The Goldman Sachs house view maintains no hike at the September meeting.",
+   "anchor": "while the gs house view maintains \u201cno hike,\u201d",
+   "topic": "September Fed hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "16 September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs calls Tuesday's PPI and Friday's CPI the two most important datapoints before the September Fed decision.",
+   "anchor": "the PPI on Tuesday and the CPI on Friday will be the two most important",
+   "topic": "September Fed hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "The SPX straddle for Friday, the CPI session, is priced at 100bps, which Goldman Sachs reads as the options surface not being worried about the inflation prints.",
+   "anchor": "with the friday straddle priced at 100bps",
+   "topic": "September Fed hike odds",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs sees the long end of the curve as the greater risk.",
+   "anchor": "the long end remains the greater risk",
+   "topic": "long end yields",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "The 30 year Treasury yield one month average is above 5.2% for the first time in earnest since 2003.",
+   "anchor": "the 30yr yield 1m avg is north of 5.2% for the first time",
+   "topic": "long end yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1 month average"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs argues sticky inflation, Treasury supply and term premium rebuilding can push long end yields higher even without a Fed hike, tightening financial conditions through long duration assets and leveraged balance sheets.",
+   "anchor": "sticky inflation, treasury supply, and term premium rebuilding can push these",
+   "topic": "long end yields",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "The MOVE index closed Friday at 73, the 14th percentile on a five year lookback.",
+   "anchor": "MOVE index closed Friday at 73 (14th percentile, 5y",
+   "topic": "long end yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "5 year lookback"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "The Goldman Sachs flow exotics menu carries many rate versus equity dual structures trading below the 10th percentile.",
+   "anchor": "the gs \u201cflow exo\u201d menu has a plethora of rate vs equity duals trading in the sub 10th",
+   "topic": "long end yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Implied volatility across both index and single stocks is trading at year to date lows.",
+   "anchor": "implied vol across assets (index and singles) is trading at year to date lows",
+   "topic": "cross-asset implied vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Implied volatility across software, semis, internet and broader TMT has moved from very expensive to extremely reasonable.",
+   "anchor": "implieds across the tech sector (software, semis, internet, tmt, etc) went from \u201ceye wateringly\u201d",
+   "topic": "cross-asset implied vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Single stock vol, custom basket options, delta one and ETF options have been the desk's preferred vehicles over index vol.",
+   "anchor": "singles vol / custom basket options / 1delta + etf options have been",
+   "topic": "cross-asset implied vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Realized correlation across SPX constituents over the last six months is 11, a level matched only twice in 25 years.",
+   "anchor": "correlation across SPX over the last six months is 11, only two periods in the last 25 years",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last six months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "The only comparable low realized correlation periods were February 2007 and January 2018, the latter just before volmageddon.",
+   "anchor": "Feb 2007 (senior yr college) and Jan 2018 (just before \u201cvolmageddon\u201d)",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "25 year history"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs argues correlation levels this low are not sustainable and have historically ended in a burst of index vol convexity, with the caveat that past performance does not indicate future returns.",
+   "anchor": "levels this low are not sustainable and have ended in a starburst of index vol convexity",
+   "topic": "SPX realized correlation",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs scattered 6 month implied volatility as of 1 March 2026 against subsequent 6 month realized volatility through 1 September for the 50 highest and 50 lowest implied vol names in the SPX.",
+   "anchor": "highest and lowest implied vol for 50 names in SPX (100 names total)",
+   "topic": "single stock vol mispricing",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "1 March 2026 to 1 September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Over summer 2026 the highest implied vol single stocks outrealized their higher hurdles and the lowest implied vol names underrealized their lower hurdles, so high vol did not mean expensive and low vol did not mean cheap.",
+   "anchor": "high vol outrealized even higher hurdles \u2026 low vol under realized even lower hurdles",
+   "topic": "single stock vol mispricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "summer 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs prime brokerage flagged that both net and gross exposure levels retraced to their post-liberation day lows of April to May 2025.",
+   "anchor": "gs pb has flagged that both net and gross levels had retraced to post-liberation day lows",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "SPX rallies have been almost twice as volatile as SPX selloffs.",
+   "anchor": "spx rallies have been almost twice as volatile as",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "SPX call implied volatility has a much higher realized correlation to SPX spot than usual.",
+   "anchor": "spx call implieds have a much higher realized correlation to spx spot",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs reads the rally behavior and light exposure as evidence the market is not full on exposure.",
+   "anchor": "behavior of a market \u201cfull\u201d on exposure",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep 7 Sep 2026",
+   "claim": "Goldman Sachs expects conference season, including the GS Communacopia conference this week, to exacerbate the light positioning dynamic.",
+   "anchor": "conference season could exacerbate this dynamic (gs",
+   "topic": "hedge fund positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15584__gs-garrett-weekend-prep-7-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 28,
+  "matched": 28,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
