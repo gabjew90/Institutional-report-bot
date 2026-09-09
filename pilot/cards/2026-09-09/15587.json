@@ -1,0 +1,367 @@
+{
+ "brief": "Goldman's EU index vol desk reports European spot roughly unchanged on Friday and lower on the week (SXXP -0.81%), with the tape driven by climbing oil and refined products (CO1 +7.80%, XBA +5.39%) and global sovereign yields at new cycle highs rather than by earnings or Fed speak. NFP printed 4 SD above consensus with positive revisions, which moved September hike odds from 50 to 62%, and CPI next week is framed as the more pivotal print. Against that backdrop index vol compressed aggressively, most violently in the belly of the curve, with the SX5E 15 day ATM fixed strike move one of the largest in recent years despite no stressed environment. Luey reads the 1 year pressure as more SPX driven in an illiquid summer tape and questions whether it is rational, since 1y1y is treated as a recession proxy and recession looks unlikely with AI capex intact, while softer high beta vol cuts relative index vol demand. On flows, discretionary nets sub 10th percentile leave room for re-risking, CTAs are long at the 84th percentile and sell 1-2% lower, and buybacks at 1.3x ADTV fade into the ~15 September blackout.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "European spot indices were relatively unchanged on Friday and finished the week lower, with the SXXP down 0.81%.",
+   "anchor": "EU spots relatively unch on Friday, finishing the week lower (SXXP -0.81%)",
+   "topic": "European equity tape",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Goldman attributes the European tape to macro headwinds from climbing oil and refined products, with CO1 up 7.80% and XBA up 5.39%, plus rising global bond yields.",
+   "anchor": "macro headwinds of climbing oil/refined products (CO1 +7.80%, XBA +5.39%) and rising global bond yields are driving the tape",
+   "topic": "global yields and oil",
+   "status": "released",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Global aggregate sovereign debt yields across all maturities hit new cycle highs, levels not seen since 2007.",
+   "anchor": "Global aggregate sovereign debt yields across all maturities hit new cycle highs- levels not seen since 2007",
+   "topic": "global yields and oil",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "NFP printed 4 standard deviations above consensus estimates, above every surveyed economist, and came with positive revisions.",
+   "anchor": "NFP printed 4 SD above than consensus estimates, higher than all surveyed economists with positive revisions",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "The payrolls print moved September Fed hike odds from 50% to 62%.",
+   "anchor": "which saw Sep hike odds move from 50 to 62%",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September FOMC"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Goldman treats CPI next week as more pivotal than payrolls for Fed decision making.",
+   "anchor": "Though not as pivotal as CPI next week for Fed decision making",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "CPI next week carries plenty of extra variance in FX vol surfaces.",
+   "anchor": "CPI is big next week with plenty of extra variance in FX vol surfaces",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "The FOMC decision is garnering the most variance the author can remember for such an event.",
+   "anchor": "The FOMC decision itself is already garnering the most variance for such an event I can remember",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "European equities have struggled recently as EU gas hit new highs.",
+   "anchor": "European equities have struggled recently as EU gas hit new highs",
+   "topic": "European equity tape",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Left tails from French politics and Russia/Ukraine have become fatter in recent weeks, with a Le Pen/Melenchon second round trading around 32%.",
+   "anchor": "left tails in French politics (Le Pen/Melenchon 2nd round trading ~32%) and Russia/Ukraine have become fatter in recent weeks",
+   "topic": "European equity tape",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "The SX5E/SPX ratio has been drifting lower but bounced on Friday after NFP as financials outperformed.",
+   "anchor": "The SX5E/SPX ratio has been drifting lower though it did bounce on Friday after NFP as financials outperformed",
+   "topic": "European equity tape",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "SX5E is now 29% financials compared with 12% in SPX.",
+   "anchor": "SX5E is now 29% financials compared to 12% in SPX",
+   "topic": "European equity tape",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Aggressive vol compression continued through the week and the vol crush was particularly violent in the belly of the curve.",
+   "anchor": "On the week the vol crush was particularly violent in the belly of the curve",
+   "topic": "index vol compression",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Intraday and for much of the week vols went lower regardless of the direction of spot.",
+   "anchor": "Intraday (and much of the week) vols seemed to go lower regardless of spot",
+   "topic": "index vol compression",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "The SX5E 15 day ATM fixed strike vol move has been one of the largest in recent years, notable because it did not come out of a stressed market environment.",
+   "anchor": "the SX5E 15 day ATM fixed strike vol move has been one of the largest in recent years",
+   "topic": "index vol compression",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Goldman says it is unclear what is driving the pressure in the 1 year part of the vol curve.",
+   "anchor": "It\u2019s unclear what is driving the pressure in the 1 year part of the curve",
+   "topic": "index vol compression",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "SPX 1y1y forward vol, which the author has argued looked rich for a while, had a more pronounced move lower than SX5E.",
+   "anchor": "SPX 1y1y fwd vol (which I have argued has looked rich for a while) had an even more pronounced move lower than SX5E",
+   "topic": "index vol compression",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "1y1y forward vol is often viewed as a proxy for recession probability in the next year, and Goldman says recession feels increasingly unlikely with the AI capex cycle firmly intact and equity markets at the highs.",
+   "anchor": "which does feel increasingly unlikely as the AI capex cycle feels firmly intact and equity markets trading at the highs",
+   "topic": "index vol compression",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Goldman suggests the relaxation of higher beta vols means less demand for index vol on a relative basis, possibly reverse dispersion unwinds.",
+   "anchor": "the relaxation of higher beta vols (i.e. dispersion) means there is less demand for index vol on a relative basis",
+   "topic": "index vol compression",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "On the SPX min/max term structure over the last year, the front of the curve is more or less trading at the lows.",
+   "anchor": "whilst the front of the curve is more or less trading at the lows",
+   "topic": "index vol compression",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "On the SPX min/max term structure over the last year, the 2 to 3 year part of the curve is middle of the range.",
+   "anchor": "the 2 to 3 year part of the curve is middle of the range",
+   "topic": "index vol compression",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "According to GS Prime Brokerage the discretionary community's nets and long/short ratios are sub 10th percentile and gross is at the 27th percentile on a 1 year lookback.",
+   "anchor": "Nets and L/S ratios are sub 10th percentile and Gross is well of the highs (27th percentile on 1 year lookback)",
+   "topic": "equity positioning and flows",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Goldman says light discretionary positioning leaves room for re-risking as investors return from summer break.",
+   "anchor": "As such there is room for re-risking as people return from summer break",
+   "topic": "equity positioning and flows",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "The systematic community is long, with Goldman's CTA model showing length around the 84th percentile.",
+   "anchor": "the systematic community is long (our CTA model has length ~84th percentile)",
+   "topic": "equity positioning and flows",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Systematic flow is relatively dormant at this spot but the cohort will be sellers 1-2% lower.",
+   "anchor": "Flow from this cohort is relatively dormant at this spot, however they will be sellers 1-2% lower",
+   "topic": "equity positioning and flows",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "Buybacks are currently running at 1.3x 2025 average daily trading volume, which has been supportive.",
+   "anchor": "Buybacks are currently running at 1.3x 2025 ADTV which has been supportive",
+   "topic": "equity positioning and flows",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "The Q3 buyback blackout window begins around 15 September, when roughly 40% of the S&P 500 is estimated to enter blackout.",
+   "anchor": "the Q3 blackout window begins ~15th Sep when roughly 40% of S&P500 is estimated to enter its blackout window",
+   "topic": "equity positioning and flows",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "from ~15 September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Luey - EU Index Vol Commentary 4 Sep 2026",
+   "claim": "The blackout start coincides with historical mid to late September seasonal weakness, which Goldman says feels extremely well flagged.",
+   "anchor": "This conveniently coincides with the historical mid to late Sep seasonal weakness",
+   "topic": "equity positioning and flows",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "mid to late September"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15587__gs-luey-eu-index-vol-commentary-4-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 28,
+  "matched": 28,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
