@@ -1,0 +1,675 @@
+{
+ "brief": "Goldman Sachs TMT specialist sales note ahead of the firm's San Francisco technology conference. It argues the two questions that decide the AI trade are AI monetisation and the durability of the capex cycle: Q2 fundamentals from Nvidia, Broadcom and Dell were strong but price action has been mixed, so what matters is whether managements can show compute demand, pricing and capacity still accelerating into 2027, and whether the buildout is reaching software and application-layer names. The desk reads positioning as friendly going in, with fundamental long/short gross leverage in the 27th percentile, net leverage in the 4th, and semiconductor implied volatility down from about 65 in July to 36. It expects Adyen to open lower on a report that Anthropic is assessing in-housing payments infrastructure, while noting Anthropic calls Stripe a key partner and near-term replacement is not implied. The remainder reports rather than argues: SIA July shipments, ASML's de-rating, raised optical transceiver forecasts, Samsung's tighter-2027 memory view, Apple's launch event, Vodafone's double upgrade against Cellnex's downgrade, and a desk view that AI borrowing is pressuring long-end yields.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman says Q2 fundamental data points from Nvidia, Broadcom and Dell were strong while price action in those names has been more mixed.",
+   "anchor": "Q2 delivered strong fundamental data points \u2014 particularly from Nvidia, Broadcom and Dell \u2014 but price action has been more mixed",
+   "topic": "AI capex durability",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AVGO",
+    "DELL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Steve Eisman remains constructive on the AI cycle while watching risks around OpenAI more closely, per the podcast Goldman summarises.",
+   "anchor": "Steve Eisman remains constructive on the AI cycle, but is watching risks around OpenAI more closely",
+   "topic": "AI capex durability",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman says many SaaS and application software names still need clearer evidence of AI-driven usage, pricing or revenue reacceleration.",
+   "anchor": "while many SaaS/apps names need clearer evidence of AI-driven usage, pricing or revenue reacceleration",
+   "topic": "AI monetisation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "The All-In podcast takeaway Goldman relays is that companies should pay frontier model prices only when the last few points of capability matter.",
+   "anchor": "companies should pay frontier prices only when the final few points of capability really matter",
+   "topic": "AI monetisation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Commodity AI models can already handle roughly 98-99% of common tasks at much lower cost than frontier models, per the podcast summary.",
+   "anchor": "commodity models can already handle roughly 98\u201399% of common tasks at much lower cost",
+   "topic": "AI monetisation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "George Cole estimates investment equivalent to roughly 1% of global GDP may need to be redirected to finance AI-related issuance.",
+   "anchor": "estimating that investment equivalent to roughly 1% of global GDP may need to be redirected to finance AI-related issuance",
+   "topic": "AI capex funding pressure",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Rich Privorotsky argues AI capex and private-sector borrowing compete with Treasury issuance for a finite savings pool, pressuring long-end yields upward.",
+   "anchor": "are supporting earnings growth while simultaneously competing with Treasury issuance for a finite pool of savings",
+   "topic": "AI capex funding pressure",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman's TMT sales desk expects Adyen shares to open down following The Information article on Anthropic's payments plans.",
+   "anchor": "I would expect Adyen to open down",
+   "topic": "Adyen payments risk",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "The Information reports Anthropic is assessing how much payments and finance infrastructure to build in-house versus outsource.",
+   "anchor": "The article suggests Anthropic is assessing how much of its payments and finance infrastructure to build in-house versus outsource",
+   "topic": "Adyen payments risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Anthropic says Stripe remains a key partner and Goldman notes replacing a full processor would take time.",
+   "anchor": "Anthropic says Stripe remains a key partner, and replacing a full processor would take time",
+   "topic": "Adyen payments risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman prime brokerage data shows gross leverage for US fundamental long/short managers in the 27th percentile over the past year.",
+   "anchor": "Gross leverage for US fundamental long/shorts is in the 27th percentile over the past year",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman prime brokerage data shows net leverage for US fundamental long/short managers in only the 4th percentile.",
+   "anchor": "while net leverage is only in the 4th percentile",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "VXSMH, a proxy for semiconductor implied volatility, has fallen from roughly 65 in July to 36.",
+   "anchor": "VXSMH, a proxy for semiconductor implied volatility, has dropped from roughly 65 in July to 36",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Fundamental long/short managers gained 0.6% on the week with alpha of +0.7% and are up 14.3% year to date.",
+   "anchor": "Fundamental LS managers up 0.6% (alpha: +0.7%), ended August flat with beta gains offsetting alpha losses",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Systematic long/short managers gained 1.3% on the week, 3.0% in August, and are up 17.0% year to date.",
+   "anchor": "Systematic LS managers up 1.3% this week, up 3.0% in August and now up 17.0% YTD",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Europe was the most net bought region on Goldman's prime book this week after being the most net sold region last week.",
+   "anchor": "Europe was the most net bought region after being the most sold region last week",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "SIA data shows integrated circuit unit shipments excluding memory fell 5% month over month in July, better than typical seasonality.",
+   "anchor": "shipments of integrated circuits units (ex. memory) decreased 5% month over month in July",
+   "topic": "semiconductor shipments",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Logic, DRAM, NAND and MPU segments all saw worse-than-seasonal month-over-month unit declines in July, which Goldman attributes to PC softness.",
+   "anchor": "Logic, DRAM, NAND, and MPUs all saw worse-than-seasonal M/M unit declines",
+   "topic": "semiconductor shipments",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Overall semiconductor shipments are tracking 7% above long-term demand trend on a three-month moving average, up from 4% above trend in June.",
+   "anchor": "overall shipments are now tracking 7% above long-term demand on a three-month moving average basis",
+   "topic": "semiconductor shipments",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman continues to prefer Microchip, NXP and Analog Devices among semiconductor names.",
+   "anchor": "We continue to prefer Microchip, NXP, and Analog Devices",
+   "topic": "semiconductor shipments",
+   "status": "released",
+   "instruments": [
+    "MCHP",
+    "NXPI",
+    "ADI"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "ASML has de-rated to sub-20x 2027 EV/EBITDA, a measure of enterprise value to core profits, from about 30x in July while estimates still move higher.",
+   "anchor": "ASML has de-rated materially to sub-20x 2027 EV/EBITDA (vs ~30x in July) while numbers still move higher",
+   "topic": "semis valuation re-rating",
+   "status": "level",
+   "instruments": [
+    "ASML"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "ASML has returned an average of +11.5% over the following six months in the five instances in the last ten years it fell under 20x 24-month EV/EBITDA.",
+   "anchor": "ASML has an avg return of +11.5% 6m after it drops under 20x 24m EV/EBITDA",
+   "topic": "semis valuation re-rating",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "6 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman research is constructive on optical transceiver growth, supported by AI infrastructure spending driving demand.",
+   "anchor": "GIR are constructive on the optical transceiver growth ahead, supported by the growing AI infrastructure spending driving demand",
+   "topic": "optical transceiver demand",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman research raised global optical transceiver shipment estimates by 21%, 31% and 31% for 2026 to 2028.",
+   "anchor": "GIR raised the global optical transceiver shipment by 21%/ 31%/ 31% for 2026-28E",
+   "topic": "optical transceiver demand",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-28E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman research raised 800G-plus optical transceiver shipment estimates by 31%, 39% and 36% for 2026 to 2028.",
+   "anchor": "800G+ shipment by 31%/ 39%/ 36% for 2026-28E",
+   "topic": "optical transceiver demand",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-28E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Co-packaged optics equipment is moving closer to mass production in late 2026 with a broader ramp in 2027, though the testing flow remains fluid.",
+   "anchor": "CPO equipment is moving closer to mass production in late 2026 with a broader ramp up in 2027",
+   "topic": "CPO test equipment",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "late 2026 into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "GPTC management guides annual capacity to 200-250 units in 2026 with roughly another 100 units coming online by end-2027.",
+   "anchor": "management is currently guiding its annual capacity to reach 200-250 units in 2026",
+   "topic": "CPO test equipment",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 to end-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Hon Precision reiterates guidance for 40% annual capacity expansion and has a CPO testing mass-production model up for customer qualification in October.",
+   "anchor": "Hon Precision 7769 TT reiterates annual 40% capacity expansion",
+   "topic": "CPO test equipment",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Samsung Electronics reiterated that 2027 memory supply will be tighter than 2026 with tightness persisting into 2028.",
+   "anchor": "Reiterated its view of 2027 memory supply being tighter than 2026, with tightness to persist in 2028",
+   "topic": "memory supply and pricing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027 into 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Global NAND flash market revenue rose 70% quarter over quarter in Q2, driven by surging product prices.",
+   "anchor": "global NAND flash market revenue increased by 70% qoq in Q2",
+   "topic": "memory supply and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Samsung Electronics and SK Hynix hold the top two global NAND positions with a combined market share of 47%.",
+   "anchor": "secured the top two global positions with a combined market share of 47%",
+   "topic": "memory supply and pricing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "LG Electronics rose 9% on the session on a Nasdaq IPO push for its 56.9%-owned US subsidiary Bear Robotics.",
+   "anchor": "LGE (066570) +9% this morning\u2026 NASDAQ IPO push of its US subsidiary",
+   "topic": "LG Electronics AI infrastructure",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "LG Electronics secured NVIDIA certification for its 600kW coolant distribution unit, making it a verified AI Factory infrastructure partner.",
+   "anchor": "LGE secured official NVIDIA certification for its 600kW Coolant Distribution Unit (CDU)",
+   "topic": "LG Electronics AI infrastructure",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "LG Electronics booked 600 billion won of cooling orders in H1 2026 and plans a potential $360 million chiller plant in Virginia.",
+   "anchor": "combined with 600 billion won in H1 2026 cooling orders and plans for a potential $360 million chiller plant in Virginia",
+   "topic": "LG Electronics AI infrastructure",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Apple's Wednesday launch event could be one of its biggest in years and is the first with John Ternus as CEO.",
+   "anchor": "launch event on Wed could be one of its biggest in years",
+   "topic": "Apple iPhone 18 launch",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Apple's new iPhone launch is expected to drive a seasonal supply-chain ramp, with component suppliers already at peak production.",
+   "anchor": "Apple\u2019s new iPhone launch is expected to drive a seasonal supply-chain ramp",
+   "topic": "Apple iPhone 18 launch",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "New iPhone model pricing may rise about 10% on higher AI, memory and component costs.",
+   "anchor": "new-model pricing may rise ~10% amid higher AI/memory/component costs",
+   "topic": "Apple iPhone 18 launch",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman's telecoms analyst double-upgraded Vodafone to Buy and downgraded Cellnex to Sell in a Friday sector note.",
+   "anchor": "The key rating changes were Vodafone double-upgraded to Buy and Cellnex downgraded to Sell",
+   "topic": "European telco ratings",
+   "status": "released",
+   "instruments": [
+    "VOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Bears on the Vodafone upgrade argue the new price target implies a dividend yield below 3%.",
+   "anchor": "the new price target implies a dividend yield below 3%",
+   "topic": "European telco ratings",
+   "status": "target",
+   "instruments": [
+    "VOD"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Cellnex believes demand for denser mobile networks from AI infrastructure and standalone 5G will cushion the impact of European telecom mergers.",
+   "anchor": "the demand for denser mobile networks, driven by Artificial Intelligence (AI) infrastructure and standalone 5G, will help cushion the impact of European telecom mergers",
+   "topic": "European telco ratings",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Telefonica president Marc Murtra called for Europe to build its own satellite constellation to cut dependence on foreign technology.",
+   "anchor": "president, Marc Murtra, has called for Europe to develop its own satellite constellation",
+   "topic": "European tech sovereignty",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Murtra believes Telefonica, working with companies like Indra, can play a significant role in defence command and control, communications and drone operations.",
+   "anchor": "coordination with companies like Indra, can play a significant role in defense sectors",
+   "topic": "European tech sovereignty",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Agencies can earn a 5-15% gross margin on principal media without disclosing the underlying media cost, per Goldman's expert call.",
+   "anchor": "agencies can earn a 5-15% gross margin without disclosing the underlying media cost",
+   "topic": "media agency economics",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "AI is not yet a major disruptor to media agencies because token costs are currently uneconomic versus staff costs.",
+   "anchor": "AI is not yet a major disruptor given token costs are currently uneconomic versus FTEs",
+   "topic": "media agency economics",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "The 2024 Volkswagen account pitch reportedly involved 800 Omnicom staff, illustrating how costly pitching has become.",
+   "anchor": "the 2024 Volkswagen pitch reportedly involved 800 Omnicom staff",
+   "topic": "media agency economics",
+   "status": "released",
+   "instruments": [
+    "OMC"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Publicis has won Pepsi and other major accounts without a pitch, benefiting from the industry pitching less often.",
+   "anchor": "Publicis is benefiting from this dynamic, having won Pepsi and other major accounts without a pitch",
+   "topic": "media agency economics",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman research modestly raised Temenos top-line estimates after 2Q26 results, mainly for the additiv AG acquisition and better 3Q phasing.",
+   "anchor": "GIR modestly raises top-line estimates after the 2Q26 results",
+   "topic": "Temenos execution",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman research forecasts roughly 30% Temenos subscription and SaaS growth in 3Q26 and roughly 10% FY26 growth excluding currency.",
+   "anchor": "GIR forecasts c.30% subscription and SaaS growth in 3Q26, c.10% FY26 growth ex-FX",
+   "topic": "Temenos execution",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26 and FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman's rating on Temenos remains Neutral.",
+   "anchor": "supported by cost optimisation despite continued hiring in the US and Western Europe; overall, the rating remains Neutral",
+   "topic": "Temenos execution",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Tesla says it has completed 1 million miles of unsupervised robotaxi operation.",
+   "anchor": "Tesla commented that is has now completed 1 million miles of unsupervised robotaxi operation",
+   "topic": "Tesla robotaxi economics",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman estimates a $20,000 to $30,000 Cybercab cost at scale would equate to a $0.05 to $0.30 per mile cost benefit versus competitor autonomous vehicles.",
+   "anchor": "If Tesla is able to meet its cost targets for Cybercab of $20K to $30K USD at scale",
+   "topic": "Tesla robotaxi economics",
+   "status": "target",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT SPEC SALES Tech Conf previews; Adyen Payment questions; VOD debate; SIA latest data; Advertising expert call back TEF chair talks satellites 7 Sep 2026",
+   "claim": "Goldman thinks the key near to medium term factor for Tesla's robotaxi business is software scaling rather than vehicle cost.",
+   "anchor": "factor to monitor for Tesla's robotaxi business in the near to medium term is on the software side",
+   "topic": "Tesla robotaxi economics",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near to medium term"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15586__gs-johnstone-tmt-spec-sales-tech-conf-previews-adyen-payment.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 52,
+  "matched": 52,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
