@@ -1,0 +1,75 @@
+{
+ "ts": "2026-09-09T14-07-56Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-09-09T14:08:49Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-09-09T14:09:12Z",
+   "detail": "pdf_count=125"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-09-09T14:09:12Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-09-09T14:09:15Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-09-09T14:13:55Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-09-09T14:18:35Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-09-09T14:19:37Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-09-09T14:21:54Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-09-09T14:21:54Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-09-09T14:28:54Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-09-09T14:29:08Z",
+   "detail": "skipped: 0 hard lint issues"
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-09-09T14:30:02Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-09-09T14:30:03Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_DONE",
+   "time": "2026-09-09T14:36:48Z",
+   "detail": "0 hard, 1 soft repaired"
+  }
+ ]
+}

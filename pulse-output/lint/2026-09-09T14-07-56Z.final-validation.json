@@ -1,0 +1,106 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1.5%' is attached to [core, decides, desk, drawn, expects] but the source uses it for [accelerating, activity, alpha, base, brazil] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1.5%",
+   "draft_subject": [
+    "core",
+    "decides",
+    "desk",
+    "drawn",
+    "expects",
+    "friday",
+    "line",
+    "rest"
+   ],
+   "source_subject": [
+    "accelerating",
+    "activity",
+    "alpha",
+    "base",
+    "brazil",
+    "catalyst",
+    "churn",
+    "contract"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.27% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [342.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.27",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "Brent went through $100 a barrel this morning after the biggest wave of attacks on shipping since the war with Iran began, and US stocks are treating it as someone else's problem. Half an hour into th"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "1.94% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [342.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "1.94",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Tanker attacks widened and Brent cleared $100.** Iran and the US hit tankers overnight and into this morning, one of them in Iraqi waters, and shipping costs through Hormuz have run higher since t"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "1.68% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [342.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "1.68",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Tanker attacks widened and Brent cleared $100.** Iran and the US hit tankers overnight and into this morning, one of them in Iraqi waters, and shipping costs through Hormuz have run higher since t"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.2% stated for Cpi MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.2",
+   "event": "CPI",
+   "matches_estimate": true,
+   "sentence": "- **Friday, September 11, 8:30 AM ET: US August CPI.** The binary of the week. Consensus is 0.4% on the headline and 0.2% on core, against July's 0.1% headline. JPMorgan's desk has drawn its line at 0"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.30% is stated for Cpi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.1, 1.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.30",
+   "event": "CPI",
+   "matches_estimate": false,
+   "sentence": "- **Friday, September 11, 8:30 AM ET: US August CPI.** The binary of the week. Consensus is 0.4% on the headline and 0.2% on core, against July's 0.1% headline. JPMorgan's desk has drawn its line at 0"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "63% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.8, 2.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "63",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday, September 16: FOMC, with August retail sales at 8:30 that morning and no consensus posted yet.** Roughly 60% to 63% priced for a quarter-point hike. Goldman Sachs's house view is still "
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Ppi has already printed (ACTUAL=342%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "PPI",
+   "actual": [
+    342.0
+   ]
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Retail Sales has already printed (ACTUAL=-0.8%, 2.1%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "RETAIL SALES",
+   "actual": [
+    -0.8,
+    2.1
+   ]
+  }
+ ],
+ "hard_count": 2,
+ "soft_count": 7,
+ "exit_code": 3
+}
