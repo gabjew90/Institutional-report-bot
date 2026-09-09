@@ -1,0 +1,255 @@
+{
+ "brief": "August US payrolls rose 162,000 (private +127,000) versus 55,000 consensus, with prior revisions adding 55,000 more jobs, lifting the three-month private-employment average to 75,000, above the 0-60,000 breakeven range, while unemployment held at 4.1% as participation rose alongside hiring. Combined with July PCE inflation at 3.7% year-on-year (above expectations) and hawkish Jackson Hole comments from Fed Chair Kevin Warsh, this pushed market-implied odds of a September hike from about 50% to roughly 60%, and the S&P 500 fell 0.4% on the news. UBS changed its Fed base case from unchanged rates through 2026 to two 25bp hikes, in September and December, taking the fed funds range from 3.50-3.75% to 4.00-4.25%, citing Warsh's hawkishness, supply-bottleneck inflation risk (weaker ISM/PMI supplier-delivery readings), and firm employment and activity data. A second hike could be postponed if inflation cools sharply through October. UBS also raised its Treasury yield forecasts (2-year to 4.25% by June 2027, 10-year to 4.5%) but stays constructive on global equities, arguing the same AI capex, resilient growth, and earnings strength driving the hawkish shift means higher yields cause only short-term volatility rather than undermining the medium-term case.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "US non-farm payrolls increased by 162,000 in August, with private payrolls contributing 127,000, versus consensus expectations of 55,000.",
+   "anchor": "Non-farm payrolls increased by 162,000, of which private payrolls contributed 127,000, compared with consensus expectations for 55,000.",
+   "topic": "August jobs and inflation data",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "Positive revisions lifted the three-month average increase in private employment to 75,000, above the 0-60,000 breakeven range needed to keep the unemployment rate stable.",
+   "anchor": "lifting the three-month average increase in private employment to 75,000, above estimates of the 0-60,000 breakeven range needed to keep the unemployment rate stable.",
+   "topic": "August jobs and inflation data",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "The US unemployment rate remained at 4.1% in August as job creation was offset by increased labor force participation.",
+   "anchor": "the unemployment rate remained at 4.1% as job creation was offset by increased labor force participation.",
+   "topic": "August jobs and inflation data",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "US personal consumption expenditures inflation for July rose 3.7% year-on-year, beating expectations.",
+   "anchor": "the personal consumption expenditures measure of inflation for July beat expectations, rising 3.7% on the year",
+   "topic": "August jobs and inflation data",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "Market-implied odds of a September Fed rate hike rose from around 50% to approximately 60% after the August jobs report.",
+   "anchor": "Market-implied odds of a September rate hike rose from around 50% to approximately 60%.",
+   "topic": "market reaction to jobs data",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "The S&P 500 fell 0.4% on Friday following the stronger-than-expected August jobs report.",
+   "anchor": "the S&P 500 falling 0.4% on Friday",
+   "topic": "market reaction to jobs data",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS now expects the Fed to raise interest rates twice in 2026, in September and December, by 25 basis points each time.",
+   "anchor": "We now expect the Fed to raise interest rates twice in 2026, in September and December by 25bps in each case",
+   "topic": "Fed rate hike forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS expects the two hikes to take the federal funds target range from 3.50-3.75% to 4.00-4.25%.",
+   "anchor": "taking the federal funds target range from 3.50-3.75% today to 4.00-4.25%",
+   "topic": "Fed rate hike forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS says the Fed's second hike could be postponed if inflation readings through October average below 2% annualized and bring six-month annualized inflation below 2.5%.",
+   "anchor": "average below 2% annualized and bring the six-month annualized inflation rates below 2.5%, it\u2019s possible the second hike is postponed",
+   "topic": "Fed rate hike forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "through October"
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS says monthly core inflation prints closer to 0.3% in 2H26, with a growing share of items rising over 3%, would support a three-hike path.",
+   "anchor": "Monthly core inflation prints closer to 0.3% in 2H26, with a growing share of items rising over 3% would support a three-hike path.",
+   "topic": "Fed rate hike forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS raised its forecast for 2-year US Treasury yields to 4.25% by June 2027, 100 basis points higher than its previous forecast.",
+   "anchor": "2-year yields will trade at 4.25% by June 2027, 100bps higher than our previous forecast",
+   "topic": "Treasury yield forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "June 2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS raised its forecast for 10-year US Treasury yields to 4.5%, 40 basis points higher than its previous forecast.",
+   "anchor": "10-year yields will trade at 4.5%, only 40bps higher than our prior forecast",
+   "topic": "Treasury yield forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "June 2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS does not think its revised Fed forecast undermines its constructive view on global equities.",
+   "anchor": "We therefore do not think the change in our Fed forecast undermines our constructive view on global equities.",
+   "topic": "global equities outlook",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS continues to favor AI, power and resources, and longevity themes within equities as they benefit from stronger investment and structural growth.",
+   "anchor": "continue to favor AI, power and resources, and longevity, all of which should benefit from stronger investment",
+   "topic": "global equities outlook",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS no longer recommends that investors lock in yields in short- to medium-duration bonds as an alternative to cash.",
+   "anchor": "we would no longer recommend that investors lock in yields in short- to medium-duration bonds as an alternative to cash",
+   "topic": "bond duration strategy",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS sees medium- to long-maturity high-quality bonds as offering attractive income and useful portfolio diversification given the recent rise in yields.",
+   "anchor": "Medium- to long-maturity high-quality bonds could therefore offer both attractive income and useful portfolio diversification",
+   "topic": "bond duration strategy",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS expects a more hawkish Fed to initially support the US dollar, particularly if policy divergence with other central banks widens.",
+   "anchor": "A more hawkish Fed would likely initially support the US dollar, particularly if policy divergence with other central banks widens",
+   "topic": "US dollar outlook",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS says higher real interest rates and a stronger US dollar could create near-term headwinds for gold.",
+   "anchor": "Higher real interest rates and a stronger US dollar could create near-term headwinds for gold",
+   "topic": "gold outlook",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "UBS",
+   "document": "Strong US jobs data likely to tip the balance for the Fed",
+   "claim": "UBS views gold as a portfolio hedge and diversifier rather than a tactical expression of the next Fed decision.",
+   "anchor": "We currently view gold more as a portfolio hedge and diversifier, rather than as a tactical expression of the next Fed decision.",
+   "topic": "gold outlook",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15611__daily-asia-strong-us-jobs-data-likely-to-tip-the-balance-for.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 19,
+  "matched": 19,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
