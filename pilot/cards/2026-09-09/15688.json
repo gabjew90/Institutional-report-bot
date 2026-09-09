@@ -1,0 +1,764 @@
+{
+ "brief": "JPMorgan economist Feroli forecasts August CPI at 0.38% m/m headline and 0.21% m/m core, a 2.37% over-year-ago core rate that barely rounds to 2.4%. The build: energy up 2.5% on a 4.2% motor fuel gain, food 0.2%, rent and OER soft, airfares firm near 26-27% over year ago, new and used vehicles and cell phones unchanged, drug prices still falling. The desk frames the print as 0.2% rounded versus 0.3% rounded. Feroli reads 0.2% as low enough for the Fed to hold and 0.3% as high enough to hike, and the bond market prices about a 63% chance of a 25bp hike on September 16. The scenario table, explicitly a trading desk view and not JPM Research, gives 30% to core between 0.20% and 0.25% with SPX up 50bp to 1.25%, and 10% to core above 0.30% with SPX down 1.5% to 2.5%. Options expiring September 11 price a 1.0% move. Neutral positioning and hedge fund re-grossing skew risk/reward to the upside on a Hold or Hawkish Hold, led by Momentum, Tech and Cyclicals, though the desk moved to Tactically Cautious/Neutral last week on chop into the print.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "JPMorgan economist Feroli forecasts August headline CPI at +0.38% month over month, against a 0.4% survey and a 0.1% prior.",
+   "anchor": "For CPI Feroli sees Headline MoM printing +0.38% (vs. 0.4% survey; 0.1% prior)",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "JPMorgan economist Feroli forecasts August core CPI at +0.21% month over month, against a 0.2% survey and a 0.2% prior.",
+   "anchor": "and Core MoM printing +0.21% (vs. 0.2% survey; 0.2% prior)",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli's August headline CPI forecast equates to 3.4% year over year, in line with a 3.4% survey and a 3.4% prior.",
+   "anchor": "equates to 3.4% YoY for Headline (vs. 3.4% survey; 3.4% prior)",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli's August core CPI forecast equates to 2.4% year over year, in line with a 2.4% survey and down from a 2.5% prior.",
+   "anchor": "and 2.4% YoY for Core (vs. 2.4% survey; 2.5% prior)",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli's forecast puts the August core CPI over-year-ago rate at 2.37%, which only just rounds up to 2.4%.",
+   "anchor": "0.21%m/m (2.37%oya) increase in the core, which would leave the core over-year-ago rate, just barely rounding up to 2.4%",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli expects the August CPI energy index to rise 2.5% month over month, led by a 4.2% rise in motor fuel.",
+   "anchor": "We expect a 2.5%m/m increase, led by a 4.2% rise in motor fuel.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli assumes August CPI food rises 0.2% month over month, taking the over-year-ago food rate down from 2.9% to 2.7%.",
+   "anchor": "We assume a 0.2%m/m gain, in line with recent months, which would cause the over-year-ago rate to edge down from 2.9% to 2.7%.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Industry data on transaction prices and incentives points to little change in August new vehicle prices.",
+   "anchor": "Industry data on new vehicle transaction prices and incentives again points to little change in new vehicle prices in August",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli expects no change in August CPI used vehicle prices.",
+   "anchor": "For used vehicles, we also expect no change.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The Manheim measure of wholesale used vehicle prices has reversed its earlier increase, removing the reason Feroli had expected a used vehicle price rise.",
+   "anchor": "an increase in the Manheim measure of wholesale used vehicle prices, but Manheim has now reversed that increase",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The striking down of IEEPA delivered some tariff relief applying to apparel, but pre-tariff import prices also rose in response.",
+   "anchor": "With IEEPA being struck down there has been some tariff relief that applies to apparel, but pre-tariff import prices",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli assumes August CPI apparel prices continue to be stable.",
+   "anchor": "we assume that prices will continue to be stable",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Drug prices have declined steadily through 2026 in the medical care commodities category.",
+   "anchor": "Medical care commodities: Drug prices have declined steadily this year.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Medicare negotiations for lower drug prices that took effect at the start of 2026 are a contributing factor to declining drug prices.",
+   "anchor": "One contributing factor should be Medicare negotiations for lower drug prices that took effect at the start of this year",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "JPMorgan equity analysts note lower GLP-1 list prices and more generics.",
+   "anchor": "Our equity analysts have also noted lower GLP-1 list prices and more generics.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli assumes medical care commodity price declines continued into August.",
+   "anchor": "We assume that price declines continued into August.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Microsoft raised XBox prices on August 1, with the base model up 25% and similar increases across other models.",
+   "anchor": "Microsoft raising XBox prices on August 1, with the base model increasing 25%",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli estimates the XBox price increase adds 0.2% to the overall recreation commodities category.",
+   "anchor": "a 25% price increase would yield a 3%*23%*25%=0.2% lift to the overall category",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli assumes 0.3% growth in overall August recreation commodities prices.",
+   "anchor": "We assume 0.3% growth in overall recreation commodities.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Education and communication goods posted a near-record 1.3% rise in July, led by computer prices after Apple repriced Mac and iPad products.",
+   "anchor": "This category posted a near-record 1.3% rise in July, led by computer prices, as Apple repriced its Mac and iPad products.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli expects August price increases in education and communication goods to be less evident than the July Apple jump.",
+   "anchor": "We don\u2019t think the price increases will be as evident as the Apple jump in July.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Memory prices should continue to put upward pressure on computer and phone prices.",
+   "anchor": "Memory prices should continue to put upward pressure on computers and phones",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli looks for soft August readings on rent and owners equivalent rent to continue, given subdued growth in new market rents.",
+   "anchor": "We look for soft readings on rent and OER to continue in August given continued subdued growth in new market rents",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Zillow's observed rent index has accelerated back to 2.4% over year ago from a low of 1.7%.",
+   "anchor": "Zillow\u2019s observed rent index has recently accelerated back to 2.4%oya from a low of 1.7%",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Zillow's 2.4% over-year-ago rent index remains below CPI rent at 2.9% over year ago and OER at 3.2%.",
+   "anchor": "this is still below CPI rent (2.9%oya) and OER (3.2%)",
+   "topic": "August CPI forecast",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Hotel prices fell sharply in June and July as the CPI pricing window moved past the World Cup.",
+   "anchor": "Hotel prices fell sharply in June and July as the CPI pricing window moved past the World Cup.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Lodging away from home prices were up 2.8% over year ago in July, a comparison flattered by a weak July 2025.",
+   "anchor": "Prices in July were still up 2.8%oya, though that comparison was flattered by a particularly weak July 2025",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli expects little additional change in August lodging prices.",
+   "anchor": "We expect little additional change in lodging prices.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Airfares have risen 26-27% over year ago in each of the last three months.",
+   "anchor": "Airfares have risen 26-27%oya in each of the last three months",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli expects firm airfare readings to continue in August.",
+   "anchor": "and we expect firm readings to continue in August",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Kayak weekly price data shows about a 34% over-year-ago increase for domestic flights and 24% for international flights.",
+   "anchor": "whose weekly price data shows about a 34%oya increase for domestic flights and 24% for international flights",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "High industry profitability led to large motor vehicle insurance price cuts in May and June.",
+   "anchor": "High industry profitability led to large price cuts in May and June.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli assumes the more moderate July decline in motor vehicle insurance prices continues into August.",
+   "anchor": "July featured a much more moderate decline, and we assume that will continue for August.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "CPI cell phone prices have become more volatile since the BLS adopted a new methodology in 2025.",
+   "anchor": "Cell phone prices in the CPI have become more volatile since the BLS adopted a new methodology in 2025.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "T-Mobile began offering a new cheaper discount plan in August, limited to new customers.",
+   "anchor": "T-Mobile began offering a new cheaper discount plan, though only for new customers",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [
+    "TMUS"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "AT&T is raising prices for some existing customers.",
+   "anchor": "In contrast, AT&T is raising prices for some existing customers.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [
+    "T"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli assumes no change in overall August CPI cell phone prices.",
+   "anchor": "We assume no change in overall cell phone prices for August.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Delivery service prices could increase again on higher FedEx and UPS fuel surcharges.",
+   "anchor": "Delivery service prices could increase again owing to higher FedEx and UPS fuel surcharges.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [
+    "FDX",
+    "UPS"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Medical care services inflation rose 2.7% over year ago in July, the lowest since the start of 2025, despite a 0.6% month over month increase.",
+   "anchor": "Medical care services inflation rose 2.7%oya in July, the lowest since the start of last year, despite a large 0.6%m/m increase.",
+   "topic": "August CPI forecast",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli expects a milder August gain in medical care services prices given the size of the July monthly increase.",
+   "anchor": "Given the magnitude of the July monthly increase we expect a milder gain in August.",
+   "topic": "August CPI forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The JPM US Market Intelligence trading desk, not JPM Research, assigns 10% probability to core CPI above 0.30% month over month, with SPX declining 1.5% to 2.5%.",
+   "anchor": "[10.0%] Core MoM prints above 0.30%. SPX declines 1.5% \u2013 2.5%",
+   "topic": "CPI equity scenarios",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The JPM US Market Intelligence trading desk assigns 25% probability to core CPI between 0.25% and 0.30% month over month, with SPX declining 25bp to 1%.",
+   "anchor": "[25.0%] Core MoM prints between 0.25% \u2013 0.30%. SPX declines 25bp \u2013 1%",
+   "topic": "CPI equity scenarios",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The JPM US Market Intelligence trading desk assigns 30% probability to core CPI between 0.20% and 0.25% month over month, with SPX gaining 50bp to 1.25%.",
+   "anchor": "[30.0%] Core MoM prints between 0.20% \u2013 0.25%. SPX gains 50bp \u2013 1.25%",
+   "topic": "CPI equity scenarios",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The JPM US Market Intelligence trading desk assigns 25% probability to core CPI between 0.15% and 0.20% month over month, with SPX gaining 1% to 1.5%.",
+   "anchor": "[25.0%] Core MoM prints between 0.15% \u2013 0.20%. SPX gains 1% \u2013 1.5%",
+   "topic": "CPI equity scenarios",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The JPM US Market Intelligence trading desk assigns 10% probability to core CPI below 0.15% month over month, with SPX gaining 1.5% to 2%.",
+   "anchor": "[10.0%] Core MoM prints below 0.15%. SPX gains 1.5% \u2013 2%.",
+   "topic": "CPI equity scenarios",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Options expiring September 11th price a roughly 1.0% SPX move, based on September 8th prices.",
+   "anchor": "Options that expire on September 11th are pricing ~1.0% move based on September 8th prices.",
+   "topic": "CPI equity scenarios",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The market debate on the August core CPI print is 0.2% rounded versus 0.3% rounded.",
+   "anchor": "The debate is 0.2% (rounded) vs. 0.3% (rounded).",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Feroli sees a 0.2% core CPI print as low enough for the Fed to hold rates and 0.3% as high enough to hike.",
+   "anchor": "Feroli sees 0.2% being low enough to hold rates and 0.3% as high enough to hike.",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The bond market is pricing a roughly 63% probability of a 25bp rate hike at the September 16 FOMC meeting.",
+   "anchor": "The bond market is pricing a ~63% probability of a 25bp hike at the Sep 16 FOMC meeting.",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sep 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "October rate hike expectations are currently around 27% and December around 54%.",
+   "anchor": "Oct or Dec rate hike expectations, which are currently ~27% and ~54%, respectively",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October and December"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The desk sees the equity tail risk as a materially hotter CPI print that spikes October or December rate hike expectations.",
+   "anchor": "with the tail risk for Equities being a material hotter print that spikes Oct or Dec rate hike expectations",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The desk expects stocks to react positively if the CPI data supports Feroli's hypothesis of a Hold or Hawkish Hold.",
+   "anchor": "If the data supports Feroli\u2019s hypothesis for a Hold or Hawkish Hold, look for stocks to react positively.",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The desk sees significant equity upside remaining and points to Momentum, Tech and Cyclicals as the drivers of gains.",
+   "anchor": "there remains significant upside and we would point to Momentum, Tech, and Cyclicals are the drivers of gains",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The desk sees current market pricing combined with positioning skewing equity risk/reward to the upside.",
+   "anchor": "Current market pricing combined with positioning point to the risk/reward being skewed to the upside.",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The desk expects markets to remain choppy into the CPI print, the key driver behind its move last week to Tactically Cautious/Neutral.",
+   "anchor": "We think markets remain choppy into the print, the key driver behind our move to Tactically Cautious / Neutral from last week",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "into the print"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The desk holds that underlying macro and micro fundamentals remain strong and will support stocks over time.",
+   "anchor": "despite underlying fundamentals remaining strong, both macro and micro, which over time will be supportive of stocks",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "over time"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "The desk describes the positioning environment as neutral with room to re-gross and re-lever.",
+   "anchor": "Given the neutral positioning environment and room to re-gross / re-lever",
+   "topic": "Hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "JPMorgan Positioning Intelligence reports hedge funds globally added gross exposure on 4 of the past 5 days.",
+   "anchor": "Globally HFs added gross exposure on 4 of the past 5 days",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Trading CPI: September 2026",
+   "claim": "Global hedge fund gross exposure rose 1.3 standard deviations over the past week, the highest since late June.",
+   "anchor": "+1.3z increase in the past week, the highest since late June.",
+   "topic": "Hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past week"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15688__jpm-us-market-intelligence-trading-cpi-september-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 59,
+  "matched": 59,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
