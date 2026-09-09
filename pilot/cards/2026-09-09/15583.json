@@ -1,0 +1,696 @@
+{
+ "brief": "Goldman Sachs equity sales daily. Mostly a reported roundup, with two argued sections. A 162k jobs print against 55k, plus rising oil and the Fed debate, left the S&P down 38bps at 7718 and moved markets to price a 60% chance of a September Fed hike, with the US 10yr at 4.78% and Brent at $97. Goldman's own view runs the other way: it expects a fully priced 25bps ECB hike Thursday to be the last of the cycle, because H2 growth runs below trend, core pressures build only modestly, energy prices come in under forwards, and the Fed does not hike. Trump threatened to cut trade with surplus countries unless the Fed cuts, saying rates should be 1%, not 4%. Reported items include Samsung guiding 2027 memory supply tighter than 2026, hyperscaler bond issuance heading to $320bn, Anthropic's $517bn of compute contracts, German funded pension assets at 7% of GDP, a Dutch gold relocation out of New York, Tesla's Austin Cybercab launch, and a CLARITY Act floor vote on 15 Sep. Allocation stays tactically neutral for 3m and modestly pro-risk for 12m.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The S&P closed down 38bps at 7718, up 13% year to date.",
+   "anchor": "S&P -38bps @7718 (+13% ytd) after a strong jobs report",
+   "topic": "cross-asset session levels",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Rising oil prices and the Fed debate weighed on the S&P alongside the jobs report.",
+   "anchor": "rising oil prices and the Fed debate did not help",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The US 10-year Treasury yield stands at 4.78%.",
+   "anchor": "US 10yr at 4.78%, Brent $97",
+   "topic": "cross-asset session levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Gold trades at $4403.",
+   "anchor": "Brent $97; Gold $4403 and Bitcoin $80k",
+   "topic": "cross-asset session levels",
+   "status": "level",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Bitcoin trades at $80k.",
+   "anchor": "Brent $97; Gold $4403 and Bitcoin $80k",
+   "topic": "cross-asset session levels",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "US markets are closed on 7 Sep 2026 for Labour Day.",
+   "anchor": "falls short of majority; US markets closed today (Labour Day)",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The US jobs report printed 162k against 55k.",
+   "anchor": "after a strong jobs report (162k vs 55k)",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Markets price a 60% probability of a Fed rate hike in September.",
+   "anchor": "markets are now pricing a 60% probability of a Fed rate hike in Sep",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs forecasts no Fed hikes, against market pricing of a September hike.",
+   "anchor": "for lower energy prices than currently implied by forwards, and no Fed hikes",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Trump said he would cut off trade with countries running surpluses with the US unless the Fed cuts interest rates.",
+   "anchor": "said to cut off trade with countries that have surpluses with the U.S. unless the Federal Reserve",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Trump said each percentage point of interest the US pays costs $650bn.",
+   "anchor": "each point in interest in this country that we pay costs us $650bn",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Trump said US interest rates should be at 1% or 0.5% rather than 4%.",
+   "anchor": "We should be at 1% or a half a %.",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "US inflation data on Friday is a focus for the week.",
+   "anchor": "and US inflation in focus (Friday)",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs expects a 25bps ECB hike at Thursday's rate decision, which is fully priced.",
+   "anchor": "rate decision on Thursday; expect a 25bps hike (fully priced)",
+   "topic": "ECB September rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs expects September to be the last ECB hike of this tightening cycle.",
+   "anchor": "we think that Sep is the last hike of this tightening cycle",
+   "topic": "ECB September rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs forecasts below-trend H2 growth and only modest further core inflation pressure in the euro area.",
+   "anchor": "given our forecast for below-trend H2 growth, modest further core pressures",
+   "topic": "ECB September rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "H2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs forecasts energy prices lower than currently implied by forwards.",
+   "anchor": "our forecast for lower energy prices than currently implied by forwards",
+   "topic": "ECB September rate decision",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Brent crude trades at $97.",
+   "anchor": "US 10yr at 4.78%, Brent $97",
+   "topic": "oil and Iran risk",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Iran headlines continued over the weekend.",
+   "anchor": "ongoing Iran headlines over the weekend",
+   "topic": "oil and Iran risk",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Apple's launch event on Wednesday could be one of its biggest in years.",
+   "anchor": "launch event on Wed could be one of its biggest in years",
+   "topic": "Apple launch event",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Wednesday's launch is Apple's first event with John Ternus as CEO.",
+   "anchor": "Apple's first event with John Ternus as CEO",
+   "topic": "Apple launch event",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The Apple event will likely feature the first models in the iPhone 18 lineup.",
+   "anchor": "will likely feature the first models in Apple's iPhone 18 lineup",
+   "topic": "Apple launch event",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The Apple event could include the long-rumored foldable iPhone Ultra.",
+   "anchor": "could include the long-rumored foldable \"iPhone Ultra",
+   "topic": "Apple launch event",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Samsung management reiterated that 2027 memory supply will be tighter than 2026, with tightness persisting into 2028.",
+   "anchor": "mgmt reiterated its view of 2027 memory supply being tighter than 2026 with tightness to persist in 2028",
+   "topic": "memory supply tightness",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027 to 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Samsung's memory demand fulfillment rate is around 60%.",
+   "anchor": "memory demand fulfillment rate being at only around a 60% level",
+   "topic": "memory supply tightness",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Samsung says long-term agreement discussions are progressing with better visibility and more efficient investment decisions than in past cycles.",
+   "anchor": "LTA discussions are progressing well with better visibility and more efficient",
+   "topic": "memory supply tightness",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Long-term agreements could account for 60-70% of Samsung's memory business in the future.",
+   "anchor": "could account for 60-70% in the future",
+   "topic": "memory supply tightness",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Samsung R&D expense grew 26% year on year in 1Q26 and 78% year on year in 2Q26.",
+   "anchor": "saw a 26%/78% yoy growth in R&D expense in 1Q26/2Q26",
+   "topic": "memory supply tightness",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Hyperscaler bond issuance is expected to reach $320bn this year.",
+   "anchor": "hyperscaler bond issuance is expected to surge to $320bn this year",
+   "topic": "AI capex financing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Hyperscaler bond issuance is estimated to rise to a record ~70% of Treasury bond issuance.",
+   "anchor": "as % of Treasury bond issuance, this is estimated to rise to a record ~70%",
+   "topic": "AI capex financing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Hyperscaler issuance as a share of Treasury issuance was 30% in 2025, and this year's estimate is nearly 9x 2024 levels.",
+   "anchor": "more than double the 30% recorded in 2025 and nearly 9x larger than 2024 levels",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Anthropic signed $517bn of compute capacity contracts over the past 11 months.",
+   "anchor": "signed $517bn compute capacity contracts over the past 11 months",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Anthropic's contracts include 10-year agreements with Amazon and Google worth more than $300bn.",
+   "anchor": "deals include 10yr agreements with Amazon and Google worth >$300bn",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Anthropic's contracts include major deals with Microsoft, SpaceX and nScale.",
+   "anchor": "major contracts with Microsoft, SpaceX, and nScale",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Apollo says Germany has the least-funded pension system of any major advanced economy.",
+   "anchor": "Germany has the least-funded pension system of any major advanced",
+   "topic": "German pension reform",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "German funded pension assets are 7% of GDP, against 149% in Sweden and 185% in Canada.",
+   "anchor": "funded pension assets are just 7% of GDP (vs 149% in Sweden or 185% in Canada)",
+   "topic": "German pension reform",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The German pension reform could channel 2% of salaries into long-term savings, split 1% from employers and 1% from employees.",
+   "anchor": "pension reform could channel 2% of salaries into long-term savings, 1% from employers and 1% from",
+   "topic": "German pension reform",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The German pension reform could reach around EUR90 billion annually once fully implemented, roughly 2% of German GDP.",
+   "anchor": "could reach around \u20ac90 billion annually once fully implemented, roughly 2% of German GDP",
+   "topic": "German pension reform",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "once fully implemented"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The AfD won the Saxony-Anhalt state election but fell short of a majority.",
+   "anchor": "AfD wins Saxony-Anhalt state election but falls short of majority",
+   "topic": "German state election",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The Dutch central bank shifted 86 tonnes of gold out of New York and Canada toward Amsterdam and London.",
+   "anchor": "Dutch central bank shifted 86 tonnes of gold out of New York/Canada toward Amsterdam/London",
+   "topic": "gold positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "New York now holds 18% of Dutch gold, down from 31% before the move.",
+   "anchor": "the NY share of Dutch gold is now 18% vs 31% before",
+   "topic": "gold positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs' chart of the day shows a sharp reversal in gold positioning.",
+   "anchor": "Chart of the Day: Sharp reversal in Gold positioning.",
+   "topic": "gold positioning",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Tesla started Cybercab robotaxi rides in Austin on Friday.",
+   "anchor": "started Cybercab robotaxi rides in Austin on Friday",
+   "topic": "Tesla robotaxi",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Tesla's robotaxi fleet has reached 1m unsupervised autonomous miles.",
+   "anchor": "robotaxi fleet has reached 1m unsupervised autonomous miles",
+   "topic": "Tesla robotaxi",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs remains tactically neutral across assets for 3 months and modestly pro-risk for 12 months.",
+   "anchor": "we remain tactically neutral across assets for 3m and modestly pro-risk for 12m",
+   "topic": "GS asset allocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3m and 12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs is Overweight equities, Neutral bonds, commodities and cash, and Underweight credit.",
+   "anchor": "with Overweight equities, Neutral bonds, commodities and cash, and Underweight credit",
+   "topic": "GS asset allocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs expects sustained earnings growth to support equity outperformance versus bonds and credit over 12 months, though returns should slow as earnings growth and revisions peak.",
+   "anchor": "sustained, healthy earnings growth should support equity outperformance versus bonds and credit over 12m",
+   "topic": "GS asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Goldman Sachs sees near-term volatility rising on rates volatility, seasonal weakness, US midterm elections and geopolitical risk, and advises staying invested, buying dips and hedging selectively.",
+   "anchor": "near-term volatility could rise amid rates volatility, seasonal weakness, US midterm elections",
+   "topic": "GS asset allocation",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The CLARITY Act is scheduled for a procedural floor vote on 15 September.",
+   "anchor": "CLARITY Act is scheduled for a procedural floor vote on 15 Sep",
+   "topic": "crypto market structure bill",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "15 September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Lawmakers are in session for only 14 days in September before adjourning again in October.",
+   "anchor": "with lawmakers in session for only 14 days in Sep before adjourning again in Oct",
+   "topic": "crypto market structure bill",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Failure to advance the CLARITY Act would likely push it into the post-election lame-duck session before expiry on 3 January 2027.",
+   "anchor": "push its prospects into the post-election lame-duck session before expiry on 3 January 2027",
+   "topic": "crypto market structure bill",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "to 3 January 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Capital remains available for attractive real estate opportunities, but equity-side hurdle rates have increased.",
+   "anchor": "capital remains available for attractive opportunities, however hurdle rates have increased on the equity side",
+   "topic": "European real estate financing",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "The 2026 real estate refinancing wall has gone well, with strong bond market activity and several financing forms.",
+   "anchor": "the wall of refinancing for 2026 has gone well, with strong activity in the bond markets",
+   "topic": "European real estate financing",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 7 Sep 2026",
+   "claim": "Real estate funding requirements could increase dramatically in Europe over the next few years.",
+   "anchor": "expect funding requirements to potentially dramatically increase in Europe over the next few years",
+   "topic": "European real estate financing",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next few years"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15583__duttenhoefers-daily-7-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 54,
+  "matched": 54,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
