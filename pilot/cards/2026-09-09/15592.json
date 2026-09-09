@@ -1,0 +1,445 @@
+{
+ "brief": "Goldman Sachs daily note for 7 Sep 2026, a Labor Day session with NYSE closed and no major data. Stat of the day: VXSMH, a proxy for semiconductor implied volatility, has fallen from roughly 65 in July to 36, back toward where 2026 started, after a painful stretch for long-vol positions. Rates: global yields sit at or near recent highs because energy price risk limits sustainable relief, and since rates volatility has not risen with yields, the note argues non-fundamental drivers are hard to blame, so lasting relief requires a changed view on cyclical resilience, inflation, fiscal policy or AI debt supply. Fedspeak has restored the front-end as the primary US response point, leaving September pricing to next week's inflation news. Preference is 5s10s steepeners. European gas upside risks the European and UK front-ends, which shifts risk reward away from UK steepeners, while a hawkish BoJ reassessment drives JGB flattening, with front-end receives as an overlay. Research: Buy-rated TALO gets a raised $20 target, 16% upside, on a 13% FCF yield versus 10% for peers. VSXY beat 2Q and raised FY26 guidance, but reinvestment softens the 3Q profit outlook. Tesla's Cybercab launched, with 1 million unsupervised miles claimed.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "VXSMH, the proxy for semiconductor implied volatility, has fallen from roughly 65 in July to 36.",
+   "anchor": "VXSMH - a proxy for semiconductor implied volatility - has fallen from roughly 65 in July to 36",
+   "topic": "semiconductor implied volatility",
+   "status": "released",
+   "instruments": [
+    "SMH"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says semiconductor volatility has seen a dramatic reset that made the stretch painful for long-volatility positions.",
+   "anchor": "Semis volatility in particular has seen a dramatic reset, in what has been a painful stretch for long-vol positions",
+   "topic": "semiconductor implied volatility",
+   "status": "released",
+   "instruments": [
+    "SMH"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says global yields remain at or near recent highs because ongoing energy price risks limit the scope for sustainable broad relief.",
+   "anchor": "Global yields remain at or near recent highs as ongoing energy price risks limit the potential ability for sustainable broad relief",
+   "topic": "global yields",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs notes the move higher in yields has not been accompanied by a significant move higher in rates volatility, which weakens the case that non-fundamental factors drove it.",
+   "anchor": "The move higher in yields has not been accompanied by a significant move higher in rates volatility",
+   "topic": "global yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs thinks lasting yield relief requires a change in view on cyclical resilience, inflation risks, fiscal policy or AI debt supply.",
+   "anchor": "We think it will take a change in view on the fundamentals\u2014cyclical resilience, inflation risks, fiscal policy, or AI debt supply\u2014to provide lasting relief",
+   "topic": "global yields",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says recent Fedspeak has restored the front-end as the primary point of response in the US rates market.",
+   "anchor": "The recent stretch of Fedspeak appears to have succeeded in restoring the front-end as the primary point of response in the US",
+   "topic": "US curve positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says the final verdict on September Fed pricing rests with next week's inflation data.",
+   "anchor": "a final verdict on September pricing still rests with next week\u2019s inflation news",
+   "topic": "US curve positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs sees multiple routes to 5-year Treasuries outperforming on the US curve.",
+   "anchor": "there are multiple routes to 5s outperforming on the US curve",
+   "topic": "US curve positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs prefers 5s10s steepeners on the US curve given greater two-way risks around front-end curve shape.",
+   "anchor": "our preference is for 5s10s steepeners amid greater two-way risks around front-end curve shape",
+   "topic": "US curve positioning",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says ongoing upside risks to European gas prices still pose risks to the European and UK front-ends.",
+   "anchor": "Ongoing upside risks to European gas prices still pose risks to the European and UK front-ends",
+   "topic": "European and UK rates",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs sees a relatively high hurdle for the ECB or the Bank of England to hike more than market pricing implies.",
+   "anchor": "despite a relatively high hurdle for the ECB or BoE to out-hike market pricing",
+   "topic": "European and UK rates",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says European gas price risk shifts the risk reward away from UK steepeners.",
+   "anchor": "This shifts the risk reward away from UK steepeners",
+   "topic": "European and UK rates",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs continues to think European duration will be somewhat more protected by the ECB's reaction function.",
+   "anchor": "We continue to think European duration will be somewhat more protected by the ECB\u2019s reaction function",
+   "topic": "European and UK rates",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs expects Gilts to remain tethered to energy prices through both monetary and fiscal policy.",
+   "anchor": "Gilts will remain tethered to energy prices via both monetary and fiscal policy",
+   "topic": "European and UK rates",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says a hawkish BoJ reassessment plus optimism on the demand backdrop has shifted JGB curve behaviour toward stronger flattening.",
+   "anchor": "The confluence of a hawkish BoJ reassessment and optimism around the demand backdrop has shifted JGB curve behavior towards stronger flattening",
+   "topic": "JGB curve",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs thinks front-end receive positions are a useful overlay to JGB flatteners given how far BoJ pricing has run.",
+   "anchor": "We think front-end receive positions are a useful overlay to flatteners given how far BoJ pricing has run",
+   "topic": "JGB curve",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs updates estimates for select oil E&Ps including Talos, Murphy Oil, Magnolia Oil & Gas and APA.",
+   "anchor": "we update estimates for select oil E&Ps, including TALO, MUR, MGY and APA",
+   "topic": "US oil E&Ps",
+   "status": "forecast",
+   "instruments": [
+    "TALO",
+    "MUR",
+    "MGY",
+    "APA"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs sees Talos shares trading at a 13% free cash flow yield on its average 2027/2028 estimates against a peer average of 10%.",
+   "anchor": "we see shares trading at a 13% FCF yield on our average 2027/2028 estimates relative to peer average of 10%",
+   "topic": "US oil E&Ps",
+   "status": "forecast",
+   "instruments": [
+    "TALO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Talos shares are up 74% over the last twelve months against XOP up 45%.",
+   "anchor": "despite LTM strong performance (+74% vs. XOP +45%)",
+   "topic": "US oil E&Ps",
+   "status": "released",
+   "instruments": [
+    "TALO",
+    "XOP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Talos has broadened its exploration and development program at low capital entry cost, including a recent entry into Honduras.",
+   "anchor": "the company has broadened its exploration and development program at a low capital entry cost, including the recent entry into Honduras",
+   "topic": "US oil E&Ps",
+   "status": "released",
+   "instruments": [
+    "TALO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs cites Talos's commitment to capital returns and a strong outlook for incremental share repurchases in the second half of 2026.",
+   "anchor": "TALO's commitment to capital returns and a strong outlook for incremental share repurchases in 2H26",
+   "topic": "US oil E&Ps",
+   "status": "forecast",
+   "instruments": [
+    "TALO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs raises its Talos price target to $20, implying 16% upside, at a mid-cycle Brent price of $75 per barrel.",
+   "anchor": "see 16% upside potential with our raised price target of $20 at our mid-cycle price of $75/bbl Brent oil",
+   "topic": "US oil E&Ps",
+   "status": "target",
+   "instruments": [
+    "TALO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Victoria's Secret beat second-quarter earnings and raised full-year 2026 guidance.",
+   "anchor": "VSXY beat 2Q earnings and raised FY26 guidance",
+   "topic": "Victoria's Secret earnings",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Victoria's Secret comparable sales came in at +9.0% against FactSet consensus of +8.8%.",
+   "anchor": "comps came in slightly ahead of FactSet consensus expectations (+9.0% vs. consensus at +8.8%)",
+   "topic": "Victoria's Secret earnings",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Victoria's Secret reported adjusted EPS of $0.95 against consensus of $0.77, with adjusted EBIT margin expanding 390 basis points to 7.7%.",
+   "anchor": "adjusted EPS of $0.95 vs. consensus at $0.77 and adjusted EBIT margin expanding 390bps to 7.7%",
+   "topic": "Victoria's Secret earnings",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "The Victoria's Secret guidance raise was more modest than the size of the quarter's beat because management elected to reinvest part of the outperformance.",
+   "anchor": "the increase was more modest than the magnitude of the quarter's upside as management elected to reinvest a portion of outperformance",
+   "topic": "Victoria's Secret earnings",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs views the Victoria's Secret reinvestments in marketing and customer acquisition as strategic and appropriate.",
+   "anchor": "We see the company's reinvestments as strategic and appropriate",
+   "topic": "Victoria's Secret earnings",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Victoria's Secret reinvestment is contributing to a softer-than-expected third-quarter profit outlook.",
+   "anchor": "this is contributing to a softer-than-expected 3Q profit outlook",
+   "topic": "Victoria's Secret earnings",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Tesla hosted a Cybercab launch event for the media on September 3rd in Austin.",
+   "anchor": "Tesla hosted a Cybercab launch event for the media on September 3rd in Austin",
+   "topic": "Tesla robotaxi",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Tesla says it has completed 1 million miles of unsupervised robotaxi operation.",
+   "anchor": "Tesla commented that is has now completed 1 million miles of unsupervised robotaxi operation",
+   "topic": "Tesla robotaxi",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs estimates that if Tesla meets its $20K to $30K Cybercab cost target at scale it equates to a $0.05 to $0.30 per mile cost benefit versus competitor autonomous vehicles.",
+   "anchor": "we estimate that it could equate to a $0.05 to $0.30 per mile cost benefit vs. competitor AVs",
+   "topic": "Tesla robotaxi",
+   "status": "forecast",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "Goldman Sachs says the key near to medium term factor for Tesla's robotaxi business is software rather than vehicle cost.",
+   "anchor": "the key factor to monitor for Tesla's robotaxi business in the near to medium term is on the software side rather than vehicle cost",
+   "topic": "Tesla robotaxi",
+   "status": "forecast",
+   "instruments": [
+    "TSLA"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near to medium term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Sep 2026",
+   "claim": "US markets observe the Labor Day holiday on 7 September 2026 with no major economic data releases and the NYSE closed.",
+   "anchor": "US Labor Day holiday observed. There are no major economic data releases scheduled. NYSE will be closed",
+   "topic": "US market holiday",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15592__gs-us-daily-download-7-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 33,
+  "matched": 33,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
