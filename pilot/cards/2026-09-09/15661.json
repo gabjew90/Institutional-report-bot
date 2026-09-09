@@ -1,0 +1,601 @@
+{
+ "brief": "Goldman Sachs TMT specialist Peter Callahan previews day 1 of the GS Communacopia and Technology Conference (9/8 to 9/11, San Francisco) and reprints a Friday sentiment check. The argued chain: TMT fundamentals kept improving through 2Q earnings (NVDA guiding FY27 revenues above 70% y/y, AVGO pointing to 100%+ growth in 2027 and 2028), yet price action was choppier, with the GS TMT 12-month Momentum Pair down more than 10% in August as semis lagged the broader market and software. Callahan attributes the gap to a complicated macro backdrop (rates watch into a live FOMC this month) and muted risk appetite (volumes, VIX, gross exposures), leaving investors to debate what else the market needs to re-engage the AI trade, or whether it is signalling a regime shift away from the capex trade. Subsector reads follow: semis most loved, hardware controversial, software bifurcated toward inference economy names over SaaS and Apps, internet choppy, telcos bid and cable out of favor. The note maps debates and desk sentiment. It sets no price targets and makes no recommendations.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "NVDA guided FY27 revenues to more than 70% year-over-year growth.",
+   "anchor": "NVDA guiding FY27 revenues >70% y/y",
+   "topic": "AI semis complex",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "AVGO pointed to growth above 100% in 2027 and 2028.",
+   "anchor": "AVGO pointing to 100%+ growth in \u201927 and \u201828",
+   "topic": "AI semis complex",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The GS TMT 12-month Momentum Pair fell more than 10% in August as semis lagged the broader market.",
+   "anchor": "GS TMT 12-mo Momentum Pair down >10% in August as Semis lagged",
+   "topic": "TMT price action",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The NDX is up 16% year to date through the first eight months of 2026.",
+   "anchor": "the NDX is +16% YTD through the first 8 months of the year",
+   "topic": "TMT price action",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "YTD through August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The NDX rose in 6 of the last 8 sessions but the desk still describes the tape as a holding pattern.",
+   "anchor": "Despite the NDX trading higher on 6 of 8 sessions, we have been in a bit of a \u2018holding pattern\u2019",
+   "topic": "TMT price action",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The NDX has been in consolidation for roughly 4 to 5 months with volatility resetting lower.",
+   "anchor": "NDX in \u2018consolidation\u2019 mode for the last ~4-5 months (top chart) with vol resetting lower",
+   "topic": "TMT price action",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last 4-5 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The NDX forward multiple is contracting toward near multi-year lows.",
+   "anchor": "the NDX\u2019s multiple contracting towards near multi-year lows",
+   "topic": "TMT price action",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The AI capex trade has lost some steam over the last few months.",
+   "anchor": "the capex trade lost some steam over the last few months",
+   "topic": "AI semis complex",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last few months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Semis remain the most favored group in TMT among investors the desk speaks to.",
+   "anchor": "Semis \u2013 remains the most \u2018loved\u2019 group in TMT with most investor convos",
+   "topic": "AI semis complex",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "AMAT and LRCX have closed lower in 8 of the last 10 weeks.",
+   "anchor": "AMAT and LRCX lower on 8 of 10wks",
+   "topic": "AI semis complex",
+   "status": "released",
+   "instruments": [
+    "AMAT",
+    "LRCX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last 10 weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Semicap bulls argue the multiple holds because semicap is a later-cycle winner while bears argue the group must compress further.",
+   "anchor": "bulls argue the multiple can hold as Semicap is a \u2018later cycle\u2019 winner vs bears ague the group needs to burn off multiple",
+   "topic": "AI semis complex",
+   "status": "level",
+   "instruments": [
+    "AMAT",
+    "LRCX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "On 2-year forward (2028) earnings, AVGO and NVDA trade in the low-double-digit P/E range, DELL in the mid-teens, and AMAT and semicaps closer to 20x.",
+   "anchor": "compute (AVGO, NVDA) in the LDD-x P/E range vs. DELL mid-teens vs. AMAT / Semicaps closer to 20x",
+   "topic": "AI semis complex",
+   "status": "level",
+   "instruments": [
+    "AVGO",
+    "NVDA",
+    "DELL",
+    "AMAT"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028 estimates"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Optical names including LITE trade in the 20s on 2-year forward P/E.",
+   "anchor": "vs Optical / LITE in the 20s",
+   "topic": "AI semis complex",
+   "status": "level",
+   "instruments": [
+    "LITE"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2028 estimates"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "GIR expects analog semi management teams to strike a positive tone on end-market demand strength and revenue visibility at the conference.",
+   "anchor": "We expect companies to strike a positive tone with a focus on end market demand strength",
+   "topic": "Analog semis",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "GIR expects analog semi managements to highlight extending lead times, shipping closer to end demand, and pricing actions that more than offset higher input costs.",
+   "anchor": "extending lead times, shipping closer to end demand, and recent pricing actions that could more than offset the impact of higher input costs",
+   "topic": "Analog semis",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Analog semis underperformed partly because they were the last group to rally before the summer drawdown and the first de-risked during it.",
+   "anchor": "last group to rip before the Summer drawdown = first group de-risked during it",
+   "topic": "Analog semis",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "summer 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Software sentiment is bifurcated, with investors preferring inference economy names in security and data infrastructure.",
+   "anchor": "sentiment remains very bifurcated with a clear investor preference for perceived \u201cinference economy\u201d names",
+   "topic": "Software sentiment",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Inference economy plays have seen meaningful multiple expansion as the market rewards names that can grow through capex swings.",
+   "anchor": "the cohort of \u201cinference economy\u201d plays have seen meaningful multiple expansion",
+   "topic": "Software sentiment",
+   "status": "released",
+   "instruments": [
+    "SNOW",
+    "TWLO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Many investors read the recent SaaS and Apps rally as a technical bounce from oversold levels rather than a fundamental turn.",
+   "anchor": "many investors we speak to feel like the move has mostly been a technical bounce from oversold levels",
+   "topic": "Software sentiment",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Software and Apps bears point to the lack of broader revenue revisions and mixed results from HUBS and INTU.",
+   "anchor": "bears quick to point out the lack of broader revenue revisions vs. more mixed results from HUBS or INTU types",
+   "topic": "Software sentiment",
+   "status": "released",
+   "instruments": [
+    "HUBS",
+    "INTU"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Hardware and networking investors debate whether EMS and optical names are stuck growing into their multiples.",
+   "anchor": "investors debating if much of the space (think: EMS or Optical) is stuck in \u201cgrow into its multiple\u201d territory",
+   "topic": "Hardware and networking",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "HPQ and AAPL have made strong moves higher on edge or technical drivers.",
+   "anchor": "hard to ignore the power moves higher in the HPQ or AAPL\u2019s of the world",
+   "topic": "Hardware and networking",
+   "status": "released",
+   "instruments": [
+    "HPQ",
+    "AAPL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Internet is choppy at best, though the desk hears more conversations about turnaround candidates.",
+   "anchor": "Internet \u2013 choppy, at best .. albeit .. more convos as of late around possible \u201cturn-around\u201d candidates",
+   "topic": "Internet sector",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The desk debates whether the move in T and VZ is technical covering and defensive rotation or a durable thawing of competition bear cases.",
+   "anchor": "how much of this move is technicals (covering, defensive rotation) vs. a durable thawing",
+   "topic": "Telcos and cable",
+   "status": "released",
+   "instruments": [
+    "T",
+    "VZ"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Cable is decidedly out of favor while live and media names are increasingly topical as durable against AI uncertainty.",
+   "anchor": "cable remains decidedly out of favor .. live / media remains increasingly topical",
+   "topic": "Telcos and cable",
+   "status": "released",
+   "instruments": [
+    "LYV",
+    "FWONK",
+    "TKO",
+    "SPHR"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The central TKO debate is whether its raised guidance is less conservative than usual given the management team's beat-and-raise history.",
+   "anchor": "could TKO\u2019s raised guidance turn out to be less conservative than usual",
+   "topic": "TKO guidance debate",
+   "status": "forecast",
+   "instruments": [
+    "TKO"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027 EBITDA"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "TKO concerns include pricing and attendance slowdowns, slow WWE sponsorship revenue growth this year, and limited remaining merger cost synergies.",
+   "anchor": "given recent concerns around pricing & attendance\nslowdowns, a slow start to WWE sponsorship revenue growth this year",
+   "topic": "TKO guidance debate",
+   "status": "released",
+   "instruments": [
+    "TKO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "IT services names ACN, CTSH and EPAM are roughly 50% off their YTD lows while INFY, Wipro and IBM sit near YTD lows.",
+   "anchor": "certain names now ~50% off YTD lows (ACN,\nCTSH, EPAM) vs others still near YTD lows (INFY, Wipro, IBM)",
+   "topic": "IT services dispersion",
+   "status": "level",
+   "instruments": [
+    "ACN",
+    "CTSH",
+    "EPAM",
+    "INFY",
+    "IBM"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "YTD 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Investor interest has picked up in HOOD as an AI product-velocity play and XYZ as an AI-levered cost-cutting play with improved topline trends.",
+   "anchor": "inbounds and buzz has picked up around both HOOD (.. an AI \u2018use case\u2019 play re: product velocity .. ) and XYZ",
+   "topic": "Payments and fintech",
+   "status": "released",
+   "instruments": [
+    "HOOD",
+    "XYZ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Visa and Mastercard appear to be steady long positions, with debate on peak trends and Visa's upcoming FY27 guide.",
+   "anchor": "Visa / MA seem to be steady longs (albeit debates on \u2018peak\u2019 trends and Visa\u2019s looming F27 guide)",
+   "topic": "Payments and fintech",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Investor inbounds on FIS, FISV, UPST, JKY and FOUR remain rare.",
+   "anchor": "inbounds on FIS, FISV, UPST, JKY and FOUR remain few and far between",
+   "topic": "Payments and fintech",
+   "status": "released",
+   "instruments": [
+    "FIS",
+    "UPST",
+    "FOUR"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The GS desk's most favored names attending the conference are ANET, SNOW, TWLO, DT, LYV, NET, OKTA, DELL, AMAT, SPOT, NVDA, Unity, STX, CRWD, PANW and AMD.",
+   "anchor": "Most \u2018loved\u2019 names attending (desk view): ANET, SNOW, TWLO, DT, LYV, NET,",
+   "topic": "TMT desk positioning",
+   "status": "level",
+   "instruments": [
+    "ANET",
+    "SNOW",
+    "TWLO",
+    "DT",
+    "LYV",
+    "NET",
+    "OKTA",
+    "DELL",
+    "AMAT",
+    "SPOT",
+    "NVDA",
+    "U",
+    "STX",
+    "CRWD",
+    "PANW",
+    "AMD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The GS desk's most debated names attending are TKO, RDDT, FTNT, AVGO, CRWV, MSFT, NOW, SNDK, CRM, UBER, MDB and SpaceX.",
+   "anchor": "Most \u2018debated\u2019 names\nattending (desk view): TKO, RDDT, FTNT, AVGO, CRWV, MSFT, NOW, SNDK, CRM, UBER, MDB,",
+   "topic": "TMT desk positioning",
+   "status": "level",
+   "instruments": [
+    "TKO",
+    "RDDT",
+    "FTNT",
+    "AVGO",
+    "CRWV",
+    "MSFT",
+    "NOW",
+    "SNDK",
+    "CRM",
+    "UBER",
+    "MDB"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The GS desk's most out-of-favor names attending are QCOM, HPQ, PINS, NXPI, telcos, IBM, HUBS and CHTR.",
+   "anchor": "Most \u2018out of favor\u2019 names attending (desk view): QCOM, HPQ, PINS, NXPI, Telcos,",
+   "topic": "TMT desk positioning",
+   "status": "level",
+   "instruments": [
+    "QCOM",
+    "HPQ",
+    "PINS",
+    "NXPI",
+    "IBM",
+    "HUBS",
+    "CHTR"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "US firm-level AI adoption rose 0.9 percentage points to 22.4% of establishments in the August 2026 Census BTOS survey.",
+   "anchor": "AI adoption by firms rose by 0.9pp to 22.4% among US establishments",
+   "topic": "Enterprise AI adoption",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Surveyed US firms expect AI adoption to reach 25.9% within the next six months.",
+   "anchor": "with adoption expected to rise to\n25.9% in the next 6 months",
+   "topic": "Enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 6 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "DASH trades at roughly a 60% premium to UBER on forward EV/EBITDA, toward the high end of its multi-year range.",
+   "anchor": "with the former trading at a ~60%\npremium to UBER on fwd EV/EBITDA, towards the higher-end of its multi-year range",
+   "topic": "DASH vs UBER valuation",
+   "status": "level",
+   "instruments": [
+    "DASH",
+    "UBER"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "Day 1 company presentations at the conference begin at 8:50am PST with QCOM, ANET, DOCN, IOT and TKO among the presenters.",
+   "anchor": "company presentations kick-off in ~1 hour at 850am PST (QCOM,\nANET, DOCN, IOT, TKO & more)",
+   "topic": "GS TMT conference",
+   "status": "released",
+   "instruments": [
+    "QCOM",
+    "ANET",
+    "DOCN",
+    "IOT",
+    "TKO"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "8 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT Day 1 GS Communacopia Technology Conference preview 8 Sep 2026",
+   "claim": "The conference runs 9/8 to 9/11 in San Francisco with the OpenAI CFO, AVGO CEO, NVDA CEO, Databricks CEO, MSFT CFO and SpaceX CFO speaking.",
+   "anchor": "OpenAI (CFO), AVGO (CEO), NVDA (CEO), Databricks (CEO), MSFT (CFO), SPCX (CFO)",
+   "topic": "GS TMT conference",
+   "status": "released",
+   "instruments": [
+    "AVGO",
+    "NVDA",
+    "MSFT"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "9/8-9/11"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15661__gs-us-tmt-day-1-gs-communacopia-technology-conference-previe.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 39,
+  "matched": 39,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
