@@ -1,0 +1,267 @@
+{
+ "brief": "A Market Ear chart compilation arguing that growth, capex, commodities, yields and positioning are all stretched to extremes at once. S&P 500 2026 earnings are forecast to grow 34%, more than double the 15% growth expected earlier this year, driven by an AI boom rather than a post-recession rebound. Consensus hyperscaler capex has risen from under $300bn to $940bn, pushing tech to a record 25% share of global profits even as margins sit at a structural-plus-cyclical high the piece flags as a sustainability question. The boom is not US-only: EM earnings growth is running at 72% y/y, Korea buybacks are climbing toward unprecedented levels, and Europe's economic surprise index is at multi-year highs. Cost-side extremes are appearing too: crack spreads, gasoline, diesel and electricity prices are all at records, the 10-year Treasury yield closed at its highest since 2023, and China has bought gold for 22 straight months. USD and vol-control positioning are crowded, and GS expects a record $700bn of 2026 equity issuance. The note makes no directional call of its own. It argues the convergence itself is what is abnormal.",
+ "cards": [
+  {
+   "bank": "Compound",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "S&P 500 earnings are expected to surge 34% in 2026, more than double the 15% growth forecast at the start of the year.",
+   "anchor": "S&P 500 earnings are now expected to surge 34% in 2026, more than double the 15% growth expected at the start of the year.",
+   "topic": "S&P 500 2026 earnings",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Top Down Charts",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "Tech profit margins are at a structural and cyclical high, raising questions about sustainability.",
+   "anchor": "tech profit margins stand out as being at a structural + cyclical high",
+   "topic": "Tech profit margins",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "12-month forward consensus for US hyperscaler capex has risen from less than $300bn in early 2025 to $940bn now.",
+   "anchor": "12-month forward consensus US hyperscaler capex rising from less than $300bn in early 2025 to $940bn now.",
+   "topic": "AI hyperscaler capex",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month forward"
+  },
+  {
+   "bank": "BofA",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "The AI capex boom has caused a large transfer of free cash flow from hyperscalers to semiconductor companies.",
+   "anchor": "The AI capex boom has led to a staggering transfer in free cash flow from hyperscalers to semis.",
+   "topic": "AI hyperscaler capex",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "Tech is expected to contribute a quarter of global profits over the coming twelve months, an all-time high.",
+   "anchor": "Tech is expected to contribute a quarter of global profits over the coming twelve months, an all-time high.",
+   "topic": "Tech share of global profits",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "GIR",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "22.4% of firms are using AI in their regular business functions, up 0.9 percentage points from July.",
+   "anchor": "22.4% of firms are using Artificial Intelligence in their regular business functions (+0.9pp from July);",
+   "topic": "AI adoption survey",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GIR",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "25.9% of firms expect to use AI in the next 6 months.",
+   "anchor": "25.9% expect to use AI in the next 6 months.",
+   "topic": "AI adoption survey",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 6 months"
+  },
+  {
+   "bank": "Exponential View",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "The AI economy's revenue estimate reached $229 billion annualized by the end of August, up 3.5x in one year.",
+   "anchor": "Our revenue estimate for the AI economy reached $229 billion annualized by the end of August - up 3.5x in one year.",
+   "topic": "AI economy revenue",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "IBES",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "EM 'strong' earnings growth projections for this year are at 72% year-over-year.",
+   "anchor": "\"Strong\" earnings growth projections for this year are at 72% y/y.",
+   "topic": "EM earnings growth",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "JPM Asian strategy",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "Corporates have become the largest buyers of Korean equities, with Korea buybacks poised to reach unprecedented levels.",
+   "anchor": "Corporates have emerged as the big buyers of Korean equities recently, with buybacks in Korea poised to touch unprecedented levels.",
+   "topic": "Korea equity buybacks",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM Equity strategy",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "The Eurozone economic surprise index has spiked to multi-year highs as data prints beat consensus expectations.",
+   "anchor": "The Eurozone economic surprise index has spiked to multi-year highs, reflecting recent data prints coming in better than consensus expected.",
+   "topic": "Europe economic surprises",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "Refined product crack spreads have recently hit record levels, reflecting depleted inventories of gasoline, diesel and jet fuel.",
+   "anchor": "Refined product cracks have recently hit record levels, reflecting depleted inventories in refined products (such as gasoline, diesel and jet fuel).",
+   "topic": "Refined product crack spreads",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "Gasoline futures are up 30% in a month, and diesel prices are around $6 a gallon.",
+   "anchor": "Gasoline futures up 30% in a month, and diesel prices ~$6/gallon.",
+   "topic": "Gasoline and diesel prices",
+   "status": "released",
+   "instruments": [
+    "UGA"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "BofA",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "US electricity prices have risen sharply since 2022 to new record highs.",
+   "anchor": "US electricity prices have risen sharply since 2022 to new record highs.",
+   "topic": "US electricity prices",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since 2022"
+  },
+  {
+   "bank": "SAFE / GoldSilver / TKL",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "China's central bank bought +20 tonnes of gold in August, matching its largest monthly purchase since October 2023.",
+   "anchor": "China's central bank officially bought +20 tonnes of gold in August, matching its largest monthly purchase since October 2023.",
+   "topic": "China gold purchases",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "SAFE / GoldSilver / TKL",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "China's central bank has now made 22 consecutive monthly gold purchases, following +20 tonnes bought in July and +15 tonnes in June.",
+   "anchor": "This follows +20 tonnes and +15 tonnes acquired in July and June, respectively, and marks its 22nd consecutive monthly gold purchase.",
+   "topic": "China gold purchases",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "@barchart",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "The US 10-Year Treasury yield hit its highest closing level since 2023.",
+   "anchor": "U.S. 10-Year Treasury Yield hits highest closing level since 2023.",
+   "topic": "US 10-year Treasury yield",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM FX",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "USD net positioning looks stretched amid higher yields and a crowded dollar trade.",
+   "anchor": "Higher yields, a crowded dollar \u2014 and increasingly crowded markets. USD positioning looks stretched.",
+   "topic": "USD positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "Vol-control equity allocations have reached the 100th percentile after a prolonged period of unusually low volatility.",
+   "anchor": "Vol-control equity allocations have reached the 100th percentile, courtesy of the prolonged period of unusually low volatility.",
+   "topic": "Vol-control equity allocations",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Welcome To The Everything High. Nothing About This Is Normal.",
+   "claim": "GS estimates roughly $700 billion of corporate equity supply in 2026, including IPO volume of slightly more than $225 billion, making 2026 a record year for equity issuance in dollar terms.",
+   "anchor": "We estimate roughly $700 billion of corporate equity supply in 2026, combining IPO volume of slightly more than $225 billion",
+   "topic": "2026 equity issuance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15689__welcome-to-the-everything-high-nothing-about-this-is-normal.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 20,
+  "matched": 20,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
