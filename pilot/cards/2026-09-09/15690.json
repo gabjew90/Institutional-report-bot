@@ -1,0 +1,205 @@
+{
+ "brief": "TME argues the AI bull case keeps strengthening (frontier models solving previously unsolved problems, Google Cloud deals growing over 2x QoQ/YoY, Broadcom demand exceeding its $115bn FY27 outlook) while the tape simultaneously flashes macro stress: the yen is strengthening on priced BOJ tightening and repatriation, tech CDS spreads have widened since mid-August, and rates have moved higher, yet NDX has not broken down. The note frames the bear case as capture-of-economics risk, not demand, and argues that if tech breaks, the catalyst would be macro rates, yen strength and leverage draining via a yen-funded carry unwind rather than weak demand. Six-month realized SPX correlation has fallen to 11, a level seen only twice in 25 years, February 2007 and January 2018, ahead of Volmageddon, and SPX straddles sit near yearly lows. Garrett argues such correlation extremes rarely persist and typically resolve in an explosive return of vol convexity. The note concludes convexity is cheap and recommends long SPX straddles as a two-sided expression of the eventual break, with BofA preferring a more targeted hedge: sell the October 16 VIX put, buy the November 22-30 call spread.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Google Cloud's deals worth more than $100m are growing more than 2x quarter-over-quarter and year-over-year.",
+   "anchor": "Google Cloud\u2019s $100m-plus deals are growing more than 2x\nQoQ and YoY",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "AI-server capital payback is under two years, and roughly half that on proprietary silicon.",
+   "anchor": "AI-server payback is under two years, and roughly half that on proprietary silicon",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Broadcom says demand exceeds its $115bn FY27 outlook, with power, site readiness and supply now the constraints.",
+   "anchor": "Broadcom says demand exceeds its $115bn FY27 outlook, with power, site readiness and supply now\nthe constraints.",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Astra was trained across more than 100,000 GPUs and requires 70-100MW of power at peak.",
+   "anchor": "Astra, trained across more than 100,000 GPUs and requiring 70\u2013100MW at peak",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Bessent said overnight, \"I am the house now ... and you can bet against me if you want.\"",
+   "anchor": "\u201cI am the house now \u2026 and you can bet against me if you\nwant.\u201d",
+   "topic": "Yen strength and BOJ",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "The yen continues to strengthen as markets price BOJ tightening and repatriation.",
+   "anchor": "the yen continues to strengthen as markets price BOJ tightening and\nrepatriation.",
+   "topic": "Yen strength and BOJ",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "The widening in tech CDS spreads since mid-August remains notable even though it has paused lately.",
+   "anchor": "the widening since mid-August remains notable",
+   "topic": "Tech absorbing macro stress",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since mid-August"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "The July tech CDS spike coincided with an NDX sell-off, but this time NDX has barely reacted to the CDS widening.",
+   "anchor": "The July\nspike coincided with an NDX sell-off. This time, NDX has barely reacted.",
+   "topic": "Tech absorbing macro stress",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Big tech's ability to hold together despite the latest move higher in rates increasingly looks like resilience.",
+   "anchor": "its ability to hold together\nincreasingly looks like resilience",
+   "topic": "Tech absorbing macro stress",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Six-month realized correlation across the SPX has fallen to just 11.",
+   "anchor": "Six-month realized correlation across the SPX has fallen\nto just 11",
+   "topic": "SPX realized correlation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Only two other periods in the past 25 years have seen similarly depressed SPX correlation levels: February 2007 and January 2018.",
+   "anchor": "Only two other periods in the past 25 years have seen similarly depressed levels: February\n2007 and January 2018",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "SPX straddles are hovering near their yearly lows.",
+   "anchor": "SPX straddles are hovering near their yearly lows",
+   "topic": "SPX realized correlation",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Garrett says such correlation extremes have rarely proved sustainable, typically ending in an explosive return of index vol convexity.",
+   "anchor": "such extremes have rarely proved sustainable, typically ending in an explosive\nreturn of index vol convexity",
+   "topic": "Convexity trade setup",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "Long SPX straddles offer a clean two-sided expression of the eventual break.",
+   "anchor": "Long SPX straddles offer a clean two-sided expression of the",
+   "topic": "Convexity trade setup",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everything Says Sell Tech\u2014Except Tech Why The Next Move Could Be Violent",
+   "claim": "For a more targeted hedge, BofA prefers selling the October 16 VIX put and buying the November 22-30 call spread.",
+   "anchor": "BofA prefers selling the October 16 VIX put and buying the\nNovember 22\u201330 call spread",
+   "topic": "Convexity trade setup",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 16 to November 22-30"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15690__everything-says-sell-tech-except-tech-why-the-next-move-coul.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 15,
+  "matched": 15,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
