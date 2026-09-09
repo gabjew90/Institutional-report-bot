@@ -1,0 +1,515 @@
+{
+ "brief": "Goldman Sachs cross-asset weekly. August nonfarm payrolls rose 162k, prior employment growth was revised higher and unemployment held at 4.1%, an upside surprise that raised market expectations of a September Fed hike despite White House calls for lower rates. This week's focus is US PPI and CPI plus central bank decisions including the ECB. The procyclical rotation since June 30 continued on higher nominal growth but slowed. Commodities led, driven by European gas and refined products on SoH tensions, with grains also among the largest moves. Equity benchmarks stayed range-bound while leadership shifted, as one of the sharpest momentum factor unwinds broadened returns into non-Tech and defensives, Energy first and Financials and Health Care the strongest non-energy sectors. Sovereign bonds sold off toward post-GFC yield highs led by real yields, which GS attributes to strong nominal growth, fiscal concerns and crowding out from AI-related debt issuance. Gold rallied despite higher US real yields, tied to safe-haven demand after US Treasury interventions in the yen and long-dated Treasuries. GS stays tactically Neutral over 3 months and modestly pro-risk over 12 months: OW equities, N bonds, N commodities, N cash, UW credit, with AI exposure combined with high-dividend and low-volatility styles.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "US nonfarm payrolls increased by 162k in August, employment growth was revised higher, and the unemployment rate was unchanged at 4.1%.",
+   "anchor": "last Friday: nonfarm payrolls increased by 162k in August, employment growth was revised higher",
+   "topic": "Fed rate path",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "The August US labour market report increased market expectations of a September Fed hike, despite White House calls for lower rates.",
+   "anchor": "increased market expectations of a September hike, despite calls from the White House for lower rates",
+   "topic": "Fed rate path",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs expects this week's market focus to be US PPI and CPI data and impending central bank decisions such as the ECB.",
+   "anchor": "focus will be on US PPI and CPI data and impending central bank decisions, such as the ECB",
+   "topic": "Fed rate path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "The procyclical rotation across global assets continued over the summer on higher nominal growth but has slowed.",
+   "anchor": "The procyclical rotation across global assets continued over the summer, supported by higher nominal growth, but it has slowed",
+   "topic": "summer cross-asset rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Commodities led cross-asset returns over the summer, particularly European gas and refined products, amid tensions around the Strait of Hormuz.",
+   "anchor": "Commodities led returns, particularly European gas and refined products amid tensions around the SoH",
+   "topic": "summer cross-asset rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "The Korean won rallied materially in FX markets over the summer.",
+   "anchor": "In FX markets, KRW also rallied materially",
+   "topic": "summer cross-asset rotation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Grains recorded one of the largest cross-asset moves of the summer, alongside strong agricultural commodity returns.",
+   "anchor": "Grains also had one of the largest cross-asset moves, alongside strong agricultural commodity returns",
+   "topic": "agricultural commodities",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "A stronger Super El Nino could add to food-price inflation through supply risks in concentrated agricultural markets, particularly sugar, while easing pressure on European gas storage if temperatures stay mild.",
+   "anchor": "could add to food-price inflation through supply risks in concentrated agricultural markets, particularly sugar",
+   "topic": "agricultural commodities",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Broad equity benchmarks remained relatively range-bound over the summer while leadership shifted materially beneath the surface.",
+   "anchor": "Broad equity benchmarks remained relatively range-bound, but leadership shifted materially beneath the surface",
+   "topic": "equity momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "One of the sharpest momentum factor unwinds supported a broadening of equity returns into non-Tech and defensive areas.",
+   "anchor": "One of the sharpest momentum factor unwinds supported a",
+   "topic": "equity momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Energy led global equity sector returns since June 30, with Financials and Health Care the strongest non-energy sectors.",
+   "anchor": "Energy led returns, while Financials and Health Care emerged among the strongest non-energy sectors",
+   "topic": "equity momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Global sovereign bonds sold off over the summer as longer-dated yields approached post-GFC highs, led by real yields.",
+   "anchor": "sovereign bonds sold off as longer-dated yields approached post-GFC highs, led by real yields",
+   "topic": "government bonds",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs attributes the yield spike to strong nominal growth, fiscal concerns, and crowding out from AI-related debt issuance.",
+   "anchor": "The spike was driven by strong nominal growth, fiscal concerns, and crowding out from AI-related debt issuance",
+   "topic": "government bonds",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight US 10-year government bonds and forecasts the yield falling from 4.78% to 4.41% in 3 months and 4.26% in 12 months.",
+   "anchor": "US OW OW 4.78 4.41 4.36 4.26 4.2 5.9 9.3",
+   "topic": "government bonds",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight German 10-year government bonds and forecasts the yield falling from 3.34% to 2.99% in 3 months and 3.00% in 12 months.",
+   "anchor": "Germany OW OW 3.34 2.99 3.00 3.00 4.0 4.8 6.8",
+   "topic": "government bonds",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Underweight Japanese 10-year government bonds and forecasts the yield at 3.00% in 3 months and 2.86% in 12 months from 2.91%.",
+   "anchor": "Japan UW UW 2.91 3.00 2.96 2.86 0.3 1.6 4.5",
+   "topic": "government bonds",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Neutral UK 10-year government bonds at 3 months and Overweight at 12 months, forecasting the yield falling from 5.14% to 4.40%.",
+   "anchor": "UK N OW 5.14 4.53 4.50 4.40 6.3 8.1 12.0",
+   "topic": "government bonds",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Energy prices re-emerged as an important driver of cross-asset volatility, potentially weighing on both bonds and equities.",
+   "anchor": "Energy prices re-emerged as an important driver of cross-asset volatility again, potentially weighing both on",
+   "topic": "cross-asset volatility",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Single-stock implied volatility reached a record peak of 2.9x market implied volatility in mid-July before beginning to normalise.",
+   "anchor": "Single-stock implied vol reached a record peak of 2.9x the implied vol of the market in mid-July",
+   "topic": "cross-asset volatility",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Markets continue to price high dispersion relative to index volatility into autumn while the VIX remains relatively anchored despite rising macro headwinds.",
+   "anchor": "markets continue to price high dispersion relative to index volatility into autumn, the VIX remains relatively anchored",
+   "topic": "cross-asset volatility",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is tactically Neutral over 3 months and modestly pro-risk over 12 months, Overweight equities, Neutral bonds, commodities and cash, and Underweight credit.",
+   "anchor": "We remain tactically Neutral for 3 months, while modestly pro-risk over 12 months (OW Equities, N Bonds",
+   "topic": "GOAL asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 to 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs expects healthy earnings growth to keep supporting equities, with returns likely to slow as growth and revisions peak.",
+   "anchor": "Healthy earnings growth should continue to support equities, although returns are likely to slow as growth",
+   "topic": "GOAL asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs recommends combining global AI exposure with high-dividend and low-volatility equity styles.",
+   "anchor": "We recommend combining global AI exposure with high-dividend and low-volatility styles",
+   "topic": "GOAL asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Following the August volatility reset, Goldman Sachs sees Momentum collars, VIX call spreads, EUR/CHF puts and puts on Financials, Energy and TOPIX alongside KOSPI calls as attractive hedges.",
+   "anchor": "Following the August volatility reset, attractive hedges include Momentum collars, VIX call spreads",
+   "topic": "GOAL asset allocation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Gold rallied strongly over the summer despite higher US 10-year real yields.",
+   "anchor": "Gold had a strong rally, despite higher US 10-year real yields",
+   "topic": "gold outlook",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs says US Treasury interventions in the yen and in long-dated Treasuries increased demand for safe havens including gold, the Swiss franc and Bitcoin.",
+   "anchor": "US Treasury interventions in foreign exchange (Yen) and long-dated Treasuries increased demand for safe",
+   "topic": "gold outlook",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight gold and forecasts the price rising from $4,444 per troy ounce to $4,900 in 3 months and $5,275 in 12 months.",
+   "anchor": "Gold ($/troy oz) OW OW 4,444 4,900 5,045 5,275 10.3 13.5 18.7",
+   "topic": "gold outlook",
+   "status": "target",
+   "instruments": [
+    "GLD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight the S&P 500 at 7719 with index forecasts of 7600 in 3 months, 8000 in 6 months and 8300 in 12 months.",
+   "anchor": "S&P 500 ($) OW OW 7719 7600 8000 8300 -1.3 4.2 8.7",
+   "topic": "equity index forecasts",
+   "status": "target",
+   "instruments": [
+    "SPY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Underweight the Stoxx Europe 600 at 650 with index forecasts of 670 in 3 months and 695 in 12 months.",
+   "anchor": "UW UW 650 670 680 695 3.9 6.3 10.2",
+   "topic": "equity index forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight MSCI Asia-Pacific ex Japan at 891 with index forecasts of 960 in 3 months and 1120 in 12 months.",
+   "anchor": "MSCI Asia-Pacific ex. JP ($) OW OW 891 960 1040 1120 8.6 17.9 27.5",
+   "topic": "equity index forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight the Topix at 4103 with index forecasts of 4400 in 3 months and 4600 in 12 months.",
+   "anchor": "Topix (\u00a5) OW OW 4103 4400 4500 4600 7.8 10.8 14.3",
+   "topic": "equity index forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight Bloomberg USD investment grade credit at an 80bp spread, forecast at 83bp in 3 months and 78bp in 12 months.",
+   "anchor": "Bloomberg USD IG OW OW 80 83 81 78 3.7 5.6 9.5",
+   "topic": "credit spread forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Overweight Bloomberg USD high yield credit at a 267bp spread, forecast to widen to 298bp in 3 months and 280bp in 12 months.",
+   "anchor": "Bloomberg USD HY OW OW 267 298 291 280 1.7 3.6 7.6",
+   "topic": "credit spread forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Underweight Bloomberg EUR investment grade credit at an 80bp spread, forecast to widen to 89bp in 3 months and 84bp in 12 months.",
+   "anchor": "Bloomberg EUR IG UW UW 80 89 87 84 2.1 3.2 5.4",
+   "topic": "credit spread forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Underweight Bloomberg EUR high yield credit at a 285bp spread, forecast to widen to 316bp in 3 months and 305bp in 12 months.",
+   "anchor": "Bloomberg EUR HY UW UW 285 316 311 305 1.3 2.7 5.4",
+   "topic": "credit spread forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Neutral WTI crude at $93 per barrel and forecasts $75 in 3 months and $68 in 12 months.",
+   "anchor": "WTI ($/bbl) N N 93 75 73 68 -19.1 -21.2 -26.6",
+   "topic": "commodity forecasts",
+   "status": "target",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Neutral Brent crude at $96 per barrel and forecasts $80 in 3 months and $73 in 12 months.",
+   "anchor": "Brent ($/bbl) N N 96 80 78 73 -17.0 -19.0 -24.2",
+   "topic": "commodity forecasts",
+   "status": "target",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs is Neutral copper at $14,490 per tonne and forecasts $13,735 in 3 months and $13,800 in 12 months.",
+   "anchor": "Copper ($/mt) N N 14,490 13,735 13,800 13,800 -5.2 -4.8 -4.8",
+   "topic": "commodity forecasts",
+   "status": "target",
+   "instruments": [
+    "CPER"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs forecasts EUR/USD falling from 1.16 to 1.14 in 3 months and 1.12 in 12 months.",
+   "anchor": "EUR/USD - - 1.16 1.14 1.12 1.12 -1.9 -3.6 -3.6",
+   "topic": "FX forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GOAL Kickstart: Summer rotation moderation with higher yields and commodities",
+   "claim": "Goldman Sachs forecasts USD/JPY rising from 156.1 to 162 in 3 months and 165 in 12 months.",
+   "anchor": "USD/JPY - - 156.1 162 163 165 3.8 4.4 5.7",
+   "topic": "FX forecasts",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15566__goal-kickstart-summer-rotation-moderation-with-higher-yields.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 40,
+  "matched": 40,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
