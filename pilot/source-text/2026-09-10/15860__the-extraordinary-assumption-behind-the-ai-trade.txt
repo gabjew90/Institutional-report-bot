@@ -1,0 +1,133 @@
+[Page 1]
+ 
+The Extraordinary Assumption Behind The AI Trade 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, SEP 09, 2026 - 01:35 AM 
+Authored by Simon White, Bloomberg macro strategist, 
+Expectations for almost limitless compute demand are driving the AI trade, leaving it with a core 
+vulnerability. 
+ 
+History has shown countless times that the ends do not always justify the means. Yet when it 
+comes to AI, rampant speculation, trillions of dollars of spending, cross/circular financing, and 
+vast off-balance sheet liabilities are all seemingly justified by the goal of superabundant 
+silicon-based intelligence. 
+There is no doubt that AI is transformative, and demand for compute has risen exponentially. 
+But current and planned investment spending assumes that such demand is virtually without 
+limit and highly and persistently elastic. Sam Altman has described token demand as uncapped, 
+while Jensen Huang has talked of “twin exponentials” in token growth. 
+But what if that’s not the case? In the immediate term, we can see that token price is not 
+impervious to declines, with the series recently hitting new lows. 
+
+
+[Page 2]
+ 
+ 
+This is not simply because demand for cheaper, open-source models is rising: token costs for 
+proprietary and open models have been falling. 
+ 
+This may not be due to compute supply heavily outpacing demand quite yet, but if and when 
+that happens token prices would get drilled significantly lower still. Few, however, seem to 
+envisage such a possibility. 
+Given that trillions of dollars are at risk, this is a huge blind spot that necessitates a closer look. 
+Let’s start with a simple equation: 
+
+
+[Page 3]
+ 
+Compute demand ≈ number of economically viable tasks that LLMs can perform * compute per 
+task 
+And its main inputs: 
+●​ Token price ≈ power cost + data-centre cost + model-provider margin 
+●​ Cost of a unit of useful intelligence ≈ price per token * tokens required to complete task; 
+and 
+●​ Size of the task universe = the number tasks that LLMs can efficiently perform or can 
+continually improve at; or more broadly, the number of tasks LLMs can perform at all. 
+The bullish case requires the ubiquitous Jevons paradox (the idea that greater efficiency in 
+using a resource can increase, rather than reduce, consumption of it) to do a lot of the heavy 
+lifting. If token price falls, it’s assumed demand for compute will always rise sufficiently to 
+compensate. 
+This applies to the cost of intelligence too. For instance, if open-source models — with less of 
+an incentive to burn more tokens than proprietary models — become more efficient at 
+completing tasks, users and agents will just increase their demand to do more of them. 
+But even if Jevons transpires, what if task demand itself isn’t limitless? That is perhaps the 
+biggest structural plank of the bullish argument for compute. 
+For the the task universe to keep growing, two things are necessary: models must keep 
+improving, and there’s an ever-growing set of new tasks that they can handle. Neither can be 
+taken for granted. 
+There has been a steady increase in the capability of models. We’ll leave to one side 
+benchmaxxing, where AI firms game their models to succeed at established intelligence 
+benchmarks. Bearing that in mind, we can see that frontier models have kept improving, with 
+OpenAI’s Astra the latest model to become the most proficient. 
+
+
+[Page 4]
+ 
+ 
+But there is no iron law that says this scaling will continue even though the entire business 
+model of the AI labs, and AI infrastructure, depends on it. Without showing sufficient R&D spend 
+the labs would just be priced as inferencers, where the economics do not justify the sort of 
+valuations Anthropic and OpenAI are seeking. 
+
+
+[Page 5]
+ 
+ 
+Models that keep scaling - reflexively leading to better capability and more revenue, which pays 
+for more training, yielding even better models - is crucial to the boundless demand case. 
+Further, RSI, or recursive self-improvement, is soon expected to supercharge the bullish 
+argument. AI labs are spending more on getting AI to improve AI. But the capital arms race is 
+but for one architecture, LLMs, and it’s imprudent not to apply a non-negligible probability that 
+scaling will fade sooner than expected. Given training is a significant use of tokens (~20-40%), 
+this would represent a significant hit to demand. 
+Even if models keep becoming more capable, there is another implied assumption keeping the 
+whole merry-go-round turning: that the number and length of tasks for LLMs will keep rising. 
+Tasks themselves can be broken up into short and long horizon, and bounded and unbounded, 
+as discussed in this post on X from investor Giovanni Cattani. Some examples are below: 
+ 
+Unbounded and long horizon tasks especially are music to the ears of the demand 
+exponentialists. At the moment, LLM performance on longer horizon tasks is improving, as 
+shown in the chart below. 
+
+
+[Page 6]
+ 
+ 
+Here again, though, the implicit assumption is that scaling will continue, and models will keep 
+getting better, gorging on tokens with abandon. There seems to be little priced into valuation 
+models for the possibility this does not happen. 
+The final point is probably the most important in the longer term. The implicit assumption 
+underpinning much of AI is that intelligence is unbounded. The smartest human has an IQ of 
+perhaps 200, but there is, in theory, nothing stopping a machine having an IQ of 1000, or 10,000 
+or even more. 
+ 
+There is good reason to be sceptical though. The AI researcher François Chollet has described 
+increasing intelligence as not so much a tower you can keep making taller, but a ball you can 
+only make so round. There is an optimal level, after which the returns diminish. 
+For some tasks, such as problems in maths or science, more intellectual horsepower is likely to 
+yield better results, but for many others, such as choosing the best car, adding ever more IQ is 
+not going to add much. 
+Even for harder problems, though, there are many tasks that are simply “computationally 
+irreducible.” LLMs, and AI in general, work by finding pockets of computational reducibility, ie 
+shortcuts that can be exploited in the training data (a simple example is the infinitely many 
+points on a line can be reduced to the equation for that line). 
+
+
+[Page 7]
+ 
+But many (and quite likely, most) problems out there we might find useful to be answered are 
+not reducible enough in an economically viable way for them to be tractable for LLMs, or 
+perhaps any silicon-based AI. 
+We’re not close to this bound yet, but when expectations are for super-exponential growth and 
+ever-rising enterprise adoption rates, it becomes relevant. 
+There is already some doubt implied in AI-related stocks. Forward earnings, revenues and 
+margins have been driving tech stocks higher this year. Forward P/Es, however, have slumped: 
+in other words, investors have been unwilling to capitalize earnings as far into the future. 
+ 
+Whether or not this is because investors are ascribing a lower probability to unbounded 
+compute demand than Jensen Huang or Sam Altman, or for other reasons such as increased 
+competition, there is still nowhere near enough scepticism in valuations if stratospheric 
+expectations are not realised. 
+ 
+ 
+ 
