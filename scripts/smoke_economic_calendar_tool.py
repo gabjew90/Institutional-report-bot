@@ -289,17 +289,17 @@ def test_executor_clamps_days_window():
 # === Wiring + prompt ===
 
 def test_tool_registered_in_both_arrays():
-    """Initial + Voice-strip retry both need the tool, otherwise filter-
-    trip retries lose access to macro lookups."""
+    """Declared once in _tools_all; every retry derives its tools from
+    the routed config (model_copy) since 2026-09-09, so a second
+    hand-listed array is the regression."""
     import discord_bot.bot as bot_mod
     src = bot_mod._ask_pipeline_source()
     n = src.count("_build_economic_calendar_tool()")
-    assert n >= 2, (
-        f"_build_economic_calendar_tool() must be registered in both "
-        f"tools=[] arrays, got {n}"
+    assert n == 1, (
+        f"_build_economic_calendar_tool() must be declared exactly once, got {n}"
     )
-    _ok(f"_build_economic_calendar_tool() registered {n}x in "
-        f"_answer_with_gemini (initial + retry)")
+    assert "retry_config = config.model_copy(" in src
+    _ok("_build_economic_calendar_tool() declared once; retries derive from config")
 
 
 def test_dispatch_branch_present():

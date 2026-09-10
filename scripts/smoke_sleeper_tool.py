@@ -198,8 +198,8 @@ def test_wiring():
     src = bot_mod._ask_pipeline_source()
     assert '"lookup_fantasy_league": _execute_fantasy_league' in src, \
         "executor map entry missing"
-    assert src.count("_build_fantasy_league_tool()") >= 2, \
-        "tool must be in both tool lists (main + retry)"
+    assert src.count("_build_fantasy_league_tool()") == 1, \
+        "tool is declared once in _tools_all; retries derive from config (2026-09-09)"
     assert "sleeper_league_id" in src, "registration must be conditional"
     import scheduler.jobs as jobs
     assert hasattr(jobs, "_sleeper_players_refresh_job")

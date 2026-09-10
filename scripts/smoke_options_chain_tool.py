@@ -259,18 +259,21 @@ def test_executor_ok_path():
 # === wiring + prompt ===
 
 def test_tool_registered_in_both_tool_arrays():
-    """The tool must be added to BOTH tools=[] declarations: the initial
-    call AND the retry call. Missing the retry adds a regression where
-    the model loses access to options-chain on the Voice-strip retry."""
+    """The tool is declared once, in `_tools_all`; every retry derives its
+    tools from the routed `config` (model_copy), so a second hand-listed
+    array is the regression now, not the fix (2026-09-09: the
+    repetition retry's own list had re-exposed tools the router withheld
+    and dropped code_execution)."""
     import discord_bot.bot as bot_mod
     src = bot_mod._ask_pipeline_source()
     n_registrations = src.count("_build_options_chain_tool()")
-    assert n_registrations >= 2, (
-        f"lookup_options_chain must be registered in >=2 tools=[] "
-        f"arrays (initial + retry); got {n_registrations}"
+    assert n_registrations == 1, (
+        f"lookup_options_chain must be declared exactly once (in _tools_all); "
+        f"got {n_registrations}"
     )
-    _ok(f"_build_options_chain_tool registered {n_registrations}x in "
-        f"_answer_with_gemini (initial + retry)")
+    assert "retry_config = config.model_copy(" in src, (
+        "the repetition retry must derive from the routed config")
+    _ok("_build_options_chain_tool declared once; retries derive from config")
 
 
 def test_dispatch_branch_present():

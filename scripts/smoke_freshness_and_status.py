@@ -39,7 +39,9 @@ def _fail(msg):
 
 
 def _make_conn():
-    c = sqlite3.connect(":memory:")
+    # The executors read the DB from worker threads (asyncio.to_thread,
+    # 2026-09-09), so the patched connection must be shareable.
+    c = sqlite3.connect(":memory:", check_same_thread=False)
     c.row_factory = sqlite3.Row
     db._init_schema(c)
     db._migrate_drop_unique_constraints(c)

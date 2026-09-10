@@ -153,7 +153,8 @@ def test_backstop_block_wired():
     src = bot_mod._ask_pipeline_source()
     assert "_is_ungrounded_market_fact(" in src, "detector must gate the path"
     assert "GROUNDING REQUIRED" in src, "forced-retry directive missing"
-    assert "Couldn't verify these specifics" in src, "hedge fallback missing"
+    assert "_UNVERIFIED_HEDGE" in src, "hedge fallback missing"
+    assert "Couldn't verify these specifics" in bot_mod._UNVERIFIED_HEDGE
     _ok("backstop wired into _answer_with_gemini: detect → forced retry → hedge")
 
 

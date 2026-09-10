@@ -225,7 +225,11 @@ def _lines(answer: str) -> list[str]:
     """Split on the room's arrow bullets and on blank-line paragraphs;
     a plain sentence stream splits on sentence ends."""
     text = answer or ""
-    if "→" in text:
+    # Bullet mode needs the answer to be WRITTEN as bullets: it opens
+    # with an arrow or carries several. A prose answer with one arrow
+    # (the ladder's hedge line) used to become a single "line" and be
+    # stripped whole (2026-09-09).
+    if text.lstrip().startswith("→") or text.count("→") >= 2:
         parts = re.split(r"(?=→)", text)
         return [p for p in parts if p.strip()]
     if "\n\n" in text:

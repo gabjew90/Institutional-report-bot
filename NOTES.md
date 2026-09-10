@@ -2368,3 +2368,60 @@ Not resolved here. Changing a frozen metric to fit a result is the
 wrong move and I am not proposing it as a fix; the tension is real and
 predates any measurement, which is why it goes to the owner before the
 clock starts rather than after.
+
+## 2026-09-09 — /ask code review: ten plumbing defects fixed
+
+A code-review pass over the /ask pipeline (eleven phases, router, tool
+layer, provenance guard) found 23 confirmed defects. Ten shipped as
+fixes today; every one was a value carried by hand between phases and
+dropped on the way, a class the 09-01 split created when implicit
+shared locals became explicit return tuples.
+
+1. Phase 8 None-initialised `response`, never received it, returned it.
+   Phase 9 read None on every non-TA turn, so finish_reason and the
+   block flags were unknowable, the stamp was always `no-response` and
+   the MAX_TOKENS short-thinking retry was unreachable. This was the
+   common cause of the 09-04, 09-07 and 09-09 empty-answer incidents;
+   the three fixes shipped in that window each tuned phase 9's reading
+   of a response phase 8 had already discarded. `response` is now a
+   pass-through parameter, and
+   tests/test_ask_grounding_passthrough.py carries an AST check that no
+   phase returns a name it only assigns on some paths.
+2. `_tally_retry_usage` did `nonlocal` on phase 3's parameter copy of
+   the token total, which phase 3 never returned; all 19 retry tallies
+   were dropped and record_actual under-counted. It is a `_RetryTally`
+   object now and the caller adds `.total` at record time. The ask log
+   shows `retry-calls: N` and the turn latency.
+3. `_execute_market_price` never set `status`; the phase-7 price
+   backstop gated on status == "ok" and had never fired.
+4. Prefetch trace entries carried `prefetch:<status>`, which no net or
+   validator recognised, and a timed-out prefetch counted as a source.
+   Statuses are raw now with `via: prefetch`; `_trace_has_source`
+   ignores failed and timed-out entries; `timeout` joins the failed set.
+5. The grounding hedge's arrow flipped figure_provenance into bullet
+   mode and stripped prose bodies whole. One `_UNVERIFIED_HEDGE`
+   constant, detached before the check and reattached after; bullet
+   mode now needs a leading arrow or two of them.
+6. `_ask_evidence_text` admitted the full prompt turn (dossier numbers
+   back in) and the model's own earlier text. Both excluded.
+7. The plumbing regen replaced `answer` but not `response`.
+8. The repetition retry hand-listed tools, ignoring TOOL_POLICY and
+   dropping code_execution; it derives from the routed config now.
+9. The transient 5xx re-entry dropped `out_meta`, so a book published
+   after a retry was never recorded.
+10. Eleven synchronous db calls in async phases and three executors
+    moved onto asyncio.to_thread. Doing so exposed a latent deadlock in
+    db.get_connection: the first schema init on a worker thread
+    re-entered the non-reentrant schema lock via
+    backfill_orphan_exit_links. RLock, and the thread-local connection
+    is published before the schema runs.
+
+Confirmed but not fixed today (structural, need their own pass): a
+turn-state object replacing the return tuples; one `_regen` helper for
+the twelve hand-rolled retry sites; classifying the raw response once
+at the call site; a single Evidence object; the fixture harness calling
+classify() without the production kwargs; nine `_ask_meta` keys written
+and never rendered; the ticker-extraction duplicate (CLAUDE.md TODO);
+prompt text that duplicates code validators (ask_prompt.py, policy rule
+1). The transient retry still re-runs phases 0-2 instead of the one
+failed call.

@@ -254,12 +254,13 @@ def test_tool_registered_in_both_arrays():
     import discord_bot.bot as bot_mod
     src = bot_mod._ask_pipeline_source()
     n = src.count("_build_earnings_date_tool()")
-    assert n >= 2, (
-        f"_build_earnings_date_tool() must be in both tools=[] arrays "
-        f"(initial + repetition retry), got {n}"
+    # Declared once in _tools_all; the repetition retry derives from the
+    # routed config (model_copy) since 2026-09-09.
+    assert n == 1, (
+        f"_build_earnings_date_tool() must be declared exactly once, got {n}"
     )
-    _ok(f"_build_earnings_date_tool() registered {n}x in "
-        f"_answer_with_gemini")
+    assert "retry_config = config.model_copy(" in src
+    _ok("_build_earnings_date_tool() declared once; retries derive from config")
 
 
 def test_dispatch_map_entry_present():

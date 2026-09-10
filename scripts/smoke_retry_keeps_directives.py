@@ -63,7 +63,7 @@ def test_repetition_retry_specifically():
     """The retry that caused the incident, checked by name."""
     import discord_bot.bot as bot
     src = bot._ask_pipeline_source()
-    seg = src.split("retry_config = types.GenerateContentConfig(", 1)
+    seg = src.split("retry_config = config.model_copy(", 1)
     assert len(seg) == 2, "repetition retry_config not found"
     window = seg[1][:400]
     assert "_prompt_extra" in window, (

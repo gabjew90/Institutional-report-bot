@@ -137,8 +137,9 @@ def test_bare_probe_wired():
     assert "_grounding_has_sources(probe_gm)" in probe
     assert "_clean_voice_violations(" in probe, \
         "probe answer must pass the mechanical cleaner (skipped the lint pass)"
-    # hedge is the terminal fallback
-    assert "Couldn't verify these specifics" in probe
+    # hedge is the terminal fallback (one module constant since 2026-09-09)
+    assert "_UNVERIFIED_HEDGE" in probe
+    assert "Couldn't verify these specifics" in bot._UNVERIFIED_HEDGE
     _ok("bare probe: no room context/persona, search-only, grounded-only accept")
 
 

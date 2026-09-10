@@ -34,7 +34,14 @@ log = logging.getLogger(__name__)
 # seeing another thread's uncommitted rows.
 _conn: sqlite3.Connection | None = None
 _local = threading.local()
-_schema_lock = threading.Lock()
+# Re-entrant on purpose: _init_schema calls helpers that call
+# get_connection() themselves (analyst.backfill_orphan_exit_links). On
+# the main thread that re-entry found `_conn` already set and returned;
+# on a worker thread the connection was published only AFTER the schema
+# ran, so the re-entry took this lock a second time and deadlocked
+# (2026-09-09, first seen when the /ask executors moved their DB reads
+# onto asyncio.to_thread and a smoke opened its first connection there).
+_schema_lock = threading.RLock()
 _schema_ready = False
 _BUSY_TIMEOUT_S = 30
 
@@ -79,8 +86,11 @@ def get_connection() -> sqlite3.Connection:
     conn = getattr(_local, "conn", None)
     if conn is None:
         conn = _open_connection()
-        _ensure_schema(conn)
+        # Publish before the schema runs, same order as the main-thread
+        # branch, so a helper the schema calls gets THIS connection back
+        # instead of opening a second one.
         _local.conn = conn
+        _ensure_schema(conn)
     return conn
 
 

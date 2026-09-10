@@ -236,7 +236,8 @@ async def _execute_chat_search(args: dict) -> dict:
         )
 
     try:
-        rows = db.search_chat_messages_for_ask(
+        rows = await asyncio.to_thread(
+            db.search_chat_messages_for_ask,
             keyword=keyword or None,
             days=days,
             username=username,
@@ -513,7 +514,8 @@ async def _execute_user_profile(args: dict) -> dict:
         except Exception:
             _top_n = 5
         _top_n = max(1, min(10, _top_n))
-        result = db.lookup_user_ranks(
+        result = await asyncio.to_thread(
+            db.lookup_user_ranks,
             username=username,
             metric=metric,
             rank_position=rank_position,
@@ -543,18 +545,20 @@ async def _execute_user_profile(args: dict) -> dict:
     # instead of treating everything as current.
     if result.get("users"):
         try:
-            conn = db.get_connection()
             uids = [
                 int(u["user_id"]) for u in result["users"]
                 if u.get("user_id") is not None
             ]
             if uids:
                 placeholders = ",".join("?" * len(uids))
-                rows = conn.execute(
-                    f"SELECT user_id, updated_at FROM user_profiles "
-                    f"WHERE user_id IN ({placeholders})",
-                    uids,
-                ).fetchall()
+
+                def _updated_rows():
+                    return db.get_connection().execute(
+                        f"SELECT user_id, updated_at FROM user_profiles "
+                        f"WHERE user_id IN ({placeholders})",
+                        uids,
+                    ).fetchall()
+                rows = await asyncio.to_thread(_updated_rows)
                 updated_map = {
                     int(r["user_id"]): r["updated_at"] for r in rows
                 }
@@ -574,7 +578,8 @@ async def _execute_user_profile(args: dict) -> dict:
             if not uid:
                 continue
             try:
-                dossier = db.format_user_profiles_for_context([int(uid)])
+                dossier = await asyncio.to_thread(
+                    db.format_user_profiles_for_context, [int(uid)])
             except Exception as e:
                 log.warning(
                     f"lookup_user_profile dossier fetch failed for user_id={uid}: {e}"
@@ -729,7 +734,8 @@ async def _execute_trade_log(args: dict) -> dict:
             log.warning(f"lookup_trade_log caller registry lookup failed: {e}")
         display = display or caller.title()
         try:
-            text = db.format_analyst_trades_for_context(
+            text = await asyncio.to_thread(
+                db.format_analyst_trades_for_context,
                 hours=days * 24,
                 caller=caller.lower(),
                 display=display,
@@ -775,7 +781,7 @@ async def _execute_trade_log(args: dict) -> dict:
 
     # --- USERNAME ANCHOR ---
     try:
-        user_id = db.resolve_username_to_user_id(username)
+        user_id = await asyncio.to_thread(db.resolve_username_to_user_id, username)
     except Exception as e:
         log.warning(f"lookup_trade_log resolve_username_to_user_id failed: {e}")
         return {
@@ -796,17 +802,19 @@ async def _execute_trade_log(args: dict) -> dict:
     # Recent trades section) was last refreshed. Stale-snapshot hint.
     profile_updated_at = None
     try:
-        row = db.get_connection().execute(
-            "SELECT updated_at FROM user_profiles WHERE user_id = ?",
-            (int(user_id),),
-        ).fetchone()
+        row = await asyncio.to_thread(
+            lambda: db.get_connection().execute(
+                "SELECT updated_at FROM user_profiles WHERE user_id = ?",
+                (int(user_id),),
+            ).fetchone())
         if row:
             profile_updated_at = row["updated_at"]
     except Exception as e:
         log.warning(f"lookup_trade_log profile_updated_at fetch failed: {e}")
 
     try:
-        profile_snippet = db.get_user_profile_recent_trades_section(user_id)
+        profile_snippet = await asyncio.to_thread(
+            db.get_user_profile_recent_trades_section, user_id)
     except Exception as e:
         log.warning(f"lookup_trade_log profile snippet fetch failed: {e}")
         return {
@@ -827,7 +835,8 @@ async def _execute_trade_log(args: dict) -> dict:
     # self-reported, NOT screenshot-verified — labeled as such.
     chat_stated_trades: list[dict] = []
     try:
-        chat_stated_trades = db.get_recent_user_chat_trades(
+        chat_stated_trades = await asyncio.to_thread(
+            db.get_recent_user_chat_trades,
             user_id, days=max(int(days), 2)
         )
     except Exception as e:
@@ -2110,11 +2119,11 @@ async def _execute_market_price(args: dict) -> dict:
 
     symbols_in = args.get("symbols")
     if not symbols_in or not isinstance(symbols_in, list):
-        return {"error": "symbols list cannot be empty"}
+        return {"status": "error", "error": "symbols list cannot be empty"}
 
     symbols = [str(s).strip().upper() for s in symbols_in if isinstance(s, str) and str(s).strip()]
     if not symbols:
-        return {"error": "symbols list cannot be empty"}
+        return {"status": "error", "error": "symbols list cannot be empty"}
 
     truncated_to = None
     if len(symbols) > 10:
@@ -2311,7 +2320,12 @@ async def _execute_market_price(args: dict) -> dict:
                 )
             # else: all stocks stale -> keep original Fix A caveat unchanged
 
+    # Status like every other executor (2026-09-09): "ok" when at least
+    # one symbol priced, "no_data" when every symbol failed. The phase-7
+    # price backstop gates on status == "ok" and had never seen one.
+    priced = any("price" in q and q.get("price") is not None for q in quotes)
     result = {
+        "status": "ok" if priced else "no_data",
         "session": session_code,
         "session_note": session_note,
         "stock_quote_data_caveat": quote_data_caveat or None,

@@ -402,6 +402,10 @@ def append_ask_interaction(
                     bits.append(f"empty-retry: {meta['empty_retry']}")
                 if meta.get("images"):
                     bits.append(f"images: {meta['images']}")
+                if meta.get("retry_calls"):
+                    bits.append(f"retry-calls: {meta['retry_calls']}")
+                if meta.get("latency_s") is not None:
+                    bits.append(f"{meta['latency_s']}s")
                 guards = meta.get("guards") or []
                 bits.append(
                     "guards: " + (", ".join(guards) if guards else "—")

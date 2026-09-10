@@ -1768,6 +1768,40 @@ def _grounding_has_sources(gm) -> bool:
     return bool(getattr(gm, "grounding_chunks", None) or [])
 
 
+# Tool-result statuses that mean the call produced nothing the model
+# could use. Shared vocabulary with scripts/ask_response_validate.py.
+_FAILED_TOOL_STATUSES = frozenset({"no_data", "error", "empty", "not_found", "timeout"})
+
+
+def _trace_has_source(tool_trace) -> bool:
+    """True when at least one tool call in the trace returned data.
+
+    The grounding nets used to treat ANY trace entry as a source attempt.
+    Since the router's prefetch (2026-09-02) writes a trace entry even
+    when it times out or comes back no_data, a PRICE or EARNINGS_DATE
+    question whose prefetch missed its deadline reached the model with
+    no data and then skipped every net built for exactly that case
+    (2026-09-09). A trace made only of failed calls is not a source."""
+    for t in tool_trace or []:
+        try:
+            st = str(t.get("status") or "ok")
+        except Exception:
+            continue
+        if st.rsplit(":", 1)[-1] not in _FAILED_TOOL_STATUSES:
+            return True
+    return False
+
+
+# The one hedge every ungrounded path appends. One string so the
+# figure-provenance guard can detach it before checking the body and
+# reattach it after (its arrow used to flip the guard's line splitter
+# into bullet mode and take the whole prose body as one line).
+_UNVERIFIED_HEDGE = (
+    "\n\n→ ⚠️ Couldn't verify these specifics against a live source — "
+    "treat the exact numbers/dates as unconfirmed."
+)
+
+
 def _grounding_web_source_count(gm) -> int:
     """Chunks the reader will actually SEE in the Sources footer.
 
@@ -1800,7 +1834,7 @@ def _is_ungrounded_market_fact(answer: str, grounding_metadata,
         return False
     if _grounding_has_sources(grounding_metadata):
         return False
-    if tool_trace:  # any data tool firing counts as a source attempt
+    if _trace_has_source(tool_trace):  # a data tool that returned something
         return False
     if _MARKET_FACT_STRONG_RE.search(answer):
         return True
@@ -2442,7 +2476,7 @@ def _has_unsourced_ta(answer: str, grounding_metadata, tool_trace: list) -> bool
         return False
     if _grounding_has_sources(grounding_metadata):
         return False
-    if tool_trace:
+    if _trace_has_source(tool_trace):
         return False
     indicators, levels = _ta_violations(answer)
     return bool(indicators or levels)
@@ -4079,6 +4113,31 @@ class _AskEarly:
         self.value = value
 
 
+class _RetryTally:
+    """Token usage of every retry call after the tool loop, summed on
+    the object so the caller can add it to the loop's own total at
+    record time. Until 2026-09-09 this was a closure doing `nonlocal`
+    on phase 3's parameter copy of the total, which phase 3 never
+    returned, so the 19 retry tallies in phases 3-9 were dropped and
+    the budget under-counted every guarded turn."""
+    __slots__ = ("total", "calls")
+
+    def __init__(self):
+        self.total = 0
+        self.calls = 0
+
+    def __call__(self, resp) -> None:
+        try:
+            um = resp.usage_metadata
+            self.total += (
+                (um.prompt_token_count or 0)
+                + (um.candidates_token_count or 0)
+            )
+            self.calls += 1
+        except Exception:
+            pass
+
+
 async def _ask_00_setup_tools_and_context(
     channel_id,
     profile_user_ids,
@@ -4215,7 +4274,8 @@ async def _ask_00_setup_tools_and_context(
     profiles_block = ""
     try:
         if profile_user_ids:
-            profiles_block = db.format_user_profiles_for_context(profile_user_ids)
+            profiles_block = await asyncio.to_thread(
+                db.format_user_profiles_for_context, profile_user_ids)
     except Exception as e:
         log.warning(f"User-profile fetch failed (non-fatal): {e}")
 
@@ -4241,7 +4301,8 @@ async def _ask_00_setup_tools_and_context(
     _prior_bot_answer_texts: list[str] = []
     if user_id and channel_id:
         try:
-            prior_answers = db.get_recent_bot_answers_to_asker(
+            prior_answers = await asyncio.to_thread(
+                db.get_recent_bot_answers_to_asker,
                 asker_user_id=user_id,
                 channel_id=channel_id,
                 limit=5,
@@ -4467,7 +4528,7 @@ async def _ask_01_build_prompt(
     # retry carries it.
     try:
         _prot_all = (settings.protected_user_id_set
-                     | db.get_promoted_protected_ids())
+                     | await asyncio.to_thread(db.get_promoted_protected_ids))
     except Exception:
         _prot_all = settings.protected_user_id_set
     _prot_in_scope = _protected_in_scope(
@@ -4527,9 +4588,15 @@ def _ask_evidence_text(contents, response, question, user_content) -> str:
     Part objects; a part it cannot read contributes nothing."""
     chunks: list[str] = [question or "", _evidence_context(user_content)]
     for c in contents or []:
+        # Model turns are the model's own words, not evidence; only their
+        # sandbox output counts. The prompt turn is admitted through
+        # _evidence_context above, not in full, or the WHO'S TALKING
+        # dossier numbers it excludes would come straight back in
+        # (2026-09-09).
+        _is_model = getattr(c, "role", None) == "model"
         for p in getattr(c, "parts", None) or []:
             t = getattr(p, "text", None)
-            if t:
+            if t and not _is_model and str(t) != (user_content or ""):
                 chunks.append(str(t))
             fr = getattr(p, "function_response", None)
             if fr is not None:
@@ -4738,8 +4805,11 @@ async def _ask_02_call_model_with_tools(
         except asyncio.TimeoutError:
             log.warning(f"/ask: prefetch {_pf_tool} exceeded {_ASK_PREFETCH_TIMEOUT_S}s; "
                         "continuing without it")
+            # `status` stays in the executors' vocabulary and `via` says
+            # who called: a prefix-decorated status string matched
+            # nothing the validators or grounding nets check (2026-09-09).
             _ask_tool_trace.append({"tool": _pf_tool, "args": {k: str(v)[:80] for k, v in _pf_args.items()},
-                                    "status": "prefetch:timeout",
+                                    "status": "timeout", "via": "prefetch",
                                     "seconds": round(time.monotonic() - _pf_t0, 2)})
             return None
         except Exception as _e:
@@ -4749,7 +4819,8 @@ async def _ask_02_call_model_with_tools(
         _ask_tool_trace.append({
             "tool": _pf_tool,
             "args": {k: str(v)[:80] for k, v in _pf_args.items()},
-            "status": f"prefetch:{_pf_res.get('status')}",
+            "status": str(_pf_res.get("status") or "ok"),
+            "via": "prefetch",
             "result_chars": len(str(_pf_res)),
             "seconds": round(time.monotonic() - _pf_t0, 2),
         })
@@ -5053,6 +5124,7 @@ async def _ask_03_assemble_response(
     _round_gm_chunks,
     ask_model,
     client,
+    config,
     contents,
     fetched_urls,
     grounding_metadata,
@@ -5068,26 +5140,13 @@ async def _ask_03_assemble_response(
     None-initialised outputs are assigned only on some paths and
     were never read on the others.
     """
-    _code_images = None
-    _tally_retry_usage = None
-    answer = None
-
-    # Token-budget reconciliation MOVED to the end of this function
+    # Token-budget reconciliation MOVED to the end of the pipeline
     # (2026-06-10): it previously ran here — before the repetition /
     # voice-strip / slur-mask retries — so retry calls burned tokens
-    # the budget never saw. Each retry below adds its usage via
-    # _tally_retry_usage; the single record_actual runs after all
-    # of them (just before the quota record).
-    def _tally_retry_usage(resp) -> None:
-        nonlocal _ask_actual_total
-        try:
-            um = resp.usage_metadata
-            _ask_actual_total += (
-                (um.prompt_token_count or 0)
-                + (um.candidates_token_count or 0)
-            )
-        except Exception:
-            pass
+    # the budget never saw. Each retry from here on adds its usage to
+    # this tally; the caller adds tally.total to the loop's total when
+    # phase 10 calls record_actual.
+    _tally_retry_usage = _RetryTally()
 
     # Pull response.text defensively — the SDK raises if the response
     # has no candidates or only function-call parts. Treat all failures
@@ -5122,29 +5181,13 @@ async def _ask_03_assemble_response(
             f"retrying once at higher temp"
         )
         try:
-            retry_config = types.GenerateContentConfig(
-                system_instruction=_build_runtime_system_instruction(_prompt_extra),
-                tools=[
-                    types.Tool(google_search=types.GoogleSearch()),
-                    _build_chat_search_tool(),
-                    _build_user_profile_tool(),
-            _build_trade_log_tool(),
-            _build_market_price_tool(),
-            _build_options_chain_tool(),
-            _build_economic_calendar_tool(),
-            _build_earnings_date_tool(),
-            _build_earnings_slate_tool(),
-            *([_build_fantasy_league_tool()]
-              if (settings.sleeper_league_id or "").strip() else []),
-                ],
-                tool_config=types.ToolConfig(
-                    include_server_side_tool_invocations=True,
-                ),
-                safety_settings=safety_settings,
-                max_output_tokens=5000,
-                temperature=0.7,  # bumped from 0.3 to break the loop
-                thinking_config=types.ThinkingConfig(thinking_budget=2000),
-            )
+            # The routed config, warmer. A hand-listed tool set here
+            # re-exposed Google and chat search on turns the router had
+            # withheld them from, and dropped code_execution (2026-09-09).
+            retry_config = config.model_copy(update={
+                "system_instruction": _build_runtime_system_instruction(_prompt_extra),
+                "temperature": 0.7,  # bumped from 0.3 to break the loop
+            })
             retry_resp = await client.aio.models.generate_content(
                 model=ask_model,
                 contents=contents,
@@ -5273,6 +5316,10 @@ async def _ask_03_assemble_response(
             answer, _plumb_retry, _ask_tool_log, _strip_sentences,
             retry_ctx=_plumb_retry_ctx, **_vctx)
         if _outcome == "regenerated":
+            # The retry's response replaces the draft's, so phase 7
+            # rebuilds grounding from the answer that ships, not the
+            # one that was thrown away (2026-09-09).
+            response = _plumb_resp
             _ask_meta["guards"].append("validate-regenerated")
             log.info(
                 "/ask: meta-plumbing FIXED BY REGENERATE — clean on "
@@ -6237,7 +6284,7 @@ async def _ask_07_validation_ladder(
     _ground_trigger_calendar = (
         _is_calendar_question(question)
         and not _grounding_has_sources(grounding_metadata)
-        and not _ask_tool_trace
+        and not _trace_has_source(_ask_tool_trace)
     )
     if answer and (_ground_trigger_shape or _ground_trigger_web
                    or _ground_trigger_calendar):
@@ -6399,12 +6446,7 @@ async def _ask_07_validation_ladder(
                 # excellent in-voice GLW read). The in-voice retry
                 # above already attempted grounding WITH context;
                 # failing that, hedge and keep the answer.
-                answer = (
-                    answer.rstrip()
-                    + "\n\n→ ⚠️ Couldn't verify these specifics "
-                    "against a live source — treat the exact "
-                    "numbers/dates as unconfirmed."
-                )
+                answer = answer.rstrip() + _UNVERIFIED_HEDGE
                 _ask_meta["ground_retry"] = "hedged(local-skip)"
                 log.warning(
                     "/ask: LOCAL-routed answer failed grounding retry "
@@ -6423,12 +6465,7 @@ async def _ask_07_validation_ladder(
                 # cannot verify the existence of the report you
                 # mentioned." It didn't refuse; it forgot, by design.
                 # Keep the context-aware in-voice answer and hedge.
-                answer = (
-                    answer.rstrip()
-                    + "\n\n→ ⚠️ Couldn't verify these specifics "
-                    "against a live source — treat the exact "
-                    "numbers/dates as unconfirmed."
-                )
+                answer = answer.rstrip() + _UNVERIFIED_HEDGE
                 _ask_meta["ground_retry"] = "hedged(context-dep-skip)"
                 log.warning(
                     "/ask: context-dependent follow-up — skipped the "
@@ -6616,12 +6653,7 @@ async def _ask_07_validation_ladder(
                     # The stamp distinguishes probe-ran-but-didn't-
                     # search from probe-call-died, so the ask-log
                     # shows which failure to tune next.
-                    answer = (
-                        answer.rstrip()
-                        + "\n\n→ ⚠️ Couldn't verify these specifics "
-                        "against a live source — treat the exact "
-                        "numbers/dates as unconfirmed."
-                    )
+                    answer = answer.rstrip() + _UNVERIFIED_HEDGE
                     _ask_meta["ground_retry"] = f"hedged(probe:{_probe_state})"
                     log.warning(
                         "/ask: retry + bare probe both ungrounded — "
@@ -6646,9 +6678,13 @@ async def _ask_07_validation_ladder(
                 and not _fp_images:
             from discord_bot import figure_provenance as _fp
             _ev = _ask_evidence_text(contents, response, question, user_content)
-            _rep = _fp.check(answer, _ev)
+            # The ladder's hedge is not part of the body under review:
+            # detach it, check, reattach (2026-09-09).
+            _fp_hedged = answer.endswith(_UNVERIFIED_HEDGE)
+            _fp_body = answer[: -len(_UNVERIFIED_HEDGE)] if _fp_hedged else answer
+            _rep = _fp.check(_fp_body, _ev)
             if _rep.action == "stripped":
-                answer = _rep.answer
+                answer = _rep.answer + (_UNVERIFIED_HEDGE if _fp_hedged else "")
                 _ask_meta["guards"].append(f"figure-provenance:stripped:{len(_rep.stripped_lines)}")
                 log.warning(
                     f"/ask: figure provenance stripped {len(_rep.stripped_lines)} line(s) "
@@ -6659,9 +6695,7 @@ async def _ask_07_validation_ladder(
                     f"/ask: every line carries an unsourced figure "
                     f"{[f.token for f in _rep.unsourced][:6]}; shipping with the hedge (q={question[:80]!r})")
                 if "Couldn't verify" not in answer:
-                    answer = (answer.rstrip()
-                              + "\n\n→ ⚠️ Couldn't verify these specifics against a live "
-                                "source — treat the exact numbers as unconfirmed.")
+                    answer = answer.rstrip() + _UNVERIFIED_HEDGE
             elif _rep.action == "error":
                 _ask_meta["guards"].append("figure-provenance:error")
         elif answer and _route_is_factual:
@@ -6683,6 +6717,7 @@ async def _ask_08_technical_analysis_guard(
     contents,
     grounding_metadata,
     question,
+    response,
     safety_settings,
     types,
     user_content
@@ -6690,10 +6725,14 @@ async def _ask_08_technical_analysis_guard(
     """Phase 8 of /ask (split 2026-09-01; text verbatim from
     _answer_with_gemini). Parameters are the locals the original
     block read; the return tuple is the locals later blocks read.
-    None-initialised outputs are assigned only on some paths and
-    were never read on the others.
+
+    `response` is a pass-through (2026-09-09): the split None-initialised
+    it here and returned that, so every turn where the TA regen did not
+    fire handed phase 9 no response at all. Phase 9 then could not read
+    finish_reason or the block flags, stamped every empty answer
+    `no-response`, and its MAX_TOKENS retry was unreachable. The 09-04,
+    09-07 and 09-09 empty-answer incidents were all this.
     """
-    response = None
 
     # TA guard — structural suppression of self-generated technical
     # analysis. If the answer makes indicator/level claims that
@@ -7621,7 +7660,7 @@ async def _ask_10_log_and_render(
     except Exception as e:
         log.debug(f"/ask token_budget record_actual non-fatal: {e}")
 
-    db.record_ask_query(user_id)
+    await asyncio.to_thread(db.record_ask_query, user_id)
 
     # QC log: append every interaction to /data/ask-logs/YYYY-MM-DD.md
     # so the daily publish job can push to GitHub for browseable review.
@@ -7670,7 +7709,8 @@ async def _ask_10_log_and_render(
                         len(_q_urls), len(_uris), question[:80])
         except Exception:
             pass
-        db.append_ask_interaction(
+        await asyncio.to_thread(
+            db.append_ask_interaction,
             asker_display_name=asker_display_name,
             asker_username=asker_username,
             channel_name=channel_name,
@@ -7735,7 +7775,7 @@ async def _answer_with_gemini(
     _ask_t0 = time.monotonic()
     cap = settings.ask_daily_quota_per_user
     if cap > 0:
-        used = db.count_ask_queries_today_for_user(user_id)
+        used = await asyncio.to_thread(db.count_ask_queries_today_for_user, user_id)
         if used >= cap:
             return discord.Embed(
                 description=(
@@ -7850,6 +7890,7 @@ async def _answer_with_gemini(
             _round_gm_chunks=_round_gm_chunks,
             ask_model=ask_model,
             client=client,
+            config=config,
             contents=contents,
             fetched_urls=fetched_urls,
             grounding_metadata=grounding_metadata,
@@ -7942,6 +7983,7 @@ async def _answer_with_gemini(
             contents=contents,
             grounding_metadata=grounding_metadata,
             question=question,
+            response=response,
             safety_settings=safety_settings,
             types=types,
             user_content=user_content,
@@ -7970,8 +8012,10 @@ async def _answer_with_gemini(
         # router's real effect on response time is measured, not
         # estimated (owner question 2026-09-02).
         _ask_meta["latency_s"] = round(time.monotonic() - _ask_t0, 2)
+        if _tally_retry_usage.calls:
+            _ask_meta["retry_calls"] = _tally_retry_usage.calls
         return await _ask_10_log_and_render(
-            _ask_actual_total=_ask_actual_total,
+            _ask_actual_total=_ask_actual_total + _tally_retry_usage.total,
             _ask_est_total=_ask_est_total,
             _ask_meta=_ask_meta,
             _ask_tool_trace=_ask_tool_trace,
@@ -8030,12 +8074,14 @@ async def _answer_with_gemini(
                 channel_name=channel_name,
                 channel_id=channel_id,
                 _transient_retry=True,
+                out_meta=out_meta,
             )
         log.error(f"Gemini /ask call failed: {e}", exc_info=True)
         # Log the FAILURE to the ask-log so QC sees the complete record
         # (failures were previously invisible — finding 2026-06-10).
         try:
-            db.append_ask_interaction(
+            await asyncio.to_thread(
+                db.append_ask_interaction,
                 asker_display_name=asker_display_name,
                 asker_username=asker_username,
                 channel_name=channel_name,
