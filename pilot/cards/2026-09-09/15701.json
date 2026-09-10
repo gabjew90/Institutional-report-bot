@@ -1,0 +1,363 @@
+{
+ "brief": "Goldman flows strategist Lee Coppersmith argues next week's inflation print matters less for stocks than AI news. The chain: US fundamental long/short net leverage is in the 4th percentile and gross in the 27th, semiconductor vol proxy VXSMH has fallen from roughly 65 in July to 36, the Tech long/short momentum pair is down about 50% from late-June highs, and the SPX weekly straddle prices near 1%. Light positioning plus a compressed implied range plus catalysts, OpenAI's Astra release and Goldman's Communacopia conference opening Tuesday 9:30am PT, therefore argue for owning the right tail through options, hedging via downside on the SPX ex-AI index SPXXAI which still sits at the highs, or long Broad AI versus short ex-AI. Goldman research adds that further risk-appetite gains need lower rates rather than stronger growth, as the growth component is near its post-COVID top while the policy component stays negative, leaving less cushion for a growth miss or geopolitical shock. Korea's last four weeks of flows were buybacks against net selling, and Brazil is overbought at RSI 76 with a one-point Bolsonaro-over-Lula runoff poll flip drawing interest.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Net leverage for US fundamental long/short hedge funds sits in the 4th percentile of the last year.",
+   "anchor": "net leverage is in just the 4th percentile",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Gross leverage for US fundamental long/short hedge funds sits in the 27th percentile over the last year.",
+   "anchor": "Gross leverage for US fundamental long/shorts is in the 27th percentile over the last year",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Hedge fund exposure has been rebuilding recently but remains very different from two months ago.",
+   "anchor": "There has been some rebuilding recently, but positioning looks very different versus two months ago",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Goldman's Tech long/short momentum pair has drawn down roughly 50% since its late-June highs, even after a near-7% bounce on Friday.",
+   "anchor": "our Tech Long/Short Momentum pair has now seen a ~50% drawdown since the late-June highs",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since late June"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "VXSMH, a proxy for semiconductor implied volatility, has fallen from roughly 65 in July to 36.",
+   "anchor": "VXSMH - a proxy for semiconductor implied volatility - has fallen from roughly 65 in July to 36",
+   "topic": "tech volatility reset",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "The S&P 500 straddle for the coming week is priced at roughly 1%.",
+   "anchor": "All with the SPX straddle for the upcoming week at ~1%",
+   "topic": "tech volatility reset",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Put-call skew on the average S&P 500 stock is very flat and near the lows of the last three years.",
+   "anchor": "Put-call skew on the average S&P stock is still very flat, near the lows of the last three years",
+   "topic": "tech volatility reset",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Coppersmith says AI developments may matter more for stocks than next week's inflation data.",
+   "anchor": "the latest on the AI front may be more important for stocks",
+   "topic": "AI event catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "OpenAI opens Goldman's Communacopia and Technology Conference on Tuesday at 9:30am PT, with 40 public and private companies scheduled.",
+   "anchor": "OpenAI kicks off our Communacopia conference Tuesday at 9:30am PT, with 40 public/private companies",
+   "topic": "AI event catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Goldman's research team sees upside to AI capital spending, with compute demand exceeding supply well into 2028.",
+   "anchor": "Our team still sees upside to capex, with compute demand outstripping supply well into 2028",
+   "topic": "AI event catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Coppersmith recommends owning right-tail upside through options given light positioning, the implied volatility reset and upcoming catalysts.",
+   "anchor": "owning right-tail expressions through options makes a lot of sense here given these dynamics",
+   "topic": "AI right-tail trade",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "coming days"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Coppersmith recommends hedging via downside on Goldman's SPX ex-AI index SPXXAI, which is still at its highs after two months of rotation out of AI.",
+   "anchor": "downside on our SPX ex-AI index (SPXXAI) offers really attractive convexity",
+   "topic": "AI right-tail trade",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Coppersmith sees long Goldman's Broad AI basket GSTMTAIP against short SPXXAI as compelling at current levels.",
+   "anchor": "Even pairing long Broad AI (GSTMTAIP) vs short SPXXAI looks compelling at these levels in our view",
+   "topic": "AI right-tail trade",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Goldman research says further increases in risk appetite need lower rates more than stronger growth expectations.",
+   "anchor": "further increases in risk appetite likely need lower rates more than stronger growth expectations",
+   "topic": "US risk appetite",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "The growth component of Goldman's Risk Appetite Indicator is near the top of its post-COVID range while the monetary policy component is still negative.",
+   "anchor": "growth component is already near the top of its post-COVID range, while the monetary policy component remains negative",
+   "topic": "US risk appetite",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Goldman says lower energy prices from a Strait of Hormuz reopening plus further progress on US inflation would be a friendly combination for risk assets.",
+   "anchor": "Lower energy prices with a reopening of the Strait of Hormuz, alongside further progress on US inflation, would be a friendly combination",
+   "topic": "US risk appetite",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "With growth optimism already embedded across assets, Goldman says there is less room for growth disappointments or another negative geopolitical shock.",
+   "anchor": "there is less room for growth disappointments or another negative geopolitical shock",
+   "topic": "US risk appetite",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Investors have been less willing to pay higher multiples for increasingly cyclical Tech earnings, particularly as leverage rises across the AI ecosystem.",
+   "anchor": "Investors have been less willing to pay higher multiples for increasingly cyclical earnings",
+   "topic": "US equity valuations",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Higher long-end yields have pressured equity valuations outside Tech.",
+   "anchor": "Higher long-end yields have also pressured valuations outside Tech",
+   "topic": "US equity valuations",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Goldman's strategy team expects lower equity Sharpe ratios from here, though lower rates with resilient growth could help multiples again.",
+   "anchor": "Our strategy team expects lower equity Sharpe ratios from here",
+   "topic": "US equity valuations",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Korean equity flows over the last four weeks were supported purely by buybacks while the rest of the investor base was a net seller.",
+   "anchor": "the last four weeks of equity flows have been supported purely by buybacks despite net selling from the rest of the investor base",
+   "topic": "Korea and memory",
+   "status": "released",
+   "instruments": [
+    "EWY"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "last four weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "MU, SNDK, EWY and DRAM are starting to break above the downtrends they consolidated in over the summer.",
+   "anchor": "MU, SNDK, EWY and DRAM are starting to break above their recent downtrends",
+   "topic": "Korea and memory",
+   "status": "level",
+   "instruments": [
+    "MU",
+    "SNDK",
+    "EWY"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Brazil's stock market RSI is 76, which the note calls rare but not uncommon territory.",
+   "anchor": "stock market RSI is now 76 \u2013 rare territory, but not totally uncommon",
+   "topic": "Brazil equities",
+   "status": "level",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Brazil's stock market needs roughly another 7% rally to regain the April highs near 200k on the Ibovespa.",
+   "anchor": "with another ~7% rally needed to get back to the April highs near 200k",
+   "topic": "Brazil equities",
+   "status": "level",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Inbound interest in Brazil has picked up from macro hedge funds and value investors beyond the traditional LatAm and EM investor base.",
+   "anchor": "Inbound interest has picked up from macro hedge funds and value investors",
+   "topic": "Brazil equities",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "Outsized upside options prints continue across EWZ and the Ibovespa.",
+   "anchor": "Outsized upside prints continue across EWZ and Ibovespa",
+   "topic": "Brazil equities",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Amid Washed Out Positioning, Goldman's Flows Guru Spots An Opportunity Into Catalyst-Heavy Week",
+   "claim": "The latest PoderData/Aya runoff poll puts Flavio Bolsonaro ahead of Lula for the first time at 45% versus 44%, against 44% versus 45% on August 27.",
+   "anchor": "the latest PoderData/Aya poll has Fl\u00e1vio Bolsonaro ahead of Lula for the first time in the runoff scenario, 45% vs 44%",
+   "topic": "Brazil equities",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15701__amid-washed-out-positioning-goldman-s-flows-guru-spots-an-op.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 27,
+  "matched": 27,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
