@@ -1,0 +1,55 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 2,
+ "pack": {
+  "documents": 69,
+  "cards": 2381
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 93,
+  "brief_citations": 11,
+  "distinct_cards_cited": 93,
+  "card_count": 2381,
+  "quintiles": [
+   9,
+   21,
+   21,
+   9,
+   33
+  ],
+  "edge_quintile_share": 0.452,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Societe Generale reads the same conflict and gets a probability-weighted year-end price of $109 against Brent near $99 [c2295], with a 30% chance a stalemate takes Brent to $120 in November [c2293][d6",
+    "cite": "c2295,c2293",
+    "reason": "figures not in cited card(s): ['30%']"
+   },
+   {
+    "sentence": "Morgan's Kaneva lands nearer Goldman, arguing crude may not rise much even if the fighting never stops, given spare supply, production outside the region and full inventories [c2302][c2303].",
+    "cite": "c2302,c2303",
+    "reason": "bank named (['goldman']) is not the cited card's bank"
+   },
+   {
+    "sentence": "Its economists put August core inflation at 0.22% [c1606] and core PCE, the Fed's preferred inflation gauge, at 0.24% [c1607], which they expect to convince Chair Warsh that higher rates are warranted",
+    "cite": "c1606,c1607,c1210,c1211",
+    "reason": "figures not in cited card(s): ['0.22%', '0.24%']"
+   },
+   {
+    "sentence": "JPMorgan measures $303bn of that in ten-year equivalents, which is 68% of all new long-dated federal borrowing this year [c1162][d33].",
+    "cite": "c1162",
+    "reason": "bank named (['jpmorgan']) is not the cited card's bank"
+   }
+  ],
+  "leans": 2,
+  "leans_block_present": true,
+  "word_count": 1529
+ }
+}
