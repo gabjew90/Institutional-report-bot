@@ -1,0 +1,153 @@
+{
+ "brief": "Goldman Sachs credit strategy (Reid Zhou, 8 September 2026) argues credit valuations remain stretched even after recent spread widening, which is why credit screens as an attractive market in which to buy tail hedges, but the desk states that timing a broader widening is uncertain. That uncertainty drives the construction: because entry timing cannot be pinned down, the desk prefers hedges that reduce carry bleed while preserving convexity rather than paying to hold protection. The preferred expression is shorting the cash-synthetic basis, a short ex-hyperscaler cash basket against long CDX IG 10Y, a structure the note says is currently carry positive so it offsets the cost of maintaining downside protection. The supporting case: hyperscaler capex intensity has accelerated over the past two years with capex approaching 30% of revenue, hyperscaler credit has driven the recent spread widening and the hyperscaler versus ex-hyperscaler spread differential has widened materially during 2026 and sits well above its year-to-date average, while the IG 10Y ex-hyperscaler basis sits near the low end of its five-year range and below its historical average, which the note says leaves room for further widening in a broader risk-off scenario.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "Goldman Sachs credit strategy says credit valuations remain stretched despite the recent widening in spreads.",
+   "anchor": "Valuations remain stretched despite recent spread widening",
+   "topic": "credit tail hedges",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "Goldman Sachs says credit continues to screen as an attractive market in which to put on tail hedges.",
+   "anchor": "Credit continues to screen as an attractive market for tail hedges.",
+   "topic": "credit tail hedges",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "Goldman Sachs says the timing of a broader spread widening in credit remains uncertain.",
+   "anchor": "Timing a broader widening remains uncertain.",
+   "topic": "credit tail hedges",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "The Goldman Sachs desk prefers credit hedges that reduce carry bleed while preserving convexity.",
+   "anchor": "The desk prefers hedges that reduce carry bleed while preserving convexity.",
+   "topic": "credit tail hedges",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "Goldman Sachs's preferred expression is shorting the cash-synthetic basis through an ex-hyperscaler cash basket against CDX IG 10Y.",
+   "anchor": "Shorting the cash-synthetic basis through an ex-hyperscaler basket and CDX IG 10Y.",
+   "topic": "cash-synthetic basis trade",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "The IG 10Y ex-hyperscaler cash-synthetic basis sits near the low end of its five-year range and well below its historical average.",
+   "anchor": "The IG 10Y ex-hyperscaler cash-synthetic basis remains near the low end of its five-year range and well below its historical average",
+   "topic": "cash-synthetic basis trade",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "Goldman Sachs says the tight cash-synthetic basis leaves room for further widening in a broader risk-off scenario.",
+   "anchor": "suggesting room for further widening in a broader risk-off scenario",
+   "topic": "cash-synthetic basis trade",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "The short ex-hyperscaler cash basket against long CDX IG 10Y structure is currently carry positive, offsetting the cost of holding downside protection.",
+   "anchor": "The structure is currently carry positive, helping offset the cost of maintaining downside protection.",
+   "topic": "cash-synthetic basis trade",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "Goldman Sachs attributes the recent widening in investment grade credit spreads to hyperscaler credit.",
+   "anchor": "Hyperscaler Credit Has Driven Recent Spread Widening",
+   "topic": "hyperscaler credit",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "The spread differential between the IG hyperscaler and ex-hyperscaler baskets has widened materially during 2026 and remains well above its year-to-date average.",
+   "anchor": "The spread differential between IG hyperscaler and ex-hyperscaler baskets has widened materially during 2026 and remains well above its year-to-date average.",
+   "topic": "hyperscaler credit",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Tail Protection Without Perfect Timing",
+   "claim": "Aggregate hyperscaler capex intensity has accelerated materially over the past two years, with capex approaching 30% of revenue.",
+   "anchor": "Aggregate hyperscaler capex intensity has accelerated materially over the past two years, with capex approaching 30% of revenue.",
+   "topic": "hyperscaler credit",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15751__tail-protection-without-perfect-timing.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 11,
+  "matched": 11,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
