@@ -1,0 +1,1002 @@
+{
+ "brief": "J.P. Morgan US Market Intelligence afternoon briefing for September 9, 2026. Brent moving above $100 and closing at $101.69, after regional strikes and Trump's statement that the Iran war ends immediately after the midterms, was the main driver of equity weakness across developed markets. The S&P 500 closed down 0.5%, the Nasdaq 100 down 0.3% and the Russell 2000 down 1.3%, with over 80% of S&P 500 names lower and META, MU and AMD offsetting at the index level. Treasury's $6bn buyback, triple last month's but below market expectations, left 2y and 10y yields 3bp and 4bp higher, and the desk expects further bond volatility into Friday's CPI, which tends to hurt stocks. Feroli forecasts August core CPI at +0.21% m/m and headline at +0.38%, and reads a rounded 0.2% as low enough for the Fed to hold and 0.3% as high enough to hike, against roughly 63% market odds of a 25bp hike on September 16. The desk therefore holds its Tactically Cautious / Neutral view into the print while arguing that neutral positioning and hedge fund re-grossing skew risk/reward to the upside. Monetization Menu unchanged: long NDX versus short RTY, Mag7 favored within Tech.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The S&P 500 closed down 0.5%, the Nasdaq 100 down 0.3% and the Russell 2000 down 1.3% on September 9, 2026.",
+   "anchor": "SPX -0.5%, NDX -0.3%, RTY -1.3%. WTI +403bps at $96.78",
+   "topic": "US equity session close",
+   "status": "released",
+   "instruments": [
+    "SPX",
+    "QQQ",
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says rising oil prices and bond yields were the main driver of US equity weakness on September 9, with an underwhelming Treasury buyback update contributing.",
+   "anchor": "The surge in oil prices and bond yields was the main driver for today\u2019s weakness, given an underwhelming Treasury buyback update.",
+   "topic": "US equity session close",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "More than 80% of S&P 500 constituents closed lower on September 9 even though the index-level decline was limited.",
+   "anchor": "over 80% of the SPX stocks closed lower \ntoday, offset by a handful of tech outperformers",
+   "topic": "US equity session close",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Meta rose 7%, Micron rose 3% and AMD rose 3% on September 9, offsetting broad single-stock weakness.",
+   "anchor": "tech outperformers (META +7%, MU + 3%, AMD +3%)",
+   "topic": "US equity session close",
+   "status": "released",
+   "instruments": [
+    "META",
+    "MU",
+    "AMD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The Momentum long/short pair rallied 1.6% on September 9, mostly driven by declines in the short leg.",
+   "anchor": "The Momentum L/S pair rallied 1.6%, mostly driven by the decline on the short leg",
+   "topic": "US equity session close",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Consumer names remain weak.",
+   "anchor": "Consumer names remain weak. Tomorrow, the key macro focus will be PPI at 8:30 am ET.",
+   "topic": "US equity session close",
+   "status": "released",
+   "instruments": [
+    "XLY"
+   ],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The VIX closed at 16.49 on September 9.",
+   "anchor": "10Y @ 4.839%, and VIX @ 16.49.",
+   "topic": "US equity session close",
+   "status": "released",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "European and UK equity markets closed lower on September 9, with France and Germany lagging.",
+   "anchor": "EU/UK: Major markets closed lower; France/Germany lagged.",
+   "topic": "European equity session close",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The FTSE 100 fell 1.3%, the Euro Stoxx 50 fell 1.6%, the Stoxx 600 fell 1.4% and the DAX fell 1.7% on September 9.",
+   "anchor": "UKX -1.3%, SX5E \n-1.6%, SXXP -1.4%, DAX -1.7%.",
+   "topic": "European equity session close",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Luxury, Software and Momentum Short were among the worst-performing European themes on September 9 amid rising oil prices.",
+   "anchor": "Luxury, Software, and Momentum Short were among the worst-performing themes amid rising oil",
+   "topic": "European equity session close",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Brent crude moved above $100 and closed at $101.69 on September 9, which J.P. Morgan calls the main driver of equity weakness across developed markets.",
+   "anchor": "Brent moving above $100 (closed at $101.69 today) was the main driver",
+   "topic": "oil and Iran conflict",
+   "status": "released",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "WTI crude rose 403 basis points to $96.78 on September 9.",
+   "anchor": "RTY -1.3%. WTI +403bps at $96.78, NatGas -360bps to",
+   "topic": "oil and Iran conflict",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Trump said the Iran war will end and gas prices will plummet immediately after the midterm elections, per POLITICO.",
+   "anchor": "POLITICO article: \u201cPresident Donald Trump said Wednesday that the Iran war will end \nand gas prices will plummet \u2018immediately after\u2019 the midterm elections.\u201d",
+   "topic": "oil and Iran conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says Trump's rhetoric added further pressure to an already fragile Middle East situation after several days of regional strikes.",
+   "anchor": "Trump\u2019s rhetoric added further pressure on the already fragile Middle East",
+   "topic": "oil and Iran conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says investors are increasingly worried about extended geopolitical tension ahead of the midterm elections.",
+   "anchor": "investors are increasingly worried about extended geopolitical tension ahead",
+   "topic": "oil and Iran conflict",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "into the November 3 midterm elections"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "US natural gas fell 360 basis points to $2.81 on September 9.",
+   "anchor": "WTI +403bps at $96.78, NatGas -360bps to \n$2.81",
+   "topic": "natural gas prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "UK natural gas rose 500 basis points to \u00a31.9824 on September 9.",
+   "anchor": "UK NatGas +500bps to \u00a31.9824, Gold +93bps to $4,397",
+   "topic": "natural gas prices",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Gold rose 93 basis points to $4,397 and silver rose 220 basis points to $67.19 on September 9.",
+   "anchor": "Gold +93bps to $4,397, Silver +220bps to \n$67.19",
+   "topic": "precious metals",
+   "status": "released",
+   "instruments": [
+    "GLD",
+    "SLV"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's August 24 Monetization Menu said precious metals remain attractive regardless of the rest of the barbell.",
+   "anchor": "which may extend in the near-term. Regardless, Precious Metals remain attractive.",
+   "topic": "precious metals",
+   "status": "target",
+   "instruments": [
+    "GLD",
+    "SLV"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The US Treasury announced a $6bn buyback plan, triple the amount laid out last month but, per J.P. Morgan, below market expectations.",
+   "anchor": "Treasury announced its $6bn buyback plan, a \nnumber that triples the amount laid out last month but seems to be below the market\u2019s \nexpectations.",
+   "topic": "Treasury buyback and yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Two-year yields rose 3 basis points and 10-year yields rose 4 basis points on September 9.",
+   "anchor": "2y and 10y yields were 3bp and 4bp higher today, respectively.",
+   "topic": "Treasury buyback and yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The 10-year Treasury yield stood at 4.839% on September 9.",
+   "anchor": "$67.19, 10Y @ 4.839%, and VIX @ 16.49.",
+   "topic": "Treasury buyback and yields",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1 day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's Feroli forecasts August headline CPI at +0.38% month over month, against a 0.4% survey and a 0.1% prior.",
+   "anchor": "He sees Headline MoM printing +0.38% (vs. 0.4% survey; 0.1% prior) and",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "August CPI, released September 11"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's Feroli forecasts August core CPI at +0.21% month over month, against a 0.2% survey and a 0.2% prior.",
+   "anchor": "Core MoM printing +0.21% (vs. 0.2% survey; 0.2% prior).",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "August CPI, released September 11"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Feroli's August CPI forecasts equate to 3.4% year over year headline, against a 3.4% survey and 3.4% prior, and 2.4% year over year core, against a 2.4% survey and 2.5% prior.",
+   "anchor": "This equates to 3.4% YoY for Headline (vs. 3.4% survey; 3.4% prior) and 2.4% YoY for",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "August CPI, released September 11"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The J.P. Morgan US Market Intelligence trading desk assigns a 10% probability to August core CPI printing above 0.30% month over month, which it expects would send the S&P 500 down 1.5% to 2.5% on the day.",
+   "anchor": "[10.0%] Core MoM prints above 0.30%. SPX declines 1.5% \u2013 2.5%",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day around the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The J.P. Morgan US Market Intelligence trading desk assigns a 25% probability to August core CPI printing between 0.25% and 0.30% month over month, which it expects would send the S&P 500 down 25 basis points to 1%.",
+   "anchor": "[25.0%] Core MoM prints between 0.25% \u2013 0.30%. SPX declines 25bp \u2013 1%",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 day around the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The J.P. Morgan US Market Intelligence trading desk assigns a 30% probability to August core CPI printing between 0.20% and 0.25% month over month, which it expects would send the S&P 500 up 50 basis points to 1.25%.",
+   "anchor": "[30.0%] Core MoM prints between 0.20% \u2013 0.25%. SPX gains 50bp \u2013 1.25%",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day around the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The J.P. Morgan US Market Intelligence trading desk assigns a 25% probability to August core CPI printing between 0.15% and 0.20% month over month, which it expects would send the S&P 500 up 1% to 1.5%.",
+   "anchor": "[25.0%] Core MoM prints between 0.15% \u2013 0.20%. SPX gains 1% \u2013 1.5%",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day around the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The J.P. Morgan US Market Intelligence trading desk assigns a 10% probability to August core CPI printing below 0.15% month over month, which it expects would send the S&P 500 up 1.5% to 2%.",
+   "anchor": "[10.0%] Core MoM prints below 0.15%. SPX gains 1.5% \u2013 2%.",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 day around the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "S&P 500 options expiring September 11 were pricing a move of roughly 1.0%, based on September 8 prices.",
+   "anchor": "Options that expire on September 11th are pricing \n~1.0% move based on September 8th prices.",
+   "topic": "August CPI print",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 11 expiry"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan US Market Intelligence frames the August CPI debate as a rounded 0.2% core print versus a rounded 0.3% core print.",
+   "anchor": "The debate is 0.2% (rounded) vs. 0.3% (rounded).",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August CPI, released September 11"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says the setup into the CPI print is binary, with a dovish print easing pressure from yields and rates volatility and a hawkish print keeping the September Fed meeting live and pressuring stocks through bond volatility.",
+   "anchor": "near-term setup remains binary: a dovish print could ease the pressure from yields and \nrates volatility",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "into the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan expects a further increase in bond volatility into the September 11 CPI release, which it says tends to be negative for stocks.",
+   "anchor": "we may see a further increase in bond volatility, which tends to be \nnegative for stocks.",
+   "topic": "August CPI print",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "into the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Feroli sees a rounded 0.2% core CPI print as low enough for the Fed to hold rates and a rounded 0.3% print as high enough to hike.",
+   "anchor": "Feroli sees \n0.2% being low enough to hold rates and 0.3% as high enough to hike.",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "September 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The bond market is pricing roughly a 63% probability of a 25 basis point hike at the September 16 FOMC meeting.",
+   "anchor": "is pricing a ~63% probability of a 25bp hike at the Sep 16 FOMC meeting.",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "September 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Market-implied odds of a rate hike are roughly 27% for October and roughly 54% for December.",
+   "anchor": "that spikes Oct or Dec rate hike expectations, which are currently \n~27% and ~54%, respectively.",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 28 and December 9 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says the equity tail risk from the CPI print is a materially hotter number that spikes October or December rate hike expectations.",
+   "anchor": "This print \nshould provide clarity on the Sep 16 Fed meeting, with the tail risk for Equities being a \nmaterial hotter print",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says that if CPI supports Feroli's case for a Hold or Hawkish Hold, stocks should react positively.",
+   "anchor": "If the data supports Feroli\u2019s hypothesis for a Hold or \nHawkish Hold, look for stocks to react positively.",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan US Market Intelligence maintains its Tactically Cautious / Neutral view ahead of the September 11 CPI report.",
+   "anchor": "We maintain our Tactically Cautious / Neutral view ahead of Friday\u2019s CPI report.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "into the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan expects markets to remain choppy into the CPI print, the key driver behind its move to Tactically Cautious / Neutral last week despite strong macro and micro fundamentals.",
+   "anchor": "We think markets remain choppy into the print, the key driver \nbehind our move to Tactically Cautious / Neutral from last week",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "into the September 11 CPI"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's base case remains constructive on equities in the absence of renewed inflation or bond yield spikes.",
+   "anchor": "our base case remains \nconstructive in absence of renewed inflation/bond yield spikes.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "beyond the September catalysts"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says the neutral positioning environment and room to re-gross and re-lever leave significant upside in equities.",
+   "anchor": "Given the neutral positioning \nenvironment and room to re-gross / re-lever, there remains significant upside",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan expects Momentum, Tech and Cyclicals to drive equity gains if the CPI print allows stocks to rally.",
+   "anchor": "would point to Momentum, Tech, and Cyclicals are the drivers of gains.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says current market pricing combined with positioning points to equity risk/reward being skewed to the upside.",
+   "anchor": "Current market pricing combined with positioning point to the risk/reward being \nskewed to the upside.",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's Monetization Menu, unchanged week over week since August 31, starts with a long Nasdaq 100 versus short Russell 2000 position.",
+   "anchor": "MONETIZATION MENU (Unchanged WoW; AUG 31) \u2013 We start with a +NDX vs. -",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "QQQ",
+    "IWM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Within Tech, J.P. Morgan likes the Magnificent 7 as the favored near-term play.",
+   "anchor": "Within Tech, we like Mag7 as the favored near-term play given the inability",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "NVDA",
+    "TSLA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan cites the inability of AI, Memory and Semis to sustain a bid as the reason it favors the Magnificent 7 within Tech.",
+   "anchor": "for AI / Memory / Semis to sustain a bid.",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [
+    "SMH"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says Software remains attractive, especially if Semis continue to fall.",
+   "anchor": "Software remains attractive especially if Semis \ncontinue to fall.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "IGV"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan expects SMID-caps to underperform as part of its tactical call.",
+   "anchor": "Generally, we think that SMID-caps are likely to underperform as part of \nthis tactical call.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says parts of Cyclicals can perform, especially on stronger than expected ISM prints this week.",
+   "anchor": "Parts of Cyclicals can perform especially if we see stronger than \nexpected ISM prints this week.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan likes Large-Cap Banks on the economic growth story and loose financial conditions.",
+   "anchor": "Here, we like Large-Cap Banks given the economic \ngrowth story accompanied by loose financial conditions",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "XLF"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan likes Consumer Discretionary if energy prices move lower.",
+   "anchor": "Consumer Discretionary if \nenergy prices move lower.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "XLY"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan has no strong view on Cyclical versus Defensive outperformance over the next two weeks.",
+   "anchor": "We do not have a strong view on Cyclical vs. Defensive \noutperformance over the next two weeks.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next two weeks"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "As hedges, J.P. Morgan likes shorting Credit ETFs and buying VIX products.",
+   "anchor": "As hedges we like shorting Credit ETFs and \nbuying VIX products.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan expects the Dollar Debasement trade to struggle until the September 16 Fed meeting.",
+   "anchor": "Until we get through the Fed Meeting on Sep 16, the Dollar \nDebasement trade may struggle",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "until the September 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says it makes sense to switch cash positions into derivative positions ahead of the September 16 Fed meeting.",
+   "anchor": "so makes sense to switch cash positions into derivative \npositions.",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "until the September 16 FOMC"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's prior August 24 Monetization Menu favored a barbell approach, spread toward the broadening theme because of downside risk in Momentum.",
+   "anchor": "OLD MONETIZATION MENU (AUG 24) \u2013 We like the barbell approach but with eye \ntowards Momentum having some more downside risk",
+   "topic": "US equity tactical stance",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Globally, hedge funds added gross exposure on 4 of the past 5 days, a +1.3z increase over the past week and the highest since late June, per J.P. Morgan Positioning Intelligence.",
+   "anchor": "Globally HFs added gross \nexposure on 4 of the past 5 days for a +1.3z increase in the past week, the highest since \nlate June.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's Feroli projects August final demand PPI rose 0.2% month over month, 5.0% over year ago, below the recent 5.9% peak in May.",
+   "anchor": "producer price index (PPI) rose 0.2% m/m in August (5.0% oya), with the headline series \nremaining firm but slightly below its recent peak of 5.9% oya in May.",
+   "topic": "August PPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August PPI, released September 10"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "The energy PPI rose a cumulative 15.9% from March to May before falling 9.5% over the following two months.",
+   "anchor": "the energy PPI rose \na cumulative 15.9% from March to May before falling 9.5% over the following two months.",
+   "topic": "August PPI print",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "March to July"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Feroli expects a 0.5% decline in the August energy PPI complex, with lower propane and natural gas prices offset by higher gasoline prices.",
+   "anchor": "For August, we expect a moderate 0.5% decline in the energy complex, reflecting mixed \nsignals across products.",
+   "topic": "August PPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August PPI, released September 10"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Feroli expects the August food PPI to rise 0.5% after two consecutive monthly declines, as agricultural commodity prices edged higher.",
+   "anchor": "PPI to tick up 0.5% after two consecutive monthly declines, as agricultural commodity \nprices edged higher in August.",
+   "topic": "August PPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August PPI, released September 10"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Feroli expects August core PPI to rise 0.2% month over month, 4.6% over year ago, reversing some of the improvement from the 4.9% peak in April.",
+   "anchor": "rise 0.2% m/m (4.6% oya), reversing some of the improvement since the recent peak of \n4.9% oya in April.",
+   "topic": "August PPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August PPI, released September 10"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Feroli expects August core goods PPI to rise 0.2% month over month, an over-year-ago pace of 4.8%.",
+   "anchor": "We expect core goods prices to rise 0.2% m/m, resulting in an over-\nyear-ago pace of 4.8%.",
+   "topic": "August PPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August PPI, released September 10"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Prices of finished consumer goods were running at 3.6% over year ago in the latest PPI report, led by non-durable goods inflation.",
+   "anchor": "Prices of finished consumer goods were running at 3.6% oya in the latest report, led by non-durable goods",
+   "topic": "August PPI print",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan's measure of core goods inputs to goods producers stepped down from 3.5% month over month in May to 0.3% in June and -0.3% in July, which it reads as relief in pipeline inflation pressures.",
+   "anchor": "this measure stepped down from 3.5% m/m in May to 0.3% in June and -0.3% in \nJuly, signaling some relief in pipeline inflation pressures.",
+   "topic": "August PPI print",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "May to July"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Feroli forecasts August core services PPI to rise 0.2%, similar to the prior month, after a July print held down by a 1.8% drop in transportation and warehousing services and a 0.1% decline in trade services.",
+   "anchor": "rise 0.2%, similar to the prior month. The soft July print was driven by a sharp 1.8% drop \nin transportation and warehousing services",
+   "topic": "August PPI print",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August PPI, released September 10"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says midterm election seasonality has so far failed to materialize and now seems unlikely to do so.",
+   "anchor": "So far, midterm election seasonality has failed to materialize; and, at this \npoint, it seems unlikely to do so",
+   "topic": "midterm election seasonality",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into the November 3 midterms"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says 26Q3 earnings season, which spans the election, has the potential to deliver another quarter of more than 20% EPS growth with widening margins.",
+   "anchor": "deliver another quarter of more than 20% EPS growth with widening margins.",
+   "topic": "midterm election seasonality",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "26Q3 earnings season"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Since 1990 the S&P 500 rallied 5.4% at 3 months with a 78% hit rate, 11.4% at 6 months, 12.5% at 9 months and 14.7% at 12 months after midterm election days, each with a 100% hit rate.",
+   "anchor": "Since 1990, the SPX rallied +5.4%, +11.4%, +12.5%, and +14.7% at 3 month (78% hit \nrate)",
+   "topic": "midterm election seasonality",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 to 12 months after Election Day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Going back to 1950, S&P 500 returns after midterm election days keep a 100% hit rate at 6, 9 and 12 months and the 3-month hit rate rises to 89%.",
+   "anchor": "and 12-month marks maintain their 100% hit rate for positive returns and the 3-month hit \nrate increases to 89%.",
+   "topic": "midterm election seasonality",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3 to 12 months after Election Day"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "J.P. Morgan says that if it is wrong on midterm seasonality, the trade is to buy Healthcare and then size up on Election Day because the post-election setup is positive.",
+   "anchor": "If we are wrong on midterm seasonality, buy Healthcare, which is typically the best \nperforming sector into midterms.",
+   "topic": "midterm election seasonality",
+   "status": "target",
+   "instruments": [
+    "XLV"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into and after the November 3 midterms"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "JPM US Market Intelligence | Afternoon Briefing",
+   "claim": "Within Defensives, J.P. Morgan says Healthcare tends to be the best performing sector into midterms.",
+   "anchor": "Within Defensives, Healthcare tends to be the best performing \nsector into midterms.",
+   "topic": "midterm election seasonality",
+   "status": "target",
+   "instruments": [
+    "XLV"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into the November 3 midterms"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15715__jpm-us-market-intelligence-afternoon-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 74,
+  "matched": 74,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
