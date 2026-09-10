@@ -1,0 +1,44 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MS/Meta guide above consensus -> GS raises 2026 capex to $751B -> buyers pull forward 2027 orders because HBM/CoWoS supply is sold out through 1H27 (constraint is supply, not appetite) -> therefore cycle extends as rising memory prices keep capex guides rising -> Buy NVDA $250 target -> invalidation is a memory price rollover (HBM contract prices falling 2 consecutive months); Fed rate decisions explicitly do not change this view",
+   "brief_chain": "GS raises 2026 capex to $751B after MS/Meta guide above consensus -> buyers ordering HBM/CoWoS sold out through 1H27 because inference demand outgrows supply (appetite is the constraint) -> rising memory prices are a headwind capping capex guides -> cycle is closer to peaking than extending -> Buy NVDA $250 target -> invalidation is a Fed rate decision tightening financial conditions; HBM pricing is secondary",
+   "distortions": [
+    {
+     "what": "Source attributes the capex driver to a supply constraint (HBM/CoWoS sold out, buyers pulling forward orders to secure scarce capacity); brief attributes it to a demand/appetite constraint (inference workloads outrunning supply), inverting the mechanism GS uses to justify the raise.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a supply-locked cycle implies capex guides keep rising with memory prices (bullish continuation), while a demand/appetite-driven cycle implies guides are capped by cost, which is the opposite read a trader would act on."
+    },
+    {
+     "what": "Source concludes the capex cycle 'extends rather than peaks'; brief concludes the cycle is 'closer to peaking than extending' \u2014 a direct reversal of GS's stated view on cycle duration.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 this reverses the directional call on the capex cycle itself (continuation vs. topping), which changes whether a trader holds/adds into strength or grows cautious near a perceived top."
+    },
+    {
+     "what": "Source's stated invalidation is a memory-price rollover (HBM contract prices falling for two consecutive months), and GS explicitly says a Fed rate decision would NOT change the picture. The brief swaps in a Fed rate decision as the invalidation trigger and demotes HBM pricing to a 'secondary factor,' asserting the opposite of what the source explicitly rules out.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a trader following the brief would monitor Fed policy for the exit signal instead of memory pricing trends, missing the actual falsifiable condition GS names and watching a variable GS explicitly says is irrelevant."
+    }
+   ],
+   "material_count": 3,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 3,
+ "non_material_total": 0,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

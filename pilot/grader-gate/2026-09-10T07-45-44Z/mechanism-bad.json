@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "fixture",
+ "source_file": "/tmp/gate/in/source-rates.txt",
+ "source_span": "we think the move is a bear-steepener: the front end is anchored by a Fed on hold, so the long end is doing the work as term premium rebuilds",
+ "source_chain": "10-year breaks 4.40% therefore JPM reads it as a bear-steepener because the front end is anchored by a Fed on hold while the long end rises on rebuilding term premium therefore JPM pays 5s30s at 62bp, stop 48bp; invalidation: a hot core PCE (0.3% m/m consensus) would validate the steepener, and a soft print would NOT by itself reverse it while the Fed stays on hold",
+ "pulse_chain": "10-year breaks 4.40% therefore markets are pricing the next hike with the front end leading and dragging the long end up, a bear-flattener therefore JPM pays 5s30s at 62bp, stop 48bp; invalidation: a soft core PCE print reverses the trade",
+ "preserved": false,
+ "why": "The pulse inverts JPM's actual call (a bear-steepener driven by a long end rising while the front end sits anchored on hold) into an opposite bear-flattener led by the front end, and it reverses the note's invalidation condition, which explicitly says a soft PCE print would NOT by itself reverse the trade while the Fed stays on hold.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

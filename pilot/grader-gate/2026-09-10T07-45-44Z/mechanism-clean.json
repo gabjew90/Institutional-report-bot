@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "fixture",
+ "source_file": "/tmp/gate/in/source-rates.txt",
+ "source_span": "the move is a bear-steepener: the front end is anchored by a Fed on hold, so the long end is doing the work as term premium rebuilds",
+ "source_chain": "10-year breaks 4.40% Friday therefore JPM reads it as a bear-steepener because the Fed-anchored front end leaves the long end to do the work via term premium rebuild therefore JPM pays 5s30s at 62bp/stop 48bp (Citi dissents: positioning flush, holds 4.40% on close); invalidation: hot core PCE Thursday (0.3% consensus) validates the steepener, a soft print does not reverse it while the Fed stays on hold",
+ "pulse_chain": "10-year breaks 4.40% Friday therefore JPM reads it as a bear-steepener because the Fed-on-hold front end is pinned while the long end does the work via term premium rebuilding, not rate-hike fear, therefore JPM pays 5s30s at 62bp/stop 48bp (Citi dissents: positioning flush, holds 4.40% on close); invalidation: Thursday core PCE (0.3% consensus) decides it, hot validates the steepener, soft does not reverse it while the Fed stays put",
+ "preserved": true,
+ "why": "Every step (trigger, mechanism, attribution to JPM vs. Citi, trade, and invalidation condition) matches the source in the same direction, just compressed and reworded.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
