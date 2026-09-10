@@ -1,0 +1,840 @@
+{
+ "brief": "Goldman's TMT sales desk wraps Day 1 of the Communacopia and Technology Conference. Across OpenAI, Alphabet, SAP, Snowflake and Databricks the debate has moved from model capability to cost per task, governance and model choice, so enterprises are buying model-agnostic platforms that route work to the cheapest adequate model, which is why SAP expects agents to run on Mistral and open-source models and Databricks built the Unity AI Gateway. OpenAI reports 25m agentic users and roughly 1bn consumer users, rising revenue per GPU and falling unit costs, and expects pricing to move from seats to consumption to outcomes. On infrastructure, Broadcom, Arista, Infineon and Nebius report strong demand and better visibility, with the binding constraint now supply, power, permitting and data-centre construction rather than end demand. Broadcom reaffirms FY27 and FY28 AI revenue targets of $115bn and $230bn. Visa reports US payment volume growth of 6-8% and cross-border volumes up 14%. The desk flags that this is Day 1 only, that investors will debate SAP's multiple after the bounce, and that debate over personal agents Instinct and Meta Muse knocked online travel names.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Goldman's TMT sales desk says Day 1 of its Communacopia conference reinforced a broadly bullish view on AI infrastructure, software and enterprise adoption.",
+   "anchor": "Day 1 of Communacopia reinforced a broadly bullish view on AI infrastructure, software and enterprise adoption",
+   "topic": "Communacopia AI takeaways",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "The central theme of Communacopia Day 1 was enterprise AI moving from experimentation to production use cases.",
+   "anchor": "with the central theme being the shift from experimentation to production use cases",
+   "topic": "Communacopia AI takeaways",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Goldman's conclusion from Communacopia Day 1 is that AI adoption is accelerating across the whole technology stack.",
+   "anchor": "The broader conclusion is that AI is accelerating across the stack",
+   "topic": "Communacopia AI takeaways",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Enterprises are increasingly demanding model-agnostic platforms that route each task to the best and cheapest model while protecting their data.",
+   "anchor": "enterprises increasingly looking for model-agnostic platforms that can route work to the best and cheapest model while protecting data",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Alphabet management argues its AI advantage comes from a vertically integrated stack of TPUs, Gemini models, data, security and applications.",
+   "anchor": "its AI advantage comes from a vertically integrated stack spanning TPUs, Gemini models, data, security and applications",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Alphabet says over 90% of Fortune 100 companies use Gemini Enterprise as an agentic workflow platform.",
+   "anchor": "with over 90% of Fortune 100 companies using Gemini Enterprise as an agentic platform",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Google Cloud is scaling its AI opportunity through industry-specific solutions, system-integrator partnerships, proprietary data integrations and forward-deployed engineers.",
+   "anchor": "Google Cloud is scaling the opportunity through industry-specific solutions, system-integrator partnerships, proprietary data integrations and forward-deployed engineers",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Snowflake says its AI opportunity extends beyond data warehousing into the orchestration, governance and application layer for enterprise AI.",
+   "anchor": "its AI opportunity is expanding beyond data warehousing into becoming the orchestration, governance and application layer for enterprise AI",
+   "topic": "enterprise AI platforms",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Snowflake's near-term upside comes from AI accelerating customer migrations and deployments.",
+   "anchor": "Near-term upside comes from AI accelerating migrations and deployments",
+   "topic": "enterprise AI platforms",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Snowflake management reports growing AI consumption and strong demand for return-on-investment use cases such as invoice processing.",
+   "anchor": "Management highlighted growing AI consumption and strong demand for ROI-led use cases such as invoice processing",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Snowflake says customer retention now depends on platform value rather than proprietary data formats, and positions itself as model-neutral.",
+   "anchor": "positioning itself as the layer that lets enterprises use whichever models they choose",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Databricks struck a bullish tone on the convergence of data, AI and security at Communacopia.",
+   "anchor": "Databricks struck a bullish tone on the convergence of data, AI and security",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Databricks CEO Ali Ghodsi says enterprise AI adoption is still constrained by the gap between model capability and real operational deployment.",
+   "anchor": "enterprise AI adoption is still constrained by the gap between model capability and real operational deployment",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Databricks' Unity AI Gateway routes tasks to the best and cheapest model while centralising access, spend, logging and guardrails.",
+   "anchor": "Unity AI Gateway routes tasks to the best and cheapest model while centralising access, spend, logging and guardrails",
+   "topic": "enterprise AI platforms",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Databricks flags its Lakebase product as a large opportunity as agents handle more sensitive workflows.",
+   "anchor": "with Lakebase highlighted as a large opportunity",
+   "topic": "enterprise AI platforms",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "SAP CEO Christian Klein sounded notably more confident than last year on both the AI roadmap and financial delivery.",
+   "anchor": "SAP was notably more confident than last year, with Christian Klein sounding upbeat on both the AI roadmap and financial delivery",
+   "topic": "SAP AI roadmap",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "SAP expects to reach 200 AI agents by the end of September 2026.",
+   "anchor": "expects to reach 200 AI agents by month-end",
+   "topic": "SAP AI roadmap",
+   "status": "target",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "month-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "SAP remains confident it will hit 400 AI agents by year-end, focused on complex enterprise use cases.",
+   "anchor": "remains confident in hitting 400 agents by year-end, focused on complex enterprise use cases",
+   "topic": "SAP AI roadmap",
+   "status": "target",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "SAP reports positive early feedback on Joule Work with more than 100 customers ahead of its autumn launch.",
+   "anchor": "Early feedback on Joule Work is positive, with more than 100 customers ahead of the autumn launch",
+   "topic": "SAP AI roadmap",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "autumn 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "SAP expects its agents to run across multiple models including cheaper Mistral and open-source options, cutting inference costs versus a single frontier model.",
+   "anchor": "SAP expects agents to run across multiple models, including cheaper options from Mistral and open-source providers",
+   "topic": "SAP AI roadmap",
+   "status": "forecast",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "SAP management sounded more relaxed on gross margins, helped by its model-agnostic approach.",
+   "anchor": "Management also sounded more relaxed on gross margins (been model agnostic helps)",
+   "topic": "SAP AI roadmap",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Goldman's desk expects investors to debate SAP's valuation multiple following the share price bounce.",
+   "anchor": "investors will debate the multiple given the bounce",
+   "topic": "SAP AI roadmap",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "OpenAI described Astra as its largest-ever training run, delivering frontier-level performance at materially lower cost.",
+   "anchor": "highlighting Astra as its largest-ever training run and pointing to frontier-level performance at materially lower cost",
+   "topic": "OpenAI demand and monetisation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "OpenAI says its agentic products now have 25m users and enterprise adoption is accelerating.",
+   "anchor": "enterprise adoption is accelerating, agentic products now have 25m users, and usage intensity remains well ahead of peers",
+   "topic": "OpenAI demand and monetisation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "OpenAI says revenue per GPU is rising and unit costs are falling despite compute constraints, particularly in voice.",
+   "anchor": "Despite compute constraints, particularly in voice, revenue per GPU is rising and unit costs are falling",
+   "topic": "OpenAI demand and monetisation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "OpenAI sees cybersecurity as its biggest opportunity over the next twelve months.",
+   "anchor": "OpenAI sees cybersecurity as the biggest 12-month opportunity",
+   "topic": "OpenAI demand and monetisation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "OpenAI expects AI pricing to shift from per-seat to consumption-based and ultimately outcome-based models.",
+   "anchor": "Pricing is expected to shift from seats to consumption",
+   "topic": "OpenAI demand and monetisation",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "OpenAI reports around 1bn consumer users with subscription upsell and advertising already contributing meaningfully to revenue.",
+   "anchor": "consumer momentum remains strong at c.1bn users, with subscription upsell and ads already contributing meaningfully",
+   "topic": "OpenAI demand and monetisation",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "OpenAI sees life sciences as its longer-term value-based monetisation opportunity.",
+   "anchor": "with life sciences the longer-term value-based monetisation opportunity",
+   "topic": "AI life sciences opportunity",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "longer term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Goldman's desk reads life sciences as an increasingly crowded AI opportunity, with OpenAI and Google both naming it a strategic focus.",
+   "anchor": "life sciences is becoming an increasingly crowded AI opportunity",
+   "topic": "AI life sciences opportunity",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Prometheus positions AI as an engineering and manufacturing tool for building complex physical products faster.",
+   "anchor": "using AI as an engineering and manufacturing tool to build complex products faster",
+   "topic": "AI for physical engineering",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Goldman's desk says Prometheus did not deliver the near-term bearish catalyst for Dassault Systemes that the desk had expected.",
+   "anchor": "Certainly not the bearish near term catalyst for DSY I had expected",
+   "topic": "AI for physical engineering",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Broadcom, Arista, Infineon and Nebius all pointed to strong AI demand and improving visibility at Communacopia.",
+   "anchor": "Broadcom, Arista, Infineon and Nebius all pointed to strong AI demand and improving visibility",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [
+    "AVGO",
+    "ANET",
+    "NBIS"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "The binding constraint across AI infrastructure has shifted to supply, power, data-centre capacity and execution rather than end demand.",
+   "anchor": "with constraints shifting toward supply, power, data-centre capacity and execution rather than end demand",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Broadcom CEO Hock Tan reaffirmed AI revenue targets of $115bn for FY27 and $230bn for FY28.",
+   "anchor": "Hock Tan reaffirming FY27/FY28 AI revenue targets of $115bn / $230bn",
+   "topic": "AI infrastructure supply",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27 and FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Broadcom highlighted a $35bn XPV partnership designed to accelerate more than 20GW of AI compute buildout while limiting balance-sheet risk.",
+   "anchor": "Broadcom also highlighted the $35bn XPV partnership, designed to accelerate more than 20GW of AI compute buildout",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Broadcom management expects AI-driven revenue and cash-flow growth to support continued dividends and buybacks.",
+   "anchor": "management expects strong AI-driven revenue and cash-flow growth to support ongoing dividends and buybacks",
+   "topic": "AI infrastructure supply",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Arista reiterated its 2026 revenue and margin guidance on improved supply-chain visibility and strong AI and campus demand.",
+   "anchor": "Arista reiterated its 2026 revenue and margin guidance, supported by improved supply-chain visibility",
+   "topic": "AI infrastructure supply",
+   "status": "forecast",
+   "instruments": [
+    "ANET"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Arista's main AI opportunity remains back-end networking connecting accelerators inside GPU clusters.",
+   "anchor": "The key AI opportunity remains networking for GPU clusters, especially back-end networks connecting accelerators",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [
+    "ANET"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Arista customers are increasingly splitting clusters across multiple sites because power, cooling and data-centre space are constrained.",
+   "anchor": "Customers are increasingly using scale-across deployments as power, cooling and data-centre space constraints force clusters across multiple locations",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [
+    "ANET"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Arista could sustain gross margins into 2027 through price increases and supply-chain efficiencies despite lapping tariff refunds.",
+   "anchor": "price increases and supply-chain efficiencies could help Arista sustain gross margins into 2027 despite lapping tariff refunds",
+   "topic": "AI infrastructure supply",
+   "status": "forecast",
+   "instruments": [
+    "ANET"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Infineon's near-term growth is constrained more by supply than demand, especially in AI data-centre power.",
+   "anchor": "with near-term growth constrained more by supply than demand, especially in AI data-centre power",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Infineon says its position in Nvidia's MGX ecosystem raises content per rack as power architectures move to 800V.",
+   "anchor": "its strong position in Nvidia\u2019s MGX ecosystem as power architectures move toward 800V, increasing content per rack",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Infineon investor relations signalled its FY27 data-centre revenue target of EUR 2.5bn will be materially raised in November 2026.",
+   "anchor": "IR also sounded confident that the FY27 data-centre target of \u20ac2.5bn will be materially raised in November",
+   "topic": "AI infrastructure supply",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27, raise expected November 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Infineon management indicated a FY27 data-centre target of EUR 2.8bn would not count as a material upgrade.",
+   "anchor": "with management suggesting \u20ac2.8bn would not qualify as a material upgrade",
+   "topic": "AI infrastructure supply",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Infineon's backlog has rebounded to around EUR 30bn and inventories have normalised.",
+   "anchor": "backlog has rebounded to around \u20ac30bn, inventories have normalised",
+   "topic": "Infineon backlog and autos",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Infineon's automotive business is growing roughly 9-10% on content gains and share expansion.",
+   "anchor": "autos growth is running at roughly 9-10% on content gains and share expansion",
+   "topic": "Infineon backlog and autos",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Nebius has AI infrastructure demand visibility extending into 2028.",
+   "anchor": "Nebius remains focused on scaling AI infrastructure, with demand visibility extending into 2028",
+   "topic": "AI infrastructure supply",
+   "status": "forecast",
+   "instruments": [
+    "NBIS"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Nebius's partnership with Palantir strengthens its enterprise distribution and full-stack platform strategy.",
+   "anchor": "The Palantir partnership strengthens enterprise distribution",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [
+    "NBIS",
+    "PLTR"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Nebius says contract economics are improving, giving better payback periods, stronger margins and more financing flexibility.",
+   "anchor": "Contract economics are also improving, creating better payback periods, stronger margins and more financing flexibility",
+   "topic": "AI infrastructure supply",
+   "status": "released",
+   "instruments": [
+    "NBIS"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Nebius says regulatory complexity could become an industry-wide supply constraint that supports margins.",
+   "anchor": "regulatory complexity could become an industry-wide supply constraint and potentially support margins",
+   "topic": "AI infrastructure supply",
+   "status": "forecast",
+   "instruments": [
+    "NBIS"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Visa says US payment volumes have held 6-8% growth over the past 18 months despite weak consumer sentiment.",
+   "anchor": "with payment volumes holding at 6-8% growth over the past 18 months despite weak sentiment",
+   "topic": "agentic commerce payments",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past 18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Visa's global transactions are growing around 10% year on year.",
+   "anchor": "Global transactions are still growing around 10% YoY",
+   "topic": "agentic commerce payments",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Visa's cross-border volumes have accelerated to 14% growth, led by e-commerce rather than travel.",
+   "anchor": "cross-border volumes have accelerated to 14%, led by e-commerce rather than travel",
+   "topic": "agentic commerce payments",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Visa is developing a Trusted Agent Protocol to authorise autonomous payments made by AI agents.",
+   "anchor": "developing a Trusted Agent Protocol for autonomous payments",
+   "topic": "agentic commerce payments",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Visa says only 25% of consumers are comfortable letting AI agents pay autonomously, rising above 60% when Visa is involved.",
+   "anchor": "only 25% of consumers are comfortable letting AI agents pay autonomously, but this rises to over 60% when Visa is involved",
+   "topic": "agentic commerce payments",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Debate over personal AI agents caused online travel names to sell off, though the agents were not presenting at the conference.",
+   "anchor": "personal AI agents getting some debate that caused online travel names to roll",
+   "topic": "personal AI agents",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Investors are discussing Instinct, an invite-only personal agent users text or call like an executive assistant to complete web workflows.",
+   "anchor": "Instinct, an invite-only personal agent that users can text or call like an EA",
+   "topic": "personal AI agents",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "The open question is whether Instinct can win as a standalone assistant against Meta Muse's broader WhatsApp and app distribution.",
+   "anchor": "The debate is whether Instinct can win as a standalone assistant now that Meta Muse has launched with broader distribution",
+   "topic": "personal AI agents",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Trust over inbox permissions, autonomous emails and data retention is the main barrier to personal agent adoption, and some investors see it as an Apple opportunity.",
+   "anchor": "Trust remains the main concern (some also asking if this is an Apple opportunity)",
+   "topic": "personal AI agents",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "Apple holds a product launch later on 9 September 2026 with its new CEO.",
+   "anchor": "Also note later today Apple new launch with the new Apple CEO",
+   "topic": "personal AI agents",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "9 September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - TMT Spec Sales Communacopia Technology Conference Day 1 wrap 9 Sep 2026",
+   "claim": "REA management said any cross-border acquisition would need to be a highly profitable, market-leading business with clear AI monetisation potential, criteria pointing back to a Rightmove-type target.",
+   "anchor": "Management suggested any cross-border move would need to target a highly profitable, market-leading business with clear AI monetisation potential",
+   "topic": "REA cross-border M&A",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15739__gs-johnstone-tmt-spec-sales-communacopia-technology-conferen.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 62,
+  "matched": 62,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
