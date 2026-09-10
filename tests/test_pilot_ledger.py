@@ -57,6 +57,85 @@ def test_macro_cards_get_a_bucket_not_a_drop():
     assert "_MACRO" in led["by_instrument"]
 
 
+# ------------------------------------- macro hard key (2026-09-10)
+
+def test_macro_key_is_a_hard_key_across_wording():
+    """Spec §4 amendment: a Fed thesis across documents split eight ways
+    by topic wording must still meet as ONE macro group, bank-deduped
+    per side, so the N-bank check can see it."""
+    a = {**_card("GS", "Fed hikes in September", instruments=[]),
+         "topic": "fed september hike odds", "macro_key": "FED"}
+    b = {**_card("DB", "Fed hiking cycle underpriced", instruments=[]),
+         "topic": "fed rate hike pricing", "macro_key": "fed"}
+    c = {**_card("DB", "Fed path steeper", instruments=[]),
+         "topic": "fed policy path", "macro_key": "FED"}
+    d = {**_card("UBS", "gold to 5000", instruments=[]),
+         "topic": "gold outlook", "macro_key": "GOLD"}
+    led = build([a, b, c, d])
+    fed = led["by_instrument"]["_MACRO:FED"]
+    assert fed["bank_count"] == 2, fed
+    assert len(fed["for"]) == 2, "DB's two cards are one voice"
+    assert "_MACRO:GOLD" in led["by_instrument"]
+    assert "_MACRO" not in led["by_instrument"], "every keyed macro card left the legacy bucket"
+    # the soft labels still fragment visibly: that is metric 1's measurement
+    assert len(led["by_topic_label"]) == 4
+
+
+def test_editor_pack_groups_macro_cards_by_key():
+    from scripts.pilot_editor_pack import build_pack
+    a = {**_card("GS", "Fed hikes in September", instruments=[]),
+         "topic": "fed september hike odds", "macro_key": "FED"}
+    b = {**_card("UBS", "legacy macro card", instruments=[])}
+    text, meta = build_pack([a, b], {})
+    assert "### MACRO · FED — 1 bank(s)" in text
+    assert "### MACRO (no instrument) — 1 bank(s)" in text
+    assert meta["card_count"] == 2
+
+
+def test_label_cap_and_macro_key_contract_are_verified():
+    from scripts.pilot_config import MACRO_KEYS, MAX_LABELS_PER_DOC
+    from scripts.pilot_verify_cards import check_labels, coerce_macro_keys
+    cards = [{**_card("GS", f"claim {i}", instruments=[]),
+              "topic": f"label {i}", "macro_key": "FED"} for i in range(7)]
+    r = check_labels(cards)
+    assert r["label_count"] == 7 and r["labels_over_cap"] == 7 - MAX_LABELS_PER_DOC
+    assert "at most 5" in r["reask"] and "label 0" in r["reask"]
+    # a macro card with no valid key is a contract breach, a tickered card is not
+    cards = [{**_card("GS", "no key", instruments=[]), "topic": "t"},
+             {**_card("GS", "bad key", instruments=[]), "topic": "t", "macro_key": "FEDERAL"},
+             {**_card("GS", "ticker", instruments=["NVDA"]), "topic": "t"}]
+    r = check_labels(cards)
+    assert r["macro_key_invalid"] == 2 and "macro_key" in r["reask"]
+    assert r["labels_over_cap"] == 0
+    # the final pass never drops for this: it coerces to OTHER and counts
+    assert coerce_macro_keys(cards) == 2
+    assert cards[0]["macro_key"] == "OTHER" and cards[1]["macro_key"] == "OTHER"
+    assert cards[2]["macro_key"] == ""
+    assert "OTHER" in MACRO_KEYS
+    # a conforming document produces no re-ask text
+    ok = [{**_card("GS", "x", instruments=[]), "topic": "fed", "macro_key": "FED"}]
+    assert check_labels(ok)["reask"] == ""
+
+
+def test_known_labels_lists_the_window_most_used_first():
+    from scripts.pilot_known_labels import collect, render
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        for day, docs in (("2026-09-10", {"a": ["fed september hike odds"] * 3 + ["gold outlook"]}),
+                          ("2026-09-09", {"b": ["fed september hike odds", "yen carry unwind"]}),
+                          ("2026-09-01", {"z": ["stale label"]})):
+            (root / day).mkdir()
+            for name, labels in docs.items():
+                (root / day / f"{name}.json").write_text(json.dumps(
+                    {"cards": [{"topic": t, "claim": "c"} for t in labels]}), encoding="utf-8")
+        rows = collect(str(root), "2026-09-10", days=1)
+        assert rows[0] == ("fed september hike odds", 4, 2)
+        assert {r[0] for r in rows} == {"fed september hike odds", "gold outlook", "yen carry unwind"}
+        assert "stale label" not in render(rows)
+        assert "[4 cards, 2 docs]" in render(rows)
+        assert "first document" in render(collect(str(root), "2026-08-01", days=0))
+
+
 # --------------------------------------------------------- soft keys
 
 def test_topic_labels_fold_filler_words():

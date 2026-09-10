@@ -48,9 +48,10 @@ checkable.
   "document": "the document title",
   "claim": "one sentence, self-contained, no pronouns referring outside the card",
   "anchor": "VERBATIM quote from the document containing the claim",
-  "topic": "2 to 4 word subject label, the same words for the same subject across cards",
+  "topic": "2 to 4 word pulse-theme label; reuse a KNOWN_LABELS entry when the subject matches, at most five labels per document",
   "status": "released | forecast | target | level",
   "instruments": ["US-listed tickers only, [] when the claim is macro"],
+  "macro_key": "REQUIRED when instruments is []: one of FED ECB BOJ BOE CPI PCE PPI JOBS GDP RETAIL_SALES ISM UST DXY GOLD OIL SPX VIX BTC POSITIONING CREDIT FISCAL GEOPOLITICS OTHER; empty string otherwise",
   "direction": "bullish | bearish | neutral",
   "conviction": "high | medium | low",
   "timeframe": "the horizon the document states, empty string when it states none"
@@ -71,19 +72,40 @@ is cheaper than reconstructing.
 
 Rules:
 - `topic` is the ledger's soft grouping key and the fragmentation
-  metric is measured on it. Before writing cards, list the document's
-  subjects: a research note argues about a handful, rarely more than
-  five, and every card takes one of those labels. A label is the
-  market subject a desk at any bank would name ("Fed September hike
-  odds", "Broadcom earnings", "US equity momentum unwind", "hedge fund
-  positioning"), at the grain of a pulse theme. Not the claim, not a
-  figure, not a bank or a ticker on its own, and not so broad that a
-  standing thesis and a same-day price recap share it ("European
-  equities" is too coarse when the note carries both; "Europe tactical
-  long" and "STOXX 600 close" are two subjects). Use the identical
-  words for every card on a subject. A label that would hold one card
-  is a warning: fold it into the nearest subject unless the claim is
-  about something else.
+  metric is measured on it. The grain is a **pulse theme**: the unit
+  that would be one BRIEF in the published pulse. "Fed September hike
+  odds" is one subject; the CPI components, the jobs print and the rate
+  pricing that feed it belong to it, not to labels of their own. A
+  research note argues one to three subjects, rarely five. Before
+  writing cards, list the document's subjects at that grain, and every
+  card takes one of those labels. **At most five labels per document.**
+  The verifier re-asks a document that uses more, and folds are cheaper
+  than a re-ask round.
+- **KNOWN_LABELS.** The prompt ends with the labels already used in
+  this ledger window, most-used first. Before coining a label, scan
+  that list: when an entry names the same subject at pulse-theme grain,
+  reuse it **verbatim**, wording and case included. Coin a new label
+  only for a subject the list does not hold. A label is the market
+  subject a desk at any bank would name ("Fed September hike odds",
+  "Broadcom earnings", "US equity momentum unwind", "hedge fund
+  positioning"). Not the claim, not a figure, not a bank or a ticker on
+  its own, not a stance or an instrument type ("consumer inertia", not
+  "consumer inertia put spread"), and not so broad that a standing
+  thesis and a same-day price recap share it ("European equities" is
+  too coarse when the note carries both). Use the identical words for
+  every card on a subject.
+- `macro_key` is the HARD grouping key for macro claims, the ones with
+  `instruments: []`. Pick the one closed-set value the claim is about:
+  FED ECB BOJ BOE (central bank policy and pricing), CPI PCE PPI JOBS
+  GDP RETAIL_SALES ISM (US data prints, forecast or released), UST
+  (Treasury yields, curve, buybacks, issuance), DXY (the dollar and
+  G10 FX), GOLD, OIL (crude, gas, energy supply), SPX (US index-level
+  equity calls with no ticker), VIX (volatility and options market
+  structure), BTC (crypto), POSITIONING (hedge fund, CTA, retail flows
+  and sentiment), CREDIT (spreads, issuance, private credit), FISCAL
+  (deficits, debt, elections as fiscal events), GEOPOLITICS (conflict
+  and tariffs when the claim is not about a specific market), OTHER.
+  A card with instruments carries `macro_key: ""`.
 - `conviction: high` ONLY when the document itself signals it
   ("high conviction", "top call", "best idea") or the whole note is a
   dedicated thesis piece. A stated view without those markers is

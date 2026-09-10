@@ -85,7 +85,16 @@ def build(cards: list[dict]) -> dict:
 
         # HARD key: instruments. One entry per instrument, bank-deduped
         # inside each side so five notes from one bank are one voice.
-        for inst in (c.get("instruments") or []) or ["_macro"]:
+        # A macro card (no instrument) keys on its closed-set macro_key
+        # as `_MACRO:FED` (spec §4 amendment 2026-09-10: a Fed thesis
+        # across twelve documents split eight ways by wording never
+        # reached the N-bank check). A legacy card without the field
+        # keeps the undifferentiated `_MACRO` bucket.
+        insts = c.get("instruments") or []
+        if not insts:
+            mk = str(c.get("macro_key") or "").strip().upper()
+            insts = [f"_macro:{mk}"] if mk else ["_macro"]
+        for inst in insts:
             k = str(inst).strip().upper()
             bucket = by_instrument[k][side]
             if bank not in [b["bank"] for b in bucket]:

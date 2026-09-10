@@ -54,10 +54,12 @@ Each processed document emits **two linked artifacts**:
   not extraction. Argument structure is what the best pulses are made
   of; atomizing it destroys the thing being sold.
 - **Claim cards** — every figure, level, target, call, and stance:
-  `{bank, document, claim, verbatim anchor quote, status
-  (released/forecast/target), instrument(s), direction, conviction,
-  timeframe}`. The brief carries reasoning; the cards carry everything
-  checkable.
+  `{bank, document, claim, verbatim anchor quote, topic, status
+  (released/forecast/target), instrument(s), macro_key, direction,
+  conviction, timeframe}`. The brief carries reasoning; the cards carry
+  everything checkable. `topic` is the soft label at pulse-theme grain
+  (at most five per document); `macro_key` is a closed-set hard key
+  required on cards with no instrument (amended 2026-09-10, see §4).
 
 ### 2.1 Reader cadence is upload-weighted, not uniform
 
@@ -106,11 +108,43 @@ since the last reader drain (small by construction, per §2.1), so a
 
 Python builds the ledger from all accumulated briefs and cards:
 
-- bank-deduplicated for/against counts **keyed hard on instruments and
-  figures** (exact grouping)
+- bank-deduplicated for/against counts **keyed hard on instruments,
+  macro keys and figures** (exact grouping)
 - reader topic labels **grouped soft** (they will fragment sometimes)
 - concentration stats alongside every count (e.g. Goldman's corpus
   share)
+
+**Amendment 2026-09-10 (before DAY1, after seven shadow days).** The
+first shadow week measured 39-60% fragmented card mass. Decomposed,
+only 4 points were wording variants; the rest was a grain mismatch
+(readers emitting a median of eight labels per document at sub-thesis
+grain while the grader judged at note or theme grain) plus readers
+that never saw one another's labels. Three read-time changes, none of
+them post-hoc normalization:
+
+1. **One grain, stated in both frozen prompts:** a label is a pulse
+   theme, the unit that would be one BRIEF. At most five labels per
+   document, enforced by the card verifier with the existing
+   in-session re-ask.
+2. **A running label list, not a fixed vocabulary.** The reader
+   workflow reads documents one at a time; each reader receives the
+   ledger window's labels so far (`KNOWN_LABELS`) with a
+   reuse-or-coin rule. The vocabulary is the corpus's own and adapts
+   daily. A fixed bank was rejected: half the day's subjects are
+   single-note stories no list anticipates, and it would impose the
+   grain by fiat instead of stating it.
+3. **A hard key for macro claims.** Cards with `instruments: []` had
+   no hard key, so a Fed thesis across twelve documents split eight
+   ways never reached the §6 N-bank check. `macro_key` is a closed set
+   built from the calendar whitelist the pulse already uses (FED, ECB,
+   BOJ, BOE, CPI, PCE, PPI, JOBS, GDP, RETAIL_SALES, ISM) plus the
+   RECAP snapshot (UST, DXY, GOLD, OIL, SPX, VIX, BTC) and four corpus
+   families the whitelist lacks (POSITIONING, CREDIT, FISCAL,
+   GEOPOLITICS), with OTHER. The ledger keys macro cards hard on it;
+   `topic` stays soft exactly as §6 intends.
+
+Metric 1's threshold and window are unchanged; the grain sentence in
+the grader rubric is a definition, not a relaxation.
 
 **Structural rule: grouping filters nothing.** The editor receives
 every brief and the full card ledger regardless. Imperfect grouping
@@ -206,6 +240,9 @@ ledger. Production runs untouched. Nothing is deleted during the pilot.
 1. **Grouping integrity** — fragmentation = % of card mass in
    label-groups a grader judges to be the same underlying subject as
    another group; mis-merge = distinct subjects under one label.
+   Subject grain is a pulse theme, the unit that would be one BRIEF
+   (stated 2026-09-10 in both reader.md and graders/grouping.md; the
+   two had been using different grains).
    *Pass: ≤10% fragmented mass, zero mis-merges that would have changed
    theme selection.*
 2. **Fact fidelity** — 15 sentences sampled per shadow pulse, each

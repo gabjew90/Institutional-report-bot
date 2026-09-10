@@ -9,6 +9,16 @@ claim, and its instruments.
 
 ## Definitions (frozen)
 
+- **Subject grain** (stated 2026-09-10, after the first seven shadow
+  days measured 39-60% fragmentation of which only 4 points were
+  wording variants; the rest was the reader and this rubric using
+  different grains): a subject is a **pulse theme**, the unit that
+  would be one BRIEF in the published pulse. "Fed September hike odds"
+  is one subject; the CPI components, the jobs print and the Fed
+  pricing that feed it are its evidence, not separate subjects, unless
+  the day's pulse would carry them as separate briefs. A single research
+  note usually argues one to three subjects, rarely five. Two labels are
+  fragmented only when a pulse would cover them in ONE brief.
 - **Fragmentation**: two or more labels that a careful reader would
   say cover the SAME underlying subject (the same event, thesis, or
   instrument story), split only by wording. "AI capex cycle" and

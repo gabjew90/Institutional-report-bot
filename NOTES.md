@@ -2425,3 +2425,40 @@ and never rendered; the ticker-extraction duplicate (CLAUDE.md TODO);
 prompt text that duplicates code validators (ask_prompt.py, policy rule
 1). The transient retry still re-runs phases 0-2 instead of the one
 failed call.
+
+## 2026-09-10 — Metric 1: the grain was the defect, not the wording
+
+Decomposing grader A's 09-09 fragmentation sets against the raw labels:
+of 39% fragmented mass, 4 points were wording variants of one subject
+and 36 points were the grader merging several distinct-word families
+into one subject at note or theme grain ("one GS research note", 29
+labels including shelter disinflation into "Fed September hike odds").
+Readers emitted a median of 8 labels per document (max 21) against a
+prompt that said "rarely more than five"; 47 of 62 documents exceeded
+five. Duplicate cards: 0%. The two frozen documents (reader.md,
+graders/grouping.md) were using different grains and metric 1 measured
+the disagreement. The two graders themselves landed at 41% and 60% on
+09-08 for the same reason.
+
+The fixed ~40-word vocabulary proposed on 09-09 was withdrawn: it fixes
+the 4 points, not the 36, and half the day's subjects (Rothera, TSMC
+packaging, the consumer-inertia basket, Communacopia) are single-note
+stories no list anticipates.
+
+Shipped instead (owner approved 2026-09-10; spec §4 amendment):
+1. One grain in both prompts: a label is a pulse theme, the unit that
+   would be one BRIEF. At most five labels per document, enforced by
+   pilot_verify_cards.py through the existing in-session re-ask
+   (`label_contract` in the re-ask file).
+2. KNOWN_LABELS: scripts/pilot_known_labels.py hands each reader the
+   ledger window's labels so far, rebuilt per document inside the
+   sequential reader loop, with a reuse-or-coin rule.
+3. `macro_key`: a closed-set hard key on cards with no instrument
+   (calendar whitelist + RECAP snapshot + POSITIONING/CREDIT/FISCAL/
+   GEOPOLITICS + OTHER; scripts/pilot_config.MACRO_KEYS). The ledger
+   groups them as `_MACRO:<KEY>`; the verifier coerces an invalid key
+   to OTHER on the final pass and counts it.
+
+Threshold and window unchanged. Prompt edits restart the pilot clock;
+DAY1 was never set, so nothing is lost. Next: one shadow day, read the
+new fragmentation number and the OTHER share, then commit DAY1.

@@ -62,6 +62,26 @@ def _doc_key(c: dict) -> str:
     return c.get("_file") or f"{c.get('bank')}::{c.get('document')}"
 
 
+def _card_in_group(c: dict, inst: str) -> bool:
+    """Membership in a ledger group: a ticker, the legacy `_MACRO`
+    bucket, or a `_MACRO:<KEY>` macro-key bucket."""
+    insts = c.get("instruments") or []
+    if inst.startswith("_MACRO"):
+        if insts:
+            return False
+        mk = str(c.get("macro_key") or "").strip().upper()
+        return inst == (f"_MACRO:{mk}" if mk else "_MACRO")
+    return inst in insts
+
+
+def _group_label(inst: str) -> str:
+    if inst == "_MACRO":
+        return "MACRO (no instrument)"
+    if inst.startswith("_MACRO:"):
+        return f"MACRO · {inst.split(':', 1)[1]}"
+    return inst
+
+
 def order_cards(cards: list[dict], ledger: dict) -> list[dict]:
     """Deterministic ledger order (see module docstring)."""
     seen: set[int] = set()
@@ -75,12 +95,11 @@ def order_cards(cards: list[dict], ledger: dict) -> list[dict]:
     side_rank = {"bullish": 0, "bearish": 1, "neutral": 2}
     groups = sorted(ledger["by_instrument"].items(),
                     key=lambda kv: (-kv[1]["bank_count"], kv[0]))
-    ordered_groups = [g for g in groups if g[0] != "_MACRO"] + \
-        [g for g in groups if g[0] == "_MACRO"]
+    ordered_groups = [g for g in groups if not g[0].startswith("_MACRO")] + \
+        [g for g in groups if g[0].startswith("_MACRO")]
     for inst, _g in ordered_groups:
-        members = [c for c in cards if id(c) not in seen and (
-            (inst == "_MACRO" and not (c.get("instruments") or []))
-            or inst in (c.get("instruments") or []))]
+        members = [c for c in cards if id(c) not in seen
+                   and _card_in_group(c, inst)]
         members.sort(key=lambda c: (side_rank.get(c.get("direction"), 3),
                                     str(c.get("bank") or "")))
         for c in members:
@@ -143,16 +162,14 @@ def build_pack(cards: list[dict], briefs: dict[str, dict]) -> tuple[str, dict]:
                 + f") ← {doc_ids[_doc_key(c)]}")
 
     for inst, g in groups:
-        label = "MACRO (no instrument)" if inst == "_MACRO" else inst
+        label = _group_label(inst)
         lines.append(f"### {label} — {g['bank_count']} bank(s): "
                      f"{len(g['for'])} for / {len(g['against'])} against / "
                      f"{len(g['neutral'])} neutral")
         for c in ordered:
             if id(c) in printed:
                 continue
-            insts = c.get("instruments") or []
-            is_here = (inst == "_MACRO" and not insts) or (inst in insts)
-            if is_here:
+            if _card_in_group(c, inst):
                 printed.add(id(c))
                 lines.append(card_line(c))
                 pos += 1

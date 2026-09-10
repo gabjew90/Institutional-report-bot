@@ -79,6 +79,30 @@ def reader_tier(source: str) -> tuple[str, str]:
     return "rest", MODEL_READER_REST
 
 
+# Topic-label contract (spec §4 amendment, 2026-09-10). A label is a
+# pulse theme, at most this many per document; the verifier re-asks a
+# document over the cap. Part of the frozen reader contract, so it
+# lives with the other freeze-controlled values.
+MAX_LABELS_PER_DOC = 5
+
+# Hard grouping key for macro claims (instruments == []). Built from the
+# calendar whitelist the pulse already hard-filters to (report/news_data
+# TIER1_KEYWORDS), the RECAP market snapshot, and four corpus families
+# neither covers. Closed set: the verifier coerces anything else to
+# OTHER and counts it, so a bad vocabulary shows up in the ops record
+# instead of in the ledger.
+MACRO_KEYS = (
+    # calendar whitelist
+    "FED", "ECB", "BOJ", "BOE",
+    "CPI", "PCE", "PPI", "JOBS", "GDP", "RETAIL_SALES", "ISM",
+    # RECAP market snapshot
+    "UST", "DXY", "GOLD", "OIL", "SPX", "VIX", "BTC",
+    # corpus families the whitelist lacks
+    "POSITIONING", "CREDIT", "FISCAL", "GEOPOLITICS",
+    "OTHER",
+)
+
+
 def prompt_sha(text: str) -> str:
     """Short stable hash of a prompt's text, recorded in provenance.
 

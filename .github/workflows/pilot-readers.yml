@@ -139,12 +139,23 @@ jobs:
             OUT="pilot-data/$PILOT_ROOT/cards/$DATE/$ID.json"
             mkdir -p "$(dirname "$OUT")"
 
+            # The running label list (spec §4 amendment 2026-09-10):
+            # every label already in the ledger window, rebuilt per
+            # document so this loop's earlier reads are in it. Readers
+            # that never saw each other's labels were the architecture
+            # half of metric 1's failure.
+            python scripts/pilot_known_labels.py --root "pilot-data/$PILOT_ROOT" \
+              --date "$DATE" --out /tmp/known_labels.txt \
+              || printf '(unavailable this run)\n' > /tmp/known_labels.txt
+
             # Build the prompt in a FILE. Everything here stays
             # indented: a column-0 line would terminate this YAML
             # block scalar.
             {
               cat docs/superpowers/routines/pilot/reader.md
               printf '\n\nSOURCE_TEXT_PATH=%s\n' "$TEXT"
+              printf '\nKNOWN_LABELS (already in this ledger window, most-used first; reuse verbatim when the subject matches at pulse-theme grain):\n'
+              cat /tmp/known_labels.txt
             } > /tmp/reader_prompt.txt
 
             # Turn budget scales with the document. Shakedown 2026-09-02:
@@ -216,9 +227,9 @@ jobs:
             if [ "$NEEDS" = "True" ]; then
               {
                 cat /tmp/reader_prompt.txt
-                printf '\n[RE-ASK] These cards had anchors NOT found in the source:\n'
+                printf '\n[RE-ASK] failed_cards had anchors NOT found in the source; label_contract, when present, names a topic or macro_key contract breach:\n'
                 cat /tmp/reask.json
-                printf '\nRe-emit the COMPLETE artifact. For each failed card, either copy its anchor character-for-character from the source or omit that card. Change nothing else.\n'
+                printf '\nRe-emit the COMPLETE artifact. For each failed card, either copy its anchor character-for-character from the source or omit that card. Apply the label_contract instruction if there is one. Change nothing else.\n'
               } > /tmp/reask_prompt.txt
               claude -p --model "$MODEL" \
                 --permission-mode bypassPermissions \
