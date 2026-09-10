@@ -1,0 +1,682 @@
+{
+ "brief": "Goldman's Daan Struyven raised Brent and WTI forecasts by $5, to $85 and $80 for December 2026 and $80 and $75 for 2027, on a new assumption that Mideast shipping disruptions run into 2027. He calls the upgrade modest for two reasons. First, OECD commercial inventories, the stock category most predictive of Brent, have barely drawn: only 26mb of the 543mb global visible draw since the war, leaving Goldman's counter 119mb above its July balance estimate and its $79 fair value $18 below a $97 market. Second, Gulf supply keeps adapting, through dark flows, 3.8mb/d of new pipeline capacity by end-2027 and eventual spare capacity, returning to pre-war levels by 2027H2. Price-sensitive Chinese imports, down about 30% year over year, cap upside further, and Goldman puts fair value $10-15 higher had China held imports stable. Risks stay tilted upside: Brent above $120 in 2027 if Gulf output runs 4mb/d below pre-war, into the $60s if it runs 1mb/d above. Goldman still recommends hedging through deferred Mar27-Dec27 European diesel timespreads and long global natural gas and refined products.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman raised its Brent and WTI price forecasts by $5, to $85 and $80 for December 2026 and $80 and $75 for 2027.",
+   "anchor": "he raised Goldman's Brent/WTI price forecasts by $5 to $85/80 for Dec2026 and to $80/75 for",
+   "topic": "Brent price forecast",
+   "status": "target",
+   "instruments": [
+    "BNO",
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "Dec2026 and 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman's raised oil price forecasts assume Mideast shipping disruptions continue into 2027.",
+   "anchor": "on the assumption that Mideast shipping disruptions continue into 2027",
+   "topic": "Brent price forecast",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman calls its own price upgrade modest despite the new assumption that shipping disruptions continue.",
+   "anchor": "the price upgrade is \u201cmodest\u201d despite his new",
+   "topic": "Brent price forecast",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman's Brent fair value estimate of $79 sits $18 below market pricing, which embeds a risk premium for future draws and disruption risk.",
+   "anchor": "the bank's $79 Brent fair value estimate is still $18 below market pricing",
+   "topic": "Brent price forecast",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman says risks to its oil price forecast are significantly tilted to the upside on net, especially near-term.",
+   "anchor": "risks to our price forecast remain significantly tilted to the upside on net, especially near-term",
+   "topic": "Brent price forecast",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "In Goldman's upside scenario Brent exceeds $120 a barrel if 2027 average Gulf output stays 4mb/d below pre-war levels, against 0.5mb/d below in the base case.",
+   "anchor": "Brent might exceed $120/bbl if 2027 average Gulf output remains 4mb/d below pre-war levels, versus 0.5mb/d below in the base case",
+   "topic": "Brent price forecast",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "In Goldman's downside scenario Brent falls into the $60s in 2027 if 2027 average Gulf output rises 1mb/d above pre-war levels.",
+   "anchor": "Brent might decline into the $60s in 2027 if 2027 average Gulf output rises 1mb/d above pre-war levels",
+   "topic": "Brent price forecast",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman's main downside price risks are a faster Mideast output recovery and stickier demand losses.",
+   "anchor": "The main downside price risks are a faster Mideast output recovery and stickier demand losses",
+   "topic": "Brent price forecast",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman holds a lower Brent target of $80 if exports from the Mideast normalize.",
+   "anchor": "the bank also has a lower target of $80 should exports from the region normalize",
+   "topic": "Brent price forecast",
+   "status": "target",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Brent spot futures have risen to $97.",
+   "anchor": "Brent spot futures have risen to $97",
+   "topic": "Brent market pricing",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The options-implied probability of Brent above $100 in March 2027 has risen to about 25% from around 6% a month ago.",
+   "anchor": "the options-implied probability of Brent above $100 in March 2027 has risen from around 6% a month ago to about 25% now",
+   "topic": "Brent market pricing",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "March 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "2027Q2 Persian Gulf-to-China crude tanker rates now price shipping disruptions lasting into that quarter.",
+   "anchor": "2027Q2 Persian Gulf-to-China crude tanker rates now price shipping disruptions lasting into then",
+   "topic": "Brent market pricing",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027Q2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman's end-August OECD commercial oil stocks counter stands 119mb above the bank's July balance estimate.",
+   "anchor": "leaving Goldman's end-August OECD commercial oil stocks counter 119mb above the bank's July balance estimate",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "end-August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Global visible oil stocks have declined by 543mb since the war began, or 504mb after adjusting for likely upward revisions.",
+   "anchor": "Global visible oil stocks have declined by 543mb since the war began, or 504mb (2.7mb/d) after adjusting for likely upward revisions",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Only 26mb of the 543mb global stock draw has come from OECD commercial storage.",
+   "anchor": "Of that 543mb draw, only 26mb has come from OECD commercial storage",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Nearly 200mb each of the global draw came from OECD SPR and oil on water, and 80mb from China.",
+   "anchor": "nearly 200mb each has come from OECD SPR and on oil on water, and 80mb from China",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman says the historical relationship between prices and global visible oil stocks is weak.",
+   "anchor": "The historical relationship between prices and global visible oil stocks is weak",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "When visible global oil stocks hit their all time low in November 2024, in a sample starting February 2017, Brent was $76.",
+   "anchor": "when visible global stocks hit their all time low in November 2024 (in a sample starting in February 2017), Brent was $76",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "OECD commercial stocks measured in days of demand remain 16% above their 2003 average all-time low.",
+   "anchor": "remain 16% above their 2003 average all-time low",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Global landed oil stocks have fallen from 9.06 billion barrels before the war to 8.63 billion barrels today.",
+   "anchor": "Global landed oil stocks have declined from 9.06 billion barrels before the war to 8.63 billion barrels today",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Global landed oil stocks remain well above Goldman's estimated minimum operational landed storage level of 4.20 billion barrels.",
+   "anchor": "still well above the estimated minimum operational landed storage level of 4.20 billion barrels",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The US Strategic Petroleum Reserve is about to hit its lowest inventory on record and will keep draining while disruptions persist.",
+   "anchor": "the US SPR which is about to hit its lowest inventory on record",
+   "topic": "global oil inventories",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The global oil market deficit has narrowed from about 7mb/d in March 2026 to 1mb/d in 2026Q3.",
+   "anchor": "The global oil market deficit has narrowed from about 7mb/d in March 2026 to 1mb/d in 2026Q3",
+   "topic": "global oil balance",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "2026Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman's 2026Q3 deficit of 1mb/d is 5.4mb/d smaller than the 6.4mb/d Q3 drop in Persian Gulf output versus its 2025 average.",
+   "anchor": "2026Q3 1mb/d deficit is 5.4mb/d smaller than the 6.4mb/d Q3 drop in Persian Gulf output vs. its 2025 average",
+   "topic": "global oil balance",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The gap between the Gulf output drop and the current deficit reflects a 1.2mb/d surplus in 2025, 2.7mb/d weaker demand versus 2025, and 1.4mb/d stronger ex Gulf production versus 2025.",
+   "anchor": "1.2mb/d surplus in 2025, 2) 2.7mb/d weaker demand (vs. 2025), and 3) 1.4mb/d stronger ex Gulf production",
+   "topic": "global oil balance",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "2026Q3 combined output from the US, Canada, Brazil, Venezuela, Argentina and Guyana is on track to be 2.3mb/d above its 2025 average.",
+   "anchor": "combined output from the US, Canada, Brazil, Venezuela, Argentina, and Guyana on track to be 2.3mb/d above its 2025 average",
+   "topic": "global oil balance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The US contributes 1mb/d and Brazil 0.7mb/d of the ex Gulf production growth versus the 2025 average.",
+   "anchor": "the largest contributions from the US (1mb/d) and Brazil (0.7mb/d)",
+   "topic": "global oil balance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman's base case assumes 0.7mb/d of demand scarring in 2027, or 12% of the 6mb/d 2026Q2 demand loss versus a no war scenario.",
+   "anchor": "Our base case assumes 0.7mb/d of demand scarring in 2027, or 12% of the 6mb/d 2026Q2 loss",
+   "topic": "global oil balance",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Gulf liquids output has improved from 14.3mb/d below February 2026 levels in April to 8.0mb/d below in July.",
+   "anchor": "Gulf liquids output has already improved from 14.3mb/d below Feb26 levels in April to 8.0mb/d below in July",
+   "topic": "Mideast supply recovery",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "April to July"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman assumes Gulf output gradually returns to pre-war levels by 2027H2, then overshoots as the UAE, now outside OPEC, and Saudi Arabia deploy some spare capacity.",
+   "anchor": "assumes output gradually returns to pre-war levels by 2027H2, then overshoots as the UAE, now outside OPEC, and Saudi Arabia",
+   "topic": "Mideast supply recovery",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "2027H2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman estimates 3.8mb/d of new effective pipeline capacity is added by end-2027.",
+   "anchor": "Goldman estimates 3.8mb/d of new effective pipeline capacity addition by end-2027",
+   "topic": "Mideast supply recovery",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "end-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The UAE's West-East pipeline expansion adds 1.8mb/d of the new pipeline capacity.",
+   "anchor": "driven by the UAE's West\u2013East pipeline expansion (+1.8mb/d)",
+   "topic": "Mideast supply recovery",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "end-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Saudi Arabia's Yanbu port expansion adds 2.0mb/d of the new pipeline capacity.",
+   "anchor": "Saudi Arabia's Yanbu port expansion (+2.0mb/d)",
+   "topic": "Mideast supply recovery",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "end-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Gulf exports have already trended higher, which Goldman reads as producers and specialized shippers adapting to a risky shipping environment.",
+   "anchor": "exports have already trended higher, suggesting producers and specialized shippers are adapting to a risky shipping environment",
+   "topic": "Mideast supply recovery",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman says the intensity and geographical breadth of tanker attacks is a highly uncertain variable and a key driver of whether Gulf exports recover.",
+   "anchor": "the intensity and geographical breadth of tanker attacks \u2014 a highly uncertain variable \u2014 will remain a key driver",
+   "topic": "Mideast supply recovery",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Oil is close to $100 after China unleashed what appears to be the biggest post-war buying spree.",
+   "anchor": "Oil is close to $100 after China unleashes what appears to be the biggest post-war buying spree",
+   "topic": "China crude imports",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Price-sensitive Chinese crude net imports are still down about 30% year-over-year.",
+   "anchor": "Price-sensitive Chinese crude net imports, still down about 30% year-over-year",
+   "topic": "China crude imports",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman estimates Brent fair value would be $10-15 higher if China had kept its crude imports stable in March-August 2026.",
+   "anchor": "Brent fair value would be $10-15 higher if China had kept its imports stable in March-August 2026",
+   "topic": "China crude imports",
+   "status": "forecast",
+   "instruments": [
+    "BNO"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "China's July 2026 net crude imports were 3.3mb/d below the 2025 average.",
+   "anchor": "The 3.3mb/d drop in July 2026 net imports versus the 2025 average",
+   "topic": "China crude imports",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "July 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "China's import drop reflects a 2mb/d decline in refinery runs and a 1.3mb/d swing from stockpiling in 2025 to draws since May.",
+   "anchor": "2mb/d decline in refinery runs and a 1.3mb/d swing from stockpiling in 2025 to draws since May",
+   "topic": "China crude imports",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since May"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "China visible crude stocks remain above 1.1 billion barrels, and higher still including invisible stocks.",
+   "anchor": "China visible crude stocks remain high\u2014above 1.1 billion barrels",
+   "topic": "China crude imports",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman expects China's crude demand to stay price-sensitive because investment in electric cars, taxis, trucks, public transport and coal-based petrochemical plants raised the flexibility to switch away from oil.",
+   "anchor": "investment in electric personal cars, electric taxis, electric trucks, public transportation, and coal-based petrochemical plants has increased flexibility to switch away from oil",
+   "topic": "China crude imports",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "coming quarters"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Markets are starting to accept that Mideast disruption will linger well into 2027.",
+   "anchor": "markets are starting to accept that disruption is going to linger well into 2027",
+   "topic": "Mideast shipping disruption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Rabobank",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The Houthis struck Saudi Aramco facilities.",
+   "anchor": "the Houthis struck Saudi Aramco facilities",
+   "topic": "Mideast shipping disruption",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Rabobank",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Iran floated a Hormuz exclusion zone with Oman within days.",
+   "anchor": "Iran floated a Hormuz exclusion zone with Oman \u201cin days\u201d",
+   "topic": "Mideast shipping disruption",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "days"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman's key upside price risks are more intense and geographically broader shipping disruptions and damage to crude production or export infrastructure.",
+   "anchor": "key upside price risks include more intense and geographically broader shipping disruptions, and damage to crude production or export Infrastructure",
+   "topic": "Mideast shipping disruption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Struyven sees the risk of larger or more persistent supply disruptions as especially high in and around Hormuz, the Red Sea and the Black Sea.",
+   "anchor": "sees the risk of larger or more persistent supply disruptions as especially high in and around Hormuz, the Red Sea and the Black Sea",
+   "topic": "Mideast shipping disruption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Struyven says events of the last few days suggest the risk of shipping disruptions broadening and intensifying is an important one.",
+   "anchor": "Events over the last few days do suggest that the risk of shipping disruptions broadening and intensifying is an important one",
+   "topic": "Mideast shipping disruption",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "US diesel is already at a record high.",
+   "anchor": "US diesel is already at a record high",
+   "topic": "diesel and refined products",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Goldman recommends hedging geopolitical risk through deferred Mar27-Dec27 European diesel timespreads.",
+   "anchor": "Goldman still recommends hedging geopolitical risk through deferred Mar27-Dec27 European diesel timespreads",
+   "topic": "diesel and refined products",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Mar27-Dec27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "The deferred European diesel timespreads would rise over 100% if persistent Russia or Mideast refinery outages keep the nearby 9-month spread near current levels.",
+   "anchor": "which would rise over 100% if persistent Russia or Mideast refinery outages keep the nearby 9-month spread near current levels",
+   "topic": "diesel and refined products",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Struyven recommends investors hedge geopolitical risk by going long global natural gas and refined-oil products.",
+   "anchor": "we do recommend to investors to hedge geopolitical risks by going long in global natural gas and refined-oil products",
+   "topic": "diesel and refined products",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Goldman Raises Oil Price Target, Sees Brent As High As $120, On Hormuz Disruptions Lasting Into 2027",
+   "claim": "Struyven says the supply shocks in natural gas and refined products are bigger than in the crude market.",
+   "anchor": "The supply shocks are bigger than in the crude market",
+   "topic": "diesel and refined products",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15705__goldman-raises-oil-price-target-sees-brent-as-high-as-120-on.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 53,
+  "matched": 53,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
