@@ -1,0 +1,233 @@
+{
+ "brief": "The note (The Market Ear, incorporating GS derivatives desk views) argues equity index vol has risen but stays low in absolute terms, while oil vol, skew, VVIX and JPY vol are rising sharply and realized correlation sits at record lows, cross-asset signals suggesting the repricing has further to run given CPI, a yen carry unwind and a potential correlation comeback, so optionality is still cheap. GS's derivatives desk sees a window to add convexity both ways, right-tail AI exposure and near-term macro protection, citing NDX one-month ATM vol compression from roughly 57 to 40 and 20-year-flat put/call skew despite CPI, the GS tech conference and earnings ahead, with the market pricing just a 0.91% weekly move. GS also flags the S&P's lowest-ever six-month realized correlation as historically unsustainable, typically preceding an explosive return of vol. Separately, oil vol and skew are rising while VIX lags, a brutal JPY move raises carry-unwind spillover risk, and IWM puts are flagged as cheap CPI protection with small-cap vol near three-year lows. The note stays long VIX into a three-day weekend as VVIX surges, keeping the October 18/28 VIX call spread its favored structure.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "Oil vol, equity skew, VVIX and JPY vol have all risen sharply while realized correlation has fallen to record lows.",
+   "anchor": "oil vol, skew, VVIX and JPY vol are all moving sharply higher",
+   "topic": "index vol cross-asset signals",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "With CPI, the yen carry unwind and a potential return of correlation all in play, optionality still looks too cheap.",
+   "anchor": "yen carry unwind and a potential return of correlation all in play, optionality still looks too cheap.",
+   "topic": "index vol cross-asset signals",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "Goldman Sachs' derivatives desk sees an attractive window to add convexity on both sides, right-tail AI-driven upside exposure and tactical protection against near-term macro risks.",
+   "anchor": "GS's derivatives desk sees an attractive window for adding convexity on both sides",
+   "topic": "GS convexity trade call",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "One-month at-the-money implied volatility for the average Nasdaq-100 stock has fallen from roughly 57 to 40.",
+   "anchor": "One-month ATM vol for the average NDX stock has fallen from roughly 57 to 40",
+   "topic": "NDX tech vol compression",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "NDX put/call skew is near its flattest level in 20 years.",
+   "anchor": "put/call skew is near its flattest in 20 years",
+   "topic": "NDX tech vol compression",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "Despite CPI, the GS tech conference and key earnings ahead, the market is pricing just a 0.91% move through the week-end.",
+   "anchor": "the market is pricing just a 0.91% move through the week-end.",
+   "topic": "NDX tech vol compression",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through the week-end"
+  },
+  {
+   "bank": "GS",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "The S&P has just recorded its lowest six-month realized correlation ever, according to the GS derivatives desk.",
+   "anchor": "The S&P has just recorded its lowest six-month realized correlation ever, according to the GS",
+   "topic": "S&P realized correlation extremes",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "six-month"
+  },
+  {
+   "bank": "GS",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "GS's derivatives desk says such realized-correlation extremes are historically unsustainable and have typically preceded an explosive return of index vol convexity.",
+   "anchor": "History suggests such extremes are unsustainable",
+   "topic": "S&P realized correlation extremes",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "Oil vol continues to move higher and is outpacing VIX, while skew is spiking again.",
+   "anchor": "Oil vol continues to move higher, leaving VIX behind. Skew is spiking again as well.",
+   "topic": "oil vol and downside skew",
+   "status": "level",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "Current oil vol and skew levels point to a renewed bid for downside protection on a relative-vol basis.",
+   "anchor": "current levels point to a renewed bid for downside protection on a relative-vol basis.",
+   "topic": "oil vol and downside skew",
+   "status": "forecast",
+   "instruments": [
+    "USO"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "The latest JPY move has been brutal, raising the risk that the classic carry unwind spills into broader markets.",
+   "anchor": "The latest JPY move has been brutal, raising the risk that the classic carry unwind spills into broader",
+   "topic": "yen carry unwind spillover",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "The gap between VIX and USDJPY vol has become huge, which is not comforting if VIX is meant to provide a macro hedge.",
+   "anchor": "comforting if VIX is supposed to provide a macro hedge.",
+   "topic": "yen carry unwind spillover",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "With inflation back at the centre of the September FOMC debate, outright IWM puts offer cheap protection against a hot CPI print.",
+   "anchor": "With inflation back at the centre of the September FOMC debate, outright IWM puts offer cheap",
+   "topic": "IWM CPI hedge",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "Small-cap volatility is sitting near three-year lows, making downside convexity on IWM unusually attractive.",
+   "anchor": "Small-cap vol is sitting near three-year lows, making downside",
+   "topic": "IWM CPI hedge",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "three-year"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "VVIX is surging and outpacing VIX.",
+   "anchor": "VVIX is surging and leaving VIX behind.",
+   "topic": "VVIX divergence and long-VIX trade",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "The Market Ear outlined its long-VIX logic ahead of the three-day weekend and remains constructive on that view.",
+   "anchor": "the long-VIX logic ahead of the three-day weekend",
+   "topic": "VVIX divergence and long-VIX trade",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three-day weekend"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "fear is waking up and the real spillover hasnt even started",
+   "claim": "The October 18/28 VIX call spread remains attractive, though new buyers may prefer slightly higher strikes after the latest VIX move.",
+   "anchor": "The October 18/28 call spread remains attractive, although new buyers may prefer slightly higher strikes after the latest VIX move.",
+   "topic": "VVIX divergence and long-VIX trade",
+   "status": "target",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15712__fear-is-waking-up-and-the-real-spillover-hasnt-even-started.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 17,
+  "matched": 17,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
