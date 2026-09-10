@@ -2462,3 +2462,30 @@ Shipped instead (owner approved 2026-09-10; spec §4 amendment):
 Threshold and window unchanged. Prompt edits restart the pilot clock;
 DAY1 was never set, so nothing is lost. Next: one shadow day, read the
 new fragmentation number and the OTHER share, then commit DAY1.
+
+## 2026-09-10 — Industry events on the omni-calendar, from the corpus
+
+Spec 2026-09-09 (conference sessions from the corpus) approved and
+wired end to end the same day. The deep-analysis schema gains
+`conference_sessions`; `ai_analysis/conference_sessions.py` keeps a
+slot only when its schedule line is a normalized substring of the
+extracted text (enforcing, unlike the warn-only key_data_points check),
+its month and day are printed in the text (year from the analysis
+date, rolled forward past 30 days stale), and it names a US-listed
+ticker. `db.conference_sessions_for_date` reads the latest analysis per
+PDF over the last 7 days and dedupes across documents.
+
+Sheet: `build_conference_rows` admits NASDAQ-100 names only
+(`NDX_TICKERS`, hand-refreshed, as of the 2025-12-22 reconstitution),
+one row per conference per day, tickers in market-cap order via the
+same cap cache the earnings ranking uses, ET start of the first
+admitted slot, day-level when the printed zone is unknown. Rendered as
+a two-column events section (Economic left, Industry Events right,
+wrapping) only when a row exists; the lineup signature includes the
+rows so the 7:30 refresh sees a morning-note agenda. On the real 15746
+text: 13 proposed slots, 12 verified (the opening-remarks slot names no
+ticker), 9 admitted slots, one row starting 14:50 ET with MSFT first.
+
+Shadow phase skipped on the owner's call; the anchor and printed-date
+rules are the safety. First live test is the next conference day the
+corpus writes up.

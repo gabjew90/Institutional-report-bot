@@ -108,6 +108,90 @@ def earn_is_important(symbol: str, cap_musd: float, covered: set | None) -> bool
     return bool(covered) and sym in covered
 
 
+# --- industry events (conference sessions from the corpus) -------------
+# Spec docs/superpowers/specs/2026-09-09-conference-sessions-from-corpus.md,
+# owner approved 2026-09-10. Admission universe: NASDAQ-100 constituents,
+# refreshed BY HAND after the annual December reconstitution. A stale
+# list costs a new entrant its row, never a false row.
+NDX_AS_OF = "2025-12-22"
+NDX_TICKERS = frozenset("""
+AAPL MSFT NVDA AMZN META AVGO GOOGL GOOG TSLA NFLX COST PLTR ASML CSCO TMUS
+AMD AZN LIN PEP INTU ISRG SHOP BKNG APP QCOM AMGN ADBE PDD TXN ARM GILD HON
+MU PANW CMCSA ADP AMAT CRWD VRTX LRCX KLAC MELI ADI SBUX CEG DASH INTC MSTR
+CDNS SNPS ORLY MDLZ MRVL CTAS PYPL MAR REGN FTNT ABNB CSX ADSK MNST WDAY
+AXON NXPI CHTR ROP AEP PCAR IDXX PAYX FAST CPRT ROST FANG TTWO ZS DDOG EA
+BKR XEL CCEP EXC CSGP TEAM KDP VRSK GEHC DXCM WBD LULU MCHP KHC ALNY CIEN
+INSM MPWR STX WDC
+""".split())
+MAX_CONF_ROWS = 4   # a fifth conference on one day is an admission-list bug
+
+
+@dataclass
+class ConfRow:
+    conference: str
+    time_et: str | None            # "15:30" start of the first admitted slot; None = day-level
+    tickers: list[str]             # admitted names, market-cap descending
+    important: bool = False        # any admitted name on the major-ticker list
+    slots: int = 0                 # admitted slots behind this row (for QC)
+
+
+def _hhmm_minutes(hhmm: str) -> int:
+    h, m = hhmm.split(":")
+    return int(h) * 60 + int(m)
+
+
+def build_conference_rows(sessions: list[dict], date_iso: str,
+                          caps: dict | None = None) -> list[ConfRow]:
+    """One row per conference per day from verified sessions: the
+    admitted (NDX) tickers across every slot, ordered by market cap
+    (owner call 2026-09-10), and the ET start of the earliest admitted
+    slot. A conference with no admitted name produces no row. `caps` is
+    {symbol: {"cap": musd}}; missing caps sort last, alphabetically."""
+    from ai_analysis.conference_sessions import local_to_et_hhmm
+    by_conf: dict[str, dict] = {}
+    for s in sessions or []:
+        admitted = [t for t in (s.get("tickers") or [])
+                    if str(t).upper() in NDX_TICKERS]
+        if not admitted:
+            continue
+        key = " ".join(str(s.get("conference") or "").split()).lower()
+        if not key:
+            continue
+        g = by_conf.setdefault(key, {"name": " ".join(str(s.get("conference")).split()),
+                                     "tickers": [], "starts": [], "slots": 0})
+        for t in admitted:
+            t = str(t).upper()
+            if t not in g["tickers"]:
+                g["tickers"].append(t)
+        et = local_to_et_hhmm(s.get("time_local") or "", s.get("tz") or "", date_iso)
+        if et:
+            g["starts"].append(et)
+        g["slots"] += 1
+    caps = caps or {}
+
+    def _cap(sym: str) -> float:
+        try:
+            return float((caps.get(sym) or {}).get("cap") or 0)
+        except Exception:
+            return 0.0
+
+    rows = []
+    for g in by_conf.values():
+        tickers = sorted(g["tickers"], key=lambda t: (-_cap(t), t))
+        start = min(g["starts"], key=_hhmm_minutes) if g["starts"] else None
+        rows.append(ConfRow(
+            conference=g["name"], time_et=start, tickers=tickers,
+            important=any(t in news_data._MAJOR_TICKERS for t in tickers),
+            slots=g["slots"]))
+    rows.sort(key=lambda r: (r.time_et is None,
+                             _hhmm_minutes(r.time_et) if r.time_et else 0,
+                             -len(r.tickers), r.conference.lower()))
+    if len(rows) > MAX_CONF_ROWS:
+        log.warning(f"calendar: {len(rows)} conferences on {date_iso}; "
+                    f"showing {MAX_CONF_ROWS} (admission list too wide?)")
+    return rows[:MAX_CONF_ROWS]
+
+
 @dataclass
 class CalendarDay:
     date_iso: str
@@ -120,6 +204,7 @@ class CalendarDay:
     earnings_available: bool = True
     dropped_bmo: int = 0
     dropped_amc: int = 0
+    conferences: list[ConfRow] = field(default_factory=list)
 
 
 def _weekday_label(date_iso: str) -> str:
@@ -394,6 +479,11 @@ def lineup_signature(day: CalendarDay) -> str:
             parts.append(f"{lbl}:{r.symbol}:{r.implied_move}:{int(r.session_confirmed)}")
     for e in day.econ:
         parts.append(f"econ:{e.time_et}:{e.event}:{e.impact}")
+    # Conference rows join the signature (spec 2026-09-09 §5.4): the
+    # morning note that carries the day's agenda lands AFTER the 3 PM
+    # sheet, and the refresh must see the lineup change.
+    for c in day.conferences:
+        parts.append(f"conf:{c.conference}:{c.time_et}:{','.join(c.tickers)}")
     return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
@@ -475,6 +565,23 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             for e in rows
             if e.get("time") and e.get("event")
         ])
+
+    # --- industry events: verified conference sessions from the corpus
+    # (spec 2026-09-09). Best-effort: no sessions, no band; a failure
+    # here costs the band, never the sheet.
+    try:
+        sessions = db.conference_sessions_for_date(date_iso)
+        if sessions:
+            admitted = sorted({str(t).upper() for s in sessions
+                               for t in (s.get("tickers") or [])
+                               if str(t).upper() in NDX_TICKERS})
+            conf_caps = _resolve_caps(admitted) if admitted else {}
+            day.conferences = build_conference_rows(sessions, date_iso, conf_caps)
+            if day.conferences:
+                log.info(f"calendar: {len(day.conferences)} industry event row(s) for "
+                         f"{date_iso} from {len(sessions)} verified session(s)")
+    except Exception as e:
+        log.warning(f"calendar: conference sessions unavailable ({e})")
 
     # --- earnings (holiday closed-card renders no earnings columns) ---
     if day.is_holiday:

@@ -154,6 +154,12 @@ class PdfAnalysis:
     cross_bank_references: list[str] = field(default_factory=list)
     entities_mentioned: list[EntityMention] = field(default_factory=list)
     key_data_points: list[KeyDataPoint] = field(default_factory=list)
+    # Dated, timed conference sessions the document prints as a schedule
+    # (spec 2026-09-09). Each entry is anchor-verified and date-verified
+    # against the extracted text by ai_analysis/conference_sessions.py
+    # BEFORE it is stored; most documents carry none. Consumed by the
+    # omni-calendar through db.conference_sessions_for_date.
+    conference_sessions: list = field(default_factory=list)
     tension_points: list[TensionPoint] = field(default_factory=list)
     # Bank's directional view on 1-3 cross-bank themes (replaces prior theme_tags).
     # Each entry: theme + stance (supportive/skeptical/neutral) + conviction + key_argument.

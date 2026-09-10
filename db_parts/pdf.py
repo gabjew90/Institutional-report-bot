@@ -1118,6 +1118,56 @@ def run_retention_purge(
     return results
 
 
+def conference_sessions_for_date(date_iso: str, *, days_back: int = 7) -> list[dict]:
+    """Verified conference sessions dated `date_iso` from any analysis
+    stored in the last `days_back` days (latest analysis per PDF),
+    deduplicated on (conference, date, time_local, ticker set). The
+    source file and analysis id ride along for the audit trail.
+    Best-effort, never raises (spec 2026-09-09 §4)."""
+    import json as _json
+    out: list[dict] = []
+    try:
+        rows = _db.get_connection().execute(
+            """SELECT a.id AS analysis_id, a.pdf_file_id, a.analysis_json,
+                      f.file_name
+               FROM pdf_analyses a
+               LEFT JOIN pdf_files f ON f.id = a.pdf_file_id
+               WHERE a.id IN (SELECT MAX(id) FROM pdf_analyses GROUP BY pdf_file_id)
+                 AND a.created_at >= datetime('now', ?)
+                 AND a.analysis_json LIKE '%conference_sessions%'""",
+            (f"-{int(days_back)} days",)).fetchall()
+    except Exception as e:
+        log.warning(f"conference_sessions_for_date query failed: {e}")
+        return out
+    seen: set[tuple] = set()
+    for r in rows:
+        try:
+            a = _json.loads(r["analysis_json"] or "{}")
+        except Exception:
+            continue
+        for s in a.get("conference_sessions") or []:
+            if not isinstance(s, dict) or s.get("date_iso") != date_iso:
+                continue
+            tickers = tuple(sorted(str(t).upper() for t in (s.get("tickers") or []) if t))
+            key = (str(s.get("conference") or "").strip().lower(), date_iso,
+                   str(s.get("time_local") or "").strip(), tickers)
+            if not tickers or key in seen:
+                continue
+            seen.add(key)
+            out.append({
+                "conference": s.get("conference") or "",
+                "date_iso": date_iso,
+                "time_local": s.get("time_local") or "",
+                "tz": s.get("tz") or "",
+                "tickers": list(tickers),
+                "anchor": s.get("anchor") or "",
+                "analysis_id": r["analysis_id"],
+                "pdf_file_id": r["pdf_file_id"],
+                "file_name": r["file_name"] or "",
+            })
+    return out
+
+
 def recently_covered_tickers(days: int = 7) -> set[str]:
     """Tickers a bank wrote EARNINGS content about in the last `days`
     (owner call 2026-09-02, for the calendar's bold rows): the latest

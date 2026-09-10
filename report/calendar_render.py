@@ -118,6 +118,25 @@ def _truncate(d, text, font, max_w):
     return text + "…"
 
 
+def _wrap(d, text, font, max_w) -> list[str]:
+    """Word-wrap to max_w. The two-column events layout wraps rather
+    than truncates (owner call 2026-09-09): a column half the sheet wide
+    cut 'Prelim Benchmark Payrolls Revision' in 2026-08 and that is why
+    econ went single-column; wrapping makes the second column
+    affordable again."""
+    words, lines, cur = (text or "").split(), [], ""
+    for w in words:
+        t = (cur + " " + w).strip()
+        if d.textlength(t, font=font) <= max_w or not cur:
+            cur = t
+        else:
+            lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    return lines or [""]
+
+
 def _et_abbrev(date_str: str) -> str:
     """EDT or EST for a given ET date. Never a hardcoded guess."""
     try:
@@ -202,8 +221,12 @@ def render_calendar_png(day: CalendarDay) -> bytes:
             y = _econ_block(d, day, f, y, col_w, x_l, x_r)
         return _finish(img, _footer(d, f, y))
 
-    # 5. ECONOMIC
-    if not day.econ_available:
+    # 5. ECONOMIC (+ INDUSTRY EVENTS beside it when the corpus carries a
+    # verified conference schedule for the day, spec 2026-09-09; the
+    # owner picked the two-column layout on 2026-09-09).
+    if getattr(day, "conferences", None):
+        y = _events_block(d, day, f, y, col_w, x_l, x_r)
+    elif not day.econ_available:
         y = _band(d, "Economic", _MARGIN, _W - _MARGIN, y, f)
         d.text((_MARGIN, y), "unavailable tonight", font=f["ev"],
                fill=_dim(TEXT, 0.5))
@@ -327,6 +350,56 @@ def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
         )
         cy += 38 * _S
     return cy + 34 * _S
+
+
+def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
+    """Economic in the LEFT column, Industry Events in the RIGHT, sharing
+    the earnings columns' geometry so everything lines up down the
+    sheet. Each conference is ONE entry in the same shape as an econ
+    row: ET start time in the gutter, the conference name beside it,
+    and the admitted names hanging under the name in the symbol font,
+    market-cap order (owner calls 2026-09-09 and 2026-09-10). Names
+    wrap; nothing truncates."""
+    tz = _et_abbrev(day.date_iso)
+    t_w = 144 * _S                      # room for '13:01 EDT' plus a gap
+    name_w = col_w - t_w - 6 * _S
+
+    # ---- left: economic
+    cy = _band(d, "Economic", x_l, x_l + col_w, y, f)
+    if not day.econ_available:
+        d.text((x_l, cy), "unavailable tonight", font=f["ev"], fill=_dim(TEXT, 0.5))
+        cy += 40 * _S
+    elif not day.econ:
+        d.text((x_l, cy), "no notable US releases", font=f["ev"], fill=_dim(TEXT, 0.5))
+        cy += 40 * _S
+    for r in day.econ:
+        d.text((x_l, cy), f"{r.time_et} {tz}", font=f["time"], fill=TEXT)
+        imp = getattr(r, "important", False)
+        font = f["evb"] if imp else f["ev"]
+        fill = TEXT if imp else _dim(TEXT, 0.80)
+        for line in _wrap(d, r.event, font, name_w):
+            d.text((x_l + t_w, cy + 1 * _S), line, font=font, fill=fill)
+            cy += 30 * _S
+        cy += 8 * _S
+    left_bottom = cy
+
+    # ---- right: industry events
+    cy = _band(d, "Industry Events", x_r, x_r + col_w, y, f)
+    x_txt = x_r + t_w
+    for c in day.conferences:
+        if c.time_et:
+            d.text((x_r, cy), f"{c.time_et} {tz}", font=f["time"], fill=TEXT)
+        name_font = f["evb"] if getattr(c, "important", False) else f["ev"]
+        for line in _wrap(d, c.conference, name_font, name_w):
+            d.text((x_txt, cy + 1 * _S), line, font=name_font, fill=TEXT)
+            cy += 30 * _S
+        cy += 4 * _S
+        for line in _wrap(d, "  ".join(c.tickers), f["sym"], name_w):
+            d.text((x_txt, cy), line, font=f["sym"], fill=TEXT)
+            cy += 32 * _S
+        cy += 12 * _S
+    right_bottom = cy
+    return max(left_bottom, right_bottom) + 26 * _S
 
 
 def _footer(d, f, content_bottom: int) -> int:

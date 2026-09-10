@@ -1443,6 +1443,7 @@ from db_parts.chat import (  # noqa: E402,F401
 )
 from db_parts.pdf import (  # noqa: E402,F401
     recently_covered_tickers,
+    conference_sessions_for_date,
     _index_analysis_entities,
     _today_utc_range,
     clear_pending_queue,

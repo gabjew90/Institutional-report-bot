@@ -176,6 +176,16 @@ Analyze the report thoroughly and return a JSON object with exactly these fields
       "anchor": "VERBATIM quote from THIS report containing the figure — copied character-for-character from the document text, 6-25 words, enough that a reader could ctrl-F it. NEVER paraphrase, never reformat the number, never stitch fragments from two sentences. If the figure appears only in a table with no prose sentence, quote the table fragment exactly as it reads. This field is machine-verified against the source text after extraction; a paraphrased anchor fails verification and discredits the figure it carries."
     }
   ],
+  "conference_sessions": [
+    {
+      "conference": "The conference as THIS document names it, e.g. 'GS Communacopia + Technology Conference'.",
+      "date_iso": "YYYY-MM-DD from a date PRINTED in the document ('Wednesday, September 9th'). NEVER infer one from 'Day 1', 'today' or 'next week'.",
+      "time_local": "The slot time exactly as printed ('12:30 PM'); empty string when the document gives none.",
+      "tz": "The timezone exactly as the document states it ('PT', 'ET'); empty string when it states none.",
+      "tickers": ["US-listed symbols presenting in THIS slot, uppercase, no $. Same US-listed-only rule as entities_mentioned: a foreign listing or a private company contributes nothing."],
+      "anchor": "The schedule line itself, copied character-for-character ('12:30 PM: MSFT' or '1:10 PM: XYZ, BKNG, NET, COIN, LYV, 100.HK, FFIV'), 6-25 words. Machine-verified; a paraphrase drops the slot."
+    }
+  ],
   "tension_points": [
     {
       "theme": "Short label for the underlying subject this tension applies to — same shape as theme_stances theme labels: 2-5 words naming what THIS report specifically argues about. Form from the report's own framing, not a memorized list. If both sides of the tension agree on the SUBJECT but disagree on the call, use the subject phrase; if they're arguing about different framings of related dynamics, name the framing both bull and bear engage with.",
@@ -225,6 +235,8 @@ Rules:
 - Crypto: BTC, ETH, SOL, etc. No $ prefix in the `ticker` field — just the symbol.
 - Indices: use standard root (S&P 500 → SPX, Nasdaq 100 → NDX, VIX → VIX).
 - Do NOT list commodities by spot name (Brent, Gold, Oil) in entities_mentioned. For the entity row, use asset_class=commodity and the US-listed ETF proxy in the `ticker` field if one exists in the report's framing (USO for crude, GLD for gold, SLV for silver, UNG for nat gas, CPER for copper). Bare futures tickers (CL=F, GC=F) are NOT US-listed and don't pass the Robinhood test — leave ticker empty rather than emit them. This rule matches the triage Robinhood-test and the `primary_instruments` rule in theme_stances; the three are aligned.
+
+**For conference_sessions** — ONLY when the document contains a dated schedule of conference sessions (an agenda, a "Day N schedule", a line-up with times). One entry per time slot. A document with no such schedule returns `[]`; most documents return `[]`. A list of companies "attending" with no date or slot is not a schedule.
 
 **For key_data_points** — extract every specific numeric figure that downstream synthesis would want to cite:
 - Capex levels and revisions (e.g., "$751B 2026 hyperscaler capex" — figure_status=forecast); macro prints with vs-estimate context (e.g., "ISM Services 53.6 vs est 53.7" — figure_status=released, the 53.7 estimate goes in context); positioning percentiles (e.g., "L/S net leverage at 5-year low" — figure_status=level); yield levels (e.g., "10Y broke 4.4%" — figure_status=level); dissent counts (e.g., "8-4 FOMC vote" — figure_status=released); flow data (e.g., "$1.8B BTC ETF inflows in April" — figure_status=released); price targets (figure_status=target), ratings, and conviction figures.

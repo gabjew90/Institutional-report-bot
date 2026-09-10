@@ -1,7 +1,19 @@
 # Conference sessions from the corpus — spec
 
 **Date:** 2026-09-09
-**Status:** proposed; awaiting owner approval. Nothing here is built.
+**Status:** approved and built 2026-09-10. Owner calls taken that day,
+overriding the §10 defaults where they differ: NASDAQ-100 admission
+(default); one entry per conference per day showing the ET **start**
+time only, the conference name, and the admitted companies **in
+market-cap order** (no time range, no per-slot list, no agenda line);
+rendered in a two-column events section, Economic left and Industry
+Events right, names wrapping rather than truncating; rendering shipped
+directly with no shadow period, the anchor and printed-date rules
+being the safety. Code: `ai_analysis/conference_sessions.py`,
+`db.conference_sessions_for_date`, `report/calendar_data.ConfRow` /
+`build_conference_rows` / `NDX_TICKERS`, `calendar_render._events_block`;
+tests in `tests/test_conference_sessions.py` with the 15746 and 15752
+texts as fixtures.
 **Origin:** a source investigation the owner asked for (EDGAR 8-K
 submissions and newswire RSS as conference feeds), which measured both
 against the live corpus and found the answer already inside it. Every

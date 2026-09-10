@@ -523,6 +523,21 @@ async def analyze_pdf_deep(
     except Exception as e:
         log.warning(f"Anchor check skipped for {file_name}: {e}")
 
+    # Conference sessions (spec 2026-09-09): ENFORCING, unlike the
+    # warn-only check above. A slot whose schedule line is not in the
+    # text, or whose date is not printed in the text, is dropped here,
+    # while the source is still in memory. Stored as plain dicts so the
+    # JSON round-trip and the DB helper read one shape.
+    try:
+        from dataclasses import asdict as _asdict
+        from ai_analysis.conference_sessions import resolve_sessions
+        _sessions, _cs_stats = resolve_sessions(
+            data.get("conference_sessions") or [], text_content,
+            file_name=file_name)
+        analysis.conference_sessions = [_asdict(s) for s in _sessions]
+    except Exception as e:
+        log.warning(f"conference sessions skipped for {file_name}: {e}")
+
     log.info(
         f"Analyzed {file_name}: priority={priority}, "
         f"{'multimodal' if pages_analyzed_count else 'text-only'}"
