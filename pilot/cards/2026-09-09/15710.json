@@ -1,0 +1,543 @@
+{
+ "brief": "Pasquariello, Goldman's head of hedge fund coverage, says the primary bull trend is intact after a summer that ran cap-weighted S&P +4% and equal-weighted +7% from Memorial Day to Labor Day, while index returns hid a momentum unwind: Goldman's TMT momentum pair printed its worst two months on record and has halved since the June highs. Because the coming stretch is catalyst rich (a possible BOJ 50bp hike, a data-dependent Fed whose decision this week's PPI and pivotal CPI will seal, midterms that typically firm volatility, constrained warfare in the Strait of Hormuz pushing European gas higher) and because implied volatility sits just above YTD lows, his repeated advice is to collect cheap convexity. On direction he expects a choppy near-term path and risk/reward neutral at best given seasonals and supply/demand technicals, then a rally through year-end once midterms pass. House view keeps the Fed on hold. Deficit math has deteriorated without any marked rise in rate volatility. Hedge funds, up 14% fundamental and 17% systematic YTD, offered ballast as bonds lost insurance value. The closing chart: forward P/E over forward margins approaching post-tech-bubble lows, territory last seen in the US and European financial crises.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "US equities rose over the summer, with the cap-weighted S&P 500 up 4% and the equal-weighted S&P 500 up 7% from Memorial Day through Labor Day.",
+   "anchor": "US equities performed fine: cap-weighted S&P +4%, equal-weighted S&P +7%.",
+   "topic": "US equity summer returns",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Memorial Day through Labor Day"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello calls the summer decent point-to-point and says the primary bull trend in US equities remains intact.",
+   "anchor": "point-to-point, it was a decent summer, and the primary bull trend remains intact",
+   "topic": "US equity summer returns",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Index-level returns obscured a market where the momentum factor was upended beneath the surface.",
+   "anchor": "a snapshot of index-level returns totally obscures some tumult beneath the surface of the market, as the momentum factor was properly upended",
+   "topic": "TMT momentum unwind",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Goldman's TMT momentum pair printed its worst two-month stretch on record.",
+   "anchor": "our TMT momentum pair just printed its worst two months on record",
+   "topic": "TMT momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past two months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Goldman's TMT momentum pair has halved since its June highs.",
+   "anchor": "has been halved since the highs of June",
+   "topic": "TMT momentum unwind",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since June"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello says markets are entering a stretch that is very catalyst rich.",
+   "anchor": "looking ahead, we're entering into a stretch that is very catalyst rich",
+   "topic": "US equity near-term path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "A midterm election cycle typically brings a firming of volatility over the next two months.",
+   "anchor": "a midterm election cycle (which typically brings a firming of volatility over the next two months)",
+   "topic": "US equity near-term path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next two months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "September tends to be the single worst month of the year for US equities, and midterm election years are particularly weak.",
+   "anchor": "September tends to be the single worst month of the year for US equities (and midterm election years are particularly iffy)",
+   "topic": "US equity near-term path",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello expects the near-term market path to be choppy with risk/reward neutral at best, given tricky seasonals and a shift in supply/demand technicals.",
+   "anchor": "I expect the near-term path will be choppy and risk/reward is neutral at best",
+   "topic": "US equity near-term path",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Once the midterms are past, Pasquariello expects the path of least resistance to favor a rally through year-end.",
+   "anchor": "once we move past the midterms, however, the path of least resistance favors a rally through year-end",
+   "topic": "US equity near-term path",
+   "status": "forecast",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "The US Treasury will announce buyback sizes on Wednesday.",
+   "anchor": "the UST will announce buyback sizes on Wednesday",
+   "topic": "week ahead catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "PPI is released on Thursday.",
+   "anchor": "then we get PPI on Thursday",
+   "topic": "week ahead catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello calls Friday's CPI print pivotal.",
+   "anchor": "followed by a pivotal CPI on Friday",
+   "topic": "week ahead catalysts",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello will be watching Oracle earnings on Thursday alongside Goldman's TMT conference.",
+   "anchor": "I'll be watching ORCL earnings on Thursday and our landmark TMT conference",
+   "topic": "week ahead catalysts",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Implied volatility is low, with the VIX sitting just above year-to-date lows as of Friday's close.",
+   "anchor": "we walked out of the office on Friday with the VIX sitting just above YTD lows",
+   "topic": "cheap equity volatility",
+   "status": "level",
+   "instruments": [
+    "VIX"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello says the cost of owning options is not prohibitive right now, whether the risk is micro or macro and whether an investor wants to add or reduce exposure.",
+   "anchor": "the cost of owning options is certainly NOT prohibitive right now",
+   "topic": "cheap equity volatility",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello recommends collecting cheap convexity when the market offers it.",
+   "anchor": "collect some cheap convexity when the market offers it to you",
+   "topic": "cheap equity volatility",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello says the underlying math on US debt and deficits has only deteriorated, though there are opposing arguments worth considering.",
+   "anchor": "the fact is the underlying math has only deteriorated",
+   "topic": "US debt and deficits",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Unlike past episodes of deficit concern, notably late 2023, the current episode has not seen a marked increase in interest rate volatility.",
+   "anchor": "the current episode has NOT seen a marked increase in interest rate volatility",
+   "topic": "US debt and deficits",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "The core of the FOMC appears highly data dependent, which means this week's data will seal the decision for next week's meeting.",
+   "anchor": "the core of the committee appears to be highly data dependent, which suggests this week's news will seal the decision for next week",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello says the bigger question for equity investors is whether a sustained hiking campaign unfolds, rather than the September FOMC outcome.",
+   "anchor": "the bigger question for stock operators to confront is whether a sustained hiking campaign is set to unfold or not",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Goldman's house view is that the Fed will sit on its hands for a while longer.",
+   "anchor": "the house view is the Fed will be sitting on their hands for a while longer",
+   "topic": "Fed policy path",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "a while longer"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Recent weeks have seen elements of escalation around Iran, but the boundaries of the conflict seem fairly well defined.",
+   "anchor": "recent weeks have seen elements of escalation, yet the boundaries seem fairly well defined",
+   "topic": "Iran conflict and oil flows",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Kinetic warfare in the Strait of Hormuz is ongoing but constrained, with European gas and refined products still pushing higher.",
+   "anchor": "ongoing, if constrained, kinetic warfare in the SoH (as European gas and refined products keep pushing higher)",
+   "topic": "Iran conflict and oil flows",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "TTF European gas is up 150% year to date, which Pasquariello reads as time still working against the situation.",
+   "anchor": "observe the price of TTF (+150% YTD), time is still very much the enemy",
+   "topic": "Iran conflict and oil flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Total oil exports through the Persian Gulf, accounting for dark crossings, are running at 15-16mm bpd, about two thirds of the pre-war level.",
+   "anchor": "total oil exports through the Persian Gulf are running at 15-16mm bpd, which is about 2/3 of where things stood before the war",
+   "topic": "Iran conflict and oil flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Equities stopped treating Iran as a primary market variable at the end of March.",
+   "anchor": "stocks more or less moved on from Iran as a primary variable at the end of March",
+   "topic": "Iran conflict and oil flows",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Private credit strategies raised $99bn in Q2, a record high.",
+   "anchor": "Q2 saw $99bn of fundraising for private credit strategies, which is a record high",
+   "topic": "private credit fundraising",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Q2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Heading into last week the software sector had outperformed the NDX for five straight weeks, the best such streak of the COVID and post-COVID era.",
+   "anchor": "the software sector had outperformed NDX for five straight weeks, which was the best streak in the COVID / post-COVID era",
+   "topic": "software versus AI disruption",
+   "status": "released",
+   "instruments": [
+    "NDX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "The software sector sits only 12% below its highs.",
+   "anchor": "today sits only 12% from the highs",
+   "topic": "software versus AI disruption",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "There is now an argument that certain software companies, notably in security, will be selective structural AI winners rather than guaranteed AI losers.",
+   "anchor": "there's now an argument that certain companies will be selective, structural AI winners (notably in the security space)",
+   "topic": "software versus AI disruption",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Fundamental long/short hedge funds are up 14% year to date.",
+   "anchor": "fundamental long/short hedge funds are up 14% YTD",
+   "topic": "hedge fund performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Systematic long/short funds are up 17% year to date and just recorded their best month of the year.",
+   "anchor": "systematic long/short funds are up 17% YTD, and just recorded their best month of the year",
+   "topic": "hedge fund performance",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello argues hedge funds offer critical ballast to a portfolio of risky assets because the bond market has continued to lose insurance value.",
+   "anchor": "given the continued loss of insurance value from the bond market, I'd argue that hedge funds offer critical ballast",
+   "topic": "hedge fund performance",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "A 50 bps BOJ hike is under contemplation, a clip size that has been unthinkable in the past 45 years.",
+   "anchor": "contemplation of a 50 bps hike, a clip size that's been unthinkable in the past 45 years",
+   "topic": "Japan equities and BOJ",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "TOPIX has risen in 12 of the past 13 sessions.",
+   "anchor": "TPX is up 12 of the past 13 sessions",
+   "topic": "Japan equities and BOJ",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past 13 sessions"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Japanese bank shares have broken out to levels not seen since 1996.",
+   "anchor": "witness the recent breakout to levels not seen since 1996",
+   "topic": "Japan equities and BOJ",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello says GPT-6 Astra both strengthens and simultaneously endangers the short-term bull case.",
+   "anchor": "GPT-6 Astra: it both strengthens AND simultaneously endangers the short-term bull case",
+   "topic": "AI narrative",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "short-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Nothing Pasquariello read last week undercut the underlying AI demand story, with both capability and spend accelerating.",
+   "anchor": "I didn't read anything last week that undercuts the underlying AI demand story",
+   "topic": "AI narrative",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "The drumbeat of concern around AI governance, politics and power provision is growing louder.",
+   "anchor": "the drumbeat of concern around governance, politics and power provision is only growing louder",
+   "topic": "AI narrative",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Forward P/E over forward profit margins for the S&P is approaching the lows of the post-tech-bubble era, territory previously reserved for the depths of the US and European financial crises.",
+   "anchor": "Forward P/E over forward profit margins is approaching the lows of the post-tech-bubble era",
+   "topic": "S&P valuation versus margins",
+   "status": "level",
+   "instruments": [
+    "SPX"
+   ],
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "This Hasn't Happened Since The Depths Of The Last Crises; Goldman's Hedge Fund Honcho Spots Something",
+   "claim": "Pasquariello calls the forward P/E and forward profit margin charts the single most interesting chart sequence he saw in recent weeks.",
+   "anchor": "This was the single most interesting chart sequence that I saw in recent weeks",
+   "topic": "S&P valuation versus margins",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15710__this-hasn-t-happened-since-the-depths-of-the-last-crises-gol.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 42,
+  "matched": 42,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
