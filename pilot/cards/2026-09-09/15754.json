@@ -1,0 +1,375 @@
+{
+ "brief": "Goldman Sachs's derivatives desk argues that summer is over, positioning is neutral, the near-term catalyst path is rich and volatility is extremely cheap, so conditions favor adding convexity across both micro and macro. It prefers owning right-tail expressions through options, with AI back in focus, while still seeing merit in tactical protection against near-term macro risk. Implied move through the end of the week is 0.91%, with CPI on Friday and ORCL and ADBE reporting. In micro, 1-month at-the-money implied vol for the NDX average stock fell from about 57v to about 40v and put call skew sits near its flattest in 20 years, so the desk buys GSCBTC10 upside into the week after Communacopia, when the most in-demand tech has historically outperformed, and HOOD Nov 145/180 call spreads at $4.50 on Rothera's scaling. Demand for memory convexity has returned. In macro, the lowest S&P 6-month realized correlation ever is judged unsustainable and has historically preceded index vol convexity, so the desk buys IWM 286 puts against an above-consensus CPI forecast and VIX 20/30 call spreads. Light Exo offers a Feb'27 25% strike software dispersion palladium at 6.81%.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs's derivatives desk says summer is over, positioning is neutral, the near-term catalyst path is rich and volatility remains extremely cheap, which it calls ideal conditions for adding convexity across micro and macro.",
+   "anchor": "Summer is over, positioning is neutral, the near-term catalyst path is rich and vol remains",
+   "topic": "cheap index vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "The Goldman Sachs desk views owning right-tail expressions through options as making sense given current dynamics, especially with AI back in focus.",
+   "anchor": "owning right-tail expressions through options makes a lot of sense here given current",
+   "topic": "cheap index vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "With volatility at current levels, the Goldman Sachs desk still sees merit in tactical protection against near-term macro risks.",
+   "anchor": "we also still see merit in tactical protection against near-term macro risks.",
+   "topic": "cheap index vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs puts the implied move through the end of the week at 0.91%, with CPI data due Friday and ORCL and ADBE reporting during the GS Communacopia and Technology conference.",
+   "anchor": "key earnings from ORCL and ADBE. Implied move through the end of the",
+   "topic": "cheap index vol",
+   "status": "forecast",
+   "instruments": [
+    "ORCL",
+    "ADBE"
+   ],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through the end of the week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "1-month at-the-money implied volatility for the NDX average stock has dropped from about 57v to about 40v, a sharp compression concentrated in TMT stocks.",
+   "anchor": "implied vol for the NDX \"avg stock\" has dropped from ~57v to ~40v",
+   "topic": "TMT implied vol compression",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs says option positioning in the NDX average stock remains constructive, with normalized put call skew near the flattest levels of the last 20 years.",
+   "anchor": "option positioning remains constructive with NDX \"avg stock\" normalized put call skew near the flattest levels seen in the last 20 years",
+   "topic": "TMT implied vol compression",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Historically the most in-demand tech stocks have outperformed both broad market indices and broader tech in the week following the annual GS Communacopia and Technology conference.",
+   "anchor": "the most in-demand Tech stocks have outperformed both broad-based market indices (SPXXAI) and broader tech stocks (GSXUTECH) in the week following",
+   "topic": "Communacopia tech upside",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "the week following the conference"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs recommends buying GSCBTC10 upside in swap or option format for targeted exposure to the ten most requested companies at this year's Communacopia conference.",
+   "anchor": "Trade Idea -- Buy GSCBTC10 Upside -- in either swap or option format to get targeted exposure to the",
+   "topic": "Communacopia tech upside",
+   "status": "level",
+   "instruments": [
+    "MSFT",
+    "DDOG",
+    "CRWV",
+    "SHOP",
+    "AVGO",
+    "AMD",
+    "NVDA",
+    "NBIS",
+    "TSM",
+    "NFLX"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Since the Labor Day weekend Goldman Sachs has seen restored confidence in the memory trade and a subsequent demand for convexity.",
+   "anchor": "Post-Labor Day weekend, we have seen restored confidence in the memory trade and a subsequent",
+   "topic": "memory trade convexity",
+   "status": "released",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "A Goldman Sachs customer bought 10,000 DRAM 16 Oct 2026 75 calls outright.",
+   "anchor": "DRAM 16Oct26 75 Calls, gs cust bought 10k outright",
+   "topic": "memory trade convexity",
+   "status": "released",
+   "instruments": [
+    "DRAM"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "expiry 16 Oct 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs recommends buying HOOD call spreads as a non-tech upside opportunity driven by the rapid scaling of its prediction markets joint venture, Rothera.",
+   "anchor": "Trade Idea -- Buy HOOD Call Spreads -- for a non-tech upside opportunity, driven by the rapid scaling of its prediction markets JV, Rothera.",
+   "topic": "Robinhood prediction markets",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "The HOOD November 145 / 180 call spread costs $4.50 with a 118.5 reference, monetizing call skew near roughly 18-month highs.",
+   "anchor": "HOOD Nov 145 / 180 call spread costs $4.50 (32d/12d, ref. 118.5) and monetizes steep call skew",
+   "topic": "Robinhood prediction markets",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs estimates Rothera's scaling toward the 3rd to 5th largest global prediction exchange by volume could unlock up to $19.5 billion in bull-case equity value for HOOD.",
+   "anchor": "could unlock up to $19.5 billion in bull-case equity value",
+   "topic": "Robinhood prediction markets",
+   "status": "target",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Excluding Rothera's base-case value, HOOD's core business trades at an adjusted P/E of about 39.2x against a 22% revenue growth profile, which Goldman Sachs calls attractive.",
+   "anchor": "HOOD's core business trades at an attractive adjusted P/E of ~39.2x relative to its premium 22% revenue growth profile",
+   "topic": "Robinhood prediction markets",
+   "status": "level",
+   "instruments": [
+    "HOOD"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs says the market has just traded through the lowest S&P 6-month realized correlation period ever recorded.",
+   "anchor": "We just traded through the lowest S&P 6m realized correlation period ever",
+   "topic": "cheap index vol",
+   "status": "released",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs says history suggests realized correlation levels this low are not sustainable and have previously resulted in a starburst of index vol convexity.",
+   "anchor": "the history book suggests levels this low are not sustainable and have resulted in a starburst of index vol convexity",
+   "topic": "cheap index vol",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "After Waller's remarks last week, investors turned their focus to upcoming inflation prints as critical inputs for the September FOMC decision.",
+   "anchor": "investors turned their focus to upcoming inflation prints as critical inputs for the September FOMC decision.",
+   "topic": "September CPI hedge",
+   "status": "level",
+   "instruments": [],
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September FOMC"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs recommends buying outright IWM puts, with volatility near 3-year lows, to hedge against a hot CPI print.",
+   "anchor": "Trade Idea -- Buy IWM Puts -- with vol near 3y lows use outright puts to hedge against a hot CPI print",
+   "topic": "September CPI hedge",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs's own CPI forecast is above consensus.",
+   "anchor": "use outright puts to hedge against a hot CPI print (GS above consensus, link)",
+   "topic": "September CPI hedge",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Friday's CPI print"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "IWM 18 Sep 2026 286 puts indicatively cost $1.70 at a 292.30 reference, a 2.74% move to breakeven.",
+   "anchor": "IWM 18Sep26 286 Puts indicatively cost $1.70 (26d, ref. 292.30)... 2.74% move to breakeven",
+   "topic": "September CPI hedge",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "expiry 18 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs recommends buying VIX call spreads as an alternative to fixed strike hedges while the market continues to chop in a tight band.",
+   "anchor": "especially as we continue to chop in a tight band, we like VIX as an alternative to fixed strike hedges",
+   "topic": "cheap index vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "The VIX 21 Oct 2026 20 / 30 call spread indicatively costs $0.91, roughly 11x leverage.",
+   "anchor": "VIX 21Oct26 20 / 30 Call Spread indicatively costs $0.91 (~11x leverage)",
+   "topic": "cheap index vol",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "expiry 21 Oct 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "EWZ call open interest has hit all-time highs as investors secure right-tail positions ahead of upcoming elections.",
+   "anchor": "EWZ call open interest has hit all-time highs as investors secure right tail positions in advance of upcoming elections",
+   "topic": "EWZ election positioning",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "To express continued AI-driven dispersion within software, Goldman Sachs favors a call option on dispersion, which it calls a palladium, across a basket of software stocks.",
+   "anchor": "to express the view of continued AI-driven dispersion within software, we favor a call option on dispersion",
+   "topic": "software AI dispersion",
+   "status": "level",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "Goldman Sachs says the next 6 to 12 months will be pivotal for the software industry as AI leaders and laggards emerge, and that continued dispersion is the safest bet.",
+   "anchor": "The next 6 to 12 months will be pivotal for the software industry as AI leaders / laggards emerge",
+   "topic": "software AI dispersion",
+   "status": "forecast",
+   "instruments": [],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 6 to 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 9 Sep 2026",
+   "claim": "The February 2027 software dispersion palladium with a 25% strike is offered at 6.81%, paying the realized dispersion above the strike at maturity with the premium as maximum loss.",
+   "anchor": "Feb'27 Palladium, 25% Strike, 6.81% Offer",
+   "topic": "software AI dispersion",
+   "status": "level",
+   "instruments": [
+    "ADBE",
+    "AMAT",
+    "AMD",
+    "CRWV",
+    "LRCX",
+    "META",
+    "MU",
+    "NVDA",
+    "ORCL",
+    "SMCI",
+    "SNDK"
+   ],
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "February 2027"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-09/15754__gs-vol-views-9-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "130d66f76034"
+ },
+ "verify": {
+  "total": 26,
+  "matched": 26,
+  "failed": 0,
+  "too_short": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
