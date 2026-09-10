@@ -329,3 +329,86 @@ no findings
   2,561-char JSON response, so I cannot rule out the two claims are
   legitimately sourced in a payload I can't see. See
   `pulse-data/ask-qc/2026-09-08.claude.md` for the full reasoning.
+
+## 2026-09-09
+
+- (open) 1. regex-able (roast question answered as a message-count
+  stat, 23:20:51 and 23:21:33 UTC turns, vincenzo9231, "roast monsoon
+  and don't hold back" / repeated after "dummy, I said roast
+  @Monsoon") — both turns are `short_circuit_message_count` entries (a
+  deterministic code path in `discord_bot/bot.py` that bypasses
+  Gemini, and therefore the whole DRAFT/AUDIT/validator ladder,
+  entirely) and both delivered "BK sent 84/86 messages in
+  #💬-stonks-yapping-💬 in the last 6 hours" — a real, tool-grounded
+  number, completely unrelated to the question asked. Root cause found
+  by reading the code: `_is_message_count_question()`
+  (`discord_bot/bot.py:3009`) only strips a reply-chain prefix
+  matching `"'s message to you]"` or `"'s message]"`
+  (`bot.py:3016-3019`) before scoring the text against
+  `_MSG_COUNT_INTENT_RE`. Both turns instead use the `[VERBATIM RECENT
+  MESSAGES — ... — for accurate quoting ...]` block format (a
+  different feature, for verbatim-quoting a target user), which is
+  never stripped — so the regex scans the whole unstripped blob and
+  trips on a quoted historical line that is itself BK's real question
+  from 22:18:13 ("how many total messages have been sent in this
+  channel"). `_extract_message_count_target()` then matches `@BK
+  (bankerkyle)` a few lines above that quoted line, and the
+  short-circuit answers a question nobody asked. `scripts/validate_answer.py`
+  returns `{"violations": []}` against the delivered text — expected,
+  since the text is internally coherent and its number is genuinely
+  grounded; the defect is entirely in which question got answered, not
+  in the answer's own claims. This checkout has a single commit (`git
+  log --oneline` → 1 line), so a deploy-timestamp check isn't possible
+  here; the buggy function is live in the current deployed code and
+  reproduces the failure exactly, so this reads as a current gap, not
+  something already fixed after these turns.
+  Candidate fixture (for a harness exercising
+  `_is_message_count_question` directly — `scripts/ask_fixture_run.py`'s
+  `tool_stubs` approach targets the Gemini path, not this short-circuit):
+    question: "[VERBATIM RECENT MESSAGES — Monsoon (reportufirst) — for accurate\n"
+      "quoting when the question references them; quote LINE FOR LINE]\n"
+      "  2026-09-09T22:18 #x — @omniwiz how many total messages have been sent in this channel\n"
+      "  2026-09-09T21:53 #x — @BK (bankerkyle) you got a new disciple\n\n"
+      "roast monsoon and don't hold back"
+    assertion: `_is_message_count_question(question) is False`
+    fix direction: strip the `[VERBATIM RECENT MESSAGES` ... `]` block
+    the same way the two existing reply-chain markers are stripped —
+    or, more robustly, only score the text after the last bracketed
+    context block, never the whole payload.
+  Related, same root shape, not a separate finding: interaction #39
+  same day (23:35:02, Monsoon, "roast me," also carrying a `[VERBATIM
+  RECENT MESSAGES]` block) fired `lookup_market_price` with
+  `symbols=['LINE', 'FOR', 'AAPL', 'IMAGE', 'TEXT', 'QQQ']` — the
+  ticker extractor pulling structural words out of the same kind of
+  unstripped block. Result came back `prefetch:None` and went unused,
+  so no user-facing harm that time, but it's the same extractor-scans-
+  the-whole-payload gap surfacing in a second place. Graded CLEAN,
+  noted here for whoever picks up the fix.
+- (open) 2. judgment (prose-only FACT answer, 12:20:38 UTC turn,
+  2Pale, "has abe won a goog trade ever") — `LOCAL/FACT` turn,
+  `lookup_trade_log caller=abe kind=all` status `ok`, answered as pure
+  prose enumerating four distinct facts (an open position + three
+  closed wins with percentages) with zero arrow bullets — matches the
+  rubric's format_adherence FAIL example verbatim, and the same shape
+  as the 2026-09-03 queue's finding 4. `scripts/validate_answer.py`
+  returns clean; none of the twelve checks in
+  `scripts/ask_response_validate.py` inspect arrow-bullet vs. prose
+  shape at all. Queued as prompt-session material, not a fixture:
+  several CLEAN banter (Type 2/3) answers in the same day's log are
+  also single-sentence prose with zero arrows, correctly so, so a
+  naive "FACT answers must contain →" regex would need to also key off
+  route/type to avoid false-positiving on those.
+
+  Side note, not a per-turn finding: a scope-drift CONCERN (not a
+  FAIL, not queued as an open item) at 23:09:29 UTC — BK asked "based
+  on the ~47,000 or so messages you said I've sent **in here**, how
+  many messages do I average per day," referencing the bot's own
+  47,058 **channel-scoped** answer from 64 minutes earlier (22:05:53).
+  The new answer delivered 48,705 as "total" without flagging that it
+  had switched scope to all-channels (or that it differs from the
+  referenced figure at all). Not clearly wrong — BK plausibly posts in
+  a few other channels too, closing a ~3.5% gap — but delivering an
+  unflagged scope change on top of a user-referenced prior number is a
+  CONCERN, not a clean PASS. Worth a second day's data point before
+  queuing as a pattern; full reasoning in
+  `pulse-data/ask-qc/2026-09-09.claude.md`.

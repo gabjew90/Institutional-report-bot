@@ -480,3 +480,77 @@ example of it nearly producing a wrong QC conclusion.
   is past "worth tracking" — either stop overwriting `latest.json`
   intraday, or write a run-scoped copy at commit time (repeating the
   standing ask from every prior occurrence of this item).
+
+## 2026-09-10 — headless QC on 2026-09-10T14-06-50Z
+
+Full report: `pulse-output/qc-headless/2026-09-10T14-06-50Z.md`.
+`latest.json` staleness recurred (7th occurrence, dumped 3+ hours
+after commit, 120 vs 107 PDFs) and produced two false-positive draft
+findings before I switched to the run-scoped `agent-io/` files —
+logging the correct-tool lesson here rather than as a queue item
+since it's the same standing ask as every prior occurrence.
+
+- **deterministic-fixable** — the theme-coverage builder does not
+  canonicalize bank names before computing distinct-bank counts per
+  theme. Today's `gold market drivers` theme lists its "2 banks" as
+  `(Societe Generale, Société Générale)` — one bank, two spellings,
+  double-counted. Same pattern present on `ai infrastructure and
+  demand` (both spellings listed among its named banks). Didn't flip
+  any promotion decision today (both themes clear/miss the bar either
+  way), but this is the mechanism the "highest-count themes MUST
+  appear" rule and the SOURCE-CONCENTRATED percentage both key off,
+  so a future borderline theme could promote or get flagged
+  incorrectly on a miscounted bank total. Fix: normalize/strip
+  diacritics (or map through a bank-alias table) before building the
+  distinct-bank set in whatever assembles the THEME COVERAGE block.
+  Scope: likely a handful of lines wherever that set is built.
+- **deterministic-fixable** — `pulse-output/agent-io/<ts>/
+  adversarial-prompt.txt` and `adversarial-prompt-2.txt` are capped
+  at ~200,000 characters and truncate mid-line on higher-volume days
+  (confirmed today, plus 09-02 and 09-04 and 09-09; 09-08's files are
+  naturally short, presumably a lower-PDF day). Today's truncation
+  cuts off before any Société Générale PDF section is reached, so the
+  adversarial fact-checking gate had zero raw-text grounding for a
+  bank cited in the MAIN EVENT's own scenario tree and in the
+  `overstated-attribution` finding the checker itself raised (that
+  verdict had to be built from theme-coverage metadata earlier in the
+  same file, not from SocGen's actual report text, because the report
+  text is never in the window). Not previously in this queue. Fix:
+  raise the cap, or replace positional truncation with a
+  theme-relevance-ordered selection so the banks actually cited in
+  DRAFT are guaranteed to be in the checker's window.
+- **observation** — STEP 7's self-review overstated risk in three
+  places, all corrected in the full report with primary-source
+  citations from the run-scoped `agent-io/` files (not `latest.json`):
+  the three "attribution reassignment" findings it called
+  unauditable are in fact verifiably correct repairs (Goldman's own
+  "Demography, Debt & Defense" note is the real source of the
+  hyperscaler-FCF claim; The Market Ear's per-PDF `data_points`
+  explicitly names "Ramp" as the source for the 9.7% figure; Goldman's
+  Pasquariello note explicitly gives Iranian exports at "2/3 of
+  pre-war levels"); the "$SPY −0.70% / $QQQ −1.15%" RECAP figures it
+  called unverified are verbatim in the run's own market-snapshot
+  block; and the "PPI reading covers July" line is faithful to this
+  run's calendar data (`ACTUAL=-0.03% (for 2026-07)`) rather than an
+  EDIT-stage miss — the real (smaller) issue is that yesterday's
+  calendar snapshot called the same event "August producer prices,"
+  a day-over-day reference-month drift in the data layer, not
+  something DRAFT/EDIT got wrong today. No fix filed under this entry;
+  the PPI reference-month drift should be tracked against
+  `report/news_data.py` if it recurs.
+- **prompt-session** — two of today's three adversarial soft findings
+  are confirmed real and shipped to the published pulse unfixed:
+  "Goldman sits above consensus at +0.39% headline and +0.23% core"
+  overstates Goldman's headline CPI forecast (corpus: 0.39% "vs 0.4%
+  consensus," i.e. a touch below, only core is above consensus), and
+  "US stocks opened lower for a third straight session" undercounts
+  by one day against Deutsche Bank's own Sept 9 note ("a third
+  consecutive day" through Wednesday's close, making today's
+  continuation the fourth). Both were on record in
+  `pulse-output/adversarial/2026-09-10T14-06-50Z.json` before commit
+  and never got fixed. Bucketed as prompt-session rather than
+  deterministic-fixable because the actual gap is that SCRUB is
+  dispatched on soft findings with no requirement to act on them —
+  same root cause as STEP 7's own "SCRUB dispatch gate" suggestion in
+  today's self-review; these two lines are concrete evidence for it
+  rather than a new ask.
