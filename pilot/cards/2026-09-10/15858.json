@@ -1,0 +1,185 @@
+{
+ "brief": "Gasoline futures are up about 30% since early August, retail diesel is nearing $6/gallon, and one-year inflation swaps are back near their highest level since mid-June. BTIG's Jonathan Krinsky argues these elevated consumer prices are catching up to the discretionary sector, which shows a negative year-over-year return despite the S&P 500 up about 18% year-over-year, with apparel, leisure/travel, and homebuilders all showing vulnerabilities. He extends the caution to other pockets: private equity and credit managers, which rallied from early July, have stalled and are rolling over again, and the equal-weight S&P 500 ex-AI just posted its worst day in two months and its worst drawdown since May. Even the semiconductor index's recent ~9% rally hasn't reclaimed its 50-day moving average, which Krinsky likens to the SOX's six-month topping process in 2000 before its September breakdown. His conclusion: a correlation-one downside event is brewing.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "Gasoline futures (RBOB) are up approximately 30% since early August.",
+   "anchor": "Gasoline futures (RBOB) are up ~30% since early August",
+   "topic": "Inflation energy price pressure",
+   "status": "level",
+   "instruments": [
+    "UGA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "National retail diesel prices are nearing $6 per gallon.",
+   "anchor": "national retail diesel prices are nearing $6/gallon",
+   "topic": "Inflation energy price pressure",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "One-year inflation swaps have returned to their highest level since mid-June.",
+   "anchor": "one-year inflation swaps are back to their highest level since mid-June",
+   "topic": "Inflation energy price pressure",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "Consumer prices in absolute terms remain broadly elevated relative to the last few years.",
+   "anchor": "consumer prices in absolute terms remain broadly elevated relative to the last few years",
+   "topic": "Inflation energy price pressure",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "The consumer discretionary sector shows a negative year-over-year return even as the S&P 500 is up approximately 18% year-over-year.",
+   "anchor": "The sector is flashing an ominous signal with a negative y/y return despite SPX up ~18% y/y",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [
+    "XLY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "Apparel, leisure and travel, and homebuilders within the discretionary sector continue to show more vulnerabilities.",
+   "anchor": "Whether it's apparel, leisure and travel, or homebuilders, the sector continues to show more vulnerabilities",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "Private equity and credit managers rallied from early July but have now stalled and are rolling over again.",
+   "anchor": "After a nice rally from early July, the private equity and credit managers stalled out, and are now rolling over again",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "The equal-weight S&P 500 ex-AI suffered its worst day in two months and is in its worst drawdown since May.",
+   "anchor": "the equal-weight SPX ex-AI suffered its worst day in two months, and is in its worst drawdown since May",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "The semiconductor index (SOX) has not reclaimed its 50-day moving average despite a roughly 9% rally over the last three days.",
+   "anchor": "it still hasn't reclaimed its 50 DMA despite a ~9% rally over the last three days",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "In 2000, after initially breaking below its 50-day moving average in early April, the SOX crossed back and forth above the average ten more times before breaking down in September 2000.",
+   "anchor": "the SOX crossed back and forth above its 50 DMA ten more times before ultimately breaking down in September '00",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "The 2000 SOX topping process lasted about six months, with the index getting back within 6% of its all-time high twice, in June and July of that year.",
+   "anchor": "it essentially had a six-month topping process, getting back within 6% of an all-time high twice in June and July '00",
+   "topic": "SPX realized correlation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "BTIG Warns \"A Correlation-One Downside-Event Is Brewing\"",
+   "claim": "BTIG believes a correlation-one downside event in equities is brewing.",
+   "anchor": "We continue to think a correlation one downside event is brewing",
+   "topic": "SPX realized correlation",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-10/15858__btig-warns-a-correlation-one-downside-event-is-brewing-pdf.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 12,
+  "matched": 12,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
