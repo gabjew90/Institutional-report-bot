@@ -1,0 +1,678 @@
+{
+ "brief": "Goldman's 10 September morning digest reports Asian equities mostly lower, with only Japan and India up, and European equities edging lower ahead of the ECB statement, a tape it attributes to higher rates and energy prices against geopolitical uncertainty. It marks the levels behind that: front-month Brent at $102/bbl and the US 10-year at 4.86%. The one strategy call is Buy German stocks, on broader-than-appreciated earnings growth, European rather than American valuations, and GARP positioning, expressed through fiscal, defense, capex and domestic recovery baskets. Day 2 of the Communacopia conference is reported rather than argued: AI-driven demand is producing tangible customer returns and longer order visibility, so semis are adding capacity, while datacenter supply stays tight and TSMC, Amkor, Teradyne and AMAT all cite multi-year tightness, with SNDK saying NAND stays tight through 2027 and possibly 2028. Investors still debate how fast to scale supply and how to convert investment into earnings. Software firms report AI opening new monetization vectors. Today brings August PPI, jobless claims, existing home sales and wholesale inventories, with ORCL, ADBE and RH after the close.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Asian equities traded mostly lower on Thursday 10 September 2026, with only Japan and India posting small gains.",
+   "anchor": "Stocks in Asia traded mostly lower Thursday with only Japan and India eking out",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "European equities were edging lower on the morning of 10 September 2026 ahead of the ECB's scheduled statement.",
+   "anchor": "European equities are also edging lower this morning just ahead of the ECB\u2019s",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Front-month Brent crude was trading at an elevated $102 per barrel on 10 September 2026.",
+   "anchor": "front-month Brent crude remains elevated at $102/bbl",
+   "topic": "cross-asset session levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The US 10-year Treasury yield had moved higher to 4.86% on 10 September 2026.",
+   "anchor": "the US 10-year Treasury yield has also moved higher to 4.86%",
+   "topic": "cross-asset session levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The Nikkei 225 closed 0.2% higher in the session of 10 September 2026.",
+   "anchor": "Nikkei 225\n0.2%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The Shanghai Composite fell 0.4% in the session of 10 September 2026.",
+   "anchor": "Shanghai Composite \n-0.4%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The Hang Seng fell 1.3% in the session of 10 September 2026, the largest decline among the listed Asian indices.",
+   "anchor": "Hang Seng\n-1.3%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The Taiwan TAIEX fell 0.5% in the session of 10 September 2026.",
+   "anchor": "Taiwan TAIEX\n-0.5%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Australia's SPI/ASX 200 fell 1.0% in the session of 10 September 2026.",
+   "anchor": "SPI/ASX 200\n-1.0%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The FTSE 100 was down 0.3% as of 10 September 2026.",
+   "anchor": "FTSE 100\n-0.3%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The DAX was unchanged at 0.0% as of 10 September 2026.",
+   "anchor": "FTSE 100\n-0.3%\nDAX\n0.0%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The CAC 40 was up 0.2% as of 10 September 2026.",
+   "anchor": "CAC 40\n0.2%\nEuro STOXX600",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The Euro STOXX 600 was down 0.1% as of 10 September 2026.",
+   "anchor": "Euro STOXX600\n-0.1%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "AI-driven demand is starting to produce tangible customer returns and extended order visibility for model providers, while datacenter supply remains tight.",
+   "anchor": "AI-driven demand is starting to drive tangible \ncustomer returns leading to extended order visibility for model providers",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Investors continue to debate how quickly AI supply should be scaled up and how investment converts into earnings.",
+   "anchor": "investors continue to debate how quickly and necessary it is to scale up supply",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Higher structural demand is driving semiconductor capacity additions as suppliers gain confidence in long-term purchase orders already in place.",
+   "anchor": "higher structural demand is driving capacity additions as semis providers grow confident",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Supply and demand remain tight across the semiconductor supply chain, per comments from TSMC on advanced packaging and wafer capacity, Amkor on advanced packaging, and Teradyne on testing.",
+   "anchor": "Supply/demand remains tight across the supply \nchain, as evidenced by comments from TSMC",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM",
+    "AMKR",
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "SanDisk said NAND supply should remain tight through 2027 and possibly 2028.",
+   "anchor": "SNDK said NAND supply should remain tight through 2027 and possibly 2028",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2027 and possibly 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Cadence, IBM and Applied Materials emphasized AI-driven product innovation and internal efficiency gains at the conference.",
+   "anchor": "CDNS, IBM and AMAT (on CL) emphasized \nAI-driven product innovation and internal efficiency gains",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CDNS",
+    "IBM",
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "TSMC, Amkor, Teradyne and Applied Materials pointed to sustained capacity tightness and multi-year demand visibility.",
+   "anchor": "TSMC, AMKR, TER and \nAMAT pointed to sustained capacity tightness and multi-year demand visibility",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM",
+    "AMKR",
+    "TER",
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "multi-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "In analog semiconductors, NXP and SiTime struck a constructive tone on recovery and datacenter demand.",
+   "anchor": "NXPI and SITM struck a constructive tone on recovery and datacenter demand",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "NXPI",
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Applied Materials carries a Buy rating and sits on Goldman's Conviction List.",
+   "anchor": "Applied Materials Inc. (AMAT, Buy; on CL)",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Software providers at the conference reported that AI is enabling broad new monetization vectors as enterprise customers seek enhanced capabilities in legacy platforms.",
+   "anchor": "AI is enabling broad new monetization  vectors as enterprise \ncustomers seek to capitalize",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MSFT",
+    "NOW",
+    "CRM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Cable operators and wireless carriers are starting to see success in converged broadband and wireless offerings.",
+   "anchor": "with companies starting to see success in \nconverged broadband and wireless offerings",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Comcast described fiber as its primary long-term competitor, citing accelerating fiber overbuild activity and continued pricing pressure.",
+   "anchor": "CMCSA described fiber as its primary long-term competitor, citing \naccelerating fiber overbuild activity",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "long-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Walmart Connect is growing more than 40% year on year at margins above 70%, helping operating income outpace sales.",
+   "anchor": "Walmart Connect is growing 40%+ y/y at 70%+ \nmargins, helping operating income outpace sales",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Walmart's Sparky AI shopping agent doubled weekly users year on year and its agentic-commerce partnerships are gaining traction.",
+   "anchor": "(weekly users doubled y/y) and agentic-commerce partnerships are also gaining",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Block sounded a constructive tone on its business, helped by stepped-up operating leverage after its restructuring earlier in 2026.",
+   "anchor": "XYZ sounded a very constructive tone around its business",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "XYZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Buy-rated Iron Mountain, McGraw Hill, Brink's and CoStar all emphasized self-help growth and improving long-term earnings power.",
+   "anchor": "Buy-rated IRM, MH, BCO and CSGP all emphasized self-help growth and improving \nlong-term earnings power",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IRM",
+    "MH",
+    "BCO",
+    "CSGP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Iron Mountain is extending its records franchise into higher-growth adjacencies including data centers, asset lifecycle management and digital solutions.",
+   "anchor": "IRM is extending its records franchise into higher-growth \nadjacencies like data centers",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IRM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "McGraw Hill is monetizing its installed base through AI, Higher Ed share gains and K-12 literacy demand.",
+   "anchor": "MH is monetizing its installed \nbase through AI, Higher Ed share gains, and K-12 literacy demand",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Brink's NATL deal should expand capabilities, lift margins and accelerate deleveraging.",
+   "anchor": "BCO\u2019s NATL deal \nshould expand capabilities, lift margins, and accelerate deleveraging",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "BCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "CoStar sees a path to sharply higher EBITDA and free cash flow through cost discipline, acquisitions and improved monetization across its commercial real estate, Apartments.com and Homes.com businesses.",
+   "anchor": "CSGP sees a path \nto sharply higher EBITDA and FCF through cost discipline, acquisitions",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CSGP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Apple's new product suite carries a mix of innovation and pricing power that should support upside to revenue estimates.",
+   "anchor": "includes a favorable mix of innovation and pricing power that should support upside to \nrevenue estimates",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The new Apple product launch carries favorable implications for Apple's supply chain.",
+   "anchor": "highlight the favorable implications for the \nAAPL supply chain from the new product launch",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman recommends buying German stocks, arguing earnings growth there is broader than many investors appreciate.",
+   "anchor": "Buy: German stocks. Earnings growth is broader than many investors appreciate",
+   "topic": "German equity earnings recovery",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "German equity valuations remain more European than American and Germany offers one of the most compelling growth-at-a-reasonable-price opportunities in developed markets.",
+   "anchor": "valuations remain more European than American, and Germany offers one of the \nmost compelling growth-at-a-reasonable-price (GARP) opportunities",
+   "topic": "German equity earnings recovery",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman directs the German equity call into theme baskets covering fiscal, defense, capex and domestic recovery.",
+   "anchor": "Focus on: theme baskets, including Fiscal (GSXEGFSC \nor GSSTFISC), Defense (GSSBDEFE or GSSBCIVA)",
+   "topic": "German equity earnings recovery",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts August PPI final demand at +0.4%, matching consensus of +0.4%, against a flat prior reading.",
+   "anchor": "PPI final demand, August (GS +0.4%, consensus +0.4%, last flat)",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 September 2026, 8:30 AM"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts August PPI excluding food and energy at +0.3%, in line with consensus of +0.3% and above the prior +0.2%.",
+   "anchor": "PPI ex-food \nand energy, August (GS +0.3%, consensus +0.3%, last +0.2%)",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 September 2026, 8:30 AM"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts August PPI excluding food, energy and trade at +0.4%, above consensus of +0.3% and matching the prior +0.4%.",
+   "anchor": "PPI ex-food, energy, and \ntrade, August (GS +0.4%, consensus +0.3%, last +0.4%)",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 September 2026, 8:30 AM"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts initial jobless claims of 205k for the week ended September 5, in line with consensus and below the prior 206k.",
+   "anchor": "Initial jobless claims, week ended September 5 (GS 205k, consensus 205k, last \n206k)",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 September 2026, 8:30 AM"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Consensus expects continuing jobless claims of 1,780k for the week ended August 29, against a prior 1,779k.",
+   "anchor": "Continuing jobless claims, week ended August 29 (consensus 1,780k, last 1,779k)",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 September 2026, 8:30 AM"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts August existing home sales down 2.0%, weaker than consensus of -1.6% and the prior -1.7%.",
+   "anchor": "Existing home sales, August (GS -2.0%, consensus -1.6%, last -1.7%)",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "10 September 2026, 10:00 AM"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Consensus expects final July wholesale inventories at +1.3%, unchanged from the prior +1.3%.",
+   "anchor": "Wholesale inventories, July final (consensus +1.3%, last +1.3%)",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 September 2026, 10:00 AM"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Macy's and Vince report earnings before the open on 10 September 2026, with Oracle, Adobe and RH reporting after the close.",
+   "anchor": "M and VNCE report before the open. ORCL, \nADBE, and RH report after the close today",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [
+    "M",
+    "VNCE",
+    "ORCL",
+    "ADBE",
+    "RH"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10 September 2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/15891__market-intelligence-us-morning-update.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 46,
+  "matched": 46,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
