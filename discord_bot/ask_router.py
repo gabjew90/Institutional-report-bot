@@ -591,7 +591,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
         T_EDATE: "EARNINGS DATE, system-fetched from the earnings feed. Authoritative for date, timing and consensus.",
         T_PRICE: "LIVE PRICES, system-fetched. The number comes from here; Google may supply the why, never the price.",
         T_CHAIN: "OPTIONS CHAIN, system-fetched. Every OI, volume, IV and strike figure comes from here or is not stated.",
-        T_ECON: "ECONOMIC CALENDAR, system-fetched. Print dates, consensus and actuals come from here, never from memory.",
+        T_ECON: ("ECONOMIC CALENDAR, system-fetched. Print dates, consensus and actuals come from here, never from memory. "
+                 "A row with status past_no_data has NO print in the feed yet: say the number has not reached "
+                 "the feed, give consensus and prior as such, and never fill the actual from memory or from the "
+                 "previous month."),
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
         T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
                  "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "

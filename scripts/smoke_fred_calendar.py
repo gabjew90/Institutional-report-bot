@@ -147,7 +147,10 @@ def test_actual_transforms():
     vals = [130.0, 129.5, 129.0, 128.6, 128.2, 127.8, 127.4,
             127.0, 126.6, 126.2, 125.8, 125.4, 125.0, 124.6]
     for i, v in enumerate(vals):
-        d = (base - timedelta(days=30 * i)).strftime("%Y-%m-01")
+        # true calendar months (2026-09-11: the transforms look up the
+        # comparison month by DATE, so a 30-day step that skips a month
+        # would now read as a gap in the series)
+        d = fred_data.month_shift(base.strftime("%Y-%m"), -i) + "-01"
         obs_pairs.append((d, v))
 
     with patch("config.settings.fred_api_key", "test_key"), \
@@ -253,7 +256,9 @@ def test_enrich_rows_and_staleness_guard():
     now = datetime.utcnow()
     past = (now - timedelta(hours=30)).strftime("%Y-%m-%dT%H:%M:%S")
     future = (now + timedelta(days=3)).strftime("%Y-%m-%dT%H:%M:%S")
-    recent_period = (now - timedelta(days=20)).strftime("%Y-%m-01")
+    # the row is ~30h in the past; its actual must be the calendar
+    # month BEFORE the row date (2026-09-11 rule), whatever today is
+    recent_period = fred_data.reference_period(past) + "-01"
     rows = [
         # past US CPI row with no actual -> should be enriched
         {"event": "CPI y/y", "country": "US", "time": past,
@@ -267,7 +272,7 @@ def test_enrich_rows_and_staleness_guard():
          "source": "forexfactory"},
     ]
     obs_pairs = [(recent_period, 130.0)] + [
-        ((now - timedelta(days=20 + 30 * i)).strftime("%Y-%m-01"),
+        (fred_data.month_shift(recent_period[:7], -i) + "-01",
          130.0 - i * 0.4)
         for i in range(1, 14)
     ]

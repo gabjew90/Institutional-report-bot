@@ -2505,3 +2505,30 @@ The graders run for 2026-09-10 (the first clean full day: 69
 documents, 2381 cards, zero unread at edit) was killed at 60:00 with
 no grade written. Timeout raised to 150 and the day re-dispatched with
 `date=2026-09-10`.
+
+## 2026-09-11 — /ask reported July's CPI as August's print; FRED actuals fixed
+
+At 08:31 ET, one minute after the August CPI release, /ask answered
+"what was the economic print" with +0.07% m/m, 3.52% y/y, core +0.22%
+and 2.67%. BLS printed +0.4%, 3.4%, +0.3%, 2.4%. Both defects were in
+report/fred_data.py, the layer that fills `actual` on ForexFactory rows
+(FF carries no actuals):
+
+1. FRED had not yet posted August. The staleness guard was "within 75
+   days", so July's observation (72 days) rode on the August row as
+   its actual, with `actual_period: 2026-07` that the model ignored.
+   The figure-provenance guard passed the answer because every number
+   WAS in the tool payload. Fix: for a monthly series the observation
+   must be the release's reference month (the calendar month before
+   the row date), else actual stays None and the row reads
+   past_no_data. The econ injection now tells the model what
+   past_no_data means.
+2. FRED has no October 2025 CPI observation (the shutdown month), and
+   the year-over-year transform took "12 observations back", which was
+   13 months back: 3.69% for August against the printed 3.4%, and the
+   same for every y/y the feed has produced since November 2025.
+   Fix: comparison months are looked up by calendar date; a missing
+   month yields None.
+
+tests/test_fred_actuals.py replays the 08:31 scenario and the missing
+month against the real FRED window fetched that day.

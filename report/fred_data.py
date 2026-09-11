@@ -228,30 +228,70 @@ def _get_observations(series_id: str) -> list[dict]:
     return obs
 
 
+def month_shift(period: str, months: int) -> str:
+    """'2026-08' shifted by `months` (negative = back): -12 -> '2025-08'."""
+    y, m = int(period[:4]), int(period[5:7])
+    idx = y * 12 + (m - 1) + months
+    return f"{idx // 12:04d}-{idx % 12 + 1:02d}"
+
+
+def _obs_at(obs: list[dict], period: str) -> float | None:
+    """The observation for a calendar month, by DATE. Index arithmetic
+    ('12 observations back') is wrong whenever a month is missing from
+    the series, and FRED has no October 2025 CPI (the shutdown month):
+    on 2026-09-11 obs[12] for August 2026 was July 2025, and the
+    'year-over-year' the feed handed /ask was a 13-month change, 3.69%
+    against the printed 3.4%."""
+    for o in obs:
+        if (o.get("date") or "")[:7] == period:
+            return o.get("value")
+    return None
+
+
 def _compute_actual(series_id: str, transform: str) -> tuple[float | None, str | None]:
     """Latest value for a series under a transform.
 
     Returns (value, period_iso) — period is the observation month the
     number refers to ('2026-05'), so callers can say WHICH print this
-    is instead of implying it's today's.
+    is instead of implying it's today's. A comparison month that is
+    absent from the series yields None: an honest gap beats a number
+    computed against the wrong month.
     """
     obs = _get_observations(series_id)
     if not obs:
         return None, None
     latest = obs[0]
     period = (latest["date"] or "")[:7] or None
+    if not period:
+        return None, None
     try:
         if transform == "level":
             return round(latest["value"], 2), period
-        if transform == "m_change" and len(obs) >= 2:
-            return round(latest["value"] - obs[1]["value"], 1), period
-        if transform == "mom_pct" and len(obs) >= 2 and obs[1]["value"]:
-            return round((latest["value"] / obs[1]["value"] - 1) * 100, 2), period
-        if transform == "yoy_pct" and len(obs) >= 13 and obs[12]["value"]:
-            return round((latest["value"] / obs[12]["value"] - 1) * 100, 2), period
+        if transform == "m_change":
+            prev = _obs_at(obs, month_shift(period, -1))
+            if prev is None:
+                return None, None
+            return round(latest["value"] - prev, 1), period
+        if transform == "mom_pct":
+            prev = _obs_at(obs, month_shift(period, -1))
+            if not prev:
+                return None, None
+            return round((latest["value"] / prev - 1) * 100, 2), period
+        if transform == "yoy_pct":
+            base = _obs_at(obs, month_shift(period, -12))
+            if not base:
+                return None, None
+            return round((latest["value"] / base - 1) * 100, 2), period
     except (TypeError, ZeroDivisionError):
         pass
     return None, None
+
+
+def reference_period(row_time_iso: str) -> str:
+    """The month a monthly release on `row_time_iso` reports on: the
+    calendar month before the release date. CPI on 2026-09-11 reports
+    August; the July observation is NOT that print, however recent."""
+    return month_shift(row_time_iso[:7], -1)
 
 
 def enrich_rows_with_fred_actuals(rows: list[dict]) -> list[dict]:
@@ -261,9 +301,15 @@ def enrich_rows_with_fred_actuals(rows: list[dict]) -> list[dict]:
     is None (ForexFactory rows always, FRED schedule rows once the date
     passes). Adds `actual_period` ('2026-05') so the model can name the
     reference month — a May CPI number attached to a June row would be
-    a silent lie without it. Guard: the observation period must be
-    within 75 days of the row date, else the series is stale relative
-    to the event and we leave actual=None (honest gap beats wrong fill).
+    a silent lie without it.
+
+    Guard (tightened 2026-09-11): for a monthly series the observation
+    must be the release's reference month, the calendar month before
+    the row date. The old rule was "within 75 days", and one minute
+    after the August CPI print, before FRED had posted August, it
+    attached July's figures to the August row; /ask then reported
+    July's +0.07% headline as the print (BLS: +0.4%). Quarterly series
+    keep the wide window. An honest gap beats a wrong fill.
     """
     if not settings.fred_api_key:
         return rows
@@ -286,6 +332,10 @@ def enrich_rows_with_fred_actuals(rows: list[dict]) -> list[dict]:
             per_d = datetime.strptime(period + "-01", "%Y-%m-%d")
             if abs((row_d - per_d).days) > max_stale:
                 continue  # series stale vs event — don't mislabel
+            if max_stale == _STALE_DAYS_MONTHLY and period != reference_period(t):
+                log.info(f"FRED actual for {row.get('event')!r} on {t[:10]} skipped: "
+                         f"latest observation is {period}, release reports {reference_period(t)}")
+                continue  # the print is not in the series yet
         except (ValueError, TypeError):
             continue
         row["actual"] = value
