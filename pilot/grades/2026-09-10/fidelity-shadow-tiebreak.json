@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15705__goldman-raises-oil-price-target-sees-brent-as-high-as-120-on.txt",
+   "span": "Of that 543mb draw, only 26mb has come from OECD commercial storage... the bank's $79 Brent fair value estimate is still $18 below market pricing",
+   "why": "Figures (543mb, 26mb, $79, $18) all match the source's breakdown of Goldman's fair-value calc."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15761__international-market-intelligence-morning-briefing.txt",
+   "span": "JPM's Kaneva argues crude may not rise materially even in a \"forever conflict\" scenario, given excess supply, non-Middle East production, weaker demand from electrification and ample inventories.",
+   "why": "The view and rationale match closely, but the analyst is JPM's Kaneva in the source, not Morgan (Stanley)'s \u2014 a misattributed bank, and the only Kaneva mention in the day's set is JPM."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15705__goldman-raises-oil-price-target-sees-brent-as-high-as-120-on.txt",
+   "span": "Struyen assumes output gradually returns to pre-war levels by 2027H2... 3.8mb/d of new effective pipeline capacity addition by end-2027... Chinese crude net imports, still down about 30% year-over-year",
+   "why": "All three figures (2027H2 recovery, 3.8mb/d pipeline capacity, ~30% China import decline) match the source exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "n/a",
+   "why": "No source document states BofA taking an opposing view on any specific 'decision' in this context (oil or otherwise). BofA's actual appearances in the day's set concern a VIX call-spread collar trade idea (matching s8), not an oil-price disagreement with Goldman."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15754__gs-vol-views-9-sep-2026.txt",
+   "span": "We just traded through the lowest S&P 6m realized correlation period ever... Feb 2007... and Jan 2018 (just before \"volmageddon\")",
+   "why": "Matches GS Vol Views desk note; corroborated by the same fact in 15584 gs-garrett-weekend-prep."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15754__gs-vol-views-9-sep-2026.txt",
+   "span": "the history book suggests levels this low are not sustainable and have resulted in a starburst of index vol convexity",
+   "why": "Direct paraphrase of the Goldman derivatives desk's own note."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15754__gs-vol-views-9-sep-2026.txt",
+   "span": "VIX 21Oct26 20/30 Call Spread indicatively costs $0.91... IWM 18Sep26 286 Puts indicatively cost $1.70",
+   "why": "Both trade levels match the Goldman desk's own hedge recommendations exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15714__i-am-the-house-now-europe-cracks-ai-holds-and-something-has-.txt",
+   "span": "for a more targeted hedge, BofA prefers selling the October 16 VIX put and buying the November 22\u201330 call spread",
+   "why": "Exact match to source."
+  },
+  {
+   "id": "s9",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "none found",
+   "span": "n/a",
+   "why": "10yr levels appear repeatedly (~4.78-4.79% spot), but no source states a ~50bp 2026 YTD change; the one YTD-yields exhibit (15566, Exhibit 33) has no extractable numeric values."
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15855__goldman-desk-warns-unsustainable-volatility-shift-will-end-i.txt",
+   "span": "the long end remains the greater risk. That's because the 30yr yield 1-month average is north of 5.2%... sticky inflation, treasury supply, and term premium rebuilding, which can push yields even higher with or without a hike",
+   "why": "Goldman's long-bond-risk framing is faithfully sourced (albeit about the 30yr, not specifically the 10yr). But no TS Lombard document in the set (15694/15698 Steven Blitz piece, or 15695) states a '10-year belongs at 5% or higher' view \u2014 that attribution appears fabricated."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15744__duttenhoefers-daily-9-sep-2026.txt",
+   "span": "our Global Copper Basket (GSXGCOPP)... is expected to outperform as copper demand increases",
+   "why": "First half matches Duttenhoefer's Daily; second half ('tariff distortions... not a clean read') matches 15709 (Privorotsky/delta-one desk: 'Supply constraints and tariff driven distortions are part of the story, so this is not purely a clean growth signal')."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15749__gs-mourad-too-much-ai-pessimism-season-3-9-sep-2026.txt",
+   "span": "We like buying the dip in the AI hardware theme (GSTMTDAT)",
+   "why": "Direct match, correctly attributed to Faris Mourad."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15760__db-early-morning-reid-macro-strategy.txt",
+   "span": "European natural gas futures (+4.49%) closed at their highest level since 2022, at \u20ac79.25/MWh... Governor of Russia's Yamalo-Nenets autonomous district reported that there was a fire... Ukraine said later that its drones had struck two gas condensate plants there",
+   "why": "All figures and the fire/drone-strike causes match exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15582__gs-morning-1-adam-crook-s-latest-2-jpy-update-3-ai-back-in-f.txt",
+   "span": "ECB (Thursday): GS: 2.50%, Consensus: 2.50%, Last: 2.25%",
+   "why": "Confirms a 25bp hike to 2.50%; Goldman's 'last hike of the cycle' view matches 15744 Duttenhoefer's Daily and 15560 ECB preview."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15745__gs-crypto-weekly-recap-macro-heavy-9-sep-2026.txt",
+   "span": "Waller's comments were followed by the largest single-day BTC ETF inflow since January, at $729m... Last week saw $984m in net inflows for U.S. spot BTC ETFs... U.S. spot ETH ETFs recorded $218m in net inflows last week",
+   "why": "All three figures match exactly."
+  }
+ ],
+ "faithful": 11,
+ "distorted": 2,
+ "unsupported": 2,
+ "faithful_rate": 0.733,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

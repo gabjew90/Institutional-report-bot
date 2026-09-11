@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-09/15705__goldman-raises-oil-price-target-sees-brent-as-high-as-120-on.txt",
+ "source_span": "the price upgrade is \"modest\" despite his new assumption that shipping disruptions continue because OECD commercial oil inventories have so far barely drawn since the war began",
+ "source_chain": "Markets are pricing a prolonged Mideast conflict into 2027 (Brent to $97, Mar-2027 >$100 odds up to 25%) therefore Goldman raises Brent/WTI forecasts $5 to $85/$80 for Dec-2026 therefore the raise stays modest, not a jump to Goldman's own $120 upside case, because OECD commercial stocks (the price-relevant category) have barely drawn (only 26mb of the 543mb global visible draw), leaving fair value at $79, $18 below market; invalidation: a faster Mideast output recovery or an OECD commercial-stock draw that stays absent keeps prices capped, while a stalemate/escalation with 2027 Gulf output 4mb/d below pre-war levels sends Brent above $120.",
+ "pulse_chain": "Brent breaks $100 and the 6-month contract hits its highest since June because traders stop treating disruption as fading therefore banks disagree on what's priced in: Goldman raises Brent/WTI $5 to $85/$80 for Dec-2026 on disruption running into 2027 but calls it modest because only 26mb of the 543mb global stock draw came from OECD commercial tanks, leaving fair value at $79, $18 under market, while SocGen's probability-weighted $109 (vs $99 spot) and JPM's Kaneva stay more skeptical of upside; invalidation: fast OECD commercial draws kill the cheap-oil case, while continued Gulf export adaptation plus weak Chinese buying lets the premium bleed out.",
+ "preserved": true,
+ "why": "The pulse reproduces Goldman's $5 forecast raise, its self-described 'modest' framing, the 26mb/543mb OECD-inventory reasoning, the $79/$18-under-market fair value, and the same upside/downside invalidation conditions (Gulf export recovery vs. faster OECD draws) in compressed form without reversing or reattributing any step.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

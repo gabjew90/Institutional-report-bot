@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-10/15854__the-long-end-has-been-the-problem-citadel-securities-bond-bo.txt",
+ "source_span": "The sell-off at the long end therefore reflects more than oil\u2026investors are demanding greater compensation for inflation uncertainty, fiscal deterioration and Treasury supply, heavy hyperscaler issuance and an uncertain Fed reaction function.",
+ "source_chain": "Renewed US-Iran strikes push oil and long yields up together, pressuring mortgages/AI financing/equity valuations, THEREFORE that pairing looks alarming \u2014 BUT crude itself is capped (non-Iranian Gulf exports back to ~65% of pre-war via dark-fleet workarounds), so oil is not what's driving the long end, THEREFORE the real cause of the long-end selloff is fiscal deterioration, Treasury supply, hyperscaler debt issuance and Fed-credibility uncertainty. Invalidation: a credible, well-signaled September Fed hike (demonstrating the Fed is ahead of the curve) could cut term premium and inflation uncertainty enough to retrace long yields, independent of oil.",
+ "pulse_chain": "Brent breaking $100 then $105 crosses the threshold where energy enters the core inflation print, THEREFORE refined-fuel tightness (record margins) is the transmission channel, THEREFORE long bonds (30y 5.35%, 10y 4.92%) are 'already pricing that pass-through' and the equity risk premium has compressed to 2.1% \u2014 oil pass-through IS why yields and equity valuations are breaking together. Invalidation: Friday's 8:30 AM CPI print decides whether the pass-through is already inside the core number.",
+ "preserved": false,
+ "why": "The closest matching source explicitly says the long-end selloff 'reflects more than oil' and pins it on fiscal/Treasury-supply/AI-issuance/Fed-credibility factors with a Fed-hike invalidation, while the pulse asserts oil-driven inflation pass-through as the actual reason yields and valuations are breaking together and substitutes a CPI-print invalidation \u2014 reversing the note's downgrade of oil and presenting the pulse's own mechanism as if the sources argued it.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

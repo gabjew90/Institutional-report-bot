@@ -1,0 +1,97 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d55",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Iran escalation and Brent crossing $100 accelerate the equity selloff (greater equity sensitivity to energy) therefore Kaneva argues crude may not rise materially in a forever-conflict scenario given supply/demand offsets therefore China's oil-buying recovery is the watch item; separately, priced-in ECB hikes plus fiscal-driven Bund richening argue for a dovish EUR 1Y1Y/TTF decoupling today, while shrinking equity risk premia raises equity-bond correlation and rebalancing risk; the desk stays tactically cautious/neutral on global equities (long US/Asia vs EU, bullish EM via country pairs, hedged on momentum) as HF re-grossing picks up even as sentiment softens.",
+   "brief_chain": "Same chain: oil spike drives equity selloff sensitivity therefore Kaneva pushes back on further crude upside given supply/demand offsets therefore China oil-buying recovery is the watch item; dovish ECB/EUR 1Y1Y-TTF decoupling expected on priced hikes and fiscal-driven Bund yields; shrinking equity risk premia implies the three flow effects; book stays tactically cautious, long US/Asia vs Europe, bullish EM via country-relative trades, hedged on momentum; HF re-grossing at multi-month highs while sentiment softens.",
+   "distortions": [
+    {
+     "what": "Brief drops the '/neutral' qualifier, stating the book is 'tactically cautious' rather than source's 'tactically cautious/neutral'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 cautious and cautious/neutral imply the same defensive posture; no position sizing or direction changes."
+    },
+    {
+     "what": "Brief attributes the bullish EM country-relative view to 'the monetization book' generally, when the source attributes it to a separate EM desk (Wang/Campos) within the same note.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the EM view and trade recommendation are stated identically either way; only the internal desk attribution is compressed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Current 10yr yields sit ~180bps above 6.6% nominal GDP, so a 4.8-5.3% yield range is historically fair depending on where growth settles, and higher coupons have kept total returns positive since the 2023 peak; separately, sticky ~3% trend inflation, loose financial conditions, and reversing payroll softness argue the Fed's insurance cuts look ripe to be reversed, while energy costs push the ECB toward a hike this week and December; Q2 global earnings grew at the strongest non-pandemic pace on record driven by cyclical and commodity tailwinds, alongside a hyperscaler-led AI capex boom where the top 5 spenders now outspend the other 495 combined; the yen is bouncing off 40-year lows after record BoJ intervention.",
+   "brief_chain": "Same yield-normalization logic and return figures; same Fed-insurance-cuts-ripe-for-reversal chain; same ECB hike call; states Q2 earnings growth was 'driven by an AI capex boom' where the top five spenders outspend the other 495, then separately notes the yen bounce off BoJ intervention.",
+   "distortions": [
+    {
+     "what": "Brief states Q2 global earnings growth was 'driven by an AI capex boom,' but the source explicitly attributes that growth to 'synchronised cyclical and commodity tailwinds' \u2014 the AI capex/top-5-vs-495 statistic is a separate, unrelated data point in the source (about capex spending, not the earnings growth driver).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a descriptive/context passage in a chartbook with no attached trade or stance; nothing in the brief tells a reader to buy or sell anything differently based on this misattribution, though it does misstate the source's own causal claim."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d68",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Credit valuations remain stretched even after recent widening therefore credit screens as an attractive market to buy tail hedges, but timing a broader widening is uncertain, so the desk prefers carry-bleed-reducing, convexity-preserving hedges therefore the preferred trade is short ex-hyperscaler cash basket vs long CDX IG 10Y (carry positive), supported by accelerating hyperscaler capex intensity, hyperscaler-driven spread widening, and a still-low ex-hyperscaler basis versus its 5-year range.",
+   "brief_chain": "Identical chain, with the brief adding an explicit causal connector ('that uncertainty drives the construction') between the timing-uncertainty bullet and the hedge-preference bullet.",
+   "distortions": [
+    {
+     "what": "Brief inserts an explicit causal link ('That uncertainty drives the construction') between two bullets the source lists sequentially without stating that connection outright.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the inferred causality matches the source's own bullet ordering and logic; the trade, structure, and supporting evidence are unchanged."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d17",
+   "tier": "top",
+   "bank": "BofA",
+   "source_chain": "Firm August CPI/core PCE forecasts (0.22%/0.24% m/m, core PCE 3.4% y/y) plus a hawkish payroll print convince BofA economists Warsh follows through with a September hike (75bp this year total) therefore strategists prefer Large Cap Value as ballast given credit-stress-cycle asymmetry, favoring oil/gas, distributors, metals/mining, banks, leisure products, and insurance/consumer finance while flagging Media and IT Services as value traps; separately, this week's long-end buyback operation tests Bessent's higher cap \u2014 a take-down short of max cheapens long-end rates further; separately, Tal Liani likes Oracle's risk/reward into the Sep 10 print, PO $240.",
+   "brief_chain": "Same CPI/PCE/hike chain and Large Cap Value ballast logic with the same spread-cycle statistic; lists favored industries as oil/gas, distributors, metals/mining, banks, leisure products (omitting insurance/consumer finance); same value-trap flags; same buyback-operation test; same Oracle call and PO.",
+   "distortions": [
+    {
+     "what": "Brief's list of favored value industries omits 'Insurance and Consumer Finance,' which the source appends as also having 'improved in August.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the five industries the brief does list are all correctly carried over and actionable as-is; omitting one additional named sector doesn't reverse or alter any stance, just narrows the instrument set slightly."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d63",
+   "tier": "rest",
+   "bank": "TS Lombard",
+   "source_chain": "Private-sector debt is a shrinking share of total debt creation while rate-insensitive Federal borrowing keeps spending/inflation running, so hiking and inverting the curve would be symbolic but ineffective; since 2012 inflation tracks Federal debt growth (6Q lag) more than private debt (4Q lag), reversing the pre-2012 pattern, which makes inversions slower to trigger recession (last inversion: 25 months, no recession) therefore Blitz expects Warsh to use the CPI print to avoid a September hike and let the curve steepen instead \u2014 a route Bessent/Warsh's task force is also weighing (hold funds rate, let Treasury borrow cheap short-term, let the market push 10Y yields up) \u2014 and if Warsh hikes anyway, the standard buy-30s/sell-10s trade may not hold, supported by weaker household credit-fueled spending, less rate-sensitive corporate balance sheets, and a 10Y-forward-to-spot spread that may not fall as it typically has post-hike.",
+   "brief_chain": "Identical chain and identical falsifiable trade condition (buy-30s/sell-10s may not hold if Warsh hikes), same supporting evidence.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 5,
+ "audited": 5,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-09/15705__goldman-raises-oil-price-target-sees-brent-as-high-as-120-on.txt",
+ "source_span": "Because Goldman's OECD commercial stocks counter remains resilient, the bank's $79 Brent fair value estimate is still $18 below market pricing, which embeds a risk premium for future draws and high disruption risk.",
+ "source_chain": "Of the 543mb global visible stock draw since the war began, only 26mb came from OECD commercial storage (the category that actually prices Brent) \u2014 therefore OECD commercial stocks remain resilient \u2014 therefore Goldman's model fair value stays at $79, $18 below market pricing \u2014 therefore Goldman's forecast raise to $85/$80 for Dec 2026 is only 'modest' even though the bank now assumes Mideast shipping disruption runs into 2027 (helped by Gulf output returning to pre-war levels by 2H2027, 3.8mb/d new pipeline capacity, and China imports staying ~30% below last year). Invalidation: if OECD commercial stocks start drawing hard, or Gulf export adaptation stalls, or China resumes buying, the 'modest'/cheap-oil case breaks and price should run higher (Goldman's own upside scenario: Brent above $120 if 2027 Gulf output stays 4mb/d below pre-war).",
+ "pulse_chain": "Brent's rise is framed as the market pricing disruption running into 2027, not a fading spike. The banks disagree on what that already contains: Goldman raised Brent/WTI forecasts by $5 to $85/$80 for Dec 2026 on the new 2027-disruption assumption but calls its own raise 'modest' \u2014 because of the 543mb/26mb OECD-commercial-storage split, which leaves fair value at $79, $18 under the market. Societe Generale, reading the same conflict, gets a $109 probability-weighted year-end price ($99 spot) with 30% odds a stalemate pushes Brent to $120 in November. Close: 'If OECD commercial stocks start draining fast, the cheap-oil case is dead. If Gulf exports keep adapting and China stays out of the market, the premium bleeds out.'",
+ "preserved": true,
+ "why": "The pulse reproduces Goldman's exact chain \u2014 OECD-commercial-stock resilience \u2192 $79 fair value / $18-under-market \u2192 'modest' $85/$80 raise despite a 2027-disruption assumption \u2014 correctly attributed to Goldman, and closes on the same swing-factor invalidation (an OECD commercial stock draw) the note itself uses, with the Societe Generale figures ($109/$99, 30%/$120-in-November) also matching their source (15776) exactly.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

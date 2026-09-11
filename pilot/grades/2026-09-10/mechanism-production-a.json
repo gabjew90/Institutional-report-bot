@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-10/15854__the-long-end-has-been-the-problem-citadel-securities-bond-bo.txt",
+ "source_span": "The sell-off at the long end therefore reflects more than oil\u2026investors are demanding greater compensation for inflation uncertainty, fiscal deterioration and Treasury supply, heavy hyperscaler issuance and an uncertain Fed reaction function.",
+ "source_chain": "US-Iran strikes push oil and long-end yields higher (30y >5%, real yields ~3%), which pressures mortgages/capex/AI financing/equity valuations \u2014 THEREFORE crude's own move is actually contained (non-Iranian Gulf exports back to ~65% of pre-war via dark transits/pipelines) \u2014 THEREFORE the long-end sell-off is not primarily an energy story but reflects fiscal deterioration, Treasury supply, hyperscaler issuance and Fed-credibility uncertainty \u2014 THEREFORE the fix is a credibly hawkish Fed reducing term premium, not oil de-escalation. Invalidation: a well-signaled Sept hike plus conflict normalization plus the IG issuance bulge passing makes a long-end retracement plausible.",
+ "pulse_chain": "Hormuz-driven Brent breakout ($101.69\u2192$105) plus record refined-fuel scarcity (crack spreads, >97% utilization) THEREFORE oil 'stops being an oil story and becomes THE reason' 30y (5.35%) and 10y (4.92%) yields and the equity risk premium (2.1%) are breaking together THEREFORE energy is 'the constraint on everything else.' Invalidation given: Friday's CPI print decides whether the oil pass-through is already inside core inflation.",
+ "preserved": false,
+ "why": "The pulse makes the energy shock the sole/primary cause of the Treasury-and-equity break, but the one source that actually links oil, long yields and equity valuations explicitly argues the opposite \u2014 that crude's own move is 'contained,' and the long-end sell-off 'reflects more than oil,' pointing instead to fiscal deterioration, Treasury supply, hyperscaler issuance and Fed-credibility risk, with a credible Fed hike (not oil de-escalation) as the actual resolving condition.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

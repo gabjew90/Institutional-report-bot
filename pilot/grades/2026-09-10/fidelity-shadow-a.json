@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15705__goldman-raises-oil-price-target-sees-brent-as-high-as-120-on.txt",
+   "span": "the bank's $79 Brent fair value estimate is still $18 below market pricing, which embeds a risk premium for future",
+   "why": "Same file states global visible oil stocks declined 543mb since the war began, of which only 26mb came from OECD commercial storage, and Goldman's $79 Brent fair value is $18 below market. All figures match exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15761__international-market-intelligence-morning-briefing.txt",
+   "span": "JPM's Kaneva argues crude may not rise materially even in a \"forever conflict\" scenario, given excess supply, non-Middle East production, weaker demand from electrification and ample inventories",
+   "why": "The view and rationale (spare supply, production outside the region, full inventories) match, but the source attributes this to JPM's (JPMorgan's) Kaneva, not 'Morgan's' (which reads as Morgan Stanley). Attribution of who said it is changed."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15705__goldman-raises-oil-price-target-sees-brent-as-high-as-120-on.txt",
+   "span": "Goldman estimates 3.8mb/d of new effective pipeline capacity addition by end-2027, driven by the UAE's West-East pipeline",
+   "why": "Same file: 'pre-war levels by 2027H2' (line 97) and 'Price-sensitive Chinese crude net imports, still down about 30% year-over-year' (line 160) both confirm the remaining clauses."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document contains a BofA view framed as 'the other side of the decision' tied to any surrounding topic (oil, ECB, or otherwise). No traceable factual content."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15855__goldman-desk-warns-unsustainable-volatility-shift-will-end-i.txt",
+   "span": "there are only two periods in the last 25 years have seen correlation this low: Feb 2007 (just before the housing bubble burst) and Jan 2018",
+   "why": "Source bounds the record to 'the last 25 years' (and separately calls it 'the lowest realized correlation period in recent history'); the sentence upgrades this to 'ever recorded,' an unbounded superlative the source doesn't support."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15855__goldman-desk-warns-unsustainable-volatility-shift-will-end-i.txt",
+   "span": "history books suggests levels this low are not sustainable and have ended in a starburst of index vol convexity",
+   "why": "Direct paraphrase of Goldman derivatives guru Brian Garrett's quoted view, correctly attributed to the (Goldman) derivatives desk."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15754__gs-vol-views-9-sep-2026.txt",
+   "span": "VIX 21Oct26 20 / 30 Call Spread indicatively costs $0.91 (~11x leverage)",
+   "why": "Same file also has 'IWM 18Sep26 286 Puts indicatively cost $1.70' -- both prices and strikes match; this is Goldman's Vol Views desk note, consistent with the 'desk's own hedges' framing."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15714__i-am-the-house-now-europe-cracks-ai-holds-and-something-has-.txt",
+   "span": "BofA prefers selling the October 16 VIX put and buying the November 22-30 call spread",
+   "why": "Verbatim match; same trade also appears in 15690 and 15632 (TME roundup), all attributed to BofA."
+  },
+  {
+   "id": "s9",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15850__monthly-chartbook-the-home-straight.txt",
+   "span": "the US treasury total return index is higher even with a c.60bp rise in 10yr yields",
+   "why": "The only quantified rise found is DB's 'c.60bp rise... over the last 12 months' (a trailing-12-month figure, not calendar-2026 YTD), and it doesn't match 'roughly 50 basis points in 2026.' No source states the specific 2026 YTD change; graded as an unsupported live-market/rates-level claim."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15696__the-yield-threshold-what-finally-tips-equities.txt",
+   "span": "we stand by our long-held view that macro fundamentals suggest the US 10-year should be at least 5% to compensate for this",
+   "why": "TS Lombard's standing 5%+ view is verbatim. Goldman's 'long end remains the greater risk... term premium rebuilding, which can push yields even higher with or without a hike' (15855) confirms the second clause."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15744__duttenhoefers-daily-9-sep-2026.txt",
+   "span": "our Global Copper Basket (GSXGCOPP) comprises 25 mining companies with a large share of EBITDA from copper exploitation and is expected to outperform as copper demand increases",
+   "why": "Basket-outperform claim matches exactly. The tariff-distortion warning is corroborated in 15709 (Privorotsky, Goldman delta-one desk): 'Supply constraints and tariff driven distortions are part of the story, so this is not purely a clean growth signal,' said of copper's new highs."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15749__gs-mourad-too-much-ai-pessimism-season-3-9-sep-2026.txt",
+   "span": "We like buying the dip in the AI hardware theme (GSTMTDAT)",
+   "why": "Author is named Faris Mourad, Goldman Sachs, at the top of the note; basket ticker and recommendation match exactly."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15760__db-early-morning-reid-macro-strategy.txt",
+   "span": "European natural gas futures (+4.49%) closed at their highest level since 2022, at EUR79.25/MWh",
+   "why": "Same paragraph: fire at an industrial site in Russia's Yamalo-Nenets district (a major Russian gas hub) and Ukrainian drone strikes on two gas condensate plants there, matching the causal chain exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-09/15560__ecb-preview-another-hike-without-guidance.txt",
+   "span": "We maintain our view that September is more likely than not the last hike of this tightening cycle",
+   "why": "Same file: '25bp hike' expected next week (quarter point) and 'policy simulations... point to a peak deposit rate of around 2.5%,' consistent with hiking to 2.5% and September being the final hike. Framed correctly as expectation, not an announced fact."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-09/15745__gs-crypto-weekly-recap-macro-heavy-9-sep-2026.txt",
+   "span": "Waller's comments were followed by the largest single-day BTC ETF inflow since January, at $729m (Bloomberg)",
+   "why": "Same file: '$984m in net inflows' for U.S. spot BTC ETFs last week, and 'U.S. spot ETH ETFs recorded $218m in net inflows last week' -- all three figures match exactly."
+  }
+ ],
+ "faithful": 11,
+ "distorted": 2,
+ "unsupported": 2,
+ "faithful_rate": 0.733,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}
