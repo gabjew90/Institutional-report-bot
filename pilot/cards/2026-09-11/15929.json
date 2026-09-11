@@ -1,0 +1,448 @@
+{
+ "brief": "Goldman Sachs equity sales daily for 10 Sep 2026, mostly reporting rather than arguing. The tape: S&P 500 down 48bps at 7636 and up 11.6% year to date, which the note attributes to rising oil prices and higher yields. Brent $101 on ongoing Iran escalation, US 10-year 4.84% after Bessent's $6bn buyback came in smaller than expected, gold $4410, bitcoin $78k, Meta up 7% on its Muse agent launch. Two views carry chains. Mike Cahill: a firmer inflation print of +25bps, if sufficiently broad, would likely push the Fed to act because it would violate the parameters Williams and Waller set out over the summer, a softer 18-20bps print lets the Fed stand still, and the middle ground is harder because the market has shown discomfort with inflation near 2.5% and no Fed move. The bank expects a 25bps ECB hike today, fully priced, and thinks September is the last hike of the cycle. Also reported: Apple's $1999 foldable and $100 Pro price hike, called largely as expected and supportive of device demand, Google's EUR 13bn Finland AI investment, Uber's EUR 4.5bn euro bond debut, Zcash at $21bn, and an Anthropic researcher resigning with an AI risk warning.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "The S&P 500 fell 48bps to 7636 and is up 11.6% year to date, reacting to rising oil prices and higher yields.",
+   "anchor": "S&P -48bps @7636 (+11.6% ytd) reacting on rising oil prices and higher yields",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Brent crude is at $101 on ongoing Iran escalation.",
+   "anchor": "higher yields; Brent $101 (ongoing Iran",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "The US 10-year Treasury yield is at 4.84%, with Bessent's $6bn buyback smaller than expected.",
+   "anchor": "US 10yr at 4.84% (Bessent\u2019s $6bn buyback was less than expected)",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Gold is at $4410, up 2% year to date.",
+   "anchor": "was less than expected); Gold $4410 (+2%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Bitcoin is at $78k, down 11% year to date.",
+   "anchor": "ytd) and Bitcoin $78k (-11% ytd); Meta +7%",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Zcash, a privacy coin, reached a $21bn market cap, up 40% over the last week.",
+   "anchor": "ZCash: privacy coin reached $21bn market cap (+40% over the last week)",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Grayscale's Zcash ETF, launched 25 August, has surpassed $500m in assets.",
+   "anchor": "(launched 25th Aug) surpassed $500m in assets.",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Uber raised 4.5bn euros in its first euro bond sale.",
+   "anchor": "Uber: raised \u20ac4.5bn from its first euro bond sale",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Uber's euro bond sale drew more than 15bn euros of demand across five bonds with maturities from 3 to 20 years.",
+   "anchor": ">\u20ac15bn demand for 3yr-20yr maturities (5 bonds); 3yr at",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "S&P 500 earnings grew by over 30% year on year in Q2 2026.",
+   "anchor": "S&P 500 earnings grew by over 30% year/year in Q2 2026",
+   "topic": "cross-asset session levels",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "The outlook for S&P 500 earnings is still double digit growth.",
+   "anchor": "in Q2 2026 and the outlook is still double",
+   "topic": "cross-asset session levels",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Trump pledged to pay every adult US citizen $5k if Republicans retain the House and Senate in the midterm elections.",
+   "anchor": "pledged to pay every adult citizen in the US $5k if Republicans retain the House and Senate",
+   "topic": "cross-asset session levels",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "midterm elections"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Mike Cahill, Head of FX Strategy, says a firmer US inflation print of +25bps, if sufficiently broad, would likely push the Fed to act because it would violate the parameters Williams and Waller laid out over the summer.",
+   "anchor": "likely push the Fed to act as it would violate the parameters that Williams and Waller laid out over the",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Mike Cahill says a softer US inflation print of 18-20bps should be sufficient for the Fed to stand still without risking an adverse market reaction.",
+   "anchor": "summer. A softer print (18-20bps) should be sufficient for the Fed to stand still without risking an adverse",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Mike Cahill says a middle-ground inflation print is more difficult because the market has shown discomfort with inflation printing around 2.5% while the Fed stands still.",
+   "anchor": "with inflation printing ~2.5% and the Fed standing still, Mike Cahill (Head of FX Strategy).",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Goldman Sachs expects the ECB to hike 25bps at today's decision, which is fully priced.",
+   "anchor": "we expect a 25bps hike (fully priced); focus will be on the updated staff",
+   "topic": "ECB September decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Goldman Sachs thinks September is the last hike of the ECB's tightening cycle.",
+   "anchor": "projections and Lagarde\u2019s comments on the policy outlook; we think that Sep is the last hike of this",
+   "topic": "ECB September decision",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Apple presented the iPhone Duo, a foldable iPhone with the largest iPhone display ever, starting at $1999.",
+   "anchor": "presented the iPhone Duo (foldable iPhone with the largest iPhone display ever; starts $1999)",
+   "topic": "Apple product launch",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Apple also presented the iPhone 18 Pro, Apple Watch Series 12, Apple Watch Ultra 4 and AirPods 5.",
+   "anchor": "iPhone 18 Pro, Apple Watch Series 12, Apple Watch Ultra 4, and AirPods 5",
+   "topic": "Apple product launch",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "The iPhone 18 Pro and Max take only a $100 price increase over last year's model.",
+   "anchor": "getting (only) a $100 hike over last year\u2019s model",
+   "topic": "Apple product launch",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Goldman's analyst says Apple's product feature announcements were largely as expected and should drive continued strength in device demand.",
+   "anchor": "largely as expected, and should drive continued strength in device demand.",
+   "topic": "Apple product launch",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Meta launched Muse, an AI agent that sends emails, books travel and sells cars for users.",
+   "anchor": "Meta (stock +7%): launched Muse, an AI agent that sends emails, books travel and sells cars",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Muse's basic tier is free and heavier use costs $20 or $100 a month.",
+   "anchor": "basic tier is free and heavier use costs $20 or $100 a month.",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Meta stock is up 7% on the Muse launch.",
+   "anchor": "Meta +7% on Muse launch; ECB rate decision (today)",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Google will invest 13bn euros into AI infrastructure in Finland until 2028, its largest single investment in Europe.",
+   "anchor": "Google to invest \u20ac13bn into AI infrastructure in Finland until 2028 (6m population)",
+   "topic": "AI narrative",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "until 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Data center projects announced in Finland in recent months carry potential capacities of hundreds of megawatts, making it the Texas of Europe.",
+   "anchor": "megawatts have been announced in Finland in recent months making it the \"Texas of Europe\".",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Anthropic researcher Jacob Coxon resigned with a warning about the dangers of AI development, and his post drew more than 10m views.",
+   "anchor": "Anthropic researcher Jacob Coxon (spent 3yrs at Anthropic and OpenAI) resigned with warning about",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Anthropic researcher Evan Hubinger agreed and said these will soon be superhuman systems that can hack anything, revolutionise any field overnight, and acquire real power and resources.",
+   "anchor": "researcher (Evan Hubinger) agreed and said that \u201cthese will soon be superhuman systems that can hack",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "Evan Hubinger believes there is a greater than 10% chance AI could kill all humans.",
+   "anchor": "anything, revolutionise any field overnight, and acquire real power and resources\u201d; believes >10% chance",
+   "topic": "AI narrative",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "XPeng Co-President Gu says China has become the world's real-world laboratory for EVs and physical AI, with new-energy vehicles already outselling combustion cars there.",
+   "anchor": "become the world\u2019s real-world laboratory for EVs and Physical AI. New-energy vehicles already outsell",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefers Daily 10 Sep 2026",
+   "claim": "XPeng Co-President Gu says humanoid robots are moving from PowerPoint to industrialization much faster than expected.",
+   "anchor": "Humanoid robots are moving from PowerPoint to industrialization much faster than expected.",
+   "topic": "AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/15929__duttenhoefers-daily-10-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 31,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
