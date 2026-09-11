@@ -1,0 +1,925 @@
+{
+ "brief": "Goldman Sachs FICC and Equities sales recaps Day 2 of its Communacopia and Technology Conference, covering MSFT, NET, AMAT, NOW, TSM, SPOT, CDNS, DELL, CMCSA and ETSY. It reports management statements and does not argue a house view. A common chain runs through the software names: enterprises now judge AI on measured return, so buyers mix models rather than standardise on one provider, and pricing shifts toward consumption and outcome terms. ServiceNow attaches numbers to that chain, 20 internal Level-1 agent roles resolving roughly 90% of routine cases and about $1bn of value created, with more than 60% of net new business on value or consumption pricing. The semis and hardware chain runs from AI and datacentre demand to capex mix: Applied Materials sees leading-edge logic, advanced packaging and memory at roughly 80% of WFE in 2026 and 2027, TSMC cites customer commitments extending toward 2030 and rolling 8-quarter forecasts, and Dell reports a $9.5bn AI server backlog against an installed base still to refresh. Comcast is the counterweight, with fibre overbuild accelerating to 4-5% annually and broadband subscriber pressure still elevated.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Microsoft management says customer conversations are increasingly centred on AI return on investment, with enterprises optimising outcomes through a mix of models rather than standardising on a single provider.",
+   "anchor": "enterprises looking to optimise outcomes through a mix of models rather than standardising around a single provider",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Microsoft says platform installation times have improved by approximately 10-15% over the past year.",
+   "anchor": "Platform installation times have improved by approximately",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Microsoft continues to invest aggressively in land, power and datacentre infrastructure to preserve long-term flexibility, with the upcoming Maia accelerator an addition to its custom silicon strategy.",
+   "anchor": "Microsoft continues to invest aggressively in land, power, and datacentre infrastructure to preserve long-term flexibility",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Microsoft management expects AI to drive a gradual shift toward more consumption- and outcome-based pricing models and frames AI as an expansive growth opportunity rather than a cost-saving tool.",
+   "anchor": "and outcome-based pricing models, and AI was framed as an expansive growth opportunity",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cloudflare reports improving traction in verticals such as media, where AI-enabled content creation is driving double-digit growth.",
+   "anchor": "improving traction in verticals such as media, where AI-enabled content creation is driving double-digit growth",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cloudflare management is sceptical that agentic applications will trigger a massive hardware upgrade cycle, seeing value potentially captured in software layers and differentiated data storage instead.",
+   "anchor": "there was scepticism regarding whether agentic apps will trigger a massive hardware upgrade cycle",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cloudflare management says data sovereignty and security are becoming increasingly important as enterprises and government organisations deploy AI into production environments.",
+   "anchor": "enterprises and government organisations deploy AI into production environments",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cloudflare plans continued investment in AI infrastructure optimisation, including improving GPU utilisation.",
+   "anchor": "management highlighted continued investment in AI infrastructure optimisation, including improving GPU utilisation",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Applied Materials expects leading-edge logic, advanced packaging and memory to account for roughly 80% of wafer fab equipment spending in both 2026 and 2027.",
+   "anchor": "advanced packaging, and memory expected to account for ~80% of WFE in both 2026 and 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 and 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Applied Materials management reiterated 40% revenue growth in 2026.",
+   "anchor": "mgmt. reiterated 40% revenue growth in 2026",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Applied Materials expects advanced packaging revenue to grow roughly 70% year on year in 2026 to a $2.5bn to $3.0bn run-rate.",
+   "anchor": "with revenue expected to grow roughly 70% YoY in 2026 to a $2.5bn-$3.0bn run-rate",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Applied Materials expects its Process Control business to grow more than 50% as customers prioritise yield optimisation at advanced nodes.",
+   "anchor": "while Process Control is expected to grow more than 50% as customers prioritise yield",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Applied Materials is applying AI across more than 37,000 connected chambers for predictive maintenance and yield optimisation.",
+   "anchor": "AMAT is leveraging AI across more than 37,000 connected chambers to enhance predictive maintenance and yield optimisation",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Applied Materials reports internal productivity improvements of roughly 50% in software and algorithm development.",
+   "anchor": "while internally seeing productivity improvements of roughly 50% in software and algorithm development",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Applied Materials expects China revenue growth in 2026 supported by ICAPS demand and sees a longer-term compound growth opportunity in that market.",
+   "anchor": "mgmt. expect revenue growth in 2026 supported by ICAPS demand and see a longer-term",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 and longer term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "ServiceNow has deployed 20 Level-1 agent roles internally.",
+   "anchor": "ServiceNow has already deployed 20 Level-1 agent roles internally",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "ServiceNow says AI now resolves roughly 90% of its customer service, employee service and other routine cases.",
+   "anchor": "with AI now resolving roughly 90% of customer service, employee service, and other routine cases",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "ServiceNow says its internal AI deployments have generated approximately $1bn of value creation.",
+   "anchor": "These implementations have generated approximately $1bn of value creation",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "ServiceNow says its CMDB and workflow architecture now supports approximately 100bn workflows and 8tn transactions.",
+   "anchor": "now support approximately 100bn workflows and 8tn transactions",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "ServiceNow is extending into identity, infrastructure and security operations through acquisitions including Veza and Armis, positioning above the roughly 50 security tools used by the average enterprise.",
+   "anchor": "Through acquisitions including Veza and Armis, NOW is extending its reach across identity, infrastructure, and security operations",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "ServiceNow management estimates the average seat could ultimately generate roughly 4.5x its original contract value.",
+   "anchor": "estimating that the average seat could ultimately generate roughly 4.5x its original contract value",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "over time"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "ServiceNow says more than 60% of net new business is now tied to value- or consumption-based pricing models.",
+   "anchor": "more than 60% of net new business is now tied to value- or consumption-based pricing",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC CFO Wendell Huang says the market is still in the early innings of the AI megatrend.",
+   "anchor": "CFO Wendell Huang still sees us in the early innings of the AI megatrend",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC says AI demand visibility is supported by customer commitments extending toward 2030 and rolling 8-quarter forecasts.",
+   "anchor": "noting continued demand visibility supported by customer commitments extending toward 2030 and rolling 8-quarter forecasts",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "toward 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC argues lower token costs and open-source models should drive greater AI adoption and silicon demand.",
+   "anchor": "TSMC argued that lower token costs and open-source models should drive greater AI adoption and silicon demand",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC says Arizona Phase 1 on the N4 node is now operating profitably with yields comparable to Taiwan.",
+   "anchor": "Arizona Phase 1 (N4) is now operating profitably with yields comparable to Taiwan",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC says Arizona Phase 2 on the N3 node is moving in soon and Phase 3 is underway.",
+   "anchor": "Phase 2 (N3) is moving in soon, Phase 3 is underway",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC expects roughly 30% of its N2-and-beyond capacity to sit outside Taiwan within five years.",
+   "anchor": "expects roughly 30% of N2-and-beyond capacity to sit outside Taiwan within five years",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC management reiterated its view that the company maintains a 2 to 3 year technology lead.",
+   "anchor": "management reiterated its view that TSMC maintains a 2-3 year technology lead",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC says advanced packaging demand continues to exceed supply.",
+   "anchor": "Advanced packaging remains a major growth driver, with demand continuing to exceed supply",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "TSMC says its long-term gross margin framework remains intact at 56% or above despite temporary dilution from overseas expansion and the N2 ramp.",
+   "anchor": "long-term gross margin framework remains intact at 56%+, despite temporary dilution from overseas expansion",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Spotify says its audiobook offering is already generating approximately $100m of annual recurring revenue after roughly one year.",
+   "anchor": "with its audiobook offering already generating approximately $100m ARR after roughly one year",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Spotify management says the platform is now priced above competitors in most markets while continuing to see limited churn.",
+   "anchor": "noting that the platform is now priced above competitors in most markets while continuing to see limited churn",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Spotify is working directly with labels and rights holders through opt-in frameworks rather than training generative models on unlicensed data.",
+   "anchor": "SPOT are now working directly with labels and rights holders through opt-in frameworks rather than training models on unlicensed data",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Spotify reports podcast video engagement growing roughly 50% year on year.",
+   "anchor": "with podcast video engagement growing roughly 50% YoY",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Spotify says songs with video are roughly 24x more likely to be streamed or saved.",
+   "anchor": "songs with video are ~24x more likely to be streamed or saved",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cadence says chip-design activity remains exceptionally strong across both traditional semiconductor customers and hyperscalers.",
+   "anchor": "noting that chip-design activity remains exceptionally strong across both traditional semiconductor customers and hyperscalers",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cadence management says agentic AI presents a whole new addressable market opportunity on top of its core EDA franchise.",
+   "anchor": "agentic AI presents a whole new TAM opportunity",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cadence management says chip complexity is projected to increase roughly 48x over the next five years.",
+   "anchor": "chip complexity, which management noted is projected to increase roughly 48x over the next five years",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cadence says its hardware-emulation business has delivered record revenue for six consecutive years.",
+   "anchor": "has now delivered record revenue for six consecutive years",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cadence says its IP business is growing roughly 30% annually as customers adopt higher-performance interfaces such as HBM, UCIe, DDR and SerDes.",
+   "anchor": "while the IP business is growing roughly 30% annually as customers adopt higher-performance interfaces",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Cadence is bullish on physical AI, arguing silicon content, simulation requirements and design complexity across robotics and autonomous systems could drive a future leg of growth.",
+   "anchor": "CDNS remains bullish on physical AI, arguing that the silicon content, simulation requirements, and design complexity",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "future"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Michael Dell says the market is in the early stages of a durable, multi-year AI infrastructure buildout.",
+   "anchor": "the market is in the early stages of a durable, multi-year AI infrastructure buildout",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "multi-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Dell cites roughly 400m PCs over four years old and 1.3m servers running 13th-generation-or-older platforms as evidence a refresh cycle is still ahead.",
+   "anchor": "with roughly 400m PCs over four years old and 1.3m servers running 13th-generation-or-older platforms",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Dell says component availability could remain tight into 2027.",
+   "anchor": "Component availability could remain tight into 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Dell says many international markets are running roughly 12 to 18 months behind the US on enterprise and sovereign AI adoption.",
+   "anchor": "as many international markets running roughly 12-18 months behind the US",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Dell reports an AI server backlog of approximately $9.5bn with more than $13bn already converted.",
+   "anchor": "AI server backlog stood at approximately $9.5bn, with more than $13bn already converted",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Dell says storage revenue grew 26% last quarter as customers reorganise data architectures for AI workloads.",
+   "anchor": "while storage revenue grew 26% last quarter as customers increasingly reorganise data architectures",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Dell has reduced operating expenses to roughly 8% of revenue.",
+   "anchor": "reduced OpEx to roughly 8% of",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Goldman sales says investors focused on Dell AI infrastructure demand may be underestimating the earnings power created by Dell execution advantages.",
+   "anchor": "investors remain focused on AI infrastructure demand but may be underestimating the earnings power",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Comcast CFO acknowledged that broadband subscriber pressure remains elevated given aggressive fibre pricing.",
+   "anchor": "broadband subscriber pressure remains elevated given aggressive fibre pricing",
+   "topic": "broadband competitive pressure",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Comcast reiterated expectations for improving broadband net losses through 2026.",
+   "anchor": "reiterated expectations for improving broadband net losses through 2026",
+   "topic": "broadband competitive pressure",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Comcast highlighted that 3Q26 estimated broadband net additions would worsen year on year, with GS and Visible Alpha consensus at -87k and -90k against -91k a year ago.",
+   "anchor": "3Q26E broadband net additions would worsen yoy (GS/Visible Alpha Consensus Data at -87k/-90k v. year-ago at -91k)",
+   "topic": "broadband competitive pressure",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Comcast says fibre overbuild activity is accelerating to 4-5% annually from 2-3% previously.",
+   "anchor": "Overbuild activity is accelerating to 4-5% annually from 2-3% previously",
+   "topic": "broadband competitive pressure",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Comcast says some competitors continue offering heavily discounted $30-40 per month gigabit plans despite significantly higher deployment costs.",
+   "anchor": "some competitors continue offering heavily discounted $30-40 per month gigabit plans",
+   "topic": "broadband competitive pressure",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Comcast cites a base of 65m homes passed and 30m customer relationships with wireless penetration still relatively low as an underappreciated opportunity.",
+   "anchor": "their base of 65m homes passed and 30m customer relationships, with wireless penetration still relatively low",
+   "topic": "broadband competitive pressure",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Comcast expects its largest-ever cost program to generate billions of dollars of savings through technology modernisation, AI deployment and reduced organisational complexity, redirected into wireless expansion, edge compute and customer experience.",
+   "anchor": "expected to generate billions of dollars of savings through technology modernisation, AI deployment, and reduced organisational complexity",
+   "topic": "broadband competitive pressure",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Etsy is repositioning the marketplace around engagement, personalisation and AI-driven discovery to increase buyer frequency.",
+   "anchor": "Etsy is repositioning the marketplace around engagement, personalisation, and AI-driven discovery",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Etsy reports 7% growth in gross buyer additions and momentum among habitual buyers.",
+   "anchor": "including +7% growth in gross buyer additions and momentum among habitual buyers",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 2 10 Sep 2026",
+   "claim": "Etsy says app users exhibit materially higher engagement, frequency and lifetime value than non-app users.",
+   "anchor": "noting that app users exhibit materially higher engagement, frequency, and lifetime value than non-app users",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/15931__gs-tech-communacopia-conference-best-of-day-2-10-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 60,
+  "matched": 60,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
