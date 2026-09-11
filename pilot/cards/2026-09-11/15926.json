@@ -1,0 +1,591 @@
+{
+ "brief": "Goldman FICC and Equities daily, 10 September 2026, four subjects. Communacopia Day 2 read bullish. BKNG, TOST, Block and ETSY confirmed steady, resilient consumer demand with no macro-driven deterioration, AI is accelerating business activity (CDNS chip design, DT consumption above 20%, SNDK muted NAND supply against rising inference demand, MiniMax ARR ramp despite compute bottlenecks), and AI plus flatter structures turn fixed costs into operating leverage. Guidance: VZ at the top end of 750k to 1 million 2026 postpaid net adds, CMCSA modest broadband ARPU and EBITDA gains from 3Q26 despite competitive pressure, CCI reiterating $60-70 million leasing, NXPI raising prices. Second, US fundamental L/S gross and net leverage stand at 207% and 49.8%, the 20th and 6th percentiles versus the past year, therefore rallies are being chased. Garret's evidence: SPX rallies run almost twice as volatile as sell-offs and call implieds correlate more to spot, not a market full on exposure. Third, short the GSXUSWCH consumer-inertia basket against a sector-neutral hedge, because AI agents cut switching costs and pressure profit pools built on customer inaction. Fourth, $135 billion year-to-date USD convertible volume, 44% from AI borrowers on GS estimates, a channel GS says offers upside convexity.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman characterises the overall message from Communacopia Day 2 as decidedly bullish.",
+   "anchor": "The overall message from Day 2 was decidedly bullish.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Booking Holdings, Toast, Block and Etsy told Communacopia Day 2 that consumer demand remains steady and highly resilient with no signs of macro-driven deterioration.",
+   "anchor": "consumer demand remains steady and highly resilient, with no signs of macro-driven deterioration.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "BKNG",
+    "TOST",
+    "SQ",
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Cadence Design Systems reported robust chip design activity from both traditional semiconductor firms and hyperscalers.",
+   "anchor": "Cadence Design Systems (CDNS) highlighted robust chip design activity from traditional semiconductor firms and hyperscalers.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Dynatrace reported accelerating core business momentum with DPS consumption growing over 20%.",
+   "anchor": "Dynatrace (DT) pointed to accelerating core business momentum, with DPS consumption growing over 20%.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "DT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Verizon expects 2026 postpaid phone net additions to land at the top end of its 750k to 1 million guidance range.",
+   "anchor": "Verizon (VZ) expects 2026 postpaid phone net additions at the top end of its 750k\u20131 million guidance",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Verizon says it is capitalising on AI data center connections and sees significant opportunity there.",
+   "anchor": "VZ is capitalizing on AI data center connections",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Comcast expects modest improvements in broadband ARPU and EBITDA starting in 3Q26, despite near-term competitive pressures.",
+   "anchor": "(CMCSA) expects modest improvements in broadband ARPU and EBITDA starting in 3Q26",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Crown Castle reiterated leasing guidance of $60-70 million.",
+   "anchor": "Crown Castle (CCI) reiterated its leasing guidance of $60-70 million",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CCI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Crown Castle is trialing edge data centers.",
+   "anchor": "reiterated its leasing guidance of $60-70 million and is trialing edge data centers.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "CCI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "NXP Semiconductors is gradually raising prices to offset input costs.",
+   "anchor": "NXP Semiconductors (NXPI) is gradually raising prices to offset input costs.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "SanDisk expects muted NAND supply alongside rising AI inference demand.",
+   "anchor": "SanDisk (SNDK) expects muted NAND supply alongside rising AI inference demand.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "MiniMax reported a strong ARR ramp-up from its M3 and H3 models despite compute supply bottlenecks.",
+   "anchor": "MiniMax reported strong ARR ramp-up from its M3 and H3 models despite compute supply bottlenecks.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Etsy is using AI to improve marketplace matching and is partnering with third-party LLMs for agentic commerce.",
+   "anchor": "Etsy is leveraging AI to improve marketplace matching and is partnering with third-party LLMs for agentic commerce.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Booking Holdings is testing GenAI tools including Penny and sees LLMs as evolving paid performance marketing channels.",
+   "anchor": "Booking Holdings is testing GenAI tools (e.g., Penny) and sees LLMs as evolving paid performance marketing channels.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "BKNG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Companies at Communacopia are using AI and flatter organizational structures to hold output while cutting fixed costs, improving operating leverage.",
+   "anchor": "Companies are successfully leveraging AI and flatter organizational structures to maintain output while reducing fixed costs",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Block and Chime are realizing significant fixed-cost leverage and product velocity from organizational flattening and unified AI infrastructure.",
+   "anchor": "Companies like Block and Chime are realizing significant fixed-cost leverage and product velocity through organizational flattening",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "SQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "US Fundamental L/S gross leverage stands at 207% and net leverage at 49.8%.",
+   "anchor": "US Fundamental L/S gross/net leverage now stand at 207% / 49.8%",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "US Fundamental L/S gross and net leverage sit in the 20th and 6th percentiles versus the past year and the 59th and 10th percentiles versus the past three years.",
+   "anchor": "in the 20th / 6th percentiles vs. the past year and 59th / 10th percentiles vs. the past three years",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman says hedge fund net leverage is low and that it sees chasing on rallies.",
+   "anchor": "Net leverage is Low and on Rallies We See Chasing",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman's Brian Garret notes SPX rallies have been almost twice as volatile as SPX sell-offs.",
+   "anchor": "SPX rallies have been almost twice as volatile as SPX sell offs",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman's Brian Garret notes SPX call implieds have a much higher realized correlation to SPX spot.",
+   "anchor": "SPX call implides have a much higher realized correlation to SPX spot",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman reads the rally-versus-selloff volatility pattern as evidence that the market is not full on exposure.",
+   "anchor": "this is not the behavior of a market \u201cfull\u201d on exposure",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman says conference season, including its own Communacopia this week, could exacerbate the chasing dynamic.",
+   "anchor": "conference season could exacerbate this dynamic",
+   "topic": "hedge fund positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman recommends shorting the GSXUSWCH consumer-inertia index against a long sector-neutral hedge, GSCBHSCW, that controls for beta and momentum.",
+   "anchor": "Short GSXUSWCH Index and go long a sector neutral hedge that controls for beta and momentum",
+   "topic": "consumer inertia",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "The consumer-inertia pair trade is a 10v pair trade carrying 57% specific risk and 29% industry bets.",
+   "anchor": "This is a 10v pair trade, 57% specific risk and 29% industry bets.",
+   "topic": "consumer inertia",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "As an alternative to the pair trade, Goldman flags a 15Jan27 90%/75% put spread on the consumer-inertia basket costing an indicative 1.81% with the reference at 96.68.",
+   "anchor": "buying medium term put spreads such as 15Jan27 90% 75% Put Spread indicatively costs 1.81% ref 96.68.",
+   "topic": "consumer inertia",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "15Jan27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman argues that as AI agents perform switching tasks for users, profit pools that have benefited from customer inaction could come under pressure.",
+   "anchor": "profit pools that have historically benefited from customer inaction could come under pressure",
+   "topic": "consumer inertia",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman names insurance, telecom, travel, subscriptions, marketplaces and certain fintech businesses as industries that benefit when customers do not continuously optimize their choices.",
+   "anchor": "Insurance, telecom, travel, subscriptions, marketplaces, and certain fintech businesses all benefit when customers do not continuously optimize their choices.",
+   "topic": "consumer inertia",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman says that if AI agents reduce the cost of comparison and execution, pricing power, retention rates and customer lifetime value could come under pressure.",
+   "anchor": "putting pressure on pricing power, retention rates and customer lifetime value",
+   "topic": "consumer inertia",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman frames the thesis as the internet having made information cheaper and AI agents possibly making switching cheaper.",
+   "anchor": "The internet made information cheaper. AI agents may make switching cheaper",
+   "topic": "consumer inertia",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Year-to-date USD convertible bond volume has reached $135 billion.",
+   "anchor": "Year-to-date USD convertible bond volume has reached $135 billion",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "AI-related borrowers account for 44% of year-to-date USD convertible issuance, on Goldman's estimates.",
+   "anchor": "with AI-related borrowers driving 44% of total issuance, on our estimates",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Alphabet issued $19 billion of convertibles across two tranches this year.",
+   "anchor": "Hyperscaler issuers, including Alphabet ($19 billion across two tranches)",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Oracle issued $5 billion of convertibles this year.",
+   "anchor": "and Oracle ($5 billion), have tapped the convertible market this year",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Hyperscalers tapped the convertible market to optimize debt capacity and rating agency credit metrics alongside large-scale capex programs.",
+   "anchor": "to optimize debt capacity and rating agency credit metrics alongside large-scale capex programs.",
+   "topic": "AI capex financing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman says the convertible market remains attractive to issuers as a way to reduce borrowing costs and optimize leverage profiles.",
+   "anchor": "the convertible market remains attractive to reduce borrowing costs and optimize leverage profiles",
+   "topic": "AI capex financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Conversion premiums on newly issued convertible bonds have been widening.",
+   "anchor": "Conversion premiums have been widening for newly issued convertible bonds",
+   "topic": "AI capex financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "The share of new convertible supply issued with a zero coupon is elevated.",
+   "anchor": "the share of new supply issued with a zero coupon is elevated.",
+   "topic": "AI capex financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman says the convertible bond market has established itself as an important funding source for AI infrastructure.",
+   "anchor": "The convertible bond market has established itself as an important funding source for AI infrastructure.",
+   "topic": "AI capex financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman describes the current environment as one of tight credit spreads and ongoing dispersion across technology equities.",
+   "anchor": "an environment characterized by tight credit spreads, ongoing dispersion across technology equities",
+   "topic": "AI capex financing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Armbrust - What Matters Today Communacopia Day 2 Takeaways and Day 3 Ahead",
+   "claim": "Goldman thinks convertible bonds remain uniquely positioned to deliver asymmetric risk/reward and attractive upside convexity for total return credit portfolios.",
+   "anchor": "we think convertible bonds remain uniquely positioned to deliver asymmetric risk/reward profiles and attractive upside convexity",
+   "topic": "AI capex financing",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/15926__gs-armbrust-what-matters-today-communacopia-day-2-takeaways-.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 41,
+  "matched": 41,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
