@@ -1,0 +1,816 @@
+[Page 1]
+ 
+ 
+ 
+Index Insights | Multi-Asset 
+Optimized access to 
+private credit: An 
+index-based 
+approach 
+ 
+September 2026 
+ 
+ 
+ 
+AUTHORS 
+Rohan Desai 
+Senior Manager, Private Asset Indexes 
+rohan.desai@lseg.com 
+ 
+Ali Zaidi 
+Head of Real Assets and Alternatives 
+ali.zaidi@lseg.com 
+
+
+[Page 2]
+Index Insights | Multi-Asset 
+FTSE Russell  
+2
+Overview 
+Business Development Companies (BDCs) are closed-end investment companies 
+regulated under the Investment Company Act of 1940, established to facilitate the flow 
+of capital to small and middle-market enterprises in the United States. BDCs provide 
+public market access to private credit; namely, directly originated, floating-rate middle 
+market loans with embedded illiquidity and complexity premia. 
+Since the 2008 Financial Crisis, BDCs have exploded in popularity as a conduit for 
+private credit for retail and institutional investors alike. Following the Crisis, regulators 
+imposed stricter capital rules through Basel III and Dodd-Frank. Banks reduced 
+exposure to risky middle-market lending; namely, non-investment-grade, junk bonds. 
+This created a massive financing gap as these companies still needed acquisition 
+financing, growth capital, refinancing, and sponsor-backed buyout loans. The sharp 
+rise in interest rates in 2022 accelerated the growth of private credit by creating a 
+financing gap, particularly in sponsor-backed and middle-market lending. As banks 
+were unwilling and unable to hold these loans, private equity firms and asset 
+managers filled this gap.  
+BDCs became an ideal wrapper because they could raise capital from retail investors, 
+offer high dividends, and provide exposure to private credit without needing 
+institutional access. In the low-interest-rate era post-2008, BDCs became attractive 
+due to their high single digit to low double digit yields. When Treasury yields were 
+near zero for over a decade, BDCs were earning high yields through interest income, 
+floating-rate spreads and origination fees. 
+Private credit became mainstream as pension funds entered, insurance companies 
+allocated capital, and sovereign wealth funds participated. The 2022 interest rate 
+hikes accelerated this trend by constraining traditional bank lending and increasing 
+demand for private, flexible sources of capital. At the same time, private equity 
+expanded through higher buyout activity and leveraged acquisitions, further increasing 
+the need for direct lenders. As private credit became institutionalized, the asset class 
+scaled significantly. Today, the total assets in private credit are estimated to be about 
+$3.5 trillion, of which about $2 trillion is core direct lending and the strategies BDCs 
+utilize. 
+ 
+ 
+ 
+ 
+
+
+[Page 3]
+Index Insights | Multi-Asset 
+FTSE Russell  
+3
+Contents 
+2026: First Large-Scale Stress Test ........................................................................................................... 4 
+The FTSE Private Credit BDC Composite Index: Investor tool for balancing attributes ............................. 4 
+Performance Characteristics and Return Profile ........................................................................................ 5 
+Listed and Non-Listed BDCs within the Index  Framework ........................................................................ 7 
+Indexing Approach for Systematic Private Credit  Exposure ...................................................................... 8 
+Unlocking Private Credit Though a Blended  Framework ........................................................................... 8 
+Risks and Implementation Considerations ............................................................................................... 11 
+Conclusion ............................................................................................................................................... 11 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 4]
+Index Insights | Multi-Asset 
+FTSE Russell  
+4
+2026: First large-scale stress test 
+The market is currently going through its first period of stress since becoming a mainstream asset class. 
+Private credit grew from a niche institutional strategy into a multi-trillion-dollar industry during an easy 
+financing environment. 2026 is the first time the industry is being tested under sustained high rates, 
+slowing growth, and retail redemption pressure. 
+Prior to BDCs, the asset class historically relied on institutional investors, who are patient and understand 
+illiquidity. The expansion into retail channels gave investors the option of liquidity while holding illiquid 
+loans. Due to several factors but largely due to technology-focused portfolios and software-heavy 
+directing lending books, redemption requests surged in late 2025 up until today. This has caused a 
+smaller-scale ‘bank run’ in parts of the market. 
+Some of these factors include: 
+– AI shock to software lending: Private credit becoming heavily concentrated in SaaS, enterprise 
+software, and recurring-revenue businesses. AI agents and automation created fears that these 
+business models would weaken structurally. 
+– Valuation: Private credit funds adjust mark-to-market valuations slowly and investors question the 
+validity of Net Asset Value (NAV). 
+– Competition: Because of the decade of private credit growth, the asset class became crowded and 
+competition intensified, underwriting weakened, and spreads compressed. Weaker covenants, higher 
+leverage multiples, and looser structures mean earning lower spreads while taking more risk. 
+Despite the headlines, there are several characteristics of the asset class that can soothe doomsdayers. 
+Most of these assets are senior secured loans, ensuring that these funds are first claimants in the event 
+of bankruptcy. Loan-to-values (LTV) of 30-50% ensure significant portion of the equity value has to be 
+destroyed for lenders to not recover anything. For example, Blue Owl states its average LTV in its public 
+BDC, OBDC, is about 47%. Observers also note problems are concentrated with certain managers and 
+that stronger platforms are benefiting from the volatility. Prominent managers argue that the environment 
+shows idiosyncratic stress rather than a systemic crisis. 
+LSEG recently published a blog that examines the US private credit market through a CLO lens. The 
+paper finds that default rates and systemic risk appear far less pronounced than during the sub-prime 
+and Global Financial Crisis in 2008-09. 
+The FTSE Private Credit BDC Composite Index: 
+Investor tool for balancing attributes  
+There are different types of BDCs: 
+1. Publicly registered, publicly listed 
+2. Publicly registered, non-listed 
+3. True private vehicles 
+There are various trade-offs to be discussed with listed and non-listed vehicles. The most glaring 
+advantage of listed BDCs is the equity-like liquidity that’s available to investors. However, full liquidity is 
+accompanied by price volatility determined by market sentiment. As a result, that price can be lower than 
+the stated NAV of a BDC; the BDC trades at a discount to its reported NAV. When this occurs, investors 
+believe the economic value of the portfolio is lower than its book value, or that future shareholder returns 
+will be weaker than those implied by that book value. This potential dislocation of price vs NAV can be 
+seen as the trade-off between liquidity and intrinsic value. In contrast, non-listed BDCs incur no public 
+market volatility. If an investor wants to redeem their investment, it will be redeemed at the NAV at the 
+time of redemption. 
+Times of stress reinforce the need for asset class and vehicle-type benchmarks. Because the BDC 
+wrapper is still relatively new, there is no standard benchmark.  
+
+
+[Page 5]
+Index Insights | Multi-Asset 
+FTSE Russell  
+5
+The FTSE Private Credit BDC Composite Index has been developed as a rules-based benchmark 
+designed to capture the full investable BDC universe through a combined exposure to listed and non-
+listed vehicles. The index reflects the view that efficient participation in private credit markets increasingly 
+requires a framework that integrates both liquid and less-liquid structures. 
+Within this context, the index is intended to provide a unified representation of BDC exposures by 
+combining the transparency and tradability of listed companies with the valuation stability of non-listed 
+vehicles. As private credit continues to assume a larger role within income-focused allocations, investors 
+are seeking solutions that align yield generation with operational flexibility, consistency, and scalability. 
+The FTSE Private Credit BDC Composite Index is structured to meet these objectives by delivering 
+diversified exposure to middle-market lending through a blend of underlying vehicles, thereby 
+establishing a foundation for investable strategies that reflect the evolving nature of private credit within 
+institutional and wealth portfolios. 
+Performance characteristics and return profile 
+The performance of BDCs within the FTSE Private Credit BDC Composite Index is primarily driven by net 
+investment income generated from loan portfolios. This income reflects the spread between portfolio 
+yields and funding costs, supported by direct lending economics and senior positioning within capital 
+structures. 
+The predominance of floating-rate assets within BDC portfolios has enhanced their ability to capture 
+higher base rates, contributing to income generation in rising rate environments. As a result, BDCs have 
+become an increasingly relevant component of portfolio income strategies, offering returns that reflect 
+underlying private credit dynamics. 
+A key metric in evaluating BDCs is net investment income, which is recurring lending earnings. This 
+includes interest income, fee income subtracted by interest expense and operating expenses, i.e., we 
+want to see if the dividends are covered by recurring lending income. Below is a table of the top 5 
+constituents of the FTSE Private Credit BDC Composite Index, one of which is a non-listed BDC 
+(BCRED). 
+Distribution coverage 
+Ticker 
+BDC Name 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+ARCC.OQ 
+Ares Capital Corporation 
+108% 
+104% 
+104% 
+98% 
+BCRED 
+Blackstone Private Credit Fund 
+112% 
+111% 
+109% 
+90% 
+OBDC 
+Blue Owl Capital Corporation 
+108% 
+100% 
+97% 
+84% 
+BXSL 
+Blackstone Secured Lending Fund 
+100% 
+103% 
+104% 
+99% 
+MAIN 
+Main Street Capital Corporation 
+144% 
+146% 
+143% 
+136% 
+Source: Public SEC Filings 
+In line with public headlines, most of the top 5 constituents are under-earning their dividends. They are 
+paying investors more than they earn in income. BCRED and OBDC show noticeable deterioration in Q1 
+2026 distribution coverage with pressure from lower base rates, higher non-accruals, rising payment-in-
+kind usage, and spread compression. OBDC, and namely, Blue Owl, has dominated public headlines as 
+a manager that has faced oversubscribed redemption requests that will not be fulfilled for the next 
+few  years.  
+Blue Owl scaled their asset management business very quickly but also was successful in expanding the 
+asset class to retail investors. These same investors have the right to repurchase their interests subject 
+to a 5%/quarter limit. Due to market sentiment, liquidity concerns, and concerns about software asset 
+quality, there has been a collective push for the exits throughout 2026, creating pressure on Blue Owl to 
+sell assets in case it does not have liquidity to meet these requests. Selling assets to meet redemptions 
+will reduce earning power by shrinking the asset base that generates interest income. The easiest-to-sell 
+
+
+[Page 6]
+Index Insights | Multi-Asset 
+FTSE Russell  
+6
+assets are better credits and loans with strong demand. NAV can experience downward pressure as 
+loans are sold at a discount. As we currently see, widely public redemptions can cause liquidity spirals. 
+Deteriorating distribution coverage can provide insight into the health of BDCs and their underlying loans. 
+It is important to note that this is not a new phenomenon. During COVID, ARCC and OBDC had <100% 
+distribution coverage ratios. Real estate also undergoes similar periods of overpaying distributions, 
+measured by Funds from Operations (“FFO”). A single quarter of under coverage does not automatically 
+signal trouble. Management may intentionally smooth dividends across quarters. For example, temporary 
+mark pressure, delayed repayments, and season fee income shifts can temporarily reduce coverage. 
+Concern could be warranted when you see persistent under-earning. 
+Monitoring this metric is key in determining BDCs that are adding or diminishing shareholder value. If a 
+BDC is paying out more cash than it earned, the excess comes from NAV depletion, realized gains, 
+leverage, capital raising, and future earnings. Over time, equity value is reduced and NAV declines. Now, 
+the BDC has less equity capital, a lower earning base, and lower future NII potential. Eventually, the 
+manager could cut its dividend, which would be a concerning sign for investors. Typically, private credit 
+managers will slash dividends as a last resort. 
+Another component to look at is NAV per share over time. Below is the NAV per share changes for the 
+top 5 BDCs in FTSE Private Credit BDC Composite Index. 
+BDC 
+Q1’25 
+Q2’25 
+Q3’25 
+Q4’25 
+Q1’26 
+ARCC 
+19.78 
+19.89 
+19.82 
+19.89 
+19.68 
+BCRED 
+25.42 
+25.17 
+24.97 
+24.79 
+24.68 
+OBDC 
+15.14 
+15.03 
+14.89 
+14.62 
+14.41 
+BXSL 
+27.08 
+27.19 
+27.27 
+27.45 
+27.31 
+MAIN 
+29.54 
+29.8 
+30.57 
+31.65 
+31.92 
+Source: Public SEC Filings. 
+OBDC and BCRED saw the most meaningful deterioration among BDCs over the last year, with 4.8% 
+and 2.9% declines, respectively. Inversely, MAIN saw a 8.1% NAV/share increase over the same period. 
+NAV pressure overall broadened in 2025 as credit spreads widened. BDCs with stronger first-lien 
+portfolios, lower leverage, and better underwriting discipline saw better NAV results. 
+Stable or growing NAV usually signals disciplined underwriting, good credit performance, and strong 
+recoveries, whereas NAV erosion signifies overpayment for assets, realizing unrealized losses and poor 
+underwriting. 
+An extension of NAV per share is how the public share price is related to the NAV (only applicable to 
+listed BDCs). If the share price is greater than NAV per share, it indicates strong underwriting, good 
+performance and scale advantages. Discounts to NAV indicate credit concerns, poor governance, and 
+future write-down fears. Below is a table of Price/NAV multiples for the top listed BDCs in the FTSE 
+Private Credit Composite: 
+BDC 
+Q1’26 NAV/Share 
+Price at 3/31 
+Price / NAV 
+ARCC 
+19.59 
+~18.92 
+0.97x 
+OBDC 
+14.41 
+~13.10 
+0.91x 
+BXSL 
+26.26 
+~23.75 
+0.90x 
+MAIN 
+31.92 
+~52.00 
+1.63x 
+Source: Public SEC Filings. 
+
+
+[Page 7]
+Index Insights | Multi-Asset 
+FTSE Russell  
+7
+Another metric to assess strength of portfolio is the non-accrual rate, namely loans where borrowers 
+stopped paying interest. The non-accrual rate for the top 5 BDCs in the FTSE Private Credit Composite is 
+as follows: 
+BDC 
+Q2’25 
+Q3’25 
+Q4’25 
+Q1’26 
+ARCC 
+1.5% 
+1.7% 
+1.9% 
+2.0% 
+BCRED 
+1.2% 
+1.5% 
+1.8% 
+2.1% 
+OBDC 
+1.8% 
+2.1% 
+2.5% 
+2.9% 
+BXSL 
+0.4% 
+0.5% 
+0.5% 
+3.1% 
+MAIN 
+0.7% 
+0.6% 
+0.5% 
+0.6% 
+Source: Public SEC Filings. 
+Generally accepted heuristics are that a BDC is healthy when it maintains <2% non-accruals. 3-5% 
+indicates moderate stress and anything >5% raises substantial doubt about its ability to continue as a 
+going concern. Concerns are amplified if interest rates are rising. 
+Listed and Non-listed BDCs within the index 
+framework 
+The FTSE Private Credit BDC Composite Index is structured around the complementary characteristics 
+of listed and non-listed BDCs. We have constructed the index with 70% non-listed BDCs and 30% listed 
+BDCs. This 70/30 split was chosen as a reflection of our sample size of data. In our dataset, non-
+listed/listed BDCs account for about $205 billion and $81 billion of NAV, respectively. We also wanted to 
+choose an allocation where the stepwise function of private BDCs (due to quarterly updates to NAV) 
+wasn’t overtly obvious when plotted as a line chart (shown in ‘Unlocking Private Credit Though a Blended 
+Framework’). 
+Listed BDCs provide liquidity, transparency, and continuous price discovery through their presence in 
+public markets. These attributes allow for tactical allocation and reflect real-time market sentiment, 
+although they may also introduce pricing volatility and deviations from underlying net asset value. This 
+introduces the tendency to trade at discounts to book value (NAV), as discussed earlier. 
+Non-listed BDCs, by contrast, are valued based on periodic assessments of portfolio holdings and 
+therefore exhibit greater stability in reported valuations. This approach more closely reflects the long-term 
+behavior of private credit assets but is accompanied by reduced liquidity and limited market pricing. 
+These structural differences have become increasingly relevant as private credit allocations have grown. 
+Within the index, the integration of listed and non-listed exposures enables a balanced representation of 
+the asset class, combining liquidity and price transparency with valuation stability and steady 
+income generation. 
+ 
+ 
+
+
+[Page 8]
+Index Insights | Multi-Asset 
+FTSE Russell  
+8
+Indexing approach for systematic private credit 
+exposure 
+The FTSE Private Credit BDC Composite Index is constructed to reflect both market practice and the 
+requirements of a robust benchmark. Eligible constituents are selected based on criteria including size, 
+liquidity (for listed entities), and regulatory designation, ensuring that the index captures a representative 
+universe of BDC exposures. 
+Weighting methodologies incorporate both market-based and fundamental considerations. Listed BDCs 
+are weighted based on market capitalization and adjusted for free float, while non-listed BDCs are 
+incorporated using reported net asset value measures that reflect their economic exposure. This 
+approach aligns index composition with the underlying characteristics of each segment. 
+The index design emphasizes diversification, income consistency, and risk management. Constraints are 
+applied to mitigate concentration risk and to ensure balanced exposure across issuers, sectors, and 
+leverage profiles. Ongoing monitoring of credit quality and portfolio composition forms an integral part of 
+maintaining index integrity. 
+Unlocking private credit though a blended 
+framework 
+The FTSE Private Credit BDC Composite Index provides a structured solution to the challenges 
+associated with accessing private credit through traditional investment channels. While non-listed direct 
+lending strategies offer attractive income, they typically lack liquidity and investor access, whereas public 
+market instruments provide liquidity but are subject to market sentiment associated with equities. 
+By integrating listed and non-listed BDCs, the index aligns these differing attributes within a single 
+framework. Listed exposures introduce liquidity and market responsiveness, while non-listed exposures 
+contribute stability and alignment with underlying asset performance. This combination supports a more 
+balanced return profile and enhances the usability of private credit within diversified portfolios. 
+From a portfolio construction perspective, the index occupies a position between public credit markets 
+and traditional private lending strategies, effectively bridging liquid and less-liquid segments of the credit 
+spectrum. This positioning enables investors to capture private credit returns in a format that is more 
+adaptable to portfolio requirements, including income generation, diversification, and liquidity 
+management. 
+Below is the total return performance of listed BDCs, non-listed BDCs, and the FTSE Private Credit 
+Composite (70/30 non-listed/listed)1 It is clear that although distributions might be similar across public 
+and private vehicles, public prices have significantly different return characteristics than official NAV 
+trends. 
+ 
+1 The FTSE Private Credit Composite Index is calculated daily using the sum of (0.7 * Non-Listed BDC index value) and (0.3 * Listed BDC index 
+value). The Non-Listed BDC index value is calculated by summing NAVs, and each constituent’s contribution is the square root of its NAV / sum 
+of square roots of total index NAV. The Public BDC index value is the sum of constituent market capitalizations, plus their dividends. Each 
+constituent’s contribution is the square root of its market capitalization / sum of square roots of total index market capitalization. Weights are 
+determined quarterly, and the indexes are reconstituted annually. 
+
+
+[Page 9]
+Index Insights | Multi-Asset 
+FTSE Russell  
+9
+ 
+Source: FTSE Russell data in USD as of August 31, 2026. Past performance is no guarantee of future results. Please see the 
+end for important legal disclaimers. 
+Year-On-Year performance - Total return 
+Index 
+2016 
+2017 
+2018 
+2019 
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+FTSE Private 
+Credit BDC 
+Composite  
+Index 
+3.18 
+3.61 
+1.78 
+9.35 
+-10.77 
+18.39 
+2.07 
+10.74 
+10.32 
+1.92 
+FTSE Public BDCs 
+13.93 
+-7.53 
+-7.31 
+23.88 
+-11.05 
+28.51 
+-12.76 
+18.93 
+8.16 
+-15.35 
+FTSE Nonlisted 
+BDCs 
+-0.94 
+8.53 
+5.20 
+4.53 
+-10.65 
+14.43 
+8.58 
+7.85 
+11.16 
+8.46 
+ 
+Public and private BDC performance has varied meaningfully across market cycles, with leadership 
+frequently shifting between the two segments. Public BDCs delivered strong outperformance in years 
+such as 2016, 2019, 2021, and 2023, benefiting from improving risk sentiment and equity market 
+participation. Conversely, non-listed BDCs generated more resilient returns during periods of market 
+stress, notably in 2017, 2018, 2022, and 2026 YTD, reflecting the reduced mark-to-market volatility 
+characteristic of private portfolios. 
+The dispersion in annual returns highlights the challenge of timing allocations between public and private 
+vehicles. For example, public BDCs outperformed non-listed BDCs by more than 14% in 2019 and 2021, 
+yet underperformed by more than 20% in 2022 and by nearly 24% in 2026 YTD. Determining in advance 
+which segment will lead has proven difficult across market cycles. 
+An index-based approach seeks to remove this allocation decision from investors. By systematically 
+combining public and private BDC exposure, the index captures the complementary characteristics of 
+both segments: the liquidity and upside participation of public BDCs alongside the stability and income-
+focused profile of non-listed BDCs. The result is a more balanced approach to measuring private credit 
+across varying market conditions. 
+Along with total return, income trends within the index are notable. The below chart shows the yield on 
+NAV, annualized distributions divided by most recent NAV. Public BDCs have historically shown 
+significantly greater yields compared to their non-listed counterparts. However, it is important to note that 
+non-listed BDCs were a new structure in the 2010s. The FTSE Private Credit Composite only had three 
+non-listed BDCs in 2014, compared to about 100 currently. It grew in this decade as the mass affluent 
+40
+60
+80
+100
+120
+140
+160
+180
+Oct-2014
+Oct-2015
+Oct-2016
+Oct-2017
+Oct-2018
+Oct-2019
+Oct-2020
+Oct-2021
+Oct-2022
+Oct-2023
+Oct-2024
+Oct-2025
+FTSE Private Credit BDC Composite
+Public BDCs
+Non-Listed BDCs
+
+
+[Page 10]
+Index Insights | Multi-Asset 
+FTSE Russell  
+10 
+segment was looking for yield in a near-zero interest rate environment. At present, the distribution yields 
+for non-listed BDCs have caught up with public BDCs.  
+For comparison, the dividend yield for the Russell 2000 is about 0.9%, while the FTSE Private Credit 
+Composite shows a 10.08% current yield on NAV. 
+ 
+Source: FTSE Russell data in USD as of December 31, 2025. Past performance is no guarantee of future results. Please see 
+the end for important legal disclaimers.  
+Given the historical higher distribution yields for public BDCs, risk-adjusted returns for non-listed BDCs 
+are higher than public BDCs over 1-, 3-, 5-, and 10-year periods. In addition to the largely negative price 
+return on public BDCs, the volatility of public BDCs has been about triple that of  
+non-listed BDCs. 
+Non-listed BDCs have historically demonstrated a superior balance of return and risk relative to publicly 
+traded BDCs. Investors benefited from higher absolute returns, lower volatility, and consistently positive 
+return-to-risk ratios across all measurement periods. In contrast, public BDCs experienced significantly 
+greater market-driven volatility, resulting in negative risk-adjusted outcomes over the 1-, 3-, and 5-year 
+horizons. These results suggest that private credit structures, particularly non-listed BDCs, have 
+historically provided a more efficient risk-return profile, and offered investors greater downside resilience 
+while still participating in attractive income and total return generation. 
+Return/Risk ratio and drawdown - Total return 
+Index 
+Return/Risk Ratio 
+ 
+1Y 
+3YR 
+5YR 
+10YR 
+FTSE Private Credit BDC Composite  
+Index 
+-0.20 
+1.08 
+0.54 
+0.35 
+FTSE Public BDCs 
+-1.25 
+-0.38 
+-0.07 
+0.02 
+FTSE Nonlisted BDCs 
+1.91 
+2.05 
+1.17 
+0.54 
+ 
+ 
+3.00%
+5.00%
+7.00%
+9.00%
+11.00%
+13.00%
+15.00%
+Oct-2014
+Oct-2015
+Oct-2016
+Oct-2017
+Oct-2018
+Oct-2019
+Oct-2020
+Oct-2021
+Oct-2022
+Oct-2023
+Oct-2024
+Oct-2025
+FTSE Private Credit BDC Composite
+Public BDCs
+Non-Listed BDCs
+
+
+[Page 11]
+Index Insights | Multi-Asset 
+FTSE Russell  
+11 
+Performance and Volatility – Total Return 
+Index (USD) 
+Return % 
+Return PA %* 
+Volatility %** 
+ 
+3M 
+6M 
+YTD 
+1Y 
+3YR 
+5YR 
+3YR 
+5YR 
+1YR 
+3YR 
+5YR 
+FTSE Private 
+Credit BDC 
+Composite  
+Index 
+1.47 
+0.51 
+0.51 
+0.18 
+20.24 
+36.20 
+6.34 
+6.37 
+5.00 
+4.98 
+5.57 
+FTSE Public 
+BDCs 
+0.05 
+-10.75 
+-10.75 
+-21.76 
+-9.86 
+-10.56 
+-3.40 
+-2.21 
+17.82 
+14.11 
+16.48 
+FTSE Nonlisted 
+BDCs 
+1.84 
+3.84 
+3.84 
+7.86 
+31.38 
+57.07 
+9.52 
+9.45 
+3.83 
+4.52 
+4.01 
+Source: FTSE Russell data in USD as of July 31, 2026. Past performance is no guarantee of future results. Please see the 
+end for important legal disclaimers. 
+Risks and Implementation Considerations 
+The FTSE Private Credit BDC Composite Index is subject to risks inherent in private credit markets, 
+including borrower defaults, credit spreads, interest rate movements and other macroeconomic 
+pressures. These risks are considered in the index’s methodology through diversification across issuers 
+and sectors, as well as through the selection of constituents that meet defined standards of scale and 
+transparency. 
+Effective implementation of investable strategies based on the index requires consideration of liquidity, 
+pricing, and portfolio construction frameworks, particularly in the context of combining assets with 
+different structures. It is important to note that BDCs are primarily income vehicles. Yes – it is positive to 
+see NAV growth and public price appreciation, but the primary consideration in allocation is yield. Thus, it 
+is important to note the stability of distributions paid to investors. Since COVID, distributions in the top 5 
+constituents of the FTSE Private Credit BDC Composite Index have grown to about 9.7% in 2025 from 
+7.2% in 2021. Distribution rates cannot be expected to grow into perpetuity but investors can evaluate the 
+stability and strength of the income and the assets that power it, as described above in distribution 
+coverage. 
+ 
+2021 
+2022 
+2023 
+2024 
+2025 
+ARCC 
+8.2% 
+9.6% 
+10.0% 
+9.3% 
+9.5% 
+BCRED* 
+7.8% 
+8.9% 
+10.3% 
+10.4% 
+10.1% 
+OBDC 
+7.5% 
+9.7% 
+11.0% 
+11.3% 
+11.8% 
+BXSL 
+6.5% 
+9.0% 
+10.5% 
+10.0% 
+10.2% 
+MAIN 
+6.0% 
+6.8% 
+7.0% 
+7.2% 
+7.1% 
+Average 
+7.2% 
+8.8% 
+9.8% 
+9.6% 
+9.7% 
+Source: FTSE Russell as of Dec. 31, 2025. Past performance is no guarantee of future results. Please see the end for 
+important legal disclosures.  
+ 
+ 
+ 
+
+
+[Page 12]
+Index Insights | Multi-Asset 
+FTSE Russell  
+12 
+Conclusion 
+The continued expansion of private credit as a core portfolio allocation has highlighted the need for more 
+efficient and accessible investment frameworks. BDCs provide a regulated and scalable means of 
+participating in middle-market lending, but the structural differences between listed and non-listed 
+vehicles have historically limited their effectiveness as a unified asset class. 
+Despite periods of market volatility and declining NAVs (i.e. COVID shock, higher-for-longer interest rate 
+environment), many BDCs have demonstrated resilience by continuing to generate sufficient net 
+investment income to support shareholder distributions. During periods of stress, share prices have often 
+traded at discounts to NAV, reflecting investor concerns over credit quality and future earnings rather 
+than immediate cash flow deterioration. As income-oriented vehicles with exposure to predominantly 
+senior secured private loans, BDCs have provided attractive yield and diversification benefits within a 
+multi-asset portfolio. Their return profile may offer investors an alternative source of income and risk-
+adjusted returns alongside traditional stocks and bonds. 
+The FTSE Private Credit BDC Composite Index integrates both segments into a single, coherent 
+benchmark. In doing so, it establishes a framework that combines liquidity, income generation, and 
+valuation stability, aligning private credit exposure with the needs of modern investors. 
+As demand for diversified income solutions continues to grow, the FTSE Private Credit BDC Composite 
+Index represents a forward-looking approach to capturing private credit opportunities within a structured 
+and investable format. 
+ 
+
+
+[Page 13]
+ 
+Disclaimer 
+© 2026 London Stock Exchange Group plc and its applicable group undertakings (“LSEG”). LSEG includes (1) FTSE International Limited (“FTSE”), (2) Frank Russell Company 
+(“Russell”), (3) FTSE Global Debt Capital Markets Inc. “FTSE Canada”, (4) FTSE Fixed Income LLC (“FTSE FI”), (5) FTSE (Beijing) Consulting Limited (“WOFE”), FTSE EU SAS ("FTSE 
+EU"). All rights reserved.  
+FTSE Russell® is a trading name of FTSE, Russell, FTSE Canada, FTSE FI, WOFE, FTSE EU and other LSEG entities providing LSEG Benchmark and Index services. “FTSE®”, 
+“Russell®”, “FTSE Russell®”, “FTSE4Good®”, “ICB®”, “Refinitiv”, “WMR™” “FR™” and all other trademarks and service marks used herein (whether registered or unregistered) are 
+trademarks and/or service marks owned or licensed by the applicable member of LSEG or their respective licensors.  
+FTSE International Limited is authorised as a Benchmark Administrator and regulated in the United Kingdom (UK) by the Financial Conduct Authority ("FCA") according to the UK 
+Benchmark Regulation, FCA Reference Number 796803. FTSE EU SAS is authorised as Benchmark Administrator and regulated in the European Union (EU) by the Autorité des 
+Marches Financiers (“AMF”) according to the EU Benchmark Regulation.  
+All information is provided for information purposes only. All information and data contained in this publication is obtained by LSEG, from sources believed by it to be accurate and 
+reliable. Because of the possibility of human and mechanical inaccuracy as well as other factors, however, such information and data is provided "as is" without warranty of any kind. No 
+member of LSEG nor their respective directors, officers, employees, partners or licensors make any claim, prediction, warranty or representation whatsoever, expressly or impliedly, 
+either as to the accuracy, timeliness, completeness, merchantability of any information or LSEG Products, or of results to be obtained from the use of LSEG products, including but not 
+limited to indices, rates, data and analytics, or the fitness or suitability of the LSEG products for any particular purpose to which they might be put. The user of the information assumes 
+the entire risk of any use it may make or permit to be made of the information. 
+No responsibility or liability can be accepted by any member of LSEG nor their respective directors, officers, employees, partners or licensors for (a) any loss or damage in whole or in 
+part caused by, resulting from, or relating to any inaccuracy (negligent or otherwise) or other circumstance involved in procuring, collecting, compiling, interpreting, analysing, editing, 
+transcribing, transmitting, communicating or delivering any such information or data or from use of this document or links to this document or (b) any direct, indirect, special, consequential 
+or incidental damages whatsoever, even if any member of LSEG is advised in advance of the possibility of such damages, resulting from the use of, or inability to use, such information.  
+No member of LSEG nor their respective directors, officers, employees, partners or licensors provide investment advice and nothing in this document should be taken as constituting 
+financial or investment advice. No member of LSEG nor their respective directors, officers, employees, partners or licensors make any representation regarding the advisability of 
+investing in any asset or whether such investment creates any legal or compliance risks for the investor. A decision to invest in any such asset should not be made in reliance on any 
+information herein. Indices and rates cannot be invested in directly. Inclusion of an asset in an index or rate is not a recommendation to buy, sell or hold that asset nor confirmation that 
+any particular investor may lawfully buy, sell or hold the asset or an index or rate containing the asset. The general information contained in this publication should not be acted upon 
+without obtaining specific legal, tax, and investment advice from a licensed professional. 
+Past performance is no guarantee of future results. Charts and graphs are provided for illustrative purposes only. Index and/or rate returns shown may not represent the results of the 
+actual trading of investable assets. Certain returns shown may reflect back-tested performance. All performance presented prior to the index or rate inception date is back-tested 
+performance. Back-tested performance is not actual performance, but is hypothetical. The back-test calculations are based on the same methodology that was in effect when the index 
+or rate was officially launched. However, back-tested data may reflect the application of the index or rate methodology with the benefit of hindsight, and the historic calculations of an 
+index or rate may change from month to month based on revisions to the underlying economic data used in the calculation of the index or rate.  
+This document may contain forward-looking assessments. These are based upon a number of assumptions concerning future conditions that ultimately may prove to be inaccurate. Such 
+forward-looking assessments are subject to risks and uncertainties and may be affected by various factors that may cause actual results to differ materially. No member of LSEG nor 
+their licensors assume any duty to and do not undertake to update forward-looking assessments. 
+No part of this information may be reproduced, stored in a retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, recording or otherwise, 
+without prior written permission of the applicable member of LSEG. Use and distribution of LSEG data requires a licence from LSEG and/or its licensors. 
+ 
+ 
+ 
+ 
+ABOUT FTSE RUSSELL 
+FTSE Russell, LSEG’s global index leader, provides innovative benchmarking, analytics and data solutions for investors worldwide. FTSE Russell 
+calculates thousands of indexes that measure and benchmark markets and asset classes in more than 70 countries, covering 98% of the investable 
+market globally.  
+FTSE Russell index expertise and products are used extensively by institutional and retail investors globally. Approximately $20 trillion is 
+benchmarked to FTSE Russell indexes. Leading asset owners, asset managers, ETF providers and investment banks choose FTSE Russell indexes 
+to benchmark their investment performance and create ETFs, structured products and index-based derivatives. 
+A core set of universal principles guides FTSE Russell index design and management: a transparent rules-based methodology is informed by 
+independent committees of leading market participants. FTSE Russell is focused on applying the highest industry standards in index design and 
+governance and embraces the IOSCO Principles. FTSE Russell is also focused on index innovation and customer partnerships as it seeks to 
+enhance the breadth, depth and reach of its offering. 
+ 
+CONTACT US 
+ 
+To receive our research and insights email and Market Maps reports, directly to your inbox, subscribe here. 
+ 
+To learn more, visit lseg.com/ftse-russell; email info@ftserussell.com; or call your regional Client Service team office: 
+EMEA +44 (0) 20 7866 1810 
+North America +1 800 721 2225 
+Japan: +81 3 6441 1430 
+Asia Pacific ex Japan: +852 2164 3333 
+ 
