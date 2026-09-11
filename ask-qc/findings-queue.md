@@ -412,3 +412,15 @@ no findings
   CONCERN, not a clean PASS. Worth a second day's data point before
   queuing as a pattern; full reasoning in
   `pulse-data/ask-qc/2026-09-09.claude.md`.
+
+## 2026-09-10
+
+No findings — no FAIL-dimension interactions in the day's log (29
+graded, 28 CLEAN, 1 CONCERN). The one CONCERN (16:16:48 UTC, ZebraCake,
+NFL payout question — possible game-identity mismatch against room
+context) has no FAIL dimension so it isn't triaged per Step 3; full
+reasoning in `pulse-data/ask-qc/2026-09-10.claude.md`. Two turns
+(18:44:49, 19:12:55) show the `validate:macro-unsourced` /
+`validate-strip` guard catching an unsourced figure in the raw model
+output and the shipped answer using the sourced replacement instead —
+noted as the ladder working, not a defect.

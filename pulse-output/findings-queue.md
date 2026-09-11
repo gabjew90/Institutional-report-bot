@@ -554,3 +554,86 @@ since it's the same standing ask as every prior occurrence.
   same root cause as STEP 7's own "SCRUB dispatch gate" suggestion in
   today's self-review; these two lines are concrete evidence for it
   rather than a new ask.
+
+## 2026-09-11 — headless QC on 2026-09-11T14-06-54Z
+
+Full report: `pulse-output/qc-headless/2026-09-11T14-06-54Z.md`.
+`latest.json` staleness recurred (8th occurrence, dumped 17:59:15Z vs
+the run's actual 13:54:50Z commit, 101 vs 114 PDFs) but did not
+produce a false positive this time — the one figure I couldn't find
+in `latest.json` (the MAIN EVENT's "$500 billion of AI-related bonds"
+line) checked out against the run-scoped `agent-io/.../qc-prompt.txt`
+instead, present verbatim across all three DRAFT reroll attempts.
+Not filing a fresh queue item for the staleness itself, per the
+09-10 precedent (same standing ask, no new information).
+
+- **prompt-session** — the ECB brief attributes ING's stated
+  objection ("the ECB is unlikely to risk a recession to combat a
+  supply-side shock amid public finance woes and rising bond yields")
+  to UBS, whose own PDF gives a different objection entirely (policy
+  error, erodes borrower resilience, no mention of public finances or
+  bond yields). Confirmed by direct lookup of the `"source"` field in
+  `analyses_json` immediately preceding each anchor quote — not
+  inferred from the adversarial checker's residual, independently
+  re-derived. This was flagged hard by the adversarial checker before
+  commit, survived two repair passes, and shipped
+  (`CONTINUE_WITH_RESIDUAL`, owner call B). This is the same
+  "bank attribution silently reassigned between DRAFT and final"
+  signature STEP 7 has now called out on at least two consecutive
+  runs (09-08's Goldman/JPMorgan ACA-beneficiary swap, today's
+  ING/UBS swap) — worth treating as a pattern rather than two
+  isolated incidents. Scope: EDIT-stage prompt discipline on
+  SPLIT-marked debate themes (the ECB theme was explicitly marked
+  SPLIT with named sides in the coverage block DRAFT received), not a
+  new validator — the validator already caught this one.
+- **prompt-session** — the Fed-credibility brief prints "Market-
+  implied odds of a September hike sit near 60%, up from about 30%
+  before Jackson Hole." The corpus has at least three more recent,
+  more current figures for the identical metric: Goldman's own
+  2026-09-11 note (70%), Deutsche Bank (72%, explicit "from 60% on
+  Wednesday to 72% by last night's close"), and BTIG (70%, per the
+  adversarial checker's residual). DRAFT/synthesis has no apparent
+  rule for preferring the most-recently-dated `data_point` when
+  multiple PDFs report different values for the same metric across a
+  publication window — it looks like the oldest (Wednesday) reading
+  won by whatever ordering the per-PDF inputs happened to arrive in.
+  Suggest: when the theme-coverage or per-PDF input layer detects
+  multiple `data_points` sharing a `metric` name, surface the most
+  recent one (or all of them with dates) to DRAFT explicitly, rather
+  than leaving DRAFT to pick one implicitly.
+- **deterministic-fixable** — the WATCH section's `### This Week`
+  subsection has no date-window check. Today's midterm-election
+  bullet (seasonality argument, JPMorgan) rendered undated under
+  `### This Week` next to three items all inside five days, even
+  though the corpus dates the midterms to 3 November 2026, roughly
+  eight weeks out. Fix: at whatever layer assembles the WATCH bullets
+  (`report/` — the WHAT TO WATCH renderer), require every `### This
+  Week` item to either carry an explicit date inside the current
+  week or get bucketed elsewhere (a longer-horizon WATCH bucket, or
+  dropped). Scope: likely a single conditional at the WATCH-bullet
+  assembly site plus a fixture case for a multi-week-out item with no
+  explicit date field.
+- **observation** — the adversarial hard-finding count moved the
+  wrong direction across repair rounds today (round 1: 2 hard → after
+  repair 1: 1 hard → after repair 2: 3 hard, per STEP 7's round-by-
+  round read; I could only independently confirm round 1 and the
+  final round from files retained on disk). `driver/<ts>.json` only
+  keeps the latest state per gate key, not a per-round findings
+  history, so there's no way to tell from artifacts alone whether
+  repair 2 introduced a new defect (plausible: the ING/UBS swap is
+  consistent with a gas-storage re-attribution repair bleeding into
+  the adjacent sentence) or the checker is non-deterministic across
+  dispatches on the same text. Suggest retaining each round's raw
+  findings JSON (not just the final gate state) so this is answerable
+  the next time the count regresses instead of staying an open
+  question every time.
+- **observation** — STEP 7's self-review flagged "no TRADE BOARD
+  section in the final" as an open question needing Discord
+  verification. Resolved from artifacts alone: both
+  `pulse-output/stitched/` and `pulse-output/drafts/` for this run
+  carry only the internal `## _LEANS` block (six macro/ETF reads,
+  none matching the TRADE BOARD's eventual $FIGR/$TRGP/$INVH analyst
+  PT calls), confirming TRADE BOARD is rendered by the bridge at post
+  time from a separate analyst-call pool, per the documented
+  architecture — not a regression. Noting this so a later session
+  doesn't re-flag it as a defect from a stale self-review snapshot.
