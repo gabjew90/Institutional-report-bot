@@ -2559,3 +2559,17 @@ The same fetch is now the FIRST source of `actual` for the econ
 calendar rows (`enrich_rows_with_agency_actuals`, ahead of FRED), so
 /ask and the pulse context carry the print as soon as the agency has
 it. Fixtures: the real BLS payload and FOMC statement fetched today.
+
+## 2026-09-11 — X auto-post of the omni-calendar (dry run until keys land)
+
+Owner ask. `report/x_client.py` signs OAuth 1.0a with the stdlib (no
+new pin; the signature is tested against X's published worked example)
+and uses API v2 for the media upload and the post, with the legacy
+upload host as a 404 fallback. The nightly calendar job posts the same
+PNG to X after the Discord post is recorded, with a caption from
+`report/calendar_caption.py` trimmed to 280 chars from the least
+important end (unimportant econ rows, then extra tickers, then the
+industry line). `X_POST_ENABLED=false` logs the caption as a dry run;
+one post per date via `/data/x-posts`. The four keys come from the
+owner's X developer portal; `scripts/x_post_test.py --check` proves
+them read-only, `--post` makes the one owner-approved public test.

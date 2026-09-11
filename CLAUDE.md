@@ -148,6 +148,7 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `discord_bot/ask_tools.py` | The /ask tool layer: `_build_*_tool` declarations and `_execute_*` executors (extracted from bot.py 2026-09-01; bot.py re-exports every name) |
 | `discord_bot/tool_docs.py` | Routing text for every tool (WHEN TO CALL / DO NOT use); tested by `tests/test_tool_docs.py` |
 | `discord_bot/ops_alert.py` | Ops pings to `OPS_ALERT_CHANNEL_ID` from any context |
+| `report/x_client.py` / `calendar_caption.py` | X (Twitter) posting, stdlib OAuth 1.0a (2026-09-11). The nightly calendar job posts the same sheet to X after the Discord post succeeds; `X_POST_ENABLED=false` is a logged dry run; one post per date via `/data/x-posts`. First public test: `scripts/x_post_test.py --check` then `--post`, owner-run only |
 | `report/print_watch.py` | Economic prints posted at release (2026-09-11): armed at 8:29 and 13:59 ET on days the calendar lists CPI, the jobs report or an FOMC decision, polls the BLS API / the Fed's press feed until the reference month appears, posts actual / consensus / prior to `PRINT_ALERT_CHANNEL_ID` (falls back to `REMINDER_CHANNEL_ID`). Also the FIRST source of `actual` on econ-calendar rows, ahead of `report/fred_data.py`, which lags releases by hours and has no October 2025 observation |
 | `discord_bot/sender.py` | Embed delivery (per-embed = separate message — batching was reverted) |
 | `pipeline/orchestrator.py` | End-to-end pipeline coordination |
@@ -241,6 +242,7 @@ Key ones set on `worker` service:
 - `DAILY_PULSE_HOUR=10`, `DAILY_PULSE_MINUTE=0`
 - `DB_PATH=/data/reports.db`, `PDF_DOWNLOAD_DIR=/data/pdfs` (MUST use leading slash — relative paths write to ephemeral container storage and get wiped on redeploy)
 - `OPS_ALERT_CHANNEL_ID` — one-line ops pings via REST (`discord_bot/ops_alert.py`; `ops_alert()` on the loop, `ops_alert_sync()` from worker threads; 1 h dedupe per key).
+- `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_SECRET`, `X_POST_ENABLED` — X auto-post of the omni-calendar (`report/x_client.py`). OAuth 1.0a user context for the posting account, app permission Read and Write. Never paste these into chat; set them with `railway variable set`.
 - `PRINT_ALERT_CHANNEL_ID` (optional, falls back to `REMINDER_CHANNEL_ID`) and `BLS_API_KEY` (optional, free; 500 requests/day instead of 25) — economic prints at release, `report/print_watch.py`. The watch is off when neither channel is set.
 - `MALLOC_ARENA_MAX=2` — caps glibc malloc arenas. Without it, the ~30 asyncio worker threads each get their own arena and freed PDF/image buffers never return to the OS; RSS ratchets to ~1.26 GB and Railway bills ~$10/GB-month for it (set 2026-07-23, cut RSS to ~180 MB at boot). Don't remove.
 

@@ -1312,6 +1312,14 @@ async def _daily_calendar_job(bot=None):
                         f"{len(day.econ)} econ",
             )
             log.info(f"Calendar {date_iso}: posted to {sent} channel(s)")
+            # X (2026-09-11): the same sheet, after Discord succeeded.
+            # Dry run until X_POST_ENABLED; a failure here never
+            # touches the Discord post.
+            try:
+                from report import x_client
+                await _asyncio.to_thread(x_client.post_calendar, date_iso, day, png)
+            except Exception as e:
+                log.error(f"Calendar {date_iso}: X post failed (non-fatal): {e}")
         else:
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:

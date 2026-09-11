@@ -416,6 +416,15 @@ class Settings(BaseSettings):
     # day unregistered, 500 registered) and free to register.
     print_alert_channel_id: str = ""
     bls_api_key: str = ""
+    # X (Twitter) posting, report/x_client.py (2026-09-11). Four keys
+    # from the X developer portal for the posting account (OAuth 1.0a,
+    # app permission Read and Write). Nothing is sent while
+    # X_POST_ENABLED is false: the calendar job logs a dry run instead.
+    x_api_key: str = ""
+    x_api_secret: str = ""
+    x_access_token: str = ""
+    x_access_secret: str = ""
+    x_post_enabled: bool = False
     ingest_feed_interval_seconds: int = 60
     # Startup backlog threshold: if more than N HIGH/MEDIUM PDFs are queued
     # for announcement at boot, post a single summary card instead of trickling
