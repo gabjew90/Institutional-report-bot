@@ -1,0 +1,242 @@
+{
+ "brief": "Following a stronger-than-expected payrolls report last week, today's PPI and tomorrow's CPI are framed as pivotal to expectations for the Sept. 15-16 FOMC meeting. Higher energy prices should lift the headline prints, but the Fed watches core measures. The bank expects core CPI to ease to 2.4% YoY, reinforcing that inflation is cooling rather than broadening and giving the Fed confidence to hold rates steady. Separately, amid rising oil prices and yields the S&P 500 has gained under 1% since end of May, compressing its forward PEG ratio to 0.8x, the lowest since 2008. Despite expected near-term volatility, the bank stays constructive on US equities over the next 12 months on fundamentals, secular growth, and more compelling valuations. Brent closed above $100 a barrel for the first time since July 23 amid a Persian Gulf flareup. Overseas natural gas has spiked more than oil, with Asia's JKM up 157% YTD and Europe's TTF up 182% YTD, while US Henry Hub gas is down 24% YTD, easing the burden for US consumers. Also noted: Macy's raised guidance, Oracle, Adobe, RH and Kroger report this week, and Fidelity data show 401(k) balances up 10.5% to $156k as loan-carrying savers rose to 19.5%.",
+ "cards": [
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "Macy's boosted its full-year sales guidance this morning, suggesting consumer demand for apparel is holding up well.",
+   "anchor": "Macy\u2019s boosted its full-year sales guidance, which suggests that consumer demand for apparel is holding up well",
+   "topic": "US data and earnings calendar",
+   "status": "released",
+   "instruments": [
+    "M"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "Oracle and Adobe report earnings later today, which may offer perspective on how the enterprise software industry is managing around AI-related pressures.",
+   "anchor": "two of the largest enterprise software firms\u2014Oracle and Adobe\u2014may offer perspective on how the industry is managing around AI-related pressures",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [
+    "ORCL",
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "RH reports this afternoon, offering a read on furniture demand.",
+   "anchor": "this afternoon, RH (formerly Restoration Hardware) will offer a read on furniture demand",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [
+    "RH"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "Tomorrow's key question for Kroger is how shoppers are dealing with rising food prices.",
+   "anchor": "Tomorrow, a key question for Kroger\u2014the nation\u2019s largest pure-play supermarket chain\u2014is how shoppers are dealing with rising food prices",
+   "topic": "US data and earnings calendar",
+   "status": "forecast",
+   "instruments": [
+    "KR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "The S&P 500 has gained less than 1% since the end of May amid rising oil prices and yields, resulting in meaningful multiple compression.",
+   "anchor": "the S&P 500 has gained less than 1% since the end of May, resulting in meaningful multiple compression",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "The S&P 500's forward PEG ratio has fallen to just 0.8x, the lowest level since 2008.",
+   "anchor": "The S&P 500's forward PEG ratio\u2014which compares the P/E ratio to projected earnings growth\u2014has fallen to just 0.8x, the lowest since 2008",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "The bank remains constructive on US equities over the next 12 months.",
+   "anchor": "we remain constructive on US equities over the next 12 months",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "The bank expects core CPI to ease to 2.4% YoY, reinforcing that inflation is cooling rather than broadening.",
+   "anchor": "We expect core CPI to ease to 2.4% YoY, reinforcing the view that inflation is still cooling, not broadening",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "Following last week's stronger-than-expected payrolls report, this week's inflation data could prove pivotal in shaping expectations for the Sept. 15-16 FOMC meeting.",
+   "anchor": "Following last week\u2019s stronger than expected payrolls report, this week\u2019s inflation data could prove pivotal in shaping expectations for the Sept. 15-16 FOMC meeting",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Sept. 15-16 FOMC meeting"
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "August PPI is due at 8:30 AM ET today, followed by CPI tomorrow, with focus on core metrics.",
+   "anchor": "August PPI On Deck At 8:30 AM ET Today, Followed By CPI Tomorrow\u2014Focus On Core Metrics",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "Brent closed above $100 a barrel for the first time since July 23 amid the latest Persian Gulf flareup.",
+   "anchor": "Brent closed above $100/barrel for the first time since July 23, and WTI is not far from triple-digits",
+   "topic": "energy supply risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "Asia's JKM natural gas benchmark and Europe's TTF benchmark are up 157% and 182% YTD respectively, spiking more than oil.",
+   "anchor": "Asia\u2019s benchmark (JKM) and its European counterpart (TTF) are up 157% and 182% YTD, respectively",
+   "topic": "energy supply risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "US natural gas (Henry Hub) is down 24% YTD, in contrast to overseas gas benchmarks.",
+   "anchor": "US natural gas (Henry Hub) is down 24% YTD",
+   "topic": "energy supply risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "The average 401(k) balance rose 10.5% in 2Q26 to $156k, the fastest quarterly increase since 2020.",
+   "anchor": "the average 401(k) balance rose 10.5% in 2Q26 to $156k, marking the fastest quarterly increase since 2020",
+   "topic": "US retirement savings trends",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2Q26"
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "The number of 401(k) millionaires increased 17.6%, bringing the total to 769k.",
+   "anchor": "a 17.6% increase in the number of 401(k) millionaires, bringing the total to 769k",
+   "topic": "US retirement savings trends",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Raymond James",
+   "document": "Up and Adam",
+   "claim": "19.5% of savers carry an outstanding 401(k) loan, up from 19.2% one quarter ago, suggesting some cost-of-living pressures.",
+   "anchor": "19.5% of savers carry an outstanding 401(k) loan, up from 19.2% one quarter ago, suggesting some cost-of-living pressures",
+   "topic": "US retirement savings trends",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/16002__up-and-adam.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 16,
+  "matched": 16,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
