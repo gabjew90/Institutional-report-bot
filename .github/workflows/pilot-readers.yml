@@ -38,7 +38,13 @@ env:
 jobs:
   read:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # 45 until 2026-09-11. At 6-7 minutes per document a 35-document
+    # conference-week backlog killed three consecutive hourly runs at
+    # 45:00 (each still persisted its finished documents) and pushed
+    # reads past the 13:55 editor, voiding the day. The concurrency
+    # group serialises runs, so a long run delays the next slot rather
+    # than overlapping it.
+    timeout-minutes: 90
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

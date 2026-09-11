@@ -35,7 +35,11 @@ env:
 jobs:
   grade:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # 60 until 2026-09-11: the 2026-09-10 run (first clean full day,
+    # 69 documents, 2381 cards) was killed at 60:00 with no grade
+    # written. Two agents per dimension plus tiebreaks over a pack that
+    # size need the room; an unused minute costs nothing.
+    timeout-minutes: 150
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

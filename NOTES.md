@@ -2489,3 +2489,19 @@ ticker), 9 admitted slots, one row starting 14:50 ET with MSFT first.
 Shadow phase skipped on the owner's call; the anchor and printed-date
 rules are the safety. First live test is the next conference day the
 corpus writes up.
+
+## 2026-09-11 — Pilot job timeouts raised: readers 45 to 90, graders 60 to 150
+
+Three consecutive hourly reader runs (11:00, 12:00, 13:00 UTC) were
+killed at 45:00 working through the 35-document Communacopia
+takeaways backlog at 6-7 minutes per document; each persisted what it
+finished, so no cards were lost, but reads ran past the 13:55 editor.
+The 09:00 failure was one document at the 20-turn cap, retried and
+read on the next run. The new label contract is not the cause: every
+document read today is at five labels or fewer, one re-ask, zero
+macro_key coercions.
+
+The graders run for 2026-09-10 (the first clean full day: 69
+documents, 2381 cards, zero unread at edit) was killed at 60:00 with
+no grade written. Timeout raised to 150 and the day re-dispatched with
+`date=2026-09-10`.
