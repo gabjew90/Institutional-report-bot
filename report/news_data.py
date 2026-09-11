@@ -520,6 +520,13 @@ def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
                 continue  # inside FF's covered horizon — FF is source
             kept.append(row)
             fred_added += 1
+        # The agency first (BLS carries the print within a minute of
+        # 8:30; FRED lags by hours, 2026-09-11), then FRED for the rest.
+        try:
+            from report import print_watch as _pw
+            kept = _pw.enrich_rows_with_agency_actuals(kept)
+        except Exception as e:
+            log.warning(f"agency actuals layer failed (non-fatal): {e}")
         kept = _fred.enrich_rows_with_fred_actuals(kept)
     except Exception as e:
         log.warning(f"FRED calendar layer failed (non-fatal): {e}")

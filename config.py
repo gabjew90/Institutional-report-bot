@@ -410,6 +410,12 @@ class Settings(BaseSettings):
     ops_alert_channel_id: str = ""
 
     reminder_channel_id: str = ""
+    # Economic prints posted at release (report/print_watch.py,
+    # 2026-09-11). Empty = post to the reminder channel; the watch is
+    # off when both are empty. BLS_API_KEY is optional (25 requests a
+    # day unregistered, 500 registered) and free to register.
+    print_alert_channel_id: str = ""
+    bls_api_key: str = ""
     ingest_feed_interval_seconds: int = 60
     # Startup backlog threshold: if more than N HIGH/MEDIUM PDFs are queued
     # for announcement at boot, post a single summary card instead of trickling

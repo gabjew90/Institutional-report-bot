@@ -236,8 +236,12 @@ def test_structured_fetch_tier1_matches_renamed_ff_events():
             return None
         return _ff_payload(now)
 
+    # The agency layer (report/print_watch, 2026-09-11) would fill CPI
+    # and NFP actuals straight from BLS; this smoke is about FF's own
+    # rows, so hold that layer off.
     with patch("config.settings.finnhub_api_key", "test_key"), \
-         patch("report.news_data._fetch_json", side_effect=fake_fetch):
+         patch("report.news_data._fetch_json", side_effect=fake_fetch), \
+         patch("report.print_watch.fetch_bls", return_value={}):
         rows = news_data.fetch_economic_calendar_structured(days_window=7)
 
     events = {r["event"] for r in rows}
@@ -248,7 +252,7 @@ def test_structured_fetch_tier1_matches_renamed_ff_events():
     assert "Bank Holiday" not in events
     # Source flows through to structured rows for the executor
     assert all(r["source"] == "forexfactory" for r in rows)
-    # FF released events have no actual -> past events read past_no_data
+    # FF itself carries no actual -> past events read past_no_data
     assert all(r["actual"] is None for r in rows)
     _ok("structured fetch via FF: Tier-1 keeps renamed ECB/NFP/CPI, "
         "drops UoM + holiday, tags source")

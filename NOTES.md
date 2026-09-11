@@ -2532,3 +2532,30 @@ report/fred_data.py, the layer that fills `actual` on ForexFactory rows
 
 tests/test_fred_actuals.py replays the 08:31 scenario and the missing
 month against the real FRED window fetched that day.
+
+## 2026-09-11 — Economic prints posted at release (report/print_watch.py)
+
+Owner ask after the CPI incident: post prints as soon as they exist,
+the way the reminder job posts calendar events. The agencies publish at
+the release second and the BLS public API had the August CPI index
+within a minute of 8:30 while FRED lagged by hours, so the watch reads
+the agency, not an aggregator.
+
+Two scheduler jobs (8:29 and 13:59 ET, weekdays) arm when the
+ForexFactory calendar lists a supported US release that day, poll the
+agency from the release second until the REFERENCE month appears (CPI
+on the 11th reports August; July is not the print), then post one
+embed per release with actual / consensus / prior per line and record
+it under /data/print-alerts so a redeploy cannot repost. Supported:
+CPI and the Employment Situation (BLS, seven series in one request),
+FOMC target range and vote (Federal Reserve press feed, statement
+parsed). PCE and GDP wait on a BEA key; ISM has no free source and is
+out by owner decision. Channel: PRINT_ALERT_CHANNEL_ID, falling back to
+REMINDER_CHANNEL_ID; off when both are empty. BLS_API_KEY optional
+(25 requests/day unregistered, so the watch polls every 30 s without
+it, 10 s with it).
+
+The same fetch is now the FIRST source of `actual` for the econ
+calendar rows (`enrich_rows_with_agency_actuals`, ahead of FRED), so
+/ask and the pulse context carry the print as soon as the agency has
+it. Fixtures: the real BLS payload and FOMC statement fetched today.

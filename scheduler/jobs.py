@@ -356,6 +356,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         misfire_grace_time=3600,
     )
 
+    # Economic prints at release (2026-09-11, report/print_watch.py):
+    # armed one minute before the 8:30 and 2:00 PM ET release slots on
+    # weekdays; exits at once when the calendar lists nothing supported.
+    if settings.print_alert_channel_id or settings.reminder_channel_id:
+        from report.print_watch import print_watch_job
+        for _slot, _h, _m in (("08:30", 8, 29), ("14:00", 13, 59)):
+            scheduler.add_job(
+                print_watch_job,
+                trigger=CronTrigger(day_of_week="mon-fri", hour=_h, minute=_m, timezone=tz),
+                id=f"print_watch_{_slot.replace(':', '')}",
+                name=f"Economic prints at release ({_slot} ET slot)",
+                kwargs={"bot": bot, "release_et": _slot},
+                max_instances=1,
+                misfire_grace_time=300,
+            )
+        log.info("Print watch active — CPI, jobs report and FOMC posted at release")
+
     # Channel reminder system — daily 3:45 PM ET, posts due calendar
     # reminders (reminders/calendar.json) to REMINDER_CHANNEL_ID. The
     # job no-ops when the channel isn't configured, so registering it
