@@ -42,19 +42,51 @@ def _industry_line(day, max_tickers: int) -> str:
     return "Industry: " + " · ".join(bits)
 
 
+MAX_HASHTAGS = 8
+
+
+def important_tickers(day) -> list[str]:
+    """The names the sheet renders BOLD, in sheet order: important
+    earnings rows (major-ticker list, mega-cap, or bank-covered this
+    week) and the conference names on the major-ticker list. Hashtagged
+    on X (owner call 2026-09-11)."""
+    from report.news_data import _MAJOR_TICKERS
+    out: list[str] = []
+    for r in list(day.bmo) + list(day.amc):
+        if getattr(r, "important", False) and r.symbol not in out:
+            out.append(r.symbol)
+    for c in getattr(day, "conferences", None) or []:
+        for t in c.tickers:
+            if t in _MAJOR_TICKERS and t not in out:
+                out.append(t)
+    return out
+
+
+def _hashtag_line(day, max_tags: int) -> str:
+    tags = important_tickers(day)[:max_tags]
+    return " ".join(f"#{t}" for t in tags)
+
+
 def calendar_caption(day) -> str:
     title = f"Market calendar · {day.weekday_label.title()}"
     if day.is_holiday:
         text = title + "\nMarkets closed" + (f" · {day.is_holiday}" if isinstance(day.is_holiday, str) else "")
         return text[:X_LIMIT]
-    # candidate builds, most complete first; the first that fits ships
+    # candidate builds, most complete first; the first that fits ships.
+    # The hashtag line is trimmed LAST: it is the part the owner asked
+    # for, so econ detail, extra tickers and the industry line give way
+    # before a single hashtag does.
     variants = [
-        (False, 6, 6), (True, 6, 6), (True, 5, 4), (True, 4, 3), (True, 3, 0), (True, 2, 0),
+        (False, 6, 6, MAX_HASHTAGS), (True, 6, 6, MAX_HASHTAGS), (True, 5, 4, MAX_HASHTAGS),
+        (True, 4, 3, MAX_HASHTAGS), (True, 3, 0, MAX_HASHTAGS), (True, 2, 0, MAX_HASHTAGS),
+        (True, 2, 0, 5), (True, 0, 0, 5), (True, 0, 0, 3),
     ]
-    for important_only, max_each, max_ind in variants:
-        lines = [title, _econ_line(day, important_only), _earn_line(day, max_each)]
+    for important_only, max_each, max_ind, max_tags in variants:
+        lines = [title, _econ_line(day, important_only),
+                 _earn_line(day, max_each) if max_each else ""]
         if max_ind:
             lines.append(_industry_line(day, max_ind))
+        lines.append(_hashtag_line(day, max_tags))
         text = "\n".join(l for l in lines if l)
         if len(text) <= X_LIMIT:
             return text

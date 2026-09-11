@@ -64,6 +64,29 @@ def test_caption_fits_280_and_keeps_the_important_parts():
     busy = _day(n_bmo=15, n_amc=15)
     text = calendar_caption(busy)
     assert len(text) <= X_LIMIT and "Core CPI" in text and "$B0" in text
+
+
+def test_important_names_are_hashtagged_and_survive_trimming():
+    """Owner call 2026-09-11: hashtag the bold names on the sheet. The
+    hashtag line is the last thing the trimmer touches."""
+    from report.calendar_caption import important_tickers
+    d = _day()
+    d.amc[0] = EarnRow(symbol="ORCL", name="Oracle", cap_musd=650_000, important=True)
+    d.bmo[1] = EarnRow(symbol="KR", name="Kroger", cap_musd=40_000, important=True)
+    assert important_tickers(d)[:2] == ["KR", "ORCL"], "sheet order: before open, then after close"
+    assert "MSFT" in important_tickers(d) and "CSGP" not in important_tickers(d), \
+        "conference names hashtag only when on the major-ticker list"
+    text = calendar_caption(d)
+    assert len(text) <= X_LIMIT
+    assert text.splitlines()[-1].startswith("#KR #ORCL #MSFT")
+    # crowded: econ detail and tickers give way, the hashtags stay
+    busy = _day(n_bmo=15, n_amc=15)
+    for i in range(6):
+        busy.bmo[i] = EarnRow(symbol=f"BIG{i}", name="x", cap_musd=100_000, important=True)
+    text = calendar_caption(busy)
+    assert len(text) <= X_LIMIT and "#BIG0" in text and "#BIG5" in text
+    # nothing bold: no empty hashtag line
+    assert not calendar_caption(_day(conf=False)).splitlines()[-1].startswith("#")
     # a holiday
     hol = CalendarDay(date_iso="2026-11-26", weekday_label="THURSDAY 11/26", is_holiday="Thanksgiving Day")
     assert calendar_caption(hol) == "Market calendar · Thursday 11/26\nMarkets closed · Thanksgiving Day"
