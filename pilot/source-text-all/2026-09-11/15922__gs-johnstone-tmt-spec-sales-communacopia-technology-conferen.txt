@@ -1,0 +1,177 @@
+[Page 1]
+GS Johnstone - TMT Spec Sales Communacopia Technology
+Conference Day 2 Wrap 10 Sep 2026
+Sean Johnstone  ·  Goldman Sachs  ·  TMT Spec Sales
+Thu 10 Sep 2026, 1:05am ET
+Communacopia + Technology Conference: Day 2 Wrap
+Day 2 reinforced that AI is moving from experimentation into enterprise architecture. The clearest themes
+were security as the control layer, and the risks agents bring, model optimisation over the last 3 months
+has become a way to lower inference costs and protect software margins (SAP and Hubspot noting how
+things have changed), and personal agents as a potential new interface layer. The next investor debate is
+likely to focus on which platforms become the trusted control points for agents.
+Key Themes
+• Security: As AI agents move from assistants to systems that can take action, the security perimeter is
+expanding from external traffic to internal systems, identity, data access, workflows and systems of record.
+The key message from ServiceNow, Databricks, Cloudflare, Google, Microsoft, OpenAI and SAP is that
+security needs to be embedded directly into the platforms where work happens, with Zero Trust, agent
+identity, runtime protection and automated remediation becoming core infrastructure for the agentic
+enterprise.
+• Model optimisation: A key theme was that companies can increasingly choose the right model for each
+use case, combining frontier models with cheaper open-source or specialised models where quality allows.
+SAP, HubSpot, ServiceNow, Microsoft and TSMC all pointed to this as a way to lower inference costs,
+protect software gross margins and broaden AI adoption. SAP’s comment quite something that Mistral was
+around 5x cheaper for HR queries than other Frontier models .
+• Personal agents: Consumer and enterprise agents remain a major bull-case debate, potentially turning
+each user into a small cloud tenant and driving demand across compute, memory, flash, payments, identity
+and permission layers.
+• AI demand broadening: The value chain is widening beyond GPUs into leading-edge logic, advanced
+packaging, memory, process control, storage, software workflows, payments, edge infrastructure and
+security.
+Consumer / Media
+Spotify was one of the most interesting presentations of the day, with Gustav Soderstrom positioning the
+company as an increasingly interactive, AI-led media service rather than a passive music app. The key
+message was that Spotify can use AI to make the product more useful and engaging — from asking in-app
+questions about artists, tours or credits, to personalised features like Running Mode that can soundtrack
+your life — while still offering a lower-regret form of engagement versus social platforms such as Meta or
+
+
+[Page 2]
+Snap. Management also sounded confident on pricing, arguing that Spotify is now more expensive than
+peers in most markets without seeing meaningful churn, because the value gap remains wide. Video is
+becoming more important for discovery and retention, with songs that have video far more likely to be
+streamed or saved, while Spotify’s approach to generative music is focused on working with artists and
+rights holders so new AI-driven formats can still support royalties.
+Hyperscalers
+Microsoft – infrastructure and capex: Microsoft struck a confident tone, reinforcing its position at the
+centre of the enterprise AI stack across infrastructure, applications, security, coding tools, intelligence and
+agents. Azure demand remains supply-constrained, but management pointed to better execution, including
+a 50% improvement in dock-to-live times, longer-term power and land planning, and a more diversified
+silicon strategy across Cobalt CPUs and Maia accelerators. Capex was framed as demand-led and ROIC-
+disciplined, focused on bringing revenue-generating capacity online quickly while preserving balance-
+sheet flexibility. Microsoft – model optimisation and monetisation: Microsoft also reinforced the model-
+optimisation theme, highlighting access to more than 11,000 frontier, open-source, specialised and internal
+models so customers can pick the right model for each use case. This supports the shift from AI
+experimentation to ROI-led enterprise adoption and from traditional seat-based licensing toward more
+consumption- and outcome-based pricing across GitHub, Microsoft 365, Agent 365 and potentially
+Copilot over time.
+Read-across: Hyperscaler capex remains demand-led, but the debate is moving toward execution,
+utilisation, model choice and monetisation discipline.
+Software
+ServiceNow was predictably bullish, with Bill McDermott positioning the company as a core “rules and
+rails” platform for the agentic enterprise. The message was that the debate is moving beyond “token
+maxing” individual components toward secure, scalable workflows built around enterprise context.
+ServiceNow’s moat sits in the 100bn workflows and 8tn transactions running through its CMDB, giving
+CEOs identity, visibility and control as AI agents begin to act across departments. Management argued this
+is hard to replicate with fragmented DIY agent workflows, which can create technical debt, integration
+complexity and total cost of ownership 5x to 10x higher than ServiceNow. Security is becoming a more
+central differentiator as AI expands the attack surface: ServiceNow integrates with 47+ security tools, has
+a security operations business above $1bn, and is extending into identity, asset management and
+operational technology. On AI economics, the company remains model-agnostic, using the right LLM for
+the right task while its zero-copy data fabric and high-ROI use cases should support token efficiency and
+strong monetisation.
+Cloudflare came across very positively, with the CFO positioning the company as well placed for the
+agentic AI era. The core message was that Cloudflare is already growing at a 36% run-rate, but AI agents
+could drive a broader shift toward inference, secure sandboxes, identity, agentic commerce and
+consumption-based monetisation. Management argued that Cloudflare’s platform was built early for
+inference-led workloads rather than capital-intensive training, giving it structurally lower capital intensity
+
+
+[Page 3]
+than hyperscalers. Its developer ecosystem provides an early read on emerging use cases, while
+partnerships with Visa, Mastercard, Amex and others point to future opportunities around payments,
+wallets, identity and monetisation gateways.
+HubSpot argued that AI is reshaping software from feature delivery toward measurable outcomes, with
+proprietary customer context becoming the key differentiator. The company is positioning its CRM around
+intelligence, action and conversational interfaces, while adapting B2B marketing from an SEO/email-led
+playbook to a broader omnichannel model across social, video, podcasts, AEO and deeper personalisation.
+SMB customers want simple, fast-to-deploy AI that works with their own data, supported by longer trials,
+clearer spend controls and outcome-based credit monetisation. On costs, HubSpot’s internal agentic
+platform can switch between LLMs by use case, balancing quality and inference cost; management said
+the past three months have materially improved model-cost optimisation options, helped by cheaper and
+open-source models with little impact on outcomes.
+IBM was focused on execution after its recent guide down. Management said IBM is on track to deliver 4–
+5% constant-currency revenue growth in 2026 while increasing free cash flow by around $1bn year on
+year. Software should grow 6–8%, led by Red Hat and recurring revenue momentum, despite a spending-
+priority shift that weighed on Transaction Processing and Automation. IBM also sees GenAI as a key
+value driver for consulting and believes quantum computing could approach $1bn of revenue before 2030.
+Read-across: Enterprise AI is shifting from pilots to governed workflows, with customer context, security,
+model choice and outcome-based monetisation becoming the main differentiators.
+Semicap
+ASML remains supported by strong demand visibility and increasingly firm customer commitments.
+Bookings now extend into 2028, with most of next year’s production already reserved, suggesting ASML’s
+planned capacity ramp is being pulled by real customer demand rather than speculative orders.
+Management also uses large down payments to calibrate true demand, giving confidence that build plans
+reflect genuine market needs.
+AMAT was broadly consistent with prior Q2/GIR takeaways but reinforced a constructive multi-year AI-
+driven WFE story. Management expects leading-edge logic, advanced packaging and memory to account
+for around 80% of WFE in 2026, with revenue still expected to grow around 40% next year and strength
+continuing into 2027/28 given rising orders, backlog and longer-dated visibility. The strongest areas
+remain advanced packaging, leading-edge foundry and DRAM/HBM, while Process Control should grow
+more than 50% in 2026 as customers focus on yield improvement, performance optimisation and materials
+engineering at advanced nodes. AMAT also highlighted solid execution, services growth, margin
+expansion and internal AI productivity benefits, with regionalised semiconductor manufacturing adding a
+further tailwind to the high-margin services business. Capital allocation remains focused on small strategic
+deals and returning excess cash, as large M&A is seen as impractical in the current geopolitical
+environment.
+
+
+[Page 4]
+Read-across: AI demand is increasingly visible through the semicap supply chain, with leading-edge logic,
+advanced packaging, memory and process control all benefiting from stronger multi-year visibility.
+TSMC sounded very confident that AI remains an early-stage, multi-year growth driver, with open-source
+models seen as a demand accelerator rather than a risk because lower token costs should broaden adoption
+across customers and their customers’ customers. Management pointed to very strong customer demand
+behind its Arizona expansion, where yields are already comparable to Taiwan, while reiterating that the
+most advanced R&D and initial production will stay in Taiwan and that roughly 30% of advanced capacity
+could eventually sit outside Taiwan, mostly in Arizona. The broader message was that there are no
+shortcuts in leading-edge foundry: TSMC’s advantage rests on technology leadership, manufacturing
+execution, scale and customer trust, with competitors still years behind. While cycles remain part of the
+industry, management argued the key is getting the mega-trend right, aligning capacity closely with
+customers, and continuing to execute on nodes such as N2 and future technology transitions without major
+issues.
+Semis & Hardware
+Dell argued that the AI infrastructure cycle remains in its early innings but is accelerating, with enterprise
+adoption moving from productivity gains toward full workflow redesign. That should create durable
+demand for compute, storage and networking. Dell’s differentiation sits in its end-to-end portfolio,
+hybrid/on-prem AI positioning, supply chain strength and services capability, supported by a $9.5bn AI
+server backlog and growing enterprise demand. Management also sees runway from an ageing PC and
+server installed base, post-quantum security upgrades and rising storage needs tied to AI workloads. The
+key message was that AI demand looks durable rather than cyclical, while infrastructure refresh, services
+and capital returns remain underappreciated.
+NXP sounded constructive, broadly consistent with GIR’s takeaways. Demand is strengthening across
+automotive, industrial and IoT, inventories remain lean, and visibility is improving even though a broad
+restocking cycle has not yet fully emerged. Management framed the portfolio around “physical AI” at the
+intelligent edge, with software-defined vehicles, industrial robotics and automation supporting longer-term
+growth. Pricing was also highlighted as increasingly favourable, with cumulative increases expected to
+benefit revenue and gross margin over the coming quarters.
+Sandisk reiterated the constructive Q2 message: management remains confident in long-term financial
+targets, supported by long-term agreements, share repurchases and efficient manufacturing at low capital
+intensity. NAND demand is structurally improving as AI inference lifts storage requirements, with data
+centres now representing roughly half of the market. Around one-third of volumes are pre-booked at
+attractive gross margins, while HBF is positioned as a future AI inference enabler. The presentation added
+little new information but reinforced confidence in sustained demand growth, pricing resilience and
+strategic positioning.
+Read-across: AI infrastructure demand is broadening into storage, edge compute, networking and physical
+AI, supporting a more durable hardware cycle beyond accelerators alone.
+
+
+[Page 5]
+Payments
+Adyen reiterated its Q2 guide and current strategy, with interim CFO Hwa Tsao emphasising that growth
+momentum remains strong. H1 revenue grew 21% in constant currency, largely driven by existing-
+customer expansion, reinforcing the land-and-expand model. Product-led growth is becoming more
+important through cross-sell, financial services and geographic expansion, while Talon.One and Orb
+broaden the opportunity in loyalty and billing. Platforms remain the fastest-growing segment and a key
+route to SMEs at scale, while financial products such as issuing, lending, FX and treasury tools should
+become more meaningful over time. Competitive positioning sounded strong, with continued share gains
+from incumbents, particularly in North America, and OpenAI cited as a new customer. The key now is
+stringing together further consistent quarters.
+Toast sounded positive, with vertical depth in complex restaurant subsegments continuing to drive share
+gains while expansion TAMs scale quickly. Since IPO, Toast has tripled locations to more than 150,000
+and grown share from around 4–5% to more than 20%, helped by a localised sales flywheel and focus on
+segments such as quick service, hotels and sports entertainment. International, enterprise and retail ARR
+should reach around $200m this year, doubling year on year from a small base, with these newer vectors
+growing faster and delivering higher ARPU than the core US SMB business at a similar stage. Toast IQ
+Grow also looks promising, with early adopters seeing around 48% sales growth and the product on track
+to be Toast’s fastest ever to $10m ARR. Notably, Adyen recently won Toast’s US business.
+Source: Goldman Sachs FICC & Equities, as of 10 September 2026.
