@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "the 10yr yield (+12.2bps) rose to 4.96%, the highest since October 2023",
+   "why": "Figure and 'highest since' anchor match DB's own numbers exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "The combination of higher energy prices and a hawkish ECB put fresh pressure on sovereign bonds across the board",
+   "why": "Source explicitly names energy prices as a driver in the causal chain leading to the yield move; not a fabricated link."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "Brent crude (+6.34%) ended the session at $107.63/bbl ... futures raised the probability of a September hike from 60% on Wednesday to 72%",
+   "why": "All three figures (Brent move/price, PCE-relevant PPI components firming, hike-odds move) match the same source paragraph."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "the US Treasury bought back $5.19bn of long-dated debt, falling short of the $6bn maximum it had announced on Wednesday",
+   "why": "Buyback figures match exactly, and yields (2yr/10yr/30yr) are described as rising in the same passage."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15887__monthly-chartbook-the-home-straight.txt",
+   "span": "We would see the recent rise in yields as a continuation of a long normalisation process ... If nominal GDP settles at 5.5% then 4.8% would be historically average. If we settle at 6% due to AI and inflation, then around 5.3% is reasonable",
+   "why": "Nominal GDP figure (6.6%), the normalisation framing, and both conditional yield levels (4.8%/5.5%, 5.3%/6%) match precisely; document is confirmed Deutsche Bank via its meta.json."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "for core, they expect a relatively softer +0.21% monthly print ... (CPI - Core // 0.21% // 0.20% // 0.20%)",
+   "why": "DB's own core CPI forecast is 0.21%, matching the sentence."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15933__gs-midday-color-us-equities-mid-day-color-10-sep-2026.txt",
+   "span": "We expect a 0.23% increase in August core CPI (vs. +0.2% consensus)",
+   "why": "Goldman's forecast and stated consensus match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15856__goldman-warns-the-fed-is-just-a-passenger-ai-capex-is-drivin.txt",
+   "span": "the hyperscaler complex will issue MORE DV01 than the US Treasury ... If investors purchase hyperscaler bonds by reducing Treasury or mortgage exposure, the effect can spill into government yields and other fixed-income spreads ... That can lift credit spreads, real yields and the term premium",
+   "why": "Mechanism (more rate exposure issued than Treasury, funded by cutting Treasury/mortgage holdings, pushing up spreads/real yields/term premium) matches the Goldman 'Macro Call' discussion faithfully translated."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15856__goldman-warns-the-fed-is-just-a-passenger-ai-capex-is-drivin.txt",
+   "span": "Mark Wilson's recently comments that, \"The Fed are much more passenger than driver in this debate.\"",
+   "why": "Direct attributed quote matches the paraphrase exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15921__gs-garrett-systematic-update-10-sep-2026.txt",
+   "span": "short term CTA thresholds across all three indices (ndx, spx, rty) have broken this morning ... this is in addition to european index which broke down earlier in the week",
+   "why": "CTA = trend-following systematic funds; indices, timing (Thu 10 Sep, 9:23am ET), and the prior European break all match."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "ECB President Lagarde called the hike \"a no brainer\" ... This left money markets fully pricing another three hikes from the ECB over the next year",
+   "why": "Both the quote and the market-pricing figure are explicitly about the ECB in the same document, directly supporting the sentence."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15941__americas-technology-semiconductors-communacopia-technology-c.txt",
+   "span": "unlike prior technology cycles, when demand for a node typically began declining two to three years after its introduction, TSMC is adding further N3 capacity and still does not expect supply to be sufficient ... CoWoS capacity remains tight, and TSMC already started outsourcing selected packaging processes to OSAT partners",
+   "why": "N3 = 3-nanometer; capacity/supply claim and packaging-outsourcing claim both match verbatim in substance."
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15861__top-highlights-from-day-one-of-goldman-s-giant-tech-conferen.txt",
+   "span": "Bottom line: stay long AI infra as scarcity across compute & energy remains a theme well into 2027",
+   "why": "The 'stay long AI infra into 2027' half is a real GS desk bottom line, but 'buy its AI hardware basket' is not supported anywhere: the only AI Hardware basket reference (pilot-data/pilot/source-text/2026-09-10/15770__a-nightmare-ai-inflection-or.txt, 'Latest GS PB data shows our stocks in our AI Hardware basket long vs short ratio is at the 51st percentile') is neutral GS Prime positioning data, not a buy recommendation. The sentence invents a specific desk call and merges two unrelated GS notes into one attributed 'desk conclusion.'"
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15928__gs-us-tmt-day-2-takes-day-3-preview-gs-communacopia-technolo.txt",
+   "span": "'bottoms up' datapoints remain very constructive ... which is juxtaposed against lingering 'top down' debates ... macro uncertainty (Rates, geopolitical), policy uncertainty (midterms)",
+   "why": "Matches both halves: fundamentals ('bottoms up') are fine, and the drag is explicitly framed as top-down rates/geopolitical/midterm-policy uncertainty."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15860__the-extraordinary-assumption-behind-the-ai-trade.txt",
+   "span": "Forward earnings, revenues and margins have been driving tech stocks higher this year. Forward P/Es, however, have slumped",
+   "why": "Directly states rising forward earnings/margins alongside slumping forward P/E multiples, matching the sentence's valuation-tell claim."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

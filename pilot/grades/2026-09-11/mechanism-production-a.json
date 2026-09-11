@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-10/15856__goldman-warns-the-fed-is-just-a-passenger-ai-capex-is-drivin.txt",
+ "source_span": "If technology companies flood the market with bonds, investors must either commit additional capital or reallocate money previously destined for Treasuries... That can lift credit spreads, real yields and the term premium... The Fed are much more passenger than driver in this debate.",
+ "source_chain": "Hyperscalers finance the most capital-hungry investment cycle in history through debt (AI bond issuance ~$500bn by early August, ~1/5 of US high-grade supply) THEREFORE that new bond supply competes with government issuance for the same capital, forcing reallocation out of Treasuries/mortgages and lifting credit spreads, real yields and the term premium, raising r-star ahead of any productivity payoff THEREFORE the Fed is 'more passenger than driver' \u2014 the issuance calendar, not the policy rate, sets financing costs, and higher real yields/term premium are the clearing mechanism for the AI build-out. Invalidation: only a disinflationary AI-productivity payoff would relieve this, and Goldman sees no sign of it yet.",
+ "pulse_chain": "Hyperscaler capex balloons toward a $1.3T 2028 run-rate that free cash flow can't cover THEREFORE the gap is borrowed in size (AI bonds ~$500bn issued, ~1/5 of IG supply; hyperscaler dollar borrowing $157bn YTD vs $93bn in all of 2025), landing on the same part of the bond market already absorbing record government supply THEREFORE the 30-year Treasury, not the Fed, sets the price of the AI trade \u2014 the 30yr yield has averaged above 5.2% for the first time since 2003, the Fed is a 'passenger' by Goldman's read, and today's hot core print raises the cost again (Oracle's forced equity/convertible raise shows the squeeze). Invalidation: whether that yield lets 'stay long AI infrastructure' survive the Fed's September 16 decision.",
+ "preserved": true,
+ "why": "The pulse keeps Goldman's exact sequence and passenger metaphor intact \u2014 debt-financed capex crowding the bond market therefore the long end (not Fed policy) pricing the AI trade \u2014 and its chosen invalidation (yield level into the Fed decision) is a compressed, not contradictory, application of the note's own 'issuance calendar decides, Fed can't fix it' argument.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+ "source_span": "a hawkish ECB decision and a smaller-than-signaled Treasury buyback then gave the selloff even more momentum ... the performance of Treasuries wasn't helped by news that the US Treasury bought back $5.19bn of long-dated debt, falling short of the $6bn maximum",
+ "source_chain": "Geopolitical escalation (Hormuz risk, Houthi seizure of Mokha, Saudi output at a 1990 low) therefore Brent surges 6.34% to $107.63 therefore that surge, plus a hawkish ECB and a Treasury buyback that fell $0.81bn short of its $6bn cap, actively add momentum to the bond selloff therefore Sept-hike odds jump 60%->72% and 2yr/10yr/30yr yields surge therefore a same-day PPI print (PCE-feeding components firmer) arrives afterward and cements the already-formed hike view; invalidation is today's CPI, the last data point before the Fed decision.",
+ "pulse_chain": "Brent rises 6.34% therefore PPI categories feeding the Fed's preferred gauge come in firmer therefore Sept-hike odds move 60%->72% therefore yields surge (2yr/10yr/30yr) therefore the Treasury tries to lean against the move with a buyback, falls short of its $6bn max, and yields rise across the curve anyway; invalidation is today's CPI print deciding between DB's and ING's reads.",
+ "preserved": false,
+ "why": "The note treats the undersized Treasury buyback as an active catalyst that added momentum to the selloff (on par with the hawkish ECB), but the pulse reframes it as a failed defensive intervention that had no effect ('yields rose... anyway'), reversing the buyback's causal role from a driver of the yield surge to a neutral, ineffective bystander.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

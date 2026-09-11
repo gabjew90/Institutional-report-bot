@@ -1,0 +1,172 @@
+{
+ "metric": 1,
+ "total_cards": 1991,
+ "fragmentation_sets": [
+  {
+   "subject": "Oil/Middle East supply shock spikes prices, cross-asset spillover",
+   "labels": [
+    "oil hormuz risk",
+    "energy supply risk",
+    "oil iran conflict",
+    "oil price breakout",
+    "oil red sea risk",
+    "energy hedge effectiveness"
+   ],
+   "cards": 55
+  },
+  {
+   "subject": "Gold price outlook and positioning",
+   "labels": [
+    "gold outlook",
+    "gold positioning",
+    "precious metals"
+   ],
+   "cards": 19
+  },
+  {
+   "subject": "Fed hike odds rise on sticky inflation",
+   "labels": [
+    "fed september hike odds",
+    "fed policy path",
+    "fed rate hike outlook"
+   ],
+   "cards": 36
+  },
+  {
+   "subject": "Today's cross-asset session recap (equities, vol, credit, FX, rates)",
+   "labels": [
+    "cross asset session levels",
+    "global yields"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Long-end Treasury yields surge on fiscal/term-premium/AI-crowding-out concerns",
+   "labels": [
+    "us treasury yields",
+    "us long end rates",
+    "us treasury yield forecast"
+   ],
+   "cards": 30
+  },
+  {
+   "subject": "US fiscal deficit and dollar reserve-status (dedollarization) risk",
+   "labels": [
+    "us debt deficits",
+    "usd de risking risk"
+   ],
+   "cards": 19
+  },
+  {
+   "subject": "AI capex bubble poses credit-market and macro risk",
+   "labels": [
+    "ai capex financing",
+    "ai investment boom risk"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI agents reshaping commerce and consumer switching costs",
+   "labels": [
+    "agentic commerce",
+    "consumer inertia"
+   ],
+   "cards": 12
+  },
+  {
+   "subject": "Bitcoin's short-squeeze-driven August rally",
+   "labels": [
+    "crypto market performance",
+    "bitcoin perps short squeeze"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Goldman's bullish Germany equity thesis (fiscal/defense/capex/recovery)",
+   "labels": [
+    "european equity buy ideas",
+    "german equity earnings recovery"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "JPM's tactically cautious-to-neutral equity positioning (US and international)",
+   "labels": [
+    "jpm tactical stance",
+    "global equity monetization"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Equity vol and correlation compressed to historic extremes, raising convexity risk",
+   "labels": [
+    "equity vol skew signals",
+    "index vol compression",
+    "spx realized correlation",
+    "global equity volatility regime"
+   ],
+   "cards": 45
+  }
+ ],
+ "fragmented_mass_share": 0.16,
+ "mis_merges": [
+  {
+   "label": "midterm election seasonality",
+   "subjects": [
+    "JPM's midterm seasonality trading pattern",
+    "Senate/House race shift and its read-through to Fed governor appointments"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Democrat Senate-race comeback tied to Fed-appointment risk is a distinct, timely political story an editor could lead with, but it is easy to miss buried under a seasonality-stats label."
+  },
+  {
+   "label": "ai narrative",
+   "subjects": [
+    "Meta/Google routine AI product and infrastructure news",
+    "Anthropic researcher's viral AI-safety resignation warning"
+   ],
+   "would_change_theme_selection": true,
+   "why": "A viral warning that AI poses existential risk is provocative enough to be its own lead theme but is buried alongside routine product-launch and capex items under one label."
+  },
+  {
+   "label": "energy supply risk",
+   "subjects": [
+    "Iran/Gulf oil-tanker conflict pushing Brent above $100",
+    "Russia-Ukraine drone strikes on gas infrastructure pushing European gas to a 2022 high"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Oil and European gas are separate wars, commodities and regions; scanning this label for the oil story could cause an editor to miss the distinct Ukraine gas-strike story entirely."
+  },
+  {
+   "label": "european equity buy ideas",
+   "subjects": [
+    "Goldman's Germany fiscal/recovery bull thesis",
+    "Greek banks field-trip stock calls",
+    "Inditex earnings and price-target update"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Greek banks and Inditex are minor single-name calls that would not have been standalone lead themes regardless of grouping; the theme-relevant Germany portion is already captured as fragmented."
+  },
+  {
+   "label": "us debt deficits",
+   "subjects": [
+    "Trump's proposed $5,000 midterm stimulus payment",
+    "Nomura's structural dedollarization/NIIP thesis"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both are deficit-adjacent and would likely land in the same fiscal brief; the dedollarization portion is already captured as fragmented with usd de risking risk."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmentation is dominated by two mega-clusters (oil/Middle East supply shock across six labels, vol/correlation compression across four) that alone push the share past threshold; three mis-merges bundle politically or thematically distinct stories that could plausibly change lead-theme selection.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "67245439e29c"
+ },
+ "failed": false,
+ "problems": []
+}

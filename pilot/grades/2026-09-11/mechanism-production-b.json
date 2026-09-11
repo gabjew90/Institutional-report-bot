@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-10/15856__goldman-warns-the-fed-is-just-a-passenger-ai-capex-is-drivin.txt",
+ "source_span": "If technology companies flood the market with bonds, investors must either commit additional capital or reallocate money previously destined for Treasuries, mortgages and other fixed-income assets. That can lift credit spreads, real yields and the term premium.",
+ "source_chain": "Hyperscalers must finance a capital-hungry AI buildout mostly through debt (~$500B issued by early August, ~1/5 of US IG supply) therefore that bond supply competes with record government borrowing for the same pool of savings, forcing investors to reallocate out of Treasuries/fixed income or commit fresh capital therefore this lifts credit spreads, real yields and the term premium, making the Fed 'more passenger than driver' since the issuance calendar, not the policy rate, sets the cost of capital. Invalidation: the argument breaks only if AI's productivity dividend arrives soon enough to close the capital-demand/productivity timing mismatch \u2014 which Goldman says shows no signs of yet (aside from falling token costs, which doesn't help the ROI backing the borrowing).",
+ "pulse_chain": "Hyperscaler capex outpaces available cash flow (Goldman: $154B in 2023 to a $1.3T 2028 consensus) therefore the gap is financed by AI-related bond issuance ($500B by early August = 1/5 of IG issuance, Goldman; BNY: $157B of 2026 dollar borrowing vs $93B in all of 2025), landing on the same part of the bond market already absorbing record government supply therefore the 30-year Treasury sets the price of that debt-financed growth (yield above 5.2%, first time since 2003), making the Fed 'a passenger' because the buyer of long-dated corporate bonds, not the policy rate, decides what new AI capacity costs. Invalidation given: whether Goldman's 'stay long AI infrastructure' call survives Wednesday's September 16 Fed decision, i.e. where the 30-year yield goes around that meeting.",
+ "preserved": false,
+ "why": "The pulse reproduces the debt-financed-capex-crowds-yields-Fed-is-passenger chain and its Goldman attribution faithfully, but swaps the note's stated invalidation \u2014 AI's productivity dividend arriving to close the demand/productivity mismatch, explicitly flagged as not yet visible \u2014 for an unrelated near-term condition (whether a bullish equity call survives the Sept 16 FOMC decision) that the source note never argues.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,111 @@
+{
+ "metric": 1,
+ "total_cards": 1991,
+ "fragmentation_sets": [
+  {
+   "subject": "Iran/Hormuz conflict driving oil above $100 and spilling into yields/equities",
+   "labels": [
+    "oil hormuz risk",
+    "energy supply risk",
+    "oil iran conflict",
+    "oil price breakout"
+   ],
+   "cards": 37
+  },
+  {
+   "subject": "Fed leaning hawkish \u2014 hike odds rising on sticky inflation and a Warsh-vs-Waller personnel shift",
+   "labels": [
+    "fed september hike odds",
+    "fed policy path",
+    "fed rate hike outlook"
+   ],
+   "cards": 36
+  },
+  {
+   "subject": "Deutsche Bank's daily cross-asset market-levels wrap (yields plus equities/vol/credit/FX/gold)",
+   "labels": [
+    "global yields",
+    "cross asset session levels"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Long-end US Treasury yield surge on term premium, deficits and AI-capex crowding out",
+   "labels": [
+    "us treasury yields",
+    "us treasury yield forecast",
+    "us long end rates"
+   ],
+   "cards": 30
+  },
+  {
+   "subject": "AI capex boom increasingly debt-financed, raising systemic/macro risk",
+   "labels": [
+    "ai capex financing",
+    "ai investment boom risk"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Compressed vol/correlation regime cracking \u2014 skew bid, CTA deleveraging, dealer stress",
+   "labels": [
+    "equity vol skew signals",
+    "index vol compression",
+    "spx realized correlation",
+    "systematic equity positioning"
+   ],
+   "cards": 39
+  },
+  {
+   "subject": "Gold bull case \u2014 price targets plus record ETF/positioning support",
+   "labels": [
+    "gold outlook",
+    "gold positioning"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "GS bullish German equities call (fiscal/defense/capex/domestic-recovery baskets, GARP thesis)",
+   "labels": [
+    "german equity earnings recovery",
+    "european equity buy ideas"
+   ],
+   "cards": 7
+  }
+ ],
+ "fragmented_mass_share": 0.108,
+ "mis_merges": [
+  {
+   "label": "ai narrative",
+   "subjects": [
+    "AI stock group technical rebound (+17% off lows)",
+    "Big Tech AI product/capex news (Meta Muse launch, Google's Finland data-center investment)",
+    "AI safety/existential-risk commentary (Anthropic researcher resignation, >10% x-risk claim)",
+    "China robotics/EV commentary (XPeng on physical AI and humanoid robots)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Anthropic researcher's resignation and x-risk warning (10m+ views) is a freestanding, editorially distinct story; burying it inside a stock-technicals label means an editor scanning labels would likely never surface it as a candidate theme."
+  },
+  {
+   "label": "midterm election seasonality",
+   "subjects": [
+    "Quant post-midterm seasonality trade (SPX historical hit rates, sector rotation call)",
+    "Senate-race handicapping and its Brent/Fed-appointment linkage"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Both threads hang off the same midterm-timing hook, so an editor would likely still pick one combined 'midterms' brief rather than lose a theme to the merge."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmentation sits just above the 10% ceiling (10.8%), driven mainly by large banks' single reports being split across multiple labels (oil/Hormuz, Fed hawkishness, long-end yields, AI-capex financing, vol/correlation regime); the ai narrative mis-merge independently fails the gate by burying a distinct AI-safety story inside stock-technicals.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "67245439e29c"
+ },
+ "failed": false,
+ "problems": []
+}

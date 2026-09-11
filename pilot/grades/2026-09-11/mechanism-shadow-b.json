@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+ "source_span": "Yet again, the main driver was a big jump in energy prices, with Brent crude surging above $107/bbl... So that led to mounting speculation about faster rate hikes, while a hawkish ECB decision and a smaller-than-signaled Treasury buyback then gave the selloff even more momentum.",
+ "source_chain": "Brent crude surges to $107.63 (+6.34%) on Strait of Hormuz closure fears, therefore energy-driven PPI components feeding PCE come in firm and futures lift September hike odds from 60% to 72%, therefore Treasury yields surge across the curve (2yr 4.59%, 10yr 4.96%, 30yr 5.36%), therefore the Treasury's buyback ($5.19bn, short of the announced $6bn max) fails to arrest the selloff; invalidation is today's CPI print, where a rounded 0.2% core lets the Fed hold and 0.3% forces a hike.",
+ "pulse_chain": "Brent crude closes 6.34% higher at $107.63, therefore firmer PPI components feeding the Fed's preferred gauge push September hike odds from 60% to 72%, therefore 10yr/30yr/2yr yields hit multi-year highs, therefore the Treasury's $5.19bn buyback (short of its $6bn max) fails to stem the rise; invalidation is today's CPI, with JPMorgan's Feroli treating 0.2% as low enough to hold and 0.3% as high enough to hike.",
+ "preserved": true,
+ "why": "Every step, figure, and the invalidation condition trace directly to DB's Early Morning Reid note in the same order and direction, and the DB-vs-ING debate and JPMorgan/Goldman CPI forecasts checked against their own source files (Monthly Chartbook, ING 10yr note, JPM morning briefing, GS midday color) all match without reversal or misattributed bank.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+ "source_span": "the main driver was a big jump in energy prices, with Brent crude surging above $107/bbl, whilst European natural gas hit its highest level since 2022. So that led to mounting speculation about faster rate hikes",
+ "source_chain": "Energy prices spike (Brent >$107, EU gas highest since 2022) therefore markets price faster Fed/ECB hikes (hawkish ECB decision, Sept hike odds 60%\u219272%, PPI components feeding PCE came in firmer) therefore the Treasury's buyback ($5.19bn, short of the announced $6bn max) fails to stem the move therefore yields surge across the curve (2yr 4.59%, 10yr 4.96%, 30yr 5.36%); invalidation: today's US CPI print is the next test of whether the Fed proceeds.",
+ "pulse_chain": "Brent +6.34% to $107.63 therefore PPI components feeding the Fed's preferred gauge come in firmer and futures move Sept hike odds from 60% to 72% therefore the Treasury's $5.19bn buyback (short of its $6bn max) fails to stop the move therefore yields rise across the curve (2yr 4.59%, 10yr 4.96%, 30yr 5.36%); DB (nominal-GDP argument, correctly attributed) reads this as normalization while ING (correctly attributed) calls a break above 5% near-inevitable and dangerous; invalidation: today's CPI print decides which read survives, with named banks' forecasts and a mapped equity-reaction threshold.",
+ "preserved": true,
+ "why": "The pulse reproduces DB's own energy-to-hike-odds-to-failed-buyback-to-yield-spike chain with matching figures, then correctly attributes the DB-normalization vs. ING-breakout debate to the right banks and keeps the CPI print as the same invalidation, without reversing any step or inventing an unargued mechanism.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

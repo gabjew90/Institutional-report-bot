@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "the 10yr yield (+12.2bps) rose to 4.96%, the highest since October 2023",
+   "why": "Exact figure and comparison period match DB's Reid note."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "Yet again, the main driver was a big jump in energy prices, with Brent crude surging above $107/bbl",
+   "why": "Opinion-shaped transition sentence, but it restates the source's own causal framing that energy was the day's main driver."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "Brent crude (+6.34%) ended the session at $107.63/bbl... futures raised the probability of a September hike from 60% on Wednesday to 72%",
+   "why": "All three clauses (Brent close, PPI/PCE components 'came in on the stronger side', hike-odds move 60%->72%) appear verbatim in the same DB note."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "US Treasury bought back $5.19bn of long-dated debt, falling short of the $6bn maximum it had announced on Wednesday",
+   "why": "Figures match exactly; the same note shows 2yr/10yr/30yr yields all rising that session, supporting 'yields rose across the curve anyway.'"
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15887__monthly-chartbook-the-home-straight.txt",
+   "span": "If nominal GDP settles at 5.5% then 4.8% would be historically average. If we settle at 6% due to AI and inflation, then around 5.3% is reasonable",
+   "why": "Deutsche Bank chartbook gives 6.6% spot nominal GDP and the identical 4.8%/5.3% scenario figures, and elsewhere calls the yield rise 'a continuation of a long normalisation process.'"
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15868__db-early-morning-reid-macro-strategy.txt",
+   "span": "for core, they expect a relatively softer +0.21% monthly print... (CPI - Core // 0.21% // 0.20% // 0.20%)",
+   "why": "Deutsche Bank's own core CPI forecast is 0.21%, matching the sentence."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15933__gs-midday-color-us-equities-mid-day-color-10-sep-2026.txt",
+   "span": "We expect a 0.23% increase in August core CPI (vs. +0.2% consensus)",
+   "why": "Goldman's desk note gives exactly 0.23% vs 0.2% consensus."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15856__goldman-warns-the-fed-is-just-a-passenger-ai-capex-is-drivin.txt",
+   "span": "the hyperscaler complex will issue MORE DV01 than the US Treasury... If investors purchase hyperscaler bonds by reducing Treasury or mortgage exposure, the effect can spill into government yields",
+   "why": "DV01 = interest-rate exposure; the transcript also ties the buyer-substitution mechanism to credit spreads and term premium ('higher real yields and a fatter term premium are the clearing mechanism')."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15856__goldman-warns-the-fed-is-just-a-passenger-ai-capex-is-drivin.txt",
+   "span": "Mark Wilson's recently comments that, \"The Fed are much more passenger than driver in this debate.\"",
+   "why": "Direct quote attribution matches exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15921__gs-garrett-systematic-update-10-sep-2026.txt",
+   "span": "short term CTA thresholds across all three indices (ndx, spx, rty) have broken this morning... in addition to european index which broke down earlier in the week",
+   "why": "CTA = trend-following funds; ndx/spx/rty = Nasdaq 100/S&P 500/Russell 2000; note is timestamped Thu 10 Sep 2026, 9:23am ET."
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-11/16010__hawkish-ecb-hike-tees-up-additional-tightening.txt",
+   "span": "those 'in-the-know' believe market bets on three additional hikes \"may be too aggressive.\"",
+   "why": "The 'no brainer' quote is faithful, but no source shows money markets 'fully' pricing three more ECB hikes: the only three-hikes figure is a hedged trader bet the source itself calls possibly 'too aggressive'. The confident 'fully price' language instead belongs to the Fed's separately-tracked path in the same DB note ('at least 3 hikes are fully priced in over the next year'), so the sentence appears to misattribute Fed hike-pricing certainty to the ECB."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15941__americas-technology-semiconductors-communacopia-technology-c.txt",
+   "span": "TSMC is adding further N3 capacity and still does not expect supply to be sufficient... CoWoS capacity remains tight, and TSMC already started outsourcing selected packaging processes to OSAT partners",
+   "why": "N3 = 3-nanometer; source explicitly contrasts this with prior nodes where demand faded two to three years post-introduction, and confirms the OSAT outsourcing detail."
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15861__top-highlights-from-day-one-of-goldman-s-giant-tech-conferen.txt",
+   "span": "Bottom line: stay long AI infra as scarcity across compute & energy remains a theme well into 2027",
+   "why": "'Stay long AI infra into 2027' is a real GS desk bottom line, but no source contains a 'buy its AI hardware basket' call \u2014 the only AI Hardware basket reference in the day's set is GS Prime positioning data (long/short ratio at the 51st percentile), not a recommendation. The sentence bolts an invented specific call onto a real one."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-11/15928__gs-us-tmt-day-2-takes-day-3-preview-gs-communacopia-technolo.txt",
+   "span": "'bottoms up' datapoints remain very constructive... juxtaposed against lingering 'top down' debates \u2013 an output of Summer volatility, macro uncertainty (Rates, geopolitical), policy uncertainty (midterms)",
+   "why": "Directly supports the framing that company-level ('bottoms up') data is fine while top-down rates/geopolitics/midterm-policy concerns are what's holding stocks back."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-10/15860__the-extraordinary-assumption-behind-the-ai-trade.txt",
+   "span": "Forward earnings, revenues and margins have been driving tech stocks higher this year. Forward P/Es, however, have slumped",
+   "why": "Near-verbatim match for the valuation-divergence claim."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 2,
+ "unsupported": 0,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,107 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d34",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "US-Iran strikes push oil and gas prices to multi-year highs, therefore markets price faster Fed/ECB hikes, therefore a Treasury buyback that fell short of estimates accelerates the yield rise to multi-year highs across the curve, therefore equities sell off for a third day, therefore focus turns to today's ECB decision and US data.",
+   "brief_chain": "US-Iran strikes push Brent above $100 and European gas to a 2022 high, therefore Fed/ECB hike pricing rises, therefore yields accelerate higher after a Treasury buyback shortfall, therefore equities fall for a third day, therefore the day ahead is the ECB decision and US data.",
+   "distortions": [
+    {
+     "what": "Brief omits the 2yr/30yr Treasury and broader European/Asian sovereign yield moves (German 2yr, Italy BTP, Australia/Japan overnight) beyond the four cited.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are supporting magnitude detail, not the driving mechanism."
+    },
+    {
+     "what": "Brief omits BoJ Governor Masu's overnight comments reinforcing expectations of a BoJ hike next week.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 a secondary, separately-flagged catalyst not part of the energy-driven main narrative."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d24",
+   "tier": "rest",
+   "bank": "Citadel Securities",
+   "source_chain": "US-Iran strikes push oil and long yields higher, therefore repeated supply shocks are now a structural feature the Fed can no longer look through, therefore despite Waller's dovish read, Warsh's own standard points toward hiking, therefore the author concludes a well-signaled September hike (not a hold) is the more constructive path for risk assets.",
+   "brief_chain": "US-Iran strikes push oil and long yields higher, therefore the crude response is contained while refined products still transmit the shock, therefore repeated supply shocks mean the Fed can't look through them, therefore Waller leans hold but Warsh's own standard points to hiking, therefore a well-signaled hike beats a hold that leaves bonds to do the Fed's work.",
+   "distortions": [
+    {
+     "what": "Brief drops that Kpler's 9mb/d recovery estimate includes ship-to-ship transfers and the Fujairah/East-West pipelines.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the conclusion (crude response contained) is preserved regardless of the mechanism detail."
+    },
+    {
+     "what": "Brief omits that the RBNZ has already acted and the RBA/BoC are becoming less willing to look through energy shocks.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 supporting global context for the Fed-can't-look-through argument, not the core US call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Geopolitical escalation pushes oil/yields/vol higher overnight, therefore eases on Hormuz-deal-meeting reports, therefore the hawkishly-read ECB hike adds to the rates selloff and reprices near-term tightening, therefore with CPI due today JPM stays tactically cautious/neutral on global equities \u2014 long US/Asia vs EU with high-conviction sector shorts, bullish EM via country-relative trades \u2014 against a backdrop of HF re-grossing and softening sentiment.",
+   "brief_chain": "Oil/yields/vol extend higher overnight on Iran/Houthi escalation, then pare on Hormuz-meeting reports, therefore the surprisingly hawkish ECB hike adds to the selloff and reprices near-full October tightening while JPM Econ keeps a December call, therefore ahead of CPI JPM stays cautious/neutral, long US/Asia vs Europe, high-conviction short EU Chemicals and Asia Consumer Electronics, bullish EM on country-relative trades, amid HF re-grossing and softening sentiment.",
+   "distortions": [
+    {
+     "what": "Brief drops the qualifier that JPM Econ's October pricing is 'dependent on non-linear moves in second-round effects.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the priced path and stance are unchanged; this is a conditionality note on the same call."
+    },
+    {
+     "what": "Brief omits the META upgrade, EM earnings-growth statistics, copper tariff volatility, and the next-week catalyst list.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 none of these alter the stated equity-positioning stance or the named longs/shorts."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d47",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "AI adoption keeps growing but is decelerating and shifting away from frontier models, therefore top-1%-customer spend and IPO timelines (Anthropic, OpenAI) show cracks, therefore hedge fund and mutual fund positioning has washed out, but earnings growth still outpaces the market, therefore the note stops short of calling the inflection.",
+   "brief_chain": "AI adoption keeps growing but decelerates and the token mix shifts from frontier models, therefore top-1% customer spend fell 9.7% and Anthropic's/OpenAI's IPOs slip, therefore hedge fund and mutual fund AI positioning has washed out, but AI infrastructure EPS growth still outpaces the market, so the note stops short of calling the inflection.",
+   "distortions": [
+    {
+     "what": "Brief states the Broad AI long/short ratio 'sits at the 38th percentile versus its 1-year high,' conflating two separate source figures (ratio of 3.54 vs. a 1-year high of 4.27, and separately the 38th percentile vs. the past year).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the reported percentile and the washed-out-positioning conclusion are both preserved correctly; only the phrasing of what the percentile is relative to is imprecise."
+    },
+    {
+     "what": "Brief drops the 'if it happens at all' caveat on OpenAI's 2027 IPO window.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 timeline slippage and skepticism are already conveyed by 'wishful thinking' for 2026."
+    },
+    {
+     "what": "Brief drops the note that the mutual-fund AI underweight is 'mostly regulatory/technical' rather than an active bearish call.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the overall conclusion (positioning washed out, inflection not yet called) is unchanged either way."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 9,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

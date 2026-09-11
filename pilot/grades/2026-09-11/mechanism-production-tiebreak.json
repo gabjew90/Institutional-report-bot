@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-10/15856__goldman-warns-the-fed-is-just-a-passenger-ai-capex-is-drivin.txt",
+ "source_span": "If technology companies flood the market with bonds, investors must either commit additional capital or reallocate money previously destined for Treasuries, mortgages and other fixed-income assets. That can lift credit spreads, real yields and the term premium.",
+ "source_chain": "Hyperscaler AI capex is too large to fund from cash flow, so it is financed by a flood of new investment-grade bond issuance (~$500bn by early August, ~1/5 of 2026 US IG supply) \u2014 therefore that new bond supply competes with already-heavy government borrowing for the same capital, lifting credit spreads, real yields and the term premium \u2014 therefore the Fed is 'more passenger than driver': the policy rate does not set the cost of this capital, the issuance calendar does. Soft invalidation: the pressure only eases if AI's promised productivity/disinflation dividend arrives to offset the capital demand, which Goldman says shows no signs of yet.",
+ "pulse_chain": "Hyperscaler capex outstrips cash flow, so it gets financed by AI-related bond issuance ($500bn, ~1/5 of IG issuance by early August) \u2014 therefore that borrowing lands on the same part of the bond market already absorbing record government supply \u2014 therefore the 30-year Treasury, not the Fed funds rate, sets the price of AI growth, with the Fed cast as 'a passenger' per Goldman's read \u2014 therefore this morning's hot core CPI print raises that financing cost further, and whether Goldman's 'stay long AI infrastructure' call holds turns on where the 30-year yield sits into the September 16 Fed decision.",
+ "preserved": true,
+ "why": "The pulse reproduces Goldman's exact chain \u2014 capex outstrips cash flow, gets bond-financed, crowds the same market as government supply, and the bond market (not the Fed) sets AI's financing cost, hence 'the Fed is a passenger' \u2014 in the same direction and correctly attributed to Goldman, only dropping the note's secondary hedge that AI issuance is 'a contributor' rather than the sole driver, which the frozen rubric treats as omitted secondary evidence, not a broken step.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

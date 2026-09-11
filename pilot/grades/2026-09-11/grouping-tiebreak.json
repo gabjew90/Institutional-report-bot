@@ -1,0 +1,122 @@
+{
+ "metric": 1,
+ "total_cards": 1991,
+ "fragmentation_sets": [
+  {
+   "subject": "Fed September/December hike timing debate (odds, hawkish officials, inflation-persistence case)",
+   "labels": [
+    "fed september hike odds",
+    "fed policy path",
+    "fed rate hike outlook"
+   ],
+   "cards": 37
+  },
+  {
+   "subject": "US long-end Treasury yield surge and its drivers (term premium, deficits, AI capex crowding out)",
+   "labels": [
+    "us treasury yields",
+    "us treasury yield forecast",
+    "us long end rates"
+   ],
+   "cards": 30
+  },
+  {
+   "subject": "Oil price surge from Iran/Hormuz/Red Sea conflict risk",
+   "labels": [
+    "oil hormuz risk",
+    "energy supply risk",
+    "oil iran conflict",
+    "oil red sea risk",
+    "oil price breakout"
+   ],
+   "cards": 43
+  },
+  {
+   "subject": "Gold price outlook and positioning",
+   "labels": [
+    "gold outlook",
+    "gold positioning"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "Bloomberg broad commodity-rally recap (per-commodity performance bullets from one note)",
+   "labels": [
+    "commodities outlook",
+    "precious metals"
+   ],
+   "cards": 10
+  },
+  {
+   "subject": "Goldman's German equity earnings-recovery call",
+   "labels": [
+    "european equity buy ideas",
+    "german equity earnings recovery"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "Equity vol regime: compression to YTD lows, then repricing/catch-up higher",
+   "labels": [
+    "equity vol skew signals",
+    "index vol compression"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.0889,
+ "mis_merges": [
+  {
+   "label": "ai narrative",
+   "subjects": [
+    "AI stock technical rebound/momentum trade",
+    "Meta Muse agent product launch",
+    "Google Finland data-center investment",
+    "Anthropic researcher AI-safety/existential-risk warning",
+    "XPeng physical-AI/robotics commentary"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Anthropic-researcher safety warning (10m+ views) is a distinct sentiment/narrative-risk story, not evidence for the 'AI stocks bouncing off technical resistance' trade setup, and burying it here could cause an editor to miss it as its own theme."
+  },
+  {
+   "label": "midterm election seasonality",
+   "subjects": [
+    "Equity seasonality trading strategy around midterms (buy healthcare, size up risk on Election Day)",
+    "Political race/prediction-market odds (Senate control) and its link to Iran conflict and Fed appointments"
+   ],
+   "would_change_theme_selection": true,
+   "why": "A tactical seasonality trade and a political-handicapping/geopolitics-meets-Fed-appointments piece are different theses a pulse would not fold into one brief; merging them risks the political-odds angle never surfacing as a theme."
+  },
+  {
+   "label": "ai infrastructure demand",
+   "subjects": [
+    "Market Ear signal of AI enterprise spend deceleration (bearish demand datapoint)",
+    "Broadcom/Goldman AI infrastructure buildout guidance, demand outstripping supply (bullish supply-side narrative)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "These are opposing reads (softening demand vs. supply-constrained bull case) that could anchor a bull-vs-bear AI capex debate; bundled under one label they read as one uniform demand narrative and the bearish counter-signal could be dropped."
+  },
+  {
+   "label": "european equity buy ideas",
+   "subjects": [
+    "Germany fiscal/defense/capex recovery thesis",
+    "Greek banks field-trip note (Alpha/Piraeus/Eurobank/NBG ratings)",
+    "Inditex earnings estimate revisions"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Three unrelated single-name/country calls (Germany macro thesis, a Greek banking-sector field trip, and an Inditex earnings model update) are stapled together; an editor scanning labels could easily miss the Inditex or Greek-banks story as its own brief."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmentation stays under the 10% threshold (~8.9%) but is concentrated in three big macro stories (Fed hikes, long-end yields, Middle East oil risk) each split 3-5 ways, seemingly by originating bank rather than subject. Four grab-bag labels mis-merge genuinely distinct subjects in ways that would change which themes an editor selects, so the metric fails on the mis-merge criterion.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "67245439e29c"
+ },
+ "failed": false,
+ "problems": []
+}

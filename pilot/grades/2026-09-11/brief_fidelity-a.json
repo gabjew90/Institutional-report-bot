@@ -1,0 +1,107 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d34",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "US-Iran strikes push Brent above $100 and gas to a post-2022 high therefore markets price faster Fed/ECB hikes therefore yields hit multi-year highs (amplified by a disappointing $6bn Treasury buyback) therefore equities sell off for a third day, with the ECB decision and US PPI/claims data as the day's catalysts.",
+   "brief_chain": "Same chain: US-Iran strikes drive Brent/gas higher therefore faster Fed/ECB hike pricing therefore yields (accelerated by the Treasury buyback shortfall) therefore equities fall, with the ECB decision and DB's data forecasts ahead.",
+   "distortions": [
+    {
+     "what": "Brief attributes the natural gas price spike solely to the Yamalo-Nenets fire and Ukrainian drone strikes; source says the move was 'partly driven by the US-Iran news' and only then took 'a further leg higher' from the Russia-related events.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the inflation-impulse conclusion (gas at a post-2022 high) is unchanged; only a contributing cause is compressed out."
+    },
+    {
+     "what": "Brief drops secondary yield/index data points (2yr Treasury 4.43%, 30yr Treasury 5.29%, Italy 10yr BTP 4.29%, UK 10yr 5.26%, Brent 'highest since May') present in the source.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the headline figures kept (10yr UST, bund, OAT, UK 30yr, equity moves) already establish the same direction and magnitude of the yield/equity move."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d24",
+   "tier": "rest",
+   "bank": "Citadel Securities",
+   "source_chain": "US-Iran strikes push oil/long yields up, but the crude response is contained by recovered non-Iranian exports and demand slack therefore refined-product tightness still transmits the shock therefore repeated supply shocks mean the Fed can no longer look through inflation therefore Warsh's own standard implies hiking over Waller's 'hold if CPI benign' therefore a well-signaled September hike, though it won't mechanically cut the 30y yield, is the more constructive path for risk assets than a hold that leaves bonds to do the Fed's work.",
+   "brief_chain": "Same chain, same conclusion: contained crude response, constrained refined products, structurally recurring supply shocks force the Fed off 'look-through', Warsh's standard points to hiking against Waller's hold-if-benign view, and a well-signaled hike beats a hold for risk assets.",
+   "distortions": [
+    {
+     "what": "Brief omits the source's explicit statement that the long-end selloff 'reflects more than oil' \u2014 also inflation uncertainty, fiscal deterioration/Treasury supply, hyperscaler issuance and Fed-reaction-function uncertainty \u2014 the piece's titular thesis ('The Long-End Has Been The Problem').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief still delivers the same ultimate call (hike is more constructive than a hold); the omitted point is supporting causal texture, not a different conclusion."
+    },
+    {
+     "what": "Brief drops the conditional retracement scenario ('if conflict normalizes, crude stays capped, IG issuance bulge passes and the Fed acts credibly, a retracement in long-end yields looks plausible') and the 'risk of a much larger tightening cycle later' from the hike case.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are secondary elaborations on the same underlying stance, not a different invalidation condition than what's implied by the kept conclusion."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Geopolitical escalation (Iran missiles, Houthi threat to Bab al-Mandeb) spikes Brent toward $110 overnight, then pares on Hormuz-deal-meeting reports; a surprisingly hawkish ECB hike adds to the rates selloff (near-full Oct priced, Econ still calls Dec) therefore focus shifts to today's US CPI amid firm PPI/core PCE readings and a tech-inflation/power-demand backdrop therefore JPM stays tactically cautious/neutral on global equities, long US/Asia vs Europe, high-conviction short EU Chemicals/Asia Consumer Electronics, bullish EM via country-relative trades, against a backdrop of HF re-grossing and softening sentiment.",
+   "brief_chain": "Same chain and same positioning conclusions, in compressed form.",
+   "distortions": [
+    {
+     "what": "Brief keeps 'JPM Econ keeps a December hike call' but drops the caveat that an October hike is 'dependent on non-linear moves in second-round effects.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the base call (Dec hike) is preserved; the dropped clause only qualifies a contingent alternative path."
+    },
+    {
+     "what": "Brief states the regional equity preference (long US/Asia vs Europe) but omits that JPM has been 'tactically bullish on EU Equities since early May' and is now 'adding cheap index hedges' \u2014 a nuance layered beneath the top-line regional call.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's stated relative preference (long US/Asia vs Europe) matches the source's own top-line framing; the omitted layer doesn't reverse it."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d47",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "AI adoption keeps growing but decelerates and shifts away from frontier models, and top-1% customer spend just fell sharply therefore Anthropic's and OpenAI's IPOs are slipping, clouding visibility into the economics behind rich valuations therefore HF/mutual-fund positioning has washed out across most AI baskets therefore, despite all that, AI infrastructure earnings growth still hasn't rolled over, so the note stops short of calling an inflection.",
+   "brief_chain": "Same chain and same non-call conclusion, in compressed form.",
+   "distortions": [
+    {
+     "what": "Brief drops the source's qualifier that OpenAI's 2027 IPO window holds 'if it happens at all.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 'more plausible window' already conveys uncertainty; the dropped clause only intensifies it."
+    },
+    {
+     "what": "Brief cites only Broad AI (38th percentile) and AI Power (4th percentile) positioning and omits AI Hardware positioning (51st percentile vs 1yr, near-neutral), slightly overstating how uniformly washed out AI positioning is.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the note's own conclusion ('stops short of calling the inflection') is unchanged either way; this is a selective citation among several positioning stats, not a reversal."
+    },
+    {
+     "what": "Brief drops the source's caveat that mutual funds' AI underweight is 'mostly regulatory / technical' rather than a conviction bearish call.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying fact (funds underweight AI) is preserved; only the explanatory caveat is lost."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 9,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}
