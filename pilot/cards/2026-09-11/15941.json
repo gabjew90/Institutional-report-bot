@@ -1,0 +1,1465 @@
+{
+ "brief": "Goldman Sachs summarises Day 2 of its Communacopia + Technology Conference, where TSMC, Amkor, NXP, Cadence, SanDisk, IBM, Teradyne, Applied Materials and SiTime presented. The chain the note draws: agentic AI broadens compute demand beyond accelerators into CPUs, networking and DRAM, so leading-edge wafer, advanced packaging, memory and test capacity all stay tight, so vendors extend capacity on multi-year customer visibility. TSMC says N3 supply is still insufficient, CoWoS is tight enough that it now outsources some packaging to OSATs, and power and memory are the bottlenecks others cite. Applied Materials reiterates roughly 40% 2026 revenue growth, Amkor its $11bn 2030 target, SanDisk that NAND tightness runs through 2027 and possibly 2028. TSMC's Arizona Phase 1 reaches Taiwan-comparable yields and profitability, which it uses to argue geographic flexibility is worth a pricing premium, while N2 ramp and overseas dilution of 2 to 3 percentage points each still leave its 56%-and-above gross margin target intact. Analog names describe recovering end demand without broad OEM restocking. Goldman restates Buy ratings and 12-month price targets on every name except Amkor, rated Neutral.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC views AI as a multi-year megatrend still in its early stages.",
+   "anchor": "AI remains in the early stages of a multi-year megatrend",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "multi-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC expects falling compute costs to raise AI consumption and drive incremental demand for advanced silicon.",
+   "anchor": "Lower compute costs should drive greater consumption and silicon demand",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC expects the shift from generative to agentic AI to broaden compute demand beyond accelerators into CPUs.",
+   "anchor": "the shift from generative AI toward agentic AI, which should broaden compute demand beyond accelerators to CPUs",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC is still adding N3 capacity and does not expect supply to be sufficient, unlike prior node cycles where demand declined two to three years after introduction.",
+   "anchor": "TSMC is adding further N3 capacity and still does not expect supply to be sufficient",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC identifies power and memory, not foundry capacity, as the bottlenecks other parts of the AI supply chain cite.",
+   "anchor": "management identified power and memory as potential bottlenecks cited by other parts of the AI supply chain",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC states fabs take two to three years to build and a further one to two years to ramp, which limits how fast foundry capacity can expand.",
+   "anchor": "fabs require two to three years to build and another one to two years to ramp",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC says CoWoS advanced-packaging capacity remains tight and it has begun outsourcing selected packaging processes to OSAT partners.",
+   "anchor": "CoWoS capacity remains tight, and TSMC already started outsourcing selected packaging processes to OSAT partners",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC's advanced packaging currently supports approximately 5.5x reticle size with a roadmap to approximately 14x within the next several years.",
+   "anchor": "current advanced-packaging capability supports approximately 5.5x reticle size, with a roadmap to reach approximately 14x reticle sizes",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next several years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC's disclosed AI revenue definition covers only GPUs, custom AI accelerators and memory base die, so its total AI exposure is broader than reported.",
+   "anchor": "its disclosed AI revenue definition is relatively narrow and primarily captures GPUs, custom AI accelerators and memory base die",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SanDisk says NAND supply and demand remain tight and expects that to last through 2027 and potentially 2028.",
+   "anchor": "SanDisk noted that NAND remains under tight supply/demand conditions - and this is expected to last through 2027 and potentially 2028",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2027, potentially 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SanDisk has 50% of planned FY27 volume and 67% of planned FY28 volume covered by long-term agreements.",
+   "anchor": "underpinned by 50%/67% of its planned volume covered by NBMs",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27 and FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SanDisk previously described KV Cache as roughly 35% of the 1.2 ZB AI datacenter memory market by 2032.",
+   "anchor": "described KV Cache as critical for AI inference, representing ~35% of the 1.2 ZB AI",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by 2032"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor expects compute revenue to grow 30% year over year in 2027.",
+   "anchor": "Amkor expects compute revenue to continue to grow at 30% YoY in 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor's Arizona phase 2 adds 60,000 square metres of cleanroom space on top of 33,000 square metres in phase 1.",
+   "anchor": "phase 2 is expected to add 60,000 sq m cleanroom space, in addition to 33,000 sq m added in phase 1",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne expects the test equipment market to grow at least in line with overall semiconductor capex.",
+   "anchor": "Management also expects the test equipment market to at least grow in line with overall semiconductor CapEx",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 3-5 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne expects test to reach roughly 8% of overall semiconductor capex versus roughly 4% historically as test intensity rises.",
+   "anchor": "representing ~8% of overall semiconductor CapEx (vs. ~4% historically) as test intensity continues to move up",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 3-5 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne expects its co-packaged optics test equipment market to grow from roughly $100mn today to $300mn-$700mn by 2028 and potentially around $1bn by 2030.",
+   "anchor": "its test equipment TAM expected to grow from roughly $100mn today to $300mn-$700mn by 2028 and potentially ~$1bn by 2030",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028 to 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne expects meaningful production share gains at a second hyperscale cloud compute customer in 2027.",
+   "anchor": "Teradyne expects meaningful production share gains at a second hyperscale cloud compute customer in 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne targets roughly 30% share at a major merchant compute customer over the next three to five years.",
+   "anchor": "complementing its path to ~30% share at a major merchant compute customer over the next 3-5 years",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 3-5 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne sees custom AI silicon as a larger growth opportunity than networking, with individual customer programs worth hundreds of millions to over $1bn of annual market.",
+   "anchor": "custom AI silicon as a larger growth opportunity than networking, with multiple customer programs representing hundreds of millions to over $1 billion of annual TAM",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne's revenue splits roughly 80% semiconductor test, 10% robotics and 10% product test.",
+   "anchor": "with semiconductor test (~80% of revenue), robotics (~10%), and product test (~10%)",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne expects modest HBM growth and strong DRAM and NAND memory test growth in 2027.",
+   "anchor": "with modest growth in HBM, strong growth in DRAM and NAND in 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne expects robotics-assisted manufacturing in datacenters to be the fastest growing area of its robotics business.",
+   "anchor": "The company expects robotics-assisted manufacturing in datacenters to be the strongest growing area in robotics",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Applied Materials expects leading-edge logic, advanced packaging and memory to account for roughly 80% of wafer fab equipment spending in 2026 and a similar mix in 2027.",
+   "anchor": "leading-edge logic, advanced packaging, and memory accounting for ~80% of WFE in 2026 and similar mix in 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 and 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Applied Materials expects advanced packaging revenue to grow roughly 70% year over year in 2026 to a $2.5bn-$3.0bn run-rate.",
+   "anchor": "advanced packaging revenue expected to grow ~70% YoY in 2026 to a $2.5-$3.0bn revenue run-rate",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Applied Materials says agentic AI is driving stronger customer investment across CPUs and DRAM.",
+   "anchor": "agentic AI is driving stronger investment across CPUs and DRAM",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "NXP expects its datacenter segment to grow over 100% in 2026.",
+   "anchor": "NXP struck a bullish tone on the outlook for the segment (over 100% growth expected in 2026)",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime expects its market share in 1.6 Tbps optical networking products to double to 80%.",
+   "anchor": "the ongoing ramp of higher-speed optical networking products at 1.6 Tbps (where it expects its market share to double to 80%)",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime sees timing content per rack rising to $400-$600 and potentially up to $1,000 in certain configurations.",
+   "anchor": "Management sees content per rack as continuing to increase, to $400-$600, and potentially up to $1,000 in certain configurations",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime estimates timing content of $20-$25 per switch.",
+   "anchor": "where it estimates timing content of between $20-$25 per switch",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC's Arizona Phase 1 on N4 is in operation with yields comparable to Taiwan and positive profitability.",
+   "anchor": "Arizona Phase 1, using N4 technology, is in operation, with yields comparable to Taiwan",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC expects equipment move-in for Arizona Phase 2 on N3 to begin soon.",
+   "anchor": "Equipment move-in for Phase 2, which will use N3 technology, is expected to begin soon",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC has acquired additional Arizona land able to hold five to six more fabs, supporting its announced incremental $100bn US investment.",
+   "anchor": "TSMC has acquired another parcel of land capable of accommodating an additional five to six fabs",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC expects roughly 30% of its N2-and-beyond capacity to sit outside Taiwan in five years, primarily in Arizona.",
+   "anchor": "TSMC expects approximately 30% of its N2-and-beyond capacity to be located outside Taiwan in five years",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC will continue to ramp its most advanced technologies in Taiwan first, with overseas deployment following after the technology stabilises.",
+   "anchor": "the most advanced technologies will continue to ramp first in Taiwan",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC intends to price geographic flexibility as incremental value and says customers are increasingly willing to pay the premium.",
+   "anchor": "TSMC believes this geographic flexibility represents incremental value and intends to reflect that value in its pricing",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC trains locally hired Arizona employees for six to eighteen months in Taiwan and assigns experienced Taiwan staff to Arizona.",
+   "anchor": "Locally hired Arizona employees spend six to eighteen months training and working in Taiwan",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC expects overseas expansion to dilute gross margin by 2-3 percentage points early in the current five-year period and by more later as additional overseas fabs start production.",
+   "anchor": "Overseas expansion is expected to dilute GM by 2-3ppts during the early portion of the current five-year period",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor expects its Arizona facility gross margins to turn accretive exiting 2029 into 2030.",
+   "anchor": "Amkor expects gross margins from Arizona facility to be accretive exiting 2029, into 2030",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2029 into 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor's Arizona phase 2 is expected to scale to roughly $1bn of revenue at 30% gross margin, similar to phase 1.",
+   "anchor": "revenue from phase 2 will scale around similar levels to phase 1 - $1 bn revenue with 30% gross margin",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor expects 20%-25% of its $12bn Arizona investment in each of 2028 and 2029, and 10%-15% in each of 2030 and 2031.",
+   "anchor": "Amkor expects 20%-25% of $12 bn investment in Arizona in 2028 and 2029, and 10%-15% in 2030 and 2031",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028 to 2031"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC remains comfortable with its long-term gross margin target of 56% and above.",
+   "anchor": "management remains comfortable achieving its long-term gross margin target of 56% and above",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC's long-term gross margin target has risen from 50% five years ago to 53% and now 56% and above.",
+   "anchor": "long-term gross margin target increasing from 50% five years ago to 53% and now 56% and above",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC expects the N2 ramp to dilute 2026 gross margin by approximately 2-3 percentage points.",
+   "anchor": "The N2 ramp is expected to dilute 2026 GM by approximately 2-3ppts",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "TSMC will not raise prices because near-term utilization is high nor cut them when utilization weakens, pricing instead on value.",
+   "anchor": "raise prices simply because near-term utilization is high, nor reduce prices simply because utilization temporarily weakens",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor reiterated its $11bn 2030 revenue target.",
+   "anchor": "Amkor discussed its $11 bn 2030 revenue target",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor expects buybacks to offset stock compensation dilution and targets long-term leverage of 1.5x.",
+   "anchor": "Amkor expects buybacks to offset dilution from stock compensation, and long-term leverage levels of 1.5X",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "long-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor sees near-term headwinds in Communications from memory-related demand destruction, a Korea to Vietnam capacity shift and different customer build cycles.",
+   "anchor": "memory related demand destruction; (2) capacity shift from Korea to Vietnam and (3) different build cycle from key customers",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Amkor expects iOS demand to be relatively better than Android.",
+   "anchor": "Amkor expects iOS demand to be relatively better than Android",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM expects 4%-5% constant-currency revenue growth in 2026, free cash flow up roughly $1bn year over year and 100 basis points of pre-tax margin expansion, following its recent guidance cut.",
+   "anchor": "deliver 4% - 5% revenue growth in CC for 2026, while increasing free cash flow by ~$1bn YoY and delivering 100bps of pre-tax margin expansion",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM expects its Software segment to grow 6%-8% in 2026, led by Red Hat and recurring revenue.",
+   "anchor": "The company expects to grow its Software segment 6% - 8% in 2026",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM expects long-run Software growth approaching low double digits, around 10%.",
+   "anchor": "IBM expects growth approaching low-double digits (~10%) in Software",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long-run"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM has closed roughly 40% of the mainframe deals it previously deferred after its 2Q miss.",
+   "anchor": "closed ~40% of its previously deferred deals. IBM\u2019s mainframe offering remains strong",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM describes the z17 mainframe as its most successful program ever, with 130% revenue expansion versus the prior program.",
+   "anchor": "the z17 mainframe which it described as the most successful program in IBM history with 130% of revenue expansion",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Applied Materials reiterated its outlook for roughly 40% revenue growth in 2026 and expects strong growth into 2027 and 2028.",
+   "anchor": "Applied Materials reiterated its outlook for ~40% revenue growth in 2026",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Applied Materials expects Process Control to grow more than 50% in 2026 on demand for yield improvement and materials engineering at advanced nodes.",
+   "anchor": "which is expected to grow more than 50% in 2026, driven by increasing demand for yield improvement",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Applied Materials expects China revenue to grow year over year in 2026 with modest share gains.",
+   "anchor": "ICAPS: Applied Materials expects China revenue to grow YoY in 2026 with modest",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Applied Materials sees ICAPS sustaining a mid-to-high single digit compound growth rate with acceleration in 2027 versus 2026.",
+   "anchor": "management sees ICAPS sustaining a mid-to-high single digit CAGR, with acceleration in 2027 versus 2026",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne expects gross margins to stay in the current 59%-60% range.",
+   "anchor": "59%-60% range. Teradyne expects significant operating leverage as it grows in size in the future",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Teradyne still expects revenue to grow faster than operating expenses despite leaning into OpEx.",
+   "anchor": "Teradyne still expects revenue to grow faster than OpEx",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SanDisk's long-term agreements carry a floor pricing component that supports roughly 80% gross margin on most of the business in a downside scenario.",
+   "anchor": "the floor pricing component which enables a gross margin of ~80% for the majority of the business in a downside scenario",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SanDisk extended its Kioxia joint venture through 2034.",
+   "anchor": "JV with Kioxia through 2034, and highlighted that the arrangement, coupled with its IP ownership and R&D investments",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2034"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SanDisk has line of sight to support further bit growth at capital intensity of roughly 5%.",
+   "anchor": "can support further bit growth at the same low capital intensity (~5%)",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "several years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SanDisk has executed roughly $4.5bn of buybacks and treats repurchases as its primary capital return vehicle, while remaining open to dividends later.",
+   "anchor": "adding that it has already executed ~$4.5 bn in buybacks",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "NXP says OEM inventories remain lean with little evidence of broad-based restocking, even as backlog and lead times improve visibility.",
+   "anchor": "management noted that OEM inventories remain lean, with little evidence thus far of broad-based inventory restocking",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "NXP says roughly 50% of its 2Q automotive business came from growth drivers including software-defined vehicles, radar and connectivity, growing around 20%.",
+   "anchor": "~50% of its automotive business consisted of its key growth drivers in 2Q, including SDVs, radar, and connectivity, which are growing at ~20%",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "NXP expects its staggered price increases to accumulate in revenue over the next few quarters.",
+   "anchor": "NXP expects the effect on its topline to accumulate over the next few quarters",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next few quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "NXP is refocusing its portfolio on physical AI and edge intelligent systems and divesting areas that do not fit.",
+   "anchor": "physical AI and intelligent systems at the edge, and divesting from areas that are not aligned with that goal",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime expects overall revenue growth to exceed its long-term targets over the next few quarters.",
+   "anchor": "overall revenue growth is likely to exceed its long term targets over the next few quarters",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next few quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime reiterated guidance of roughly 68% gross margin in the current quarter with operating margin of 34% or higher.",
+   "anchor": "reiterated its prior guidance of ~68% gross margin in the current quarter with an operating margin of 34% or higher",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "current quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime expects Renesas IC clock revenue to inflect in mid-2027 as it works through supply constraints and cross-selling synergies.",
+   "anchor": "a revenue inflection could occur in mid-2027 as the company manages supply",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "mid-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime expects a seasonal slowdown in its mobile and consumer business in 1Q27.",
+   "anchor": "SiTime expects a seasonal slowdown in the mobile/consumer business in 1Q27",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1Q27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime says military and aerospace could reach $100mn of annual revenue in the near term and could double over the next two years.",
+   "anchor": "could reach $100mn in annual revenue in the near term and could double for the next two years",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next two years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime sees an incremental addressable market of roughly $200mn in smart grids.",
+   "anchor": "SiTime also highlighted smart grids, where it sees an incremental SAM of ~$200 mn",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime expects a gradual physical AI revenue buildup before an inflection that could come in 2028.",
+   "anchor": "the company expects a gradual buildup in revenue before an inflection, which it added could occur in 2028",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "SiTime expects cash flow generation to lower net debt below 2x within 24 months or sooner after funding its acquisition with convertible bonds.",
+   "anchor": "it expects its cash flow generation to help lower net debt under 2x within 24 months or sooner",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "within 24 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Cadence says chip complexity will grow 48 times over the next five years, the key driver for its agentic AI products.",
+   "anchor": "chip complexity is expected to grow by 48X over the next five years",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Cadence is introducing a consumption plus subscription model for its agent layer while keeping subscription pricing for its tools layer.",
+   "anchor": "business model of consumption + subscription for the top layer (agents), while continuing with subscription revenue for the middle layer (tools)",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Cadence expects physical AI to be a large market opportunity in the medium term.",
+   "anchor": "The company also shared optimism around physical AI, and expects it to be a large market opportunity in the medium-term.",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "medium-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Cadence made the Hexagon acquisition to pursue the physical AI opportunity.",
+   "anchor": "Cadence noted its Hexagon acquisition to pursue this physical AI opportunity",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM expects accelerating Consulting revenue growth in 2H26, which it attributes to larger GenAI service exposure than peers.",
+   "anchor": "IBM expects to see accelerating revenue growth in its Consulting business in 2H26",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM sees traditional consulting as completely disrupted by agentic AI.",
+   "anchor": "where it sees traditional consulting as being completely disrupted by agentic AI",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM says 20% of its new Software revenue was driven by its Consulting business.",
+   "anchor": "noted that 20% of its new Software revenue was driven by its Consulting business",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM believes quantum computing could represent nearly $1bn of revenue for it before 2030.",
+   "anchor": "Management believes that quantum computing could represent nearly $1bn of revenue for IBM before 2030",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "before 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM puts the total quantum value-creation market at $850bn over time, of which IT providers can capture 20%-40%.",
+   "anchor": "a total value-creation TAM of $850 bn over time, adding that IT providers can capture 20%-40% of that opportunity",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "IBM is on track to demonstrate the first error-corrected quantum computer by 2028.",
+   "anchor": "is on track to demonstrate the first error-corrected quantum computer by 2028",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates Amkor Neutral with a 12-month price target of $65 on a 25x P/E applied to normalized EPS of $2.60.",
+   "anchor": "Our 12-month price target is $65, which is based on a 25X P/E multiple applied to our normalized EPS of $2.60",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates NXP Buy with a 12-month price target of $325 on an 18x P/E applied to normalized EPS of $18.00.",
+   "anchor": "Our 12-month price target is $325, which is based on an 18X P/E multiple applied to our normalized EPS forecast of $18.00",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates Cadence Buy with a 12-month price target of $470 on a 45.5x multiple applied to normalized EPS of $10.50.",
+   "anchor": "Our 12-month target price is $470, which is based on a 45.5X multiple applied to our normalized EPS estimate of $10.50",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates SanDisk Buy with a 12-month price target of $2,200 on a 20x P/E applied to normalized EPS of $110.",
+   "anchor": "Our 12-month target price is $2,200, which is based on a 20X P/E multiple applied to our normalized EPS estimate of $110",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates IBM Buy with a 12-month price target of $270 on 20x one-year forward earnings.",
+   "anchor": "Our 12-month price target is $270, which is based on 20X our one-year forward earnings estimates",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates Teradyne Buy with a 12-month price target of $465 on a 37x P/E applied to normalized EPS of $12.50.",
+   "anchor": "Our 12-month price target is $465, which is based on a 37X P/E multiple applied to our normalized EPS forecast of $12.50",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates Applied Materials Buy on the Conviction List with a 12-month price target of $670 on a 32x P/E applied to normalized EPS of $21.00.",
+   "anchor": "Our 12-month price target is $670, which is based on a 32X P/E multiple applied to our normalized EPS estimate of $21.00",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates SiTime Buy with a 12-month price target of $900 on 60x normalized EPS of $15.00.",
+   "anchor": "Our 12-month price target is $900, which is based on 60X applied to our normalized EPS forecast of $15.00",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs rates TSMC Buy with a 12-month price target of NT$3,100, set at a 22x target P/E on 2027 estimated EPS.",
+   "anchor": "Our 12-month price target is NT$3,100, which is derived by applying a target P/E multiple of 22x to our 2027E EPS",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: Communacopia + Technology Conference 2026 - Day 2 Takeaways",
+   "claim": "Goldman Sachs sets a 12-month price target of $620 on the TSMC ADR, assuming a USD/TWD rate of 30.0 and a 20% ADR premium.",
+   "anchor": "our 12-month price target is US$620, which is based on a USD/TWD rate of 30.0 and an ADR premium of 20%",
+   "topic": "GS semis price targets",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/15941__americas-technology-semiconductors-communacopia-technology-c.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 96,
+  "matched": 96,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
