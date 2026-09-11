@@ -1,0 +1,142 @@
+{
+ "brief": "Goldman's Brian Garrett flags non-fundamental headwinds the market must digest in the near term. Short-term CTA thresholds across NDX, SPX and RTY all broke on the morning of 10 September, in addition to a European index that broke down earlier in the week. The desk models resulting systematic supply at -23bn over one week and -28bn over one month, and states those figures do not incorporate the pre-market sell-off. VIX tends to sit near 25 when this type of technical deterioration happens, against 17 currently. Gamma at spot remains supportive because the street is long, but on a roughly 200 basis point further selloff the desk models a flip from positive to negative gamma. Global systematic positioning across CTA, vol control and risk parity is estimated at $421 billion of global equity exposure, close to five-year highs. The note presents model levels, threshold breaks and modelled supply. It does not argue a target or an index path.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "Goldman's Brian Garrett highlights non-fundamental headwinds the equity market will need to digest in the near term.",
+   "anchor": "felt necessary to highlight some non-fundamental headwinds this market",
+   "topic": "systematic equity positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "Short-term CTA thresholds across the Nasdaq 100, S&P 500 and Russell 2000 all broke on the morning of 10 September 2026.",
+   "anchor": "short term CTA thresholds across all three indices (ndx, spx, rty) have broken this",
+   "topic": "systematic equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "The European index CTA threshold broke down earlier in the week of 10 September 2026, before the US index breaks.",
+   "anchor": "this is in addition to european index which broke down earlier in the week",
+   "topic": "systematic equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "Goldman's model puts CTA equity supply at -23bn over the coming one week.",
+   "anchor": "table and chart below show modelled supply and additional threshold levels (-23bn 1w,",
+   "topic": "systematic equity positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "Goldman's model puts CTA equity supply at -28bn over the coming one month, and the estimate excludes the pre-market sell-off.",
+   "anchor": "-28bn 1m ... this does not incorporate the sell-off in the premkt",
+   "topic": "systematic equity positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "VIX is typically around 25 when this type of technical deterioration occurs, against a current level of 17.",
+   "anchor": "~25 (left axis) when this type technical deterioration happens (currently 17)",
+   "topic": "equity vol and skew signals",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "Dealer gamma at spot is still supportive because the street is long gamma.",
+   "anchor": "gamma at spot is still supportive (street is long)",
+   "topic": "equity vol and skew signals",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "Goldman's desk models dealer gamma flipping from positive to negative on a further selloff of roughly 200 basis points.",
+   "anchor": "(~200bps from) our desk models a flip from positive to negative",
+   "topic": "equity vol and skew signals",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - systematic update 10 Sep 2026",
+   "claim": "Goldman estimates global systematic equity positioning across CTA, vol control and risk parity at $421 billion, close to five-year highs.",
+   "anchor": "positioning at $421 billion (close to 5y highs)",
+   "topic": "systematic equity positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/15921__gs-garrett-systematic-update-10-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
