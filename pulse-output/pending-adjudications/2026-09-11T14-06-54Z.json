@@ -1,0 +1,359 @@
+{
+  "pulse_date": "2026-09-11",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure investment cycle",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 10,
+        "skeptical": 3,
+        "neutral": 23
+      },
+      "consensus_view": "Most desks read the AI build-out as a real multi-year spending cycle that is already lifting company earnings, chip demand and borrowing costs, while a minority argue the spending resembles past over-investment booms and that demand for computing power may not keep growing the way the forecasts assume.",
+      "facts_agreed": [
+        {
+          "claim": "The banks agree an AI capital-spending boom is underway and that it is concentrated in a handful of very large spenders.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Carmignac"
+          ],
+          "evidence_quotes": [
+            "We are clearly in an AI Capex boom.",
+            "The top 5 capex spenders are spending more than double that of the remaining 495",
+            "AI is becoming a macro variable... 'the most capital-hungry investment cycle in history.'",
+            "AI capex is the key growth engine"
+          ]
+        },
+        {
+          "claim": "Hardware and semiconductor demand tied to the build-out is described as structural and multi-year, with supply still tight.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "market is in the early stages of a durable, multi-year AI infrastructure buildout",
+            "Companies highlighted higher structural demand driven by AI, which are driving capacity additions",
+            "stay long AI infra as scarcity across compute & energy remains a theme",
+            "Lam Research highlighted strong, AI-driven demand across its customer base"
+          ]
+        },
+        {
+          "claim": "Corporate adoption of AI is still early and broadening from pilot projects into core business systems.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Day 2 reinforced that AI is moving from experimentation into enterprise architecture.",
+            "enterprises only beginning to move beyond productivity tools",
+            "AI-related investment growth remains strong and that enterprise AI adoption continues to rise gradually",
+            "the secular trend of broad-based AI spending remains intact"
+          ]
+        },
+        {
+          "claim": "The spending cycle is showing up well outside technology stocks, in emerging markets, commodities, European investment, housing and the level of interest rates.",
+          "banks_for": [
+            "JPMorgan",
+            "Bank of America",
+            "UBS",
+            "The PunchLine",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "We are bullish on EM given (i) improving macro; (ii) weaker USD; (iii) AI CapEx tailwinds",
+            "Together, these forces are turning parts of the asset class from purely cyclical exposures",
+            "Europe\u2019s structural investment cycle should remain supported by efforts to strengthen domestic production",
+            "add up to a scenario of high rates for longer.",
+            "West Coast markets continue to outperform other regions (ex-LA), driving ESS to have the highest market-weighted rent growth."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the current AI investment cycle is durable or a repeat of historical over-investment",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank",
+            "Carmignac"
+          ],
+          "for_evidence": "market is in the early stages of a durable, multi-year AI infrastructure buildout",
+          "banks_against": [
+            "Rothschild & Co Asset Management"
+          ],
+          "against_evidence": "The scale and speed of the current AI investment cycle... bear clear similarities to these historical precedents"
+        },
+        {
+          "claim": "whether demand for computing power keeps scaling without limit",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "stay long AI infra as scarcity across compute & energy remains a theme",
+          "banks_against": [
+            "Bloomberg"
+          ],
+          "against_evidence": "There is no iron law that says this scaling will continue"
+        },
+        {
+          "claim": "whether AI-driven earnings growth justifies current US large-cap valuations",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "for_evidence": "US earnings are breaking out on the upside, with Binky and Parag expecting this to be sustained",
+          "banks_against": [
+            "GMO",
+            "Schroders"
+          ],
+          "against_evidence": "today it looks at least as unlikely for the traditional 60/40 to deliver 5% real over the coming years"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "treasury buyback operations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "Twelve reports across eleven desks flag the US Treasury's bond buyback operations as a live event this window, two of them calling the announced size a letdown, but no bank has staked a directional view on where bond prices go from here.",
+      "facts_agreed": [
+        {
+          "claim": "Banks across multiple desks reference the US Treasury buyback program as an active market event this window.",
+          "banks_for": [
+            "ING + Natixis + RBC Capital Markets",
+            "Bank of America",
+            "ING",
+            "Scotiabank",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "US Treasury buyback program",
+            "U.S. Treasury securities buyback program",
+            "Long-end Treasury buybacks",
+            "UST buyback operation",
+            "US Treasury debt buyback operation"
+          ]
+        },
+        {
+          "claim": "Two banks describe the announced buyback as falling short of what the market expected.",
+          "banks_for": [
+            "JPMorgan",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Treasury long-end buyback disappointment",
+            "US Treasury buyback shortfall"
+          ]
+        },
+        {
+          "claim": "Two banks frame the operation as a scaling up of the existing buyback program.",
+          "banks_for": [
+            "SEB",
+            "BNY Investments"
+          ],
+          "evidence_quotes": [
+            "US Treasury buyback operation increase",
+            "Treasury bond buyback program expansion"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb monetary policy stance",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 2,
+        "neutral": 11
+      },
+      "consensus_view": "Most desks expect the ECB to raise rates again after the September move, with a quarter-point step to 2.75% by December as the base case, while ING and UBS argue the bank has already gone far enough and further tightening would be a mistake.",
+      "facts_agreed": [
+        {
+          "claim": "Several banks expect at least one more ECB rate increase after September, landing in October or December.",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Natixis",
+            "Scotiabank"
+          ],
+          "evidence_quotes": [
+            "the September policy statement and press conference were consistent with a December hike being more likely than not.",
+            "we now expect the Governing Council to hike the deposit rate by a further 25bp",
+            "we now expect an additional policy rate hike of 25 basis points by year-end.",
+            "An October or December rate increase looks practically certain if energy prices and risks remain"
+          ]
+        },
+        {
+          "claim": "The case for more tightening rests on the energy price surge feeding into higher inflation forecasts.",
+          "banks_for": [
+            "Scotiabank"
+          ],
+          "evidence_quotes": [
+            "The higher for longer commodity\u2014namely energy\u2014surge means that inflation projections will likely be raised."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the ECB hikes again after September",
+          "banks_for": [
+            "Deutsche Bank",
+            "Goldman Sachs",
+            "Natixis",
+            "Scotiabank"
+          ],
+          "for_evidence": "we now expect the Governing Council to hike the deposit rate by a further 25bp",
+          "banks_against": [
+            "ING"
+          ],
+          "against_evidence": "we struggle to see how the ECB could push markets even further"
+        },
+        {
+          "claim": "whether further tightening is the right call",
+          "banks_for": [
+            "Scotiabank"
+          ],
+          "for_evidence": "The higher for longer commodity\u2014namely energy\u2014surge means that inflation projections will likely be raised.",
+          "banks_against": [
+            "UBS",
+            "ING"
+          ],
+          "against_evidence": "The ECB is almost certain to repeat its earlier policy rate error and unnecessarily raise interest rates."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "midterm election seasonality",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 10
+      },
+      "consensus_view": "Desks across the corpus keep naming the US midterm elections as an upcoming market event without taking a side on it, and the one desk that does take a side, JPMorgan, says the usual pre-election price pattern has not shown up yet.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple desks reference the US midterm elections as a market event in this window, mostly in terms of expected volatility and a possible shift in political control.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "US midterm elections impact on markets",
+            "US midterm election volatility",
+            "U.S. midterm elections market volatility",
+            "U.S. midterm election power shift",
+            "US midterm election implications"
+          ]
+        },
+        {
+          "claim": "The seasonal price pattern normally associated with midterm election years has not appeared so far this cycle.",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "So far, midterm election seasonality has failed to materialize"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fiscal sustainability",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 2,
+        "neutral": 7
+      },
+      "consensus_view": "Desks treat the US and European government debt path as a live worry rather than an imminent crisis, with Goldman arguing that delaying budget repair gets expensive, while the desks still disagree over whether interest rates have to go higher from here.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs judges the current US deficit path unsustainable without budget consolidation that looks politically unlikely, making delay costly.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "The current deficit path makes inaction costly."
+          ]
+        },
+        {
+          "claim": "Several desks flag US and euro area fiscal trajectories as a live subject without staking a directional view.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "European fiscal discipline",
+            "Eurozone fiscal trajectory concerns",
+            "U.S. fiscal deficit trajectory"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether policy rates must rise further from here",
+          "banks_for": [
+            "MRB Partners"
+          ],
+          "for_evidence": "The Fed is behind the curve; the economy warrants a higher policy rate",
+          "banks_against": [
+            "SEB"
+          ],
+          "against_evidence": "We continue to forecast that rates have peaked but risks are skewed to the upside"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "consumer spending resilience",
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 0,
+        "neutral": 6
+      },
+      "selected": true,
+      "consensus_view": "Banks see household spending still holding up, with card spending growing 4% to 5% a year and Goldman expecting every income group to spend faster next year; no desk in this set argued the opposite.",
+      "facts_agreed": [
+        {
+          "claim": "Consumer spending is still growing at a healthy pace and is expected to keep improving across income groups.",
+          "banks_for": [
+            "Goldman Sachs",
+            "PNC Economics Research"
+          ],
+          "evidence_quotes": [
+            "look for all 5 quintiles to accelerate next year",
+            "card spend still appears very healthy, with YoY growth in the 4% to 5% range"
+          ]
+        },
+        {
+          "claim": "Desks repeatedly flag economic and labour-market resilience in both the US and the euro area as background context.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Resilient euro area labour market",
+            "Euro area economic resilience",
+            "Eurozone economic resilience",
+            "Resilient US economic growth"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "middle east oil disruption",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    },
+    {
+      "theme": "energy hedge efficacy",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+You are an adversarial accuracy checker for a finished Market Pulse draft, dispatched fresh with NO drafting history. You did not write this document and you owe it nothing. Your single job: find statements in the final draft that the day's research context does not support.
+
+You check FACTS, not style. Voice, tone, structure, and word choice are policed elsewhere and are none of your business.
+
+Severity is NOT yours to assign — the gate maps your `kind` to a severity deterministically, and any severity field you emit is ignored. Your `kind` MUST be one of exactly these four when the finding fits one (and these map HARD):
+- **unsupported-figure** — a specific number, level, or statistic in the draft that appears nowhere in the research context or the live-data block. Numbers the context states differently count too (draft says $107bn, context says $104.5bn).
+- **misattribution** — a view, call, target, or figure credited to one bank when the context ties it to a different bank, or to a named bank when the context attributes it to nobody.
+- **invented-call** — a trade recommendation presented as a desk's call that no context entry contains. The pulse never issues its own calls, so an unattributed call is fabricated by construction.
+- **fabricated-event** — an event, print, date, or scheduled release the context contradicts or does not contain.
+
+Any other finding — a claim stated more strongly than the context supports, a misleading emphasis, an ambiguous qualifier — takes a short kebab-case kind of your choosing (e.g. "overstated-claim") and maps soft. Do NOT stretch one of the four names above to cover a judgment call, and do NOT invent a softer-sounding name for something that IS one of the four: a figure the context states differently is "unsupported-figure", never "figure-mismatch" or any other coinage.
+
+Discipline:
+- Every finding carries `quote`: the EXACT text from the final draft, copied character-for-character. Findings whose quote does not appear verbatim in the draft are discarded by the gate, so a paraphrased quote wastes your finding.
+- Check the context before flagging. A figure you merely don't recognize is not a finding; a figure the context lacks or contradicts is.
+- Zero findings is a legitimate verdict and common on a clean run. Do NOT invent findings to look thorough — a false hard finding burns a repair round and degrades the pulse.
+- The RECAP section may cite live market prices and news headlines from the live-data block; those are in scope for support, not violations.
+
+Output STRICT JSON, nothing else:
+{"findings": [{"kind": "unsupported-figure", "quote": "<verbatim from draft>", "why": "<one sentence: what the context says instead, or that it says nothing>", "fix": "<one sentence: the minimal correction>"}]}
+
+Empty verdict: {"findings": []}
+
+===== USER MESSAGE =====
+
+FINAL DRAFT (the document under check):
+
+# AI borrows, bonds decide
+
+## 1. RECAP
+
+A hot inflation print is supposed to hurt, and half an hour into Friday's session it has not. August core consumer prices ran 0.29% on the month and 2.75% against a year ago, above every estimate on the sheet, and $SPY is up 0.94% with $QQQ up 0.91% anyway. Gold is doing the work the bond market usually does, with $GLD up 1.52% while the 30-year Treasury yield eased 4.5 basis points, a basis point being one hundredth of a percent. Crypto is running harder than any of it, $ETH up 6.5% and $BTC up 2.8% since midnight. The two stories research has been running all week, the AI build-out and what it costs to finance, are the same story now, and this print raises the price.
+
+- **August consumer prices, 8:30 AM ET.** Core rose 0.29% on the month against a 0.2% estimate and 2.75% on the year against 2.4%, with headline prices up 0.4% monthly and 3.69% annually against 3.4% expected. The 2.4% annual core rate was what SEB called the number that would let the Fed sit still next week, and it is gone, though $SPY still added 0.94% and $GLD 1.52% on the release.
+- **Producer prices Thursday, 0.4% on the month against a 0.4% estimate after a flat July.** Energy is what changed, up 4.2% in August and 24.3% on the year, the fastest outside the pandemic since 2011 (PNC), and the core producer reading landed with it while the full breakdown is still coming through.
+- **Oracle and Adobe, Thursday after the close.** Oracle earned $1.92 a share against the $1.78 consensus this pulse published, with revenue of $19.34 billion short of the $19.53 billion wanted, and Adobe missed both lines at $6.13 against $6.20 and $6.76 billion against $6.82 billion. Neither result dented the index, with $QQQ up 0.91% in the opening half hour.
+- **Crude sold off into escalating Red Sea headlines.** $USO is down 3.34% and $BNO down 3.37% this morning even as Hormuz shipping traffic fell to single digits overnight and Houthi forces reached Dhubab on the Bab el-Mandeb strait. Trump declined the Saudi crown prince's call for US strikes on the Houthis, and that is the piece the barrel is trading against the supply piece.
+- **The ECB raised its deposit rate to 2.5% Thursday** from 2.4%, below the 2.65% the consensus estimate carried. The dollar has not moved on it, with $UUP flat, which leaves the December meeting as the live one.
+
+## 2. INSIGHTS & ALPHA
+
+### The AI growth story is now driven by borrowing
+
+*The money for the data centers is coming from the bond market, so the long-term interest rate is the price of the AI trade.*
+
+- Hyperscaler capital spending goes from $154 billion in 2023 to a $1.3 trillion consensus estimate for 2028 (Goldman). The five companies doing the spending cannot cover a jump that size out of cash flow, so the gap gets borrowed.
+- $500 billion of AI-related bonds had been issued as of early August, one fifth of all US investment-grade corporate borrowing (Goldman). The AI trade is a rates product now whether the people holding it think of it that way or not.
+- Hyperscaler dollar borrowing hit $157 billion so far in 2026 against $93 billion in all of 2025 (BNY Investments), landing on the same part of the bond market already absorbing record government supply.
+- The five largest spenders now outspend the other 495 companies in the index combined, adding $403 billion of annual spending versus early 2024 (Deutsche Bank).
+
+Once the growth is debt-financed, the 30-year Treasury sets the price of it, and that yield has averaged above 5.2% for the first time since 2003 (Goldman). The Fed is a passenger in that by Goldman's read, because the buyer of long-dated corporate bonds, not the policy rate, decides what new AI capacity costs, and this morning's hot core print raises that cost again. Oracle showed what the squeeze looks like from the inside, selling $20 billion of stock through a continuous share-sale program and issuing $5 billion of convertible bonds this year (Goldman), which is what a company does when earnings will not cover the build.
+
+The case against is that this is every capital cycle that ran ahead of its cash flow. Rothschild puts cumulative spending at $2 trillion between 2025 and 2027 and argues the scale and speed look like past over-investment episodes, with power, chip and grid bottlenecks forcing long-dated contracts against demand that has not arrived. The physical risk is not hypothetical either, since Iranian attacks have already forced a revision to a UAE data center plan. What holds the other side together is an order book that is dated and keeps getting confirmed. Broadcom reaffirmed AI revenue targets of $115 billion for FY27 and $230 billion for FY28 at Goldman's conference this week, Dell carries a $9.5 billion AI server backlog, and enterprise adoption ticked to 22.4% in August from 21.5% in July. Goldman's desk is telling clients to stay long AI infrastructure while compute and power stay scarce, $AVGO and $SMH being the liquid way to hold that, and the 30-year yield is what decides whether the call survives Wednesday's Fed decision on September 16.
+
+### Oil is priced for a disruption that is already partly reversing
+
+*The war premium in crude has run past what the sell side will forecast, and the positioning is now one-sided.*
+
+The September 2 call to be long $USO and $XLE into this morning's core inflation print is settled, and it was wrong. The print ran hot and crude sold into it, with $USO down 3.34% on the session. The supply hole is real enough: Hormuz flows near 2 million barrels a day against 8 to 9 million in late August (Rystad), OPEC output down 900,000 barrels a day in August and Saudi volumes down 1.1 million (MUFG), and shipping traffic through the strait in single digits overnight. What has changed is who already owns the trade. A sentiment gauge on WTI crude reads 91, the highest since September 2023, and energy shares have stopped following the barrel, with crude up 8% in two days while $XLE added less than half a percent (BTIG). Goldman's December Brent forecast of $85 sits roughly $15 under where the barrel has been trading, which is why their commodities desk takes escalation risk in refined fuel rather than crude, and the short $USO expression follows that forecast. Hormuz traffic recovering toward the late-August run rate ends the premium.
+
+### The rotation out of the top ten has already started
+
+*The index has never been this narrow, and the unwind is showing up in the breadth numbers first.*
+
+The top ten S&P 500 names are more than 39% of index value as of end-July, past the March 2000 extreme, with technology alone at 37% (Capital Group). Six-month realized correlation between index members is 11, the lowest in 25 years (Goldman), so owning the index pays less than picking inside it. Breadth is cracking underneath, with 404 decliners Thursday, the most since June (Deutsche Bank). Concentration this extreme resolves either as a sharp correction or as a slow broadening where the other 490 names out-earn the leaders, and the second quarter gave the first evidence for the broadening, with earnings up 52% and eight of eleven sectors posting double-digit gains (Capital Group). Carmignac is already positioned for it, underweight the hyperscalers against quality names in healthcare, financials and industrials, which is the equal-weight $RSP and $XLV version of the same bet. If third-quarter reporting in October does not repeat the eight-of-eleven pattern, the broadening is dead and the sharp version is what is left.
+
+### The ECB just hiked and the argument is about whether it should stop
+
+*Energy prices decide the next European move, not growth, and the dollar is how a US trader owns it.*
+
+The deposit rate went to 2.5% Thursday, below the 2.65% the consensus estimate carried, and the argument now is about December. Deutsche Bank looks for 2.75% by then and money markets price three hikes over the next year, with Dutch gas above 65 euros a megawatt hour named as the level that pulls the next move forward (Scotiabank). European gas has been trading at 79 euros and change, the highest since 2022, with EU storage at 67% against a five-year average of 84% (Deutsche Bank). UBS takes the other side, that the bank is repeating its earlier error by tightening into strained public finances and rising bond yields for no benefit. The US read-through is the dollar. A European central bank that keeps going while the Fed is still arguing about its first move narrows the rate gap that has held the dollar up, and Carmignac is long the euro against it through $FXE.
+
+### The Treasury's buyback is too small to do the job
+
+*The operation the market wanted as a backstop is a rounding error against the size of the problem.*
+
+Treasury bought back $6 billion of 10-to-20 year bonds, raised from the $4 billion it had signalled, against average offers of $18.7 billion across recent operations (SEB, Bank of America). Long-dated yields rose 3 basis points on the day anyway, because a bigger number was already priced in. The whole expanded program is under 0.1% of the market it is aimed at, which is the context for a 30-year yield that reached 5.3% in August, the highest since 2007, against $40 trillion of federal debt and a deficit the Congressional Budget Office sees holding near 6% of national income. Bank of America is on the constructive side of it, betting the gap between the 30-year Treasury yield and the equivalent interest-rate swap rate widens back toward minus 55 basis points with a stop at minus 80, on the view that active debt management widens that gap even when the headline size disappoints. This morning's 4.5 basis point drop in the 30-year yield is a reaction to the inflation print, not a change in the supply arithmetic.
+
+### Sticky inflation is now the Fed's credibility problem
+
+*The August print removed the excuse to sit still, and a new chair has to answer it in five days.*
+
+Core PCE, the inflation gauge the Fed actually targets, reaccelerated to 3.3% in July from 2.6% in April with 60% of the basket running above 3%, and this morning's 2.75% annual core consumer print went the same direction. MRB Partners argues the Fed is behind the curve and should hike regardless of any single month, and forward pricing now carries three hikes over the next year against two a month ago. Market-implied odds of a September hike sit near 60%, up from about 30% before Jackson Hole, against Goldman's house view of no hike, which would leave the target range at 3.50% to 3.75%. What decides Wednesday is the dissent count, with nine of eighteen members already projecting a hike this year. RBC has gold positioned for this exact pairing of sticky inflation and Gulf risk, long $GLD, which is up 1.52% on the print this morning.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+No scheduled US data left today. The session is the reaction to the August inflation print and to Thursday night's software results.
+
+### This Week
+
+- **FOMC decision, Wednesday September 16.** The two-day meeting starts Tuesday. The August inflation print was the number this decision was waiting on and it landed hot, so a hold with heavy dissent keeps 30-year yields pinned above 5%, and a hike pulls forward every rate-sensitive trade in the book.
+- **Retail Sales, Wednesday September 16, 8:30 AM ET.** No consensus posted yet. The last print was 0.2%, and card spending growth cooled to 3.4% on the year in August from 6.1% in July, mostly on a Labor Day calendar shift (PNC), so a soft number is the first crack in the consumer leg holding the no-recession case together.
+- **US midterm elections.** The midterm-year seasonal pattern that usually supports stocks into the vote has not shown up this cycle (JPMorgan), which removes the one piece of calendar support positioning normally gets. No desk has staked a direction on the outcome.
+- **Goldman's Communacopia technology conference, final day.** Broadcom's reaffirmed $115 billion FY27 and $230 billion FY28 AI revenue targets came out of this week's sessions and are the hardest dated numbers in the AI complex right now.
+
+## _LEANS (internal, TRADE BOARD source, stripped before publish)
+- long | $AVGO, $SMH | Goldman stays long AI infra, 30-year decides
+- short | $USO | Goldman Dec Brent $85 below spot, sentiment at 91
+- long | $RSP, $XLV | top-10 at 39%, correlation lowest in 25 years
+- long | $FXE | Carmignac long euro, hawkish ECB into gas at 79 euros
+- short | $TLT | buyback $6bn vs $18.7bn offers, 30y at 5.3%
+- long | $GLD | sticky core into the September 16 decision
+
+
+=====================================================================
+
+RESEARCH CONTEXT (the only permissible support for the draft's claims — per-PDF structured extractions plus the live-data block):
+
+The research context is too large to inline (761,047 characters). It is on disk at /tmp/adv_context.txt and it is the ONLY permissible support for the draft's claims. It contains, in order: the live-data block (market snapshot, news snapshot, economic calendar with ACTUAL= values, earnings calendar with EPS/revenue actuals, the previous pulse's consensus ledger, open directional reads, the ticker lookup, the theme-coverage block), the adjudicated cross-bank themes with verbatim evidence quotes, and then the full per-PDF structured extractions for all 114 research analyses as JSON.
+
+Search it with Grep (case-insensitive) for every figure, bank attribution, call and event you are checking. Grep for the bare number without its unit or formatting (e.g. `157` before `$157 billion`, `22.4` before `22.4%`) because the corpus formats figures differently from the prose. Only after a genuine search comes back empty may you record a finding.
+
+=====================================================================
+
+Walk the draft claim by claim. For every specific figure, attribution, call, and event, find its support in the context above. Emit a finding for each one you cannot support, per the system contract. STRICT JSON only.

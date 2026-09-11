@@ -1,0 +1,126 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1.52%' is attached to [exact, gold, gulf, inflation, long] but the source uses it for [date, session] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1.52%",
+   "draft_subject": [
+    "exact",
+    "gold",
+    "gulf",
+    "inflation",
+    "long",
+    "morning",
+    "pairing",
+    "positioned"
+   ],
+   "source_subject": [
+    "date",
+    "session"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "3.34% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.0, 0.1, 0.2, 0.4, 4.2, 4.6, 5.4, 24.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "3.34",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Crude sold off into escalating Red Sea headlines.** $USO is down 3.34% and $BNO down 3.37% this morning even as Hormuz shipping traffic fell to single digits overnight and Houthi forces reached Dh"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "3.37% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.0, 0.1, 0.2, 0.4, 4.2, 4.6, 5.4, 24.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "3.37",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Crude sold off into escalating Red Sea headlines.** $USO is down 3.34% and $BNO down 3.37% this morning even as Hormuz shipping traffic fell to single digits overnight and Houthi forces reached Dh"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "8% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.0, 0.1, 0.2, 0.4, 4.2, 4.6, 5.4, 24.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "8",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "The September 2 call to be long $USO and $XLE into this morning's core inflation print is settled, and it was wrong. The print ran hot and crude sold into it, with $USO down 3.34% on the session. The "
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "60% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.6, 3.0, 3.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "60",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Core PCE, the inflation gauge the Fed actually targets, reaccelerated to 3.3% in July from 2.6% in April with 60% of the basket running above 3%, and this morning's 2.75% annual core consumer print we"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.75% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.6, 3.0, 3.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.75",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Core PCE, the inflation gauge the Fed actually targets, reaccelerated to 3.3% in July from 2.6% in April with 60% of the basket running above 3%, and this morning's 2.75% annual core consumer print we"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "30% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.6, 3.0, 3.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "30",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Core PCE, the inflation gauge the Fed actually targets, reaccelerated to 3.3% in July from 2.6% in April with 60% of the basket running above 3%, and this morning's 2.75% annual core consumer print we"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "3.50% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.6, 3.0, 3.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "3.50",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Core PCE, the inflation gauge the Fed actually targets, reaccelerated to 3.3% in July from 2.6% in April with 60% of the basket running above 3%, and this morning's 2.75% annual core consumer print we"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "3.75% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.6, 3.0, 3.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "3.75",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Core PCE, the inflation gauge the Fed actually targets, reaccelerated to 3.3% in July from 2.6% in April with 60% of the basket running above 3%, and this morning's 2.75% annual core consumer print we"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "1.52% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.6, 3.0, 3.3]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "1.52",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "Core PCE, the inflation gauge the Fed actually targets, reaccelerated to 3.3% in July from 2.6% in April with 60% of the basket running above 3%, and this morning's 2.75% annual core consumer print we"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "3.4% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "3.4",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **Retail Sales, Wednesday September 16, 8:30 AM ET.** No consensus posted yet. The last print was 0.2%, and card spending growth cooled to 3.4% on the year in August from 6.1% in July, mostly on a L"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "6.1% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.2]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "6.1",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **Retail Sales, Wednesday September 16, 8:30 AM ET.** No consensus posted yet. The last print was 0.2%, and card spending growth cooled to 3.4% on the year in August from 6.1% in July, mostly on a L"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 12,
+ "exit_code": 4
+}

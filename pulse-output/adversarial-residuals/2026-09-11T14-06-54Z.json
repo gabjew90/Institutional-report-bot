@@ -1,0 +1,23 @@
+[
+ {
+  "kind": "unsupported-figure",
+  "quote": "Market-implied odds of a September hike sit near 60%",
+  "why": "The 60% reading is the stale Wednesday level from a 2026-09-10 Goldman note; the context's current figures are 70% (Goldman's own 2026-09-11 notes, \"September Hike estimates hit 70%\"), 70% (BTIG) and 72% (Deutsche Bank, \"futures raised the probability of a September hike from 60% on Wednesday to 72% by last night's close\").",
+  "fix": "Change 60% to about 70% and re-anchor the comparison, or state it as the level before Thursday's close.",
+  "severity": "hard"
+ },
+ {
+  "kind": "misattribution",
+  "quote": "UBS takes the other side, that the bank is repeating its earlier error by tightening into strained public finances and rising bond yields for no benefit.",
+  "why": "UBS's stated objection in the context is that the ECB is unnecessarily raising rates that will fail to affect inflation or growth while damaging borrower resilience; the public-finance-woes-and-rising-bond-yields reasoning belongs to ING (\"the ECB is unlikely to risk a recession to combat a supply-side shock amid public finance woes and rising bond yields\").",
+  "fix": "Attribute the public finances and bond yields rationale to ING, or drop that clause and keep only UBS's policy-error argument.",
+  "severity": "hard"
+ },
+ {
+  "kind": "fabricated-event",
+  "quote": "**US midterm elections.** The midterm-year seasonal pattern that usually supports stocks into the vote has not shown up this cycle (JPMorgan)",
+  "why": "The context dates the US midterm elections to 3 November 2026, so they are not a this-week calendar event.",
+  "fix": "Move the item out of the This Week list or state the 3 November date so it is not read as a this-week event.",
+  "severity": "hard"
+ }
+]
