@@ -1,0 +1,365 @@
+{
+ "brief": "QQQ has held its August 4 range (707.53-725.66) for over a month despite surging crude and rates, but breadth deteriorated: equal-weight QQEW -3%, semis XSD -6.5%, industrials XLI -8.25%, discretionary XLY -5% since the 8/4 close. A close below 702.70 would open an 'island gap,' leaving a month of buyers underwater; that likely requires a firm CPI, with no stated view from the author. A cooler CPI could spark a relief rally with vol down and the market pricing out next week's FOMC hike (~70% odds), but QQQ would still sit inside its 8/4 range with much of the market still vulnerable, so a rally would not change the dynamic. Energy (XLE, +25% QTD) has hedged other market weakness but is losing torque: crude rose over 8% in two days while XLE gained under 50bps, an asymmetric setup, with two downside risks: a correlation-one selloff, or a de-escalation headline unwinding crude sharply. WTI sentiment (DSI 91) is the highest since 9/18/23, after which crude fell 3% in two days, then peaked and fell 30% into December; yet from 9/18/23-10/27/23 crude and SPY fell together, so a crude top isn't always short-term bullish for stocks, though lower crude would help medium-term.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "On August 4, 2026, QQQ traded from a low of 707.53 to a high of 725.66.",
+   "anchor": "on August 4th, QQQ traded from a low of 707.53 to a high of 725.66",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "Equal-weight QQEW is down 3% since the 8/4 close.",
+   "anchor": "the equal-weight QQEW is -3%, equal-weight semis (XSD) are -6.5%, industrials (XLI) are -8.25%, and discretionary (XLY) is -5% since the 8/4 close",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [
+    "QQEW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "Equal-weight semis ETF XSD is down 6.5% since the 8/4 close.",
+   "anchor": "the equal-weight QQEW is -3%, equal-weight semis (XSD) are -6.5%, industrials (XLI) are -8.25%, and discretionary (XLY) is -5% since the 8/4 close",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [
+    "XSD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "Industrials ETF XLI is down 8.25% since the 8/4 close.",
+   "anchor": "the equal-weight QQEW is -3%, equal-weight semis (XSD) are -6.5%, industrials (XLI) are -8.25%, and discretionary (XLY) is -5% since the 8/4 close",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [
+    "XLI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "Discretionary ETF XLY is down 5% since the 8/4 close.",
+   "anchor": "the equal-weight QQEW is -3%, equal-weight semis (XSD) are -6.5%, industrials (XLI) are -8.25%, and discretionary (XLY) is -5% since the 8/4 close",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [
+    "XLY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "A QQQ open below 702.70 would create the potential for an island gap.",
+   "anchor": "This creates the 'potential' for an island gap should tomorrow open below 702.70",
+   "topic": "US equity tactical stance",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "If QQQ gaps below 702.70, more than a month of buyers since 8/4 would be left underwater.",
+   "anchor": "over one month of buyers would be 'left on an island' and thus under-water on those buys",
+   "topic": "US equity tactical stance",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "BTIG states the island-gap scenario would likely require a firm CPI print, on which the firm holds no view.",
+   "anchor": "this would likely require a firm CPI, something we have no view on",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "A cooler CPI print could spark a relief rally with volatility declining.",
+   "anchor": "a cooler CPI could allow a relief rally with volatility coming down",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "The market currently prices about 70% odds of a rate hike at next week's FOMC meeting.",
+   "anchor": "possibly a market pricing out a rate hike for next week's FOMC (currently ~70% odds)",
+   "topic": "US equity tactical stance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "Even after a relief rally, BTIG expects QQQ to remain inside its 8/4 range with much of the market still vulnerable.",
+   "anchor": "We would then be left with QQQ still inside its 8/4 range, and many areas of the market still vulnerable",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "BTIG does not view a rally tomorrow as likely to change the market's overall dynamic.",
+   "anchor": "we don't view a rally tomorrow as likely to change the overall dynamic of the market",
+   "topic": "US equity tactical stance",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "XLE is up approximately 25% quarter-to-date.",
+   "anchor": "Energy stocks (XLE) are up ~25% QTD, and ~10% since the big 8/4 QQQ day",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [
+    "XLE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "QTD"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "XLE is up approximately 10% since the August 4 QQQ session.",
+   "anchor": "Energy stocks (XLE) are up ~25% QTD, and ~10% since the big 8/4 QQQ day",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [
+    "XLE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since 8/4"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "BTIG describes XLE as having been a good hedge for other parts of the market.",
+   "anchor": "It's been a nice hedge to many other parts of the market",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [
+    "XLE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "WTI crude is up over 8% over the last two days.",
+   "anchor": "the last two days, WTI crude is up over 8% and XLE is up less than 50bps",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last two days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "XLE is up less than 50 basis points over the last two days despite crude's rally.",
+   "anchor": "the last two days, WTI crude is up over 8% and XLE is up less than 50bps",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [
+    "XLE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last two days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "BTIG says further crude gains are unlikely to provide equivalent upside in energy equities, making the risk/reward asymmetric.",
+   "anchor": "the risk/reward looks asymmetric and any incremental gain in crude is unlikely to provide the same upside in the equities",
+   "topic": "energy hedge effectiveness",
+   "status": "forecast",
+   "instruments": [
+    "XLE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "BTIG flags a correlation-one selloff affecting all equities as a downside risk to energy.",
+   "anchor": "a correlation-one selloff that affects all equities",
+   "topic": "energy hedge effectiveness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "BTIG flags a de-escalation headline as a risk that could cause crude and energy to unwind sharply lower.",
+   "anchor": "causes an unwind and sees crude/energy move sharply lower",
+   "topic": "energy hedge effectiveness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "The Daily Sentiment Index for WTI crude futures was 91 as of the night of September 9, 2026, the highest reading since 9/18/23.",
+   "anchor": "the Daily Sentiment Index (DSI) for WTI crude futures was 91. That's the highest since 9/18/23",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "In the prior DSI-91 episode dated 9/18/23, crude fell about 3% in two days, then peaked for the cycle and fell 30% into December.",
+   "anchor": "Crude fell ~3% over the next two days, went a little higher, then peaked for the cycle and fell -30% into December",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "9/18/23 analog"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "From 9/18/23 to 10/27/23, crude fell about 10% while SPY also fell about 8% over the same span.",
+   "anchor": "From 9/18/23 to 10/27/23, crude fell ~10% yet SPY fell ~8% over that span",
+   "topic": "energy hedge effectiveness",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "9/18/23-10/27/23"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Shutter Island: QQQ Stuck in One-Month Range Into CPI; Energy Hedge Losing Torque",
+   "claim": "BTIG expects lower crude to be broadly supportive for equities over the medium term.",
+   "anchor": "Medium-term yes, lower crude would likely be supportive broadly",
+   "topic": "energy hedge effectiveness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "medium-term"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-11/15879__shutter-island.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b9f8821b3ad0"
+ },
+ "verify": {
+  "total": 24,
+  "matched": 24,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
