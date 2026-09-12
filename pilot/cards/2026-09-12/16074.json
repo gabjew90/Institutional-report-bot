@@ -1,0 +1,1084 @@
+{
+ "brief": "Goldman Sachs FICC and Equities daily note covering five subjects. GS expects August core CPI at 0.23% against 0.2% consensus and 2.40% year over year, after hotter PPI in hospitals and airfares led GIR to lift core PCE by 2bps. The argument: 0.25 on core is the September dividing line, the Fed will do what the market guides towards, and with 35-50% of a hike priced post-CPI, not hiking would be punitive for the back end, so a modestly higher 0.26-0.28 print may be cleaner because it forces full September pricing rather than adding hikes, with almost 90bps priced to Dec 27. Oracle cloud infrastructure revenue rose 121% to $7.4bn with RPO at $664bn and GPU utilization at 97.9%, read by the desk as compute staying scarce and pricing strong. Microsoft plans to more than triple data center capacity to above 38GW by 2032. Houthi seizure of Mocha and advance to the Hanish Islands raises Bab el-Mandeb leverage, with a 25% chance of closure by December priced on Polymarket. The top 10 requested consumer meetings average 32% off 52-week highs versus SPY at 2.7%, and the desk expects a better tone than price action suggests.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Goldman Sachs expects August core CPI to rise 0.23% on the month, above the 0.2% consensus.",
+   "anchor": "We expect a 0.23% increase in August core CPI (vs. +0.2% consensus)",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August print released today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Goldman Sachs expects August core CPI at +2.40% year over year, against +2.4% consensus.",
+   "anchor": "corresponding to a year-over-year rate of +2.40% (vs. +2.4% consensus)",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August print released today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "A hotter PPI print, with firm hospitals and airfares components, was enough for GIR to raise its core PCE estimate by 2bps.",
+   "anchor": "PPI hotter with hospitals and airfares firm enough for GIR to nudge Core PCE higher by 2bps",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The author says the Fed increasingly looks backed into a corner ahead of the September meeting.",
+   "anchor": "The Fed increasingly looks backed into a corner",
+   "topic": "Fed September hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September meeting"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "0.25% on core CPI is described as the dividing line for a September Fed hike.",
+   "anchor": ".25 on core meant to be the dividing line for Sept",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September meeting"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The author thinks the Fed will ultimately do what the market guides it towards.",
+   "anchor": "Think Fed ultimately will do what the market guides towards",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September meeting"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The market is at 35-50% odds of a September Fed hike after CPI.",
+   "anchor": "Issue is if your at 35-50% of hike (post CPI) not hiking could be quite punitive",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September meeting"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "If the Fed does not hike with 35-50% priced, the back end of the Treasury curve would be hit.",
+   "anchor": "not hiking could be quite punitive for back end of the curve",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September meeting"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "A modestly higher core CPI print of 0.26-0.28 would be cleaner for markets because it fully prices a September hike.",
+   "anchor": "Counterintuitively, a modestly higher outcome .26-.28 may be cleaner for markets",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Almost 90bps of Fed hikes are priced to December 2027 after the prior session's energy-driven inflation dis-anchoring.",
+   "anchor": "after yday's messy energy dis-anchoring you've got almost 90bps of hikes",
+   "topic": "Fed September hike odds",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "to Dec 27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Pricing a September hike with certainty would pull hikes forward rather than add to the total, and might stabilise longer rates.",
+   "anchor": "Arguably pricing certainty in Sept could just pull forward as opposed to add additional hikes",
+   "topic": "Fed September hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle traded up 7.5% pre-market.",
+   "anchor": "Oracle (+7.5% premkt) \u2014 the desk read this as about as bullish a compute datapoint",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "pre-market"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The Goldman desk read Oracle's results as about as bullish a compute datapoint as could be asked for.",
+   "anchor": "the desk read this as about as bullish a compute datapoint as could be asked for",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle reported GPU utilization of 97.9%.",
+   "anchor": "OCI +121 , GPU utilization 97.9% renewals/resales clearing at ~20% premiums",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "reported quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle renewals and resales are clearing at roughly 20% premiums.",
+   "anchor": "GPU utilization 97.9% renewals/resales clearing at ~20% premiums, and RPO at $664bn",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "reported quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle remaining performance obligations stand at $664bn.",
+   "anchor": "renewals/resales clearing at ~20% premiums, and RPO at $664bn",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "reported quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Compute remains scarce with strong pricing, which the desk says supports the hardware trade.",
+   "anchor": "compute remains scarce and pricing strong, supportive of the hardware trade",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle cloud infrastructure revenue rose 121% to $7.4bn, above the Street's $7.19bn.",
+   "anchor": "Cloud infrastructure revenue jumped 121% to $7.4bn (vs. Street $7.19bn)",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "reported quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle first-quarter sales rose 30% to $19.3bn.",
+   "anchor": "Q1 sales rose 30% to $19.3bn, and >$30bn of AI",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle booked more than $30bn of AI cloud contracts in the quarter.",
+   "anchor": "cloud contracts were booked; capex ran $28.5bn in the quarter",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle capital expenditure was $28.5bn in the quarter.",
+   "anchor": "capex ran $28.5bn in the quarter with FY27 guidance affirmed at $70bn",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Oracle affirmed FY27 capex guidance of $70bn, plus $20-25bn of customer prepayments.",
+   "anchor": "with FY27 guidance affirmed at $70bn (plus $20-25bn of customer prepayments)",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Microsoft traded up 20bps pre-market.",
+   "anchor": "Microsoft (+20bps premkt) \u2014 plans to more than triple data center capacity",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "pre-market"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Microsoft plans to more than triple data center capacity to over 38GW by 2032 from about 12GW today, per Bloomberg.",
+   "anchor": "plans to more than triple data center capacity to >38GW by 2032 from ~12GW today, per Bloomberg",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2032"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Microsoft's capacity road map covers company-owned and leased facilities and excludes neocloud rentals.",
+   "anchor": "framed as a road map for company-owned and leased facilities excluding neocloud rentals",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Microsoft's near-term focus is accelerating monetization of already-deployed, revenue-ready capacity, per GS Research's Communacopia takeaway.",
+   "anchor": "near term focus is accelerating monetization of already-deployed capacity",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Microsoft's dock-to-live times are down more than 50% over the past year.",
+   "anchor": "times down >50% over the past year",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "GS Research has a 12-month price target of $640 on Microsoft, 28x P/E on next-twelve-months adjusted net income.",
+   "anchor": "the 12-month price target is $640 (28x P/E on SNTM",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Nvidia reiterated its 2030 AI total addressable market outlook of $3-4 trillion at the GS Communacopia conference.",
+   "anchor": "Nvidia reiterated its 2030 AI TAM outlook of $3-4 trillion",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Nvidia said supply constraints are broad based across components and data center capacity.",
+   "anchor": "Supply constraints are broad based across components and Datacenter capacity",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Jensen Huang was bullish on Physical AI, naming autonomous vehicles as the leading use case and warehouse automation and navigation as emerging ones.",
+   "anchor": "Mr. Huang struck a bullish tone on Physical AI, highlighting autonomous vehicles as a leading use case",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX reiterated its expectation to earn $30-50bn per GW in 2027.",
+   "anchor": "reiterated its prior expectation to earn between $30-50bn/GW in 2027",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX disclosed it is currently operating at the upper end of its $30-50bn per GW range.",
+   "anchor": "disclosed that they are currently operating at the upper end of that range",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "current"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX announced the closing of a new compute licensing deal earlier this month.",
+   "anchor": "announced the closing of a new compute licensing deal earlier this month",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX has increased confidence in reaching a $100bn total revenue annualized run rate by year-end.",
+   "anchor": "increased confidence into reaching $100bn total revenue annualized run rate by year-end",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX has line of sight to more than 2GW of total compute by year-end 2026.",
+   "anchor": "line of sight into scaling to north of 2GWs of total compute by YE26",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YE26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX has line of sight to 5-10GW of total compute by year-end 2027.",
+   "anchor": "north of 2GWs of total compute by YE26 and between 5-10GWs by YE27",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YE27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX says vertical integration gives it key advantages in bringing compute capacity online.",
+   "anchor": "with vertical integration giving the company key advantages to bring capacity online",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX plans to deploy AI satellites in 2027 and sees potential to reach cost parity with terrestrial compute sooner than expected.",
+   "anchor": "plans to deploy AI satellites in 2027 and potential to reach cost parity vs. terrestrial compute",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX reported building momentum across its first-party AI tools and services including Grok 4.6, Grok Bot and Cursor.",
+   "anchor": "building momentum across its suite of 1P AI tools/services (Grok 4.6 & beyond",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX shared key learnings from a successful Starship Flight 13.",
+   "anchor": "key learnings from successful Starship Flight 13",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX says Starship Flight 14 is on track for this month, with rapid reusability progressing through 2027.",
+   "anchor": "Starship Flight 14 on track for this month & progressing toward rapid reusability through 2027",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026 and through 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Starlink Broadband showed continued momentum with notable strength in Enterprise and Government services.",
+   "anchor": "Starlink Broadband continued momentum (with notable strength from Enterprise & Government services)",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SpaceX is laying the groundwork for a Starlink Mobile launch by the first half of 2028.",
+   "anchor": "executing on laying groundwork for Starlink Mobile launch by 1H28",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1H28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The Houthis seized Mocha and advanced to the Hanish Islands.",
+   "anchor": "The Houthis seized Mocha and advanced to the Hanish Islands",
+   "topic": "oil and Red Sea risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The Houthi advance gives them more leverage around Bab el-Mandeb just as Saudi Arabia leans more on the Red Sea and Yanbu export route.",
+   "anchor": "giving them considerably more leverage around Bab el-Mandeb just as Saudi Arabia relies more heavily on the Red Sea/Yanbu route",
+   "topic": "oil and Red Sea risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Polymarket prices a 25% chance of Bab el-Mandeb being closed by December.",
+   "anchor": "polymkt now saying 25% chance Bab el-Maneb closed by Dec",
+   "topic": "oil and Red Sea risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "There were unconfirmed reports of attacks on the East-West pipeline.",
+   "anchor": "There were also unconfirmed reports of attacks on the East-West pipeline",
+   "topic": "oil and Red Sea risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The author frames the Gulf and Red Sea exit routes as a two front problem.",
+   "anchor": "This increasingly looks like a two front problem around the Gulf and Red Sea exit routes",
+   "topic": "oil and Red Sea risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Monday's reported GCC and Iran meeting in Salalah is an important anchor, though the author is not particularly optimistic about it.",
+   "anchor": "That makes Monday's reported GCC/Iran meeting in Salalah an important anchor",
+   "topic": "oil and Red Sea risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Monday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The author is more generally optimistic that a lot is already in the price and that all incentives point to finding off ramps.",
+   "anchor": "optimistic that there is a lot now in the price and all the incentives are to find off ramps",
+   "topic": "oil and Red Sea risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The average stock among the top 10 most requested meetings at the GS consumer conference is 32% off its 52-week high.",
+   "anchor": "the average stock in that group is -32% off its",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [
+    "HD",
+    "TJX",
+    "WMT",
+    "DKS",
+    "LOW",
+    "BURL",
+    "OLLI",
+    "FIVE",
+    "DG",
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "SPY is 2.7% off its 52-week high.",
+   "anchor": "That compares to the SPY -2.7% off its 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The top 10 requested names are large consumer companies rather than small caps, and every one has seen multiple compression.",
+   "anchor": "These are some of the biggest consumer companies, not small caps. Every single one has seen multiple compression",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [
+    "HD",
+    "TJX",
+    "WMT",
+    "DKS",
+    "LOW",
+    "BURL",
+    "OLLI",
+    "FIVE",
+    "DG",
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Home Depot is 29% off its 52-week high.",
+   "anchor": "Huge Pullbacks in the Top 10: HD: 29% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "HD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "TJX is 26% off its 52-week high.",
+   "anchor": "HD: 29% off 52-week high TJX: 26% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "TJX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Walmart is 22% off its 52-week high.",
+   "anchor": "WMT: 22% off 52-week high DKS: 46% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Dick's Sporting Goods is 46% off its 52-week high.",
+   "anchor": "DKS: 46% off 52-week high LOW: 33% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "DKS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Lowe's is 33% off its 52-week high.",
+   "anchor": "LOW: 33% off 52-week high BURL: 37% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "LOW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Burlington Stores is 37% off its 52-week high.",
+   "anchor": "BURL: 37% off 52-week high OLLI: 48% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "BURL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Ollie's Bargain Outlet is 48% off its 52-week high.",
+   "anchor": "OLLI: 48% off 52-week high FIVE: 9% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "OLLI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Five Below is 9% off its 52-week high.",
+   "anchor": "FIVE: 9% off 52-week high DG: 23% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "FIVE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Dollar General is 23% off its 52-week high.",
+   "anchor": "DG: 23% off 52-week high FND: 49% off 52-week high",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "DG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Floor & Decor is 49% off its 52-week high.",
+   "anchor": "FND: 49% off 52-week high Avg: -32% from 52-Week High",
+   "topic": "Consumer sector weakness",
+   "status": "level",
+   "instruments": [
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "The GS consumer conference falls 11 days later this year than last, giving a fuller back-to-school and Labor Day spending picture.",
+   "anchor": "the conference is 11 days later this year than last",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Goldman expects even more volatility in consumer stocks around this conference than in prior years, given the size of the move lower.",
+   "anchor": "Given the huge move lower in many of the stocks, we expect even more volatility vs prior years",
+   "topic": "Consumer sector weakness",
+   "status": "forecast",
+   "instruments": [
+    "HD",
+    "TJX",
+    "WMT",
+    "DKS",
+    "LOW",
+    "BURL",
+    "OLLI",
+    "FIVE",
+    "DG",
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "conference week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Goldman expects many consumer companies to sound a better tone than recent share price action has suggested.",
+   "anchor": "we think many companies will sound a better tone than recent stock price action has suggested",
+   "topic": "Consumer sector weakness",
+   "status": "forecast",
+   "instruments": [
+    "HD",
+    "TJX",
+    "WMT",
+    "DKS",
+    "LOW",
+    "BURL",
+    "OLLI",
+    "FIVE",
+    "DG",
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "conference week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Recent trading says a better tone will not be enough for the stocks, while prior conference years say it will, with a 70% hit rate of outperformance over the last decade.",
+   "anchor": "The last few weeks of trading suggests no, but prior conference years suggest yes",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [
+    "HD",
+    "TJX",
+    "WMT",
+    "DKS",
+    "LOW",
+    "BURL",
+    "OLLI",
+    "FIVE",
+    "DG",
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last decade"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Consumer stocks outperformed in 70% of prior conference years over the last decade.",
+   "anchor": "prior conference years suggest yes (70% hit rate of outperformance the last decade)",
+   "topic": "Consumer sector weakness",
+   "status": "released",
+   "instruments": [
+    "HD",
+    "TJX",
+    "WMT",
+    "DKS",
+    "LOW",
+    "BURL",
+    "OLLI",
+    "FIVE",
+    "DG",
+    "FND"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last decade"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Day 4 of the GS Communacopia conference features AMD, AEVA and FIVN at 11:50 AM EST.",
+   "anchor": "Day 4 Schedule \u2013 Friday, September 11th (all times in EST): 11:50 AM: AMD, AEVA, FIVN",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "AEVA",
+    "FIVN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "11 Sep 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: All Eyes on CPI Today, Oracle and Microsoft Bullish Datapoints, Day 4 of GS Communacopia Conference",
+   "claim": "Day 4 of the GS Communacopia conference features KLAC, KFY and KEYS at 12:30 PM EST and PAGS at 1:10 PM EST.",
+   "anchor": "12:30 PM: KLAC, KFY, KEYS 1:10 PM: PAGS",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "KLAC",
+    "KFY",
+    "KEYS",
+    "PAGS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "11 Sep 2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-12/16074__what-matters-today-all-eyes-on-cpi-today-oracle-and-microsof.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 71,
+  "matched": 71,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
