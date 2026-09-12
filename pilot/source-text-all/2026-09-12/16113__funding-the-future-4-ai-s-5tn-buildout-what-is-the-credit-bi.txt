@@ -1,0 +1,8838 @@
+[Page 1]
+ 
+BofA Securities does and seeks to do business with issuers covered in its research 
+reports. As a result, investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of this report. Investors should consider this 
+report as only a single factor in making their investment decision. 
+Refer to important disclosures on page 34 to 36.  
+13017339 
+ 
+ 
+High Yield & Loan Strategy 
+Funding The Future #4: AI’s $5tn buildout – 
+what is the credit bill? 
+     
+   
+ 
+ 
+Two variables, trillions of outcomes 
+With the current AI capex cycle likely to overshoot historical precedents, we turn to 
+announced datacenter capacity expansions as a way to generate more concrete 
+estimates. However, highly variable inputs of needed GWs and cost/GW create a wide 
+range of possible outcomes. We comb through prominent internal and external sources, 
+calculating estimates using bottom-up and top-down frameworks, to arrive at our base 
+case of ~$5.0tn in capex spending through 2030, increasing to $7.7tn at the upper end. 
+Funding need sits in the IT layer 
+Of the $5.0tn base case capex bill, we estimate growth capex accounts for $3.0tn, 
+including $2.1tn of IT equipment and $1.4tn of chips. This is where incremental funding 
+needs are concentrated. Maintenance adds $2.0tn in IT spend, taking total IT capex to 
+roughly $4.1tn and chip spend to $2.7tn given IT investment is large, front-loaded and 
+subject to recurring refresh requirements. By contrast, longer-lived construction, power 
+and cooling assets should require less maintenance funding over the forecast horizon. 
+A small headline gap hides a $0.7tn divide 
+Adding non-AI related expenses brings aggregate capex through 2030 to $6.9tn against 
+$6.6tn of OCF, implying only a modest deficit, based on our analysis. But the headline 
+masks sharp dispersion: consensus expects better quality issuers to generate enough 
+OCF to cover capex. Fringe issuers face the real funding pressure, with roughly $1.7tn of 
+capex against $1.0tn of OCF, leaving an estimated $0.7tn deficit.  
+The funding bill is bigger than the deficit 
+The cash flow deficit is not the only reason issuers will tap external capital. High-quality 
+borrowers may raise debt despite positive FCF to bridge front-loaded capex, preserve 
+liquidity and retain flexibility for shareholder returns or M&A. We estimate total external 
+capital needs at about $1.2tn through 2030, comprising roughly $0.5tn from higher-
+quality issuers and $0.7tn from the rest. Most of that funding should come through debt, 
+given an estimated after-tax cost near 5% versus an equity cost above 11%. 
+Large supply, manageable technicals 
+Raising all $1.2tn of needed funding as debt would translate to ~$300bn/year of 
+incremental credit supply. Spread across five years and multiple markets, we think this 
+volume should be absorbable – particularly if issuance is paced. The opportunistic nature 
+of borrowing also creates a natural feedback loop: if spreads become uneconomic, 
+issuance can shift to other markets or capex can be delayed. The likely credit impact is 
+therefore episodic technical pressure rather than a sustained market-clearing problem. 
+HY and Loan weekly recap 
+Our AI Weekly Pulse now tracks a broader set of private deals, providing a more 
+complete view of the AI credit market's size: $568bn issued YTD, including $259bn in IG 
+& $256bn in PC (Exhibit 13). HY spreads widened 3bps this week (now at 271bps). Loans 
+returned 0.09% WTD, as $18bn of supply (52% for LBOs) outpaced $1bn of demand. 
+11 September 2026   
+High Yield & Loan Strategy 
+United States 
+Table of Contents 
+What to expect from the datacenter buildout? 
+2 
+Investor Takeaways 
+2 
+Forecasting growth capex 
+3 
+Forecasting maintenance and total capex 
+5 
+Expect total debt issuance of ~$1.2tn through 
+2030 
+6 
+AI weekly pulse 
+9 
+Market Recap: USD HY 
+13 
+Market Recap: USD Loans 
+23 
+Market Recap: EUR Loans 
+28 
+Glossary 
+31 
+Neha Khoda 
+Credit Strategist 
+BofAS 
++1 646 855 9656 
+neha.khoda@bofa.com 
+Tom Curcuruto, CFA 
+Research Analyst 
+BofAS 
+tom.curcuruto@bofa.com 
+Adam Vogel 
+Credit Strategist 
+BofAS 
+adam.vogel@bofa.com 
+Dong Ba 
+Credit Strategist 
+BofAS 
+dong.ba@bofa.com 
+Elizabeth M. Han 
+Credit Strategist 
+BofAS 
+elizabeth.han@bofa.com 
+Accessible version 
+
+
+[Page 2]
+ 
+ 
+2 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+ What to expect from the datacenter 
+buildout? 
+Acceptance of hyperscaler/chip-related expenditures as a seemingly bottomless pit has 
+somewhat been normalized by the markets in this capex cycle. However, amid the surge 
+in credit supply (see report: Situation Room), and its knock-on impact on other fixed-
+income markets (see report: US Rates Viewpoint), it’s important to create guardrails 
+around AI-linked issuance. In this report, we reconcile top-down TAM-based, bottom-up 
+pipeline-based, and fundamental issuer-level capex expectations, and consolidate 
+multifaceted internal and external narratives, to quantify:  
+a) 
+capex expectations based on announced capacity 
+b) 
+expense split between GPU funding and other types of IT investments. 
+c) 
+Needs for future debt funding. 
+Investor Takeaways 
+• 
+US datacenter expansion estimates over the next five years vary widely, from 48-
+91GW based on bottom-up DC pipeline lists to 115GW in chip demand-driven 
+models. These numbers are diff from ex 2. Build costs per GW also have a range: 
+$25-50bn/GW.  
+• 
+Matrices based on these range of inputs create a wide dispersion of possible 
+outcomes. Our base estimate for cumulative AI capex spending from ’26-’30 is 
+$5.0tn factoring in inflation and maintenance capex, increasing to $7.7tn in a high-
+growth scenario.  
+• 
+The incremental build portion (growth capex) is estimated at $3.0tn out of the total 
+$5tn. Of this, IT spending is estimated to constitute $2.1tn, while the subset of 
+expenditure on chips could reach $1.4tn. This is where incremental capital will be 
+most required.  
+• 
+The eight largest operators in the AI space are projected to generate $6.6tn of OCF 
+over 2026-30 against total capex of $6.9tn (including non-AI spend), implying a 
+modest funding deficit of $0.3tn.  
+• 
+However, underlying dispersion is high. Based on consensus estimates, the 
+strongest four issuers can largely self-fund the buildout, generating OCF of $5.5tn 
+vs $5.2tn of capex. The remaining four issuers face a shortfall of $0.7tn in FCF 
+terms and are more likely to be reliant on external funding, in some cases supported 
+by long-term contracts and take-or-pay structures. 
+• 
+In addition, deficit is not the only factor that drives external financing. While those with 
+cash deficits will likely rely on external funds, so could those that have cash surplus – in 
+order to fund other expenditures such as dividends/M&A, and to retain strategic 
+flexibility. This is the reason why the highest-quality issuers, counterintuitively, are also 
+the largest issuers of debt currently, and may remain that way.  
+• 
+In total, we estimate a need of $1.2tn in external funds to fund AI capex. We think 
+debt issuance will be the chosen channel of fundraising given its attractive cost vs 
+equity.  
+• 
+Spread across five years, and multiple credit market segments, we think $300bn/year 
+remains manageable in terms of credit technicals, especially if spaced out. 
+• 
+Further, suppliers such as NVDA and AVGO are increasingly acting as credit 
+intermediaries by backstopping demand or are partnering directly with capital 
+
+
+[Page 3]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+3
+ 
+ 
+providers through residual-value guarantees and schemes to lower financing costs 
+to secure debt financing. 
+Exhibit 1: AI infrastructure buildout in the US 
+Mapping capital formation across hyperscalers, neoclouds, chip suppliers, and lenders 
+Source: BofA Global Research, Bloomberg 
+Note: Neoclouds depend on external funds and are not OCF +ve but are shown for completeness.   
+Top-down estimates: based on GW adds * costs, Bottom-up: based on Bloomberg consensus estimate of the main 8 issuers 
+BofA GLOBAL RESEARCH 
+Forecasting growth capex  
+Our previous forecasting runs in the FTF series relied on benchmarks set by prior cycles. 
+With increasing likelihood of AI-led capex cycle overshooting all historical precedents, we 
+turn to more concrete ways of generating our estimates – namely, relying on announced 
+datacenter capacity expansions through which we calculate needed Gigawatts (GWs). 
+Within this framework, there are broadly two forecasting approaches: 
+Estimating incremental GW capacity needed  
+Bottom-up (DC pipeline-based): Starts with announced projects, utility 
+interconnection queues, and contracted developments, then adjusts for permitting, 
+power availability, and construction lead times. These forecasts tend to be more 
+conservative as they are limited to deals under construction/announced and assume 
+historical rates of project completion. 
+Top-down (chip TAM-based): Starts with a total addressable market for AI chips, 
+adjusted for hardware refresh cycles to isolate net new deployment, which is then 
+converted into the capacity (GW) needed to host it. The output is therefore anchored to 
+chip supply forecasts and assumes power, permitting, and construction constraints 
+resolve favorably. Because physical bottlenecks are not explicitly modelled, these 
+estimates typically sit at the higher end of the range (eg LBNL base case, BNEF bull 
+case).  
+While most available research has been focused in a singular direction, there are some 
+sources that combine the two methodologies. Exhibit 2 summarizes some of the most 
+prominent forecasts. Overall, we estimate 67GW in base case expansion of new 
+incremental capacity from 2025-2030, and 115GW in the bull scenario. Note that this 
+accounts for just growth capex, and factoring in maintenance capex is also required to 
+get a sense of the total capex needs (discussed later). 
+ 
+plus
+minus
+=
+Compute Providers 
+need capital
+Hyperscalers (MSFT, GOOG, AMZN, META,ORCL, SPCX)
+Neoclouds (CRWV, NBIS)
+Capital Providers 
+provide capital
+Banks, Capital Markets, Private Credit, 
+Private Equity
+Total Capex: 6.9tn 
+AI needs:5.0tn 
+IT needs: 4.1tn
+Chip needs:2.7tn
+Total OCF: 6.6tn 
+Deficit: 0.8tn
+Growth: 
+3.0tn 
+Maintenance: 
+2.0tn 
+Debt needs: 1.2tn
+Intermediaries
+Chip suppliers 
+(AVGO, NVDA)
+Backstopsdemand; 
+reduces financing 
+risk for the borrower
+Residual value 
+guarantee, Debt 
+guarantee; enables 
+underwriting
+Other exp: 0.5tn
+-Dividends
+-Mandatory buybacks
+-M&A
+
+
+[Page 4]
+ 
+ 
+4 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 2: Projected datacenter capacity  
+Base case expansion ranges 48-91GW, averaging 67GW; bull-case scenarios extend it to over110GW. 
+FY 
+BNEF 
+IEA 
+LBNL McKinsey 
+EPRI 
+JLL 
+ 
+Our 
+estimates 
+2025 
+47 
+52 
+57 
+30 
+48 
+49 
+ 
+2030 
+118 
+100 
+148 
+90 
+115 
+109 
+ 
+Bull case 
+160 
+ 
+159 
+ 
+Expansion base case: 
+71 
+48 
+91 
+60 
+67 
+60 
+ 
+67 
+Bull case: 
+113 
+ 
+111 
+ 
+115 
+Note: EPRI figures were based on IT load only, total load was estimated by applying a 20% markup. LBNL provides estimates for 
+interconnection capacity. 
+Source: BofA Global Research estimates, BlooombergNEF, International Energy Agency, Lawrence Berkeley National Laboratory, McKinsey, 
+Electric Power Research Institute, JLL 
+BofA GLOBAL RESEARCH 
+Cost of building 1GW capacity and the implied capex bill  
+For estimating cost of build, we use our Internet analyst Justin Post's cost range (see 
+report: Rising Internet capex ests): $25bn/GW at the low-end, $37bn as the mid, and 
+$50bn at the high-end of range, reflecting differences in assumed accelerator mix, 
+power infrastructure, land/construction costs and training-vs-inference workload 
+optimization. External benchmarks broadly corroborate this band: McKinsey has an 
+implied range of $38-48bn/GW1 and Epoch.ai2 puts it at $38bn/GW.  
+Based on these, we estimate a raw (without inflation) $2.5tn in funds required to finance 
+announced datacenter expansion through 2030, rising to $4.3tn in a bullish scenario 
+which combines base unit cost with maximum capacity buildout ().  
+ 
+Exhibit 3: Build capex by GW addition (based on current costs) 
+Estimated at $2.5tn in the base case and $4.3tn in faster expansion 
+Capacity refreshed (GW) 
+Total Capex (S,bn) 
+48 
+67 
+115 
+Cost ($bn/GW) 
+25 
+1,200 
+1,685 
+2,875 
+37 
+1,776 
+2,493 
+4,255 
+50 
+2,400 
+3,369 
+5,750 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+ 
+Factoring in cost increases, we arrive at more reasonable levels of expected capex 
+shown in matrices with columns indicating GW capacity added, and rows showing 
+average inflation-adjusted price per GW. Our estimates place base capex at $3.0tn 
+(Exhibit 4), of which $2.1tn is IT equipment including chips, servers, storage and 
+networking (Exhibit 5), of which $1.4tn is earmarked solely for chips (Exhibit 6). Per our 
+equity analysts, the IT portion is estimated as a flat 68% of total cost, and AI 
+accelerators/GPU are estimated at flat 67% of the IT portion (or 45% of the total).  
+ 
+ 
+ 
+ 
+1 https://www.mckinsey.com/industries/technology-media-and-
+telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-
+scale-data-centers 
+2 https://epoch.ai/data-insights/ai-datacenter-cost-breakdown 
+
+
+[Page 5]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+5
+ 
+ 
+Exhibit 4: Build capex by GW addition 
+(inflation-adjusted) 
+Estimated at $3.0tn in the base case 
+Capacity added (GW) 
+Total Capex ($,bn) 
+48 
+67 
+115 
+Cost 
+($bn/GW) 
+31 
+1,465 
+2,057 
+3,510 
+45 
+2,169 
+3,044 
+5,195 
+61 
+2,930 
+4,114 
+7,021 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+Exhibit 5: IT portion of capex 
+Estimated at $2.1tn in the base case  
+Capacity added (GW) 
+IT Capex ($,bn) 
+48 
+67 
+115 
+Cost 
+($bn/GW) 
+21 
+996 
+1,399 
+2,387 
+31 
+1,475 
+2,070 
+3,533 
+42 
+1,993 
+2,797 
+4,774 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+Exhibit 6: AI Accelerators (GPUs/xPUs) 
+Chips alone could cost about $1.4tn 
+in the base case 
+Capacity added (GW) 
+Accelerators ($,bn) 
+48 
+67 
+115 
+Cost 
+($bn/GW) 
+14 
+668 
+937 
+1,599 
+21 
+988 
+1,387 
+2,367 
+28 
+1,335 
+1,874 
+3,199 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+Forecasting maintenance and total capex 
+To estimate maintenance capex needs, we take a base of cumulative installed base until 
+2025 (49GW) + expected incremental capacity over the next five years. Assuming IT 
+equipment has an average useful life of six years, the annual refresh requirement is one-
+sixth of the installed base at prior year-end. Maintenance is largely an IT capex story 
+since non-IT infrastructure has a much longer life. We also adjust the prices by 10% y/y 
+for IT equipment inflation. Over a five-year horizon, total IT maintenance capex comes to 
+$2.0tn in our base case (63GW equivalent refreshed at $32bn/GW), of which accelerators 
+account for $1.3tn. Exhibit 7 shows GWs refreshed along with average inflation-adjusted 
+unit costs to generate our range of maintenance capex estimates. 
+ 
+Exhibit 7: Maintenance capex for IT equipment 
+Estimated at $2.0tn in base case 
+Capacity refreshed (GW) 
+IT ($,bn) 
+57 
+63 
+79 
+Cost ($bn/GW) 
+21 
+1,211 
+1,358 
+1,719 
+32 
+1,793 
+2,010 
+2,544 
+43 
+2,422 
+2,716 
+3,438 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+ 
+ 
+Total IT capex is then estimated as the sum of growth capex from the previous section 
+($2.1tn) and maintenance capex above ($2tn), resulting in a base case of $4.1tn in 
+aggregate IT capex needs (Exhibit 8). Of which, accelerators/chips account for $2.7tn 
+(Exhibit 9). Separately, our semiconductor analyst has global datacenter IT equipment 
+spend reaching $2.2tn/year by 2030, totaling $7.5tn over 2026-30; which at a ~60% US 
+share finishes close to our estimates (see report: Rise of the agents).  
+Exhibit 8: Total IT Capex 
+Total spend on IT equipment is estd at $4.1tn 
+Capacity added/refreshed 
+(GW) 
+Total IT Capex 
+($,bn) 
+105 
+131 
+194 
+Cost 
+($bn/GW) 
+21 
+2,208 
+2,757 
+4,106 
+31 
+3,267 
+4,080 
+6,077 
+42 
+4,415 
+5,514 
+8,212 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+Exhibit 9: Total AI accelerator capex 
+AI accelerators account for $2.7tn of the spend… 
+Capacity added/refreshed 
+(GW) 
+Accelerators 
+($,bn) 
+105 
+131 
+194 
+Cost 
+($bn/GW) 
+14 
+1,479 
+1,847 
+2,751 
+21 
+2,189 
+2,734 
+4,071 
+28 
+2,958 
+3,694 
+5,502 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+
+
+[Page 6]
+ 
+ 
+6 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 10: Total Capex 
+…taking total capex to $5.1tn 
+Capacity 
+added/refreshed (GW) 
+Total Capex ($,bn) 
+105 
+131 
+194 
+Cost ($bn/GW) 
+26 
+2,676 
+3,415 
+5,229 
+39 
+3,961 5,054 
+7,739 
+52 
+5,353 
+6,830 
+10,459 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+Total capex is simply IT capex put together with the non-IT components (construction, 
+power and cooling) from the previous section ($1tn), finishing at $5.0tn in base case 
+(Exhibit 10). This implicitly assumes minimal refresh requirements on those components 
+over the forecast horizon, consistent with their much longer useful lives. The $5.0tn base 
+case figure ties well with bottom-up aggregation of issuer-level figures as explained in 
+the next section.  
+ 
+ 
+Expect total debt issuance of ~$1.2tn through 2030 
+This is what ultimately matters most to credit investors: translating capex estimates to 
+future debt needs. We do this by comparing propensity to generate internal funds vs 
+propensity to spend across issuers that are expected to generate the highest 
+expenditures in the context of the AI/cloud buildout – core Hyperscalers (Microsoft, 
+Amazon, Alphabet, Meta, Oracle, SpaceX), alongside Neoclouds (Coreweave, Nebius).  
+Internal vs external funding 
+Bloomberg consensus for 2026-28 places combined operating cash flow (OCF) for these 
+eight companies at $3.3tn, against total capex of $3.7tn (AI capex $2.9tn), implying a net 
+funding need of $0.4tn over the next three years (Exhibit 11). Prorating these estimates 
+to 2030 lifts total OCF to $6.6tn, and total capex to $6.9tn3, keeping the “deficit” still at 
+$0.3tn. Adding in financing for dividends, buybacks and M&A, which are discretionary, 
+but which likely continue across the high-quality issuers, lifts the total needed funds to 
+$0.8tn.  
+Exhibit 11: Cash flow estimates for the eight main funders of the AI buildout 
+OCF could total $6.6tn over the 2026-30 against capex of $6.9tn 
+Main 8 
+NTM 
+NTM+1Y 
+ 
+CY2026 
+CY2027 
+CY2028 CY 2026-30 
+Revenue 
+2,234,521 
+2,752,774 
+ 
+2,011,529 
+2,474,520 
+3,029,790 
+ 
+CFO 
+947,758 
+1,212,535 
+ 
+819,865 
+1,072,913 
+1,407,058 
+6,550,140 
+Capex 
+-1,176,922 
+-1,446,314  
+-924,508 
+-1,335,528 
+-1,470,530 
+-6,895,883 
+FCF 
+-238,808 
+-211,786 
+ 
+-101,906 
+-283,377 
+-58,299 
+-345,743 
+ 
+Non-AI/cloud capex 
+-249,071 
+-283,578 
+ 
+-241,114 
+-256,608 
+-297,067 
+-1,434,227 
+Adj AI Capex 
+-927,851 -1,162,736 
+ 
+-683,394 -1,078,919 -1,173,463 
+-5,461,656 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+Deficit not the sole driver of reliance on external funding 
+That said, deficit is not the sole driver of external funding needs, and other factors at 
+play could also push debt supply higher.  
+ 
+3 Our $5tn AI-capex estimate is a subset of the total capex of $6.9bn which also contains non-AI related 
+expenses. 
+
+
+[Page 7]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+7
+ 
+ 
+Dispersion: Headline deficit lands at $0.3tn because one part of the cohort offsets the 
+other. Consensus estimates from BBG put the big four issuers (Amazon, Alphabet, Meta 
+and Microsoft) to be net FCF positive over 2026-30, with total OCF of $5.5tn, exceeding 
+their capex needs of $5.2tn. Remaining issuers (SpaceX, Oracle, CoreWeave and Nebius) 
+have more acute external funding needs, with estimated capex ($1.7tn) significantly 
+outstripping OCF generation ($1.0tn). Unsurprisingly, this is also where investors are the 
+wariest, pushing funding costs higher and requiring structural backstops like take-or-pay 
+arrangements and long-dated capacity contracts to finance issuer builds.   
+Cash preservation: Despite being FCF positive, high-quality issuers have also been the 
+largest issuers of debt. This is likely because these issuers can afford the coupon to 
+preserve balance sheet cash and create future strategic flexibility.  
+Other spending needs: As mentioned before, other financing needs such as dividends, 
+buybacks and M&A ($0.5tn cumulative) should be factored in.  
+OCF estimates can change: Deficit estimates are highly sensitive to OCF estimates of 
+the big four issuers. Should OCF be only 5% lower, the size of the total funding needs 
+expands by 0.3tn given the sheer size of base numbers.  
+In aggregate, these factors point to cumulative external funding needs of $1.2-$1.5tn: 
+$0.5-$0.8tn from high-quality issuers and $0.7tn from the more fringe ones. 
+Equity vs debt 
+The decision to fund via debt or equity is a matter of cost. With cost of Hyperscaler debt 
+running at 5% (after tax) vs cost of equity which is more than double at 11%, we expect 
+debt funding to be the fundraising channel of choice for the foreseeable future.  
+Exhibit 12: Combined cost of funding for the eight main hyperscalers/neoclouds 
+Cost of debt (after tax) = 5%, cost of equity = 11.3%  
+Note: the chart shows aggregates for main 5 for the majority of the period, with the remaining three joining this year. 
+Source: BofA Global Research, Bloomberg  
+BofA GLOBAL RESEARCH 
+ 
+Should all external funding needs be channeled through debt, would translate to 
+$300bn/year in credit markets incrementally. Spread across 4.5 years, and multiple 
+markets (public, private and securitized), we think this level remains absorbable, 
+especially if spaced out.  
+0%
+4%
+8%
+12%
+16%
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Cost of debt
+Cost of equity
+WACC
+
+
+[Page 8]
+ 
+ 
+8 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Since a large portion of this debt funding remains opportunistic and driven by high-
+quality issuers, allows the stock and cost of debt to remain in check, beyond which debt 
+funding will not make economic sense, and an issuer might go to alternate markets 
+(equity, converts), or abandon capex plans completely. This is an important feedback 
+mechanism in well-functioning markets, a hint of which we saw play out in the July AI-
+spread turmoil which halted issuer plans to place more debt. 
+This also means capital is not the likely bottleneck for the AI-build, and other 
+physical/regulatory factors will function as the primary inhibitors of the pace of 
+expansion.  
+Supply chain backstop & vendor financing 
+One factor lowering the cost of debt for some pre-revenue names in the space is vendor 
+financing – where a share of IT-layer spend is underwritten by chip suppliers for their 
+customers. These suppliers are the biggest beneficiaries of the AI buildout – consensus 
+forecasts NVDA and AVGO to generate $1.2tn in combined free cash flow over 2026-28. 
+However, these firms are not term-lending or even funding datacenter builds off their 
+own balance sheet. Instead, they are backstopping chip financing indirectly, through 
+take-or-pay type structures, residual-value guarantees and more recently by 
+guaranteeing a portion of the debt.  
+These structures work differently but converge to the same result: vendor credit rather 
+than the labs sets the clearing level, which is what turns an otherwise unfinanceable 
+exposure into bankable paper. Nvidia's neocloud take-or-pay backstop does this through 
+cash flow: recent arrangements (e.g. Sharon AI) have incorporated a six-year minimum 
+revenue guarantee on deployed GPU capacity that rents back unused compute at a fixed 
+rate, giving lenders a contractual revenue floor in place of hyperscaler offtake. Nvidia 
+has also provided residual-value support for SB Energy’s PORTS-Pike campus, where 
+OpenAI is the 20-year tenant and Nvidia the exclusive chip supplier. The guarantee does 
+not cover rent as it falls due, but instead backstops any shortfall to a specified minimum 
+value after an OpenAI default or insolvency and an unsuccessful re-leasing or sale 
+process.  
+Broadcom instead wrapped the collateral directly through its recently launched AI XPV 
+Platform, guaranteeing the senior notes and the chips' residual value across $31bn of 
+the Platform’s inaugural $35bn debt package raised with Apollo and Blackstone (87% of 
+the debt stack). Comparing pricing between the tranches in that deal demonstrates the 
+impact: the guaranteed A2 notes cleared at 5.75% against 8.5% on the unwrapped 
+second-lien. By absorbing the residual value and merchant demand risk, vendors widen 
+the lender base and lower the clearing yield, which should pull forward considerably 
+more issuance against the IT layer than the labs could raise on their own credit. The 
+offset is contingent liability at the suppliers, with BofA’s analyst modelling Broadcom's 
+peak RVG exposure at roughly $370bn by mid-2029 if the platform scales to 20GW (see 
+report: Broadcom Inc.). 
+ 
+ 
+
+
+[Page 9]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+9
+ 
+ 
+AI weekly pulse 
+Issuance Tracker 
+Exhibit 13 shows total USD-denominated AI-related issuance across IG, HY, Loans, and 
+Private Credit markets. Total cross-credit AI-related issuance currently stands at $568bn 
+YTD, of which $259bn has been issued in IG, followed by $256bn across Private Credit, 
+Direct Lending, and other bilateral/non-syndicated lending. HY and Instl. Loans have seen 
+$40bn and $11bn YTD, respectively.  
+Exhibit 13: AI-related issuance has reached $568bn YTD 
+Includes USD-denominated issues with disclosed Use of Proceeds primarily intended to fund AI-related 
+capital expenditures 
+Asset Class 
+AI Capex Category 
+Total ($mn) 
+IG 
+IG YTD 
+259,778 
+IG 
+Hyperscaler 
+157,000 
+IG 
+Data Center Owner/Operator 
+42,640 
+IG 
+Compute Hardware/Systems 
+35,138 
+IG 
+Other 
+25,000 
+HY 
+HY YTD 
+40,006 
+HY 
+Neocloud 
+4,000 
+HY 
+Data Center Owner/Operator 
+33,606 
+HY 
+Power/Electrical Infrastructure 
+2,400 
+Instl. Loans 
+Instl. Loans YTD 
+11,726 
+Instl. Loans 
+Neocloud 
+6,626 
+Instl. Loans 
+Data Center Owner/Operator 
+4,300 
+Instl. Loans 
+Power/Electrical Infrastructure 
+800 
+Direct Lending 
+Direct Lending YTD 
+22,828 
+Other Private Credit & bilateral 
+Other Private Credit & bilateral YTD 
+234,140 
+USD Credit 
+  
+568,478 
+Source: BofA Global Research, Bloomberg, Pitchbook 
+Note: IG, HY, and Instl. Loan issuance totals include index-ineligible private placements and therefore overstate index-eligible exposure. 
+Institutional loans capture broadly syndicated term loan facilities only; pro-rata facilities are reported within Other Private Credit & 
+Bilateral. Delayed-draw term loans and revolvers are shown at total commitment rather than amount drawn to date. 
+BofA GLOBAL RESEARCH 
+ 
+Deal Tracker 
+Exhibit 14 lists individual AI-related issues which comprise YTD totals for USD IG, USD 
+HY, and Instl. Loans shown in Exhibit 13 above. 
+Exhibit 14: AI-related issues across IG, HY, and Loans 
+USD-denominated transactions, YTD 2026 ($mn) 
+Issue 
+Date 
+Issuer 
+Cusip 
+Ticker 
+Coupon Maturity 
+Total 
+($mn) Rating 
+Spread 
+Instrument 
+type 
+AI Capex Category 
+ 
+IG YTD 
+ 
+ 
+ 
+ 
+259,778  
+ 
+ 
+ 
+2026-08-18 QTS Central Issuer LLC 
+74751QAA6 
+QTSODY 
+6.625 
+2031-09-01 
+3,900 Baa3/NA 
+286 
+sr secured 
+Data Center Owner/Operator 
+2026-08-13 Advanced Micro Devices Inc 
+007903BL0 
+AMD 
+5 
+2031-08-17 
+1,500 A1/A 
+70 
+sr unsecured 
+Compute Hardware/Systems 
+2026-08-13 Advanced Micro Devices Inc 
+007903BK2 
+AMD 
+4.6 
+2029-08-17 
+1,250 A1/A 
+43 
+sr unsecured 
+Compute Hardware/Systems 
+2026-08-13 Advanced Micro Devices Inc 
+007903BM8 
+AMD 
+5.25 
+2033-08-17 
+1,000 A1/A 
+80 
+sr unsecured 
+Compute Hardware/Systems 
+2026-08-13 Advanced Micro Devices Inc 
+007903BN6 
+AMD 
+5.5 
+2036-08-17 
+1,000 A1/A 
+90 
+sr unsecured 
+Compute Hardware/Systems 
+2026-08-06 Alphabet Inc 
+02079KCS4 
+GOOGL 
+5.45 
+2036-08-15 
+4,500 Aa2/AA+ 
+85 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCU9 
+GOOGL 
+6.375 
+2056-08-15 
+4,500 Aa2/AA+ 
+115 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCQ8 
+GOOGL 
+4.875 
+2031-08-15 
+3,500 Aa2/AA+ 
+60 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCT2 
+GOOGL 
+6.25 
+2046-08-15 
+3,000 Aa2/AA+ 
+105 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCR6 
+GOOGL 
+5.2 
+2033-08-15 
+2,500 Aa2/AA+ 
+75 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCV7 
+GOOGL 
+6.5 
+2066-08-15 
+2,500 Aa2/AA+ 
+130 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCN5 
+GOOGL 
+4.625 
+2029-08-10 
+2,000 Aa2/AA+ 
+43 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCL9 
+GOOGL 
+4.5 
+2028-08-10 
+1,250 Aa2/AA+ 
+n.a. 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCM7 
+GOOGL 
+FRN 
+2028-08-10 
+750 Aa2/AA+ 
+33 
+sr unsecured 
+Hyperscaler 
+2026-08-06 Alphabet Inc 
+02079KCP0 
+GOOGL 
+FRN 
+2029-08-10 
+500 Aa2/AA+ 
+SOFR+60 
+sr unsecured 
+Hyperscaler 
+2026-07-27 Sopaipilla Investor LLC 
+83577VAA8 
+TXEDCI 
+7.534 
+2048-11-30 
+12,640 NA/A+ 
+288 
+sr secured 
+Data Center Owner/Operator 
+2026-07-07 Amazon.com Inc 
+023135EE2 
+AMZN 
+5.3 
+2036-07-09 
+4,500 A1/AA 
+80 
+sr unsecured 
+Hyperscaler 
+2026-07-07 Amazon.com Inc 
+023135EC6 
+AMZN 
+4.8 
+2031-07-09 
+4,250 A1/AA 
+55 
+sr unsecured 
+Hyperscaler 
+2026-07-07 Amazon.com Inc 
+023135EG7 
+AMZN 
+6.1 
+2056-07-09 
+4,000 A1/AA 
+110 
+sr unsecured 
+Hyperscaler 
+2026-07-07 Amazon.com Inc 
+023135EB8 
+AMZN 
+4.6 
+2029-07-09 
+3,500 A1/AA 
+40 
+sr unsecured 
+Hyperscaler 
+
+
+[Page 10]
+ 
+ 
+10 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 14: AI-related issues across IG, HY, and Loans 
+USD-denominated transactions, YTD 2026 ($mn) 
+Issue 
+Date 
+Issuer 
+Cusip 
+Ticker 
+Coupon Maturity 
+Total 
+($mn) Rating 
+Spread 
+Instrument 
+type 
+AI Capex Category 
+2026-07-07 Amazon.com Inc 
+023135ED4 
+AMZN 
+5.1 
+2033-07-09 
+3,000 A1/AA 
+70 
+sr unsecured 
+Hyperscaler 
+2026-07-07 Amazon.com Inc 
+023135EF9 
+AMZN 
+6 
+2046-07-09 
+2,750 A1/AA 
+100 
+sr unsecured 
+Hyperscaler 
+2026-07-07 Amazon.com Inc 
+023135EH5 
+AMZN 
+6.25 
+2066-07-09 
+2,250 A1/AA 
+125 
+sr unsecured 
+Hyperscaler 
+2026-07-07 Amazon.com Inc 
+023135EA0 
+AMZN 
+FRN 
+2029-07-09 
+750 A1/AA 
+SOFR+58 
+sr unsecured 
+Hyperscaler 
+2026-06-23 Space Exploration Technologies Corp 84615QAA1 
+SPCX 
+5.35 
+2031-07-15 
+7,000 Baa1/BBB 
+110 
+sr unsecured 
+Other 
+2026-06-23 Space Exploration Technologies Corp 84615QAC7 
+SPCX 
+5.65 
+2033-07-15 
+6,000 Baa1/BBB 
+130 
+sr unsecured 
+Other 
+2026-06-23 Space Exploration Technologies Corp 84615QAE3 
+SPCX 
+5.875 
+2036-07-15 
+6,000 Baa1/BBB 
+140 
+sr unsecured 
+Other 
+2026-06-23 Space Exploration Technologies Corp 84615QAJ2 
+SPCX 
+6.65 
+2056-07-15 
+3,500 Baa1/BBB 
+175 
+sr unsecured 
+Other 
+2026-06-23 Space Exploration Technologies Corp 84615QAG8 
+SPCX 
+6.6 
+2046-07-15 
+2,500 Baa1/BBB 
+165 
+sr unsecured 
+Other 
+2026-06-15 NVIDIA Corp 
+67066GAR5 
+NVDA 
+4.5 
+2031-06-15 
+4,000 Aa1/AA 
+35 
+sr unsecured 
+Compute Hardware/Systems 
+2026-06-15 NVIDIA Corp 
+67066GAT1 
+NVDA 
+4.95 
+2036-06-15 
+4,000 Aa1/AA 
+50 
+sr unsecured 
+Compute Hardware/Systems 
+2026-06-15 NVIDIA Corp 
+67066GAS3 
+NVDA 
+4.75 
+2033-06-15 
+3,500 Aa1/AA 
+45 
+sr unsecured 
+Compute Hardware/Systems 
+2026-06-15 NVIDIA Corp 
+67066GAP9 
+NVDA 
+4.25 
+2028-06-15 
+3,500 Aa1/AA 
+20 
+sr unsecured 
+Compute Hardware/Systems 
+2026-06-15 NVIDIA Corp 
+67066GAQ7 
+NVDA 
+4.35 
+2029-06-15 
+3,500 Aa1/AA 
+25 
+sr unsecured 
+Compute Hardware/Systems 
+2026-06-15 NVIDIA Corp 
+67066GAV6 
+NVDA 
+5.625 
+2056-06-15 
+3,500 Aa1/AA 
+65 
+sr unsecured 
+Compute Hardware/Systems 
+2026-06-15 NVIDIA Corp 
+67066GAU8 
+NVDA 
+5.55 
+2046-06-15 
+3,000 Aa1/AA 
+60 
+sr unsecured 
+Compute Hardware/Systems 
+2026-06-08 Big Sky Funding LLC 
+089535AA6 
+APCHIP 
+5.75 
+2031-07-20 
+888 NA/NA 
+145 
+sr secured 
+Compute Hardware/Systems 
+2026-06-04 Beacon Point DC LLC 
+07367AAA7 
+HUTBPA 
+6.129 
+2042-11-30 
+4,250 Baa2/NA 
+165 
+sr secured 
+Data Center Owner/Operator 
+2026-04-30 Meta Platforms Inc 
+30303MAK8 
+META 
+6.3 
+2056-05-15 
+6,000 Aa3/AA- 
+132 
+sr unsecured 
+Hyperscaler 
+2026-04-30 Meta Platforms Inc 
+30303MAH5 
+META 
+5.25 
+2036-05-15 
+6,000 Aa3/AA- 
+90 
+sr unsecured 
+Hyperscaler 
+2026-04-30 Meta Platforms Inc 
+30303MAJ1 
+META 
+6.2 
+2046-05-15 
+4,000 Aa3/AA- 
+122 
+sr unsecured 
+Hyperscaler 
+2026-04-30 Meta Platforms Inc 
+30303MAL6 
+META 
+6.45 
+2066-05-15 
+4,000 Aa3/AA- 
+147 
+sr unsecured 
+Hyperscaler 
+2026-04-30 Meta Platforms Inc 
+30303MAF9 
+META 
+4.55 
+2031-05-15 
+3,000 Aa3/AA- 
+53 
+sr unsecured 
+Hyperscaler 
+2026-04-30 Meta Platforms Inc 
+30303MAG7 
+META 
+4.875 
+2033-05-15 
+2,000 Aa3/AA- 
+68 
+sr unsecured 
+Hyperscaler 
+2026-04-27 HUT 8 DC LLC 
+44813DAA4 
+HUTRBA 
+6.192 
+2042-11-15 
+3,250 NA/BBB- 
+185 
+sr secured 
+Data Center Owner/Operator 
+2026-04-24 RD Michigan Property Owner I LLC 
+74941YAA0 
+RDMICH 
+7.5 
+2045-03-30 
+14,000 Baa3/NA 
+329 
+sr secured 
+Data Center Owner/Operator 
+2026-04-06 QTS Fayetteville I Dc1-2 LLC 
+74751AAA1 
+QTSQST 
+5.7 
+2036-04-15 
+4,600 Baa2/NA 
+138 
+sr secured 
+Data Center Owner/Operator 
+2026-03-10 Amazon.com Inc 
+023135DF0 
+AMZN 
+4.875 
+2036-03-13 
+6,000 A1/AA 
+75 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DH6 
+AMZN 
+5.8 
+2056-03-13 
+5,500 A1/AA 
+105 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DD5 
+AMZN 
+4.25 
+2031-03-13 
+5,000 A1/AA 
+55 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DE3 
+AMZN 
+4.55 
+2033-03-13 
+4,000 A1/AA 
+65 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DC7 
+AMZN 
+4 
+2029-03-13 
+3,000 A1/AA 
+40 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DJ2 
+AMZN 
+5.95 
+2066-03-13 
+3,000 A1/AA 
+118 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DK9 
+AMZN 
+6.05 
+2076-03-13 
+3,000 A1/AA 
+130 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DG8 
+AMZN 
+5.65 
+2046-03-13 
+2,500 A1/AA 
+95 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DB9 
+AMZN 
+3.85 
+2028-03-13 
+2,250 A1/AA 
+30 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135CZ7 
+AMZN 
+FRN 
+2028-03-13 
+1,750 A1/AA 
+SOFR+44 
+sr unsecured 
+Hyperscaler 
+2026-03-10 Amazon.com Inc 
+023135DA1 
+AMZN 
+FRN 
+2029-03-13 
+1,000 A1/AA 
+SOFR+59 
+sr unsecured 
+Hyperscaler 
+2026-02-09 Alphabet Inc 
+02079KBM8 
+GOOGL 
+4.8 
+2036-02-15 
+4,250 Aa2/AA+ 
+63 
+sr unsecured 
+Hyperscaler 
+2026-02-09 Alphabet Inc 
+02079KBP1 
+GOOGL 
+5.65 
+2056-02-15 
+4,000 Aa2/AA+ 
+83 
+sr unsecured 
+Hyperscaler 
+2026-02-09 Alphabet Inc 
+02079KBK2 
+GOOGL 
+4.1 
+2031-02-15 
+3,000 Aa2/AA+ 
+43 
+sr unsecured 
+Hyperscaler 
+2026-02-09 Alphabet Inc 
+02079KBL0 
+GOOGL 
+4.4 
+2033-02-15 
+3,000 Aa2/AA+ 
+53 
+sr unsecured 
+Hyperscaler 
+2026-02-09 Alphabet Inc 
+02079KBJ5 
+GOOGL 
+3.7 
+2029-02-15 
+2,500 Aa2/AA+ 
+27 
+sr unsecured 
+Hyperscaler 
+2026-02-09 Alphabet Inc 
+02079KBQ9 
+GOOGL 
+5.75 
+2066-02-15 
+1,750 Aa2/AA+ 
+95 
+sr unsecured 
+Hyperscaler 
+2026-02-09 Alphabet Inc 
+02079KBN6 
+GOOGL 
+5.5 
+2046-02-15 
+1,500 Aa2/AA+ 
+75 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XDZ5 
+ORCL 
+5.7 
+2036-02-04 
+5,000 Baa2/BBB 
+145 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XEB7 
+ORCL 
+6.7 
+2056-02-04 
+5,000 Baa2/BBB 
+180 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XDX0 
+ORCL 
+4.95 
+2031-02-04 
+3,500 Baa2/BBB 
+115 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XDY8 
+ORCL 
+5.35 
+2033-05-04 
+3,000 Baa2/BBB 
+130 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XDW2 
+ORCL 
+4.55 
+2029-02-04 
+3,000 Baa2/BBB 
+95 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XEC5 
+ORCL 
+6.85 
+2066-02-04 
+2,750 Baa2/BBB 
+195 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XEA9 
+ORCL 
+6.55 
+2046-02-04 
+2,250 Baa2/BBB 
+170 
+sr unsecured 
+Hyperscaler 
+2026-02-02 Oracle Corp 
+68389XDV4 
+ORCL 
+FRN 
+2029-02-04 
+500 Baa2/BBB 
+SOFR+111 
+sr unsecured 
+Hyperscaler 
+2026-01-06 Broadcom Inc 
+11135FDA6 
+AVGO 
+4.6 
+2033-01-15 
+1,250 A3/A- 
+70 
+sr unsecured 
+Compute Hardware/Systems 
+2026-01-06 Broadcom Inc 
+11135FDB4 
+AVGO 
+4.95 
+2036-01-15 
+1,250 A3/A- 
+78 
+sr unsecured 
+Compute Hardware/Systems 
+2026-01-06 Broadcom Inc 
+11135FDD0 
+AVGO 
+5.7 
+2056-01-15 
+1,250 A3/A- 
+88 
+sr unsecured 
+Compute Hardware/Systems 
+2026-01-06 Broadcom Inc 
+11135FCZ2 
+AVGO 
+4.3 
+2031-01-15 
+750 A3/A- 
+60 
+sr unsecured 
+Compute Hardware/Systems 
+ 
+HY YTD 
+ 
+ 
+ 
+ 
+40,006  
+ 
+ 
+ 
+2026-08-13 Zenith Arc 
+98935UAA5 
+ZENARC 
+8.875 
+2031-08-31 
+2,250 Ba2/BB 
+467 
+sr secured 
+Data Center Owner/Operator 
+2026-07-23 Galaxy Helios DC 
+36322DAA4 
+GALAXY 
+9.875 
+2031-08-01 
+3,507 NA/BB- 
+555 
+sr secured 
+Data Center Owner/Operator 
+2026-06-23 Yondr 
+985925AA4 
+YNDRDC 
+6.875 
+2031-06-30 
+715 Ba3/NA 
+260 
+sr secured 
+Data Center Owner/Operator 
+2026-06-11 CoreWeave 
+21873SAK4 
+CRWV 
+9.625 
+2032-07-15 
+1,250 B1/B 
+536 
+sr unsecured 
+Neocloud 
+2026-06-09 Applied Digital 
+03790NAA5 
+ELNFOR 
+7 
+2031-06-15 
+1,590 NA/BB- 
+275 
+sr secured 
+Data Center Owner/Operator 
+2026-06-08 Stingray Compute 
+86083AAA4 
+STNGRY 
+6 
+2031-06-15 
+810 Ba2/NA 
+177 
+sr secured 
+Data Center Owner/Operator 
+2026-06-02 Elk Grove Village 
+28734DAA3 
+ELKGVP 
+7.5 
+2031-06-15 
+900 Ba3/BB- 
+333 
+sr secured 
+Data Center Owner/Operator 
+2026-05-05 Solaris Energy 
+83419YAA4 
+SEI 
+6.375 
+2031-05-15 
+1,300 Ba3/BB- 
+227 
+sr unsecured 
+Power/Electrical Infrastructure 
+2026-04-30 SE Cosmos 
+78438PAA0 
+SECMOS 
+8.875 
+2031-05-01 
+999 NA/BB+ 
+500 
+sr secured 
+Data Center Owner/Operator 
+2026-04-28 Tract Capital 
+69393LAA1 
+TRACTD 
+6.5 
+2031-05-01 
+4,585 Ba1/BB 
+276 
+sr secured 
+Data Center Owner/Operator 
+2026-04-22 Core Scientific 
+21874LAA0 
+CORZ 
+7.75 
+2031-05-15 
+3,300 NA/BB 
+399 
+sr unsecured 
+Data Center Owner/Operator 
+2026-04-21 Edged Compute 
+28002AAA4 
+EDGCOM 
+7.5 
+2031-04-30 
+1,300 NA/BB+ 
+356 
+sr secured 
+Data Center Owner/Operator 
+
+
+[Page 11]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+11
+ 
+ 
+Exhibit 14: AI-related issues across IG, HY, and Loans 
+USD-denominated transactions, YTD 2026 ($mn) 
+Issue 
+Date 
+Issuer 
+Cusip 
+Ticker 
+Coupon Maturity 
+Total 
+($mn) Rating 
+Spread 
+Instrument 
+type 
+AI Capex Category 
+2026-04-16 CoreWeave 
+21873SAG3 
+CRWV 
+9.75 
+2031-10-01 
+1,000 B1/B 
+530 
+sr unsecured 
+Neocloud 
+2026-04-16 Meridian Arc 
+58990CAA1 
+MERIDI 
+6.25 
+2031-04-30 
+5,700 NA/BB 
+233 
+sr secured 
+Data Center Owner/Operator 
+2026-04-09 CoreWeave 
+21873SAG3 
+CRWV 
+9.75 
+2031-10-01 
+1,750 B1/B 
+580 
+sr unsecured 
+Neocloud 
+2026-03-03 Applied Digital 
+03772CAA1 
+PFORGE 
+6.75 
+2031-03-15 
+2,150 Ba3/NA 
+358 
+sr secured 
+Data Center Owner/Operator 
+2026-02-13 Tract Capital 
+78488XAA2 
+TRACTC 
+5.875 
+2031-03-01 
+3,800 Ba1/NA 
+225 
+sr secured 
+Data Center Owner/Operator 
+2026-02-04 Black Pearl Compute 
+09216NAA8 
+BLKPRL 
+6.125 
+2031-02-15 
+2,000 Ba2/NA 
+231 
+sr secured 
+Data Center Owner/Operator 
+2026-02-03 PacifiCorp 
+695114DG0 
+BRKHEC 
+7.125 
+2056-08-15 
+1,100 Baa3/BB 
+312 
+subordinated 
+Power/Electrical Infrastructure 
+ 
+Instl. Loans YTD 
+ 
+ 
+ 
+ 
+11,726  
+ 
+ 
+ 
+2026-08-10 Lambda 
+2030-12-31 
+926 Baa2/NR 
+SOFR+300 
+TLb 
+Neocloud 
+2026-07-20 CoreWeave Inc 
+2,600 Ba2/NR 
+SOFR+550 
+Delayed TL 
+Neocloud 
+2026-07-08 QTS Realty Trust 
+74746PAD 
+QTS 
+2033-07-22 
+3,250 Baa3/NR 
+SOFR+225 
+Hybrid TL 
+Data Center Owner/Operator 
+2026-07-01 CyrusOne 
+23284WAB 
+CONE 
+2033-07-08 
+1,050 NR/NR 
+SOFR+400 
+TLb 
+Data Center Owner/Operator 
+2026-04-30 CoreWeave Inc 
+21882DAB 
+CRWV 
+2031-11-15 
+3,100 Ba2/NR 
+SOFR+450 
+Delayed TL 
+Neocloud 
+2026-01-12 Dycom Industries Inc 
+26747FAV 
+DY 
+2033-01-27 
+800 Ba2/BBB- 
+SOFR+175 
+Hybrid TL 
+Power/Electrical Infrastructure 
+Source: BofA Global Research, Bloomberg, Pitchbook 
+Note: Institutional loans capture broadly syndicated term loan facilities only; Delayed-draw term loans and revolvers are shown at total commitment rather than amount drawn to date. 
+BofA GLOBAL RESEARCH 
+ 
+ 
+Spread Tracker 
+Investment Grade AI-related issues currently trade at 114bps after retracing from Jul 
+29th wides of 131bps (Exhibit 15). Meanwhile, comparable ex-AI bonds (adjusted for 
+same ratings and duration profile) currently trade at 72bps, leaving AI – ex-AI spread 
+premium at 42bps (Exhibit 16). 
+Exhibit 15: IG AI-related vs. ex-AI spread levels 
+Spreads on IG AI-related issues vs. comparable duration & ratings adj ex-AI 
+Source: BofA Global Research, ICE Data Indices, LLC 
+BofA GLOBAL RESEARCH 
+Exhibit 16: Spread premium on IG AI-related vs. ex-AI 
+Spread differential between IG AI-related issues vs. comparable duration & 
+ratings adj ex-AI 
+Source: BofA Global Research, ICE Data Indices, LLC 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+50
+65
+80
+95
+110
+125
+140
+Feb-2025
+Jun-2025
+Oct-2025
+Feb-2026
+Jun-2026
+IG AI
+IG ex-AI (duration & ratings adj)
+-30
+-20
+-10
+0
+10
+20
+30
+40
+50
+60
+70
+Feb-2025
+Jun-2025
+Oct-2025
+Feb-2026
+Jun-2026
+
+
+[Page 12]
+ 
+ 
+12 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+High Yield AI-related issues currently trade at new all-time wides of 335bps (Exhibit 17). 
+Meanwhile, comparable ex-AI bonds (adjusted for same ratings and duration profile) 
+currently trade at 160bps, leaving AI – ex-AI spread premium at 175bps (Exhibit 18). 
+ 
+Exhibit 17: HY AI-related vs. ex-AI spread levels 
+Spreads on HY AI-related issues vs. comparable duration & ratings adj ex-AI 
+Source: BofA Global Research, ICE Data Indices, LLC 
+Note: Data excludes CRWV 
+BofA GLOBAL RESEARCH 
+Exhibit 18: Spread premium on HY AI-related vs. ex-AI 
+Spread differential between HY AI-related issues vs. comparable duration & 
+ratings adj ex-AI 
+Source: BofA Global Research, ICE Data Indices, LLC 
+Note: Data excludes CRWV 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+150
+180
+210
+240
+270
+300
+330
+Mar-2026
+May-2026
+Jul-2026
+HY AI
+HY ex-AI (duration & ratings adj)
+-30
+0
+30
+60
+90
+120
+150
+180
+210
+Mar-2026
+May-2026
+Jul-2026
+
+
+[Page 13]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+13
+ 
+ 
+ Market Recap: USD HY 
+Systematic Strategies 
+Our rich/cheap screens shown below are defined as names screening the widest relative 
+to their underlying issuer-level CSI (cheap) and those screening the tightest (rich).  
+Exhibit 19: Rich/cheap screen: issuers trading wide/tight to their CSI-implied OAS 
+OASe: OAS estimate based on issuer-level CSI; OASΔ: projected spread change (OASe – OAS) 
+Cheap to fair value in overweight segments 
+ 
+Rich to fair value in underweight segments 
+Ticker 
+Issuer 
+Sector 
+Face OAS OASe OASΔ ___ Ticker 
+Issuer 
+Sector 
+Face OAS OASe OASΔ 
+GALAXY 
+GALAXY HELIOS DA 
+Technology 
+3,521 
+556 
+344 
+-212 ___ CHTR 
+CHARTER COMMS 
+Cable 
+25,903 
+212 
+500 
+289 
+SABHLD 
+SABRE GLBL INC 
+Travel 
+3,243 
+585 
+381 
+-204 ___ WHR 
+WHIRLPOOL CORP 
+Retail 
+6,355 
+411 
+705 
+294 
+IEP 
+ICAHN ENTERPRISE 
+Financials 
+3,053 
+598 
+335 
+-262 ___ GTN 
+GRAY TV 
+Media 
+5,083 
+416 
+610 
+194 
+ARGID 
+ARDAGH GROUP SA 
+Packaging 
+2,745 
+521 
+298 
+-223 ___ ZIGGO 
+ZIGGO BV 
+Cable 
+4,175 
+387 
+577 
+190 
+IHRT 
+IHEARTCOMMUNICAT 
+Media 
+2,331 1,194 
+1,013 
+-180 ___ GT 
+GOODYEAR TIRE &  
+Autos 
+3,994 
+332 
+519 
+187 
+JBLU 
+JETBLUE AIRWAYS/ 
+Travel 
+2,009 1,049 
+851 
+-198 ___ FMC 
+FMC CORP 
+Chemicals 
+2,750 
+300 
+503 
+203 
+NCRATL 
+NCR ATLEOS 
+Financials 
+1,350 
+322 
+132 
+-190 ___ PRGO 
+PERRIGO FINANCE 
+Retail 
+1,769 
+164 
+455 
+290 
+BRANDI 
+BRAND INDUSTRIAL 
+Cap Goods 
+1,435 1,030 
+635 
+-395 ___ UWMC 
+UWM HOLDINGS LLC 
+Financials 
+1,800 
+462 
+661 
+199 
+BGS 
+B&G FOODS INC 
+Food 
+1,274 
+648 
+482 
+-166 ___ CLVTSC 
+CLARIV SCI HLD 
+Healthcare 
+1,725 
+205 
+558 
+352 
+SFLY 
+PHOTO HOLDINGS L 
+Retail 
+1,155 
+642 
+375 
+-267 ___ HPP 
+Hudson Pacific P 
+Financials 
+1,650 
+267 
+607 
+340 
+YAHOOO 
+AP CORE HOLDINGS 
+Technology 
+903 
+441 
+280 
+-161 ___ HUN 
+HUNTSMAN SPECIAL 
+Chemicals 
+1,500 
+175 
+374 
+199 
+CALDER 
+CALDERYS FINANCI 
+Cap Goods 
+869 
+503 
+249 
+-254 ___ CODI 
+COMPASS GROUP DI 
+Financials 
+1,338 
+275 
+448 
+174 
+PLNFIN 
+PLANET FINANCIAL 
+Financials 
+700 
+631 
+434 
+-197 ___ VFC 
+V.F. CORPORATION 
+Retail 
+1,314 
+165 
+327 
+162 
+INFRAB 
+INFRABUILD AUSTR 
+Metals 
+639 
+708 
+363 
+-345 ___ STGW 
+STAGWELL DIGITAL 
+Media 
+1,100 
+210 
+384 
+174 
+UIS 
+UNISYS CORP 
+Technology 
+700 
+771 
+566 
+-205 ___ VYX 
+NCR ATMS/PAYMENT 
+Financials 
+1,053 
+154 
+329 
+175 
+TEKNI 
+TRIDENT TPI 
+Packaging 
+620 
+783 
+366 
+-417 ___ ADAHEA 
+ADAPTHEALTH 
+Healthcare 
+1,100 
+234 
+465 
+231 
+JELD 
+JELD-WEN INC 
+Real Estate 
+750 1,086 
+872 
+-214 ___ KSS 
+KOHLS STORES 
+Retail 
+1,107 
+269 
+498 
+229 
+CLDCRN 
+MAXIM CRANE WORK 
+Cap Goods 
+500 
+532 
+252 
+-280 ___ PRKS 
+SEAWORLD PARKS & 
+Travel 
+725 
+166 
+338 
+172 
+PLDEVE 
+P&L DEV LLC/PLD  
+Healthcare 
+528 1,065 
+807 
+-258 ___ SESGFP 
+SES GLOBAL GROUP 
+Telecoms 
+755 
+326 
+608 
+282 
+POWBUY 
+ARTERA SERVICES  
+Utilities 
+600 
+868 
+675 
+-193 ___ PLTK 
+PLAYTIKA HOLDING 
+Media 
+600 
+401 
+712 
+311 
+Total/Average 
+28,927 
+705 
+475 
+-230 ___ Total/Average 
+65,796 
+278 
+531 
+253 
+Source: BofA Global Research, ICE Data Indices, LLC.   Disclaimer: The screen above is intended to be an indicative metric only and may not be used for reference purposes or as a measure of performance for any 
+financial instrument or contract, or otherwise relied upon by third parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a benchmark. Note: 
+This screen is not a recommended list either individually or as a group of stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives before making any 
+investment decisions.  
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 20: Largest issuers by CSI deciles 
+Top 15 largest cap structures by face value in each decile, as ranked by individual issuer CSIs 
+D1 
+ 
+D2 
+ 
+D3 
+ 
+D4 
+ 
+D5 
+Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI 
+RHP 
+BB2 
+101 
+0.28  ALSN 
+BB2 
+92 
+0.40  PPC 
+BB1 
+101 
+0.47  GEN 
+BB3 
+155 
+0.52  HILCRP 
+BB2 
+160 
+0.57 
+IQV 
+BB1 
+86 
+0.29  GMABDC 
+BB2 
+115 
+0.42  WYNFIN 
+BB3 
+119 
+0.47  ISATLN 
+BB3 
+180 
+0.52  WULF 
+BB2 
+160 
+0.57 
+HLT 
+BB2 
+91 
+0.31  PFGC 
+BB3 
+114 
+0.42  IRM 
+BB3 
+120 
+0.47  HRI 
+BB3 
+117 
+0.52  ALIANT 
+B2 
+161 
+0.57 
+BBDBCN 
+BB3 
+106 
+0.33  EA 
+B1 
+171 
+0.42  CMC 
+BB1 
+113 
+0.47  VENLNG 
+BB3 
+137 
+0.52  CE 
+BB2 
+145 
+0.58 
+VIKCRU 
+BB1 
+113 
+0.33  THC 
+BB1 
+84 
+0.42  GFLCN 
+BB3 
+130 
+0.48  XIFR 
+BB1 
+139 
+0.53  BECN 
+B1 
+165 
+0.58 
+URI 
+BB2 
+82 
+0.34  HBGCN 
+B2 
+116 
+0.42  CCO 
+B2 
+139 
+0.48  NGL 
+B1 
+131 
+0.53  HNDLIN 
+BB3 
+130 
+0.58 
+TDG 
+B1 
+114 
+0.34  ENTG 
+BB2 
+90 
+0.42  QUIKHO 
+B1 
+133 
+0.49  ILDFP 
+BB3 
+171 
+0.55  DVA 
+BB3 
+123 
+0.58 
+SUN 
+BB1 
+103 
+0.35  CHDN 
+B1 
+96 
+0.42  UNSEAM 
+B3 
+138 
+0.50  SIRI 
+BB2 
+122 
+0.55  BMCAUS 
+BB2 
+133 
+0.59 
+MEDIND 
+BB1 
+79 
+0.35  GEL 
+B1 
+145 
+0.42  BPL 
+BB2 
+133 
+0.50  TCN 
+BB1 
+134 
+0.55  RIG 
+B3 
+190 
+0.59 
+WCC 
+BB2 
+100 
+0.37  XYZ 
+BB1 
+109 
+0.43  VEGLPL 
+BB2 
+124 
+0.51  MOH 
+BB3 
+128 
+0.55  AAL 
+BB2 
+153 
+0.59 
+BCULC 
+BB2 
+96 
+0.37  STWD 
+BB2 
+140 
+0.45  CARRIX 
+BB1 
+135 
+0.51  MINAU 
+BB3 
+184 
+0.56  POST 
+B2 
+166 
+0.59 
+SCI 
+BB3 
+89 
+0.37  W 
+BB2 
+124 
+0.45  MTDR 
+BB3 
+126 
+0.51  WIN 
+B1 
+185 
+0.56  LVLT 
+B1 
+190 
+0.59 
+YUM 
+BB3 
+100 
+0.37  MTCHII 
+BB2 
+117 
+0.45  SM 
+BB2 
+125 
+0.51  RAKUTN 
+BB3 
+196 
+0.56  TNL 
+BB2 
+145 
+0.59 
+FTAI 
+BB1 
+111 
+0.39  FMGAU 
+BB1 
+125 
+0.45  RKT 
+BB1 
+108 
+0.52  OMF 
+BB2 
+176 
+0.56  GWCN 
+B3 
+211 
+0.59 
+BALL 
+BB1 
+96 
+0.40  MGM 
+BB3 
+102 
+0.46  
+ 
+  KW 
+B2 
+178 
+0.56  CWENA 
+BB2 
+125 
+0.60 
+Avg 
+98 
+  
+116 
+  
+130 
+  
+156 
+  
+157 
+ 
+Source: BofA Global Research, ICE Data Indices, LLC.   Rtg = agency rating.   Disclaimer: The screen above is intended to be an indicative metric only and may not be used for reference purposes or as a measure of 
+performance for any financial instrument or contract, or otherwise relied upon by third parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a 
+benchmark. Note: This screen is not a recommended list either individually or as a group of stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives 
+before making any investment decisions.  
+BofA GLOBAL RESEARCH 
+ 
+
+
+[Page 14]
+ 
+ 
+14 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 21: Largest issuers by CSI deciles 
+Top 15 largest cap structures by face value in each decile, as ranked by individual issuer CSIs 
+D6 
+ 
+D7 
+ 
+D8 
+ 
+D9 
+ 
+D10 
+Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI  Ticker 
+Rtg 
+OAS 
+CSI 
+CRGYFN 
+BB3 
+162 
+0.61  ADT 
+BB3 
+137 0.67  GRA 
+B2 
+300 
+0.70  SOFTBK 
+BB2 
+288 
+0.78  ACRISU 
+B3 
+723 0.91 
+ECHO 
+B2 
+319 
+0.61  EQMSRM 
+B1 
+218 0.67  TIHLLC 
+B2 
+237 
+0.70  MERIDI 
+BB2 
+304 
+0.79  WHR 
+BB3 
+411 0.91 
+WBD 
+BB2 
+192 
+0.61  ARDGRP 
+CCC1 
+313 0.67  ARGID 
+CCC1 
+521 
+0.71  CYH 
+CCC1 
+390 
+0.81  VMED 
+B1 
+631 0.92 
+DTV 
+BB3 
+283 
+0.62  BBWI 
+BB2 
+159 0.68  PFSI 
+BB3 
+262 
+0.72  ASUCOR 
+B2 
+450 
+0.83  SPLS 
+CCC1 
+975 0.93 
+NXST 
+BB2 
+165 
+0.62  SEE 
+B1 
+309 0.68  ATHENA 
+CCC1 
+264 
+0.73  PARA 
+BB1 
+317 
+0.84  AVIAGP 
+B1 
+851 0.93 
+MHED 
+B1 
+138 
+0.62  UNIT 
+CCC1 
+246 0.68  RGCARE 
+B3 
+352 
+0.74  TRACTC 
+BB1 
+408 
+0.84  IONPLA 
+B2 
+700 0.94 
+CZR 
+B1 
+229 
+0.62  NAVI 
+BB3 
+253 0.68  SVC 
+CCC1 
+218 
+0.74  TRACTD 
+BB2 
+425 
+0.84  JBLU 
+B3 
+1,049 0.94 
+APLD 
+BB3 
+257 
+0.63  NLSN 
+B2 
+353 0.69  IEP 
+B1 
+598 
+0.74  MPW 
+CCC2 
+607 
+0.84  BSPEED 
+B3 
+951 0.95 
+ZFFNGR 
+BB3 
+206 
+0.63  ACI 
+BB2 
+173 0.69  NCLH 
+B2 
+243 
+0.75  CHTR 
+BB1 
+212 
+0.85  LILAPR 
+CCC2 
+5,044 0.96 
+TLN 
+B1 
+172 
+0.63  BWY 
+B3 
+274 0.69  GALAXY 
+BB3 
+556 
+0.75  FMC 
+BB1 
+300 
+0.85  MLTPLN 
+CCC2 
+800 0.96 
+OTEXCN 
+BB2 
+160 
+0.64  AAP 
+BB3 
+158 0.69  NOVHOL 
+B1 
+321 
+0.75  GT 
+B1 
+332 
+0.85  IHRT 
+CCC2 
+1,194 0.97 
+NSANY 
+BB2 
+197 
+0.65  FREMOR 
+B1 
+320 0.69  UVN 
+B2 
+359 
+0.75  BHCCN 
+CCC1 
+532 
+0.86  XRX 
+CCC3 
+2,454 0.98 
+VOLTAG 
+B1 
+239 
+0.65  BLDR 
+BB3 
+162 0.69  TIBX 
+B1 
+314 
+0.76  CRWV 
+B1 
+732 
+0.87  HTZ 
+CCC1 
+3,196 0.99 
+SKX 
+B3 
+323 
+0.65  CAR 
+B2 
+241 0.70  MIK 
+B3 
+480 
+0.78  ZIGGO 
+BB3 
+387 
+0.88  ALTICE 
+CCC2 
+3,560 0.99 
+CLF 
+B2 
+180 
+0.65  NWL 
+B2 
+181 0.70  SFRFP 
+CCC1 
+357 
+0.78  GTN 
+B3 
+416 
+0.89  CSCHLD 
+CCC3 
+4,674 0.99 
+Avg 
+215 
+  
+233 
+  
+359 
+  
+407 
+  
+1,814 
+ 
+Source: BofA Global Research, ICE Data Indices, LLC.   Rtg = agency rating.   Disclaimer: The screen above is intended to be an indicative metric only and may not be used for reference purposes or as a measure of 
+performance for any financial instrument or contract, or otherwise relied upon by third parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a 
+benchmark. Note: This screen is not a recommended list either individually or as a group of stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives 
+before making any investment decisions.  
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 22: New issue candidate list 
+Issuers with close maturities, small coupon step-up, no recent primary taps, and improving credit profiles 
+Dec = issuer-CSI quality decile; MtyN2y = face maturity size next 2 years (bonds & loans); dCPN = coupon 
+step up between existing and likely new-issue; YrsLNI = years since last new issue (bonds & loans) This is a 
+representative list. For the full list, please reach out directly. 
+Ticker Issuer 
+Rating Dec 
+Face 
+OAS MtyN2yr dOAS dCPN YrsLNI 
+RAKUTN RAKUTEN GROUP I 
+BB2 
+D4 
+3,822 
+164 
+1,803 
+-21 -4.67 
+1.8 
+PRAA 
+PRA GROUP INC 
+BB2 
+D6 
+1,298 
+176 
+398 
+-43 -1.76 
+1.8 
+GGAMFI GGAM FINANCE LT 
+BB2 
+D1 
+1,401 
+112 
+601 
+-114 -1.80 
+2.0 
+JEFCAP JEFFERSON CAPIT 
+BB3 
+D3 
+1,000 
+141 
+0 
+-112 -3.18 
+0.1 
+CALDER CALDERYS FINANC 
+CCC1 
+D6 
+869 
+503 
+869 
+467 -2.25 
+2.2 
+BRKWTR BREAKWATER ENRG 
+BB3 
+D5 
+800 
+225 
+0 
+-66 -2.85 
+0.7 
+SABHLD SABRE FINANCIAL 
+B2 
+D9 
+3,927 
+591 
+0 
+-98 -0.95 
+0.8 
+KNTK 
+KINETIK HOLDING 
+BB1 
+D1 
+2,050 
+92 
+0 
+-23 -1.18 
+1.5 
+BDN 
+BRANDYWINE OPER 
+BB3 
+D6 
+1,880 
+183 
+750 
+-27 -0.26 
+0.9 
+GWCN 
+GARDA WORLD SEC 
+CCC1 
+D5 
+5,933 
+210 
+400 
+-23 -1.29 
+0.2 
+RWNYNY GENTING NY LLC/ 
+BB1 
+D2 
+625 
+134 
+0 
+-1 -1.76 
+2.0 
+NCRATL NCR ATLEOS 
+BB3 
+D3 
+1,662 
+322 
+0 
+4 -2.13 
+1.0 
+PROFUN PROVIDENT FDG/P 
+B3 
+D7 
+525 
+282 
+0 
+-60 -2.78 
+1.3 
+FREMOR FREEDOM MORTGAG 
+B1 
+D7 
+5,285 
+321 
+535 
+56 -1.18 
+0.1 
+STWD 
+STARWOOD PROPER 
+BB2 
+D2 
+6,684 
+140 
+677 
+2 -0.63 
+0.2 
+NAVI 
+NAVIENT CORP 
+BB3 
+D7 
+3,950 
+252 
+1,200 
+-112 -0.70 
+0.3 
+INFRAB INFRABUILD AUST 
+CCC1 
+D8 
+639 
+708 
+0 
+27 -3.27 
+2.1 
+WHTCAP WHITE CAP SUPPL 
+CCC2 
+D4 
+5,482 
+188 
+0 
+-42 -1.34 
+0.6 
+CRK 
+COMSTOCK RESOUR 
+B3 
+D8 
+2,589 
+168 
+0 
+-139 -0.60 
+2.4 
+PHOAVI PHOENIX AVIATIO 
+B2 
+D7 
+750 
+301 
+0 
+-43 -2.09 
+0.7 
+OPI 
+OFFICE PPTY INC 
+D 
+300 
+407 
+0 
+407 
+ 
+ 
+ENTG 
+ENTEGRIS CHEMS 
+BB2 
+D2 
+3,420 
+90 
+400 
+1 0.16 
+2.5 
+NWHM NEW HOME CO INC 
+B2 
+D7 
+775 
+364 
+0 
+23 -1.07 
+0.8 
+AMC 
+MUVICO LLC 
+CCC2 
+D8 
+3,252 
+452 
+0 
+-283 -4.19 
+1.1 
+HROW 
+HARROW INC 
+B3 
+D5 
+300 
+302 
+0 
+-70 -1.45 
+0.5 
+CLMT 
+CALUMET SPECIAL 
+CCC2 
+D3 
+880 
+180 
+325 
+-135 -3.79 
+0.5 
+TRN 
+TRINITY INDUSTR 
+BB2 
+D4 
+600 
+133 
+600 
+-27 -2.27 
+2.3 
+AMGFIN SPRINGLEAF FINA 
+BB2 
+D2 
+1,491 
+137 
+750 
+9 -0.48 
+6.3 
+AZORRA AZORRA FINANCE 
+BB3 
+D3 
+2,135 
+137 
+0 
+-39 -1.65 
+0.6 
+CHDN 
+CHURCHILL DOWNS 
+B1 
+D2 
+3,100 
+96 
+1,300 
+-13 -0.56 
+3.4 
+Source: BofA Global Research, ICE Data Indices, LLC.   Note: This screen is not a recommended list either individually or as a group of 
+stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives before making 
+any investment decisions.  
+BofA GLOBAL RESEARCH 
+ 
+
+
+[Page 15]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+15
+ 
+ 
+Performance Recap 
+HY spread was little changed over the week at 273bps, although CCCs widened 10bps. 
+The index returned 10bps, lifting MTD gains to 90bps. Within HY, BBs led performance 
+with MTD returns of 90%, versus 50bp for CCCs. The index lagged IG (+35bps) and 
+Loans (+20bps) over the week but remains ahead of both on MTD basis. 
+Exhibit 23: Spreads, prices, and yields 
+Pctles calculated based on data from Jan 2000 onwards. CCCs xD= CCCs non-distressed. 
+Change 
+ 
+52wk 
+ 
+ 
+ 
+Pctle 
+OAS  
+1d 1wk 1mo 
+YTD  
+Tights 
+Wides  
+Price 
+YTW  OAS  YTW 
+HY 
+271  
+4 
+5 
+1 
+-10  
+260 
+346  
+96.3 
+7.40  4%  53% 
+BBs 
+158  
+3 
+5 
+-1 
+-11  
+150 
+222  
+98.0 
+6.30  1%  59% 
+Bs 
+280  
+4 
+4 
+-8 
+-21  
+272 
+377  
+98.5 
+7.47  3%  55% 
+CCCs xD 
+431  
+6 
+9 
+-6 
+-9  
+419 
+541  
+96.6 
+8.46  3%  44% 
+CCCs 
+1,064  
+8 
+11 
+50 
+179  
+790 
+1,064  
+78.8 
+15.16  67%  81% 
+ 
+IG 
+81  
+0 
+0 
+3 
+2  
+73 
+94  
+92.4 
+5.58  12%  79% 
+As 
+68  
+-1 
+-1 
+3 
+3  
+59 
+79  
+92.5 
+5.44  15%  79% 
+BBBs 
+99  
+0 
+0 
+2 
+-2  
+92 
+116  
+93.2 
+5.76  8%  74% 
+ 
+ 
+ 
+ 
+  
+  
+  
+ 
+Loans 
+468  
+0 
+-2 
+-9 
+39  
+417 
+524  
+95.9 
+8.45  39%  70% 
+BB Loans 
+253  
+0 
+0 
+-2 
+-10  
+248 
+283  
+99.6 
+6.60  5%  69% 
+B Loans 
+439  
+0 
+-10 
+-29 
+24  
+408 
+539  
+97.2 
+8.27  25%  60% 
+CCC Loans 
+2,160  
+6 
+79 
+173 
+470  
+1,467 
+2,160  
+69.2 
+27.13  96%  99% 
+ 
+ 
+ 
+ 
+  
+  
+  
+ 
+EM HY 
+284  
+-1 
+-9 
+-2 
+-73  
+284 
+406  
+97.3 
+7.57  4%  46% 
+EM BBBs 
+107  
+-1 
+-1 
+-2 
+-13  
+103 
+140  
+95.5 
+5.79  1%  84% 
+EM BBs 
+219  
+0 
+-3 
+-3 
+-36  
+214 
+292  
+97.7 
+6.87  0%  70% 
+EM Bs 
+354  
+0 
+-9 
+-11 
+-36  
+327 
+498  
+99.4 
+8.28  7%  49% 
+Source: BofA Global Research, ICE Data Indices, LLC, LCD/PitchBook  
+BofA GLOBAL RESEARCH 
+ 
+Food (+40bps), Energy (+25bps) and Healthcare (+20bps) led returns over the past week, 
+while Packaging/Paper (-20bps) and Tech (-30bps) lagged.  
+Exhibit 24: Index returns 
+CCCs xD= CCCs non-distressed. 
+Total returns 
+Market 
+1wk 
+2wks 
+mtd 
+1m  
+3m 
+6m 
+ytd 
+1yr 
+DM USD HY 
+-0.15 
+-0.35 
+-0.29 
+-0.06  
+1.0 
+2.1 
+2.3 
+4.2 
+5yr Trsy 
+-0.25 
+-0.92 
+-0.41 
+-0.79  
+-0.5 
+-2.0 
+-1.2 
+-0.6 
+10yr Trsy 
+-0.32 
+-1.26 
+-0.59 
+-1.08  
+-1.2 
+-3.5 
+-2.1 
+-1.6 
+IG 
+-0.12 
+-0.80 
+-0.38 
+-0.61  
+-0.9 
+-1.5 
+-0.5 
+0.4 
+Loans 
+0.15 
+0.34 
+0.19 
+0.82  
+2.0 
+4.2 
+3.3 
+4.8 
+EM HY 
+0.06 
+-0.19 
+-0.07 
+0.12  
+1.0 
+3.6 
+4.8 
+6.3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+BBs 
+-0.18 
+-0.38 
+-0.29 
+-0.02  
+0.9 
+1.7 
+2.2 
+4.2 
+Bs 
+-0.10 
+-0.31 
+-0.26 
+0.02  
+1.4 
+3.2 
+3.3 
+5.4 
+CCCs xD 
+-0.14 
+-0.15 
+-0.23 
+0.13  
+1.6 
+3.7 
+3.6 
+6.1 
+CCCs 
+-0.08 
+-0.25 
+-0.38 
+-0.70  
+-0.2 
+1.0 
+-0.4 
+-0.3 
+Source: BofA Global Research, ICE Data Indices, LLC, LCD/PitchBook  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+
+
+[Page 16]
+ 
+ 
+16 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 25: Excess returns vs HY index 
+By issuer-CSI quality decile, rich/cheap baskets, and new issues. 
+Excess returns vs HY index 
+Decile 
+1wk 
+2wks 
+mtd 
+1m  
+3m 
+6m 
+ytd 
+1yr 
+D1 
+-0.02 
+0.02 
+0.02 
+0.05  
+-0.2 
+-0.9 
+-0.7 
+-0.3 
+D2 
+-0.05 
+-0.02 
+-0.02 
+0.06  
+0.2 
+-0.4 
+-0.3 
+-0.1 
+D3 
+0.00 
+0.05 
+0.05 
+0.22  
+0.3 
+-0.1 
+0.3 
+1.0 
+D4 
+-0.03 
+0.02 
+0.03 
+0.09  
+0.0 
+0.2 
+0.3 
+0.3 
+D5 
+0.00 
+0.08 
+0.04 
+0.21  
+0.0 
+0.4 
+0.5 
+1.1 
+D6 
+0.01 
+0.07 
+0.04 
+0.34  
+0.7 
+1.1 
+1.0 
+1.2 
+D7 
+-0.06 
+0.10 
+0.00 
+0.28  
+0.4 
+0.6 
+1.4 
+0.7 
+D8 
+-0.01 
+0.02 
+0.02 
+0.12  
+0.0 
+-0.3 
+0.0 
+0.2 
+D9 
+0.01 
+-0.10 
+-0.11 
+-0.19  
+-0.5 
+0.6 
+1.3 
+2.3 
+D10 
+0.09 
+-0.50 
+-0.56 
+-1.97  
+-2.7 
+-2.8 
+-7.2 
+-11.3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Cheap all deciles 
+0.77 
+0.40 
+0.78 
+0.88  
+0.4 
+3.6 
+2.7 
+1.8 
+Rich all deciles 
+-0.19 
+-0.45 
+-0.30 
+-0.43  
+0.5 
+-0.1 
+-0.2 
+1.9 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+New issues last-1m 
+-0.26 
+-0.23 
+-0.38 
+0.04  
+-0.2 
+1.8 
+3.2 
+7.0 
+New issues last-3m 
+0.02 
+-0.12 
+-0.10 
+0.01  
+-0.2 
+0.9 
+2.4 
+4.5 
+Source: BofA Global Research, ICE Data Indices, LLC, LCD/PitchBook  
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 26: Strongest movers (ticker-level price changes) 
+Ranked by 1wk index impact (market*Δprice) 
+Ticker 
+Rtg 
+Dec Sector 
+1Wk 
+2Wk 
+1Mo 
+3Mo 
+YTD    Ticker 
+Rtg 
+Dec Sector 
+1Wk 
+2Wk 
+1Mo 
+3Mo 
+YTD 
+BHCCN 
+CCC1 
+D9 
+Healthcare 
+0.7 
+1.4 
+2.6 
+4.5 
+1.7 __ SFRFP 
+CCC1 
+D7 
+Telecoms 
+-1.7 
+-1.7 
+-1.6 
+-1.6 
+0.0 
+IONPLA 
+B2 
+D10 
+Financials 
+1.9 
+1.2 
+-0.2 
+1.8 
+-7.4 __ CHTR 
+BB3 
+D9 
+Cable 
+-0.5 
+-0.9 
+0.0 
+-0.1 
+-1.8 
+VMED 
+BB3 
+D10 
+Cable 
+0.9 
+0.1 
+1.0 
+-5.4 
+-12.4 __ VEGLPL 
+BB2 
+D4 
+Energy 
+-0.6 
+-0.9 
+-0.8 
+-1.5 
+0.6 
+CRWV 
+B1 
+D9 
+Technology 
+1.6 
+-0.2 
+-0.1 
+-8.6 
+0.0 __ TDG 
+B1 
+D1 
+Cap Goods 
+-0.3 
+-0.6 
+-0.5 
+-0.9 
+-2.3 
+ZIGGO 
+BB3 
+D9 
+Cable 
+1.1 
+0.3 
+0.1 
+-1.9 
+-5.1 __ ACRISU 
+B3 
+D10 
+Financials 
+-1.3 
+2.0 
+-6.6 
+-7.5 
+-14.5 
+XRX 
+CCC2 
+D10 
+Services 
+1.9 
+2.2 
+-1.6 
+-1.0 
+-2.8 __ MPW 
+CCC2 
+D9 
+Healthcare 
+-1.0 
+-2.0 
+-2.7 
+-4.5 
+-6.0 
+BSPEED 
+B3 
+D10 
+Telecoms 
+1.1 
+-7.3 
+-10.2 
+-12.1 
+-6.6  
+TIBX 
+B1 
+D9 
+Technology 
+-0.4 
+0.6 
+1.3 
+1.6 
+-3.9 
+FMC 
+BB2 
+D9 
+Chemicals 
+0.7 
+0.9 
+1.0 
+3.8 
+2.6  
+WHR 
+B1 
+D10 
+Retail 
+-1.2 
+-2.7 
+-3.2 
+-2.1 
+-12.5 
+SPLS 
+B3 
+D10 
+Retail 
+0.4 
+0.2 
+0.0 
+0.9 
+-3.3  
+FAIRIC 
+BB1 
+D4 
+Financials 
+-1.6 
+-1.9 
+-0.8 
+-1.9 
+-5.0 
+MERLLN 
+CCC1 
+D10 
+Travel 
+0.9 
+0.2 
+-1.7 
+-2.6 
+-8.6  
+PARA 
+BB1 
+D9 
+Media 
+-0.4 
+-0.9 
+-0.5 
+-1.5 
+-6.2 
+ARGID 
+CCC1 
+D8 
+Packaging 
+0.3 
+-0.2 
+-0.3 
+1.3 
+-0.3  
+HLT 
+BB2 
+D1 
+Travel 
+-0.4 
+-1.0 
+-0.7 
+-1.2 
+-2.7 
+LUMN 
+B3 
+D9 
+Telecoms 
+0.7 
+0.2 
+0.2 
+-3.5 
+-6.0  
+THC 
+BB1 
+ 
+Healthcare 
+-0.3 
+-0.5 
+-0.4 
+-0.3 
+-1.8 
+RADPAR 
+CCC1 
+D8 
+Healthcare 
+0.3 
+0.0 
+-1.2 
+-0.9 
+-0.2  
+POST 
+B2 
+D5 
+Food 
+-0.5 
+-0.8 
+-0.3 
+-1.6 
+-3.1 
+ZAYO 
+CCC1 
+D6 
+Telecoms 
+0.2 
+0.1 
+0.5 
+0.5 
+6.7  
+GTN 
+B3 
+D9 
+Media 
+-0.9 
+-1.2 
+-0.9 
+3.5 
+-0.3 
+USACUT 
+B3 
+D9 
+Healthcare 
+0.4 
+0.7 
+5.2 
+2.7 
+-2.2  
+QUIKHO 
+B1 
+D3 
+Real Estate 
+-0.6 
+-0.9 
+-1.1 
+-0.6 
+-3.5 
+Source: BofA Global Research, ICE Data Indices, LLC, LCD/PitchBook   
+BofA GLOBAL RESEARCH 
+ 
+Primary Market Activity 
+New issuance totaled $8.45bn WTD. Refinancing accounted for 54% of the supply, 
+followed by M&A/LBO (46%). BBs led with 69% of the issuance while Bs contributed to 
+31%. 
+ 
+ 
+
+
+[Page 17]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+17
+ 
+ 
+Exhibit 27: Recent New Issues 
+*Dec = issuer CSI decile; †Denotes 1st time issuer in HY; **Spread at the time of this update (change since 
+issuance); °Denotes matches with New Issue Candidates List. 
+Date Ticker Dec*† Rating 
+Spread**  Size  Issuer 
+Sector 
+Cpn/Mty 
+ 
+Price 
+8/13 ZENARC  
+Ba2/BB   
+  602 (+134)   2,250   Zenith Arc 
+Technology 8.875s of 2031   93.3 (-6.2) 
+8/13 GAINAC  
+B2/B-   
+  375 (-92)   1,775   Gainwell 
+Healthcare 9.000s of 2031   102.5 (+2.5) 
+8/13 VVV 
+D4 
+Ba3/B+   
+  159 
+(+1)   
+600   Valvoline 
+Autos 
+6.125s of 2034   98.5 (-1.5) 
+8/13 WBI 
+D3 
+B1/BB-   
+  183 (-19)   
+150   Waterbridge Infra 
+Energy 
+6.500s of 2033   99.6 (-0.4) 
+8/17 GTN 
+D9 
+Ba3/B+   
+  295 
+(+7)   
+750   Gray Media 
+Media 
+7.500s of 2034   98.6 (-1.4) 
+8/18 JEFCAP D3° 
+Ba3/   
+  228 (-43)   
+100   Jefferson Capital 
+Financials 8.250s of 2030   104.5 (+0.5) 
+8/19 NOG 
+D5 
+B1/B+   
+  261 (-33)   
+500   Northern Oil and Gas Energy 
+7.500s of 2034   100.6 (+0.6) 
+8/19 NFPWEA  
+Caa1/CCC     404 (-41)   
+300   Wealthspire 
+Financials 9.000s of 2034   101.0 (+1.0) 
+9/8 THC 
+ 
+B1/B+   
+  155 
+(+2)   2,000   Tenet Healthcare 
+Healthcare 6.250s of 2034   99.5 (-0.5) 
+9/8 GPI 
+D5 
+Ba2/BB+   
+  184 
+(-5)   
+625   Group 1 Automotive Autos 
+6.625s of 2035   100.0 (-0.0) 
+9/8 GPI 
+D5 
+Ba2/BB+   
+  159 
+(-6)   
+625   Group 1 Automotive Autos 
+6.250s of 2032   100.0 (+0.0) 
+9/9 IQV 
+D1 
+Ba2/BB   
+  149 (-13)   2,000   IQVIA 
+Healthcare 6.375s of 2034   100.8 (+0.8) 
+9/9 AA 
+D1 
+Ba1/BB+   
+  187 
+(+3)   1,500   Alcoa 
+Metals 
+6.625s of 2034   99.8 (-0.2) 
+9/9 AA 
+D1 
+Ba1/BB+   
+  205 
+(+1)   1,100   Alcoa 
+Metals 
+6.875s of 2036   99.9 (-0.1) 
+9/9 USAC 
+D1 
+B1/B+   
+  193 
+(-2)   
+600   USA Compression 
+Energy 
+6.750s of 2035   100.1 (+0.1) 
+Total  
+ 
+ 
+  311 (-10)   40,377    
+ 
+ 
+  99.4 (-0.5) 
+Source: BofA Global Research  
+BofA GLOBAL RESEARCH 
+ 
+ 
+Sources of Demand 
+HY flows were flat WTD after $0.1bn of net outflow last week. Internal demand was 
+strong at $10.8bn this week but slows down to $4.5bn next week ($4.4bn calls/mty + 
+$0.1bn coupons). 
+Exhibit 28: Combined HY supply/demand 
+Calls/mty of $2.1bn + coupons of $5.3bn due next week. 
+ 
+Issuance  
+ETFs 
+Funds 
+Calls/Mty 
+Net*  
+Coupon 
+Thu 09/03 
+0  
+16 
+-54 
+32 
+-32  
+0 
+Fri 09/04 
+0  
+167 
+52 
+418 
+-418  
+0 
+Mon 09/07 
+0  
+0 
+-4 
+0 
+0  
+28 
+Tue 09/08 
+3,250  
+-7 
+-16 
+0 
+3,250  
+24 
+Wed 09/09 
+5,200  
+-95 
+-81 
+243 
+4,957  
+16 
+  
+ 
+ 
+ 
+ 
+  
+ 
+Week 08/14 
+7,125  
+-240 
+169 
+5,289 
+1,836  
+97 
+Week 08/21 
+1,650  
+-1,220 
+229 
+4,697 
+-3,047  
+6,085 
+Week 08/28 
+0  
+203 
+-188 
+4,477 
+-4,477  
+65 
+Week 09/04 
+0  
+-126 
+669 
+2,488 
+-2,488  
+3,156 
+Week 09/11e 
+ 
+ 
+ 
+1,550 
+  
+147 
+Week 09/18e 
+ 
+ 
+ 
+2,089 
+  
+5,296 
+  
+ 
+ 
+ 
+ 
+  
+ 
+Jul 2026 
+19,852  
+1,002 
+1,240 
+28,732 
+-8,880  
+10,118 
+Aug 2026 
+12,075  
+169 
+1,000 
+19,977 
+-7,902  
+11,657 
+Sep MTD 
+8,450  
+-57 
+499 
+2,743 
+5,707  
+3,255 
+Sep 2026e 
+34,603  
+ 
+ 
+16,666 
+17,936  
+9,095 
+Oct 2026e 
+27,182  
+ 
+ 
+19,278 
+7,904  
+11,062 
+  
+ 
+ 
+ 
+ 
+  
+ 
+YTD 2025 
+224,952  
+20,386 
+2,444 
+149,968 
+74,984  
+74,813 
+YTD 2026 
+223,966  
+6,882 
+-276 
+148,279 
+75,687  
+85,206 
+Pct chg 
+0%  
+ 
+ 
+-1% 
+1%  
+14% 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+FY 2025 
+334,548  
+26,788 
+-7,253 
+226,599 
+107,949  
+108,692 
+FY 2026e 
+360,000  
+ 
+ 
+213,176 
+146,824  
+120,616 
+*Net = Issuance - Calls/Mty. 
+Source: BofA Global Research  
+BofA GLOBAL RESEARCH 
+ 
+
+
+[Page 18]
+ 
+ 
+18 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Rating Action Tracker  
+HY recorded net upgrades ($1.7bn) over the week, taking the 4wk total to $5.4bn. 
+Encompass Health ($2.1bn) and SCIH salt holding ($1.8bn) were the main upgrades from 
+the week while CDK Global ($1.5bn) was the largest downgrade. 
+Exhibit 29: HY index-eligible debt net upgrade ($bn) 
+Downgrades outpaced upgrades for 2nd straight week. 
+Source: BofA Global Research, ICE Data Indices, LLC 
+BofA GLOBAL RESEARCH 
+Exhibit 30: Index-eligible debt up/downgraded by sector ($bn) 
+Recent 1mo upgrades were concentrated in Healthcare and Retail. 
+Source: BofA Global Research, ICE Data Indices, LLC 
+BofA GLOBAL RESEARCH 
+ 
+ 
+Exhibit 31: Recent rating upgrades & downgrades 
+1wk/3m: actual notches upgraded/downgraded. 
+ 
+Recent realized upgrades (top 15) 
+   
+ 
+Recent realized downgrades (top 15) 
+Ticker 
+Name 
+Sector 
+Face OAS a Rtg 
+1wk 3m b Est 
+ 
+Ticker 
+Name 
+Sector 
+Face 
+OAS a Rtg 
+1wk 3m b Est 
+THC 
+TENET HEALTHCAR 
+Healthcare 
+12,662 
+84  BB3 
+1  3 ___ COXENT 
+COX COMMUNICATI 
+Cable 
+10,233 
+186  BBB3 
+-1  
+CCL 
+CARNIVAL CORP 
+Travel 
+10,668 110  BBB3 
+1  
+___ MPW 
+MED PROPERTIES 
+Healthcare 
+5,101 
+607  CC 
+-3  
+RIG 
+TRANSOCEAN INC 
+Energy 
+4,073 190  B3 
+1  2 ___ HTZ 
+HERTZ 
+Autos 
+2,250 3,196  CCC3 
+-1  0 
+ILDFP 
+ILIAD HOLDING S 
+Telecoms 
+2,662 171  BB3 
+1  2 ___ HWDGRP 
+HOWDEN UK REFIN 
+Financials 
+2,190 
+372  CCC2 
+-1  
+W 
+WAYFAIR INC 
+Retail 
+2,600 124  BB2 
+1  
+___ COTY 
+COTY/HFC PRESTI 
+Retail 
+2,160 
+158  BB1 
+-1  
+HHH 
+HOWARD HUGHES 
+Real Estate 
+2,300 142  BB2 
+1  
+___ UWMC 
+UWM HOLDINGS LL 
+Financials 
+1,800 
+462  B1 
+-1  
+CVNA 
+CARVANA CO 
+Autos 
+2,270 103  BB2 
+2  
+___ FOCS 
+FOCUS FINANCIAL 
+Financials 
+1,600 
+205  B3 
+-1  
+EHC 
+ENCOMPASS HEALT 
+Healthcare 
+2,200 
+83  BB2 
+1  
+___ CDK 
+CNT PRNT 
+Autos 
+1,510 2,880  CCC2 
+-1 
+-2  
+MHED 
+MAV ACQUISITION 
+Media 
+2,082 138  B3 
+1  
+___ LEG 
+LEGGETT & PLATT 
+Real Estate 
+1,500 
+149  BB2 
+-1 
+-2  
+XPO 
+XPO 
+Transports 
+1,866 
+95  BB2 
+1  2 ___ KBH 
+KB HOME 
+Real Estate 
+1,340 
+119  BB2 
+-1  
+SGI 
+TEMPUR SEALY MA 
+Real Estate 
+1,601 121  BB1 
+1  
+___ MERC 
+MERCER INTL 
+Packaging 
+1,272 7,296  CCC3 
+-1  
+SMG 
+SCOTTS MIRACLE- 
+Real Estate 
+1,537 111  B2 
+1  
+___ SURCEN 
+SURGERY CENTER  
+Healthcare 
+1,225 
+210  CCC2 
+-1  
+CALCOL WAND NEWCO 3 IN 
+Autos 
+1,250 210  B2 
+1  2 ___ MIWIDO 
+MIWD HLDCO II 
+Real Estate 
+1,201 
+242  B3 
+-1  -1 
+ARMK 
+ARAMARK SERVICE 
+Services 
+1,150 
+63  BB3 
+1 
+1  3 ___ UWMLLC 
+UNITED WHOLESAL 
+Financials 
+1,200 
+283  B1 
+-1  
+RBLX 
+ROBLOX 
+Media 
+1,001 117  BBB3 
+1  
+___ ADAHEA 
+ADAPTHEALTH 
+Healthcare 
+1,100 
+234  B1 
+-1  -3 
+ 
+ 
+  
+  
+  
+ 
+ 
+ 
+  
+  
+  
+Total for all recent upgrades 
+49,922 
+  
+  
+ Total for all recent downgrades 
+35,682 
+  
+  
+Source: BofA Global Research, ICE Data Indices, LLC. Disclaimer: The screen above is intended to be an indicative metric only and may not be used for reference purposes or as a measure of performance for any 
+financial instrument or contract, or otherwise relied upon by third parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a benchmark. Note: 
+This screen is not a recommended list either individually or as a group of stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives before making any 
+investment decisions.  
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+-100
+-50
+0
+50
+100
+150
+2021
+2022
+2023
+2024
+2025
+2026
+Net Upgrades over last 12wks
+last 4wks
+-10
+-5
+0
+5
+10
+Healthcare
+Energy
+Transportation
+Telecoms
+Autos
+Services
+Media
+Travel
+Retail
+Chemicals
+Metals
+Capital Goods
+Gaming
+Utilities
+Food Producers
+Real Estate
+Packaging/Paper
+Technology
+Cable
+Financials
+L4wks
+L12wks
+
+
+[Page 19]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+19
+ 
+ 
+Exhibit 32: Rating upgrades & downgrades candidates 
+Projected notches to be upgraded/downgraded from current level. This is a representative list. For the full list, please reach out directly. 
+ 
+Upgrade candidates (top 15) 
+   
+ 
+Downgrade candidates (top 15) 
+Ticker 
+Name 
+Sector 
+Face OAS a Rtg 
+1wk 3m b Est 
+ 
+Ticker 
+Name 
+Sector 
+Face OAS a Rtg 1wk 3m b Est 
+TRIVIU 
+TRIVIUM PACKAGI 
+Packaging 
+1,080 187  CCC2 
+  3 ___ SESGFP 
+SES GLOBAL GROU 
+Telecoms 
+755 326  BB1 
+  -3 
+SKECN 
+SKEENA RESOURCE 
+Metals 
+750 204  CCC1 
+  3 ___ RWLVCA 
+RESORTS WORLD 
+Gaming 
+1,766 466  BB1 
+  -3 
+ZAYO 
+ZAYO GROUP HOLD 
+Telecoms 
+1,560 280  CCC2 
+  3 ___ FMC 
+FMC 
+Chemicals 
+3,952 300  BB1 
+  -3 
+ROCSOF 
+ROCKET SOFTWARE 
+Technology 
+1,375 198  CCC2 
+  3 ___ PARA 
+PARAMOUNT GLOBA 
+Media 
+14,310 317  BB1 
+  -3 
+GWCN 
+GARDA WORLD SEC 
+Services 
+3,301 211  CCC1 
+  3 ___ TRACTD 
+PR RNO PROPERTY 
+Technology 
+4,587 425  BB2 
+  -3 
+SBGI 
+SINCLAIR TV 
+Media 
+2,347 297  CCC3 
+  3 ___ EDGCOM EDGED COMPUTE L 
+Technology 
+1,303 464  BB2 
+  -3 
+NAVCOR 
+JONES DESLAURIE 
+Financials 
+1,125 258  CCC2 
+  3 ___ TRACTC 
+SV RNO PROPERTY 
+Technology 
+3,802 408  BB2 
+  -3 
+ADVGRO 
+OSAIC HOLDINGS  
+Financials 
+1,745 203  CCC1 
+  3 ___ SOFTBK 
+SOFTBANK GROUP  
+Financials 
+10,891 288  BB1 
+  -3 
+ARDGRP 
+ARDONAGH GROUP  
+Financials 
+3,120 313  CCC2 
+  3 ___ BURLN 
+BURFORD CAPITAL 
+Financials 
+2,436 429  BB2 
+  -3 
+UNIT 
+UNITI GROUP/CSL 
+Telecoms 
+4,809 246  CCC2 
+  3 ___ JWN 
+NORDSTROM 
+Retail 
+2,541 215  BB1 
+  -3 
+IVN 
+IVANHOE MINES L 
+Metals 
+750 277  B3 
+  3 ___ WHR 
+WHIRLPOOL CORP 
+Retail 
+6,355 411  B1 
+  -3 
+LVLT 
+LEVEL 3 FINANCI 
+Telecoms 
+7,329 190  B3 
+  3 ___ PANIRP 
+PANAMA INFRASTR 
+Financials 
+1,428 191  BB1 
+  -3 
+APU 
+AMERIGAS PART/F 
+Energy 
+1,368 215  B1 
+  3 ___ CHTR 
+CCO HLDGS LLC/C 
+Cable 
+80,785 212  BB3 
+  -3 
+INTMAT 
+ITT 
+Energy 
+1,220 175  B3 
+  3 ___ MERIDI 
+MERIDIAN ARC HO 
+Technology 
+5,714 304  BB2 
+  -3 
+ 
+  
+  
+ ___ IONPLA 
+ION PLATFORM FI 
+Financials 
+4,616 700  B2 
+  -3 
+ 
+ 
+  
+  
+  
+ 
+ 
+ 
+  
+  
+  
+Total for top 15 candidates 
+36,575 
+  
+  
+ Total for top 15 candidates 
+145,239 
+  
+  
+Source: BofA Global Research, ICE Data Indices, LLC. Disclaimer: The screen above is intended to be an indicative metric only and may not be used for reference purposes or as a measure of performance for any 
+financial instrument or contract, or otherwise relied upon by third parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a benchmark. Note: 
+This screen is not a recommended list either individually or as a group of stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives before making any 
+investment decisions.  
+BofA GLOBAL RESEARCH 
+ 
+Fallen Angels & Rising Stars  
+YTD, rising stars total $48.6bn, exceeding $35.7bn of fallen angels. LEG became the 
+latest fallen angel, with $1.5bn of index-eligible debt, while ROBLOX (RBLX, $1bn) and 
+BURGER KING (BCULC, $4bn) were the latest to enter IG. 
+Exhibit 33: Rising star & Fallen angel actual/realized transitions 
+Rising Star: ΔOAS = difference between issuer OAS and the BBB index; Fallen Angel: ΔOAS = difference between issuer OAS and the BB index 
+Rising star actual/realized transitions 
+ 
+ 
+ 
+ Fallen angel actual/realized transitions 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Rising Star actual/realized transitions 
+ 
+Fallen Angel actual/realized transitions 
+Date Ticker 
+Name 
+Sector 
+Face OAS BBBs ΔOAS 
+ Date Ticker Name 
+Sector 
+Face OAS BBs ΔOAS 
+01/26 CPN 
+CALPINE 
+Utilities 
+2,650 
+122 
+95 
+27 ____ 01/26 SESGFP SES GLOBAL GROU 
+Telecoms 
+750 
+254 174 
+80 
+01/26 FYBR 
+FRONTIER COMMS 
+Telecoms 
+6,550 
+144 
+95 
+49 ____ 03/26 FSK 
+FS KKR CAPITAL  
+Financials 
+3,350 
+369 208 
+161 
+01/26 LADR 
+LADDER CAP FIN  
+Financials 
+2,233 
+103 
+95 
+8 ____ 03/26 PARA 
+PARAMOUNT GLOBA 
+Media 
+12,075 
+281 208 
+73 
+01/26 MEDIND MEDLINE 
+Healthcare 
+6,000 
+88 
+95 
+-7 ____ 04/26 CNC 
+CENTENE 
+Healthcare 
+14,460 
+152 174 
+-22 
+01/26 MIDCAP 
+MIDCAP FINANCIA 
+Financials 
+1,400 
+202 
+95 
+107 ____ 07/26 COTY 
+COTY/HFC PRESTI 
+Retail 
+2,150 
+165 173 
+-8 
+03/26 BIGBRS 
+BIG RIVER STEEL 
+Metals 
+720 
+209 
+113 
+96 ____ 08/26 EA 
+ELECTRONIC ARTS 
+Media 
+1,423 
+240 152 
+88 
+03/26 SNFF 
+SNF GROUP SACA 
+Chemicals 
+350 
+137 
+113 
+24 ____ 09/26 LEG 
+LEGGETT & PLATT 
+Real Estate 
+1,500 
+153 158 
+-5 
+03/26 VIKCRU 
+VIKING CRUISES 
+Travel 
+1,025 
+154 
+113 
+41 ____ 
+ 
+ 
+ 
+03/26 VST 
+VISTRA OPERATIO 
+Utilities 
+5,000 
+111 
+113 
+-2 ____ 
+ 
+ 
+ 
+04/26 NCX 
+NOVA CHEMICALS  
+Chemicals 
+400 
+147 
+102 
+45 
+ 
+ 
+ 
+ 
+04/26 PR 
+PERMIAN RESOURC 
+Energy 
+3,025 
+93 
+102 
+-9 
+ 
+ 
+ 
+ 
+05/26 CRWD 
+CROWDSTRIKE 
+Technology 
+750 
+77 
+93 
+-16 
+ 
+ 
+ 
+ 
+05/26 KIOXIA 
+KIOXIA HOLDINGS 
+Technology 
+2,200 
+88 
+93 
+-5 
+ 
+ 
+ 
+ 
+06/26 CCL 
+CARNIVAL CORP 
+Travel 
+8,250 
+127 
+95 
+32 
+ 
+ 
+ 
+ 
+07/26 LIBMUT 
+LIBERTY MUTUAL  
+Financials 
+1,232 
+95 
+99 
+-4 
+ 
+ 
+ 
+ 
+08/26 BPOP 
+POPULAR 
+Financials 
+400 
+112 
+98 
+14 
+ 
+ 
+ 
+ 
+08/26 TMHC 
+TAYLOR MORRISON 
+Real Estate 
+1,476 
+71 
+98 
+-27 
+ 
+ 
+ 
+ 
+09/26 BCULC 
+BURGER KING 
+Travel 
+4,000 
+108 
+99 
+9 
+ 
+ 
+ 
+ 
+09/26 RBLX 
+ROBLOX 
+Media 
+1,002 
+117 
+99 
+18 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Weighted average/total ytd 
+48,663 113 
+96 
+16 
+ Weighted average/total ytd 
+35,708 222 187 
+35 
+Source: BofA Global Research, ICE Data Indices, LLC. Disclaimer: The screen above is intended to be an indicative metric only and may not be used for reference purposes or as a measure of performance for any 
+financial instrument or contract, or otherwise relied upon by third parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a benchmark. Note: 
+This screen is not a recommended list either individually or as a group of stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives before making any 
+investment decisions. 
+BofA GLOBAL RESEARCH 
+ 
+
+
+[Page 20]
+ 
+ 
+20 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 34: Rising Star & Fallen angel watchlist 
+Rising Star candidates: BB-rated issuers with lowest issuer-level CSI; Fallen Angel candidates: BBB-rated issuers with highest issuer-level CSI. This is a representative list. 
+For the full list, please reach out directly. 
+Rising Star candidates 
+   
+Fallen Angel candidates 
+Ticker 
+Issuer 
+Sector 
+Rtg 
+Face OAS 
+ Ticker 
+Issuer 
+Sector 
+Rtg 
+Face OAS 
+USFOOD 
+US FOODS 
+Food 
+BB2 
+2,901 
+91 ____ RDMICH 
+RD MICHIGAN PRO 
+Data Centers 
+BBB3 
+14,003 302 
+HESM 
+HESS MIDSTREAM  
+Midstream 
+BB1 
+3,101 
+81 ____ QTSQST 
+QTS FAYETTEV I  
+Data Centers 
+BBB2 
+4,602 238 
+RHP 
+RHP HOTEL PPTY/ 
+Travel & Experiences 
+BB2 
+4,025 101 ____ COXENT 
+COX COMMUNICATI 
+Cable 
+BBB3 
+10,233 186 
+HLT 
+HILTON DOMESTIC 
+Travel & Experiences 
+BB2 
+10,011 
+91 ____ CHTR 
+CCO HLDGS LLC/C 
+Cable 
+BBB3 
+53,882 207 
+IQV 
+IQVIA INC 
+CROs 
+BB1 
+6,654 
+86 ____ HUTBPA 
+BEACON POINT DC 
+Telecom Services 
+BBB2 
+4,251 203 
+URI 
+UNITED RENTALS  
+Industrial Machinery 
+BB2 
+9,873 
+82 ____ ORCL 
+ORACLE CORP 
+Technology Software 
+BBB2 
+119,490 188 
+WCC 
+WESCO DISTRIBUT 
+Industrial Machinery 
+BB2 
+4,052 100 ____ QTSODY 
+QTS CNTRL ISSUE 
+Telecom Services 
+BBB3 
+3,900 194 
+BCULC 
+BURGER KING 
+Travel & Experiences 
+BB2 
+7,650 
+96 ____ OCINCC 
+BLUE OWL CREDIT 
+Asset Managers 
+BBB3 
+5,449 190 
+SUN 
+SUNOCO LP 
+Midstream 
+BB1 
+10,681 103 ____ APODS 
+APOLLO DEBT SOL 
+Asset Managers 
+BBB3 
+4,442 173 
+STWD 
+STARWOOD PROPER 
+REITs 
+BB2 
+4,151 140 ____ HLEND 
+HPS CORPORATE L 
+Asset Managers 
+BBB3 
+5,150 165 
+FTAI 
+FORTRESS TRANS  
+Transports 
+BB1 
+3,502 111 ____ BCRED 
+BLACKSTONE PRIV 
+Asset Managers 
+BBB3 
+10,804 155 
+ENTG 
+ENTEGRIS CHEMS 
+Specialty Chemicals 
+BB2 
+3,295 
+90 ____ ARESSI 
+ARES STRATEGIC  
+Asset Managers 
+BBB3 
+6,096 157 
+THC 
+TENET HEALTHCAR 
+Hospitals 
+BB1 
+12,662 
+84 ____ STLA 
+STELLANTIS FINA 
+Auto Manufacturing 
+BBB3 
+9,727 157 
+BALL 
+BALL 
+Packaging 
+BB1 
+3,900 
+96 ____ GSCRED 
+GOLDMAN SACHS P 
+Asset Managers 
+BBB3 
+3,996 151 
+XYZ 
+BLOCK INC 
+Financial Technology 
+BB1 
+5,200 109 ____ HASI 
+HA SUSTAINABLE  
+Renewables 
+BBB3 
+4,872 162 
+ESAB 
+ESAB CORP 
+Industrial Machinery 
+BB1 
+1,704 118 
+  
+ 
+ 
+ 
+  
+  
+Total 
+91,657 100 ____ Total 
+260,895 193 
+  
+ 
+ 
+ 
+* Ratings, face, and spreads are of relevant ISINs, which do not always cover all outstanding bonds of the tickers. 
+Source: BofA Global Research, ICE Data Indices, LLC. Disclaimer: The screen above is intended to be an indicative metric only and may not be used for reference purposes or as a measure of performance for any 
+financial instrument or contract, or otherwise relied upon by third parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a benchmark. Note: 
+This screen is not a recommended list either individually or as a group of stocks. Investors should consider the fundamentals of the companies and their own individual circumstances/objectives before making any 
+investment decisions.  
+BofA GLOBAL RESEARCH 
+ 
+Defaults Tracker 
+No defaults this month so far. YTD, defaults total $13.1bn in HY and $20.4bn in loans, 
+with average recoveries of 33 cents on the dollar for HY and 52 cents for loans. 
+Exhibit 35: Recent defaults across bonds and loans 
+RR = recovery rates, average 30day prior to default; All = all seniorities; FLD = 1st Lien Debt; SRU = Sr Unsecured. Ticker highlights proportional to frequency of appearance 
+on our candidates watchlist 90 days prior to default. Note that our watchlist targets HY issuers, not loans. 
+ 
+HY 
+ 
+BSL 
+Date 
+Ticker 
+Name 
+Sector 
+Event 
+Face RR All RR FLD RR SRU 
+ 
+Face RR All 
+01/26 
+LABL  
+MULTICOLOR LABELS  
+Packaging/Paper 
+Bankruptcy 
+2,900 
+50 
+ 
+47 
+ 
+1,598 
+55 
+01/26 
+SAGLEN  
+SAKS GLOBAL ENTERPRS LLC  
+Retail 
+Bankruptcy 
+1,381 
+4 
+4 
+ 
+01/26 
+UPSREH  
+UPSTREAM NEWCO INC.  
+Healthcare 
+Distressed exchange 
+1,011 
+84 
+01/26 
+SGUSLL  
+SGUS LLC  
+Retail 
+Bankruptcy 
+762 
+38 
+38 
+ 
+01/26 
+YSGINC  
+YS GARMENTS LLC  
+Retail 
+Distressed exchange 
+205 
+68 
+02/26 
+PRIMIN  
+PMHC II  
+Chemicals 
+Distressed exchange 
+756 
+36 
+ 
+36 
+ 
+2,366 
+39 
+02/26 
+DRY  
+SPIN HOLDCO INC.  
+Services 
+Distressed exchange 
+1,905 
+83 
+02/26 
+CUB  
+ATLAS CC ACQUISITION COR  
+Technology 
+Payment Default 
+1,409 
+39 
+02/26 
+RSAS  
+REDSTONE HOLDCO 2 LP  
+Technology 
+Distressed exchange 
+1,398 
+30 
+02/26 
+NINE  
+NINE ENERGY SERVICE  
+Energy 
+Bankruptcy 
+300 
+27 
+27 
+ 
+02/26 
+PBST  
+BLUE RIBBON LLC  
+Food Producers 
+Distressed exchange 
+294 
+66 
+03/26 
+TSE  
+TRINSEO LUX  
+Chemicals 
+Payment Default 
+385 
+3 
+ 
+716 
+16 
+03/26 
+CUMINT  
+CUMULUS MEDIA NEW HLDGS  
+Media 
+Bankruptcy 
+306 
+26 
+26 
+ 
+312 
+25 
+04/26 
+QVCN  
+QVC INC  
+Retail 
+Bankruptcy 
+1,305 
+44 
+44 
+ 
+04/26 
+LINTA  
+LIBERTY MEDIA  
+Media 
+Bankruptcy 
+792 
+4 
+ 
+4 
+ 
+04/26 
+WSTC  
+WEST TECHNOLOGY GRP  
+Telecoms 
+Payment Default 
+446 
+8 
+ 
+05/26 
+TRUK  
+REAL HERO MERGER SUB 2  
+Autos 
+Distressed exchange 
+514 
+41 
+ 
+41 
+ 
+2,167 
+60 
+05/26 
+ACPROD  
+ACPRODUCTS CABINETS  
+Real Estate 
+Distressed exchange 
+498 
+46 
+ 
+46 
+ 
+1,334 
+81 
+05/26 
+INHEAL  
+TRUSTAFF  
+Healthcare 
+Distressed exchange 
+724 
+31 
+05/26 
+ACCVNT  
+OPTIV PARENT INC.  
+Technology 
+Distressed exchange 
+634 
+70 
+05/26 
+UNIPFH  
+UNITED PF HOLDINGS  
+Travel 
+Payment Default 
+628 
+89 
+05/26 
+THEODI  
+TOKEN BUYER INC.  
+Capital Goods 
+Payment Default 
+347 
+75 
+05/26 
+ESDECS  
+ENSTALL GROUP B.V.  
+Energy 
+Payment Default 
+303 
+42 
+06/26 
+ACH  
+OWENS & MINOR  
+Healthcare 
+Distressed exchange 
+1,031 
+68 
+ 
+68 
+ 
+06/26 
+GPSHOH  
+GPS HOSPITALITY HOLDING  
+Travel 
+Distressed exchange 
+360 
+47 
+ 
+
+
+[Page 21]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+21
+ 
+ 
+Exhibit 35: Recent defaults across bonds and loans 
+RR = recovery rates, average 30day prior to default; All = all seniorities; FLD = 1st Lien Debt; SRU = Sr Unsecured. Ticker highlights proportional to frequency of appearance 
+on our candidates watchlist 90 days prior to default. Note that our watchlist targets HY issuers, not loans. 
+ 
+HY 
+ 
+BSL 
+07/26 
+MEDSOH  
+MEDICAL SOLUTIONS HOLDIN  
+Healthcare 
+Distressed exchange 
+1,471 
+9 
+07/26 
+FRAX  
+ASP UNIFRAX HOLDINGS INC  
+Chemicals 
+Bankruptcy 
+1,329 
+12 
+41 
+ 
+07/26 
+SYSTMO  
+ORCHID MERGER SUB II LLC  
+Technology 
+Distressed exchange 
+245 
+54 
+08/26 
+SITEL  
+SITEL GROUP  
+Technology 
+Distressed exchange 
+1,334 
+47 
+ 
+ 
+ 
+ 
+ 
+__  
+ 
+YTD total 
+13,066 
+33 
+28 
+42 
+ 
+20,400 
+52 
+2025 FY 
+29,986 
+57 
+69 
+48 
+ 
+50,646 
+58 
+2024 FY 
+20,689 
+55 
+59 
+52 
+ 
+56,125 
+60 
+Source: BofA Global Research  
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 36: Default candidates representative names 
+HY issuers with highest issuer-level CSI; FLTD: face likely to default - assumed amount written off in a 
+restructuring (uses sliding scale based on the CSI value (100th = 1:1 full scale; 90th = 0:1 none) 
+Ticker Issuer 
+Sector 
+Rating 
+Face 
+Price CSI ▼ 
+FLTD 
+BRIEAS BRIGHTLINE EAST LLC 
+Transportation 
+CC 
+1,119 
+6 
+0.999 
+1,119 
+INTLGR SIGNAL PARENT 
+Real Estate 
+CCC3 
+290 
+15 
+0.999 
+290 
+MERC 
+MERCER INTL 
+Packaging/Paper 
+CCC3 
+1,272 
+31 
+0.996 
+1,272 
+AFFGAM AFFINITY GAMING 
+Gaming 
+CCC3 
+545 
+47 
+0.995 
+545 
+ALNMED ALLEN MEDIA 
+Media 
+CC 
+630 
+40 
+0.995 
+630 
+TRUK 
+REALTRUCK GROUP INC 
+Autos 
+CC 
+446 
+16 
+0.995 
+446 
+CNR 
+CORNERSTONE BUILDING 
+Real Estate 
+CCC3 
+1,529 
+40 
+0.994 
+1,523 
+OB 
+OT MIDCO LTD 
+Media 
+CCC2 
+628 
+32 
+0.994 
+621 
+CSCHLD ALTICE USA 
+Cable 
+CCC2 
+15,523 
+40 
+0.992 
+15,055 
+PETSAF CD&R SMOKEY / RADIO SYS 
+Retail 
+CCC1 
+775 
+41 
+0.992 
+743 
+LOGM 
+GOTO GROUP INC 
+Technology 
+CCC3 
+780 
+50 
+0.991 
+743 
+ALTICE 
+ALTICE FINANCING SA 
+Cable 
+CCC2 
+3,250 
+60 
+0.990 
+3,005 
+ASTONM ASTON MARTIN CAPITAL HOL 
+Autos 
+CCC2 
+1,050 
+60 
+0.988 
+917 
+HTZ 
+HERTZ 
+Autos 
+CCC3 
+2,250 
+51 
+0.987 
+1,887 
+ACPROD ACPRODUCTS HOLDINGS INC 
+Real Estate 
+CCC3 
+495 
+40 
+0.987 
+404 
+Source: BofA Global Research, ICE Data Indices, LLC. Disclaimer: The screen above is intended to be an indicative metric only and may not 
+be used for reference purposes or as a measure of performance for any financial instrument or contract, or otherwise relied upon by third 
+parties for any other purpose, without the prior written consent of BofA Global Research. This screen was not created to act as a 
+benchmark. Note: This screen is not a recommended list either individually or as a group of stocks. Investors should consider the 
+fundamentals of the companies and their own individual circumstances/objectives before making any investment decisions. 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Liquidity Tracker 
+Bid-ask spreads tightened this week to 0.23pt (vs 0.24pt last week). Telecoms and 
+Gaming were most active relative to their histories, trading at 0.9x and 0.8x their 3-
+month averages. 
+
+
+[Page 22]
+ 
+ 
+22 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 37: HY effective bid-ask spreads, pts 
+Effective bid-asks are measured on actual round-trip trades. It averaged  
+0.23pt this week vs 0.24pt the week before. 
+ 
+Source: BofA Global Research, FINRA Trace 
+BofA GLOBAL RESEARCH 
+Exhibit 38: Sector-level daily avg trading volume 
+L1wk daily avg trading volume divided by L3mo. Telecoms and Gaming were 
+the two most actively traded sectors last week. 
+Source: BofA Global Research, FINRA Trace  
+BofA GLOBAL RESEARCH 
+0.20
+0.25
+0.30
+0.35
+0.40
+0.45
+0.50
+0.55
+2024
+2025
+2026
+30d average
+10d average
+0.60
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+ Services
+ Media
+ Technology
+ Metals
+ Cable
+ Real Estate
+ Travel
+ Food Producers
+ Capital Goods
+ Utilities
+ Transportation
+ Autos
+ Healthcare
+ Financials
+ Packaging/Paper
+ Chemicals
+ Energy
+ Retail
+ Gaming
+ Telecoms
+ L1wk daily avg
+trading volume as
+% of L3mo
+
+
+[Page 23]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+23
+ 
+ 
+Market Recap: USD Loans 
+Return Summary 
+Loan index delivered a 0.09% TR WTD supported by carry and modest +0.03pt increase 
+in prices. Performance diverged across ratings, with CCCs posting a negative TR of 
+0.03% amid a 0.94pt price drop, while Bs outperformed (0.12%). On a YTD basis, BB 
+loans (+4.11% TR) continue to outperform the index, while Bs (+3.50%) lag and CCCs 
+remain deeply negative (-4.50% TR). 
+Exhibit 39: Loan total return, bps 
+Loans have returned +3.27% YTD 
+YTD 
+MTD 
+WTD 
+9/4 
+8/28 
+All Loans 
+327 
+19 
+9 
+17 
+21 
+BB 
+411 
+15 
+7 
+13 
+16 
+B 
+350 
+28 
+12 
+26 
+26 
+CCC 
+-450 
+-64 
+-3 
+-67 
+-30 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+Exhibit 40: Loan index prices (pts) 
+Loan index is currently at 95.6pts 
+Level 
+WTD 
+9/4 
+8/28 
+8/21 
+All Loans 95.6 pts 
++0.03 
++0.09 
++0.09 
+-0.03 
+BB 
+99.6 pts 
+-0.01 
++0.01 
++0.03 
+-0.01 
+B 
+97.2 pts 
++0.23 
++0.13 
++0.13 
++0.15 
+CCC 
+69.0 pts 
+-0.94 
+-0.64 
+-0.07 
+-0.92 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+Supply and Demand 
+WTD demand is $1.39bn driven by $1.33bn in Coupons, and $64mn in retail inflows 
+while CLO issuance remained flat. On the supply side, we've seen new issuance of 
+$18.3bn resulting in -$16.9bn Demand net of Supply WTD. YTD Demand net of Supply is 
+currently at +$88.2bn, stronger compared to its level at this time last year (+$68.5bn). 
+Exhibit 41: USD Loan supply and demand components ($mn) 
+YTD demand net of supply stands at +88.2bn 
+ 
+YTD 
+WTD 
+9/4 
+8/28 
+8/21 
+Retail flows (a) 
+-5,659 
+64 
+443 
+111 
+49 
+CLO creation (b) 
+87,464 
+0 
+2,241 
+2,505 
+4,816 
+Coupons (c) 
+74,996 
+1,334 
+2,667 
+1,493 
+2,162 
+Demand (a+b+c) 
+156,802 
+1,399 
+5,351 
+4,109 
+7,027 
+ 
+ 
+ 
+ 
+ 
+  
+Issuance ex-repricings (e) 
+288,401 
+18,363 
+0 
+0 
+700 
+Repayments (f) 
+219,836 
+0 
+2,309 
+9,049 
+12,886 
+Net Supply (e-f) 
+68,565 
+18,363 
+-2,309 
+-9,049 
+-12,186 
+ 
+ 
+ 
+ 
+ 
+  
+Demand net of Supply 
+88,237 
+-16,965 
+7,660 
+13,158 
+19,213 
+Source: BofA Global Research, LCD, LevFin Insights, EPFR 
+Note: *Retail flows include only Open-End funds and ETFs which primarily hold Broadly Syndicated Loans and does not include CLO ETFs. YTD Retail flows include additional funds which publicly report on a monthly 
+(rather than daily) basis, whereas WTD & weekly flows include only funds which publicly report daily. **CLO creation does not adjust for liquidations. 
+BofA GLOBAL RESEARCH 
+WTD BSL funds flows were (+$64mn), w/ $63mn inflows in BSL Open ends and $1mn 
+inflows to BSL ETFs. Separately, CLO ETFs saw +$275mn inflows WTD. YTD flows 
+remain positive for BSL ETFs (+$205mn) and negative for Open-Ends (-$5.86bn), but 
+positive for CLO ETFs (+$15.1bn). 
+Exhibit 42: USD Loan fund flows ($mn) 
+Flows into Loan Open-Ends, ETFs, and CLO ETFs 
+Asset 
+YTD 
+MTD 
+WTD 
+9/4 
+8/28 
+8/21 
+Open-End 
+-5,864 
++257 
++63 
++199 
+-0 
++13 
+Loan ETF 
++205 
++203 
++1 
++244 
++112 
++35 
+CLO ETF 
++15,050 
++935 
++275 
++837 
++370 
++463 
+Source: BofA Global Research, Bloomberg, EPFR 
+Note: Open-End and Loan ETF flows include only funds which primarily hold Broadly Syndicated Loans. YTD Retail flows include 
+additional funds which publicly report on a monthly (rather than daily) basis, whereas WTD, weekly, & MTD flows include only funds 
+which report daily. 
+BofA GLOBAL RESEARCH 
+
+
+[Page 24]
+ 
+ 
+24 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Over the past seven days, we've observed $18.3bn in USD Loan new issuance. 52.5% 
+was for LBO purpose, 33.6% for Refinancing, 9.45% for dividend and remaining for 
+acquisition. YTD global and US issuance totals $347.1bn and $288.4bn, with a total of 
+474 and 349 loans launched respectively in the primary market thus far. In comparison, 
+YTD '25 brought in $398.8bn global issuance across 601 loans and $327.5bn US 
+issuance across 440 loans. 
+ 
+Exhibit 43: USD Loan new money issuance 
+List of USD Loan deals over last seven days 
+Launch Date Issuer 
+New Institutional 
+Money 
+Rating 
+Purpose 
+Sector 
+Country 
+9/9/2026 
+Mavis Tire Express Services Corp 
+3,620 
+B 
+ Refinancing  
+Retail 
+United States 
+9/9/2026 
+Trinity Consultants Inc 
+250 
+ 
+ LBO  
+Services & Leasing 
+United States 
+9/9/2026 
+Mercer Advisors Inc 
+1,900 
+ 
+ Refinancing  
+Services & Leasing 
+United States 
+9/9/2026 
+Nestle Waters France 
+1,858 
+B 
+ LBO  
+Food & Beverage 
+France 
+9/9/2026 
+BGIS 
+1,730 
+B 
+ LBO  
+Real Estate 
+Canada 
+9/9/2026 
+Clearlight Energy 
+1,500 
+ 
+ Dividend  
+Utilities 
+Canada 
+9/9/2026 
+Trinity Consultants Inc 
+1,130 
+B 
+ LBO  
+Services & Leasing 
+United States 
+9/9/2026 
+Utz Quality Foods 
+1,100 
+B 
+ LBO  
+Food & Beverage 
+United States 
+9/9/2026 
+RelaDyne Inc 
+100 
+B 
+ Refinancing  
+Automotive 
+United States 
+9/8/2026 
+Applied Systems Inc 
+565 
+CCC 
+ Refinancing  
+Computers & Electronics 
+United States 
+9/8/2026 
+TTM Technologies 
+500 
+BB 
+ Acquisition  
+Computers & Electronics 
+United States 
+9/8/2026 
+Pathfinder Power 
+300 
+BB 
+ Acquisition  
+Manufacturing & Machinery 
+United States 
+9/8/2026 
+American Residential Services LLC 
+235 
+B 
+ Dividend  
+Building Materials 
+United States 
+9/8/2026 
+Integer Holdings Corp 
+2,100 
+ 
+ LBO  
+Healthcare 
+United States 
+9/8/2026 
+Saber Power, LLC 
+1,475 
+B 
+LBO 
+Building Materials 
+United States 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+Defaults and Downgrades 
+No new defaults were observed over the past seven days. Over the past four weeks, 
+total defaults/LMEs amount to $1.34bn, with BofA LTM Loan DR currently at 1.9% at 
+par and 2.3% by issuer.  
+Exhibit 44: USD Loan defaults including LMEs and DEs 
+List of USD Loan default events over last four weeks 
+DefaultDate 
+Issuer 
+Ticker 
+Sector 
+StartFace MaturityDate 
+8/20/2026 
+ClientLogic 
+SITEL 
+Technology 
+1,348 
+8/28/2028 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+Over the 30 days, we have seen rating actions across 15 distinct issuers. A total of 7 
+issuers were downgraded by -14 notches ($8bn notional), and 8 issuers were upgraded 
+by 8 notches ($6bn notional). In terms of sectors, Technology represented 51% of 
+downgrades by notional, followed by Financials (15%) and Retail (10%). Of the upgrades, 
+25% by notional value was in Healthcare, followed by 21% in Capital goods and 16% in 
+Travel. Over the past 30 days, downgrades have outweighed upgrades by $1.96bn. 
+Exhibit 45: USD Loan rating migrations 
+List of USD Loan upgrades and downgrades over last four weeks 
+RatingDate 
+Issuer 
+Ticker 
+Sector 
+Face 
+Maturity 
+Rating 
+Action 
+Current 
+Rating 
+Notches 
+9/3/2026 
+Alliance Laundry Systems LLC 
+ALH 
+Capital Goods 
+1,225 
+8/19/2031 
+Upgrade 
+BB 
+                                     1  
+9/3/2026 
+ANGUS Chemical Company 
+ARUINV 
+Chemicals 
+522 
+11/24/2027 
+Downgrade 
+CC 
+                                   (3) 
+9/3/2026 
+ANGUS Chemical Company 
+ARUINV 
+Chemicals 
+121 
+11/24/2027 
+Downgrade 
+CC 
+                                   (3) 
+9/3/2026 
+CDK Global 
+CDK 
+Technology 
+4,002 
+7/6/2029 
+Downgrade 
+CCC 
+                                   (2) 
+9/3/2026 
+Hayward Industries 
+HAYW 
+Travel 
+960 
+6/23/2033 
+Upgrade 
+BB+ 
+                                     1  
+9/3/2026 
+Pitney Bowes 
+PBI 
+Transportation 
+585 
+3/19/2032 
+Upgrade 
+BB+ 
+                                     1  
+8/27/2026 
+Concentra Managed Care Inc 
+CON 
+Healthcare 
+938 
+7/26/2031 
+Upgrade 
+BB+ 
+                                     1  
+
+
+[Page 25]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+25
+ 
+ 
+Exhibit 45: USD Loan rating migrations 
+List of USD Loan upgrades and downgrades over last four weeks 
+RatingDate 
+Issuer 
+Ticker 
+Sector 
+Face 
+Maturity 
+Rating 
+Action 
+Current 
+Rating 
+Notches 
+8/27/2026 
+ICU Medical Inc 
+ICUI 
+Healthcare 
+499 
+1/8/2029 
+Upgrade 
+BB 
+                                     1  
+8/27/2026 
+WR Grace & Co 
+GRA 
+Chemicals 
+596 
+8/19/2032 
+Upgrade 
+B 
+                                     1  
+8/20/2026 
+Balcan Innovations Inc 
+BALPLA 
+Packaging/Paper 
+454 
+10/20/2031 
+Downgrade 
+CCC+ 
+                                   (1) 
+8/20/2026 
+Hyster-Yale Materials Handling Inc 
+HY 
+Capital Goods 
+214 
+5/26/2028 
+Downgrade 
+B+ 
+                                   (1) 
+8/20/2026 
+Leslie's Poolmart 
+LESL 
+Retail 
+757 
+3/9/2028 
+Downgrade 
+CCC- 
+                                   (1) 
+8/20/2026 
+NFP Wealth 
+NFPWEA 
+Financials 
+1,007 
+11/1/2032 
+Downgrade 
+B- 
+                                   (1) 
+8/20/2026 
+NFP Wealth 
+NFPWEA 
+Financials 
+150 
+11/1/2032 
+Downgrade 
+B- 
+                                   (1) 
+8/20/2026 
+Red Ventures LLC 
+REDVEN 
+Media 
+709 
+3/4/2030 
+Upgrade 
+BB- 
+                                     1  
+8/20/2026 
+Spencer Spirit Holdings 
+SPESPI 
+Retail 
+344 
+7/15/2031 
+Upgrade 
+BB- 
+                                     1  
+8/20/2026 
+TAIT LLC 
+TAITLL 
+Travel 
+598 
+10/1/2031 
+Downgrade 
+B- 
+                                   (1) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+Performance Breakdown 
+Exhibit 46 shows a detailed breakdown of performance drivers within the USD loan 
+space. We look at market subsets by broad and narrow ratings, as well as by sectors. For 
+each subset we list metrics encompassing market structure, returns, spreads, prices and 
+yields, both with and without the forward curve. We also have a section on constant 
+constituents, which eliminates any impact from a change of constituents to generate the 
+organic performance of each subset of the market.  
+Entries in the table are formatted along a green-red color-axis, with color scales grouped 
+and formatted separately for each combination of time period (WTD, MTD, YTD) and 
+metric (TR, 3yrDM, Price). Color scales are also formatted separately for each of the 
+market subsets: Broad Rating, Narrow Rating, and Sectors. Values for All Loans are 
+color-formatted along the same color-axis as Broad Rating. 
+Exhibit 46: USD Loan valuations and performance by Rating and Sector 
+Breakdown of WTD, MTD, and YTD changes in price, spread, and total return across ratings and sectors 
+September 9, 2026 Characteristics 
+Total Return 
+3yr DM 
+Price 
+YTM spot 3yr Yield 
+Constant Constituent 
+ 
+Count 
+% by par 
+WTD 
+(bps) 
+MTD 
+(bps) 
+YTD 
+(bps) 
+Current 
+(bps) 
+WTD 
+(bps) 
+MTD 
+(bps) 
+YTD 
+(bps) 
+Current 
+(pts) 
+WTD 
+(pts) 
+MTD 
+(pts) 
+YTD 
+(pts) 
+w/o curve 
+(%) 
+w/ curve 
+(%) 
+Total Return 
+WTD (bps) 
+3yr DM 
+WTD (bps) 
+Price 
+WTD (pts) 
+All Loans 
+1,293 
+100% 
+9 
+19 
+327 
+468 
+-1 
+-2 
+39 
+95.9 
+0.0 
+0.0 -1.2 
+8.1 
+9.0 
+12 
+0 
+0.0 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+BBB Loans 
+85 
+7% 
+7 
+14 
+355 
+193 
+0 
+0 
+17 
+99.9 
+0.0 
+0.0 -0.4 
+5.6 
+6.3 
+7 
+0 
+0.0 
+BB Loans 
+312 
+23% 
+7 
+15 
+417 
+253 
+1 
+0 
+-10 
+99.6 
+0.0 
+0.0 
+0.2 
+6.2 
+6.9 
+7 
+1 
+0.0 
+B Loans 
+772 
+61% 
+12 
+28 
+350 
+439 
+-1 
+-12 
+24 
+97.2 
+0.0 
+0.3 -0.8 
+7.9 
+8.7 
+12 
+-1 
+0.0 
+All Cs 
+124 
+7% 
+-2 
+-59 -298 
+2,238 
+5 
+92 
+571 
+68.1 -0.1 -1.2 -8.1 
+28.2 
+26.7 
+3 
+10 
+-0.1 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+BBB- 
+82 
+7% 
+7 
+15 
+353 
+194 
+0 
+0 
+18 
+99.9 
+0.0 
+0.0 -0.4 
+5.6 
+6.3 
+7 
+0 
+0.0 
+BB+ 
+68 
+4% 
+7 
+13 
+381 
+205 
+0 
+1 
+4 
+99.9 
+0.0 
+0.0 -0.2 
+5.7 
+6.4 
+7 
+0 
+0.0 
+BB 
+106 
+8% 
+6 
+14 
+359 
+237 
+1 
+-1 
+9 
+99.8 
+0.0 
+0.0 
+0.0 
+6.1 
+6.7 
+6 
+1 
+0.0 
+BB- 
+138 
+10% 
+7 
+15 
+472 
+286 
+1 
+1 
+-26 
+99.3 
+0.0 
+0.0 
+0.4 
+6.5 
+7.2 
+7 
+1 
+0.0 
+B+ 
+161 
+13% 
+8 
+19 
+384 
+332 
+1 
+-1 
+15 
+98.9 
+0.0 
+0.0 -0.6 
+6.9 
+7.6 
+8 
+1 
+0.0 
+B 
+354 
+29% 
+12 
+28 
+384 
+407 
+-2 
+-5 
+24 
+98.0 
+0.1 
+0.1 -0.8 
+7.6 
+8.4 
+12 
+-1 
+0.0 
+B- 
+257 
+18% 
+14 
+34 
+290 
+574 
+-1 
+-30 
+57 
+94.9 
+0.0 
+0.7 -1.4 
+9.2 
+10.1 
+14 
+-1 
+0.0 
+All Cs 
+124 
+7% 
+-2 
+-59 -298 
+2,238 
+5 
+92 
+571 
+68.1 -0.1 -1.2 -8.1 
+28.2 
+26.7 
+3 
+10 
+-0.1 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Autos 
+48 
+4% 
+-6 
+-10 
+258 
+507 
+6 
+8 
+71 
+95.1 -0.1 -0.2 -1.9 
+8.5 
+9.4 
+-5 
+6 
+-0.1 
+Cable 
+22 
+2% 
+-4 
+-40 -114 
+764 
+-31 
+-12 
+277 
+89.9 
+0.7 
+0.2 -6.2 
+11.2 
+12.0 
+-4 
+6 
+-0.1 
+Capital Goods 
+83 
+6% 
+10 
+20 
+393 
+396 
+-1 
+-2 
+23 
+97.0 
+0.0 
+0.0 -0.9 
+7.4 
+8.3 
+14 
+-1 
+0.0 
+Chemicals 
+64 
+4% 
+19 
+44 
+942 
+556 
+-3 
+-9 -190 
+94.4 
+0.1 
+0.2 
+4.5 
+8.9 
+9.9 
+20 
+-3 
+0.1 
+Energy 
+51 
+3% 
+6 
+13 
+456 
+267 
+1 
+0 
+-17 
+99.8 
+0.0 
+0.0 
+0.2 
+6.4 
+7.0 
+6 
+1 
+0.0 
+Financials 
+125 
+13% 
+14 
+35 
+303 
+370 
+-1 
+-6 
+58 
+97.8 
+0.0 
+0.1 -1.8 
+7.2 
+8.0 
+13 
+-1 
+0.0 
+Food Producers 
+41 
+3% 
+11 
+15 
+475 
+378 
+-1 
+1 
+27 
+98.3 
+0.0 
+0.0 -0.8 
+7.3 
+8.1 
+12 
+-1 
+0.0 
+Gaming 
+29 
+2% 
+19 
+8 
+410 
+352 
+-4 
+3 
+13 
+98.1 
+0.1 -0.1 -0.5 
+7.1 
+7.9 
+19 
+-4 
+0.1 
+Healthcare 
+115 
+10% 
+8 
+23 
+467 
+392 
+1 
+-2 
+-44 
+98.1 
+0.0 
+0.1 
+0.7 
+7.5 
+8.3 
+8 
+1 
+0.0 
+Media 
+57 
+5% 
+10 
+5 
+633 
+505 
+0 
+5 -128 
+96.5 
+0.0 -0.1 
+1.5 
+8.5 
+9.4 
+10 
+0 
+0.0 
+Metals 
+18 
+1% 
+7 
+15 
+640 
+325 
+1 
+1 
+-64 
+99.7 
+0.0 
+0.0 
+1.5 
+6.9 
+7.6 
+7 
+1 
+0.0 
+Packaging/Paper 
+28 
+2% 
+5 
+12 
+512 
+410 
+2 
+2 
+-53 
+98.3 -0.1 -0.1 
+1.2 
+7.7 
+8.4 
+5 
+2 
+-0.1 
+
+
+[Page 26]
+ 
+ 
+26 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 46: USD Loan valuations and performance by Rating and Sector 
+Breakdown of WTD, MTD, and YTD changes in price, spread, and total return across ratings and sectors 
+September 9, 2026 Characteristics 
+Total Return 
+3yr DM 
+Price 
+YTM spot 3yr Yield 
+Constant Constituent 
+Real Estate 
+85 
+6% 
+5 
+-9 
+208 
+508 
+2 
+11 
+80 
+94.7 
+0.0 -0.3 -2.2 
+8.4 
+9.4 
+6 
+2 
+0.0 
+Retail 
+87 
+6% 
+5 
+16 
+547 
+425 
+-5 
+-6 
+-63 
+97.5 
+0.1 
+0.2 
+1.4 
+7.7 
+8.6 
+6 
+2 
+0.0 
+Services 
+115 
+8% 
+7 
+22 
+379 
+450 
+1 
+-2 
+63 
+96.1 
+0.0 
+0.0 -1.8 
+7.9 
+8.8 
+8 
+1 
+0.0 
+Technology 
+167 
+14% 
+12 
+42 -125 
+801 
+0 
+-9 
+244 
+88.9 
+0.0 
+0.2 -5.5 
+11.0 
+12.3 
+13 
+0 
+0.0 
+Telecoms 
+19 
+2% 
+30 
+3 
+298 
+612 
+-8 
+5 
+92 
+93.7 
+0.2 -0.1 -2.0 
+9.5 
+10.5 
+31 
+-8 
+0.2 
+Transportation 
+21 
+2% 
+9 
+16 
+471 
+312 
+0 
+0 
+-38 
+99.1 
+0.0 
+0.0 
+0.6 
+6.8 
+7.4 
+9 
+0 
+0.0 
+Travel 
+78 
+6% 
+11 
+8 
+377 
+323 
+0 
+4 
+22 
+98.4 
+0.0 -0.1 -0.8 
+6.8 
+7.6 
+9 
+0 
+0.0 
+Utilities 
+37 
+2% 
+8 
+13 
+399 
+237 
+0 
+-1 
+1 
+99.9 
+0.0 
+0.0 -0.3 
+6.1 
+6.7 
+8 
+0 
+0.0 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+Over the seven days, Autos issuer Realtruck group led the decliners with two of its TL 
+tranches dropping by -8.0pts & -6.9pts. This was followed by Technology issuers Vision 
+solutions (-5.0pts) and Dye & Durham (-4.4pts) 
+On the upside, two TL tranches of Technology issuer EP Purchaser gained +4.1pts & 
++3.4pts followed by Capital goods issuer Groupe Solmax (+2.4pts). 
+ 
+Exhibit 47: Top Loan Movers 
+Largest price movements over last 7 days 
+CUSIP 
+Issuer 
+Industry 
+Amt Out ($mn) 
+Margin (bps) 
+Maturity 
+Loan Rtgs (MDY/S&P) 
+Price (pts) 
+Price Chg (pts) 
+Largest price declines for the week ended 9/9 
+75607VAD 
+Realtruck Group 
+Autos 
+695 
+S+ 600 
+2031-01-31 
+Ca/CCC 
+51.2 
+-8.0 
+75607VAC 
+Realtruck Group 
+Autos 
+1,471 
+S+ 475 
+2031-01-31 
+Ca/CCC 
+52.0 
+-6.9 
+92834PAR 
+Vision Solutions 
+Technology 
+859 
+S+ 725 
+2029-04-23 
+Caa3/CCC 
+50.0 
+-5.0 
+C3117CAB 
+Dye & Durham 
+Technology 
+331 
+S+ 425 
+2031-04-11 
+Caa1/CCC+ 
+43.5 
+-4.4 
+89787RAK 
+TruGreen LP 
+Services 
+275 
+S+ 850 
+2028-11-02 
+Caa3/CCC 
+84.8 
+-2.8 
+36173YAB 
+GIH Borrower 
+Financials 
+1,157 
+S+ 250 
+2031-11-26 
+–/– 
+78.7 
+-2.7 
+78524HAB 
+S&S 
+Retail 
+711 
+S+ 500 
+2028-03-11 
+B3/B- 
+97.5 
+-2.5 
+92346NAH 
+VeriFone Systems 
+Technology 
+1,891 
+S+ 550 
+2028-08-18 
+B3/B- 
+93.6 
+-2.5 
+14835JAQ 
+Cast & Crew 
+Technology 
+1,382 
+S+ 375 
+2028-12-29 
+Caa1/CCC+ 
+35.3 
+-2.4 
+50179JAK 
+LBM Acquisition 
+Real Estate 
+496 
+S+ 500 
+2031-06-06 
+Caa1/B- 
+80.3 
+-2.2 
+Largest price increases for the week ended 9/9 
+26881KAC 
+EP Purchaser 
+Technology 
+814 
+S+ 350 
+2028-11-06 
+B3/B 
+72.5 
++4.1 
+26881KAD 
+EP Purchaser 
+Technology 
+322 
+S+ 450 
+2028-11-06 
+B3/B 
+72.5 
++3.4 
+C4127PAB 
+Groupe Solmax 
+Capital Goods 
+620 
+S+ 475 
+2028-05-30 
+Caa1 *+/B- 
+96.7 
++2.4 
+ 
+DS Parent 
+Services 
+456 
+S+ 550 
+2031-01-31 
+–/B 
+82.5 
++2.2 
+04317JAG 
+Advancion 
+Chemicals 
+121 
+S+ 475 
+2027-11-24 
+B3/CC 
+97.5 
++2.0 
+71947JAK 
+Physician Partners 
+Healthcare 
+338 
+S+ 400 
+2029-12-31 
+–/CCC- 
+95.0 
++1.9 
+Plano HoldCo 
+Technology 
+923 
+S+ 350 
+2031-10-02 
+–/B 
+82.3 
++1.6 
+ 
+Redstone Holdco  
+Technology 
+412 
+S+ 550 
+2030-12-31 
+–/CCC+ 
+32.5 
++1.5 
+89783WAB 
+Trucordia Insurance 
+Financials 
+1,925 
+S+ 325 
+2032-06-17 
+B2/B- 
+87.0 
++1.5 
+ 
+MJH Healthcare 
+Media 
+730 
+S+ 275 
+2029-01-29 
+–/B 
+95.9 
++1.4 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+Capital Structure Relative Value 
+Below Exhibit 48 includes 1L Loans and Secured bonds from an issuer. For issuers with 
+more than one loan/bond, a representative loan/bond is selected based on the highest 
+face value. Pairs are filtered for minimum 0.5% YTM Diff between loans and bonds in 
+either direction, and the following linear relationship b/w YTM diff and Price diff: for any 
+YTM diff, Price diff can be at most (YTM Diff)/2. For example, if the YTM diff is 1%, the 
+Price diff should be < 0.5pts for the pair to make the list. Pairs are sorted in ascending 
+order of YTM diff. 
+ 
+
+
+[Page 27]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+27
+ 
+ 
+Exhibit 48: Capital structure relative value, Loans vs Secured Bonds 
+List of 20 most dislocated secured bond – first lien loan pairs from the same issuer 
+Loan 
+Bond 
+ Bond minus Loan  
+ReportDate 
+Ticker 
+Issuer 
+Sector 
+Face Value Rating Maturity 
+Face Value Rating Maturity 
+Spread Diff Price Diff YTM Diff 
+09/09/2026 
+TROX 
+Tronox Worldwide LLC 
+Chemicals 
+732 
+B 
+4/4/2029 
+400 
+B 
+9/30/2030 
+(600) 
+18.62  
+(7.06) 
+09/09/2026 
+SBGI 
+Sinclair Broadcast Group 
+Media 
+626 
+B- 
+12/31/2030 1,430 
+B 
+2/15/2033 
+(587) 
+12.63  
+(3.58) 
+09/09/2026 
+VMED 
+Virgin Media Finance 
+Cable 
+2,080 
+B+ 
+3/31/2031 
+1,425 
+BB- 
+5/15/2029 
+(514) 
+6.98  
+(3.11) 
+09/09/2026 
+ADVSAL 
+Advantage Sales and Marketing 
+Media 
+1,022 
+B- 
+4/19/2030 
+562 
+B- 
+11/15/2030 (409) 
+0.08  
+(2.82) 
+09/09/2026 
+VSAT 
+ViaSat 
+Telecoms 
+672 
+B+ 
+3/2/2029 
+600 
+BB- 
+4/15/2027 
+(244) 
+(0.83) 
+(2.00) 
+09/09/2026 
+IHRT 
+iheartMedia 
+Media 
+2,114 
+CCC+ 
+5/1/2029 
+718 
+CCC+ 
+5/1/2029 
+(128) 
+0.89  
+(1.57) 
+09/09/2026 
+ONGAME One Toronto Gaming 
+Gaming 
+1,222 
+B- 
+8/1/2030 
+382 
+B- 
+8/1/2030 
+(294) 
+4.18  
+(1.49) 
+09/09/2026 
+POWBUY PowerTeam Services 
+Capital Goods 909 
+CCC+ 
+2/15/2031 
+600 
+CCC+ 
+2/15/2031 
+(385) 
+1.83  
+(1.44) 
+09/09/2026 
+AMBATH American Bath Group 
+Real Estate 
+1,191 
+CCC+ 
+7/8/2030 
+501 
+CCC+ 
+7/15/2030 
+(290) 
+3.54  
+(1.44) 
+09/09/2026 
+GRA 
+WR Grace & Co 
+Chemicals 
+596 
+B 
+8/19/2032 
+750 
+B+ 
+8/15/2032 
+(17) 
+(4.42) 
+0.86  
+09/09/2026 
+CLGX 
+CoreLogic Inc 
+Real Estate 
+2,800 
+B- 
+7/25/2031 
+1,650 
+B- 
+8/1/2031 
+(28) 
+0.04  
+0.94  
+09/09/2026 
+ZIGGO 
+Ziggo BV 
+Cable 
+1,310 
+B+ 
+5/21/2033 
+1,527 
+BB- 
+1/15/2032 
+(168) 
+(10.09) 
+1.06  
+09/09/2026 
+BXMT 
+Blackstone Mortgage Trust 
+Real Estate 
+769 
+B+ 
+12/10/2030 450 
+B+ 
+6/1/2031 
+20  
+(4.35) 
+1.13  
+09/09/2026 
+WJACN 
+WestJet Airlines Ltd 
+Travel 
+1,466 
+NR 
+2/14/2031 
+501 
+B 
+2/14/2031 
+3  
+0.41  
+1.26  
+09/09/2026 
+ZAYO 
+Zayo Group LLC 
+Telecoms 
+316 
+B- 
+3/25/2030 
+888 
+CCC 
+9/9/2030 
+80  
+(0.68) 
+1.46  
+09/09/2026 
+TNETBB 
+Telenet Communications NV 
+Telecoms 
+1,293 
+BB- 
+4/30/2029 
+1,000 
+BB- 
+3/1/2028 
+(5) 
+(1.12) 
+1.62  
+09/09/2026 
+CVT 
+Cvent Inc 
+Technology 
+901 
+B- 
+6/17/2030 
+825 
+B 
+6/15/2030 
+70  
+(0.77) 
+1.75  
+09/09/2026 
+ASUCOR 
+Asurion Corporation 
+Financials 
+2,394 
+BB- 
+2/23/2033 
+3,301 
+B- 
+2/1/2034 
+45  
+(6.55) 
+2.05  
+09/09/2026 
+LNZING 
+Lonza Specialty Ingredients 
+Chemicals 
+1,362 
+CCC 
+7/3/2028 
+350 
+CCC+ 
+5/15/2028 
+270  
+(7.54) 
+2.32  
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+Exhibit 49 shows dislocated 1L Loans and Senior Unsecured bonds from an issuer. For 
+issuers with more than one loan/bond, a representative loan/bond is selected based on 
+the highest face value. Pairs are filtered for Spread difference <-50bps OR >+200bps. 
+Pairs are sorted in ascending order of YTM diff. 
+Exhibit 49: Capital structure relative value, Loans vs Unsecured Bonds 
+List of 20 most dislocated unsecured bond – first lien loan pairs from the same issuer 
+Loan 
+Bond 
+ Bond minus Loan  
+ReportDate Ticker 
+Issuer 
+Sector 
+Face Value Rating Maturity 
+Face Value Rating Maturity 
+Spread Diff Price Diff YTM Diff 
+09/09/2026 CSWHOL C&S Wholesale Grocers  
+Food Producers 
+397 
+B- 
+9/20/2030 
+400 
+CCC 
+12/15/2028 (427) 
+1.00  
+(3.03) 
+09/09/2026 SBGI 
+Sinclair Broadcast Group 
+Media 
+626 
+B- 
+12/31/2030 485 
+CCC- 
+3/1/2030 
+(320) 
+(1.85) 
+(1.66) 
+09/09/2026 ACOM 
+Ancestry.com 
+Technology 
+1,050 
+B 
+8/4/2031 
+500 
+CCC+ 
+12/1/2028 
+(233) 
+(0.63) 
+(1.43) 
+09/09/2026 MAGN 
+Magnera 
+Packaging/Paper 
+706 
+B+ 
+11/4/2031 
+500 
+B+ 
+11/15/2029 (195) 
+(5.98) 
+(1.09) 
+09/09/2026 MATV 
+Schweitzer-Mauduit 
+Chemicals 
+500 
+B+ 
+4/4/2033 
+400 
+CCC+ 
+10/1/2029 
+(213) 
+1.85  
+(0.93) 
+09/09/2026 CZR 
+Caesars Entertainment Inc 
+Gaming 
+2,835 
+BB- 
+2/6/2031 
+1,201 
+B- 
+10/15/2029 (204) 
+(0.58) 
+(0.89) 
+09/09/2026 UNSEAM AlliedUniversal 
+Services 
+5,042 
+B 
+8/20/2032 
+960 
+CCC 
+6/1/2029 
+(196) 
+(0.62) 
+(0.78) 
+09/09/2026 UNFI 
+United Natural Foods 
+Food Producers 
+370 
+BB- 
+5/1/2031 
+350 
+CCC+ 
+10/15/2028 (72) 
+(1.13) 
+(0.71) 
+09/09/2026 GRFSM 
+Grifols SA 
+Healthcare 
+1,995 
+BB- 
+4/14/2033 
+706 
+B 
+10/15/2028 (137) 
+(1.82) 
+(0.62) 
+09/09/2026 TMS 
+Tube City IMS Corp 
+Metals 
+437 
+BB- 
+3/4/2030 
+350 
+B- 
+4/15/2029 
+(151) 
+(1.12) 
+(0.51) 
+09/09/2026 CONSEN Consolidated Energy Limited 
+Chemicals 
+728 
+B- 
+11/15/2030 606 
+B- 
+2/15/2031 
+-76 
+7.78 
+1.51 
+09/09/2026 MHED 
+McGraw-Hill Education Inc 
+Media 
+552 
+BB- 
+8/6/2031 
+604 
+B- 
+8/1/2029 
+-126 
+-0.20 
+1.81 
+09/09/2026 CLUCAR 
+Club Car LLC 
+Travel 
+736 
+CCC+ 
+6/1/2028 
+512 
+CCC- 
+6/1/2029 
+374 
+-12.47 
+3.39 
+09/09/2026 SHEARE 
+Shearer's Foods Inc 
+Food Producers 
+1,196 
+B 
+2/12/2031 
+450 
+CCC 
+9/15/2032 
+225 
+-1.59 
+3.47 
+09/09/2026 DEATIR 
+Dealer Tire LLC 
+Retail 
+1,457 
+B- 
+7/2/2031 
+501 
+CCC 
+10/1/2031 
+232 
+0.30 
+3.57 
+09/09/2026 TEKNI 
+Tekni-Plex Inc 
+Packaging/Paper 
+1,947 
+B- 
+9/15/2028 
+620 
+CCC 
+12/31/2028 325 
+2.60 
+3.78 
+09/09/2026 BHCCN 
+Bausch Health Companies Inc 
+Healthcare 
+2,970 
+B 
+10/8/2030 
+821 
+CCC- 
+2/15/2029 
+311 
+-15.21 
+3.93 
+09/09/2026 VRTU 
+Virtusa Corporation 
+Technology 
+1,211 
+B+ 
+2/15/2029 
+301 
+CCC+ 
+12/15/2028 364 
+-7.26 
+4.02 
+09/09/2026 MIDCON Midcontinent Communications 
+Cable 
+639 
+BB+ 
+8/18/2031 
+650 
+B 
+8/15/2032 
+332 
+-11.44 
+4.41 
+09/09/2026 GTN 
+Gray Television Inc 
+Media 
+739 
+B+ 
+12/1/2028 
+1,198 
+CCC 
+11/15/2031 384 
+-23.29 
+4.78 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+ 
+
+
+[Page 28]
+ 
+ 
+28 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+CLO Spreads and Arbitrage 
+As of Sep 11th, AAA CLO primary spreads are at 124bps, at slightly lower levels as 
+compared to start of year (125bps) (Exhibit 50). Arbitrage as of Aug 28th is 210bps, 
+higher than its 190bps level heading into the year, but down slightly from early March 
+peak of 231bps (Exhibit 51).  
+Exhibit 51 shows CLO spread levels by tranches. CLO arbitrage is a widely followed 
+statistic in the loan market and represents the theoretical spread that managers can 
+capture by issuing CLOs. Exhibit 51 compares CLO asset (Loan) spreads to the weighted 
+average spreads of CLO liabilities. The difference between these two values is 
+theoretical arbitrage and represents the current attractiveness of creating new CLOs. 
+Our asset pricing is based on both primary (higher weight) and secondary loans, and 
+liability pricing is based on the most current CLO primary pipeline from LevFin Insights.  
+Exhibit 50: US CLO 2.0/3.0 primary spread level (bps) 
+Primary CLO spreads have declined materially from ’22 peak 
+Source: BofA Global Research, LevFin Insights  
+BofA GLOBAL RESEARCH 
+Exhibit 51: CLO Arbitrage (bps) 
+CLO arbitrage has remained at YE ’24 levels 
+Source: BofA Global Research, LevFin Insights  
+BofA GLOBAL RESEARCH 
+ 
+Market Recap: EUR Loans 
+WTD, the EUR Loan Index has returned +0.09%, with Bs (+0.13%) faring better than BBs 
+(+0.06%). YTD, EUR loan return stands at +2.88%, underperforming the USD loan market 
+at +3.27%. On supply side, over the past seven days, we've observed two new issuances 
+totaling €1.25bn. Over the last seven days, we recorded one downgrade. Chemicals 
+issuer Angus chemical company was downgraded by three notches ($387mn). In terms 
+of WTD TR, Chemicals (+0.46%) and Technology (+0.30%) outperformed, while Cable (-
+0.47%) and Capital goods (-0.13%) lagged. Market data below is through Wed 09/09.  
+Returns Summary 
+WTD, the EUR Loan Index has returned +0.09%, with Bs (+0.13%) faring better than BBs 
+(+0.06%). YTD, EUR loan return stands at +2.88%, underperforming the USD loan market 
+at +3.27%. 
+Exhibit 52: EUR Loan total return 
+YTD EUR Loan index return is at 2.88% 
+YTD 
+MTD 
+WTD 
+9/4 
+8/28 
+All Loans 
+288 
+16 
+9 
+12 
+15 
+BB 
+372 
+8 
+6 
+6 
+6 
+B 
+293 
+19 
+13 
+11 
+15 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+Exhibit 53: EUR Loan index prices (pts) 
+EUR Loan index price is currently 96.3pts 
+Level 
+WTD 
+9/4 
+8/28 
+8/21 
+All Loans 
+96.3 pts 
++0.11 
++0.14 
++0.04 
+-0.03 
+BB 
+100.1 pts 
+-0.01 
+-0.04 
+-0.05 
++0.01 
+B 
+97.5 pts 
++0.05 
++0.00 
++0.03 
+-0.01 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+0
+400
+800
+1,200
+6-21 12-21 6-22 12-22 6-23 12-23 6-24 12-24 6-25 12-25 6-26
+AAA
+AA
+A
+BBB
+BB
+0
+200
+400
+600
+12-206-2112-216-2212-226-2312-236-2412-246-2512-256-26
+Arbitrage
+Loan spreads
+WA CLO Liability Spreads
+
+
+[Page 29]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+29
+ 
+ 
+New EUR Loan Issuance 
+Over the past seven days, we've observed two new issuances totaling €1.25bn. 96% was 
+for LBO purpose and remaining for refinancing. 
+Exhibit 54: EUR Loan new money issuance 
+List of EUR Loan deals over last seven days 
+Launch Date 
+Issuer 
+New Institutional Money 
+Rating 
+Purpose 
+Sector 
+Country 
+9/9/2026 
+Nestle Waters France 
+1,200 
+B 
+LBO 
+Food & Beverage 
+France 
+9/7/2026 
+Domidep SAS 
+55 
+B 
+Refinancing 
+Services & Leasing 
+France 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+EUR Upgrades/Downgrades 
+Over the last seven days, we recorded one downgrade. Chemicals issuer Angus chemical 
+company was downgraded by three notches ($387mn). 
+Exhibit 55: EUR Loan rating migrations 
+Over the past four weeks we have observed 1 downgrade 
+RatingDate 
+Issuer 
+Ticker 
+Sector 
+Face (USD) 
+Maturity 
+Rating Action 
+Current Rating 
+Notches 
+9/3/2026 
+ANGUS Chemical Company 
+ARUINV 
+Chemicals 
+387 
+11/24/2027 
+Downgrade 
+CC 
+(3) 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+Performance Breakdown  
+Exhibit 56 shows a detailed breakdown of performance drivers within the EUR loan 
+space, using the same methodology as used for USD loan valuations table in Exhibit 46. 
+Exhibit 56: EUR Loan valuations and performance by Rating and Sector 
+Breakdown of WTD, MTD, and YTD changes in price, spread, and total return across ratings and sectors 
+September 9, 
+2026 
+Characteristics 
+Total Return 
+3yr DM 
+Price 
+YTM 
+spot 
+USD 
+eqv 
+3yr 
+Yield 
+Constant Constituent 
+ 
+Count % by par 
+WTD 
+(bps) 
+MTD 
+(bps) 
+YTD 
+(bps) 
+Current 
+(bps) 
+WTD 
+(bps) 
+MTD 
+(bps) 
+YTD 
+(bps) 
+Current 
+(pts) 
+WTD 
+(pts) 
+MTD 
+(pts) 
+YTD 
+(pts) 
+w/o curve 
+(%) 
+w/o 
+curve 
+(%) 
+w/ curve 
+(%) 
+Total 
+Return 
+WTD (bps) 
+3yr DM 
+WTD 
+(bps) 
+Price 
+WTD 
+(pts) 
+All Loans 
+389 
+100% 
+9 
+16 
+289 
+497 
+-1 
+-1 
+12 
+96.3 
+0.0 
+0.0 -0.7 
+7.2 
+9.3 
+9.3 
+9 
+0 
+0.0 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+BBB Loans 
+2 
+0% 
+5 
+14 
+320 
+220 
+1 
+-1 
+-29 
+100.3 
+0.0 
+0.0 
+0.1 
+4.9 
+6.9 
+6.5 
+5 
+1 
+0.0 
+BB Loans 
+35 
+10% 
+6 
+8 
+375 
+267 
+0 
+3 -120 
+100.1 
+0.0 -0.1 
+2.6 
+5.3 
+7.3 
+7.0 
+6 
+0 
+0.0 
+B Loans 
+329 
+82% 
+12 
+20 
+290 
+450 
+-2 
+-2 
+18 
+97.5 
+0.0 
+0.0 -0.9 
+6.9 
+8.9 
+8.8 
+13 
+-1 
+0.0 
+All Cs 
+23 
+5% 
+-48 
+-8 
+70 
+2,053 
+33 
+17 122 
+70.3 -0.4 -0.2 -1.6 
+26.4 
+28.4 
+24.9 
+-49 
+33 
+-0.4 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+BBB- 
+2 
+0% 
+5 
+14 
+327 
+220 
+1 
+-1 
+-29 
+100.3 
+0.0 
+0.0 
+0.1 
+4.9 
+6.9 
+6.5 
+5 
+1 
+0.0 
+BB+ 
+6 
+2% 
+4 
+0 
+321 
+245 
+1 
+5 
+-3 
+100.3 
+0.0 -0.1 -0.1 
+5.1 
+7.1 
+6.8 
+4 
+1 
+0.0 
+BB 
+10 
+3% 
+3 
+10 
+296 
+258 
+2 
+4 
+-11 
+100.1 
+0.0 
+0.0 
+0.2 
+5.2 
+7.2 
+6.9 
+3 
+2 
+0.0 
+BB- 
+19 
+5% 
+9 
+10 
+424 
+278 
+0 
+1 -197 
+100.1 
+0.0 
+0.0 
+4.3 
+5.4 
+7.4 
+7.1 
+9 
+0 
+0.0 
+B+ 
+60 
+17% 
+17 
+30 
+258 
+388 
+-5 
+-6 
+51 
+98.2 
+0.1 
+0.2 -1.9 
+6.3 
+8.3 
+8.2 
+18 
+-3 
+0.1 
+B 
+182 
+46% 
+11 
+15 
+301 
+410 
+-1 
+0 
+34 
+98.4 
+0.0 
+0.0 -1.3 
+6.6 
+8.6 
+8.4 
+11 
+-1 
+0.0 
+B- 
+87 
+19% 
+11 
+22 
+294 
+613 
+0 
+-2 
+-10 
+94.8 
+0.0 
+0.0 
+0.0 
+8.5 
+10.5 
+10.5 
+11 
+0 
+0.0 
+All Cs 
+23 
+5% 
+-48 
+-8 
+70 
+2,053 
+33 
+17 122 
+70.3 -0.4 -0.2 -1.6 
+26.4 
+28.4 
+24.9 
+-49 
+33 
+-0.4 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Autos 
+8 
+3% 
+7 
+12 
+279 
+284 
+0 
+1 
+-2 
+99.8 
+0.0 
+0.0 -0.8 
+5.4 
+7.5 
+7.2 
+7 
+0 
+0.0 
+Cable 
+7 
+2% 
+-47 
+-80 -435 
+934 
+25 
+42 371 
+86.5 -0.5 -0.9 -8.2 
+10.9 
+12.9 
+13.7 
+-47 
+25 
+-0.5 
+Capital Goods 
+26 
+7% 
+-13 
+-21 
+352 
+361 
+8 
+13 
+-26 
+99.3 -0.2 -0.3 -0.2 
+6.2 
+8.2 
+7.9 
+-12 
+8 
+-0.2 
+Chemicals 
+25 
+5% 
+46 114 
+979 
+587 
+-15 
+-39 -160 
+95.2 
+0.4 
+0.9 
+4.2 
+8.2 
+10.2 
+10.2 
+46 
+-14 
+0.3 
+Energy 
+4 
+2% 
+10 
+16 
+427 
+362 
+0 
+0 
+-21 
+100.2 
+0.0 
+0.0 -0.4 
+6.3 
+8.3 
+8.0 
+10 
+0 
+0.0 
+Financials 
+37 
+9% 
+26 
+17 
+160 
+704 
+-7 
+0 122 
+91.7 
+0.2 
+0.0 -3.2 
+8.8 
+10.8 
+11.4 
+26 
+-7 
+0.2 
+Food Producers 
+24 
+6% 
+2 
+-2 
+322 
+396 
+2 
+6 
+11 
+99.1 -0.1 -0.2 -0.4 
+6.5 
+8.5 
+8.3 
+3 
+2 
+-0.1 
+Gaming 
+5 
+1% 
+-1 
+-14 
+219 
+356 
+3 
+11 
+48 
+98.5 -0.1 -0.3 -1.7 
+6.1 
+8.1 
+7.9 
+-1 
+3 
+-0.1 
+Healthcare 
+63 
+17% 
+8 
+24 
+437 
+492 
+0 
+-3 
+-49 
+96.4 
+0.0 
+0.1 
+0.8 
+7.2 
+9.2 
+9.3 
+7 
+0 
+0.0 
+Media 
+15 
+3% 
+11 
+26 
+276 
+468 
+0 
+-3 
+16 
+97.4 
+0.0 
+0.1 -1.2 
+7.0 
+9.0 
+9.0 
+8 
+0 
+0.0 
+Metals 
+1 
+0% 
+4 
+90 1,173 
+830 
+3 
+-29 -232 
+92.1 -0.1 
+0.6 
+4.9 
+12.0 
+14.0 
+12.6 
+4 
+3 
+-0.1 
+Packaging/Paper 
+10 
+2% 
+7 
+16 
+449 
+406 
+1 
+1 -140 
+99.3 
+0.0 
+0.0 
+3.3 
+6.6 
+8.6 
+8.4 
+7 
+1 
+0.0 
+Real Estate 
+26 
+6% 
+-7 
+8 
+75 
+666 
+7 
+4 
+71 
+92.7 -0.2 -0.1 -2.4 
+8.9 
+10.9 
+11.0 
+-7 
+7 
+-0.2 
+
+
+[Page 30]
+ 
+ 
+30 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+Exhibit 56: EUR Loan valuations and performance by Rating and Sector 
+Breakdown of WTD, MTD, and YTD changes in price, spread, and total return across ratings and sectors 
+September 9, 
+2026 
+Characteristics 
+Total Return 
+3yr DM 
+Price 
+YTM 
+spot 
+USD 
+eqv 
+3yr 
+Yield 
+Constant Constituent 
+Retail 
+33 
+10% 
+6 
+8 
+393 
+419 
+1 
+2 
+-9 
+98.0 
+0.0 -0.1 -0.1 
+6.6 
+8.6 
+8.5 
+7 
+1 
+0.0 
+Services 
+32 
+10% 
+4 
+0 
+95 
+476 
+2 
+8 
+70 
+96.4 
+0.0 -0.2 -2.4 
+7.0 
+9.0 
+9.1 
+4 
+2 
+0.0 
+Technology 
+40 
+10% 
+30 
+68 
+176 
+551 
+-6 
+-17 
+4 
+94.8 
+0.1 
+0.4 -0.4 
+7.7 
+9.8 
+9.8 
+25 
+-6 
+0.1 
+Telecoms 
+10 
+2% 
+10 
+16 
+302 
+325 
+-2 
+1 
+15 
+99.7 
+0.0 
+0.0 -0.6 
+5.9 
+7.9 
+7.6 
+10 
+-1 
+0.0 
+Transportation 
+4 
+1% 
+13 
+10 
+344 
+300 
+-2 
+1 
+-44 
+100.4 
+0.1 
+0.0 -0.3 
+5.7 
+7.7 
+7.3 
+13 
+-2 
+0.1 
+Travel 
+15 
+4% 
+10 
+-33 
+12 
+553 
+0 
+19 112 
+94.9 
+0.0 -0.5 -3.4 
+7.7 
+9.7 
+9.9 
+10 
+0 
+0.0 
+Utilities 
+1 
+0% 
+8 
+48 
+494 
+327 
+0 
+-12 -151 
+100.6 
+0.0 
+0.3 
+0.7 
+6.0 
+8.0 
+7.6 
+8 
+0 
+0.0 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+Over the past seven days, Capital goods issuer Veonet Lense led the decliners, with two 
+of its TL falling -6.2 pts & -5.2pts, followed by two TL tranches of Cable issuer Altice 
+Financing dropping by (- 4.1pts) respectively. On the upside, two TL tranches of 
+Chemicals issuer Ineos Quattro gained +3.6pts & +3.0pts, followed by Technology issuer 
+Software AG that gained +2.7pts 
+Exhibit 57: Top Loan Movers 
+Largest price movements over last 7 days 
+FigiID 
+Issuer 
+Industry 
+Amt Out ($mn) 
+Margin (bps) Maturity 
+Loan Rtgs (MDY/S&P) 
+Price (pts) Price Chg (pts) 
+Largest price declines for the week ended 9/9 
+BBG01SBCGPD1 
+Veonet Lense 
+Capital Goods 
+423 
+E+ 475 
+2029-03-14 
+B3/B 
+90.0 
+-6.2 
+BBG01S7Q1616 
+Veonet Lense 
+Capital Goods 
+1,083 
+E+ 350 
+2029-04-13 
+–/– 
+90.3 
+-5.2 
+BBG01JJT4DS0 
+Altice Financing 
+Cable 
+906 
+E+ 500 
+2027-10-31 
+Caa2/CCC 
+58.9 
+-4.1 
+BBG01BQJG4N3 
+Altice Financing 
+Cable 
+506 
+E+ 500 
+2027-10-28 
+Caa2/CCC 
+58.9 
+-4.1 
+BBG01R4ZSVP1 
+Ace Bidco 
+Travel 
+466 
+E+ 400 
+2031-07-08 
+–/B 
+68.0 
+-3.0 
+BBG01WDMDKZ8 
+Think-cell Management 
+Technology 
+880 
+E+ 450 
+2028-08-31 
+–/– 
+81.9 
+-2.6 
+BBG0230HPH99 
+Robinson Bidco 
+Capital Goods 
+1,019 
+E+ 300 
+2032-05-18 
+–/– 
+98.0 
+-2.6 
+BBG01BXTN9W4 
+Emeria 
+Real Estate 
+918 
+E+ 525 
+2028-03-27 
+B3/– 
+73.9 
+-2.0 
+BBG01VQZB6V4 
+Modulaire Group Holdings 
+Services 
+1,514 
+E+ 450 
+2031-07-01 
+B3/B- 
+82.1 
+-1.7 
+BBG014V0Q319 
+Scientific Games Holdings 
+Gaming 
+742 
+E+ 400 
+2029-04-04 
+B2/B- 
+88.7 
+-1.7 
+Largest price increases for the week ended 9/9 
+BBG01JYXGLM9 
+INEOS Quattro Holdings UK 
+Chemicals 
+1,683 
+E+ 450 
+2029-04-02 
+B3/BB- 
+86.7 
++3.6 
+BBG01FNBS4K4 
+INEOS Quattro Holdings UK 
+Chemicals 
+437 
+E+ 400 
+2030-03-14 
+B3/BB- 
+82.1 
++3.0 
+BBG01SMVZ8Z0 
+Software AG 
+Technology 
+1,182 
+E+ 375 
+2030-09-16 
+B2/B 
+98.4 
++2.7 
+BBG01PZSDDV6 
+INEOS Quattro Holdings UK 
+Chemicals 
+507 
+E+ 425 
+2031-10-01 
+B3/BB- 
+81.3 
++2.7 
+BBG00XYHS3X9 
+Advancion Holdings 
+Chemicals 
+387 
+E+ 400 
+2027-11-24 
+B3/CCC+ 
+95.0 
++2.4 
+BBG01ZZPK5S3 
+Takecare Bidco 
+Healthcare 
+955 
+E+ 325 
+2031-12-17 
+–/– 
+78.6 
++2.2 
+BBG012F6H1M9 
+Orion Engineered Carbons 
+Chemicals 
+349 
+E+ 250 
+2028-09-24 
+Ba3 /BB 
+89.4 
++2.0 
+BBG0155L8K20 
+Cerba Healthcare  
+Healthcare 
+699 
+E+ 400 
+2029-02-15 
+Caa2/– 
+69.9 
++1.9 
+BBG010ML1D52 
+Cerba Healthcare  
+Healthcare 
+2,184 
+E+ 375 
+2028-06-30 
+Caa2/CCC+ 
+69.8 
++1.8 
+BBG01XF8RQN0 
+ION Platform Finance 
+Financials 
+2,382 
+E+ 400 
+2032-09-30 
+B2/B+ 
+78.2 
++1.7 
+Source: BofA Global Research, LCD 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+
+
+[Page 31]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+31
+ 
+ 
+Glossary 
+A&E: Amendment and Extension 
+AI: Artificial Intelligence 
+AUM: Assets Under ManagEment 
+AVGO: Broadcom Inc. (ticker) 
+BNEF: BloombergNEF 
+BofA/BofAS: Bank of America / BofA Securities 
+BSL: Broadly Syndicated Loan Market 
+CCC: HY/Loans CCC Rating 
+CFA: Chartered Financial Analyst 
+CFO: Cash Flow from Operations 
+CLO: Collateralized Loan Obligation 
+CPI: Consumer Price Index 
+CSI: Credit Stress Indicator 
+CY: Calendar Year 
+DC: Datacenter 
+DE: Distressed Exchange 
+DL: Direct Lending 
+DR: Default Rate 
+EPRI: Electric Power Research Institute 
+FCF: Free Cash Flow 
+FL/1L: First Lien 
+FOMO: Fear of Missing Out 
+FTF: Funding The Future 
+FY: Fiscal Year 
+GFC: Global Financial Crisis 
+GPU: Graphics Processing Unit 
+GW: Gigawatt 
+HY: High Yield 
+IEA: International Energy Agency 
+IG: Investment Grade 
+ISM: Institute for Supply Management 
+IT: Information Technology 
+JLL: Jones Lang LaSalle 
+LBNL: Lawrence Berkeley National Laboratory 
+
+
+[Page 32]
+ 
+ 
+32 
+High Yield & Loan Strategy | 11 September 2026 
+ 
+ 
+LBO: Leveraged Buyout 
+LCD: Leveraged Commentary & Data 
+LevFin: Leveraged Finance 
+LTM: Last 12 months 
+M&A: Mergers and Acquisitions 
+MM: Middle Market 
+MTD: Month to Date 
+NTM: Next Twelve Months 
+NVDA: NVIDIA Corporation (ticker) 
+OAS: Option-Adjusted Spread 
+OCF: Operating Cash Flow 
+OER: Owners’ Equivalent Rent 
+PD: Private Debt 
+PDR: Probability Default Rating 
+PIK: Payment-in-Kind 
+PPI: Producer Price Index 
+QoQ: Quarter over Quarter 
+RCF: Revolving Credit Facility 
+Refi: Refinancing 
+ROIC: Return on Invested Capital 
+RV: Relative Value 
+RVG: Residual Value Guarantee 
+SL/2L: Second Lien 
+SMA: Separately Managed Accounts 
+TAM: Total Addressable Market 
+TL: Term Loan 
+TLA/TLB: Term Loan A/B 
+TR: Total return 
+UoP: Use of Proceed 
+US: United States 
+WK: Week 
+WoW: Week over Week 
+WTD: Week to Date 
+xPU: Accelerated Processing Unit 
+XPV: Broadcom AI Platform 
+
+
+[Page 33]
+ 
+ 
+High Yield & Loan Strategy | 11 September 2026
+33
+ 
+ 
+YoY: Year over Year 
+YTD: Year to Date 
+YTM: Yield to Maturity 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+Special Disclosures 
+BofA Securities is currently acting as financial advisor and will provide a fairness 
+opinion to Orange SA in connection with its proposed acquisition of SFR SA in 
+consortium with Bouygues Telecom SA and Iliad SA, which was announced on 6 June 
+2026. 
+BofA Securities is currently acting as financial advisor to One Investment 
+Management Ltd in connection with the proposed acquisition with PayPay 
+Corporation, a subsidiary of SoftBank Group Corp., of shares of T&D Financial Life 
+Insurance Company, a consolidated subsidiary of T&D Holdings, Inc., which was 
+announced on June 4, 2026. 
+BofA Securities is currently acting as Financial Advisor to Paramount Skydance Corp 
+in connection with its definitive agreement to acquire Warner Bros Discovery Inc, 
+which was announced on February 27, 2026. 
+BofA Securities is currently acting as Financial Advisor to Performance Food Group 
+Co in its response to Sachem Head 
+BofA Securities is currently acting as financial advisor to Rakuten Group, Inc. in 
+connection with the reorganization of Rakuten Group’s FinTech Business including 
+Rakuten Bank, Ltd., which was announced on May 20, 2026. 
+BofA Securities is currently acting as Financial Advisor to South32 Ltd. in 
+connection with its proposed sale of its aluminum business to Alcoa Corp, which 
+was announced on July 1st, 2026. The proposed transaction is subject to approval by 
+shareholders of South32 Ltd. This research report is not intended to provide voting 
+advice, serve as an endorsement of the proposed transaction, or result in the 
+procurement, withholding or revocation of a proxy. 
+BofA Securities is currently acting as joint financial advisor to ABB Ltd in 
+connection with the sale of its Robotics Division to SoftBank Group Corp, which was 
+announced on October 8, 2025. 
+BofA Securities is currently acting as a Financial Advisor to Pitney Bowes Inc in the 
+second phase of their review of strategic alternatives. 
+  
