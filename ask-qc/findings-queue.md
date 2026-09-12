@@ -424,3 +424,27 @@ reasoning in `pulse-data/ask-qc/2026-09-10.claude.md`. Two turns
 `validate-strip` guard catching an unsourced figure in the raw model
 output and the shipped answer using the sourced replacement instead —
 noted as the ladder working, not a defect.
+
+## 2026-09-11
+
+- (open) judgment — CPI-print fabrication at 12:31:27 UTC (2Pale,
+  "what was the economic print"). `lookup_economic_calendar` returned
+  `ok` (2558 chars) but the four shipped figures (core CPI m/m
+  +0.22%, core CPI y/y +2.67%, headline m/m +0.07%, headline y/y
+  +3.52%) are all wrong versus the real August 2026 BLS release
+  (core m/m +0.3%, core y/y +2.4%, headline m/m +0.4%, headline y/y
+  +3.4% — confirmed by web search and independently corroborated by
+  the same day's 14:07:11 turn, which answered the identical question
+  correctly via web grounding). Turn landed at 8:31:27 AM ET, ~90
+  seconds after the standard 8:30 AM ET release — likely a
+  data-freshness gap in whatever backs `lookup_economic_calendar`
+  rather than a prompt or model defect; worth checking if it shares a
+  release-lag profile with `report/fred_data.py` (per CLAUDE.md, lags
+  releases by hours — the reason `report/print_watch.py` exists as a
+  faster path for the pulse side). `scripts/validate_answer.py`
+  returns no violation and `check_macro_unsourced` in
+  `scripts/ask_response_validate.py` only fires when the calendar
+  tool was *not* called this turn — no existing or plausible regex
+  class can catch "tool called, status ok, figures still wrong"
+  without a ground-truth fetch, so this isn't drafted as a fixture.
+  Full writeup: `pulse-data/ask-qc/2026-09-11.claude.md`.
