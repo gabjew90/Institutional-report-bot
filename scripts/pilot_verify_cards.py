@@ -40,6 +40,12 @@ from ai_analysis.anchor_check import (MIN_ANCHOR_CHARS,  # noqa: E402
 from scripts.pilot_config import MACRO_KEYS, MAX_LABELS_PER_DOC  # noqa: E402
 
 
+# The reader's declared overflow label (reader.md, 2026-09-12): outside
+# the per-document cap, shown as unlabelled by the ledger, counted as
+# ungrouped mass by the grader.
+MISC_LABEL = "misc"
+
+
 def _label(c: dict) -> str:
     return " ".join((c.get("topic") or "").split()).strip().lower()
 
@@ -52,10 +58,14 @@ def check_labels(cards: list) -> dict:
     `reask` means the document conforms."""
     labels: dict[str, int] = {}
     bad_macro: list[str] = []
+    misc = 0
     for c in cards or []:
         if not isinstance(c, dict):
             continue
         lab = _label(c)
+        if lab == MISC_LABEL:
+            misc += 1          # declared overflow: outside the cap, counted
+            continue
         if lab:
             labels[lab] = labels.get(lab, 0) + 1
         if not (c.get("instruments") or []):
@@ -77,7 +87,7 @@ def check_labels(cards: list) -> dict:
             f"{len(bad_macro)} card(s) with no instrument carry no valid "
             f"macro_key. Set one of {' '.join(MACRO_KEYS)} on each: "
             + " | ".join(bad_macro[:8]))
-    return {"label_count": len(labels), "labels_over_cap": over,
+    return {"label_count": len(labels), "labels_over_cap": over, "misc_cards": misc,
             "macro_key_invalid": len(bad_macro), "reask": "\n".join(parts)}
 
 
@@ -153,6 +163,7 @@ def main() -> int:
         **stats,
         "label_count": labels["label_count"],
         "labels_over_cap": labels["labels_over_cap"],
+        "misc_cards": labels["misc_cards"],
         "macro_key_invalid": labels["macro_key_invalid"],
         "macro_key_coerced": coerced,
         "reasked": prev + (1 if needs else 0),

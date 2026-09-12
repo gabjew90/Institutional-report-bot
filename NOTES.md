@@ -2573,3 +2573,31 @@ industry line). `X_POST_ENABLED=false` logs the caption as a dry run;
 one post per date via `/data/x-posts`. The four keys come from the
 owner's X developer portal; `scripts/x_post_test.py --check` proves
 them read-only, `--post` makes the one owner-approved public test.
+
+## 2026-09-12 — First day under the label contract: fragmentation 9-16%, mis-merges are the new failure
+
+2026-09-11 was the first day read entirely under the pulse-theme grain,
+the five-label cap and KNOWN_LABELS. Labels: 66 for 35 documents (476
+for 62 on 09-09), 26 shared across documents, "fed september hike odds"
+used by 12 documents. Grader fragmentation: 16% / 10.8% / 8.9%
+(tiebreak) against 30-60% on every earlier day. Every document read
+was at five labels or fewer with one re-ask and no macro_key coercion.
+The day itself is VOID (11 unread at edit, the reader timeouts fixed
+the same afternoon).
+
+The new failure is the cap's side effect: readers at five subjects
+folded leftovers into grab-bags ("ai narrative" = a product launch, a
+data-center investment, a stock rebound and a researcher's
+resignation; "european equity buy ideas" = Germany macro, Greek banks,
+Inditex). All three graders flagged them as theme-changing mis-merges.
+One grader call goes the other way: opposing stances on one subject
+("ai infrastructure demand") are one subject, and `direction` carries
+the stance.
+
+Fix, before DAY1: reader.md gains "a label names ONE subject" with a
+declared overflow label `misc` that does not count toward the cap;
+pilot_verify_cards exempts it and records `misc_cards`; the grader
+rubric counts `misc` as ungrouped mass (never a mis-merge) and states
+that stances are not subjects. Next: one clean shadow day under the
+90-minute reader timeout, read fragmentation, mis-merges and the misc
+share, then commit `pilot/DAY1`.

@@ -19,6 +19,14 @@ claim, and its instruments.
   the day's pulse would carry them as separate briefs. A single research
   note usually argues one to three subjects, rarely five. Two labels are
   fragmented only when a pulse would cover them in ONE brief.
+- **Stances are not subjects** (stated 2026-09-12): a bull and a bear
+  read of the same subject under one label is correct grouping, not a
+  mis-merge; the card's `direction` field carries the stance and the
+  editor is meant to see the debate in one place.
+- **`misc` is the reader's declared overflow, not a label** (stated
+  2026-09-12): cards labelled exactly `misc` count toward fragmented
+  mass as ungrouped cards and are never a mis-merge, however unrelated
+  their contents. Report their share in `notes`.
 - **Fragmentation**: two or more labels that a careful reader would
   say cover the SAME underlying subject (the same event, thesis, or
   instrument story), split only by wording. "AI capex cycle" and

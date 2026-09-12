@@ -115,6 +115,13 @@ def test_label_cap_and_macro_key_contract_are_verified():
     # a conforming document produces no re-ask text
     ok = [{**_card("GS", "x", instruments=[]), "topic": "fed", "macro_key": "FED"}]
     assert check_labels(ok)["reask"] == ""
+    # `misc` (2026-09-12) is the declared overflow: outside the cap, counted
+    five = [{**_card("GS", f"c{i}", instruments=["NVDA"]), "topic": f"subject {i}"} for i in range(5)]
+    stragglers = [{**_card("GS", f"s{i}", instruments=["NVDA"]), "topic": "misc"} for i in range(3)]
+    r = check_labels(five + stragglers)
+    assert r["label_count"] == 5 and r["labels_over_cap"] == 0 and r["misc_cards"] == 3 and r["reask"] == ""
+    six = five + [{**_card("GS", "c6", instruments=["NVDA"]), "topic": "subject 6"}]
+    assert check_labels(six)["labels_over_cap"] == 1
 
 
 def test_known_labels_lists_the_window_most_used_first():

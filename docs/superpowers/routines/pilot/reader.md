@@ -81,6 +81,20 @@ Rules:
   card takes one of those labels. **At most five labels per document.**
   The verifier re-asks a document that uses more, and folds are cheaper
   than a re-ask round.
+- **A label names ONE subject. Never fold leftovers into a grab-bag.**
+  On the first day under the cap, "ai narrative" held a product launch,
+  a data-center investment, a stock rebound and a researcher's
+  resignation, and "european equity buy ideas" held a Germany macro
+  thesis, a Greek-banks field trip and an Inditex model update. Those
+  are mis-merges and they fail the pilot as surely as fragmentation
+  does. When a claim fits none of the document's five subjects, label
+  it exactly `misc`. `misc` does not count toward the five, the ledger
+  shows it as unlabelled, and the grader counts it as ungrouped mass,
+  so it is a cost, not a free bucket: use it for the genuine
+  stragglers, not for a sixth subject that deserves its own label.
+  Opposing stances on the same subject (a bull and a bear read of AI
+  infrastructure demand) are ONE subject; `direction` carries the
+  stance.
 - **KNOWN_LABELS.** The prompt ends with the labels already used in
   this ledger window, most-used first. Before coining a label, scan
   that list: when an entry names the same subject at pulse-theme grain,
