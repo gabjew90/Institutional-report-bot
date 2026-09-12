@@ -1,0 +1,776 @@
+[Page 1]
+ 
+Trading ideas and investment strategies discussed herein may give rise to significant risk and are 
+not suitable for all investors. Investors should have experience in relevant markets and the financial 
+resources to absorb any losses arising from applying these ideas or strategies. 
+BofA Securities does and seeks to do business with issuers covered in its research 
+reports. As a result, investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of this report. Investors should consider this 
+report as only a single factor in making their investment decision. 
+Refer to important disclosures on page 11 to 12.  
+ 
+ 
+ 
+CTA Design Impact Monitor 
+Dispersion compresses in August, though 
+slow still leads fast over the quarter 
+     
+   
+ 
+ 
+Tracking how CTA design choices shape performance 
+The CTA Design Impact Monitor tracks how differences in model construction translate 
+into performance across changing market environments. Using a baseline model 
+anchored to the SG CTA Index, we isolate the effects of universe selection, trend speed, 
+risk allocation, and volatility reactivity across recent and historical periods. 
+Performance driven by core CTA design choices 
+CTA performance differences are primarily driven by a small number of design levers. 
+Across the full history, universe selection and trend speed are the dominant factors, 
+while risk allocation across asset classes introduces an additional layer of differentiation. 
+Volatility reactivity plays a more limited role, with its impact generally smaller in 
+magnitude. This hierarchy provides a structured lens through which to interpret variation 
+across managers. 
+August cools dispersion; small universes lag most 
+Design dispersion narrowed in August after July's unusually wide separation across 
+model designs. Trend speed remained a key driver of relative performance, but the sharp 
+slow-versus-fast divide seen in July moderated. Fast trend models continued to lag the 
+baseline framework, while slow trend models performed broadly in line with it, resulting 
+in a smaller performance gap than a month earlier. Universe selection accounted for the 
+largest relative effect, with smaller universes the biggest detractor, while equity and 
+fixed income overweights also weighed modestly on results.  
+Exhibit 1: Trend speed drove July’s CTA design dispersion, with slow models outperforming 
+Incremental backtested performance of alternative CTA model designs versus the baseline framework 
+Source: BofA Global Research. Performance is backtested and does not represent the actual performance of any account or fund. 
+Backtested performance depicts the theoretical (not actual) performance of a particular strategy over the time period indicated. No 
+representation is being made that any actual portfolio is likely to have achieved returns similar to those shown herein. 
+BofA GLOBAL RESEARCH 
+0.0%
+0.0%
+-0.1%
+-0.1%
+-0.4%
+-0.4%
+-0.8%
+-1.1%
+Less Vol Reactivity
+Currencies Overweight
+Commodity Overweight
+Slow Trend
+Equity Overweight
+Fixed Income Overweight
+Fast Trend
+Small Universe
+CTA Design Choice Return Impact (Prior Month, Aug-2026)
+11 September 2026   
+Equity Derivatives 
+Global 
+Global Equity Derivatives Rsch 
+BofAS 
+Chintan Kotecha 
+Equity-Linked Analyst 
+BofAS 
+chintan.kotecha@bofa.com 
+Nicholas Dunne 
+Equity-Linked Analyst 
+BofAS 
+nicholas.dunne@bofa.com 
+Accessible version 
+
+
+[Page 2]
+ 
+ 
+2 
+CTA Design Impact Monitor | 11 September 2026 
+ 
+ 
+ 
+CTA model design and its impact on performance 
+Trend following strategies have their roots in commodity futures, where some of the 
+earliest systematic approaches were applied. As a result, they became known as 
+Commodity Trading Advisors, or CTAs. Today, however, global futures markets span 
+equities, fixed income, currencies, and commodities. To capture diversification across 
+these asset classes, trend following strategies have expanded their investment universe, 
+though they are still commonly referred to as CTAs or more broadly as Managed Futures. 
+While these strategies are rules-based and systematic, they are not uniform. 
+Implementing a trend following model requires a set of core design choices, including 
+the assets included in the universe, the speed at which signals react, and how risk is 
+allocated and scaled over time. These choices are fundamental to model construction 
+and can lead to meaningful differences in realized performance, particularly in more 
+volatile or rapidly changing market environments where positioning diverges across 
+models. 
+This report focuses on understanding those differences. We develop a framework to 
+isolate and quantify the impact of key design choices on CTA performance. By holding all 
+else equal and varying individual components of the model, we attribute performance 
+differences directly to underlying construction decisions, providing a clearer view of 
+what drives dispersion across managers.   
+Because CTA strategies are systematic, they can be modeled. Using observable market 
+data and well-defined rules, we construct representative models that approximate 
+industry behavior. This allows us both to replicate broad trends in CTA performance and 
+to run controlled comparisons across alternative specifications.  This framework will be 
+updated monthly, allowing us to track how the contribution of individual design choices 
+evolves through time and how leadership shifts as market conditions change.  
+Exhibit 2: Cross‑sectional dispersion captures structural variation in CTA model construction as the opportunity set broadens 
+Cross‑sectional dispersion (standard deviation) of weekly returns across a correlation‑screened CTA universe, with rolling average, extreme percentile thresholds, and 
+number of constituent funds 
+Source: BofA Global Research.  Based on data from 2-Jan-2015 through 4-Sep-2026.  CTA universe screened based on correlation threshold to SG CTA benchmark index.   
+BofA GLOBAL RESEARCH 
+Dispersion and the CTA opportunity set 
+The opportunity set for systematic trend-following strategies is fundamentally driven by 
+cross-model dispersion.  When dispersion is elevated, differences in signal construction, 
+asset allocation, and implementation translate into materially divergent outcomes across 
+managers.  When dispersion compresses, performance tends to converge, and model 
+design plays a more limited role.  Exhibit 2 places this dynamic into context by showing 
+the evolution of dispersion alongside a growing footprint of listed CTA products.  The 
+screened universe has expanded from 14 funds at the beginning of the sample to 26 
+today, making recent dispersion less likely to reflect idiosyncratic moves in a small 
+number of products.   
+0
+5
+10
+15
+20
+25
+30
+0.0%
+1.0%
+2.0%
+3.0%
+4.0%
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Number of Funds
+Dispersion (StDev of Weekly 
+Returns)
+Weekly Dispersion
+Rolling Avg (90D)
+Median Dispersion
+Top 20 Weeks (Highest Dispersion)
+
+
+[Page 3]
+ 
+ 
+CTA Design Impact Monitor | 11 September 2026
+3
+ 
+ 
+CTA dispersion remains elevated 
+Dispersion across listed CTA products has remained above its long-run median for much 
+of the period since 2022 (Exhibit 2), leaving outcomes more differentiated than during 
+the preceding lower-dispersion regime. After compressing through the second half of 
+2025, the 90‑day measure rose through the first half of 2026 and, while it eased 
+modestly from those highs into August, it remained above its historical median. Model 
+design is therefore continuing to translate into meaningful differences in realized 
+performance across managers. The most recent readings are also more compressed than 
+in July: August produced a narrower separation between slow and fast trend models, with 
+smaller universes rather than trend speed accounting for the largest single design effect. 
+This is consistent with an environment in which model differences persist but have 
+moderated from the wider divide seen a month earlier.  
+Even so, current dispersion remains below the most extreme episodes in 2018 and 2020. 
+The backdrop is best described as differentiated rather than dislocated: design choices 
+are having a material effect on outcomes, but cross-manager variation remains within 
+the historical range. 
+What drives dispersion: The key CTA design levers 
+Dispersion in CTA outcomes is a direct function of design choices embedded within each 
+model.  In stable trend environments, models should converge toward similar positions 
+regardless of specification. However, as markets become more volatile and trends 
+reverse, the embedded choices begin to matter more significantly.  To better understand 
+the source of dispersion across managers, CTA performance can be attributed to a set of 
+core design choices. The analysis in this report focuses on a set of key CTA design levers 
+that drive dispersion across models.  Ordered from most to least impactful, they are 
+categorized as follows: 
+1. 
+Universe—The dominant driver: The most important determinant of performance 
+differences is the set of assets included in the model. Expanding or contracting the 
+universe directly affects where trends can be expressed, which macro opportunities 
+are captured, and the balance between core and peripheral markets. To illustrate 
+this effect, we will focus on two endpoints: a “large” universe and a “small” 
+universe. The large universe spans a broad set of global futures markets across 
+asset classes, while the small universe is concentrated in the most liquid, core 
+contracts across asset classes.  
+2. 
+Trend speed—Timing the opportunity: The second key lever is how quickly a 
+model reacts to trends. Speed primarily determines the timing of entry and exit, the 
+ability to respond to new information, and sensitivity to reversals, particularly in 
+more volatile environments. Faster models respond more quickly to changing 
+conditions, while slower models prioritize persistence and stability, resulting in more 
+gradual positioning adjustments. To illustrate the impact of this lever, we will 
+consider three distinct specifications: fast, medium, and slow trend speeds.  Short-
+term trend uses a collection of moving average crosses from 21 to 100 trading days 
+while long-term has crosses between 50 and 252 trading days. The medium-term, 
+as we define it, uses moving average crosses between 21 and 252 trading days. 
+3. 
+Risk budget—Allocation across assets: The third key lever is how risk is 
+allocated across assets within the model. Risk budgets determine how capital is 
+distributed across asset classes and therefore where exposure is concentrated. 
+Tilting toward specific segments, such as equities, fixed income, commodities, or 
+currencies, can meaningfully shape performance depending on where trends are 
+most pronounced. To illustrate this effect, we compare an equal-weighted risk 
+allocation across these four asset classes to specifications that overweight each 
+individually, with the overweight asset class assigned 50% of the risk budget and 
+the remaining 50% split equally across the other three. This isolates the impact of 
+cross-asset positioning on outcomes. 
+
+
+[Page 4]
+ 
+ 
+4 
+CTA Design Impact Monitor | 11 September 2026 
+ 
+ 
+4. 
+Volatility reactivity—Allocation through time: The fourth key lever is volatility 
+reactivity, which governs how position sizes adjust in response to changing market 
+conditions. While risk budgets determine how capital is allocated across assets, 
+volatility reactivity determines how exposure to each asset evolves through periods 
+of varying volatility. More reactive models adjust position sizes more quickly as 
+volatility shifts, while less reactive models result in smoother, more stable 
+exposures. To illustrate this effect, we will compare specifications with differing 
+levels of reactivity, isolating how responsiveness to volatility impacts the path and 
+stability of returns.  
+Baseline framework: large universe, equal risk, medium trend speed, vol reactive 
+Before turning to the impact of individual design levers, we first define a baseline 
+framework for comparison, anchored to a representative benchmark.  As shown in 
+Exhibit 3, the SG CTA Index, widely recognized as a key benchmark for trend-following 
+CTAs and reported after fees, is closely replicated by a model constructed using a large 
+universe, a medium-speed trend specification, equal risk allocation across equities, fixed 
+income, commodities, and currencies, and relatively reactive position sizing.  To make 
+the comparison more consistent, our model series is also shown net of estimated fees.  
+This baseline specification provides a natural reference point for evaluating how 
+alternative design choices drive performance differences.  Additional detail is provided in 
+the appendix, which compares this baseline to alternative model specifications and 
+shows that it consistently tracks the benchmark more closely than other configurations. 
+Exhibit 3: A large, diversified, medium‑speed CTA framework provides a representative anchor for 
+benchmark performance 
+Cumulative backtested returns of a model constructed with a large, cross‑asset universe, equal risk allocation, 
+and medium trend speed versus the SG CTA Index 
+Source: BofA Global Research.  Based on daily data from 31-Dec-1999 through 4-Sep-2026.  Model performance is backtested and does not 
+represent the actual performance of any account or fund. Backtested performance depicts the theoretical (not actual) performance of a 
+particular strategy over the time period indicated. No representation is being made that any actual portfolio is likely to have achieved 
+returns similar to those shown herein.  The Baseline model is intended to be an indicative metric only and may not be used for reference 
+purposes or as a measure of performance for any financial instrument or contract, or otherwise relied upon by third parties for any other 
+purpose, without the prior written consent of BofA Global Research.  This Baseline model was not created to act as a benchmark. 
+BofA GLOBAL RESEARCH 
+ 
+ 
+0
+100
+200
+300
+400
+1999 2001 2003 2005 2007 2009 2011 2013 2015 2017 2019 2021 2023 2025
+Baseline Model
+SG CTA Index
+
+
+[Page 5]
+ 
+ 
+CTA Design Impact Monitor | 11 September 2026
+5
+ 
+ 
+CTA design leadership across recent and historical periods 
+To isolate the impact of individual design choices, we evaluate performance relative to 
+the baseline framework across two complementary perspectives. The first is a snapshot 
+view of recent performance over different periods including the four most recent 
+complete quarters and the current quarter through 31-August. Exhibits 4 and 5 present 
+the quarterly results in two formats: the bar chart tracks each design choice across 
+periods, while the heatmap facilitates comparison across design choices within each 
+period. The second perspective examines 12-month rolling performance. Exhibit 6 places 
+the latest readings within their historical distributions, while the subsequent time-series 
+charts show the impact of each design choice through time. Together, these views 
+distinguish recent shifts in leadership from historically unusual or more persistent 
+effects. 
+Exhibit 4: The impact of CTA design choices is episodic, varying across market environments rather 
+than persisting uniformly through time 
+Incremental backtested performance contributions of key CTA design levers versus a baseline framework, 
+shown across the most recent quarters (snapshot view) 
+Source: BofA Global Research. Based on daily data through 31-Aug-2026. Performance is backtested and does not represent the actual 
+performance of any account or fund. Backtested performance depicts the theoretical (not actual) performance of a particular strategy over 
+the time period indicated. No representation is being made that any actual portfolio is likely to have achieved returns similar to those shown 
+herein. 
+BofA GLOBAL RESEARCH 
+ 
+ 
+-5.0%
+-4.0%
+-3.0%
+-2.0%
+-1.0%
+0.0%
+1.0%
+2.0%
+3.0%
+4.0%
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+QTD
+26-Q2
+26-Q1
+25-Q4
+25-Q3
+Small Universe
+Slow Trend
+Fast Trend
+Equity
+Overweight
+Fixed Income
+Overweight
+Commodity
+Overweight
+Currencies
+Overweight
+Less Vol
+Reactivity
+
+
+[Page 6]
+ 
+ 
+6 
+CTA Design Impact Monitor | 11 September 2026 
+ 
+ 
+Exhibit 5: A quarterly heatmap highlights rotating leadership across CTA model designs 
+Incremental backtested performance versus the baseline framework, arranged by period to facilitate comparison across design choices 
+Universe 
+ 
+Trend Speed 
+ 
+Risk Budget Overweight 
+ 
+Vol Reactivity 
+Period 
+Small 
+ 
+Slow 
+Fast 
+ 
+Equity 
+Fixed Income 
+Commodity 
+Currencies 
+ 
+Less Vol Reactive 
+QTD 
+-2.9% 
+ 
+1.7% 
+-4.6% 
+ 
+-2.1% 
+0.5% 
+0.6% 
+-0.1% 
+ 
+-0.1% 
+26-Q2 
+1.8% 
+ 
+2.7% 
+-1.2% 
+ 
+2.4% 
+-1.1% 
+-1.4% 
+-0.2% 
+ 
+-0.2% 
+26-Q1 
+-2.0% 
+ 
+-0.9% 
+-1.4% 
+ 
+-1.5% 
+-2.0% 
+3.3% 
+0.2% 
+ 
+1.5% 
+25-Q4 
+2.3% 
+ 
+1.0% 
+-0.3% 
+ 
+-0.2% 
+-1.1% 
+0.9% 
+0.3% 
+ 
+1.3% 
+25-Q3 
+1.7% 
+ 
+-0.1% 
+0.1% 
+ 
+0.8% 
+-1.0% 
+-0.2% 
+-0.7% 
+ 
+-0.6% 
+BofA Global Research. Based on daily data through 31-Aug-2026. Performance is backtested and does not represent the actual performance of any account or fund. Backtested performance depicts the theoretical (not 
+actual) performance of a particular strategy over the time period indicated. No representation is being made that any actual portfolio is likely to have achieved returns similar to those shown herein.  
+BofA GLOBAL RESEARCH 
+Recent snapshots: fast trend’s quarterly shortfall deepens 
+Exhibits 4 and 5 show the performance impact of each design choice relative to the 
+baseline framework across quarter to date and the four most recent completed quarters. 
+This snapshot view highlights which design choices have mattered most in recent 
+market environments, while also showing whether their impact has been consistent or 
+concentrated in individual quarters. 
+Trend speed is the clearest recent signal. Fast trend has detracted in four consecutive 
+periods since 4Q25, with the quarter-to-date shortfall deepening to 4.6% below the 
+baseline as August added to July's weakness. Slow trend has generally performed better 
+over the same period, contributing positively in 4Q25 and 2Q26 and remaining ahead on 
+a quarter-to-date basis. The slow-fast divide therefore remains wide over the quarter 
+even though the month-to-month gap narrowed in August.  
+Other design effects have been more rotational. Commodity overweight produced the 
+largest positive contribution in 1Q26 but detracted in 2Q26 before returning to a 
+modest 0.6% quarter‑to‑date gain. Fixed income overweight detracted in each of the 
+four preceding quarters but has contributed 0.5% quarter‑to‑date. Small‑universe and 
+equity‑overweight models reversed from strong 2Q26 performance to quarter‑to‑date 
+losses of 2.9% and 2.1% respectively, with the small universe the single largest 
+detractor in August. These shifts reinforce that recent leadership outside trend speed 
+has remained concentrated and episodic. 
+Longer-term view: slow trend retains its 12-month lead over faster models 
+Exhibit 6 places the latest 12-month performance differentials in a historical context by 
+comparing each design choice with its own long-run distribution. Trend speed stands out 
+as the clearest departure from historical norms, with slow trend remaining above its 
+long-run median while fast trend sits materially below its own. Unlike the recent monthly 
+snapshots, which can be influenced by short-term shifts in market leadership, the 12-
+month perspective suggests that the difference between slower and faster 
+configurations has been building over a much longer period and extends well beyond 
+August.  
+The remaining design levers present a more mixed picture. Small universes have moved 
+back toward their historical midpoint after earlier gains, while fixed income and 
+commodity tilts remain meaningfully displaced from their respective medians in 
+opposite directions. Although leadership across CTA design choices has historically 
+rotated across market regimes, the latest distributional evidence continues to indicate a 
+more favorable environment for slower trend specifications than for faster ones.  
+ 
+ 
+
+
+[Page 7]
+ 
+ 
+CTA Design Impact Monitor | 11 September 2026
+7
+ 
+ 
+Exhibit 6: Trend speed shows the clearest departure from historical norms as slow and fast models diverge 
+Historical distribution of 12-month rolling backtested performance differentials versus the baseline framework, with the latest observation highlighted 
+Source: BofA Global Research. Based on daily data from 31-Dec-1999 through 31-Aug-2026. Performance is backtested and does not represent the actual performance of any account or fund. Backtested performance 
+depicts the theoretical (not actual) performance of a particular strategy over the time period indicated. No representation is being made that any actual portfolio is likely to have achieved returns similar to those shown 
+herein. 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 7: Universe size drives cyclical performance differences, with smaller universes amplifying both gains and drawdowns versus diversified benchmarks 
+12‑month rolling backtested performance differential of a small‑universe model versus a large‑universe baseline 
+Source: BofA Global Research. Based on daily data through 31-Aug-2026. Performance is backtested and does not represent the actual performance of any account or fund. Backtested performance depicts the 
+theoretical (not actual) performance of a particular strategy over the time period indicated. No representation is being made that any actual portfolio is likely to have achieved returns similar to those shown herein. 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 8: Trend speed impacts are environment‑dependent, with faster and slower models alternating leadership across market regimes 
+12‑month rolling backtested performance differential of fast and slow trend models relative to a medium‑speed baseline 
+Source: BofA Global Research. Based on daily data through 31-Aug-2026. Performance is backtested and does not represent the actual performance of any account or fund. Backtested performance depicts the 
+theoretical (not actual) performance of a particular strategy over the time period indicated. No representation is being made that any actual portfolio is likely to have achieved returns similar to those shown herein. 
+BofA GLOBAL RESEARCH 
+ 
+-20%
+-10%
+0%
+10%
+20%
+Small Universe
+Fast
+Slow
+Equity
+Fixed Income
+Currencies
+Commodities
+Less Vol Reactive
+Universe
+Speed
+Risk Budget Overweight
+Vol Reactivity
+Distribution of Rolling 12M Lift versus Baseline (Large Universe, Medium Speed, Equal Risk, Vol 
+Reactive) Model
+Median
+Current through 31-Aug-26
+-20%
+-15%
+-10%
+-5%
+0%
+5%
+10%
+15%
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Small Universe Lift
+-15%
+-10%
+-5%
+0%
+5%
+10%
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Fast Trend Lift
+Slow Trend Lift
+
+
+[Page 8]
+ 
+ 
+8 
+CTA Design Impact Monitor | 11 September 2026 
+ 
+ 
+Exhibit 9: Risk allocation choices drive differentiated outcomes, with asset class tilts contributing episodically to performance 
+12‑month rolling backtested performance differentials of asset class overweight positions relative to an equal‑risk baseline 
+Source: BofA Global Research. Based on daily data through 31-Aug-2026. Performance is backtested and does not represent the actual performance of any account or fund. Backtested performance depicts the 
+theoretical (not actual) performance of a particular strategy over the time period indicated. No representation is being made that any actual portfolio is likely to have achieved returns similar to those shown herein. 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 10: Volatility reactivity has generally produced smaller performance differences than other CTA design choices 
+12‑month rolling backtested performance differential of a less reactive volatility targeting approach versus the baseline framework 
+Source: BofA Global Research. Based on daily data through 31-Aug-2026. Performance is backtested and does not represent the actual performance of any account or fund. Backtested performance depicts the 
+theoretical (not actual) performance of a particular strategy over the time period indicated. No representation is being made that any actual portfolio is likely to have achieved returns similar to those shown herein. 
+BofA GLOBAL RESEARCH 
+ 
+ 
+-15%
+-10%
+-5%
+0%
+5%
+10%
+15%
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Equity Overweight Lift
+Fixed Income Overweight Lift
+Currencies Overweight Lift
+Commodities Overweight Lift
+-15%
+-10%
+-5%
+0%
+5%
+10%
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Less Vol Reactivity Lift
+
+
+[Page 9]
+ 
+ 
+CTA Design Impact Monitor | 11 September 2026
+9
+ 
+ 
+Appendix 
+Validating the baseline framework 
+The baseline specification used throughout the report is designed to provide a 
+representative and stable reference for average CTA performance. Exhibit 3 
+demonstrated that this framework closely tracks the SG CTA Index.  The exhibits below 
+extend this validation by comparing the baseline to alternative design configurations 
+across both full-sample and rolling horizons. In each case, the baseline maintains a 
+higher and more stable correlation to the benchmark, while variations in model design 
+introduce greater dispersion in outcomes.  Together, these results support the use of the 
+baseline as a consistent anchor for isolating the impact of individual CTA design choices. 
+Exhibit 11: The baseline framework maintains the highest and most stable long‑term alignment to the CTA benchmark across design variations 
+Full‑sample correlation of baseline and alternative CTA model configurations to the SG CTA Index 
+Source: BofA Global Research. Based on daily data from 31-Dec-1999 through 31-Aug-2026. 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 12: Baseline correlation to the benchmark remains more stable through time, while alternative designs introduce greater variability 
+Distribution of rolling 3‑month correlations to the SG CTA Index across baseline and alternative CTA model configurations 
+Source: BofA Global Research. Based on daily data from 31-Dec-1999 through 31-Aug-2026. 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 13: List of abbreviations 
+Abbreviations used in this report 
+Abbreviation 
+Meaning 
+CTA 
+Commodity Trading Advisor 
+SG 
+SocGen 
+YTD 
+Year-to-date 
+Source: BofA Global Research 
+BofA GLOBAL RESEARCH 
+  
+0.82
+0.77
+0.71
+0.82
+0.78
+0.82
+0.74
+0.79
+0.80
+0.79
+0.82
+0.77
+Large Univ.
+(Baseline)
+Small Univ.
+Fast
+Medium
+(Baseline)
+Slow
+Equal Wt.
+(Baseline)
+Equities
+OW
+Bonds
+OW
+Currencies
+OW
+Commods
+OW
+Vol Reactive
+(Baseline)
+Less Vol
+Reactive
+Full Sample Correlation to SG CTA Index
+-0.40
+-0.20
+0.00
+0.20
+0.40
+0.60
+0.80
+1.00
+Large Univ.
+(Baseline)
+Small Univ.
+Fast
+Medium
+(Baseline)
+Slow
+Equal Wt.
+(Baseline)
+Equities
+OW
+Bonds
+OW
+Currencies
+OW
+Commods
+OW
+Vol Reactive
+(Baseline)
+Less Vol
+Reactive
+Universe
+Speed
+Risk Budget
+Vol Reactivity
+Rolling 3M Correlation to SG CTA Index
