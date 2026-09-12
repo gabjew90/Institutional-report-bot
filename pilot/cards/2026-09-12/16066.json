@@ -1,0 +1,894 @@
+{
+ "brief": "Goldman Sachs FICC and Equities sales recap of day three of the Communacopia and Technology Conference. It reports management remarks rather than arguing a house view. Nvidia's Huang put AI's addressable market at $3tn-$4tn by 2030 on the shift from retrieval-based to generative computing, said slowing Moore's Law raises the value of the integrated hardware, software and networking stack and lets Nvidia take a growing share of AI capex, and reaffirmed about 70% year-over-year growth in CY27 despite packaging, memory, power and datacentre constraints. SpaceX's CFO tied confidence in a $100bn annualised revenue run-rate by year-end 2026 to a signed $1.11bn per month hosting agreement starting in December and compute monetised at $30-50bn per GW, with just over 2GW of capacity by YE26 and 5-10GW by YE27, power the binding long-term constraint. Uber, CrowdStrike, Datadog, Palo Alto, MongoDB, Intuit and Mastercard each framed AI adoption as a demand driver rather than a cost, each with company metrics attached. Mastercard reported consumer and business spending strong through August.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia CEO Jensen Huang reiterated that AI represents a $3tn-$4tn total addressable market opportunity by 2030, driven by the shift from retrieval-based to generative computing.",
+   "anchor": "Huang reiterated his view that AI represents a $3tn-$4tn TAM opportunity by 2030",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia argues slowing Moore's Law is increasing the value of its tightly integrated hardware, software and networking stack.",
+   "anchor": "Slowing Moore's Law is increasing the value of its tightly integrated hardware, software and networking stack",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia expects its integrated stack to let it capture a growing share of overall AI capital expenditure.",
+   "anchor": "while allowing it to\ncapture a growing share of overall AI CapEx",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia reaffirmed expectations for roughly 70% year-over-year growth in CY27, supported by customer visibility and ecosystem scale.",
+   "anchor": "reaffirmed expectations for ~70% YoY growth in CY27",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia flagged ongoing AI infrastructure constraints across packaging, memory, power and datacentre capacity.",
+   "anchor": "there are ongoing constraints across packaging,\nmemory, power and datacentre capacity",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia reiterated that lower inference costs should drive more AI adoption rather than reduce demand.",
+   "anchor": "lower inference costs should drive more AI\nadoption rather than reduce demand",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia identified Physical AI, autonomous systems and robotics as the next major growth frontiers.",
+   "anchor": "Physical AI, autonomous systems and robotics are the next major growth frontiers",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Nvidia named coding and cybersecurity as two of the most compelling AI use cases today.",
+   "anchor": "Huang also highlighted coding and cybersecurity as two of\nthe most compelling AI use cases today",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX CFO Bret Johnsen said vertical integration remains the company's core competitive advantage across Space, Connectivity and AI.",
+   "anchor": "vertical integration remains the company's core competitive advantage across Space, Connectivity and AI",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX expressed growing confidence in reaching a $100bn annualised revenue run-rate by year-end 2026 on AI.",
+   "anchor": "growing confidence in reaching a $100bn annualised revenue run-rate by year-end 2026",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX has signed a hosting agreement worth $1.11bn per month starting in December.",
+   "anchor": "a recently signed hosting agreement worth $1.11bn per month starting in December",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "from December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX is monetising compute at $30-50bn per GW and is currently tracking at the upper end of that range.",
+   "anchor": "monetising compute at $30-50bn/GW, currently tracking at the upper end of that\nrange",
+   "topic": "AI infrastructure demand",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX plans just over 2GW of compute capacity by year-end 2026 and 5-10GW by year-end 2027.",
+   "anchor": "plans to reach just over 2GW of compute capacity by YE26 and 5-10GW by YE27",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YE26 to YE27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX maintains that power availability remains the compute industry's key long-term constraint.",
+   "anchor": "maintaining that power availability remains the industry's key long-term constraint",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "long term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX said Starship Flight 14 remains on track for September 2026 and will be the first deployment of V3 satellites.",
+   "anchor": "remains on track for this month and will represent the first deployment of V3 satellites",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX is targeting its first orbital compute satellites next year with a more meaningful scale-up through 2028 and beyond.",
+   "anchor": "targeting its first orbital compute satellites next year and a more meaningful scale-up through 2028+",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "next year through 2028+"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "SpaceX sees a pathway to orbital compute reaching cost parity with terrestrial compute as soon as next year.",
+   "anchor": "a pathway to cost parity with terrestrial compute as soon as next year",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "as soon as next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Palo Alto Networks cited a projected $5 trillion investment in compute over the next five years.",
+   "anchor": "the projected $5 trillion investment in compute over the next",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Palo Alto Networks expects the $5 trillion compute build to drive a large increase in network traffic that requires inspection.",
+   "anchor": "five years will lead to a massive increase in network traffic, all of which requires inspection",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Palo Alto Networks CEO Nikesh Arora argued AI is accelerating both vulnerability discovery and attack sophistication, increasing the need for integrated security platforms.",
+   "anchor": "AI is accelerating\nboth vulnerability discovery and attack sophistication, increasing the need for integrated security platforms",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Palo Alto Networks has approximately 180m deployed sensors and processes 19PB of data daily, which it frames as a data and training moat.",
+   "anchor": "with approximately 180m deployed sensors and 19PB of data processed daily",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Palo Alto Networks sees a large opportunity in SIEM modernisation, observability and AI-native security tools as enterprises deploy more agents and workloads.",
+   "anchor": "massive opportunity in SIEM modernisation, observability, and AI-native security tools as enterprises",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "CrowdStrike CEO George Kurtz said the company's key competitive advantage is its 10-plus years of proprietary, annotated security data.",
+   "anchor": "CRWD's key competitive advantage remains its 10+ years of proprietary, annotated security data",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "CrowdStrike cited remediation costs of roughly $0.03 per activity for domain-specific models versus $10 for frontier alternatives at similar results.",
+   "anchor": "citing remediation costs of roughly $0.03 per activity versus $10 for frontier alternatives",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "CrowdStrike said AI is accelerating rather than constraining security budgets, with CISOs investing to enable AI deployment.",
+   "anchor": "AI is accelerating rather than constraining security budgets, with CISOs increasingly investing to enable",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "CrowdStrike flagged strong early demand for new AI products including Guardian.",
+   "anchor": "highlighted strong early\ndemand for new AI products, including Guardian",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "CrowdStrike sees a large modernisation opportunity in SIEM.",
+   "anchor": "There is also a huge modernisation opportunity in SIEM",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "CrowdStrike reported 935 Flex deals and $2.3bn of flexibility commitments, with Flex deal volumes tripling last quarter.",
+   "anchor": "with 935 Flex deals and $2.3bn of\nflexibility commitments, while Flex deal volumes tripled last quarter",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Datadog CFO David Obstler described AI-native customers as a major growth driver that adopt more products and grow workloads faster.",
+   "anchor": "highlighting DDOG's AI-native customers as a\nmajor growth driver",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Datadog expects the AI adoption cycle to prove more durable than the prior cloud cycle on a broader customer base and more disciplined spending.",
+   "anchor": "The AI adoption cycle should prove more durable than the prior cloud cycle",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Datadog acknowledged AI-native point solution competitors but argued a fully integrated observability platform remains difficult to build.",
+   "anchor": "management acknowledged the emergence of AI-\nnative point solutions but argued that building a fully integrated observability platform remains difficult",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Datadog continues to invest roughly 30% of revenue, more than $1bn annually.",
+   "anchor": "spending roughly 30% of revenue (more than $1bn annually)",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "annual"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Uber One has over 50m members growing 50% year-over-year and accounts for roughly 50% of total bookings.",
+   "anchor": "Uber One now has 50m+ members growing 50% YoY, accounting for roughly\n50% of total bookings",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Uber said members spend 2-3x more than non-members and are significantly more likely to engage across multiple products.",
+   "anchor": "members spend 2-3x more than non-members and are significantly more\nlikely to engage across multiple products",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Uber said sparse markets are growing 1.5x faster than core markets.",
+   "anchor": "sparse markets are growing 1.5x faster than core markets",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Uber's Grocery and Retail business is at a $15bn annualised run-rate growing more than 40% year-over-year.",
+   "anchor": "with the business\nnow at a $15bn annualised run-rate growing 40%+ YoY",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Uber framed on-demand retail as a category that could ultimately exceed the size of rides.",
+   "anchor": "framed on-demand retail as a category that\ncould ultimately exceed the size of rides",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Uber aims to become the leading autonomous vehicle commercialisation platform by 2028-29.",
+   "anchor": "an ambition to become the leading AV\ncommercialisation platform by 2028-29",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028-29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "MongoDB's Atlas has sustained roughly 29% growth for five consecutive quarters.",
+   "anchor": "Atlas has sustained roughly 29% growth for five consecutive quarters",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five consecutive quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "MongoDB's Enterprise Advanced annual recurring revenue has grown more than 10% for three consecutive quarters.",
+   "anchor": "Enterprise Advanced ARR has now grown more than 10% for three consecutive quarters",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three consecutive quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "MongoDB management said self-managed deployments and Atlas are complementary rather than cannibalistic.",
+   "anchor": "self-managed deployments and Atlas are complementary rather than cannibalistic",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "MongoDB's Voyage is acting as a customer acquisition channel through coding agents such as Claude Code and Codex.",
+   "anchor": "acting as a customer acquisition channel through coding agents such as Claude Code and Codex",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "MongoDB's Voyage customer count nearly doubled quarter-over-quarter.",
+   "anchor": "Voyage customer count nearly doubling QoQ",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "quarter-over-quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "MongoDB said AI is creating new workload categories around agent memory, with Atlas already used by frontier AI labs.",
+   "anchor": "particularly around agent memory, where Atlas is already being used by frontier AI labs",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "MongoDB sees AI-assisted modernisation tooling compressing database migrations from 18-24 weeks to 4-8 weeks.",
+   "anchor": "with tooling\naimed at compressing migrations from 18-24 weeks to 4-8 weeks",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Intuit CFO Sandeep Aujla pointed to a return to durable double-digit revenue growth and high-teens EPS growth.",
+   "anchor": "returning to durable double-digit\nrevenue growth and high-teens EPS growth",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Intuit's big bets portfolio is growing at more than 2x the rate of the overall company.",
+   "anchor": "which is growing at more than 2x the rate of the overall company",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Intuit said roughly 66% of consumers want faster access to tax refunds.",
+   "anchor": "roughly 66% of consumers want faster access to refunds",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Intuit built its AI models using hundreds of thousands of SMB attributes and roughly 80,000 consumer attributes.",
+   "anchor": "having built models using hundreds of thousands of SMB attributes and roughly 80,000 consumer attributes",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Intuit said roughly 75% of recent mid-market growth came from upgrade motions.",
+   "anchor": "with roughly 75% of recent mid-market growth coming from upgrade motions",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Intuit views an installed base of approximately 700,000 entities as potential Intuit Enterprise Suite candidates.",
+   "anchor": "an installed base of approximately 700,000 entities viewed as potential Enterprise Suite candidates",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Intuit said small business health is stable, with cash reserves and hours worked trending positively across customer cohorts.",
+   "anchor": "On QuickBooks, SMB health is stable, with\ncash reserves and hours worked continuing to trend positively",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Mastercard CFO Ling Hai said consumer and business spending trends remained strong through August, with strength in travel, dining and entertainment.",
+   "anchor": "consumer and business spending trends remained strong through August, with continued strength across travel",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Mastercard said cross-border volumes remain healthy, with card-not-present spending increasingly driven by recurring AI subscriptions and digital assets.",
+   "anchor": "Cross-border volumes also remain healthy, with card-not-present spending increasingly\ndriven by recurring AI subscriptions",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Mastercard named three growth vectors: cash-to-digital conversion, new payment flows such as B2B and remittances, and scaling value-added services.",
+   "anchor": "continued cash-to-digital conversion, expansion into new payment flows such as B2B and remittances",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Mastercard services now account for nearly 40% of net revenue.",
+   "anchor": "Services now\naccount for nearly 40% of net revenue",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Mastercard said demand for cyber solutions continues to accelerate following the Recorded Future acquisition.",
+   "anchor": "Demand for cyber solutions continues to accelerate following the\nRecorded Future acquisition",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Best of Day 3 11 Sep 2026",
+   "claim": "Mastercard views China as a meaningful medium-term opportunity following its domestic license approval.",
+   "anchor": "China remains a meaningful medium-term opportunity following its domestic license approval",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "medium term"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-12/16066__gs-tech-communacopia-conference-best-of-day-3-11-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 58,
+  "matched": 58,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
