@@ -1,0 +1,34 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT/Meta guide above consensus therefore Goldman raises 2026 capex to $751B therefore top-4 buyingpull 2027 orders forward to lock scarce HBM/CoWoS capacity (sold out through 1H27) therefore rising HBM prices (+18% into 1Q27) keep pushing capex guides higher because the constraint is supply not appetite therefore cycle extends rather than peaks, Buy NVDA $250 target, invalidated if HBM prices fall two straight months",
+   "brief_chain": "MSFT/Meta guide above consensus therefore Goldman raises 2026 capex to $751B therefore top-4 buyers pull 2027 orders forward to lock scarce HBM/CoWoS capacity (sold out through 1H27) therefore rising HBM prices (+18% into 1Q27) push capex guides higher because the constraint is supply not appetite therefore cycle extends rather than peaks, Buy NVDA $250 target, invalidated if HBM prices fall two straight months",
+   "distortions": [
+    {
+     "what": "Source frames the driver as 'not demand for inference alone'; brief compresses this to 'the mechanism is supply, not appetite' \u2014 a phrasing simplification, not a change in the stated cause.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both attribute the capex raise to supply-side scarcity, not demand strength; the causal claim is identical."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 1,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

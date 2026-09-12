@@ -1,0 +1,49 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "Microsoft and Meta guide above consensus therefore GS raises 2026 hyperscaler capex to $751B therefore the real constraint is supply (HBM/CoWoS sold out through 1H27, buyers pulling forward 2027 orders) therefore rising HBM prices confirm the supply lock and the cycle extends rather than peaks therefore Buy NVDA $250 target, with the invalidation being HBM contract prices falling for two straight months (a Fed rate decision is explicitly said not to matter)",
+   "brief_chain": "Microsoft and Meta guide above consensus therefore GS raises 2026 hyperscaler capex to $751B therefore the constraint is demand (inference outrunning supply) therefore rising HBM prices are a headwind that could cap guides and the cycle is closer to peaking than extending therefore Buy NVDA $250 target, with the invalidation being a Fed rate decision tightening financial conditions (HBM pricing demoted to secondary)",
+   "distortions": [
+    {
+     "what": "Source frames the cycle as supply-constrained and extending ('the constraint is supply, not appetite... we think the cycle extends rather than peaks'); brief inverts this to demand-constrained and 'closer to peaking than extending'.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 this flips the conviction read on the position from a bullish, cycle-extending backdrop to a bearish, cycle-peaking one, which changes how a desk would size or hold the long."
+    },
+    {
+     "what": "Source treats rising HBM contract prices as confirmation of the supply lock that extends the cycle ('as long as memory pricing keeps rising... the capex guides keep rising with it'); brief treats the same rising prices as a headwind that 'could cap capex guides'.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 the same fact is read as bullish in the source and bearish in the brief, so a trader would react oppositely to the next HBM pricing data point."
+    },
+    {
+     "what": "Brief invents a Fed rate decision as the invalidation trigger; source explicitly states 'we do not expect a Fed rate decision to change this picture' and gives the real invalidation as HBM contract prices falling for two consecutive months, which the brief demotes to a 'secondary factor'.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a trader monitoring the brief's invalidation would watch Fed decisions and miss the source's actual exit signal (a two-month HBM price rollover), holding or unwinding the trade on the wrong catalyst."
+    },
+    {
+     "what": "Source specifies 'the four largest buyers' pulling forward 2027 orders; brief compresses this to 'buyers'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the identity/count of buyers doesn't change the stance, conviction, or invalidation."
+    }
+   ],
+   "material_count": 3,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 3,
+ "non_material_total": 1,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}
