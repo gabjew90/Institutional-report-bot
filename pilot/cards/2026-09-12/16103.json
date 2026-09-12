@@ -1,0 +1,2861 @@
+{
+ "brief": "Goldman's sales and trading desk called day two of its Communacopia technology conference decidedly bullish. The chain the note draws runs from agentic AI broadening compute demand beyond accelerators to CPUs, to capacity additions and tight supply across wafers, advanced packaging, test and NAND, to the equipment and component outlooks presenters gave. TSMC frames AI as an early-stage multi-year megatrend, argues falling token costs raise consumption rather than cut silicon demand, and says Arizona Phase 1 now yields comparably to Taiwan and is profitable, so roughly 30% of N2-and-beyond capacity sits outside Taiwan in five years, with overseas expansion and the N2 ramp each diluting gross margin 2-3ppts against a 56%-and-above target. Applied Materials reiterated about 40% 2026 revenue growth, Amkor an $11bn 2030 revenue target, SanDisk tight NAND through 2027 and potentially 2028. Software presenters pitched AI monetization: ServiceNow's 4.5x seat value, Salesforce's AE1 at about 5% penetration. Consumer names reported steady spending. The desk notes bottom-up datapoints stay constructive while top-down debates on rates, geopolitics and midterms keep investors from fully re-committing to the AI infrastructure trade.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman's sales and trading desk described the overall message from day two of the Communacopia conference as decidedly bullish.",
+   "anchor": "just like after day 1, \"decidedly bullish.\"",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Presenting companies said agentic AI is driving significant demand tailwinds for both services and equipment.",
+   "anchor": "companies discussed how agentic AI is driving significant demand",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Companies highlighted higher structural demand driven by AI that is driving capacity additions.",
+   "anchor": "highlighted higher structural demand driven by AI, which are driving capacity additions given",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman said supply and demand remains tight across the semiconductor supply chain.",
+   "anchor": "extended demand visibility from customers. Supply/demand remains tight across the supply",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk said NAND remains under tight supply and demand conditions.",
+   "anchor": "SanDisk noted that NAND remains under tight supply/demand conditions",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk expects tight NAND supply and demand conditions to last through 2027 and potentially 2028.",
+   "anchor": "expected to last through 2027 and potentially 2028.",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2027 and potentially 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk sees NAND supply growth remaining muted for the foreseeable future against continued demand from AI inference.",
+   "anchor": "SanDisk sees NAND supply growth as likely to remain muted for the foreseeable future",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk described KV Cache as representing roughly 35% of the 1.2 zettabyte AI datacenter memory addressable market by 2032.",
+   "anchor": "representing ~35% of the 1.2 ZB AI datacenter memory TAM",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by 2032"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Cadence said chip complexity is expected to grow by 48X over the next five years.",
+   "anchor": "expected to grow by 48X over the next five years",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Cadence said chip design activity remains exceptionally strong across traditional semiconductor customers and hyperscalers.",
+   "anchor": "chip-design activity remains exceptionally strong across both traditional",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Cadence said its IP business is growing roughly 30% annually.",
+   "anchor": "the IP business is growing roughly 30%",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Cadence said its hardware emulation business has delivered record revenue for six consecutive years.",
+   "anchor": "record revenue for six consecutive years,",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials expects leading-edge logic, advanced packaging and memory to account for roughly 80% of wafer fab equipment spending in 2026.",
+   "anchor": "advanced packaging, and memory accounting for ~80% of WFE in 2026 and",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials said agentic AI is driving stronger investment across CPUs and DRAM.",
+   "anchor": "Management noted that agentic AI is driving stronger investment across CPUs and",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials said customer demand visibility remains robust with rolling eight-quarter forecasts.",
+   "anchor": "customer demand visibility remains robust with rolling 8-quarter forecasts",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials cited long-term customer commitments extending to 2030 and continued upward revisions to capacity plans.",
+   "anchor": "long-term commitments extending to 2030, and continued upward revisions to capacity",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "to 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne expects test equipment to represent roughly 8% of overall semiconductor capital spending versus about 4% historically.",
+   "anchor": "semiconductor CapEx (vs. ~4% historically) as test intensity continues to move up.",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 3-5 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne expects AI-driven growth to accelerate through 2027.",
+   "anchor": "Teradyne expects AI-driven growth to accelerate through 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne expects modest growth in HBM testing and strong growth in DRAM and NAND testing in 2027.",
+   "anchor": "continue, with modest growth in HBM, strong growth in DRAM and NAND in 2027.",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne said semiconductor test is roughly 80% of its revenue, robotics roughly 10% and product test roughly 10%.",
+   "anchor": "with semiconductor test (~80% of revenue), robotics (~10%), and product test (~10%)",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell said the market is in the early stages of a durable multi-year AI infrastructure buildout.",
+   "anchor": "early stages of a durable, multi-year AI infrastructure buildout",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell pointed to roughly 400mn PCs more than four years old and roughly 1.3mn older servers as evidence of replacement demand still ahead.",
+   "anchor": "as Dell pointed to ~400mn PCs >4yrs old and ~1.3mn",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell said component availability could remain tight into 2027.",
+   "anchor": "Component availability could remain tight into 2027",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell said its AI server backlog stood at approximately $9.5bn.",
+   "anchor": "AI server backlog stood at approximately $9.5bn",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IREN said it has 5GW of secured power.",
+   "anchor": "IREN sees its 5GW of secured power",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IREN said industry pricing for GPU rentals is robust, with three-year deals in the $20-$25 mn per MW range.",
+   "anchor": "industry pricing for GPU rentals is robust with 3-year deals in the $20-$25 mn",
+   "topic": "AI infrastructure demand",
+   "status": "level",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IREN is funding a $25-$30 bn capex target for fiscal 2027.",
+   "anchor": "funding its $25-$30 bn capex target for F2027",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IREN's Sweetwater hub has been conditionally included in ERCOT's Batch Zero process as Base Load.",
+   "anchor": "conditionally included in ERCOT's Batch Zero process as Base Load",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC continues to view AI as a multi-year megatrend that remains at a very early stage.",
+   "anchor": "TSMC continues to view AI as a multi-year megatrend",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC argued that open-source models and computing efficiency gains will reduce token costs and lift AI consumption and silicon demand.",
+   "anchor": "will reduce token costs, leading to greater AI consumption",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC cited customer commitments extending toward 2030 and rolling eight-quarter forecasts as demand visibility.",
+   "anchor": "toward 2030 and rolling 8-quarter forecasts.",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "toward 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said it is adding further N3 capacity and still does not expect supply to be sufficient.",
+   "anchor": "N3 capacity and still does not expect supply to be sufficient.",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said CoWoS advanced packaging capacity remains tight and it has started outsourcing selected packaging processes to OSAT partners.",
+   "anchor": "capacity remains tight, and TSMC already started outsourcing selected packaging",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said its advanced packaging capability currently supports approximately 5.5x reticle size.",
+   "anchor": "capability supports approximately 5.5x reticle size, with a roadmap",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC has a roadmap to reach approximately 14x reticle sizes within the next several years.",
+   "anchor": "to reach approximately 14x reticle sizes within the next several years.",
+   "topic": "AI infrastructure demand",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "next several years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said foundry capacity is difficult to expand because fabs require two to three years to build.",
+   "anchor": "because fabs require two to three years to build",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC identified power and memory as potential bottlenecks cited elsewhere in the AI supply chain.",
+   "anchor": "management identified power and memory as potential bottlenecks",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC reiterated its view that it maintains a two to three year technology lead.",
+   "anchor": "TSMC maintains a 2-3 year technology lead",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC is currently ramping N2 with A14 expected approximately two years later.",
+   "anchor": "A14 expected approximately two years later",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said its disclosed AI revenue definition is relatively narrow and understates its broader AI exposure.",
+   "anchor": "its disclosed AI revenue definition is relatively narrow",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said the shift from generative AI toward agentic AI should broaden compute demand beyond accelerators to CPUs.",
+   "anchor": "agentic AI, which should broaden compute demand beyond accelerators",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor's Arizona phase 2 is expected to add 60,000 sq m of cleanroom space on top of 33,000 sq m in phase 1.",
+   "anchor": "Arizona's phase 2 is expected to add 60,000 sq m cleanroom space,",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor expects Arizona phase 2 to scale to roughly $1 bn of revenue at a 30% gross margin, similar to phase 1.",
+   "anchor": "will scale around similar levels to phase 1 - $1 bn revenue with 30% gross margin.",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Microsoft said platform installation times have improved by approximately 10-15% over the past year.",
+   "anchor": "improved by approximately 10-15% over the past year",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Microsoft continues to invest aggressively in land, power and datacentre infrastructure to preserve long-term flexibility.",
+   "anchor": "land, power, and datacentre infrastructure to preserve long-term flexibility",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Cloudflare management voiced scepticism over whether agentic apps will trigger a massive hardware upgrade cycle.",
+   "anchor": "scepticism regarding whether agentic apps will trigger a massive hardware",
+   "topic": "AI infrastructure demand",
+   "status": "forecast",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "AT&T is selectively participating in the data center interconnect build-out.",
+   "anchor": "selectively participating in the data center interconnect build-out",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "T"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Verizon said it is capitalizing on AI data center connections.",
+   "anchor": "and VZ is capitalizing on AI data center connections.",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Flex said the demand environment for critical power infrastructure remains solid.",
+   "anchor": "environment for CPI remains solid, and highlighted its recent proposed acquisition",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "FLEX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "MiniMax reported a strong ARR ramp from its M3 and H3 models despite compute supply bottlenecks.",
+   "anchor": "MiniMax reported strong ARR ramp-up from its M3 and H3 models",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Tower companies were constructive on continued carrier investment driven by 5G densification, 6G deployment and spectrum auctions.",
+   "anchor": "continued carrier investment driven by 5G densification, 6G deployment, spectrum",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [
+    "CCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman's desk said bottom-up datapoints across TMT remain very constructive on the AI infrastructure trade.",
+   "anchor": "the AI infra trade \u2013 \u201cbottoms up\u201d datapoints remain very constructive",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman's desk said investor conversations remain marked by tension about fully re-committing to the AI infrastructure trade, against top-down debates on rates, geopolitics and midterms.",
+   "anchor": "the week continue to be underscored by a healthy tension about fully",
+   "topic": "AI infrastructure demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said Arizona Phase 1 is achieving yields comparable to Taiwan.",
+   "anchor": "Phase 1 achieving yields comparable to Taiwan",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said Arizona Phase 1, using N4 technology, is in operation with positive profitability.",
+   "anchor": "reliability, and positive profitability. Management views this as an important milestone",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC expects approximately 30% of its N2-and-beyond capacity to be located outside Taiwan in five years, primarily in Arizona.",
+   "anchor": "N2-and-beyond capacity to be located outside Taiwan in five years, primarily in Arizona.",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said construction of Arizona Phase 3 has started.",
+   "anchor": "construction of Phase 3 has started",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said preparation work for Arizona Phase 4 and the first US advanced-packaging facility is underway.",
+   "anchor": "preparation work for Phase 4 and the first US advanced-packaging facility is underway.",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC acquired another Arizona land parcel able to hold an additional five to six fabs, supporting its announced incremental US$100bn investment.",
+   "anchor": "additional five to six fabs, supporting its recently announced incremental US$100bn",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC expects overseas expansion to dilute gross margin by 2-3ppts in the early part of the current five-year period.",
+   "anchor": "Overseas expansion is expected to dilute GM by 2-3ppts",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "current five-year period"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC expects the N2 ramp to dilute 2026 gross margin by approximately 2-3ppts.",
+   "anchor": "approximately 2-3ppts, but its profitability should improve over time",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said customers are increasingly willing to recognize a pricing premium for geographic flexibility.",
+   "anchor": "customers increasingly willing to recognize the associated premium.",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said overseas expansion is based on customer demand for geographic flexibility and an appropriate level of government support.",
+   "anchor": "overseas expansion is based on customer demand for geographic",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said its most advanced technologies will continue to ramp first in Taiwan.",
+   "anchor": "the most advanced technologies will continue to ramp first in Taiwan",
+   "topic": "TSMC Arizona expansion",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said locally hired Arizona employees spend six to eighteen months training and working in Taiwan.",
+   "anchor": "Arizona employees spend six to eighteen months training and working in Taiwan",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor said proximity to TSMC's Arizona facility provides value through a quicker feedback loop and shorter cycle time.",
+   "anchor": "proximity to TSMC's facility in Arizona provides value",
+   "topic": "TSMC Arizona expansion",
+   "status": "released",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "ServiceNow has deployed 20 Level-1 agent roles internally.",
+   "anchor": "highlighted that ServiceNow has already deployed 20 Level-1 agent roles",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "ServiceNow said AI now resolves roughly 90% of its customer service, employee service and other routine cases.",
+   "anchor": "AI now resolving roughly 90% of customer service",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "ServiceNow said its internal AI implementations have generated approximately $1bn of value creation.",
+   "anchor": "approximately $1bn of value creation. The company's CMDB and workflow",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "ServiceNow estimates the average seat could ultimately generate roughly 4.5x its original contract value.",
+   "anchor": "generate roughly 4.5x its original contract value",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "ServiceNow said more than 60% of net new business is now tied to value- or consumption-based pricing models.",
+   "anchor": "net new business is now tied to value- or consumption-based pricing",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "ServiceNow said its CMDB and workflow architecture supports approximately 100bn workflows and 8tn transactions.",
+   "anchor": "approximately 100bn workflows and 8tn transactions",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Salesforce said only about 5% of customers are currently on its AE1 premium edition.",
+   "anchor": "~5% of customers currently on the AE1 premium edition",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Salesforce said the AE1 premium edition carries a roughly 60%-80% price uplift.",
+   "anchor": "~60%-80% uplift. Rather than positioning AI as a standalone product sale",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Salesforce said premium editions and outcome-based pricing are expanding its monetization vectors.",
+   "anchor": "Premium editions and outcome-based pricing are expanding Salesforce's",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM expects accelerating Consulting revenue growth in the second half of 2026.",
+   "anchor": "accelerating Consulting revenue growth in 2H26",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM said it sees traditional consulting as being completely disrupted by agentic AI.",
+   "anchor": "being completely disrupted by agentic AI",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM believes enterprise AI adoption remains in the early stages.",
+   "anchor": "IBM believes enterprise AI adoption remains in the early stages",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Microsoft said customer conversations are increasingly centred around AI return on investment.",
+   "anchor": "customer conversations are increasingly centred around ROI",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Microsoft said enterprises are optimising outcomes through a mix of models rather than standardising on a single provider.",
+   "anchor": "a mix of models rather than standardising around a single",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Cloudflare pointed to a shift toward consumption-based AI workloads and growing enterprise adoption.",
+   "anchor": "shift toward consumption-based AI workloads and growing enterprise adoption.",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Cloudflare said traction is improving in verticals such as media where AI-enabled content creation is driving double-digit growth.",
+   "anchor": "improving traction in verticals such as media, where AI-enabled content",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dynatrace pointed to accelerating core business momentum with DPS consumption growing over 20%.",
+   "anchor": "pointed to accelerating core business momentum, with DPS consumption growing over",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "DT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Okta highlighted strong early demand for agentic identity.",
+   "anchor": "Okta highlighted strong early demand for agentic identity",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "OKTA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Okta highlighted record pipeline levels and strong demand across workforce and customer identity products.",
+   "anchor": "highlighting record pipeline levels, strong demand across both",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "OKTA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "HubSpot said it has a dataset spanning 15 months of skills-based usage marrying frontier models with its connectors.",
+   "anchor": "HubSpot has a dataset spanning 15 months of skills-based usage",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "HUBS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "HubSpot pointed to a shift in B2B marketing away from SEO-driven customer acquisition toward an omnichannel model.",
+   "anchor": "the ongoing shift in B2B marketing from SEO-driven customer acquisition",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "HUBS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell said enterprises are only beginning to move beyond productivity tools toward rearchitecting end-to-end workflows.",
+   "anchor": "enterprises only beginning to move beyond productivity tools",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell said its 6,500 AI Factory customers include a growing number of enterprise deployments.",
+   "anchor": "Dell's 6,500 AI Factory customers include a growing number of enterprise",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials said it is internally seeing productivity improvements of roughly 50% in software and algorithm development from AI.",
+   "anchor": "internally seeing productivity improvements of roughly 50% in software",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman said companies are using AI and flatter organizational structures to maintain output while reducing fixed costs.",
+   "anchor": "organizational structures to maintain output while reducing fixed costs",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman said Block and Chime are realizing significant fixed-cost leverage through organizational flattening and unified AI infrastructure.",
+   "anchor": "Companies like Block and Chime are realizing significant fixed-cost",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "XYZ",
+    "CHYM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Autodesk said sales productivity is normalizing across most regions with renewal rates strengthening.",
+   "anchor": "Improving go-to-market execution, with sales productivity normalizing across most",
+   "topic": "enterprise AI adoption",
+   "status": "released",
+   "instruments": [
+    "ADSK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman said multiple companies confirmed consumer demand remains steady and highly resilient with no signs of macro-driven deterioration.",
+   "anchor": "consumer demand remains steady and highly resilient",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "BKNG",
+    "TOST",
+    "XYZ",
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Toast and Block noted highly resilient consumer spending.",
+   "anchor": "Toast (TOST) and Block (SQ) also noted highly resilient consumer spending.",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "TOST",
+    "XYZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Block said consumer spend remained strong into July and August.",
+   "anchor": "a resilient consumer backdrop (consumer spend remained strong into",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "XYZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Toast said consumer spend remains steady versus its earnings commentary.",
+   "anchor": "Consumer Spend remains steady vs at earnings",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "TOST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Etsy reported 7% growth in gross buyer additions.",
+   "anchor": "including +7% growth in gross buyer additions",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Etsy said app users show materially higher engagement, frequency and lifetime value than non-app users.",
+   "anchor": "noting that app users exhibit materially higher engagement, frequency, and",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Etsy is partnering with third-party LLMs for agentic commerce.",
+   "anchor": "partnering with third-party LLMs for agentic commerce",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Etsy said traffic from agentic platforms remains small but high intent.",
+   "anchor": "traffic from agentic platforms remains small but high intent",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Booking Holdings is testing GenAI tools including Penny and sees LLMs as evolving paid performance marketing channels.",
+   "anchor": "GenAI tools (e.g., Penny) and sees LLMs as evolving paid performance marketing",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "BKNG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Walmart said third-party AI agents are often programmed to optimize for lowest price, fastest speed and broadest assortment.",
+   "anchor": "third party AI agents are often programmed to optimize for retail metrics",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Walmart said it often wins on the metrics AI agents optimize for and emerges as the recommended solution.",
+   "anchor": "the company often wins on these metrics and emerges as the",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Spotify said it is now priced above competitors in most markets while still seeing limited churn.",
+   "anchor": "the platform is now priced above competitors in most",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Spotify said podcast video engagement is growing roughly 50% year over year.",
+   "anchor": "podcast video engagement growing roughly 50% YoY",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Spotify said songs with video are roughly 24x more likely to be streamed or saved.",
+   "anchor": "with video are ~24x more likely to be streamed or saved.",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Disney described an overall healthy advertising environment with strength in sports.",
+   "anchor": "an overall healthy advertising environment with advertising strength in",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "DIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Disney said supply-driven softness in streaming advertising is persisting into fiscal 4Q.",
+   "anchor": "sports, but supply-driven softness in SVOD persisting into F4Q.",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "DIS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "F4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Disney is evolving Disney+ into a broader ecosystem with a free tier and user-generated content to drive engagement.",
+   "anchor": "broader ecosystem with a free-tier and user-generated content to drive engagement",
+   "topic": "consumer demand and engagement",
+   "status": "released",
+   "instruments": [
+    "DIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Verizon expects 2026 postpaid phone net additions at the top end of its 750k to 1 million guidance.",
+   "anchor": "Verizon (VZ) expects 2026 postpaid phone net additions at the top",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Comcast expects modest improvements in broadband ARPU and EBITDA starting in 3Q26.",
+   "anchor": "Comcast (CMCSA) expects modest improvements in broadband ARPU",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "from 3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Comcast reiterated expectations for improving broadband net losses through 2026.",
+   "anchor": "improving broadband net losses through 2026. Fibre remains the primary competitive",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Comcast highlighted the largest cost program in its history, expected to generate billions of dollars of savings.",
+   "anchor": "program in Comcast's history, expected to generate billions of dollars of savings",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Comcast cited a base of 65m homes passed and 30m customer relationships with wireless penetration still relatively low.",
+   "anchor": "mentioning their base of 65m homes passed and 30m customer relationships",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Crown Castle reiterated its leasing guidance of $60-70 million.",
+   "anchor": "reiterated its leasing guidance of $60-70 million",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CCI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Charter now expects synergies from the completed Cox Communications acquisition to exceed $1 billion.",
+   "anchor": "with management now expecting transaction synergies to exceed $1 billion",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CHTR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Charter management expects a free cash flow inflection driven by wireless growth and reduced capex.",
+   "anchor": "drive a free cash flow inflection, driven by continued wireless growth, reduced capex",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CHTR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "NXP is gradually raising prices to offset input costs.",
+   "anchor": "NXP Semiconductors (NXPI) is gradually raising prices to offset input costs.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "NXP expects its price increases to accumulate on the topline over the next few quarters.",
+   "anchor": "on its topline to accumulate over the next few quarters",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next few quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "NXP expects over 100% growth in its datacenter segment in 2026.",
+   "anchor": "the segment (over 100% growth expected in 2026)",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "NXP said roughly 50% of its automotive business in 2Q consisted of its key growth drivers.",
+   "anchor": "In automotive, NXP noted that ~50% of its automotive business",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "NXP said its automotive growth drivers including software-defined vehicles, radar and connectivity are growing at roughly 20%.",
+   "anchor": "are growing at ~20% and where it expects its leadership to drive additional share gains.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "NXP said OEM inventories remain lean with little evidence of broad-based inventory restocking.",
+   "anchor": "management noted that OEM inventories remain lean",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM is on track to deliver 4% to 5% constant currency revenue growth in 2026 following its recent guide down.",
+   "anchor": "IBM is on track to deliver 4% - 5% revenue growth",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM expects to grow its Software segment 6% to 8% in 2026, led by Red Hat.",
+   "anchor": "IBM expects to grow its Software segment 6% - 8% in 2026",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM expects to increase free cash flow by approximately $1bn year over year in 2026.",
+   "anchor": "while increasing free cash flow by ~$1bn YoY. In Software, a shift in",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM expects to deliver 100bps of pre-tax margin expansion.",
+   "anchor": "delivering 100bps of pre-tax margin expansion",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM expects long-run Software growth approaching low double digits of about 10%.",
+   "anchor": "IBM expects growth approaching low-double digits (~10%) in Software",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long run"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM believes quantum computing could represent nearly $1bn of revenue before 2030.",
+   "anchor": "computing could represent nearly $1bn of revenue for IBM before 2030.",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "before 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM sees a total value-creation addressable market of $850 bn for quantum over time, of which IT providers can capture 20%-40%.",
+   "anchor": "a total value-creation TAM of $850 bn over time",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM is on track to demonstrate the first error-corrected quantum computer by 2028.",
+   "anchor": "and is on track to demonstrate the first error-corrected quantum computer by 2028.",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM said it has closed roughly 40% of its previously deferred mainframe deals after its 2Q mainframe revenue miss.",
+   "anchor": "Following its mainframe revenue miss in 2Q, IBM noted that it has closed",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM described the z17 mainframe as its most successful program, with 130% of revenue expansion versus the prior program.",
+   "anchor": "in IBM history with 130% of revenue expansion vs. the prior program.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM said 20% of its new Software revenue was driven by its Consulting business.",
+   "anchor": "noted that 20% of its new Software revenue was driven by its Consulting business.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "IBM said a re-prioritization of customer capex spending caused its 2Q Software shortfall, affecting about 15% of the portfolio.",
+   "anchor": "led to a shortfall in Software - although this only impacted ~15% of the portfolio.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials reiterated its outlook for roughly 40% revenue growth in 2026.",
+   "anchor": "reiterated its outlook for ~40% revenue growth in 2026",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials expects its Process Control business to grow more than 50% in 2026.",
+   "anchor": "which is expected to grow more than 50% in 2026",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials expects advanced packaging revenue to grow roughly 70% year over year in 2026 to a $2.5bn-$3.0bn run-rate.",
+   "anchor": "revenue expected to grow ~70% YoY in 2026 to a $2.5-$3.0bn revenue run-rate.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials expects China revenue to grow year over year in 2026 with modest share gains.",
+   "anchor": "Applied Materials expects China revenue to grow YoY in 2026",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials sees ICAPS sustaining a mid-to-high single digit CAGR with acceleration in 2027 versus 2026.",
+   "anchor": "ICAPS sustaining a mid-to-high single digit CAGR",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Applied Materials sees strong growth continuing into 2027 and 2028 given increasing orders and backlog.",
+   "anchor": "Management sees strong growth continuing into 2027 and 2028",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor reiterated its $11 bn 2030 revenue target.",
+   "anchor": "Amkor discussed its $11 bn 2030 revenue target",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor expects compute revenue to grow 30% year over year in 2027.",
+   "anchor": "Amkor expects compute revenue to continue to grow at 30% YoY in 2027.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor expects 2028 capex to be elevated on tool spend for Arizona phase 1 and construction of phase 2.",
+   "anchor": "Amkor noted 2028 CapEx levels to be elevated driven by tool spend",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor expects 10%-15% of its $12 bn Arizona investment to fall in 2030 and 2031.",
+   "anchor": "investment in Arizona in 2028 and 2029, and 10%-15% in 2030 and 2031.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2030-2031"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor guided to long-term leverage levels of 1.5x.",
+   "anchor": "and long-term leverage levels of 1.5X.",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Amkor flagged near-term headwinds in its Communications segment from memory-related demand destruction and capacity shifts.",
+   "anchor": "Amkor noted near-term headwinds in the segment driven by",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne expects gross margins to remain in the current 59%-60% range.",
+   "anchor": "59%-60% range. Teradyne expects significant operating leverage as it grows",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne sees a path to roughly 30% share at a major merchant compute customer over the next three to five years.",
+   "anchor": "complementing its path to ~30% share at a major merchant compute",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 3-5 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne expects its co-packaged optics test addressable market to reach $300mn-$700mn by 2028 and potentially about $1bn by 2030.",
+   "anchor": "$300mn-$700mn by 2028 and potentially ~$1bn by 2030.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028-2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Teradyne expects its robotics revenue to grow 3X again in 2027.",
+   "anchor": "expected to grow 3X again in 2027.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk said its NBM floor pricing enables a gross margin of roughly 80% for the majority of the business in a downside scenario.",
+   "anchor": "enables a gross margin of ~80% for the majority of the business",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk said 50% of FY27 and 67% of FY28 planned volume is covered by long-term agreements.",
+   "anchor": "underpinned by 50%/67% of its planned volume covered by NBMs.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27/FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk said it can support further bit growth at the same low capital intensity of about 5%.",
+   "anchor": "growth at the same low capital intensity (~5%).",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SanDisk has already executed approximately $4.5 bn in buybacks and sees repurchases as its primary capital return vehicle.",
+   "anchor": "it has already executed ~$4.5 bn in buybacks",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime expects its share in 1.6 Tbps optical networking products to double to 80%.",
+   "anchor": "where it expects its market share to double to 80%",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime sees datacenter content per rack increasing to $400-$600 and potentially up to $1,000 in certain configurations.",
+   "anchor": "to increase, to $400-$600, and potentially up to $1,000",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime estimates timing content of between $20-$25 per switch.",
+   "anchor": "where it estimates timing content of between $20-$25 per switch.",
+   "topic": "Communacopia guidance raises",
+   "status": "level",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime expects a revenue inflection in its acquired Renesas IC clock portfolio in mid-2027.",
+   "anchor": "a revenue inflection could occur in mid-2027",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "mid-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime reiterated guidance of roughly 68% gross margin in the current quarter with an operating margin of 34% or higher.",
+   "anchor": "~68% gross margin in the current quarter with an operating margin of 34% or higher.",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "current quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime said its military and aerospace business could reach $100mn in annual revenue in the near term.",
+   "anchor": "including in military/aerospace, which it says could reach $100mn",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime sees an incremental addressable market of roughly $200 mn in smart grids.",
+   "anchor": "smart grids, where it sees an incremental SAM of ~$200 mn",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime expects to lower net debt under 2x within 24 months or sooner.",
+   "anchor": "lower net debt under 2x within 24 months or sooner",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "within 24 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "SiTime expects a seasonal slowdown in its mobile and consumer business in 1Q27.",
+   "anchor": "SiTime expects a seasonal slowdown in the mobile/consumer business",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1Q27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC remains comfortable achieving its long-term gross margin target of 56% and above.",
+   "anchor": "its long-term gross margin target of 56% and above, supported by disciplined capacity",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "TSMC said its long-term gross margin target has increased from 50% five years ago to 53% and now 56% and above.",
+   "anchor": "years ago to 53% and now 56% and above.",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell said storage revenue grew 26% last quarter.",
+   "anchor": "storage revenue grew 26% last quarter",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Dell has reduced operating expenses to roughly 8% of revenue.",
+   "anchor": "8% of revenue), and investors remain focused on AI infrastructure demand",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Spotify's audiobook offering is already generating approximately $100m ARR after roughly one year.",
+   "anchor": "$100m ARR after roughly one year",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Disney pointed to double-digit streaming margins despite continued content investment.",
+   "anchor": "double-digit SVOD margins, despite investments in content",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "DIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Block expressed confidence in its stepped-up gross profit growth and adjusted operating income guidance.",
+   "anchor": "Management expressed confidence in its stepped-up gross profit growth and",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "XYZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Toast sees an opportunity to double core market share at a 40%-plus margin profile.",
+   "anchor": "to double core market share at a 40%-plus margin profile",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "TOST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Jack Henry expressed confidence in delivering 20-40bps of annual margin expansion.",
+   "anchor": "The company expressed confidence in delivering 20-40bps of annual margin",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "JKHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "annual"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "PayPal expects Q3 2026 branded checkout growth of 1-2%.",
+   "anchor": "transaction margin growth (with Q3 2026 branded checkout growth expected at 1-2%)",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "PYPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Remitly raised full-year adjusted EBITDA margin guidance to approximately 21%, up 400bps year over year.",
+   "anchor": "21%, +400bps YoY, driven by project discipline, AI efficiencies, and favorable transaction",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "RELY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "full year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Chime raised full-year revenue growth guidance to 30% on strong product momentum.",
+   "anchor": "accelerate product velocity, and raised full-year revenue growth guidance to 30%",
+   "topic": "Communacopia guidance raises",
+   "status": "forecast",
+   "instruments": [
+    "CHYM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "full year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Marqeta beat on the top and bottom line but guided modestly below consensus on second-half headwinds.",
+   "anchor": "MQ beat on the top and bottom line but guided modestly below consensus on 2H",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "MQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2H"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman Investment Research remains Sell rated on Marqeta given a mixed catalyst path and premium pricing.",
+   "anchor": "GIR remains Sell rated given a mixed catalyst path, premium pricing",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "MQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Coinbase believes the proposed SEC innovation exemption is sufficient to launch tokenized equities.",
+   "anchor": "proposed SEC innovation exemption is sufficient to launch tokenized equities",
+   "topic": "Communacopia guidance raises",
+   "status": "released",
+   "instruments": [
+    "COIN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Robinhood set a 10-year goal of 50% international and 50% institutional mix supported by tokenization and HOOD Chain.",
+   "anchor": "institutional & another LT goal of exporting its US offering to 120+ countries",
+   "topic": "Communacopia guidance raises",
+   "status": "target",
+   "instruments": [
+    "HOOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "10 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman said companies struck a bullish tone on a broad-based recovery across end markets including industrial and automotive.",
+   "anchor": "recovery across end markets - including industrial and automotive - driven by lean inventory",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman said analog demand growth remains outsized in idiosyncratic end markets such as datacenter and aerospace/defense.",
+   "anchor": "markets such as datacenter and aerospace/defense - and this is expected to continue",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Comcast said fibre overbuild activity is accelerating to 4-5% annually from 2-3% previously.",
+   "anchor": "Overbuild activity is accelerating to 4-5% annually from",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Comcast said some competitors continue offering heavily discounted $30-40 per month gigabit plans.",
+   "anchor": "per month gigabit plans despite significantly higher deployment costs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Goldman and Visible Alpha consensus sees Comcast 3Q26 broadband net additions at -87k/-90k versus -91k a year ago.",
+   "anchor": "-87k/-90k v. year-ago at -91k). Overbuild activity is accelerating",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "AT&T remains highly constructive on its fiber-led convergence strategy and believes the industry is still in the early innings of convergence.",
+   "anchor": "fiber-led convergence strategy and believes the industry is still in the early innings",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "T"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Uber shares are about $10 off local highs as the market debates macro, agentic commerce and autonomous vehicles.",
+   "anchor": "stock now ~$10 off local highs as",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Credo shares are down roughly 40% from year-to-date highs despite improved visibility in its transition to optics.",
+   "anchor": "stock down ~40% from YTD highs, despite improved visibility in Credo\u2019s",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "CRDO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Top Highlights From Day Two Of Goldman's Giant Tech Conference",
+   "claim": "Microsoft sees AI driving a gradual shift toward more consumption- and outcome-based pricing models.",
+   "anchor": "Looking ahead, management sees AI driving a gradual shift toward more consumption- \nand outcome-based pricing models",
+   "topic": "enterprise AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-12/16103__top-highlights-from-day-two-of-goldman-s-giant-tech-conferen.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 190,
+  "matched": 190,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
