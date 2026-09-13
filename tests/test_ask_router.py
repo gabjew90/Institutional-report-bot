@@ -199,7 +199,10 @@ def test_fantasy_gate_catches_the_room_phrasings():
     for q in ("who won the draft", "grade my draft", "draft recap",
               "best waiver pickup", "who should i start this week",
               "start or sit gibbs", "my matchup this week", "faab left",
-              "trending adds", "who is in the league", "whats on my roster"):
+              "trending adds", "who is in the league", "whats on my roster",
+              # 2026-09-13: went UNKNOWN in the gambling channel and the
+              # model called lookup_market_price with message words as tickers
+              "MHJ or Sutton in non PPR", "who do i want in half-ppr"):
         assert R.classify(q, fantasy_enabled=True).shape == R.FANTASY, q
 
 

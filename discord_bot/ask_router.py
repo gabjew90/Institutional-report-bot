@@ -281,6 +281,10 @@ _FANTASY_RE = re.compile(
     r"|start\s+or\s+sit|sit\s+or\s+start|who\s+(?:should|do|would)\s+i\s+start"
     r"|free\s+agent|add[/\s]drop|pick\s*up\s+(?:off\s+)?(?:the\s+)?(?:waivers?|wire)"
     r"|flex\s+(?:spot|play|start)|points?\s+against|playoff\s+(?:odds|seed|picture)"
+    # "MHJ or Sutton in non PPR" (2026-09-13, gambling channel) went
+    # UNKNOWN and the model spent its tool call on lookup_market_price
+    # with the asker's message words as tickers. PPR is a fantasy word.
+    r"|(?:non[\s-]*)?ppr|half[\s-]*ppr"
     # "my team" and "first place" are NOT gate words: in a trading room
     # they collide ("my team is bleeding on this trade", "first place in
     # the s&p sectors") and the fantasy shape strips Google and every

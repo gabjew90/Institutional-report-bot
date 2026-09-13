@@ -125,3 +125,30 @@ def test_the_tool_advertises_stats_and_separates_it_from_projections():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# 2026-09-13: "how's my team doing" was answered with "depending on who's
+# left on your board" because the situation payload carried projections
+# and totals but never said which starters had played.
+def test_situation_names_who_has_not_played_and_what_is_left():
+    stats = {"1": {"pts_ppr": 24.4, "gp": 1.0}}          # Mahomes has played
+    proj = {"1": {"pts_ppr": 21.0}, "2": {"pts_ppr": 14.5}, "9": {"pts_ppr": 6.0}}
+    box = []
+    saved = _stub(box, stats=stats, proj=proj)
+    saved["fetch_matchups"] = SD.fetch_matchups
+    SD.fetch_matchups = lambda lid, wk: [
+        {"roster_id": 1, "matchup_id": 7, "points": 24.4},
+        {"roster_id": 2, "matchup_id": 7, "points": 31.0}]
+    try:
+        out = _call(topic="situation", member="zzmgr")
+    finally:
+        _restore(saved)
+    assert out["status"] == "ok"
+    mine = out["roster"]
+    by = {p["player"]: p for p in mine["players"]}
+    assert by["Mahomes"]["actual"] == 24.4 and by["Mahomes"]["game_started"] is True
+    assert by["Kelce"]["actual"] is None and by["Kelce"]["game_started"] is False
+    assert mine["yet_to_play"] == ["Kelce"], "the starter whose game has not started, by name"
+    assert mine["remaining_projected"] == 14.5
+    assert mine["projected_total"] == 35.5
+    assert "yet_to_play" in out["note"] and "who is left" in out["note"]

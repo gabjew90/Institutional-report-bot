@@ -398,17 +398,49 @@ def build_topic_payload(
             v = p.get("pts_ppr")
             return round(float(v), 1) if v is not None else None
 
+        # Who has actually played (2026-09-13: "how's my team doing" was
+        # answered with "depending on who's left on your board" because
+        # the payload carried projections and totals but never said
+        # which starters had taken the field). Sleeper's weekly stats
+        # carry `gp` once a player's game has started; a starter with
+        # no entry has not played yet.
+        stats = {}
+        if season:
+            try:
+                stats = fetch_weekly_stats(season, wk) or {}
+            except Exception as e:
+                log.info(f"sleeper weekly stats failed (non-fatal): {e}")
+
+        def _actual(pid) -> float | None:
+            s = stats.get(str(pid)) or {}
+            v = s.get("pts_ppr")
+            return round(float(v), 1) if v is not None else None
+
+        def _started(pid) -> bool:
+            s = stats.get(str(pid)) or {}
+            return bool(s.get("gp") or s.get("gms_active"))
+
         def _lineup(r: dict) -> dict:
             starters = [p for p in (r.get("starters") or []) if p]
             bench = [p for p in (r.get("players") or []) if p not in starters]
             names = dict(zip([str(p) for p in starters + bench],
                              _names(starters + bench, resolver)))
-            rows = [{"player": names[str(p)], "pts": _pts(p), "slot": "starter"}
-                    for p in starters]
-            rows += [{"player": names[str(p)], "pts": _pts(p), "slot": "bench"}
-                     for p in bench]
-            total = round(sum(x["pts"] or 0 for x in rows if x["slot"] == "starter"), 1)
-            return {"players": rows, "projected_total": total}
+            rows = []
+            for p in starters:
+                rows.append({"player": names[str(p)], "slot": "starter",
+                             "projected": _pts(p), "actual": _actual(p),
+                             "game_started": _started(p)})
+            for p in bench:
+                rows.append({"player": names[str(p)], "slot": "bench",
+                             "projected": _pts(p), "actual": _actual(p),
+                             "game_started": _started(p)})
+            starters_rows = [x for x in rows if x["slot"] == "starter"]
+            total = round(sum(x["projected"] or 0 for x in starters_rows), 1)
+            yet = [x["player"] for x in starters_rows if not x["game_started"]]
+            remaining = round(sum(x["projected"] or 0 for x in starters_rows
+                                  if not x["game_started"]), 1)
+            return {"players": rows, "projected_total": total,
+                    "yet_to_play": yet, "remaining_projected": remaining}
 
         mine = next((x for x in rosters if str(x.get("owner_id")) == sid), None)
         if not mine:
@@ -462,9 +494,14 @@ def build_topic_payload(
             "Everything about this manager's week. Analyse from it: "
             "start/sit is bench vs starter at an eligible slot, the "
             "matchup is lineup vs lineup, the standings give the stakes. "
-            "Projections missing (pts null) means the endpoint was down; "
-            "say so rather than inventing numbers. Draft, transactions "
-            "and trending are separate topics."
+            "Each player carries projected, actual (points so far) and "
+            "game_started; yet_to_play NAMES the starters whose game has "
+            "not started and remaining_projected is what is still on the "
+            "board, for both sides. Use those names: never say 'depending "
+            "on who is left' when the list is right here. Projections "
+            "missing (null) means the endpoint was down; say so rather "
+            "than inventing numbers. Draft, transactions and trending are "
+            "separate topics."
         )
 
     elif topic == "transactions":

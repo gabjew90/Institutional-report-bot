@@ -74,6 +74,7 @@ def _patched(**over):
         "fetch_draft_picks": lambda did: [],
         "fetch_trending": lambda kind="add", **kw: [],
         "fetch_projections": lambda s, w: {},
+        "fetch_weekly_stats": lambda s, w: {},   # keeps every smoke offline
     }
     base.update(over)
     return [patch.object(sd, k, v) for k, v in base.items()]
@@ -163,16 +164,22 @@ def test_situation_is_the_whole_week():
     proj = {"4034": {"pts_ppr": 21.4}, "6794": {"pts_ppr": 18.2}, "1111": {"pts_ppr": 9.9}}
     mus = [{"roster_id": 1, "matchup_id": 7, "points": 0},
            {"roster_id": 8, "matchup_id": 7, "points": 0}]
+    # weekly stats (2026-09-13): Chase has played, Robinson has not
+    stats = {"4034": {"pts_ppr": 27.7, "gp": 1.0}}
     out = _build("situation", member="bk",
                  fetchers={"fetch_projections": lambda s, w: proj,
+                           "fetch_weekly_stats": lambda s, w: stats,
                            "fetch_matchups": lambda lid, w: mus})
     assert out["status"] == "ok", out
     assert out["record"] == "2-0" and out["week"] == 2, out
-    rows = [(r["player"], r["pts"], r["slot"]) for r in out["roster"]["players"]]
+    rows = [(r["player"], r["projected"], r["slot"]) for r in out["roster"]["players"]]
     assert rows == [("Ja'Marr Chase (WR, CIN)", 21.4, "starter"),
                     ("Bijan Robinson (RB, ATL)", 18.2, "starter"),
                     ("id:1111", 9.9, "bench")], rows
     assert out["roster"]["projected_total"] == 39.6, out["roster"]
+    assert out["roster"]["yet_to_play"] == ["Bijan Robinson (RB, ATL)"], out["roster"]
+    assert out["roster"]["remaining_projected"] == 18.2
+    assert out["roster"]["players"][0]["actual"] == 27.7 and out["roster"]["players"][0]["game_started"]
     assert out["matchup"]["manager"].startswith("Tulch"), out["matchup"]
     assert out["matchup"]["lineup"]["projected_total"] == 0, out["matchup"]
     assert out["standings"][0]["record"] == "2-0"
