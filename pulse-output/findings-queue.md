@@ -637,3 +637,51 @@ Not filing a fresh queue item for the staleness itself, per the
   time from a separate analyst-call pool, per the documented
   architecture — not a regression. Noting this so a later session
   doesn't re-flag it as a defect from a stale self-review snapshot.
+
+## 2026-09-14 — headless QC on 2026-09-14T14-06-29Z
+
+- **deterministic-fixable** — `pulse-context/latest.json` is a single
+  overwritten pointer rather than an archive keyed by pulse
+  timestamp. It updates every time ANY pulse runs (scheduled or
+  manual). By the time this QC session ran, `latest.json` held a
+  later manual `/pulse` (`dumped_at_utc: 2026-09-14T19:33:34Z`,
+  `pdf_count: 92`, `window_label: "last-24h"`), not the 13:58Z /
+  140-PDF context that actually produced the 14:06Z pulse under
+  review. Spot-checking the MAIN EVENT's core figures against
+  `latest.json` first produced three apparent fabrications (a $230B
+  Goldman bond-supply figure, a JPMorgan 68%-of-Treasury-borrowing
+  figure, a $320B JPMorgan issuance figure — none present in that
+  file's `analyses_json`). All three are real and correctly
+  attributed; they just live in
+  `pulse-output/agent-io/<ts>/adj-prompt-ai_infrastructure_and_demand.txt`
+  (lines ~1313-1330), which is the actual generation-time evidence
+  and was unaffected by the later run. Fix: archive the context dump
+  per run (e.g. `pulse-context/archive/<ts>.json`) alongside
+  `latest.json`, or point the QC skill's own instructions at
+  `pulse-output/agent-io/<ts>/` as the authoritative fallback when a
+  same-day second pulse is suspected (check `dumped_at_utc` /
+  `pdf_count` in `latest.json` against the archived `.md`'s
+  frontmatter before trusting it). Scope: small — a copy-on-write of
+  the existing dump plus one sentence in the QC skill's own
+  instructions. Left unfixed, the failure mode is silent: a future QC
+  pass has no signal that its ground truth has rotated out from under
+  it unless it happens to compare `dumped_at_utc`/`pdf_count` against
+  the pulse frontmatter first.
+- **observation** — hard-residual-ships-anyway rate: 3 of the last 5
+  graded runs (09-08, 09-11, today) exhausted the 2-repair adversarial
+  budget and shipped to production via owner call B with 1-3 hard
+  findings still live. This is now the modal outcome on a normal day,
+  not an exception. Individual defects behind each residual are
+  already logged elsewhere in this queue and in STEP 7's reviews;
+  flagging the aggregate rate itself in case it's the more useful
+  signal — either the 2-repair budget is undersized for current
+  DRAFT/EDIT/SCRUB output quality, or upstream drift (SCRUB's
+  unmandated factual rewrites, EDIT's unflagged section deletions) is
+  generating more late-stage defects than two repair passes can close.
+- **observation** — `pulse-output/adversarial/2026-08-28T14-10-34Z.json`
+  is missing even though the archive and `qc-reviews` both have a
+  2026-08-28 entry and adversarial checking was already active the
+  day before (08-27) and after (08-31). One gap in an otherwise
+  continuous control series since the adversarial gate went live;
+  not actionable now (too old to investigate from artifacts alone),
+  logged so the series' one known hole is documented.

@@ -4,6 +4,31 @@ Entries are appended by the nightly headless judge, one heading per graded
 date. Entries are removed by the work session that ships or rejects them —
 never by the judge.
 
+## 2026-09-13
+
+- (open) judgment — fantasy-league projected-total fabrication at
+  21:21:32 UTC (Ry_spaceman, "How's my team doing"). `lookup_fantasy_league
+  topic=situation, member=Ry` returned `ok` (3698 chars); the answer's
+  current scores (91.0 vs 122.86) are exactly right but its projected
+  totals (134.7 to 124.9) are wrong and outcome-flipping versus a
+  screenshot BK posted 86 seconds later in the same thread (real
+  projected: 140.48 to 149.78, 37% win prob for Ry's team — bot's
+  numbers implied Ry pacing ahead, screenshot shows him pacing behind).
+  BK's own chat message explicitly separates the two clauses: "Current
+  scores are right" / "Projected totals are wrong." `scripts/validate_answer.py`
+  returns no violation and no rule in `scripts/ask_response_validate.py`
+  targets tool-sourced-but-wrong numeric payload values — no regex can
+  separate a wrong projected-total pair from a correct one without an
+  independent ground-truth fetch, so this isn't drafted as a fixture.
+  Same shape as the 2026-09-11 CPI-print finding (tool `ok`, figures
+  still wrong). Also flagged (unconfirmed, not a second finding): the
+  same tool fired again 86 seconds later for the other side of this
+  same matchup (interaction 21:22:58, BK, projected 134.5 to 136.6)
+  with no independent check available to confirm or rule out the same
+  defect there — worth a work session checking whether
+  `lookup_fantasy_league`'s `projected` field has a general
+  freshness/accuracy problem. Full writeup: `pulse-data/ask-qc/2026-09-13.claude.md`.
+
 ## 2026-08-26
 
 *(drained 2026-08-27 by the tool-status session, commits on the main
