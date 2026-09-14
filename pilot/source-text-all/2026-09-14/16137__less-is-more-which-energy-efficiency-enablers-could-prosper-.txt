@@ -1,0 +1,228 @@
+[Page 1]
+Less is more: Which 
+energy efficiency 
+enablers could 
+prosper as AI data 
+centres proliferate?
+Key takeaways
+•	
+Energy efficiency gains are key to the buildout of artificial intelligence (AI). 
+By making each watt go further, companies can sidestep power-availability 
+roadblocks and continue to grow their computational power.
+•	
+This creates opportunities across a broad range of industries that can help 
+data centres operate more efficiently, such as advanced semiconductor 
+technology, as well as batteries and backup power.
+•	
+The acceleration in energy demand that AI is creating could also serve as a 
+major catalyst to modernise the electricity grid, invest in low-carbon energy 
+generation and ultimately build a more sustainable energy system.
+Emma Doner
+Sustainability 
+Research Analyst
+September 2026
+FOR PROFESSIONAL INVESTORS ONLY 
+Marketing communication
+
+
+[Page 2]
+Introduction 
+Artificial intelligence (AI)'s growth is becoming increasingly tied to access to 
+electricity. Building new generation and grid infrastructure will remain important, but 
+supply expansion alone is unlikely to keep pace in the near term. That makes energy 
+efficiency an essential part of the equation and creates investment opportunities in a 
+broad range of companies.
+Even under conservative assumptions, projected data centre electricity demand 
+appears likely to exceed available power in several markets over the next few years. 
+Utilities and power producers are moving to add capacity, but grid connection wait 
+times currently exceed five years in many US regions, for example.
+To meet their growth ambitions, hyperscalers, or tech companies that develop and 
+operate large data centres, will need to deliver more computational capacity from 
+the power they already have. Improvements in chip design, memory bandwidth, 
+networking and energy management can reduce costs and support faster scaling. The 
+capex spending needed to achieve those improvements could create opportunities in 
+semiconductors, memory suppliers, optical components, batteries and backup power.
+20
+40
+60
+80
+100
+120
+2024
+2025
+2026
+2027
+2028
+2029
+2030
+2031
+2032
+Hyperscaler
+Colocation
+Neocloud
+Total data centre capacity (GW)
+Hyperscale growth
+US data centre capacity is projected to grow more than five times by the early 2030s
+Source: Capital Group, with data from SemiAnalysis, as at January 2026. Data for 2024 and 2025 were 
+actual, and data for 2026 onward are forecast by SemiAnalysis based on announced plans from data 
+centre developers. Hyperscalers refer to technology companies that develop and operate large data 
+centres. Neocloud refers to specialised cloud infrastructure providers dedicated to AI workloads. 
+Colocation data centres lease space for hardware that customers own. GW: gigawatts.
+2
+
+
+[Page 3]
+Packing a punch: Chip design addresses power constraints
+Large opportunities for AI power efficiency improvements lie within a new chip design 
+concept known as advanced packaging, or integration of multiple chips into a single 
+enclosed package for better performance and energy efficiency. 
+Historically, semiconductor advances have been primarily driven by shrinking the 
+size of transistors – key building blocks of chips that are essentially microscopic 
+switches that control electrical power – and cramming more of them onto a chip. The 
+industry is reaching its limit on physically diminishing transistors, just as demand for 
+computational capabilities from AI has increased rapidly. 
+Moving data to and from the core compute processor is the largest bottleneck and 
+greatest power drain within AI hardware today. Longer distance travelled by data 
+increases latency, generates more heat and wastes electricity. Advanced packaging 
+addresses this problem by bringing components physically closer together. 
+Growing demand for advanced packaging could benefit key players in relevant parts 
+of the semiconductor value chain, including leading chipmakers such as Taiwan 
+Semiconductor Manufacturing Company Limited (TSMC), inspection and testing 
+companies such as KLA Corporation, and suppliers of specialised equipment for 
+advanced packaging such as ASMPT Limited. Advanced Micro Devices, Inc. (AMD), 
+NVIDIA Corporation, Apple Inc. and Broadcom Inc. have incorporated elements of 
+advanced packaging into their product roadmaps for 2026 and beyond.
+High-bandwidth memory (HBM), a key component of advanced packaging, addresses 
+a major source of energy inefficiency in AI systems. 
+In many AI workloads today, processors run well below full utilisation because memory 
+cannot deliver data quickly enough, a bottleneck commonly referred to as the 
+“memory wall.” In practical terms, that means expensive processing capacity often sits 
+idle while still consuming power. 
+Instead of spreading out memory chips horizontally, HBM places them side-by-side 
+or stacks them vertically; and uses more efficient “interconnect,” or electrical 
+connection, which shortens the distance to move data and improves performance and 
+energy efficiency. 
+Leading memory suppliers like SK Hynix Inc., Micron Technology, Inc. and Samsung 
+Electronics Company Limited have already benefited from the surge in AI spending, 
+and they appear likely to remain attractive for investors as advanced packaging 
+technologies, including HBM, are deployed at scale.
+Growing bottleneck
+Memory and networking capacity has scaled much more slowly than compute
+For illustration purposes only. Source: Capital Group analysis using data from Gholami, Amir, Zhewei Yao, 
+Sehoon Kim, Coleman Hooper, Michael W Mahoney, and Kurt Keutzer. 2024. “AI and memory wall.”
+60,000x 
+100x 
+30x 
+Compute
+Memory
+Interconnect
+2000
+2020
+2005
+2010
+2015
+Normalised growth
+3
+
+
+[Page 4]
+Data centre networking: How to move more data with
+less power
+Power efficiency improvement at the chip level is critical, as up to 60% of an AI 
+centre’s power demand comes from processors and memory. The second-largest 
+power consumer is networking: the systems and technologies that connect servers, 
+storage and applications within a data centre to enable reliable data movement and 
+support large-scale workloads. Networks for AI training could exceed 20% of total 
+power consumption at data centres, according to Lumentum Holdings Inc.1
+Traditional electrical, copper-based cables can handle high data volumes, but they 
+become less efficient as bandwidth demands increase and operators try to limit heat 
+and power consumption. 
+New technologies have emerged to address the challenge. For example, optical 
+networking uses optic fiber to transmit data, and co-packaged optics (CPO) 
+technology integrates optics, such as lasers, and electronics into one circuit package.
+Optical networking, including CPO, can improve graphics processing unit (GPU) 
+utilisation, meaning fewer processors sit idle waiting for data, enabling data centres to 
+produce more output without drawing more electricity. 
+The transition from copper to optical networking in data centres is still in its early days, 
+but the need for more bandwidth, higher speed and lower power consumption points 
+to demand growth for various optical products. For example, the market for optical 
+transceivers, tiny devices that convert data between electrical and optical formats, is 
+poised to grow rapidly through the early 2030s, according to Yole Group.2 
+Pure-play companies across the optics supply chain, including laser manufacturers 
+Lumentum and Coherent and fiber-optics supplier Corning, have seen their share 
+prices rally. Our investment professionals see further upside potential, as 2027 
+and 2028 could be another important inflection point for revenue growth as CPO 
+adoption accelerates. 
+Bright optics
+Total optical transceiver market size, 2025 vs. 2031
+2031
+2025
+$101B
+Data
+communication
+$11B
+Telecom
+$112B
+$18B
+Data
+communication
+$5B
+Telecom
+$23B
+Source: Yole Group. “AI redefines the optical transceiver market.” June 2026.
+1.	 Lumentum Holdings Inc. “Energy-efficient AI networks lead to dramatic reduction of environmental 
+impact.” 2024.
+2.	 Yole Group. “AI redefines the optical transceiver market.” June 2026.
+4
+
+
+[Page 5]
+Flexible power demand management can go a long way
+Another key to improving AI power efficiency is using electricity more intelligently. 
+If AI data centres can occasionally reduce power demand from the grid in peak 
+hours, existing infrastructure could absorb a surprisingly large amount of 
+additional demand.
+This does not necessarily mean shutting down a data centre facility. In practice, it can 
+mean delaying non-urgent workloads, moving tasks between sites, or temporarily 
+relying on on-site generation or battery storage. Case in point: Batteries in data 
+centres are shifting from idle backup systems to actively managing AI-driven power 
+volatility and supporting grid reliability. If a hyperscaler can offer a utility a credible 
+flexibility commitment, it may be able to connect new facilities to the grid faster. The 
+rising energy demand from AI could also serve as a major catalyst to invest in low-
+carbon energy generation and ultimately build a more sustainable energy system.
+There are still hurdles, particularly around market design, contract terms and 
+operational reliability. But backup power providers, battery storage companies, 
+energy management software vendors, and utilities that can structure flexible-load 
+contracts all stand to benefit.
+Final thoughts 
+As data centre buildouts accelerate and grid capacity remains limited, it may be 
+cheaper and easier to unlock power capacity through efficiency gains versus building 
+and connecting new power generation capacity. Our investment professionals’ deep 
+fundamental research capability allows them to dig deep into different segments 
+of the AI data centre value chain – from foundries to battery producers – to seek 
+companies that are better positioned to capture growing demand for products and 
+solutions that enable data centre power efficiency.
+This information has been provided solely for informational purposes and is not an offer, or solicitation of an 
+offer, or a recommendation to buy or sell any security or instrument listed herein.
+Statements attributed to an individual represent the opinions of that individual as of the date published and may not necessarily 
+reflect the view of Capital Group or its affiliates. This communication is intended for the internal and confidential use of the 
+recipient and not for onward transmission to any other third party. This communication is of a general nature, and not intended 
+to provide investment, tax or other advice, or to be a solicitation to buy or sell any securities. All information is as at the date 
+indicated and attributed to Capital Group unless otherwise stated. While Capital Group uses reasonable efforts to obtain 
+information from third-party sources that it believes to be accurate, this cannot be guaranteed.
+This communication is issued by Capital International Management Company Sàrl (CIMC), unless otherwise stated, which is 
+regulated by the Luxembourg CSSF - Commission de Surveillance du Secteur Financier. 
+In Switzerland, this communication is issued by Capital International Sàrl, authorised and regulated by the Swiss Financial 
+Market Supervisory Authority (FINMA).
+In the UK, this communication is issued by Capital International Limited, authorised and regulated by the UK Financial 
+Conduct Authority.
+In Hong Kong, this communication has been prepared by Capital International, Inc. (Cllnc), a member of Capital Group, a 
+company incorporated in California, United States of America. The liability of members is limited. This advertisement or 
+publication has not been reviewed by the Securities & Futures Commission of Hong Kong.
+In Singapore, this communication has been prepared by Capital Group Investment Management Pte. Ltd. (CGIMPL), a member 
+of Capital Group, a company incorporated in Singapore. This advertisement or publication has not been reviewed by the 
+Monetary Authority of Singapore. Neither has it been reviewed by any other regulator. 
+All Capital Group trademarks are owned by The Capital Group Companies, Inc. or an affiliated company. All other company 
+names mentioned are the property of their respective companies.
+© 2026 Capital Group. All rights reserved. WF12482216 EAxJ
+5
