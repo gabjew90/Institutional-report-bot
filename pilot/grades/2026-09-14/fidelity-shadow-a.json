@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16254__db-early-morning-reid-macro-strategy.txt",
+   "span": "The debate may therefore alter the composition of AI capex more than its overall scale",
+   "why": "Deutsche Bank note ties the safety debate to a shift toward oversight/governance spend rather than shrinking capex, citing the competitive race between firms and countries as the reason voluntary restraint is unlikely. Bank, mechanism, and reasoning all match."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16269__the-politics-of-compute-how-public-backlash-against-data-cen.txt",
+   "span": "roughly 500 jurisdictions have enacted bans or moratoriums... the risk that political opposition slows the AI infrastructure buildout is no longer negligible",
+   "why": "Morgan Stanley note gives the 500-jurisdiction figure and explicitly upgrades the political/regulatory slowdown risk from negligible. Attribution and figure both check out; framing as a 'politics not safety' objection matches the note's own distinction from a demand-driven downturn."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt; pilot-data/pilot/source-text/2026-09-14/16177__going-nowhere-fast.txt",
+   "span": "SMH is breaking below the lower boundary of the formation as it trades around $544... / Semis (SOXX) continue to trade below a declining 50 DMA... an eventual test of the 200 DMA (-17%) likely",
+   "why": "The $544/SMH breakdown level comes from The Market Ear, not BTIG. BTIG's -17%/200-day call is about SOXX, a different ticker, in a separate note. The sentence stitches TME's SMH observation onto BTIG's SOXX forecast as if BTIG made one continuous call about SMH \u2014 a source/ticker conflation, even though the -17% figure itself is accurate to BTIG's actual (SOXX) call."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16229__us-economics-analyst-a-hike-without-a-signal.txt",
+   "span": "On Friday, we added a 25bp rate hike at this week's September FOMC meeting to our forecast... following the August CPI report",
+   "why": "Goldman Sachs note confirms the Friday timing, the 25bp addition, and a section headed 'We Do Not See a Strong Economic Case for a Rate Hike.' August core CPI of 0.29% is corroborated in 16146__gs-macro-reads-12-sep-2026.txt."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16230__us-economic-weekly-in-the-interest-of-time.txt; pilot-data/pilot/source-text/2026-09-14/16247__economics-on-our-minds-september-2026-fomc-preview-and-so-it.txt; pilot-data/pilot/source-text/2026-09-14/16155__ms-savone-global-reflections-12-sep-2026.txt",
+   "span": "We expect the Fed to hike rates by 75bp this year (25bp each in Sep, Oct and Dec) / I expect the median dot to reflect two hikes for 2026 / Morgan Stanley economists expect the Fed to remain on hold",
+   "why": "All three bank calls match: BofA's Sept/Oct/Dec 25bp path, SocGen's median-two-hikes-for-2026 view (SocGen's own listed path is Sept/Dec/March, so the 'adds March on top' framing is a reasonable summary rather than a literal restatement, but not a material distortion), and Morgan Stanley's hold call."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16146__gs-macro-reads-12-sep-2026.txt",
+   "span": "oil breached $100 and USTs sold off hard after the Treasury bought fewer bonds than expected in its 10-20y buyback ($5.19bn against a $6bn maximum)",
+   "why": "Both figures ($5.19bn against $6bn max) are exact, and the source's own causal ordering (energy-led selloff, weak buyback compounding it) matches 'energy did most of the work... did not help.'"
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16262__multi-asset-strategy-daily.txt",
+   "span": "Given the energy and Fed backdrop, we remain cautious on duration into the meeting",
+   "why": "Mizuho note states duration caution ahead of the Wednesday Fed meeting. 'Staying out of long-dated bonds' is a fair, non-literal restatement of 'cautious on duration' with matching direction and timing."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16231__sunday-start-the-politics-of-compute.txt",
+   "span": "AI-related investment contributed... 0.8 percentage points in 1H26... real GDP growth of 2.6% in 2027, with 0.85 percentage points tied to AI-related capex",
+   "why": "Both figures (0.8pp for 1H26, 0.85pp of a 2.6% 2027 forecast) are attributed correctly to the same Morgan Stanley economist team; the 0.8pp figure is independently corroborated in 16234__building-a-better-mousetrap."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16269__the-politics-of-compute-how-public-backlash-against-data-cen.txt",
+   "span": "This could strengthen the position of the 'merchants of compute' - hyperscalers... The implications for AI adopters, however, would be negative",
+   "why": "Matches the stated direction exactly (good for hyperscalers, bad for adopters) and the note's explicit framing that the constraint is regulatory/political rather than a demand slowdown, which it separately calls 'not our base case.'"
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16226__gs-shelofsky-ig-credit-week-in-review-13-sep-2026.txt",
+   "span": "At $73bn, issuance was the third busiest week of a record year, broadly in line with the $70bn estimate",
+   "why": "Figure, ranking, and the $70bn prior Goldman desk estimate all match exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16226__gs-shelofsky-ig-credit-week-in-review-13-sep-2026.txt",
+   "span": "Only 7% of this week's supply came in the long end, compared with 20% over the past three months. This supply mix, combined with broader technicals, drove curve flattening, with our IG 30y basket tightening by 2bps versus roughly 0.5bp for both the 5y and 10y baskets",
+   "why": "The bp figures (30y 2bp vs. 5y/10y ~0.5bp) are exact, but the sentence's 'that pushed' implies the heavy $73bn week (the prior sentence's subject) caused the flattening. The source instead attributes it to the unusually low share of long-end paper in the mix plus broader technicals \u2014 a different, narrower driver than sheer issuance volume."
+  },
+  {
+   "id": "s12",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16226__gs-shelofsky-ig-credit-week-in-review-13-sep-2026.txt",
+   "span": "Absent a surprise deal from MSFT-which I would argue probabilities increased this week-it is difficult to see supply as a driver of credit underperformance",
+   "why": "The $50bn next-week estimate and the 'not the best short expression over the next 4 weeks' framing are both accurate, but MSFT is named by the source as a risk to a separate claim ('supply won't drive credit underperformance'), not to the 'credit isn't the best short vehicle' call, whose stated reasons are yields/technicals/cheap vol with no mention of supply or Microsoft. The sentence merges two distinct arguments into one causal chain the source doesn't state."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16146__gs-macro-reads-12-sep-2026.txt",
+   "span": "higher energy prices, the likelihood of a September Fed hike, and the potential for weaker risk sentiment all argue for USD strength, leaving us more comfortable funding out of EUR",
+   "why": "Matches exactly: long JPY, funded out of EUR (not USD), with all three stated rationale factors present."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16230__us-economic-weekly-in-the-interest-of-time.txt; pilot-data/pilot/source-text/2026-09-14/16229__us-economics-analyst-a-hike-without-a-signal.txt",
+   "span": "USD-JPY forecast table: Spot 159.48, Sep-26 153.00, Dec-26 149.00 (BofA) / Yen ($/Y) 2026 end-of-period: 163 (Goldman Sachs)",
+   "why": "Both banks' USD/JPY forecasts and horizons match exactly; both are correctly presented as forecasts, not prints."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16236__digital-assets-from-disruption-to-convergence.txt",
+   "span": "we are initiating thematic coverage of the digital-asset ecosystem... Our base case is convergence: public protocols develop more permissioning while institutions adopt public rails",
+   "why": "Matches: new thematic coverage, 'convergence' as the named base case, selective institutional adoption across public and permissioned/controlled rails, through the 2030 horizon stated elsewhere in the note."
+  }
+ ],
+ "faithful": 12,
+ "distorted": 3,
+ "unsupported": 0,
+ "faithful_rate": 0.8,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt",
+ "source_span": "That rebuild matters because dispersion remains extreme. The 200-day vol of GS TMT Momentum Winners versus Losers is around 76, compared with just 13 for SPX... Net/net: newly rebuilt tech longs are vulnerable to AI and Iran headlines.",
+ "source_chain": "HFs aggressively rebuilt tech/semis longs at a 97th-percentile two-week pace while broad-index fear stayed low and single-name dispersion stayed extreme (6x SPX vol), THEREFORE those freshly rebuilt longs sat exposed to single-name headline risk with no index-level cushion, THEREFORE Amodei's 'pace the frontier' weekend call plus a Saudi pipeline/Hormuz energy shock hit those names directly and broke NDX/SMH's technical range. Invalidation (Coppersmith): near-term vol makes sense, but only a break in the bigger AI story itself would justify more than that.",
+ "pulse_chain": "HFs rebuilt TMT/semis longs at a 97th-percentile two-week pace from a 25th-percentile base (repair not chase) while broad-index fear fell, THEREFORE Amodei's weekend essay on slowing AI development hit Asia and Nasdaq futures hard because dispersion means single names move ~6x more violently than the index and nothing was priced at the index level to cushion a headline aimed at exactly those names, THEREFORE banks disagree on what the essay changes (DB: spending shifts to governance since voluntary restraint is unlikely given the company/country race; GS/JPM: buy the dip; MS: political moratorium risk is no longer negligible). Invalidation: if power/land/data-center capacity is still the binding constraint on AI capex, this is a positioning flush; if $SMH keeps sliding toward BTIG's 200-day target (~17% lower), the safety debate has become a spending debate.",
+ "preserved": true,
+ "why": "the pulse reproduces the note's rebuild-plus-dispersion mechanism for why a single essay could break the tape, keeps the same directional headline-to-breakdown sequence, and translates the note's own vol-vs-bigger-story invalidation into a correctly-sourced (BTIG, 16177) technical level rather than swapping in an unargued condition.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

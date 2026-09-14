@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d33",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Broad bipartisan opposition to data centers is turning into bans/moratoriums and cancelled/delayed projects (~$156bn in 2025, ~$130bn in 1Q26) -> AI capex growth is at risk (not base case, but no longer negligible) -> because the constraint is political rather than weak demand, it deepens existing compute scarcity, which favors hyperscalers and hurts AI adopters, while lower issuance could let credit spreads tighten -> deferred capex would also weigh on GDP growth (0.6-0.85pp contributions 2025-2027) and consumption via the equity wealth effect, with a secondary risk that a slowdown lets China narrow the AI gap.",
+   "brief_chain": "Political opposition to data centers is becoming a policy constraint on AI capex (not base case, but no longer negligible; $156bn 2025 / $130bn 1Q26 cancelled or delayed) -> deferred investment weighs on 2025-2027 GDP growth and, via equity valuations/wealth effect, consumption -> because the constraint is political not demand-driven, it deepens compute scarcity, favoring hyperscalers over AI adopters, and cuts debt issuance, which could let credit spreads tighten.",
+   "distortions": [
+    {
+     "what": "Brief omits the source's closing point that a sustained slowdown could let China narrow or erase the US AI lead.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a stated secondary geopolitical implication, not part of the hyperscaler-over-adopters/credit-spread calls the brief conveys intact."
+    },
+    {
+     "what": "Brief compresses the partisan opposition breakdown (roughly two-thirds of Republicans, ~80% independents, 83% Democrats) into 'opposition spans both parties.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the directional point (opposition is bipartisan and broad) survives; only the granularity is lost."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Four developments (GENIUS Act regulatory clarity, stablecoin supply >$300bn, exchanges extending operating hours, crypto-native firms entering the regulatory perimeter) make digital assets strategically relevant now -> institutions and crypto-native firms converge on shared infrastructure, so convergence (not wholesale decentralization) is the base case -> whether the technology is adopted is separate from who captures the economics (incumbents, crypto-native equity, or tokens), with tokens capturing value only via durable demand net of issuance -> Bitcoin's thesis is separate ('digital gold', ~5% of above-ground gold today, base case a 1-4% retail satellite allocation over five years) -> broader crypto trades 37% below its October 2025 peak despite adoption progress because marginal demand is still retail/leverage/narrative-driven rather than durable institutional capital.",
+   "brief_chain": "Convergence is the base case (public protocols add permissioning, institutions adopt public rails where distribution/liquidity matter), driven by four developments (GENIUS Act, >$300bn stablecoin supply, extended exchange hours, crypto-native firms entering the regulated perimeter; ~1/4 of Bloomberg World Financials Index members by count, 60% by market cap, already engaged) -> adoption is separate from who captures the economics (incumbents, crypto-native equity, or tokens \u2014 tokens only with durable demand net of issuance) -> Bitcoin is a separate digital-gold thesis (~5% of above-ground gold, 1-4% retail satellite base case over five years) -> crypto prices are 37% below the October 2025 peak because marginal demand is still retail/leverage/narrative-driven.",
+   "distortions": [
+    {
+     "what": "Brief compresses the third 'developments' item (Nasdaq/NSCC/NYSE Arca extending trading and clearing windows) to 'exchanges extend operating hours' without naming the specific venues.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the substance (extended market hours as an adoption driver) is preserved; only venue-level detail is dropped."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d15",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Weekly flow report, no single thesis: ahead of CPI, US equity flows rotated into AI (semis/memory/hyperscalers) and out of rate-sensitive/software/financials names, with $250m of Jan-expiry semis call premium across several names -> Asia semis flow mixed (Taiwan buying, Japan mixed, Korea selling) -> large CPI hedges (SPX/SPY put spreads) were bought then quickly unwound as spot fell -> Brazil (EWZ) and China-linked (HSTECH/KWEB/CSI/EEM) upside flows stayed constructive despite some early EWZ selling -> dollar selling exceeded expectations (USDJPY downside, EUR topside, CHF short-covering though still net short) -> the ECB's post-meeting repricing was the main rates move, worsened by stopped-out Euribor and steepener positions -> Gold stayed bid (GDX buying, near-record GLD buying) despite higher rates and oil.",
+   "brief_chain": "US equity flows turned constructive on AI (semis/memory/hyperscalers) ahead of CPI, with ~$250m of Jan call premium in select semis names -> Asia semis mixed -> large CPI put-spread hedges were bought then quickly unwound -> Brazil/China-linked/EEM upside flows stayed constructive despite some early EWZ selling -> dollar selling exceeded expectations (USDJPY downside, EUR topside, CHF short-covering, still net short) -> ECB repricing was the main rates move, worsened by stopped-out Euribor and steepener positions -> Gold stayed bid on ETF demand (GDX, near-record GLD buying) despite higher rates and oil.",
+   "distortions": [
+    {
+     "what": "Brief drops the offsetting sell side of the rotation \u2014 source notes selling in rate-sensitive sectors (REITs, Biotech) and 'AI funders' Software and Financials alongside the AI buying.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's call is the AI/semis buying; the omitted sell-side names aren't a call the brief makes or contradicts."
+    },
+    {
+     "what": "Brief drops specific hedge sizes ($23bn SPX put spreads, $5bn SPY put spreads) and the 9bps steepener move, and shortens the semis call-buying ticker list (keeps SNDK/AMD/CRWV, drops INTX/DRAM/BE/SKHY).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the directional facts (hedges bought then unwound; broad-based semis call buying) survive without the magnitudes/full ticker list."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d30",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "US deficits are enormous even outside recession ($2tn gap over 11 months of FY2026) -> cheap-money-era debt is refinancing at much higher rates with a lag, so net interest already exceeds defense/Medicare as a share of GDP and is set to double to $2.1tn/~5% of GDP by 2035 -> developed-world deficits already exceed pre-GFC levels and debt-to-GDP ratios have surged -> the bond market has noticed (30Y yield at a 22-year weekly-close high) as AI capex now competes with expanding sovereign issuance for the same capital -> entitlements (~70% of spending) plus net interest consume 98.4% of federal receipts, so spending cuts alone can't fix it -> with little political appetite for spending cuts or tax hikes, the piece points to inflation or higher rates as the more likely release valve.",
+   "brief_chain": "Fiscal deficits are the dominant market driver ($2tn gap over 11 months of FY2026, outside recession) -> cheap-era debt refinances at higher rates with a lag, so net interest already exceeds defense/Medicare and is forecast to double to $2.1tn/~5% of GDP by 2035 -> developed-world deficits and debt-to-GDP ratios already exceed pre-GFC levels -> the bond market has noticed (30Y yield at a 22-year high) as AI capex competes with rising sovereign issuance, raising the price of capital -> entitlements plus net interest consume 98.4% of receipts, so spending cuts alone can't fix it -> with little political appetite for spending cuts or tax hikes, the piece concludes the gap is more likely closed via inflation or higher rates.",
+   "distortions": [
+    {
+     "what": "Brief states debt-to-GDP ratios 'already exceed pre-GFC levels,' conflating two adjacent but separate source claims \u2014 deficits are larger than before the GFC, and (on a different slide) debt-to-GDP ratios have surged, leaving governments more exposed to higher real rates \u2014 without the source explicitly making that pre-GFC comparison for the debt stock itself.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the piece's overall conclusion (fiscal trajectory is unsustainable, resolved via inflation or higher rates) is unchanged either way."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

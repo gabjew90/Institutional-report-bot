@@ -1,0 +1,12 @@
+{
+ "failed": true,
+ "dim": "fidelity",
+ "agent": "b",
+ "artifact": "production",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "raw_tail": "Error: Reached max turns (60)"
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-14/16156__ai-spending-resilient-growth-and-rising-rates.txt",
+   "span": "Because Alphabet, Amazon, and Meta can no longer fund this capital spending solely out cash generated from operations, they've issued debt: Meta's debt has increased from $50 billion a year ago to $112 billion today.",
+   "why": "The cash-flow-to-debt shift is grounded, but no source states or implies the specific mechanism claimed: that the Treasury yield setting the government's borrowing cost is also the hurdle rate every planned data center must clear. That causal chain is not in any source document."
+  },
+  {
+   "id": "s2",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16258__us-market-intelligence-morning-briefing.txt",
+   "span": "US: Futures are down, dragged by Tech, and higher oil prices, though bond yields are not reacting.",
+   "why": "This shows today's damage concentrated in Tech vs. the broader index, but the source explicitly says bond yields are NOT reacting this morning, undercutting the 'bond move' framing. No source attributes last week's tech-complex selloff to a bond move rather than company-specific news."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-14/16215__meta-platforms-inc-meta-the-introduction-of-muse-ai-implicat.txt",
+   "span": "We reiterate our Buy rating and 12-month price target of $725.",
+   "why": "A buy-equivalent META call built on the AI-monetization path exists in the corpus, but it is Goldman Sachs at a $725 target, not JPMorgan at $820. No JPMorgan META note exists anywhere in the source set. Both the bank and the figure are changed."
+  },
+  {
+   "id": "s4",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16226__gs-shelofsky-ig-credit-week-in-review-13-sep-2026.txt",
+   "span": "This supply mix, combined with broader technicals, drove curve flattening... it is difficult to see supply as a driver of credit underperformance.",
+   "why": "Goldman's own credit note explicitly downplays supply as a driver of the desk's activity this week \u2014 the opposite of 'selling that strength into this month's supply.' No '2:00 PM decision' or '~5% financing' framing appears anywhere in the file; that specific link to Wednesday's FOMC is invented."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt",
+   "span": "the Houthis are pushing towards Bab el-Mandeb, turning a single-chokepoint crisis into a two-front energy problem",
+   "why": "Directly matches the two-separate-chokepoints framing; corroborated by 16270's 'Two chokepoints, One bigger crisis.'"
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document in the corpus contains a 91%/45% trend-following Brent positioning statistic, and none states Goldman treats Iran as a 'low-probability, high-damage' case. Checked Goldman commodity (16150), systematic (16244), and multiple Iran/oil files \u2014 no match."
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt",
+   "span": "The Iran\u2013Gulf meeting in Oman has also been postponed. There is no obvious off-ramp.",
+   "why": "The meeting-postponed fact is grounded, but 'Sunday' timing and the specific causal link to 'a new Houthi attack on Saudi Arabia' are not stated anywhere (a same-day source, 16176, still describes the Oman meeting as scheduled for the coming Monday, not cancelled). The $BNO +4.11% figure has zero support \u2014 the BNO ticker does not appear anywhere in the corpus."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16229__us-economics-analyst-a-hike-without-a-signal.txt",
+   "span": "Additional hikes at the October and December meetings are possible but are not our base case.",
+   "why": "Matches the framing that October/December projections, not this week's move itself, are what's in question."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16254__db-early-morning-reid-macro-strategy.txt",
+   "span": "Core CPI rose by 0.29% in August, a touch above expectations and up from 0.22% in July... the market now at 87%... Such a move would take the target range to 3.75%-4.00%.",
+   "why": "Exact match on the 0.29% print vs. 0.2% expected and 0.22% July figure, correctly attributed to Deutsche Bank; 87% pricing supports 'close to fully priced' for the move to 4.00%."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16229__us-economics-analyst-a-hike-without-a-signal.txt",
+   "span": "We do not see a strong economic case for raising the funds rate... we think the FOMC will be reluctant to signal any additional hikes.",
+   "why": "Goldman's stated view matches exactly: expects the hike, sees no strong economic case, expects no signal beyond this week. 'Dissent' here reads as rhetorical (the outlier argument among bank views), not a false claim that Goldman authored an actual FOMC dissent \u2014 the file's real Waller dissent is separate and not misattributed to Goldman."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16268__short-lived-hiking-cycle-neutral-positioning-20x-multiples-g.txt",
+   "span": "With the 10yr yield near 5% and Brent around $105...",
+   "why": "Confirms the 10-year flirting with the 5% threshold; corroborated by 16222 ('the 10-year is pushing toward 5%')."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt",
+   "span": "nearly 5% of Russell 3000 stocks made a 52-week low even as the index itself remained less than 3% from a 52-week high",
+   "why": "Matches the figure and the index-near-high vs. breadth-weak contrast; sentence makes no bank attribution to check."
+  },
+  {
+   "id": "s13",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "",
+   "span": "",
+   "why": "No file combines broken short-term trigger levels for the S&P 500, Nasdaq 100, and Russell 2000 simultaneously, let alone attributed to Goldman (checked 16244 systematic report and 16233 vol surface). The QQQ -1.28%/SPY -0.55% figures are live intraday data not present in any source PDF."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16155__ms-savone-global-reflections-12-sep-2026.txt",
+   "span": "IGV is +37% off the April lows... Quality finding buyers well beyond Tech and into Healthcare (GLP-1s), Financials, and higher-end Consumer.",
+   "why": "The sector-broadening claim (health care, financials, higher-end consumer, credited to Morgan Stanley) is accurate. But the 37% figure belongs to IGV off April lows per Morgan Stanley, not to VFLO 'up 37% this year' credited to Bank of America \u2014 no Bank of America document exists anywhere in the corpus, and VFLO appears nowhere. Ticker, timeframe, and attribution are all changed."
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-14/16149__gs-crook-connecting-you-to-gs-thoughts-from-the-floor-12-sep.txt",
+   "span": "agent-led workflows emerging as the next software platform and cybersecurity positioned as a major beneficiary",
+   "why": "The general software/cybersecurity-as-AI-beneficiary theme is grounded in Goldman's flow desk note, but nothing in that file (or elsewhere) states these names are crowded shorts or that funds are 'positioned against' them, and IGV is not referenced there. The positioning mechanism is invented."
+  }
+ ],
+ "faithful": 6,
+ "distorted": 4,
+ "unsupported": 5,
+ "faithful_rate": 0.4,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

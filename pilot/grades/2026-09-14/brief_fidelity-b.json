@@ -1,0 +1,102 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d33",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Political opposition to data centers is broad and hardening into policy action (state pauses, ~500 local bans, 14 states weighing moratoriums, ~$156bn/2025 + ~$130bn/1Q26 in projects cancelled or delayed) therefore a capex slowdown, while not MS's base case, is no longer a negligible risk therefore because the constraint is political rather than a demand shortfall, it would deepen compute scarcity (favoring hyperscalers, hurting AI adopters), cut debt issuance (letting credit spreads tighten), and weigh on GDP growth and consumption via deferred AI capex and the wealth effect.",
+   "brief_chain": "Same chain, in the same order: broad bipartisan opposition and hardening policy action therefore slowdown risk no longer negligible (not base case) therefore political-not-demand constraint means deeper compute scarcity favoring hyperscalers/hurting AI adopters, reduced issuance possibly tightening spreads, and a GDP/consumption drag via deferred capex and the wealth effect.",
+   "distortions": [
+    {
+     "what": "Brief omits the closing geopolitical point that a sustained slowdown could let China narrow or erase the US AI lead.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's a multi-year geopolitical tail remark, not a stance, level, or invalidation condition."
+    },
+    {
+     "what": "Brief compresses the Gallup/Heatmap Pro partisan breakdown (two-thirds R, ~80% independent, 83% D) to 'spans both parties.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the aggregate point (broad, bipartisan opposition) is preserved."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Institutions are rapidly building digital-asset infrastructure and four developments (GENIUS Act regulation, >$300bn stablecoin supply, extended trading hours, crypto-native firms entering the regulatory perimeter) make the theme timely therefore the base case is convergence (public rails plus institutional permissioning), with adoption and value-capture treated as separate questions therefore value can accrue to incumbents, crypto-native equity, or tokens depending on structure therefore Bitcoin, on a separate digital-gold monetary thesis, has room to grow given it's ~5% of above-ground gold's value, with a 5-year base case of becoming a mainstream satellite allocation (1-4% retail) therefore broader crypto (37% below its Oct-2025 peak) still needs deeper professional participation because marginal demand remains retail/leverage/narrative-driven.",
+   "brief_chain": "Same chain and figures, same order: convergence base case, four timing catalysts including the GENIUS Act, ~25%/60% Bloomberg Financials Index adoption stat, adoption-vs-value-capture split, Bitcoin's separate ~5%-of-gold digital-gold thesis with 1-4% five-year retail satellite allocation base case, and crypto prices 37% below the Oct-2025 peak on retail/leverage/narrative-driven demand.",
+   "distortions": [
+    {
+     "what": "Brief drops supporting evidence for the convergence thesis (Bitcoin/Nasdaq correlation ~0.45, Kinexys/Broadridge processing volumes, ~$150bn ETP AUM).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are corroborating detail for a thesis the brief already states correctly."
+    },
+    {
+     "what": "The '37% below the October 2025 peak' figure is ambiguous between Bitcoin's price (-37%) and total crypto market cap (-37%, both stated separately in the source) without specifying which.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both readings are factually accurate in the source, so no wrong number reaches the reader."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d15",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "US equity flows turned constructive into AI (semis, memory, hyperscalers) ahead of CPI while rotating out of rate-sensitive and AI-funder sectors, with large semis call buying and mixed Asia semis flow therefore CPI index hedges (SPX/SPY put spreads) were bought then quickly unwound as spot moved therefore EWZ and China-linked (HSTECH/KWEB/CSI/EEM) upside flows stayed constructive despite some early EWZ selling therefore broad dollar selling continued (USDJPY downside, EUR topside, CHF short-covering though still net short) therefore ECB repricing drove the week's main rates move, with stops through Euribor and steepener positions therefore gold stayed bid (GDX buying, near-record GLD buying) despite higher rates and oil.",
+   "brief_chain": "Same chain and order: constructive AI-trade flows into CPI, large semis call buying, mixed Asia semis, quickly-unwound CPI hedges, constructive EWZ/China upside despite early EWZ selling, broad dollar selling with CHF still net short, ECB-driven rates move, and gold staying bid on ETF/GDX/GLD demand.",
+   "distortions": [
+    {
+     "what": "Brief drops the specific sectors being sold to fund the AI rotation (REITs, Biotech, Software, Financials).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the reported direction (buying AI, funded by selling elsewhere) is preserved without the sold names."
+    },
+    {
+     "what": "Brief renders GLD's 'fourth largest buying-day ever' as 'near record-pace' buying.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both describe unusually strong bullish gold-ETF flow; the directional read is unchanged."
+    },
+    {
+     "what": "Brief omits the specific unwind sizes ($23bn SPX, $5bn SPY put spreads) and the 9bps steepener move.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the qualitative point (hedges bought then quickly unwound) survives without the exact notionals."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d30",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "US deficits are structurally large ($4.8tn collected vs $6.8tn spent, a $2tn gap even without recession) therefore cheap-money-era debt refinancing at higher rates is pushing net interest expense past defense and Medicare as a share of GDP, forecast to double to $2.1tn (~5% of GDP) by 2035 therefore developed-world deficits and debt-to-GDP already exceed pre-GFC levels in a healthy economy therefore the bond market has noticed (30-year yield's highest weekly close in 22+ years) as AI capex competes with expanding sovereign issuance for the same capital therefore because entitlements drive ~70% of spending and, with interest, consume 98.4% of receipts, spending cuts alone can't fix it therefore with no political appetite for cuts or tax hikes, the gap is more likely closed via inflation or higher rates.",
+   "brief_chain": "Same chain, same figures, same order and same concluding inflation-or-higher-rates call.",
+   "distortions": [
+    {
+     "what": "Brief drops the piece's rhetorical framing (Herbert Stein quote, 'Don't try this at home').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 purely stylistic material with no bearing on the fiscal argument or its conclusion."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 8,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

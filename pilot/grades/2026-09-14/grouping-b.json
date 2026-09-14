@@ -1,0 +1,53 @@
+{
+ "metric": 1,
+ "total_cards": 1905,
+ "fragmentation_sets": [
+  {
+   "subject": "GS Communacopia conference: enterprise AI software shift from models to context/agents, monetized via ROI outcomes",
+   "labels": [
+    "ai software monetization",
+    "enterprise ai data moat",
+    "agentic ai adoption"
+   ],
+   "cards": 36
+  },
+  {
+   "subject": "AI-driven boom in bank capital-markets/IB fee pools",
+   "labels": [
+    "ai share market activity",
+    "bank capital markets fees"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Morgan Stanley SPX volatility-surface factor framework and the applied skew risk-premium strategy",
+   "labels": [
+    "spx skew risk premium",
+    "volatility surface factor correlation"
+   ],
+   "cards": 20
+  },
+  {
+   "subject": "Crypto market price action and fund-flow trend",
+   "labels": [
+    "crypto market drawdown",
+    "bitcoin fund inflows"
+   ],
+   "cards": 13
+  }
+ ],
+ "fragmented_mass_share": 0.042,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "Fragmentation traces almost entirely to one GS Communacopia note sliced into five adjacent labels (monetization/moat/agentic kept together as one subject; cybersecurity and physical-AI correctly stayed separate given their distinct TAM/ticker framing) and two GS/BofA-style paired notes (bank fees, MS vol factors). misc is 12 cards (0.6%), clean overflow. Note: 'enterprise ai data moat' and 'ai cybersecurity demand' carry a near-verbatim duplicate CrowdStrike card, a data-quality flag worth a separate dedup pass, not counted toward fragmented mass here since it didn't change the subject-level verdict.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-14/16156__ai-spending-resilient-growth-and-rising-rates.txt",
+   "span": "Because Alphabet, Amazon, and Meta can no longer fund this capital spending solely out cash generated from operations, they've issued debt",
+   "why": "Directly supports the cash-flow-to-debt funding shift; the yield/hurdle framing is a reasonable analytical extension of the source's financing-cost concern, not a distortion of any figure or attribution."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16270__astra-ayatollahs-accelerating-inflation-the-week-when-oil-re.txt",
+   "span": "Bonds were monkeyhammered (10Y near 5%), equities spent three days reconsidering their life choices",
+   "why": "Last week's AI/tech-complex selloff being bond-driven rather than earnings-driven is well supported; the 'this morning' concentration claim is an unverifiable live-market extension, flagged accordingly."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-14/16215__meta-platforms-inc-meta-the-introduction-of-muse-ai-implicat.txt",
+   "span": "We reiterate our Buy rating and 12-month price target of $725... Rating since Sep 12, 2021",
+   "why": "The bank is Goldman Sachs, not JPMorgan; the target is $725, not $820; and the rating has stood since 2021, so this is a reiteration, not an upgrade \u2014 attribution, figure, and status are all changed."
+  },
+  {
+   "id": "s4",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16226__gs-shelofsky-ig-credit-week-in-review-13-sep-2026.txt",
+   "span": "Absent a surprise deal from MSFT... it is difficult to see supply as a driver of credit underperformance",
+   "why": "The source's own credit desk view is the opposite of an active 'selling that strength into supply' stance; client flow that week was mixed buy/sell by maturity, not a clean directional sell described by the sentence."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16270__astra-ayatollahs-accelerating-inflation-the-week-when-oil-re.txt",
+   "span": "'Two chokepoints, One bigger crisis' as the Iran war moved from being a 'transitory risk",
+   "why": "Directly matches the two-chokepoint (Hormuz plus Bab el-Mandeb) framing used to explain why this escalation has stuck rather than faded."
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "n/a",
+   "why": "No source document contains a 91% (or 45%, end-of-August) trend-following/CTA long-Brent positioning statistic, nor a Goldman statement framing Iran as a low-probability, high-damage case where calm would move prices most; exhaustive search of commodity, positioning, and Iran-related files turned up nothing matching."
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt",
+   "span": "The Iran\u2013Gulf meeting in Oman has also been postponed. There is no obvious off-ramp.",
+   "why": "The postponement itself is supported, but 'Gulf states called it off on Sunday after a new Houthi attack on Saudi Arabia' adds an actor, a day, and a specific causal trigger not stated in any source; a same-day Bear Traps note (16176) instead describes the Oman meeting as still scheduled for Monday, conflicting with a settled 'called off' framing."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16229__us-economics-analyst-a-hike-without-a-signal.txt",
+   "span": "We suspect that the FOMC will want to nudge the market away from pricing an October hike too confidently but will not do it in the statement",
+   "why": "Matches the framing that the hike itself is fully priced/settled and the live debate is about forward guidance into the following months."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16254__db-early-morning-reid-macro-strategy.txt",
+   "span": "Core CPI rose by 0.29% in August, a touch above expectations and up from 0.22% in July",
+   "why": "Figures and Deutsche Bank attribution match exactly; the Wednesday quarter-point hike being close to fully priced is corroborated by the same file's 87% market pricing figure."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16229__us-economics-analyst-a-hike-without-a-signal.txt",
+   "span": "We do not see a strong economic case for raising the funds rate... We expect the FOMC to make only the minimum necessary change to its statement",
+   "why": "Goldman's forecast (expects the hike, sees no strong economic case, expects the Fed to avoid extra guidance) matches; 'the dissent that matters is Goldman's' is a rhetorical label for the bank's contrarian house view, not a false claim that Goldman cast an FOMC vote."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16270__astra-ayatollahs-accelerating-inflation-the-week-when-oil-re.txt",
+   "span": "2Y Yields climbed above 4.60%... the 10Y approached 5%",
+   "why": "10-year approaching/testing 5% ahead of the Wednesday FOMC is well grounded; framing it as a question of which side 'wins' by Wednesday is a fair characterization of the live tension described across sources."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt",
+   "span": "nearly 5% of Russell 3000 stocks made a 52-week low even as the index itself remained less than 3% from a 52-week high",
+   "why": "Matches almost verbatim, corroborated in two other files (16177, 16212)."
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16224__gs-garrett-weekend-prep-13-sep-2026.txt",
+   "span": "global equity markets broke short term trendlines this week, and created marginal forced selling",
+   "why": "Goldman's note describes a general 'global equity markets' trendline break, not specifically the S&P 500, Nasdaq 100, and Russell 2000 all breaking trigger levels simultaneously; no source names those three indices together in this context, and the QQQ/SPY intraday split is an unverifiable live figure layered on top."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16155__ms-savone-global-reflections-12-sep-2026.txt",
+   "span": "IGV is +37% off the April lows... Mike expects momentum to rebuild with Software, Financial Services, Insurance and Healthcare Services prominent",
+   "why": "The +37% figure belongs to IGV (software ETF) per Morgan Stanley, not to $VFLO or Bank of America as claimed; and Morgan Stanley's actual rotation call keeps Software 'prominent' rather than describing money leaving technology, contradicting the sentence's broadening-away-from-tech framing."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-14/16155__ms-savone-global-reflections-12-sep-2026.txt",
+   "span": "record SaaS buying in 2H August was still mostly short covering rather than real demand stepping in",
+   "why": "The closest matching theme (crowded software shorts getting covered) is Morgan Stanley's, not Goldman's; no source anywhere uses 'flow desk' or ties this specifically to cybersecurity being bought into crowded shorts under a Goldman attribution."
+  }
+ ],
+ "faithful": 8,
+ "distorted": 6,
+ "unsupported": 1,
+ "faithful_rate": 0.533,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

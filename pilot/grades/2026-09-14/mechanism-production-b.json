@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-14/16226__gs-shelofsky-ig-credit-week-in-review-13-sep-2026.txt",
+ "source_span": "Our AI basket delivered its best performance versus IG100 in more than a year, driven by a shift in supply away from the subsector, limited duration in the issuance that did come, and broad AI momentum... it is difficult to see supply as a driver of credit underperformance.",
+ "source_chain": "AI-linked issuance supply shrank and skewed short-duration this week, therefore the AI credit basket outperformed IG100 by its widest margin in over a year, therefore Goldman's credit desk reads supply as a tailwind, not a threat, for the subsector, with the invalidation being a surprise long-duration deal (e.g. from MSFT) that would reverse the favorable supply mix.",
+ "pulse_chain": "Hyperscalers are funding the AI buildout with $320B of bonds this year (68% of new long-dated government borrowing, JPMorgan) and another $230B is due in September (Goldman), therefore yield pressure is a supply problem not a demand problem, therefore every quarter of delay raises the buildout's cost of capital, therefore Goldman's credit desk is telling clients to own less AI debt than benchmark and sell into strength, with the invalidation being Wednesday's Fed decision repricing financing costs toward or past 5%.",
+ "preserved": false,
+ "why": "The pulse attributes a bearish 'sell AI-linked debt, watch out for supply' call to Goldman's credit desk, but the only Goldman credit note in the corpus (16226) argues the opposite \u2014 AI paper just posted its best relative performance in a year precisely because supply into the subsector shrank, and the desk states it is 'difficult to see supply as a driver of credit underperformance' \u2014 and no file in either source-text directory contains the pulse's central $320B/68%/$230B bond-supply figures at all, indicating the crowding-out mechanism is invented rather than reproduced from a note.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

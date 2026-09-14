@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-14/16266__hedge-funds-just-piled-back-into-tech-now-the-nasdaq-floor-i.txt",
+ "source_span": "That rebuild matters because dispersion remains extreme. The 200-day vol of GS TMT Momentum Winners versus Losers is around 76, compared with just 13 for SPX. Tech price action has been almost 6x more violent than index vol.",
+ "source_chain": "HFs aggressively rebuilt tech/semis longs over two weeks (97th percentile pace) while broad-index fear stayed unusually low (Panic Index's third-largest one-day drop) therefore that rebuilt positioning sits on top of extreme single-name dispersion (tech vol ~6x SPX vol), concentrating risk in the names just bought rather than the index therefore Amodei's weekend 'pace the frontier' safety call landed directly on those freshly rebuilt longs, hitting Asian AI names hard and breaking NDX/SMH technical support. Invalidation: per Coppersmith this reads as a positioning/vol event, not a break in the bigger AI story, though technical damage argues VIX is still underpriced for further downside toward the 200-day MA.",
+ "pulse_chain": "HFs rebuilt tech/semis longs from a 25th-percentile base at a 97th-percentile two-week pace (a repair, not a chase) therefore that rebuild sits on the same extreme dispersion (vol ~76 vs ~13, ~6x) that leaves single names, not the index, carrying the risk therefore Amodei's weekend essay hit those freshly rebuilt longs directly, selling off Asian AI names and Nasdaq futures with almost nothing priced at the index level to cushion it. Invalidation: if power/land/data-center capacity remain the binding constraint behind $3-4tn of AI capex by 2030, this is a positioning flush; if $SMH keeps sliding toward its 200-day MA (~17% lower per BTIG), the safety debate becomes a spending debate.",
+ "preserved": true,
+ "why": "The pulse reproduces the same rebuild-then-dispersion-then-catalyst chain with the same direction, sources each step's numbers correctly to the banks that made them (GS PB data, GS's own 6x dispersion stat, DB on capex composition, GS/JPM buying the dip, MS on political risk, BTIG's 200-day target), and resolves on the note's own technical level (SMH/200-day MA) rather than inventing a different invalidation.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

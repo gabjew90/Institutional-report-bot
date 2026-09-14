@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-14/16176__bear-traps-report-turning-point-final-iv-sep-13-2026-pdf.txt",
+ "source_span": "Those hyperscaler bonds were priced on revenue growth outrunning debt service. If the buildout slows, the cash flows that justify a century bond or a forty-year tranche don't materialize on schedule. That's the credit risk.",
+ "source_chain": "Hyperscalers finance the buildout on the long end while Treasury rolls short (one of them is wrong on rates) therefore those long bonds were priced on AI revenue growth outrunning debt service therefore if signals (Amodei, OpenAI IPO delay) mean the buildout is cooling, that revenue doesn't materialize on schedule therefore the risk is a repricing of the whole long-end debt stack once the market stops believing the AI revenue curve. Invalidation, stated by the note itself: a slowdown in capex growth is not the same as a revenue collapse, so the repricing risk is 'a risk, not a verdict.'",
+ "pulse_chain": "Demand for AI computing has stopped being the variable that decides these stocks therefore the buildout ($320bn of bonds, 68% of new long-dated government borrowing per JPMorgan) is bidding for the same lenders as the Treasury, so yields rise from supply, not demand, therefore every quarter of delayed borrowing gets more expensive at a 4.99% 10-year, setting the hurdle rate for future capex therefore the complex sold off on a bond move rather than a company-specific event. Invalidation: Wednesday's FOMC decision on whether financing prices near 5% or worse.",
+ "preserved": false,
+ "why": "The source's entire causal chain is a demand-side argument (bonds are only safe if AI revenue growth materializes to service them), which the pulse's opening line explicitly negates ('demand... has stopped being the variable'), replacing it with an unsourced supply/crowding-out story and swapping the note's own stated invalidation (belief in the AI revenue curve breaking) for an unrelated one (the FOMC rate decision).",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

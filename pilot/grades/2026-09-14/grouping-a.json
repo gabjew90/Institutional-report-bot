@@ -1,0 +1,28 @@
+{
+ "metric": 1,
+ "total_cards": 1905,
+ "fragmentation_sets": [
+  {
+   "subject": "Crypto fund flows / market recovery from drawdown",
+   "labels": [
+    "bitcoin fund inflows",
+    "crypto market drawdown"
+   ],
+   "cards": 13
+  }
+ ],
+ "fragmented_mass_share": 0.0068,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "misc holds 12 cards (~0.6% of the day) as declared overflow, not counted as fragmentation. The five AI-conference labels (software monetization, data moat, agentic adoption, cybersecurity, physical AI) and the MSIM equity/credit/AI-thesis labels look like heavy fragmentation at a glance but each carries a distinct thesis with substantial, non-redundant evidence, so they were judged as legitimately separate subjects rather than one subject split by wording.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
