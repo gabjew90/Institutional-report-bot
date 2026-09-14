@@ -1,0 +1,914 @@
+{
+ "brief": "Goldman Sachs FICC and Equities desk recap of the firm's Communacopia and Technology Conference, 260+ companies over four days. Sentiment read as hopeful rather than unanimously bullish, with clients wanting to add back tech because positioning had come off too far, and the desk's prime brokerage data confirms it. Hedge funds net bought US TMT in 10 of the last 11 sessions, a trailing two-week long-buying pace that is the largest since June 2025 and in the 97th percentile over five years. Five takeaways. Coding stays the core AI use case and the market underestimates the ARPU expansion coding alone can deliver. Cybersecurity is the next major use case, with CrowdStrike and Palo Alto named as the plays. Semis positioning looks too light and a poll of 12 managers drifted more constructive. The debate is moving from who owns the capex benefit toward who owns the application layer. Consumer datapoints from Visa, eBay, Airbnb and Etsy remain stable. The counterpoint is preserved: if open-source models already deliver enough efficiency for mostly simple workloads, 2028 capex may fall short of what is priced. Separately, GS now expects a Fed hike Wednesday versus a hold previously, with the market pricing 90%.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs prime brokerage data shows hedge funds net bought US TMT stocks in 10 of the last 11 trading sessions.",
+   "anchor": "HFs have net bought US TMT stocks (Info Tech and Comm Svcs combined) in 10 of the last 11 trading sessions",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "as of 11-Sep-26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The trailing two-week pace of hedge fund long buying in US TMT is the largest since June 2025 and ranks in the 97th percentile on a five-year lookback.",
+   "anchor": "the recent pace of long buying in US TMT is the largest since Jun \u201925 and ranks in the 97th percentile",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "trailing 2 weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Client sentiment at the conference felt hopeful rather than unanimously bullish, with clients expressing interest in adding back tech exposure after positioning came off too much.",
+   "anchor": "Sentiment also felt hopeful (vs unanimously bullish) with clients expressing interest to add back tech exposure",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Several investors told the Goldman Sachs desk that investor positioning in semiconductors looks too light.",
+   "anchor": "Several investors we talked to noted that positioning in semis looks too light",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Some investors held semis at roughly 80% or more of their book around May and June 2026, and the appropriate balance now is neither that concentrated nor as low as 10%.",
+   "anchor": "after some investors had semis at ~80%+ of their book earlier in the year (around May/June)",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "An informal Goldman Sachs poll of 12 managers at a conference dinner showed a general drift toward a more constructive stance on semiconductors.",
+   "anchor": "An informal poll we did with 12 managers at a dinner showed a general drift toward more constructive on semis",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The ten most requested names for meetings at the Communacopia and Technology Conference were MSFT, DDOG, CRWV, SHOP, AVGO, AMD, NVDA, NBIS, TSM and NFLX.",
+   "anchor": "Top 10 most requested names: MSFT, DDOG, CRWV, SHOP, AVGO, AMD, NVDA, NBIS, TSM, NFLX.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [
+    "MSFT",
+    "DDOG",
+    "CRWV",
+    "SHOP",
+    "AVGO",
+    "AMD",
+    "NVDA",
+    "NBIS",
+    "TSM",
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The market is pricing a 90% chance of a rate hike at the FOMC meeting on Wednesday.",
+   "anchor": "FOMC on Wednesday with the market now pricing in a 90% chance of a rate hike",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs now expects the FOMC to hike, a change from its previous expectation of a hold.",
+   "anchor": "GS now also expects a hike (vs a hold previously)",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week's FOMC"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs bases its hike call mostly on the view that the FOMC will want to avoid the market reaction that would follow from holding while the market prices a hike.",
+   "anchor": "the FOMC will want to avoid the market reaction that would likely follow from remaining on hold",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week's FOMC"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Conference soundbites were positive across the technology landscape, led by commentary on AI compute via cloud providers, outer-year semis demand visibility and enterprise spend trends.",
+   "anchor": "Overall soundbites were positive across the Tech landscape, led by robust commentary around the AI Compute landscape",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Structural questions on the AI trade remain heavily debated, particularly capex and ARR estimates for 2027 and 2028.",
+   "anchor": "structural questions on the AI trade remain heavily debated (particularly on capex and ARR estimates in 2027/2028)",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027/2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The view discussed at a Goldman Sachs conference dinner is that frontier-level intelligence is only needed some of the time because most workloads and projects are relatively simple, with the rest running on open-source models.",
+   "anchor": "only needed some of the time as most workloads and projects are relatively simple and do not require it",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "If open-source models can already deliver that level of efficiency, the market may not need anywhere near the compute buildout currently priced in, making 2028 capex hard to call.",
+   "anchor": "if open-source models can already deliver that level of efficiency, we may not need anywhere the compute buildout",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Nvidia's Jensen Huang reiterated AI infrastructure spending of $3-$4tn by 2030.",
+   "anchor": "Nvidia's Jensen Huang reiterating $3-$4tn in AI infrastructure spending level by 2030",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Nvidia cites its co-design capabilities across software, system and components as a source of competitive differentiation, and Goldman Sachs rates it Buy.",
+   "anchor": "its co-design capabilities - software, system, and components - as a source of",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Nvidia's Jensen Huang said upstream and downstream supply constraints remain significant.",
+   "anchor": "Mr. Huang noted that upstream and downstream supply constraints remain significant.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Nvidia sees a strong need for both open-weight and closed frontier models in the market.",
+   "anchor": "Nvidia sees a strong need for both open-weight and closed frontier models in the market.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Broadcom expects the majority of AI economics to accrue to owners of leading frontier models, and Goldman Sachs rates it Buy.",
+   "anchor": "Broadcom expects the majority of AI economics to accrue to owners of leading frontier models",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "AI spending is strong with tight supply, more constrained on data centre land, power and shell than on upstream components, contributing to extended lead times.",
+   "anchor": "Strong AI spending environment with tight supply (more constrained on data centre land/power/shell than on upstream components)",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs believes land, power and facility availability are emerging as bigger bottlenecks than upstream components for AI datacenter capacity.",
+   "anchor": "we believe land, power, and facility availability are emerging as the bigger bottlenecks",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Cadence expects chip complexity to increase 48x over the next five years, driving demand for its agentic AI-driven design solutions.",
+   "anchor": "Cadence noted chip complexity is expected to increase 48x over the next five years",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "AI inference workloads are driving structurally higher data usage for context windows, creating substantially higher demand for NAND and mass storage.",
+   "anchor": "AI inference workloads are driving structurally higher levels of data usage for context windows",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Memory and storage companies expect persistent tightness in NAND and mass storage to support higher pricing and margins for at least the next 12 to 18 months.",
+   "anchor": "companies expect persistent tightness in both of these areas to support higher pricing and margins for at least the next 12-18 months",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 12-18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Memory companies say visibility into longer-term demand is improving and remain confident in a strong CY27, while stressing the need to maintain supply prudence.",
+   "anchor": "visibility into longer-term demand is improving and remain confident in a strong CY27",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs expects persistent supply and demand tightness to drive another strong quarter for Micron with upside to Street and company guidance in its 4Q report later this month.",
+   "anchor": "We expect persistent supply/demand tightness to drive another strong quarter with upside to the Street and company guidance.",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q report later this month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs believes investor positioning in Micron is positively biased given persistent tightness in DRAM and NAND, set against concerns over longer-term supply additions from competitors, particularly in China.",
+   "anchor": "We believe investor positioning is positively biased given persistent tightness in DRAM and NAND",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs expects Micron investors to focus on Strategic Customer Agreements added in the quarter, capital return plans and HBM4 product trends.",
+   "anchor": "We expect investors to focus on Strategic Customer Agreements (SCAs) added in the quarter, capital return plans, and HBM4 product trends.",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "4Q report later this month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "AI infrastructure and storage-side demand signals remain solid, and the shift toward long-term contracts reflects the supply side's push for demand visibility.",
+   "anchor": "AI infrastructure/storage-side demand signals remain solid, and the shift toward long-term contracts reflects the supply side's growing push",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "TSMC views AI as a multi-year mega-trend at a very early stage, with lower compute costs expected to accelerate AI adoption and drive greater demand for advanced silicon, and Goldman Sachs rates it Buy.",
+   "anchor": "lower compute costs expected to accelerate AI adoption and ultimately drive greater demand for advanced silicon, Buy",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "ASML's new capacity announcement points to further EUV upside, and Goldman Sachs rates it Buy on the Conviction List.",
+   "anchor": "New capacity announcement points to further EUV upside, Buy on CL.",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Nebius has visibility extending into 2028 with capacity expansion on track and a Palantir partnership strengthening enterprise distribution, and Goldman Sachs rates it Buy.",
+   "anchor": "Visibility extends into 2028, capacity expansion on track, Palantir partnership strengthens enterprise distribution, Buy.",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "SpaceX reiterated its prior expectation to earn between $30-50bn per GW in 2027, and Goldman Sachs rates it Buy.",
+   "anchor": "Reiterated its prior expectation to earn between $30-50bn/GW in 2027, Buy.",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Companies at the conference cited concrete ways they are implementing AI in internal business processes to drive incremental revenue growth through new product development and faster innovation cycles.",
+   "anchor": "companies cited concrete ways in which they are implementing AI in their internal business processes",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Nvidia's Jensen Huang said cybersecurity will likely be the next major use case of AI and will run continuously.",
+   "anchor": "cybersecurity will likely be the next major use case of AI, and it's going to run continuously",
+   "topic": "AI cybersecurity demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Security was arguably the biggest theme at the Communacopia and Technology Conference.",
+   "anchor": "Security was arguably the biggest theme at the conference.",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Palo Alto Networks is using a multi-model harness, described as a model fabric approach, to find vulnerabilities.",
+   "anchor": "PANW describing a model \u2018fabric\u2019 approach whereby a multi-model harness is being used by PANW",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The Goldman Sachs desk names CrowdStrike among the best plays in AI security given more than 10 years of proprietary security data as a moat.",
+   "anchor": "CrowdStrike among best plays here given 10+ yrs of proprietary security data as a moat.",
+   "topic": "AI cybersecurity demand",
+   "status": "target",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The Palo Alto Networks CEO said the AI security industry is not even built yet and commented on high fragmentation in enterprise security stacks.",
+   "anchor": "CEO noted at the conference that AI security industry is \u201cnot even built yet\u201d",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Goldman Sachs research estimated a roughly $20bn AI security total addressable market in 2031, implying a 2 point boost to industry growth rates, a number the desk now says looks too conservative.",
+   "anchor": "her estimates arrived at a ~$20bn AI Security TAM in 2031, implying a 2pt boost to industry growth rates",
+   "topic": "AI cybersecurity demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2031"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Dell described heightened cyber and security risks as a catalyst for upgrading hardware environments.",
+   "anchor": "DELL talked about heightened cyber / security risks as a catalyst for upgrading hardware environments",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The pushback on AI security names is that the exposed stocks are already too expensive.",
+   "anchor": "The pushback is that stocks exposed are already \u2018too expensive.\u2019",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Coding is the easiest domain for AI to learn because there is a right answer, per Nvidia's Jensen Huang.",
+   "anchor": "it is easiest for AI to learn because there is a right answer, as Jensen noted",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The Goldman Sachs desk says the market is underestimating how much ARPU expansion coding alone can still deliver.",
+   "anchor": "the market is underestimating how much ARPU expansion coding alone can still deliver",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Investors increasingly see the AI debate shifting away from who owns the capex benefit toward who will own the next generation of AI applications and user engagement.",
+   "anchor": "the debate shifting away from \u201cwho owns the capex benefit\u201d toward \u201cwho will actually own the next generation",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "After multiple semis and infrastructure sessions, investors feel there is limited new information left in the capex-owner debate and there is much less excitement around that narrative.",
+   "anchor": "investors generally feel there is limited new information left in that debate",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The next pool of capital is likely to chase companies that can prove they own the application layer, distribution and the end-user relationship.",
+   "anchor": "The next pool of capital is likely to chase companies that can prove they own the application layer",
+   "topic": "AI software monetization",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Amazon is a preferred long for the Goldman Sachs desk.",
+   "anchor": "In terms of preferred longs, AMZN one that our desk likes here.",
+   "topic": "AI software monetization",
+   "status": "target",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "The Goldman Sachs desk expects the AI trade to broaden out, with a catalyst path for Amazon into the ReInvest Conference in November and Amazon among the best positioned for physical AI trades.",
+   "anchor": "AI trade going to broaden out, catalyst path ahead with ReInvest Conference in Nov",
+   "topic": "AI software monetization",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Alphabet shows continued AI momentum with a diverse portfolio and multiple monetisation pathways across subscriptions, hardware and partner-led deployment models, and Goldman Sachs rates it Buy.",
+   "anchor": "Continued AI momentum with diverse portfolio, multiple monetisation pathways (subs, hardware, partner-led deployment models), Buy.",
+   "topic": "AI software monetization",
+   "status": "target",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "SAP conference feedback was positive with AI adoption at the forefront of client conversations and the 4Q current cloud backlog guide remaining prudent, and Goldman Sachs rates it Buy.",
+   "anchor": "Communacopia feedback positive, AI adoption at forefront of client conversations and company 4Q CCB guide remains prudent, Buy.",
+   "topic": "AI software monetization",
+   "status": "target",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Etsy reports early success from using AI to improve marketplace matching and surface more relevant inventory to buyers, improving conversion.",
+   "anchor": "ETSY framed the AI story as an opportunity with early success from improving marketplace matching",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Etsy says traffic from agentic AI platforms remains small but high intent, and management is confident agentic experiences should complement the current shopping journey.",
+   "anchor": "traffic from agentic platforms remains small but high intent and mgmt is confident that agentic experiences should complement",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Walmart says third party AI agents are often programmed to optimize for lowest price, fastest speed and broadest assortment, metrics on which Walmart often wins given its scale, supply chain and everyday low price model.",
+   "anchor": "third party AI agents are often programmed to optimize for retail metrics such as the lowest price",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Visa says actual consumer spending remains highly stable despite persistent consumer sentiment uncertainty.",
+   "anchor": "despite persistent consumer sentiment uncertainty, actual spending remains highly stable",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Visa's US business, a $7 trillion footprint, is tracking at 9% quarter to date through August.",
+   "anchor": "The U.S. business (a $7 trillion footprint) is tracking at 9% QTD through August",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "QTD through August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "eBay says US consumer demand remains relatively resilient, with consumers focused on value, recommerce and non-new inventory.",
+   "anchor": "EBAY commentary that the US Consumer demand remains relatively resilient",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "EBAY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Airbnb's core business is approaching roughly $100bn of gross booking value with about 70% concentrated in five countries, and four of the five largest markets are accelerating.",
+   "anchor": "core business is approaching ~$100bn of GBV, with ~70% of business concentrated in five countries",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ABNB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Omnicom's integration has gone smoothly, especially in Integrated Media, and it is well positioned for growth, margin expansion and capital returns, rated Buy.",
+   "anchor": "Well positioned for growth, margin expansion, and capital returns, Buy.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "OMC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Scout24 is confident in its capital markets day targets despite a more challenging market, rated Buy.",
+   "anchor": "Confident in CMD targets despite more challenging market, Buy",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Informa is confident in delivering 2026 guidance, underpinned by solid trading momentum and Middle East events restarting at scale in line with H1 expectations, rated Buy.",
+   "anchor": "Highlight confidence in delivering 2026 guidance, underpinned by solid trading momentum",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Adyen is confident in first half growth with multiple building blocks and superior technology, rated Buy on the Conviction List.",
+   "anchor": "Confident in 1H growth with multiple building blocks, superior tech, Buy on CL.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "1H"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Wojdyla - AIS 5 Takeaways from Communacopia 13 Sep 2026",
+   "claim": "Wise points to platforms as a significant growth lever and the Wise Account deepening engagement, aims to submit a new US application to the OCC, and will focus capital allocation on buybacks, rated Buy.",
+   "anchor": "Platforms as significant growth lever, Wise Acct deepening engagement, aim to submit new US application to OCC",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16227__gs-wojdyla-ais-5-takeaways-from-communacopia-13-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 63,
+  "matched": 63,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 9,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
