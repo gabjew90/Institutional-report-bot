@@ -901,6 +901,37 @@ def fetch_earnings_calendar_all(date_iso: str) -> list[dict] | None:
     return data.get("earningsCalendar", []) or []
 
 
+_NASDAQ_EARNINGS_URL = "https://api.nasdaq.com/api/calendar/earnings?date={date}"
+
+
+def fetch_nasdaq_earnings_symbols(date_iso: str) -> set[str] | None:
+    """Symbols Nasdaq's earnings calendar lists for one date: a second
+    source on the report DATE only (Nasdaq often omits the session).
+
+    2026-09-14: Finnhub still carried Cracker Barrel before the open on
+    Monday 9/14 five days after the company announced Wednesday 9/23,
+    and the sheet printed it with a straddle priced on an expiry the
+    report was not in. Over 2026-09-01..17, 10 of 175 Finnhub
+    confirmed-session names were absent from Nasdaq's list for the same
+    date, almost all micro-caps. Returns None when the feed is
+    unavailable or empty, so the caller keeps Finnhub alone rather than
+    blanking the sheet."""
+    req = urllib.request.Request(
+        _NASDAQ_EARNINGS_URL.format(date=date_iso),
+        headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                 "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+    except Exception as e:
+        log.warning(f"Nasdaq earnings calendar fetch failed for {date_iso}: {e}")
+        return None
+    rows = ((data or {}).get("data") or {}).get("rows") or []
+    syms = {str(r.get("symbol") or "").strip().upper()
+            for r in rows if isinstance(r, dict) and r.get("symbol")}
+    return syms or None
+
+
 def fetch_symbol_profiles(
     symbols: list[str], pace_seconds: float = 1.1
 ) -> dict:

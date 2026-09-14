@@ -205,6 +205,9 @@ class CalendarDay:
     dropped_bmo: int = 0
     dropped_amc: int = 0
     conferences: list[ConfRow] = field(default_factory=list)
+    # Finnhub rows dropped because Nasdaq's calendar did not list the
+    # symbol for this date (2026-09-14). Kept for QC, never rendered.
+    date_unconfirmed: list[str] = field(default_factory=list)
 
 
 def _weekday_label(date_iso: str) -> str:
@@ -591,6 +594,32 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
     if raw is None:
         day.earnings_available = False
         return day
+
+    # Second source on the report DATE (2026-09-14, Cracker Barrel: Finnhub
+    # kept a stale Monday date after the company announced 9/23). A row
+    # survives only if Nasdaq also lists the symbol for this date. When
+    # Nasdaq is down the sheet falls back to Finnhub alone, because a
+    # missing second source is not evidence that a report moved.
+    try:
+        nasdaq_syms = news_data.fetch_nasdaq_earnings_symbols(date_iso)
+    except Exception as e:
+        log.warning(f"calendar: Nasdaq date check unavailable ({e})")
+        nasdaq_syms = None
+    if nasdaq_syms:
+        kept_raw, off = [], []
+        for r in raw:
+            sym = (r.get("symbol") or "").strip()
+            if sym and sym.upper() not in nasdaq_syms:
+                off.append(sym)
+            else:
+                kept_raw.append(r)
+        if off:
+            day.date_unconfirmed = sorted(set(off))
+            log.info(f"calendar: {len(day.date_unconfirmed)} Finnhub row(s) for {date_iso} "
+                     f"not on Nasdaq's calendar, dropped: {day.date_unconfirmed[:20]}")
+        raw = kept_raw
+    else:
+        log.warning(f"calendar: Nasdaq date check skipped for {date_iso}; Finnhub dates unverified")
 
     bmo_syms, amc_syms = [], []
     confirmed: dict[str, bool] = {}

@@ -87,7 +87,7 @@ def test_failure_expires_by_calendar_day_not_elapsed_hours():
 # ------------------------------------------------ earnings assembly
 
 def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, covered=None,
-                chain_unknown=False):
+                chain_unknown=False, nasdaq=None):
     """Run build_calendar_day against canned feed rows. Patches every
     network boundary and restores them, so nothing here touches
     Finnhub, ForexFactory, or Yahoo.
@@ -104,6 +104,7 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, co
     from report import news_data as nd
 
     orig_earn = nd.fetch_earnings_calendar_all
+    orig_nasdaq = nd.fetch_nasdaq_earnings_symbols
     orig_econ = nd.fetch_us_econ_events_for_date
     orig_caps = cd._resolve_caps
     orig_move = cd._implied_move_fetch
@@ -111,6 +112,9 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, co
     try:
         nd.fetch_earnings_calendar_all = lambda d: list(raw_rows)
         nd.fetch_us_econ_events_for_date = lambda d: list(econ_rows)
+        # second-source date check (2026-09-14): None = Nasdaq
+        # unavailable, so existing tests keep Finnhub's rows as given
+        nd.fetch_nasdaq_earnings_symbols = lambda d: (set(nasdaq) if nasdaq is not None else None)
         # every symbol resolves to a distinct descending cap so ranking
         # is deterministic and never hits the network
         # Default caps sit BELOW MIN_CAP_ALWAYS_SHOW so the tier
@@ -140,6 +144,7 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, co
         cd._MOVE_PACE_S = orig_pace
         cd._has_options = orig_has
         db.recently_covered_tickers = orig_cov
+        nd.fetch_nasdaq_earnings_symbols = orig_nasdaq
 
 
 def test_duplicate_symbol_appears_once():
@@ -673,12 +678,14 @@ def test_coverage_lookup_failure_only_costs_the_bold():
     from report import calendar_data as cd
     from report import news_data as nd
     o = (nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date, cd._resolve_caps,
-         cd._implied_move_fetch, cd._MOVE_PACE_S, cd._has_options, db.recently_covered_tickers)
+         cd._implied_move_fetch, cd._MOVE_PACE_S, cd._has_options, db.recently_covered_tickers,
+         nd.fetch_nasdaq_earnings_symbols)
 
     def boom(days=7):
         raise RuntimeError("db down")
     try:
         nd.fetch_earnings_calendar_all = lambda d: [{"symbol": "OK", "hour": "amc"}]
+        nd.fetch_nasdaq_earnings_symbols = lambda d: None
         nd.fetch_us_econ_events_for_date = lambda d: []
         cd._resolve_caps = lambda syms: {"OK": {"cap": 10.0, "name": "Ok Inc"}}
         cd._implied_move_fetch = lambda s, d, session=None: 4.0
@@ -688,7 +695,8 @@ def test_coverage_lookup_failure_only_costs_the_bold():
         day = cd.build_calendar_day("2026-08-27")
     finally:
         (nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date, cd._resolve_caps,
-         cd._implied_move_fetch, cd._MOVE_PACE_S, cd._has_options, db.recently_covered_tickers) = o
+         cd._implied_move_fetch, cd._MOVE_PACE_S, cd._has_options, db.recently_covered_tickers,
+         nd.fetch_nasdaq_earnings_symbols) = o
     assert [r.symbol for r in day.amc] == ["OK"] and day.amc[0].important is False
 
 
@@ -803,10 +811,12 @@ def test_session_reaches_the_pricer_from_the_calendar():
     o_earn, o_econ, o_caps, o_move, o_pace = (
         nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date,
         cd._resolve_caps, cd._implied_move_fetch, cd._MOVE_PACE_S)
+    o_nasdaq = nd.fetch_nasdaq_earnings_symbols
     try:
         nd.fetch_earnings_calendar_all = lambda d: [
             {"symbol": "A", "hour": "bmo"}, {"symbol": "B", "hour": "amc"}]
         nd.fetch_us_econ_events_for_date = lambda d: []
+        nd.fetch_nasdaq_earnings_symbols = lambda d: None
         cd._resolve_caps = lambda syms: {s: {"cap": 10.0, "name": s} for s in syms}
         cd._implied_move_fetch = lambda s, d, session: seen.__setitem__(s, session) or 5.0
         cd._MOVE_PACE_S = 0
@@ -814,6 +824,7 @@ def test_session_reaches_the_pricer_from_the_calendar():
     finally:
         nd.fetch_earnings_calendar_all, nd.fetch_us_econ_events_for_date = o_earn, o_econ
         cd._resolve_caps, cd._implied_move_fetch, cd._MOVE_PACE_S = o_caps, o_move, o_pace
+        nd.fetch_nasdaq_earnings_symbols = o_nasdaq
     assert seen == {"A": "bmo", "B": "amc"}, seen
 
 

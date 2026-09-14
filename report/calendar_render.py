@@ -256,7 +256,31 @@ def render_calendar_png(day: CalendarDay) -> bytes:
             (x_r, day.amc, day.dropped_amc),
         ):
             cy = yl
+            # Name layout for the whole column first (2026-09-14). Names
+            # wrap to two lines, but only while the column still ends
+            # above the footer: twenty wrapped rows add ~520px and would
+            # push the footer off the fixed 2:3 canvas (the footer sits
+            # 34px under the content and _finish needs 56px after it), so
+            # a column that would overflow keeps one-line truncation.
+            _plans = []
             for r in rows:
+                _mv = (f"±{r.implied_move:.1f}%"
+                       if r.implied_move is not None else "—")
+                _mv_w = d.textlength(_mv, font=f["mv"])
+                _nmf = f["nmb"] if getattr(r, "important", False) else f["nm"]
+                _nm = r.name.title() if r.name.isupper() else r.name
+                _w = ((cx + col_w - _mv_w - 14 * _S)
+                      - (cx + _LOGO_GUTTER + 108 * _S))
+                _raw = _wrap(d, _nm, _nmf, _w)
+                if len(_raw) > 2:
+                    _raw = [_raw[0], " ".join(_raw[1:])]
+                # a single word wider than the column must still fit
+                _plans.append(([_truncate(d, ln, _nmf, _w) for ln in _raw],
+                               _truncate(d, _nm, _nmf, _w)))
+            _n_wrapped = sum(1 for lines, _one in _plans if len(lines) > 1)
+            _wrap_ok = (yl + len(rows) * 40 * _S + _n_wrapped * 26 * _S
+                        <= _H - 90 * _S)
+            for _ri, r in enumerate(rows):
                 sym = r.symbol + ("" if r.session_confirmed else "*")
                 any_flag = any_flag or not r.session_confirmed
                 any_move = any_move or r.implied_move is not None
@@ -278,7 +302,6 @@ def render_calendar_png(day: CalendarDay) -> bytes:
                 d.text((cx + col_w - mv_w, cy + 2 * _S), mv, font=f["mv"],
                        fill=GOLD if r.implied_move is not None
                        else _dim(TEXT, 0.28))
-                nm = r.name.title() if r.name.isupper() else r.name
                 _nm_x = cx + _LOGO_GUTTER + 108 * _S
                 # Important rows (major-ticker list, mega-cap, or a
                 # bank wrote earnings content about it this week) get
@@ -286,15 +309,14 @@ def render_calendar_png(day: CalendarDay) -> bytes:
                 # regular and dimmed (owner call 2026-09-02).
                 _imp = getattr(r, "important", False)
                 nm_font = f["nmb"] if _imp else f["nm"]
-                d.text(
-                    (_nm_x, cy + 1 * _S),
-                    _truncate(d, nm, nm_font,
-                              # width left between the name's start and
-                              # the right-aligned implied move
-                              (cx + col_w - mv_w - 14 * _S) - _nm_x),
-                    font=nm_font, fill=(TEXT if _imp else _dim(TEXT, 0.55)),
-                )
-                cy += 40 * _S
+                # Wrapped to two lines (owner, 2026-09-14: "Cracker
+                # Barrel Old Co…"), or the one-line truncation when the
+                # column would overflow the canvas; see the plan pass.
+                _lines = _plans[_ri][0] if _wrap_ok else [_plans[_ri][1]]
+                for _i, _line in enumerate(_lines):
+                    d.text((_nm_x, cy + 1 * _S + _i * 26 * _S), _line,
+                           font=nm_font, fill=(TEXT if _imp else _dim(TEXT, 0.55)))
+                cy += 40 * _S + (26 * _S if len(_lines) > 1 else 0)
             # "+N more" is NOT rendered (owner call 2026-08-27). The
             # dropped counts stay in CalendarDay and the pipeline event
             # for QC, but the published sheet shows only the names that

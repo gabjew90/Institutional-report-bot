@@ -2601,3 +2601,29 @@ rubric counts `misc` as ungrouped mass (never a mis-merge) and states
 that stances are not subjects. Next: one clean shadow day under the
 90-minute reader timeout, read fragmentation, mis-merges and the misc
 share, then commit `pilot/DAY1`.
+
+## 2026-09-14 — Omni-calendar: second source on report dates, names wrap
+
+QC of the Monday 9/14 sheet (posted Friday 3 PM ET). Cracker Barrel
+rendered before the open with a ±5.9% move; the company had announced
+fiscal Q4 for Wednesday 9/23 on 9/9, and Finnhub still carried the old
+date. The move was wrong for the same reason: priced on the 9/18
+weekly, which the real report falls after, so it was an ordinary
+week's range. Dave & Buster's (after close, ±17.5%) was correct;
+Kestra ($1.3B, no listed options) and Radiant ($390M, no priced
+straddle) were correctly dropped by the floor rules.
+
+Fix: `news_data.fetch_nasdaq_earnings_symbols` reads Nasdaq's earnings
+calendar for the date, and `build_calendar_day` drops a Finnhub row
+Nasdaq does not list for that date, recording it in
+`CalendarDay.date_unconfirmed`. Nasdaq often omits the session, so it
+confirms the date only. When Nasdaq is unavailable the sheet keeps
+Finnhub alone. Over 2026-09-01..17, 10 of 175 Finnhub confirmed-session
+names were absent from Nasdaq's list, almost all micro-caps.
+
+Also: earnings names wrap to two lines instead of truncating ("Cracker
+Barrel Old Co…"); a name longer than two lines truncates on line two.
+Monday's posted sheet was rebuilt with the fixed code and the image
+replaced in place (owner approved). The /ask earnings slate
+(`ask_tools._execute_earnings_slate`) reads the same Finnhub feed and
+does not yet apply the check.
