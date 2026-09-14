@@ -1,0 +1,103 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.11%' is attached to [arabia, attack, called, channel, could] but the source uses it for [date, session, vixy] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.11%",
+   "draft_subject": [
+    "arabia",
+    "attack",
+    "called",
+    "channel",
+    "could",
+    "crude",
+    "gulf",
+    "houthi"
+   ],
+   "source_subject": [
+    "date",
+    "session",
+    "vixy"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '1.28%' is attached to [between, broken, following, funds, index] but the source uses it for [date, session, shown, vixy] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "1.28%",
+   "draft_subject": [
+    "between",
+    "broken",
+    "following",
+    "funds",
+    "index",
+    "level",
+    "levels",
+    "morning"
+   ],
+   "source_subject": [
+    "date",
+    "session",
+    "shown",
+    "vixy"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '0.55%' is attached to [between, broken, following, funds, index] but the source uses it for [date, markets, move, session, shown] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "0.55%",
+   "draft_subject": [
+    "between",
+    "broken",
+    "following",
+    "funds",
+    "index",
+    "level",
+    "levels",
+    "morning"
+   ],
+   "source_subject": [
+    "date",
+    "markets",
+    "move",
+    "session",
+    "shown",
+    "since",
+    "traditional",
+    "vixy"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "0.5% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "0.5",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday, 8:30 AM ET: August retail sales.** Consensus is +0.8% on the headline and +0.5% excluding autos, after -0.6% and -0.3%. A strong print hands the hawks the growth half of their case five"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-0.6% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-0.6",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday, 8:30 AM ET: August retail sales.** Consensus is +0.8% on the headline and +0.5% excluding autos, after -0.6% and -0.3%. A strong print hands the hawks the growth half of their case five"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-0.3% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: none parsed). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-0.3",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **Wednesday, 8:30 AM ET: August retail sales.** Consensus is +0.8% on the headline and +0.5% excluding autos, after -0.6% and -0.3%. A strong print hands the hawks the growth half of their case five"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 6,
+ "exit_code": 4
+}
