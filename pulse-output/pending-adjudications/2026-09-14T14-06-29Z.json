@@ -1,0 +1,320 @@
+{
+  "pulse_date": "2026-09-14",
+  "window_label": "since-last-daily (2026-09-11T14:47)",
+  "themes": [
+    {
+      "theme": "ai infrastructure and demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 12,
+        "skeptical": 1,
+        "neutral": 20
+      },
+      "consensus_view": "Nearly every desk says demand for AI computing still runs ahead of what suppliers can deliver, so the live argument is no longer whether the spending continues but whether the power grid and the bond market can fund it.",
+      "facts_agreed": [
+        {
+          "claim": "Demand for AI computing capacity continues to exceed available supply, keeping pricing firm and order visibility long.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Eastspring Investments"
+          ],
+          "evidence_quotes": [
+            "Demand continues to outstrip supply.",
+            "Compute remains scarce and pricing strong.",
+            "Companies highlighted higher structural demand driven by AI, which are driving capacity additions",
+            "virtually every AI infrastructure exposed company presentation suggested we remain in the early innings",
+            "The AI investment cycle remains well supported, with demand expanding beyond initial infrastructure build-out"
+          ]
+        },
+        {
+          "claim": "Corporate management teams are still guiding spending higher, and the banks read the capex cycle as intact rather than peaking.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Companies continued to strike a very bullish tone on the trajectory of AI infrastructure spending",
+            "Management teams remain highly bullish on the trajectory of AI infrastructure spending",
+            "companies remained highly bullish on AI infrastructure spending",
+            "We are clearly in an AI Capex boom.",
+            "the secular trend of broad-based AI spending remains intact"
+          ]
+        },
+        {
+          "claim": "AI spending has become large enough to move US growth figures, so it is now treated as a macro variable rather than a tech-sector story.",
+          "banks_for": [
+            "Morgan Stanley",
+            "F.L.Putnam Investment Management Company",
+            "Citadel Securities"
+          ],
+          "evidence_quotes": [
+            "AI investment is already making a material contribution to US growth",
+            "AI-related investment has contributed an average of 0.6pp to annualized real GDP growth since 2025.",
+            "AI investment is no longer a technology-sector story.",
+            "AI may ultimately be one of the most important forces for raising productivity and reindustrialising America"
+          ]
+        },
+        {
+          "claim": "Electricity supply and other physical resources, not chips, are the binding constraint on the next leg of the buildout.",
+          "banks_for": [
+            "Capital Group",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Energy efficiency gains are key to the buildout of artificial intelligence (AI).",
+            "AI-related power demand remains an important tailwind for US utilities",
+            "AI data centre owners and operators that are diligent in both navigating resource constraints",
+            "Power is the one pocket AI where the positioning clean up has been most acute"
+          ]
+        },
+        {
+          "claim": "Investor positioning in AI-linked equities is below prior peaks after a valuation reset, which the desks read as leaving room to add.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "fundamentals are strong and positioning is clean",
+            "positioning in Semis and Memory still well below previous peak.",
+            "AI pessimism is too high given valuations have de-rated 30-40%"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the bond supply funding AI capex can be absorbed without lasting damage to credit spreads",
+          "banks_for": [
+            "BofA Securities"
+          ],
+          "for_evidence": "we think this volume should be absorbable – particularly if issuance is paced",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "structurally it remains a long-term underweight and strength after this next stretch should be sold"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ecb monetary policy tightening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 1,
+        "neutral": 11
+      },
+      "consensus_view": "The banks agree the European Central Bank just lifted its policy rate a quarter point to 2.50% and is still leaning toward tighter policy, but they split on whether that is the peak or whether one more increase to 2.75% arrives by December, with Bank of America arguing the market has priced in far more hikes than the ECB is likely to deliver.",
+      "facts_agreed": [
+        {
+          "claim": "The ECB raised its deposit rate by a quarter point to 2.50% at the September meeting.",
+          "banks_for": [
+            "Newsquawk / Goldman Sachs / Deutsche Bank / ING / BNP Paribas / JP Morgan",
+            "Rabobank"
+          ],
+          "evidence_quotes": [
+            "The ECB is set to raise the Deposit Rate by 25bps to 2.50%.",
+            "Rabobank sees 2.50% as the terminal rate and does not forecast any additional hikes"
+          ]
+        },
+        {
+          "claim": "The ECB's stance and tone are hawkish, with little tolerance for inflation surprising to the upside.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Bank of America",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "My feeling is the ECB is always going to be in the hawkish camp",
+            "market pricing is too hawkish as it implies more hikes with relatively more benign energy prices.",
+            "Overall, the message and tone are consistent with our call that the ECB hikes again"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether 2.50% is the terminal rate or the ECB hikes again",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "for_evidence": "Overall, the message and tone are consistent with our call that the ECB hikes again",
+          "banks_against": [
+            "Rabobank"
+          ],
+          "against_evidence": "Rabobank sees 2.50% as the terminal rate and does not forecast any additional hikes"
+        },
+        {
+          "claim": "whether the hawkish path priced by the market is justified",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "My feeling is the ECB is always going to be in the hawkish camp",
+          "banks_against": [
+            "Bank of America"
+          ],
+          "against_evidence": "market pricing is too hawkish as it implies more hikes with relatively more benign energy prices."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "us midterm elections",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 9
+      },
+      "consensus_view": "Nine desks treat the 2026 US midterm elections as a live risk running through government spending, financial rules, the legislative calendar and political pressure on the Fed, but none has staked out a view on the outcome or what to do about it.",
+      "facts_agreed": [
+        {
+          "claim": "Nine research desks reference the 2026 US midterm elections as an active macro variable in the current window rather than a distant scheduled event.",
+          "banks_for": [
+            "Northern Trust + The Market Ear",
+            "TS Lombard",
+            "The Market Ear",
+            "Bank of America",
+            "Amundi Investment Institute + Bank of America",
+            "HSBC Asset Management",
+            "Capital Alpha Partners",
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "US midterm elections",
+            "midterm elections",
+            "midterm elections political agenda",
+            "US Mid-term elections gridlock risks",
+            "US midterm election impact on Iran war"
+          ]
+        },
+        {
+          "claim": "The desks that name a transmission channel point to government spending, financial regulation, split-government gridlock, and political pressure on the Fed.",
+          "banks_for": [
+            "Bank of America",
+            "Capital Alpha Partners",
+            "TS Lombard",
+            "Northern Trust + The Market Ear",
+            "HSBC Asset Management"
+          ],
+          "evidence_quotes": [
+            "US midterm elections fiscal impact",
+            "2026 midterm election impact on regulation",
+            "Fed midterm political constraints",
+            "Midterm election political pressure",
+            "US Mid-term elections gridlock risks"
+          ]
+        },
+        {
+          "claim": "Capital Alpha Partners is the only desk tracking the mechanics of the race itself, covering the compressed legislative calendar and both parties' positioning ahead of the vote.",
+          "banks_for": [
+            "Capital Alpha Partners"
+          ],
+          "evidence_quotes": [
+            "Midterm elections legislative schedule impact",
+            "GOP Midterm Convention policy posture",
+            "Democratic midterm election outlook"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed monetary policy tightening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 7,
+        "skeptical": 2,
+        "neutral": 1
+      },
+      "consensus_view": "Most desks expect the Fed to raise rates at the September meeting because inflation is still running above the 2% goal, but they split on whether the case for more hikes after September holds up.",
+      "facts_agreed": [
+        {
+          "claim": "The Fed raises rates at the September meeting.",
+          "banks_for": [
+            "Société Générale",
+            "Northern Trust",
+            "TS Lombard",
+            "Deutsche Bank",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "we expect a 25bp rate hike at the September FOMC meeting",
+            "We believe this month’s bout will lead to a decision to raise rates by 25 basis points.",
+            "made the Sep hike inevitable if the data said so. They did.",
+            "the case for a rate hike is strong in our view.",
+            "we maintain our out-of-consensus call that the Fed will hike by 75bp this year"
+          ]
+        },
+        {
+          "claim": "Inflation is still running above the Fed's 2% goal, which is why policy has to get tighter.",
+          "banks_for": [
+            "Société Générale",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "underlying inflation remains persistently above the Fed’s 2% target",
+            "We now expect more central bank tightening almost across the board",
+            "The Fed has made a hawkish turn in the face of diminishing risks"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "September FOMC outcome: hike or hold",
+          "banks_for": [
+            "Société Générale",
+            "Northern Trust",
+            "Bank of America"
+          ],
+          "for_evidence": "we expect a 25bp rate hike at the September FOMC meeting",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "sufficiently benign to allow the Fed to remain on hold next Wednesday."
+        },
+        {
+          "claim": "Whether more hikes follow September",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "for_evidence": "We maintain our out-of-consensus call that the Fed will hike by 75bp this year",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "we think the FOMC will be reluctant to signal any additional hikes this week."
+        },
+        {
+          "claim": "Whether hiking actually addresses the current inflation",
+          "banks_for": [
+            "TS Lombard"
+          ],
+          "for_evidence": "So what the Fed SHOULD do is clear – it SHOULD hike.",
+          "banks_against": [
+            "Academy Securities"
+          ],
+          "against_evidence": "hiking won’t help fight the current drivers of inflation"
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "middle east geopolitical risk",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Polymarket'"
+    },
+    {
+      "theme": "long dated rates volatility",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA'"
+    },
+    {
+      "theme": "yen strength and boj policy",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'JPMorgan'"
+    },
+    {
+      "theme": "warsh fed framework",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}
