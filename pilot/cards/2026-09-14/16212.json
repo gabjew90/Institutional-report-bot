@@ -1,0 +1,295 @@
+{
+ "brief": "QQQ has stayed inside its August 4th range for 27 sessions, Bollinger Bands as tight as March, and BTIG expects the eventual break to resolve lower. Nearly 5% of the Russell 3000 hit 52-week lows even as the index sat under 3% from a 52-week high, a split historically a coin flip over 20 days but one that has preceded drops in similar setups going back to 2000. Semis (SOXX) sit below a falling 50-day average with an eventual 200-day test (about 17% lower), while small-caps (IWM) have spent ten days below their 50-day, slope turning down, risking a 200-day test this month despite a still-bullish long-term trend. AUD/JPY, which tracks the S&P, has rolled toward its range's bottom, another equity headwind. Bonds are short-term extended and sentiment is very negative, but 10-year real rates just hit a cycle high after three years of consolidation, making a major top hard to call. Tanker shipping costs (BWET) are up roughly 500% since June and 4,000% year to date, a parabolic move BTIG expects to reverse on uncertain timing. Energy stocks (OIH) fell this week despite WTI above $100, which BTIG reads as risk of a correlation-one event, not as bullish.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "BTIG notes QQQ has traded within its August 4th range for 27 trading days without breaking out.",
+   "anchor": "It\u2019s been 27 trading days since QQQ\u2019s +3.4% surg on 8/4.",
+   "topic": "US equity technical breakdown",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "BTIG's view is that the QQQ's prolonged range will eventually resolve to the downside.",
+   "anchor": "our view remains that it will be to the downside.",
+   "topic": "US equity technical breakdown",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "QQQ's Bollinger Bands are the tightest since March, when the prior tight-band period preceded a downside break.",
+   "anchor": "The last time they were this tight was in March prior to the downside break.",
+   "topic": "US equity technical breakdown",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "Nearly 5% of the Russell 3000 made a 52-week low even though the Russell 3000 itself was less than 3% below its 52-week high.",
+   "anchor": "Nearly 5% of the Russell 3k made a 52wk low on Thursday, with the RAY itself less than 3% from a 52wk high.",
+   "topic": "US equity technical breakdown",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "Historically, this breadth divergence of elevated new lows near an index high is roughly a coin flip for market direction over the next 20 trading days.",
+   "anchor": "Historically that\u2019s a coin flip looking out 20 days",
+   "topic": "US equity technical breakdown",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "20 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "Similar breadth setups have preceded notable market drops in March 2000, October 2007, July 2015, September 2018, January 2020, December 2021, and January 2026.",
+   "anchor": "notable dates preceding meaningful drops with this set-up including: March \u201900, Oct. \u201907, July \u201915, Sep. \u201918, Jan. \u201920, Dec. \u201921, and Jan. \u201926.",
+   "topic": "US equity technical breakdown",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "10-year real interest rates just made a new cycle high after three years of consolidation.",
+   "anchor": "10yr real rates just made a cycle high after three years of consolidation.",
+   "topic": "global bond selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "BTIG says it is hard to characterize the current level in 10-year real rates as a major top.",
+   "anchor": "It's hard to say this is a major top for rates.",
+   "topic": "global bond selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "Semiconductor stocks (SOXX) continue to trade below a declining 50-day moving average.",
+   "anchor": "Semis (SOXX) continue to trade below a declining 50 DMA.",
+   "topic": "US equity technical breakdown",
+   "status": "level",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "BTIG expects semiconductor stocks (SOXX) to eventually test their 200-day moving average, roughly 17% below current levels.",
+   "anchor": "an eventual test of the 200 DMA (-17%) likely.",
+   "topic": "US equity technical breakdown",
+   "status": "forecast",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "Small-cap stocks (IWM) have spent ten days below their 50-day moving average, with the slope of that average inflecting lower.",
+   "anchor": "IWM has now spent ten days below its 50 DMA, and the slope is inflecting lower.",
+   "topic": "US equity technical breakdown",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "The long-term trend in small-cap stocks (IWM) remains firmly bullish.",
+   "anchor": "The long-term trend is still firmly bullish",
+   "topic": "US equity technical breakdown",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "The near-term risk for small-cap stocks (IWM) is a test of the 200-day moving average later this month.",
+   "anchor": "the risk is a test of the 200 DMA later this month.",
+   "topic": "US equity technical breakdown",
+   "status": "forecast",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "later this month"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "AUD/JPY has generally tracked the S&P 500 closely, though not perfectly.",
+   "anchor": "AUD/JPY has generally tracked the SPX quite well.",
+   "topic": "dollar and yen direction",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "AUD/JPY has recently pulled back toward the lower end of its range, which BTIG sees as a possible headwind for equities.",
+   "anchor": "It has recently pulled back towards the lower end of its range, which could be another headwind for equities.",
+   "topic": "dollar and yen direction",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "The Breakwave Tanker Shipping ETF (BWET), which tracks crude tanker shipping costs, is up nearly 500% since the end of June and roughly 4,000% year-to-date.",
+   "anchor": "It\u2019s up nearly 500% since the end of June, and ~4k% YTD.",
+   "topic": "energy price shock",
+   "status": "level",
+   "instruments": [
+    "BWET"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "BTIG expects the parabolic move in tanker shipping costs (BWET) to unwind in equal and opposite fashion, though the timing is difficult to call.",
+   "anchor": "this likely unwinds in equal and opposite fashion, but timing it is uniquely difficult.",
+   "topic": "energy price shock",
+   "status": "forecast",
+   "instruments": [
+    "BWET"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "The Oil Service ETF (OIH) closed down on the week despite WTI crude surging above $100 per barrel and shipping costs going parabolic.",
+   "anchor": "Despite WTI crude surging above $100/bbl and shipping costs going parabolic, the Oil Service ETF (OIH) closed down on the week.",
+   "topic": "energy price shock",
+   "status": "level",
+   "instruments": [
+    "OIH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Going Nowhere Fast",
+   "claim": "BTIG does not view falling energy stocks as bullish for the overall market and thinks everything could fall together in a correlation-one event.",
+   "anchor": "we don\u2019t view falling energy stocks as bullish overall market initially and think everything can fall together in a correlation-one event.",
+   "topic": "energy price shock",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16212__going-nowhere-fast.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 19,
+  "matched": 19,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
