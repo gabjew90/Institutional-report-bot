@@ -1,0 +1,13 @@
+{
+ "ts": "2026-09-14T14-06-29Z",
+ "events": [
+  {"step": "STEP_2_DONE", "time": "2026-09-14T14:07:45Z", "detail": "pdf_count=140"},
+  {"step": "STEP_2_2_DONE", "time": "2026-09-14T14:07:58Z", "detail": "volume gate CONTINUE"},
+  {"step": "STEP_3_DONE", "time": "2026-09-14T14:08:01Z", "detail": ""},
+  {"step": "STEP_3_5_DONE", "time": "2026-09-14T14:11:25Z", "detail": "4 validated, 4 discarded"},
+  {"step": "STEP_4_DONE", "time": "2026-09-14T14:18:53Z", "detail": ""},
+  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-09-14T14:20:09Z", "detail": "1 reroll, then CONTINUE"},
+  {"step": "STEP_5A_STITCH_DONE", "time": "2026-09-14T14:20:09Z", "detail": ""},
+  {"step": "STEP_5B_EDIT_DISPATCHED", "time": "2026-09-14T14:22:31Z", "detail": "progress transport via MCP; PAT write path 403 in this environment"}
+ ]
+}
