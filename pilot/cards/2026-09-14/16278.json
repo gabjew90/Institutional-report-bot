@@ -1,0 +1,159 @@
+{
+ "brief": "Speculators are hesitant to go fully risk-on, with the risk of higher yields potentially restraining that appetite. Stocks cannot break out to new highs without a fresh positive narrative, and OpenAI's GPT-6 Astra release did not supply one. Yields remain elevated for good reasons (rising real growth expectations, reinforced by Friday's positive jobs data, and heavy AI-related investment) and bad reasons (fiscal incontinence and inflation). Speculators' risk-on attitude was earlier drowned out by the war, turning positioning risk-off. Net positioning between risk-on assets (Bitcoin, AUD, NZD, BRL, MXN, CAD) and risk-off assets (JPY, CHF, DXY, gold, VIX) is now flat, but reluctance to go fully risk-on persists amid general uncertainty tied to yield risk. After the jobs data there is probably some impetus for yields to rise further, though seasonality may limit the rise into year-end. JPMorgan's Treasury client survey shows an increase in shorts, and Treasury ETF outflows have jumped to rarely-seen levels. Short interest in the largest Treasury ETFs, IEF and TLT, has held steady, so the outflows are unlikely to reflect short-covering and can be taken at face value, supporting the case that markets are starting to price appreciably higher yields.",
+ "cards": [
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "Speculators' net positioning across typically risk-on assets and risk-off assets is currently flat, with reluctance to go fully risk-on amid general uncertainty.",
+   "anchor": "The net position between risk-on and risk-off is flat, but there is a reluctance to go fully risk-on",
+   "topic": "global bond selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "US stocks cannot break out to new highs without a fresh positive narrative catalyst.",
+   "anchor": "Stocks seem unable to break out to new highs without a new positive narrative",
+   "topic": "global bond selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "OpenAI's GPT-6 Astra LLM release did not supply the positive narrative needed for stocks to break to new highs.",
+   "anchor": "OpenAI\u2019s latest LLM, GPT-6 Astra, does not look to have been it",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "Treasury yields are elevated partly due to rising real growth expectations, reinforced by Friday's positive jobs data, and heavy AI-related investment.",
+   "anchor": "rising real growth expectations (more so after Friday\u2019s positive jobs data), and huge AI-related investment",
+   "topic": "global bond selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "Treasury yields are also elevated for bad reasons: ongoing fiscal incontinence and inflation.",
+   "anchor": "in the shape of ongoing fiscal incontinence and inflation",
+   "topic": "global bond selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "After the jobs data there is probably some impetus for yields to rise further, but strong seasonality effects may keep them from rising excessively into year-end.",
+   "anchor": "there is probably some impetus for yields to rise more, but strong seasonality effects may keep them from rising excessively",
+   "topic": "global bond selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "by year-end"
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "JPMorgan's Treasury client survey shows an increase in short positioning.",
+   "anchor": "JPMorgan\u2019s Treasury client survey shows an increase in shorts",
+   "topic": "global bond selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "Treasury ETF outflows have jumped to a level rarely breached before.",
+   "anchor": "ETF outflows have jumped higher to a level they have rarely breached before",
+   "topic": "global bond selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "Short interest in the largest Treasury ETFs, IEF and TLT, has held steady, indicating the ETF outflows are not driven by short covering.",
+   "anchor": "the short interest of the largest Treasury ETFs, the IEF and the TLT, has held steady",
+   "topic": "global bond selloff",
+   "status": "level",
+   "instruments": [
+    "IEF",
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bloomberg",
+   "document": "Risk Of Higher Yields Is Muzzling Animal Spirits",
+   "claim": "If markets are starting to price in the risk of appreciably higher yields, that would explain speculators' reluctance to push into unequivocally risk-on positioning.",
+   "anchor": "If the market is starting to factor in the risk of appreciably higher yields, then that would explain the reticence of speculators to push back",
+   "topic": "global bond selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16278__risk-of-higher-yields-is-muzzling-animal-spirits.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
