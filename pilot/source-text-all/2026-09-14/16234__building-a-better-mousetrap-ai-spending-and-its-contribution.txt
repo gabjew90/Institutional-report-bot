@@ -1,0 +1,2184 @@
+[Page 1]
+M
+ Foundation
+AI and Economic Transition | North America
+Building a better mousetrap: AI 
+spending and its contribution to 
+US GDP growth 
+We provide a more accurate treatment of AI investment and its 
+contribution to growth. Broadly defined, AI-related spending has 
+contributed an average of 0.6pp to real GDP growth rates since 
+2025. More narrow estimates that attempt to isolate AI-only 
+spending point to an average contribution of 0.4pp
+Morgan Stanley & Co. LLC
+Lingdi Xu
+Economist
+ Lingdi.Xu@morganstanley.com  
+  +1 212 761-2957 
+Michael T Gapen
+Chief US Economist
+ Michael.Gapen@morganstanley.com  
+  +1 212 761-0571 
+Seth B Carpenter
+Chief Global Economist
+ Seth.Carpenter@morganstanley.com  
+  +1 212 761-0370 
+Diego Anzoategui
+Economist
+ Diego.Anzoategui@morganstanley.com  
+  +1 212 761-8573 
+Sam D Coffin
+Economist
+ Sam.Coffin@morganstanley.com  
+  +1 212 761-4630 
+Arunima Sinha
+Global Economist
+ Arunima.Sinha@morganstanley.com  
+  +1 212 761-4125 
+Heather Berger
+Economist
+ Heather.Berger@morganstanley.com  
+  +1 212 761-2296 
+Exhibit 1:
+The contribution of AI investment to growth in real US GDP 
+accelerated beginning in 2025 
+0.39
+0.61
+0.30
+0.42
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+0.60
+0.70
+1H 23 to 1H 26
+1H 25 to 1H 26
+Contribution to Real GDP Growth (pp)
+AI-related
+AI-only
+Source: BEA, Haver Analytics, Morgan Stanley Research
+ 
+For important disclosures, refer to the Disclosure Section, 
+located at the end of this report.
+Key Takeaways
+Our refined growth accounting framework includes more investment categories 
+and improves our treatment of imports.
+We also provide a broad measure of AI's contribution to growth and a more 
+narrow estimate that isolates AI-only spending.
+We differentiate between AI infrastructure spending and AI adoption spending. AI 
+diffusion will increase the relative importance of adoption spending over time. 
+September 7, 2026 11:00 PM GMT
+ 
+ 
+
+
+[Page 2]
+M
+ Foundation
+2
+Executive Summary: Building a better mousetrap to 
+estimate the contribution of AI spending on growth  
+Understanding the outlook for the US economy increasingly requires understanding AI 
+spending and how it permeates the National Income and Product Accounts. While we have 
+long sought to understand AI and its economic effects, the evolution of the AI investment 
+cycle has created an opportunity to refine how we track its contribution to US GDP 
+growth. In particular, we enhance our framework along three dimensions: the treatment of 
+imports, the separation of AI from non-AI spending, and the distinction between spending 
+on AI infrastructure build-out and AI adoption.
+Our refined methodology provides a more comprehensive view of how AI spending is 
+flowing through the US economy. It extends beyond the technology-focused categories at 
+the center of our original estimates, to capture the broader infrastructure required to 
+build AI capacity. Under this broader definition, we estimate that AI-related investment has 
+contributed 0.6pp to annualized real GDP growth on average since 2025. Narrowing the 
+lens to isolate AI-only investment still produces a sizable 0.4pp contribution. The 
+framework also allows us to distinguish between the infrastructure build-out and AI 
+adoption, providing a way to track the AI cycle as it moves from capacity creation to 
+broader diffusion across the economy. 
+Translating AI spending into growth is difficult since capex does not translate one-for-
+one into US GDP.  Corporate capex measures what firms spend on long-term assets.  GDP, 
+on the other hand,  measures final output of domestically produced goods and services. 
+Spending on intermediate goods is therefore not counted, while spending on imported 
+final goods and services is subtracted. In the case of AI investment, spending on imported 
+equipment used in data center construction is included in corporate capex plans but does 
+not contribute to US GDP. 
+First, we improve the accuracy of our import offset. We adjust imports for re-exports, 
+so that only imported goods that remain in the US are netted out of spending. Second, we 
+estimate the share of those imports purchased by businesses for private fixed investment, 
+as imports can also be purchased by consumers or governments. Third, we expand the 
+adjustment beyond imports of computers and peripherals to also include semiconductors 
+and related devices. Although the supply of chips and memory, and the associated 
+inflationary pressures, have been widely discussed this year, semiconductor imports were 
+previously much smaller and slower-growing than imports of computers and peripherals. 
+But they have accelerated sharply since 4Q25, making them increasingly critical  to 
+account for. Together, these changes provide a more precise bridge between the capex 
+associated with the AI boom and the domestic investment recorded in GDP. 
+Second, we now compute the contribution from AI spending to growth in two ways:
+1. Under a broad definition, "AI-related" investment contributed 0.8pp to annualized 
+real GDP growth in 1H26 and 0.6pp on average since 2025. "AI-related" investment 
+captures spending that could be used for AI, whether or not it actually is. This is necessary 
+because the NIPA accounts classify investment by asset rather than by end use: the 
+business investment categories most exposed to AI therefore contain investment 
+
+
+[Page 3]
+M
+ Foundation
+Morgan Stanley Research
+3
+supporting both AI and non-AI activities, although AI spending is driving a majority of the 
+change in recent quarters.  Its contribution to real GDP growth therefore be viewed as an 
+upper-bound estimate and a broad measure of where the AI investment boom is appearing 
+in the official data. 
+2. Using a narrower approach that  attempts to isolate "AI-only" investment, we find AI 
+contributed 0.5pp to GDP growth in 1H26 and 0.4pp on average since 2025. "AI-only" 
+investment is our estimate of the portion of AI-related investment actually attributable to 
+the AI boom. To do this, for each AI-related investment category in the NIPA accounts, we 
+estimate a counterfactual path for how investment would have evolved in the absence of 
+the AI boom; the difference between actual investment and this counterfactual is our 
+estimate of the incremental investment attributable to AI.  
+Third, we now distinguish between AI infrastructure spending and AI adoption 
+spending. Infrastructure investment, primarily hyperscaler build-out by the "merchants of 
+compute", creates the computing capacity required to develop and run AI models and 
+applications. In contrast, spending by AI adopters, mainly through software, provides a 
+window into the diffusion of AI across US businesses. The distinction is economically 
+useful: the infrastructure build-out tells us about the expansion of AI's supply-side 
+capacity, while adoption spending tells us how rapidly businesses are putting that capacity 
+to use. Presumably, adoption-related spending will become a larger share of the story 
+over time.
+AI spending to date has been more about the build-out than adoption:
+• Of the 0.5pp contribution to 1H26 real GDP growth from domestic AI-only 
+investment, we estimate that 0.4pp came from AI infrastructure spending and the 
+remainder came from AI adopter spending.  
+• In nominal terms, AI-only investment reached an annualized $450bn in 2Q26, 
+including $391bn in infrastructure and $59bn in software. 
+• Our revised import estimates also suggest that AI infrastructure build-out has 
+become increasingly reliant on domestic inputs since 2025, although more data are 
+needed to determine whether this represents a sustained shift.
+Exhibit 2:
+We  compute the contribution from AI spending to growth in two ways
+1Q25
+2Q25
+3Q25
+4Q25
+1Q26
+2Q26
+AI-related spending
+1.3
+1.0
+0.4
+0.9
+1.3
+0.7
+Imports
+-0.6
+-0.3
+-0.2
+-0.5
+-0.7
+0.2
+Contribution by AI-related
+0.7
+0.7
+0.2
+0.4
+0.7
+0.9
+Contribution by AI-Infrastructure
+0.6
+-0.2
+0.2
+0.3
+0.3
+0.4
+Contribution by AI-Adoption
+0.6
+0.3
+-0.2
+-0.1
+0.2
+0.2
+Contribution by AI-only
+1.1
+0.2
+0.0
+0.1
+0.5
+0.5
+Contribution to Real GDP Growth, Annualized, pp
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Both our measures focus on direct AI investment and likely miss broader spillover effects. 
+The AI build-out can induce additional investment by construction firms, equipment 
+suppliers, and other businesses supporting it. It can also generate employment and 
+income that support additional spending, creating broader multiplier effects that are not 
+captured by our measures of direct AI investment.
+At the same time, AI-related investment is not necessarily entirely incremental. Absent AI, 
+
+
+[Page 4]
+M
+ Foundation
+4
+firms would presumably still have invested in other technologies, and some of that 
+spending may instead have been redirected toward AI. Our AI-related investment 
+estimates therefore capture the gross contribution from AI-related spending, but not the 
+investment that may have been displaced by the AI boom. Our AI-only measure may 
+capture some of this displacement through its counterfactual, but cannot fully distinguish 
+new investment from investment redirected toward AI. Estimating that counterfactual 
+credibly is inherently difficult.  
+
+
+[Page 5]
+M
+ Foundation
+Morgan Stanley Research
+5
+Introduction: Tracking AI's trail through the US economy  
+AI investment has been booming with few signs of slowing in 2026. Not only have 
+hyperscalers repeatedly raised their capital expenditure  plans, with greater shares of this 
+spending financed through equity and debt offerings, but token usage by the rest of the 
+business sector has gradually moved higher, pointing to greater usage and penetration. AI 
+infrastructure investment so far appears relatively insensitive to the business cycle, 
+geopolitical risks, and even interest rates, at least among firms with stronger credit 
+quality. Understanding the outlook for the US economy requires a thorough 
+understanding of AI spending and how it permeates the National Income and Product 
+Accounts.
+To better understand AI and its effects  and account for the evolution of the AI investment 
+cycle, we have revisited our approach. In particular, we refine our framework to account 
+for AI's contribution to GDP growth along three dimensions. First, we include more 
+investment categories and improve our treatment of imports, which increases the 
+accuracy of our estimates. 
+Second, we now compute AI's contribution to growth in two ways:  a broad approach and a 
+narrow approach. The broad approach captures spending that could be used for AI, 
+whether or not it actually is, while the narrow approach attempts to estimate the portion 
+of that spending actually attributable to the AI boom. The advantage of the broad 
+approach is that it relies on officially published data and is model-free, but it has the 
+disadvantage of deriving contribution estimates from spending in categories that include 
+both AI and non-AI activities. The advantage of the narrow approach is that it provides a 
+better estimate of the contribution from investment attributable to AI, but with the 
+disadvantage of requiring modeling of the official data. Modeling brings with it some 
+uncertainty. 
+Third, we separate the contribution to growth from AI infrastructure spending and AI 
+adoption spending to account for the evolution of the AI investment cycle from the build-
+out to diffusion. In the coming years, we expect the relative importance to shift from 
+infrastructure-related spending to adoption-related spending, and we propose a way to 
+account for the differences.
+Our broad approach – what we call AI-related investment spending –  estimates that AI 
+has contributed an average of 0.6pp to annualized real GDP growth since 2025. Our 
+narrow approach, which attempts to isolate AI-only investment spending, points to a 
+contribution of 0.4pp.
+This work augments our broader AI and Economic Transition work, where we have been 
+tracking the AI cycle as it moves from infrastructure build-out to adoption and, ultimately, 
+leaves its imprint on the broader economy (see our List of Reports: AI and Economic 
+Transition  ). This note focuses on where AI spending is showing up in GDP. Our AI 
+disruption tracker follows how AI is reshaping labor demand across occupations and 
+industries, while our labor productivity tracker looks for evidence that greater AI diffusion 
+is translating into productivity gains. We also draw on evidence from past innovation 
+cycles and a theoretical framework to assess how the US economy may manage the 
+transition under different diffusion speeds. Together, this work provides both our longer-
+
+
+[Page 6]
+M
+ Foundation
+6
+term views and high-frequency measures for tracking how the AI investment cycle is 
+feeding through to the US economy in real time.
+We first begin with our refined treatment of imports, followed by our methodology to 
+separate the contribution from AI-related spending from that of AI-only spending. We 
+then distinguish between the contribution from the infrastructure build-out to the 
+adoption cycle.
+ 
+
+
+[Page 7]
+M
+ Foundation
+Morgan Stanley Research
+7
+A more accurate treatment  of imports  
+As we have noted in previous research, GDP accounting is different than corporate 
+accounting. Capex spending announcements by US corporations, which have been 
+dominated by hyperscaler spending and other merchants of compute, include all relevant 
+spending on AI from a corporate balance sheet perspective. That said, GDP is a different 
+measurement: it captures final spending on domestically-produced goods and services 
+over a period of time. Estimates of GDP exclude spending on intermediate goods and 
+imports. Put differently, GDP excludes "circular" spending between hyperscalers and 
+spending that goes to support output abroad. A large share of hyperscaler investment 
+consists of imported capital goods, such as semiconductors, memory, and servers. In 
+addition, their spending plans include intermediate inputs, which do not map directly into 
+measured investment in the national accounts.
+Our previous approach: Useful but limited
+Our previous approach estimated AI's contribution to real GDP by focusing on four 
+categories of nonresidential business fixed investment including information processing 
+equipment in equipment spending, software in intellectual property products, and data 
+centers and power centers, both of which reside in structures investment. When it came 
+to offsetting this spending by imports, we netted out total imports of computers and 
+peripherals. We then summed the net contribution of these components and used that as 
+our estimate of AI's contribution to growth in real GDP.
+Relative to our previous methodology, we make three refinements to the import 
+adjustment that we believe more accurately account for import behavior. First, we adjust 
+imports for re-exports so that only imports remaining in the United States are netted out 
+of spending. Second, we estimate the share of imported computers and peripherals used 
+for private fixed investment rather than total domestic demand. Third, we expand the 
+import adjustment beyond computers and peripherals to include semiconductors and 
+related devices.
+A refined treatment of imports part 1: Accounting for re-exports
+Beginning with re-exports, we note two aspects of US trade that should be well known. 
+First, the import content of purchases of computers and peripherals by US businesses is 
+high. Second, the US is also a distribution, warehousing, and logistics hub for electronics. 
+A computer, server, or peripheral can enter the US, be recorded by the Census as an 
+import, sit in inventory or a distribution center, and subsequently be shipped abroad 
+without undergoing meaningful transformation. The Census Bureau explicitly classifies 
+such shipments as re-exports, which refer to imported goods that leave the US without 
+substantial transformation.
+Consider, for example, a Taiwanese manufacturer that ships $100mn of servers to its US 
+subsidiary or distributor. Although the full $100mn is initially recorded as imports, assume 
+$60mn is sold to US-based data centers and the remaining $40mn shipped to customers 
+in Canada and Mexico. Because those servers leave the US in essentially the same 
+condition in which they arrived, the $40mn is recorded as US re-exports rather than 
+domestic absorption. Similarly, semiconductors imported into the US could subsequently 
+
+
+[Page 8]
+M
+ Foundation
+8
+be re-exported to Mexico, assembled into servers, and then imported back into the US as 
+part of the finished equipment. In this case, the value of the semiconductors would be 
+captured once when they are initially imported and again as part of the value of the 
+servers when they return to the US. Not accounting for re-exports  means we are netting 
+out too many imports when assessing the contribution of AI to GDP.
+To account for re-exports, we estimate the share of imports that remain in the US using 
+Census Bureau data on imports and re-exports over an annual window. Because goods 
+may be imported and re-exported multiple times, using an annual window reduces short-
+term noise and provides a more reliable estimate of the share of imports that ultimately 
+remains in the United States. Our estimates indicate that re-exports account for a 
+meaningful share of imports of both computers and peripherals and semiconductors and 
+related devices, as shown in Exhibit 3 .  In 2025, we estimate that only about 86% of 
+imported computers and peripherals remained in the United States, while the 
+corresponding share for semiconductors and related devices was approximately 53%.
+Exhibit 3:
+In 2025, only 86% of imported computers and 53% 
+of semiconductors remained in the US
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+15
+17
+19
+21
+23
+25
+Share of Imports Remaining in the US
+Computers/peripherals/part
+ Semiconductors and related devices
+Source: Census Bureau, Haver Analytics, Morgan Stanley Research
+Exhibit 4:
+Not every computer import goes to fixed private 
+investment; only about two-thirds do.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+15
+17
+19
+21
+23
+25
+Computers and Peripherals by End Use
+Businesses(PFI)
+Consumers(PCE)
+Governments
+Source: BEA, Haver Analytics, Morgan Stanley Research
+A refined treatment of imports part 2: Estimating what goes to private 
+fixed investment
+Even after adjusting for re-exports, we were likely subtracting too many imports since not 
+every computer and peripheral piece of equipment left in the US  goes to private fixed 
+investment. Some are purchased by households and counted in personal consumption 
+expenditures; some are purchased by federal, state, or local governments; and some may 
+be purchased by businesses in ways that do not qualify as fixed investment.
+To estimate the portion of imported computers and peripherals used for business 
+investment, we estimate the share of computers and peripherals used for private fixed 
+investment relative to total final sales of computers and peripherals. The estimate is 
+based on the BEA's final sales of domestic computers tables and assumes that 
+households, businesses, and governments purchase imported and domestically produced 
+computers in the same proportions. Our estimates suggest that businesses account for 
+
+
+[Page 9]
+M
+ Foundation
+Morgan Stanley Research
+9
+roughly 60–70% of total purchases, as shown in Exhibit 4 , with the share reaching 68% 
+in 2025.
+A refined treatment of imports part 3: Including semiconductors and 
+related devices
+Finally, we broaden the import adjustment to include semiconductors and related devices, 
+which are also an important input into AI investment. Although the supply of chips and 
+memory, and the associated inflationary pressures, have been widely discussed this year, 
+the dollar value of imported semiconductors and related devices remains much smaller 
+than imports of computers and peripherals, both in nominal and real terms. Moreover, 
+imports of semiconductors and related devices did not accelerate until 4Q25, two years 
+later than imports of computers, peripherals and parts. Their subsequent growth, 
+however, has been significant—averaging a 57% annual rate in 1H26—and, together with 
+the discussion around "chipflation," makes accounting for them increasingly important.  As 
+an approximation, we assume that these imports are used entirely for private fixed 
+investment, as households and governments are more likely to purchase final computing 
+devices than semiconductors themselves. This refinement better captures the imported 
+content of building AI hyperscalers than relying on computers and peripherals alone. 
+Exhibit 5:
+Imports of semiconductors and related devices 
+remain much smaller than imports of computers and 
+peripherals
+0
+100
+200
+300
+400
+500
+600
+700
+1Q22
+1Q23
+1Q24
+1Q25
+1Q26
+Real Imports, Annualized
+ Computers, Peripherals & Parts
+Semiconductors and Related Devices
+$bil
+Source:  BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 6:
+Imports of semiconductors and related devices 
+accelerated beginning in 4Q25 
+-40
+-20
+0
+20
+40
+60
+80
+100
+1Q23
+1Q24
+1Q25
+1Q26
+Annualized Percent Change in Imports
+ Computers, Peripherals & Parts
+Semiconductors and Related Devices
+%
+Source:  BEA, Haver Analytics, Morgan Stanley Research
+Where our refined estimates of import offsets are still lacking
+Although our refined approach to accounting for imports in hyperscaler 
+investment provides a more accurate estimate, it is still not perfect. In principle, 
+the import adjustment should be comprehensive: for every detailed equipment 
+category included in hyperscaler investment, the corresponding imports should 
+also be accounted for. In addition to semiconductors, computers and peripherals, 
+hyperscaler investment includes other equipment that could be imported, such as 
+
+
+[Page 10]
+M
+ Foundation
+10
+communication equipment, engines and turbines, and other specialized machinery.
+The challenge is that the investment and trade data are reported using different 
+classifications. BEA reports imports by type of product, whereas NIPA investment 
+is reported by asset class. As a result, there is not always a direct import 
+counterpart to a detailed NIPA investment category. For example, engines and 
+turbines appear as a distinct asset within NIPA investment, but the corresponding 
+import data are available only within a broader industrial equipment category that 
+also includes products unrelated to hyperscaler investment. Using the broader 
+import category could therefore overstate the import adjustment, so we do not 
+make an adjustment for these categories at present.
+The resulting omission is likely to be moderate. Computers and peripherals 
+account for roughly 60–70% of hyperscaler equipment investment and are also 
+likely among its most import-intensive components. Our refined approach 
+therefore captures the largest source of imported content, even though it does not 
+capture all imported equipment used in the hyperscaler build-out.
+ 
+
+
+[Page 11]
+M
+ Foundation
+Morgan Stanley Research
+11
+From AI-related spending to AI-only spending
+One challenge in estimating the effects of AI on activity is that the starting point may be 
+too broad.  To some degree, this was by necessity. Splitting investment into its AI and non-
+AI components is difficult since the National Income and Product Accounts (NIPA) 
+accounts report investment by asset class – spending on equipment, intellectual property 
+products, and structures –  rather than by end use. 
+Our prior published estimates began with four categories that we believe contain large 
+amounts of AI spending, including information processing equipment in equipment 
+spending, software in intellectual property products, and data centers and power centers 
+in structures investment. These categories are where AI investment likely shows up, but 
+reflect investment regardless of whether the underlying activities are AI-related.  Hence, 
+even with a more refined accounting for imports, we still begin the process of estimating 
+the contribution of AI investment to GDP growth  with spending categories that include 
+both AI and non-AI spending. We call this "AI-related" spending since we know it comes 
+from both AI and non-AI sources, with the understanding that the acceleration in spending 
+in these components likely reflects the AI boom. AI may be the main driver of the period-
+to-period change, but, at a minimum, the base period level of spending contains a non-
+trivial amount of non-AI activity.
+We propose two adjustments to our prior starting point to improve our understanding of 
+AI's effect on activity and derive what we refer to as "AI-only" spending. Put simply, these 
+changes are intended to better isolate the direct contribution of AI spending to GDP 
+growth without contamination from changes in non-AI spending. First, we expand our 
+definition from four spending categories to eight to better capture the broad range of 
+inputs used by hyperscalers in building the AI infrastructure. Second, we propose a 
+method to isolate AI spending from non-AI spending in these categories. 
+From four to eight: Capturing the full range of AI spending
+Our updated methodology keeps two of the four categories mentioned above – software 
+(IPP), data centers (structures), takes the sub-items of the other two – computers and 
+peripherals, communication equipment from the information processing equipment 
+(equipment),  electric facilities from power centers (structures), and adds  engines and 
+turbines; special industry machinery; and electrical transmission, distribution, and 
+industrial apparatus spending; each of which falls under industrial equipment spending. 
+We believe these detailed NIPA items better align with the capital inputs required to build 
+AI hyperscalers. We will also argue later in this report that we can use these categories to 
+distinguish between AI spending that goes to support the infrastructure build-out and AI 
+spending that reflects the broader diffusion of AI to the economy. 
+Our set of AI-related investment categories from the NIPA accounts are listed in Exhibit 7 .
+
+
+[Page 12]
+M
+ Foundation
+12
+Exhibit 7:
+We identify eight spending categories that likely capture the full range of 
+spending on AI
+AI-Related Investment
+NIPA Category
+NIPA Item
+AI-Related Uses and Components
+Structures
+Data center structures
+Data center buildings
+Structures
+Electric facilities structures
+Power infrastructure
+Equipment
+Computers and peripheral equipment
+Servers, racks, processors (CPUs/GPUs), and 
+memory
+Equipment
+Communication equipment
+Networking equipment
+Equipment
+Engines and turbines
+Backup generators
+Equipment
+Special industry machinery, n.e.c. 
+Cooling  equipment
+Equipment
+Electrical transmission, distribution, and industrial 
+apparatus 
+Transformers and electrical systems
+AI software
+Intellectual property 
+products
+Software
+LLMs and AI applications
+AI infrastructure
+Source:  Bureau of Economic Analysis, Haver Analytics, Morgan Stanley Research
+Note: The final column provides illustrative examples of how each NIPA asset category maps to AI investment. These NIPA categories also 
+include investment unrelated to AI. 
+Isolating AI-only spending
+With these eight spending categories in hand, we now separate AI spending from non-AI 
+spending and narrow our focus from "AI-related" spending to "AI-only" spending. To do so, 
+we estimate counterfactual paths for how investment would have evolved in the absence 
+of the AI boom. We apply a similar approach to imports to estimate how they would have 
+evolved absent the AI boom. We define the difference between the actual data and these 
+counterfactual trends as AI-only investment. We do not believe this method to be 
+foolproof, nor entirely accurate, but we believe it is likely closer to the truth than our 
+prior estimates. 
+What would investment have looked like without the AI boom?
+For each of the eight detailed investment categories identified in Exhibit 7 , we estimate 
+how investment would have evolved in the absence of the AI boom. To do so, we first 
+construct a non-AI-related investment benchmark for each broad asset class. We compute 
+real non-AI-related investment in structures, equipment, and intellectual property 
+products by aggregating all detailed categories within each asset class other than the 
+eight AI-related categories identified above, using the Fisher chain-weighted aggregation 
+method.
+For example, we detail our approach using computers and peripherals to illustrate how we 
+construct the counterfactual path and estimate the portion of investment attributable to 
+AI. We begin with how real investment in computers and peripherals moved with broader 
+non-AI equipment investment before the recent AI boom. Using quarterly data from 3Q11 
+through 3Q22, we regress real investment in computers and peripherals on a constant, 
+quarterly seasonal dummies, the price index of computers and peripherals, and real non-
+AI-related equipment investment. 
+We then assume that this pre-AI relationship would have persisted in the absence of the 
+AI boom and extrapolate the estimated relationship beyond 3Q22 to construct a 
+counterfactual path for computers and peripherals. This becomes our estimate of how 
+investment would have evolved absent the AI boom. The difference between actual 
+
+
+[Page 13]
+M
+ Foundation
+Morgan Stanley Research
+13
+investment and this counterfactual path is our estimate of AI-attributable investment. 
+Exhibit 8 visualizes this approach: actual real investment in computers and peripherals 
+begins to accelerate above its estimated counterfactual path following the onset of the AI 
+boom.
+Exhibit 8:
+Actual real investment in computers and peripherals begins to accelerate 
+above its estimated counterfactual path following the onset of the AI boom
+50
+100
+150
+200
+250
+300
+350
+400
+Mar/15
+Sep/16
+Mar/18
+Sep/19
+Mar/21
+Sep/22
+Mar/24
+Sep/25
+Equipment: Computers & Peripherals
+Actual
+Counterfactual
+Real, 
+$bil
+Note: The gap between actual real spending on computers and peripherals and its counterfactual represent our estimate of AI-only spending in 
+this category. Source: BEA, Haver Analytics, Morgan Stanley Research
+The explanatory variables serve two different purposes. Non-AI-related equipment 
+investment captures broader movements in business equipment spending associated with 
+the economic cycle and other common factors. The price index of computers and 
+peripherals captures the longer-run relationship between falling technology prices and 
+investment demand. For categories such as computers and peripherals, communications 
+equipment, and software, quality-adjusted prices have declined substantially over the past 
+several decades as production has become more efficient and product quality has 
+improved. These secular price declines can themselves support greater investment and 
+therefore need to be accounted for before we attribute the post-2022 acceleration to AI. 
+Persistent declines in the cost of a technology relative to business output can be an 
+important driver of its diffusion.
+We apply the same general framework to each of the eight AI-related investment 
+categories, pairing each category with the corresponding non-AI benchmark (non-AI 
+structures for structure categories, non-AI equipment for equipment categories, and non-
+AI intellectual property products for software). The resulting counterfactual paths provide 
+our estimates of investment that would have occurred absent the AI boom, with the gaps 
+between actual and counterfactual investment representing AI-attributable investment. 
+Results are presented in Exhibit 9 to Exhibit 16 .
+We apply a similar framework to imports of computers and peripherals and 
+semiconductors and related devices. For the corresponding non-AI benchmark, we use 
+imports of non-AI-related capital goods excluding aircraft. Before estimating the 
+regressions, we adjust imports of computers and peripherals and semiconductors and 
+related devices for re-exports and, where applicable, the share used for business 
+investment, following the methodology described in the previous section. We then 
+estimate counterfactual import paths in the absence of the AI boom, with the difference 
+between actual imports and their counterfactual paths representing imported inputs into 
+
+
+[Page 14]
+M
+ Foundation
+14
+AI infrastructure  investment. Results are presented in Exhibit 17 and Exhibit 18 .  
+Exhibit 9:
+Actual versus counterfactual spend: Data centers
+5
+10
+15
+20
+25
+30
+35
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Structures: Data Center
+Actual
+Counterfactual
+Real, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 10: Actual versus counterfactual spend: Electric facilities   
+50
+75
+100
+125
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Structures: Electric Facilities
+Actual
+Counterfactual
+Real, 
+$bil
+ Note: The increase in electricity generating capacity is greater than the investment flow would suggest. 
+See our note. Source: BEA, Haver Analytics, Morgan Stanley Research 
+Exhibit 11: Actual versus counterfactual spend: Computers and 
+peripherals
+75
+125
+175
+225
+275
+325
+375
+Mar-
+15
+Sep-
+16
+Mar-
+18
+Sep-
+19
+Mar-
+21
+Sep-
+22
+Mar-
+24
+Sep-
+25
+Equipment: Computers & Peripherals
+Actual
+Counterfactual
+Real, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 12: Actual versus counterfactual spend: Communication
+75
+100
+125
+150
+175
+200
+225
+250
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Communication
+Actual
+Counterfactual
+Real, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+
+
+[Page 15]
+M
+ Foundation
+Morgan Stanley Research
+15
+Exhibit 13: Actual versus counterfactual spend: Engines and 
+turbines
+6
+8
+10
+12
+14
+16
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Engines and Turbines
+Actual
+Counterfactual
+Real, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 14: Actual versus counterfactual spend: Special industry 
+machinery
+30
+35
+40
+45
+50
+55
+60
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Special Industry Machinery, n.e.c.
+Actual
+Counterfactual
+Real, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 15: Actual versus counterfactual spend: Electrical, 
+distribution, and industrial
+30
+40
+50
+60
+70
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Electrical Transmission, Distribution, 
+and Industrial Apparatus
+Actual
+Counterfactual
+Real, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 16: Actual versus counterfactual spend: Software
+200
+400
+600
+800
+1000
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Intellectual Property Products: Software
+Actual
+Counterfactual
+Real, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+
+
+[Page 16]
+M
+ Foundation
+16
+Exhibit 17: Actual versus counterfactual imports: Computers, 
+peripherals and parts
+0
+100
+200
+300
+400
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Imports: Computers, peripherals and parts
+Actual
+Counterfactual
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 18: Actual versus counterfactual imports: 
+Semiconductors and related devices
+0
+25
+50
+75
+100
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Imports: Semiconductors and related devices
+Actual
+Counterfactual
+Source: BEA, Haver Analytics, Morgan Stanley Research
+AI-only spending reflects the gap between the actual and counterfactual 
+spend
+Not surprisingly, most categories of investment and imports show a meaningful deviation 
+from their counterfactual paths following the onset of the AI spending boom, with the 
+exceptions of electrical transmission, distribution, and industrial apparatus and imports of 
+semiconductors and related devices. There is also considerable variation in when these 
+deviations emerge. For example, data center investment began to accelerate in late 2022, 
+whereas investment in engines and turbines did not pick up until mid-2025.
+With the estimated dollar values of AI-only investment and imports, we can compute their 
+contributions to real GDP growth. We allow each category to enter our measure of AI-
+only investment at a different point in time, based on when its acceleration relative to the 
+counterfactual path begins. Once a category is included, however, it remains in the 
+measure even if actual investment subsequently falls below its counterfactual path. This 
+allows the estimated AI-only component to increase or decrease over time rather than 
+mechanically dropping an item whenever its actual value falls below the counterfactual. 
+We exclude electrical transmission, distribution, and industrial apparatus from the real 
+estimates for now, as there is no clear sign of acceleration. We continue to include imports 
+of semiconductors and related devices, however, because semiconductors are a key input 
+into AI hyperscalers even though their imports do not show a clear acceleration relative to 
+the estimated counterfactual path.
+
+
+[Page 17]
+M
+ Foundation
+Morgan Stanley Research
+17
+Exhibit 19: AI-related spending, on average, contributed 0.6pp 
+to real GDP growth from 2025 to mid-2026 
+0.39
+0.61
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+0.60
+0.70
+1H 23 to 1H 26
+1H 25 to 1H 26
+AI-Related Spending: 
+Annualized Half-Year Contribution to Real 
+GDP Growth (pp)
+Source: BEA, Haver Analytics, Morgan Stanley Research
+We present the 
+results in two ways. 
+First, in Exhibit 
+19 and Exhibit 20 , 
+we plot the 
+contribution of AI-
+related spending to 
+GDP growth over 
+different time 
+horizons. Exhibit 
+19 plots the average 
+annualized half-year 
+contribution to real 
+GDP growth from 
+2023 to the present 
+and 2025 to the 
+present (quarterly 
+values are presented 
+in the appendix: 
+Quarterly Estimates ). Exhibit 20 plots the contributions in half-year increments. 
+ Since 2023, the average annualized half-year contribution from AI-related spending to real 
+GDP growth has been 0.39pp. Since 2025, the contribution has been larger, with the 
+annualized half-year contribution from AI-related spending averaging 0.61pp. The effect of 
+reducing imports by their re-export values and the share used for private fixed investment 
+more than offsets the inclusion of semiconductor imports. In addition, the inclusion of 
+more spending categories lifts the contribution of investment to growth before netting 
+out imports. Put simply, we are including more components of non-residential fixed 
+investment and netting out fewer imports on average.
+Exhibit 20: Contribution of  AI-related spending to GDP growth 
+0.23
+0.22
+0.32
+0.16
+0.22
+0.70
+0.31
+0.81
+-0.5
+0.0
+0.5
+1.0
+1.5
+-0.5
+0.0
+0.5
+1.0
+1.5
+2H22
+1H23
+2H23
+1H24
+2H24
+1H25
+2H25
+1H26
+AI-Related Spending, Contribution to Real GDP Growth, Annualized pp 
+Investment
+Imports
+Contribution
+Source: BEA, Haver Analytics, Morgan Stanley Research
+
+
+[Page 18]
+M
+ Foundation
+18
+Exhibit 21: Isolating AI-only spending leads to an estimated 
+contribution to real GDP growth of 0.4pp from 2025 to mid-
+2026
+0.39
+0.61
+0.30
+0.42
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+0.60
+0.70
+1H 23 to 1H 26
+1H 25 to 1H 26
+Annualized Half-Year Contribution to Real 
+GDP Growth (pp)
+AI-related
+AI-only
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Second, in Exhibit 
+21 and Exhibit 22  we 
+plot the contribution 
+of AI-related spending 
+to real GDP growth 
+and the contribution 
+from AI-only spending 
+using the gap 
+between the actual 
+and counterfactual 
+trend. Exhibit 
+21 presents the data 
+as averages of the 
+annualized half-year 
+contributions to 
+growth since 2023 
+and 2025, while 
+Exhibit 22 presents 
+the individual half-
+year estimates. 
+Because AI-related spending includes both AI and non-AI activity, isolating AI-only 
+spending using our counterfactual estimates results in a smaller estimated contribution to 
+real GDP growth.  As noted above, the annualized half-year contribution to real GDP 
+growth from AI-related spending under our new methodology averaged 0.39pp since 
+2023. Isolating the effect  of AI-only spending yields an estimated contribution of 0.30pp 
+to growth. Since 2025, the gap has been slightly larger, with AI-related spending 
+contributing 0.61pp against 0.42pp from AI-only spending.
+Exhibit 22: Contributions of AI-related and AI-only spending to real GDP growth  
+0.22
+0.21
+0.32
+0.33
+0.16
+-0.10
+0.22
+0.42
+0.70
+0.65
+0.31
+0.08
+0.81
+0.54
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+Related
+AI
+Related
+AI
+Related
+AI
+Related
+AI
+Related
+AI
+Related
+AI
+Related
+AI
+1H23
+2H23
+1H24
+2H24
+1H25
+2H25
+1H26
+AI-Related Spending vs AI-Only Spending
+Contribution to Real GDP Growth, pp 
+Investment
+Imports
+Contribution
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Two caveats about our measures of AI investment's contribution to GDP are worth noting 
+here. First, both AI-related and AI-only investment focus on direct AI investment and likely 
+miss broader spillover effects. The AI build-out involves a wide range of players, from 
+construction firms to equipment suppliers. These supporting businesses are likely to 
+invest more as they expand capacity to support the build-out. In addition, the build-out 
+can generate employment and income that support additional spending, creating broader 
+multiplier effects that are not captured by our measures of direct AI investment.
+
+
+[Page 19]
+M
+ Foundation
+Morgan Stanley Research
+19
+Second, AI-related investment is not necessarily entirely incremental. Absent AI, firms 
+would presumably still have invested in other technologies, and some of that spending 
+may instead have been redirected toward AI.  Estimating this counterfactual precisely is 
+inherently difficult. Our AI-related investment estimates capture the gross contribution 
+from AI-related spending, but not the investment that may have been displaced by the AI 
+boom. Our AI-only measure may capture some of this displacement through its 
+counterfactual, but cannot fully distinguish new investment from investment redirected 
+toward AI.  
+
+
+[Page 20]
+M
+ Foundation
+20
+AI infrastructure and AI adoption spending  
+The final dimension of our framework to understand the effects of AI on economic activity 
+is to distinguish between spending by companies responsible for the build-out of AI 
+infrastructure – the hyperscalers, or merchants of compute – and spending by companies 
+adopting AI. This differentiation is relatively straightforward to implement; we argue that 
+software spending will capture AI adoption and its diffusion throughout the broader 
+economy. The remaining categories largely capture infrastructure spending during the AI 
+supply-side build-out. While AI infrastructure spending dominates the landscape today, we 
+expect software spending to become a larger part of the story over time.
+AI infrastructure investment 
+Building hyperscalers requires a broad range of capital inputs, including chips, memory, 
+servers, racks, power infrastructure, and cooling systems. Data centers and electric  
+facilities capture the physical construction of data centers and associated electric 
+infrastructure. Note that data center structures represent only the construction of the 
+data center buildings themselves. The hardware and equipment installed in them are 
+recorded under equipment in NIPA. Within equipment, we include  computers and 
+peripherals and communications equipment to capture computing and networking 
+hardware more accurately. We also identify engines and turbines, special industry 
+machinery n.e.c., and electrical transmission, distribution, and industrial apparatus within 
+industrial equipment. These categories capture the supporting mechanical and electrical 
+systems needed to power and operate hyperscalers. 
+Together, these categories capture the principal structures and equipment required to 
+construct and operate AI hyperscalers, which are spread across several categories of 
+nonresidential private fixed investment in NIPA as shown in Exhibit 7 . They extend 
+beyond computing hardware to include the physical facilities, electrical infrastructure, and 
+specialized industrial equipment necessary to support large-scale AI computing. 
+AI adoption investment
+We have confirmed with the Bureau of Economic Analysis (BEA)  that firms' spending on AI 
+LLMs and applications, whether through subscriptions or application programming 
+interfaces (APIs), is recorded as investment in software under intellectual property 
+products. The majority of this spending is classified as prepackaged software. It is possible 
+that some spending is classified as custom software because of differences in company 
+classification and self-reporting in Census surveys. Therefore, software investment 
+provides a broad measure of business investment in AI adoption.
+What software investment captures
+BEA also includes expenditures on software development in software investment. 
+Therefore, strictly speaking, software investment captures both investment by 
+developers of AI LLMs and other AI applications and spending by firms adopting 
+these technologies. Because the NIPA accounts do not classify software 
+investment by end use, we have not found a reliable way to separate software 
+
+
+[Page 21]
+M
+ Foundation
+Morgan Stanley Research
+21
+development from adoption spending. However, as we move further into the AI 
+investment cycle and AI diffuses more broadly across the economy, we expect 
+software investment to become increasingly representative of AI adoption 
+spending.
+Exhibit 23: Hyperscaler R&D spending as a share of total capex is substantial, 
+but moving lower.
+0
+20
+40
+60
+80
+100
+120
+140
+160
+R&D as share of Capex Expenditure
+%
+Source: Bloomberg, Firm 10-Q and 10-K filings from publicly traded hyperscalers, Morgan Stanley Research
+One potential approach to refine our estimates further is to use information in firm 
+10-Q and 10-K filings from publicly traded hyperscalers that also develop AI 
+software applications—Amazon, Google, Meta, and Microsoft—to estimate their 
+R&D spending. However, these firms have substantial operations beyond 
+developing AI LLMs and other AI software, and their filings do not provide enough 
+information to determine how much of their R&D spending is specifically AI 
+software-related. In 2Q26, their total R&D expenses were equivalent to roughly 
+50% of their capex, suggesting that the potential magnitude is meaningful, but 
+providing little indication of how much should be attributed to AI software 
+development. Overall, we choose to use reported software spending in the NIPA 
+accounts to reflect spending by AI adopters and point to the declining share of 
+R&D spending within hyperscaler capex as a rationale for thinking spending in this 
+category will increasingly focus on AI adopters rather than the AI infrastructure 
+build-out.
+The contribution from AI infrastructure has accelerated...
+Exhibit 24 presents the smoothed half-year average estimates for AI-only  investment 
+spending, broken down into AI infrastructure spending and AI adoption spending. Exhibit 
+25 decomposes AI infrastructure spending into its direct contribution to growth from 
+cumulative spending in the various NIPA investment categories and the relevant offsets 
+
+
+[Page 22]
+M
+ Foundation
+22
+from AI-only imports. Note that the total contribution in half-yearly increments in Exhibit 
+24 matches  the AI-only estimates in Exhibit 22 . We are simply decomposing these 
+contributions into  infrastructure- and adoption-driven components.
+Under this approach, we estimate that the contribution of AI infrastructure investment to 
+real GDP accelerated from about 0.15pp in 2023 and -0.05pp in 2024 to 0.21pp in 2025 
+and 0.36pp in 1H 2026. There was a clear pickup in AI-only investment and imports 
+beginning in 2025, with the net effect resulting in a larger net contribution to growth. 
+Exhibit 24: Decomposing the contribution of AI-only spending to growth into its 
+infrastructure and adoption subcomponents. 
+0.21
+0.33
+-0.10
+0.42
+0.65
+0.08
+0.54
+-0.4
+-0.2
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+-0.4
+-0.2
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1H23
+2H23
+1H24
+2H24
+1H25
+2H25
+1H26
+AI infrastructure versus AI adoption: Contribution to Real GDP growth, Annualized pp
+Contribution by AI infrastructure
+Contribution by AI adoption
+Total contribution
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 25: The contribution to growth from the AI infrastructure build-out has 
+accelerated over the past two years
+0.14
+0.17
+-0.19
+0.10
+0.20
+0.22
+0.36
+-0.4
+-0.2
+0.0
+0.2
+0.4
+0.6
+-0.40
+-0.20
+0.00
+0.20
+0.40
+0.60
+1H23
+2H23
+1H24
+2H24
+1H25
+2H25
+1H26
+AI Infrastucture Contribution to Real GDP Growth, Annualized, pp
+Investment
+Imports
+Contribution by AI infrastructure
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Is the import content of AI infrastructure spending 
+falling?
+What has been surprising, in our view, is that the direct contribution of AI 
+infrastructure spending to growth has been fairly steady in the three half-yearly 
+estimates beginning in 2025, with the average contribution to growth in the 
+neighborhood of 0.5pp, while the offset from imports has been moderating. The 
+import offset in 1H25 was close to 0.4pp, but fell below 0.2pp by 1H26. 
+We do not have a clear view on why the import content of AI infrastructure 
+
+
+[Page 23]
+M
+ Foundation
+Morgan Stanley Research
+23
+spending is declining. About two-thirds of this spending is dedicated to computers 
+and peripherals, which have high import content. The recent decline in the import 
+content of AI infrastructure spending may be statistical and could reverse in 
+subsequent quarters. However, we suspect it may also represent hoarding effects 
+given supply chain constraints, or it may also represent front-loading behavior in 
+response to increased trade policy restrictions. We simply don't know and raise the 
+point as an unexplained stylized fact worth further research.
+...while the AI-adoption contribution has been more volatile
+The contribution to real GDP growth from software – what we refer to as AI adoption 
+spending – has also picked up, though with some volatility ( Exhibit 24 ). As noted above, 
+we acknowledge that a portion of spending on software is likely related to its own 
+research and development and not solely spending by non-developers on AI adoption. 
+That said, we expect the share of AI adoption spending in software to increase over time 
+as the technology improves, firms learn how to apply AI efficiently, and diffusion spreads. 
+In 2024, the contribution of software spending to real GDP growth averaged 0.21pp. In 
+2025, the contribution slipped to 0.15pp on a weak second half which, in our view, may 
+reflect volatility in software prices (see box below). In 2026, the contribution of software 
+as a proxy for AI-adoption spending was 0.18pp. On net, this suggests that AI adoption 
+spending has not accelerated markedly and has been contributing somewhat less to 
+economic growth than  AI infrastructure spending. In our view, this should not come as a 
+surprise given the early stages of the AI investment cycle. We think the growth rate in AI 
+infrastructure spending is likely to decelerate in 2027 and 2028, while the growth rate of 
+AI adoption spending should remain more consistent, if not pick up.
+Rising software prices in 2025 dented the contribution of AI 
+adoption spend
+We note that movements in software prices may have played a role in increasing 
+the volatility of the contribution of AI adoption spending to growth. The software 
+price index was volatile during 2024 and 2025, which affected real software 
+investment. In particular, software prices increased meaningfully in 2H25, weighing 
+on the level of real software investment and therefore likely narrowing its 
+estimated gap relative to the counterfactual path. So far in 2026, the software 
+price index appears to have moved back toward its previous trend.
+One complication with working in real terms is that chain-weighted real dollar values are 
+not additive and therefore cannot simply be summed across components. A proper 
+aggregation would require either summing nominal values and deflating the total using an 
+appropriate price index, or constructing an aggregate quantity index and converting it into 
+real dollars. Both approaches, however, make it more difficult to preserve a transparent 
+decomposition across the individual investment components. For illustrative purposes, in 
+Exhibit 26 we therefore stack the real values to show the relative importance of 
+computers and peripherals in our estimates of AI infrastructure investment. Computers 
+and peripherals account for roughly 60–70% of the total, underscoring their importance 
+
+
+[Page 24]
+M
+ Foundation
+24
+to our estimates. We present the corresponding decomposition in nominal terms—which 
+is additive but reflects both price and quantity changes—in the appendix: A nominal 
+cross-check .
+Exhibit 26: Computers and peripherals account for roughly 60–70% of the AI 
+infrastructure spending
+46
+63
+60
+125
+140
+156
+220
+278
+298
+0
+100
+200
+300
+400
+2Q24
+3Q24
+4Q24
+1Q25
+2Q25
+3Q25
+4Q25
+1Q26
+2Q26
+Estimated AI Infrastructure Spending by Component 
+Real, Annualized
+Computers & peripherals
+Communication equipment
+Electrical transmission, distribution, and industrial apparatus
+Special industry machinery
+Engines & Turbines
+Electricity facilities
+Data centers
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+ 
+
+
+[Page 25]
+M
+ Foundation
+Morgan Stanley Research
+25
+List of Reports: AI and Economic Transition  
+A selected list of reports from Morgan Stanley's US Economics Research team on AI and 
+US economic transition:
+Dispelling an AI Myth: Why Affluent Consumers May Be Safer Than Advertised
+AI Labor Disruption: Still Modest, but Increasingly Visible 
+Expect Rhyme, Not Rupture: The Pace of AI Adoption, Productivity Gains, and Labor 
+Displacement Risks
+Industries with high AI exposure are seeing labor productivity from faster output growth, 
+not labor replacement
+AI Labor Disruption: More Micro Than Macro So Far
+Lessons from the Five Innovation Waves That Preceded AI
+ 
+
+
+[Page 26]
+M
+ Foundation
+26
+Appendix  
+Forecasts 
+Exhibit 27: AI and non-AI related investment contributions to GDP growth
+2023
+2024
+2025
+2026
+2027
+Nonresidential fixed investment
+0.90
+0.14
+0.75
+1.07
+1.18
+    AI-related
+0.31
+0.26
+0.90
+1.05
+1.04
+    Non-AI-related
+0.59
+-0.12
+-0.15
+0.02
+0.14
+Imports
+-0.03
+-0.20
+-0.40
+-0.45
+-0.44
+Contribution by AI-related investment
+0.28
+0.05
+0.50
+0.60
+0.60
+Productivity
+0.00
+0.00
+0.10
+0.20
+0.25
+AI total
+0.28
+0.05
+0.60
+0.80
+0.85
+Contribution to Real GDP Growth, pp
+Source: BEA, Haver Analytics, Morgan Stanley Forecasts
+Quarterly Estimates
+ Exhibit 28 compares the quarterly annualized estimates from the  AI-related method 
+with those from the AI-only method over the same time period. 
+Exhibit 28: Contribution to real GDP growth, AI-related spending vs AI-only spending
+1Q25
+2Q25
+3Q25
+4Q25
+1Q26
+2Q26
+AI infrastructure
+AI-related
+0.90
+0.41
+0.27
+0.83
+0.82
+0.46
+AI-only
+0.85
+0.24
+0.24
+0.85
+0.78
+0.27
++ AI software
+AI-related
+0.41
+0.58
+0.09
+0.12
+0.52
+0.30
+AI-only
+0.56
+0.34
+-0.17
+-0.12
+0.18
+0.18
+=  AI spending
+AI-related
+1.31
+0.99
+0.36
+0.95
+1.34
+0.76
+AI-only
+1.42
+0.57
+0.07
+0.73
+0.96
+0.45
++  AI imports
+AI-related
+-0.60
+-0.30
+-0.15
+-0.53
+-0.69
+0.21
+AI-only
+-0.29
+-0.40
+-0.05
+-0.59
+-0.47
+0.13
+= Contribution
+AI-related
+0.71
+0.69
+0.21
+0.41
+0.66
+0.97
+AI-only
+1.12
+0.17
+0.02
+0.14
+0.50
+0.58
+Contribution to Real GDP Growth, Annualized, pp
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 29 and Exhibit 30 report our estimated  contributions of AI-related and AI-only 
+spending to real GDP growth.
+
+
+[Page 27]
+M
+ Foundation
+Morgan Stanley Research
+27
+Exhibit 29: AI-related investment's contribution to real GDP growth
+Quarter
+Investment
+Imports
+Contribution
+1Q23
+0.30
+0.05
+0.36
+2Q23
+0.12
+-0.03
+0.09
+3Q23
+0.21
+-0.01
+0.20
+4Q23
+0.51
+-0.06
+0.45
+1Q24
+0.37
+-0.16
+0.21
+2Q24
+0.33
+-0.21
+0.11
+3Q24
+0.36
+-0.22
+0.14
+4Q24
+0.13
+0.17
+0.30
+1Q25
+1.31
+-0.60
+0.71
+2Q25
+0.99
+-0.30
+0.69
+3Q25
+0.36
+-0.15
+0.21
+4Q25
+0.95
+-0.53
+0.41
+1Q26
+1.34
+-0.69
+0.66
+2Q26
+0.76
+0.21
+0.97
+Contribution of AI-related spending to real GDP growth
+pp, ssar
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 30: AI-only investment's contribution to real GDP growth
+Quarter
+Investment
+Imports
+Contribution
+Contribution by 
+infrastructure
+Contribution by 
+adoption
+1Q23
+0.28
+0.00
+0.28
+0.21
+0.08
+2Q23
+0.13
+0.00
+0.13
+0.07
+0.07
+3Q23
+0.19
+0.00
+0.19
+0.13
+0.06
+4Q23
+0.52
+-0.06
+0.47
+0.21
+0.26
+1Q24
+0.05
+-0.28
+-0.22
+-0.29
+0.07
+2Q24
+0.31
+-0.28
+0.03
+-0.09
+0.11
+3Q24
+0.52
+-0.27
+0.25
+-0.03
+0.28
+4Q24
+0.36
+0.23
+0.59
+0.23
+0.36
+1Q25
+1.42
+-0.29
+1.12
+0.56
+0.56
+2Q25
+0.57
+-0.40
+0.17
+-0.17
+0.34
+3Q25
+0.07
+-0.05
+0.02
+0.19
+-0.17
+4Q25
+0.73
+-0.59
+0.14
+0.26
+-0.12
+1Q26
+0.96
+-0.47
+0.50
+0.32
+0.18
+2Q26
+0.45
+0.13
+0.58
+0.39
+0.18
+Contribution of AI-only spending to real GDP growth
+pp, ssar
+Source: BEA, Haver Analytics, Morgan Stanley Research
+A nominal cross-check 
+The drawback of working with real values at the component level is that chain-weighted 
+real spending cannot generally be added across categories, nor can meaningful 
+component shares be calculated directly from those real values. In addition, corporate 
+spending announcements and equity analyst estimates are usually reported in nominal 
+terms. To facilitate comparisons, we therefore repeat the same exercise using nominal 
+spending data, with the main difference being that price indices are no longer included in 
+the regressions. 
+The nominal results are broadly similar to those obtained using real values. The primary 
+difference is electrical transmission, distribution, and industrial apparatus, for which 
+nominal investment stays meaningfully above  its counterfactual path. We therefore 
+include this category in the nominal estimates even though it is excluded from the real 
+estimates. The divergence between the nominal and real results suggests that at least 
+part of the recent increase in spending on this category reflects higher prices rather than 
+
+
+[Page 28]
+M
+ Foundation
+28
+an increase in the volume of investment.
+Exhibit 31: Actual versus counterfactual spend in nominal 
+values: Data centers
+0
+10
+20
+30
+40
+50
+60
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Structures: Data Center
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 32: Actual versus counterfactual spend in nominal 
+values: Electric facilities
+50
+75
+100
+125
+150
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Structures: Electric Power Facilities
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 33: Actual versus counterfactual spend in nominal 
+values: Computers and peripherals
+50
+150
+250
+350
+450
+Mar-
+15
+Sep-
+16
+Mar-
+18
+Sep-
+19
+Mar-
+21
+Sep-
+22
+Mar-
+24
+Sep-
+25
+Equipment: Computers and Peripherals
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 34: Actual versus counterfactual spend in nominal 
+values: Communication
+100
+120
+140
+160
+180
+200
+220
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Communication
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+
+
+[Page 29]
+M
+ Foundation
+Morgan Stanley Research
+29
+Exhibit 35: Actual versus counterfactual spend in nominal 
+values: Engines and turbines
+6
+9
+12
+15
+18
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Engines and Turbines
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 36: Actual versus counterfactual spend in nominal 
+values: Special industry machinery
+30
+40
+50
+60
+70
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Special Industry 
+Machinery, n.e.c.
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 37: Actual versus counterfactual spend in nominal 
+values: Electrical, distribution, and industrial
+20
+40
+60
+80
+100
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Equipment: Electrical Transmission, Distribution, 
+and Industrial Apparatus
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 38: Actual versus counterfactual spend in nominal 
+values: Software
+300
+500
+700
+900
+Mar-15
+Sep-16
+Mar-18
+Sep-19
+Mar-21
+Sep-22
+Mar-24
+Sep-25
+Intellectual Property Products: Software
+Actual
+Counterfactual
+Nominal, 
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Based on 2Q26 data, we estimate that nominal AI-only investment reached an annualized 
+rate of $450 billion. Of that total, $391 billion was attributable to AI infrastructure, while 
+about $59 billion was attributable to AI adoption.
+Because no official measure of AI investment exists, it is useful to benchmark our 
+estimates against independent industry estimates. Our equity analysts publish annual 
+hyperscaler capex estimates and forecasts, along with a bottom-up breakdown of 
+spending by component. These estimates focus on hyperscaler capex and therefore 
+correspond most closely to our measure of AI infrastructure investment rather than AI 
+adoption investment. Because corporate capex estimates capture total spending 
+
+
+[Page 30]
+M
+ Foundation
+30
+regardless of where the underlying capital goods are produced, we compare them with 
+our gross AI infrastructure investment before subtracting imports.
+Our equity analysts estimate that hyperscaler capex totaled about $426bn in 2025. While 
+our estimates are somewhat lower in dollar terms, the two measures are not directly 
+comparable. Corporate capex measures companies' total capital spending, whereas NIPA 
+measures investment in final goods and services and excludes intermediate transactions 
+that may occur between hyperscalers and their suppliers. Notwithstanding these 
+conceptual differences, we think it is notable that the composition of spending in our 
+NIPA-based estimates and the bottom-up hyperscaler capex estimates is remarkably 
+similar. We estimate that computers and peripheral equipment accounted for 63% of 
+nominal AI infrastructure investment in 2025, broadly in line with our equity analysts' 
+estimate that roughly 60–70% of hyperscaler capex was spent on servers, racks, and 
+memory.
+Exhibit 39: We estimate that nominal AI infrastructure investment reached an 
+annualized rate of $391 billion in 2Q26
+29
+62
+95
+149
+176
+201
+266
+339
+391
+0
+100
+200
+300
+400
+4Q22
+1Q23
+2Q23
+3Q23
+4Q23
+1Q24
+2Q24
+3Q24
+4Q24
+1Q25
+2Q25
+3Q25
+4Q25
+1Q26
+2Q26
+Estimated AI Infrastructure Investment in NIPA, 
+Nominal, Annualized
+Computers & peripherals
+Communication equipment
+Electrical transmission, distribution, and industrial apparatus
+Special industry machinery
+Engines & Turbines
+Electricity facilities
+Data centers
+$bil
+Source: BEA, Haver Analytics, Morgan Stanley Research
+Exhibit 40: Computers and peripheral equipment accounted for 63% of nominal AI 
+infrastructure investment in 2025
+21%
+44%
+63%
+67%
+0%
+20%
+40%
+60%
+80%
+100%
+2023
+2024
+2025
+Recent 4-Quarter
+Estimated AI Infrastructure Investmetn in NIPA, Share By Component
+Computers & peripherals
+Communication equipment
+Electrical transmission, distribution, and
+industrial apparatus
+Special industry machinery
+Engines & Turbines
+Electricity facilities
+Data centers
+Source: BEA, Haver Analytics, Morgan Stanley Research
+ 
+
+
+[Page 31]
+M
+ Foundation
+Morgan Stanley Research
+31
+Disclosure Section
+The information and opinions in Morgan Stanley Research were prepared by Morgan Stanley & Co. LLC, and/or Morgan Stanley C.T.V.M. S.A., and/or Morgan Stanley Mexico, Casa de Bolsa, 
+S.A. de C.V., and/or Morgan Stanley Canada Limited. As used in this disclosure section, "Morgan Stanley" includes Morgan Stanley & Co. LLC, Morgan Stanley C.T.V.M. S.A., Morgan Stanley Mexico, 
+Casa de Bolsa, S.A. de C.V., Morgan Stanley Canada Limited and their affiliates as necessary.
+For important disclosures, stock price charts and equity rating histories regarding companies that are the subject of this report, please see the Morgan Stanley Research Disclosure Website 
+at www.morganstanley.com/eqr/disclosures/webapp/generalresearch, or contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research 
+Management), New York, NY, 10036 USA.
+For valuation methodology and risks associated with any recommendation, rating or price target referenced in this research report, please contact the Client Support Team as follows: US/Canada 
++1 800 303-2495; Hong Kong +852 2848-5999; Latin America +1 718 754-5444 (U.S.); London +44 (0)20-7425-8169; Singapore +65 6834-6860; Sydney +61 (0)2-9770-1505; Tokyo +81 
+(0)3-6836-9000.  Alternatively you may contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research Management), New York, NY 10036 USA.
+Global Research Conflict Management Policy
+Morgan Stanley Research has been published in accordance with our conflict management policy, which is available at www.morganstanley.com/institutional/research/conflictpolicies. A 
+Portuguese version of the policy can be found at www.morganstanley.com.br
+Important Disclosures
+Morgan Stanley is not acting as a municipal advisor and the opinions or views contained herein are not intended to be, and do not constitute, advice within the meaning of Section 975 of the 
+Dodd-Frank Wall Street Reform and Consumer Protection Act.
+Morgan Stanley Research does not provide individually tailored investment advice. Morgan Stanley Research has been prepared without regard to the circumstances and objectives of those 
+who receive it. Morgan Stanley recommends that investors independently evaluate particular investments and strategies, and encourages investors to seek the advice of a financial adviser. 
+The appropriateness of an investment or strategy will depend on an investor's circumstances and objectives. The securities, instruments, or strategies discussed in Morgan Stanley Research 
+may not be suitable for all investors, and certain investors may not be eligible to purchase or participate in some or all of them. Morgan Stanley Research is not an offer to buy or sell or the 
+solicitation of an offer to buy or sell any security/instrument or to participate in any particular trading strategy. The value of and income from your investments may vary because of changes 
+in interest rates, foreign exchange rates, default rates, prepayment rates, securities/instruments prices, market indexes, operational or financial conditions of companies or other factors. There 
+may be time limitations on the exercise of options or other rights in securities/instruments transactions. Past performance is not necessarily a guide to future performance. Estimates of future 
+performance are based on assumptions that may not be realized. If provided, and unless otherwise stated, the closing price on the cover page is that of the primary exchange for the subject 
+company's securities/instruments.
+The fixed income research analysts, strategists or economists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, 
+including quality, accuracy and value of research, firm profitability or revenues (which include fixed income trading and capital markets profitability or revenues), client feedback and competitive 
+factors. Fixed Income Research analysts', strategists' or economists' compensation is not linked to investment banking or capital markets transactions performed by Morgan Stanley or the 
+profitability or revenues of particular trading desks.
+With the exception of information regarding Morgan Stanley, Morgan Stanley Research is based on public information. Morgan Stanley makes every effort to use reliable, comprehensive 
+information, but we make no representation that it is accurate or complete.  We have no obligation to tell you when opinions or information in Morgan Stanley Research change apart from 
+when we intend to discontinue equity research coverage of a subject company. Facts and views presented in Morgan Stanley Research have not been reviewed by, and may not reflect information 
+known to, professionals in other Morgan Stanley business areas, including investment banking personnel.
+Morgan Stanley may make investment decisions that are inconsistent with the recommendations or views in this report.
+To our readers based in Taiwan or trading in Taiwan securities/instruments: Information on securities/instruments that trade in Taiwan is distributed by Morgan Stanley Taiwan Limited ("MSTL"). 
+Such information is for your reference only.  The reader should independently evaluate the investment risks and is solely responsible for their investment decisions.  Morgan Stanley Research 
+may not be distributed to the public media or quoted or used by the public media without the express written consent of Morgan Stanley.  Any non-customer reader within the scope of Article 
+7-1 of the Taiwan Stock Exchange Recommendation Regulations accessing and/or receiving Morgan Stanley Research is not permitted to provide Morgan Stanley Research to any third party 
+(including but not limited to related parties, affiliated companies and any other third parties) or engage in any activities regarding Morgan Stanley Research which may create or give the 
+appearance of creating a conflict of interest. Information on securities/instruments that do not trade in Taiwan is for informational purposes only and is not to be construed as a recommendation 
+or a solicitation to trade in such securities/instruments.  MSTL may not execute transactions for clients in these securities/instruments.
+Morgan Stanley is not incorporated under PRC law and the research in relation to this report is conducted outside the PRC.  Morgan Stanley Research does not constitute an offer to sell or 
+the solicitation of an offer to buy any securities in the PRC.  PRC investors shall have the relevant qualifications to invest in such securities and shall be responsible for obtaining all relevant 
+approvals, licenses, verifications and/or registrations from the relevant governmental authorities themselves. Neither this report nor any part of it is intended as, or shall constitute, provision 
+of any consultancy or advisory service of securities investment as defined under PRC law. Such information is provided for your reference only.
+Morgan Stanley Research is disseminated in Brazil by Morgan Stanley C.T.V.M. S.A. located at Av. Brigadeiro Faria Lima, 3600, 6th floor, São Paulo - SP, Brazil; and is regulated by the Comissão 
+de Valores Mobiliários; in Mexico by Morgan Stanley México, Casa de Bolsa, S.A. de C.V which is regulated by Comision Nacional Bancaria y de Valores. Paseo de los Tamarindos 90, Torre 1, 
+Col. Bosques de las Lomas Floor 29, 05120 Mexico City; in Japan by Morgan Stanley MUFG Securities Co., Ltd. and, for Commodities related research reports only, Morgan Stanley Capital Group 
+Japan Co., Ltd; in Hong Kong by Morgan Stanley Asia Limited (which accepts responsibility for its contents) and by Morgan Stanley Bank Asia Limited; in Singapore by Morgan Stanley Asia 
+(Singapore) Pte. (Registration number 199206298Z) and/or Morgan Stanley Asia (Singapore) Securities Pte Ltd (Registration number 200008434H), regulated by the Monetary Authority of 
+Singapore (which accepts legal responsibility for its contents and should be contacted with respect to any matters arising from, or in connection with, Morgan Stanley Research) and by Morgan 
+Stanley Bank Asia Limited, Singapore Branch (Registration number T14FC0118J); in Australia to "wholesale clients" within the meaning of the Australian Corporations Act by Morgan Stanley 
+Australia Limited A.B.N. 67 003 734 576, holder of Australian financial services license No. 233742, which accepts responsibility for its contents; in Australia to "wholesale clients" and "retail 
+clients" within the meaning of the Australian Corporations Act by Morgan Stanley Wealth Management Australia Pty Ltd (A.B.N. 19 009 145 555, holder of Australian financial services license 
+No. 240813, which accepts responsibility for its contents; in Korea by Morgan Stanley & Co International plc, Seoul Branch; in India by Morgan Stanley India Company Private Limited having 
+Corporate Identification No (CIN) U22990MH1998PTC115305, regulated by the Securities and Exchange Board of India (“SEBI”) and holder of licenses as a Research Analyst (SEBI Registration 
+No. INH000001105); Stock Broker (SEBI Stock Broker Registration No. INZ000244438), Merchant Banker (SEBI Registration No. INM000011203), and depository participant with National 
+Securities Depository Limited (SEBI Registration No. IN-DP-NSDL-567-2021) having registered office at Altimus, Level 39 & 40, Pandurang Budhkar Marg, Worli, Mumbai 400018, India; 
+Telephone no. +91-22-61181000; Compliance Officer Details: Mr. Tejarshi Hardas, Tel. No.: +91-22-61181000 or Email: tejarshi.hardas@morganstanley.com; Grievance officer details: Mr. Tejarshi 
+
+
+[Page 32]
+M
+ Foundation
+32
+Hardas, Tel. No.: +91-22-61181000 or Email: msic-compliance@morganstanley.com. Morgan Stanley India Company Private Limited (MSICPL) may use AI tools in providing research services. 
+All recommendations contained herein are made by the duly qualified research analysts; in Canada by Morgan Stanley Canada Limited; in Germany and the European Economic Area where 
+required by Morgan Stanley Europe S.E., regulated by Bundesanstalt fuer Finanzdienstleistungsaufsicht (BaFin) under the reference number 149169; in the United States by Morgan Stanley 
+& Co. LLC, which accepts responsibility for its contents. Morgan Stanley & Co. International plc, authorized by the Prudential Regulation Authority and regulated by the Financial Conduct 
+Authority and the Prudential Regulation Authority, disseminates in the UK research that it has prepared, and research which has been prepared by any of its affiliates, only to persons who (i) 
+are investment professionals falling within Article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (as amended, the “Order”); (ii) are persons who are 
+high net worth entities falling within Article 49(2)(a) to (d) of the Order; or (iii) are persons to whom an invitation or inducement to engage in investment activity (within the meaning of section 
+21 of the Financial Services and Markets Act 2000, as amended) may otherwise lawfully be communicated or caused to be communicated. RMB Morgan Stanley Proprietary Limited is a member 
+of the JSE Limited and A2X (Pty) Ltd. RMB Morgan Stanley Proprietary Limited is a joint venture owned equally by Morgan Stanley International Holdings Inc. and RMB Investment Advisory 
+(Proprietary) Limited, which is wholly owned by FirstRand Limited. The information in Morgan Stanley Research is being disseminated by Morgan Stanley Saudi Arabia, regulated by the Capital 
+Market Authority in the Kingdom of Saudi Arabia, and is directed at Sophisticated investors only.
+The trademarks and service marks contained in Morgan Stanley Research are the property of their respective owners. Third-party data providers make no warranties or representations relating 
+to the accuracy, completeness, or timeliness of the data they provide and shall not have liability for any damages relating to such data. The Global Industry Classification Standard (GICS) was 
+developed by and is the exclusive property of MSCI and S&P.
+Morgan Stanley Research, or any portion thereof may not be reprinted, sold or redistributed without the written consent of Morgan Stanley.
+Indicators and trackers referenced in Morgan Stanley Research may not be used as, or treated as, a benchmark under Regulation EU 2016/1011, or any other similar framework.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (DIFC Branch), regulated by the Dubai Financial Services Authority (the DFSA) 
+or by Morgan Stanley & Co. International plc (ADGM Branch), regulated by the Financial Services Regulatory Authority Abu Dhabi (the FSRA), and is directed at Professional Clients only, as 
+defined by the DFSA or the FSRA, respectively. The financial products or financial services to which this research relates will only be made available to a customer who we are satisfied meets 
+the regulatory criteria of a Professional Client. A distribution of the different MS Research ratings or recommendations, in percentage terms for Investments in each sector covered, is available 
+upon request from your sales representative.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (QFC Branch), regulated by the Qatar Financial Centre Regulatory Authority 
+(the QFCRA), and is directed at business customers and market counterparties only and is not intended for Retail Customers as defined by the QFCRA.
+As required by the Capital Markets Board of Turkey, investment information, comments and recommendations stated here, are not within the scope of investment advisory activity. Investment 
+advisory service is provided exclusively to persons based on their risk and income preferences by the authorized firms. Comments and recommendations stated here are general in nature. These 
+opinions may not fit to your financial status, risk and return preferences. For this reason, to make an investment decision by relying solely to this information stated here may not bring about 
+outcomes that fit your expectations.
+Registration granted by SEBI and certification from the National Institute of Securities Markets (NISM) in no way guarantee performance 
+of the intermediary or provide any assurance of returns to investors. Investment in securities market are subject to market risks. Read 
+all the related documents carefully before investing.
+© 2026 Morgan Stanley
