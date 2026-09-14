@@ -1,0 +1,332 @@
+{
+ "brief": "This weekly macro and derivatives flow note from UBS reports observed positioning across markets rather than building a single argued thesis. US equity flows turned constructive into the AI trade ahead of CPI, with buying in Semis, Memory and Hyperscalers; broader AI positioning is back to highs but Semis/Memory positioning still sits well below its prior peak. About $250m of January call premium hit US semis names including SNDK, AMD and CRWV. Asia semis flow was mixed: Taiwan buying led by TSMC, mixed Japan, outright Korea selling. Large SPX and SPY put spreads bought into CPI were quickly unwound once spot fell. Brazil (EWZ) and China-linked (HSTECH, KWEB, CSI, EEM) upside flows stayed constructive, though EWZ saw some early-week outright selling. Dollar selling exceeded expectations, with USDJPY downside buying, EUR topside interest, and CHF short-covering, though CHF positioning stays net short. ECB repricing after Thursday's meeting was the main rates move, worsened by stopped-out Euribor and steepener positions. Gold stayed bid on ETF demand, with GDX buying and near record-pace GLD buying despite higher rates and oil.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "US equity flows rotated back into the AI trade this week while investors sold rate-sensitive sectors and popular AI-funding sectors like Software and Financials.",
+   "anchor": "regrossing back into AI trade vs selling of rates sensitive sectors (e.g. REITs, Biotech) as well as popular AI funders like Software and Financials.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Prime brokerage positioning in the broader AI trade, including Hyperscalers and AI adopters, is now back to previous highs.",
+   "anchor": "PB desk sees positioning for the broader AI trade (such as Hyperscalers and AI adopters) now back to highs",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Positioning in Semis and Memory within the AI trade remains well below its previous peak even as broader AI positioning has recovered.",
+   "anchor": "positioning in Semis and Memory still well below previous peak",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Investors bought Semis, Memory and Hyperscaler names within the AI trade, a flow that has been ongoing for a few weeks.",
+   "anchor": "saw buying on Semis and Memory as well as Hyperscalers (ongoing for a few weeks now)",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "a few weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "January expiry call options on SNDK, AMD and CRWV among other US semis names drew roughly $250 million in total premium spend.",
+   "anchor": "on SNDK, INTX, DRAM, BE, SKHY, AMD and CRWV mainly with a total premium spend of $250m.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "SNDK",
+    "AMD",
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Jan expiry"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Asia semiconductor flows were mixed, with buying of Taiwan large-cap semis led by TSMC, mixed Japan semis flow, and outright Korea selling via futures.",
+   "anchor": "buying of Taiwan large-cap Semis (led by TSMC) vs mixed Japan semis flow (buying memory, selling SPE) and outright Korea selling via futures.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "About $23 billion of SPX put spreads unwound starting Thursday as CPI-related index hedging was reversed.",
+   "anchor": "saw $23bn SPX put spreads unwind starting on Thursday",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "$5 billion of SPY put spreads bought ahead of the CPI print were unwound by Friday.",
+   "anchor": "saw $5bn of SPY put spreads bought ahead of print but unwound on Friday.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "ahead of CPI print"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Investors are still buying Brazil upside via EWZ call spreads, with a shift toward more call ratio and call condor structures as spot and vols rose.",
+   "anchor": "Still seeing Brazil upside via EWZ call spreads but with spot and vols higher",
+   "topic": "global equity allocation",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Cash desk saw outright selling on EWZ early in the week, making Brazil flows more mixed though still constructive overall.",
+   "anchor": "cash desk saw outright selling on EWZ early in the week so flows a bit more mixed now vs before (albeit still constructive).",
+   "topic": "global equity allocation",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "early in the week"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Cash desk was a net buyer of HSTECH names, particularly Tencent, as China Internet flows turned more constructive with spot trading at low levels.",
+   "anchor": "China flows a bit more constructive, particularly on Internet with spot now trading quite low, cash desk was net buying HSTECH names, particularly Tencent",
+   "topic": "global equity allocation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "There was some upside buying on KWEB via January expiry calls.",
+   "anchor": "saw a bit of upside on KWEB too (e.g. Jan calls)",
+   "topic": "global equity allocation",
+   "status": "released",
+   "instruments": [
+    "KWEB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Jan expiry"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Interest in longer-dated CSI structures has remained strong for many weeks amid elevated Chinese equity outperformance rates.",
+   "anchor": "dated CSI structures also remains strong (been ongoing for many weeks now amid elevated outperformance rates).",
+   "topic": "global equity allocation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "many weeks"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "EEM upside option buying picked up this week, mostly via outright January expiry calls.",
+   "anchor": "EEM upside option buying also picked up this week (China being a big weighting), mostly outright calls on Jan expiry",
+   "topic": "global equity allocation",
+   "status": "released",
+   "instruments": [
+    "EEM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Jan expiry"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Dollar selling flows were larger than expected ahead of CPI, including continued buying of USDJPY downside.",
+   "anchor": "Saw more dollar selling flows than would have expected ahead of CPI, continued to see USDJPY downside being bought",
+   "topic": "dollar and yen direction",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "start of the week"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "There was more interest in EUR topside trades, calls and call spreads targeting 1.20 in two or three months.",
+   "anchor": "saw more interest in EUR topside trades (calls and call spreads targeting 1.20 in 2m or 3m).",
+   "topic": "dollar and yen direction",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2m or 3m"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Hedge funds were unwinding short CHF positions via EURCHF buying, a continuation from the prior week after stronger Swiss data.",
+   "anchor": "Most notable non-Dollar selling flow was on CHF were HFs were unwinding shorts, particularly via EURCHF buying (continuation from previous week after stronger Swiss data)",
+   "topic": "dollar and yen direction",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "previous week"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Positioning remains net short CHF, which has been a popular funding leg for some time.",
+   "anchor": "positioning is still net short CHF (has been a popular funding leg for a while).",
+   "topic": "dollar and yen direction",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "European rates saw an aggressive repricing of ECB policy expectations after Thursday's meeting, the main rates move of the week.",
+   "anchor": "Main rates move on the week was arguably in Europe with an aggressive repricing of ECB post Thurs meeting",
+   "topic": "global bond selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "post Thursday meeting"
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Stops going through on Dec26 and Dec27 Euribor receiver positions and forward steepener structures, including a 9bp move in long-dated 10s30s, exacerbated the ECB repricing.",
+   "anchor": "going through on Dec26 and Dec27 Euribor receiver positions as well stops in various fwd steepener structures (including long-dated 10s30s which moved 9bps).",
+   "topic": "global bond selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Gold remained bid despite broadly higher rates and oil, driven more by ETF flows, with Gold Miners buying returning via outright GDX purchases.",
+   "anchor": "interesting to see Gold still bid (albeit more on ETF side) with buying of Gold Miners returning vs previous week via GDX outright buying",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GDX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Macro Derivs Flow: AI Semis and Memory buying / EWZ and EEM upside / Gold buying",
+   "claim": "Retail investors were especially active buying GLD, with Thursday marking the fourth largest buying day ever for the ETF.",
+   "anchor": "retail were especially active buying GLD with Thursday seeing the fourth largest buying-day ever.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16253__macro-derivs-flow-ai-semis-and-memory-buying-ewz-and-eem-ups.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
