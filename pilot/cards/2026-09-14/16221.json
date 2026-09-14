@@ -1,0 +1,530 @@
+{
+ "brief": "Goldman's TMT specialist recaps the firm's Communacopia conference. Micro datapoints were upbeat: Visa and Mastercard said August was consistent with July, LYV and TKO reported live event demand intact, enterprise demand was steady on AI-era tech stack modernization, and semiconductor supply and demand showed no sign of cooling. The note frames investor stance as tension. Bottom-up datapoints are constructive, with tight supply and demand, robust token demand and faster product innovation, so negatives are hard to find, but top-down debates persist out of summer volatility, rates and geopolitical uncertainty, midterm policy risk and the law of large numbers. Security was the largest conference theme, with NVDA's Jensen Huang calling cybersecurity the next major AI use case, PANW describing a multi-model fabric and DELL citing cyber risk as a hardware upgrade catalyst. Data infra software (NET, SNOW, DT, DDOG, MDB) is favored because it is less tied to capex yet still benefits from inference adoption, which makes peak-spend debates less restrictive. Networking demand, an analog semi recovery and the NDX's 4+ month consolidation are left as open questions. This reports conference commentary rather than arguing a house forecast.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Visa and Mastercard said August consumer spending was consistent with July.",
+   "anchor": "Visa / MA said August was consistent with July",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Live Nation and TKO said demand for live events remains intact.",
+   "anchor": "demand for live events remains intact)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "LYV",
+    "TKO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Enterprise technology demand trends were steady at the conference, driven by the need to modernize tech stacks for the AI era.",
+   "anchor": "steady Enterprise demand trends (esp driven by need to modernize",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Semiconductor supply and demand remains healthy with no signs of demand cooling.",
+   "anchor": "a healthy Semi S/D backdrop (no signs of cooling in demand)",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Investors show healthy tension about fully re-committing to the AI infrastructure trade.",
+   "anchor": "healthy tension about fully \u201cre-committing\u201d to the AI infra trade",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Bottom-up AI datapoints remain constructive, with supply and demand tight, token demand robust and product innovation accelerating.",
+   "anchor": "remains tight, token demand is robust and product innovation has picked up)",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Top-down debates on tech persist, driven by summer volatility, rates and geopolitical uncertainty, and midterm policy uncertainty.",
+   "anchor": "against lingering \u201ctop down\u201d debates \u2013 an output of Summer volatility, macro uncertainty (Rates,",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "AVGO versus NVDA, which is more likely to work, was among the most debated pair trades at the conference.",
+   "anchor": "AVGO vs NVDA (which is more likely to",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "AVGO",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Investors debated why HPQ, HPE and DELL keep rising and outperforming the broader semiconductor group.",
+   "anchor": "HPQ / HPE / DELL (why do these keep going up and o/p broader Semis?)",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "HPQ",
+    "HPE",
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "How Reddit resolves its AI positioning debate was a top topical question at the conference.",
+   "anchor": "RDDT (how do they resolve the debate AI positioning debate)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "RDDT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Whether Uber's autonomous vehicle angst is already priced was a top debated question at the conference.",
+   "anchor": "positioning debate) \u2026 UBER (is the AV angst priced",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Airbnb's founder CEO laid out a clear AI vision, with the open question being whether it outruns the online travel agency narrative.",
+   "anchor": "vision from founder CEO \u2013 enough to outrun OTA \u2018narrative\u2019",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ABNB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Cadence management expects chip complexity to increase 48x over the next five years, and investors debated why the stock does not trade better.",
+   "anchor": "increase 48x over the next 5 years, per mgmt., why can\u2019t stock trade better?)",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 5 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Data infrastructure software names NET, SNOW, DT, DDOG and MDB continue to sound very upbeat.",
+   "anchor": "Data infra software plays continue to sound very upbeat - NET, SNOW, DT, DDOG, MDB types",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "NET",
+    "SNOW",
+    "DT",
+    "DDOG",
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Data infrastructure software names are not tightly tied to capex dollars yet still benefit from AI inference adoption, so peak-spend debates are less restrictive for them.",
+   "anchor": "capex, yet, still benefit from AI inference activity / adoption such that the \u201cpeak\u201d debates just aren\u2019t as",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "NET",
+    "SNOW",
+    "DT",
+    "DDOG",
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Most of the data infrastructure software names are seeing accelerating revenue growth in the second quarter and second half.",
+   "anchor": "of these names seeing accelerating revenue growth in 2Q / 2H)",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "NET",
+    "SNOW",
+    "DT",
+    "DDOG",
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q / 2H"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "DigitalOcean said customers moving into production inference workloads create higher value monetization through token and agent flow, driving higher annual recurring revenue per megawatt.",
+   "anchor": "noting that as customers move into production inference workloads, creating higher value monetization",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "DOCN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Security was arguably the biggest theme at the Communacopia conference.",
+   "anchor": "Security was arguably the biggest \u201ctheme\u201d at the conference",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Nvidia's Jensen Huang said cybersecurity will likely be the next major use case of AI and will run continuously.",
+   "anchor": "\u2018but the fact of the matter is cybersecurity will likely be the next major use case of AI, and",
+   "topic": "AI cybersecurity demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Palo Alto Networks described a model fabric approach using a multi-model harness to find vulnerabilities.",
+   "anchor": "with PANW describing a model \u2018fabric\u2019 approach whereby",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Dell described heightened cyber and security risks as a catalyst for upgrading hardware environments.",
+   "anchor": "DELL talked about heightened cyber / security risks as a catalyst for",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Memory cycle debates and second derivative plays into semicap or hardware OEMs are flagged as a theme to work through from here.",
+   "anchor": "memory cycle debates (and second derivative plays into",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "MSFT, SNOW and NOW spoke to the agent or model orchestration opportunity, leaving who wins the orchestration layer an open question.",
+   "anchor": "who can win the \u201corchestration\u201d layer (MSFT, SNOW, NOW and others spoke",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "MSFT",
+    "SNOW",
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "HUBS and FIG are still finding the right mix of price and value in monetizing AI within software.",
+   "anchor": "SaaS\u2019 monetization of AI (HUBS, KKVYO, FIG still",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "HUBS",
+    "FIG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Arista is seeing strong demand across its AI networking domains, particularly back-end networks connecting GPU accelerators.",
+   "anchor": "ANET; seeing strong demand across its AI networking",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "ANET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Scale-across deployments are seeing significant demand as power, cooling and data center space constraints force customers to expand clusters across multiple locations.",
+   "anchor": "seeing significant demand as customers face power, cooling, and data center space constraints, requiring",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "ANET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Cisco said agentic AI is driving a 5x increase in network bandwidth consumption.",
+   "anchor": "CSCO noted: Agentic AI is driving a 5x increase in",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Cisco said the bandwidth increase is catalyzing a durable networking demand cycle across hyperscale, neocloud and enterprise customer segments.",
+   "anchor": "network bandwidth consumption, catalyzing a durable networking demand cycle across all of CSCO's",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Datacenter and aerospace/defense remained the primary idiosyncratic near-term growth drivers for analog semiconductor companies.",
+   "anchor": "remained top of mind as the primary idiosyncratic growth drivers in the near term",
+   "topic": "analog semis recovery",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Analog semiconductor companies struck a bullish tone on a broad-based recovery across other end markets including industrial and automotive.",
+   "anchor": "also struck a bullish tone on a broad-based recovery across end other markets - including industrial and",
+   "topic": "analog semis recovery",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "The analog recovery is evidenced by growing lead times and driven by lean inventory levels, content growth and steadily improving demand.",
+   "anchor": "as evidenced by growing lead times and driven by lean inventory levels, content growth, and",
+   "topic": "analog semis recovery",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "Analog semiconductor management teams largely expect selective ASP increases to offset higher input costs, with the positive topline effect gradual.",
+   "anchor": "management teams largely expect selective ASP increases to",
+   "topic": "analog semis recovery",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "The Nasdaq 100 has been in consolidation mode for the better part of the last four-plus months, with break-out or break-down left open.",
+   "anchor": "the NDX has been in \u2018consolidation\u2019 mode for the better part of the last 4+ months",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last 4+ months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT recap Communacopia Technology Conference 13 Sep 2026",
+   "claim": "The FOMC meets Wednesday September 16 with market pricing showing roughly an 85% chance of a rate hike.",
+   "anchor": "Wed 9/16: FOMC meeting (WIRP = ~85% chance of rate hike)",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "16 September 2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16221__gs-callahan-us-tmt-recap-communacopia-technology-conference-.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 34,
+  "matched": 34,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 6,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
