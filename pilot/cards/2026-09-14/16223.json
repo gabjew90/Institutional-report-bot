@@ -1,0 +1,1170 @@
+{
+ "brief": "Goldman Sachs FICC and Equities sales view recapping the GS Tech and Communacopia conference. Bottom line: AI is progressing from infrastructure buildout to measurable enterprise ROI to autonomous agents to physical-world deployment, which the author argues creates a larger and longer-duration opportunity than most investors model. Five themes. One, the conversation moved from capex to ROI, with management framing AI through business outcomes: ServiceNow cites roughly 90% of service cases resolved by AI and about $1bn of value creation, Visa 80% faster product design and build, SAP 30-35% development productivity gains. Two, infrastructure demand visibility keeps companies in early innings, with power and electricity rather than semiconductors the binding constraint: Nvidia reiterates a $3-4tn AI TAM by 2030 and about 70% CY27 growth, Broadcom reaffirms $115bn FY27 and $230bn FY28 AI revenue targets. Three, physical AI is the next demand cycle, which Cadence places 3 to 7 years out. Four, agentic AI becomes the next enterprise software architecture. Five, as foundation models commoditise, proprietary data, context and governance become the moat, so enterprise data owners benefit. These are conference takeaways and company disclosures, not Goldman forecasts.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs argues AI is progressing from infrastructure buildout to measurable enterprise ROI to autonomous agents and ultimately to physical-world deployment.",
+   "anchor": "that AI is progressing from infrastructure buildout, to measurable enterprise ROI, to autonomous agents,",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says the AI opportunity is much larger and longer in duration than most investors currently model.",
+   "anchor": "creating a much larger and longer-duration opportunity than most investors currently model.",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Virtually every AI infrastructure exposed company presenting at the conference said the sector remains in the early innings of spending.",
+   "anchor": "virtually every AI infrastructure exposed company presentation suggested we remain in the early innings",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Conference companies said the AI industry's key constraint is increasingly power and electricity rather than semiconductors.",
+   "anchor": "the industry's key constraint is increasingly power & electricity rather than semiconductors.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Nvidia reiterated an AI total addressable market of $3-4tn by 2030.",
+   "anchor": "AI TAM of $3-4tn by 2030 approximately 70% YoY growth expectation in CY27",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Nvidia reiterated an expectation of approximately 70% year-over-year growth in CY27.",
+   "anchor": "AI TAM of $3-4tn by 2030 approximately 70% YoY growth expectation in CY27",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Nvidia said AI infrastructure bottlenecks are power, packaging, memory and datacentres rather than customer demand.",
+   "anchor": "bottlenecks remain power, packaging, memory and datacentres rather than customer demand.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Broadcom reaffirmed an FY27 AI revenue target of $115bn.",
+   "anchor": "FY27 AI revenue target: $115bn FY28 AI revenue target: $230bn",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Broadcom reaffirmed an FY28 AI revenue target of $230bn.",
+   "anchor": "FY27 AI revenue target: $115bn FY28 AI revenue target: $230bn",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Broadcom said a 1GW AI cluster can theoretically generate roughly $30bn of revenue against approximately $10bn of annual operating costs.",
+   "anchor": "theoretically generate roughly $30bn of revenue against approximately $10bn of annual operating costs.",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "TSMC said customer demand visibility extends toward 2030.",
+   "anchor": "TSMC discussed customer demand visibility extending toward 2030",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "toward 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "TSMC said advanced packaging remains supply constrained despite large capacity expansion efforts.",
+   "anchor": "remains supply constrained despite enormous capacity expansion efforts.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Applied Materials expects 40% revenue growth in 2026.",
+   "anchor": "40% revenue growth in 2026 advanced packaging growth of roughly 70%",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Applied Materials expects advanced packaging growth of roughly 70%.",
+   "anchor": "40% revenue growth in 2026 advanced packaging growth of roughly 70%",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Applied Materials expects an advanced packaging run-rate approaching $2.5-3.0bn.",
+   "anchor": "advanced packaging growth of roughly 70% advanced packaging run-rate approaching $2.5-3.0bn.",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cisco grew AI hyperscaler orders from virtually zero to $9.3bn.",
+   "anchor": "Cisco grew AI hyperscaler orders from virtually zero to $9.3bn.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Dell disclosed a $9.5bn AI server backlog.",
+   "anchor": "$9.5bn AI server backlog over $13bn already converted storage revenue growth of 26%.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Dell disclosed that over $13bn of AI server orders has already been converted.",
+   "anchor": "$9.5bn AI server backlog over $13bn already converted storage revenue growth of 26%.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Dell disclosed storage revenue growth of 26%.",
+   "anchor": "$9.5bn AI server backlog over $13bn already converted storage revenue growth of 26%.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says the conference narrative challenged the notion that AI capex is approaching maturity.",
+   "anchor": "The narrative strongly challenged the notion that AI capex is approaching maturity.",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Most AI infrastructure companies described long-duration bottlenecks around power, construction and deployment rather than any weakening of demand.",
+   "anchor": "Most infrastructure companies described long-duration bottlenecks around power, construction and deployment rather than any weakening of demand.",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "The biggest shift at the conference was that AI is discussed as an economic investment rather than a technology investment.",
+   "anchor": "AI is no longer being discussed as a technology investment, but as an economic investment.",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Management teams at the conference framed AI through measurable business outcomes, customer ROI and value creation.",
+   "anchor": "management teams consistently framed AI through the lens of measurable business outcomes, customer ROI and value creation.",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "The most striking AI ROI examples at the conference came from enterprise software large caps.",
+   "anchor": "The most striking examples came from enterprise software large caps",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Microsoft said customer conversations are no longer about model selection but about outcome optimisation and ROI maximisation.",
+   "anchor": "Microsoft repeatedly emphasised that customer conversations are no longer about model selection but about outcome optimisation and ROI maximisation.",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Microsoft said enterprises care less about whether OpenAI, Anthropic or Meta powers a workload than whether the workload creates economic value.",
+   "anchor": "Enterprises increasingly care less about whether OpenAI, Anthropic or Meta powers the workload",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "ServiceNow has agentified 20 Level-1 roles internally.",
+   "anchor": "ServiceNow disclosed it has already \"agentified\" 20 Level-1 roles internally",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "ServiceNow said AI now resolves roughly 90% of its customer and employee service cases.",
+   "anchor": "with AI now resolving roughly 90% of customer and employee service cases",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "ServiceNow said internal AI adoption generated approximately $1bn of value creation.",
+   "anchor": "generating approximately $1bn of value creation and saving 2.5m hours of labour.",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "ServiceNow said internal AI adoption saved 2.5m hours of labour.",
+   "anchor": "generating approximately $1bn of value creation and saving 2.5m hours of labour.",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Snowflake said customers are achieving savings in invoice processing, supply chain optimisation and machine learning workflows.",
+   "anchor": "Snowflake discussed customers achieving tangible savings in invoice processing, supply chain optimisation and machine learning workflows",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Snowflake said even a 1% efficiency gain on approximately $10bn of annual payments can be economically meaningful.",
+   "anchor": "even a 1% efficiency gain on approximately $10bn of annual payments can be economically meaningful.",
+   "topic": "AI software monetization",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Visa achieved an 80% reduction in product design and build times through internal GenAI adoption.",
+   "anchor": "80% reduction in product design and build times 80% increase in code commits",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Visa achieved an 80% increase in code commits through internal GenAI adoption.",
+   "anchor": "80% reduction in product design and build times 80% increase in code commits",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Visa achieved 65% faster feature deployment through internal GenAI adoption.",
+   "anchor": "80% increase in code commits 65% faster feature deployment",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "SAP noted a 30-35% improvement in development productivity from internal AI use.",
+   "anchor": "30-35% improvement in development productivity ~20% productivity gains in finance and HR",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "SAP noted approximately 20% productivity gains in finance and HR from internal AI use.",
+   "anchor": "30-35% improvement in development productivity ~20% productivity gains in finance and HR",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "SAP said 80,000 of its 100,000 employees are already actively using Joule internally.",
+   "anchor": "80,000 of 100,000 employees already actively using Joule internally.",
+   "topic": "AI software monetization",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says the market is transitioning from an AI infrastructure story to an AI monetisation story.",
+   "anchor": "The market is transitioning from an AI infrastructure story to an AI monetisation story.",
+   "topic": "AI software monetization",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says the winners over the next several years will increasingly be companies demonstrating measurable productivity gains rather than those buying the most GPUs.",
+   "anchor": "The winners over the next several years may increasingly be the companies demonstrating measurable productivity gains",
+   "topic": "AI software monetization",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next several years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs calls physical AI the next frontier and a trillion dollar opportunity.",
+   "anchor": "Physical AI is the next frontier & Trillion $$ Oppty.",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Management teams from Nvidia, TSMC, Applied Materials and Cadence independently converged on physical AI as the next major growth phase.",
+   "anchor": "A surprising number of management teams (Nvidia, TSMC, Applied Materials, Cadence & others) independently converged",
+   "topic": "physical AI opportunity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Nvidia's CEO said autonomous vehicles, robotics and industrial automation are becoming the next major growth vectors.",
+   "anchor": "argued how autonomous vehicles, robotics and industrial automation are becoming the next major growth vectors",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Nvidia framed the AI journey as progressing from generative AI to agentic AI to physical AI.",
+   "anchor": "as the AI journey progresses from: Generative AI Agentic AI Physical AI",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "SpaceX presented a vision of orbital compute and Starlink-enabled machine connectivity.",
+   "anchor": "SpaceX perhaps provided the boldest vision: orbital compute Starlink-enabled machine connectivity",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "SpaceX presented a vision of autonomous systems and humanoid robotics running physical AI at global scale.",
+   "anchor": "autonomous systems humanoid robotics physical AI operating at global scale.",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cadence believes physical AI could become the next dominant demand cycle within 3-7 years.",
+   "anchor": "Cadence believes physical AI could become the next dominant demand cycle within 3-7 years",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3-7 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cadence says physical AI requires dramatically more simulation, verification and semiconductor content as robots and autonomous systems move into production.",
+   "anchor": "dramatically more simulation, verification and semiconductor content as robots and autonomous systems move into production.",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cadence highlighted projections for chip complexity to increase roughly 48x over the next five years.",
+   "anchor": "Management highlighted projections for chip complexity to increase roughly 48x over the next five years.",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cisco views physical AI as an incremental networking demand driver on top of existing AI infrastructure growth.",
+   "anchor": "Cisco similarly views physical AI as an incremental networking demand driver layered on top of existing AI infrastructure growth.",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Dell highlighted robotics and physical-world AI as future drivers of storage demand.",
+   "anchor": "Dell highlighted robotics and physical-world AI as future drivers of storage demand.",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says investors may still be underwriting AI primarily as a software and datacentre story.",
+   "anchor": "Investors may still be underwriting AI primarily as a software and datacentre story.",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says the next decade could be defined by the migration of intelligence into the physical economy, creating a second wave of demand for chips, networking, compute and industrial automation.",
+   "anchor": "the next decade could be defined by the migration of intelligence into the physical economy",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next decade"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Nearly every software and cybersecurity company at the conference described a future where software becomes autonomous rather than interactive.",
+   "anchor": "Nearly every software & cybersec company discussed a future where software becomes autonomous, not interactive.",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Databricks said nearly every CEO views AI as critical yet almost none have deployed thousands of agents across business workflows.",
+   "anchor": "nearly every CEO views AI as critical, yet almost none have deployed thousands of agents across business workflows.",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Snowflake argued future applications will no longer resemble traditional software.",
+   "anchor": "Snowflake argued that future applications will no longer resemble traditional software.",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Snowflake said future applications become collections of permissions, workflows, data services and autonomous agents operating continuously on enterprise data.",
+   "anchor": "permissions workflows data services autonomous agents operating continuously on enterprise data.",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "SAP plans to have 400 enterprise agents available by year-end, built around complex operational workflows rather than chatbots.",
+   "anchor": "SAP plans to have 400 enterprise agents available by year-end",
+   "topic": "agentic AI adoption",
+   "status": "target",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cisco said AI agents consume roughly 450% more network bandwidth than humans.",
+   "anchor": "AI agents consume roughly 450% more network bandwidth than humans",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cisco said AI token consumption already exceeds human consumption.",
+   "anchor": "AI token consumption already exceeds human consumption",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Cisco said agents now account for roughly 60% of token volume.",
+   "anchor": "exceeds human consumption agents now account for roughly 60% of token volume.",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "CrowdStrike said customers are already operating approximately 90 AI agents per team.",
+   "anchor": "CrowdStrike highlighted that customers are already operating approximately 90 AI agents per team",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "CrowdStrike launched Guardian to monitor agent behaviour and permissions.",
+   "anchor": "launched Guardian specifically to monitor agent behaviour and permissions.",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says agentic computing may be the defining software architecture of the next decade.",
+   "anchor": "agentic computing may be the defining architecture of the next decade.",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next decade"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says the software stack is evolving from systems of record to systems of autonomous execution.",
+   "anchor": "evolving from systems of record to systems of autonomous execution.",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Conference consensus was that foundation models are becoming commoditised while proprietary data, context, governance and workflow integration become more valuable.",
+   "anchor": "foundation models are becoming increasingly commoditised, while proprietary data, context, governance and workflow integration are becoming more valuable.",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Software and cybersecurity management teams argued enterprises do not have an AI model problem but a context problem.",
+   "anchor": "argued that enterprises do not have an AI model problem. They have a context problem.",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Snowflake said the future moat is not data storage but governance, security, workflow orchestration and trusted enterprise data layers.",
+   "anchor": "the future moat is not data storage. Instead, competitive advantage comes from governance, security, workflow orchestration",
+   "topic": "enterprise AI data moat",
+   "status": "forecast",
+   "instruments": [
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Databricks described its future around ontologies, indexing layers and governance infrastructure.",
+   "anchor": "Databricks described its future around ontologies, indexing layers and governance infrastructure",
+   "topic": "enterprise AI data moat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Databricks' AI Gateway automatically routes workloads across models while maintaining auditability and security controls.",
+   "anchor": "its AI Gateway automatically routing workloads across models while maintaining auditability and security controls.",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says SAP showed perhaps the deepest enterprise context layer discussed at the conference.",
+   "anchor": "SAP highlighted perhaps the deepest enterprise context layer discussed at the conference",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "SAP's enterprise context layer covers 7 million ERP data objects.",
+   "anchor": "7 million ERP data objects enterprise semantic layers governance frameworks 400 planned AI agents all",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "ServiceNow described its CMDB as a rich context engine for enterprise AI decisions.",
+   "anchor": "ServiceNow described its CMDB as a \"rich context engine\" tracking:",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "ServiceNow's CMDB tracks 100 billion workflows and trillions of transactions.",
+   "anchor": "100 billion workflows trillions of transactions providing the knowledge structure required for enterprise AI",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "CrowdStrike cited over a decade of annotated security data as its primary AI advantage.",
+   "anchor": "CrowdStrike pointed to over a decade of annotated security data as its primary AI advantage",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "CrowdStrike said its remediation costs are roughly $0.03 per activity versus approximately $10 for frontier models at similar outcomes.",
+   "anchor": "remediation costs of roughly $0.03 per activity versus approximately $10 for frontier models",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Palo Alto Networks cited 180 million deployed sensors as a core competitive moat.",
+   "anchor": "180 million deployed sensors 19 petabytes of daily data processing as the core competitive moat",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Palo Alto Networks cited 19 petabytes of daily data processing as a core competitive moat.",
+   "anchor": "180 million deployed sensors 19 petabytes of daily data processing as the core competitive moat",
+   "topic": "enterprise AI data moat",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says the market is moving from the best model wins to the best context wins.",
+   "anchor": "The market increasingly appears to be moving from \"the best model wins\" to \"the best context wins.\"",
+   "topic": "enterprise AI data moat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Tech & Communacopia Conference Top Themes",
+   "claim": "Goldman Sachs says enterprise data owners may prove more durable beneficiaries of AI than many expect.",
+   "anchor": "Enterprise data owners may prove more durable beneficiaries of AI than many expect.",
+   "topic": "enterprise AI data moat",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16223__gs-tech-communacopia-conference-top-themes.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 80,
+  "matched": 80,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
