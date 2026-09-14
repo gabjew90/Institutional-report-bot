@@ -1,0 +1,130 @@
+{
+ "brief": "Argues AI's binding constraint is shifting from power supply to permitting: existing data-center hubs face rising local resistance from power bills, grid strain and land use, while other regions still want the investment, so the buildout relocates rather than slows. A parallel permission layer applies to frontier AI deployment: Amodei is not calling for training to stop, but for tighter safety gates and independent evaluation, so infrastructure build can continue even as deployment becomes more regulated. Goldman expects MISO's data-center market share to reach around 16% by 2030, overtaking ERCOT's approximately 14% to become the second-largest US market. Morgan Stanley estimates around 70% of Americans oppose local data-center construction, roughly 500 jurisdictions have introduced bans or moratoriums, about $156bn of projects were cancelled or delayed in 2025 and another $130bn were affected in Q1 2026. Morgan Stanley also estimates AI infrastructure added around 0.36 percentage points to annualized US real GDP growth in H1 2026, and warns that if permission slows construction before AI-adoption productivity gains arrive, the US risks losing part of that capex impulse. Trade: favor already-powered, permitted, contracted capacity over announced pipelines.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "Amodei is calling for tighter safety gates and independent evaluation of frontier AI models rather than a halt to model training.",
+   "anchor": "Amodei is not calling for model training to stop, but for tighter safety gates and independent",
+   "topic": "AI power trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "Goldman expects MISO's share of the US data-center market to reach around 16% by 2030, overtaking ERCOT's approximately 14% share to become the second-largest market.",
+   "anchor": "Goldman expects MISO\u2019s share to reach around 16% by 2030, overtaking ERCOT at approximately 14%",
+   "topic": "AI power trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "Around 70% of Americans oppose data-center construction in their local communities.",
+   "anchor": "Around 70% of Americans oppose data-center construction in their local communities",
+   "topic": "data center political backlash",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "Roughly 500 jurisdictions have introduced bans or moratoriums on data-center construction.",
+   "anchor": "roughly\n500 jurisdictions have introduced bans or moratoriums",
+   "topic": "data center political backlash",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "Morgan Stanley estimates that around $156bn of data-center projects were cancelled or delayed in 2025.",
+   "anchor": "Morgan Stanley estimates that around $156bn of projects were cancelled or delayed in 2025",
+   "topic": "data center political backlash",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2025"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "Morgan Stanley estimates that another $130bn of data-center projects were affected during Q1 2026.",
+   "anchor": "another $130bn affected during Q1 2026",
+   "topic": "data center political backlash",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q1 2026"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "Morgan Stanley estimates AI infrastructure contributed around 0.36 percentage points to annualized US real GDP growth during H1 2026.",
+   "anchor": "Morgan Stanley estimates that AI infrastructure contributed around 0.36ppt to annualized US real GDP",
+   "topic": "US growth outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "H1 2026"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "AI\u2019s Next Bottleneck Isn\u2019t Power. It\u2019s Permission.",
+   "claim": "The document frames the data-center trade as owning entitled, already-permitted operating megawatts rather than merely announced ('PowerPoint') megawatts.",
+   "anchor": "The trade is increasingly entitled megawatts versus PowerPoint megawatts.",
+   "topic": "AI power trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16285__ai-s-next-bottleneck-isn-t-power-it-s-permission.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
