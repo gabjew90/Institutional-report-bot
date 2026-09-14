@@ -1,0 +1,133 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-09-14T14:07:45.585932Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=140; anchors 286/292 matched, 0 empty, 1 too_short (rate=0.979)",
+   "at": "2026-09-14T14:07:58.952408Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-09-14T14:20:04.852864Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "1 hard issue(s)",
+   "at": "2026-09-14T14:27:26.225987Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-09-14T14:28:38.368095Z"
+  },
+  "final_validate": {
+   "decision": "DISPATCH_FIXUP",
+   "detail": "1 EDIT/SCRUB-introduced hard violation(s); violations at /tmp/final_fixup_violations.json; after FIXUP run: gate final_validate --recheck",
+   "at": "2026-09-14T14:28:40.873271Z"
+  },
+  "final_validate_recheck": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-09-14T14:30:04.239451Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-09-14T14:30:07.183359Z"
+  },
+  "adversarial": {
+   "decision": "DISPATCH_REPAIR",
+   "detail": "3 hard finding(s), 1 soft; repair 1/2; items at adversarial_repair_items.json; after the repair agent, RE-DISPATCH the checker fresh, then run: gate adversarial --recheck",
+   "at": "2026-09-14T14:35:49.201560Z"
+  },
+  "adversarial_recheck": {
+   "decision": "CONTINUE_WITH_RESIDUAL",
+   "detail": "1 hard finding(s) after 2 repair pass(es) -- shipping CLEAN (owner call B); residuals at adversarial_residuals.json; the bridge pages the owner at post time",
+   "at": "2026-09-14T14:48:28.419007Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-09-14T14:48:30.727918Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 1,
+  "adversarial_repairs": 2
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-09-14T14:07:45.585932Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-09-14T14:07:58.952408Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-09-14T14:18:56.370009Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-09-14T14:20:04.852864Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "DISPATCH_SCRUB",
+   "at": "2026-09-14T14:27:26.225987Z"
+  },
+  {
+   "gate": "scrub_relint",
+   "decision": "CONTINUE",
+   "at": "2026-09-14T14:28:38.368095Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "DISPATCH_FIXUP",
+   "at": "2026-09-14T14:28:40.873271Z"
+  },
+  {
+   "gate": "final_validate_recheck",
+   "decision": "CONTINUE",
+   "at": "2026-09-14T14:30:04.239451Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-09-14T14:30:07.183359Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "DISPATCH_REPAIR",
+   "at": "2026-09-14T14:35:49.201560Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "DISPATCH_REPAIR",
+   "at": "2026-09-14T14:43:07.331530Z"
+  },
+  {
+   "gate": "adversarial_recheck",
+   "decision": "CONTINUE_WITH_RESIDUAL",
+   "at": "2026-09-14T14:48:28.419007Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-09-14T14:48:30.727918Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
