@@ -1,0 +1,117 @@
+{
+ "brief": "Goldman's model estimates CTAs sold $16bn of global equities last week, cutting net positioning to $123bn, the 75th percentile of the past year, as shorter-term trend signals neutralized or reversed. GS expects CTAs to sell another $19.5bn of global equities this week at current price and volatility levels. GS flags CTA downside convexity could turn aggressive if key SPX futures thresholds break: 7,642 short term, 7,399 medium term, 6,902 long term. Systematics are running large longs, so a break below those thresholds combined with a volatility pop could abruptly trigger the downside scenario. Separately, the corporate buyback blackout begins this week, with roughly 40% of S&P 500 companies expected to enter blackout periods, typically tempering one of the market's most consistent sources of demand. TME notes SPX remains stuck in the middle of a months-long range, with 7,600 in futures a major level near the 100-day moving average; it says to trust the current support levels or prepare for a potential supply shock from the systematic crowd.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "a little lower could become a lot lower",
+   "claim": "CTAs sold $16bn of global equities last week, reducing net positioning to $123bn, the 75th percentile over the past year.",
+   "anchor": "sold $16bn of global equities last week, reducing net positioning to $123bn, the 75th percentile over the past year",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "a little lower could become a lot lower",
+   "claim": "CTAs are expected to sell another $19.5bn of global equities this week at current price and volatility levels.",
+   "anchor": "CTAs are expected to sell another $19.5bn of global equities this week",
+   "topic": "US equity positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "a little lower could become a lot lower",
+   "claim": "CTA downside convexity key thresholds are 7,642 short term, 7,399 medium term, and 6,902 long term.",
+   "anchor": "Key thresholds are: short term, 7,642; medium term, 7,399; and long term, 6,902",
+   "topic": "US equity positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "a little lower could become a lot lower",
+   "claim": "Systematics are running large longs, and a break below CTA threshold levels combined with a pop in volatility could abruptly trigger the downside scenario.",
+   "anchor": "Systematics are running large longs. A break below CTA threshold levels, combined with a pop in volatility, could trigger the downside scenario rather abruptly",
+   "topic": "US equity positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "a little lower could become a lot lower",
+   "claim": "The corporate buyback blackout begins this week, with approximately 40% of S&P 500 companies expected to enter blackout periods.",
+   "anchor": "The corporate buyback blackout begins this week. Approximately 40% of S&P 500 companies are expected to enter blackout periods",
+   "topic": "US equity positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "a little lower could become a lot lower",
+   "claim": "The 7,600 area in SPX futures is a major level, particularly with the 100-day moving average sitting slightly below it.",
+   "anchor": "The 7,600 area in futures is a major level, particularly with the 100-day MA sitting slightly below",
+   "topic": "US equity positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "a little lower could become a lot lower",
+   "claim": "SPX is approaching shorter-term support, and traders should trust the levels or prepare for a potential supply shock from the systematic crowd.",
+   "anchor": "but we are approaching shorter-term support. Trust the levels, or prepare for a potential supply shock from the systematic crowd",
+   "topic": "US equity positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16286__a-little-lower-could-become-a-lot-lower.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 7,
+  "matched": 7,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
