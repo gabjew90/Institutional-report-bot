@@ -1,0 +1,75 @@
+{
+ "unread_source_files_at_edit": 2,
+ "given_up_at_edit": 2,
+ "pack": {
+  "documents": 38,
+  "cards": 1820
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": false,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 111,
+  "brief_citations": 3,
+  "distinct_cards_cited": 107,
+  "card_count": 1820,
+  "quintiles": [
+   21,
+   24,
+   20,
+   25,
+   21
+  ],
+  "edge_quintile_share": 0.378,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "If $SMH keeps sliding toward that 200-day line, the safety debate has turned into a spending debate.",
+    "cite": "",
+    "reason": "figures with no card citation: ['200']"
+   },
+   {
+    "sentence": "The 10-year rose 18.5 basis points to 4.97%, its biggest weekly move since May [c264], the 2-year added 25.9bp to 4.63% in the largest weekly jump since April 2025 [c261][c262], and German 10-year yie",
+    "cite": "c264,c261,c262,c265",
+    "reason": "figures not in cited card(s): ['18.5']"
+   },
+   {
+    "sentence": "Brent is back above $107 after Saudi Arabia shut its East-West pipeline following a drone attack [c1091][c1106], the route that carries 4 to 5 million barrels a day around the Strait of Hormuz [c1153]",
+    "cite": "c1091,c1106,c1153",
+    "reason": "figures not in cited card(s): ['107']"
+   },
+   {
+    "sentence": "New York enacted a state-level pause in July, Texas ordered a review and froze new grid connections, about 500 jurisdictions have passed bans or moratoriums and 14 more states are considering them [c6",
+    "cite": "c644,c645,c646,c647",
+    "reason": "figures not in cited card(s): ['14m']"
+   },
+   {
+    "sentence": "Roughly $156bn of projects were cancelled or delayed in 2025 and another $130bn was affected in the first quarter of this year [c648][c649].",
+    "cite": "c648,c649",
+    "reason": "figures not in cited card(s): ['130bn', '156bn']"
+   },
+   {
+    "sentence": "The forecasts are unusually far apart: BofA sees 153 by September and 149 by December [c1340] against Goldman carrying 163 at end-2026 [c1364].",
+    "cite": "c1340,c1364",
+    "reason": "figures not in cited card(s): ['149', '153']"
+   },
+   {
+    "sentence": "The larger issue is that 10-year Japanese government bond yields near 3% make domestic bonds competitive again [c1573], which would take Japan out of the market as the marginal buyer of everyone else'",
+    "cite": "c1573,c282",
+    "reason": "figures not in cited card(s): ['3%m']"
+   },
+   {
+    "sentence": "The VIX sits at 15 with the one-week S&P straddle priced at 130 basis points [c1707], and there have been 27 consecutive sessions without an intraday range wider than 1% [c1711].",
+    "cite": "c1707,c1711",
+    "reason": "figures not in cited card(s): ['1%', '130']"
+   }
+  ],
+  "leans": 0,
+  "leans_block_present": false,
+  "word_count": 1743
+ }
+}
