@@ -1,0 +1,1835 @@
+{
+ "brief": "Goldman's recap of day three of its Communacopia and Technology conference, drawing on its research, European TMT and sales and trading desks. The through-line is that AI demand is broadening while supply stays tight, so the binding constraint has moved downstream from chips to power, land and datacenter capacity, and Goldman's own view is that downstream constraints matter more at the margin. Nvidia reiterated $3-4tn of AI infrastructure spending by 2030, reaffirmed roughly 70% CY27 growth, argued lower inference costs expand adoption, and rejected the circular financing framing of its guarantees. That tightness feeds the supply chain: 8-10 new fabs in 2027 support wafer fab equipment acceleration, Lam calls the industry sold out with DRAM leading 2027 spend, Seagate sees pricing and the HAMR transition carrying earnings through FY27. The note then reports, without resolving, the central debate. Bottom-up indicators are constructive, but investors remain hesitant to re-commit to the AI infrastructure trade, customers are shifting from token maxing to ROI-led token optimising, and proof is still needed that capex converts into durable revenue, margins and cash flow. Cybersecurity, agent-led software and single-company updates fill out the day.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia CEO Jensen Huang reiterated an outlook for AI infrastructure spending of $3tn to $4tn in 2030.",
+   "anchor": "reiterating his outlook of AI infrastructure spending of $3 - $4tn in 2030",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia management reaffirmed its expectation for roughly 70% year-over-year growth in calendar 2027 despite ongoing supply tightness.",
+   "anchor": "management reaffirmed its expectation for ~70% YoY growth in CY27",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia said upstream and downstream supply constraints remain significant.",
+   "anchor": "Mr. Huang noted that upstream and downstream supply constraints remain significant",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman's view is that downstream AI supply constraints, meaning land, power and datacenter capacity, could be more significant than upstream component constraints.",
+   "anchor": "On the margin, our view is that downstream constraints could be more significant",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia said the bottleneck on AI growth has shifted from chips to power.",
+   "anchor": "the bottleneck has shifted from chips to power",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia argued that the returns generated and the variety of investment partners in its financial guarantees are inconsistent with the notion of circular financing.",
+   "anchor": "the ultimate returns generated and variety of investment partners involved are inconsistent with the notion of circular financing",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia argued AI infrastructure is becoming a productive asset, with Nvidia systems now used to secure loans and financing.",
+   "anchor": "Nvidia systems are now being used to secure loans and financing",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia said slowing Moore's Law increases the value of its integrated hardware, software and networking stack and lets it capture a growing share of AI capex.",
+   "anchor": "Slowing Moore's Law is increasing the value of its tightly integrated hardware, software and networking stack",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia said lower inference costs should drive more AI adoption rather than reduce demand.",
+   "anchor": "lower inference costs should drive more AI adoption rather than reduce demand",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman believes conference commentary around 8 to 10 new fabs coming online in 2027 supports acceleration in wafer fab equipment spending.",
+   "anchor": "around 8-10 new fabs coming online in 2027 is supportive of WFE acceleration",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Semiconductor companies at the conference reported increased orders and backlog giving visibility described as historically unprecedented.",
+   "anchor": "driving visibility that was broadly described as historically unprecedented",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "AI inference is driving structurally higher data usage for context windows, which is driving higher mass storage demand.",
+   "anchor": "AI inference is driving structurally higher levels of data usage for context windows",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research expects DRAM to be the largest driver of wafer fab equipment growth in 2027, followed by leading-edge foundry and logic and NAND.",
+   "anchor": "Lam Research expects DRAM to be the largest driver of WFE growth in 2027",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research said cleanroom availability is a key capacity constraint, with additional capacity coming online through the end of 2027.",
+   "anchor": "cleanroom availability remains a key capacity constraint, with additional capacity expected to come online through the end of 2027",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through end 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research said each incremental 100k wafer starts can expand its served addressable market by roughly $1bn.",
+   "anchor": "each incremental 100k wafer starts can expand its SAM by roughly $1bn",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research expects mix, localized manufacturing and higher pricing to take gross margins close to the mid-50% range over the next several years.",
+   "anchor": "take gross margins close to mid-50% range over the next several years",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next several years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research CFO Doug Bettinger called the semiconductor equipment industry fundamentally sold out and said leadership is more concerned about missing upside than managing a downturn.",
+   "anchor": "calling the industry \u201cfundamentally sold out\u201d and saying leadership is more concerned about missing the upside",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research said it is already deeply engaged with SpaceX's Terafab, which it described as a very large opportunity.",
+   "anchor": "Lam being \u201cdeeply engaged already\u201d with SpaceX\u2019s Terafab, described as a very large opportunity",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research said China wafer fab equipment spending is slightly up this year but declining as a share of the total.",
+   "anchor": "China WFE slightly up this year but declining as a share",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research disclosed a $3bn US lab and engineering investment including a new Oregon lab.",
+   "anchor": "a $3bn US lab and engineering investment including a new Oregon lab",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Lam Research reported momentum in its Customer Support Business Group driven by high wafer fab utilization, a NAND upgrade inflection and resilient mature-node investment.",
+   "anchor": "driven by high wafer-fab utilization rates, an inflection in NAND upgrade activity, and resilient mature-node investments",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Qnity reported advanced node sales grew 20% in the prior quarter.",
+   "anchor": "accelerating advanced node sales, which grew 20% in the prior quarter",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "prior quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Qnity said advanced packaging and AI printed circuit boards represent roughly 30% of its interconnect segment.",
+   "anchor": "continued strength in advanced packaging and AI PCBs, which represents ~30% of the segment",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Qnity guided its interconnect segment up mid-single-digit quarter-over-quarter in 3Q26.",
+   "anchor": "Qnity has guided for the segment to be up mid-single QoQ in 3Q26",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Qnity sees gross margins expanding toward the 50% range over the long term.",
+   "anchor": "The company sees gross margins expanding toward the 50% range over the long term",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate reported an approximately 11% year-over-year increase in price per exabyte last quarter.",
+   "anchor": "an ~11% YoY increase in price per exabyte last quarter",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate management sees storage pricing momentum sustained through FY27.",
+   "anchor": "management sees sustained momentum through FY27 following an ~11% YoY increase in price per exabyte",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate said HAMR volumes remain on track to cross over PMR on an exabyte basis by the end of calendar 2026.",
+   "anchor": "remain well on track to cross over PMR on an exabyte basis by the end of CY26",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "end of CY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate expects HAMR to represent 80% to 90% of its volume in a few years.",
+   "anchor": "Seagate expects HAMR to represent 80%-90% of its volume in a few years",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "a few years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate expects sequential increases in both revenue and EPS throughout FY27.",
+   "anchor": "Management continues to expect sequential increases for both revenue and EPS throughout FY27",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman expects Seagate to deliver at least 70% incremental gross margins during FY27.",
+   "anchor": "we expect it to deliver at least 70% incremental gross margins during the period",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate said it views node transitions rather than higher unit shipments as sufficient for appropriate exabyte growth in the near term.",
+   "anchor": "it views node transitions, rather than higher unit shipments, as sufficient for appropriate exabyte growth",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Credo guided to approximately 20% quarter-over-quarter revenue growth in fiscal 3Q and approximately 30% in fiscal 4Q.",
+   "anchor": "guiding to ~20% QoQ revenue growth in FY3Q and ~30% QoQ growth in FY4Q",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "CRDO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY3Q and FY4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Credo expects FY27 gross margins to remain consistent with FY26.",
+   "anchor": "Management expects FY27 gross margins to remain consistent with FY26",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "CRDO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Credo expects operating expenses to grow approximately 55% year-over-year in FY27 before trending toward a more normalized revenue-to-OpEx ratio.",
+   "anchor": "OpEx is expected to grow ~55% YoY in FY27 before trending toward a more normalized revenue-to-OpEx ratio",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "CRDO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Credo said its Active LED Cables extend reach from about 7m to about 30m while reducing cable volume by roughly 75% versus active electrical cables.",
+   "anchor": "extend reach from ~7m to ~30m with comparable reliability, while reducing cable volume by ~75%",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "CRDO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Credo expects Active LED Cables to launch at OCP next month, enter customer qualification, then reach volume production in FY28.",
+   "anchor": "ALCs are expected to launch at OCP next month and enter customer qualification thereafter",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "CRDO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next month to FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "STMicroelectronics is seeing strong data centre and infrastructure demand but says supply remains constrained by long equipment lead times.",
+   "anchor": "STM is seeing strong demand from data centre and infrastructure markets, but supply remains constrained",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "STM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "STMicroelectronics said around 40% of revenue already comes from engaged customer programmes, with a target of 60% by 2027.",
+   "anchor": "Around 40% of revenue already comes from engaged customer programmes",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [
+    "STM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "STMicroelectronics targets 60% of revenue from engaged customer programmes by 2027.",
+   "anchor": "engaged customer programmes, with a target of 60% by 2027",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "STM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "SpaceX reiterated its expectation to earn between $30bn and $50bn per gigawatt in 2027 and said it is currently operating at the upper end of that range.",
+   "anchor": "reiterated its prior expectation to earn between $30-50bn/GW in 2027",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "SpaceX said it has increased confidence in reaching a $100bn total revenue annualized run rate by year-end.",
+   "anchor": "increased confidence into reaching $100bn total revenue annualized run rate by year-end",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "SpaceX said it has line of sight to more than 2GW of total compute by end 2026 and 5GW to 10GW by end 2027.",
+   "anchor": "line of sight into scaling to north of 2GWs of total compute by YE26 and between 5-10GWs by YE27",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YE26 to YE27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "SpaceX announced the closing of a new compute licensing deal earlier this month.",
+   "anchor": "announced the closing of a new compute licensing deal earlier this month",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "SpaceX plans to deploy AI satellites in 2027 and sees potential to reach cost parity with terrestrial compute sooner than expected.",
+   "anchor": "plans to deploy AI satellites in 2027 and potential to reach cost parity vs. terrestrial compute",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "The Goldman trader said constraints across power, memory, datacentre buildout and capacity could keep the market tight until 2028.",
+   "anchor": "constraints across power, memory, datacentre buildout and capacity could keep the market tight until 2028",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "until 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Investors remain hesitant to fully re-commit to the AI infrastructure trade despite constructive bottom-up indicators.",
+   "anchor": "investors remain hesitant to fully re-commit to the AI infrastructure trade",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Top-down investor concerns persist around volatility, rates, geopolitics, policy uncertainty and the law of large numbers.",
+   "anchor": "yet top-down concerns persist around volatility, rates, geopolitics, policy uncertainty and the law of large numbers",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "AI customers are shifting from token maxing to ROI-led token optimising.",
+   "anchor": "customers are shifting from \u201ctoken maxing\u201d to ROI-led \u201ctoken optimising\u201d",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman European TMT specialist Sean Johnstone said AI demand is broadening across the stack but investors still need proof that capex converts into durable revenue, margins and cash flow.",
+   "anchor": "investors still need proof that capex converts into durable revenue, margins and cash flow",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia and SpaceX framed AI compute as a new industrial asset class.",
+   "anchor": "Nvidia and SpaceX framed AI compute as a new industrial asset class",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "The overall message from day three of the Goldman technology conference was decidedly bullish.",
+   "anchor": "conference presentations was, just like after day 1 and 2, \u201cdecidedly bullish.\u201d",
+   "topic": "AI compute demand",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia CEO Jensen Huang is bullish on physical AI, with self-driving cars as an existing use case.",
+   "anchor": "Mr. Huang is bullish on physical AI, with self-driving cars as an existing use case",
+   "topic": "physical AI opportunity",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia expects the next physical AI inflection to come from reasoning-based manipulation systems roughly two years away.",
+   "anchor": "come from reasoning-based manipulation systems, which he believes is roughly two years away",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "roughly two years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia sees 6G-enabled systems as another physical AI use case.",
+   "anchor": "also sees 6G-enabled systems as another Physical AI use case",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Uber has an ambition to become the leading autonomous vehicle commercialisation platform by 2028 to 2029.",
+   "anchor": "ambition to become the leading AV commercialisation platform by 2028-29",
+   "topic": "physical AI opportunity",
+   "status": "target",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028-29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "T-Mobile US says low-latency edge and physical AI use cases should make network quality a bigger differentiator.",
+   "anchor": "low-latency edge and physical AI use cases should make network quality a bigger differentiator",
+   "topic": "physical AI opportunity",
+   "status": "forecast",
+   "instruments": [
+    "TMUS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia CEO Jensen Huang sees cyber security as a major AI opportunity.",
+   "anchor": "GenAI applications today and sees cyber security as a major AI opportunity",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Palo Alto Networks CEO Nikesh Arora said the AI security industry has not even been built yet.",
+   "anchor": "the AI security industry has not even been built yet",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "The combined market cap of Palo Alto Networks and CrowdStrike is around $490bn versus AI companies in the trillions.",
+   "anchor": "the market cap of the 2 is circa.$490bn vs. AI companies in the trillions",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "PANW",
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Palo Alto Networks and CrowdStrike both argued for more automation, model diversity and platform consolidation in security.",
+   "anchor": "with Palo Alto and CrowdStrike both arguing for more automation, model diversity and platform consolidation",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "PANW",
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Palo Alto Networks has approximately 180m deployed sensors and processes 19PB of data daily, creating a data and training moat.",
+   "anchor": "approximately 180m deployed sensors and 19PB of data processed daily, which creates a data and training moat",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Palo Alto Networks said a projected $5 trillion investment in compute over the next five years will increase network traffic requiring inspection.",
+   "anchor": "the projected $5 trillion investment in compute over the next five years will lead to a massive increase in network traffic",
+   "topic": "AI cybersecurity demand",
+   "status": "forecast",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Palo Alto Networks argued a multi-model AI strategy is essential because different models uncover different vulnerabilities.",
+   "anchor": "a multi-model AI strategy is essential, as different models, including Mythos, OpenAI and others, uncover different vulnerabilities",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Palo Alto Networks said AI is highly effective for mainstream security tasks but still struggles with edge cases and contextual understanding.",
+   "anchor": "while AI is highly effective for mainstream security tasks, it still struggles with edge cases",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "CrowdStrike cited remediation costs of roughly $0.03 per activity versus $10 for frontier model alternatives at similar results.",
+   "anchor": "citing remediation costs of roughly $0.03 per activity versus $10 for frontier alternatives",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "CrowdStrike reported 935 Flex deals and $2.3bn of flexibility commitments.",
+   "anchor": "with 935 Flex deals and $2.3bn of flexibility commitments",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "CrowdStrike said Flex deal volumes tripled last quarter.",
+   "anchor": "while Flex deal volumes tripled last quarter",
+   "topic": "AI cybersecurity demand",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "CrowdStrike said its key competitive advantage is 10 or more years of proprietary annotated security data.",
+   "anchor": "its 10+ years of proprietary, annotated security data",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "CrowdStrike said AI is accelerating rather than constraining security budgets, with CISOs investing to enable AI deployment.",
+   "anchor": "AI is accelerating rather than constraining security budgets, with CISOs increasingly investing",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "CrowdStrike sees growing risk from autonomous agentic attacks that exploit systems at unprecedented speed, driving demand for continuous AI-powered security.",
+   "anchor": "growing risks from autonomous \u201cagentic\u201d attacks that can exploit systems at unprecedented speed",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Mastercard said demand for cyber solutions continues to accelerate following the Recorded Future acquisition.",
+   "anchor": "Demand for cyber solutions continues to accelerate following the Recorded Future acquisition",
+   "topic": "AI cybersecurity demand",
+   "status": "level",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman European TMT specialist Sean Johnstone said the AI debate has moved from model capability to infrastructure scale, power, ROI and real enterprise adoption.",
+   "anchor": "the debate has moved from model capability to infrastructure scale, power, ROI and real enterprise adoption",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Shopify, Capgemini and Goldman Sachs' CIO pointed to agent-led workflows as the next software paradigm.",
+   "anchor": "pointed to agent-led workflows as the next software paradigm",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Nvidia CEO Jensen Huang highlighted coding as one of the most compelling generative AI applications today.",
+   "anchor": "Mr. Huang highlighted coding as one of the most compelling GenAI applications today",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "A venture capital panel said automation is pushing companies from product-led growth towards agent-led growth.",
+   "anchor": "pushing companies from product-led growth towards agent-led growth",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "A venture capital panel said rising token consumption is forcing enterprises to optimise inference costs by mixing frontier, open-weight and custom models.",
+   "anchor": "rising token consumption is forcing enterprises to optimise inference costs by mixing frontier, open-weight and custom models",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "A venture capital panel said the next technical frontier is world models moving AI beyond text into domain-specific reasoning.",
+   "anchor": "The next technical frontier is world models, where AI moves beyond text into domain-specific reasoning",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Adyen weakness is driven by US hedge fund concerns that Stripe Link and agentic personal-shopping agents could disintermediate it over time.",
+   "anchor": "US hedge fund concerns that Stripe Link and agentic personal-shopping agents could disintermediate Adyen over time",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman argues the Adyen disintermediation bear case is overstated because consumers can still transact normally with Adyen merchants.",
+   "anchor": "can still transact normally with Adyen merchants without using Stripe Link",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman expects agentic commerce to run on multiple payment rails and, per Shopify, to become another channel for retailers.",
+   "anchor": "agentic commerce is likely to run on multiple payment rails and, as Shopify noted, should simply become another channel for retailers",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "SHOP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Shopify sees AI as a major tailwind rather than a threat to its business.",
+   "anchor": "The company sees AI as a major tailwind rather than a threat",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [
+    "SHOP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Capgemini CEO Aiman Ezzat said AI should drive cost deflation in parts of the delivery model but the addressable market is expanding.",
+   "anchor": "While AI should drive cost deflation in parts of the delivery model, Ezzat argued the addressable market is expanding",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Capgemini expects open-weight models to gain adoption where customisation, observability and cost matter, sitting alongside proprietary frontier models rather than replacing them.",
+   "anchor": "open-source/open-weight models will gain adoption where customisation, observability and cost matter",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Capgemini reiterated guidance and appeared confident on medium-term organic growth.",
+   "anchor": "he reiterated guidance and appeared confident on medium-term organic growth",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "medium term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman Sachs CIO Marco Argenti said that for most enterprise AI use cases good enough is good enough and organisations should optimise for cost.",
+   "anchor": "for most enterprise use cases, \u201cgood enough is good enough\u201d, and organisations should optimise for cost",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Goldman Sachs CIO Marco Argenti said frontier models remain essential in trading, investing and cybersecurity where small performance advantages generate outsized outcomes.",
+   "anchor": "in highly competitive domains such as trading, investing and cybersecurity, where tiny performance advantages can generate outsized outcomes",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "MongoDB Atlas has sustained roughly 29% growth for five consecutive quarters.",
+   "anchor": "Atlas has sustained roughly 29% growth for five consecutive quarters",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "MongoDB Enterprise Advanced ARR has grown more than 10% for three consecutive quarters.",
+   "anchor": "Enterprise Advanced ARR has now grown more than 10% for three consecutive quarters",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "MongoDB said Voyage customer count nearly doubled quarter-over-quarter, acquired through coding agents.",
+   "anchor": "with Voyage customer count nearly doubling QoQ",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "QoQ"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "MongoDB sees AI-assisted modernisation tooling compressing migrations from 18 to 24 weeks down to 4 to 8 weeks.",
+   "anchor": "with tooling aimed at compressing migrations from 18-24 weeks to 4-8 weeks",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Datadog said AI-native customers are a major growth driver, adopting more products and growing workloads faster.",
+   "anchor": "AI-native customers as a major growth driver, noting they typically adopt more products",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Datadog expects the AI adoption cycle to prove more durable than the prior cloud cycle.",
+   "anchor": "The AI adoption cycle should prove more durable than the prior cloud cycle",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Datadog continues to spend roughly 30% of revenue, more than $1bn annually, on investment.",
+   "anchor": "spending roughly 30% of revenue (more than $1bn annually)",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [
+    "DDOG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "annual"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "EPAM said its AI-native service offerings drove over $160mn in sales in 2Q.",
+   "anchor": "which drove over $160mn in sales in 2Q",
+   "topic": "agentic AI adoption",
+   "status": "released",
+   "instruments": [
+    "EPAM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "EPAM expects 2026 generative AI revenue of at least $600mn.",
+   "anchor": "expects 2026 generative AI revenue of at least $600 mn",
+   "topic": "agentic AI adoption",
+   "status": "forecast",
+   "instruments": [
+    "EPAM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "EPAM said many customers approach agentic automation aiming to stay within the same budget envelopes, which it sees as a challenging dynamic.",
+   "anchor": "with a goal of remaining within the same budget envelopes, which it sees as a challenging dynamic",
+   "topic": "agentic AI adoption",
+   "status": "level",
+   "instruments": [
+    "EPAM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Mastercard said consumer and business spending trends remained strong through August with continued strength in travel, dining and entertainment.",
+   "anchor": "consumer and business spending trends remained strong through August, with continued strength across travel, dining and entertainment",
+   "topic": "US consumer pressure",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Mastercard said card-not-present spending is increasingly driven by recurring AI subscriptions, digital assets and other digitally native flows.",
+   "anchor": "card-not-present spending increasingly driven by recurring AI subscriptions, digital assets",
+   "topic": "US consumer pressure",
+   "status": "level",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Mastercard, Visa and Shopify all suggested spending trends remain broadly similar to the second quarter.",
+   "anchor": "Mastercard, Visa and Shopify all suggested trends remain broadly similar to Q2",
+   "topic": "US consumer pressure",
+   "status": "level",
+   "instruments": [
+    "MA",
+    "V",
+    "SHOP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Uber One members account for roughly 50% of total bookings and are growing 50% year-over-year.",
+   "anchor": "50% YoY, accounting for roughly 50% of total bookings",
+   "topic": "US consumer pressure",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Uber One now has more than 50m members.",
+   "anchor": "Uber One now has 50m+ members growing",
+   "topic": "US consumer pressure",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Uber said members spend 2 to 3 times more than non-members.",
+   "anchor": "members spend 2-3x more than non-members and are significantly more likely to engage",
+   "topic": "US consumer pressure",
+   "status": "level",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Uber's Grocery and Retail business is at a $15bn annualised run-rate growing more than 40% year-over-year.",
+   "anchor": "with the business now at a $15bn annualised run-rate growing 40%+ YoY",
+   "topic": "US consumer pressure",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Uber said sparse markets are growing 1.5 times faster than core markets.",
+   "anchor": "sparse markets are growing 1.5x faster than core markets",
+   "topic": "US consumer pressure",
+   "status": "released",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Intuit said small business health is stable, with cash reserves and hours worked trending positively across customer cohorts.",
+   "anchor": "SMB health is stable, with cash reserves and hours worked continuing to trend positively",
+   "topic": "US consumer pressure",
+   "status": "level",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "The Goldman trader said this week's technology conference datapoints were broadly positive with healthy consumer commentary and steady enterprise demand.",
+   "anchor": "TMT datapoints were broadly positive, with healthy consumer commentary, steady enterprise demand",
+   "topic": "US consumer pressure",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "EPAM expects weaker discretionary client spending through the remainder of 2026, with demand hurt by oil prices and the conflict in the Middle East.",
+   "anchor": "EPAM expects weaker discretionary spending through the remainder of 2026 as clients remain cautious",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "EPAM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "remainder of 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "EPAM cited shortfalls in US sales execution as contributing to its recent downward guidance revision for 2026.",
+   "anchor": "Management also cited shortfalls in sales execution in the US as contributing to the recent downtick",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "EPAM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "EPAM expects non-GAAP operating margin to remain within the 15% to 16% range for FY27.",
+   "anchor": "non-GAAP operating margin to remain within the 15%-16% range for FY27",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "EPAM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "EPAM said it will remain biased towards share repurchases over M&A going forward.",
+   "anchor": "the company said it would remain biased towards share repurchases over M&A going forward",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "EPAM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate plans to accelerate share repurchases, which it sees as the primary vehicle for returning excess capital to shareholders.",
+   "anchor": "plans to accelerate share repurchases which it sees as the primary vehicle for returning excess capital",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Seagate plans to repurchase an additional high-yield note next quarter and will consider a dividend increase in the near term.",
+   "anchor": "plans to repurchase an additional high-yield note next quarter",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Intuit delivered a constructive message around returning to durable double-digit revenue growth and high-teens EPS growth.",
+   "anchor": "returning to durable double-digit revenue growth and high-teens EPS growth",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Intuit said its big bets portfolio is growing at more than 2 times the rate of the overall company.",
+   "anchor": "portfolio, which is growing at more than 2x the rate of the overall company",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Intuit said it built AI models using hundreds of thousands of small business attributes and roughly 80,000 consumer attributes.",
+   "anchor": "having built models using hundreds of thousands of SMB attributes and roughly 80,000 consumer attributes",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Intuit said roughly 75% of recent mid-market growth came from upgrade motions.",
+   "anchor": "roughly 75% of recent mid-market growth coming from upgrade motions",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Intuit sees an installed base of approximately 700,000 entities as potential Enterprise Suite candidates.",
+   "anchor": "an installed base of approximately 700,000 entities viewed as potential Enterprise Suite candidates",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Mastercard said services now account for nearly 40% of net revenue.",
+   "anchor": "Services now account for nearly 40% of net revenue",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "Mastercard said China remains a meaningful medium-term opportunity following its domestic license approval.",
+   "anchor": "China remains a meaningful medium-term opportunity following its domestic license approval",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "medium term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "PayPal cited tariffs as a headwind to its China to Europe business, which Adyen did not reference at the conference.",
+   "anchor": "while PayPal cited tariffs as a headwind to its China-Europe business",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "PYPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "T-Mobile US pushed back on satellite risk and said it has no interest in offering MVNO rights to players such as SpaceX.",
+   "anchor": "pushing back on satellite risk and making clear it has no interest in offering MVNO rights",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "TMUS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "T-Mobile US said fixed wireless access remains a strength with customer satisfaction ahead of fibre in some comparisons.",
+   "anchor": "Fixed wireless access also remains a strength, with customer satisfaction ahead of even fibre",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "TMUS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "SpaceX said Starship Flight 14 is on track for this month and is progressing toward rapid reusability through 2027.",
+   "anchor": "Starship Flight 14 on track for this month & progressing toward rapid reusability through 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nvidia, SpaceX And More: Highlights From Day Three Of Goldman's Giant Tech Conference",
+   "claim": "SpaceX is laying the groundwork for a Starlink Mobile launch by the first half of 2028.",
+   "anchor": "executing on laying groundwork for Starlink Mobile launch by 1H28",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "1H28"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-14/16276__nvidia-spacex-and-more-highlights-from-day-three-of-goldman-.txt",
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 125,
+  "matched": 125,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 18,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
