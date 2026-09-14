@@ -2627,3 +2627,19 @@ Monday's posted sheet was rebuilt with the fixed code and the image
 replaced in place (owner approved). The /ask earnings slate
 (`ask_tools._execute_earnings_slate`) reads the same Finnhub feed and
 does not yet apply the check.
+
+Follow-up the same morning. Rebuilding the 9/14 sheet with the new
+code surfaced a false industry-event row: "GS Annual Global Consumer &
+Retail Conference" with MSFT. The stored session's anchor was a
+week-ahead line carrying two events, "GS Hosts: AVAV + TEL + MSFT GS
+Annual Global Consumer & Retail Conference - CHWY", and the extractor
+attached all four tickers to the conference. The anchor check passed
+because the line is verbatim; it never checked which tickers belong to
+the named conference. `conference_sessions.tickers_for_conference`
+now drops a ticker written before the conference name on its line
+(slot lines that never name the conference, and tickers resolved from
+a company name like "Walmart", are unaffected). It runs at extraction
+and again in `build_conference_rows`, so sessions already stored with
+the extra tickers are filtered too. The corrected 9/14 sheet was
+posted with the conference band suppressed and the Cracker Barrel row
+removed; the image on the original message was replaced in place.

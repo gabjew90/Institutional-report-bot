@@ -73,6 +73,30 @@ def test_printed_dates_resolve_and_roll_forward_across_new_year():
     assert CS.resolve_date("2026-01-13", "see 1/13 for the agenda", date(2026, 1, 5)) == "2026-01-13"
 
 
+def test_a_line_carrying_two_events_keeps_only_the_conference_s_tickers():
+    """2026-09-14: the week-ahead line below was stored with four tickers
+    and the rebuilt sheet put Microsoft at a retail conference."""
+    line = "GS Hosts: AVAV + TEL + MSFT GS Annual Global Consumer & Retail Conference - CHWY"
+    walmart = "GS Annual Global Consumer & Retail Conference - Walmart"
+    text = ("Week ahead, Monday September 14th\n" + line + "\n"
+            "Tuesday September 15th\n" + walmart + "\n")
+    conf = "GS Annual Global Consumer & Retail Conference"
+    raw = [{"conference": conf, "date_iso": "2026-09-14", "time_local": "", "tz": "",
+            "tickers": ["AVAV", "TEL", "MSFT", "CHWY"], "anchor": line},
+           {"conference": conf, "date_iso": "2026-09-15", "time_local": "", "tz": "",
+            "tickers": ["WMT"], "anchor": walmart}]
+    sessions, stats = CS.resolve_sessions(raw, text, REF)
+    by_date = {s.date_iso: s.tickers for s in sessions}
+    assert by_date == {"2026-09-14": ["CHWY"], "2026-09-15": ["WMT"]}, by_date
+    # and no Nasdaq-100 row comes out of the 9/14 line any more
+    rows = build_conference_rows([{"conference": conf, "date_iso": "2026-09-14",
+                                   "time_local": "", "tz": "", "tickers": by_date["2026-09-14"]}],
+                                 "2026-09-14")
+    assert rows == []
+    # a slot line that never names the conference keeps every ticker
+    assert CS.tickers_for_conference(["BKNG", "NET"], "1:10 PM: XYZ, BKNG, NET", conf) == ["BKNG", "NET"]
+
+
 def test_local_times_convert_to_et_only_for_known_zones():
     assert CS.local_to_et_hhmm("12:30 PM", "PT", "2026-09-09") == "15:30"
     assert CS.local_to_et_hhmm("7:25 PM", "PT", "2026-09-09") == "22:25"

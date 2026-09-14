@@ -147,11 +147,15 @@ def build_conference_rows(sessions: list[dict], date_iso: str,
     (owner call 2026-09-10), and the ET start of the earliest admitted
     slot. A conference with no admitted name produces no row. `caps` is
     {symbol: {"cap": musd}}; missing caps sort last, alphabetically."""
-    from ai_analysis.conference_sessions import local_to_et_hhmm
+    from ai_analysis.conference_sessions import local_to_et_hhmm, tickers_for_conference
     by_conf: dict[str, dict] = {}
     for s in sessions or []:
-        admitted = [t for t in (s.get("tickers") or [])
-                    if str(t).upper() in NDX_TICKERS]
+        # Re-applied at read time (2026-09-14): sessions stored before
+        # the extraction fix still carry tickers from a neighbouring
+        # event on the same line (MSFT at a retail conference).
+        own = tickers_for_conference([str(t).upper() for t in (s.get("tickers") or [])],
+                                     s.get("anchor") or "", s.get("conference") or "")
+        admitted = [t for t in own if t in NDX_TICKERS]
         if not admitted:
             continue
         key = " ".join(str(s.get("conference") or "").split()).lower()

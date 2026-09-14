@@ -95,6 +95,30 @@ def clean_tickers(raw) -> list[str]:
     return out
 
 
+def _ticker_in(text: str, ticker: str) -> bool:
+    return bool(re.search(rf"(?<![A-Za-z0-9]){re.escape(ticker)}(?![A-Za-z0-9])", text or ""))
+
+
+def tickers_for_conference(tickers: list[str], anchor: str, conference: str) -> list[str]:
+    """Only the tickers that belong to the conference named on the line.
+
+    A week-ahead line can carry several events. On 2026-09-14 the anchor
+    "GS Hosts: AVAV + TEL + MSFT GS Annual Global Consumer & Retail
+    Conference - CHWY" was stored with all four tickers, and the sheet
+    put Microsoft at a retail conference. When the anchor names the
+    conference, a ticker written BEFORE the name and not after it is
+    dropped. A slot line that never names the conference ("12:30 PM:
+    MSFT") is unaffected, and so is a ticker resolved from a company
+    name that is not written as a symbol ("- Walmart" -> WMT)."""
+    a = " ".join((anchor or "").split())
+    c = " ".join((conference or "").split())
+    i = a.lower().find(c.lower()) if c else -1
+    if i < 0:
+        return list(tickers)
+    head, tail = a[:i], a[i + len(c):]
+    return [t for t in tickers if _ticker_in(tail, t) or not _ticker_in(head, t)]
+
+
 def local_to_et_hhmm(time_local: str, tz: str, date_iso: str) -> str | None:
     """'12:30 PM' + 'PT' on 2026-09-09 -> '15:30' (24-hour, the form the
     econ rows use). None when the time or zone is not recognised."""
@@ -150,6 +174,10 @@ def resolve_sessions(raw: list, source_text: str, reference: date | None = None,
             conference = " ".join(str(item.get("conference") or "").split())[:120]
             if not conference:
                 stats["malformed"] += 1
+                continue
+            tickers = tickers_for_conference(tickers, anchor, conference)
+            if not tickers:
+                stats["no_ticker"] += 1
                 continue
             s = ConferenceSession(
                 conference=conference,
