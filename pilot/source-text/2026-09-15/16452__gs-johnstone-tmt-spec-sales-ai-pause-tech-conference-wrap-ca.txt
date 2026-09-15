@@ -1,0 +1,259 @@
+[Page 1]
+GS Johnstone - TMT Spec Sales AI pause Tech Conference wrap CAP
+memory TI Informa UMG 14 Sep 2026
+Sean Johnstone  ·  Goldman Sachs  ·  TMT Spec Sales
+Mon 14 Sep 2026, 3:10am ET
+GS TMT SPEC SALES – Monday 14th September Weekend “pace the frontier” comments from Dario Amodei,
+with Sam Altman and Elon Musk in agreement (talking
+GS TMT SPEC SALES – Monday 14th September
+Weekend “pace the frontier” comments from Dario Amodei, with Sam Altman and Elon Musk in agreement
+(talking about independent evaluators with employee-like access), are likely to see led to some weakness in AI
+infra-plays and semis today (Hynix -7% and Samsung -5%, Softbank -12%). The debate is safety process, not an
+announced cut to training compute or offtake; however initially the market is still marking AI credit, GPU/HBM
+demand and IPO optionality as if pacing could slip capex calendars. Would note this comes just as investors per
+GS PB data had just started leaning back into the trade overall: GS PB shows HFs have bought US TMT in 10 of
+the last 11 sessions (led by Semis & Semi Equip), with the 2-week pace of long buying in the 97th percentile of
+the last five years; link.
+Source: Goldman Sachs FICC and Equities as of 14th Sept 2026.
+Also press again (we had this in June) confirming from Sam Altman that the OpenAI IPO is 2027 removes it as a
+catalyst for this year relevant for MSFT/ORCL offtake optics more than for a listed OpenAI multiple.
+The biggest theme at our Tech conference was AI Security and an example over the weekend of the risk is the
+Revolut hack – it has confirmed it disclosed sensitive customer information to an unauthorized third party after
+fraudulent requests were sent from a legitimate government agency email domain (See Techcrunch) The Threat
+actors who obtained sensitive Revolut customer information appear to have begun posting the information online
+and are threatening to release more data every day until “revolut pays.”
+Anthropic CEO Dario Amodei on Saturday (see link) is urging leading AI labs to pace frontier model development
+rather than halt progress, arguing that capability gains are moving faster than safety controls. His proposed
+framework centers on embedded independent evaluators, industry-wide coordination on safety standards, and
+international cooperation—while also preserving the U.S. AI lead over China through tighter controls on chips,
+model theft, and distillation. The key tension is that AI labs face rising safety and regulatory pressure just as
+investor, funding, and IPO incentives push them to keep accelerating. OpenAI and SpaceX are reported to have
+signalled openness to slowing AI development in coordination with rival labs amid growing safety concerns.
+Capgemini has agreed to sell Capgemini Government Solutions to ITC Federal, a US IT services provider focused
+on federal law enforcement, homeland security and defence agencies. The deal is expected to close in the coming
+weeks, subject to customary conditions; the unit represented just 0.4% of Capgemini’s 2025 group revenue and
+less than 2% of US revenue.
+In the Telcos press that TEF has restartedv its talks with Zegona to explore the potential acquisition of Vodafone
+Spain. TEF has the backing of its core shareholders however the catch still remains the valuation gap and
+regulatory hurdles to get a seal through.
+
+
+[Page 2]
+TMT Conference Final Wrap
+Bottom line: corporate messaging remained bullish on AI datapoints and consistent with Q2. AI hardware demand
+is still strong, compute remains tight (investor debate on this pt and esp. memory is split), and software companies
+are shifting from “token maximisation” to more disciplined model routing and cost optimisation (while a near term
+help showing revenue inflection remains key as AI has commoditised building software).
+Investor feedback: demand is not the issue; conversion is. The debate is whether hyperscaler, Oracle, frontier-
+model and infrastructure backlogs translate into durable, profitable enterprise revenue rather than another
+construction cycle. Sentiment remains constructive, but not euphoric, particularly after many TMT funds gave
+back a large share of YTD outperformance in July and August. US Treasury yields at two-decade highs do not help
+and there are repeated questions whether credit markets can fund the scale of AI infrastructure issuance required
+(even if Nvidia helps).
+See all GIR notes and note the US team have call today at 3pm UK Register for Zoom Webinar and see Pete’s
+takes
+1. AI infrastructure: demand intact, supply remains the bottleneck
+| 1. | Corporate message: last week TSMC (August revenue +53.3% YoY) and Oracle’s prints supported the AI
+infrastructure bull case: compute is scarce, pricing power is real, and demand visibility remains strong. Microsoft’s
+reported internal capacity plans of more than 38GW by 2032, versus around 12GW today, fit the broader
+hyperscaler message. ASML said its sold out for 2027 and 2028 is already selling fast. Recent datapoints from
+NVDA, AVGO, GPT-6 and the conference were broadly supportive of the AI infrastructure trade, helped by
+frontier-model progress and cheaper inference driving more usage. | | 2. | Semi read-across: companies continued
+to highlight datacentre buildouts as a multi-year growth driver, with orders and backlog at historically elevated
+levels. Semi-cap equipment vendors stopped short of giving 2027 guidance, but commentary around 8–10 new
+fabs coming online next year supports an acceleration in WFE spending. DRAM, foundry/advanced logic,
+advanced packaging and NAND are expected to be the biggest 2027 growth drivers. In analog, datacentre and
+aerospace/defence remain key idiosyncratic growth drivers, while broader industrial and automotive demand is
+improving on lean inventories, content growth and better end demand. See Jim’s note |
+2. Software: from token maximisation to token optimisation
+| 1. | Corporate message: the clearest shift versus three months ago was on the application side. SAP, HubSpot,
+ServiceNow and Microsoft talked less about unbounded compute bills and more about routing: frontier models for
+the hardest work, cheaper closed tiers for high-volume tasks, and open-weight models where cost and control
+matter. | | 2. | Proof points: HubSpot is using OpenAI’s Luna saying it gives them all they need and there is no need
+for the most advanced models, and OpenAI said an 80% Luna price cut drove roughly a 10x usage jump. SAP said
+routing HR queries to Mistral was around 5x cheaper than current frontier models. (GS CIO put it most succinctly
+saying that the not every task needs a frontier model: use cheaper/open models for “good enough” work such as
+developer tools, licence checks and routine reporting, but reserve frontier models for high-value areas like trading,
+alpha generation and cybersecurity where small accuracy gains matter. Put simply, it is Formula 1 versus trucking:
+pay for maximum performance only where it changes the outcome; elsewhere, optimise for reliability and cost.)
+The message has shifted from “AI will break software gross margins” to “model routing can grow usage without
+blowing up opex.” | | 3. | Investor feedback: investors are not fully convinced. They see the opportunity/upside in
+Data platforms and security software sleeves (have a look at the multiples), while sentiment (despite bounce) on
+
+
+[Page 3]
+enterprise SaaS is still mixed until corporates can show an AI revenue reacceleration, not just lower unit costs.
+Open-source and open-weight models were widely discussed as cost-control options; cheaper inference should lift
+usage, but falling token prices are less automatically positive for anyone selling undifferentiated inference. Here
+the perceived investor perception is that the hyperscalers are the winners |
+3. Security and agentic AI: strongest software theme
+| 1. | Corporate message: security was the strongest theme of the week as agents move from answering questions to
+taking actions. ServiceNow, Databricks, Cloudflare, Google, Microsoft, OpenAI and SAP made the same point:
+security cannot sit in a sidecar. Identity, permissions, logging and tool access need to be enforced at the moment an
+agent acts. Jensen whet further “the fact of the matter is cybersecurity will likely be the next major use case of AI,
+and it's going to run continuously’ (bbg transcript) What I struggle with is that everyone wants in on the act
+ServiceNow saying its currently the 8th largest enterprise security company in the world and has the ambition on
+been no.1. | | 2. | Open-source reality check: Capgemini was useful on the practical constraints. Downloading
+weights is easy; building the harness, keeping models current, evaluating them and staffing the expertise is not.
+The operating layer remains scarce, which should keep specialist vendors relevant in the stack. |
+4. Emerging opportunity: “AI to watch AI”
+| 1. | There is a large, still-emerging opportunity in tools that monitor and align agentic systems — effectively AI
+watching AI. The analogy is early detection: spotting dangerous or unintended behaviour before it spreads through
+enterprise workflows. Palo Alto, CrowdStrike and others are already trying to productise real-time governance of
+agent behaviour. If this scales, it becomes the next major cybersecurity category rather than a feature inside
+existing suites. Palo Alto’s CEO argued that the AI security layer is still being built. New AI products are hard to
+secure given the pace of change, integration gaps, missing context and immature industry practice. This supports
+the case for more consolidated platforms, continuous adaptation and a new category around behavioural
+monitoring of agents. |
+5. Consumer vs enterprise AI platforms
+| 1. | Visibility on the AI platform landscape should improve in 2027, and beyond as more cards get flipped with
+the Frontier LLM potentially going public and giving more details on enterprise adoption curves and financial-
+services use cases. | | 2. | Consumer AI: a fourth major platform beyond Alphabet, Meta and OpenAI looks unlikely
+given distribution and daily-use integration. The question is less relevance and more whether all three can earn
+acceptable returns on the capital now being deployed. That said SPOT presentation to me was one of the more
+interesting on what its doing to better monetise it business with the help of AI. Meta Muse is an interesting new
+monetisation opportunity for Meta. See GIR’s take on Muse and Conf wrap. | | 3. | Enterprise AI: the map is less
+settled. The live debate is horizontal platforms versus vertical, workflow-specific systems. Proprietary data,
+regulation and embedded process should protect some incumbents, but investors still need evidence that AI
+adoption expands budgets rather than simply rearranging them. |
+AWAY FROM GS: Telia Raised to Hold at Handelsbanken; Elisa Cut to Sell at Handelsbanken
+TECH
+| • | US Investors More Bullish on Memory vs Asian Investors: North American investors demonstrated a more
+bullish outlook on the memory sector than Asian investors, citing solid industry fundamentals and limited share
+price downside for SEC and SK Hynix at current valuations. Despite lowered near-term earnings expectations and
+divided views on LTAs, these investors are less concerned about incremental supply from China and are already
+
+
+[Page 4]
+modeling Chinese suppliers capturing over 10% market share by 2028. Furthermore, US feedback highlighted
+rising interest in SEC's improving foundry business and elevated shareholder return expectations for both
+companies, with no clear preference between SEC's fundamental value and Hynix's higher beta. See Note | | • |
+CXMT surpasses SK Hynix and Micron to claim top spot in memory chip profit margins with an 82% EBIT
+margin (despitea smaller slice of overall global DRAM revenue (roughly 7.7% to 8%) compared to market leaders.
+vs   Micron: 80%, SK Hynix: 76%, Samsung Electronics semiconductor division): 70% (Nikkei) |
+| • | After falling sharply in June & July, Semis net exposure has ticked up so far in August as HFs net bought the
+group, while positioning in Software has continued to stabilize. Net exposure in Broad AI names (GSTMTAIP)
+has risen MTD though is still well below the record highs seen in May |
+Source: Goldman Sachs FICC and Equities as of 14th Sept 2026.
+| • | AI: Google (GOOG) management recently commented that overall AI-server business investment payback
+period is less than 2 years, with TPU-related ones less than a year. +VE for ASIC vendors such as Mediatek (2454)
+and Broadcom (AVGO). (DT) | | • | TSMC (2330): Supply chain sources are indicating that TSMC will expand its
+2nm capacity from 90k wafers per month by end of this year to 110k wafers and its 3nm capacity from 180k
+wafers per month by end of this year to 210k wafers by mid-2027, indicating a 22% and 16% increase,
+respectively. (ED) | | • | Apple’s (AAPL) latest A20 Pro chip will be manufactured through TSMC (2330) 2nm
+process for the first time. Apple has also chip packaging technology from Package on Package (POP) to Wafer-
+Lever Multi-Chip Module (WMCM). (ED) |
+| • | Meta is facing a proposed class action alleging it illegally used Facebook and Instagram photos to train AI
+image-generation models and develop an unreleased face-recognition feature for smart glasses, though Meta says
+the claim misrepresents its engineering, that NameTag was never released or activated, and that no final product
+decision has been made; while likely manageable legally for now, the suit adds to broader concerns around AI data
+usage, privacy and trust in large consumer AI platforms. Wired |
+| • | Naura - GIR hosted NAURA management during China AI Tour on Sep 9th in Beijing. Key discussions
+focused on (1) Semi capex spending trend, (2) GM trend, and (3) new tools expansion. Overall, management is
+positive on the growing spending from memory and advanced logic clients this year, outperforming growth of
+mature logic, along with rising penetration of local SPE tools to support company's order growth. Mgmt. expects
+to see sustainable order growth in 2027E, supported by clients' accelerated capacity expansion in China market to
+fulfill rising demand. Despite near-term pressures on upstream components supply, management expects to see
+gradual ease of the supply constraint through partnership with local and overseas suppliers to verify with clients. |
+| • | China Internet sentiment remains cautious toward the large-cap names, especially BABA/Tencent, with
+investors still focused on ROIC and AI investment debates similar to US mega-cap tech. Expectations look low
+ahead of BABA’s Apsara Conference on 22–24 September, leaving some room for upside surprise, while broader
+China ETF positioning also appears light after more than $3bn of outflows since June and AUM near 12-month
+lows. Incremental demand is instead concentrated in the AI supply chain, particularly semis and memory, with
+thematic products such as KSTR and new China memory ETFs seeing more interest. (Thanks Alexander Joseph) |
+Source: Goldman Sachs FICC and Equities as of 14th Sept 2026.
+TELCOS
+| • | Spanish Telco M&A: Telefónica has reactivated its talks with the British fund Zegona to explore the potential
+acquisition of Vodafone Spain. The article says that TEF has the backing of its core shareholders—the Spanish
+
+
+[Page 5]
+state holding company SEPI, CriteriaCaixa, and Saudi Telecom Company (STC)—to pursue the deal. While
+preliminary talks had previously stalled due to global macroeconomic volatility, both entities are back at the table.
+The catches there is a still a big valuation gap and a regulatory hurdle to get through. See | | • | TI - Poste Italiane
+Spa late Friday said its tender offer for shares in Telecom Italia Spa has resulted in the postal services provider
+having a 66.6% stake in telecommunications provider TIM. Poste Italiane's previous acceptance threshold was
+66.67%, and it fell just short of that, announcing on Friday a holding of 66.627%. However, the offer will be
+reopened between September 21 and 25, which is the week after next. |
+| • | VOD: Fitch Maintains Vodafone's Rating on Broad Operational Footprint, Strong Liquidity |
+MEDIA & INTERNET
+| • | Informa note from James flagging that the latest Middle East exhibition data is encouraging, with scaled events
+returning and five events since June showing exhibitor and attendee declines of around 10–11% yoy on average,
+broadly in line with expectations. Attendance at LEAP and Middle East Energy was weaker at around -20% yoy,
+but revenue performance should be less severe, while wider regional datapoints have improved through Q3, with
+flight and hotel occupancy, outdoor advertising and property transactions now down c.-20% to -30% yoy versus
+the March trough of -50% to -60%. Overall, this supports confidence that the Middle East growth opportunity
+remains structurally intact, with improving re-booking trends into 2027. Informa’s valuation also looks attractive
+at c.13x 2027E P/E versus a pre-Covid average of c.15x, despite a stronger expected organic growth profile of 6–
+7% versus c.3% historically; we reiterate Buy with an unchanged 1,130p 12-month price target, implying around
+30% upside, with upcoming catalysts including the European Communacopia conference, the CPHI Milan
+fieldtrip, further Middle East activity improvement, Q4 event data and the mid-November trading update |
+| • | Vend Marketplaces releases its pre-silent 3Q newsletter whereby it expects full-year Mobility revenue growth
+in the mid-to-high single-digit per cent range (cons at ~5.5% yoy growth). Medium-term targets for Mobility are
+unchanged at 12-17%. They now expect full-year 2026 cost base (OPEX excluding COGS) to decline by
+approximately NOK 150 million compared to 2025, revised from the approximately NOK 100 million indicated at
+Q1 2026. This reflects accelerated cost actions taken in the second quarter, while retaining the flexibility to
+reinvest selectively behind growth, primarily in marketing. |
+| • | UMG has signed a multi-year licensing agreement with ElevenLabs. ElevenLabs will launch a new AI-
+powered music platform for fans under the deal, with the two companies also jointly developing AI audio products
+for artists and songwriters. The agreement allows UMG to legalise and monetize highly popular fan behaviors—
+like AI remixes, mashups, and vocal cloning—ensuring that its artists and songwriters are paid when fans interact
+with their music. Ultimately, it positions UMG as a forward-thinking market leader that can compete directly with
+rival AI initiatives while maintaining absolute authority over how its massive catalogue is used. It is ElevenLabs‘
+first agreement with a major music company, according to the two firms. (MBW) | | • | WPP per Adage will win
+Coca-Cola's (KO) global media, data and technology review and will not participate in the company's forthcoming
+North America media pitch. Post PUB win on Pepsi this was somewhat expected . |
+MACRO AND TRADING
+| • | GS PRIME DATA: | | • | US TRADING US equities finished the week with strong gains Friday after the
+market viewed the firmer core CPI reading as a ‘rip the band aid’ moment into next week’s FOMC decision
+(September hike odds now sitting near ~90%). Core CPI came in at 29bp unrounded core CPI, with firmness
+
+
+[Page 6]
+versus GIR’s estimates coming from communication (worth about 8bp of upside versus econ's forecast), public
+transportation, and lodging. OER/rent were quite benign, and medical care service inflation was a bit softer. |
+TMT
+| • | Microsoft Corp[](helen.wogel@gs.com;?subject=Meeting%20Request%20-%20Microsoft%20Corp,%2014-
+17%20Sep) [MSFT] | Stockholm (14 Sep), Zurich (15 Sep), London (16-17 Sep) | IR | | • | Technoprobe Site Visit[]
+(abdulnasir.ibrahim@gs.com;helen.wogel@gs.com?subject=Meeting%20Request%20-
+%20Technoprobe%20Site%20Visit,%2015%20Sep) [TPRO] | 15 Sep | Milan, Italy | Field Trip | | • | European
+Communacopia Conference | 15-16 Sep | London | Conference | | • | Dassault Systemes[]
+(Christy.HY.Wong@ny.email.gs.com;%20abdulnasir.ibrahim@gs.com?subject=Meeting%20Request%20-
+%20Dassault%20Systemes,%2022-24%20Sep) DSY[ FP] | 22 Sep (New York), 23 Sep (Boston), 24 Sep (Toronto)
+| CFO, IR | | • | ASM International[]
+(Christy.HY.Wong@ny.email.gs.com;%20Abdulnasir.Ibrahim@ln.email.gs.com?
+subject=Meeting%20Request%20-%20ASM%20International,%2023-24%20Sep) ASM[ NA] | 23 Sep (New
+York), 24 Sep (Boston) | CEO, CFO, IR | | • | Deutsche Telekom[](helen.wogel@gs.com?
+subject=Meeting%20Request%20-%20Deutsche%20Telekom,%2024%20Sep) DTEGn[ DE] | 24 Sep | London |
+CEO of Germany, IR | | • | Daeduck Electronics 353200[ KS] | 30 Sep | Virtual | IR | | • | EMEA FinTech
+Conference | 6 Oct | London | Conference | | • | Spanish Telco Field Trip[]
+(Abdulnasir.ibrahim@gs.com;%20Sanyam.Y.Jain@ny.email.gs.com;%20Angela.McGuire@ln.email.gs.com?
+subject=Meeting%20Request%20-%20Spanish%20Telco%20Field%20Trip,%206%20Oct) CLNX[ MC,
+DIGIS,ORAN PA, TEF MC, ZEG LN] | 6 Oct | Madrid, Spain | Field Trip | | • | Disruptive Technology Symposium
+| 21 Oct | Paris | Technology | Save the Date | | • | European AI & Semis Symposium | 24-25 Nov| London |
+Conference | Save the Date |
+Sean
+All references to "we/us/our" refer to the views and observations of the desk. All GS Global TMT research in one
+place – Click here
+TMT RESEARCH TEAMS
+| TELECOMS | | | | Andrew Lee | 020 7774 1383 | andrew.j.lee@gs.com[](andrew.j.lee@gs.com) | | Halima Elyas |
+020 7774-6503 | halima.elyas@gs.com[](halima.elyas@gs.com?
+Subject=Openreach%20Digital%20Infrastructure%20growth%20engine%20delivering,%20with%201Q24%20beat)
+| | Sofija Rakicevic | 020 7774-6556 | sofija.rakicevic@gs.com[](sofija.rakicevic@gs.com?
+Subject=Openreach%20Digital%20Infrastructure%20growth%20engine%20delivering,%20with%201Q24%20beat)
+| | Mollie Witcombe | 020 7051 6252 | mollie.witcombe@gs.com[](mollie.witcombe@gs.com) | | | | | | MEDIA | | | |
+Adam Berlin | 020 7051 1586 | Adam.Berlin@gs.com[](Adam.Berlin@gs.com) | | James Tate | 020 7774-3705 |
+james.tate@gs.com[](james.tate@gs.com) | | | | | | SEMIS & HARDWARE | | | | Alexander Duval | 020 7552 2995 |
+alexander.duval@gs.com[](Alexander.duval@gs.com) | | Anant Jakhar | +13322457829 |
+Anant.X.Jakhar@gs.com[](Anant.X.Jakhar@gs.com) | | Ayo Odunaiya | 020 7051 5995 |
+Ayo.x.Odunaiya@gs.com[](Ayo.x.Odunaiya@gs.com) | | | | | | SOFTWARE, IT SERVICES & PAYMENTS | | | |
+Mohammed Moawalla | 020 7774 1726 | mohammed.moawalla@gs.com[](mohammed.moawalla@gs.com) | |
+Deepshikha Agarwal | +1212 934 6961 | | | Uzair Merchant | 020-7774-7645 | uzair.merchant@gs.com[]
+(uzair.merchant@gs.com) |
+
+
+[Page 7]
+
+
+[Page 8]
+Source: Goldman Sachs FICC & Equities, Marquee, as of 14 September 2026.
