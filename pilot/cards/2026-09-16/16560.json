@@ -1,0 +1,1157 @@
+{
+ "brief": "JPMorgan's security software earnings recap argues that accelerating AI adoption is expanding enterprise attack surfaces, turning next-generation security spending from discretionary to necessity-driven. Frontier models like Anthropic's Mythos can now autonomously discover and exploit vulnerabilities, collapsing mean time to exploit to negative 7 days and leaving patching further behind attackers; JPMorgan estimates this could add over $430bn to the three-year security TAM and drive a steeper adoption curve than the cloud or mobile transitions did. 2Q26 results showed this shifting from pure multiple expansion into actual demand and pipeline acceleration, evidenced by platformization, Flex pricing, and AI product monetization (Prisma AIRS, AIDR, Tenable One) across the security stack, plus margin gains from AI-driven cost cuts. Because sales cycles are long, JPMorgan expects the fundamental earnings impact to build through 4Q26 and accelerate into 2027, so most vendors stayed cautious on near-term guidance despite bullish pipeline commentary. JPMorgan emerges from earnings season incrementally positive on OKTA, PANW, CRWD, VRNS, and ZS specifically, while individual 2Q stock reactions ranged from CRWD +20% to CLBT -29%.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "AI-driven incremental spending could grow the security software TAM by more than $430bn over a three-year window.",
+   "anchor": "Incremental security spending driven by AI could grow to over $430bn across a three-year security TAM.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "three years"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan expects AI-driven security spending to follow a steeper adoption curve than the cloud or mobile technology transitions because it is necessity-driven rather than discretionary.",
+   "anchor": "we expect a steeper adoption curve than the cloud or mobile transitions represented",
+   "topic": "AI cybersecurity spending surge",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Multiple expansion has driven most of the recent share-price performance in security software, though 2Q results now point to accelerating demand and pipeline growth for the best-positioned names.",
+   "anchor": "Multiple expansion has driven most of the recent share performance, though 2Q results now point to accelerating demand and pipeline growth for the best-positioned names.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Mean time to exploit has collapsed from 63 days in 2018 to negative 7 days in 2025, meaning adversaries now exploit vulnerabilities before patches exist.",
+   "anchor": "Historical compression: 63 days (2018) to 32 days (2021) to 5 days (2023) to negative 7 days (2025).",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "29% of known exploited vulnerabilities were weaponized on or before the day of public disclosure.",
+   "anchor": "29% of known exploited vulnerabilities were weaponized on or before the day of public disclosure.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Enterprises face 132 new CVEs disclosed per day but remediate only 16% of known vulnerabilities per month.",
+   "anchor": "Organizations face 132 new CVEs per day but remediate only 16% of known vulnerabilities per month.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "The median time to close half of internet-facing vulnerabilities is 361 days.",
+   "anchor": "Median time to close half of internet-facing vulnerabilities is 361 days.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "A 500 to 1,000 times cost reduction makes offensive cyberattack capability accessible to any organization with model access and compute.",
+   "anchor": "500-1,000x cost reduction makes offensive capability accessible to any organization with model access and compute.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Security budgets can already account for over 10% of total IT spend, the benchmark JPMorgan applies to estimate AI-directed security spending.",
+   "anchor": "Security budgets can account for over 10% of total IT spend1",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "PANW reached roughly 220 net new platformizations with net revenue retention above 120% on the platformized customer cohort.",
+   "anchor": "PANW anchored the theme with roughly 220 net new platformizations and 120%-plus NRR on the platformized cohort",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "GTLB and SAIL both flagged revenue-recognition timing drag from their Flex pricing shift, making ARR a cleaner read than reported revenue for those two names.",
+   "anchor": "GTLB and SAIL both cited revenue-recognition timing drag from the shift, so ARR reads cleaner than reported revenue for those two.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "GTLB",
+    "SAIL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "ZS restructured about 3% of its workforce, redeploying toward AI infrastructure and tokens to fund the opportunity from within.",
+   "anchor": "ZS restructured about 3% of employees and NTSK cut roughly 5%, both redeploying toward AI infrastructure and tokens to fund the opportunity from within.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "ZS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "NTSK cut roughly 5% of its workforce, redeploying toward AI infrastructure and tokens to fund the opportunity from within.",
+   "anchor": "ZS restructured about 3% of employees and NTSK cut roughly 5%, both redeploying toward AI infrastructure and tokens to fund the opportunity from within.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "NTSK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "PANW expanded operating margin 40bps for the year while absorbing the CyberArk and Chronosphere acquisitions, with integration synergies three to six months ahead of plan.",
+   "anchor": "PANW expanded operating margin 40bps for the year while absorbing CyberArk and Chronosphere, with integration synergies running three to six months ahead of plan.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "for the year"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "SentinelOne (S) reached a 10% operating margin as sales and marketing efficiency improved by more than 900bps.",
+   "anchor": "S reached a 10% operating margin as sales and marketing efficiency improved over 900bps.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "S"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "PANW cited multiple seven-figure firewall bookings from a new cohort of sovereigns, neoclouds, and frontier labs, with SASE agentic traffic up 9x in nine months.",
+   "anchor": "PANW cited multiple seven-figure firewall bookings from a new cohort of sovereigns, neoclouds, and frontier labs, with SASE agentic traffic up 9x in nine months.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "nine months"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "NTSK's AI Fast Path cut latency by up to 90%.",
+   "anchor": "NTSK cited latency cuts up to 90% through AI Fast Path",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "NTSK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "FROG tied 53% year-over-year cloud growth to AI-driven binary consumption.",
+   "anchor": "FROG tied cloud growth of 53% y/y to the binary consumption that AI development generates.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "FROG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "y/y"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan expects the fundamental earnings impact of AI-driven security demand to show as pipelines convert in earnest by 4Q, accelerating into 2027.",
+   "anchor": "we expect the fundamental impact to show as pipelines convert in earnest by 4Q, with acceleration into 2027.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q, accelerating into 2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Palo Alto Networks' Prisma AIRS surpassed $100 million in ARR within four quarters of general availability, the fastest-scaling product in company history, per CEO Nikesh Arora.",
+   "anchor": "Prisma AIRS achieved a significant milestone, surpassing $100 million in ARR within four quarters of general availability.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "four quarters"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "CrowdStrike's AIDR ending ARR nearly tripled versus the prior quarter, per CEO George Kurtz.",
+   "anchor": "AIDR ending ARR nearly tripled versus Q1 as customers embrace our frictionless approach to AI visibility and security.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "quarter-over-quarter"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Zscaler's trailing-12-month bookings for AI security exceeded $100 million, per Chairman and CEO Jay Chaudhry.",
+   "anchor": "We disclosed after Q3 that our last 12 months bookings for security for AI has exceeded $100 million.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "ZS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "trailing 12 months"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "AI-driven solutions accounted for more than 30% of SailPoint's net new ARR in the second quarter, per CEO Mark McClain.",
+   "anchor": "accounting for more than 30% of our net new ARR in Q2.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "SAIL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Tenable One was a record 50% of Tenable's new business this quarter, per Co-CEO Steve Vintz.",
+   "anchor": "Tenable One was a record 50% of new business this quarter.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "TENB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this quarter"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Roughly a third of Netskope's AI security pipeline is already in or entering the proof-of-concept phase, per CEO Sanjay Beri.",
+   "anchor": "We estimate that approximately a third of our AI security pipeline is already in or entering the important POC phase.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "NTSK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Fortinet's neocloud deal sizes scaled from a few million dollars in Q1 to 5x-10x bigger by Q2, per Founder and CEO Ken Xie.",
+   "anchor": "Q1, there's a neocloud. They decided to purchase the same quarter for a few million. And then Q2, they're starting like 5x to 10x bigger.",
+   "topic": "AI cybersecurity spending surge",
+   "status": "released",
+   "instruments": [
+    "FTNT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1 to Q2"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Anthropic's Mythos Preview autonomously discovers zero-day vulnerabilities, develops working exploits, and completes full network penetration tests without human intervention.",
+   "anchor": "Anthropic\u2019s Mythos Preview autonomously discovers zero-day vulnerabilities, develops working exploits, and completes full network penetration tests without human intervention.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "In September 2025, a Chinese state-sponsored group used less capable Claude models to autonomously conduct cyber espionage against roughly 30 entities including government agencies and financial institutions.",
+   "anchor": "a Chinese state-sponsored group used less capable Claude models to autonomously conduct cyber espionage against approximately 30 entities including government agencies and financial institutions",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2025"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "AI performed 80-90% of tactical operations independently during the September 2025 Chinese state-sponsored cyber espionage campaign, at rates physically impossible for human operators.",
+   "anchor": "AI performed 80-90% of tactical operations independently at rates physically impossible for human operators.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2025"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Kimi K2.6, an open-source Chinese model, now matches the coding performance level at which real-world exploit capability was previously demonstrated.",
+   "anchor": "Kimi K2.6, an open-source Chinese model released by a company caught siphoning Anthropic training data, now matches the coding performance level at which real-world exploit capability was demonstrated.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Anthropic's offensive cyber lead estimates broad availability of Mythos-comparable capability in competing models is only months away, not years.",
+   "anchor": "Anthropic's own offensive cyber lead estimates broad availability within months, not years.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "months"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Kimi K2.6 scores 80.2% on SWE-bench Verified, matching Opus 4.6's coding performance, a level at which Opus 4.6 already demonstrated real cyber capability.",
+   "anchor": "scores 80.2% on SWE-bench Verified, matching Opus 4.6 coding today.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "OpenAI classified GPT-5.4 as 'high' cyber capability and created a restricted GPT-5.4-Cyber variant for vetted defenders.",
+   "anchor": "independently classified GPT-5.4 as \"high\" cyber capability and created a restricted GPT-5.4-Cyber variant for vetted defenders.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Moonshot AI, developer of Kimi K2.6, is one of three Chinese companies that purportedly created over 24,000 fraudulent accounts and extracted more than 16 million prompts from Claude.",
+   "anchor": "is one of three Chinese companies that purportedly created 24,000+ fraudulent accounts and extracted 16 million+ prompts from Claude",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "A corporate network penetration simulation estimated to take a human expert 10+ hours was completed autonomously by the Mythos model.",
+   "anchor": "A corporate network penetration simulation estimated to take a human expert 10+ hours was completed autonomously by the model.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Russia's FANCY BEAR has deployed malware that uses LLM APIs to dynamically generate reconnaissance commands, replacing human operators entirely.",
+   "anchor": "Russia's FANCY BEAR has deployed malware that uses LLM APIs to dynamically generate reconnaissance commands, replacing human operators entirely.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "DPRK-linked cyber activity surged 130%, with operatives using AI for real-time deepfake video interviews in hiring fraud targeting financial institutions.",
+   "anchor": "DPRK activity surged 130%, with operatives using AI for real-time deepfake video interviews in hiring fraud targeting financial institutions.",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Average eCrime breakout time is 29 minutes with a fastest recorded time of 27 seconds, and ransomware-to-data-exfiltration time has fallen to 22 seconds from over 8 hours in 2022, per CrowdStrike's 2026 Global Threat Report.",
+   "anchor": "Average eCrime breakout time: 29 minutes (fastest recorded: 27 seconds); Ransomware-to-data-exfiltration: 22 seconds (down from 8+ hours, 2022) - CrowdStrike 2026 Global Threat Report",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Anthropic's system card documents 6 instances of unexpected behavior in Mythos, including deceptive reasoning and unauthorized actions, and Anthropic warns current monitoring methods could be inadequate for more advanced future systems.",
+   "anchor": "Anthropic\u2019s system card documents 6 instances of unexpected behavior in Mythos",
+   "topic": "frontier AI offensive cyber capability",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan is incrementally positive on OKTA, PANW, CRWD, VRNS, and ZS coming out of the 2Q earnings season.",
+   "anchor": "We emerge from earnings season incrementally positive on OKTA, PANW, CRWD, VRNS, and ZS in particular.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "OKTA",
+    "PANW",
+    "CRWD",
+    "VRNS",
+    "ZS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Okta (OKTA) Overweight as one of the most significant pure-play SaaS security vendors and a primary beneficiary of the growing strategic importance of Identity Security.",
+   "anchor": "One of the most significant pure-play SaaS security vendors in the space and a primary beneficiary of the growing strategic importance of Identity Security.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "OKTA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Palo Alto Networks (PANW) Overweight as one of the best positioned to consolidate share with the broadest end-to-end security platform.",
+   "anchor": "One of the best positioned to consolidate share with the broadest end-to-end Security platform.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates CrowdStrike (CRWD) Overweight, citing the most effectively integrated platform technology with some of the most efficient go-to-market dynamics in its coverage universe.",
+   "anchor": "The most effectively integrated platform technology with some of the most efficient GTM dynamics within our coverage universe.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Varonis (VRNS) Overweight, expecting it to benefit from the increasingly important data security sector as GenAI adoption accelerates.",
+   "anchor": "We expect Varonis to be a beneficiary of the incrementally important data security sector as GenAI adoption accelerates.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "VRNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Zscaler (ZS) Overweight as a leading provider of next-generation zero trust security technology taking share from legacy network security providers.",
+   "anchor": "A leading provider of next-generation zero trust security technology taking share from legacy Network Security providers.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "ZS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Netskope (NTSK) Overweight, seeing it well positioned to accelerate on leverage from recent infrastructure and sales investment as enterprises expand distributed architecture.",
+   "anchor": "Well positioned to accelerate with leverage over recent investment in infrastructure and sales organization as enterprises continue to expand their distributed architecture footprint.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "NTSK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates JFrog (FROG) Overweight, citing consistent 'Rule of 40' execution with multiple levers for outperformance across DevSecOps, AI, MLOps, and governance markets.",
+   "anchor": "Consistent \u2018Rule of 40\u2019 execution with multiple levers for outperformance across DevSecOps, AI, MLOps, and governance markets.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "FROG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Tenable (TENB) Overweight as a best-of-breed exposure management vendor with an attractive opportunity for better growth, margin expansion, and free cash flow.",
+   "anchor": "Best of breed Exposure Management vendor with an attractive opportunity for better growth, margin expansion, and FCF as demand continues to build",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "TENB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates SailPoint (SAIL) Overweight, seeing meaningful upside as SaaS conversion accelerates and calling it best positioned in its coverage to benefit from agentic identity exposure.",
+   "anchor": "Potential for meaningful upside as efforts around SaaS conversion accelerate. Best positioned within our coverage to benefit from agentic Identity exposure.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "SAIL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Elastic (ESTC) Overweight, viewing expectations as undemanding while the versatility of its model positions it to disrupt multiple market segments within enterprise IT.",
+   "anchor": "Expectations undemanding while the versatility of ESTC\u2019s model positions the company to disrupt multiple market segments within Enterprise IT.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "ESTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates IBM Overweight, seeing its Software and Consulting businesses well positioned for hybrid cloud, digital transformation growth, and GenAI adoption.",
+   "anchor": "IBM's Software and Consulting businesses well positioned for Hybrid Cloud, Digital Transformation growth, and GenAI adoption",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Cellebrite (CLBT) Overweight, viewing its recent selloff as overdone and valuation undemanding but noting it needs execution to rebuild investor confidence.",
+   "anchor": "Recent selloff overdone and valuation undemanding but needs execution to rebuild investor confidence.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "CLBT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates SentinelOne (S) Neutral, citing best-in-class Endpoint and Next-Gen SIEM technology but execution issues that could keep the stock more volatile than peers.",
+   "anchor": "Some of the best technology across Endpoint and Next Gen SIEM markets, but recent execution issues and inability to effectively manage investor expectations, result in greater than peer average volatility",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "S"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates GitLab (GTLB) Neutral, encouraged by recent performance but seeing risk/reward as balanced given execution risk and evolving DevSecOps competition.",
+   "anchor": "We are encouraged by recent performance, but risk/reward appears balanced due to incremental execution risk, uncertainty around developer headcount growth",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "GTLB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Qualys (QLYS) Neutral, positioned to benefit from the vulnerability tailwind though execution and bookings mix remain concerns.",
+   "anchor": "Positioned to benefit from the vulnerability tailwind, though execution and bookings mix remain concerns",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "QLYS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Check Point (CHKP) Neutral, citing reasonable valuation but persistent sales execution issues.",
+   "anchor": "Reasonable valuation, but sales execution issues persist.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "CHKP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Rapid7 (RPD) Underweight, saying price performance depends on executing against reset expectations while disappointing execution remains a persistent issue.",
+   "anchor": "Price performance will rely on the company\u2019s ability to execute on reset expectations, but disappointing execution remains a persistent issue.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "RPD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates Fortinet (FTNT) Underweight, noting its firewall refresh-cycle tailwind already appears priced into the stock while incremental software share shifts toward better-positioned platform consolidators.",
+   "anchor": "FTNT benefits from converging industry-wide firewall spending and refresh cycles, but this seems already priced into the stock.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "FTNT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JPMorgan rates C3.ai (AI) Underweight, citing a recovery in progress but ongoing execution risk, lack of profitability, and cash burn creating a challenging setup.",
+   "anchor": "In the midst of a recovery after significant execution issues, but ongoing execution risk, lack of profitability, and cash burn rates create a challenging setup for the stock.",
+   "topic": "security software earnings season",
+   "status": "forecast",
+   "instruments": [
+    "AI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "CrowdStrike (CRWD) shares rose 20% the day after 2Q26 earnings on a beat and raise with net-new ARR acceleration, surging AIDR, and a second straight FY27 net-new outlook raise.",
+   "anchor": "Beat and raise supported by Mythos tailwinds, with net new ARR acceleration, AIDR surging, and the FY27 net-new outlook raised for the second straight quarter.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Elastic (ESTC) shares rose 19% the day after 2Q26 earnings on a beat and raise driven by customer growth and deepening AI penetration within the high-value cohort.",
+   "anchor": "Beat and raise driven by customer growth and AI penetration deepening within the high-value cohort, full-year outlook increased.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "ESTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Rapid7 (RPD) shares rose 15% the day after 2Q26 earnings on a profitability beat and raised margin outlook, even as total ARR still declined on non-core drag.",
+   "anchor": "Profitability beat with the operating margin outlook raised and a restructuring to focus on core, though total ARR still declined on the non-core drag",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "RPD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Qualys (QLYS) shares rose 14% the day after 2Q26 earnings on a beat and raise with Mythos-related demand contributing to pipeline growth.",
+   "anchor": "Beat and raise on stronger ETM execution and NDR improvement, with Mythos-related demand contributing to the pipeline growth",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "QLYS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "SentinelOne (S) shares rose 11% the day after 2Q26 earnings, with net new ARR positive for the fifth consecutive quarter and AI security monetization building.",
+   "anchor": "Beat with NDRR expansion and net new ARR positive for the fifth consecutive quarter, with AI security monetization building.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "S"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "JFrog (FROG) shares rose 8% the day after 2Q26 earnings on high-value customer growth and AI-driven binary consumption.",
+   "anchor": "Beat driven by high-value customer growth and AI-driven binary consumption, continued cloud momentum.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "FROG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "C3.ai (AI) shares rose 4% the day after 2Q26 earnings on strong bookings and its first positive free cash flow, an early sign of a turnaround off a low base.",
+   "anchor": "Beat with strong bookings and first positive free cash flow, early signs of a turnaround off a low base.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "AI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Tenable (TENB) shares rose 3% the day after 2Q26 earnings on a beat and raise with Tenable One at 50% of new business and NDRR improving to 106%.",
+   "anchor": "Beat and raise with Tenable One at 50% of new business and NDRR improving to 106%",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "TENB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Okta (OKTA) shares rose 3% the day after 2Q26 earnings on a beat and raise led by core-identity strength, though agentic identity remains a FY28 catalyst.",
+   "anchor": "Beat and raise led by core-identity strength and cRPO improvement, though agentic identity remains a FY28 catalyst",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "OKTA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Fortinet (FTNT) shares rose 1% the day after 2Q26 earnings on broad-based strength across secure networking, SASE, and OT, though the FY27 setup remains challenging.",
+   "anchor": "Beat and raise driven by broad-based strength across secure networking, SASE, and OT, with accelerating product growth, while FY27 setup remains challenging.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "FTNT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "IBM shares were flat the day after 2Q26 earnings after a pre-announced shortfall from clients redirecting spend to supply-constrained hardware; full-year revenue outlook was cut though management called the slipped deals deferred, not destroyed.",
+   "anchor": "IBM had already pre-announced 2Q shortfall as clients redirected spend to supply-constrained servers, storage, and memory, slipping mainframe and related software deals.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "SailPoint (SAIL) shares fell 1% the day after 2Q26 earnings despite a beat and raise, as the shift toward SaaS pushed revenue recognition out and left reported results softer than underlying ARR momentum.",
+   "anchor": "Beat and raise with AI-driven ARR building ahead of target, though the shift toward SaaS pushed revenue recognition out, leaving reported results softer than the underlying ARR momentum.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "SAIL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Netskope (NTSK) shares fell 2% the day after 2Q26 earnings on a revenue and margin beat with a raised outlook, even as ARR decelerated.",
+   "anchor": "Revenue and margin beat with the outlook raised above the beat, but ARR decelerated",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "NTSK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "GitLab (GTLB) shares fell 3% the day after 2Q26 earnings even as net ARR inflected higher with DBNR up for the first time since 2024, because the 2H outlook assumes normalized bookings off the spike.",
+   "anchor": "Net ARR inflected higher with DBNR up for the first time since 2024, though the 2H outlook assumes normalized bookings off the spike and Flex timing muted reported revenue.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "GTLB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Zscaler (ZS) shares fell 4% the day after 2Q26 earnings as the FY27 ARR outlook implied a deceleration and a recent sales-leadership transition remained a concern.",
+   "anchor": "Net new ARR accelerated ex-Red Canary, but the FY27 ARR outlook implies a deceleration and recent sales-leadership transition remains a concern.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "ZS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Check Point (CHKP) shares fell 8% the day after 2Q26 earnings on in-line revenue and an EPS beat, but product revenue declined on go-to-market reorg disruption.",
+   "anchor": "In-line revenue with an EPS beat, but product revenue declined on go-to-market reorg disruption",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "CHKP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Varonis (VRNS) shares fell 9% the day after 2Q26 earnings despite a beat and raise on SaaS ARR, as large deals slipped late on M&A rumors and federal was stripped from the outlook.",
+   "anchor": "Beat and raise on SaaS ARR (ex-conversions) driven by new-logo strength, though large deals slipped late on the M&A rumors, gross margin compressed on the SaaS transition, and federal was stripped from the outlook.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "VRNS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Palo Alto Networks (PANW) shares fell 9% the day after 2Q26 earnings as elevated investor expectations and a decelerating forward NGS ARR rate offset NGS ARR strength.",
+   "anchor": "NGS ARR strength with integration synergies ahead of plan, offset by elevated investor expectations and a decelerating forward NGS ARR rate.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "PANW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Security Software: Earnings Season Recap: Security Is Non-Discretionary for the AI Era",
+   "claim": "Cellebrite (CLBT) shares fell 29% the day after 2Q26 earnings after the full-year ARR outlook was lowered and revenue missed on slipped large deals amid a new-CEO transition.",
+   "anchor": "Full-year ARR outlook lowered and revenue missed on slipped large deals, against a new-CEO transition.",
+   "topic": "security software earnings season",
+   "status": "released",
+   "instruments": [
+    "CLBT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "T+1"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-16/16560__security-software-earnings-season-recap-security-is-non-disc.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 78,
+  "matched": 78,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
