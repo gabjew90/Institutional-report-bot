@@ -1,0 +1,281 @@
+{
+ "brief": "Tariff-driven inflation, oil near $106/bbl, US fiscal concerns, and competition for AI funding are pushing the 10-year Treasury yield to 4.99%, close to levels last seen before the 2008 financial crisis. Every S&P 500 sector except energy is lower as markets turn risk-off ahead of the FOMC (Wednesday), BoE (Thursday), and BOJ (Friday). Markets price a 90% chance the Fed hikes this week; Mericle expects a hike. Goldman Sachs sees no fundamental case for a hike but thinks the Fed may feel bound by that pricing; it still expects the bull market to hold because earnings remain strong despite higher rates. The September Empire Manufacturing survey missed expectations: new orders and shipments weakened sharply since August, employment ticked up slightly, and both current and expected prices-paid components rose. Separately, Goldman's credit team reports year-to-date foreign purchases of US corporate bonds at $251bn through June, on pace to rival 2025's $392bn record, and expects a floor under foreign flows with broad repatriation unlikely. Conference notes: AeroVironment reiterated FY27 guidance (10% yoy, 86% visibility) with added conservatism for budget timing; TE Connectivity cited datacenter, energy, and defense growth against a muted automotive market; retail conference presenters called consumers resilient but selective.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "The 10-year US Treasury yield was at 4.99% on September 15, 2026, near levels rarely seen since the 2008 Great Financial Crisis.",
+   "anchor": "At 4.99%, yields on 10-year US Treasuries remain close to levels rarely seen since the 2008 Great Financial Crisis",
+   "topic": "global bond selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Brent crude oil was trading slightly lower than the prior day but still holding around $106 per barrel.",
+   "anchor": "Brent WTI is slightly lower than yesterday, but still holding in ~$106/bbl",
+   "topic": "energy price shock",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Every S&P 500 sector except energy was trading lower on September 15, 2026 as markets adopted a risk-off posture ahead of this week's FOMC, BoE, and BOJ meetings.",
+   "anchor": "every sector in the S&P 500 \u2014 except energy \u2014 is trading lower",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Markets were pricing in a 90% likelihood that the Federal Reserve hikes interest rates this week.",
+   "anchor": "markets are pricing in a 90% likelihood of a hike this week",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Goldman Sachs sees no fundamental reason for the Fed to hike rates but recognizes the Fed may feel bound to hike given the 90% probability markets have priced in.",
+   "anchor": "we don\u2019t think there\u2019s a fundamental reason to hike, but we recognize that the Fed may feel bound to hike",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Goldman Sachs economist David Mericle expects the FOMC to raise interest rates at tomorrow afternoon's scheduled meeting.",
+   "anchor": "David Mericle expects the FOMC to raise rates during tomorrow afternoon\u2019s scheduled FOMC meeting",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Goldman Sachs does not expect higher interest rates to derail the equity bull market because corporate earnings remain strong.",
+   "anchor": "earnings drive stock prices, so we don\u2019t think higher rates will derail the bull market from here",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "The September Empire Manufacturing survey came in below expectations with a weak underlying composition.",
+   "anchor": "the September Empire Manufacturing survey came in below expectations, and the composition of the report was weak",
+   "topic": "US growth outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "New orders and shipments components of the September Empire Manufacturing survey softened significantly since August.",
+   "anchor": "both new orders and shipments components softened significantly since August",
+   "topic": "US growth outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "The employment component of the September Empire Manufacturing survey edged up slightly since August.",
+   "anchor": "the employment component edged up slightly",
+   "topic": "US growth outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Both the current and expected prices paid components of the September Empire Manufacturing survey increased.",
+   "anchor": "The prices paid components\u2014both current and expected\u2014increased as well",
+   "topic": "US growth outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Year-to-date net foreign purchases of US corporate bonds totaled $251 billion through the end of June 2026.",
+   "anchor": "year-to-date net foreign purchases of US corporate bonds totaled $251 billion",
+   "topic": "foreign demand for US credit",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "through June 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "2026 foreign purchases of US corporate bonds are on pace to rival 2025's annual record of $392 billion.",
+   "anchor": "leaves 2026 on pace to rival 2025\u2019s annual record of $392 billion",
+   "topic": "foreign demand for US credit",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Goldman Sachs expects a floor to remain under foreign purchases of US-domiciled credit and views a broader repatriation of flows as unlikely.",
+   "anchor": "we continue to expect a floor to remain under foreign purchases of US-domiciled credit, and view a broader repatriation of flows as unlikely",
+   "topic": "foreign demand for US credit",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "AeroVironment reiterated its FY27 revenue guidance of 10% year-over-year growth at the midpoint.",
+   "anchor": "The defense tech company reiterated its FY27 revenue guidance of 10% yoy",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "AeroVironment has 86% visibility into revenue through the end of its current fiscal year.",
+   "anchor": "highlighting it has 86% visibility into revenue through the end of this fiscal year",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AVAV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "TE Connectivity highlighted growth drivers across its business including datacenter, energy, and aerospace & defense, driven by strong demand for technological innovation and content per unit.",
+   "anchor": "growth drivers across its business, including datacenter, energy, and A&D, driven by strong demand for both technological innovation and content per unit",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TEL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "TE Connectivity's automotive end market remains more muted than its other end markets.",
+   "anchor": "in more muted end markets, like automotive",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TEL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Midday Market Intelligence: waiting game",
+   "claim": "Companies presenting at Goldman Sachs' Global Consumer & Retail Conference described a resilient but selective consumer backdrop with stable demand and encouraging back-to-school trends, though shoppers remain highly value-conscious and intentional in their purchases.",
+   "anchor": "resilient, but selective, consumer backdrop, with stable demand, encouraging back-to-school trends, but shoppers remain highly value-conscious and intentional in their purchases",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-16/16583__midday-market-intelligence-waiting-game.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 19,
+  "matched": 19,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 5,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
