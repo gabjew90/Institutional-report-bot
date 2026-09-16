@@ -98,7 +98,14 @@ jobs:
           rc=$?
           set -e
           if [ $rc -ne 0 ] || ! printf '%s' "$out" | grep -qi "ok"; then
-            echo "::error::Claude auth failed (exit $rc)"; exit 1
+            # A usage limit is not an auth failure (2026-09-15/16).
+            if printf '%s' "$out" | grep -qiE "hit your .*limit|usage limit|rate limit"; then
+              echo "::error::Claude usage limit reached; the token is fine, do not re-mint. $(printf '%s' "$out" | grep -iE 'limit' | head -1)"
+            else
+              echo "::error::Claude auth failed (exit $rc)"
+            fi
+            printf '%s\n' "$out" | tail -5
+            exit 1
           fi
 
       - name: Grade every dimension, two agents each

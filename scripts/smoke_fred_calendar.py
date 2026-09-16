@@ -213,12 +213,16 @@ def test_enrich_core_mom_not_headline_yoy():
     from report import fred_data
     now = datetime.utcnow()
     past = (now - timedelta(hours=20)).strftime("%Y-%m-%dT%H:%M:%S")
-    recent = (now - timedelta(days=15)).strftime("%Y-%m-01")
+    # The observation must be the release's reference month (the calendar
+    # month before the row date, 2026-09-11 rule). "now - 15 days" only
+    # landed there during the first half of a month, so this smoke began
+    # failing on 2026-09-16 with no code change.
+    recent = fred_data.reference_period(past) + "-01"
 
     # Core series (CPILFESL) returns a benign m/m ~0.2%; if the matcher
     # wrongly used headline YoY it'd be ~4%.
     core_obs = _obs([(recent, 100.2),
-                     ((now - timedelta(days=45)).strftime("%Y-%m-01"), 100.0)])
+                     (fred_data.month_shift(recent[:7], -1) + "-01", 100.0)])
 
     def fake_get(path, params):
         # Only the core SA series should ever be requested for this row

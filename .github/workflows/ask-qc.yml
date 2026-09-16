@@ -94,10 +94,16 @@ jobs:
           rc=$?
           set -e
           if [ $rc -ne 0 ] || ! printf '%s' "$out" | grep -qi "ok"; then
-            echo "::error::Claude auth failed (exit $rc) — the token is \
+            # A usage limit is not an auth failure (2026-09-15/16: this
+            # told the owner to re-mint a working token).
+            if printf '%s' "$out" | grep -qiE "hit your .*limit|usage limit|rate limit"; then
+              echo "::error::Claude usage limit reached; the token is fine, do not re-mint. $(printf '%s' "$out" | grep -iE 'limit' | head -1)"
+            else
+              echo "::error::Claude auth failed (exit $rc) — the token is \
           invalid or expired. Re-mint with 'claude setup-token' and \
           update the CLAUDE_CODE_OAUTH_TOKEN repo secret (Name exactly \
           that; the token goes in the Value box)."
+            fi
             printf '%s\n' "$out" | tail -5
             exit 1
           fi

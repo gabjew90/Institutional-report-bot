@@ -2643,3 +2643,38 @@ and again in `build_conference_rows`, so sessions already stored with
 the extra tickers are filtered too. The corrected 9/14 sheet was
 posted with the conference band suppressed and the Cracker Barrel row
 removed; the image on the original message was replaced in place.
+
+## 2026-09-16 — Weekly Claude usage limit outage (9/15 16:00 ET to 9/16 17:00 ET)
+
+The subscription behind the pulse routine, the pilot workflows and the
+nightly QC hit its seven-day limit on 2026-09-15 and reset 2026-09-16
+21:00 UTC. The worker (Gemini /ask, ingestion, calendar sheets, print
+watch) was unaffected: calendar sheets posted every day and the print
+watch posted the 9/16 FOMC hike at 14:00:30 ET, 30 seconds after the
+statement (verified: +25bp to 3.75-4.00%, 12-0).
+
+Lost: no pulse on 9/15 or 9/16 (both routine runs rejected by the
+seven-day limit within a second; the routine stays enabled and its
+next run is 9/17 10:03 ET, whose window is since-last-daily, about 71h,
+inside the 96h ceiling). 19 of 28 GitHub runs failed: every pilot
+reader at the auth check, the 9/16 editor (correctly refused to write
+from stale cards), and the 9/16 ask-qc. Pilot 9/15 and 9/16 are void.
+
+Remedies the same evening:
+- Cancelled the reader run that started at the reset, which was
+  spending the fresh budget on 9/15 documents no editor window reads.
+- Retired the 88 unread 9/15 documents with given-up read-failure
+  markers, so readers go straight to 9/16 and 9/17 and the 9/17 editor
+  can have a complete window.
+- The four workflow auth checks now say "usage limit reached, the
+  token is fine" when the CLI reports a limit; each had told the owner
+  to re-mint a working token.
+- smoke_fred_calendar's core m/m test built its observation as "now -
+  15 days", which only matched the release's reference month in the
+  first half of a month; it began failing on 9/16 with no code change.
+
+Budget, measured: the limit reset 2026-09-09 21:00 UTC and ran out
+2026-09-15 around 20:00 UTC, about six days, on a week that included
+the heavy 9/14 Monday. At its current size the pilot does not fit in
+one weekly limit alongside the production pulse. This is the plan
+section 5 headroom reading, and it needs an owner decision before DAY1.

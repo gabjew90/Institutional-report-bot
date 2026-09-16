@@ -87,8 +87,15 @@ jobs:
           rc=$?
           set -e
           if [ $rc -ne 0 ] || ! printf '%s' "$out" | grep -qi "ok"; then
-            echo "::error::Claude auth failed (exit $rc) — re-mint with \
+            # 2026-09-15/16: every run said "re-mint the token" while the
+            # CLI's own line was "You've hit your weekly limit". A usage
+            # limit is not an auth failure; say which one it is.
+            if printf '%s' "$out" | grep -qiE "hit your .*limit|usage limit|rate limit"; then
+              echo "::error::Claude usage limit reached; the token is fine, do not re-mint. $(printf '%s' "$out" | grep -iE 'limit' | head -1)"
+            else
+              echo "::error::Claude auth failed (exit $rc) — re-mint with \
           'claude setup-token' and update CLAUDE_CODE_OAUTH_TOKEN."
+            fi
             printf '%s\n' "$out" | tail -5
             exit 1
           fi
