@@ -2678,3 +2678,15 @@ Budget, measured: the limit reset 2026-09-09 21:00 UTC and ran out
 the heavy 9/14 Monday. At its current size the pilot does not fit in
 one weekly limit alongside the production pulse. This is the plan
 section 5 headroom reading, and it needs an owner decision before DAY1.
+
+## 2026-09-16 — Pilot readers move to Sonnet (owner call)
+
+Both reader tiers now run claude-sonnet-5. Opus read the top-bank tier
+(19-29 documents a day, 20-50 turns each) and that was most of the
+pilot's draw on the shared seven-day limit that ran out on 9/15. The
+grades never showed a fidelity gap between the Opus and Sonnet tiers.
+The editor stays on Opus (one write a day) and the graders on Sonnet.
+The tier label is kept so the ledger's tier split and the graders'
+per-tier numbers keep working. Model change, so the pilot clock
+restarts; DAY1 was never set. Next lever if the week still does not
+fit: one grader per dimension with a tiebreak only on disagreement.

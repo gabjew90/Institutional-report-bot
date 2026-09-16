@@ -56,7 +56,13 @@ SCOREBOARD_PATH = f"{PILOT_ROOT}/scoreboard.md"
 # that can move server-side mid-pilot — the shape behind two retracted
 # findings in this repo. A change to any of these restarts the pilot
 # clock; that is the whole reason they live in one place.
-MODEL_READER_TOP = "claude-opus-5"      # GS/MS/JPM/Citi/DB/BofA
+# Owner call 2026-09-16: every reader on Sonnet. Opus read the top-bank
+# tier (55-70% of HIGH documents, 20-50 turns each) and that spend
+# exhausted the shared seven-day Claude limit on 9/15, costing two
+# production pulses. The grades showed no fidelity gap between the two
+# reader tiers. The tier LABEL stays: the ledger and graders still
+# split by it, and it keeps the option to put Opus back on one tier.
+MODEL_READER_TOP = "claude-sonnet-5"    # GS/MS/JPM/Citi/DB/BofA
 MODEL_READER_REST = "claude-sonnet-5"   # everything else
 MODEL_EDITOR = "claude-opus-5"
 MODEL_GRADER = "claude-sonnet-5"
