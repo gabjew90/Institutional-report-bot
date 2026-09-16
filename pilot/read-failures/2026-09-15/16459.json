@@ -4,11 +4,6 @@
  "last_reason": "retired 2026-09-16: weekly Claude usage limit hit 2026-09-15; 9/15 is a void shadow day and no later editor window uses its cards, so reading it would spend the reset budget for nothing",
  "history": [
   {
-   "at": "2026-09-16T21:32Z",
-   "run_id": "35149858152",
-   "reason": "reader: Error: Reached max turns (30)"
-  },
-  {
    "at": "2026-09-16T21:46Z",
    "run_id": "manual-outage-retire",
    "reason": "retired 2026-09-16: weekly Claude usage limit hit 2026-09-15; 9/15 is a void shadow day and no later editor window uses its cards, so reading it would spend the reset budget for nothing"
