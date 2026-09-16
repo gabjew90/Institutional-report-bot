@@ -1,0 +1,858 @@
+[Page 1]
+May Lose Value
+Not FDIC Insured
+No Bank Guarantee
+The Limit Does 
+Not Exist
+Rethinking the S-Curve in the Age 
+of Compounding Innovation
+Part III
+September 2026
+
+
+[Page 2]
+We believe it is important not 
+only to recognize that compute 
+is accelerating but also to see 
+that the path forward, at least 
+within the AI Factory, is already 
+identifiable.
+Authors
+Matthew J. Moberg, CPA
+Portfolio Manager
+Franklin Equity
+Emily Elott
+Research Analyst
+Franklin Equity
+
+
+[Page 3]
+franklintempleton.com
+The Limit Does Not Exist
+3
+Part III: The AI Scaling Era and the 
+Advancements Ahead
+1. Moore’s Law: First articulated by Gordon Moore in 1965, it refers to the observation that the number of transistors on an integrated circuit doubles roughly every two years.
+2. Token throughput is a measure that tracks how much AI work gets done by a given unit. It is a function of peak compute available x utilization, where utilization depends on other bottlenecks in the 
+system like memory, packaging, power, and networking.
+The Frontier of Innovation Is Building and Optimizing 
+These AI systems
+If the Moore’s Law1 Era was about selling a horse, then this new era is about selling 
+the horse, stable, trainer and track. 
+In order to accelerate compute, GPUs, CPUs, memory, networking equipment, 
+power, cooling, physical layout and many other factors need to work in tandem. The 
+CPU may be the conductor, but, in order to play the symphony, all these 
+instruments need to work together.
+Exhibit 1: The Unit of Compute for AI is Shifting from the Chip 
+to the System
+Key Takeaway
+The artificial intelligence (AI) 
+Scaling Era is not only about 
+shrinking transistors but also 
+about building an architecture 
+that can feed, connect, 
+package, power and fully use 
+thousands of chips as one 
+unified system. At least five 
+major but improvable 
+bottlenecks exist today. Each 
+is moving along its own 
+S-curve of exponential 
+improvement. The new 
+semiconductor S-curve is, in 
+fact, many S-curves. Together, 
+they are accelerating the 
+performance of the entire 
+system. These advancements 
+are not only achievable but 
+the roadmap is, in many 
+sections, already identifiable.
+Related Research
+The Why of AI
+Why is this moment different? 
+Our companion paper 
+explores why most 
+technologies eventually 
+plateau, why semiconductors 
+have been the exception, and 
+how the shift from Moore’s 
+Law to AI scaling may be 
+helping usher in the Fourth 
+Industrial Revolution.
+Explore The Why of AI
+Basic Unit
+1 Chip
+1 Rack
+1 AI Factory
+Type
+Individual processor
+Compute node (many 
+chips working 
+together)
+Distributed AI 
+supercomputer (many 
+racks working together)
+Key Components
+CPU
+GPUs, HBM, CPUs, 
+networking, storage
+Thousands of GPUs, 
+networking fabric, 
+storage, power and 
+cooling infrastructure
+Primary 
+Bottleneck
+Transistor density and 
+clock speed
+Data movement within 
+the server/rack
+Coordination and 
+utilization across the 
+entire cluster
+Method of 
+Improvement
+Shrink transistors
+Bring memory closer to 
+compute and increase 
+compute efficiency
+Scale and synchronize 
+thousands of chips into 
+ONE system
+Measure of 
+Improvement
+Clock Speed & 
+Transistors per Chip
+Token Throughput2 per 
+Rack 
+Token Throughput per 
+Factory
+Today’s compute acceleration is best measured in terms of token throughput, 
+which captures the processing power of the compute system in the real world. A 
+token is the most basic unit of data an AI system parses, usually a word, part of a 
+word, or punctuation. TFLOPS, or trillion floating point operations per second, is a 
+term for the number of AI calculations the computing system can perform in one 
+second. TFLOPS tracks peak theoretical compute in the absence of other 
+bottlenecks. More TFLOPS raises the theoretical maximum for token throughput. 
+However, the best computer systems minimize the cost and maximize the speed 
+and power efficiency of token manipulation in the entire system. Real-world 
+performance increasingly depends on how effectively the system can convert 
+theoretical compute into token throughput.   
+
+
+[Page 4]
+4
+The Limit Does Not Exist
+franklintempleton.com
+There is enormous room for improvement. In many systems today, GPUs only process tokens 30%-50%3 of 
+the time, with the rest spent waiting for data. One analysis estimates that 47% of total system energy is 
+spent moving data between components, compared with only 8% spent on GPU calculations 
+themselves.4 
+One Second Inside a GPU:
+3. Source: Karine Dilanyan. “Why GPUs Sit Idle: The Hidden Efficiency Problem in AI Infrastructure.” VEXXHOST Blog. March 11, 2026.
+4. Source: Nutty, “The Age of Interconnection: Connecting the Dots,” Nutty (Substack). April 22, 2026.
+5. This is not an exhaustive list, and it is likely that more will emerge.
+This inefficiency arises from the complexity of connecting many GPUs into one integrated system. 
+Beyond the GPUs, you need CPUs to help direct traffic, memory chips to store and feed tokens, optical 
+cables to transfer tokens between processors as fast as possible, and a steady, efficient power supply to 
+feed the chips. For maximum performance, all of these components must transfer data with minimal 
+latency (friction), which often requires placing them as close together as physics allows.
+The path forward is visible. We have a line of sight to future improvements in each of these areas 
+along multiple S-curves of growth.
+Every technology eventually runs into a wall. AI compute simply changes which wall it is 
+climbing. For the purpose of this paper, we have identified five frontiers5 in AI Factory design that can 
+help accelerate token throughput. This is not an exhaustive list. However, we believe these elements 
+will drive continued exponential growth in token throughput, which we view as the appropriate proxy 
+for compute power. 
+
+
+[Page 5]
+franklintempleton.com
+The Limit Does Not Exist
+5
+Exhibit 2: Five Frontiers (in addition to Moore’s Law) Driving the Next Wave of 
+Compute Improvement
+6. Ibid.
+7. Source: “HBM: The History of Stacked Memory and Where It’s At Now.” Mark’s PC Parts. March 27, 2026.
+8. Source: Luke James. “JEDEC Officially Releases HBM4 Memory Standard.” All About Circuits. April 28, 2025.
+9. Source: “CoWoS-S, R, L Explained – TSMC’s Advanced Packaging Strategies for AI & HPC.” Aminext. April 20, 2025.
+10. Source: Blake Crosley. “NVLink and Scale-Up Networking: When 800G Ethernet Isn’t Enough.” Introl, February 4, 2026.
+11. Unlike the other categories, power is measured using efficiency and infrastructure metrics rather than a single performance metric. Historical rates are therefore approximate. This is based on data-
+center-level PUE. Source: LiquidStack. “Why Data Center Efficiency Gains Have Stalled Since 2018.” March 8, 2022.
+12. Source: NVIDIA. “NVIDIA V100 Tensor Core GPU.” Accessed July 9, 2026.
+13. Source: Emanuele Del Sozzo, Martin Fleming, Kenneth Flamm, and Neil Thompson. “How Much Progress Has There Been in NVIDIA Data center GPUs?” arXiv, 2026.
+Bottleneck
+What it does
+Why it matters
+Historical 
+Improvement 
+Rate
+Can it improve?
+Future 
+Improvement 
+Areas 
+Memory
+Stores data and 
+feeds it to GPUs 
+to analyze
+Speed of data 
+transfer limits 
+GPU utilization
+7%–10%/year.6 
+After HBM, 10x in 
+10 years.7 8
+Yes
+Taller stacks, 
+hybrid bonding, 
+wider buses
+Packaging
+Brings chips 
+closer together
+Shorter distance = 
+faster data 
+transfer
+Limited until 2012 
+CoWoS 
+breakthrough9
+Yes
+Logic base die, 3D 
+stacking, glass 
+substrate, bigger 
+packages
+Networking
+Connects GPUs 
+within a rack, 
+across racks, 
+across data 
+centers 
+Enables 1,000s of 
+GPUs to behave 
+as one
+Pre-AI was 2x 
+every ~3–4 years, 
+now 2x every two 
+years10
+Yes
+Co-packaged 
+optics, faster links, 
+new protocols like 
+NVLink, ESUN, 
+and UAL, 
+photonic 
+interposers 
+Power
+Supplies chips 
+with electricity
+Can’t compute 
+anything without 
+enough fuel
+4%–5%/year 
+2007–2017, stalled 
+since 2018.11
+Yes
+800VDC 
+architecture, 
+liquid cooling, 
+SMRs, on-site 
+generation
+Tensor Compute
+Performs matrix 
+math
+Calculating 
+engine of AI
+Invented in 2017.12 
+Before that, 
+compute tracked 
+Moore’s Law (2x 
+every two years). 
+Since 2017, ~50%/
+year13
+Yes
+Less precise 
+number formats, 
+denser transistor 
+designs, faster 
+clock speeds
+Note: Roadmap dates, product names, and performance figures reflect publicly available company disclosures and industry sources as of July 19, 2026. Future product 
+specifications, availability dates, and performance targets remain subject to change. Historical improvement rates are approximate and use different underlying metrics. 
+Memory, packaging, networking, power, and compute are measured differently and are not directly comparable. The table is intended to illustrate the major bottlenecks 
+constraining AI-system performance and the primary avenues through which each may improve.
+
+
+[Page 6]
+6
+The Limit Does Not Exist
+franklintempleton.com
+Memory: The Processor’s Fuel 
+Exhibit 3: High Bandwidth Memory (HBM) Is Accelerating Memory Bandwidth, but 
+Compute Is Improving Even Faster14
+Memory Bandwidth Growth
+Note: Values show cumulative improvement relative to 1998 (1998 = 1). Compute represents theoretical peak arithmetic throughput and memory represents aggregate 
+local-memory bandwidth for a representative processor or accelerator in each period. GPU figures use dense (non-sparse) manufacturer-rated specifications. Compute 
+evolves from conventional floating-point performance to Tensor Core performance over time; therefore, the chart illustrates growth in maximum available compute 
+throughput relative to memory bandwidth rather than constant-precision performance.
+Increasingly, AI is limited not by how fast GPUs can compute but instead by how quickly they can access 
+data. Data, stored in memory, has become the fuel that keeps AI processors running. Every AI model 
+depends on moving enormous amounts of data between storage, memory and the GPU. Processing 
+tokens relies most on one specific type of memory, DRAM, which stores the data most frequently 
+accessed by the GPU during computation. Adding memory bandwidth and shortening the distance 
+between the GPU and DRAM chips increases the utilization rate of the GPU. These are the main levers 
+today’s engineers are focused on to improve memory. 
+14. Author calculations using historical SDRAM and DDR bandwidth data and High Bandwidth Memory (HBM) generation specifications. Data compiled from JEDEC HBM standards and industry reference 
+sources. See JEDEC, High Bandwidth Memory (HBM) Standards JESD235, JESD235A, JESD238, and JESD270-4. Author calculations using indexed GPU compute performance and memory bandwidth 
+data. Memory wall concept adapted from Amir Gholami et al., “AI and Memory Wall,” IEEE Micro, 2024.
+1998
+0
+500
+1,500
+2,000
+1,000
+2,500
+Memory Bandwidth (GBytes/s)
+2003
+2007
+2014
+2018
+2022
+Invention of HBM accelerates
+improvement rate
+Pre-HBM DRAM
+HBM Stack
+1998
+0x
+4,000,000x
+3,000,000x
+5,000,000x
+2,000,000x
+1,000,000x
+6,000,000x
+Performance Multiple (1998 = 1)
+2002
+2006
+2010
+2014
+2018
+2022
+Peak Compute Throughput
+Memory Bandwidth
+The Memory Wall
+Growth in Peak Compute Throughput vs. Memory Bandwidth Since 1998
+
+
+[Page 7]
+franklintempleton.com
+The Limit Does Not Exist
+7
+From roughly the 1960s through the early 2010s, DRAM bandwidth improved at a relatively steady pace of 
+about 7%–10% per year. During that era, memory was largely viewed as a commodity, and DRAM generally 
+moved fast enough to satisfy ordinary computing workloads. As a result, innovation was incremental, 
+competition was intense, and the industry became notorious for its boom-and-bust cycles. After decades 
+of consolidation, the market shrank from roughly 10 major producers to just three global leaders. 
+Consolidation helped transform memory from a commodity business to one capable of funding long-term 
+innovation. Higher returns allowed manufacturers to invest billions into innovations such as advanced 
+packaging and next-generation HBM.
+Invented and commercialized between 2013 to 2016, HBM fundamentally changed DRAM memory 
+architecture. It dramatically shortened the distance data must travel between memory and the GPU. 
+Instead of placing memory chips far from the processor, HBM stacks multiple DRAM dies vertically using 
+through-silicon vias (TSVs) and places them millimeters from the GPU using advanced packaging. This 
+increases memory bandwidth and reduces latency, power consumption, and physical footprint. It is like 
+replacing several spread-out ranch homes with an eight-story apartment building connected by 
+lightning-fast elevators. Over the past decade, HBM has increased memory bandwidth by roughly 10x, 
+transforming AI system performance.
+An Illustration of an HBM Stack
+Even with these advances, memory has struggled to keep up with improvements in compute. As we have 
+discussed, transistor density historically doubled about every two years under Moore’s Law, and, as a result, 
+compute performance advanced far faster than memory bandwidth. Today, a GPU is only as useful as its 
+ability to stay fed with data. If memory cannot deliver data quickly enough, expensive processors sit idle 
+instead of performing calculations. This growing imbalance became known as the “memory wall”15—when 
+processors spend a significant proportion of time waiting for data rather than performing computations.
+Today, the outlook is improving. A healthier industry structure and stronger pricing have enabled 
+sustained investment in research and development. Each new generation of HBM—now progressing to 
+HBM416—delivers higher bandwidth, greater capacity, and better energy efficiency. 
+15. Source: Gholami, Amir, Zhewei Yao, Sehoon Kim, Coleman Hooper, Michael W. Mahoney, and Kurt Keutzer. “AI and Memory Wall.” IEEE Micro, 2024.
+16. HBM4 has 2x more bandwidth than HBM3E. Current HBM3E products now deliver more than 1.2 TB/s of bandwidth per stack, while next-generation HBM4 is expected to push bandwidth beyond 2 TB/s 
+through taller stacks and more advanced packaging. Only two years separate the generations, meaning memory is now improving at a rate comparable to Moore’s Law. HBM4 products are available or 
+planned in 12-high and 16-high configurations.
+
+
+[Page 8]
+8
+The Limit Does Not Exist
+franklintempleton.com
+Beyond HBM, companies are also working to optimize other types of memory, including DDR memory, 
+CXL-attached memory pools, High Bandwidth Flash (HBF), NAND flash storage, and other large-scale 
+storage systems. Memory technologies exist in a hierarchy organized by cost, speed, and proximity to 
+active computation. The most expensive forms of memory are also the fastest and closest to the GPU. 
+Because they prioritize speed, they store relatively small amounts of data. Cheaper forms of memory and 
+storage, such as NAND flash and disk drives, are slower but can store vastly larger datasets that are 
+accessed less frequently. 
+Improving technologies across the memory hierarchy helps move data more efficiently across AI 
+infrastructure. Yet, because HBM sits directly beside the GPU and feeds data into computation, it remains 
+the most important memory technology and the one advancing the fastest.
+While the memory wall has not disappeared, the industry is making meaningful progress toward narrowing 
+the gap between compute and memory performance. The next decade of AI compute may depend as 
+much on moving data efficiently as performing calculations. GPUs remain the engines of AI, but memory 
+is increasingly one of the primary limiting factors. 
+Packaging: Bringing Everything Closer Together
+Exhibit 4: Advanced Packaging Shortens the Distance Between 
+Memory and Compute17
+Type of Packaging
+Years in Use
+Relative Distance Data Must Travel18
+Traditional DRAM / Motherboard 
+1970-2015
+Centimeters (cm)
+CoWoS 
+(Chip-on-Wafer-on-Substrate)
+2015-2027
+Millimeters (mm)
+Hybrid Bonding
+2027+
+Micrometers (µm)
+(1 mm = 1,000 µm)
+17. Source: Taiwan Semiconductor Manufacturing Company (TSMC). “CoWoS®,” TSMC 3DFabric, accessed July 9, 2026. Source: Intel Foundry. Foveros Direct 3D Technology Brief (Santa Clara, CA: Intel, 2025). 
+18. Approximate distance data must travel is illustrative rather than an exact physical measurement. The purpose is to show the order-of-magnitude reduction in the distance data travels between memory 
+and compute as packaging technology evolves.
+Note: Distances are illustrative of the order-of-magnitude reductions rather than exact. 
+HBM could not have become a practical reality without advanced packaging. While HBM provided a new 
+memory architecture, Chip-on-Wafer-on-Substrate (CoWoS) made that architecture possible by bringing 
+GPUs and HBM physically together. Instead of improving performance by shrinking transistors, CoWoS 
+does so by shrinking the distance that data must travel. If traditional DRAM was a warehouse across town, 
+CoWoS and HBM moved the warehouse onto the factory floor.
+In 2012, TSMC invented CoWoS, but the broader idea of advanced packaging has become an industry-
+wide priority. Nearly every major AI-chip company is now using some version of the CoWoS process, 
+including EMIB from Intel and I-Cube from Samsung.   
+This seemingly simple idea fundamentally changed AI system design. CoWoS mounts the GPU and 
+multiple HBM stacks side by side on a thin silicon interposer containing thousands of high-speed 
+connections. By dramatically shortening communication paths, CoWoS enables the enormous memory 
+bandwidth modern AI processors require while reducing latency and the energy required to move data. 
+
+
+[Page 9]
+franklintempleton.com
+The Limit Does Not Exist
+9
+As we discussed in the memory section, moving data efficiently has become more important than 
+performing computations.
+Packaging has, therefore, evolved from a manufacturing afterthought into one of the most strategically 
+important technologies in semiconductors. In the past, packaging primarily protected chips and 
+connected them to a circuit board. Today, it determines how much memory can be attached to a 
+processor, how quickly those components communicate, how much power the system consumes, and 
+ultimately how much AI work can be performed.
+Innovation is far from over. Today’s CoWoS systems connect GPUs and HBM stacks to the silicon 
+interposer using microscopic spheres of metal called solder bumps. Although incredibly small, these 
+bumps still introduce resistance, consume space, and limit how densely connections can be packed. 
+The next major advance is hybrid bonding, which replaces these solder bumps with direct copper-to-
+copper connections, enabling much finer interconnect density, lower power consumption, and 
+substantially higher bandwidth. Combined with larger interposers, more HBM stacks, and next-generation 
+packaging technologies, hybrid bonding could once again reshape AI system performance.
+As AI shifts from a compute-constrained problem to a data movement problem, packaging is becoming a 
+competitive advantage rather than simply a manufacturing afterthought. Just as HBM redefined memory, 
+advanced packaging technologies such as CoWoS are redefining how entire AI systems are built. In the 
+coming decade, breakthroughs in packaging may prove to be just as important as breakthroughs in chip 
+design itself.
+Networking: Turning Thousands of GPUs into One Computer 
+If the data in an AI compute rack is a sports car, networking is the highway system, fiber optics/copper are 
+the asphalt on the road, and communication protocols are the traffic lights. When a road is thin, full of 
+potholes, and without traffic lights, the sports car needs to move much more slowly. Networking is about 
+improving the road. 
+Large AI models are trained on thousands of GPUs that continually exchange activations, gradients, and 
+parameters. As AI systems grew from one GPU to thousands of GPUs, computing moved from an 
+individual sport to a team sport. Networking is what allows thousands of processors to work together as 
+one computer. 
+Advances in optical networking enable thousands of GPUs to communicate at high speed and 
+behave as a single system.19
+19. Sources: ID’Ambrosia, John. “Ethernet’s Next Bar Is Now: 800 Gb/s!” IEEE Standards Association. April 23, 2024. Ethernet Alliance. 2026 Ethernet Roadmap. 2026. IEEE 802.3 Ethernet Working Group. 
+“IEEE P802.3dj 200 Gb/s, 400 Gb/s, 800 Gb/s, and 1.6 Tb/s Ethernet Task Force.” Last updated July 24, 2025. lLightCounting. “Updated Forecast for Sales of Ethernet Transceivers, LPO and CPO Is Now 
+Available.” LightTrends Newsletter. September 2024. Vallo, Martin. “Co-Packaged Optics Are Inching Closer to Reality.” Yole Group. Presented at SPIE Photonics West 2023, 2023.
+
+
+[Page 10]
+10
+The Limit Does Not Exist
+franklintempleton.com
+Exhibit 5: Networking Bandwidth Has Increased 16x in Roughly a Decade
+Networking Bandwidth Speed
+Note: Historical data reflect approximate commercial deployment timing. Figures for 2028 and 2030 are illustrative estimates based on industry roadmaps indicating 
+progression from 1.6T to 3.2T and ultimately 6.4T networking technologies. Actual rollout timing may differ.
+Over the past decade or so, the industry has doubled leading-edge networking bandwidth around every three 
+to four years. That’s a compounded improvement of approximately 25-30% per year, or a 16x increase over the 
+past 12-14 years. AI demand has now accelerated the rate of improvement to one doubling every two years. 
+As is the case with the memory companies, industry consolidation over the past 20 years has left a small 
+number of larger, better-capitalized networking companies that can invest in research and development at a 
+scale smaller competitors could not. In the pre-AI era, doubling networking bandwidth every three to four 
+years was generally sufficient for traditional enterprise and cloud workloads. As AI training clusters grew from 
+thousands to hundreds of thousands of GPUs, however, networking became a strategic bottleneck rather 
+than a commodity and created a massive incentive to invest in improving this technology. 
+The industry is increasingly investing in new fiber optics technology to replace copper. Relative to copper, 
+optical networking uses less power, has higher bandwidth in a smaller physical footprint, and retains better 
+signal integrity. This technology was first implemented for long-distance communication because, depending 
+on the application, fiber-optic links can transmit data 100x-400x farther than typical copper connections. 
+Now, optical networking is moving progressively inward. Fiber first displaced copper over long-haul links 
+and between data centers, then between racks, and is now beginning to move inside rack-scale 
+computers. Over time, this progression may allow increasingly large collections of GPUs to behave as a 
+single computing system.
+The industry uses three terms to describe what parts of the AI Factory are being connected: scale-out, 
+scale-up, and scale-across. Each is at its own stage in the optical transition. 
+1.	 Scale-out, which connects servers and racks throughout the AI Factory, is already mostly optical 
+because the distances are longer.20
+2.	 Scale-up, which connects GPUs within a server, pod, or rack, is in the middle of the transition from 
+copper to optics, driven by rising GPU counts and exploding bandwidth needs. This is driving interest 
+in near-packaged optics (NPO) and, eventually, co-packaged optics (CPO), technologies that 
+progressively move the optical transceiver closer to the GPU. Each step reduces power consumption 
+and shortens the electrical path, allowing for more efficient racks.21
+20. Source: Howard. “Scale-Up vs. Scale-Out in AI Infrastructure.” FS.com, November 5, 2025.
+20. Source: Howard. “Scale-Up vs. Scale-Out in AI Infrastructure.” FS.com, November 5, 2025.
+21. Source: Gavin. “Understanding Scale-Up vs. Scale-Out in AI Infrastructure.” NADDOD Blog. June 19, 2025. Partfiniti Inc. “Optical Scale-Up vs. Scale-Out: Next-Gen AI Data Center Networking.” LinkedIn, 
+September 4, 2025.
+2012
+100
+0
+2,000
+3,000
+4,000
+5,000
+6,000
+1,000
+7,000
+Leading-Edge Network Link Speed (Gigabits/s)
+2014
+2016
+2018
+2020
+2022
+2024
+2026
+2028
+2030
+200
+400
+800
+1,600
+3,200 (Estimate)
+6,400 (Estimate)
+
+
+[Page 11]
+franklintempleton.com
+The Limit Does Not Exist
+11
+3.	 Finally, scale-across is the next frontier. AI Factories are already connected by fiber. The challenge is 
+no longer limited to transmitting data over long distances but also involves coordinating increasingly 
+large collections of compute. In our view, future advances in networking and software may allow 
+geographically distributed GPU clusters to behave more like a single computing system.22 23
+As AI clusters grow, fast communication is becoming as important as computation. Just as with memory 
+and advanced packaging, the key bottleneck is increasingly data movement rather than computation 
+itself. A GPU cannot perform useful work while waiting for data from memory, storage, or another GPU.
+Twenty years ago, networking connected individual computers performing separate tasks. Today, 
+networking enables thousands of computers to compute as one. Scaling an AI Factory isn’t just about 
+building a faster GPU; it is about making 100,000 GPUs behave like one enormous processor. 
+If advances in memory, packaging, and networking continue, the payoff will be enormous. As a reminder, 
+GPU utilization sits at around 30%-50% today, and GPUs are among the most expensive components in 
+the AI Factory. One source suggests that GPU utilization could rise to as high as 85% if all of these 
+bottlenecks improve.24 In that case, those expensive GPUs will deliver much higher returns on 
+investment, since they will spend much more of their time engaged in useful AI computation.25
+Power: The Factory’s Fuel
+Exhibit 6: AI Factories Are Reaching Utility-Scale Power Requirements26
+Max Data Center Power Capacity (MW)
+22. A bit more detail on how this can be achieved: Communication protocols will need to move less data, which can be accomplished by more efficient algorithms, smarter routing, compression, 
+sparsification and reduced synchronization. Memory architectures may shift to large, shared memory pools, which will help remote memory feel local. Network topology may shift toward optical circuit 
+switching, flatter networks, and direct optical fabrics, all in service of fewer data “hops,” which add latency to the system. And, finally, software will need an additional layer of abstraction. Instead of coding 
+for 100,000 individual GPUs, software won’t know where the compute physically lives and instead treat many AI Factories as one giant computer.
+23. Source: Allison, Taylor, et al. “How to Connect Distributed Data Centers Into Large AI Factories with Scale-Across Networking.” NVIDIA Technical Blog. September 9, 2025.
+24. Source: Bloomquist, Andreas. “GPU Utilization Optimization: The Complete Guide for AI Teams.” Chamber Blog, February 16, 2026.
+25. Source: Karine Dilanyan. “Why GPUs Sit Idle: The Hidden Efficiency Problem in AI Infrastructure.” VEXXHOST Blog, March 11, 2026.
+26. Sources: DataCenterMap, “How Much Power Does a Data Center Use?” (2026); C&C Technology Group, “How Much Power Does a Hyperscale Data Center Use?” (2025); USP&E Global, “AI Data Center Power 
+Requirements” (2026); McKinsey & Company, “Scaling Bigger, Faster, Cheaper Data Centers with Smarter Designs” (2025); and Deloitte, “AI Data Centers Jolt Power Demand” (2025). Enterprise data centers are 
+typically under 5 MW, hyperscale facilities commonly range from roughly 20–40 MW, AI data centers from 100–500 MW, and frontier AI Factories are increasingly being designed at gigawatt scale.
+27. The 18% number compares US electricity demand projected for 2027 to 2020 levels, pre-AI boom.
+28. Source: Historical US electricity consumption data from US Energy Information Administration (EIA) and historical electricity consumption series compiled by University of Western Ontario. Recent 
+demand forecasts from US Energy Information Administration, Short-Term Energy Outlook (2026). Author calculations and visualization.
+0
+500
+1,000
+1,500
+2,000
+2,500
+Max Power Capacity (MW)
+Traditional Data
+Centers (2000s)
+Cloud Data Centers
+(2010s)
+Al Data Centers
+(2020-2026)
+Al Factories
+(2027 +)
+5 MW
+A Small Town
+40 MW
+A Small City
+500 MW
+A Large City
+2,000 MW
+Metro Area
+Note: Power capacity measures the maximum amount of electricity that can be delivered to and utilized by a data center or AI Factory. Large AI Factories may contain 
+more than 10,000 GPU racks.
+Data center growth has contributed to power demand in the United States that is, in total, now 
+18% higher than in 2020. This after nearly two decades of no growth in total country power 
+consumption.27 This new power is an opportunity to move from fossil fuels to cheap and efficient 
+clean energy.28
+
+
+[Page 12]
+12
+The Limit Does Not Exist
+franklintempleton.com
+Exhibit 7: AI Is Contributing to a Reacceleration in US Power Demand
+US Power Demand
+The next constraint for AI might not be semiconductors at all. AI is driving the need for more power after a 
+long period of low demand growth and stability. AI clusters increasingly resemble industrial factories that 
+require utility-scale power and sophisticated cooling. The challenge is to get ever larger quantities of 
+electricity flowing into the same physical footprint, which requires advances in power delivery, cooling, 
+and data center design. 
+An 800VDC architecture is a new power system for data centers that uses higher voltages and fewer 
+power-conversion steps to preserve energy on the journey from power plant to data center. As it stands, 
+electricity passes through multiple power-conversion stages before reaching the GPU, with energy lost as 
+heat at each step. An 800VDC architecture removes the intermediate power-conversion steps, enabling 
+huge power savings. 
+In 2026, work has begun to implement 800VDC architecture, with full, facility-level commercialization 
+expected by 2029. The solid-state transformer, a new technology currently in development, will be a 
+critical component.
+This new 800VDC architecture is forecast to reduce total energy losses by 5%.29 This number might seem 
+small, but it translates into real savings at the immense scale of the current AI buildout. Applied across the 
+roughly 12,000 data centers worldwide, that efficiency gain would be enough to power about two million 
+US homes.30 
+Once the power arrives at the data center, it requires more advanced cooling techniques to disperse 
+the heat generated during computation. Fan cooling is unlikely to meet the needs of the large AI 
+Factories of the future. New technologies include direct-to-chip liquid cooling, two-phase cooling, and 
+immersion cooling.31
+We are in the early stages of this transformation. Engineers are now redesigning this form of power 
+delivery from the ground up, and, in many cases, bringing their own power that does not hook into the 
+grid. Shifts in power architecture combined with advanced cooling point the way to viable >1 MW GPU 
+racks, which could translate to a 10x increase in power usage. 
+29. Source: Blake, Mathias, Martin Hsu, Ivan Goldwasser, Harry Petty, and Jared Huntington. “NVIDIA 800 VDC Architecture Will Power the Next Generation of AI Factories.” NVIDIA Technical Blog. 
+May 20, 2025.
+30. Sources: International Energy Agency, Energy and AI (Paris: IEA, 2025); Mathias Blake et al., “NVIDIA 800 VDC Architecture Will Power the Next Generation of AI Factories,” NVIDIA Technical Blog, 
+May 20, 2025; US Energy Information Administration, “How Much Electricity Does an American Home Use?” accessed July 9, 2026.
+31. Immersion cooling is a particularly interesting innovation that places the GPU inside a liquid tank of dielectric, non-conductive fluid.
+1920
+0
+1,000
+1,500
+2,000
+2,500
+3,500
+3,000
+500
+4,000
+Leading-Edge Network Link Speed (Gigabits/s)
+1930
+2000
+2007
+2010
+2020
+2024
+2025
+1940
+1950
+1960
+1970
+1980
+1990
+2026
+2027
+AI is driving a re-acceleration
+in power demand
+
+
+[Page 13]
+franklintempleton.com
+The Limit Does Not Exist
+13
+32. Tensor core is NVIDIA’s trademarked name for these specialized AI processors. Other companies have their own versions, including AMD’s Matrix cores, Google TPUs, and AWS Trainium accelerators.
+33. CUDA is NVIDIA’s software platform and programming model. The term “CUDA cores” is commonly used to describe the GPU’s general-purpose computing units, which continue to perform many 
+calculations alongside specialized Tensor cores. They perform all functions beyond matrix math, including loading data from memory, communication with other GPUs, control logic, and others.
+34. One important innovation here was fused multiply-add. This bundled addition and multiplication together within the core without an intermediate step that sent data to memory. Fewer interactions 
+with memory means much higher overall speed. 
+35. Surprisingly, AI models are tolerant of lower precision numbers. They do not always require tracking many decimals of detail. If you are calculating using 3.14 and not 3.1415926, you reduce the demand 
+on memory chips dramatically. The system simply stores and moves less data, decreasing the bandwidth requirements and therefore the time required to move data around. This increases GPU utilization.
+36. Source: NVIDIA V100, A100, and H100 datasheets; NVIDIA Blackwell announcements. Rubin and Rubin Ultra values are company roadmap estimates based on publicly disclosed architecture guidance.
+37. Performance figures should be interpreted cautiously because successive GPU generations use different numerical formats (FP16, BF16, FP8, and FP4), and vendor-reported throughput figures are not 
+perfectly comparable across architectures.
+Tensor Compute: The Engine  
+While memory, packaging, and networking determine how efficiently data moves through an AI system, 
+GPU processors (cores) determine how quickly that data can be transformed into useful work. The 
+improvement of these cores drives the improvement of the GPU itself. The breakthrough came in 2017 
+when NVIDIA introduced tensor cores in its Volta (V100) architecture, but similar matrix-math-specific 
+architectures now exist across the AI industry.32 For simplicity, we will discuss tensor cores specifically.  
+Tensor cores are specialized processors that work alongside general-purpose cores (called CUDA cores)33 
+and are designed specifically for matrix multiplication, the calculations that dominate modern AI workloads.34 
+By specializing in just one type of calculation, tensor cores can be far more efficient than CUDA cores. They 
+dramatically increase theoretical compute power without a proportionate increase in chip size or power 
+consumption. The introduction of tensor cores marked the beginning of the modern AI GPU. 
+Tensor cores are improving on multiple vectors with every GPU generation. They feature improved 
+architecture, denser transistor designs, faster clock speeds, and more efficient number formats, 
+transitioning from FP16 to BF16 to FP8, and, most recently, FP4.35 Collectively, these innovations have 
+produced extraordinary gains in theoretical AI compute.  
+Exhibit 8: Specialized AI Compute Is Accelerating Across GPU Generations36
+Peak Tensor Compute
+2017
+0
+20,000
+30,000
+40,000
+50,000
+60,000
+70,000
+80,000
+90,000
+10,000
+100,000
+TFLOPS (Trillion Floating Point Operations per second)
+2019
+2021
+2023
+2025
+2027
+V100
+A100
+H100
+B200
+Rubin
+Rubin Ultra*
+Note: Rubin Ultra TFLOPS value reflects guidance/estimates.37 
+Peak Tensor Compute measures the GPU’s theoretical maximum performance under specific numerical 
+precision (such as FP16 or FP4). Performance is measured in trillions of floating-point operations per 
+second (TFLOPS), better understood as trillions of calculations per second. However, in a real-world 
+setting, GPUs with tensor cores are still held back by the other bottlenecks we have discussed in memory, 
+packaging, networking, and power. 
+
+
+[Page 14]
+14
+The Limit Does Not Exist
+franklintempleton.com
+38. As a reminder from earlier, a token is the most basic unit of data the AI system parses. It is often four letters but can consist of just a piece of punctuation. Computer systems have become more 
+intelligent as they parse tokens with ever greater speed and efficiency.
+39. This is from NVIDIA and compares one model/platform sequence across time.
+40. Source: Moseley, Kibibi, Kristen Perez, and Pawini Mahajan. “Scaling Token Factory Revenue and AI Efficiency by Maximizing Performance per Watt.” NVIDIA Technical Blog. March 25, 2026.
+Today, GPUs don’t reach their theoretical computing maximums. This distinction is important because 
+addressing the other bottlenecks will unlock far more computing power without adding more chips. A 
+GPU capable of 50 petaflops delivers much less value if it spends half its time waiting for data and/or 
+can’t get the power it needs. That is why innovations in memory, packaging, and networking have become 
+essential. They do not increase a GPU’s theoretical performance—they increase the productivity of the 
+system outside the lab and in the real world.
+Think of the system of GPUs as a car. TFLOPS measure the engine’s maximum horsepower. If the engine 
+doesn’t have enough fuel (memory), a reliable fuel supply (power), a short distance to travel (packaging), 
+and a good road and highway system (networking), it can’t reach maximum speed.   
+The future of AI performance will come from improvements in both theoretical compute and utilization. 
+Tensor cores will continue to become more specialized for AI mathematics, increasing theoretical 
+compute capability, while advances in memory, packaging, networking, software, power delivery and 
+cooling will ensure that more of that compute can be used in practice. The best AI systems will not simply 
+have the highest potential TFLOPS—they will maximize the time the GPUs spend calculating for training 
+and inference and minimize friction and delays from data movement. 
+One important measure to track the improvement of the entire system will be tokens per watt.38 Since the 
+first generation of AI-focused GPUs was released in 2012, tokens per watt has improved by ~1,000,000x.39 40
+In time, compute may pass the 64th square and break out of the chessboard entirely. 
+
+
+[Page 15]
+franklintempleton.com
+The Limit Does Not Exist
+15
+Conclusion: The AI Scaling Era for Investors 
+In our experience, great innovations that are significantly better than what came before find a market. We 
+see that the roadmap for AI scaling has a clear and executable vision. These advancements are 
+happening now, and the improvements are beyond anything we have ever seen.  
+In this paper, we have focused on AI compute and the major factors driving its advancement. We do not 
+pretend that we have compiled an exhaustive list of AI-related innovations. We do, however, highlight that 
+new technologies and scientific breakthroughs—including but not limited to the semiconductor—are 
+driving compute power to increase at an exponential rate, even as Moore’s Law asymptotes.  
+In fact, there is a recursive element at work here. As AI improves, these technologies may loop back to 
+feed their own acceleration. As the models increase in power, they may contribute to solving the memory 
+wall, implementing co-packaged optics, or optimizing clean energy generation. As more time passes, AI 
+will also likely solve even harder problems such as protein function within cells, disease management, 
+quantum computing and other high technological priorities.
+On Sunday, July 19, 2026—while the rest of us watched the World Cup Final—mathematician Levent 
+Alpöge asked Anthropic’s Claude Fable 5 to identify a counterexample to the long-standing 
+Jacobian Conjecture, a problem first posed in 1939.41 This conjecture belongs in the group of 
+questions you might get on the first day of a very advanced math class that would earn you 
+immortality in the class if you solved it.42 Alpöge posted the solution to the problem on X the 
+following day in a 216 character tweet.
+That is the sort of problem-solving that we expect will increase in frequency as AI compute improves at 
+the system level. 
+These gains are multiplicative rather than additive. In our minds, memory, networking, CoWoS, etc. are 
+like multiple S-curves stacking on top of each other. Faster processors are more valuable when they 
+spend less time waiting for memory. Faster memory is more valuable when packaging brings it closer to 
+the processor. A larger cluster is more valuable when networking allows it to behave as one computer. All 
+that hardware becomes more productive when a better algorithm requires fewer calculations to reach the 
+same result—or uses additional calculations more intelligently.
+We believe it is important not only to recognize that compute is accelerating but also to see that 
+the path forward, at least within the AI Factory, is already visible. The current system still contains 
+large, identifiable bottlenecks with plausible paths to improvement. 
+This also matters for investors. Mean-reversion investing benefits from retaining the status quo. But investing 
+in innovation works best in periods of significant change and disruption. We believe that is the case today. 
+Every great technology eventually slows. Candles became light bulbs. Light bulbs barely changed. 
+Airplanes stopped getting faster. Smartphones stopped being revolutionary. But computing never 
+stopped. In fact, we may be at the knee of its curve today.
+For 60 years, we improved the transistor. Today, we improve the system. Tomorrow, we may improve the 
+factory. As one exponential growth vector is slowing, new vectors are taking off with room for 
+improvement.  The object of innovation keeps changing, but the exponential curve continues. That is why 
+we believe a new age of innovation is upon us. And, to indulge in a small morsel of the hyperbole we 
+rejected in the opening letter, it will change everything.  
+41. Source: Sullivan, Mark. “A Harvard Mathematician and an AI Model May Have Cracked an 87-Year-Old Math Problem.” Fast Company. July 21, 2026.
+42. We also don’t pretend to understand it ourselves.
+
+
+[Page 16]
+(800) 632-2301
+franklintempleton.com
+FEPT3-SCRVE-0926
+WHAT ARE THE RISKS?
+All investments involve risks, including possible loss of principal. 
+The allocation of assets among different strategies, asset classes and investments may not prove beneficial or produce desired results.
+Equity securities are subject to price fluctuation and possible loss of principal. Investments in equity-linked notes often have risks similar to their 
+underlying securities, which could include management risk, market risk and, as applicable, foreign securities and currency risks.
+Investment strategies which incorporate the identification of thematic investment opportunities, and their performance, may be negatively 
+impacted if the investment manager does not correctly identify such opportunities or if the theme develops in an unexpected manner. Focusing 
+investments in the health care, information technology (IT) and/or technology-related industries carries much greater risks of adverse 
+developments and price movements in such industries than a strategy that invests in a wider variety of industries.
+Any companies and/or case studies referenced herein are used solely for illustrative purposes; any investment may or may not be currently held by 
+any portfolio advised by Franklin Templeton. The information provided is not a recommendation or individual investment advice for any particular 
+security, strategy, or investment product and is not an indication of the trading intent of any Franklin Templeton managed portfolio.
+IMPORTANT LEGAL INFORMATION
+This material is provided for general informational purposes only and should not be considered individualized investment advice, a recommendation 
+or a solicitation to adopt any investment strategy. It does not constitute legal or tax advice. Franklin Templeton accepts no liability for losses arising 
+from use of this material. 
+The views expressed are those of the investment manager as of the publication date and may change without notice. These opinions and analyses are 
+based on certain assumptions, including market conditions that may change. They may differ from those of other portfolio managers or from the firm 
+as a whole. 
+This material is not intended to provide a complete analysis of all material facts regarding any country, region or market. No assurance can be given 
+that any forecast, projection or prediction regarding economies or financial markets will be realized. References to specific securities are for illustrative 
+purposes only and should not be interpreted as recommendations or a solicitation to buy, sell, or hold any security. 
+Any research or analysis in this material has been prepared by Franklin Templeton for its own purposes and is provided incidentally. While the 
+information included is believed to be reliable, its accuracy and completeness cannot be guaranteed, and it is subject to change without notice. 
+Past performance does not guarantee future results, or any profit or gain. All investments involve risks, including possible loss of principal. 
+Franklin Templeton offers environmental, social and governance (ESG) capabilities, though not all strategies or products incorporate ESG as part of 
+the investment process. 
+Investment strategies and services may not be available in all jurisdictions. Please consult your financial professional or Franklin Templeton contact for 
+further information. 
+Brazil: Issued by Franklin Templeton Brasil Ltda. Canada: Issued by Franklin Templeton Investments Corp. Franklin Templeton and Franklin Templeton 
+Canada are business names used by Franklin Templeton Investments Corp. Offshore Americas: In the United States, this publication is made 
+available by Franklin Templeton. United States: Issued by Franklin Templeton. Investments are not FDIC insured; may lose value; and are not 
+bank guaranteed. 
+Europe: Issued by Franklin Templeton International Services S.à r.l., 8A, rue Albert Borschette, L-1246 Luxembourg. Poland: Issued by Templeton Asset 
+Management (Poland) TFI S.A.; Rondo ONZ 1; 00-124 Warsaw. Saudi Arabia: Issued by Franklin Templeton Financial Company, KAFD, Building 3.09, 
+Office No. 8018, Level 8, Saudi Arabia. Regulated by CMA. License no. 23265-22. South Africa: Issued by Franklin Templeton Investments SA (PTY) 
+Limited, which is authorised by the FSCA as a Financial Service Provider (No.44475). Switzerland: Issued by Franklin Templeton Switzerland Ltd, 
+Talstrasse 41, CH-8001 Zurich. Middle East & Africa (ex South Africa): Issued by Franklin Templeton Investments (ME) Limited, which is regulated by 
+the Dubai Financial Services Authority. Address: Franklin Templeton, The Gate, East Wing, Level 2, Dubai International Financial Centre, P.O. Box 
+506613, Dubai, U.A.E. Tel: +971(04) 428 4100. United Kingdom: Issued by Franklin Templeton Investment Management Limited (FTIML), registered 
+office: Cannon Place, 78 Cannon Street, London EC4N 6HL. 
+Australia: Issued by Franklin Templeton Australia Limited (ABN 76 004 835 849) (Australian Financial Services License Holder No. 240827), Level 47, 
+120 Collins Street, Melbourne, Victoria 3000. Hong Kong: Issued by Franklin Templeton Investments (Asia) Limited. Japan: Issued by Franklin 
+Templeton Japan Co., Ltd. South Korea: Issued by Franklin Templeton Investment Advisors Korea Co., Ltd. Malaysia: Issued by Franklin Templeton 
+Asset Management (Malaysia) Sdn. Bhd. & Franklin Templeton GSC Asset Management Sdn. Bhd. Singapore: Issued by Templeton Asset 
+Management Ltd. (UEN) 199205211E. 2 Central Boulevard, IOI Central Boulevard Towers, West Tower #34-01, Singapore 018916.
+Access your local website at www.franklinresources.com/all-sites. 
+CFA® and Chartered Financial Analyst® are trademarks owned by CFA Institute.
+© 2026 Franklin Templeton. All rights reserved.
