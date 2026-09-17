@@ -685,3 +685,64 @@ Not filing a fresh queue item for the staleness itself, per the
   continuous control series since the adversarial gate went live;
   not actionable now (too old to investigate from artifacts alone),
   logged so the series' one known hole is documented.
+
+## 2026-09-17 — headless QC on 2026-09-17T14-06-07Z
+
+- **deterministic-fixable** — `pulse-context/latest.json` mismatch
+  (queued 2026-09-14, still unfixed) recurred unchanged: dumped at
+  18:35 UTC as a 22-PDF/last-24h snapshot (`window_cutoff:
+  2026-09-16T18:35`), while the actual run's volume gate logged
+  `pdf_count=265` over the real "since last scheduled pulse" window
+  (back to 2026-09-14). This blocked independent verification of
+  every Bank of America-sourced figure in today's pulse (two BRIEFS
+  built on BofA calls) and of a UK-10-year figure attributed to
+  Deutsche Bank — the corpus sample simply doesn't contain that
+  material. The 2026-09-14 entry already specifies the fix (archive
+  per-run dumps, or fall back to `pulse-output/agent-io/<ts>/`);
+  flagging recurrence rather than re-specifying. One usable partial
+  mitigation found this run and worth noting in that fix's scope:
+  `pulse-output/agent-io/<ts>/edit-prompt.txt` retains DRAFT's full
+  output verbatim, so it can confirm a disputed figure predates EDIT
+  (rules out EDIT-stage invention) even though it can't resolve
+  whether the figure is true against source — a narrower but real use
+  case than the agent-io fallback the 09-14 entry already proposed.
+- **prompt-session** — independently reproduced the consensus-amnesia
+  pattern STEP 7 flagged, via a direct archive diff rather than a
+  corpus lookup (so unaffected by the context-mismatch item above):
+  2026-09-14's pulse published August retail sales consensus as
+  "+0.8% on the headline and +0.5% excluding autos"; 2026-09-17's
+  RECAP reports the same release against "1.24% against the 0.8%
+  expected" (headline, matches) and "1.39% against the 0.6%
+  economists wanted" (ex-autos, silently revised from the prior
+  edition's own +0.5%). This is the same underlying gap STEP 7 already
+  spec'd a fix for (extend `released-actual-missing`'s Tier-1 series
+  to foreign central-bank decisions and make the consensus-ledger
+  check compare per-figure rather than per-release) — no new fix
+  needed, just weight: it reproduced on the very next graded run after
+  being newly named.
+- **observation** — RECAP's "the UK 10-year already at a post-2007
+  high of 5.37% (Deutsche Bank)" could not be verified or refuted:
+  the only "post-2007 high" data point in the sampled context is
+  Deutsche Bank's, and it's on the US 10-year (5.02%), not the UK
+  gilt. Two explanations are equally consistent with what's
+  available — a genuine separate DB call on UK gilts sitting outside
+  the (mismatched, see above) context sample, or a conflation where
+  DB's US framing got re-applied to a different market at a different
+  value. Worth a targeted check against the actual generation-time
+  corpus next time; not confirmed as an error.
+- **observation** — today's adversarial gate closed genuinely clean
+  (1 hard/1 soft → 0 hard, no residual shipped, 1 of 2 repair budget
+  used) after discarding a 5-finding false-positive round recorded on
+  disk as `adversarial/2026-09-17T14-06-07Z.run1-precontext-fix.json`
+  (non-standard filename; driver trail never logged this round's
+  count, only the real round's "1 hard/1 soft" that followed a corpus
+  rebuild). STEP 7 traced the false positives to a truncated checker
+  payload (tracked as its Signal 4, "adversarial checker precision as
+  a function of context assembly"); I independently confirmed two of
+  the five flagged figures (Goldman's 16-of-18 dot count, the third
+  2028 rate cut) are accurate and correctly attributed, which
+  corroborates the truncated-context read. Net result: today breaks
+  the "hard residual ships anyway" streak the 2026-09-14 entry named
+  in 3 of the prior 5 graded runs. No action needed beyond STEP 7's
+  already-tracked signal; logging the independent confirmation and
+  the streak-break as a positive data point.
