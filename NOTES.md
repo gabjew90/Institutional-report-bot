@@ -2733,3 +2733,44 @@ checks kept working.
 
 Suite: 475 unit, 157/157 fast smokes. pytest had vanished from the
 3.12 interpreter (reinstalled).
+
+## 2026-09-17: plan 4.3 stress datapoint, editor half (uncounted)
+
+Run 35168496885, dispatched 00:55 UTC with the editor workflow's new
+`days=3 stress=true` inputs over the same 09-02..09-04 window the ledger
+half used on 9/5 (now 70 documents, 2,478 cards, 550,864-char pack; the
+five extra documents were read after 9/5). Written to
+`pilot/stress/2026-09-04-3d.md`, never `shadow/`.
+
+- Opus wrote it in 4.5 minutes wall, one pass, no re-ask, no structural
+  problems. The pack was not too big for the model.
+- Output did not scale with load: 1,855 words, one main event (389
+  words) and eight briefs (about 183 each), inside the range of normal
+  days (7-9 briefs, 1,431-1,943 words). Three days of cards produced one
+  day's pulse, so at 3x load two thirds of the corpus never reaches the
+  reader. That is the editor.md format doing its job, and it is the
+  number the verdict's scope limit (plan 6) should quote.
+- Citation reach fell: 116 distinct cards cited, 4.7% of the pack, against
+  5.9% (9/14, 1,820 cards) and 12.5% (9/04, 942 cards). Quintiles
+  [29, 29, 29, 20, 9]: the last fifth of the pack, the second half of
+  09-04's documents, got 9 citations against 29 for each of the first
+  three. Position bias at load, below the metric-4 flag (edge share
+  0.328 against 0.70).
+- The committed meta shows 20 citation failures. 18 were the verifier,
+  not the editor: "40k" in a card against "40,000" in the pulse, "536
+  basis points" against "5.36%", "3.5-3.75%" against "3.5% to 3.75%",
+  "Y143.1tn" against "143.1 trillion", "14.5x" against "14.5 times", and
+  "September 16 meeting" read as the figure "16m". `_numbers` now folds
+  magnitude suffixes and words into the value, treats bp and % as one
+  figure, gives the first bound of a "a-b%" range its own %, and stops a
+  suffix inside a following word. Re-verified locally against the same
+  pack: 2 failures, both real (a 29% token-price figure cited to
+  Broadcom guidance cards; a repeated 162,000 with no citation).
+  Earlier shadow metas were written under the old matcher (9/14: 8
+  failures, likely the same class) and are not rewritten.
+- `leans: 0` in the meta is the production parser's contract, not a
+  defect: parse_lean_block keeps long/short lines with a cashtag, and
+  the editor's nine leans were neutral cashtags or long/short on named
+  instruments. The pilot's leans count is a weak signal; read the block.
+
+Plan 4.3 is complete (ledger half 9/5, editor half 9/17).

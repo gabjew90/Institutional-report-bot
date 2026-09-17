@@ -33,7 +33,38 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
 
 CITE_RE = re.compile(r"\[(c|d)(\d+)\]")
-NUM_RE = re.compile(r"(?<![A-Za-z])[$€£]?\d[\d,]*(?:\.\d+)?%?(?:\s?(?:bp|bps|k|K|m|M|bn|B|T|x))?")
+# A magnitude suffix must end at a word boundary: "16 meeting" used to
+# read as "16m" (plan-4.3 stress run, 2026-09-17), and the k/m/bn
+# forms are folded into the value below so "40k" in a card matches
+# "40,000" in the pulse. The editor writes figures out in plain English
+# by contract; the cards keep the source's shorthand.
+NUM_RE = re.compile(
+    r"(?<![A-Za-z])[$€£¥]?\d[\d,]*(?:\.\d+)?%?"
+    r"(?:\s?(?:basis points?|bp|bps|k|K|mn|m|M|bn|bln|B|tn|T|x|times|thousand|million|billion|trillion)"
+    r"(?![A-Za-z]))?")
+_MAGNITUDE = {"k": 1e3, "thousand": 1e3, "m": 1e6, "mn": 1e6, "million": 1e6,
+              "bn": 1e9, "b": 1e9, "bln": 1e9, "billion": 1e9,
+              "t": 1e12, "tn": 1e12, "trillion": 1e12}
+# "3.5-3.75%" carries the % on the second number only; the pulse writes
+# "3.5% to 3.75%". The first bound gets its own % figure.
+_RANGE_PCT_RE = re.compile(r"(?<![\d.])(\d+(?:\.\d+)?)\s*(?:-|–|to)\s*(\d+(?:\.\d+)?)%")
+
+
+def _fmt(val: float) -> str:
+    return str(int(val)) if val == int(val) else f"{val:.6f}".rstrip("0").rstrip(".")
+
+
+def _aliases(n: str) -> set[str]:
+    """536bp and 5.36% are one figure written two ways."""
+    out = {n}
+    try:
+        if n.endswith("bp"):
+            out.add(_fmt(float(n[:-2]) / 100) + "%")
+        elif n.endswith("%"):
+            out.add(_fmt(float(n[:-1]) * 100) + "bp")
+    except ValueError:
+        pass
+    return out
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$\[(])")
 
 KNOWN_BANKS = ["goldman", "morgan stanley", "jpm", "jpmorgan", "citi", "bofa", "bank of america",
@@ -43,8 +74,12 @@ KNOWN_BANKS = ["goldman", "morgan stanley", "jpm", "jpmorgan", "citi", "bofa", "
 
 def _norm_num(tok: str) -> str:
     t = tok.strip().lower().replace(",", "").replace(" ", "")
-    t = t.replace("$", "").replace("€", "").replace("£", "")
-    t = re.sub(r"(bps|bp)$", "bp", t)
+    t = t.replace("$", "").replace("€", "").replace("£", "").replace("¥", "")
+    t = re.sub(r"(basispoints?|bps|bp)$", "bp", t)
+    t = re.sub(r"times$", "x", t)
+    m = re.fullmatch(r"(\d+(?:\.\d+)?)(k|thousand|mn|m|million|bn|bln|b|billion|tn|t|trillion)", t)
+    if m:
+        return _fmt(float(m.group(1)) * _MAGNITUDE[m.group(2)])
     return t
 
 
@@ -63,7 +98,9 @@ def _numbers(text: str) -> set[str]:
         # bare 1-2 digit counts and calendar years are not figures the
         # card must carry ("2026 capex" cites the estimate, not the year)
         if n and not re.fullmatch(r"\d{1,2}", n) and not re.fullmatch(r"(19|20)\d\d", n):
-            out.add(n)
+            out |= _aliases(n)
+    for m in _RANGE_PCT_RE.finditer(text or ""):
+        out |= _aliases(m.group(1) + "%")
     return out
 
 
@@ -134,6 +171,9 @@ def verify(md: str, pack: dict) -> dict:
         # HARD: every figure in the sentence must be in SOME cited card
         all_nums = _numbers(" ".join(f"{c.get('claim', '')} {c.get('anchor', '')}" for c in valid_cards))
         missing = sorted(x for x in sent_nums if x not in all_nums)
+        # report a figure once, in the form the sentence used, not its alias
+        missing = [x for x in missing
+                   if not (x.endswith("bp") and _fmt(float(x[:-2]) / 100) + "%" in missing)]
         if missing:
             failures.append({"sentence": sent[:200], "cite": ",".join(card_keys),
                              "reason": f"figures not in cited card(s): {missing}"})
