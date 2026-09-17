@@ -1,0 +1,135 @@
+{
+ "unread_source_files_at_edit": 4,
+ "given_up_at_edit": 90,
+ "pack": {
+  "documents": 70,
+  "cards": 2478
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": false,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 116,
+  "brief_citations": 13,
+  "distinct_cards_cited": 116,
+  "card_count": 2478,
+  "quintiles": [
+   29,
+   29,
+   29,
+   20,
+   9
+  ],
+  "edge_quintile_share": 0.328,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Goldman estimated 40,000 against a consensus of 55,000 [c1564].",
+    "cite": "c1564",
+    "reason": "figures not in cited card(s): ['40000', '55000']"
+   },
+   {
+    "sentence": "JPMorgan's Michael Feroli put it at 50,000 [c2248].",
+    "cite": "c2248",
+    "reason": "figures not in cited card(s): ['50000']"
+   },
+   {
+    "sentence": "Deutsche Bank was the highest forecast on the street at 65,000 [c713].",
+    "cite": "c713",
+    "reason": "figures not in cited card(s): ['65000']"
+   },
+   {
+    "sentence": "Payrolls rose 162,000, with another 55,000 added to the prior two months in revisions [c733].",
+    "cite": "c733",
+    "reason": "figures not in cited card(s): ['162000', '55000']"
+   },
+   {
+    "sentence": "Private employers added 127,000 [c734].",
+    "cite": "c734",
+    "reason": "figures not in cited card(s): ['127000']"
+   },
+   {
+    "sentence": "The three and six month averages moved up to 75,000 and 106,000 [c735], and the share of industries adding jobs rose to 55.8, the highest since January 2024 [c736].",
+    "cite": "c735,c736",
+    "reason": "figures not in cited card(s): ['106000', '75000']"
+   },
+   {
+    "sentence": "JPMorgan spent the week arguing that good news would be bad news: a stronger report pushes bond yields higher and pulls equities down, with 30,000 to 70,000 the only range that leaves both alone [d7][",
+    "cite": "c2398",
+    "reason": "figures not in cited card(s): ['30000', '70000']"
+   },
+   {
+    "sentence": "Its own scenario table gave a print above 95,000 a 10% chance and put the S&P 500 down between 50 basis points, one hundredth of a percent, and 1.25% on that outcome [c1709].",
+    "cite": "c1709",
+    "reason": "figures not in cited card(s): ['95000']"
+   },
+   {
+    "sentence": "That splits the Tier-1 banks on the September 16 meeting.",
+    "cite": "",
+    "reason": "figures with no card citation: ['16m']"
+   },
+   {
+    "sentence": "Against that, Goldman's economists still forecast the Fed on hold at 3.5% to 3.75% for the rest of the year [c2051], and JPMorgan's equity strategists argue central banks will deliver less tightening ",
+    "cite": "c2051,c1046,c1045",
+    "reason": "figures not in cited card(s): ['3.5%']"
+   },
+   {
+    "sentence": "Broadcom guided AI chip revenue to double to $115 billion in fiscal 2027 and double again to $230 billion after that, named Anthropic its largest 2027 customer, and said component supply is locked thr",
+    "cite": "c168,c169,c170,c172",
+    "reason": "figures not in cited card(s): ['115', '230']"
+   },
+   {
+    "sentence": "The price of a million AI tokens fell 29% in August to about $0.97, a record low and more than half off the May peak near $2.05 [c1535][c1536].",
+    "cite": "c1535,c1536",
+    "reason": "figures not in cited card(s): ['29%']"
+   },
+   {
+    "sentence": "Goldman's AI software basket rose 5.36%, which the desk flagged as a two standard deviation move, while its AI semiconductor basket managed 0.25% [c956][c1575].",
+    "cite": "c956,c1575",
+    "reason": "figures not in cited card(s): ['0.25%', '5.36%']"
+   },
+   {
+    "sentence": "The software against semiconductors pair gained 2.57% [c955].",
+    "cite": "c955",
+    "reason": "figures not in cited card(s): ['2.57%']"
+   },
+   {
+    "sentence": "More than 44% of surveyed retail investors are bearish, a four week average above 40 that has historically come alongside 7% to 10% declines [c1445][c1446].",
+    "cite": "c1445,c1446",
+    "reason": "figures not in cited card(s): ['7%']"
+   },
+   {
+    "sentence": "BofA sizes what happens if Rubner is right: systematic funds sell $163 billion in a falling market [c1280].",
+    "cite": "c1280",
+    "reason": "figures not in cited card(s): ['163']"
+   },
+   {
+    "sentence": "Pricing now sits just above 25 basis points for September and close to 100 basis points over the next year [c2218][c2219].",
+    "cite": "c2218,c2219",
+    "reason": "figures not in cited card(s): ['100']"
+   },
+   {
+    "sentence": "The September 18 meeting settles the argument [c2123].",
+    "cite": "c2123",
+    "reason": "figures not in cited card(s): ['18m']"
+   },
+   {
+    "sentence": "Goldman's strategists still like the region at 14.5 times earnings and a 5.3% free cash flow yield, meaning cash left after all spending as a share of market value, with 2026 earnings growth raised to",
+    "cite": "c751,c752,c947",
+    "reason": "figures not in cited card(s): ['14.5']"
+   },
+   {
+    "sentence": "That last condition is exactly what a 162,000 payroll print puts at risk.",
+    "cite": "",
+    "reason": "figures with no card citation: ['162000']"
+   }
+  ],
+  "leans": 0,
+  "leans_block_present": false,
+  "word_count": 1855
+ }
+}
