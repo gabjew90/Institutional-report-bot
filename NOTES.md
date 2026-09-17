@@ -2825,3 +2825,22 @@ commit:
 10. Conventions: the header addition had no paying deletion (see 8).
 
 Suite: 490 unit, 158/158 full smoke sweep.
+
+## 2026-09-17: print watch posts to a channel list; PCE added
+
+`PRINT_ALERT_CHANNEL_ID` is a comma-separated list (set to stonks-yapping
+and test-channel on the worker); one embed per channel, sent together,
+one ledger entry, a failing channel logged and the rest still post.
+
+PCE (owner ask): BEA NIPA table T20804, monthly, series DPCERG (PCE price
+index) and DPCCRG (excluding food and energy); four lines like CPI (m/m,
+y/y, core m/m, core y/y), consensus only on core m/m because that is the
+one line the calendar feed carries. Lines carry a `source` (bls | bea),
+`fetch_observations` picks the agency per line, and the feed enrichment
+does the same, so the econ tool gets PCE actuals ahead of FRED. BEA has
+no unregistered tier: without `BEA_API_KEY` the release is never armed
+(logged) and the feed skips it. Series codes are from BEA's published
+table layout and not yet confirmed against a live response; `parse_bea`
+logs what the table carries when a requested code is missing, so the
+first live run tells us. Next PCE print: Friday 2026-09-25, 8:30 ET
+(August personal income and outlays).

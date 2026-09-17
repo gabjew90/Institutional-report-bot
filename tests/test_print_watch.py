@@ -186,5 +186,65 @@ def test_the_print_goes_to_every_alert_channel_and_one_failure_does_not_block_th
         assert PW.already_posted("2026-09-11", "cpi")
 
 
+# BEA NIPA GetData shape (table 2.8.4, monthly price indexes). Synthetic
+# values: the API has no unregistered tier, so no live fixture yet.
+def _bea_row(code, desc, period, value):
+    return {"TableName": "T20804", "SeriesCode": code, "LineNumber": "1", "LineDescription": desc,
+            "TimePeriod": period, "METRIC_NAME": "Fisher Price Index", "CL_UNIT": "Level",
+            "UNIT_MULT": "0", "DataValue": value, "NoteRef": "T20804"}
+
+
+BEA = {"BEAAPI": {"Request": {}, "Results": {"Statistic": "NIPA Table", "Data": [
+    _bea_row("DPCERG", "Personal consumption expenditures (PCE)", "2025M08", "121.000"),
+    _bea_row("DPCERG", "Personal consumption expenditures (PCE)", "2026M07", "124.500"),
+    _bea_row("DPCERG", "Personal consumption expenditures (PCE)", "2026M08", "124.873"),
+    _bea_row("DPCCRG", "PCE excluding food and energy", "2025M08", "120.000"),
+    _bea_row("DPCCRG", "PCE excluding food and energy", "2026M07", "123.700"),
+    _bea_row("DPCCRG", "PCE excluding food and energy", "2026M08", "123.947"),
+    _bea_row("DPCERG", "Personal consumption expenditures (PCE)", "2026", "1,000"),
+]}}}
+FF_PCE = [{"event": "Core PCE Price Index m/m", "country": "US", "time": "2026-09-25T12:30:00",
+           "estimate": 0.2, "prev": 0.3, "actual": None, "unit": "%"}]
+
+
+def test_bea_payload_parses_by_calendar_month_and_skips_annual_rows():
+    obs = PW.parse_bea(BEA, ["DPCERG", "DPCCRG"])
+    assert obs["DPCERG"][0] == ("2026-08", 124.873)
+    assert [p for p, _ in obs["DPCCRG"]] == ["2026-08", "2026-07", "2025-08"]
+    assert PW.parse_bea({"BEAAPI": {"Results": {"Error": {"APIErrorCode": "3", "APIErrorDescription": "bad key"}}}}) == {}
+
+
+def test_pce_lines_match_the_bea_print():
+    obs = PW.parse_bea(BEA)
+    assert PW.release_ready(PW.PCE, obs, "2026-08")
+    lines = PW.build_lines(PW.PCE, obs, "2026-08", FF_PCE)
+    assert lines[0] == "**PCE m/m** +0.3%"  # no calendar row and no June index, so no consensus or prior
+    assert lines[1].startswith("**PCE y/y** 3.2%")
+    assert lines[2] == "**Core PCE m/m** +0.2% · consensus +0.2% · prior +0.3%"
+    assert lines[3].startswith("**Core PCE y/y** 3.3%")
+
+
+def test_pce_is_armed_only_with_a_bea_key():
+    with patch("config.settings.bea_api_key", ""):
+        assert [s.key for s in PW.due_releases("2026-09-25", FF_PCE, "08:30")] == []
+    with patch("config.settings.bea_api_key", "k"):
+        assert [s.key for s in PW.due_releases("2026-09-25", FF_PCE, "08:30")] == ["pce"]
+    # CPI and jobs never depend on the BEA key
+    with patch("config.settings.bea_api_key", ""):
+        assert [s.key for s in PW.due_releases("2026-09-11", FF, "08:30")] == ["cpi"]
+
+
+def test_the_feed_fills_a_core_pce_row_from_bea():
+    rows = [dict(FF_PCE[0])]
+    with patch("config.settings.bea_api_key", "k"),          patch("report.print_watch._bea_get", return_value=BEA),          patch("report.print_watch.datetime") as dt:
+        from datetime import datetime as real
+        dt.utcnow.return_value = real(2026, 9, 25, 13, 0)
+        dt.strptime = real.strptime
+        dt.fromisoformat = real.fromisoformat
+        PW._BEA_CACHE.update({"at": None, "key": None, "obs": None})
+        out = PW.enrich_rows_with_agency_actuals(rows)
+    assert out[0]["actual"] == 0.2 and out[0]["actual_source"] == "bea:DPCCRG" and out[0]["actual_period"] == "2026-08"
+
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

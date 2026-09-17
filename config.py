@@ -416,6 +416,9 @@ class Settings(BaseSettings):
     # day unregistered, 500 registered) and free to register.
     print_alert_channel_id: str = ""
     bls_api_key: str = ""
+    # BEA (PCE price index, 2026-09-17). Required for the PCE print: BEA
+    # has no unregistered tier. Free at apps.bea.gov/API/signup.
+    bea_api_key: str = ""
     # X (Twitter) posting, report/x_client.py (2026-09-11). Four keys
     # from the X developer portal for the posting account (OAuth 1.0a,
     # app permission Read and Write). Nothing is sent while

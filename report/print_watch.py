@@ -32,6 +32,7 @@ import json
 import logging
 import os
 import re
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
@@ -53,10 +54,11 @@ _UA = {"User-Agent": "omnibeta-print-watch/1.0", "Content-Type": "application/js
 @dataclass
 class Line:
     label: str
-    series: str              # BLS series id ("" for FOMC)
+    series: str              # agency series id ("" for FOMC)
     transform: str           # mom | yoy | m_change_k | level | range
     ff_event: str            # ForexFactory event name for consensus/prior ("" = none)
     unit: str = "%"
+    source: str = "bls"      # bls | bea
 
 
 @dataclass
@@ -66,6 +68,7 @@ class ReleaseSpec:
     release_et: str          # "08:30" / "14:00"
     ff_arming_events: tuple  # any of these on today's FF calendar arms the watch
     lines: list[Line] = field(default_factory=list)
+    agency: str = "BLS"      # footer credit
 
 
 CPI = ReleaseSpec(
@@ -91,12 +94,35 @@ JOBS = ReleaseSpec(
 FOMC = ReleaseSpec(
     key="fomc", title="FOMC decision", release_et="14:00",
     ff_arming_events=("FOMC Interest Rate Decision",),
-    lines=[Line("Target range", "", "range", "FOMC Interest Rate Decision")])
+    lines=[Line("Target range", "", "range", "FOMC Interest Rate Decision")],
+    agency="Federal Reserve")
 
-SPECS = (CPI, JOBS, FOMC)
+# PCE (owner ask 2026-09-17): the Fed's own inflation gauge, from BEA's
+# NIPA table 2.8.4 (monthly price indexes by major type of product).
+# Series codes: DPCERG is the PCE price index, DPCCRG the index excluding
+# food and energy. Needs BEA_API_KEY (free, registered per user); with
+# no key the release is never armed and the feed skips it. The calendar
+# feed lists only the core m/m line, so headline and y/y lines carry
+# no consensus.
+PCE = ReleaseSpec(
+    key="pce", title="PCE price index", release_et="08:30",
+    ff_arming_events=("Core PCE Price Index m/m",),
+    lines=[
+        Line("PCE m/m", "DPCERG", "mom", "", source="bea"),
+        Line("PCE y/y", "DPCERG", "yoy", "", source="bea"),
+        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea"),
+        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea"),
+    ],
+    agency="BEA")
+
+SPECS = (CPI, JOBS, FOMC, PCE)
 
 # The FEED side: which econ-calendar rows an agency series can fill.
-_ROW_TO_LINE = {ln.ff_event.lower(): ln for spec in (CPI, JOBS) for ln in spec.lines if ln.ff_event}
+_ROW_TO_LINE = {ln.ff_event.lower(): ln for spec in (CPI, JOBS, PCE) for ln in spec.lines if ln.ff_event}
+
+
+def source_available(source: str) -> bool:
+    return source != "bea" or bool((settings.bea_api_key or "").strip())
 
 
 # ----------------------------------------------------------------- BLS
@@ -154,6 +180,93 @@ def fetch_bls(series_ids: list[str], *, force: bool = False) -> dict[str, list[t
     if obs:
         c.update({"at": now, "key": key, "obs": obs})
     return obs or (c["obs"] if c["key"] == key and c["obs"] else {})
+
+
+# ----------------------------------------------------------------- BEA
+
+BEA_URL = "https://apps.bea.gov/api/data/"
+BEA_PCE_TABLE = "T20804"
+_BEA_CACHE: dict = {"at": None, "key": None, "obs": None}
+
+
+def _bea_get(table: str, years: list[int]) -> dict | None:
+    key = (settings.bea_api_key or "").strip()
+    if not key:
+        return None
+    q = urllib.parse.urlencode({
+        "UserID": key, "method": "GetData", "DataSetName": "NIPA",
+        "TableName": table, "Frequency": "M",
+        "Year": ",".join(str(y) for y in years), "ResultFormat": "JSON"})
+    req = urllib.request.Request(f"{BEA_URL}?{q}", headers=_UA)
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read())
+    except Exception as e:
+        log.warning(f"print-watch: BEA fetch failed: {e}")
+        return None
+
+
+def parse_bea(payload: dict, series_codes: list[str] | None = None) -> dict[str, list[tuple[str, float]]]:
+    """{series_code: [(period 'YYYY-MM', value), ...] newest first} from a
+    NIPA GetData response (TimePeriod '2026M08', DataValue '126.512').
+    An API error or a missing series is logged with what the table did
+    carry, so a wrong series code shows up on the first live run."""
+    out: dict[str, list[tuple[str, float]]] = {}
+    results = ((payload or {}).get("BEAAPI") or {}).get("Results") or {}
+    if isinstance(results, dict) and results.get("Error"):
+        log.warning(f"print-watch: BEA error: {results['Error']}")
+        return out
+    for row in (results.get("Data") if isinstance(results, dict) else None) or []:
+        code = str(row.get("SeriesCode") or "")
+        m = re.match(r"^(\d{4})M(0[1-9]|1[0-2])$", str(row.get("TimePeriod") or ""))
+        if not code or not m:
+            continue
+        try:
+            value = float(str(row.get("DataValue") or "").replace(",", ""))
+        except ValueError:
+            continue
+        out.setdefault(code, []).append((f"{m.group(1)}-{m.group(2)}", value))
+    for code in out:
+        out[code].sort(reverse=True)
+    missing = [c for c in (series_codes or []) if c not in out]
+    if missing and out:
+        seen = sorted({(str(r.get("SeriesCode")), str(r.get("LineDescription")))
+                       for r in results.get("Data") or [] if isinstance(r, dict)})
+        log.warning(f"print-watch: BEA table lacks {missing}; it carries {seen[:40]}")
+    return out
+
+
+def fetch_bea(series_codes: list[str], *, force: bool = False) -> dict[str, list[tuple[str, float]]]:
+    """PCE price-index observations, two calendar years back, cached ten
+    minutes like the BLS fetch. Empty without a BEA key."""
+    now = datetime.utcnow()
+    key = tuple(sorted(series_codes))
+    c = _BEA_CACHE
+    if not force and c["obs"] is not None and c["key"] == key and c["at"] \
+            and (now - c["at"]).total_seconds() < _BLS_CACHE_TTL_S:
+        return c["obs"]
+    payload = _bea_get(BEA_PCE_TABLE, [now.year - 1, now.year])
+    obs = parse_bea(payload, list(key)) if payload else {}
+    obs = {k: v for k, v in obs.items() if k in key}
+    if obs:
+        c.update({"at": now, "key": key, "obs": obs})
+    return obs or (c["obs"] if c["key"] == key and c["obs"] else {})
+
+
+def fetch_observations(lines: list, *, force: bool = False) -> dict[str, list[tuple[str, float]]]:
+    """Observations for every series a release's lines need, from
+    whichever agency each line names."""
+    out: dict[str, list[tuple[str, float]]] = {}
+    by_source: dict[str, list[str]] = {}
+    for ln in lines:
+        if ln.series:
+            by_source.setdefault(ln.source, []).append(ln.series)
+    for source, series in by_source.items():
+        if not source_available(source):
+            continue
+        fetcher = fetch_bea if source == "bea" else fetch_bls
+        out.update(fetcher(sorted(set(series)), force=force))
+    return out
 
 
 def _value_at(obs: list[tuple[str, float]], period: str) -> float | None:
@@ -308,8 +421,12 @@ def due_releases(today_iso: str, ff_rows: list[dict], release_et: str | None = N
     for spec in SPECS:
         if release_et and spec.release_et != release_et:
             continue
-        if any(ev.lower() in names for ev in spec.ff_arming_events):
-            out.append(spec)
+        if not any(ev.lower() in names for ev in spec.ff_arming_events):
+            continue
+        if not all(source_available(ln.source) for ln in spec.lines if ln.series):
+            log.info(f"print-watch: {spec.key} is on today's calendar but its agency key is not set; skipped")
+            continue
+        out.append(spec)
     return out
 
 
@@ -468,13 +585,12 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                     lines = fomc_lines(parsed, ff_rows)
                     title = f"FOMC decision · {now.strftime('%B %-d') if os.name != 'nt' else now.strftime('%B %d')}"
                 else:
-                    series = [ln.series for ln in spec.lines if ln.series]
-                    obs = await asyncio.to_thread(fetch_bls, series, force=True)
+                    obs = await asyncio.to_thread(fetch_observations, spec.lines, force=True)
                     if not release_ready(spec, obs, period):
                         continue
                     lines = build_lines(spec, obs, period, ff_rows)
                     title = f"{spec.title} · {period_label(period)}"
-                footer = f"released {release_et} ET · {'BLS' if spec.key != 'fomc' else 'Federal Reserve'} · consensus and prior from the calendar feed"
+                footer = f"released {release_et} ET · {spec.agency} · consensus and prior from the calendar feed"
                 if await _post(bot, title, lines, footer):
                     mark_posted(today, spec.key, lines)
                     log.info(f"print-watch: posted {spec.key} for {period}")
@@ -502,8 +618,7 @@ def enrich_rows_with_agency_actuals(rows: list[dict]) -> list[dict]:
                   and str(r.get("event") or "").lower() in _ROW_TO_LINE]
         if not wanted:
             return rows
-        series = sorted({_ROW_TO_LINE[str(r["event"]).lower()].series for r in wanted})
-        obs_by = fetch_bls(series)
+        obs_by = fetch_observations([_ROW_TO_LINE[str(r["event"]).lower()] for r in wanted])
         if not obs_by:
             return rows
         for r in wanted:
@@ -514,7 +629,7 @@ def enrich_rows_with_agency_actuals(rows: list[dict]) -> list[dict]:
                 continue
             r["actual"] = value
             r["actual_period"] = period
-            r["actual_source"] = f"bls:{ln.series}"
+            r["actual_source"] = f"{ln.source}:{ln.series}"
             if not r.get("unit"):
                 r["unit"] = ln.unit
     except Exception as e:
