@@ -39,25 +39,55 @@ PILOT_WORKFLOWS = {
 }
 
 
+def _headers(tok: str) -> dict:
+    return {"Authorization": "Bearer " + tok,
+            "Accept": "application/vnd.github+json",
+            "Content-Type": "application/json",
+            "User-Agent": "omnibeta-worker-dispatch"}
+
+
+def has_queued_run(workflow_file: str, tok: str, repo: str) -> bool:
+    """True when the workflow already has a run waiting to start.
+
+    A concurrency group holds one running and one queued run; a second
+    queued run cancels the first (GitHub's rule, not ours). The hourly
+    reader dispatch stacked on a long run does exactly that, and the
+    ops record showed 'cancelled' runs that were never failures
+    (2026-09-16, 21:00 and 21:56 UTC). Any error answers False so a
+    flaky GET never suppresses a dispatch."""
+    req = urllib.request.Request(
+        f"https://api.github.com/repos/{repo}/actions/workflows/{workflow_file}"
+        f"/runs?status=queued&per_page=1",
+        headers=_headers(tok))
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.loads(r.read())
+        return bool((data or {}).get("workflow_runs"))
+    except Exception as e:
+        log.warning(f"workflow dispatch {workflow_file}: queued-run check failed ({e})")
+        return False
+
+
 def dispatch(workflow_file: str, ref: str = DEFAULT_REF,
              inputs: dict | None = None) -> int:
-    """POST a workflow_dispatch. Returns the HTTP status (204 = queued).
-    Never raises: a failed dispatch is logged and, on 401/403, paged."""
+    """POST a workflow_dispatch. Returns the HTTP status (204 = queued,
+    0 = not sent). Never raises: a failed dispatch is logged and, on
+    401/403, paged. A workflow with a run already queued is left alone."""
     tok = (settings.github_token or "").strip()
     if not tok:
         log.error("workflow dispatch: GITHUB_TOKEN not set")
         return 0
+    repo = settings.github_repo.strip().strip("/")
+    if has_queued_run(workflow_file, tok, repo):
+        log.info(f"workflow dispatch {workflow_file}: a run is already queued, skipped")
+        return 0
     body = {"ref": ref}
     if inputs:
         body["inputs"] = inputs
-    repo = settings.github_repo.strip().strip("/")
     req = urllib.request.Request(
         f"https://api.github.com/repos/{repo}/actions/workflows/{workflow_file}/dispatches",
         data=json.dumps(body).encode(),
-        headers={"Authorization": "Bearer " + tok,
-                 "Accept": "application/vnd.github+json",
-                 "Content-Type": "application/json",
-                 "User-Agent": "omnibeta-worker-dispatch"},
+        headers=_headers(tok),
         method="POST")
     try:
         with urllib.request.urlopen(req, timeout=20) as r:

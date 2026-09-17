@@ -84,3 +84,45 @@ def test_register_jobs_covers_every_declared_slot():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+def test_a_queued_run_suppresses_the_dispatch_and_a_failed_check_does_not():
+    # A concurrency group holds one queued run; a second queued run
+    # cancels the first (2026-09-16: two "cancelled" reader runs that
+    # were the hourly dispatch stacking, not failures).
+    import io
+    calls = []
+
+    class _Json(io.BytesIO):
+        status = 200
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+
+    def fake_open(req, timeout=0):
+        calls.append((req.get_method(), req.full_url))
+        if req.get_method() == "GET":
+            return _Json(json.dumps({"workflow_runs": [{"id": 1}]}).encode())
+        return _Resp(204)
+    orig = urllib.request.urlopen
+    urllib.request.urlopen = fake_open
+    try:
+        status = _with_token(lambda: W.dispatch("pilot-readers.yml"))
+    finally:
+        urllib.request.urlopen = orig
+    assert status == 0
+    assert [m for m, _ in calls] == ["GET"]
+    assert "status=queued" in calls[0][1]
+
+    calls.clear()
+
+    def flaky_open(req, timeout=0):
+        calls.append(req.get_method())
+        if req.get_method() == "GET":
+            raise OSError("api down")
+        return _Resp(204)
+    urllib.request.urlopen = flaky_open
+    try:
+        status = _with_token(lambda: W.dispatch("pilot-readers.yml"))
+    finally:
+        urllib.request.urlopen = orig
+    assert status == 204 and calls == ["GET", "POST"]

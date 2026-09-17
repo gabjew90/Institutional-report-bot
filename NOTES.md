@@ -2690,3 +2690,46 @@ The tier label is kept so the ledger's tier split and the graders'
 per-tier numbers keep working. Model change, so the pilot clock
 restarts; DAY1 was never set. Next lever if the week still does not
 fit: one grader per dimension with a tiebreak only on disagreement.
+
+## 2026-09-16 (evening): review of the outage week, five fixes
+
+Root causes sorted (owner asked): seven of eleven failures were process
+(a known step deferred, a refactor left half done, an assumption never
+measured); two were code that computed the wrong answer (CPI, both
+fixed 9/14); one was an external format change with no deterministic
+guard. The guards that share the Claude subscription (ask-qc, daily-qc,
+graders) all went dark with the thing they guard; the deterministic
+checks kept working.
+
+1. /ask citation markers. Gemini's grounded answers carry "[cite:
+   1.2.8]" / "[1.0.1]" in the model text; four shipped 9/14-16.
+   `_strip_citation_markers` runs in phase 10 before the sources footer.
+2. /ask Fed chair. An answer named a "Powell press conference" (9/15).
+   world_context held the fact but /ask never saw it: the econ tool's
+   docs and error string spelled the predecessor three times. Tool
+   strings read `world_context.FED_CHAIR`; the runtime header carries a
+   FED CHAIR line; `tests/test_fed_chair_single_source.py` fails any
+   source line in discord_bot/report/github_bridge/scheduler that names
+   the predecessor without the chair.
+3. /ask price backstop fetched 'ATM' as a ticker (COST implied-move
+   answer, 9/14). `_answer_price_tickers` now reads through
+   `ask_router.extract_tickers`; the duplicate regex and its stopword
+   set are gone (the CLAUDE.md TODO).
+4. Calendar: the Nasdaq date rule only removed rows. Finnhub parks
+   names on estimated dates (FedEx 9/16, General Mills 9/15, both
+   unannounced or announced elsewhere); Nasdaq had GIS on the announced
+   9/23 and nothing ever added it. `fetch_nasdaq_earnings_rows` returns
+   session and cap; a Nasdaq-only name at or above MIN_CAP_ALWAYS_SHOW
+   is added with Nasdaq's session (`CalendarDay.nasdaq_only_added`).
+   Checked before changing anything: the 9/16 and 9/17 sheets were
+   right. FedEx has not reported (zero post-market volume 9/16, no IR
+   event), so dropping Finnhub's 9/16 row was correct.
+5. Pilot machinery (shakedown, no prompt or model change): the editor
+   waits up to 40 minutes for `unread == 0` before packing (five of
+   thirteen days were VOID from editing over unread cards); the worker
+   skips a dispatch when the workflow already has a queued run (GitHub
+   cancels the older queued run in a concurrency group, which showed as
+   two "cancelled" reader runs after the 9/16 reset).
+
+Suite: 475 unit, 157/157 fast smokes. pytest had vanished from the
+3.12 interpreter (reinstalled).

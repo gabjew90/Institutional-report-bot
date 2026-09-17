@@ -36,7 +36,8 @@ env:
 jobs:
   edit:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 30 until 2026-09-16; the wait step below can hold for 40.
+    timeout-minutes: 75
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -51,6 +52,26 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      # Five of thirteen shakedown days were VOID because this job ran
+      # on the clock while readers were still committing cards
+      # (2026-09-16 review). The edit is condition-triggered now: wait,
+      # re-pulling pilot-data, until nothing is unread or 40 minutes
+      # pass. A day that still has unread files after that is recorded
+      # as before (unread_source_files_at_edit) and stays void; the
+      # wait only converts days the readers would have finished anyway.
+      - name: Wait for the readers
+        run: |
+          for i in $(seq 1 20); do
+            python scripts/pilot_list_unread.py \
+              --root "pilot-data/$PILOT_ROOT" --out /tmp/unread.json \
+              --given-up-out /tmp/given_up.json
+            UNREAD=$(python -c "import json;print(len(json.load(open('/tmp/unread.json'))))")
+            echo "unread: $UNREAD (check $i/20)"
+            [ "$UNREAD" -eq 0 ] && break
+            sleep 120
+            git -C pilot-data pull --quiet --ff-only origin pilot-data || true
+          done
 
       - name: Build the editor pack
         id: pack
