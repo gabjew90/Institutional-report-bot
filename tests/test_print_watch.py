@@ -153,5 +153,38 @@ def test_job_posts_once_and_records_it():
         assert len(sent) == 1, "second run must not repost"
 
 
+def test_the_print_goes_to_every_alert_channel_and_one_failure_does_not_block_the_rest():
+    """PRINT_ALERT_CHANNEL_ID is a list (2026-09-17: the room and the test
+    channel side by side). One embed per channel, one ledger entry; a
+    channel that fails is logged and the others still post."""
+    sent = []
+
+    class _Chan:
+        def __init__(self, cid):
+            self.cid = cid
+
+        async def send(self, embed=None, **kw):
+            if self.cid == 999:
+                raise RuntimeError("no access")
+            sent.append((self.cid, embed.title))
+            return object()
+
+    class _Bot:
+        def get_channel(self, cid):
+            return _Chan(cid)
+
+    with tempfile.TemporaryDirectory() as td,          patch("config.settings.db_path", str(Path(td) / "reports.db")),          patch("config.settings.print_alert_channel_id", "123, 456,999,123"),          patch("report.print_watch._ff_rows_for_day", return_value=FF),          patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)),          patch("discord_bot.sender._RETRY_SLEEP_S", 0, create=True),          patch("report.print_watch.datetime") as dt:
+        from datetime import datetime as real
+        fixed = real(2026, 9, 11, 8, 31, tzinfo=PW._ET)
+        dt.now.return_value = fixed
+        dt.utcnow.return_value = real(2026, 9, 11, 12, 31)
+        dt.strptime = real.strptime
+        dt.fromisoformat = real.fromisoformat
+        assert PW.alert_channel_ids() == [123, 456, 999]
+        asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
+        assert sorted(c for c, _ in sent) == [123, 456], sent
+        assert PW.already_posted("2026-09-11", "cpi")
+
+
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")

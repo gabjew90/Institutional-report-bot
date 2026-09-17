@@ -396,23 +396,45 @@ POLL_S_NO_KEY = 30          # 25 unregistered requests a day; ~20 per watch
 MAX_WAIT_S = 12 * 60
 
 
+def alert_channel_ids() -> list[int]:
+    """PRINT_ALERT_CHANNEL_ID as a comma-separated list (2026-09-17: the
+    owner wants the print in the test channel beside the room), falling
+    back to REMINDER_CHANNEL_ID. Bad entries are skipped, not fatal."""
+    raw = (settings.print_alert_channel_id or settings.reminder_channel_id or "")
+    out: list[int] = []
+    for part in raw.split(","):
+        part = part.strip()
+        if part.isdigit() and int(part) not in out:
+            out.append(int(part))
+    return out
+
+
 async def _post(bot, title: str, lines: list[str], footer: str) -> bool:
+    """Post the same embed to every alert channel at once. True when at
+    least one channel took it; the ledger then marks the print posted."""
     import discord
     from discord_bot.sender import _send_with_retry
-    raw = (settings.print_alert_channel_id or settings.reminder_channel_id or "").strip()
-    if not raw:
+    cids = alert_channel_ids()
+    if not cids:
         return False
-    cid = int(raw)
-    channel = bot.get_channel(cid)
-    if channel is None:
-        channel = await bot.fetch_channel(cid)
     embed = discord.Embed(title=title, description="\n".join(lines), color=0xE5A93F)
     embed.set_footer(text=footer)
-    ok, err = await _send_with_retry(lambda emb=embed: channel.send(embed=emb),
-                                     label=f"print-watch {title}")
-    if not ok:
-        log.warning(f"print-watch: post failed for {title!r}: {err}")
-    return ok
+
+    async def _one(cid: int) -> bool:
+        try:
+            channel = bot.get_channel(cid)
+            if channel is None:
+                channel = await bot.fetch_channel(cid)
+            ok, err = await _send_with_retry(lambda emb=embed: channel.send(embed=emb),
+                                             label=f"print-watch {title} -> {cid}")
+        except Exception as e:
+            ok, err = False, str(e)
+        if not ok:
+            log.warning(f"print-watch: post failed for {title!r} in {cid}: {err}")
+        return bool(ok)
+
+    results = await asyncio.gather(*(_one(c) for c in cids))
+    return any(results)
 
 
 async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
