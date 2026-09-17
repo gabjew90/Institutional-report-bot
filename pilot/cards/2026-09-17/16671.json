@@ -1,0 +1,468 @@
+{
+ "brief": "Meta launched Muse on September 8, 2026, and Instinct is separately gaining adoption. Fear that turnkey AI agents let non-developer users book travel, rides, and shopping on their behalf has pressured marketplace stocks, and Wolfe ties a resulting selloff in EXPE (-5.4%), BKNG (-9.0%), DASH (-3.5%), SHOP (-8.9%), and UBER (-5.2%) to that fear. Wolfe estimates Muse could add $30-50B in medium/long-term revenue for Meta: $30B via subscriptions (5% of Meta's 3 billion users at $20/month) plus a mid-to-high single-digit billion take-rate model. Meta's edge is data, distribution, and first-mover status, since OpenAI and Google have not shipped competing consumer agents, though Wolfe expects both, plus Anthropic, to release similar agents. Wolfe's central call is that the market's disruption fear is overdone and the actual risk is MODEST, because incumbents retain moats through full-service value chains, proprietary data, their own in-app agents, and subscription programs (Uber One, DashPass) that reduce the incentive to share economics on non-incremental orders. Wolfe ranks perceived risk as Travel most exposed, then Ride Sharing, then eCommerce, then Food Delivery.",
+ "cards": [
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Expedia Group (EXPE) shares fell 5.4% following Meta's Muse launch on fears of AI agent disruption to online travel marketplaces.",
+   "anchor": "sold off (EXPE -5.4%, BKNG -9.0%, DASH -3.5%, SHOP -8.9%, UBER -5.2%).",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "EXPE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Booking Holdings (BKNG) shares fell 9.0% following Meta's Muse launch on fears of AI agent disruption to online travel marketplaces.",
+   "anchor": "sold off (EXPE -5.4%, BKNG -9.0%, DASH -3.5%, SHOP -8.9%, UBER -5.2%).",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "BKNG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "DoorDash (DASH) shares fell 3.5% following Meta's Muse launch on fears of AI agent disruption to food delivery marketplaces.",
+   "anchor": "sold off (EXPE -5.4%, BKNG -9.0%, DASH -3.5%, SHOP -8.9%, UBER -5.2%).",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Shopify (SHOP) shares fell 8.9% following Meta's Muse launch on fears of AI agent disruption to eCommerce marketplaces.",
+   "anchor": "sold off (EXPE -5.4%, BKNG -9.0%, DASH -3.5%, SHOP -8.9%, UBER -5.2%).",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "SHOP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Uber Technologies (UBER) shares fell 5.2% following Meta's Muse launch on fears of AI agent disruption to ride-sharing marketplaces.",
+   "anchor": "sold off (EXPE -5.4%, BKNG -9.0%, DASH -3.5%, SHOP -8.9%, UBER -5.2%).",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe estimates Meta's subscription monetization of Muse could generate $30B in medium/long-term revenue opportunity, assuming 5% of Meta's 3 billion users subscribe at $20 per month.",
+   "anchor": "we estimate $30 - $50B revenue opportunity: a) subscription: $30B opportunity M/LT -",
+   "topic": "AI agent marketplace disruption",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "medium to long term"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe's take-rate model assumes 5% of global eCommerce penetration ex-China and a 3-5% take rate, implying mid-to-high single-digit billions of dollars in revenue for Meta from Muse.",
+   "anchor": "China) and a 3% - 5% take rate implies M/HSD $B revenue.",
+   "topic": "AI agent marketplace disruption",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "medium to long term"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Meta will offer two Muse subscription tiers: Power at $20/month for 500 million tokens per week and Maximum at $100/month for 3 billion tokens per week.",
+   "anchor": "($20/month, 500MM Muse tokens/week) and Maximum ($100/month, 3B Muse tokens/week).",
+   "topic": "AI agent marketplace disruption",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Instinct received 305,000 total visits from June through August 2026, according to Similarweb data cited by Wolfe.",
+   "anchor": "User count, engagement, & scale: 305K total visits from June \u2013 August (Similarweb).",
+   "topic": "AI agent marketplace disruption",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Muse ranked in the top 3 on the iOS App Store as of September 9, 2026.",
+   "anchor": "Adoption & scale: Top 3 on the iOS App (as of September 9th, 2026).",
+   "topic": "AI agent marketplace disruption",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Meta currently has no competing consumer AI agents from OpenAI or Google, giving it a first-mover advantage with Muse.",
+   "anchor": "- no competing consumer agents from OAI or Google.",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe's preliminary survey found that consumer trust in Meta for handling credit card information is lower than trust in Google.",
+   "anchor": "That said consumer trust with Meta is lower than Google as it\nrelates to credit card information - per our prelim survey results.",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe expects Google, along with OpenAI and Anthropic, to release consumer AI agents similar to Muse and Instinct.",
+   "anchor": "Google (and OAI + Anthropic) will likely release\nsimilar agents.",
+   "topic": "AI agent marketplace disruption",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe believes the market's fears about AI agent disruption to eCommerce, food delivery, and rideshare platforms are overdone and rates the actual risk as MODEST, or better than feared.",
+   "anchor": "magnitude of risk expectations may be a bit overdone. Here is why we believe the risk is MODEST (better-than-feared):",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe believes ride-sharing carries somewhat more disruption risk from AI agents than food delivery, given the predictability of ride options and rideshare's two-way marketplace structure versus food delivery's three-way structure.",
+   "anchor": "share than food delivery given the predictability of options and two-way marketplace vs. three way marketplace. That said,",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Uber has 50 million Uber One subscription members who account for over 50% of Uber's total bookings.",
+   "anchor": "50MM Uber One members account for over\n50% of Bookings",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "DoorDash has over 35 million DashPass subscription members who account for a meaningful percentage of DoorDash's total gross order value.",
+   "anchor": "35MM+ DashPass members account for meaningful % of total GOV",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe believes three-way marketplaces like UberEats, DoorDash, and Instacart, which integrate merchants, consumers, and couriers, have deeper competitive moats against AI agent disruption than two-way marketplaces.",
+   "anchor": "Three-way marketplaces have deeper moats than two-way.",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "UBER",
+    "DASH",
+    "CART"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe estimates that high-intent food orders account for a minority of total food delivery orders since most customers browse options before deciding, which favors marketplace platforms over standalone agents.",
+   "anchor": "food orders account for minority of total, increasing the need for consumers to land on marketplace platforms.",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "The market perceives Travel as most exposed to AI agent disruption, followed by Ride Sharing, then eCommerce, then Food Delivery.",
+   "anchor": "Travel is most exposed\nfollowed by Ride Sharing, then eCommerce, and then Food Delivery.",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Amazon.com (AMZN) Outperform with a $315 price target, implying 22.7% upside.",
+   "anchor": "Amazon.com Inc.\nAMZN\nOP\n$315\n22.7%",
+   "topic": "AI agent marketplace disruption",
+   "status": "target",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Instacart (CART) Peer Perform with no price target.",
+   "anchor": "Instacart\nCART\nPP\nNA\nChewy Inc.\nCHWY",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "CART"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Chewy (CHWY) Outperform with a $28 price target, implying 37.0% upside.",
+   "anchor": "Chewy Inc.\nCHWY\nOP\n$28\n37.0%",
+   "topic": "AI agent marketplace disruption",
+   "status": "target",
+   "instruments": [
+    "CHWY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates DoorDash (DASH) Outperform with a $270 price target, implying 33.7% upside.",
+   "anchor": "DoorDash Inc.\nDASH\nOP\n$270\n33.7%",
+   "topic": "AI agent marketplace disruption",
+   "status": "target",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates eBay (EBAY) Peer Perform with no price target.",
+   "anchor": "eBay Inc.\nEBAY\nPP\nNA\nEtsy Inc.\nETSY",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "EBAY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Etsy (ETSY) Peer Perform with no price target.",
+   "anchor": "Etsy Inc.\nETSY\nPP\nNA\nLyft Inc.\nLYFT",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "ETSY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Lyft (LYFT) Peer Perform with no price target.",
+   "anchor": "Lyft Inc.\nLYFT\nPP\nNA\nMeta Platforms Inc.\nMETA",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "LYFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Meta Platforms (META) Outperform with a $700 price target, implying 8.0% upside.",
+   "anchor": "Meta Platforms Inc.\nMETA\nOP\n$700\n8.0%",
+   "topic": "AI agent marketplace disruption",
+   "status": "target",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Shopify (SHOP) Peer Perform with upside not meaningful.",
+   "anchor": "Shopify Inc.\nSHOP\nPP\nNM\nUber Technologies\nUBER",
+   "topic": "AI agent marketplace disruption",
+   "status": "level",
+   "instruments": [
+    "SHOP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "Meta Muse and Instinct: Product Deep Dive + Contribution To META + Benefits & Risks",
+   "claim": "Wolfe rates Uber Technologies (UBER) Outperform with an $85 price target, implying 18.6% upside.",
+   "anchor": "Uber Technologies\nUBER\nOP\n$85\n18.6%",
+   "topic": "AI agent marketplace disruption",
+   "status": "target",
+   "instruments": [
+    "UBER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-17/16671__meta-muse-and-instinct-product-deep-dive-contribution-to-met.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
