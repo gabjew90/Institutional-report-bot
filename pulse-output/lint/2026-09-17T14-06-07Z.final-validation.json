@@ -1,0 +1,62 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '51%' is attached to [hike, odds] but the source uses it for [announcement, bank, following, fomc, further] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "51%",
+   "draft_subject": [
+    "hike",
+    "odds"
+   ],
+   "source_subject": [
+    "announcement",
+    "bank",
+    "following",
+    "fomc",
+    "further",
+    "hikes",
+    "market",
+    "notes"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '3.50%' is attached to [adding, agree, because, both, cycle] but the source uses it for [added, based, core, cuts, expects] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "3.50%",
+   "draft_subject": [
+    "adding",
+    "agree",
+    "because",
+    "both",
+    "cycle",
+    "fight",
+    "finish",
+    "holding"
+   ],
+   "source_subject": [
+    "added",
+    "based",
+    "core",
+    "cuts",
+    "expects",
+    "forecast",
+    "inflation",
+    "maintains"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5.00% is stated for Retail Sales but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [-0.6, -0.3, 0.4, 0.6, 1.2, 1.24, 1.39]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5.00",
+   "event": "RETAIL SALES",
+   "matches_estimate": false,
+   "sentence": "- **August retail sales ran far hotter than expected, out Wednesday at 8:30 AM ET.** Sales excluding autos rose 1.39% against the 0.6% economists wanted and the headline rose 1.24% against the 0.8% ex"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 3,
+ "exit_code": 4
+}

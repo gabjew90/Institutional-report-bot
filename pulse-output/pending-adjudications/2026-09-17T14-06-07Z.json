@@ -1,0 +1,285 @@
+{
+  "pulse_date": "2026-09-17",
+  "window_label": "since-last-daily (2026-09-14T14:51)",
+  "themes": [
+    {
+      "theme": "fed hawkishness",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 32
+      },
+      "consensus_view": "Most desks now expect the Federal Reserve to raise interest rates at the September meeting after hotter inflation and payrolls data, while Scotiabank and State Street argue a hike is the wrong response and would be a mistake.",
+      "facts_agreed": [
+        {
+          "claim": "Desks have shifted their base case from the Fed holding rates to the Fed raising them.",
+          "banks_for": [
+            "Monex Europe",
+            "Goldman Sachs",
+            "Natixis"
+          ],
+          "evidence_quotes": [
+            "we have changed our call: we now expect a 25bp increase to 3.75\u20134.00%.",
+            "We now expect the FOMC to deliver a second 25bp hike in October",
+            "the prospect of a global tightening cycle is certainly taking shape."
+          ]
+        },
+        {
+          "claim": "The tightening is treated as a global cycle, not a US-only move, with the Bank of Japan also seen speeding up.",
+          "banks_for": [
+            "Natixis",
+            "Goldman Sachs Asset Management"
+          ],
+          "evidence_quotes": [
+            "the prospect of a global tightening cycle is certainly taking shape.",
+            "growing consensus that the BoJ could be set to speed up its hiking pace"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the Fed should hike at all",
+          "banks_for": [
+            "Goldman Sachs",
+            "Monex Europe"
+          ],
+          "for_evidence": "We now expect the FOMC to deliver a second 25bp hike in October",
+          "banks_against": [
+            "Scotiabank",
+            "State Street"
+          ],
+          "against_evidence": "I believe that hiking would be policy error. It isn\u2019t what the Fed should be doing."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai adoption and infrastructure",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 17,
+        "skeptical": 5,
+        "neutral": 5
+      },
+      "consensus_view": "Most banks say the money going into AI chips and data centers is still rising and that companies are finally putting AI into real production use, while a smaller group argues the buildout is being financed too loosely and has yet to show up as economy-wide productivity or profit.",
+      "facts_agreed": [
+        {
+          "claim": "AI has moved from testing and pilots into production deployment at enterprises.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Citi"
+          ],
+          "evidence_quotes": [
+            "AI is increasingly moving from experimentation to implementation",
+            "AI adoption is moving from experimentation to measurable implementation",
+            "Enterprises are increasingly moving AI workloads into production and treating compute as a strategic resource.",
+            "software demand remains stable; AI adoption is accelerating from pilots to production deployment",
+            "Agentic AI is likely no different. The greatest opportunities will come not necessarily to those who simply adopt first"
+          ]
+        },
+        {
+          "claim": "The AI spending cycle is not ending and demand for compute still exceeds available supply.",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs",
+            "JPMorgan",
+            "Fidelity International",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "We believe it's too early to conclude that AI capex cycle is ending.",
+            "demand continuing to outstrip supply and bottlenecks increasingly around power, land and datacenter capacity",
+            "We see no imminent sign of the capex downturn being priced into Tech hardware.",
+            "Together, these results suggest AI infrastructure demand is not yet rolling over.",
+            "We are clearly in an AI Capex boom."
+          ]
+        },
+        {
+          "claim": "The binding constraint on AI buildout is physical \u2014 power, land, construction and deployment \u2014 not a shortage of demand.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Allianz Global Investors"
+          ],
+          "evidence_quotes": [
+            "Most infrastructure companies described long-duration bottlenecks around power, construction and deployment",
+            "For the first time in three decades, global electricity demand is rising faster than economic output",
+            "demand continuing to outstrip supply and bottlenecks increasingly around power, land and datacenter capacity"
+          ]
+        },
+        {
+          "claim": "First evidence of AI paying back is appearing in company revenue and cash flow.",
+          "banks_for": [
+            "JPMorgan",
+            "Syz Group"
+          ],
+          "evidence_quotes": [
+            "we are seeing increasing signs of successful AI monetization and early evidence of improving/positive ROI",
+            "AI infrastructure is moving from capital expenditure\u2026 \u2026to cash flow."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "sustainability of the AI buildout and how it is financed",
+          "banks_for": [
+            "UBS",
+            "Goldman Sachs"
+          ],
+          "for_evidence": "We believe it's too early to conclude that AI capex cycle is ending.",
+          "banks_against": [
+            "Canaccord Genuity",
+            "Carlyle"
+          ],
+          "against_evidence": "The frantic, unsustainable (in our opinion) sprint of the AI buildout should collide with unyielding brick walls"
+        },
+        {
+          "claim": "whether AI spending has produced measurable returns yet",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "early evidence of improving/positive ROI on AI investments is emerging",
+          "banks_against": [
+            "Bank of America"
+          ],
+          "against_evidence": "scant evidence yet of economy-wide productivity gains"
+        },
+        {
+          "claim": "whether markets are already pricing a spending downturn",
+          "banks_for": [
+            "JPMorgan"
+          ],
+          "for_evidence": "We see no imminent sign of the capex downturn being priced into Tech hardware.",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "Credit is beginning to price the cost and execution risk of the AI buildout"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "energy supply crunch",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 11
+      },
+      "consensus_view": "Banks agree that Middle East supply losses have pushed oil back above $100 and are now the main force lifting inflation and bond yields, and no desk in this set argues the squeeze is close to over.",
+      "facts_agreed": [
+        {
+          "claim": "Lost Middle East energy supply is a prolonged shock, not a brief scare, and it is pushing inflation high enough to force central banks to tighten.",
+          "banks_for": [
+            "The Market Ear",
+            "Berenberg",
+            "Reuters"
+          ],
+          "evidence_quotes": [
+            "The Iran war is no longer a short-lived energy supply shock, but a prolonged, unpredictable test",
+            "Crude oil drives inflation, and if it starts getting into the system it\u2019s going to be hard to contain it",
+            "The further escalation of the conflict in the Persian Gulf... mean that our late-August call... looks too optimistic"
+          ]
+        },
+        {
+          "claim": "Energy has become the dominant driver of rates and of positioning flows rather than a sector story.",
+          "banks_for": [
+            "The Market Ear",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "The beta of front end rates to energy is back to the highs",
+            "energy was the dominant driver of the boost in overall open interest"
+          ]
+        },
+        {
+          "claim": "The shortage extends past oil into commodities generally as buyers shift from lean inventories to stockpiling.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "the world is leaving just-in-time and entering hoarding"
+          ]
+        },
+        {
+          "claim": "Desks across the corpus flag rising energy costs as the pressure point reaching inflation, retail spending and manufacturing inputs.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Energy price pressure on inflation",
+            "Diesel as real-economy pressure point",
+            "Energy sector supply shortages",
+            "Rising manufacturing input prices",
+            "gas price impact on retail"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "saudi east-west pipeline disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 11
+      },
+      "consensus_view": "Banks across many desks flag the shutdown of Saudi Arabia's East-West oil pipeline as a live supply disruption tied to attacks, but none has staked out a directional view on where oil prices go from here.",
+      "facts_agreed": [
+        {
+          "claim": "Multiple banks reference the shutdown of Saudi Arabia's East-West oil pipeline as a live oil supply disruption this window.",
+          "banks_for": [
+            "Goldman Sachs",
+            "UBS",
+            "Citi",
+            "Deutsche Bank",
+            "Natixis"
+          ],
+          "evidence_quotes": [
+            "Saudi East-West pipeline shutdown",
+            "Saudi East-West pipeline closure",
+            "Saudi Arabia east-west pipeline closure",
+            "Saudi East-West pipeline supply disruption",
+            "Saudi Arabia oil supply disruption"
+          ]
+        },
+        {
+          "claim": "Several banks attribute the pipeline outage to attacks on Saudi oil infrastructure.",
+          "banks_for": [
+            "SEB",
+            "Rabobank",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "Saudi Arabia oil pipeline attacks",
+            "Houthi attack on Saudi pipeline",
+            "Saudi East-West pipeline attacks",
+            "Saudi Arabia pipeline drone attack"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "iran us conflict logistics",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Bernstein'"
+    },
+    {
+      "theme": "fed rate hike expectations",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'MUFG'"
+    },
+    {
+      "theme": "bond yield outlook",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA'"
+    },
+    {
+      "theme": "ai frontier risk",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'UBS'"
+    }
+  ]
+}

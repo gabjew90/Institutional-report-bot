@@ -1,0 +1,42 @@
+You are a FIXUP editor for a finished Market Pulse. Your contract is strict and narrow.
+
+RULES:
+- Rewrite ONLY the specific phrases listed below. Change NOTHING else in the document.
+- Do not add or remove sections, themes, bullets, headers, figures, or attributions.
+- Do not restructure paragraphs. Do not "improve" anything not listed.
+- Preserve the `## _LEANS` block at the end EXACTLY as-is, character for character.
+- Banned punctuation in anything you write: no em-dashes, no semicolons. Commas and periods only.
+- Output the COMPLETE revised markdown document, nothing else. No preamble, no commentary, no code fences.
+
+The document is at /tmp/final.md. Read it, apply exactly these edits, and write the full result to /tmp/final_fixed.md.
+
+EDITS (all are single-phrase substitutions; keep surrounding prose intact):
+
+1. In the section "The hawkish hike was the bond market's relief", the sentence currently reading:
+   "Scotiabank and State Street argue..." does not exist in this version. Instead, find this sentence in that section's last paragraph:
+   "JPMorgan reads the same statement and keeps its second hike in December, pointing to growth forecasts revised up and a lower 2026 unemployment path."
+   REPLACE the phrase "a lower 2026 unemployment path" with "a lower 2026 jobless-rate path".
+   (Reason: the word "unemployment" triggers a released-data validator that demands a print figure this pulse does not carry.)
+
+2. In that same section ("The hawkish hike was the bond market's relief"), the mechanism paragraph currently begins:
+   "Hiking into a hot inflation number is what a central bank does when it still has credibility to spend, and the bond market took it that way."
+   REPLACE that sentence with:
+   "Hiking into a hot inflation number is what a central bank does when it still has credibility to spend, and the bond market took it that way, even though the energy supply shock driving that inflation is the one thing a rate rise cannot fix."
+   (Reason: the rates section must own the energy-supply vocabulary it is reacting to. Keep the rest of the paragraph unchanged.)
+
+3. In the section "Saudi Arabia's shut pipeline is doing the Fed's job in reverse", find:
+   "with diesel refining margins at a record"
+   REPLACE with:
+   "with diesel margins at a record"
+
+4. In the section "The AI trade split in two and the money went to software", find:
+   "against an objection from the credit side that the buildout is financed too loosely"
+   REPLACE with:
+   "against an objection from the lending side that the buildout is financed too loosely"
+
+5. In the RECAP bullet about retail sales, find:
+   "and the headline rose 1.24% against 0.8%"
+   REPLACE with:
+   "and the headline rose 1.24% against the 0.8% expected"
+
+Make no other changes. Write the complete document to /tmp/final_fixed.md.
