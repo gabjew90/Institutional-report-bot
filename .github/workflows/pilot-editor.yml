@@ -21,6 +21,12 @@ on:
       date:
         description: "UTC date to edit (YYYY-MM-DD, default today)"
         required: false
+      days:
+        description: "day-directories to pack (default 1)"
+        required: false
+      stress:
+        description: "true = plan 4.3 stress datapoint: merged pack, --allow-stale, written to pilot/stress/, never to shadow/"
+        required: false
 
 permissions:
   contents: write
@@ -61,6 +67,7 @@ jobs:
       # as before (unread_source_files_at_edit) and stays void; the
       # wait only converts days the readers would have finished anyway.
       - name: Wait for the readers
+        if: github.event.inputs.stress != 'true'
         run: |
           for i in $(seq 1 20); do
             python scripts/pilot_list_unread.py \
@@ -78,7 +85,22 @@ jobs:
         run: |
           DATE="${{ github.event.inputs.date }}"
           [ -z "$DATE" ] && DATE=$(date -u +%F)
+          DAYS="${{ github.event.inputs.days }}"
+          [ -z "$DAYS" ] && DAYS=1
           echo "EDIT_DATE=$DATE" >> "$GITHUB_ENV"
+          # Plan 4.3 stress datapoint (2026-09-17): the same editor over
+          # a merged multi-day pack, written beside the pilot tree, not in
+          # it. The graders read shadow/<date>.md only, so a stress
+          # artifact can never be graded or change a verdict.
+          STALE=""
+          if [ "${{ github.event.inputs.stress }}" = "true" ]; then
+            STALE="--allow-stale"
+            echo "EDIT_OUTDIR=pilot-data/$PILOT_ROOT/stress" >> "$GITHUB_ENV"
+            echo "EDIT_STEM=$DATE-${DAYS}d" >> "$GITHUB_ENV"
+          else
+            echo "EDIT_OUTDIR=pilot-data/$PILOT_ROOT/shadow" >> "$GITHUB_ENV"
+            echo "EDIT_STEM=$DATE" >> "$GITHUB_ENV"
+          fi
           mkdir -p /tmp/ed
           python scripts/pilot_list_unread.py \
             --root "pilot-data/$PILOT_ROOT" --out /tmp/ed/unread.json \
@@ -93,7 +115,7 @@ jobs:
           # what happened on 2026-09-03. Fail LOUD and publish nothing.
           set +e
           python scripts/pilot_editor_pack.py "pilot-data/$PILOT_ROOT/cards" \
-            --date "$DATE" --days 1 --out /tmp/ed/pack
+            --date "$DATE" --days "$DAYS" $STALE --out /tmp/ed/pack
           PACK_RC=$?
           set -e
           if [ "$PACK_RC" -eq 2 ]; then
@@ -139,7 +161,7 @@ jobs:
         run: |
           set -u
           MODEL=$(python -c "from scripts.pilot_config import MODEL_EDITOR;print(MODEL_EDITOR)")
-          OUTDIR="pilot-data/$PILOT_ROOT/shadow"
+          OUTDIR="$EDIT_OUTDIR"
           mkdir -p "$OUTDIR"
           python scripts/pilot_editor_prompt.py /tmp/ed/pack.md --out /tmp/ed/prompt.txt
           # Prompt on stdin: the pack can exceed the kernel's per-argument
@@ -148,14 +170,14 @@ jobs:
             --permission-mode bypassPermissions --max-turns 6 \
             < /tmp/ed/prompt.txt > /tmp/ed/raw.md 2>/tmp/ed/err.txt || true
           python scripts/pilot_finalize_edit.py --raw /tmp/ed/raw.md \
-            --out "$OUTDIR/$EDIT_DATE.md" --meta "$OUTDIR/$EDIT_DATE.meta.json" \
+            --out "$OUTDIR/$EDIT_STEM.md" --meta "$OUTDIR/$EDIT_STEM.meta.json" \
             --model "$MODEL" --unread "$UNREAD_AT_EDIT" --given-up "$GIVEN_UP_AT_EDIT" \
             --prompt docs/superpowers/routines/pilot/editor.md \
             --pack /tmp/ed/pack.json
           # Pass 1: verify citations; one in-session re-ask on failures.
           set +e
-          python scripts/pilot_verify_citations.py "$OUTDIR/$EDIT_DATE.md" /tmp/ed/pack.json \
-            --meta-out "$OUTDIR/$EDIT_DATE.meta.json" --reask-out /tmp/ed/reask.json
+          python scripts/pilot_verify_citations.py "$OUTDIR/$EDIT_STEM.md" /tmp/ed/pack.json \
+            --meta-out "$OUTDIR/$EDIT_STEM.meta.json" --reask-out /tmp/ed/reask.json
           rc=$?
           set -e
           if [ "$rc" = "2" ]; then
@@ -169,7 +191,7 @@ jobs:
               --permission-mode bypassPermissions --max-turns 6 \
               < /tmp/ed/reask_prompt.txt > /tmp/ed/raw.md 2>/dev/null || true
             python scripts/pilot_finalize_edit.py --raw /tmp/ed/raw.md \
-              --out "$OUTDIR/$EDIT_DATE.md" --meta "$OUTDIR/$EDIT_DATE.meta.json" \
+              --out "$OUTDIR/$EDIT_STEM.md" --meta "$OUTDIR/$EDIT_STEM.meta.json" \
               --model "$MODEL" --unread "$UNREAD_AT_EDIT" --given-up "$GIVEN_UP_AT_EDIT" \
               --prompt docs/superpowers/routines/pilot/editor.md \
               --pack /tmp/ed/pack.json --reasked || true
@@ -181,9 +203,9 @@ jobs:
           # below is skipped when this step fails and the day's pulse is
           # then written to disk and discarded (2026-09-03).
           set +e
-          python scripts/pilot_verify_citations.py "$OUTDIR/$EDIT_DATE.md" /tmp/ed/pack.json \
-            --meta-out "$OUTDIR/$EDIT_DATE.meta.json" \
-            --stripped-out "$OUTDIR/$EDIT_DATE.clean.md" --final
+          python scripts/pilot_verify_citations.py "$OUTDIR/$EDIT_STEM.md" /tmp/ed/pack.json \
+            --meta-out "$OUTDIR/$EDIT_STEM.meta.json" \
+            --stripped-out "$OUTDIR/$EDIT_STEM.clean.md" --final
           echo "pass 2 verifier exit: $?"
           set -e
 
@@ -193,8 +215,8 @@ jobs:
         run: |
           git config user.name "pilot-editor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add "$PILOT_ROOT/shadow/"
+          git add "$PILOT_ROOT/shadow/" "$PILOT_ROOT/stress/"
           git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
-          git commit -m "pilot: shadow pulse $EDIT_DATE"
+          git commit -m "pilot: ${EDIT_OUTDIR##*/} pulse $EDIT_STEM"
           git pull --rebase --quiet origin pilot-data || true
           git push origin pilot-data

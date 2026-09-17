@@ -57,8 +57,10 @@ artifacts are identical.
    order if it runs thin: readers tier down first, then the editor,
    graders last.
 5. Once during shakedown, run the ledger and editor over a merged
-   three-day card set (`pilot_editor_pack.py --days 3`) and note the
-   grouping behaviour. Uncounted (plan 4.3).
+   three-day card set and note the grouping behaviour. Uncounted (plan
+   4.3). Ledger half: `pilot_editor_pack.py --days 3`. Editor half:
+   dispatch `pilot-editor` with inputs `date`, `days=3`, `stress=true`;
+   it writes `pilot/stress/<date>-3d.md`, never `shadow/`.
 6. Commit the file `pilot/DAY1` on `pilot-data` containing the first
    counted date. From that day: no prompt edits, no model-string
    edits. Either restarts the clock.
