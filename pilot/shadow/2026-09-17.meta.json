@@ -1,0 +1,45 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 90,
+ "pack": {
+  "documents": 37,
+  "cards": 1119
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 102,
+  "brief_citations": 19,
+  "distinct_cards_cited": 101,
+  "card_count": 1119,
+  "quintiles": [
+   18,
+   14,
+   27,
+   20,
+   23
+  ],
+  "edge_quintile_share": 0.402,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Both are looking at the same 3.25% neutral estimate and the same unemployment forecast of 4.1%, a tenth below the Fed's own estimate of the natural rate [c1076].",
+    "cite": "c1076",
+    "reason": "figures not in cited card(s): ['3.25%']"
+   },
+   {
+    "sentence": "UBS is unmoved, keeping its 2027 AI capex forecast at $1.2 trillion, a 33% rise from $900 billion this year, and pointing at chip stocks trading near 21 times forward earnings against 33 times in June",
+    "cite": "c230,c23",
+    "reason": "figures not in cited card(s): ['1200000000000']"
+   }
+  ],
+  "leans": 4,
+  "leans_block_present": true,
+  "word_count": 1563
+ }
+}
