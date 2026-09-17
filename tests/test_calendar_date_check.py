@@ -135,3 +135,20 @@ def test_an_added_name_survives_a_failed_finnhub_profile_on_nasdaq_cap_and_name(
     assert gis and gis[0].cap_musd == 19556.0 and gis[0].name == "General Mills, Inc.", [r.symbol for r in day.amc]
     assert day.dropped_amc == 0
     assert day.nasdaq_only_added == ["GIS"]
+
+
+def test_nasdaq_session_fills_a_blank_finnhub_hour_and_wins_a_conflict():
+    # 2026-09-17: Finnhub had Darden and General Mills with no session and
+    # Accenture after the close; Nasdaq had all three before the open.
+    rows = [{"symbol": "DRI", "hour": ""}, {"symbol": "ACN", "hour": "amc"}, {"symbol": "COST", "hour": "amc"}]
+    nasdaq = {"DRI": {"hour": "bmo", "cap": 23700.0, "name": "Darden Restaurants, Inc."},
+              "ACN": {"hour": "bmo", "cap": 126600.0, "name": "Accenture plc"},
+              "COST": {"hour": "amc", "cap": 396400.0, "name": "Costco Wholesale Corporation"}}
+    caps = {s: {"cap": nasdaq[s]["cap"], "name": nasdaq[s]["name"]} for s in nasdaq}
+    with patch.object(nd, "fetch_earnings_calendar_all", lambda d: [dict(r) for r in rows]),          patch.object(nd, "fetch_us_econ_events_for_date", lambda d: []),          patch.object(nd, "fetch_nasdaq_earnings_rows", lambda d: nasdaq),          patch.object(cd, "_resolve_caps", lambda syms: {s: caps[s] for s in syms if s in caps}),          patch.object(cd, "_implied_move_fetch", lambda s, d, session=None: 4.0),          patch.object(cd, "_MOVE_PACE_S", 0),          patch.object(cd, "_has_options", lambda s: True),          patch.object(cd, "_resolve_logos", lambda syms, caps: {}),          patch.object(db, "recently_covered_tickers", lambda days=7: set()),          patch.object(db, "conference_sessions_for_date", lambda d, **kw: []):
+        day = cd.build_calendar_day("2026-09-24")
+    assert [r.symbol for r in day.bmo] == ["ACN", "DRI"], [r.symbol for r in day.bmo]
+    assert all(r.session_confirmed for r in day.bmo)
+    assert [r.symbol for r in day.amc] == ["COST"]
+    assert day.session_from_nasdaq == ["DRI", "ACN"]
+

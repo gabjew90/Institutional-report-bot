@@ -156,6 +156,9 @@ def _band(d, label, x0, x1, y, f):
     return ly + 14 * _S
 
 
+EMPTY_BAND_TEXT = "no names at scale confirmed"
+
+
 def render_calendar_png(day: CalendarDay) -> bytes:
     f = _Fonts.get()
     img = Image.new("RGB", (_W, _H), GROUND)
@@ -317,6 +320,15 @@ def render_calendar_png(day: CalendarDay) -> bytes:
                     d.text((_nm_x, cy + 1 * _S + _i * 26 * _S), _line,
                            font=nm_font, fill=(TEXT if _imp else _dim(TEXT, 0.55)))
                 cy += 40 * _S + (26 * _S if len(_lines) > 1 else 0)
+            if not rows:
+                # An empty band says so (2026-09-17: the mid-September
+                # sheets were blank between earnings seasons and read as
+                # a feed failure). The feed-down case above has its own
+                # line; this one means the sources agree nobody at scale
+                # reports in this session.
+                d.text((cx + _LOGO_GUTTER, cy), EMPTY_BAND_TEXT, font=f["nm"],
+                       fill=_dim(TEXT, 0.4))
+                cy += 40 * _S
             # "+N more" is NOT rendered (owner call 2026-08-27). The
             # dropped counts stay in CalendarDay and the pipeline event
             # for QC, but the published sheet shows only the names that

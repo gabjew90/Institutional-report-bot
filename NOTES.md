@@ -2856,3 +2856,21 @@ figure in the answer is there, the answer ships without the hedge,
 labelled `in-voice:tool-sourced`. Checked ahead of both hedge branches
 (local-skip, context-dep-skip). Same matcher the phase-9 provenance
 guard uses, so one definition of "sourced".
+
+## 2026-09-17: the quiet calendar is correct; two rules tightened
+
+Owner asked whether the empty earnings bands are right. They are:
+9/14-18 is the trough between seasons. Nasdaq's $5B-plus list is
+empty on 9/18, and the next real slate is 9/22 AZO/KBH, 9/23
+CTAS/PAYX/GIS, 9/24 COST/DRI/SNX, 9/29 CCL/KMX, 9/30 MU/JBL/FDS, 10/1
+ACN/NKE. Finnhub still parks several of these on estimated dates or
+with no session (FDX 9/16, GIS 9/15, NKE 9/28, DRI no hour, ACN after
+the close); Nasdaq has the announced dates and sessions.
+
+1. Nasdaq's session now fills a blank Finnhub hour and wins a conflict
+   (`CalendarDay.session_from_nasdaq` records which rows). DRI and GIS
+   become confirmed before-open rows instead of flagged after-close
+   ones; ACN moves to the right band.
+2. An empty band prints "no names at scale confirmed"
+   (`calendar_render.EMPTY_BAND_TEXT`); the feed-down case keeps its
+   own "unavailable tonight" line.

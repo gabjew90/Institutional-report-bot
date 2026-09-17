@@ -215,6 +215,8 @@ class CalendarDay:
     # Names Nasdaq lists for this date that Finnhub does not, added
     # above the cap floor (2026-09-16). Kept for QC.
     nasdaq_only_added: list[str] = field(default_factory=list)
+    # Rows whose session came from Nasdaq (Finnhub blank or different).
+    session_from_nasdaq: list[str] = field(default_factory=list)
 
 
 def _weekday_label(date_iso: str) -> str:
@@ -666,6 +668,17 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             continue
         _seen.add(sym)
         hour = (r.get("hour") or "").lower()
+        # Nasdaq's session, when it has one, fills a blank Finnhub hour
+        # and wins a conflict (2026-09-17: Finnhub had Darden and General
+        # Mills with no session and Accenture after the close; Nasdaq had
+        # all three before the open, which is when they report). Recorded
+        # for QC either way.
+        nq_hour = ((nasdaq_rows or {}).get(sym.upper()) or {}).get("hour") or ""
+        if nq_hour and nq_hour != hour:
+            if hour in ("bmo", "amc"):
+                log.info(f"calendar: {sym} session {hour} (Finnhub) -> {nq_hour} (Nasdaq)")
+            day.session_from_nasdaq.append(sym)
+            hour = nq_hour
         # blank / dmh (during market hours) land in AMC, FLAGGED —
         # that's where a reader looks for them last, and the flag keeps
         # the sheet honest that the session is Finnhub's gap, not fact.
