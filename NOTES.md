@@ -2844,3 +2844,15 @@ table layout and not yet confirmed against a live response; `parse_bea`
 logs what the table carries when a requested code is missing, so the
 first live run tells us. Next PCE print: Friday 2026-09-25, 8:30 ET
 (August personal income and outlays).
+
+## 2026-09-17: a tool payload is a source for the grounding net
+
+The 9/15 LEN answer (date, consensus EPS and revenue all from
+lookup_earnings_date) shipped with the "Couldn't verify" hedge because
+the net asked only whether Google had sources. `_tool_sourced` runs the
+figure-provenance matcher over the turn's evidence (tool payloads,
+injected blocks, context) when a data tool returned data; if every
+figure in the answer is there, the answer ships without the hedge,
+labelled `in-voice:tool-sourced`. Checked ahead of both hedge branches
+(local-skip, context-dep-skip). Same matcher the phase-9 provenance
+guard uses, so one definition of "sourced".

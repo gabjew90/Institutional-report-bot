@@ -1800,6 +1800,26 @@ def _trace_has_source(tool_trace) -> bool:
     return False
 
 
+def _tool_sourced(answer: str, tool_trace, evidence: str) -> bool:
+    """True when a data tool returned something this turn and every
+    figure in the answer is in what the turn saw (the figure-provenance
+    matcher over tool payloads, injected blocks and context).
+
+    2026-09-15: a LEN earnings answer built on lookup_earnings_date (date,
+    consensus EPS and revenue all from the payload) shipped with the
+    "Couldn't verify" hedge because the grounding net only asked whether
+    Google had sources. A tool payload is a source; the hedge is for
+    figures nothing supplied."""
+    if not answer or not _trace_has_source(tool_trace):
+        return False
+    try:
+        from discord_bot import figure_provenance as _fp
+        figs, missing = _fp.unsourced_figures(answer, evidence or "")
+    except Exception:
+        return False
+    return bool(figs) and not missing
+
+
 # The one hedge every ungrounded path appends. One string so the
 # figure-provenance guard can detach it before checking the body and
 # reattach it after (its arrow used to flip the guard's line splitter
@@ -6456,6 +6476,16 @@ async def _ask_07_validation_ladder(
                 log.info(
                     "/ask: grounded retry accepted "
                     f"({_ask_meta['ground_retry']})"
+                )
+            elif _tool_sourced(answer, _ask_tool_trace,
+                               _ask_evidence_text(contents, response, question, user_content)):
+                # Google found nothing, but a data tool did: every
+                # figure in the answer is in a payload the turn saw.
+                # Keep the answer, no hedge (2026-09-17).
+                _ask_meta["ground_retry"] = "in-voice:tool-sourced"
+                log.info(
+                    "/ask: retry stayed ungrounded but every figure is in "
+                    "a tool payload; kept the answer without the hedge"
                 )
             elif not needs_web:
                 # Stage 2 is SKIPPED for LOCAL-routed questions. The
