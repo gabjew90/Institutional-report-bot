@@ -825,7 +825,7 @@ _OCR_INLINE_TRUNCATE = 800
 #   1. We declare the `search_chat_messages` function in the tools list
 #   2. Gemini decides whether to call it based on the question shape
 #      ("did the room discuss CRWV last week", "what did we say about
-#      Powell", etc.)
+#      the Fed chair", etc.)
 #   3. On a function_call response, we execute the search against the
 #      local SQLite chat_messages table
 #   4. Send the results back as a function_response part
@@ -873,6 +873,11 @@ def _build_runtime_system_instruction(extra_directive: str = "") -> str:
         et_label = now_et.strftime("%Y-%m-%d %H:%M %Z (%A)")
     except Exception:
         et_label = "(timezone lookup failed)"
+    # The Fed chair rides here, not in the prompt body: world_context
+    # is the single source for the fact, and the header is the one
+    # block that already changes per call (2026-09-16: an answer named
+    # a "Powell press conference" three months after the transition).
+    import world_context as _wc
     header = (
         f"CURRENT TIME (UTC):    "
         f"{now_utc.strftime('%Y-%m-%d %H:%M:%S')} UTC, "
@@ -881,6 +886,9 @@ def _build_runtime_system_instruction(extra_directive: str = "") -> str:
         f"When the asker says a local time (5pm EST, this morning, "
         f"last hour), convert to UTC before passing as start_iso/"
         f"end_iso to search_chat_messages.\n"
+        f"FED CHAIR:             {_wc.FED_CHAIR_FULL} "
+        f"({_wc.TRANSITION_DESCRIPTION}); {_wc.PREDECESSOR_NAME} is now a "
+        f"{_wc.PREDECESSOR_ROLE_NOW}.\n"
     )
     # Ordering (2026-07-29): the static prompt goes FIRST so it forms a
     # stable prefix for Gemini's implicit caching — a per-minute
@@ -1893,19 +1901,31 @@ _TICKER_FALSE_POSITIVES = frozenset({
 def _answer_price_tickers(answer: str) -> list[str]:
     """Tickers named in sentences that assert a price/level/move —
     the symbols the price backstop should fetch before the retry.
-    Cashtags always count; bare uppercase tokens count unless they're
-    known acronyms. Capped at the price tool's practical batch size."""
+    One extractor for the whole /ask path (2026-09-16): this used to
+    carry its own regex and stopword set, and fetched 'ATM' as a
+    ticker from "the ATM straddle" while the router's extractor knew
+    better. Capped at the price tool's practical batch size."""
+    from discord_bot.ask_router import extract_tickers
     out: list[str] = []
     for s in _split_sentences(answer or ""):
         if not _PRICE_ASSERT_NEAR_RE.search(s):
             continue
-        for m in re.finditer(r"\$([A-Za-z]{1,6})\b|\b([A-Z]{2,6})\b", s):
-            sym = (m.group(1) or m.group(2)).upper()
-            if not sym.isalpha() or sym in _TICKER_FALSE_POSITIVES:
-                continue
-            if sym not in out:
+        for sym in extract_tickers(s, lowercase=False):
+            if sym.isalpha() and sym not in out:
                 out.append(sym)
     return out[:4]
+
+
+# Gemini's grounded answers carry inline citation markers in the
+# model text: "[cite: 1.2.8]", "[1.0.1]". They index the grounding
+# metadata, mean nothing to a reader, and shipped in four answers on
+# 2026-09-14..16. The sources footer is built from the metadata itself,
+# so the markers carry no information the answer needs.
+_CITATION_MARKER_RE = re.compile(r"\s*\[(?:cite:\s*)?\d+(?:\.\d+)+\]")
+
+
+def _strip_citation_markers(answer: str) -> str:
+    return _CITATION_MARKER_RE.sub("", answer or "")
 
 
 # Any specific factual claim — numbers, big counts, $-figures, %s,
@@ -7623,6 +7643,7 @@ async def _ask_10_log_and_render(
     # image tag, keep any alt text as a plain caption if present.
     answer = re.sub(r"!\[([^\]]*)\]\([^)]*\)",
                     lambda m: m.group(1).strip(), answer or "")
+    answer = _strip_citation_markers(answer)
     answer = re.sub(r"\n{3,}", "\n\n", answer).strip()
 
     # Source-quality counter, WARN-ONLY (2026-08-27, session 4):

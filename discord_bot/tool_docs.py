@@ -28,6 +28,8 @@ text. Editing a tool's docs here changes what the model reads during
 selection without touching the prompt budget.
 """
 
+import world_context as _wc
+
 # Appended to every tool's docs: how to read the envelope and how to
 # speak the result. Kept short deliberately — declarations ship on every
 # turn, so a paragraph duplicated ten times is not a saving.
@@ -164,10 +166,10 @@ TOOL_DOCS["lookup_options_chain"] = (
 TOOL_DOCS["lookup_economic_calendar"] = (
     "WHEN TO CALL: canonical scheduled time, consensus, prior and actual "
     "for US Tier-1 macro (CPI, PCE, NFP/payrolls, unemployment, GDP, "
-    "retail sales, ISM, PPI, FOMC, Powell speeches) and ECB/BOJ/BOE rate "
+    f"retail sales, ISM, PPI, FOMC, {_wc.FED_CHAIR} speeches) and ECB/BOJ/BOE rate "
     "decisions — sourced from the SAME Finnhub feed the daily pulse "
     "uses, so /ask numbers never contradict the pulse. Call for print "
-    "dates, consensus, actuals, and Powell's schedule ('when is the next "
+    f"dates, consensus, actuals, and {_wc.FED_CHAIR}'s schedule ('when is the next "
     "CPI', 'May CPI release date', 'what was the May payrolls actual'). "
     "Call with no query for 'key prints this week' (a ±14d window); pass "
     "a wider `days_window` for historicals. Do NOT call for "

@@ -10,6 +10,7 @@ and smokes. Routing text lives in discord_bot/tool_docs.py.
 from config import settings
 from datetime import datetime, timedelta, timezone
 from discord_bot.tool_docs import TOOL_DOCS as _TOOL_DOCS
+import world_context as _wc
 import asyncio
 import db
 import discord
@@ -923,7 +924,7 @@ def _build_economic_calendar_tool():
                     "Canonical scheduled-time + consensus + previous + "
                     "actual values for US Tier-1 macro releases (CPI, "
                     "PCE, NFP / payrolls, unemployment, GDP, retail "
-                    "sales, ISM, PPI, FOMC, Powell) and major foreign "
+                    f"sales, ISM, PPI, FOMC, {_wc.FED_CHAIR}) and major foreign "
                     "rate decisions (ECB, BOJ, BOE). Same Finnhub "
                     "source the daily pulse uses, so the numbers you "
                     "get here MATCH the pulse — no cross-source "
@@ -932,7 +933,7 @@ def _build_economic_calendar_tool():
                     "'May payrolls actual', 'ECB next decision', "
                     "'last 3 CPI prints', 'what does street expect "
                     "for retail sales', 'what was last PCE', 'when is "
-                    "next Powell speech'.\n\n"
+                    f"next {_wc.FED_CHAIR} speech'.\n\n"
                     "DO NOT use for: forecaster-specific reads ('what "
                     "does Goldman expect for CPI' — that needs Google "
                     "Search), market reaction commentary, or non-Tier-"
@@ -1038,7 +1039,7 @@ async def _execute_economic_calendar(args: dict) -> dict:
             "error": (
                 "No Tier-1 macro events found for that query / window. "
                 "Tier-1 covers: CPI, PCE, NFP / payrolls, unemployment, "
-                "GDP, retail sales, ISM, PPI, FOMC + Powell speeches, "
+                f"GDP, retail sales, ISM, PPI, FOMC + {_wc.FED_CHAIR} speeches, "
                 "ECB/BOJ/BOE rate decisions. Anything outside that set "
                 "(regional Fed surveys, minor housing data, foreign "
                 "macro without US linkage) is filtered out. NOTE: if "
