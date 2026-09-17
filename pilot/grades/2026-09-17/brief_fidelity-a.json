@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d35",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Fed hikes 25bp unanimously to 3.75-4.0% therefore hawkish dots (16/18 see another 2026 hike, 14/18 at-or-above current rate for '27, longer-run median up to 3.25%) sit in tension with Warsh calling policy non-restrictive therefore growth data (resilient spending, GDP up a tenth, u-rate down to 4.1% below natural rate) and core inflation up a tenth for '26 and '28 therefore JPM reads a shift from supply-shock to demand-led overheating risk therefore JPM keeps its December hike call, in line with the median dot",
+   "brief_chain": "Fed hikes 25bp unanimously to 3.75-4.0% therefore hawkish dots (16/18 for another hike, 14/18 at-or-above for '27, longer-run median to 3.25%) conflict with Warsh's non-restrictive/dose-of-accommodation framing therefore resilient growth data and upward core inflation revisions therefore JPM reads a demand-led overheating risk therefore JPM keeps its December hike call in line with the median dot",
+   "distortions": [
+    {
+     "what": "Brief omits that Warsh did not submit a dot himself and that he did not directly answer the press-conference question reconciling the longer-run dot with his non-restrictive framing",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is color on the press conference, not a figure, stance, or conviction level that changes JPM's December-hike call"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d23",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Fed delivers first hike since 2023 (25bp to 3.75-4.00%, unanimous, hawkish dots: 16/18 for more) therefore markets price ~75bp more by June and ~50% odds of an October hike therefore 2yr/10yr yields hit multi-year highs and equities fall (banks/energy worst) therefore losses are cushioned by an oil pullback on Saudi/Libya supply news therefore DB's economists now expect 50bp more via December and March therefore separately UK CPI in line pulls BoE hike odds down and US retail sales beat lifts GDPNow while NAHB falls",
+   "brief_chain": "Fed delivers first hike since 2023 (25bp, unanimous, hawkish dots) therefore markets price ~75bp more by June and ~50% October-hike odds therefore 2yr/10yr yields to multi-year highs and S&P falls, banks/energy leading therefore DB expects 50bp more via December/March therefore oil pullback (Saudi repairs, Libya output) cushions the equity move therefore UK CPI in line pulls BoE odds down, DB still expects a hold, while US data (retail sales beat, GDPNow up; NAHB down) round out the day",
+   "distortions": [
+    {
+     "what": "Brief drops Trump's post-decision call for the Fed rate to be \"1%, or less\"",
+     "material": false,
+     "would_the_trade_change": "No \u2014 political color with no bearing on DB's rate call or the market read"
+    },
+    {
+     "what": "Brief omits the overnight Asian market detail (Nikkei/KOSPI/ASX up, Hang Seng down after HKMA hiked, JGB/Aussie yield moves)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 secondary overnight detail, doesn't change the US rate/yield/equity read"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d22",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Oil supply fears (Yanbu loadings suspended, Libyan output halted, no Hormuz reopening) push Brent/WTI to multi-year highs, reviving stagflation concern therefore Treasury yields hit multi-year highs (10yr above 5% first time since 2007, confirmed by real yields, 30yr, weak 20yr auction) and European yields hit post-2007/08/09 highs even as ECB October-hike odds fall therefore equities and Bitcoin sell off, though both indices stay within single digits of highs therefore separately Fed hike odds rose from ~30% in July through Warsh's hawkish Jackson Hole remarks to 94% priced today, reinforced by strong jobs and a hot core CPI print therefore DB's economists expect the hike and see the key question as guidance: no explicit forward guidance likely, but a median dot for one more 2026 hike with some officials projecting more",
+   "brief_chain": "Oil supply fears push Brent/WTI to multi-year highs, reviving stagflation concern therefore Treasury yields hit multi-year highs, confirmed by real yields/30yr/a weak 20yr auction, with European yields at post-2007/08/09 highs despite falling ECB October-hike odds therefore equities and Bitcoin sell off (S&P 6-week low, STOXX 3-month low, Bitcoin's worst day in 3 months after a Senate crypto bill failed) though both stay within single digits of their highs therefore Fed hike odds rose from ~30% in July through Warsh's hawkish Jackson Hole remarks to 94% today, reinforced by a strong jobs report and a hot core CPI print therefore DB expects the hike and frames the key question as guidance: no explicit forward guidance, but a median dot for one more 2026 hike with some officials projecting more",
+   "distortions": [
+    {
+     "what": "Brief compresses the source's precise \"within 3%... less than 4% beneath\" record-high gap to \"within single digits of their highs\"",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both figures support the same point (indices still near highs despite the selloff); the rounding doesn't change any level, forecast, or stance"
+    },
+    {
+     "what": "Brief drops the UK labour market data and New Zealand GDP surprise mentioned in the source's data roundup",
+     "material": false,
+     "would_the_trade_change": "No \u2014 secondary data points unconnected to the Fed/oil/stagflation thesis the brief centers on"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d30",
+   "tier": "rest",
+   "bank": "ING",
+   "source_chain": "A Fed hike is fully discounted therefore ING's actual call is 25bp therefore the note argues 50bp is a live alternative because it would let the Fed take control instead of just delivering the market's own discount, with upside (calms the long end via visible protection) and downside (validates the prior 100bp yield rise and triggers a follow-through sell-off) therefore no-change is judged unlikely since it could hurt the long end therefore separately, term premium keeps building and curves bear-steepen on JGB yields, thin euro swap liquidity and persistent US deficit concerns, which ING expects to sustain even if oil eases, while turning more pessimistic on the 2027 US outlook",
+   "brief_chain": "ING's actual call is 25bp, not the 50bp the note argues could better fit Warsh's critique of Fed guidance shaping the market pricing the Fed then delivers therefore the market already prices >90% odds of a hike to 3.75-4% therefore a 50bp move could calm the long end via active protection or destabilize it by validating the prior 100bp yield rise and triggering a sell-off therefore no-change is called unlikely since it could hurt the long end therefore separately term premium keeps building and curves bear-steepen (JGB yields, thin euro swap liquidity, US deficit concerns) keeping long-end yields sticky even if oil eases, with ING more pessimistic on 2027 US growth",
+   "distortions": [
+    {
+     "what": "Brief frames the 50bp case as fitting Warsh's \"critique of Fed guidance,\" where the source's stated reason a 50bp hike is attractive is that it is \"the move that is more likely to tame the back end\" \u2014 a related but distinct rationale than the guidance-circularity point, which the source raises as background rather than the direct justification for 50bp",
+     "material": false,
+     "would_the_trade_change": "No \u2014 ING's actual call (25bp) and the pros/cons attached to the 50bp alternative are both preserved correctly; only the framing of *why* 50bp is discussed is compressed"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "3ce75be6018e"
+ },
+ "failed": false,
+ "problems": []
+}

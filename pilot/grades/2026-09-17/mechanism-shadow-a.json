@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
+ "source_span": "We think October is the most likely time for the next move because it is most natural to deliver hikes that the FOMC presented today as supporting \"a timelier return\" to the 2% target at consecutive meetings",
+ "source_chain": "The FOMC's dot plot came in more hawkish than Goldman expected (16-2 majority for another hike, no dissent, neutral rate dot up to 3.25%) therefore Goldman abandons its one-hike call and adds an October hike, reasoning the Fed's own framing favors consecutive-meeting moves to get inflation back to target faster, therefore market pricing for October/December hikes rises toward Goldman's view; invalidation: additional hikes beyond October remain 'not our base case' because Goldman's own core PCE forecast (3.2%) sits below the Fed's (3.4%), so the call rests on the data that arrives between now and the next meeting, not on inflation actually running hot.",
+ "pulse_chain": "The hike itself was priced in but the hawkish dot plot (16/18 expecting another hike, no dissent despite Goldman's own preview flagging an expected Waller dissent, neutral rate to 3.25%) was not, therefore yields and pricing jump, therefore Goldman moves to a second (October) hike on the Fed's stated urgency for consecutive-meeting moves while JPMorgan holds December-only on a supply-shock-to-demand-overheating reframe, with DB aligned closer to Goldman; invalidation: the prints between now and the October 28 meeting decide whether the 51% priced for October is right, since Goldman's own core PCE forecast (3.2%) undershoots the Fed's (3.4%) and the October call rests on the Fed's stated urgency rather than the data Goldman expects.",
+ "preserved": true,
+ "why": "The pulse reproduces Goldman's exact mechanism (dots-not-the-hike drove the surprise, consecutive-meeting reasoning for October, own-forecast-vs-Fed's-forecast tension as the invalidation) and correctly keeps JPMorgan's contrasting December-only/demand-overheating argument attributed to JPMorgan rather than blending it into Goldman's case.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

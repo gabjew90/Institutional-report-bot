@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
+ "source_span": "We now expect the FOMC to deliver a second 25bp hike in October...because it is more natural to deliver hikes that the FOMC presented today as supporting \"a timelier return\" to the 2% target at consecutive meetings rather than at an every-other-meeting pace.",
+ "source_chain": "The FOMC hikes 25bp to 3.75-4% with a hawkish dot plot (16 of 18 project >=1 more hike, 4 project two; median neutral rate up to 3.25%) and Warsh calls it removing 'a dose of accommodation' while declining to call policy restrictive, therefore Goldman reads the Committee as prioritizing a faster return to 2% via back-to-back hikes over an every-other-meeting cadence, therefore Goldman adds an October hike to its call (previously September-only) while holding its terminal-rate forecast unchanged. Invalidation: Goldman's own core PCE forecast (3.2%) sits below the FOMC's own median (3.4%) for 2026, and it states additional hikes beyond October are 'not our base case' -- the October call rests on the Fed's framing, not on data Goldman itself expects.",
+ "pulse_chain": "The Fed hikes 25bp to 3.75-4.00%, unanimous, but the market moves on the hawkish dot plot (16/18 for one more hike, 4 for two; neutral-rate median to 3.25%) and Warsh's 'dose of accommodation' framing, not the priced-in hike itself, therefore yields jump (2y 4.74%, 10y 5.02%) and desks split: Goldman moves from September-only to adding an October hike because back-to-back moves fit the Fed's stated aim of a timelier return to 2%, while JPMorgan stays with December alone, in line with the median dot, reading the revisions as a shift from supply-shock to demand-led-overheating concern, therefore pricing moves toward Goldman (October to 51%, December to 78%). Invalidation: the pulse states the prints before the October 28 meeting decide whether 51% is too high or low, and notes Goldman's own core PCE forecast (3.2%) sits below the Committee's (3.4%), so the October call rests on the Fed's stated urgency rather than on the data Goldman expects.",
+ "preserved": true,
+ "why": "The pulse keeps Goldman's own stated rationale for adding the October hike (consecutive-meeting cadence toward a timelier 2% return, not its own PCE forecast) intact and correctly attributed, and reproduces the same data-vs-framing invalidation the note supplies rather than substituting an invented mechanism.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16682__db-early-morning-reid-macro-strategy.txt",
+   "span": "The FOMC raised the fed funds rate by 25bps to 3.75-4.00% as expected, with the unanimous decision accompanied by a more-hawkish-than-expected shift",
+   "why": "25bp to 3.75-4.00%, unanimous, all confirmed; 'first hike since 2023' independently confirmed in 16619, 16564, 16686."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
+   "span": "a 16-2 majority projected at least one more hike this year, with four participants projecting two more hikes this year... There were no dissenting votes against today's hike",
+   "why": "16-2/four-projecting-two/no dissents all match. Goldman's own pre-meeting expectation of a Waller dissent is in 16593: 'We expect Governor Waller to dissent'."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16690__committee-wants-another-dose.txt",
+   "span": "Warsh's comments, who said both he and his colleagues were \"hard-pressed\" to describe policy as restrictive... today's action removed a \"dose of accommodation.\"",
+   "why": "Both quoted phrases attributed correctly to Warsh in the same source."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source states or characterizes the market as taking the SEP projections 'at face value'; searched all FOMC-adjacent files for this framing and found none. Plausible narrative gloss with no textual support."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16690__committee-wants-another-dose.txt",
+   "span": "The median-longer run dot was revised up from 3.06% to 3.25%... this year revised down to 4.1%\u2014a tenth under their estimate of the natural rate of unemployment",
+   "why": "Both figures appear together in this JPM note; the 3.25% neutral estimate is separately confirmed in 16688 (Goldman) and the 4.1% unemployment figure separately in 16686 (Goldman Asia), supporting 'both' referring to two banks converging on the same SEP numbers."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
+   "span": "Market pricing of the probability of further hikes this year rose 8pp to 51% for October and 9pp to 78% for December today",
+   "why": "Exact match on both figures."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16675__far-from-a-warsh-out.txt",
+   "span": "Today saw ~70% of NYSE volume in declining stocks.",
+   "why": "Exact match."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16675__far-from-a-warsh-out.txt",
+   "span": "we need to see sentiment become less complacent, more oversold conditions, and a higher-correlation index decline for us to think this correction has run its course",
+   "why": "Accurate paraphrase: 'higher-correlation index decline' correctly rendered as stocks falling together rather than individually."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-16/16650__up-and-adam.txt",
+   "span": "the S&P 500's Software Index rallied 3.2%, whereas the Semiconductor Index fell 4.4%",
+   "why": "Exact figures, correct attribution (Raymond James's 'Up and Adam')."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-16/16561__us-market-intelligence-morning-briefing-sept-16.txt",
+   "span": "the response to Anthropic CEO Amodei's comments triggered the largest one-day move in the +Software / -Semis pair (JPPQSFSM Index) in its history, +12%",
+   "why": "Correctly attributed to JPMorgan's own index; Amodei's 'call for slower development' independently confirmed in 16629 ('calls from AI leaders, including Anthropic CEO Dario Amodei, to slow the rate of advancement')."
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document in the corpus mentions Wingstop, Darden, or 'long-only selling' anywhere; searched all files, zero hits. Fabricated detail."
+  },
+  {
+   "id": "s12",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-16/16560__security-software-earnings-season-recap-security-is-non-disc.txt",
+   "span": "Mean time to exploit has collapsed, in some cases inflecting negative as adversaries weaponize vulnerabilities before patches exist.",
+   "why": "The directional claim (mean time to exploit collapsing, going negative) is JPMorgan's and correctly attributed, but the specific figures (-7 days in 2025, 63 days in 2018, 132 new vulnerabilities/day, 16% fixed/month) appear nowhere in this document or any other file in the corpus \u2014 invented statistics bolted onto a real qualitative claim."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-16/16622__markets-pressured-by-5-us-yields-high-oil-and-tech-concerns.txt",
+   "span": "Driven by inflation fears as Brent crude surged past $109/bbl, the 10-year US Treasury yield crossed the 5% threshold... Gold also plunged over 2%, slipping below $4,300/oz",
+   "why": "Figure and causal framing (oil-driven inflation scare firming hike odds) both directly supported."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-16/16552__gold-just-gave-it-all-back-heres-the-trade-into-the-fed.txt",
+   "span": "GS favors cheap upside convexity. Call skew and risk reversals are not pricing much upside tail risk, while GLD gamma could amplify the move.",
+   "why": "'Dealer positioning in GLD options' is a fair technical rendering of 'GLD gamma' (dealer gamma exposure); trade framing (cheap upside vs. spot) matches."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-16/16665__2026-midterm-election-series-september-16-2026.txt",
+   "span": "Currently, the GOP has a 53 - 47 majority in the Senate. The focus is on whether Democrats can flip 4 Senate seats with the most likely opportunities being in Alaska, Iowa, Maine, North Carolina, Ohio, and Texas.",
+   "why": "Exact match on Senate composition and all six named states."
+  }
+ ],
+ "faithful": 12,
+ "distorted": 1,
+ "unsupported": 2,
+ "faithful_rate": 0.8,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "c53af520ab4c"
+ },
+ "failed": false,
+ "problems": []
+}

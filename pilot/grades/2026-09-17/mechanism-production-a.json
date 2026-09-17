@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-16/16553__bond-shorts-are-at-an-extreme-a-fed-hike-could-trigger-a-vio.txt",
+ "source_span": "Deutsche Bank's composite bond-positioning measure is around the 5th percentile of its historical distribution, close to the most bearish end of the range... The hike itself is no longer much of a surprise. The reaction could be.",
+ "source_chain": "Bond positioning is already at a historical bearish extreme (DB composite ~5th percentile) with the 10-year above 5% and a hike fully priced, so there's little room left for further one-way selling, therefore a 'credibility hike' that raises short rates now removes the inflation-credibility fear driving the selloff even though it can't fix the actual driver (oil/fiscal supply), therefore the hike itself is no longer the risk \u2014 the market's reaction is, and a hawkish 25bp move can trigger a relief rally instead of a selloff. Invalidation: the thesis fails if the 10-year sustains a move into the 5.15%-5.20% 'challenge zone' (rather than reversing toward 4.81%/4.73%), or if the Fed explicitly commits to a longer hiking cycle, or if the energy shock intensifies materially.",
+ "pulse_chain": "The Fed delivered the most hawkish outcome available (hike to 3.75-4.00%, 16-of-18 dots for more hikes, higher long-run rate), so the market's worst fears were already met, therefore because Deutsche Bank's positioning gauge sat at the 5th percentile (as bearish as 2018/2022) going in, 'there was almost nobody left to do the selling,' therefore Treasuries rallied instead of selling off, with the 10-year falling back to 4.95% from just above 5%. The pulse's invalidation: whether the rally is 'bears closing out or a real turn' is decided by the October FOMC meeting and the 51% probability priced into it (the Goldman-October vs JPMorgan-December hike debate).",
+ "preserved": false,
+ "why": "The pulse reproduces the note's positioning-exhaustion and credibility-hike mechanism faithfully but swaps its quantified invalidation (a 5.15%-5.20% yield challenge zone, or the Fed explicitly endorsing a longer cycle, or an intensifying energy shock) for an unrelated falsifier \u2014 whether the Fed hikes again in October per the 51% pricing.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

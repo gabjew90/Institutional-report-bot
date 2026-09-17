@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-16/16553__bond-shorts-are-at-an-extreme-a-fed-hike-could-trigger-a-vio.txt",
+ "source_span": "A hold could force investors to demand a larger inflation and credibility premium at the long end. Higher short rates now can mean less inflation uncertainty later, and therefore less term premium in the 10-year.",
+ "source_chain": "Oil and inflation concerns force a hawkish repricing that pushes the 10-year to 5.03% (A); with Deutsche Bank's composite positioning already at the 5th percentile, there is little room left for further one-way selling (B); a hold, not a hike, is the outcome that would force a bigger inflation/credibility premium into the long end, so hiking is the more bond-friendly path (C); therefore a hawkish hike can trigger a rally instead of the conventional hike-equals-selloff reaction (D). Invalidation: sustained trading in the 5.15-5.20% zone (thesis fails) versus a reclaim of 4.81%/4.73% (thesis confirmed) \u2014 a price-level condition.",
+ "pulse_chain": "The Fed delivered the most hawkish hike available (A); positioning was already at a bearish extreme (DB, 5th percentile), so 'there was almost nobody left to do the selling' (B); the hike removed 'the fear the Fed had fallen behind,' letting the credibility-hike logic produce a rally rather than a selloff, yield easing from just above 5% to 4.95% (C); therefore the desk's short-$TLT call paid (D). Forward condition given: whether Goldman's October-hike call or JPMorgan's December call plays out at the next FOMC meeting decides if the rally is short-covering or a real turn \u2014 an event-based condition.",
+ "preserved": false,
+ "why": "The pulse keeps the note's positioning and credibility-hike logic but swaps its price-level invalidation (hold above 5.15-5.20% vs. a reclaim of 4.73-4.81%) for an event-based one (the outcome of the October FOMC meeting), so the falsifiable condition that decides the theme no longer matches the source.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

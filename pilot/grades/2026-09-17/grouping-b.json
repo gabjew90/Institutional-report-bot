@@ -1,0 +1,65 @@
+{
+ "metric": 1,
+ "total_cards": 1119,
+ "fragmentation_sets": [
+  {
+   "subject": "AI-driven cybersecurity spending/TAM thesis with the security-software stock calls that express it",
+   "labels": [
+    "security software earnings season",
+    "ai cybersecurity spending surge"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI capex financed by a surge in tech bond issuance, pressuring global bond yields",
+   "labels": [
+    "ai capex credit risk",
+    "tech bond issuance pressure"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "JPMorgan systematic cross-asset volatility-carry research (equity/commodity/FX/rates sleeves plus the cross-asset combination), read as one flagship quant report mechanically split by asset class",
+   "labels": [
+    "equity volatility strategies",
+    "commodity volatility strategies",
+    "fx volatility strategies",
+    "rates volatility strategies",
+    "cross asset volatility portfolio"
+   ],
+   "cards": 42
+  },
+  {
+   "subject": "Carlyle's deglobalization thesis (defense/energy plays on onshoring, and the dollar-financing-unwind risk from cumulative US external borrowing)",
+   "labels": [
+    "defense energy deglobalization",
+    "globalization dollar financing unwind"
+   ],
+   "cards": 3
+  }
+ ],
+ "fragmented_mass_share": 0.078,
+ "mis_merges": [
+  {
+   "label": "ai compute demand",
+   "subjects": [
+    "AI product demand and monetization is robust; buy the AI-stock pullback (JPM bullish equity thesis)",
+    "Hyperscaler AI capex is now funded by a debt-issuance wave that is bidding for the same capital as Treasuries (Market Ear's 3 cards on >100% of OCF capex, ~$1.3tn debt by 2028, $380bn 2026 bond supply)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The bond/debt subject buried here is a near-verbatim duplicate of content that already has full, dedicated coverage under 'ai capex credit risk' and 'tech bond issuance pressure', so an editor scanning labels would still surface it as a theme candidate even without these 3 cards."
+  }
+ ],
+ "pass": true,
+ "notes": "misc holds 12 of 1119 cards (~1.1%), all legitimate overflow, none mis-merges. The volatility-strategies fragmentation (42 cards) drives most of the fragmented mass; without it the share would be under 4%.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

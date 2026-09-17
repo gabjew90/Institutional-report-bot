@@ -1,0 +1,38 @@
+{
+ "metric": 1,
+ "total_cards": 1119,
+ "fragmentation_sets": [
+  {
+   "subject": "Security software: AI-driven demand thesis and stock picks",
+   "labels": [
+    "security software earnings season",
+    "ai cybersecurity spending surge"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI capex cycle: demand, financing risk and ROI debate",
+   "labels": [
+    "ai compute demand",
+    "ai capex credit risk",
+    "tech bond issuance pressure",
+    "ai capex roi"
+   ],
+   "cards": 38
+  }
+ ],
+ "fragmented_mass_share": 0.0554,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "misc holds 12 cards (1.1% of total), correctly excluded from fragmented mass as declared overflow. 'ai capex credit risk' and 'tech bond issuance pressure' are near-duplicate content (same $260bn/10-15bp figures); no candidate mis-merge in the ledger met the bar of two subjects a careful reader would never put in one theme.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
