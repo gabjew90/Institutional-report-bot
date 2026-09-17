@@ -113,7 +113,10 @@ def test_concept_anchors_present():
 
 def test_size_ceiling():
     import discord_bot.bot as bot_mod
-    n = len(bot_mod._ASK_SYSTEM_INSTRUCTION)
+    # The built instruction, not the static body alone: the runtime
+    # header (time lines, Fed chair) reaches Gemini on every call and
+    # was outside the ceiling until 2026-09-17.
+    n = len(bot_mod._build_runtime_system_instruction())
     if n > _SIZE_CEILING:
         _fail(
             f"/ask system prompt is {n} chars (ceiling {_SIZE_CEILING}, "

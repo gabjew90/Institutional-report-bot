@@ -140,6 +140,13 @@ _NOT_TICKERS = {
     "MAG", "GOAT", "WSB", "X", "TV", "PC", "AI", "API", "ID", "HR", "PR", "IR", "VP",
     "MD", "PHD", "PPP", "QE", "QT", "ZIRP", "YOLO", "FOMO", "ADR", "REIT", "ROI", "PE",
     "EV", "EBITDA", "ROIC", "FCF", "BTC", "ETH", "SOL",
+    # The price backstop's own stopword set, folded in 2026-09-17 (review
+    # of 6cd427e5): currency codes, agencies, cloud units, reporting
+    # shorthand, and shouted words. USD is a real ETF ticker, which is
+    # exactly why "1.08 USD" must not become a quote.
+    "USD", "EUR", "GBP", "JPY", "YOY", "QOQ", "FDA", "DOJ", "FTC", "AWS", "GCP", "OCI",
+    "LLM", "OPEC", "BLS", "BEA", "REV", "RPO", "OTC", "EOD", "MCAP", "AH", "COO", "CTO",
+    "ETFS", "PLUS", "AND", "THE", "FOR", "NOT", "ALL",
 }
 _CRYPTO = {"BTC", "ETH", "SOL"}
 # Index names the price tool quotes in Yahoo's caret form. They stay
@@ -155,17 +162,23 @@ def price_symbol(t: str) -> str:
     return INDEX_SYMBOLS.get(t, t)
 
 
-def extract_tickers(text: str, *, lowercase: bool = True) -> list[str]:
+def extract_tickers(text: str, *, lowercase: bool = True,
+                    all_tiers: bool = False) -> list[str]:
     """Cashtags first; bare uppercase tokens only when nothing is
     cashtagged; lowercase lead-in guesses only when `lowercase` and
-    nothing else matched. Never a stopword. Order preserved, deduplicated."""
+    nothing else matched. Never a stopword. Order preserved, deduplicated.
+
+    `all_tiers` keeps the bare-token pass even when a cashtag matched:
+    the price backstop needs every symbol a sentence asserts a level
+    for ("$SPX at 6500 while NVDA sits at $180"), where a question
+    router wants the one the asker tagged."""
     text = text or ""
     out: list[str] = []
     for m in _CASHTAG_RE.finditer(text):
         t = m.group(1).upper()
         if t not in out:
             out.append(t)
-    if out:
+    if out and not all_tiers:
         return out
     for m in _BARE_RE.finditer(text):
         t = m.group(1)
@@ -174,6 +187,8 @@ def extract_tickers(text: str, *, lowercase: bool = True) -> list[str]:
         if t not in out:
             out.append(t)
     if out:
+        return out
+    if all_tiers:
         return out
     for m in _LOWER_KEEP_RE.finditer(text):
         t = m.group(1).upper()

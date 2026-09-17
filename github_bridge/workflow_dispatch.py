@@ -39,6 +39,11 @@ PILOT_WORKFLOWS = {
 }
 
 
+# GitHub's run states for "created, not yet running": `pending` is the
+# concurrency hold, `queued` is waiting for a runner.
+WAITING_STATUSES = frozenset({"pending", "queued", "waiting", "requested"})
+
+
 def _headers(tok: str) -> dict:
     return {"Authorization": "Bearer " + tok,
             "Accept": "application/vnd.github+json",
@@ -55,14 +60,18 @@ def has_queued_run(workflow_file: str, tok: str, repo: str) -> bool:
     ops record showed 'cancelled' runs that were never failures
     (2026-09-16, 21:00 and 21:56 UTC). Any error answers False so a
     flaky GET never suppresses a dispatch."""
+    # No status filter: a run held by the concurrency group is
+    # `pending`, not `queued` (review 2026-09-17), and the filter takes
+    # one value. The newest five runs cover every waiting state.
     req = urllib.request.Request(
         f"https://api.github.com/repos/{repo}/actions/workflows/{workflow_file}"
-        f"/runs?status=queued&per_page=1",
+        f"/runs?per_page=5",
         headers=_headers(tok))
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
             data = json.loads(r.read())
-        return bool((data or {}).get("workflow_runs"))
+        return any((run.get("status") or "") in WAITING_STATUSES
+                   for run in (data or {}).get("workflow_runs") or [])
     except Exception as e:
         log.warning(f"workflow dispatch {workflow_file}: queued-run check failed ({e})")
         return False

@@ -1884,18 +1884,12 @@ _PRICE_ASSERT_NEAR_RE = re.compile(
     r"|\d+(?:\.\d+)?\s?%",
     re.IGNORECASE,
 )
-# Uppercase tokens that look like tickers but never are. Prose is
-# mostly lowercase, so the residual collision surface is acronyms.
-_TICKER_FALSE_POSITIVES = frozenset({
-    "CEO", "CFO", "COO", "CTO", "IPO", "ETF", "ETFS", "API", "AI",
-    "USD", "EUR", "GBP", "JPY", "GDP", "CPI", "NFP", "PCE", "ISM",
-    "PPI", "FOMC", "FED", "SEC", "FDA", "DOJ", "FTC", "IRS", "OI",
-    "IV", "RSI", "MACD", "YOY", "QOQ", "EPS", "REV", "RPO", "EV",
-    "PE", "PT", "DD", "TA", "AM", "PM", "ET", "UTC", "EST", "EDT",
-    "USA", "US", "UK", "EU", "NYSE", "OTC", "ATH", "ATL", "EOD",
-    "YTD", "MCAP", "AH", "PLUS", "AND", "THE", "FOR", "NOT", "ALL",
-    "OCI", "AWS", "GCP", "LLM", "OPEC", "BLS", "BEA", "AMC", "BMO",
-})
+# Uppercase tokens that look like tickers but never are: the router's
+# stopword set, one list for the whole /ask path (2026-09-17; this was
+# a second literal until then and the two drifted 31 entries apart).
+# Crypto and index names stay tokens here as they do in the router.
+from discord_bot.ask_router import _KEEP as _ROUTER_KEEP, _NOT_TICKERS as _ROUTER_NOT_TICKERS
+_TICKER_FALSE_POSITIVES = frozenset(_ROUTER_NOT_TICKERS - _ROUTER_KEEP)
 
 
 def _answer_price_tickers(answer: str) -> list[str]:
@@ -1905,23 +1899,32 @@ def _answer_price_tickers(answer: str) -> list[str]:
     carry its own regex and stopword set, and fetched 'ATM' as a
     ticker from "the ATM straddle" while the router's extractor knew
     better. Capped at the price tool's practical batch size."""
-    from discord_bot.ask_router import extract_tickers
+    from discord_bot.ask_router import extract_tickers, price_symbol
     out: list[str] = []
     for s in _split_sentences(answer or ""):
         if not _PRICE_ASSERT_NEAR_RE.search(s):
             continue
-        for sym in extract_tickers(s, lowercase=False):
-            if sym.isalpha() and sym not in out:
+        # all_tiers: a sentence can assert levels for a cashtag and a
+        # bare ticker at once; the router's cashtag-first rule would
+        # drop the second. Index names go to the tool in Yahoo's caret
+        # form, as the router's own prefetch sends them.
+        for sym in extract_tickers(s, lowercase=False, all_tiers=True):
+            sym = price_symbol(sym)
+            if sym not in out:
                 out.append(sym)
     return out[:4]
 
 
 # Gemini's grounded answers carry inline citation markers in the
-# model text: "[cite: 1.2.8]", "[1.0.1]". They index the grounding
-# metadata, mean nothing to a reader, and shipped in four answers on
-# 2026-09-14..16. The sources footer is built from the metadata itself,
-# so the markers carry no information the answer needs.
-_CITATION_MARKER_RE = re.compile(r"\s*\[(?:cite:\s*)?\d+(?:\.\d+)+\]")
+# model text: "[cite: 1.2.8]", "[1.0.1]", "[1]", "[cite: 1.2.8, 1.2.9]".
+# They index the grounding metadata, mean nothing to a reader, and
+# shipped in four answers on 2026-09-14..16. The sources footer is
+# built from the metadata itself, so the markers carry no information
+# the answer needs. Horizontal whitespace only: a marker that opens a
+# paragraph must not take the paragraph break with it.
+_CITE_MARKER = r"\[(?:cite:\s*)?\d+(?:\.\d+)*(?:\s*,\s*\d+(?:\.\d+)*)*\]"
+_CITATION_MARKER_RE = re.compile(
+    rf"(?m)^(?:{_CITE_MARKER})[ \t]*|[ \t]*(?:{_CITE_MARKER})")
 
 
 def _strip_citation_markers(answer: str) -> str:

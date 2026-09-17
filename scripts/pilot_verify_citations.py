@@ -55,15 +55,16 @@ def _fmt(val: float) -> str:
 
 
 def _aliases(n: str) -> set[str]:
-    """536bp and 5.36% are one figure written two ways."""
+    """A card's "536bp" also satisfies a pulse "5.36%": the editor
+    writes percentages by contract. One direction only, and only on
+    the card side (review 2026-09-17): a symmetric alias let a card's
+    "GDP growth of 3.5%" pass a pulse "spreads widened 350bp"."""
     out = {n}
-    try:
-        if n.endswith("bp"):
+    if n.endswith("bp"):
+        try:
             out.add(_fmt(float(n[:-2]) / 100) + "%")
-        elif n.endswith("%"):
-            out.add(_fmt(float(n[:-1]) * 100) + "bp")
-    except ValueError:
-        pass
+        except ValueError:
+            pass
     return out
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$\[(])")
 
@@ -76,7 +77,9 @@ def _norm_num(tok: str) -> str:
     t = tok.strip().lower().replace(",", "").replace(" ", "")
     t = t.replace("$", "").replace("€", "").replace("£", "").replace("¥", "")
     t = re.sub(r"(basispoints?|bps|bp)$", "bp", t)
-    t = re.sub(r"times$", "x", t)
+    # A multiple is the bare number: "14.5x" and "14.5 times" are one
+    # figure, and "raised guidance 3 times" is a count, not a figure.
+    t = re.sub(r"(times|x)$", "", t)
     m = re.fullmatch(r"(\d+(?:\.\d+)?)(k|thousand|mn|m|million|bn|bln|b|billion|tn|t|trillion)", t)
     if m:
         return _fmt(float(m.group(1)) * _MAGNITUDE[m.group(2)])
@@ -88,7 +91,10 @@ _INDEX_NAME_RE = re.compile(
     re.IGNORECASE)
 
 
-def _numbers(text: str) -> set[str]:
+def _numbers(text: str, *, card_side: bool = False) -> set[str]:
+    """Figures in `text`, normalised. The pulse side keeps each figure
+    in the form the sentence used, so a failure names text the editor
+    can find; the card side adds the bp->% alias."""
     # "Nasdaq 100", "Russell 2000", "S&P 500" are names, not figures
     # (shakedown 2026-09-02: three false failures on one shadow pulse)
     text = _INDEX_NAME_RE.sub(" ", text or "")
@@ -98,9 +104,12 @@ def _numbers(text: str) -> set[str]:
         # bare 1-2 digit counts and calendar years are not figures the
         # card must carry ("2026 capex" cites the estimate, not the year)
         if n and not re.fullmatch(r"\d{1,2}", n) and not re.fullmatch(r"(19|20)\d\d", n):
-            out |= _aliases(n)
+            out |= _aliases(n) if card_side else {n}
     for m in _RANGE_PCT_RE.finditer(text or ""):
-        out |= _aliases(m.group(1) + "%")
+        # "by 2026 to 3.5%" is a year and a figure, not a range
+        if re.fullmatch(r"(19|20)\d\d", m.group(1)):
+            continue
+        out.add(m.group(1) + "%")
     return out
 
 
@@ -169,11 +178,9 @@ def verify(md: str, pack: dict) -> dict:
         if not valid_cards:
             continue
         # HARD: every figure in the sentence must be in SOME cited card
-        all_nums = _numbers(" ".join(f"{c.get('claim', '')} {c.get('anchor', '')}" for c in valid_cards))
+        all_nums = _numbers(" ".join(f"{c.get('claim', '')} {c.get('anchor', '')}" for c in valid_cards),
+                            card_side=True)
         missing = sorted(x for x in sent_nums if x not in all_nums)
-        # report a figure once, in the form the sentence used, not its alias
-        missing = [x for x in missing
-                   if not (x.endswith("bp") and _fmt(float(x[:-2]) / 100) + "%" in missing)]
         if missing:
             failures.append({"sentence": sent[:200], "cite": ",".join(card_keys),
                              "reason": f"figures not in cited card(s): {missing}"})

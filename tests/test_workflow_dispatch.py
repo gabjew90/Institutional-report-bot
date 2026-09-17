@@ -101,7 +101,9 @@ def test_a_queued_run_suppresses_the_dispatch_and_a_failed_check_does_not():
     def fake_open(req, timeout=0):
         calls.append((req.get_method(), req.full_url))
         if req.get_method() == "GET":
-            return _Json(json.dumps({"workflow_runs": [{"id": 1}]}).encode())
+            # a run held by the concurrency group is `pending`, never `queued`
+            return _Json(json.dumps({"workflow_runs": [{"id": 2, "status": "completed"},
+                                                       {"id": 1, "status": "pending"}]}).encode())
         return _Resp(204)
     orig = urllib.request.urlopen
     urllib.request.urlopen = fake_open
@@ -111,7 +113,7 @@ def test_a_queued_run_suppresses_the_dispatch_and_a_failed_check_does_not():
         urllib.request.urlopen = orig
     assert status == 0
     assert [m for m, _ in calls] == ["GET"]
-    assert "status=queued" in calls[0][1]
+    assert "per_page=5" in calls[0][1] and "status=" not in calls[0][1]
 
     calls.clear()
 

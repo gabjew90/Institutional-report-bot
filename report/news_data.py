@@ -910,8 +910,9 @@ _NASDAQ_TIME_TO_HOUR = {"time-pre-market": "bmo", "time-after-hours": "amc"}
 
 def fetch_nasdaq_earnings_rows(date_iso: str) -> dict[str, dict] | None:
     """Nasdaq's earnings calendar for one date, symbol -> {"hour":
-    'bmo'|'amc'|'', "cap": market cap in $M or 0.0}: the second source
-    on the report DATE, and the only source for a name Finnhub lacks.
+    'bmo'|'amc'|'', "cap": market cap in $M or 0.0, "name": str}: the
+    second source on the report DATE, and the only source for a name
+    Finnhub lacks.
 
     2026-09-14: Finnhub still carried Cracker Barrel before the open on
     Monday 9/14 five days after the company announced Wednesday 9/23,
@@ -946,14 +947,9 @@ def fetch_nasdaq_earnings_rows(date_iso: str) -> dict[str, dict] | None:
         except ValueError:
             cap_musd = 0.0
         out[sym] = {"hour": _NASDAQ_TIME_TO_HOUR.get(str(r.get("time") or ""), ""),
-                    "cap": cap_musd}
+                    "cap": cap_musd,
+                    "name": str(r.get("name") or "").strip()}
     return out or None
-
-
-def fetch_nasdaq_earnings_symbols(date_iso: str) -> set[str] | None:
-    """Symbols only; see fetch_nasdaq_earnings_rows."""
-    rows = fetch_nasdaq_earnings_rows(date_iso)
-    return set(rows) if rows else None
 
 
 def fetch_symbol_profiles(

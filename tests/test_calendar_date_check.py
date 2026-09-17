@@ -85,17 +85,16 @@ def test_fetcher_parses_the_nasdaq_payload_and_treats_empty_as_unavailable():
 
     payload = {"data": {"rows": [{"symbol": "PLAY", "time": "time-after-hours", "marketCap": "$287,000,000"},
                                  {"symbol": "kmts", "time": "time-not-supplied"},
-                                 {"symbol": "GIS", "time": "time-pre-market", "marketCap": "$19,556,745,200"}]}}
+                                 {"symbol": "GIS", "time": "time-pre-market", "marketCap": "$19,556,745,200", "name": "General Mills, Inc."}]}}
     with patch("urllib.request.urlopen", lambda req, timeout=15: _Resp(json.dumps(payload).encode())):
         rows = nd.fetch_nasdaq_earnings_rows("2026-09-14")
-        assert rows == {"PLAY": {"hour": "amc", "cap": 287.0},
-                        "KMTS": {"hour": "", "cap": 0.0},
-                        "GIS": {"hour": "bmo", "cap": 19556.7452}}, rows
-        assert nd.fetch_nasdaq_earnings_symbols("2026-09-14") == {"PLAY", "KMTS", "GIS"}
+        assert rows == {"PLAY": {"hour": "amc", "cap": 287.0, "name": ""},
+                        "KMTS": {"hour": "", "cap": 0.0, "name": ""},
+                        "GIS": {"hour": "bmo", "cap": 19556.7452, "name": "General Mills, Inc."}}, rows
     with patch("urllib.request.urlopen", lambda req, timeout=15: _Resp(b'{"data": {"rows": []}}')):
-        assert nd.fetch_nasdaq_earnings_symbols("2026-09-14") is None
+        assert nd.fetch_nasdaq_earnings_rows("2026-09-14") is None
     with patch("urllib.request.urlopen", side_effect=OSError("down")):
-        assert nd.fetch_nasdaq_earnings_symbols("2026-09-14") is None
+        assert nd.fetch_nasdaq_earnings_rows("2026-09-14") is None
 
 
 def test_the_calendar_job_path_calls_the_check():
@@ -123,3 +122,16 @@ def test_a_nasdaq_only_name_above_the_cap_floor_is_added_with_its_session():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+def test_an_added_name_survives_a_failed_finnhub_profile_on_nasdaq_cap_and_name():
+    # Review 2026-09-17: the added row went through _resolve_caps, and a
+    # failed profile call (cached as 0) dropped an unconfirmed-session
+    # name after it was logged as added, while "+N more" still counted it.
+    nasdaq = {"PLAY": {"hour": "", "cap": 0.0, "name": ""}, "KMTS": {"hour": "", "cap": 0.0, "name": ""},
+              "GIS": {"hour": "", "cap": 19556.0, "name": "General Mills, Inc."}}
+    day = _build(nasdaq)  # CAPS has no GIS: the profile fetch failed
+    gis = [r for r in day.amc if r.symbol == "GIS"]
+    assert gis and gis[0].cap_musd == 19556.0 and gis[0].name == "General Mills, Inc.", [r.symbol for r in day.amc]
+    assert day.dropped_amc == 0
+    assert day.nasdaq_only_added == ["GIS"]

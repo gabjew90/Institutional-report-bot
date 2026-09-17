@@ -2774,3 +2774,54 @@ five extra documents were read after 9/5). Written to
   instruments. The pilot's leans count is a weak signal; read the block.
 
 Plan 4.3 is complete (ledger half 9/5, editor half 9/17).
+
+## 2026-09-17: code review of the day's five commits, ten findings fixed
+
+High-effort review pass (eight finder angles, one verifier per
+candidate) over 526aa49d..002a5054. Ten findings, all fixed in one
+commit:
+
+1. `has_queued_run` filtered `status=queued`; a run held by a
+   concurrency group is `pending`. Now reads the newest five runs and
+   matches any waiting state.
+2. A Nasdaq-only calendar name kept only symbol and hour; `_resolve_caps`
+   still made a Finnhub profile call for it and a failed call (cached as
+   0) dropped an unconfirmed-session name after it was logged as added,
+   while "+N more" counted it. Nasdaq's cap and name now stand in when
+   Finnhub gives nothing. The dead `fetch_nasdaq_earnings_symbols`
+   wrapper is gone.
+3. `days` was honoured without `stress`, so a merged pack could land in
+   `shadow/`; `stress` was an exact lowercase compare in two places.
+   Inputs are normalised in one step; a graded edit is forced to one
+   day.
+4. `git add shadow/ stress/` fails outright when either directory is
+   absent (git validates every pathspec first), which would have
+   discarded the day's shadow after any pilot-data reset. Only the
+   directory the run wrote is added.
+5. The editor waited on the global unread count, so a PDF published
+   after 13:55 made it wait for the 14:00 readers and pack cards
+   production never saw. It waits for the set that was unread when the
+   job started, and stops sleeping on the last check.
+6. The price backstop's cashtag-first extraction dropped a bare ticker
+   in the same sentence as a cashtag; `extract_tickers(all_tiers=True)`
+   keeps both, and index names go to the tool in Yahoo's caret form.
+7. The router's stopword set lacked 31 acronyms the retired set had
+   (USD, a real ETF, was becoming a quote for "1.08 USD"). Merged; the
+   clapback extractor reads the same set, so the ATM defect is closed
+   there too and bot.py no longer carries its own literal.
+8. The citation strip missed comma lists and undotted `[cite: 3]`, and
+   its `\s*` ate the paragraph break when a marker opened a line. It now
+   covers `[1]`, `[1, 2]`, dotted paths and `cite:` forms with horizontal
+   whitespace only, and the prompt's `[1]/[2]` clause is deleted (95
+   chars), which pays for the FED CHAIR header line (104 chars): net +9,
+   recorded in the ask_prompt.py ledger. `test_size_ceiling` measures
+   the built instruction, header included.
+9. Verifier: the range regex minted "2026%" from "by 2026 to 3.5%"; the
+   bp/% alias was symmetric (a card's 3.5% passed a pulse 350bp); a
+   failure named the alias form. Aliases are card-side and bp->% only,
+   years are not range bounds, the pulse side keeps the sentence's own
+   form, and multiples are bare numbers. The stress pack still verifies
+   at the same 2 real failures.
+10. Conventions: the header addition had no paying deletion (see 8).
+
+Suite: 490 unit, 158/158 full smoke sweep.

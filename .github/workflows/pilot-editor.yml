@@ -66,16 +66,42 @@ jobs:
       # pass. A day that still has unread files after that is recorded
       # as before (unread_source_files_at_edit) and stays void; the
       # wait only converts days the readers would have finished anyway.
-      - name: Wait for the readers
-        if: github.event.inputs.stress != 'true'
+      # Inputs are normalised once, here, and every later step reads
+      # the env: `stress` compared as an exact lowercase literal in two
+      # places let "True" take the graded path, and `days` was honoured
+      # without `stress`, so a merged pack could land in shadow/ (review
+      # 2026-09-17). A graded edit is always one day.
+      - name: Normalise inputs
         run: |
+          STRESS_LC=$(printf '%s' "${{ github.event.inputs.stress }}" | tr '[:upper:]' '[:lower:]')
+          DAYS="${{ github.event.inputs.days }}"
+          [ -z "$DAYS" ] && DAYS=1
+          if [ "$STRESS_LC" != "true" ] && [ "$DAYS" != "1" ]; then
+            echo "::warning::days=$DAYS ignored without stress=true; a graded shadow is a one-day pack"
+            DAYS=1
+          fi
+          echo "STRESS_LC=$STRESS_LC" >> "$GITHUB_ENV"
+          echo "DAYS=$DAYS" >> "$GITHUB_ENV"
+
+      - name: Wait for the readers
+        if: env.STRESS_LC != 'true'
+        run: |
+          # Wait for the documents that were unread when this job
+          # started, not for a moving target: a PDF published after
+          # 13:55 is production's coverage gap too, and waiting for the
+          # 14:00 readers to card it would write the shadow over cards
+          # production never saw (the header's same-window premise).
+          python scripts/pilot_list_unread.py \
+            --root "pilot-data/$PILOT_ROOT" --out /tmp/unread0.json \
+            --given-up-out /tmp/given_up0.json
           for i in $(seq 1 20); do
             python scripts/pilot_list_unread.py \
               --root "pilot-data/$PILOT_ROOT" --out /tmp/unread.json \
               --given-up-out /tmp/given_up.json
-            UNREAD=$(python -c "import json;print(len(json.load(open('/tmp/unread.json'))))")
-            echo "unread: $UNREAD (check $i/20)"
-            [ "$UNREAD" -eq 0 ] && break
+            LEFT=$(python -c "import json;a={d['id'] for d in json.load(open('/tmp/unread0.json'))};b={d['id'] for d in json.load(open('/tmp/unread.json'))};print(len(a&b))")
+            echo "still unread from the 13:55 set: $LEFT (check $i/20)"
+            [ "$LEFT" -eq 0 ] && break
+            [ "$i" -eq 20 ] && break
             sleep 120
             git -C pilot-data pull --quiet --ff-only origin pilot-data || true
           done
@@ -85,15 +111,12 @@ jobs:
         run: |
           DATE="${{ github.event.inputs.date }}"
           [ -z "$DATE" ] && DATE=$(date -u +%F)
-          DAYS="${{ github.event.inputs.days }}"
-          [ -z "$DAYS" ] && DAYS=1
-          echo "EDIT_DATE=$DATE" >> "$GITHUB_ENV"
           # Plan 4.3 stress datapoint (2026-09-17): the same editor over
           # a merged multi-day pack, written beside the pilot tree, not in
           # it. The graders read shadow/<date>.md only, so a stress
           # artifact can never be graded or change a verdict.
           STALE=""
-          if [ "${{ github.event.inputs.stress }}" = "true" ]; then
+          if [ "$STRESS_LC" = "true" ]; then
             STALE="--allow-stale"
             echo "EDIT_OUTDIR=pilot-data/$PILOT_ROOT/stress" >> "$GITHUB_ENV"
             echo "EDIT_STEM=$DATE-${DAYS}d" >> "$GITHUB_ENV"
@@ -215,7 +238,10 @@ jobs:
         run: |
           git config user.name "pilot-editor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add "$PILOT_ROOT/shadow/" "$PILOT_ROOT/stress/"
+          # Only the directory this run wrote: git rejects the whole
+          # add when any pathspec matches nothing, so naming an absent
+          # stress/ (or shadow/) would discard the day's pulse.
+          git add "${EDIT_OUTDIR#pilot-data/}"
           git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
           git commit -m "pilot: ${EDIT_OUTDIR##*/} pulse $EDIT_STEM"
           git pull --rebase --quiet origin pilot-data || true

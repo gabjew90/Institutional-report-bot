@@ -331,7 +331,6 @@ Dated entries live in `NOTES.md` (newest at the bottom); this file carries only 
 
 - Shadow pilot: two clean shakedown days, then commit `pilot/DAY1` on `pilot-data` and freeze prompts and model strings (runbook: `docs/superpowers/routines/pilot/RUNBOOK.md`).
 - /ask structural fix 2: a general figure-provenance check (every figure in a factual answer must appear in a tool payload or grounding snippet, else one grounded retry, else strip), replacing the per-shape `unforced-*` validators. The pilot's citation verifier already has the matcher.
-- Pilot stress datapoint (plan 4.3): the ledger half ran 2026-09-05 (NOTES); the editor half (one Opus write over the merged three-day pack, ~486K chars) is still to run once, dispatched with `--allow-stale` against a date that is not a graded shadow.
-- Pilot headroom (plan section 5): the Max subscription's usage cannot be read from a script; the owner reads it once on a heavy day and it goes in NOTES. Runner minutes are measurable and were 630 for readers alone on 2026-09-04.
+- Pilot headroom (plan section 5): answered by the 2026-09-15 weekly-limit outage (pilot plus pulse did not fit one week with Opus readers); readers moved to Sonnet 2026-09-16. Runner minutes are measurable and were 630 for readers alone on 2026-09-04.
 - Prompt diet continues as router shapes retire prompt text (policy at the top of this file).
 - Calendar refresh (`CALENDAR_REFRESH_ENABLED`, off): before re-enabling, give the 7:30 AM job a row-level merge that keeps the 3 PM priced moves (`calendar_posts.lineup_json` exists for this and is never written). Rebuilding from pre-market chains downgrades priced rows to dashes.

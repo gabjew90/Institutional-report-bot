@@ -612,6 +612,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
     except Exception as e:
         log.warning(f"calendar: Nasdaq date check unavailable ({e})")
         nasdaq_rows = None
+    nasdaq_caps: dict[str, dict] = {}
     if nasdaq_rows:
         kept_raw, off = [], []
         for r in raw:
@@ -628,15 +629,21 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
         # The other direction (2026-09-16): a name Nasdaq lists that
         # Finnhub has on another date (General Mills, estimated 9/15
         # by Finnhub, announced 9/23) never reached the sheet, because
-        # the check only removes rows. A Nasdaq-only name big enough to
-        # matter is added with Nasdaq's session; the cap floor keeps
-        # the micro-cap long tail out without a Finnhub call per name.
+        # the check only removes rows. A Nasdaq-only name at or above
+        # the cap floor (on Nasdaq's own cap) is added with Nasdaq's
+        # session. The micro-cap tail never enters the profile fetch;
+        # the added names do, and Nasdaq's cap and name stand in when
+        # that fetch fails (review 2026-09-17: a failed profile call is
+        # cached as 0 for the day, which would drop the name after it
+        # was logged as added).
         have = {(r.get("symbol") or "").strip().upper() for r in raw}
         added = []
         for sym, info in nasdaq_rows.items():
             if sym in have or float(info.get("cap") or 0) < MIN_CAP_ALWAYS_SHOW:
                 continue
             raw.append({"symbol": sym, "hour": info.get("hour") or ""})
+            nasdaq_caps[sym] = {"cap": float(info.get("cap") or 0),
+                                "name": info.get("name") or sym, "logo": ""}
             added.append(sym)
         if added:
             day.nasdaq_only_added = sorted(added)
@@ -670,6 +677,9 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             confirmed[sym] = hour == "amc"
 
     caps = _resolve_caps(bmo_syms + amc_syms)
+    for sym, info in nasdaq_caps.items():
+        if float((caps.get(sym) or {}).get("cap") or 0) <= 0:
+            caps[sym] = info
 
     # Names a bank wrote earnings content about recently (bold rows).
     # Best-effort: an empty set only costs the bold, never the sheet.
