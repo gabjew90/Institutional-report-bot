@@ -63,7 +63,7 @@ def _build(date="2026-08-20", earnings=None, econ=None, caps=None,
         patch.object(cd, "_has_options", lambda s: None),
         # second-source date check (2026-09-14): unavailable, so the
         # fixture's Finnhub rows stand as given and nothing hits Nasdaq
-        patch.object(cd.news_data, "fetch_nasdaq_earnings_symbols", lambda d: None),
+        patch.object(cd.news_data, "fetch_nasdaq_earnings_rows", lambda d: None),
     ]
     import world_context
     hp = patch.object(world_context, "US_MARKET_HOLIDAYS",

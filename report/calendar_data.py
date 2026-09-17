@@ -212,6 +212,9 @@ class CalendarDay:
     # Finnhub rows dropped because Nasdaq's calendar did not list the
     # symbol for this date (2026-09-14). Kept for QC, never rendered.
     date_unconfirmed: list[str] = field(default_factory=list)
+    # Names Nasdaq lists for this date that Finnhub does not, added
+    # above the cap floor (2026-09-16). Kept for QC.
+    nasdaq_only_added: list[str] = field(default_factory=list)
 
 
 def _weekday_label(date_iso: str) -> str:
@@ -605,15 +608,15 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
     # Nasdaq is down the sheet falls back to Finnhub alone, because a
     # missing second source is not evidence that a report moved.
     try:
-        nasdaq_syms = news_data.fetch_nasdaq_earnings_symbols(date_iso)
+        nasdaq_rows = news_data.fetch_nasdaq_earnings_rows(date_iso)
     except Exception as e:
         log.warning(f"calendar: Nasdaq date check unavailable ({e})")
-        nasdaq_syms = None
-    if nasdaq_syms:
+        nasdaq_rows = None
+    if nasdaq_rows:
         kept_raw, off = [], []
         for r in raw:
             sym = (r.get("symbol") or "").strip()
-            if sym and sym.upper() not in nasdaq_syms:
+            if sym and sym.upper() not in nasdaq_rows:
                 off.append(sym)
             else:
                 kept_raw.append(r)
@@ -622,6 +625,23 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             log.info(f"calendar: {len(day.date_unconfirmed)} Finnhub row(s) for {date_iso} "
                      f"not on Nasdaq's calendar, dropped: {day.date_unconfirmed[:20]}")
         raw = kept_raw
+        # The other direction (2026-09-16): a name Nasdaq lists that
+        # Finnhub has on another date (General Mills, estimated 9/15
+        # by Finnhub, announced 9/23) never reached the sheet, because
+        # the check only removes rows. A Nasdaq-only name big enough to
+        # matter is added with Nasdaq's session; the cap floor keeps
+        # the micro-cap long tail out without a Finnhub call per name.
+        have = {(r.get("symbol") or "").strip().upper() for r in raw}
+        added = []
+        for sym, info in nasdaq_rows.items():
+            if sym in have or float(info.get("cap") or 0) < MIN_CAP_ALWAYS_SHOW:
+                continue
+            raw.append({"symbol": sym, "hour": info.get("hour") or ""})
+            added.append(sym)
+        if added:
+            day.nasdaq_only_added = sorted(added)
+            log.info(f"calendar: {len(added)} Nasdaq-only name(s) for {date_iso} "
+                     f"added above the cap floor: {day.nasdaq_only_added}")
     else:
         log.warning(f"calendar: Nasdaq date check skipped for {date_iso}; Finnhub dates unverified")
 

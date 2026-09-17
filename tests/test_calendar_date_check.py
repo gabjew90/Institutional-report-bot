@@ -20,10 +20,17 @@ CAPS = {"CBRL": {"cap": 1102.0, "name": "Cracker Barrel Old Country Store Inc"},
         "KMTS": {"cap": 1340.0, "name": "Kestra Medical Technologies Ltd"}}
 
 
+def _rows(syms, caps=None):
+    """Nasdaq rows fixture: session unknown, cap 0 unless given ($M)."""
+    if syms is None:
+        return None
+    return {s: {"hour": "", "cap": float((caps or {}).get(s, 0))} for s in syms}
+
+
 def _build(nasdaq):
     with patch.object(nd, "fetch_earnings_calendar_all", lambda d: [dict(r) for r in ROWS]), \
          patch.object(nd, "fetch_us_econ_events_for_date", lambda d: []), \
-         patch.object(nd, "fetch_nasdaq_earnings_symbols", lambda d: nasdaq), \
+         patch.object(nd, "fetch_nasdaq_earnings_rows", lambda d: nasdaq), \
          patch.object(cd, "_resolve_caps", lambda syms: {s: CAPS[s] for s in syms if s in CAPS}), \
          patch.object(cd, "_implied_move_fetch", lambda s, d, session=None: 9.0), \
          patch.object(cd, "_MOVE_PACE_S", 0), \
@@ -35,7 +42,7 @@ def _build(nasdaq):
 
 
 def test_a_row_nasdaq_does_not_list_for_the_date_is_dropped_and_recorded():
-    day = _build({"PLAY", "KMTS", "RLGT", "HAIN"})
+    day = _build(_rows({"PLAY", "KMTS", "RLGT", "HAIN"}))
     shown = [r.symbol for r in day.bmo + day.amc]
     assert "CBRL" not in shown, shown
     assert shown == ["KMTS", "PLAY"], shown
@@ -53,7 +60,7 @@ def test_a_lower_case_finnhub_symbol_still_matches():
     rows = [{"symbol": "cbrl", "hour": "bmo"}]
     with patch.object(nd, "fetch_earnings_calendar_all", lambda d: rows), \
          patch.object(nd, "fetch_us_econ_events_for_date", lambda d: []), \
-         patch.object(nd, "fetch_nasdaq_earnings_symbols", lambda d: {"CBRL"}), \
+         patch.object(nd, "fetch_nasdaq_earnings_rows", lambda d: _rows({"CBRL"})), \
          patch.object(cd, "_resolve_caps", lambda syms: {s: {"cap": 1102.0, "name": "Cracker Barrel"} for s in syms}), \
          patch.object(cd, "_implied_move_fetch", lambda s, d, session=None: 9.0), \
          patch.object(cd, "_MOVE_PACE_S", 0), \
@@ -76,10 +83,15 @@ def test_fetcher_parses_the_nasdaq_payload_and_treats_empty_as_unavailable():
         def __exit__(self, *a):
             return False
 
-    payload = {"data": {"rows": [{"symbol": "PLAY", "time": "time-after-hours"},
-                                 {"symbol": "kmts", "time": "time-not-supplied"}]}}
+    payload = {"data": {"rows": [{"symbol": "PLAY", "time": "time-after-hours", "marketCap": "$287,000,000"},
+                                 {"symbol": "kmts", "time": "time-not-supplied"},
+                                 {"symbol": "GIS", "time": "time-pre-market", "marketCap": "$19,556,745,200"}]}}
     with patch("urllib.request.urlopen", lambda req, timeout=15: _Resp(json.dumps(payload).encode())):
-        assert nd.fetch_nasdaq_earnings_symbols("2026-09-14") == {"PLAY", "KMTS"}
+        rows = nd.fetch_nasdaq_earnings_rows("2026-09-14")
+        assert rows == {"PLAY": {"hour": "amc", "cap": 287.0},
+                        "KMTS": {"hour": "", "cap": 0.0},
+                        "GIS": {"hour": "bmo", "cap": 19556.7452}}, rows
+        assert nd.fetch_nasdaq_earnings_symbols("2026-09-14") == {"PLAY", "KMTS", "GIS"}
     with patch("urllib.request.urlopen", lambda req, timeout=15: _Resp(b'{"data": {"rows": []}}')):
         assert nd.fetch_nasdaq_earnings_symbols("2026-09-14") is None
     with patch("urllib.request.urlopen", side_effect=OSError("down")):
@@ -89,8 +101,24 @@ def test_fetcher_parses_the_nasdaq_payload_and_treats_empty_as_unavailable():
 def test_the_calendar_job_path_calls_the_check():
     import inspect
     src = inspect.getsource(cd.build_calendar_day)
-    assert "fetch_nasdaq_earnings_symbols(date_iso)" in src
-    assert src.index("fetch_earnings_calendar_all(date_iso)") < src.index("fetch_nasdaq_earnings_symbols(date_iso)")
+    assert "fetch_nasdaq_earnings_rows(date_iso)" in src
+    assert src.index("fetch_earnings_calendar_all(date_iso)") < src.index("fetch_nasdaq_earnings_rows(date_iso)")
+
+
+# 2026-09-16: the reverse case. Finnhub parked General Mills on an
+# estimated 9/15; Nasdaq carried the announced 9/23 with the session.
+# The check only removed rows, so the real date never reached the sheet.
+
+def test_a_nasdaq_only_name_above_the_cap_floor_is_added_with_its_session():
+    nasdaq = {"PLAY": {"hour": "", "cap": 0.0}, "KMTS": {"hour": "", "cap": 0.0},
+              "GIS": {"hour": "bmo", "cap": 19556.0}, "NEOV": {"hour": "amc", "cap": 194.0}}
+    caps = dict(CAPS, GIS={"cap": 19556.0, "name": "General Mills, Inc."})
+    with patch.dict(CAPS, caps):
+        day = _build(nasdaq)
+    assert [r.symbol for r in day.bmo] == ["GIS"], [r.symbol for r in day.bmo]
+    assert "NEOV" not in [r.symbol for r in day.bmo + day.amc]
+    assert day.nasdaq_only_added == ["GIS"]
+    assert day.date_unconfirmed == ["CBRL"]
 
 
 if __name__ == "__main__":

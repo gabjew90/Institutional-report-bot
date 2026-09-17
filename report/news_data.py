@@ -7,6 +7,7 @@ Sign up free at https://finnhub.io/register.
 """
 
 import json
+import re
 import logging
 import urllib.error
 import urllib.parse
@@ -904,18 +905,25 @@ def fetch_earnings_calendar_all(date_iso: str) -> list[dict] | None:
 _NASDAQ_EARNINGS_URL = "https://api.nasdaq.com/api/calendar/earnings?date={date}"
 
 
-def fetch_nasdaq_earnings_symbols(date_iso: str) -> set[str] | None:
-    """Symbols Nasdaq's earnings calendar lists for one date: a second
-    source on the report DATE only (Nasdaq often omits the session).
+_NASDAQ_TIME_TO_HOUR = {"time-pre-market": "bmo", "time-after-hours": "amc"}
+
+
+def fetch_nasdaq_earnings_rows(date_iso: str) -> dict[str, dict] | None:
+    """Nasdaq's earnings calendar for one date, symbol -> {"hour":
+    'bmo'|'amc'|'', "cap": market cap in $M or 0.0}: the second source
+    on the report DATE, and the only source for a name Finnhub lacks.
 
     2026-09-14: Finnhub still carried Cracker Barrel before the open on
     Monday 9/14 five days after the company announced Wednesday 9/23,
     and the sheet printed it with a straddle priced on an expiry the
     report was not in. Over 2026-09-01..17, 10 of 175 Finnhub
     confirmed-session names were absent from Nasdaq's list for the same
-    date, almost all micro-caps. Returns None when the feed is
-    unavailable or empty, so the caller keeps Finnhub alone rather than
-    blanking the sheet."""
+    date, almost all micro-caps. 2026-09-16: the reverse case. Finnhub
+    parked General Mills on an estimated 9/15 while Nasdaq carried the
+    announced 9/23, so the date check dropped the estimate and nothing
+    ever added the real date. Returns None when the feed is unavailable
+    or empty, so the caller keeps Finnhub alone rather than blanking
+    the sheet."""
     req = urllib.request.Request(
         _NASDAQ_EARNINGS_URL.format(date=date_iso),
         headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
@@ -927,9 +935,25 @@ def fetch_nasdaq_earnings_symbols(date_iso: str) -> set[str] | None:
         log.warning(f"Nasdaq earnings calendar fetch failed for {date_iso}: {e}")
         return None
     rows = ((data or {}).get("data") or {}).get("rows") or []
-    syms = {str(r.get("symbol") or "").strip().upper()
-            for r in rows if isinstance(r, dict) and r.get("symbol")}
-    return syms or None
+    out: dict[str, dict] = {}
+    for r in rows:
+        if not isinstance(r, dict) or not r.get("symbol"):
+            continue
+        sym = str(r.get("symbol")).strip().upper()
+        cap_txt = re.sub(r"[^\d.]", "", str(r.get("marketCap") or ""))
+        try:
+            cap_musd = float(cap_txt) / 1e6 if cap_txt else 0.0
+        except ValueError:
+            cap_musd = 0.0
+        out[sym] = {"hour": _NASDAQ_TIME_TO_HOUR.get(str(r.get("time") or ""), ""),
+                    "cap": cap_musd}
+    return out or None
+
+
+def fetch_nasdaq_earnings_symbols(date_iso: str) -> set[str] | None:
+    """Symbols only; see fetch_nasdaq_earnings_rows."""
+    rows = fetch_nasdaq_earnings_rows(date_iso)
+    return set(rows) if rows else None
 
 
 def fetch_symbol_profiles(
