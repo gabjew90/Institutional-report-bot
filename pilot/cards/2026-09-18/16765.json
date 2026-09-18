@@ -1,0 +1,130 @@
+{
+ "brief": "Third in a DB CoTD series on the current Fed hiking cycle, the 15th in 70 years. Prior installments showed 10yr Treasury yields rose in the first year of 11 of the last 12 hiking cycles, and that if market pricing holds, this would be the shallowest hiking cycle in history. Today's chart (Henry Allen) plots CPI at the first hike against first-year tightening across 14 cycles, finding a tight correlation (R\u00b2=0.82): the six shallowest first-year cycles all started with CPI at or below 2%, and sub-100bps cycles started near 1% CPI. Applying DB's 3.55% CPI forecast for this month to the best-fit line implies just over 200bps of first-year hikes this cycle \u2014 an outcome DB says nobody currently expects. DB notes that ahead of the 2022 cycle markets priced only 200bps of first-year hikes versus over 400bps realized, so markets tend to underestimate hiking-cycle scale at the outset.",
+ "cards": [
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "10-year Treasury yields rose in the first year of 11 of the last 12 Fed hiking cycles for which daily data is available.",
+   "anchor": "we showed that 10yr Treasury yields rose in the first year of 11 of the last 12 hiking cycles where daily data is available.",
+   "topic": "Fed September hike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "first year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "If current market pricing proves correct, the current Fed cycle would be the shallowest hiking cycle in history.",
+   "anchor": "if market pricing proves correct, this would be the shallowest hiking cycle in history.",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "There is a tight correlation between the level of CPI at the first hike of a Fed cycle and the amount the Fed tightens in the first year, across 14 prior hiking cycles.",
+   "anchor": "Many other factors clearly matter, but there\u2019s a pretty tight correlation between the two.",
+   "topic": "Fed September hike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "first year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "The six shallowest first-year Fed hiking cycles on record all began with CPI around or below 2%.",
+   "anchor": "The six shallowest first-year hiking cycles all began with CPI around or below 2%.",
+   "topic": "Fed September hike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "first year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "Fed hiking cycles that tightened less than 100bps in the first year started with CPI just above or just below 1%.",
+   "anchor": "the cycles that saw less than 100bps of tightening in the first year started with CPI either just above or just below 1%",
+   "topic": "Fed September hike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "first year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "Applying DB's 3.55% CPI forecast for this month to the best-fit line implies just over 200bps of Fed hikes in the first year of the current cycle, though DB says nobody expects that outcome.",
+   "anchor": "DB\u2019s forecasts for US CPI this month (at 3.55%), that correlates with just over 200bps of Fed hikes in the first year of this cycle.",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "first year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "Ahead of the 2022 hiking cycle, markets priced only about 200bps of first-year Fed hikes even though realized tightening exceeded 400bps.",
+   "anchor": "nobody was talking about over 400bps of hikes in the first year, with markets pricing just 200bps at the time.",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "first year"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "DB CoTD: The first year",
+   "claim": "Markets have a tendency to underestimate the scale of Fed hiking cycles at the start.",
+   "anchor": "markets have a tendency to underestimate the scale of Fed hiking cycles at the start.",
+   "topic": "Fed September hike",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-18/16765__db-cotd-the-first-year.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
