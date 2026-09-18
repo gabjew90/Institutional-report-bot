@@ -1,0 +1,163 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16718__expect-another-dose-of-fed-tightening.txt",
+   "span": "market pricing for a total of four hikes is excessive",
+   "why": "UBS (source of this doc) states this verbatim, matching the counter's attribution and content exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-18/16766__db-cotd-yields-after-the-start-of-a-hiking-cycle.txt",
+   "span": "the average move in 10yr UST yields one year after the start of a hiking cycle is around +114bps",
+   "why": "DB's 114bps average and the '11 of the last 12' cycles claim (companion piece, 16765/16767: '10yr Treasury yields rose in the first year of 11 of the last 12 hiking cycles') both check out. The closing clause ('already covered part of that ground') is supported by DB's own note (16823) that the 10-year 'recently reached 5.0%' and the curve 'has steepened meaningfully' this cycle."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16788__midday-market-intelligence-tug-of-war.txt",
+   "span": "We forecast PCE inflation of 3.2% as we exit 2026 \u2014 that's 20bp lower than the Fed's 3.4% forecast",
+   "why": "Goldman's note continues verbatim: 'If we're right, that should be enough for the Fed to stop hiking after October,' matching the pause-after-October read exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16715__the-oil-bears-have-one-problem-the-barrels-arent-there.txt",
+   "span": "funds bought Brent in four of five weeks, adding a cumulative $9.3bn. Around 30% came from new longs and 70% from short covering",
+   "why": "Every figure matches: $9.3bn through Sept 8 (first week of September), 70% short-covering, 88th percentile net length ('That pushed net length to the 88th percentile of its two-year range'), and 'Oil volatility has remained remarkably calm throughout the latest surge' for the options-priced-calmly claim."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16715__the-oil-bears-have-one-problem-the-barrels-arent-there.txt",
+   "span": "That positioning is now vulnerable to better supply news",
+   "why": "Paraphrase of the source's own framing (crowded, 88th-percentile long, vulnerable to supply news, vol not confirming the panic) \u2014 the bank's stance, not an invented one."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16715__the-oil-bears-have-one-problem-the-barrels-arent-there.txt",
+   "span": "Brent surged 11.1% while open interest increased by $8.3bn, largely as Houthi advances threatened Bab al-Mandeb flows and Saudi Arabia closed its East-West pipeline",
+   "why": "Framed as a falsifiable question built directly from the source's own named catalysts (East-West pipeline closure, Houthi threat to Saudi infrastructure)."
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16712__nothing-add-up-bears-are-exploding-vol-is-collapsing-and-a-v.txt",
+   "span": "That makes upside call spreads more attractive than chasing spot",
+   "why": "Nomura's long-energy/long-commodities stance is real (16814__stay-weird: 'Long Equities / Long Energy Eq' + 'Long Commods' among the 'High Sharpe' expressions), but 'buying October options rather than chasing the price' is not Nomura's line \u2014 it's The Market Ear/Goldman's (Privorotsky/Quinn) oil options call, appearing identically in 16712 and 16756 tagged 'GS'. Nomura's own note (16814) never mentions October oil options; its one October-options reference is an equity downside hedge, unrelated to the energy/commodities long. The sentence misattributes a Goldman trade mechanism to Nomura.",
+   "searched": [
+    "risk-adjusted",
+    "October options",
+    "October calls",
+    "chasing"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16782__global-strategy-views-competition-for-capital.txt",
+   "span": "the 65% year-over-year growth in Q2 marks the 10th consecutive quarter that aggregate AA capex growth exceeds 35%",
+   "why": "The $200bn-to-$2.3tn IG issuance forecast and the ~quarter AI-related share both check out verbatim in the same passage. But the 65% capex growth figure is specifically for AA-rated issuers ('the capex spending growth for AA-rated issuers has been substantial'), not investment-grade borrowers broadly \u2014 AA is the top tier within IG, and broadening the figure to the whole IG universe overstates its scope.",
+   "searched": [
+    "2.3 trillion",
+    "$200 billion",
+    "65%"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16793__gs-us-daily-download-17-sep-2026.txt",
+   "span": "strength from Data Centers (GSTMTDAT +1.28%) and AI Semis (GSCBSMHX +89bps) while Software At Risk (GSTMTSOS -1.83%) and AI-Productivity (GSXUPROD -2.19%) moved lower",
+   "why": "Data centers and chips (AI Semis) up, software and AI-productivity down, attributed to Goldman \u2014 matches exactly. The 'cuts against yesterday's pulse' clause is a self-referential editorial note, not a PDF-sourced claim, so it doesn't affect the grade."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16711__when-33-earnings-growth-is-not-enough.txt",
+   "span": "semiconductors and semiconductor equipment are expected to contribute 9.6 percentage points of the 15.4% consensus S&P 500 EPS growth expected in 2027",
+   "why": "Exact figures and attribution to BofA match verbatim."
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source states or implies what the software/semis (or any) 'split' is or is not about with respect to earnings. This reads as an inserted editorial connective sentence with no traceable factual content.",
+   "searched": [
+    "not about earnings",
+    "split is not about earnings",
+    "not driven by earnings",
+    "not an earnings"
+   ]
+  },
+  {
+   "id": "s12",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16782__global-strategy-views-competition-for-capital.txt",
+   "span": "we remain neutral on equities, alongside other asset classes on a 3-month horizon, but continue to be overweight equities over 12 months",
+   "why": "The neutral/overweight split is accurate, and the 3-month neutral call is indeed driven by 'near-term risks in bond markets.' But the source gives a different, multi-factor reason for the 12-month overweight \u2014 nominal GDP growth, earnings growth and ROE, not the bond market. Calling the reason for both calls 'entirely the bond market' overstates a single cause the source does not assign to the 12-month leg.",
+   "searched": [
+    "neutral over three month",
+    "overweight over twelve",
+    "3-month horizon"
+   ]
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16760__the-market-still-has-some-defenses-in-place-for-surging-rate.txt",
+   "span": "September's Triple Witching OPEX looms as a massive liquidity moment, with about $2 trillion of notional delta set to roll off",
+   "why": "The 'settlement' is the Triple Witching OPEX described here as having 'the potential to trigger a shift in the market's current volatility regime'; combined with 16796's dealer-gamma note ('We ultimately anticipate a dampening effect on the index level'), the synthesis that removing this dealer hedge makes the next move more violent is a fair reading, not an invented fact."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16712__nothing-add-up-bears-are-exploding-vol-is-collapsing-and-a-v.txt",
+   "span": "The AAII bull-bear spread has crashed. Previous collapses of this magnitude have triggered powerful market squeezes",
+   "why": "Matches directly; companion doc 16796 confirms the AAII spread is at 'new 2026 lows' and 'some of the most depressed levels in the post-ChatGPT era,' supporting 'most washed-out... of the year.'"
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16796__flow-of-funds-flash-update-17-sep-2026.txt",
+   "span": "Over the next 1 month... Down tape: Sellers $199.06B ($72B out of the US)",
+   "why": "The $199bn systematic-selling-if-prices-fall figure and one-month window match Goldman's model exactly. But 'with no cushion left to absorb it' has no support \u2014 the same note actually shows Net Leverage at just 48.8% (5th percentile 1-year) and describes positioning as 'materially cleaner' elsewhere in the day's research (16759), which reads as more cushion, not none. The added clause is unsupported and cuts against the source's own positioning read.",
+   "searched": [
+    "cushion",
+    "absorb"
+   ]
+  }
+ ],
+ "faithful": 10,
+ "distorted": 4,
+ "unsupported": 1,
+ "faithful_rate": 0.667,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

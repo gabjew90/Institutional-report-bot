@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-18/16765__db-cotd-the-first-year.txt",
+ "source_span": "Using the best fit line, if you take DB's forecasts for US CPI this month (at 3.55%), that correlates with just over 200bps of Fed hikes in the first year of this cycle.",
+ "source_chain": "The starting CPI level at each of the prior 14 hiking-cycle liftoffs correlates tightly (R\u00b2=0.82) with how much the Fed tightened in year one, therefore plugging DB's own 3.55% September CPI forecast into that fit implies just over 200bps of first-year hikes, therefore against futures pricing only 95bps (from the companion 16-Sep note) the market is underpricing the cycle -- consistent with a documented pattern (2011 NY Fed study; 2022, when 200bps priced became 400bps+) of markets underestimating hiking scope at liftoff. DB gives no hard invalidation, explicitly hedging that 'many other factors clearly matter' and that 'nobody expects anything close to that outcome.'",
+ "pulse_chain": "DB fit hiking cycles against the inflation rate each began from, therefore its 3.55% September CPI forecast maps to 200+bps of first-year hikes, therefore against the 95bps priced, traders are underwriting the shallowest cycle on record at the moment the Fed itself raised its median dot; the theme's invalidation (stated later, tied to the adjacent GS second-hike call rather than this specific mechanism) is a meaningfully cooler inflation print before October 28.",
+ "preserved": true,
+ "why": "The regression mechanism, the 3.55%-to-200bp translation, and the conclusion that 95bp pricing is too low all survive; the only deviations are cosmetic -- DB's explicit hedge is dropped and the fit is described as spanning 15 cycles instead of the 14 actually regressed -- neither reverses a step, changes the bank, or swaps in a different invalidation.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

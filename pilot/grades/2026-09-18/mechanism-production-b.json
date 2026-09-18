@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-18/16765__db-cotd-the-first-year.txt",
+ "source_span": "Using the best fit line, if you take DB's forecasts for US CPI this month (at 3.55%), that correlates with just over 200bps of Fed hikes in the first year of this cycle. Clearly, nobody expects anything close to that outcome.",
+ "source_chain": "A tight correlation (R\u00b2=0.82) links the CPI level at the first hike of each of the 14 prior hiking cycles to how much the Fed tightened in that cycle's first year, therefore plugging DB's 3.55% September CPI forecast into that fit implies just over 200bps of first-year hikes for this cycle, therefore since the market prices nowhere near that (95bps, per the companion CoTD) the pattern is a warning that markets have historically underestimated hiking-cycle scope at the start (as in 2022, when 400bps+ arrived after only 200bps was priced). No hard invalidation is stated beyond the note's own caveat that 'many other factors clearly matter.'",
+ "pulse_chain": "Markets price 95bps of hikes over the next year, therefore DB's fit of Fed hiking cycles since the mid-1950s against starting inflation maps its 3.55% forecast to over 200bps in the first year, therefore traders are underwriting the shallowest cycle on record at the moment the Fed itself raised its dot-plot destination; invalidation given later in the theme is a meaningfully cooler inflation print before the October 28 meeting, which would take the priced second hike back out of the curve.",
+ "preserved": true,
+ "why": "The pulse keeps DB's correlation mechanism, direction (market underpricing), and bank attribution intact, compressing 'previous 14 cycles' to 'all 15' and supplying its own catalyst-based invalidation rather than the note's vaguer 'many other factors matter' caveat, but neither change reverses a step or contradicts what DB argued.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

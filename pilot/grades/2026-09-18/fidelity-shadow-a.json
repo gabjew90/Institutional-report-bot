@@ -1,0 +1,156 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16798__gs-sharkey-us-equities-mid-day-color-17-sep-2026.txt",
+   "span": "SPX reclaims the 50dma (7615) after bouncing off of the 100dma (7515) in yesterday's session. VIX back down to a 15 handle as fears ease.",
+   "why": "Exact match: 50dma 7615, 100dma 7515 bounce prior session, VIX back to a 15 handle."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16798__gs-sharkey-us-equities-mid-day-color-17-sep-2026.txt",
+   "span": "Exchange volumes elevated +31% vs 20d avg while top of book liquidity is very light ($2.81mm on the touch -50% vs 5dma).",
+   "why": "$2.81mm on the touch = the size quoted at the best price, -50% vs 5dma = roughly half the five-day average; volume +31% vs 20d avg matches exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source states or implies that a 'flow trigger' matters more than a headline; this reads as connective narration with no bank stance behind it.",
+   "searched": [
+    "flow trigger",
+    "trigger matters more than",
+    "matters more than the headline"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16761__spin-cycle.txt",
+   "span": "it performs well over the next 5 days (median +1.13% positive 73% of the time), but turns negative looking out 30-40 days",
+   "why": "Both banks address the same DMA-reclaim signal on the same day: Goldman's desk (16798) frames it as a bullish 'squeezy tilt' / high-conviction continuation, while BTIG's Spin Cycle (16761) explicitly splits the same setup into 'Short-Term Bullish, Medium-Term Bearish' (negative 70% of the time 30-40 days out) \u2014 a genuine, sourced disagreement about what the reclaim implies going forward."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16715__the-oil-bears-have-one-problem-the-barrels-arent-there.txt",
+   "span": "the pipeline must be repaired quickly, the conflict must not escalate and demand must weaken enough to absorb the returning supply",
+   "why": "Pipeline repair as the precondition for oil staying lower is sourced here; 16798 separately shows yields/WTI already moving lower on Saudi pipeline repair news and an equity 'squeeze' underway, supporting the conditional link."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16690__committee-wants-another-dose.txt",
+   "span": "16 of 18 who submitted projections see at least one more rate hike this year",
+   "why": "Same source: 'unanimous decision to raise the funds rate 25bp to 3.75-4.0%' and 'median-longer run dot was revised up from 3.06% to 3.25%' \u2014 all three figures in the sentence match exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16690__committee-wants-another-dose.txt",
+   "span": "we continue to look for one more hike at the December meeting, in line with the revised median FOMC expectations",
+   "why": "JPMorgan/December confirmed above. Deutsche Bank's December+March call is in 16682 ('25bp hikes in December and March') and 16762. Rabobank's one-and-done-likelier-than-two view is in 16697: 'we still think it is more likely that this turns out to be a one and done hike, although we also still do not rule out that second hike.'"
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source frames any figure as 'small' when 'measured against global supply.' Nearest candidates (Persian Gulf flow-at-risk figures in 16795/16756, e.g. 6.7m b/d or 3.5mb/d) are never characterized as small relative to global supply \u2014 if anything 16795 stresses the market 'is still low' and 'in a deficit.'",
+   "searched": [
+    "global supply",
+    "measured against",
+    "small"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16712__nothing-add-up-bears-are-exploding-vol-is-collapsing-and-a-v.txt",
+   "span": "credit risk has repriced more aggressively than volatility in the equity complex these companies dominate",
+   "why": "Directly restates the CDS-vs-equity-vol divergence for AI-linked issuers described in the source."
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16670__selling-bonds-to-buy-gpus-credit-is-flashing-a-warning-while.txt",
+   "span": "three-to-six-month NDX put spreads offer relatively cheap exposure to a broader reassessment of AI capex and its expected returns",
+   "why": "Source is The Market Ear (per its own meta.json), not JPMorgan. TME tags paragraphs it draws directly from JPM with a standalone 'JPM' citation line (after the issuance-figures paragraph and after the bp-impact-model paragraph); the 'Credit is asking a different question,' 'Vol is the laggard,' and 'Trade the gap' sections \u2014 which contain the put-spread trade and the capital-light-vs-builders preference \u2014 carry no such tag, meaning they are TME's own synthesized trade idea built on JPM's data, not a trade JPMorgan itself called. Attributing the trade to JPMorgan is a sourcing distortion.",
+   "searched": [
+    "JPMorgan's trade",
+    "three-to-six-month",
+    "put spreads"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16711__when-33-earnings-growth-is-not-enough.txt",
+   "span": "Yet BofA's index target tells a very different story. Its year-end S&P 500 target is 7,400 and its 12-month target is 7,800.",
+   "why": "BofA's own targets imply roughly -3% into year-end and +2% over 12 months despite 33% EPS growth \u2014 'prices a boom that pays the holder nothing' is a faithful options-register paraphrase of that near-zero implied return, correctly attributed to BofA's own forecast (the article itself is a Market Ear piece about BofA's numbers, and the sentence attributes the target to BofA, not TME)."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16715__the-oil-bears-have-one-problem-the-barrels-arent-there.txt",
+   "span": "funds bought Brent in four of five weeks, adding a cumulative $9.3bn. Around 30% came from new longs and 70% from short covering.",
+   "why": "All figures match: $9.3bn Aug 4-Sep 8, 70% short covering, net length to 88th percentile, November Brent +25.7% over the same period."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16793__gs-us-daily-download-17-sep-2026.txt",
+   "span": "Data Centers (GSTMTDAT +1.28%) and AI Semis (GSCBSMHX +89bps) while Software At Risk (GSTMTSOS -1.83%) and AI-Productivity (GSXUPROD -2.19%) moved lower",
+   "why": "All four basket names and figures match exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16801__hedge-funds-crowding-monitor-us-17-sep-2026.txt",
+   "span": "Analog Semis (GSCBASMC) long crowding surged from 1.22 to 1.39 (99th percentile) with shorts deeply uncrowded at -0.39 (2nd percentile)",
+   "why": "99th percentile crowding + near-zero shorts confirmed here. AMD/Qorvo/Skyworks near 52-week highs vs Lam Research/Applied Materials/Western Digital 30-40% off June highs is confirmed verbatim in BTIG's Spin Cycle (16761), correctly attributed."
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16728__why-the-fed-hike-should-not-derail-markets.txt",
+   "span": "We expect the BoE to leave the policy rate unchanged at 3.75% on Thursday and for the rest of the year.",
+   "why": "The 3.75%-hold and 'overstates the likelihood of renewed tightening' language is UBS's call on the Bank of England (UK), not the US Fed \u2014 it sits under a 'Caught our attention: UK inflation rises ahead of Bank of England decision' item. UBS's actual Fed view in the same document accepts the Fed's tightening path ('projections... pointing to further tightening... we do not expect a measured Fed tightening cycle to derail the equity rally'), the opposite of a Fed-hold call. Placed alongside JPMorgan/DB/Rabobank's Fed-hike debate, the sentence misattributes a UK rate call to the Fed policy discussion \u2014 a distortion of subject, not just a coincidental number match.",
+   "searched": [
+    "3.75%",
+    "hold",
+    "Fed",
+    "overstates the likelihood of renewed tightening"
+   ]
+  }
+ ],
+ "faithful": 11,
+ "distorted": 2,
+ "unsupported": 2,
+ "faithful_rate": 0.733,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

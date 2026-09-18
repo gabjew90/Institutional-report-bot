@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-18/16798__gs-sharkey-us-equities-mid-day-color-17-sep-2026.txt",
+ "source_span": "US Indices lifting as yields and WTI move lower off the back of Saudia Arabia easing oil supply constraints (East-west Pipeline back online and more ship-to-ship oil transfers). SPX reclaims the 50dma (7615) after bouncing off of the 100dma (7515)",
+ "source_chain": "Saudi Arabia eases oil supply (pipeline restored, more ship-to-ship transfers) therefore WTI and yields fall together therefore SPX reclaims the 50dma off the 100dma bounce with VIX to 15, and the squeeze baskets (most-shorted +425bps, momo +360bps, AI semis +325bps) outperform on thin top-of-book liquidity (Sharkey) \u2014 the shape of short-covering, not fresh buying \u2014 which Hafif's flow note grounds mechanically: SPX crossed the CTA short-term threshold (was 1.1% away, moved that much), which dries up systematic selling only if it holds, with CTAs still only 22nd-percentile long ($37.54bn) and modeled to keep selling in a flat/down tape. Invalidation: Quinn/TME flags Brent longs at the 88th percentile as vulnerable to further supply repair; BTIG separately argues breadth (49% of SPX > 200dma, first sub-50 since April 2000) shows the correction isn't finished despite the bounce.",
+ "pulse_chain": "Saudi Arabia eases oil supply (pipeline back online, more ship-to-ship transfers) therefore crude and yields fall together therefore SPX reclaims the 50dma off the 100dma bounce with VIX to 15, but the move is squeeze baskets (+425/+360/+325bps) outperforming on thin liquidity, i.e. short-covering not conviction buying, confirmed mechanically by the CTA threshold (1.1% away, cleared that day, removes the selling leg per Hafif) with CTAs still only 22nd-percentile long. Goldman stays bullish (MegaCap Tech, underweight positioning as tailwind) while BTIG counters that 49% breadth (first sub-50 since April 2000) means strength isn't being rewarded and the correction needs more work. Invalidation: if Brent's crowded long (88th percentile, Quinn) unwinds as pipeline repairs hold, oil/yields stay lower and the squeeze extends; if breadth keeps falling while the squeeze runs, it confirms the rally is only funds covering, not a turn.",
+ "preserved": true,
+ "why": "Every step, figure, and attribution in the pulse's chain (oil-driven yields/equity move, thin-liquidity squeeze-basket evidence for short-covering, the CTA-threshold mechanism from Hafif, and the Goldman-vs-BTIG split with each side's own condition) traces to the correct cited note with no reversed step, no misattributed bank, and no invented mechanism, only compression (e.g. dropping BTIG's 'more oversold conditions' clause).",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

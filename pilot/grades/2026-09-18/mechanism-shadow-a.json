@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-18/16798__gs-sharkey-us-equities-mid-day-color-17-sep-2026.txt",
+ "source_span": "US Indices lifting as yields and WTI move lower off the back of Saudia Arabia easing oil supply constraints... SPX reclaims the 50dma (7615) after bouncing off of the 100dma (7515)... Most Rolling Short (GSCBMSAL) +425bps... Squeezy tilt to the tape.",
+ "source_chain": "Saudi Arabia eases oil supply (pipeline back online, more ship-to-ship transfers) therefore oil and yields fall therefore SPX reclaims the 50dma off the prior day's 100dma bounce and VIX drops to 15, and within that move the biggest gainers are short-covering baskets (Most Rolling Short +425bps, Momo +360bps, AI Semis +325bps) against thin top-of-book liquidity (-50% vs 5dma) on elevated volume (+31%), therefore this is systematic/short-covering flow, not fresh conviction buying; GS's own high-conviction long stays MegaCap Tech, a separate call.",
+ "pulse_chain": "Saudi Arabia eases oil supply (pipeline back online, ship-to-ship transfers) therefore oil and yields fall together therefore SPX reclaims the 50dma (7615) off the 100dma bounce, VIX to 15, therefore the basket moves (Most Rolling Short ~425bps, Momo ~360bps, AI Semis ~325bps) show short covering not new buying, amplified by thin liquidity ($2.81mm, half the 5-day average) against +31% volume, and near-term systematic selling is close to being removed as SPX nears GS's CTA threshold [d38]; invalidation: whether the rally is a genuine turn or just a squeeze hinges on the oil supply repair (Brent longs at the 88th percentile are exposed to confirmed supply return per GS's Quinn/TME) and on BTIG's breadth read continuing to deteriorate.",
+ "preserved": true,
+ "why": "The pulse keeps GS Sharkey's direction, figures, and short-covering-not-conviction reading intact and correctly attributes the CTA-threshold and Brent-positioning add-ons to the Goldman Flow of Funds and TME/Quinn notes respectively, with only the final line splicing in BTIG's unrelated breadth stat as a soft tell rather than reversing or misattributing any note's core mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

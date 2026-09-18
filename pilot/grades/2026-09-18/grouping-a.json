@@ -1,0 +1,63 @@
+{
+ "metric": 1,
+ "total_cards": 969,
+ "fragmentation_sets": [
+  {
+   "subject": "AI capex-driven tech bond issuance pushing Global Agg / IG yields higher (JPMorgan's issuance and duration-impulse analysis)",
+   "labels": [
+    "ai capex credit risk",
+    "tech bond issuance pressure"
+   ],
+   "cards": 18
+  }
+ ],
+ "fragmented_mass_share": 0.019,
+ "mis_merges": [
+  {
+   "label": "eu media communacopia",
+   "subjects": [
+    "RELX/Prosus/iFood/JCD earnings and business updates",
+    "Publicis bond offering to fund LiveRamp M&A",
+    "Dassault Systemes rating downgrade",
+    "Salesforce/Legora AI-tool adoption"
+   ],
+   "would_change_theme_selection": false,
+   "why": "each bullet is single-company conference trivia for peripheral EU names that would not compete for a lead theme in a US options/crypto pulse regardless of grouping"
+  },
+  {
+   "label": "eu telecom communacopia",
+   "subjects": [
+    "Telefonica Spain/Germany/Brazil strategy",
+    "KPN competitive position and cost savings",
+    "DT/TMUS merger speculation",
+    "CMA review of CityFibre-Netomnia",
+    "Digi/Zegona-Vodafone Spain broadband competition",
+    "Iliad Scaleway orbital data center plan"
+   ],
+   "would_change_theme_selection": false,
+   "why": "same overflow-conference pattern as eu media communacopia; none of these distinct company theses is a plausible standalone theme for this pulse's audience"
+  },
+  {
+   "label": "industrials earnings cost headwinds",
+   "subjects": [
+    "J.B. Hunt trucking EPS cut on cost pressure",
+    "Lincoln Electric margin guidance cut",
+    "Carrier topline/guidance reiteration"
+   ],
+   "would_change_theme_selection": false,
+   "why": "three unrelated single-company data points bundled only because they're all industrials; too thin and peripheral to have been a candidate theme on its own"
+  }
+ ],
+ "pass": true,
+ "notes": "Only real fragmentation is JPMorgan's bond-issuance/yield-pressure data duplicated near-verbatim across 'ai capex credit risk' and 'tech bond issuance pressure' (18 of 969 cards, 1.9%). The three mis-merges are all single-conference grab-bag labels (EU telecom, EU media, industrials) holding unrelated companies, but each is low-mass and too peripheral to have altered lead-theme selection. 'misc' holds 12 cards (1.2%) and is correctly excluded as declared overflow.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

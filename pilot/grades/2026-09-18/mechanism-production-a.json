@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text-all/2026-09-18/16763__db-cotd-15-in-70-years.txt",
+ "source_span": "a Fed hiking cycle that is expected to deliver 95bps of tightening over the next 12 months... One recurring feature of Fed tightening cycles is that their eventual magnitude is rarely apparent at lift-off",
+ "source_chain": "Futures price 95bps over the next 12 months, which (per a 2011 NY Fed study and the 2022 cycle) is the kind of number markets have consistently underestimated at the start of past hiking cycles, therefore this may again prove too shallow \u2014 but DB hedges this explicitly ('many other factors clearly matter,' 'nobody expects anything close to that outcome') and states no invalidation condition; it is a historical-pattern caution, not a directional call with a falsifiable trigger.",
+ "pulse_chain": "Market prices 95bps, DB's CPI-correlation model implies 200bps+ is 'justified' by inflation, and history says markets underestimate cycles at the start, therefore traders are 'underwriting the shallowest cycle on record' and are wrong to; the short $TLT call has already paid and will keep paying until a specific event breaks it, therefore a meaningfully cooler inflation print before Oct 28 is 'the only thing on the calendar that can' take the second (October) hike back out of pricing.",
+ "preserved": false,
+ "why": "The pulse converts DB's explicitly hedged, no-invalidation historical-pattern observation into a confident directional call and then supplies a specific invalidation condition (a cooler CPI print removing the October hike) that neither DB's note (which states no invalidation) nor Goldman's actual point (that the 3.2%-vs-3.4% gap argues against hikes continuing *beyond* October, not that the October hike itself is at risk) actually argues, which is the pulse asserting its own mechanism as the source's.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

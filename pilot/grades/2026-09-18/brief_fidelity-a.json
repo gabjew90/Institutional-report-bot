@@ -1,0 +1,102 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d6",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Saudi Arabia eases oil supply (pipeline restart, more ship-to-ship transfers) therefore yields and WTI fall therefore SPX reclaims the 50dma (7615) off the 100dma bounce and VIX drops to 15 therefore risk-on rally with MegaCap Tech/momentum/AI-semis/AI-leaders/short baskets squeezing higher on thin top-of-book liquidity despite elevated volume, with CTAs modeled to sell $30bn next week; separately, GIR reads the FOMC hike as more hawkish than its prior view (16-2 majority for another hike, no dissents, neutral-rate dot up to 3.25% from 3.06%, Warsh repeating 'removed a dose of accommodation').",
+   "brief_chain": "Saudi eases oil supply constraints therefore yields/WTI fall therefore SPX reclaims the 50dma after bouncing off the 100dma, VIX to 15 therefore MegaCap Tech leads a risk rally, TMT most net-bought sector with Mag7 allocation near a 3-year high, momentum/AI/short-covering baskets squeeze higher despite thin liquidity and modeled CTA selling next week; separately GIR calls the FOMC hike more hawkish (16-2, no dissents, neutral dot to 3.25%, Warsh repeats 'dose of accommodation').",
+   "distortions": [
+    {
+     "what": "Brief calls the momentum/AI-semis/AI-leaders/short-covering basket moves (actual +215 to +450bps, i.e. roughly 2.15%-4.5%) 'double-digit gains'; none of the cited baskets moved double-digit percentages.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the trade (squeezy, high-conviction MegaCap Tech / momentum longs) and its direction are unchanged; this is a magnitude overstatement, not a stance or instrument change."
+    },
+    {
+     "what": "Brief reports only the neutral-rate dot's endpoint (3.25%) and drops the starting point (3.06%) given in the source.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the hawkish read (dot rose) survives with just the endpoint; the trajectory itself, not the omitted baseline, is what informs the GIR stance."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d38",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Post-Fed move revives systematic-supply questions therefore SPX sits within 1.1% of the CTA short-term threshold and is up that amount today therefore clearing the threshold would shift near-term CTA estimates and start drying up systematic supply; CTAs currently long $37.54bn (22nd pct, 1y) and GS's updated month-ahead model has them as modest sellers in a flat tape, larger sellers in a down tape, buyers in an up tape; dealers are long gamma at spot and expected to get longer gamma to the topside, dampening index moves, with underweight investor positioning a tailwind if macro turns positive; elevated gross leverage plus depressed net leverage and AAII sentiment mean more repair is needed before re-risking.",
+   "brief_chain": "Post-Fed move revives systematic-supply questions therefore SPX is within 1.1% of the CTA short-term threshold and up that amount today therefore clearing it would shift GS's CTA estimates and dry up systematic supply; CTAs long $37.54bn (22nd pct) with GS's updated model showing month-ahead sellers in flat tape, bigger sellers in down tape, buyers in up tape; dealers long gamma at spot, expected to get longer gamma to the topside and dampen index moves, with underweight positioning a tailwind on positive macro news; elevated gross leverage plus depressed net leverage/AAII sentiment mean more repair needed before re-risking.",
+   "distortions": [
+    {
+     "what": "Gross leverage is reported only as '208.8% (79th percentile, 5-year)'; the source also gives a 1-year read of 31st percentile, which is omitted.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the 5-year elevated reading alone still supports GS's 'more repair needed' conclusion; the dropped 1-year figure doesn't reverse that."
+    },
+    {
+     "what": "The Panic Index (5.7/10, 66th percentile, 1y) is omitted entirely from the brief.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's one more corroborating anxiety indicator alongside AAII and leverage; its absence doesn't change the sentiment-needs-repair conclusion."
+    },
+    {
+     "what": "Brief drops the source's conditional 'should it hold' on the threshold clear drying up systematic supply.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 minor compression of a hedge clause, not a change to the mechanism described."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d12",
+   "tier": "rest",
+   "bank": "BTIG",
+   "source_chain": "At the July FOMC, fear was elevated (put/call near yearly highs) but breadth was healthy (>70% of SPX above 200dma) therefore BTIG called an end to the momentum unwind and looked for a tactical bounce, consistent with SPX's post-FOMC Thursday seasonality; heading into the September FOMC the setup flipped \u2014 complacency/low put/call plus expectations of a rally on a hike, yet breadth collapsed to 49% above the 200dma (first sub-50% print since April 2000) while SPX stayed within 4% of an all-time high therefore strength isn't being rewarded, more names (financials via BKX nearing a test, GS individually losing it, industrials, transports, hotels) are breaking down, and real rates hit fresh highs therefore BTIG says the correction needs less complacency, more oversold conditions and a higher-correlation decline before it's done, and continues to see downside risk.",
+   "brief_chain": "In July, elevated fear but healthy breadth let BTIG call a tactical bounce consistent with post-FOMC Thursday seasonality; heading into September the picture flipped \u2014 complacency and low put/call despite breadth deteriorating to 49% above the 200dma (first sub-50% since April 2000) while SPX stayed within 4% of highs, therefore strength isn't rewarded and more stocks (financials, industrials, transports, hotels) are breaking their 200dmas, with real rates at fresh highs, therefore BTIG wants less complacency, more oversold conditions and a higher-correlation decline before calling the correction over, and continues to see downside risk.",
+   "distortions": [
+    {
+     "what": "Brief groups 'financials' with industrials/transports/hotels as names that have broken their 200dma; source's bank read (BKX) says it 'looks like a test of the 200 DMA is likely' (not yet confirmed) \u2014 only Goldman Sachs individually is confirmed as having lost its 200dma, while industrials/transports/hotels are confirmed breaks.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the overall bearish breadth-deterioration thesis and BTIG's stated invalidation conditions are unchanged whether banks have confirmed the break or are merely approaching the test."
+    },
+    {
+     "what": "Brief drops the source's framing that the July setup followed 'the largest momentum crash in modern history.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 background color, doesn't affect the comparison BTIG draws between July and September setups."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d25",
+   "tier": "rest",
+   "bank": "UBS",
+   "source_chain": "Fed hikes 25bp to 3.75-4%, Warsh calls it removing accommodation and not restrictive therefore hawkish SEP (stickier inflation, stronger growth, 4.1% 2026 dot, 8 participants seeing a 2027 third hike) plus Warsh's hawkish tone and broad policymaker support therefore markets price three more hikes by mid-2027; UBS keeps its December-hike call, calls that pricing excessive while flagging upside risk, reads the median dot as a 2027 hold, and expects disinflation/base effects to weaken the case for a long hike sequence therefore UBS stays fixed-income Attractive \u2014 add duration selectively in high-quality bonds, take IG carry at medium tenors, keep HY/EM short-dated, avoid the longest maturities (fiscal strain/AI debt/price-sensitive buyers keep term premia elevated); separately UK CPI rises to 3.1% (core steady at 2.6%) therefore UBS still expects a BoE hold at 3.75% through 2026, calling hike odds overstated though energy risk could delay cuts, and rates GBP Attractive.",
+   "brief_chain": "Fed hikes 25bp to 3.75-4%, Warsh calls it removing accommodation and not restrictive; hawkish SEP (stickier inflation, stronger growth, 4.1% 2026 dot, 8 seeing a 2027 third hike) plus broad policymaker support for more hikes therefore markets price three more hikes by mid-2027; UBS keeps its December-hike call, calls that pricing excessive while flagging upside risk, reads the median dot as a 2027 hold, forecasts steady disinflation as base effects weaken the case for a long hike sequence therefore UBS keeps fixed income Attractive \u2014 add duration selectively in high-quality bonds, take IG carry at medium tenors, keep HY/EM short-dated, avoid the longest maturities on elevated term premia; separately UK CPI to 3.1% with core steady at 2.6%, yet UBS still expects a BoE hold at 3.75% through 2026 since hike odds are overstated, though energy risk could delay cuts; UBS rates GBP Attractive.",
+   "distortions": [
+    {
+     "what": "Brief attributes the market pricing three more hikes by mid-2027 to 'broad policymaker support' alone, dropping the source's co-cited driver, 'the hawkish tone from Warsh.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the outcome (market pricing three hikes) and UBS's own call against that pricing are unchanged; only one of two cited causes is omitted."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 8,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

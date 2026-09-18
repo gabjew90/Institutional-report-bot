@@ -1,0 +1,159 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16798__gs-sharkey-us-equities-mid-day-color-17-sep-2026.txt",
+   "span": "SPX reclaims the 50dma (7615) after bouncing off of the 100dma (7515) in yesterday's session. VIX back down to a 15 handle as fears ease.",
+   "why": "Exact levels, exact sequencing (bounced off 100dma yesterday, reclaimed 50dma today), and VIX at 15 all match."
+  },
+  {
+   "id": "s2",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16798__gs-sharkey-us-equities-mid-day-color-17-sep-2026.txt",
+   "span": "Exchange volumes elevated +31% vs 20d avg while top of book liquidity is very light ($2.81mm on the touch -50% vs 5dma).",
+   "why": "The figures ($2.81mm, -50% vs 5dma, +31% vs 20d avg) are all correct, but the source describes market-wide top-of-book liquidity (aggregate exchange depth), not a single equity. The sentence invents 'the stock quoted at the best price,' which implies one company's shares when no stock is named or discussed in this bullet.",
+   "searched": [
+    "2.81 million",
+    "31%",
+    "top of book",
+    "five-day average"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No document uses this framing or anything resembling 'flow trigger' vs 'headline.' Reads as an unattributed editorial transition with no checkable factual content and no bank stance behind it.",
+   "searched": [
+    "flow trigger",
+    "trigger matters more than the headline",
+    "the headline"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "Goldman's desk color (GS Sharkey mid-day note, GS Ratra crowding monitor) and BTIG's Spin Cycle note both exist for this date and both touch AI/semis dispersion, but neither source states, or even implies, that Goldman and BTIG disagree with each other on anything. No source uses 'disagree' or frames a GS-vs-BTIG dispute.",
+   "searched": [
+    "BTIG",
+    "disagree",
+    "Goldman's desk"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16715__the-oil-bears-have-one-problem-the-barrels-arent-there.txt",
+   "span": "A move through $110 toward $120 requires only one additional disruption... another disruption offers convex participation in a renewed squeeze.",
+   "why": "The source ties the oil 'squeeze' to a scenario where repairs do NOT hold and a further disruption hits (the opposite condition). It explicitly says a full pipeline repair points toward $85-90, i.e. price relief, not a squeeze extension. The sentence inverts this conditional, claiming the squeeze extends if repairs hold.",
+   "searched": [
+    "repairs hold",
+    "squeeze extends",
+    "pipeline must be repaired"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
+   "span": "The FOMC raised the funds rate by 25bp to 3.75-4% today... a 16-2 majority projected at least one more hike this year, and there were no dissenting votes against today's hike... dot rose from 3.06% to 3.25%.",
+   "why": "Unanimous hike (no dissents) to 3.75-4.00%, 16 of 18 officials (16-2) projecting another hike, and the long-run/neutral dot moving from 3.06% to 3.25% are all confirmed."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16690__committee-wants-another-dose.txt",
+   "span": "For our part we continue to look for one more hike at the December meeting, in line with the revised median FOMC expectations.",
+   "why": "JPM (16690) confirms the December call. Deutsche Bank's recap (16762__sept-fomc-recap...) states 'We continue to expect the Fed to deliver 50bps more of tightening, with 25bp increases in December and next March.' Rabobank (16697__the-fed-s-declaration-of-independence.txt) states 'we still think it is more likely that this turns out to be a one and done hike, although we also still do not rule out that second hike' \u2014 matching 'one and done likelier than two.'"
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source in the day's set frames any disruption, positioning add, or barrel figure as 'small' when measured against global oil supply. Closest candidates (16715 oil piece, 16756 barrel/bond-market piece with the 6.7m b/d Persian Gulf flow-hit estimate) never make this comparison.",
+   "searched": [
+    "global supply",
+    "measured against",
+    "small"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16670__selling-bonds-to-buy-gpus-credit-is-flashing-a-warning-while.txt",
+   "span": "credit risk has repriced more aggressively than volatility in the equity complex these companies dominate.",
+   "why": "CDS (default insurance) on AI-linked issuers repricing more than equity-complex vol (VXN, proxying options pricing on those same Nasdaq-heavy names) matches the sentence's substance."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16670__selling-bonds-to-buy-gpus-credit-is-flashing-a-warning-while.txt",
+   "span": "three-to-six-month NDX put spreads offer relatively cheap exposure... do not necessarily short the AI story... favor capital-light AI beneficiaries over the builders facing the largest capex burdens.",
+   "why": "JPM's trade (buy the CDS/vol mismatch via NDX put spreads rather than shorting AI outright, prefer capital-light beneficiaries) matches exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16711__when-33-earnings-growth-is-not-enough.txt",
+   "span": "BofA has raised its 2026 S&P 500 EPS estimate to $365, implying 33% growth... Yet BofA's index target tells a very different story... implied roughly 3% downside into year-end and only about 2% upside over the following 12 months.",
+   "why": "The metaphor ('the call... prices a boom that pays the holder nothing') is a faithful compression of BofA's own contradiction: a 33% earnings boom priced alongside a target implying near-zero index return."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16715__the-oil-bears-have-one-problem-the-barrels-arent-there.txt",
+   "span": "From August 4 to September 8, funds bought Brent in four of five weeks, adding a cumulative $9.3bn. Around 30% came from new longs and 70% from short covering. That pushed net length to the 88th percentile of its two-year range. November Brent surged 25.7% over the same period.",
+   "why": "All figures and dates match: $9.3bn, 70% short covering, 88th percentile net length, November Brent +25.7%."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16793__gs-us-daily-download-17-sep-2026.txt",
+   "span": "strength from Data Centers (GSTMTDAT +1.28%) and AI Semis (GSCBSMHX +89bps) while Software At Risk (GSTMTSOS -1.83%) and AI-Productivity (GSXUPROD -2.19%) moved lower",
+   "why": "All four basket names and percentages match exactly. The note, published 2:14am on 17 Sep recapping the prior (16 Sep, FOMC) session, confirms these moves are for FOMC day."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-18/16761__spin-cycle.txt",
+   "span": "Names like Advanced Micro Devices (AMD, not rated), Qorvo (QRVO, not rated), and Skyworks Solutions (SWKS, not rated) are showing strength and back near 52wk highs, while others like Lam Research (LRCX, not rated), Applied Materials (AMAT, not rated), and Western Digital (WDC, not rated) are still off 30-40% from June highs.",
+   "why": "BTIG (Krinsky) confirms the AMD/QRVO/SWKS near 52-week-highs vs LRCX/AMAT/WDC 30-40% off June highs split. The 99th-percentile crowding with shorts almost absent is confirmed separately by GS Ratra's Hedge Funds Crowding Monitor (16801): 'Analog Semis... long crowding surged from 1.22 to 1.39 (99th percentile) with shorts deeply uncrowded at -0.39 (2nd percentile).'"
+  }
+ ],
+ "faithful": 9,
+ "distorted": 3,
+ "unsupported": 3,
+ "faithful_rate": 0.643,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": true,
+ "problems": [
+  "counts do not match the sentence list"
+ ]
+}

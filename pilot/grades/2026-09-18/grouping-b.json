@@ -1,0 +1,62 @@
+{
+ "metric": 1,
+ "total_cards": 969,
+ "fragmentation_sets": [
+  {
+   "subject": "Fed hikes, hawkish dot plot, and yields spike to multi-year/post-2007 highs across US/UK/Europe/Japan",
+   "labels": [
+    "fed september hike",
+    "global bond selloff"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI capex driving tech bond issuance, pressuring Agg yields and AI-linked credit spreads",
+   "labels": [
+    "ai capex credit risk",
+    "tech bond issuance pressure"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "The Market Ear's cross-asset cheap-convexity/squeeze thesis (AAII sentiment crash, VIX reset, oil-vol complacency)",
+   "labels": [
+    "oil vol complacency",
+    "aaii sentiment squeeze"
+   ],
+   "cards": 10
+  },
+  {
+   "subject": "Goldman Global Equity Strategy's near-term-neutral/long-term-overweight stance and earnings-bubble-risk framing",
+   "labels": [
+    "gs asset allocation call",
+    "us equity earnings bubble risk"
+   ],
+   "cards": 5
+  }
+ ],
+ "fragmented_mass_share": 0.06,
+ "mis_merges": [
+  {
+   "label": "fixed income positioning",
+   "subjects": [
+    "UBS's general fixed-income asset-allocation and duration-positioning advice",
+    "Nomura's note that European diesel crack spreads are dragging EUR swaption vol back toward Iran War highs"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The Nomura card is a single thin data point with no supporting mass, so misfiling it costs visibility but was never going to swing which theme led the pulse."
+  }
+ ],
+ "pass": true,
+ "notes": "Only ~320 of the day's 969 cards are enumerated in this excerpt (labels beyond what's shown aren't visible), so this share is a lower bound, not a full-ledger measurement. misc holds 12 cards (~1.2%), correctly excluded from fragmented mass. Borderline pairs I checked but did not count: vix options hedging vs the oil-vol/AAII cluster (different mechanism: institutional hedging flows vs sentiment survey), and semiconductor dispersion vs software vs semiconductor divergence (intra-semi stock-picking vs sector-level software/semis rotation) \u2014 both have enough distinct, substantial content to stand as separate briefs.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
