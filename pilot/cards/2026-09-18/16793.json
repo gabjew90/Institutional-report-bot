@@ -1,0 +1,440 @@
+{
+ "brief": "GS's FOMC recap: the Fed hiked 25bp to 3.75-4%, a decision GS calls more hawkish than expected (16-2 majority for another hike, no dissents, neutral dot up to 3.25%, Chairman Warsh repeatedly framing it as removing accommodation). GS revises its call accordingly, now expecting a second 25bp hike in October rather than September being the only 2026 move, while holding its 3.25-3.5% terminal rate by adding a March 2028 cut to prior 2027 cuts. Market Update: equities fell, extending the week's losing streak, on a dot plot showing one more 2026 hike and no 2027 cut; oil dropped 3% despite East-West pipeline headlines, with Iran War resolution still unclear; the AI trade bifurcated, GS's Data Center/AI Semis baskets rising while Software/AI-Productivity baskets fell. Separately: Chevron roadshow takeaways on exploration, government relationships, technology, and capital discipline; Forgent Power Solutions beat on EBITDA, orders and backlog and disclosed first AI-lab and hyperscaler orders, prompting a GS estimate raise; GS's forecasts for tomorrow's Philly Fed index and jobless claims both sit below consensus.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "A continued sharp increase in bond yields could put pressure on equities, per data going back to 1962.",
+   "anchor": "A continued sharp increase in bond yields could put pressure on equities",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "The FOMC raised the funds rate by 25bp to 3.75-4% today.",
+   "anchor": "The FOMC raised the funds rate by 25bp to 3.75-4% today.",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "A 16-2 majority of FOMC participants projected at least one more hike this year, with no dissenting votes against today's hike.",
+   "anchor": "a 16-2 majority projected at least one more hike this year, and there were no dissenting votes against today\u2019s hike",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "The FOMC's median neutral rate dot rose from 3.06% to 3.25%.",
+   "anchor": "the median neutral rate dot rose from 3.06% to 3.25%",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Fed Chairman Warsh repeatedly described the hike as having removed a dose of policy accommodation.",
+   "anchor": "Chairman Warsh described the hike as having \u201cremoved a dose of accommodation\u201d three times",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS now expects the FOMC to deliver a second 25bp hike in October, changed from its prior view that September would be the only 2026 hike.",
+   "anchor": "We now expect the FOMC to deliver a second 25bp hike in October, a change from our previous expectation",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS kept its terminal fed funds rate forecast unchanged at 3.25-3.5%.",
+   "anchor": "We have kept our forecast for the terminal rate unchanged at 3.25-3.5%",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS now expects a third 25bp rate cut in March 2028, added to the September and December 2027 cuts it already expected.",
+   "anchor": "adding to the September and December 2027 rate cuts we already expected a third 25bp cut in March 2028",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "March 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Equities finished lower, extending this week's losing streak, after rallying ahead of today's FOMC decision.",
+   "anchor": "Equities finished lower and continued this week\u2019s losing streak after rallying to start before the FOMC this",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "The FOMC dot plot showed one additional rate hike for 2026 and no rate cut next year.",
+   "anchor": "Much more hawkish set of dots, with the plot showing one additional rate hike for 2026 and no cut next year",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "In the 2026 dot distribution, only 2 FOMC participants showed just today's hike for the year, 4 showed three hikes, and the rest showed two.",
+   "anchor": "only 2 participants showed just today's hike for year, 4 showed 3, and the rest had 2 for the",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "FOMC inflation projections came in higher than last time, suggesting upcoming methodological changes are not factoring in large downward revisions.",
+   "anchor": "Inflation projections higher than last time, suggesting the methodological changes coming up are not",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Oil finished down 3%, giving back much of the prior day's gains despite positive East-West pipeline headlines.",
+   "anchor": "Oil finished -3%, giving back much of yesterday\u2019s gains, with",
+   "topic": "energy price shock",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Energy dynamics remain a key market focus, with clarity on a possible end to the Iran War still limited.",
+   "anchor": "energy dynamics remain a key focus with clarity surround a possible end to the Iran War still limited",
+   "topic": "energy price shock",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS's Data Centers and AI Semis baskets rallied today, rising 1.28% and 89bps respectively.",
+   "anchor": "strength from Data Centers (GSTMTDAT +1.28%) and AI Semis (GSCBSMHX +89bps)",
+   "topic": "software vs semiconductor divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS's Software At Risk and AI-Productivity baskets fell today, down 1.83% and 2.19% respectively, splitting profitable AI from the speculative cohort.",
+   "anchor": "Software At Risk (GSTMTSOS -1.83%) and AI-Productivity (GSXUPROD -2.19%) moved lower, a clear split between profitable/duration AI and the speculative cohort",
+   "topic": "software vs semiconductor divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS is raising its estimates on Forgent Power Solutions, with order strength supporting upside to its FY27 growth guide.",
+   "anchor": "Raising estimates, order strength supports upside to FY27 growth guide",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "forecast",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Forgent Power Solutions delivered fiscal Q4 adjusted EBITDA 4% above FactSet consensus.",
+   "anchor": "FPS delivered +4% F4Q adj. EBITDA vs. FactSet consensus",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "released",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Forgent Power Solutions posted organic growth of 94% versus GS's 83% estimate, led by powertrain solutions at about 32% of total sales.",
+   "anchor": "better-than-expected organic growth (+94% vs GS: +83%) led by powertrain solutions, which made up ~32% of total sales in the quarter",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "released",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Forgent Power Solutions' book-to-bill rose to 3.3x from 2.3x last quarter, with bookings up 376% year-over-year.",
+   "anchor": "The book-to-bill in the quarter was 3.3x (vs 2.3x last Q) with bookings +376% year-over-year",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "released",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Forgent Power Solutions' fiscal Q4 orders of about $1.5bn exceeded its full FY2026 total revenue of $1.42bn.",
+   "anchor": "F4Q orders of ~$1.5bn exceeded total revenues of $1.42bn in all of FY2026",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "released",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Forgent Power Solutions' backlog stands at $3.02bn, covering more than 90% of its FY2027 revenue guidance at current production-slot allocations.",
+   "anchor": "The backlog now stands at $3.02bn, providing ample visibility for FY2027 and covering more than 90% of revenue guidance at current production-slot allocations",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "released",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Forgent Power Solutions disclosed its first direct order from a frontier AI lab and a master service agreement with a hyperscaler.",
+   "anchor": "the company disclosed its first direct order from a frontier AI lab and an MSA with a hyperscaler",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "released",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Forgent Power Solutions' AI-lab award covers medium-voltage transformers and switchgear for a campus expected to exceed 1GW, with potential additional demand in multiple GWs.",
+   "anchor": "The AI-lab award involves medium-voltage transformers and switchgear for a campus expected to exceed 1GW, with potential additional demand measured in multiple GWs",
+   "topic": "Forgent Power Solutions earnings",
+   "status": "forecast",
+   "instruments": [
+    "FPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Chevron management indicated it is stacking high-potential exploration opportunities across Latin America, the Middle East, West Africa, and the Eastern Mediterranean.",
+   "anchor": "Chevron is stacking high-potential exploration opportunities across Latin America, the Middle East, West Africa, and the Eastern Mediterranean",
+   "topic": "Chevron exploration strategy",
+   "status": "released",
+   "instruments": [
+    "CVX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Chevron's strong global relationships give it a distinct advantage in securing projects and negotiating competitive terms with governments.",
+   "anchor": "strong global relationships give the company a distinct advantage to secure projects and help governments set competitive business terms",
+   "topic": "Chevron exploration strategy",
+   "status": "released",
+   "instruments": [
+    "CVX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Chevron management continues to develop and deploy new technologies, particularly in shale and tight formations.",
+   "anchor": "management continues to develop and deploy new technologies, particularly in shale and tight",
+   "topic": "Chevron exploration strategy",
+   "status": "released",
+   "instruments": [
+    "CVX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "Chevron's cost and capital discipline supports a resilient business model built to withstand both commodity price cycles and geopolitical volatility.",
+   "anchor": "cost and capital discipline supports a resilient business model built to withstand both commodity price cycles and geopolitical volatility",
+   "topic": "Chevron exploration strategy",
+   "status": "released",
+   "instruments": [
+    "CVX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS forecasts the September Philadelphia Fed manufacturing index at 30.0, below consensus of 32.1 and down from last month's 47.4.",
+   "anchor": "Philadelphia Fed manufacturing index, September (GS 30.0, consensus 32.1, last 47.4)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 17 Sep 2026",
+   "claim": "GS forecasts initial jobless claims for the week ended September 12 at 195k, below consensus of 208k and last week's 206k.",
+   "anchor": "Initial jobless claims, week ended September 12 (GS 195k, consensus 208k, last 206k)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "week ended September 12"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-18/16793__gs-us-daily-download-17-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
