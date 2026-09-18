@@ -1,0 +1,189 @@
+{
+ "brief": "QQQ has crossed its 50-day moving average 13 times since August 4, 2026, and on the 31st trading day since then remains within that day's range. Historically, when QQQ opens above its 20- and 50-day averages after starting below them, as it did today, it returns a median +1.13% over the next 5 days (positive 73% of the time) but reverses to a median -1.95%/-1.5% by 30-40 days out (negative 70% of the time), so BTIG reads the setup as short-term bullish, medium-term bearish. The chop reflects breadth divergence: the NDX is roughly flat since mid-August, but the share of names above their 200-day average fell from 77% to 56%. Within AI/semis, AMD, Qorvo, and Skyworks are back near 52-week highs while Lam Research, Applied Materials, and Western Digital remain 30-40% below their June highs, and SOXX stays below its declining 50-day average. BTIG concludes stock selection now carries more alpha than in Q2, when any semi worked, and bullish investors should favor names near new highs over laggards. Citing 2000, BTIG notes prior leaders that failed to make new highs after that year's initial correction ultimately proved the true market signal.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "QQQ has crossed above or below its 50-day moving average 13 times since August 4, 2026.",
+   "anchor": "Today is the 13th time QQQ has crossed above or below its 50 DMA since August 4th.",
+   "topic": "US equity breadth breakdown",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "On the 31st trading day since August 4, 2026, QQQ is still trading within that day's range.",
+   "anchor": "It's the 31st trading day since 8/4, and QQQ is still within that day's range.",
+   "topic": "US equity breadth breakdown",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "When QQQ has historically reopened above its 20- and 50-day moving averages after starting below them, it has returned a median +1.13% over the next 5 days, positive 73% of the time.",
+   "anchor": "it performs well over the next 5 days (median +1.13% positive 73% of the time)",
+   "topic": "US equity breadth breakdown",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "5 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "That same historical setup for QQQ turns negative looking out 30-40 days, with a median -1.95% and -1.5% return and a 70% negative hit rate.",
+   "anchor": "turns negative looking out 30-40 days (median -1.95% and -1.5%) and negative 70% of the time",
+   "topic": "US equity breadth breakdown",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "30-40 days"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "The percentage of Nasdaq-100 names trading above their 200-day moving average has fallen from 77% to 56% even as the index is roughly flat since mid-August.",
+   "anchor": "the percent of names above their 200 DMA has gone from 77% to 56%",
+   "topic": "US equity breadth breakdown",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "AMD, Qorvo (QRVO), and Skyworks Solutions (SWKS) are showing strength and trading back near their 52-week highs.",
+   "anchor": "Advanced Micro Devices (AMD, not rated), Qorvo (QRVO, not rated), and Skyworks Solutions (SWKS, not rated) are showing strength and back near 52wk highs",
+   "topic": "semiconductor dispersion",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "QRVO",
+    "SWKS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "Lam Research (LRCX), Applied Materials (AMAT), and Western Digital (WDC) remain 30-40% off their June highs and are trading at or near their 200-day moving averages.",
+   "anchor": "Lam Research (LRCX, not rated), Applied Materials (AMAT, not rated), and Western Digital (WDC, not rated) are still off 30-40% from June highs",
+   "topic": "semiconductor dispersion",
+   "status": "released",
+   "instruments": [
+    "LRCX",
+    "AMAT",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "The SOXX semiconductor ETF remains below its declining 50-day moving average.",
+   "anchor": "SOXX still remains below its declining 50 DMA",
+   "topic": "semiconductor dispersion",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "Unlike in Q2 2026, when almost any semiconductor stock was profitable, stock selection within semis now carries more importance and offers more alpha.",
+   "anchor": "Unlike in Q2 when you could throw a dart at any semi and make money, that's not the case right now",
+   "topic": "semiconductor dispersion",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "BTIG recommends that bullish investors focus on semiconductor and AI-related names near new highs rather than the names that are lagging.",
+   "anchor": "For those bullishly inclined, we would focus on the names near new highs rather than those that are lagging",
+   "topic": "semiconductor dispersion",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Spin Cycle",
+   "claim": "In the 2000 market cycle, many of the prior leaders into the peak failed to make new highs after the initial correction, and those non-leading names ultimately proved to be the true market signal.",
+   "anchor": "many of the leaders into the peak did not, and ultimately those names proved to be the true 'north star'",
+   "topic": "semiconductor dispersion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-18/16761__spin-cycle.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 11,
+  "matched": 11,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
