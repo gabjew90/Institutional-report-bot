@@ -1,0 +1,874 @@
+{
+ "brief": "Goldman TMT sales desk wrap covering three separate threads without a single connected thesis. Market tape: the Fed delivered the expected 25bp hike to 3.75-4.00% but surprised hawkishly, with dots showing one more 2026 hike, no cuts in 2027, and higher inflation projections; equities closed lower despite an initial pre-FOMC rally. AI infrastructure and optical names outperformed (Optical +4.8%, LITE +10%) while software (-0.9%) and internet (-1.4%) lagged, as the tape rotated toward profitable AI infrastructure over speculative AI-productivity exposure. Oil fell 3%, reversing the prior day's gain on East-West pipeline headlines. Desk flow: asset managers were net sellers, hedge funds small net buyers of tech. EU Communacopia Day 2: telcos were stable-to-constructive, with Spain (TEF, Orange, Zegona) the clearest positive on rational pricing and consolidation optionality and Germany the main caution; media names (RELX, Prosus, JCD, Scout) sounded broadly constructive on AI monetisation and capital discipline. Separately, Nebius is raising on-demand GPU prices 17-21% from 1 October and Intel says it can meet only about half of CPU demand, both signalling tight AI compute supply.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The Fed delivered a 25 basis point hike, bringing the federal funds rate to 3.75-4.00%.",
+   "anchor": "The Fed delivered the expected 25bp hike to 3.75\u20134.00%",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The Fed's dot plot shows one further rate hike in 2026.",
+   "anchor": "surprised hawkishly with dots showing one further hike in 2026",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The Fed's dot plot shows no rate cuts in 2027 alongside higher inflation projections.",
+   "anchor": "no cuts next year and higher inflation projections",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "In the Fed's 2026 dot distribution, only 2 participants penciled in just this meeting's hike for the year, 4 showed a third hike, and the rest showed two hikes for the year.",
+   "anchor": "only 2 participants showed just today's hike for year, 4 showed 3, and the rest had 2",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The Fed's higher inflation projections versus the prior forecast suggest upcoming methodological changes are not accounting for large downward revisions.",
+   "anchor": "Inflation projections higher than last time, suggesting the methodological changes coming up are not",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "US equities finished lower, extending the week's losing streak despite an initial pre-FOMC rally.",
+   "anchor": "US markets finished lower overnight, extending the week\u2019s losing streak despite an initial rally ahead of",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Optical names rose 4.8%, Neoclouds/Miners rose 3.3% and Network Equipment rose 2.4% as AI infrastructure led the tape.",
+   "anchor": "with Optical +4.8%, Neoclouds/Miners +3.3% and Network Equipment +2.4%",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "LITE rose 10%, CRDO and COHR each rose 7%, and ALAB rose 7% amid the AI infrastructure rally.",
+   "anchor": "helped by LITE +10%, CRDO +7%, COHR +7% and ALAB +7%, while Software -0.9%",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [
+    "LITE",
+    "CRDO",
+    "COHR",
+    "ALAB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Software fell 0.9% and Internet fell 1.4%, lagging the broader tape.",
+   "anchor": "while Software -0.9% and Internet -1.4% lagged",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Momentum was the best-performing factor on the day, while Bitcoin-related and high-short-interest names underperformed.",
+   "anchor": "Momentum was the clear factor winner, while Bitcoin-related and high-short-interest names",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Within AI, the market favoured profitable infrastructure exposure such as data centres and AI semis, while software-at-risk and AI-productivity names sold off.",
+   "anchor": "the market favoured profitable infrastructure exposure, including data centres and AI semis, while software-at-risk and AI-productivity",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "GS's Data Centers basket rose 1.28% and AI Semis basket rose 89bps, while Software At Risk fell 1.83% and AI-Productivity fell 2.19%.",
+   "anchor": "with strength from Data Centers (GSTMTDAT +1.28%) and AI Semis (GSCBSMHX +89bps) while Software At Risk (GSTMTSOS -1.83%) and AI-Productivity (GSXUPROD -2.19%) moved lower",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The desk's activity level was 4 out of 10, finishing 104 basis points better for sale on the day.",
+   "anchor": "Our desk was a 4/10 from an activity level perspective, finishing -104bps better for sale",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Asset managers finished $829mm better for sale, with supply concentrated in macro products.",
+   "anchor": "Asset managers finished $829mm better for sale with supply in macro products, and tech vs",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Hedge funds finished small net buyers, with demand in tech, consumer discretionary, communication services and consumer staples against supply in macro products and financials.",
+   "anchor": "Hedge Funds finished small net buyers with demand in tech, consumer discretionary, communication services, and consumer staples",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Oil fell 3%, reversing much of the prior day's gains on positive East-West pipeline headlines.",
+   "anchor": "Oil fell 3%, reversing much of the prior day\u2019s gains on positive East-West pipeline",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Energy remains a market focus given limited clarity on a possible end to the Iran war.",
+   "anchor": "energy remains a focus given limited clarity on the Iran war",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Nebius is reportedly raising on-demand cloud GPU prices from 1 October, signalling continued strong AI compute demand and tight supply.",
+   "anchor": "Nebius is reportedly raising on-demand cloud GPU prices from 1 October, highlighting continued strong AI compute demand and tight supply",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "from 1 October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Nebius is raising H100 GPU prices from $3.85 to $4.50 (+17%) and H200 prices from $4.50 to $5.40 (+20%).",
+   "anchor": "rising from $3.85 to $4.50 (+17%), H200 from $4.50 to $5.40 (+20%), B200 from",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Nebius is raising B200 GPU prices from $7.15 to $8.50 (+19%) and B300 prices from $7.85 to $9.50 (+21%).",
+   "anchor": "B200 from $7.15 to $8.50 (+19%) and B300 from $7.85 to $9.50 (+21%)",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "This round of Nebius GPU price increases follows a previous round of price hikes in May.",
+   "anchor": "This follows a previous round of price hikes in May and appears to come from",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Intel CEO Lip-Bu Tan said the company can supply only around half of CPU demand, driven by strong AI agent growth.",
+   "anchor": "Intel CEO Lip-Bu Tan indicated that only around half of CPU demand can be supplied, driven by strong AI agent growth",
+   "topic": "AI compute demand",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Intel's 18A process is entering volume production, and 14A could move into production earlier than planned, potentially in Q1 2027.",
+   "anchor": "He also noted that 18A is entering volume production and that 14A could move into production earlier, potentially in Q1",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Meta is reportedly targeting 1GW of internally developed AI-chip compute within 12 months.",
+   "anchor": "Meta is reportedly targeting 1GW of internally developed AI-chip compute within 12 months and accelerating its self-developed AI chip roadmap",
+   "topic": "AI compute demand",
+   "status": "target",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "within 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Meta's next-generation AI chips, MTIA 4500 Arke and MTIA 500 Astrid, are expected to complete design within a month, with datacentre use targeted for 2027 via TSMC tape-out.",
+   "anchor": "MTIA 4500 Arke and next-generation MTIA 500 Astrid, with design completion expected within a month and datacentre use targeted for 2027",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Meta plans to deploy its third-generation custom AI chip MTIA 450 Arkle in the first half of 2027, followed by the fourth-generation MTIA 500 Astrid from late 2027.",
+   "anchor": "Meta plans to deploy its 3rd-gen custom AI chip MTIA 450 \u201cArkle\u201d in 1H27, followed by 4th-gen MTIA 500 \u201cAstrid\u201d from late-2027",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "1H27 / late-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Huawei launched the Ascend 960 SuperPoD with an upgraded UnifiedBus interconnect, positioned as a domestic scale-up solution to reduce Nvidia dependence.",
+   "anchor": "Huawei launched the Ascend 960 SuperPoD with upgraded UnifiedBus interconnect, positioning it as a domestic scale-up solution to reduce",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q1 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Apple is developing an AI server that could be offered with either two or four M8 Ultra chips as it considers returning to the enterprise server market.",
+   "anchor": "developing an AI server that could be offered with either two or four planned M8 Ultra chips, its highest-performance processors",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The US is reportedly pushing Mexico to tighten rules of origin for AI servers and components, potentially requiring at least 75% North American content for preferential tariff treatment.",
+   "anchor": "potentially requiring \u226575% North American content to receive preferential tariff treatment",
+   "topic": "AI compute demand",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "TEF management views Germany as more of an M&A priority than Spain, where the market structure remains tougher after the 1&1 loss.",
+   "anchor": "Germany is more of a priority for M&A than Spain, where the market structure remains tougher after the 1&1 loss",
+   "topic": "EU telecom Communacopia",
+   "status": "released",
+   "instruments": [
+    "TEF"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "TEF's Spain business shows B2C performing well with stable churn despite price rises, and wholesale pressure is expected to stabilise by 2028.",
+   "anchor": "with B2C performing well, churn stable despite price rises, bundling helping, B2B driving growth and wholesale pressure expected to stabilise by 2028",
+   "topic": "EU telecom Communacopia",
+   "status": "forecast",
+   "instruments": [
+    "TEF"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "TEF's Brazil business is tracking as expected, the UK fixed market remains more challenging than hoped, and the CFO is focused on faster deleveraging.",
+   "anchor": "Brazil is tracking as expected, the UK fixed market remains more challenging than hoped, and the CFO is",
+   "topic": "EU telecom Communacopia",
+   "status": "released",
+   "instruments": [
+    "TEF"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "KPN management sees no material deterioration in competition and resilient B2C/mobile trends despite VODZiggo being more aggressive ahead of its IPO/spin.",
+   "anchor": "seeing no material deterioration in competition and resilient B2C/mobile trends",
+   "topic": "EU telecom Communacopia",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "KPN reiterated \u20ac100m of cost savings by 2030, with scope for a further update next year.",
+   "anchor": "management remains confident on cost efficiencies, reiterating \u20ac100m of savings by 2030 with scope for a further",
+   "topic": "EU telecom Communacopia",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Investor views on whether DT will try to merge with TMUS are now more mixed, with DT making no comment on the debate.",
+   "anchor": "investor debate still remains around whether DT will try and merge with TMUS \u2013 views here now more",
+   "topic": "EU telecom Communacopia",
+   "status": "released",
+   "instruments": [
+    "TMUS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The CMA's review of CityFibre's Netomnia deal is due by 15 December, with the regulator able to impose remedies, block it or clear it.",
+   "anchor": "the upcoming CMA review of the Netomnia deal, due by 15 December, and whether the regulator imposes remedies, blocks it",
+   "topic": "EU telecom Communacopia",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "due by 15 December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Digi has reached 3m fibre customers, making it Spain's third-largest broadband operator behind Orange and Telefonica but ahead of Vodafone.",
+   "anchor": "Digi has reached 3m fibre customers, making it Spain\u2019s third-largest broadband operator behind Orange and Telef\u00f3nica but ahead of Vodafone",
+   "topic": "EU telecom Communacopia",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Zegona/Vodafone Spain has won a three-year contract to manage Amazon's mobile connectivity in Spain, taking over from Telefonica.",
+   "anchor": "Zegona/VOD Spain has won a three-year contract to manage Amazon\u2019s mobile connectivity in Spain, taking",
+   "topic": "EU telecom Communacopia",
+   "status": "released",
+   "instruments": [
+    "VOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Iliad's Scaleway is targeting a first in-orbit demo of a space-based data centre in 2028 and a commercial European orbital cloud by 2030.",
+   "anchor": "with a first in-orbit demo planned for 2028 and a commercial European \u201corbital cloud\u201d targeted for 2030",
+   "topic": "EU telecom Communacopia",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2028 demo / 2030 commercial"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "RELX's CFO expects continued strong top-line performance, with STM and Legal accelerating.",
+   "anchor": "expectations for continued strong top-line performance, with STM and Legal accelerating",
+   "topic": "EU media Communacopia",
+   "status": "forecast",
+   "instruments": [
+    "RELX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "RELX sees an opportunity around fraud prevention in its Risk segment.",
+   "anchor": "the opportunity around fraud prevention in Risk; (iv) how they manage token",
+   "topic": "EU media Communacopia",
+   "status": "forecast",
+   "instruments": [
+    "RELX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Prosus's NAV discount to Tencent is already around 40%, and it is hard to see it widening much further.",
+   "anchor": "with the NAV discount already around 40%, it is hard to see it widening much further",
+   "topic": "EU media Communacopia",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "iFood's announced plans to invest approximately $4.7bn in Brazil this year do not change its existing FY27 guidance of $100-150m.",
+   "anchor": "iFood\u2019s press release on plans to invest ~$4.7bn in Brazil this year does not change existing FY27 guidance of $100",
+   "topic": "EU media Communacopia",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Prosus's OLX could potentially reach $500m of EBITDA and $400m of FCF in FY27.",
+   "anchor": "OLX potentially reaching $500m of EBITDA and $400m of FCF in FY27",
+   "topic": "EU media Communacopia",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "JCD management sounded confident on Q3 organic growth, supported by recent contract wins and a favourable tender pipeline.",
+   "anchor": "confident on Q3 organic growth, supported by recent contract wins, a favourable tender pipeline and structural",
+   "topic": "EU media Communacopia",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Publicis priced a \u20ac500m note offering due September 2030 with a 4.125% coupon to help fund the LiveRamp acquisition.",
+   "anchor": "Publicis priced a \u20ac500m note offering due September 2030 with a 4.125% coupon under its Euro",
+   "topic": "EU media Communacopia",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "due September 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "BNP cut Dassault Systemes' ADR to underperform.",
+   "anchor": "AWAY FROM GS: DSY ADR cut to underperform by BNP",
+   "topic": "EU media Communacopia",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Salesforce has adopted Legora across its Legal and Corporate Affairs organization in North America, EMEA and APAC.",
+   "anchor": "Salesforce has adopted Legora across its Legal and Corporate Affairs organization in North America, EMEA, and APAC",
+   "topic": "EU media Communacopia",
+   "status": "released",
+   "instruments": [
+    "CRM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Allegro's 3Q26 trends show clear acceleration, with Polish GMV up 14-15% YoY, International GMV up c.100% and Group GMV up c.17-18% in the first ten weeks, all ahead of GS estimates and consensus.",
+   "anchor": "Polish GMV up 14\u201315% YoY, International GMV up c.100% and Group GMV up c.17\u201318% in the first ten weeks",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "first ten weeks of 3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Allegro's FY26 guidance was upgraded across Poland, International and Group.",
+   "anchor": "FY26 guidance was upgraded across Poland, International and Group, while advertising, Allegro Pay and managed delivery remain strong",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "ON Semiconductor's 9% share-price fall after its Capital Markets Day is seen as overdone given elevated expectations into the event.",
+   "anchor": "Jim sees the 9% share-price fall as overdone given elevated expectations into the event",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "ON Semiconductor's 2030 AI targets were slightly ahead of Street expectations, though they did not fully meet the most bullish scenarios.",
+   "anchor": "The 2030 AI targets were slightly ahead of Street expectations and look solid, even if they did not fully",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "ON Semiconductor's 800V EV content uplift, a major part of its automotive growth story, was flagged as weighted toward 2028-29, pushing out the revenue benefit.",
+   "anchor": "the key 800V EV content uplift \u2014 a major part of ONsemi's automotive growth story \u2014 was flagged as weighted toward 2028\u201329",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2028-29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "ON Semiconductor committed to returning 100% of FCF to shareholders and maintaining low capital intensity.",
+   "anchor": "committing to return 100% of FCF to shareholders and maintain low capital intensity",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Winbond announced the acquisition of Infineon's NOR Flash business for US$1.12bn, with closing targeted for 2H27.",
+   "anchor": "Co announced to acquire Infineon\u2019s NOR Flash business for US$1.12bn (~NT$35.6bn), with closing targeted for 2H27",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "closing 2H27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "GS refreshed its China Internet preferences, moving Games & Entertainment (Tencent, NetEase) to #1 and Cloud & Data Centers (Alibaba, VNET) to #2.",
+   "anchor": "Games & Entertainment moves to #1 with Tencent and NetEase, Cloud & Data Centers moves to #2 with Alibaba and VNET",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NTES",
+    "BABA",
+    "VNET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "GS moved eCommerce (JD) to #4 and AI models (MiniMax) fell to #5 in its China Internet preferences.",
+   "anchor": "eCommerce moves to #4 with JD, and AI models falls to #5 with MiniMax",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "JD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "OpenAI disclosed previously undisclosed model-misalignment incidents including models fabricating data, concealing information and bypassing network restrictions.",
+   "anchor": "models fabricating data, concealing information, trying to bypass network restrictions and agents sharing files they should have kept private",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "The desk's view is that AI security concerns are moving from theory to live operating risk, with alignment and monitoring not yet solved well enough to scale.",
+   "anchor": "AI security concerns are moving from theory to live operating risk, with alignment and monitoring still not solved well",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Anthropic is folding Claude's chat and cowork features into one interface and launching new document tools.",
+   "anchor": "Anthropic is folding Claude\u2019s chat and cowork features into one interface and launching new document",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES EU Communacopia Day 2 wrap",
+   "claim": "Manus is reportedly targeting a $4bn valuation in its first funding round since the Meta breakup.",
+   "anchor": "Manus is reportedly targeting a $4bn valuation in its first funding round since the Meta breakup",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-18/16797__gs-johnstone-gs-tmt-spec-sales-eu-communacopia-day-2-wrap.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 61,
+  "matched": 61,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 15,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
