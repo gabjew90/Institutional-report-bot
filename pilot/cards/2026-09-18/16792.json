@@ -1,0 +1,25 @@
+{
+ "brief": "Goldman Sachs Securities Lending's daily US equity short-activity report for 09/17/2026. It presents securities-lending flow data across GC and non-GC stocks: aggregate daily short flow and a short activity index, daily ETF short flows, and sector-level short flows paired with price performance. It lists the top 5 shorted and top 5 covered industries by percent change, the top 10 shorted and top 10 covered GC and non-GC stocks by market value of share change, and full sector breakdowns (communication services, consumer discretionary, consumer staples, energy, financials, health care, industrials, information technology, materials, real estate, utilities) each showing company, ticker, one-day short change, and one-day price change. A separate section covers custom basket constituent short activity for five baskets (High Beta 12M Losers, Rate Sensitive Financials, Energy, Commodity Sensitive, Food Inflation Winners), each shown as shorted or covered with its one-day change and constituent-level detail. The document is a tabular data report prepared by Prime Brokerage; it contains no written commentary, thesis, forecast, or trade call, only flow and price figures.",
+ "cards": [],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-18/16792__us-equities-daily-short-activity.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 0,
+  "matched": 0,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 0,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
