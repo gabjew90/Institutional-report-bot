@@ -2963,3 +2963,63 @@ Next: re-run the grader separation gate against the amended prompts,
 re-grade 9/17 and 9/18, then two clean days and DAY1. The metric-2
 zero-unsupported clause still needs an owner call: even corrected, 9/17
 carries one unsupported sentence.
+
+## 2026-09-18 (evening): the re-grade, and a stale-grade defect it exposed
+
+Separation gate re-run against the amended grader prompts: all four
+dimensions still separate (bad artifact fails, clean passes), so the
+fix did not buy accuracy with leniency. Verdict at
+`pilot/grader-gate/2026-09-18T17-14-53Z/`.
+
+Re-graded 9/17 and 9/18 with the new prompts. Today's scheduled 17:00
+run was cancelled first: it had checked out 50b03e9f2, nine minutes
+before the prompt fix landed, so it was grading 9/18 with the old text
+and its output would have been overwritten.
+
+**The prompt fix works, on one agent of two.** On 9/17 agent a now
+grades 15 of 15 faithful and its reasoning quotes the new rules
+directly: "LO=long-only, WING=Wingstop, DRI=Darden; ticker expansion is
+faithful" and "all four figures match exactly" on the wrapped-line
+case. Agent b still called the Wingstop sentence unsupported after
+searching WING and DRI, which its own `searched` array now records;
+the file was in its window, so that is agent sloppiness, and it is
+what the second agent and the tiebreak exist to catch. The two agents
+also genuinely disagree on the narrative gloss (a: faithful because
+rates moved as the dots implied; b: unsupported because no source uses
+that framing). The gloss is the sentence editor rule 5 now forbids.
+
+**Defect found: re-grading a date did not clear the previous run's
+grade files.** Both 9/17 fidelity tiebreaks still carried prompt_sha
+c53af520ab4c while both fresh agents carried 224632dfdf6a. A stale
+tiebreak is not just read, it is self-perpetuating: `_apply_tiebreaks`
+replaces both agent grades with it, `pilot_tiebreaks_needed` then sees
+no disagreement, no new tiebreak runs, and the old prompt's verdict
+stands over two fresh agents that contradict it. That is how the 9/17
+row kept reporting 80%. The graders workflow now deletes the day's
+non-owner grades before writing (owner grades are hand-written and
+survive), and the two stale files were removed from pilot-data with
+the scoreboard recomputed (db7c255f2).
+
+**Corrected rows, both shakedown:**
+
+| day | m1 frag | m2 shadow | m2 prod | m3 shadow | m3 prod | unread |
+|---|---|---|---|---|---|---|
+| 09-17 | 4% | disagree 1.00 vs 0.87 | disagree 0.33 vs 0.40 | 1.00 | 0.00 | 0 |
+| 09-18 | 4% | disagree 0.73 vs 0.67 | 0.67 | 1.00 | 1.00 | 0 |
+
+Metric 1 passes both days at 4% against the 10% cap with no mis-merges,
+the first back-to-back pass of the pilot. Metric 3 preserved on both.
+
+**9/18 is the first day production graded better than the shadow** and
+the shadow's four flagged sentences look real, each with its searched
+list recorded: two narrative glosses of the kind rule 5 now forbids, a
+trade attributed to JPMorgan when the source is The Market Ear (which
+tags its JPM-sourced paragraphs separately), and a UBS call on the Bank
+of England presented as a call on the Fed. The last two are genuine
+misattributions and neither is addressed by anything shipped today.
+That result stands as the honest counterweight to 9/17 and should not
+be explained away: the shadow editor is better on grouping and
+mechanism every day so far, and is not uniformly better on fidelity.
+
+Both shadow pulses were written before the editor.md amendment, so
+neither reflects rule 5.

@@ -117,6 +117,16 @@ jobs:
           MODEL=$(python -c "from scripts.pilot_config import MODEL_GRADER;print(MODEL_GRADER)")
           OUT="pilot-data/$PILOT_ROOT/grades/$GRADE_DATE"
           mkdir -p "$OUT"
+          # Clear the day's machine grades before writing new ones
+          # (2026-09-18). Re-grading a date left the previous run's
+          # tiebreak files in place, and a stale tiebreak does not just
+          # get read: pilot_tiebreaks_needed sees the dimension as
+          # already resolved, requests no new tiebreak, and the
+          # scoreboard then reports the OLD prompt's verdict over two
+          # fresh agents that disagree with it. Owner grades are
+          # hand-written and survive.
+          find "$OUT" -maxdepth 1 -name '*.json' ! -name '*-owner.json' -delete
+          echo "cleared previous machine grades for $GRADE_DATE"
           P=docs/superpowers/routines/pilot/graders
           run_one () {  # dim prompt input artifact agent
             DIM="$1"; PROMPT="$2"; INPUT="$3"; ART="$4"; AG="$5"
