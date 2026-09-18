@@ -1,0 +1,67 @@
+{
+ "metric": 2,
+ "artifact": "fixture",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "The 10-year yield broke 4.40% on Friday for the first time since May.",
+   "why": "Exact match on value, date, and framing."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We think the move is a bear-steepener: the front end is anchored by a Fed on hold",
+   "why": "Document is J.P. Morgan Rates Strategy; 'We think' is JPMorgan's own view, correctly attributed as 'JPMorgan reads'."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "We recommend paying 5s30s at 62bp with a stop at 48bp.",
+   "why": "The trade call belongs to JPMorgan ('We recommend', the authoring desk of this note), not Citi. Citi is mentioned separately in the source only as holding a different, non-trade view ('sees the break as a positioning flush and expects 4.40% to hold'). The sentence reassigns JPMorgan's call to Citi, changing who said it.",
+   "searched": [
+    "Citi",
+    "5s30s"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "",
+   "why": "No mention of Goldman, a 4.75% target, year-end, or foreign demand anywhere in the source text. The only forward-looking framing in the source is JPMorgan's own steepener thesis tied to the PCE print, not a yield-level forecast from Goldman.",
+   "searched": [
+    "4.75",
+    "Goldman"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-rates.txt",
+   "span": "A hot core PCE print on Thursday (consensus 0.3% m/m) would validate our steepener; a soft print would not by itself reverse it",
+   "why": "Matches Thursday core PCE, 0.3% m/m consensus, and the print's role as the decisive test for the steepener trade."
+  }
+ ],
+ "faithful": 3,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.6,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

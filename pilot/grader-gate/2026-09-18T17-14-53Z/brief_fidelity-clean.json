@@ -1,0 +1,34 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "Microsoft and Meta guide above consensus, therefore Goldman raises 2026 hyperscaler capex to $751B from $671B, therefore the four largest buyers pull 2027 orders forward to lock HBM/CoWoS capacity sold out through 1H27, therefore (because the constraint is supply, not appetite) rising HBM contract prices (+18% into 1Q27) push capex guides higher and the cycle extends rather than peaks, therefore Goldman remains Buy NVDA $250 target, with invalidation being two consecutive months of falling HBM contract prices, and a Fed decision is not expected to matter.",
+   "brief_chain": "Microsoft and Meta guide above consensus, therefore Goldman raises 2026 hyperscaler capex to $751B from $671B, therefore the mechanism is supply not appetite as the four largest buyers pull 2027 orders forward to lock sold-out HBM/CoWoS capacity through 1H27, therefore rising HBM contract prices (+18% into 1Q27) push capex guides higher so the cycle extends rather than peaks, therefore Buy NVDA $250 target, with invalidation being two consecutive months of falling HBM contract prices, and a Fed decision is not expected to change the picture.",
+   "distortions": [
+    {
+     "what": "Brief drops 'remain' from 'We remain Buy on NVDA', rendering it as a flat 'Buy NVDA, $250 target' without signaling this is a reiterated (not new) rating.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 direction (long), instrument (NVDA), and target ($250) are all identical; only the new-vs-reiterated framing is lost."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 1,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

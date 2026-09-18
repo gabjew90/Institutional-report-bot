@@ -1,0 +1,62 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman",
+   "source_chain": "MSFT/Meta guide above consensus therefore Goldman raises 2026 capex to $751B therefore the real driver is buyers pulling forward 2027 orders to lock HBM/CoWoS capacity (sold out through 1H27) therefore because the constraint is supply not appetite, rising memory prices (+18% HBM into 1Q27) sustain rather than cap the capex guides therefore the cycle extends rather than peaks therefore Buy NVDA $250 target therefore invalidation is a memory-price rollover (HBM contract prices falling two consecutive months), explicitly not a Fed rate decision",
+   "brief_chain": "MSFT/Meta guide above consensus therefore Goldman raises 2026 capex to $751B therefore the mechanism is demand outpacing supply for HBM/CoWoS (sold out through 1H27) therefore because appetite is the constraint, rising memory prices are a headwind that could cap capex guides therefore the cycle is closer to peaking than extending therefore Buy NVDA $250 target therefore invalidation is a Fed rate decision tightening financial conditions, with HBM pricing only secondary",
+   "distortions": [
+    {
+     "what": "Source explicitly rejects 'demand for inference alone' as the driver and identifies the mechanism as a supply lock (buyers pulling forward 2027 orders to secure capacity). Brief states the mechanism is demand (\"inference workloads are growing faster than supply can be added\"), the opposite of what the source names as the driver.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 the source's supply-lock mechanism is what makes rising memory prices bullish for the guides; the brief's demand mechanism makes rising memory prices bearish for the guides, so the underlying thesis for the whole call is inverted.",
+     "searched": [
+      "demand",
+      "pull-forward",
+      "pulling forward",
+      "not demand for inference alone"
+     ]
+    },
+    {
+     "what": "Source: because the constraint is supply (not appetite), rising HBM prices sustain the cycle, which it explicitly calls extending rather than peaking. Brief: because appetite is the constraint, rising HBM prices are a headwind that could cap guides, so the cycle is 'closer to peaking than extending.' This reverses the source's stated cycle-stage call.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 'the cycle is peaking' vs 'the cycle is extending' is a direct stance-direction reversal on the capex/AI-infrastructure trade, not a compression loss.",
+     "searched": [
+      "peaking",
+      "extends",
+      "appetite",
+      "constraint is supply"
+     ]
+    },
+    {
+     "what": "Source's stated invalidation is a memory-price rollover \u2014 HBM contract prices falling for two consecutive months \u2014 and it explicitly says a Fed rate decision is NOT expected to change the picture. Brief gives the invalidation as a Fed rate decision tightening financial conditions and demotes HBM pricing to a 'secondary factor,' the exact reverse of the source.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 the invalidation condition is what tells a reader when to exit the trade; the brief points them at a condition (Fed decision) the source explicitly says won't move the thesis, while burying the one that actually would (HBM price rollover).",
+     "searched": [
+      "Fed rate decision",
+      "invalidation",
+      "rollover",
+      "two consecutive months"
+     ]
+    }
+   ],
+   "material_count": 3,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 3,
+ "non_material_total": 0,
+ "audited": 1,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "fixture",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}
