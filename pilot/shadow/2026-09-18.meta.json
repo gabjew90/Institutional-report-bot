@@ -1,0 +1,50 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 90,
+ "pack": {
+  "documents": 41,
+  "cards": 969
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "28e9d1a17949"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 90,
+  "brief_citations": 9,
+  "distinct_cards_cited": 88,
+  "card_count": 969,
+  "quintiles": [
+   16,
+   24,
+   10,
+   29,
+   11
+  ],
+  "edge_quintile_share": 0.3,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Goldman's most-shorted basket rose about 425 basis points (one-hundredth of a percent), its momentum basket about 360 and its AI semis basket about 325, which is the shape of traders closing out bets ",
+    "cite": "c687,c683,c684",
+    "reason": "figures not in cited card(s): ['325', '360']"
+   },
+   {
+    "sentence": "The unanimous move to 3.75-4.00% came with 16 of 18 officials projecting at least one more increase this year and the long-run rate estimate lifted from 3.06% to 3.25% [c384] [c345] [c349].",
+    "cite": "c384,c345,c349",
+    "reason": "figures not in cited card(s): ['4.00%']"
+   },
+   {
+    "sentence": "The five largest companies are a record 27% of next-twelve-month index earnings [c244], and semiconductors supply 9.6 of the 15.4 percentage points of expected 2027 earnings growth [c245].",
+    "cite": "c244,c245",
+    "reason": "figures not in cited card(s): ['15.4']"
+   }
+  ],
+  "leans": 3,
+  "leans_block_present": true,
+  "word_count": 1429
+ }
+}
