@@ -1,0 +1,75 @@
+{
+ "ts": "2026-09-18T14-06-50Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-09-18T14:08:22Z",
+   "detail": "pdf_count=64 window=last-24h"
+  },
+  {
+   "step": "STEP_2_1_HOLIDAY_GATE",
+   "time": "2026-09-18T14:08:22Z",
+   "detail": "CONTINUE"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-09-18T14:08:38Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-09-18T14:08:52Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-09-18T14:11:24Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-09-18T14:19:24Z",
+   "detail": "draft written"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-09-18T14:20:00Z",
+   "detail": "3 soft violations, CONTINUE"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-09-18T14:20:00Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5B_EDIT_DONE",
+   "time": "2026-09-18T14:25:11Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_5_LINT_DONE",
+   "time": "2026-09-18T14:25:11Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-09-18T14:25:27Z",
+   "detail": "skipped, 0 hard lint issues"
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-09-18T14:25:30Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_DONE",
+   "time": "2026-09-18T14:34:54Z",
+   "detail": "2 hard repaired, 3 soft recorded"
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_RECHECK_DONE",
+   "time": "2026-09-18T14:39:14Z",
+   "detail": ""
+  }
+ ]
+}

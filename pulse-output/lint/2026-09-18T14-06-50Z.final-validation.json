@@ -1,0 +1,54 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '65%' is attached to [billion, bond, borrowers, changed, corporate] but the source uses it for [aggregate, consecutive, marks] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "65%",
+   "draft_subject": [
+    "billion",
+    "bond",
+    "borrowers",
+    "changed",
+    "corporate",
+    "earlier",
+    "forecast",
+    "funding"
+   ],
+   "source_subject": [
+    "aggregate",
+    "consecutive",
+    "marks"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '35%' is attached to [between, billion, cloud, companies, debt] but the source uses it for [aftermarket, aggregate, also, approximately, beyond] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "35%",
+   "draft_subject": [
+    "between",
+    "billion",
+    "cloud",
+    "companies",
+    "debt",
+    "gets",
+    "going",
+    "rolled"
+   ],
+   "source_subject": [
+    "aftermarket",
+    "aggregate",
+    "also",
+    "approximately",
+    "beyond",
+    "bremse",
+    "consecutive",
+    "contribute"
+   ]
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 2,
+ "exit_code": 4
+}
