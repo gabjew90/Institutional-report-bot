@@ -21,6 +21,35 @@ omitted supporting evidence that doesn't change the call — is
 Ask the falsifiable question for every candidate distortion: "would
 the trade change?" If yes, material. If no, non-material.
 
+## Reading the source text (binding)
+
+The source files are text extracted from PDFs. Two properties of them
+have produced wrong verdicts, and both are your responsibility to
+handle:
+
+1. **Lines wrap mid-phrase.** One sentence in the PDF is several lines
+   in the file: `Historical compression: 63` / `days (2018) to 32 days
+   (2021)`. A search for `63 days` finds nothing and the claim is
+   fully supported. Search the single most distinctive token (a bare
+   number, a surname, a ticker), never a multi-word phrase, then read
+   the lines around the hit.
+2. **The desk writes tickers and shorthand; the pulse writes names.**
+   A source reading `LO supply in the space (WING, DRI)` fully
+   supports `long-only selling in Wingstop and Darden`. A ticker and
+   its company are the same entity, and expanding desk shorthand (LO
+   for long only, HF for hedge fund) is faithful reporting, not an
+   invention.
+
+Figures also arrive in different spellings: `negative 7 days` and
+`-7 days`, `$115bn` and `$115 billion`, `536bp` and `5.36%`, `1.2tn`
+and `1.2 trillion`. Match on the value, not the characters.
+
+**Before you grade any sentence as anything other than faithful, you
+must have searched at least two distinct fragments of it and found
+nothing.** Record the exact strings you searched in a `searched` array
+on that sentence. A verdict from one failed search is not a verdict,
+it is a search that failed.
+
 ## Procedure
 
 For each brief:
@@ -31,9 +60,12 @@ For each brief:
 3. Compare with the brief's chain. List every difference.
 4. Classify each difference as material or non-material using the
    test above, with the one-sentence "would the trade change" answer.
-5. Check the brief invented nothing the source does not contain, and
-   resolved no ambiguity the source leaves open. An invention is
-   material if it would change a trade, non-material otherwise.
+5. Check the brief invented nothing the source does not contain,
+   applying the search discipline above before calling anything an
+   invention: a ticker expanded to a company name and a figure
+   respelled are not inventions. An invention is material if it would change a
+   trade, non-material otherwise. The brief must also resolve no
+   ambiguity the source leaves open.
 
 ## Output
 

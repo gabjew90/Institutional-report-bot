@@ -2899,3 +2899,67 @@ publishes no source text for a reader to read.
 
 Open, unchanged: the 90-minute reader cap on a heavy overnight backlog.
 The fix is parallel readers (proposed, not built).
+
+## 2026-09-18: the grader was wrong twice; leans leave the editor contract
+
+Verified the 9/17 shadow's three adverse grades against the raw source
+text before amending anything. Two of the three were grader errors.
+
+1. "Fabricated detail: no source mentions Wingstop, Darden, or
+   long-only selling." The shadow wrote "The desk saw long-only selling
+   in Wingstop and Darden with nobody stepping in [c53]", card c53
+   carries it, and source 16549 says verbatim: "We've seen LO supply in
+   the space (WING, DRI) with zero defense from consumer dedicated
+   players." WING is Wingstop, DRI is Darden. The reader expanded
+   tickers to names correctly; the grader searched for the names,
+   found tickers, and called it invention.
+2. "Invented statistics" on exploit timing. Source 16560 says verbatim:
+   "Mean time to exploit is now negative 7 days... Historical
+   compression: 63 days (2018) to 32 days (2021) to 5 days (2023) to
+   negative 7 days (2025)" and "132 new CVEs per day but remediate only
+   16% of known". Every figure is there. The PDF extraction wraps the
+   phrase across lines ("63" / "days (2018)"), so a literal search for
+   "63 days" returns nothing.
+3. The narrative gloss ("the bond market took the projections at face
+   value") is a real defect. No card supports it.
+
+Corrected, 9/17 shadow is 14 of 15 faithful (93%) with one genuine
+miss, not 80% with three. Production's failures spot-check as real: the
+BofA S&P target of 7,800 has zero hits in the corpus and the $9.9bn
+dealer position none either, so the gap between the arms is wider than
+the scoreboard shows.
+
+Changes, all made before DAY1 while prompts are still editable:
+
+- **graders/fidelity.md and brief_fidelity.md** gain a binding "Reading
+  the source text" section: search a single distinctive token rather
+  than a phrase because lines wrap; a ticker and its company are one
+  entity and expanding desk shorthand is faithful; figures arrive in
+  different spellings. Any verdict other than faithful now requires two
+  distinct failed searches, recorded in a `searched` array on the
+  sentence, so a grader error is auditable instead of invisible.
+- **editor.md** drops the `## _LEANS` block and gains rule 5: a
+  sentence that characterizes a market, a participant or a reaction is
+  a claim and needs a card. That rule targets the one real 9/17 defect.
+- **Leans are gone from the pilot** (owner call). The block fed no
+  reader-facing output: the TRADE BOARD stopped rendering leans on
+  2026-08-20, the only remaining output is a settlement sentence, and
+  settlement prose appears in 3 of the last 12 published pulses at
+  most. No pilot metric read it, and the production parser could read
+  only 4 of the 9 lines the editor wrote on 9/17. `pilot_finalize_edit`
+  no longer requires it, `pilot_verify_citations` no longer exits 1
+  without it and no longer reports a leans count, and the body split on
+  `## _LEANS` stays so artifacts written before today still grade their
+  prose only. Production keeps its leans machinery untouched; if the
+  pilot passes, DRAFT retires and it goes with it.
+- **Not built:** the planned code check that every company named in the
+  pulse must appear in a cited card. The fabrication it was designed to
+  catch was not a fabrication, and the check would have flagged a
+  correct sentence. `ai_analysis/prompts.py:981` still tells DRAFT the
+  TRADE BOARD reads `_LEANS`, which has been false since 2026-08-20 and
+  is worth correcting on the production side separately.
+
+Next: re-run the grader separation gate against the amended prompts,
+re-grade 9/17 and 9/18, then two clean days and DAY1. The metric-2
+zero-unsupported clause still needs an owner call: even corrected, 9/17
+carries one unsupported sentence.

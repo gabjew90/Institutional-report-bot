@@ -4,7 +4,6 @@ Spec section 5: card citations `[cN]` get HARD verification (the
 sentence's numbers and bank names must appear in the cited card);
 brief citations `[dN]` get existence verification. Metric 4 (ledger
 attention) is the distribution of cited card positions, computed here.
-The `## _LEANS` block is a hard requirement (section 9.1).
 
 Review 2026-09-01: checks run once per SENTENCE (a sentence with two
 card cites used to report the same missing figure twice), a sentence
@@ -19,7 +18,7 @@ Usage:
 
 Exit 0 when clean or when --final (record and continue); exit 2 when
 failures exist and --reask-out was requested (the workflow re-asks
-once); exit 1 on structural failure (no leans block).
+once).
 """
 from __future__ import annotations
 
@@ -134,6 +133,8 @@ def _bank_matches(named: str, cited_bank: str) -> bool:
 
 def sentences(md: str) -> list[tuple[str, list[tuple[str, int]]]]:
     """Every prose sentence of the body with its citations (possibly none)."""
+    # Artifacts written before 2026-09-18 carry a `## _LEANS` block that
+    # was never prose; the split is a no-op for everything since.
     body = md.split("## _LEANS")[0]
     out = []
     for para in body.split("\n"):
@@ -200,8 +201,6 @@ def verify(md: str, pack: dict) -> dict:
             quintiles[q] += 1
     total = len(cited_positions)
     edge_share = ((quintiles[0] + quintiles[4]) / total) if total else 0.0
-    from report.pulse_sections import parse_lean_block
-    leans = parse_lean_block(md) or []
     return {
         "card_citations": n_card_cites,
         "brief_citations": n_doc_cites,
@@ -211,8 +210,6 @@ def verify(md: str, pack: dict) -> dict:
         "edge_quintile_share": round(edge_share, 3),
         "metric4_flag": bool(total) and edge_share > 0.70,
         "failures": failures,
-        "leans": len(leans),
-        "leans_block_present": bool(leans),
         "word_count": len(CITE_RE.sub("", md.split("## _LEANS")[0]).split()),
     }
 
@@ -249,18 +246,8 @@ def main() -> int:
         with open(a.stripped_out, "w", encoding="utf-8") as fh:
             fh.write(strip_markers(md))
     print(f"citations: {res['card_citations']} card / {res['brief_citations']} brief, "
-          f"{len(res['failures'])} failure(s), leans={res['leans']}, "
+          f"{len(res['failures'])} failure(s), "
           f"edge-quintile share {res['edge_quintile_share']:.0%}")
-    if not res["leans_block_present"]:
-        print("STRUCTURAL: no ## _LEANS block (leans-block-missing)")
-        # Only pass 1 blocks on this. On --final the pulse is already
-        # written and the meta records the miss; returning 1 there made
-        # `bash -e` abort the step and skip the commit, so a pulse with
-        # no _LEANS block was written to disk and thrown away, against
-        # the workflow's own "a failed citation is a grade input, not a
-        # blocker" (2026-09-03 review).
-        if not a.final:
-            return 1
     if res["failures"] and a.reask_out and not a.final:
         with open(a.reask_out, "w", encoding="utf-8") as fh:
             json.dump(res["failures"], fh, indent=1)

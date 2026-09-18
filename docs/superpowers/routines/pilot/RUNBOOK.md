@@ -44,7 +44,7 @@ artifacts are identical.
    starts landing on `pilot-data` within the bridge cadence.
 2. Two shakedown days. Check: reader failure rate under 10%
    (`ops/<date>.json`), zero workflow auth or commit failures, the
-   editor produced `shadow/<date>.md` with a `_LEANS` block and
+   editor produced `shadow/<date>.md` and
    citation failures near zero after its one re-ask, the scoreboard
    renders. A document that fails three reads is recorded under
    `read-failures/<date>/<id>.json` and leaves the unread list, so one

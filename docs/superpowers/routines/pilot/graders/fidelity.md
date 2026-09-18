@@ -32,13 +32,42 @@ Opinion-shaped sentences with no checkable content ("the setup looks
 fragile") are graded `faithful` only if the stance is a bank's stance
 in a source; otherwise `unsupported`.
 
+## Reading the source text (binding)
+
+The source files are text extracted from PDFs. Two properties of them
+have produced wrong verdicts, and both are your responsibility to
+handle:
+
+1. **Lines wrap mid-phrase.** One sentence in the PDF is several lines
+   in the file: `Historical compression: 63` / `days (2018) to 32 days
+   (2021)`. A search for `63 days` finds nothing and the claim is
+   fully supported. Search the single most distinctive token (a bare
+   number, a surname, a ticker), never a multi-word phrase, then read
+   the lines around the hit.
+2. **The desk writes tickers and shorthand; the pulse writes names.**
+   A source reading `LO supply in the space (WING, DRI)` fully
+   supports `long-only selling in Wingstop and Darden`. A ticker and
+   its company are the same entity, and expanding desk shorthand (LO
+   for long only, HF for hedge fund) is faithful reporting, not an
+   invention.
+
+Figures also arrive in different spellings: `negative 7 days` and
+`-7 days`, `$115bn` and `$115 billion`, `536bp` and `5.36%`, `1.2tn`
+and `1.2 trillion`. Match on the value, not the characters.
+
+**Before you grade any sentence as anything other than faithful, you
+must have searched at least two distinct fragments of it and found
+nothing.** Record the exact strings you searched in a `searched` array
+on that sentence. A verdict from one failed search is not a verdict,
+it is a search that failed.
+
 ## Procedure
 
-For every sentence: search the source texts (grep for the figures and
-names first, then read the surrounding paragraph), decide the grade,
-and quote the supporting or contradicting source span (verbatim, up
-to 30 words) with the file it came from. Do not skip a sentence. Do
-not grade from memory of what banks usually say.
+For every sentence: search the source texts under the discipline
+above (distinctive token first, then read the surrounding lines),
+decide the grade, and quote the supporting or contradicting source
+span (verbatim, up to 30 words) with the file it came from. Do not
+skip a sentence. Do not grade from memory of what banks usually say.
 
 ## Output
 
@@ -50,7 +79,8 @@ STRICT JSON, nothing else:
   "artifact": "shadow | production",
   "sentences": [
     {"id": "s1", "grade": "faithful | distorted | unsupported",
-     "live_market": false, "source_file": "...", "span": "...", "why": "..."}
+     "live_market": false, "source_file": "...", "span": "...", "why": "...",
+     "searched": ["...", "..."]}
   ],
   "faithful": 0, "distorted": 0, "unsupported": 0,
   "faithful_rate": 0.0
@@ -58,4 +88,5 @@ STRICT JSON, nothing else:
 ```
 
 Counts must match the sentence list. `faithful_rate` is faithful over
-all 15.
+all 15. `searched` is required on every sentence graded `distorted`
+or `unsupported` and may be omitted on a faithful one.

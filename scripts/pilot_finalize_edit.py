@@ -3,7 +3,7 @@
 Salvage belongs in code, not in a prompt plea (same rule as the
 reader): strip a leading preamble and markdown fences, then require
 the structural minimum: an H1 headline, `## 2. THE MAIN EVENT`, and
-the `## _LEANS` block. A write that lacks any of them is a failed
+the brief section. A write that lacks either is a failed
 edit and the day records that, rather than a shadow pulse nobody
 would grade.
 
@@ -23,7 +23,7 @@ sys.path.insert(0, REPO)
 
 from scripts.pilot_config import provenance  # noqa: E402
 
-REQUIRED = ("## 2. THE MAIN EVENT", "## _LEANS")
+REQUIRED = ("## 2. THE MAIN EVENT",)
 
 
 def extract_markdown(raw: str) -> str | None:

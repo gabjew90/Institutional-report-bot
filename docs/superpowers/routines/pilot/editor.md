@@ -30,15 +30,7 @@ decides it>
 
 <110 to 180 words, 4 to 6 sentences; repeat for every remaining theme,
 form varied so they do not read as clones>
-
-## _LEANS (internal — TRADE BOARD source, stripped before publish)
-
-- <long|short|neutral> | <$TICKERS or macro subject> | <one-line rationale>
 ```
-
-One `## _LEANS` line per theme, in theme order. It is the structural
-source for trade tracking and it is a hard validator: a shadow pulse
-without it is a failed write.
 
 ## Citation discipline (machine-verified)
 
@@ -54,6 +46,14 @@ without it is a failed write.
    make the same call, cite both cards.
 4. Markers are stripped before anyone reads the pulse as prose. Write
    the sentence so it reads cleanly without them.
+5. **A sentence that characterizes a market, a participant or a
+   reaction is a claim and needs a card**, the same as a figure does.
+   "The bond market took the projections at face value" asserts what
+   the market did; unless a card says that, write the observable
+   instead and cite it: the yields, the move, the flow. Connective
+   prose that asserts nothing needs no citation, but the moment a
+   sentence tells the reader what happened or what someone thinks, it
+   carries a card.
 
 ## What to write
 
@@ -79,10 +79,9 @@ The voice contract below is production's own, interpolated at run
 time, and applies in full. Plain English for a self-directed trader:
 rewrite jargon out rather than glossing it; keep named metrics (basis
 points, core PCE, EBITDA) with a first-use gloss. No em-dashes, no
-semicolons anywhere except the `_LEANS` separators, none of the
-banned transitions.
+semicolons, none of the banned transitions.
 
 ## Output
 
 The markdown document only, starting with the `#` headline. No
-preamble, no fences, no commentary after `## _LEANS`.
+preamble, no fences, no commentary after the last brief.

@@ -55,17 +55,16 @@ def _cid(meta, claim_fragment):
 def test_hard_check_passes_when_figure_and_bank_match_the_card():
     meta = _pack()
     c = _cid(meta, "target raised")
-    md = f"# Head\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman lifted its NVDA target to $250 [{c}] [d1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    md = f"# Head\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman lifted its NVDA target to $250 [{c}] [d1].\n\n## 3. BRIEFS\n"
     res = verify(md, meta)
     assert res["failures"] == [], res["failures"]
     assert res["card_citations"] == 1 and res["brief_citations"] == 1
-    assert res["leans_block_present"]
 
 
 def test_hard_check_fails_a_figure_the_card_does_not_carry():
     meta = _pack()
     c = _cid(meta, "target raised")
-    md = f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman lifted its NVDA target to $275 [{c}].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    md = f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman lifted its NVDA target to $275 [{c}].\n\n## 3. BRIEFS\n"
     res = verify(md, meta)
     assert res["failures"] and "275" in res["failures"][0]["reason"]
 
@@ -73,14 +72,14 @@ def test_hard_check_fails_a_figure_the_card_does_not_carry():
 def test_hard_check_fails_a_misattributed_bank():
     meta = _pack()
     c = _cid(meta, "target raised")
-    md = f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nCiti lifted its NVDA target to $250 [{c}].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    md = f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nCiti lifted its NVDA target to $250 [{c}].\n\n## 3. BRIEFS\n"
     res = verify(md, meta)
     assert any("bank named" in f["reason"] for f in res["failures"]), res["failures"]
 
 
 def test_missing_card_or_brief_is_a_failure():
     meta = _pack()
-    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nSomething [c99] and [d42].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nSomething [c99] and [d42].\n\n## 3. BRIEFS\n"
     res = verify(md, meta)
     reasons = {f["reason"] for f in res["failures"]}
     assert "card does not exist" in reasons and "brief does not exist" in reasons
@@ -90,26 +89,47 @@ def test_metric4_edge_share_flags_first_and_last_quintile_heavy_citing():
     cards = [_card("B", f"claim {i} is {i * 10}bp", f"claim {i} is {i * 10}bp", file=f"{i}.json") for i in range(1, 21)]
     _, meta = build_pack(cards, {})
     md = ("# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nSee [c1] and [c2] and [c20] and [c19].\n\n"
-          "## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n")
+          "## 3. BRIEFS\n")
     res = verify(md, meta)
     assert res["quintiles"][0] == 2 and res["quintiles"][4] == 2
     assert res["metric4_flag"] is True
-    md2 = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nSee [c9] and [c10] and [c11] and [c1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n"
+    md2 = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nSee [c9] and [c10] and [c11] and [c1].\n\n## 3. BRIEFS\n"
     assert verify(md2, meta)["metric4_flag"] is False
 
 
-def test_missing_leans_block_is_structural():
+def test_a_pulse_without_a_leans_block_is_structurally_fine():
+    """The `## _LEANS` block left the editor contract 2026-09-18. It fed
+    no reader-facing output (the board stopped rendering leans on
+    2026-08-20 and settlement sentences reached print on 3 of 12 days),
+    no pilot metric read it, and only about half its lines parsed."""
     meta = _pack()
     md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nText.\n\n## 3. BRIEFS\n"
-    assert verify(md, meta)["leans_block_present"] is False
-    assert "missing ## _LEANS" in structural_problems(md)
+    assert structural_problems(md) == []
+    assert "leans" not in verify(md, meta)
+    import pathlib as _pl
+    assert "_LEANS" not in _pl.Path(
+        "docs/superpowers/routines/pilot/editor.md").read_text(encoding="utf-8")
 
+
+def test_the_main_event_and_briefs_are_still_required():
+    assert "missing ## 2. THE MAIN EVENT" in structural_problems("# H\n\n## 3. BRIEFS\n")
+    assert "missing ## 3. BRIEFS" in structural_problems("# H\n\n## 2. THE MAIN EVENT\n")
+
+
+def test_a_legacy_artifact_with_a_leans_block_grades_its_body_only():
+    """Shadow pulses written before 2026-09-18 carry the block; its lines
+    are not prose and must not be graded as sentences."""
+    meta = _pack()
+    c = _cid(meta, "target raised")
+    md = (f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman lifted its NVDA target to $250 [{c}].\n\n"
+          "## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | invented $999 figure\n")
+    assert verify(md, meta)["failures"] == []
 
 def test_a_figure_with_no_card_citation_is_a_failure():
     """Editor rule 1 was unenforced: a sentence with figures and no [cN]
     was never looked at (review 2026-09-01)."""
     meta = _pack()
-    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nCapex goes to $751B this year [d1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nCapex goes to $751B this year [d1].\n\n## 3. BRIEFS\n"
     res = verify(md, meta)
     assert any("no card citation" in f["reason"] for f in res["failures"]), res["failures"]
 
@@ -117,7 +137,7 @@ def test_a_figure_with_no_card_citation_is_a_failure():
 def test_checks_run_once_per_sentence_not_per_citation():
     meta = _pack()
     c1, c2 = _cid(meta, "target raised"), _cid(meta, "stalls")
-    md = f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman and Citi split on NVDA at $999 [{c1}] [{c2}].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | $NVDA | x\n"
+    md = f"# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nGoldman and Citi split on NVDA at $999 [{c1}] [{c2}].\n\n## 3. BRIEFS\n"
     res = verify(md, meta)
     figure_failures = [f for f in res["failures"] if "figures not in" in f["reason"]]
     assert len(figure_failures) == 1, res["failures"]
@@ -128,9 +148,9 @@ def test_bank_alias_matches_the_cited_card():
     'Morgan Stanley' must NOT be satisfied by a JPMorgan card."""
     cards = [_card("J.P. Morgan", "pay 5s30s at 62bp", "pay 5s30s at 62bp", instruments=(), file="jpm.json")]
     _, meta = build_pack(cards, {})
-    ok = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nJPM pays 5s30s at 62bp [c1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n"
+    ok = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nJPM pays 5s30s at 62bp [c1].\n\n## 3. BRIEFS\n"
     assert verify(ok, meta)["failures"] == []
-    bad = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nMorgan Stanley pays 5s30s at 62bp [c1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n"
+    bad = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nMorgan Stanley pays 5s30s at 62bp [c1].\n\n## 3. BRIEFS\n"
     assert any("bank named" in f["reason"] for f in verify(bad, meta)["failures"])
 
 
@@ -139,7 +159,7 @@ def test_index_names_are_not_figures():
     failed on '100' and '2000', which are names, not figures."""
     cards = [_card("J.P. Morgan", "long Nasdaq against short Russell", "long the Nasdaq and short the Russell", instruments=(), file="j.json")]
     _, meta = build_pack(cards, {})
-    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nJPM opens with long Nasdaq 100 against short Russell 2000 [c1].\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n"
+    md = "# H\n\n## 2. THE MAIN EVENT\n\n### T\n\nJPM opens with long Nasdaq 100 against short Russell 2000 [c1].\n\n## 3. BRIEFS\n"
     assert verify(md, meta)["failures"] == []
 
 
@@ -148,9 +168,9 @@ def test_strip_markers_leaves_clean_prose():
 
 
 def test_finalize_salvages_fences_and_preamble():
-    raw = "Here is the pulse:\n```markdown\n# Head\n\n## 2. THE MAIN EVENT\n\n### T\n\nx\n\n## 3. BRIEFS\n\n## _LEANS\n\n- long | x | y\n```\nDone."
+    raw = "Here is the pulse:\n```markdown\n# Head\n\n## 2. THE MAIN EVENT\n\n### T\n\nx\n\n## 3. BRIEFS\n```\nDone."
     md = extract_markdown(raw)
-    assert md.startswith("# Head") and md.rstrip().endswith("- long | x | y")
+    assert md.startswith("# Head") and md.rstrip().endswith("## 3. BRIEFS")
     assert structural_problems(md) == []
     assert extract_markdown("no document here") is None
 
