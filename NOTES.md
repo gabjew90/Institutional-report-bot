@@ -2874,3 +2874,28 @@ the close); Nasdaq has the announced dates and sessions.
 2. An empty band prints "no names at scale confirmed"
    (`calendar_render.EMPTY_BAND_TEXT`); the feed-down case keeps its
    own "unavailable tonight" line.
+
+## 2026-09-18: the readers' cron is gone; the worker is the only clock
+
+Owner saw GitHub failure mail and asked. Every workflow failure in the
+repo is from the 9/15-16 usage-limit outage (last ones: daily-qc 18:34
+and pilot-readers 19:54 UTC on 9/16); nothing has failed since, and
+9/17 and 9/18 are clean. The only non-green event after the fixes was
+the 01:00 UTC reader run on 9/18 hitting `timeout-minutes: 90` on the
+overnight backlog, which GitHub reports as cancelled and does not mail.
+Cards persist per document inside that step, so the run lost nothing
+and the 05:00 run took the rest.
+
+`pilot-readers.yml` kept its own `schedule:` block alongside the
+worker's dispatch, which is why runs appeared at 13:22, 20:04, 23:26
+and 05:40 off the declared slots, and why four runs were cancelled on
+9/16: cron and dispatch fire the same minute and the concurrency group
+cancels whichever arrives second. The block is deleted. The worker
+already dispatches every slot the cron declared (hourly 09-14 UTC and
+13:15 on weekdays, 01/05/17/21 daily), and a test now pins that no
+pilot workflow declares a cron and that the readers' slots are all
+covered. The cron was never a real fallback: a worker that is down
+publishes no source text for a reader to read.
+
+Open, unchanged: the 90-minute reader cap on a heavy overnight backlog.
+The fix is parallel readers (proposed, not built).

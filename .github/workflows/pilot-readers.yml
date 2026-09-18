@@ -14,14 +14,17 @@
 # job never touches it.
 name: pilot-readers
 
+# No `schedule:` block (2026-09-18). The worker dispatches every slot
+# this file used to declare: hourly 09-14 UTC plus 13:15 on weekdays,
+# and 01/05/17/21 daily (github_bridge/workflow_dispatch.PILOT_WORKFLOWS,
+# same times). Keeping GitHub's cron as a "fallback" cost more than it
+# bought: cron and dispatch fired the same minute, GitHub holds the
+# second run in the concurrency group as `pending` and cancels it, and
+# the ops record filled with cancellations that were never failures
+# (2026-09-16, four of them). The fallback could not help anyway, since
+# a worker that is down publishes no source text for a reader to read.
+# The editor's cron was deleted 2026-09-05 for the same reason.
 on:
-  schedule:
-    # Dense window: hourly 09-14 UTC (~5-10 AM ET) plus a 13:15 run
-    # (~9:15 AM ET) to catch the pre-pulse stack.
-    - cron: "0 9-14 * * 1-5"
-    - cron: "15 13 * * 1-5"
-    # Sparse overnight / weekend: every 4h.
-    - cron: "0 1,5,17,21 * * *"
   workflow_dispatch:
 
 permissions:

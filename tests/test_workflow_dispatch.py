@@ -128,3 +128,26 @@ def test_a_queued_run_suppresses_the_dispatch_and_a_failed_check_does_not():
     finally:
         urllib.request.urlopen = orig
     assert status == 204 and calls == ["GET", "POST"]
+
+def test_no_pilot_workflow_keeps_a_cron_and_the_worker_covers_every_slot():
+    """The worker's clock is the only scheduler for the pilot (2026-09-18).
+
+    GitHub's cron and the worker dispatch fired the same minute, and the
+    concurrency group cancels the run that arrives second, so the ops
+    record filled with cancellations that were never failures. The cron
+    was never a usable fallback either: a worker that is down publishes
+    no source text to read."""
+    import pathlib
+    import yaml
+    root = pathlib.Path(__file__).resolve().parents[1] / ".github" / "workflows"
+    for wf in ("pilot-readers.yml", "pilot-editor.yml", "pilot-graders.yml"):
+        doc = yaml.safe_load((root / wf).read_text(encoding="utf-8"))
+        trig = doc.get("on", doc.get(True)) or {}   # PyYAML reads `on:` as True
+        assert "schedule" not in trig, f"{wf} still declares a cron"
+        assert "workflow_dispatch" in trig, wf
+        assert wf in W.PILOT_WORKFLOWS, f"{wf} has no worker slot"
+    # the slots the readers' cron used to declare, still covered
+    readers = set(W.PILOT_WORKFLOWS["pilot-readers.yml"])
+    assert {(h, 0, "mon-fri") for h in range(9, 15)} <= readers
+    assert (13, 15, "mon-fri") in readers
+    assert {(h, 0, "*") for h in (1, 5, 17, 21)} <= readers
