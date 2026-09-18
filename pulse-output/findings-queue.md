@@ -746,3 +746,55 @@ Not filing a fresh queue item for the staleness itself, per the
   in 3 of the prior 5 graded runs. No action needed beyond STEP 7's
   already-tracked signal; logging the independent confirmation and
   the streak-break as a positive data point.
+
+## 2026-09-18 — headless QC on 2026-09-18T14-06-50Z
+
+- **prompt-session** — reproduced the shipped "Nomura ... buying
+  October options rather than chasing the price" misattribution with
+  a more precise trace than the adversarial checker's own note. A
+  genuine Nomura-authored document is in today's corpus (`"source":
+  "Nomura", "title": "STAY WEIRD 17 Sep 2026"`) and does support half
+  the sentence — its "High Sharpe" trade really is long energy
+  equities + long commodities — but that same document's actual
+  October position is `"Long Equities Downside Hedges (October
+  Vol/Convexity)"`, nothing about oil call spreads. The
+  "buy-calls-over-chasing-spot" idea belongs to a separate The Market
+  Ear document in the same corpus. So this isn't "TME's idea got
+  attributed to the nearest named desk because TME is unnameable" in
+  the abstract — Nomura's own, different October call was sitting
+  right next to the borrowed one and got overwritten by it. STEP 7
+  already queued the underlying mechanism fix (split
+  `voice_rules.py:494`'s banned-publication rule by content type: data
+  point runs bare, trade idea gets dropped, never re-attributed to a
+  different named desk) — this entry adds the sharper repro, not a
+  new fix.
+- **observation** — `pulse-context/latest.json`'s `pdf_count` now
+  matches the run's own volume-gate count exactly (64 vs. 64), an
+  improvement over the 22-vs-265 mismatch flagged 2026-09-14/17. But
+  matching `pdf_count` turned out not to guarantee the *coverage*
+  numbers underneath it match: the re-dumped `theme_coverage` block
+  gives "ai infrastructure investment: 4 banks" (with "ai dispersion"
+  as its 7-bank parent, inverted from how STEP 7 describes the same
+  pairing), while the actual generation-time artifact
+  (`pulse-output/agent-io/2026-09-18T14-06-50Z/edit-prompt.txt:709`,
+  the ADJUDICATED THEMES block literally fed to EDIT) says "ai
+  infrastructure investment (10 banks: 3 supportive, 0 skeptical, 7
+  neutral)" — a third number, none of the three reconciled. Likely
+  benign (the two-tier merge folds cap-blocked siblings' rosters
+  together between Phase A and adjudication, so 4 pre-merge growing to
+  10 post-merge is plausible), but it means a future QC citing
+  `theme_coverage` bank-counts for anything more precise than "which
+  themes got adjudicated" should prefer `edit-prompt.txt`'s
+  ADJUDICATED THEMES block as the citation, not the re-dumped
+  `latest.json`. Not urgent enough to spec a fix — logging so the next
+  session doesn't have to re-discover which artifact is authoritative
+  for bank-count claims.
+- **observation** — the `adversarial` gate's `detail` string ("repair
+  1/2") reflects budget state at first dispatch, not final spend; the
+  trail's `history` array shows a second `adversarial_recheck`
+  dispatch before the clean recheck, and `budgets.adversarial_repairs:
+  2` (not 1) is the true final count. Cosmetic — `budgets` is correct
+  and authoritative — but a reader skimming only `detail` strings would
+  undercount repairs spent by one. Worth a one-line detail-string fix
+  if `scripts/pulse_driver.py`'s gate-detail formatter is ever touched
+  for another reason; not worth a dedicated session on its own.

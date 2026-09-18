@@ -498,3 +498,13 @@ no-TOOLS-table shape exactly and was verified rather than defaulted to
 a pass; its figures trace to the asker's own reply-target message and
 independently match real FOMC coverage. Full reasoning in
 `pulse-data/ask-qc/2026-09-16.claude.md`.
+
+## 2026-09-17
+
+No findings — only one interaction logged for the day and it graded
+CLEAN across all dimensions (1 graded, 1 CLEAN, 0 CONCERN). The MP
+Materials earnings-date claim ("estimated for November 5, 2026") sits
+against a genuine cross-aggregator discrepancy (TipRanks lists Oct 29
+as "confirmed") but matches the bot's own cited source and correctly
+used hedged language rather than asserting a confirmed date — not
+fabrication. Full reasoning in `pulse-data/ask-qc/2026-09-17.claude.md`.
