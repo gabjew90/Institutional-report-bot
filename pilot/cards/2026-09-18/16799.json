@@ -1,0 +1,364 @@
+{
+ "brief": "GS Industrials & Materials morning note ahead of the September 16 FOMC decision. The 25bp hike is priced at 93% and treated as a non-event; the live question is whether the Fed validates a hiking cycle now priced at roughly 3.5 hikes through next summer, with GIR expecting a 10-8 dot-plot majority for one hike in 2026 because some voters are ambivalent about hiking or wary of pushing expectations higher. The author reads Chair Warsh's reaction function as the key signal and argues enough hikes are already priced unless oil reaches $150. Prime data shows Industrials among the most net-sold sectors this month and YTD, driven by short sales outpacing long buys, with Electrical Equipment/Machinery hit hardest and net allocation to US Power stocks at two-year lows. On earnings, JBHT signaled EPS down 5-10% sequentially on cost headwinds, echoing LECO's lowered margin guidance and CARR's reiterated earnings despite a firmer topline. Separately, GIR cut Tesla's 3Q26 delivery forecast to 435K from 490K on weaker China/US/Europe trends, though export markets and a 4Q Model Y L ramp could lift deliveries qoq. FTAI and DHI announced buybacks; SPXC announced an acquisition.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS Prime notes the September FOMC's 25bp hike is priced at a 93% probability.",
+   "anchor": "The 25bp hike is almost a non event now (priced at 93%)",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS's GIR expects the September FOMC dot plot to show a 10-8 majority projecting one hike in 2026.",
+   "anchor": "We expect a 10-8 majority to show one hike because some participants might be ambivalent about the first hike",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "Interest rate futures are pricing roughly 3.5 additional Fed hikes through next summer.",
+   "anchor": "Futures are now pricing roughly 3.5 hikes through next summer.",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next summer"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS Prime's house view is that enough Fed hikes are already priced into the curve, unless oil rises to $150.",
+   "anchor": "there is more than enough hikes already priced (unless oil is going to 150)",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "Crude oil pulled back 2% in early trading, with WTI around $104 and Brent around $108.",
+   "anchor": "crude taking a much needed breather down 2% with WTI $104, Brent $108",
+   "topic": "energy price shock",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "European natural gas prices bounced back up towards $82 after pausing the previous day.",
+   "anchor": "European gas bouncing again after a breather yesterday back up towards $82.",
+   "topic": "energy price shock",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "The 10-year Treasury yield traded just below 5% in early trading Wednesday.",
+   "anchor": "10-year just a touch below 5%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "Bitcoin held around $76,000 after a selloff the previous day.",
+   "anchor": "Bitcoin holding $76k after yesterday\u2019s sell off.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "The Industrials sector has been among the most net-sold sectors over the past month and year-to-date, driven by short sales outpacing long buys.",
+   "anchor": "Industrials is among the most net sold sectors in the past month (and YTD), driven by short sales outpacing long buys",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "Electrical Equipment and Machinery are the most net-sold subsectors within Industrials.",
+   "anchor": "Electrical Equip and Machinery are the most net sold subsectors.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "Net allocation to US Power stocks (GS basket GSX1POW1) has fallen sharply to two-year lows.",
+   "anchor": "net allocation to US Power stocks (GSX1POW1) has fallen sharply to two-year lows.",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "J.B. Hunt (JBHT) signaled that EPS will be down 5-10% sequentially, implying earnings sharply below consensus on cost headwinds.",
+   "anchor": "JBHT will be in focus this morning after signaling EPS to be down 5-10% sequentially",
+   "topic": "industrials earnings cost headwinds",
+   "status": "forecast",
+   "instruments": [
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "Lincoln Electric (LECO) lowered its expectations for incremental margins at a conference last week.",
+   "anchor": "LECO (last week) lowering its expectations for incremental margins",
+   "topic": "industrials earnings cost headwinds",
+   "status": "forecast",
+   "instruments": [
+    "LECO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "Carrier (CARR) indicated topline above $6bn while reiterating its earnings guidance.",
+   "anchor": "CARR talking about a better than $6bn topline but reiterating earnings.",
+   "topic": "industrials earnings cost headwinds",
+   "status": "forecast",
+   "instruments": [
+    "CARR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "FTAI Aviation (FTAI) announced a new $500 million share repurchase program.",
+   "anchor": "FTAI out with new $500mm share repurchase program.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "FTAI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "SPX Technologies (SPXC) announced the acquisition of FIS Water for $410 million in cash, to become part of its HVAC cooling segment.",
+   "anchor": "SPXC announces acquisition of FIS Water for $410mm in cash",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPXC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "D.R. Horton (DHI) announced an additional $5 billion share repurchase program, with $53 million remaining under its prior authorization.",
+   "anchor": "DHI out with additional $5bn share repurchase program with $53mm remaining on prior.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DHI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "D.R. Horton now expects to repurchase $3.25 billion of stock this year.",
+   "anchor": "Company now expects to repurchase $3.25bn this year.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "DHI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS lowered its Tesla (TSLA) 3Q26 vehicle delivery forecast to 435K from 490K, with deliveries tracking below consensus of 456K.",
+   "anchor": "we lower our forecast to 435K from 490K",
+   "topic": "TSLA delivery forecast cut",
+   "status": "forecast",
+   "instruments": [
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS now models Tesla 4Q26 deliveries of 475K, down from 515K prior, but still above Street consensus of 462K.",
+   "anchor": "We now model 475K deliveries in 4Q26, down from 515K prior, but above consensus at 462K.",
+   "topic": "TSLA delivery forecast cut",
+   "status": "forecast",
+   "instruments": [
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS expects typical 4Q seasonality plus the Model Y L ramp in the US and Europe to help Tesla deliveries improve sequentially in 4Q26.",
+   "anchor": "typical seasonality in 4Q, plus the Model Y L ramp in the US and Europe, has the potential to help 4Q26 to improve qoq",
+   "topic": "TSLA delivery forecast cut",
+   "status": "forecast",
+   "instruments": [
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS turned incrementally more constructive on Pool Corp's (POOL) ability to drive share gains despite a challenging operating backdrop.",
+   "anchor": "incrementally more constructive on POOL's ability to drive share gains and execute against a challenging operating backdrop",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "POOL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS expects a gradual shift towards greater innovation and disciplined capital allocation at Mohawk Industries (MHK) following its upcoming CEO transition.",
+   "anchor": "a gradual shift towards greater innovation and disciplined capital allocation",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "MHK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials price cost TSLA FTAI DHI 16 Sep 2026",
+   "claim": "GS expects Fortune Brands Innovations (FBIN) to see a gradual recovery in market share and earnings expansion in coming years despite muted near-term demand.",
+   "anchor": "supporting a gradual recovery in market share and earnings expansion in the coming years",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "FBIN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "coming years"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-18/16799__gs-u-s-industrials-materials-price-cost-tsla-ftai-dhi-16-sep.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 24,
+  "matched": 24,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 9,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
