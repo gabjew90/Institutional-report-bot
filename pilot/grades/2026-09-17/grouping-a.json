@@ -3,7 +3,15 @@
  "total_cards": 1119,
  "fragmentation_sets": [
   {
-   "subject": "Security software: AI-driven demand thesis and stock picks",
+   "subject": "AI capex-driven corporate bond issuance pushing up global bond yields",
+   "labels": [
+    "ai capex credit risk",
+    "tech bond issuance pressure"
+   ],
+   "cards": 19
+  },
+  {
+   "subject": "JPMorgan's AI-driven cybersecurity spending TAM thesis and its top security software picks",
    "labels": [
     "security software earnings season",
     "ai cybersecurity spending surge"
@@ -11,20 +19,50 @@
    "cards": 24
   },
   {
-   "subject": "AI capex cycle: demand, financing risk and ROI debate",
+   "subject": "JPMorgan's systematic options-carry volatility strategy framework across asset classes",
    "labels": [
-    "ai compute demand",
-    "ai capex credit risk",
-    "tech bond issuance pressure",
-    "ai capex roi"
+    "equity volatility strategies",
+    "fx volatility strategies",
+    "rates volatility strategies",
+    "commodity volatility strategies",
+    "cross asset volatility portfolio"
    ],
-   "cards": 38
+   "cards": 42
   }
  ],
- "fragmented_mass_share": 0.0554,
- "mis_merges": [],
- "pass": true,
- "notes": "misc holds 12 cards (1.1% of total), correctly excluded from fragmented mass as declared overflow. 'ai capex credit risk' and 'tech bond issuance pressure' are near-duplicate content (same $260bn/10-15bp figures); no candidate mis-merge in the ledger met the bar of two subjects a careful reader would never put in one theme.",
+ "fragmented_mass_share": 0.25,
+ "mis_merges": [
+  {
+   "label": "dollar yen direction",
+   "subjects": [
+    "Yen strength / BOJ-driven carry-unwind risk",
+    "Broader DXY-EUR-GBP FX view driven by oil and ECB/BoE policy divergence"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Natixis/GS cards on DXY rebounding on oil, EUR/USD and GBP driven by BoE/ECB pricing have nothing to do with yen and have no other label in the ledger, so an editor scanning 'dollar yen direction' for a carry-unwind story would miss a fully separate, undupplicated FX theme."
+  },
+  {
+   "label": "us equity positioning",
+   "subjects": [
+    "GS's historical post-hike equity-performance framework",
+    "Market Ear's SOX volatility hedging call",
+    "JPM's tactical MegaCap-vs-Russell2000/reopening-trade/factor and Tech-AI-Semis-Mag7 positioning"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The JPM tactical positioning content is substantially duplicated in 'ai compute demand' and 'us consumer pressure', and the SOX vol note is only 3 cards, so an editor would still see these stories via other labels even though this label blends distinct subjects."
+  },
+  {
+   "label": "ai compute demand",
+   "subjects": [
+    "Bullish AI monetization / buy-the-dip demand narrative",
+    "Hyperscaler capex debt financing pressuring bond markets"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The debt-financing angle (3 Market Ear cards) is a smaller subset of the same subject already carried in full by 'ai capex credit risk' and 'tech bond issuance pressure', so no theme is lost."
+  }
+ ],
+ "pass": false,
+ "notes": "Label card lists shown appear capped at roughly 12-13 per label (sum of enumerated cards = 343 against the stated day total of 1119), so fragmented_mass_share is computed over the enumerated sample and flagged here as an approximation. 'misc' holds 12 cards (~3.5% of the enumerated sample), correctly excluded from fragmented mass.",
  "dim": "grouping",
  "agent": "a",
  "artifact": "",

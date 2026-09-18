@@ -1,0 +1,36 @@
+{
+ "metric": 1,
+ "total_cards": 1119,
+ "fragmentation_sets": [
+  {
+   "subject": "AI-driven tech bond issuance pressuring global bond yields (JPMorgan issuance/yield-impact report)",
+   "labels": [
+    "ai capex credit risk",
+    "tech bond issuance pressure"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "Security software: AI-driven spending TAM thesis plus post-2Q-earnings stock ratings",
+   "labels": [
+    "security software earnings season",
+    "ai cybersecurity spending surge"
+   ],
+   "cards": 23
+  }
+ ],
+ "fragmented_mass_share": 0.037,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "misc correctly holds ~12 overflow cards (~1% of the day), not counted as fragmentation or mis-merge. Borderline case not promoted to a formal mis-merge: 'us equity positioning' carries TME's SOX-volatility-hedging commentary, which reads closer to the semis-underperformance story already covered by 'software vs semiconductor divergence' than to the JPM factor/regional positioning content it sits beside; and 'us growth outlook' pairs Empire Manufacturing/ING data with UBS's post-hike equity-return framework, which echoes Goldman's tightening-cycle stats filed under 'us equity positioning' \u2014 both are plausible single-brief framings, not clear 'would never combine' mis-merges.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

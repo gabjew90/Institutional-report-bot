@@ -3,15 +3,7 @@
  "total_cards": 1119,
  "fragmentation_sets": [
   {
-   "subject": "AI-driven cybersecurity spending/TAM thesis with the security-software stock calls that express it",
-   "labels": [
-    "security software earnings season",
-    "ai cybersecurity spending surge"
-   ],
-   "cards": 24
-  },
-  {
-   "subject": "AI capex financed by a surge in tech bond issuance, pressuring global bond yields",
+   "subject": "AI capex financed via debt: tech-sector bond issuance pressuring global yields and credit spreads",
    "labels": [
     "ai capex credit risk",
     "tech bond issuance pressure"
@@ -19,39 +11,45 @@
    "cards": 18
   },
   {
-   "subject": "JPMorgan systematic cross-asset volatility-carry research (equity/commodity/FX/rates sleeves plus the cross-asset combination), read as one flagship quant report mechanically split by asset class",
+   "subject": "JPMorgan's AI-driven cybersecurity spending thesis and its Overweight-rated stock picks",
    "labels": [
-    "equity volatility strategies",
-    "commodity volatility strategies",
-    "fx volatility strategies",
-    "rates volatility strategies",
-    "cross asset volatility portfolio"
+    "ai cybersecurity spending surge",
+    "security software earnings season"
    ],
-   "cards": 42
+   "cards": 24
   },
   {
-   "subject": "Carlyle's deglobalization thesis (defense/energy plays on onshoring, and the dollar-financing-unwind risk from cumulative US external borrowing)",
+   "subject": "Historical S&P 500 performance after a Fed hiking cycle begins (Goldman's seven-cycle study vs. UBS's sixteen-cycle study)",
    "labels": [
-    "defense energy deglobalization",
-    "globalization dollar financing unwind"
+    "us equity positioning",
+    "us growth outlook"
    ],
-   "cards": 3
+   "cards": 9
   }
  ],
- "fragmented_mass_share": 0.078,
+ "fragmented_mass_share": 0.046,
  "mis_merges": [
+  {
+   "label": "us growth outlook",
+   "subjects": [
+    "September Empire Manufacturing survey internals (a weak regional data print)",
+    "UBS's bullish equity-strategy case for staying long through the hiking cycle, with year-end/mid-2027 SPX price targets"
+   ],
+   "would_change_theme_selection": true,
+   "why": "An editor reading this label for the day's growth-data story would miss that it also carries a standalone bullish equity call (UBS's 8,100/8,400 SPX targets) that belongs with the equity-positioning debate, not with manufacturing-survey internals."
+  },
   {
    "label": "ai compute demand",
    "subjects": [
-    "AI product demand and monetization is robust; buy the AI-stock pullback (JPM bullish equity thesis)",
-    "Hyperscaler AI capex is now funded by a debt-issuance wave that is bidding for the same capital as Treasuries (Market Ear's 3 cards on >100% of OCF capex, ~$1.3tn debt by 2028, $380bn 2026 bond supply)"
+    "Bullish AI-monetization / buy-the-dip Tech thesis (JPMorgan)",
+    "AI capex increasingly debt-funded and competing with Treasuries for bond-market demand (Market Ear)"
    ],
-   "would_change_theme_selection": false,
-   "why": "The bond/debt subject buried here is a near-verbatim duplicate of content that already has full, dedicated coverage under 'ai capex credit risk' and 'tech bond issuance pressure', so an editor scanning labels would still surface it as a theme candidate even without these 3 cards."
+   "would_change_theme_selection": true,
+   "why": "The debt-financing cards (hyperscaler capex above 100% of operating cash flow, $380bn of 2026 tech bond supply) make the same cautionary point as the separately labelled 'ai capex credit risk' and 'tech bond issuance pressure' subjects and get buried inside an otherwise bullish buy-the-dip label."
   }
  ],
- "pass": true,
- "notes": "misc holds 12 of 1119 cards (~1.1%), all legitimate overflow, none mis-merges. The volatility-strategies fragmentation (42 cards) drives most of the fragmented mass; without it the share would be under 4%.",
+ "pass": false,
+ "notes": "misc holds 12 of the visible cards (~1% of the day), correctly treated as overflow rather than a mis-merge. Fragmented mass alone is under threshold, but two mis-merges plausibly change theme selection, so the day fails.",
  "dim": "grouping",
  "agent": "b",
  "artifact": "",

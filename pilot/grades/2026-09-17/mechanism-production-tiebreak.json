@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-16/16553__bond-shorts-are-at-an-extreme-a-fed-hike-could-trigger-a-vio.txt",
+ "source_span": "That means Wednesday starts with the 10-year above 5%, oil above $100, a Fed hike largely expected and duration positioning already heavily negative. The hike itself is no longer much of a surprise. The reaction could be.",
+ "source_chain": "Yields already spiked above 5% and duration positioning sits at DB's 5th percentile (near-record bearish/short), therefore a hike is no longer the surprise and there is little incremental selling left to do, therefore the hawkish outcome itself could trigger a bond rally rather than a selloff ('hike to save the bond market'). Invalidation is level- and signal-based: the thesis breaks if yields sustain a push through 5.15-5.20% or the Fed explicitly endorses a longer/more aggressive hiking cycle or the energy shock intensifies; it's confirmed if yields fall back through 4.81%/4.73%.",
+ "pulse_chain": "The Fed delivered the most hawkish outcome available (hike, 16-of-18 dot majority, higher long-run rate), therefore Treasuries rallied anyway because everyone who wanted to be short already was (DB 5th-percentile positioning), therefore the 10-year fell back to 4.95% from above 5%. The pulse's invalidation is a different event: the October FOMC meeting and its 51%-priced odds, framed as what will decide whether this week's rally is bears closing out or a real turn, with Goldman (October) vs. JPMorgan (December) as the debate.",
+ "preserved": false,
+ "why": "The pulse reproduces the note's A-therefore-B step (extreme short positioning turns a hawkish hike into relief-rally fuel) faithfully but swaps the note's own invalidation \u2014 specific yield levels (4.81/4.73 vs. 5.15-5.20) or an explicit Fed signal/energy-shock \u2014 for an unrelated one, the October FOMC's 51% pricing, which the source note never names as what confirms or breaks its thesis.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

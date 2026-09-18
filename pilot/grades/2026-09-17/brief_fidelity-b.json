@@ -5,13 +5,13 @@
    "id": "d35",
    "tier": "top",
    "bank": "JPMorgan",
-   "source_chain": "Fed hikes 25bp unanimously with hawkish dots (16/18 seeing another hike this year, higher longer-run median) that sit awkwardly against Warsh's 'non-restrictive'/'dose of accommodation' framing, therefore alongside upgraded growth and inflation forecasts JPM reads a shift from supply-shock to demand-led overheating risk, therefore JPM keeps its call for one more hike in December.",
-   "brief_chain": "Same: unanimous 25bp hike, hawkish dots (16/18, 14/18 for 2027) in tension with Warsh's framing, upgraded growth/unemployment/inflation forecasts read as demand-led overheating risk, JPM keeps its December hike call.",
+   "source_chain": "FOMC unanimously hikes 25bp to 3.75-4.0% with dots showing broad expectation of at least one more 2026 hike and elevated 2027/longer-run dots therefore JPMorgan flags this as hard to reconcile with Warsh's 'hard-pressed to call policy restrictive'/'dose of accommodation' framing therefore growth and inflation forecast revisions (resilient spending, upside GDP risk skew, lower unemployment forecast, higher core inflation) point to the Committee shifting focus from supply-shock inflation to demand-led overheating risk therefore JPMorgan keeps its own call for one more December hike, in line with the median dot.",
+   "brief_chain": "Same chain: unanimous 25bp hike, hawkish dots (12/4/2 split, 14/18 on 2027, slow 2028-29 normalization), longer-run dot up to 3.25% clashing with Warsh's non-restrictive/'dose of accommodation' language, growth/inflation revisions read as a pivot toward demand-led overheating risk, JPMorgan holds its December-hike call.",
    "distortions": [
     {
-     "what": "Brief paraphrases Warsh's 'hard-pressed to describe policy as restrictive' as 'calling policy non-restrictive'",
+     "what": "Brief renders Warsh's quote as 'calling policy non-restrictive'; source has him 'hard-pressed to describe policy as restrictive' as a direct quote paraphrase.",
      "material": false,
-     "would_the_trade_change": "No \u2014 same substantive claim (Warsh denies restrictiveness), just inverted phrasing; JPM's December-hike call is unaffected."
+     "would_the_trade_change": "No \u2014 both convey the same substantive claim (Warsh does not view policy as restrictive), just phrased affirmatively instead of via the source's double-negative construction."
     }
    ],
    "material_count": 0,
@@ -21,53 +21,57 @@
    "id": "d23",
    "tier": "top",
    "bank": "Deutsche Bank",
-   "source_chain": "Fed hikes 25bp unanimously with a hawkish dot plot, therefore markets reprice more tightening (75bp by June, ~50% October odds) and yields/dollar rise while equities fall (cushioned by an oil pullback on Saudi/Libya supply news), therefore DB raises its own call to 50bp more via December and March hikes; separately UK CPI cools BoE hike odds and US data (strong retail sales, weak NAHB) round out the day.",
-   "brief_chain": "Same: unanimous 25bp hike and hawkish dots drive repricing and a yield/dollar rise with equities down but cushioned by the oil pullback, DB ups its call to 50bp more (Dec+March), UK CPI cuts BoE hike odds, US retail sales/NAHB noted.",
+   "source_chain": "Fed delivers its first hike since 2023 (25bp to 3.75-4.00%, unanimous, hawkish dots) therefore markets price ~75bp more by June and ~50% October-hike odds, sending 2yr/10yr yields to multi-year highs and pressuring equities (banks/energy hit hardest) therefore DB's economists reinforce their call for 50bp more via December/March hikes therefore the equity/yield damage is partly offset by an oil pullback on easing (if inconsistently reported) Saudi pipeline/tanker news and Libyan output restoration therefore separately, in-line UK CPI cuts BoE surprise-hike odds and a strong US retail sales beat lifts Atlanta Fed GDPNow even as NAHB housing data softens.",
+   "brief_chain": "Same chain and same figures throughout (75bp by June, ~50% October odds, 2yr at 4.74%, 10yr at 5.02%, S&P -0.45% led by banks/energy, DB's 50bp December+March call, oil-driven cushion, UK BoE odds 9% from 23%, GDPNow +5.1%, NAHB 12-month low).",
    "distortions": [
     {
-     "what": "Brief omits Trump's post-decision rate comment and Warsh's 'dose of accommodation'/moderate-tightening-cycle framing",
+     "what": "Brief states Saudi Arabia 'signaled faster pipeline repairs' as settled fact; source notes Bloomberg's faster-repair report sat alongside an earlier, unresolved Reuters report of pipeline damage and says 'reporting on the issue has not been entirely consistent.'",
      "material": false,
-     "would_the_trade_change": "No \u2014 neither detail bears on DB's own 50bp forecast or the market-pricing read; pure compression."
+     "would_the_trade_change": "No \u2014 the oil-pullback-cushions-equities read holds regardless of which report is emphasized; the dropped caveat is about reporting reliability, not the price/market outcome."
+    },
+    {
+     "what": "Brief says Libya 'restored output' (completed); source says Libya 'was restoring normal oil output' (in progress).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 tense compression only, direction of the oil-supply narrative is unchanged."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 2
   },
   {
    "id": "d22",
    "tier": "top",
    "bank": "Deutsche Bank",
-   "source_chain": "Oil supply disruptions (Yanbu suspension, Libya outages, no Hormuz reopening) revive stagflation fears and push oil and yields to multi-year highs, hurting equities and Bitcoin, therefore going into the Fed decision markets price a 94% hike probability built from Warsh's hawkish Jackson Hole remarks plus a strong jobs report and hot core CPI, therefore DB's economists expect the hike with the live question being how the dot plot signals further guidance.",
-   "brief_chain": "Same: oil-driven stagflation fears push oil/yields to multi-year highs and hit equities/Bitcoin, Fed hike odds build from ~30% in July through Jackson Hole to 94% today reinforced by jobs/CPI data, DB expects the hike and frames the dot-plot guidance question.",
+   "source_chain": "Oil supply fears (Yanbu loading suspension, Libyan field outages, no Hormuz resolution) push Brent/WTI sharply higher and revive stagflation concern therefore that drives Treasury and European yields to multi-year highs (10yr above 5% for the first time since 2007, confirmed by real yields/30yr/a weak 20yr auction and post-2007-09 European highs even as ECB October-hike odds fall) therefore equities and Bitcoin sell off but stay within single digits of their highs therefore separately, Fed hike odds rose from ~30% in July to 94% today on Warsh's hawkish Jackson Hole pivot plus a strong jobs report and hot core CPI, with DB expecting the hike and framing the key question as how hawkish the guidance/dot plot will be.",
+   "brief_chain": "Same chain and same figures throughout (Brent +2.90% to $108.75, WTI +4.38% to $105.83, 10yr above 5% first since 2007, 30yr/real-yield/20yr-auction confirmation, European post-2007/08/09 highs, S&P 6-week low, STOXX 3-month low, Bitcoin's worst day in 3 months, 30%\u219294% Fed-odds arc, DB expects hike with guidance as the open question).",
    "distortions": [
     {
-     "what": "Brief generalizes the source's precise 'within 3% / less than 4% of highs' figures for S&P/STOXX to 'within single digits of their highs'",
+     "what": "Brief shortens 'a digital asset market structure bill failed to pass a procedural vote in the Senate' to 'a Senate crypto bill failed.'",
      "material": false,
-     "would_the_trade_change": "No \u2014 rounding/generalization preserves the same magnitude and point (indices still near highs despite the selloff)."
+     "would_the_trade_change": "No \u2014 same event, same causal link to the Bitcoin selloff, just less procedural detail."
+    },
+    {
+     "what": "Brief's 'within single digits of their highs' compresses the source's specific 3% (S&P) and 4% (STOXX) figures into one vaguer band.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both figures are within single digits either way; no threshold or level relevant to a trade is altered."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 2
   },
   {
    "id": "d30",
    "tier": "rest",
    "bank": "ING",
-   "source_chain": "A hike is almost fully priced so the Fed must deliver, therefore ING weighs 25bp (the market discount, criticized by Warsh's own guidance-to-pricing-to-delivery loop) against a control-asserting 50bp that could calm or instead destabilize the long end, landing on 25bp as its call and ruling out no-change as unlikely; separately, term-premium forces (JGB yields, thin euro swap liquidity, US deficits) keep the long end bear-steepening and sticky even if oil eases, leaving ING more pessimistic on the 2027 US outlook.",
-   "brief_chain": "Same: ING calls 25bp over a 50bp option that could either calm or destabilize the long end, rules out no-change as unlikely, and separately expects term-premium-driven bear steepening to persist while turning more pessimistic on 2027 US growth.",
-   "distortions": [
-    {
-     "what": "Brief omits the source's boom/bust and AI-cycle-vs-peak-growth framing for why term premium could keep rising",
-     "material": false,
-     "would_the_trade_change": "No \u2014 this is exploratory color around the term-premium call, not part of ING's actual positioning (25bp hike call, bear-steepening view, 2027 pessimism), all of which the brief retains."
-    }
-   ],
+   "source_chain": "ING expects a 25bp Fed hike, not the 50bp that would better fit Warsh's own critique of the Fed-guidance-to-market-pricing-to-delivery loop therefore the market prices >90% odds of a hike to 3.75-4% therefore a 50bp move could either calm the long end (active protection) or destabilize it (validating the prior 100bp yield rise and sparking a sell-off) therefore no-hike is judged unlikely because it could hurt ('kill off') the long end therefore separately, term-premium/bear-steepening pressures (rising 30Y JGB yields, thin long-tenor euro swap liquidity, persistent US deficit concerns) should keep long-end yields sticky for now, with ING turning more pessimistic on the 2027 US economic outlook.",
+   "brief_chain": "Same chain, same figures (>90% hike odds to 3.75-4%, 100bp prior 10yr rise, 30Y JGB/euro swap liquidity/US deficits as sticky-long-end drivers, more pessimistic 2027 view), with desk shorthand ('back end', 'kill off') faithfully rendered as 'long end'/'hurt.'",
+   "distortions": [],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 0
   }
  ],
  "material_total": 0,
- "non_material_total": 4,
+ "non_material_total": 5,
  "audited": 4,
  "dim": "brief_fidelity",
  "agent": "b",
@@ -75,7 +79,7 @@
  "provenance": {
   "model_requested": "claude-sonnet-5",
   "model_version_returned": "unreported",
-  "prompt_sha": "3ce75be6018e"
+  "prompt_sha": "4088cf5290e7"
  },
  "failed": false,
  "problems": []

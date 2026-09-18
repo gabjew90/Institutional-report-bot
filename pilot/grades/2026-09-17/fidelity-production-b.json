@@ -4,135 +4,189 @@
  "sentences": [
   {
    "id": "s1",
-   "grade": "distorted",
-   "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-17/16682__db-early-morning-reid-macro-strategy.txt",
-   "span": "10yr yields trading at 5.00% ... Yields have pared back some of that rise this morning, trading 2-3bps lower across the curve",
-   "why": "DB's Sept-17 morning note puts the 10-year at ~5.00% (post-FOMC high 5.02%, pared 2-3bp), not 4.95%. The sentence changes the actual print to a lower, more relief-rally-friendly figure."
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "",
+   "span": "",
+   "why": "The rate-decision reasoning (quarter-point hike, higher long-run/neutral dot) is well supported by the GS FOMC recap, but the specific claim being made \u2014 the 10-year 'is back at 4.95% this morning' \u2014 is a live intraday price with no PDF in the source set covering it. The closest data point, DB's Sept-17 morning note, has the 10yr at 5.00-5.02%, a post-2007 high, not 4.95%, and no file in the given list covers a later date.",
+   "searched": [
+    "4.95",
+    "10-year yield this morning",
+    "quarter point"
+   ]
   },
   {
    "id": "s2",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none",
+   "source_file": "",
    "span": "",
-   "why": "Claim is about the pulse's own prior editorial stance ('this pulse has carried since August 31'), which no research PDF can corroborate \u2014 it's an internal claim, not a bank's factual content."
+   "why": "This is a claim about the pulse's own prior editorial framing ('this pulse has carried since August 31'), not a claim any research PDF could attest to. No source document discusses TLT or an August 31 dated call.",
+   "searched": [
+    "TLT",
+    "August 31",
+    "short $TLT"
+   ]
   },
   {
    "id": "s3",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-17/16690__committee-wants-another-dose.txt",
-   "span": "we continue to look for one more hike at the December meeting, in line with the revised median FOMC expectations",
-   "why": "JPM's December call vs. GS's October call (s4) is a genuine timing split between the two houses; framing them as the two largest houses parting on timing is accurate."
+   "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
+   "span": "We now expect the FOMC to deliver a second 25bp hike in October",
+   "why": "Goldman's own doc calls for an October second hike (16688) while JPMorgan's doc calls for a December second hike (16690, 'we continue to look for one more hike at the December meeting') \u2014 both keep the same eventual destination (see s6), so the actual divergence between the two houses is timing, as stated."
   },
   {
    "id": "s4",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
-   "span": "We now expect the FOMC to deliver a second 25bp hike in October ... Market pricing of the probability of further hikes this year rose 8pp to 51% for October",
-   "why": "GS's October second-hike call and the 51% October pricing are both stated verbatim in the source, attributed correctly to Goldman."
+   "span": "Market pricing of the probability of further hikes this year rose 8pp to 51% for October",
+   "why": "Goldman's doc states the October second-hike call explicitly and ties it to the hawkish dot projections and the 51% market pricing for an October hike, matching the sentence."
   },
   {
    "id": "s5",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-17/16690__committee-wants-another-dose.txt",
-   "span": "we continue to look for one more hike at the December meeting ... median GDP outlook for '26 and '27 was revised up a tenth ... unemployment rate forecasts also became more optimistic, this year revised down to 4.1%",
-   "why": "JPM's December hike call, upward GDP revision, and downward 2026 jobless-rate revision are all stated directly by JPM economist Feroli."
+   "span": "We continue to look for one more hike at the December meeting, in line with the revised median FOMC expectations",
+   "why": "JPM's doc keeps its December second-hike call and separately notes GDP outlook 'revised up a tenth' and unemployment 'revised down to 4.1%' for this year \u2014 matching growth-forecasts-up and lower-jobless-rate-path framing."
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-17/16688__us-daily-september-fomc-recap-hawkish-dots-show-two-hike-bas.txt",
-   "span": "We have kept our forecast for the terminal rate unchanged at 3.25-3.5% by adding to the September and December 2027 rate cuts we already expected a third 25bp cut in March 2028",
-   "why": "GS's 3.25-3.50% end-of-cycle range and added March-2028 cut are stated exactly; framing this as convergence with JPM is a reasonable soft read given both reference the FOMC's own 3.25% longer-run dot."
+   "span": "kept our forecast of the terminal rate unchanged at 3.25-3.5% by adding to the September and December 2027 cuts we already expected a third cut in March 2028",
+   "why": "Goldman's 3.25-3.50% terminal range and March-2028 third cut are stated verbatim. JPM's own house terminal figure isn't stated as a separate number in its docs, but both banks' hike calls are explicitly anchored to the same FOMC dot median (Sept dots longer-run 3.2-3.25%), supporting the 'both agree on where rates finish' framing without misattributing a specific figure to JPM."
   },
   {
    "id": "s7",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none in provided set",
+   "source_file": "",
    "span": "",
-   "why": "No document in the given day's source set (09-16/09-17) contains these figures. A related but non-matching account exists in an out-of-scope 2026-09-15 file (Saudi output 6.2M vs 10.9M bpd matches, but Yanbu flows are reported there as 2M bpd in August, not 1.1M, and no 'April-June 4 million' framing appears) \u2014 outside the provided evidence set and partly inconsistent even there."
+   "why": "Multiple documents discuss the Yanbu/Saudi supply disruption qualitatively, but none contains the specific throughput figures (1.1mbd August vs 4mbd April-June, or Saudi production falling to 6.2mbd from 10.9mbd in February) anywhere in the source set.",
+   "searched": [
+    "Yanbu",
+    "6.2 million",
+    "10.9 million",
+    "1.1 million barrels",
+    "Saudi production"
+   ]
   },
   {
    "id": "s8",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-16/16619__the-commodities-feed-saudi-supply-uncertainty-has-oil-extend.txt",
-   "span": "The ICE gasoil crack remains above $80/bbl and near record levels ... EU gas storage is a little over 68% full, well below the seasonal 5-year average of 84%",
-   "why": "Both the diesel/gasoil-crack record framing and the exact 68% vs 84% storage figures are stated in ING's (THINK) commodities note, correctly attributed."
+   "span": "EU gas storage is a little over 68% full, well below the seasonal 5-year average of 84%",
+   "why": "ING's commodities feed gives the exact 68%/84% figures. Diesel margins are corroborated by the same doc's 'ICE gasoil crack remains above $80/bbl and near record levels' plus a separate note that retail diesel 'recently hit a record high above $6 a gallon.'"
   },
   {
    "id": "s9",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-16/16650__up-and-adam.txt",
-   "span": "dispersion within the AI ecosystem, as investors differentiate between infrastructure providers and software developers ... While near-term leadership may rotate within Tech, we remain constructive on the sector overall",
-   "why": "Raymond James's note frames the Software-vs-Semis divergence explicitly as rotation/dispersion within AI rather than an exit from the theme, matching the sentence's stance."
+   "source_file": "pilot-data/pilot/source-text/2026-09-16/16636__frontier-pacing-calls-may-not-spell-an-end-to-ai-capex-cycle.txt",
+   "span": "Stronger AI safeguards may reshape competition, but the proposals so far do not establish that the AI capex cycle is ending",
+   "why": "UBS's stance is exactly this: AI-linked stocks sold off on the pacing-call news, but UBS argues the capex cycle isn't ending and tells investors with concentrated AI holdings to rebalance toward a broader AI value-chain mix \u2014 a rotation within the theme, not an exit."
   },
   {
    "id": "s10",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none in provided set",
+   "source_file": "",
    "span": "",
-   "why": "The exact BofA 7,800 12-month S&P 500 target and rotation framing exist verbatim in a 2026-09-15 BofA note (pdf 16490/16300), but that file is not part of the provided source-text list for this day."
+   "why": "There is exactly one Bank of America-sourced document in the set (16570, a CIO macro/AI-singularity outlook letter) and it contains no S&P 500 target, no 7,800 figure, and no rotation calls. No other document mentions a BofA 12-month S&P target.",
+   "searched": [
+    "7,800",
+    "Bank of America S&P 500 target",
+    "12-month target"
+   ]
   },
   {
    "id": "s11",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none in provided set",
+   "source_file": "",
    "span": "",
-   "why": "'Value ... has outperformed during Fed hiking cycles' appears verbatim in a 2026-09-15 BofA note (pdf 16491/16302), outside the provided day's source set."
+   "why": "No document discusses a 'value basket' or the historical record of cheap stocks outperforming expensive ones during Fed tightening. The one BofA doc in the set favors Value over Growth for a different reason (valuation difficulty for long-duration assets amid higher real yields), not this record/tightening framing.",
+   "searched": [
+    "value basket",
+    "cheap stocks",
+    "Fed is tightening",
+    "Value.*outperform"
+   ]
   },
   {
    "id": "s12",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none in provided set",
+   "source_file": "",
    "span": "",
-   "why": "BofA's exact $71 AHR and $292 WELL price objectives appear in a 2026-09-15 BofA real estate note (pdf 16491), outside the provided day's source set."
+   "why": "Neither AHR nor WELL (nor the $71/$292 targets) appears anywhere in the source set.",
+   "searched": [
+    "AHR",
+    "WELL",
+    "$71",
+    "$292",
+    "Welltower"
+   ]
   },
   {
    "id": "s13",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none in provided set",
+   "source_file": "",
    "span": "",
-   "why": "No document in the given set, or found elsewhere in the corpus, supports 'record' earnings concentration or '$8 trillion' sidelined cash; the pullback framing partially echoes an out-of-scope 2026-09-15 BofA note but even there is phrased as one 5% pullback in March, not 'nearly six months without one.'"
+   "why": "No document states a 'nearly six months without a 5% pullback' claim, an earnings-concentration-at-a-record claim, or an $8 trillion cash-on-sidelines/money-market figure. Trillion-dollar figures found in the set are unrelated (AI capex spend estimates, asset-manager AUM).",
+   "searched": [
+    "$8 trillion",
+    "money market",
+    "sidelines",
+    "5% pullback",
+    "concentration"
+   ]
   },
   {
    "id": "s14",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none in provided set",
+   "source_file": "",
    "span": "",
-   "why": "'Friday's expiry contributes $2.9bn that rolls off' / Sep 18 monthly expiry language exists in a 2026-09-15 BofA Systematic Flows Monitor (pdf 16488), outside the provided day's source set."
+   "why": "No document discusses a mechanical support flow 'rolling off Friday' \u2014 no mention of options expiration, quad-witching, or OpEx tied to that dynamic anywhere in the set.",
+   "searched": [
+    "rolls off",
+    "quad witching",
+    "OpEx",
+    "options expiration Friday"
+   ]
   },
   {
    "id": "s15",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": "none in provided set",
+   "source_file": "",
    "span": "",
-   "why": "'delta-hedgers were net long $9.9bn of SPX gamma' is an exact match in the 2026-09-15 BofA Systematic Flows Monitor (pdf 16488), outside the provided day's source set."
+   "why": "No document attributes a $9.9 billion dealer net-long gamma figure to Bank of America (the only BofA doc in the set doesn't discuss options positioning at all). The only gamma discussions found are Goldman's pre-FOMC equity-derivatives note (describing street gamma as 'pretty flat', not a specific net-long dollar figure) and a Treasury-options gamma exhibit, neither of which matches.",
+   "searched": [
+    "9.9 billion",
+    "dealer gamma",
+    "net long",
+    "Bank of America dealer positioning"
+   ]
   }
  ],
  "faithful": 6,
- "distorted": 1,
- "unsupported": 8,
+ "distorted": 0,
+ "unsupported": 9,
  "faithful_rate": 0.4,
  "dim": "fidelity",
  "agent": "b",
  "provenance": {
   "model_requested": "claude-sonnet-5",
   "model_version_returned": "unreported",
-  "prompt_sha": "c53af520ab4c"
+  "prompt_sha": "224632dfdf6a"
  },
  "failed": false,
  "problems": []
