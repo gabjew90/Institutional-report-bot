@@ -508,3 +508,31 @@ against a genuine cross-aggregator discrepancy (TipRanks lists Oct 29
 as "confirmed") but matches the bot's own cited source and correctly
 used hedged language rather than asserting a confirmed date — not
 fabrication. Full reasoning in `pulse-data/ask-qc/2026-09-17.claude.md`.
+
+## 2026-09-18
+
+- **(open) regex-able** — 16:03:13 UTC (bulch, "@abe looking at LITE
+  and AAOI for next week"). `LOCAL/FACT` turn delivers live price/%%/IV
+  data for two tickers as two prose paragraphs with zero `→` bullet
+  lines, closing on a tacked-on summary sentence ("Classic high-beta
+  momentum play heading straight into fiber and CPO catalyst season.").
+  The figures themselves check out (verified against real Sept 2026
+  LITE/AAOI prints via web search — not fabricated, despite the
+  parallel Gemini-job report for this date calling them "wildly
+  incorrect"; see that day's `.claude.md` for why that verdict is
+  judge-noise). `scripts/validate_answer.py` returns no violation and
+  `scripts/ask_response_validate.py` has no class that checks for
+  arrow-bullet structure at all — every existing `check_*` targets
+  fabrication/repetition/price-claim shapes, not markdown format.
+  Candidate fixture: question = `"@abe (abullish_xyz) looking at LITE
+  and AAOI for next week"`; bad answer = the verbatim two-paragraph
+  prose text in `pulse-data/ask-qc/2026-09-18.claude.md`; assertion =
+  a FACT-routed answer containing ≥2 `$`-prefixed price figures should
+  have `len(re.findall(r"(?m)^→", answer)) >= 1` (the bad answer scores
+  0; a good same-day comparator at 16:23:39 scores 3). Do not create
+  the fixture file — queued for a work session.
+  Full reasoning in `pulse-data/ask-qc/2026-09-18.claude.md`, which
+  also flags a cross-interaction judge-calibration pattern in the
+  parallel Gemini-job report for this date (4 of its 5 FAILs look like
+  judge-noise on inspection — not filed here since they aren't bot
+  defects, just noted for awareness).
