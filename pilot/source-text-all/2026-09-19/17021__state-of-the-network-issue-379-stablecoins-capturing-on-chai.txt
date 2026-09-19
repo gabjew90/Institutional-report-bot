@@ -1,0 +1,232 @@
+[Page 1]
+Coin Metrics State of 
+the Network: Issue 
+379 
+ 
+Get the best data-driven crypto insights and analysis every week: 
+Stablecoins Capturing 
+On-Chain Yield 
+By: Cooper Duschang, Research Associate & Tanay Ved, Senior Research Associate 
+Key Takeaways 
+●​ The stablecoin market is over $290B. Across Aave v3 and Morpho, more than 
+$8.6B is deposited in lending protocols earning interest from borrowers. 
+
+
+[Page 2]
+●​ The same stablecoin on different lending protocols can have different returns. The 
+USDC lending rate on Aave and Morpho is on average 31 bps below and 65 bps 
+above the 1-year treasury rate respectively. 
+●​ Stablecoin interest does not consistently outperform traditional fixed-income 
+products. However, if invested since 2024 on Aave, USDC outperforms ETH lent on 
+Aave by 50 bps, showing stablecoins are a productive source of steady yield. 
+Introduction  
+The U.S. treasury market trades $1.2 trillion per day. Ranging from U.S. treasury bonds to 
+junk bonds, fixed-income products are effective products to earn interest on idle assets. 
+The stablecoin market has grown to over $290 billion. Holders can deposit stablecoins in 
+different on-chain venues, popularly lending protocols including Aave and Morpho, to 
+earn yield just like traditional financial instruments. 
+ 
+The introduction of tokenized treasuries, corporate bonds, and money market funds 
+on-chain has expanded the number of opportunities to earn interest on assets, or borrow 
+against them. These assets provide competitive rates to stablecoins in lending protocols. 
+The expansion should lead investors to reevaluate the risks and rewards of owning 
+different yield-bearing products. 
+ 
+In this State of the Network, we break down the additional risks earning on-chain yield, 
+stablecoin and lending protocol differentiations leading to diverse returns, and stablecoin 
+versus volatile asset lending. 
+Blurring the Line Between Traditional and On-Chain Yield 
+Investors have historically invested in short-term treasuries and money market funds to 
+earn yield with minimal risk exposure. The returns on these investments are relatively low 
+but also considered safest because of the asset’s short duration and deep liquidity. 
+ 
+The emergence of on-chain yield includes yield-bearing stablecoins, interest on 
+stablecoin deposits in DeFi protocols, and tokenized treasuries that possess similar 
+properties to traditional fixed-income. They both are intended for low-risk, consistent 
+returns, backed by credible institutions and reserves. 
+ 
+
+
+[Page 3]
+ 
+Source: Talos CM Protocol Metrics, FRED 
+ 
+Investing on-chain brings instant settlement, programmability, and composability difficult 
+to replicate in traditional markets. With these benefits though comes additional risk. 
+Tokenized treasuries such as Franklin Templeton’s Money Market Fund (BENJI) or the 
+BlackRock USD Institutional Digital Liquidity Fund (BUIDL) must manage smart contract 
+risk and redemption or liquidity risk. 
+ 
+ 
+Type 
+Example 
+Yield driver 
+Est APY 30d (%) 
+Risk Profile 
+Benchmark rate 
+EFFR / Fed Funds 
+Fed policy 
+3.63 
+Macro conditions, 
+debasement risk 
+Tokenized 
+treasuries 
+BUIDL, BENJI, USYC, USDY 
+Passthrough of T-bill yield 
+3.63 
+Custody, smart 
+contract, 
+redemption/liquidity 
+risk 
+
+
+[Page 4]
+Stablecoin 
+lending (Aave) 
+Core-USDC lending pool 
+Leverage/borrowing demand 
+3.64 
+Smart contract, 
+oracle, utilization, 
+lending curve, 
+collateral risk 
+Stablecoin 
+vaults (Morpho) 
+Steakhouse USDC 
+Curator decisions 
+4.44 
+Curator, smart 
+contract, oracle, 
+lending curve, 
+collateral risk 
+ 
+ 
+Tokenized treasuries imitate the yield from the Effective Federal Funds Rate despite 
+carrying more risk. This leaves stablecoins and its integrations in DeFi to offer new 
+chances for on-chain yields to compete with traditional products. 
+ 
+Additional DeFi complexities and risk should lead stablecoins towards offering higher 
+yields. These higher yields however, are not always available. 
+The Same Stablecoin on Different Lending Protocols 
+Across Morpho and Aave v3, lending protocols hold over $8.6B in stablecoin deposits. 
+After the KelpDAO exploit in April 2026, some analysts suggested there was a lack of 
+yield compensated to investors for the risks exposed in lending pools. Stablecoin lenders 
+must consider the stablecoin price depegging from its fiat currency, oracle manipulation, 
+and smart contract exploits. Like traditional fixed-income products, if an investment has 
+more risk, it is expected the investor should receive greater compensation. 
+ 
+
+
+[Page 5]
+One stablecoin’s return is non-uniform across different lending protocols. Since January 
+2026, the average yield on USDC deposited in Aave versus Morpho has a 1.59% spread. 
+Aave and Morpho have different risk-adjusted yields because they have different 
+protocol designs. Morpho supports isolated lending markets for each collateral-borrow 
+pair, generating different borrow and supply rates. Aave provides the same borrow and 
+supply rate for an asset using a shared pool per market. 
+ 
+ 
+Source: Talos CM Protocol Metrics, FRED 
+ 
+USDC’s yield fluctuations in the Aave Core USDC lending market highlight the variable 
+nature of returns relative to traditional fixed-rate products. USDC on Aave yield is on 
+average a 31 basis point discount from the 1-year treasury rate. For 78% of 2026, USDC on 
+Aave has earned lower annualized returns than the 1-year treasury rate. 
+ 
+
+
+[Page 6]
+ 
+Source: Talos CM Protocol Metrics, FRED 
+ 
+The return of the median USDC Morpho v2 vault is on average 65 basis points greater 
+than the 1-year treasury yield but is ~3.3x more volatile throughout the year. Lending yield 
+is driven by supply and demand which can change at any time, whereas treasury yield is 
+set by Fed policy and shifts more gradually. 
+Different Stablecoins on the Same Lending Protocol 
+Current lending rates are designed around the amount supplied and borrowed from a 
+pool. Because of this, different stablecoins have different yields within individual lending 
+protocols despite having similar reserves. 
+ 
+
+
+[Page 7]
+ 
+Source: Talos CM Protocol Metrics 
+ 
+Between USDC and USDT on Aave, the two largest stablecoins by deposits, there is an 
+average spread of 90 basis points. This is due to stablecoins having different average 
+utilization rates. USDC has a 10% greater utilization rate on average over the past 90 
+days. PYUSD’s supply rate rose temporarily due to lenders removing available liquidity, 
+increasing the utilization rate and therefore raising interest rates for all borrowers and 
+lenders. 
+ 
+
+
+[Page 8]
+ 
+Source: Talos CM Protocol Metrics 
+ 
+Morpho highlights similar discrepancies. Rates on Morpho v1 vaults can be more volatile 
+due to capital rotating into v2 vaults and changing market deposits with remaining 
+liquidity. Between USDC and USDT, there is an average 126 basis point difference in yield 
+across Morpho v2 vaults. All four stablecoins listed provide attestations, invest in cash and 
+short-term treasuries, and support a multi-network distribution. Yet small differences in 
+DeFi integration, regulation, demand, and protocol design all lead to diverse yield 
+expectations.  
+How Curators and Yield-Bearing Stables Expand Yield 
+Opportunities 
+On-chain yield is not solely determined on the protocol architecture or asset level. 
+Protocol governance and vault curators also drive on-chain yield. Aave governance can 
+adjust lending curves based on the collective’s assessment of an asset’s risk. Yield on 
+Morpho is earned based on the decisions of vault curators. Curators act like investment 
+managers and allocate deposits to various lending markets to earn yield. 
+ 
+
+
+[Page 9]
+ 
+Source: Talos CM Protocol Metrics 
+ 
+Curators allocating to different markets based on risk tolerance highlights various 
+strategies using the same underlying borrow asset. Over the last 90 days, amongst USDC 
+vaults the median yield for deposited USDC is 4.79%. There are high-yield outliers which 
+drive the average Vault yield up around 5.31%, revealing curators can augment rewards 
+without lending protocol intervention. 
+ 
+
+
+[Page 10]
+ 
+Source: Talos CM Network Data Pro 
+ 
+Stablecoin issuers can also incentivize adoption by distributing rewards to holders without 
+intermediary lending markets. Users can stake stablecoins such as USDS issued by Sky 
+and GHO issued by Aave natively to earn governance-managed rewards. More than 66% 
+of outstanding USDS is staked as sUSDS, earning a variable rate currently around 3.52%. 
+Users staking GHO receive sGHO and a fixed 4.25% yield. 
+Stablecoins versus Volatile Asset Lending 
+Despite struggling to compete against the returns of similar assets due to possessing 
+higher risk at the same rate of return, stablecoins and their yield have historically 
+provided steady returns compared to more volatile lending assets. 
+ 
+
+
+[Page 11]
+ 
+ 
+Source: Talos CM Protocol Metrics 
+ 
+If an investor deposited assets in 2024, on Aave, their return from USDC would be greater 
+than the return from lent ETH. While ETH experienced an 8.9% price return, it earned 
+around $940 less from Aave yield than USDC. Only 0.1% of WBTC’s return is attributable to 
+yield because it is primarily used for collateral; the other 86.9% return is from price 
+appreciation. 
+ 
+On Morpho, investing in vaults from 2025, the Steakhouse USDT vault achieves a 4.5% 
+return while the Steakhouse ETH vault returns a 1.9% loss. Barring price returns, 
+Steakhouse USDT still outperforms Steakhouse ETH by 2%. 
+ 
+Stablecoins provide a consistent source of yield. Relative to its traditional peers, it does 
+not always provide competitive results. Relative to other cryptoassets, its rewards clearly 
+highlight why over $8.6B stablecoins capture on-chain yield. 
