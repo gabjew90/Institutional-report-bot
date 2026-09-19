@@ -1,0 +1,447 @@
+{
+ "brief": "JPM's Retail Radar reports the Fed unanimously hiked 25bps to 3.75-4%, with dot-plot guidance implying one more hike this year. JPM argues a shallow hiking cycle, essentially reversing last year's insurance cuts, should be manageable for equities if earnings stay strong, and that equities can withstand 10y yields trending toward 6% given an inverted-U relationship with S&P multiples. Against that backdrop, retail flows turned materially weaker last week (2nd percentile overall, ETF inflows at 1-year lows, single-name flows at the 12th percentile), totaling $2.5B versus a $6.8B 12-month average, as Rates-factor crowding rose to match Momentum crowding. Retail rotated defensively, buying only Staples ex-Mag7 while selling Industrials, Communications and Tech, and kept buying all seven Mag7 names led by NVDA. A reignited AI-safety debate revived the Semis-vs-Software narrative Monday: Software outperformed Semiconductors by about 8 percentage points, retail sold non-Mag7 semis like AMAT while still buying NVDA, and it sold the security-software cohort (PANW, CRWD, FTNT, NOW) even as JPM analysts turned more bullish on those names post-2Q.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "The Fed unanimously raised interest rates 25 basis points to 3.75-4%, removing a dose of policy accommodation.",
+   "anchor": "the Fed unanimously raised interest rates 25bps to 3.75-4%, thereby removing \u201ca dose of accommodation\u201d",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "The Fed's dot plot signals the Committee sees another rate hike this year as likely appropriate.",
+   "anchor": "the dots delivered a clear message that the Committee sees another hike this year as likely appropriate",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "JPM argues a shallow hiking cycle, essentially a reversal of last year's insurance cuts, should be manageable for equities provided the earnings backdrop stays strong.",
+   "anchor": "a shallow hiking cycle (i.e., a reversal of last year's insurance cuts) should be manageable for equities, provided the earnings backdrop remains strong",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "JPM says equities can withstand the 10-year yield trending toward roughly 6%, with sector leadership hinging on the shape of the curve.",
+   "anchor": "equities can withstand a 10y trending toward ~6%, with sector leadership hinging on the shape of the curve",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Crowding in the Rates factor has risen to match Momentum crowding levels, fueled by a prolonged Higher-for-Longer environment.",
+   "anchor": "crowding in the Rates factor is now matching Momentum crowding levels",
+   "topic": "US equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Retail flows turned materially weaker last week, sitting at the 2nd percentile overall.",
+   "anchor": "retail flows turned materially weaker last week \u2014 2%ile overall",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "ETF inflows hit a 1-year low, at -2.0 standard deviations below normal.",
+   "anchor": "with ETF inflows at 1y lows (-2.0z)",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Single-name retail flows turned negative, at a mere 12th percentile.",
+   "anchor": "single-name flows turning negative at a mere 12%ile",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Retail flows totaled $2.5B this week, well below the 12-month average of $6.8B per week.",
+   "anchor": "Retail flows were $2.5B this week, well below the 12-month average of $6.8B/week",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Retail investors favored ETFs (+$3.1B) over single stocks (-$0.6B) this week.",
+   "anchor": "Retail investors continued to favor ETFs (+$3.1B) over Single Stocks (-$0.6B)",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Outside Mag7, retail investors favored only Staples, the sole sector net bought, at +$11M.",
+   "anchor": "retail investors favored Staples (+$11M, the only sector net bought ex-Mag7)",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Retail investors were net sellers of Industrials (-$555M), Communications (-$493M) and Tech (-$405M) outside Mag7.",
+   "anchor": "were net sellers of Industrials (-$555M), Communications (-$493M), and Tech (-$405M)",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "The bottom five retail stocks last week by net selling were SPCX (-$249M), MRVL (-$95M), INTC (-$76M), SMR (-$60M) and AMD (-$52M).",
+   "anchor": "Bottom 5 retail stocks: SPCX (-$249M), MRVL (-$95M), INTC (-$76M), SMR (-$60M), AMD (-$52M)",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [
+    "SPCX",
+    "MRVL",
+    "INTC",
+    "SMR",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Broad-market dividend crowding is near its 3-year high even as Dividend ETF inflows have declined.",
+   "anchor": "broad-market dividend crowding at its ~3y high",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "This week's Sector ETF outflows were the third-highest on record, driven by Tech.",
+   "anchor": "this week's outflows from Sector ETFs were the third highest on record, driven by Tech",
+   "topic": "retail flow weakness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "An AI safety debate reignited the Semis-vs-Software narrative as markets reopened Monday.",
+   "anchor": "the AI safety debate that reignited the Semis vs Software narrative as markets reopened on Monday",
+   "topic": "software vs semiconductor divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Monday"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "SemiAnalysis showed the share of compute allocated to pre-training has shrunk significantly, now below 15%.",
+   "anchor": "the share of compute allocated to pre-training has shrunk significantly (now below 15%)",
+   "topic": "software vs semiconductor divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Software stocks outperformed Semiconductors by roughly 8 percentage points over the past week.",
+   "anchor": "Software stocks outperformed Semiconductors this past week by ~8pp",
+   "topic": "software vs semiconductor divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this past week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "NVDA was down about 1% last week even as it remained the top-traded name among retail investors, who bought $1,159M of the stock.",
+   "anchor": "NVDA ($1159M bought last week, 1.6z, Figure 28Retail Imbalance in NVDA) was down ~1%, but it continues to be the top-traded name among retail investors",
+   "topic": "software vs semiconductor divergence",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "JPM analysts said 2Q results reinforced conviction in security software fundamentals, positioning vendors as critical infrastructure partners to AI foundation-model companies rather than disruption targets.",
+   "anchor": "2Q results reinforced conviction in strong fundamentals ahead and positioned security vendors as critical infrastructure partners to foundation model companies rather than targets of disruption",
+   "topic": "software vs semiconductor divergence",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "JPM analysts expressed particular optimism on OKTA, PANW, CRWD, VRNS and ZS within security software.",
+   "anchor": "with particular optimism on OKTA, PANW, CRWD, VRNS, and ZS",
+   "topic": "software vs semiconductor divergence",
+   "status": "forecast",
+   "instruments": [
+    "OKTA",
+    "PANW",
+    "CRWD",
+    "VRNS",
+    "ZS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Retail investors have been net sellers of the security software cohort even as JPM analysts turned more optimistic on it.",
+   "anchor": "Retail investors have been net sellers of this cohort",
+   "topic": "software vs semiconductor divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Oracle reported above-guidance total revenue growth of +30% y/y with triple-digit growth in Cloud Infrastructure and RPO building a further $26B sequentially.",
+   "anchor": "The company reported above-guidance total revenue growth of +30% y/y on triple-digit growth in Cloud Infrastructure, and RPO building a further $26B sequentially",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "ORCL shares are down about 5% since the earnings print despite the above-guidance revenue growth and RPO build.",
+   "anchor": "The stock is down ~5% since the print",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Retail investors bought the dip in ORCL post-earnings on Friday, with flows at +3.3z.",
+   "anchor": "ORCL, which enjoyed buying the dip flows post-earnings on Friday (+3.3z)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "J.B. Hunt warned that higher fuel costs and hiring will hurt next quarter's earnings.",
+   "anchor": "the trucking company warned that higher fuel costs and hiring will hurt next quarter's earnings",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next quarter"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "J.B. Hunt expects 3Q earnings to be down roughly 5-10% quarter-over-quarter, with fuel costs at least $10M higher.",
+   "anchor": "The company expects earnings to be down ~5-10% q/q in 3Q, with fuel costs at least $10M higher",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "Skyworks' pending merger with Qorvo was confirmed to be closing this calendar year.",
+   "anchor": "Skyworks\u2019 pending merger with Qorvo was confirmed to be closing this calendar year",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SWKS",
+    "QRVO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this calendar year"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "JPM analysts recently upgraded Meta Platforms to Overweight, citing early-stage frontier model releases and AI-driven products beyond advertising.",
+   "anchor": "Our analysts recently upgraded Meta Platforms to OW, with the company in the early stages of releasing frontier models and AI-driven products beyond advertising",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "Retail Radar: Sep 16 \u2013 Retail Blinks as Rates Swing",
+   "claim": "META shares are up 8% in the last week and up 25% since their late-August trough.",
+   "anchor": "The stock is +8% in the last week and +25% since its late-August trough",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-19/16833__jpm-retail-radar-retail-blinks-as-rates-swing-sept-16.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 35,
+  "matched": 30,
+  "failed": 5,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 5,
+  "needs_reask": false
+ }
+}
