@@ -1,0 +1,782 @@
+{
+ "brief": "Goldman's Novak morning note leads with the Fed's hawkish surprise. The FOMC hiked 25bp to 3.75-4%, with a 16-2 majority projecting another hike this year, no dissents, a higher neutral-rate dot (3.06% to 3.25%), and Warsh repeating that the hike removed a dose of accommodation. Goldman now expects a second 25bp hike in October instead of treating September as the last move, but keeps its 3.25-3.5% terminal-rate forecast by adding a third cut in March 2028, because its core PCE forecast sits below the FOMC's median for both 2026 and 2027. Futures rose 80bp pre-market led by tech. The BOE is expected to hold. POTUS floated more EU tariffs if the bloc admits Canada. On micro, Lennar missed Q3 EPS and revenue with orders down 9% and softer Q4 guidance. GFL's CEO said he would consider going private. Generac signed an AMZN supply deal with a warrant struck above the stock's close. Granite Construction's CEO outlined 10%+ 2027 organic growth from federal and data center work. A Carnival earnings preview argues near-term catalysts are missing but long-term PROPEL upside is underappreciated.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "The FOMC raised the federal funds rate by 25 basis points to a range of 3.75-4% on 17 September 2026.",
+   "anchor": "The FOMC raised the funds rate by 25bp to 3.75-4% today.",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "A 16-2 majority of FOMC participants projected at least one more rate hike this year.",
+   "anchor": "a 16-\n2 majority projected at least one more hike this year",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "There were no dissenting votes against the FOMC's 25bp hike.",
+   "anchor": "there were no dissenting votes against today\u2019s\nhike.",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "The FOMC's median neutral rate dot rose from 3.06% to 3.25%.",
+   "anchor": "the median\nneutral rate dot rose from 3.06% to 3.25%.",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Fed Chairman Warsh described the rate hike as having removed a dose of accommodation, repeating the phrase three times.",
+   "anchor": "Chairman Warsh described the hike as having \u201cremoved\na dose of accommodation\u201d three times.",
+   "topic": "Fed September hike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs now expects the FOMC to deliver a second 25bp rate hike in October 2026.",
+   "anchor": "We now expect the FOMC to deliver a second 25bp hike in October",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs kept its terminal federal funds rate forecast unchanged at 3.25-3.5%.",
+   "anchor": "We have kept our forecast for the terminal rate\nunchanged at 3.25-3.5%",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs added a third 25bp rate cut in March 2028 to its previously expected September and December 2027 cuts.",
+   "anchor": "we already expected a\nthird 25bp cut in March 2028.",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "March 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs says additional Fed rate hikes beyond October are possible but not its base case.",
+   "anchor": "Additional hikes are possible but not our base case.",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs forecasts core PCE inflation at 3.2% year-over-year in 2026 Q4, below the FOMC median participant forecast of 3.4%.",
+   "anchor": "our forecast for core PCE inflation\nremains below the median FOMC participant\u2019s forecast at 3.2% (vs. 3.4% for the FOMC) in 2026 Q4/Q4",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026 Q4/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs forecasts core PCE inflation at 2.2% year-over-year in 2027 Q4, below the FOMC median participant forecast of 2.5%.",
+   "anchor": "2.2% (vs. 2.5% for the FOMC) in 2027 Q4/Q4",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027 Q4/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs estimates that methodological revisions to core PCE being implemented later this month will be worth -0.2 percentage points on the year-over-year rate.",
+   "anchor": "which we estimate will be worth -0.2pp on the year-\nover-year rate",
+   "topic": "Fed September hike",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Lennar's Q3 EPS of $1.19 missed the $1.28 estimate and revenue of $8.05bn missed the $8.32bn estimate.",
+   "anchor": "Q3 EPS $1.19 vs.\n$1.28 on revenue that came in below $8.05bn vs. $8.32bn.",
+   "topic": "US housing market weakness",
+   "status": "released",
+   "instruments": [
+    "LEN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Lennar's new orders fell 9% to 20,879 units as comparisons got tougher.",
+   "anchor": "New orders starting to face tougher comps\ndown 9% to 20,879.",
+   "topic": "US housing market weakness",
+   "status": "released",
+   "instruments": [
+    "LEN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Lennar's backlog stood at 16,857 homes with a dollar value of $6.3bn.",
+   "anchor": "Backlog of 16,857 with a dollar value of $6.3bn.",
+   "topic": "US housing market weakness",
+   "status": "released",
+   "instruments": [
+    "LEN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Lennar's deliveries fell 3% to 20,840 units.",
+   "anchor": "Deliveries down 3% to 20,840.\nGuides Q4 new orders 19.5-20.5k,",
+   "topic": "US housing market weakness",
+   "status": "released",
+   "instruments": [
+    "LEN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Lennar guided Q4 new orders to 19,500-20,500 units and deliveries to 22,000-23,000 units.",
+   "anchor": "Guides Q4 new orders 19.5-20.5k, deliveries 22-23k.",
+   "topic": "US housing market weakness",
+   "status": "forecast",
+   "instruments": [
+    "LEN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Lennar guided Q4 ASP to $370,000-380,000 and gross margins to 15.5-16%, slightly below Q3 at the midpoint.",
+   "anchor": "ASP 370-380k, gross margins 15.5-16% slightly\nbelow Q3 at the midpoint.",
+   "topic": "US housing market weakness",
+   "status": "forecast",
+   "instruments": [
+    "LEN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Generac signed a transaction and supply agreement with Amazon.",
+   "anchor": "GNRC out with a transaction and supply agreement with\nAMZN",
+   "topic": "GNRC AMZN supply deal",
+   "status": "released",
+   "instruments": [
+    "GNRC",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Generac will issue Amazon a warrant to acquire up to 1.6932mm shares at $200.93 per share versus a $175mm closing price.",
+   "anchor": "to issue a warrant to acquire up to 1.6932mm shares of stock at $200.93 per share vs. $175mm\nclosing price.",
+   "topic": "GNRC AMZN supply deal",
+   "status": "released",
+   "instruments": [
+    "GNRC",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Generac expects $2.4bn of initial AMZN deliveries in 2027 and 2028, with a total up to $8bn.",
+   "anchor": "$2.4bn of initial deliveries in 2027 and 2028 with a total of up $8bn.",
+   "topic": "GNRC AMZN supply deal",
+   "status": "forecast",
+   "instruments": [
+    "GNRC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Generac's base revenue is $5bn in fiscal 2026.",
+   "anchor": "Reminder base revenue\nis $5bn in fiscal 2026.",
+   "topic": "GNRC AMZN supply deal",
+   "status": "released",
+   "instruments": [
+    "GNRC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "fiscal 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "$235 is a big level for Generac shares to break out of today.",
+   "anchor": "$235 a big level to breakout of today.",
+   "topic": "GNRC AMZN supply deal",
+   "status": "level",
+   "instruments": [
+    "GNRC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "CACI won a contract from US Central Command with a $1.5bn ceiling.",
+   "anchor": "CACI with contract from US Central\nCommand with $1.5bn ceiling.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CACI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "GFL's CEO said in a Bloomberg interview he would consider taking the company private.",
+   "anchor": "GFL interview on Bloomberg citing CEO would consider\ngoing private",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "GFL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "GFL's board formed a special committee in July after receiving unsolicited preliminary expressions of interest.",
+   "anchor": "the board formed a special committee in July after receiving\nunsolicited preliminary expressions of interest.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GFL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "July"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "ODFL management believes the company is positioned to win share and deliver strong margin leverage.",
+   "anchor": "the ODFL message\nremains consistent in that management believes the company is in the right position to win share and",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ODFL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "ODFL expects to deliver strong margin leverage as the industrial cycle recovers.",
+   "anchor": "win share and\ndeliver strong margin leverage as the industrial cycle recovers",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ODFL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Granite Construction management's outlook calls for 10%+ organic growth in 2027.",
+   "anchor": "drivers underpinning management's outlook for 10%+ 2027 organic growth,",
+   "topic": "GVA growth outlook",
+   "status": "forecast",
+   "instruments": [
+    "GVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Granite Construction sees a broadening federal and private market opportunity set, including data centers.",
+   "anchor": "(ii) a broadening federal\nand private market opportunity set, including data centers,",
+   "topic": "GVA growth outlook",
+   "status": "forecast",
+   "instruments": [
+    "GVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Granite Construction sees scope for further margin expansion.",
+   "anchor": "(iii) scope for further margin expansion, and\n(iv) an end-market strategy",
+   "topic": "GVA growth outlook",
+   "status": "forecast",
+   "instruments": [
+    "GVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Granite Construction's federal end-market strategy has scaled and is now being replicated across other verticals.",
+   "anchor": "an end-market strategy that has scaled federal work and is now being replicated across other verticals.",
+   "topic": "GVA growth outlook",
+   "status": "released",
+   "instruments": [
+    "GVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs sees considerable valuation support for Carnival at this level after its roughly 20% pullback over the past month.",
+   "anchor": "After CCL's pullback of ~20% over the past month, we see\nconsiderable valuation support at this level",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs is uncertain about calling an earnings inflection point for Carnival, citing pockets of heightened close-in discounting.",
+   "anchor": "What we are less certain about is calling an inflection point into\nearnings, as our analysis points to pockets of heightened close-in discounting",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs views Street estimates for Carnival's 2027 results as still too high.",
+   "anchor": "Street estimates that are\nstill too high for 2027",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs expects a better year for the cruise industry in 2027 as industry Caribbean capacity growth is lower than in 2026.",
+   "anchor": "our analysis points to a better year for cruise in 2027: industry Caribbean capacity\ngrowth is lower than 2026",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Carnival is lapping NCLH's promotional pressure and shifting about 5% of its capacity out of the Caribbean into higher-yielding Europe.",
+   "anchor": "we lap NCLH's promotional pressure, and CCL is pulling ~5% of its capacity\nout of the Caribbean and into (usually higher yielding) Europe.",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL",
+    "NCLH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "The impact of NCLH's base-loading strategy on the cruise industry is a key unknown.",
+   "anchor": "the impact of NCLH's base-\nloading strategy on the industry is a key unknown",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NCLH"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "About 20% of Carnival's customers are typically brand switchers, and many of the brands skew more value-oriented and price-sensitive.",
+   "anchor": "with ~20% of CCL's customers usually brand\nswitchers, and many of the brands more value-oriented/price sensitive",
+   "topic": "CCL earnings preview",
+   "status": "released",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs says this customer mix leaves Carnival more levered to both macro and promotional pressures than peers.",
+   "anchor": "it leaves CCL more levered to both\nmacro and promotional pressures than peers.",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs says it is still missing a positive near-term catalyst for Carnival absent geopolitical or oil price developments.",
+   "anchor": "we're still missing a positive catalyst in the\nshort term (absent geopolitical/oil price developments)",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs's revised estimates and cost analysis do not point to a positive spread on Carnival's yield-to-cost growth in 2027.",
+   "anchor": "and our revised estimates and cost analysis do not\npoint to a positive spread on yield-to-cost growth in 2027.",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs believes long-duration investors underappreciate the upside from Carnival's long-term PROPEL targets.",
+   "anchor": "for investors with duration, we\nbelieve the upside from the long-term PROPEL targets are not fully appreciated",
+   "topic": "CCL earnings preview",
+   "status": "target",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Goldman Sachs views Carnival's valuation dislocation versus peers as unwarranted, making it an attractive entry point.",
+   "anchor": "with the valuation\ndislocation vs. peers not warranted and making for an attractive entry point.",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "US equity futures rose 80 basis points in early pre-market trading, led by technology shares after the Fed decision.",
+   "anchor": "futures sharply higher in early pre-market trading up 80bps led by technology shares after\ndigesting the Fed decision and press conference yesterday.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "The market expects the Bank of England to hold rates at its next meeting.",
+   "anchor": "BOE is up next with market expectations for a\nhold.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "BOE",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "POTUS suggested more EU tariffs if the bloc admits Canada as a member state.",
+   "anchor": "Trade tensions continue to escalate with POTUS suggesting more EU tariffs if the bloc includes\nCanada as a member state.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Overseas markets were relatively calm, with the KOSPI flat and Europe up 50-75bps.",
+   "anchor": "Overseas markets are relatively calms with KOSPI flat (when is the last time we saw that), Europe up 50-\n75bps.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Crude oil eased, with WTI down to $101 and Brent at $104.",
+   "anchor": "In commodities, crude continues to take a breather with WTI down to $101, Brent $104.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Corn hit new highs at $5.35 spot, with agricultural stocks reacting in sympathy.",
+   "anchor": "Corn\ncontinues to hit new highs $5.35 spot with agricultural stocks reacting in sympathy.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "The 10-year Treasury yield traded just below 5%.",
+   "anchor": "10-year just below\n5%, dollar strong DXY holding above $100",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "The dollar was strong, with the DXY holding above 100.",
+   "anchor": "dollar strong DXY holding above $100 and Bitcoin $76k flat overnight.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials Materials Fed LEN GNRC 17 Sep 2026",
+   "claim": "Bitcoin traded flat overnight around $76,000.",
+   "anchor": "dollar strong DXY holding above $100 and Bitcoin $76k flat overnight.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-19/17008__gs-u-s-industrials-materials-fed-len-gnrc-17-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 53,
+  "matched": 53,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 14,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
