@@ -1,0 +1,130 @@
+{
+ "brief": "The Market Ear frames US equities as sitting at a technical inflection point, arguing oil is driving yields, yields are driving equities, and the next move in rates will decide which index breaks first. NDX is coiling inside a large triangle formation, holding its major rising trend line and back above its 100-day moving average. A break above the shorter-term falling trend line is the level to watch, and any breakout risks becoming aggressive. SPX remains range-bound in the pattern that has held since May, having just bounced off its 100-day moving average, with no medium-term trend established. Russell is testing a massive long-term trend line, with its 200-day moving average sitting slightly below current levels. Small caps have been punished by rising rates, and the note argues a pullback in yields could quickly bring buyers back. The note states markets are effectively all trading oil right now, since oil has driven rates and rates have driven equities, with Russell more affected by that chain than the other indices.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "NDX is trapped inside a large triangle formation, its major rising trend line has held, and it is back above its 100-day moving average.",
+   "anchor": "NDX remains trapped inside the huge triangle formation. The major rising trend line has held, and we are once again above the 100-day MA.",
+   "topic": "US equity technical levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "The key level to watch for NDX is a break above its shorter-term falling trend line.",
+   "anchor": "Watch closely for a break above the shorter-term falling trend line.",
+   "topic": "US equity technical levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "Pressure has continued to build inside NDX's triangle formation, and any breakout risks becoming aggressive.",
+   "anchor": "Pressure has continued to build inside this dynamic formation, and any breakout risks becoming aggressive.",
+   "topic": "US equity technical levels",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "SPX remains stuck in the range that has held since May, having just bounced off its 100-day moving average, with no medium-term trend established.",
+   "anchor": "SPX remains stuck inside the range that has held since May. We just bounced off the 100-day MA, but a medium-term trend is still lacking.",
+   "topic": "US equity technical levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "Russell is down at a massive long-term trend line with its 200-day moving average slightly lower, and small caps have been punished by the rise in rates.",
+   "anchor": "Russell is down at the massive long-term trend line, with the 200-day MA slightly lower. Small caps have been punished by the rise in rates.",
+   "topic": "US equity technical levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "A pullback in yields could quickly bring buyers back into small caps.",
+   "anchor": "Any pullback in yields could quickly bring buyers back into small caps.",
+   "topic": "US equity technical levels",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "Oil has driven rates, which in turn have driven equities.",
+   "anchor": "Oil has driven rates, which in turn have driven equities.",
+   "topic": "US equity technical levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "stocks are trapped and the pressure is building",
+   "claim": "The Russell has been more affected by the oil-to-rates-to-equities chain than other US indices.",
+   "anchor": "Some, such as the Russell, have been more affected than others.",
+   "topic": "US equity technical levels",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-19/17026__stocks-are-trapped-and-the-pressure-is-building.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
