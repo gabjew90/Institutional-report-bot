@@ -1,0 +1,25 @@
+{
+ "brief": "Document text extraction failed: the source file contains only page markers with no body content. No text is available to summarize.",
+ "cards": [],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-19/17148__fed-monetary-policy-update-17-09-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 0,
+  "matched": 0,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 0,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
