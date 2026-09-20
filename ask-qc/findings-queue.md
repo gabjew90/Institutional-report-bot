@@ -536,3 +536,36 @@ fabrication. Full reasoning in `pulse-data/ask-qc/2026-09-17.claude.md`.
   parallel Gemini-job report for this date (4 of its 5 FAILs look like
   judge-noise on inspection — not filed here since they aren't bot
   defects, just noted for awareness).
+
+## 2026-09-19
+
+- **(open) judgment** — fabricated MSTR price/volume figures at
+  01:52:14 UTC (DarkMark, "Mstr was @BK (bankerkyle) call not mine").
+  `LOCAL/FACT` turn called `lookup_price_history(symbol=MSTR)` and got
+  real data back (`status=ok`, 6,748 chars) — a correctly-targeted,
+  successful tool call, not a missing or empty one — yet the answer's
+  headline figures (+16.4%, $153.92, 54M shares) don't trace to that
+  payload at all, per the production `figure-provenance` guard's own
+  `all-unsourced` verdict logged on the turn. The guard is working as
+  coded: on an all-unsourced answer it can't strip individual lines
+  without leaving nothing, so per `discord_bot/bot.py`'s documented
+  behavior it ships the answer with `_UNVERIFIED_HEDGE` appended
+  rather than suppressing the invented numbers. That's a real
+  fabrication (confirmed by the pipeline's own instrumentation, not
+  judge inference) landing inside a deliberately-designed fallback,
+  not a gap in detection — the open question is whether "state the
+  fabricated number as the headline, then footnote it as unconfirmed"
+  is the right fallback versus rewriting the line to drop the specific
+  figures outright. `scripts/validate_answer.py` returns no violation
+  (that file's rule classes don't cover figure-provenance at all — it
+  lives separately in `discord_bot/figure_provenance.py`), so this
+  isn't drafted as a fixture; it's prompt/guard-design material for a
+  work session. Confirmed not predates-class: the guard's
+  `all-unsourced` branch shipped 2026-09-18T19:06:48Z, before this
+  01:52:14Z turn. Full reasoning in
+  `pulse-data/ask-qc/2026-09-19.claude.md`, which also flags that the
+  parallel Gemini-job report for this date reaches the same overall
+  FAIL verdict on this turn but via an incorrect reading of the tools
+  table (it claims no MSTR lookup happened at all, missing the second
+  tool-table row) — right verdict, wrong reasoning, worth watching if
+  it recurs on other dates.
