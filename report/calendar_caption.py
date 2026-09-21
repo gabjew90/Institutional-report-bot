@@ -7,11 +7,11 @@ icon per block so the eye finds the section it wants.
 
     📅 Tomorrow's market calendar · Tuesday 9/22
 
-    🔔 Before the open: #JPM #WFC #ABT
-    🌙 After the close: #NFLX #UAL
+    🔔 Before the open: $JPM, WFC, ABT
+    🌙 After the close: NFLX, UAL
 
     📊 Data (ET): 8:30 AM CPI, Core CPI · 2:00 PM FOMC Minutes
-    🎤 Conferences: Morgan Stanley TMT (#NVDA #AMD)
+    🎤 Conferences: Morgan Stanley TMT (NVDA, AMD)
 
 "TOMORROW" ONLY WHEN IT IS. The sheet posts at 3 PM ET for the next
 trading day. On a Friday that is Monday, and before a holiday it skips
@@ -19,14 +19,16 @@ the closed day, so the heading says "Tomorrow's" only when the covered
 date is the next calendar day and names the weekday otherwise
 ("Monday's market calendar · 9/28").
 
-EVERY TICKER IS A HASHTAG, AND THERE ARE NO CASHTAGS (owner pick,
-2026-09-21). X refuses a self-serve API post with more than one
-cashtag: the first live test came back HTTP 403, "Posts are limited to
-a maximum of one cashtag ($SYMBOL)", with five in the earnings line.
-Hashtags have no such cap; X's guidance is two per post and it calls
-overuse spammy, and the owner chose clickable tickers knowing a busy
-day can carry a dozen. `x_client.enforce_cashtag_limit` is the
-post-time backstop if a `$` ever slips back in.
+ONE CASHTAG, ON THE BIGGEST BOLD NAME; NO HASHTAGS (owner, 2026-09-21,
+replacing an all-hashtags version that ran for one post). Cashtags go
+on the names the sheet renders bold, but X refuses a self-serve API
+post with more than one: the first live test came back HTTP 403,
+"Posts are limited to a maximum of one cashtag ($SYMBOL)", with five in
+the earnings line. So the single cashtag goes to the bold earnings name
+with the largest market cap (a bold conference name when no earnings
+row is bold), every other ticker is plain, and a day with nothing bold
+carries none. `x_client.enforce_cashtag_limit` is the post-time
+backstop.
 
 Built greedily and trimmed from the least important end: unimportant
 econ rows first, then tickers past the first few per session (the
@@ -53,8 +55,23 @@ def x_length(text: str) -> int:
     return sum(2 if ord(ch) > 0xFFFF else 1 for ch in text)
 
 
-def _tags(symbols) -> str:
-    return " ".join(f"#{s}" for s in symbols)
+def cashtag_name(day) -> str | None:
+    """The one name that gets a `$`: the bold earnings row with the
+    largest market cap, else the first bold conference name (on the
+    major-ticker list, which is what bolds it on the sheet), else None."""
+    bold = [r for r in list(day.bmo) + list(day.amc) if getattr(r, "important", False)]
+    if bold:
+        return max(bold, key=lambda r: float(getattr(r, "cap_musd", 0) or 0)).symbol
+    from report.news_data import _MAJOR_TICKERS
+    for c in getattr(day, "conferences", None) or []:
+        for t in c.tickers:
+            if t in _MAJOR_TICKERS:
+                return t
+    return None
+
+
+def _tags(symbols, lead: str | None = None) -> str:
+    return ", ".join(f"${s}" if s == lead else s for s in symbols)
 
 
 def _time_12h(t: str) -> str:
@@ -88,14 +105,14 @@ def _heading(day, today_iso: str | None) -> str:
     return f"{ICON_TITLE} {weekday}'s market calendar · {md}"
 
 
-def _earn_lines(day, max_each: int) -> list[str]:
+def _earn_lines(day, max_each: int, lead: str | None) -> list[str]:
     out = []
     if day.bmo:
         out.append(f"{ICON_BMO} Before the open: "
-                   + _tags(r.symbol for r in day.bmo[:max_each]))
+                   + _tags((r.symbol for r in day.bmo[:max_each]), lead))
     if day.amc:
         out.append(f"{ICON_AMC} After the close: "
-                   + _tags(r.symbol for r in day.amc[:max_each]))
+                   + _tags((r.symbol for r in day.amc[:max_each]), lead))
     return out
 
 
@@ -110,13 +127,13 @@ def _econ_line(day, important_only: bool) -> str:
         f"{_time_12h(t)} {', '.join(evs)}" for t, evs in by_time.items())
 
 
-def _conf_line(day, max_tickers: int) -> str:
+def _conf_line(day, max_tickers: int, lead: str | None = None) -> str:
     rows = getattr(day, "conferences", None) or []
     if not rows:
         return ""
     bits = []
     for c in rows:
-        t = _tags(c.tickers[:max_tickers])
+        t = _tags(c.tickers[:max_tickers], lead)
         bits.append(f"{c.conference}" + (f" ({t})" if t else ""))
     return f"{ICON_CONF} Conferences: " + " · ".join(bits)
 
@@ -139,12 +156,20 @@ def calendar_caption(day, today_iso: str | None = None) -> str:
         (False, 8, 6), (True, 8, 6), (True, 6, 4), (True, 5, 3),
         (True, 4, 0), (True, 3, 0), (True, 2, 0), (True, 0, 0),
     ]
+    lead = cashtag_name(day)
+    earn_syms = {r.symbol for r in list(day.bmo) + list(day.amc)}
     for important_only, max_each, max_conf in variants:
+        shown = {r.symbol for r in list(day.bmo[:max_each]) + list(day.amc[:max_each])}
+        # the `$` lands exactly once: in the earnings lines when the lead
+        # is shown there, else in the conference line
+        conf_lead = lead if lead not in shown else None
+        if lead in earn_syms and lead not in shown:
+            conf_lead = None  # trimmed off the earnings line; no `$` today
         blocks = [
             [title],
-            _earn_lines(day, max_each) if max_each else [],
+            _earn_lines(day, max_each, lead) if max_each else [],
             [l for l in (_econ_line(day, important_only),
-                         _conf_line(day, max_conf) if max_conf else "") if l],
+                         _conf_line(day, max_conf, conf_lead) if max_conf else "") if l],
         ]
         text = _assemble(blocks)
         if x_length(text) <= X_LIMIT:

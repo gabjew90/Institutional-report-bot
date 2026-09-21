@@ -3145,3 +3145,9 @@ ticker a hashtag (owner pick over one-cashtag and bold-names-only
 options; X's guidance is two hashtags per post and it was shown the
 tradeoff), 12-hour ET times, emoji counted as two toward 280.
 `x_client.enforce_cashtag_limit` strips any second cashtag at post time.
+
+X caption, same day, owner: no hashtags, cashtags on the bold names
+only. X's one-cashtag cap means one bold name gets it: the bold earnings
+row with the largest market cap, else the first bold conference name;
+all other tickers plain, comma-separated. A day with nothing bold has no
+cashtag. The all-hashtags version ran for one post (9/22 test).

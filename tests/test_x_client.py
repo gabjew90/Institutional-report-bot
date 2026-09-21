@@ -63,15 +63,15 @@ def test_caption_fits_280_and_keeps_the_important_parts():
     text = calendar_caption(_day(), today_iso=EVE)
     assert x_length(text) <= X_LIMIT
     assert text.startswith("\U0001F4C5 Tomorrow's market calendar · Friday 9/11\n\n")
-    assert "Before the open: #B0 #B1" in text
-    assert "After the close: #A0 #A1" in text
+    assert "Before the open: B0, B1" in text
+    assert "After the close: A0, A1" in text
     assert "Data (ET): 8:30 AM Core CPI m/m, CPI y/y" in text
-    assert "GS Communacopia" in text and "#MSFT" in text
+    assert "GS Communacopia" in text and "MSFT" in text
     # a crowded day trims but never overflows, and keeps the first names
     busy = _day(n_bmo=15, n_amc=15)
     text = calendar_caption(busy, today_iso=EVE)
     assert x_length(text) <= X_LIMIT
-    assert "Core CPI" in text and "#B0" in text and "#A0" in text
+    assert "Core CPI" in text and "B0" in text and "A0" in text
 
 
 def test_the_heading_says_tomorrow_only_when_it_is():
@@ -87,17 +87,36 @@ def test_the_heading_says_tomorrow_only_when_it_is():
     assert "Tomorrow" not in head(mon, "2026-09-25")
 
 
-def test_every_ticker_is_a_hashtag_and_none_is_a_cashtag():
-    """Owner pick 2026-09-21 (option B). X refuses more than one cashtag
-    on a self-serve API post, and the first live test failed on five."""
+def test_one_cashtag_on_the_biggest_bold_name_and_no_hashtags():
+    """Owner, 2026-09-21: cashtags on the bolded names only, no
+    hashtags. X refuses more than one cashtag on a self-serve API post
+    (the first live test failed on five), so the biggest bold name gets
+    it and the other bold names are plain."""
     import re as _re
-    for d in (_day(), _day(n_bmo=15, n_amc=15), _day(conf=False)):
-        text = calendar_caption(d, today_iso=EVE)
-        assert not _re.search(r"\$[A-Za-z]", text), text
-        for line in text.splitlines():
-            if "Before the open: " in line or "After the close: " in line:
-                for tok in line.split(": ", 1)[1].split(" "):
-                    assert tok.startswith("#"), (tok, line)
+    from report.calendar_caption import cashtag_name
+    cash = lambda t: _re.findall(r"\$([A-Za-z]+)", t)
+    d = _day()
+    d.bmo[1] = EarnRow(symbol="KR", name="Kroger", cap_musd=40_000, important=True)
+    d.amc[0] = EarnRow(symbol="ORCL", name="Oracle", cap_musd=650_000, important=True)
+    assert cashtag_name(d) == "ORCL", "largest cap among the bold names"
+    text = calendar_caption(d, today_iso=EVE)
+    assert cash(text) == ["ORCL"]
+    assert "KR" in text and "$KR" not in text, "other bold names stay plain"
+    assert "#" not in text
+    # nothing bold in earnings: a bold conference name takes it, once
+    assert cash(calendar_caption(_day(), today_iso=EVE)) == ["MSFT"]
+    # nothing bold anywhere: no cashtag at all
+    assert cash(calendar_caption(_day(conf=False), today_iso=EVE)) == []
+    # the lead is listed in earnings AND a conference: still one `$`
+    d2 = _day()
+    d2.bmo[0] = EarnRow(symbol="MSFT", name="Microsoft", cap_musd=3_000_000, important=True)
+    assert cash(calendar_caption(d2, today_iso=EVE)) == ["MSFT"]
+    # crowded day: never more than one
+    busy = _day(n_bmo=15, n_amc=15)
+    for i in range(6):
+        busy.bmo[i] = EarnRow(symbol=f"BIG{i}", name="x", cap_musd=100_000 + i, important=True)
+    t = calendar_caption(busy, today_iso=EVE)
+    assert len(cash(t)) <= 1 and x_length(t) <= X_LIMIT
 
 
 def test_x_counts_emoji_as_two():
