@@ -1,0 +1,51 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '35%' is attached to [borrowers, earlier, rated, straight, tenth] but the source uses it for [aggregate, consecutive, exceeding, exceeds, marks] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "35%",
+   "draft_subject": [
+    "borrowers",
+    "earlier",
+    "rated",
+    "straight",
+    "tenth"
+   ],
+   "source_subject": [
+    "aggregate",
+    "consecutive",
+    "exceeding",
+    "exceeds",
+    "marks"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.744%' is attached to [call, come, dead, down, hike] but the source uses it for [friday, grapple, higher, hitting, inflation] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.744%",
+   "draft_subject": [
+    "call",
+    "come",
+    "dead",
+    "down",
+    "hike",
+    "passes"
+   ],
+   "source_subject": [
+    "friday",
+    "grapple",
+    "higher",
+    "hitting",
+    "inflation",
+    "markets",
+    "persistent",
+    "returning"
+   ]
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 2,
+ "exit_code": 4
+}
