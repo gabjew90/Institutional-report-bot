@@ -1,0 +1,7346 @@
+[Page 1]
+ 
+BofA Securities does and seeks to do business with issuers covered in its research 
+reports. As a result, investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of this report. Investors should consider this 
+report as only a single factor in making their investment decision. 
+Refer to important disclosures on page 28 to 33. Analyst Certification on page 27. Price 
+Objective Basis/Risk on page 26.  
+ 
+ 
+ 
+ 
+US Semiconductors 
+Rise of the agents: raising CPU TAM 
+(again) to $210bn 
+Price Objective Change 
+   
+ 
+ 
+CPU TAM now $210bn on agentic inflection, +36% CAGR 
+Following Q2 earnings and recent strong AI compute/memory demand trends, we raise 
+our CY30E server CPU TAM to $210bn+ (from ~$170bn).  Notably, this implies nearly 
+5x growth off the ~$35bn CY25 level, and still 2.5x growth off a strong CY26E base 
+given continued inflection across agentic workloads (TAM now +36% CAGR vs. +30% 
+prior).  Critically, agentic inference is pushing the CPU‑to‑GPU ratio from ~1:4 in the 
+training era to, ~1:2 for AI inference, and ultimately toward ~1:1 for agentic AI, as CPUs 
+become the orchestration control plane. As a result, we now see CPUs representing 
+~10% of the overall ~$2.2Tn data center systems TAM by CY30, versus just ~7% in the 
+CY24‑25 training era. With agentic adoption still at low levels and AI compute demand 
+near all‑time highs (per GPU spot rental prices, memory spot prices, capex outlook; see 
+related report here), we continue to view agentic AI as a powerful demand accelerator 
+that expands the CPU opportunity and lifts both x86 incumbents and ARM challengers. 
+Key debate: TAM substitution vs expansion 
+Importantly, we view CPUs are additive to overall system TAM, expanding the compute 
+opportunity as agentic workloads layer new CPU‑dense infrastructure alongside (not 
+instead of) XPUs.  Indeed, today's near‑record GPU rental and memory spot prices 
+suggest an across‑the‑board compute shortage – and with CPUs sitting in the same 
+racks and the same demand loop, that strength likely extends to CPUs too. 
+AMD remains top CPU pick, NVDA overall sector top pick 
+AMD remains our top CPU pick on its wide breadth of portfolio and dual leadership – 
+highest‑frequency (compute/head node rack) and highest core/thread count (agentic AI).  
+For instance, AMD’s Zen 6 Venice CPU features up to 256/512 cores/threads vs. INTC 
+Diamond Rapids 192/192, NVDA Vera 88/176).  We also highlight AMD’s strong Zen 
+6/2nm execution and supply visibility.  We also like INTC given its foundry optionality, 
+incremental Q3 supply ramping into Q4, and gen-on-gen ASP uplift.  NVDA remains our 
+top sector pick on full-stack system leadership.  ARM remains the fastest share gainer, 
+but we view much of the value accrues to the licensees (i.e. NVDA), with its own AGI CPU 
+ramp still further out (CY28-30 for meaningful volume).  QCOM CPU visibility is more 
+limited, in our view, given multiple competition at its key customer. 
+Q2’26 CPU trends in detail 
+Lastly we review Q2'26 CPU trends based on Mercury Research data: 1) For notebooks, 
+Q2 units increased +16% QoQ, +10% YoY. INTC mostly caught up to AMD's growth as it 
+improved availability of its 18A supplies, up +15% QoQ vs. AMD +18% vs. ARM +18%, 
+though INTC ASPs significantly outpaced at +10% QoQ vs. AMD -4%.  2) For desktops, 
+Q2 units -7% QoQ/-19% YoY, with INTC units -11% QoQ (vs. AMD -3%, ARM +11%). As 
+in laptops, desktop ASPs also favored INTC (+10% QoQ) vs. AMD (-9%), driving INTC 
+value share +110bps QoQ to 59.4%.  3) For servers, Q2 units +9% QoQ/+27% YoY, 
+with INTC sales of $5.2bn up +29% QoQ (vs. AMD +21%, ARM est. +17%), driven by 
+strong ASP gains from newer Granite Rapids mix shift. INTC server value share now 
+36.3% (+200bps QoQ), while AMD 29.2% and ARM 34.6% (both near record levels). 
+12 August 2026       
+Equity 
+United States 
+Semiconductors 
+Vivek Arya 
+Research Analyst 
+BofAS 
+vivek.arya@bofa.com 
+Duksan Jang 
+Research Analyst 
+BofAS 
+duksan.jang@bofa.com 
+Michael Mani 
+Research Analyst 
+BofAS 
+michael.mani@bofa.com 
+Liam Pharr 
+Research Analyst 
+BofAS 
+liam.pharr@bofa.com 
+See glossary on page 24. 
+Accessible version 
+
+
+[Page 2]
+ 
+ 
+2 
+US Semiconductors | 12 August 2026 
+ 
+ 
+ Contents 
+AI Compute Table of Hierarchy 
+3 
+$210bn+ Server CPU TAM 
+5 
+Market share outlook analysis 
+6 
+Traditional vs. AI Head Node (Compute) vs. Agentic Rack 
+7 
+CPUs now ~10% of Data Center Systems TAM 
+9 
+AMD: Reiterate Buy, $620 PO 
+10 
+AMD CPU Advantages 
+10 
+Role of CPUs in Agentic AI 
+11 
+CPUs in training 
+11 
+CPUs in inference 
+12 
+CPUs in Agentic AI 
+13 
+Agentic AI is system-led, not CPU or GPU-led 
+14 
+AI CPUs expand system TAM, not replace 
+14 
+Latest 2Q26 CPU Unit/Share Trends 
+16 
+PC client summary charts and tables 
+16 
+Notebook summary charts and tables 
+17 
+Desktop summary charts and tables 
+18 
+Server summary charts and tables 
+19 
+3rd party CPU market unit estimates 
+20 
+BofA CPU market value estimates 
+21 
+PC builds vs. sell-through units 
+22 
+AI 2030 TAM Outlook ~$1.8Tn 
+23 
+Glossary 
+24 
+ 
+ 
+
+
+[Page 3]
+ 
+ 
+US Semiconductors | 12 August 2026
+3
+ 
+ 
+ AI Compute Table of Hierarchy 
+Below, we present our latest table of hierarchy for global data center systems TAM of 
+~$2.2Tn, of which CPUs make up ~$210bn of the total value. 
+Within this, we break out CPUs in three different categories (more detail in following 
+pages): 
+1. 
+Traditional/on-prem/multi-tenant cloud CPUs: ~$30bn 
+2. 
+AI cluster compute/head node CPUs: ~$90bn 
+3. 
+AI agentic standalone node CPUs: ~$90bn 
+ 
+Exhibit 1: Of the total $2.2Tn CY30 DC Systems TAM, CPUs representing ~$210bn of the value: AI CPUs ~$180bn (split roughly 50/50 across compute/head 
+node and agentic AI node) and non-AI CPUs ~$30bn 
+Data Center Systems TAM – Breakout by: AI vs. non-AI; AI CPUs vs. non-AI CPUs 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+ 
+ 
+Storage: 
+$85bn
+AI CPU: 
+$180bn
+AI Accelerators: $1.1Tn                s
+HBM:
+$277bn
+Total Data Center Systems TAM: $2.2Tn 2030E
+AI Data Center Systems TAM: $1.8Tn
+Non-AI DC 
+Systems TAM: 
+$384bn 
+Other: $53bn
+AI Networking: 
+$310bn
+AI Servers: $1.4Tn
+AI Cluster Compute/ 
+Head Nodes:
+$90bn
+AI Agentic 
+Standalone Nodes:
+$90bn
+Trad’l 
+Cloud 
+CPU: 
+$30bn
+
+
+[Page 4]
+ 
+ 
+4 
+US Semiconductors | 12 August 2026 
+ 
+ 
+The below infographic highlights how the role of the CPU evolves across different server 
+architectures: 
+1. 
+Traditional Server: The CPU is the primary "jack-of-all-trades," managing the OS, 
+applications, and direct I/O for general workloads.  (~$30bn CY30E TAM) 
+2. 
+AI Server Cluster: The CPU’s role bifurcates into a Head Node for cluster 
+orchestration and management, and a Compute Node focused on supervising and 
+feeding data to GPUs.  (~$90bn CY30E TAM) 
+3. 
+Agentic Server: The CPU becomes the central orchestrator for autonomous 
+actions, managing the high-level reasoning loops, memory state, and tool 
+integration required for AI agents.  (~$90bn CY30E TAM) 
+ 
+Exhibit 2: We flag three key roles of CPUs in servers: 1. Traditional, 2. AI compute/head node, 3. AI agentic node 
+Role of the CPU in different server architectures 
+Source: BofA Global Research 
+BofA GLOBAL RESEARCH 
+ 
+ 
+
+
+[Page 5]
+ 
+ 
+US Semiconductors | 12 August 2026
+5
+ 
+ 
+$210bn+ Server CPU TAM 
+Given the rising role of CPUs in AI head node (compute node) and agentic AI, we now 
+expect server CPU TAM to reach ~$210bn by CY30E from ~$61bn in CY26 (+36% 
+CAGR), versus prior ~$170bn outlook (+30% CAGR). 
+Notably, we break out the market into 4 different vendor/types: 1) INTC, 2) AMD, 3) 
+ARM (merchant), and 4) ARM (custom/ASIC). 
+- 
+For ARM merchant CPUs, we assume ASPs that are ~1.25x higher than average 
+AMD CPUs, given ARM merchant almost only caters to hyperscale/AI applications, 
+versus AMD mostly hyperscale with a bit of enterprise exposure. 
+- 
+For ARM custom CPUs, we assume ASPs that are ~75% of typical AMD solutions, 
+given continued mix shift toward hyperscale solutions (higher ASPs), but merchant 
+server CPUs typically carry 40-60% GM (i.e. 40-60% is COGS or the cost that 
+AWS/Google would theoretically be paying for their custom CPUs) 
+Exhibit 3: We see total server CPU TAM reaching $210bn+ by CY30 from $61bn in CY26, growing at +36% CAGR 
+Server CPU TAM (by revenue, units, ASP) 
+Server CPU TAM 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+CY26-30 CAGR 
+Revenue ($bn) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Total 
+$19.5 
+$22.5 
+$35.0 
+$61.4 
+$104.6 
+$138.4 
+$170.9 
+$210.6 
+36.1% 
+INTC 
+$13.2 
+$13.6 
+$14.1 
+$20.8 
+$27.8 
+$33.6 
+$39.6 
+$46.3 
+22.2% 
+AMD 
+$5.6 
+$7.1 
+$9.6 
+$17.0 
+$29.1 
+$42.4 
+$52.9 
+$64.6 
+39.6% 
+ARM 
+$0.7 
+$1.8 
+$11.3 
+$23.6 
+$47.7 
+$62.4 
+$78.4 
+$99.7 
+43.4% 
+ARM Merchant 
+$0.0 
+$0.7 
+$10.3 
+$20.4 
+$41.0 
+$50.7 
+$62.6 
+$79.9 
+40.7% 
+NVDA 
+ 
+$0.7 
+$10.3 
+$20.4 
+$39.7 
+$47.4 
+$54.2 
+$59.7 
+30.8% 
+ARM 
+ 
+ 
+ 
+ 
+$0.9 
+$2.2 
+$6.0 
+$15.0 
+ 
+QCOM 
+ 
+ 
+ 
+ 
+$0.4 
+$1.1 
+$2.4 
+$5.3 
+ 
+ARM Custom (Graviton, Axion, Cobalt, etc.) 
+$0.7 
+$1.0 
+$1.0 
+$3.2 
+$6.7 
+$11.7 
+$15.8 
+$19.8 
+57.6% 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Units (mn) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Total 
+24.5 
+24.2 
+29.9 
+38.0 
+51.8 
+63.4 
+72.2 
+82.0 
+21.2% 
+INTC 
+18.5 
+16.9 
+18.5 
+20.2 
+23.4 
+25.6 
+27.5 
+29.3 
+9.7% 
+AMD 
+4.8 
+5.5 
+7.2 
+10.4 
+15.3 
+19.8 
+22.4 
+24.9 
+24.3% 
+ARM 
+1.2 
+1.8 
+4.1 
+7.4 
+13.2 
+18.0 
+22.4 
+27.8 
+39.3% 
+ARM Merchant 
+0.0 
+0.2 
+2.6 
+4.8 
+8.5 
+10.7 
+13.5 
+17.7 
+38.6% 
+NVDA 
+0.0 
+0.2 
+2.6 
+4.8 
+7.9 
+9.5 
+10.6 
+11.5 
+24.3% 
+ARM 
+0.0 
+0.0 
+0.0 
+0.0 
+0.4 
+0.8 
+2.0 
+4.6 
+ 
+QCOM 
+0.0 
+0.0 
+0.0 
+0.0 
+0.2 
+0.4 
+0.8 
+1.6 
+ 
+ARM Custom (Graviton, Axion, Cobalt, etc.) 
+1.2 
+1.6 
+1.5 
+2.6 
+4.7 
+7.3 
+8.9 
+10.1 
+40.6% 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ASP ($) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Total 
+$797 
+$931 
+$1,170 
+$1,615 
+$2,020 
+$2,182 
+$2,367 
+$2,568 
+12.3% 
+INTC 
+$716 
+$804 
+$761 
+$1,028 
+$1,190 
+$1,311 
+$1,442 
+$1,579 
+11.3% 
+AMD 
+$1,164 
+$1,299 
+$1,322 
+$1,635 
+$1,907 
+$2,140 
+$2,364 
+$2,601 
+12.3% 
+ARM 
+$589 
+$998 
+$2,748 
+$3,190 
+$3,624 
+$3,472 
+$3,504 
+$3,582 
+2.9% 
+ARM Merchant 
+ 
+$4,000 
+$4,000 
+$4,246 
+$4,835 
+$4,735 
+$4,647 
+$4,515 
+1.5% 
+NVDA 
+ 
+$4,000 
+$4,000 
+$4,246 
+$5,000 
+$5,000 
+$5,100 
+$5,202 
+5.2% 
+ARM 
+ 
+ 
+ 
+ 
+$2,409 
+$2,681 
+$2,955 
+$3,251 
+ 
+QCOM 
+ 
+ 
+ 
+ 
+$2,409 
+$2,681 
+$2,955 
+$3,251 
+ 
+ARM Custom (Graviton, Axion, Cobalt, etc.) 
+$589 
+$649 
+$666 
+$1,234 
+$1,427 
+$1,609 
+$1,773 
+$1,951 
+12.1% 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Value Share (%) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Total 
+100% 
+100% 
+100% 
+100% 
+100% 
+100% 
+100% 
+100% 
+ 
+INTC 
+68% 
+61% 
+40% 
+34% 
+27% 
+24% 
+23% 
+22% 
+ 
+AMD 
+29% 
+32% 
+27% 
+28% 
+28% 
+31% 
+31% 
+31% 
+ 
+ARM 
+4% 
+8% 
+32% 
+38% 
+46% 
+45% 
+46% 
+47% 
+ 
+ARM Merchant 
+0% 
+3% 
+29% 
+33% 
+39% 
+37% 
+37% 
+38% 
+ 
+NVDA 
+ 
+3% 
+29% 
+33% 
+38% 
+34% 
+32% 
+28% 
+ 
+ARM 
+ 
+ 
+ 
+ 
+1% 
+2% 
+4% 
+7% 
+ 
+QCOM 
+ 
+ 
+ 
+ 
+0% 
+1% 
+1% 
+2% 
+ 
+ARM Custom (Graviton, Axion, Cobalt, etc.) 
+4% 
+5% 
+3% 
+5% 
+6% 
+8% 
+9% 
+9% 
+ 
+Source: BofA Global Research estimates, Mercury Research, IDC 
+BofA GLOBAL RESEARCH 
+
+
+[Page 6]
+ 
+ 
+6 
+US Semiconductors | 12 August 2026 
+ 
+ 
+Market share outlook analysis 
+From a market share perspective, we continue to expect ARM to be the fastest gainer 
+through CY30 as multiple new merchant (i.e. ARM AGI, NVDA Vera, QCOM CPU) and 
+custom (i.e., AWS Graviton 5, Google Axion, Microsoft Cobalt) programs ramp. 
+Exhibit 4: We expect INTC to represent ~22% value share, AMD ~31%, ARM merchant ~38%, ARM 
+custom ~9% by CY30 
+Server CPU TAM ($mn) and Value Market Share Outlook 
+Source: BofA Global Research estimates, Mercury Research, IDC 
+BofA GLOBAL RESEARCH 
+- 
+INTC (~22% value share): We see share declining to just ~22% of total server 
+CPU value by CY30 from ~34% in CY26, though we expect INTC’s continued relative 
+strength in traditional enterprise workloads. 
+However, we see continued $ revenue growth of +20% CAGR between CY26-30, 
+particularly as INTC navigates through the industry-wide supply shortages, benefits 
+from ASP expansion. By CY28, 18A-P-based Coral Rapids should ramp and could 
+begin to narrow the performance gap vs. competition. 
+- 
+AMD (~31% value share): We see share of ~27-31% through CY30, given AMD’s 
+continued performance lead at the high-end (high-frequency, high-core-count AI 
+head node and agentic node), modestly offset by ramps of new ARM-based 
+processors launching beginning CY27E. 
+Particularly, we flag AMD’s leading core count portfolio, given higher core density 
+within a fixed power envelope increases overall aggregate service throughput.  6th 
+gen EPYC Venice will top out at 256 cores, while the current 5th gen Turin tops out 
+at 192 cores, vs. NVDA Vera at 88 cores and INTC’s current Granite Rapids topping 
+at 128 cores and upcoming Diamond Rapids likely maxing at 192 cores. 
+Similar to INTC, we expect AMD to continue benefiting from the x86 ecosystem’s 
+advantages in security and RAS features, important in agentic AI workloads. 
+- 
+ARM (merchant; ~38% value share): We see share rising to ~38% by CY30 from 
+~28% in CY26, led by a continued ramp of NVDA CPUs (in both compute/agentic 
+nodes), as well as new ARM/QCOM merchant solutions ramping in CY27-28. 
+- 
+ARM (custom; ~9% value share): We see share gain toward ~9% by CY30 from 
+<5% in CY23-25 as new custom ARM-based CPU solutions launch and ramp at 
+multiple hyperscalers. Every year, the ARM content/ASP grows as core counts and 
+performance per core grow. 
+ 
+40.4%
+33.9%
+26.6%
+24.3%
+23.2%
+22.0%
+27.4%
+27.7%
+27.8%
+30.6%
+31.0%
+30.7%
+29.3%
+33.2%
+39.2%
+36.6%
+36.6%
+37.9%
+2.9%
+5.2%
+6.4%
+8.4%
+9.2%
+9.4%
+$34,983
+$61,413
+$104,570
+$138,364
+$170,890
+$210,637
+$0
+$20,000
+$40,000
+$60,000
+$80,000
+$100,000
+$120,000
+$140,000
+$160,000
+$180,000
+$200,000
+$220,000
+$240,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Intel
+AMD
+Arm Merchant
+Arm Custom
+
+
+[Page 7]
+ 
+ 
+US Semiconductors | 12 August 2026
+7
+ 
+ 
+On a unit share basis, we expect INTC to remain the largest at ~36% share by CY30. 
+Exhibit 5: We expect INTC to represent ~36% unit share, AMD ~30%, ARM merchant ~22%, and ARM 
+custom ~12% by CY30 
+Server CPU TAM (mn units) and Unit Market Share Outlook 
+Source: BofA Global Research estimates, Mercury Research, IDC 
+BofA GLOBAL RESEARCH 
+ 
+Traditional vs. AI Head Node (Compute) vs. Agentic Rack 
+In the following Exhibit, we also present the $210bn CY30 server CPU TAM in 3 different 
+key workloads: 1) traditional/infrastructure-as-a-service,  2) AI compute node or 
+head node,  and 3) AI agentic standalone CPU node. 
+Particularly, we expect the two AI applications to represent ~50%/50% of the total CPU 
+demand in AI data centers (~$180bn) by CY30, as NVDA recently highlighted. 
+- 
+Traditional/IaaS: This includes the most traditional and conventional CPU use 
+cases for enterprises on-prem and on public cloud. 
+This segment represented the vast majority of the server CPU market in 2010-
+2020, growing ~11-12% CAGR during that period. For the next four years, we 
+expect this growth rate to continue, at ~12% sales CAGR range, or units growing 
+~7-9% CAGR, with ASPs growing ~3-5% CAGR. 
+- 
+AI compute node, head node: This includes CPUs that are attached to GPUs/XPUs 
+and are acting as supporting roles within the compute rack (most pronouncedly 
+NVDA’s NVL72 rack, AMD’s MI455 ‘Helios’ rack, TPUv8 racks).  In other words, these 
+CPUs are used as part of the scale-up domain, facilitating XPU compute. 
+While the vast majority of initial AI CPU use cases (~2022-2026) were 
+compute/head nodes, we anticipate a mix shift toward agentic AI standalone CPU 
+racks over time (2026-2030), eventually the two AI use cases likely representing 
+~50/50 of all AI workloads. 
+- 
+AI agentic standalone CPU node/rack: This includes the new CPU-only 
+standalone racks, such as the NVDA Vera CPX rack which is part of the overall 40-
+rack Vera Rubin SuperPOD.  These CPU-only racks are highly optimized for agentic 
+AI workloads which require sequential processing in tandem with GPU/XPU’s parallel 
+compute processing, and are responsible for orchestration, memory control, I/O, etc. 
+ 
+62.0%
+53.2%
+45.1%
+40.4%
+38.0%
+35.8%
+24.2%
+27.4%
+29.5%
+31.3%
+31.0%
+30.3%
+8.6%
+12.6%
+16.4%
+16.9%
+18.6%
+21.6%
+5.2%
+6.8%
+9.0%
+11.5%
+12.3%
+12.3%
+29.9
+38.0
+51.8
+63.4
+72.2
+82.0
+0
+30
+60
+90
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Intel
+AMD
+Arm Merchant
+Arm Custom
+
+
+[Page 8]
+ 
+ 
+8 
+US Semiconductors | 12 August 2026 
+ 
+ 
+Exhibit 6: Of the $210bn CY30 CPU TAM, we see ~$30bn for traditional/IaaS, ~$90bn for AI compute/head node, ~$90bn for agentic AI CPU racks 
+Server CPU TAM Breakout by Workload 
+ 
+  
+2022 2023 2024 2025 2026 2027 
+2028 2029E 2030E 
+CAGR 
+'20-'25 
+CAGR 
+'26-'30 
+CAGR 
+'10-'20 Notes 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+CPU Sales ($mn) Total 
+$23.9 $19.5 $22.5 $35.0 $61.4 $104.6 $138.4 $170.9 $210.6 
+7.2% 
+36.1% 
+ 
+Bottom-Up Build 
+Intel 
+$18.1 $13.2 $13.6 
+$14.1 
+$20.8 
+$27.8 
+$33.6 
+$39.6 
+$46.3 
+-9.3% 
+22.2% 
+ 
+  
+AMD 
+$5.6 
+$5.6 
+$7.1 
+$9.6 
+$17.0 
+$29.1 
+$42.4 
+$52.9 
+$64.6 
+44.0% 
+39.6% 
+ 
+  
+Arm 
+$0.2 
+$0.7 
+$1.8 
+$11.3 
+$23.6 
+$47.7 
+$62.4 
+$78.4 
+$99.7 
+168.1% 
+43.4% 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+Traditional/IaaS 
+$22.9 $18.0 $17.4 $16.5 $19.0 
+$21.4 
+$24.0 
+$26.9 
+$30.2 
+-7.5% 
+12.2% 
+11.9%   
+Intel 
+$17.3 $12.2 $11.3 
+$10.2 
+$12.0 
+$13.5 
+$15.1 
+$17.0 
+$19.1 
+-14.8% 
+12.4% 
+11.9% 
+  
+AMD 
+$5.4 
+$5.1 
+$5.2 
+$5.3 
+$5.9 
+$6.6 
+$7.3 
+$8.2 
+$9.2 
+27.8% 
+11.8% 
+10.9% 
+  
+Arm 
+$0.2 
+$0.7 
+$0.9 
+$1.0 
+$1.2 
+$1.3 
+$1.5 
+$1.7 
+$1.9 
+66.4% 
+13.4% 
+N/A 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+AI (Compute/Agentic) 
+$1.0 
+$1.5 
+$5.1 
+$18.5 $42.4 
+$83.2 $114.4 $144.0 $180.4 124.1% 
+43.6% 
+ 
+  
+Intel 
+$0.8 
+$1.0 
+$2.4 
+$3.9 
+$8.8 
+$14.3 
+$18.4 
+$22.6 
+$27.2 
+64.9% 
+32.6% 
+ 
+  
+AMD 
+$0.2 
+$0.5 
+$1.9 
+$4.3 
+$11.2 
+$22.5 
+$35.1 
+$44.7 
+$55.5 
+292.4% 
+49.3% 
+ 
+  
+Arm 
+$0.0 
+$0.0 
+$0.9 
+$10.2 
+$22.4 
+$46.4 
+$60.9 
+$76.6 
+$97.7 
+  
+44.5% 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+Compute/Head Node 
+$1.0 
+$1.5 
+$5.1 
+$18.5 $36.0 
+$54.1 
+$68.6 
+$79.2 
+$90.2 
+124.1% 
+25.8% 
+ 
+  
+Intel 
+$0.8 
+$1.0 
+$2.4 
+$3.9 
+$7.5 
+$9.3 
+$11.1 
+$12.4 
+$13.6 
+64.9% 
+16.1% 
+ 
+  
+AMD 
+$0.2 
+$0.5 
+$1.9 
+$4.3 
+$9.5 
+$14.6 
+$21.0 
+$24.6 
+$27.7 
+292.4% 
+30.8% 
+ 
+  
+Arm 
+$0.0 
+$0.0 
+$0.9 
+$10.2 
+$13.3 
+$30.1 
+$36.5 
+$42.2 
+$48.9 
+  
+38.4% 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+Agentic AI Node 
+$0.0 
+$0.0 
+$0.0 
+$0.0 
+$6.4 
+$29.1 
+$45.8 
+$64.8 
+$90.2 
+  
+94.1% 
+ 
+  
+Intel 
+$0.0 
+$0.0 
+$0.0 
+$0.0 
+$1.3 
+$5.0 
+$7.4 
+$10.2 
+$13.6 
+  
+79.1% 
+ 
+  
+AMD 
+$0.0 
+$0.0 
+$0.0 
+$0.0 
+$1.7 
+$7.9 
+$14.0 
+$20.1 
+$27.7 
+  
+101.7% 
+ 
+  
+Arm 
+$0.0 
+$0.0 
+$0.0 
+$0.0 
+$9.1 
+$16.2 
+$24.4 
+$34.5 
+$48.9 
+  
+52.3% 
+ 
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+CPU Units (mn) 
+Total 
+36.6 
+24.5 
+24.2 
+29.9 
+38.0 
+51.8 
+63.4 
+72.2 
+82.0 
+-3.4% 
+21.2% 
+ 
+Bottom-Up Build 
+Intel 
+30.7 
+18.5 
+16.9 
+18.5 
+20.2 
+23.4 
+25.6 
+27.5 
+29.3 
+-11.0% 
+9.7% 
+ 
+  
+AMD 
+5.4 
+4.8 
+5.5 
+7.2 
+10.4 
+15.3 
+19.8 
+22.4 
+24.9 
+27.2% 
+24.3% 
+ 
+  
+Arm 
+0.4 
+1.2 
+1.8 
+4.1 
+7.4 
+13.2 
+18.0 
+22.4 
+27.8 
+77.8% 
+39.3% 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+Traditional/IaaS 
+35.6 
+23.2 
+20.5 
+20.2 
+21.7 
+23.3 
+25.0 
+26.9 
+28.9 
+-10.6% 
+7.4% 
+9.1% 
+~7-9% CAGR 
+Intel 
+29.9 
+17.6 
+14.8 
+14.0 
+15.0 
+16.1 
+17.2 
+18.4 
+19.7 
+-15.7% 
+7.0% 
+9.3% 
+  
+AMD 
+5.2 
+4.4 
+4.2 
+4.5 
+4.9 
+5.3 
+5.7 
+6.2 
+6.6 
+15.8% 
+8.0% 
+5.9% 
+  
+Arm 
+0.4 
+1.2 
+1.5 
+1.6 
+1.8 
+2.0 
+2.1 
+2.3 
+2.5 
+48.2% 
+9.0% 
+N/A 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+AI (Compute/Agentic) 
+1.0 
+1.3 
+3.7 
+9.7 
+16.3 
+28.5 
+38.4 
+45.3 
+53.1 
+110.0% 
+34.3% 
+ 
+  
+Intel 
+0.8 
+0.9 
+2.2 
+4.5 
+5.2 
+7.3 
+8.4 
+9.1 
+9.6 
+81.0% 
+16.6% 
+ 
+  
+AMD 
+0.2 
+0.4 
+1.3 
+2.7 
+5.5 
+10.0 
+14.1 
+16.2 
+18.2 
+262.3% 
+34.7% 
+ 
+  
+Arm 
+0.0 
+0.0 
+0.3 
+2.5 
+5.6 
+11.2 
+15.8 
+20.0 
+25.3 
+456.3% 
+45.8% 
+ 
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+CPU ASP ($k) 
+Total 
+$0.7 
+$0.8 
+$0.9 
+$1.2 
+$1.6 
+$2.0 
+$2.2 
+$2.4 
+$2.6 
+11.0% 
+12.3% 
+ 
+Bottom-Up Build 
+Intel 
+$0.6 
+$0.7 
+$0.8 
+$0.8 
+$1.0 
+$1.2 
+$1.3 
+$1.4 
+$1.6 
+1.8% 
+11.3% 
+ 
+  
+AMD 
+$1.0 
+$1.2 
+$1.3 
+$1.3 
+$1.6 
+$1.9 
+$2.1 
+$2.4 
+$2.6 
+13.2% 
+12.3% 
+ 
+  
+Arm 
+$0.5 
+$0.6 
+$1.0 
+$2.7 
+$3.2 
+$3.6 
+$3.5 
+$3.5 
+$3.6 
+50.7% 
+2.9% 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+Traditional/IaaS 
+$0.6 
+$0.8 
+$0.8 
+$0.8 
+$0.9 
+$0.9 
+$1.0 
+$1.0 
+$1.0 
+3.4% 
+4.5% 
+2.5% 
+~3-5% CAGR 
+Intel 
+$0.6 
+$0.7 
+$0.8 
+$0.7 
+$0.8 
+$0.8 
+$0.9 
+$0.9 
+$1.0 
+1.0% 
+5.0% 
+2.4% 
+  
+AMD 
+$1.0 
+$1.1 
+$1.2 
+$1.2 
+$1.2 
+$1.2 
+$1.3 
+$1.3 
+$1.4 
+10.3% 
+3.5% 
+4.7% 
+  
+Arm 
+$0.5 
+$0.6 
+$0.6 
+$0.6 
+$0.7 
+$0.7 
+$0.7 
+$0.7 
+$0.8 
+12.3% 
+4.0% 
+N/A 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+AI (Compute/Agentic) 
+$1.0 
+$1.2 
+$1.4 
+$1.9 
+$2.6 
+$2.9 
+$3.0 
+$3.2 
+$3.4 
+6.7% 
+7.0% 
+ 
+  
+Intel 
+$1.0 
+$1.1 
+$1.1 
+$0.9 
+$1.7 
+$2.0 
+$2.2 
+$2.5 
+$2.8 
+-8.9% 
+13.7% 
+ 
+Double-digit CAGR 
+AMD 
+$1.2 
+$1.4 
+$1.5 
+$1.6 
+$2.0 
+$2.3 
+$2.5 
+$2.8 
+$3.0 
+8.3% 
+10.8% 
+ 
+Double-digit CAGR 
+Arm 
+ 
+ 
+$3.2 
+$4.2 
+$4.0 
+$4.1 
+$3.8 
+$3.8 
+$3.9 
+  
+-0.9% 
+ 
+NVDA share declines 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+CPU-XPU Ratio 
+AI CPU Unit TAM 
+1.0 
+1.3 
+3.7 
+9.7 
+16.3 
+28.5 
+38.4 
+45.3 
+53.1 
+110.0% 
+34.3% 
+ 
+Bottom-Up Build 
+XPU Unit TAM 
+4.9 
+6.2 
+11.0 
+16.3 
+23.6 
+28.7 
+29.1 
+32.9 
+35.7 
+39.0% 
+10.9% 
+ 
+AI Accelerator Model 
+AI CPU/XPU Ratio (%) 
+19% 
+20% 
+33% 
+59% 
+69% 
+99% 
+132% 
+138% 
+149% 
+  
+  
+ 
+  
+Source: BofA Global Research estimates, Mercury Research, IDC 
+BofA GLOBAL RESEARCH 
+ 
+ 
+
+
+[Page 9]
+ 
+ 
+US Semiconductors | 12 August 2026
+9
+ 
+ 
+CPUs now ~10% of Data Center Systems TAM 
+At ~$210bn+ TAM, we now believe server CPUs to make up ~10% of overall data center 
+systems TAM over time (vs. prior ~8%), up from a low of <7% in 2024-25 when the 
+value share of AI training was at its peak. 
+Over time, we expect the value of CPUs in DC systems to modestly expand given their 
+roles in AI inference and agentic AI workloads (toward 9-10%), growing faster than other 
+components (such as AI accelerators, HBM memory, networking, connectivity) which also 
+remain critical to the overall system. 
+Exhibit 7: We expect server CPUs to make up ~10% of total DC TAM value over time, expanding over 
+time as their roles increase in agentic AI workloads 
+Server CPU as a % of DC Systems TAM 
+Source: BofA Global Research estimates, Mercury Research, IDC, LightCounting, Gartner 
+BofA GLOBAL RESEARCH 
+For AI specifically, we expect AI CPUs to represent 80%+ of total server CPUs over time. 
+Exhibit 8: Server CPU TAM could reach $210bn+ by CY30E, with AI CPUs representing ~86%  
+Server CPU TAM and AI Server CPU as a % of mix 
+Source: BofA Global Research estimates, Mercury Research, IDC 
+BofA GLOBAL RESEARCH 
+ 
+ 
+$24 
+$20 
+$23 
+$35 
+$61 
+$105 
+$138 
+$171 
+$211 
+$227 
+$238 
+$333 
+$506 
+$791 
+$1,153 
+$1,522 
+$1,862 
+$2,159 
+10.5%
+8.2%
+6.8%
+6.9%
+7.8%
+9.1%
+9.1%
+9.2%
+9.8%
+0.0%
+2.0%
+4.0%
+6.0%
+8.0%
+10.0%
+12.0%
+$0
+$500
+$1,000
+$1,500
+$2,000
+$2,500
+2022
+2023
+2024
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Server CPU ($bn)
+DC Systems TAM
+CPU % of DC
+$23 
+$18 
+$17 
+$16 
+$19 
+$21 
+$24 
+$27 
+$30 
+$1 
+$2 
+$5 
+$19 
+$42 
+$83 
+$114 
+$144 
+$180 
+4%
+8%
+23%
+53%
+69%
+80%
+83%
+84%
+86%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+$0
+$50
+$100
+$150
+$200
+$250
+2022
+2023
+2024
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Non-AI Server CPU ($bn)
+AI Server CPU ($bn)
+AI %
+
+
+[Page 10]
+ 
+ 
+10 
+US Semiconductors | 12 August 2026 
+ 
+ 
+AMD: Reiterate Buy, $620 PO 
+We flag increased server CPU market demand visibility, view AMD as the best positioned 
+CPU vendor (unit/ASP expansion). 
+AMD CPU Advantages 
+As we mentioned in above sections, we highlight AMD’s leading CPU portfolio in both 
+high frequency and core counts. 
+High frequency (5GHz+) 
+For head node (compute node)-type workloads, CPUs with higher single-threaded 
+performance (high-frequency) are key to overall rack performance. 
+NVDA’s Grace (1H23) and Vera (2H26) CPUs were developed specifically for this. While 
+NVDA provides no public disclosure of CPU frequency, third-party benchmarks for Grace 
+point to ~3.35GHz peak perf for the 3-year old CPU.  While slower than AMD Turin’s 
+(4Q24) peak 5.0GHz and INTC Granite Rapids’ (3Q24) peak 4.3GHz, NVDA CPUs also 
+benefit from the tight co-design and co-integration of CPUs and GPUs via fast NVLink 
+C2C connect, as opposed to slower PCIe connectivity for most other CPU vendors. 
+Meanwhile, AMD’s Turin sports up to 5.0GHz peak per-core performance with high-
+frequency (HF) SKUs, while also utilizing its own InfinityFabric interconnect (for GPU-to-
+GPU, GPU-to-CPU) in scale-up. 
+Once the upcoming Venice CPUs launch in 2H26, we expect this single-threaded 
+performance lead to extend, making AMD CPUs ideal for head/compute node in AI scale-
+up clusters outside of the NVDA ecosystem. 
+Exhibit 9: AMD’s Turin leads in peak frequency at 5.0GHz, with the upcoming Venice expected to lead max core count at 256-core/512-thread 
+Major CPU Specs, including max # of cores/threads and peak frequency 
+Vendor 
+INTC 
+INTC 
+AMD 
+AMD 
+NVDA 
+NVDA 
+ARM 
+QCOM 
+AWS 
+GOOGL 
+MSFT 
+Architecture 
+x86 
+x86 
+x86 
+x86 
+ARM 
+ARM 
+ARM 
+ARM 
+ARM 
+ARM 
+ARM 
+Merchant/Custom 
+Merchant 
+Merchant 
+Merchant 
+Merchant 
+Merchant 
+Merchant 
+Merchant 
+Merchant 
+Custom 
+Custom 
+Custom 
+Product 
+Granite Rapids 
+Diamond Rapids 
+Turin 
+Venice 
+Grace 
+Vera 
+AGI 
+TBD 
+Graviton 5 
+Axion 
+Cobalt 
+Process 
+Intel 3 
+Intel 18A 
+TSMC 4nm 
+TSMC 2nm 
+TSMC 4nm 
+TSMC 3nm 
+TSMC 3nm 
+TBD 
+TSMC 3nm 
+- 
+- 
+Launch 
+3Q24 
+3Q26 
+4Q24 
+3Q26 
+2Q23 
+3Q26 
+1Q27 
+2027E 
+2Q26 
+4Q24 
+4Q24 
+Peak Frequency 
+3.9GHz 
+TBD 
+5.0GHz 
+TBD 
+3.35GHz 
+TBD 
+3.7GHz 
+TBD 
+- 
+3.0GHz? 
+3.4GHz 
+Max Cores/Threads 
+128C/256T 
+192C 
+192C/384T 
+256C/512T 
+74C 
+88C/176T 
+136C 
+TBD 
+192C 
+- 
+- 
+Multi-threading 
+Hyper 
+N/A 
+Simultaneous 
+Simultaneous 
+N/A 
+Spatial 
+N/A 
+TBD 
+N/A 
+- 
+- 
+Source: BofA Global Research estimates 
+BofA GLOBAL RESEARCH 
+Core counts (up to 256 cores vs. 88-192 competition) 
+For agentic AI workloads and standalone CPU nodes/racks, CPUs with higher number of 
+cores (and threads via multi-threading) are key to the overall system performance. 
+This is because within a fixed power envelope of a server/rack, higher core density 
+increases overall aggregate service throughput. 
+AMD’s upcoming 6th gen EPYC Venice (2H26) is expected to top out at 256 cores, while 
+the current 5th gen Turin tops out at 192 cores.  This is much higher than NVDA’s 
+upcoming Vera (2H26) at 88 cores, as well as INTC’s current Granite Rapids topping at 
+128 cores and upcoming Diamond Rapids (~2H26) likely maxing at 192 cores. 
+As a result, AMD EPYC CPUs generally lead modeled rack-level results over others, with 
+the EPYC 9965 (“Turin,” 192C) delivering a 2.37x normalized geometric mean advantage 
+over NVDA Vera (88 Olympus cores).  This lead is expected to extend to 3.30x Vera with 
+the EPYC "Venice" (256C).  For context, INTC’s Xeon 6980P (“Granite Rapids-AP,” 128C) 
+also turns in 1.46x over NVDA Vera in high-core-count agentic workloads. 
+
+
+[Page 11]
+ 
+ 
+US Semiconductors | 12 August 2026
+11
+ 
+ 
+Role of CPUs in Agentic AI 
+For much of the AI training era, the compute narrative was dominated by GPUs and 
+custom accelerators. That was appropriate: training large frontier models is highly 
+parallel, matrix-heavy, and accelerator-bound. 
+In that regime, CPUs were necessary but largely secondary — responsible for 
+feeding accelerators, preprocessing data, tokenization, scheduling, storage access, and 
+orchestration. 
+As a result, AI accelerator spend grew far faster than CPU spend particularly between 
+2022 and 2025, and accelerators had become the overwhelming majority of data center 
+compute spend, while CPUs represented a much smaller share. The AI accelerator market 
+had grown at +139% CAGR due a tremendous increase in training demand, vs. server 
+CPUs only +14% CAGR. 
+By 2025, AI accelerators have become 85% of total compute spend and CPUs just 15%, 
+versus accelerators at just 26% (CPUs 74%) in 2021 when the training market had just 
+begun to emerge. 
+Exhibit 10: AI accelerator market grew at a +139% CAGR between 
+2022-2025 from a tremendous rise of AI training demand, vs. CPUs at 
++14% CAGR 
+CPUs vs. AI Accelerators TAM ($bn) 
+Source: BofA Global Research estimates, Mercury Research 
+BofA GLOBAL RESEARCH 
+Exhibit 11: AI accelerators as a % of total data center compute spend 
+has risen to 85% by 2025 (CPUs 15%), from just 26% in 2021 (CPUs 
+74%) before the rise of AI compute demand 
+CPUs vs. AI Accelerators TAM (%) 
+Source: BofA Global Research estimates, Mercury Research 
+BofA GLOBAL RESEARCH 
+ 
+CPUs in training  
+Overall in training, CPUs are responsible for decompression, tokenization, batching, and 
+ultimately feeding the GPUs. CPUs’ main job is to make sure the GPUs/accelerators are 
+utilized as much as possible by constantly preparing and queuing batches, making sure 
+the expensive accelerators are fully in work without bottlenecks. 
+CPUs control the orchestration and preprocessing of data, i.e. they are typically not 
+involved in the actual heavy processing that AI training requires (mostly done in parallel 
+processing by GPUs/accelerators). 
+CPUs essentially perform a secondary or supporting role for the GPUs/accelerators in AI 
+training, hence explaining the decline in the % of value in the overall system (vs. GPUs). 
+ 
+$22.6 
+$24.7 
+$26.2 
+$23.9 
+$19.5 
+$22.5 
+$35.2 
+$3.5 
+$6.0 
+$9.2 
+$14.3 
+$45.0 
+$120.2 
+$196.5 
+$0
+$50
+$100
+$150
+$200
+$250
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+CPUs ($bn)
+AI Accelerators ($bn)
+87%
+81%
+74%
+62%
+30%
+16%
+15%
+13%
+19%
+26%
+38%
+70%
+84%
+85%
+0%
+20%
+40%
+60%
+80%
+100%
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+CPUs
+AI Accelerators
+
+
+[Page 12]
+ 
+ 
+12 
+US Semiconductors | 12 August 2026 
+ 
+ 
+CPUs in inference 
+In AI inference, the role of CPUs has become more broad and extensive.  
+The AI inference process can be broken into three phases: load phase, prefill phase, and 
+decode phase. 
+1. 
+In load or initialization, models are loaded from the disks into the memory, with 
+performance largely dependent on overall disk (I/O) and CPU speed. Weight loading, 
+quantization, and compilation all occur during the load phase, with the latter two 
+(quantization and compilation) much better to be done offline vs. online to avoid 
+runtime overhead. 
+Overall, the role/speed of CPU is key during the load phase of AI inference. 
+2. 
+In prefill, time to first token (TTFT) and KV cache creation are the two main roles, 
+with both prefill time and first token latency heavily dependent on overall 
+compute/large matrix multiplication abilities, i.e. GPU/accelerators and networking 
+rather than CPUs. 
+However, the CPUs do provide a role in tokenization, routing, batching, and memory 
+setup. 
+3. 
+In decode, performance is heavily impacted by KV cache reuse, so optimizing KV 
+cache and/or increasing the bandwidth/capacity of system memory is critical, as 
+such with high-bandwidth SRAM or HBM memory, inference storage context 
+memory (i.e. low-latency storage), or even CXL memory (pooling of system memory) 
+methodology. 
+Here too, increasingly the role of CPUs is increasing in decode because of 
+scheduling, token-by-token control flow, sampling, guardrails, logits processing, 
+memory management, and KV cache routing. 
+Exhibit 12: LLM inference process can also be broken into three phases: load phase, prefill phase, and decode phase 
+LLM Inference Process in Three Phases 
+Source: Intel 
+BofA GLOBAL RESEARCH 
+ 
+ 
+
+
+[Page 13]
+ 
+ 
+US Semiconductors | 12 August 2026
+13
+ 
+ 
+CPUs in Agentic AI 
+In the next phase of AI – production inference, agentic AI, enterprise AI – is structurally 
+even more CPU-intensive. 
+Agentic AI does not simply ask a model one question and receive one answer. It plans, 
+retrieves context, calls tools, manages state, invokes APIs, interacts with databases, 
+routes tasks across models, evaluates intermediate outputs, applies guardrails, and loops 
+until a task is completed. 
+The practical implication is that CPUs become more than “host processors”. They 
+become the control plane of AI inference. 
+In a conventional LLM inference request, the GPU may dominate the prefill and decode 
+compute. But in agentic workflows, a single user request can fan out into many CPU-
+bound subtasks. 
+Intel’s agentic AI commentary describes these systems as multi-step workflows where 
+CPUs manage orchestration, multiple agents, tool integration, state across workflows, 
+and parallel decision trees.  Ciena similarly argues that agentic AI shifts infrastructure 
+beyond a “GPU-only” narrative because orchestration, memory handling, and tool 
+execution increase the role of CPUs and networks in distributed AI workflows. 
+Exhibit 13: CPUs excel in document processing/classification, indexing, and captioning, among other 
+AI workloads 
+Role of CPUs in AI Inference 
+Source: AMD 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+
+
+[Page 14]
+ 
+ 
+14 
+US Semiconductors | 12 August 2026 
+ 
+ 
+Agentic AI is system-led, not CPU or GPU-led 
+However, this does not mean CPUs displace GPUs. 
+We view that agentic AI rather increases the importance of balanced compute: 
+- 
+GPUs and accelerators remain essential for matrix math, large-model inference, 
+high-throughput prefill, dense decoding, and frontier-model reasoning. 
+As we see in current-gen NVDA GB300 NVL72-style racks or next-gen VR200 NVL72-
+style racks/pods, accelerator-heavy architectures remain central today, with GPU 
+throughput and memory capacity still acting as bottlenecks in many workloads.  
+In other words, we expect CPUs to rise in importance alongside accelerators, not instead 
+of them, with system bottlenecks broadening to scheduling, memory management, 
+data movement, retrieval, tool latency, networking, and concurrency. 
+AI CPUs expand system TAM, not replace 
+We see two distinct pieces to the AI CPU opportunity: 
+1. 
+Host CPUs inside GPU/accelerator racks, which scale with accelerator deployments. 
+This is the traditional approach and role of CPUs where they sit in 1 CPU per 2 GPU 
+configuration in modern day compute accelerator racks. 
+2. 
+Incremental CPU-only agentic racks for RAG, tool execution, small/mid-model 
+inference, data processing, scheduling, vector DB/memory services, enterprise 
+workflows, and agent orchestration. 
+Exhibit 14: We see increased significance of CPUs in agentic inference workloads, though we see the role of GPUs/accelerators to remain unchanged 
+Role of CPUs/GPUs in AI Training vs. AI Inference 
+Dimension 
+AI Training 
+Agentic AI Inference 
+Implications 
+CPU role 
+Data prep, tokenization, scheduling, 
+feeding GPUs 
+Planning, routing, batching, tool execution, API calls, memory 
+management, KV cache routing 
+Higher CPU attach and potential standalone CPU racks 
+GPU role 
+Training and high-throughput compute Repeated model calls, prefill, decode, reasoning 
+GPU demand remains intact / expands with more 
+inference calls 
+Dominant 
+workload 
+Large parallel matrix compute 
+Multi-step reasoning, retrieval, tool use, state management 
+CPUs and networking matter more, but accelerators 
+remain essential 
+Primary 
+bottleneck 
+GPU FLOPS, HBM bandwidth, 
+accelerator scale-up 
+GPU inference + CPU orchestration + memory / I/O / tool latency 
+Broader infrastructure TAM 
+Source: BofA Global Research 
+BofA GLOBAL RESEARCH 
+We see the largest new opportunity for CPUs is in agentic orchestration and memory-
+rich inference infrastructure. 
+Even though a traditional GPU compute rack already contains CPUs (currently generally 1 
+CPU per 2 GPU configuration), agentic AI can create additional demand for CPU-dense 
+infrastructure outside the GPU rack – its own CPU-only racks. 
+CPU-only racks 
+These CPU racks may host RAG pipelines, embedding services, vector databases, data 
+preparation, API/tool execution, and small and mid-sized model inference, etc.  
+Particularly, Lenovo and Intel describe CPU-only AI-agent and RAG inference as viable for 
+a meaningful class of enterprise workloads, especially smaller and mid-sized language 
+models, using Intel Xeon 6 and AMX acceleration. 
+Red Hat and Intel similarly argue that inference can use smaller, more cost-effective 
+CPU platforms for certain functional and performance requirements, while CPUs remain 
+the platform of choice for data processing, analytics, and classical ML. 
+Essentially, CPU racks expand the TAM by addressing niche/tail workloads that had 
+previously been too small or inefficient for expensive GPU compute racks to address. 
+ 
+ 
+
+
+[Page 15]
+ 
+ 
+US Semiconductors | 12 August 2026
+15
+ 
+ 
+This is in-line with NVDA’s announcement of its latest Vera CPU-only rack, to launch 
+alongside the Vera Rubin Platform in 2H26. 
+The NVDA Vera CPU rack integrates up to 256 Vera CPUs in a dense, liquid-cooled rack 
+to provide scalable, energy-efficient capacity. Per NVDA, a single rack can test, execute, 
+and validate results from the Vera Rubin NVL72 (compute) and LPX (ultra-low-latency) 
+racks. Ultimately, these Vera CPU racks provide the foundation for large-scale agentic AI 
+and reinforcement learning. 
+Exhibit 15: NVDA will begin offering standalone Vera CPU racks, alongside the Vera Rubin Platform beginning in 2H26, more directly addressing previously 
+unaddressed or overlooked workloads in AI inference 
+Nvidia Vera Rubin SuperPOD with standalone Vera CPU rack 
+Source: Nvidia 
+BofA GLOBAL RESEARCH 
+When stretched out to the entire 40-rack pod cluster, each Vera Rubin POD contains 5 
+different rack-scale systems (as seen above): 1) 1,152 Rubin GPUs (across 16 racks), 2) 
+576 Vera CPUs (as part of the GPU compute racks), and 3) potentially another 512 Vera 
+CPUs (as part of standalone CPU racks, assuming 2 racks per pod). This would total 
+1,088 CPUs to 1,152 GPUs, reaching the roughly 1-to-1 ratio in agentic AI systems. 
+Exhibit 16: Each Vera Rubin pod contains 1,152 Rubin GPUs, 512 Vera CPUs (as part of compute), and potentially another 576 Vera CPUs (standalone) 
+Nvidia Vera Rubin SuperPOD, full pod of 40 racks 
+Source: Nvidia 
+BofA GLOBAL RESEARCH 
+ 
+ 
+
+
+[Page 16]
+ 
+ 
+16 
+US Semiconductors | 12 August 2026 
+ 
+ 
+Latest 2Q26 CPU Unit/Share Trends 
+PC client summary charts and tables  
+Key observations: 
+• 
+Units: Overall PC CPU units +11% QoQ; AMD gained +30bps of unit share QoQ. 
+• 
+ASPs: Overall PC CPU ASPs up +5% QoQ and +19% YoY; we note INTC’s ASPs were 
+up +9% QoQ while AMD’s ASPs were down -6% QoQ. 
+• 
+Sales: Total PC CPU revenue increased +16% QoQ. INTC revenue up +19% QoQ 
+while AMD revenue up +5% QoQ. 
+Exhibit 17: AMD gained +30bp of PC unit share QoQ 
+PC client (notebooks + desktops) MPU unit, revenue, and ASP summary 
+Total PC MPU summary 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+QoQ 
+YoY 
+2023 
+2024 
+2025 
+YoY 
+2026E 
+YoY 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+PC units (mn) 
+72.8 
+76.0 
+77.3 
+67.5 
+74.6 
+10.5% 
+2.5% 
+257.5 
+286.0 
+291.7 
+2.0% 
+286.8 
+-1.7% 
+INTC 
+47.9 
+48.7 
+47.1 
+40.7 
+44.1 
+8.3% 
+-8.1% 
+184.9 
+197.8 
+190.7 
+-3.6% 
+169.1 
+-11.3% 
+AMD 
+15.0 
+16.6 
+19.5 
+17.1 
+19.1 
+11.7% 
+27.1% 
+44.1 
+57.8 
+61.0 
+5.6% 
+73.7 
+20.8% 
+ARM 
+9.8 
+10.7 
+10.7 
+9.7 
+11.4 
+17.3% 
+16.3% 
+28.6 
+30.4 
+40.0 
+31.7% 
+43.9 
+9.8% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+PC sales ($mn) 
+$9,705 
+$10,846 
+$11,012 
+$10,218 
+$11,853 
+16.0% 
+22.1% 
+$33,603 
+$36,695 
+$39,767 
+8.4% 
+$45,484 
+14.4% 
+INTC 
+$6,203 
+$6,830 
+$6,653 
+$6,114 
+$7,245 
+18.5% 
+16.8% 
+$24,942 
+$26,479 
+$25,753 
+-2.7% 
+$27,430 
+6.5% 
+AMD 
+$2,394 
+$2,686 
+$3,016 
+$2,792 
+$2,924 
+4.7% 
+22.1% 
+$5,337 
+$6,673 
+$9,277 
+39.0% 
+$11,648 
+25.6% 
+ARM (est.) 
+$1,107 
+$1,330 
+$1,343 
+$1,311 
+$1,684 
+28.4% 
+52.1% 
+$3,323 
+$3,543 
+$4,737 
+33.7% 
+$6,405 
+35.2% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+PC ASPs ($) 
+$133.3 
+$142.7 
+$142.4 
+$151.4 
+$158.9 
+5.0% 
+19.2% 
+$130.5 
+$128.3 
+$136.3 
+6.2% 
+$158.6 
+16.4% 
+INTC 
+$129.4 
+$140.2 
+$141.1 
+$150.4 
+$164.4 
+9.4% 
+27.1% 
+$134.9 
+$133.9 
+$135.0 
+0.9% 
+$162.2 
+20.1% 
+AMD 
+$159.2 
+$162.1 
+$154.8 
+$163.2 
+$153.0 
+-6.2% 
+-3.9% 
+$121.2 
+$115.5 
+$152.0 
+31.6% 
+$158.0 
+3.9% 
+ARM (est.) 
+$112.9 
+$124.5 
+$125.3 
+$134.7 
+$147.5 
+9.5% 
+30.7% 
+$116.2 
+$116.6 
+$118.4 
+1.6% 
+$145.9 
+23.2% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Unit share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+65.9% 
+64.1% 
+61.0% 
+60.2% 
+59.1% 
+-1.2% 
+-6.8% 
+71.8% 
+69.2% 
+65.4% 
+-3.8% 
+59.0% 
+-6.4% 
+AMD 
+20.7% 
+21.8% 
+25.2% 
+25.3% 
+25.6% 
+0.3% 
+5.0% 
+17.1% 
+20.2% 
+20.9% 
+0.7% 
+25.7% 
+4.8% 
+ARM 
+13.5% 
+14.1% 
+13.9% 
+14.4% 
+15.3% 
+0.9% 
+1.8% 
+11.1% 
+10.6% 
+13.7% 
+3.1% 
+15.3% 
+1.6% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Revenue share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+63.9% 
+63.0% 
+60.4% 
+59.8% 
+61.1% 
+1.3% 
+-2.8% 
+74.2% 
+72.2% 
+64.8% 
+-7.4% 
+60.3% 
+-4.5% 
+AMD 
+24.7% 
+24.8% 
+27.4% 
+27.3% 
+24.7% 
+-2.7% 
+0.0% 
+15.9% 
+18.2% 
+23.3% 
+5.1% 
+25.6% 
+2.3% 
+ARM (est.) 
+11.4% 
+12.3% 
+12.2% 
+12.8% 
+14.2% 
+1.4% 
+2.8% 
+9.9% 
+9.7% 
+11.9% 
+2.3% 
+14.1% 
+2.2% 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 18: We expect AMD to gain +480bps PC unit share in 2026E 
+PC MPU unit market share 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+Exhibit 19: We expect AMD ASPs to increase +16% in 2026E 
+PC MPU ASPs 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM
+$0
+$20
+$40
+$60
+$80
+$100
+$120
+$140
+$160
+$180
+$200
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM (est.)
+
+
+[Page 17]
+ 
+ 
+US Semiconductors | 12 August 2026
+17
+ 
+ 
+Notebook summary charts and tables  
+Key observations: 
+• 
+Units: Notebook units +16% QoQ. AMD gained +40bp of unit share QoQ. 
+• 
+ASPs: AMD ASPs decreased -4% QoQ and up +14% YoY, while INTC’s ASPs 
+increased +10% QoQ and +34% YoY. INTC ASPs back above AMD’s. 
+• 
+Sales: INTC gained +120bp of value share QoQ to 59.1%, down -550bp YoY. 
+Exhibit 20: Notebook MPU units up +16% QoQ 
+Notebook MPU unit, revenue, and ASP summary 
+Notebook x86 MPU summary 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+QoQ 
+YoY 
+2023 
+2024 
+2025 
+YoY 
+2026E 
+YoY 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Notebook units (mn) 
+53.6 
+55.3 
+55.2 
+50.9 
+59.1 
+16.1% 
+10.2% 
+186.1 
+212.2 
+217.1 
+2.3% 
+225.0 
+3.6% 
+INTC 
+35.7 
+35.9 
+33.9 
+30.4 
+34.9 
+14.8% 
+-2.4% 
+130.8 
+146.5 
+139.8 
+-4.6% 
+132.3 
+-5.3% 
+AMD 
+9.3 
+10.1 
+11.9 
+12.0 
+14.2 
+18.1% 
+53.4% 
+31.1 
+40.0 
+41.2 
+2.9% 
+54.1 
+31.4% 
+ARM 
+8.6 
+9.3 
+9.4 
+8.4 
+10.0 
+18.3% 
+16.0% 
+24.2 
+25.7 
+36.1 
+40.7% 
+38.5 
+6.5% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Notebook sales ($mn) 
+$6,480 
+$7,404 
+$7,388 
+$7,499 
+$9,245 
+23.3% 
+42.7% 
+$22,347 
+$24,959 
+$27,545 
+10.4% 
+$35,094 
+27.4% 
+INTC 
+$4,347 
+$4,908 
+$4,670 
+$4,529 
+$5,694 
+25.7% 
+31.0% 
+$16,025 
+$18,032 
+$18,061 
+0.2% 
+$21,350 
+18.2% 
+AMD 
+$1,192 
+$1,352 
+$1,548 
+$1,839 
+$2,085 
+13.4% 
+74.9% 
+$3,653 
+$4,081 
+$5,272 
+29.2% 
+$8,150 
+54.6% 
+ARM (est.) 
+$941 
+$1,143 
+$1,170 
+$1,130 
+$1,465 
+29.6% 
+55.7% 
+$2,669 
+$2,846 
+$4,212 
+48.0% 
+$5,595 
+32.8% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Notebook ASPs ($) 
+$120.9 
+$133.8 
+$133.8 
+$147.4 
+$156.5 
+6.2% 
+29.4% 
+$120.1 
+$117.6 
+$126.9 
+7.9% 
+$156.0 
+22.9% 
+INTC 
+$121.6 
+$136.5 
+$137.8 
+$148.9 
+$163.1 
+9.6% 
+34.2% 
+$122.5 
+$123.1 
+$129.2 
+5.0% 
+$161.3 
+24.8% 
+AMD 
+$128.8 
+$133.9 
+$130.0 
+$153.0 
+$146.9 
+-4.0% 
+14.0% 
+$117.7 
+$101.9 
+$128.0 
+25.6% 
+$150.5 
+17.6% 
+ARM (est.) 
+$109.4 
+$122.9 
+$124.0 
+$134.0 
+$146.8 
+9.6% 
+34.2% 
+$110.2 
+$110.8 
+$116.6 
+5.2% 
+$145.4 
+24.7% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Unit share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+66.7% 
+64.9% 
+61.4% 
+59.8% 
+59.1% 
+-0.7% 
+-7.6% 
+70.3% 
+69.0% 
+64.4% 
+-4.7% 
+58.8% 
+-5.6% 
+AMD 
+17.3% 
+18.2% 
+21.6% 
+23.6% 
+24.0% 
+0.4% 
+6.8% 
+16.7% 
+18.9% 
+19.0% 
+0.1% 
+24.1% 
+5.1% 
+ARM 
+16.0% 
+16.8% 
+17.1% 
+16.6% 
+16.9% 
+0.3% 
+0.8% 
+13.0% 
+12.1% 
+16.6% 
+4.5% 
+17.1% 
+0.5% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Revenue share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+67.1% 
+66.3% 
+63.2% 
+60.4% 
+61.6% 
+1.2% 
+-5.5% 
+71.7% 
+72.2% 
+65.6% 
+-6.7% 
+60.8% 
+-4.7% 
+AMD 
+18.4% 
+18.3% 
+21.0% 
+24.5% 
+22.6% 
+-2.0% 
+4.2% 
+16.3% 
+16.3% 
+19.1% 
+2.8% 
+23.2% 
+4.1% 
+ARM (est.) 
+14.5% 
+15.4% 
+15.8% 
+15.1% 
+15.8% 
+0.8% 
+1.3% 
+11.9% 
+11.4% 
+15.3% 
+3.9% 
+15.9% 
+0.7% 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 21: We model INTC to capture 59% of NB unit market in CY26E 
+Notebook MPU unit market share 
+ 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+Exhibit 22: INTC ASPs now back above AMD’s 
+Notebook MPU ASPs 
+ 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM
+$0
+$20
+$40
+$60
+$80
+$100
+$120
+$140
+$160
+$180
+$200
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM (est.)
+
+
+[Page 18]
+ 
+ 
+18 
+US Semiconductors | 12 August 2026 
+ 
+ 
+Desktop summary charts and tables  
+Key observations: 
+• 
+Units: Desktop units decreased -7% QoQ and down -19% YoY. AMD gained +110bp 
+of unit share QoQ to 31.7%. 
+• 
+ASPs: Overall ASPs +3% QoQ, +0% YoY. AMD’s ASP -9% QoQ, INTC +10%. 
+• 
+Sales: Overall desktop sales decreased -4% QoQ (-19% YoY). INTC gained +110bp 
+of value share QoQ to 59.4% and +190bp YoY. 
+Exhibit 23: Desktop units -7% QoQ; INTC ceded -260bp of unit share QoQ, gained +110bp of revenue share QoQ 
+Desktop MPU unit, revenue, and ASP summary 
+Desktop x86 MPU summary 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+QoQ 
+YoY 
+2023 
+2024 
+2025 
+YoY 
+2026E 
+YoY 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Desktop units (mn) 
+19.2 
+20.6 
+22.1 
+16.6 
+15.5 
+-6.8% 
+-19.2% 
+71.4 
+73.7 
+74.7 
+1.3% 
+61.8 
+-17.2% 
+INTC 
+12.2 
+12.8 
+13.3 
+10.2 
+9.1 
+-10.7% 
+-24.9% 
+54.0 
+51.3 
+51.0 
+-0.7% 
+36.8 
+-27.8% 
+AMD 
+5.8 
+6.5 
+7.6 
+5.1 
+4.9 
+-3.4% 
+-15.1% 
+13.0 
+17.7 
+19.8 
+11.8% 
+19.6 
+-1.2% 
+ARM 
+1.2 
+1.4 
+1.3 
+1.3 
+1.4 
+10.9% 
+18.6% 
+4.4 
+4.7 
+3.9 
+-17.6% 
+5.4 
+40.0% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Desktop sales ($mn) 
+$3,225 
+$3,442 
+$3,624 
+$2,719 
+$2,608 
+-4.1% 
+-19.1% 
+$11,256 
+$11,735 
+$12,222 
+4.1% 
+$10,390 
+-15.0% 
+INTC 
+$1,856 
+$1,922 
+$1,983 
+$1,586 
+$1,550 
+-2.3% 
+-16.5% 
+$8,917 
+$8,446 
+$7,692 
+-8.9% 
+$6,081 
+-20.9% 
+AMD 
+$1,202 
+$1,334 
+$1,468 
+$953 
+$839 
+-12.0% 
+-30.2% 
+$1,684 
+$2,592 
+$4,004 
+54.5% 
+$3,499 
+-12.6% 
+ARM (est.) 
+$166 
+$186 
+$173 
+$181 
+$220 
+21.4% 
+31.9% 
+$655 
+$697 
+$526 
+-24.6% 
+$810 
+54.1% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Desktop ASPs ($) 
+$168.1 
+$166.8 
+$163.9 
+$163.5 
+$168.3 
+2.9% 
+0.1% 
+$157.6 
+$159.2 
+$163.7 
+2.8% 
+$168.1 
+2.7% 
+INTC 
+$152.3 
+$150.3 
+$149.6 
+$154.7 
+$169.4 
+9.5% 
+11.2% 
+$165.1 
+$164.7 
+$151.0 
+-8.3% 
+$165.3 
+9.5% 
+AMD 
+$207.8 
+$206.1 
+$193.9 
+$187.4 
+$170.8 
+-8.8% 
+-17.8% 
+$129.5 
+$146.2 
+$201.9 
+38.1% 
+$178.6 
+-11.6% 
+ARM (est.) 
+$137.1 
+$135.3 
+$134.7 
+$139.3 
+$152.5 
+9.5% 
+11.2% 
+$148.9 
+$148.1 
+$135.6 
+-8.4% 
+$149.3 
+10.1% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Unit share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+63.5% 
+62.0% 
+60.0% 
+61.6% 
+59.0% 
+-2.6% 
+-4.5% 
+75.6% 
+69.6% 
+68.2% 
+-1.3% 
+59.5% 
+-8.7% 
+AMD 
+30.2% 
+31.4% 
+34.2% 
+30.6% 
+31.7% 
+1.1% 
+1.5% 
+18.2% 
+24.0% 
+26.6% 
+2.5% 
+31.7% 
+5.1% 
+ARM 
+6.3% 
+6.7% 
+5.8% 
+7.8% 
+9.3% 
+1.5% 
+3.0% 
+6.2% 
+6.4% 
+5.2% 
+-1.2% 
+8.8% 
+3.6% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Revenue share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+57.6% 
+55.8% 
+54.7% 
+58.3% 
+59.4% 
+1.1% 
+1.9% 
+79.2% 
+72.0% 
+62.9% 
+-9.0% 
+58.5% 
+-4.4% 
+AMD 
+37.3% 
+38.8% 
+40.5% 
+35.0% 
+32.2% 
+-2.9% 
+-5.1% 
+15.0% 
+22.1% 
+32.8% 
+10.7% 
+33.7% 
+0.9% 
+ARM (est.) 
+5.2% 
+5.4% 
+4.8% 
+6.7% 
+8.4% 
+1.8% 
+3.3% 
+5.8% 
+5.9% 
+4.3% 
+-1.6% 
+7.8% 
+3.5% 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 24: AMD share in desktops up YoY 
+Desktop MPU unit market share 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+Exhibit 25: AMD ASPs now above INTC’s 
+Desktop MPU ASPs 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+ 
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM
+$0
+$50
+$100
+$150
+$200
+$250
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM (est.)
+
+
+[Page 19]
+ 
+ 
+US Semiconductors | 12 August 2026
+19
+ 
+ 
+Server summary charts and tables  
+Key observations: 
+• 
+Units: Overall server CPU units up +9% QoQ (up +27% YoY). AMD gained +90bp of 
+unit share QoQ to 28.4% (up +450bp YoY). 
+• 
+ASPs: AMD ASPs up +7% QoQ (up +23% YoY) while INTC’s up +22% QoQ; AMD 
+server ASPs still at a very strong ~50% premium to INTC. 
+• 
+Sales: Server CPU sales increased +22% QoQ and up +79% YoY. INTC gained 
++200bp of value share QoQ to 36.3% (down -400bp YoY). 
+Exhibit 26: Server MPU units up +9% QoQ 
+Server MPU unit, revenue, and ASP summary 
+Server x86 MPU summary 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+QoQ 
+YoY 
+2023 
+2024 
+2025 
+YoY 
+2026E 
+YoY 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Server units (mn) 
+7.2 
+7.4 
+8.1 
+8.4 
+9.2 
+8.9% 
+27.1% 
+24.5 
+24.2 
+29.9 
+23.5% 
+38.0 
+27.2% 
+INTC 
+4.6 
+4.6 
+4.7 
+4.7 
+5.0 
+6.2% 
+7.2% 
+18.5 
+16.9 
+18.5 
+9.4% 
+20.2 
+9.1% 
+AMD 
+1.7 
+1.8 
+2.0 
+2.3 
+2.6 
+12.5% 
+50.7% 
+4.8 
+5.5 
+7.2 
+32.0% 
+10.4 
+43.9% 
+ARM 
+0.9 
+1.1 
+1.3 
+1.4 
+1.6 
+12.0% 
+86.3% 
+1.2 
+1.8 
+4.1 131.2% 
+7.4 
+80.0% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Server sales ($mn) 
+$7,972 
+$8,999 
+$10,424 
+$11,662 
+$14,243 22.1% 
+78.7% 
+$19,538 
+$22,531 
+$34,983 
+55.3% 
+$61,413 
+75.5% 
+INTC 
+$3,209 
+$3,595 
+$4,057 
+$4,000 
+$5,167 
+29.2% 
+61.0% 
+$13,250 
+$13,635 
+$14,122 
+3.6% 
+$20,792 
+47.2% 
+AMD 
+$2,249 
+$2,342 
+$2,856 
+$3,440 
+$4,152 
+20.7% 
+84.7% 
+$5,582 
+$7,122 
+$9,573 
+34.4% 
+$17,037 
+78.0% 
+ARM (est.) 
+$2,514 
+$3,062 
+$3,512 
+$4,223 
+$4,923 
+16.6% 
+95.8% 
+$706 
+$1,773 
+$11,288 536.6% 
+$23,584 108.9% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Server ASPs ($) 
+$1,102.2 
+$1,208.9 
+$1,294.3 
+$1,381.6 
+$1,548.9 12.1% 
+40.5% 
+$797.3 
+$930.7 
+$1,170.2 
+25.7% 
+$1,614.5 
+38.0% 
+INTC 
+$693.5 
+$784.7 
+$858.7 
+$856.8 
+$1,042.0 
+21.6% 
+50.3% 
+$715.7 
+$804.5 
+$761.4 
+-5.3% 
+$1,028.0 
+35.0% 
+AMD 
+$1,296.0 
+$1,330.8 
+$1,413.8 
+$1,479.4 
+$1,587.9 
+7.3% 
+22.5% 
+$1,164.0 
+$1,298.9 
+$1,322.2 
+1.8% 
+$1,635.4 
+23.7% 
+ARM (est.) 
+$2,889.1 
+$2,777.2 
+$2,680.7 
+$2,916.3 
+$3,036.0 
+4.1% 
+5.1% 
+$589.3 
+$998.2 
+$2,748.0 175.3% 
+$3,189.7 
+16.1% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Unit share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+64.0% 
+61.5% 
+58.7% 
+55.3% 
+53.9% 
+-1.4% -10.1% 
+75.5% 
+70.0% 
+62.0% 
+-8.0% 
+53.2% 
+-8.9% 
+AMD 
+24.0% 
+23.6% 
+25.1% 
+27.5% 
+28.4% 
+0.9% 
+4.5% 
+19.6% 
+22.6% 
+24.2% 
+1.6% 
+27.4% 
+3.2% 
+ARM 
+12.0% 
+14.8% 
+16.3% 
+17.2% 
+17.6% 
+0.5% 
+5.6% 
+4.9% 
+7.3% 
+13.7% 
+6.4% 
+19.4% 
+5.7% 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Revenue share 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC 
+40.3% 
+39.9% 
+38.9% 
+34.3% 
+36.3% 
+2.0% 
+-4.0% 
+67.8% 
+60.5% 
+40.4% 
+-20.2% 
+33.9% 
+-6.5% 
+AMD 
+28.2% 
+26.0% 
+27.4% 
+29.5% 
+29.2% 
+-0.3% 
+0.9% 
+28.6% 
+31.6% 
+27.4% 
+-4.2% 
+27.7% 
+0.4% 
+ARM (est.) 
+31.5% 
+34.0% 
+33.7% 
+36.2% 
+34.6% 
+-1.6% 
+3.0% 
+3.6% 
+7.9% 
+32.3% 
+24.4% 
+38.4% 
+6.1% 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+Exhibit 27: ARM is on track to take >30% unit share in a few years 
+Server MPU Units 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+Exhibit 28: AMD server ASPs are well above INTC 
+Server MPU ASPs 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM
+$150
+$450
+$750
+$1,050
+$1,350
+$1,650
+$1,950
+$2,250
+$2,550
+$2,850
+$3,150
+$3,450
+$3,750
+$4,050
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+INTC
+AMD
+ARM (est.)
+
+
+[Page 20]
+ 
+ 
+20 
+US Semiconductors | 12 August 2026 
+ 
+ 
+3rd party CPU market unit estimates 
+Exhibit 29: Per Mercury, Arm PC unit share should remain near ~15% long-term, servers also ~15-16% 
+Mercury Research estimate and forecast for Arm MPU share vs. INTC and AMD 
+Total PC MPU summary 
+1Q25 2Q25 3Q25 4Q25 1Q26 2Q26 3Q26E 4Q26E 1Q27E 2Q27E 3Q27E 4Q27E   2025 2026 2027 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+PC units (mn) 
+71.8 
+72.8 
+76.0 
+77.3 
+67.5 
+74.6 
+76.2 
+77.8 
+72.8 
+74.9 
+77.9 
+79.7   
+297.9 
+296.1 
+305.4 
+INTC 
+46.9 
+47.9 
+48.7 
+47.1 
+40.7 
+44.1 
+45.7 
+46.4 
+43.0 
+44.3 
+46.0 
+46.8   
+190.7 
+176.8 
+180.1 
+AMD 
+14.9 
+15.0 
+16.6 
+19.5 
+17.1 
+19.1 
+19.1 
+20.0 
+18.6 
+19.1 
+20.2 
+21.3   
+66.0 
+75.4 
+79.1 
+ARM 
+10.0 
+9.8 
+10.7 
+10.7 
+9.7 
+11.4 
+11.3 
+11.4 
+11.3 
+11.6 
+11.6 
+11.7   
+41.2 
+43.9 
+46.2 
+Unit share 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+INTC 
+65.3% 
+65.9% 
+64.1% 
+61.0% 
+60.2% 
+59.1% 
+60.0% 
+59.6% 
+59.0% 
+59.1% 
+59.1% 
+58.6%   
+64.0% 
+59.7% 
+59.0% 
+AMD 
+20.7% 
+20.7% 
+21.8% 
+25.2% 
+25.3% 
+25.6% 
+25.1% 
+25.7% 
+25.5% 
+25.5% 
+25.9% 
+26.7%   
+22.2% 
+25.5% 
+25.9% 
+ARM 
+13.9% 
+13.5% 
+14.1% 
+13.9% 
+14.4% 
+15.3% 
+14.9% 
+14.7% 
+15.5% 
+15.4% 
+14.9% 
+14.7%   
+13.8% 
+14.8% 
+15.1% 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+Notebook MPU summary 
+1Q25 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+3Q26E 
+4Q26E 
+1Q27E 
+2Q27E 
+3Q27E 
+4Q27E   
+2025 
+2026 
+2027 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+Notebook units (mn) 
+52.9 
+53.6 
+55.3 
+55.2 
+50.9 
+59.1 
+60.7 
+61.6 
+58.7 
+60.7 
+62.0 
+62.6   
+217.1 
+232.2 
+244.1 
+INTC 
+34.2 
+35.7 
+35.9 
+33.9 
+30.4 
+34.9 
+36.5 
+36.8 
+34.9 
+36.2 
+37.0 
+37.0   
+139.8 
+138.6 
+145.1 
+AMD 
+9.9 
+9.3 
+10.1 
+11.9 
+12.0 
+14.2 
+14.2 
+14.7 
+13.8 
+14.3 
+14.8 
+15.3   
+41.2 
+55.1 
+58.2 
+ARM 
+8.8 
+8.6 
+9.3 
+9.4 
+8.4 
+10.0 
+10.0 
+10.1 
+10.0 
+10.2 
+10.3 
+10.3   
+36.1 
+38.5 
+40.7 
+Unit share 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+INTC 
+64.6% 
+66.7% 
+64.9% 
+61.4% 
+59.8% 
+59.1% 
+60.1% 
+59.8% 
+59.5% 
+59.6% 
+59.6% 
+59.1%   
+64.4% 
+59.7% 
+59.5% 
+AMD 
+18.8% 
+17.3% 
+18.2% 
+21.6% 
+23.6% 
+24.0% 
+23.4% 
+23.8% 
+23.5% 
+23.6% 
+23.9% 
+24.4%   
+19.0% 
+23.7% 
+23.8% 
+ARM 
+16.6% 
+16.0% 
+16.8% 
+17.1% 
+16.6% 
+16.9% 
+16.5% 
+16.4% 
+17.0% 
+16.8% 
+16.5% 
+16.5%   
+16.6% 
+16.6% 
+16.7% 
+  
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+Desktop MPU summary 
+1Q25 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+3Q26E 
+4Q26E 
+1Q27E 
+2Q27E 
+3Q27E 
+4Q27E   
+2025 
+2026 
+2027 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+Desktop units (mn) 
+18.9 
+19.2 
+20.6 
+22.1 
+16.6 
+15.5 
+15.5 
+16.3 
+14.1 
+14.2 
+15.8 
+17.1   
+80.8 
+63.9 
+61.3 
+INTC 
+12.7 
+12.2 
+12.8 
+13.3 
+10.2 
+9.1 
+9.2 
+9.6 
+8.0 
+8.1 
+9.1 
+9.7   
+51.0 
+38.1 
+34.9 
+AMD 
+5.0 
+5.8 
+6.5 
+7.6 
+5.1 
+4.9 
+4.9 
+5.4 
+4.7 
+4.8 
+5.4 
+6.0   
+24.8 
+20.3 
+20.9 
+ARM 
+1.2 
+1.2 
+1.4 
+1.3 
+1.3 
+1.4 
+1.3 
+1.3 
+1.4 
+1.4 
+1.4 
+1.4   
+5.1 
+5.4 
+5.4 
+Unit share 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+INTC 
+67.4% 
+63.5% 
+62.0% 
+60.0% 
+61.6% 
+59.0% 
+59.4% 
+58.7% 
+56.9% 
+56.8% 
+57.4% 
+56.9%   
+63.1% 
+59.7% 
+57.0% 
+AMD 
+26.2% 
+30.2% 
+31.4% 
+34.2% 
+30.6% 
+31.7% 
+31.9% 
+33.0% 
+33.5% 
+33.5% 
+34.0% 
+35.2%   
+30.7% 
+31.8% 
+34.1% 
+ARM 
+6.4% 
+6.3% 
+6.7% 
+5.8% 
+7.8% 
+9.3% 
+8.7% 
+8.2% 
+9.6% 
+9.6% 
+8.6% 
+7.9%   
+6.3% 
+8.5% 
+8.9% 
+  
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+Server MPU summary 
+1Q25 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+3Q26E 
+4Q26E 
+1Q27E 
+2Q27E 
+3Q27E 
+4Q27E   
+2025 
+2026 
+2027 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+Server units (mn) 
+7.2 
+7.2 
+7.4 
+8.1 
+8.4 
+9.2 
+9.7 
+10.2 
+10.6 
+11.7 
+12.9 
+14.0   
+29.9 
+37.6 
+49.1 
+INTC 
+4.6 
+4.6 
+4.6 
+4.7 
+4.7 
+5.0 
+4.9 
+5.1 
+5.2 
+5.8 
+6.2 
+6.5   
+18.5 
+19.6 
+23.7 
+AMD 
+1.7 
+1.7 
+1.8 
+2.0 
+2.3 
+2.6 
+2.8 
+3.0 
+3.3 
+3.9 
+4.5 
+5.0   
+7.2 
+10.8 
+16.6 
+ARM 
+0.8 
+0.9 
+1.1 
+1.3 
+1.4 
+1.6 
+2.0 
+2.1 
+2.1 
+2.0 
+2.2 
+2.5   
+4.1 
+7.2 
+8.8 
+Unit share 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+INTC 
+64.4% 
+64.0% 
+61.5% 
+58.7% 
+55.3% 
+53.9% 
+50.6% 
+49.9% 
+49.0% 
+49.4% 
+48.1% 
+46.5%   
+62.0% 
+52.3% 
+48.2% 
+AMD 
+24.1% 
+24.0% 
+23.6% 
+25.1% 
+27.5% 
+28.4% 
+28.4% 
+29.8% 
+31.2% 
+33.3% 
+34.6% 
+35.5%   
+24.2% 
+28.6% 
+33.8% 
+ARM 
+11.5% 
+12.0% 
+14.8% 
+16.3% 
+17.2% 
+17.6% 
+21.0% 
+20.2% 
+19.7% 
+17.3% 
+17.3% 
+18.0%   
+13.7% 
+19.1% 
+18.0% 
+  
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+Total MPU summary 
+1Q25 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26 
+3Q26E 
+4Q26E 
+1Q27E 
+2Q27E 
+3Q27E 
+4Q27E   
+2025 
+2026 
+2027 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+PC + Server units (mn) 
+79.0 
+80.0 
+83.4 
+85.4 
+75.9 
+83.8 
+85.9 
+88.0 
+83.4 
+86.6 
+90.7 
+93.7   
+327.8 
+333.6 
+354.5 
+INTC 
+51.5 
+52.6 
+53.3 
+51.9 
+45.3 
+49.0 
+50.6 
+51.5 
+48.2 
+50.1 
+52.2 
+53.3   
+209.3 
+196.4 
+203.7 
+AMD 
+16.6 
+16.8 
+18.3 
+21.5 
+19.4 
+21.7 
+21.9 
+23.1 
+21.9 
+23.0 
+24.7 
+26.2   
+73.2 
+86.1 
+95.7 
+ARM 
+10.8 
+10.7 
+11.8 
+12.0 
+11.2 
+13.0 
+13.4 
+13.5 
+13.4 
+13.6 
+13.8 
+14.2   
+45.3 
+51.1 
+55.0 
+Unit share 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+INTC 
+65.2% 
+65.7% 
+63.9% 
+60.7% 
+59.7% 
+58.5% 
+58.9% 
+58.5% 
+57.7% 
+57.8% 
+57.6% 
+56.8%   
+63.8% 
+58.9% 
+57.5% 
+AMD 
+21.0% 
+21.0% 
+22.0% 
+25.2% 
+25.6% 
+25.9% 
+25.5% 
+26.2% 
+26.2% 
+26.5% 
+27.2% 
+28.0%   
+22.3% 
+25.8% 
+27.0% 
+ARM 
+13.7% 
+13.3% 
+14.1% 
+14.1% 
+14.7% 
+15.6% 
+15.6% 
+15.3% 
+16.1% 
+15.7% 
+15.3% 
+15.2%   
+13.8% 
+15.3% 
+15.5% 
+Source: Mercury Research 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+
+
+[Page 21]
+ 
+ 
+US Semiconductors | 12 August 2026
+21
+ 
+ 
+BofA CPU market value estimates 
+Exhibit 30: We believe AMD’s share in PC/server CPU market could reach ~30% level by CY28E as they gain share across both PCs and servers from 
+INTC, modestly offset by ARM’s meaningful share gain in servers 
+CPU Market TAM and Market Share by Sales 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+CAGR 
+CAGR 
+(5yr) 
+CAGR 
+(10y) 
+CPU TAM ($mn) 
+2017 
+2018 
+2019 
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+CY25-28E CY20-25 
+CY15-25 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+PC + Server CPU TAM ($mn) $48,045 
+$54,455 
+$56,232 
+$63,639 
+$70,262 
+$59,876 
+$53,141 
+$59,225 
+$74,914 $106,897 $151,292 $187,897 
+35.9% 
+3.3% 
+5.4% 
+x86 
+$48,045 
+$54,455 
+$55,919 
+$63,038 
+$67,759 
+$56,518 
+$49,111 
+$53,909 
+$58,725 
+$76,908 
+$96,214 
+$117,164 
+25.9% 
+-1.4% 
+2.9% 
+INTC 
+$46,055 
+$51,661 
+$51,697 
+$56,361 
+$57,537 
+$44,967 
+$38,192 
+$40,114 
+$39,875 
+$48,222 
+$55,103 
+$61,991 
+15.8% 
+-6.7% 
+-0.6% 
+AMD 
+$1,990 
+$2,794 
+$4,222 
+$6,677 
+$10,222 
+$11,551 
+$10,919 
+$13,795 
+$18,849 
+$28,686 
+$41,111 
+$55,173 
+43.0% 
+23.1% 
+26.1% 
+Arm 
+$0 
+$0 
+$313 
+$600 
+$2,503 
+$3,358 
+$4,030 
+$5,316 
+$16,189 
+$29,989 
+$55,078 
+$70,733 
+63.5% 
+93.3% 
+NA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+PC + Server Revenue Share (%) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+x86 Share 
+100.0% 
+100.0% 
+99.4% 
+99.1% 
+96.4% 
+94.4% 
+92.4% 
+91.0% 
+78.4% 
+71.9% 
+63.6% 
+62.4% 
+-7.3% 
+-4.6% 
+-2.4% 
+INTC Share 
+95.9% 
+94.9% 
+91.9% 
+88.6% 
+81.9% 
+75.1% 
+71.9% 
+67.7% 
+53.2% 
+45.1% 
+36.4% 
+33.0% 
+-14.7% 
+-9.7% 
+-5.7% 
+AMD Share 
+4.1% 
+5.1% 
+7.5% 
+10.5% 
+14.5% 
+19.3% 
+20.5% 
+23.3% 
+25.2% 
+26.8% 
+27.2% 
+29.4% 
+5.3% 
+19.1% 
+19.6% 
+Arm Share 
+0.0% 
+0.0% 
+0.6% 
+0.9% 
+3.6% 
+5.6% 
+7.6% 
+9.0% 
+21.6% 
+28.1% 
+36.4% 
+37.6% 
+20.3% 
+87.1% 
+NA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+PC CPU TAM ($mn) 
+$30,489 
+$32,885 
+$33,693 
+$38,946 
+$44,099 
+$36,008 
+$33,603 
+$36,695 
+$39,931 
+$45,484 
+$46,722 
+$49,533 
+7.4% 
+0.5% 
+3.1% 
+x86 
+$30,489 
+$32,885 
+$33,435 
+$38,427 
+$41,723 
+$32,868 
+$30,280 
+$33,152 
+$35,029 
+$39,079 
+$39,348 
+$41,197 
+5.6% 
+-1.8% 
+1.7% 
+INTC 
+$28,540 
+$30,461 
+$30,059 
+$33,298 
+$34,869 
+$26,898 
+$24,942 
+$26,479 
+$25,753 
+$27,430 
+$27,313 
+$28,415 
+3.3% 
+-5.0% 
+-0.7% 
+AMD 
+$1,949 
+$2,424 
+$3,375 
+$5,129 
+$6,854 
+$5,971 
+$5,337 
+$6,673 
+$9,277 
+$11,648 
+$12,035 
+$12,782 
+11.3% 
+12.6% 
+17.7% 
+Arm 
+$0 
+$0 
+$259 
+$519 
+$2,376 
+$3,140 
+$3,323 
+$3,543 
+$4,901 
+$6,405 
+$7,374 
+$8,336 
+19.4% 
+56.7% 
+NA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+PC Revenue Share (%) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+x86 Share 
+100.0% 
+100.0% 
+99.2% 
+98.7% 
+94.6% 
+91.3% 
+90.1% 
+90.3% 
+87.7% 
+85.9% 
+84.2% 
+83.2% 
+-1.8% 
+-2.3% 
+-1.3% 
+INTC Share 
+93.6% 
+92.6% 
+89.2% 
+85.5% 
+79.1% 
+74.7% 
+74.2% 
+72.2% 
+64.5% 
+60.3% 
+58.5% 
+57.4% 
+-3.8% 
+-5.5% 
+-3.7% 
+AMD Share 
+6.4% 
+7.4% 
+10.0% 
+13.2% 
+15.5% 
+16.6% 
+15.9% 
+18.2% 
+23.2% 
+25.6% 
+25.8% 
+25.8% 
+3.6% 
+12.0% 
+14.2% 
+Arm Share 
+0.0% 
+0.0% 
+0.8% 
+1.3% 
+5.4% 
+8.7% 
+9.9% 
+9.7% 
+12.3% 
+14.1% 
+15.8% 
+16.8% 
+11.1% 
+55.9% 
+NA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+Server CPU TAM ($mn) 
+$17,556 
+$21,570 
+$22,538 
+$24,693 
+$26,163 
+$23,868 
+$19,538 
+$22,531 
+$34,983 
+$61,413 $104,570 $138,364 
+58.1% 
+7.2% 
+9.0% 
+x86 
+$17,556 
+$21,570 
+$22,484 
+$24,611 
+$26,036 
+$23,649 
+$18,831 
+$20,757 
+$23,695 
+$37,829 
+$56,866 
+$75,966 
+47.5% 
+-0.8% 
+4.8% 
+INTC 
+$17,515 
+$21,200 
+$21,637 
+$23,063 
+$22,668 
+$18,069 
+$13,250 
+$13,635 
+$14,122 
+$20,792 
+$27,789 
+$33,576 
+33.5% 
+-9.3% 
+-0.4% 
+AMD 
+$41 
+$370 
+$846 
+$1,548 
+$3,368 
+$5,580 
+$5,582 
+$7,122 
+$9,573 
+$17,037 
+$29,076 
+$42,391 
+64.2% 
+44.0% 
+70.3% 
+Arm 
+$0 
+$0 
+$55 
+$82 
+$127 
+$219 
+$706 
+$1,773 
+$11,288 
+$23,584 
+$47,704 
+$62,397 
+76.8% 
+168.1% 
+NA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+Server Revenue Share (%) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+x86 Share 
+100.0% 
+100.0% 
+99.8% 
+99.7% 
+99.5% 
+99.1% 
+96.4% 
+92.1% 
+67.7% 
+61.6% 
+54.4% 
+54.9% 
+-6.8% 
+-7.4% 
+-3.8% 
+INTC Share 
+99.8% 
+98.3% 
+96.0% 
+93.4% 
+86.6% 
+75.7% 
+67.8% 
+60.5% 
+40.4% 
+33.9% 
+26.6% 
+24.3% 
+-15.6% 
+-15.4% 
+-8.6% 
+AMD Share 
+0.2% 
+1.7% 
+3.8% 
+6.3% 
+12.9% 
+23.4% 
+28.6% 
+31.6% 
+27.4% 
+27.7% 
+27.8% 
+30.6% 
+3.8% 
+34.3% 
+56.3% 
+Arm Share 
+0.0% 
+0.0% 
+0.2% 
+0.3% 
+0.5% 
+0.9% 
+3.6% 
+7.9% 
+32.3% 
+38.4% 
+45.6% 
+45.1% 
+11.8% 
+150.0% 
+NA 
+Source: Mercury Research, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+ 
+ 
+
+
+[Page 22]
+ 
+ 
+22 
+US Semiconductors | 12 August 2026 
+ 
+ 
+PC builds vs. sell-through units 
+Exhibit 31: Client PC MPU units of 74.6mn grew much faster than PC units of 67.0mn (excl. workstations) in Q2, with the 7.5mn out-shipment 
+potentially suggesting inventory build at ODMs/customers 
+PC MPU units vs. sell-through PCs – i.e., builds vs. consumption 
+PC builds vs consumption 
+1Q23 
+2Q23 
+3Q23 
+4Q23 
+1Q24 
+2Q24 
+3Q24 
+4Q24 
+1Q25 
+2Q25 
+3Q25 
+4Q25 
+1Q26 
+2Q26   
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Client PC MPU units 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Units (mn) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC excl IoT (3rd party) 
+36.3 
+44.1 
+49.7 
+54.9 
+49.6 
+48.9 
+47.5 
+51.9 
+46.9 
+47.9 
+48.7 
+47.1 
+40.7 
+44.1   
+AMD (3rd party research) 
+7.5 
+9.5 
+12.3 
+14.8 
+12.8 
+13.0 
+14.9 
+17.0 
+9.9 
+15.0 
+16.6 
+19.5 
+17.1 
+19.1   
+Other (3rd party research) 
+6.7 
+6.7 
+7.4 
+7.9 
+7.8 
+6.9 
+7.3 
+8.4 
+8.8 
+9.8 
+10.7 
+10.7 
+9.7 
+11.4   
+Total 
+50.5 
+60.2 
+69.3 
+77.5 
+70.2 
+68.8 
+69.7 
+77.3 
+65.6 
+72.8 
+76.0 
+77.3 
+67.5 
+74.6   
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Share (%) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+INTC excl IoT (3rd party) 
+71.8% 
+73.2% 
+71.6% 
+70.8% 
+70.6% 
+71.1% 
+68.1% 
+67.1% 
+71.5% 
+65.9% 
+64.1% 
+61.0% 
+60.2% 
+59.1%   
+AMD (3rd party research) 
+14.8% 
+15.7% 
+17.8% 
+19.1% 
+18.3% 
+19.0% 
+21.4% 
+22.0% 
+15.1% 
+20.7% 
+21.8% 
+25.2% 
+25.3% 
+25.6%   
+Other (3rd party research) 
+13.3% 
+11.1% 
+10.6% 
+10.1% 
+11.1% 
+10.0% 
+10.4% 
+10.9% 
+13.4% 
+13.5% 
+14.1% 
+13.9% 
+14.4% 
+15.3%   
+Total 
+100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0%   
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+vs 3rd party PC estimates 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Units (mn) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Client PC MPUs 
+50.5 
+60.2 
+69.3 
+77.5 
+70.2 
+68.8 
+69.7 
+77.3 
+65.6 
+72.8 
+76.0 
+77.3 
+67.5 
+74.6   
+Client PC units (IDC) 
+57.3 
+61.4 
+68.7 
+65.8 
+58.5 
+62.3 
+67.4 
+67.6 
+62.1 
+66.9 
+73.5 
+74.3 
+63.3 
+67.0   
+Delta 
+-6.8 
+-1.2 
+0.7 
+11.7 
+11.7 
+6.5 
+2.3 
+9.8 
+3.6 
+5.9 
+2.5 
+3.0 
+4.2 
+7.5   
+Historic median 
+2.0 
+1.9 
+1.8 
+1.9 
+2.0 
+2.0 
+2.1 
+2.1 
+2.1 
+2.2 
+2.2 
+2.2 
+2.3 
+2.3   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+Trailing 4 qtr sum 
+-19.4 
+-24.1 
+-19.8 
+4.4 
+22.9 
+30.5 
+32.1 
+30.2 
+22.0 
+21.5 
+21.7 
+14.9 
+15.5 
+17.2   
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+QoQ (%) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+Client PC MPUs 
+-4.5% 
+19.3% 
+15.1% 
+11.8% 
+-9.4% 
+-2.0% 
+1.3% 
+11.0% 
+-15.1% 
+10.9% 
+4.4% 
+1.8% 
+-12.7% 
+10.5%   
+Client PC units (IDC) 
+-12.3% 
+7.2% 
+11.9% 
+-4.1% 
+-11.2% 
+6.5% 
+8.2% 
+0.3% 
+-8.1% 
+7.8% 
+9.9% 
+1.1% 
+-14.8% 
+5.8%   
+Delta 
+7.7% 
+12.2% 
+3.3% 
+15.9% 
+1.7% 
+-8.6% 
+-6.9% 
+10.8% 
+-7.0% 
+3.1% 
+-5.5% 
+0.6% 
+2.1% 
+4.6%   
+Historic median 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5% 
+-0.5%   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+Trailing 4 qtr sum 
+-13.3% 
+-3.6% 
+9.9% 
+39.1% 
+33.1% 
+12.4% 
+2.2% 
+-3.0% 
+-11.7% 
+0.0% 
+1.4% 
+-8.7% 
+0.4% 
+1.9%   
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+YoY (%) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+Client PC MPUs 
+-36.8% 
+-17.1% 
+1.7% 
+46.6% 
+39.1% 
+14.2% 
+0.5% 
+-0.2% 
+-6.5% 
+5.8% 
+9.1% 
+0.0% 
+2.8% 
+2.5%   
+Client PC units (IDC) 
+-26.6% 
+-11.1% 
+-4.5% 
+0.8% 
+2.1% 
+1.5% 
+-1.8% 
+2.6% 
+6.2% 
+7.4% 
+9.1% 
+10.0% 
+2.0% 
+0.2%   
+Delta 
+-10.2% 
+-6.0% 
+6.2% 
+45.8% 
+37.0% 
+12.7% 
+2.3% 
+-2.9% 
+-12.7% 
+-1.5% 
+0.0% 
+-10.0% 
+0.8% 
+2.2%   
+Historic median 
+0.4% 
+0.3% 
+0.3% 
+0.4% 
+0.4% 
+0.6% 
+0.8% 
+0.8% 
+0.6% 
+0.6% 
+0.4% 
+0.4% 
+0.4% 
+0.4%   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+Trailing 4 qtr sum 
+-41.6% 
+-35.4% 
+-24.4% 
+35.9% 
+83.1% 101.8% 
+97.9% 
+49.2% 
+-0.5% 
+-14.8% 
+-17.1% 
+-24.2% 
+-10.7% 
+-7.0%   
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+HoH, YoY (%) 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+Client PC MPUs 
+-40.1% 
+-27.4% 
+-8.0% 
+21.3% 
+43.0% 
+25.6% 
+6.9% 
+0.1% 
+-3.2% 
+-0.4% 
+7.5% 
+4.3% 
+1.3% 
+2.6%   
+Client PC units (IDC) 
+-27.6% 
+-19.4% 
+-7.7% 
+-2.0% 
+1.4% 
+1.8% 
+-0.3% 
+0.4% 
+4.3% 
+6.8% 
+8.3% 
+9.5% 
+6.2% 
+1.1%   
+Delta 
+-12.4% 
+-8.1% 
+-0.3% 
+23.3% 
+41.6% 
+23.8% 
+7.1% 
+-0.3% 
+-7.5% 
+-7.2% 
+-0.8% 
+-5.2% 
+-4.9% 
+1.5%   
+Historic median 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6% 
+-0.6%   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+Trailing 4 qtr sum 
+-21.3% 
+-17.9% 
+-12.7% 
+15.2% 
+41.3% 
+47.1% 
+48.7% 
+23.5% 
+-0.4% 
+-7.4% 
+-8.3% 
+-12.4% 
+-5.7% 
+-3.7%   
+Source: Mercury Research, IDC, BofA Global Research estimates, company reports 
+BofA GLOBAL RESEARCH 
+ 
+ 
+
+
+[Page 23]
+ 
+ 
+US Semiconductors | 12 August 2026
+23
+ 
+ 
+AI 2030 TAM Outlook ~$1.8Tn 
+ 
+Below we update our AI 2030 TAM model, specifically the CPU portions. 
+Of the overall global IT spend of ~$6.3Tn today, we believe data center systems to 
+represent $791bn across both AI and non-AI.  By CY30, we expect TAM to grow toward 
+~$2.2Tn, growing at +28% CAGR CY26-30 and outpacing overall IT spend at +8% CAGR. 
+AI Data Center Systems: ~$1.8Tn by CY30 
+For AI data center systems specifically, we now see TAM growing to ~$1.8Tn by CY30 
+from $564bn in CY26, with AI servers representing ~75-80% of TAM at $1.4Tn, followed 
+by networking at ~15-20% of TAM at $310bn, and storage at ~5% of TAM at $85bn. 
+- 
+Within AI servers, we see AI accelerators to represent ~$1.1Tn TAM by CY30 from 
+just $197bn in CY25 and $379bn in CY26, or the vast majority of server spend. 
+- 
+We expect HBM to rise to ~25% of overall accelerator spend, reaching $277bn TAM 
+by CY30, though likely stabilizes around that range as memory tier broadens and 
+types diversify for agentic AI workloads. 
+- 
+We see overall server CPU to grow to $210bn in CY30 from ~$61bn in CY26 
+(+36% CAGR), while AI CPUs specifically could grow to ~$180bn in CY30 from 
+$42bn in CY26 (+44% CAGR). 
+- 
+AI connectivity is expected to grow at a +28% CAGR to $109bn in CY30 from 
+$41bn in CY26, driven by copper connectivity growing at +43% to $22bn and 
+optical connectivity growing at +25% to $87bn. 
+For non-AI data center systems, we see TAM growth of a modest +13% CAGR. 
+Exhibit 32: We see AI Data Center Systems TAM to reach ~$1.8Tn by CY30, +33% CAGR, with AI accelerators representing ~$1.1Tn within that 
+Data Center Systems TAM Breakout – AI vs. non-AI 
+TAM ($bn) 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+CAGR '26-'30 
+Overall IT Spend (1) 
+$4,594.2  $4,693.0  $5,038.7  $5,563.8  $6,316.5  $6,985.3  $7,468.4  $8,085.5  $8,726.2  
+8% 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Data Center Systems TAM ($bn) (2) 
+$227.1  
+$237.6  
+$333.5  
+$505.6  
+$803.0  $1,154.4  $1,523.4  $1,863.1  $2,160.6  
+28% 
+YoY (%) 
+ 
+5% 
+40% 
+52% 
+59% 
+44% 
+32% 
+22% 
+16% 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+AI Data Center Systems TAM ($bn) 
+$22.8  
+$61.7  
+$160.9  
+$272.7  
+$563.8  
+$879.4  $1,203.5  $1,516.9  $1,774.7  
+33% 
+YoY (%) 
+ 
+171% 
+161% 
+69% 
+107% 
+56% 
+37% 
+26% 
+17% 
+ 
+AI % of Overall IT Spend (1) 
+0.5% 
+1.3% 
+3.2% 
+4.9% 
+8.9% 
+12.6% 
+16.1% 
+18.8% 
+20.3% 
+ 
+AI % of Data Center Systems TAM (2) 
+10.0% 
+26.0% 
+48.3% 
+53.9% 
+70.2% 
+76.2% 
+79.0% 
+81.4% 
+82.1% 
+ 
+AI Servers 
+$16.1  
+$48.9  
+$131.6  
+$225.7  
+$441.1  
+$692.8  
+$947.8  $1,186.2  $1,380.5  
+33% 
+AI CPUs 
+$1.0  
+$1.5  
+$5.1  
+$18.5  
+$42.4  
+$83.2  
+$114.4  
+$144.0  
+$180.4  
+44% 
+AI Accelerators 
+$14.3  
+$45.0  
+$120.2  
+$196.5  
+$378.5  
+$579.1  
+$793.5  
+$994.4  $1,147.0  
+32% 
+HBM 
+$1.6  
+$4.2  
+$17.4  
+$34.5  
+$77.4  
+$152.8  
+$198.9  
+$229.8  
+$276.9  
+38% 
+HBM (% of Accelerators) 
+11% 
+9% 
+14% 
+18% 
+20% 
+26% 
+25% 
+23% 
+24% 
+ 
+Other (DDR/SSD/motherboard/power/etc.) 
+$0.8  
+$2.3  
+$6.3  
+$10.7  
+$20.2  
+$30.5  
+$39.9  
+$47.8  
+$53.1  
+27% 
+AI Networking 
+$5.6  
+$9.6  
+$21.2  
+$32.5  
+$94.6  
+$144.8  
+$198.4  
+$258.5  
+$309.7  
+35% 
+AI Switching (Back/Front-End) 
+$2.2  
+$3.8  
+$8.4  
+$12.5  
+$30.7  
+$50.7  
+$68.2  
+$100.7  
+$125.3  
+42% 
+AI SmartNIC 
+$0.9  
+$2.0  
+$3.3  
+$4.8  
+$23.4  
+$38.2  
+$56.5  
+$66.6  
+$75.6  
+34% 
+AI Connectivity/Other Networking 
+$2.5  
+$3.8  
+$9.5  
+$15.2  
+$40.5  
+$55.9  
+$73.6  
+$91.3  
+$108.8  
+28% 
+Optical 
+$1.9  
+$3.4  
+$8.6  
+$15.2  
+$35.4  
+$47.2  
+$59.2  
+$73.6  
+$87.2  
+25% 
+Electrical/Copper 
+$0.6  
+$0.4  
+$0.9  
+$0.0  
+$5.1  
+$8.7  
+$14.4  
+$17.6  
+$21.6  
+43% 
+DAC 
+$0.5  
+$0.4  
+$0.6  
+$0.8  
+$1.3  
+$1.7  
+$2.0  
+$2.3  
+$2.5  
+18% 
+ACC 
+$0.0  
+$0.0  
+$0.0  
+$0.0  
+$0.4  
+$1.2  
+$2.0  
+$3.0  
+$5.8  
+98% 
+AEC 
+$0.1  
+$0.1  
+$0.2  
+$1.2  
+$3.4  
+$5.8  
+$10.4  
+$12.4  
+$13.3  
+40% 
+AI Storage 
+$1.1  
+$3.2  
+$8.2  
+$14.5  
+$28.1  
+$41.9  
+$57.3  
+$72.2  
+$84.5  
+32% 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Non-AI Data Center TAM ($bn) 
+$204.3  
+$175.8  
+$172.6  
+$233.0  
+$239.1  
+$275.0  
+$320.0  
+$346.2  
+$385.9  
+13% 
+YoY (%) 
+ 
+-14% 
+-2% 
+35% 
+3% 
+15% 
+16% 
+8% 
+11% 
+ 
+Source: BofA Global Research estimates, Gartner, Mercury Research, IDC, LightCounting, 650 Group 
+BofA GLOBAL RESEARCH 
+ 
+ 
+
+
+[Page 24]
+ 
+ 
+24 
+US Semiconductors | 12 August 2026 
+ 
+ 
+Exhibit 33: Stocks mentioned in this report 
+Prices, POs and ratings for stocks mentioned in this report 
+BofA Ticker 
+Bloomberg Ticker 
+Price 
+PO 
+Rating 
+AMD 
+AMD US EQUITY 
+$482.93 
+$620.00 
+C-1-9 
+INTC 
+INTC US EQUITY 
+$100.95 
+$145.00 
+C-1-9 
+NVDA 
+NVDA US EQUITY 
+$224.09 
+$350.00 
+C-1-7 
+QCOM 
+QCOM US EQUITY 
+$163.07 
+$180.00 
+C-3-7 
+Source: BofA Global Research 
+BofA GLOBAL RESEARCH 
+ 
+Glossary 
+ACC - Active Copper Cable 
+AEC - Active Electrical Cable 
+AGI - Arm's codename for its in-house merchant server CPU 
+AI - Artificial Intelligence 
+AMD - Advanced Micro Devices 
+AMX - Advanced Matrix Extensions (Intel) 
+API - Application Programming Interface 
+ARM - Advanced RISC Machines (CPU architecture) 
+ASIC - Application-Specific Integrated Circuit 
+ASP - Average Selling Price 
+AWS - Amazon Web Services 
+bps - Basis Points 
+C2C - Chip-to-Chip (e.g., NVLink C2C) 
+COGS - Cost of Goods Sold 
+CPU - Central Processing Unit 
+CPX - NVDA Vera CPX standalone CPU rack 
+CXL - Compute Express Link 
+DAC - Direct Attach Copper 
+DB - Database 
+DC - Data Center 
+DDR - Double Data Rate (memory) 
+FLOPS - Floating Point Operations Per Second 
+GHz - Gigahertz 
+GOOGL - Alphabet (Google) 
+GPU - Graphics Processing Unit 
+HBM - High-Bandwidth Memory 
+HF - High Frequency 
+HoH - Half-over-Half 
+
+
+[Page 25]
+ 
+ 
+US Semiconductors | 12 August 2026
+25
+ 
+ 
+HPC - High Performance Computing 
+IaaS - Infrastructure-as-a-Service 
+IDC - International Data Corporation 
+I/O - Input/Output 
+INTC - Intel Corporation 
+IoT - Internet of Things 
+KV cache - Key-Value cache 
+LLM - Large Language Model 
+LPX - NVDA ultra-low-latency inference rack 
+ML - Machine Learning 
+MPU - Microprocessor Unit 
+MRDIMM - Multiplexed Rank Dual Inline Memory Module 
+MSFT - Microsoft 
+NB - Notebook 
+NIC - Network Interface Card 
+nm - Nanometer (process node measure) 
+NVDA - Nvidia Corporation 
+NVL72 - NVIDIA NVLink 72-GPU rack-scale system 
+ODM - Original Design Manufacturer 
+OS - Operating System 
+PCIe - Peripheral Component Interconnect Express 
+QCOM - Qualcomm 
+RAG - Retrieval-Augmented Generation 
+RAS - Reliability, Availability, and Serviceability 
+SmartNIC - Smart Network Interface Card 
+SP7/SP8 - AMD server CPU socket platforms 
+SRAM - Static Random-Access Memory 
+SSD - Solid-State Drive 
+TAM - Total Addressable Market 
+TPU - Tensor Processing Unit 
+TTFT - Time to First Token 
+XPU - Accelerator (GPU/ASIC/custom silicon, general term) 
+18A / 18A-P - Intel 1.8nm-class process node (and refined "P" variant) 
+ 
+ 
+
+
+[Page 26]
+ 
+ 
+26 
+US Semiconductors | 12 August 2026 
+ 
+ 
+ 
+Price objective basis & risk 
+Advanced Micro Devices, Inc (AMD) 
+Our $620 PO is based on 27x our 2028E non-GAAP EPS, including SBC. Our PO basis is 
+in-line with historical fwd median of 27-28x and in the middle of historical 13x-58x 
+range, well supported by AMD's 50%+ annual EPS CAGR potential and its AI CPU/GPU 
+share gain potentials, modestly offset by slower growth in cyclical PC/embedded/console 
+markets. 
+ 
+Downside risks: 1) Execution on first rack-scale product (MI400 Series), 2) 
+Timing/Magnitude of Middle East AI Projects, 3) Lumpy nature of consumer and 
+enterprise spending that could create delays in acceptance and success of new products, 
+4) High reliance on one outsourced manufacturing partner, 5) Maturity of current game 
+console cycle. 
+ 
+Upside risks are greater share gain potential in the PC and server processor market 
+against competitors. 
+Arm Holdings (ARM) 
+Our $260 PO is based on conceptual sum-of-parts valuation that values the IP business 
+at $203 (2.0x CY30E PEG, discounted back 2 years) and the chiplet business at $57 (21x 
+CY30E PE, discounted back 2 years), with both multiples in-line with competitive peer 
+range/average. Our PO implies 71x total company CY28E PE which is still within ARM's 
+historical 35x-147x range, given longer-term data center content and silicon/chiplet (AGI 
+CPU) opportunities, offset by high SoftBank dependence and opex ramp. 
+ 
+Upside risks: 1) better than expected smartphone/PC/server unit shipment, 2) faster 
+adoption of higher-royalty rate v9 and CSS IP at customers, 3) faster share gains and 
+ramp of AGI CPU chiplet lineup, 4) further proliferation of AI data centers and 
+hyperscale-specific custom products, 5) Qualcomm/Nuvia content expansion post-
+settlement, 6) small floating volume. 
+ 
+Downside risks: 1) historically cyclical nature of semiconductor units, 2) high exposure to 
+mature smartphone market, 3) competition against established x86 and other custom 
+Arm-based CPU offerings in the data center, 4) emerging competition from RISC-V in 
+low-end consumer markets, 5) rising geopolitical tensions and deterioration of Arm 
+China relationship, 6) ongoing Qualcomm/Nuvia litigation, 7) small trading float. 
+Intel (INTC) 
+Our $145 price objective is based on 29x CY30E EPS power of $6+, discounted back two 
+years, given the company's key server CPU and external foundry wafer/packaging 
+opportunities that extend far out. Our PO implies 8.9x our total company 2028E EV/S 
+which is well above historical 1.7x-4x range but we view as appropriate given increasing 
+server CPU and external foundry opportunity, offset by near-/medium-term 
+manufacturing ramp-up uncertainties. 
+ 
+Upside risks to our price objective are 1) key external foundry packaging/wafer deals 
+that could significantly boost sales/utilization, 2) greater than expected yields/ramps at 
+18A and upcoming 14A nodes, resulting in greater GM/utilization profile, 3) stronger 
+than expected PC market from Windows 10 refresh or AI uplift, 4) geopolitical tensions 
+boosting sentiment for domestic manufacturing asset. 
+ 
+Downside risks to our price objective are 1) lower than yield/ramp at Intel Foundry, 
+particularly for its new 18A and upcoming 14A nodes, 2) lack of material external 
+foundry customer in wafer processing, 3) weaker-than-expected trends in a mature PC 
+market, which is largest revenue generator for Intel, 4) accelerated share loss to major 
+CPU competitors. 
+
+
+[Page 27]
+ 
+ 
+ 
+US Semiconductors | 12 August 2026
+27
+ 
+ 
+NVIDIA Corporation (NVDA) 
+Our $350 PO is based on 26x CY27E PE ex cash, within NVDA's historical 25x-56x 
+forward year PE range, which we believe is justified by NVDA's leading share in fast-
+growing AI compute/networking markets, offset by lumpiness in global AI projects, 
+cyclical gaming market, and concerns around access to power. 
+ 
+Downside risks are: 1) weakness in consumer driven gaming market, 2) Competition with 
+major public firms, internal cloud projects and other private companies in AI and 
+accelerated computing markets, 3) Larger than expected impact from restrictions on 
+compute shipments to China, or additional restrictions placed on activity in the region, 4) 
+Lumpy and unpredictable sales in new enterprise, data center, and autos markets, 5) 
+Potential for decelerating capital returns, and 6) Enhanced government scrutiny of 
+NVDA's dominant market position in AI chips. 
+Qualcomm (QCOM) 
+Our PO of $180 is based on blended 14x CY28E pf-EPS (ex-SBC). Our multiple is a 
+discount to diversified/analog peers at 12x-25x and compute/AI peers at 17x-19x on 
+QCOM's more muted growth outlook and relative lack of leverage to data center 
+infrastructure buildout. 
+ 
+Downside risks: Top customer modem modem roll-off ($7-8bn by Fall '27), further share 
+loss at other key Android customer (100% to 75%), additional customer insourcing 
+insourcing, QTL renewal risk (1H27), China exposure, DRAM tightness from AI server 
+demand, competition, crowded AI data center CPU/accelerator market. 
+ 
+Upside risks: auto/IoT diversification towards $22bn FY29E target, AI200/AI250 
+inference accelerators, Nuvia ARM CPUs, HUMAIN 200MW deployment, premium mix 
+shift, rising on-device AI content. 
+  
+Analyst Certification 
+I, Vivek Arya, hereby certify that the views expressed in this research report accurately 
+reflect my personal views about the subject securities and issuers.  I also certify that no 
+part of my compensation was, is, or will be, directly or indirectly, related to the specific 
+recommendations or view expressed in this research report. 
+ 
+Special Disclosures 
+BofA Securities is currently acting as financial advisor to One Investment 
+Management Ltd in connection with the proposed acquisition with PayPay 
+Corporation, a subsidiary of SoftBank Group Corp., of shares of T&D Financial Life 
+Insurance Company, a consolidated subsidiary of T&D Holdings, Inc., which was 
+announced on June 4, 2026. 
+BofA Securities is currently acting as joint financial advisor to ABB Ltd in 
+connection with the sale of its Robotics Division to SoftBank Group Corp, which was 
+announced on October 8, 2025. 
+  
+
+
+[Page 28]
+ 
+ 
+28 
+US Semiconductors | 12 August 2026 
+ 
+ 
+ 
+US - Semiconductors and Semiconductor Capital Equipment Coverage Cluster 
+Investment rating 
+Company 
+BofA Ticker 
+Bloomberg symbol 
+Analyst 
+BUY 
+Advanced Energy Industries 
+AEIS 
+AEIS US 
+Duksan Jang 
+Advanced Micro Devices, Inc 
+AMD 
+AMD US 
+Vivek Arya 
+Allegro Microsystems 
+ALGM 
+ALGM US 
+Vivek Arya 
+Analog Devices Inc. 
+ADI 
+ADI US 
+Vivek Arya 
+Applied Materials, Inc. 
+AMAT 
+AMAT US 
+Vivek Arya 
+Broadcom Inc 
+AVGO 
+AVGO US 
+Vivek Arya 
+Cadence 
+CDNS 
+CDNS US 
+Vivek Arya 
+Camtek 
+CAMT 
+CAMT US 
+Michael Mani 
+Credo Technology 
+CRDO 
+CRDO US 
+Vivek Arya 
+Intel 
+INTC 
+INTC US 
+Vivek Arya 
+KLA Corporation 
+KLAC 
+KLAC US 
+Vivek Arya 
+Lam Research Corp. 
+LRCX 
+LRCX US 
+Vivek Arya 
+M/A-Com 
+MTSI 
+MTSI US 
+Vivek Arya 
+Marvell Technology, Inc. 
+MRVL 
+MRVL US 
+Vivek Arya 
+Microchip 
+MCHP 
+MCHP US 
+Vivek Arya 
+Micron Technology, Inc 
+MU 
+MU US 
+Vivek Arya 
+MKS Instruments 
+MKSI 
+MKSI US 
+Michael Mani 
+Nova 
+NVMI 
+NVMI US 
+Michael Mani 
+NVIDIA Corporation 
+NVDA 
+NVDA US 
+Vivek Arya 
+onsemi 
+ON 
+ON US 
+Vivek Arya 
+Quantinuum 
+QNT 
+QNT US 
+Vivek Arya 
+Synopsys 
+SNPS 
+SNPS US 
+Vivek Arya 
+Teradyne 
+TER 
+TER US 
+Vivek Arya 
+Texas Instruments Inc. 
+TXN 
+TXN US 
+Vivek Arya 
+NEUTRAL 
+Ambarella 
+AMBA 
+AMBA US 
+Vivek Arya 
+Ambiq Micro, Inc. 
+AMBQ 
+AMBQ US 
+Vivek Arya 
+Arm Holdings 
+ARM 
+ARM US 
+Vivek Arya 
+Astera Labs Inc 
+ALAB 
+ALAB US 
+Vivek Arya 
+Coherent Corp 
+COHR 
+COHR US 
+Vivek Arya 
+Lumentum Holdings 
+LITE 
+LITE US 
+Vivek Arya 
+NXP Semiconductors NV 
+NXPI 
+NXPI US 
+Vivek Arya 
+UNDERPERFORM 
+Axcelis Technologies 
+ACLS 
+ACLS US 
+Duksan Jang 
+GlobalFoundries 
+GFS 
+GFS US 
+Vivek Arya 
+Lattice Semiconductor 
+LSCC 
+LSCC US 
+Duksan Jang 
+Qualcomm 
+QCOM 
+QCOM US 
+Vivek Arya 
+Skyworks Solutions, Inc. 
+SWKS 
+SWKS US 
+Vivek Arya 
+RVW 
+Wolfspeed Inc 
+WOLF 
+WOLF US 
+Vivek Arya 
+   Disclosures 
+Important Disclosures 
+ 
+  
+
+
+[Page 29]
+ 
+ 
+ 
+US Semiconductors | 12 August 2026
+29
+ 
+ 
+Advanced Micro (AMD) Price Chart 
+The Investment Opinion System is contained at the end of the report under the heading "Fundamental Equity Opinion Key". Dark grey shading indicates the security is restricted with the opinion suspended. Medium grey 
+shading indicates the security is under review with the opinion withdrawn. Light grey shading indicates the security is not covered. Chart is current as of a date no more than one trading day prior to the date of the report. 
+ 
+Arm Holdings (ARM) Price Chart 
+The Investment Opinion System is contained at the end of the report under the heading "Fundamental Equity Opinion Key". Dark grey shading indicates the security is restricted with the opinion suspended. Medium grey 
+shading indicates the security is under review with the opinion withdrawn. Light grey shading indicates the security is not covered. Chart is current as of a date no more than one trading day prior to the date of the report. 
+ 
+Intel (INTC) Price Chart 
+The Investment Opinion System is contained at the end of the report under the heading "Fundamental Equity Opinion Key". Dark grey shading indicates the security is restricted with the opinion suspended. Medium grey 
+shading indicates the security is under review with the opinion withdrawn. Light grey shading indicates the security is not covered. Chart is current as of a date no more than one trading day prior to the date of the report. 
+ 
+
+
+[Page 30]
+ 
+ 
+30 
+US Semiconductors | 12 August 2026 
+ 
+ 
+NVIDIA (NVDA) Price Chart 
+The Investment Opinion System is contained at the end of the report under the heading "Fundamental Equity Opinion Key". Dark grey shading indicates the security is restricted with the opinion suspended. Medium grey 
+shading indicates the security is under review with the opinion withdrawn. Light grey shading indicates the security is not covered. Chart is current as of a date no more than one trading day prior to the date of the report. 
+ 
+Qualcomm (QCOM) Price Chart 
+The Investment Opinion System is contained at the end of the report under the heading "Fundamental Equity Opinion Key". Dark grey shading indicates the security is restricted with the opinion suspended. Medium grey 
+shading indicates the security is under review with the opinion withdrawn. Light grey shading indicates the security is not covered. Chart is current as of a date no more than one trading day prior to the date of the report. 
+  
+Equity Investment Rating Distribution: Technology Group (as of 30 Jun 2026) 
+Coverage Universe 
+Count 
+Percent 
+Inv. Banking Relationships R1  
+Count 
+Percent 
+Buy 
+243 
+60.60% 
+Buy 
+123 
+50.62% 
+Hold 
+87 
+21.70% 
+Hold 
+45 
+51.72% 
+Sell 
+71 
+17.71% 
+Sell 
+21 
+29.58% 
+ 
+Equity Investment Rating Distribution: Global Group (as of 30 Jun 2026) 
+Coverage Universe 
+Count 
+Percent 
+Inv. Banking Relationships R1  
+Count 
+Percent 
+Buy 
+1987 
+56.11% 
+Buy 
+1190 
+59.89% 
+Hold 
+797 
+22.51% 
+Hold 
+496 
+62.23% 
+Sell 
+757 
+21.38% 
+Sell 
+391 
+51.65% 
+R1 Issuers that were investment banking clients of BofA Securities or one of its affiliates within the past 12 months. For purposes of this Investment Rating Distribution, the coverage universe includes only stocks. A stock 
+rated Neutral is included as a Hold, and a stock rated Underperform is included as a Sell. 
+
+
+[Page 31]
+ 
+ 
+ 
+US Semiconductors | 12 August 2026
+31
+ 
+ 
+    
+FUNDAMENTAL EQUITY OPINION KEY: Opinions include a Volatility Risk Rating, an Investment Rating and an Income Rating. VOLATILITY RISK RATINGS, indicators 
+of potential price fluctuation, are: A - Low, B - Medium and C - High. INVESTMENT RATINGS reflect the analyst’s assessment of both a stock’s absolute total return 
+potential as well as its attractiveness for investment relative to other stocks within its Coverage Cluster (defined below). Our investment ratings are: 1 - Buy stocks 
+are expected to have a total return of at least 10% and are the most attractive stocks in the coverage cluster; 2 - Neutral stocks are expected to remain flat or 
+increase in value and are less attractive than Buy rated stocks and 3 - Underperform stocks are the least attractive stocks in a coverage cluster. An investment rating 
+of 6 (No Rating) indicates that a stock is no longer trading on the basis of fundamentals. Analysts assign investment ratings considering, among other things, the 0-
+12 month total return expectation for a stock and the firm’s guidelines for ratings dispersions (shown in the table below). The current price objective for a stock 
+should be referenced to better understand the total return expectation at any given time. The price objective reflects the analyst’s view of the potential price 
+appreciation (depreciation). 
+Investment rating 
+Total return expectation (within 12-month period of date of initial 
+rating) 
+Ratings dispersion guidelines for coverage clusterR2 
+Buy 
+≥ 10% 
+≤ 70% 
+Neutral 
+≥ 0% 
+≤ 30% 
+Underperform 
+N/A 
+≥ 20% 
+R2Ratings dispersions may vary from time to time where BofA Global Research believes it better reflects the investment prospects of stocks in a Coverage Cluster. 
+INCOME RATINGS, indicators of potential cash dividends, are: 7 - same/higher (dividend considered to be secure), 8 - same/lower (dividend not considered to be secure) 
+and 9 - pays no cash dividend. Coverage Cluster is comprised of stocks covered by a single analyst or two or more analysts sharing a common industry, sector, 
+region or other classification(s). A stock’s coverage cluster is included in the most recent BofA Global Research report referencing the stock. 
+ 
+ 
+Price Charts for the securities referenced in this research report are available on the Price Charts website, or call 1-800-MERRILL to have them mailed. 
+BofAS or one of its affiliates acts as a market maker for the equity securities recommended in the report: Advanced Micro, Arm Holdings, Intel, NVIDIA, Qualcomm. 
+BofAS or an affiliate was a manager of a public offering of securities of this issuer within the last 12 months: Intel. 
+The issuer is or was, within the last 12 months, an investment banking client of BofAS and/or one or more of its affiliates: Advanced Micro, Arm Holdings, Intel, Qualcomm. 
+BofAS or an affiliate has received compensation from the issuer for non-investment banking services or products within the past 12 months: Advanced Micro, Arm Holdings, Intel, NVIDIA, 
+Qualcomm. 
+The issuer is or was, within the last 12 months, a non-securities business client of BofAS and/or one or more of its affiliates: Advanced Micro, Arm Holdings, Intel, NVIDIA, Qualcomm. 
+BofAS or an affiliate has received compensation for investment banking services from this issuer within the past 12 months: Advanced Micro, Arm Holdings, Intel, Qualcomm. 
+BofAS or an affiliate expects to receive or intends to seek compensation for investment banking services from this issuer or an affiliate of the issuer within the next three months: Advanced 
+Micro, Arm Holdings, Intel, Qualcomm. 
+BofAS together with its affiliates beneficially owns one percent or more of the common stock of this issuer. If this report was issued on or after the 9th day of the month, it reflects the 
+ownership position on the last day of the previous month. Reports issued before the 9th day of a month reflect the ownership position at the end of the second month preceding the date of 
+the report: Advanced Micro, NVIDIA. 
+BofAS or one of its affiliates is willing to sell to, or buy from, clients the common equity of the issuer on a principal basis: Advanced Micro, Arm Holdings, Intel, NVIDIA, Qualcomm. 
+The issuer is or was, within the last 12 months, a securities business client (non-investment banking) of BofAS and/or one or more of its affiliates: Advanced Micro, Arm Holdings, Intel, NVIDIA, 
+Qualcomm. 
+BofA Global Research personnel (including the analyst(s) responsible for this report) receive compensation based upon, among other factors, the overall profitability of Bank of America 
+Corporation, including profits derived from investment banking. The analyst(s) responsible for this report may also receive compensation based upon, among other factors, the overall 
+profitability of the Bank’s sales and trading businesses relating to the class of securities or financial instruments for which such analyst is responsible. 
+ 
+ 
+Other Important Disclosures 
+From time to time research analysts conduct site visits of covered issuers. BofA Global Research policies prohibit research analysts from accepting payment or reimbursement for travel 
+expenses from the issuer for such visits. 
+Prices are indicative and for information purposes only. Except as otherwise stated in the report, for any recommendation in relation to an equity security, the price referenced is the publicly 
+traded price of the security as of close of business on the day prior to the date of the report or, if the report is published during intraday trading, the price referenced is indicative of the traded 
+price as of the date and time of the report and in relation to a debt security (including equity preferred and CDS), prices are indicative as of the date and time of the report and are from various 
+sources including BofA Securities trading desks. 
+The date and time of completion of the production of any recommendation in this report shall be the date and time of dissemination of this report as recorded in the report timestamp. 
+ 
+Recipients who are not institutional investors or market professionals should seek the advice of their independent financial advisor before considering information in this report in connection 
+with any investment decision, or for a necessary explanation of its contents. 
+Officers of BofAS or one or more of its affiliates (other than research analysts) may have a financial interest in securities of the issuer(s) or in related investments. 
+Refer to BofA Global Research policies relating to conflicts of interest. 
+"BofA Securities" includes BofA Securities, Inc. ("BofAS") and its affiliates. Investors should contact their BofA Securities representative or Merrill Global Wealth Management financial 
+advisor if they have questions concerning this report or concerning the appropriateness of any investment idea described herein for such investor. "BofA Securities" is a global brand 
+for BofA Global Research. 
+Information relating to Non-US affiliates of BofA Securities and Distribution of Affiliate Research Reports: 
+BofAS and/or Merrill Lynch, Pierce, Fenner & Smith Incorporated ("MLPF&S") may in the future distribute, information of the following non-US affiliates in the US (short name: legal name, 
+regulator): Merrill Lynch (South Africa): Merrill Lynch South Africa (Pty) Ltd., regulated by the Financial Sector Conduct Authority; MLI (UK): Merrill Lynch International, regulated by the Financial 
+Conduct Authority (FCA) and the Prudential Regulation Authority (PRA); BofASE (France): BofA Securities Europe SA is authorized by the Autorité de Contrôle Prudentiel et de Résolution (ACPR) 
+and regulated by the ACPR and the Autorité des Marchés Financiers (AMF). BofA Securities Europe SA ("BofASE") with registered address at 51, rue La Boétie, 75008 Paris is registered under no 
+842 602 690 RCS Paris. In accordance with the provisions of French Code Monétaire et Financier (Monetary and Financial Code), BofASE is an établissement de crédit et d'investissement (credit 
+and investment institution) that is authorised and supervised by the European Central Bank and the Autorité de Contrôle Prudentiel et de Résolution (ACPR) and regulated by the ACPR and the 
+Autorité des Marchés Financiers. BofASE's share capital can be found at www.bofaml.com/BofASEdisclaimer; BofA Europe (Milan): Bank of America Europe Designated Activity Company, Milan 
+Branch, regulated by the Bank of Italy, the European Central Bank (ECB) and the Central Bank of Ireland (CBI); BofA Europe (Frankfurt): Bank of America Europe Designated Activity Company, 
+Frankfurt Branch regulated by BaFin, the ECB and the CBI; BofA Europe (Zurich): Bank of America Europe Designated Activity Company, Zurich Branch, regulated by the Swiss Financial Market 
+Supervisory Authority FINMA, the ECB and CBI; BofA Europe (Madrid): Bank of America Europe Designated Activity Company, Sucursal en España, regulated by the Bank of Spain, the ECB and the 
+CBI; Merrill Lynch (Australia): Merrill Lynch Equities (Australia) Limited, regulated by the Australian Securities and Investments Commission; Merrill Lynch (Hong Kong): Merrill Lynch (Asia Pacific) 
+Limited, regulated by the Hong Kong Securities and Futures Commission (HKSFC); Merrill Lynch (Singapore): Merrill Lynch (Singapore) Pte Ltd, regulated by the Monetary Authority of Singapore 
+(MAS); Merrill Lynch (Canada): Merrill Lynch Canada Inc, regulated by the Canadian Investment Regulatory Organization; Merrill Lynch (Mexico): Merrill Lynch Mexico, SA de CV, Casa de Bolsa, 
+regulated by the Comisión Nacional Bancaria y de Valores; BofAS Japan: BofA Securities Japan Co., Ltd., regulated by the Financial Services Agency; Merrill Lynch (Seoul): Merrill Lynch 
+International, LLC Seoul Branch, regulated by the Financial Supervisory Service; Merrill Lynch (Taiwan): Merrill Lynch Securities (Taiwan) Ltd., regulated by the Securities and Futures Bureau; 
+BofAS India: BofA Securities India Limited, regulated by the Securities and Exchange Board of India (SEBI); Merrill Lynch (Israel): Merrill Lynch Israel Limited, regulated by Israel Securities 
+
+
+[Page 32]
+ 
+ 
+32 
+US Semiconductors | 12 August 2026 
+ 
+ 
+Authority; Merrill Lynch (DIFC): Merrill Lynch International (DIFC Branch), regulated by the Dubai Financial Services Authority (DFSA); Merrill Lynch (Brazil): Merrill Lynch S.A. Corretora de Títulos e 
+Valores Mobiliários, regulated by Comissão de Valores Mobiliários; Merrill Lynch KSA Company: Merrill Lynch Kingdom of Saudi Arabia Company, regulated by the Capital Market Authority. 
+This information: has been approved for publication and is distributed in the United Kingdom (UK) to professional clients and eligible counterparties (as each is defined in the rules of the FCA 
+and the PRA) by MLI (UK), which is authorized by the PRA and regulated by the FCA and the PRA - details about the extent of our regulation by the FCA and PRA are available from us on request; 
+has been approved for publication and is distributed in the European Economic Area (EEA) by BofASE (France), which is authorized by the ACPR and regulated by the ACPR and the AMF; has 
+been considered and distributed in Japan by BofAS Japan, a registered securities dealer under the Financial Instruments and Exchange Act in Japan, or its permitted affiliates; is issued and 
+distributed in Hong Kong by Merrill Lynch (Hong Kong) which is regulated by HKSFC; is issued and distributed in Taiwan by Merrill Lynch (Taiwan); is issued and distributed in India by BofAS 
+India; and is issued and distributed in Singapore to institutional investors and/or accredited investors (each as defined under the Financial Advisers Regulations) by Merrill Lynch (Singapore) 
+(Company Registration No 198602883D). Merrill Lynch (Singapore) is regulated by MAS. Merrill Lynch Equities (Australia) Limited (ABN 65 006 276 795), AFS License 235132 (MLEA) distributes 
+this information in Australia only to 'Wholesale' clients as defined by s.761G of the Corporations Act 2001. With the exception of Bank of America N.A., Australia Branch, neither MLEA nor any of 
+its affiliates involved in preparing this information is an Authorised Deposit-Taking Institution under the Banking Act 1959 nor regulated by the Australian Prudential Regulation Authority. No 
+approval is required for publication or distribution of this information in Brazil and its local distribution is by Merrill Lynch (Brazil) in accordance with applicable regulations. Merrill Lynch (DIFC) is 
+authorized and regulated by the DFSA. Information prepared and issued by Merrill Lynch (DIFC) is done so in accordance with the requirements of the DFSA conduct of business rules. BofA 
+Europe (Frankfurt) distributes this information in Germany and is regulated by BaFin, the ECB and the CBI. BofA Securities entities, including BofA Europe and BofASE (France), may 
+outsource/delegate the marketing and/or provision of certain research services or aspects of research services to other branches or members of the BofA Securities group. You may be contacted 
+by a different BofA Securities entity acting for and on behalf of your service provider where permitted by applicable law. This does not change your service provider. Please refer to the Electronic 
+Communications Disclaimers for further information. 
+This information has been prepared and issued by BofAS and/or one or more of its non-US affiliates. The author(s) of this information may not be licensed to carry on regulated activities in your 
+jurisdiction and, if not licensed, do not hold themselves out as being able to do so. BofAS and/or MLPF&S is the distributor of this information in the US and accepts full responsibility for 
+information distributed to BofAS and/or MLPF&S clients in the US by its non-US affiliates. Any US person receiving this information and wishing to effect any transaction in any security 
+discussed herein should do so through BofAS and/or MLPF&S and not such foreign affiliates. Hong Kong recipients of this information should contact Merrill Lynch (Asia Pacific) Limited in 
+respect of any matters relating to dealing in securities or provision of specific advice on securities or any other matters arising from, or in connection with, this information. Singapore recipients 
+of this information should contact Merrill Lynch (Singapore) Pte Ltd in respect of any matters arising from, or in connection with, this information. For clients that are not accredited investors, 
+expert investors or institutional investors Merrill Lynch (Singapore) Pte Ltd accepts full responsibility for the contents of this information distributed to such clients in Singapore. 
+General Investment Related Disclosures: 
+Taiwan Readers: Neither the information nor any opinion expressed herein constitutes an offer or a solicitation of an offer to transact in any securities or other financial instrument. No part of 
+this report may be used or reproduced or quoted in any manner whatsoever in Taiwan by the press or any other person without the express written consent of BofA Securities. 
+This document provides general information only, and has been prepared for, and is intended for general distribution to, BofA Securities clients. Neither the information nor any opinion 
+expressed constitutes an offer or an invitation to make an offer, to buy or sell any securities or other financial instrument or any derivative related to such securities or instruments (e.g., options, 
+futures, warrants, and contracts for differences). This document is not intended to provide personal investment advice and it does not take into account the specific investment objectives, 
+financial situation and the particular needs of, and is not directed to, any specific person(s). This document and its content do not constitute, and should not be considered to constitute, 
+investment advice for purposes of ERISA, the US tax code, the Investment Advisers Act or otherwise. Investors should seek financial advice regarding the appropriateness of investing in financial 
+instruments and implementing investment strategies discussed or recommended in this document and should understand that statements regarding future prospects may not be realized. Any 
+decision to purchase or subscribe for securities in any offering must be based solely on existing public information on such security or the information in the prospectus or other offering 
+document issued in connection with such offering, and not on this document. 
+Securities and other financial instruments referred to herein, or recommended, offered or sold by BofA Securities, are not insured by the Federal Deposit Insurance Corporation and are not 
+deposits or other obligations of any insured depository institution (including, Bank of America, N.A.). Investments in general and, derivatives, in particular, involve numerous risks, including, 
+among others, market risk, counterparty default risk and liquidity risk. No security, financial instrument or derivative is suitable for all investors. Digital assets are extremely speculative, volatile 
+and are largely unregulated.  In some cases, securities and other financial instruments may be difficult to value or sell and reliable information about the value or risks related to the security or 
+financial instrument may be difficult to obtain. Investors should note that income from such securities and other financial instruments, if any, may fluctuate and that price or value of such 
+securities and instruments may rise or fall and, in some cases, investors may lose their entire principal investment. Past performance is not necessarily a guide to future performance. Levels and 
+basis for taxation may change. 
+This report may contain a short-term trading idea or recommendation, which highlights a specific near-term catalyst or event impacting the issuer or the market that is anticipated to have a 
+short-term price impact on the equity securities of the issuer. Short-term trading ideas and recommendations are different from and do not affect a stock's fundamental equity rating, which 
+reflects both a longer term total return expectation and attractiveness for investment relative to other stocks within its Coverage Cluster. Short-term trading ideas and recommendations may 
+be more or less positive than a stock's fundamental equity rating. 
+BofA Securities is aware that the implementation of the ideas expressed in this report may depend upon an investor's ability to "short" securities or other financial instruments and that such 
+action may be limited by regulations prohibiting or restricting "shortselling" in many jurisdictions. Investors are urged to seek advice regarding the applicability of such regulations prior to 
+executing any short idea contained in this report. 
+Foreign currency rates of exchange may adversely affect the value, price or income of any security or financial instrument mentioned herein. Investors in such securities and instruments, 
+including ADRs, effectively assume currency risk. 
+BofAS or one of its affiliates is a regular issuer of traded financial instruments linked to securities that may have been recommended in this report. BofAS or one of its affiliates may, at any time, 
+hold a trading position (long or short) in the securities and financial instruments discussed in this report. 
+BofA Securities, through business units other than BofA Global Research, may have issued and may in the future issue trading ideas or recommendations that are inconsistent with, and reach 
+different conclusions from, the information presented herein. Such ideas or recommendations may reflect different time frames, assumptions, views and analytical methods of the persons who 
+prepared them, and BofA Securities is under no obligation to ensure that such other trading ideas or recommendations are brought to the attention of any recipient of this information. 
+In the event that the recipient received this information pursuant to a contract between the recipient and BofAS for the provision of research services for a separate fee, and in connection 
+therewith BofAS may be deemed to be acting as an investment adviser, such status relates, if at all, solely to the person with whom BofAS has contracted directly and does not extend beyond 
+the delivery of this report (unless otherwise agreed specifically in writing by BofAS). If such recipient uses the services of BofAS in connection with the sale or purchase of a security referred to 
+herein, BofAS may act as principal for its own account or as agent for another person. BofAS is and continues to act solely as a broker-dealer in connection with the execution of any transactions, 
+including transactions in any securities referred to herein. 
+Copyright and General Information:  
+Copyright 2026 Bank of America Corporation. All rights reserved. iQdatabase® is a registered service mark of Bank of America Corporation. This information is prepared for the use of BofA 
+Securities clients and may not be redistributed, retransmitted or disclosed, in whole or in part, or in any form or manner, without the express written consent of BofA Securities. This document 
+and its content is provided solely for informational purposes and cannot be used for training or developing artificial intelligence (AI) models or as an input in any AI application (collectively, an AI 
+tool). Any attempt to utilize this document or any of its content in connection with an AI tool without explicit written permission from BofA Global Research is strictly prohibited. BofA Global 
+Research utilizes AI, including machine learning and other technologies, to enhance the services we provide to our clients. These technologies assist our analysts in various aspects of their work, 
+including but not limited to data analysis, content extraction, content creation, data aggregation and summarization and identifying relevant information from diverse sources. All AI-driven 
+processes are subject to review by BofA Global Research employees. BofA Global Research information is distributed simultaneously to internal and client websites and other portals by BofA 
+Securities and is not publicly-available material. Any unauthorized use or disclosure is prohibited. Receipt and review of this information constitutes your agreement not to redistribute, 
+retransmit, or disclose to others the contents, opinions, conclusion, or information contained herein (including any investment recommendations, estimates or price targets) without first 
+obtaining express permission from an authorized officer of BofA Securities. 
+Materials prepared by BofA Global Research personnel are based on public information. Facts and views presented in this material have not been reviewed by, and may not reflect information 
+known to, professionals in other business areas of BofA Securities, including investment banking personnel. BofA Securities has established information barriers between BofA Global Research 
+and certain business groups. As a result, BofA Securities does not disclose certain client relationships with, or compensation received from, such issuers. To the extent this material discusses 
+any legal proceeding or issues, it has not been prepared as nor is it intended to express any legal conclusion, opinion or advice. Investors should consult their own legal advisers as to issues of 
+
+
+[Page 33]
+ 
+ 
+ 
+US Semiconductors | 12 August 2026
+33
+ 
+ 
+law relating to the subject matter of this material. BofA Global Research personnel’s knowledge of legal proceedings in which any BofA Securities entity and/or its directors, officers and 
+employees may be plaintiffs, defendants, co-defendants or co-plaintiffs with or involving issuers mentioned in this material is based on public information. Facts and views presented in this 
+material that relate to any such proceedings have not been reviewed by, discussed with, and may not reflect information known to, professionals in other business areas of BofA Securities in 
+connection with the legal proceedings or matters relevant to such proceedings. 
+This information has been prepared independently of any issuer of securities mentioned herein and not in connection with any proposed offering of securities or as agent of any issuer of any 
+securities. None of BofAS any of its affiliates or their research analysts has any authority whatsoever to make any representation or warranty on behalf of the issuer(s). BofA Global Research 
+policy prohibits research personnel from disclosing a recommendation, investment rating, or investment thesis for review by an issuer prior to the publication of a research report containing 
+such rating, recommendation or investment thesis. 
+Any information relating to sustainability in this material is limited as discussed herein and is not intended to provide a comprehensive view on any sustainability claim with respect to any 
+issuer or security. 
+Any information relating to the tax status of financial instruments discussed herein is not intended to provide tax advice or to be used by anyone to provide tax advice. Investors are urged to 
+seek tax advice based on their particular circumstances from an independent tax professional. 
+The information herein (other than disclosure information relating to BofA Securities and its affiliates) was obtained from various sources and we do not guarantee its accuracy. This information 
+may contain links to third-party websites. BofA Securities is not responsible for the content of any third-party website or any linked content contained in a third-party website. Content 
+contained on such third-party websites is not part of this information and is not incorporated by reference. The inclusion of a link does not imply any endorsement by or any affiliation with BofA 
+Securities. Access to any third-party website is at your own risk, and you should always review the terms and privacy policies at third-party websites before submitting any personal information 
+to them. BofA Securities is not responsible for such terms and privacy policies and expressly disclaims any liability for them. 
+All opinions, projections and estimates constitute the judgment of the author as of the date of publication and are subject to change without notice. Prices also are subject to change without 
+notice. BofA Securities is under no obligation to update this information and BofA Securities ability to publish information on the subject issuer(s) in the future is subject to applicable quiet 
+periods. You should therefore assume that BofA Securities will not update any fact, circumstance or opinion contained herein. 
+Subject to the quiet period applicable under laws of the various jurisdictions in which we distribute research reports and other legal and BofA Securities policy-related restrictions on the 
+publication of research reports, fundamental equity reports are produced on a regular basis as necessary to keep the investment recommendation current. 
+Certain outstanding reports or investment opinions relating to securities, financial instruments and/or issuers may no longer be current.  Always refer to the most recent research report relating 
+to an issuer prior to making an investment decision. 
+In some cases, an issuer may be classified as Restricted or may be Under Review or Extended Review. In each case, investors should consider any investment opinion relating to such issuer (or 
+its security and/or financial instruments) to be suspended or withdrawn and should not rely on the analyses and investment opinion(s) pertaining to such issuer (or its securities and/or financial 
+instruments) nor should the analyses or opinion(s) be considered a solicitation of any kind. Sales persons and financial advisors affiliated with BofAS or any of its affiliates may not solicit 
+purchases of securities or financial instruments that are Restricted or Under Review and may only solicit securities under Extended Review in accordance with firm policies. 
+Neither BofA Securities nor any officer or employee of BofA Securities accepts any liability whatsoever for any direct, indirect or consequential damages or losses arising from any use of this 
+information. 
+  
