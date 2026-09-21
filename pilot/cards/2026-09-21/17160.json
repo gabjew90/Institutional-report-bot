@@ -1,0 +1,117 @@
+{
+ "brief": "Investor sentiment and hedge fund positioning are broadly depressed, per a Market Ear round-up of bank data. Deutsche Bank shows the AAII bull-minus-bear sentiment spread near the bottom of its long-run range. Morgan Stanley's Global Risk Demand Index has moved into its \"fear\" zone. JPM data put equity long/short net leverage around the 19th percentile on a 12-month basis. Goldman Prime shows fundamental long/short gross leverage at the 33rd percentile and net leverage at just the 7th percentile over the past year. A Deutsche Bank-sourced chart of JPMorgan's Tactical Positioning Monitor points to further de-risking over the past week, nearing July lows. Credit fund flows have recently turned negative amid rates uncertainty, per BofA/EPFR data. A JPM-sourced chart of Deutsche Bank's consolidated equity positioning indicator sits at the 48th percentile, essentially the middle of its historical range, labeled a \"high conviction neutral\" read. The note draws no forward call. It reports where each gauge currently stands.",
+ "cards": [
+  {
+   "bank": "Deutsche Bank",
+   "document": "Where Have All the Hot Heads Gone",
+   "claim": "The AAII bull-minus-bear sentiment spread is near the bottom of its long-run historical range.",
+   "anchor": "the AAII bull-minus-bear spread near the bottom of its long-run range",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Where Have All the Hot Heads Gone",
+   "claim": "Morgan Stanley's Global Risk Demand Index has moved into its fear zone.",
+   "anchor": "Morgan Stanley's Global Risk Demand Index has moved into its \"fear\" zone",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM PI",
+   "document": "Where Have All the Hot Heads Gone",
+   "claim": "JPMorgan data show hedge fund equity long/short net leverage at around the 19th percentile on a 12-month basis.",
+   "anchor": "JPMorgan data put equity L/S net leverage around the 19th percentile on a 12-month basis",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS Prime",
+   "document": "Where Have All the Hot Heads Gone",
+   "claim": "Goldman Prime data show US fundamental long/short gross leverage at the 33rd percentile and net leverage at the 7th percentile, both over the past year.",
+   "anchor": "US fundamental long/short gross leverage is at the 33rd percentile and net leverage at just the 7th percentile",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Where Have All the Hot Heads Gone",
+   "claim": "JPMorgan's Tactical Positioning Monitor points to further de-risking over the past week, approaching its July lows.",
+   "anchor": "JPMorgan's Tactical Positioning Monitor points to further de-risking over the past week, with the overall level approaching the July lows",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA / EPFR",
+   "document": "Where Have All the Hot Heads Gone",
+   "claim": "Credit fund flows have recently turned negative, reflecting rates uncertainty.",
+   "anchor": "Rates uncertainty is also showing up in credit, where fund flows have recently turned negative",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM PI",
+   "document": "Where Have All the Hot Heads Gone",
+   "claim": "Deutsche Bank's consolidated equity positioning indicator sits at the 48th percentile, roughly the middle of its historical range.",
+   "anchor": "Deutsche Bank's consolidated equity positioning indicator sits at the 48th percentile",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-21/17160__where-have-all-the-hot-heads-gone.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 7,
+  "matched": 7,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
