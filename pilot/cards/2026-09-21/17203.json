@@ -1,0 +1,143 @@
+{
+ "brief": "Eric Peters (One River) relays Fed Chairman Kevin Warsh's press remarks describing a solid, resilient economy: strong productivity, robust capital investment, and unemployment little changed, offered as justification for the Fed having 'removed a dose of accommodation' (a rate cut). Warsh gives three reasons long-term yields rose since the last FOMC meeting: economic strength, hyperscalers competing for capital in funding markets, and geopolitics, specifically Ukraine's attacks on Russian refining capacity and Strait congestion pushing up crack spreads and energy prices. Peters argues Warsh omitted a fourth reason: the government cannot control chronic deficit spending without a recession that could lift the deficit from 6% of GDP to 13% or more. He casts Warsh's three reasons as long-term positives or transitory, but says only the deficit reason would spark a sharp yield spike, and bond vigilantes must judge whether that time has come. Treasury Secretary Bessent is buying bonds to push yields lower; Peters says this only works if wars end and productivity keeps rising, not if the world loses faith in US creditworthiness. 10yr yields sit at 5%, 30yr at 5.33%.",
+ "cards": [
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "Fed Chairman Kevin Warsh said job gains have kept pace with the workforce and the unemployment rate has changed little.",
+   "anchor": "Job gains have kept pace with the workforce, and the unemployment rate has changed little",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "Fed Chairman Kevin Warsh said the Federal Reserve removed a dose of accommodation, referring to a recent interest rate cut.",
+   "anchor": "So, we removed a dose of accommodation.",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "Kevin Warsh said current interest rates are too low for hyperscalers and too high for first-time homebuyers, illustrating that one federal funds rate cannot fit every part of the economy.",
+   "anchor": "Rates are too low for hyperscalers and too high for first time homebuyers.",
+   "topic": "Fed rate hike outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "10-year Treasury yields are at 5% and 30-year yields are at 5.33%.",
+   "anchor": "10yr yields are already 5% and 30yrs are 5.33%.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "Fed Chairman Kevin Warsh said part of the reason long-term yields rose over the course of 2026 is that the US economy has strengthened.",
+   "anchor": "long-term yields go up is the economy is strengthened",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "Warsh said hyperscalers raising funding in the market are driving competition for capital, which is partly explaining the rise in long-term yields.",
+   "anchor": "the so-called hyperscalers are out in the market raising funding",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "Ukraine's growing attacks on Russian refining capacity and congestion in the Strait are pushing up energy crack spreads and prices, a geopolitical driver of higher long-term yields cited by Warsh.",
+   "anchor": "Ukraine\u2019s growing attack on Russian refining capacity, and congestion in the Strait continue to push up prices",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "Eric Peters said the US government has lost the ability to control its chronic deficit spending without sparking a severe recession, which would lift the deficit from 6% of GDP to 13% or more.",
+   "anchor": "lift the deficit from 6% of GDP to 13% or more.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "One River",
+   "document": "One River Peters - wknd notes 20 Sep 2026",
+   "claim": "US Treasury Secretary Bessent is buying bonds to push yields lower.",
+   "anchor": "Bessent is buying bonds to push yields lower.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-21/17203__one-river-peters-wknd-notes-20-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
