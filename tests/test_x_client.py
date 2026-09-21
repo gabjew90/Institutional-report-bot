@@ -58,12 +58,12 @@ def test_caption_fits_280_and_keeps_the_important_parts():
     assert len(text) <= X_LIMIT
     assert text.startswith("Market calendar · Friday 9/11")
     assert "8:30 Core CPI m/m, CPI y/y" in text
-    assert "$B0" in text and "$A0" in text
-    assert "GS Communacopia" in text and "$MSFT" in text
+    assert "B0" in text and "A0" in text
+    assert "GS Communacopia" in text and "MSFT" in text
     # a crowded day trims but never overflows
     busy = _day(n_bmo=15, n_amc=15)
     text = calendar_caption(busy)
-    assert len(text) <= X_LIMIT and "Core CPI" in text and "$B0" in text
+    assert len(text) <= X_LIMIT and "Core CPI" in text and "B0" in text
 
 
 def test_important_names_are_hashtagged_and_survive_trimming():
@@ -217,3 +217,11 @@ def test_the_request_job_is_idle_without_a_flag_and_clears_it_before_posting():
         assert seen == {"flag_present": False, "force": True}
         out = (d / f"{jobs.X_REQUEST_FLAG}.result").read_text(encoding="utf-8")
         assert "https://x.com/i/status/777" in out
+
+
+def test_the_caption_never_carries_more_than_one_cashtag():
+    """X answers HTTP 403 to a post with two or more cashtags (first live
+    test, 2026-09-21). The caption emits none."""
+    import re
+    day = _day()
+    assert len(re.findall(r"\$[A-Za-z]", calendar_caption(day))) <= 1

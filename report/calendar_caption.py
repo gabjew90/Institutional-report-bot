@@ -3,8 +3,13 @@
 The image carries the detail; the caption is the scannable summary and
 must fit X's 280 characters. It is built greedily and trimmed from the
 least important end: unimportant econ rows go first, then tickers past
-the first few, then the industry line. Cashtag rule follows CLAUDE.md
-(`$AAPL` for stocks and ETFs; the calendar only carries those).
+the first few, then the industry line.
+
+NO CASHTAGS. X refuses any post with more than one: the first live
+test on 2026-09-21 came back HTTP 403, "Posts are limited to a
+maximum of one cashtag ($SYMBOL)", with five in the earnings line.
+The pulse's `$AAPL` rule does not apply here. Tickers are plain, and
+the bold names are reachable through the hashtag line.
 """
 from __future__ import annotations
 
@@ -25,9 +30,9 @@ def _econ_line(day, important_only: bool) -> str:
 def _earn_line(day, max_each: int) -> str:
     bits = []
     if day.bmo:
-        bits.append("before open " + " ".join(f"${r.symbol}" for r in day.bmo[:max_each]))
+        bits.append("before open " + " ".join(r.symbol for r in day.bmo[:max_each]))
     if day.amc:
-        bits.append("after close " + " ".join(f"${r.symbol}" for r in day.amc[:max_each]))
+        bits.append("after close " + " ".join(r.symbol for r in day.amc[:max_each]))
     return ("Earnings: " + " · ".join(bits)) if bits else ""
 
 
@@ -37,7 +42,7 @@ def _industry_line(day, max_tickers: int) -> str:
         return ""
     bits = []
     for c in rows:
-        t = " ".join(f"${x}" for x in c.tickers[:max_tickers])
+        t = " ".join(c.tickers[:max_tickers])
         bits.append(f"{c.conference}" + (f" ({t})" if t else ""))
     return "Industry: " + " · ".join(bits)
 

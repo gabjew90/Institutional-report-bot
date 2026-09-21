@@ -3130,3 +3130,8 @@ polls each minute, clears before posting, and answers in
 `post-calendar.result`. `post_image(force=True)` replaces the script's
 global `settings.x_post_enabled = True`, which inside the worker would
 have left posting switched on until restart.
+
+First live test post, 2026-09-21: keys and media upload worked, the post
+came back HTTP 403, "Posts are limited to a maximum of one cashtag". The
+caption carried five. It now emits plain tickers, and a test pins zero
+cashtags. Hashtags are unaffected.
