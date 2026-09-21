@@ -1,0 +1,3912 @@
+[Page 1]
+ 
+ 
+. 
+ 
+ 
+ 
+Counterpoint Global Insights 
+To Free or Not to Free         
+(Cash Flow)  
+CONSILIENT OBSERVER  |  September 17, 2026
+Introduction 
+The question, “Do you want a company’s free cash flow to be 
+positive, negative, or neutral?” often sparks lively debate among 
+finance professionals.  
+Free cash flow has become a central focus for investors evaluating 
+many of the largest technology companies.  
+Most notable among them are the “hyperscalers,” firms that 
+operate large networks of data centers. These companies have 
+dramatically grown capital expenditures to meet surging demand 
+for computing power driven by generative artificial intelligence 
+(GenAI). This has put significant pressure on free cash flow. 
+You may have an answer to the question of free cash flow. The 
+proper response is, “It depends.”
+  
+Let’s take a step back. The value of a business is the present value 
+of future free cash flow. Free cash flow (FCF), in standard finance, 
+is net operating profit after taxes (NOPAT) minus investment in 
+future growth. The main component of organic tangible investment 
+is capital expenditures.1 FCF is the cash that a company can return 
+to its capital providers. It stands to reason that, ultimately, you 
+want FCF to be positive and plentiful. 
+But here is why it depends: If a company can make an investment 
+that earns a return in excess of the opportunity cost of capital, an 
+estimate of the return that investors require, then future FCFs more 
+than make up for the investment cost, and the value of the business 
+goes up.2 In other words, a company with opportunities that 
+promise sufficient returns should invest in all of them because 
+those investments create value. 
+The financial results of Walmart (previously Wal-Mart Stores) from 
+1973 to 1986 are a good illustration of the point. Walmart had 
+negative FCF for each of those 14 years, but its annual return on 
+invested capital (ROIC) averaged 18 percent, well above its cost 
+of capital (see exhibit 1). 
+AUTHORS 
+ 
+Michael J. Mauboussin 
+michael.mauboussin@morganstanley.com 
+ 
+Dan Callahan, CFA 
+dan.callahan1@morganstanley.com 
+
+
+[Page 2]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+2
+ 
+Exhibit 1: Walmart Free Cash Flow and Return on Invested Capital, 1973–1986 
+ 
+Source: Counterpoint Global, Walmart, and FactSet. 
+Walmart created value by investing more than it earned. That paid off, as the stock produced an annual total 
+shareholder return of 33 percent during that period, three times that of the S&P 500, an index that tracks the 
+stocks of 500 large companies in the U.S. 
+This report addresses five topics. First, we provide a working definition of FCF and examine where some leading 
+technology companies stand today using results and consensus forecasts. 
+Second, we examine whether the acceleration of investment spending changes each company’s position within 
+the life cycle. 
+Third, we calculate return on incremental invested capital (ROIIC). This figure attempts to assess the return on 
+the marginal dollar invested in the business. When invested capital grows, a company that has an ROIIC above 
+its current ROIC will see its ROIC rise. One that has an ROIIC below ROIC will see its ROIC fall.  
+ROIC, considered in tandem with growth, helps explain valuation. Specifically, the spread between ROIC and the 
+cost of capital is positively correlated to the ratio of enterprise value to invested capital, and that correlation 
+tends to rise further when growth is also considered. Moreover, changes in ROIC are positively associated with 
+total shareholder returns.3      
+Fourth, we look at the relationship between free cash flow and ROIC, similar to what we show for Walmart in 
+exhibit 1.  
+Finally, we look at how consensus estimates have changed for key value drivers, including sales, earnings before 
+interest and taxes (EBIT), EBIT margins (EBIT ÷ sales), and capital expenditures. This provides some sense of 
+what determines ROIIC. 
+-30
+-20
+-10
+0
+10
+20
+30
+-300
+-200
+-100
+0
+100
+200
+300
+1973
+1974
+1975
+1976
+1977
+1978
+1979
+1980
+1981
+1982
+1983
+1984
+1985
+1986
+Return on Invested Capital (Percent)
+Free Cash Flow ($ Millions)
+Return on Invested Capital
+(Right Axis)
+Free Cash Flow
+(Left Axis)
+
+
+[Page 3]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+3
+ 
+Free Cash Flow 
+The most popular definition of FCF is cash flow from operating activities minus capital expenditures.4 These 
+items are found on the statement of cash flows. The main components of cash flow from operating activities 
+include net income, non-cash charges that are added back such as depreciation, amortization, and stock-based 
+compensation (SBC), and changes in working capital. 
+This definition provides a rough proxy for free cash flow to equity (FCFE), which solves for shareholder value by 
+projecting and discounting cash flows directly attributable to equity holders.5  
+The one adjustment we make to this definition is to subtract SBC from cash flows from operating activities. The 
+reason is that SBC reflects two transactions: a firm selling shares (financing) and using the proceeds to pay 
+employees (compensation for services).6  
+As a result, it makes sense to move SBC from the cash flow from operating activities section to the cash flow 
+from financing activities section. This reduces cash flow from operations as it is commonly defined by around 
+10–20 percent for large technology companies.   
+In recent years, growth in cash flow from operating activities has been solid, but capital expenditures have 
+exploded, driving down FCF. Exhibit 2 shows the combined FCF for five hyperscalers: Amazon, Alphabet, 
+Microsoft, Meta Platforms, and Oracle. Here and throughout the report, we use quarterly estimates where 
+available, and otherwise use annual estimates. 
+The aggregate trailing-four-quarter FCF was about $170 billion in the first quarter of 2024, delivering a yield on 
+the market value of equity of 2.0 percent. In the second quarter of 2026, the FCF dropped to about $35 billion 
+and the yield fell to 0.3 percent.  
+Exhibit 2: Combined Free Cash Flow of Large Hyperscalers 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26; Amazon, Alphabet, Microsoft, Meta Platforms, Oracle. 
+-1.5
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+-300
+-200
+-100
+0
+100
+200
+300
+400
+500
+600
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+Q3 2029E
+Q4 2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 Quarters
+or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+
+
+[Page 4]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+4
+ 
+Based on consensus estimates, FCF will bottom in the third quarter of 2027 at about -$265 billion. That is roughly 
+a $440 billion swing in under four years. Equally important, the aggregate FCF is forecast to recover to nearly 
+$505 billion by 2030.  
+A 2 percent yield on the 2030 FCF estimate would imply an equity capitalization of $25.2 trillion for this group 
+of companies at that time. Their equity capitalization was about $12.6 trillion as of August 31, 2026.  
+Exhibit 3 disaggregates the group and examines the free cash flow for each of the five companies. Note that the 
+scales on the vertical axes differ, but the basic pattern of a dip and recovery is similar for each. 
+Exhibit 3: Free Cash Flow of Large Hyperscalers 
+ 
+ 
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+-100
+-50
+0
+50
+100
+150
+200
+250
+300
+350
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Amazon
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+-1.0
+-0.5
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+4.5
+-100
+-50
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Alphabet
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+
+
+[Page 5]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+5
+ 
+ 
+ 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+0
+50
+100
+150
+200
+250
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Microsoft
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+-3
+-2
+-1
+0
+1
+2
+3
+4
+5
+6
+-100
+-50
+0
+50
+100
+150
+200
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Meta Platforms
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+-6
+-5
+-4
+-3
+-2
+-1
+0
+1
+2
+3
+4
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Oracle
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+
+
+[Page 6]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+6
+ 
+The following observations cover the second quarter of 2023 through each company’s available forecast 
+horizon. All comments about FCF are based on rolling four-quarter, or annual, totals. 
+• 
+Amazon’s FCF troughs in the second quarter of 2027 at 
+-$70 billion and rises to $330 billion in 2031. 
+• 
+Alphabet (the parent company of Google) is expected to reach a bottom in FCF in the fourth quarter of 
+2027 at -$80 billion. The cash flows turn from there and climb to about $305 billion in 2031. This is the 
+second largest swing. 
+• 
+Microsoft is the only one of these companies that is forecast to maintain positive FCF in the next few 
+years. The nadir is in the second quarter of 2027 at $10 billion, and then FCF increases to $105 billion 
+in 2030.  
+• 
+Meta Platforms’s FCF 
+troughs in the fourth quarter of 2027 at -$85 billion and recovers to $105 billion 
+by 2031.  
+• 
+Oracle was among the first of these firms to record negative FCF, and the low is in the second quarter 
+of 2027 at almost -$60 billion. The analyst consensus forecasts positive FCF of $35 billion in 2030.  
+Amazon and Alphabet are the companies with the largest swings from trough to peak (close to $400 billion), 
+while the changes for Microsoft and Oracle, both roughly $95 billion, are more modest. The improvement for 
+Meta Platforms is in the middle, with a net gain of roughly $190 billion. The timing of the low points and recovery 
+levels through 2031 vary by company. 
+The five companies we selected are among those that have ramped up their capital expenditures the most. We 
+now look at three other companies, one that has not joined the spending fray, Apple, and two that have been the 
+beneficiaries of the spending, Nvidia and Micron Technology.  
+Apple is a leader in technology hardware and services and has chosen neither to compete head-to-head in the 
+large-scale AI data center business nor to develop a leading frontier AI model. Nvidia is best known for its 
+graphics processing units and Micron for its dynamic random-access memory chips, both of which are key 
+components within AI data centers.   
+Exhibit 4 shows their free cash flow profiles. Here again, the scales on the vertical axes are different. Each has 
+rising free cash flows, albeit from distinct starting points and with varying slopes. Some observations: 
+• 
+Apple’s FCF is in the range of 
+roughly $85 to $100 billion from 2023 to the third quarter of 2025 and 
+then rises to about $140 billion by the end of 2027. Apple’s capital expenditures as a percentage of 
+sales have mostly been in the range of two to three percent, and consensus forecasts call for more of 
+the same. For comparison, Amazon’s capital expenditures as a percentage of sales have gone from 
+about 10 percent to 25 percent from 2024 to 2026.  
+• 
+Nvidia’s rolling FCF was $7 billion in the second quarter of 2023, and consensus forecasts project it to 
+approach $420 billion by the end of 2028. Nvidia is not a very capital-intensive business, as its most 
+advanced chips are produced by companies that include Taiwan Semiconductor Manufacturing 
+Company and Samsung Electronics.  
+• 
+Micron’s FCF was 
+-$7 billion in the third quarter of 2023, reached $25 billion in mid-2026, and is 
+projected to be nearly $185 billion by 2029. Micron, which is a capital-intensive business, had capital 
+expenditures as a percentage of sales of nearly 50 percent in mid-2023. That ratio is expected to drop 
+to about 20 percent in 2027, with profits growing much faster than anticipated capital expenditures.  
+
+
+[Page 7]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+7
+ 
+Exhibit 4: Free Cash Flow of Large Technology Companies 
+ 
+ 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Apple
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+0
+1
+2
+3
+4
+5
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+500
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Nvidia
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+-12
+-9
+-6
+-3
+0
+3
+6
+9
+-400
+-300
+-200
+-100
+0
+100
+200
+300
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Free Cash Flow Yield, Trailing 4 
+Quarters or Annual (Percent)
+Free Cash Flow, Trailing 4 Quarters 
+or Annual ($ Billions)
+Micron
+Free Cash Flow (Left Axis)
+Free Cash Flow Yield (Right Axis)
+
+
+[Page 8]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+8
+ 
+Life Cycle 
+We have written a great deal about the company life cycle framework developed by Victoria Dickinson, a 
+professor of accounting at the University of Mississippi.7 The beauty of the Dickinson approach is that she 
+combines well-established empirical work on the life cycle with a practical classification process linked to the 
+statement of cash flows.8 The five stages are introduction, growth, maturity, shake-out, and decline. 
+One result of her method is that companies can switch stages based on their patterns of profitability and 
+investment spending. This includes going from a later stage, such as maturity, to an earlier one, such as growth. 
+Exhibit 5 shows how the increase in capital expenditures has changed the position of the large hyperscalers, if 
+at all. The results cover 2020 through 2031, where estimates are available. We see that Amazon remains in the 
+growth stage, and Microsoft in the maturity stage, throughout. Alphabet, Meta, and Oracle shift from maturity to 
+growth. The change happens in 2026 for Alphabet, and it occurred in 2025 for Meta and 2024 for Oracle. These 
+three are the large hyperscalers that have raised the most capital to fund their spending. 
+Exhibit 5: Life Cycle Stages of Large Hyperscalers 
+Amazon 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+ 
+Alphabet 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+ 
+Microsoft 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+ 
+Meta Platforms 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+ 
+Oracle 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+
+
+[Page 9]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+9
+ 
+The picture for the other large technology companies is somewhat different. In the period we measure, Nvidia 
+starts in the growth stage and transitions to maturity, where it remains from 2023 to 2028. Micron also goes from 
+growth in 2022 and 2023 to maturity starting in 2024, but returns to growth in 2027. Apple is a little noisier, 
+because it spends time in the shake-out stage (which is a catchall for companies that do not fall neatly into other 
+stages). But for 2026 and 2027, consensus estimates place it in the maturity stage. 
+Exhibit 6: Life Cycle Stages of Large Technology Companies 
+Apple 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+ 
+Nvidia 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+ 
+Micron 
+Introduction 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Growth 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Maturity 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Shake-Out 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Decline 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2020 
+2021 
+2022 
+2023 
+2024 
+2025 
+2026E 
+2027E 
+2028E 
+2029E 
+2030E 
+2031E 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+ 
+ 
+
+
+[Page 10]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+10
+ 
+Return on Incremental Invested Capital (ROIIC) 
+Let’s start by defining ROIC before we get to ROIIC:
+9 
+Return on invested capital (ROIC) =
+ Net operating profit after taxes (NOPAT) 
+Invested capital (IC)
+ 
+The numerator, NOPAT, is the cash earnings a business would have if it had no debt or excess cash. The 
+denominator, invested capital, can be viewed equivalently as the net assets a company needs to generate 
+NOPAT, or the amount of financing a company uses to fund those assets (typically using a combination of debt 
+and equity).  
+In a clean accounting bridge, investment, which includes changes in net working capital, capital expenditures 
+(net of depreciation expense), and acquisitions (net of divestitures), is equal to the change in invested capital. 
+For instance, a company that starts the year with $1,000 of invested capital and invests $100 during the year 
+will end with $1,100 of invested capital. 
+One of the central ideas in valuation is that invested capital is a sunk cost and that what matters is the cash flow 
+the business will generate in the future. This leads us to ROIIC. ROIIC is a rough estimate of the change in NOPAT 
+as a result of new investment. 
+Because investments can be lumpy, we smooth ROIIC by calculating rolling three-year figures. We also include 
+a one-year lag between investment and NOPAT.  
+Return on incremental invested capital (ROIIC)  = 
+ Year 3 NOPAT – Year 0 NOPAT
+Year 2 invested capital – Year -1 invested capital 
+To illustrate, the rolling three-year ROIIC for 2026 would be 2026 NOPAT minus 2023 NOPAT, divided by 2025 
+invested capital minus 2022 invested capital (i.e., the cumulative investment from 2023 to 2025). 
+A company that had NOPAT of $140 in 2026 and $100 in 2023 (a three-year increase of $40) and invested 
+capital of $1,200 in 2025 and $1,000 in 2022 (a cumulative investment of $200) would have an ROIIC of 20 
+percent (0.20 = $40 ÷ $200). The lag makes a big difference for this group of companies because of the rapid 
+growth in invested capital. 
+Exhibit 7 shows the combined ROIIC for the same five hyperscalers. We also include an estimate of the weighted 
+average cost of capital (WACC). Returns above the cost of capital create value. Peak ROIIC occurred in the first 
+quarter of 2026 at close to 40 percent versus an estimated WACC of about 8 percent. Based on consensus 
+estimates, the measure troughs in the third quarter of 2027 at about 23 percent and then rebounds somewhat 
+to about 35 percent in 2030.  
+ 
+ 
+ 
+ 
+
+
+[Page 11]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+11
+ 
+Exhibit 7: Combined Return on Incremental Invested Capital of Large Hyperscalers 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26; Amazon, Alphabet, Microsoft, Meta Platforms, Oracle. 
+Exhibit 8 looks at each of the five companies. Note that the scales on the vertical axes differ. Future figures 
+reflect consensus expectations. 
+Exhibit 8: Return on Incremental Invested Capital of Large Hyperscalers 
+ 
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+Q3 2029E
+Q4 2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+ROIIC
+WACC
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Amazon
+ROIIC
+WACC
+
+
+[Page 12]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+12
+ 
+ 
+ 
+ 
+0
+10
+20
+30
+40
+50
+60
+70
+80
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Alphabet
+ROIIC
+WACC
+0
+10
+20
+30
+40
+50
+60
+70
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Microsoft
+ROIIC
+WACC
+0
+10
+20
+30
+40
+50
+60
+70
+80
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Meta Platforms
+ROIIC
+WACC
+
+
+[Page 13]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+13
+ 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+The following observations cover the second quarter of 2023 through the fourth quarter of 2031 (where 
+forecasts are available). Note that all of the future figures are above the cost of capital: 
+• 
+Amazon’s ROIIC peaked
+ in the first quarter of 2026 at about 35 percent and is expected to trough in the 
+fourth quarter of 2027 at nearly 15 percent. From there, ROIIC is expected to climb to nearly 45 percent 
+in 2031. 
+• 
+Alphabet’s ROIIC apex was 7
+0 percent in the fourth quarter of 2023, and consensus estimates suggest 
+a steady trend lower, reaching about 30 percent in the fourth quarter of 2027, before a slight uptick to 
+about 35 percent in 2031.   
+• 
+Microsoft’s ROIIC pattern follows a gentle “U” shape. The ROIIC was 45 percent in the third quarter of 
+2023 before bottoming in the second quarter of 2027 at 23 percent. From there, the ROIIC rebounds to 
+around 60 percent in 2030.  
+• 
+Meta Platforms’s ROIIC falls sharply from 7
+0 percent in the first quarter of 2026 to 16 percent in the 
+fourth quarter of 2027. From there, results are fairly stable until dipping again in 2031, with ROIIC 
+estimated to reach about 13 percent. 
+• 
+Oracle’s ROIIC shows a
+n overall ascent, from a low of -3 percent in the second quarter of 2024 to a 
+high of about 50 percent in 2030. Oracle’s 
+overall improvement is the largest among these companies. 
+We now share the same analysis for Apple, Nvidia, and Micron (see exhibit 9). 
+ 
+ 
+ 
+-10
+0
+10
+20
+30
+40
+50
+60
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Oracle
+ROIIC
+WACC
+
+
+[Page 14]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+14
+ 
+Exhibit 9: Return on Incremental Invested Capital of Large Technology Companies 
+ 
+ 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+-50
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Apple
+ROIIC
+WACC
+0
+100
+200
+300
+400
+500
+600
+700
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Nvidia
+ROIIC
+WACC
+-200
+0
+200
+400
+600
+800
+1,000
+1,200
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIIC and WACC (%)
+Micron
+ROIIC
+WACC
+
+
+[Page 15]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+15
+ 
+Here is a brief analysis of these results. The three-year smoothing plus a lag does not temper the extreme figures 
+for these businesses (note the large ranges on the vertical axes): 
+• 
+Apple’s ROIIC looks like a roller coaster. ROIIC was roughly 400 percent in the fourth quarter of 2023 
+before dropping to -30 percent in the fourth quarter of 2024 and rebounding to mostly near or above 
+100 percent from the third quarter of 2025 through late 2028, the end of the period where we have 
+consensus estimates. 
+• 
+Nvidia’s ROIIC profile takes the form of an extreme inverted “U,” starting at 50 percent in the second 
+quarter of 2023, then rocketing to more than 600 percent in the first quarter of 2026 before settling 
+below 200 percent in the second half of 2029. Nvidia’s sharp rise in ROIIC is consistent with the surge 
+in FCF that consensus forecasts suggest. 
+• 
+Micron’s ROIIC profile is the most extreme of all the companies under consideration. In the fourth quarter 
+of 2023 it was about -75 percent, which is a reading that is not uncommon among cyclical businesses. 
+It is then forecast to rise to more than 1,000 percent in the fourth quarter of 2026, before moderating 
+to about 35 percent by the end of 2029.  
+These results reflect consensus estimates by sell-side analysts. They can be revised in a potentially material 
+way. The main thing to watch is whether the incremental revisions in sales and EBIT, the core determinants of 
+profits, keep up sufficiently with the increase in investment.  
+Here’s a quotation from Andy Jassy, the chief executive officer of Amazon, whose comment likely touches on a 
+consistent sentiment among the hyperscalers. He wrote: 
+“The FCF and ROIC for these investments [land, power, buildings, chips, servers, and networking gear] 
+are cumulatively quite attractive a couple years after being in service; however, in times of very high 
+growth (like now), where the capex growth meaningfully outpaces the revenue growth, the early-years 
+FCF is challenged until these initial tranches of capacity are being monetized and revenue growth out-
+paces capex growth.”
+10 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 16]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+16
+ 
+Free Cash Flow and Return on Invested Capital (ROIC)  
+We now look at free cash flow and ROIC together, as we did in exhibit 1 for Walmart. Before we get to the 
+specific companies, exhibit 10 shows the aggregate ROIC for the hyperscalers relative to an estimate of the cost 
+of capital. The aggregate ROIC peaked in the third quarter of 2024 at 30 percent and dropped about 600 basis 
+points, to 24 percent, in the second quarter of 2026. From there, consensus estimates suggest a modest 
+recovery. In all periods the ROIC is well above the cost of capital.   
+Exhibit 10: Combined Return on Invested Capital of Large Hyperscalers 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus; Includes Amazon, Alphabet, Microsoft, Meta Platforms, Oracle. 
+Exhibit 11 looks at trailing-four-quarter or annual FCF and ROIC for each of the hyperscalers. Note that the 
+scales on the vertical axes differ. Forecasts reflect consensus expectations.   
+Exhibit 11: Free Cash Flow and Return on Invested Capital of Large Hyperscalers 
+ 
+0
+5
+10
+15
+20
+25
+30
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+Q3 2029E
+Q4 2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+Trailing 3-Year ROIC and WACC (%)
+ROIC
+WACC
+-10
+-5
+0
+5
+10
+15
+20
+25
+30
+35
+-100
+-50
+0
+50
+100
+150
+200
+250
+300
+350
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or 
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Amazon
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+
+
+[Page 17]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+17
+ 
+ 
+ 
+ 
+-10
+-5
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+-100
+-50
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Alphabet
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+0
+20
+40
+60
+80
+100
+120
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or 
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Microsoft
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+-30
+-15
+0
+15
+30
+45
+-100
+-50
+0
+50
+100
+150
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or 
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Meta Platforms
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+
+
+[Page 18]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+18
+ 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+The following observations cover the second quarter of 2023 through 2031 (in cases where forecasts are 
+available): 
+• 
+Amazon’s ROIC was on an upswing from the second quarter of 2023 to the fourth quarter of 2024, 
+before the capital expenditures really took off. From 2024 to mid-2026 there is a decline in ROIC that 
+coincides with a drop in FCF. But starting in mid-2027, consensus estimates suggest that both ROIC and 
+FCF are expected to improve. 
+• 
+Alphabet has a pattern similar to that of Amazon, with a drop in ROIC from 2023 to 2026 (albeit from a 
+higher base) alongside reduced FCF. ROIC is projected to remain consistent, at a level around 30 
+percent, for the 5 years ending in 2031 even as FCF rebounds sharply.  
+• 
+Microsoft’s ROIC remains high during the period, albeit with a dip from 2023 to 2024 that reflects the 
+acquisition of Activision Blizzard. Free cash flow does fall and rise, although it remains positive 
+throughout. 
+• 
+Meta Platforms’s ROIC
+, based on realized results and consensus expectations, drifts from about 40 
+percent in early 2025 to about one-half that level by 2031. Meta’s FCF pattern is similar to the others, 
+with a dip into negative FCF followed by a strong recovery to positive results.  
+• 
+Oracle’s ROIC has declined from about 18 percent in the second quarter of 2023 to 13 percent in the 
+second quarter of 2026. But forecasts suggest a near doubling of ROIC from the lows as FCF turns from 
+negative to positive.  
+ 
+ 
+ 
+ 
+-30
+-20
+-10
+0
+10
+20
+30
+-60
+-40
+-20
+0
+20
+40
+60
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+Q1 2029E
+Q2 2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or 
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Oracle
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+
+
+[Page 19]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+19
+ 
+Here is the same analysis for Apple, Nvidia, and Micron (see exhibit 12). 
+Exhibit 12: Free Cash Flow and Return on Invested Capital of Large Technology Companies 
+ 
+ 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus on 8/31/26. 
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+0
+20
+40
+60
+80
+100
+120
+140
+160
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+2027E
+2028E
+2028E
+2028E
+2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or 
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Apple
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+0
+50
+100
+150
+200
+250
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or 
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Nvidia
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+-25
+0
+25
+50
+75
+100
+-50
+0
+50
+100
+150
+200
+Q2 2023
+Q3 2023
+Q4 2023
+Q1 2024
+Q2 2024
+Q3 2024
+Q4 2024
+Q1 2025
+Q2 2025
+Q3 2025
+Q4 2025
+Q1 2026
+Q2 2026
+Q3 2026E
+Q4 2026E
+Q1 2027E
+Q2 2027E
+Q3 2027E
+Q4 2027E
+Q1 2028E
+Q2 2028E
+Q3 2028E
+Q4 2028E
+2029E
+2029E
+2029E
+2029E
+2030E
+2030E
+2030E
+2030E
+2031E
+2031E
+2031E
+2031E
+ROIC, Trailing 4 Quarters or 
+Annual (Percent)
+Free Cash Flow, Trailing 
+4 Quarters or Annual ($ Billions)
+Micron
+Free Cash Flow (Left Axis)
+ROIC (Right Axis)
+
+
+[Page 20]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+20
+ 
+• 
+Apple’s ROIC declines from 2023 to mid-2026 but from levels that are extraordinarily high. Consensus 
+estimates suggest a bounce in ROIC from 2026 to 2028. The company’s FCF is comfortably positive 
+throughout the period of analysis. 
+• 
+Nvidia’s ROIC starts at an impressive 48 percent in the second quarter of 2023 and explodes to about 
+200 percent by 2028. FCF, which was modestly positive early in 2023, rises consistently to more than 
+$400 billion, per consensus estimates, by 2028.  
+• 
+Micron’s ROIC reflects a pattern consistent with a cyclical company. It is as low as -13 percent in the 
+fourth quarter of 2023 and ascends sharply to 89 percent in the first quarter of 2027. From there, 
+estimates suggest that it will decline to about 55 percent by the end of 2028. FCF goes from being 
+modestly negative from 2023 through 2024 to extraordinarily positive by 2029, with consensus 
+estimates implying a total of roughly $180 billion.  
+Change in Consensus 
+Net present value (NPV) is a key concept in corporate finance. The idea is that companies should make an 
+investment only when the present value of the future cash flows it produces exceeds the amount spent. In other 
+words, the benefit minus the cost is positive.  
+Companies commonly provide guidance on their expectations for near-term capital expenditures as well as 
+sales and EBIT. But assessing whether capital expenditures have a positive NPV is tricky because the investment 
+is upfront and the cash flows come over the life of the asset, which can be a decade or more.  
+Exhibit 13 shows the consensus estimates for EBIT, sales, EBIT margin, and capital expenditures as of August 
+31, 2025 (middle section) and August 31, 2026 (right section).  
+Investors want to see that the estimates for the determinants of profit keep pace with the upward revisions in 
+capital expenditures.   
+Focusing the analysis on estimates for capital expenditures for 2027, we see that the largest percentage 
+increases include Alphabet, Micron, and Oracle. The largest increases in dollar value were expected from the 
+leading cloud companies, including Alphabet (+$210 billion), Amazon (+$142 billion), and Microsoft (+$116 
+billion), followed by Meta (+$86 billion) and Oracle (+$56 billion). The shift in expectations is more modest for 
+Micron (+$31 billion) and Nvidia (+$6 billion). 
+Turning to estimates for EBIT in 2027, the largest percentage changes and absolute changes by far are for 
+Micron (+$192 billion revision) and Nvidia (+$231 billion). Alphabet’s EBIT revision is +$52 billion, followed by 
+Apple (+$23 billion), Amazon (+$22 billion), and Microsoft (+$15 billion). Revisions for Oracle (+$6 billion) and 
+Meta (+$2 billion) are positive but more muted.     
+ 
+ 
+ 
+
+
+[Page 21]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+21
+ 
+Exhibit 13: How Consensus Estimates Have Changed for Leading Technology Companies 
+Amazon 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+97.2 
+119.2 
+147.9 
+180.0 
+222.1 
+109.9 
+141.3 
+183.4 
+224.2 
+271.6 
+Change 
+  
+  
+  
+  
+  
+13% 
+19% 
+24% 
+25% 
+22% 
+Sales 
+781.9 
+863.1 
+952.6 
+1,044.2 
+1,144.0 
+828.4 
+949.2 
+1,101.1 
+1,221.1 
+1,365.5 
+Change 
+  
+  
+  
+  
+  
+6% 
+10% 
+16% 
+17% 
+19% 
+EBIT Margin 
+12.4% 
+13.8% 
+15.5% 
+17.2% 
+19.4% 
+13.3% 
+14.9% 
+16.7% 
+18.4% 
+19.9% 
+Change (% Points) 
+  
+  
+  
+  
+  
+0.8  
+1.1  
+1.1  
+1.1  
+0.5  
+Capex 
+127.7 
+130.6 
+136.4 
+150.7 
+164.0 
+218.0 
+272.9 
+295.8 
+310.6 
+313.0 
+Change 
+  
+  
+  
+  
+  
+71% 
+109% 
+117% 
+106% 
+91% 
+Alphabet 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+148.3 
+165.5 
+184.4 
+204.4 
+227.5 
+171.6 
+217.2 
+262.4 
+311.3 
+363.6 
+Change 
+  
+  
+  
+  
+  
+16% 
+31% 
+42% 
+52% 
+60% 
+Sales 
+440.6 
+488.6 
+542.1 
+591.6 
+650.3 
+497.6 
+611.4 
+729.8 
+825.0 
+930.9 
+Change 
+  
+  
+  
+  
+  
+13% 
+25% 
+35% 
+39% 
+43% 
+EBIT Margin 
+33.7% 
+33.9% 
+34.0% 
+34.6% 
+35.0% 
+34.5% 
+35.5% 
+36.0% 
+37.7% 
+39.1% 
+Change (% Points) 
+  
+  
+  
+  
+  
+0.8  
+1.7  
+1.9  
+3.2  
+4.1  
+Capex 
+89.8 
+94.2 
+105.0 
+111.3 
+117.3 
+201.5 
+304.0 
+343.3 
+354.5 
+371.5 
+Change 
+  
+  
+  
+  
+  
+124% 
+223% 
+227% 
+218% 
+217% 
+Microsoft 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+158.7 
+183.5 
+216.7 
+N/A 
+N/A 
+168.5 
+198.4 
+238.4 
+287.5 
+363.8 
+Change 
+  
+  
+  
+  
+  
+6% 
+8% 
+10% 
+N/A 
+N/A 
+Sales 
+346.8 
+397.7 
+456.3 
+521.6 
+N/A 
+361.5 
+428.3 
+515.2 
+609.1 
+763.7 
+Change 
+  
+  
+  
+  
+  
+4% 
+8% 
+13% 
+17% 
+N/A 
+EBIT Margin 
+45.8% 
+46.1% 
+47.5% 
+N/A 
+N/A 
+46.6% 
+46.3% 
+46.3% 
+47.2% 
+47.6% 
+Change (% Points) 
+  
+  
+  
+  
+  
+0.8  
+0.2  
+-1.2  
+N/A 
+N/A 
+Capex 
+89.6 
+92.6 
+96.6 
+105.1 
+N/A 
+157.7 
+208.5 
+224.2 
+239.4 
+312.0 
+Change 
+  
+  
+  
+  
+  
+76% 
+125% 
+132% 
+128% 
+N/A 
+Meta Platforms 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+87.2 
+101.1 
+115.0 
+138.0 
+165.3 
+87.8 
+102.8 
+121.6 
+153.5 
+163.3 
+Change 
+  
+  
+  
+  
+  
+1% 
+2% 
+6% 
+11% 
+-1% 
+Sales 
+229.0 
+262.3 
+297.8 
+334.3 
+384.2 
+254.1 
+305.3 
+359.9 
+423.1 
+459.5 
+Change 
+  
+  
+  
+  
+  
+11% 
+16% 
+21% 
+27% 
+20% 
+EBIT Margin 
+38.1% 
+38.5% 
+38.6% 
+41.3% 
+43.0% 
+34.6% 
+33.7% 
+33.8% 
+36.3% 
+35.5% 
+Change (% Points) 
+  
+  
+  
+  
+  
+-3.5  
+-4.8  
+-4.8  
+-5.0  
+-7.5  
+Capex 
+94.7 
+102.8 
+116.6 
+114.3 
+116.3 
+137.4 
+188.7 
+205.5 
+206.2 
+237.3 
+Change 
+  
+  
+  
+  
+  
+45% 
+84% 
+76% 
+80% 
+104% 
+Oracle 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+31.1 
+37.6 
+45.8 
+N/A 
+N/A 
+33.1 
+43.7 
+58.9 
+75.6 
+93.2 
+Change 
+  
+  
+  
+  
+  
+7% 
+16% 
+28% 
+N/A 
+N/A 
+Sales 
+74.5 
+90.2 
+109.4 
+N/A 
+N/A 
+80.4 
+113.4 
+159.9 
+202.7 
+241.2 
+Change 
+  
+  
+  
+  
+  
+8% 
+26% 
+46% 
+N/A 
+N/A 
+EBIT Margin 
+41.7% 
+41.7% 
+41.9% 
+N/A 
+N/A 
+41.2% 
+38.5% 
+36.8% 
+37.3% 
+38.7% 
+Change (% Points) 
+  
+  
+  
+  
+  
+-0.5  
+-3.2  
+-5.1  
+N/A 
+N/A 
+Capex 
+29.0 
+35.8 
+39.9 
+N/A 
+N/A 
+77.0 
+92.1 
+90.2 
+78.6 
+71.3 
+Change 
+  
+  
+  
+  
+  
+166% 
+157% 
+126% 
+N/A 
+N/A 
+
+
+[Page 22]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+22
+ 
+Apple 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+140.3 
+145.6 
+141.8 
+N/A 
+N/A 
+158.6 
+168.9 
+189.6 
+N/A 
+N/A 
+Change 
+  
+  
+  
+  
+  
+13% 
+16% 
+34% 
+N/A 
+N/A 
+Sales 
+442.2 
+458.6 
+467.9 
+510.6 
+576.0 
+488.1 
+529.2 
+577.2 
+646.0 
+705.0 
+Change 
+  
+  
+  
+  
+  
+10% 
+15% 
+23% 
+27% 
+22% 
+EBIT Margin 
+31.7% 
+31.8% 
+30.3% 
+N/A 
+N/A 
+32.5% 
+31.9% 
+32.8% 
+N/A 
+N/A 
+Change (% Points) 
+  
+  
+  
+  
+  
+0.8  
+0.2  
+2.5  
+N/A 
+N/A 
+Capex 
+14.3 
+13.5 
+N/A 
+N/A 
+N/A 
+10.9 
+13.2 
+14.4 
+N/A 
+N/A 
+Change 
+  
+  
+  
+  
+  
+-24% 
+-2% 
+N/A 
+N/A 
+N/A 
+Nvidia 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+174.9 
+203.1 
+224.3 
+244.6 
+238.3 
+256.5 
+434.2 
+585.2 
+670.8 
+748.0 
+Change 
+  
+  
+  
+  
+  
+47% 
+114% 
+161% 
+174% 
+214% 
+Sales 
+268.8 
+316.5 
+342.6 
+366.3 
+361.7 
+391.9 
+659.6 
+878.7 
+1,024.8 
+1,112.7 
+Change 
+  
+  
+  
+  
+  
+46% 
+108% 
+156% 
+180% 
+208% 
+EBIT Margin 
+65.1% 
+64.2% 
+65.5% 
+66.8% 
+65.9% 
+65.5% 
+65.8% 
+66.6% 
+65.5% 
+67.2% 
+Change (% Points) 
+  
+  
+  
+  
+  
+0.4  
+1.7  
+1.1  
+-1.3  
+1.3  
+Capex 
+6.2 
+5.8 
+9.3 
+N/A 
+N/A 
+8.9 
+12.0 
+14.2 
+26.7 
+N/A 
+Change 
+  
+  
+  
+  
+  
+45% 
+107% 
+53% 
+N/A 
+N/A 
+Micron 
+Estimates As of 8/31/25 
+Estimates As of 8/31/26 
+Calendar Yrs; $BB 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+  2026 
+  2027 
+  2028 
+  2029 
+  2030 
+EBIT 
+18.1 
+19.8 
+N/A 
+N/A 
+N/A 
+133.4 
+211.5 
+233.0 
+270.4 
+N/A 
+Change 
+  
+  
+  
+  
+  
+638% 
+970% 
+N/A 
+N/A 
+N/A 
+Sales 
+50.6 
+54.7 
+N/A 
+N/A 
+N/A 
+169.6 
+259.9 
+302.8 
+379.8 
+N/A 
+Change 
+  
+  
+  
+  
+  
+235% 
+375% 
+N/A 
+N/A 
+N/A 
+EBIT Margin 
+35.7% 
+36.1% 
+N/A 
+N/A 
+N/A 
+78.7% 
+81.4% 
+77.0% 
+71.2% 
+N/A 
+Change (% Points) 
+  
+  
+  
+  
+  
+43.0  
+45.3  
+N/A 
+N/A 
+N/A 
+Capex 
+16.6 
+17.0 
+N/A 
+N/A 
+N/A 
+34.5 
+48.4 
+55.7 
+69.6 
+N/A 
+Change 
+  
+  
+  
+  
+  
+108% 
+185% 
+N/A 
+N/A 
+N/A 
+ 
+Source: Counterpoint Global and FactSet. 
+Note: Data calendarized; Estimates are FactSet consensus. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 23]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+23
+ 
+Summary 
+Free cash flow (FCF), profit minus investment, determines long-term shareholder value. Assuming a company 
+can finance its operations, negative FCF is not only fine, but desirable, if returns on investment exceed the cost 
+of capital.   
+Strong demand for GenAI has compelled Amazon, Alphabet, Microsoft, Meta Platforms, and Oracle, often 
+referred to as hyperscalers, to accelerate their spending on infrastructure. It has affected other technology 
+companies as well, including Nvidia and Micron. We also include Apple in our analysis for purposes of 
+comparison. 
+This report covered five topics. First, we used results and consensus forecasts to assess the FCF of these leading 
+technology companies.  
+The combined trailing-four-quarter FCF for the hyperscalers is estimated to decline from more than $170 billion 
+in the first quarter of 2024 to a trough of about -$265 billion in the third quarter of 2027. From there, forecasts 
+call for a recovery to just over $500 billion in 2030.  
+The paths for the companies vary substantially. Microsoft is the only hyperscaler forecast to maintain positive 
+FCF throughout the period, and Amazon and Alphabet have the largest projected changes from trough to peak. 
+Apple’s FCF remains consistently positive, and both 
+Nvidia and Micron are forecast to have huge improvements 
+over the period considered.  
+Second, we looked at how the acceleration of capital expenditures changes each company’s position within the 
+life cycle, if at all. Amazon (growth) and Microsoft (maturity) remain in the same stage throughout while 
+Alphabet, Meta, and Oracle transition from maturity to growth. 
+Third, we assessed the return on the marginal dollar invested by calculating return on incremental invested 
+capital (ROIIC). The patterns for the hyperscalers are quite different from one another, with Oracle expected to 
+have the largest improvement and Meta the largest decline from peak to trough. All of the ROIICs from the first 
+quarter of 2025 on are above the cost of capital. 
+Apple’s ROIIC looks like a mountain range, with a
+n apex of roughly 400 percent and a nadir of -30 percent, 
+followed by a rebound to consistently near or above 100 percent. The patterns for Nvidia and Micron both look 
+like an inverted “U,” rising and falling sharply. 
+ 
+Fourth, we considered the relationship between free cash flow and ROIC. The point of emphasis is that negative 
+free cash flow is perfectly fine provided that ROIC remains above the cost of capital.   
+Finally, we examined how consensus estimates have changed for key value drivers, including EBIT, EBIT margin, 
+and capital expenditures between August 31, 2025 and August 31, 2026. Alphabet, Micron, and Oracle have 
+the largest percentage revisions in expected capital expenditures while Nvidia and Micron have the biggest 
+anticipated increases in EBIT on both a percentage and dollar basis. These consensus estimates are subject to 
+change and become less reliable further into the forecast horizon. 
+
+
+[Page 24]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+24
+ 
+Endnotes 
+1 We exclude internally generated intangible investments, which are expensed in a traditional calculation of free 
+cash flow. See Michael J. Mauboussin and Dan Callahan, “Capital Allocation: Results, Analysis, and Assessment,” 
+Consilient Observer: Counterpoint Global Insights, November 5, 2025 and the appendix to Michael J. Mauboussin 
+and Dan Callahan, “ROIC and Intangible Assets: A Look at How Adjustments for Intangibles Affect ROIC,” 
+Consilient Observer: Counterpoint Global Insights, November 9, 2022. 
+2 Michael J. Mauboussin and Dan Callahan, “Cost of Capital: A Practical Guide to Measuring Opportunity Cost,” 
+Consilient Observer: Counterpoint Global Insights, February 15, 2023. 
+3 Michael J. Mauboussin and Dan Callahan, “Return on Invested Capital: How to Calculate ROIC and Handle 
+Common Issues,” Consilient Observer: Counterpoint Global Insights, October 6, 2022 and Michael J. Mauboussin 
+and Dan Callahan, “ROIC and the Investment Process: ROICs, How They Change, and Shareholder Returns,” 
+Consilient Observer: Counterpoint Global Insights, June 6, 2023. 
+4 Katharine W. Adame, Jennifer L. Koski, Katie W. Lem, and Sarah E. McVay, “Free Cash Flow Disclosure in 
+Earnings Announcements,” 
+Journal of Financial Reporting, Vol. 8, No. 2, Fall 2023, 1–23. 
+5 The other approach is free cash flow to the firm (FCFF), which values the enterprise and then subtracts debt 
+and other claims to calculate equity. In one survey, investors replied that they use the FCFF model nearly twice 
+as often as the FCFE model. See Jerald E. Pinto, Thomas R. Robinson, and John D. Stowe, “Equity Valuation: A 
+Survey of Professional Practice,” 
+Review of Financial Economics, Vol. 37, No. 2, April 2019, 219–233. 
+6 Sanjeev Bhojraj, “Stock Compensation Expense, Cash Flows, and Inflated Valuations,” 
+Review of Accounting 
+Studies, Vol. 25, No. 3, September 2020, 1078–1097. 
+7 For example, see Michael J. Mauboussin and Dan Callahan, “Trading Stages in the Company Life Cycle,” 
+Consilient Observer: Counterpoint Global Insights, September 26, 2023 and Michael J. Mauboussin and Dan 
+Callahan, “Competitive Advantage Period: The Neglected Value Driver,” 
+Consilient Observer: Counterpoint 
+Global Insights, April 14, 2026. 
+8 Victoria Dickinson, “Cash Flow Patterns as a Proxy for Firm Life Cycle,” 
+The Accounting Review, Vol. 86, No. 6, 
+November 2011, 1969–1994 and Michael Gort and Steven Klepper, “Time Paths in the Diffusion of Product 
+Innovations,” The Economic Journal, Vol. 92, No. 367, September 1982, 630–653. 
+9 As a rough guide, ROIIC as compared to the cost of capital is informative. But ROIIC is in fact an imperfect 
+measure of value creation. Specifically, ROIIC overstates economic returns when it is above the cost of capital 
+and understates economic returns when it is below the cost of capital. This problem becomes more acute as 
+the length of the competitive advantage period extends. See Michael J. Mauboussin and Dan Callahan, “Market
+-
+Expected Return on Investment: Bridging Accounting and Valuation,” 
+Consilient Observer: Counterpoint Global 
+Insights, April 14, 2021, 13–15.  
+10 Andy Jassy, “2025 Letter to Shareholders,” 
+Amazon, April 9, 2026. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 25]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+25
+ 
+IMPORTANT INFORMATION 
+The views and opinions and/or analysis expressed are those of the author as of the date of preparation of this 
+material and are subject to change at any time due to market or economic conditions and may not necessarily 
+come to pass. Furthermore, the views will not be updated or otherwise revised to reflect information that 
+subsequently becomes available or circumstances existing, or changes occurring, after the date of publication. 
+The views expressed do not reflect the opinions of all investment personnel at Morgan Stanley Investment 
+Management (MSIM) and its subsidiaries and affiliates (collectively “the Firm”)
+, and may not be reflected in all 
+the strategies and products that the Firm offers.  
+ 
+Forecasts and/or estimates provided herein are subject to change and may not actually come to pass. 
+Information regarding expected market returns and market outlooks is based on the research, analysis and 
+opinions of the authors or the investment team. These conclusions are speculative in nature, may not come to 
+pass and are not intended to predict the future performance of any specific strategy or product the Firm offers. 
+Future results may differ significantly depending on factors such as changes in securities or financial markets 
+or general economic conditions. 
+ 
+Past performance is no guarantee of future results. This material has been prepared on the basis of publicly 
+available information, internally developed data and other third-party sources believed to be reliable. However, 
+no assurances are provided regarding the reliability of such information and the Firm has not sought to 
+independently verify information taken from public and third-party sources. The views expressed in the books 
+and articles referenced in this whitepaper are not necessarily endorsed by the Firm. 
+ 
+This material is a general communications which is not impartial and has been prepared solely for 
+information and educational purposes and does not constitute an offer or a recommendation to buy or 
+sell any particular security or to adopt any specific investment strategy or product. The material contained 
+herein has not been based on a consideration of any individual client circumstances and is not investment advice, 
+nor should it be construed in any way as tax, accounting, legal or regulatory advice. To that end, investors should 
+seek independent legal and financial advice, including advice as to tax consequences, before making any 
+investment decision. 
+ 
+Charts and graphs provided herein are for illustrative purposes only. Any securities referenced herein are solely 
+for illustrative purposes only and should not be construed as a recommendation for investment. 
+ 
+The indexes referred to herein are the intellectual property (including registered trademarks) of the applicable 
+licensors. Any product based on an index is in no way sponsored, endorsed, sold or promoted by the applicable 
+licensor and it shall not have any liability with respect thereto. 
+ 
+This material is not a product of Morgan Stanley’s Research Department and should not be regarded as a 
+research material or a recommendation.  
+ 
+The Firm has not authorised financial intermediaries to use and to distribute this material, unless such use and 
+distribution is made in accordance with applicable law and regulation. Additionally, financial intermediaries are 
+required to satisfy themselves that the information in this material is appropriate for any person to whom they 
+provide this material in view of that person’s circumstances and purpose. The Firm shall not be liable for, and 
+accepts no liability for, the use or misuse of this material by any such financial intermediary.  
+ 
+The whole or any part of this work may not be directly or indirectly reproduced, copied, modified, used to create 
+a derivative work, performed, displayed, published, posted, licensed, framed, distributed or transmitted or any 
+of its contents disclosed to third parties without MSIM’s express written consent. This work may not be linked to 
+unless such hyperlink is for personal and non-commercial use. All information contained herein is proprietary 
+and is protected under copyright and other applicable law. 
+ 
+Morgan Stanley Investment Management is the asset management division of Morgan Stanley. 
+ 
+This material may be translated into other languages. Where such a translation is made this English version 
+remains definitive. If there are any discrepancies between the English version and any version of this material in 
+another language, the English version shall prevail. 
+
+
+[Page 26]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+26
+ 
+DISTRIBUTION 
+ 
+This material is only intended for and will only be distributed to persons resident in jurisdictions where 
+such distribution or availability would not be contrary to local laws or regulations. 
+ 
+MSIM, the asset management division of Morgan Stanley (NYSE: MS), and its affiliates have 
+arrangements in place to market each other’s products and services.  Each MSIM affiliate is regulated as 
+appropriate in the jurisdiction it operates. MSIM’s affiliate
+s are: Calvert Research and Management, 
+Eaton Vance Management, Parametric Portfolio Associates LLC, Parametric SAS, and Atlanta Capital 
+Management LLC. 
+ 
+This material has been issued by any one or more of the following entities: 
+ 
+EMEA  
+This material is for Professional Clients/Accredited Investors only.  
+ 
+In the EU, MSIM materials are issued by MSIM Fund Management (Ireland) Limited (“FMIL”). FMIL is regulated by 
+the Central Bank of Ireland and is incorporated in Ireland as a private company limited by shares with company 
+registration number 616661 and has its registered address at 24-26 City Quay, Dublin 2, DO2 NY19, Ireland.  
+  
+Outside the EU, MSIM materials are issued by Morgan Stanley Investment Management Limited (MSIM Ltd) is 
+authorised and regulated by the Financial Conduct Authority. Registered in England. Registered No. 1981121. 
+Registered Ofﬁce: 25 Cabot Square, Canary Wharf, London E14 4QA. 
+ 
+  
+In Switzerland, MSIM materials are issued by Morgan Stanley & Co. International plc, London (Zurich Branch) 
+Authorised and regulated by the Eidgenössische Finanzmarktaufsicht ("FINMA"). Registered Office: 
+Beethovenstrasse 33, 8002 Zurich, Switzerland. 
+ 
+Italy: MSIM FMIL (Milan Branch), (Sede Secondaria di Milano) Palazzo Serbelloni Corso Venezia, 16 20121 
+Milano, Italy. The Netherlands: MSIM FMIL (Amsterdam Branch), Rembrandt Tower, 11th Floor Amstelplein 1 
+1096HA, Netherlands. France: MSIM FMIL (Paris Branch), 61 rue de Monceau 75008 Paris, France. Spain: MSIM 
+FMIL (Madrid Branch), Calle Serrano 55, 28006, Madrid, Spain. Germany: MSIM FMIL Frankfurt Branch, Große 
+Gallusstraße 18, 60312 Frankfurt am Main, Germany (Gattung: Zweigniederlassung (FDI) gem. § 53b KWG). 
+Denmark: MSIM FMIL (Copenhagen Branch), Gorrissen Federspiel, Axel Towers, Axeltorv2, 1609 Copenhagen 
+V, Denmark. 
+ 
+MIDDLE EAST 
+Dubai International Financial Centre: This information does not constitute or form part of any offer to issue or 
+sell, investment products in the UAE (including the Dubai International Financial Centre and the Abu Dhabi Global 
+Market) and accordingly should not be construed as such. The content of this report has not been approved by 
+or filed with the UAE Central Bank, the Dubai Financial Services Authority, the UAE Securities and Commodities 
+Authority or the Financial Services Regulatory Authority. 
+ 
+Saudi Arabia 
+This financial promotion was issued and approved for use in Saudi Arabia by Morgan Stanley Saudi Arabia, Al 
+Rashid Tower, Kings Sand Street, Riyadh, Saudi Arabia, authorized and regulated by the Capital Market Authority 
+license number 06044-37. 
+ 
+U.S. 
+NOT FDIC INSURED | OFFER NO BANK GUARANTEE | MAY LOSE VALUE | NOT INSURED BY ANY FEDERAL 
+GOVERNMENT AGENCY | NOT A DEPOSIT 
+ 
+ 
+
+
+[Page 27]
+  
+ 
+ 
+ 
+© 2026 Morgan Stanley. All rights reserved. 
+5918938 Exp. 9/30/2028 
+27
+ 
+ASIA PACIFIC 
+Hong Kong: This document has been issued by Morgan Stanley Asia Limited, CE No. AAD291, for use in Hong 
+Kong and shall only be made available to “professional investors” as defined under the Securities and Futures 
+Ordinance of Hong Kong (Cap 571). The contents of this document have not been reviewed nor approved by 
+any regulatory authority including the Securities and Futures Commission in Hong Kong. Accordingly, save where 
+an exemption is available under the relevant law, this document shall not be issued, circulated, distributed, 
+directed at, or made available to, the public in Hong Kong. Singapore: This material is disseminated by Morgan 
+Stanley Investment Management Company, Registration No. 199002743C.  This material may not be circulated 
+or distributed, whether directly or indirectly, to persons in Singapore other than to (i) an accredited investor ,  (ii) 
+an institutional investor as defined in Section 4A of the Securities and Futures Act, Chapter 289 of Singapore 
+(“SFA”); or (iii) otherwise pursuant to, and in accordance with the conditions of, any other applicable provisio
+n 
+of the SFA. This publication has not been reviewed by the Monetary Authority of Singapore. Australia: This 
+material is provided by Morgan Stanley Investment Management (Australia) Pty Ltd ABN 22122040037, AFSL 
+No. 314182 and its affiliates and does not constitute an offer of interests. Morgan Stanley Investment 
+Management (Australia) Pty Limited arranges for MSIM affiliates to provide financial services to Australian 
+wholesale clients. This material will not be lodged with the Australian Securities and Investments Commission.   
+ 
+Japan 
+This material may not be circulated or distributed, whether directly or indirectly, to persons in Japan other than 
+to (i) a professional investor as defined in Article 2 of the Financial Instruments and Exchange Act (“FIEA”) or (ii) 
+otherwise pursuant to, and in accordance with the conditions of, any other allocable provision of the FIEA. This 
+material is disseminated in Japan by Morgan Stanley Investment Management (Japan) Co., Ltd., Registered No. 
+410 (Director of Kanto Local Finance Bureau (Financial Instruments Firms)), Membership: the Japan Securities 
+Dealers Association, the Investment Management Association of Japan and the Type II Financial Instruments 
+Firms Association. 
