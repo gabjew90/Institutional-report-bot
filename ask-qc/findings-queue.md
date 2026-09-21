@@ -569,3 +569,12 @@ fabrication. Full reasoning in `pulse-data/ask-qc/2026-09-17.claude.md`.
   table (it claims no MSTR lookup happened at all, missing the second
   tool-table row) — right verdict, wrong reasoning, worth watching if
   it recurs on other dates.
+
+## 2026-09-20
+
+no findings — 3/3 CLEAN. Two notes recorded in
+`pulse-data/ask-qc/2026-09-20.claude.md` but neither is a FAIL: a correct
+refusal on a disguised slur-regeneration request (14:32:10), and a second
+sighting of a stray `LINE`-symbol tool argument with no visible-answer
+impact (21:21:04, first seen 2026-09-19 as part of a `[BK, LINE]` call) —
+worth a look if a third sighting shows up.

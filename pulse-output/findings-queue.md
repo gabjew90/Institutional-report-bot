@@ -798,3 +798,40 @@ Not filing a fresh queue item for the staleness itself, per the
   undercount repairs spent by one. Worth a one-line detail-string fix
   if `scripts/pulse_driver.py`'s gate-detail formatter is ever touched
   for another reason; not worth a dedicated session on its own.
+
+## 2026-09-21 — headless QC on 2026-09-21T14-06-17Z
+
+- **deterministic-fixable** — `pulse-context/latest.json` is not frozen
+  at pulse-generation time; it gets overwritten by later same-day
+  ingestion cycles, so a same-day QC pass reads a mismatched snapshot.
+  Today's mismatch was severe: dumped at 19:46:59 UTC (~6h after the
+  pulse's own 13:57:58 UTC dump) with `pdf_count: 59` against the
+  pulse's actual 198, and an entirely different `theme_coverage` roster
+  than the themes the pulse was actually built from (confirmed against
+  `edit-prompt.txt`'s `ADJUDICATED THEMES` block and
+  `qc-inputs/*.adjudication-inputs.json`, which do match). The 09-18
+  entry logged a milder version of this as "benign" (pdf_count 64 vs 64
+  that day, only the deeper `theme_coverage` numbers diverged) — today's
+  gap shows that was luck of the draw on ingestion timing, not a fixed
+  state. Fix: freeze/copy the dump at pulse-generation time, or version
+  it by run timestamp like every other `pulse-output/` artifact, so a
+  same-day QC run (headless or STEP 7) has a context snapshot that
+  actually matches the corpus. Until fixed, any same-day QC doing
+  accuracy verification must use `edit-prompt.txt` +
+  `qc-inputs/*.adjudication-inputs.json` + `archive-adjudications/*.json`
+  instead of `latest.json`.
+- **observation** — the published pulse states "Diesel is at a record
+  $6.31 a gallon... (JPMorgan)" in the MAIN EVENT. The only diesel
+  price figure in the generation-time adjudication input
+  (`qc-inputs/2026-09-21T14-06-17Z.adjudication-inputs.json`, theme
+  `energy driven policy tightening`) is `{'source_bank': 'BofA',
+  'figure': '$6.40', 'metric': 'Diesel price', 'context': 'September
+  2026 level.'}` — different bank, different number, same order of
+  magnitude. Not asserting an error: `key_data_points` is a curated
+  extraction and may not be exhaustive of the full per-PDF corpus, so
+  this could legitimately be a different (unextracted) JPMorgan figure.
+  But the shape — right magnitude, wrong specific number, wrong bank —
+  matches the `numeric-scope-drift` class this same run's own
+  `final_validation.json` flagged twice elsewhere (the `35%` and
+  `4.744%` soft findings). Worth a follow-up session check against the
+  full per-PDF JSON before treating it as confirmed either way.
