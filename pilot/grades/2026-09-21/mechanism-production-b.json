@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+ "source_span": "those buffers are now seen as fading, leaving oil prices increasingly vulnerable to further geopolitical disruptions... we are hard-pressed to see a resolution to energy price pressures anytime soon and incorporate features of a higher oil risk-premium into the baseline",
+ "source_chain": "Morgan Stanley: supply-chain disruptions (Hormuz export constraints, refinery/tanker bottlenecks, record diesel margins) have exhausted the buffers that previously absorbed them (US exports, weak Chinese demand, ample inventories) therefore oil prices are now structurally elevated and MS shifts its baseline to a persistent 'oil risk-premium' rather than a fading shock therefore core PCE inflation is revised higher and stickier through 2027 therefore MS pencils in two more 25bp Fed hikes (Dec, March) to 4.25-4.50%. Invalidation: MS states it sees no resolution to the energy disruptions anytime soon -- the call holds precisely because de-escalation is not expected.",
+ "pulse_chain": "Pulse: Brent's $106 price contains a $16 'war premium' pricing in feared-but-unrealized supply losses (JPMorgan fair value $90), separate from a real, structural diesel/refining shortage (BofA, Goldman) therefore a diplomacy headline can erase the $16 crude premium instantly without touching the physical fuel shortage therefore the Fed's hiking cycle survives ceasefire talk because it is the fuel-side inflation risk, not the crude-side headline risk, that matters. Invalidation given: Thursday's Trump-Xi meeting, named as the event that would remove the $16 from crude.",
+ "preserved": false,
+ "why": "The pulse inverts the matched note's mechanism (Morgan Stanley argues oil is structurally embedded and unlikely to de-escalate, not that a headline-driven 'war premium' is poised to leave crude), and none of its load-bearing figures or attributions -- JPMorgan's $90 fair value, the 555-million/1.6-billion-barrel inventory figures, BofA's 97%-refinery-utilization and record-diesel numbers, Goldman's 77th-percentile hedge-fund-selling figure, or the Thursday Trump-Xi invalidation -- appear anywhere in the day's source-text corpus.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

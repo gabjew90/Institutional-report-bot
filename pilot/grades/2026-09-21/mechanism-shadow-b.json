@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
+ "source_span": "We now expect two additional 25bp rate hikes in December and March, bringing the target range to 4.25-4.5%. The repeated language around removing accommodation... and a revision up of the neutral rate... all leaned hawkish.",
+ "source_chain": "Warsh called the hike 'removing accommodation' (implying policy is not yet restrictive), cited geopolitics/commodity pass-through as an inflation driver, and the SEP's neutral-rate revision to 3.25% from 3.06% (any given rate restrains less than assumed) -- therefore MS raises its forecast from one more hike to two more (December, March) for a 4.25-4.50% terminal rate, therefore therefore an October hike also can't be ruled out if the chair wants it -- invalidation: Middle East de-escalation or faster-than-expected disinflation means the March hike doesn't happen and December is the last one (one-and-done).",
+ "pulse_chain": "Same three premises stated in the same order (removing accommodation / not restrictive, inflation risks skewed up, neutral rate revised to 3.25% from 3.06% implying less restraint per given rate) -- therefore Morgan Stanley calls for two more hikes (December, March) to a 4.25-4.50% ceiling, framed against the market's four-hikes pricing and against rival banks (SocGen at 75bp total agreeing with MS's magnitude, Goldman and HSBC arguing for fewer) -- invalidation, attributed to MS: a faster Middle East de-escalation or quicker disinflation makes December the last hike instead of the first of several.",
+ "preserved": true,
+ "why": "The pulse keeps MS's three hawkish premises, its resulting two-more-hikes/4.25-4.50% call, and its exact invalidation condition, correctly attributed to Morgan Stanley throughout, while the added GS/SocGen/HSBC views are framed as surrounding debate rather than substituted into MS's own chain.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

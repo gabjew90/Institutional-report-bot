@@ -1,0 +1,111 @@
+{
+ "metric": 1,
+ "total_cards": 693,
+ "fragmentation_sets": [
+  {
+   "subject": "AI datacenter buildout: capacity growth, power-supply bottlenecks, cooling shift and siting/regulatory backlash (one RBC tracker note)",
+   "labels": [
+    "datacenter capacity buildout",
+    "hyperscaler datacenter capex",
+    "datacenter power supply strategy",
+    "datacenter liquid cooling shift",
+    "datacenter siting regulation risk"
+   ],
+   "cards": 52
+  },
+  {
+   "subject": "Oil geopolitical risk premium (Hormuz/Gulf/Houthi supply risk, Iran deal path, diesel spike) and its inflation/growth consequences",
+   "labels": [
+    "oil right tail geopolitical risk",
+    "us oil risk premium inflation outlook",
+    "houthi saudi energy conflict",
+    "diesel price spike inflation risk",
+    "iran deal path sanctions"
+   ],
+   "cards": 33
+  },
+  {
+   "subject": "CPU market-share reshuffle from AI/agentic compute (one BofA sector note split by company)",
+   "labels": [
+    "arm qcom cpu positioning",
+    "server cpu tam outlook",
+    "intel cpu share outlook",
+    "amd cpu leadership",
+    "nvda vera cpu rack"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Market breadth/credit divergence from index highs \u2014 bull (GS) vs bear (BTIG) read of the same internals",
+   "labels": [
+    "us equity market outlook",
+    "equity breadth cycle top signal",
+    "ccc credit spread widening"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "September FOMC decision and the immediate market reaction to it (one Generali note)",
+   "labels": [
+    "fed rate hike outlook",
+    "fed decision market reaction"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "GS view on SPX earnings growth/valuation and whether it's an AI earnings bubble",
+   "labels": [
+    "ai earnings bubble debate",
+    "s p 500 earnings valuation outlook"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "AI-driven wealth concentration propping up consumer spending while AI threatens the same high earners' jobs",
+   "labels": [
+    "us wealth concentration equities",
+    "ai job displacement risk consumer",
+    "ai vs consumer spending divergence"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Gold's bull case: central-bank buying plus price targets",
+   "labels": [
+    "gold price target outlook",
+    "gold commodities allocation case"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "Dollar direction and rotation implications \u2014 strength (MS/DB) vs weakness (HSBC) stances on the same question",
+   "labels": [
+    "usd strength fx outlook",
+    "dollar weakness non us equity rotation"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "MS Agency MBS desk view (sales/spread risk and relative-value positioning)",
+   "labels": [
+    "agency mbs sales spread risk",
+    "agency mbs relative value outlook"
+   ],
+   "cards": 7
+  }
+ ],
+ "fragmented_mass_share": 0.29,
+ "mis_merges": [],
+ "pass": false,
+ "notes": "Fragmentation, not mis-merging, is the dominant defect: single-bank tracker notes (RBC datacenter, BofA CPU) were split across 5 labels apiece instead of the 1-3 subjects a note usually argues, and several bull/bear label pairs cover one subject under a stance split. misc holds 12/693 cards (1.7%), correctly excluded from fragmented mass.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

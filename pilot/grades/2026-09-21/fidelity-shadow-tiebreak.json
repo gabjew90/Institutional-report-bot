@@ -1,0 +1,158 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+   "span": "These changes shift us away from our previous disinflation outlook into an \"oil risk premium\" baseline",
+   "why": "MS document explicitly says it is moving away from its 'benign de-escalation' Middle East assumption into the new baseline, labeled in Exhibit 31 as 'Baseline: Oil Risk Premium/Sticky Inflation (45%)'."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+   "span": "The latest spot prices, as of September 15, were $107.02 per barrel for WTI in Cushing, Oklahoma, and $130.80 per barrel for Brent in Europe",
+   "why": "Same document also states SPR 'continued to fall to around 285 million barrels, the lowest level since April 1984,' matching all figures exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17220__early-morning-reid-macro-strategy.txt",
+   "span": "Brent crude oil prices were down -0.71% on the week (-0.91% Friday), closing at $103.87/bbl after approaching $110/bbl",
+   "why": "DB's Friday close of $103.87 and the further overnight move to $101.65 ('Brent is -2.21% lower at $101.65/bbl') are both real DB marks correctly attributed; the sentence's ordering blurs which came first chronologically but does not misstate a figure, speaker, or direction."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17177__deep-in-the-tranches.txt",
+   "span": "if looking just at the S&P 500, you would think the surge in energy prices and rates has had little impact over the last few months. Yet under the surface",
+   "why": "BTIG's actual point is that index-level calm masks deteriorating breadth (downside volume near YTD highs, small-caps down, CCC spreads blowing out) \u2014 'hiding the damage' is a faithful paraphrase of BTIG's own stance."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+   "span": "S&P 500 EPS grew 51% y/y in Q2 and 26% over the last four quarters, while the forward P/E has fallen from ~23x a year ago to ~19x today",
+   "why": "Same document states GS's '12-month S&P target of 8,700 / +14% assumes little help from multiple expansion,' matching the sentence's target and framing exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17231__gs-garrett-weekend-prep-20-sep-2026.txt",
+   "span": "the vix closed friday with a 14 handle",
+   "why": "GS Garrett's weekend prep note is the direct source; '14 handle' matches 'closed Friday at 14.'"
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17207__tracking-the-gigawatts-rbc-datacenter-expansion-tracker-july.txt",
+   "span": "The identified mispriced risk is contagion: the order is explicitly positioned by its sponsors as a national model",
+   "why": "RBC names the risk as 'contagion' (systemic spread to Virginia/Texas via copycat cost-allocation frameworks), not 'copying.' Substituting 'copying' changes RBC's actual claimed risk mechanism to a different, weaker concept.",
+   "searched": [
+    "mispriced risk",
+    "national template",
+    "copying"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17159__the-wealth-effect-is-the-only-consumer-left.txt",
+   "span": "Per MS, the Top 20% holds $49.8tn in equity wealth against just $8.3tn in labor income",
+   "why": "Same document also states 'The Top 10% by wealth owns 87% of corporate equities and mutual funds,' matching both figures exactly, sourced to Morgan Stanley via Market Ear."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "weaker growth and higher interest costs mean the budget gap will swell to 5.4% of economic output this year, while the finance law had targeted a slight reduction to 5%",
+   "why": "Exact match on figures, cause (weaker growth/higher interest costs), and framing (5.4% vs ~5% target)."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "Scope downgraded France after hours, and DBRS put them on negative watch",
+   "why": "Same document separately quotes 'Japanese life insurers are now actively selling their exposure to French fixed income markets, and this pressure is one reason why French spreads are blowing out' \u2014 both claims present and consistent with the sentence."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "Socgen put out a piece saying OAT/bund might go to 120",
+   "why": "Matches 'one published estimate' (SocGen) and the 120bp figure exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+   "span": "The big structural story remains intact: central banks are buying at more than 5x the pre-2022 pace",
+   "why": "Figure matches exactly; 'official buying' is a faithful paraphrase of 'central banks,' and 'holds the floor' reflects GS's own framing of this as the structural support under its gold fair-value target."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "JP Morgan yesterday said that Bitcoin could outperform gold if ETF hedging eases, and predicted Bitcoin ETFs will eventually triple gold in assets",
+   "why": "Near-verbatim match on the conditional (ETF hedging easing), the outperformance claim, and the triple-AUM figure."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17220__early-morning-reid-macro-strategy.txt",
+   "span": "the Japanese Yen weakened -2.08% against the US Dollar last week, which marked its biggest weekly decline since October 2025",
+   "why": "The -2.08%/'worst week since October 2025' statistic is Deutsche Bank's (Early Morning Reid), not Academy Securities'. Academy Securities' own note (17162) only states 'Support has broken the 155 level solidly (closing at 156.9)' and contains no weekly-percentage or October-2025 comparison anywhere in the document. The sentence attributes a DB figure to Academy Securities.",
+   "searched": [
+    "2.08",
+    "worst week",
+    "October 2025",
+    "155",
+    "156.9"
+   ]
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
+   "span": "Maintain long USD/JPY at 156.23 with a target of 163.00 and a stop of 150.00.",
+   "why": "The 150.00 level is Morgan Stanley's stop-loss on a long-USD/JPY trade idea, not an Academy Securities figure (Academy's note contains no '150' or stop-level content at all). It is also inverted in meaning: a stop-loss is the invalidation level where the long-dollar trade is cut for a loss, not where 'that argument wins.'",
+   "searched": [
+    "150.00",
+    "stop",
+    "USD/JPY",
+    "163.00",
+    "wins"
+   ]
+  }
+ ],
+ "faithful": 12,
+ "distorted": 3,
+ "unsupported": 0,
+ "faithful_rate": 0.8,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

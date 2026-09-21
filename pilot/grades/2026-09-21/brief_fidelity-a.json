@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Buffers that absorbed prior oil shocks (US exports, weak Chinese demand, ample inventories) are fading, so a convergence of ME/shipping/refinery supply disruptions pushes WTI/Brent and diesel margins higher and drains the SPR to a 1984 low, therefore MS drops its benign-de-escalation assumption for an oil risk-premium baseline (45% probability), therefore airfare disinflation is delayed and core PCE is revised up (3.2%/2.7%), therefore 2027 GDP/consumption/investment forecasts are trimmed and payrolls/unemployment worsen, therefore MS adds two more 25bp hikes (Dec, Mar) to a 4.25-4.50% terminal rate, reinforced by Warsh's hawkish tone and a higher neutral-rate estimate.",
+   "brief_chain": "Same chain: fading buffers + converging supply disruptions push oil higher and drain the SPR to a 1984 low, shifting MS to an oil risk-premium baseline (45%), delaying airfare disinflation, raising core PCE to 3.2%/2.7%, trimming 2027 growth/consumption/investment while worsening payrolls/unemployment, and adding two more 25bp hikes to 4.25-4.50% terminal, citing Warsh's hawkish comments and the neutral-rate revision.",
+   "distortions": [
+    {
+     "what": "Brief omits MS's caveat that Warsh's hike is 'a continuation and not a break' rather than a repudiation of prior policy, and that any tightening 'should be modest.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 MS's own headline call (two more 25bp hikes, 45% probability baseline) is unchanged whether or not this softening caveat is included."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d22",
+   "tier": "rest",
+   "bank": "Societe Generale",
+   "source_chain": "The September statement drops its supply-shock inflation framing and pledges a timelier return to target with a unanimous 25bp hike to 3.75-4%, and the SEP shows GDP up, unemployment down to 4.1% (below the 4.2% long-run dot), and 2026 core PCE up to 3.4%, with upside-inflation-only / no-downside-employment risk skew, therefore SG reads the Committee as pivoting squarely to inflation risk (lower stagflation concern), and with the 2026 dot implying 50bp more this year and Warsh framing the hike as removing accommodation, SG keeps its call for two more 25bp hikes (Dec, Mar; 75bp total) to unwind the 2025 insurance cuts, conditional on inflation data not disappointing \u2014 with 2027 dots showing a four-cutter-vs-eight-hiker split and the long-run dot rising to 3.2%.",
+   "brief_chain": "Same chain, same figures and same conditional call for two more 25bp hikes (75bp total), same reading of the SEP skew as lower stagflation risk and inflation-only focus.",
+   "distortions": [
+    {
+     "what": "Brief does not mention the SEP's 2027 median core PCE forecast (unchanged at 2.5%).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 SG's hike call and 75bp total are driven by the 2026 dot and Warsh's tone, not the static 2027 PCE median, which the brief simply omits as a secondary figure."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d14",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Three hawkish signals from the September meeting \u2014 Warsh framing the hike as 'removing accommodation' (implying policy isn't yet restrictive), his new emphasis on geopolitics/oil as a driver of his reaction function, and the neutral-rate revision to 3.25% from 3.06% \u2014 lead MS to raise its total tightening call from 50bp to 75bp (two more 25bp hikes, Dec and March, to 4.25-4.50% terminal in 1Q27), with an October hike not ruled out given elevated market pricing but a de-escalation/faster-disinflation path that could cap it at one more hike in December; each MS desk (rates, FX, MBS, munis) then attaches a hawkish-consistent trade idea/lean.",
+   "brief_chain": "Same chain and same figures: two more 25bp hikes (Dec/March) to 4.25-4.5% in 1Q27 up from a prior 50bp view, driven by the same three signals, October hike not ruled out, one-more-hike-only risk case from de-escalation/faster disinflation, and all four desks (rates, FX, MBS, munis) attach trade ideas.",
+   "distortions": [
+    {
+     "what": "Brief omits Warsh's later remark downplaying the neutral rate as having 'no operational effect' on decisions, a nuance MS explicitly flags as in tension with its own hawkish read.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 MS still treats the neutral-rate revision as supportive of its hike call despite flagging the tension; the brief's bottom line matches MS's own conclusion."
+    },
+    {
+     "what": "Brief omits the FX desk's specific risk to the long USD/JPY trade (unwinding JPY carry positions on GPIF repatriation speculation).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the trade idea itself (long USD/JPY) is stated correctly; only a risk caveat is dropped."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d12",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "This week's HF flows show DM equity buying funded by Asia selling, with US Tech (previously flagged as light vs. Asia) leading the largest US net buying in 5 weeks and Mag-7 inflows pushing allocations back near peak, Software the top net-bought sub-sector, and European equities net-bought fastest in 5 months on short covers (Industrials/Tech/Discretionary) though still near 5-year trough allocations; separately, GS (via Oppenheimer) stays constructive medium-term on equities despite rising yields/compressed ERP because compute demand still outstrips supply (11% SPX EPS growth to $415/2027, $460/2028); separately, Chinese exports enter overseas markets at a 30% discount then reprice higher in most sectors, and GS sees ex-China share rising 18%\u219231% by 2035, mostly unpriced, especially in 'Latecomer' categories; separately, 42 India AI-infrastructure names are up 60% YTD vs. NIFTY -11% and drive ~40% of NIFTY 500 capex growth.",
+   "brief_chain": "Same four strands with matching figures: HF flow rotation (DM bought/Asia sold, US Tech/Mag-7/Software strength, Europe short-cover buying), GS's constructive medium-term equity view and EPS targets, the China go-global market-share thesis (30% discount, 7 of 11 sectors repricing, 18%\u219231% by 2035, unpriced/Latecomers), and the 42-name India AI-infrastructure basket (+60% YTD vs. NIFTY -11%, ~40% of NIFTY 500 capex growth).",
+   "distortions": [
+    {
+     "what": "Brief omits the supporting SPX EPS growth data point (50% YoY in 2Q, 26% on a 4-quarter trailing basis) and GS's 'some signs of over-earning' caveat used to support the constructive view.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 GS's constructive stance and EPS targets are reported correctly; this is dropped supporting evidence, not a changed call."
+    },
+    {
+     "what": "Brief omits the MTD Asia HF rotation detail (Korea/Taiwan/Japan into HK/China) and the note that India FII flows turned positive in 2Q/Jul/Aug.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are separate secondary data points in the source that don't alter any of the four theses the brief does cover."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

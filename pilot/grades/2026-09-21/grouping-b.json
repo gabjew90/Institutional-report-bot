@@ -1,0 +1,107 @@
+{
+ "metric": 1,
+ "total_cards": 693,
+ "fragmentation_sets": [
+  {
+   "subject": "Mideast oil supply disruption risk (Hormuz/Iran/Houthi) and diesel/inflation spillover",
+   "labels": [
+    "oil right tail geopolitical risk",
+    "houthi saudi energy conflict",
+    "iran deal path sanctions",
+    "diesel price spike inflation risk"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "Gold bull case: central bank buying and price targets",
+   "labels": [
+    "gold price target outlook",
+    "gold commodities allocation case"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "Data-center CPU market share war and TAM growth (Intel/AMD/ARM/Qualcomm/Nvidia)",
+   "labels": [
+    "arm qcom cpu positioning",
+    "server cpu tam outlook",
+    "intel cpu share outlook",
+    "amd cpu leadership",
+    "nvda vera cpu rack"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "US equity rally sustainability: bullish sentiment/trend vs breadth-driven cycle-top warning",
+   "labels": [
+    "us equity market outlook",
+    "equity breadth cycle top signal"
+   ],
+   "cards": 19
+  },
+  {
+   "subject": "S&P 500 earnings growth, valuation and the AI-bubble debate",
+   "labels": [
+    "ai earnings bubble debate",
+    "s p 500 earnings valuation outlook"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "September FOMC decision: dot plot detail and market reaction",
+   "labels": [
+    "fed rate hike outlook",
+    "fed decision market reaction"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "USD direction outlook: strength vs structural weakness debate",
+   "labels": [
+    "usd strength fx outlook",
+    "dollar weakness non us equity rotation"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "K-shaped consumer: AI-driven wealth effect, equity concentration and job-displacement risk",
+   "labels": [
+    "ai vs consumer spending divergence",
+    "us wealth concentration equities",
+    "ai job displacement risk consumer"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Fed balance-sheet reduction plan, including the MBS-sales lever and desk positioning",
+   "labels": [
+    "fed balance sheet reduction",
+    "agency mbs sales spread risk",
+    "agency mbs relative value outlook"
+   ],
+   "cards": 19
+  },
+  {
+   "subject": "AI datacenter buildout scale (global aggregate vs hyperscaler-level capex)",
+   "labels": [
+    "datacenter capacity buildout",
+    "hyperscaler datacenter capex"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.24,
+ "mis_merges": [],
+ "pass": false,
+ "notes": "No mis-merges found; every problem here is fragmentation, mostly single research notes (BofA's CPU sector piece, Generali's Fed note, RBC's datacenter report) split 2-5 ways by angle rather than kept as one brief-sized subject. misc holds 12/693 cards (1.7%) and is exempt overflow, not counted toward fragmentation.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

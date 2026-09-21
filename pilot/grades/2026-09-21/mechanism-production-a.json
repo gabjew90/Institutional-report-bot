@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-21/17186__gs-crook-thoughts-from-the-floor-connecting-you-to-gs-19-sep.txt",
+ "source_span": "We recommend hedging large geopolitical risks through long exposure to deferred refined products rather than crude, as the outlook on the supply side for refined oil products is more unambiguously negative",
+ "source_chain": "Mideast/Strait disruption and China's absorption of the shock keep a geopolitical risk premium in crude, and GIR estimates fair value would run $10-15 (or ~$20 per sustained 10% Mideast export cut) higher without the Chinese demand offset and dark-fleet workarounds, therefore the safer hedge is long refined products rather than crude, because the refined-product supply outlook is more clearly negative than crude's. Invalidation: sustained damage to Mideast energy infrastructure/exports that outlasts current dark-fleet and Saudi re-export workarounds, or conversely a real de-escalation that removes the premium GIR is pricing.",
+ "pulse_chain": "Brent's $16 premium over JPMorgan's $90 fair value prices in 4 million bpd of supply losses that haven't actually occurred, so a ceasefire/diplomacy headline (the Thursday Trump-Xi meeting) can erase the premium instantly, therefore that part of the trade is closing; but diesel is at a record $6.31/gal with refineries already at 97% capacity and no spare capacity to add, so the physical fuel shortage driving inflation persists regardless, therefore the Fed's hiking cycle survives even as the crude premium bleeds out.",
+ "preserved": false,
+ "why": "The pulse attributes the entire fair-value/premium mechanism and every supporting figure ($90 fair value, $16 premium, 4mb/d, 555mb drawn, 1.6bn projected, $6.31 diesel, 97% refinery utilization, 77th-percentile hedge-fund selling) to JPMorgan, but no JPMorgan research note exists anywhere in the day's source corpus (source-text or source-text-all) \u2014 the only note in the corpus making a structurally similar crude-premium-vs-refined-product argument is Goldman's (GS Crook/GIR), with entirely different numbers, so this is a bank misattribution compounded by figures that appear in no source document at all.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

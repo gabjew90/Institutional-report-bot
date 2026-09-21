@@ -1,0 +1,197 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+   "span": "the gap between gasoline and crude oil prices has remained broadly unchanged, whereas the gap between diesel and crude oil prices has continued to widen since early July",
+   "why": "MS's oil tracker shows crude and refined-product (diesel) prices diverging since early July, driven by refinery constraints near the Strait of Hormuz -- directly supports crude vs. refined-fuel decoupling."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17162__with-the-fed-behind-us.txt",
+   "span": "Markets seem to only react badly when actual events affecting energy prices occur. Markets seem to react positively to any story, rumor, or hope that is positive.",
+   "why": "Academy Securities (Tchir) states markets instantly reprice positively on any rumor/hope of Iran de-escalation, in a note explicitly framed around oil/energy prices -- supports the ceasefire-rumor repricing claim."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17186__gs-crook-thoughts-from-the-floor-connecting-you-to-gs-19-sep.txt",
+   "span": "China absorbed ~25% of the 20mb/d that transited the Strait; remove that shock absorber and GIR says fair value is roughly $10-15 higher",
+   "why": "The only oil-fair-value analysis in today's set is Goldman's GIR (Jared Cohen), not JPMorgan -- no JPMorgan document exists in the day's source list at all.",
+   "searched": [
+    "JPMorgan fair value",
+    "JPM oil",
+    "fair value crude"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+   "span": "those buffers are now seen as fading... these changes shift us away from our previous disinflation outlook into an \"oil risk premium\" baseline... we pencil in two additional 25bp rate hikes",
+   "why": "MS's own house view is the opposite of the sentence: they added two hikes specifically because the oil shock is NOT fading (the buffers that absorbed it are fading, leaving the price pressure durable), not because central banks tightened into a shock already dissipating.",
+   "searched": [
+    "fading",
+    "shock fading",
+    "risk premium bleed"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "before the Trump-Xi meeting next Thursday at Andrews Air",
+   "why": "The Thursday Trump-Xi meeting near Washington is real and widely corroborated, but no source anywhere attributes a short 2-year Treasury ($SHY) position to BofA, and no source attributes a '$16 out of crude' call to JPMorgan (no JPMorgan document exists in the source set; GS's fair-value figure is $10-15 HIGHER, not a $16 reduction).",
+   "searched": [
+    "SHY",
+    "short 2-year Treasuries",
+    "$16 crude",
+    "BofA short"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "This references the pulse's own prior trade call ('this pulse carried from last Monday') -- an internal editorial artifact, not a claim any bank source document could support or contradict. No source discusses a long-oil call being closed at a loss.",
+   "searched": [
+    "closed at a loss",
+    "long oil call",
+    "stopped out de-escalation"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-21/17193__to-free-or-not-to-free-cash-flow.txt",
+   "span": "Based on consensus estimates, FCF will bottom in the third quarter of 2027 at about -$265 billion... capital expenditures have exploded, driving down FCF",
+   "why": "MS shows hyperscaler free cash flow turning sharply negative as AI capex outpaces operating cash flow; GS's Wolcott (17186) separately confirms AI buildout funding has shifted to the credit/bond market ('the market is willing and able to fund this build out'). The synthesis connecting the two is a fair analytical bridge, not an invented fact."
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document identifies a specific counter-argument originating from 'the same houses' as the fair-value trade in s3/s5, which are themselves misattributed to JPMorgan; the claim can't be traced to any bank's stated view.",
+   "searched": [
+    "counter fair value",
+    "JPMorgan counter",
+    "same houses oil"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No fund manager survey (BofA or otherwise) appears anywhere in the source set, no '33%' overinvesting statistic, and no Goldman semiconductor gross-margin figure (70% vs. a 55% 15-year average) exists in any document.",
+   "searched": [
+    "fund manager survey",
+    "overinvesting AI",
+    "gross margin 70",
+    "15-year average margin"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
+   "span": "Markets are now pricing in a greater than 50% chance of a hike in October and three more hikes this cycle",
+   "why": "MS states markets are pricing MORE than a 50% chance of an October hike (a lean toward hiking), which 'coin flip' (implying an even, undecided 50/50 split) misstates -- changes the direction/confidence of the market pricing.",
+   "searched": [
+    "coin flip",
+    "October hike probability",
+    "50% chance hike"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
+   "span": "it's hard to not look at two-year yields approaching 4.75%... amid a dot plot released today where the most hawkish member has a 4.375% policy rate forecast",
+   "why": "The 4.744% two-year yield level is roughly consistent with MS's 'approaching 4.75%,' but MS frames pricing as three-more-hikes-this-cycle, not a binary 'second-hike call' tied to October; the 'second-hike call is dead' framing is invented, not stated by MS or any other source.",
+   "searched": [
+    "second-hike call",
+    "4.744",
+    "second hike dead"
+   ]
+  },
+  {
+   "id": "s12",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source discusses a rotation of money out of semiconductor names into financials, nor a Nasdaq peak in 'early June'; GS's own PB flow data (17230) states Tech was the most net-bought US sector for a third straight week, the opposite of money 'leaving' the group.",
+   "searched": [
+    "financials rotation semiconductor",
+    "Nasdaq peaked June",
+    "money leaving semiconductor"
+   ]
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+   "span": "Breadth has become another pretty clear indication of how much harder the tape has been than the headline index suggests. Less than 30% of S&P stocks are now above the 50-day moving average.",
+   "why": "GS's 'tougher internals' note and BTIG's 'Deep in the Tranches' (small-caps underperforming, NYSE downside volume near YTD highs, explicit reference to prior cycle-top dates) both support damage concentrated beneath a resilient headline index."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17220__early-morning-reid-macro-strategy.txt",
+   "span": "That followed the BoJ's 25bp rate hike, but the move was already priced in and two members voted against the hike",
+   "why": "The 25bp hike and two dissenting votes are confirmed (consistent with a 7-2 split), but no source states the resulting rate is 1.25%, that it is the highest since 1995, or that the dissenters were Takaichi appointees -- those specifics are invented additions to a real event.",
+   "searched": [
+    "1995",
+    "Takaichi",
+    "1.25% BOJ"
+   ]
+  },
+  {
+   "id": "s15",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-21/17181__cio-views-weekly-bulletin-week-37.txt",
+   "span": "The US August inflation reports came in above expectations, with core inflation accelerating by 0.3% month-on-month versus the 0.2% consensus forecast",
+   "why": "Sources describe the August core print as coming in ABOVE consensus (a hawkish surprise, also called 'uncomfortable' by HSBC/17189), the opposite of the sentence's claim of a below-expectation, forecast-undercutting print (1.7% vs. 1.8%); those exact figures appear nowhere, and no UBS document exists in the source set to support a January 2027 call.",
+   "searched": [
+    "1.7%",
+    "1.8% core inflation",
+    "January 2027 hike",
+    "UBS next hike"
+   ]
+  }
+ ],
+ "faithful": 4,
+ "distorted": 7,
+ "unsupported": 4,
+ "faithful_rate": 0.267,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

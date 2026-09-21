@@ -1,0 +1,150 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+   "span": "Baseline: Oil Risk Premium/Sticky Inflation (45%) ... These changes shift us away from our previous disinflation outlook into an 'oil risk premium' baseline ... Moving away from benign de-escalation",
+   "why": "Morgan Stanley's US baseline shifted from a benign Middle East de-escalation assumption to an oil-risk-premium/sticky-inflation baseline at 45% probability."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+   "span": "The latest spot prices, as of September 15, were $107.02 per barrel for WTI ... and $130.80 per barrel for Brent ... SPR continued to fall to around 285 million barrels, the lowest level since April 1984",
+   "why": "All three figures (WTI, Brent, SPR level/date) match exactly, same Morgan Stanley document as s1."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17220__early-morning-reid-macro-strategy.txt",
+   "span": "Brent is -2.21% lower at $101.65/bbl ... Brent crude oil prices were down -0.71% on the week (-0.91% Friday), closing at $103.87/bbl",
+   "why": "Deutsche Bank's (Jim Reid) end-of-week Brent close and overnight low match exactly."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17177__deep-in-the-tranches.txt",
+   "span": "NYSE downside volume ... has surged back to 54%, near YTD highs. Yet unlike March when SPX was ~9% off highs, it's currently only 3% away.",
+   "why": "BTIG's technical note shows SPX near highs while internals (downside volume, small-cap weakness) deteriorate \u2014 the source's actual stance, fairly paraphrased as an opinion-shaped sentence."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+   "span": "S&P 500 EPS grew 51% y/y in Q2 ... while the forward P/E has fallen from ~23x a year ago to ~19x today ... GS's 12-month S&P target of 8,700 / +14% assumes little help from multiple expansion",
+   "why": "All figures and the valuation-not-breadth framing match Goldman's (Coppersmith) note exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17231__gs-garrett-weekend-prep-20-sep-2026.txt",
+   "span": "all of this (and more) and yet the vix closed friday with a 14 handle",
+   "why": "Goldman's (Garrett) weekend prep note states the VIX closed Friday with a 14 handle."
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "",
+   "why": "No RBC document in the source set uses language about a 'mispriced risk... copying' or a 'national template' pitch by sponsors; the only related instrument-spread language found (OAT/bund) belongs to s11 and is attributed to Socgen via a CIO/PM quote in the Bridgewater-style 'Turning Point' newsletter, not RBC.",
+   "searched": [
+    "national template",
+    "mispriced risk",
+    "RBC sponsor"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17159__the-wealth-effect-is-the-only-consumer-left.txt",
+   "span": "Per MS, the Top 20% holds $49.8tn in equity wealth against just $8.3tn in labor income ... The Top 10% by wealth owns 87% of corporate equities and mutual funds while representing just 10% of households",
+   "why": "All three figures match (wages read as labor income, top fifth/tenth match Top 20%/Top 10%)."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "weaker growth and higher interest costs mean the budget gap will swell to 5.4% of economic output this year, while the finance law had targeted a slight reduction to 5%",
+   "why": "Deficit figure, cause (growth/rates, not a shock), and the ~5% target match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "Scope downgraded France after hours, and DBRS put them on negative watch ... 'Japanese life insurers are now actively selling their exposure to French fixed income markets, and this pressure is one reason why French spreads are blowing out'",
+   "why": "Both the ratings-agency actions and the Japanese life insurer selling are in the same source document (quoted desk commentary)."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "Socgen put out a piece saying OAT/bund might go to 120.",
+   "why": "OAT/bund is the France-Germany 10yr spread; 120 (basis points, standard spread quoting convention) matches a published Socgen estimate quoted in the source."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+   "span": "The big structural story remains intact: central banks are buying at more than 5x the pre-2022 pace.",
+   "why": "Matches exactly; appears directly after Goldman's gold price-target discussion, i.e., the 'floor.'"
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "JP Morgan yesterday said that Bitcoin could outperform gold if ETF hedging eases, and predicted Bitcoin ETFs will eventually triple gold in assets.",
+   "why": "Matches the relative bitcoin-over-gold argument and the 'triple' figure exactly (source attributes to JPMorgan; pulse sentence is genericized as 'one argument', not misattributed)."
+  },
+  {
+   "id": "s14",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17220__early-morning-reid-macro-strategy.txt",
+   "span": "the Japanese Yen weakened -2.08% against the US Dollar last week, which marked its biggest weekly decline since October 2025 [Deutsche Bank]; separately, Academy Securities (17162): 'Japanese Yen. Support has broken the 155 level solidly (closing at 156.9)'",
+   "why": "The 2.08% weekly fall and 'worst week since October 2025' are Deutsche Bank's (Early Morning Reid) figures, not Academy Securities'; only the 155-level break and 156.9 close are Academy Securities'. The sentence attributes the whole claim, including the DB-sourced stats, to 'per Academy Securities' \u2014 a wrong 'who said it' for part of the content.",
+   "searched": [
+    "2.08%",
+    "worst week",
+    "October 2025",
+    "Academy Securities"
+   ]
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
+   "span": "Maintain long USD/JPY at 156.23 with a target of 163.00 and a stop of 150.00.",
+   "why": "150.00 stop on the long USD/JPY (dollar-vs-yen, hawkish-Fed) trade matches Morgan Stanley's trade idea exactly; the sentence does not attribute this figure to Academy Securities, so it does not inherit s14's misattribution."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

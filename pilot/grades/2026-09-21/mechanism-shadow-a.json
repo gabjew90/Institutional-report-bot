@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+ "source_span": "Our economists now expect another 25bp hike in October, versus the prior expectation that September would be the only move, but still see the terminal rate at 3.25-3.50%. The additional near-term tightening is offset further out by three cuts between September 2027 and March 2028, leaving the terminal forecast unchanged.",
+ "source_chain": "GS adds an October hike beyond the September move therefore near-term tightening rises therefore GS layers in three cuts between Sept 2027-March 2028 to offset it therefore the terminal rate holds at 3.25-3.50%, unchanged from before the October revision. (Paired with GS Pasquariello/Dom Wilson's separate house view, cited by the pulse for the '2 vs 4 priced' framing: markets price four hikes, GS's skew is that the Fed underdelivers toward two.) Invalidation: none stated for the terminal call itself; GIR's alternate gold scenario implies a break only if the Fed does 'materially more' than this path.",
+ "pulse_chain": "Goldman's house view is the Fed underdelivers versus the four hikes priced, landing closer to two, therefore even after adding an October hike its economists hold the terminal endpoint at 3.25-3.50% therefore because they expect cuts in late 2027 (rounding off the source's Sept 2027-March 2028 window) to offset the added near-term tightening.",
+ "preserved": true,
+ "why": "The pulse reproduces GS's exact mechanism \u2014 added October hike offset by later cuts to leave the 3.25-3.50% terminal unchanged \u2014 and correctly pairs it with GS's separately-sourced 'two vs four priced' skew without reversing, misattributing, or swapping the direction of either claim.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
