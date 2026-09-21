@@ -53,43 +53,75 @@ def _day(n_bmo=2, n_amc=2, conf=True, econ=5):
     )
 
 
+from report.calendar_caption import x_length, _time_12h  # noqa: E402
+
+# _day() covers Friday 2026-09-11; the sheet posts the afternoon before
+EVE = "2026-09-10"
+
+
 def test_caption_fits_280_and_keeps_the_important_parts():
-    text = calendar_caption(_day())
-    assert len(text) <= X_LIMIT
-    assert text.startswith("Market calendar · Friday 9/11")
-    assert "8:30 Core CPI m/m, CPI y/y" in text
-    assert "B0" in text and "A0" in text
-    assert "GS Communacopia" in text and "MSFT" in text
-    # a crowded day trims but never overflows
+    text = calendar_caption(_day(), today_iso=EVE)
+    assert x_length(text) <= X_LIMIT
+    assert text.startswith("\U0001F4C5 Tomorrow's market calendar · Friday 9/11\n\n")
+    assert "Before the open: #B0 #B1" in text
+    assert "After the close: #A0 #A1" in text
+    assert "Data (ET): 8:30 AM Core CPI m/m, CPI y/y" in text
+    assert "GS Communacopia" in text and "#MSFT" in text
+    # a crowded day trims but never overflows, and keeps the first names
     busy = _day(n_bmo=15, n_amc=15)
-    text = calendar_caption(busy)
-    assert len(text) <= X_LIMIT and "Core CPI" in text and "B0" in text
+    text = calendar_caption(busy, today_iso=EVE)
+    assert x_length(text) <= X_LIMIT
+    assert "Core CPI" in text and "#B0" in text and "#A0" in text
 
 
-def test_important_names_are_hashtagged_and_survive_trimming():
-    """Owner call 2026-09-11: hashtag the bold names on the sheet. The
-    hashtag line is the last thing the trimmer touches."""
-    from report.calendar_caption import important_tickers
-    d = _day()
-    d.amc[0] = EarnRow(symbol="ORCL", name="Oracle", cap_musd=650_000, important=True)
-    d.bmo[1] = EarnRow(symbol="KR", name="Kroger", cap_musd=40_000, important=True)
-    assert important_tickers(d)[:2] == ["KR", "ORCL"], "sheet order: before open, then after close"
-    assert "MSFT" in important_tickers(d) and "CSGP" not in important_tickers(d), \
-        "conference names hashtag only when on the major-ticker list"
-    text = calendar_caption(d)
-    assert len(text) <= X_LIMIT
-    assert text.splitlines()[-1].startswith("#KR #ORCL #MSFT")
-    # crowded: econ detail and tickers give way, the hashtags stay
-    busy = _day(n_bmo=15, n_amc=15)
-    for i in range(6):
-        busy.bmo[i] = EarnRow(symbol=f"BIG{i}", name="x", cap_musd=100_000, important=True)
-    text = calendar_caption(busy)
-    assert len(text) <= X_LIMIT and "#BIG0" in text and "#BIG5" in text
-    # nothing bold: no empty hashtag line
-    assert not calendar_caption(_day(conf=False)).splitlines()[-1].startswith("#")
-    # a holiday
+def test_the_heading_says_tomorrow_only_when_it_is():
+    """Posted 3 PM ET for the next trading day. Friday's post covers
+    Monday and a pre-holiday post skips the closed day, so 'Tomorrow'
+    would be false on exactly the posts a reader is likeliest to act on
+    wrongly (owner, 2026-09-21: be clear the calendar is for tomorrow)."""
+    mon = CalendarDay(date_iso="2026-09-28", weekday_label="MONDAY 9/28", is_holiday=False)
+    head = lambda d, t: calendar_caption(d, today_iso=t).splitlines()[0]
+    assert head(_day(), "2026-09-10") == "\U0001F4C5 Tomorrow's market calendar · Friday 9/11"
+    # Friday afternoon post, covering Monday
+    assert head(mon, "2026-09-25") == "\U0001F4C5 Monday's market calendar · 9/28"
+    assert "Tomorrow" not in head(mon, "2026-09-25")
+
+
+def test_every_ticker_is_a_hashtag_and_none_is_a_cashtag():
+    """Owner pick 2026-09-21 (option B). X refuses more than one cashtag
+    on a self-serve API post, and the first live test failed on five."""
+    import re as _re
+    for d in (_day(), _day(n_bmo=15, n_amc=15), _day(conf=False)):
+        text = calendar_caption(d, today_iso=EVE)
+        assert not _re.search(r"\$[A-Za-z]", text), text
+        for line in text.splitlines():
+            if "Before the open: " in line or "After the close: " in line:
+                for tok in line.split(": ", 1)[1].split(" "):
+                    assert tok.startswith("#"), (tok, line)
+
+
+def test_x_counts_emoji_as_two():
+    assert x_length("abc") == 3
+    assert x_length("\U0001F4C5 a") == 4
+
+
+def test_times_read_as_12_hour():
+    assert _time_12h("8:30") == "8:30 AM"
+    assert _time_12h("14:00") == "2:00 PM"
+    assert _time_12h("12:00") == "12:00 PM"
+    assert _time_12h("All Day") == "All Day"
+
+
+def test_a_holiday_says_closed():
     hol = CalendarDay(date_iso="2026-11-26", weekday_label="THURSDAY 11/26", is_holiday="Thanksgiving Day")
-    assert calendar_caption(hol) == "Market calendar · Thursday 11/26\nMarkets closed · Thanksgiving Day"
+    assert calendar_caption(hol, today_iso="2026-11-25") == (
+        "\U0001F4C5 Tomorrow's market calendar · Thursday 11/26\n\n"
+        "Markets closed · Thanksgiving Day")
+
+
+def test_the_post_time_backstop_keeps_one_cashtag_and_leaves_dollars():
+    assert X.enforce_cashtag_limit("$NVDA and $AMD, $TSLA") == "$NVDA and AMD, TSLA"
+    assert X.enforce_cashtag_limit("costs $5 or $1.2B, $NVDA") == "costs $5 or $1.2B, $NVDA"
 
 
 def test_disabled_is_a_dry_run_with_no_network_and_no_ledger_entry():
@@ -217,11 +249,3 @@ def test_the_request_job_is_idle_without_a_flag_and_clears_it_before_posting():
         assert seen == {"flag_present": False, "force": True}
         out = (d / f"{jobs.X_REQUEST_FLAG}.result").read_text(encoding="utf-8")
         assert "https://x.com/i/status/777" in out
-
-
-def test_the_caption_never_carries_more_than_one_cashtag():
-    """X answers HTTP 403 to a post with two or more cashtags (first live
-    test, 2026-09-21). The caption emits none."""
-    import re
-    day = _day()
-    assert len(re.findall(r"\$[A-Za-z]", calendar_caption(day))) <= 1

@@ -21,6 +21,7 @@ import base64
 import hashlib
 import hmac
 import json
+import re
 import logging
 import secrets
 import time
@@ -161,6 +162,29 @@ def mark_posted(date_iso: str, key: str, post_id: str, text: str) -> None:
 
 # ----------------------------------------------------------- the entry
 
+_CASHTAG_RE = re.compile(r"(?<![\w$])\$([A-Za-z][A-Za-z0-9._]{0,9})\b")
+
+
+def enforce_cashtag_limit(text: str, limit: int = 1) -> str:
+    """Keep the first `limit` cashtags and strip the `$` from the rest.
+
+    X refuses a self-serve API post with more than one cashtag (HTTP
+    403, "Posts are limited to a maximum of one cashtag"), and the rule
+    is terminal: retrying the same text fails the same way. The caption
+    already emits at most one; this is the post-time backstop so a
+    future caption change cannot silently lose a night's post. Dollar
+    amounts ("$5", "$1.2B") are not cashtags and are left alone.
+    """
+    seen = 0
+
+    def _one(m: re.Match) -> str:
+        nonlocal seen
+        seen += 1
+        return m.group(0) if seen <= limit else m.group(1)
+
+    return _CASHTAG_RE.sub(_one, text or "")
+
+
 def post_image(text: str, png: bytes, *, key: str, date_iso: str,
                force: bool = False) -> str | None:
     """Post `text` with `png` attached, once per (date, key). Returns the
@@ -173,6 +197,7 @@ def post_image(text: str, png: bytes, *, key: str, date_iso: str,
     if already_posted(date_iso, key):
         log.info(f"x: {key} for {date_iso} already posted — skipping")
         return None
+    text = enforce_cashtag_limit(text)
     if not settings.x_post_enabled and not force:
         log.info(f"x: DRY RUN ({key} {date_iso}, {len(png)} bytes) — would post:\n{text}")
         return None

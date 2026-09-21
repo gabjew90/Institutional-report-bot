@@ -3135,3 +3135,13 @@ First live test post, 2026-09-21: keys and media upload worked, the post
 came back HTTP 403, "Posts are limited to a maximum of one cashtag". The
 caption carried five. It now emits plain tickers, and a test pins zero
 cashtags. Hashtags are unaffected.
+
+X caption redesign (owner, 2026-09-21: "this is X marketing, easy to
+read, clear the calendar is for tomorrow"). Heading names the covered
+day and says "Tomorrow's" only when the covered date is the next
+calendar day, since the Friday post covers Monday and a pre-holiday
+post skips the closed day. One line per session with an icon, every
+ticker a hashtag (owner pick over one-cashtag and bold-names-only
+options; X's guidance is two hashtags per post and it was shown the
+tradeoff), 12-hour ET times, emoji counted as two toward 280.
+`x_client.enforce_cashtag_limit` strips any second cashtag at post time.
