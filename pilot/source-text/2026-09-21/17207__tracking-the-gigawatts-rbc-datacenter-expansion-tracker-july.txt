@@ -1,0 +1,3942 @@
+[Page 1]
+EQUITY RESEARCH
+July 26, 2026
+Tracking the Gigawatts: RBC Datacenter Expansion
+Tracker - July 2026
+Globally, we estimate active datacenter development at approximately 66 GW (+21 GW vs. Mar-2026)
+and planned or potential third-party development (excl under-construction projects) at >304 GW
+(+36 GW vs. Mar-2026). This breaks down to 1) third-party active development of 49 GW (+17 GW
+vs. Mar-2026) with additional planned/potential of >264 GW (+25 GW); and 2) hyperscale self-build
+active development of 17 GW (+5 GW vs. Mar-2026) with additional planned/potential of 41 GW
+(+11 GW). At Jun-2026, among the HPC/AI/Neoclouds, >8 GW (+1.8 GW vs Mar-2026) was under
+construction and >33 GW (+14.7 GW vs Mar-2026) was planned. Inside: additional highlights on
+Behind the Meter (BTM) developments, liquid cooling updates, and headwinds/project withdrawals.
+Our global expansion tracker is based on the data from multiple sources, including announcements from
+listed and unlisted operators and developers, and updates from real estate firms. Where precise data are
+unavailable, we make reasonable assumptions to estimate capacity in GWs/MWs. We also incorporate
+disclosures by the hyperscalers and data from Structure Research into our estimates of self-build activity.
+Ongoing / Announced Datacenter Development
+Global under-construction capacity rose most sharply in the Americas between Mar- and Jun-2026.
+• Americas grew from 26.8 GW to 45.7 GW, driven by third-party gains in North America (+15.3 GW to
+30.8 GW) with hyperscale self-builds exceeding 17.3 GW. Texas alone accounts for 17.2 GW of activity,
+followed by Northern Virginia (1.9 GW), Ohio (1.2 GW) and Reno (1.1 GW). Latin America rose ~0.5
+GW to 1.7 GW.
+• EMEA, total capacity increased from 9.0 GW to 9.5 GW. Europe's third-party capacity increased 169
+MW at ~6.4 GW, led by London (1.4 GW) and Norway (664 MW). The Middle East dipped 68 MW to
+1.7 GW, while Africa increased 96 MW to 267 MW.
+• APAC capacity increased from 8.8 GW to 10.9 GW, led by Sydney (1.6 GW) and Malaysia (1.5 GW).
+Planned / Potential Datacenter Development
+The pipeline expanded significantly across all regions.
+• Americas planned capacity increased from 167.0 GW to 186.5 GW, with North America third-party
+capacity reaching 145.3 GW. Texas (39.0 GW) and Northern Virginia (23.0 GW) dominate. Hyperscale
+land-bank totals ~33.4 GW.
+• EMEA grew from 58.2 GW to 68.7 GW, with Europe's third-party pipeline at 56.5 GW led by Finland
+(6.6 GW) and Outside London (5.2 GW). Middle East planned capacity stands at 7.3 GW.
+• APAC rose from 43.3 GW to 49.8 GW, led by South Korea (6.1 GW), Malaysia (4.5 GW), Thailand (3.6
+GW) and Mumbai (3.4 GW).
+Other highlights
+• We estimate the top 4 hyperscalers had a combined 16.8 GW under construction and 39.6 GW in
+planned or potential capacity at Jun-2026. Meta followed by Microsoft are the largest contributors
+to the under-construction pipeline. Microsoft under-construction developments increased in part
+driven by the re-mobilization of several previously paused campuses. Amazon remains the largest
+contributor to the planned or potential pipeline at 17.3 GW.
+• AI/HPC and Neocloud projects reached 8.1 GW under construction and 33.0 GW planned. Industrial/
+logistics players hold 1.1 GW under construction and 8.0 GW planned. (continued next page - Behind
+the Meter, Liquid Cooling, and development headwinds)
+RBC Capital Markets, LLC
+Jonathan Atkin (Analyst)
+(415) 633-8589,
+jonathan.atkin@rbccm.com
+Rashim Jain (AVP)
+(415) 633-8561,
+rashim.jain@rbccm.com
+Adam Davis (Associate)
+(646) 618-6852,
+adam.davis@rbccm.com
+RBC Dominion Securities Inc.
+Kirill Kozyar (AVP)
+(416) 842-4730,
+kirill.kozyar@rbccm.com
+Royal Bank of Canada, Sydney
+Branch
+Jackson Lee (Analyst)
++61 498 691 277,
+jackson.lee@rbccm.com
+Priced as of prior trading day's market close, EST (unless otherwise noted). All values in USD unless otherwise noted
+Disseminated: Jul 26, 2026 20:40EDT; Produced: Jul 26, 2026 20:40EDT
+For Required Non-U.S. Analyst and Conflicts Disclosures, see page 25
+
+
+[Page 2]
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+Other Highlights (continued)
+• BTM strategies represent 16% of RBC-tracked datacenter projects since December 2025, with North
+America at 24%. Gas/BTM undisclosed (84 projects), Nuclear/SMR (37), and gas turbines/CCGT (22)
+account for 81% of BTM technology projects. Key anchors include Meta Hyperion (5 GW), Project
+Kirby (2.67 GW), and Oracle/BorderPlex Project Jupiter (2.45 GW Bloom fuel cells). For further details
+on these developments, please refer to our colleague Chris Dendrinos’ research on developments in
+this eco-system.
+• Liquid cooling architecture is increasingly framed around compute efficiency rather than
+infrastructure overhead. Higher-temperature fluid delivery to GPUs yields efficiency gains vs.
+conventional lower-temperature chiller loops for air cooling. Mixes in liquid/air cooling are shifting,
+but both categories continue to grow in absolute volume.
+• Datacenter development faced increasing headwinds through H1 2026 based on project withdrawals,
+formal moratoria, and regulatory shifts, which we discuss in greater detail inside. That said,
+development continues to accelerate based on already-permitted projects and a plethora of existing
+and new jurisdictions amenable to datacenter development.
+July 26, 2026
+     2
+
+
+[Page 3]
+ 
+ 
+Table of Contents 
+Ongoing / Announced Datacenter Development .............................................................................................................................. 4 
+Planned / Potential Datacenter Development ................................................................................................................................... 5 
+Other Highlights ................................................................................................................................................................................. 6 
+Behind the Meter (BTM) -- Datacenter Development Highlights ...................................................................................................... 6 
+Liquid Cooling Highlights .................................................................................................................................................................... 7 
+Datacenter Development Headwinds: Opposition, Regulation, and Project Attrition ...................................................................... 4 
+Project Withdrawals and Rejections .......................................................................................................................................... 4 
+Regulatory and Utility Developments: Ratepayer Protection and Grid Allocation Reform ....................................................... 4 
+Project Restarts: Retained Land and Utility Commitments Enable Rapid Re-Mobilization ....................................................... 5 
+Industry Opinion: Site Selection, BTM Power, and Moratorium risks ....................................................................................... 5 
+Appendix ............................................................................................................................................................................................ 6 
+Exhibit 1 - Overview of ongoing and planned datacenter developments in different regions globally (excluding Self-Builds) ........ 6 
+Exhibit 2 - Overview of Ongoing Self-Build Developments in different regions ................................................................................ 7 
+Exhibit 3 - Overview of Total Developments in different regions (Third Party + Self-Builds) ............................................................ 8 
+Exhibit 4 - Overview of Ongoing and planned datacenter developments in key markets globally (excluding Self Builds) ............... 9 
+Exhibit 5 - Top 4 Hyperscalers - Self Build Datacenter Developments ............................................................................................. 11 
+Exhibit 6 - Selected Datacenter Developments – April 2026 – June 2026 – Under Construction Development ............................. 11 
+Exhibit 7 - Datacenter – Withdrawn Projects................................................................................................................................... 12 
+Exhibit 8 - Datacenter BTM developments: energy source breakdown by region .......................................................................... 15 
+Exhibit 9 - Datacenter development: Selected BTM projects by Technology .................................................................................. 16 
+Exhibit 10 - Selected Large Planned and Under construction – Third Party Datacenter Developments ......................................... 17 
+Exhibit 11 - Selected Large Planned and Under construction – Hyperscale Self Build Datacenter Developments ......................... 20 
+ 
+ 
+We would like to thank Saurabh Ajmera for his contributions to this report. 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+3
+
+
+[Page 4]
+ 
+ 
+Ongoing / Announced Datacenter Development 
+Americas: Total under-construction capacity in the Americas increased from 26.8 GW in Mar-2026 to 45.8 GW in Jun-2026 
+(+15.3 GW for third-party capacity, and +3.7 GW for hyperscale self-build). 
+• 
+Total third-party under-construction capacity in the North America region increased from 14.3 GW to 29.3 GW (+15 GW), 
+with the largest increases in Texas, Atlanta, Reno, Charlotte, Phoenix, and Portland / Hillsboro. 
+• 
+At the end of Jun-2026, the top markets with the largest ongoing under-construction activity included Texas (9.2 GW, 
+primarily remote markets, and also Dallas-Fort Worth, Houston, San Antonio and others), Ohio (9.2 GW),  Northern Virginia 
+(1.9 GW), Reno (1.1 GW), Atlanta (725 MW), Chicago (589 MW), New York / New Jersey (483 MW), Portland / Hillsboro (311 
+MW), Phoenix (292 MW), and Charlotte (261 MW). 
+• 
+Total third-party under-construction capacity in Latin America increased from 1.2 GW in Mar-2026 to 1.5 GW in Jun-2026., 
+with most of the activity concentrated in Brazil and Mexico. 
+• 
+Hyperscale self-builds: Based on our analysis of hyperscalers' disclosures and announcements, under-development self-build 
+capacity exceeds 14.7 GW (+3.4 GW) for the North America region and ~240 MW for the South America region. 
+ 
+EMEA: Total under-construction capacity in EMEA increased from 9.0 GW in Mar-2026 to 9.5 GW in Jun-2026 (+197 MW for 
+third-party capacity, and +287 MW for hyperscale self-build). 
+• 
+Total third-party under-construction capacity in Europe was up 169 MW at ~6.4GW. We observed notable new construction 
+activity in Finland, Milan, Norway and Frankfurt. 
+o 
+At the end of Jun-2026, the top markets with the largest ongoing under-construction activity included London (1.4 GW), 
+Milan (711 MW), Norway (664 MW), Finland (620 MW), Berlin (358 MW), Frankfurt (343 MW), Paris (296 MW), Outside 
+London (290 MW), Dublin (209 MW), Amsterdam (187 MW), Barcelona (118 MW), and Madrid (115 MW). 
+• 
+Total third-party under-construction capacity in the Middle East grew decreased from 68 MW to 1.7 GW in Jun-2026, 
+reflecting our assumption of datacenter construction completions in UAE offset by Israel. 
+• 
+At the end of Jun-2026, the top markets with the largest ongoing under-construction activity included Saudi Arabia (775 
+MW), UAE (633 MW), Israel (174 MW) and Turkey (116 MW). 
+• 
+Total third-party under-construction capacity in Africa increased from 171 MW to 267 MW (+96 MW), led by Nigeria. 
+o 
+At the end of Jun-2026, the largest under-construction markets were Nigeria (143 MW), Kenya (64 MW), and South 
+Africa (60 MW).  
+• 
+Hyperscale self-builds: Based on our analysis of hyperscalers’ disclosures and announcements, under-development self-build 
+capacity totaled: ~1.2 GW (+287 MW). 
+ 
+APAC: Total under-construction capacity in APAC increased from 8.8 GW in Mar-2026 to 10.9 GW in Jun-2026 (+1.2 GW for 
+third-party capacity, and 0.9 GW for hyperscale self-build), with increases in Indonesia, Thailand, Mumbai and Hebei, offset by 
+our assumption of datacenter construction completions in Osaka and Beijing. 
+o 
+At the end of Jun-2026, the top markets with the largest ongoing under-construction activity included Sydney (1.6 
+GW), Malaysia (1.5 GW), Melbourne (824 MW), Thailand (807 MW), Indonesia (703 MW), South Korea (434 MW), 
+Tokyo (358 MW), Mumbai (349 MW), Hong Kong (319 MW), Osaka (269 MW), Perth (206 MW), Shanghai (205 MW), 
+Beijing (182 MW), Canberra (125 MW), Singapore (100 MW), and Hebei Province (91 MW). 
+• 
+Hyperscale self-builds: Based on our analysis of hyperscalers’ disclosures and announcements, under-construction self-build 
+capacity totaled ~1.2 GW (+884 MW) for the APAC region. 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+4
+
+
+[Page 5]
+ 
+ 
+Planned / Potential Datacenter Development 
+Americas: Total planned capacity in the Americas increased from 167.0 GW in Mar-2026 to 186.5 GW in Jun-2026 (+7.8 GW for 
+third-party capacity, and +11.7 GW for hyperscale self-build). 
+• 
+Total third-party planned capacity in the North America region increased from 137.6 GW to 145.3 GW (+7.7 GW, with the 
+largest increases in Texas, Miami, Ohio, Atlanta, Chicago, Toronto, Los Angeles, Montreal and Phoenix. 
+• 
+At the end of Jun-2026, the top markets in North America with the largest planned or potential capacity were Texas (39.3 
+GW, primarily remote markets, and also Dallas-Fort Worth, Houston, San Antonio and others), Northern Virginia (23.0 GW), 
+Atlanta (7.8 GW), Phoenix (7.4 GW), Chicago (5.1 GW), Ohio (3.6 GW), New York / New Jersey (1.7 GW), Reno (1.4 GW), 
+Miami (1.3 GW), and Silicon Valley (1.0 GW). Other notable markets include Calgary (920 MW), Los Angeles (894 MW), 
+Charlotte (869 MW), Toronto (793 MW), Portland / Hillsboro (779 MW) and Salt Lake City (580 MW). 
+• 
+Total third-party planned capacity in the Latin America region increased from 7.7 GW to 7.8 GW (+101 MW), led by Brazil.  
+o 
+At the end of Jun-2026, the top markets in South America with the largest planned or potential capacity were Brazil (5.9 
+GW), Mexico (1.1 GW), and Chile (288 MW). 
+• 
+Hyperscale self-builds: Based on our analysis of hyperscalers’ disclosures, planned self-build capacity totaled ~33.4 GW for 
+North America (+11.7 GW). 
+ 
+EMEA: Total planned capacity in EMEA increased from 58.3 GW in Mar-2026 to 68.7 GW in Jun-2026 (+10.4 GW for third-party 
+capacity). 
+• 
+Total third-party planned capacity in Europe expanded from 46.5 GW to 56.5 GW (+10.0 GW), with the largest increases in 
+Finland, Norway, Paris, Madrid, Milan and London.  
+• 
+At the end of Jun-2026, top markets in Europe with the largest planned or potential capacity were Finland (6.6 GW), Outside 
+London (4.2 GW), Paris (4.1 GW), Norway (4.0 GW), London (2.4 GW), Frankfurt (2.4 GW), Madrid (1.7 GW), Milan (1.3 GW), 
+Berlin (1.3 GW), Copenhagen (996 MW), Dublin (808 MW), Greece (834 MW), Amsterdam (623 MW), Warsaw (213 MW), 
+Barcelona (145 MW), Iceland (154 MW), Marseille (123 MW), Hamburg (113 MW) and Zurich (118 MW). 
+• 
+Total third-party planned capacity in the Middle East region increased 356 MW to 7.3 GW, led by UAE.  
+o 
+At the end of June-2026, the top markets in the Middle East with the largest planned or potential capacity were UAE 
+(3.5 GW), Saudi Arabia (3.4 GW), Israel (295 MW) and Turkey (138 MW). 
+• 
+Total third-party planned capacity in the Africa region remained flat at 2.3 GW.  
+o 
+At the end of Jun-2026, the top markets in Africa with the largest planned or potential capacity were Morocco (1.0 GW), 
+South Africa (714 MW), Nigeria (69 MW), and Ghana (32 MW). 
+• 
+Hyperscale self-builds: Based on our analysis of hyperscalers’ disclosures, planned self-build capacity totaled ~2.5 GW for 
+Europe. 
+ 
+APAC: Total planned capacity in APAC increased from 43.4 GW in Mar-2026 to 49.8 GW in Jun-2026 (+6.9 GW for third-party 
+capacity, and -0.5 GW for hyperscale self-build), led by Mumbai, Malaysia, Melbourne, Darwin, Indonesia, South Korea, Sydney 
+and Singapore. 
+• 
+At the end of Jun-2026, the top markets in APAC with the largest planned or potential capacity were South Korea (6.1 GW, 
+principally reflecting two large announced projects), Malaysia (4.5 GW), Thailand (3.6 GW), Mumbai (3.4 GW), Sydney (3.1 
+GW), Indonesia (2.3 GW), Tokyo (2.2 GW), Melbourne (1.8 GW), Hyderabad (1.5 GW), Shanghai (940 MW), Philippines (882 
+MW), Chennai (722 MW), Osaka (679 MW), Beijing (547 MW), Hong Kong (525 MW), Darwin (525 MW), Singapore (391 MW), 
+Auckland (376 MW), Delhi / NCR (354 MW), Tianjin (295 MW), Perth (249 MW) and Canberra (123 MW). 
+• 
+Hyperscale self-builds. Based on our analysis of hyperscalers’ disclosures, planned self-build capacity totaled ~4.6 GW for 
+APAC (including China). 
+ 
+For investors interested in other methodologies around datacenter development in the U.S., we recommend investors review 
+our colleague Steve D’Ambrisi’s U.S. Utilities research, which tracks air permits at the state level associated with ongoing 
+datacenter projects. 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+5
+
+
+[Page 6]
+ 
+ 
+Other Highlights 
+• 
+AI/HPC and Neocloud developments: At the end of Jun-2026, among the AI/HPC and Neocloud companies we track, 8.1 GW 
+(vs 6.3 GW in Mar-2026) was under construction and 33.0 GW (vs 18.3 GW in Mar-2026) was flagged planned or potential 
+capacity for AI/HPC capacity. Major contributors to the under-construction category include Applied Digital, Bitdeer, Core 
+Scientific, Crusoe Energy, IREN (Iris Energy), Nebius, and NScale. In the planned or potential category, major contributors 
+include Bitzero, Cipher Mining, Cleanspark, Crusoe Energy, Hut 8, IREN, Keel Infrastructure, Nscale, and TeraWulf. 
+• 
+Industrial/Logistics Datacenter developments: At the end of Jun-2026, among the industrial/logistics players we track, 1.1 
+GW (flat sequentially) was under construction and 8.0 GW was under planned or potential capacity. The major contributors 
+to the under-construction category include Merlin/Edged, Goodman, ESR (incl. JV with Stack), and Segro. In the planned or 
+potential category, the key contributors are Merlin/Edged, Prologis, Goodman, and COPT. 
+• 
+Top 4 Hyperscalers: For the top 4 hyperscalers, we estimate a combined 16.8 GW under construction and 39.6 GW in planned 
+or potential capacity as of end-Jun-2026: 
+• 
+Amazon: 2.4 GW under construction and 17.3 GW in planned or potential. Amazon remains the largest single 
+contributor to the planned or potential pipeline among the hyperscalers we track. 
+• 
+Meta: 6.0 GW under construction and 3.1 GW in planned or potential capacity. The planned or potential capacity 
+reflects the announced expansion of Meta's Hyperion campus in Richland Parish, Louisiana, from approximately 2GW 
+to 5GW of planned compute capacity. 
+• 
+Google: 2.5 GW under construction and 9.7 GW in planned or potential capacity. The increase in under-construction 
+capacity reflects Google's re-engagement across multiple US and international campus programs, including the reveal 
+of Google as the developer behind the 2.7GW Project Tembo campus near Cheyenne, Wyoming. 
+• 
+Microsoft: 6.0 GW under construction and 9.4 GW in planned or potential capacity. The under-construction pipeline 
+reflects the re-mobilization of Microsoft's previously paused or cancelled campuses, including three sites in Licking 
+County, Ohio (Heath, Hebron, and New Albany, totaling approximately 869 MW per Aterio's tracking) and three sites in 
+Catawba County, North Carolina (Lyle Creek, Boyd Farm, and Stover North, representing a further 720–810 MW), all of 
+which moved back into active site preparation and mass grading during the period. 
+ 
+Behind the Meter (BTM) -- Datacenter Development Highlights 
+1. BTM share: BTM strategies account for 16% of all RBC tracked projects since December 2025; North America leads at 24%, 
+driven by ERCOT, PJM, and WECC markets where grid interconnection timelines stretch 3–7 years. 
+2. BTM+Gas dominance: BTM+Gas is the largest BTM sub-category in North America (10% of NA projects), reflecting co-located 
+natural gas plants at hyperscale/neocloud campuses — including Microsoft/Chevron Project Kirby (2.67GW), Meta 
+Hyperion/Entergy Louisiana (5GW), and Williams/Blackstone BTM Ohio+Utah portfolio ($5.34B). 
+3. Nuclear/SMR: 37 projects (including Nuclear+Gas), the second-largest BTM segment by count. No new commercial 
+deployments, but an active pipeline of PPAs, SMR pilots (Aalo Atomics achieving criticality at INL in July 2026), and site 
+adjacency strategies spanning the US, Sweden, France, and Germany. 
+4. Fuel cells: 18 projects, anchored by Oracle/BorderPlex Project Jupiter's 2.45GW Bloom SOFC deployment in New Mexico. 
+Siemens/FuelCell Energy partnership targets deployments above 100MW, positioning fuel cells as mainstream BTM 
+infrastructure. 
+5. Gas turbines/CCGT: 22 projects, including VoltaGrid/Blackstone (7.5GW order book), xAI (57 gas turbines across 
+Memphis/Southaven), and PPL/Blackstone BTM power JV. Hydrogen-capable turbines emerging (Nixxy/Tachyon 9, Baker 
+Hughes H2-capable units, North Dakota). 
+6. Gas/BTM (Technology Undisclosed): 84 projects, including the largest by capacity (Project Kirby 2.67GW, Meta Hyperion 
+5GW, Williams/Blackstone $5.34B); expected to migrate into CCGT and reciprocating engine categories as specifications 
+become public. 
+7. Pipeline concentration: 177 of 1,175 projects (15%) involve gas or alternative BTM generation; three categories — Gas/BTM 
+Undisclosed (84), Nuclear/SMR (37), Gas turbines/CCGT (22) — account for 81% of all BTM technology projects. 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+6
+
+
+[Page 7]
+ 
+ 
+8. Modular generation: 13 projects focused on deployment speed; SLB/Liberty Energy has shipped 1.3GW+ of prefabricated 
+modular infrastructure since April 2024; PROPWR/Caterpillar operates under a 2.1GW supply framework; Stak Energy 
+proposes 3GW in North Slope Alaska. 
+9. Reciprocating engines: 3 projects but substantial capacity — Wärtsilä's two US contracts represent 1.2GW+ (34SG/50SG 
+models); Nscale West Virginia Monarch Campus uses Caterpillar natural gas generators for its first 2GW, citing faster 
+procurement and higher part-load efficiency for variable AI inference workloads. 
+For further details on these developments, please refer to our colleague Chris Dendrinos’ research on developments in this eco-
+system. 
+ 
+Liquid Cooling Highlights 
+Based on commentary from a number of the major equipment vendors, we highlight the following 
+1. Thermal Efficiency/Compute Metrics: Cooling architecture is increasingly framed as a compute efficiency lever rather than 
+infrastructure overhead. Targeting 45°C fluid delivery to GPUs — vs. 24–30°C chiller loops today — yields ~3% efficiency gain 
+per 1°C increase via reduced mechanical cooling and more free cooling hours. The practical effect is a reallocation of site 
+power toward GPUs, improving tokens per watt. 
+2. Air/Liquid Mix Shifts Amongst Absolute Volume Growth: Current high-density AI environments run roughly 80% liquid / 
+20% air. Even in aggressive scenarios moving to 95% / 5%, absolute air cooling volumes continue to grow as site scales 
+increase — networking, support racks, and power equipment remain air-cooled. Separately, cooling architecture is beginning 
+to align with silicon architecture: large GPU deployments (GB200/GB300/Vera) using direct liquid cooling skew ARM, while 
+enterprise air-cooled deployments (B200/B300) remain x86. 
+3. Two-Temperature Parameters Drive System Complexity: GPUs require 41–45°C fluid while air cooling cannot operate 
+effectively above ~30°C. This forces either dual-loop architectures or hybrid single-loop designs, with claimed efficiency gains 
+of 10–20%+ vs. single-technology approaches. Complexity at the system level is pushing vendors toward proprietary 
+integrated solutions rather than standalone component sales. 
+4. Role of Fluid Management: Commissioning liquid cooling at scale — flushing and filling primary and secondary loops across 
+a 250MW site — is operationally demanding. The full secondary network requires filtration at 25–50 microns (vs. ~100 
+microns for a human hair), fluid chemistry management, leak detection, and flow control. Services attached to this layer are 
+a growing revenue opportunity. 
+5. Cold Plates and CDUs: Component vendors are resisting commoditization of cold plates, framing them as enablers of co-
+development and system-level wins across CDUs and power management. Recent M&A activity in cold plates underscores 
+this, as well as a broader trend is toward full-stack liquid cooling offerings — bundling cooling, software, networking, and 
+services. 
+6. Brownfield Retrofit: A Near-Term Addressable Market: Existing air-cooled datacenters are increasingly retrofit-able with 
+liquid cooling, improving thermal performance without full infrastructure replacement. The large installed base of air-cooled 
+infrastructure represents a meaningful near-term opportunity alongside greenfield builds. 
+7. Power Architecture Is Co-Evolving With Cooling: 800V DC is expected to become a meaningful portion of the market in 
+2027+, with commercial shipments beginning that year. Liquid cooling and power architecture are increasingly co-designed 
+at high rack densities. For more details on this topic, please see RBC’s March 2026 Building AI – Datacenter Equipment Growth 
+Drivers report. 
+8. Standards Stabilizing; Two-Phase Cooling a Longer-Term Watch: Practices around fluid temperatures are beginning to 
+stabilize, with no significant near-term regulatory disruption expected. Two-phase cooling is flagged as a potential longer-
+term direction but timing around when this reaches scale over the coming years is still unclear. 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+7
+
+
+[Page 8]
+ 
+ 
+Datacenter Development Headwinds: Opposition, Regulation, and Project Attrition 
+Project Withdrawals and Rejections 
+December 2025 – March 2026 saw a steady but contained stream of project withdrawals and rejections, almost entirely confined 
+to North America, driven by community opposition around land use, water consumption, and neighborhood character. 
+Developers largely abandoned proposals before formal hearings or relocated to more receptive jurisdictions. Moratoria were 
+isolated rather than systemic. The period included several large individual setbacks: a 900MW Virginia campus was withdrawn 
+following resident opposition, a 430MW South Dakota project was abandoned after the developer cited an unfavorable tax and 
+policy environment, and a 1GW Florida application was pulled amid rising regulatory scrutiny. 
+April – June 2026 saw a significant increase in both the volume and scale of negative outcomes. The multi-GW Prince William 
+Digital Gateway in Virginia collapsed following a court ruling that invalidated its zoning after years of planning. A 900MW Hanover 
+County campus was denied by a single-vote margin, and several other large-scale Northern Virginia proposals were withdrawn 
+ahead of hearings. Formal moratoria were adopted across multiple unrelated US cities and counties, several binding for multiple 
+years. A major AI platform withdrew from committed projects across three countries, citing delivery delays. Developer-level 
+partner substitutions occurred at several large contracted campuses — including the 2.7GW Project Jade campus near Cheyenne, 
+Wyoming, where the original developer exited and was subsequently replaced by a new hyperscaler developer, with the power 
+infrastructure partner and local utility remaining committed and continuing construction throughout. 
+Regulatory and Utility Developments: Ratepayer Protection and Grid Allocation Reform 
+On the regulatory and utility front, the White House Ratepayer Protection Pledge was signed by major technology companies 
+requiring them to fund incremental generation, transmission, and distribution upgrades associated with their projects rather 
+than allocating those costs to existing customers.  
+In deregulated markets including PJM, Texas, and the Northeast, the absence of a clear mechanism to require new generation 
+construction had allowed some large-load costs to be attributed to existing ratepayers, a dynamic that spread as a national 
+narrative and contributed to local NIMBYism even in markets with protective tariff structures. US utilities are asking hyperscalers 
+and developers to pay for the marginal infrastructure needed to serve their load, including generation and related grid capacity.  
+Large-load tariff terms are being accepted by hyperscalers and developers in many cases. This is driving higher utility capital 
+investment plans and earnings growth expectations.  
+European power allocation processes were also being reformed across Denmark, Finland, Norway, Germany, and the UK, with 
+countries moving away from first-in, first-out systems toward project maturity-based approaches following extreme queue 
+inflation — Denmark alone reported approximately 60GW of applications against approximately 7GW of peak national usage.  
+A May 2026 Gallup survey recorded 70% of Americans opposing local datacenter construction. The first US Senate bill proposing 
+a nationwide moratorium was introduced in June 2026. 
+New York Moratorium: The most significant single regulatory action of the period was New York Governor Hochul's Executive 
+Order 62 (July 22, 2026), which imposed a permitting freeze on datacenters above 50MW while 9,682MW of datacenter load sat 
+in the NYISO interconnection queue. The order ends a fifteen-year model that socialized grid upgrade costs across the ratepayer 
+base, replacing it with a beneficiary-pays mechanism under which developers bear 100% of transmission, distribution, and 
+network upgrade costs — with a surcharge on the order of $1 million per megawatt cited in supporting materials as an emerging 
+floor for modeling purposes. Projects already holding complete permits or under construction are shielded; everything in the 
+discretionary-permit stage carries a one-year timeline floor with no confirmed ceiling, with timeline risk compounded by the New 
+York DEC's track record of missing statutory deadlines — a prior crypto-mining precedent shows DEC missing its deadline by more 
+than one year. The 50MW threshold is calibrated to insulate back-office financial services, hospitals, and academic load while 
+capturing only hyperscale-scale demand; a competing legislative bill set the threshold at 20MW, which would have captured a 
+broader range of projects. The immediate earnings impact on hyperscale and REIT names with New York exposure is characterized 
+as contained, as New York was not a primary hyperscale destination. The identified mispriced risk is contagion: the order is 
+explicitly positioned by its sponsors as a national model, with Virginia and Texas identified as the markets where adoption of the 
+cost-allocation framework would have the most material impact on queued capacity. The order introduces permitting as a second 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+8
+
+
+[Page 9]
+ 
+ 
+binding constraint on the AI infrastructure build-out alongside power — and unlike power, permitting does not respond to capital 
+deployment alone, shifting the underwriting discipline from energy cost to regulatory posture. 
+Oracle Wisconsin Collateral: Oracle's Wisconsin collateral issue illustrates how utility regulators may require letters of credit, 
+guarantees, or other security when large-load projects create substantial system-investment exposure. This may affect private-
+credit underwriting for cloud and datacenter projects, with utility collateral increasingly required alongside land, construction, 
+equipment, and power-related financing commitments. 
+Virtual Power Plants: Dominion Energy is developing a 450 MW VPP pilot in Virginia. California's Demand Side Grid Support 
+program increased enrolled capacity from approximately 140 MW in 2023 to more than 1.1 GW in 2025. Google and Voltus have 
+entered a three-year agreement to develop a 100 MW VPP. 
+Project Restarts: Retained Land and Utility Commitments Enable Rapid Re-Mobilization 
+The period through mid-2026 also included project restarts alongside continued opposition activity. Microsoft re-mobilized three 
+previously cancelled campuses in Licking County, Ohio — Heath, Hebron, and New Albany — totaling approximately >800MW 
+across 17 buildings per Aterio's tracking, with Microsoft's own June 2026 economic-impact report committing all three to be 
+operational by end of 2029, having retained land ownership and utility commitments throughout the approximately ten-month 
+pause. Microsoft also re-mobilized three previously paused campuses in Catawba County, North Carolina — Lyle Creek, Boyd 
+Farm, and Stover North — representing a further >700MW across 15 buildings per Aterio's estimates, with satellite imagery from 
+early 2026 confirming re-mobilization activity at all three sites after approximately seven months of inactivity. 
+ 
+Industry Opinion: Site Selection, BTM Power, and Moratorium risks 
+Based on our discussions with industry contacts, NIMBYism, while intensifying, will not disrupt projects already in possession of 
+permits or operating datacenters; the primary near-term impact was on longer-term site selection for capacity needed after 2031; 
+and developers were beginning to widen their site-selection criteria toward markets with natural gas availability, lower 
+population density, and demonstrated community acceptance — with markets such as Kansas City, Iowa/Cedar Rapids, and 
+Louisiana cited as potential beneficiaries.  
+Based on our discussions with industry contacts, behind-the-meter power, while receiving significant attention, was characterized 
+as a speed-to-market bridge rather than a preferred long-term structure, with hyperscalers generally preferring grid-connected 
+power where a clear interconnection path exists within three to four years.  
+Power availability alone no longer determines feasibility in this environment: developers and hyperscalers are increasingly being 
+advised to sequence new site selection toward jurisdictions that have declared their regulatory posture, treat undeclared states 
+as carrying latent moratorium risk, and structure community-benefit contributions into the base case rather than negotiating 
+them as concessions after the fact. 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+9
+
+
+[Page 10]
+ 
+ 
+Appendix 
+The following exhibits provide a summary of ongoing and planned datacenter developments in different regions and sub-regions. 
+Exhibit 1 - Overview of ongoing and planned datacenter developments in different regions globally (excluding Self-Builds) 
+Third-party datacenter developments 
+  
+  
+  
+  
+  
+30-Jun-2026 
+vs. 31-Mar 2026 
+  
+  
+  
+May-2025 
+Aug-2025 
+Dec-2025 
+Mar-2026 
+Jun-2026 
+Change 
+North America 
+Under construction 
+ MWs  
+ 7,587  
+ 8,084  
+ 13,259  
+ 14,337  
+ 29,336  
+  14,999  
+South America 
+Under construction 
+ MWs  
+  742  
+  738  
+ 1,334  
+ 1,178  
+ 1,462  
+  284  
+Americas 
+Under construction 
+ MWs  
+ 8,329  
+ 8,822  
+ 14,593  
+ 15,515  
+ 30,799  
+  15,284  
+  
+  
+  
+  
+  
+  
+  
+Europe 
+Under construction 
+ MWs  
+ 2,887  
+ 3,467  
+ 6,254  
+ 6,186  
+ 6,355  
+  169  
+Middle-East 
+Under construction 
+ MWs  
+  499  
+  898  
+ 1,664  
+ 1,766  
+ 1,698  
+  (68) 
+Africa 
+Under construction 
+ MWs  
+  156  
+  226  
+  282  
+  171  
+  267  
+  96  
+EMEA 
+Under construction 
+ MWs  
+ 3,542  
+ 4,590  
+ 8,200  
+ 8,123  
+ 8,320  
+  197  
+  
+  
+  
+  
+  
+  
+  
+APAC 
+Under construction 
+ MWs  
+ 5,886  
+ 6,824  
+ 9,760  
+ 8,528  
+ 9,746  
+  1,218  
+  
+  
+  
+  
+  
+  
+  
+Total 
+Under construction 
+ MWs  
+ 17,757  
+ 20,237  
+ 32,554  
+ 32,166  
+ 48,865  
+  16,699  
+Third-party datacenter developments 
+  
+  
+  
+  
+  
+30-Jun-2026 
+vs. 31-Mar 2026 
+  
+  
+  
+May-2025 
+Aug-2025 
+Dec-2025 
+Mar-2026 
+Jun-2026 
+Change 
+North America 
+ Planned / Potential  
+ MWs  
+ 50,888  
+ 88,759  
+ 108,895  
+ 137,617  
+ 145,320  
+  7,704  
+South America 
+ Planned / Potential  
+ MWs  
+ 5,488  
+ 7,285  
+ 9,231  
+ 7,675  
+ 7,776  
+  101  
+Americas 
+ Planned / Potential  
+ MWs  
+ 56,376  
+ 96,044  
+ 118,126  
+ 145,292  
+ 153,096  
+  7,804  
+  
+  
+  
+  
+  
+  
+  
+Europe 
+ Planned / Potential  
+ MWs  
+ 28,339  
+ 34,644  
+ 40,708  
+ 46,477  
+ 56,496  
+  10,019  
+Middle-East 
+ Planned / Potential  
+ MWs  
+ 1,313  
+ 2,157  
+ 6,883  
+ 6,947  
+ 7,304  
+  356  
+Africa 
+ Planned / Potential  
+ MWs  
+  680  
+ 1,640  
+ 2,227  
+ 2,279  
+ 2,279  
+  -  
+EMEA 
+ Planned / Potential  
+ MWs  
+ 30,333  
+ 38,441  
+ 49,817  
+ 55,703  
+ 66,078  
+  10,375  
+  
+  
+  
+  
+  
+  
+  
+APAC 
+ Planned / Potential  
+ MWs  
+ 26,633  
+ 29,078  
+ 36,219  
+ 38,250  
+ 45,195  
+  6,945  
+  
+  
+  
+  
+  
+  
+  
+Total 
+Planned / Potential 
+ MWs  
+ 113,342  
+ 163,562  
+ 204,162  
+ 239,245  
+ 264,370  
+  25,125  
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+10
+
+
+[Page 11]
+ 
+ 
+Exhibit 2 - Overview of Ongoing Self-Build Developments in different regions 
+Hyperscale self-builds (RBC est.) 
+  
+  
+  
+  
+  
+  
+30-Jun-2026 
+vs. 31-Mar 2026 
+  
+  
+  
+May-2025 
+Aug-2025 
+Dec-2025 
+Mar-2026 
+Jun-2026 
+Change 
+North America 
+Under construction 
+ MWs  
+ 3,700  
+ 4,950  
+ 9,418  
+ 11,289  
+ 14,737  
+  3,449  
+South America 
+Under construction 
+ MWs  
+  220  
+  220  
+  220  
+  40  
+  240  
+  200  
+Americas 
+Under construction 
+ MWs  
+ 3,920  
+ 5,170  
+ 9,638  
+ 11,329  
+ 14,977  
+  3,649  
+  
+  
+  
+  
+  
+  
+  
+Europe 
+Under construction 
+ MWs  
+ 1,074  
+ 1,074  
+ 1,107  
+  918  
+ 1,205  
+  287  
+Middle-East 
+Under construction 
+ MWs  
+  -  
+  -  
+  -  
+  -  
+  -  
+  -  
+Africa 
+Under construction 
+ MWs  
+  -  
+  -  
+  -  
+  -  
+  -  
+  -  
+EMEA 
+Under construction 
+ MWs  
+ 1,074  
+ 1,074  
+ 1,107  
+  918  
+ 1,205  
+  287  
+  
+  
+  
+  
+  
+  
+  
+APAC 
+Under construction 
+ MWs  
+  770  
+  770  
+  270  
+  270  
+ 1,154  
+  884  
+  
+  
+  
+  
+  
+  
+  
+Total 
+Under construction 
+ MWs  
+ 5,764  
+ 7,014  
+ 11,015  
+ 12,516  
+ 17,336  
+  4,820  
+Hyperscale self-builds (RBC est.) 
+  
+  
+  
+  
+  
+  
+30-Jun-2026 
+vs. 31-Mar 2026 
+  
+  
+  
+May-2025 
+Aug-2025 
+Dec-2025 
+Mar-2026 
+Jun-2026 
+Change 
+North America 
+ Planned / Potential  
+ MWs  
+ 4,830  
+ 4,220  
+ 13,168  
+ 21,624  
+ 33,436  
+  11,812  
+South America 
+ Planned / Potential  
+ MWs  
+  -  
+  -  
+  -  
+  120  
+  -  
+  (120) 
+Americas 
+ Planned / Potential  
+ MWs  
+ 4,830  
+ 4,220  
+ 13,168  
+ 21,744  
+ 33,436  
+  11,692  
+  
+  
+  
+  
+  
+  
+  
+Europe 
+ Planned / Potential  
+ MWs  
+  691  
+  831  
+  808  
+ 2,551  
+ 2,453  
+  (97) 
+Middle-East 
+ Planned / Potential  
+ MWs  
+  72  
+  120  
+  250  
+  -  
+  -  
+  -  
+Africa 
+ Planned / Potential  
+ MWs  
+  -  
+  -  
+  -  
+  -  
+  100  
+  100  
+EMEA 
+ Planned / Potential  
+ MWs  
+  763  
+  951  
+ 1,058  
+ 2,551  
+ 2,553  
+  3  
+  
+  
+  
+  
+  
+  
+  
+APAC 
+ Planned / Potential  
+ MWs  
+  780  
+ 1,680  
+ 5,070  
+ 5,120  
+ 4,633  
+  (488) 
+  
+  
+  
+  
+  
+  
+  
+Total 
+Planned / Potential 
+ MWs  
+ 6,373  
+ 6,851  
+ 19,296  
+ 29,415  
+ 40,622  
+  11,207  
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+11
+
+
+[Page 12]
+ 
+ 
+Exhibit 3 - Overview of Total Developments in different regions (Third Party + Self-Builds) 
+Total Capacity: (Third-party datacenter developments + Hyperscale Self-builds) 
+  
+30-Jun-2026 
+vs. 31-Mar 2026 
+  
+  
+  
+May-2025* 
+Aug-2025* 
+Dec-2025 
+Mar-2026 
+Jun-2026 
+Change 
+North America 
+Under construction 
+ MWs  
+ 11,287  
+ 13,034  
+ 22,677  
+ 25,625  
+ 44,073  
+  18,448  
+South America 
+Under construction 
+ MWs  
+  962  
+  958  
+ 1,554  
+ 1,218  
+ 1,702  
+  484  
+Americas 
+Under construction 
+ MWs  
+ 12,249  
+ 13,992  
+ 24,231  
+ 26,843  
+ 45,776  
+  18,932  
+  
+  
+  
+  
+  
+  
+  
+Europe 
+Under construction 
+ MWs  
+ 3,961  
+ 4,541  
+ 7,361  
+ 7,104  
+ 7,561  
+  457  
+Middle-East 
+Under construction 
+ MWs  
+  499  
+  898  
+ 1,664  
+ 1,766  
+ 1,698  
+  (68) 
+Africa 
+Under construction 
+ MWs  
+  156  
+  226  
+  282  
+  171  
+  267  
+  96  
+EMEA 
+Under construction 
+ MWs  
+ 4,616  
+ 5,664  
+ 9,307  
+ 9,041  
+ 9,526  
+  485  
+  
+  
+  
+  
+  
+  
+  
+APAC 
+Under construction 
+ MWs  
+ 6,656  
+ 7,594  
+ 10,030  
+ 8,798  
+ 10,900  
+  2,102  
+  
+  
+  
+  
+  
+  
+  
+Total 
+Under construction 
+ MWs  
+ 23,520  
+ 27,250  
+ 43,569  
+ 44,683  
+ 66,201  
+  21,519  
+Total Capacity: (Third-party datacenter developments + Hyperscale Self-builds) 
+  
+30-Jun-2026 
+vs. 31-Mar 2026 
+  
+  
+  
+May-2025* 
+Aug-2025* 
+Dec-2025 
+Mar-2026 
+Jun-2026 
+Change 
+North America 
+Planned / Potential 
+ MWs  
+ 70,384  
+ 108,255  
+ 122,063  
+ 159,241  
+ 178,756  
+  19,516  
+South America 
+Planned / Potential 
+ MWs  
+ 5,569  
+ 7,366  
+ 9,231  
+ 7,795  
+ 7,776  
+  (20) 
+Americas 
+Planned / Potential 
+ MWs  
+ 75,954  
+ 115,621  
+ 131,295  
+ 167,036  
+ 186,532  
+  19,496  
+  
+  
+  
+  
+  
+  
+  
+Europe 
+Planned / Potential 
+ MWs  
+ 32,109  
+ 38,413  
+ 41,516  
+ 49,028  
+ 58,949  
+  9,921  
+Middle-East 
+Planned / Potential 
+ MWs  
+ 1,313  
+ 2,157  
+ 7,133  
+ 6,947  
+ 7,304  
+  356  
+Africa 
+Planned / Potential 
+ MWs  
+  752  
+ 1,712  
+ 2,227  
+ 2,279  
+ 2,379  
+  100  
+EMEA 
+Planned / Potential 
+ MWs  
+ 34,174  
+ 42,282  
+ 50,875  
+ 58,254  
+ 68,632  
+  10,378  
+  
+  
+  
+  
+  
+  
+  
+APAC 
+Planned / Potential 
+ MWs  
+ 29,460  
+ 31,904  
+ 41,289  
+ 43,370  
+ 49,828  
+  6,458  
+  
+  
+  
+  
+  
+  
+  
+Total 
+Planned / Potential 
+ MWs  
+ 139,588  
+ 189,808  
+ 223,459  
+ 268,660  
+ 304,991  
+  36,332  
+ * Including Structure Research Estimates 
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+12
+
+
+[Page 13]
+ 
+ 
+Exhibit 4 - Overview of Ongoing and planned datacenter developments in key markets globally (excluding Self Builds) 
+Market 
+Country 
+Status 
+MW 
+Status 
+MW 
+Amsterdam 
+Netherlands 
+Under construction 
+ 187  
+Planned / Potential 
+  623  
+Barcelona 
+Spain 
+Under construction 
+ 118  
+Planned / Potential 
+  145  
+Belgium 
+Belgium 
+Under construction 
+ 36  
+Planned / Potential 
+  4  
+Berlin 
+Germany 
+Under construction 
+ 358  
+Planned / Potential 
+ 1,301  
+Copenhagen 
+Denmark 
+Under construction 
+  -  
+Planned / Potential 
+  996  
+Dublin 
+Ireland 
+Under construction 
+ 209  
+Planned / Potential 
+  808  
+Finland 
+Finland 
+Under construction 
+ 620  
+Planned / Potential 
+ 6,565  
+Frankfurt 
+Germany 
+Under construction 
+ 343  
+Planned / Potential 
+ 2,378  
+Greece 
+Greece 
+Under construction 
+  -  
+Planned / Potential 
+  834  
+Hamburg 
+Germany 
+Under construction 
+  -  
+Planned / Potential 
+  113  
+Iceland 
+Iceland 
+Under construction 
+  -  
+Planned / Potential 
+  154  
+London 
+UK 
+Under construction 
+ 1,375  
+Planned / Potential 
+ 2,412  
+Madrid 
+Spain 
+Under construction 
+ 115  
+Planned / Potential 
+ 1,688  
+Marseille 
+France 
+Under construction 
+ 13  
+Planned / Potential 
+  123  
+Milan 
+Italy 
+Under construction 
+ 711  
+Planned / Potential 
+ 1,326  
+Norway 
+Norway 
+Under construction 
+ 664  
+Planned / Potential 
+ 4,026  
+Outside London 
+UK 
+Under construction 
+ 290  
+Planned / Potential 
+ 4,215  
+Paris 
+France 
+Under construction 
+ 296  
+Planned / Potential 
+ 4,134  
+Stockholm 
+Sweden 
+Under construction 
+  -  
+Planned / Potential 
+  39  
+Vienna 
+Austria 
+Under construction 
+  -  
+Planned / Potential 
+  40  
+Warsaw 
+Poland 
+Under construction 
+ 60  
+Planned / Potential 
+  213  
+Zurich 
+Switzerland 
+Under construction 
+ 84  
+Planned / Potential 
+  118  
+  
+  
+  
+  
+  
+  
+UAE 
+UAE 
+Under construction 
+ 633  
+Planned / Potential 
+ 3,475  
+Saudi Arabia 
+Saudi Arabia 
+Under construction 
+ 775  
+Planned / Potential 
+ 3,395  
+Turkey 
+Turkey 
+Under construction 
+ 116  
+Planned / Potential 
+  138  
+Israel 
+Israel 
+Under construction 
+ 174  
+Planned / Potential 
+  295  
+  
+  
+  
+  
+  
+  
+Côte d’Ivoire  
+Côte d’Ivoire  
+Under construction 
+  -  
+Planned / Potential 
+  2  
+Ghana 
+Ghana 
+Under construction 
+  -  
+Planned / Potential 
+  32  
+Kenya 
+Kenya 
+Under construction 
+ 64  
+Planned / Potential 
+  14  
+Morocco 
+Morocco 
+Under construction 
+  -  
+Planned / Potential 
+ 1,000  
+Nigeria 
+Nigeria 
+Under construction 
+ 143  
+Planned / Potential 
+  69  
+South Africa 
+South Africa 
+Under construction 
+ 60  
+Planned / Potential 
+  714  
+  
+  
+  
+  
+  
+  
+Hong Kong 
+China 
+Under construction 
+ 319  
+Planned / Potential 
+  525  
+Beijing 
+China 
+Under construction 
+ 182  
+Planned / Potential 
+  547  
+Shanghai 
+China 
+Under construction 
+ 205  
+Planned / Potential 
+  940  
+Guangzhou 
+China 
+Under construction 
+ 25  
+Planned / Potential 
+  25  
+Shenzhen 
+China 
+Under construction 
+  9  
+Planned / Potential 
+  10  
+Hebei Province 
+China 
+Under construction 
+ 91  
+Planned / Potential 
+  -  
+Jiangsu 
+China 
+Under construction 
+ 48  
+Planned / Potential 
+  -  
+Chongqing 
+China 
+Under construction 
+ 10  
+Planned / Potential 
+  -  
+Tianjin 
+China 
+Under construction 
+  -  
+Planned / Potential 
+  295  
+  
+  
+  
+  
+  
+  
+Singapore 
+Singapore 
+Under construction 
+ 100  
+Planned / Potential 
+  391  
+Tokyo 
+Japan 
+Under construction 
+ 358  
+Planned / Potential 
+ 2,214  
+Osaka 
+Japan 
+Under construction 
+ 269  
+Planned / Potential 
+  679  
+South Korea 
+South Korea 
+Under construction 
+ 434  
+Planned / Potential 
+ 6,124  
+Indonesia 
+Indonesia 
+Under construction 
+ 703  
+Planned / Potential 
+ 2,253  
+Malaysia 
+Malaysia 
+Under construction 
+ 1,535  
+Planned / Potential 
+ 4,536  
+Thailand 
+Thailand 
+Under construction 
+ 807  
+Planned / Potential 
+ 3,618  
+Philippines 
+Philippines 
+Under construction 
+ 50  
+Planned / Potential 
+  882  
+Mumbai, India 
+India 
+Under construction 
+ 349  
+Planned / Potential 
+ 3,434  
+Bengaluru, India 
+India 
+Under construction 
+  -  
+Planned / Potential 
+  75  
+Hyderabad, India 
+India 
+Under construction 
+ 40  
+Planned / Potential 
+ 1,496  
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+13
+
+
+[Page 14]
+ 
+ 
+Market 
+Country 
+Status 
+MW 
+Status 
+MW 
+Chennai, India 
+India 
+Under construction 
+ 30  
+Planned / Potential 
+  722  
+Delhi / NCR 
+India 
+Under construction 
+  -  
+Planned / Potential 
+  354  
+  
+  
+  
+  
+  
+  
+Brisbane 
+Australia 
+Under construction 
+  2  
+Planned / Potential 
+  34  
+Canberra 
+Australia 
+Under construction 
+ 125  
+Planned / Potential 
+  123  
+Melbourne 
+Australia 
+Under construction 
+ 824  
+Planned / Potential 
+ 1,774  
+Sydney 
+Australia 
+Under construction 
+ 1,601  
+Planned / Potential 
+ 3,140  
+Perth 
+Australia 
+Under construction 
+ 206  
+Planned / Potential 
+  249  
+Darwin 
+Australia 
+Under construction 
+ 12  
+Planned / Potential 
+  525  
+Auckland 
+New Zealand 
+Under construction 
+ 30  
+Planned / Potential 
+  376  
+  
+  
+  
+  
+  
+  
+Atlanta 
+Georgia, US 
+Under construction 
+ 725  
+Planned / Potential 
+ 7,803  
+Boston 
+Massachusetts, US 
+Under construction 
+  -  
+Planned / Potential 
+  53  
+Charlotte 
+North Carolina, US 
+Under construction 
+ 261  
+Planned / Potential 
+  869  
+Chicago 
+Illinois, US 
+Under construction 
+ 589  
+Planned / Potential 
+ 5,144  
+Dallas-Fort Worth 
+Texas, US 
+Under construction 
+ 2,740  
+Planned / Potential 
+ 10,716  
+Denver 
+Colorado, US 
+Under construction 
+ 18  
+Planned / Potential 
+  176  
+Houston 
+Texas, US 
+Under construction 
+ 104  
+Planned / Potential 
+  439  
+Other Texas 
+Texas, US 
+Under construction 
+ 6,275  
+Planned / Potential 
+ 27,506  
+Irving 
+Texas, US 
+Under construction 
+  -  
+Planned / Potential 
+  290  
+KC Metro 
+Missouri, US 
+Under construction 
+  -  
+Planned / Potential 
+  518  
+Las Vegas 
+Nevada, US 
+Under construction 
+ 43  
+Planned / Potential 
+  160  
+Los Angeles 
+California, US 
+Under construction 
+ 58  
+Planned / Potential 
+  894  
+Miami 
+Florida, US 
+Under construction 
+ 28  
+Planned / Potential 
+ 1,340  
+Minneapolis 
+Minnesota, US 
+Under construction 
+ 17  
+Planned / Potential 
+  180  
+New York / New Jersey 
+New York, US 
+Under construction 
+ 483  
+Planned / Potential 
+ 1,674  
+Northern Virginia 
+Virginia, US 
+Under construction 
+ 1,916  
+Planned / Potential 
+ 23,029  
+Ohio 
+Ohio, US 
+Under construction 
+ 9,196  
+Planned / Potential 
+ 3,562  
+Philadelphia 
+Pennsylvania, US 
+Under construction 
+  -  
+Planned / Potential 
+  -  
+Phoenix 
+Arizona, US 
+Under construction 
+ 292  
+Planned / Potential 
+ 7,408  
+Portland / Hillsboro 
+Oregon, US 
+Under construction 
+ 311  
+Planned / Potential 
+  779  
+Quincy 
+Washington, US 
+Under construction 
+ 96  
+Planned / Potential 
+  136  
+Reno 
+Nevada, US 
+Under construction 
+ 1,129  
+Planned / Potential 
+ 1,353  
+Salt Lake City 
+Utah, US 
+Under construction 
+ 147  
+Planned / Potential 
+  580  
+San Antonio 
+Texas, US 
+Under construction 
+ 112  
+Planned / Potential 
+  357  
+Seattle 
+Washington, US 
+Under construction 
+ 44  
+Planned / Potential 
+  59  
+Silicon Valley 
+California, US 
+Under construction 
+ 93  
+Planned / Potential 
+ 1,001  
+South Carolina 
+South Carolina, US 
+Under construction 
+  -  
+Planned / Potential 
+  -  
+  
+  
+  
+  
+  
+  
+Calgary 
+Canada 
+Under construction 
+  -  
+Planned / Potential 
+  920  
+Montréal 
+Canada 
+Under construction 
+ 80  
+Planned / Potential 
+  420  
+Toronto 
+Canada 
+Under construction 
+ 166  
+Planned / Potential 
+  793  
+Vancouver 
+Canada 
+Under construction 
+  5  
+Planned / Potential 
+  10  
+  
+  
+  
+  
+  
+  
+Brazil 
+Brazil 
+Under construction 
+ 827  
+Planned / Potential 
+ 5,865  
+Chile 
+Chile 
+Under construction 
+ 13  
+Planned / Potential 
+  288  
+Colombia 
+Colombia 
+Under construction 
+ 12  
+Planned / Potential 
+  10  
+Mexico 
+Mexico 
+Under construction 
+ 510  
+Planned / Potential 
+ 1,086  
+Peru 
+Peru 
+Under construction 
+  -  
+Planned / Potential 
+  20  
+As of 30 June-2026 
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+14
+
+
+[Page 15]
+ 
+ 
+Exhibit 5 - Top 4 Hyperscalers - Self Build Datacenter Developments 
+Hyperscale self-builds (RBC est.) 
+  
+  
+  
+  
+  
+Jun-2026 
+Amazon 
+Under construction 
+ MWs  
+ 2,356  
+Meta 
+Under construction 
+ MWs  
+ 6,024  
+Google 
+Under construction 
+ MWs  
+ 2,482  
+Microsoft 
+Under construction 
+ MWs  
+ 5,974  
+Total Top 4 
+Under construction 
+ MWs  
+ 16,836  
+Hyperscale self-builds (RBC est.) 
+  
+  
+  
+  
+  
+Jun-2026 
+Amazon 
+ Planned / Potential  
+ MWs  
+ 17,328  
+Meta 
+ Planned / Potential  
+ MWs  
+ 3,149  
+Google 
+ Planned / Potential  
+ MWs  
+ 9,749  
+Microsoft 
+ Planned / Potential  
+ MWs  
+ 9,357  
+Total Top 4 
+Planned / Potential 
+ MWs  
+ 39,582  
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+Exhibit 6 - Selected Datacenter Developments – April 2026 – June 2026 – Under Construction Development 
+Third-party datacenter developments - Under construction 
+  
+Geography 
+≥ 100 MW and < 500 MW 
+≥ 500 MW and < 1,000 MW 
+≥ 1,000 MW 
+North America 
+Applied Digital (300 MW), Edged Energy (314 MW), CyrusOne (389 MW), 
+EdgeConneX (370 MW), Fleet Datacenters (230 MW), Prime Datacenters (144 
+MW) 
+Digital Realty (710 MW), Crusoe 
+Energy (830 MW), Nebius (800 
+MW) 
+– 
+Middle-East 
+Anan Datacenter (132 MW) 
+– 
+– 
+Africa 
+Kasi Cloud Datacenters (100 MW) 
+– 
+– 
+APAC 
+Princeton Digital Group (360 MW), Digital Edge (225 MW) 
+– 
+– 
+Hyperscale self-builds - Under construction 
+  
+  
+Geography 
+≥ 100 MW and < 500 MW 
+≥ 500 MW and < 1,000 MW 
+≥ 1,000 MW 
+North America 
+Meta (340 MW), Microsoft (238 MW), Google (102 MW) 
+Microsoft/Licking County OH 
+(869 MW), Microsoft/Catawba 
+County NC (720 MW) 
+Meta/Sopaipilla-
+Seafox (1,000 
+MW) 
+Europe 
+Google (269 MW) 
+– 
+– 
+APAC 
+– 
+Google (630 MW) 
+– 
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+15
+
+
+[Page 16]
+ 
+ 
+Exhibit 7 - Datacenter – Withdrawn Projects 
+Date 
+Company 
+State / 
+Province 
+Country 
+Status 
+MW 
+Short Summary 
+15-Jul-26 
+Eight Form 
+California 
+United States 
+Withdrawn 
+50 
+Five-story datacenter to replace Hyatt Place hotel; withdrawn due to community opposition over noise, 
+water, and electricity usage concerns 
+15-Jul-26 
+Energy Storage Solutions 
+North Carolina 
+United States 
+Withdrawn 
+900 
+Multi-phase AI datacenter development; special-use permit denied by county; appeal case ongoing; subject 
+to potential 24-month moratorium 
+09-Jul-26 
+EdgeConneX 
+Georgia 
+United States 
+Rejected / Denied 
+- 
+Five-building campus; application denied by county commissioners 4-1 vote 
+09-Jul-26 
+Swervo Development Corp. 
+Minnesota 
+United States 
+Moratorium Risk 
+33 
+Conversion of existing 1978 warehouse previously used by Avid International Moulding Solutions; city 
+considering moratorium 
+08-Jul-26 
+Townsite Solar 2, LLC 
+Nevada 
+United States 
+Withdrawn 
+170 
+High-density AI datacenter campus with up to six buildings planned; includes 150MW battery energy 
+storage sys 
+08-Jul-26 
+Vulcan Core LLC 
+Texas 
+United States 
+Withdrawn 
+12 
+Bitcoin mining facility with closed-loop cooling system, outdoor dry-cooler heat rejection, no diesel 
+generation. 
+08-Jul-26 
+Krambu 
+Montana 
+United States 
+Moratorium Risk 
+29 
+Nvidia-based GPU hardware, Supermicro servers, 250kW rack densities via direct-to-chip liquid cooling 
+02-Jul-26 
+Karis Critical 
+Illinois 
+United States 
+Withdrawn 
+- 
+Faced fierce opposition with over 3,250 petition signatures; residents concerned about environmental 
+impact an 
+30-Jun-26 
+Capstone Technology Campus 
+Missouri 
+- 
+Withdrawn 
+- 
+Would have consisted of four datacenter buildings and a substation 
+30-Jun-26 
+Kalina Distributed Power 
+Alberta 
+Canada 
+Withdrawn 
+200 
+Combined datacenter and 200MW gas-fired power generation project with optional Carbon Capture 
+29-Jun-26 
+American Tower 
+New Jersey 
+- 
+Withdrawn 
+4 
+Single-story facility on wooded land within existing cell tower property; site with cell tower dating back to 
+29-Jun-26 
+Kentucky Industrial Alliance LLC 
+Kentucky 
+- 
+Moratorium Risk 
+1200 
+Ten buildings totaling 2 million sq ft with up to 1.2GW capacity; facing 12-month moratorium challenge 
+29-Jun-26 
+VoltCore 
+Alabama 
+United States 
+Moratorium Risk 
+- 
+Bitcoin mining datacenter; faced local opposition with 450+ petition signatures; company offered residents 
+ca 
+29-Jun-26 
+Patmos 
+Missouri 
+United States 
+Moratorium Risk 
+- 
+Provides cloud and hosting solutions 'free from the threat of Big Tech censorship' with 'uncancellable 
+hosting 
+26-Jun-26 
+MAK Urban Group 
+New South 
+Wales 
+Australia 
+Withdrawn 
+- 
+Two-wing design; faced strong community opposition with 730+ petition signatures citing environmental 
+and nois 
+26-Jun-26 
+Karis 
+Iowa 
+United States 
+Moratorium Risk 
+- 
+Subject to 12-month county moratorium on datacenters; company has assembled more than 1,500 acres 
+and 3GW of 
+26-Jun-26 
+Treetop Companies 
+New York 
+- 
+Moratorium Risk 
+- 
+Three-year moratorium blocks development unless ancillary to existing use and less than 20MW or eligible 
+for E 
+25-Jun-26 
+Deltona Corporation 
+Florida 
+- 
+Withdrawn 
+- 
+Faced organized opposition from residents and local authorities; company primarily known as homebuilder 
+24-Jun-26 
+Colossus datacenter Advisors 
+Washington 
+United States 
+Moratorium Risk 
+20 
+Located in same building as Starbucks global HQ; occupies former Amazon Fresh retail store and 
+distribution 
+24-Jun-26 
+Soltier LLC 
+Pennsylvania 
+United States 
+Stalled / Paused 
+- 
+Cryptocurrency mining facility with 27 new Antboxes; removal of existing structures and regrading; larger  
+23-Jun-26 
+Thor Equities 
+Ohio 
+United States 
+Moratorium Risk 
+- 
+Closed-loop cooling system; end user to pay for all necessary grid and transmission upgrades 
+16-Jun-26 
+Bitdeer Technologies Group 
+Ohio 
+United States 
+Moratorium Risk 
+750 
+15 buildings total; closed-loop cooling system; sound walls and earth mounds for noise reduction; 30-50 
+jobs i 
+12-Jun-26 
+Sentinel datacenters 
+Maine 
+United States 
+Withdrawn 
+- 
+Former paper mill redevelopment; colocation datacenter space across two floors 
+11-Jun-26 
+Harbor Farmz / Wolverine Consulting 
+/ NAI Global 
+Michigan 
+USA 
+Failed / Overturned 
+1  
+32,850 sq ft / 4 acres; 2839 Full Circle Drive, Kalamazoo MI; built 2020; full zoning approval for DC 
+10-Jun-26 
+North 52 / Village of North Pekin / 
+Western Hospitality 
+Illinois 
+USA 
+Withdrawn 
+- 
+Former AMC Pekin 14 at 1124 Edgewater Drive, North Pekin IL; bought by IT company North 52; rezoning 
+under con 
+09-Jun-26 
+Civo / Era4 (formerly Carbon3.ai) / 
+Valencia Energy / H 
+Multiple UK 
+regions 
+United Kingdom 
+Rejected / Denied 
+50  
+Full-stack sovereign AI offering: Era4 DCs + CivoStack cloud software; Nvidia HGX B300 chips; ~50 low-
+carbon 
+09-Jun-26 
+DDSP (Digital Decarbonization 
+Solutions Platform) / Kep 
+Northern 
+Taiwan 
+Taiwan 
+Moratorium Risk 
+80  
+Financing transaction with Nomura for Phase 1 of 80 Taiwan campus; size undisclosed; 50:50 JV: Keppel 
+DCFII 
+09-Jun-26 
+Railway / Anthropic (Claude) / Google 
+Cloud / AWS / AMD 
+California; 
+Virginia; Mul 
+USA / 
+Netherlands / 
+Singa 
+Stalled / Paused 
+- 
+Claude planned entire Gen 2 rollout: 4 geographies, 8–9 DCs, half-dozen suppliers, dozens of network 
+providers 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+16
+
+
+[Page 17]
+ 
+ 
+Date 
+Company 
+State / 
+Province 
+Country 
+Status 
+MW 
+Short Summary 
+08-Jun-26 
+Slate Asset Management / City of 
+Hamilton / Digital Res 
+Ontario 
+Canada 
+Rejected / Denied 
+200  
+800-acre former Stelco/Hilton Works steelworks (closed ~2013); Lake Ontario shore; Slate: acquired 2022; 
+plans 
+08-Jun-26 
+QLevr / Charlestown Advisory Plan 
+Commission / City of 
+Indiana 
+USA 
+Moratorium Risk 
+3  
+$105M; 3; 12 acres; 55,000–60,000 sq ft; Shadow Lake Business Park, 1800 Cristiani Parkway, Charlestown 
+IN ( 
+06-Jun-26 
+Digital Realty / Clise Properties / 
+Seattle City Light 
+Washington 
+USA 
+Moratorium Risk 
+- 
+301 Virginia Street / 1930 3rd Ave Seattle; former Bed Bath & Beyond (~2018), now Cannonball Arts 
+(Bumbershoot 
+05-Jun-26 
+Unnamed Developer / Kimley-Horn / 
+City of Lakeland 
+Florida 
+USA 
+Withdrawn 
+- 
+600,000 sq ft; 60 acres; 923 Wilkinson Road, Lakeland FL; initial concept review stage onlyl 
+05-Jun-26 
+Datasection / ASRock Rack / KDDI / 
+Supermicro / unnamed 
+Bangkok Metro 
+Thailand 
+Stalled / Paused 
+10  
+4,696 Nvidia B200 GPUs (587 servers) from ASRock Rack; $257.4M GPU purchase; funded by: advance 
+payments from 
+04-Jun-26 
+Green Data / New Mexico Institute of 
+Mining and Technol 
+New Mexico 
+USA 
+Moratorium Risk 
+2,000 
+New Mexico Tech scraps 10,000-acre 2GW Green Data datacenter project after backlash 
+03-Jun-26 
+Tom Moulton / De Niro Construction 
+/ Sleepnet Corporati 
+New 
+Hampshire 
+USA 
+Withdrawn 
+- 
+datacenter proposal for Nottingham NH withdrawn after 29,000-signature petition opposition 
+03-Jun-26 
+ILI Group / Sunlaws Development 
+Company (SDC) / Roxburg 
+Fife; Scottish 
+Borders 
+United Kingdom 
+(Scotland) 
+Moratorium Risk 
+600  
+ILI files 600 Cato datacenter in Fife and SDC files 225 Southside datacenter in Scottish Borders 
+01-Jun-26 
+Maysville-Mason County Industrial 
+Authority / unnamed F 
+Kentucky 
+USA 
+Moratorium Risk 
+2,200 
+2,080-acre Mason County Kentucky site rezoned for ~2.2GW datacenter campus for unnamed Fortune 50 
+tech firm 
+29-May-26 
+Sabey datacenters / REC Silicon / 
+NorthWestern Energy 
+Montana 
+USA 
+Rejected / Denied 
+50  
+Sabey backs out of Butte, Montana datacenter after REC Silicon acquires part of site 
+29-May-26 
+Reabold Resources / Union Jack Oil 
+East Riding of 
+Yorkshire 
+United Kingdom 
+Moratorium Risk 
+100  
+Reabold seeks DC partner for 100 off-grid gas-powered site in Yorkshire 
+29-May-26 
+Sublime Systems / Brimstone / 
+Fortera / Microsoft / AWS 
+Massachusetts; 
+California 
+USA 
+Cancelled / 
+Scrapped 
+- 
+Analysis: hyperscalers back Sublime, Brimstone, and Fortera to scale low-carbon cement for AI datacenter 
+cons 
+27-May-26 
+Minneapolis City Council / Minnesota 
+Legislature 
+Minnesota 
+USA 
+Moratorium Risk 
+- 
+Minneapolis approves 6-month datacenter moratorium for large facilities 
+18-May-26 
+Lakeland Equity Group / City of 
+Cleveland 
+Ohio 
+USA 
+Rejected / Denied 
+150  
+Cleveland Mayor rejects Lakeland Equity Group's $1.6bn 150 hyperscale datacenter permit. 
+15-May-26 
+City of Inver Grove Heights / T5 
+datacenters 
+Minnesota 
+USA 
+Moratorium Risk 
+5  
+Inver Grove Heights approves one-year datacenter moratorium halting T5's 5 application. 
+14-May-26 
+Cloverleaf Infrastructure 
+Oklahoma 
+USA 
+Withdrawn 
+- 
+Cloverleaf files for 633-acre Project Open Sky datacenter campus in Piedmont Oklahoma. 
+13-May-26 
+Inch & Company / Eastern Land & 
+Resources (1235 Martina 
+Pennsylvania 
+USA 
+Withdrawn 
+- 
+Inch and Company withdraws $1.7bn Lebanon County Pennsylvania datacenter proposal. 
+13-May-26 
+Highland Properties Manassas LLC / 
+Madison Property Man 
+Virginia 
+USA 
+Withdrawn 
+- 
+Highland Properties withdraws 160-acre Quantico Ridge datacenter plan in Prince William County Virginia. 
+13-May-26 
+Western Hospitality Partners (WHP) 
+Illinois 
+USA 
+Withdrawn 
+- 
+Western Hospitality Partners withdraws Pekin Illinois datacenter after mayor rejection and mass 
+community opposition 
+13-May-26 
+Kao Data (Infratil / Legal & General / 
+Goldacre) 
+Greater 
+London 
+United Kingdom 
+Rejected / Denied 
+160  
+Kao Data acquires 4.7-acre Park Royal West London brownfield site for 2029 datacenter. 
+12-May-26 
+Fermi (formerly Fermi Global 
+Infrastructure) 
+Texas 
+USA 
+Paused 
+1 GW 
+Fermi cancels shareholder meeting as ousted CEO Neugebauer battles board for control. 
+11-May-26 
+Ypsilanti Community Utilities 
+Authority (YCUA) / Univer 
+Michigan 
+USA 
+Moratorium Risk 
+- 
+Ypsilanti Michigan utility imposes one-year datacenter water and sewage moratorium. 
+08-May-26 
+Lakeland Equity Group 
+Ohio 
+USA 
+Moratorium Risk 
+150  
+Lakeland Equity files $1.6bn 150 datacenter application in Cleveland Ohio. 
+08-May-26 
+Medallion (Digital Realty) / 
+InfraPartners 
+Lagos State 
+Nigeria 
+Stalled / Paused 
+1.96  
+Medallion sues InfraPartners for $15.5M over unfinished Lagos modular datacenter. 
+06-May-26 
+Stack Infrastructure (Blue Owl 
+Capital) 
+Multiple 
+Australia / 
+Japan / Malay 
+Withdrawn 
+792  
+Blue Owl's Stack Infrastructure explores $30bn+ APAC datacenter sale. 
+06-May-26 
+MRP Industrial 
+Pennsylvania 
+USA 
+Withdrawn 
+- 
+MRP Industrial eyes 10-building 288-acre datacenter campus in Perry County PA. 
+06-May-26 
+Eco TIP West / Chatham County (NC) 
+North Carolina 
+USA 
+Moratorium Risk 
+750 
+Eco TIP West sues Chatham County NC over 750 datacenter moratorium. 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+17
+
+
+[Page 18]
+ 
+ 
+Date 
+Company 
+State / 
+Province 
+Country 
+Status 
+MW 
+Short Summary 
+05-May-26 
+Onmine / 4 Lazy J Properties 
+Texas 
+USA 
+Rejected / Denied 
+- 
+Killeen Texas P&Z denies Onmine $30M datacenter permit. 
+03-May-26 
+OpenAI / Stargate 
+Multiple 
+USA / UK / 
+Norway 
+Withdrawn 
+Multi GW 
+OpenAI pulls back from Stargate projects in Texas, UK, and Norway. 
+01-May-26 
+QTS datacenters / Compass 
+(withdrawn) 
+Virginia 
+USA 
+Withdrawn 
+Multi-GW  
+QTS appeals to Virginia Supreme Court to save PW Digital Gateway project. 
+01-May-26 
+Peterson Companies / Leesburg 
+Gateway LLC 
+Virginia 
+USA 
+Rejected / Denied 
+- 
+Peterson Companies plans three-building datacenter campus in Leesburg, Virginia. 
+01-May-26 
+Riot Platforms / AMD 
+Texas 
+USA 
+Rejected / Denied 
+50 
+AMD doubles Riot Platforms Rockdale Texas datacenter to 50. 
+01-May-26 
+Pure Data Centres (Oaktree Capital) 
+Abu Dhabi 
+United Arab 
+Emirates 
+Rejected / Denied 
+1GW 
+Pure DC denies investment pause in Middle East despite drone debris incident. 
+28-Apr-26 
+Carbon3.ai 
+Wales 
+United Kingdom 
+Rejected / Denied 
+- 
+Welsh council rejects Carbon3.ai AI datacenter at Amlwch. 
+27-Apr-26 
+Undisclosed Developer (Androscoggin 
+Mill site) 
+Maine 
+USA 
+Moratorium Risk 
+20 
+$550M Androscoggin Mill datacenter redevelopment protected by Maine governor veto. 
+27-Apr-26 
+State of Maine (Governor Janet Mills) 
+Maine 
+USA 
+Moratorium Risk 
+20 
+Maine Governor vetoes first US statewide datacenter moratorium bill. 
+27-Apr-26 
+Taiwan Ministry of Economic Affairs / 
+Taipower 
+- 
+Taiwan 
+Stalled / Paused 
+1GW 
+Taiwan forecasts 8x AI datacenter power surge to 1GW by 2030. 
+24-Apr-26 
+Geronimo Power / Nobles County 
+Commissioners 
+Minnesota 
+USA 
+Rejected / Denied 
+400 
+Nobles County Minnesota rejects $4bn Geronimo Power datacenter proposal. 
+23-Apr-26 
+EnergiAcres 
+Ohio 
+USA 
+Withdrawn 
+- 
+Mansfield, Ohio cancels EnergiAcres datacenter proposal. 
+23-Apr-26 
+Provident datacenters 
+Missouri 
+USA 
+Rejected / Denied 
+- 
+Missouri county planning commission backs Diamond Farms datacenter. 
+23-Apr-26 
+BLE Landholdings (Beltline) 
+Missouri 
+USA 
+Rejected / Denied 
+- 
+BLE Landholdings datacenter proposal denied by Missouri commission. 
+01-Apr-26 
+Atmoss LLC 
+Oklahoma 
+USA 
+Withdrawn 
+- 
+Developer withdraws 375-acre Phase 2 for Project Anthem in Tulsa. 
+31-Mar-26 
+Beale Infrastructure 
+Oklahoma 
+United States 
+Withdrawn 
+- 
+Beale Infrastructure withdraws Project Atlas application in Oklahoma. 
+30-Mar-26 
+Oppidan 
+Minnesota 
+USA 
+Rejected / Denied 
+300 
+300 Apple Valley Technology Park proposal rejected in Minnesota. 
+20-Mar-26 
+Crow Holdings Development 
+Georgia 
+United States 
+Withdrawn 
+- 
+Crow Holdings withdraws Fayetteville, Georgia datacenter application. 
+17-Mar-26 
+Applied Digital 
+South Dakota 
+USA 
+Withdrawn 
+430 
+Applied Digital withdraws $16bn project in Toronto, South Dakota. 
+13-Mar-26 
+Vitali Group 
+Bergamo 
+Italy 
+Stalled / Paused 
+- 
+181,000 sqm 'Innovation Hub' datacenter project stalled in Italy. 
+10-Mar-26 
+Western Hospitality Partners 
+Illinois 
+United States 
+Withdrawn 
+- 
+Pekin, Illinois mayor rejects 321-acre datacenter proposal. 
+06-Mar-26 
+Natelli Investments LLC 
+North Carolina 
+United States 
+Moratorium Risk 
+250 
+Natelli withdraws 250 datacenter proposal in Apex, NC. 
+26-Feb-26 
+- 
+Florida 
+United States 
+Withdrawn 
+1,000 
+1GW Florida datacenter application withdrawn due to regulation. 
+20-Feb-26 
+Highlander SM One 
+Texas 
+United States 
+Rejected / Denied 
+- 
+San Marcos rejects 200-acre datacenter proposal for second time. 
+17-Feb-26 
+Logix Realty 
+Indiana 
+United States 
+Rejected / Denied 
+300 
+Proposed 715-acre Indiana datacenter campus denied by county. 
+16-Feb-26 
+Talen Energy 
+Pennsylvania 
+United States 
+Rejected / Denied 
+- 
+Pennsylvania 800-acre datacenter proposal denied by commissioners. 
+13-Feb-26 
+Cloverleaf 
+Wisconsin 
+United States 
+Withdrawn 
+- 
+Cloverleaf drops Wisconsin datacenter site project. 
+12-Feb-26 
+Brennan Investment 
+Illinois 
+United States 
+Withdrawn 
+- 
+Brennan withdraws $2bn Illinois datacenter plan following opposition. 
+12-Feb-26 
+Merlin Properties 
+- 
+Spain 
+Withdrawn 
+- 
+Merlin abandons Andalusia datacenter plans due to power lack. 
+09-Feb-26 
+Vantage datacenters 
+Hesse 
+Germany 
+Rejected / Denied 
+174 
+Groß-Gerau council denies Vantage 174 datacenter project. 
+03-Feb-26 
+HHHunt 
+Virginia 
+USA 
+Withdrawn 
+900 
+900 Virginia datacenter plan withdrawn due to opposition. 
+28-Jan-26 
+Karis Critical 
+Illinois 
+USA 
+Rejected / Denied 
+36 
+Naperville officials deny 36 Karis Critical datacenter proposal. 
+22-Jan-26 
+Scranton Materials 
+Pennsylvania 
+USA 
+Rejected / Denied 
+- 
+Pennsylvania officials reject zoning for quarry datacenter campus. 
+14-Jan-26 
+Cloverleaf Infrastructure 
+Wisconsin 
+US 
+Withdrawn 
+- 
+Cloverleaf abandons 500-acre datacenter proposal in Wisconsin. 
+Source: Company reports, DCD, Telecompaper, W. Media, The Tech Capital, and RBC Capital markets 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+18
+
+
+[Page 19]
+ 
+ 
+Exhibit 8 - Datacenter BTM developments: energy source breakdown by region 
+Project Counts 
+Region 
+Total Projects 
+Total BTM 
+Gas only 
+BTM + Gas 
+BTM (non-Gas) 
+Fuel Cell 
+Nuclear 
+Nuclear + Gas 
+Grid 
+North America 
+535 
+129 
+39 
+51 
+10 
+8 
+16 
+5 
+406 
+Africa 
+15 
+3 
+3 
+0 
+0 
+0 
+0 
+0 
+12 
+Multi-Region / Other 
+151 
+24 
+6 
+7 
+0 
+3 
+7 
+1 
+127 
+Global 
+8 
+1 
+0 
+1 
+0 
+0 
+0 
+0 
+7 
+Middle East 
+21 
+2 
+2 
+0 
+0 
+0 
+0 
+0 
+19 
+Europe 
+247 
+21 
+4 
+5 
+1 
+4 
+6 
+1 
+226 
+Asia-Pacific 
+183 
+8 
+4 
+2 
+0 
+1 
+1 
+0 
+175 
+South America 
+15 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+15 
+OVERALL 
+1,175 
+188 
+58 
+66 
+11 
+16 
+30 
+7 
+987 
+ 
+Percentages 
+Region 
+  
+% BTM 
+% Gas only 
+% BTM + Gas 
+% BTM (non-Gas) 
+% Fuel Cell 
+% Nuclear 
+% Nuclear + Gas 
+% Grid 
+North America 
+  
+24% 
+7% 
+10% 
+2% 
+1% 
+3% 
+1% 
+76% 
+Africa 
+  
+20% 
+20% 
+0% 
+0% 
+0% 
+0% 
+0% 
+80% 
+Multi-Region / Other 
+  
+16% 
+4% 
+5% 
+0% 
+2% 
+5% 
+1% 
+84% 
+Global 
+  
+12% 
+0% 
+12% 
+0% 
+0% 
+0% 
+0% 
+88% 
+Middle East 
+  
+10% 
+10% 
+0% 
+0% 
+0% 
+0% 
+0% 
+90% 
+Europe 
+  
+9% 
+2% 
+2% 
+0% 
+2% 
+2% 
+0% 
+91% 
+Asia-Pacific 
+  
+4% 
+2% 
+1% 
+0% 
+1% 
+1% 
+0% 
+96% 
+South America 
+  
+0% 
+0% 
+0% 
+0% 
+0% 
+0% 
+0% 
+100% 
+OVERALL 
+  
+16% 
+5% 
+6% 
+1% 
+1% 
+3% 
+1% 
+84% 
+Source: Company reports, DCD, Telecompaper, W. Media, The Tech Capital, and RBC Capital markets 
+ 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+19
+
+
+[Page 20]
+ 
+ 
+Exhibit 9 - Datacenter development: Selected BTM projects by Technology 
+Technology 
+Projects 
+Notable Examples 
+Gas turbines / CCGT 
+22 
+xAI (Southaven 1.2GW + Memphis portable turbines), CyrusOne/Calpine/Constellation (Freestone 1GW CCGT, TX), VoltaGrid QPac/Blackstone 
+(7.5GW order book), Mara Holdings (505 CCGT Ohio), Samsung/M3 (Zeus 500 + Sandpiper 860), Mitsubishi Heavy Industries, Takanock (400 
+natural gas, Strasburg VA), Prometheus Hyperscale (Evanston WY islanded microgrid), Nixxy/Tachyon 9 (Baker Hughes H2-capable turbines, 
+ND), PPL/Blackstone BTM power JV 
+Fuel cells (SOFC / Bloom 
+Energy) 
+18 
+Oracle/BorderPlex Project Jupiter (2.45GW Bloom SOFC, NM), Nebius/Bloom (328+ US), Hixson/Bloom (25 SOFC + BESS, TN), FuelCell Energy/Fit 
+Energy (380 BTM), Siemens/FuelCell Energy MoU (>100 deployments), EdgeMode/Bloom (300, 30×10 modules, Spain), T5 Datacenters Bloom 
+(60 Dulles VA), Wansbeck Regen (90 fuel cell bridge, UK), Red Admiral/SK ecoplant (250, Ireland), EdgeMode Spark AI Foundry Toledo Spain 
+(300 natural gas fuel cells) 
+Nuclear / SMR 
+37 
+AWS (Walla Walla WA + Calvert County MD + Glen Rose TX + Salem PA nuclear adjacent), Helion/Microsoft (50 fusion PPA, Chelan WA), Aalo 
+Atomics (criticality achieved, INL Idaho; 50), Deep Fission (1e borehole SMR, Parsons KS), GridMarket/Deployable Energy (1e Unity Nuclear 
+Battery), TeraWulf Lake Mariner (750, nuclear-adjacent), SoftBank/OpenAI Portsmouth OH (10GW), EdgeConneX Skellefteå Sweden (1GW, near 
+nuclear), EDF Bouchain/Eclairion (former French power stations), Proxima Fusion/Google/RWE (Munich fusion demonstrator) 
+Modular generation 
+13 
+PROPWR/Caterpillar (2.1GW framework), Stak Energy (3GW Alaska North Slope), Armada/Johnson Controls (Galleon/Leviathan pods), 2G 
+Energy (largest-ever North America CHP contract), TNE/Data District (1GW Alberta pipeline), Certarus CNG bridge (60 Salt Lake City + 135 
+hyperscale), QTS Cedar Rapids FAA modular generators, SLB/Liberty Energy (1.3GW+ prefab modular shipped since Apr 2024), Meta/El Paso 
+(366 BTM modular natural gas generation) 
+Reciprocating engines 
+3 
+Wärtsilä (412 Ohio 40×34SG + 790 Texas 42×50SG = 2.4GW+ total), Datacenter Power Company (20 off-grid, Santaquin UT), Nscale (West 
+Virginia Monarch Campus — Caterpillar natural gas generator sets for first 2GW) 
+Gas/BTM (Technology 
+Undisclosed) 
+84 
+Crusoe/Tallgrass Project Jade (1.8GW, Cheyenne WY — now revealed as Google/Project Tembo), xAI Memphis/Southaven (2GW combined), 
+Nebius Independence MO (800), Microsoft/Chevron Project Kirby (2.67GW BTM, Pecos TX), Meta Hyperion Richland Parish LA (5GW; Entergy 
+partnership for 7 gas plants), Meta Sturgeon County AB (1GW + Project Greenlight 970), National Grid Ventures/Joulent Project Kirby (2.67GW), 
+Mara Matagorda County TX (1GW→2GW grid), QTS/Lancium Hall County TX (1GW), Crusoe/Lancium Childress TX (1GW), Williams/Blackstone 
+BTM Ohio+Utah (Socrates 200 + Neo 682 + Aquila UT), Blackstone/Williams 5-project BTM portfolio ($5.34B) 
+TOTAL GAS-RELATED 
+177 
+  
+Source: Company reports, DCD, Telecompaper, W. Media, The Tech Capital, and RBC Capital markets 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+20
+
+
+[Page 21]
+ 
+ 
+Exhibit 10 - Selected Large Planned and Under construction – Third Party Datacenter Developments 
+Project Name/Details 
+Datacenter Provider 
+Market 
+Geography 
+Status 
+MW 
+PORTS Technology Campus 
+SB Energy 
+Pike County, Ohio 
+North America 
+Under construction 
+8,000 
+Sweetwater Phase II (West Texas) 
+IREN (Iris Energy)  
+Texas 
+North America 
+Under construction 
+1,400 
+Project Ludicrous (Stargate - OpenAI) 
+Crusoe Energy 
+Abilene, Texas 
+North America 
+Under construction 
+1,000 
+Lighthouse - Stargate 
+Vantage 
+Port Washington, Wisconsin 
+North America 
+Under construction 
+902 
+Scurry County Datacenter 
+SB Energy 
+Scurry County, Texas 
+North America 
+Under construction 
+900 
+Borden County Datacenter 
+SB Energy 
+Borden County, Texas 
+North America 
+Under construction 
+836 
+Eastgate Commerce Center, 
+Nebius 
+Kansas City, Missouri 
+North America 
+Under construction 
+800 
+Project Freebird (OpenAI customer) 
+SB Energy 
+Milam County, Texas 
+North America 
+Under construction 
+753 
+Clarington, Ohio 
+Bitdeer Technologies 
+Massillon, Ohio 
+North America 
+Under construction 
+570 
+Goodnight Campus 
+Crusoe Energy 
+Claude, Texas 
+North America 
+Under construction 
+530 
+Microsoft AI Factory 
+Crusoe Energy 
+Abilene, Texas 
+North America 
+Under construction 
+336 
+Project Jupiter (Stargate) 
+Stack Infrastructure / BlueOwl / Stargate 
+Dona Ana, New Mexico 
+North America 
+Under construction 
+300 
+Project Excalibur 
+QTS Realty 
+Atlanta, Georgia  
+North America 
+Under construction 
+250 
+Project Horizon (Customer CoreWeave) 
+Poolsize 
+West Texas 
+North America 
+Under construction 
+250 
+Project Lola 
+Edged Energy 
+Council Bluffs, Iowa 
+North America 
+Under construction 
+200 
+Stargate project 
+Vantage 
+Abilene, Texas 
+North America 
+Under construction 
+140 
+Monarch Compute Campus (phase 1) 
+Nscale 
+Mason County, West Virginia 
+North America 
+Planned / Potential 
+2,000 
+Alpha Digital Campus 
+PowerBridge 
+Reeves County, Texas 
+North America 
+Planned / Potential 
+2,000 
+Joliet Technology Center 
+PowerHouse 
+Joilet, Illinois 
+North America 
+Planned / Potential 
+1,800 
+ 40-building campus planned in Buckeye 
+Tract 
+Phoenix, Arizona 
+North America 
+Planned / Potential 
+1,800 
+Project Horizon (Customer CoreWeave) 
+Poolsize 
+West Texas 
+North America 
+Planned / Potential 
+1,750 
+Pennsylvania 
+QTS Realty 
+Pennsylvania 
+North America 
+Planned / Potential 
+1,700 
+Gouldsboro Datacenter 
+NE Edge 
+Pennsylvania 
+North America 
+Planned / Potential 
+1,500 
+Pennsylvania Digital I (PAX) 
+Pennsylvania Datacenter Partners/PowerHouse 
+Pennsylvania 
+North America 
+Planned / Potential 
+1,350 
+1,300-acre datacenter in Fort Meade 
+Stonebridge 
+Orlando, Florida 
+North America 
+Planned / Potential 
+1,300 
+Stargate project 
+Vantage 
+Abilene, Texas 
+North America 
+Planned / Potential 
+1,260 
+Project Marvel 
+TPA Group 
+Birmingham, Alabama 
+North America 
+Planned / Potential 
+1,200 
+Project Blue Hole 
+QTS Realty 
+Blakely, Georgia  
+North America 
+Planned / Potential 
+1,200 
+Project Washington 
+Starwood Digital Ventures 
+New Castle County, Delaware 
+North America 
+Planned / Potential 
+1,200 
+Shannon Hill Regional Business Park 
+EdgeCore 
+Northern Virginia 
+North America 
+Planned / Potential 
+1,100 
+Olds (ten 100 MWs DCs) 
+Synapse 
+Alberta, Canada 
+North America 
+Planned / Potential 
+1,000 
+Customer – Meta 
+Crusoe Energy/Lancium 
+Childress County, Texas 
+North America 
+Planned / Potential 
+1,000 
+Oracle-Stargate (Saline Township) 
+Related Digital 
+Michigan 
+North America 
+Planned / Potential 
+1,000 
+Project 2 
+Hut 8 
+Texas 
+North America 
+Planned / Potential 
+1,000 
+Various (Company filing) 
+Digital Realty 
+Northern Virginia 
+North America 
+Planned / Potential 
+930 
+520 acres in Lacy Lakeview near Waco 
+InfraKey 
+McLennan County, Texas 
+North America 
+Planned / Potential 
+925 
+City of Van Wert, Ohio ($10Bn) 
+QTS Realty 
+Van Wert, Ohio 
+North America 
+Planned / Potential 
+902 
+Project Sail 
+Prologis 
+Atlanta, Georgia  
+North America 
+Planned / Potential 
+900 
+Licking County, Ohio 
+Cologix  
+Licking County, Ohio 
+North America 
+Planned / Potential 
+800 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+21
+
+
+[Page 22]
+ 
+ 
+Project Name/Details 
+Datacenter Provider 
+Market 
+Geography 
+Status 
+MW 
+Scrubgrass (up to 1.3 GW) 
+Keel Infrastructure (formerly Bitfarms) /T5 
+Pennsylvania 
+North America 
+Planned / Potential 
+750 
+QTX PH3 
+QTS Realty 
+Phoenix, Chandler 
+North America 
+Planned / Potential 
+750 
+4 hyperscale campuses 
+BlackChamber 
+Northern Virginia 
+North America 
+Planned / Potential 
+740 
+Project Sail 
+Atlas Development  
+Atlanta, Georgia  
+North America 
+Planned / Potential 
+710 
+Carmon Creek project 
+Woodland Cree First Nation  
+Alberta, Canada 
+North America 
+Planned / Potential 
+650 
+Antelope Datacenter (640 acres) 
+Pronghorn Development LLC 
+Iron County, Utah 
+North America 
+Planned / Potential 
+640 
+Nexus - Apex DFW HB1 
+Nexus Datacenters 
+Hubbard, Texas 
+North America 
+Planned / Potential 
+612 
+Warrenton Campus 
+Crusoe Energy 
+Warrenton, Missouri. 
+North America 
+Planned / Potential 
+600 
+Project Cardinal 
+TAC Datacenters 
+Montana 
+North America 
+Planned / Potential 
+600 
+Sweetwater Phase II (West Texas) 
+IREN (Iris Energy)  
+Texas 
+North America 
+Planned / Potential 
+600 
+Project Blue 
+Beale Infrastructure 
+Tucson, Arizona 
+North America 
+Planned / Potential 
+600 
+Coshocton -Central Ohio 
+Aligned Datacenters 
+Ohio 
+North America 
+Planned / Potential 
+588 
+Microsoft AI Factory 
+Crusoe Energy 
+Abilene, Texas 
+North America 
+Planned / Potential 
+564 
+163-acre site in Lancaster, Texas 
+Yondr Group 
+Lancaster, Texas 
+North America 
+Planned / Potential 
+550 
+Goodnight Campus 
+Crusoe Energy 
+Claude, Texas 
+North America 
+Planned / Potential 
+500 
+Project Double Reed 
+Stream Datacenters  
+Genesee County, New York. 
+North America 
+Planned / Potential 
+500 
+Project Merlin 
+Galaxy Digital 
+Mcgregor, Texas 
+North America 
+Planned / Potential 
+500 
+8 Dcs 
+Compass 
+Meridian, Mississippi  
+North America 
+Planned / Potential 
+500 
+Troy, Illinois 
+Cloverleaf 
+St. Louis, Missouri 
+North America 
+Planned / Potential 
+500 
+Project Caprock 
+Alligned Datacenters 
+Abernathy, Texas 
+North America 
+Planned / Potential 
+450 
+Project Comal 
+KDC 
+Austin, Texas 
+North America 
+Planned / Potential 
+360 
+Project Bus 
+Atlas Development  
+Atlanta, Georgia  
+North America 
+Planned / Potential 
+350 
+Project Spalding 
+Montana Property Group 
+Atlanta, Georgia  
+North America 
+Planned / Potential 
+255 
+Project Gladys 
+Soluna 
+Texas 
+North America 
+Planned / Potential 
+250 
+Project Avemore 
+Atlas Development  
+Atlanta, Georgia  
+North America 
+Planned / Potential 
+245 
+Project Gracie 
+Atlas Development  
+Atlanta, Georgia  
+North America 
+Planned / Potential 
+240 
+Project Borealis 
+Novva DC 
+Mesa, Arizona 
+North America 
+Planned / Potential 
+204 
+Texas Critical Datacenters (TCDC) 
+Stream Datacenters / New Era 
+Ector County, Texas 
+North America 
+Planned / Potential 
+200 
+Project 3 
+Hut 8 
+Texas 
+North America 
+Planned / Potential 
+180 
+Carpere Valley project 
+Carpere Canada 
+Saskatchewan, Canada 
+North America 
+Planned / Potential 
+150 
+Olympic Park 
+Elea Datacenters. 
+Rio De Janeiro, Brazil 
+South America 
+Planned / Potential 
+3,000 
+Sumaré, São Paulo 
+Aurea Finvest 
+Sao Paulo, Brazil 
+South America 
+Planned / Potential 
+800 
+El Colorado-Higuerillas 
+CloudHQ 
+Queretaro, Mexico 
+South America 
+Planned / Potential 
+540 
+Stargate Argentina (PoenAI) 
+Sur Energy 
+Argentina 
+South America 
+Planned / Potential 
+500 
+  
+  
+  
+  
+  
+  
+Nebius AI Factory 
+Nebius 
+Lappeenranta, Finland 
+Europe 
+Under construction 
+310 
+Dunkirk (Loon-Plage), Bosquel, and 
+Bouchain. 
+Softbank 
+Hauts-de-France , France 
+Europe 
+Planned / Potential 
+3,100 
+five campus-style datacenter projects 
+EdgeMode/BAIF 
+Spain 
+Europe 
+Planned / Potential 
+1,500 
+Start Campus €8bn Sines project 
+Start Campus 
+Sines, Portugal 
+Europe 
+Planned / Potential 
+1,174 
+4 DCs planned with 250MW each 
+Silent Partner consortium  
+Finland 
+Europe 
+Planned / Potential 
+1,000 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+22
+
+
+[Page 23]
+ 
+ 
+Project Name/Details 
+Datacenter Provider 
+Market 
+Geography 
+Status 
+MW 
+Valdecaballeros in Badajoz Province 
+Merlin Properties/Edged 
+Extremadura, Spain 
+Europe 
+Planned / Potential 
+1,000 
+Elsham Tech Park, North Lincolnshire 
+Greystoke (Elsham Tech Park) 
+Outside London, UK 
+Europe 
+Planned / Potential 
+1,000 
+Kokemäki, Finland (future phases) 
+Bitzero 
+Kokemäki, Finland 
+Europe 
+Planned / Potential 
+960 
+Topusko, Croatia 
+Pantheon Atlas 
+Croatia 
+Europe 
+Planned / Potential 
+800 
+Project Wind 
+QTS Realty 
+Northumberland, UK 
+Europe 
+Planned / Potential 
+720 
+Búfalo Project 
+Forestalia 
+Aragon, Spain 
+Europe 
+Planned / Potential 
+580 
+Klaukkala 
+Dayone (GDS) 
+Klaukkala, Finland 
+Europe 
+Planned / Potential 
+560 
+4 DCs planned with 250MW each 
+Polarnode 
+Keminmaa, Finland 
+Europe 
+Planned / Potential 
+500 
+Lower Saxony 
+Telis Energie 
+Hanover, Germany 
+Europe 
+Planned / Potential 
+500 
+ESB01 (future phases) 
+Prime Datacenters  
+Esbjerg, Denmark 
+Europe 
+Planned / Potential 
+390 
+Project Rodes  
+QTS Realty 
+Aragon, Spain 
+Europe 
+Planned / Potential 
+300 
+Engrida 
+Wirth Group 
+Germany 
+Europe 
+Planned / Potential 
+280 
+Stargate project 
+Nscale / Aker 
+Kvandal, Norway 
+Europe 
+Planned / Potential 
+230 
+ Frank Cube project 
+Argaman Group 
+Frankfurt, Germany 
+Europe 
+Planned / Potential 
+200 
+Green IT Aragón' project 
+SAMCA Group 
+Aragon, Spain 
+Europe 
+Planned / Potential 
+169 
+Stargate UAE Datacenter Campus (P1) 
+G42 
+Abu Dhabi 
+Middle-East 
+Under construction 
+200 
+Stargate UAE Datacenter Campus 
+G42/Khazna 
+Abu Dhabi 
+Middle-East 
+Planned / Potential 
+800 
+  
+  
+  
+  
+  
+  
+Marsden Park Industrial Precinct 
+Canberra Data Centres (CDC)  
+Sydney, Australia 
+APAC 
+Under construction 
+504 
+Guizhou, China 
+Huwaei 
+Guizhou, China 
+APAC 
+Under construction 
+500 
+Ningxia, north-central China. 
+Chindata Group 
+ZhongWei, NingXia, China 
+APAC 
+Planned / Potential 
+1,200 
+AI datacenter in western china 
+Jinko Power 
+ZhongWei, NingXia, China 
+APAC 
+Planned / Potential 
+1,000 
+Tata, India 
+HyperVault (TCS) 
+India 
+APAC 
+Planned / Potential 
+1,000 
+TY005 -Tsukuba City, Japan 
+Goodman  
+Tokyo, Japan 
+APAC 
+Planned / Potential 
+950 
+ Bundey, South Australia. 
+IREN (Iris Energy)  
+Adelaide, Australia 
+APAC 
+Planned / Potential 
+800 
+CTP2 -Chonburi Tech Park datacenter 
+DayOne(GDS) 
+Chonburi, Thailand 
+APAC 
+Planned / Potential 
+700 
+Australian Stargate datacenter (S7) 
+NextDC 
+Sydney, Australia 
+APAC 
+Planned / Potential 
+612 
+Project Ares 
+Energy North 
+Darwin, Australia 
+APAC 
+Planned / Potential 
+500 
+(JV with Blackstone) 
+Panchshil Realty  
+Navi Mumbai, India 
+APAC 
+Planned / Potential 
+500 
+NAV2 
+NTT 
+Navi Mumbai, India 
+APAC 
+Planned / Potential 
+500 
+1.5 GW campus 
+Reliance Jio 
+Visakhapatnam, India 
+APAC 
+Planned / Potential 
+500 
+Laverton Campus 
+Canberra Data Centres (CDC)  
+Melbourne, Australia 
+APAC 
+Planned / Potential 
+400 
+MEL2 
+AirTrunk 
+Melbourne, Australia 
+APAC 
+Planned / Potential 
+354 
+JHB1 
+Vantage (Acquired from Yondr Group) 
+Johor, Malaysia 
+APAC 
+Planned / Potential 
+202 
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+ 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+23
+
+
+[Page 24]
+ 
+ 
+Exhibit 11 - Selected Large Planned and Under construction – Hyperscale Self Build Datacenter Developments 
+Project Name 
+Datacenter Provider 
+Market 
+Geography 
+Status 
+MW 
+Project Rainer 
+Amazon 
+New Carlisle, Indiana 
+North America 
+Under construction 
+2,200 
+Salem Township 
+Amazon 
+Pennsylvania 
+North America 
+Planned / Potential 
+1,700 
+Project Green 
+Amazon 
+Montgomery City, Missouri 
+North America 
+Planned / Potential 
+1,000 
+Mattameade Datacenter (1143 acres) 
+Amazon 
+Northern Virginia, U.S. 
+North America 
+Planned / Potential 
+770 
+Project Atlas 
+Amazon 
+Madison County, Mississippi  
+North America 
+Planned / Potential 
+460 
+Project Mica 
+Google 
+Kansas City, Missouri. 
+North America 
+Under construction 
+700 
+Project Dawson 
+Google 
+South Carolina 
+North America 
+Under construction 
+230 
+Project Tembo (Tallgrass/Black Hills) 
+Google 
+Cheyenne, Wyoming 
+North America 
+Planned / Potential 
+2,700 
+Project Cannoli 
+Google 
+Detroit, Michigan 
+North America 
+Planned / Potential 
+1,000 
+Project Spring 
+Google 
+Tulsa, Oklahoma 
+North America 
+Planned / Potential 
+827 
+Springhill Industrial Park (389 acres) 
+Google 
+Kuala Lumpur, Malaysia 
+APAC 
+Planned / Potential 
+700 
+Project Kestrel 
+Google 
+New Florence, Missouri. 
+North America 
+Planned / Potential 
+630 
+Project Skye 
+Google 
+Chesterfield County, Northern Virginia 
+North America 
+Planned / Potential 
+380 
+Project Kestrel 
+Google 
+Kansas City, Missouri. 
+North America 
+Planned / Potential 
+250 
+Project Pyramid 
+Google 
+West Memphis, Arkansas 
+North America 
+Planned / Potential 
+170 
+Project Raspberry 
+Google 
+Botetourt County, Virginia 
+North America 
+Planned / Potential 
+90 
+Project Peanut 
+Google 
+Richmond, Virginia  
+North America 
+Planned / Potential 
+86 
+Project Meitner 
+Google (Intersect Power) 
+Pampa, Texas 
+North America 
+Under construction 
+75 
+Project Meitner 
+Google (Intersect Power) 
+Pampa, Texas 
+North America 
+Planned / Potential 
+150 
+Project Hyperion (Blue Owl-80% and Meta-20% JV) 
+Meta 
+Richland Parish, Louisiana 
+North America 
+Under construction 
+2,000 
+Project Sopaipilla/Project Seafox - (BlackRock-80%, Meta-20% JV) 
+Meta 
+El Paso, Texas 
+North America 
+Under construction 
+1,000 
+Prometheus 
+Meta 
+New Albany, Ohio 
+North America 
+Under construction 
+1,000 
+Project Anthem 
+Meta 
+Tulsa, Oklahoma 
+North America 
+Under construction 
+340 
+Project Hyperion (Blue Owl-80% and Meta-20% JV) 
+Meta 
+Richland Parish, Louisiana 
+North America 
+Planned / Potential 
+3,000 
+Projects in Heath, Hebron, and New Albany  
+Microsoft 
+Licking County, Ohio 
+North America 
+Under construction 
+869 
+Projects in Lyle Creek, Boyd farm, Stover 
+Microsoft 
+Catawba County, North Carolina 
+North America 
+Under construction 
+720 
+Fairwater 
+Microsoft 
+Mount Pleasant, Wisconsin 
+North America 
+Under construction 
+150 
+2GW DC campus in Pecos 
+Microsoft 
+Pecos, Texas 
+North America 
+Planned / Potential 
+2,000 
+ 1,350-acre campus 
+Microsoft 
+Person County, North Carolina 
+North America 
+Planned / Potential 
+1,350 
+Fairwater 
+Microsoft 
+Mount Pleasant, Wisconsin 
+North America 
+Planned / Potential 
+850 
+Pataskala Land Parcels 
+Microsoft 
+Licking County, Ohio 
+North America 
+Planned / Potential 
+500 
+Colossus-2 expansion 
+xAI  
+Memphis, Tennessee 
+North America 
+Under construction 
+500 
+MACROHARDRR (Colossus 3)  
+xAI  
+Southaven, DeSoto County, Mississippi 
+North America 
+Planned / Potential 
+500 
+Source: Company websites and company reports, DCD, W. Media, The Tech Capital, Broker reports (CBRE, JLL, and Cushman & Wakefield), RBC Capital Markets estimates 
+ 
+Tracking the Gigawatts: RBC Datacenter Expansion Tracker - July 2026
+July 26, 2026
+24
