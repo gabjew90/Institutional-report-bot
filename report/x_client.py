@@ -161,13 +161,19 @@ def mark_posted(date_iso: str, key: str, post_id: str, text: str) -> None:
 
 # ----------------------------------------------------------- the entry
 
-def post_image(text: str, png: bytes, *, key: str, date_iso: str) -> str | None:
+def post_image(text: str, png: bytes, *, key: str, date_iso: str,
+               force: bool = False) -> str | None:
     """Post `text` with `png` attached, once per (date, key). Returns the
-    post id, or None (disabled, dry run, duplicate, or X refused)."""
+    post id, or None (disabled, dry run, duplicate, or X refused).
+
+    `force` is for an owner-requested test post: it bypasses
+    X_POST_ENABLED for this one call. The test used to flip
+    `settings.x_post_enabled` instead, which inside the worker would
+    have left posting switched on for every later job until restart."""
     if already_posted(date_iso, key):
         log.info(f"x: {key} for {date_iso} already posted — skipping")
         return None
-    if not settings.x_post_enabled:
+    if not settings.x_post_enabled and not force:
         log.info(f"x: DRY RUN ({key} {date_iso}, {len(png)} bytes) — would post:\n{text}")
         return None
     creds = _creds()

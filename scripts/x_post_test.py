@@ -8,7 +8,14 @@
 GET /2/users/me (read-only) to prove the credentials work. --post
 renders tomorrow's calendar sheet through the real pipeline and posts
 it once, regardless of X_POST_ENABLED, recording it in the ledger so
-the nightly job will not post the same date again. Never imports db in
+the nightly job will not post the same date again.
+
+PREFER THE IN-WORKER REQUEST for --post (2026-09-21): run
+    railway ssh "mkdir -p /data/x-requests && touch /data/x-requests/post-calendar"
+and read /data/x-requests/post-calendar.result a minute later. That
+builds the sheet inside the worker. The note below is why.
+
+Never imports db in
 a way that opens the live connection: --post reads the calendar
 through build_calendar_day, which does, so run --post only from the
 worker itself (this is the worker's own process model) and only when
@@ -62,8 +69,7 @@ def post() -> int:
     from report.calendar_caption import calendar_caption
     text = calendar_caption(day)
     print("caption:\n" + text)
-    settings.x_post_enabled = True  # explicit owner-run test overrides the switch
-    pid = X.post_image(text, png, key="calendar", date_iso=date_iso)
+    pid = X.post_image(text, png, key="calendar", date_iso=date_iso, force=True)
     print("posted:", f"https://x.com/i/status/{pid}" if pid else "FAILED (see log)")
     return 0 if pid else 1
 

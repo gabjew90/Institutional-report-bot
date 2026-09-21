@@ -162,3 +162,58 @@ def test_calendar_job_posts_to_x_after_discord():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# --- owner-requested test post (2026-09-21) ----------------------------
+def _fake_ok(method, url, body, ctype, creds, extra_params=None):
+    if "media" in url:
+        return 200, {"data": {"id": "m1"}}
+    return 201, {"data": {"id": "4242"}}
+
+
+def test_force_posts_once_without_turning_posting_on():
+    """The test used to set settings.x_post_enabled = True. Inside the
+    worker that would leave posting on for every later job."""
+    from config import settings
+    with tempfile.TemporaryDirectory() as td, \
+         patch("config.settings.db_path", str(Path(td) / "reports.db")), \
+         patch("config.settings.x_post_enabled", False), \
+         patch("config.settings.x_api_key", "k"), patch("config.settings.x_api_secret", "s"), \
+         patch("config.settings.x_access_token", "t"), patch("config.settings.x_access_secret", "ts"), \
+         patch("report.x_client._request", side_effect=_fake_ok):
+        assert X.post_image("hi", b"png", key="calendar", date_iso="2026-09-22", force=True) == "4242"
+        assert settings.x_post_enabled is False
+        # the nightly job, still disabled, does not double-post that date
+        assert X.post_image("hi", b"png", key="calendar", date_iso="2026-09-22") is None
+
+
+def test_the_request_job_is_idle_without_a_flag_and_clears_it_before_posting():
+    import asyncio
+    from scheduler import jobs
+    with tempfile.TemporaryDirectory() as td, \
+         patch("config.settings.db_path", str(Path(td) / "reports.db")):
+        d = jobs._x_request_dir()
+        # no flag: nothing built, nothing posted
+        with patch("report.calendar_data.build_calendar_day",
+                   side_effect=AssertionError("built without a request")):
+            asyncio.run(jobs._x_test_post_request_job())
+
+        d.mkdir(parents=True)
+        (d / jobs.X_REQUEST_FLAG).write_text("")
+        seen = {}
+
+        def fake_post(text, png, *, key, date_iso, force=False):
+            # the flag is gone BEFORE the post, so a crash mid-post can
+            # never make the next minute post again
+            seen["flag_present"] = (d / jobs.X_REQUEST_FLAG).exists()
+            seen["force"] = force
+            return "777"
+
+        with patch("report.calendar_data.build_calendar_day", return_value=object()), \
+             patch("report.calendar_render.render_calendar_png", return_value=b"png"), \
+             patch("report.calendar_caption.calendar_caption", return_value="caption"), \
+             patch("report.x_client.post_image", side_effect=fake_post):
+            asyncio.run(jobs._x_test_post_request_job())
+        assert seen == {"flag_present": False, "force": True}
+        out = (d / f"{jobs.X_REQUEST_FLAG}.result").read_text(encoding="utf-8")
+        assert "https://x.com/i/status/777" in out

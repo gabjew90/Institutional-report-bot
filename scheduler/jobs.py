@@ -430,6 +430,18 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         max_instances=1,
         misfire_grace_time=3600,
     )
+    # Owner-requested X test post, picked up from a flag file so the
+    # work runs in this process rather than a second one against the
+    # live DB. Idle cost is one stat() a minute.
+    scheduler.add_job(
+        _x_test_post_request_job,
+        trigger=IntervalTrigger(seconds=60),
+        id="x_test_post_request",
+        name="X: owner-requested test post (flag file)",
+        kwargs={"bot": bot},
+        max_instances=1,
+        coalesce=True,
+    )
     # 7:30 AM ET refresh: rebuild today's sheet and, ONLY if the lineup
     # changed overnight (a session confirmed, a name added, a move now
     # priceable), edit the posted message in place. No second post.
@@ -1324,6 +1336,74 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:
         log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)
+
+
+X_REQUEST_FLAG = "post-calendar"
+
+
+def _x_request_dir():
+    from pathlib import Path
+    return Path(settings.db_path).resolve().parent / "x-requests"
+
+
+async def _x_test_post_request_job(bot=None):
+    """Owner-requested public test post of the next calendar to X, run
+    INSIDE the worker (2026-09-21).
+
+    `scripts/x_post_test.py --post` built the calendar from a second
+    process, and build_calendar_day opens the live DB and writes to it
+    (market-cap and logo caches). CLAUDE.md forbids that: on 2026-09-04
+    a second process hung on the schema lock for 30 minutes while the
+    worker logged `database is locked` 16 times. So the request is a
+    file: `touch /data/x-requests/post-calendar` from a shell (no DB),
+    and this job picks it up within a minute, deletes the flag BEFORE
+    posting so it can never fire twice, and writes the outcome to
+    `post-calendar.result`.
+
+    It posts the next trading day's sheet, the same one the 3 PM job
+    posts, through the same caption and ledger. `force=True` bypasses
+    X_POST_ENABLED for this one call only. The ledger then stops the
+    nightly job from posting that date a second time.
+    """
+    import asyncio as _asyncio
+    from datetime import datetime
+    import pytz as _pytz
+    d = _x_request_dir()
+    flag = d / X_REQUEST_FLAG
+    if not flag.exists():
+        return
+    result = d / f"{X_REQUEST_FLAG}.result"
+    try:
+        flag.unlink()
+    except Exception as e:
+        log.error(f"x-request: could not clear the flag, not posting: {e}")
+        return
+    try:
+        from world_context import next_trading_day
+        from report.calendar_data import build_calendar_day
+        from report.calendar_render import render_calendar_png
+        from report.calendar_caption import calendar_caption
+        from report import x_client
+        today_et = datetime.now(_pytz.timezone(settings.timezone)).strftime("%Y-%m-%d")
+        date_iso = next_trading_day(today_et)
+        day = await _asyncio.to_thread(build_calendar_day, date_iso)
+        png = await _asyncio.to_thread(render_calendar_png, day)
+        text = calendar_caption(day)
+        pid = await _asyncio.to_thread(
+            x_client.post_image, text, png,
+            key="calendar", date_iso=date_iso, force=True)
+        outcome = (f"posted {date_iso}: https://x.com/i/status/{pid}" if pid
+                   else f"FAILED {date_iso} (already posted, or X refused; "
+                        f"see `x:` log lines)")
+        result.write_text(f"{outcome}\n\ncaption ({len(text)} chars):\n{text}\n",
+                          encoding="utf-8")
+        log.info(f"x-request: {outcome}")
+    except Exception as e:
+        log.error(f"x-request: test post failed: {e}", exc_info=True)
+        try:
+            result.write_text(f"ERROR: {e}\n", encoding="utf-8")
+        except Exception:
+            pass
 
 
 async def _calendar_refresh_job(bot=None):

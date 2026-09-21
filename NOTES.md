@@ -3113,3 +3113,20 @@ had written nothing. The block is now stripped before scoring.
 Open: the model still jabs at dial 0 sometimes (Monsoon's "Shut up" on
 9/18 scored 0 and got a jab), and a relayed self-harm mention on 9/19
 was answered with mockery. Neither is fixed.
+
+## 2026-09-21 — X keys live; test posts run inside the worker
+
+The four X keys are on the worker and `--check` authenticates as
+@omnibetatrades. The first attempt put the OAuth 2.0 Client ID and
+Client Secret in the two access slots; the console shows OAuth 1.0 and
+OAuth 2.0 keys side by side, and the bot signs OAuth 1.0a. The consumer
+key was regenerated after a photo exposed the first one.
+
+`scripts/x_post_test.py --post` built the sheet from a second process,
+and `build_calendar_day` writes the market-cap and logo caches to the
+live DB, which CLAUDE.md forbids since the 2026-09-04 lock. A test post
+is now a flag file (`/data/x-requests/post-calendar`) that the worker
+polls each minute, clears before posting, and answers in
+`post-calendar.result`. `post_image(force=True)` replaces the script's
+global `settings.x_post_enabled = True`, which inside the worker would
+have left posting switched on until restart.
