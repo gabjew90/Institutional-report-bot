@@ -3023,3 +3023,93 @@ mechanism every day so far, and is not uniformly better on fidelity.
 
 Both shadow pulses were written before the editor.md amendment, so
 neither reflects rule 5.
+
+---
+
+## 2026-09-19 — /ask: measure the guard tax, then fix the inputs it was patching
+
+The owner's framing after the 9/18 bot review: "broken habits with
+multiple layers of bolted on guards seem not great." So the guards got
+measured before anything else was written.
+
+**Measurement.** 187 turns over the 14 days to 9/19, parsed from the
+published ask-logs on `pulse-data` (read-only, no prod DB contact).
+63% of turns fire at least one guard; 22% pay at least one extra model
+call. Median latency 5.3s clean against 8.7s with a rewrite. The money
+is a rounding error — roughly seven cents of Gemini for the whole
+fortnight — so latency and correctness are the only real costs, and the
+earlier framing of this as a spend problem was wrong.
+
+| guard | n | /day | cost |
+|---|---|---|---|
+| repetition | 14 | 1.0 | model call |
+| clapback-fidelity | 13 | 0.9 | model call |
+| validate:* -> regen | 12 | 0.9 | model call |
+| figure-provenance:* | 72 | 5.1 | free |
+
+**`repetition` was a false positive, not an input problem.** 12 of its
+14 firings were list-shaped answers — the top-10 ranking, the econ
+calendar, the CPI print rows. Gate 1 flags a content word appearing 3x
+in the last 15 tokens; Gate 2 flags a content bigram appearing twice in
+the tail. Four rows of "vs X consensus (prior Y)" trip both by
+construction. The retry came back 96-99% identical and four turns
+shipped the original anyway. `_repetition_runs` now splits an answer at
+its list markers and the gates run on the last run carrying text, which
+keeps the detector's documented end-of-generation scope. Replayed over
+all 187 turns it silences exactly the false positives and fires on
+nothing new; the three loops recorded in the detector's own comments
+still trip, as does a loop in the final bullet or in trailing prose.
+Two intermediate designs were measured and rejected: scanning every run
+added 11 false positives by looking mid-answer, and taking the literal
+last run made the scan vacuous whenever Gemini closed with a ``` fence.
+
+**The roast habit was an input problem.** All 13 `clapback-fidelity`
+firings were reply-to-bot clapbacks and nearly all reached for P&L
+caricature. The cause: the WHO'S TALKING dossier carried both scoring
+rationales on every call and no trading record at all. `racism_rationale`
+is written in trust-and-safety register, `trader_rationale` as a
+character sketch ("high-octane options degen who full-ports into deep
+OTM index contracts") — injected every call, that became the bot's
+default vocabulary for a person, and it is where both the preachy tone
+and the repeated cached line came from. Neither is injected now;
+`lookup_user_profile` and the leaderboard helpers still serve them when
+a question is actually about a score. `db.member_ledger_summary` +
+`format_member_ledger_line` put the documented record in instead —
+"documented 21d: 17W/3L · avg +136% on closes · traded: QQQ, SOXL".
+Net 780 fewer characters per member, measured against the 59-profile
+snapshot, and the ticker list is what would have stopped the MSTR
+misattribution. `_member_ledger_stats` reads the same summary, so the
+record the writer sees and the record the check grades against cannot
+drift. `trim_rationale` and its test are deleted: it trimmed the
+injected rationale at render time, and the rationale is no longer
+injected.
+
+**Two gaps closed in yesterday's ledger guard.** The rewrite acceptance
+re-judged only the original subjects' ledgers, so the model's most
+likely move — being told a position is not X's and handing it to Y —
+passed unseen, because Y had no `_stats` entry and `judge_candidates`
+skips an unevidenced name; it now fetches whoever the rewrite newly
+named before grading. And a protected asker had the findings dropped
+entirely, which published a claim the ledger had just disproved about
+the one person the rule protects; the protected path now rewrites
+subtractively (drop the claim, add nothing) instead of skipping.
+
+Known limitation, not fixed: `_POSITION_RE` needs a holding verb, so a
+possessive attribution ("those MSTR puts are Monsoon's problem") is not
+detected.
+
+555 unit tests, 158/158 smokes.
+
+**Tone dial read other members' words (2026-09-20).** DarkMark: "Why
+are you always putting all of us down for no reason?" The provoking
+answer went to 2Pale, who had replied to someone else's ASCII art with
+no text at all and got two invented personal insults. `asker_message`
+stripped the replied-to block but not the VERBATIM RECENT MESSAGES block,
+which is appended after the "message to you" marker, so Sam's quoted
+"You fukn idiot" scored the dial a 2. Across 86 reply/mention turns, 6
+ran hotter than the asker's own words earned, and in all 6 the asker
+had written nothing. The block is now stripped before scoring.
+
+Open: the model still jabs at dial 0 sometimes (Monsoon's "Shut up" on
+9/18 scored 0 and got a jab), and a relayed self-harm mention on 9/19
+was answered with mockery. Neither is fixed.

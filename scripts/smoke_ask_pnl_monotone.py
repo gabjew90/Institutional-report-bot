@@ -125,11 +125,24 @@ def test_prompt_hierarchy_present():
     ins = bot._ASK_SYSTEM_INSTRUCTION
     assert "Material hierarchy" in ins, "hierarchy rule missing from prompt"
     assert "personal color beats P&L" in ins
-    # 2026-07-30: was "the roast's only note". The rule was scoped to
-    # Type 3 clapbacks, so Type 2 banter had no material hierarchy at
-    # all and kept reaching for 0DTE/blown-account lines. Widened to
-    # "jab" + "binds on EVERY type"; the wording moved with it.
-    assert "never as the jab's only note" in ins
+    # 2026-09-19: the enforcement half of this rule ("Touch P&L angles
+    # only when the ledger hands you a specific fresh receipt") left the
+    # prompt for code. It was binding here from 2026-08-20 and the model
+    # still told the room a member's existence was "blowing up accounts"
+    # on a day his log carried +234% and +208% closes. The preference
+    # stays in prose because taste is not checkable; the falsifiable
+    # part is now discord_bot/pnl_claims.py against analyst_trades.
+    assert "never as the jab's only note" not in ins, (
+        "the ledger clause moved to code (CLAUDE.md policy 1) — it must "
+        "not live in both places"
+    )
+    assert "The strong material is PERSONAL" in ins
+    from discord_bot import pnl_claims as _pnl
+    _c = _pnl.claim_candidates("BK is out here blowing up accounts again.",
+                               {"BK": 1})
+    _loss, _ = _pnl.judge_candidates(
+        _c, {1: {"wins": 11, "losses": 1, "tickers": {"QQQ"}}})
+    assert _loss, "the code check that replaced the prompt clause does not fire"
     assert "binds on EVERY type" in ins, (
         "the hierarchy must not be scoped to clapbacks — banter is "
         "where the recycled P&L material actually shipped"

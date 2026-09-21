@@ -965,6 +965,91 @@ def known_trade_caller_names() -> list[str]:
         return []
 
 
+def member_recent_tickers(author_id: int, days: int = 21) -> set[str]:
+    """Every ticker this member has a logged trade row for in the window.
+
+    2026-09-19: the bot told the room that sunny was "holding MSTR puts
+    into a freight train". The MSTR puts were BK's (140 strike) and
+    Monsoon's (121); sunny has never had an MSTR row. The log knew.
+    """
+    rows = _db.get_connection().execute(
+        "SELECT DISTINCT UPPER(ticker) t FROM analyst_trades "
+        "WHERE author_id = ? AND ticker IS NOT NULL AND ticker != '' "
+        "  AND posted_at >= datetime('now', ?)",
+        (int(author_id), f"-{int(days)} day"),
+    ).fetchall()
+    return {r[0] for r in rows if r[0]}
+
+
+def member_ledger_summary(author_id: int, days: int = 21) -> dict:
+    """{wins, losses, tickers, avg_gain_pct} for one member's logged trades.
+
+    One place to read a member's record, so the dossier the writer sees
+    and the check that grades the draft cannot disagree (2026-09-19).
+
+    `avg_gain_pct` averages the gain pill on closes and trims only, and
+    is None when nothing closed in the window — an open position has no
+    outcome yet and averaging a 0 sentinel into the record would read as
+    a break-even trade that never happened.
+    """
+    pts = compute_member_points(int(author_id), days=days) or {}
+    row = _db.get_connection().execute(
+        "SELECT AVG(gain_pct) FROM analyst_trades "
+        "WHERE author_id = ? AND gain_pct IS NOT NULL AND gain_pct != 0 "
+        "  AND LOWER(action) IN ('close', 'trim') "
+        "  AND posted_at >= datetime('now', ?)",
+        (int(author_id), f"-{int(days)} day"),
+    ).fetchone()
+    avg = row[0] if row and row[0] is not None else None
+    return {
+        "wins": int(pts.get("entries_won") or 0)
+        + int(pts.get("screenshot_wins") or 0),
+        "losses": int(pts.get("entries_lost") or 0)
+        + int(pts.get("screenshot_losses") or 0),
+        "tickers": member_recent_tickers(int(author_id), days=days),
+        "avg_gain_pct": float(avg) if avg is not None else None,
+        # The window travels with the numbers. A separate `days` argument
+        # on the renderer lets a 30-day summary print "documented 21d",
+        # which is a false receipt in the one block whose whole job is
+        # being the true one.
+        "days": int(days),
+    }
+
+
+def format_member_ledger_line(summary: dict) -> str:
+    """The one-line record injected beside a member's dossier, or "".
+
+    2026-09-18/19: the bot told the room bankerkyle's existence was
+    "blowing up accounts on weekly options" while his log carried +234%
+    and +208% closes, and handed sunny "MSTR puts into a freight train"
+    when the MSTR puts were BK's and Monsoon's. Both times the answer
+    was in `analyst_trades` and the writer had never been shown it — the
+    dossier carried adjectives, so the model inferred an outcome from
+    the room's register, where losing is always the joke that fits.
+
+    Rendered flat and factual on purpose. It is evidence for the writer,
+    not a line to quote: the ledger is the floor under a jab, not the
+    jab.
+    """
+    if not summary:
+        return ""
+    wins = int(summary.get("wins") or 0)
+    losses = int(summary.get("losses") or 0)
+    tickers = sorted(summary.get("tickers") or ())
+    if not wins and not losses and not tickers:
+        return ""
+    bits = [f"documented {int(summary.get('days') or 21)}d: "
+            f"{wins}W/{losses}L"]
+    avg = summary.get("avg_gain_pct")
+    if avg is not None:
+        bits.append(f"avg {avg:+.0f}% on closes")
+    if tickers:
+        shown = ", ".join(tickers[:8])
+        more = f" (+{len(tickers) - 8} more)" if len(tickers) > 8 else ""
+        bits.append(f"traded: {shown}{more}")
+    return " · ".join(bits)
+
+
 def compute_member_points(author_id: int, days: int = 21) -> dict:
     """Rolling points ledger over the last N days (default 21) for one user.
 

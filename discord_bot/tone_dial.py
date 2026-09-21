@@ -80,14 +80,37 @@ LEVELS = {
 }
 
 
+# A VERBATIM RECENT MESSAGES block quoting some OTHER member. It is
+# appended AFTER the "[X's message to you]" marker, so the capture below
+# swallowed it whole and scored the dial off a third party's words.
+#
+# 2026-09-20, measured over 86 reply/mention turns in the published
+# ask-logs: 6 ran hotter than the asker's own words earn, and in every
+# one of the 6 the asker had written NOTHING — a bare reply or a tag.
+# The worst was 2Pale, who replied to someone else's ASCII art with no
+# text at all and got a level 2 ("a clapback is earned") off Sam's
+# quoted "You fukn idiot" and "fuk u", then two invented personal
+# insults aimed at him. DarkMark asked an hour later: "Why are you
+# always putting all of us down for no reason?"
+#
+# The header spans two lines and closes with "]"; the quoted messages
+# follow as indented lines. Matched without re.S so the trailing
+# repetition cannot run past the block.
+_VERBATIM_BLOCK = re.compile(
+    r"(?s:\[VERBATIM RECENT MESSAGES.*?\])(?:\n[ \t]+[^\n]*)*"
+)
+
+
 def asker_message(question: str) -> str:
     """The asker's own words this turn, without the quoted context the
-    reply-to machinery prepends. A quoted trade alert is not something
-    the asker said."""
+    reply-to machinery prepends or appends. A quoted trade alert is not
+    something the asker said, and neither is another member's chat
+    history."""
     q = (question or "").strip()
     m = re.search(r"\[[^\]]*message to you\]\s*\n(.*)$", q, re.S)
     if m:
-        return m.group(1).strip()
+        return _VERBATIM_BLOCK.sub("", m.group(1)).strip()
+    q = _VERBATIM_BLOCK.sub("", q).strip()
     if q.startswith("["):
         q = re.sub(r"^\[.*?\]\s*\n?", "", q, flags=re.S).strip()
         if "\n\n" in q:

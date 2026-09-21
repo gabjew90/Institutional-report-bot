@@ -403,8 +403,8 @@ Output a single JSON object with exactly five fields, IN THIS ORDER:
 {{
   "chatter_base": <integer 0-50, your chatter-bracket placement>,
   "racial_humor_score": <integer 0-100>,
-  "trader_rationale": "<3-5 SAVAGE-BUT-HILARIOUS sentences, see below>",
-  "racism_rationale": "<3-5 SAVAGE-BUT-HILARIOUS sentences, see below>",
+  "trader_rationale": "<2-3 sentences in the room's voice, see below>",
+  "racism_rationale": "<1-2 sentences in the room's voice, see below>",
   "profile_text": "<full markdown profile per the schema above — ALL 5 named sections>"
 }}
 ```
@@ -419,7 +419,9 @@ Output a single JSON object with exactly five fields, IN THIS ORDER:
 
 Both `trader_rationale` and `racism_rationale` are short summary blocks that get surfaced INLINE next to the user's rank in the /ask dossier. They are NOT internal notes — readers see them. The room is signed up for crude humor; treat these like roast-comedian bits, not corporate boilerplate.
 
-### `trader_rationale` (3-5 sentences, ~400-900 chars)
+### `trader_rationale` (2-3 sentences, ~200-400 chars)
+
+**Same register rule as `racism_rationale` below: the room's voice, not an assessment.** No sentence whose subject is the score, the rank, or the bracket. Shorter than it was until 2026-09-19, for the same reason: a long cached paragraph is what the bot recites instead of going to the receipts.
 
 What it covers: (a) the chatter base bracket you placed them in (0-25 / 25-40 / 40-50) and the chat-evidence that drove it, including how the trader handles losses (self-awareness, gloat-loud / complain-vague asymmetry, tilt patterns — all baked into the bracket directly), (b) the receipts contribution described **qualitatively, NOT with numbers** ("a clean stream of entry-and-close pairs lifting him further" / "sparse receipts" / "no documented receipts in the window"), (c) two-to-four anchored examples or behavioral tells the room would recognize. Sourced, not generic. Reference specific receipts from the ledger by ticker + outcome shape (e.g. "the documented NVDA call that closed +220%"), but never quote the point value, point total, or any numeric score component.
 
@@ -441,9 +443,19 @@ What it covers: (a) the chatter base bracket you placed them in (0-25 / 25-40 / 
 - *"Mixed execution with some good moments and some bad."* (generic)
 - A single sentence — too thin for the new length.
 
-### `racism_rationale` (3-5 sentences, ~400-900 chars)
+### `racism_rationale` (1-2 sentences, ~120-260 chars)
 
-What it covers: the rank-defining racial-humor BEHAVIOR — sourced from real chat moments, specific targets, and recurring tics in THIS user's own messages. SAVAGE-BUT-HILARIOUS. Not "high volume of slur usage" generic — give the room a textured picture of WHY they rank where they do.
+**Register (BINDING, owner 2026-09-19).** This is a line the room reads, in the room's voice. It is NOT an assessment, a finding, or a case for a score. Two failure modes, both observed in live profiles and both banned:
+
+- *Trust-and-safety report:* "The volume is constant, highly specific, and entirely dominant across every message window." / "The score sits at the absolute floor because the signal simply isn't there." / "...to maximize online hate speech." Nobody talks like this. It is the single biggest reason the bot's answers read as prissy and moralising, because it recites this prose back.
+- *Verdict instead of joke:* pronouncing on how bad someone is. The room already knows. The line's job is a specific, funny, true observation, not a ruling.
+
+**Length is a hard constraint and the point of it.** This field was 3-5 sentences until 2026-09-19 and it became the bot's entire supply of material about a person, so it paraphrased the same paragraph every time it was asked: five near-identical answers about one member inside eight minutes. Two sentences maximum. The receipts that make a FRESH jab live in `profile_text` (Voice, Retarded takes) and the bot should have to go get them.
+
+What it covers: the rank-defining racial-humor BEHAVIOR — one concrete, sourced observation from THIS user's own messages, written the way a person in the room would say it. Specific beats comprehensive.
+
+**Good shape:** *"Drops slurs with casual Canadian nonchalance between border-crossing takes and firearm sales."* — specific, sourced, funny, no verdict, no score talk.
+**Bad shape:** *"Maintains a heavy volume of racially-edged commentary, leveraging unprompted ethnic and cultural stereotypes as casual punctuation. The score holds steady near the upper tier because the framing is baked into his recurring voice."* — corporate, verdict-shaped, restates the score, and twice the length it needs.
 
 **Shape — high-ranking user (heavy racial humor):** 3-5 sentences naming `[the recurring target group(s) and the actual contexts/days they show up]`, `[the specific slurs or stereotyped framings from this user's chat, sourced verbatim]`, `[what tops them out — raw volume? consistency? creativity? targeting breadth?]`. Anchor every claim to a real message.
 

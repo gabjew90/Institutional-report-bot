@@ -54,6 +54,31 @@ def record_ask_bot_answer(
     conn.commit()
 
 
+def get_recent_bot_answers_in_channel(
+    channel_id: int,
+    limit: int = 6,
+    max_age_days: int = 2,
+) -> list[dict]:
+    """The bot's last `limit` answers in this channel, ANY asker, newest
+    first. Same shape as get_recent_bot_answers_to_asker.
+
+    The per-asker view misses what the room actually sees. On
+    2026-09-18 three different members asked the same "who's the most
+    X" question inside two minutes and got the same cached line about
+    the same member four times; each ask was a first ask for that
+    asker, so the per-asker guard had nothing to compare against. The
+    window is short on purpose: repetition is a within-session read,
+    and two days of answers is what a reader remembers."""
+    rows = _db.get_connection().execute(
+        "SELECT question, answer, answered_at "
+        "FROM ask_bot_answers "
+        "WHERE channel_id = ? AND answered_at >= datetime('now', ?) "
+        "ORDER BY answered_at DESC, id DESC LIMIT ?",
+        (int(channel_id), f"-{int(max_age_days)} day", int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
 def get_recent_bot_answers_to_asker(
     asker_user_id: int,
     channel_id: int,

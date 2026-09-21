@@ -1385,6 +1385,9 @@ from db_parts.analyst import (  # noqa: E402,F401
     backfill_orphan_exit_links,
     compute_caller_win_loss_summary,
     compute_member_points,
+    format_member_ledger_line,
+    member_ledger_summary,
+    member_recent_tickers,
     find_matching_open_expiry,
     find_recent_book_posts,
     get_analyst_trade_by_message_id,
@@ -1404,6 +1407,7 @@ from db_parts.analyst import (  # noqa: E402,F401
 )
 from db_parts.ask import (  # noqa: E402,F401
     count_ask_queries_today_for_user,
+    get_recent_bot_answers_in_channel,
     get_recent_bot_answers_to_asker,
     record_ask_bot_answer,
     record_ask_query,

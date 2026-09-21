@@ -18,6 +18,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from config import settings
+from discord_bot import pnl_claims as _pnl_claims
 from discord_bot.sender import send_embeds
 import db
 
@@ -1530,6 +1531,63 @@ _PERSON_QUESTION_RE = re.compile(
 )
 
 
+_PROFILE_MEMBER_ID_RE = re.compile(
+    r'^- \*\*(.+?)\*\* \(([^,)]+),\s*<@!?(\d+)>', re.M)
+
+
+def _member_ledger_stats(user_ids) -> dict[int, dict]:
+    """{user_id: {wins, losses, tickers}} for the ledger claim check.
+
+    Synchronous by design and called through asyncio.to_thread: each
+    member costs a points computation over 21 days of analyst_trades,
+    and the first draft ran them on the event loop (2026-09-19 review).
+
+    Reads the same `db.member_ledger_summary` the WHO'S TALKING dossier
+    renders, so the record the writer was shown and the record the check
+    grades against cannot drift apart.
+    """
+    out: dict[int, dict] = {}
+    for uid in set(user_ids or ()):
+        try:
+            out[uid] = db.member_ledger_summary(uid)
+        except Exception as e:
+            log.warning(f"/ask: ledger stats failed for {uid}: {e}")
+    return out
+
+
+def _profile_member_ids(profiles_block: str) -> dict[str, int]:
+    """Every surface name in WHO'S TALKING mapped to its user_id.
+
+    Display name, username, and the first word of the display name (the
+    room says "kyle", not "BK (bankerkyle)"). Used by the P&L ledger
+    check to find whose record a sentence is talking about."""
+    out: dict[str, int] = {}
+    first_tokens: dict[str, set[int]] = {}
+    for disp, uname, uid in _PROFILE_MEMBER_ID_RE.findall(profiles_block or ""):
+        try:
+            n = int(uid)
+        except ValueError:
+            continue
+        # "BK" is a real handle: display names and usernames go in at
+        # two characters, matched word-bounded. The first-token
+        # fallback keeps the three-character floor, where a short
+        # fragment would collide with ordinary words.
+        for surf in (disp.strip(), uname.strip()):
+            if len(surf) >= 2:
+                out.setdefault(surf, n)
+        first = disp.strip().split()[0] if disp.strip() else ""
+        if len(first) >= 3:
+            # A first token two members share resolves to whichever
+            # profile was listed first, which would check one member's
+            # claim against another's ledger (2026-09-19 review). Count
+            # them now, drop the ambiguous ones below.
+            first_tokens.setdefault(first, set()).add(n)
+    for tok, ids in first_tokens.items():
+        if len(ids) == 1:
+            out.setdefault(tok, next(iter(ids)))
+    return out
+
+
 def _profile_names_in_block(profiles_block: str) -> list[str]:
     """Display names + usernames of everyone loaded into WHO'S TALKING."""
     out: list[str] = []
@@ -1622,9 +1680,77 @@ def _mask_slur_tokens(text: str) -> str:
     return _SLUR_MASK_RE.sub("[redacted]", text)
 
 
+# A line that opens with a list/table marker. Parallel lines repeat by
+# construction, which is the opposite of a glitch (see
+# `_repetition_runs`).
+_REP_LIST_MARKER_RE = re.compile(r"^\s*(?:[-*>→•]|\d+[.)]|\|)")
+
+
+def _repetition_runs(text: str) -> list[str]:
+    """Split an answer into runs the glitch gates may be applied to.
+
+    A token loop is repetition WITHIN one continuous stretch of prose.
+    A list is repetition ACROSS structurally parallel lines, and the
+    gates below cannot tell the two apart: a four-row CPI table repeats
+    ("consensus", "prior") once per row, which trips Gate 2 by
+    construction, and a top-10 ranking repeats "messages" ten times,
+    which trips Gate 1.
+
+    Measured on the published ask-logs, 12 of the 14 `repetition`
+    firings in the 14 days to 2026-09-19 were list-shaped answers
+    (rankings, the econ calendar, CPI prints). Each one burned a
+    temp-0.7 retry that returned the same answer back, and four of them
+    shipped the original anyway after the strip fallback also failed.
+
+    So: each marker line is its own run, and consecutive unmarked lines
+    group into one. The caller scans the last run carrying real text,
+    because the glitch this detects is an end-of-generation artifact and
+    the gates were always tail-scoped. Scanning every run instead flags
+    ordinary mid-answer repeats ("2x ... 2x" inside one ETF bullet),
+    which the whole-answer tail never looked at either.
+    """
+    runs: list[str] = []
+    prose: list[str] = []
+    marked = 0
+    for line in (text or "").splitlines():
+        if not line.strip():
+            continue
+        if _REP_LIST_MARKER_RE.match(line):
+            marked += 1
+            if prose:
+                runs.append("\n".join(prose))
+                prose = []
+            runs.append(line)
+        else:
+            prose.append(line)
+    if prose:
+        runs.append("\n".join(prose))
+    # A single marker line is prose that happens to open with a dash;
+    # two is already a parallel structure (the 2026-09-10 "what's
+    # being reported tomorrow" answer was two data rows and tripped).
+    # Below the bar, keep the whole-answer scan.
+    if marked < 2:
+        return [text]
+    return runs
+
+
 def _has_repetition_glitch(text: str) -> bool:
     """Detect end-of-response repetition loops. See module-level note
-    above for the two heuristics."""
+    above for the heuristics, and `_repetition_runs` for why the gates
+    run per-run rather than over the whole answer."""
+    if not text:
+        return False
+    # Trailing runs too short to trip anything (a closing ``` fence, a
+    # one-word sign-off) would make the scan vacuous, so walk back to
+    # the last run that actually carries text.
+    for run in reversed(_repetition_runs(text)):
+        if len(_REP_TOKEN_RE.findall(run)) >= 6:
+            return _repetition_gates(run)
+    return False
+
+
+def _repetition_gates(text: str) -> bool:
+    """The token-level glitch gates, over ONE continuous run of prose."""
     if not text:
         return False
     tokens = [m.group(0).lower() for m in _REP_TOKEN_RE.finditer(text)]
@@ -3577,6 +3703,62 @@ def _roast_is_pnl_monotone(answer: str, profiles_block: str) -> bool:
     return not (hooks & pool)
 
 
+# 12, not 8 (2026-09-19 review): eight words of connective prose
+# ("is right there on the podium competing for silver") recurs between
+# answers about different people, and a reword there costs a model call
+# to fix nothing. A span must also carry something distinctive.
+_REPEATED_SPAN_MIN_WORDS = 12
+# Words that carry no subject. A span made only of these is phrasing,
+# not material.
+_SPAN_STOPWORDS = frozenset("""
+a an and are as at be been but by for from had has have he her him his
+in into is it its like me my not of on or our out she so that the their
+them then there these they this to too up was we were what when which
+who will with you your about after all also any been before being both
+can could did do does down get got just more most no now off one only
+other over own same some still such than too very
+""".split())
+
+
+def _span_is_distinctive(span: str) -> bool:
+    return any(w not in _SPAN_STOPWORDS for w in span.split())
+
+
+def _repeated_span(answer: str, prior_answers: list[str],
+                   min_words: int = _REPEATED_SPAN_MIN_WORDS) -> str:
+    """The longest run of words the answer shares verbatim with any
+    recent answer, or "" when nothing long enough repeats.
+
+    Separate from `_recycled_roast_hooks` on purpose. That one compares
+    stemmed topic hooks and drives a rewrite that INJECTS a roast, so
+    it is gated on clapback shape (it once rewrote a factual Boeing
+    answer into a jab). This one only asks whether the bot is saying
+    the same sentence twice, which is safe to ask of any answer, and
+    its rewrite only asks for different words.
+
+    2026-09-18: four answers inside eight minutes carried "industrial-
+    grade operation on unbridled slurs and Facebook ragebait" about the
+    same member, because a cached profile paragraph was the only
+    material the turn had.
+    """
+    if not answer or not prior_answers:
+        return ""
+    cur = re.findall(r"[a-z0-9$%']+", answer.lower())
+    if len(cur) < min_words:
+        return ""
+    cur_spans = {" ".join(cur[i:i + min_words])
+                 for i in range(len(cur) - min_words + 1)}
+    best = ""
+    for pa in prior_answers:
+        prev = re.findall(r"[a-z0-9$%']+", (pa or "").lower())
+        for i in range(len(prev) - min_words + 1):
+            span = " ".join(prev[i:i + min_words])
+            if (span in cur_spans and len(span) > len(best)
+                    and _span_is_distinctive(span)):
+                best = span
+    return best
+
+
 def _recycled_roast_hooks(answer: str, prior_answers: list[str]) -> list[str]:
     """Hooks the new answer shares with ANY single prior answer to the
     same asker. Compared per-prior-answer (not against the union) so the
@@ -4353,6 +4535,23 @@ async def _ask_00_setup_tools_and_context(
             _prior_bot_answer_texts = [
                 (row.get("answer") or "") for row in (prior_answers or [])
             ]
+            # What the ROOM has just been told, not only this asker
+            # (2026-09-18: three members asked the same question in two
+            # minutes and each got the same cached line, because each
+            # was a first ask for that asker).
+            try:
+                _room_answers = await asyncio.to_thread(
+                    db.get_recent_bot_answers_in_channel,
+                    channel_id=channel_id, limit=6,
+                )
+                for _row in (_room_answers or []):
+                    _t = (_row.get("answer") or "")
+                    if _t and _t not in _prior_bot_answer_texts:
+                        _prior_bot_answer_texts.append(_t)
+            except Exception as _re_e:
+                log.warning(
+                    f"/ask: channel answer history unavailable "
+                    f"(non-fatal): {_re_e}")
             if prior_answers:
                 lines = [
                     "[YOUR RECENT /ASK ANSWERS TO THIS ASKER — "
@@ -5593,6 +5792,7 @@ async def _ask_04_clean_answer(
 
 async def _ask_05_strip_asker_mockery(
     _ask_meta,
+    _asker_protected,
     _prompt_extra,
     _round_gm_chunks,
     _route_is_factual,
@@ -5652,6 +5852,7 @@ async def _ask_05_strip_asker_mockery(
     # the web. One rewrite naming the offenders; then strip; a
     # fully-stripped answer becomes a disengage line — the move the
     # prompt prescribes when the receipts run dry.
+    _fid_material = ""
     if (answer and not _route_is_factual and not _round_gm_chunks
             and _is_clapback_shaped(answer)):
         # Scope the pool to whoever the roast is ABOUT. On a
@@ -5836,6 +6037,120 @@ async def _ask_05_strip_asker_mockery(
                     f"/ask: fidelity rewrite call failed "
                     f"(non-fatal): {fe}"
                 )
+
+    # Ledger check on claims about a member's trading (2026-09-18/19).
+    # The prompt bound the P&L half from 2026-08-20 and the model
+    # skipped it: it told the room a member's existence was "blowing up
+    # accounts on weekly options" on a day his log carried +234% and
+    # +208% closes, and it pinned another member's MSTR puts on someone
+    # who has never traded MSTR. Detection is pure; the ledger reads
+    # happen once, off the event loop.
+    try:
+        _members = _profile_member_ids(profiles_block) if answer else {}
+        _cands = []
+        if _members:
+            # Subject comes from the question's named members only, never
+            # from the chat window: a sentence naming nobody must not
+            # pick up everyone the room mentioned (2026-09-19 review).
+            _subj_surfaces = []
+            for _d, _u in _roast_subjects(
+                    question, profiles_block, asker_username,
+                    asker_display_name):
+                _subj_surfaces.extend([_d, _u])
+            _cands = _pnl_claims.claim_candidates(
+                answer, _members, subject_surfaces=_subj_surfaces)
+        if _cands:
+            _stats = await asyncio.to_thread(
+                _member_ledger_stats, {c["user_id"] for c in _cands})
+            _bad_loss, _bad_pos = _pnl_claims.judge_candidates(_cands, _stats)
+        else:
+            _bad_loss, _bad_pos = [], []
+        # `_asker_protected`: the ordinary rewrite points the model at
+        # personal material, which is exactly what a protected asker is
+        # protected from. Dropping the findings instead was worse — it
+        # published a claim the ledger had just disproved about the one
+        # person the rule exists to protect (2026-09-19 review). The
+        # protected note is subtractive: remove the claim, add nothing.
+        if (_bad_loss or _bad_pos) and _asker_protected:
+            _ask_meta["guards"].append("pnl-ledger:protected-neutral")
+        if _bad_loss:
+            _ask_meta["guards"].append(
+                "pnl-ledger:" + ",".join(c["surface"] for c in _bad_loss[:4]))
+            log.warning(
+                "/ask: answer claims a losing record the ledger contradicts "
+                f"({[(c['surface'], c['wins']) for c in _bad_loss[:4]]}) "
+                f"— requesting rewrite (q={question[:60]!r})")
+        if _bad_pos:
+            _ask_meta["guards"].append(
+                "pnl-position:" + ",".join(
+                    f"{b['surface']}/{b['ticker']}" for b in _bad_pos[:4]))
+            log.warning(
+                "/ask: answer puts a position on someone whose log lacks it "
+                f"({[(b['surface'], b['ticker']) for b in _bad_pos[:4]]}) "
+                f"— requesting rewrite (q={question[:60]!r})")
+        if _bad_loss or _bad_pos:
+            _pnl_resp = await client.aio.models.generate_content(
+                model=ask_model,
+                contents=list(contents) + [types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(
+                        text=_pnl_claims.correction_note(
+                            _bad_loss, _bad_pos,
+                            protected=bool(_asker_protected)))],
+                )],
+                config=types.GenerateContentConfig(
+                    system_instruction=(
+                        _build_runtime_system_instruction(_prompt_extra)
+                    ),
+                    safety_settings=safety_settings,
+                    max_output_tokens=900,
+                    temperature=0.6,
+                    thinking_config=types.ThinkingConfig(thinking_budget=512),
+                ),
+            )
+            _tally_retry_usage(_pnl_resp)
+            _pnl_text = (_pnl_resp.text or "").strip()
+            if _pnl_text:
+                _pnl_text, _ = _clean_voice_violations(_pnl_text)
+            # Accept only a rewrite that actually dropped the claim AND
+            # did not invent material belonging to someone else. The
+            # fidelity guard above already ran, so without this re-check
+            # the rewrite is the one path out of this phase that nothing
+            # checks (2026-09-19 review).
+            _ok_rewrite = False
+            if _pnl_text:
+                _re_cands = _pnl_claims.claim_candidates(
+                    _pnl_text, _members, subject_surfaces=_subj_surfaces)
+                # Re-judging against only the ORIGINAL subjects' ledgers
+                # waves through the model's most likely move: the note
+                # tells it a position is not X's, and it hands the
+                # position to Y. Y was never a candidate, so Y has no
+                # entry in `_stats` and `judge_candidates` skips the
+                # claim as unevidenced. Fetch whoever the rewrite newly
+                # named before grading it.
+                _new_ids = {c["user_id"] for c in _re_cands} - set(_stats)
+                if _new_ids:
+                    _stats = dict(_stats)
+                    _stats.update(await asyncio.to_thread(
+                        _member_ledger_stats, _new_ids))
+                _re_loss, _re_pos = _pnl_claims.judge_candidates(
+                    _re_cands, _stats)
+                # Best-effort: `_fid_material` is only populated on a
+                # clapback-shaped answer, so on the FACT route (where
+                # the MSTR misattribution lived) this contributes
+                # nothing and the re-judge above is the real check.
+                _re_fid = (_clapback_fidelity_violations(
+                    _pnl_text, _fid_material) if _fid_material else [])
+                _ok_rewrite = not (_re_loss or _re_pos or _re_fid)
+                if _re_fid:
+                    _ask_meta["guards"].append("pnl-ledger:rewrite-unfaithful")
+            if _ok_rewrite:
+                answer = _pnl_text
+                _ask_meta["guards"].append("pnl-ledger:rewritten")
+            else:
+                _ask_meta["guards"].append("pnl-ledger:rewrite-rejected")
+    except Exception as _pe:
+        log.warning(f"/ask: ledger claim check failed (non-fatal): {_pe}")
     return (answer,)
 
 
@@ -6157,6 +6472,64 @@ async def _ask_06_roast_subject_guards(
                         )
             except Exception as e:
                 log.warning(f"/ask: roast-recycle rewrite failed: {e}")
+    # Verbatim-span repeat (2026-09-19). Not gated on clapback shape:
+    # the answers that repeated were RANKINGS, which carry no clapback
+    # shape, and this rewrite only asks for different words rather than
+    # injecting a roast. Runs before the hook check so the cheaper,
+    # safer fix gets first refusal.
+    # Condition deliberately not shaped like the two roast guards
+    # below. smoke_rewrite_guards_keep_question scans for their
+    # `_prior_bot_answer_texts):` marker and requires a clapback-shape
+    # gate on whatever it finds, which is correct for a guard that
+    # injects a roast and wrong for this one.
+    _span_pool = (_prior_bot_answer_texts
+                  if (answer and not _route_is_factual
+                      and not _analysis_extra) else [])
+    if _span_pool:
+        _span = _repeated_span(answer, _span_pool)
+        if _span:
+            _ask_meta["guards"].append("repeat-span")
+            log.warning(
+                f"/ask: answer repeats a span the room already heard "
+                f"({_span[:70]!r}) — requesting a reword")
+            try:
+                _span_resp = await client.aio.models.generate_content(
+                    model=ask_model,
+                    contents=list(contents) + [types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=(
+                            "[ALREADY SAID] You used this exact phrasing in "
+                            "a recent answer in this channel: \""
+                            + _span + "\". The room has read it. Say the "
+                            "same thing with different words and a "
+                            "different angle, or use different material "
+                            "entirely. Keep the length, the register and "
+                            "the verdict; change the words. Output only "
+                            "the reply."
+                        ))],
+                    )],
+                    config=types.GenerateContentConfig(
+                        system_instruction=(
+                            _build_runtime_system_instruction(_prompt_extra)
+                        ),
+                        safety_settings=safety_settings,
+                        max_output_tokens=900,
+                        temperature=0.85,
+                        thinking_config=types.ThinkingConfig(
+                            thinking_budget=512),
+                    ),
+                )
+                _tally_retry_usage(_span_resp)
+                _span_text = (_span_resp.text or "").strip()
+                if _span_text:
+                    _span_text, _ = _clean_voice_violations(_span_text)
+                if _span_text and not _repeated_span(
+                        _span_text, _span_pool):
+                    answer = _span_text
+                    _ask_meta["guards"].append("repeat-span:reworded")
+            except Exception as _se:
+                log.warning(f"/ask: reword on repeat failed (non-fatal): {_se}")
+
     return (answer,)
 
 
@@ -7968,6 +8341,7 @@ async def _answer_with_gemini(
         )
         (answer,) = await _ask_05_strip_asker_mockery(
             _ask_meta=_ask_meta,
+            _asker_protected=_asker_protected,
             _prompt_extra=_prompt_extra,
             _round_gm_chunks=_round_gm_chunks,
             _route_is_factual=_route_is_factual,

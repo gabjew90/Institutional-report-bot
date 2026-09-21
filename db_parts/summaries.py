@@ -591,11 +591,27 @@ def format_user_profiles_for_context(
         # Private metrics inline — surfaced as ordinal ranks only.
         # racism-rank exposes both signals (humor + literal) so the bot
         # can answer "who's worst" vs "who actually uses slurs" if asked.
+        #
+        # The rationales are NOT injected (2026-09-19). Both are written
+        # to justify a score: `racism_rationale` in trust-and-safety
+        # register ("anchored by casual bigotry and stereotyping dropped
+        # directly into chat"), `trader_rationale` as a character sketch
+        # ("high-octane options degen who full-ports into deep OTM index
+        # contracts"). Injected on every call they became the bot's
+        # default vocabulary for a member — the source of both the
+        # preachy tone the owner flagged and the repeated cached line
+        # (four answers in eight minutes on 2026-09-18 carrying the same
+        # "industrial-grade operation on unbridled slurs" phrasing).
+        # `profile_text` below already carries Personality / Voice /
+        # Retarded takes / Recent trades / Recent personal life, which is
+        # richer and specific. When a question is actually ABOUT a score,
+        # `lookup_user_profile` and the leaderboard helpers still serve
+        # both rationales on demand — which is where a justification
+        # belongs.
         metric_bits: list[str] = []
         rr = racism_rank_by_uid.get(uid)
         humor = p.get("racial_humor_score")
         slurs = int(p.get("slur_count") or 0)
-        racism_rationale = (p.get("racism_rationale") or "").strip()
         sub_signal = []
         if humor is not None:
             sub_signal.append(f"humor:{humor}/100")
@@ -608,38 +624,42 @@ def format_user_profiles_for_context(
             # The bot conflated the two (2026-06-24: told sunny "you're
             # #1" off a conv-scoped rank while the global top-5 had him
             # absent). Leaderboard claims must use lookup_user_profile.
-            base = (f"racism-rank #{rr} of {racism_total_in_conv} ACTIVE "
-                    f"here (conversation-scoped, NOT the global "
-                    f"leaderboard){sub}")
-            if racism_rationale:
-                metric_bits.append(f"{base} — {racism_rationale}")
-            else:
-                metric_bits.append(base)
+            metric_bits.append(
+                f"racism-rank #{rr} of {racism_total_in_conv} ACTIVE "
+                f"here (conversation-scoped, NOT the global "
+                f"leaderboard){sub}"
+            )
         elif rr:
             # Denominator < 3: "#1 of 1" is a meaningless ordinal the bot
             # has mis-cited as a global "#1". Show the raw signal, not a
             # rank — the global leaderboard is the tool's job.
-            base = (f"racism signal{sub} — too few active here to rank "
-                    f"(global leaderboard via lookup_user_profile)")
-            if racism_rationale:
-                metric_bits.append(f"{base} — {racism_rationale}")
-            else:
-                metric_bits.append(base)
+            metric_bits.append(
+                f"racism signal{sub} — too few active here to rank "
+                f"(global leaderboard via lookup_user_profile)"
+            )
         else:
             metric_bits.append(f"racism-rank: not in this conv's top{sub}")
         # trader_rank — computed on-read from current trader_score
         # values, not the (now-deprecated) stored column. Includes
         # rank/total for the answer like "you're #7 of 32 profiled."
         tr = trader_rank_by_uid.get(uid)
-        ts_rationale = p.get("trader_rationale")
         if tr:
-            base = f"trader-rank #{tr}/{trader_rank_total}"
-            if ts_rationale:
-                metric_bits.append(f"{base} ({ts_rationale})")
-            else:
-                metric_bits.append(base)
+            metric_bits.append(f"trader-rank #{tr}/{trader_rank_total}")
         else:
             metric_bits.append("trader-rank: not scored")
+        # The documented record, from analyst_trades (2026-09-19). Ranks
+        # are opinions the scorer formed; this is what the member's log
+        # actually says. Without it the writer infers an outcome from the
+        # room's register, and in that register everyone is losing.
+        try:
+            ledger_line = _db.format_member_ledger_line(
+                _db.member_ledger_summary(uid)
+            )
+        except Exception as e:
+            log.warning(f"ledger line failed for {uid} (non-fatal): {e}")
+            ledger_line = ""
+        if ledger_line:
+            metric_bits.append(ledger_line)
         metrics_line = " · ".join(metric_bits)
 
         # Examples surface is now profile_text itself — the Voice,

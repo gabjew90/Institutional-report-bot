@@ -99,3 +99,39 @@ def test_an_insult_works_in_either_word_order():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# --- the dial must not read someone else's words (2026-09-20) ---------
+VERBATIM_TAIL = (
+    "[2Pale's message to you]\n"
+    "[VERBATIM RECENT MESSAGES — Sam (theorb_18574) — for accurate\n"
+    "quoting when the question references them; quote LINE FOR LINE]\n"
+    "  2026-09-18T22:40 #stonks — You're woke\n"
+    "  2026-09-18T22:42 #stonks — You fukn idiot Kyle's been crushing it\n"
+    "  2026-09-19T11:13 #gambling — Blew my back out on Chelsea\n"
+)
+
+
+def test_a_quoted_members_insults_do_not_set_the_dial():
+    """2026-09-20: 2Pale replied to someone else's ASCII art with no
+    text of his own. The VERBATIM block quoting Sam sits AFTER the
+    "message to you" marker, so it was captured as 2Pale's own words,
+    scored a 2 ("a clapback is earned"), and the bot aimed two invented
+    personal insults at a man who had written nothing. DarkMark asked an
+    hour later, quote, why are you always putting all of us down for no
+    reason."""
+    assert asker_message(VERBATIM_TAIL) == ""
+    assert provocation_level(VERBATIM_TAIL) == 0
+
+
+def test_the_askers_own_words_after_a_verbatim_block_still_count():
+    """The strip must take the block and nothing else: DarkMark wrote
+    "Sunny lol..." after one, and that 'lol' is a real level-1 tease."""
+    q = VERBATIM_TAIL + "\nSunny lol. When did you become older than me old bot"
+    assert asker_message(q).startswith("Sunny lol")
+    assert provocation_level(q) == 1
+
+
+def test_a_real_insult_from_the_asker_still_scores():
+    q = VERBATIM_TAIL + "\nyou are a useless bot"
+    assert provocation_level(q) == 2
