@@ -1,0 +1,297 @@
+{
+  "pulse_date": "2026-09-21",
+  "window_label": "since-last-daily (2026-09-18T14:42)",
+  "themes": [
+    {
+      "theme": "energy driven policy tightening",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 4,
+        "skeptical": 2,
+        "neutral": 29
+      },
+      "consensus_view": "Banks agree central banks are raising interest rates to fight inflation caused by the Middle East energy shock, but they split on whether that shock lasts long enough to justify it, with Morgan Stanley and Academy seeing energy prices and rates staying higher while Allianz and JPMorgan expect the supply scare to fade as demand falls and stockpiles hold up.",
+      "facts_agreed": [
+        {
+          "claim": "Major central banks are tightening policy in response to energy-driven inflation, and desks expect the rate path to stay higher for now.",
+          "banks_for": [
+            "Lloyds Bank",
+            "UBS",
+            "Academy"
+          ],
+          "evidence_quotes": [
+            "most major central banks \u2013 with the notable exception of the Bank of England \u2013 tightening policy.",
+            "there will be an attempt to run a restrictive monetary policy",
+            "For now, I think the path for energy prices (and stocks) and rates (globally) is higher."
+          ]
+        },
+        {
+          "claim": "Geopolitical supply disruption has distorted energy and shipping markets enough that desks are building a higher risk premium into their baselines.",
+          "banks_for": [
+            "London Stock Exchange Group",
+            "Morgan Stanley"
+          ],
+          "evidence_quotes": [
+            "shipping markets have been distorted by geopolitical disruptions.",
+            "incorporate features of a higher oil risk-premium into the baseline."
+          ]
+        },
+        {
+          "claim": "Desks across the corpus treat energy price shocks as the live transmission channel from the Middle East conflict into inflation and policy rates.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Energy price shocks and non-linear inflation impact",
+            "oil price shock transmission",
+            "Euro area energy price passthrough inflation",
+            "long-end yields sensitivity to energy prices",
+            "ECB monetary policy and gas price scenarios"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the energy shock is persistent or temporary",
+          "banks_for": [
+            "Morgan Stanley",
+            "Academy"
+          ],
+          "for_evidence": "incorporate features of a higher oil risk-premium into the baseline.",
+          "banks_against": [
+            "Allianz Research",
+            "JPMorgan"
+          ],
+          "against_evidence": "we expect the shock to fade."
+        },
+        {
+          "claim": "whether the oil price premium is justified by actual physical tightness",
+          "banks_for": [
+            "Morgan Stanley"
+          ],
+          "for_evidence": "incorporate features of a higher oil risk-premium into the baseline.",
+          "banks_against": [
+            "JPMorgan"
+          ],
+          "against_evidence": "that $16 premium implies the market is pricing in the risk of an additional 4 mbd"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "megacap tech demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 31
+      },
+      "consensus_view": "Banks across the corpus treat spending on AI computing hardware and data centers as the engine of megacap tech demand, but only Goldman stakes a direction, calling the largest tech stocks the most bought name on its book and its highest conviction trade.",
+      "facts_agreed": [
+        {
+          "claim": "Desks consistently tie megacap tech demand to the money being spent building AI computing capacity rather than to end-user product demand.",
+          "banks_for": [
+            "Goldman Sachs",
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "AI infrastructure investment",
+            "AI infrastructure capex commitments",
+            "AI-driven capital expenditure cycle",
+            "AI infrastructure buildout",
+            "Hyperscaler capital investment"
+          ]
+        },
+        {
+          "claim": "Goldman reports the largest tech stocks were the most bought sector on its book and calls them the high conviction trade.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "MegaCap Tech (GSTMTMEG) +168bps led the way and continues to be the high conviction trade."
+          ]
+        },
+        {
+          "claim": "Desks track the borrowing that funds the AI buildout as a separate strand of the same theme.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "Hyperscaler AI infrastructure debt issuance",
+            "hyperscaler AI capex debt issuance",
+            "AI-related debt issuance",
+            "AI-related investment and issuance"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai infrastructure demand and investment",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 16,
+        "skeptical": 1,
+        "neutral": 7
+      },
+      "consensus_view": "Almost every desk in this set says spending on AI data centers, chips and power is still growing and still earning back more than it costs to fund, with the only real pushback coming from a Bank of America survey where a record share of investors say companies are spending too fast.",
+      "facts_agreed": [
+        {
+          "claim": "AI infrastructure spending is the corpus's highest-conviction demand story, and the argument has moved from whether the demand is real to how big and how long it runs.",
+          "banks_for": [
+            "Bank of America",
+            "UBS",
+            "Goldman Sachs",
+            "TS Lombard",
+            "Eastspring Investments"
+          ],
+          "evidence_quotes": [
+            "AI and digital infrastructure remain the firm's highest conviction investment themes.",
+            "discussions of this demand have moved beyond whether AI will create incremental demand",
+            "top performing themes of the year",
+            "Rising task volumes performed by agentic systems sustain demand for compute",
+            "The AI investment cycle remains well supported, with demand expanding beyond initial infrastructure build-out"
+          ]
+        },
+        {
+          "claim": "Banks accept heavy near-term cash burn at the big cloud operators because the money being spent still earns more than it costs to borrow.",
+          "banks_for": [
+            "UBS",
+            "Morgan Stanley",
+            "Bank of America"
+          ],
+          "evidence_quotes": [
+            "the return hurdle therefore remains wide enough to support continued investment.",
+            "negative free cash flow is perfectly fine provided that ROIC remains above the cost of capital.",
+            "We believe hyperscalers will prioritize capacity availability over near-term FCF optimization"
+          ]
+        },
+        {
+          "claim": "Electricity supply, not chip supply, is treated as the binding constraint on how fast the build-out can proceed.",
+          "banks_for": [
+            "Allianz Global Investors",
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "For the first time in three decades, global electricity demand is rising faster than economic output",
+            "discussions of this demand have moved beyond whether AI will create incremental demand"
+          ]
+        },
+        {
+          "claim": "The spending is broadening out past graphics chips into processors, raw materials, data center landlords and the cost of running models rather than training them.",
+          "banks_for": [
+            "BofA Securities",
+            "Morgan Stanley",
+            "Goldman Sachs",
+            "RBC Capital Markets"
+          ],
+          "evidence_quotes": [
+            "we continue to view agentic AI as a powerful demand accelerator that expands the CPU opportunity",
+            "AI is not just a semiconductor story, but increasingly a materials story",
+            "One call-out away from Semis / AI Infra has been the emergence of the \u201cInference Economy\u201d theme",
+            "Demand fundamentals affecting listed operators such as DLR, EQIX, IRM, and NXT remain robust"
+          ]
+        },
+        {
+          "claim": "AI capex is now large enough to move economy-wide numbers, from output growth to long-term interest rates.",
+          "banks_for": [
+            "Deutsche Bank",
+            "UBS",
+            "Northern Trust",
+            "Allianz Research"
+          ],
+          "evidence_quotes": [
+            "Each year of expected capex through 2030 exceeds the whole dot-com telecoms boom",
+            "AI capex will continue to drive global GDP, supporting the equities of direct and indirect beneficiaries.",
+            "The structural factors pushing up r* are unlikely to subside.",
+            "AI is a bull market for duration in both scenarios"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether companies are now spending too fast on the AI build-out",
+          "banks_for": [
+            "Bank of America"
+          ],
+          "for_evidence": "FMS investors say AI buildout \u201ctoo fast\u201d (record net 33% say companies overinvesting)",
+          "banks_against": [
+            "UBS",
+            "Goldman Sachs",
+            "Morgan Stanley"
+          ],
+          "against_evidence": "the return hurdle therefore remains wide enough to support continued investment."
+        },
+        {
+          "claim": "whether AI investment pushes long-term interest rates structurally higher or lower",
+          "banks_for": [
+            "Northern Trust"
+          ],
+          "for_evidence": "The structural factors pushing up r* are unlikely to subside.",
+          "banks_against": [
+            "Allianz Research"
+          ],
+          "against_evidence": "AI is a bull market for duration in both scenarios"
+        },
+        {
+          "claim": "whether to add exposure to the AI build-out at current levels",
+          "banks_for": [
+            "Bank of America",
+            "JPMorgan"
+          ],
+          "for_evidence": "AI and digital infrastructure remain the firm's highest conviction investment themes.",
+          "banks_against": [
+            "Goldman Sachs",
+            "BofA Global Research"
+          ],
+          "against_evidence": "We remain cautious on adding meaningful exposure to the segment."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "boj policy shift",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 0,
+        "neutral": 15
+      },
+      "consensus_view": "The Bank of Japan has started lifting interest rates and the desks covering it read the central bank as intending to keep going, so the open question is how far and how fast, not whether more hikes come.",
+      "facts_agreed": [
+        {
+          "claim": "The Bank of Japan has shifted to raising rates with the stated aim of holding inflation down, and is expected to keep tightening.",
+          "banks_for": [
+            "Goldman Sachs",
+            "TSL Research Group"
+          ],
+          "evidence_quotes": [
+            "the BOJ will continue to raise the policy interest rate and adjust the degree of monetary accommodation",
+            "Ueda explained a new focus on containing inflation rather than stimulating activity"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "fed monetary policy tightening",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Wells Fargo Economics'"
+    },
+    {
+      "theme": "us fiscal sustainability",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Wells Fargo Economics'"
+    },
+    {
+      "theme": "consumer resilience",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Deutsche Bank'"
+    },
+    {
+      "theme": "european data center investment",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Deutsche Bank'"
+    }
+  ]
+}
