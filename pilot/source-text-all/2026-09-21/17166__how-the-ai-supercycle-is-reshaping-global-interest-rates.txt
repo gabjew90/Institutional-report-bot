@@ -1,0 +1,835 @@
+[Page 1]
+1 
+ 
+ 
+In Summary 
+• The AI supercycle will pull long-term yields down in both the US and Europe, but for 
+very different reasons and by very different paths. We model this across five transmission 
+channels – three macro (neutral rate, inflation expectations, fiscal collateral) and two 
+micro (AI-driven duration supply and crowding-out) – applied to an AI upside and 
+downside scenario. Over a 10-year horizon the net effect is around −50bp for both regions 
+in the upside scenario (roughly +5pp of cumulated US potential growth, +1.6pp for the 
+eurozone), and a prolonged, smaller drag in the downside (−2.5pp and −1.3pp 
+respectively). The US result depends on AI productivity actually materializing to keep its 
+fiscal trajectory intact; the eurozone gets to the same place even without the AI dividend, 
+since its fiscal position doesn't need repairing in the first place. The US is the levered, 
+volatile expression of the AI trade; Europe is the safer one. 
+• The market has already priced the AI productivity story for the US, but not the fiscal 
+relief that should come with it. The USD 5y1y forward has moved from ~3.0% to 4.9% since 
+mid-2025 some 150bp above our median neutral-rate estimate and 90bp above the top 
+of our estimate range, and more than the full +67bp our model assigns to the Ai enhanced 
+neutral-rate range over the next decade. What isn't priced at all is the fiscal collateral 
+improvement, worth −85bp to the US 10Y by the end of the horizon. Either the market 
+doesn't believe AI will repair the fiscal trajectory, or it's pricing a less favorable version of 
+the same story with higher AI-driven job displacement pushing up social protection and 
+unemployment spending enough to offset the tax-revenue gain. 
+• Fiscal collateral – the extent to which a stronger economy makes a government's debt 
+easier to repay – is what actually decides the outcome, in both scenarios and both 
+regions. The transatlantic rates converging seems counterintuitive at first view as Europe's 
+growth impulse is a third the size of the US. But its fiscal position benefits more, because 
+the improvement lands on a stable debt path rather than the expansionary US path. For 
+every point of growth AI delivers, Europe's fiscal position improves about 1.6 times more 
+than that of the US. 
+• The way AI interacts with interest rate isn't a straight path, and its shape differs on each 
+side of the Atlantic. Both curves rise well above their eventual resting point before 
+reversing, the US 10Y's round trip is 135bp (versus 80bp for the eurozone) even though the 
+net 10-year effect is only −50bp for both. The peak trade also looks different in each 
+market: a butterfly in the US (buy the belly, sell the wings, as front-loaded micro effects hit 
+the wings while macro effects lag into the belly) versus a flattener in Europe. By the end of 
+the period both curves converge to a similar, milder flattening. 
+ 
+Ludovic Subran 
+Chief Investment Officer & Chief 
+Economist 
+ludovic.subran@allianz.com 
+ 
+Patrick Krizan 
+Senior Investment Strategist 
+patrick.krizan@allianz.com 
+ 
+Yao Lu 
+Investment Strategist 
+yao.lu@allianz.com  
+  
+ 
+Allianz Research | 17 September 2026 
+How the AI supercycle is reshaping global interest 
+rates 
+
+
+[Page 2]
+2 
+ 
+AI is no longer only a sector story, but a macro-scale claim on the economy. 
+Artificial intelligence (AI) has become a major macroeconomic force. AI investment will pass USD1tn globally in 
+2026, of which more than USD500bn in the US alone. That is 1.8% of US GDP and 0.9% of world GDP, on a path to 
+2.8% and 1.4% respectively by 2028. In terms of growth, tech and data center activity will represent 36%-50% of US 
+year-on-year growth this year. Globally, the direct AI investment impulse is worth roughly 10% of global growth. 
+From the financial markets side, AI has mostly been examined through the lens of equities (sector analysis, 
+valuation, concentration risk), or private credit  (risk profile and risk pricing of AI investments types (see our latest 
+reports here linked here). This paper asks how the AI supercycle transmits into interest rates.. 
+US and eurozone vary in the level of macro impact, but share similar profile 
+We model the effect against a baseline without AI effects, measuring the difference versus an AI upside scenario 
+and one in which AI shifts to the downside. We use several published estimates to derive scenarios for the impact 
+on potential growth, trend productivity and trend employment. We define an upside scenario with cumulated 
+potential growth gains of +4.94pp in the US and +1.60pp in the eurozone; in the downside we assume -2.47pp in the 
+US and -1.35pp in the eurozone. The US macro scenario shows much greater sensitivity to AI, while Europe has less 
+to gain in terms of productivity. The pattern is similar for inflation, where in the upside scenario the US faces a 
+stronger supply- and energy-driven uptick, before higher productivity gains take over and reverse the AI impact into 
+a disinflationary trend. Inversely in the negative scenario, the negative AI demand shock brings US inflation further 
+down than it does in the eurozone (Table 1). 
+Table 1: Macroeconomic scenarios 
+Scenario 
+US Δ potential growth 
+(pp) 
+EA Δ potential 
+growth (pp) 
+US peak inflation 
+EA peak inflation 
+Downside  
+−2.47 
+−1.35 
++0,35 
++0,25 
+Upside 
++4.94 
++1.60 
+-0,35 
+-0,25 
+ 
+Sources: Allianz Research 
+ 
+ 
+Our framework rests on five major transmission channels 
+We identify two major channels of transmission: 1) a macroeconomic channel through potential growth, inflation 
+dynamics and the fiscal position (plus a spillover effect for the eurozone), and 2) a microeconomic channel through 
+the changes AI financing brings to the structure of fixed income markets. The latter has gained importance recently 
+as market participants have discussed the possibility that AI debt issuance was competing with US government debt 
+and therefore contributing to driving up yields. The macro channels capture the changes in the way long-term rates 
+discount economic variables. The micro channels capture how the AI funding model (market size, self-funded vs 
+debt issuance) affects the price of duration. Macro and micro channels work on different lags, and their effects can 
+change sign over our 10-year forecast horizon. Generally, the macro channels affect the expected rate component 
+of long-term rates, while micro channels act on the term premium. The exception is the fiscal position which, despite 
+being a macro channel, affects the term premium component of long term government bond yields. 
+1) Neutral rate r* is the real policy rate at which the economy neither overheats nor stalls. It is the level the 
+expected path of short rates is anchored to. If AI raises trend productivity, capital earns more, firms want to 
+invest more, and the neutral rate balancing saving against investment rises. A lasting productivity gain 
+therefore lifts r* which feeds through the entire yield curve. It has a stronger effect at the front end as it 
+transmits through expected short rates, and productivity gains have a long-term mean reverting trend. The 
+effect is inverted in case AI would fail to produce productivity gains in an economy facing a debt overhang 
+from AI investments.  
+2) For inflation expectations we use an adaptive expectation approach where the estimation windows adjust 
+with previous estimation errors. As AI has a strong supply impact at first, we get upside push in expectations 
+
+
+[Page 3]
+3 
+ 
+that fades with time when productivity gains take over. As the phase in becomes smoother, the change in 
+expectation is less pronounced to the downside. These factors also influence the expected rate component 
+of government bond yields. 
+3) Fiscal collateral is defining the fundamental value of sovereign bonds as discounted claims on future 
+primary surpluses. The channel captures its change in response to an AI-driven up- or downside productivity 
+shock. A productivity shock has an asymmetric effect: tax revenues improving the fiscal position are elastic 
+to GDP, while the largest spending lines (pensions, benefits, debt service) are sticky.  
+4) Duration supply is a market-microstructure model tracking AI capex as a generator of new duration, 
+through both long-dated IG bonds and pay-fixed swap structures in private credit. The curve effect sits at 
+the long end as 65% the supply lands beyond 10 years. The swap spread effect depends on fixed-rate 
+issuance, which cheapens the sovereign against swaps while pay-fixed hedging from private credit, 
+enrichens it. Duration supply affects the term premium, it is more pronounced at the longer end of the curve. 
+5) Crowding Out is a sector-level displacement model affecting long-term rates via the swap-market. 
+Financial institutions issue fixed-rate bonds and then ask for floating, receiving fixed in swaps. That receive-
+fixed leg is how financial issuance moves duration out of the sovereign market. AI borrowers sit on the 
+opposite side of the swap curve, paying fixed rather than receiving it. So both channels lift swap yields 
+against the sovereign: one adds fixed-payer supply, the other removes fixed-receiver demand. Like 
+duration supply, crowding-out affects the term premium at the longer end of the curve. 
+6) Spillover Effect is added for the eurozone, acting mainly at the long end, where global term premia and 
+rate levels remain structurally correlated and anchored to the US benchmark. It captures how AI effects 
+propagate to global fixed income markets via the US Treasury market, even where AI exposure is limited. 
+ 
+Table 2: AI transmission channels to interest rates  
+Side 
+Channel 
+Mechanism 
+Curve 
+impact 
+Direction in 
+Upside 
+Direction in 
+Downside 
+Model 
+Effect on 
+Macro 
+Neutral rate r* 
+Higher trend 
+productivity raises the 
+return on capital and 
+lifts the equilibrium real 
+rate 
+Short end 
+Up 
+Down 
+Holston, 
+Laubach & 
+Williams (2023), 
+Ferreira, Lott & 
+Richards (2025) 
+Expected rates 
+Macro 
+Inflation 
+expectations 
+The capex boom is a 
+demand shock before it 
+is a supply shock; 
+productivity offsets 
+arrive later 
+Short end to 
+Belly  
+Up, then down 
+Up, then down 
+Adaptive 
+expectation 
+model, 
+Barthalon 
+(2014) 
+Expected rates 
+Macro 
+Fiscal collateral 
+Productivity growth lifts 
+the PV of future primary 
+surpluses; government 
+debt has a positive 
+productivity beta 
+Belly to Long 
+end 
+Down 
+Up 
+Kung, Lustig & 
+Paron (2025), 
+Gómez-Cram, 
+Kung & Lustig 
+(2025) 
+Term premium 
+Macro 
+Spillover  
+(only eurozone) 
+International correlation 
+structure 
+Belly to Long 
+end 
+Up 
+Down 
+ 
+Expected rates 
++ Term 
+Premium 
+Micro 
+Duration 
+Supply 
+Long-dated AI bond 
+supply prices duration. 
+Floating private-credit 
+borrowing swapped to 
+long fixed via pay-fixed 
+swaps 
+Long end 
+Up / steepening 
+ 
+Up / steepening 
+ 
+De Vere, 
+Ramaswamy & 
+Searls (2026) 
+Term Premium 
+Micro 
+Crowding out 
+AI issuers displace 
+financials, who recycle 
+duration back into the 
+sovereign market via 
+receive-fixed hedging,  
+Long end 
+Up / steepening 
+ 
+Up / steepening 
+ 
+De Vere, 
+Ramaswamy & 
+Searls (2026) 
+Term Premium 
+ 
+Sources: Allianz Research 
+
+
+[Page 4]
+4 
+ 
+The AI super cycle is a bull market for duration, but it is not a directional trade 
+Our results show that AI is a bull market for duration in both scenarios, but the path matters. In the upside scenario, 
+AI lowers long-term rates by around 50bp over a 10-year horizon in both the US and the eurozone. In the downside 
+scenario, rates are also held down for a prolonged period. In both cases, however, yields rise before they fall: the 
+US 10Y makes a 135bp round trip in the upside and 72bp in the downside, against 80bp and 41bp for the eurozone. 
+The AI effect on rates is therefore not a long-term directional trade, the right timing is essential. The timing depends 
+on which channels dominate when, how long they take to act and where on the curve they bite hardest. That makes 
+the shape of the curve as important as the yield level for positioning (Figure 1). 
+Figure 1: Net AI effect on the 10Y yield – Upside and Downside scenarios 
+in basis points 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Sources: LSEG Datastream, Allianz Research 
+ 
+The end points for the US and the eurozone are remarkably close, even though the two start from very different 
+positions in the AI race. The fiscal collateral channel explains why. Europe gets only a moderate growth impulse, 
+but it lands on a stable fiscal position, which improves the value of its fiscal collateral significantly. The US gets a 
+much larger growth impulse, yet the gain is partly offset by continued fiscal expansion over the next 10 years (we 
+use the CBO forecast of debt/GDP rising 20pp over the next 10 years). With a stable debt path, the increase in US 
+fiscal collateral value would subtract 125bp rather than 85bp, lifting the total effect to -90bp and leaving the 
+eurozone far behind. The transatlantic AI rates convergence is thus a late-cycle outcome: at the peak, the AI effect 
+is more than twice as large in the US as in the eurozone. 
+ 
+The US curve rotates between the peak and the end of period due to micro effects 
+At the peak of the upside scenario, the US curve shifts up, but with the middle of the curve (belly) holding up better: 
+the 2s30s slope barely moves while 2s5s flattens 13bp and 5s30s steepens 12bp. The peak AI trade on the US curve 
+is therefore a butterfly (buy the belly, sell the wings). In the eurozone the peak AI effect on the curve is a flattener 
+instead: 2s30s −20bp, with the 2Y up 51bp against the 30Y up 31bp. This shape difference is driven by the stronger 
+and front-loaded US micro channels, set against macro channels that arrive with a lag. In addition to the time lag, 
+macro channels (neutral rate, inflation expectations) act mainly at the short end, while the micro channels hit the 
+long end because AI issuance is long-dated. The 5Y sits in between: it absorbs little of the duration-supply and 
+crowding-out pressure, yet is long enough to benefit from the improving fiscal collateral effect on its term premium. 
+By the end of the period, both curves flatten to a similar degree as fiscal collateral value becomes the dominant 
+force, pulling the belly and the long end down while the 2Y is barely affected (US 2s30s −41bp, EA −30bp) In the 
+Peak: +88bp
+Final: -47bp
+Peak: +34bp
+Final: -45bp
+-60
+-40
+-20
+0
+20
+40
+60
+80
+100
+2026
+2027
+2028
+2029
+2030
+2031
+2032
+2033
+2034
+2035
+2036
+US upside
+Eurozone upside
+US downside
+Eurozone downside
+
+
+[Page 5]
+5 
+ 
+downside scenario the curve steepens instead, with the slope rising in the 5-10y segment within three years – first 
+more strongly in the US, then converging towards to the eurozone the end of the period. In a AI downside ends the 
+curves would steepen in both regions as the front end collapses on policy easing while the long end sells off on fiscal 
+deterioration (US 2s30s +41bp, EA +24bp) (Figure 2 & 3 ). 
+Figure 2: Net AI effect on curve shapes – Peak vs Terminal values 
+in basis points 
+ 
+Peak in 5 years - Upside scenario 
+ 
+                
+Peak in 5 years - Downside scenario  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Terminal in 10 years - Upside scenario 
+ 
+ 
+Terminal in 10 years - Downside scenario            
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Sources: LSEG Datastream, Allianz Research 
+ 
+ 
+Figure 3: Net AI effect curve shapes – Butterfly on the US curve vs flattener on the euro curve 
+in basis points 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+*5Y butterfly = 2 x 5Y minus 2Y minus 30Y. Negative means the belly richens against the wings. 
+Sources: LSEG Datastream, Allianz Research 
+ 
+ 
+25
+50
+75
+100
+2Y
+5Y
+10Y
+30Y
+US
+Eurozone
+-60
+-40
+-20
+0
+20
+2Y
+5Y
+10Y
+30Y
+US
+Eurozone
+-65
+-40
+-15
+10
+2Y
+5Y
+10Y
+30Y
+US
+Eurozone
+-40
+-20
+0
+20
+2Y
+5Y
+10Y
+30Y
+US
+Eurozone
+-1
+-20
++48
++13
+-25
+-2
+-27
+-1
+-41
+-30
++41
++24
+-19
+-3
+-4
+-1
+-60
+-40
+-20
+0
+20
+40
+60
+US
+Eurozone
+US
+Eurozone
+US
+Eurozone
+US
+Eurozone
+2032 peak
+2036 terminal
+5Y butterfly
+2s30s slope
+Upside
+Downside
+Upside
+Downside
+
+
+[Page 6]
+6 
+ 
+Microeconomic channels and inflation move first, the fiscal channel decides the end point 
+Having looked at the way AI effect the changes in yield levels and the influences the shape of the curves, we now 
+turn to the decomposition of the moves: which channels drives the yield and curve dynamics, how much each 
+contributes and when. The sequence is the same in both scenarios: micro channels and inflation expectations drive 
+rates early on, while the fiscal channel and the neutral rate r* only kick in later.  
+In the upside scenario, the peak arrives when productivity gains lift r* while inflation expectations are still elevated 
+and the micro channels are still at work but before higher growth has significantly fed through to tax revenues rising 
+the value of the fiscal collateral. For the US at the peak in 2032, r* alone contributes +67bp against −18bp from the 
+fiscal channel. By the end point the picture reverses: the fiscal channel contributes −85bp, r* slows down to +42bp 
+and inflation expectations flip to −18bp as the disinflationary effect of productivity gains sets in. Europe follows the 
+same sequence at roughly half the amplitude, reflecting its lower sensitivity to AI. 
+In the downside scenario, rates first move up, driven by inflation expectations on the back of AI investment and 
+energy demand. In the US, the micro channels add another 20-30bp from AI-related issuance. The tipping point is 
+in 2031: productivity gains fail to materialize and the debt overhang starts weighing on growth, which later erodes 
+tax revenues, increases government spending and reduces value of the fiscal collateral. In the eurozone the micro 
+channels are negligible, but the spillover from US rates matters. 
+The greater US sensitivity also shows up in the gross channel activity, i.e. the sum of all channel contributions in 
+absolute terms. In the upside it amounts to 158bp in the US against 78bp in Europe for a broadly similar final 
+outcome. In other words, much more happens under the surface in the US, but most of it cancels out: only 30% of the 
+US channel activity is left once the channels are netted against each other, compared with 58% in Europe. The AI 
+journey is therefore likely to be bumpier for US rates than for eurozone rates, even if both end up in a similar place. 
+The AI effect should therefore translate into relatively higher US rates volatility (Figure 4 & 5). 
+Figure 4: Channel contributions to the 10Y  - Upside and Downside scenario 
+in basis points 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 7]
+7 
+ 
+Figure 5: Channel contribution at every point of the curve: peak and terminal (basis points) 
+In basis points 
+ 
+ 
+ 
+The fiscal channel has the last word – and the US needs the AI dividend more than Europe 
+We find no transatlantic divide in the long-term AI effect on rates. At the end of the period the US and eurozone 10Y 
+effects are only a few basis points apart in both scenarios. But the path to that point differs materially in level, drivers 
+and timing. The convergence of the end points is attributable almost entirely to fiscal channel. Fiscal collateral 
+contributes −85bp to the US terminal effect in the upside and −46bp to the eurozone, in both cases more than the 
+channels working in the opposite direction, principally the neutral rate r* effect. 
+The mechanism is the productivity beta of government debt. A positive productivity shock raises tax revenues by 
+more than the GDP gain, so the present value of future primary surpluses improves and the bondholder is effectively 
+long AI productivity. Europe is disadvantaged here, as it tax revenues are less sensitive to GDP (also because AI 
+growth is tilted versus US and less taxable by European governments) but its spending is also more sticky, as Europe 
+is more exposed to negative labor market effects caused by AI. On the other hand, the fiscal trajectory of Europe is 
+more favorable, with a rather stable debt to GDP ratio projection of 86% for the next 10 years. Over the same time 
+period, the CBO sees US debt growing to 20pp of GDP. 
+What differs between the two markets is the debt path on which that improvement lands: deteriorating in the US, 
+stable in the eurozone. The US is therefore the more dependent of the two on the AI productivity call actually being 
+realized, as it needs the additional revenue to sustain its current expansionary fiscal stance, whereas the eurozone 
+would maintain its debt trajectory even without the AI dividend. 
+On our calibration, Europe’s fiscal-collateral beta is 1.6× the US per point of growth delivered, notwithstanding the 
+more favorable US elasticities (higher revenue elasticity, lower spending elasticity). The difference lies in the 
+denominator: a smaller debt stock (EUR14tn against USD40tn), a lower starting yield, a lower baseline real rate  
+-150
+-100
+-50
+0
+50
+100
+150
+2Y
+5Y
+10Y
+30Y
+2Y
+5Y
+10Y
+30Y
+US upside
+-150
+-100
+-50
+0
+50
+100
+150
+2Y
+5Y
+10Y
+30Y
+2Y
+5Y
+10Y
+30Y
+Eurozone upside
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+50
+2Y
+5Y
+10Y
+30Y
+2Y
+5Y
+10Y
+30Y
+US downside
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+50
+2Y
+5Y
+10Y
+30Y
+2Y
+5Y
+10Y
+30Y
+Eurozone downside
+2032 peak
+2036 terminal
+2032 peak
+2036 terminal
+2032 peak
+2036 terminal
+2032 peak
+2036 terminal
+
+
+[Page 8]
+8 
+ 
+and a flat baseline debt path against a deteriorating one, with the CBO projecting US debt rising 20pp of GDP by 
+2036. Europe is therefore the higher-beta expression of the AI fiscal call. But the result is conditional on the AI rent 
+being booked in the US; were it to leak offshore, the US fiscal leg would weaken materially and Europe’s relative 
+advantage would widen further (Figure 6). 
+Figure 6: Europe has a 1.6x fiscal collateral beta per point of growth 
+ 
+ 
+Sources: LSEG Datastream, Allianz Research 
+The neutral rate: bigger in the US, more decisive in Europe 
+The r* channel is larger in the US but more decisive in Europe. In the US upside it is the biggest single positive 
+contribution at both moments, +67bp at the 2032 peak and +42bp at the 2036 end point, but it sits inside 158bp of 
+gross channel activity and is therefore largely netted away by the other channels. In the eurozone it is effectively 
+the only positive channel left at the end of the period, at +15bp. Both paths rise with a delay, starting two to three 
+years from now. The US path runs much higher but also mean-reverts more strongly later on, so the gap to the 
+eurozone, which follows a smoother path, narrows over time. In the downside the paths are less pronounced and 
+the two regions are closer together: the absolute impact is stronger in the US, while the eurozone shows the higher 
+sensitivity relative to its own starting point. 
+Figure 7: AI effect on neutral rate r* in different scenarios 
+In basis point 
+ 
+ 
+ 
+* based on neutral rate models from Holston, Laubach & Williams (2023) and Ferreira, Lott & Richards (2025) 
+Sources: LSEG Datastream, Allianz Research 
+ 
+AI issuance is affecting the US treasury market, the euro market is untouched for now 
+The micro channels are a US story: the US dominates AI-related debt issuance and duration supply. In the eurozone 
+the effect is still small, with EUR-denominated AI issuance accounting for around 1% of the corporate benchmark 
+-100
+-50
+0
+50
+-4.0
+-2.0
+0.0
+2.0
+4.0
+6.0
+Fiscal collateral effect on 10Y 
+(bp)
+AI productivity shock (pp)
+US fiscal (bp)
+EA fiscal (bp)
+-50
+0
+50
+100
+2026
+2027
+2028
+2029
+2030
+2031
+2032
+2033
+2034
+2035
+2036
+US upside
+Eurozone upside
+US downside
+Eurozone downside
+
+
+[Page 9]
+9 
+ 
+indices and 10% share of global AI-related debt issuance. But it could change if reverse-Yankee AI bond issuance 
+picks up in the coming years. On our estimates, however, euro issuance volumes would have to be around 10 times 
+higher, increasing by min 20-25% p.a. to move eurozone rates to a comparable degree. Direct duration supply 
+remains the dominant one at the peak. Together they add 34bp to the US 10Y at the peak, against 25bp today, and 
+both steepen the curve as they act mainly on longer maturities. The effect on asset swap spreads (ASW) is positive 
+through the direct pay-fixed leg, but negative through the crowding-out leg (Figure 8). 
+Figure 8: Peak impact of AI micro economic channels on 10y yields, slope and ASW 
+In basis points 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+* based on De Vere, Ramaswamy & Searls (Dallas Fed, Feb 2026) 
+Sources: LSEG Datastream, Allianz Research 
+The market prices the AI productivity gain, but not the fiscal relief that should come with it 
+In the US, the rates market has already fully priced the productivity leg of the AI story. The 5y1y forward swap has 
+climbed from 3.0% in mid-2025 to 4.9%, against a median neutral-rate estimate of 3.4% and range of 2.7-4.0%, which 
+puts the market-implied neutral rate some 150bp above the median and 90bp above the top of the band. Our AI 
+models would add +67bp to current estimates pushing the range to 3.3-4.67% – a range the market already exceeds. 
+What is missing from the current AI narrative pricing is the other side of the same story: the fiscal collateral 
+improvement that these productivity gains should bring, worth −85bp on the US 10Y over the next ten years. That 
+leg arrives with a much longer lag, as it takes a visible turn in tax receipts to shift the narrative (Figure 9). We would 
+therefore read the current level as a temporary mispricing rather than a challenge to the fiscal leg of the AI story. 
+The front-loading of the productivity channel builds up correction potential. 
+Figure 8: Markets have already priced in the entire AI productivity gains for the next 10 years 
+In percentage points 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Notes: neutral rate range based on Lubrik & Matthes (2015), Holston, Laubach & Williams (2023), Ferreira, Lott & Richards (2025), Laubach & 
+Williams (2003), Hördahl & Tristani (2014), Del Negro et al. (2017) and Allianz proprietary model ; AI enhanced neutral rate based on Holston, 
+Laubach & Williams (2023) and  Ferreira, Lott & Richards (2025) 
+Sources: LSEG Datastream, Allianz Research 
+21.2
+13.4
+7.4
+6.6
+-12.4
+3.4
+2.1
+1.2
+1.3
+-2.1
+-25
+-5
+15
+35
+Duration supply
+Crowding-out
+10s30s
+steepening
+30Y ASW direct +
+pay-fixed
+30Y ASW crowd-
+out leg
+US
+Eurozone
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+5.5
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+Market Neutral rate (5y1y Fwd Swap)
+r* Median
+r* Max/Min
+r* Median + AI Effect next 10y
+r* + AI Effect Min/Max
++67bp 
+increase 
+over 10y 
+due to AI  
+effects
+
+
+[Page 10]
+10 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+These assessments are, as always, subject to the disclaimer provided below. 
+FORWARD-LOOKING STATEMENTS 
+The statements contained herein may include prospects, statements of future expectations and other 
+forward-looking statements that are based on management's current views and assumptions and involve 
+known and unknown risks and uncertainties. Actual results, performance or events may differ materially from 
+those expressed  
+or implied in such forward-looking statements.  
+Such deviations may arise due to, without limitation, (i) changes of the general economic conditions and 
+competitive situation, particularly in the Allianz Group's core business and core markets, (ii) performance of 
+financial markets (particularly market volatility, liquidity and credit events), (iii) frequency and severity of 
+insured loss events, including from natural catastrophes, and the development of loss expenses, (iv) mortality 
+and morbidity levels and trends,  
+(v) persistency levels, (vi) particularly in the banking business, the extent of credit defaults, (vii) interest rate 
+levels, (viii) currency exchange rates including the EUR/USD exchange rate, (ix) changes in laws and 
+regulations, including tax regulations, (x) the impact of acquisitions, including related integration issues, and 
+reorganization measures,  
+and (xi) general competitive factors, in each case on a local, regional, national and/or global basis. Many of 
+these factors may be more likely to occur, or more pronounced, as a result of terrorist activities and their 
+consequences. 
+NO DUTY TO UPDATE 
+The company assumes no obligation to update any information or forward-looking statement contained 
+herein, save for any information required to be disclosed by law.  
