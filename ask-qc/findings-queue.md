@@ -578,3 +578,17 @@ refusal on a disguised slur-regeneration request (14:32:10), and a second
 sighting of a stray `LINE`-symbol tool argument with no visible-answer
 impact (21:21:04, first seen 2026-09-19 as part of a `[BK, LINE]` call) —
 worth a look if a third sighting shows up.
+
+## 2026-09-21
+
+no findings — 22/23 CLEAN, 1 CONCERN (23:30:07, Sam: Cameco revenue
+quoted as $2.45B vs. the actual ~$2.54B USD FY2025 figure, ~3.5% low with
+no hedge). Not filed as a FAIL bucket item — same order of magnitude,
+real sources cited, and not mechanically checkable (no revenue-tolerance
+class exists or is worth building for a single few-percent miss). Five
+other WEB/FACT claims were independently spot-checked against live search
+(Pentagon/Jake-and-Logan-Paul story, Tesla Roadster reservations + FAA
+McGregor TFR, 1982 and current SPR barrel levels, total money-market fund
+assets) and all came back accurate, in the SPR/money-market cases matching
+the real reported figures almost exactly. Full reasoning in
+`pulse-data/ask-qc/2026-09-21.claude.md`.

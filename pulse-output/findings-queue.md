@@ -835,3 +835,78 @@ Not filing a fresh queue item for the staleness itself, per the
   `final_validation.json` flagged twice elsewhere (the `35%` and
   `4.744%` soft findings). Worth a follow-up session check against the
   full per-PDF JSON before treating it as confirmed either way.
+
+## 2026-09-22 — headless QC on 2026-09-22T14-06-05Z
+
+- **deterministic-fixable** — the adversarial soft-repair budget is one
+  pass per run regardless of round, so a soft finding that first
+  appears after the soft pass is spent (or that recurs after being
+  "fixed") is recorded but never repaired. Today's `overstated-claim`
+  on "No desk is calling a top" was raised in R2, R3 and R4 and shipped
+  unfixed for exactly this reason (`scripts/pulse_driver.py:508`), the
+  third occurrence of this soft-finding kind in the trailing window
+  (09-18, 09-21, 09-22). Independently confirmed false against the
+  corpus: two HIGH-CONVICTION 1-bank skeptical themes (`market breadth
+  deterioration` — The Bear Traps Report, `ai catastrophe risk` — One
+  River) plus a third source not previously logged — BTIG's "Deep in
+  the Tranches" explicitly compares current NYSE downside-volume
+  breadth to March 2000/November 2007/November 2021 cycle tops. Fix
+  (STEP 7's shape, independently endorsed): fingerprint softs by kind +
+  quote prefix in `gate_adversarial`, allow a second soft-repair pass
+  when a fingerprint recurs across rounds, no change to the hard path.
+- **deterministic-fixable** — `_deadline_ok` in
+  `docs/superpowers/routines/synthesis-routine.md:1316` reads
+  `pred.get('deadline')`, but the adjudication schema
+  (`ai_analysis/prompts.py:376`) emits the field as `by_when`. Verified
+  directly in both files (not just STEP 7's account): `.get('deadline')`
+  returns `None` on every entry, so 100% of `falsifiable_predictions`
+  are filtered on every run. This run: all 17 entries across 4 themes
+  dropped, and one theme (`energy supply shock`) was separately
+  discarded by an earlier rule reading a bank name off a prediction
+  Rule 6 was about to delete unread. Fix: `pred.get('by_when') or
+  pred.get('deadline')`, plus reordering so Rule 6 runs before the
+  bank-whitelist rule.
+- **prompt-session** — RECAP staleness: `pulse-context/latest.json` was
+  dumped once at 07:31 UTC and never refreshed; the pulse posted at
+  ~14:06–14:41 UTC (396 min later) with every live level still
+  timestamped "as of roughly 3:30 AM ET" and the RECAP written in
+  pre-market voice for a pulse that posts an hour after the open.
+  Confirmed via `latest.json`'s own `dumped_at_utc` and `now_label`
+  fields against the archive filename's UTC timestamp. STEP 7's
+  proposed fix: re-fetch context at STEP 2.5 when `age_min > 75`
+  (reusing STEP 2.2's fetch code), only emit the stale-snapshot note if
+  the refreshed dump is still stale, plus an `ops_alert_sync()` page
+  from the dump-job watchdog timeout path
+  (`github_bridge/jobs.py:135`) since ~26 consecutive ticks produced no
+  commit and nobody was paged.
+- **prompt-session** — EDIT's bank-citation cap
+  (`ai_analysis/prompts.py:1523`, "at most 3 distinct bank names per
+  theme body") is deleting single-bank-attached-to-one-figure citations,
+  not just roll-call meta-narration. This run: 6 named houses (HSBC,
+  One River, Northern Trust, RBC, Société Générale, The Bear Traps
+  Report) went from present in DRAFT to zero citations in the final,
+  each attached to a distinct data point (the Warsh yield-driver bullet,
+  term premium vs. investment-grade spreads, the 66GW construction
+  figure, 60% of debt maturing inside four years, the source-
+  concentration disclosure on the energy brief, and the $KWEB call).
+  Independently confirmed the Warsh bullet's corpus basis — it is the
+  only place in the corpus where the Fed itself, not a bank, names
+  hyperscaler capital competition as a yield driver, and it is now
+  absent from the MAIN EVENT's causal claim. Two consecutive runs
+  (09-21, 09-22) show this same EDIT-deletes-DRAFT's-compliance
+  pattern; STEP 7's diagnosis (EDIT's prompt carries zero
+  theme-coverage-contract annotations, so it has no way to know a
+  citation is contractual) is independently plausible and unrefuted.
+- **observation** — `theme_coverage` in `pulse-context/latest.json`
+  gives `ai infrastructure cycle: 14 banks`; the generation-time
+  `edit-prompt.txt`'s ADJUDICATED THEMES block gives the same theme as
+  `18 banks` (same 6/0/12 support split). Unlike the 09-21 entry (a
+  genuinely stale re-dump 6h after generation with a mismatched theme
+  roster), today's `dumped_at_utc` matches the press-time note exactly,
+  so this is very likely the same single dump, not a later overwrite —
+  plausibly a pre- vs. post-adjudication bank-count difference
+  (cross-bank-reference reconciliation adding banks after
+  `theme_coverage` is computed) rather than a data-integrity bug. Not
+  traced to a specific code path today; worth a follow-up before citing
+  `theme_coverage` bank-counts for anything more precise than roster
+  membership.
