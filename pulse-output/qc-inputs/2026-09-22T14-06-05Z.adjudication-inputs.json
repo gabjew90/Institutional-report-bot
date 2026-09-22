@@ -1,0 +1,3628 @@
+{
+ "ai infrastructure cycle": {
+  "theme": "ai infrastructure cycle",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 6,
+   "skeptical": 0,
+   "neutral": 12
+  },
+  "theme_stances": [
+   {
+    "source": "UBS",
+    "theme": "ai infrastructure",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "AI capex is driving global GDP and supporting direct and indirect beneficiaries.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "AI capex will continue to drive global GDP, supporting the equities of direct and indirect beneficiaries."
+   },
+   {
+    "source": "Bank of America",
+    "theme": "hyperscaler capex expansion",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Hyperscalers must prioritize capacity availability to meet supply-constrained demand for AI training and inference.",
+    "primary_instruments": [
+     "GOOGL",
+     "AMZN",
+     "META"
+    ],
+    "vs_consensus": "",
+    "evidence": "We believe hyperscalers will prioritize capacity availability over near-term FCF optimization"
+   },
+   {
+    "source": "Eastspring Investments",
+    "theme": "ai infrastructure cycle",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The AI investment cycle remains well supported by visible demand from hyperscalers, sovereign AI, and enterprise adoption.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The AI investment cycle remains well supported, with demand expanding beyond initial infrastructure build-out"
+   },
+   {
+    "source": "BofA Securities",
+    "theme": "agentic ai compute demand",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Agentic AI workloads create a new, massive demand for CPU-dense infrastructure that is additive to existing GPU-heavy clusters.",
+    "primary_instruments": [
+     "AMD",
+     "NVDA",
+     "INTC"
+    ],
+    "vs_consensus": "",
+    "evidence": "we continue to view agentic AI as a powerful demand accelerator that expands the CPU opportunity"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "hyperscaler capex cycle",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Negative FCF is desirable if investments earn returns above the cost of capital.",
+    "primary_instruments": [
+     "AMZN",
+     "GOOGL",
+     "MSFT",
+     "META",
+     "ORCL"
+    ],
+    "vs_consensus": "",
+    "evidence": "negative free cash flow is perfectly fine provided that ROIC remains above the cost of capital."
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "ai infrastructure",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "AI is a multi-year materials super-cycle story where supply tightness in high-end components will drive earnings leverage.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "AI is not just a semiconductor story, but increasingly a materials story"
+   },
+   {
+    "source": "RBC Capital Markets",
+    "theme": "datacenter demand",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Demand fundamentals remain robust with favorable earnings and raised multi-year forecasts.",
+    "primary_instruments": [
+     "DLR",
+     "EQIX",
+     "IRM"
+    ],
+    "vs_consensus": "",
+    "evidence": "Demand fundamentals affecting listed operators such as DLR, EQIX, IRM, and NXT remain robust"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI deployment infrastructure investment",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI deployment infrastructure investment"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure buildout capital competition",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure buildout capital competition"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-related capital expenditure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-related capital expenditure"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-related business investment boom",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-related business investment boom"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "GenAI infrastructure spending",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "GenAI infrastructure spending"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI investment boom",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI investment boom"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US AI-related investment boom",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US AI-related investment boom"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-related investment capex trends",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-related investment capex trends"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI infrastructure financing requirements",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI infrastructure financing requirements"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "ai infrastructure cycle",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-capex trade",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-capex trade"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "MSCI",
+    "figure": "18%",
+    "metric": "Global real estate investment volume growth YoY",
+    "context": "2Q26, USD terms"
+   },
+   {
+    "source_bank": "Cliffwater",
+    "figure": "1.73%",
+    "metric": "Non-accrual rate (Cliffwater Direct Lending Index)",
+    "context": "June 2026, down from 1.85% in March 2026"
+   },
+   {
+    "source_bank": "MBA",
+    "figure": "4.37%",
+    "metric": "Seasonally adjusted delinquency rate",
+    "context": "Q2, down 0.07% from Q1"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$35B",
+    "metric": "Initial XPV tranche value",
+    "context": "Initial 1GW+ tranche value"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$29B",
+    "metric": "Maximum loss exposure on initial tranche",
+    "context": "Maximum loss exposure on initial $35B XPU tranche"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$370B",
+    "metric": "Peak max RVG exposure",
+    "context": "Peak max RVG across 20GW platform by mid-2029"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$42B",
+    "metric": "Max loss exposure",
+    "context": "Max loss exposure at 25% default rate assumption for 20GW platform"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "2.2x",
+    "metric": "Gross leverage",
+    "context": "Gross leverage at YE 2028"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$195bn",
+    "metric": "Alphabet 2026E Capex",
+    "context": "Raised from $187bn previous estimate."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$145bn",
+    "metric": "Meta 2026E Capex",
+    "context": "Raised from $130bn previous estimate."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$159bn",
+    "metric": "Amazon AWS 2026E Capex",
+    "context": "Unchanged from previous estimate."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "27GW",
+    "metric": "Big-3 Internet mega caps capacity",
+    "context": "Estimated capacity exiting 2025."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$40bn",
+    "metric": "Revenue per GW of capacity",
+    "context": "Recent capacity deals signed by Anthropic and Google with SpaceX."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "104%",
+    "metric": "Cloud-equipment spending growth",
+    "context": "2026 YoY growth forecast"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "38%",
+    "metric": "Cloud-equipment spending growth",
+    "context": "2027 YoY growth forecast"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.61 trillion",
+    "metric": "Aggregate cloud-equipment spending",
+    "context": "2027 total spending forecast"
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "280",
+    "metric": "Tracked AI data center projects",
+    "context": "Recent increase from 240 projects"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "212%",
+    "metric": "Asia technology EPS growth",
+    "context": "2026 consensus estimate"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "42%",
+    "metric": "Asia technology EPS growth",
+    "context": "2027 consensus estimate"
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "$210bn",
+    "metric": "CY30E Server CPU TAM",
+    "context": "Raised from ~$170bn; implies 36% CAGR."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "1:1",
+    "metric": "CPU-to-GPU ratio for agentic AI",
+    "context": "Shift from 1:4 in training era."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "36.3%",
+    "metric": "INTC Q2 2026 server value share",
+    "context": "Up 200bps QoQ."
+   },
+   {
+    "source_bank": "BofA",
+    "figure": "29.2%",
+    "metric": "AMD Q2 2026 server value share",
+    "context": "Q2 2026 data."
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": "USD 108/bbl",
+    "metric": "Front-month Brent crude price",
+    "context": "At time of writing, reflecting Middle East conflict."
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": "0.3%",
+    "metric": "US August core inflation MoM",
+    "context": "August print vs 0.2% consensus forecast."
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": ">30bps",
+    "metric": "Rise in 10-year yields across developed markets",
+    "context": "Increase since Jackson Hole."
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": "25bps",
+    "metric": "Expected Fed rate hike",
+    "context": "Market expectation for Wednesday's FOMC meeting."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.5tr",
+    "metric": "Expected balance sheet reduction",
+    "context": "Base case reduction over two years starting 1Q27."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2.95tr",
+    "metric": "Reserve balances",
+    "context": "As of June 24, 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1tr",
+    "metric": "Annual passive Treasury runoff",
+    "context": "Expected pace of passive runoff."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10-20bp",
+    "metric": "MBS spread widening",
+    "context": "Impact of agency mortgage sales."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25-4.50%",
+    "metric": "Fed Funds Target Range",
+    "context": "Terminal rate expectation for 2027."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE Inflation",
+    "context": "2026 4Q/4Q forecast, revised from 3.1%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP Growth",
+    "context": "2027 forecast, revised from 2.6%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "285 million",
+    "metric": "SPR Crude Oil Stocks",
+    "context": "As of September 15, lowest level since April 1984."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10%",
+    "metric": "Effective Tariff Rate",
+    "context": "Expected convergence by year-end 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$170B",
+    "metric": "Combined trailing-four-quarter FCF for hyperscalers",
+    "context": "Q1 2024"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "-$265B",
+    "metric": "Combined FCF trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$505B",
+    "metric": "Combined FCF recovery estimate",
+    "context": "2030"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "40%",
+    "metric": "Peak combined ROIIC",
+    "context": "Q1 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "23%",
+    "metric": "Combined ROIIC trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bp",
+    "metric": "FOMC policy rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.4%",
+    "metric": "5-year inflation expectations",
+    "context": "Preliminary September reading"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "47.8",
+    "metric": "Consumer sentiment index",
+    "context": "Preliminary September estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "54.4",
+    "metric": "ISM manufacturing PMI",
+    "context": "September 2026 estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "19.0%",
+    "metric": "CBE benchmark rate",
+    "context": "September 24 meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bps",
+    "metric": "FOMC rate hike",
+    "context": "September FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25\u20134.50%",
+    "metric": "Terminal Fed funds range",
+    "context": "Following two additional 25bps hikes in Dec 2026 and March 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE inflation",
+    "context": "End of 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP growth",
+    "context": "2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "53%",
+    "metric": "US L/S net leverage",
+    "context": "60th percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "209%",
+    "metric": "US L/S gross leverage",
+    "context": "93rd percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.75%",
+    "metric": "ECB deposit rate",
+    "context": "December 2026 hike"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "US$2.1B",
+    "metric": "Southbound net inflows",
+    "context": "September 10-16"
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "66 GW",
+    "metric": "Active datacenter development",
+    "context": "Global estimate as of June 2026, +21 GW vs March 2026."
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": ">304 GW",
+    "metric": "Planned or potential third-party development",
+    "context": "Global estimate as of June 2026, +36 GW vs March 2026."
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "16%",
+    "metric": "BTM strategy share of projects",
+    "context": "Share of RBC-tracked datacenter projects since December 2025."
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "9,682 MW",
+    "metric": "NYISO interconnection queue load",
+    "context": "Datacenter load in NYISO queue at time of Executive Order 62."
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "7.6%",
+    "metric": "Telco & Wireless August return",
+    "context": "August 2026 performance"
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "14.6%",
+    "metric": "Cable August return",
+    "context": "August 2026 performance"
+   },
+   {
+    "source_bank": "RBC Capital Markets",
+    "figure": "30.0%",
+    "metric": "CHTR short interest",
+    "context": "August 2026 short interest as % of float"
+   },
+   {
+    "source_bank": "European Commission",
+    "figure": "2:1",
+    "metric": "Working-age adults to retirees ratio",
+    "context": "Projected for 2070, down from 3:1 today."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "45",
+    "metric": "Median age of EU citizen",
+    "context": "At least six years older than other continents' populations."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "1/5",
+    "metric": "Public spending on retirement, healthcare, and long-term care as % of GDP",
+    "context": "EU-wide figure."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "$5 trillion",
+    "metric": "Funded retirement assets in EU",
+    "context": "Less than 30% of GDP."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "$45 trillion",
+    "metric": "US 401(k) and pension fund assets",
+    "context": "Equivalent to over 150% of GDP."
+   },
+   {
+    "source_bank": "Institute of International Finance",
+    "figure": "USD 214 billion",
+    "metric": "Foreign inflows into emerging market debt",
+    "context": "Year-to-July 2026, up from USD 178 billion in same period 2025."
+   },
+   {
+    "source_bank": "Allianz Global Investors",
+    "figure": "USD 2 trillion",
+    "metric": "Potential valuation of Anthropic",
+    "context": "Expected valuation for upcoming IPO."
+   },
+   {
+    "source_bank": "Allianz Global Investors",
+    "figure": "4.05%",
+    "metric": "MSCI World 3M performance",
+    "context": "As of 31 August 2026"
+   },
+   {
+    "source_bank": "Allianz Global Investors",
+    "figure": "18.123",
+    "metric": "MSCI World 12M forward PE",
+    "context": "As of 31 August 2026"
+   },
+   {
+    "source_bank": "Allianz Global Investors",
+    "figure": "3.38%",
+    "metric": "S&P 500 3M performance",
+    "context": "As of 31 August 2026"
+   },
+   {
+    "source_bank": "Allianz Global Investors",
+    "figure": "19.163",
+    "metric": "S&P 500 12M forward PE",
+    "context": "As of 31 August 2026"
+   },
+   {
+    "source_bank": "International Energy Agency",
+    "figure": "USD 4.8 trillion",
+    "metric": "Annual capital investment required for energy infrastructure",
+    "context": "Required annually over the next decade to meet demand and climate goals."
+   },
+   {
+    "source_bank": "Allianz/UBS",
+    "figure": "133 GW",
+    "metric": "Usable supply capacity addition",
+    "context": "Expected additions by 2030 in the US."
+   },
+   {
+    "source_bank": "Allianz",
+    "figure": "10 GW",
+    "metric": "Annual capacity construction limit",
+    "context": "Current US workforce capacity constraint."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100bps",
+    "metric": "cumulative hike pricing",
+    "context": "Market pricing for the current hiking cycle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "hyperscaler credit spread",
+    "context": "30-year hyperscaler basket vs IG credit."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4000",
+    "metric": "Gold price target",
+    "context": "Level of sovereign and institutional sponsorship."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.75%",
+    "metric": "US 10-year Treasury yield",
+    "context": "Rose 1.5bps in August"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.7%",
+    "metric": "PCE inflation",
+    "context": "As of August 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "78bps",
+    "metric": "U.S. investment grade OAS",
+    "context": "Finished unchanged in August"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "261bps",
+    "metric": "U.S. high yield spread",
+    "context": "Tightened 18bps in August"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "112bps",
+    "metric": "Agency MBS spread",
+    "context": "Tightened 4bps in August"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50%",
+    "metric": "SPX EPS YoY growth",
+    "context": "2Q 2026 growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "SPX EPS growth forecast",
+    "context": "2027 and 2028 growth estimates."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "YTD performance of India AI enablers basket",
+    "context": "YTD 2026 performance vs NIFTY -11%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Share of NIFTY 500 capex growth",
+    "context": "Contribution of 42 AI enabler names to total capex growth."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.5tr",
+    "metric": "Expected balance sheet reduction",
+    "context": "Base case reduction over two years starting 1Q27."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2.95tr",
+    "metric": "Reserve balances",
+    "context": "As of June 24, 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1tr",
+    "metric": "Annual passive Treasury runoff",
+    "context": "Expected pace of passive runoff."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10-20bp",
+    "metric": "MBS spread widening",
+    "context": "Impact of agency mortgage sales."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25-4.50%",
+    "metric": "Fed Funds Target Range",
+    "context": "Terminal rate expectation for 2027."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE Inflation",
+    "context": "2026 4Q/4Q forecast, revised from 3.1%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP Growth",
+    "context": "2027 forecast, revised from 2.6%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "285 million",
+    "metric": "SPR Crude Oil Stocks",
+    "context": "As of September 15, lowest level since April 1984."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10%",
+    "metric": "Effective Tariff Rate",
+    "context": "Expected convergence by year-end 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$170B",
+    "metric": "Combined trailing-four-quarter FCF for hyperscalers",
+    "context": "Q1 2024"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "-$265B",
+    "metric": "Combined FCF trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$505B",
+    "metric": "Combined FCF recovery estimate",
+    "context": "2030"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "40%",
+    "metric": "Peak combined ROIIC",
+    "context": "Q1 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "23%",
+    "metric": "Combined ROIIC trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "25bp",
+    "metric": "Fed funds rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "4.00-4.50%",
+    "metric": "Fed funds rate target range",
+    "context": "2027 FOMC projection"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "5%",
+    "metric": "10-year UST yield",
+    "context": "September 2026 market level"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "40%",
+    "metric": "S&P 500 concentration of 10 largest companies",
+    "context": "Most concentrated level in decades."
+   },
+   {
+    "source_bank": "European Commission",
+    "figure": "EUR5.4trn",
+    "metric": "Investment needed for European electricity grids",
+    "context": "Investment required between 2025 and 2031."
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "100bp",
+    "metric": "Market pricing for BoE tightening",
+    "context": "Pricing over the next 12 months."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bp",
+    "metric": "FOMC policy rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.4%",
+    "metric": "5-year inflation expectations",
+    "context": "Preliminary September reading"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "47.8",
+    "metric": "Consumer sentiment index",
+    "context": "Preliminary September estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "54.4",
+    "metric": "ISM manufacturing PMI",
+    "context": "September 2026 estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "19.0%",
+    "metric": "CBE benchmark rate",
+    "context": "September 24 meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bps",
+    "metric": "FOMC rate hike",
+    "context": "September FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25\u20134.50%",
+    "metric": "Terminal Fed funds range",
+    "context": "Following two additional 25bps hikes in Dec 2026 and March 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE inflation",
+    "context": "End of 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP growth",
+    "context": "2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "53%",
+    "metric": "US L/S net leverage",
+    "context": "60th percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "209%",
+    "metric": "US L/S gross leverage",
+    "context": "93rd percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.75%",
+    "metric": "ECB deposit rate",
+    "context": "December 2026 hike"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "US$2.1B",
+    "metric": "Southbound net inflows",
+    "context": "September 10-16"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "5.00%",
+    "metric": "10yr Treasury yield",
+    "context": "Closed at 5.00% on Friday, up 6bp."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "38.3%",
+    "metric": "AfD vote share in Mecklenburg-Western Pomerania",
+    "context": "Election result, roughly double 2021 support."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "25.3%",
+    "metric": "Die Linke vote share in Berlin",
+    "context": "Election result, emerging as the biggest force."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.56%",
+    "metric": "10yr French yield",
+    "context": "Post-2008 high hit on Friday."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "100bps",
+    "metric": "10yr French spread over bunds",
+    "context": "Closed above 100bps on Friday for the first time since 2012."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.2%",
+    "metric": "Industrial production growth",
+    "context": "August yoy growth, accelerated from 4.5% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.4%",
+    "metric": "Q3 and Q4 real GDP growth forecast",
+    "context": "Revised down from 4.6% yoy."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "2026 full-year real GDP forecast",
+    "context": "Dropped from 4.6%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "Innovation spending target",
+    "context": "Hong Kong Five-Year Plan target, up from 1.6% of GDP."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.5%",
+    "metric": "Manufacturing and new-industrialization value-added target",
+    "context": "Hong Kong Five-Year Plan target, up from 3.8% of GDP."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.70",
+    "metric": "USDCNY exchange rate",
+    "context": "Fell below 6.70 for the first time since 2022."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.2%",
+    "metric": "Industrial production growth",
+    "context": "August yoy growth, accelerated from 4.5% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.4%",
+    "metric": "Retail sales growth",
+    "context": "August yoy growth, slowed from 0.6% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34.6%",
+    "metric": "Industrial robot output growth",
+    "context": "August yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.6%",
+    "metric": "Semiconductor output growth",
+    "context": "August yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Full-year real GDP growth forecast",
+    "context": "2026 full-year forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Bank loan growth",
+    "context": "August 2026 yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.2%",
+    "metric": "Total social financing growth",
+    "context": "August 2026 yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "105 EUR/MWh",
+    "metric": "TTF winter price upside scenario",
+    "context": "Expected peak winter price if Persian Gulf LNG supply lacks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$35/mmBtu",
+    "metric": "JKM winter price upside scenario",
+    "context": "Expected peak winter price if Persian Gulf LNG supply lacks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "70 EUR/MWh",
+    "metric": "TTF base case price",
+    "context": "Base case assuming gradual market adaptation in LNG supply."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$24.85/mmBtu",
+    "metric": "JKM base case price",
+    "context": "Base case assuming gradual market adaptation in LNG supply."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15%-25%",
+    "metric": "Persian Gulf LNG exports as % of pre-war levels",
+    "context": "Average levels observed during July-August 2026."
+   },
+   {
+    "source_bank": "Market participants",
+    "figure": "$28-$30/mmBtu",
+    "metric": "JKM price threshold for industrial demand destruction",
+    "context": "Estimated threshold for industrial demand destruction in India."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19 EUR/MWh",
+    "metric": "Long-term TTF price forecast",
+    "context": "Revised 2030-2035 average price forecast (from 30 EUR)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.15/mmBtu",
+    "metric": "Long-term JKM price forecast",
+    "context": "Revised 2030-2035 average price forecast (from $10.60)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u00a3488bn",
+    "metric": "APF gilt stock",
+    "context": "Total stock of gilts held for monetary policy purposes by the UK MPC."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac40bn/month",
+    "metric": "ECB balance sheet runoff",
+    "context": "Current pace of ECB balance sheet runoff."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34th percentile",
+    "metric": "Net exposure across GS prime brokerage book",
+    "context": "Past year, as of 20Sep26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-55%",
+    "metric": "Growth in M&A, ECM and DCM volumes driven by AI",
+    "context": "Year-to-date estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5,400",
+    "metric": "Gold price target",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+68%",
+    "metric": "SOX index return",
+    "context": "Year-to-date, as of 20Sep26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7.4% mom sa",
+    "metric": "per-workday exports",
+    "context": "September 20 days vs previous 4.1% mom sa"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+US$23.0bn",
+    "metric": "trade balance",
+    "context": "September 20 days vs previous +US$14.0bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+16.0%",
+    "metric": "chip exports growth",
+    "context": "September 20 days mom sa"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60.8% mom sa",
+    "metric": "auto and auto parts exports growth",
+    "context": "September 20 days after two months of contraction"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.7 points",
+    "metric": "Net exposure increase",
+    "context": "Month to date increase in prime brokerage net exposure."
+   },
+   {
+    "source_bank": "EPFR/Lipper",
+    "figure": "$80bn",
+    "metric": "Retail demand",
+    "context": "Demand over the last week, second largest year to date."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.8%",
+    "metric": "SPX 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs 1.25% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.0%",
+    "metric": "IWM 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs 1.9% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.2%",
+    "metric": "NDX 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs ~2% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.02%",
+    "metric": "GS Equity Fundamental L/S Performance Estimate",
+    "context": "Performance between 9/11 and 9/17."
+   },
+   {
+    "source_bank": "AAII",
+    "figure": "53.3%",
+    "metric": "AAII bearish sentiment",
+    "context": "Highest level since May 2025, up 14pts WoW."
+   },
+   {
+    "source_bank": "EPFR",
+    "figure": "$63.8bn",
+    "metric": "US equity inflows",
+    "context": "Fastest pace of US equity buying in three months."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3%",
+    "metric": "US Software net allocation",
+    "context": "Record low in February."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8,700",
+    "metric": "12-month S&P target",
+    "context": "Assumes +14% upside and little help from multiple expansion."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn-$1.4bn",
+    "metric": "cumulative free cash flow through FY30",
+    "context": "Long-term financial framework target"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$100mn",
+    "metric": "Project Upcycle productivity savings",
+    "context": "Productivity opportunities identified"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.94-$3.00",
+    "metric": "FY26 adjusted EPS",
+    "context": "FY26 guidance vs prior consensus $3.00/$2.98"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$60",
+    "metric": "12-month price target",
+    "context": "Based on 10.5x Q5-Q8 EV/EBITDA"
+   }
+  ]
+ },
+ "energy supply shock": {
+  "theme": "energy supply shock",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 2,
+   "skeptical": 0,
+   "neutral": 6
+  },
+  "theme_stances": [
+   {
+    "source": "Allianz Research",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": "medium",
+    "key_argument": "The current energy shock is temporary and should normalize by 2027, though structural bottlenecks in refining and gas infrastructure remain.",
+    "primary_instruments": [
+     "USO"
+    ],
+    "vs_consensus": "",
+    "evidence": "we expect the shock to fade."
+   },
+   {
+    "source": "Academy",
+    "theme": "energy price path",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Diesel and Middle East tensions are key drivers that will keep energy prices and global rates higher.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "For now, I think the path for energy prices (and stocks) and rates (globally) is higher."
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "oil risk premium",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Persistent energy supply chain disruptions and fading buffers necessitate a shift to a higher oil risk-premium baseline.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "incorporate features of a higher oil risk-premium into the baseline."
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Houthi attacks on Saudi energy infrastructure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Houthi attacks on Saudi energy infrastructure"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East energy infrastructure vulnerability",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East energy infrastructure vulnerability"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East conflict energy supply disruptions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East conflict energy supply disruptions"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Energy price supply disruptions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Energy price supply disruptions"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Middle East conflict impact on inflation",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Middle East conflict impact on inflation"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Oil price volatility",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Oil price volatility"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Iran war oil supply impact",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Iran war oil supply impact"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Persian Gulf LNG export disruptions",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Persian Gulf LNG export disruptions"
+   },
+   {
+    "source": "multiple desks (unattributed)",
+    "theme": "energy supply shock",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Energy price inflation",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Energy price inflation"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Allianz Research",
+    "figure": "4.3mbpd",
+    "metric": "Net hit to Hormuz flows",
+    "context": "Current disruption vs pre-war levels."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "62 EUR/bbl",
+    "metric": "US crack spread",
+    "context": "August 2026 level, 68% above five-year average."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "2.5mbpd",
+    "metric": "Global oil demand contraction",
+    "context": "Expected contraction in 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "USD 330bn",
+    "metric": "Extra cost for fossil-fuel importers",
+    "context": "Estimated extra cost paid between March and August 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "15%",
+    "metric": "Global refining investment decline",
+    "context": "Year-on-year decline for 2026."
+   },
+   {
+    "source_bank": "Academy",
+    "figure": "156.9",
+    "metric": "Japanese Yen closing level",
+    "context": "Closed above 155 support level, 9/18/2026"
+   },
+   {
+    "source_bank": "Academy",
+    "figure": "just under 5%",
+    "metric": "10-year Treasury yield",
+    "context": "Weekly close, 9/20/2026"
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "-50bp",
+    "metric": "10-year net effect on long-term rates (upside scenario)",
+    "context": "10-year horizon for both US and eurozone."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "135bp",
+    "metric": "US 10Y round trip (upside scenario)",
+    "context": "Yields rise before they fall over the 10-year period."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "-85bp",
+    "metric": "Fiscal collateral improvement impact on US 10Y",
+    "context": "By the end of the 10-year horizon."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "1.6x",
+    "metric": "Eurozone fiscal-collateral beta vs US",
+    "context": "Per point of growth delivered."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "+67bp",
+    "metric": "AI-enhanced neutral-rate range increase",
+    "context": "Over the next decade."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.5tr",
+    "metric": "Expected balance sheet reduction",
+    "context": "Base case reduction over two years starting 1Q27."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2.95tr",
+    "metric": "Reserve balances",
+    "context": "As of June 24, 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1tr",
+    "metric": "Annual passive Treasury runoff",
+    "context": "Expected pace of passive runoff."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10-20bp",
+    "metric": "MBS spread widening",
+    "context": "Impact of agency mortgage sales."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25-4.50%",
+    "metric": "Fed Funds Target Range",
+    "context": "Terminal rate expectation for 2027."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE Inflation",
+    "context": "2026 4Q/4Q forecast, revised from 3.1%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP Growth",
+    "context": "2027 forecast, revised from 2.6%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "285 million",
+    "metric": "SPR Crude Oil Stocks",
+    "context": "As of September 15, lowest level since April 1984."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10%",
+    "metric": "Effective Tariff Rate",
+    "context": "Expected convergence by year-end 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$170B",
+    "metric": "Combined trailing-four-quarter FCF for hyperscalers",
+    "context": "Q1 2024"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "-$265B",
+    "metric": "Combined FCF trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$505B",
+    "metric": "Combined FCF recovery estimate",
+    "context": "2030"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "40%",
+    "metric": "Peak combined ROIIC",
+    "context": "Q1 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "23%",
+    "metric": "Combined ROIIC trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bp",
+    "metric": "FOMC policy rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.4%",
+    "metric": "5-year inflation expectations",
+    "context": "Preliminary September reading"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "47.8",
+    "metric": "Consumer sentiment index",
+    "context": "Preliminary September estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "54.4",
+    "metric": "ISM manufacturing PMI",
+    "context": "September 2026 estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "19.0%",
+    "metric": "CBE benchmark rate",
+    "context": "September 24 meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bps",
+    "metric": "FOMC rate hike",
+    "context": "September FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25\u20134.50%",
+    "metric": "Terminal Fed funds range",
+    "context": "Following two additional 25bps hikes in Dec 2026 and March 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE inflation",
+    "context": "End of 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP growth",
+    "context": "2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "53%",
+    "metric": "US L/S net leverage",
+    "context": "60th percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "209%",
+    "metric": "US L/S gross leverage",
+    "context": "93rd percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.75%",
+    "metric": "ECB deposit rate",
+    "context": "December 2026 hike"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "US$2.1B",
+    "metric": "Southbound net inflows",
+    "context": "September 10-16"
+   },
+   {
+    "source_bank": "Academy",
+    "figure": "156.9",
+    "metric": "Japanese Yen closing level",
+    "context": "Closed above 155 support level, 9/18/2026"
+   },
+   {
+    "source_bank": "Academy",
+    "figure": "just under 5%",
+    "metric": "10-year Treasury yield",
+    "context": "Weekly close, 9/20/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100bps",
+    "metric": "cumulative hike pricing",
+    "context": "Market pricing for the current hiking cycle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "hyperscaler credit spread",
+    "context": "30-year hyperscaler basket vs IG credit."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4000",
+    "metric": "Gold price target",
+    "context": "Level of sovereign and institutional sponsorship."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50%",
+    "metric": "SPX EPS YoY growth",
+    "context": "2Q 2026 growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "SPX EPS growth forecast",
+    "context": "2027 and 2028 growth estimates."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "YTD performance of India AI enablers basket",
+    "context": "YTD 2026 performance vs NIFTY -11%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Share of NIFTY 500 capex growth",
+    "context": "Contribution of 42 AI enabler names to total capex growth."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.5tr",
+    "metric": "Expected balance sheet reduction",
+    "context": "Base case reduction over two years starting 1Q27."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2.95tr",
+    "metric": "Reserve balances",
+    "context": "As of June 24, 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1tr",
+    "metric": "Annual passive Treasury runoff",
+    "context": "Expected pace of passive runoff."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10-20bp",
+    "metric": "MBS spread widening",
+    "context": "Impact of agency mortgage sales."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25-4.50%",
+    "metric": "Fed Funds Target Range",
+    "context": "Terminal rate expectation for 2027."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE Inflation",
+    "context": "2026 4Q/4Q forecast, revised from 3.1%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP Growth",
+    "context": "2027 forecast, revised from 2.6%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "285 million",
+    "metric": "SPR Crude Oil Stocks",
+    "context": "As of September 15, lowest level since April 1984."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10%",
+    "metric": "Effective Tariff Rate",
+    "context": "Expected convergence by year-end 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$170B",
+    "metric": "Combined trailing-four-quarter FCF for hyperscalers",
+    "context": "Q1 2024"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "-$265B",
+    "metric": "Combined FCF trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$505B",
+    "metric": "Combined FCF recovery estimate",
+    "context": "2030"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "40%",
+    "metric": "Peak combined ROIIC",
+    "context": "Q1 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "23%",
+    "metric": "Combined ROIIC trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bp",
+    "metric": "FOMC policy rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.4%",
+    "metric": "5-year inflation expectations",
+    "context": "Preliminary September reading"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "47.8",
+    "metric": "Consumer sentiment index",
+    "context": "Preliminary September estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "54.4",
+    "metric": "ISM manufacturing PMI",
+    "context": "September 2026 estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "19.0%",
+    "metric": "CBE benchmark rate",
+    "context": "September 24 meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bps",
+    "metric": "FOMC rate hike",
+    "context": "September FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25\u20134.50%",
+    "metric": "Terminal Fed funds range",
+    "context": "Following two additional 25bps hikes in Dec 2026 and March 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE inflation",
+    "context": "End of 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP growth",
+    "context": "2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "53%",
+    "metric": "US L/S net leverage",
+    "context": "60th percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "209%",
+    "metric": "US L/S gross leverage",
+    "context": "93rd percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.75%",
+    "metric": "ECB deposit rate",
+    "context": "December 2026 hike"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "US$2.1B",
+    "metric": "Southbound net inflows",
+    "context": "September 10-16"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac6.525bn",
+    "metric": "Daily priced new issues",
+    "context": "Daily volume for 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac12.275bn",
+    "metric": "Weekly new issue volume",
+    "context": "Total for the week as of 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "3.55%",
+    "metric": "10y Bund yield",
+    "context": "Rose 4bp on 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "5.03%",
+    "metric": "10y UST yield",
+    "context": "Rose 4bp on 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "$25bn",
+    "metric": "Weekly ETF flows",
+    "context": "Total weekly ETF flows for the week ending 15 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "2.4%",
+    "metric": "Flow into money-market ETFs as % of AUM",
+    "context": "Weekly flow into money-market ETFs as a percentage of AUM."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "$2,315.1M",
+    "metric": "Weekly flow into Russell 2000",
+    "context": "Weekly primary market flow for the week ending 15 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "-$1,625.6M",
+    "metric": "Weekly flow into Markit iBoxx USD Liquid Investment Grade",
+    "context": "Weekly primary market flow for the week ending 15 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac680.2bn",
+    "metric": "Year-to-date new issue volume",
+    "context": "Total year-to-date issuance as of 18 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac900bn+",
+    "metric": "Annual new issue forecast",
+    "context": "Full-year 2026 issuance target."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "4.32%",
+    "metric": "iBoxx Corporates yield",
+    "context": "Yield as of 18 September 2026."
+   },
+   {
+    "source_bank": "French Government",
+    "figure": "5.4%",
+    "metric": "French budget deficit",
+    "context": "Target was 5%."
+   },
+   {
+    "source_bank": "SoSoValue",
+    "figure": "$159.5 million",
+    "metric": "Bitcoin ETF net inflows",
+    "context": "Recorded on Thursday, 9/17/2026."
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "8%",
+    "metric": "Odds of Clarity Act passing",
+    "context": "Record low after failed cloture vote."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "18%",
+    "metric": "grain futures price increase",
+    "context": "Since June 30, 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "34%",
+    "metric": "energy price increase",
+    "context": "Since June 30, 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "34%",
+    "metric": "cocoa price increase forecast",
+    "context": "12-month price effect"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "14-20%",
+    "metric": "cocoa production decline",
+    "context": "2026/27 crop year vs trend"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "6.4%",
+    "metric": "SG Nominal US GDP Forecast",
+    "context": "2026 forecast"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "$15,125",
+    "metric": "3-month LME Copper price",
+    "context": "2027 forecast"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "3.7%",
+    "metric": "US Equity Risk Premium",
+    "context": "As of 10/09/2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "32%",
+    "metric": "2026e US EPS growth",
+    "context": "Latest estimate as of 01/09/2026"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.2%",
+    "metric": "Industrial production growth",
+    "context": "August yoy growth, accelerated from 4.5% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.4%",
+    "metric": "Q3 and Q4 real GDP growth forecast",
+    "context": "Revised down from 4.6% yoy."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "2026 full-year real GDP forecast",
+    "context": "Dropped from 4.6%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "Innovation spending target",
+    "context": "Hong Kong Five-Year Plan target, up from 1.6% of GDP."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.5%",
+    "metric": "Manufacturing and new-industrialization value-added target",
+    "context": "Hong Kong Five-Year Plan target, up from 3.8% of GDP."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.70",
+    "metric": "USDCNY exchange rate",
+    "context": "Fell below 6.70 for the first time since 2022."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.2%",
+    "metric": "Industrial production growth",
+    "context": "August yoy growth, accelerated from 4.5% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.4%",
+    "metric": "Retail sales growth",
+    "context": "August yoy growth, slowed from 0.6% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34.6%",
+    "metric": "Industrial robot output growth",
+    "context": "August yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.6%",
+    "metric": "Semiconductor output growth",
+    "context": "August yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Full-year real GDP growth forecast",
+    "context": "2026 full-year forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Bank loan growth",
+    "context": "August 2026 yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.2%",
+    "metric": "Total social financing growth",
+    "context": "August 2026 yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "105 EUR/MWh",
+    "metric": "TTF winter price upside scenario",
+    "context": "Expected peak winter price if Persian Gulf LNG supply lacks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$35/mmBtu",
+    "metric": "JKM winter price upside scenario",
+    "context": "Expected peak winter price if Persian Gulf LNG supply lacks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "70 EUR/MWh",
+    "metric": "TTF base case price",
+    "context": "Base case assuming gradual market adaptation in LNG supply."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$24.85/mmBtu",
+    "metric": "JKM base case price",
+    "context": "Base case assuming gradual market adaptation in LNG supply."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15%-25%",
+    "metric": "Persian Gulf LNG exports as % of pre-war levels",
+    "context": "Average levels observed during July-August 2026."
+   },
+   {
+    "source_bank": "Market participants",
+    "figure": "$28-$30/mmBtu",
+    "metric": "JKM price threshold for industrial demand destruction",
+    "context": "Estimated threshold for industrial demand destruction in India."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19 EUR/MWh",
+    "metric": "Long-term TTF price forecast",
+    "context": "Revised 2030-2035 average price forecast (from 30 EUR)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.15/mmBtu",
+    "metric": "Long-term JKM price forecast",
+    "context": "Revised 2030-2035 average price forecast (from $10.60)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u00a3488bn",
+    "metric": "APF gilt stock",
+    "context": "Total stock of gilts held for monetary policy purposes by the UK MPC."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac40bn/month",
+    "metric": "ECB balance sheet runoff",
+    "context": "Current pace of ECB balance sheet runoff."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34th percentile",
+    "metric": "Net exposure across GS prime brokerage book",
+    "context": "Past year, as of 20Sep26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-55%",
+    "metric": "Growth in M&A, ECM and DCM volumes driven by AI",
+    "context": "Year-to-date estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5,400",
+    "metric": "Gold price target",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+68%",
+    "metric": "SOX index return",
+    "context": "Year-to-date, as of 20Sep26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7.4% mom sa",
+    "metric": "per-workday exports",
+    "context": "September 20 days vs previous 4.1% mom sa"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+US$23.0bn",
+    "metric": "trade balance",
+    "context": "September 20 days vs previous +US$14.0bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+16.0%",
+    "metric": "chip exports growth",
+    "context": "September 20 days mom sa"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60.8% mom sa",
+    "metric": "auto and auto parts exports growth",
+    "context": "September 20 days after two months of contraction"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.7 points",
+    "metric": "Net exposure increase",
+    "context": "Month to date increase in prime brokerage net exposure."
+   },
+   {
+    "source_bank": "EPFR/Lipper",
+    "figure": "$80bn",
+    "metric": "Retail demand",
+    "context": "Demand over the last week, second largest year to date."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.8%",
+    "metric": "SPX 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs 1.25% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.0%",
+    "metric": "IWM 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs 1.9% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.2%",
+    "metric": "NDX 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs ~2% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.02%",
+    "metric": "GS Equity Fundamental L/S Performance Estimate",
+    "context": "Performance between 9/11 and 9/17."
+   },
+   {
+    "source_bank": "AAII",
+    "figure": "53.3%",
+    "metric": "AAII bearish sentiment",
+    "context": "Highest level since May 2025, up 14pts WoW."
+   },
+   {
+    "source_bank": "EPFR",
+    "figure": "$63.8bn",
+    "metric": "US equity inflows",
+    "context": "Fastest pace of US equity buying in three months."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3%",
+    "metric": "US Software net allocation",
+    "context": "Record low in February."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8,700",
+    "metric": "12-month S&P target",
+    "context": "Assumes +14% upside and little help from multiple expansion."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn-$1.4bn",
+    "metric": "cumulative free cash flow through FY30",
+    "context": "Long-term financial framework target"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$100mn",
+    "metric": "Project Upcycle productivity savings",
+    "context": "Productivity opportunities identified"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.94-$3.00",
+    "metric": "FY26 adjusted EPS",
+    "context": "FY26 guidance vs prior consensus $3.00/$2.98"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$60",
+    "metric": "12-month price target",
+    "context": "Based on 10.5x Q5-Q8 EV/EBITDA"
+   }
+  ]
+ },
+ "us china summit": {
+  "theme": "us china summit",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 5
+  },
+  "theme_stances": [
+   {
+    "source": "HSBC Asset Management",
+    "theme": "us china summit",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US/China bilateral summit",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US/China bilateral summit"
+   },
+   {
+    "source": "Morgan Stanley",
+    "theme": "us china summit",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-China summit",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-China summit"
+   },
+   {
+    "source": "The Bear Traps Report",
+    "theme": "us china summit",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Trump-Xi meeting",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Trump-Xi meeting"
+   },
+   {
+    "source": "Deutsche Bank",
+    "theme": "us china summit",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US-China trade talks",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US-China trade talks"
+   },
+   {
+    "source": "Deutsche Bank + Goldman Sachs",
+    "theme": "us china summit",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Trump-Xi summit",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Trump-Xi summit"
+   },
+   {
+    "source": "Goldman Sachs",
+    "theme": "us china summit",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Trump-Xi summit in September",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Trump-Xi summit in September"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "100bps",
+    "metric": "cumulative hike pricing",
+    "context": "Market pricing for the current hiking cycle."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60bps",
+    "metric": "hyperscaler credit spread",
+    "context": "30-year hyperscaler basket vs IG credit."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$4000",
+    "metric": "Gold price target",
+    "context": "Level of sovereign and institutional sponsorship."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50%",
+    "metric": "SPX EPS YoY growth",
+    "context": "2Q 2026 growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "11%",
+    "metric": "SPX EPS growth forecast",
+    "context": "2027 and 2028 growth estimates."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "60%",
+    "metric": "YTD performance of India AI enablers basket",
+    "context": "YTD 2026 performance vs NIFTY -11%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "40%",
+    "metric": "Share of NIFTY 500 capex growth",
+    "context": "Contribution of 42 AI enabler names to total capex growth."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.5tr",
+    "metric": "Expected balance sheet reduction",
+    "context": "Base case reduction over two years starting 1Q27."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$2.95tr",
+    "metric": "Reserve balances",
+    "context": "As of June 24, 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1tr",
+    "metric": "Annual passive Treasury runoff",
+    "context": "Expected pace of passive runoff."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10-20bp",
+    "metric": "MBS spread widening",
+    "context": "Impact of agency mortgage sales."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25-4.50%",
+    "metric": "Fed Funds Target Range",
+    "context": "Terminal rate expectation for 2027."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE Inflation",
+    "context": "2026 4Q/4Q forecast, revised from 3.1%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP Growth",
+    "context": "2027 forecast, revised from 2.6%."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "285 million",
+    "metric": "SPR Crude Oil Stocks",
+    "context": "As of September 15, lowest level since April 1984."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "10%",
+    "metric": "Effective Tariff Rate",
+    "context": "Expected convergence by year-end 2026."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$170B",
+    "metric": "Combined trailing-four-quarter FCF for hyperscalers",
+    "context": "Q1 2024"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "-$265B",
+    "metric": "Combined FCF trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$505B",
+    "metric": "Combined FCF recovery estimate",
+    "context": "2030"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "40%",
+    "metric": "Peak combined ROIIC",
+    "context": "Q1 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "23%",
+    "metric": "Combined ROIIC trough estimate",
+    "context": "Q3 2027"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "25bp",
+    "metric": "Fed funds rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "4.00-4.50%",
+    "metric": "Fed funds rate target range",
+    "context": "2027 FOMC projection"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "5%",
+    "metric": "10-year UST yield",
+    "context": "September 2026 market level"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "40%",
+    "metric": "S&P 500 concentration of 10 largest companies",
+    "context": "Most concentrated level in decades."
+   },
+   {
+    "source_bank": "European Commission",
+    "figure": "EUR5.4trn",
+    "metric": "Investment needed for European electricity grids",
+    "context": "Investment required between 2025 and 2031."
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "100bp",
+    "metric": "Market pricing for BoE tightening",
+    "context": "Pricing over the next 12 months."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bp",
+    "metric": "FOMC policy rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.4%",
+    "metric": "5-year inflation expectations",
+    "context": "Preliminary September reading"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "47.8",
+    "metric": "Consumer sentiment index",
+    "context": "Preliminary September estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "54.4",
+    "metric": "ISM manufacturing PMI",
+    "context": "September 2026 estimate"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "19.0%",
+    "metric": "CBE benchmark rate",
+    "context": "September 24 meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "25bps",
+    "metric": "FOMC rate hike",
+    "context": "September FOMC meeting"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "4.25\u20134.50%",
+    "metric": "Terminal Fed funds range",
+    "context": "Following two additional 25bps hikes in Dec 2026 and March 2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "3.2%",
+    "metric": "Core PCE inflation",
+    "context": "End of 2026"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.3%",
+    "metric": "Real GDP growth",
+    "context": "2027"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "53%",
+    "metric": "US L/S net leverage",
+    "context": "60th percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "209%",
+    "metric": "US L/S gross leverage",
+    "context": "93rd percentile since 2010, as of Sep 17"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "2.75%",
+    "metric": "ECB deposit rate",
+    "context": "December 2026 hike"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "US$2.1B",
+    "metric": "Southbound net inflows",
+    "context": "September 10-16"
+   },
+   {
+    "source_bank": "French Government",
+    "figure": "5.4%",
+    "metric": "French budget deficit",
+    "context": "Target was 5%."
+   },
+   {
+    "source_bank": "SoSoValue",
+    "figure": "$159.5 million",
+    "metric": "Bitcoin ETF net inflows",
+    "context": "Recorded on Thursday, 9/17/2026."
+   },
+   {
+    "source_bank": "The Bear Traps Report",
+    "figure": "8%",
+    "metric": "Odds of Clarity Act passing",
+    "context": "Record low after failed cloture vote."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "5.00%",
+    "metric": "10yr Treasury yield",
+    "context": "Closed at 5.00% on Friday, up 6bp."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "38.3%",
+    "metric": "AfD vote share in Mecklenburg-Western Pomerania",
+    "context": "Election result, roughly double 2021 support."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "25.3%",
+    "metric": "Die Linke vote share in Berlin",
+    "context": "Election result, emerging as the biggest force."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "4.56%",
+    "metric": "10yr French yield",
+    "context": "Post-2008 high hit on Friday."
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "100bps",
+    "metric": "10yr French spread over bunds",
+    "context": "Closed above 100bps on Friday for the first time since 2012."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.2%",
+    "metric": "Industrial production growth",
+    "context": "August yoy growth, accelerated from 4.5% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.4%",
+    "metric": "Q3 and Q4 real GDP growth forecast",
+    "context": "Revised down from 4.6% yoy."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "2026 full-year real GDP forecast",
+    "context": "Dropped from 4.6%."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3%",
+    "metric": "Innovation spending target",
+    "context": "Hong Kong Five-Year Plan target, up from 1.6% of GDP."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.5%",
+    "metric": "Manufacturing and new-industrialization value-added target",
+    "context": "Hong Kong Five-Year Plan target, up from 3.8% of GDP."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "6.70",
+    "metric": "USDCNY exchange rate",
+    "context": "Fell below 6.70 for the first time since 2022."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5.2%",
+    "metric": "Industrial production growth",
+    "context": "August yoy growth, accelerated from 4.5% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "0.4%",
+    "metric": "Retail sales growth",
+    "context": "August yoy growth, slowed from 0.6% in July."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34.6%",
+    "metric": "Industrial robot output growth",
+    "context": "August yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "20.6%",
+    "metric": "Semiconductor output growth",
+    "context": "August yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "4.5%",
+    "metric": "Full-year real GDP growth forecast",
+    "context": "2026 full-year forecast."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "5%",
+    "metric": "Bank loan growth",
+    "context": "August 2026 yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7.2%",
+    "metric": "Total social financing growth",
+    "context": "August 2026 yoy growth."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "105 EUR/MWh",
+    "metric": "TTF winter price upside scenario",
+    "context": "Expected peak winter price if Persian Gulf LNG supply lacks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$35/mmBtu",
+    "metric": "JKM winter price upside scenario",
+    "context": "Expected peak winter price if Persian Gulf LNG supply lacks."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "70 EUR/MWh",
+    "metric": "TTF base case price",
+    "context": "Base case assuming gradual market adaptation in LNG supply."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$24.85/mmBtu",
+    "metric": "JKM base case price",
+    "context": "Base case assuming gradual market adaptation in LNG supply."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "15%-25%",
+    "metric": "Persian Gulf LNG exports as % of pre-war levels",
+    "context": "Average levels observed during July-August 2026."
+   },
+   {
+    "source_bank": "Market participants",
+    "figure": "$28-$30/mmBtu",
+    "metric": "JKM price threshold for industrial demand destruction",
+    "context": "Estimated threshold for industrial demand destruction in India."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "19 EUR/MWh",
+    "metric": "Long-term TTF price forecast",
+    "context": "Revised 2030-2035 average price forecast (from 30 EUR)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$7.15/mmBtu",
+    "metric": "Long-term JKM price forecast",
+    "context": "Revised 2030-2035 average price forecast (from $10.60)."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u00a3488bn",
+    "metric": "APF gilt stock",
+    "context": "Total stock of gilts held for monetary policy purposes by the UK MPC."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "\u20ac40bn/month",
+    "metric": "ECB balance sheet runoff",
+    "context": "Current pace of ECB balance sheet runoff."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "34th percentile",
+    "metric": "Net exposure across GS prime brokerage book",
+    "context": "Past year, as of 20Sep26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "50-55%",
+    "metric": "Growth in M&A, ECM and DCM volumes driven by AI",
+    "context": "Year-to-date estimate"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$5,400",
+    "metric": "Gold price target",
+    "context": ""
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+68%",
+    "metric": "SOX index return",
+    "context": "Year-to-date, as of 20Sep26"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+7.4% mom sa",
+    "metric": "per-workday exports",
+    "context": "September 20 days vs previous 4.1% mom sa"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+US$23.0bn",
+    "metric": "trade balance",
+    "context": "September 20 days vs previous +US$14.0bn"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+16.0%",
+    "metric": "chip exports growth",
+    "context": "September 20 days mom sa"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "+60.8% mom sa",
+    "metric": "auto and auto parts exports growth",
+    "context": "September 20 days after two months of contraction"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "2.7 points",
+    "metric": "Net exposure increase",
+    "context": "Month to date increase in prime brokerage net exposure."
+   },
+   {
+    "source_bank": "EPFR/Lipper",
+    "figure": "$80bn",
+    "metric": "Retail demand",
+    "context": "Demand over the last week, second largest year to date."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.8%",
+    "metric": "SPX 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs 1.25% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.0%",
+    "metric": "IWM 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs 1.9% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "3.2%",
+    "metric": "NDX 3 month 95% lookback put cost",
+    "context": "Cost of lookback put vs ~2% for vanilla."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "-1.02%",
+    "metric": "GS Equity Fundamental L/S Performance Estimate",
+    "context": "Performance between 9/11 and 9/17."
+   },
+   {
+    "source_bank": "AAII",
+    "figure": "53.3%",
+    "metric": "AAII bearish sentiment",
+    "context": "Highest level since May 2025, up 14pts WoW."
+   },
+   {
+    "source_bank": "EPFR",
+    "figure": "$63.8bn",
+    "metric": "US equity inflows",
+    "context": "Fastest pace of US equity buying in three months."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "1.3%",
+    "metric": "US Software net allocation",
+    "context": "Record low in February."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "8,700",
+    "metric": "12-month S&P target",
+    "context": "Assumes +14% upside and little help from multiple expansion."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$1.2bn-$1.4bn",
+    "metric": "cumulative free cash flow through FY30",
+    "context": "Long-term financial framework target"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$100mn",
+    "metric": "Project Upcycle productivity savings",
+    "context": "Productivity opportunities identified"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$2.94-$3.00",
+    "metric": "FY26 adjusted EPS",
+    "context": "FY26 guidance vs prior consensus $3.00/$2.98"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "$60",
+    "metric": "12-month price target",
+    "context": "Based on 10.5x Q5-Q8 EV/EBITDA"
+   }
+  ]
+ },
+ "maritime chokepoint disruption": {
+  "theme": "maritime chokepoint disruption",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 4
+  },
+  "theme_stances": [
+   {
+    "source": "UBS",
+    "theme": "maritime chokepoint disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz reclosure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz reclosure"
+   },
+   {
+    "source": "Eastspring Investments",
+    "theme": "maritime chokepoint disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz supply disruption",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz supply disruption"
+   },
+   {
+    "source": "Societe Generale",
+    "theme": "maritime chokepoint disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz oil price impact",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz oil price impact"
+   },
+   {
+    "source": "Societe Generale",
+    "theme": "maritime chokepoint disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Bab al-Mandab Strait supply chain risk",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Bab al-Mandab Strait supply chain risk"
+   },
+   {
+    "source": "Bernstein",
+    "theme": "maritime chokepoint disruption",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "Strait of Hormuz blockage",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "Strait of Hormuz blockage"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "MSCI",
+    "figure": "18%",
+    "metric": "Global real estate investment volume growth YoY",
+    "context": "2Q26, USD terms"
+   },
+   {
+    "source_bank": "Cliffwater",
+    "figure": "1.73%",
+    "metric": "Non-accrual rate (Cliffwater Direct Lending Index)",
+    "context": "June 2026, down from 1.85% in March 2026"
+   },
+   {
+    "source_bank": "MBA",
+    "figure": "4.37%",
+    "metric": "Seasonally adjusted delinquency rate",
+    "context": "Q2, down 0.07% from Q1"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "104%",
+    "metric": "Cloud-equipment spending growth",
+    "context": "2026 YoY growth forecast"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "38%",
+    "metric": "Cloud-equipment spending growth",
+    "context": "2027 YoY growth forecast"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$1.61 trillion",
+    "metric": "Aggregate cloud-equipment spending",
+    "context": "2027 total spending forecast"
+   },
+   {
+    "source_bank": "Nomura",
+    "figure": "280",
+    "metric": "Tracked AI data center projects",
+    "context": "Recent increase from 240 projects"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "212%",
+    "metric": "Asia technology EPS growth",
+    "context": "2026 consensus estimate"
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "42%",
+    "metric": "Asia technology EPS growth",
+    "context": "2027 consensus estimate"
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": "USD 108/bbl",
+    "metric": "Front-month Brent crude price",
+    "context": "At time of writing, reflecting Middle East conflict."
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": "0.3%",
+    "metric": "US August core inflation MoM",
+    "context": "August print vs 0.2% consensus forecast."
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": ">30bps",
+    "metric": "Rise in 10-year yields across developed markets",
+    "context": "Increase since Jackson Hole."
+   },
+   {
+    "source_bank": "Eastspring Investments",
+    "figure": "25bps",
+    "metric": "Expected Fed rate hike",
+    "context": "Market expectation for Wednesday's FOMC meeting."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac6.525bn",
+    "metric": "Daily priced new issues",
+    "context": "Daily volume for 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac12.275bn",
+    "metric": "Weekly new issue volume",
+    "context": "Total for the week as of 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "3.55%",
+    "metric": "10y Bund yield",
+    "context": "Rose 4bp on 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "5.03%",
+    "metric": "10y UST yield",
+    "context": "Rose 4bp on 15 September 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "$25bn",
+    "metric": "Weekly ETF flows",
+    "context": "Total weekly ETF flows for the week ending 15 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "2.4%",
+    "metric": "Flow into money-market ETFs as % of AUM",
+    "context": "Weekly flow into money-market ETFs as a percentage of AUM."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "$2,315.1M",
+    "metric": "Weekly flow into Russell 2000",
+    "context": "Weekly primary market flow for the week ending 15 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "-$1,625.6M",
+    "metric": "Weekly flow into Markit iBoxx USD Liquid Investment Grade",
+    "context": "Weekly primary market flow for the week ending 15 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac680.2bn",
+    "metric": "Year-to-date new issue volume",
+    "context": "Total year-to-date issuance as of 18 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "\u20ac900bn+",
+    "metric": "Annual new issue forecast",
+    "context": "Full-year 2026 issuance target."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "4.32%",
+    "metric": "iBoxx Corporates yield",
+    "context": "Yield as of 18 September 2026."
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "18%",
+    "metric": "grain futures price increase",
+    "context": "Since June 30, 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "34%",
+    "metric": "energy price increase",
+    "context": "Since June 30, 2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "34%",
+    "metric": "cocoa price increase forecast",
+    "context": "12-month price effect"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "14-20%",
+    "metric": "cocoa production decline",
+    "context": "2026/27 crop year vs trend"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "6.4%",
+    "metric": "SG Nominal US GDP Forecast",
+    "context": "2026 forecast"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "$15,125",
+    "metric": "3-month LME Copper price",
+    "context": "2027 forecast"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "3.7%",
+    "metric": "US Equity Risk Premium",
+    "context": "As of 10/09/2026"
+   },
+   {
+    "source_bank": "Societe Generale",
+    "figure": "32%",
+    "metric": "2026e US EPS growth",
+    "context": "Latest estimate as of 01/09/2026"
+   },
+   {
+    "source_bank": "Bernstein",
+    "figure": "2+ mln bopd",
+    "metric": "Recent Russian refining capacity outages",
+    "context": "Reported in August 2026 based on satellite and AI analysis."
+   },
+   {
+    "source_bank": "Bernstein",
+    "figure": "~90%",
+    "metric": "Total Russian refining capacity struck by Ukrainian drones",
+    "context": "Cumulative impact as of August 2026."
+   },
+   {
+    "source_bank": "Bernstein",
+    "figure": "~80%",
+    "metric": "Russian refining capacity struck by Ukrainian drones in 2026",
+    "context": "Year-to-date 2026 impact."
+   }
+  ]
+ },
+ "ai and debt drive rates higher": {
+  "theme": "ai and debt drive rates higher",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 3,
+   "skeptical": 0,
+   "neutral": 0
+  },
+  "theme_stances": [
+   {
+    "source": "Northern Trust",
+    "theme": "rising neutral rates",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Increased investment in AI infrastructure and rising government debt are structurally pushing neutral interest rates higher.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The structural factors pushing up r* are unlikely to subside."
+   },
+   {
+    "source": "Allianz Research",
+    "theme": "AI impact on rates",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "AI acts as a bull market for duration over the long term via productivity and fiscal collateral channels.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "AI is a bull market for duration in both scenarios"
+   },
+   {
+    "source": "HSBC Asset Management",
+    "theme": "higher-for-longer rates",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The combination of the AI boom and supply-side shocks necessitates a higher interest rate environment.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "interest rates are set to be higher-for-longer."
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "European Commission",
+    "figure": "2:1",
+    "metric": "Working-age adults to retirees ratio",
+    "context": "Projected for 2070, down from 3:1 today."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "45",
+    "metric": "Median age of EU citizen",
+    "context": "At least six years older than other continents' populations."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "1/5",
+    "metric": "Public spending on retirement, healthcare, and long-term care as % of GDP",
+    "context": "EU-wide figure."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "$5 trillion",
+    "metric": "Funded retirement assets in EU",
+    "context": "Less than 30% of GDP."
+   },
+   {
+    "source_bank": "Northern Trust",
+    "figure": "$45 trillion",
+    "metric": "US 401(k) and pension fund assets",
+    "context": "Equivalent to over 150% of GDP."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "4.3mbpd",
+    "metric": "Net hit to Hormuz flows",
+    "context": "Current disruption vs pre-war levels."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "62 EUR/bbl",
+    "metric": "US crack spread",
+    "context": "August 2026 level, 68% above five-year average."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "2.5mbpd",
+    "metric": "Global oil demand contraction",
+    "context": "Expected contraction in 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "USD 330bn",
+    "metric": "Extra cost for fossil-fuel importers",
+    "context": "Estimated extra cost paid between March and August 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "15%",
+    "metric": "Global refining investment decline",
+    "context": "Year-on-year decline for 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "-50bp",
+    "metric": "10-year net effect on long-term rates (upside scenario)",
+    "context": "10-year horizon for both US and eurozone."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "135bp",
+    "metric": "US 10Y round trip (upside scenario)",
+    "context": "Yields rise before they fall over the 10-year period."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "-85bp",
+    "metric": "Fiscal collateral improvement impact on US 10Y",
+    "context": "By the end of the 10-year horizon."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "1.6x",
+    "metric": "Eurozone fiscal-collateral beta vs US",
+    "context": "Per point of growth delivered."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "+67bp",
+    "metric": "AI-enhanced neutral-rate range increase",
+    "context": "Over the next decade."
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "25bp",
+    "metric": "Fed funds rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "4.00-4.50%",
+    "metric": "Fed funds rate target range",
+    "context": "2027 FOMC projection"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "5%",
+    "metric": "10-year UST yield",
+    "context": "September 2026 market level"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "40%",
+    "metric": "S&P 500 concentration of 10 largest companies",
+    "context": "Most concentrated level in decades."
+   },
+   {
+    "source_bank": "European Commission",
+    "figure": "EUR5.4trn",
+    "metric": "Investment needed for European electricity grids",
+    "context": "Investment required between 2025 and 2031."
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "100bp",
+    "metric": "Market pricing for BoE tightening",
+    "context": "Pricing over the next 12 months."
+   }
+  ]
+ },
+ "monetary policy hawkishness": {
+  "theme": "monetary policy hawkishness",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "Generali Asset Management",
+    "theme": "monetary policy hawkishness",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "The Fed is prioritizing a timelier return to the 2% inflation target over growth concerns.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "The Fed has turned decisively more hawkish, raising rates and signalling one further hike"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "Generali Asset Management",
+    "figure": "3.75%\u20134%",
+    "metric": "Fed Funds Rate",
+    "context": "Post-meeting rate hike, September 2026"
+   },
+   {
+    "source_bank": "Generali Asset Management",
+    "figure": "3.6%",
+    "metric": "Headline PCE inflation",
+    "context": "August 2026 estimate"
+   },
+   {
+    "source_bank": "Generali Asset Management",
+    "figure": "3.2%",
+    "metric": "Core PCE inflation",
+    "context": "August 2026 estimate"
+   },
+   {
+    "source_bank": "Generali Asset Management",
+    "figure": "4.1%",
+    "metric": "Unemployment rate",
+    "context": "Throughout the forecast horizon"
+   },
+   {
+    "source_bank": "Generali Asset Management",
+    "figure": "3.2%",
+    "metric": "Longer-run policy rate",
+    "context": "Nudged up by 0.1 percentage points"
+   },
+   {
+    "source_bank": "Generali Asset Management",
+    "figure": "4.7%",
+    "metric": "Two-year Treasury yield",
+    "context": "Rose 0.1 percentage points"
+   }
+  ]
+ },
+ "us treasury term premium": {
+  "theme": "us treasury term premium",
+  "discovered": false,
+  "stance_counts": {
+   "supportive": 1,
+   "skeptical": 0,
+   "neutral": 2
+  },
+  "theme_stances": [
+   {
+    "source": "HSBC Asset Management",
+    "theme": "US Treasury term premium",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Persistent fiscal borrowing is making investors more wary of long-duration sovereign debt, pushing up the term premium.",
+    "primary_instruments": [
+     "TLT"
+    ],
+    "vs_consensus": "",
+    "evidence": "persistent fiscal borrowing is making investors more wary of long-duration sovereign debt"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "25bp",
+    "metric": "Fed funds rate hike",
+    "context": "September 2026 FOMC meeting"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "4.00-4.50%",
+    "metric": "Fed funds rate target range",
+    "context": "2027 FOMC projection"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "5%",
+    "metric": "10-year UST yield",
+    "context": "September 2026 market level"
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "40%",
+    "metric": "S&P 500 concentration of 10 largest companies",
+    "context": "Most concentrated level in decades."
+   },
+   {
+    "source_bank": "European Commission",
+    "figure": "EUR5.4trn",
+    "metric": "Investment needed for European electricity grids",
+    "context": "Investment required between 2025 and 2031."
+   },
+   {
+    "source_bank": "HSBC Asset Management",
+    "figure": "100bp",
+    "metric": "Market pricing for BoE tightening",
+    "context": "Pricing over the next 12 months."
+   }
+  ]
+ },
+ "ai labor market impact": {
+  "theme": "ai labor market impact",
+  "discovered": true,
+  "stance_counts": {
+   "supportive": 0,
+   "skeptical": 0,
+   "neutral": 3
+  },
+  "theme_stances": [
+   {
+    "source": "The Market Ear",
+    "theme": "ai labor market impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "labor market AI exposure",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "labor market AI exposure"
+   },
+   {
+    "source": "UBS",
+    "theme": "ai labor market impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "US labor market AI substitution",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "US labor market AI substitution"
+   },
+   {
+    "source": "Allianz Research",
+    "theme": "ai labor market impact",
+    "stance": "neutral",
+    "conviction": null,
+    "key_argument": "AI-driven job displacement",
+    "primary_instruments": [],
+    "vs_consensus": null,
+    "evidence": "AI-driven job displacement"
+   }
+  ],
+  "tension_points": [],
+  "key_data_points": [
+   {
+    "source_bank": "BNP",
+    "figure": "14%",
+    "metric": "European software valuation premium above Saaspocalpyse lows",
+    "context": "Current valuation level relative to historical lows."
+   },
+   {
+    "source_bank": "BNP",
+    "figure": "30%",
+    "metric": "SaaS valuation discount to two-year median",
+    "context": "Valuation gap following Q2 earnings."
+   },
+   {
+    "source_bank": "Bloomberg",
+    "figure": "10x",
+    "metric": "Global IT services P/E ratio",
+    "context": "Current valuation level."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "20%",
+    "metric": "SAP 12-month performance",
+    "context": "Performance over the last 12 months."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "1.5x",
+    "metric": "Global software PEG ratio",
+    "context": "Global software valuation benchmark."
+   },
+   {
+    "source_bank": "The Market Ear",
+    "figure": "1.0x",
+    "metric": "SAP PEG ratio",
+    "context": "SAP valuation relative to global software."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "19th percentile",
+    "metric": "equity L/S net leverage",
+    "context": "12-month basis"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "33rd percentile",
+    "metric": "US fundamental long/short gross leverage",
+    "context": "past year"
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "7th percentile",
+    "metric": "US fundamental long/short net leverage",
+    "context": "past year"
+   },
+   {
+    "source_bank": "Deutsche Bank",
+    "figure": "48th percentile",
+    "metric": "consolidated equity positioning indicator",
+    "context": "historical range"
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$49.8tn",
+    "metric": "Top 20% equity wealth",
+    "context": "Comparison against $8.3tn labor income for the same cohort."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "87%",
+    "metric": "Top 10% share of corporate equities",
+    "context": "Ownership concentration among top 10% of households."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "86.6",
+    "metric": "Goldman US Discretionary basket level",
+    "context": "Down from above 105 earlier this year."
+   },
+   {
+    "source_bank": "Goldman Sachs",
+    "figure": "85.39",
+    "metric": "Goldman Consumer Inertia Index",
+    "context": "Current level, down from 100.56 in January."
+   },
+   {
+    "source_bank": "JPMorgan",
+    "figure": "56.54%",
+    "metric": "Retail turnover in AI/Datacenter/Electrification basket",
+    "context": "YTD increase in retail turnover."
+   },
+   {
+    "source_bank": "Morgan Stanley",
+    "figure": "$96,690",
+    "metric": "Median salary for high-AI-exposure occupations",
+    "context": "Employment-weighted median salary."
+   },
+   {
+    "source_bank": "MSCI",
+    "figure": "18%",
+    "metric": "Global real estate investment volume growth YoY",
+    "context": "2Q26, USD terms"
+   },
+   {
+    "source_bank": "Cliffwater",
+    "figure": "1.73%",
+    "metric": "Non-accrual rate (Cliffwater Direct Lending Index)",
+    "context": "June 2026, down from 1.85% in March 2026"
+   },
+   {
+    "source_bank": "MBA",
+    "figure": "4.37%",
+    "metric": "Seasonally adjusted delinquency rate",
+    "context": "Q2, down 0.07% from Q1"
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "4.3mbpd",
+    "metric": "Net hit to Hormuz flows",
+    "context": "Current disruption vs pre-war levels."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "62 EUR/bbl",
+    "metric": "US crack spread",
+    "context": "August 2026 level, 68% above five-year average."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "2.5mbpd",
+    "metric": "Global oil demand contraction",
+    "context": "Expected contraction in 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "USD 330bn",
+    "metric": "Extra cost for fossil-fuel importers",
+    "context": "Estimated extra cost paid between March and August 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "15%",
+    "metric": "Global refining investment decline",
+    "context": "Year-on-year decline for 2026."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "-50bp",
+    "metric": "10-year net effect on long-term rates (upside scenario)",
+    "context": "10-year horizon for both US and eurozone."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "135bp",
+    "metric": "US 10Y round trip (upside scenario)",
+    "context": "Yields rise before they fall over the 10-year period."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "-85bp",
+    "metric": "Fiscal collateral improvement impact on US 10Y",
+    "context": "By the end of the 10-year horizon."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "1.6x",
+    "metric": "Eurozone fiscal-collateral beta vs US",
+    "context": "Per point of growth delivered."
+   },
+   {
+    "source_bank": "Allianz Research",
+    "figure": "+67bp",
+    "metric": "AI-enhanced neutral-rate range increase",
+    "context": "Over the next decade."
+   }
+  ]
+ }
+}

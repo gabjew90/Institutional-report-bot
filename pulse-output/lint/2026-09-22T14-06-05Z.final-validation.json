@@ -1,0 +1,67 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.8%' is attached to [buying, desk, funding, move, only] but the source uses it for [back, contingent, look, sofr] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.8%",
+   "draft_subject": [
+    "buying",
+    "desk",
+    "funding",
+    "move",
+    "only",
+    "position",
+    "puts",
+    "rate"
+   ],
+   "source_subject": [
+    "back",
+    "contingent",
+    "look",
+    "sofr"
+   ]
+  },
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '3.68%' is attached to [back, before, crude, down, headlines] but the source uses it for [session, yesterday] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "3.68%",
+   "draft_subject": [
+    "back",
+    "before",
+    "crude",
+    "down",
+    "headlines",
+    "monday",
+    "negotiation",
+    "other"
+   ],
+   "source_subject": [
+    "session",
+    "yesterday"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-4.00% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.2, 3.6, 3.7]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-4.00",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The FOMC raised rates 25 basis points to 3.75-4.00% unanimously, and Warsh said policy is still not clearly restrictive. Morgan Stanley answered by moving its terminal rate to 4.25-4.50% on two more h"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "-4.50% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [3.2, 3.6, 3.7]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "-4.50",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The FOMC raised rates 25 basis points to 3.75-4.00% unanimously, and Warsh said policy is still not clearly restrictive. Morgan Stanley answered by moving its terminal rate to 4.25-4.50% on two more h"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 4,
+ "exit_code": 4
+}
