@@ -1,0 +1,958 @@
+You are an adversarial accuracy checker for a finished Market Pulse draft, dispatched fresh with NO drafting history. You did not write this document and you owe it nothing. Your single job: find statements in the final draft that the day's research context does not support.
+
+You check FACTS, not style. Voice, tone, structure, and word choice are policed elsewhere and are none of your business.
+
+Severity is NOT yours to assign — the gate maps your `kind` to a severity deterministically, and any severity field you emit is ignored. Your `kind` MUST be one of exactly these four when the finding fits one (and these map HARD):
+- **unsupported-figure** — a specific number, level, or statistic in the draft that appears nowhere in the research context or the live-data block. Numbers the context states differently count too (draft says $107bn, context says $104.5bn).
+- **misattribution** — a view, call, target, or figure credited to one bank when the context ties it to a different bank, or to a named bank when the context attributes it to nobody.
+- **invented-call** — a trade recommendation presented as a desk's call that no context entry contains. The pulse never issues its own calls, so an unattributed call is fabricated by construction.
+- **fabricated-event** — an event, print, date, or scheduled release the context contradicts or does not contain.
+
+Any other finding — a claim stated more strongly than the context supports, a misleading emphasis, an ambiguous qualifier — takes a short kebab-case kind of your choosing (e.g. "overstated-claim") and maps soft. Do NOT stretch one of the four names above to cover a judgment call, and do NOT invent a softer-sounding name for something that IS one of the four: a figure the context states differently is "unsupported-figure", never "figure-mismatch" or any other coinage.
+
+Discipline:
+- Every finding carries `quote`: the EXACT text from the final draft, copied character-for-character. Findings whose quote does not appear verbatim in the draft are discarded by the gate, so a paraphrased quote wastes your finding.
+- Check the context before flagging. A figure you merely don't recognize is not a finding; a figure the context lacks or contradicts is.
+- Zero findings is a legitimate verdict and common on a clean run. Do NOT invent findings to look thorough — a false hard finding burns a repair round and degrades the pulse.
+- The RECAP section may cite live market prices and news headlines from the live-data block; those are in scope for support, not violations.
+
+Output STRICT JSON, nothing else:
+{"findings": [{"kind": "unsupported-figure", "quote": "<verbatim from draft>", "why": "<one sentence: what the context says instead, or that it says nothing>", "fix": "<one sentence: the minimal correction>"}]}
+
+Empty verdict: {"findings": []}
+
+=====================================================================
+
+FINAL DRAFT (the document under check):
+
+# Five percent decides it
+
+## 1. RECAP
+
+Gold is giving back ground and the dollar is at a two-month high, both on the same trade: a Fed that hikes again rather than cuts. Equities have not taken a side in the first fifteen minutes, with $SPY off 0.18% and $QQQ down 0.37%. Energy is the one corner moving with conviction, and it is moving higher. $BTC held near $85,800 overnight without following either. The 10-year Treasury yield sits at 4.99%, one basis point (one-hundredth of a percent) from 5%, and the 30-year is at 5.32%. Half an hour of trading settles nothing, but the market walking into the October 27-28 meeting is one that has stopped arguing about when cuts start.
+
+- **Fed officials talked up more tightening overnight, and metals paid for it.** $GLD fell 1.72% and the dollar reached a two-month high, with the 5-year Treasury yield up 2.2 basis points to 4.86%. No data was released. This is expectations moving on their own.
+- **Oil rose while diesel prices sat at records.** $BNO is up 2.49% and $USO 2.18% this morning. Shipping through the Strait of Hormuz is still running below its ten-day average, and Trump came out Tuesday evening for a ban on US diesel exports, a policy aimed at pump prices that would force refiners to keep more fuel at home.
+- **The bond market is priced for trouble the stock option market is not.** Price swings in Treasuries are running at the 86th percentile of the past year while the VIX sits at the 7th (Cboe), and $VIXY has not moved today at +0.12%. Protection on stocks is cheap because almost nobody has bought it.
+
+## 2. INSIGHTS & ALPHA
+
+### Rates run higher for longer than the market is pricing
+
+*The first Fed hike in three years was not the end of this repricing. It was the start of it.*
+
+- The Fed lifted its target range to 3.75-4.00% last week on a unanimous vote, its first increase in three years. The question on every desk moved from when cuts start to how many hikes land
+- Futures carry about 75 more basis points of tightening by next June (Deutsche Bank). That number is what the whole argument is about
+- The market has guessed short before. In 1994 the Fed delivered 300 basis points against 140 priced, and in 2022 it delivered 400 against 200 (Deutsche Bank)
+- Crude now drives the rate every asset is discounted against. The three-month correlation between the 10-year yield and oil is +65%, the highest in 35 years (Cboe), so a supply shock arrives as a rate shock
+
+The case for a short cycle belongs to Goldman, which has one more 25 basis point move at the October 27-28 meeting and then a flat policy rate, on the view that core PCE inflation, the Fed's preferred price gauge that strips out food and energy, is already running at a 2.5% annual pace over the past three months. That case needs the data to start cooperating, and August did not. Core PCE rose 0.27% on the month, faster than desks had penciled in, and the annual rate is still above 3% against a 2% target. The jump in crude after the strikes on Saudi infrastructure pushed consumer prices higher on top of that, which is the mechanism the short-cycle case has no answer for: you cannot look through an energy shock that is now feeding directly into the rate that prices every other asset.
+
+The reaction function moved underneath the forecasts too. A committee that was late to the last inflation cycle over-corrects for it in this one, and four of its participants already see a hike at every remaining meeting this year. Against that, the argument for patience is that a single 25 basis point move in October with nothing behind it is a recalibration rather than a new regime, and the labour market does the deciding.
+
+The 10-year is at 4.99% right now. Whether it closes decisively above 5% before the October meeting is what settles this, and BTIG puts the level that would flip the trend back the other way at 4.92%.
+
+### Agents arrived and the infrastructure bill arrived with them
+
+*Consumer AI assistants are turning into a hardware order, and that is the part of the AI trade with the fewest people arguing against it.*
+
+Goldman is buying the AI dip and reads last week's chip selloff as crowded positions being forced out rather than anything breaking in the business. JPMorgan takes the other side and expects technology not to lead returns in the second half. The adoption numbers sit with Goldman. Meta's Muse assistant reached 2.5 million downloads in 13 days against 1.3 million for ChatGPT over the same stretch (UBS), and Meta shares are up 21% since launch while the index is up 1%. An assistant that carries out tasks consumes far more computing power than a chatbot that answers questions, which is why memory supply keeps tightening, with Samsung's HBM4 yields near 80% from below 60% and flash prices set to rise 20% for a second straight quarter (Goldman). Meta Connect runs today, so the next round of assistant announcements lands before anyone has to mark the hardware bill. Goldman's way to own the rebuild is $ASML into the SEMICON event, a call that rests on funds rebuilding chip exposure rather than cutting it further.
+
+### The rotation nobody has paid for
+
+*The rally's internals are worse than its level, and the cheapest insurance is on the part of the market where the damage has already started.*
+
+Fewer than 30% of S&P 500 stocks trade above their 50-day average price (Goldman), and the index has printed more 52-week lows than highs for five sessions running while sitting near a record. Bank stocks are more than 10% below their 30-day high, a combination last seen in January 2000 (BTIG). Credit has already cracked at the bottom, with the yield gap between the weakest corporate borrowers and the tier above them at 799 basis points, near the top of its three-year range. Retail money is what holds the top up: $1.6bn went into the Magnificent Seven in the week to September 16 while roughly $2.2bn came out of everything else. Small-cap options have priced none of it, with six-month contracts on $IWM costing barely more than the same contracts on the S&P, near a two-year low. Goldman is long Russell 2000 calls while positioning stays negative, and the cost of being early is that premium.
+
+### Diesel is the inflation nobody can look through
+
+*The energy shock has stopped being about crude and started being about the fuel that moves everything else.*
+
+US diesel hit a record $6.29 a gallon, up 68% from $3.74 a year ago (Energy Information Administration), and Trump backed an export ban Tuesday evening to cap it. Refiners are earning $95 a barrel this week turning crude into diesel, against $74 on average in August (ING). Crude itself is loosening while fuel tightens, with the global supply shortfall narrowing from 7 million barrels a day at the start of the war to 1 million in the third quarter (Goldman), so what is scarce is refining capacity rather than barrels, and plant closures outside China of roughly 0.6 million barrels a day outrun new additions of 0.3 million through 2028. Goldman lifted its 2026 refining margin forecast to $33.10 a barrel and names Valero and Marathon Petroleum as the US refiners with the cash flow to carry it. The export ban is the risk to that trade, because keeping US fuel at home is the one policy that directly compresses the margin the whole position depends on.
+
+### The nuclear money is landing in fuel, not reactors
+
+*The buildout stopped being a debate and turned into a procurement cycle, and the near-term money is in the fuel chain rather than the reactor builders.*
+
+The IAEA raised its 2050 nuclear capacity outlook for a sixth straight year, with small modular reactors now carrying most of the new North American capacity in its projections. Long-term uranium contracts set a record at $96.50 a pound, and South Korea signed a $120bn agreement last Friday to build eight large reactors in the US (Yuanta). The argument has moved from whether to where, and the two sides are on opposite ends of the same supply chain. Northland cut NuScale from $16 to $10 on a higher cost of capital and a slower 2030s buildout, then moved its money to fuel and equipment with BWX Technologies rated Outperform to $250, while Bank of America stayed Buy-rated on the developers with Oklo to $80. Uranium repricing toward the $120 a pound Yuanta argues is needed to balance supply is what settles it in the fuel chain's favour, and a flat contract cycle is what would prove it wrong.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **Trump-Xi summit, today through September 25.** Trump is building a large public spectacle around talks both sides expect to be tense. JPMorgan and Natixis both read it as a bounded negotiation over leverage rather than a broad settlement, with China holding the stronger hand. A constructive readout lifts China tech and the chip complex, a breakdown reopens the tariff path and pushes the dollar higher.
+
+### This Week
+
+- **Thursday, September 24 after the close: Costco.** Consensus is $6.67 a share on $96.75 billion of revenue, the same numbers this pulse has carried for a week. August retail sales already ran hot at 1.2%, so a miss reads as a consumer signal rather than a company one.
+- **Wednesday, September 30, 8:30 AM ET: second-quarter GDP and the PCE inflation report.** No consensus is posted yet for either. PCE is the print that decides the October meeting, and the hawkish case needs the fuel pass-through to show up in it.
+- **Wednesday, September 30 after the close: Micron.** Memory pricing is the one direct test of whether the flash and DRAM tightness the chip desks describe is reaching actual profits.
+
+## _LEANS (internal — TRADE BOARD source, stripped before publish)
+- short | $TLT | 75bp priced by June, past cycles ran further
+- long | $META | Muse 2.5m downloads in 13 days, JPM Overweight
+- long | $IWM calls | small-cap options near 2-year lows vs credit stress
+- long | $VLO, $MPC, $COP | record diesel, refining capacity short to 2028
+- long | $BWXT, $MIR | fuel chain over reactor developers
+
+
+=====================================================================
+
+RESEARCH CONTEXT (the only permissible support for the draft's claims — per-PDF structured extractions plus the live-data block):
+
+=== LIVE DATA BLOCK (in scope as support for the RECAP) ===
+
+TODAY: 2026-09-23 (Wednesday)   NOW: 09:43 EDT   SESSION: pre-market or after-hours
+
+CURRENT MARKET DATA (as of 2026-09-23 09:44 EDT, session: OPEN):
+Markets currently OPEN (regular session). Traditional-market % reflects today's session-to-date move from yesterday's close. Crypto % reflects today's move since 00:00 UTC.
+
+Traditional markets (% shown = session-to-date):
+  $SPY: $771.99 (-0.18% session-to-date)
+  $QQQ: $744.72 (-0.37% session-to-date)
+  $VIXY: $16.50 (+0.12% session-to-date)
+  $BNO: $59.35 (+2.49% session-to-date)
+  $USO: $147.22 (+2.18% session-to-date)
+  $GLD: $393.19 (-1.72% session-to-date)
+  $TLT: $81.36 (-0.48% session-to-date)
+  $UUP: $28.58 (+0.35% session-to-date)
+
+US Treasury yields (live via Yahoo yield indices; change = vs prior close):
+  5Y: 4.86% (+2.2 bps)
+  10Y: 4.99% (+1.8 bps)
+  30Y: 5.32% (+1.3 bps)
+  30Y-10Y spread: +33 bps
+
+Crypto (% shown = since 00:00 UTC today, which is 8pm ET yesterday during EDT):
+  $BTC: $85,803 (-0.43% UTC-day)
+  $ETH: $2,719 (-1.24% UTC-day)
+  $SOL: $117 (-1.21% UTC-day)
+
+
+LIVE MARKET NEWS (last 48h from Finnhub, newest first):
+  [2026-09-23 09:08 EDT] CNBC: Our top 10 things to watch in the stock market Wednesday
+    Microsoft lands an analyst upgrade, and Meta Connect is here.
+  [2026-09-23 08:35 EDT] CNBC: IonQ shares rally after company says it made a major quantum computing breakthrough
+    Shares of quantum computing company IonQ surged in premarket following its successful test of the industry's first real time end-to-end error decoder.
+  [2026-09-23 07:43 EDT] Reuters: Dollar at 2-month highs as Fed outlook 'dominant' - Reuters
+    Dollar at 2-month highs as Fed outlook 'dominant'  Reuters
+  [2026-09-23 07:09 EDT] Reuters: Trump plans grand spectacle for potentially tense Xi talks - Reuters
+    Trump plans grand spectacle for potentially tense Xi talks  Reuters
+  [2026-09-23 06:12 EDT] Reuters: Trump's Board of Peace to unveil $2.45 billion Gaza recovery plan, Axios reports - Reuters
+    Trump's Board of Peace to unveil $2.45 billion Gaza recovery plan, Axios reports  Reuters
+  [2026-09-23 05:36 EDT] Reuters: PODCAST: Crude hopes - Reuters
+    PODCAST: Crude hopes  Reuters
+  [2026-09-23 05:22 EDT] CNBC: South Korea pushes for Trump summit with renegade North Korea, seeing opportunity for peace
+    South Korea pushes for Trump summit with renegade North Korea, seeing opportunity for peace
+  [2026-09-23 00:53 EDT] Reuters: Gold retreats as hawkish Fed comments reinforce policy tightening bets - Reuters
+    Gold retreats as hawkish Fed comments reinforce policy tightening bets  Reuters
+  [2026-09-22 22:46 EDT] Reuters: Rupee slips as dollar gets Fed hike expectations tailwind - Reuters
+    Rupee slips as dollar gets Fed hike expectations tailwind  Reuters
+  [2026-09-22 22:39 EDT] Reuters: Shipping traffic via Strait of Hormuz stays below 10-day average, data shows - Reuters
+    Shipping traffic via Strait of Hormuz stays below 10-day average, data shows  Reuters
+  [2026-09-22 21:51 EDT] Reuters: Global stocks stall, oil ticks up as investors await Mideast peace signals - Reuters
+    Global stocks stall, oil ticks up as investors await Mideast peace signals  Reuters
+  [2026-09-22 21:44 EDT] Reuters: Oil holds near two-week lows while diesel cracks hit record peak - Reuters
+    Oil holds near two-week lows while diesel cracks hit record peak  Reuters
+  [2026-09-22 20:42 EDT] Reuters: South Korea plans to cut its reliance on Middle East crude oil imports to 50% by 2035 - Reuters
+    South Korea plans to cut its reliance on Middle East crude oil imports to 50% by 2035  Reuters
+  [2026-09-22 19:22 EDT] Reuters: Trump supports diesel export ban as fuel prices hit records - Reuters
+    Trump supports diesel export ban as fuel prices hit records  Reuters
+  [2026-09-22 19:00 EDT] CNBC: Qantas to start selling tickets next year for its New York to Sydney nonstop flight
+    Qantas plans to start selling tickets for its first New York to Sydney nonstop flight.
+
+EARNINGS STILL UPCOMING (belongs in WHAT TO WATCH):
+  2026-09-24 COST — AMC (EPS est $6.6561, Rev est $96.76B)
+  2026-09-30 MU — AMC
+
+ECONOMIC CALENDAR — FALLBACK FEED (Finnhub down; blended sources): consensus estimates only exist for THIS calendar week (ForexFactory); dates beyond this week come from the FRED official release calendar (no consensus posted — say 'no consensus posted yet', do NOT invent one); ACTUAL values where shown are official FRED numbers and name their reference month:
+
+ECONOMIC EVENTS STILL UPCOMING (belongs in WHAT TO WATCH):
+  2026-09-30 08:30 EDT | [US] | GDP (Gross Domestic Product) | impact=high
+  2026-09-30 08:30 EDT | [US] | PCE (Personal Income and Outlays) | impact=high
+
+=== CONSENSUS LEDGER (figures the previous pulse published) ===
+
+[from your own pulse dated 2026-09-22]
+- Thursday after the close: Costco. Consensus is $6.67 a share on $96.75 billion of revenue, the same numbers this pulse has carried for a week. August retail sales ran 1.2%, well above what economists expected, and this is the first clean te
+[from your own pulse dated 2026-09-21]
+- Thursday, September 24, after the close: Costco. Consensus is $6.67 a share on $96.75 billion of revenue, the same numbers this pulse published last week. August retail sales rose 1.2%, with the narrower measure economists watch up 1.4%, so
+[from your own pulse dated 2026-09-18]
+- Capital spending at investment-grade borrowers grew 65% from a year earlier in the second quarter, and Goldman raised its 2026 forecast for total high-grade corporate bond sales by $200 billion to $2.3 trillion, roughly a quarter of it AI-r
+- Costco, Thursday the 24th after the close. Consensus is $6.67 a share on $96.75 billion of revenue. August retail sales ran 1.2% against the 0.8% expected, partly on Prime Day timing shifting between years (PNC), so this is the first clean 
+
+=== OPEN DIRECTIONAL READS FROM PRIOR PULSES ===
+
+- LONG $VIXY (since 2026-09-17): Long $VIXY · $2tn expiry rolls off, net exposure 5th percentile
+- LONG $NVDA (since 2026-09-18): $NVDA calls · implied vol at multi-year lows, Goldman desk call
+- LONG $XLE (since 2026-09-18): Long $XLE, $USO · pipeline outage unresolved, Nomura long energy equities
+- LONG $EFA (since 2026-09-21): Long $EFA, $XLU · only 2% of indexes above both averages, energy relief lands in power
+- SHORT $SHY (since 2026-09-21): Short $SHY · BofA short 2-year, policy still not restrictive
+- LONG $FXI (since 2026-09-22): Long $FXI, $KWEB · summit Sept 23-25, options priced for nothing
+- SHORT $SPY (since 2026-09-22): $SPY puts · Goldman lookback hedge, 10-year above 4.8%
+- SHORT $TLT (since 2026-09-22): Short $TLT · two more hikes into December, terminal 4.25-4.50%
+- LONG $XOM (since 2026-09-22): Long $XOM · refining margins at records, Bernstein Outperform $182
+
+=== THEME COVERAGE (bank counts per theme) ===
+
+THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):
+  - ai infrastructure and investment: 30 banks / 39 PDFs (Amova Asset Management, Ashmore, BTIG, Bank J. Safra Sarasin, Bank of America, CIBC Capital Markets, +24 more) — SPLIT, name both sides: support (Bank J. Safra Sarasin, Deutsche Bank, Franklin Templeton, Global X) vs skeptical (JPMorgan, The Market Ear, UBS) / 28 neutral — 7 HIGH-CONVICTION stances
+      · tightly related (cap-blocked sibling — fold into the same INSIGHTS section): agentic commerce: 3 banks / 5 PDFs (Deutsche Bank, Goldman Sachs, JPMorgan) — stance: 1 support / 2 skeptical / 0 neutral — ⚠ SOURCE-CONCENTRATED: 100% of PDFs from Deutsche Bank (weigh as one house view, not 5 independent reads) — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+      · tightly related (cap-blocked sibling — fold into the same INSIGHTS section): ai software reach: 1 banks / 1 PDFs (Global X) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+      · tightly related (cap-blocked sibling — fold into the same INSIGHTS section): hydrogen for data centers: 1 banks / 1 PDFs (Global X ETFs) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - inflationary commodity pressures: 17 banks / 5 PDFs (Amova Asset Management, Ashmore, Canaccord Genuity, Edmond de Rothschild Asset Management, Goldman Sachs, ING, +11 more) — SPLIT, name both sides: support (Amova Asset Management, ING, Wells Fargo Investment Institute) vs skeptical (Rabobank, The Market Ear) / 15 neutral — ⚠ SOURCE-CONCENTRATED: 50% of PDFs from Amova Asset Management (weigh as one house view, not 5 independent reads)
+  - higher for longer rates: 12 banks / 2 PDFs (Cboe, Goldman Sachs, Morgan Stanley, Natixis, Raymond James, Syz Equity Research, +6 more) — stance: 2 support / 0 skeptical / 11 neutral — 1 HIGH-CONVICTION stance — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+      · tightly related (cap-blocked sibling — fold into the same INSIGHTS section): fed monetary policy path: 9 banks / 11 PDFs (Deutsche Bank, Goldman Sachs, Morgan Stanley, Natixis, Pictet, TS Lombard, +3 more) — SPLIT, name both sides: support (Deutsche Bank, Goldman Sachs, Natixis, Pictet) vs skeptical (Morgan Stanley, WisdomTree) / 4 neutral — 1 HIGH-CONVICTION stance — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+      · tightly related (cap-blocked sibling — fold into the same INSIGHTS section): japan monetary normalization: 6 banks / 1 PDFs (Amova Asset Management, Bank J. Safra Sarasin, Goldman Sachs, Pictet, Syz Equity Research, UBS) — stance: 1 support / 0 skeptical / 6 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+      · tightly related (cap-blocked sibling — fold into the same INSIGHTS section): us monetary policy: 1 banks / 1 PDFs (Ashmore) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - nuclear infrastructure growth: 9 banks / 9 PDFs (Bank of America, Barclays, CIBC Capital Markets, JPMorgan, JPMorganChase, Jefferies, +3 more) — stance: 7 support / 0 skeptical / 8 neutral — 2 HIGH-CONVICTION stances — ⚠ SOURCE-CONCENTRATED: 50% of PDFs from CIBC Capital Markets (weigh as one house view, not 9 independent reads) — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - us china strategic stability: 9 banks / 2 PDFs (Edmond de Rothschild Asset Management, Goldman Sachs, JPMorgan, Mizuho International Plc, Natixis, Rabobank, +3 more) — stance: 2 support / 0 skeptical / 9 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - bond yield normalization: 5 banks / 1 PDFs (BTIG, Franklin Templeton, Goldman Sachs, Rothschild & Co, The Market Ear) — stance: 1 support / 0 skeptical / 4 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - france fiscal outlook: 4 banks / 1 PDFs (Mizuho International Plc, Natixis, Rothschild & Co, Syz Group) — stance: 0 support / 1 skeptical / 4 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - luxury sector outlook: 3 banks / 1 PDFs (Goldman Sachs, RBC Capital Markets, UBS) — stance: 0 support / 1 skeptical / 3 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - us inflation outlook: 3 banks / 1 PDFs (Goldman Sachs, UBS, World Gold Council) — stance: 1 support / 0 skeptical / 3 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - positioning driven market moves: 2 banks / 6 PDFs (Goldman Sachs, The Market Ear) — stance: 2 support / 0 skeptical / 1 neutral — ⚠ SOURCE-CONCENTRATED: 50% of PDFs from The Market Ear (weigh as one house view, not 6 independent reads) — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - chinese yuan appreciation: 2 banks / 2 PDFs (Goldman Sachs, UBS) — stance: 2 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - china domestic technology: 2 banks / 1 PDFs (Amova Asset Management, The Market Ear) — stance: 1 support / 0 skeptical / 2 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - refining super cycle: 1 banks / 2 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - compass competitive positioning: 1 banks / 1 PDFs (Deutsche Bank) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - equity market regime: 1 banks / 1 PDFs (Pictet) — stance: 0 support / 1 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - eur ig cash vs itraxx main: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - long term lng oversupply: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - mirion 2h26 inflection: 1 banks / 1 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - oral serds adjuvant potential: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - residential solar headwinds: 1 banks / 1 PDFs (Goldman Sachs) — stance: 0 support / 1 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - vertically integrated utility advantage: 1 banks / 1 PDFs (Cohen & Steers) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - eurozone german equities: 1 banks / 3 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — ⚠ SOURCE-CONCENTRATED: 100% of PDFs from UBS (weigh as one house view, not 3 independent reads) — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - transformational innovation: 1 banks / 3 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — ⚠ SOURCE-CONCENTRATED: 100% of PDFs from UBS (weigh as one house view, not 3 independent reads) — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - commodity portfolio diversification: 1 banks / 2 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - equity diversification: 1 banks / 2 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - retail sector focus: 1 banks / 2 PDFs (Vanda Research) — stance: 1 support / 0 skeptical / 1 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - us majors valuation: 1 banks / 2 PDFs (Goldman Sachs) — stance: 1 support / 1 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - agricultural supply chain stress: 1 banks / 1 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - ai in gaming: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - auto parts retail demand: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - barbell equity strategy: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - caribbean cruise pricing: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - corporate unbundling: 1 banks / 1 PDFs (Canaccord Genuity) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - critical minerals independence: 1 banks / 1 PDFs (LSEG) — stance: 0 support / 1 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - cross asset correlation: 1 banks / 1 PDFs (Cboe) — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - crypto relative outperformance: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - equity positioning: 1 banks / 1 PDFs (Vanda Research) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - european gas supply: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - fdxf long term earnings power: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - financials sector valuation: 1 banks / 1 PDFs (Raymond James) — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - fiscal policy and rates: 1 banks / 1 PDFs (New York Life Investment Management) — stance: 0 support / 1 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - global equities outlook: 1 banks / 1 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - gold strategic allocation: 1 banks / 1 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - gold structural trend: 1 banks / 1 PDFs (World Gold Council) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - hard luxury vs soft luxury: 1 banks / 1 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - higher for longer: 1 banks / 1 PDFs (Amova Asset Management) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - ipp interest rate sensitivity: 1 banks / 1 PDFs (Wolfe Research) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - leveraged finance outlook: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - long em carry: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - longevity market growth: 1 banks / 1 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - managed competition: 1 banks / 1 PDFs (Morgan Stanley) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - memory sector fundamentals: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - merger arbitrage: 1 banks / 1 PDFs (Wells Fargo Investment Institute) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - mnb policy: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - near term lng price upside: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - novo nordisk mid term outlook: 1 banks / 1 PDFs (Goldman Sachs) — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - novo pipeline growth: 1 banks / 1 PDFs (Goldman Sachs) — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - railcar valuation: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - rates relief hedge: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - reimbursement tailwinds: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - semiconductor earnings dependence: 1 banks / 1 PDFs (Syz Private Banking) — stance: 0 support / 1 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - transport cycle recovery: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - us containerboard pricing: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - us dollar outlook: 1 banks / 1 PDFs (Edmond de Rothschild Asset Management) — stance: 0 support / 1 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - us equities: 1 banks / 1 PDFs (UBS) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - usdkrw outlook: 1 banks / 1 PDFs (Goldman Sachs) — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - venezuela oil production growth: 1 banks / 1 PDFs (Goldman Sachs) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - water utility infrastructure investment: 1 banks / 1 PDFs (Gabelli Funds) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - zillow long term earnings power: 1 banks / 1 PDFs (Deutsche Bank) — stance: 1 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+
+DISCOVERED THEMES — heavily mentioned in research as context (risk_factors, geopolitical, macro interpretation) but no single bank promoted them to a primary thesis. Treat as live topics worth surfacing, but do NOT claim consensus stance — the banks discussed these without arguing direction:
+  - hyperscaler capital and earnings: 7 banks / 10 PDFs (Apollo, Goldman Sachs, Syz Group, Syz Private Banking, The Market Ear, UBS, +1 more)
+  - german state election results: 6 banks / 7 PDFs (Deutsche Bank, JPMorgan, Mizuho International Plc, Natixis, Rabobank, UBS)
+  - us china trade truce: 6 banks / 6 PDFs (Bank J. Safra Sarasin, Deutsche Bank, Goldman Sachs, Natixis, Rabobank, UBS)
+  - middle east geopolitical events: 5 banks / 7 PDFs (Cboe, Deutsche Bank, Edmond de Rothschild Asset Management, Goldman Sachs, UBS)
+  - fund and etf flows: 5 banks / 5 PDFs (Franklin Templeton, Goldman Sachs, J.P. Morgan, Raymond James, Vanda Research)
+  - middle east escalation risk: 5 banks / 5 PDFs (Bank J. Safra Sarasin, Goldman Sachs, Mizuho International Plc, Rothschild & Co, Syz Equity Research)
+  - warsh fed commentary: 5 banks / 5 PDFs (Deutsche Bank, Morgan Stanley, Natixis, TS Lombard, UBS)
+  - meta muse ai agent: 4 banks / 8 PDFs (Deutsche Bank, Goldman Sachs, JPMorgan, UBS)
+  - saudi arabia east-west pipeline: 4 banks / 5 PDFs (Goldman Sachs, ING, Raymond James, UBS)
+  - sp 500 earnings trends: 3 banks / 4 PDFs (Amova Asset Management, Goldman Sachs, UBS)
+  - boe quantitative tightening: 3 banks / 3 PDFs (Ashmore, Goldman Sachs, Mizuho International Plc)
+  - corporate refinancing risk: 3 banks / 3 PDFs (Goldman Sachs, Morgan Stanley, The Market Ear)
+  - debt issuance growth: 3 banks / 3 PDFs (Goldman Sachs, The Market Ear, UBS)
+  - iaea nuclear power outlook: 3 banks / 3 PDFs (CIBC Capital Markets, JPMorgan, Northland Capital Markets)
+  - sector rotation and retail obsession: 3 banks / 3 PDFs (Goldman Sachs, Syz Equity Research, Vanda Research)
+
+NON-BANK-ONLY THEMES — every source for these themes is a commentary publication (The Market Ear, Bloomberg, Reuters) or unattributed, NOT a bank with an analytical research desk. Useful for vol/positioning/market-color reference only. DO NOT promote these to primary INSIGHTS themes without multi-bank corroboration — they're color, not underwritten analysis:
+  - semiconductor breakout: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance
+  - brazil election rerating: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - critical minerals supply chain: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - long convexity: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+  - small cap volatility: 1 banks / 1 PDFs (The Market Ear) — stance: 1 support / 0 skeptical / 0 neutral
+
+UNDERWEIGHTED CANDIDATES — Tier-1 or multi-tier 3+ bank coverage outside the natural top-6 by bank count. Easy to miss in DRAFT's top-down selection; surface at least one as a WHAT TO WATCH bullet or thread into the most relevant primary INSIGHTS section when it sharpens the call. Each was a notable miss in the 2026-05-29 QC review when the category didn't exist:
+  - equity market resilience: 8 banks / 3 PDFs (Edmond de Rothschild Asset Management, Goldman Sachs, JPMorganChase, Morgan Stanley, Pictet, Rothschild & Co, +2 more) — stance: 3 support / 0 skeptical / 6 neutral — ⚠ SOURCE-CONCENTRATED: 50% of PDFs from Edmond de Rothschild Asset Management (weigh as one house view, not 3 independent reads) — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+  - market breadth deterioration: 6 banks / 3 PDFs (BTIG, EFG, Goldman Sachs, Natixis, Rolf Bertschi / FinChartOutlook, The Market Ear) — stance: 0 support / 3 skeptical / 4 neutral — ⚠ SOURCE-CONCENTRATED: 50% of PDFs from EFG (weigh as one house view, not 3 independent reads) — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - copper market outlook: 4 banks / 4 PDFs (Goldman Sachs, ING, The Market Ear, UBS) — stance: 3 support / 0 skeptical / 4 neutral — ⚠ SOURCE-CONCENTRATED: 67% of PDFs from UBS (weigh as one house view, not 4 independent reads) — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - equity market drivers: 3 banks / 3 PDFs (Goldman Sachs, JPMorgan, Syz Equity Research) — stance: 3 support / 0 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - attractive fixed income opportunities: 3 banks / 5 PDFs (Goldman Sachs, UBS, Vontobel) — stance: 3 support / 0 skeptical / 0 neutral — ⚠ SOURCE-CONCENTRATED: 60% of PDFs from UBS (weigh as one house view, not 5 independent reads) — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+
+CONTRARIAN / ROTATE-OUT SIGNAL — multi-PDF, multi-bank corpus voices explicitly contradicting or warning against the dominant lead theme (AI / consensus narrative). The 2026-06-01 QC review found five contrarian titles in the corpus (Nobody Wants NVDA, Sell in May, IPO BOOM = MARKET TOP?, What To Buy If Not AI, Speculation Nation) all folded into the AI bear-case appendix. When this category surfaces, do NOT bury it in an appendix — give it a dedicated INSIGHTS slot named in the form of the contrarian call, OR a top-of-WATCH bullet naming the specific rotate-out instrument lean. The bullet stance is intentionally skeptical (no support count); the trade lean should be the corresponding rotation.
+  ROTATE-OUT CLOSE — VARIETY REQUIRED. 2026-06-03 + 2026-06-04 + 2026-06-05 QC reviews all flagged that the contrarian slot keeps closing with `$RSP over $SPY` as the rotation instrument. A reader who reads the pulse daily for a week will recognize the template. Pick the close-lean instrument from the angle the corpus is actually signaling rather than defaulting to equal-weight:
+    (a) DEFENSIVE rotation (when corpus argues quality/yield over growth): $XLU utilities, $XLV health care, $XLP staples, $SPLV/$USMV low-vol, $SPYD/$VYM high-yield
+    (b) SMALL-CAP rotation (when corpus argues breadth recovery / size factor): $IWM Russell 2k, $VBR small-cap value, $IJR core small-cap
+    (c) VALUE-style rotation (when corpus argues style mean-reversion): $VTV vanguard value, $IWD large-cap value, $RPV pure value
+    (d) EQUAL-WEIGHT rotation (when corpus argues concentration risk on top-10 names): $RSP equal-weight S&P, $EWS equal-weight S&P sectors
+    (e) INTERNATIONAL rotation (when corpus argues US-vs-RoW mean reversion): $EFA developed-ex-US, $EEM emerging, $VEA developed
+    (f) COMMODITY-style rotation (when corpus argues hard-asset reflation): $GLD gold, $XLE energy, $DBC broad commodity
+    (g) TAIL-HEDGE pair (when corpus argues positioning extreme — pair this WITH one of a-f as a secondary lean): $VIXY VIX short-term, $SPY put spreads with explicit strikes
+  Pick (a)-(f) by which angle the corpus is most explicitly arguing; (g) is a permitted addition, not a standalone close. If your only honest read is `$RSP over $SPY`, that's a (d) close — you MUST pair it with at least one secondary instrument from a different category (e.g., `$RSP over $SPY + long $XLU as the defensive complement` or `$RSP over $SPY + $VIXY as the tail hedge`). A single-instrument equal-weight close is the recurring template; the secondary-instrument requirement breaks it without losing the equal-weight read when that IS the right call.
+  - consensus-contrarian / rotate-out-of-lead: 7 banks / 14 PDFs (Global X ETFs, Goldman Sachs, J.P. Morgan, Rabobank, UBS, Vanda Research, +1 more) — stance: 0 support / 7 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+      signal kinds: calendar/rotation, explicit-top-flag
+      source title: Why Hydrogen? Why HYDR?
+      source title: Economics Weekly: Where Are Rates Heading? A Look at Tightening Cycles and 10-Year Yields
+      source title: How can I invest in transformational innovation?
+
+CROSS-SLOT INSTRUMENT OVERLAP — these top themes share primary instruments. If both become INSIGHTS slots, their trade leans MUST NOT close on the same ticker. Either (a) give the shared instrument to ONE slot and find the other slot's most natural distinct expression, or (b) merge the two themes into one section if they're really the same trade. Two slots closing on the same lean reads as padding (observed 2026-06-09: slots #1 and #5 both closed Long $MU):
+  - 'ai infrastructure and investment' and 'equity market resilience' share: $QQQ
+HIGH-CONVICTION SINGLE-NAME CALLS — explicit high-conviction calls on US-tradable names extracted from individual reports. These lose the bank-count contest by construction (one bank, one name) so theme ranking can never surface them — that's why they get this dedicated section. Binding treatment: when one of these names is ALREADY the trade lean of an INSIGHTS slot, you MUST cite the call as evidence in that slot (the 2026-06-09 pulse closed two slots on Long $MU while Goldman's same-day $400→$900 MU price-target raise sat unused in the corpus — the lean was right and the best evidence for it went uncited). For the rest, surface at least the strongest one as a WATCH bullet or threaded into the most relevant slot. Don't dump the whole list — pick what a trader would actually act on:
+  - Rolf Bertschi / FinChartOutlook [swing]: Sell SMI if support at 13,670 is broken.
+  - Deutsche Bank: $COMP reiterate Buy PT $15.00 — Compass is proving it can compound share gains and expand margins even in a housing market at cyclical lows.
+  - Bank J. Safra Sarasin: $STLD negative_catalyst_watch — Guided Q3 earnings below consensus due to weakness in metals recycling.
+  - Bank J. Safra Sarasin: $NUE negative_catalyst_watch — Guided Q3 EPS below Street expectations citing lower pricing and shipments in raw materials.
+  - Bank J. Safra Sarasin: $XENE negative_catalyst_watch — Paused new enrollments in MDD and bipolar studies due to neuropsychiatric adverse events.
+  - Vanda Research: $NVDA positive_catalyst_watch — Retail buying in NVIDIA accounts for 63% of all semi inflows and has single-handedly driven net retail single-stock buying over the last two
+  - Goldman Sachs: $NXT reiterate Buy — Favored as a market-share leader exposed to utility-scale solar.
+  - Goldman Sachs: $LLY reiterate Buy PT $1,371 — GS views imlunestrant as an underappreciated asset and expects the EMBER-4 trial to amplify focus on the company's non-incretin growth engin
+  - Goldman Sachs: $MSFT reiterate Buy — Enterprise shift to AI platforms is validating strategic decisions.
+  - Goldman Sachs: $TOP reiterate Buy PT THB 80.00 — Compelling FCF yields and favorable exposure to middle distillates.
+  - Goldman Sachs: $MSFT reiterate Buy — Microsoft is successfully leveraging its incumbency and AI platform decisions to drive enterprise adoption.
+  - Goldman Sachs: $ASML positive_catalyst_watch — Favored quality AI infrastructure name for potential regrossing; SEMICON event is a catalyst.
+
+=== TICKER LOOKUP ===
+
+TICKER LOOKUP — use $TICKER (cashtag format) when referring to these:
+  SPX — S&P 500 Index (index, 46 mentions)
+  META — Meta (stock, 27 mentions)
+  NDX — Nasdaq (index, 18 mentions)
+  GOOGL — Alphabet (stock, 16 mentions)
+  AMZN — Amazon (stock, 15 mentions)
+  MSFT — Microsoft (stock, 14 mentions)
+  NVDA — Nvidia (stock, 12 mentions)
+  INTC — Intel (stock, 12 mentions)
+  AAPL — Apple (stock, 11 mentions)
+  AMD — AMD (stock, 10 mentions)
+  GS — Goldman Sachs (stock, 10 mentions)
+  USO — United States Oil Fund (etf, 10 mentions)
+  BTC — Bitcoin (crypto, 9 mentions)
+  XOM — Exxon Mobil (stock, 9 mentions)
+  GLD — SPDR Gold Shares (etf, 9 mentions)
+  SOX — Philadelphia Semiconductors (index, 8 mentions)
+  ARM — Arm Holdings (stock, 8 mentions)
+  ASML — ASML (stock, 7 mentions)
+  IWM — Russell 2000 (etf, 7 mentions)
+  ORCL — Oracle (stock, 6 mentions)
+  RTY — Russell 2000 (index, 6 mentions)
+  TSM — Taiwan Semiconductor Manufacturing Company (stock, 6 mentions)
+  NVO — Novo Nordisk (stock, 6 mentions)
+  AZO — AutoZone (stock, 6 mentions)
+  CVX — Chevron (stock, 6 mentions)
+  VIX — Cboe Volatility Index (index, 5 mentions)
+  NFLX — Netflix (stock, 5 mentions)
+  JPM — JPMorgan (stock, 5 mentions)
+  EQIX — Equinix (stock, 4 mentions)
+  RHHBY — Roche (stock, 4 mentions)
+  AMAT — Applied Materials (stock, 4 mentions)
+  BAC — Bank of America (stock, 4 mentions)
+  TLT — iShares 20+ Year Treasury Bond ETF (etf, 4 mentions)
+  DJI — Dow Jones Industrial Average (index, 4 mentions)
+  SSNLF — Samsung Electronics (stock, 4 mentions)
+  SOXX — iShares Semiconductor ETF (etf, 4 mentions)
+  EXPD — Expeditors International (stock, 4 mentions)
+  COST — Costco Wholesale (stock, 4 mentions)
+  AZN — AstraZeneca (stock, 4 mentions)
+  E — ENI (stock, 4 mentions)
+  BWXT — BWX Technologies (stock, 4 mentions)
+  ETH — Ethereum (crypto, 3 mentions)
+  SHOP — Shopify (stock, 3 mentions)
+  BN — Brookfield (stock, 3 mentions)
+  MRK — Merck (stock, 3 mentions)
+  AVGO — Broadcom (stock, 3 mentions)
+  LLY — Eli Lilly (stock, 3 mentions)
+  HXSCF — Hynix (stock, 3 mentions)
+  QQQ — Nasdaq 100 (etf, 3 mentions)
+  RUT — Russell 2000 (index, 3 mentions)
+  ORA — Orange (stock, 3 mentions)
+  TCEHY — Tencent (stock, 3 mentions)
+  LRCX — Lam Research (stock, 3 mentions)
+  WMT — Walmart (stock, 3 mentions)
+  GATX — GATX Corp. (stock, 3 mentions)
+  TRN — Trinity Industries Inc. (stock, 3 mentions)
+  GBX — Greenbrier Companies (stock, 3 mentions)
+  ENPH — Enphase Energy Inc. (stock, 3 mentions)
+  RUN — Sunrun Inc. (stock, 3 mentions)
+  UNP — Union Pacific Corp. (stock, 3 mentions)
+  CHRW — C.H. Robinson Worldwide Inc. (stock, 3 mentions)
+  FDX — FedEx Corp. (stock, 3 mentions)
+  UPS — United Parcel Service Inc. (stock, 3 mentions)
+  NVS — Novartis (stock, 3 mentions)
+  MPC — Marathon Petroleum Corp. (stock, 3 mentions)
+  FSLY — Fastly (stock, 3 mentions)
+  PATH — UiPath (stock, 3 mentions)
+  PAYX — Paychex (stock, 3 mentions)
+  BABA — Alibaba (stock, 3 mentions)
+  CTAS — Cintas (stock, 3 mentions)
+  REPYY — Repsol (stock, 3 mentions)
+  COP — ConocoPhillips (stock, 3 mentions)
+  MA — Mastercard Incorporated (stock, 3 mentions)
+  V — Visa Inc. (stock, 3 mentions)
+  SMR — NuScale (stock, 3 mentions)
+  OKLO — OKLO (stock, 3 mentions)
+  MIR — Mirion (stock, 3 mentions)
+  LEU — Centrus Energy Corp. (stock, 3 mentions)
+  GEV — GE Vernova (stock, 3 mentions)
+  CEG — Constellation Energy Corp (stock, 3 mentions)
+  SCHW — Charles Schwab (stock, 3 mentions)
+  Z — Zillow Group Inc (stock, 2 mentions)
+  ACM — AECOM (stock, 2 mentions)
+  TMO — Thermo Fisher Scientific (stock, 2 mentions)
+  WAT — Waters Corporation (stock, 2 mentions)
+  TE — Technip Energies (stock, 2 mentions)
+  SMEGF — Siemens Energy (stock, 2 mentions)
+  SLB — SLB (stock, 2 mentions)
+  HAL — Halliburton (stock, 2 mentions)
+  C — Citi (stock, 2 mentions)
+  SX5E — Euro Stoxx 50 (index, 2 mentions)
+  LQD — iShares iBoxx $ Investment Grade Corporate Bond ETF (etf, 2 mentions)
+  HYG — iShares iBoxx $ High Yield Corporate Bond ETF (etf, 2 mentions)
+  NI — NiSource (stock, 2 mentions)
+  ES — Eversource Energy (stock, 2 mentions)
+  YETI — YETI Holdings (stock, 2 mentions)
+  ACN — Accenture (stock, 2 mentions)
+  NUE — Nucor (stock, 2 mentions)
+  IFX — Infineon Technologies (stock, 2 mentions)
+  VACN — VAT Group (stock, 2 mentions)
+  BYDDY — BYD (stock, 2 mentions)
+  NET — Cloudflare (stock, 2 mentions)
+  SNOW — Snowflake (stock, 2 mentions)
+  TEM — Tempus AI (stock, 2 mentions)
+  SPOT — Spotify (stock, 2 mentions)
+  ADDYY — adidas AG (stock, 2 mentions)
+  NKE — Nike (stock, 2 mentions)
+  BARC — Barclays (stock, 2 mentions)
+  CRWD — Crowdstrike Holdings Inc (stock, 2 mentions)
+  BURL — Burlington (stock, 2 mentions)
+  ASO — Academy Sports & Outdoors (stock, 2 mentions)
+  TGT — Target (stock, 2 mentions)
+  DKS — Dick's Sporting Goods (stock, 2 mentions)
+  HD — Home Depot (stock, 2 mentions)
+  LOW — Lowe's (stock, 2 mentions)
+  GPC — Genuine Parts Co. (stock, 2 mentions)
+  SEDG — SolarEdge Technologies Inc. (stock, 2 mentions)
+  CSX — CSX Corp. (stock, 2 mentions)
+  CNI — Canadian National Railway Co. (stock, 2 mentions)
+  CP — Canadian Pacific Kansas City Ltd. (stock, 2 mentions)
+  ARCB — ArcBest Corp. (stock, 2 mentions)
+  JBHT — J.B. Hunt Transport Services Inc. (stock, 2 mentions)
+  KNX — Knight-Swift Transportation Holdings (stock, 2 mentions)
+  LSTR — Landstar System Inc. (stock, 2 mentions)
+  ODFL — Old Dominion Freight Line Inc. (stock, 2 mentions)
+  RXO — RXO Inc. (stock, 2 mentions)
+  R — Ryder System Inc. (stock, 2 mentions)
+  SAIA — SAIA (stock, 2 mentions)
+  SNDR — Schneider National Inc. (stock, 2 mentions)
+  TFII — TFI International (stock, 2 mentions)
+  WERN — Werner Enterprises Inc. (stock, 2 mentions)
+  XPO — XPO (stock, 2 mentions)
+  PFE — Pfizer (stock, 2 mentions)
+  VLO — Valero Energy (stock, 2 mentions)
+  GSK — GSK Plc (stock, 2 mentions)
+  SNY — Sanofi (stock, 2 mentions)
+  ASMIY — ASMI (stock, 2 mentions)
+  ONON — On (stock, 2 mentions)
+  MCD — McDonald's (stock, 2 mentions)
+  AUR — Aurora Innovation (stock, 2 mentions)
+  UMC — United Microelectronics (stock, 2 mentions)
+  HNHPF — Hon Hai (stock, 2 mentions)
+  QCOM — Qualcomm (stock, 2 mentions)
+  SHEL — Shell (stock, 2 mentions)
+  BA — Boeing (stock, 2 mentions)
+  APP — AppLovin (stock, 2 mentions)
+  GIS — General Mills (stock, 2 mentions)
+  DRI — Darden Restaurants (stock, 2 mentions)
+  CME — CME Group Inc. (stock, 2 mentions)
+  GLE — Société Générale (stock, 2 mentions)
+  CCJ — Cameco Corporation (stock, 2 mentions)
+  DNN — Denison Mines Corp. (stock, 2 mentions)
+  EU — Encore energy (stock, 2 mentions)
+  ASPI — ASP Isotopes (stock, 2 mentions)
+  TLN — Talen Energy Corp (stock, 2 mentions)
+  VST — Vistra Corp (stock, 2 mentions)
+  NNE — NANO Nuclear Energy (stock, 2 mentions)
+  CFR — CIE FINANCIERE RICHEMONT (stock, 2 mentions)
+  EWZ — MSCI Brazil (etf, 2 mentions)
+  KSTR — KSTR (etf, 2 mentions)
+  KWEB — KWEB (etf, 2 mentions)
+  ASX — ASE Technology Holding (stock, 2 mentions)
+  IFNNY — Infineon Technologies (stock, 2 mentions)
+  MU — Micron Technology Inc (stock, 2 mentions)
+  TPR — Tapestry (stock, 2 mentions)
+  CPRI — Capri Holdings (stock, 2 mentions)
+  DASH — DoorDash (stock, 2 mentions)
+  UBER — Uber (stock, 2 mentions)
+  CART — Instacart (stock, 2 mentions)
+  ALL — Allstate (stock, 2 mentions)
+  PLNT — Planet Fitness (stock, 2 mentions)
+  XLF — Financial Select Sector SPDR Fund (etf, 2 mentions)
+  ABBN.S — ABB Ltd (stock, 1 mentions)
+  UBSG.S — UBS Group (stock, 1 mentions)
+  HYDR — Global X Hydrogen ETF (etf, 1 mentions)
+  BE — Bloom Energy (stock, 1 mentions)
+  AEP — American Electric Power (stock, 1 mentions)
+  MRNA — Moderna (stock, 1 mentions)
+  COMP — Compass Inc (stock, 1 mentions)
+  CSGP — CoStar Group (stock, 1 mentions)
+  DOUG — Douglas Elliman (stock, 1 mentions)
+  RMAX — REMAX (stock, 1 mentions)
+  AWK — American Water Works (stock, 1 mentions)
+  HTO — H2O America (stock, 1 mentions)
+  WTRG — Essential Utilities (stock, 1 mentions)
+  SCWO — 374Water Inc. (stock, 1 mentions)
+  ADUR — Aduro Clean Technologies (stock, 1 mentions)
+  ARQ — Arq, Inc. (stock, 1 mentions)
+  BLGO — BioLargo (stock, 1 mentions)
+  CLH — Clean Harbors, Inc. (stock, 1 mentions)
+  DD — DuPont (stock, 1 mentions)
+  CC — Chemours (stock, 1 mentions)
+  CTVA — Corteva (stock, 1 mentions)
+  ECL — Ecolab (stock, 1 mentions)
+  MTX — Minerals Technologies (stock, 1 mentions)
+  PESI — Perma-Fix Environmental Services (stock, 1 mentions)
+  TTEK — Tetra Tech, Inc. (stock, 1 mentions)
+  XYL — Xylem (stock, 1 mentions)
+  A — Agilent Technologies (stock, 1 mentions)
+  DHR — Danaher Corporation (stock, 1 mentions)
+  IDXX — IDEXX Laboratories, Inc. (stock, 1 mentions)
+  MMM — 3M (stock, 1 mentions)
+  MAGS — Magnificent 7 ETF (etf, 1 mentions)
+  NYA — NYSE Composite (index, 1 mentions)
+  IYT — Transportation ETF (etf, 1 mentions)
+  EWT — iShares MSCI Taiwan ETF (etf, 1 mentions)
+  FLTW — Franklin FTSE Taiwan ETF (etf, 1 mentions)
+  EWY — iShares MSCI South Korea ETF (etf, 1 mentions)
+  EXOS — Exosens (stock, 1 mentions)
+  SOITF — Soitec (stock, 1 mentions)
+  PRYMY — Prysmian (stock, 1 mentions)
+  ATKR — Atkore (stock, 1 mentions)
+  TRQVF — Técnicas Reunidas (stock, 1 mentions)
+  HON — Honeywell (stock, 1 mentions)
+  BGBPF — Bilfinger (stock, 1 mentions)
+  AXAHY — AXA (stock, 1 mentions)
+  CAPQY — Capgemini (stock, 1 mentions)
+  CRARY — Credit Agricole (stock, 1 mentions)
+  HLEGF — Hella GmbH & Co KGaA (stock, 1 mentions)
+  LNG — Cheniere Energy (stock, 1 mentions)
+  SRE — Sempra (stock, 1 mentions)
+  CENX — Century Aluminum (stock, 1 mentions)
+  TECK — Teck Resources (stock, 1 mentions)
+  AA — Alcoa (stock, 1 mentions)
+  NEXT — NextDecade (stock, 1 mentions)
+  UMICY — Umicore (stock, 1 mentions)
+  WT — WisdomTree (stock, 1 mentions)
+  ETR — Entergy (stock, 1 mentions)
+  LNT — Alliant Energy (stock, 1 mentions)
+  AEE — Ameren (stock, 1 mentions)
+  EVRG — Evergy (stock, 1 mentions)
+  ED — Consolidated Edison (stock, 1 mentions)
+  EXC — Exelon (stock, 1 mentions)
+  KO — Coca-Cola (stock, 1 mentions)
+  IXIC — Nasdaq Composite (index, 1 mentions)
+  MID — S&P 400 MidCap Index (index, 1 mentions)
+  SML — S&P 600 SmallCap Index (index, 1 mentions)
+  LMT — Lockheed Martin (stock, 1 mentions)
+  DJIA — Dow Jones Industrial Average (index, 1 mentions)
+  DXY — US Dollar Index (index, 1 mentions)
+  FDS — FactSet (stock, 1 mentions)
+  DAX — DAX (index, 1 mentions)
+  SMI — SMI (index, 1 mentions)
+  SKHY — SK Hynix (stock, 1 mentions)
+  CAVA — CAVA Group (stock, 1 mentions)
+  MTSI — MACOM Technology (stock, 1 mentions)
+  LUV — Southwest Airlines (stock, 1 mentions)
+  MGA — Magna International (stock, 1 mentions)
+  STLD — Steel Dynamics (stock, 1 mentions)
+  XENE — Xenon Pharmaceuticals (stock, 1 mentions)
+  NSRGY — Nestle (stock, 1 mentions)
+  CPCAY — Cathay Pacific Airways (stock, 1 mentions)
+  NHNCF — NAVER (stock, 1 mentions)
+  BUG — Global X Cybersecurity ETF (etf, 1 mentions)
+  LSEG — LSEG Workspace (stock, 1 mentions)
+  FXI — iShares China Large-Cap ETF (etf, 1 mentions)
+  VXN — Nasdaq-100 Volatility Index (index, 1 mentions)
+  BWET — Breakwave Tanker Shipping ETF (etf, 1 mentions)
+  AMADF — Amadeus (stock, 1 mentions)
+  CFRUY — Compagnie Financiere Richemont SA (stock, 1 mentions)
+  CMPGY — Compass Group (stock, 1 mentions)
+  HNNMY — H & M (stock, 1 mentions)
+  HESAY — Hermès International SCA (stock, 1 mentions)
+  IDEXY — Inditex SA (stock, 1 mentions)
+  PPRUY — Kering (stock, 1 mentions)
+  LVMUY — LVMH Moet Hennessy Louis Vuitton SA (stock, 1 mentions)
+  PROSY — Prosus NV (stock, 1 mentions)
+  GALD — Galderma Group (stock, 1 mentions)
+  STMN — Straumann Holding (stock, 1 mentions)
+  ROCKB — ROCKWOOL (stock, 1 mentions)
+  PRY — Prysmian (stock, 1 mentions)
+  PRX — Prosus (stock, 1 mentions)
+  GOLD — Barrick Gold (stock, 1 mentions)
+  BMY — Bristol-Myers Squibb (stock, 1 mentions)
+  ORI — Orica (stock, 1 mentions)
+  KSS — Kohl's (stock, 1 mentions)
+  ROST — Ross Dress for Less (stock, 1 mentions)
+  GPS — Gap (stock, 1 mentions)
+  URBN — Urban Outfitters (stock, 1 mentions)
+  LEVI — Levi's (stock, 1 mentions)
+  RL — Polo Ralph Lauren (stock, 1 mentions)
+  UAA — Under Armour (stock, 1 mentions)
+  DDS — Dillard's (stock, 1 mentions)
+  JWN — Nordstrom (stock, 1 mentions)
+  M — Macy's (stock, 1 mentions)
+  LULU — Lululemon (stock, 1 mentions)
+  TMUS — T-Mobile US (stock, 1 mentions)
+  T — AT&T (stock, 1 mentions)
+  VZ — Verizon (stock, 1 mentions)
+  IAU — IAU (etf, 1 mentions)
+  SGOL — SGOL (etf, 1 mentions)
+  EYE — National Vision Holdings (stock, 1 mentions)
+  RH — RH (stock, 1 mentions)
+  ORLY — O'Reilly Automotive (stock, 1 mentions)
+  AAP — Advance Auto Parts (stock, 1 mentions)
+  TSCO — Tractor Supply Co. (stock, 1 mentions)
+  WSM — Williams-Sonoma (stock, 1 mentions)
+  DLTR — Dollar Tree (stock, 1 mentions)
+  DG — Dollar General (stock, 1 mentions)
+  OLLI — Ollie's Bargain Outlet (stock, 1 mentions)
+  FIVE — Five Below (stock, 1 mentions)
+  BBWI — Bath & Body Works (stock, 1 mentions)
+  ULTA — Ulta Beauty (stock, 1 mentions)
+  BBY — Best Buy (stock, 1 mentions)
+  WOOF — Petco Health and Wellness (stock, 1 mentions)
+  FND — Floor & Decor (stock, 1 mentions)
+  URI — United Rentals (stock, 1 mentions)
+  HRI — Herc Holdings (stock, 1 mentions)
+  WFC — Wells Fargo (stock, 1 mentions)
+  RYCEY — Rolls Royce (stock, 1 mentions)
+  NXT — Nextpower (stock, 1 mentions)
+  FSLR — First Solar Inc. (stock, 1 mentions)
+  SHLS — Shoals Technologies (stock, 1 mentions)
+  ARRY — Array Technologies Inc. (stock, 1 mentions)
+  FLNC — Fluence Energy Inc. (stock, 1 mentions)
+  JKS — JinkoSolar Holding (stock, 1 mentions)
+  CSIQ — Canadian Solar Inc. (stock, 1 mentions)
+  NSC — Norfolk Southern Corp. (stock, 1 mentions)
+  SW — Smurfit Westrock (stock, 1 mentions)
+  FDXF — FedEx Freight Holding (stock, 1 mentions)
+  NQ — Nasdaq 100 E-mini (index, 1 mentions)
+  VG — Euro Stoxx 50 (index, 1 mentions)
+  TP — Topix (index, 1 mentions)
+  HC — Hang Seng China Enterprises (index, 1 mentions)
+  XP — ASX SPI 200 (index, 1 mentions)
+  MES — MSCI Emerging Markets (index, 1 mentions)
+  MFS — MSCI EAFE (index, 1 mentions)
+  HWA — Micro S&P 500 (index, 1 mentions)
+  MQN — Micro Nasdaq 100 (index, 1 mentions)
+  ROG — Roche (stock, 1 mentions)
+  GH — Guardant Health (stock, 1 mentions)
+  AXON — Axon Enterprise Inc. (stock, 1 mentions)
+  VALE — Vale (stock, 1 mentions)
+  EVN — Evolution Mining Ltd. (stock, 1 mentions)
+  IAG — Insurance Australia Group (stock, 1 mentions)
+  S-OIL — S-Oil (stock, 1 mentions)
+  TOP — Thai Oil (stock, 1 mentions)
+  096770 — SK Innovation (stock, 1 mentions)
+  REP — Repsol (stock, 1 mentions)
+  NESTE — Neste (stock, 1 mentions)
+  RELI — Reliance Industries (stock, 1 mentions)
+  CCL — Carnival Corporation (stock, 1 mentions)
+  NCLH — Norwegian Cruise Line (stock, 1 mentions)
+  RCL — Royal Caribbean Group (stock, 1 mentions)
+  BAYRY — Bayer AG (stock, 1 mentions)
+  LZAGY — Lonza Group (stock, 1 mentions)
+  SDZNY — Sandoz Group AG (stock, 1 mentions)
+  SARTF — Sartorius AG (stock, 1 mentions)
+  SSDIY — Sartorius Stedim Biotech (stock, 1 mentions)
+  SPGI — S&P Global Commodity Insights (stock, 1 mentions)
+  ICE — ICE (stock, 1 mentions)
+  SFTBY — SoftBank (stock, 1 mentions)
+  VWAGY — Volkswagen (stock, 1 mentions)
+  DSY — Dassault Systemes (stock, 1 mentions)
+  NBIS — Nebius (stock, 1 mentions)
+  SHW — Sherwin-Williams (stock, 1 mentions)
+  RTMVY — Rightmove (stock, 1 mentions)
+  IFJPY — Informa (stock, 1 mentions)
+  DKNG — DraftKings (stock, 1 mentions)
+  PSMC — Powerchip Semiconductor (stock, 1 mentions)
+  VIGIF — Vanguard International Semiconductor (stock, 1 mentions)
+  QUCCF — Quanta Computer (stock, 1 mentions)
+  SNX — TD SYNNEX (stock, 1 mentions)
+  OKTA — Okta (stock, 1 mentions)
+  ESTC — Elastic (stock, 1 mentions)
+  NTES — NetEase (stock, 1 mentions)
+  XD — XD Inc. (stock, 1 mentions)
+  XIACY — Xiaomi Corp. (stock, 1 mentions)
+  TRYIY — Toray Industries (stock, 1 mentions)
+  RMSL — Ramelius Resources (stock, 1 mentions)
+  HLDCY — Henderson Land (stock, 1 mentions)
+  SUHJY — SHKP (stock, 1 mentions)
+  SWPFF — Swire Properties (stock, 1 mentions)
+  JMHLY — Jardine Matheson (stock, 1 mentions)
+  HSBC — HSBC (stock, 1 mentions)
+  SCBFF — STAN (stock, 1 mentions)
+  HKXCY — HKEX (stock, 1 mentions)
+  BP — BP (stock, 1 mentions)
+  TS — Tenaris (stock, 1 mentions)
+  VLLPY — Vallourec (stock, 1 mentions)
+  GPRK — GeoPark (stock, 1 mentions)
+  XLV — Health Care Select Sector SPDR Fund (etf, 1 mentions)
+  IBM — IBM (stock, 1 mentions)
+  JNJ — Johnson & Johnson (stock, 1 mentions)
+  CPNG — Coupang (stock, 1 mentions)
+  APO — Apollo Global Management (stock, 1 mentions)
+  KKR — KKR (stock, 1 mentions)
+  KMX — CarMax (stock, 1 mentions)
+  USDT — Tether (crypto, 1 mentions)
+  USDC — Circle (crypto, 1 mentions)
+  COIN — Coinbase (stock, 1 mentions)
+  DAL — Delta Air Lines, Inc. (stock, 1 mentions)
+  OXY — Occidental Petroleum Corporation (stock, 1 mentions)
+  SYE — Sieyuan Electric (stock, 1 mentions)
+  MCHI — MSCI China (etf, 1 mentions)
+  VOW3 — Volkswagen Group (stock, 1 mentions)
+  TTE — TotalEnergies (stock, 1 mentions)
+  ACGL — Arch Capital Group (stock, 1 mentions)
+  SOLS — Solstice Advanced Material (stock, 1 mentions)
+  UEC — Uranium Energy Corp. (stock, 1 mentions)
+  UUUU — Energy Fuels Inc. (stock, 1 mentions)
+  URA — Global X Uranium ETF (etf, 1 mentions)
+  URNM — Sprott Uranium Miners ETF (etf, 1 mentions)
+  URNJ — Sprott Junior Uranium Miners ETF (etf, 1 mentions)
+  ATRL — AtkinsRéalis Group Inc. (stock, 1 mentions)
+  STN — Stantec Inc. (stock, 1 mentions)
+  WSP — WSP Global Inc. (stock, 1 mentions)
+  AEG — Aecon Group Inc. (stock, 1 mentions)
+  BDGI — Badger Infrastructure Solutions Ltd (stock, 1 mentions)
+  BDT — Bird Construction Inc. (stock, 1 mentions)
+  FTT — Finning International Inc. (stock, 1 mentions)
+  RBA — RB Global, Inc. (stock, 1 mentions)
+  TVK — TerraVest Industries, Inc. (stock, 1 mentions)
+  TIH — Toromont Industries Ltd. (stock, 1 mentions)
+  BYD — Boyd Group Services Inc. (stock, 1 mentions)
+  5803 — Fujikura (stock, 1 mentions)
+  FREEM — Freemelt (stock, 1 mentions)
+  HO — Thales (stock, 1 mentions)
+  AI — Air Liquide (stock, 1 mentions)
+  MTRN — Materion (stock, 1 mentions)
+  SIEGY — Siemens AG (stock, 1 mentions)
+  ASY — Assystem (stock, 1 mentions)
+  BRKR — Bruker (stock, 1 mentions)
+  TOSYY — Toshiba Corporation (stock, 1 mentions)
+  5801 — Furukawa Electric (stock, 1 mentions)
+  AMSC — American Superconductor (stock, 1 mentions)
+  SMTOY — Sumitomo Electric Industries (stock, 1 mentions)
+  GBF — Bilfinger (stock, 1 mentions)
+  MHVYF — Mitsubishi Heavy Industries (stock, 1 mentions)
+  VCISY — Vinci (stock, 1 mentions)
+  CODYY — Saint-Gobain (stock, 1 mentions)
+  AMTM — Amentum (stock, 1 mentions)
+  KN — Knowles (stock, 1 mentions)
+  DOV — Dover (stock, 1 mentions)
+  LIN — Linde (stock, 1 mentions)
+  KYOCY — Kyocera (stock, 1 mentions)
+  GMET — Guardian Metal Resources (stock, 1 mentions)
+  MIELY — Mitsubishi Electric (stock, 1 mentions)
+  ATRLF — AtkinsRéalis (stock, 1 mentions)
+  KBR — KBR (stock, 1 mentions)
+  HPHTY — Hamamatsu Photonics (stock, 1 mentions)
+  FINMY — Leonardo S.p.A. (stock, 1 mentions)
+  IPGP — IPG Photonics (stock, 1 mentions)
+  ABBNY — ABB (stock, 1 mentions)
+  HTHIY — Hitachi Ltd. (stock, 1 mentions)
+  STDN — Standard Nuclear Inc (stock, 1 mentions)
+  NDRA — ENDRA Life Sciences (stock, 1 mentions)
+  URG — Ur-Energy (stock, 1 mentions)
+  KEP — KEPCO (stock, 1 mentions)
+  AME — AMETEK (stock, 1 mentions)
+  FTV — Fortive (stock, 1 mentions)
+  AOS — A.O. Smith (stock, 1 mentions)
+  ALLE — Allegion (stock, 1 mentions)
+  CSL — Carlisle (stock, 1 mentions)
+  CGNX — Cognex (stock, 1 mentions)
+  EXPO — Exponent (stock, 1 mentions)
+  GTES — Gates Industrial Corp (stock, 1 mentions)
+  MSA — MSA Safety (stock, 1 mentions)
+  MATX — Matson Inc. (stock, 1 mentions)
+  MOG.A — Moog Inc. (stock, 1 mentions)
+  POWL — Powell Industries (stock, 1 mentions)
+  RRX — Regal Rexnord (stock, 1 mentions)
+  REZI — Resideo Technologies (stock, 1 mentions)
+  ROL — Rollins (stock, 1 mentions)
+  SCI — Service Corp International (stock, 1 mentions)
+  TKR — Timken (stock, 1 mentions)
+  VMI — Valmont Industries (stock, 1 mentions)
+  VRRM — Verra Mobility (stock, 1 mentions)
+  NRG — NRG Energy (stock, 1 mentions)
+  PEG — PSEG (stock, 1 mentions)
+  NEE — NextEra Energy (stock, 1 mentions)
+  NXE — NexGen Energy Ltd (stock, 1 mentions)
+  KAP — NAC Kazatomprom JSC (stock, 1 mentions)
+  CCO — Cameco Corp (stock, 1 mentions)
+  SMCI — Super Micro Computer (stock, 1 mentions)
+  AGN — AEGON LTD (stock, 1 mentions)
+  AIBG — AIB GROUP PLC (stock, 1 mentions)
+  ALO — ALSTOM (stock, 1 mentions)
+  ABI — ANHEUSER-BUSCH INBEV (stock, 1 mentions)
+  ARGX — ARGENX SE (stock, 1 mentions)
+  BAB — BABCOCK INTL GROUP PLC (stock, 1 mentions)
+  BMW — BMW (stock, 1 mentions)
+  BT — BT GROUP PLC (stock, 1 mentions)
+  CON — CONTINENTAL AG (stock, 1 mentions)
+  DSV — DSV A/S (stock, 1 mentions)
+  FER — FERROVIAL NV (stock, 1 mentions)
+  FRA — FRAPORT AG (stock, 1 mentions)
+  FRES — FRESNILLO PLC (stock, 1 mentions)
+  ITX — INDUSTRIA DE DISENO TEXTIL (stock, 1 mentions)
+  JMT — JERONIMO MARTINS (stock, 1 mentions)
+  LDO — LEONARDO SPA (stock, 1 mentions)
+  MKS — MARKS & SPENCER GROUP PLC (stock, 1 mentions)
+  NEM — NEMETSCHEK SE (stock, 1 mentions)
+  NOKIA — NOKIA OYJ (stock, 1 mentions)
+  NSISB — NOVONESIS (stock, 1 mentions)
+  PRU — PRUDENTIAL PLC (stock, 1 mentions)
+  RWE — RWE AG (stock, 1 mentions)
+  SPM — SAIPEM SPA (stock, 1 mentions)
+  SIE — SIEMENS AG (stock, 1 mentions)
+  ENR — SIEMENS ENERGY AG (stock, 1 mentions)
+  SSE — SSE PLC (stock, 1 mentions)
+  STAN — STANDARD CHARTERED PLC (stock, 1 mentions)
+  UBS — UBS GROUP AG (stock, 1 mentions)
+  ULVR — UNILEVER PLC (stock, 1 mentions)
+  UMG — UNIVERSAL MUSIC GROUP NV (stock, 1 mentions)
+  IVV — iShares Core S&P 500 ETF (etf, 1 mentions)
+  VOO — Vanguard S&P 500 ETF (etf, 1 mentions)
+  SOXL — Direxion Daily Semiconductor Bull 3X Shares (etf, 1 mentions)
+  TQQQ — ProShares UltraPro QQQ (etf, 1 mentions)
+  BRBY — Burberry Group plc (stock, 1 mentions)
+  MC — LVMH Moet Hennessy Louis Vuitton (stock, 1 mentions)
+  EL — EssilorLuxottica (stock, 1 mentions)
+  RMS — Hermes International (stock, 1 mentions)
+  KER — Kering (stock, 1 mentions)
+  MONC — Moncler S.p.A. (stock, 1 mentions)
+  SHL — Siemens Healthineers AG (stock, 1 mentions)
+  UHR — The Swatch Group AG (stock, 1 mentions)
+  RACE — Ferrari (stock, 1 mentions)
+  IEF — iShares 7-10 Year Treasury Bond ETF (etf, 1 mentions)
+  EQNR — Equinor (stock, 1 mentions)
+  REMX — REMX (etf, 1 mentions)
+  BKX — KBW Bank Index (index, 1 mentions)
+  ACCNF — Accton Technology (stock, 1 mentions)
+  BESIY — BE Semiconductor Industries (stock, 1 mentions)
+  CDNS — Cadence Design Systems (stock, 1 mentions)
+  COHR — Coherent Corp (stock, 1 mentions)
+  GLW — Corning Inc (stock, 1 mentions)
+  DDOG — Datadog, Inc. (stock, 1 mentions)
+  DLR — Digital Realty Trust (stock, 1 mentions)
+  LITE — Lumentum Holdings (stock, 1 mentions)
+  MRVL — Marvell Technology (stock, 1 mentions)
+  MPWR — Monolithic Power Systems, Inc. (stock, 1 mentions)
+  NTNX — Nutanix Inc (stock, 1 mentions)
+  STX — Seagate Technology Holdings (stock, 1 mentions)
+  SGAPY — Singapore Telecom (stock, 1 mentions)
+  SONY — Sony (stock, 1 mentions)
+  STM — STMicroelectronics (stock, 1 mentions)
+  TER — Teradyne Inc (stock, 1 mentions)
+  TOELY — Tokyo Electron (stock, 1 mentions)
+  9988.HK — Alibaba Group (H) (stock, 1 mentions)
+  CAI — Caris Life Sciences Inc. (stock, 1 mentions)
+  DHI — D.R. Horton Inc. (stock, 1 mentions)
+  IBP — Installed Building Products Inc. (stock, 1 mentions)
+  MTH — Meritage Homes Corp. (stock, 1 mentions)
+  RDFN — Redfin (stock, 1 mentions)
+  HUBS — HubSpot Inc. (stock, 1 mentions)
+  CRM — Salesforce Inc. (stock, 1 mentions)
+  BJ — BJ's Wholesale Club (stock, 1 mentions)
+  TJX — TJX Companies (stock, 1 mentions)
+  FL — Foot Locker (stock, 1 mentions)
+  DRVN — Driven Brands (stock, 1 mentions)
+  VVV — Valvoline (stock, 1 mentions)
+  MAT — Mattel (stock, 1 mentions)
+  HAS — Hasbro (stock, 1 mentions)
+  FNKO — Funko (stock, 1 mentions)
+  PGR — Progressive (stock, 1 mentions)
+  TRV — Travelers (stock, 1 mentions)
+  AMP — Ameriprise Financial (stock, 1 mentions)
+  RJF — Raymond James (stock, 1 mentions)
+  CBRE — CBRE Group (stock, 1 mentions)
+  JLL — Jones Lang LaSalle (stock, 1 mentions)
+  PYPL — PayPal (stock, 1 mentions)
+  NYT — New York Times (stock, 1 mentions)
+  INTU — Intuit (stock, 1 mentions)
+  DELL — Dell Technologies (stock, 1 mentions)
+  HPE — HPE (stock, 1 mentions)
+  ERIC — Ericsson (stock, 1 mentions)
+  DASTY — Dassault Systemes (stock, 1 mentions)
+  PSO — Pearson (stock, 1 mentions)
+  BKR — Baker Hughes (stock, 1 mentions)
+  SEI — SEI (stock, 1 mentions)
+  EQT — EQT Corporation (stock, 1 mentions)
+  EXE — Exelon (stock, 1 mentions)
+  EEM — MSCI Emerging Market Index (etf, 1 mentions)
+  NDAQ — Nasdaq (stock, 1 mentions)
+  MS — Morgan Stanley (stock, 1 mentions)
+  USB — US Bancorp (stock, 1 mentions)
+  LPLA — LPL Financial (stock, 1 mentions)
+  LAZ — Lazard (stock, 1 mentions)
+  JEF — Jefferies (stock, 1 mentions)
+  PNC — PNC Financial (stock, 1 mentions)
+  FITB — Fifth Third Bancorp (stock, 1 mentions)
+  GOOG — Alphabet (stock, 1 mentions)
+  BKNG — Booking Holdings (stock, 1 mentions)
+  CHWY — Chewy (stock, 1 mentions)
+  EXPE — Expedia Group, Inc. (stock, 1 mentions)
+  FVRR — Fiverr (stock, 1 mentions)
+  LYFT — Lyft (stock, 1 mentions)
+  PTON — Peloton (stock, 1 mentions)
+  PINS — Pinterest (stock, 1 mentions)
+  RDDT — Reddit (stock, 1 mentions)
+  SNAP — Snap Inc. (stock, 1 mentions)
+  TRIP — TripAdvisor, Inc. (stock, 1 mentions)
+  EBAY — eBay, Inc (stock, 1 mentions)
+
+Do NOT prefix $ for these (FX / commodity / other — reference by name):
+  CPER — Copper (commodity, 3 mentions)
+  BNO — Brent Crude (commodity, 1 mentions)
+  JJU — Aluminum (commodity, 1 mentions)
+  CORN — Corn (commodity, 1 mentions)
+  SOYB — Soybeans (commodity, 1 mentions)
+
+=== PER-PDF STRUCTURED EXTRACTIONS (the research corpus) ===
+The full corpus of 163 per-PDF extractions is at /tmp/corpus.json as a JSON array. Each element has:
+source, title, priority, published, insights, data_points (figure/metric/source_bank/context/figure_status),
+macro (indicator/reading/interpretation/status), market_movers (ticker/action/rating/price_target), trades,
+tensions (bull_case/bear_case/what_invalidates), risks, theme_stances, entities, vol_positioning, crypto,
+sector_views, charts, HIGH_CONVICTION.
+
+SEARCH it with grep/python for every figure, attribution, call and event in the draft.
+A claim is SUPPORTED if it appears in /tmp/corpus.json or in the LIVE DATA BLOCK above.
+Do not treat your own prior knowledge as support, and do not call a number unsupported until you have
+tried its other formats (6.29 / $6.29 / '6.29%') and searched the metric name too.
+
+
+=====================================================================
+
+Walk the draft claim by claim. For every specific figure, attribution, call, and event, find its support in the context above. Emit a finding for each one you cannot support, per the system contract. STRICT JSON only.

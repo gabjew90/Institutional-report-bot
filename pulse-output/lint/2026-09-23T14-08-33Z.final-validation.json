@@ -1,0 +1,72 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '4.99%' is attached to [right] but the source uses it for [change, close, crypto, indices, live] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "4.99%",
+   "draft_subject": [
+    "right"
+   ],
+   "source_subject": [
+    "change",
+    "close",
+    "crypto",
+    "indices",
+    "live",
+    "shown",
+    "since",
+    "spread"
+   ]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.49% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.6, 7.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.49",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Oil rose while diesel prices sat at records.** $BNO is up 2.49% and $USO 2.18% this morning. Shipping through the Strait of Hormuz is still running below its ten-day average, and Trump came out Tu"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2.18% is stated for Ppi but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [4.6, 7.9]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2.18",
+   "event": "PPI",
+   "matches_estimate": false,
+   "sentence": "- **Oil rose while diesel prices sat at records.** $BNO is up 2.49% and $USO 2.18% this morning. Shipping through the Strait of Hormuz is still running below its ten-day average, and Trump came out Tu"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "2.5% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL \u2014 near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "2.5",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "The case for a short cycle belongs to Goldman, which has one more 25 basis point move at the October 27-28 meeting and then a flat policy rate, on the view that core PCE inflation, the Fed's preferred"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "2% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.27, 3.0]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "2",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "The case for a short cycle belongs to Goldman, which has one more 25 basis point move at the October 27-28 meeting and then a flat policy rate, on the view that core PCE inflation, the Fed's preferred"
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Ppi has already printed (ACTUAL=4.6%, 7.9%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "PPI",
+   "actual": [
+    4.6,
+    7.9
+   ]
+  }
+ ],
+ "hard_count": 1,
+ "soft_count": 5,
+ "exit_code": 3
+}
