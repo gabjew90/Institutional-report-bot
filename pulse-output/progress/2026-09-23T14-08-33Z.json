@@ -1,15 +1,75 @@
 {
  "ts": "2026-09-23T14-08-33Z",
  "events": [
-  {"step": "STEP_2_DONE", "time": "2026-09-23T14:09:47Z", "detail": "pdf_count=163, ctx fetched via git (raw.githubusercontent 404, api.github.com PUT 403 -> MCP transport)"},
-  {"step": "STEP_2_1_HOLIDAY_GATE", "time": "2026-09-23T14:09:52Z", "detail": "CONTINUE (not a market holiday)"},
-  {"step": "STEP_2_2_DONE", "time": "2026-09-23T14:09:56Z", "detail": "volume gate CONTINUE, pdf_count=163, anchor match 0.959"},
-  {"step": "STEP_2_5_DONE", "time": "2026-09-23T14:10:06Z", "detail": "press-time clean, snapshot 24 min old"},
-  {"step": "STEP_3_DONE", "time": "2026-09-23T14:10:09Z", "detail": "101 themes in map"},
-  {"step": "STEP_3_5_DONE", "time": "2026-09-23T14:17:00Z", "detail": "8 sub-agents dispatched, 5 validated, 3 discarded"},
-  {"step": "STEP_4_DONE", "time": "2026-09-23T14:23:06Z", "detail": "draft written, 5 INSIGHTS sections"},
-  {"step": "STEP_4_5_VALIDATE_DONE", "time": "2026-09-23T14:27:22Z", "detail": "CONTINUE after 2 re-rolls; 3 soft violations remain"},
-  {"step": "STEP_5A_STITCH_DONE", "time": "2026-09-23T14:27:28Z", "detail": "1 mechanical fix"},
-  {"step": "STEP_5B_EDIT_DISPATCHED", "time": "2026-09-23T14:29:00Z", "detail": "EDIT sub-agent running"}
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-09-23T14:09:47Z",
+   "detail": "pdf_count=163, ctx fetched via git (raw.githubusercontent 404, api PUT 403)"
+  },
+  {
+   "step": "STEP_2_2_DONE",
+   "time": "2026-09-23T14:09:56Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_2_5_DONE",
+   "time": "2026-09-23T14:10:06Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-09-23T14:10:09Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-09-23T14:22:06Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_4_DONE",
+   "time": "2026-09-23T14:23:06Z",
+   "detail": "draft rewritten tighter"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-09-23T14:27:22Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-09-23T14:27:28Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_7_SCRUB_DONE",
+   "time": "2026-09-23T14:33:41Z",
+   "detail": "skipped, 0 hard lint issues"
+  },
+  {
+   "step": "STEP_5_75_FINAL_VALIDATE_DONE",
+   "time": "2026-09-23T14:34:06Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_8_STRIP_DONE",
+   "time": "2026-09-23T14:34:06Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_DONE",
+   "time": "2026-09-23T14:46:11Z",
+   "detail": ""
+  },
+  {
+   "step": "STEP_5_85_ADVERSARIAL_DONE",
+   "time": "2026-09-23T14:53:23Z",
+   "detail": "0 hard, 2 soft after 2 repair rounds"
+  },
+  {
+   "step": "STEP_6_COMMIT_DONE",
+   "time": "2026-09-23T14:55:49Z",
+   "detail": "pulse+artifacts committed"
+  }
  ]
 }
