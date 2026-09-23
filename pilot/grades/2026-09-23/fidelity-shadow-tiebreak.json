@@ -1,0 +1,157 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17525__early-morning-reid-macro-strategy.txt",
+   "span": "financials (-1.98%) led the declines within the S&P 500, which appeared to be driven by concerns that AI could erode margins and fees",
+   "why": "The -1.98% financial-sector figure is exact. The semis-up/AI-vulnerable-down pairing is supported by 17518 (gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt): 'Semis + memory + big tech mostly higher... Software leg lower as potential AI losers, more broadly, back in focus today.' XLF is used as a ticker proxy for the same S&P financial-sector move (ETF tracks the index near 1:1), not a separately sourced figure, so this is a restatement rather than an invented data point."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17513__us-equities-color-consumer-inertia-22-sep-2026.txt",
+   "span": "Our basket, GSXUSWCH (-2.58% today)... consists of stocks in industries where customer retention is supported by behavioral, operational, contractual or financial switching costs",
+   "why": "The -2.58% figure and switching-cost description match exactly. The 45/55 breadth figure is confirmed in a companion same-day note, 17518 (gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt): 'shorts in our Consumer Intertia (GSXUSWCH Index) basket with 45 of 55 names lower today.'"
+  },
+  {
+   "id": "s3",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source file for either day mentions the tickers USB, LAZ, or JEF at all, and no file describes a pattern of 'consensus names' (Citi/Morgan Stanley/Goldman/USB) dominating selling while regionals outperform. The closest financials-flow note, 17511 (gs-degrasse-what-s-happening-today-in-financials-22-sep-2026.txt), discusses small/mid-cap bank outperformance versus large banks but never names USB, LAZ, or JEF, and frames the driver as consumer-exposure mix, not 'consensus' vs. regional selling volume.",
+   "searched": [
+    "USB",
+    "LAZ",
+    "JEF",
+    "consensus names"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt",
+   "span": "Hedge funds took net exposure in the group to ~95th percentile on a 3-year lookback at ~20% vs a YTD trough of 14% in June",
+   "why": "Exact match on percentile, exposure level, and trough figure/month."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17282__pnc-economics-research-weekly-economic-roundup-21-september-.txt",
+   "span": "We think the Fed hikes two more times, once in December and again next March",
+   "why": "PNC's own forecast of two more hikes (December, next March) is stated verbatim in substance."
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
+   "span": "Brent continues to carry a substantial geopolitical premium, but the physical shortage is already shrinking",
+   "why": "The source explicitly says the shortage is 'shrinking' (an ongoing, incomplete process \u2014 deficit narrowed from 7mb/d to 1mb/d, not to zero) and stresses fragility ('needs the disruption to stop getting worse', 'time without further escalation should gradually reduce the premium'). 'Already mostly gone' asserts a completed/resolved state the source does not claim.",
+   "searched": [
+    "physical shortage",
+    "mostly gone",
+    "shortage is already"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
+   "span": "Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3",
+   "why": "All three figures (Goldman 1mb/d vs 7mb/d, JPMorgan +2mb/d non-Middle East production ~700kb/d above forecast, JPMorgan ~5mb/d consumption shortfall) match the source exactly: 'Non-Middle Eastern production increased by approximately 2mb/d during H1 2026, around 700kb/d more than JPMorgan expected' and 'global oil consumption has averaged approximately 5mb/d below year-earlier levels since the Hormuz disruption.'"
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17461__the-sox-squeeze-just-got-real.txt",
+   "span": "Privorotsky sees little evidence that slower frontier AI development will change hyperscaler capex plans through 2027/28... spending intentions are still rising",
+   "why": "Direct match, including the through-2027/28 horizon."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
+   "span": "Index convexity sits below the 10th percentile, while some single-stock convexity is at the 0th percentile",
+   "why": "Convexity (options paying off more the further the market moves) percentile figures match exactly; the buy-protection-now framing matches 'Buy convexity when you can, not when you need to.'"
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
+   "span": "Equity vol is cheap, but rate vol may decide whether it stays that way",
+   "why": "Source hedges with 'may decide'; the sentence asserts 'decides' as settled fact \u2014 a conditional presented as asserted.",
+   "searched": [
+    "rate volatility decides",
+    "rate vol",
+    "decide whether"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
+   "span": "Investment grade, broad high yield and single-B spreads remain relatively contained",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
+   "span": "the Russell 2000 lost more than 8% relative to the S&P 500 from late June",
+   "why": "Exact match on index, figure, and start date."
+  },
+  {
+   "id": "s13",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No file for either day contains a SOX-membership breadth statistic of this kind. The two SOX-focused notes (17460 the-sox-squeeze-is-here... and 17461 the-sox-squeeze-just-got-real.txt) discuss SOX level, P/E multiple, Korea exports, and hyperscaler capex, but never a count of members near/far from 52-week highs; the TMT weekly charts note (17386) only gives '~30% of NDX members' above their 50-dma, a different index and different metric.",
+   "searched": [
+    "52-week high",
+    "52wk",
+    "SOX members",
+    "30 of the SOX"
+   ]
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17302__the-great-copper-puke-the-crowd-sold-the-lows.txt",
+   "span": "Between September 8 and 15, funds sold $2.6bn of high-grade copper futures, the largest weekly sale since April 2023, with liquidation accounting for $2.2bn",
+   "why": "Exact match on dates, dollar figures, and 'largest since April 2023' framing; 'managed money' matches the source's 'managed money selling.'"
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17349__goldman-s-boy-who-cried-baskets-buys-the-ai-dip-agents-are-h.txt",
+   "span": "We like pairing this with a tactical short hedge on our French Domestic basket (GSXEFRDO), which we expect to remain constrained by political and fiscal noise into next year's elections",
+   "why": "Matches the long-German-fiscal-basket / short-French-domestic-basket pairing and the elections framing exactly."
+  }
+ ],
+ "faithful": 11,
+ "distorted": 2,
+ "unsupported": 2,
+ "faithful_rate": 0.733,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

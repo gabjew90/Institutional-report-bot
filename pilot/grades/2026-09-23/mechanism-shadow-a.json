@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+ "source_span": "I don't think it's a coincidence that the more consensual names (C, MS, GS, USB) are dominating volume while the regionals and the likes of LAZ and JEF are relative outperformers. That's a positioning unwind signature, not a fundamental re-rating.",
+ "source_chain": "Muse shows little sign of disrupting bank unit economics, and O'Dwyer says he can't articulate a fundamental thesis to sell banks, therefore the selloff reads as a positioning unwind (consensus large-caps C/MS/GS/USB dominating sell volume while regionals/LAZ/JEF outperform) rather than a fundamental re-rating, therefore he wants to fade the move lower, sized patiently, favoring MS, PNC and FITB. Invalidation: a genuine fundamental case to sell banks would break the fade.",
+ "pulse_chain": "JPMorgan's O'Dwyer says there is very little in what Muse does to suggest it disrupts bank unit economics, therefore calls the move a positioning unwind rather than a re-rating, therefore wants to fade it, sizing patiently and favoring Morgan Stanley, PNC and Fifth Third. The theme folds this into a broader debate against Goldman's 'uncertainty discount' read and closes on product-news catalysts (Meta Connect, OpenAI Dev Day, Micron earnings) as the resolution condition rather than restating O'Dwyer's own 'no fundamental thesis' caveat.",
+ "preserved": true,
+ "why": "The pulse reproduces O'Dwyer's mechanism and conclusion in the same direction and correctly attributed to JPMorgan, with the same evidence (consensus large-caps vs. regionals) and the same named beneficiaries, compressing rather than dropping the invalidation logic.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

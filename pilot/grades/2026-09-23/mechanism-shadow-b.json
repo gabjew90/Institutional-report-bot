@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+ "source_span": "There's very little in the Muse offering to suggest it disrupts the unit economics of the banking system... That's a positioning unwind signature, not a fundamental re-rating.",
+ "source_chain": "Banks/WM sell off hard on a post-hoc narrative that Muse/agentic AI threatens funding-market and banking unit economics, therefore O'Dwyer argues that narrative doesn't hold (no unit-economics disruption shown, AI trust deficits make disintermediation of a trust-based business unlikely), therefore the pattern (consensus/liquid names C/MS/GS/USB dominating sale volume while regionals and LAZ/JEF outperform) reads as a positioning unwind rather than a fundamental re-rating, therefore he fades the move, sizing patiently into MS/PNC/FITB. Invalidation: the thesis breaks if the selling turns out to be broad-based across regionals too (evidence of real fundamental impairment) rather than concentrated in the same consensus/liquid names.",
+ "pulse_chain": "Banks and Consumer Inertia names sell off on agentic-AI fear (mechanism: agents that shop/cancel/renegotiate compress pricing power, retention and lifetime value, sourced separately to GS's basket note), therefore JPMorgan's O'Dwyer says there's very little in Muse to suggest it disrupts the unit economics of banking, therefore he calls it a positioning unwind rather than a re-rating, pointing to consensus names (C/MS/GS/USB) dominating volume while regionals/LAZ/JEF outperform, therefore he fades it, sizing patiently into MS/PNC/FITB \u2014 while Goldman's financials desk (not disputing fundamentals) calls it an uncertainty discount and a buyers' strike, counseling patience over day-one defense. Invalidation/resolution: not more fundamental debate but hard product-news catalysts \u2014 Meta Connect, OpenAI Dev Day 9/29, Micron earnings 9/30 \u2014 against a crowded long Mag7 position (95th percentile hedge fund exposure).",
+ "preserved": true,
+ "why": "Every load-bearing step of O'Dwyer's chain (no unit-economics disruption \u2192 positioning-unwind not re-rating \u2192 fade into MS/PNC/FITB, evidenced by consensus-name volume concentration) is reproduced with correct attribution and no reversal, and the pulse's added catalyst-based invalidation (Meta Connect/OpenAI Dev Day/Micron) is drawn verbatim from Sharkey's mid-day note rather than invented.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

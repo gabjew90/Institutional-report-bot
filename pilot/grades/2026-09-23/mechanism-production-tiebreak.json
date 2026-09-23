@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-22/17497__global-views-lower-inflation-limited-hikes.txt",
+ "source_span": "Despite the sequential pickup in August, we estimate that core PCE inflation has slowed to a 2.5% annualized pace over the last three months... This slowdown mostly reflects the waning impulses from tariff pass-through, energy pass-through, software/accessories price hikes, and portfolio [effects].",
+ "source_chain": "August core PCE accelerated (+0.27% m/m, above pre-print expectations) and Middle East escalation lifted oil/product prices, which is why the Fed turned hawkish; therefore Goldman's own 3-month-annualized core PCE estimate is already down to 2.5% once tariff/energy/software pass-through effects are stripped out, and its commodity desk forecasts Brent easing to $85/bbl by December as Middle East exports recover; therefore Goldman keeps its call for just one more 25bp hike (Oct 27-28) and then a flat rate, with cuts from late 2027; the named risk that would break this is renewed escalation that destroys more energy infrastructure, not the August print itself, which GS explicitly already priced in.",
+ "pulse_chain": "The Fed hiked to 3.75-4.00%, and futures price ~75bp more by next June, consistent with a historical pattern of markets underpricing hiking cycles (1994, 2022); Goldman's dissenting short-cycle call (one more hike at the Oct 27-28 meeting, then flat) 'needs the data to start cooperating'; therefore August's core PCE beat (+0.27%) plus a crude jump from strikes on Saudi infrastructure is presented as the mechanism the short-cycle case 'has no answer for', because an active energy shock feeding into the discount rate cannot be looked through; invalidation is whether the 10-year closes decisively above 5% before the October meeting, against BTIG's 4.92% level that would flip the trend.",
+ "preserved": false,
+ "why": "The pulse asserts that Goldman's short-cycle case is undermined by an August energy/inflation shock it 'has no answer for', but Goldman's own note already incorporates that exact August core PCE print and an explicit Middle East energy-escalation risk into an unchanged one-more-hike-then-flat forecast (with oil seen easing to $85/bbl by December) \u2014 the pulse reverses the note's conclusion that this data doesn't break the case into a claim that it does.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

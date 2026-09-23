@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-22/17247__the-hawkish-risk-how-markets-keep-underestimating-the-scale-.txt",
+ "source_span": "Throughout recent history, markets have underpriced the extent of Fed hiking cycles at the start. Last time in 2022, initial market pricing was for 200bps of hikes in the first year, when they actually delivered over 400bps.",
+ "source_chain": "Markets have historically underpriced the scale of Fed hiking cycles at the outset (1994: ~140bp priced by Christmas vs 300bp delivered for the year; 2022: ~200bp priced in year one vs over 400bp delivered), therefore the current ~75bp-100bp priced for this cycle should not be trusted as a ceiling, because commodity-driven inflation not yet in the data, an overcorrecting reaction function after the 2021-23 inflation wave, and looser financial conditions than in 2022 all argue the Fed has both room and reason to hike more than priced. No explicit falsifiable invalidation is offered for the underestimation thesis itself.",
+ "pulse_chain": "The Fed hiked to 3.75-4.00% and the market question moved to how many more hikes land, therefore the ~75bp priced by next June (DB) is likely too low because the market has guessed short before (1994: 300bp delivered vs 140bp priced; 2022: 400bp vs 200bp, DB), and the record oil-rate correlation (+65%, Cboe) means the Saudi-strike oil shock feeds straight into the discount rate, undercutting Goldman's one-more-hike-then-flat case (built on core PCE near 2.5%) since August's 0.27% MoM print and >3% annual core PCE didn't cooperate; invalidation: a decisive 10Y close above 5% before the Oct 27-28 meeting confirms the hawkish case, with BTIG's 4.92% as the level that flips it back.",
+ "preserved": true,
+ "why": "The pulse keeps DB's exact figures, direction (markets have a track record of underestimating hiking-cycle scale, so today's priced 75bp is likely too low) and attribution intact, and only compresses/replaces DB's secondary drivers and supplies its own invalidation for the broader theme rather than reversing or misattributing anything DB argued.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

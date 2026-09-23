@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-22/17497__global-views-lower-inflation-limited-hikes.txt",
+ "source_span": "Despite the sequential pickup in August, we estimate that core PCE inflation has slowed to a 2.5% annualized pace over the last three months... This slowdown mostly reflects the waning impulses from tariff pass-through, energy pass-through, software/accessories price hikes, and portfolio management charges",
+ "source_chain": "August core PCE printed hot (0.27% m/m, partly on Mideast-escalation-driven oil/refined-product prices, per GS point 1) THEREFORE Goldman still judges the underlying 3-month-annualized pace at 2.5% and falling, because the drivers of the August pickup (tariff pass-through, energy pass-through, software prices, portfolio-management charges) are temporary and waning THEREFORE Goldman expects just one more 25bp hike (Oct 27-28) then a flat funds rate into cuts from late 2027. Invalidation: their own forecast that core PCE keeps decelerating to 2.2% y/y by 2027Q4 \u2014 the case breaks only if the 'temporary' drivers don't fade as projected.",
+ "pulse_chain": "August core PCE ran hot and a Saudi-infrastructure-driven oil spike feeds straight into the rate that prices every other asset THEREFORE this is 'the mechanism the short-cycle case has no answer for' THEREFORE Goldman's one-more-hike-then-flat call is undermined and the higher-for-longer (Deutsche Bank underpricing) case wins. Invalidation given: 10Y closing above 5% vs. BTIG's 4.92% flip level.",
+ "preserved": false,
+ "why": "Goldman's own note explicitly answers the August pickup in its point 4 (temporary/waning factors, forecast deceleration to 2.5% then 2.2%), but the pulse claims the note 'has no answer' for exactly that data point, dropping Goldman's stated rebuttal so the pulse's conclusion (short-cycle case defeated) does not follow from what the note argues; the pulse also swaps in an unsupported causal trigger ('Saudi infrastructure' strikes \u2014 not present in any 2026-09-22/23 source, which instead cite generic Middle East/Iran-War escalation) and an invalidation condition (10Y vs. 5%, BTIG's 4.92%) sourced from neither the Deutsche Bank nor Goldman notes that anchor the theme.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

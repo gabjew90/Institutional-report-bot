@@ -1,0 +1,156 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17525__early-morning-reid-macro-strategy.txt",
+   "span": "financials (-1.98%) led the declines within the S&P 500, which appeared to be driven by concerns that AI could erode margins and fees",
+   "why": "The -1.98% financials figure is real, but the source attributes the decline to AI-driven margin/fee erosion concerns, not to 'the trade that buys semiconductors and sells AI-vulnerable names.' No source describes a semis-long/financials-short pair trade 'coming back'; the Philly semi index (+2.06%) is mentioned only as a separate, unconnected data point. 'XLF fell 2%' also isn't itself sourced \u2014 the only XLF mention (17513, different date) just says 'two-way flow in XLF,' no percentage.",
+   "searched": [
+    "XLF",
+    "buys semiconductors",
+    "AI-vulnerable",
+    "1.98%"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
+   "span": "Brent continues to carry a substantial geopolitical premium, but the physical shortage is already shrinking.",
+   "why": "Source says the deficit is 'shrinking' (narrowed from ~7mb/d to ~1mb/d, still an active deficit per s7's own figures), not 'mostly gone.' 'Mostly gone' overstates a still-ongoing, merely-narrowing shortage as effectively resolved.",
+   "searched": [
+    "physical shortage",
+    "mostly gone"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "n/a",
+   "span": "",
+   "why": "No source document mentions LAZ, JEF, or USB anywhere, and no source uses a 'consensus names' framing for bank selling. The financials desk notes (17511, 17513, 17518) discuss Consumer Inertia/agentic-AI selling by name (ALL, SCHW, PLNT, NYT, INTU, CBRE, JLL, JPM, Visa) but never Citi/Morgan Stanley/Goldman/USB as a 'consensus' bloc versus LAZ/JEF regional outperformance.",
+   "searched": [
+    "LAZ",
+    "JEF",
+    "USB",
+    "consensus names",
+    "regional"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17513__us-equities-color-consumer-inertia-22-sep-2026.txt",
+   "span": "Our basket, GSXUSWCH (-2.58% today)... consists of stocks in industries where customer retention is supported by 'behavioral, operational, contractual or financial switching costs.'",
+   "why": "The -2.58% and 'switching is a hassle' framing match 17513; '45 of 55 names lower' matches 17518 ('45 of 55 names lower today') for the same GSXUSWCH basket, same day."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt",
+   "span": "Hedge funds took net exposure in the group to ~95th percentile on a 3-year lookback at ~20% vs a YTD trough of 14% in June.",
+   "why": "Exact match, including the Mag7 subject."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17282__pnc-economics-research-weekly-economic-roundup-21-september-.txt",
+   "span": "We think the Fed hikes two more times, once in December and again next March",
+   "why": "PNC's own forecast matches exactly; other sources in the corpus (Morgan Stanley expecting only one more hike, market pricing three per PNC's own Figure 2) support the 'between them' framing without contradicting any figure."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
+   "span": "Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3... Non-Middle Eastern production increased by approximately 2mb/d during H1 2026, around 700kb/d more than JPMorgan expected... global oil consumption has averaged approximately 5mb/d below year-earlier levels since the Hormuz disruption",
+   "why": "All three figures and their bank attributions (Goldman, JPMorgan, JPMorgan) match exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17461__the-sox-squeeze-just-got-real.txt",
+   "span": "Privorotsky sees little evidence that slower frontier AI development will change hyperscaler capex plans through 2027/28. Compute remains scarce, workloads are growing and spending intentions are still rising.",
+   "why": "Direct match; 'the thing that would break it' is a reasonable synthesis of the source's own logic (bull case rests on spending intentions staying up)."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
+   "span": "Index convexity sits below the 10th percentile, while some single-stock convexity is at the 0th percentile... Buy convexity when you can, not when you need to.",
+   "why": "'Convexity' translated to 'options that pay off more the further the market moves' per the voice-translation rule; figures and the buy-now argument match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
+   "span": "Equity vol is cheap, but rate vol may decide whether it stays that way.",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
+   "span": "Investment grade, broad high yield and single-B spreads remain relatively contained.",
+   "why": "Near-verbatim match."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
+   "span": "the Russell 2000 lost more than 8% relative to the S&P 500 from late June",
+   "why": "Figure matches exactly; 'carrying it already' reflects the source's 'small caps have begun to respond' / 'small-cap equities can deteriorate before broad credit displays visible stress.'"
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt",
+   "span": "only three names in the index are closer to their highs than the SOX itself. 10 of the 30 names in the SOX are still off more than 30% from 52wk highs",
+   "why": "Exact match."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17302__the-great-copper-puke-the-crowd-sold-the-lows.txt",
+   "span": "Between September 8 and 15, funds sold $2.6bn of high-grade copper futures, the largest weekly sale since April 2023, with liquidation accounting for $2.2bn.",
+   "why": "Exact match, 'managed money'/'funds' used interchangeably in source."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17349__goldman-s-boy-who-cried-baskets-buys-the-ai-dip-agents-are-h.txt",
+   "span": "Our Europe Team like broader exposure to German fiscal stimulus via our fiscal spend basket (GSXEGFSC)... We like pairing this with a tactical short hedge on our French Domestic basket (GSXEFRDO), which we expect to remain constrained by political and fiscal noise into next year's elections.",
+   "why": "Exact match: long German fiscal basket, short French domestic basket, into next year's elections."
+  }
+ ],
+ "faithful": 12,
+ "distorted": 2,
+ "unsupported": 1,
+ "faithful_rate": 0.8,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

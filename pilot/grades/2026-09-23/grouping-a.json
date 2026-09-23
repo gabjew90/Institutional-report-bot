@@ -1,0 +1,105 @@
+{
+ "metric": 1,
+ "total_cards": 1476,
+ "fragmentation_sets": [
+  {
+   "subject": "Nuclear sector build-out thesis (capacity targets, reactor pipeline, fuel-cycle bottleneck, uranium price, stock picks) \u2014 all one BofA nuclear-complex note",
+   "labels": [
+    "nuclear stock price targets",
+    "nuclear reactor deployment pipeline",
+    "nuclear fuel cycle supply bottleneck",
+    "nuclear capacity buildout targets",
+    "uranium price forecast"
+   ],
+   "cards": 58
+  },
+  {
+   "subject": "Monday's AI/momentum selloff ('Pace the Frontier'/Dario Doomsday shock) and the week's recovery",
+   "labels": [
+    "ai infrastructure trade momentum",
+    "ai momentum trade rebound",
+    "ai earnings bubble debate",
+    "tmt momentum basket volatility"
+   ],
+   "cards": 25
+  },
+  {
+   "subject": "Meta's Muse app launch driving META and CPU/inference-demand stocks (INTC/AMD/ARM)",
+   "labels": [
+    "meta muse app momentum",
+    "ai agent momentum trade"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Houthi/Saudi/Hormuz oil-conflict shock: price action, bank forecasts, and trade setups",
+   "labels": [
+    "oil right tail geopolitical risk",
+    "houthi saudi energy conflict",
+    "brent price scenario outlook",
+    "oil downside trade setup"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Deutsche Bank's historical hiking-cycle analog: Fed and ECB out-hike market pricing, yields follow",
+   "labels": [
+    "fed rate hike outlook",
+    "treasury yields rates outlook",
+    "ecb rate hike outlook"
+   ],
+   "cards": 29
+  },
+  {
+   "subject": "Weak market breadth plus washed-out positioning/sentiment, framed as a coiled-spring upside-squeeze setup",
+   "labels": [
+    "equity breadth cycle top signal",
+    "ndx upside squeeze setup",
+    "us equity sentiment indicators",
+    "us equity positioning outlook"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI-agent disruption of consumer-facing industries via GS's Consumer Inertia/At-Risk basket (GSXUSWCH) and the agentic-commerce monetization shift",
+   "labels": [
+    "consumer agent disruption short",
+    "ai agentic commerce playbook"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.1355,
+ "mis_merges": [
+  {
+   "label": "treasury yields rates outlook",
+   "subjects": [
+    "Deutsche Bank's historical Fed/ECB-hiking-cycle Treasury-yield analysis",
+    "WisdomTree's yield-level vs. equity-valuation and AI-investment-resilience thesis"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The DB cards already surface through the Fed/ECB historical-analog theme and the WisdomTree cards overlap with the dedicated S&P 500 valuation label, so no theme goes missing \u2014 the cards are just misfiled under a rates label."
+  },
+  {
+   "label": "oil right tail geopolitical risk",
+   "subjects": [
+    "Houthi/Saudi/Hormuz oil-conflict shock driving Brent higher",
+    "UBS's copper/real-assets electrification-demand thesis"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The copper cards are two of twelve and copper already has its own dedicated label carrying that theme's weight, so an editor would not miss or misselect a lead theme because of this merge."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/1476 (0.8%) cards as declared overflow, not counted as fragmentation. The largest single fragmentation source is a BofA nuclear-sector note split five ways by report section rather than by pulse-brief grain.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
