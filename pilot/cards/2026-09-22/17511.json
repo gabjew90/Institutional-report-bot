@@ -1,0 +1,299 @@
+{
+ "brief": "Goldman's Financials desk describes three cross-currents driving intraday trading: agentic AI risk to consumer-facing businesses, Fed hikes with a flatter curve, and election chatter, with agentic risk the primary focus. Investors are pricing risk that AI agents narrow companies' ability to monetize consumers, hitting personal insurance (ALL, PGR, TRV), small-cap insurance lead generators (down high-single to low-double-digit percent), insurance broker GSHD, and wealth managers and retail brokers (SCHW, AMP, RJF). Small- and mid-cap banks outperform large banks because they carry less fee and wealth-management business and more commercial deposits. In payments, late-morning underperformance in Visa and Mastercard is debated as flow-of-funds selling versus wallet-integration risk from a PayPal partnership, with most feedback favoring flow-of-funds. By afternoon investors turn broadly defensive: CBRE and JLL underperform peers by about 2%, large liquid defensive names such as JPMorgan and Visa trade heavy, and exchanges see choppy underperformance despite no direct agentic read-through. Goldman calls this an uncertainty discount as investors work through fundamentals, noting past AI-driven choppy tapes rewarded patience over day-one defense. A trader, Mitola, reports high volumes, rising thematic trading, and a complete buyers' strike with no dip-buying, similar to prior episodes this year.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Fed rate hikes and a flatter yield curve are one of the cross-currents driving trading in Financials today, alongside agentic AI risk and election chatter.",
+   "anchor": "A couple of cross currents are driving the tape in Financials: Agentic at Risk, Fed Hikes + Flatter Curve,",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "The market is pricing in risk that AI agents will narrow companies' ability to monetize consumers and change the landscape for lead generation and marketing.",
+   "anchor": "as the market prices in risk that agents narrow companies\u2019 ability to monetize the consumer and change the",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "The GS Consumer Inertia basket (GSXUSWCH) has been one of Goldman's most actively traded baskets in recent sessions.",
+   "anchor": "the GS Consumer Inertia basket (GSXUSWCH) is one of our most actively traded",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "There was chatter yesterday specifically on personal insurance company Allstate (ALL).",
+   "anchor": "There was some chatter yesterday on personal insurance (ALL), with focus today broadening out to",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [
+    "ALL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Trading focus today is broadening out to Personal Insurance peers such as Progressive (PGR) and Travelers (TRV).",
+   "anchor": "Personal Insurance peers (PGR, TRV, etc.), lead generators (investors have pointed",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [
+    "PGR",
+    "TRV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "A couple of small-cap insurance lead generators are trading down high-single-digit to low-double-digit percent today.",
+   "anchor": "cap insurance lead generators down HSD%\u2013LDD%), Insurance Brokers (GSHD",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Insurance broker Goosehead Insurance (GSHD) has traded up and down versus peers for two consecutive days.",
+   "anchor": "Insurance Brokers (GSHD up/down peers two days",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [
+    "GSHD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Wealth Managers and Retail brokers under discussion today include Charles Schwab (SCHW), Ameriprise (AMP), and Raymond James (RJF).",
+   "anchor": "in a row), and Wealth Managers & Retail brokers (SCHW, LPPA, AMP, RJF).",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [
+    "SCHW",
+    "AMP",
+    "RJF"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Small- and mid-cap banks have relatively outperformed large banks today because they carry less fee-based wealth business and more commercial deposits.",
+   "anchor": "from a high level, the relative outperformance in small- and mid-cap banks, which in aggregate have less",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Conversations on Visa and Mastercard were very comfortable regarding their positioning on the agentic AI theme.",
+   "anchor": "Payments entered today where conversations were very comfortable around Visa and Mastercard\u2019s",
+   "topic": "AI agentic commerce playbook",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "An alternative view attributes Visa and Mastercard's late-morning underperformance to worries about deeper wallet integration following a PayPal partnership announcement.",
+   "anchor": "owned financials\u2014or worries around more direct wallet integration following announcement of a PayPal",
+   "topic": "AI agentic commerce playbook",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Most feedback attributes the late-morning underperformance in Visa and Mastercard to flow-of-funds selling rather than fundamental wallet-integration risk.",
+   "anchor": "partnership. Most feedback thinks it is flow-of-funds driven so far.",
+   "topic": "AI agentic commerce playbook",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "CBRE and JLL are underperforming their peers by approximately 2% today.",
+   "anchor": "dispersion. Signs include CBRE and JLL underperforming peers by approximately 2%, large, liquid and",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [
+    "CBRE",
+    "JLL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Large, liquid defensive names viewed as having good technology, such as JPMorgan (JPM), and as well positioned on agentic AI, such as Visa, are trading heavy today.",
+   "anchor": "defensive names viewed as having good technology (JPM), being well positioned on agentic (Visa), or",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [
+    "JPM",
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Exchanges are seeing choppy underperformance today despite having no direct read-through from the agentic AI theme.",
+   "anchor": "across various sectors without direct agent reads, such as exchanges.",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Goldman views today's price action in Financials as the market pricing in an uncertainty discount as investors work through implications for fundamentals.",
+   "anchor": "In our view, this is indicative of the market pricing in an uncertainty discount as investors potentially try to",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "In past choppy tapes involving AI-related themes, it was better to be patient rather than defend positions on day one, and the market is applying that lesson today.",
+   "anchor": "choppy tapes dealing with AI, it was better to be more patient rather than defending day one.",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "Goldman's Mitola reports that trading volumes are high today, with an uptick in thematic trading and a growing willingness to press names.",
+   "anchor": "Mitola highlights that volumes are high. We are seeing an uptick in thematic trading and a willingness to",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - What's happening TODAY in Financials .. 22 Sep 2026",
+   "claim": "There is a complete buyers' strike with no signs of sector defense today, similar to previous episodes so far this year such as AI risk selloffs.",
+   "anchor": "strike with no signs of defense across the sector, similar to previous episodes year-to-date (AI risk,",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17511__gs-degrasse-what-s-happening-today-in-financials-22-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 19,
+  "matched": 19,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
