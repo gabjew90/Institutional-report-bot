@@ -1,0 +1,407 @@
+{
+ "brief": "Meta's Muse app hit No. 1 on the U.S. iPhone free chart, which the market read as confirming mass-agent adoption needs CPU, RAM and storage capacity: ARM +17%, Intel +12%, AMD +10%, Nasdaq +2.3%, SOX +4.3%, though participation was uneven (Kospi faded, TSMC down). Privorotsky says this is not a monolithic buy-everything-AI trade: inference differs from frontier training but broadens infrastructure demand past CPUs to memory, storage, networking and power. His framework is rails vs interfaces: agents destroy value in human-facing interfaces (comparison sites, affiliates, subscription shopping) while creating rail activity (booking, payments, custody, settlement), so friction-dependent businesses look challenged while whoever owns the default agent, he flags Meta, gains outsized distribution value; he expects the labor effect as fewer incremental hires, not mass firing. Separately, oil fell and the curve bull-flattened, but the front end barely moved (2Y -0.8bp vs 10Y -2.9bp) despite falling energy-linked inflation expectations, which he attributes to strong nominal growth or issuance/hyperscaler supply; a genuine front/belly-energy divergence would signal overheating. Iran talks continue without breakthrough; he stays cautiously optimistic on a deal. He trimmed some NDX exposure into yesterday's FOMO rip but stays constructive, preferring bottlenecks, rails and proprietary data over friction-rent businesses.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "The Nasdaq rose 2.3% and the SOX semiconductor index rose 4.3% in yesterday's session, though the rally didn't spread cleanly across the entire AI complex.",
+   "anchor": "Nasdaq +2.3%, SOX +4.3%. Curiously, this hasn't spilled cleanly across the entire AI complex.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "ARM shares rose 17% as Meta's Muse app drove a rally in the CPU chain.",
+   "anchor": "Muse has lit a fire under the CPU chain. ARM +17%, Intel +12%, AMD +10%.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Intel shares rose 12% as Meta's Muse app drove a rally in the CPU chain.",
+   "anchor": "Muse has lit a fire under the CPU chain. ARM +17%, Intel +12%, AMD +10%.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "AMD shares rose 10% as Meta's Muse app drove a rally in the CPU chain.",
+   "anchor": "Muse has lit a fire under the CPU chain. ARM +17%, Intel +12%, AMD +10%.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Muse became the No. 1 free U.S. iPhone app, and the market quickly extrapolated the implication for personal AI agent infrastructure demand.",
+   "anchor": "Muse is now the No. 1 free U.S. iPhone app and the market has very quickly extrapolated",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "The Kospi faded from its early highs this morning with SK Hynix only slightly lower, and TSMC traded down.",
+   "anchor": "the Kospi faded from its early highs (Hynix small down)...TSMC down.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky says the AI rally is more nuanced than 'buy everything AI' because inference is not the same trade as frontier training.",
+   "anchor": "This still feels much more nuanced than buy everything AI. Inference is not exactly the same trade as frontier training.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky says a shift toward billions of dispersed AI agents would not kill the frontier AI trade but would broaden what counts as AI infrastructure demand.",
+   "anchor": "Maybe it's billions of dispersed agents, that doesn't kill the frontier trade. it broadens what AI infrastructure demand looks like.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky is bullish CPUs and somewhat bullish memory, storage, networking and power as part of the inference economy thesis.",
+   "anchor": "sure bullish CPU, a bit memory, storage, networking and power. but it cuts deeper.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky frames the inference economy as rails vs interfaces, where an AI agent can destroy value in the human-facing interface while creating more activity underneath it.",
+   "anchor": "The easiest framework might be rails vs interfaces. An agent can destroy value in the human facing interface while creating more activity underneath it.",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky says any business earning excess returns from friction, complexity or inertia should be nervous about AI agents.",
+   "anchor": "Anything earning excess returns from friction, complexity or inertia should get nervous.",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky says comparison sites, affiliates, lead generators, basic brokers and businesses whose moat depends on friction all look structurally challenged by AI agents.",
+   "anchor": "Comparison sites, affiliates, lead generators, basic brokers and businesses whose moat is basically \"this is annoying enough that you won't bother\" all look structurally challenged.",
+   "topic": "Consumer agent disruption short",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky says whoever owns the default personal AI agent, potentially Meta, would be extremely valuable, and whoever sits between the consumer and the internet gets an enormous distribution advantage.",
+   "anchor": "Whoever owns the default personal agent incredibly valuable (Meta?). Whoever sits between the consumer and the internet gets an enormous distribution advantage (Meta?).",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky says AI-driven productivity gains are more likely to show up as top lines keep growing while businesses need fewer incremental people, a 'less hiring, less firing' economy.",
+   "anchor": "more likely top lines keep growing while businesses discover they simply need fewer incremental people. Less hiring/less firing economy.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "2-year Treasury yields fell just 0.8bp versus a 2.9bp decline in 10-year yields.",
+   "anchor": "2Y yields fell just 0.8bp versus 2.9bp in 10s.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Inflation expectations came down with energy prices, yet the market still wants a lot of real rate compensation at the front end and belly of the curve.",
+   "anchor": "Inflation expectations came down with energy, yet the market still wants a lot of real rate compensation at the front/belly.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky suggests Treasury issuance plus hyperscaler funding increasingly hits the front end and belly of the curve rather than duration.",
+   "anchor": "Treasury issuance plus hyperscaler funding increasingly hits the front and belly rather than duration.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky warns that if front-end and belly rates genuinely diverge from falling energy prices, that becomes a bigger problem, signaling an economy running too hot.",
+   "anchor": "diverging from falling energy, that becomes a bigger problem.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Trump has signaled openness to meeting Iranian President Pezeshkian around UNGA, and Iran is in New York for talks.",
+   "anchor": "Trump has signaled openness to meeting Iranian President Pezeshkian around UNGA and Iran is in New York",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Crude oil is bouncing this morning after four straight down days.",
+   "anchor": "crude is bouncing this morning after four straight down days.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky is cautiously optimistic that incentives ultimately point toward a diplomatic solution on Iran given the stakes are enormous and everyone should economically want a deal.",
+   "anchor": "I'm still cautiously optimistic that the incentives ultimately point toward some diplomatic solution. Stakes are enormous and economically everyone should want a deal.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Corn and soybean futures are at risk of breaking out.",
+   "anchor": "Side-note: Corn and Beans at risk of breaking out",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CORN",
+    "SOYB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Yesterday's move in NDX felt like proper FOMO, with spot and volatility both rising, after weeks of worry over energy, rates and AI capex.",
+   "anchor": "Yesterday felt like proper FOMO (spot up vol up...in NDX)... after weeks where everybody has been sitting around worrying about energy, rates, AI capex",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky trimmed some of his NDX position into the move but says his generally constructive view hasn't changed.",
+   "anchor": "I took a couple chips off in that NDX move but generally constructive view hasn't changed.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky expects the inference economy to keep accelerating, with every major AI provider shipping some version of a Muse-like personal agent.",
+   "anchor": "The inference economy looks like it is accelerating and I'd expect every major provider to ship some version of Muse.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky's second-order trade is to go long bottlenecks, rails, proprietary data and genuine differentiation while avoiding economic rents derived from human friction.",
+   "anchor": "long bottlenecks, rails, proprietary data and genuine differentiation. avoid economic rents derived from human friction.",
+   "topic": "Consumer agent disruption short",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky's big-picture view is high nominal growth, embedded inflation and higher real rates, leaving very little room for defensive stocks if the growth impulse keeps holding.",
+   "anchor": "high nominal growth, embedded inflation, higher real rates and very little room for defensives if the growth impulse keeps holding.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Basics Inference Economy. Real Rates. Corn & Beans 22 Sep 2026",
+   "claim": "Privorotsky's biggest confirmation signal from here would be the cyclical impulse finally turning higher alongside tech.",
+   "anchor": "Biggest confirmation from here would be the cyclical impulse finally turning higher alongside tech.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17519__gs-basics-inference-economy-real-rates-corn-beans-22-sep-202.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 28,
+  "matched": 28,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
