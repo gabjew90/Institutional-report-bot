@@ -1,0 +1,147 @@
+{
+ "brief": "Retail positioning stays stock-specific: the bid concentrates in individual names carrying a strong narrative or a notable sell-off, most recently Crowdstrike after AI security warnings and Netflix after Friday's drop, rather than broad-based buying, a stock-picker's market rather than the old buy-everything FOMO regime. That 1M rolling net-buying momentum, which had picked up early this month, is rolling over again, so the broader retail bid stays subdued. Separately, aggregate equity positioning has de-risked materially as systematic and institutional investors also cut exposure, leaving the market less crowded than a month ago. Combining a cleaner positioning base with fading retail activity, the note argues the next move in equities now depends on rates, given the tight correlation between equity flows and bond yields, so yields are the binding constraint on a tactical bounce in risk appetite. Oil-driven geopolitics, midterm politics and the AI narrative remain additional risks on the wall of worry. The author is watching for signs of re-risking this week, starting with CTA flows.",
+ "cards": [
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "Retail investors have recently concentrated buying in Crowdstrike Holdings Inc following recent AI security warnings.",
+   "anchor": "it's been Crowdstrike Holdings Inc that has captured the attention of retail after recent AI security warnings",
+   "topic": "Retail equity positioning",
+   "status": "released",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "Retail investors bought Netflix Inc on Friday's notable sell-off.",
+   "anchor": "investors are still willing to buy weakness when on either a strong narrative or notable sell-off (ie, Netflix Inc. on Friday)",
+   "topic": "Retail equity positioning",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "Retail equities remain a stock-picker's market rather than the old buy-everything FOMO regime.",
+   "anchor": "this remains a stock-picker's market for retail rather than the old 'buy everything' FOMO regime",
+   "topic": "Retail equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "1-month rolling net buying of both individual stocks and total listed securities is rolling over again.",
+   "anchor": "1M rolling net buying of both individual stocks and total listed securities is now rolling over again",
+   "topic": "Retail equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "Aggregate equity positioning has moved materially lower as systematic and institutional investors also reduced exposure.",
+   "anchor": "Aggregate positioning has moved materially lower as systematic and institutional investors have also reduced exposure",
+   "topic": "US equity positioning outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "Bond yields are the binding constraint for a tactical bounce in equity risk appetite.",
+   "anchor": "bond yields are the binding constraint for a tactical bounce in risk appetite",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "There is a tight correlation between equity flows and bond yields.",
+   "anchor": "given the tight correlation between equity flows & yields",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "Oil-driven geopolitics, domestic midterm politics and the AI narrative remain high on equities' wall of worry.",
+   "anchor": "geopolitics (oil), domestic politics (midterms) and the AI narrative all remain high on the \"wall of worry\" for equity folks",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Vanda Research",
+   "document": "Retail Waiting For Macro Risks To Clear",
+   "claim": "The author is watching the tape this week for signs of equity re-risking, starting with CTA flows.",
+   "anchor": "We continue to watch the tape closely for signs of re-risking this week",
+   "topic": "hedge fund positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this week"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17335__retail-waiting-for-macro-risks-to-clear.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
