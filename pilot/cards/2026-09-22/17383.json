@@ -1,0 +1,485 @@
+{
+ "brief": "Stat of the day: hedge funds net sold global Energy at the fastest pace in four months, split roughly evenly between shorts and longs, while retail keeps buying even as HF net/gross exposure and sentiment sit near lows. Rates: the Fed's inflation focus should extend near-term curve flattening because steepening needs clarity on how many hikes remain, so GS prefers selling vol on longer tenors over duration and holds long EUR 1y1y vs CHF since a hawkish ECB energy reaction function protects belly forwards. The BoE's Gilt-friendly QT bull-flattened the UK curve and points to a November hike, keeping gaps like M7M8 flattening; the BoJ's 25bp hike undershot hawkish expectations, so GS favors paying 5y JPY on the 2s5s10s fly. MSFT NDR: front-loaded capex and balanced 1P/3P and frontier/enterprise allocation drove all of 4Q's $51bn RPO increase from enterprises, cutting reliance on any one model (Buy, Conviction List). Solar: weak resi demand plus rate headwinds mean a subdued recovery into 1Q27 (ENPH Buy, RUN Buy despite a rate-driven valuation headwind, SEDG Sell). Market close: Anthropic's Dario Doomsday call for slower AI progress drove GS's AI-vs-AI-at-risk pair to its worst day since DeepSeek as the 10yr backed toward 5%, while oil sold off and East-West pipeline talks turned positive ahead of the UN General Assembly. YETI set FY30 growth and FCF targets at its investor day.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Hedge funds net sold global Energy stocks at the fastest pace in four months, split roughly evenly between short and long sales.",
+   "anchor": "HFs net sold global Energy at the fastest pace in 4 months, driven by a roughly equal number of short and long sales.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Retail is buying Energy even though hedge fund net and gross exposure are at the lows and sentiment is at the bottom.",
+   "anchor": "Retail is buying even if HF net/grosses are at the lows and \"sentiment\" is at the bottom",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "The Fed's inflation-focused message should reinforce a flattening environment in rates over the near term.",
+   "anchor": "The Fed\u2019s inflation-focused message should reinforce a flattening environment over the near-term.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs tactically prefers selling volatility on longer tenors over holding duration exposure.",
+   "anchor": "we tactically prefer selling vol on longer tenors over duration exposure",
+   "topic": "Treasury yields and rates outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "for the time being"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "The hawkish ECB reaction function to energy price moves offers a degree of protection to belly forwards.",
+   "anchor": "The hawkish ECB reaction function to energy price moves offers a degree of protection to belly forwards.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs recommends going long EUR 1y1y versus CHF.",
+   "anchor": "we recommend long EUR 1y1y vs CHF",
+   "topic": "Treasury yields and rates outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "ECB",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "The BoE's Gilt-friendly QT plans have bull-flattened the UK curve, and incremental policy signals point to a November rate hike.",
+   "anchor": "The BoE\u2019s Gilt-friendly QT plans helped bull-flatten the UK curve, but the incremental policy signals point to a November hike.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "BOE",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "The BoE's policy signals should keep flattening front-end curve gaps such as the M7M8 spread.",
+   "anchor": "This should keep flattening front-end gaps like M7M8.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "BOE",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "The message accompanying the BoJ's 25bp rate hike fell short of the market's hawkish expectations.",
+   "anchor": "The message that accompanied the BoJ\u2019s 25bp rate hike fell short of the market\u2019s hawkish expectations",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BOJ",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs favors paying 5y JPY on the 2s5s10s fly given front-end pricing and the richness of the 5-year point.",
+   "anchor": "we favor paying 5y JPY on the 2s5s10s fly.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "BOJ",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Microsoft's front-loading of long-dated capex now gives it greater flexibility over short-dated capex decisions.",
+   "anchor": "front loading long-dated capex \u2013 such that the company has greater flexibility today over short-dated capex decisions",
+   "topic": "Microsoft AI capex strategy",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Microsoft's balancing of capex allocations between 1P applications and 3P customers has improved the quality of Copilot and MAI outputs.",
+   "anchor": "balancing capex allocations between 1P applications and 3P customers \u2013 such that Copilot and MAI have improved in their quality of outputs",
+   "topic": "Microsoft AI capex strategy",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "All of Microsoft's fiscal fourth-quarter $51bn RPO increase came from enterprise customers, not frontier AI labs.",
+   "anchor": "all of 4Q\u2019s $51bn RPO increase was from enterprises (not frontier labs)",
+   "topic": "Microsoft AI capex strategy",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Balancing capex between frontier and enterprise customers lets Microsoft be less dependent on any one model in the model ecosystem.",
+   "anchor": "the company can be less dependent on any one model in the evolution of the model ecosystem",
+   "topic": "Microsoft AI capex strategy",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs rates Microsoft Buy and includes it on its Conviction List.",
+   "anchor": "We are Buy rated (on Conviction List)",
+   "topic": "Microsoft AI capex strategy",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs expects a more subdued recovery for residential solar fundamentals into year-end, with risk persisting into the seasonally weaker 1Q27 period.",
+   "anchor": "we see a more subdued recovery for resi solar fundamentals into year-end with risk to expectations likely persisting into a typically seasonally-weaker 1Q27 period",
+   "topic": "Residential solar demand outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year-end through 1Q27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs rates ENPH Buy, citing its higher margin profile and near-term growth drivers from new product launches.",
+   "anchor": "we highlight ENPH (Buy) given its higher margin profile in conjunction with several near-term growth drivers from new product launches",
+   "topic": "Residential solar demand outlook",
+   "status": "forecast",
+   "instruments": [
+    "ENPH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs rates RUN Buy while acknowledging a potential valuation headwind from rising interest rates.",
+   "anchor": "we acknowledge the potential valuation headwind from rising interest rates on RUN (Buy)",
+   "topic": "Residential solar demand outlook",
+   "status": "forecast",
+   "instruments": [
+    "RUN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs maintains a cautious Sell rating on SEDG.",
+   "anchor": "we maintain a cautious view on SEDG (Sell)",
+   "topic": "Residential solar demand outlook",
+   "status": "forecast",
+   "instruments": [
+    "SEDG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Anthropic's Dario Doomsday call for a slower pace of frontier AI evolution sparked an aggressive rotation away from AI-related names and broader Momentum.",
+   "anchor": "Anthropic\u2019s \u201cDario Doomsday\u201d calling for a slower pace of frontier evolution, sparking an aggressive rotation away from AI-related names and broader Momentum.",
+   "topic": "AI earnings bubble debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Goldman Sachs' AI vs AI-at-risk pair had one of its worst days since the DeepSeek episode.",
+   "anchor": "Our AI vs AI-at-risk pair has one of its worst days since DeepSeek",
+   "topic": "AI earnings bubble debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "The spread between Goldman Sachs' 3-month versus 12-month Momentum pairs was the widest since the 2020 election.",
+   "anchor": "spread between our 3M vs 12m Momo pairs was the widest since the 2020 election",
+   "topic": "AI earnings bubble debate",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "The 10-year Treasury yield backed up toward 5% to close out the week.",
+   "anchor": "the 10yr inching back towards 5% to close out the week",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "US equities rallied to close out the week with relatively muted activity despite both the quarterly rebalance and quadruple witching.",
+   "anchor": "Equities rally to close out the week with relatively muted activity levels despite both quarterly rebalance and todays quad-which.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "Rate weakness stood out despite an oil selloff heading into the weekend.",
+   "anchor": "Rate weakness stands out despite the oil selloff into weekend",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "There were positive talks of restoring flows to the East-West pipeline ahead of next week's UN General Assembly.",
+   "anchor": "some positive talks of restoring flows to the East-West pipeline into next week's UN General Assembly",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "YETI's long-term financial framework through FY30 calls for mid-single-digit to high-single-digit percent annual sales growth.",
+   "anchor": "a long-term financial framework through FY30 calling for MSD-HSD% annual sales growth",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "YETI's FY30 framework targets high-single-digit to low-double-digit percent adjusted operating income growth.",
+   "anchor": "annual sales growth, HSD-LDD% adjusted operating income growth",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "YETI's FY30 framework targets low-double-digit to high-teens percent adjusted EPS growth.",
+   "anchor": "operating income growth, LDD-high teens% adjusted EPS growth",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "YETI's FY30 framework targets $1.2bn to $1.4bn of cumulative free cash flow.",
+   "anchor": "EPS growth, and $1.2bn-$1.4bn of cumulative FCF",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "YETI plans to grow international revenue to more than $1bn.",
+   "anchor": "a plan to grow international revenue to >$1bn",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "YETI plans to scale its Bags & Soft Coolers category into a $1bn platform.",
+   "anchor": "scale Bags & Soft Coolers into a $1bn platform",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 21 Sep 2026",
+   "claim": "YETI's Project Upcycle cost savings program targets $100mn in savings.",
+   "anchor": "through Project Upcycle, a newly introduced cost savings program targeting $100mn in savings.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "YETI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17383__gs-us-daily-download-21-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 33,
+  "matched": 33,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 10,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
