@@ -1,0 +1,91 @@
+{
+ "brief": "This is Goldman Sachs' weekly US Economic Indicators Update, a chart pack refreshing five proprietary trackers as of September 21, 2026, with no argued thesis connecting them. The nominal GS US Financial Conditions Index tightened 1.8bp to 98.67 over the past week, mainly on lower equity prices, partly offset by lower BBB credit spreads. The real (inflation-adjusted) FCI tightened 4.1bp to 98.25. GS's Q3 GDP tracking estimate stands at +3.3% quarter-over-quarter annualized. The US MAP index of economic data surprises rose on net to +0.7. The preliminary September Current Activity Indicator (CAI), a nowcast built from 37 weekly and monthly indicators, holds at +3.6%, unchanged from August. Additional exhibits update the GDP growth impulse from financial conditions, the capex tracker, slack and job growth trackers, ISM manufacturing and non-manufacturing survey trackers, wage trackers, the core inflation tracker, and the social media sentiment index, but these are chart-only updates with no accompanying text explaining direction or drivers beyond the axis data.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "USA: GS Economic Indicators Update",
+   "claim": "The nominal GS US Financial Conditions Index tightened by 1.8 basis points to 98.67 over the past week, mainly due to lower equity prices, partly offset by lower BBB credit spreads.",
+   "anchor": "The nominal GS US Financial Conditions Index tightened by 1.8bp to 98.67 over the last week",
+   "topic": "GS Financial Conditions Index",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "over the last week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "USA: GS Economic Indicators Update",
+   "claim": "The real (inflation-adjusted) GS US Financial Conditions Index tightened by 4.1 basis points to 98.25 over the same week.",
+   "anchor": "The real GS US FCI tightened by 4.1bp to 98.25",
+   "topic": "GS Financial Conditions Index",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "over the last week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "USA: GS Economic Indicators Update",
+   "claim": "Goldman Sachs forecasts Q3 2026 US GDP growth at +3.3% quarter-over-quarter annualized.",
+   "anchor": "Our Q3 GDP forecast stands at +3.3% (quarter-over-quarter annualized)",
+   "topic": "US Q3 GDP tracking",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "USA: GS Economic Indicators Update",
+   "claim": "Goldman Sachs' US MAP index of economic data surprises rose on net to +0.7.",
+   "anchor": "Our US MAP index of economic surprises increased on net to +0.7",
+   "topic": "US economic data surprise index",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "USA: GS Economic Indicators Update",
+   "claim": "Goldman Sachs' preliminary September Current Activity Indicator stands at +3.6%, unchanged from August's +3.6%.",
+   "anchor": "Our preliminary September Current Activity Indicator now stands at +3.6% (vs. +3.6% in August)",
+   "topic": "US Current Activity Indicator",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17401__usa-gs-economic-indicators-update.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 5,
+  "matched": 5,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
