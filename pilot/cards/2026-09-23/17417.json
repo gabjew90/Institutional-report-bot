@@ -1,0 +1,25 @@
+{
+ "brief": "No extracted text was available for this document; all pages were empty in the source extraction, so no content could be read or summarized.",
+ "cards": [],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-23/17417__reassessing-the-fed-s-rate-path-what-the-shift-means-for-mar.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 0,
+  "matched": 0,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 0,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
