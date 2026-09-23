@@ -1,0 +1,159 @@
+{
+ "brief": "Goldman's Nelson Armbrust tracks two threads. First, L/S Fundamental hedge funds continue lagging Systematic funds: fundamental L/S fell -1.02% last week versus MSCI World +0.35%, while systematic L/S rose +1.28%. Year-to-date, fundamental funds are +12%, mostly Asian investor driven, with US funds at +8%, versus systematic funds' +20%. Breadth confirms the divergence: under 30% of S&P stocks trade above their 50-day moving average. Sentiment has followed: GS's Sentiment Indicator fell to -0.9, its lowest in over a year, and AAII bearish sentiment jumped 14 points week-over-week to 53.3%, highest since May 2025, as bullish sentiment fell to 28.8%. Second, Meta's Muse consumer AI agent, released September 8, hit #1 among free US Apple apps within a week, with Apptopia estimating 1.6mm US downloads in eight days versus ChatGPT's ~822k in its own first eight days. The buzz is bidding up the AI complex, driving CPU plays INTC and ARM up 5% on the agent-momentum trade. The note argues the CPU/cloud compute trade deserves attention alongside GPUs.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "GS Equity Fundamental L/S Performance Estimate fell 1.02% last week versus MSCI World Total Return up 0.35%.",
+   "anchor": "The GS Equity Fundamental L/S Performance Estimate fell -1.02% last week (vs MSCI World TR +0.35%)",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "GS Equity Systematic L/S Performance Estimate rose 1.28% during the same week.",
+   "anchor": "the GS Equity Systematic L/S Performance Estimate rose +1.28% during the same period",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "L/S Fundamental hedge funds are up 12% year-to-date, driven mostly by Asian investors, with US funds up 8%.",
+   "anchor": "L/S Fundamental +12% YTD, but mostly driven by Asian investors\u2026 US funds are +8%.",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "Systematic hedge funds are up 20% year-to-date.",
+   "anchor": "US funds are +8%. Meanwhile, Systematics are +20% YTD!",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "GS's Sentiment Indicator, an aggregate measure of US equity positioning, fell to -0.9, its lowest level in over a year.",
+   "anchor": "Our GS Sentiment Indicator - an aggregate measure of US equity positioning - fell to -0.9, its lowest level in over a year.",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "AAII bearish sentiment jumped 14 points week-over-week to 53.3%, its highest level since May 2025, while bullish sentiment fell to 28.8%.",
+   "anchor": "bearish sentiment jumped 14pts week-over-week to 53.3%, its highest level since May 2025, while bullish sentiment fell to 28.8%",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "Less than 30% of S&P 500 stocks are above their 50-day moving average.",
+   "anchor": "Less than 30% of S&P stocks are now above the 50-day moving average.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "Meta's Muse consumer AI agent app reached the #1 spot among free apps on the US Apple App Store just over a week after its September 8 release.",
+   "anchor": "Muse has the #1 spot overall among free apps on the Apple US in just over a week after its September 8 release.",
+   "topic": "AI agent momentum trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "Apptopia estimates Muse had 1.6 million US downloads in its first eight days, versus ChatGPT's roughly 822,000 US downloads in its own first eight days.",
+   "anchor": "Apptopia estimating 1.6mm US downloads in its first eight days. For context, ChatGPT saw ~822k US downloads in its first eight days",
+   "topic": "AI agent momentum trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "What Matters Today: HF Pain Continues, Muse",
+   "claim": "Buzz around Muse's download rates is driving outperformance in CPU plays INTC and ARM, both up 5%.",
+   "anchor": "which is driving outperformance around plays levered to the trade (CPU\u2019s: INTC, ARM +5%)",
+   "topic": "AI agent momentum trade",
+   "status": "level",
+   "instruments": [
+    "INTC",
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17384__what-matters-today-hf-pain-continues-muse.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
