@@ -1,0 +1,117 @@
+{
+ "brief": "GS's buyback desk reports steady corporate share-repurchase execution for the week ending 18-Sep-2026: volumes ran 1.4x vs 2025 YTD average daily trading volume (ADTV) and 1.3x vs 2024 YTD ADTV, concentrated in Tech, Industrials, and Financials. The desk is currently in blackout window, with an estimated 64% of the S&P 500 in quiet period as of 21-Sep, rising to an estimated 85% by week's end. As more companies enter blackout, the desk sees a growing share of 10b5-1 plans starting, shifting the execution mix to 21% open-market repurchase (OMR) vs 79% 10b5-1, from 30%/70% the prior week. GS expects blackout restrictions to roll off progressively once earnings season begins in October, with Financials typically first to emerge given their position at the front of the reporting cycle. Separately, 14 new repurchase authorizations were announced this week totaling $9.6B, a moderate week for new authorizations.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap 21 Sep 2026",
+   "claim": "GS buyback desk execution volumes for the week ending 18-Sep-2026 ran 1.4x the 2025 year-to-date average daily trading volume and 1.3x the 2024 YTD average daily trading volume.",
+   "anchor": "Volumes finished 1.4x vs 2025 YTD ADTV and 1.3x vs 2024 YTD ADTV",
+   "topic": "Corporate share buyback activity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week ending 18-Sep-2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap 21 Sep 2026",
+   "claim": "As of 21-Sep-2026, an estimated 64% of the S&P 500 is in its blackout quiet period.",
+   "anchor": "~64% of the S&P500 estimated to be in their quiet period as of today",
+   "topic": "Corporate share buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "as of 21-Sep-2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap 21 Sep 2026",
+   "claim": "GS estimates approximately 85% of the S&P 500 will be in blackout by the end of the week of 21-Sep-2026.",
+   "anchor": "We estimate ~85% in blackout by the end of the week",
+   "topic": "Corporate share buyback activity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "end of week of 21-Sep-2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap 21 Sep 2026",
+   "claim": "The buyback desk's execution mix shifted to 21% open-market repurchases vs 79% 10b5-1 plans, from 30%/70% the prior week.",
+   "anchor": "The current execution mix sits at 21% OMR vs 79% 10b5-1 (vs. 30% / 70% the prior week)",
+   "topic": "Corporate share buyback activity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week ending 18-Sep-2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap 21 Sep 2026",
+   "claim": "GS expects blackout restrictions to roll off progressively once earnings season begins in October 2026.",
+   "anchor": "Once earnings season begins in October, we expect blackout restrictions to roll off progressively",
+   "topic": "Corporate share buyback activity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap 21 Sep 2026",
+   "claim": "Financials are typically the first sector to emerge from blackout, reflecting their position at the front of the earnings reporting cycle.",
+   "anchor": "Financials are typically the first to emerge, reflecting their position at the front of the reporting cycle",
+   "topic": "Corporate share buyback activity",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Share Repurchase Weekly Recap 21 Sep 2026",
+   "claim": "14 new share repurchase programs were authorized during the week ending 18-Sep-2026, totaling $9.6B.",
+   "anchor": "We saw 14 programs authorized this week for $9.6B",
+   "topic": "Corporate share buyback activity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week ending 18-Sep-2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17393__share-repurchase-weekly-recap-21-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 7,
+  "matched": 7,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
