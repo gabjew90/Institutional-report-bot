@@ -1,0 +1,262 @@
+{
+ "brief": "Tech outperformed last week and reclaimed its 50 and 100 day moving averages amid rate hike and oil volatility concerns plus AI debates over regulation, safety and agentic commerce. Breadth stayed narrow and sentiment cautious despite the move. Communacopia conference feedback was bullish for Tech and AI, yet the AI infrastructure trade still has not regained momentum despite several positive catalysts (ROIC commentary, model updates, easing technicals), raising the question of whether semiconductor weakness (SOX forward P/E near multi year lows) is a macro problem tied to oil or an AI problem. The market keeps rewarding asset light, AI levered 'inference economy' names and has expanded multiples for longer duration names like NET and SNOW even as 10 year yields hit multi decade highs. GS GIR notes on Microsoft describe three capex decisions now paying off, front loaded long dated capex, 1P/3P balancing that lifted Copilot and MAI quality, and frontier/enterprise balancing that left the entire $51bn Q4 RPO increase enterprise sourced, though Microsoft's forward P/E stays below its 10 year average. AMAT stays rated HOLD as memory cycle and 2027 discovery value debates de-rate its multiple, even as the stock bounced off its 200 day average.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Tech outperformed the broader market last week, reclaiming its 50-day and 100-day moving averages to the upside.",
+   "anchor": "Tech outperformed last week, recapturing its 50/100-dma to the upside",
+   "topic": "Tech rate hike resilience",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Despite Tech's outperformance, investor sentiment is more measured, marked by narrow market breadth and cautious sentiment indicators.",
+   "anchor": "Amidst more measured investor sentiment (narrow market breadth + cautious sentiment indicators)",
+   "topic": "Tech rate hike resilience",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "The Semiconductor Index (SOX) has quietly risen in 10 of the last 12 trading sessions and was bid up again early on the day of the note.",
+   "anchor": "Semis (SOX) are quietly up 10 of 12 sessions, and, are again bid up early today",
+   "topic": "AI infrastructure trade momentum",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Goldman Sachs prime brokerage data shows recent buying in Information Technology names.",
+   "anchor": "alongside recent Info Tech buying, per latest GS PB data",
+   "topic": "Tech rate hike resilience",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Only about 30% of Nasdaq-100 (NDX) member stocks are trading above their 50-day moving average, a low reading relative to history.",
+   "anchor": "only ~30% of NDX members sitting about their 50-dma (yes, this is a low number relative to history",
+   "topic": "Tech rate hike resilience",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "The Nasdaq-100 (NDX) is attempting to break above its recent trend line.",
+   "anchor": "the NDX is trying to break above its recent trend line",
+   "topic": "Tech rate hike resilience",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Feedback from the Goldman Sachs Communacopia + Technology conference produced a decidedly bullish set of datapoints for Tech and AI.",
+   "anchor": "a decidedly bullish set of datapoints for Tech / AI",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "The AI infrastructure trade has failed to regain its momentum even after several positive catalysts, including ROIC commentary, model updates, product momentum, conference appearances and easing technicals.",
+   "anchor": "what it will take for the AI infrastructure trade to get its momentum back after several positive catalysts seemingly failed to do so",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "A chart compares the Semiconductor Index (SOX) forward P/E multiple, which is nearing multi-year lows, against oil prices inverted, framing whether semiconductor weakness is a macro or an AI problem.",
+   "anchor": "Semis (SOX) P/E multiple (white), nearing multi-year lows, charted against Oil Prices (inverted, blue)",
+   "topic": "AI infrastructure trade momentum",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "The market continues to reward 'inference economy' names, defined as asset-light, AI-levered plays such as Cyber Security or Data Infrastructure companies.",
+   "anchor": "the market continuing to reward \u2018inference\u2019 economy names (asset light, AI levered plays \u2013 think Cyber Security or Data Infra names)",
+   "topic": "Inference economy valuation divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "The market has expanded the valuation multiple for longer-duration names like Cloudflare (NET) and Snowflake (SNOW) even as 10-year Treasury yields push to multi-decade highs.",
+   "anchor": "watching the market expand the multiple for longer-duration names like NET or SNOW in the face of 10yr Yields pushing to multi-decade highs",
+   "topic": "Inference economy valuation divergence",
+   "status": "level",
+   "instruments": [
+    "NET",
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "According to GS GIR notes from meetings with Microsoft management, Microsoft front-loaded long-dated capital expenditure in a way that now gives it greater flexibility over short-dated capex decisions.",
+   "anchor": "front loading long-dated capex \u2013 such that the company has greater flexibility today over short-dated capex decisions",
+   "topic": "Microsoft AI capex strategy",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "According to GS GIR notes, Microsoft's balancing of capex between first-party applications and third-party customers has improved the output quality of Copilot and MAI.",
+   "anchor": "balancing capex allocations between 1P applications and 3P customers \u2013 such that Copilot and MAI have improved in their quality of outputs",
+   "topic": "Microsoft AI capex strategy",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "According to GS GIR notes, all of Microsoft's $51 billion increase in Remaining Performance Obligations in its fiscal fourth quarter came from enterprise customers, not frontier AI labs.",
+   "anchor": "all of 4Q\u2019s $51bn RPO increase was from enterprises (not frontier labs)",
+   "topic": "Microsoft AI capex strategy",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Microsoft's forward P/E multiple has rebounded off its lows but is still trading solidly below its 10-year average relative forward P/E multiple versus the S&P 500.",
+   "anchor": "MSFT\u2019s fwd P/E multiple has rebounded off the lows, though, still trading solidly below its 10 year average relative fwd P/E multiple",
+   "topic": "Microsoft AI capex strategy",
+   "status": "level",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Tactical investor sentiment on Applied Materials (AMAT) and broader semiconductor capital equipment names has ticked down as the market de-rates the multiple on memory rate-of-change concerns and debate over 2027 discovery value.",
+   "anchor": "tactical sentiment on AMAT (and broader SPE names) has down-ticked as the market de-rates the multiple",
+   "topic": "AMAT semicap de-rating",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - US TMT weekly + charts 21 Sep 2026",
+   "claim": "Applied Materials (AMAT) stock notably bounced off its 200-day moving average.",
+   "anchor": "it was noticeable to see AMAT decidedly bounce off its 200-dma",
+   "topic": "AMAT semicap de-rating",
+   "status": "level",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17386__gs-callahan-us-tmt-weekly-charts-21-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 17,
+  "matched": 17,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
