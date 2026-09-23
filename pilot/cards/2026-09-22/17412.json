@@ -1,0 +1,540 @@
+{
+ "brief": "JPM's Sept 21 afternoon briefing frames a risk-on session (SPX +1.5%, NDX +2.8%, RTY +0.5%) driven by Meta's Muse app launch, which lifted META 12% and revived CPU-intensive AI-compute demand, pushing AMD, INTC and ARM higher while \"AI Vulnerable\" tax-loss names (NFLX, CPNG, APP) reverted. WTI fell nearly 5% after Trump called off Houthi airstrikes and diplomatic hopes rose ahead of the UN GA, pulling the 10Y yield down alongside it. Separately, Fedspeak from Goolsbee and Musalem was hawkish, echoing Warsh's press conference and raising the risk of an additional hike versus forecasts. JPM stays Tactically Cautious/Neutral into the Fed, citing unstabilized energy prices, elevated bond volatility (10Y near 5%) and directionless positioning. It would turn bullish on lower oil/yields or a US-Iran deal, bearish if the consumer breaks or an AI capex cut ends the AI theme. Its Monetization Menu keeps +Tech vs -RTY (dollar/market-neutral) given early-hiking-cycle USD strength and curve flattening, while flagging Latam as a non-AI hedge.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "The S&P 500 and Nasdaq 100 posted their best single-day gain since early August, led by the Tech sector.",
+   "anchor": "SPX and NDX both posted their best day since early August, led by Tech.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "SPX",
+    "NDX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Meta's Muse app fueled optimism for agentic AI and drove a 12% single-day gain in Meta's stock.",
+   "anchor": "Meta\u2019s Muse app fueled optimism for agentic AI and drove a 12% single-day gain in the stock",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Semis and Mag 7 baskets added 4.1% and 3.2% respectively during the Tech-led rally.",
+   "anchor": "Semis and Mag 7 added 4.1% and 3.2%, respectively.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "AMD stock soared as investors bet on increased demand for CPU-intensive AI applications.",
+   "anchor": "AMD soared as investors bet on increased demand for CPU-intensive AI applications.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Market breadth was modestly positive despite MegaCap Tech leadership, with 60% of S&P 500 stocks closing higher.",
+   "anchor": "Market breadth was modestly positive despite leadership in MegaCap tech: 60% of SPX stocks closed higher.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "INTC, AMD and ARM led gains higher as Meta Muse's launch put a spotlight back on CPU server demand.",
+   "anchor": "INTC, AMD, ARM US Equity are leading higher as a result.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "INTC",
+    "AMD",
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "AI Vulnerable names NFLX, CPNG and APP saw a big reversion and are the leading tax-loss candidates.",
+   "anchor": "we are seeing big reversion in the \"AI Vulnerable\" names which are the leading TAX LOSS candidates \u2013 NFLX, CPNG, APP",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "NFLX",
+    "CPNG",
+    "APP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "APP shares got a boost from a Morgan Stanley note stating that U's gains are not coming from APP.",
+   "anchor": "APP getting a boost from an MS note saying U gains are not coming from APP.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "APP",
+    "U"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "GOOGL traded well within the hyperscaler complex despite M Science data showing ad revenues tracking 1 point below.",
+   "anchor": "GOOGL acting well despite M Science saying Ad revs are tracking 1 pt below.",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "MSFT appears to be providing some of the funding for META within the hyperscaler complex.",
+   "anchor": "MSFT appears to be providing some of the funding $$s for META",
+   "topic": "AI infrastructure trade momentum",
+   "status": "released",
+   "instruments": [
+    "MSFT",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "AMD is set to top $1 trillion in market value as chip stocks soar.",
+   "anchor": "AMD Set to Top 1 Trillion in Market Value as Chip Stocks Soar",
+   "topic": "AI infrastructure trade momentum",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Flows were very quiet given the holiday, but the desk saw some evidence of re-grossing.",
+   "anchor": "FLOWS very quiet given the holiday, but we are seeing some evidence of re-grossing.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "The desk sees demand for semis generally while META remains a hedge fund buy name.",
+   "anchor": "Generally seeing some demand for semis while META remains a HF buy name here.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Quants remain the bright spot, up 1.5% month-to-date, driving global re-grossing despite weak hedge fund returns.",
+   "anchor": "Quants remain the bright spot: +1.5% MTD, driving global re-grossing despite weak HF returns.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Financials flows look weak, especially in banks and regionals, while payments and fintech show tentative stabilization.",
+   "anchor": "Financials flows look weak, especially banks and regionals; payments/fintech showing tentative stabilization.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Large-cap bank positioning has pulled back but remains elevated versus history.",
+   "anchor": "Large-cap bank positioning has pulled back but remains elevated vs. history.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "WTI crude fell nearly 5% after Trump called off airstrikes against the Houthis and diplomatic hopes rose ahead of the UN GA.",
+   "anchor": "WTI crude prices fell nearly 5% as Trump called off airstrikes against the Houthis and as diplomatic hopes rose ahead of the UN GA.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM's Tactically Cautious/Neutral stance is based partly on energy prices' inability to stabilize without reverting lower.",
+   "anchor": "the inability for energy prices to stabilize without reversion lower",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM sees a Middle East escalation as capable of pushing equities down as much as 2-3% before finding a level.",
+   "anchor": "an escalation could push Equities lower, perhaps as much as 2-3% before finding a level.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "A US-Iran return to the negotiating table, or another move lower in oil prices, would support JPM turning bullish.",
+   "anchor": "US / Iran may return to the negotiating table lowering oil price, or otherwise action a move lower in crude.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM's cautious stance also reflects elevated bond volatility, with the 10-year yield oscillating around 5%.",
+   "anchor": "elevated bond vol with 10Y oscillating around 5%",
+   "topic": "US equity market outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM's cautious stance also reflects positioning and factors not providing a clear market direction.",
+   "anchor": "positioning / factors not providing a clear direction",
+   "topic": "US equity market outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM would turn bullish if the bond market coalesces around Warshspeak and views the Fed's commitment as sufficient to contain inflation expectations and bond yields.",
+   "anchor": "The bond market may coalesce around Warshspeak and that the Fed\u2019s commitment is enough to contain inflation expectations and bond yields.",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM would turn bearish on signs the consumer and economy are breaking, or that the AI theme has ended via a capex cut.",
+   "anchor": "Signs that the Consumer and economy are breaking or that the AI theme has ended, which would likely be initiated by a capex cut.",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM maintains its core Monetization Menu view of long Tech versus short RTY, kept dollar- or market-neutral, expressed via Mag7, Memory and Semis.",
+   "anchor": "our core view of +Tech vs. -RTY and that Tech view is a mix of Mag7, Memory, and Semis",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM likes Brazil and Latam as a long play irrespective of one's views on AI.",
+   "anchor": "we like Brazil / Latam irrespective of one\u2019s views on AI.",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "SPX rose 1.5%, NDX rose 2.8% and RTY rose 0.5% on September 21.",
+   "anchor": "SPX +1.5%, NDX +2.8%, RTY +0.5%.",
+   "topic": "US equity market outlook",
+   "status": "released",
+   "instruments": [
+    "SPX",
+    "NDX",
+    "RTY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Fed officials Goolsbee and Musalem's speeches today were uniformly hawkish, including Goolsbee's view that a more aggressive, front-loaded policy response may be needed.",
+   "anchor": "Goolsbee and Musalem\u2019s speeches today were uniformly hawkish, particularly Goolsbee\u2019s view that a more aggressive and front-loaded policy response may be needed",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Fed's Musalem said earlier, incremental hikes are better and less disruptive.",
+   "anchor": "MUSALEM: EARLIER, INCREMENTAL HIKES BETTER AND LESS DISRUPTIVE",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Fed's Musalem said core inflation may be running 1 percentage point above the Fed's target.",
+   "anchor": "MUSALEM: CORE INFLATION MAY BE RUNNING 1 PPT ABOVE FED'S TARGET",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Fed's Goolsbee said restoring price stability won't be painless.",
+   "anchor": "FED\u2019S GOOLSBEE: RESTORING PRICE STABILITY \u2019WON\u2019T BE PAINLESS\u2019",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Recent Fedspeak has been hawkish, repeating key points from Warsh's press conference, which increases the risk of an additional rate hike relative to forecasts.",
+   "anchor": "hawkish, repeating some of the key points from Warsh\u2019s press conference which increases the risk of an additional rate hike relative to forecasts.",
+   "topic": "Fed rate hike outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "European equity leadership came from industrials, banks and technology while energy, utilities and miners lagged amid falling oil prices.",
+   "anchor": "Leadership came from industrials, banks, and technology, while energy, utilities, and miners lagged amid the decline in oil prices.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "UK, Eurozone and German equity indices closed higher, with UKX up 0.7%, SX5E up 1.3%, SXXP up 1.0% and DAX up 1.1%.",
+   "anchor": "UKX +0.7%, SX5E +1.3%, SXXP +1.0%, DAX +1.1%.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Germany's CDU suffered a defeat in two key elections, a focus for European macro and geopolitics.",
+   "anchor": "Germany election (CDU \u2019s defeat in two key elections)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "Ukraine carried out its largest attack on Moscow since 2022 during the weekend.",
+   "anchor": "Ukraine\u2019s largest attack on Moscow since 2022 during the weekend.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing - Sept 21",
+   "claim": "JPM's Mike Cho expects Bank M&A momentum to persist, with possible multi-billion-dollar Cat IV deals over the next two years.",
+   "anchor": "Note from Mike Cho on Bank M&A where momentum expected to persist, with possible multi-$bn Cat IV deals over next two years.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next two years"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17412__jpm-us-market-intelligence-afternoon-briefing-sept-21.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 37,
+  "matched": 37,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 5,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
