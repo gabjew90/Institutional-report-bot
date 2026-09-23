@@ -1,0 +1,194 @@
+{
+ "brief": "US high-yield credit is not breaking broadly: investment grade, broad high yield and single-B spreads remain contained. The fracture is concentrated at the bottom of the quality ladder. The single-B to CCC jump is about 8 percentage points, and the CCC minus single-B spread has widened to 799bp, near the top of its three-year range and above the roughly 575bp median (BofA). Small-cap equities are starting to reflect this: Bloomberg Caa spreads reached 9.2%, their widest since 2023, and the Russell 2000 has lost more than 8% relative to the S&P 500 since late June (BTIG). BTIG finds 11 similar occasions since 1996, where the pattern was not an immediate S&P 500 collapse but further Russell weakness over the following 40-60 trading days. What has not moved is small-cap options pricing: the six-month IWM-versus-SPX implied-volatility spread has fallen near the bottom of its two-year range (GS), so Russell volatility stays cheap relative to large caps despite the financing risk. The suggested expression is an IWM Nov 280/265 put spread.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "Investment grade, broad high yield and single-B credit spreads have remained relatively contained even as lower-quality credit repriced.",
+   "anchor": "Investment grade, broad high yield and single-B spreads remain relatively contained",
+   "topic": "CCC credit spread widening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "CCC and lower-rated credit spreads have detached sharply from the rest of the credit quality ladder.",
+   "anchor": "CCC and lower spreads have detached sharply from the rest of the quality ladder.",
+   "topic": "CCC credit spread widening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "The spread jump from single-B to CCC-rated credit is approximately eight percentage points.",
+   "anchor": "The jump from single-B to CCC is approximately eight percentage points.",
+   "topic": "CCC credit spread widening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA/TME",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "The CCC minus single-B high-yield spread has widened to 799bp, close to the top of its three-year range and well above the roughly 575bp median.",
+   "anchor": "The CCC minus single-B spread has widened to 799bp, close to the top of its available three-year range and well above the roughly 575bp median.",
+   "topic": "CCC credit spread widening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "Bloomberg Caa-rated credit spreads reached 9.2%, their widest level since 2023.",
+   "anchor": "Bloomberg Caa spreads reached 9.2%, their widest since 2023",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "The Russell 2000 lost more than 8% relative to the S&P 500 from late June.",
+   "anchor": "the Russell 2000 lost more than 8% relative to the S&P 500 from late June",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since late June"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "BTIG identifies 11 similar historical occasions since 1996 of credit stress at the bottom of the quality ladder coinciding with small-cap underperformance.",
+   "anchor": "BTIG identifies 11 similar occasions since 1996.",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "since 1996"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "In the clearest historical pattern, credit stress at the bottom of the ladder was followed not by an immediate S&P 500 collapse but by further Russell 2000 weakness over the following 40-60 trading days.",
+   "anchor": "The clearest historical pattern was not an immediate S&P 500 collapse, but further Russell weakness over the following 40\u201360 trading days.",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "forecast",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "40-60 trading days"
+  },
+  {
+   "bank": "GS",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "The six-month ATM implied-volatility spread between IWM and SPX has fallen close to the bottom of its two-year range.",
+   "anchor": "The six-month ATM implied-volatility spread between IWM and SPX has fallen close to the bottom of its two-year range.",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "Small-cap volatility is inexpensive relative to SPX despite the greater financing risk visible beneath the Russell 2000.",
+   "anchor": "small-cap volatility is inexpensive relative to SPX despite the greater financing risk visible beneath the Russell.",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "The recommended expression is to own an IWM put spread a few months out while small-cap volatility remains unusually cheap versus SPX.",
+   "anchor": "own an IWM put spread a few months out while small-cap volatility remains unusually cheap versus SPX.",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "a few months"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Credit is cracking at the bottom but small cap vol hasnt noticed",
+   "claim": "The specific recommended trade is an IWM November 280/265 put spread.",
+   "anchor": "Chart shows the IWM Nov 280/265 put spread.",
+   "topic": "Small-cap volatility vs credit stress",
+   "status": "target",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "November"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 12,
+  "matched": 12,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
