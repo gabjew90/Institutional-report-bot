@@ -1,0 +1,218 @@
+{
+ "brief": "BTIG's technical note argues equity internals are diverging from index-level strength, a pattern it says last preceded the 2000 top. The SOX is ~14% below its June highs, yet only 3 of 30 constituents are closer to their own highs than the index, and 10 of 30 remain over 30% off highs. In 2000, 13 of 20 overlapping SOX names kept making new highs after the index's March 2000 peak, so BTIG says bulls should favor names near highs over laggards. SPX has logged five straight days with more 52-week lows than highs despite rallying near all-time highs, and is up 1.2% over the past month while 9 of 11 sectors are negative. Bank stocks (BKX) are down over 2% and more than 10% below their 30-day high while SPX sits within 1% of a 52-week high, a divergence last seen in January 2000. Separately, a bullish QQQ moving-average signal has driven a ~4% rally toward new highs, but BTIG's backtest shows returns turn negative 30-40 days later, and under 60% of NDX names are above their 200-day average. 10-year yields look like consolidation within an uptrend unless they break below ~4.92%.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "The SOX is about 14% below its June highs, but only three of the 30 names in the index are closer to their own 52-week highs than the SOX index itself.",
+   "anchor": "The SOX is ~14% below its June highs, yet only three names in the index are closer to their highs than the SOX itself.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "10 of the 30 names in the SOX are off more than 30% from their 52-week highs, with the average SOX constituent down about 26% from its high.",
+   "anchor": "10 of the 30 names in the SOX are still off more than 30% from 52wk highs, and the average name is off ~26%.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "In the 2000 semiconductor cycle top, 13 of the 20 current SOX constituents that also traded back then went on to make their 52-week highs after the SOX index peaked on March 14, 2000.",
+   "anchor": "13 of those 20 names made their 52wk highs AFTER March 14th.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "BTIG says investors who are bullishly inclined on tech should focus on semiconductor names trading near their 52-week highs rather than the laggards still well off their highs.",
+   "anchor": "we would focus on those names near new highs rather than the laggards.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "In BTIG's historical study, when QQQ opens above its 20- and 50-day moving averages after starting the prior day below them, the five-day forward return has a median of +1.13% and is positive 73% of the time.",
+   "anchor": "positive 73% of the time) but flip negative in the 30-40 day timeframe.",
+   "topic": "QQQ breakout technical setup",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five-day"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "The same BTIG study finds that after the initial positive five-day move, QQQ's returns following this bullish moving-average setup turn negative in the 30 to 40 day window.",
+   "anchor": "positive 73% of the time) but flip negative in the 30-40 day timeframe.",
+   "topic": "QQQ breakout technical setup",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "30-40 day"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "BTIG notes the bullish QQQ moving-average signal does not preclude the index making a new high first, citing 2007, 2011, and 2015 as prior instances where QQQ made a new high before rolling over.",
+   "anchor": "It also doesn't preclude a new high like we saw in '07, '11, and '15 before rolling over.",
+   "topic": "QQQ breakout technical setup",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "QQQ is up about 4% since the moving-average breakout signal and is now less than 1% away from making a new all-time high.",
+   "anchor": "QQQ is up ~4% since that signal and is now less than 1% from a new high.",
+   "topic": "QQQ breakout technical setup",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "BTIG flags that a QQQ breakout to new highs may be hard to sustain given that less than 60% of NDX constituents are currently trading above their 200-day moving average.",
+   "anchor": "especially given less than 60% of NDX names are above their 200 DMA.",
+   "topic": "QQQ breakout technical setup",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "The S&P 500 has recorded five straight trading days with more stocks making new 52-week lows than new highs, even as the index itself has rallied back to near all-time highs.",
+   "anchor": "SPX has had five straight days with more 52wk lows than highs even as the index has rallied back near all-time highs.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "Over the last month, the S&P 500 is up 1.2% even though 9 of the index's 11 sectors are negative over that period.",
+   "anchor": "Over the last month, SPX is +1.2% with 9 of 11 sectors negative.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last month"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "Bank stocks are lagging badly: the BKX bank index is off more than 2% and more than 10% below its 30-day high, while the SPX is within 1% of a 52-week high, a divergence BTIG last saw in January 2000.",
+   "anchor": "BKX off more than 2%, more than -10% below a 30-day high, while SPX within 1% of a 52wk high.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "Despite the recent drop in crude oil prices, BTIG says the 10-year Treasury yield does not show a topping technical structure.",
+   "anchor": "Despite the drop in crude, 10yr yields don't look like a topping structure.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Super-ficial Rally",
+   "claim": "BTIG's bullish read on 10-year Treasury yields as consolidating within an uptrend would change on a break below approximately 4.92%.",
+   "anchor": "That could change with a break under ~4.92%, but for now they look more like a consolidation within an uptrend.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 14,
+  "matched": 14,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
