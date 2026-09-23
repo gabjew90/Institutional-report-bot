@@ -1,0 +1,279 @@
+{
+ "brief": "TME argues the recent market rotation redistributed risk rather than diversifying it: retail crowding into the Magnificent Seven, institutional crowding into AI infrastructure, and defensive flows into dividend shares all share exposure to the cost of capital. From September 10 to 16, retail sold technology funds and most individual stocks but bought about $1.6 billion of Magnificent Seven stocks, implying roughly $2.2 billion of selling outside that group. GS reads falling SPX breadth (share of members above their 50-day average) beneath a resilient headline index as a correction, not yet a structural breakdown. GS/JPM data show retail favors Nvidia and large platforms while prime brokerage positioning concentrates further down the AI supply chain, near crowding extremes in analog semis, data centers and defense. Mag7 hyperscaler capex reached about $165 billion in Q2, up roughly 89% year over year, with estimates near $733 billion for 2026 and above $1 trillion by 2028. BTIG cites chip-equipment lead times stretching to 10 months and lasers to 40 months. Because AI buildout is increasingly debt-financed, TME warns rising rates could hit AI and dividend shares together, and proposes a 10-year payer spread or TLT put spread sized as insurance, not a directional short.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "Retail investors sold technology funds and most individual stocks but bought about $1.6 billion of Magnificent Seven stocks between September 10 and 16, 2026.",
+   "anchor": "sold technology funds and most individual stocks but bought around $1.6 billion of Magnificent Seven stocks",
+   "topic": "equity breadth cycle-top signal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "GS reports the share of S&P 500 members trading above their 50-day moving average has fallen sharply even as the headline index remains resilient.",
+   "anchor": "share of index members above their 50-day moving average has fallen sharply even as the headline index remains resilient",
+   "topic": "equity breadth cycle-top signal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "GS characterizes the current equity weakness beneath the surface as a correction, not yet a structural breakdown.",
+   "anchor": "This is a correction beneath the surface, not yet a structural breakdown.",
+   "topic": "equity breadth cycle-top signal",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "GS and JPM data show retail investors favor Nvidia and the largest AI platforms while prime brokerage positioning concentrates farther down the AI supply chain.",
+   "anchor": "Retail favors Nvidia and the largest platforms. Prime brokerage positioning is concentrated farther down the AI supply chain.",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "Analog semiconductors, broad AI, data centers and defense sectors are near the top of their historical positioning crowding ranges.",
+   "anchor": "Analog semiconductors, broad AI, data centers and defense are all close to the top of their historical crowding ranges.",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "The Magnificent Seven sits much lower than analog semiconductors, data centers and defense in historical crowding rankings.",
+   "anchor": "The Magnificent Seven, by contrast, sits much lower.",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "Amazon, Alphabet, Meta and Microsoft spent about $165 billion on capital expenditure in the second quarter of 2026, up roughly 89% from a year earlier.",
+   "anchor": "Amazon, Alphabet, Meta and Microsoft spent around $165 billion in the second quarter, up approximately 89% from a year earlier.",
+   "topic": "Hyperscaler datacenter capex",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "Research estimates put combined 2026 capital spending by Amazon, Alphabet, Meta and Microsoft near $733 billion.",
+   "anchor": "Research estimates put their combined spending near $733 billion in 2026",
+   "topic": "Hyperscaler datacenter capex",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "Research estimates put combined capital spending by Amazon, Alphabet, Meta and Microsoft above $1 trillion by 2028.",
+   "anchor": "Research estimates put their combined spending near $733 billion in 2026 and above $1 trillion by 2028.",
+   "topic": "Hyperscaler datacenter capex",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "BTIG reports some AI chip-equipment delivery times have risen from about four months to ten months.",
+   "anchor": "BTIG reports that some chip-equipment delivery times have risen from around four months to ten",
+   "topic": "Hyperscaler datacenter capex",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "BTIG reports certain laser components used in AI infrastructure can take as long as 40 months to deliver.",
+   "anchor": "certain laser components can take as long as 40 months.",
+   "topic": "Hyperscaler datacenter capex",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "Semiconductors have gained about 51% year to date, compared with roughly 10% for the equal-weight S&P 500 and 8% for the Magnificent Seven ETF.",
+   "anchor": "Semiconductors have gained around 51% this year, compared with approximately 10% for the equal-weight S&P 500 and 8% for the Magnificent Seven ETF.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "The equity rotation has also reached dividend funds, utilities and consumer staples.",
+   "anchor": "The rotation has also reached dividend funds, utilities and consumer staples.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "Utilities have already weakened as the 10-year Treasury yield approached 5%, while diversified dividend shares have remained comparatively stronger.",
+   "anchor": "Utilities have already weakened as the 10-year Treasury yield approached 5%, although diversified dividend shares have remained stronger.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "The four largest technology issuers have already borrowed more in debt markets in 2026 than during all of 2025.",
+   "anchor": "The four largest technology issuers have already borrowed more in 2026 than during all of 2025",
+   "topic": "AI buildout debt financing risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "TME frames the institutional expression of its rate hedge as a payer spread on 10-year Treasury rates.",
+   "anchor": "The institutional expression is a payer spread on 10-year rates.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "TME recommends a defined-risk put spread on TLT as the listed-market version of the rate hedge, sized as portfolio insurance rather than an open-ended directional short.",
+   "anchor": "The listed-market version is a defined-risk put spread on TLT. Size either as portfolio insurance, not as an open-ended directional short.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "target",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Everyone Thinks They\u2019re Diversified. They\u2019re All Long The Same Trade",
+   "claim": "TME notes long-term Treasury yields have already moved sharply higher and the MOVE index has begun to reprice, though Treasury volatility remains below its 2026 peak.",
+   "anchor": "long-term yields have already moved sharply higher and MOVE has begun to reprice. Yet Treasury volatility remains below its 2026 peak.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-22/17300__everyone-thinks-they-re-diversified-they-re-all-long-the-sam.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 18,
+  "matched": 18,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
