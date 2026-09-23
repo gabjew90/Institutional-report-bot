@@ -592,3 +592,19 @@ McGregor TFR, 1982 and current SPR barrel levels, total money-market fund
 assets) and all came back accurate, in the SPR/money-market cases matching
 the real reported figures almost exactly. Full reasoning in
 `pulse-data/ask-qc/2026-09-21.claude.md`.
+
+## 2026-09-22
+
+no findings — 17/18 CLEAN, 1 CONCERN (20:19:25, bulch: "how long till the
+market opens" answered as one line of prose instead of arrow bullets — mild,
+already-precedented format_adherence gap, not filed as new material). Not
+triaged per Step 3 since it has no FAIL dimension; full reasoning in
+`pulse-data/ask-qc/2026-09-22.claude.md`.
+
+Worth a maintainer look even without a FAIL: `lookup_market_price` fired on
+stray non-ticker capitalized chat words twice more today (`LINE`/`CTE`/`SV`
+at 14:18:27, `LINE`/`DRIP`/`MY`/`EFDHD` at 15:53:04), both `status=ok` and
+both unused in the shipped answer. Same shape first flagged 2026-09-19 and
+2026-09-20 — `LINE` specifically has now misfired on three separate days.
+No wrong answer has resulted yet, but it's a recurring, identified,
+still-unfixed cost/efficiency issue.

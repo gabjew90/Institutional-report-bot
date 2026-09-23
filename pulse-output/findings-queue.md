@@ -910,3 +910,68 @@ Not filing a fresh queue item for the staleness itself, per the
   traced to a specific code path today; worth a follow-up before citing
   `theme_coverage` bank-counts for anything more precise than roster
   membership.
+
+## 2026-09-23 — headless QC on 2026-09-23T14-08-33Z
+
+- **deterministic-fixable** — `FINAL_GATE_HARD_KINDS`
+  (`scripts/pulse_driver.py:74`) cannot block on release-figure errors
+  at all: it whitelists a kind literally named `"released-figure-mismatch"`,
+  which `scripts/pulse_draft_validate.py` does not emit and has never
+  emitted under that name (`grep -rn "released-figure-mismatch"` across
+  `scripts/`, `docs/`, `ai_analysis/` returns exactly the one whitelist
+  line). The validator instead emits `"released-actual-missing"` and
+  `"unreconciled-release-figure"` — neither is in the whitelist.
+  Verified today's concrete cost: `pulse-output/lint/2026-09-23T14-08-33Z.final-validation.json`
+  (committed, produced by the live STEP 5.75 run) records `hard_count:
+  1, exit_code: 3` — a real `released-actual-missing` hard violation
+  (the PPI-substring bug: "Shipping through the Strait of Hormuz"
+  matches `"PPI" in "SHIPPING"`) plus a second hard
+  `unreconciled-release-figure` instance on the PCE 2.5% figure — yet
+  the driver trail logged `final_validate: CONTINUE — "no
+  EDIT/SCRUB-introduced hard violations"` at 14:33:43 and the pulse
+  proceeded to commit. Independently reproduced: running
+  `pulse_draft_validate.py` directly on the committed DRAFT against the
+  committed context reproduces `exit_code=4` (soft-only), matching the
+  live `draft_validate` gate's logged decision exactly, confirming the
+  divergence is specifically at the STEP 5.75 gate and not a
+  context-mismatch artifact of re-running after the fact. STEP 7's
+  self-review (same date) independently diagnosed the PPI-substring
+  false positive and proposed a word-boundary regex fix for
+  `_EVENT_KEYWORDS` — correct, but insufficient on its own: fixing the
+  false-positive trigger does nothing for the gate's inability to act
+  on a *true* release-figure error introduced by EDIT, which is the
+  exact failure mode STEP 5.75 was built to close
+  (`docs/superpowers/routines/synthesis-routine.md:1655-1657` calls
+  EDIT "the highest fact-risk operation in the pipeline"). No other
+  stage backstops this: `pulse_lint.py` (STEP 5.7/SCRUB) checks a
+  disjoint kind set (`section-length`, `slot-lean-overlap`,
+  `slot-stat-overlap`, theme-coverage kinds) and never touches
+  release-figure claims. Fix: apply STEP 7's word-boundary fix in
+  `pulse_draft_validate.py`, AND separately replace
+  `"released-figure-mismatch"` with `"released-actual-missing"` and
+  `"unreconciled-release-figure"` in `FINAL_GATE_HARD_KINDS`
+  (`scripts/pulse_driver.py:74`). The two fixes are independent; either
+  alone leaves a gap. Also worth a one-time full audit of
+  `FINAL_GATE_HARD_KINDS` against every kind `pulse_draft_validate.py`
+  currently emits — this review only checked the release-figure
+  category because it's what fired today, and the same drift could
+  exist elsewhere in that hardcoded set.
+- **prompt-session (escalating — third consecutive run, unactioned)**
+  — the EDIT bank-citation-cap mechanism first flagged in the 09-21 and
+  09-22 entries above recurred today: DRAFT→final named-house mentions
+  dropped 42→30, nine houses removed entirely, and the MAIN EVENT's
+  named bank-vs-bank debate (Goldman/UBS/Morgan Stanley vs. TS
+  Lombard/WisdomTree in DRAFT) shipped with exactly one named house.
+  Independently confirmed the cap is still live and unchanged at
+  `ai_analysis/prompts.py:1523` and `:1805` ("at most 3 distinct bank
+  names per theme body... Pick the 2-3 banks"). Sharper than the prior
+  two entries on one point: the cap's own text specifies a floor of 2
+  as well as a ceiling of 3 ("pick the 2-3"), so a theme shipping with
+  exactly one named house is EDIT under-complying with its own
+  instruction, not the cap working as designed — cutting to 1 was
+  never licensed by this rule. STEP 7's self-review for today did not
+  reference the 09-21/09-22 diagnosis and re-derived the symptom from
+  scratch, proposing a new attribution-delta detection gate instead of
+  noting the root cause was already queued. This is now three straight
+  occurrences (09-21, 09-22, 09-23) with no session action recorded.
+  Recommend prioritizing this over newer, lower-frequency queue entries.
