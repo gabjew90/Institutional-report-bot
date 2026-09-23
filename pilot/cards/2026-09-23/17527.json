@@ -1,0 +1,708 @@
+{
+ "brief": "JPM's afternoon briefing centers on a Financials selloff (XLF -2%) against a continuing AI/semis rally (SOXX +2.4%, DRAM +3.3%), both attributed to the return of the post-Meta Muse +Semis/-AI Vulnerable trade. Financials specialist O'Dwyer argues there is no clean fundamental reason for the bank move: the narrative that Muse/agentic AI threatens bank funding economics doesn't hold, since Muse itself is seen as untrustworthy; instead, consensus names (C, MS, GS, USB) dominating volume while regionals and LAZ/JEF outperform reads as a positioning unwind, not a re-rating, so he wants to fade the selloff, favoring MS, PNC, FITB. Trading co-head Adler frames Muse as agents superseding chatbots, favoring META/GOOGL/AAPL on trust, reducing reliance on frontier chips (a headwind for neoclouds), and broadening the AI trade toward CPU/memory/storage away from GPUs, while turning cautious on frontier-model economics near RSI. Oil fell 1.2% despite Iran's conditional offer to reopen the Strait within seven days and Rubio's 60-70% flow comment, since Trump reiterated a peace deal may wait until after the midterms. Fedspeak (Barkin, echoes of Warsh) raises hike risk. JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, keeping +Tech/-RTY and a Latam long.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Fed's Barkin said inflation risks are outweighing employment risks and that temporary supply shocks are translating into core inflation.",
+   "anchor": "suggesting inflation risks are outweighing employment risks and seeing signs that temporary \nsupply shocks are translating into core inflation.",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said Fed's Williams's Sept 22 speech focused on the reserve framework and regulation rather than the policy outlook.",
+   "anchor": "Not much from Williams, as his speech today \nwas largely on the reserve framework and regulation.",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said Friday/Sunday Fedspeak echoed Warsh's hawkish press conference, raising the risk of an additional Fed rate hike relative to forecasts.",
+   "anchor": "repeating some of the key \npoints from Warsh\u2019s press conference which increases the risk of an additional rate hike relative \nto forecasts.",
+   "topic": "Fed rate hike outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Iran made a conditional offer to reopen the Strait of Hormuz within seven days.",
+   "anchor": "Iran\u2019s conditional offer to open the Strait \nwithin 7 days",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Secretary Rubio said 60-70% of oil flow is coming out, cited by JPM as supportive of the constructive Iran narrative.",
+   "anchor": "Rubio saying 60-70% of oil flow is coming out",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Trump reiterated that a US-Iran peace deal may not come until after the midterms.",
+   "anchor": "Trump again reiterated a \npossible peace deal after midterms.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said oil prices have stabilized below $100 amid recent diplomatic events, though the situation remains fragile.",
+   "anchor": "On balance, it seems that oil prices have stabilized below $100 amid recent \ndiplomatic events, but the situation remains fragile.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Several Republican lawmakers and candidates intensified calls for the Trump administration to restrict US diesel exports to control retail diesel prices.",
+   "anchor": "several Republican lawmakers and candidates intensified calls today for the \nTrump administration to restrict US diesel exports to control retail diesel prices.",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "O'Dwyer said there is very little in the Muse offering to suggest it disrupts the unit economics of the banking system.",
+   "anchor": "There's very little in the Muse offering to suggest it disrupts the unit economics of the \nbanking system",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "O'Dwyer said the more consensual bank names (C, MS, GS, USB) are dominating selling volume in the selloff.",
+   "anchor": "the more consensual names (C, MS, \nGS, USB) are dominating volume",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [
+    "C",
+    "MS",
+    "GS",
+    "USB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "O'Dwyer said regional banks and names like LAZ and JEF are relative outperformers versus the consensual bank names being sold.",
+   "anchor": "the regionals and the likes of LAZ and JEF are relative \noutperformers.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [
+    "LAZ",
+    "JEF"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "O'Dwyer said the bank selloff reads as a positioning unwind signature, not a fundamental re-rating.",
+   "anchor": "That's a positioning unwind signature, not a fundamental re-rating.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "O'Dwyer said he wants to fade the move lower in banks and wealth management, sizing patiently given large-cap banks' YTD outperformance.",
+   "anchor": "I want to fade the move lower in banks and WM.",
+   "topic": "hedge fund positioning",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "O'Dwyer said his favored bank names remain MS, PNC and FITB.",
+   "anchor": "favored names remain MS, PNC and FITB.",
+   "topic": "hedge fund positioning",
+   "status": "target",
+   "instruments": [
+    "MS",
+    "PNC",
+    "FITB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "O'Dwyer said banks, LPLA and SCHW are being offered (sold) so aggressively that clients are flooding him with questions about it.",
+   "anchor": "banks, LPLA and SCHW are being \noffered so aggressively.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [
+    "LPLA",
+    "SCHW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM maintains a Tactically Cautious/Neutral equity view into the Fed, citing the inability of energy prices to stabilize without reverting lower.",
+   "anchor": "TACTICALLY CAUTIOUS / NEUTRAL based on (i) the inability for energy prices to stabilize \nwithout reversion lower",
+   "topic": "US equity market outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM cited elevated bond volatility with the 10-year yield oscillating around 5% as a reason for its cautious equity stance.",
+   "anchor": "elevated bond vol with 10Y oscillating around 5%",
+   "topic": "US equity market outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said it would turn bullish on lower oil and bond yields, if the bond market coalesces around Warshspeak and the Fed's commitment to contain inflation expectations.",
+   "anchor": "Lower oil / bond yields. The bond market may coalesce \naround Warshspeak and that the Fed\u2019s commitment is enough to contain inflation expectations",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said it would turn bearish on signs the consumer and economy are breaking or the AI theme has ended, likely triggered by a capex cut.",
+   "anchor": "Signs that the Consumer and economy are breaking or that \nthe AI theme has ended, which would likely be initiated by a capex cut.",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said a Middle East escalation could push US equities down as much as 2-3% before finding a level.",
+   "anchor": "an escalation could push Equities lower, perhaps as much \nas 2-3% before finding a level.",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's Monetization Menu (Sep 21) maintains a core +Tech vs. -RTY view, expressed via Mag7, Memory, and Semis.",
+   "anchor": "We maintain our core view of +Tech vs. -RTY and that Tech \nview is a mix of Mag7, Memory, and Semis",
+   "topic": "US equity market outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said it would consider keeping the +Tech vs. -RTY pair dollar-neutral or market-neutral.",
+   "anchor": "would consider keeping the pair $-neutral or \nmarket neutral.",
+   "topic": "US equity market outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said AI fear/uncertainty may push the market into non-AI plays, putting Latam in focus as a long play.",
+   "anchor": "the fear / uncertainty around AI may push the market into non-AI \nplays which puts Latam in focus as a long play",
+   "topic": "US equity market outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said it likes Brazil/Latam as a long play irrespective of one's views on AI.",
+   "anchor": "we like Brazil / Latam irrespective of one\u2019s views \non AI.",
+   "topic": "US equity market outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's Sep 14 Monetization Menu said it would be a dip buyer of the AI Pullback story, viewing it as unlikely to materialize into revenue declines or margin compression.",
+   "anchor": "we would be dip buyers as we think it is unlikely to materialize into revenue declines / \nmargin compression.",
+   "topic": "US equity market outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's Sep 14 Monetization Menu maintained a preference for MegaCaps/Large-Caps while cautioning against being short RTY into the Fed print.",
+   "anchor": "We \nmaintain our preference for MegaCaps / Large-Caps, though would exercise caution on being \nshort RTY into the Fed print.",
+   "topic": "US equity market outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said the return of the +Semis/-AI Vulnerable trade following the Meta Muse release was the key theme of the Sept 22 session, hitting Financials (XLF -2%).",
+   "anchor": "The return of the +Semis/-AI \nVulnerable trade post Meta Muse release was the key theme of today\u2019s session, particularly in \nFinancials (XLF -2% today).",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "XLF"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "AI leadership continued to carry semis (SOXX +2.4%) and memory (DRAM +3.3%) higher on Sept 22.",
+   "anchor": "the broader AI leadership \ncontinued to carry semis (SOXX +2.4%) and memory (DRAM +3.3%) higher.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said agents are the next logical and commercial evolution beyond chatbots.",
+   "anchor": "Agents were the next logical/commercial evolution for chatbots.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Amazon blocked Meta's Muse to protect its own defensive moat, per Adler.",
+   "anchor": "Amazon (expectedly) blocked Muse to protect \nits defensive moat.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said whoever owns the consumer's AI agent owns the demand funnel.",
+   "anchor": "whoever owns the consumer\u2019s AGENT owns the demand funnel.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said META and GOOGL have the trust-based upper hand versus frontier AI models on agents.",
+   "anchor": "That\u2019s where META and GOOGL have the upper hand vs. the frontier models",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "META",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said that if the agent model plays out, it could be deleterious to GOOGL's search business.",
+   "anchor": "it could be deleterious to GOOGL\u2019s search biz",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said AAPL has the bull case among trust-dependent AI winners because it is who the consumer trusts most and should win with Siri.",
+   "anchor": "This should \nalso be the AAPL bull case because they are who the consumer trusts most and should win with \nSiri.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said the shift toward legacy CPU/non-frontier chipsets could be a modest headwind for the neoclouds.",
+   "anchor": "this could be a modest headwind for the \nneoclouds",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said Meta can now monetize Muse across multiple layers: tiered subscriptions, transaction take rates, and advertising.",
+   "anchor": "Meta can now monetize this in multiple layers. Tiered subscriptions, transaction take rates, \nadvertising.",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said if frontier models are close to RSI, their quality and usefulness will become asymptotic.",
+   "anchor": "If you believe these models are all close to RSI, then \nthe quality/usefulness of the models will be asymptotic.",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "Adler said margins on inference could see a headwind as frontier model usefulness plateaus.",
+   "anchor": "And margins on inference could see a \nheadwind.",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's TMT desk said real money is being put to work on the long side in META today as Muse mania continues.",
+   "anchor": "we are seeing real $ put to work on long side today as \nMuse mania continues.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's TMT desk said the market expects GOOGL to imminently launch a similar agent product ('CC'), driving GOOG higher in sympathy.",
+   "anchor": "I *think* the market is respecting that GOOGL is imminently \nlaunching a similar product (dubbed \"CC\") which is driving the stock in sympathy GOOG.",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's TMT desk said AMZN was the source of funds today amid its battle with META over allowing Muse agents to access its website.",
+   "anchor": "AMZN the source of funds today as they battle META on allowing Muse agents to access \nits website.",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's TMT desk said the market is once again shooting at subscription-based names and price aggregator websites (OTAs etc.) via the Consumer Agent disruption basket JPUXCAIV.",
+   "anchor": "The net/net is the market is once again shooting at subscription based names \nand/or price aggregator websites (OTAs etc)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's consumer desk said TPR's pullback looked like a pair unwind against CPRI, following a WWD article suggesting potential buyers circling CPRI.",
+   "anchor": "our sense was that this was a \npair unwinding against CPRI where there is an article in WWD suggesting potential buyers \ncircling CPRI.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TPR",
+    "CPRI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's consumer desk said PLNT's move today is likely attributable to Muse/subscriptions risk, per a negative external note.",
+   "anchor": "there was a note away which read -ve and Alex called out the \nmove is likely largely attributable to Muse/subscriptions risk.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PLNT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's TMT desk said long-only investors were adding to META and semis/networking names today.",
+   "anchor": "seeing LOs adding to META and \nsemis/networking names.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's TMT desk said long-only investors continue to sell out of AI Vulnerable names and tax-loss candidates such as NFLX.",
+   "anchor": "LOs continue to sell out of AI Vulnerable (and tax loss \ncandidates) i.e. NFLX.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM's TMT desk said COMPUTE names continue to rally regardless of which company owns the underlying model or agent.",
+   "anchor": "COMPUTE names continue to rally regardless of who owns the model/agent.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said its JP1XAIME and JPAICREV compute baskets continued to outperform following outsized gains the prior day.",
+   "anchor": "JP1XAIME and JPAICREV continue to outperform following outsized gains yesterday.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence Afternoon Briefing Sept 22",
+   "claim": "JPM said Ceasefire, Stagflation Short and Consumer Recovery were among the best-performing European baskets today.",
+   "anchor": "Ceasefire, \nStagflation Short and Consumer Recovery were among the best-performing baskets.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 49,
+  "matched": 49,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
