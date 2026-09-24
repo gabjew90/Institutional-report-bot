@@ -12,9 +12,39 @@
    "detail": "DECISION: CONTINUE (us_market_holiday=False)"
   },
   {
-   "step": "VOLUME_WAIT_2",
-   "time": "2026-09-24T14:19:33Z",
-   "detail": "pdf_count=6 < 10; refetch 1 unchanged (dump refreshed 14:14:02Z)"
+   "step": "STEP_2_2_DONE",
+   "time": "2026-09-24T15:39:52Z",
+   "detail": "volume gate exhausted full 9-wait budget over 90 min; pdf_count stayed 6 across 7 distinct bridge dumps (14:14 -> 15:29), so the feed is light rather than lagging; thin-corpus note written; DECISION: CONTINUE (anchors 20/20 matched)"
+  },
+  {
+   "step": "STEP_2_5_PRESS_TIME",
+   "time": "2026-09-24T15:40:30Z",
+   "detail": "clean; snapshot 11 min old, no straddled events"
+  },
+  {
+   "step": "STEP_3_DONE",
+   "time": "2026-09-24T15:40:45Z",
+   "detail": "6 themes, every one single-bank"
+  },
+  {
+   "step": "STEP_3_5_DONE",
+   "time": "2026-09-24T15:41:00Z",
+   "detail": "0 themes reached the 2-bank adjudication floor; no sub-agents dispatched; 0 validated / 0 discarded; DRAFT runs on per-PDF JSON (documented fallback)"
+  },
+  {
+   "step": "STEP_4_5_VALIDATE_DONE",
+   "time": "2026-09-24T15:41:20Z",
+   "detail": "DECISION: CONTINUE -- clean, 0 violations, no re-roll needed"
+  },
+  {
+   "step": "STEP_5A_STITCH_DONE",
+   "time": "2026-09-24T15:41:35Z",
+   "detail": "1 mechanical fix (stripped _DRAFT NOTES); no foreign cashtag or ETF rewrites"
+  },
+  {
+   "step": "STEP_5B_EDIT_DISPATCHED",
+   "time": "2026-09-24T15:42:00Z",
+   "detail": "EDIT sub-agent dispatched with 99386-char assembled prompt, all placeholders resolved"
   }
  ]
 }
