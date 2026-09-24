@@ -1,0 +1,91 @@
+{
+ "brief": "Apollo's chief economist Torsten Slok notes the US Gulf Coast diesel crack spread cleared $100 per barrel in August, a record high against a normal range of $15 to $30. Unlike a gasoline spike, which lands as a one-time tax on discretionary consumer spending, diesel is an intermediate input embedded in the delivered cost of nearly every physical good, including freight, rail, agriculture, and construction. Because of that structural difference, the diesel price rise does not stay in the energy line of the CPI but migrates with a lag into core goods and services, a pass-through the Fed cannot dismiss as transitory. The note's bottom line is that diesel margins are now setting the long end of the yield curve, because diesel crack spreads are an important driver of future core inflation.",
+ "cards": [
+  {
+   "bank": "Apollo",
+   "document": "Apollo Warns The Diesel Shock Is A Core Inflation Shock",
+   "claim": "The US Gulf Coast diesel crack spread cleared $100 per barrel for the first time on record in August, against a normal range of $15 to $30.",
+   "anchor": "The US Gulf Coast diesel crack spread cleared $100/bbl for the first time on record in August against a normal range of $15 to $30.",
+   "topic": "diesel core inflation shock",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Apollo",
+   "document": "Apollo Warns The Diesel Shock Is A Core Inflation Shock",
+   "claim": "Diesel is an intermediate input embedded in the delivered cost of nearly every physical good, from freight and rail to agriculture and construction, unlike a gasoline spike which is a one-time tax on discretionary consumer spending.",
+   "anchor": "diesel is an intermediate input embedded in the delivered cost of nearly every physical good, from freight and rail to agriculture and construction.",
+   "topic": "diesel core inflation shock",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Apollo",
+   "document": "Apollo Warns The Diesel Shock Is A Core Inflation Shock",
+   "claim": "The rise in diesel prices does not stay in the energy line of the CPI but migrates with a lag into core goods and services.",
+   "anchor": "the rise in diesel prices does not stay in the energy line of the CPI but migrates with a lag into core goods and services",
+   "topic": "diesel core inflation shock",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Apollo",
+   "document": "Apollo Warns The Diesel Shock Is A Core Inflation Shock",
+   "claim": "The diesel-driven pass-through into core inflation is exactly the kind of price pressure the Fed cannot dismiss as transitory.",
+   "anchor": "which is exactly the kind of pass-through the Fed cannot dismiss as transitory.",
+   "topic": "diesel core inflation shock",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Apollo",
+   "document": "Apollo Warns The Diesel Shock Is A Core Inflation Shock",
+   "claim": "Diesel margins are now setting the long end of the yield curve because diesel crack spreads are an important driver of future core inflation.",
+   "anchor": "diesel margins are now setting the long end of the curve because diesel crack spreads are an important driver of future core inflation",
+   "topic": "diesel core inflation shock",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-24/17549__apollo-warns-the-diesel-shock-is-a-core-inflation-shock.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 5,
+  "matched": 5,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
