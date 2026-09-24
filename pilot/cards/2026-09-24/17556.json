@@ -1,0 +1,350 @@
+{
+ "brief": "US and European equities sold off Wednesday: SPX -75bps to 7706 (10 of 11 sectors lower), 2Y UST at 4.9%, highest in 2 years. Almost half of SPX constituents now carry a negative beta to the index, an all-time high; this raises momentum-unwind risk even as it adds index-level diversification. Equities historically react once the 10yr posts a 2-standard-deviation move, roughly 50bps over a month or 30bps over two weeks; the 10yr is up ~25bps in 2 weeks and 35bps in the past month, nearing that threshold. Flow: asset managers and hedge funds were each $1bn net sellers, managers selling macro, healthcare, tech and energy against consumer-discretionary demand, funds selling communication services and industrials against tech and healthcare demand. Stock calls: Haleon (Conviction Buy) forecasts +3.3% organic sales growth; ABI reframed its medium-term target to +5-9% organic EBIT growth from +4-8% EBITDA growth; PUIG (Conviction Buy) cites durables growth and a valuation discount to peers; H&M's 3Q EBIT beat consensus by 17% but was in line excluding a one-off SEK900m tariff refund, trading +1% versus a roughly +1.7% street view; Ceres Power (Conviction Buy) reiterated confidence in a new manufacturing licence deal and recognizing revenue in FY26.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "The SPX fell 75bps to 7706 on Wednesday, with 10 of 11 sectors lower.",
+   "anchor": "SPX -75bps to 7706 (10/11 sectors -ve, 2Y UST at 4.9% & highest in 2 yrs, Comm Sv -1.89%, Utils",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "The 2-year UST yield is at 4.9%, the highest level in 2 years.",
+   "anchor": "2Y UST at 4.9% & highest in 2 yrs, Comm Sv -1.89%, Utils",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "The NDX fell 85bps and the RTY fell 177bps on Wednesday.",
+   "anchor": "NDX -85bps to 30,470, RTY -177bps to 2838.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "MSFT rose 2.59% after reports of discounts on corporate Copilot subscriptions.",
+   "anchor": "MSFT + 2.59% after reports of discounts of",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "European equities (SXXP, SX5E) closed lower for the first time this week, down 40bps each.",
+   "anchor": "European equities closed lower for the first time this week (SXXP -40bps, SX5E-40bps) led lower by Insurance (SXIP -1.7%),",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "European equities were led lower by Insurance (-1.7%), Autos (-2%), and Miners (-1.7%).",
+   "anchor": "led lower by Insurance (SXIP -1.7%), Autos (GSXEAUTO -2%) and Miners (GSXEMINE -1.7%).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Almost half of the stocks in the SPX have a negative beta to the index itself, an all-time high by a significant margin.",
+   "anchor": "Almost half of the stocks in the SPX have a negative beta to the index itself (all time high by",
+   "topic": "negative beta stock concentration",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Equities start to react when the 10-year Treasury yield makes a 2-standard-deviation move, equivalent to roughly 50bps over one month or 30bps over two weeks.",
+   "anchor": "Equities start to care when the 10yr has a 2-standard-deviation move which equates to roughly 50 bps over one month or 30 bps over two weeks.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "The 10-year Treasury yield is up approximately 25bps over the past 2 weeks and 35bps over the past month.",
+   "anchor": "Currently the 10yr is now up ~25bps in 2 weeks, and 35bps in the past month.",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Asset managers were $1bn net sellers on the day, with supply in macro products, health care, tech, and energy against small demand in consumer discretionary.",
+   "anchor": "Asset managers finished $1bn better for sale with supply in macro products, health care, tech, and energy vs. small demand in consumer discretionary.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Hedge funds were $1bn net sellers on the day, with supply in communication services, consumer discretionary, and industrials against demand in tech and health care.",
+   "anchor": "Hedge Funds finished $1bn better for sale with supply in communication services, consumer discretionary, and industrials vs. demand in tech, and health care.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Goldman Sachs has Haleon on its Conviction List Buy with a price target of GBP4.5, implying 30% upside at 15x PE.",
+   "anchor": "Haleon (CL BUY / PT GBP4.5 / +30% Upside / 15x PE)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "HLN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Goldman Sachs forecasts Haleon's group organic sales growth at +3.3%, led by Oral Health.",
+   "anchor": "We forecast +3.3% group organic sales growth, which we expect to continue to be led by Oral Health noting the US and Europe Nielsen data.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "HLN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Goldman Sachs expects Haleon's FY26 guidance to be reiterated, with focus on the cold/flu season.",
+   "anchor": "Expect FY26 guidance to be reiterated, with all eyes on cold/flu season.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "HLN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Goldman Sachs rates ABI Buy with a price target of EUR86, implying 30% upside.",
+   "anchor": "ABI (Buy / PT EUR86 / 30% Upside / CMD takes):",
+   "topic": "ABI capital markets day outlook",
+   "status": "target",
+   "instruments": [
+    "BUD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "ABI reframed its medium-term outlook to +5% to +9% organic EBIT growth, from a prior +4% to +8% organic EBITDA growth target.",
+   "anchor": "They re-framed the medium-term outlook to +5% to +9% organic EBIT growth from +4% to +8% organic EBITDA growth.",
+   "topic": "ABI capital markets day outlook",
+   "status": "target",
+   "instruments": [
+    "BUD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "medium-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Goldman Sachs has PUIG on its Conviction List Buy with a price target of EUR21.50, implying 20% upside.",
+   "anchor": "PUIG (CL BUY / PT EUR21.50 / 20% Upside / CMD 28.10/ PE14x vs BEI 19x, Interparfums 21x Loreal 26x)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "PUIG trades at 14x PE versus Beiersdorf at 19x, Interparfums at 21x, and L'Oreal at 26x.",
+   "anchor": "PE14x vs BEI 19x, Interparfums 21x Loreal 26x",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Goldman Sachs' thesis on PUIG centers on durables growth, clear margin upside, and a dislocated valuation.",
+   "anchor": "Durables growth / clear margin upside / dislocated valuation.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "H&M's 3Q sales were in line with Infront consensus at SEK57.2bn, with headline EBIT 17% ahead of consensus.",
+   "anchor": "3Q sales coming in line with Infront consensus at SEK57.2bn with Ebit coming in 17% ahead of cons.",
+   "topic": "H&M tariff-adjusted earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Excluding a one-off SEK900m tariff refund, H&M's 3Q EBIT was in line with consensus rather than ahead.",
+   "anchor": "stripping out the tariff refund of SEK900m which is a one off, Ebit looks very much in line with consensus as well",
+   "topic": "H&M tariff-adjusted earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "H&M's current trading is +1% currency-neutral, slightly below the street's closer-to-+1.7% expectation.",
+   "anchor": "Current trading currency neutral coming in at +1%, which I think is slightly disappointing, street closer to +1.7%.",
+   "topic": "H&M tariff-adjusted earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Goldman Sachs has Ceres Power on its Conviction List Buy with a price target of GBP9.15, implying 100% upside.",
+   "anchor": "Ceres Power (CL BUY / PT GBP9.15 / Upside 100%):",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Blekos - Marketcolour + Haleon / H&M / ABI / Puig / Ceres 24 Sep 2026",
+   "claim": "Ceres Power management is confident in securing a new manufacturing licence agreement and recognizing associated revenue during FY26.",
+   "anchor": "management reiterated that it remains confident not only in signing a new partnership but also in recognising associated revenue during FY26.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-24/17556__gs-blekos-marketcolour-haleon-h-m-abi-puig-ceres-24-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 24,
+  "matched": 24,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 13,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
