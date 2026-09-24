@@ -608,3 +608,27 @@ both unused in the shipped answer. Same shape first flagged 2026-09-19 and
 2026-09-20 — `LINE` specifically has now misfired on three separate days.
 No wrong answer has resulted yet, but it's a recurring, identified,
 still-unfixed cost/efficiency issue.
+
+## 2026-09-23
+
+no findings — 20/20 graded, 19 CLEAN, 1 INFRA, 0 CONCERN. The INFRA turn
+(13:37:25, bulch: "what's abe glw play") is a clean four-retry
+`PROHIBITED_CONTENT` hard-filter block with zero model output — declined,
+not fabricated, per ground rule 3. Full reasoning in
+`pulse-data/ask-qc/2026-09-23.claude.md`.
+
+The figure-provenance guard visibly earned its keep twice: stripped an
+uncited "10-year hit 6% in 2000-2001" historical aside from a 10yr-yield
+macro answer (18:44:03) and stripped an uncited "$6.66 EPS / $96.76B
+revenue" consensus + a trade-timing line from a Costco-earnings answer
+(19:58:59) before either reached the room. One possible over-strip noted
+for awareness, not filed: an SPX "~17.2% face-rip from ~7,680" line
+(18:45:32) was stripped even though a `lookup_market_price` SPX call had
+just run in the same turn, so the figure may have been tool-backed after
+all — no wrong content shipped either way, so not actionable as-is.
+
+`LINE` misfired again — now a `LINE`/`GF` stray-symbol
+`lookup_market_price` call at 18:14:34 with zero relation to the question
+(pure banter, no ticker mentioned) and zero impact on the shipped answer.
+This is at least the fifth sighting of the `LINE` shape across
+2026-09-19/20/22/23; still unfixed, still harmless so far.

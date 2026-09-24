@@ -975,3 +975,70 @@ Not filing a fresh queue item for the staleness itself, per the
   noting the root cause was already queued. This is now three straight
   occurrences (09-21, 09-22, 09-23) with no session action recorded.
   Recommend prioritizing this over newer, lower-frequency queue entries.
+
+## 2026-09-24 — headless QC on 2026-09-24T14-08-08Z
+
+- **deterministic-fixable (recurring, escalating — 2nd instance, unactioned)**
+  — `_EVENT_KEYWORDS` substring matching in `_released_event_rows`
+  (`scripts/pulse_draft_validate.py:571-575`, matched at lines 612-613
+  and 648-667 via bare `if kw in name`) fired again today, this time on
+  `"GDP"`. Today's corpus carries a JPMorgan data point `metric:
+  "Median OECD sovereign net-debt to GDP"`, `figure_status:
+  "released"`, `figure: "55.5%"` (confirmed directly in
+  `pulse-context/latest.json`'s `analyses_json`) — an unrelated
+  debt-to-GDP ratio, not the GDP growth release the economic calendar
+  still lists `STILL UPCOMING`. The validator records GDP as already
+  printed with `actual=55.5`, which would hard-fail
+  `released-actual-missing` on any draft mention of "GDP" lacking that
+  number. Reader-facing cost, directly diffed: yesterday's pulse
+  (2026-09-23) wrote "the GDP report" plainly; today's writes around
+  the collision with "the quarterly growth reading" / "The growth and
+  inflation reports" — a named metric CLAUDE.md says to keep and gloss,
+  paraphrased away instead. This is the same bug class the 2026-09-23
+  QC entry already flagged for `"PPI"` matching inside `"SHIPPING"` and
+  proposed a word-boundary regex fix for — confirmed via `git log -p`
+  on `scripts/pulse_draft_validate.py` that no commit since has touched
+  `_EVENT_KEYWORDS`, so the fix was never applied and a second, different
+  keyword has now hit the same bug. Recommend applying the word-boundary
+  fix immediately (it already generalizes across both instances) rather
+  than patching keyword-by-keyword as each one fires.
+- **deterministic-fixable** — the corpus-volume gate has no early-exit
+  on a stable count: today it re-dumped 6 times (14:14/29/44/59,
+  15:14/29Z) with `pdf_count` static at 6 throughout, per the gate's own
+  handoff, before conceding at 15:40Z (full ~90-minute budget spent) and
+  pushing earliest possible publish to ~11:39 ET against a 10:00 ET
+  slot. Independently checked whether the wait bought corpus depth: the
+  post-publish context dump (`pulse-context/latest.json`, dumped
+  2026-09-24T18:44Z) shows the corpus for the same publish date grew
+  from 6 to 29 PDFs — the extra 23 (7 more Goldman notes, 6 more Market
+  Ear pieces, Bloomberg, BTIG, Apollo, Rabobank) hadn't landed yet even
+  at the gate's 15:40Z giveup point, so no feasible wait-budget extension
+  would have captured them. The 90-minute spend was pure latency cost on
+  a pre-open product with zero corpus upside available in that window.
+  Recommend an early-exit rule (e.g., N consecutive identical re-dumps
+  ends the wait) rather than a fixed timer.
+- **observation** — STEP 7's self-review (same date) asserted "Both
+  JPMorgan desks flag it" (the WATCH-section Trump-Xi summit bullet) is
+  "contradicted by the discovery audit," which puts Deutsche Bank on the
+  `US-China trade truce extension` near-miss cluster. Checked directly
+  against both underlying JPMorgan PDFs' JSON: *JPM US Market
+  Intelligence Afternoon Briefing Sep 23* and *JPM International Market
+  Intelligence Morning Briefing* each independently carry a
+  `geopolitical` entry reading "Trump-Xi Summit scheduled...Sept 24" —
+  two JPMorgan desks, both flagging the summit. STEP 7 audited the wrong
+  clause of a two-fact bullet (the summit-attendance claim vs. the
+  separately-stated, unattributed truce-extension claim next to it). The
+  pulse's claim is accurate; no pulse-side fix needed. Worth a note for
+  future self-review runs to isolate which specific clause of a compound
+  bullet a cited audit entry actually supports before calling a
+  contradiction.
+- **observation** — STEP 7 also frames the dropped `monetarist revival`
+  (TS Lombard) theme as costing the MAIN EVENT its only counter-case
+  against the hawkish hike-pricing narrative. Read against TS Lombard's
+  own insights, its skepticism is specifically about whether
+  monetary-aggregate targeting and aggressive QT will govern Fed policy —
+  orthogonal to the MAIN EVENT's actual claim (strong PMI data forcing
+  near-term hikes). TS Lombard doesn't take a position on that repricing
+  at all, so "lost counter-case" overstates what was actually lost, even
+  though the underlying corpus-diversity point (dropping the one
+  non-JPMorgan/DB voice in a 3-house day) stands independently.
