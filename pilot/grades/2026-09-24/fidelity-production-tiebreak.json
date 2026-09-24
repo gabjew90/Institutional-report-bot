@@ -1,0 +1,166 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17543__the-rates-move-just-turned-disorderly.txt",
+   "span": "SPX has held up while the inverted 10-year has broken sharply lower... The question now is whether equities can keep shrugging off the speed of this rates move",
+   "why": "Market Ear's own framing is that bonds have broken out while equities have not yet reacted, with 5.2% and 5.5% flagged as levels still ahead \u2014 directly supports 'repricing has further to run' / 'equities have not finished discounting it.'"
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "the hot September PMI was the primary trigger given both hawkish headline surprise and input cost inflation being the largest monthly increase since 2020",
+   "why": "JPMorgan explicitly attributes the input-cost surge (fastest since 2020) to the September PMI survey; matches figure, attribution and 'survey' framing."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "we'll hear from the Fed's Williams, Barkin, Hammack and Paulson",
+   "why": "Both Williams and Paulson are confirmed as scheduled Thursday Fed speakers (also corroborated in 17555, Paulson at 10:10am), supporting the 'Thursday morning' framing."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "yields are moving towards fair value (5.5%), similar episodes have historically been buying opportunities",
+   "why": "Matches JPMorgan's stated 5.5% ten-year fair-value estimate and the claim that past overshoots toward fair value were buying opportunities in equities."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "the 10yr yield...taking it up to a post-2007 high of 5.11%...A weak 5yr auction also didn't help matters...$70bn of notes were sold at 5.03%, +3.1bps above the pre-sale yield",
+   "why": "5.11% is documented everywhere (17530, 17537, 17558) as the 10-year yield, not the five-year. The actual Wednesday 5-year auction (also reported in 17537 with a 3.20bp tail) stopped out at 5.03%, not 5.11%. The sentence misattributes the 10-year print to the 5-year auction it claims 'cleared wide.'",
+   "searched": [
+    "5.11",
+    "five-year auction",
+    "5Y auction"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "PCE (Sep 30, Oct 29), Retail Sales (Sep 16, Oct 15)",
+   "why": "The JPM calendar confirms PCE (inflation) is due Sep 30, and the 5.5% JPM level is separately confirmed (17539), but no source names a companion 'growth' report or an 8:30 AM ET release time for Sep 30 \u2014 that specificity is added, not sourced.",
+   "searched": [
+    "September 30",
+    "8:30 AM",
+    "GDP Sep 30"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "n/a",
+   "why": "No source states or implies that the new hedge is 'the more informative half' of the pair versus the unchanged core position; this comparative judgment isn't attributed to JPMorgan or any bank anywhere in the source set.",
+   "searched": [
+    "more informative",
+    "insurance"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "We maintain our core view of +Tech vs. -RTY and that Tech view is a mix of Mag7, Memory, and Semis",
+   "why": "The long-tech-across-megacap/memory/semis vs. short-small-cap (RTY\u2248IWM) position is faithfully described, but no source gives a 'three to twelve month' holding horizon for this pair \u2014 that duration is invented.",
+   "searched": [
+    "three to twelve month",
+    "3-12 month view"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "We initiated the lower-vol Earnings Vulnerability JPUXERNV Index basket as a hedge versus Semis/AI SMH Equity...Put option on Earnings Vulnerability JPUXERNV Index basket offer a cheaper way to hedge Semis/AI risk into month-end rebalancing",
+   "why": "The put-buying, cheaper-premium, month-end-rebalancing rationale is faithful to JPUXERNV. But JPUXERNV is described only as a lower-vol, ~70%-beta-to-Semis proxy, not as 'companies whose earnings are most exposed to AI agents taking their business' \u2014 that description matches a different named basket in the same document (JPUXCAIV, the Meta-Muse disintermediation names: SHOP/EXPE/CART). The sentence attributes JPUXCAIV's identity to the JPUXERNV trade.",
+   "searched": [
+    "Earnings Vulnerability basket AI agents",
+    "JPUXERNV"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "SHOP (-7%) is getting whacked today...EXPE Equity and CART US Equity getting hit despite partnerships announcements",
+   "why": "JPM's own TMT desk (Heavey) reports single-name hits from the same Muse-disintermediation risk the delta-one desk is hedging, in the same document \u2014 directly supports the claim that the risk is 'already live in single names.'"
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "SHOP (-7%) is getting whacked today partially on this tweet...Meta is working on Meta Pay for Muse...EXPE Equity and CART US Equity getting hit despite partnerships announcements...Insurify said it blocked Meta's Muse agent, and insurers outperformed the rest of Financials today",
+   "why": "Every element matches: SHOP -7% on Meta-Pay-in-Muse concern, EXPE/CART sold off despite announced partnerships, insurers blocking Muse outperformed."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17555__gs-armbrust-what-matters-today-agentic-ai-negative-beta-stoc.txt",
+   "span": "META (-2% pre-mkt) is lower after its keynote from Connect last night...new Muse gadget +vr goggles + audio-only smart glasses...META did announce more partnerships with retailers",
+   "why": "Confirms Meta expanded its Muse-linked hardware lineup and retailer partnerships, reported into Thursday's session \u2014 supports the channel-widening claim."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+   "span": "Our views on Cyclicals and RTY are tied to the outcome of the Fed Meeting / Press Conference...would exercise caution on being short RTY into the Fed print",
+   "why": "JPMorgan explicitly names the Fed outcome as the risk to its short-RTY (small-cap) leg."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "Looking forward, a key event today will be the summit between Presidents Trump and Xi",
+   "why": "Bridging/opinion sentence with checkable content ('today's meeting') confirmed as the Trump-Xi summit, consistent with the forecast/trade framing established in adjacent sourced sentences."
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "the main news was US Treasury Secretary Bessent saying they'd agreed to extend last year's trade truce by two months, which will now keep tariffs lower until January 10",
+   "why": "The trade-truce extension, the January 10 date, and the Trump-Xi meeting running today are all confirmed. But the specific claim that a '$FXI summit trade' was 'flagged Tuesday' has no support anywhere in the provided source-text file list (that trade idea only appears in a 2026-09-22 document, which is outside this day's given source set).",
+   "searched": [
+    "FXI",
+    "summit trade",
+    "straddle"
+   ]
+  }
+ ],
+ "faithful": 9,
+ "distorted": 4,
+ "unsupported": 2,
+ "faithful_rate": 0.6,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

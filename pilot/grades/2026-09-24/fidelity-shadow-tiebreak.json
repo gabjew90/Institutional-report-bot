@@ -1,0 +1,183 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "",
+   "why": "The only two Morgan Stanley documents in the sample are 17416 (year-end S&P target, no 'other side' framing of any level) and 17417 (a Fed rate-path deck whose extracted text is entirely blank, page markers only, no body text). No document anywhere in the sample has Morgan Stanley opposing a named level held by another desk.",
+   "searched": [
+    "other side",
+    "Morgan Stanley",
+    "the level",
+    "opposite side"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-text/2026-09-23/17416__weekly-warm-up-classic-mid-cycle.txt",
+   "span": "We maintain our 8,000 year-end S&P 500 target driven by earnings resiliency... We still view 7000-7100 as a tactical downside case should these risks emerge over the next 3-5 weeks",
+   "why": "Morgan Stanley's own doc states the 8,000 year-end target on earnings resiliency and 7000-7100 as the tactical downside case if crude/product-price risk emerges over the next 3-5 weeks, matching figures, framing and timeframe."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt",
+   "span": "with Meta shares up 21% since the launch of Muse 2 weeks ago, vs. the SPX +1%",
+   "why": "Verbatim match on both figures, the timeframe, and the comparison index."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "",
+   "why": "No document in the sample mentions PNC or Fifth Third (FITB) anywhere, in any context, under either their tickers or full names.",
+   "searched": [
+    "PNC",
+    "FITB",
+    "Fifth Third",
+    "PNC Financial"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "Cyclicals mostly bought this week...while Banks were sold with Regionals seeing shorts added",
+   "why": "JPM's hedge-fund flow section states banks were sold outright and regionals saw shorts added this week, while cyclicals broadly were bought \u2014 the 'other way' framing."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "Politico reported that the US was preparing a plan for a 90-day...Energy Secretary Wright said that \"a full blanket ban or zero exports of diesel\" are not being discussed",
+   "why": "Matches the Politico report of a 90-day ban and Wright's denial of any blanket-ban discussion; corroborated in 17537 and 17540 as well."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-text/2026-09-23/17474__super-ficial-rally.txt",
+   "span": "five straight days of more 52wk lows than highs even as the index has rallied back near all-time highs, with SPX +1.2% over the last month while 9 of 11 sectors are negative",
+   "why": "Matches all four figures in the sentence: five sessions, new-lows-beating-highs, record-adjacent index level, +1.2% monthly, and 9 of 11 sectors negative."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "the 10yr bund yield (+9.2bps) at a post-2009 high of 3.55%, whilst the 10yr OAT yield (+15.4bps) hit a post-2008 high of 4.66%...Franco-German 10yr spread up to 110.4bps",
+   "why": "Matches the 110bp spread (widest since the 2012 crisis), the German 3.55% post-2009 high, and the 15.4bp French yield rise, all in the same document."
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "Momentum signals for bond futures...remain in more extreme short territory for OATs vs. Bunds",
+   "why": "JPM's momentum work does show an extreme-short reading for French vs. German bond futures, but the source gives no numeric value anywhere \u2014 the specific '-2.5' figure and the added interpretive clause about 'investors continuing to unwind overweights inside the euro area' appear nowhere in this or any other sampled document.",
+   "searched": [
+    "-2.5",
+    "momentum reading",
+    "OAT Bund -2.5"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "source-text/2026-09-23/17299__globalmarkets-weekly-wrap-up.txt",
+   "span": "Brent reached a four-month high at $110 before retreating",
+   "why": "Brent trading in roughly a $97-110 band this week is well supported across multiple docs (17299, 17525, 17530, 17537, 17550), but no document anywhere establishes a '$75-100 range that held since late May' as the prior baseline \u2014 that comparison is not sourced despite multiple targeted searches.",
+   "searched": [
+    "$75-100",
+    "late May oil range",
+    "75-100 range",
+    "since May Brent"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "",
+   "why": "17265 (New York Life midterms piece) supports the general theme of bipartisan data-center moratoriums, but no document gives a '32 states' count, no document contains a 'the new China' quote about AI, and no document mentions any House bill making data centers pay for grid upgrades.",
+   "searched": [
+    "32 states",
+    "new china",
+    "grid upgrade",
+    "house bill"
+   ]
+  },
+  {
+   "id": "s12",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "",
+   "why": "None of the JPMorgan documents in the sample (17527, 17533, 17537, 17539) mention a debt ceiling or a ratings reassessment of the fiscal outlook. The only debt-ceiling mentions in the whole sample are in an unrelated New York Life midterms piece (17265), not JPMorgan, and don't discuss ratings or Treasuries pressure.",
+   "searched": [
+    "debt ceiling",
+    "rating fiscal",
+    "JPM ratings reassessment"
+   ]
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "AI-related capex has been crowding out other capex, thus containing the growth of overall capex at an aggregate level",
+   "why": "Direct match to JPM's stated explanation for why aggregate capex growth lags cash-flow growth."
+  },
+  {
+   "id": "s14",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "",
+   "why": "No document in the sample mentions hashrate, mining difficulty, or any bitcoin-mining capacity/AI-redirection figures at all.",
+   "searched": [
+    "hashrate",
+    "mining difficulty",
+    "miners bitcoin AI"
+   ]
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "none found",
+   "span": "",
+   "why": "The only bitcoin-momentum reference in the sample is a Glassnode MVRV signal cited in 17550, unrelated to any bank's proprietary momentum score or a '+1.0' reading, and no document attributes the week's rally to an unwind of bearish positions rather than fresh demand.",
+   "searched": [
+    "bitcoin momentum +1.0",
+    "short covering bitcoin",
+    "unwind bearish positions bitcoin"
+   ]
+  }
+ ],
+ "faithful": 7,
+ "distorted": 2,
+ "unsupported": 6,
+ "faithful_rate": 0.467,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

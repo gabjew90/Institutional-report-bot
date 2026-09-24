@@ -1,0 +1,64 @@
+{
+ "metric": 1,
+ "total_cards": 439,
+ "fragmentation_sets": [
+  {
+   "subject": "Franco-German bond spread widening amid France's budget crisis",
+   "labels": [
+    "french budget crisis bond spreads",
+    "germany vs france fiscal trade"
+   ],
+   "cards": 12
+  },
+  {
+   "subject": "Meta Muse's launch/adoption and the consumer agentic-commerce monetization trade it anchors",
+   "labels": [
+    "meta muse app momentum",
+    "ai agentic commerce playbook"
+   ],
+   "cards": 20
+  }
+ ],
+ "fragmented_mass_share": 0.073,
+ "mis_merges": [
+  {
+   "label": "post midterm fiscal trade policy risk",
+   "subjects": [
+    "US-Canada/USMCA trade war escalation and tariff threats",
+    "reconciliation package, debt ceiling and government-funding deadline risk"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Canada/auto-tariff trade-war escalation is fresh, specific and dense enough (5 cards) to stand as its own theme, but buried in a generic fiscal-risk bucket it is more likely to be compressed into a footnote than picked as a distinct brief."
+  },
+  {
+   "label": "hedge fund positioning",
+   "subjects": [
+    "systematic CTA/Asset Manager/Leveraged Fund futures positioning across rates, equities, commodities and FX",
+    "O'Dwyer's read on bank-stock selloff dynamics (relative winners/losers) amid Meta Muse disruption fears"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The bank-selloff color is only 3 cards, too thin to be its own theme, though it is misfiled away from the Meta Muse cluster where it is actually relevant evidence."
+  },
+  {
+   "label": "energy election risk",
+   "subjects": [
+    "oil-driven pressure on the Fed's policy path and bond yields",
+    "midterm-election seasonality as an equity-correction risk"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Each side of the merge is a single card, too thin on its own to constitute a theme regardless of how it's grouped."
+  }
+ ],
+ "pass": false,
+ "notes": "Fragmented mass stays well under the 10% bar, but one mis-merge (fiscal risk vs. trade-war escalation) would plausibly change theme selection, which fails the gate on its own. misc (12 cards) counted as ungrouped overflow only, per definition.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

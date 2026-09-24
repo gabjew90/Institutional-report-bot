@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d10",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Strong US (58.4 vs 55.3) + Eurozone (53.1 vs 51.7) flash PMIs beat expectations, signaling resilient growth that keeps the Fed hiking, therefore a rebound in Brent (+3.86% to $103.08, on US-Iran deal doubts) adds further hawkish pressure, therefore Fed Oct-hike odds rose 53%\u219269% (last night's close)\u219271% (this morning), ECB odds 48%\u219266%, year-end pricing +37bps, therefore a global bond selloff (10yr UST +15.2bp to 5.11% post-2007 high, 5yr above 5% first time since 2007, weak $70bn 5yr auction tailing 3.1bp, Franco-German spread to 110.4bps highest since 2012), therefore equities fell broadly (S&P -0.75%, biggest decline in a month) despite the strong growth data, with only energy gaining.",
+   "brief_chain": "Same causal chain: strong PMIs \u2192 resilient-growth/hawkish-Fed narrative + oil rebound on US-Iran doubts \u2192 Fed/ECB hike-odds repricing \u2192 bond selloff to multi-year/post-2007 highs \u2192 broad equity weakness ex-energy.",
+   "distortions": [
+    {
+     "what": "Brief attributes the 69% October-hike probability to 'Thursday's close'; the source (an early-morning Thursday Sept 24 dispatch) says the rise to 69% happened 'by last night's close,' i.e. Wednesday Sept 23's close. The correctly-labeled 71% morning print is kept.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the probability figures, direction, and conclusion (mounting hawkish repricing) are unchanged; only the day label is off."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Hot Sept composite PMI (5yr high, hawkish surprise, input-cost inflation's largest monthly increase since 2020, level near highest since late 2022) + Iran's conditional-but-unresolved UNGA speech (Brent +4.6% to $103.59) + weak 5yr auction (3.20bp tail) drive 2/5/10/30y yields up 12/16/14/9bp and push 10Y/5Y through 5%, dragging SPX -0.8%, therefore Sinha hedges Semis/AI via a lower-vol Earnings Vulnerability basket on hawkish-Fed risk; separately Meta's Muse dominates TMT desk commentary (disintermediation names lower, SHOP -7% partly on Meta Pay rumor, Insurify blocks Muse); JPM stays Tactically Cautious/Neutral into the Fed with +Tech/-RTY, bull trigger = lower oil/yields, bear trigger = consumer break or AI capex cut; separately Joyce Chang flags midterm themes (House to Dems, Senate toss-up, populist AI backlash).",
+   "brief_chain": "Same chain and same figures (12/16/14/9bp, 3.20bp tail, SPX -0.8%, Sinha hedge rationale, Muse-driven TMT moves, Tactically Cautious/Neutral stance and triggers, Joyce Chang themes).",
+   "distortions": [
+    {
+     "what": "Brief compresses the PMI inflation detail to 'worst input-cost inflation since 2020,' but the source separates a rate-of-change record ('largest monthly increase since 2020') from a level record ('highest level since late 2022') \u2014 the level itself is not actually the worst since 2020.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 either framing reads as elevated/hawkish inflation pressure feeding the same yield-selloff conclusion; no stance, lean or invalidation turns on which superlative window is cited."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Strong Sept flash PMIs + JPM's global capex survey show broad cyclical strength, therefore rising yields toward a 5.5% fair value keep JPM tactically cautious ('Global Narrowing'), therefore JPM plans to buy the dip via a broadening trade (similar yield episodes have been buying opportunities, valuation cushion, possible geopolitical off-ramp), and sovereign debt remains far from a point of no return (sustainable limits estimated at 180-230% of GDP vs the actual 55.5% end-2025 median); within Tech, JPM stays bullish but expects dispersion \u2014 Muse frames a long-Software/short-consumer-inertia pairs trade, and China's AI value chain (Olivia Xu) shows token demand ~60x by 2030E with profit pools shifting downstream, worth $544bn cumulative 2026E-30E, favoring Alibaba/Tencent/Z.AI; regionally JPM stays long US/Asia vs EU, adds EU hedges despite a bullish EU stance since May, and runs EM tactical longs in China H-shares/KWEB/Taiwan; separately, Japan megabanks over regionals, and HF positioning shows quant-led re-grossing with US crowding near a possible trough.",
+   "brief_chain": "Matches the source chain point for point, including the same figures and named baskets/regions.",
+   "distortions": [
+    {
+     "what": "Brief's parenthetical '(180-230% of GDP OECD median)' reads as if 180-230% is itself the OECD median figure; the source states 180-230% is the estimated *range of sustainable debt limits* across 25 OECD countries, while 55.5% is the actual end-2025 median debt level.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying point (actual debt is far below the sustainable limit range) survives either way; no position depends on which number is labeled 'median.'"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d3",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Muse's launch 2 weeks ago drove Meta +21% vs SPX +1%, made it the #1 downloaded free US app with downloads exceeding every other Meta app, therefore JPM ties this to product-market fit, a generous free tier (100M free weekly tokens vs paid Grok Bot/Gemini Spark), and Meta's distribution, therefore near-term Meta prioritizes adoption/engagement with monetization beyond heavy-user subs unlikely until at least 2027, therefore opening Muse Connectors to outside developers is the first step toward businesses building agents on Muse, therefore transactions shift toward agent-to-agent interactions, unlocking a take-rate/commission model like advertising (Amazon has already blocked Muse access, but JPM still expects broader ecosystem participation over time); investor caution pre-Connect (on views Muse had launched, Watermelon would follow Connect, and OpenAI would ship a rival agent this week) likely drove Monday's outsized Meta move; JPM expects Connect to cover AI/agent progress, not a Watermelon launch; JPM reiterates Overweight, PT $820 (Dec-27, ~23x 2028E GAAP EPS of $35.44), after its 9/10/26 upgrade.",
+   "brief_chain": "Matches the source chain point for point, correctly using the 23x (PT) multiple rather than the 21x (current-price) multiple that also appears in the source.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "Syz",
+   "source_chain": "Chart-pack reporting several parallel developments: France's OAT-Bund spread topped 100bps for the first time since 2012 (yields near an 18y high), 2026 deficit forecast at 5.4% vs a 5% target, debt at 117% of GDP, with a 2027 target of 5% and a longer-run 3%-by-2029 promise; separately the Fed hiked 25bp to 3.75-4.00% (first since 2023, unanimous, hawkish, 16-of-18 dots pointing to another hike, market pricing 89% odds of a December move), and the 10yr UST hit 5.04%, highest since 2007; separately a Middle East supply shock (Hormuz chokepoint plus Houthi strikes on Saudi's East-West pipeline) pushed Brent toward $110, correlating oil with yields (WTI/10y correlation 0.96); separately AI stocks sold off early in the week on executive calls to slow development, then rebounded as investors judged an industry-wide pause unlikely given competition with China, with Nasdaq/Mag7 outperforming while the S&P493 ended the week down almost 1% (narrower breadth). One page does knit the equity-specific events (AI selloff, oil-driven yield rise, Fed hike) into a short 'three shocks, then a tech-led rebound' narrative, but the wrap as a whole (which also covers Turkey, gold, Bitcoin, the Clarity Act, hyperscaler capex, OpenAI's valuation, UK devolution, etc.) has no single connecting thesis.",
+   "brief_chain": "Reports the same four developments (France fiscal, Fed hike, Middle East supply shock, AI selloff/rebound) with the same figures, and characterizes the note as reporting parallel developments without one connecting thesis.",
+   "distortions": [
+    {
+     "what": "Brief states the note 'does not argue a single connecting thesis between them'; one page of the source does connect three of the four items (AI selloff, oil-driven yield rise, Fed hike) into a short narrative ('US equities absorbed three separate shocks ... before technology led the rebound'), though the France item and the dozens of other unrelated charts remain unconnected.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is interpretive framing about the document's structure, not a claim about direction, a lean, conviction, or a figure's status; every individual fact is reported faithfully regardless."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 4,
+ "audited": 5,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

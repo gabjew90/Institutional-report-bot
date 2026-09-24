@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-23/17416__weekly-warm-up-classic-mid-cycle.txt",
+ "source_span": "the peak in valuation for the S&P coincided with the 10-year yield's breach of 4.50%, the threshold we have long pointed to as the level at which rate sensitivity increases meaningfully for stocks",
+ "source_chain": "10-year yield breached 4.50% (back in spring/by May) therefore the S&P's forward multiple compressed to cycle lows therefore mid-teens EPS growth offset that compression, keeping index damage contained and the regime 'classic mid-cycle,' not a breakdown; going forward the swing factor is oil, not the yield level itself ('crude remains the swing factor in the near-term') \u2014 another leg higher in crude/product prices is what would push yields/vol up further and the S&P down to a 7000-7100 tactical case, while the 8,000 year-end target stands even in that scenario. Note published Sept 21, before the Sept 23 yield spike, and never references a 5.11% print.",
+ "pulse_chain": "Hot flash PMI therefore yields spike across the curve and the 10-year closes at 5.11% therefore the desks split on whether this level 'breaks stocks or gets bought' therefore Morgan Stanley, invoking its 4.50% rate-sensitivity threshold and negative stock/yield correlation, takes 'the other side' of JPMorgan's buy-the-dip call \u2014 implying the yield level itself is what threatens equities now, with 7000-7100 as the downside if oil climbs further.",
+ "preserved": false,
+ "why": "Morgan Stanley's note (written Sept 21, before the Sept 23 spike, and never mentioning 5.11%) argues the 4.50% breach already happened months ago and earnings growth has since absorbed the damage with an intact bullish 8,000 target, and names oil \u2014 not the yield level \u2014 as the live forward risk, so casting MS as the bear counterweight arguing 'this yield level breaks stocks' is a mechanism the note does not make.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

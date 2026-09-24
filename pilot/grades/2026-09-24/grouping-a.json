@@ -1,0 +1,55 @@
+{
+ "metric": 1,
+ "total_cards": 222,
+ "fragmentation_sets": [
+  {
+   "subject": "France's fiscal crisis and OAT-Bund spread blowout",
+   "labels": [
+    "french budget crisis bond spreads",
+    "germany vs france fiscal trade"
+   ],
+   "cards": 12
+  },
+  {
+   "subject": "Meta Muse launch and its consumer-AI-agent commerce implications",
+   "labels": [
+    "meta muse app momentum",
+    "ai agentic commerce playbook"
+   ],
+   "cards": 20
+  }
+ ],
+ "fragmented_mass_share": 0.1441,
+ "mis_merges": [
+  {
+   "label": "hedge fund positioning",
+   "subjects": [
+    "systematic flow/positioning data (CTA, Asset Manager, Leveraged Fund, Managed Money futures and duration flows)",
+    "O'Dwyer's call on bank-stock selloff dynamics driven by Muse disruption fears (consensual banks vs. regional-bank outperformance)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "the O'Dwyer bank-selloff thesis is a distinct, timely desk call that ties to the Muse story and could stand as its own brief; buried under a generic 'positioning' label, an editor scanning labels for the day's themes would miss it as a candidate."
+  },
+  {
+   "label": "energy election risk",
+   "subjects": [
+    "oil-driven pressure on yields and bond volatility",
+    "midterm-election seasonality correction risk for equities"
+   ],
+   "would_change_theme_selection": false,
+   "why": "only 2 cards and both points are already covered more substantively under the oil/yields and midterm-election labels, so no theme would have been picked or missed because of this merge."
+  }
+ ],
+ "pass": false,
+ "notes": "The header states 439 cards for the day but only 222 are enumerated in this input; all counts above are computed from the 222 visible cards. misc/overflow holds 12 cards (5.4% of total), correctly excluded from mis-merge judgment per the frozen rule. Minor non-fragmenting overlap: the JPM long-Brazil/Latam call appears once under 'us equity market outlook' and once (as a hedge framing) under 'em monetization trade ideas' \u2014 too small and the surrounding content too distinct to count as a fragmentation set.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,184 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": null,
+   "why": "No source document mentions Morgan Stanley taking a contrary position on 'the level.' MS's own report (17416) states a target/downside case but never frames it as opposing another bank's level, and no other source has a comparable S&P level for MS to fade.",
+   "searched": [
+    "other side",
+    "take the other side",
+    "the level"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17416__weekly-warm-up-classic-mid-cycle.txt",
+   "span": "We maintain our 8,000 year-end S&P 500 target driven by earnings resiliency... We still view 7000-7100 as a tactical downside case should these risks emerge over the next 3-5 weeks",
+   "why": "Morgan Stanley Research states the 8,000 year-end target and 7000-7100 tactical downside case over the next 3-5 weeks if crude/refined product prices (oil) rise further \u2014 matches exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt",
+   "span": "Meta shares up 21% since the launch of Muse 2 weeks ago, vs. the SPX +1%.",
+   "why": "JPMorgan's Meta note (Doug Anmuth) states the exact figures: +21% for Meta since Muse's launch two weeks prior vs. +1% for SPX."
+  },
+  {
+   "id": "s4",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": null,
+   "why": "No source document mentions PNC or Fifth Third (FITB), nor any desk recommendation to 'buy the drop' in bank names alongside MS. The only bank-flow content found (17539) is a hedge-fund positioning summary with no named stock picks.",
+   "searched": [
+    "PNC",
+    "FITB",
+    "Fifth Third",
+    "buy the drop / buy the dip"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "Cyclicals mostly bought this week (Energy led via short covering, Cons Disc/Industrials also bought), while Banks were sold with Regionals seeing shorts added.",
+   "why": "JPM's hedge-fund (HF) prime-brokerage flow summary this week: banks sold outright, regionals had shorts added \u2014 matches the sentence's factual content."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "US Energy Secretary Wright said that \"a full blanket ban or zero exports of diesel\" are not being discussed.",
+   "why": "DB's Reid note confirms both the Politico report of a 90-day diesel export ban plan and Wright's denial of any blanket ban being discussed."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt",
+   "span": "five straight days of more 52wk lows than highs even as the index has rallied back near all-time highs, with SPX +1.2% over the last month while 9 of 11",
+   "why": "BTIG note states this exactly: five straight sessions of more new lows than highs, index near record, +1.2% over the month, 9 of 11 sectors negative."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "the 10yr bund yield (+9.2bps) at a post-2009 high of 3.55%, whilst the 10yr OAT yield (+15.4bps) hit a post-2008 high of 4.66%",
+   "why": "Same DB Reid note also states the Franco-German 10yr spread rose to 110bps/110.4bps, the widest since the 2012 euro crisis \u2014 all figures in the sentence (110bp, 3.55%, 15.4bp) are supported."
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "they remain in more extreme short territory for OATs vs. Bunds and extreme long territory for energy product futures",
+   "why": "JPM's momentum-signals note confirms extreme short positioning in OAT-vs-Bund futures (qualitatively), but no source anywhere gives a specific '-2.5' reading for this or any comparable series \u2014 the precise figure is fabricated and attached to an otherwise real claim.",
+   "searched": [
+    "-2.5",
+    "OAT",
+    "momentum signals bond futures"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": null,
+   "why": "No source frames Brent's move as breaking out of a '$75-100 range since late May' into a '$100-110 band.' Sources confirm Brent trading near $99-110 this week but never state the prior range or its start date.",
+   "searched": [
+    "$75",
+    "100-110",
+    "late May / since May",
+    "trading range brent"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": null,
+   "why": "No source uses the phrase 'the new China,' cites 32 states with data-center moratoriums, or describes a House bill making data centers pay the full cost of grid upgrades. The closest source (17265) discusses political salience across 25 states generically, not a specific moratorium count or House legislation.",
+   "searched": [
+    "the new China",
+    "32 states",
+    "moratorium",
+    "grid upgrade / pay the full cost",
+    "House bill"
+   ]
+  },
+  {
+   "id": "s12",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": null,
+   "why": "No source attributes a debt-ceiling or ratings-reassessment warning to JPMorgan 'after the vote.' Debt ceiling is mentioned only in an unrelated New York Life midterms piece, with no ratings-reassessment claim or Treasury-pressure framing.",
+   "searched": [
+    "debt ceiling",
+    "ratings reassessment/review/downgrade",
+    "fiscal outlook",
+    "after the vote"
+   ]
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "AI-related capex has been crowding out other capex, thus containing the growth of overall capex at an aggregate level.",
+   "why": "Matches JPM's stated explanation for why aggregate capex hasn't risen to match corporate cash flow growth."
+  },
+  {
+   "id": "s14",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": null,
+   "why": "No source document contains the words 'hashrate' or 'mining difficulty,' nor any figures for a decline from an October peak. The only bitcoin-mining-adjacent item found (Glassnode's MVRV signal in 17550) is unrelated to hashrate/difficulty.",
+   "searched": [
+    "hashrate",
+    "hash rate",
+    "mining difficulty"
+   ]
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": null,
+   "span": null,
+   "why": "No source reports a bank momentum measure for bitcoin at '+1.0' or attributes the week's rally to an unwind of bearish positioning. The only related item (Glassnode MVRV cross in 17550) is a different metric from a different source (Glassnode, not a bank) and does not match this claim.",
+   "searched": [
+    "+1.0",
+    "bitcoin momentum measure",
+    "unwind bearish positions / short covering bitcoin"
+   ]
+  }
+ ],
+ "faithful": 7,
+ "distorted": 1,
+ "unsupported": 7,
+ "faithful_rate": 0.467,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

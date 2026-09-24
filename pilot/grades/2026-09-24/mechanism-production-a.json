@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+ "source_span": "Upward pressure on yields supports our tactically cautious view despite the solid macro backdrop. We would buy this dip: yields are moving towards fair value (5.5%), similar episodes have historically been buying opportunities, equity valuations offer a cushion.",
+ "source_chain": "Strong PMI and capex data confirm cyclical strength, therefore upward pressure on yields alone (not a specific price gap) justifies tactical caution despite the good backdrop, therefore JPM is already buying the dip now via the broadening trade because past episodes of yields moving toward the 5.5% fair-value anchor have historically been buying opportunities and valuations offer a cushion. No stated invalidation tied to a yield-gap threshold or to the 5-year auction.",
+ "pulse_chain": "Strong PMI removes the disinflation case for a cut, therefore yields spike and break equity valuations built on rate cuts, therefore JPM sees 5.5% as its buy level but is cautious specifically because it 'needs more yield pain' before that level arrives, and Wednesday's weak 5-year auction is 'the tell' proving real money doesn't yet see 5.11% as cheap against the 5.5% anchor. Invalidation: the Sept 30 GDP/PCE prints and whether the 10yr reaches 5.5%.",
+ "preserved": false,
+ "why": "The source gives a generic reason for JPM's caution (upward yield pressure despite a solid backdrop) and states JPM is already buying the dip now, but the pulse invents a specific threshold mechanism (JPM is withholding its buy until yields close a 30bp gap to 5.5%) and casts the 5-year auction as a referendum on that gap \u2014 neither claim is argued anywhere in the source note.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

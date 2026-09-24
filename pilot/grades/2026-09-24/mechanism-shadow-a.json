@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+ "source_span": "the composite PMI unexpectedly hit a 5-year high of 58.4... which in turn would enable the Fed to keep hiking rates... All that put a lot of pressure on equities, even though the growth data surprised on the upside",
+ "source_chain": "Flash composite PMI beats at a 5-year high (58.4 vs 55.3) therefore markets price a more hawkish Fed (Oct hike odds up, more 2026 hikes priced, reinforced by an oil rebound and a weak 5yr auction tail) therefore Treasury yields spike across the curve to a post-2007 high (10yr 5.11%, biggest one-day jump since April 2025) therefore equities sell off (S&P -0.75%, worst day in a month) despite the strong growth print. Cross-bank invalidations carried in the briefs: JPM's bull case flips bearish on a consumer break or an AI capex cut, bullish on lower oil/yields; BTIG's bullish 10yr read flips on a close below ~4.92%; MS's downside case (7000-7100) is conditioned on its named primary near-term risk, higher oil, materializing.",
+ "pulse_chain": "PMI beat (58.4 vs 55.3) read as proof the Fed isn't finished therefore yields jump across the curve (2/5/10/30yr up 12/16/14/9bp) to a post-2007 10yr high of 5.11%, helped by a weak 5yr auction, therefore stocks fall (S&P -0.75%, worst day in a month, broad-based). JPM (fair value ~5.5%, buys the dip via the broadening trade, cautious/neutral into the Fed on oil) versus MS (4.50% named as the rate-sensitivity threshold, already breached; negative short-term stock/yield correlation; 8,000 target intact but 7000-7100 downside if oil climbs further) debate whether the level breaks stocks or gets bought. Resolved by BTIG's 4.92% technical break and JPM's symmetric oil/yields-down-bullish vs consumer-break/AI-capex-cut-bearish triggers.",
+ "preserved": true,
+ "why": "Every step, bank attribution, and invalidation condition (JPM's 5.5% fair value and broadening trade, MS's 4.50% threshold and oil-conditioned 7000-7100 downside, BTIG's 4.92% break) matches the source cards verbatim in substance, with no reversed step, swapped invalidation, or misattributed argument.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
