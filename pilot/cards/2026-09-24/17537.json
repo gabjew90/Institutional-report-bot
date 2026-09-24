@@ -1,0 +1,391 @@
+{
+ "brief": "JPM's afternoon note traces today's bond selloff to a hot September composite PMI (five-year high, hawkish surprise, worst input-cost inflation since 2020), which drove 2y/5y/10y/30y yields 12/16/14/9bp higher and pushed the 10y and 5y above the 5% technical level; a weak 5-year auction (3.20bp tail) added pressure. Iran's UNGA speech, offering conditional diplomacy (a claimed 7-day Strait reopening) alongside no improvement in Hormuz/Bab al-Mandab conditions, pushed Brent back above $100 (+4.6% to $103.59), compounding the yield move and dragging SPX -0.8%. Sinha reads the 10-year above 5% plus strong PMI as raising hawkish Fed risk and hedges Semis/AI with a lower-vol Earnings Vulnerability basket. Meta's Muse agent continues to dominate TMT desk commentary: disintermediation names (SHOP, EXPE, CART) fell further, SHOP gave back half a rally on Meta Pay for Muse rumors, and Insurify blocked the Muse agent from its marketplace. JPM stays Tactically Cautious/Neutral into the Fed, keeping +Tech vs -RTY, with lower oil/yields as the bull trigger and a consumer break or AI capex cut as the bear trigger. Separately, Joyce Chang flags a Democrat-favored House, a Senate toss-up, and rising populist AI backlash into the midterms.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "The September composite PMI rose to a five-year high, which JPM's economist says aligns with real GDP growth near 5% and a projected Q3 2026 print near 4%.",
+   "anchor": "aligns with an economy growing ~5% in real GDP terms and sees 26Q3 printing ~4%",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "2y, 5y, 10y and 30y Treasury yields rose 12bp, 16bp, 14bp and 9bp respectively today.",
+   "anchor": "2y, 5y, 10y and 30y were 12bp, 16bp, 14bp and 9bp higher, respectively",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "The 5-year Treasury auction tailed by 3.20bp on disappointing end-user demand, contributing to today's yield spike.",
+   "anchor": "5Y auction finished the day with a 3.20bp tail with disappointing end user demand",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "The 10-year and 5-year Treasury yields broke above the technical 5% level today.",
+   "anchor": "10Y and 5Y yield broke the technical level of 5%",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM's Manish Sinha says the 10-year yield moving back above 5% alongside a strong composite PMI suggests the Fed could turn more hawkish in the coming months.",
+   "anchor": "has moved back above 5% alongside a strong composite PMI, suggesting the Fed could turn more hawkish in the coming months",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "coming months"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "US mortgage rates surged above 7% to a more than two-year high.",
+   "anchor": "US Mortgage Rates Surge Above 7 to a More Than Two Year High",
+   "topic": "Treasury yields and rates outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Brent crude broke back above $100, rising 4.6% today to $103.59, amid Iran's escalatory UNGA rhetoric and no improvement in Hormuz/Bab al-Mandab conditions.",
+   "anchor": "the further move higher in oil with Brent breaking $100 again ($103.59, a 4.6% increase today)",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Iran said in its UNGA speech that it can reopen the Strait of Hormuz within 7 days, though both parties remain far from an agreement.",
+   "anchor": "Iran said it can reopen the Strait within 7 days",
+   "topic": "Oil right-tail geopolitical risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "7 days"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "House flip to Democrats is seen as overwhelmingly favored, while the Senate is viewed as a toss-up.",
+   "anchor": "House flip to Democrats seen as overwhelmingly favored, while the Senate is increasingly viewed as a",
+   "topic": "US midterm election outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Rising fuel and energy prices have shifted political momentum toward the Democrats ahead of the midterms.",
+   "anchor": "Rising fuel and energy prices have shifted momentum to the Democrats.",
+   "topic": "US midterm election outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Populist pressure is expected to rise regardless of the midterm outcome, with visible backlash toward AI winners.",
+   "anchor": "Populist pressure will rise regardless of the outcome, with visible backlash to",
+   "topic": "US midterm election outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Comprehensive AI policy and regulation are seen as unlikely given fragmentation at the state level.",
+   "anchor": "Comprehensive AI policy and regulation are unlikely with fragmentation at the state",
+   "topic": "US midterm election outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Post-midterm policy volatility risks skew higher, with tariffs, Iran escalation, and debt ceiling brinksmanship possibly on the horizon.",
+   "anchor": "Post-midterm policy volatility risks skew higher with tariffs, Iran escalation, and debt",
+   "topic": "US midterm election outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM's Brian Heavey says the market is treating Meta's Muse agent partnerships similar to how it treated the ChatGPT partnerships earlier this year.",
+   "anchor": "Market treating these partnerships similar to ChatGPT partnerships earlier this",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM's Manish Sinha says the newly initiated Earnings Vulnerability basket has delivered directional exposure similar to Semis/AI with about 70% beta to Semis, while its options are cheaper than hedging Semis/AI directly.",
+   "anchor": "It has delivered similar directional exposure, with ~70% beta to Semis, while offering options that are",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "SMH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "SHOP fell 7% on a tweet claiming Meta is building Meta Pay for Muse, giving back half its earlier partnership-driven rally.",
+   "anchor": "SHOP (-7%) is getting whacked today partially on this tweet going around that states",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "SHOP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Insurify blocked Meta's Muse agent from its insurance marketplace, and insurers outperformed the rest of Financials today.",
+   "anchor": "Insurify said it blocked Meta's Muse agent, and insurers outperformed the rest of Financials today",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "GOOGL is seen as likely having to do something similar to Meta's Muse, raising fear it could cannibalize Search.",
+   "anchor": "GOOGL US Equity likely has to do something similar to Muse",
+   "topic": "Meta Muse app momentum",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "AMZN is viewed as a source of funds within Muse-disintermediation baskets, though Heavey is not yet fully convinced of that thesis.",
+   "anchor": "AMZN US Equity also a source of funds and note it's in most of these",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM's flows show a flight to safety in semis with an uptick in NVDA demand, while software is being sold into the bounce.",
+   "anchor": "with a bit of an uptick in NVDA demand. We are seeing Software sold into",
+   "topic": "Meta Muse app momentum",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "MCD flagged weak customer traffic and elevated inflation at its Investor Day, and the stock fell 4.8%.",
+   "anchor": "MCD flagged weak customer traffic and elevated inflation at its Investor Day, and the stock was down 4.8%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MCD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "Refiners fell more than 2% on an initial Politico report of a potential diesel export ban, before paring losses to 0.5% after the White House called the report inaccurate.",
+   "anchor": "refiners fell over 2% on the initial Politico article on a potential diesel export ban, before easing the losses to 0.5%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM's Monetization Menu maintains a core long-Tech versus short-Russell 2000 (RTY) pair, expressed via Mag7, Memory, and Semis.",
+   "anchor": "maintain our core view of +Tech vs. -RTY and that Tech view is a mix of Mag7, Memory, and Semis",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM stays Tactically Cautious/Neutral into the Fed, citing the inability of energy prices to stabilize lower.",
+   "anchor": "TACTICALLY CAUTIOUS / NEUTRAL based on (i) the inability for energy prices to stabilize without reversion lower",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM says lower oil and bond yields, with the market coalescing around a dovish Fed read, would turn its view bullish.",
+   "anchor": "Lower oil / bond yields. The bond market may coalesce around Warshspeak",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM says signs that the consumer and economy are breaking, or that the AI theme has ended via a capex cut, would turn its view bearish.",
+   "anchor": "Signs that the Consumer and economy are breaking or that the AI theme has ended, which would likely be initiated by a capex cut",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence \u2013 Afternoon Briefing \u2013 September 23",
+   "claim": "JPM says an escalation in the Middle East could push equities lower by as much as 2-3% before finding a level.",
+   "anchor": "escalation could push Equities lower, perhaps as much as 2-3% before finding a level",
+   "topic": "US equity market outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-24/17537__jpm-us-market-intelligence-afternoon-briefing-sep-23.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "fabb2e699caa"
+ },
+ "verify": {
+  "total": 27,
+  "matched": 27,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
