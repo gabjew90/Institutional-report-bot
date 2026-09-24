@@ -1,0 +1,20 @@
+{
+ "ts": "2026-09-24T14-08-08Z",
+ "events": [
+  {
+   "step": "STEP_2_DONE",
+   "time": "2026-09-24T14:09:00Z",
+   "detail": "context fetched via git (raw.githubusercontent 404s behind the agent proxy); pdf_count=6"
+  },
+  {
+   "step": "STEP_2_1_HOLIDAY_GATE",
+   "time": "2026-09-24T14:10:00Z",
+   "detail": "DECISION: CONTINUE (us_market_holiday=False)"
+  },
+  {
+   "step": "VOLUME_WAIT_2",
+   "time": "2026-09-24T14:19:33Z",
+   "detail": "pdf_count=6 < 10; refetch 1 unchanged (dump refreshed 14:14:02Z)"
+  }
+ ]
+}
