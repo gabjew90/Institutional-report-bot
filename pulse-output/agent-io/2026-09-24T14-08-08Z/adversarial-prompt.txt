@@ -1,0 +1,1354 @@
+You are an adversarial accuracy checker for a finished Market Pulse draft, dispatched fresh with NO drafting history. You did not write this document and you owe it nothing. Your single job: find statements in the final draft that the day's research context does not support.
+
+You check FACTS, not style. Voice, tone, structure, and word choice are policed elsewhere and are none of your business.
+
+Severity is NOT yours to assign — the gate maps your `kind` to a severity deterministically, and any severity field you emit is ignored. Your `kind` MUST be one of exactly these four when the finding fits one (and these map HARD):
+- **unsupported-figure** — a specific number, level, or statistic in the draft that appears nowhere in the research context or the live-data block. Numbers the context states differently count too (draft says $107bn, context says $104.5bn).
+- **misattribution** — a view, call, target, or figure credited to one bank when the context ties it to a different bank, or to a named bank when the context attributes it to nobody.
+- **invented-call** — a trade recommendation presented as a desk's call that no context entry contains. The pulse never issues its own calls, so an unattributed call is fabricated by construction.
+- **fabricated-event** — an event, print, date, or scheduled release the context contradicts or does not contain.
+
+Any other finding — a claim stated more strongly than the context supports, a misleading emphasis, an ambiguous qualifier — takes a short kebab-case kind of your choosing (e.g. "overstated-claim") and maps soft. Do NOT stretch one of the four names above to cover a judgment call, and do NOT invent a softer-sounding name for something that IS one of the four: a figure the context states differently is "unsupported-figure", never "figure-mismatch" or any other coinage.
+
+Discipline:
+- Every finding carries `quote`: the EXACT text from the final draft, copied character-for-character. Findings whose quote does not appear verbatim in the draft are discarded by the gate, so a paraphrased quote wastes your finding.
+- Check the context before flagging. A figure you merely don't recognize is not a finding; a figure the context lacks or contradicts is.
+- Zero findings is a legitimate verdict and common on a clean run. Do NOT invent findings to look thorough — a false hard finding burns a repair round and degrades the pulse.
+- The RECAP section may cite live market prices and news headlines from the live-data block; those are in scope for support, not violations.
+
+Output STRICT JSON, nothing else:
+{"findings": [{"kind": "unsupported-figure", "quote": "<verbatim from draft>", "why": "<one sentence: what the context says instead, or that it says nothing>", "fix": "<one sentence: the minimal correction>"}]}
+
+Empty verdict: {"findings": []}
+
+=====
+
+FINAL DRAFT (the document under check):
+
+# Cuts out, hikes in
+
+## 1. RECAP
+
+Two Federal Reserve officials told markets before noon to expect another rate increase, and the bond market took them at their word. The ten-year Treasury yield pushed to 5.16%, above Wednesday's close that was already the highest since 2007, and stocks slipped with it. $SPY is 0.53% lower and $QQQ weaker at -0.80% early in the session, with long-dated Treasuries no safer, $TLT down 0.87%. Energy is the only group higher, $USO up 4.11% after US-Iran talks produced nothing. $BTC is close to unchanged near $84,100, which is its own signal on a day the whole rate path flipped.
+
+- **Both Fed speakers Thursday morning pointed at more hikes.** New York's John Williams called another increase by year-end "reasonable" and Philadelphia's Anna Paulson said modest further increases are likely to bring inflation back to target. Yields rose at every maturity, the thirty-year up 4.8 basis points (one basis point is one hundredth of a percent) to 5.45%, and $QQQ paid for it at -0.80%.
+- **US-Iran talks produced no progress and crude jumped.** $USO is up 4.11% and $BNO up 3.69%, the biggest moves on the board, with shipping through the Strait of Hormuz still running below its ten-day average and Saudi Arabia intercepting Houthi missiles Thursday morning. Buyers are paying again for the risk that Gulf supply gets interrupted.
+- **Positioning was already light before the repricing.** JPMorgan's gauge of how crowded US stock positions are sits near five-year lows, a level that has marked troughs rather than tops, hedge funds have been rebuilding exposure led by quantitative funds, and Deutsche Bank calls discretionary investors very cautious. Momentum signals on ten-year Treasuries and German government debt are back at extreme short levels, which is why $SPY is only 0.53% lower and $VIXY up 1.67% on a day the rate path flipped.
+
+## 2. INSIGHTS & ALPHA
+
+### The bond market deleted the cuts and started pricing hikes
+
+*The repricing has further to run, and equities have not finished discounting it.*
+
+- The US composite business survey hit a five-year high of 58.4 in September against 55.3 expected (Deutsche Bank). A beat that wide repriced the entire rate path in one session instead of over weeks.
+- The ten-year Treasury yield closed Wednesday at 5.11%, its highest since 2007 (Deutsche Bank), and pushed to 5.16% Thursday morning. Stock valuations built on the assumption that rates would fall stop working at that level.
+- Traders now price 37 basis points of Fed increases by year-end, close to even odds on two more, with October alone at 71% (Deutsche Bank).
+- Wednesday's five-year Treasury auction cleared 3.20 basis points above where the market was trading beforehand, with weak demand from real money buyers (JPMorgan). That is the mechanical reason the selloff extended instead of stalling.
+
+The chain runs from activity to costs to policy. Surveys this strong, arriving with the fastest monthly rise in input costs since 2020 (JPMorgan), remove the disinflation assumption that justified a cut, and a central bank that has to resume tightening after a pause loses any ability to talk long-term yields back down. Williams and Paulson saying it out loud Thursday morning is confirmation rather than new information.
+
+JPMorgan reads the same selloff as an entry point. Its fair value estimate for the ten-year is 5.5%, and its strategists argue that past episodes of yields overshooting toward fair value have been buying opportunities in equities. That case is stronger than the last two sessions make it look, and it carries a timing problem, because 5.5% sits more than thirty basis points above where the ten-year trades now. Even the constructive house needs more yield pain before its buy level arrives, which is why its own near-term equity stance is cautious into the Fed meeting. Wednesday's auction is the tell on which side gets tested first: if Wednesday's 5.11% were genuinely cheap against a 5.5% anchor, real money buyers would have taken down the five-year paper, and instead the auction cleared wide. The growth and inflation reports due at 8:30 AM ET on September 30 are the first hard test of whether September's surge is real or a one-month survey artifact, and JPMorgan's 5.5% is the level that settles whether this is an overshoot to buy or a repricing to respect.
+
+### JPMorgan is long tech and buying protection on it at the same time
+
+*The insurance it just bought is the more informative half of that pair.*
+
+The core position has not changed, more technology than benchmark across mega-caps, memory and semiconductors, paid for with a bet against small caps through short $IWM on a three to twelve month view. What is new is the hedge: JPMorgan is buying put options on its own basket of companies whose earnings are most exposed to AI agents taking their business, rather than on semiconductors, because that basket moves the same direction for less premium into month-end when funds reset position sizes. The risk it is paying to cover is already live in single names. $SHOP fell 7% on concern that Meta builds payments into its Muse agent, and $EXPE and $CART sold off on the same fear of being cut out of their own transactions even as they announced partnerships with it (JPMorgan), while insurers that kept Muse out of their marketplaces outperformed. Meta widened its hardware lineup again Thursday, so the channel JPMorgan is hedging against keeps getting bigger. JPMorgan names the Fed meeting outcome as the risk to the short small-cap leg.
+
+### China's AI profit pool gets a number, and a summit to price it
+
+*The forecast is big enough to underwrite the trade, and today's meeting decides its timing.*
+
+JPMorgan initiated broader coverage of Chinese artificial intelligence with a constructive view and put US$544 billion of cumulative operating profit on the companies in that chain between 2026 and 2030. The shape of the number matters more than the size: models and applications should deliver about a third of industry profits but close to two thirds of the growth in annual earnings over the period, which argues for owning the platforms rather than the hardware that trains them, with $BABA and $TCEHY the named beneficiaries. The $FXI summit trade flagged Tuesday has its first answer on tariffs, with the US and China extending their trade truce by two months and holding tariffs where they are until January 10, and the Trump-Xi meeting itself running today. JPMorgan is long Chinese internet through $KWEB and prefers Hong Kong listed shares over mainland ones into China technology earnings, which is the position today's readout prices.
+
+## 3. WHAT TO WATCH
+
+### Today
+
+- **Trump-Xi summit, Washington, today.** Both JPMorgan desks flag it and neither stakes a direction. The truce has already rolled two months to January 10, so what is left on the table is the tariff path into 2027. A constructive readout lifts $FXI and $KWEB. A breakdown bids the dollar and reopens the tariff channel into inflation.
+- **Costco reports after the close.** Consensus is $6.67 a share on $96.75 billion of revenue. It is the first direct test of whether the $13 trillion rise in second-quarter household net worth (JPMorgan) is actually being spent.
+
+### This Week
+
+- **Wednesday, September 30, 8:30 AM ET: the quarterly growth reading and the PCE inflation report.** No consensus is posted yet for either. These decide whether September's survey surge shows up in hard data, and they are the first real read on the hike repricing above.
+- **Wednesday, September 30, after the close: Micron.** JPMorgan's technology position is explicitly weighted to memory, so this print reads directly on that leg.
+
+## _LEANS (internal, TRADE BOARD source, stripped before publish)
+
+- short | $TLT | hike repricing not done, 5Y auction tailed
+- long | $QQQ, $SMH | JPM tech overweight vs short Russell, hedged into month-end
+- long | $KWEB, $FXI | JPM constructive China AI, truce extended to Jan 10
+
+
+=====================================================================
+
+RESEARCH CONTEXT (the only permissible support for the draft's claims — per-PDF structured extractions plus the live-data block):
+
+=== PER-PDF RESEARCH ANALYSES (analyses_json) ===
+
+[
+ {
+  "source": "Deutsche Bank",
+  "title": "Early Morning Reid - Macro Strategy",
+  "type": "morning_briefing",
+  "priority": "high",
+  "published": "2026-09-24",
+  "insights": [
+   "Global bond markets are experiencing a significant selloff, with the 10yr Treasury yield jumping 15.2bps to 5.11%, the highest level since 2007.",
+   "Strong US and Eurozone composite PMI data for September (58.4 and 53.1 respectively) fueled hawkish repricing of central bank rate paths.",
+   "Market pricing for an October Fed rate hike rose to 71%, while December 2026 pricing now implies a near-even chance of two additional hikes before year-end.",
+   "Oil prices rebounded, with Brent crude closing at $103.08/bbl (+3.86%) amid stalled US-Iran talks, further pressuring inflation expectations.",
+   "European sovereign stress is rising, with the Franco-German 10yr spread widening to 110.4bps, the highest level since the 2012 Euro crisis.",
+   "Equities faced broad pressure, with the S&P 500 declining 0.75% and the Russell 2000 falling 1.77% as yields surged.",
+   "US-China trade tensions remain a focus, with a two-month extension of the trade truce announced, keeping tariffs lower until January 10.",
+   "US diesel prices fell 3.35% after officials clarified that a full export ban is not being discussed, despite earlier reports of a potential 90-day restriction."
+  ],
+  "sector_views": [
+   {
+    "sector": "Energy",
+    "stance": "overweight",
+    "rationale": "Energy was the only major sector group to gain ground (+1.04%) during the broader equity market selloff."
+   }
+  ],
+  "macro": [
+   {
+    "indicator": "US Composite PMI",
+    "reading": "58.4",
+    "interpretation": "Unexpectedly strong growth signal supporting a hawkish Fed narrative.",
+    "status": "released",
+    "period": "September"
+   },
+   {
+    "indicator": "Eurozone Composite PMI",
+    "reading": "53.1",
+    "interpretation": "Growth accelerating in major economies, fueling global hawkish repricing.",
+    "status": "released",
+    "period": "September"
+   },
+   {
+    "indicator": "Fed October Rate Hike Probability",
+    "reading": "71%",
+    "interpretation": "Market pricing for imminent tightening has accelerated significantly.",
+    "status": "forecast",
+    "period": "October"
+   },
+   {
+    "indicator": "10yr Treasury Yield",
+    "reading": "5.11%",
+    "interpretation": "Highest level since 2007, reflecting intense bond market selloff.",
+    "status": "released",
+    "period": "Current"
+   },
+   {
+    "indicator": "Initial Jobless Claims",
+    "reading": "202k",
+    "interpretation": "Market expectation for upcoming data release.",
+    "status": "forecast",
+    "period": "Current"
+   },
+   {
+    "indicator": "New Home Sales",
+    "reading": "610k",
+    "interpretation": "Market expectation for upcoming data release.",
+    "status": "forecast",
+    "period": "August"
+   }
+  ],
+  "risks": [
+   "Accelerating global inflation driven by resilient growth and commodity price rebounds.",
+   "Potential for further widening of European sovereign spreads (Franco-German 10yr).",
+   "Protracted period of higher oil prices impacting inflation targets.",
+   "Hawkish central bank reaction functions correcting for previous policy delays."
+  ],
+  "vol_positioning": [
+   "VIX rose to 15.18 (+0.97).",
+   "Discretionary investors are noted as being 'very cautious' per recent positioning data.",
+   "Market is underestimating the scale of rate hikes, a recurring pattern in recent cycles."
+  ],
+  "geopolitical": [
+   "US-Iran negotiations regarding nuclear deal and sanctions remain stalled, contributing to oil price volatility.",
+   "US-China trade truce extended by two months, keeping tariffs lower until January 10.",
+   "Iran President Pezeshkian threatened freedom of navigation through Hormuz due to US sanctions and blockade."
+  ],
+  "entities": [
+   {
+    "name": "S&P 500",
+    "ticker": "SPX",
+    "class": "index"
+   },
+   {
+    "name": "STOXX Europe 600",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "iTraxx Crossover",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "Brent Oil",
+    "ticker": "BNO",
+    "class": "commodity"
+   },
+   {
+    "name": "Nasdaq",
+    "ticker": "NDX",
+    "class": "index"
+   },
+   {
+    "name": "Russell 2000",
+    "ticker": "RUT",
+    "class": "index"
+   },
+   {
+    "name": "DAX",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "CAC 40",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "Hang Seng",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "CSI 300",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "Shanghai Composite",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "S&P/ASX 200",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "Nikkei",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "VIX",
+    "ticker": "VIX",
+    "class": "index"
+   },
+   {
+    "name": "Gold",
+    "ticker": "GLD",
+    "class": "commodity"
+   }
+  ],
+  "data_points": [
+   {
+    "figure": "58.4",
+    "metric": "US Composite PMI",
+    "source_bank": "Deutsche Bank",
+    "context": "September print vs 55.3 expected",
+    "figure_status": "released",
+    "anchor": "composite PMI unexpectedly hit a 5-year high of 58.4 in September (vs. 55.3 expected)."
+   },
+   {
+    "figure": "53.1",
+    "metric": "Eurozone Composite PMI",
+    "source_bank": "Deutsche Bank",
+    "context": "September print vs 51.7 expected",
+    "figure_status": "released",
+    "anchor": "Eurozone composite PMI hit a 3-year high of 53.1 (vs. 51.7 expected)."
+   },
+   {
+    "figure": "5.11%",
+    "metric": "10yr Treasury Yield",
+    "source_bank": "Deutsche Bank",
+    "context": "Post-2007 high, +15.2bps daily jump",
+    "figure_status": "released",
+    "anchor": "10yr yield (+15.2bps) saw its biggest daily jump since the market turmoil after Liberation Day in April 2025, taking it up to a post-2007 high of 5.11%."
+   },
+   {
+    "figure": "110.4bps",
+    "metric": "Franco-German 10yr spread",
+    "source_bank": "Deutsche Bank",
+    "context": "Highest level since July 2012",
+    "figure_status": "level",
+    "anchor": "pushed the Franco-German 10yr spread up to 110.4bps, which was a level last seen in July 2012"
+   },
+   {
+    "figure": "37bps",
+    "metric": "Fed hikes priced for year-end",
+    "source_bank": "Deutsche Bank",
+    "context": "Most hawkish pricing for December 2026 so far",
+    "figure_status": "forecast",
+    "anchor": "investors are now pricing in 37bps of Fed hikes, implying a near-even chance that they\u2019ll deliver two more hikes before the year is out"
+   }
+  ],
+  "tensions": [
+   {
+    "theme": "US Diesel Export Policy",
+    "bull_case": "Initial reports suggested a 90-day export ban was being prepared to manage domestic supply.",
+    "bear_case": "White House and Energy Secretary clarified that a full blanket ban is not being discussed, leading to a price slump.",
+    "what_invalidates": ""
+   }
+  ],
+  "theme_stances": [
+   {
+    "theme": "hawkish central bank repricing",
+    "stance": "supportive",
+    "conviction": "high",
+    "key_argument": "Stronger-than-expected global growth data and resilient inflation are forcing central banks to accelerate hiking cycles.",
+    "primary_instruments": [
+     "TLT"
+    ],
+    "vs_consensus": "with_consensus",
+    "evidence": "mounting sense that central banks would need to accelerate the hiking cycle"
+   }
+  ]
+ },
+ {
+  "source": "TS Lombard",
+  "title": "Putting Money Back Into Monetary Policy",
+  "type": "macro",
+  "priority": "medium",
+  "published": "2026-09-24",
+  "insights": [
+   "A 'monetarist revival' is underway in central banking, led by new Fed Chair Kevin Warsh, who advocates for reincorporating monetary aggregates into policy frameworks.",
+   "While monetary data provided an early warning for the post-COVID inflation surge, the report argues that this revival will have limited practical impact on financial markets or policy outcomes.",
+   "The report is skeptical that tracking money supply will lead to better policy, noting that the relationship between money and inflation is unstable in the short term due to shifts in velocity.",
+   "Central banks are expected to pay 'lip service' to monetary aggregates, similar to the late 1990s, without letting them dictate short-term interest rate decisions.",
+   "Investors should not take the threat of aggressive Quantitative Tightening (QT) too seriously, as there is no current FOMC consensus for it and it risks financial stability.",
+   "If the Fed does pursue QT, it will likely be accompanied by bank deregulation, which would be supportive of risk assets.",
+   "The report highlights that monetarist forecasts for a 2023 recession were incorrect, demonstrating that monetary analysis is not a panacea for macro forecasting."
+  ],
+  "macro": [
+   {
+    "indicator": "US M2",
+    "reading": "steep increase",
+    "interpretation": "Provided early warning for post-pandemic inflation surge.",
+    "status": "released",
+    "period": "May 2020"
+   }
+  ],
+  "risks": [
+   "Aggressive QT could trigger market drama and plumbing issues in the financial system, similar to 2019.",
+   "Monetary aggregates remain unstable and erratic, making them unreliable for short-term policy guidance."
+  ],
+  "charts": [
+   "Chart 1 shows the decline in 'money supply' as a percentage of words published in books from 1800 to 2000.",
+   "Chart 17 plots central bank assets as a percent of GDP for US, CAN, UK, SWE, EUR, AUS, NZL, and JPN from 1948 to 2018.",
+   "Chart 27 tracks the share of speeches mentioning M3 by various central banks from 1986 to 2026."
+  ],
+  "vol_positioning": [
+   "The report notes that 'liquidity' analysis remains a cottage industry in finance and argues that charts correlating central bank balance sheets to stock markets are largely spurious."
+  ],
+  "cross_bank_refs": [
+   "The report references the BIS's analysis that countries with faster money growth experienced worse COVID inflation.",
+   "The report references the Bank of England's new approach to monetary analysis, including its 'money gap' model."
+  ],
+  "entities": [
+   {
+    "name": "Federal Reserve",
+    "ticker": "",
+    "class": "other"
+   },
+   {
+    "name": "Bank of England",
+    "ticker": "",
+    "class": "other"
+   },
+   {
+    "name": "European Central Bank",
+    "ticker": "",
+    "class": "other"
+   },
+   {
+    "name": "International Monetary Fund",
+    "ticker": "",
+    "class": "other"
+   },
+   {
+    "name": "Bank for International Settlements",
+    "ticker": "",
+    "class": "other"
+   }
+  ],
+  "data_points": [
+   {
+    "figure": "0.6605",
+    "metric": "R-squared correlation between inflation and money supply",
+    "source_bank": "TS Lombard",
+    "context": "OECD data, 1972-1983",
+    "figure_status": "released",
+    "anchor": "R\u00b2 = 0.6605"
+   },
+   {
+    "figure": "0.3226",
+    "metric": "R-squared correlation between inflation and excess broad money",
+    "source_bank": "TS Lombard",
+    "context": "2020Q4-2022Q3",
+    "figure_status": "released",
+    "anchor": "R\u00b2 = 0.3226"
+   },
+   {
+    "figure": "0.0753",
+    "metric": "R-squared correlation between asset values and broad money",
+    "source_bank": "TS Lombard",
+    "context": "Annual percentage change",
+    "figure_status": "released",
+    "anchor": "R\u00b2 = 0.0753"
+   }
+  ],
+  "tensions": [
+   {
+    "theme": "Monetarist revival utility",
+    "bull_case": "Proponents like Kevin Warsh argue that monetary aggregates provide essential information for long-term price trends and should be reincorporated into central banking.",
+    "bear_case": "TS Lombard argues that the relationship between money and inflation is unstable in the short term and that monetary analysis is not a panacea for forecasting.",
+    "what_invalidates": ""
+   }
+  ],
+  "theme_stances": [
+   {
+    "theme": "monetarist revival",
+    "stance": "skeptical",
+    "conviction": "medium",
+    "key_argument": "The monetarist revival will have limited implications for financial markets as the relationship between money and inflation remains unstable.",
+    "primary_instruments": [],
+    "vs_consensus": "out_of_consensus",
+    "evidence": "we think this monetarist revival will have only limited implications for financial markets"
+   }
+  ]
+ },
+ {
+  "source": "JPMorgan",
+  "title": "Global Markets Strategy: Flows & Liquidity",
+  "type": "strategy",
+  "priority": "high",
+  "published": "2026-09-24",
+  "insights": [
+   "Corporate financing surpluses are rising steeply, approaching historical highs outside crisis periods, as cash flows grow faster than capex.",
+   "AI-related capex is crowding out other investment, keeping aggregate capex growth modest compared to the 1990s bubble era.",
+   "Corporate savings are being deployed into share buybacks, with global buybacks on track to reach $1.7tr this year, $1.3tr of which from US companies.",
+   "Momentum signals for 10y USTs and Bunds have moved back to elevated short territory following recent sell-offs.",
+   "Bitcoin price recently moved above its implied production cost of $85k, providing a potential floor and reducing forced selling risk from miners.",
+   "Bitcoin miners are undergoing a structural pivot to AI, slowing the growth of network hashrate and mining difficulty."
+  ],
+  "macro": [
+   {
+    "indicator": "US corporate financing surplus",
+    "reading": "2% of US GDP",
+    "interpretation": "Reflects exceptional health of the corporate sector and reduced need for external funding.",
+    "status": "released",
+    "period": "Q2 2026"
+   },
+   {
+    "indicator": "Bitcoin implied production cost",
+    "reading": "$85k",
+    "interpretation": "Acts as a soft floor for bitcoin prices; recent move above this level reduces miner selling pressure.",
+    "status": "level",
+    "period": "current"
+   }
+  ],
+  "crypto": [
+   "Bitcoin price moved above its implied production cost of $85k, a positive development after 280 days below.",
+   "Bitcoin mining industry is undergoing a structural shift toward AI, leading to a slowdown in network hashrate and mining difficulty.",
+   "Publicly listed miners are reducing their share of the network versus private and sovereign miners due to the pivot to AI."
+  ],
+  "risks": [
+   "Market volatility impacting momentum-based investor positioning.",
+   "Potential for further unwind of intra-EMU OW positions.",
+   "Forced selling risk from bitcoin miners (mitigated by price recovery above production cost).",
+   "Concentration risk in bitcoin network."
+  ],
+  "charts": [
+   "Figure 10 plots momentum signals for 10y UST, Bund, Gilt, and JGB futures showing z-scores.",
+   "Figure 12 plots momentum signals for S&P 500, Eurostoxx 50, Nikkei, and MSCI EM futures.",
+   "Figure 18 plots implied bitcoin cost of production.",
+   "Chart A11a shows richness/cheapness of 3m implied volatility levels against 1y historical range."
+  ],
+  "vol_positioning": [
+   "Momentum signals for 10y USTs and Bunds are at extreme short levels (-1.7 and -1.5 z-scores respectively).",
+   "OATs vs. Bunds momentum signal is at an extreme -2.5 z-score.",
+   "Energy product futures momentum signals remain in extreme long territory (+1.9 z-score).",
+   "S&P 500 momentum signals have shifted to elevated levels (z-score ~1.0).",
+   "Bitcoin momentum signals are at elevated levels (+1.0 z-score)."
+  ],
+  "entities": [
+   {
+    "name": "S&P 500",
+    "ticker": "SPX",
+    "class": "index"
+   },
+   {
+    "name": "Bitcoin",
+    "ticker": "BTC",
+    "class": "crypto"
+   },
+   {
+    "name": "Ethereum",
+    "ticker": "ETH",
+    "class": "crypto"
+   },
+   {
+    "name": "MicroStrategy",
+    "ticker": "MSTR",
+    "class": "stock"
+   },
+   {
+    "name": "Gold",
+    "ticker": "GLD",
+    "class": "commodity"
+   },
+   {
+    "name": "Oil",
+    "ticker": "USO",
+    "class": "commodity"
+   },
+   {
+    "name": "Copper",
+    "ticker": "CPER",
+    "class": "commodity"
+   },
+   {
+    "name": "Eurostoxx 50",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "Nikkei 225",
+    "ticker": "",
+    "class": "index"
+   },
+   {
+    "name": "MSCI EM",
+    "ticker": "EEM",
+    "class": "etf"
+   }
+  ],
+  "data_points": [
+   {
+    "figure": "$1.7tr",
+    "metric": "Global share buybacks forecast",
+    "source_bank": "JPMorgan",
+    "context": "2026 full year estimate",
+    "figure_status": "forecast",
+    "anchor": "Figure 9Global share buyback vs Tech sector share in US buybacks suggests that share buybacks are on track to reach $1.7tr this year globally"
+   },
+   {
+    "figure": "$85k",
+    "metric": "Implied bitcoin production cost",
+    "source_bank": "JPMorgan",
+    "context": "Current estimate",
+    "figure_status": "level",
+    "anchor": "Our implied average cost to produce one bitcoin stands currently at around $85k"
+   },
+   {
+    "figure": "19%",
+    "metric": "Decline in network hashrate",
+    "source_bank": "JPMorgan",
+    "context": "Decline from peak last October",
+    "figure_status": "released",
+    "anchor": "reflected in the roughly 19% and 15% declines in network hashrate and mining difficulty, respectively, from their peak last October"
+   }
+  ],
+  "theme_stances": [
+   {
+    "theme": "corporate financing surplus",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Rising corporate financing surpluses reduce the need for external funding and support buybacks.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "corporate financing surpluses have been rising steeply, approaching historically high levels outside crisis periods."
+   }
+  ]
+ },
+ {
+  "source": "JPMorgan",
+  "title": "Washington Policy Perspectives: Resilient Equities, Higher Rates, and Restless Voters",
+  "type": "macro",
+  "priority": "high",
+  "published": "2026-09-24",
+  "insights": [
+   "Democrats are overwhelmingly favored to flip the House, while the Senate race is increasingly viewed as a toss-up.",
+   "Cost of living and affordability concerns are the primary drivers of voter sentiment, with energy prices shifting momentum toward Democrats.",
+   "Populist political pressure is rising, with expectations for a lame-duck president to rely heavily on executive orders to bypass Congressional gridlock.",
+   "Post-midterm policy volatility risks are skewed higher, with potential for renewed tariffs, Iran escalation, and debt ceiling brinksmanship.",
+   "US household net worth surged by $13 trillion in 2Q 2026, supporting consumer spending despite voter dissatisfaction with the economy.",
+   "Comprehensive AI regulation is unlikely before the midterms, with fragmentation at the state level expected to continue.",
+   "The Iran conflict is at an inflection point, with Brent oil prices potentially averaging $87 in 2027 under a 'forever conflict' scenario.",
+   "The US-Canada trade war has intensified, with potential for auto tariffs to rise from 25% to 50% on January 1, 2027."
+  ],
+  "macro": [
+   {
+    "indicator": "Brent Crude",
+    "reading": "$100-110/bbl",
+    "interpretation": "Elevated energy prices are shifting voter momentum and creating inflationary drag.",
+    "status": "level",
+    "period": "September 2026"
+   },
+   {
+    "indicator": "Brent Crude",
+    "reading": "$87",
+    "interpretation": "Average price in a 'forever conflict' scenario compared to $64 baseline.",
+    "status": "forecast",
+    "period": "2027"
+   },
+   {
+    "indicator": "US Household Net Worth",
+    "reading": "$13trn",
+    "interpretation": "Wealth gains are supporting consumer resilience despite affordability concerns.",
+    "status": "released",
+    "period": "2Q 2026"
+   },
+   {
+    "indicator": "Effective Global Tariff Rate",
+    "reading": "17-18%",
+    "interpretation": "Potential increase from current 5-6% level due to Section 301 tariffs.",
+    "status": "forecast",
+    "period": "Post-midterm"
+   }
+  ],
+  "crypto": [
+   "Digital assets are subject to a rapidly changing regulatory landscape with unsettled legal applications."
+  ],
+  "risks": [
+   "Higher policy volatility post-midterm",
+   "Oil price elevation",
+   "Debt ceiling brinksmanship",
+   "Escalation of Iran conflict",
+   "Tariff-driven inflation"
+  ],
+  "charts": [
+   "Figure 1 shows 2026 House election forecasts by state.",
+   "Figure 3 shows affordability as the midterm stress test.",
+   "Figure 7 plots Trump's approval rating.",
+   "Figure 19 shows the number of Executive Orders issued."
+  ],
+  "vol_positioning": [
+   "Markets may be too complacent about post-midterm policy volatility.",
+   "Treasuries face potential pressure from a possible $300-500bn reconciliation package."
+  ],
+  "geopolitical": [
+   "Iran conflict escalation and potential Strait of Hormuz closure",
+   "US-Canada trade war intensification",
+   "USMCA annual review process"
+  ],
+  "entities": [
+   {
+    "name": "JPMorgan Chase",
+    "ticker": "JPM",
+    "class": "stock"
+   },
+   {
+    "name": "Trump Administration",
+    "ticker": "",
+    "class": "other"
+   },
+   {
+    "name": "Brent Crude",
+    "ticker": "BNO",
+    "class": "commodity"
+   }
+  ],
+  "data_points": [
+   {
+    "figure": "$13trn",
+    "metric": "US household net worth increase",
+    "source_bank": "JPMorgan",
+    "context": "2Q 2026 surge",
+    "figure_status": "released",
+    "anchor": "US household net worth surged by $13trn in 2Q alone"
+   },
+   {
+    "figure": "285",
+    "metric": "Executive Orders issued",
+    "source_bank": "JPMorgan",
+    "context": "Less than two years into second term",
+    "figure_status": "released",
+    "anchor": "the president has issued 285 Executive Orders (EOs), already surpassing the total issued during his entire first term"
+   },
+   {
+    "figure": "90%",
+    "metric": "Odds of Democratic House flip",
+    "source_bank": "JPMorgan",
+    "context": "Consensus from speakers",
+    "figure_status": "forecast",
+    "anchor": "Democratic House flip is a done deal, with the takeover put at 90% odds."
+   },
+   {
+    "figure": "36%",
+    "metric": "GOP chance of holding Senate",
+    "source_bank": "JPMorgan",
+    "context": "Betting markets",
+    "figure_status": "forecast",
+    "anchor": "Betting markets give the GOP only a 36% chance of holding the Senate"
+   }
+  ],
+  "tensions": [
+   {
+    "theme": "AI Data Center Development",
+    "bull_case": "Data centers generate significant employment, with direct positions paying over $150,000.",
+    "bear_case": "Communities face local costs including higher electricity demand, pollution, and land use pressure.",
+    "what_invalidates": ""
+   }
+  ],
+  "theme_stances": [
+   {
+    "theme": "post-midterm policy volatility",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Markets are too complacent about the potential for executive action and fiscal brinksmanship after the midterms.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "Markets may be too complacent about the post-midterm policy environment"
+   }
+  ]
+ },
+ {
+  "source": "JPMorgan",
+  "title": "JPM US Market Intelligence Afternoon Briefing Sep 23",
+  "type": "morning_briefing",
+  "priority": "high",
+  "published": "2026-09-24",
+  "insights": [
+   "US markets closed lower as bond yields spiked, with the 5Y yield breaking the 5% technical level.",
+   "September PMI data triggered the sell-off, showing hawkish headline surprises and the largest monthly increase in input cost inflation since 2020.",
+   "Brent crude surged 4.6% to $103.59 amid escalatory rhetoric from Iran at the UNGA and persistent tensions in the Hormuz/Bab al-Mandab Strait.",
+   "JPMorgan maintains a tactically cautious/neutral view into the Fed, citing energy price volatility, elevated bond volatility, and unclear positioning.",
+   "The firm remains bullish on Tech, favoring a mix of Mag7, Memory, and Semis, while suggesting a pair trade of long Tech vs short RTY.",
+   "Midterm election themes highlight a likely House flip to Democrats, rising populist pressure, and potential post-midterm policy volatility regarding tariffs and debt ceilings.",
+   "Trading desk notes suggest a 'shoot now, ask later' mentality in AI-related names, with Meta's Muse agent causing disintermediation fears for companies like SHOP and EXPE.",
+   "JPMorgan initiated a hedge using the JPUXERNV index (Earnings Vulnerability) to offset exposure to Semis/AI, noting it offers similar directional beta with lower volatility."
+  ],
+  "market_movers": [
+   {
+    "ticker": "MCD",
+    "action": "negative_catalyst_watch",
+    "rating": "Neutral",
+    "price_target": "N/A",
+    "rationale": "Flagged weak customer traffic and elevated inflation at Investor Day; stock down 4.8%.",
+    "conviction": "medium"
+   },
+   {
+    "ticker": "META",
+    "action": "negative_catalyst_watch",
+    "rating": "Neutral",
+    "price_target": "N/A",
+    "rationale": "Meta's Muse agent is causing disintermediation concerns for partners; insurers blocked the agent from their marketplace.",
+    "conviction": "medium"
+   },
+   {
+    "ticker": "SHOP",
+    "action": "negative_catalyst_watch",
+    "rating": "Neutral",
+    "price_target": "N/A",
+    "rationale": "Stock fell 7% on concerns regarding Meta's potential development of Meta Pay for Muse.",
+    "conviction": "medium"
+   },
+   {
+    "ticker": "EXPE",
+    "action": "negative_catalyst_watch",
+    "rating": "Neutral",
+    "price_target": "N/A",
+    "rationale": "Getting hit despite partnership announcements due to AI disintermediation fears.",
+    "conviction": "low"
+   },
+   {
+    "ticker": "CART",
+    "action": "negative_catalyst_watch",
+    "rating": "Neutral",
+    "price_target": "N/A",
+    "rationale": "Getting hit despite partnership announcements due to AI disintermediation fears.",
+    "conviction": "low"
+   }
+  ],
+  "sector_views": [
+   {
+    "sector": "Technology",
+    "stance": "overweight",
+    "rationale": "Core view remains bullish on Tech, specifically Mag7, Memory, and Semis."
+   },
+   {
+    "sector": "Financials",
+    "stance": "neutral",
+    "rationale": "Insurers outperformed after blocking Meta's Muse agent; general sector sentiment pressured by rising yields."
+   },
+   {
+    "sector": "Semiconductors",
+    "stance": "neutral",
+    "rationale": "Facing fears that compute buildouts may see revenue scaling below expectations; JPM suggests hedging with JPUXERNV."
+   }
+  ],
+  "earnings": [
+   "MCD: August trends slightly negative; expects US business to be slightly negative for Q3.",
+   "COST: Earnings scheduled for 9/24.",
+   "DRI: Earnings scheduled for 9/24."
+  ],
+  "macro": [
+   {
+    "indicator": "10Y Treasury Yield",
+    "reading": "5.114%",
+    "interpretation": "Breaking above 5% is a negative headwind for equity sentiment.",
+    "status": "released",
+    "period": "September 23"
+   },
+   {
+    "indicator": "Brent Crude",
+    "reading": "$103.59",
+    "interpretation": "Up 4.6% on Iran escalatory rhetoric; inflationary pressure.",
+    "status": "released",
+    "period": "September 23"
+   },
+   {
+    "indicator": "VIX",
+    "reading": "15.18",
+    "interpretation": "Market volatility remains a focus.",
+    "status": "released",
+    "period": "September 23"
+   },
+   {
+    "indicator": "US Real GDP Growth",
+    "reading": "4%",
+    "interpretation": "Strong growth environment supports equity bull market.",
+    "status": "forecast",
+    "period": "2026 Q3"
+   }
+  ],
+  "trades": [
+   {
+    "description": "Long Tech vs Short RTY",
+    "rationale": "Core monetization view; Tech mix of Mag7, Memory, and Semis.",
+    "risk": "Fed meeting outcome could impact RTY performance.",
+    "conviction": "medium",
+    "time_horizon": "3-12mo",
+    "instruments": [
+     "NVDA"
+    ]
+   },
+   {
+    "description": "Put options on JPUXERNV Index",
+    "rationale": "Cheaper way to hedge Semis/AI risk into month-end rebalancing compared to direct Semis exposure.",
+    "risk": "Semis/AI sector continues to outperform.",
+    "conviction": "medium",
+    "time_horizon": "1-3mo",
+    "instruments": []
+   }
+  ],
+  "risks": [
+   "Rising energy prices and oil volatility.",
+   "Bond market volatility and hawkish Fed expectations.",
+   "Geopolitical escalation in the Middle East.",
+   "AI-related capex cuts or revenue scaling disappointments."
+  ],
+  "vol_positioning": [
+   "Elevated bond volatility with 10Y oscillating around 5%.",
+   "JPM suggests using Put options on the JPUXERNV index to hedge Semis/AI risk into month-end rebalancing.",
+   "Flight to safety observed in Semis land with uptick in NVDA demand; Software being sold into the bounce."
+  ],
+  "geopolitical": [
+   "Iran UNGA speech and escalatory rhetoric regarding the Hormuz/Bab al-Mandab Strait.",
+   "Trump-Xi Summit scheduled in DC on September 24.",
+   "Potential post-midterm policy volatility regarding tariffs and debt ceiling brinksmanship."
+  ],
+  "entities": [
+   {
+    "name": "McDonald's",
+    "ticker": "MCD",
+    "class": "stock"
+   },
+   {
+    "name": "Meta Platforms",
+    "ticker": "META",
+    "class": "stock"
+   },
+   {
+    "name": "Shopify",
+    "ticker": "SHOP",
+    "class": "stock"
+   },
+   {
+    "name": "Expedia",
+    "ticker": "EXPE",
+    "class": "stock"
+   },
+   {
+    "name": "Instacart",
+    "ticker": "CART",
+    "class": "stock"
+   },
+   {
+    "name": "NVIDIA",
+    "ticker": "NVDA",
+    "class": "stock"
+   },
+   {
+    "name": "Costco",
+    "ticker": "COST",
+    "class": "stock"
+   },
+   {
+    "name": "Darden Restaurants",
+    "ticker": "DRI",
+    "class": "stock"
+   },
+   {
+    "name": "Alphabet",
+    "ticker": "GOOGL",
+    "class": "stock"
+   },
+   {
+    "name": "Amazon",
+    "ticker": "AMZN",
+    "class": "stock"
+   },
+   {
+    "name": "VanEck Semiconductor ETF",
+    "ticker": "SMH",
+    "class": "etf"
+   },
+   {
+    "name": "S&P 500",
+    "ticker": "SPX",
+    "class": "index"
+   },
+   {
+    "name": "Nasdaq 100",
+    "ticker": "NDX",
+    "class": "index"
+   },
+   {
+    "name": "Russell 2000",
+    "ticker": "RTY",
+    "class": "index"
+   }
+  ],
+  "data_points": [
+   {
+    "figure": "5.114%",
+    "metric": "10Y Treasury Yield",
+    "source_bank": "JPMorgan",
+    "context": "Yield spike on September 23.",
+    "figure_status": "level",
+    "anchor": "10Y @ 5.114%, and VIX @ 15.18."
+   },
+   {
+    "figure": "$103.59",
+    "metric": "Brent Crude Price",
+    "source_bank": "JPMorgan",
+    "context": "4.6% increase on September 23.",
+    "figure_status": "level",
+    "anchor": "Brent breaking $100 again ($103.59, a 4.6% increase today)"
+   },
+   {
+    "figure": "4.1%",
+    "metric": "US Unemployment Rate",
+    "source_bank": "JPMorgan",
+    "context": "Full employment level as defined by the Fed.",
+    "figure_status": "released",
+    "anchor": "at full employment (4.1%; full employment as defined by the Fed)"
+   },
+   {
+    "figure": "3.20bp",
+    "metric": "5Y Treasury Auction Tail",
+    "source_bank": "JPMorgan",
+    "context": "Disappointing end user demand on September 23.",
+    "figure_status": "released",
+    "anchor": "5Y auction finished the day with a 3.20bp tail with disappointing end user demand"
+   }
+  ],
+  "tensions": [
+   {
+    "theme": "AI Disintermediation",
+    "bull_case": "AI agents drive efficiency and new revenue streams for tech platforms.",
+    "bear_case": "AI agents like Meta's Muse disintermediate existing business models and destroy unit economics for partners.",
+    "what_invalidates": "If AI agents prove to be revenue-accretive for partners rather than cannibalistic."
+   }
+  ],
+  "theme_stances": [
+   {
+    "theme": "tech vs small caps",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Secular growth and mega-cap tech are supported by a stronger USD and yield curve flattening.",
+    "primary_instruments": [],
+    "vs_consensus": "",
+    "evidence": "We maintain our core view of +Tech vs. -RTY"
+   }
+  ]
+ },
+ {
+  "source": "JPMorgan",
+  "title": "JPM International Market Intelligence Morning Briefing",
+  "type": "morning_briefing",
+  "priority": "high",
+  "published": "2026-09-24",
+  "insights": [
+   "Global cyclical momentum remains strong with September flash PMIs beating expectations and broad-based gains in employment.",
+   "JPM's semi-annual global corporate capex survey confirms strength across key end markets, with rising corporate financing surpluses supporting the outlook.",
+   "Tactically cautious on Global Equities due to upward pressure on yields, though JPM views the current dip as a buying opportunity.",
+   "Dispersion within Tech has shifted from across themes to within them, favoring AI Infrastructure, Capex Spenders, and AI Vulnerables.",
+   "Initiated broader coverage of China AI with a constructive view, projecting US$544bn in cumulative operating profit over 2026E-30E.",
+   "Japan Banks: Expect policy rate to reach 2.0% sooner than the March 2028 timeframe; recommend megabanks over regional banks.",
+   "US crowding is at 5-year lows, suggesting a potential trough and tactical upside for equities.",
+   "Hedge funds are re-grossing, led by quants, while broader positioning remains cautious and risk-off in the US and Europe."
+  ],
+  "market_movers": [
+   {
+    "ticker": "BABA",
+    "action": "positive_catalyst_watch",
+    "rating": "N/A",
+    "price_target": "N/A",
+    "rationale": "Identified as a key beneficiary in JPM's China AI Value Capture framework.",
+    "conviction": "medium"
+   },
+   {
+    "ticker": "TCEHY",
+    "action": "positive_catalyst_watch",
+    "rating": "N/A",
+    "price_target": "N/A",
+    "rationale": "Identified as a key beneficiary in JPM's China AI Value Capture framework.",
+    "conviction": "medium"
+   }
+  ],
+  "sector_views": [
+   {
+    "sector": "Technology",
+    "stance": "overweight",
+    "rationale": "Remain more bullish on Tech, though favoring dispersed leadership within AI infrastructure and capex spenders."
+   },
+   {
+    "sector": "China AI",
+    "stance": "overweight",
+    "rationale": "Constructive view based on exponential intelligence consumption growth and profit pool shifts."
+   },
+   {
+    "sector": "Japan Banks",
+    "stance": "overweight",
+    "rationale": "Positive interest rate sensitivity as policy rates move toward 2.0%."
+   }
+  ],
+  "earnings": [
+   "China AI value chain expected to generate US$544bn cumulative operating profit 2026E-30E (forecast).",
+   "Models and applications expected to contribute one-third of industry profits and nearly two-thirds of the increase in annual earnings between 2026E and 2030E (forecast)."
+  ],
+  "macro": [
+   {
+    "indicator": "10Y UST Yield",
+    "reading": "5.5%",
+    "interpretation": "Yields are moving toward fair value; current dip is a buying opportunity.",
+    "status": "target",
+    "period": "fair value"
+   },
+   {
+    "indicator": "BoJ Policy Rate",
+    "reading": "2.0%",
+    "interpretation": "Likely to be reached sooner than the March 2028 timeframe; bullish for Japan Banks.",
+    "status": "forecast",
+    "period": "near-term"
+   },
+   {
+    "indicator": "OECD Sovereign Net-Debt",
+    "reading": "55.5%",
+    "interpretation": "Well below sustainable limits of 180%-230% of GDP.",
+    "status": "released",
+    "period": "end-2025"
+   }
+  ],
+  "trades": [
+   {
+    "description": "Long China H-shares over A-shares",
+    "rationale": "H-shares lag A-shares YTD and have room for catch-up into China Tech earnings.",
+    "risk": "Choppy price action in EM.",
+    "conviction": "medium",
+    "time_horizon": "1-3mo",
+    "instruments": []
+   },
+   {
+    "description": "Long KWEB",
+    "rationale": "Tactical expression of bullish view on China Internet.",
+    "risk": "Geopolitical volatility.",
+    "conviction": "medium",
+    "time_horizon": "1-3mo",
+    "instruments": [
+     "KWEB"
+    ]
+   },
+   {
+    "description": "Long India (INDA) / Short Southeast Asia (ASEA)",
+    "rationale": "India equity strength supported by improving macro and foreign investor flows.",
+    "risk": "Rotation out of EM.",
+    "conviction": "medium",
+    "time_horizon": "1-3mo",
+    "instruments": [
+     "INDA",
+     "ASEA"
+    ]
+   }
+  ],
+  "risks": [
+   "Geopolitical de-escalation failure.",
+   "Policy rate reaching 2.0% in Japan could worsen risk-reward for banks.",
+   "Crowding performance remains challenging.",
+   "Potential for multi-week factor rotation causing drawdowns."
+  ],
+  "vol_positioning": [
+   "US crowding (60d return) is at ~5yr lows, suggesting a potential trough.",
+   "US TPM (Total Positioning Monitor) is at ~25th percentile, nearing July lows.",
+   "EU TPM shows a tactical upside signal after 4wk change dipped below -1z.",
+   "CTA positioning in HSI is near 12m lows.",
+   "Hedge funds are re-grossing, led by quants (+1.5% MTD performance).",
+   "Momentum flows in US are basing, but set-up remains tricky with limited conviction to re-add to winners."
+  ],
+  "geopolitical": [
+   "US and China extended their trade truce by two months.",
+   "Trump-Xi Summit scheduled for 09/24.",
+   "G7 foreign ministers meeting on the sidelines of the UN General Assembly."
+  ],
+  "entities": [
+   {
+    "name": "Alibaba",
+    "ticker": "BABA",
+    "class": "stock"
+   },
+   {
+    "name": "Tencent",
+    "ticker": "TCEHY",
+    "class": "stock"
+   },
+   {
+    "name": "KWEB",
+    "ticker": "KWEB",
+    "class": "etf"
+   },
+   {
+    "name": "iShares Latin America 40 ETF",
+    "ticker": "ILF",
+    "class": "etf"
+   },
+   {
+    "name": "iShares MSCI India ETF",
+    "ticker": "INDA",
+    "class": "etf"
+   },
+   {
+    "name": "Global X Southeast Asia ETF",
+    "ticker": "ASEA",
+    "class": "etf"
+   },
+   {
+    "name": "Meta",
+    "ticker": "META",
+    "class": "stock"
+   }
+  ],
+  "data_points": [
+   {
+    "figure": "5.5%",
+    "metric": "10Y UST fair value yield",
+    "source_bank": "JPMorgan",
+    "context": "Fair value target for 10Y UST.",
+    "figure_status": "target",
+    "anchor": "yields are moving towards fair value (5.5%), similar episodes have historically been buying opportunities"
+   },
+   {
+    "figure": "55.5%",
+    "metric": "Median OECD sovereign net-debt to GDP",
+    "source_bank": "JPMorgan",
+    "context": "End-2025 median vs 180-230% sustainable limit.",
+    "figure_status": "released",
+    "anchor": "well above the end-2025 median of 55.5%."
+   },
+   {
+    "figure": "US$544bn",
+    "metric": "Cumulative operating profit China AI value chain",
+    "source_bank": "JPMorgan",
+    "context": "2026E-30E projection.",
+    "figure_status": "forecast",
+    "anchor": "generating US$544bn of cumulative operating profit over 2026E-30E"
+   },
+   {
+    "figure": "2.0%",
+    "metric": "BoJ policy rate",
+    "source_bank": "JPMorgan",
+    "context": "Expected policy rate level.",
+    "figure_status": "forecast",
+    "anchor": "The possibility that the policy rate will reach 2.0% sooner than the March 2028 timeframe"
+   }
+  ],
+  "tensions": [
+   {
+    "theme": "Global Equities Outlook",
+    "bull_case": "Equity valuations offer a cushion and geopolitical de-escalation could provide an off-ramp.",
+    "bear_case": "Upward pressure on yields and potential for multi-week factor rotation.",
+    "what_invalidates": ""
+   }
+  ],
+  "theme_stances": [
+   {
+    "theme": "china ai value chain",
+    "stance": "supportive",
+    "conviction": "medium",
+    "key_argument": "Exponential intelligence consumption growth will support profit pools shifting toward downstream monetization.",
+    "primary_instruments": [
+     "BABA"
+    ],
+    "vs_consensus": "",
+    "evidence": "We initiate broader coverage of China AI with a constructive sector view."
+   }
+  ]
+ }
+]
+
+=== TICKER LOOKUP ===
+
+TICKER LOOKUP — use $TICKER (cashtag format) when referring to these:
+  SPX — S&P 500 (index, 3 mentions)
+  NDX — Nasdaq (index, 2 mentions)
+  META — Meta Platforms (stock, 2 mentions)
+  RUT — Russell 2000 (index, 1 mentions)
+  VIX — VIX (index, 1 mentions)
+  BTC — Bitcoin (crypto, 1 mentions)
+  ETH — Ethereum (crypto, 1 mentions)
+  MSTR — MicroStrategy (stock, 1 mentions)
+  EEM — MSCI EM (etf, 1 mentions)
+  JPM — JPMorgan Chase (stock, 1 mentions)
+  MCD — McDonald's (stock, 1 mentions)
+  SHOP — Shopify (stock, 1 mentions)
+  EXPE — Expedia (stock, 1 mentions)
+  CART — Instacart (stock, 1 mentions)
+  NVDA — NVIDIA (stock, 1 mentions)
+  COST — Costco (stock, 1 mentions)
+  DRI — Darden Restaurants (stock, 1 mentions)
+  GOOGL — Alphabet (stock, 1 mentions)
+  AMZN — Amazon (stock, 1 mentions)
+  SMH — VanEck Semiconductor ETF (etf, 1 mentions)
+  RTY — Russell 2000 (index, 1 mentions)
+  BABA — Alibaba (stock, 1 mentions)
+  TCEHY — Tencent (stock, 1 mentions)
+  KWEB — KWEB (etf, 1 mentions)
+  ILF — iShares Latin America 40 ETF (etf, 1 mentions)
+  INDA — iShares MSCI India ETF (etf, 1 mentions)
+  ASEA — Global X Southeast Asia ETF (etf, 1 mentions)
+
+Do NOT prefix $ for these (FX / commodity / other — reference by name):
+  BNO — Brent Oil (commodity, 2 mentions)
+  GLD — Gold (commodity, 2 mentions)
+  USO — Oil (commodity, 1 mentions)
+  CPER — Copper (commodity, 1 mentions)
+
+=== THEME COVERAGE ===
+
+THEME COVERAGE — distinct bank counts across the corpus (use this to anchor INSIGHTS ordering; the highest-count themes MUST appear unless conviction-disqualified):
+  - hawkish central bank repricing: 1 banks / 1 PDFs (Deutsche Bank) — stance: 1 support / 0 skeptical / 0 neutral — 1 HIGH-CONVICTION stance
+  - china ai value chain: 1 banks / 1 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral
+  - corporate financing surplus: 1 banks / 1 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — close in: asymmetry (close by naming the payoff asymmetry directly without counter-case framing ('Cost of being wrong: X. Cost of missing this if right: Y. Carry: Z.'))
+  - monetarist revival: 1 banks / 1 PDFs (TS Lombard) — stance: 0 support / 1 skeptical / 0 neutral — close in: falsifiable_window (close with a time-bound falsifiable prediction ('if X doesn't print Y by Z, the thesis is dead'))
+  - post midterm policy volatility: 1 banks / 1 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — close in: ranked_list (close with a 3-5 item ordered list of what to watch next, ranked by signal strength ('Watch in this order: (1) ..., (2) ..., (3) ...'))
+  - tech vs small caps: 1 banks / 1 PDFs (JPMorgan) — stance: 1 support / 0 skeptical / 0 neutral — close in: single_question (close with one sharp falsifiable question the trader must answer for themselves ('Does <X> break <Y> first or vice versa?'))
+
+=== OPEN DIRECTIONAL READS FROM PRIOR PULSES ===
+
+- LONG $NVDA (since 2026-09-18): $NVDA calls · implied vol at multi-year lows, Goldman desk call
+- LONG $EFA (since 2026-09-21): Long $EFA, $XLU · only 2% of indexes above both averages, energy relief lands in power
+- SHORT $SHY (since 2026-09-21): Short $SHY · BofA short 2-year, policy still not restrictive
+- LONG $FXI (since 2026-09-22): Long $FXI, $KWEB · summit Sept 23-25, options priced for nothing
+- SHORT $SPY (since 2026-09-22): $SPY puts · Goldman lookback hedge, 10-year above 4.8%
+- SHORT $TLT (since 2026-09-22): Short $TLT · 75bp priced by June, past cycles ran further
+- LONG $XOM (since 2026-09-22): Long $XOM · refining margins at records, Bernstein Outperform $182
+- LONG $BWXT (since 2026-09-23): Long $BWXT, $MIR · fuel chain over reactor developers
+- LONG $IWM (since 2026-09-23): $IWM calls · small-cap options near 2-year lows vs credit stress
+- LONG $META (since 2026-09-23): Long $META · Muse 2.5m downloads in 13 days, JPM Overweight
+- LONG $VLO (since 2026-09-23): Long $VLO, $MPC, $COP · record diesel, refining capacity short to 2028
+
+=== CONSENSUS LEDGER (previous pulse's published consensus) ===
+
+[from your own pulse dated 2026-09-23]
+- Thursday, September 24 after the close: Costco. Consensus is $6.67 a share on $96.75 billion of revenue, the same numbers this pulse has carried for a week. August retail sales already ran hot at 1.2%, so a miss reads as a consumer signal r
+[from your own pulse dated 2026-09-22]
+- Thursday after the close: Costco. Consensus is $6.67 a share on $96.75 billion of revenue, the same numbers this pulse has carried for a week. August retail sales ran 1.2%, well above what economists expected, and this is the first clean te
+
+=== LIVE MARKET DATA ===
+
+CURRENT MARKET DATA (as of 2026-09-24 11:29 EDT, session: OPEN):
+Markets currently OPEN (regular session). Traditional-market % reflects today's session-to-date move from yesterday's close. Crypto % reflects today's move since 00:00 UTC.
+
+Traditional markets (% shown = session-to-date):
+  $SPY: $763.71 (-0.53% session-to-date)
+  $QQQ: $735.31 (-0.80% session-to-date)
+  $VIXY: $17.07 (+1.67% session-to-date)
+  $BNO: $62.59 (+3.69% session-to-date)
+  $USO: $154.94 (+4.11% session-to-date)
+  $GLD: $389.51 (-0.86% session-to-date)
+  $TLT: $79.76 (-0.87% session-to-date)
+  $UUP: $28.71 (+0.21% session-to-date)
+
+US Treasury yields (live via Yahoo yield indices; change = vs prior close):
+  5Y: 5.04% (+3.9 bps)
+  10Y: 5.16% (+4.6 bps)
+  30Y: 5.45% (+4.8 bps)
+  30Y-10Y spread: +29 bps
+
+Crypto (% shown = since 00:00 UTC today, which is 8pm ET yesterday during EDT):
+  $BTC: $84,108 (-0.34% UTC-day)
+  $ETH: $2,669 (-0.56% UTC-day)
+  $SOL: $116 (+0.68% UTC-day)
+
+
+=== LIVE NEWS ===
+
+LIVE MARKET NEWS (last 48h from Finnhub, newest first):
+  [2026-09-24 10:59 EDT] CNBC: MGM Resorts shares sink 9% after Barry Diller's People Inc. rescinds takeover offer
+    Barry Diller's People Inc. has rescinded its offer to buy the remaining public shares of MGM Resorts.
+  [2026-09-24 10:14 EDT] CNBC: Philadelphia Fed's Anna Paulson says 'modest' rate moves likely ahead to tame inflation
+    The policymaker said  she and her colleagues may need to raise interest rates further to bring inflation back to target.
+  [2026-09-24 09:58 EDT] Reuters: Saudi Arabia thwarts Houthi ballistic missiles, Yemen's Saudi-led coalition says - Reuters
+    Saudi Arabia thwarts Houthi ballistic missiles, Yemen's Saudi-led coalition says  Reuters
+  [2026-09-24 09:24 EDT] CNBC: Our top 10 things to watch in the stock market Thursday
+    The Trump-Xi summit kicks off today, and Meta delivers a big boost to its hardware lineup.
+  [2026-09-24 08:30 EDT] CNBC: Family offices double down on stocks and private equity even as inflation spurs worry, Citi survey finds
+    Inflation displaced tariffs as family offices' top investment concern in 2026, per a new Citi Wealth survey.
+  [2026-09-24 07:32 EDT] Reuters: US Democrats tee up pre-election war powers vote as some Republicans break with Trump on Iran - Reuters
+    US Democrats tee up pre-election war powers vote as some Republicans break with Trump on Iran  Reuters
+  [2026-09-24 07:27 EDT] Reuters: Netanyahu's fleeting visit to New York mirrors strained US ties - Reuters
+    Netanyahu's fleeting visit to New York mirrors strained US ties  Reuters
+  [2026-09-24 06:20 EDT] Reuters: UK stocks fall as lack of progress in US-Iran talks lifts oil prices - Reuters
+    UK stocks fall as lack of progress in US-Iran talks lifts oil prices  Reuters
+  [2026-09-24 06:00 EDT] CNBC: Stephen Curry says WNBA needs to keep conversations about the league 'focused on basketball'
+    NBA star Stephen Curry, an investor in women's sports, says the WNBA's next commissioner should keep conversations about the league "focused on basketball."
+  [2026-09-24 05:06 EDT] CNBC: New York Fed’s Williams says it's 'reasonable' to expect another rate hike by year-end
+    John Williams was speaking at the London Macro Policy Forum on Thursday.
+  [2026-09-24 02:55 EDT] Reuters: Norway gives additional $13 million in aid to Palestinians - reuters.com
+    Norway gives additional $13 million in aid to Palestinians  reuters.com
+  [2026-09-24 01:04 EDT] Reuters: Netanyahu expected to berate New York's Mamdani in 'campaign speech' at UN - Reuters
+    Netanyahu expected to berate New York's Mamdani in 'campaign speech' at UN  Reuters
+  [2026-09-24 01:01 EDT] Reuters: COMMENTARY: Asia's crude oil imports hit post-Iran conflict high in September, but remain weak - Reuters
+    COMMENTARY: Asia's crude oil imports hit post-Iran conflict high in September, but remain weak  Reuters
+  [2026-09-24 00:47 EDT] Reuters: Shipping traffic via Strait of Hormuz stays lower than 10-day average, data shows - Reuters
+    Shipping traffic via Strait of Hormuz stays lower than 10-day average, data shows  Reuters
+  [2026-09-24 00:45 EDT] Reuters: Turkey's Erdogan tells Ukraine's Zelenskiy that Black Sea attacks are inexplicable - Reuters
+    Turkey's Erdogan tells Ukraine's Zelenskiy that Black Sea attacks are inexplicable  Reuters
+
+=== EARNINGS CALENDAR ===
+
+EARNINGS STILL UPCOMING (belongs in WHAT TO WATCH):
+  2026-09-24 COST — AMC (EPS est $6.6561, Rev est $96.76B)
+  2026-09-30 MU — AMC
+
+=== ECONOMIC CALENDAR ===
+
+ECONOMIC CALENDAR — FALLBACK FEED (Finnhub down; blended sources): consensus estimates only exist for THIS calendar week (ForexFactory); dates beyond this week come from the FRED official release calendar (no consensus posted — say 'no consensus posted yet', do NOT invent one); ACTUAL values where shown are official FRED numbers and name their reference month:
+
+ECONOMIC EVENTS STILL UPCOMING (belongs in WHAT TO WATCH):
+  2026-09-30 08:30 EDT | [US] | GDP (Gross Domestic Product) | impact=high
+  2026-09-30 08:30 EDT | [US] | PCE (Personal Income and Outlays) | impact=high
+
+=====================================================================
+
+Walk the draft claim by claim. For every specific figure, attribution, call, and event, find its support in the context above. Emit a finding for each one you cannot support, per the system contract. STRICT JSON only.
