@@ -1,0 +1,145 @@
+{
+  "pulse_date": "2026-09-25",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "bond and rates volatility",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "Most banks see bond-market swings widening and are turning more cautious on stocks until oil prices and yields settle, while one bank argues the yield jump is just markets catching up to stronger economic data rather than a lasting crisis.",
+      "facts_agreed": [
+        {
+          "claim": "Rising bond-market volatility is pushing desks toward more defensive positioning until yields and oil prices stabilize.",
+          "banks_for": [
+            "The Market Ear",
+            "Bloomberg",
+            "JPMorgan"
+          ],
+          "evidence_quotes": [
+            "Bond vol was pricing far too little risk.",
+            "Either path widens the distribution of potential rates outcomes and argues for higher rates vol.",
+            "we remain Tactically Cautious and favor +NDX vs. -RTY as the core trade."
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "whether the surge in yields is a disorderly, storm-like breakdown or a rational repricing of rate-cut odds against stronger data",
+          "banks_for": [
+            "Bloomberg"
+          ],
+          "for_evidence": "Either path widens the distribution of potential rates outcomes and argues for higher rates vol.",
+          "banks_against": [
+            "Rabobank"
+          ],
+          "against_evidence": "A perfect storm is raging in the bond market"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "The Market Ear",
+          "subject": "US 10-year Treasury yield",
+          "direction_or_level": "5.2%",
+          "by_when": "",
+          "source_quote": "First major level after breakout from three-year consolidation."
+        },
+        {
+          "bank": "The Market Ear",
+          "subject": "US 10-year Treasury yield",
+          "direction_or_level": "5.5%",
+          "by_when": "",
+          "source_quote": "Next major level beyond 5.2%."
+        }
+      ]
+    },
+    {
+      "theme": "higher neutral rate",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "Deutsche Bank reads the recent jump in long-term Treasury yields as a sign the economy's underlying interest-rate floor is settling higher on strong growth and AI-related spending, while the other desks covering this haven't staked a directional view.",
+      "facts_agreed": [
+        {
+          "claim": "Deutsche Bank views the recent rise in long-term bond yields as evidence that the economy's underlying interest-rate floor, the neutral rate, is shifting higher, driven by strong growth and AI-related capital spending.",
+          "banks_for": [
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "With the latest move, it feels as though we are now edging close to that upper bound."
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "agentic ai disruption",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "Banks are split on agentic AI: Goldman Sachs frames it as a long-run productivity boost and a strategic shift in how people shop and work, while The Market Ear says it is already dragging on financial stocks and subscription-based businesses.",
+      "facts_agreed": [],
+      "facts_contested": [
+        {
+          "claim": "Whether agentic AI is a structural positive for productivity and consumer commerce or is already a drag on parts of the market",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "for_evidence": "agents are about to radically reduce the friction between people, technology and capital",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "negative AI spillover into the financials"
+        }
+      ],
+      "falsifiable_predictions": [
+        {
+          "bank": "Goldman Sachs",
+          "subject": "U.S. agentic commerce addressable market",
+          "direction_or_level": "$2.6tn",
+          "by_when": "",
+          "source_quote": "U.S. consumer spending in high-likelihood categories for agentic commerce"
+        }
+      ]
+    },
+    {
+      "theme": "market breadth deterioration",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 1,
+        "neutral": 2
+      },
+      "consensus_view": "BTIG is the lone voice warning that under the surface, more stocks are hitting new lows than new highs even as the index keeps climbing, a split it compares to the run-up before the 2000 market top.",
+      "facts_agreed": [
+        {
+          "claim": "Market breadth is deteriorating even as the headline index keeps rising, with more stocks hitting fresh lows than fresh highs.",
+          "banks_for": [
+            "BTIG"
+          ],
+          "evidence_quotes": [
+            "six straight days of more 52wk lows than highs even as the index has rallied"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "diesel export ban risk",
+      "reason": "after Rule 5/6 filtering, theme has no remaining content (single-bank facts dropped, bad deadlines dropped)"
+    }
+  ]
+}
