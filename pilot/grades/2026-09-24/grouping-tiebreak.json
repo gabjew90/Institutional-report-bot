@@ -1,56 +1,63 @@
 {
  "metric": 1,
- "total_cards": 222,
+ "total_cards": 694,
  "fragmentation_sets": [
   {
-   "subject": "France's fiscal crisis and the OAT-Bund spread blowout",
+   "subject": "Meta Muse's launch/stock impact and the broader agentic-commerce investment thesis it triggered",
+   "labels": [
+    "meta muse app momentum",
+    "ai agentic commerce playbook",
+    "agentic ai economic disruption"
+   ],
+   "cards": 32
+  },
+  {
+   "subject": "The Fed's hike to 4% and the accompanying Treasury yield surge / bond market stress",
+   "labels": [
+    "treasury yields rates outlook",
+    "fed rate hike outlook"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "The Market Ear's range-bound-tape read and its Russell/small-cap vol-hedge idea amid the rate spike",
+   "labels": [
+    "equity range downside risk",
+    "russell small cap vol hedge"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "BTIG's breadth-divergence/cycle-top read on semis paired with its QQQ moving-average breakout signal",
+   "labels": [
+    "equity breadth cycle top signal",
+    "qqq breakout technical setup"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "France's fiscal crisis and the widening Franco-German bond spread",
    "labels": [
     "french budget crisis bond spreads",
     "germany vs france fiscal trade"
    ],
    "cards": 12
-  },
-  {
-   "subject": "Meta Muse launch and the agentic-commerce trade",
-   "labels": [
-    "meta muse app momentum",
-    "ai agentic commerce playbook"
-   ],
-   "cards": 20
   }
  ],
- "fragmented_mass_share": 0.144,
+ "fragmented_mass_share": 0.17,
  "mis_merges": [
   {
    "label": "hedge fund positioning",
    "subjects": [
-    "cross-asset CTA/Asset Manager/Leveraged Fund futures positioning flows",
-    "bank-stock dispersion in the financial-sector selloff (O'Dwyer commentary on GS/MS/C/USB vs LAZ/JEF/regionals)"
+    "Weekly CTA/asset-manager/leveraged-fund flow positioning across rates, copper, and index futures",
+    "JPMorgan's O'Dwyer commentary on which bank stocks are selling off vs. outperforming amid Meta Muse-driven fintech-disruption fear"
    ],
    "would_change_theme_selection": true,
-   "why": "The bank-dispersion call is a distinct, nameable theme that an editor scanning a generic positioning-flows label would miss entirely."
-  },
-  {
-   "label": "post midterm fiscal trade policy risk",
-   "subjects": [
-    "US tariff/trade-war escalation (USMCA lapse, Canada counter-tariffs, auto tariff threat, Section 301)",
-    "domestic fiscal risk (reconciliation package, debt ceiling, government funding deadline)"
-   ],
-   "would_change_theme_selection": true,
-   "why": "Trade-war escalation is a standalone, market-moving theme with different instruments and mechanism than debt-ceiling/fiscal risk, and is buried under a broad fiscal-sounding label."
-  },
-  {
-   "label": "global equity sector rotation hedges",
-   "subjects": [
-    "JPM regional/sector equity long-short views and index option hedges",
-    "JPM gold position (profit-taken, watching to re-enter)"
-   ],
-   "would_change_theme_selection": false,
-   "why": "A single gold card is too thin a signal to be a missed theme on its own, even though it belongs with gold coverage, not equity hedges."
+   "why": "An editor scanning a generic weekly-positioning label would likely miss the distinct, timely 'Muse spooks bank stocks' story (GS/MS/C selling vs. LAZ/JEF outperformance) that has nothing to do with CTA flow data."
   }
  ],
  "pass": false,
- "notes": "Header claims 439 cards; the ledger content itself sums to 222, recounted directly. misc holds 12 cards (5.4% of total), all correctly excluded from fragmentation/mis-merge scoring as declared overflow.",
+ "notes": "Cross-bank duplicate facts (e.g. identical Russell-2000 8% line under two Market Ear labels, identical Franco-German spread under Syz and Deutsche Bank labels) are the strongest fragmentation signal. misc holds 12 unrelated cards (BOJ, gold, Bitcoin, sector breadth, Turkey crisis x4, DXY, EM FX, fund flows) and is correctly excluded from fragmentation per the overflow rule.",
  "dim": "grouping",
  "agent": "tiebreak",
  "artifact": "",

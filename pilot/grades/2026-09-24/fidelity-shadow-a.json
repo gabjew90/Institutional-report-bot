@@ -6,12 +6,12 @@
    "id": "s1",
    "grade": "unsupported",
    "live_market": false,
-   "source_file": null,
-   "span": null,
-   "why": "No source document mentions Morgan Stanley taking a contrary position on 'the level.' MS's own report (17416) states a target/downside case but never frames it as opposing another bank's level, and no other source has a comparable S&P level for MS to fade.",
+   "source_file": "",
+   "span": "",
+   "why": "No source establishes what 'the level' is or shows Morgan Stanley opposing another party's specific level call. MS's own document (17416) states its own 8,000 year-end target and 7000-7100 downside case, but never frames this as 'taking the other side' of a level set by someone else, and no other bank's document sets a level MS is shown opposing.",
    "searched": [
+    "Morgan Stanley",
     "other side",
-    "take the other side",
     "the level"
    ]
   },
@@ -21,157 +21,122 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-23/17416__weekly-warm-up-classic-mid-cycle.txt",
    "span": "We maintain our 8,000 year-end S&P 500 target driven by earnings resiliency... We still view 7000-7100 as a tactical downside case should these risks emerge over the next 3-5 weeks",
-   "why": "Morgan Stanley Research states the 8,000 year-end target and 7000-7100 tactical downside case over the next 3-5 weeks if crude/refined product prices (oil) rise further \u2014 matches exactly."
+   "why": "Morgan Stanley's 8,000 year-end S&P target, the 7000-7100 downside case over 3-5 weeks, and the earnings-resilience/oil-risk framing all match the source directly."
   },
   {
    "id": "s3",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt",
-   "span": "Meta shares up 21% since the launch of Muse 2 weeks ago, vs. the SPX +1%.",
-   "why": "JPMorgan's Meta note (Doug Anmuth) states the exact figures: +21% for Meta since Muse's launch two weeks prior vs. +1% for SPX."
+   "span": "up 21% since the launch of Muse 2 weeks ago, vs. the SPX +1%",
+   "why": "Matches Meta's 21% gain since Muse launch two weeks prior versus SPX's 1% over the same period."
   },
   {
    "id": "s4",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": null,
-   "span": null,
-   "why": "No source document mentions PNC or Fifth Third (FITB), nor any desk recommendation to 'buy the drop' in bank names alongside MS. The only bank-flow content found (17539) is a hedge-fund positioning summary with no named stock picks.",
-   "searched": [
-    "PNC",
-    "FITB",
-    "Fifth Third",
-    "buy the drop / buy the dip"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+   "span": "I want to fade the move lower in banks and WM... be patient and size accordingly rather than swinging at it. As flagged last week, favored names remain MS, PNC and FITB.",
+   "why": "'Fade the move lower... be patient' supports 'buy the drop patiently'; favored names MS, PNC, FITB match exactly."
   },
   {
    "id": "s5",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
-   "span": "Cyclicals mostly bought this week (Energy led via short covering, Cons Disc/Industrials also bought), while Banks were sold with Regionals seeing shorts added.",
-   "why": "JPM's hedge-fund (HF) prime-brokerage flow summary this week: banks sold outright, regionals had shorts added \u2014 matches the sentence's factual content."
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+   "span": "the more consensual names (C, MS, GS, USB) are dominating volume while the regionals and the likes of LAZ and JEF are relative outperformers",
+   "why": "The source attributes bank selling this week to systematic/positioning-unwind flow concentrated in large consensus names (C, MS, GS, USB), while regionals and names like LAZ/JEF were relative OUTPERFORMERS (i.e., held up better). The sentence inverts this, claiming hedge funds sold banks outright while specifically adding shorts in regionals \u2014 the opposite direction from what the source describes for regionals.",
+   "searched": [
+    "hedge fund",
+    "regional",
+    "outright"
+   ]
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
-   "span": "US Energy Secretary Wright said that \"a full blanket ban or zero exports of diesel\" are not being discussed.",
-   "why": "DB's Reid note confirms both the Politico report of a 90-day diesel export ban plan and Wright's denial of any blanket ban being discussed."
+   "span": "Politico reported that the US was preparing a plan for a 90-day export ban... US Energy Secretary Wright said that \"a full blanket ban or zero exports of diesel\" are not being discussed",
+   "why": "Matches the Politico report of a 90-day diesel export ban and Wright's denial of any blanket ban."
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt",
-   "span": "five straight days of more 52wk lows than highs even as the index has rallied back near all-time highs, with SPX +1.2% over the last month while 9 of 11",
-   "why": "BTIG note states this exactly: five straight sessions of more new lows than highs, index near record, +1.2% over the month, 9 of 11 sectors negative."
+   "span": "five straight days of more 52wk lows than highs even as the index has rallied back near all-time highs, with SPX +1.2% over the last month while 9 of 11 sectors are negative",
+   "why": "Exact match on five sessions of more new lows than highs, index near record highs, +1.2% monthly return, and 9 of 11 sectors negative."
   },
   {
    "id": "s8",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
-   "span": "the 10yr bund yield (+9.2bps) at a post-2009 high of 3.55%, whilst the 10yr OAT yield (+15.4bps) hit a post-2008 high of 4.66%",
-   "why": "Same DB Reid note also states the Franco-German 10yr spread rose to 110bps/110.4bps, the widest since the 2012 euro crisis \u2014 all figures in the sentence (110bp, 3.55%, 15.4bp) are supported."
+   "span": "pushed the Franco-German 10yr spread up to 110.4bps, which was a level last seen in July 2012... 10yr bund yield (+9.2bps) at a post-2009 high of 3.55%, whilst the 10yr OAT yield (+15.4bps)",
+   "why": "Matches the 110bp French-German spread (widest since the 2012 euro crisis), German 10-year post-2009 high of 3.55%, and French 10-year rise of 15.4bps."
   },
   {
    "id": "s9",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
-   "span": "they remain in more extreme short territory for OATs vs. Bunds and extreme long territory for energy product futures",
-   "why": "JPM's momentum-signals note confirms extreme short positioning in OAT-vs-Bund futures (qualitatively), but no source anywhere gives a specific '-2.5' reading for this or any comparable series \u2014 the precise figure is fabricated and attached to an otherwise real claim.",
-   "searched": [
-    "-2.5",
-    "OAT",
-    "momentum signals bond futures"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "for OATs vs. Bunds... the signals have shifted further into negative territory and sit at a more extreme level of -2.5, perhaps consistent with some further unwind of intra-EMU OW positions",
+   "why": "Matches JPMorgan's OAT-vs-Bund momentum reading of -2.5 and the unwind-of-overweight-positioning interpretation."
   },
   {
    "id": "s10",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": null,
-   "span": null,
-   "why": "No source frames Brent's move as breaking out of a '$75-100 range since late May' into a '$100-110 band.' Sources confirm Brent trading near $99-110 this week but never state the prior range or its start date.",
-   "searched": [
-    "$75",
-    "100-110",
-    "late May / since May",
-    "trading range brent"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17536__washington-policy-perspectives-resilient-equities-higher-rat.txt",
+   "span": "Middle East tensions have pushed Brent into the $100-110/bbl range, above the $75-100/bbl band seen since late May",
+   "why": "Exact match on the Brent price band shift and Middle East tension driver."
   },
   {
    "id": "s11",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": null,
-   "span": null,
-   "why": "No source uses the phrase 'the new China,' cites 32 states with data-center moratoriums, or describes a House bill making data centers pay the full cost of grid upgrades. The closest source (17265) discusses political salience across 25 states generically, not a specific moratorium count or House legislation.",
-   "searched": [
-    "the new China",
-    "32 states",
-    "moratorium",
-    "grid upgrade / pay the full cost",
-    "House bill"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17536__washington-policy-perspectives-resilient-equities-higher-rat.txt",
+   "span": "Populist pressure will rise regardless of the outcome... AI was described as \"the new China\"... cities in 32 states advancing moratoriums... The House-passed the Ratepayer Protection Act, which would require large, power-intensive data centers to bear the full cost of grid upgrades",
+   "why": "All three claims (regardless-of-outcome framing, 'the new China' characterization, 32 states advancing moratoriums, House-passed grid-cost bill) match the source directly."
   },
   {
    "id": "s12",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": null,
-   "span": null,
-   "why": "No source attributes a debt-ceiling or ratings-reassessment warning to JPMorgan 'after the vote.' Debt ceiling is mentioned only in an unrelated New York Life midterms piece, with no ratings-reassessment claim or Treasury-pressure framing.",
-   "searched": [
-    "debt ceiling",
-    "ratings reassessment/review/downgrade",
-    "fiscal outlook",
-    "after the vote"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17536__washington-policy-perspectives-resilient-equities-higher-rat.txt",
+   "span": "This could create further pressure for Treasuries as the debt ceiling approaches and ratings agencies reassess the fiscal outlook",
+   "why": "Matches JPMorgan's post-midterm framing of debt-ceiling and ratings-reassessment pressure on Treasuries."
   },
   {
    "id": "s13",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
-   "span": "AI-related capex has been crowding out other capex, thus containing the growth of overall capex at an aggregate level.",
-   "why": "Matches JPM's stated explanation for why aggregate capex hasn't risen to match corporate cash flow growth."
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "One explanation is that AI-related capex has been crowding out other capex, thus containing the growth of overall capex at an aggregate level",
+   "why": "Directly matches JPMorgan's crowding-out explanation for subdued aggregate capex growth."
   },
   {
    "id": "s14",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": null,
-   "span": null,
-   "why": "No source document contains the words 'hashrate' or 'mining difficulty,' nor any figures for a decline from an October peak. The only bitcoin-mining-adjacent item found (Glassnode's MVRV signal in 17550) is unrelated to hashrate/difficulty.",
-   "searched": [
-    "hashrate",
-    "hash rate",
-    "mining difficulty"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "the roughly 19% and 15% declines in network hashrate and mining difficulty, respectively, from their peak last October... As miners have been pivoting either partially or fully toward AI",
+   "why": "Exact match on the 19%/15% hashrate and difficulty declines and the AI-redirection cause."
   },
   {
    "id": "s15",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": null,
-   "span": null,
-   "why": "No source reports a bank momentum measure for bitcoin at '+1.0' or attributes the week's rally to an unwind of bearish positioning. The only related item (Glassnode MVRV cross in 17550) is a different metric from a different source (Glassnode, not a bank) and does not match this claim.",
-   "searched": [
-    "+1.0",
-    "bitcoin momentum measure",
-    "unwind bearish positions / short covering bitcoin"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "For bitcoin, after the recent rally the momentum signals are now at somewhat more elevated levels with the average z-score at +1.0... The strength of the bitcoin rally over the past week... is consistent with unwinding of bearish bitcoin positions",
+   "why": "Matches the +1.0 momentum z-score and the attribution of the rally to short-covering rather than fresh demand."
   }
  ],
- "faithful": 7,
+ "faithful": 13,
  "distorted": 1,
- "unsupported": 7,
- "faithful_rate": 0.467,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
  "dim": "fidelity",
  "agent": "a",
  "provenance": {

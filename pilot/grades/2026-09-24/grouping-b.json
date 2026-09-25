@@ -1,9 +1,9 @@
 {
  "metric": 1,
- "total_cards": 439,
+ "total_cards": 694,
  "fragmentation_sets": [
   {
-   "subject": "Franco-German bond spread widening amid France's budget crisis",
+   "subject": "France's budget crisis showing up as a Franco-German bond spread blowout to euro-crisis-era highs",
    "labels": [
     "french budget crisis bond spreads",
     "germany vs france fiscal trade"
@@ -11,46 +11,37 @@
    "cards": 12
   },
   {
-   "subject": "Meta Muse's launch/adoption and the consumer agentic-commerce monetization trade it anchors",
+   "subject": "Agentic AI's economic/commerce disruption thesis catalyzed by Meta Muse (ecommerce TAM + friction-reduction/disinflation framing)",
    "labels": [
-    "meta muse app momentum",
-    "ai agentic commerce playbook"
+    "ai agentic commerce playbook",
+    "agentic ai economic disruption"
    ],
-   "cards": 20
+   "cards": 21
   }
  ],
- "fragmented_mass_share": 0.073,
+ "fragmented_mass_share": 0.048,
  "mis_merges": [
-  {
-   "label": "post midterm fiscal trade policy risk",
-   "subjects": [
-    "US-Canada/USMCA trade war escalation and tariff threats",
-    "reconciliation package, debt ceiling and government-funding deadline risk"
-   ],
-   "would_change_theme_selection": true,
-   "why": "The Canada/auto-tariff trade-war escalation is fresh, specific and dense enough (5 cards) to stand as its own theme, but buried in a generic fiscal-risk bucket it is more likely to be compressed into a footnote than picked as a distinct brief."
-  },
   {
    "label": "hedge fund positioning",
    "subjects": [
-    "systematic CTA/Asset Manager/Leveraged Fund futures positioning across rates, equities, commodities and FX",
-    "O'Dwyer's read on bank-stock selloff dynamics (relative winners/losers) amid Meta Muse disruption fears"
+    "JPM systematic/CTA and asset-manager futures positioning flows across rates, equities, commodities and FX",
+    "O'Dwyer's read on bank-stock relative performance amid the Muse-driven selloff"
    ],
    "would_change_theme_selection": false,
-   "why": "The bank-selloff color is only 3 cards, too thin to be its own theme, though it is misfiled away from the Meta Muse cluster where it is actually relevant evidence."
+   "why": "Both threads are minor slivers of the label (3 of 12 cards are O'Dwyer's), so the merge muddies one label rather than costing the editor a distinct lead theme."
   },
   {
    "label": "energy election risk",
    "subjects": [
-    "oil-driven pressure on the Fed's policy path and bond yields",
-    "midterm-election seasonality as an equity-correction risk"
+    "oil's pass-through to yields and the Fed policy path",
+    "midterm election seasonality correction risk"
    ],
    "would_change_theme_selection": false,
-   "why": "Each side of the merge is a single card, too thin on its own to constitute a theme regardless of how it's grouped."
+   "why": "Each side is a single unsupported card, too thin to be a theme on its own, so bolting them together only produces a confusing 2-card label rather than hiding real content."
   }
  ],
- "pass": false,
- "notes": "Fragmented mass stays well under the 10% bar, but one mis-merge (fiscal risk vs. trade-war escalation) would plausibly change theme selection, which fails the gate on its own. misc (12 cards) counted as ungrouped overflow only, per definition.",
+ "pass": true,
+ "notes": "misc holds 12 of the sampled cards (declared overflow, not scored as mis-merge); label lists appear capped at roughly 12-13 items each, well below the stated 694-card total, so fragmented_mass_share is computed against the true total but numerator counts are drawn only from the visible sample and likely understate true fragmented mass.",
  "dim": "grouping",
  "agent": "b",
  "artifact": "",

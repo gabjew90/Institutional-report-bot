@@ -1,12 +1,145 @@
 {
- "failed": true,
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document frames Morgan Stanley as opposing a specific 'level' set by another party. The only MS content in the corpus (17416) presents its own self-consistent 8,000 year-end target and 7000-7100 tactical downside case, not a rebuttal of someone else's level, and no other document references MS's view for a bank-vs-bank debate over a level.",
+   "searched": [
+    "other side of the level",
+    "takes the other side",
+    "the level",
+    "Morgan Stanley"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17416__weekly-warm-up-classic-mid-cycle.txt",
+   "span": "We still view 7000-7100 as a tactical downside case should these risks emerge over the next 3-5 weeks, but this would not prevent the market from reaching our year-end target",
+   "why": "Morgan Stanley (source field: Morgan Stanley) states the 8,000 year-end S&P 500 target ('We maintain our 8,000 year-end S&P 500 target driven by earnings resiliency') and the 7000-7100 downside case tied to the same near-term risk window (higher crude/refined product prices), matching the sentence exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt",
+   "span": "up 21% since the launch of Muse 2 weeks ago, vs. the SPX +1%",
+   "why": "Direct verbatim match in JPMorgan's Meta note."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+   "span": "I'd be patient and size accordingly rather than swinging at it. As flagged last week, favored names remain MS, PNC and FITB.",
+   "why": "Desk commentary reads 'I want to fade the move lower in banks and WM...I'd be patient and size accordingly rather than swinging at it. As flagged last week, favored names remain MS, PNC and FITB' -- fading the move lower = buying the drop, patient sizing = patiently, and the three named tickers match exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17539__jpm-international-market-intelligence-morning-briefing.txt",
+   "span": "while Banks were sold with Regionals seeing shorts added",
+   "why": "Preceded by 'HF flows are in line with this' in the same passage describing this week's hedge fund sector flows, confirming the selling/shorting is attributed to hedge funds."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "US Energy Secretary Wright said that \u201ca full blanket ban or zero exports of diesel\u201d are not being discussed",
+   "why": "Same paragraph states 'Politico reported that the US was preparing a plan for a 90-day export ban', directly supporting the first half of the sentence; Wright's quote supports the second half."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt",
+   "span": "five straight days of more 52wk lows than highs even as the index has rallied back near all-time highs, with SPX +1.2% over the last month",
+   "why": "Same document adds 'while 9 of 11 sectors are negative' a few lines later, completing the full figure set in the sentence (BTIG source)."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17530__early-morning-reid-macro-strategy.txt",
+   "span": "10yr bund yield (+9.2bps) at a post-2009 high of 3.55%, whilst the 10yr OAT yield (+15.4bps) hit a post-2008 high of 4.66%",
+   "why": "Same document also states the Franco-German spread 'up to 110.4bps, which was a level last seen in July 2012' and, earlier, 'rose to 110bps by the close, marking its highest level since the Euro crisis in 2012' -- both figures and the framing match."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "for OATs vs. Bunds...the signals have shifted further into negative territory and sit at a more extreme level of -2.5, perhaps consistent with some further unwind of intra-EMU OW positions",
+   "why": "JPMorgan (source field: JPMorgan) momentum-signal note; OAT = French govt bond futures, Bund = German; intra-EMU overweight unwind matches 'unwind overweights inside the euro area'."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17536__washington-policy-perspectives-resilient-equities-higher-rat.txt",
+   "span": "Middle East tensions have pushed Brent into the $100-110/bbl range, above the $75-100/bbl band seen since late May",
+   "why": "Direct verbatim match."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17536__washington-policy-perspectives-resilient-equities-higher-rat.txt",
+   "span": "AI was described as \u201cthe new China,\u201d an issue attracting increasingly bipartisan political opposition in the US",
+   "why": "Same document also states 'cities in 32 states advancing moratoriums' and 'The House-passed the Ratepayer Protection Act, which would require large, power-intensive data centers to bear the full cost of grid upgrades' -- all three claims in the sentence are directly supported."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17536__washington-policy-perspectives-resilient-equities-higher-rat.txt",
+   "span": "This could create further pressure for Treasuries as the debt ceiling approaches and ratings agencies reassess the fiscal outlook",
+   "why": "Stated within JPMorgan's post-midterm ('after the vote') policy-volatility discussion."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "One explanation is that AI-related capex has been crowding out other capex, thus containing the growth of overall capex at an aggregate level",
+   "why": "Direct verbatim match, JPMorgan Flows & Liquidity."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "the roughly 19% and 15% declines in network hashrate and mining difficulty, respectively, from their peak last October",
+   "why": "Same passage: 'As miners have been pivoting either partially or fully toward AI, the trend in the bitcoin network hashrate has structurally slowed' supports the redirect-to-AI attribution."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-24/17533__global-markets-strategy-flows-liquidity.txt",
+   "span": "for bitcoin, after the recent rally the momentum signals are now at somewhat more elevated levels with the average z-score at +1.0",
+   "why": "Same document: 'The strength of the bitcoin rally over the past week...is consistent with unwinding of bearish bitcoin positions' supports the rally-attribution half of the sentence."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 0,
+ "unsupported": 1,
+ "faithful_rate": 0.933,
  "dim": "fidelity",
  "agent": "b",
- "artifact": "shadow",
  "provenance": {
   "model_requested": "claude-sonnet-5",
   "model_version_returned": "unreported",
   "prompt_sha": "224632dfdf6a"
  },
- "raw_tail": "Error: Reached max turns (60)"
+ "failed": false,
+ "problems": []
 }

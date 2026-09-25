@@ -2,77 +2,87 @@
  "metric": "2a",
  "briefs": [
   {
-   "id": "d10",
-   "tier": "top",
-   "bank": "Deutsche Bank",
-   "source_chain": "Strong US/Eurozone flash PMIs plus a Brent rebound reinforce resilient-growth narrative, driving hawkish Fed/ECB repricing (Oct hike odds to 71%/66%), which triggers a global bond selloff (10yr UST to 5.11%, Franco-German spread to 110.4bps), pressuring equities lower (S&P -0.75%) despite the strong data.",
-   "brief_chain": "Same chain: PMI beats + oil rebound drive hawkish Fed/ECB repricing, triggering a bond selloff that pressures equities despite strong growth data.",
-   "distortions": [
-    {
-     "what": "Brief states Fed October-hike odds reached 69% 'by Thursday's close.' Source says pricing rose from 53% on Tuesday to 69% 'by last night's close,' i.e. the close of the day the report calls 'yesterday' -- the day before this Thursday-morning report was written, which is Wednesday (confirmed: this Deutsche Bank note is dated in the 2026-09-24 folder and discusses 'yesterday's' selloff; the JPM afternoon note dated September 23, 2026 describes the identical PMI/yield/oil/auction events as happening 'today,' fixing 'yesterday' in the DB note as Wednesday Sep 23). The 71% figure is correctly attributed to 'this morning' (Thursday). The 69% figure is mislabeled by one day.",
-     "material": false,
-     "would_the_trade_change": "No -- the numeric pricing (53% to 69%) and the overall hawkish-repricing thesis are unchanged; only the weekday label attached to the 69% print is off by a day."
-    }
-   ],
-   "material_count": 0,
-   "non_material_count": 1
-  },
-  {
-   "id": "d2",
-   "tier": "top",
-   "bank": "JPMorgan",
-   "source_chain": "Hot September PMI, Iran's conditional-diplomacy UNGA speech plus renewed oil strength, and a weak 5yr auction push yields above the 5% technical level and drag equities lower; desks respond with dispersion/hedge trades (Sinha's Earnings Vulnerability hedge, Muse-linked TMT/Financials moves); JPM's house view stays Tactically Cautious/Neutral into the Fed with +Tech vs -RTY.",
-   "brief_chain": "Same chain: hot PMI + Iran UNGA speech/oil rally + weak auction drive yields above 5% and pressure SPX; desk-level hedges follow; JPM maintains Tactically Cautious/Neutral with +Tech vs -RTY.",
-   "distortions": [
-    {
-     "what": "Brief folds the Insurify-blocks-Muse item into a sentence framed as 'TMT desk commentary,' but in the source that item is Rob O'Dwyer's Financials-desk commentary, a separate bullet from Brian Heavey's TMT commentary on SHOP/EXPE/CART.",
-     "material": false,
-     "would_the_trade_change": "No -- the fact itself (Insurify blocked Muse, insurers outperformed) is reported accurately; only the desk attribution is blended into an adjacent, differently-sourced sentence."
-    }
-   ],
-   "material_count": 0,
-   "non_material_count": 1
-  },
-  {
-   "id": "d7",
-   "tier": "top",
-   "bank": "JPMorgan",
-   "source_chain": "Strong PMIs and a global capex survey signal broad cyclical strength, but rising yields toward JPM's 5.5% fair-value estimate keep the house tactically cautious ('Global Narrowing'), favoring buying the dip via a broadening trade since sovereign debt is far from its sustainable limit; within that framework JPM plays Tech dispersion via Muse and China's AI value-chain shift, stays long US/Asia over EU with hedges, and runs EM tactical longs.",
-   "brief_chain": "Same chain: strong PMIs/capex survey point to cyclical strength, but rising yields toward 5.5% fair value keep JPM cautious near-term and planning to buy the dip via the broadening trade, with debt-limit headroom cited as support; Tech dispersion via Muse/China AI, and regional/EM positioning as described.",
-   "distortions": [
-    {
-     "what": "Brief's parenthetical '(180-230% of GDP OECD median)' is ambiguously worded. The source's actual figures are: estimated sustainable sovereign net-debt *limits* range from 180% to 230% of GDP across 25 OECD countries, while the *current* end-2025 median level is 55.5% of GDP. The brief's phrasing could be misread as calling 180-230% itself the 'OECD median,' rather than the range of debt limits.",
-     "material": false,
-     "would_the_trade_change": "No -- the brief still correctly conveys that current debt levels (55.5%) sit far below the sustainable limit range, preserving the substantive point (headroom before a debt 'point of no return'); only the labeling of which number is the range versus the median is awkward."
-    }
-   ],
-   "material_count": 0,
-   "non_material_count": 1
-  },
-  {
    "id": "d3",
    "tier": "top",
    "bank": "JPMorgan",
-   "source_chain": "Muse's viral early adoption (#1 US free app, Meta shares +21% vs SPX +1%) driven by product-market fit, a generous free tier, and Meta's distribution, leads JPM to expect near-term focus on adoption/engagement (monetization not before 2027); opening Muse Connectors to developers is the first step toward agent-to-agent business transactions and a take-rate monetization model; despite Amazon blocking Muse and investor caution into Connect, JPM reiterates Overweight, PT $820.",
-   "brief_chain": "Same chain: viral Muse adoption and stock outperformance, attributed to product-market fit/free tier/distribution, near-term adoption-over-monetization focus, Connectors as the first step to agent-to-agent monetization, Amazon's block noted but not a deterrent, reiterated Overweight PT $820.",
-   "distortions": [],
+   "source_chain": "Post-Meta Muse +Semis/-AI Vulnerable trade returns, so Financials sell off (XLF -2%) while AI/semis rally (SOXX +2.4%, DRAM +3.3%); O'Dwyer reads the bank move as a positioning unwind (not fundamental) since Muse's own untrustworthiness undercuts the funding-risk narrative, so he fades it into MS/PNC/FITB; Adler reads Muse as favoring trust-winners (META/GOOGL/AAPL) and broadening AI capex demand away from GPUs toward CPU/memory/storage while turning cautious on frontier-model economics near RSI; combined with oil settling lower on a delayed Iran peace deal and hawkish Fedspeak raising hike risk, JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, keeping +Tech/-RTY and a Latam long.",
+   "brief_chain": "Same structure: Financials selloff vs AI/semis rally both tied to the returning +Semis/-AI Vulnerable trade; O'Dwyer sees no fundamental case, calls it a positioning unwind, fades into MS/PNC/FITB; Adler sees Muse as agents-over-chatbots favoring trust winners and diversifying AI infrastructure demand away from GPUs while turning cautious near RSI; oil fell despite constructive Iran/Rubio headlines because Trump pushed a deal past the midterms; Fedspeak raises hike risk; JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, holding +Tech/-RTY and a Latam long.",
+   "distortions": [
+    {
+     "what": "Brief attributes 'echoes of Warsh' hawkishness to Barkin's same-day (Sept 22) remarks; the source attributes the Warsh echo to separate Fri/Sun Fedspeak cited in the Monetization Menu section, and describes Barkin's Sept 22 speech independently as merely 'in line with recent Fedspeak'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both readings support the same hike-risk / Tactically Cautious stance; only the specific speech attribution is compressed."
+    }
+   ],
    "material_count": 0,
-   "non_material_count": 0
+   "non_material_count": 1
   },
   {
-   "id": "d1",
+   "id": "d19",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "UNGA headlines (Kyodo report, Araghchi's narrower reopening conditions) suggest a narrowing US-Iran gap, so Brent falls below $100 for the first time in over two weeks despite intraday reversals on Trump's UN speech, 'very productive' talks, and Saudi pipeline hopes; equities finish flat on net but diverge (Nasdaq record high on chips, financials down on AI-margin fears); yields rise (2yr to a two-year high) on 75bp hike pricing; European spreads widen (Franco-German near its post-crisis high) on Nagel's mildly-restrictive ECB signal; weak Australian PMIs reinforce an RBA hike next week.",
+   "brief_chain": "Same causal order and content: narrowing US-Iran gap drives Brent below $100 (two-week low) despite intraday reversals; equities flat but diverging (Nasdaq record high on chips vs financials down on AI-margin fears); 2yr yield hits a two-year high on 75bp hike pricing; Franco-German spread nears its post-crisis high on Nagel's mild-restrictive signal; weak Australian PMIs reinforce an RBA hike.",
+   "distortions": [
+    {
+     "what": "Brief renders the below-$100 close as 'first time in two weeks'; source says 'first time in over two weeks'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the headline fact (a fresh multi-week low) is preserved."
+    },
+    {
+     "what": "Brief compresses Araghchi's three listed conditions (lift naval blockade, release frozen Iranian assets, end war across resistance fronts) to 'narrower reopening conditions' without itemizing the assets/fronts elements",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the comparative claim (narrower than earlier sanctions-relief/reparations demands) is unchanged."
+    },
+    {
+     "what": "Brief labels Nagel 'Bundesbank's Nagel'; source identifies him only as 'Germany's Nagel' without the title",
+     "material": false,
+     "would_the_trade_change": "No \u2014 Nagel is in fact the Bundesbank president; an accurate identity fill-in, not an invention, and it doesn't change the ECB-policy claim."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d21",
    "tier": "rest",
-   "bank": "Syz",
-   "source_chain": "A chart-pack reports several independent developments -- France's deteriorating fiscal credibility (OAT-Bund spread, deficit, debt), the Fed's hawkish 25bp hike, a Middle East oil supply shock correlating with yields, and an AI selloff-then-rebound on China-competition logic -- without tying them to one thesis.",
-   "brief_chain": "Same: reports the same four developments (France fiscal stress, Fed hike, oil supply shock/yield correlation, AI selloff-rebound) as parallel items and explicitly notes the source does not argue one connecting thesis.",
+   "bank": "Zero Hedge",
+   "source_chain": "Agentic-AI anticipation splits the tape (big tech bid to Nasdaq record highs; banks battered on Goldman's AI-spillover-to-financials call layered on Fed-hike/flatter-curve pressure), so the Dow takes the day's worst loss while SPX ends flat; oil whipsaws repeatedly on Iran headlines (Strait-reopening offer, Fars denial, Saudi pipeline hopes, 'very good meeting' optimism, a Midterms caveat, then a fresh Trump momentum headline) and closes WTI -3.5%, while Trump also floats a diesel export ban; yields end flat despite falling inflation expectations (Goldman's 'weird bit', real-rate demand staying high); hyperscaler credit widens a fourth day and both LOs and HFs are net sellers despite subdued volume; breadth deterioration (new lows over new highs; CNBC's 1999/1929 comparison) flags fragility beneath the record highs.",
+   "brief_chain": "Same structure: agentic-AI dispersion (big tech bid/Nasdaq record vs banks battered/Dow's worst loss, SPX flat), Goldman's financials-spillover call layered on Fed-hike/flatter-curve pressure; oil swings repeatedly on Iran headlines to a 3.5% WTI decline, plus a floated diesel export ban; yields flat despite falling inflation expectations (Goldman's 'weird bit'); hyperscaler credit widens a fourth day; LOs and HFs net sellers despite subdued activity; six-session new-lows-over-new-highs breadth echoing 1999/1929.",
+   "distortions": [
+    {
+     "what": "Brief's oil paragraph skips a reversal leg (crude bouncing after Trump's UN speech, and again after the 'very good meeting' optimism faded) and reads the final WTI -3.5% close as flowing from the 'very good meeting' comment, when the source's actual final leg down was triggered by a later, separate Trump headline ('LOT OF MOMENTUM FOR IRAN TO MAKE A DEAL...')",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the driver (Trump/Iran headline volatility) and net direction (oil down on the day) are the same either way; no level, instrument, or stance changes."
+    },
+    {
+     "what": "Brief drops 'Dem sweep in focus' from Goldman's listed pressure points on financials (Agentic at risk // Fed hikes + flatter curve // Dem sweep in focus)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the retained pressure points (agentic risk, Fed hikes, flatter curve) carry the thesis; dropping one secondary factor doesn't change it."
+    },
+    {
+     "what": "Brief presents 'new lows outpacing new highs for six sessions' as the specific pattern CNBC compared to 1999/1929; the source's CNBC citation is actually about a more specific compound condition (S&P rallying >1% to within 1% of record highs while breadth diverges), stated separately from the six-day streak line",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both versions serve the same 'fragility beneath the highs' warning; no trade, level, or instrument is at stake in this historical framing."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d18",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "Gulf Coast diesel crack spread hits a record >$100 (vs a normal $15-30 range), so \u2014 because diesel is an embedded intermediate input rather than a one-time discretionary tax like gasoline \u2014 the shock migrates with a lag into core CPI, which the Fed can't dismiss as transitory, so diesel margins are now a driver of the long end of the yield curve.",
+   "brief_chain": "Identical: record diesel crack spread vs normal range, diesel's intermediate-input structure (unlike gasoline) pushes the shock into core CPI with a lag, a pass-through the Fed can't call transitory, so diesel margins are now setting the long end of the curve.",
    "distortions": [],
    "material_count": 0,
    "non_material_count": 0
   }
  ],
  "material_total": 0,
- "non_material_total": 3,
- "audited": 5,
+ "non_material_total": 7,
+ "audited": 4,
  "dim": "brief_fidelity",
  "agent": "b",
  "artifact": "",
