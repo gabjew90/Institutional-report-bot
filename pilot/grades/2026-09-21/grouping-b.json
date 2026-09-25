@@ -1,27 +1,64 @@
 {
  "metric": 1,
- "total_cards": 693,
+ "total_cards": 356,
  "fragmentation_sets": [
   {
-   "subject": "Mideast oil supply disruption risk (Hormuz/Iran/Houthi) and diesel/inflation spillover",
+   "subject": "September FOMC decision \u2014 hikes, dot plot, and market reaction",
    "labels": [
+    "fed rate hike outlook",
+    "fed decision market reaction"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Agency MBS spread risk and relative value",
+   "labels": [
+    "agency mbs sales spread risk",
+    "agency mbs relative value outlook"
+   ],
+   "cards": 7
+  },
+  {
+   "subject": "Middle East oil-supply risk premium driving inflation",
+   "labels": [
+    "us oil risk premium inflation outlook",
     "oil right tail geopolitical risk",
     "houthi saudi energy conflict",
-    "iran deal path sanctions",
-    "diesel price spike inflation risk"
+    "diesel price spike inflation risk",
+    "iran deal path sanctions"
    ],
-   "cards": 21
+   "cards": 33
   },
   {
-   "subject": "Gold bull case: central bank buying and price targets",
+   "subject": "AI datacenter buildout \u2014 scale, power constraints, and siting pushback",
    "labels": [
-    "gold price target outlook",
-    "gold commodities allocation case"
+    "datacenter siting regulation risk",
+    "datacenter capacity buildout",
+    "datacenter power supply strategy",
+    "hyperscaler datacenter capex",
+    "datacenter liquid cooling shift"
    ],
-   "cards": 9
+   "cards": 52
   },
   {
-   "subject": "Data-center CPU market share war and TAM growth (Intel/AMD/ARM/Qualcomm/Nvidia)",
+   "subject": "GS S&P 500 outlook, earnings quality and valuation (AI earnings-bubble debate)",
+   "labels": [
+    "us equity market outlook",
+    "ai earnings bubble debate",
+    "s p 500 earnings valuation outlook"
+   ],
+   "cards": 22
+  },
+  {
+   "subject": "Breadth deterioration and credit stress as a cycle-top signal",
+   "labels": [
+    "equity breadth cycle top signal",
+    "ccc credit spread widening"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "BofA's AI-server CPU market-share map (TAM, Intel/AMD/ARM/NVDA/QCOM)",
    "labels": [
     "arm qcom cpu positioning",
     "server cpu tam outlook",
@@ -32,31 +69,15 @@
    "cards": 24
   },
   {
-   "subject": "US equity rally sustainability: bullish sentiment/trend vs breadth-driven cycle-top warning",
+   "subject": "Gold price outlook and the central-bank-buying case",
    "labels": [
-    "us equity market outlook",
-    "equity breadth cycle top signal"
+    "gold price target outlook",
+    "gold commodities allocation case"
    ],
-   "cards": 19
+   "cards": 9
   },
   {
-   "subject": "S&P 500 earnings growth, valuation and the AI-bubble debate",
-   "labels": [
-    "ai earnings bubble debate",
-    "s p 500 earnings valuation outlook"
-   ],
-   "cards": 15
-  },
-  {
-   "subject": "September FOMC decision: dot plot detail and market reaction",
-   "labels": [
-    "fed rate hike outlook",
-    "fed decision market reaction"
-   ],
-   "cards": 16
-  },
-  {
-   "subject": "USD direction outlook: strength vs structural weakness debate",
+   "subject": "US dollar direction \u2014 bank debate (MS/DB bullish vs HSBC bearish)",
    "labels": [
     "usd strength fx outlook",
     "dollar weakness non us equity rotation"
@@ -64,36 +85,19 @@
    "cards": 9
   },
   {
-   "subject": "K-shaped consumer: AI-driven wealth effect, equity concentration and job-displacement risk",
+   "subject": "AI-driven wealth effect propping up a narrow, AI-exposed consumer cohort",
    "labels": [
-    "ai vs consumer spending divergence",
     "us wealth concentration equities",
-    "ai job displacement risk consumer"
+    "ai job displacement risk consumer",
+    "ai vs consumer spending divergence"
    ],
    "cards": 11
-  },
-  {
-   "subject": "Fed balance-sheet reduction plan, including the MBS-sales lever and desk positioning",
-   "labels": [
-    "fed balance sheet reduction",
-    "agency mbs sales spread risk",
-    "agency mbs relative value outlook"
-   ],
-   "cards": 19
-  },
-  {
-   "subject": "AI datacenter buildout scale (global aggregate vs hyperscaler-level capex)",
-   "labels": [
-    "datacenter capacity buildout",
-    "hyperscaler datacenter capex"
-   ],
-   "cards": 24
   }
  ],
- "fragmented_mass_share": 0.24,
+ "fragmented_mass_share": 0.559,
  "mis_merges": [],
  "pass": false,
- "notes": "No mis-merges found; every problem here is fragmentation, mostly single research notes (BofA's CPU sector piece, Generali's Fed note, RBC's datacenter report) split 2-5 ways by angle rather than kept as one brief-sized subject. misc holds 12/693 cards (1.7%) and is exempt overflow, not counted toward fragmentation.",
+ "notes": "Defect is overwhelmingly over-splitting, not merging: 10 subjects are each spread across 2-5 labels (mass share 55.9%), the worst being the RBC datacenter-buildout report (5 labels, 52 cards) and the Academy Hormuz/Houthi/Iran/diesel energy-risk report (5 labels, 33 cards); no mis-merges found. misc holds 12/356 cards (3.4%). Note: the header states 693 cards but only 356 are enumerable in the supplied ledger text \u2014 flagging the discrepancy rather than guessing at unseen cards.",
  "dim": "grouping",
  "agent": "b",
  "artifact": "",

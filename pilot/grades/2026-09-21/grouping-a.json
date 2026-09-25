@@ -3,21 +3,18 @@
  "total_cards": 693,
  "fragmentation_sets": [
   {
-   "subject": "AI datacenter buildout: capacity growth, power-supply bottlenecks, cooling shift and siting/regulatory backlash (one RBC tracker note)",
+   "subject": "Fed's September rate decision and the market's reaction to it",
    "labels": [
-    "datacenter capacity buildout",
-    "hyperscaler datacenter capex",
-    "datacenter power supply strategy",
-    "datacenter liquid cooling shift",
-    "datacenter siting regulation risk"
+    "fed rate hike outlook",
+    "fed decision market reaction"
    ],
-   "cards": 52
+   "cards": 16
   },
   {
-   "subject": "Oil geopolitical risk premium (Hormuz/Gulf/Houthi supply risk, Iran deal path, diesel spike) and its inflation/growth consequences",
+   "subject": "Middle East oil risk premium (Strait of Hormuz crisis) driving inflation",
    "labels": [
-    "oil right tail geopolitical risk",
     "us oil risk premium inflation outlook",
+    "oil right tail geopolitical risk",
     "houthi saudi energy conflict",
     "diesel price spike inflation risk",
     "iran deal path sanctions"
@@ -25,7 +22,18 @@
    "cards": 33
   },
   {
-   "subject": "CPU market-share reshuffle from AI/agentic compute (one BofA sector note split by company)",
+   "subject": "AI datacenter buildout supercycle (capacity, power sourcing, cooling, hyperscaler capex, siting pushback)",
+   "labels": [
+    "datacenter siting regulation risk",
+    "datacenter capacity buildout",
+    "datacenter power supply strategy",
+    "hyperscaler datacenter capex",
+    "datacenter liquid cooling shift"
+   ],
+   "cards": 52
+  },
+  {
+   "subject": "AI-era server CPU market share battle (ARM/Intel/AMD/Nvidia/Qualcomm)",
    "labels": [
     "arm qcom cpu positioning",
     "server cpu tam outlook",
@@ -36,41 +44,7 @@
    "cards": 24
   },
   {
-   "subject": "Market breadth/credit divergence from index highs \u2014 bull (GS) vs bear (BTIG) read of the same internals",
-   "labels": [
-    "us equity market outlook",
-    "equity breadth cycle top signal",
-    "ccc credit spread widening"
-   ],
-   "cards": 23
-  },
-  {
-   "subject": "September FOMC decision and the immediate market reaction to it (one Generali note)",
-   "labels": [
-    "fed rate hike outlook",
-    "fed decision market reaction"
-   ],
-   "cards": 16
-  },
-  {
-   "subject": "GS view on SPX earnings growth/valuation and whether it's an AI earnings bubble",
-   "labels": [
-    "ai earnings bubble debate",
-    "s p 500 earnings valuation outlook"
-   ],
-   "cards": 15
-  },
-  {
-   "subject": "AI-driven wealth concentration propping up consumer spending while AI threatens the same high earners' jobs",
-   "labels": [
-    "us wealth concentration equities",
-    "ai job displacement risk consumer",
-    "ai vs consumer spending divergence"
-   ],
-   "cards": 11
-  },
-  {
-   "subject": "Gold's bull case: central-bank buying plus price targets",
+   "subject": "Gold bull case: price targets and central-bank buying",
    "labels": [
     "gold price target outlook",
     "gold commodities allocation case"
@@ -78,7 +52,7 @@
    "cards": 9
   },
   {
-   "subject": "Dollar direction and rotation implications \u2014 strength (MS/DB) vs weakness (HSBC) stances on the same question",
+   "subject": "Dollar direction debate (bull vs. bear USD / non-US rotation)",
    "labels": [
     "usd strength fx outlook",
     "dollar weakness non us equity rotation"
@@ -86,18 +60,65 @@
    "cards": 9
   },
   {
-   "subject": "MS Agency MBS desk view (sales/spread risk and relative-value positioning)",
+   "subject": "GS's SPX earnings quality, valuation and index outlook",
    "labels": [
+    "ai earnings bubble debate",
+    "us equity market outlook",
+    "s p 500 earnings valuation outlook"
+   ],
+   "cards": 22
+  },
+  {
+   "subject": "AI-driven K-shaped consumer: wealth concentration and job-displacement risk",
+   "labels": [
+    "ai job displacement risk consumer",
+    "ai vs consumer spending divergence",
+    "us wealth concentration equities"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Breadth deterioration and credit-stress cycle-top signal",
+   "labels": [
+    "equity breadth cycle top signal",
+    "ccc credit spread widening",
+    "consumer quality factor rotation"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Fed balance sheet reduction (QT) mechanics and MBS market impact",
+   "labels": [
+    "fed balance sheet reduction",
     "agency mbs sales spread risk",
     "agency mbs relative value outlook"
    ],
-   "cards": 7
+   "cards": 19
   }
  ],
- "fragmented_mass_share": 0.29,
- "mis_merges": [],
+ "fragmented_mass_share": 0.306,
+ "mis_merges": [
+  {
+   "label": "em carry positioning hedges",
+   "subjects": [
+    "EM carry/FX directional trade ideas (long EM via Turkey/Egypt/Hungary, long Hungarian rates)",
+    "Cross-asset hedge menu against an equities-down/yields-up oil-rates shock (SPX lookback put, FX binaries, Brent calls)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "An editor picking between a directional 'long EM carry' theme and a defensive 'hedging playbook for an oil/rates shock' theme would choose differently, but the merge buries the second as a subset of the first."
+  },
+  {
+   "label": "french budget crisis bond spreads",
+   "subjects": [
+    "France sovereign budget deficit and OAT-Bund spread widening",
+    "TotalEnergies fuel-station shortage from price caps"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The fuel-shortage claim is a single card of color inside a ten-card sovereign-crisis label, too thin to pull its own theme from an editor."
+  }
+ ],
  "pass": false,
- "notes": "Fragmentation, not mis-merging, is the dominant defect: single-bank tracker notes (RBC datacenter, BofA CPU) were split across 5 labels apiece instead of the 1-3 subjects a note usually argues, and several bull/bear label pairs cover one subject under a stance split. misc holds 12/693 cards (1.7%), correctly excluded from fragmented mass.",
+ "notes": "Fragmentation dominates: five RBC datacenter labels, five BofA CPU labels, and three GS/Academy oil-geopolitics labels each split one source's report into separate topics that a pulse brief would run as one theme. misc is 12/693 cards (1.7%), correctly excluded from fragmented mass.",
  "dim": "grouping",
  "agent": "a",
  "artifact": "",

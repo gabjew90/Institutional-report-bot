@@ -1,0 +1,121 @@
+{
+ "metric": 1,
+ "total_cards": 693,
+ "fragmentation_sets": [
+  {
+   "subject": "Fed's September rate decision and its same-day market reaction",
+   "labels": [
+    "fed rate hike outlook",
+    "fed decision market reaction"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "AI datacenter capex buildout (scale, hyperscaler breakdown, power sourcing, cooling tech, siting pushback)",
+   "labels": [
+    "datacenter siting regulation risk",
+    "datacenter capacity buildout",
+    "datacenter power supply strategy",
+    "hyperscaler datacenter capex",
+    "datacenter liquid cooling shift"
+   ],
+   "cards": 52
+  },
+  {
+   "subject": "GS year-end equity outlook and the AI-earnings-bubble question",
+   "labels": [
+    "ai earnings bubble debate",
+    "s p 500 earnings valuation outlook",
+    "us equity market outlook"
+   ],
+   "cards": 22
+  },
+  {
+   "subject": "Mideast conflict / Hormuz oil-supply risk premium and how desks are hedging it",
+   "labels": [
+    "houthi saudi energy conflict",
+    "diesel price spike inflation risk",
+    "iran deal path sanctions",
+    "oil right tail geopolitical risk",
+    "em carry positioning hedges"
+   ],
+   "cards": 33
+  },
+  {
+   "subject": "Gold's bull case: price targets driven by central-bank buying",
+   "labels": [
+    "gold price target outlook",
+    "gold commodities allocation case"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "BofA's CPU competitive-landscape map (Intel share loss vs ARM/AMD/NVDA, growing TAM)",
+   "labels": [
+    "arm qcom cpu positioning",
+    "server cpu tam outlook",
+    "intel cpu share outlook",
+    "amd cpu leadership",
+    "nvda vera cpu rack"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Market-breadth/credit-stress cycle-top warning signals",
+   "labels": [
+    "equity breadth cycle top signal",
+    "ccc credit spread widening"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Dollar direction debate (bull vs bear read of the same USD trend)",
+   "labels": [
+    "usd strength fx outlook",
+    "dollar weakness non us equity rotation"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "Agency MBS desk view: policy risk to spreads and relative-value stance",
+   "labels": [
+    "agency mbs sales spread risk",
+    "agency mbs relative value outlook"
+   ],
+   "cards": 7
+  },
+  {
+   "subject": "AI-driven K-shaped economy: wealth concentration, job displacement, and consumer-spending divergence",
+   "labels": [
+    "us wealth concentration equities",
+    "ai job displacement risk consumer",
+    "ai vs consumer spending divergence"
+   ],
+   "cards": 11
+  }
+ ],
+ "fragmented_mass_share": 0.29,
+ "mis_merges": [
+  {
+   "label": "bond yields offering equity like returns risk",
+   "subjects": [
+    "1987-parallel thesis that bond yields now offer equity-like returns, threatening stocks",
+    "record AI-driven convertible-debt issuance (Google, Oracle) as a historical bubble-top sell signal"
+   ],
+   "would_change_theme_selection": true,
+   "why": "the convertible-debt issuance story is independently lead-worthy (AI-specific, ties to $GOOGL/$ORCL, has its own 1999/2021 precedent) and is a supply/sentiment indicator, not a bond-yields-vs-equities valuation argument, so it would get missed or misfiled under a label an editor reads as being about yields."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/693 cards (1.7%), correctly excluded from mis-merge scoring. The RBC datacenter tracker (5 labels, 52 cards) and the BofA CPU report (5 labels, 24 cards) are the largest single-note fragmentations; the Mideast oil-risk complex spans banks (Academy, GS) rather than one note but still reads as one pulse subject.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
