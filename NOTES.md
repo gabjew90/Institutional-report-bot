@@ -3244,3 +3244,26 @@ chat dropped 10/10. New rungs after tier 0: `chat-trim`
 condition. Code-reviewed; two findings skipped with reasons (tier 0
 still runs first, pinned by its smoke; later rungs still resend chat).
 600 tests, 158/158 smokes.
+
+## 2026-09-25 — Economic prints: BEA key set, second arming source
+
+`BEA_API_KEY` set on the worker at the owner's request; a pull from the
+worker returned the PCE series through July 2026. I had told the owner
+PCE printed 9/25 and then 10/30, both from recall ("usually the last
+Friday"). BEA's schedule says 9/30 and 10/29; FRED's schedule agreed.
+The morning deadline I set for the key did not exist.
+
+The watch armed from the ForexFactory feed alone, by exact event name,
+so a feed gap or renamed row meant a silent miss. It now also arms from
+`OFFICIAL_RELEASES`, the agencies' published 2026 schedule (BLS empsit
+and CPI pages, BEA release schedule, Fed FOMC calendar, read 9/25), and
+pings ops when a scheduled release lacks its key, when it is not
+published in time (BEA now waits 30 min, BLS 12), and once a day when
+the table runs out (update annually). Code-reviewed: two findings,
+both fixed.
+
+Found, not fixed: the omni-calendar's econ rows come from
+ForexFactory's this-week feed only (next-week returns 404), so the
+Friday post for Monday carries no econ rows. Finnhub's economic
+calendar is 403 (not on the plan), so the pulse runs on FF + agency +
+FRED.

@@ -20,8 +20,12 @@ Two jobs, one module:
    exists and never a neighbouring month.
 
 Supported: CPI (BLS), Employment Situation (BLS), FOMC target range
-(Federal Reserve press feed). PCE and GDP need a BEA key and are the
-next step; ISM has no free source and is out by owner decision.
+(Federal Reserve press feed), PCE (BEA, needs BEA_API_KEY, set
+2026-09-25). GDP uses the same BEA key and is not yet wired; ISM has no
+free source and is out by owner decision.
+
+Arming (2026-09-25): the ForexFactory feed OR the agencies' published
+schedule (OFFICIAL_RELEASES) listing the release today.
 No db import anywhere in this module.
 """
 from __future__ import annotations
@@ -415,13 +419,52 @@ def _ff_rows_for_day(today_iso: str) -> list[dict]:
     return out
 
 
-def due_releases(today_iso: str, ff_rows: list[dict], release_et: str | None = None) -> list[ReleaseSpec]:
+# The agencies' own published schedules for the rest of 2026, read from
+# bls.gov/schedule (empsit, cpi), bea.gov/news/schedule and the Fed's
+# FOMC calendar on 2026-09-25. UPDATE ANNUALLY, like
+# world_context.US_MARKET_HOLIDAYS; the watch pings ops once this table
+# runs out.
+#
+# Why a second source (2026-09-25): arming keyed on the ForexFactory
+# weekly feed alone, by exact event name. A feed gap or a renamed row
+# means the watch never arms and nobody hears about it. The same day I
+# told the owner PCE printed on 9/25 and then 10/30, both from memory
+# of "usually the last Friday"; BEA's schedule says 9/30 and 10/29.
+# Dates come from the agency, never from recall.
+OFFICIAL_RELEASES: dict[str, tuple[str, ...]] = {
+    "2026-09-30": ("pce",),
+    "2026-10-02": ("jobs",),
+    "2026-10-14": ("cpi",),
+    "2026-10-28": ("fomc",),
+    "2026-10-29": ("pce",),
+    "2026-11-06": ("jobs",),
+    "2026-11-10": ("cpi",),
+    "2026-11-25": ("pce",),
+    "2026-12-04": ("jobs",),
+    "2026-12-09": ("fomc",),
+    "2026-12-10": ("cpi",),
+    "2026-12-23": ("pce",),
+}
+
+
+def official_calendar_exhausted(today_iso: str) -> bool:
+    return today_iso > max(OFFICIAL_RELEASES)
+
+
+def ff_lists(spec: ReleaseSpec, ff_rows: list[dict]) -> bool:
     names = {str(r.get("event") or "").lower() for r in ff_rows}
+    return any(ev.lower() in names for ev in spec.ff_arming_events)
+
+
+def due_releases(today_iso: str, ff_rows: list[dict], release_et: str | None = None) -> list[ReleaseSpec]:
+    """Armed when EITHER the ForexFactory feed or the agencies' published
+    schedule (OFFICIAL_RELEASES) lists the release today."""
+    official = OFFICIAL_RELEASES.get(today_iso, ())
     out = []
     for spec in SPECS:
         if release_et and spec.release_et != release_et:
             continue
-        if not any(ev.lower() in names for ev in spec.ff_arming_events):
+        if not (ff_lists(spec, ff_rows) or spec.key in official):
             continue
         if not all(source_available(ln.source) for ln in spec.lines if ln.series):
             log.info(f"print-watch: {spec.key} is on today's calendar but its agency key is not set; skipped")
@@ -511,6 +554,11 @@ def mark_posted(today_iso: str, key: str, lines: list[str]) -> None:
 POLL_S_WITH_KEY = 10
 POLL_S_NO_KEY = 30          # 25 unregistered requests a day; ~20 per watch
 MAX_WAIT_S = 12 * 60
+# BEA's API has not yet been watched through a live release, and an
+# API table that lags the 8:30 press release would be abandoned at 12
+# minutes (2026-09-25 review). BLS stays at 12: unregistered BLS allows
+# 25 requests a day and the 30 s poll spends about 20 of them.
+MAX_WAIT_S_BY_AGENCY = {"BEA": 30 * 60}
 
 
 def alert_channel_ids() -> list[int]:
@@ -559,9 +607,28 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     once when nothing supported is scheduled today."""
     if not (settings.print_alert_channel_id or settings.reminder_channel_id) or bot is None:
         return
+    from discord_bot.ops_alert import ops_alert
     now = datetime.now(_ET)
     today = now.date().isoformat()
+    if official_calendar_exhausted(today):
+        await ops_alert("print-watch: OFFICIAL_RELEASES in report/print_watch.py has "
+                        "no dates left; add next year's BLS/BEA/Fed schedule",
+                        dedupe_key=f"print-watch-calendar-{today}")
     ff_rows = _ff_rows_for_day(today)
+    # A release the agency schedule lists for this slot but the watch
+    # will not arm for (its agency key is missing) is a silent miss
+    # unless someone is told before it happens.
+    for key in OFFICIAL_RELEASES.get(today, ()):
+        spec = next((s for s in SPECS if s.key == key), None)
+        if not spec or spec.release_et != release_et:
+            continue
+        if not all(source_available(ln.source) for ln in spec.lines if ln.series):
+            await ops_alert(f"print-watch: {spec.title} is scheduled {release_et} ET today "
+                            f"but its agency API key is not set; it will not post",
+                            dedupe_key=f"print-watch-nokey-{today}-{key}")
+        elif not ff_lists(spec, ff_rows):
+            log.warning(f"print-watch: {key} is on the agency schedule but not the "
+                        f"ForexFactory feed today; armed from the schedule")
     due = [s for s in due_releases(today, ff_rows, release_et) if not already_posted(today, s.key)]
     if not due:
         return
@@ -573,7 +640,8 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
         await asyncio.sleep(wait)
     period = reference_period(today)
     poll = POLL_S_WITH_KEY if settings.bls_api_key else POLL_S_NO_KEY
-    deadline = datetime.now(_ET) + timedelta(seconds=MAX_WAIT_S)
+    wait_s = max(MAX_WAIT_S_BY_AGENCY.get(s.agency, MAX_WAIT_S) for s in due)
+    deadline = datetime.now(_ET) + timedelta(seconds=wait_s)
     pending = list(due)
     while pending and datetime.now(_ET) < deadline:
         for spec in list(pending):
@@ -600,7 +668,10 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
         if pending:
             await asyncio.sleep(poll)
     for spec in pending:
-        log.warning(f"print-watch: {spec.key} not published within {MAX_WAIT_S // 60} min of {release_et} ET")
+        log.warning(f"print-watch: {spec.key} not published within {wait_s // 60} min of {release_et} ET")
+        await ops_alert(f"print-watch: {spec.title} was due {release_et} ET and the agency "
+                        f"had not published it after {wait_s // 60} min; nothing posted",
+                        dedupe_key=f"print-watch-miss-{today}-{spec.key}")
 
 
 # ------------------------------------------------------------ the feed

@@ -248,3 +248,49 @@ def test_the_feed_fills_a_core_pce_row_from_bea():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# --- a second arming source (2026-09-25) --------------------------------
+def test_the_agency_schedule_arms_a_release_the_feed_does_not_list():
+    """Arming used to key on the ForexFactory feed alone, by exact event
+    name; a gap or a renamed row meant a silent miss."""
+    with patch("config.settings.bea_api_key", "k"):
+        assert [s.key for s in PW.due_releases("2026-09-30", [], "08:30")] == ["pce"]
+    assert [s.key for s in PW.due_releases("2026-10-02", [], "08:30")] == ["jobs"]
+    assert [s.key for s in PW.due_releases("2026-10-28", [], "14:00")] == ["fomc"]
+    assert PW.due_releases("2026-10-28", [], "08:30") == []
+    # a quiet day in both sources stays quiet
+    assert PW.due_releases("2026-10-05", [], "08:30") == []
+
+
+def test_the_schedule_holds_the_published_dates():
+    """From bls.gov/schedule, bea.gov/news/schedule and the Fed's FOMC
+    calendar, read 2026-09-25. PCE is 9/30 and 10/29, not the 9/25 and
+    10/30 I gave from memory."""
+    O = PW.OFFICIAL_RELEASES
+    assert O["2026-09-30"] == ("pce",) and O["2026-10-29"] == ("pce",)
+    assert "2026-09-25" not in O and "2026-10-30" not in O
+    assert O["2026-10-14"] == ("cpi",) and O["2026-12-09"] == ("fomc",)
+    assert all(k in {"cpi", "jobs", "pce", "fomc"} for ks in O.values() for k in ks)
+
+
+def test_an_exhausted_schedule_is_flagged():
+    assert not PW.official_calendar_exhausted("2026-12-23")
+    assert PW.official_calendar_exhausted("2027-01-04")
+
+
+def test_a_scheduled_release_with_no_key_pings_ops_before_it_is_missed():
+    sent = []
+
+    async def fake_ops(text, dedupe_key=""):
+        sent.append(text)
+
+    with patch("config.settings.print_alert_channel_id", "1"), \
+         patch("config.settings.bea_api_key", ""), \
+         patch("report.print_watch._ff_rows_for_day", return_value=[]), \
+         patch("report.print_watch.datetime") as dt, \
+         patch("discord_bot.ops_alert.ops_alert", side_effect=fake_ops):
+        from datetime import datetime as _real
+        dt.now.return_value = _real(2026, 9, 30, 8, 29, tzinfo=PW._ET)
+        asyncio.run(PW.print_watch_job(bot=object(), release_et="08:30"))
+    assert any("PCE" in t and "key is not set" in t for t in sent), sent
