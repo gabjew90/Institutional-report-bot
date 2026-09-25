@@ -380,8 +380,8 @@ ALIAS_STOPWORDS = frozenset({
     "husband", "oriental", "bunny", "texas", "rope", "aids", "mic",
     "astro",
 })
-_ALIAS_TTL_S = 6 * 3600
-_alias_cache: dict = {"at": 0.0, "map": None}
+
+_alias_cache: dict = {"map": None}
 
 
 def _alias_surfaces(display: str) -> list[str]:
@@ -391,7 +391,8 @@ def _alias_surfaces(display: str) -> list[str]:
     if not disp:
         return []
     out = []
-    whole = re.sub(r"\s+", " ", re.sub(r"[()\[\]<>]", " ", disp)).strip().lower()
+    # commas too: the header lists aliases comma-separated
+    whole = re.sub(r"\s+", " ", re.sub(r"[()\[\]<>,;]", " ", disp)).strip().lower()
     if len(whole) >= ALIAS_MIN_LEN and whole not in ALIAS_STOPWORDS:
         out.append(whole)
     for tok in re.findall(r"[A-Za-z][A-Za-z0-9_]*", disp):
@@ -420,13 +421,14 @@ def build_member_aliases(rows) -> dict[str, int]:
     return out
 
 
-def member_aliases() -> dict[str, int]:
-    """Cached alias map (6 h). Empty on any read failure: an alias is an
-    enrichment, never a reason for an answer to fail."""
-    import time
-    now = time.time()
-    if _alias_cache["map"] is not None and now - _alias_cache["at"] < _ALIAS_TTL_S:
-        return _alias_cache["map"]
+def refresh_member_aliases() -> int:
+    """Rebuild the alias map from chat history. Returns the surface count,
+    or -1 on failure, in which case the previous map stays in place.
+
+    Runs from the scheduler (at boot and hourly), never inside an /ask:
+    it is a GROUP BY over the whole chat_messages table (2026-09-24
+    review). A failed read keeps the last good map instead of replacing
+    it with the pinned-only fallback."""
     try:
         rows = _db.get_connection().execute(
             "SELECT author_id, author_display, COUNT(*) FROM chat_messages "
@@ -434,10 +436,17 @@ def member_aliases() -> dict[str, int]:
         ).fetchall()
         amap = build_member_aliases([(r[0], r[1], r[2]) for r in rows])
     except Exception as e:
-        log.warning(f"member_aliases: read failed (non-fatal): {e}")
-        amap = dict(PINNED_ALIASES)
-    _alias_cache.update(at=now, map=amap)
-    return amap
+        log.warning(f"member_aliases: refresh failed, keeping previous map: {e}")
+        return -1
+    _alias_cache["map"] = amap
+    return len(amap)
+
+
+def member_aliases() -> dict[str, int]:
+    """The current alias map. Never touches the database: before the
+    first refresh it is the owner-pinned aliases alone."""
+    amap = _alias_cache["map"]
+    return amap if amap is not None else dict(PINNED_ALIASES)
 
 
 def members_named_in_text(text: str, aliases: dict[str, int] | None = None

@@ -268,3 +268,29 @@ def test_the_request_job_is_idle_without_a_flag_and_clears_it_before_posting():
         assert seen == {"flag_present": False, "force": True}
         out = (d / f"{jobs.X_REQUEST_FLAG}.result").read_text(encoding="utf-8")
         assert "https://x.com/i/status/777" in out
+
+
+def test_two_concurrent_posts_of_one_date_send_once():
+    """The flag-file test and the 3 PM job run in one process; both used
+    to be able to pass already_posted before either wrote the ledger."""
+    import threading, time
+    calls = []
+
+    def slow_ok(method, url, body, ctype, creds, extra_params=None):
+        calls.append(url)
+        time.sleep(0.05)
+        return _fake_ok(method, url, body, ctype, creds)
+
+    with tempfile.TemporaryDirectory() as td, \
+         patch("config.settings.db_path", str(Path(td) / "reports.db")), \
+         patch("config.settings.x_post_enabled", True), \
+         patch("config.settings.x_api_key", "k"), patch("config.settings.x_api_secret", "s"), \
+         patch("config.settings.x_access_token", "t"), patch("config.settings.x_access_secret", "ts"), \
+         patch("report.x_client._request", side_effect=slow_ok):
+        res = []
+        ts = [threading.Thread(target=lambda: res.append(
+                  X.post_image("hi", b"png", key="calendar", date_iso="2026-09-30")))
+              for _ in range(2)]
+        [t.start() for t in ts]; [t.join() for t in ts]
+    assert sorted(r is None for r in res) == [False, True]
+    assert calls.count(X.X_POST_URL) == 1

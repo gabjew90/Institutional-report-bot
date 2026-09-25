@@ -583,10 +583,17 @@ def format_user_profiles_for_context(
             (p.get("profile_text") or "").strip()
         )
         mention = f"<@{uid}>"
+        # What the room calls them (2026-09-24), so "kyle" in the chat or
+        # in a draft resolves to this dossier. Inside the name
+        # parentheses, not the italic metrics: aliases carry underscores
+        # (ry_bry, nft_spaceman), which ended the `_..._` span early and
+        # broke _PROFILE_METRICS_RE, so lean mode stopped dropping the
+        # racism bit for those members (2026-09-24 review).
+        also = _also_called(uid, dn, uname)
         if uname and uname.lower() != dn.lower():
-            ident = f"**{dn}** ({uname}, {mention})"
+            ident = f"**{dn}** ({uname}, {mention}{also})"
         else:
-            ident = f"**{dn}** ({mention})"
+            ident = f"**{dn}** ({mention}{also})"
 
         # Private metrics inline — surfaced as ordinal ranks only.
         # racism-rank exposes both signals (humor + literal) so the bot
@@ -647,16 +654,6 @@ def format_user_profiles_for_context(
             metric_bits.append(f"trader-rank #{tr}/{trader_rank_total}")
         else:
             metric_bits.append("trader-rank: not scored")
-        # What the room calls them (2026-09-24), so "kyle" in the chat or
-        # in a draft resolves to this dossier. Current names are left
-        # out; they are already in the header.
-        try:
-            _known = {dn.lower(), (uname or "").lower()}
-            _al = [a for a in _db.aliases_for(uid) if a not in _known][:4]
-        except Exception:
-            _al = []
-        if _al:
-            metric_bits.append("also called: " + ", ".join(_al))
         # The documented record, from analyst_trades (2026-09-19). Ranks
         # are opinions the scorer formed; this is what the member's log
         # actually says. Without it the writer infers an outcome from the
@@ -750,24 +747,37 @@ def format_named_member_records(named: dict[int, list[str]],
         except Exception as e:
             log.warning(f"named-member records: ledger failed for {uid}: {e}")
             ledger = ""
-        known = {dn.lower(), uname.lower()}
-        try:
-            al = [a for a in _db.aliases_for(uid) if a not in known][:4]
-        except Exception:
-            al = []
         bits = ["named in the question, record only (no profile loaded)"]
-        if al:
-            bits.append("also called: " + ", ".join(al))
         # no ledger line for a member with no logged trades: most of
         # the room never posts a screenshot, and "no trades" handed to
         # the writer reads as a jab ("never posts receipts")
         if ledger:
             bits.append(ledger)
-        lines.append(f"- **{dn}** ({uname}, <@{uid}>) — _{' · '.join(bits)}_")
+        also = _also_called(uid, dn, uname)
+        lines.append(f"- **{dn}** ({uname}, <@{uid}>{also}) — _{' · '.join(bits)}_")
     if not lines:
         return ""
-    return ("MEMBERS NAMED IN THE QUESTION (documented record; a claim "
-            "about their trading must match it):\n" + "\n".join(lines))
+    # Data only. The rule that a trading claim must match the record is
+    # enforced by discord_bot/pnl_claims.py, so it is not restated here
+    # (CLAUDE.md policy 1: code or prompt, never both).
+    return "MEMBERS NAMED IN THE QUESTION (documented record):\n" + "\n".join(lines)
+
+
+ALSO_CALLED_MAX = 5
+
+
+def _also_called(uid: int, dn: str, uname: str) -> str:
+    """`; also called: a, b` for a header, or "". Shortest names first:
+    those are what the room types ("kyle", "tulch", "wock"); long
+    retired full names ("a bullish grand nagus") are the least likely
+    to appear in a sentence."""
+    try:
+        known = {(dn or "").lower(), (uname or "").lower()}
+        al = [a for a in _db.aliases_for(uid) if a not in known]
+    except Exception:
+        return ""
+    al = sorted(al, key=lambda s: (len(s), s))[:ALSO_CALLED_MAX]
+    return ("; also called: " + ", ".join(al)) if al else ""
 
 
 def receipts_ceiling_from_points(points: int) -> int:

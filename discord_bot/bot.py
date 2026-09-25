@@ -1509,7 +1509,13 @@ _SLUR_MASK_RE = re.compile(
 # them in. 2026-08-09's block is the tell: Ry_bry's Voice samples are
 # mild (humor:12/100, no slurs) and the ask still died.
 
-_PROFILE_METRICS_RE = re.compile(r'^(- \*\*.*?— )_([^_]*)_(:.*)$', re.M)
+# The metrics span runs to the `_:` that closes it, not to the first
+# underscore. `[^_]*` never matched the "too few active here to rank
+# (global leaderboard via lookup_user_profile)" branch, because
+# lookup_user_profile has underscores, so lean mode left the racism bit
+# in for exactly the single-member case (found 2026-09-24 by the alias
+# review's test).
+_PROFILE_METRICS_RE = re.compile(r'^(- \*\*.*?— )_(.*?)_(:.*)$', re.M)
 _SLUR_EXAMPLES_RE = re.compile(
     r'^[ \t]*recent slur usage \(regex fallback\):\n(?:[ \t]*· .*\n?)*',
     re.M,
@@ -1555,7 +1561,10 @@ def _member_ledger_stats(user_ids) -> dict[int, dict]:
     return out
 
 
-_ALSO_CALLED_RE = re.compile(r"also called: ([^·_\n]+)")
+# Inside the header's name parentheses: "(bankerkyle, <@id>; also
+# called: kyle, bearishkyle)". Aliases carry underscores (ry_bry), so
+# the list ends at the closing parenthesis, never at "_".
+_ALSO_CALLED_RE = re.compile(r"also called: ([^)\n]+)")
 # At most this many named-but-unprofiled members get a record line; a
 # question naming more is a ranking, and the ranking path has its own
 # tools.
@@ -3023,7 +3032,11 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     # kinds list reflects what was in the original answer.
     try:
         from ai_analysis.voice_rules import compose_lint_patterns
-        scan = re.sub(r'```.*?```', '', text, flags=re.DOTALL)
+        # Same definition of code as the replacement phase: a
+        # language-tagged fence. The old any-``` strip also removed
+        # ```text-wrapped prose answers, so their violations were never
+        # recorded (2026-09-24 review).
+        scan = _without_code(text)
         for pattern, kind in compose_lint_patterns():
             try:
                 if re.search(pattern, scan, re.IGNORECASE):
@@ -3056,16 +3069,23 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     # between a number and a number or a month reads as "to"; a spaced
     # dash after a number otherwise is an aside and takes a comma with
     # no stray space.
-    text = re.sub(
-        r'(\d)\s+[—–‒]\s+(?=\$?\d|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|'
-        r'Sept|Oct|Nov|Dec)[a-z]*\b)', r'\1 to ', text)
-    text = re.sub(r'(\d)\s+[—–‒]\s+', r'\1, ', text)
-    cleaned = re.sub(r'(?<!\d)\s*[—–‒]\s*(?!\$?\d)', ', ', text)
-    # Semicolon inside a sentence — comma reads cleanly. Don't touch
-    # semicolons inside fenced code (rare in /ask answers, defensive).
-    cleaned = re.sub(r';\s+', ', ', cleaned)
-    # Collapse any ", , " artifact from adjacent replacements.
-    cleaned = re.sub(r',\s*,', ',', cleaned)
+    #
+    # Prose only (2026-09-24 review): an answer that shows code without
+    # a chart keeps its code block, and `x = 1; y = 2` must not ship as
+    # `x = 1, y = 2`. The semicolon note below always said so; until
+    # this change nothing enforced it.
+    def _mech(s: str) -> str:
+        s = re.sub(
+            r'(\d)\s+[—–‒]\s+(?=\$?\d|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|'
+            r'Sept|Oct|Nov|Dec)[a-z]*\b)', r'\1 to ', s)
+        s = re.sub(r'(\d)\s+[—–‒]\s+', r'\1, ', s)
+        s = re.sub(r'(?<!\d)\s*[—–‒]\s*(?!\$?\d)', ', ', s)
+        # Semicolon inside a sentence — comma reads cleanly. Fenced
+        # code is skipped by _prose_only.
+        s = re.sub(r';\s+', ', ', s)
+        # Collapse any ", , " artifact from adjacent replacements.
+        return re.sub(r',\s*,', ',', s)
+    cleaned = _prose_only(text, _mech)
     # Adjacent-duplication collapse (2026-06-13 QC). The repetition
     # detector + retry catches token loops, but it FIRES-AND-FAILS on
     # verbatim adjacent doublings: when the retry re-glitches, the

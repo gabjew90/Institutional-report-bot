@@ -22,6 +22,7 @@ import hashlib
 import hmac
 import json
 import re
+import threading
 import logging
 import secrets
 import time
@@ -162,6 +163,8 @@ def mark_posted(date_iso: str, key: str, post_id: str, text: str) -> None:
 
 # ----------------------------------------------------------- the entry
 
+_POST_LOCK = threading.Lock()
+
 _CASHTAG_RE = re.compile(r"(?<![\w$])\$([A-Za-z][A-Za-z0-9._]{0,9})\b")
 
 
@@ -193,7 +196,18 @@ def post_image(text: str, png: bytes, *, key: str, date_iso: str,
     `force` is for an owner-requested test post: it bypasses
     X_POST_ENABLED for this one call. The test used to flip
     `settings.x_post_enabled` instead, which inside the worker would
-    have left posting switched on for every later job until restart."""
+    have left posting switched on for every later job until restart.
+
+    Serialised by `_POST_LOCK`: the owner's flag-file test and the 3 PM
+    job both run in this process, and without the lock both could pass
+    `already_posted` before either wrote the ledger and post the same
+    date twice (2026-09-24 review)."""
+    with _POST_LOCK:
+        return _post_image_locked(text, png, key=key, date_iso=date_iso, force=force)
+
+
+def _post_image_locked(text: str, png: bytes, *, key: str, date_iso: str,
+                       force: bool) -> str | None:
     if already_posted(date_iso, key):
         log.info(f"x: {key} for {date_iso} already posted — skipping")
         return None

@@ -3206,3 +3206,18 @@ question was bare) and one trigger word ("rape" slang was in 1 of 10
 bounced prompts and 34 answered ones). The bare question plus the
 system prompt passes 4/4 on replay. Next step is replaying the 10
 bounced prompts and bisecting, not a guess.
+
+Code review of the six commits pushed 9/21-9/24 without one (owner:
+run the code-review skill on every change before pushing). Nine
+findings, eight fixed: underscore aliases (ry_bry) inside the italic
+metrics broke both the also-called parse and `_PROFILE_METRICS_RE`, so
+aliases moved into the name parentheses; the metrics regex now runs to
+`_:`, which also fixed a pre-existing miss where the single-member
+racism branch ("lookup_user_profile") was never stripped in lean mode;
+the alias map is built by a scheduler job (boot + hourly, 30-min grace)
+and a failed refresh keeps the last map; the voice cleaner's
+replacements and scan now use the same code-block definition; X posting
+is serialised by a process lock; the records header no longer restates
+the code-enforced rule. A second review of those fixes found four more
+(misfire grace, scan consistency, commas in names, dead cache stamp),
+all fixed. 594 tests, 158/158 smokes.

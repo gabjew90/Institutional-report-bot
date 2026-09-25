@@ -1417,6 +1417,7 @@ from db_parts.chat import (  # noqa: E402,F401
     aliases_for,
     build_member_aliases,
     member_aliases,
+    refresh_member_aliases,
     members_named_in_text,
     count_chat_messages_for_channels,
     export_user_profiles_markdown,

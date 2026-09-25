@@ -100,8 +100,7 @@ def _records():
 
 def test_a_named_member_gets_the_record_line_only():
     out = _records()
-    assert "- **BK** (bankerkyle, <@423994649317736448>)" in out
-    assert "also called: bearishkyle, kyle" in out
+    assert "- **BK** (bankerkyle, <@423994649317736448>; also called: kyle, bearishkyle)" in out
     assert "17W/3L" in out and "record only" in out
     assert "Personality" not in out
 
@@ -131,3 +130,52 @@ def test_the_prompt_builder_appends_the_records():
     src = pathlib.Path(B.__file__).read_text(encoding="utf-8")
     assert "db.members_named_in_text, _named_scope(question)" in src
     assert "db.format_named_member_records" in src
+
+
+# --- 2026-09-24 review fixes -------------------------------------------
+def test_underscore_aliases_parse_and_do_not_break_the_metrics_regex():
+    """Aliases like ry_bry used to sit inside the italic `_..._` metrics:
+    the also-called parse stopped at the first underscore and
+    _PROFILE_METRICS_RE stopped matching, so lean mode kept the racism
+    bit. They now live in the name parentheses."""
+    RY = 757772170863837206
+    rows = [(RY, "Ry_bry", 4943), (RY, "Ry_spaceman", 4255), (RY, "Ry_bearish", 364)]
+    amap = C.build_member_aliases(rows)
+    prof = {RY: {"display_name": "Ry_spaceman", "username": "nft_spaceman",
+                 "racial_humor_score": 12, "slur_count": 0,
+                 "profile_text": "**Personality and style.** x",
+                 "message_count_at_update": 2399}}
+    with patch("db.get_profiles_for_users", return_value=prof), \
+         patch("db.get_global_trader_ranks", return_value=({RY: 7}, 59)), \
+         patch("db.member_ledger_summary", return_value=LEDGER), \
+         patch("db.aliases_for", side_effect=lambda u: C.aliases_for(u, amap)):
+        block = db.format_user_profiles_for_context([RY])
+    members = B._profile_member_ids(block)
+    assert members.get("ry_bry") == RY and members.get("ry_bearish") == RY
+    assert B._PROFILE_METRICS_RE.search(block), "lean-mode metrics regex must still match"
+
+
+def test_alias_reads_never_hit_the_db_and_a_failed_refresh_keeps_the_map():
+    C._alias_cache["map"] = None
+    assert C.member_aliases() == dict(C.PINNED_ALIASES)
+    C._alias_cache["map"] = {"tulch": 9, "kyle": BK}
+    with patch("db.get_connection", side_effect=RuntimeError("locked")):
+        assert C.refresh_member_aliases() == -1
+    assert C.member_aliases() == {"tulch": 9, "kyle": BK}
+    C._alias_cache["map"] = None
+
+
+def test_the_refresh_runs_from_the_scheduler_not_the_ask_path():
+    import inspect
+    from scheduler import jobs
+    assert "_refresh_member_aliases_job" in inspect.getsource(jobs)
+    assert "execute(" not in inspect.getsource(C.member_aliases)
+
+
+def test_the_records_header_does_not_restate_the_code_enforced_rule():
+    assert "must match" not in _records()
+
+
+def test_a_comma_in_a_display_name_cannot_split_the_alias_list():
+    amap = C.build_member_aliases([(11, "Smith, John", 500)])
+    assert "smith john" in amap and not any("," in s for s in amap)

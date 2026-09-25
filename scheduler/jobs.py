@@ -430,6 +430,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         max_instances=1,
         misfire_grace_time=3600,
     )
+    # Member nickname map (2026-09-24): a GROUP BY over all of
+    # chat_messages, so it is built here, a minute after boot and then
+    # hourly, and /ask only ever reads the cached map.
+    from datetime import datetime as _dt_al, timedelta as _td_al
+    scheduler.add_job(
+        _refresh_member_aliases_job,
+        trigger=IntervalTrigger(hours=1),
+        next_run_time=_dt_al.now(tz) + _td_al(minutes=1),
+        id="member_aliases_refresh",
+        name="Members: refresh nickname map",
+        max_instances=1,
+        coalesce=True,
+        # the boot run lands while catch-up keeps the loop busy; without
+        # a grace period APScheduler drops it and /ask runs pinned-only
+        # for an hour
+        misfire_grace_time=1800,
+    )
     # Owner-requested X test post, picked up from a flag file so the
     # work runs in this process rather than a second one against the
     # live DB. Idle cost is one stat() a minute.
@@ -1336,6 +1353,14 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:
         log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)
+
+
+async def _refresh_member_aliases_job():
+    import asyncio as _asyncio
+    import db
+    n = await _asyncio.to_thread(db.refresh_member_aliases)
+    if n >= 0:
+        log.info(f"member aliases: {n} surfaces")
 
 
 X_REQUEST_FLAG = "post-calendar"

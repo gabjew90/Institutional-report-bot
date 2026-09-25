@@ -82,3 +82,25 @@ def test_spaced_ranges_read_as_to():
     assert C("closed at 147 — up 3%") == "closed at 147, up 3%"
     assert C("62–65% odds") == "62–65% odds"
     assert C("the tape — as usual — ripped") == "the tape, as usual, ripped"
+
+
+def test_the_voice_cleaner_leaves_code_alone():
+    code = "```python\nx = 1; y = 2\n# 5 – 10 range\n```\nthe tape — as usual — ripped"
+    out = B._clean_voice_violations(code)[0]
+    assert "x = 1; y = 2" in out and "# 5 – 10 range" in out
+    assert "the tape, as usual, ripped" in out
+
+
+def test_the_voice_scan_sees_text_wrapped_prose():
+    _, hits = B._clean_voice_violations("```text\nthe tape — as usual — ripped\n```")
+    assert hits, "a ```text-wrapped answer is prose and its em-dash must register"
+    _, hits = B._clean_voice_violations("```python\nx = 1; y = 2\n```")
+    assert not hits, "code is not scanned"
+
+
+def test_the_alias_refresh_job_survives_a_busy_boot():
+    import inspect
+    from scheduler import jobs
+    src = inspect.getsource(jobs.setup_scheduler)
+    i = src.index('id="member_aliases_refresh"')
+    assert "misfire_grace_time" in src[i:i + 500]
