@@ -4,6 +4,47 @@ Entries are appended by the nightly headless judge, one heading per graded
 date. Entries are removed by the work session that ships or rejects them —
 never by the judge.
 
+## 2026-09-24
+
+- (open) 1. judgment (OpenSea/Coinbase case conflation, 20:07:58 UTC turn) —
+  ungrounded `LOCAL/FACT` turn answering "is it illegal to insider trade
+  crypto" cites "The OpenSea insider trading case (US v. Wahi)" as the
+  legal blueprint. Web-verified: Wahi is real but is the **Coinbase**
+  token-listing front-running defendant (guilty plea, wire fraud
+  conspiracy); the actual OpenSea prosecution is a different case,
+  *United States v. Chastain* (and that conviction was vacated by the
+  Second Circuit in July 2025). The bot fused two distinct real cases
+  into one wrong citation. Same fact-shape as the 2026-08-28 wrong-Fed-
+  Chair and 2026-08-27 Jackson Hole findings already queued: confident
+  conflated specificity on a zero-grounding turn. `scripts/validate_answer.py
+  --file /tmp/ans6.txt --tools "lookup_options_chain" --question "is it
+  illegal to insider trade crypto"` returns no violation (only the
+  unrelated `repetition-glitch: detector unavailable` noise) — no
+  existing class inspects named-case/entity attribution, the same gap
+  already on record from 08-28. Full writeup:
+  `pulse-data/ask-qc/2026-09-24.claude.md`.
+- (not a FAIL, flagged anyway) infra-or-model: repetition-strip corrupts
+  embedded code blocks (22:55:09 UTC turn) — a `WEB/FACT` grounded turn
+  ("show me pelosi's portfolio breakdown by %") shipped a syntactically
+  broken Python snippet: `weights =` with the array literal's contents
+  missing, confirmed with a local `compile()` check
+  (`SyntaxError: invalid syntax` at that line). The raw model output (in
+  the turn's own `<details>` block) has the complete, correct array;
+  the guard sequence on this turn was `repetition, repetition-strip,
+  validate:macro-unsourced, validate-regenerated`. Likely cause: the
+  same 8 percentage figures appear twice in this answer (once in the
+  code's array, once in the prose bullets below it), which is exactly
+  the shape the repetition-glitch detector treats as a token loop — the
+  strip pass appears to have excised the array literal's contents as
+  "repeated" without knowing it sat inside a code fence. Graded INFRA
+  per ground rule 3 (the model's own output was correct; the harness's
+  post-processing broke it), so not triaged as a FAIL, but logged here
+  because it's a concrete, reproducible bug with a clear fix direction:
+  the repetition-strip sentence-excision pass should not operate inside
+  fenced code blocks. `scripts/validate_answer.py` (grounded, no tools)
+  returns no violation for this content — no class inspects code-block
+  syntax. Full writeup: `pulse-data/ask-qc/2026-09-24.claude.md`.
+
 ## 2026-09-13
 
 - (open) judgment — fantasy-league projected-total fabrication at

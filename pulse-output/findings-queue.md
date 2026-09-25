@@ -1042,3 +1042,80 @@ Not filing a fresh queue item for the staleness itself, per the
   at all, so "lost counter-case" overstates what was actually lost, even
   though the underlying corpus-diversity point (dropping the one
   non-JPMorgan/DB voice in a 3-house day) stands independently.
+
+## 2026-09-25 — headless QC on 2026-09-25T14-10-17Z
+
+- **prompt-session** — EDIT is converting internal `## _LEANS` entries
+  into published imperative trade commands, and did so twice in this
+  single run, not once. Round 1 of the adversarial check caught "Long
+  $TSM." closing the agentic-AI brief and it was repaired; Round 3
+  caught "Short $TLT into that level." closing the MAIN EVENT and the
+  2-round repair budget was exhausted, so it shipped as a residual hard
+  finding. Checked `drafts/2026-09-25T14-10-17Z.md` directly: DRAFT's
+  own body prose for both themes is purely conditional/descriptive, no
+  imperative sentence — but DRAFT's `## _LEANS` block (internal-only by
+  design, feeds `pulse_leans` tracking, meant to be stripped before
+  publish) already contains `short | $TLT | 10-year targets 5.2% then
+  5.5%...` and `long | $TSM | Goldman's one-delta desk calls the
+  breakout...` in near-identical phrasing to what shipped. This is one
+  mechanism firing on two separate themes in one run: EDIT is reading
+  `_LEANS` and rendering it as body-text commands. The adversarial
+  check is the only backstop and caught both instances; which one ships
+  is a coin flip on repair-budget timing. Recommend an explicit
+  EDIT_SYSTEM/EDIT_USER instruction that `_LEANS` content must never be
+  rendered as an imperative sentence in the body — DRAFT already knows
+  how to write the falsifiable-level closes the voice contract wants,
+  EDIT shouldn't be overriding that with the internal lean's raw
+  direction.
+- **deterministic-fixable (recurring — repair-budget exhaustion keeps
+  shipping caught hard findings)** — this is the 4th
+  `CONTINUE_WITH_RESIDUAL` in the last 13 daily runs (09-08, 09-11,
+  09-14, 09-25; ~31% of runs), each one a hard finding the adversarial
+  check caught, named a fix for, and then shipped anyway because the
+  2-round repair budget ran out first. Today's residual's own `fix`
+  field named a trivial, no-fabrication-risk option (drop the imperative
+  sentence, keep the falsifiable-level close). STEP 7's self-review
+  independently proposed the same fallback for today's instance; queuing
+  it here as a recurring pattern rather than a one-off since the same
+  gap has now cost 3 prior runs different defect kinds (misattribution,
+  unsupported-figure + misattribution + fabricated-event, fabricated-
+  event) and today a 4th (invented-call). Recommend a fallback branch in
+  the adversarial-check dispatcher: when the repair budget is exhausted
+  on a residual whose `fix` field offers a safe, scoped deletion (not a
+  rewrite requiring new facts), apply that deletion as a last-resort
+  strip before falling back to `CONTINUE_WITH_RESIDUAL`, targeting only
+  the flagged quote rather than the surrounding sentence/paragraph.
+- **deterministic-fixable (confirmed, upgrades STEP 7's speculative
+  flag to verified)** — the `qc-prompt.txt` assembly's block labeled
+  "FINAL POSTED MARKDOWN (post-SCRUB if SCRUB ran)" is not the
+  actually-published artifact. Read both directly and confirmed: the
+  qc-prompt block carries the unsplit `## 2. INSIGHTS & ALPHA` header
+  (3 top-level sections), while `pulse-output/archive/2026-09-25T14-10-17Z.md`
+  — the file actually posted/archived — has the correct post-split
+  4-header structure (`RECAP` / `THE MAIN EVENT` / `BRIEFS` / `WHAT TO
+  WATCH`). The RECAP/MAIN EVENT/BRIEFS split is downstream-tooling's
+  job per CLAUDE.md, run after whatever stage produces the block
+  qc-prompt.txt labels "final." Any QC review — STEP 7's or the headless
+  judge's — that grades brief length/shape/structure against the
+  literal "FINAL POSTED MARKDOWN" block is grading a pre-split
+  intermediate, not what a reader saw. Recommend the QC-prompt assembly
+  either source the true archived post-split file for this block, or
+  relabel it "POST-EDIT/SCRUB, PRE-SPLIT" so it can't be mistaken for
+  the published artifact. STEP 7 flagged this with `[inferred]`/
+  `[speculative]` hedges in its own review; this entry upgrades it to
+  confirmed since both files were compared directly this run.
+- **observation** — STEP 7's finding on the "December 1999 and July
+  1929" breadth-stat attribution names the wrong correction target.
+  Checked `pulse-context/latest.json` directly: the figure is a verbatim
+  quote from **The Market Ear** ("a technical setup not seen since
+  December 1999 and July 1929"), not a fabrication, and the Round-2
+  adversarial repair correctly swapped it in to replace a genuine
+  misattribution (the draft had wrongly credited BTIG's unrelated
+  "January 2000" BKX/SPX-divergence comparison to this different
+  breadth statistic). Dropping the attribution entirely rather than
+  naming a bank was the safe fallback, not a defect — BTIG never made
+  this specific claim, so restoring a "BTIG says" citation (STEP 7's
+  implied fix) would reintroduce the misattribution it replaces. If a
+  future session acts on STEP 7's "re-verify and re-attach the correct
+  citation" suggestion, the citation to attach here is The Market Ear,
+  not BTIG.
