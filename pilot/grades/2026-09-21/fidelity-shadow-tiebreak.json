@@ -6,21 +6,21 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17223__on-our-minds-september-2026-fomc-postmortem-the-first-hike.txt",
-   "span": "25bp to 3.75% - 4%, without any dissenters.",
-   "why": "Exact match on rate hike size, new range, and unanimous vote."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17198__global-reflections.txt",
+   "span": "Policymakers delivered a 25bps hike with no dissents, while the dots pointed to...",
+   "why": "25bp hike to 3.75-4% with no dissents confirmed verbatim; range confirmed independently in 17157/17196/17195."
   },
   {
    "id": "s2",
    "grade": "distorted",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17189__fed-loses-patience.txt",
-   "span": "Two-to-three rate hikes (including September's move) therefore, appears to be a sensible middle ground ... a total of 100bp of rate hikes would leave the funds rate around 150bp above the Fed's estimate of its longer-run, or neutral level.",
-   "why": "HSBC's 'two-to-three hikes' is called a sensible middle ground, not a ceiling, and is a separate scenario from the 100bp/150bp-above-neutral figure. That figure is attached to the market's more hawkish pricing of four total hikes (100bp), which HSBC calls 'the limit' for tightening, not to the two-to-three-hike case (which would only be 50-75bp). The sentence wires the 100bp/150bp reasoning to the wrong scenario as if it justifies treating two-to-three as the ceiling.",
+   "span": "Two-to-three rate hikes (including September's move) therefore, appears to be a sensible middle ground... The market is somewhat more hawkish; it is currently pricing a further three 25bp hikes (four including the September increase). We view this as likely to be the limit for tightening... a total of 100bp of rate hikes would leave the funds rate around 150bp above the Fed's estimate of its longer-run, or neutral level.",
+   "why": "HSBC's own base case is 'two-to-three' hikes total, called a 'sensible middle ground,' not a 'ceiling.' The 100bp/150bp-above-neutral figures are attached in the source to the MARKET's more hawkish pricing of four total hikes, which HSBC separately calls 'the limit' -- a different, larger count than 'two to three.' The sentence wrongly grafts that rationale onto the two-to-three figure.",
    "searched": [
+    "two to three",
     "100 basis points",
-    "two to three total",
-    "sensible ceiling"
+    "150 basis points above neutral"
    ]
   },
   {
@@ -28,8 +28,8 @@
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
-   "span": "An even more rapid de-escalation of the Middle East conflict or faster disinflation than we project could mean a one-and-done hike in December",
-   "why": "Matches condition (faster Middle East de-escalation or disinflation) and outcome (one more hike, in December) exactly."
+   "span": "our anticipated hike in March 2027 may not materialize and the Fed only hikes one more time in December. An even more rapid de-escalation of the Middle East conflict or faster disinflation than we project could mean a one-and-done hike in December",
+   "why": "Faster de-escalation or quicker disinflation converge on one remaining hike, in December, per MS's own scenario language."
   },
   {
    "id": "s4",
@@ -37,7 +37,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
    "span": "CCC spreads widened another 36bps on the week to 922bps, at the top of their 52-week range.",
-   "why": "Exact figure and range-position match; Triple-C = CCC."
+   "why": "Exact figure and range match."
   },
   {
    "id": "s5",
@@ -45,7 +45,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17231__gs-garrett-weekend-prep-20-sep-2026.txt",
    "span": "spx 3 month 95% lookback put costs 1.8% (vanilla 95% @ 1.25%) ... the lookback guarantees to \"sell the top\" on any trading session between now and ~year-end for an extra 60-100bps vs the vanilla",
-   "why": "Goldman FICC & Equities note recommending the lookback structure as a buy (trades section); pricing figures match exactly."
+   "why": "Prices, structure mechanics and the note's overall 'buy when you can' framing recommending these structures as adds all match."
   },
   {
    "id": "s6",
@@ -53,7 +53,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17198__global-reflections.txt",
    "span": "the Morgan Stanley PB Content team highlighted that funds ended net sold across all major regions, with short additions driving the selling across global equities",
-   "why": "Matches prime-brokerage net-selling-across-regions-via-shorts claim; source is Morgan Stanley (MS Savone note)."
+   "why": "Near-verbatim match."
   },
   {
    "id": "s7",
@@ -61,7 +61,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17231__gs-garrett-weekend-prep-20-sep-2026.txt",
    "span": "in contrast to the gs hf prime brokerage statistics, our cash desk highlights asset manager / long only supply \u2026 better to sell in macro, comm services, industrials, and tech",
-   "why": "Cash desk explicitly framed as contrasting with HF prime brokerage data; tech overlaps with the note's own PB data showing HF buying in tech, matching the sentence's claim."
+   "why": "Cash desk explicitly framed as contrast to HF/PB buying; tech is the clear overlap sector (HF book buying tech per the same note's item 2, LO selling tech per item 3)."
   },
   {
    "id": "s8",
@@ -69,7 +69,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17207__tracking-the-gigawatts-rbc-datacenter-expansion-tracker-july.txt",
    "span": "The identified mispriced risk is contagion: the order is explicitly positioned by its sponsors as a national model",
-   "why": "RBC source; 'national model' and 'national template' are equivalent phrasing, substance unchanged."
+   "why": "RBC's own tracker; 'template' is a faithful synonym for 'model'."
   },
   {
    "id": "s9",
@@ -77,31 +77,31 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
    "span": "Scope downgraded France after hours, and DBRS put them on negative watch.",
-   "why": "Exact match."
+   "why": "Near-verbatim match."
   },
   {
    "id": "s10",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
-   "span": "Expect the ECB to find a way or create a new tool to support French bonds. Austerity is not an option ... -- CIO London",
-   "why": "Speaker is attributed as 'CIO London' (a London-based CIO); expectation of ECB building a new tool to support French bonds matches exactly."
+   "span": "Expect the ECB to find a way or create a new tool to support French bonds. -- CIO London",
+   "why": "Attributed to a London-based CIO quote; matches."
   },
   {
    "id": "s11",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17159__the-wealth-effect-is-the-only-consumer-left.txt",
-   "span": "the Top 20% holds $49.8tn in equity wealth against just $8.3tn in labor income, while the bottom 40% has $1.8tn in labor income versus $1.7tn in equity wealth",
-   "why": "Exact figure match, sourced to Morgan Stanley."
+   "span": "Per MS, the Top 20% holds $49.8tn in equity wealth against just $8.3tn in labor income, while the bottom 40% has $1.8tn in labor income versus $1.7tn in equity wealth.",
+   "why": "Exact figures match."
   },
   {
    "id": "s12",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17175__rise-of-the-agents-raising-cpu-tam-again-to-210bn.txt",
-   "span": "our CY30E server CPU TAM to $210bn+ (from ~$170bn) ... agentic inference is pushing the CPU-to-GPU ratio from ~1:4 in the training era to ... ultimately toward ~1:1 for agentic AI ... CPUs now ~10% of Data Center Systems TAM ... ~$2.2Tn",
-   "why": "BofA source; all figures match, including the compressed 1:4-to-1:1 ratio trajectory (intermediate ~1:2 inference step omitted but endpoints and direction correct) and the ~10% of $2.2tn figure."
+   "span": "our CY30E server CPU TAM to $210bn+ (from ~$170bn) ... agentic inference is pushing the CPU-to-GPU ratio from ~1:4 in the training era to, ~1:2 for AI inference, and ultimately toward ~1:1 for agentic AI ... CPUs representing ~10% of the overall ~$2.2Tn data center systems TAM",
+   "why": "All figures (BofA source) match; the sentence's endpoints (1:4 training toward 1:1) omit the intermediate 1:2 inference step but don't misstate either endpoint."
   },
   {
    "id": "s13",
@@ -109,7 +109,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
    "span": "If the Fed has to do materially more, GIR sees ~$4,070 in a three-additional-hike scenario",
-   "why": "Matches: three hikes beyond the note's stated current base case (terminal 3.25-3.50%) implies ~$4,070 gold per Goldman's research (GIR)."
+   "why": "Matches; Goldman is the attributed bank."
   },
   {
    "id": "s14",
@@ -117,11 +117,11 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
    "span": "The big structural story remains intact: central banks are buying at more than 5x the pre-2022 pace.",
-   "why": "The 'more than five times pre-2022 pace' figure is Goldman's (Coppersmith note), not Societe Generale's. Societe Generale's deck (17214) only carries a chart annotating the 28 Feb 2022 Russia reserve freeze next to a PBoC gold-purchases timeline, with no stated multiplier anywhere in that document. The sentence attributes the Goldman statistic to Societe Generale as something SocGen 'traces directly' to the reserve freeze.",
+   "why": "The '5x pre-2022 pace' claim belongs to Goldman's GIR note (17230), not Societe Generale. SocGen's own document (17214) shows a Russia-reserve-freeze annotation only on a narrower China-PBoC gold chart, and elsewhere in that same document states central bank net gold purchasing 'slowed in 2025' and central bank demand share fell from 37% to 20% -- it does not assert a 5x-pace figure or trace it directly to the Feb 2022 freeze. The sentence misattributes the bank and invents a causal chain not present in either source.",
    "searched": [
-    "five times",
-    "5x the pre-2022",
-    "traces directly"
+    "5x the pre-2022 pace",
+    "central banks are buying",
+    "Societe Generale gold"
    ]
   },
   {
@@ -129,8 +129,8 @@
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17186__gs-crook-thoughts-from-the-floor-connecting-you-to-gs-19-sep.txt",
-   "span": "It is probably still gold\u2026 $4000 is where we've seen quite a bit of sovereign and institutional sponsorship. On any of these pullbacks with escalations in Hormuz where you get closer to that level, we would want to start adding",
-   "why": "Exact match to Tony Kim's quoted favourite trade."
+   "span": "Our favourite trade: \"It is probably still gold\u2026 $4000 is where we've seen quite a bit of sovereign and institutional sponsorship.",
+   "why": "Near-verbatim match, attributed to Tony Kim."
   }
  ],
  "faithful": 13,
@@ -138,7 +138,7 @@
  "unsupported": 0,
  "faithful_rate": 0.867,
  "dim": "fidelity",
- "agent": "b",
+ "agent": "tiebreak",
  "provenance": {
   "model_requested": "claude-sonnet-5",
   "model_version_returned": "unreported",

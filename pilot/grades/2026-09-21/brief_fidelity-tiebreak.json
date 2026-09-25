@@ -1,0 +1,75 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d11",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "CDU suffers historic state-election losses (AfD 38.3% in Mecklenburg-W. Pomerania, Die Linke 25.3% in Berlin, CDU misses 5% threshold) therefore Germany's political centre weakens without an immediate national policy change; separately a US-Denmark-Greenland military-access deal, falling short of Trump's original acquisition ambition, reduces geopolitical event risk if it holds therefore Asian equities rally on trade-talk optimism into Thursday's Trump-Xi summit; the week ahead carries flash PMIs, Norges/Riksbank/SNB decisions (62%/21%/5% priced) and heavy Fed speak following last week's hawkish hold, with payrolls next Friday the key pre-October-FOMC print; last week itself reversed - an energy-price spike pushed 10yr Treasuries above 5% for the first time since 2007 on stagflation fear, then falling oil (more than the Fed hike) unwound that move, while French-bund spreads breached 100bp for the first time since 2012.",
+   "brief_chain": "Same chain, same order, same figures: German election losses weaken the centre without a national policy shift; Greenland deal reduces event risk versus Trump's earlier ambition; Asian equities rally on trade-talk optimism ahead of the Trump-Xi summit; week ahead = PMIs, central-bank decisions with the stated hike odds, heavy Fed speak, payrolls as the key pre-FOMC print; last week reversed via an energy spike pushing 10yr yields above 5% (first since 2007) before falling oil (more than the hike) unwound it, plus the French/bund spread record.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d22",
+   "tier": "rest",
+   "bank": "Societe Generale",
+   "source_chain": "September FOMC hikes 25bp to 3.75%-4% with no dissents and drops its energy-supply-shock inflation framing for a 'timelier return to 2%' pledge therefore SG reads this as inflation concern broadening beyond energy; the SEP corroborates via GDP revised up, unemployment revised down to 4.1% (below the Fed's 4.2% long-run estimate), and 2026 core PCE revised up to 3.4%, with most members seeing upside inflation risk and none seeing downside employment risk therefore SG reads the Committee as perceiving lower stagflation risk and focusing on inflation; the 2026 median dot implies 50bp of hikes this year (12/19 aligned), 2027 dots split 4 cutters vs 8 hikers, and the long-run dot rises to 3.2%; Warsh calls policy still accommodative and frames the hike as removing accommodation therefore SG keeps its call for two more 25bp hikes (Dec, March; 75bp total) around unwinding the 2025 insurance cuts, conditional on inflation data not disappointing.",
+   "brief_chain": "Same chain, same figures, same conditionality, in the same order.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Converging supply-chain disruptions (Mideast export routes, pipelines, shipping, tanker capacity, refinery outages, low European fuel stocks) are overwhelming the buffers (strong US exports, weak Chinese demand, ample inventories) that previously absorbed shocks therefore MS shifts its baseline from benign de-escalation to an oil risk-premium scenario (WTI $107.02, Brent $130.80, SPR at its lowest since April 1984) therefore persistently higher oil delays MS's assumed airfare disinflation and produces second-round effects, raising core PCE to 3.2% (2026)/2.7% (2027), trimming 2027 GDP to 2.3% (from 2.6%), consumption to 1.8% (from 2.1%), nonresidential investment to 7.1%, payrolls to 50k/month, and lifting unemployment to 4.3% therefore, combined with Warsh's hawkish comments and an upward FOMC neutral-rate revision, MS now expects two more 25bp hikes (Dec, March) to a 4.25-4.50% terminal rate; MS assigns this oil-risk-premium baseline 45% probability.",
+   "brief_chain": "Same chain and same figures throughout, ending on the same 45% probability weight, with one softened link: source says the previously-assumed airfare disinflation payback is 'unlikely to materialize,' the brief says it is 'delayed.'",
+   "distortions": [
+    {
+     "what": "brief says higher oil is 'delaying the airfare disinflation MS previously assumed'; source says that assumed payback is 'unlikely to materialize' (stronger than delay, verging on abandoned)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's own quantitative forecast (core PCE 3.2%/2.7%, i.e. materially higher and stickier than before) already carries the correct hawkish conclusion; 'delayed' vs 'unlikely to materialize' is a tonal softening that doesn't change the inflation call, the Fed call, or any trade."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d8",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "GCEM symposium soundbites converge on a hawkish Fed (committee views policy as still accommodative after years of missed inflation targets, ~100bp cumulative hikes now priced) therefore GS strategists see the long end relatively insulated by Fed credibility even as AI-driven issuance and fiscal deficits add term-premium pressure; separately, oil is the core vulnerability because Hormuz has proven easier for Iran to close than the US can reopen, and 'for now' the two moderating forces \u2014 Mideast supply and China demand weakness \u2014 remain intact, with every sustained 10% cut to Mideast exports adding ~$20/bbl to fair value, so current supply/demand data still caps prices below the $125+ right-tail (the risk is a future escalation, e.g. Iranian hardliners hitting energy infrastructure) therefore, because clients are broadly long EM carry, frontier FX, equities/tech and received EM local rates \u2014 all vulnerable to an oil-driven yields-up/equities-down shock \u2014 GS recommends four hedges: SPX lookback puts contingent on higher SOFR, USD binary calls vs CHF/EUR, QQQ dual/tri-binaries linked to yields and Brent, and outright Brent calls.",
+   "brief_chain": "Same overall chain and same four hedges, but the oil-vulnerability link is inverted: brief states 'China's demand offset is fading' as a current, ongoing condition, where the source states the China demand-weakness buffer 'remain[s] intact... for now' and identifies a distinct future supply-side escalation (not a fading demand buffer) as the actual trigger for the right-tail.",
+   "distortions": [
+    {
+     "what": "brief asserts 'China's demand offset is fading'; searched 'fading', 'offset', 'moderat' and 'China demand' in the source \u2014 the only matching passage (Struyven) says the China demand-weakness buffer 'remain[s] intact... For now', the opposite of fading. No other passage supports 'fading' (Cohen's 'shock absorber' line is a hypothetical about removing China's re-routing absorption if Hormuz closes further, not a statement that current demand weakness is eroding).",
+     "material": true,
+     "would_the_trade_change": "Yes for timing/urgency \u2014 reading the China buffer as currently 'fading' implies the oil right-tail catalyst is already underway, pushing a reader toward buying the hedges more urgently now; GS's own text says this moderating force is stable 'for now' and pins the actual trigger on a distinct future supply-side escalation (Iranian hardliners attacking infrastructure), a materially different timing/conviction read even though the four hedge instruments themselves are unchanged."
+    },
+    {
+     "what": "brief attributes the 'still accommodative after years of missed inflation targets' framing to 'Fed speakers' generically; in the source this reasoning comes from GS's own FICC co-head (Sehgal) paraphrasing/interpreting the Fed's logic, not from a quoted Fed official making that claim (Warsh's actual quoted words are only 'removing a dose of accommodation')",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the substantive claim (policy still viewed as accommodative, ~100bp priced) is accurate and sourced elsewhere to Warsh's own words; the attribution blur doesn't change the Fed stance, hedge trades, or conviction."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 2,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

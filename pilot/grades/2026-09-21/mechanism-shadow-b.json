@@ -1,12 +1,12 @@
 {
  "metric": 3,
  "artifact": "shadow",
- "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
- "source_span": "The upward revision to the longer-run neutral rate to 3.25%, in our view, strengthens the case for a higher terminal policy rate (two additional 25bp hikes rather than one).",
- "source_chain": "Warsh calls the hike 'removing a dose of accommodation' and says policy is not yet restrictive, and the committee revises its neutral-rate estimate up to 3.25% from 3.06%, therefore any given policy rate delivers less restraint than previously assumed, therefore MS raises its call to two more hikes (December, March) to a 4.25-4.50% terminal \u2014 unless the Middle East conflict de-escalates or disinflation runs faster than expected, in which case December is the last hike and the March hike does not happen.",
- "pulse_chain": "The Fed hikes 25bp to 3.75-4.00%, Warsh calls it removing accommodation and says policy is still not restrictive, and the committee's neutral-rate estimate rises to 3.25% from 3.06%, therefore any given rate slows the economy less than the Fed assumed in June, therefore Morgan Stanley calls for two more hikes (December, March) to 4.25-4.50% against the market's four priced \u2014 unless a faster Middle East de-escalation or quicker disinflation makes December the last hike instead of the first of several.",
+ "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+ "source_span": "A higher expected path for oil prices means disinflation will be slower, and more restrictive policy also weighs on growth in 2027.",
+ "source_chain": "Persistent oil-price shock (supply disruptions, benign de-escalation scenario abandoned) therefore stickier inflation (core PCE raised to 3.2% 2026 / 2.7% 2027) and softer growth (2027 GDP cut to 2.3% from 2.6%, payrolls to 50k/mo, unemployment 4.3%) therefore two more 25bp hikes (Dec + March) to 4.25-4.50% terminal. Invalidation (from the companion FOMC-reaction note, same author bank): faster Middle East de-escalation or quicker disinflation means the Fed hikes only once more, in December, not twice.",
+ "pulse_chain": "Morgan Stanley switches its baseline to a sustained oil risk premium (45% probability) therefore raises core PCE to 3.2%/2.7%, cuts 2027 GDP to 2.3%, trims payrolls to 50k/mo with unemployment at 4.3% therefore expects two more 25bp hikes (Dec + March) to 4.25-4.50%. Invalidation: faster Middle East de-escalation or quicker disinflation leaves only one more hike, in December.",
  "preserved": true,
- "why": "The pulse reproduces MS's exact inferential step (higher neutral rate -> less restraint at any given rate -> two more hikes to 4.25-4.50%) and its stated invalidation (Middle East de-escalation/faster disinflation caps it at one more hike), and the secondary Goldman split (underdelivers-to-two house view; October hike added but 3.25-3.50% terminal held via 2027 cuts) checks out verbatim against the GS Pasquariello and GS Coppersmith notes with correct attribution.",
+ "why": "The pulse reproduces Morgan Stanley's exact oil-shock-to-inflation-to-growth-to-hikes sequence, the correct probability (45%), the correct figures, and the correct invalidation condition, attributed to the correct bank.",
  "dim": "mechanism",
  "agent": "b",
  "provenance": {

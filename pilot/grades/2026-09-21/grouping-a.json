@@ -3,18 +3,21 @@
  "total_cards": 693,
  "fragmentation_sets": [
   {
-   "subject": "Fed's September rate decision and the market's reaction to it",
+   "subject": "AI datacenter buildout: capacity scale, hyperscaler capex, power strategy, cooling tech, and siting/regulatory backlash",
    "labels": [
-    "fed rate hike outlook",
-    "fed decision market reaction"
+    "datacenter capacity buildout",
+    "hyperscaler datacenter capex",
+    "datacenter power supply strategy",
+    "datacenter liquid cooling shift",
+    "datacenter siting regulation risk"
    ],
-   "cards": 16
+   "cards": 52
   },
   {
-   "subject": "Middle East oil risk premium (Strait of Hormuz crisis) driving inflation",
+   "subject": "Middle East oil geopolitical risk premium threatening inflation and growth (Hormuz/Houthi/Iran/diesel/SPR)",
    "labels": [
-    "us oil risk premium inflation outlook",
     "oil right tail geopolitical risk",
+    "us oil risk premium inflation outlook",
     "houthi saudi energy conflict",
     "diesel price spike inflation risk",
     "iran deal path sanctions"
@@ -22,21 +25,10 @@
    "cards": 33
   },
   {
-   "subject": "AI datacenter buildout supercycle (capacity, power sourcing, cooling, hyperscaler capex, siting pushback)",
+   "subject": "BofA's CPU-sector share-shift report (TAM plus per-name calls on ARM/QCOM, Intel, AMD, NVDA)",
    "labels": [
-    "datacenter siting regulation risk",
-    "datacenter capacity buildout",
-    "datacenter power supply strategy",
-    "hyperscaler datacenter capex",
-    "datacenter liquid cooling shift"
-   ],
-   "cards": 52
-  },
-  {
-   "subject": "AI-era server CPU market share battle (ARM/Intel/AMD/Nvidia/Qualcomm)",
-   "labels": [
-    "arm qcom cpu positioning",
     "server cpu tam outlook",
+    "arm qcom cpu positioning",
     "intel cpu share outlook",
     "amd cpu leadership",
     "nvda vera cpu rack"
@@ -44,7 +36,24 @@
    "cards": 24
   },
   {
-   "subject": "Gold bull case: price targets and central-bank buying",
+   "subject": "The Fed's September rate decision and the market's reaction to it",
+   "labels": [
+    "fed rate hike outlook",
+    "fed decision market reaction"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "AI boom concentrating gains away from the consumer (wealth concentration, job displacement, discretionary-basket divergence)",
+   "labels": [
+    "us wealth concentration equities",
+    "ai job displacement risk consumer",
+    "ai vs consumer spending divergence"
+   ],
+   "cards": 11
+  },
+  {
+   "subject": "Gold's structural bull case driven by central bank buying",
    "labels": [
     "gold price target outlook",
     "gold commodities allocation case"
@@ -52,73 +61,18 @@
    "cards": 9
   },
   {
-   "subject": "Dollar direction debate (bull vs. bear USD / non-US rotation)",
+   "subject": "Dollar direction debate: post-Fed USD rally vs. structural weakness/non-US rotation call",
    "labels": [
     "usd strength fx outlook",
     "dollar weakness non us equity rotation"
    ],
    "cards": 9
-  },
-  {
-   "subject": "GS's SPX earnings quality, valuation and index outlook",
-   "labels": [
-    "ai earnings bubble debate",
-    "us equity market outlook",
-    "s p 500 earnings valuation outlook"
-   ],
-   "cards": 22
-  },
-  {
-   "subject": "AI-driven K-shaped consumer: wealth concentration and job-displacement risk",
-   "labels": [
-    "ai job displacement risk consumer",
-    "ai vs consumer spending divergence",
-    "us wealth concentration equities"
-   ],
-   "cards": 11
-  },
-  {
-   "subject": "Breadth deterioration and credit-stress cycle-top signal",
-   "labels": [
-    "equity breadth cycle top signal",
-    "ccc credit spread widening",
-    "consumer quality factor rotation"
-   ],
-   "cards": 17
-  },
-  {
-   "subject": "Fed balance sheet reduction (QT) mechanics and MBS market impact",
-   "labels": [
-    "fed balance sheet reduction",
-    "agency mbs sales spread risk",
-    "agency mbs relative value outlook"
-   ],
-   "cards": 19
   }
  ],
- "fragmented_mass_share": 0.306,
- "mis_merges": [
-  {
-   "label": "em carry positioning hedges",
-   "subjects": [
-    "EM carry/FX directional trade ideas (long EM via Turkey/Egypt/Hungary, long Hungarian rates)",
-    "Cross-asset hedge menu against an equities-down/yields-up oil-rates shock (SPX lookback put, FX binaries, Brent calls)"
-   ],
-   "would_change_theme_selection": true,
-   "why": "An editor picking between a directional 'long EM carry' theme and a defensive 'hedging playbook for an oil/rates shock' theme would choose differently, but the merge buries the second as a subset of the first."
-  },
-  {
-   "label": "french budget crisis bond spreads",
-   "subjects": [
-    "France sovereign budget deficit and OAT-Bund spread widening",
-    "TotalEnergies fuel-station shortage from price caps"
-   ],
-   "would_change_theme_selection": false,
-   "why": "The fuel-shortage claim is a single card of color inside a ten-card sovereign-crisis label, too thin to pull its own theme from an editor."
-  }
- ],
+ "fragmented_mass_share": 0.43,
+ "mis_merges": [],
  "pass": false,
- "notes": "Fragmentation dominates: five RBC datacenter labels, five BofA CPU labels, and three GS/Academy oil-geopolitics labels each split one source's report into separate topics that a pulse brief would run as one theme. misc is 12/693 cards (1.7%), correctly excluded from fragmented mass.",
+ "notes": "Per-label card lists appear capped at 12 in this input (16 labels hit exactly 12), so visible totals (356) undercount the stated 693; fragmented_mass_share (154/356 visible) is an estimate, not exact, but even the most conservative reading using only the four strongest sets (datacenter, oil, BofA CPU, Fed decision = 125 cards) clears 0.10 against either denominator. No mis-merges found: every label reviewed argues one coherent subject internally, including labels spanning multiple instruments (e.g. 'hedge fund positioning', 'em carry positioning hedges') which read as one desk's/theme's roundup rather than two distinct pulse themes.",
  "dim": "grouping",
  "agent": "a",
  "artifact": "",

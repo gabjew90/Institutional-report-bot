@@ -1,9 +1,27 @@
 {
  "metric": 1,
- "total_cards": 356,
+ "total_cards": 693,
  "fragmentation_sets": [
   {
-   "subject": "September FOMC decision \u2014 hikes, dot plot, and market reaction",
+   "subject": "AI datacenter buildout scale, power sourcing, and cooling infrastructure (one RBC databook)",
+   "labels": [
+    "datacenter capacity buildout",
+    "hyperscaler datacenter capex",
+    "datacenter power supply strategy",
+    "datacenter liquid cooling shift"
+   ],
+   "cards": 40
+  },
+  {
+   "subject": "Central-bank-driven gold bull case",
+   "labels": [
+    "gold price target outlook",
+    "gold commodities allocation case"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "September FOMC decision and its market reaction",
    "labels": [
     "fed rate hike outlook",
     "fed decision market reaction"
@@ -11,54 +29,25 @@
    "cards": 16
   },
   {
-   "subject": "Agency MBS spread risk and relative value",
+   "subject": "Middle East energy conflict driving oil/diesel risk (Hormuz, Houthi-Saudi, Iran sanctions path)",
    "labels": [
-    "agency mbs sales spread risk",
-    "agency mbs relative value outlook"
-   ],
-   "cards": 7
-  },
-  {
-   "subject": "Middle East oil-supply risk premium driving inflation",
-   "labels": [
-    "us oil risk premium inflation outlook",
     "oil right tail geopolitical risk",
     "houthi saudi energy conflict",
     "diesel price spike inflation risk",
     "iran deal path sanctions"
    ],
-   "cards": 33
+   "cards": 21
   },
   {
-   "subject": "AI datacenter buildout \u2014 scale, power constraints, and siting pushback",
+   "subject": "USD direction debate (bull vs bear framed as opposite labels rather than one subject)",
    "labels": [
-    "datacenter siting regulation risk",
-    "datacenter capacity buildout",
-    "datacenter power supply strategy",
-    "hyperscaler datacenter capex",
-    "datacenter liquid cooling shift"
+    "usd strength fx outlook",
+    "dollar weakness non us equity rotation"
    ],
-   "cards": 52
+   "cards": 9
   },
   {
-   "subject": "GS S&P 500 outlook, earnings quality and valuation (AI earnings-bubble debate)",
-   "labels": [
-    "us equity market outlook",
-    "ai earnings bubble debate",
-    "s p 500 earnings valuation outlook"
-   ],
-   "cards": 22
-  },
-  {
-   "subject": "Breadth deterioration and credit stress as a cycle-top signal",
-   "labels": [
-    "equity breadth cycle top signal",
-    "ccc credit spread widening"
-   ],
-   "cards": 16
-  },
-  {
-   "subject": "BofA's AI-server CPU market-share map (TAM, Intel/AMD/ARM/NVDA/QCOM)",
+   "subject": "BofA's AI-era CPU competitive landscape and stock picks (ARM/QCOM/Intel/AMD/NVDA)",
    "labels": [
     "arm qcom cpu positioning",
     "server cpu tam outlook",
@@ -69,35 +58,36 @@
    "cards": 24
   },
   {
-   "subject": "Gold price outlook and the central-bank-buying case",
-   "labels": [
-    "gold price target outlook",
-    "gold commodities allocation case"
-   ],
-   "cards": 9
-  },
-  {
-   "subject": "US dollar direction \u2014 bank debate (MS/DB bullish vs HSBC bearish)",
-   "labels": [
-    "usd strength fx outlook",
-    "dollar weakness non us equity rotation"
-   ],
-   "cards": 9
-  },
-  {
-   "subject": "AI-driven wealth effect propping up a narrow, AI-exposed consumer cohort",
+   "subject": "AI-driven wealth concentration and K-shaped consumer/labor risk",
    "labels": [
     "us wealth concentration equities",
     "ai job displacement risk consumer",
     "ai vs consumer spending divergence"
    ],
    "cards": 11
+  },
+  {
+   "subject": "GS house view on US equities, SPX earnings/valuation, and the AI earnings-bubble debate (duplicate Q2 EPS stat across two labels)",
+   "labels": [
+    "us equity market outlook",
+    "s p 500 earnings valuation outlook",
+    "ai earnings bubble debate"
+   ],
+   "cards": 22
+  },
+  {
+   "subject": "Agency MBS: Fed sales risk and desk relative-value positioning",
+   "labels": [
+    "agency mbs sales spread risk",
+    "agency mbs relative value outlook"
+   ],
+   "cards": 7
   }
  ],
- "fragmented_mass_share": 0.559,
+ "fragmented_mass_share": 0.2294,
  "mis_merges": [],
  "pass": false,
- "notes": "Defect is overwhelmingly over-splitting, not merging: 10 subjects are each spread across 2-5 labels (mass share 55.9%), the worst being the RBC datacenter-buildout report (5 labels, 52 cards) and the Academy Hormuz/Houthi/Iran/diesel energy-risk report (5 labels, 33 cards); no mis-merges found. misc holds 12/356 cards (3.4%). Note: the header states 693 cards but only 356 are enumerable in the supplied ledger text \u2014 flagging the discrepancy rather than guessing at unseen cards.",
+ "notes": "misc holds 12/693 cards (~1.7%), correctly excluded as declared overflow. Kept 'datacenter siting regulation risk' separate from the buildout cluster as a distinct risk narrative despite sharing the RBC source report. No internal mis-merge cleared the 'would never be one theme' bar; the failure is driven entirely by fragmented mass (0.23), well over the 0.10 threshold, concentrated in a few banks' single multi-part reports split across 2-5 labels each.",
  "dim": "grouping",
  "agent": "b",
  "artifact": "",

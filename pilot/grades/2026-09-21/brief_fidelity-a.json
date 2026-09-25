@@ -2,11 +2,11 @@
  "metric": "2a",
  "briefs": [
   {
-   "id": "d20",
+   "id": "d11",
    "tier": "top",
-   "bank": "Morgan Stanley",
-   "source_chain": "Buffers that used to absorb oil shocks (strong US exports, weak Chinese demand, ample inventories) are fading while supply disruptions converge, therefore WTI/Brent spike and SPR hits a 1984 low, therefore MS abandons its benign de-escalation baseline for an oil risk-premium baseline (45% probability), therefore core PCE/GDP/consumption forecasts are revised and MS now expects two more 25bp hikes to a 4.25-4.50% terminal, driven partly by Warsh's hawkish framing and the neutral-rate revision.",
-   "brief_chain": "Same chain: fading buffers + converging supply disruptions -> oil price spike + SPR at 1984 low -> shift to oil risk-premium baseline (45%) -> revised core PCE/GDP/consumption/investment/labor forecasts -> two more 25bp hikes to 4.25-4.50% terminal, citing Warsh and the neutral-rate revision.",
+   "bank": "Deutsche Bank",
+   "source_chain": "CDU takes historic losses in two German state elections (AfD 38.3% in MV, Die Linke 25.3% in Berlin, CDU misses 5% threshold for first time since WWII) therefore Germany's political centre weakens without an immediate national policy shift; separately a US-Denmark-Greenland deal expanding US military presence falls short of Trump's original acquisition ambition therefore reduces Greenland event risk if it holds; Asian equities rally on trade-talk optimism ahead of the Trump-Xi summit; the week ahead (flash PMIs Wed, Norges/Riksbank/SNB Thu, heavy Fed speak, payrolls next Friday) is framed against a hawkish post-FOMC backdrop where officials favor further tightening but Warsh sees limited evidence of restrictiveness; last week's stagflation-driven yield spike above 5% (first since 2007) was reversed mainly by falling oil, not the Fed hike, while French-bund spreads breached 100bp for the first time since 2012.",
+   "brief_chain": "Same chain: CDU losses (AfD 38.3%/double 2021, Die Linke 25.3%, CDU below 5% threshold first time since WWII) weaken Germany's centre without policy shift; Greenland deal reduces event risk vs Trump's earlier ambition if it holds; Asian rally on trade optimism ahead of Thursday's summit; week ahead (PMIs Wed, central bank decisions Thu with stated hike probabilities, Fed speak, payrolls) framed by hawkish FOMC outlook and Warsh's 'not meaningfully restrictive' comment; last week's energy-driven yield spike above 5% (first since 2007) reversed mainly by falling oil rather than the Fed hike, with French spreads above 100bp for the first time since 2012.",
    "distortions": [],
    "material_count": 0,
    "non_material_count": 0
@@ -15,41 +15,52 @@
    "id": "d22",
    "tier": "rest",
    "bank": "Societe Generale",
-   "source_chain": "The FOMC hiked 25bp unanimously and swapped its supply-shock inflation language for a 'timelier return to 2%' pledge, therefore the SEP (unemployment down to 4.1%, core PCE up to 3.4%, upside-only inflation risk, no downside employment risk) confirms the Committee sees low stagflation risk and is focused on inflation, therefore the 2026 dot implies 50bp more this year and the long-run dot rose to 3.2%, and Warsh's 'not restrictive/removing accommodation' framing plus the SEP support SG's existing call for two more 25bp hikes (Dec, March) to unwind the 2025 insurance cuts, conditional on inflation data.",
-   "brief_chain": "Same chain, same figures and same conditional framing.",
+   "source_chain": "The September FOMC hiked 25bp to 3.75-4% unanimously and dropped its supply-shock inflation framing therefore signals broader inflation concern; the SEP corroborates with higher growth, lower unemployment (4.1%, below the 4.2% long-run estimate) and higher core PCE (3.4%) and a risk balance (upside inflation risk, no downside employment risk) that SG reads as reduced stagflation risk and a squarely inflation-focused Committee; the 2026 dot implies 50bp more hikes this year (12/19 aligned), 2027 dots split 4 cutters vs 8 hikers, and the long-run dot rose to 3.2%; Warsh called policy not-yet-restrictive and framed the hike as removing accommodation therefore SG keeps its call for two more 25bp hikes (Dec, March; 75bp total), expecting convergence on unwinding the 2025 insurance cuts but not further restriction for now, conditional on inflation data cooperating.",
+   "brief_chain": "Same chain, same figures and same conditional forecast (two more 25bp hikes, 75bp total, contingent on inflation data not disappointing), same SEP figures (4.1% unemployment vs 4.2% long-run, 3.4% core PCE, 50bp 2026 dot with 12/19, 2027 split 4-vs-8, 3.2% long-run dot), same Warsh characterization.",
    "distortions": [],
    "material_count": 0,
    "non_material_count": 0
   },
   {
-   "id": "d14",
+   "id": "d20",
    "tier": "top",
    "bank": "Morgan Stanley",
-   "source_chain": "The Fed hiked 25bp to 3.75-4.0%; Warsh's 'removing accommodation' framing, his geopolitics/oil emphasis, and the neutral-rate revision to 3.25% from 3.06% together tilt MS toward two more 25bp hikes (Dec, March) to a 4.25-4.50% terminal in 1Q27, with an October hike not ruled out and de-escalation/faster disinflation as the downside risk to just one more hike; rates/FX/MBS/munis desks each attach a specific trade idea to this read.",
-   "brief_chain": "Same chain, same figures (8 of 18 seeing a third 2027 hike, neutral rate 3.25% from 3.06%), same October-hike and de-escalation hedges, same four-desk trade-idea attribution.",
-   "distortions": [],
-   "material_count": 0,
-   "non_material_count": 0
-  },
-  {
-   "id": "d12",
-   "tier": "top",
-   "bank": "Goldman Sachs",
-   "source_chain": "DM equity buying (led by US Tech and a fast European short-cover rally) was funded by Asia selling while Mag-7/Software flows recovered; GS (via Oppenheimer) stays constructive medium-term since compute demand outstripping supply lowers earnings-bubble risk, keeping SPX EPS growth at 11% for 2027/2028; separately, China's Go Global (30% entry discount, price recovery in 7/11 sectors, ex-China share rising 18%->31% by 2035, upside unpriced) and India's 42 AI-infrastructure names (+60% YTD vs NIFTY -11%, ~40% of NIFTY 500 capex growth) are flagged as under-appreciated theses.",
-   "brief_chain": "Same chain and same figures throughout; brief omits the secondary MTD Asia HF rotation detail (Korea/Taiwan/Japan to HK/China) and the 2Q EPS growth/'over-earning' aside, neither of which changes any stance or figure.",
+   "source_chain": "A convergence of oil-supply-chain disruptions (Mideast export constraints, pipeline outages, shipping bottlenecks, tanker capacity, refinery issues, low European inventories) is overwhelming fading buffers (US exports, weak Chinese demand, ample inventories) therefore MS shifts its baseline from benign de-escalation to an 'oil risk premium' scenario (45% probability), with WTI/Brent at $107.02/$130.80 and SPR at its lowest since April 1984; persistently higher oil delays airfare disinflation and produces second-round inflation effects therefore MS raises core PCE to 3.2%/2.7% (2026/2027), cuts 2027 GDP to 2.3%, consumption to 1.8%, nonresidential investment to 7.1%, trims payrolls to 50k/month and raises unemployment to 4.3%; given Warsh's hawkish 'removing accommodation' framing, his emphasis on geopolitical/energy pass-through, and an upward revision to the neutral-rate estimate, MS now expects two more 25bp hikes (Dec, March) to a 4.25-4.50% terminal rate.",
+   "brief_chain": "Same chain and same figures throughout (oil-buffer convergence, $107.02/$130.80, SPR since April 1984, core PCE 3.2%/2.7%, GDP 2.3% from 2.6%, consumption 1.8% from 2.1%, nonres investment 7.1%, payrolls 50k/month, unemployment 4.3%, two more 25bp hikes to 4.25-4.50%, 45% probability), citing Warsh's hawkish comments and the neutral-rate revision as the drivers for the hike call.",
    "distortions": [
     {
-     "what": "Brief drops the secondary MTD Asia HF flow detail (rotation from Korea/Taiwan/Japan into HK/China) and the 2Q SPX EPS growth ('50% YoY, 26% 4Q trailing, some over-earning signs but not a bubble') aside",
+     "what": "Brief compresses MS's three stated reasons for the more-hawkish hike call (removing-accommodation framing, geopolitical/energy pass-through emphasis, neutral-rate revision) down to two, dropping the geopolitical/energy-emphasis reason.",
      "material": false,
-     "would_the_trade_change": "No \u2014 these are supporting color for the same constructive stance already carried by the 11% EPS growth figure and the China/India theses; nothing about direction, conviction, or targets changes."
+     "would_the_trade_change": "No \u2014 the hike call, terminal rate, and timing are unchanged; only a supporting rationale is dropped."
     }
    ],
    "material_count": 0,
    "non_material_count": 1
+  },
+  {
+   "id": "d8",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "GCEM symposium speakers frame the Fed's hike as removing perceived accommodation after years of missed inflation targets, with ~100bp of cumulative hikes now priced, while strategists (Marshall, Lavenburg) argue committee credibility keeps the long end relatively insulated even as AI-driven issuance/fiscal deficits (Hatzius) add term-premium pressure; on oil, Struyven states the two moderating forces (Mideast supply recovery and Chinese demand weakness) 'remain intact' and expects Chinese demand to 'stay weak' if prices stay high, capping prices below the $125+ tail for now, with Cohen noting a hypothetical loss of China's Hormuz-transit demand buffer would add $10-15/bbl and Struyven estimating every sustained 10% Mideast export cut adds ~$20/bbl fair value; Singh notes Hormuz has proven easier for Iran to close than the US to reopen; a parallel ECB/CEE scenario ties further hikes to a TTF/oil spike; because clients are broadly long EM carry, frontier FX, equities/tech and received EM local rates, GS recommends four hedges against an oil-driven yields-up/equities-down shock: SPX lookback puts vs SOFR, USD binary calls vs CHF/EUR, QQQ dual/tri-binaries vs yields and Brent, and outright Brent calls.",
+   "brief_chain": "Same Fed/long-end framing and same four hedges/positioning summary, but states 'China's demand offset is fading' as one of the two forces defining the current oil-risk picture, alongside an unqualified claim that current data still caps prices below $125+.",
+   "distortions": [
+    {
+     "what": "Brief states 'China's demand offset is fading,' but the source (Struyven) explicitly says the China-demand-weakness force 'remain[s] intact' and expects Chinese demand to 'stay weak' if prices stay high \u2014 the opposite of fading. The only 'fading China' reference in the source is Cohen's hypothetical (losing China's transit-demand buffer would add $10-15/bbl), which is a counterfactual, not a description of the current state.",
+     "material": true,
+     "would_the_trade_change": "Yes on conviction level \u2014 asserting the China cap is actively eroding overstates the immediacy/urgency of the oil right-tail risk relative to GS's own commodities desk view that the moderating forces are currently intact, which would inflate a reader's conviction on acting on the Brent-call hedge now versus treating it as a tail hedge pending a further catalyst."
+    },
+    {
+     "what": "Brief attributes the accommodative/hike rationale to 'Fed speakers' as a single voice, compressing a range of views (e.g., Kaplan's more dovish read that Warsh isn't as hawkish as the market perceived) into one framing.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the hedge recommendations and the ~100bp priced figure are unaffected; this is a generalization of dispersed commentary, not a changed call."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
   }
  ],
- "material_total": 0,
- "non_material_total": 1,
+ "material_total": 1,
+ "non_material_total": 2,
  "audited": 4,
  "dim": "brief_fidelity",
  "agent": "a",

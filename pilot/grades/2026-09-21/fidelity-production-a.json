@@ -6,9 +6,9 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text-all/2026-09-21/17163__chokepoints-and-pressure-points-what-is-breaking-and-reshapi.txt",
-   "span": "In August, Brent averaged 89 USD/bbl, yet clean-product crack spreads surged to record levels... showing the main story is refining availability, not crude input costs",
-   "why": "Source explicitly separates crude pricing (headline/geopolitical) from refined-product/crack-spread pricing (physical refining shortage), describing them as decoupled \u2014 matches the sentence's claim directly."
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-21/17219__americas-oil-the-drone-attacks-on-russian-refineries-are-stu.txt",
+   "span": "oil prices are somewhat elevated but refined product prices (and crack spreads) are near record levels",
+   "why": "Source states the exact split the sentence describes: crude itself only elevated, refined product/crack spreads at records, i.e. the two have decoupled."
   },
   {
    "id": "s2",
@@ -16,7 +16,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17162__with-the-fed-behind-us.txt",
    "span": "Markets seem to only react badly when actual events affecting energy prices occur. Markets seem to react positively to any story, rumor, or hope that is positive.",
-   "why": "Tchir's note (in a piece about a possible Iran 'deal') states markets instantly react positively to hopeful rumors on the energy-driven conflict; 'ceasefire' is a fair instantiation of the 'deal/rumor/hope' the source describes reprising barrels on."
+   "why": "Academy Securities states directly that positive rumors/hope reprice energy markets, matching the sentence's mechanism."
   },
   {
    "id": "s3",
@@ -24,31 +24,36 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17186__gs-crook-thoughts-from-the-floor-connecting-you-to-gs-19-sep.txt",
    "span": "remove that shock absorber and GIR says fair value is roughly $10-15 higher",
-   "why": "The 'own fair value estimate as the counter to the trade' concept traces to Goldman Sachs' GIR (Jared Cohen, GS Global Institute), not JPMorgan. No JPMorgan document exists anywhere in the day's corpus with an oil fair-value view. Attribution changed to the wrong bank.",
+   "why": "The only 'fair value' oil call in the source set is Goldman Sachs's GIR (Jared Cohen), not JPMorgan. Attribution changed to a different bank.",
    "searched": [
-    "JPMorgan fair value oil",
-    "JPM crude fair value"
+    "JPMorgan fair value",
+    "JPM oil fair value"
    ]
   },
   {
    "id": "s4",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17157__the-fed-delivers-a-clear-hawkish-message-and-bets-on-sustain.txt",
-   "span": "The Fed has turned decisively more hawkish, raising rates and signalling one further hike this year as persistent inflation and broader commodity-price spillovers outweigh concerns about the growth outlook",
-   "why": "Fed hiked (17157) and BoJ hiked (17220: 'BoJ's 25bp rate hike') the same week, both partly on energy/inflation grounds \u2014 supports 'central banks that hiked last week.' The rest of the sentence is explicitly conditional ('If that read is right'), not asserted as fact."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
+   "span": "we are hard-pressed to see a resolution to energy price pressures anytime soon and incorporate features of a higher oil risk-premium into the baseline",
+   "why": "Morgan Stanley's actual view is that the oil risk premium is durable/structural (they moved it into their baseline), not 'already fading' as the sentence asserts.",
+   "searched": [
+    "already fading",
+    "tightened into a shock"
+   ]
   },
   {
    "id": "s5",
-   "grade": "unsupported",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "none",
-   "span": "",
-   "why": "No source anywhere in the corpus shows BofA short 2-year Treasuries/$SHY on a 'not restrictive enough' view (no BofA fixed-income document exists in the corpus at all). The Trump-Xi-Thursday-as-oil-catalyst idea and a $10-15 (not $16) fair-value premium do appear, but attributed to Goldman Sachs (Jared Cohen/GIR), not JPMorgan \u2014 no JPMorgan source exists for any of this.",
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17186__gs-crook-thoughts-from-the-floor-connecting-you-to-gs-19-sep.txt",
+   "span": "GIR says fair value is roughly $10-15 higher... On the Trump-Xi meeting, the only thing that matters is any signal Xi is shifting away from 'playing for time'",
+   "why": "The Trump-Xi/oil-premium linkage traces to Goldman's Jared Cohen (fair value $10-15, not $16), not JPMorgan; the BofA short-2yr-Treasury/$SHY claim has no support anywhere in the source set.",
    "searched": [
-    "SHY short 2-year Treasuries BofA",
-    "$16 crude fair value JPMorgan",
-    "BofA not restrictive enough"
+    "$SHY",
+    "short 2-year Treasuries",
+    "BofA short",
+    "JPMorgan $16"
    ]
   },
   {
@@ -57,19 +62,20 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "This is a claim about the pulse's own prior edition (last Monday's trade call), not a claim any of the day's research PDFs could support or contradict.",
+   "why": "This is a claim about the pulse's own prior trade call from 'last Monday' \u2014 an internal publication history fact, not something any source PDF could support.",
    "searched": [
-    "long oil call de-escalation risk",
-    "closed at a loss oil"
+    "long oil call",
+    "closed at a loss",
+    "de-escalation as its own risk"
    ]
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text-all/2026-09-21/17193__to-free-or-not-to-free-cash-flow.txt",
-   "span": "The combined trailing-four-quarter FCF for the hyperscalers is estimated to decline from more than $170 billion... to a trough of about -$265 billion in the third quarter of 2027",
-   "why": "Combined hyperscaler FCF is forecast to go deeply negative (17193), and hyperscaler IG debt issuance is separately forecast to rise sharply, $250bn (2026E) to $400-420bn (2027E), to fund the same capex (17233) \u2014 together these support 'FCF no longer covers spending, marginal dollar comes from bondholders,' linked plausibly to bond-market yields."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17214__growing-role-of-equities-and-commodities-in-this-new-world-o.txt",
+   "span": "HYPERSCALER FREE CASH FLOW TURNS NEGATIVE FROM 4Q26 ONWARDS",
+   "why": "Corroborated by 17233 (hyperscaler IG debt issuance estimates raised to $400-420bn for 2027) and 17166 (AI debt issuance discussed as competing with duration supply and affecting yields) \u2014 FCF shortfall funded by bond issuance, tied to yields."
   },
   {
    "id": "s8",
@@ -77,10 +83,11 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "Bridge sentence with no independently checkable content; the specific claims it introduces (s9) are themselves unsupported, so there is no source basis for 'the counter comes from inside the same houses.'",
+   "why": "No source frames an internal counter-argument as originating 'from inside the same houses'; the adjacent claim it bridges to (s9) is itself fabricated.",
    "searched": [
-    "counter from inside the same houses AI",
-    "internal Goldman BofA bearish AI"
+    "counter comes from",
+    "same houses",
+    "gross margin"
    ]
   },
   {
@@ -89,19 +96,27 @@
    "live_market": false,
    "source_file": "none",
    "span": "",
-   "why": "No document in the corpus is a BofA fund manager survey, and no '33%' overinvesting-in-AI statistic appears anywhere. No Goldman document states semiconductor gross margins at 70% against a 15-year average of 55%.",
+   "why": "No document in the source set mentions a BofA fund manager survey, an 'overinvesting' figure, or Goldman semiconductor gross-margin statistics of 70%/55%.",
    "searched": [
-    "BofA fund manager survey overinvesting AI 33%",
-    "semiconductor gross margins 70% 15-year average 55%"
+    "overinvesting",
+    "fund manager survey",
+    "33%",
+    "gross margin",
+    "70%",
+    "15-year average"
    ]
   },
   {
    "id": "s10",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
    "span": "Markets are now pricing in a greater than 50% chance of a hike in October and three more hikes this cycle",
-   "why": "'>50% chance' priced by money markets is a fair colloquial rendering of 'a coin flip' for October."
+   "why": "Source says odds lean toward a hike ('greater than 50%'), not an even 'coin flip' \u2014 the sentence flattens a tilted probability into a toss-up.",
+   "searched": [
+    "coin flip",
+    "50-50 October"
+   ]
   },
   {
    "id": "s11",
@@ -109,57 +124,66 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
    "span": "it's hard to not look at two-year yields approaching 4.75% and say they are attractive",
-   "why": "2-year yield 'approaching 4.75%' matches 4.744% closely; the sentence's logic (no October hike kills the priced second-hike path and pulls the 2-year down) is a direct, reasonable extension of MS's framing that current 2yr levels price >50% odds of an October hike plus more hikes."
+   "why": "Consistent with 17157's '2-year Treasury yield rose... to 4.7%'; 4.744% falls between the two reported figures, and the October-hike-odds logic is sourced."
   },
   {
    "id": "s12",
    "grade": "distorted",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17198__global-reflections.txt",
-   "span": "funds sold Semis, broader AI Tech, Discretionary and Industrials / Energy exposures, while adding to Hyperscalers, Optical Networking, Cybersecurity, Financials and Materials",
-   "why": "The semis-out/financials-in rotation is real, but it's reported as a single week's fund-flow move (as of the Thursday before Sept 21), not a trend running 'since the Nasdaq peaked in early June' \u2014 no source anywhere states or supports a Nasdaq June peak or a multi-month rotation timeframe.",
+   "span": "In the US, funds sold Semis, broader AI Tech, Discretionary and Industrials / Energy exposures, while adding to Hyperscalers, Optical Networking, Cybersecurity, Financials and Materials",
+   "why": "The semis-to-financials flow is real but describes one week of hedge-fund positioning (as of Thursday), not a trend running 'since the Nasdaq peaked in early June'; GS Coppersmith (17230) separately shows Tech as the most net-bought US sector for three straight weeks, and no source mentions a June Nasdaq peak.",
    "searched": [
-    "Nasdaq peaked early June",
-    "since Nasdaq peak rotation semis financials"
+    "Nasdaq peaked",
+    "early June",
+    "since the Nasdaq"
    ]
   },
   {
    "id": "s13",
-   "grade": "faithful",
+   "grade": "unsupported",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
-   "span": "We've never seen breadth this bad in almost 100 years. The S&P 500 is knocking on new highs, but there are (many) more stocks at lows than highs... The only remotely similar setups were January 1973 and November 1999",
-   "why": "Source directly describes the index near highs while breadth/the average stock deteriorates historically, explicitly comparing it to prior market-top setups (1973, 1999) rather than a selloff \u2014 matches the sentence's claim closely."
+   "source_file": "none",
+   "span": "",
+   "why": "GS Coppersmith (17230) documents deteriorating breadth (<30% of S&P above the 50-day average) alongside index resilience, but no source characterizes this as 'not panic selling' or 'what a market top looks like' \u2014 that specific interpretive framing isn't any bank's stated stance.",
+   "searched": [
+    "panic selling",
+    "market top",
+    "damage spread"
+   ]
   },
   {
    "id": "s14",
    "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17220__early-morning-reid-macro-strategy.txt",
-   "span": "That followed the BoJ's 25bp rate hike, but the move was already priced in and two members voted against the hike",
-   "why": "The 25bp hike and two dissents are supported (and combined with 17161's 'BoJ raised its policy rate from 0.75% to 1% in June' plus 17198's forward path, a resulting 1.25% level triangulates correctly). But no source states this is the highest rate 'since 1995,' and no source attributes the two dissents to board members appointed by Prime Minister Takaichi \u2014 these specifics are unsupported additions to a real event.",
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-21/17190__investment-weekly-18-september-2026.txt",
+   "span": "The BoJ delivered a 25bp rate hike, citing rising upside inflation risks. Sato and Asada dissented in favour of no policy change",
+   "why": "The 1.25% level and two named dissenters (Sato, Asada) are confirmed, but no source states a 7-2 vote count, calls 1.25% the highest since 1995, or says either dissenter was appointed by PM Takaichi \u2014 those specifics are invented additions.",
    "searched": [
-    "BoJ highest since 1995",
-    "Takaichi appointed board dissent BoJ"
+    "7-2 vote",
+    "highest since 1995",
+    "Takaichi"
    ]
   },
   {
    "id": "s15",
-   "grade": "unsupported",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "none",
-   "span": "",
-   "why": "No source states an August core inflation print of 1.7% against a 1.8% expected figure. No UBS or Goldman document calls the next BoJ move for January 2027 (Goldman/MS calls found reference October/December/March, not January 2027).",
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-21/17181__cio-views-weekly-bulletin-week-37.txt",
+   "span": "The US August inflation reports came in above expectations, with core inflation accelerating by 0.3% month-on-month versus the 0.2% consensus forecast",
+   "why": "Sources describe the August print as a hawkish surprise (above expectations, cited by 17189 as a 'swing factor' for the hike), the opposite of the sentence's claim that it came in benign/below-expectations and 'does not force the next move'; no source gives a January 2027 UBS/Goldman hike call.",
    "searched": [
-    "August core inflation 1.7% 1.8% expected",
-    "UBS Goldman January 2027 next move"
+    "1.7%",
+    "1.8% expected",
+    "January 2027",
+    "UBS hike"
    ]
   }
  ],
- "faithful": 8,
- "distorted": 3,
+ "faithful": 4,
+ "distorted": 7,
  "unsupported": 4,
- "faithful_rate": 0.533,
+ "faithful_rate": 0.267,
  "dim": "fidelity",
  "agent": "a",
  "provenance": {

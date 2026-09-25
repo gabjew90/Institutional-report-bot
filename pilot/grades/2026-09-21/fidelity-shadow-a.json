@@ -6,138 +6,126 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
-   "span": "Baseline: Oil Risk Premium/Sticky Inflation (45%) ... Moving away from benign de-escalation ... incorporate features of a higher oil risk-premium into the baseline",
-   "why": "MS's Exhibit 31 names the new baseline scenario 'Oil Risk Premium/Sticky Inflation' at 45% probability, replacing the prior benign de-escalation assumption."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17223__on-our-minds-september-2026-fomc-postmortem-the-first-hike.txt",
+   "span": "25bp to 3.75% - 4%, without any dissenters.",
+   "why": "Matches rate hike size, new range, and unanimous vote exactly."
   },
   {
    "id": "s2",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17195__goodbye-disinflation-hello-oil-risk-premium.txt",
-   "span": "The latest spot prices, as of September 15, were $107.02 per barrel for WTI ... and $130.80 per barrel for Brent ... SPR continued to fall to around 285 million barrels, the lowest level since April 1984",
-   "why": "Exact figures and date match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17189__fed-loses-patience.txt",
+   "span": "Two-to-three rate hikes (including September's move) therefore, appears to be a sensible middle ground; a total of 100bp of rate hikes would leave the funds rate around 150bp above the Fed's estimate of its longer-run, or neutral level.",
+   "why": "HSBC document (source field confirms bank) states the two-to-three ceiling and the 100bp/150bp-above-neutral figures verbatim."
   },
   {
    "id": "s3",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17220__early-morning-reid-macro-strategy.txt",
-   "span": "Brent crude oil prices were down -0.71% on the week ... closing at $103.87/bbl ... Brent is -2.21% lower at $101.65/bbl",
-   "why": "DB's own week-close and overnight marks match exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
+   "span": "An even more rapid de-escalation of the Middle East conflict or faster disinflation than we project could mean a one-and-done hike in December",
+   "why": "Morgan Stanley source states exactly this conditional: faster Middle East de-escalation or disinflation leaves one more (December) hike."
   },
   {
    "id": "s4",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17177__deep-in-the-tranches.txt",
-   "span": "if looking just at the S&P 500, you would think the surge in energy prices and rates has had little impact ... Yet under the surface, NYSE downside volume ... has surged back to 54%",
-   "why": "BTIG's own framing is 'S&P 500 hides the damage underneath.'"
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
+   "span": "CCC spreads widened another 36bps on the week to 922bps, at the top of their 52-week range.",
+   "why": "Figures match exactly (36bp widening, 922bp level, top of 52-week range)."
   },
   {
    "id": "s5",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
-   "span": "S&P 500 EPS grew 51% y/y in Q2 ... forward P/E has fallen from ~23x a year ago to ~19x today ... GS's 12-month S&P target of 8,700",
-   "why": "All figures and the valuation-not-breadth framing match GS's own text."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17231__gs-garrett-weekend-prep-20-sep-2026.txt",
+   "span": "spx 3 month 95% lookback put costs 1.8% (vanilla 95% @ 1.25%); the lookback guarantees to sell the top on any trading session between now and ~year-end for an extra 60-100bps vs the vanilla",
+   "why": "GS Garrett note recommends the lookback structure (buy side, cost quoted as premium) with the exact 1.8%/1.25% and 60-100bp figures; framed as an attractive trade to add, matching 'buy structures rather than sell them.'"
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17231__gs-garrett-weekend-prep-20-sep-2026.txt",
-   "span": "the vix closed friday with a 14 handle",
-   "why": "GS Garrett's weekend prep note states this exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17198__global-reflections.txt",
+   "span": "the Morgan Stanley PB Content team highlighted that funds ended net sold across all major regions, with short additions driving the selling across global equities",
+   "why": "Morgan Stanley (source field confirmed) prime brokerage data matches net-sold-every-region and short-additions framing exactly."
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17207__tracking-the-gigawatts-rbc-datacenter-expansion-tracker-july.txt",
-   "span": "The identified mispriced risk is contagion: the order is explicitly positioned by its sponsors as a national model, with Virginia and Texas identified as the markets where adoption ... would have the most material impact",
-   "why": "'Copying'/'national template' are faithful plain-English renderings of 'contagion' and 'national model,' which RBC itself defines as other states adopting the framework."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17231__gs-garrett-weekend-prep-20-sep-2026.txt",
+   "span": "in contrast to the gs hf prime brokerage statistics, our cash desk highlights asset manager / long only supply \u2026 better to sell in macro, comm services, industrials, and tech",
+   "why": "GS cash desk explicitly frames long-only selling as a contrast to the GS HF prime brokerage data; tech is the one sector where the note's own HF buying list (tech, fins, materials, discretionary) overlaps with the LO-selling list, supporting the pulse's generalization."
   },
   {
    "id": "s8",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17159__the-wealth-effect-is-the-only-consumer-left.txt",
-   "span": "Top 20% holds $49.8tn in equity wealth against just $8.3tn in labor income ... Top 10% by wealth owns 87% of corporate equities and mutual funds",
-   "why": "Figures match; 'wages' is a fair stand-in for 'labor income.'"
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17207__tracking-the-gigawatts-rbc-datacenter-expansion-tracker-july.txt",
+   "span": "The identified mispriced risk is contagion: the order is explicitly positioned by its sponsors as a national model",
+   "why": "RBC source uses 'national model'; pulse's 'national template' is a synonymous paraphrase of the same claim."
   },
   {
    "id": "s9",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
-   "span": "weaker growth and higher interest costs mean the budget gap will swell to 5.4% of economic output this year, while the finance law had targeted a slight reduction to 5%",
-   "why": "Exact match."
+   "span": "Scope downgraded France after hours, and DBRS put them on negative watch.",
+   "why": "Verbatim match in a CIO London quote reproduced in the source."
   },
   {
    "id": "s10",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
-   "span": "Scope downgraded France after hours, and DBRS put them on negative watch ... Japanese life insurers are now actively selling their exposure to French fixed income markets",
-   "why": "Both rating-agency actions and the insurer-selling claim are sourced verbatim."
+   "span": "Expect the ECB to find a way or create a new tool to support French bonds.",
+   "why": "Attributed to 'CIO London' in source, matching 'London-based chief investment officer'; the quote is embedded in ongoing discussion of French bond pressure, supporting the conditional framing."
   },
   {
    "id": "s11",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
-   "span": "Socgen put out a piece saying OAT/bund might go to 120",
-   "why": "Presented correctly as a published forecast, not an actual print."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17159__the-wealth-effect-is-the-only-consumer-left.txt",
+   "span": "the Top 20% holds $49.8tn in equity wealth against just $8.3tn in labor income, while the bottom 40% has $1.8tn in labor income versus $1.7tn in equity wealth",
+   "why": "All four figures match exactly, sourced to Morgan Stanley per the article's own attribution."
   },
   {
    "id": "s12",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
-   "span": "Gold continues to look particularly interesting ... central banks are buying at more than 5x the pre-2022 pace",
-   "why": "Direct match in GS gold section."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17175__rise-of-the-agents-raising-cpu-tam-again-to-210bn.txt",
+   "span": "our CY30E server CPU TAM to $210bn+ (from ~$170bn); the CPU-to-GPU ratio from ~1:4 in the training era... toward ~1:1 for agentic AI... CPUs representing ~10% of the overall ~$2.2Tn data center systems TAM",
+   "why": "Bank of America source (confirmed via meta.json) matches all figures: $210bn from $170bn, 1:4 to 1:1 ratio trajectory (pulse compresses the stated intermediate 1:2 step but preserves true endpoints), and 10% of $2.2tn."
   },
   {
    "id": "s13",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17205__turning-point.txt",
-   "span": "JP Morgan yesterday said that Bitcoin could outperform gold if ETF hedging eases, and predicted Bitcoin ETFs will eventually triple gold in assets",
-   "why": "Sentence doesn't misattribute (states no specific bank), figures/direction match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+   "span": "If the Fed has to do materially more, GIR sees ~$4,070 in a three-additional-hike scenario",
+   "why": "Matches exactly: three additional hikes beyond the base case, $4,070 gold level, Goldman (GIR) source."
   },
   {
    "id": "s14",
    "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17162__with-the-fed-behind-us.txt",
-   "span": "Japanese Yen. Support has broken the 155 level solidly (closing at 156.9)",
-   "why": "The 155-break/156.9-close figures are Academy Securities'. But the '-2.08% last week' and 'biggest weekly decline since October 2025' figures belong to Deutsche Bank's Early Morning Reid ('the Japanese Yen weakened -2.08% against the US Dollar last week, which marked its biggest weekly decline since October 2025') \u2014 a different bank's statistic that Academy's own note never states, folded under a single 'per Academy Securities' attribution. Who-said-it error on part of the sentence.",
+   "source_file": "pilot-data/pilot/source-text/2026-09-21/17230__gs-coppersmith-us-equities-tougher-internals-20-sep-2026.txt",
+   "span": "The big structural story remains intact: central banks are buying at more than 5x the pre-2022 pace.",
+   "why": "The '5x pre-2022 pace' statistic is Goldman's (GIR) own line in 17230, not Societe Generale's. Societe Generale's deck (17214) does chart a Russia-reserves-freeze annotation ('On 28 Feb 2022, U.S. Treasury assets held by the Central Bank of Russia were frozen') on a central-bank gold-buying chart captioned 'structurally elevated,' which supports the causal-tracing half of the sentence, but no '5x'/pre-2022-pace multiplier appears anywhere in the SocGen text. The sentence attributes Goldman's statistic to Societe Generale as if it were SocGen's own finding -- a who-said-it distortion.",
    "searched": [
-    "Academy Securities",
-    "2.08%",
-    "October 2025",
-    "156.9"
-   ]
-  },
-  {
-   "id": "s15",
-   "grade": "distorted",
-   "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-21/17196__ms-september-fomc-reaction-further-hikes-ahead-pdf.txt",
-   "span": "Trade idea: Maintain long USD/JPY at 156.23 with a target of 163.00 and a stop of 150.00",
-   "why": "MS's 150.00 is a stop-loss on a long-USD/JPY (weak-yen) trade \u2014 the level at which that trade is invalidated/closed for a loss, not where the argument 'wins.' The sentence inverts the direction of what the level means.",
-   "searched": [
-    "150.00",
-    "stop of 150.00",
-    "wins"
+    "pre-2022",
+    "five times",
+    "5x",
+    "Societe Generale",
+    "structural"
    ]
   }
  ],
- "faithful": 13,
- "distorted": 2,
+ "faithful": 14,
+ "distorted": 1,
  "unsupported": 0,
- "faithful_rate": 0.867,
+ "faithful_rate": 1.0,
  "dim": "fidelity",
  "agent": "a",
  "provenance": {
@@ -145,6 +133,8 @@
   "model_version_returned": "unreported",
   "prompt_sha": "224632dfdf6a"
  },
- "failed": false,
- "problems": []
+ "failed": true,
+ "problems": [
+  "counts do not match the sentence list"
+ ]
 }
