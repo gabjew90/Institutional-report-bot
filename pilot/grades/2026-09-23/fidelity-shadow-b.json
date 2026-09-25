@@ -4,130 +4,102 @@
  "sentences": [
   {
    "id": "s1",
-   "grade": "faithful",
+   "grade": "distorted",
    "live_market": false,
-   "source_file": "source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
-   "span": "The return of the +Semis/-AI Vulnerable trade post Meta Muse release was the key theme of today's session, particularly in Financials (XLF -2% today)",
-   "why": "XLF -2% and the semis-vs-AI-vulnerable rotation match the JPM briefing; the -1.98% financials figure (source-text/2026-09-23/17525) is the same Sept 22 session from Deutsche Bank's note, consistent rounding of the same move."
-  },
-  {
-   "id": "s2",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt",
-   "why": "45 of 55 names lower matches exactly; the -2.58% figure and 'switching costs' basket description are corroborated by source-text/2026-09-22/17513."
-  },
-  {
-   "id": "s3",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
-   "span": "the more consensual names (C, MS, GS, USB) are dominating volume while the regionals and the likes of LAZ and JEF are relative outperformers",
-   "why": "Tickers C/MS/GS expanded to Citi/Morgan Stanley/Goldman is faithful ticker-to-name expansion; LAZ/JEF/USB and the pattern match exactly."
-  },
-  {
-   "id": "s4",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt",
-   "span": "Hedge funds took net exposure in the group to ~95th percentile on a 3-year lookback at ~20% vs a YTD trough of 14% in June",
-   "why": "All figures (95th percentile, 20%, 14% trough in June) match exactly."
-  },
-  {
-   "id": "s5",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17282__pnc-economics-research-weekly-economic-roundup-21-september-.txt",
-   "span": "we think the Fed hikes two more times, once in December and again next March",
-   "why": "Count and timing (December, next March) match exactly."
-  },
-  {
-   "id": "s6",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
-   "why": "Source says the physical shortage 'is already shrinking' and quantifies the deficit falling from 7mb/d to 1mb/d (an 86% reduction), which 'mostly gone' fairly characterizes given the specific figures in the same document."
-  },
-  {
-   "id": "s7",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
-   "why": "Every figure (1mb/d Q3, 7mb/d March/Goldman; 2mb/d non-ME production +700kb/d vs JPM forecast; 5mb/d below year-earlier consumption/JPMorgan) matches exactly."
-  },
-  {
-   "id": "s8",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17461__the-sox-squeeze-just-got-real.txt",
-   "span": "Privorotsky sees little evidence that slower frontier AI development will change hyperscaler capex plans through 2027/28... spending intentions are still rising",
-   "why": "Matches closely; 'the thing that would break it is a change in spending intentions' is a reasonable synthesis of the source's own logic, not an invented fact."
-  },
-  {
-   "id": "s9",
-   "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
-   "span": "Index convexity sits below the 10th percentile, while some single-stock convexity is at the 0th percentile... Buy convexity when you can, not when you need to",
-   "why": "Percentiles and the 'buy protection now' argument match exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17392__gs-basics-muse-cpus-europe-breadth-impaired.txt",
+   "span": "Has the No. 1 spot overall among free apps on the Apple U.S in just over a week after its September 8 release",
+   "why": "Source (and the duplicate at 17384__what-matters-today-hf-pain-continues-muse.txt) says Muse reached #1 'just over a week' after its Sept 8 release \u2014 more than a week. The sentence flips this to 'within a week,' the opposite direction (under a week). The AI-vs-habit-stock framing in the second half is faithfully drawn from 17392's 'Watch the CPU/cloud compute trade' plus 17513's Consumer Inertia basket (switching-cost names being shorted), so only the timing clause is distorted.",
+   "searched": [
+    "free iPhone",
+    "September 8",
+    "top of the",
+    "just over a week"
+   ]
   },
   {
    "id": "s10",
    "grade": "distorted",
    "live_market": false,
-   "source_file": "source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
-   "span": "Equity vol is cheap, but rate vol may decide whether it stays that way",
-   "why": "Source hedges with 'may decide'; the pulse asserts 'decides' as settled fact, a conditional presented as asserted.",
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17268__macro-volatility-digest.txt",
+   "span": "the VIX\u00ae Index ending the week at 14.8% (7th percentile low)",
+   "why": "The 14.27 close is real (Goldman's 17513 desk note) and the skew move (58th to 29th percentile) is verbatim from this same Cboe file. But the '7th percentile' stat in the source is computed for a different value on a different day \u2014 the prior week's 14.8 close \u2014 not for 14.27. No Cboe document in the source set assigns a percentile to 14.27 specifically; the sentence presents the borrowed stat as if Cboe verified it for that exact print.",
    "searched": [
-    "rate vol",
-    "equity vol is cheap"
+    "14.27",
+    "seventh percentile",
+    "7th percentile",
+    "cboe"
    ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false
   },
   {
    "id": "s11",
    "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
-   "span": "Investment grade, broad high yield and single-B spreads remain relatively contained",
-   "why": "Exact match."
+   "live_market": false
   },
   {
    "id": "s12",
    "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
-   "span": "the Russell 2000 lost more than 8% relative to the S&P 500 from late June",
-   "why": "Figure and framing (small caps showing stress credit hasn't) match exactly."
+   "live_market": false
   },
   {
    "id": "s13",
    "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-23/17474__super-ficial-rally.txt",
-   "span": "only three names in the index are closer to their highs than the SOX itself. 10 of the 30 names in the SOX are still off more than 30% from 52wk highs",
-   "why": "Exact match."
+   "live_market": false
   },
   {
    "id": "s14",
    "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17302__the-great-copper-puke-the-crowd-sold-the-lows.txt",
-   "span": "Between September 8 and 15, funds sold $2.6bn of high-grade copper futures, the largest weekly sale since April 2023, with liquidation accounting for $2.2bn",
-   "why": "Exact match."
+   "live_market": false
   },
   {
    "id": "s15",
    "grade": "faithful",
-   "live_market": false,
-   "source_file": "source-text/2026-09-22/17349__goldman-s-boy-who-cried-baskets-buys-the-ai-dip-agents-are-h.txt",
-   "span": "Our Europe Team like broader exposure to German fiscal stimulus... We like pairing this with a tactical short hedge on our French Domestic basket... into next year's elections",
-   "why": "Long German fiscal / short French domestic pair trade into elections matches exactly."
+   "live_market": false
   }
  ],
- "faithful": 14,
- "distorted": 1,
+ "faithful": 13,
+ "distorted": 2,
  "unsupported": 0,
- "faithful_rate": 0.933,
+ "faithful_rate": 0.867,
  "dim": "fidelity",
  "agent": "b",
  "provenance": {

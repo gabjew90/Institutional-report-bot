@@ -1,9 +1,9 @@
 {
  "metric": 1,
- "total_cards": 1476,
+ "total_cards": 644,
  "fragmentation_sets": [
   {
-   "subject": "Nuclear power buildout thesis (BofA sector note): capacity targets, reactor pipeline, fuel-cycle bottleneck, uranium pricing, and stock picks",
+   "subject": "BofA's nuclear power investment note (stock picks, capacity targets, reactor pipeline, fuel-cycle bottleneck, uranium price) split five ways",
    "labels": [
     "nuclear stock price targets",
     "nuclear reactor deployment pipeline",
@@ -14,30 +14,7 @@
    "cards": 58
   },
   {
-   "subject": "Middle East oil shock (Houthi-Hormuz conflict): price action, inflation impact, supply-demand rebalancing, and forward price outlook",
-   "labels": [
-    "oil right tail geopolitical risk",
-    "us oil risk premium inflation outlook",
-    "oil supply demand rebalancing",
-    "oil downside trade setup",
-    "brent price scenario outlook",
-    "houthi saudi energy conflict"
-   ],
-   "cards": 46
-  },
-  {
-   "subject": "Monday's AI/semis selloff and recovery: cause, positioning debate, SOX technical breakout, and valuation reset",
-   "labels": [
-    "ai infrastructure trade momentum",
-    "sox breakout squeeze trade",
-    "ai momentum trade rebound",
-    "sox valuation oil correlation",
-    "ai earnings bubble debate"
-   ],
-   "cards": 38
-  },
-  {
-   "subject": "Meta's Muse app launch: stock winners (META, CPU makers) and disintermediation losers (telcos, insurance, payments, brokers)",
+   "subject": "Meta's Muse app and the AI-agent consumer-disruption trade",
    "labels": [
     "meta muse app momentum",
     "consumer agent disruption short",
@@ -47,67 +24,81 @@
    "cards": 39
   },
   {
-   "subject": "This Fed hiking cycle vs. history: pricing surprises and the 10-year yield / equity-valuation reaction",
+   "subject": "Middle East oil conflict, the price reaction, and the forward supply/demand and inflation read-through",
+   "labels": [
+    "oil right tail geopolitical risk",
+    "houthi saudi energy conflict",
+    "us oil risk premium inflation outlook",
+    "oil supply demand rebalancing",
+    "brent price scenario outlook"
+   ],
+   "cards": 41
+  },
+  {
+   "subject": "Cross-asset volatility is unusually cheap despite the oil/rates macro-risk backdrop",
+   "labels": [
+    "cheap volatility vs macro risk",
+    "oil rates correlation surge"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "SOX/semiconductor index technical breakout and valuation reset against AI-capex fear",
+   "labels": [
+    "ai infrastructure trade momentum",
+    "sox breakout squeeze trade",
+    "sox valuation oil correlation"
+   ],
+   "cards": 28
+  },
+  {
+   "subject": "DB: the current Fed/ECB hiking cycle is far less stressed than 2022",
    "labels": [
     "fed rate hike outlook",
-    "treasury yields rates outlook"
-   ],
-   "cards": 24
-  },
-  {
-   "subject": "Washed-out breadth and sentiment as a contrarian upside-squeeze setup",
-   "labels": [
-    "equity breadth cycle top signal",
-    "ndx upside squeeze setup",
-    "us equity sentiment indicators"
-   ],
-   "cards": 24
-  },
-  {
-   "subject": "Bottom-of-the-ladder (CCC) credit stress and its small-cap read-through",
-   "labels": [
-    "small cap volatility vs credit stress",
-    "ccc credit spread widening"
-   ],
-   "cards": 12
-  },
-  {
-   "subject": "GS cross-asset allocation stance and its receiver-swaption recession hedge",
-   "labels": [
-    "gs cross asset allocation stance",
-    "rates receiver swaption recession hedge"
-   ],
-   "cards": 14
-  },
-  {
-   "subject": "AI capex demand pushing up the cost of capital, with the economy judged able to absorb it",
-   "labels": [
-    "ai investment inflation impact",
-    "rising cost capital"
-   ],
-   "cards": 10
-  },
-  {
-   "subject": "Trump-Xi summit optimism: the equity rally and the FXI options setup into the meeting",
-   "labels": [
-    "trump xi summit geopolitical optimism",
-    "fxi vol into trump xi summit"
+    "ecb rate hike outlook"
    ],
    "cards": 17
   },
   {
-   "subject": "Systematic/institutional equity positioning clearing lower",
+   "subject": "France's fiscal crisis widens spreads, expressed via the Germany-vs-France fiscal pair trade",
    "labels": [
-    "hedge fund positioning",
-    "us equity positioning outlook"
+    "french budget crisis bond spreads",
+    "germany vs france fiscal trade"
    ],
-   "cards": 13
+   "cards": 18
+  },
+  {
+   "subject": "AI datacenter power demand as an investment opportunity across the power value chain",
+   "labels": [
+    "datacenter power supply strategy",
+    "ai power trade positioning"
+   ],
+   "cards": 8
   }
  ],
- "fragmented_mass_share": 0.2,
- "mis_merges": [],
+ "fragmented_mass_share": 0.36,
+ "mis_merges": [
+  {
+   "label": "treasury yields rates outlook",
+   "subjects": [
+    "DB: Treasury yields historically rise through Fed/ECB hiking cycles (belongs with the fed/ECB hiking-cycle cluster)",
+    "WisdomTree/Siegel: real yields, equity valuation premium, and AI investment (the same argument already carried under 'ai investment inflation impact')"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Bundling DB's historical-cycle yield data with WisdomTree's real-yield/AI-investment thesis hides that the latter duplicates a separate label, so an editor would misroute the DB half away from the Fed/ECB theme and either double-count or under-weight the Siegel thesis."
+  },
+  {
+   "label": "china tech vs consumption",
+   "subjects": [
+    "JPM's KSTR-vs-KWEB pair trade explicitly tied to the Trump-Xi summit",
+    "GS's China macro outlook (GDP downgrade, retail sales, export strength)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The JPM pair trade references the same summit as the much larger 'trump xi summit geopolitical optimism' label, so bundling it here means an editor assembling that summit theme would miss the trade idea, while the unrelated GS macro-slowdown data gets diluted rather than standing as its own brief."
+  }
+ ],
  "pass": false,
- "notes": "misc holds 12 cards (0.8%), all legitimate overflow, not counted as fragmented. The largest fragmentation is a single BofA nuclear sector note split across five labels (58 cards) and a Houthi/Hormuz oil-shock story split six ways (46 cards).",
+ "notes": "The header states 1476 cards for the day but the visible label breakdown sums to roughly 644; the share above is computed against that visible total. misc holds 12 cards (~1.9%) and is excluded from fragmentation/mis-merge accounting as declared overflow.",
  "dim": "grouping",
  "agent": "tiebreak",
  "artifact": "",

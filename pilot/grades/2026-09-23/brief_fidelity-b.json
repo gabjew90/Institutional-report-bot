@@ -2,87 +2,113 @@
  "metric": "2a",
  "briefs": [
   {
-   "id": "d16",
+   "id": "d5",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "Meta Muse launch extends the agentic-AI trade (semis/memory/big tech up, Consumer Inertia basket shorted 45/55 lower, Fins/Insurance/subscription names hit) therefore index dispersion today (NDX record highs, Dow dragged by Financials, SPX flat) therefore desk flow stays subdued (3/10, both LOs and HFs net sellers) while HF Mag7 exposure sits near a 3yr 95th percentile three months into the June-low rally; separately, Iran/Saudi de-escalation headlines lift crude modestly but Trump caps near-term deal hopes until after midterms.",
-   "brief_chain": "Same chain: agentic-AI theme (Muse) drives index dispersion (NDX new highs/AI strength vs Dow -50bps on Financials) and a short leg (Consumer Inertia basket, Fins/Insurance/software) therefore subdued net-selling desk flow (3/10, LOs and HFs both sellers) with HF Mag7 exposure at 3yr 95th percentile; Iran/Saudi headlines lift crude under $100 while Trump defers a deal past the midterms.",
+   "source_chain": "Weekend restraint on Iran (talk, no strike) plus open China-deal pathways and calm energy supply therefore Friday's rates-energy correlation break is judged premature (rates still following energy) therefore already-covered, horrendously-negative positioning is a coiled spring for a violent snapback (hedged via Russell calls), while the AI dip stays a buying opportunity and Muse's App Store run flags a CPU/cloud-compute trade, against German election results raising gridlock risk.",
+   "brief_chain": "Same chain: weekend Iran restraint + Trump-Xi setup raise deal hope (not certain) therefore energy is calm therefore the Friday rates/energy break is called premature with rates following energy therefore covered-but-horrendous positioning is a coiled spring hedged via Russell calls, AI dip is buyable, Muse's No.1 ranking flags the CPU/cloud trade, and Germany risks gridlock not reform.",
    "distortions": [
     {
-     "what": "Brief collapses LOs '-10% better for sale' and HFs '-8% better for sale' into 'Both LOs and HFs are net sellers today' without the percentages.",
+     "what": "Source's MOVE move is '~6% to 80.6'; brief keeps the level (80.6) but drops the '~6%' magnitude of the rebid.",
      "material": false,
-     "would_the_trade_change": "No \u2014 direction of flow (net selling) is preserved; only the magnitude figures are dropped."
+     "would_the_trade_change": "No \u2014 the level and direction (rebid/vol supported) are preserved; only a secondary magnitude figure is dropped."
+    },
+    {
+     "what": "Source says Muse hit '#1 spot overall among free apps'; brief generalizes to '#1 on the US Apple App Store'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the CPU/cloud-compute call rests on the #1 ranking and momentum, not the free-vs-overall chart distinction."
+    },
+    {
+     "what": "Source: '#1... in just over a week'; brief: 'reached No. 1... within a week'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 trivial rounding of the same timeframe."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 3
   },
   {
-   "id": "d28",
+   "id": "d2",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Trump signaling openness to meeting Iran's president crashes oil and European gas therefore inflation fear eases, cutting priced ECB second-hike odds (Fed pricing holds near 33bp on hawkish Goolsbee/Musalem commentary) therefore European sovereign yields drop more than US yields, flattening 2s10s to its flattest since Feb 2025, while equities rally broadly led by Meta and AMD; overnight Bessent's Iranian-airline threat pushes oil back up; US-China truce talks continue unresolved and Germany's CDU state-election miss doesn't break Merz's coalition.",
+   "brief_chain": "Same chain: Trump's Iran-meeting comment crashes Brent/gas therefore inflation fears ease and ECB second-hike odds fall from 52% to 40% (Fed pricing steady at 33bp despite hawkish Goolsbee/Musalem) therefore European yields fall more than the US 10yr, flattening 2s10s to its flattest since Feb 2025, equities rally led by Meta/AMD, Bessent's overnight airline threat reverses oil higher, US-China talks continue, and Germany's CDU miss doesn't break the coalition.",
+   "distortions": [
+    {
+     "what": "Source: Trump said he'd be 'open to meeting' Iran's president; brief states 'Trump's comment he'd meet Iran's President', slightly firmer than 'open to'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 direction (diplomatic-hope catalyst for the oil/gas selloff) is unchanged either way."
+    },
+    {
+     "what": "Source quotes Goolsbee on 'traditional demand overheating' around the AI boom; brief paraphrases as 'AI-driven demand overheating'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same hawkish framing tied to the AI investment boom; not a stance or figure change."
+    },
+    {
+     "what": "Source: Merz said he had party backing and that CDU/SPD 'wanted the governing coalition to continue'; brief states 'Merz said his coalition holds', presented slightly more definitively.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is color, not a trade-relevant claim in the note, and the direction (coalition survives the setback) is unchanged."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d3",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "Post-Muse agentic-AI disruption fear drives desk shorting of 'Consumer Inertia' names (GSXUSWCH -2.58%, PLNT/NYT/SCHW/ALL/INTU worst) and two-way XLF selling on the same risk therefore desk flow finishes net-for-sale (3/10, -871bps; AMs -$857mm, HFs -$953mm, concentrated in communication services/consumer discretionary) while separately NDX sets its first record since June (4th straight up day) and SPX finishes flat therefore derivatives desk sees NDX vol bid off summer lows and SPX vol offered/skew crushed, with VIX Oct 20 calls favored for cheap convexity ahead of a packed calendar (Meta Connect, MCD/AUR investor days); oil extends a 5-day relief rally on Strait-of-Hormuz de-escalation headlines despite Trump's midterm caveat.",
-   "brief_chain": "Same chain: Muse-driven agentic-AI disruption fear drives hedge fund shorts in Consumer Inertia names (GSXUSWCH -2.58%, same five worst names) and XLF sell-off on the same risk therefore net-for-sale desk flow (3/10, -871bps, AMs $857mm/HFs $953mm, concentrated in communication services/consumer discretionary) alongside NDX record close (4th up day) vs flat SPX on below-average volume therefore derivatives desk favors VIX Oct 20 calls for cheap convexity into Meta Connect/MCD/AUR investor days, with NDX vol bid off summer lows and SPX vol offered/skew crushed; oil extends a 5-day relief rally on Iran de-escalation headlines and Trump's 'momentum' comment after his earlier midterm caveat.",
+   "source_chain": "Geopolitical optimism (UN General Assembly, positive US/China talks) plus Trump stepping back from a Houthi strike drives oil down and the S&P to its best day since 8/4 therefore Meta's Muse-driven surge lifts inference-demand CPU names therefore desk flow shows asset managers buying (tech/comms/macro) against hedge funds selling (macro/energy), the implied move overrealizes 5x, dealers roll long gamma with skew crushed spot-up/vol-up, and GS favors IWM 3m gamma while clients add INTC call spreads on CPU capacity constraints.",
+   "brief_chain": "Same chain: geopolitical optimism and Trump's Houthi/diplomacy stance drive oil down and the S&P to its best day since 8/4 therefore Meta's Muse momentum lifts INTC/AMD/ARM therefore AM buying vs HF selling, the ~30bps implied move overrealizes 5x with clients seen underpositioned, dealers go long gamma with skew crushed, and GS likes IWM gamma while clients buy INTC call spreads on capacity constraints.",
    "distortions": [
     {
-     "what": "Brief attributes the Consumer Inertia short theme specifically to 'hedge fund shorts,' where the source frames it as a desk-wide theme ('the shorting of Consumer Inertia names') and separately reports both asset managers and hedge funds as 'better for sale' (not explicitly 'shorting').",
+     "what": "Brief keeps only each desk's net directional flow (AM buy, HF sell) and drops the offsetting demand/supply legs on each side (e.g., AM's consumer-discretionary/staples supply, HF's tech/financials demand) plus the dollar figures ($779mm/$974mm).",
      "material": false,
-     "would_the_trade_change": "No \u2014 the source's own theme line already names shorting of these names as the desk topic; attribution to HFs specifically doesn't change which names or direction are being sold."
+     "would_the_trade_change": "No \u2014 the net direction per desk is preserved; only secondary offsetting detail and magnitudes are compressed out."
     },
     {
-     "what": "Brief attaches the Meta Connect/MCD/AUR investor-day catalysts directly to the VIX Oct 20 calls rationale; in the source these events appear in a separate sentence about the S&P's implied move, while the VIX-calls sentence cites only 'a packed calendar.'",
+     "what": "Source: dealers 'remaining long on +/- 3% moves from here'; brief states only 'Dealers shifted long gamma', dropping the range.",
      "material": false,
-     "would_the_trade_change": "No \u2014 the named events are real near-term catalysts from the same paragraph and the trade call (VIX Oct 20 calls) is unchanged; only the sentence-level attribution is merged."
+     "would_the_trade_change": "No \u2014 the long-gamma stance itself, which is what a reader would act on, is intact."
+    },
+    {
+     "what": "Source closes with 'The S&P straddle for the rest of the week went out at 90bps'; brief omits this figure entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 a supporting vol data point, not a call or level the desk is trading around."
+    },
+    {
+     "what": "Source gives NDX's level (30,482); brief keeps only the %.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the % move is the load-bearing figure; the index level is incidental."
     }
    ],
    "material_count": 0,
-   "non_material_count": 2
+   "non_material_count": 4
   },
   {
-   "id": "d11",
-   "tier": "top",
-   "bank": "JPMorgan",
-   "source_chain": "Post-Muse return of the +Semis/-AI Vulnerable trade drives a Financials selloff (XLF -2%) against an AI/semis rally (SOXX +2.4%, DRAM +3.3%) therefore O'Dwyer argues the bank-funding-risk narrative doesn't hold (Muse itself untrustworthy) and reads consensus-name-led volume (C/MS/GS/USB) vs regional/LAZ/JEF outperformance as a positioning unwind, so he fades the selloff favoring MS/PNC/FITB; separately Adler frames Muse as agents succeeding chatbots, favoring META/GOOGL/AAPL on trust (with a noted caveat that agents could hurt GOOGL's own search business), easing reliance on frontier chips (a neocloud headwind) and diversifying the AI trade toward CPU/memory/storage/networking away from GPUs, while turning cautious on frontier-model economics near RSI; oil fell 1.2% despite Iran's conditional Strait offer and Rubio's flow comment because Trump again pushed a deal past the midterms; Fedspeak (Barkin plus the hawkish Fri/Sun echo of Warsh) raises hike risk; JPM stays Tactically Cautious/Neutral, would only turn bullish on lower oil/yields, and keeps +Tech/-RTY plus a Latam long.",
-   "brief_chain": "Same chain: Muse-driven +Semis/-AI Vulnerable trade drives Financials selloff (XLF -2%) vs AI/semis rally (SOXX +2.4%, DRAM +3.3%) therefore O'Dwyer sees no clean fundamental reason (Muse untrustworthy, doesn't threaten funding economics), reads consensus-name volume (C/MS/GS/USB) vs regional/LAZ/JEF outperformance as a positioning unwind, and fades the selloff favoring MS/PNC/FITB; Adler frames Muse as agents superseding chatbots, favors META/GOOGL/AAPL on trust, sees reduced frontier-chip reliance as a neocloud headwind, broadens the AI trade toward CPU/memory/storage away from GPUs, and turns cautious on frontier-model economics near RSI; oil fell 1.2% despite Iran's conditional offer and Rubio's 60-70% comment since Trump again deferred a deal past midterms; Fedspeak (Barkin, echoes of Warsh) raises hike risk; JPM stays Tactically Cautious/Neutral, bullish only on lower oil/yields, keeping +Tech/-RTY and a Latam long.",
-   "distortions": [
-    {
-     "what": "Brief drops Adler's caveat that if you fully subscribe to the agent model, it could be 'deleterious to GOOGL's search biz' \u2014 it reports GOOGL as favored on trust with no qualifier.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 Adler still names GOOGL among the trust-favored names overall; the dropped caveat is a secondary nuance, not a reversal of the call."
-    },
-    {
-     "what": "Brief drops 'networking and orchestration' from the list of areas the AI trade diversifies into, keeping only CPU/memory/storage.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the core call (diversification away from GPUs) is preserved; this is a compression of a longer list."
-    }
-   ],
-   "material_count": 0,
-   "non_material_count": 2
-  },
-  {
-   "id": "d59",
-   "tier": "top",
-   "bank": "Morgan Stanley",
-   "source_chain": "N/A \u2014 source extraction returned 34 page markers with no body text on any page; there is no content to reconstruct a causal chain from.",
-   "brief_chain": "Brief correctly states no extracted text was available and all pages were empty, so nothing could be read or summarized.",
-   "distortions": [],
-   "material_count": 0,
-   "non_material_count": 0
-  },
-  {
-   "id": "d1",
+   "id": "d51",
    "tier": "rest",
-   "bank": "Syz",
-   "source_chain": "Warsh's late-August Jackson Hole hawkishness plus broadening survey inflation had already shifted rate expectations before Houthi attacks on Saudi oil infrastructure and reported Hormuz shipping disruption pushed Brent above $100, feeding gasoline-driven CPI/PPI upside and cited by the BoE as an upward risk, therefore the FOMC hiked 25bp unanimously to 3.75-4.00% on 16 Sept with Warsh signaling more tightening; the S&P sold off >1% intraday then recovered as yields/oil eased and flows rotated back to AI tech; a year of earnings outpacing price gains had already compressed forward P/E from ~23x (Oct 2025) to 19.1x, cushioning the hike; the BoJ hiked 25bp to a 31-year high of 1.25% yet the yen weakened past 156 as the widening Fed-BoJ gap and a split BoJ vote kept carry trades intact; the bank holds a neutral equity stance, weighing constructive earnings against higher real-rate risk.",
-   "brief_chain": "Same chain, same order and same causal links: Jackson Hole hawkishness and broadening inflation predate the oil shock (Houthi attacks, Hormuz disruption, Brent >$100, CPI/PPI upside, BoE citation) therefore the Fed's unanimous 25bp hike to 3.75-4.00% with more tightening signaled; S&P sold off >1% intraday then recovered on easing yields/oil and AI-tech rotation; P/E compression from ~23x to 19.1x left room to absorb the hike; BoJ hiked 25bp to a 31-year high of 1.25% while the yen weakened past 156 on the Fed-BoJ gap and split vote; bank stays neutral on equities, constructive earnings vs. higher real-rate risk.",
-   "distortions": [],
+   "bank": "TS Lombard",
+   "source_chain": "TS Lombard's November hawkish-consensus call has been vindicated therefore Warsh's rocky start (attacking his predecessor, over-anchoring forward guidance to one data point) forced a credibility hike of 25bp that killed the sock-puppet narrative therefore the Fed now sits on a quarterly-hike path signaling only one more move, with the terminal rate hinging on TS Lombard's other out-of-consensus call (labor-market reacceleration), which if realized proves policy isn't restrictive and AI isn't deflationary/job-destroying and would mean more hikes than the market expects \u2014 all while the firm stays bullish on the US economy but flags a final chart evoking 2007-style complacency.",
+   "brief_chain": "Same chain, reordered for clarity: TS Lombard has been more hawkish than consensus since November 2025 therefore Warsh's messy first 100 days (predecessor criticism, over-anchored guidance) is explained, followed by his subsequent more humble posture (dropping sock-puppet soundbites) therefore investor doubt about a pre-midterm hike confirmed the need for a credibility hike, which the Fed delivered (25bp) to restore credibility therefore the Fed is now on a quarterly path signaling one more hike, contingent on TS Lombard's November reacceleration call (which would justify more hikes than the market expects since it would prove policy isn't restrictive and AI isn't deflationary/labor-destroying) \u2014 closing bullish but flagging an unspecified final chart evoking 2007 complacency.",
+   "distortions": [
+    {
+     "what": "Brief presents the 'more humble Warsh emerged' beat before explaining the rookie mistakes (predecessor criticism, one-data-point guidance), reversing the source's 2/6-then-3/6 order.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 all content and the causal links (mistakes \u2192 market pushback \u2192 credibility hike) are preserved; only presentation order changes."
+    },
+    {
+     "what": "Source: 25bp was 'a small price for killing the entire sock-puppet narrative'; brief paraphrases as a hike 'to restore his credibility'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same underlying claim (the hike repairs Warsh's credibility problem), just reworded."
+    }
+   ],
    "material_count": 0,
-   "non_material_count": 0
+   "non_material_count": 2
   }
  ],
  "material_total": 0,
- "non_material_total": 5,
- "audited": 5,
+ "non_material_total": 12,
+ "audited": 4,
  "dim": "brief_fidelity",
  "agent": "b",
  "artifact": "",

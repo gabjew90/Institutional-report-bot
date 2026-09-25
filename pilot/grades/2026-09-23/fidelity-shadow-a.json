@@ -6,121 +6,121 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
-   "span": "The return of the +Semis/-AI Vulnerable trade post Meta Muse release was the key theme of today's session, particularly in Financials (XLF -2% today)",
-   "why": "XLF -2% and the semis-up/AI-vulnerable-down trade returning are both stated directly; the S&P financial-sector -1.98% figure is corroborated in the Deutsche Bank Reid note the same morning."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17384__what-matters-today-hf-pain-continues-muse.txt",
+   "span": "Muse has the #1 spot overall among free apps on the Apple US in just over a week after its September 8 release.",
+   "why": "GS note confirms #1 free-app rank within about a week of the Sept 8 release; 'Apple US' free-app chart maps to 'US free iPhone chart' the same way ticker shorthand maps to a company name."
   },
   {
    "id": "s2",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17513__us-equities-color-consumer-inertia-22-sep-2026.txt",
-   "span": "Our basket, GSXUSWCH (-2.58% today)...consists of stocks in industries where customer retention is supported by \"behavioral, operational, contractual or financial switching costs.\"",
-   "why": "-2.58% and the 45-of-55-lower breadth stat (from the companion Sharkey mid-day note) both check out, and \"switching is a hassle\" is a faithful plain-English rendering of switching-cost-driven retention."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17448__early-morning-reid-macro-strategy.txt",
+   "span": "S&P 500 (+1.43%) rose for a third consecutive session and had its best day in seven weeks... Nasdaq (+2.26%) and the Magnificent 7 (+3.44%) rising to new record highs of the own.",
+   "why": "DB gives the 1.43%/2.26%/3.44% figures and 'best day in seven weeks', and states Nasdaq/Mag7 (not S&P) hit records, matching the sentence's placement of 'both at records'. GS's separate 7,764 close (S&P +149bps) is confirmed in 17388__us-equities-color-seeing-green.txt."
   },
   {
    "id": "s3",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
-   "span": "the more consensual names (C, MS, GS, USB) are dominating volume while the regionals and the likes of LAZ and JEF are relative outperformers",
-   "why": "Citi/Morgan Stanley/Goldman/USB dominating volume vs. LAZ/JEF (and regionals) outperforming matches exactly; the paragraph's de-risking/positioning-unwind framing supports reading the dominant volume as selling."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17388__us-equities-color-seeing-green.txt",
+   "span": "META +11.43% (best day in 17 months)... currently accounting for ~15% of SPX move higher... INTC +12.17%, AMD +9.95%, ARM +17.16%",
+   "why": "Every figure (ARM 17.16%, INTC 12.17%, AMD 9.95%, META 11.43%, 17-month best day, ~15% of index gain) matches this Goldman Sachs note verbatim."
   },
   {
    "id": "s4",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt",
-   "span": "Hedge funds took net exposure in the group to ~95th percentile on a 3-year lookback at ~20% vs a YTD trough of 14% in June",
-   "why": "Percentile, ~20% level, and 14% June trough all match precisely."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17412__jpm-us-market-intelligence-afternoon-briefing-sept-21.txt",
+   "span": "What would make us BEARISH \u2013 Signs that the Consumer and economy are breaking or that the AI theme has ended, which would likely be initiated by a capex cut.",
+   "why": "JPM's own briefing gives the bearish triggers (attributed to JPMorgan by name in the sentence itself); the parenthetical (Goldman Sachs) attaches only to the catalyst list, which matches 17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt: 'Zuckerberg's META connect keynote Wed night, OpenAI Dev day 9/29, and MU earnings on 9/30'. Two correctly-sourced clauses joined by 'and', not a misattribution."
   },
   {
    "id": "s5",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17282__pnc-economics-research-weekly-economic-roundup-21-september-.txt",
-   "span": "We think the Fed hikes two more times, once in December and again next March",
-   "why": "Two more hikes, December and next March, stated directly by PNC."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17456__bond-shorts-are-loaded-is-a-massive-squeeze-next.txt",
+   "span": "Goldman estimates that systematic trend followers are short approximately $171 million of global bond DV01. The aggregate position is the shortest since April 2026.",
+   "why": "DV01 (dollar value of a basis point) is accurately translated as 'P&L for every one basis point move'; figure and since-April-2026 framing match exactly, correctly attributed to Goldman even though it's carried in a TME note."
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
-   "span": "Brent continues to carry a substantial geopolitical premium, but the physical shortage is already shrinking. Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3.",
-   "why": "\"Shrinking\" plus the quantified ~86% narrowing (7mb/d to 1mb/d) supports \"already mostly gone\"; the magnitude in the source backs the characterization even though the exact adjective differs."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17456__bond-shorts-are-loaded-is-a-massive-squeeze-next.txt",
+   "span": "A stabilization in oil could provide the first trigger. Slightly softer inflation data could do the same... could cause yields to stop rising... short covering could turn a modest data reaction into a larger positioning unwind.",
+   "why": "Matches the sentence's causal claim exactly: yields merely pausing (not falling) on oil stabilization or a softer print forces the covering."
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
-   "span": "Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3...Non-Middle Eastern production increased by approximately 2mb/d during H1 2026, around 700kb/d more than JPMorgan expected...JPMorgan estimates that global oil consumption has averaged approximately 5mb/d below year-earlier levels since the Hormuz disruption",
-   "why": "All three figures (Goldman's 7mb/d to 1mb/d gap, JPMorgan's 2mb/d non-Middle East production increase and 700kb/d forecast beat, and JPMorgan's 5mb/d consumption shortfall) match exactly with correct attribution to each bank."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17365__global-markets-daily-re-assessing-the-value-of-duration-for-.txt",
+   "span": "Rates receiver swaptions on shorter-dated rates can provide a more convex hedge... the entry point for front-end receiver swaptions appears attractive.",
+   "why": "A receiver swaption pays off if rates fall; 'front-end/shorter-dated' matches 'short-dated rates', and 'entry point... appears attractive' matches 'entry point looks attractive'. Correctly attributed to Goldman Sachs, distinct from the TME note used for s5/s6."
   },
   {
    "id": "s8",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17461__the-sox-squeeze-just-got-real.txt",
-   "span": "Privorotsky sees little evidence that slower frontier AI development will change hyperscaler capex plans through 2027/28. Compute remains scarce, workloads are growing and spending intentions are still rising.",
-   "why": "Matches on the 2027/2028 horizon and \"little evidence\" framing; \"spending intentions\" as the thing that would break it reflects the source's own \"spending intentions are still rising\" framing."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
+   "span": "the physical shortage is already shrinking. Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3.",
+   "why": "Source's own qualitative language is softer ('already shrinking') but the cited figures show an ~85-90% reduction in the deficit, which supports 'mostly gone' as a fair paraphrase of the magnitude rather than an invented reversal."
   },
   {
    "id": "s9",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
-   "span": "Index convexity sits below the 10th percentile, while some single-stock convexity is at the 0th percentile...Buy convexity when you can, not when you need to.",
-   "why": "Percentiles match exactly; convexity (options that pay off more the further the market moves) and the \"buy now, not later\" argument are both directly supported."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17391__gs-sharkey-us-equities-mid-day-color-21-sep-2026.txt",
+   "span": "Less than 30% of S&P stocks are now above the 50-day moving average.",
+   "why": "Verbatim match, correctly attributed to Goldman Sachs (also repeated in 17384, same source)."
   },
   {
    "id": "s10",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
-   "span": "Equity vol is cheap, but rate vol may decide whether it stays that way.",
-   "why": "Near-verbatim match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17268__macro-volatility-digest.txt",
+   "span": "VIX\u00ae Index ending the week at 14.8% (7th percentile low)... SPX 1M skew (25-delta ratio) declined from the 58th to 29th percentile low as investors sold out of hedges and rotated into calls.",
+   "why": "Cboe source supports the 7th-percentile VIX read and the 58th-to-29th skew move with matching causal language; the separate 14.27 intraday close is independently confirmed as Goldman's figure in 17513__us-equities-color-consumer-inertia-22-sep-2026.txt ('VIX -403bps @ 14.27'), and the two attributions are kept distinct in the sentence."
   },
   {
    "id": "s11",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
-   "span": "Investment grade, broad high yield and single-B spreads remain relatively contained.",
-   "why": "Near-verbatim match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17302__the-great-copper-puke-the-crowd-sold-the-lows.txt",
+   "span": "Between September 8 and 15, funds sold $2.6bn of high-grade copper futures, the largest weekly sale since April 2023",
+   "why": "Verbatim match."
   },
   {
    "id": "s12",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
-   "span": "the Russell 2000 lost more than 8% relative to the S&P 500 from late June",
-   "why": "Exact match."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17302__the-great-copper-puke-the-crowd-sold-the-lows.txt",
+   "span": "The December contract fell 5.6% from record highs as uncertainty around tariffs, the pace of the AI buildout and broader financial conditions triggered profit-taking... right at the long-term trend line and the 100-day MA.",
+   "why": "Figure, causes, and technical levels all match; dropping 'broader financial conditions' from the two causes named doesn't add anything false."
   },
   {
    "id": "s13",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt",
-   "span": "only three names in the index are closer to their highs than the SOX itself. 10 of the 30 names in the SOX are still off more than 30% from 52wk highs",
-   "why": "3-of-30 closer to highs and 10-of-30 more than 30% below highs both match exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt",
+   "span": "with Meta shares up 21% since the launch of Muse 2 weeks ago, vs. the SPX +1%.",
+   "why": "Verbatim match, correctly attributed to JPMorgan."
   },
   {
    "id": "s14",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17302__the-great-copper-puke-the-crowd-sold-the-lows.txt",
-   "span": "Between September 8 and 15, funds sold $2.6bn of high-grade copper futures, the largest weekly sale since April 2023, with liquidation accounting for $2.2bn",
-   "why": "All figures and dates match exactly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt",
+   "span": "monetization beyond heavy-user subs likely not coming until at least 2027... Muse's generous 100M free weekly tokens",
+   "why": "Both the 100M weekly token free tier and the 2027 monetization timeline match JPMorgan's text exactly."
   },
   {
    "id": "s15",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17349__goldman-s-boy-who-cried-baskets-buys-the-ai-dip-agents-are-h.txt",
-   "span": "Our Europe Team like broader exposure to German fiscal stimulus via our fiscal spend basket...We like pairing this with a tactical short hedge on our French Domestic basket (GSXEFRDO), which we expect to remain constrained by political and fiscal noise into next year's elections.",
-   "why": "Long German fiscal basket vs. short French domestic basket into next year's elections matches directly."
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt",
+   "span": "we think it is more likely Meta will provide additional AI model/product roadmap details, but save Watermelon's launch for a later date.",
+   "why": "'Watermelon' is JPMorgan's name for the next model; the sentence correctly reports JPM expects Connect to cover roadmap, not launch it."
   }
  ],
  "faithful": 15,
