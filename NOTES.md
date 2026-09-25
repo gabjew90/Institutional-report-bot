@@ -3172,3 +3172,37 @@ Open: the ledger check misses members the room names by nickname. On
 (17W/3L); only the asker's profile was loaded, and
 `find_users_mentioned_in_text` cannot map "kyle" to BK (display "BK",
 username "bankerkyle"). Needs an owner-confirmed alias map.
+
+Same day, three more /ask fixes from the log review, classified with the
+process / missing context / weak rule / unreliable code frame:
+
+- Missing context (plus a process slip of mine): the 9/19 ledger check
+  never saw "kyle". On 9/22 the bot told the room Kyle was "blowing
+  accounts on weekly lottos" (17W/3L) because only the asker's dossier
+  loaded and nothing mapped "kyle" to BK; I had tested the check with
+  names already resolved. `db.member_aliases()` now builds what the room
+  calls each member from the display names they actually posted under
+  (chat_messages.author_display), counting a name only past 50 messages
+  and 2% of the member's posts (Yeezy's 10 posts as "Banker Kyle" and
+  Aunt Jemima's 7 as "Monsoon" do not count), dropping shared names and
+  ordinary words, with owner-pinned `PINNED_ALIASES` on top ("kyle" →
+  bankerkyle). Measured on production: 106 surfaces over 53 members.
+  A member named in the asker's words or the replied-to message, with
+  no dossier loaded, gets a one-line record (`format_named_member_
+  records`), never the profile body; dossier headers carry "also
+  called:", which `_profile_member_ids` reads, so the ledger check
+  resolves nicknames.
+- Unreliable code: chart answers pasted 20+ lines of matplotlib into
+  the chat. With a chart attached, code blocks are dropped from the text
+  (owner: "yes hide code").
+- Unreliable code: the dash cleaner's digit lookbehind sat after the
+  whitespace, so "September 29 – October 2" shipped as "29 , October 2"
+  and "147 — up 3%" as "147 , up 3%". A spaced dash between a number
+  and a number or month is "to"; after a number otherwise, a comma.
+
+Not fixed: 10 of 267 turns (4%) ended "Gemini bounced this one". Two
+hypotheses tested and rejected: the replied-to paste (the logged
+question was bare) and one trigger word ("rape" slang was in 1 of 10
+bounced prompts and 34 answered ones). The bare question plus the
+system prompt passes 4/4 on replay. Next step is replaying the 10
+bounced prompts and bisecting, not a guess.

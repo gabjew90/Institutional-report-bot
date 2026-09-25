@@ -338,6 +338,131 @@ def export_user_profiles_markdown() -> str:
     return "\n".join(lines)
 
 
+# ---------------------------------------------------------------- aliases
+#
+# What the room calls a member (2026-09-24). On 9/22 the bot told the
+# room "kyle" was "blowing accounts on weekly lottos" while his log
+# carried 17 wins to 3 losses. Nobody types "bankerkyle" or "BK"; they
+# type "kyle". The name matcher above keys on the CURRENT display name
+# and username, so "kyle" resolved to nobody, his record never reached
+# the writer, and the ledger check could not tie the claim to him.
+#
+# Source: every display name a member has actually posted under, from
+# chat_messages.author_display (the name at the time of each message).
+# The room keeps using retired names ("Ling Mai" for Ligma, "Tulch",
+# "abe", "Moonsoon", "Wock"). Measured the same day.
+#
+# The trap is prank renames: Grand Nagus Yeezy has posted as "Banker
+# Kyle" (10 messages) and "Abullish" (3), Aunt Jemima as "Monsoon" (7).
+# Matching on every name ever used would have pinned "kyle" on Yeezy.
+# So a display name counts for a member only when they used it for real
+# (ALIAS_MIN_MSGS and ALIAS_MIN_SHARE), ordinary words never count, and
+# a surface two members both qualify for is dropped. PINNED_ALIASES are
+# owner-confirmed and override all of it.
+
+PINNED_ALIASES: dict[str, int] = {
+    "kyle": 423994649317736448,   # bankerkyle (BK), owner 2026-09-24
+}
+ALIAS_MIN_MSGS = 50
+ALIAS_MIN_SHARE = 0.02
+ALIAS_MIN_LEN = 3
+# Words that ride along in display names ("Ling Mai Bear", "A Bullish
+# Grand Nagus", "Wock (The Oriental)") and must never resolve a member.
+ALIAS_STOPWORDS = frozenset({
+    "the", "and", "big", "lil", "mr", "mrs", "dr", "bot", "on",
+    "bear", "bears", "bull", "bulls", "bullish", "bearish", "grand",
+    "dark", "trans", "edition", "crashing", "out", "employee", "eow",
+    "banker", "real", "official", "alt", "sir", "king", "queen",
+    # measured on production 2026-09-24: ordinary words and a company
+    # name that current display names would otherwise turn into member
+    # aliases ("oracle" is ORCL before it is The Oracle)
+    "oracle", "the oracle", "cat", "fire", "tomato", "deep", "fried",
+    "husband", "oriental", "bunny", "texas", "rope", "aids", "mic",
+    "astro",
+})
+_ALIAS_TTL_S = 6 * 3600
+_alias_cache: dict = {"at": 0.0, "map": None}
+
+
+def _alias_surfaces(display: str) -> list[str]:
+    """The whole display name plus its word tokens, lowercased."""
+    import re
+    disp = (display or "").strip()
+    if not disp:
+        return []
+    out = []
+    whole = re.sub(r"\s+", " ", re.sub(r"[()\[\]<>]", " ", disp)).strip().lower()
+    if len(whole) >= ALIAS_MIN_LEN and whole not in ALIAS_STOPWORDS:
+        out.append(whole)
+    for tok in re.findall(r"[A-Za-z][A-Za-z0-9_]*", disp):
+        t = tok.lower()
+        if len(t) >= ALIAS_MIN_LEN and t not in ALIAS_STOPWORDS and t not in out:
+            out.append(t)
+    return out
+
+
+def build_member_aliases(rows) -> dict[str, int]:
+    """surface -> author_id from (author_id, author_display, n) rows.
+
+    Pure, so the thresholds are testable against the measured rows."""
+    totals: dict[int, int] = {}
+    for aid, _disp, n in rows:
+        totals[aid] = totals.get(aid, 0) + int(n or 0)
+    claims: dict[str, set[int]] = {}
+    for aid, disp, n in rows:
+        n = int(n or 0)
+        if n < ALIAS_MIN_MSGS or n < ALIAS_MIN_SHARE * max(totals.get(aid, 0), 1):
+            continue
+        for s in _alias_surfaces(disp):
+            claims.setdefault(s, set()).add(aid)
+    out = {s: next(iter(ids)) for s, ids in claims.items() if len(ids) == 1}
+    out.update(PINNED_ALIASES)
+    return out
+
+
+def member_aliases() -> dict[str, int]:
+    """Cached alias map (6 h). Empty on any read failure: an alias is an
+    enrichment, never a reason for an answer to fail."""
+    import time
+    now = time.time()
+    if _alias_cache["map"] is not None and now - _alias_cache["at"] < _ALIAS_TTL_S:
+        return _alias_cache["map"]
+    try:
+        rows = _db.get_connection().execute(
+            "SELECT author_id, author_display, COUNT(*) FROM chat_messages "
+            "WHERE author_display IS NOT NULL GROUP BY author_id, author_display"
+        ).fetchall()
+        amap = build_member_aliases([(r[0], r[1], r[2]) for r in rows])
+    except Exception as e:
+        log.warning(f"member_aliases: read failed (non-fatal): {e}")
+        amap = dict(PINNED_ALIASES)
+    _alias_cache.update(at=now, map=amap)
+    return amap
+
+
+def members_named_in_text(text: str, aliases: dict[str, int] | None = None
+                          ) -> dict[int, list[str]]:
+    """{user_id: [surfaces found]} for members named in `text` by any
+    alias, whole-word, case-insensitive."""
+    import re
+    low = (text or "").lower()
+    if not low:
+        return {}
+    amap = aliases if aliases is not None else member_aliases()
+    out: dict[int, list[str]] = {}
+    for surface, uid in amap.items():
+        if re.search(r"(?<![a-z0-9_])" + re.escape(surface) + r"(?![a-z0-9_])", low):
+            out.setdefault(uid, []).append(surface)
+    return out
+
+
+def aliases_for(user_id: int, aliases: dict[str, int] | None = None) -> list[str]:
+    """Every surface that resolves to this member, longest first."""
+    amap = aliases if aliases is not None else member_aliases()
+    return sorted((s for s, u in amap.items() if u == user_id),
+                  key=lambda s: (-len(s), s))
+
+
 def find_users_mentioned_in_text(text: str) -> list[int]:
     """Return user_ids of profiled users mentioned in `text`. Catches:
       - Discord @-mentions: `<@123>`, `<@!123>`

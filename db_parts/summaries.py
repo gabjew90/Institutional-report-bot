@@ -647,6 +647,16 @@ def format_user_profiles_for_context(
             metric_bits.append(f"trader-rank #{tr}/{trader_rank_total}")
         else:
             metric_bits.append("trader-rank: not scored")
+        # What the room calls them (2026-09-24), so "kyle" in the chat or
+        # in a draft resolves to this dossier. Current names are left
+        # out; they are already in the header.
+        try:
+            _known = {dn.lower(), (uname or "").lower()}
+            _al = [a for a in _db.aliases_for(uid) if a not in _known][:4]
+        except Exception:
+            _al = []
+        if _al:
+            metric_bits.append("also called: " + ", ".join(_al))
         # The documented record, from analyst_trades (2026-09-19). Ranks
         # are opinions the scorer formed; this is what the member's log
         # actually says. Without it the writer infers an outcome from the
@@ -699,6 +709,65 @@ def format_user_profiles_for_context(
             f"_(...{truncated} additional profile(s) omitted to fit context budget)_"
         )
     return "\n".join(lines)
+
+
+def format_named_member_records(named: dict[int, list[str]],
+                                exclude_ids=()) -> str:
+    """One line per member NAMED in the question who has no dossier
+    loaded: who they are, what the room calls them, their documented
+    record. Never the profile body.
+
+    2026-09-24: "kyle came out as gay today can you congratulate him?"
+    got "takes real courage to finally admit his true passion isn't just
+    blowing accounts on weekly lottos" while his log carried 17 wins to
+    3 losses. Only the asker's dossier loads for a name typed in plain
+    text (deliberate: one member's material must not bleed into
+    another's answer), so the writer had no record for Kyle and the
+    ledger check had no way to tie "kyle" to him. The record is a fact
+    about the person being talked about, not roast material, so it
+    loads where the dossier does not.
+
+    Header format matches WHO'S TALKING so `_profile_member_ids` maps
+    these members too.
+    """
+    ids = [u for u in (named or {}) if u not in set(exclude_ids or ())]
+    if not ids:
+        return ""
+    try:
+        profiles = _db.get_profiles_for_users(ids) or {}
+    except Exception as e:
+        log.warning(f"named-member records: profile read failed: {e}")
+        return ""
+    lines = []
+    for uid in ids:
+        p = profiles.get(uid)
+        if not p:
+            continue
+        dn = p.get("display_name") or p.get("username") or f"user_{uid}"
+        uname = p.get("username") or dn
+        try:
+            ledger = _db.format_member_ledger_line(_db.member_ledger_summary(uid))
+        except Exception as e:
+            log.warning(f"named-member records: ledger failed for {uid}: {e}")
+            ledger = ""
+        known = {dn.lower(), uname.lower()}
+        try:
+            al = [a for a in _db.aliases_for(uid) if a not in known][:4]
+        except Exception:
+            al = []
+        bits = ["named in the question, record only (no profile loaded)"]
+        if al:
+            bits.append("also called: " + ", ".join(al))
+        # no ledger line for a member with no logged trades: most of
+        # the room never posts a screenshot, and "no trades" handed to
+        # the writer reads as a jab ("never posts receipts")
+        if ledger:
+            bits.append(ledger)
+        lines.append(f"- **{dn}** ({uname}, <@{uid}>) — _{' · '.join(bits)}_")
+    if not lines:
+        return ""
+    return ("MEMBERS NAMED IN THE QUESTION (documented record; a claim "
+            "about their trading must match it):\n" + "\n".join(lines))
 
 
 def receipts_ceiling_from_points(points: int) -> int:

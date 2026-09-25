@@ -1413,6 +1413,11 @@ from db_parts.ask import (  # noqa: E402,F401
     record_ask_query,
 )
 from db_parts.chat import (  # noqa: E402,F401
+    PINNED_ALIASES,
+    aliases_for,
+    build_member_aliases,
+    member_aliases,
+    members_named_in_text,
     count_chat_messages_for_channels,
     export_user_profiles_markdown,
     find_oldest_chat_gap,
@@ -1527,6 +1532,7 @@ from db_parts.summaries import (  # noqa: E402,F401
     append_ask_interaction,
     compute_abe_win_loss_summary,
     format_analyst_trades_for_context,
+    format_named_member_records,
     format_user_profiles_for_context,
     receipts_ceiling_from_points,
     recompute_trader_ranks_on_profiles,

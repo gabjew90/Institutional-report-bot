@@ -1555,6 +1555,28 @@ def _member_ledger_stats(user_ids) -> dict[int, dict]:
     return out
 
 
+_ALSO_CALLED_RE = re.compile(r"also called: ([^·_\n]+)")
+# At most this many named-but-unprofiled members get a record line; a
+# question naming more is a ranking, and the ranking path has its own
+# tools.
+_NAMED_RECORDS_MAX = 4
+
+
+def _named_scope(question: str) -> str:
+    """The text whose names count as 'named in the question': the
+    asker's own words plus the message they replied to. Not the quoted
+    VERBATIM chat history, which names half the room."""
+    from discord_bot.tone_dial import asker_message
+    q = question or ""
+    own = asker_message(q)
+    replied = ""
+    m = re.search(r"\[MESSAGE BEING REPLIED TO[^\]]*\]\s*\n(.*?)(?=\n\[[^\]\n]*message to you\]|\Z)",
+                  q, re.S)
+    if m:
+        replied = m.group(1)
+    return f"{replied}\n{own}".strip()
+
+
 def _profile_member_ids(profiles_block: str) -> dict[str, int]:
     """Every surface name in WHO'S TALKING mapped to its user_id.
 
@@ -1563,11 +1585,23 @@ def _profile_member_ids(profiles_block: str) -> dict[str, int]:
     check to find whose record a sentence is talking about."""
     out: dict[str, int] = {}
     first_tokens: dict[str, set[int]] = {}
-    for disp, uname, uid in _PROFILE_MEMBER_ID_RE.findall(profiles_block or ""):
+    for m in _PROFILE_MEMBER_ID_RE.finditer(profiles_block or ""):
+        disp, uname, uid = m.groups()
         try:
             n = int(uid)
         except ValueError:
             continue
+        # The header's "also called:" list (2026-09-24) is what the room
+        # actually types. Already de-duplicated across members at the
+        # source, so it maps without the first-token ambiguity check.
+        line_end = (profiles_block or "").find("\n", m.end())
+        line = (profiles_block or "")[m.start(): None if line_end < 0 else line_end]
+        am = _ALSO_CALLED_RE.search(line)
+        if am:
+            for a in am.group(1).split(","):
+                a = a.strip()
+                if len(a) >= 3:
+                    out.setdefault(a, n)
         # "BK" is a real handle: display names and usernames go in at
         # two characters, matched word-bounded. The first-token
         # fallback keeps the three-character floor, where a short
@@ -3014,6 +3048,18 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     # BUT leave a dash inside a numeric range alone (a digit on either
     # side = a range, not an aside): "62–65%", "$861–$881", "24–48h".
     # 2026-06-29 QC: "62–65%" was shipping mangled as "62, 65%".
+    #
+    # SPACED ranges and asides after a number (2026-09-24). The digit
+    # lookbehind sits after any whitespace, so "September 29 – October 2"
+    # matched at the dash itself and shipped as "September 29 , October
+    # 2", and "closed at 147 — up 3%" as "147 , up 3%". A spaced dash
+    # between a number and a number or a month reads as "to"; a spaced
+    # dash after a number otherwise is an aside and takes a comma with
+    # no stray space.
+    text = re.sub(
+        r'(\d)\s+[—–‒]\s+(?=\$?\d|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|'
+        r'Sept|Oct|Nov|Dec)[a-z]*\b)', r'\1 to ', text)
+    text = re.sub(r'(\d)\s+[—–‒]\s+', r'\1, ', text)
     cleaned = re.sub(r'(?<!\d)\s*[—–‒]\s*(?!\$?\d)', ', ', text)
     # Semicolon inside a sentence — comma reads cleanly. Don't touch
     # semicolons inside fenced code (rare in /ask answers, defensive).
@@ -4546,6 +4592,26 @@ async def _ask_00_setup_tools_and_context(
                 db.format_user_profiles_for_context, profile_user_ids)
     except Exception as e:
         log.warning(f"User-profile fetch failed (non-fatal): {e}")
+
+    # Members the question names by what the room calls them ("kyle"),
+    # who have no dossier here: their documented record only (2026-09-24,
+    # see db.format_named_member_records). Scoped to the asker's own
+    # words and the message being replied to, never the quoted chat
+    # history, which names half the room.
+    try:
+        _named = await asyncio.to_thread(
+            db.members_named_in_text, _named_scope(question))
+        _named = {u: s for u, s in _named.items()
+                  if u not in set(profile_user_ids or ())}
+        _named = dict(list(_named.items())[:_NAMED_RECORDS_MAX])
+        if _named:
+            _records = await asyncio.to_thread(
+                db.format_named_member_records, _named)
+            if _records:
+                profiles_block = (profiles_block + "\n\n" + _records
+                                  if profiles_block else _records)
+    except Exception as e:
+        log.warning(f"Named-member records failed (non-fatal): {e}")
 
     # Analyst trade context is no longer auto-injected (was: a
     # multi-caller block from format_analyst_trades_for_context for
@@ -8093,6 +8159,18 @@ async def _ask_10_log_and_render(
     answer = re.sub(r"!\[([^\]]*)\]\([^)]*\)",
                     lambda m: m.group(1).strip(), answer or "")
     answer = _strip_citation_markers(answer)
+    # The chart is the deliverable, not the code that drew it (owner,
+    # 2026-09-24: "yes hide code"). The model echoes its matplotlib
+    # into the reply, 20+ lines the room scrolls past to reach the
+    # bullets. When a chart image is attached, drop code blocks from the
+    # text. With no chart the code IS the answer and stays, and an
+    # answer that is nothing but code is left alone rather than posted
+    # empty.
+    if _code_images and "```" in answer:
+        _no_code = _without_code(answer).strip()
+        if _no_code:
+            answer = _no_code
+            _ask_meta["guards"].append("code-hidden")
     answer = re.sub(r"\n{3,}", "\n\n", answer).strip()
 
     # Source-quality counter, WARN-ONLY (2026-08-27, session 4):

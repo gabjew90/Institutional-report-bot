@@ -62,3 +62,23 @@ def test_a_text_wrapped_prose_answer_is_still_prose():
     assert B._has_repetition_glitch(loop)
     bare = "```\nsee [1] here\n```"
     assert "[1]" not in B._strip_citation_markers(bare)
+
+
+def test_code_is_hidden_when_a_chart_is_attached():
+    """Owner, 2026-09-24: 'yes hide code'. The chart is the deliverable."""
+    import inspect
+    src = inspect.getsource(B._ask_10_log_and_render)
+    assert "if _code_images and" in src and "_without_code(answer)" in src
+    ans = CODE + "\n" + PROSE
+    assert B._without_code(ans).strip().startswith("→ **NVDA")
+
+
+def test_spaced_ranges_read_as_to():
+    """2026-09-24: 'September 29 – October 2' shipped as
+    'September 29 , October 2'."""
+    C = lambda s: B._clean_voice_violations(s)[0]
+    assert C("Atlanta (September 29 – October 2)") == "Atlanta (September 29 to October 2)"
+    assert C("open 9:30 – 10:00 AM") == "open 9:30 to 10:00 AM"
+    assert C("closed at 147 — up 3%") == "closed at 147, up 3%"
+    assert C("62–65% odds") == "62–65% odds"
+    assert C("the tape — as usual — ripped") == "the tape, as usual, ripped"
