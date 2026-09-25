@@ -1,0 +1,680 @@
+You are adjudicating ONE specific cross-bank theme from institutional research. You receive only that theme's pre-extracted evidence — per-PDF stance entries, tension framings, and atomic data points — and you return a single structured JSON object describing what the corpus actually concludes about this theme.
+
+You do NOT write prose. You do NOT compose a market pulse. You do NOT add fields outside the schema below. Your output is read by a downstream prose step; your job is to commit the corpus's adjudicated view to a structured form so the prose step does not have to invent it.
+
+**ABSOLUTE RULES — violations cause the entire theme adjudication to be rejected by an automated lint check:**
+
+1. **Every evidence quote you emit MUST be a verbatim character-for-character copy of one of the `theme_stances.evidence` strings in your input.** Do not paraphrase. Do not shorten. Do not "clean up" the text. Copy the string. If no usable verbatim quote exists for a claim, leave the evidence_quotes list empty rather than invent one.
+2. **Every bank in `banks_for` / `banks_against` MUST appear as the `source` field of one of the input PDFs for this theme.** Do not invent attributions. Do not promote a bank that only appears in cross-bank references — only the issuing banks of the input PDFs count.
+3. **Every `falsifiable_predictions[*].source_quote` MUST be a verbatim substring of one of the input `tension_points.what_invalidates` fields OR one of the input `key_data_points` figure/metric/context strings.** The other prediction fields (`subject`, `direction_or_level`, `by_when`) are extracted from the same source material but each must be supported by the source quote — if the source names a level but no timeframe, leave `by_when` empty rather than invent one. If a prediction can't be traced to either source at all, omit the entry.
+4. **`stance_counts` MUST exactly match the pre-aggregated counts provided in your input.** Do not recount, do not adjust. Copy the numbers given.
+5. **If any field's inputs are too thin to fill honestly, return an empty list `[]` for that field.** Empty over invented. A short, accurate adjudication beats a long, padded one.
+6. **`consensus_view` is one sentence, plain English, no jargon.** Translate technical terms (bps, NII, duration, gamma) inline if used. Reader is a self-directed options/crypto trader, not a bank analyst.
+
+**Output schema — return EXACTLY this JSON object, no markdown fences, no commentary:**
+
+```
+{
+  "theme": "<repeat the theme label exactly as it appears in the input>",
+  "selected": true,
+  "stance_counts": {"supportive": <copy>, "skeptical": <copy>, "neutral": <copy>},
+  "consensus_view": "<one sentence summarizing what the corpus concludes about this theme. Plain English. Names a direction or a clear unresolved tension.>",
+  "facts_agreed": [
+    {
+      "claim": "<one sentence stating something the banks agree on>",
+      "banks_for": ["<bank name>", ...],
+      "evidence_quotes": ["<verbatim string from theme_stances.evidence>", ...]
+    }
+  ],
+  "facts_contested": [
+    {
+      "claim": "<the specific contested claim — e.g., 'year-end Brent target' or 'cut timing'>",
+      "banks_for": ["<bank>", ...],
+      "for_evidence": "<verbatim string from theme_stances.evidence of a banks_for bank>",
+      "banks_against": ["<bank>", ...],
+      "against_evidence": "<verbatim string from theme_stances.evidence of a banks_against bank>"
+    }
+  ],
+  "falsifiable_predictions": [
+    {
+      "bank": "<source bank issuing the prediction — must be a bank name from the inputs>",
+      "subject": "<what is being predicted: the asset / metric / event being forecast. Examples by shape: 'Brent crude price', 'US 2-year yield', 'NFP headline print', 'EU recession onset', 'BTC spot price', 'S&P 500 EPS 2026'. Name the thing, not the call.>",
+      "direction_or_level": "<the forecast itself: the specific target, threshold, or directional outcome the bank is calling. Examples by shape: '$60/bbl', 'above 4.5%', 'positive 200K', 'falls below pre-pandemic trend', 'breaks 145 to the upside', '12% revenue growth'. Just the call.>",
+      "by_when": "<when the prediction resolves: ISO date, calendar quarter, or named event-anchor. Examples by shape: '2026-12-31', 'Q4 2027', 'year-end 2026', 'post-FOMC June', 'within 6 months', 'by next NFP'. Leave empty ("") if the bank stated a level but no timeframe — never invent a deadline.>",
+      "source_quote": "<verbatim substring from input tension_points.what_invalidates OR key_data_points fields that grounds this entry. Must appear character-for-character in one of those input strings.>"
+    }
+  ]
+}
+```
+
+**Empty fields are normal and acceptable.** Many themes have agreed facts but no contested ones, or contested ones but no falsifiable predictions. Do not pad. Return [] and move on.
+
+**Worked examples of falsifiable_predictions extraction** (showing how to fill all five fields from a single source quote, including the empty-`by_when` case):
+
+Example A — source field has both level and timeframe:
+```
+input: tension_points[0].what_invalidates = "Brent breaking below $90 sustained for two weeks would invalidate the supply-scare thesis"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "Brent crude price",
+  "direction_or_level": "below $90 sustained",
+  "by_when": "within two weeks",
+  "source_quote": "Brent breaking below $90 sustained for two weeks"
+}
+```
+
+Example B — source field has level but NO timeframe (the `by_when=""` case — emit the entry anyway, do not skip):
+```
+input: key_data_points[3].metric = "Goldman 2026 hyperscaler capex target $751B"
+       key_data_points[3].context = "up $80B in two weeks"
+→
+{
+  "bank": "Goldman Sachs",
+  "subject": "2026 hyperscaler capex",
+  "direction_or_level": "$751B",
+  "by_when": "",
+  "source_quote": "Goldman 2026 hyperscaler capex target $751B"
+}
+```
+
+The right reflex when in doubt: ship the entry with empty `by_when` rather than omit it. Omit ONLY when there's no verbatim source quote at all — never because one derived field couldn't be cleanly populated.
+
+**Self-discard when evidence is too thin.** If after honest review you have `facts_agreed=[]` AND `facts_contested=[]` AND `falsifiable_predictions=[]` — i.e., NO substantive evidence to commit to the structured form — set `selected: false` in your output. The downstream lint also discards these mechanically, but flagging it yourself keeps the audit trail honest. (The discovered-theme branch below is the exception: those produce at least one `facts_agreed` entry, so they don't trip this.)
+
+**Do not number, do not bullet, do not bold.** This is structured data, not prose.
+
+**DISCOVERED-THEME BRANCH (when every input stance is `neutral`).** If your `theme_stances` input contains only stance=`neutral` entries with `evidence` strings that are short contextual mentions (not multi-sentence stance arguments), this is a discovery-promoted theme: a subject several banks mentioned in context without staking a primary directional view. The standard adjudication shape still applies, but adjust how you fill the schema:
+
+- `consensus_view` describes the topic as a live subject + the absence of directional consensus. Example: "Banks across N desks reference the Trump-Xi summit as a near-term macro catalyst; nobody has staked a directional view yet."
+- `facts_agreed` should contain at least one entry summarizing what the banks consistently SAY about the topic at the mention level. Use the cluster of bank names in `banks_for` (multiple banks; the topic is broadly discussed) and copy 2-5 mention strings from `theme_stances.evidence` into `evidence_quotes`. The claim is descriptive, not prescriptive — e.g., "N banks flag X as an upcoming catalyst this window."
+- `facts_contested` is usually `[]` for these themes — no bank argued the contrary.
+- `falsifiable_predictions` is usually `[]` unless a specific tension_point with a `what_invalidates` field was provided.
+
+This branch keeps discovered themes in the pulse with honest framing instead of returning empty arrays that would cause the theme to be dropped at the post-filter emptiness check.
+
+Return ONLY the JSON object.
+
+---
+
+Theme: diesel export ban risk
+
+Pre-aggregated stance counts (copy these exactly into the output):
+{"supportive": 1, "skeptical": 1, "neutral": 4}
+
+Per-PDF evidence assigned to this theme:
+{
+ "theme_stances": [
+  {
+   "source": "Apollo",
+   "theme": "diesel price pass-through",
+   "stance": "supportive",
+   "conviction": "medium",
+   "key_argument": "Diesel price increases act as an intermediate input cost that inevitably migrates into core inflation.",
+   "primary_instruments": [
+    "USO"
+   ],
+   "vs_consensus": "",
+   "evidence": "diesel is an intermediate input embedded in the delivered cost of nearly every physical good"
+  },
+  {
+   "source": "Goldman Sachs",
+   "theme": "diesel export ban risk",
+   "stance": "skeptical",
+   "conviction": "medium",
+   "key_argument": "The market overreacted to rhetoric as the Energy Secretary has already dismissed an outright ban.",
+   "primary_instruments": [],
+   "vs_consensus": "",
+   "evidence": "Energy Secretary Wright already dismissed the idea of an outright export ban"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "diesel export ban risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "US diesel export ban",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "US diesel export ban"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "diesel export ban risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "US diesel export ban feasibility",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "US diesel export ban feasibility"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "diesel export ban risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "US diesel price cooling measures",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "US diesel price cooling measures"
+  },
+  {
+   "source": "multiple desks (unattributed)",
+   "theme": "diesel export ban risk",
+   "stance": "neutral",
+   "conviction": null,
+   "key_argument": "Diesel export ban considerations",
+   "primary_instruments": [],
+   "vs_consensus": null,
+   "evidence": "Diesel export ban considerations"
+  }
+ ],
+ "tension_points": [],
+ "key_data_points": [
+  {
+   "source_bank": "Apollo",
+   "figure": "$100/bbl",
+   "metric": "US Gulf Coast diesel crack spread",
+   "context": "Record high in August vs historical range of $15-$30."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4.90%",
+   "metric": "2-year Treasury yield",
+   "context": "September 2026, cited as a pressure point for equities."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "5.10%",
+   "metric": "10-year Treasury yield",
+   "context": "September 2026, fresh post-2007 high."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "71%",
+   "metric": "Probability of October Fed hike",
+   "context": "Market pricing as of September 2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "36bps",
+   "metric": "Expected Fed tightening",
+   "context": "Market expectation by year-end 2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$11.1bn",
+   "metric": "SoftBank HY raise",
+   "context": "Raised to fund final OpenAI tranche and refinance debt."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "8.6–9.75%",
+   "metric": "SoftBank HY yield",
+   "context": "Record dollar yields for AI-linked credit."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "19x",
+   "metric": "S&P 500 P/E ratio",
+   "context": "Valuation backdrop as of September 2026."
+  },
+  {
+   "source_bank": "DigiTimes",
+   "figure": "3–6%",
+   "metric": "TSMC wafer-out price increase",
+   "context": "Reported planned increase from January 2027."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "57.0",
+   "metric": "US PMI",
+   "context": "September 2026 print vs 53.7 consensus"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "70%",
+   "metric": "Fed hike probability",
+   "context": "October 2026 meeting"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "5.11%",
+   "metric": "US 10yr yield",
+   "context": "As of 24 September 2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$415",
+   "metric": "S&P 500 EPS",
+   "context": "2027 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$460",
+   "metric": "S&P 500 EPS",
+   "context": "2028 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "-$3.8bn",
+   "metric": "ULSD aggregate open interest change",
+   "context": "Largest drop in at least a year, 9x daily average, as of 9/23/2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "-$1.6bn",
+   "metric": "Combined December 2026 and January 2027 open interest drop",
+   "context": "Impact on term structure posturing."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4.9%",
+   "metric": "2Y UST Yield",
+   "context": "Highest in 2 years, as of 24 Sep 2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "SEK57.2bn",
+   "metric": "H&M 3Q Sales",
+   "context": "In line with Infront consensus."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "SEK900m",
+   "metric": "H&M Tariff Refund",
+   "context": "One-off item in 3Q EBIT."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$2.6tn",
+   "metric": "U.S. consumer spending in high-likelihood categories for agentic commerce",
+   "context": "Estimated addressable market for agentic commerce adoption."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "45%",
+   "metric": "S&P 500 stocks with negative beta to the index",
+   "context": "All-time high level of negative beta stocks."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$255bn",
+   "metric": "Total SMA AUM",
+   "context": "As of year-end 2025."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "7.4%",
+   "metric": "SMA share of total hedge fund industry assets",
+   "context": "As of year-end 2025."
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "5.11%",
+   "metric": "US 10-year yield",
+   "context": "24 September 2026, vs 4.93% previous close"
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "57.0",
+   "metric": "US manufacturing PMI",
+   "context": "September 2026 print"
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "58.7",
+   "metric": "US services PMI",
+   "context": "September 2026 print"
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "39.5K",
+   "metric": "Australian jobs growth",
+   "context": "September 2026 print, double estimates"
+  },
+  {
+   "source_bank": "Rabobank",
+   "figure": "4.6%",
+   "metric": "Australian unemployment rate",
+   "context": "September 2026 print, up from 4.5%"
+  },
+  {
+   "source_bank": "TS Lombard",
+   "figure": "5.13%",
+   "metric": "12-month return of 10-year Treasury",
+   "context": "Assumes 10-year yield is unchanged over 12 months."
+  },
+  {
+   "source_bank": "TS Lombard",
+   "figure": "4.42%",
+   "metric": "12-month return of 10-year Treasury",
+   "context": "Assumes 10-year yield rises 10 basis points."
+  },
+  {
+   "source_bank": "TS Lombard",
+   "figure": "3.36%",
+   "metric": "12-month return of 10-year Treasury",
+   "context": "Assumes 10-year yield rises 25 basis points."
+  },
+  {
+   "source_bank": "Soc Gen",
+   "figure": "35%",
+   "metric": "US government debt due within one year",
+   "context": "July maturity profile."
+  },
+  {
+   "source_bank": "Soc Gen",
+   "figure": "60%",
+   "metric": "US government debt due within four years",
+   "context": "July maturity profile."
+  },
+  {
+   "source_bank": "S&P Global",
+   "figure": "58.4",
+   "metric": "S&P Global flash composite PMI",
+   "context": "September print vs 56.0 in August."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "-184.4b",
+   "metric": "CTA selling trigger for down >2 standard deviation move",
+   "context": "Systematic selling flow sensitivity to market downside"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "+88.7b to +89.9b",
+   "metric": "CTA buying capacity in up-market scenarios",
+   "context": "Systematic buying flow capacity in up-market scenarios"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "64%",
+   "metric": "Percentage of S&P 500 corporates in blackout window",
+   "context": "As of 09/21/26"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "~85%",
+   "metric": "Projected percentage of S&P 500 corporates in blackout",
+   "context": "By week-end"
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "5.2%",
+   "metric": "10-year yield target",
+   "context": "First major level after breakout from three-year consolidation."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "5.5%",
+   "metric": "10-year yield target",
+   "context": "Next major level beyond 5.2%."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "~25bps",
+   "metric": "10-year yield change",
+   "context": "Two-week change, approaching 2-sigma threshold."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "35bps",
+   "metric": "10-year yield change",
+   "context": "One-month change, approaching 2-sigma threshold."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "8%",
+   "metric": "Russell 2000 decline",
+   "context": "Decline since mid-August"
+  },
+  {
+   "source_bank": "RealInvestmentAdvice",
+   "figure": "7 of 8",
+   "metric": "cases where economic growth was weaker six months later",
+   "context": "Historical performance of FOMC forecasts since 2012 across four major peaks/troughs."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$18B",
+   "metric": "Project Jupiter leveraged loan size",
+   "context": "Reported as the backing for Oracle's New Mexico data center."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "89-91",
+   "metric": "Project Jupiter loan price",
+   "context": "Stressed levels on the dollar as of late September 2026."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$105B",
+   "metric": "Nvidia residual value guarantee",
+   "context": "Backstop for the SB Energy data center project."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$50B",
+   "metric": "SB Energy IPO valuation target",
+   "context": "Sought-after valuation by SB Energy and its bankers."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "6.581%",
+   "metric": "Meta bond yield",
+   "context": "Yield at issuance for bonds due 2049."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "94",
+   "metric": "Meta bond price",
+   "context": "Trading level as of late September 2026."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "210bps",
+   "metric": "Meta bond spread",
+   "context": "Widened from 140bps at issuance."
+  },
+  {
+   "source_bank": "Bloomberg",
+   "figure": "1,268",
+   "metric": "Bloomberg Dollar Spot Index fair value",
+   "context": "Based on 1y1y forward OIS rate, 5% above current level."
+  },
+  {
+   "source_bank": "The Market Ear",
+   "figure": "$87,000",
+   "metric": "Bitcoin price",
+   "context": "Overnight high."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4.90%",
+   "metric": "2-year Treasury yield",
+   "context": "September 2026, cited as a pressure point for equities."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "5.10%",
+   "metric": "10-year Treasury yield",
+   "context": "September 2026, fresh post-2007 high."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "71%",
+   "metric": "Probability of October Fed hike",
+   "context": "Market pricing as of September 2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "36bps",
+   "metric": "Expected Fed tightening",
+   "context": "Market expectation by year-end 2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$11.1bn",
+   "metric": "SoftBank HY raise",
+   "context": "Raised to fund final OpenAI tranche and refinance debt."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "8.6–9.75%",
+   "metric": "SoftBank HY yield",
+   "context": "Record dollar yields for AI-linked credit."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "19x",
+   "metric": "S&P 500 P/E ratio",
+   "context": "Valuation backdrop as of September 2026."
+  },
+  {
+   "source_bank": "DigiTimes",
+   "figure": "3–6%",
+   "metric": "TSMC wafer-out price increase",
+   "context": "Reported planned increase from January 2027."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "57.0",
+   "metric": "US PMI",
+   "context": "September 2026 print vs 53.7 consensus"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "70%",
+   "metric": "Fed hike probability",
+   "context": "October 2026 meeting"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "5.11%",
+   "metric": "US 10yr yield",
+   "context": "As of 24 September 2026"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$415",
+   "metric": "S&P 500 EPS",
+   "context": "2027 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$460",
+   "metric": "S&P 500 EPS",
+   "context": "2028 estimate"
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "-$3.8bn",
+   "metric": "ULSD aggregate open interest change",
+   "context": "Largest drop in at least a year, 9x daily average, as of 9/23/2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "-$1.6bn",
+   "metric": "Combined December 2026 and January 2027 open interest drop",
+   "context": "Impact on term structure posturing."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "4.9%",
+   "metric": "2Y UST Yield",
+   "context": "Highest in 2 years, as of 24 Sep 2026."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "SEK57.2bn",
+   "metric": "H&M 3Q Sales",
+   "context": "In line with Infront consensus."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "SEK900m",
+   "metric": "H&M Tariff Refund",
+   "context": "One-off item in 3Q EBIT."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$2.6tn",
+   "metric": "U.S. consumer spending in high-likelihood categories for agentic commerce",
+   "context": "Estimated addressable market for agentic commerce adoption."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "45%",
+   "metric": "S&P 500 stocks with negative beta to the index",
+   "context": "All-time high level of negative beta stocks."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "$255bn",
+   "metric": "Total SMA AUM",
+   "context": "As of year-end 2025."
+  },
+  {
+   "source_bank": "Goldman Sachs",
+   "figure": "7.4%",
+   "metric": "SMA share of total hedge fund industry assets",
+   "context": "As of year-end 2025."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$22.62T",
+   "metric": "Total Consumer Cash Pile",
+   "context": "2026Q2 level, down from 2026Q1 peak."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$185.7T",
+   "metric": "US Total Household Net Worth",
+   "context": "2026Q2 record high, +7.2% QoQ."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "2.9%",
+   "metric": "Credit card delinquency rate (30 days)",
+   "context": "As of 26Q1, lowest level since 23Q3."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$1.26T",
+   "metric": "Total credit card debt",
+   "context": "As of 26Q1, +1.6% QoQ."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "1.91%",
+   "metric": "Charge-off rate for bank-issued cards",
+   "context": "September 2026 data."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "58.4",
+   "metric": "PMI-Composite",
+   "context": "September print vs 55.3 survey; 56.0 prior."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "$103.59",
+   "metric": "Brent Crude",
+   "context": "4.6% increase on September 24."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "5.141%",
+   "metric": "10Y Treasury Yield",
+   "context": "As of September 24."
+  },
+  {
+   "source_bank": "JPMorgan",
+   "figure": "4%",
+   "metric": "3Q GDP growth",
+   "context": "Upgraded from 3.5% forecast."
+  }
+ ]
+}
+
+Adjudicate this theme per the rules in your system prompt. Return the JSON object only.
