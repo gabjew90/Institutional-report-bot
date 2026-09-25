@@ -157,6 +157,14 @@ def _band(d, label, x0, x1, y, f):
 
 
 EMPTY_BAND_TEXT = "no names at scale confirmed"
+# Friday's sheet covers Monday, past the end of the ForexFactory week:
+# the econ rows are FRED's scheduled majors only (2026-09-25).
+ECON_PARTIAL_EMPTY = "no major US releases scheduled · full list posts Sunday"
+ECON_PARTIAL_NOTE = "major releases only · full list posts Sunday"
+
+
+def _econ_empty_text(day) -> str:
+    return ECON_PARTIAL_EMPTY if getattr(day, "econ_partial", False) else "no notable US releases"
 
 
 def render_calendar_png(day: CalendarDay) -> bytes:
@@ -238,7 +246,7 @@ def render_calendar_png(day: CalendarDay) -> bytes:
         y = _econ_block(d, day, f, y, col_w, x_l, x_r)
     else:
         y = _band(d, "Economic", _MARGIN, _W - _MARGIN, y, f)
-        d.text((_MARGIN, y), "no notable US releases", font=f["ev"],
+        d.text((_MARGIN, y), _econ_empty_text(day), font=f["ev"],
                fill=_dim(TEXT, 0.5))
         y += 52 * _S
 
@@ -383,6 +391,9 @@ def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
             fill=TEXT if getattr(r, "important", False) else _dim(TEXT, 0.80),
         )
         cy += 38 * _S
+    if getattr(day, "econ_partial", False):
+        d.text((_MARGIN, cy), ECON_PARTIAL_NOTE, font=f["ev"], fill=_dim(TEXT, 0.5))
+        cy += 38 * _S
     return cy + 34 * _S
 
 
@@ -404,8 +415,10 @@ def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
         d.text((x_l, cy), "unavailable tonight", font=f["ev"], fill=_dim(TEXT, 0.5))
         cy += 40 * _S
     elif not day.econ:
-        d.text((x_l, cy), "no notable US releases", font=f["ev"], fill=_dim(TEXT, 0.5))
-        cy += 40 * _S
+        for line in _wrap(d, _econ_empty_text(day), f["ev"], col_w):
+            d.text((x_l, cy), line, font=f["ev"], fill=_dim(TEXT, 0.5))
+            cy += 30 * _S
+        cy += 10 * _S
     for r in day.econ:
         d.text((x_l, cy), f"{r.time_et} {tz}", font=f["time"], fill=TEXT)
         imp = getattr(r, "important", False)
@@ -415,6 +428,10 @@ def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
             d.text((x_l + t_w, cy + 1 * _S), line, font=font, fill=fill)
             cy += 30 * _S
         cy += 8 * _S
+    if day.econ and getattr(day, "econ_partial", False):
+        for line in _wrap(d, ECON_PARTIAL_NOTE, f["ev"], name_w + t_w):
+            d.text((x_l, cy), line, font=f["ev"], fill=_dim(TEXT, 0.5))
+            cy += 30 * _S
     left_bottom = cy
 
     # ---- right: industry events

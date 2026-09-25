@@ -203,6 +203,9 @@ class CalendarDay:
     is_holiday: str | bool        # holiday name or False
     econ: list[EconRow] = field(default_factory=list)
     econ_available: bool = True   # False = FF feed down (vs quiet day)
+    # True = the FF feed does not reach this date yet (Friday's sheet for
+    # Monday): rows are FRED's scheduled majors only, and the sheet says so
+    econ_partial: bool = False
     bmo: list[EarnRow] = field(default_factory=list)
     amc: list[EarnRow] = field(default_factory=list)
     earnings_available: bool = True
@@ -485,7 +488,8 @@ def lineup_signature(day: CalendarDay) -> str:
     sheet only when this changes (2026-09-01)."""
     import hashlib
     parts = [day.date_iso, str(day.is_holiday),
-             str(day.earnings_available), str(day.econ_available)]
+             str(day.earnings_available), str(day.econ_available),
+             str(getattr(day, "econ_partial", False))]
     for lbl, rows in (("bmo", day.bmo), ("amc", day.amc)):
         for r in rows:
             parts.append(f"{lbl}:{r.symbol}:{r.implied_move}:{int(r.session_confirmed)}")
@@ -562,6 +566,14 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
 
     # --- economic events (FF; None = feed down, [] = quiet day) ---
     econ = news_data.fetch_us_econ_events_for_date(date_iso)
+    # Friday's 3 PM sheet covers Monday, and the ForexFactory feed stops
+    # at Saturday (next week's list lands on the weekend), so every
+    # Monday sheet printed "no notable US releases" whatever was
+    # scheduled (2026-09-25). Past the feed's reach, fill the majors
+    # from FRED's schedule and mark the section partial.
+    if news_data.ff_feed_covers(date_iso) is False:
+        econ = news_data.fetch_us_major_releases_from_fred(date_iso)
+        day.econ_partial = True
     if econ is None:
         day.econ_available = False
     else:

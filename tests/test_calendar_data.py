@@ -87,7 +87,7 @@ def test_failure_expires_by_calendar_day_not_elapsed_hours():
 # ------------------------------------------------ earnings assembly
 
 def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, covered=None,
-                chain_unknown=False, nasdaq=None):
+                chain_unknown=False, nasdaq=None, ff_covers=True, fred_rows=()):
     """Run build_calendar_day against canned feed rows. Patches every
     network boundary and restores them, so nothing here touches
     Finnhub, ForexFactory, or Yahoo.
@@ -106,12 +106,18 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, co
     orig_earn = nd.fetch_earnings_calendar_all
     orig_nasdaq = nd.fetch_nasdaq_earnings_rows
     orig_econ = nd.fetch_us_econ_events_for_date
+    orig_covers = nd.ff_feed_covers
+    orig_fred = nd.fetch_us_major_releases_from_fred
     orig_caps = cd._resolve_caps
     orig_move = cd._implied_move_fetch
     orig_pace = cd._MOVE_PACE_S
     try:
         nd.fetch_earnings_calendar_all = lambda d: list(raw_rows)
         nd.fetch_us_econ_events_for_date = lambda d: list(econ_rows)
+        # the FF week's reach (2026-09-25): True keeps every existing
+        # test on the FF rows it supplies, and nothing touches the network
+        nd.ff_feed_covers = lambda d: ff_covers
+        nd.fetch_us_major_releases_from_fred = lambda d: (None if fred_rows is None else list(fred_rows))
         # second-source date check (2026-09-14): None = Nasdaq
         # unavailable, so existing tests keep Finnhub's rows as given
         nd.fetch_nasdaq_earnings_rows = lambda d: ({s: {'hour': '', 'cap': 0.0} for s in nasdaq} if nasdaq is not None else None)
@@ -139,6 +145,8 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, co
     finally:
         nd.fetch_earnings_calendar_all = orig_earn
         nd.fetch_us_econ_events_for_date = orig_econ
+        nd.ff_feed_covers = orig_covers
+        nd.fetch_us_major_releases_from_fred = orig_fred
         cd._resolve_caps = orig_caps
         cd._implied_move_fetch = orig_move
         cd._MOVE_PACE_S = orig_pace
@@ -882,3 +890,66 @@ def test_has_options_chain_reads_the_memo_before_fetching():
         assert IM.has_options_chain("NVDA") is True
     assert calls == ["NVDA"], calls
     IM.reset_chain_presence()
+
+
+
+# --- Friday's sheet for Monday (2026-09-25) ------------------------------
+FRED_PCE = [{"event": "PCE (Personal Income and Outlays)", "country": "US",
+             "time": "2026-08-27T12:30:00", "impact": "high", "estimate": None,
+             "prev": None, "actual": None, "unit": "", "source": "fred"}]
+
+
+def test_past_the_ff_week_the_majors_come_from_fred_and_are_marked_partial():
+    """ForexFactory's feed stops at Saturday and next week's 404s, so
+    every Monday sheet read "no notable US releases" whatever was due."""
+    day = _build_with([], econ_rows=[], ff_covers=False, fred_rows=FRED_PCE)
+    assert day.econ_partial is True and day.econ_available is True
+    assert [r.event for r in day.econ] == ["PCE (Personal Income and Outlays)"]
+    assert day.econ[0].time_et == "8:30" and day.econ[0].important
+
+
+def test_a_quiet_partial_day_says_the_list_is_not_out_yet():
+    from report import calendar_render as R
+    day = _build_with([], econ_rows=[], ff_covers=False, fred_rows=[])
+    assert day.econ_partial and day.econ == []
+    assert R._econ_empty_text(day) == R.ECON_PARTIAL_EMPTY
+    assert R.render_calendar_png(day)[1:4] == b"PNG"
+
+
+def test_inside_the_ff_week_nothing_changes():
+    day = _build_with([], econ_rows=[], ff_covers=True, fred_rows=FRED_PCE)
+    assert day.econ_partial is False and day.econ == []
+
+
+def test_ff_covers_reads_the_last_date_in_the_feed():
+    from unittest.mock import patch as _p
+    from report import news_data as nd
+    week = [{"time": "2026-09-21T12:30:00"}, {"time": "2026-09-25T18:00:00"}]
+    with _p.object(nd, "_fetch_ff_economic_events", return_value=week):
+        assert nd.ff_feed_covers("2026-09-25") is True
+        assert nd.ff_feed_covers("2026-09-28") is False
+    with _p.object(nd, "_fetch_ff_economic_events", side_effect=RuntimeError("down")):
+        assert nd.ff_feed_covers("2026-09-28") is None
+
+
+def test_fred_that_cannot_answer_is_unavailable_not_quiet():
+    """No FRED key or a failed schedule must not print 'no major US
+    releases scheduled' on a Monday that may carry CPI."""
+    day = _build_with([], econ_rows=[], ff_covers=False, fred_rows=None)
+    assert day.econ_available is False
+
+
+def test_fred_helper_returns_none_without_a_key():
+    from unittest.mock import patch as _p
+    from report import news_data as nd
+    with _p("config.settings.fred_api_key", ""):
+        assert nd.fetch_us_major_releases_from_fred("2026-09-28") is None
+
+
+def test_a_partial_day_with_rows_renders_in_both_layouts():
+    from report import calendar_render as R
+    from report.calendar_data import ConfRow
+    day = _build_with([], econ_rows=[], ff_covers=False, fred_rows=FRED_PCE)
+    assert R.render_calendar_png(day)[1:4] == b"PNG"
+    day.conferences = [ConfRow("Morgan Stanley TMT", "09:00", ["NVDA", "AMD"], True)]
+    assert R.render_calendar_png(day)[1:4] == b"PNG"

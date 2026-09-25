@@ -1004,6 +1004,44 @@ def _et_date(utc_iso: str) -> str:
         return str(utc_iso)[:10]
 
 
+def ff_feed_covers(date_iso: str) -> bool | None:
+    """Whether the ForexFactory this-week feed reaches `date_iso`, or
+    None when the feed is down. It spans one Sunday-to-Saturday week
+    and the next-week feed 404s, so Friday's 3 PM sheet for Monday asks
+    about a date the feed cannot know (2026-09-25)."""
+    try:
+        events = _fetch_ff_economic_events()
+    except Exception:
+        return None
+    dates = {_et_date(e.get("time") or "") for e in events or [] if e.get("time")}
+    dates.discard("")
+    if not dates:
+        return None
+    return date_iso <= max(dates)
+
+
+def fetch_us_major_releases_from_fred(date_iso: str) -> list[dict] | None:
+    """The Tier-1 releases FRED schedules for `date_iso` (CPI, jobs,
+    GDP, retail sales, PPI, PCE; all 8:30 ET), in the ForexFactory row
+    shape. For dates the FF feed does not reach yet.
+
+    None when FRED cannot answer (no key, or no schedule ever fetched),
+    so the sheet says "unavailable" rather than asserting that nothing
+    major is due (2026-09-25 review)."""
+    try:
+        from report import fred_data as _fred
+        from config import settings as _s
+        if not _s.fred_api_key:
+            return None
+        rows = _fred.fetch_fred_release_schedule()
+        if not rows and _fred._SCHEDULE_CACHE.get("rows") is None:
+            return None
+        return [r for r in rows if _et_date(r.get("time") or "") == date_iso]
+    except Exception as e:
+        log.warning(f"FRED schedule for {date_iso} unavailable: {e}")
+        return None
+
+
 def fetch_us_econ_events_for_date(date_iso: str) -> list[dict] | None:
     """ALL US economic events for one date (every impact tier), from the
     ForexFactory feed the pulse already uses. Rows: {'event', 'time'

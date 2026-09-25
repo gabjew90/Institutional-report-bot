@@ -3267,3 +3267,17 @@ ForexFactory's this-week feed only (next-week returns 404), so the
 Friday post for Monday carries no econ rows. Finnhub's economic
 calendar is 403 (not on the plan), so the pulse runs on FF + agency +
 FRED.
+
+Same day: the omni-calendar's Friday sheet covers Monday, past the end
+of ForexFactory's this-week feed (next-week 404s), so every Monday sheet
+read "no notable US releases". Past the feed's reach it now fills the
+majors from FRED's schedule (CPI, jobs, GDP, retail sales, PPI, PCE, all
+8:30 ET) and says "major releases only · full list posts Sunday"; FRED
+unable to answer reads "unavailable", not quiet. Code-reviewed: two
+fixed, one skipped (lineup_signature format change matters only if the
+7:30 refresh is re-enabled). `BLS_API_KEY` set on the worker (10 s
+polling for CPI and jobs; the pulse's agency layer uses it too).
+
+The 9/24 pulse ran on 6 PDFs because Dropbox received 7 on 9/23 and 34
+on 9/24 (Goldman 0 and 6, against 69 and 39 the days before); the bot
+ingested every file. The drop is upstream of this repo.
