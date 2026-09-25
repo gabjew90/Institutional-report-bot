@@ -1,0 +1,64 @@
+"""Prose filters leave fenced code alone (2026-09-24).
+
+The Pelosi portfolio answer ran code execution and echoed its matplotlib
+code into the reply. The citation stripper read
+`weights = [21.42, 18.04, 12.54, ...]` as a Gemini marker like
+`[1.2.8, 1.2.9]` and deleted it, so the room got `weights =` with
+nothing after it. The repetition detector read `fontsize=10,
+fontweight='bold'` repeating down the code as a token loop and spent a
+retry and a strip on it.
+"""
+from discord_bot import bot as B
+
+CODE = (
+    "```python\n"
+    "weights = [21.42, 18.04, 12.54, 11.63, 9.06, 7.91, 6.32, 6.21]\n"
+    "top = weights[0]\n"
+    "for bar in bars:\n"
+    "    ax.text(w, y, f'{w:.2f}%', va='center', ha='left', fontsize=10, fontweight='bold')\n"
+    "ax.set_xlabel('Portfolio Allocation (%)', fontsize=11, fontweight='bold')\n"
+    "ax.set_title('Portfolio Weightings', fontsize=14, fontweight='bold')\n"
+    "```\n"
+)
+PROSE = "→ **NVDA (21.42%)** leads the book [1] and AVGO sits at 7.91% [cite: 1.2.8, 1.2.9]"
+
+
+def test_citation_markers_go_but_the_code_list_stays():
+    out = B._strip_citation_markers(CODE + PROSE)
+    assert "weights = [21.42, 18.04, 12.54" in out
+    assert "weights[0]" in out
+    assert "[1]" not in out and "[cite:" not in out
+    assert "leads the book and AVGO" in out
+
+
+def test_code_is_not_a_repetition_glitch():
+    assert not B._has_repetition_glitch(CODE + PROSE)
+    assert B._repetition_glitch_sentences(CODE + PROSE) == []
+
+
+def test_a_real_loop_after_code_still_trips():
+    loop = ("compounding risk and volatility decay risks of volatility decay "
+            "and volatility decay")
+    assert B._has_repetition_glitch(CODE + loop)
+
+
+def test_an_unclosed_fence_is_still_protected():
+    out = B._strip_citation_markers("see [1]\n```python\nx = [1, 2, 3]\n")
+    assert "x = [1, 2, 3]" in out and "see [1]" not in out
+
+
+def test_text_without_code_behaves_as_before():
+    assert B._strip_citation_markers("a [1] b [2.3]") == "a b"
+
+
+def test_a_text_wrapped_prose_answer_is_still_prose():
+    """Gemini wraps plain answers in ```text. That is not code: the
+    markers inside must still go and a loop inside must still trip."""
+    wrapped = "```text\n→ **CPI** prints at 8:30 [1] and core follows [cite: 1.2]\n```"
+    out = B._strip_citation_markers(wrapped)
+    assert "[1]" not in out and "[cite:" not in out
+    loop = ("```text\ncompounding risk and volatility decay risks of "
+            "volatility decay and volatility decay\n```")
+    assert B._has_repetition_glitch(loop)
+    bare = "```\nsee [1] here\n```"
+    assert "[1]" not in B._strip_citation_markers(bare)

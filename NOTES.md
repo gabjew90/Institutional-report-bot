@@ -3151,3 +3151,24 @@ only. X's one-cashtag cap means one bold name gets it: the bold earnings
 row with the largest market cap, else the first bold conference name;
 all other tickers plain, comma-separated. A day with nothing bold has no
 cashtag. The all-hashtags version ran for one post (9/22 test).
+
+## 2026-09-24 — prose filters no longer rewrite code blocks
+
+The Pelosi portfolio answer (Ry_spaceman, 22:55 UTC) ran code execution,
+rendered the chart, and echoed its matplotlib code into the reply. The
+citation stripper read `weights = [21.42, 18.04, ...]` as a Gemini
+marker like `[1.2.8, 1.2.9]` and deleted it, so the room got
+`weights =` with nothing after it, and the repetition detector read the
+repeated `fontsize=..., fontweight='bold'` as a token loop and spent a
+retry and a strip on it (29.5s turn). `_prose_only` / `_without_code`
+now keep code blocks away from both; a code block is a fence with a
+language tag, since Gemini wraps plain prose answers in ```text and
+those must still be filtered. Replayed over 267 logged answers: 9 fewer
+firings, none new. The weights themselves matched Public.com's
+Pelosi tracker exactly.
+
+Open: the ledger check misses members the room names by nickname. On
+9/22 the bot again called Kyle "blowing accounts on weekly lottos"
+(17W/3L); only the asker's profile was loaded, and
+`find_users_mentioned_in_text` cannot map "kyle" to BK (display "BK",
+username "bankerkyle"). Needs an owner-confirmed alias map.

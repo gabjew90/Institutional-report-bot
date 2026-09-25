@@ -1738,7 +1738,12 @@ def _has_repetition_glitch(text: str) -> bool:
     """Detect end-of-response repetition loops. See module-level note
     above for the heuristics, and `_repetition_runs` for why the gates
     run per-run rather than over the whole answer."""
-    if not text:
+    # Code repeats by construction ("fontsize=10, fontweight='bold'" on
+    # every ax. line), so a matplotlib block trips Gate 1 the way a list
+    # did. The 2026-09-24 Pelosi chart answer burned a retry and a strip
+    # on its own code. Only prose can loop.
+    text = _without_code(text)
+    if not text.strip():
         return False
     # Trailing runs too short to trip anything (a closing ``` fence, a
     # one-word sign-off) would make the scan vacuous, so walk back to
@@ -1834,7 +1839,7 @@ def _repetition_glitch_sentences(text: str) -> list[str]:
     clean bullets deliverable). The per-sentence check inherits the
     detector's >=6-token floor, so short clean bullets never match."""
     return [
-        s for s in _split_sentences(text)
+        s for s in _split_sentences(_without_code(text))
         if _has_repetition_glitch(s)
     ]
 
@@ -2073,8 +2078,46 @@ _CITATION_MARKER_RE = re.compile(
     rf"(?m)^(?:{_CITE_MARKER})[ \t]*|[ \t]*(?:{_CITE_MARKER})")
 
 
+# A fenced CODE block: an opening fence with a language tag, to the
+# closing fence (an unclosed fence runs to the end of the text). Gemini
+# wraps ordinary prose answers in ```text, and an untagged fence is
+# ambiguous, so neither counts as code: treating the wrapper as code
+# would hide a whole answer from the citation stripper and the loop
+# detector.
+_CODE_FENCE_RE = re.compile(
+    r"```(?!(?:text|txt|plain|plaintext|markdown|md)\b)[A-Za-z][\w+#.-]*"
+    r"[^\n]*\n.*?(?:```|\Z)", re.S)
+
+
+def _prose_only(text: str, fn) -> str:
+    """Apply `fn` to the text outside fenced code blocks; code passes
+    through untouched.
+
+    2026-09-24, the Pelosi portfolio answer: the model echoed its
+    matplotlib code into the reply, and two prose filters ran over it.
+    The citation stripper read `weights = [21.42, 18.04, 12.54, ...]` as
+    a Gemini marker like `[1.2.8, 1.2.9]` and deleted it, so the room
+    got `weights =` with nothing after it. Code is not prose, and no
+    prose filter has any business rewriting it."""
+    if not text or "```" not in text:
+        return fn(text or "")
+    out, pos = [], 0
+    for m in _CODE_FENCE_RE.finditer(text):
+        out.append(fn(text[pos:m.start()]))
+        out.append(m.group(0))
+        pos = m.end()
+    out.append(fn(text[pos:]))
+    return "".join(out)
+
+
+def _without_code(text: str) -> str:
+    """The text with fenced code blocks removed, for detectors that
+    judge prose."""
+    return _CODE_FENCE_RE.sub("", text or "")
+
+
 def _strip_citation_markers(answer: str) -> str:
-    return _CITATION_MARKER_RE.sub("", answer or "")
+    return _prose_only(answer or "", lambda s: _CITATION_MARKER_RE.sub("", s))
 
 
 # Any specific factual claim — numbers, big counts, $-figures, %s,
