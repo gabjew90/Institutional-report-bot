@@ -347,3 +347,55 @@ def test_finalize_grade_accepts_every_agent_the_scoreboard_reads():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# --- metric 2 pooled over the counted window (owner, 2026-09-25) ---------
+def _day(shadow_rate, s_unsup, prod_rate, p_unsup, n=15):
+    d = _grades(shadow_rate=shadow_rate, prod_rate=prod_rate, unsup=s_unsup)
+    sents = [{"id": f"s{i}"} for i in range(n)]
+    for art, u in (("fidelity-shadow", s_unsup), ("fidelity-production", p_unsup)):
+        for agent in ("a", "b"):
+            d["grades"][art][agent]["sentences"] = sents
+            d["grades"][art][agent]["unsupported"] = u
+    return day_row("2026-09-02", d)
+
+
+def test_one_unsupported_sentence_no_longer_fails_the_window():
+    """Option B: the old per-day zero failed a day on a single sentence."""
+    from scripts.pilot_scoreboard import pooled_m2
+    rows = [_day(0.87, 0, 0.53, 2), _day(0.93, 0, 0.73, 1), _day(0.87, 1, 0.67, 3)]
+    ok, detail = pooled_m2(rows)
+    assert ok, detail
+    assert "unsupported 1/45" in detail and "6/45" in detail
+
+
+def test_a_shadow_that_invents_more_than_production_fails_even_when_more_accurate():
+    from scripts.pilot_scoreboard import pooled_m2
+    rows = [_day(0.90, 3, 0.80, 1), _day(0.90, 2, 0.80, 1)]
+    ok, _ = pooled_m2(rows)
+    assert not ok
+
+
+def test_a_less_accurate_shadow_fails():
+    from scripts.pilot_scoreboard import pooled_m2
+    ok, _ = pooled_m2([_day(0.70, 0, 0.80, 2)])
+    assert not ok
+
+
+def test_the_per_day_column_is_the_rate_comparison_only():
+    assert _day(0.87, 1, 0.67, 0)["m2_pass"] is True
+    assert _day(0.60, 0, 0.67, 0)["m2_pass"] is False
+
+
+def test_no_usable_day_is_not_a_pass():
+    from scripts.pilot_scoreboard import pooled_m2
+    ok, detail = pooled_m2([])
+    assert not ok and "no counted day" in detail
+
+
+def test_the_pooled_verdict_names_days_it_left_out():
+    from scripts.pilot_scoreboard import pooled_m2
+    d = _grades(shadow_rate=0.9, b_rate=0.4)          # unresolved disagreement
+    rows = [_day(0.87, 0, 0.53, 2), day_row("2026-09-03", d)]
+    ok, detail = pooled_m2(rows)
+    assert "1 day(s)" in detail and "1 counted day(s) left out" in detail

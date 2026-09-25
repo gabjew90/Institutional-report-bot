@@ -250,6 +250,15 @@ ledger. Production runs untouched. Nothing is deleted during the pilot.
    faithful/distorted/unsupported; same procedure on that day's
    production pulse. *Pass: shadow faithful-rate ≥ production, zero
    unsupported.*
+   **Amended 2026-09-25 by the owner (option B): pooled over the
+   counted window.** Sentences are pooled across every counted day;
+   pass when the shadow's pooled faithful-rate ≥ production's and its
+   pooled unsupported-rate ≤ production's. No fixed ceiling. Reason: a
+   per-day zero fails a day on one sentence in roughly 150, production
+   is never held to it, and on 2026-09-24 five of six "unsupported"
+   verdicts were grader blind spots (NUL-byte source files), so a per-day
+   zero measured the graders as much as the pulse. The per-day column
+   on the scoreboard now shows the rate comparison only.
    - **2a. Brief-vs-source fidelity** — the daily spot-audit grades,
      aggregated across the window, split by reader tier. Brief quality
      is the load-bearing unverified assumption; running the pilot

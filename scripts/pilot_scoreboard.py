@@ -2,7 +2,10 @@
 
 Per day, per metric, against the FROZEN thresholds (spec section 8):
   1  fragmented mass <= 10% and no theme-changing mis-merge
-  2  shadow faithful-rate >= production and zero unsupported
+  2  POOLED over counted days (owner, 2026-09-25): shadow faithful-rate
+     >= production and shadow unsupported-rate <= production. Was
+     'zero unsupported' per day, which one sentence or one grader
+     error in ~150 fails.
   2a zero MATERIAL distortions (non-material soft ceiling 20%: flag)
   3  shadow preserved-days >= production over the window
   4  flag when > 70% of citations sit in the first and last quintiles
@@ -25,6 +28,43 @@ from collections import defaultdict
 SCOPE_LIMIT = ("Scope limit (plan 6): ~19 HIGH PDFs/day is the lightest month on "
                "record. A passing fragmentation number certifies the architecture at "
                "light corpus load only.")
+
+
+def pooled_m2(counted: list[dict]) -> tuple[bool, str]:
+    """Metric 2 over the counted window (owner decision 2026-09-25).
+
+    Faithful rate and unsupported rate are each pooled by sentence count
+    across every counted day with usable grades for BOTH pulses, then
+    compared like for like: the shadow passes when its faithful rate is
+    at least production's and its unsupported rate is no higher. The old
+    per-day 'zero unsupported' clause failed a day on a single sentence,
+    and on 2026-09-24 five of six 'unsupported' verdicts were grader
+    blind spots (NUL-byte source files), so a per-day zero measured the
+    graders as much as the pulse.
+    """
+    tot = {"shadow": [0.0, 0, 0], "production": [0.0, 0, 0]}   # faithful, unsupported, n
+    days = 0
+    for r in counted:
+        s, p = r["m2_shadow"], r["m2_production"]
+        if None in (s["rate"], p["rate"], s["n"], p["n"], s["unsupported"], p["unsupported"]):
+            continue
+        days += 1
+        for art, v in (("shadow", s), ("production", p)):
+            tot[art][0] += v["rate"] * v["n"]
+            tot[art][1] += v["unsupported"]
+            tot[art][2] += v["n"]
+    left_out = len(counted) - days
+    if not days:
+        return False, "no counted day with usable grades for both pulses"
+    fr = {a: t[0] / t[2] for a, t in tot.items()}
+    ur = {a: t[1] / t[2] for a, t in tot.items()}
+    ok = fr["shadow"] >= fr["production"] and ur["shadow"] <= ur["production"]
+    return ok, (f"{days} day(s)"
+                + (f" ({left_out} counted day(s) left out: grader disagreement or missing grade)"
+                   if left_out else "")
+                + f": faithful {fr['shadow']:.0%} vs {fr['production']:.0%}, "
+                f"unsupported {tot['shadow'][1]}/{tot['shadow'][2]} ({ur['shadow']:.1%}) "
+                f"vs {tot['production'][1]}/{tot['production'][2]} ({ur['production']:.1%})")
 
 
 def _load(path: str):
@@ -173,13 +213,16 @@ def day_row(date: str, d: dict) -> dict:
         # averaged into one number, so a real disagreement never reached
         # the owner tiebreak the header promises (2026-09-03 review).
         rate, note = agree(a_, b_, "faithful_rate", tol=0.05)
-        unsup = None
+        unsup = n = None
         if usable(a_) and usable(b_):
             unsup = max(a_.get("unsupported", 0) or 0, b_.get("unsupported", 0) or 0)
-        row[f"m2_{art}"] = {"rate": rate, "unsupported": unsup, "note": note}
+            n = max(len(a_.get("sentences") or []), len(b_.get("sentences") or [])) or None
+        row[f"m2_{art}"] = {"rate": rate, "unsupported": unsup, "n": n, "note": note}
     s, p = row["m2_shadow"], row["m2_production"]
+    # Per-day column is now the rate comparison only; the verdict is
+    # pooled across counted days (owner, 2026-09-25, see pooled_m2).
     row["m2_pass"] = (s["rate"] is not None and p["rate"] is not None
-                      and s["rate"] >= p["rate"] and s["unsupported"] == 0)
+                      and s["rate"] >= p["rate"])
     # metric 2a with tier split
     a_, b_ = g.get("brief_fidelity", {}).get("a"), g.get("brief_fidelity", {}).get("b")
     mat, note = agree(a_, b_, "material_total")
@@ -272,7 +315,7 @@ def render(pilot_root: str) -> str:
     c = [r for r in rows if r["counted"]]
     if c:
         m1 = all(r["m1"]["pass"] for r in c)
-        m2 = all(r["m2_pass"] for r in c)
+        m2, m2_detail = pooled_m2(c)
         m2a = all(r["m2a"]["pass"] for r in c)
         sh = sum(1 for r in c if r["m3_shadow"]["preserved"] is True)
         pr = sum(1 for r in c if r["m3_production"]["preserved"] is True)
@@ -281,7 +324,7 @@ def render(pilot_root: str) -> str:
         pending = [r["date"] for r in c if r["disagreements"]]
         out += ["## Running verdict (counted days only)", "",
                 f"- metric 1 grouping: {'PASS' if m1 else 'FAIL'} so far",
-                f"- metric 2 fact fidelity: {'PASS' if m2 else 'FAIL'} so far",
+                f"- metric 2 fact fidelity (pooled): {'PASS' if m2 else 'FAIL'} so far; {m2_detail}",
                 f"- metric 2a brief fidelity: {'PASS' if m2a else 'FAIL'} so far"
                 + (f"; non-material soft ceiling breached on {len(soft)} day(s) (flag)" if soft else ""),
                 f"- metric 3 mechanism: shadow {sh} vs production {pr} preserved days ({'PASS' if m3 else 'FAIL'} so far)",

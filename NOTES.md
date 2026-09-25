@@ -3334,3 +3334,12 @@ design does not fuzz-merge.
 Editor and reader prompts changed; the trial clock restarts (DAY1 was
 not set). Grader prompts and fixtures untouched. Code-reviewed, no
 findings. 620 tests, 158/158 smokes.
+
+Owner decision, 2026-09-25: pilot metric 2 is pooled (option B, chosen
+over per-day zero and over a capped middle ground). Sentences pool
+across every counted day; the shadow passes when its pooled
+faithful-rate is at least production's and its pooled unsupported-rate
+is no higher. No fixed ceiling. Spec section 8 amended with the reason;
+the scoreboard's per-day column is now the rate comparison only, and
+the verdict names any counted day left out for a grader disagreement.
+Code-reviewed, one finding fixed.
