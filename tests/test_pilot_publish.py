@@ -130,3 +130,28 @@ def test_slug_survives_an_empty_title():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+def test_nul_bytes_are_stripped_so_the_graders_can_search_the_file():
+    """2026-09-24: 39 of 1,429 published source files carried NUL bytes
+    from PDF extraction; ripgrep treats such a file as binary and skips
+    it, and five of the six shadow sentences graded 'unsupported' that
+    day were in skipped files."""
+    import config
+    from github_bridge import client as gh
+    written = {}
+    orig_settings, orig_put, orig_get = config.settings, gh.put_file, gh.get_file
+    try:
+        config.settings = _Settings(True)
+        gh.put_file = lambda path, content, msg, ref=None: (
+            written.__setitem__(path, content) or {})
+        gh.get_file = lambda path, ref=None: None
+        publish_high_document(
+            pdf_file_id=17527, file_name="jpm.pdf", source="JPMorgan",
+            title="Afternoon Briefing", priority="high",
+            published_at="2026-09-23T12:00:00",
+            full_text="favored names remain\x00 MS, PNC and FITB.\x00")
+    finally:
+        config.settings, gh.put_file, gh.get_file = orig_settings, orig_put, orig_get
+    txt = next(v for k, v in written.items() if k.endswith(".txt"))
+    assert "\x00" not in txt and "MS, PNC and FITB." in txt

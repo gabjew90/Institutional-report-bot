@@ -76,3 +76,46 @@ def test_a_year_before_a_range_word_is_not_a_bound():
     out = verify(_md("Goldman sees inflation falling by 2026 to 3.5% [c1]."),
                  _pack("Goldman: inflation falls to 3.5% by 2026."))
     assert out["failures"] == [], out["failures"]
+
+
+# --- a named bank needs a source from that bank (2026-09-25) ------------
+def _pack2():
+    return {"cards": {"c1": {"bank": "Morgan Stanley", "claim": "10-year at 4.50% is the threshold.",
+                             "anchor": ""},
+                      "c2": {"bank": "JPMorgan", "claim": "Favored names remain MS, PNC and FITB.",
+                             "anchor": ""}},
+            "docs": {"d1": {"bank": "JPMorgan"}}, "card_count": 2}
+
+
+def _reasons(md):
+    return [f["reason"] for f in verify(md, _pack2())["failures"]]
+
+
+def test_an_uncited_sentence_naming_a_bank_fails():
+    """9/24: 'Morgan Stanley takes the other side of the level.' had no
+    figure and no citation, so nothing checked it; it was the day's one
+    genuinely unsourced sentence."""
+    r = _reasons("Morgan Stanley takes the other side of the level.")
+    assert r and "not the bank of any cited card or brief" in r[0]
+
+
+def test_a_brief_from_the_named_bank_is_a_source():
+    assert _reasons("JPMorgan reads the crossing as easing miner selling [d1].") == []
+
+
+def test_a_card_from_the_named_bank_is_a_source():
+    assert _reasons("Morgan Stanley puts the stress point at 4.50% on the 10-year [c1].") == []
+
+
+def test_a_card_from_another_bank_does_not_cover_the_named_one():
+    r = _reasons("Morgan Stanley favors MS, PNC and FITB [c2].")
+    assert r and "not the bank of any cited card or brief" in r[0]
+
+
+def test_an_unnamed_sentence_is_unaffected():
+    assert _reasons("Yields rose sharply and stocks fell.") == []
+
+
+def test_drilling_wells_is_not_a_bank():
+    assert _reasons("US producers are drilling fewer wells as prices fall.") == []
+    assert _reasons("Wells Fargo sees a slower cycle.")  # the bank still counts

@@ -83,7 +83,14 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
         if gh.get_file(meta_path, ref=PILOT_BRANCH):
             return False
 
-        text = (full_text or "")
+        # NUL bytes survive PDF extraction in about 3% of documents, and
+        # ripgrep (the graders' search) treats a file holding one as
+        # binary and silently skips it. On 2026-09-24 five of the six
+        # shadow sentences graded "unsupported" were in such files (JPM's
+        # "favored names remain MS, PNC and FITB" on line 203 of 17527),
+        # so the graders scored the pulse against a library they could
+        # not read. Readers were unaffected; they read the file whole.
+        text = (full_text or "").replace("\x00", "")
         truncated = len(text.encode("utf-8")) > MAX_TEXT_BYTES
         if truncated:
             text = text.encode("utf-8")[:MAX_TEXT_BYTES].decode(

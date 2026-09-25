@@ -3281,3 +3281,27 @@ polling for CPI and jobs; the pulse's agency layer uses it too).
 The 9/24 pulse ran on 6 PDFs because Dropbox received 7 on 9/23 and 34
 on 9/24 (Goldman 0 and 6, against 69 and 39 the days before); the bot
 ingested every file. The drop is upstream of this repo.
+
+## 2026-09-25 — Omnipulse grading was blind to 3% of the library
+
+"Omnipulse" is the owner's internal name for the shadow pilot pulse.
+9/24 scored 47% faithful against production's 60%. Checking each
+"unsupported" sentence against the source text: five of six were in
+files the graders' search skipped. 39 of 1,429 published source files
+carried NUL bytes from PDF extraction, and ripgrep treats such a file as
+binary and silently skips it (JPM 17527 holds "favored names remain MS,
+PNC and FITB" on line 203; the graders reported no document mentions
+PNC). The cards were fine: c57 quotes that line verbatim. The files
+skewed toward the long notes the pulse leans on (JPM briefings,
+Washington policy, GS flows), so every fidelity score so far, for both
+pulses, is suspect. The publisher strips NUL bytes now, and the 39
+files on pilot-data were cleaned (only the NUL bytes removed).
+
+The one real invention on 9/24, "Morgan Stanley takes the other side of
+the level.", carried no figure and no citation, so the verifier never
+checked it. A sentence naming a bank now needs a cited card or brief
+from that bank (re-ask on failure); "wells" became "wells fargo" so
+drilling prose does not count as a bank. A ticker check was scoped out:
+the only ticker the graders flagged was correctly sourced, and a ticker
+regex would misfire on UST, ECB and OAT. Code-reviewed, one finding
+fixed. 9/21-9/24 need re-grading before their scores mean anything.

@@ -69,7 +69,9 @@ SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z$\[(])")
 
 KNOWN_BANKS = ["goldman", "morgan stanley", "jpm", "jpmorgan", "citi", "bofa", "bank of america",
                "ubs", "rbc", "barclays", "deutsche", "mizuho", "mufg", "rabobank", "ts lombard",
-               "ing", "anz", "market ear", "tme", "hsbc", "wells", "nomura", "jefferies"]
+               "ing", "anz", "market ear", "tme", "hsbc", "wells fargo", "nomura", "jefferies"]
+# "wells fargo", not "wells": the bank check now reads every sentence, and
+# "drilling fewer wells" is energy prose (2026-09-25 review).
 
 
 def _norm_num(tok: str) -> str:
@@ -176,6 +178,25 @@ def verify(md: str, pack: dict) -> dict:
             failures.append({"sentence": sent[:200], "cite": "",
                              "reason": f"figures with no card citation: {sorted(sent_nums)}"})
             continue
+        # A bank named in a sentence must be the bank of a card or brief
+        # the sentence cites. Checked before the no-card early exit: on
+        # 2026-09-24 "Morgan Stanley takes the other side of the level."
+        # carried no figure and no citation, so nothing looked at it, and
+        # it was the one sentence of the day's shadow pulse that no source
+        # supported (the rest the graders flagged were in files their
+        # search skipped). The editor stages a bank-vs-bank argument the
+        # cards do not contain; this makes that a re-ask.
+        low = clean.lower()
+        named = [b for b in KNOWN_BANKS if _word_in(b, low)]
+        if named:
+            cited_banks = [c.get("bank") or "" for c in valid_cards]
+            cited_banks += [(docs.get(f"d{n}") or {}).get("bank") or ""
+                            for k, n in cites if k == "d"]
+            if not any(_bank_matches(b, cb) for b in named for cb in cited_banks):
+                failures.append({"sentence": sent[:200],
+                                 "cite": ",".join(f"{k}{n}" for k, n in cites),
+                                 "reason": (f"bank named ({named}) is not the bank of any "
+                                            f"cited card or brief")})
         if not valid_cards:
             continue
         # HARD: every figure in the sentence must be in SOME cited card
@@ -185,14 +206,6 @@ def verify(md: str, pack: dict) -> dict:
         if missing:
             failures.append({"sentence": sent[:200], "cite": ",".join(card_keys),
                              "reason": f"figures not in cited card(s): {missing}"})
-        # a bank named in the sentence must be a cited card's bank
-        low = clean.lower()
-        named = [b for b in KNOWN_BANKS if _word_in(b, low)]
-        if named:
-            ok = any(_bank_matches(b, c.get("bank") or "") for b in named for c in valid_cards)
-            if not ok:
-                failures.append({"sentence": sent[:200], "cite": ",".join(card_keys),
-                                 "reason": f"bank named ({named}) is not the cited card's bank"})
     # metric 4: quintile distribution of cited positions
     quintiles = [0, 0, 0, 0, 0]
     for p in cited_positions:
