@@ -3,46 +3,41 @@
  "total_cards": 1476,
  "fragmentation_sets": [
   {
-   "subject": "Meta's Muse app launch: AI-agent winners (META, chip stocks) vs threatened incumbents (telcos, insurers, payments)",
+   "subject": "Fed and ECB rate-hike cycles vs history \u2014 Deutsche Bank study (pricing vs. delivered, yield reaction)",
+   "labels": [
+    "fed rate hike outlook",
+    "ecb rate hike outlook",
+    "treasury yields rates outlook"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "Meta's Muse AI agent \u2014 stock rally and the consumer-disruption short basket",
    "labels": [
     "meta muse app momentum",
     "consumer agent disruption short",
-    "ai agentic commerce playbook",
     "ai agent momentum trade"
    ],
-   "cards": 40
+   "cards": 27
   },
   {
-   "subject": "Monday AI/semis selloff, the fundamentals-vs-positioning debate, and the week's SOX/AI technical rebound",
+   "subject": "AI/semis Monday selloff and its recovery through the week",
    "labels": [
     "ai infrastructure trade momentum",
-    "sox breakout squeeze trade",
-    "sox valuation oil correlation",
-    "ai momentum trade rebound",
-    "ai earnings bubble debate",
-    "tmt momentum basket volatility"
-   ],
-   "cards": 43
-  },
-  {
-   "subject": "Narrow market breadth beneath index highs, framed as a coiled-spring squeeze setup",
-   "labels": [
-    "equity breadth cycle top signal",
-    "ndx upside squeeze setup",
-    "us equity sentiment indicators"
-   ],
-   "cards": 24
-  },
-  {
-   "subject": "Historical Fed hiking-cycle analog: market underpricing hikes, and resulting 10yr yield behavior",
-   "labels": [
-    "fed rate hike outlook",
-    "treasury yields rates outlook"
+    "ai momentum trade rebound"
    ],
    "cards": 18
   },
   {
-   "subject": "Nuclear power buildout thesis: reactor pipeline, fuel-cycle bottleneck, capacity targets, uranium pricing, named stock picks",
+   "subject": "SOX breakout \u2014 technical setup and the valuation-vs-oil debate",
+   "labels": [
+    "sox breakout squeeze trade",
+    "sox valuation oil correlation"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Nuclear power buildout \u2014 BofA's picks, reactor pipeline, fuel-cycle bottleneck, capacity targets and uranium pricing",
    "labels": [
     "nuclear stock price targets",
     "nuclear reactor deployment pipeline",
@@ -53,169 +48,134 @@
    "cards": 58
   },
   {
-   "subject": "Middle East oil supply shock (Houthi/Hormuz): inflation pass-through, de-escalation, and Brent price scenarios/trades",
+   "subject": "Weak breadth despite index highs \u2014 a coiled spring for a squeeze",
    "labels": [
-    "oil right tail geopolitical risk",
-    "us oil risk premium inflation outlook",
-    "houthi saudi energy conflict",
-    "brent price scenario outlook",
-    "oil downside trade setup"
+    "equity breadth cycle top signal",
+    "ndx upside squeeze setup",
+    "us equity sentiment indicators"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "Cross-asset volatility is unusually cheap despite elevated macro risk",
+   "labels": [
+    "cheap volatility vs macro risk",
+    "cross asset volatility snapshot",
+    "spx skew flattening",
+    "equity vol dispersion",
+    "oil rates correlation surge"
    ],
    "cards": 36
   },
   {
-   "subject": "Cheap equity implied volatility and investors re-risking into calls",
+   "subject": "CCC/Caa credit stress and the small-cap (Russell/IWM) volatility trade",
    "labels": [
-    "cheap volatility vs macro risk",
-    "spx skew flattening"
-   ],
-   "cards": 14
-  },
-  {
-   "subject": "Bottom-of-ladder credit stress (CCC/Caa spreads) and cheap small-cap volatility",
-   "labels": [
-    "russell small cap vol bargain",
     "small cap volatility vs credit stress",
-    "ccc credit spread widening"
+    "ccc credit spread widening",
+    "russell small cap vol bargain"
    ],
    "cards": 14
   },
   {
-   "subject": "Hyperscaler AI capex supercycle: spending scale, compute/chip constraints, resilience to rate hikes",
+   "subject": "Houthi/Saudi oil-supply conflict \u2014 escalation and de-escalation",
+   "labels": [
+    "oil right tail geopolitical risk",
+    "houthi saudi energy conflict"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "Oil's downside scenario and the trade to express it",
+   "labels": [
+    "brent price scenario outlook",
+    "oil downside trade setup"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "Hyperscaler AI capex keeps climbing, led by Microsoft's front-loaded spend",
    "labels": [
     "hyperscaler datacenter capex",
-    "microsoft ai capex strategy",
-    "ai investment inflation impact"
+    "microsoft ai capex strategy"
    ],
-   "cards": 24
+   "cards": 18
   },
   {
-   "subject": "AI datacenter power-infrastructure investment theme",
+   "subject": "AI capex is pushing up the cost of capital",
    "labels": [
-    "datacenter power supply strategy",
-    "ai power trade positioning"
+    "ai investment inflation impact",
+    "rising cost capital"
    ],
-   "cards": 8
+   "cards": 10
   },
   {
-   "subject": "AI buildout financed by debt: issuance surge, hyperscaler credit richening, SoftBank/OpenAI bonds, convertibles",
+   "subject": "Monday's rally \u2014 Trump-Xi summit optimism lifts S&P/Nasdaq to best day in weeks",
    "labels": [
+    "trump xi summit geopolitical optimism",
+    "us equity market outlook"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "AI capex financed by a debt boom \u2014 hyperscaler and SoftBank/OpenAI bond issuance",
+   "labels": [
+    "ai buildout debt financing risk",
     "softbank openai bond ai credit risk",
     "hyperscaler credit outperformance",
-    "ai buildout debt financing risk",
     "convertible bond late cycle outperformance"
    ],
    "cards": 11
   },
   {
-   "subject": "Trump-Xi summit optimism driving the week's rally, and FXI options positioning into the meeting",
+   "subject": "US growth trackers (GDP nowcast, surprise index, activity indicator) confirm resilience",
    "labels": [
-    "trump xi summit geopolitical optimism",
-    "fxi vol into trump xi summit"
-   ],
-   "cards": 17
-  },
-  {
-   "subject": "GS cross-asset allocation stance and its recommended recession hedges (receiver swaptions)",
-   "labels": [
-    "gs cross asset allocation stance",
-    "rates receiver swaption recession hedge"
-   ],
-   "cards": 14
-  },
-  {
-   "subject": "US current growth momentum running hot (GDP tracking, surprise index, activity indicator)",
-   "labels": [
-    "us economic growth resilience",
     "us q3 gdp tracking",
     "us economic data surprise index",
-    "us current activity indicator"
+    "us current activity indicator",
+    "us economic growth resilience"
    ],
    "cards": 7
   },
   {
-   "subject": "Weekly equity fund/ETF flows rotating into Tech and out of other sectors",
+   "subject": "Equity positioning continues to clear / de-gross",
    "labels": [
-    "global equity fund flows",
-    "etf fund flows rotation"
+    "hedge fund positioning",
+    "us equity positioning outlook"
    ],
-   "cards": 17
+   "cards": 13
   },
   {
-   "subject": "France's fiscal crisis and OAT-Bund spread widening, plus the Germany-fiscal-vs-France pair trade",
+   "subject": "France's fiscal crisis and the OAT-Bund/Franco-German spread widening",
    "labels": [
     "french budget crisis bond spreads",
     "germany vs france fiscal trade"
    ],
-   "cards": 19
-  },
-  {
-   "subject": "BTC/ETH weekly price divergence across spot, ETF flows, and futures/options positioning",
-   "labels": [
-    "btc eth weekly price divergence",
-    "btc futures options positioning"
-   ],
-   "cards": 14
-  },
-  {
-   "subject": "Memory/HBM supply-pricing dynamics and the semicap-equipment read-through (AMAT)",
-   "labels": [
-    "memory hbm supply outlook",
-    "amat semicap de rating"
-   ],
-   "cards": 7
-  },
-  {
-   "subject": "Cross-asset implied volatility snapshot across rates, oil, equities and dispersion",
-   "labels": [
-    "cross asset volatility snapshot",
-    "equity vol dispersion"
-   ],
-   "cards": 10
+   "cards": 18
   }
  ],
- "fragmented_mass_share": 0.27,
+ "fragmented_mass_share": 0.224,
  "mis_merges": [
   {
    "label": "treasury yields rates outlook",
    "subjects": [
-    "DB's historical Fed-hiking-cycle/10yr-yield analog (same subject as 'fed rate hike outlook')",
-    "WisdomTree's current equity-valuation-vs-real-yields thesis"
+    "Fed/ECB hiking-cycle historical yield reaction (Deutsche Bank)",
+    "Real yields and equity-valuation risk premium, AI-capex inflation drivers (WisdomTree)"
    ],
    "would_change_theme_selection": true,
-   "why": "WisdomTree's 'equities need yields under 5% to grind higher' call is a distinct investable thesis closer to 's p 500 earnings valuation outlook' than to DB's historical-cycle analog, and gets buried under a label an editor would read as generic 'yields'."
-  },
-  {
-   "label": "us equity market outlook",
-   "subjects": [
-    "JPM's cautious multi-factor SPX stance with specific trade ideas (Monetization Menu long Tech/short RTY, long Brazil)",
-    "DB's same-day performance recap tied to the Meta/Muse-driven Trump-Xi rally",
-    "Vanda's general 'selective risk-on' market-character comment"
-   ],
-   "would_change_theme_selection": true,
-   "why": "JPM's named pair trade and country pick is a standalone actionable theme that risks being lost inside a generic outlook label, while the DB cards duplicate the Trump-Xi/Muse rally story housed elsewhere."
+   "why": "DB's historical Fed-cycle framing and WisdomTree's real-yield/equity-valuation-threshold argument are different theses from different desks; merged under one label, an editor is likely to pick only one and miss the other as a separate brief."
   },
   {
    "label": "china tech vs consumption",
    "subjects": [
-    "JPM's KWEB-vs-KSTR pair trade tied to Trump-Xi summit dynamics",
-    "GS's China macro growth/consumption-gap outlook (GDP cut, retail sales, exports)"
+    "KWEB-vs-KSTR pair trade timed to the Trump-Xi summit (JPM)",
+    "China's structural growth slowdown \u2014 GDP downgrade, retail sales, exports (GS)"
    ],
    "would_change_theme_selection": true,
-   "why": "the pair-trade call and the macro growth-downgrade narrative are different editorial picks (a relative-value trade vs a top-down growth concern) that a pulse would likely run as separate briefs."
-  },
-  {
-   "label": "hedge fund positioning",
-   "subjects": [
-    "Cross-sector hedge fund positioning data (AI crowding, Energy shorts, broad de-risking)",
-    "GS L/S hedge fund performance statistics (fundamental vs systematic returns, YTD by region)"
-   ],
-   "would_change_theme_selection": false,
-   "why": "both are 'state of hedge funds' data an editor would likely fold into one positioning brief regardless, so the mixing doesn't cost a theme."
+   "why": "A tactical, event-driven ETF pair trade and a structural GDP-downgrade call carry different theses and horizons; conflating them risks losing one as a standalone WATCH item or TRADE BOARD line."
   }
  ],
  "pass": false,
- "notes": "Fragmentation is dominated by five large clusters (nuclear, AI/semis, Muse/agent-disruption, oil-shock, breadth-squeeze) each traceable to one bank note or one recurring dataset split across near-duplicate labels. 'misc' holds 12/1476 cards (0.8%) and is excluded from fragmented mass per definition.",
+ "notes": "misc holds 12/1476 cards (~0.8%), correctly excluded from fragmented mass. Dominant failure mode is a single desk note split across labels by sub-topic or instrument tag, worst in BofA's nuclear-sector note (5 labels, 58 cards) and the cross-asset-vol cluster (5 labels, 36 cards).",
  "dim": "grouping",
  "agent": "b",
  "artifact": "",

@@ -4,30 +4,41 @@
  "sentences": [
   {
    "id": "s1",
-   "grade": "faithful",
+   "grade": "unsupported",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17327__weekly-global.txt",
-   "span": "by 25 basis points to 3.75-4.00%, its first increase in three years",
-   "why": "The 'first hike in three years' fact is corroborated across many sources (17327, 17299, 17427, 17486); the 'not the end, start of it' framing reflects GS's own Treasury-desk stance in 17510 that dots show 'more hikes to come' and the market is pricing 60bps more through March, a real sourced bank view amid the shallow-vs-continued debate."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17369__goal-kickstart-markets-repricing-around-higher-rates-and-oil.txt",
+   "span": "the September hike marks the beginning of a regime shift or a correction within the current framework. We think it is latter.",
+   "why": "No source affirmatively states the first hike was 'the start' of a repricing that continues. GS's GOAL Kickstart describes cross-asset repricing in the past tense (last week), not framed as just beginning. The one source that directly addresses whether the hike marks a 'beginning' (Morgan Stanley/Seth Carpenter) explicitly argues the opposite \u2014 it's a correction, not a regime-shift beginning, and they expect less hiking than markets price.",
+   "searched": [
+    "first hike",
+    "not the end / start of",
+    "beginning of a regime shift",
+    "cross-asset repricing"
+   ]
   },
   {
    "id": "s2",
-   "grade": "faithful",
+   "grade": "unsupported",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17510__gs-morning-1-nbh-preview-2-us-inflation-path-3-us-equities-u.txt",
-   "span": "Given Warsh's hawkishness and dots clearly showing more hikes to come, we likely need weak inflation data this month to hold rates steady",
-   "why": "Continuation of s1's framing; grounded in GS Treasury desk's stated view that more tightening, not less, is coming."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17351__morgan-stanley-asks-the-key-question-how-does-warsh-intend-t.txt",
+   "span": "one question is whether the September hike marks the beginning of a regime shift or a correction within the current framework. We think it is latter.",
+   "why": "Same claim as s1, continued. The most on-point source rejects the 'beginning' framing for the hike itself.",
+   "searched": [
+    "start of it",
+    "beginning of a regime shift",
+    "repricing"
+   ]
   },
   {
    "id": "s3",
    "grade": "unsupported",
    "live_market": true,
-   "source_file": "",
-   "span": "",
-   "why": "No source states the 10-year at 4.99% 'right now'. PDF snapshots show nearby but distinct values at different times (4.949%, 4.95%, 5.02%), none matching this live figure \u2014 this is a live-market data point, not PDF-sourced content.",
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17327__weekly-global.txt",
+   "span": "10-year Treasury yield reached 5.02%, its highest level since 2007",
+   "why": "Live intraday level with no supporting document; the closest research figures for the 10-year that week are 5.02%/5.04%, not 4.99%. A live-market print with no source backing.",
    "searched": [
     "4.99",
-    "10-year yield"
+    "10-year 4.99 / 5.0"
    ]
   },
   {
@@ -35,42 +46,36 @@
    "grade": "distorted",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17468__consumer-agents-may-power-the-next-phase-of-the-ai-trade.txt",
-   "span": "we see the most attractive exposure through the CPU supply chain",
-   "why": "UBS's 'hardware order' framing (CPU supply chain beneficiaries) is real, but no source makes the meta-claim that this is 'the part of the AI trade with the fewest people arguing against it' \u2014 that consensus/no-disagreement assertion is invented and attached to a real bank thesis.",
+   "span": "Higher demand for computing power should further underpin semiconductor and hardware leaders... this should support demand across processors, memory, advanced packaging, substrates, servers, networking, power systems, and cooling.",
+   "why": "The 'hardware order' framing is well supported by UBS. But 'the part of the AI trade with the fewest people arguing against it' is an added consensus claim with no source \u2014 no document characterizes this as the least contested part of the AI trade.",
    "searched": [
-    "fewest people arguing",
-    "consensus",
-    "hard to argue"
+    "least controversial / fewest / consensus trade",
+    "hard to argue against / nobody disputes"
    ]
   },
   {
    "id": "s5",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17468__consumer-agents-may-power-the-next-phase-of-the-ai-trade.txt",
-   "span": "Over an equivalent period following its mobile launch, Apptopia estimated 1.8 million iOS downloads for Muse in the US and Canada, versus 1.3 million for ChatGPT",
-   "why": "UBS's own docs (17468, 17472) and GS's (17516) all give '12 days' for the 1.8m-vs-1.3m Apptopia comparison, not 13 \u2014 the sentence borrows the '13 days' figure from a different, unrelated stat in the same UBS note (2.5m total downloads across both app stores). Separately, 'Meta shares up 21%' does not match any source; GS docs (17391, 17516) put the move at +16% to +17% over 9 sessions, not 21%.",
-   "searched": [
-    "13 days",
-    "21%",
-    "1.8 million"
-   ]
+   "span": "Apptopia estimated 1.8 million iOS downloads for Muse in the US and Canada, versus 1.3 million for ChatGPT... recording more than 2.5 million downloads in its first 13 days",
+   "why": "Download figures match UBS exactly (13-day equivalent period). Meta shares +21% vs SPX +1% since launch matches JPM's Meta note (pilot-data/pilot/source-text/2026-09-23/17526__meta-platforms-inc-the-models-and-agents-are-here-with-muse-.txt: 'Meta shares up 21% since the launch of Muse 2 weeks ago, vs. the SPX +1%')."
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17390__gs-tmt-spec-sales-ai-semis-security-debate-classified-names-.txt",
-   "span": "Samsung HBM4 yields have reportedly reached ~80%, up from below 60% in early mass production ... NAND is also improving, with tech specialists pointing to roughly 20% QoQ pricing upside in both 3Q and 4Q",
-   "why": "Both figures match exactly (HBM4 yield ~80% from below 60%; NAND/flash pricing +20% QoQ in two consecutive quarters), sourced from a Goldman Sachs note, and the compute-intensity framing for agents is directly supported by 17516/17468."
+   "span": "Samsung HBM4 yields have reportedly reached ~80%, up from below 60% in early mass production... NAND is also improving, with tech specialists pointing to roughly 20% QoQ pricing upside in both 3Q and 4Q",
+   "why": "HBM4 yield figures match exactly. NAND flash pricing +20% QoQ in both 3Q and 4Q matches 'rise 20% for a second straight quarter.' Correctly attributed to Goldman."
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17391__gs-sharkey-us-equities-mid-day-color-21-sep-2026.txt",
-   "span": "Less than 30% of S&P stocks are now above the 50-day moving average ... Source: Goldman Sachs FICC & Equities",
-   "why": "Breadth stat matches exactly and is correctly attributed to Goldman. The 52-week-lows-beating-highs streak is separately confirmed in BTIG's 17474 ('SPX has had five straight days with more 52wk lows than highs even as the index has rallied back near all-time highs'), consistent with the unattributed second clause."
+   "span": "Less than 30% of S&P stocks are now above the 50-day moving average.",
+   "why": "30% breadth figure matches Goldman note. 'Five sessions running' of more 52-week lows than highs near a record matches BTIG (pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt: 'SPX has had five straight days with more 52wk lows than highs even as the index has rallied back near all-time highs')."
   },
   {
    "id": "s8",
@@ -78,27 +83,27 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
    "span": "The CCC minus single-B spread has widened to 799bp, close to the top of its available three-year range",
-   "why": "Exact match: CCC (weakest-rated borrowers) minus single-B (tier above) spread at 799bp near top of three-year range."
+   "why": "Exact match on figure and range description."
   },
   {
    "id": "s9",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
-   "span": "The six-month ATM implied-volatility spread between IWM and SPX has fallen close to the bottom of its two-year range",
-   "why": "Matches exactly; 'fallen close to bottom of two-year range' is faithfully rendered as 'near a two-year low'."
+   "span": "The six-month ATM implied-volatility spread between IWM and SPX has fallen close to the bottom of its two-year range.",
+   "why": "Matches 'near a two-year low' framing of IWM vs SPX six-month vol spread."
   },
   {
    "id": "s10",
    "grade": "distorted",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text-all/2026-09-22/17266__inside-commodities-september-21-2026.txt",
-   "span": "The average U.S. diesel price hit a new record this week, $6.29 per gallon, up 68% from $3.74 a year ago, according to Energy Information Administration data",
-   "why": "Diesel price/EIA figures are exact matches. But 'Trump backed an export ban Tuesday evening to cap it' has no support: the only related source (GS's 17521) describes mere 'headlines about potential for the US to curtail diesel exports' and explicitly says GS 'think[s] this unlikely' \u2014 a hedged rumor is asserted as a decided presidential action with a specific timestamp.",
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+   "span": "keep an eye on the diesel exports ban debate, given several Republican lawmakers and candidates intensified calls today for the Trump administration to restrict US diesel exports",
+   "why": "Diesel price figures ($6.29, up 68% from $3.74, EIA) are exact (pilot-data/pilot/source-text-all/2026-09-22/17266__inside-commodities-september-21-2026.txt). But 'Trump backed an export ban' misattributes and overstates: sources show Republican lawmakers pushing an unresolved 'debate,' not Trump backing a ban, and Goldman explicitly calls a ban 'unlikely' (pilot-data/pilot/source-text-all/2026-09-22/17521__gs-sector-specialists-energy-natural-resources-and-utilities.txt: 'we think this unlikely given it would not solve medium term global supply issues and is expected to get pushback from US refining industry').",
    "searched": [
     "export ban",
-    "Tuesday evening",
-    "Trump export"
+    "diesel export ban",
+    "Trump diesel"
    ]
   },
   {
@@ -106,19 +111,20 @@
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text-all/2026-09-22/17411__the-commodities-feed-oil-cools-off-from-the-highs.txt",
-   "span": "The ICE gasoil crack spread has risen to around $95/bbl this week, up from an average of roughly $74/bbl in August",
-   "why": "Exact figures, correctly attributed to ING; 'refiners earning $X turning crude into diesel' is a faithful plain-English rewrite of 'gasoil crack spread'."
+   "span": "The ICE gasoil crack spread has risen to around $95/bbl this week, up from an average of roughly $74/bbl in August.",
+   "why": "Exact figures, correctly attributed to ING."
   },
   {
    "id": "s12",
-   "grade": "distorted",
+   "grade": "unsupported",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text-all/2026-09-22/17521__gs-sector-specialists-energy-natural-resources-and-utilities.txt",
-   "span": "There have been some headlines about potential for the US to curtail diesel exports ... however, we think this unlikely given it would not solve medium term global supply issues and is expected to get pushback from US refining industry",
-   "why": "The sentence treats the export ban as an established, live risk to the trade; the only source discussing it explicitly rates it unlikely. This compounds s10's fabricated premise rather than reflecting the source's actual (skeptical) framing.",
+   "span": "we think this unlikely given it would not solve medium term global supply issues and is expected to get pushback from US refining industry",
+   "why": "No source ties an export ban to compressing the crack-spread/refiner-margin trade specifically as 'the one policy' that does so; this causal framing is not stated anywhere in the source set, and it rests on the already-distorted premise in s10.",
    "searched": [
-    "export ban is the risk",
-    "compresses the margin"
+    "compress margin export ban",
+    "crack spread ban",
+    "keep fuel at home"
    ]
   },
   {
@@ -126,33 +132,29 @@
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text-all/2026-09-22/17430__iaea-raises-nuclear-outlook-for-sixth-consecutive-year-the-w.txt",
-   "span": "This marks the sixth consecutive year the IAEA has revised its projections higher ... global nuclear capacity is expected to reach 1,045 GW by 2050 ... ~60% of new nuclear capacity could come from SMRs [in North America]",
-   "why": "Sixth-straight-year, 2050 target, and SMRs carrying most (~60%) of new North American capacity all match exactly."
+   "span": "This marks the sixth consecutive year the IAEA has revised its projections higher... ~60% of new nuclear capacity could come from SMRs [in North America]",
+   "why": "Sixth straight year and ~60% (a majority, i.e. 'most') SMR share of North American capacity both match."
   },
   {
    "id": "s14",
-   "grade": "distorted",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text-all/2026-09-22/17438__takeaways-from-updated-iaea-nuclear-forecast.txt",
-   "span": "long-term uranium prices at all-time highs at $96.50/lb, vs. the prior high of $95.00/lb in 2007",
-   "why": "The $96.50/lb record figure is from Northland Capital Markets (17438), not Yuanta \u2014 Yuanta's own document (17431) gives a different number, $97/lb in August. The sentence's '(Yuanta)' attribution covers a figure that belongs to a different bank. Separately, Yuanta's document (dated Sept 14) says the South Korea deal 'is set to be signed on September 18' (future/planned), which the sentence renders as a completed past action ('signed... last Friday') with no source confirming the signing occurred.",
-   "searched": [
-    "96.50 Yuanta",
-    "South Korea signed"
-   ]
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-22/17431__south-korea-plans-120bn-investment-in-8-us-nuclear-plants.txt",
+   "span": "the US-South Korea nuclear power investment agreement is set to be signed on September 18... US$120 bn... 8 US large nuclear reactors",
+   "why": "Yuanta forecast signing for Sept 18 (a Friday, confirmed the Friday before this pulse), $120bn, 8 reactors all match. $96.50/lb record uranium price matches a different same-day file (pilot-data/pilot/source-text-all/2026-09-22/17438__takeaways-from-updated-iaea-nuclear-forecast.txt: 'uranium prices at all-time highs at $96.50/lb, vs. the prior high of $95.00/lb in 2007'); Yuanta's own figure is $97/lb, a small figure mismatch versus the parenthetical attribution but the core facts all check out."
   },
   {
    "id": "s15",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text-all/2026-09-22/17431__south-korea-plans-120bn-investment-in-8-us-nuclear-plants.txt",
-   "span": "To meet demand for nuclear power generation, uranium prices need to rise to US$120/lb, so as to match supply with demand",
-   "why": "Correctly attributed to Yuanta; the flat-contract-cycle invalidation is the writer's own falsifiable-condition framing derived from this thesis, not a new unsupported factual claim."
+   "span": "To meet demand for nuclear power generation, uranium prices need to rise to US$120/lb, so as to match supply with demand.",
+   "why": "Directly matches Yuanta's stated $120/lb level needed to balance supply/demand; the invalidation clause is a reasonable logical inverse of that stated thesis, not a contradicted fact."
   }
  ],
  "faithful": 9,
- "distorted": 5,
- "unsupported": 1,
+ "distorted": 4,
+ "unsupported": 2,
  "faithful_rate": 0.6,
  "dim": "fidelity",
  "agent": "b",

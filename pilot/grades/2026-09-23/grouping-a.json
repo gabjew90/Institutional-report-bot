@@ -1,9 +1,9 @@
 {
  "metric": 1,
- "total_cards": 1476,
+ "total_cards": 646,
  "fragmentation_sets": [
   {
-   "subject": "Nuclear sector build-out thesis (capacity targets, reactor pipeline, fuel-cycle bottleneck, uranium price, stock picks) \u2014 all one BofA nuclear-complex note",
+   "subject": "BofA's nuclear-sector buildout thesis (capacity targets, fuel-cycle bottleneck, uranium prices, stock calls) \u2014 one WNA-symposium-driven research push split five ways",
    "labels": [
     "nuclear stock price targets",
     "nuclear reactor deployment pipeline",
@@ -14,17 +14,24 @@
    "cards": 58
   },
   {
-   "subject": "Monday's AI/momentum selloff ('Pace the Frontier'/Dario Doomsday shock) and the week's recovery",
+   "subject": "History says the Fed and ECB always deliver more hikes (and higher yields) than markets price \u2014 one Deutsche Bank historical-cycle note split by institution/instrument",
    "labels": [
-    "ai infrastructure trade momentum",
-    "ai momentum trade rebound",
-    "ai earnings bubble debate",
-    "tmt momentum basket volatility"
+    "fed rate hike outlook",
+    "ecb rate hike outlook",
+    "treasury yields rates outlook"
    ],
-   "cards": 25
+   "cards": 29
   },
   {
-   "subject": "Meta's Muse app launch driving META and CPU/inference-demand stocks (INTC/AMD/ARM)",
+   "subject": "Which consumer/commerce businesses win or lose as AI agents (Muse) disintermediate them \u2014 same GS GSXUSWCH basket referenced under two names",
+   "labels": [
+    "consumer agent disruption short",
+    "ai agentic commerce playbook"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Meta's Muse app hits #1 on the App Store, driving META and tied-CPU-stock momentum",
    "labels": [
     "meta muse app momentum",
     "ai agent momentum trade"
@@ -32,66 +39,97 @@
    "cards": 16
   },
   {
-   "subject": "Houthi/Saudi/Hormuz oil-conflict shock: price action, bank forecasts, and trade setups",
+   "subject": "Whether the SOX/semis selloff is a macro (oil-driven) problem or an AI-specific one \u2014 same GS/TME P/E-vs-oil chart",
+   "labels": [
+    "ai infrastructure trade momentum",
+    "sox valuation oil correlation"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Houthi attacks on Saudi oil infrastructure / Hormuz disruption and its price impact, escalation and de-escalation phases of the same event",
    "labels": [
     "oil right tail geopolitical risk",
-    "houthi saudi energy conflict",
+    "houthi saudi energy conflict"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "Monday's Anthropic-driven AI/momentum selloff and the rebound through the week",
+   "labels": [
+    "ai momentum trade rebound",
+    "ai earnings bubble debate",
+    "tmt momentum basket volatility"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "Nasdaq-100 (QQQ/NDX) technical breakout plus washed-out positioning setting up an upside squeeze",
+   "labels": [
+    "qqq breakout technical setup",
+    "ndx upside squeeze setup"
+   ],
+   "cards": 13
+  },
+  {
+   "subject": "Russell 2000/IWM volatility is cheap relative to SPX given bottom-of-ladder credit stress \u2014 buy the put spread",
+   "labels": [
+    "small cap volatility vs credit stress",
+    "russell small cap vol bargain"
+   ],
+   "cards": 10
+  },
+  {
+   "subject": "This week's equity market performance recap across sectors/regions \u2014 two banks' versions of the same wrap",
+   "labels": [
+    "global equity weekly performance",
+    "us equity weekly performance"
+   ],
+   "cards": 9
+  },
+  {
+   "subject": "The bearish case (and trade) for Brent crude from here",
+   "labels": [
     "brent price scenario outlook",
     "oil downside trade setup"
    ],
-   "cards": 24
+   "cards": 9
   },
   {
-   "subject": "Deutsche Bank's historical hiking-cycle analog: Fed and ECB out-hike market pricing, yields follow",
+   "subject": "Current-quarter US growth is holding up (GDP tracking, data-surprise index, activity index, general resilience)",
    "labels": [
-    "fed rate hike outlook",
-    "treasury yields rates outlook",
-    "ecb rate hike outlook"
+    "us economic growth resilience",
+    "us q3 gdp tracking",
+    "us economic data surprise index",
+    "us current activity indicator"
    ],
-   "cards": 29
-  },
-  {
-   "subject": "Weak market breadth plus washed-out positioning/sentiment, framed as a coiled-spring upside-squeeze setup",
-   "labels": [
-    "equity breadth cycle top signal",
-    "ndx upside squeeze setup",
-    "us equity sentiment indicators",
-    "us equity positioning outlook"
-   ],
-   "cards": 24
-  },
-  {
-   "subject": "AI-agent disruption of consumer-facing industries via GS's Consumer Inertia/At-Risk basket (GSXUSWCH) and the agentic-commerce monetization shift",
-   "labels": [
-    "consumer agent disruption short",
-    "ai agentic commerce playbook"
-   ],
-   "cards": 24
+   "cards": 7
   }
  ],
- "fragmented_mass_share": 0.1355,
+ "fragmented_mass_share": 0.339,
  "mis_merges": [
   {
-   "label": "treasury yields rates outlook",
+   "label": "hedge fund positioning",
    "subjects": [
-    "Deutsche Bank's historical Fed/ECB-hiking-cycle Treasury-yield analysis",
-    "WisdomTree's yield-level vs. equity-valuation and AI-investment-resilience thesis"
+    "AI-complex hedge fund/retail positioning divergence and crowding",
+    "Energy-sector hedge funds net-selling fastest in 4 months while retail buys the dip",
+    "Weekly L/S hedge fund performance stats (Fundamental vs Systematic, YTD)"
    ],
-   "would_change_theme_selection": false,
-   "why": "The DB cards already surface through the Fed/ECB historical-analog theme and the WisdomTree cards overlap with the dedicated S&P 500 valuation label, so no theme goes missing \u2014 the cards are just misfiled under a rates label."
+   "would_change_theme_selection": true,
+   "why": "the Energy short-covering-vs-retail-buying divergence is a distinct, editorially strong contrarian setup that gets buried in a generic positioning grab-bag alongside unrelated AI-crowding and fund-performance stats, and could otherwise merit its own brief"
   },
   {
-   "label": "oil right tail geopolitical risk",
+   "label": "meta muse app momentum",
    "subjects": [
-    "Houthi/Saudi/Hormuz oil-conflict shock driving Brent higher",
-    "UBS's copper/real-assets electrification-demand thesis"
+    "Meta's Muse app reaches #1 and META rallies",
+    "CPU/semiconductor stocks (INTC/AMD/ARM) rallying on AI-inference demand"
    ],
    "would_change_theme_selection": false,
-   "why": "The copper cards are two of twelve and copper already has its own dedicated label carrying that theme's weight, so an editor would not miss or misselect a lead theme because of this merge."
+   "why": "the CPU/inference-chip rally is already well covered as its own subject under 'ai infrastructure trade momentum', so the merge duplicates rather than hides a theme"
   }
  ],
  "pass": false,
- "notes": "misc holds 12/1476 (0.8%) cards as declared overflow, not counted as fragmentation. The largest single fragmentation source is a BofA nuclear-sector note split five ways by report section rather than by pulse-brief grain.",
+ "notes": "Ledger header states 1476 cards but only a representative sample (646) is rendered per label here; total_cards/share reflect that visible sample, and the share should hold roughly regardless of uniform under-sampling. misc (12 cards) excluded as declared overflow. Fragmentation is dominated by one BofA nuclear report split into 5 labels and one DB Fed/ECB historical-cycle note split into 3.",
  "dim": "grouping",
  "agent": "a",
  "artifact": "",

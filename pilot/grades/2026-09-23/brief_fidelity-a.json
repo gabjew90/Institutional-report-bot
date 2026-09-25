@@ -5,50 +5,60 @@
    "id": "d16",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "Index dispersion (NDX new highs on AI strength vs Dow down on Financials weakness) therefore Iran de-escalation headlines lift crude modestly under $100 therefore Agentic AI (post Meta Muse) drives both a long leg (semis/memory/big tech) and a short leg (Consumer Inertia basket, software, AI-exposed Financials/Insurance) therefore desk flow subdued with LOs and HFs both net sellers therefore HF Mag7 exposure near 3-year highs three months into the rally",
-   "brief_chain": "Index dispersion (NDX new highs on AI strength vs Dow down on Financials weakness) therefore Iran de-escalation headlines lift crude modestly under $100 therefore Agentic AI (post Meta Muse) drives both a long leg (semis/memory/big tech, GOOGL Gemini 4.0, upcoming catalysts) and a short leg (Consumer Inertia basket, software, AI-exposed Financials/Insurance) therefore desk flow subdued with LOs and HFs both net sellers therefore HF Mag7 exposure near 3-year highs three months into the rally",
+   "source_chain": "Agentic AI (post Meta Muse) is the dominant desk theme therefore longs build in semis/memory/big tech and shorts build in Consumer Inertia/AI-vulnerable names (Fins, Insurance, consumer subscriptions) therefore index dispersion results (NDX new highs vs Dow dragged down by Financials) while Iran de-escalation headlines lift crude only modestly (still <$100) and desk flow stays subdued despite HF Mag7 exposure sitting near a 3-year high.",
+   "brief_chain": "Same: agentic AI/Muse drives dispersion (NDX record highs vs Dow down on Financials), Iran headlines lift crude modestly under $100, the AI trade's long leg (semis/memory/big tech) and short leg (Consumer Inertia, AI-exposed Fins/Insurance/consumer) both active, desk flow subdued with LOs and HFs net sellers, HF Mag7 exposure near a 3-year 95th percentile.",
    "distortions": [
     {
-     "what": "Brief drops the source's secondary Financials risk framing ('Agentic at risk // Fed hikes + flatter curve // Dem sweep in focus') and the named desk analysts/authors",
+     "what": "Brief generalizes the source's specific spillover list ('Fins, Insurance, consumer touch points [personal insurance, wealth, subscriptions]') as 'AI-exposed Financials, Insurance and consumer names'",
      "material": false,
-     "would_the_trade_change": "No \u2014 these are supporting color and bylines, not the stance, trade lean, or invalidation"
+     "would_the_trade_change": "No \u2014 same sectors are flagged as under AI-spillover pressure either way."
+    },
+    {
+     "what": "Brief compresses the source's separate LO (-10%, macro products/Semis) and HF (-8%, software shorts) selling detail into 'Both LOs and HFs are net sellers today'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 direction (both net sellers) is preserved; only magnitude/sector detail is dropped."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 2
   },
   {
    "id": "d28",
    "tier": "top",
    "bank": "Goldman Sachs",
-   "source_chain": "Agentic AI post Meta Muse drives desk shorting of Consumer Inertia names (both asset managers and hedge funds net sellers, concentrated in comm services/consumer discretionary) therefore GSXUSWCH -2.58% with named decliners therefore XLF sells off on the same risk therefore NDX hits a record on its 4th straight up day while SPX is flat on below-average volume therefore NDX vol bid/lifted, SPX vol offered with skew crushed, desk likes VIX Oct 20 calls for cheap convexity ahead of Meta Connect/MCD/AUR therefore oil extends a 5-day relief rally on Iran Strait headlines with Trump citing momentum after earlier midterm caution",
-   "brief_chain": "Agentic AI post Meta Muse drives hedge fund shorting of Consumer Inertia names therefore GSXUSWCH -2.58% with named decliners, XLF also sells off therefore desk flow net-for-sale with both asset managers and hedge funds better for sale therefore NDX record/4th up day, SPX flat on below-average volume therefore NDX vol bid, SPX vol offered/skew crushed, desk likes VIX Oct 20 calls ahead of Meta Connect/MCD/AUR therefore oil extends 5-day relief rally on Iran headlines, Trump cites momentum after earlier midterm caution",
+   "source_chain": "Agentic AI disruption post Meta Muse drives desk-wide shorting of the Consumer Inertia basket (GSXUSWCH -2.58%, led by PLNT/NYT/SCHW/ALL/INTU) and two-way XLF selling therefore both asset managers and hedge funds finish net-for-sale in overlapping sectors, while separately NDX sets a record on a fourth straight up day (SPX flat, volume below average) and the derivatives desk favors cheap VIX Oct 20 call convexity ahead of Meta Connect/MCD/AUR, against a backdrop of a five-day oil relief rally on Iran headlines and Trump citing deal momentum.",
+   "brief_chain": "Same: Agentic AI/Muse drives HF-attributed shorts in Consumer Inertia names (basket -2.58%, same top decliners) and XLF weakness, desk net-for-sale (AM $857mm, HF $953mm) concentrated in comm services/consumer discretionary, NDX record on its fourth straight up day vs SPX flat, NDX vol bid/SPX vol offered with skew crushed, desk favors VIX Oct 20 calls ahead of Meta Connect/MCD/AUR, oil's five-day relief rally on Iran de-escalation with Trump citing 'momentum'.",
    "distortions": [
     {
-     "what": "Opening sentence attributes the Consumer Inertia shorting theme to 'hedge fund shorts' specifically, but the source shows both asset managers ($857mm) and hedge funds ($953mm) were better for sale in the basket \u2014 the brief's own next paragraph correctly states both",
+     "what": "Brief attributes the Consumer Inertia shorting specifically to 'hedge fund shorts,' but the source frames it as a desk-wide theme and shows both asset managers ($857mm better for sale) and hedge funds ($953mm) net selling overlapping sectors, not a hedge-fund-only move",
      "material": false,
-     "would_the_trade_change": "No \u2014 the trade (short Consumer Inertia) and its rationale are unchanged; only which desk client is doing the selling is narrowed in one sentence and corrected in the next"
+     "would_the_trade_change": "No \u2014 the directional call (bearish Consumer Inertia names) is unchanged whether framed as HF-only or desk-wide selling."
+    },
+    {
+     "what": "Brief compresses the separate AM/HF supply-and-demand sector breakdown into 'concentrated in communication services and consumer discretionary,' dropping health care/tech (AM) and financials/macro products (HF) detail",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the dominant overlapping sectors named are accurate; only secondary sector detail is dropped."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 2
   },
   {
    "id": "d11",
    "tier": "top",
    "bank": "JPMorgan",
-   "source_chain": "Financials selloff (XLF -2%) against an AI/semis rally (SOXX +2.4%, DRAM +3.3%) both read as the return of the post-Meta Muse +Semis/-AI Vulnerable trade therefore O'Dwyer finds no clean fundamental reason for the bank move, argues Muse doesn't disrupt bank unit economics and AI itself is untrustworthy, reads consensus-name-led volume as a positioning unwind not a re-rating, therefore wants to fade the selloff favoring MS/PNC/FITB therefore Adler frames Muse as agents superseding chatbots, favoring META/GOOGL/AAPL on trust, reducing frontier-chip reliance (headwind for neoclouds), broadening the AI trade toward CPU/memory/storage away from GPUs, cautious on frontier-model economics near RSI therefore oil fell 1.2% despite Iran's conditional Strait offer and Rubio's flow comment because Trump reiterated a deal may wait until after midterms therefore Fedspeak keeps hike risk elevated therefore JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, keeping +Tech/-RTY and a Latam long",
-   "brief_chain": "Financials selloff (XLF -2%) against an AI/semis rally (SOXX +2.4%, DRAM +3.3%) both attributed to the post-Meta Muse +Semis/-AI Vulnerable trade therefore O'Dwyer finds no clean fundamental reason, argues the funding-economics narrative doesn't hold since Muse is untrustworthy, reads consensus-name-led volume as a positioning unwind, wants to fade the selloff favoring MS/PNC/FITB therefore Adler frames Muse as agents superseding chatbots, favoring META/GOOGL/AAPL on trust, reducing frontier-chip reliance (headwind for neoclouds), broadening the AI trade toward CPU/memory/storage away from GPUs, cautious on frontier-model economics near RSI therefore oil fell 1.2% despite Iran's conditional offer and Rubio's flow comment since Trump reiterated a deal may wait until after midterms therefore Fedspeak (Barkin, echoes of Warsh) raises hike risk therefore JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, keeping +Tech/-RTY and a Latam long",
+   "source_chain": "The post-Meta-Muse +Semis/-AI Vulnerable trade returns therefore Financials sell off (XLF -2%) against a semis/memory rally, but O'Dwyer argues the Muse-funding-economics narrative doesn't hold (Muse is untrustworthy) so the move reads as a positioning unwind (consensus names dominating volume, regionals/LAZ/JEF outperforming) not a re-rating, therefore he fades the selloff favoring MS/PNC/FITB, while Adler frames Muse as agents beating chatbots, favoring trusted platforms (META/GOOGL/AAPL), reducing frontier-chip reliance (headwind for neoclouds) and broadening the AI trade toward CPU/memory/storage, staying cautious on frontier-model economics near RSI; meanwhile oil fell despite constructive Iran/Rubio headlines because Trump reiterated a deal isn't likely before midterms, and hawkish Fedspeak keeps hike risk elevated, leaving JPM Tactically Cautious/Neutral, bullish only on lower oil/yields, holding +Tech/-RTY and a Latam long.",
+   "brief_chain": "Same causal chain: Muse-driven +Semis/-AI Vulnerable trade sells Financials against a semis/memory rally; O'Dwyer sees no fundamental reason (Muse untrustworthy), reads it as a positioning unwind and fades it via MS/PNC/FITB; Adler sees agents superseding chatbots favoring META/GOOGL/AAPL on trust, cutting frontier-chip reliance (neocloud headwind), broadening AI trade to CPU/memory/storage, cautious on frontier economics near RSI; oil fell despite conditional Iran offer and Rubio's flow comment because Trump reiterated a post-midterm deal; Fedspeak raises hike risk; JPM stays Tactically Cautious/Neutral, bullish only on lower oil/yields, +Tech/-RTY, Latam long.",
    "distortions": [
     {
-     "what": "Brief drops Adler's caveat that an agent-first world 'could be deleterious to GOOGL's search biz' even while favoring GOOGL on trust",
+     "what": "Brief bundles a separate Monetization Menu (Sep 21) line \u2014 'Fedspeak from Fri/Sun was hawkish, repeating... Warsh's press conference' \u2014 with Barkin's same-day speech into one 'Fedspeak (Barkin, echoes of Warsh)' framing; the source presents these as distinct items",
      "material": false,
-     "would_the_trade_change": "No \u2014 Adler's overall lean (favor META/GOOGL/AAPL on trust) is unchanged; the dropped caveat is a secondary risk note on one name, not a reversal"
+     "would_the_trade_change": "No \u2014 both point to the same elevated-hike-risk conclusion."
     },
     {
-     "what": "Brief attributes hike-risk-raising directly to 'Barkin, echoes of Warsh' from today's session; source's explicit hike-risk statement is in the separate weekly Tactically Cautious/Neutral rationale referencing 'Fedspeak from Fri/Sun', not Barkin's Tuesday remarks specifically",
+     "what": "Brief compresses Rubio's specific comment ('60-70% of oil flow is coming out') to '60-70% flow comment'",
      "material": false,
-     "would_the_trade_change": "No \u2014 the house stance (Tactically Cautious/Neutral, hawkish Fedspeak raising hike risk) is unchanged; only the precise session attribution is compressed"
+     "would_the_trade_change": "No \u2014 it's a compression of the same fact; oil still fell despite it either way."
     }
    ],
    "material_count": 0,
@@ -58,8 +68,8 @@
    "id": "d59",
    "tier": "top",
    "bank": "Morgan Stanley",
-   "source_chain": "PDF text extraction returned no content on any of 34 pages, therefore nothing can be read or summarized",
-   "brief_chain": "No extracted text was available for this document; all pages were empty in the source extraction, so no content could be read or summarized",
+   "source_chain": "N/A \u2014 source extraction returned no text on any of the 34 pages.",
+   "brief_chain": "Brief states no extracted text was available and no content could be read or summarized.",
    "distortions": [],
    "material_count": 0,
    "non_material_count": 0
@@ -68,21 +78,26 @@
    "id": "d1",
    "tier": "rest",
    "bank": "Syz",
-   "source_chain": "The Fed's tightening case (Warsh's Jackson Hole remarks, broadening inflation) predated the oil shock, therefore Houthi attacks and reported Strait of Hormuz disruption pushed Brent above $100, feeding CPI/PPI upside and cited by the BoE as an upward rate risk, therefore the FOMC hiked 25bp unanimously with Warsh signaling further tightening, therefore the S&P sold off over 1% intraday but recovered its losses the following session as yields/oil eased and flows rotated back to AI tech, therefore a year of earnings outpacing price cut the forward P/E from ~23x to 19.1x, leaving room to absorb higher rates, therefore the BoJ hiked to a 31-year high yet the yen weakened past 156 as the Fed-BoJ gap and a split vote kept carry intact, therefore the bank holds neutral equities (constructive earnings vs. higher real-rate risk)",
-   "brief_chain": "The Fed's tightening case predated the oil shock (Warsh's Jackson Hole remarks, broadening inflation shifted expectations first), therefore Houthi attacks and Strait of Hormuz disruption pushed Brent above $100, feeding CPI/PPI upside, cited by the BoE as an upward rate risk, therefore the FOMC hiked 25bp unanimously with Warsh signaling further tightening, the S&P sold off over 1% intraday before recovering as yields/oil eased, therefore earnings outpacing price cut the forward P/E from ~23x to 19.1x, leaving room to absorb higher rates, therefore the BoJ hiked to a 31-year high yet the yen weakened past 156 as the Fed-BoJ gap and split vote kept carry intact, therefore the bank holds neutral equities (constructive earnings vs. higher real-rate risk)",
+   "source_chain": "The Fed's tightening case predated the oil shock (Warsh's Jackson Hole remarks + broadening inflation pressure) therefore a Houthi-driven Strait-of-Hormuz oil shock (Brent >$100) reinforced rather than caused the hawkish path, feeding CPI/PPI upside and a BoE rate-risk citation, so the FOMC hiked 25bp unanimously with Warsh signaling more tightening; equities sold off intraday then recovered the following session as yields/oil eased and flows rotated back to AI tech, helped by a year of earnings outpacing price gains that compressed the forward P/E (23x to 19.1x), leaving room to absorb higher rates; the BoJ hiked to a 31-year high but the yen still weakened as the widening Fed-BoJ gap and a split vote kept carry trades intact; the bank stays neutral equities, constructive earnings against higher real-rate risk.",
+   "brief_chain": "Same: Fed's case predated the oil shock (Warsh Jackson Hole + broadening inflation), Houthi/Strait-of-Hormuz disruption pushed Brent above $100 feeding CPI/PPI upside and a BoE rate-risk citation, FOMC hiked 25bp unanimously with Warsh signaling more tightening, S&P sold off intraday then recovered as yields/oil eased and flows rotated to AI tech, forward P/E compressed 23x to 19.1x leaving room to absorb higher rates, BoJ hiked to a 31-year high yet yen weakened past 156 on the Fed-BoJ gap and split vote keeping carry intact, bank stays neutral equities balancing constructive earnings against real-rate risk.",
    "distortions": [
     {
-     "what": "Brief implies the S&P 500's recovery from the intraday selloff happened same-day ('sold off ... before recovering'); source states the market 'recovered its losses the following session', i.e. the next trading day",
+     "what": "Brief's 'sold off more than 1% intraday before recovering' can read as a same-day recovery, while the source specifies the market 'recovered its losses the following session' (the next day)",
      "material": false,
-     "would_the_trade_change": "No \u2014 the directional read (sharp intraday dip, then full recovery as yields/oil eased) is unchanged; only the exact session of the recovery is compressed"
+     "would_the_trade_change": "No \u2014 the stance (recovery occurred as yields/oil eased, rotation back to AI tech) is unchanged; only same-day vs next-day timing is blurred, which doesn't affect a weekly-recap-level call."
+    },
+    {
+     "what": "Brief drops the specific detail that Houthi strikes hit 'an Aramco refinery and fuel terminal,' generalizing to 'Saudi oil infrastructure'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the causal chain (attacks to Brent above $100) is unaffected by omitting the specific targets."
     }
    ],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 2
   }
  ],
  "material_total": 0,
- "non_material_total": 5,
+ "non_material_total": 8,
  "audited": 5,
  "dim": "brief_fidelity",
  "agent": "a",

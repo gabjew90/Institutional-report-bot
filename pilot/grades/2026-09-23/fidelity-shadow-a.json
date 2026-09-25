@@ -6,32 +6,25 @@
    "id": "s1",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-23/17525__early-morning-reid-macro-strategy.txt",
-   "span": "financials (-1.98%) led the declines within the S&P 500, which appeared to be driven by concerns that AI could erode margins and fees",
-   "why": "Financials down 1.98% (rounds to 2%, matches XLF direction) is confirmed; the semis-up/AI-vulnerable-down rotation is corroborated same-day by 17513 (XLF two-way flow on agentic AI risk, NDX/semis strength) and 17511 (Agentic at Risk driving Financials tape)."
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+   "span": "The return of the +Semis/-AI Vulnerable trade post Meta Muse release was the key theme of today's session, particularly in Financials (XLF -2% today)",
+   "why": "XLF -2% and the semis-up/AI-vulnerable-down trade returning are both stated directly; the S&P financial-sector -1.98% figure is corroborated in the Deutsche Bank Reid note the same morning."
   },
   {
    "id": "s2",
    "grade": "faithful",
    "live_market": false,
-   "source_file": "pilot-data/pilot/source-text/2026-09-22/17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt",
-   "span": "shorts in our Consumer Intertia (GSXUSWCH Index) basket with 45 of 55 names lower today",
-   "why": "45/55 names lower confirmed here; -2.58% and the switching-cost definition confirmed in 17513."
+   "source_file": "pilot-data/pilot/source-text/2026-09-22/17513__us-equities-color-consumer-inertia-22-sep-2026.txt",
+   "span": "Our basket, GSXUSWCH (-2.58% today)...consists of stocks in industries where customer retention is supported by \"behavioral, operational, contractual or financial switching costs.\"",
+   "why": "-2.58% and the 45-of-55-lower breadth stat (from the companion Sharkey mid-day note) both check out, and \"switching is a hassle\" is a faithful plain-English rendering of switching-cost-driven retention."
   },
   {
    "id": "s3",
-   "grade": "unsupported",
+   "grade": "faithful",
    "live_market": false,
-   "source_file": "",
-   "span": "",
-   "why": "No source names USB, LAZ, or JEF, nor frames Citi/Morgan Stanley/Goldman as 'consensus names' dominating selling volume against outperforming regionals. The DeGrasse financials note (17511) discusses small/mid-cap vs large-bank relative performance in general terms but never these tickers or this framing.",
-   "searched": [
-    "USB",
-    "LAZ",
-    "JEF",
-    "consensus names",
-    "regional bank"
-   ]
+   "source_file": "pilot-data/pilot/source-text/2026-09-23/17527__jpm-us-market-intelligence-afternoon-briefing-sept-22.txt",
+   "span": "the more consensual names (C, MS, GS, USB) are dominating volume while the regionals and the likes of LAZ and JEF are relative outperformers",
+   "why": "Citi/Morgan Stanley/Goldman/USB dominating volume vs. LAZ/JEF (and regionals) outperforming matches exactly; the paragraph's de-risking/positioning-unwind framing supports reading the dominant volume as selling."
   },
   {
    "id": "s4",
@@ -39,7 +32,7 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17518__gs-sharkey-us-equities-mid-day-color-22-sep-2026.txt",
    "span": "Hedge funds took net exposure in the group to ~95th percentile on a 3-year lookback at ~20% vs a YTD trough of 14% in June",
-   "why": "Exact match."
+   "why": "Percentile, ~20% level, and 14% June trough all match precisely."
   },
   {
    "id": "s5",
@@ -47,46 +40,46 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17282__pnc-economics-research-weekly-economic-roundup-21-september-.txt",
    "span": "We think the Fed hikes two more times, once in December and again next March",
-   "why": "PNC's own forecast matches exactly."
+   "why": "Two more hikes, December and next March, stated directly by PNC."
   },
   {
    "id": "s6",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
-   "span": "the physical shortage is already shrinking. Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3",
-   "why": "Source says 'shrinking' rather than 'mostly gone', but the underlying figures (7mb/d to 1mb/d, an ~86% reduction) numerically support the stronger paraphrase; no figure or direction is misstated."
+   "span": "Brent continues to carry a substantial geopolitical premium, but the physical shortage is already shrinking. Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3.",
+   "why": "\"Shrinking\" plus the quantified ~86% narrowing (7mb/d to 1mb/d) supports \"already mostly gone\"; the magnitude in the source backs the characterization even though the exact adjective differs."
   },
   {
    "id": "s7",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17459__oil-bulls-need-a-bigger-war.txt",
-   "span": "Non-Middle Eastern production increased by approximately 2mb/d during H1 2026, around 700kb/d more than JPMorgan expected... JPMorgan estimates that global oil consumption has averaged approximately 5mb/d below year-earlier levels since the Hormuz disruption",
-   "why": "All three clauses (Goldman 7\u21921mb/d gap, JPM non-ME production +2mb/d/700kb/d beat, JPM consumption -5mb/d) match this single source exactly."
+   "span": "Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3...Non-Middle Eastern production increased by approximately 2mb/d during H1 2026, around 700kb/d more than JPMorgan expected...JPMorgan estimates that global oil consumption has averaged approximately 5mb/d below year-earlier levels since the Hormuz disruption",
+   "why": "All three figures (Goldman's 7mb/d to 1mb/d gap, JPMorgan's 2mb/d non-Middle East production increase and 700kb/d forecast beat, and JPMorgan's 5mb/d consumption shortfall) match exactly with correct attribution to each bank."
   },
   {
    "id": "s8",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17461__the-sox-squeeze-just-got-real.txt",
-   "span": "Privorotsky sees little evidence that slower frontier AI development will change hyperscaler capex plans through 2027/28",
-   "why": "Matches directly; 'the thing that would break it' is a fair paraphrase of the article's framing that spending intentions (still rising) are what sustains the thesis."
+   "span": "Privorotsky sees little evidence that slower frontier AI development will change hyperscaler capex plans through 2027/28. Compute remains scarce, workloads are growing and spending intentions are still rising.",
+   "why": "Matches on the 2027/2028 horizon and \"little evidence\" framing; \"spending intentions\" as the thing that would break it reflects the source's own \"spending intentions are still rising\" framing."
   },
   {
    "id": "s9",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
-   "span": "Index convexity sits below the 10th percentile, while some single-stock convexity is at the 0th percentile... Buy convexity when you can, not when you need to",
-   "why": "Matches; 'convexity' translated to 'options that pay off more the further the market moves' faithfully."
+   "span": "Index convexity sits below the 10th percentile, while some single-stock convexity is at the 0th percentile...Buy convexity when you can, not when you need to.",
+   "why": "Percentiles match exactly; convexity (options that pay off more the further the market moves) and the \"buy now, not later\" argument are both directly supported."
   },
   {
    "id": "s10",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17301__fear-is-gone-the-risks-aren-t.txt",
-   "span": "Equity vol is cheap, but rate vol may decide whether it stays that way",
+   "span": "Equity vol is cheap, but rate vol may decide whether it stays that way.",
    "why": "Near-verbatim match."
   },
   {
@@ -94,8 +87,8 @@
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
-   "span": "Investment grade, broad high yield and single-B spreads remain relatively contained",
-   "why": "Verbatim match."
+   "span": "Investment grade, broad high yield and single-B spreads remain relatively contained.",
+   "why": "Near-verbatim match."
   },
   {
    "id": "s12",
@@ -103,15 +96,15 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17298__credit-is-cracking-at-the-bottom-but-small-cap-vol-hasnt-not.txt",
    "span": "the Russell 2000 lost more than 8% relative to the S&P 500 from late June",
-   "why": "Matches exactly."
+   "why": "Exact match."
   },
   {
    "id": "s13",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-23/17474__super-ficial-rally.txt",
-   "span": "only three names in the index are closer to their highs than the SOX itself. 10 names in the SOX (33% of index) are still off more than 30% from 52wk highs",
-   "why": "Matches exactly (3 of 30, 10 of 30 more than 30% below 52wk highs)."
+   "span": "only three names in the index are closer to their highs than the SOX itself. 10 of the 30 names in the SOX are still off more than 30% from 52wk highs",
+   "why": "3-of-30 closer to highs and 10-of-30 more than 30% below highs both match exactly."
   },
   {
    "id": "s14",
@@ -119,21 +112,21 @@
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17302__the-great-copper-puke-the-crowd-sold-the-lows.txt",
    "span": "Between September 8 and 15, funds sold $2.6bn of high-grade copper futures, the largest weekly sale since April 2023, with liquidation accounting for $2.2bn",
-   "why": "Exact match."
+   "why": "All figures and dates match exactly."
   },
   {
    "id": "s15",
    "grade": "faithful",
    "live_market": false,
    "source_file": "pilot-data/pilot/source-text/2026-09-22/17349__goldman-s-boy-who-cried-baskets-buys-the-ai-dip-agents-are-h.txt",
-   "span": "We like pairing this with a tactical short hedge on our French Domestic basket (GSXEFRDO), which we expect to remain constrained by political and fiscal noise into next year's elections",
-   "why": "Matches: long German fiscal spend basket (GSXEGFSC) vs short French Domestic basket (GSXEFRDO) into next year's elections."
+   "span": "Our Europe Team like broader exposure to German fiscal stimulus via our fiscal spend basket...We like pairing this with a tactical short hedge on our French Domestic basket (GSXEFRDO), which we expect to remain constrained by political and fiscal noise into next year's elections.",
+   "why": "Long German fiscal basket vs. short French domestic basket into next year's elections matches directly."
   }
  ],
- "faithful": 14,
+ "faithful": 15,
  "distorted": 0,
- "unsupported": 1,
- "faithful_rate": 0.933,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
  "dim": "fidelity",
  "agent": "a",
  "provenance": {
