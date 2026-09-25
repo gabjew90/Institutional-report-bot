@@ -3221,3 +3221,26 @@ is serialised by a process lock; the records header no longer restates
 the code-enforced rule. A second review of those fixes found four more
 (misfire grace, scan consistency, commas in names, dead cache stamp),
 all fixed. 594 tests, 158/158 smokes.
+
+## 2026-09-24 — "Gemini bounced this one": replayed, root-caused, recovered
+
+10 of 267 turns (4%) shipped the bounce line. Replaying all 10 logged
+prompts against the model with the production safety settings: every
+one was refused 3/3, so the block is deterministic, not the flicker the
+tier-0 comment assumed. Section ablation: in all 10 the recent-chat
+window was necessary (the prompt minus chat passed every time), and in
+6 it was sufficient with just the question. The trigger is not
+lexical. The 9/23 refusal reduced to two harmless lines, "CRWV entry
+here possibly <@id>" and "Damn 1dtes fcked me today", plus "what's abe
+glw play"; changing any one of the mention, the swear, "1dtes", the
+question or the names let it through, with or without our system
+prompt. So no word list can predict it, and every existing rung resent
+the chat nearly verbatim, which is why the whole ladder failed.
+
+Scored recovery candidates on all 10 (3 trials each): chat normalised
+(mentions, links, OCR removed) 6/10, last 15 lines 9/10, both 10/10,
+chat dropped 10/10. New rungs after tier 0: `chat-trim`
+(`_filter_safe_chat`) then `no-chat`, gated on the ladder's full block
+condition. Code-reviewed; two findings skipped with reasons (tier 0
+still runs first, pinned by its smoke; later rungs still resend chat).
+600 tests, 158/158 smokes.

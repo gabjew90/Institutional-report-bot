@@ -1699,6 +1699,47 @@ def _lean_profiles_for_prompt(profiles_block: str) -> str:
     return _PROFILE_METRICS_RE.sub(_drop_racism_bit, out)
 
 
+_FILTER_TRIM_LINES = 15
+_CHAT_MENTION_RE = re.compile(r"<[@#][!&]?\d+>")
+_CHAT_URL_RE = re.compile(r"https?://\S+")
+_CHAT_OCR_RE = re.compile(r"\[IMAGE:.*?\]")
+
+
+def _filter_safe_chat(chat_context: str, keep: int = _FILTER_TRIM_LINES) -> str:
+    """The recent-chat window with @mentions, links and image OCR removed
+    and only the last `keep` LINES kept, for a filter-block retry.
+
+    Lines, not messages: a message containing a newline counts twice and
+    OCR text spanning lines is not removed, since each line is cleaned
+    on its own. The replay that validated this used the same per-line
+    logic, so the measured result is for exactly this behaviour.
+
+    2026-09-24, replaying all 10 turns that ended "Gemini bounced this
+    one" (Sep 4-24): every one was refused 3/3 on resend, so the block
+    was deterministic, not a flicker, and in all 10 the chat window was
+    a necessary ingredient (the prompt minus the chat passed every time).
+    The trigger is not a word list. The 9/23 refusal reduced to two
+    harmless lines ("CRWV entry here possibly <@id>", "Damn 1dtes fcked
+    me today") plus "what's abe glw play"; changing ANY one of the
+    mention, the swear, "1dtes", the question or the names let it
+    through, with or without our system prompt. The existing rungs all
+    resent the chat window nearly verbatim, so they all failed. On the
+    same 10 prompts: normalising alone rescued 6, the last 15 lines
+    alone 9, both together 10, which keeps the most recent context.
+    """
+    lines = (chat_context or "").splitlines()
+    if not lines:
+        return ""
+    head, body = lines[0], lines[1:]
+    out = []
+    for ln in body[-keep:]:
+        ln = _CHAT_MENTION_RE.sub("", ln)
+        ln = _CHAT_URL_RE.sub("(link)", ln)
+        ln = _CHAT_OCR_RE.sub("(image)", ln)
+        out.append(re.sub(r"[ \t]{2,}", " ", ln).rstrip())
+    return "\n".join([head] + out)
+
+
 def _mask_slur_tokens(text: str) -> str:
     """Replace slur tokens with `[redacted]` placeholders.
 
@@ -7824,6 +7865,70 @@ async def _ask_09_rank_and_regen_guards(
                         )
                 except Exception as e:
                     log.warning(f"/ask: tier-0 retry call failed: {e}")
+
+            # Tier 0.5 — the chat window, trimmed and then dropped
+            # (2026-09-24). A replay of all 10 turns that shipped "Gemini
+            # bounced this one" found every block deterministic (3/3 on
+            # resend) and the chat window necessary in every one; the
+            # rungs below all resend it nearly verbatim. Cleaned and cut
+            # to the last 15 messages it rescued 10/10 and keeps recent
+            # context; with no chat at all, also 10/10, so that is the
+            # fallback. See _filter_safe_chat. Everything else in the
+            # payload is exactly what was sent, so a rung only ever
+            # shrinks it.
+            # Same condition the ladder is entered on: a block reported
+            # only as nothing-generated (candidates=None, zero tokens,
+            # no prompt_feedback) is a block too (2026-09-07).
+            if (not retry_succeeded and chat_context
+                    and (prompt_block or safety_blocked or nothing_generated
+                         or _no_response)):
+                for _rung, _chat in (
+                    ("chat-trim", _filter_safe_chat(chat_context)),
+                    ("no-chat", ""),
+                ):
+                    if retry_succeeded:
+                        break
+                    _sections: list[str] = []
+                    if profiles_for_prompt:
+                        _sections.append(profiles_for_prompt)
+                    if fetched_urls:
+                        _sections.append(fetched_urls)
+                    if cross_window_block:
+                        _sections.append(cross_window_block)
+                    if _chat:
+                        _sections.append(_chat)
+                    _sections.append(f"{separator}\n{question}")
+                    try:
+                        log.warning(f"/ask: filter block — {_rung} retry")
+                        _chat_resp = await client.aio.models.generate_content(
+                            model=ask_model,
+                            contents=[types.Content(
+                                role="user",
+                                parts=[types.Part.from_text(
+                                    text="\n\n".join(_sections))],
+                            )],
+                            config=_ladder_config,
+                        )
+                        _tally_retry_usage(_chat_resp)
+                        try:
+                            _chat_answer = (_chat_resp.text or "").strip()
+                        except Exception:
+                            _chat_answer = ""
+                        if _chat_answer:
+                            _chat_answer, _ = _clean_voice_violations(_chat_answer)
+                            answer = _chat_answer
+                            response = _chat_resp
+                            retry_succeeded = True
+                            _ask_meta["filter_retry"] = _rung
+                            log.info(f"/ask: {_rung} retry succeeded")
+                            try:
+                                grounding_metadata = (
+                                    _chat_resp.candidates[0].grounding_metadata
+                                )
+                            except (AttributeError, IndexError, TypeError):
+                                grounding_metadata = None
+                    except Exception as e:
+                        log.warning(f"/ask: {_rung} retry call failed: {e}")
 
             # Tier 1 — voice-strip. Operates on what was ACTUALLY
             # sent, never on the full block: a ladder rung must only
