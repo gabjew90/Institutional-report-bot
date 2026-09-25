@@ -3305,3 +3305,32 @@ drilling prose does not count as a bank. A ticker check was scoped out:
 the only ticker the graders flagged was correctly sourced, and a ticker
 regex would misfire on UST, ECB and OAT. Code-reviewed, one finding
 fixed. 9/21-9/24 need re-grading before their scores mean anything.
+
+## 2026-09-25 — Omnipulse: why accuracy is not 100% and grouping misses 10%
+
+Corrected grades, 9/21-9/24: 5 non-faithful sentences in 45. Two-bank
+sentence with a trailing "per Academy Securities" read as covering DB's
+figure (weak rule); a Morgan Stanley stop-loss written as its target
+(model misread of a correct card; no cheap check); "may decide" written
+as "decides" (rule conflict: voice contract bans hedging, rubric
+penalizes a conditional stated as fact, editor.md said nothing); a
+streak count from the older of two same-desk notes (the pack carried no
+dates, and no rule preferred the newer note); the staged Morgan Stanley
+disagreement (editor.md itself said "Name the disagreement between
+banks", which demands one on days without one). editor.md gains rules
+6-8 and the disagreement line now forbids staging one; the pack stamps
+every brief and card with its publish date.
+
+Grouping (17-29% against 10%): readers treat the five-label cap as a
+quota and cut one-subject notes into their sections (RBC datacenter
+tracker, BofA CPU note, five labels each), and file the same move under
+each note's own angle (two Market Ear notes on the Russell, two
+labels). reader.md now says five is a ceiling and a label is the move,
+not the angle. The code merge on shared figures I proposed was
+measured first and found nothing: the "duplicates" differ in wording and
+figures, so the problem is story-level labeling, which the ledger by
+design does not fuzz-merge.
+
+Editor and reader prompts changed; the trial clock restarts (DAY1 was
+not set). Grader prompts and fixtures untouched. Code-reviewed, no
+findings. 620 tests, 158/158 smokes.

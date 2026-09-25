@@ -54,6 +54,19 @@ form varied so they do not read as clones>
    prose that asserts nothing needs no citation, but the moment a
    sentence tells the reader what happened or what someone thinks, it
    carries a card.
+6. **One bank per figure, named where the figure is.** When a sentence
+   carries figures from two banks, put each bank's name beside its own
+   figure, or write two sentences. A trailing "per Academy Securities"
+   reads as the source of everything before it.
+7. **A bank's conditional stays conditional.** "May", "could", "if",
+   "risk of" in the card stay in the sentence: "the ECB may hike", not
+   "the ECB hikes". Reporting what a bank hedged is fidelity, not
+   hedging in your own voice; the voice rules govern your framing,
+   never a source's stated uncertainty.
+8. **Running figures come from the newest note.** Streaks, counts,
+   year-to-date moves and levels change daily. Every brief and card
+   shows its publish date; when two notes carry the same running
+   figure, use the newer one and cite it.
 
 ## What to write
 
@@ -62,8 +75,11 @@ form varied so they do not read as clones>
   across three labels is still one subject, and one label holding two
   subjects is still two.
 - THE MAIN EVENT is what the tape is doing today, never an evergreen
-  "the trend is intact". Name the disagreement between banks and the
-  invalidation.
+  "the trend is intact". When the cards carry a disagreement between
+  banks, name it and the invalidation. When they do not, say what the
+  banks agree on and what would change it; never stage a disagreement
+  the cards do not contain (a sentence naming a bank must cite that
+  bank's card or brief, and the verifier checks).
 - The pulse issues no trade calls of its own. Every theme closes on a
   desk's explicitly called trade, attributed, or the condition or
   catalyst that decides the theme. An invented house position is a

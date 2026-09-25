@@ -113,6 +113,21 @@ def order_cards(cards: list[dict], ledger: dict) -> list[dict]:
     return ordered
 
 
+def _day_label(iso: str | None) -> str:
+    """'published Sep 23; ' for a brief header, '' when unknown."""
+    try:
+        return f"published {date.fromisoformat(iso).strftime('%b %d')}; " if iso else ""
+    except ValueError:
+        return ""
+
+
+def _date_suffix(iso: str | None) -> str:
+    try:
+        return f", {date.fromisoformat(iso).strftime('%b %d')}" if iso else ""
+    except ValueError:
+        return ""
+
+
 def build_pack(cards: list[dict], briefs: dict[str, dict]) -> tuple[str, dict]:
     ledger = build(cards)
     ordered = order_cards(cards, ledger)
@@ -142,7 +157,7 @@ def build_pack(cards: list[dict], briefs: dict[str, dict]) -> tuple[str, dict]:
     for k, did in sorted(doc_ids.items(), key=lambda kv: int(kv[1][1:])):
         b = briefs.get(k) or {}
         lines.append(f"### [{did}] {b.get('bank', '?')} — {b.get('title', k)} "
-                     f"(reader tier {b.get('tier', '?')})")
+                     f"({_day_label(b.get('date'))}reader tier {b.get('tier', '?')})")
         lines.append((b.get("brief") or "(no brief)").strip())
         lines.append("")
     lines.append("## Ledger (cite a card as [cN] for every figure and attributed call)")
@@ -159,7 +174,8 @@ def build_pack(cards: list[dict], briefs: dict[str, dict]) -> tuple[str, dict]:
                 f"({c.get('status')}, {c.get('direction')}, "
                 f"{c.get('conviction')} conviction"
                 + (f", {c.get('timeframe')}" if c.get("timeframe") else "")
-                + f") ← {doc_ids[_doc_key(c)]}")
+                + f") ← {doc_ids[_doc_key(c)]}"
+                + _date_suffix((briefs.get(_doc_key(c)) or {}).get("date")))
 
     for inst, g in groups:
         label = _group_label(inst)
@@ -236,6 +252,11 @@ def load_briefs(cards_root: str, day_iso: str, days: int) -> dict[str, dict]:
                 "tier": doc.get("reader_tier"),
                 "brief": doc.get("brief") or "",
                 "source_text_path": src,
+                # the day folder the note was published into. Two
+                # "Early Morning Reid" briefs from consecutive days read
+                # identically without it, and on 2026-09-24 the editor
+                # took a running count from the older one.
+                "date": os.path.basename(d),
             }
     return out
 

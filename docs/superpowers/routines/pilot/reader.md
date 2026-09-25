@@ -78,8 +78,15 @@ Rules:
   pricing that feed it belong to it, not to labels of their own. A
   research note argues one to three subjects, rarely five. Before
   writing cards, list the document's subjects at that grain, and every
-  card takes one of those labels. **At most five labels per document.**
-  The verifier re-asks a document that uses more, and folds are cheaper
+  card takes one of those labels. **At most five labels per document,
+  and five is a ceiling, not a target.** A note about one subject takes
+  ONE label however many sections it has: an RBC datacenter tracker's
+  capacity, capex, power, cooling and siting sections are one subject,
+  and so are a BofA CPU note's server TAM, AMD, Intel, Nvidia and Arm
+  sections. Both were cut five ways on 2026-09-21 and the graders
+  scored each cut as a fragment. Sections are what a note is made of;
+  subjects are what the pulse would write a brief about. The verifier
+  re-asks a document that uses more than five, and folds are cheaper
   than a re-ask round.
 - **A label names ONE subject. Never fold leftovers into a grab-bag.**
   On the first day under the cap, "ai narrative" held a product launch,
@@ -99,7 +106,11 @@ Rules:
   this ledger window, most-used first. Before coining a label, scan
   that list: when an entry names the same subject at pulse-theme grain,
   reuse it **verbatim**, wording and case included. Coin a new label
-  only for a subject the list does not hold. A label is the market
+  only for a subject the list does not hold. The subject is the market
+  move, not the note's angle on it: two notes on the Russell 2000's
+  slide since mid-August are one subject even when one frames it as a
+  vol hedge and the other as a trend-line break (the same publisher
+  filed them under two labels on 2026-09-24). A label is the market
   subject a desk at any bank would name ("Fed September hike odds",
   "Broadcom earnings", "US equity momentum unwind", "hedge fund
   positioning"). Not the claim, not a figure, not a bank or a ticker on

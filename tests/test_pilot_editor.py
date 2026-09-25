@@ -219,3 +219,39 @@ def test_editor_refuses_to_pack_a_date_with_no_cards_of_its_own(tmpdir=None):
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+def test_briefs_and_cards_carry_their_publish_date():
+    """2026-09-24: two 'Early Morning Reid' briefs from consecutive days
+    were indistinguishable in the pack, and the editor took a running
+    streak count from the older one."""
+    import json as _json
+    import os
+    import tempfile
+    from scripts.pilot_editor_pack import load_briefs
+    root = tempfile.mkdtemp()
+    for day, n in (("2026-09-23", "five"), ("2026-09-24", "six")):
+        os.makedirs(os.path.join(root, day))
+        card = _card("Deutsche Bank", f"{n} straight sessions of new lows", f"{n} straight sessions",
+                     instruments=(), file="db.json")
+        with open(os.path.join(root, day, f"db{day[-2:]}.json"), "w", encoding="utf-8") as fh:
+            _json.dump({"reader_tier": "top", "brief": "Reid.", "cards": [card]}, fh)
+    briefs = load_briefs(root, "2026-09-24", 1)
+    assert {b["date"] for b in briefs.values()} == {"2026-09-23", "2026-09-24"}
+    cards = []
+    for day in ("2026-09-23", "2026-09-24"):
+        c = _card("Deutsche Bank", f"{day} streak", "x", instruments=(), file=f"db{day[-2:]}.json")
+        cards.append(c)
+    md, _ = build_pack(cards, briefs)
+    assert "published Sep 23;" in md and "published Sep 24;" in md
+    assert ", Sep 23" in md and ", Sep 24" in md
+
+
+def test_the_editor_rules_name_the_three_accuracy_cases():
+    import pathlib
+    ed = pathlib.Path("docs/superpowers/routines/pilot/editor.md").read_text(encoding="utf-8")
+    assert "One bank per figure" in ed
+    assert "A bank's conditional stays conditional" in ed
+    assert "Running figures come from the newest note" in ed
+    assert "never stage a disagreement" in ed
+    assert "Name the disagreement between banks and the\n  invalidation." not in ed
