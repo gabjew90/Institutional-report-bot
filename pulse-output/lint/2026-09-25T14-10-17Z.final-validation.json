@@ -3,7 +3,7 @@
   {
    "kind": "numeric-scope-drift",
    "severity": "soft",
-   "message": "The figure '5.19%' is attached to [just, left, level, morning, test] but the source uses it for [change, close, crypto, indices, live] — the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "message": "The figure '5.19%' is attached to [just, left, level, morning, test] but the source uses it for [change, close, crypto, indices, live] \u2014 the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
    "figure": "5.19%",
    "draft_subject": [
     "just",
