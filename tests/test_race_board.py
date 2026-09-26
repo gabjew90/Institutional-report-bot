@@ -193,3 +193,22 @@ def test_evidence_survives_a_long_answer():
     import inspect
     src = inspect.getsource(B._ask_10_log_and_render)
     assert "answer[:max(0, 4000 - len(_footers))]" in src
+
+
+def test_the_client_is_built_once_across_threads():
+    import threading
+    built = []
+
+    class FakeClient:
+        def __init__(self, **kw):
+            built.append(self)
+
+    T._client = None
+    try:
+        with patch("google.genai.Client", FakeClient):
+            ts = [threading.Thread(target=T._get_client) for _ in range(8)]
+            [t.start() for t in ts]
+            [t.join() for t in ts]
+        assert len(built) == 1
+    finally:
+        T._client = None

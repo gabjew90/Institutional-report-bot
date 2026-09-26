@@ -17,14 +17,15 @@ Order of decisions per message, cheapest first:
 
 A batch the model refuses is split in half until the refusing message is
 alone; that message is stored as -1 (refused), excluded from counts and
-never retried. A transport error (network, 429) stops the run and leaves
-the batch untagged for the next one.
+never retried. A transport error (network, 429) fails only its batch,
+which stays untagged for the next run.
 """
 from __future__ import annotations
 
 import json
 import logging
 import re
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 
@@ -70,14 +71,21 @@ MESSAGES:
 """
 
 _client = None
+_client_lock = threading.Lock()
 
 
 def _get_client():
+    """One client for the process. Created under a lock: the batch pool
+    calls this from four threads. Unlocked, two threads could each build
+    a client and the discarded one closes its HTTP session under a batch
+    still using it: two batches failed that way on the first production
+    run ("the client has been closed")."""
     global _client
-    if _client is None:
-        from google import genai
-        _client = genai.Client(api_key=settings.google_api_key)
-    return _client
+    with _client_lock:
+        if _client is None:
+            from google import genai
+            _client = genai.Client(api_key=settings.google_api_key)
+        return _client
 
 
 def _model() -> str:
@@ -171,6 +179,8 @@ def tag_pending(max_messages: int = MAX_PER_RUN) -> dict:
     decided, rest = split_by_rule(msgs)
     written = db.insert_race_tags(decided)
     batches = [rest[i:i + BATCH] for i in range(0, len(rest), BATCH)]
+    if batches:
+        _get_client()  # built once here, before the pool shares it
     failed = 0
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = [pool.submit(_tag_batch, b) for b in batches]
