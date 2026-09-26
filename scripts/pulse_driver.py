@@ -202,12 +202,15 @@ class Driver:
     # gates
     # ------------------------------------------------------------------
     def gate_omnipulse(self, date: str | None = None) -> str:
-        """STEP 2.6 — use today's Omnipulse as the pulse body, or run the
+        """STEP 2.4 — use today's Omnipulse as the pulse body, or run the
         classic pulse. Writes pulse_mode.txt either way; every later
         omnipulse branch reads it."""
+        import os
         o = _omni()
         mode_file = self.tmp / "pulse_mode.txt"
-        if not o.ENABLED:
+        # OMNIPULSE_BODY=off forces the classic pulse for one process
+        # (smokes, a test fire) without touching the committed switch.
+        if not o.ENABLED or os.environ.get("OMNIPULSE_BODY", "").lower() == "off":
             mode_file.write_text("classic", encoding="utf-8")
             return self._decide("omnipulse", "CLASSIC", "switch off")
         if date is None:

@@ -28,7 +28,9 @@ def _fail(msg):
 
 def drv(tmp, *args):
     import os
-    env = dict(os.environ, PYTHONIOENCODING="utf-8")
+    # the omnipulse gate would poll pilot-data for today's Omnipulse for
+    # up to 20 minutes; these smokes cover the classic path
+    env = dict(os.environ, PYTHONIOENCODING="utf-8", OMNIPULSE_BODY="off")
     p = subprocess.run(
         [sys.executable, "scripts/pulse_driver.py", "--tmp", str(tmp),
          *args],

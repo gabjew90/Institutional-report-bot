@@ -31,7 +31,9 @@ def test_the_body_converts_to_productions_format_with_the_main_event_first():
     headline, ins = O.to_insights(md)
     assert headline == "# The Five Percent Problem"
     assert ins.startswith("## 2. INSIGHTS & ALPHA\n\n### The bond market repriced growth")
-    assert len(re.findall(r"(?m)^### ", ins)) == 9      # 1 main event + 8 briefs
+    # 1 main event + the first 5 of its 8 briefs (owner cap, 2026-09-26)
+    assert len(re.findall(r"(?m)^### ", ins)) == 1 + O.MAX_BRIEFS
+    assert "### The buyback bid" in ins and "### Small-cap volatility" not in ins
     assert "## 3. BRIEFS" not in ins and "THE MAIN EVENT" not in ins
 
 

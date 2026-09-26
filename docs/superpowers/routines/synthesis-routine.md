@@ -18,7 +18,7 @@ Daily Market Pulse synthesis using GitHub as the message bus. **PRODUCTION RUN**
 
 Pipeline stages in this fire:
 
-0. **Omnipulse gate** (STEP 2.6): on an omnipulse day the Omnipulse supplies MAIN EVENT and BRIEFS, adjudication is skipped, and the steps below write and check RECAP and WHAT TO WATCH around it.
+0. **Omnipulse gate** (STEP 2.4): on an omnipulse day the Omnipulse supplies MAIN EVENT and BRIEFS, adjudication is skipped, and the steps below write and check RECAP and WHAT TO WATCH around it.
 1. **Adjudicate** the top themes via parallel sub-agents. Each sub-agent sees only one theme's evidence and emits structured JSON. Lint rejects any sub-agent output that fabricates evidence quotes, bank attributions, or stance counts.
 2. **DRAFT** the analytical pulse from research analyses + the adjudicated themes block.
 3. **STITCH + EDIT** the draft (mechanical normalization + AUDIT sub-agent fresh-eyes editorial pass).
@@ -562,6 +562,31 @@ python3 /tmp/progress.py "STEP_2_2_DONE"
 
 **If `/tmp/thin_corpus_note.txt` exists, append its full content to the DRAFT prompt input in STEP 4** (alongside the press-time note). STEP 2.5 runs AFTER this gate so its freshness math evaluates the FINAL context — a 60-minute wait makes the original snapshot stale by definition, and the re-fetched dump resets that clock.
 
+### STEP 2.4 — Omnipulse gate (mandatory)
+
+Spec: `docs/superpowers/specs/2026-09-26-omnipulse-body-in-production.md`.
+On an **omnipulse** day the pulse's headline, THE MAIN EVENT and BRIEFS come
+from the Omnipulse (the claim-card pilot's editor output on `pilot-data`);
+this routine still writes RECAP, WHAT TO WATCH and `## _LEANS`. On a
+**classic** day nothing below changes. The switch is `ENABLED` in
+`scripts/omnipulse_body.py`; the driver decides, not you.
+
+```bash
+python3 scripts/pulse_driver.py gate omnipulse 2>&1 | tee -a /tmp/routine.log
+```
+
+The gate waits up to 20 minutes for today's Omnipulse. It runs before STEP 2.5 so the press-time check measures freshness after any wait. Act on the token:
+
+- **`DECISION: OMNIPULSE`** — `/tmp/pulse_mode.txt` says `omnipulse`;
+  `/tmp/omnipulse_body.md` and `/tmp/omnipulse_headline.txt` hold the body.
+  Follow every "omnipulse day" instruction below.
+- **`DECISION: CLASSIC`** — run the routine exactly as written, ignoring the
+  omnipulse-day instructions.
+
+```bash
+python3 /tmp/progress.py "STEP_2_4_OMNIPULSE_GATE_DONE"
+```
+
 ### STEP 2.5 — Press-time freshness check (mandatory)
 
 The context is a SNAPSHOT from `dumped_at_utc`; the pulse posts at fire time. Anything that happened in between — most importantly an 8:30 AM ET data print before a ~10:05 post — is invisible to the snapshot, and the calendar inside it still says "upcoming" for events that have since occurred. (2026-07-02 failure: the dump job froze at 09:25 UTC, the pulse consumed 4-hour-stale context and told readers to WATCH the 8:30 payrolls print at 9:06 AM.) Reconcile at press time:
@@ -637,31 +662,6 @@ PYEOF
 ```
 
 **If `/tmp/press_time_note.txt` exists, append its full content to the DRAFT prompt input in STEP 4** (after the adjudication block, before the analyses). The note is binding on DRAFT's framing.
-
-## STEP 2.6 — Omnipulse gate (mandatory)
-
-Spec: `docs/superpowers/specs/2026-09-26-omnipulse-body-in-production.md`.
-On an **omnipulse** day the pulse's headline, THE MAIN EVENT and BRIEFS come
-from the Omnipulse (the claim-card pilot's editor output on `pilot-data`);
-this routine still writes RECAP, WHAT TO WATCH and `## _LEANS`. On a
-**classic** day nothing below changes. The switch is `ENABLED` in
-`scripts/omnipulse_body.py`; the driver decides, not you.
-
-```bash
-python3 scripts/pulse_driver.py gate omnipulse 2>&1 | tee -a /tmp/routine.log
-```
-
-The gate waits up to 20 minutes for today's Omnipulse. Act on the token:
-
-- **`DECISION: OMNIPULSE`** — `/tmp/pulse_mode.txt` says `omnipulse`;
-  `/tmp/omnipulse_body.md` and `/tmp/omnipulse_headline.txt` hold the body.
-  Follow every "omnipulse day" instruction below.
-- **`DECISION: CLASSIC`** — run the routine exactly as written, ignoring the
-  omnipulse-day instructions.
-
-```bash
-python3 /tmp/progress.py "STEP_2_6_OMNIPULSE_GATE_DONE"
-```
 
 ## STEP 3 — Inspect theme coverage
 

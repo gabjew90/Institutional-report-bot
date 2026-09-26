@@ -33,7 +33,7 @@ import urllib.request
 # The switch. False = the classic pulse, byte for byte. The routine
 # clones the working branch at every fire, so a push flips the next
 # 10 AM run.
-ENABLED = False
+ENABLED = True
 
 REPO = "gabjew90/Institutional-report-bot"
 BRANCH = "pilot-data"
@@ -41,6 +41,10 @@ BODY_PATH = "/tmp/omnipulse_body.md"
 HEADLINE_PATH = "/tmp/omnipulse_headline.txt"
 INSIGHTS_HEADER = "## 2. INSIGHTS & ALPHA"
 MIN_BRIEFS = 2
+# Owner call 2026-09-26: MAIN EVENT plus the first 5 BRIEFS, in the order
+# the Omnipulse editor wrote them. It writes 8-11 themes (1,500-1,850
+# words); production ran 3-6.
+MAX_BRIEFS = 5
 MAX_FETCH_ERRORS = 3
 
 _MARKER_RE = re.compile(r"\[(?:c|d)\d+\]")
@@ -155,7 +159,7 @@ def to_insights(md: str) -> tuple[str, str]:
     secs = _sections(md)
     main = next(v for k, v in secs.items() if re.fullmatch(r"(2\. )?THE MAIN EVENT", k))
     briefs = next(v for k, v in secs.items() if re.fullmatch(r"(3\. )?BRIEFS", k))
-    themes = _themes(main) + _themes(briefs)
+    themes = _themes(main) + _themes(briefs)[:MAX_BRIEFS]
     return headline, INSIGHTS_HEADER + "\n\n" + "\n\n".join(themes) + "\n"
 
 

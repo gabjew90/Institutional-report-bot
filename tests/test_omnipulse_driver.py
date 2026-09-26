@@ -109,10 +109,11 @@ def test_preflight_restores_a_broken_body_instead_of_blocking(tmp_path):
         d.gate_omnipulse("2026-09-24")
         d.gate_draft_validate()
     final = (tmp_path / "draft.md").read_text(encoding="utf-8")
-    cut = final.replace("### Bitcoin cleared the miners' cost line", "### Bitcoin")
+    cut = final.replace("### Oil is a policy problem now, not just a price", "### Oil")
     (tmp_path / "final.md").write_text(cut, encoding="utf-8")
     d.preflight()
-    assert "### Bitcoin cleared the miners' cost line" in         (tmp_path / "final.md").read_text(encoding="utf-8")
+    assert "### Oil is a policy problem now, not just a price" in (
+        tmp_path / "final.md").read_text(encoding="utf-8")
     assert any(h.get("record") == "omnipulse_body_restored" for h in d.state["history"])
 
 

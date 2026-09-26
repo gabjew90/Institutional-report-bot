@@ -3466,3 +3466,10 @@ RECAP/WATCH, and restores the body at preflight. Dry run on 9/25's real
 draft and context with the 9/24 Omnipulse: validator clean, lint 2 soft,
 no SCRUB, final validation clean. Pending owner: BRIEFS length (the
 Omnipulse writes 8-11 themes) and flipping ENABLED for Monday 9/28.
+
+2026-09-26 Omnipulse switched ON for Monday 9/28 (owner: "cap and switch
+on for Monday"): MAIN EVENT plus the first 5 BRIEFS. The gate moved to
+STEP 2.4, before the press-time check, so a wait for a late Omnipulse is
+measured by that check (review). OMNIPULSE_BODY=off in the environment
+forces classic for one process; the driver smoke sets it, since with the
+switch on the gate otherwise polls pilot-data for 20 minutes.

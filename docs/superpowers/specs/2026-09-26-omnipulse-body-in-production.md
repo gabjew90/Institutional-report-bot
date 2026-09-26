@@ -1,6 +1,6 @@
 # Omnipulse body in the production pulse (trial)
 
-Status: approved by the owner 2026-09-26 ("Go"); built, switch off pending the dry run.
+Status: approved by the owner 2026-09-26 ("Go"); live from Monday 9/28 (owner: "cap and switch on for Monday"), BRIEFS capped at 5.
 
 ## What changes
 
@@ -27,8 +27,8 @@ research lookups and the calendar's conference rows read those analyses.
 
 ## Flow on a pulse day
 
-A new routine step, **STEP 2.6 — Omnipulse gate**, after the press-time
-check:
+A new routine step, **STEP 2.4 — Omnipulse gate**, after the corpus-volume
+gate and before the press-time check:
 
 1. `scripts/omnipulse_body.py fetch --date <today ET>` polls `pilot-data`
    for `pilot/shadow/<date>.clean.md` and its `.meta.json`, up to 20
@@ -94,7 +94,7 @@ before. Decide then: keep, add MEDIUM coverage, or switch off.
 1. `scripts/omnipulse_body.py` (fetch, validate, convert, splice) with tests
    on the 9/17-9/24 Omnipulse files.
 2. `pulse_draft_validate.py --omnipulse`.
-3. Routine: STEP 2.6, the omnipulse branches in 3.5, 4, 5b and 5.85, the
+3. Routine: STEP 2.4, the omnipulse branches in 3.5, 4, 5b and 5.85, the
    frontmatter field, the `OMNIPULSE_BODY` constant (ships `off`, flipped
    `on` after a dry run).
 4. Dry run: run the routine's omnipulse path locally against Friday 9/25's
@@ -113,5 +113,8 @@ before. Decide then: keep, add MEDIUM coverage, or switch off.
 - Dry run on Friday 9/25's real draft and context with the 9/24
   Omnipulse: validator clean, lint 2 soft findings (a figure cited in two
   themes), no SCRUB needed, final validation clean, strip clean.
-- Open: the Omnipulse writes 8-11 themes (1,500-1,850 words) against
-  production's 3-6. Owner decision pending on a BRIEFS cap.
+- The Omnipulse writes 8-11 themes (1,500-1,850 words) against
+  production's 3-6. Owner call: MAIN EVENT plus the first 5 BRIEFS.
+- The gate runs as STEP 2.4, before the press-time check, so that check
+  measures freshness after any wait (review, 2026-09-26).
+- `OMNIPULSE_BODY=off` in the environment forces classic for one process.
