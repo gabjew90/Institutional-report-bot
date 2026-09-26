@@ -3420,3 +3420,12 @@ returned empty responses 398 times in 30 days, and unstamped near-empty
 profiles held all six per-run rebuild slots. (3) The profile prompt no
 longer asks for racial_humor_score. Not changed: triage preview length
 (quality tradeoff) and the 4x daily profile cadence.
+
+2026-09-26 calendar. The Monday 9/28 sheet (posted Friday 3 PM) shipped
+its economic block as "unavailable tonight". ForexFactory answers 429
+readily (one probe from the worker drew one) and its only cache was in
+memory, emptied by every deploy. The feed now keeps a disk copy on
+/data (served on failure while it still covers today), an hourly job
+keeps that copy current, and when the feed is down for a date it
+covers the sheet shows FRED's majors with "full list unavailable"
+instead of an empty block.

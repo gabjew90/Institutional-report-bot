@@ -161,10 +161,24 @@ EMPTY_BAND_TEXT = "no names at scale confirmed"
 # the econ rows are FRED's scheduled majors only (2026-09-25).
 ECON_PARTIAL_EMPTY = "no major US releases scheduled · full list posts Sunday"
 ECON_PARTIAL_NOTE = "major releases only · full list posts Sunday"
+# The ForexFactory feed was unreachable for a date it covers
+# (2026-09-26): the full list exists, it just could not be fetched.
+ECON_DOWN_EMPTY = "no major US releases scheduled · full list unavailable"
+ECON_DOWN_NOTE = "major releases only · full list unavailable"
+
+
+def _feed_down(day) -> bool:
+    return getattr(day, "econ_partial_reason", "") == "feed_down"
+
+
+def _econ_partial_note(day) -> str:
+    return ECON_DOWN_NOTE if _feed_down(day) else ECON_PARTIAL_NOTE
 
 
 def _econ_empty_text(day) -> str:
-    return ECON_PARTIAL_EMPTY if getattr(day, "econ_partial", False) else "no notable US releases"
+    if not getattr(day, "econ_partial", False):
+        return "no notable US releases"
+    return ECON_DOWN_EMPTY if _feed_down(day) else ECON_PARTIAL_EMPTY
 
 
 def render_calendar_png(day: CalendarDay) -> bytes:
@@ -392,7 +406,7 @@ def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
         )
         cy += 38 * _S
     if getattr(day, "econ_partial", False):
-        d.text((_MARGIN, cy), ECON_PARTIAL_NOTE, font=f["ev"], fill=_dim(TEXT, 0.5))
+        d.text((_MARGIN, cy), _econ_partial_note(day), font=f["ev"], fill=_dim(TEXT, 0.5))
         cy += 38 * _S
     return cy + 34 * _S
 
@@ -429,7 +443,7 @@ def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
             cy += 30 * _S
         cy += 8 * _S
     if day.econ and getattr(day, "econ_partial", False):
-        for line in _wrap(d, ECON_PARTIAL_NOTE, f["ev"], name_w + t_w):
+        for line in _wrap(d, _econ_partial_note(day), f["ev"], name_w + t_w):
             d.text((x_l, cy), line, font=f["ev"], fill=_dim(TEXT, 0.5))
             cy += 30 * _S
     left_bottom = cy

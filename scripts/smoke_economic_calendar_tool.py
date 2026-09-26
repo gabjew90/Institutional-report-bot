@@ -51,6 +51,15 @@ from unittest.mock import patch
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# The FF feed now keeps a disk copy (2026-09-26). A smoke that feeds it
+# fixtures must not write that copy next to the real DB, and a later
+# "both sources down" case must not find one.
+import tempfile as _tempfile  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+from report import news_data as _nd_iso  # noqa: E402
+_FF_TMP = _Path(_tempfile.mkdtemp()) / "ff.json"
+_nd_iso._ff_disk_path = lambda: _FF_TMP
+
 
 def _ok(msg):
     print(f"PASS {msg}")

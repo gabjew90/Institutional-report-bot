@@ -206,6 +206,9 @@ class CalendarDay:
     # True = the FF feed does not reach this date yet (Friday's sheet for
     # Monday): rows are FRED's scheduled majors only, and the sheet says so
     econ_partial: bool = False
+    # why the econ rows are FRED majors only: "next_week" (past the FF
+    # feed's week) or "feed_down" (FF unreachable for a date it covers)
+    econ_partial_reason: str = ""
     bmo: list[EarnRow] = field(default_factory=list)
     amc: list[EarnRow] = field(default_factory=list)
     earnings_available: bool = True
@@ -571,9 +574,19 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
     # Monday sheet printed "no notable US releases" whatever was
     # scheduled (2026-09-25). Past the feed's reach, fill the majors
     # from FRED's schedule and mark the section partial.
-    if news_data.ff_feed_covers(date_iso) is False:
+    covers = news_data.ff_feed_covers(date_iso)
+    if covers is False:
         econ = news_data.fetch_us_major_releases_from_fred(date_iso)
         day.econ_partial = True
+        day.econ_partial_reason = "next_week"
+    elif covers is None:
+        # FF down (429s readily, 2026-09-26: the Monday 9/28 sheet shipped
+        # "unavailable tonight"). FRED's majors beat an empty block.
+        fred = news_data.fetch_us_major_releases_from_fred(date_iso)
+        if fred is not None:
+            econ = fred
+            day.econ_partial = True
+            day.econ_partial_reason = "feed_down"
     if econ is None:
         day.econ_available = False
     else:

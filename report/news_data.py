@@ -382,26 +382,64 @@ _FF_CACHE_TTL_S = 600
 _FF_CACHE_STALE_OK_S = 6 * 3600
 
 
-def _fetch_ff_economic_events() -> list[dict]:
-    """Fetch ForexFactory's weekly calendar, normalized to the Finnhub
-    economicCalendar event shape so downstream filtering/formatting is
-    source-agnostic. Cached 10 min (stale-tolerated 6h on fetch
-    failure). Empty list when no data and no usable cache."""
-    now = datetime.utcnow()
-    cached_at, cached_rows = _FF_CACHE["at"], _FF_CACHE["rows"]
-    if cached_rows is not None and cached_at is not None:
-        if (now - cached_at).total_seconds() < _FF_CACHE_TTL_S:
-            return cached_rows
-    data = _fetch_json(_FF_CALENDAR_URL)
-    if not data or not isinstance(data, list):
-        if cached_rows is not None and cached_at is not None and \
-                (now - cached_at).total_seconds() < _FF_CACHE_STALE_OK_S:
-            log.warning(
-                "ForexFactory fetch failed — serving cached calendar "
-                f"rows from {cached_at:%H:%M} UTC"
-            )
-            return cached_rows
-        return []
+def _ff_disk_path():
+    """Last good copy of the weekly feed, on the /data volume so it
+    survives the redeploys that empty _FF_CACHE (2026-09-26)."""
+    from pathlib import Path
+    return Path(settings.db_path).resolve().parent / "ff_calendar_thisweek.json"
+
+
+def _ff_save_disk(data: list) -> None:
+    import os as _os
+    import threading as _th
+    tmp = None
+    try:
+        p = _ff_disk_path()
+        # per-writer temp name: the pulse context, the /ask tool and the
+        # warm job can all fetch at once, and a shared .tmp let one
+        # writer truncate the file another was renaming into place
+        tmp = p.with_name(f"{p.name}.{_os.getpid()}.{_th.get_ident()}.tmp")
+        tmp.write_text(json.dumps({"fetched_at": datetime.utcnow().isoformat(),
+                                   "data": data}), encoding="utf-8")
+        tmp.replace(p)
+    except Exception as e:
+        log.warning(f"ForexFactory disk copy not saved: {e}")
+        if tmp is not None:
+            try:
+                tmp.unlink(missing_ok=True)
+            except OSError:
+                pass
+
+
+def _ff_load_disk() -> list | None:
+    """The saved feed, only while it still reaches today (ET). The feed
+    is one Sunday-to-Saturday week, so last week's copy would answer
+    this week's dates with an empty list, which reads as a quiet day."""
+    try:
+        doc = json.loads(_ff_disk_path().read_text(encoding="utf-8"))
+        data = doc.get("data")
+    except Exception:
+        return None
+    if not isinstance(data, list) or not data:
+        return None
+    dates = {_et_date(_ff_time_utc(e)) for e in data if isinstance(e, dict)}
+    dates.discard("")
+    from zoneinfo import ZoneInfo
+    today_et = datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    if not dates or max(dates) < today_et:
+        return None
+    return data
+
+
+def _ff_time_utc(e: dict) -> str:
+    try:
+        dt = datetime.fromisoformat(e.get("date") or "")
+        return dt.astimezone(pytz.UTC).strftime("%Y-%m-%dT%H:%M:%S")
+    except (ValueError, TypeError):
+        return ""
+
+
+def _normalize_ff(data: list) -> list[dict]:
     out: list[dict] = []
     for e in data:
         if not isinstance(e, dict):
@@ -414,12 +452,7 @@ def _fetch_ff_economic_events() -> list[dict]:
         country = _FF_COUNTRY_MAP.get(raw_country, raw_country)
         # FF date carries a UTC offset ("2026-06-11T08:30:00-04:00");
         # Finnhub's `time` is naive UTC ("2026-06-11 12:30:00"-ish).
-        time_utc = ""
-        try:
-            dt = datetime.fromisoformat(e.get("date") or "")
-            time_utc = dt.astimezone(pytz.UTC).strftime("%Y-%m-%dT%H:%M:%S")
-        except (ValueError, TypeError):
-            pass
+        time_utc = _ff_time_utc(e)
         estimate, unit_a = _parse_ff_value(e.get("forecast"))
         prev, unit_b = _parse_ff_value(e.get("previous"))
         impact = (e.get("impact") or "").strip().lower()
@@ -436,9 +469,59 @@ def _fetch_ff_economic_events() -> list[dict]:
             "unit": unit_a or unit_b,
             "source": "forexfactory",
         })
+    return out
+
+
+def _fetch_ff_economic_events() -> list[dict]:
+    """Fetch ForexFactory's weekly calendar, normalized to the Finnhub
+    economicCalendar event shape so downstream filtering/formatting is
+    source-agnostic. Cached 10 min in memory (stale-tolerated 6h on
+    fetch failure), then the disk copy while it still covers today.
+    Empty list when none of those has data.
+
+    The disk copy exists because the feed answers 429 readily (a single
+    probe from the worker drew one on 2026-09-26) and the in-memory cache
+    is empty after every deploy: the Monday 9/28 sheet shipped its
+    economic block as "unavailable tonight"."""
+    now = datetime.utcnow()
+    cached_at, cached_rows = _FF_CACHE["at"], _FF_CACHE["rows"]
+    if cached_rows is not None and cached_at is not None:
+        if (now - cached_at).total_seconds() < _FF_CACHE_TTL_S:
+            return cached_rows
+    data = _fetch_json(_FF_CALENDAR_URL)
+    if not data or not isinstance(data, list):
+        if (cached_rows is not None and cached_at is not None
+                and (now - cached_at).total_seconds() < _FF_CACHE_STALE_OK_S):
+            log.warning(
+                "ForexFactory fetch failed — serving cached calendar "
+                f"rows from {cached_at:%H:%M} UTC"
+            )
+            return cached_rows
+        disk = _ff_load_disk()
+        if disk:
+            log.warning("ForexFactory fetch failed — serving the disk copy")
+            out = _normalize_ff(disk)
+            # short TTL: retry the live feed on the next call
+            _FF_CACHE["at"] = now - timedelta(seconds=_FF_CACHE_TTL_S - 60)
+            _FF_CACHE["rows"] = out
+            return out
+        return []
+    _ff_save_disk(data)
+    out = _normalize_ff(data)
     _FF_CACHE["at"] = now
     _FF_CACHE["rows"] = out
     return out
+
+
+def warm_ff_feed() -> int:
+    """Hourly refresh so the disk copy is current before the 3 PM
+    calendar post needs it. One request an hour. Returns row count."""
+    if _FF_CACHE["at"] is not None:
+        # expire the fresh window but keep the stale-on-error fallback
+        _FF_CACHE["at"] = min(
+            _FF_CACHE["at"],
+            datetime.utcnow() - timedelta(seconds=_FF_CACHE_TTL_S))
+    return len(_fetch_ff_economic_events())
 
 
 # Circuit breaker for Finnhub's /calendar/economic 403. A 403 is an

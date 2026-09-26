@@ -37,6 +37,15 @@ from unittest.mock import patch
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# The FF feed now keeps a disk copy (2026-09-26). A smoke that feeds it
+# fixtures must not write that copy next to the real DB, and a later
+# "both sources down" case must not find one.
+import tempfile as _tempfile  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+from report import news_data as _nd_iso  # noqa: E402
+_FF_TMP = _Path(_tempfile.mkdtemp()) / "ff.json"
+_nd_iso._ff_disk_path = lambda: _FF_TMP
+
 
 def _ok(msg):
     print(f"PASS {msg}")
@@ -211,8 +220,10 @@ def test_no_key_goes_straight_to_ff():
 def test_dual_failure_raises():
     from report import news_data
     today = datetime.utcnow().date()
+    # both live sources down AND no saved copy of the feed
     with patch("config.settings.finnhub_api_key", "test_key"), \
-         patch("report.news_data._fetch_json", return_value=None):
+         patch("report.news_data._fetch_json", return_value=None), \
+         patch("report.news_data._ff_load_disk", return_value=None):
         try:
             news_data._fetch_economic_events_raw(
                 today, today + timedelta(days=7))
@@ -276,7 +287,8 @@ def test_pulse_text_block_banner_and_outage_line():
 
     _reset_ff_cache()  # warm cache would (correctly) mask total outage
     with patch("config.settings.finnhub_api_key", "test_key"), \
-         patch("report.news_data._fetch_json", return_value=None):
+         patch("report.news_data._fetch_json", return_value=None), \
+         patch("report.news_data._ff_load_disk", return_value=None):
         text2 = news_data.fetch_economic_calendar(days_ahead=7)
     assert "ALL calendar sources failed" in text2
     assert "TODAY" in text2  # the date-trust instruction for synthesis
@@ -368,11 +380,17 @@ def test_ff_cache_serves_within_ttl_and_stale_on_error():
         stale = news_data._fetch_ff_economic_events()
     assert stale == first, "warm cache must be served when refetch fails"
 
-    # Cold cache + fetch failure -> [] (dual-failure raise upstream)
+    # Cold cache + fetch failure: the disk copy (2026-09-26) is what a
+    # restarted worker has left; with none either, [] and the dual-failure
+    # raise upstream.
     _reset_ff_cache()
     with patch("report.news_data._fetch_json", return_value=None):
+        assert news_data._fetch_ff_economic_events() == first
+    _reset_ff_cache()
+    with patch("report.news_data._fetch_json", return_value=None), \
+         patch("report.news_data._ff_load_disk", return_value=None):
         assert news_data._fetch_ff_economic_events() == []
-    _ok("FF cache: no refetch within TTL; stale-on-error; cold+fail -> []")
+    _ok("FF cache: no refetch within TTL; stale-on-error; cold+fail -> disk copy, then []")
 
 
 def test_burst_does_not_escalate_to_total_outage():

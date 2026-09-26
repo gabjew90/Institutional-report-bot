@@ -447,6 +447,19 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         # for an hour
         misfire_grace_time=1800,
     )
+    # ForexFactory feed warm (2026-09-26): one request an hour keeps the
+    # disk copy current, so the 3 PM calendar post does not depend on a
+    # live request the feed may answer with 429.
+    scheduler.add_job(
+        _ff_warm_job,
+        trigger=IntervalTrigger(hours=1),
+        next_run_time=_dt_al.now(tz) + _td_al(minutes=3),
+        id="ff_warm",
+        name="Calendar: refresh the ForexFactory feed copy",
+        max_instances=1,
+        coalesce=True,
+        misfire_grace_time=1800,
+    )
     # Racism board tags (2026-09-26): each chat message tagged once. A
     # run caps at 12,000 messages, so the 60-day backfill after the first
     # deploy takes about ten runs; after that a run tags one interval's
@@ -1367,6 +1380,17 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:
         log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)
+
+
+async def _ff_warm_job():
+    """Keep the ForexFactory disk copy current (report.news_data)."""
+    import asyncio as _asyncio
+    from report import news_data
+    try:
+        n = await _asyncio.to_thread(news_data.warm_ff_feed)
+        log.info(f"ForexFactory warm: {n} rows")
+    except Exception as e:
+        log.warning(f"ForexFactory warm failed: {e}")
 
 
 async def _race_tag_job():
