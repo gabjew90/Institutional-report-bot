@@ -3378,3 +3378,13 @@ also pooled over the counted window, by card count, against the same
 day). The theme-changing mis-merge clause stays per day. Review note,
 raised with the owner, not changed: that clause fails the window when
 EITHER grader flags a merge, so it is now the noisiest remaining gate.
+
+Owner decision, 2026-09-25: the metric 1 mis-merge clause is a majority
+vote of the usable grades (a, b, tiebreak), two votes needed on the
+winning side; the owner grade decides alone when it carries
+`mis_merges`. Before, the tiebreak replaced both graders on this clause
+too. Replayed on the existing grades: 9/9 and 9/17 flip to a merge
+(both graders flagged one, the share-triggered tiebreak had cleared it),
+9/4 and 9/23 become owner calls (1-1). All are shakedown days. The share
+itself still comes from the tiebreak alone when one ran; a median of
+three would match the vote, not changed.

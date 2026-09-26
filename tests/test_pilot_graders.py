@@ -430,3 +430,65 @@ def test_a_theme_changing_merge_still_fails_the_window():
     from scripts.pilot_scoreboard import pooled_m1
     ok, detail = pooled_m1([_gday(0.05, 500), _gday(0.05, 500, merge=True, date="2026-09-03")])
     assert not ok and "mis-merge on 2026-09-03" in detail
+
+
+# --- mis-merge by majority vote (owner, 2026-09-25) -----------------------
+def _mm(flag):
+    return {"fragmented_mass_share": 0.05, "total_cards": 500,
+            "mis_merges": [{"would_change_theme_selection": flag}]}
+
+
+def test_one_graders_mis_merge_flag_is_pending_not_a_fail():
+    """Before the tiebreak lands, a split is a disagreement for the owner
+    queue, not a failed day."""
+    d = _grades()
+    d["grades"]["grouping"]["b"] = _mm(True)
+    r = day_row("2026-09-02", d)
+    assert r["m1"]["theme_changing_merge"] is None
+    assert "m1 merge" in r["disagreements"]
+
+
+def test_the_tiebreak_votes_it_does_not_decide_alone():
+    from scripts.pilot_scoreboard import merge_verdict
+    # a and tiebreak find one, b does not: 2-1 majority
+    assert merge_verdict({"a": _mm(True), "b": _mm(False), "tiebreak": _mm(True)})[0] is True
+    assert merge_verdict({"a": _mm(True), "b": _mm(False), "tiebreak": _mm(False)})[0] is False
+    # 2026-09-23: a failed, b says no, the tiebreak alone says yes
+    v, note = merge_verdict({"a": {"failed": True}, "b": _mm(False), "tiebreak": _mm(True)})
+    assert v is None and note.startswith("disagree")
+    # a lone usable grader cannot decide
+    assert merge_verdict({"a": {"failed": True}, "b": _mm(True)}) == (None, "one grader usable")
+
+
+def test_owner_decides_the_merge_alone():
+    from scripts.pilot_scoreboard import merge_verdict
+    assert merge_verdict({"a": _mm(True), "b": _mm(True), "owner": _mm(False)})[0] is False
+
+
+def test_agreeing_graders_fail_the_day():
+    d = _grades()
+    d["grades"]["grouping"]["a"] = _mm(True)
+    d["grades"]["grouping"]["b"] = _mm(True)
+    r = day_row("2026-09-02", d)
+    assert r["m1"]["theme_changing_merge"] is True and r["disagreements"] == []
+
+
+def test_an_undecided_merge_day_holds_the_window_below_pass():
+    from scripts.pilot_scoreboard import pooled_m1
+    d = _grades()
+    d["grades"]["grouping"]["b"] = _mm(True)            # 1-1, no tiebreak yet
+    ok, detail = pooled_m1([_gday(0.05, 500), day_row("2026-09-03", d)])
+    assert not ok and "mis-merge undecided on 2026-09-03" in detail
+
+
+def test_a_lone_grader_after_the_tiebreak_goes_to_the_owner_queue():
+    d = _grades()
+    d["grades"]["grouping"]["a"] = {"failed": True}
+    d["grades"]["grouping"]["tiebreak"] = {"failed": True}
+    assert "m1 merge" in day_row("2026-09-02", d)["disagreements"]
+
+
+def test_an_owner_grade_without_mis_merges_leaves_the_vote_alone():
+    from scripts.pilot_scoreboard import merge_verdict
+    owner = {"fragmented_mass_share": 0.05}
+    assert merge_verdict({"a": _mm(True), "b": _mm(True), "owner": owner})[0] is True

@@ -3,7 +3,7 @@
 Per day, per metric, against the FROZEN thresholds (spec section 8):
   1  fragmented mass <= 10% POOLED over counted days by card count
      (owner, 2026-09-25), and no theme-changing mis-merge on any
-     counted day
+     counted day, by majority of the graders (owner, 2026-09-25)
   2  POOLED over counted days (owner, 2026-09-25): shadow faithful-rate
      >= production and shadow unsupported-rate <= production. Was
      'zero unsupported' per day, which one sentence or one grader
@@ -39,16 +39,20 @@ def pooled_m1(counted: list[dict]) -> tuple[bool, str]:
     whose two graders agree, and passes at <= 10%. The same day's
     unchanged ledger was graded 20% then 36% (9/23) and 17% then 6%
     (9/24) on 2026-09-25, so a single-day verdict against a 10% line sat
-    inside grader noise. The mis-merge clause is unchanged: any counted
-    day with a theme-changing mis-merge fails the metric.
+    inside grader noise. Any counted day whose graders find a
+    theme-changing mis-merge by majority (merge_verdict) fails the
+    metric. A day with no majority is undecided: it cannot fail the
+    metric, and it holds the verdict below PASS until settled.
     """
     frag = cards = 0.0
     days = 0
-    merge_days = []
+    merge_days, undecided = [], []
     for r in counted:
         m = r["m1"]
         if m.get("theme_changing_merge"):
             merge_days.append(r["date"])
+        elif m.get("theme_changing_merge") is None:
+            undecided.append(r["date"])
         if m.get("share") is None or not m.get("cards"):
             continue
         days += 1
@@ -58,12 +62,13 @@ def pooled_m1(counted: list[dict]) -> tuple[bool, str]:
     if not days:
         return False, "no counted day with an agreed grouping grade"
     share = frag / cards
-    ok = share <= 0.10 and not merge_days
+    ok = share <= 0.10 and not merge_days and not undecided
     return ok, (f"{days} day(s)"
                 + (f" ({left_out} counted day(s) left out: grader disagreement or missing grade)"
                    if left_out else "")
                 + f": {share:.0%} fragmented over {int(cards)} cards"
-                + (f"; theme-changing mis-merge on {', '.join(merge_days)}" if merge_days else ""))
+                + (f"; theme-changing mis-merge on {', '.join(merge_days)}" if merge_days else "")
+                + (f"; mis-merge undecided on {', '.join(undecided)}" if undecided else ""))
 
 
 def pooled_m2(counted: list[dict]) -> tuple[bool, str]:
@@ -211,11 +216,43 @@ def tiebreak_stems(grades: dict) -> list[str]:
             out.append(dim)
             continue
         if dim == "grouping":
-            ma = any(m.get("would_change_theme_selection") for m in (a.get("mis_merges") or []))
-            mb = any(m.get("would_change_theme_selection") for m in (b.get("mis_merges") or []))
-            if ma != mb:
+            if _merge_call(a) != _merge_call(b):
                 out.append(dim)
     return out
+
+
+def _merge_call(doc) -> bool:
+    return any(m.get("would_change_theme_selection") for m in (doc.get("mis_merges") or []))
+
+
+def merge_verdict(agents: dict) -> tuple[bool | None, str]:
+    """Whether the day carries a theme-changing mis-merge, by majority of
+    the usable graders (owner decision 2026-09-25).
+
+    An owner grade that carries `mis_merges` decides alone (one written
+    only to settle the share leaves the vote to the graders). Otherwise every usable grader among
+    a, b and the tiebreak votes, and a verdict needs at least two votes
+    on the winning side. A split with no majority (a vs b before the
+    tiebreak lands, or one survivor against the tiebreak when a grader
+    failed) is None and goes to the owner. Before this the tiebreak
+    replaced both graders, so one agent's call decided the day, and
+    without a tiebreak one grader's flag failed it: on 2026-09-23 grader
+    b found no theme-changing merge and the tiebreak alone found two.
+    """
+    owner = usable(agents.get("owner"))
+    if owner and "mis_merges" in owner:
+        return _merge_call(owner), ""
+    votes = [_merge_call(x) for x in (agents.get(k) for k in ("a", "b", "tiebreak")) if usable(x)]
+    yes, no = sum(votes), len(votes) - sum(votes)
+    if yes >= 2 and yes > no:
+        return True, ""
+    if no >= 2 and no > yes:
+        return False, ""
+    if not votes:
+        return None, "no usable grader"
+    if len(votes) < 2:
+        return None, "one grader usable"
+    return None, f"disagree merge {yes} yes vs {no} no"
 
 
 def is_void(d: dict) -> bool:
@@ -235,16 +272,16 @@ def day_row(date: str, d: dict) -> dict:
     # metric 1
     ga, gb = g.get("grouping", {}).get("a"), g.get("grouping", {}).get("b")
     share, note = agree(ga, gb, "fragmented_mass_share", tol=0.05)
-    merges = None
-    if usable(ga) and usable(gb):
-        merges = any(m.get("would_change_theme_selection") for x in (ga, gb) for m in (x.get("mis_merges") or []))
+    # Votes come from the raw grades: _apply_tiebreaks would hand the
+    # tiebreak both seats and let one agent decide.
+    merges, merge_note = merge_verdict(d["grades"].get("grouping", {}))
     cards = None
     if usable(ga) and usable(gb):
         cards = max(ga.get("total_cards") or 0, gb.get("total_cards") or 0) or None
     # Per-day `pass` is informational; the verdict pools the share by
     # card count across counted days (owner, 2026-09-25, see pooled_m1).
     row["m1"] = {"share": share, "theme_changing_merge": merges, "note": note,
-                 "cards": cards,
+                 "merge_note": merge_note, "cards": cards,
                  "pass": (share is not None and share <= 0.10 and merges is False)}
     # metric 2 per artifact
     for art in ("shadow", "production"):
@@ -310,6 +347,10 @@ def day_row(date: str, d: dict) -> dict:
                           and not ops.get("collided_with_pulse_window"))}
     row["disagreements"] = [k for k in ("m1", "m2_shadow", "m2_production", "m2a", "m3_shadow", "m3_production")
                             if row[k].get("note", "").startswith("disagree")]
+    # A split, or a lone usable grader after the tiebreak ran, is the
+    # owner's call. "no usable grader" means grading has not happened.
+    if merge_note and merge_note != "no usable grader":
+        row["disagreements"].append("m1 merge")
     return row
 
 

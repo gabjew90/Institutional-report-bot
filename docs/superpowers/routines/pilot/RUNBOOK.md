@@ -77,6 +77,15 @@ the third grade was itself unusable; the owner settles it by writing
 `<dim>-owner.json` in the day's grade directory (same shape as an agent
 grade, agent `owner`), which overrides everything.
 
+One exception (owner, 2026-09-25): metric 1's theme-changing mis-merge
+is a majority vote of the usable grades among a, b and the tiebreak,
+and needs two votes on the winning side. The tiebreak votes, it does
+not replace. A 1-1 split (one grader failed, the survivor and the
+tiebreak disagree) shows as `m1 merge` in the tiebreak column and holds
+metric 1 below PASS until the owner writes `grouping-owner.json` with
+a `mis_merges` list. An owner grade without that key leaves the vote to
+the graders.
+
 Decision rule after 10 counted days (frozen): expand to MEDIUM only if
 metrics 1, 2, 2a and 3 all pass; kill if 2, 2a or 3 regress; anything
 else buys exactly one reader-prompt iteration, then re-run, then

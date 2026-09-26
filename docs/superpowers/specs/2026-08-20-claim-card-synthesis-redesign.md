@@ -249,8 +249,16 @@ ledger. Production runs untouched. Nothing is deleted during the pilot.
    pooled over the counted window**, weighted by card count, against the
    same 10% line. Reason: on 2026-09-25 the graders scored the same
    unchanged ledger 20% then 36% (9/23) and 17% then 6% (9/24), so a
-   single-day verdict against 10% sat inside grader noise. The
-   mis-merge clause is unchanged.
+   single-day verdict against 10% sat inside grader noise.
+   **Amended again 2026-09-25 by the owner: a theme-changing mis-merge
+   is a majority call** of the usable grades among the two graders and
+   the tiebreak, with at least two votes on the winning side; the
+   tiebreak votes rather than replacing both. A day with no majority
+   goes to the owner and holds metric 1 below PASS until settled.
+   Reason: one grader's flag failed the window before the tiebreak ran,
+   and afterwards the tiebreak alone decided (on 9/9 and 9/17 it
+   cleared a merge both graders had flagged, on 9/23 it alone found
+   one the surviving grader did not).
 2. **Fact fidelity** — 15 sentences sampled per shadow pulse, each
    traced to the **source PDF** (not the card), graded
    faithful/distorted/unsupported; same procedure on that day's
