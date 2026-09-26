@@ -3407,3 +3407,16 @@ Follow-ups not done: the profile prompt still asks Gemini for
 racial_humor_score (output discarded; remove from the prompt and
 schema); the trader score's chatter half is still re-read from each
 refresh's new messages (owner asked only whether SV #1 is justified).
+
+2026-09-26 costs. AI Studio (project BESS) shows $50.81 for Aug 30 -
+Sep 26: $35.95 on 3.1 Flash-Lite, $12.30 on 3.5 Flash-Lite. Railway is
+under its $5 minimum. Fixes: (1) the alert-channel trade classifier
+now skips caption-only messages with no digit, no $ticker, no trade
+verb and no reply parent; in 30 days that is 20,765 of 41,883 calls
+and none of the 910 trades (all 32 digit-free trades were replies or
+screenshots). (2) Profile deep rebuilds apply the 30-message floor and
+stamp a skipped profile as rebuilt; five near-silent members had
+returned empty responses 398 times in 30 days, and unstamped near-empty
+profiles held all six per-run rebuild slots. (3) The profile prompt no
+longer asks for racial_humor_score. Not changed: triage preview length
+(quality tradeoff) and the 4x daily profile cadence.

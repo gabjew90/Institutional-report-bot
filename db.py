@@ -1476,6 +1476,7 @@ from db_parts.chat import (  # noqa: E402,F401
     search_chat_messages_for_ask,
     set_catchup_watermark,
     set_chat_image_ocr,
+    stamp_profile_rebuild,
     sleeper_players_cache_age_hours,
     store_chat_message,
     upsert_sleeper_players,

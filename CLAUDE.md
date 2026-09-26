@@ -288,11 +288,11 @@ Do not hardcode the tape or the geopolitics in this file; both move daily. The l
 
 ## Cost Monitoring
 
-Based on actual token usage (Gemini Flash Lite at ~$0.10/M input, $0.40/M output):
-- Per pulse synthesis: ~$0.02
-- Per day ingestion (~150-200 PDFs): ~$0.30-0.50
-- Monthly total: ~$15-20 (Gemini + Railway $5)
-- Spend cap at ai.studio/spend — user hit $10 cap once, raised; keep in mind if 429 errors return.
+Measured 2026-09-26 from the AI Studio spend page (project **BESS**, `gen-lang-client-0723421357`, the bot's key) for Aug 30 - Sep 26: **$50.81 Gemini** ($35.95 gemini-3.1-flash-lite, $12.30 gemini-3.5-flash-lite, the rest other SKUs). Railway is ~$4 of usage against the $5 Hobby minimum (worker: ~377 MB, <0.01 vCPU, 0.5 GB volume).
+- gemini-3.1-flash-lite ($0.25/M in, $1.50/M out): PDF triage + deep analysis (~60M in / 3.8M out a month, recorded in `pdf_analyses`), the alert-channel trade classifier (`analyst_log/watcher.py`, pre-filtered 2026-09-26, was ~41,900 calls a month for ~900 trades), screenshot OCR.
+- gemini-3.5-flash-lite ($0.30/M in, $2.50/M out): /ask and the 6-hourly profile refresh. Neither records token counts; the spend page is the source.
+- Google Search grounding: 5,000 free a month across Gemini 3.x, then $14 per 1,000. /ask runs ~400 questions a month.
+- Spend cap at ai.studio/spend is $90/month. AI Studio also shows a prepay switch dated October 12 after which requests fail until credits are bought; that is the owner's billing action.
 
 ## Web embed integration — cross-repo boundary
 

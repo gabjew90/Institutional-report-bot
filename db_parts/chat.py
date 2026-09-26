@@ -145,6 +145,19 @@ def get_global_trader_ranks() -> tuple[dict[int, int], int]:
     return rank_by_uid, len(rows)
 
 
+def stamp_profile_rebuild(user_id: int, stamp: str) -> None:
+    """Mark a profile's deep rebuild as done without rewriting it. The
+    backfill uses this for members below the 30-message floor: with
+    nothing to rebuild from, an unstamped profile stays the oldest and
+    takes one of the run's six rebuild slots every run (2026-09-26)."""
+    conn = _db.get_connection()
+    conn.execute(
+        "UPDATE user_profiles SET last_full_rebuild_at = ? WHERE user_id = ?",
+        (stamp, int(user_id)),
+    )
+    conn.commit()
+
+
 def get_user_profile(user_id: int) -> dict | None:
     row = _db.get_connection().execute(
         "SELECT * FROM user_profiles WHERE user_id = ?", (int(user_id),)

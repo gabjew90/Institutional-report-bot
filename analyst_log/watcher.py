@@ -12,6 +12,7 @@ Flow per message:
      announce channel (`settings.analyst_test_announce_channel`).
 """
 
+import re
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Any
@@ -152,7 +153,11 @@ async def run_caller_catchup(
                             is_new = True
                             break
                 else:
-                    is_new = not db.analyst_trade_exists(msg.id, 0)
+                    is_new = (
+                        could_be_trade_caption(
+                            (msg.content or "").strip(),
+                            getattr(msg, "reference", None) is not None)
+                        and not db.analyst_trade_exists(msg.id, 0))
                 if is_new:
                     n_processed += 1
                 await watch_message(bot, msg, caller=caller)
@@ -525,6 +530,32 @@ def _derive_close_metrics(
         extracted["gain_source"] = "derived_from_price_and_open"
 
 
+# Pre-filter for the caption-only path (2026-09-26). Every message in an
+# alert channel went to Gemini: ~41,900 calls in 30 days for 910 trades,
+# about $16 of the month's $36 on gemini-3.1-flash-lite. Half of those
+# messages had no digit, no attachment and no reply parent, and none of
+# them was a trade; the 32 digit-free trades were all replies ("SOLD",
+# "All out of ARM") or screenshots. A $ticker or a trade verb still goes
+# to the model as a safety net (2,228 messages a month, 0 trades).
+_DIGIT_RE = re.compile(r"\d")
+_CASHTAG_RE = re.compile(r"\$[A-Za-z]{1,5}\b")
+_TRADE_VERB_RE = re.compile(
+    r"\b(bought|buy(ing)?|sold|sell(ing)?|cut(ting)?|trim(med|ming)?|"
+    r"clos(e|ed|ing)|open(ed|ing)?|entered|entry|add(ed|ing)?|all out|"
+    r"out of|took|taking|scal(p|ped)|long|short|calls?|puts?|leaps?)\b",
+    re.IGNORECASE,
+)
+
+
+def could_be_trade_caption(caption: str, is_reply: bool) -> bool:
+    """False only when a caption-only message cannot describe a trade:
+    not a reply, no digit, no $ticker, no trade verb."""
+    if is_reply:
+        return True
+    return bool(_DIGIT_RE.search(caption) or _CASHTAG_RE.search(caption)
+                or _TRADE_VERB_RE.search(caption))
+
+
 async def watch_message(
     bot: discord.Client,
     message: discord.Message,
@@ -595,6 +626,10 @@ async def watch_message(
     author_name = (
         getattr(message.author, "display_name", None) or message.author.name
     )
+
+    if not message.attachments and not could_be_trade_caption(
+            caption, getattr(message, "reference", None) is not None):
+        return
 
     # Reply-chain context: if this message is a Discord reply, fetch
     # the parent's caption so terse follow-ups like "closed" or "sold

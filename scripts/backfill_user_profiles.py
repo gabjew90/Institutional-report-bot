@@ -151,7 +151,7 @@ Per-section quick reference, all following the universal rule:
 - **Retarded takes:** keep prior items that aren't stale. Add new specific takes from the new messages. Resolved boasts that aged badly stay even after they age out, because the resolution itself is the joke.
 - **Recent trades:** keep open positions. Update them if they closed in the new window (add the outcome — savage if it lost, respectful if it won). Add new trades that appeared in the new messages. Drop trades older than ~30 days unless the room is still riffing on them.
 - **Recent personal life:** keep prior items. Add new details revealed in the new messages. Update an item if there's a clear status change ("wife came back," "got a new job," etc.). Drop details older than ~60 days that haven't been re-mentioned. **EXCEPTION — durable identity dimensions are exempt from the 60-day decay.** A recurring lifestyle dimension (fitness routine, sport, job, family situation, health regimen, a hobby the room knows them for) is IDENTITY, not news — it stays in the profile as long as it keeps surfacing anywhere in their chat, even at low frequency. 2026-07-10 failure this rule exists for: ZHawk's dossier carried zero fitness content while his chat had 46 fitness messages — a 2:55 marathon PR, daily sauna for years, Whoop, HIIT evangelism, peptides — because the material peaked outside one refresh window and decayed. The roast bot then had nothing but his trading losses to work with, and the room called it "lame." Personal color is the roast material hierarchy's TOP tier — this section must never be thinner than the chat supports (4-6 items; prefer NON-trading color; money-adjacent items like account-reset rituals don't count toward the 4).
-- **trader_score / racial_humor_score:** hold by default for racism — shift only when new evidence justifies a meaningful move. For trader_score, RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 21-day points ledger decays automatically — a documented win scores 2 pts for its first 7 days, 1 pt from day 8 to 21, then stops scoring. The final = `clip(chatter_base, 50) × activity_factor + receipt_points` (no upper cap — top traders separate by receipts). If last week the user documented 8 wins (16 pts at full credit) and posts nothing new, those same wins decay to 8 pts (half credit) the following week and 0 after three — the score drifts down unless the wins keep coming. That's the decay mechanism working as designed.
+- **trader_score:** RECOMPUTE from scratch each refresh. The chatter base is re-read from the current MESSAGES window (not carried forward) and the 21-day points ledger decays automatically — a documented win scores 2 pts for its first 7 days, 1 pt from day 8 to 21, then stops scoring. The final = `clip(chatter_base, 50) × activity_factor + receipt_points` (no upper cap — top traders separate by receipts). If last week the user documented 8 wins (16 pts at full credit) and posts nothing new, those same wins decay to 8 pts (half credit) the following week and 0 after three — the score drifts down unless the wins keep coming. That's the decay mechanism working as designed.
 - **trader_rationale:** REWRITE each refresh from the current ledger + chat. The structure is fixed (chatter description / receipts described qualitatively), but the prose re-derives every time. Don't carry forward stale framings from a prior refresh. The rationale is QUALITATIVE — no numbers (no point counts, no score values, no win/loss counts). See the trader_rationale spec for the no-numbers rule.
 
 **Same output length** as a fresh profile. Don't pad to look like more work was done. If the only change is one new line in Recent trades, that's the entire diff — preserve everything else exactly. **One exemption: Recent personal life may GROW** — when it's under its 4-6 item floor and the new window (or a durable dimension the prior profile missed) supports more items, add them. Length parity must never be the reason the personal-color section stays thin.
@@ -164,7 +164,6 @@ The output schema is identical to a from-scratch profile — same five profile_t
 ### PRIOR SCORES
 - trader_score: {prior_trader_score}
 - trader_rationale: {prior_trader_rationale}
-- racial_humor_score: {prior_racial_humor_score}
 
 ---
 
@@ -397,12 +396,11 @@ Don't invent OCR content. Only cite what's actually in the `[image-OCR: ...]` bl
 
 ## OUTPUT FORMAT — STRICT JSON, no prose, no markdown wrapper
 
-Output a single JSON object with exactly five fields, IN THIS ORDER:
+Output a single JSON object with exactly four fields, IN THIS ORDER:
 
 ```
 {{
   "chatter_base": <integer 0-50, your chatter-bracket placement>,
-  "racial_humor_score": <integer 0-100>,
   "trader_rationale": "<2-3 sentences in the room's voice, see below>",
   "racism_rationale": "<1-2 sentences in the room's voice, see below>",
   "profile_text": "<full markdown profile per the schema above — ALL 5 named sections>"
@@ -465,15 +463,14 @@ What it covers: the rank-defining racial-humor BEHAVIOR — one concrete, source
 
 **Thin-evidence calibration (BINDING — anti-hallucination):** the racism rationale must SCALE to the evidence in the messages provided. Concrete rules:
 
-- If the messages below contain **zero verbatim slurs and zero specific race-edged jokes/stereotypes**, the rationale CANNOT use phrases like "high-volume offender," "uses slurs as casual punctuation," "saturated with race-based mockery," "uncensored racial slurs," or any framing that implies dominant volume. Score caps at the bracket the actual evidence supports — typically 0-35.
-- If the prior profile from a previous refresh contained heavy claims but the NEW messages show no slurs and no race-edged content, the new rationale MUST recalibrate down. Silence is signal in the racism dimension — a user who went 30 days without race-edged content gets a sparser rationale and a lower score, regardless of what their prior profile said. Do NOT carry forward racism claims from prior profiles when the new evidence doesn't support them.
-- The score must be defensible from the messages alone. Ask before emitting: "if a reader saw only this user's messages from the window, would they call them an N/100 racism user?" If the messages can't support the number, lower it.
+- If the messages below contain **zero verbatim slurs and zero specific race-edged jokes/stereotypes**, the rationale CANNOT use phrases like "high-volume offender," "uses slurs as casual punctuation," "saturated with race-based mockery," "uncensored racial slurs," or any framing that implies dominant volume.
+- If the prior profile from a previous refresh contained heavy claims but the NEW messages show no slurs and no race-edged content, the new rationale MUST recalibrate down. Silence is signal in the racism dimension — a user who went 30 days without race-edged content gets a sparser rationale, regardless of what their prior profile said. Do NOT carry forward racism claims from prior profiles when the new evidence doesn't support them.
 
 **Anti-patterns:**
 - *"High volume of racially-edged content."* (generic, dry)
 - *"Frequent slur user with stereotyping patterns."* (corporate)
 - *"Composite score driven by both slurs and broader humor."* (just restates the score)
-- ANY restatement of the 0-100 score itself ("70/100 humor score") — that number stays internal.
+- ANY rank or count ("#4 on the board", "41 race-edged messages") — the bot shows those from the board itself.
 - A single sentence — too thin.
 
 ### Tone shared across both
@@ -560,17 +557,6 @@ State the reasoning in trader_rationale — 3 to 5 sentences, qualitative prose 
 
 **trader_score = SKILL × ACTIVITY-CREDIBILITY + receipts.** The chatter bracket reflects skill (behavioral quality on the visible chat). Activity then acts as a CREDIBILITY FACTOR on that chatter — a user with very thin chat history can't be confidently bracketed in the 40-50 "talks-good-game" range no matter how sharp the few lines look, because there isn't enough sample to verify the pattern. Python applies the credibility multiplier (`min(1, msg_count / 300)`) downstream; you don't pre-discount the bracket. Just pick the bracket that fits the chat you SEE, and let the system handle the activity scaling. msg_count is also visible in the dossier header for reference.
 
-**racial_humor_score brackets (0-100)** — the canonical score for race-edged content from this user. Internal calibration only; the bot never quotes the raw number. Score the FULL picture (slurs + stereotypes + dog whistles + race-based mockery + unprompted racial references), not just literal slurs. Self-deprecating jokes about the user's OWN race and factual mentions of races/ethnicities in geopolitics or news don't count.
-
-- **0-15:** Clean. No race-edged content in the window. Lurkers default here.
-- **16-35:** Occasional. Joins common room jokes when prompted, doesn't lead, no slurs.
-- **36-55:** Regular. Race-edged humor is part of their normal voice. Some stereotyping. One or two censored slurs.
-- **56-75:** Heavy. Racial humor is a defining feature. Multiple slurs (including uncensored).
-- **76-100:** Dominant. Race-edged content saturates the messages. Slurs uncensored and frequent. Specific groups targeted in a sustained way.
-
-Anchor against THIS user's messages. Zero examples = 0-15.
-
-**Activity multiplier applies to racism too.** Same as trader_score: a user with 45 visible messages can't certify a Dominant-bracket pattern (76-100) over volume even if those 45 lines are saturated — there isn't enough sample to confirm the behavior is sustained rather than episodic. Pick the bracket that fits the chat you SEE; Python applies the same `min(1, msg_count / 300)` credibility multiplier downstream. A user with 50 msgs and a 95 bracket call gets stored as ~16; with 300+ msgs the same call stays at 95. Don't pre-discount the bracket call yourself — the math is automatic.
 
 ---
 
@@ -1497,13 +1483,11 @@ async def _generate_profile(
         )
         sample = _stratified_sample(new_messages, dynamic_cap)
         ts = existing_profile.get("trader_score")
-        rh = existing_profile.get("racial_humor_score")
         prior_profile_block = PRIOR_PROFILE_TEMPLATE.format(
             last_seen=last_seen or "(unknown)",
             prior_profile_text=existing_profile.get("profile_text") or "(no prior text)",
             prior_trader_score=ts if ts is not None else "n/a",
             prior_trader_rationale=existing_profile.get("trader_rationale") or "(none)",
-            prior_racial_humor_score=rh if rh is not None else "n/a",
         )
     else:
         # Cold-start: bounded tighter than the incremental hard cap. A
@@ -1718,7 +1702,6 @@ async def _generate_profile(
             # class — Gemini physically cannot output the receipt
             # component because it's not in the schema.
             "chatter_base": types.Schema(type=types.Type.INTEGER),
-            "racial_humor_score": types.Schema(type=types.Type.INTEGER),
             "trader_rationale": types.Schema(
                 type=types.Type.STRING,
                 # 3-5 dense sentences of savage-but-hilarious with
@@ -1744,7 +1727,6 @@ async def _generate_profile(
         },
         required=[
             "chatter_base",
-            "racial_humor_score",
             "trader_rationale",
             "racism_rationale",
             "profile_text",
@@ -2216,10 +2198,22 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 has_existing_profile = uid in existing_profiles
                 if not force and uid in rebuild_due:
                     # Deep-rebuild pass: 90d window, cold-start, bypasses
-                    # both the delta gate and the floor (an existing
-                    # profile is already in the ranking — same rationale
-                    # as force mode).
-                    eligible.append((uid, by_user_deep.get(uid) or msgs))
+                    # the delta gate. It keeps the same 30-message floor
+                    # the dormant-rebuild path below uses (2026-09-26):
+                    # without it, five near-silent members (9-27
+                    # messages) got an empty response every run, the
+                    # empty run never stamped last_full_rebuild_at, so
+                    # they were due again next run — 398 paid, discarded
+                    # calls in 30 days.
+                    _deep = by_user_deep.get(uid) or msgs
+                    if len(_deep) < FORCE_LIFETIME_FLOOR:
+                        # Stamped as rebuilt: nothing to rebuild from, and
+                        # an unstamped profile stays oldest and takes one
+                        # of the run's 6 rebuild slots every run.
+                        db.stamp_profile_rebuild(uid, _rebuild_stamp)
+                        skipped_lurkers += 1
+                        continue
+                    eligible.append((uid, _deep))
                     continue
                 if force:
                     # In force mode: existing profile bypasses the floor
@@ -2253,6 +2247,8 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 _deep_msgs = by_user_deep.get(uid) or []
                 if len(_deep_msgs) >= FORCE_LIFETIME_FLOOR:
                     eligible.append((uid, _deep_msgs))
+                else:
+                    db.stamp_profile_rebuild(uid, _rebuild_stamp)
             eligible.sort(key=lambda t: -len(t[1]))  # most active first
 
             # Optional hard cap (default 0 = no cap; rely on threshold)
@@ -2556,12 +2552,8 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             # chatter) gets rescored to 2 cleanly.
                             prior = existing_profiles.get(uid) or {}
                             prior_trader = prior.get("trader_score")
-                            prior_humor = prior.get("racial_humor_score")
                             thin_user = _score_n < TRADER_SCORE_ACTIVITY_FULL_CREDIT_MSGS
-                            if thin_user and (
-                                prior_trader is not None
-                                or prior_humor is not None
-                            ):
+                            if thin_user and prior_trader is not None:
                                 try:
                                     _ledger_fb = db.compute_member_points(uid, days=21)
                                     _receipt_fb = int(_ledger_fb.get("points") or 0)
@@ -2589,16 +2581,6 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                     )
                                 else:
                                     rescored_trader = None
-                                if prior_humor is not None:
-                                    rescored_humor = max(
-                                        0,
-                                        min(
-                                            100,
-                                            round(int(prior_humor) * _mult_fb),
-                                        ),
-                                    )
-                                else:
-                                    rescored_humor = None
                                 try:
                                     # Pass the EXISTING profile_text
                                     # so the upsert's NOT-NULL on that
@@ -2615,12 +2597,10 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                             msgs[-1]["timestamp"] if msgs else None
                                         ),
                                         trader_score=rescored_trader,
-                                        racial_humor_score=rescored_humor,
                                     )
                                     print(
                                         f"    rescored {meta['display_name']} via fallback: "
-                                        f"trader {prior_trader}→{rescored_trader}, "
-                                        f"humor {prior_humor}→{rescored_humor}",
+                                        f"trader {prior_trader}→{rescored_trader}",
                                         flush=True,
                                     )
                                     n_failure_empty -= 1  # rescore counts as recovery
@@ -2898,15 +2878,11 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                 # (caller closes still in 14d window) keep their
                 # receipt component.
                 prior_trader = prior.get("trader_score")
-                prior_humor = prior.get("racial_humor_score")
                 # 2026-06-02 policy: no upper cap on trader_score. Dormant
                 # rescore preserves whatever receipts remain in window.
                 rescored_trader = (
                     max(0, _receipt_d)
                     if prior_trader is not None else None
-                )
-                rescored_humor = (
-                    0 if prior_humor is not None else None
                 )
                 # last_seen stays as the prior value — they haven't
                 # posted, so no new last_seen to record. Use prior
@@ -2921,7 +2897,6 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         message_count_at_update=0,
                         last_seen_message_at=last_seen,
                         trader_score=rescored_trader,
-                        racial_humor_score=rescored_humor,
                     )
                     n_dormant += 1
                 except Exception as d_err:
