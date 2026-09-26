@@ -3343,3 +3343,31 @@ is no higher. No fixed ceiling. Spec section 8 amended with the reason;
 the scoreboard's per-day column is now the rate comparison only, and
 the verdict names any counted day left out for a grader disagreement.
 Code-reviewed, one finding fixed.
+
+## 2026-09-25 — Omnipulse replay of 9/21, 9/23, 9/24 under the new editor rules
+
+Editor re-run on each day's stored cards with the new editor.md and the
+dated pack, then graded (shadow/<date>.md replaced; originals in
+pilot-data history).
+
+| day | shadow before | shadow replay | production |
+|---|---|---|---|
+| 9/21 | 87% (0 unsupported) | 87% (0) | 47% |
+| 9/23 | 93% (0) | 80% (0) | 80% |
+| 9/24 | 87% (1) | 100% (0) | 73% |
+
+Pooled: 40/45 faithful either way, unsupported 1 -> 0. The targeted
+misses are gone (staged Morgan Stanley disagreement, stale streak,
+two-bank trailing attribution, 'may' as fact). Five distortions remain,
+all precision misreads on different sentences: a claim credited to
+SocGen that Goldman made, NDX stated as S&P, 'the belly' written as
+'short-dated rates', a pause written as a trigger, HSBC's base case
+written as its ceiling. One sentence is 6.7 points of a 15-sentence
+sample, so 80-100% is inside sampling variance.
+
+Grader variance, measured by accident: the grouping and brief-fidelity
+inputs did not change (readers were not re-run), yet grouping moved
+20% -> 36% on 9/23 and 17% -> 6% on 9/24, and 9/21's briefs went from 0
+to 1 material distortion. Same input, different grade. The 10% grouping
+threshold sits inside that noise, so single-day grouping verdicts are
+not evidence either way. Raised with the owner.
