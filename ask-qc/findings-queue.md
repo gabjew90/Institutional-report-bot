@@ -673,3 +673,15 @@ all — no wrong content shipped either way, so not actionable as-is.
 (pure banter, no ticker mentioned) and zero impact on the shipped answer.
 This is at least the fifth sighting of the `LINE` shape across
 2026-09-19/20/22/23; still unfixed, still harmless so far.
+
+## 2026-09-25
+
+no findings — 36/36 graded, all CLEAN, 0 concern, 0 fail, 0 infra, 0
+ungraded. Full reasoning in `pulse-data/ask-qc/2026-09-25.claude.md`.
+
+`lookup_market_price` fired on stray non-ticker capitalized chat tokens
+four more times today (`LINE` alone at 18:52:56; `LINE/HOLY/FUCK/IM/SO/HARD`
+at 19:07:53; `LINE/NET` at 19:20:24; `LINE/SV/FAKE/NEWS` at 19:29:31), all
+`status=ok` and harmless. Same shape first flagged 2026-09-19/20/22/23 — now
+a five-day-running, still-unfixed cost/efficiency issue, no wrong answer
+yet.
