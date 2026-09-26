@@ -3429,3 +3429,13 @@ memory, emptied by every deploy. The feed now keeps a disk copy on
 keeps that copy current, and when the feed is down for a date it
 covers the sheet shows FRED's majors with "full list unavailable"
 instead of an empty block.
+
+2026-09-26 trade detector on gemini-2.5-flash-lite: rejected. Replay of
+30 days of caption-only alert messages that pass the pre-filter (369
+logged trades, 900 sampled non-trades). The current model re-run found
+310 of the 369; 2.5 Flash-Lite found 246 and missed 77 that 3.1 caught,
+including plain ones ("Out of mstr 132c", "gg just closed CRDO 192.5c").
+A ~20% loss of logged trades would move the trader ledger and ranks for
+about $4-5 a month. Not switched. Side finding: 3.1 re-run on the same
+captions reproduced only 310 of its own 369 calls (the replay uses
+today's date for the prompt, which accounts for part of it).
