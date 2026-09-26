@@ -78,6 +78,16 @@ FINAL_GATE_HARD_KINDS = {
     "consensus-amnesia",
 }
 
+def _omni():
+    """scripts/omnipulse_body.py, importable both as a script sibling
+    and from the repo root (tests)."""
+    try:
+        from scripts import omnipulse_body as m
+    except ImportError:  # run as scripts/pulse_driver.py
+        import omnipulse_body as m
+    return m
+
+
 MAX_DRAFT_REROLLS = 2
 MAX_SCRUB_ITERS = 2
 # Redesign sequencing step 3 (spec §6): repair rounds the adversarial
@@ -152,8 +162,75 @@ class Driver:
         return p.returncode, out
 
     # ------------------------------------------------------------------
+    # omnipulse mode (spec 2026-09-26-omnipulse-body-in-production.md)
+    # ------------------------------------------------------------------
+    def omnipulse_mode(self) -> bool:
+        try:
+            return (self.tmp / "pulse_mode.txt").read_text(
+                encoding="utf-8").strip() == "omnipulse"
+        except OSError:
+            return False
+
+    def _body_path(self) -> Path:
+        return self.tmp / "omnipulse_body.md"
+
+    def _headline_path(self) -> Path:
+        return self.tmp / "omnipulse_headline.txt"
+
+    def _splice_body(self, path: Path) -> bool:
+        """Put the saved Omnipulse headline and body into `path`. The
+        body is the Omnipulse editor's; DRAFT and EDIT may not change
+        it, so it is re-applied after each of them."""
+        try:
+            body = self._body_path().read_text(encoding="utf-8")
+            head = self._headline_path().read_text(encoding="utf-8").strip()
+            path.write_text(_omni().splice(path.read_text(encoding="utf-8"),
+                                           head, body), encoding="utf-8")
+            return True
+        except (OSError, ValueError) as e:
+            print(f"omnipulse splice into {path.name} failed: {e}")
+            return False
+
+    def _body_headings(self) -> list[str]:
+        try:
+            return re.findall(r"(?m)^### .+$",
+                              self._body_path().read_text(encoding="utf-8"))
+        except OSError:
+            return []
+
+    # ------------------------------------------------------------------
     # gates
     # ------------------------------------------------------------------
+    def gate_omnipulse(self, date: str | None = None) -> str:
+        """STEP 2.6 — use today's Omnipulse as the pulse body, or run the
+        classic pulse. Writes pulse_mode.txt either way; every later
+        omnipulse branch reads it."""
+        o = _omni()
+        mode_file = self.tmp / "pulse_mode.txt"
+        if not o.ENABLED:
+            mode_file.write_text("classic", encoding="utf-8")
+            return self._decide("omnipulse", "CLASSIC", "switch off")
+        if date is None:
+            from zoneinfo import ZoneInfo
+            date = datetime.datetime.now(
+                ZoneInfo("America/New_York")).date().isoformat()
+        code, out = self._run([
+            "scripts/omnipulse_body.py", "fetch", "--date", date,
+            "--body", str(self._body_path()),
+            "--headline", str(self._headline_path()),
+        ])
+        if code == 0:
+            # STITCH (cashtag scrub, ETF normalization) runs on the draft
+            # before EDIT, and the lint gate re-splices this saved body
+            # after EDIT; stitch it once here so the re-splice keeps it.
+            body = str(self._body_path())
+            self._run(["scripts/pulse_stitch.py", body, body])
+            mode_file.write_text("omnipulse", encoding="utf-8")
+            return self._decide("omnipulse", "OMNIPULSE", out.strip()[-300:])
+        mode_file.write_text("classic", encoding="utf-8")
+        return self._decide("omnipulse", "CLASSIC",
+                            out.strip()[-300:] or f"exit {code}")
+
     def gate_holiday(self) -> str:
         skip = self.tmp / "holiday_skip.txt"
         if skip.exists():
@@ -191,10 +268,13 @@ class Driver:
         """STEP 4.5 — runs the validator itself, applies the literal
         exit-code decision table, tracks the re-roll budget."""
         out_json = self.tmp / "draft_validation.json"
+        omni = self.omnipulse_mode()
+        if omni:
+            self._splice_body(self.tmp / "draft.md")
         code, _ = self._run([
             "scripts/pulse_draft_validate.py",
             str(self.tmp / "draft.md"), str(self.tmp / "ctx.json"),
-            str(out_json),
+            str(out_json), *(["--omnipulse"] if omni else []),
         ])
         rerolls = self.state["budgets"].get("draft_rerolls", 0)
         if code == 3:
@@ -268,6 +348,10 @@ class Driver:
         """STEP 5.5/5.7.1 — run lint, read the decision sidecar (the
         SINGLE authority on hard vs soft), emit the dispatch token."""
         out_json = self.tmp / "lint_report.json"
+        # EDIT ran just before this gate: undo anything it did to the
+        # Omnipulse body. SCRUB (after this gate) may still fix wording.
+        if self.omnipulse_mode():
+            self._splice_body(self.tmp / "final.md")
         self._run([
             "scripts/pulse_lint.py", str(self.tmp / "final.md"),
             str(out_json), str(self.tmp / "ctx.json"),
@@ -336,6 +420,7 @@ class Driver:
             "scripts/pulse_draft_validate.py",
             str(self.tmp / "final.md"), str(self.tmp / "ctx.json"),
             str(out_json),
+            *(["--omnipulse"] if self.omnipulse_mode() else []),
         ])
         final_v = self._viols(out_json)
         draft_v = self._viols(self.tmp / "draft_validation.json")
@@ -463,9 +548,22 @@ class Driver:
             return re.sub(r"\s+", " ", s or "").strip().lower()
 
         doc = _norm(final_md)
+        # Omnipulse mode: the body was checked against the source PDFs by
+        # the pilot's citation verifier; this gate covers RECAP and WHAT
+        # TO WATCH. Findings quoting the body are recorded, not acted on.
+        body_norm = ""
+        if self.omnipulse_mode():
+            m = re.search(r"(?ms)^## (?:\d+\. )?INSIGHTS & ALPHA.*?(?=^## |\Z)",
+                          final_md)
+            body_norm = _norm(m.group(0)) if m else ""
+        out_of_scope = []
         hard, soft, demoted = [], [], 0
         for f in findings:
             if not isinstance(f, dict):
+                continue
+            q = _norm(f.get("quote") or "")
+            if body_norm and q and q in body_norm:
+                out_of_scope.append(f)
                 continue
             # Severity is GATE-ASSIGNED from the kind — the checker's
             # own severity field, if present, is ignored (2026-08-28:
@@ -487,6 +585,9 @@ class Driver:
             else:
                 soft.append(f)
 
+        if out_of_scope:
+            (self.tmp / "adversarial_omnipulse_body.json").write_text(
+                json.dumps(out_of_scope, indent=1), encoding="utf-8")
         budgets = self.state.setdefault("budgets", {})
         repairs = budgets.get("adversarial_repairs", 0)
         soft_repairs = budgets.get("adversarial_soft_repairs", 0)
@@ -564,8 +665,8 @@ class Driver:
         a skipped gate DETECTABLE instead of silent."""
         problems: list[str] = []
         gates = self.state.get("gates", {})
-        required = ["holiday", "volume", "draft_validate", "lint",
-                    "final_validate", "strip", "adversarial"]
+        required = ["holiday", "volume", "omnipulse", "draft_validate",
+                    "lint", "final_validate", "strip", "adversarial"]
         for g in required:
             if g not in gates:
                 problems.append(f"gate never consulted: {g}")
@@ -621,6 +722,23 @@ class Driver:
         if not (self.tmp / "draft.md").exists():
             problems.append("draft.md missing (forensics artifact "
                             "required for commit)")
+        if self.omnipulse_mode() and final.exists():
+            heads = self._body_headings()
+            lost = [h for h in heads
+                    if h not in final.read_text(encoding="utf-8")]
+            if heads and lost:
+                # A late pass (SCRUB, FIXUP) broke a theme. Restore the
+                # saved body rather than block: a blocked preflight means
+                # no pulse at all. SCRUB's wording fixes to the body are
+                # lost; lint findings stay recorded for QC.
+                self._splice_body(final)
+                self.record("omnipulse_body_restored",
+                            f"missing before restore: {lost[:3]}")
+                lost = [h for h in heads
+                        if h not in final.read_text(encoding="utf-8")]
+            if not heads or lost:
+                problems.append(f"omnipulse body incomplete in final.md "
+                                f"(missing: {lost[:3] or 'saved body'})")
         if problems:
             for p in problems:
                 print(f"  BLOCK: {p}")
@@ -655,6 +773,7 @@ def main() -> int:
             "holiday": d.gate_holiday,
             "volume": d.gate_volume,
             "draft_validate": d.gate_draft_validate,
+            "omnipulse": d.gate_omnipulse,
             "lint": d.gate_lint,
             "scrub_relint": d.gate_scrub_relint,
             "strip": d.gate_strip,

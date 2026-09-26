@@ -1264,11 +1264,28 @@ def validate(md_text: str, ctx: dict) -> list[dict]:
     return violations
 
 
+# Checks about which themes the body covers and how it words them. In
+# omnipulse mode (spec 2026-09-26-omnipulse-body-in-production.md) the
+# body is the Omnipulse editor's, fixed before DRAFT runs, so DRAFT and
+# EDIT cannot act on these and a re-roll would only burn budget. RECAP,
+# WHAT TO WATCH, _LEANS and the release/date checks still apply.
+OMNIPULSE_EXEMPT_KINDS = {
+    "duplicate-sibling-sections",
+    "contrarian-buried-in-appendix",
+    "underweighted-all-dropped",
+    "stance-split-no-named-debate",
+    "numeric-scope-drift",
+}
+
+
 def main() -> int:
+    omnipulse = "--omnipulse" in sys.argv
+    if omnipulse:
+        sys.argv = [a for a in sys.argv if a != "--omnipulse"]
     if len(sys.argv) < 4:
         print(
             "usage: pulse_draft_validate.py <draft_md> <ctx_json> "
-            "<output_json>",
+            "<output_json> [--omnipulse]",
             file=sys.stderr,
         )
         return 2
@@ -1291,6 +1308,9 @@ def main() -> int:
         return 1
 
     violations = validate(md, ctx)
+    if omnipulse:
+        violations = [v for v in violations
+                      if v.get("kind") not in OMNIPULSE_EXEMPT_KINDS]
     hard = [v for v in violations if v.get("kind") in HARD_VIOLATION_KINDS]
     soft = [v for v in violations if v.get("kind") not in HARD_VIOLATION_KINDS]
 

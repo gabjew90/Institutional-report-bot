@@ -18,6 +18,7 @@ Daily Market Pulse synthesis using GitHub as the message bus. **PRODUCTION RUN**
 
 Pipeline stages in this fire:
 
+0. **Omnipulse gate** (STEP 2.6): on an omnipulse day the Omnipulse supplies MAIN EVENT and BRIEFS, adjudication is skipped, and the steps below write and check RECAP and WHAT TO WATCH around it.
 1. **Adjudicate** the top themes via parallel sub-agents. Each sub-agent sees only one theme's evidence and emits structured JSON. Lint rejects any sub-agent output that fabricates evidence quotes, bank attributions, or stance counts.
 2. **DRAFT** the analytical pulse from research analyses + the adjudicated themes block.
 3. **STITCH + EDIT** the draft (mechanical normalization + AUDIT sub-agent fresh-eyes editorial pass).
@@ -637,6 +638,31 @@ PYEOF
 
 **If `/tmp/press_time_note.txt` exists, append its full content to the DRAFT prompt input in STEP 4** (after the adjudication block, before the analyses). The note is binding on DRAFT's framing.
 
+## STEP 2.6 — Omnipulse gate (mandatory)
+
+Spec: `docs/superpowers/specs/2026-09-26-omnipulse-body-in-production.md`.
+On an **omnipulse** day the pulse's headline, THE MAIN EVENT and BRIEFS come
+from the Omnipulse (the claim-card pilot's editor output on `pilot-data`);
+this routine still writes RECAP, WHAT TO WATCH and `## _LEANS`. On a
+**classic** day nothing below changes. The switch is `ENABLED` in
+`scripts/omnipulse_body.py`; the driver decides, not you.
+
+```bash
+python3 scripts/pulse_driver.py gate omnipulse 2>&1 | tee -a /tmp/routine.log
+```
+
+The gate waits up to 20 minutes for today's Omnipulse. Act on the token:
+
+- **`DECISION: OMNIPULSE`** — `/tmp/pulse_mode.txt` says `omnipulse`;
+  `/tmp/omnipulse_body.md` and `/tmp/omnipulse_headline.txt` hold the body.
+  Follow every "omnipulse day" instruction below.
+- **`DECISION: CLASSIC`** — run the routine exactly as written, ignoring the
+  omnipulse-day instructions.
+
+```bash
+python3 /tmp/progress.py "STEP_2_6_OMNIPULSE_GATE_DONE"
+```
+
 ## STEP 3 — Inspect theme coverage
 
 ```bash
@@ -645,6 +671,13 @@ python3 /tmp/progress.py "STEP_3_DONE"
 ```
 
 ## STEP 3.5 — Adjudicate selected themes (parallel sub-agents)
+
+**Omnipulse day: skip STEP 3.5 entirely.** The themes are the Omnipulse's.
+Write an empty adjudication file and go straight to STEP 4:
+
+```bash
+echo '{"themes": [], "skipped": "omnipulse day"}' > /tmp/adjudication.json
+```
 
 ### Step 3.5.1 — Prepare per-theme inputs
 
@@ -1412,6 +1445,26 @@ evidence supports):
 <contents of /tmp/adjudication.json's `themes` array, pretty-printed>
 ```
 
+**Omnipulse day:** append this block, with the contents of
+`/tmp/omnipulse_body.md` where marked, to the DRAFT input:
+
+```
+OMNIPULSE DAY. THE MAIN EVENT and BRIEFS are already written; they are
+below. Do not write themes of your own and do not edit these.
+- Under `## 2. INSIGHTS & ALPHA` write exactly one line: <<OMNIPULSE_BODY>>
+- Write `## 1. RECAP` and `## 3. WHAT TO WATCH` as usual. Do not repeat
+  the supplied themes' analysis there.
+- Write `## _LEANS` from trades a named desk explicitly calls in the
+  supplied themes (the first theme is THE MAIN EVENT; its desk call, if
+  any, comes first). If the supplied themes call no trade, use desk
+  calls from the research as on any other day.
+
+SUPPLIED THEMES:
+<contents of /tmp/omnipulse_body.md>
+```
+
+The driver splices the body in at STEP 4.5 whatever DRAFT wrote there.
+
 Save to `/tmp/draft.md` via Python.
 
 ```bash
@@ -1523,6 +1576,10 @@ Save the assembled prompt (SYSTEM + USER concatenated) to `/tmp/agent_io/edit-pr
 mkdir -p /tmp/agent_io
 # (write the assembled prompt to /tmp/agent_io/edit-prompt.txt via Python)
 ```
+
+**Omnipulse day:** add to the EDIT prompt: "`## 2. INSIGHTS & ALPHA` is
+locked and will be restored verbatim after you return; edit RECAP and WHAT
+TO WATCH only." The STEP 5.5 lint gate restores the body before linting.
 
 Dispatch ONE Agent call with the assembled prompt. The sub-agent applies the full AUDIT pipeline (RECAP rebuild, Pass A cull, Pass A.5 density, Pass B close, voice scrub) and returns the revised markdown. Save the response to `/tmp/final.md`.
 
@@ -1851,6 +1908,13 @@ def _read_target_channels() -> str:
     except FileNotFoundError:
         return ''
 
+# Omnipulse trial (spec 2026-09-26): which pipeline wrote MAIN EVENT and
+# BRIEFS. Read from the driver's mode file, never from model judgment.
+try:
+    _mode = open('/tmp/pulse_mode.txt').read().strip() or 'classic'
+except FileNotFoundError:
+    _mode = 'classic'
+frontmatter_lines.append(f'body_source: {_mode}')
 target_channels = _read_target_channels()
 if target_channels:
     frontmatter_lines.append(f"target_channels: {target_channels}")

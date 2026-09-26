@@ -3453,3 +3453,16 @@ chart commands skipped, ticker and strike must appear in the message,
 its reply parent or the author's history, a member's name is never a
 ticker, reactions and questions are not trades. Clear trades both paths
 still miss: "Sold it all", "I just longed meta 745".
+
+2026-09-26 Omnipulse body in production: built, switch OFF. Spec
+docs/superpowers/specs/2026-09-26-omnipulse-body-in-production.md
+(owner: "Go"). scripts/omnipulse_body.py fetches pilot/shadow/<date>
+.clean.md from the raw host (api.github.com is refused by the routine's
+proxy; the first build used it and review caught it), checks it, and
+converts it to the draft's INSIGHTS section. pulse_driver.py gains an
+omnipulse gate (STEP 2.6), re-splices the body after DRAFT and after
+EDIT, exempts theme-choice checks, keeps adversarial findings to
+RECAP/WATCH, and restores the body at preflight. Dry run on 9/25's real
+draft and context with the 9/24 Omnipulse: validator clean, lint 2 soft,
+no SCRUB, final validation clean. Pending owner: BRIEFS length (the
+Omnipulse writes 8-11 themes) and flipping ENABLED for Monday 9/28.

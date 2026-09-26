@@ -105,9 +105,9 @@ def test_happy_path_and_preflight_pass():
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         _seed(tmp)
-        for g in ("holiday", "volume", "draft_validate", "lint"):
+        for g in ("holiday", "volume", "omnipulse", "draft_validate", "lint"):
             dec, out, _ = drv(tmp, "gate", g)
-            assert dec in ("CONTINUE", "SKIP_SCRUB"), (g, dec, out)
+            assert dec in ("CONTINUE", "SKIP_SCRUB", "CLASSIC"), (g, dec, out)
         dec, out, _ = drv(tmp, "gate", "final_validate")
         assert dec == "CONTINUE", (dec, out)
         dec, _, _ = drv(tmp, "gate", "strip")
@@ -125,7 +125,7 @@ def test_skipped_gate_detected():
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         _seed(tmp)
-        for g in ("holiday", "volume", "draft_validate"):
+        for g in ("holiday", "volume", "omnipulse", "draft_validate"):
             drv(tmp, "gate", g)
         # lint, final_validate, strip never consulted
         dec, out, code = drv(tmp, "preflight")
@@ -173,7 +173,7 @@ def test_fixup_path_and_recheck_enforcement():
             "against the $0.75 consensus, a clean beat",
             "this morning. No consensus figures were posted")
         _seed(tmp, final=bad_final)
-        for g in ("holiday", "volume", "draft_validate", "lint"):
+        for g in ("holiday", "volume", "omnipulse", "draft_validate", "lint"):
             drv(tmp, "gate", g)
         dec, out, _ = drv(tmp, "gate", "final_validate")
         assert dec == "DISPATCH_FIXUP", (dec, out)
@@ -198,7 +198,7 @@ def test_scrub_relint_required_when_dispatched():
         # a semicolon in prose = hard lint -> DISPATCH_SCRUB
         _seed(tmp, final=FINAL_OK.replace(
             "lede paragraph here.", "lede; with a semicolon."))
-        for g in ("holiday", "volume", "draft_validate"):
+        for g in ("holiday", "volume", "omnipulse", "draft_validate"):
             drv(tmp, "gate", g)
         dec, out, _ = drv(tmp, "gate", "lint")
         assert dec == "DISPATCH_SCRUB", (dec, out)
@@ -235,7 +235,7 @@ def test_adversarial_missing_verdict_blocks():
         _seed(tmp)
         dec, out, _ = drv(tmp, "gate", "adversarial")
         assert dec == "BLOCK", (dec, out)
-        for g in ("holiday", "volume", "draft_validate", "lint",
+        for g in ("holiday", "volume", "omnipulse", "draft_validate", "lint",
                   "final_validate", "strip"):
             drv(tmp, "gate", g)
         dec, out, _ = drv(tmp, "preflight")
@@ -259,7 +259,7 @@ def test_adversarial_hard_finding_dispatches_repair():
                            .read_text(encoding="utf-8"))
         assert len(items) == 1 and items[0]["kind"] == "unsupported-figure"
         # preflight must refuse the unfinished loop
-        for g in ("holiday", "volume", "draft_validate", "lint",
+        for g in ("holiday", "volume", "omnipulse", "draft_validate", "lint",
                   "final_validate", "strip"):
             drv(tmp, "gate", g)
         dec, out, _ = drv(tmp, "preflight")
@@ -331,7 +331,7 @@ def test_adversarial_soft_rule_applies_once():
         assert dec == "DISPATCH_SOFT_REPAIR", (dec, out)
         assert (tmp / "adversarial_soft_items.json").exists()
         # preflight refuses the unfinished soft loop
-        for g in ("holiday", "volume", "draft_validate", "lint",
+        for g in ("holiday", "volume", "omnipulse", "draft_validate", "lint",
                   "final_validate", "strip"):
             drv(tmp, "gate", g)
         dec, out, _ = drv(tmp, "preflight")
@@ -402,7 +402,7 @@ def test_adversarial_budget_ships_clean_and_records_residuals():
         md = (tmp / "final.md").read_text(encoding="utf-8")
         assert "Accuracy note" not in md, "reader must see nothing"
         assert (tmp / "adversarial_residuals.json").exists()
-        for g in ("holiday", "volume", "draft_validate", "lint",
+        for g in ("holiday", "volume", "omnipulse", "draft_validate", "lint",
                   "final_validate", "strip"):
             drv(tmp, "gate", g)
         dec, out, _ = drv(tmp, "preflight")
