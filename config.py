@@ -104,6 +104,11 @@ class Settings(BaseSettings):
     # purge job (Sundays 04:30 local) deletes rows whose expiry was more
     # than this many days ago. Set to 0 to disable purging entirely.
     analyst_trade_retention_days: int = 14
+    # Member (non-caller) text posts in the alert channels are read in
+    # 30-minute batches by analyst_log/member_batch.py instead of one
+    # Gemini call per message (2026-09-26). False puts them back on the
+    # live per-message path.
+    member_trade_batch_enabled: bool = True
     # Multi-caller registry. Each caller dict carries:
     #   name     — canonical lowercase ID stored in analyst_trades.caller
     #              and used for filtering query functions. NEVER change

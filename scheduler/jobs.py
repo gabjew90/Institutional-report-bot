@@ -447,6 +447,18 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         # for an hour
         misfire_grace_time=1800,
     )
+    # Member trade batch (2026-09-26): member text posts in the alert
+    # channels, 30-minute batches instead of one Gemini call per message.
+    scheduler.add_job(
+        _member_trade_batch_job,
+        trigger=IntervalTrigger(minutes=30),
+        next_run_time=_dt_al.now(tz) + _td_al(minutes=4),
+        id="member_trade_batch",
+        name="Analyst log: member trade batch",
+        max_instances=1,
+        coalesce=True,
+        misfire_grace_time=1800,
+    )
     # ForexFactory feed warm (2026-09-26): one request an hour keeps the
     # disk copy current, so the 3 PM calendar post does not depend on a
     # live request the feed may answer with 429.
@@ -1380,6 +1392,21 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:
         log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)
+
+
+async def _member_trade_batch_job():
+    """Member text posts in the alert channels, read in batches
+    (analyst_log/member_batch.py)."""
+    import asyncio as _asyncio
+    from analyst_log import member_batch
+    try:
+        results = await _asyncio.to_thread(member_batch.run)
+    except Exception as e:
+        log.warning(f"member trade batch failed: {e}")
+        return
+    for r in results:
+        if r.get("messages"):
+            log.info(f"member trade batch: {r}")
 
 
 async def _ff_warm_job():

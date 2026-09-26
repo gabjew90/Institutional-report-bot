@@ -45,9 +45,12 @@ def test_a_skipped_message_never_calls_gemini_or_discord():
 
 
 def test_a_reply_still_goes_through():
+    """An official caller's reply stays on the live path (member text
+    posts are batched since 2026-09-26, see test_member_batch)."""
+    caller = {"username": "member", "name": "member", "display": "Member"}
     with patch.object(W, "extract_trade_from_caption", new=AsyncMock(return_value=None)) as ex, \
          patch.object(W, "_fetch_reply_parent_caption", new=AsyncMock(return_value="NVDA 190c")), \
          patch.object(W.db, "analyst_trade_exists", return_value=False):
         asyncio.run(W.watch_message(None, _msg("SOLD", reference=object()),
-                                    tracking_mode="member"))
+                                    caller=caller, tracking_mode="caller"))
     ex.assert_called_once()

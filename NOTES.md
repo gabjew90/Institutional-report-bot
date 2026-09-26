@@ -3439,3 +3439,17 @@ A ~20% loss of logged trades would move the trader ledger and ranks for
 about $4-5 a month. Not switched. Side finding: 3.1 re-run on the same
 captions reproduced only 310 of its own 369 calls (the replay uses
 today's date for the prompt, which accounts for part of it).
+
+2026-09-26 member trade batch. Member text posts in the alert channels
+now go to Gemini in 30-minute batches per channel (analyst_log/
+member_batch.py); callers and screenshots stay live. Replay of one week
+(3,709 member posts after the pre-filter): 319 calls instead of 3,709.
+Hand-checked disagreements put the batch at ~137 real trades found
+against ~91 for the per-message path, with similar junk (~20 each). The
+gain comes from context the single call never had: the author's earlier
+posts ("Closed half at 11.5" after "MU 1100c") and each message's own
+date. First version over-extracted (322); code checks fixed it: `fc`
+chart commands skipped, ticker and strike must appear in the message,
+its reply parent or the author's history, a member's name is never a
+ticker, reactions and questions are not trades. Clear trades both paths
+still miss: "Sold it all", "I just longed meta 745".

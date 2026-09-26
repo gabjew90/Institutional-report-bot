@@ -1504,3 +1504,76 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
             "still holds it. Say that when you use these numbers."
         ),
     }
+
+
+# --- member trade batch (2026-09-26, analyst_log/member_batch.py) ---------
+
+def member_batch_watermark(channel_name: str) -> str | None:
+    row = _db.get_connection().execute(
+        "SELECT processed_through FROM member_batch_state WHERE channel_name = ?",
+        (channel_name,),
+    ).fetchone()
+    return row[0] if row else None
+
+
+def set_member_batch_watermark(channel_name: str, posted_at: str) -> None:
+    conn = _db.get_connection()
+    conn.execute(
+        "INSERT INTO member_batch_state (channel_name, processed_through, updated_at) "
+        "VALUES (?, ?, datetime('now')) ON CONFLICT(channel_name) DO UPDATE SET "
+        "processed_through = excluded.processed_through, updated_at = excluded.updated_at",
+        (channel_name, posted_at),
+    )
+    conn.commit()
+
+
+def member_batch_start_row(channel_name: str, before_iso: str) -> int:
+    """Where a channel with no saved position starts: the last row stored
+    before `before_iso` (0 when there is none)."""
+    row = _db.get_connection().execute(
+        "SELECT MAX(id) FROM chat_messages WHERE channel_name = ? AND posted_at < ?",
+        (channel_name, before_iso),
+    ).fetchone()
+    return int(row[0] or 0)
+
+
+def member_batch_messages(channel_name: str, after_row: int,
+                          limit: int) -> list[dict]:
+    """Text posts in one alert channel stored after chat row `after_row`,
+    in insertion order, that no trade row covers yet. Insertion order, not
+    posted_at: catch-up after a restart stores missed messages with their
+    original, older timestamps, and a time-based position had already
+    moved past them. Screenshots are excluded: they stay on the live
+    path. Each row carries its reply parent's text and author."""
+    rows = _db.get_connection().execute(
+        """SELECT m.id AS row_id, m.discord_message_id AS id, m.author_id,
+                  COALESCE(m.author_display, m.author_username) AS author,
+                  m.posted_at, m.content, m.reply_parent_id,
+                  p.content AS parent_content,
+                  COALESCE(p.author_display, p.author_username) AS parent_author
+             FROM chat_messages m
+             LEFT JOIN chat_messages p ON p.discord_message_id = m.reply_parent_id
+            WHERE m.channel_name = ? AND m.id > ?
+              AND m.has_attachments = 0
+              AND m.content IS NOT NULL AND m.content != ''
+              AND NOT EXISTS (SELECT 1 FROM analyst_trades a
+                               WHERE a.discord_message_id = m.discord_message_id)
+            ORDER BY m.id
+            LIMIT ?""",
+        (channel_name, int(after_row), int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def member_batch_context(channel_name: str, author_id: int, before: str,
+                         since: str, n: int) -> list[dict]:
+    """An author's last `n` posts in the channel in [since, before), oldest
+    first: context for follow-ups like "sold half"."""
+    rows = _db.get_connection().execute(
+        """SELECT posted_at, content FROM chat_messages
+            WHERE channel_name = ? AND author_id = ? AND posted_at < ?
+              AND posted_at >= ? AND content IS NOT NULL AND content != ''
+            ORDER BY posted_at DESC LIMIT ?""",
+        (channel_name, int(author_id), before, since, int(n)),
+    ).fetchall()
+    return [dict(r) for r in reversed(rows)]

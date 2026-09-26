@@ -547,13 +547,83 @@ _TRADE_VERB_RE = re.compile(
 )
 
 
+# `fc TICKER [n]` is the room's chart command, not a trade (2026-09-26:
+# the batch replay read "fc MU 5" as an MU 5-strike call).
+_CHART_CMD_RE = re.compile(r"^\s*fc\s+\S", re.IGNORECASE)
+
+
 def could_be_trade_caption(caption: str, is_reply: bool) -> bool:
-    """False only when a caption-only message cannot describe a trade:
-    not a reply, no digit, no $ticker, no trade verb."""
+    """False when a caption-only message cannot describe a trade: a chart
+    command, or not a reply with no digit, no $ticker and no trade verb."""
+    if _CHART_CMD_RE.match(caption or ""):
+        return False
     if is_reply:
         return True
     return bool(_DIGIT_RE.search(caption) or _CASHTAG_RE.search(caption)
                 or _TRADE_VERB_RE.search(caption))
+
+
+def record_caption_extraction(
+    *,
+    discord_message_id: int,
+    author_name: str,
+    author_id: int | None,
+    posted_at: str,
+    caption: str,
+    extracted: dict,
+    canonical_caller: str | None,
+    tracking_mode: str,
+    write_non_trades: bool = True,
+) -> bool:
+    """Write one caption-only extraction to analyst_trades: the integrity
+    check, close-expiry resolution and close metrics, then the row.
+    Shared by the live watcher and the member batch job
+    (analyst_log/member_batch.py) so both write identical rows. Returns
+    whether a trade was recorded. Raises on a DB failure."""
+    # Storage guardrail: downgrade junk extractions to is_trade=false
+    # so we don't write garbage rows that pollute /ask context.
+    if extracted.get("is_trade_screenshot") and not _is_extraction_actionable(extracted):
+        log.info(
+            f"Analyst log: junk caption extraction rejected — "
+            f"msg={discord_message_id} extracted={extracted}"
+        )
+        extracted["is_trade_screenshot"] = False
+        extracted["what_it_appears_to_be"] = (
+            "extraction failed integrity check (missing ticker, "
+            "strike=0, or non-trade action like 'viewing')"
+        )
+    is_trade = bool(extracted.get("is_trade_screenshot"))
+    if not is_trade and not write_non_trades:
+        return False
+    if is_trade:
+        # Resolve close/trim expiry from matching open position BEFORE
+        # deriving close metrics — the derive step needs an expiry to
+        # look up the open price for gain%/price computation.
+        _resolve_close_expiry(extracted, canonical_caller,
+                              author_id=author_id, tracking_mode=tracking_mode)
+        _derive_close_metrics(extracted, canonical_caller,
+                              author_id=author_id, tracking_mode=tracking_mode)
+    db.record_analyst_trade(
+        discord_message_id=discord_message_id,
+        discord_attachment_id=0,
+        author=author_name,
+        author_id=author_id,
+        posted_at=posted_at,
+        image_url=None,
+        caption=caption,
+        is_trade=is_trade,
+        gemini_json=extracted,
+        ticker=extracted.get("ticker") if is_trade else None,
+        contract_type=extracted.get("contract_type") if is_trade else None,
+        strike=extracted.get("strike") if is_trade else None,
+        expiry=extracted.get("expiry") if is_trade else None,
+        action=extracted.get("action") if is_trade else None,
+        gain_pct=extracted.get("gain_pct") if is_trade else None,
+        price=extracted.get("price") if is_trade else None,
+        caller=canonical_caller,
+        tracking_mode=tracking_mode,
+    )
+    return is_trade
 
 
 async def watch_message(
@@ -630,6 +700,11 @@ async def watch_message(
     if not message.attachments and not could_be_trade_caption(
             caption, getattr(message, "reference", None) is not None):
         return
+    # Member text posts are read in batches (analyst_log/member_batch.py);
+    # screenshots and official callers stay live.
+    if (norm_tracking_mode == "member" and not message.attachments
+            and settings.member_trade_batch_enabled):
+        return
 
     # Reply-chain context: if this message is a Discord reply, fetch
     # the parent's caption so terse follow-ups like "closed" or "sold
@@ -660,58 +735,19 @@ async def watch_message(
                 f"msg={message.id} caption={caption[:120]!r}"
             )
             return
-        # Storage guardrail: downgrade junk extractions to is_trade=false
-        # so we don't write garbage rows that pollute /ask context.
-        if extracted.get("is_trade_screenshot") and not _is_extraction_actionable(extracted):
-            log.info(
-                f"Analyst log: junk caption extraction rejected — "
-                f"msg={message.id} extracted={extracted}"
-            )
-            extracted["is_trade_screenshot"] = False
-            extracted["what_it_appears_to_be"] = (
-                "extraction failed integrity check (missing ticker, "
-                "strike=0, or non-trade action like 'viewing')"
-            )
-        is_trade = bool(extracted.get("is_trade_screenshot"))
-        if is_trade:
-            # Resolve close/trim expiry from matching open position BEFORE
-            # deriving close metrics — the derive step needs an expiry to
-            # look up the open price for gain%/price computation.
-            _resolve_close_expiry(
-                extracted,
-                canonical_caller,
-                author_id=getattr(message.author, "id", None),
-                tracking_mode=norm_tracking_mode,
-            )
-            _derive_close_metrics(
-                extracted,
-                canonical_caller,
-                author_id=getattr(message.author, "id", None),
-                tracking_mode=norm_tracking_mode,
-            )
         try:
-            db.record_analyst_trade(
+            is_trade = record_caption_extraction(
                 discord_message_id=message.id,
-                discord_attachment_id=synthetic_att_id,
-                author=author_name,
+                author_name=author_name,
                 author_id=getattr(message.author, "id", None),
                 posted_at=posted_at,
-                image_url=None,
                 caption=caption,
-                is_trade=is_trade,
-                gemini_json=extracted,
-                ticker=extracted.get("ticker") if is_trade else None,
-                contract_type=extracted.get("contract_type") if is_trade else None,
-                strike=extracted.get("strike") if is_trade else None,
-                expiry=extracted.get("expiry") if is_trade else None,
-                action=extracted.get("action") if is_trade else None,
-                gain_pct=extracted.get("gain_pct") if is_trade else None,
-                price=extracted.get("price") if is_trade else None,
-                caller=canonical_caller,
+                extracted=extracted,
+                canonical_caller=canonical_caller,
                 tracking_mode=norm_tracking_mode,
             )
         except Exception as e:
-            log.error(f"Analyst log: caption-only DB insert failed: {e}", exc_info=True)
+            log.error(f"Analyst log: caption-only row not recorded: {e}", exc_info=True)
             return
         # Announce only for official-caller posts. Member-mode rows are
         # silent — they exist in analyst_trades for the future points

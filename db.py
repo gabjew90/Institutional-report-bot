@@ -607,6 +607,17 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_race_tags_author_ts ON race_tags(author_id, posted_at);
         CREATE INDEX IF NOT EXISTS idx_race_tags_ts ON race_tags(posted_at);
 
+        -- member_batch_state (2026-09-26): how far the member trade batch
+        -- (analyst_log/member_batch.py) has read each alert channel, as a
+        -- chat_messages.id (insertion order, so catch-up rows with older
+        -- timestamps are still read). Advanced only after every model call
+        -- for the window succeeded.
+        CREATE TABLE IF NOT EXISTS member_batch_state (
+            channel_name TEXT PRIMARY KEY,
+            processed_through TEXT NOT NULL,
+            updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+
         -- Protected members promoted from PROTECTED_PENDING_USERNAMES:
         -- a member who hasn't joined yet is registered by exact username;
         -- the first ingested message from that username pins the
@@ -1404,6 +1415,11 @@ SLEEPER_DUMP_MIN_ROWS = 1000  # anomaly guard threshold, patchable in tests
 # live in db_parts/ and every name is re-exported here, so callers,
 # tests and smokes keep using `db.<name>`.
 from db_parts.analyst import (  # noqa: E402,F401
+    member_batch_context,
+    member_batch_messages,
+    member_batch_start_row,
+    member_batch_watermark,
+    set_member_batch_watermark,
     _find_inheritable_entry,
     analyst_trade_exists,
     backfill_orphan_exit_links,
