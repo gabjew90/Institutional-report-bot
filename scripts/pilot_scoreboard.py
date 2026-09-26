@@ -1,7 +1,9 @@
 """Render pilot/scoreboard.md from grades/**, shadow/*.meta.json and ops.
 
 Per day, per metric, against the FROZEN thresholds (spec section 8):
-  1  fragmented mass <= 10% and no theme-changing mis-merge
+  1  fragmented mass <= 10% POOLED over counted days by card count
+     (owner, 2026-09-25), and no theme-changing mis-merge on any
+     counted day
   2  POOLED over counted days (owner, 2026-09-25): shadow faithful-rate
      >= production and shadow unsupported-rate <= production. Was
      'zero unsupported' per day, which one sentence or one grader
@@ -28,6 +30,40 @@ from collections import defaultdict
 SCOPE_LIMIT = ("Scope limit (plan 6): ~19 HIGH PDFs/day is the lightest month on "
                "record. A passing fragmentation number certifies the architecture at "
                "light corpus load only.")
+
+
+def pooled_m1(counted: list[dict]) -> tuple[bool, str]:
+    """Metric 1 over the counted window (owner decision 2026-09-25).
+
+    Fragmented mass is pooled by card count across every counted day
+    whose two graders agree, and passes at <= 10%. The same day's
+    unchanged ledger was graded 20% then 36% (9/23) and 17% then 6%
+    (9/24) on 2026-09-25, so a single-day verdict against a 10% line sat
+    inside grader noise. The mis-merge clause is unchanged: any counted
+    day with a theme-changing mis-merge fails the metric.
+    """
+    frag = cards = 0.0
+    days = 0
+    merge_days = []
+    for r in counted:
+        m = r["m1"]
+        if m.get("theme_changing_merge"):
+            merge_days.append(r["date"])
+        if m.get("share") is None or not m.get("cards"):
+            continue
+        days += 1
+        frag += m["share"] * m["cards"]
+        cards += m["cards"]
+    left_out = len(counted) - days
+    if not days:
+        return False, "no counted day with an agreed grouping grade"
+    share = frag / cards
+    ok = share <= 0.10 and not merge_days
+    return ok, (f"{days} day(s)"
+                + (f" ({left_out} counted day(s) left out: grader disagreement or missing grade)"
+                   if left_out else "")
+                + f": {share:.0%} fragmented over {int(cards)} cards"
+                + (f"; theme-changing mis-merge on {', '.join(merge_days)}" if merge_days else ""))
 
 
 def pooled_m2(counted: list[dict]) -> tuple[bool, str]:
@@ -202,7 +238,13 @@ def day_row(date: str, d: dict) -> dict:
     merges = None
     if usable(ga) and usable(gb):
         merges = any(m.get("would_change_theme_selection") for x in (ga, gb) for m in (x.get("mis_merges") or []))
+    cards = None
+    if usable(ga) and usable(gb):
+        cards = max(ga.get("total_cards") or 0, gb.get("total_cards") or 0) or None
+    # Per-day `pass` is informational; the verdict pools the share by
+    # card count across counted days (owner, 2026-09-25, see pooled_m1).
     row["m1"] = {"share": share, "theme_changing_merge": merges, "note": note,
+                 "cards": cards,
                  "pass": (share is not None and share <= 0.10 and merges is False)}
     # metric 2 per artifact
     for art in ("shadow", "production"):
@@ -314,7 +356,7 @@ def render(pilot_root: str) -> str:
                 "incomplete card set. Shown above, excluded from every metric.", ""]
     c = [r for r in rows if r["counted"]]
     if c:
-        m1 = all(r["m1"]["pass"] for r in c)
+        m1, m1_detail = pooled_m1(c)
         m2, m2_detail = pooled_m2(c)
         m2a = all(r["m2a"]["pass"] for r in c)
         sh = sum(1 for r in c if r["m3_shadow"]["preserved"] is True)
@@ -323,7 +365,7 @@ def render(pilot_root: str) -> str:
         soft = [r for r in c if (r["m2a"]["non_material_share"] or 0) > 0.20]
         pending = [r["date"] for r in c if r["disagreements"]]
         out += ["## Running verdict (counted days only)", "",
-                f"- metric 1 grouping: {'PASS' if m1 else 'FAIL'} so far",
+                f"- metric 1 grouping (pooled): {'PASS' if m1 else 'FAIL'} so far; {m1_detail}",
                 f"- metric 2 fact fidelity (pooled): {'PASS' if m2 else 'FAIL'} so far; {m2_detail}",
                 f"- metric 2a brief fidelity: {'PASS' if m2a else 'FAIL'} so far"
                 + (f"; non-material soft ceiling breached on {len(soft)} day(s) (flag)" if soft else ""),

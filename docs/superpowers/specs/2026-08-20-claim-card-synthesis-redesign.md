@@ -245,6 +245,12 @@ ledger. Production runs untouched. Nothing is deleted during the pilot.
    two had been using different grains).
    *Pass: ≤10% fragmented mass, zero mis-merges that would have changed
    theme selection.*
+   **Amended 2026-09-25 by the owner: the fragmented-mass share is
+   pooled over the counted window**, weighted by card count, against the
+   same 10% line. Reason: on 2026-09-25 the graders scored the same
+   unchanged ledger 20% then 36% (9/23) and 17% then 6% (9/24), so a
+   single-day verdict against 10% sat inside grader noise. The
+   mis-merge clause is unchanged.
 2. **Fact fidelity** — 15 sentences sampled per shadow pulse, each
    traced to the **source PDF** (not the card), graded
    faithful/distorted/unsupported; same procedure on that day's

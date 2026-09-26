@@ -3371,3 +3371,10 @@ inputs did not change (readers were not re-run), yet grouping moved
 to 1 material distortion. Same input, different grade. The 10% grouping
 threshold sits inside that noise, so single-day grouping verdicts are
 not evidence either way. Raised with the owner.
+
+Owner decision, 2026-09-25: pilot metric 1's fragmented-mass share is
+also pooled over the counted window, by card count, against the same
+10% line (same unchanged ledger graded 20%->36% and 17%->6% the same
+day). The theme-changing mis-merge clause stays per day. Review note,
+raised with the owner, not changed: that clause fails the window when
+EITHER grader flags a merge, so it is now the noisiest remaining gate.

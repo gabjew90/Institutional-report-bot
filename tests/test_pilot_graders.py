@@ -399,3 +399,34 @@ def test_the_pooled_verdict_names_days_it_left_out():
     rows = [_day(0.87, 0, 0.53, 2), day_row("2026-09-03", d)]
     ok, detail = pooled_m2(rows)
     assert "1 day(s)" in detail and "1 counted day(s) left out" in detail
+
+
+# --- metric 1 pooled over the counted window (owner, 2026-09-25) ---------
+def _gday(share, cards, merge=False, date="2026-09-02"):
+    d = _grades()
+    for agent in ("a", "b"):
+        d["grades"]["grouping"][agent] = {"fragmented_mass_share": share, "total_cards": cards,
+                                          "mis_merges": ([{"would_change_theme_selection": True}]
+                                                         if merge else [])}
+    return day_row(date, d)
+
+
+def test_grouping_pools_by_card_count():
+    """9/24's unchanged ledger graded 17% then 6%: a single day against a
+    10% line is inside grader noise."""
+    from scripts.pilot_scoreboard import pooled_m1
+    ok, detail = pooled_m1([_gday(0.14, 300), _gday(0.06, 700)])
+    assert ok, detail                     # (42 + 42) / 1000 = 8.4%
+    assert "8% fragmented over 1000 cards" in detail
+
+
+def test_pooled_grouping_above_ten_percent_fails():
+    from scripts.pilot_scoreboard import pooled_m1
+    ok, _ = pooled_m1([_gday(0.20, 500), _gday(0.08, 500)])
+    assert not ok
+
+
+def test_a_theme_changing_merge_still_fails_the_window():
+    from scripts.pilot_scoreboard import pooled_m1
+    ok, detail = pooled_m1([_gday(0.05, 500), _gday(0.05, 500, merge=True, date="2026-09-03")])
+    assert not ok and "mis-merge on 2026-09-03" in detail
