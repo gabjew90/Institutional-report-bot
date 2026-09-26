@@ -2,86 +2,70 @@
  "metric": "2a",
  "briefs": [
   {
-   "id": "d3",
+   "id": "d10",
    "tier": "top",
    "bank": "JPMorgan",
-   "source_chain": "Post-Meta Muse +Semis/-AI Vulnerable trade returns, so Financials sell off (XLF -2%) while AI/semis rally (SOXX +2.4%, DRAM +3.3%); O'Dwyer reads the bank move as a positioning unwind (not fundamental) since Muse's own untrustworthiness undercuts the funding-risk narrative, so he fades it into MS/PNC/FITB; Adler reads Muse as favoring trust-winners (META/GOOGL/AAPL) and broadening AI capex demand away from GPUs toward CPU/memory/storage while turning cautious on frontier-model economics near RSI; combined with oil settling lower on a delayed Iran peace deal and hawkish Fedspeak raising hike risk, JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, keeping +Tech/-RTY and a Latam long.",
-   "brief_chain": "Same structure: Financials selloff vs AI/semis rally both tied to the returning +Semis/-AI Vulnerable trade; O'Dwyer sees no fundamental case, calls it a positioning unwind, fades into MS/PNC/FITB; Adler sees Muse as agents-over-chatbots favoring trust winners and diversifying AI infrastructure demand away from GPUs while turning cautious near RSI; oil fell despite constructive Iran/Rubio headlines because Trump pushed a deal past the midterms; Fedspeak raises hike risk; JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, holding +Tech/-RTY and a Latam long.",
+   "source_chain": "Strong US/Eurozone flash PMIs plus hawkish UN rhetoric (Iran deal further off, no Russia-sanctions consensus) mean the market was underpricing terminal Fed funds, therefore yields spiked (weak-demand 5Y auction with 3.20bp tail, 5Y breaks 5% since 2007) and oil broke back above $100 on Iran escalation, therefore JPM stays Tactically Cautious/Neutral running +Tech(NDX)/-RTY, bullish only on lower oil/yields, bearish only on a broken consumer or an AI capex cut.",
+   "brief_chain": "Same chain: stronger PMIs + UN rhetoric drove yields higher on underpriced terminal Fed funds, 5Y broke 5% on a weak 3.20bp-tail auction, hot PMI input costs raised hike-timing risk, oil broke $100 on Iran escalation, JPM stays Tactically Cautious/Neutral (+Tech vs -RTY), bullish only on lower oil/yields, bearish on a broken consumer or AI capex cut.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d16",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "A historic bond selloff (10Y worst since Liberation Day, 5Y above 5% since 2007) coincides with high oil/CPI, but stable breakevens and range-bound term premium rule out an inflation or fiscal story, therefore the move is about policy rates and a rising neutral rate (Warsh: growth/capital-competition-as-AI-capex/geopolitics; Raskin's plausible-but-elevated neutral-rate band is now nearly reached), amplified by strong PMIs, GDPNow at 5.08%, ~30% Q3 EPS growth and positioning.",
+   "brief_chain": "Same chain: bond selloff occurs alongside high oil/CPI, DB argues via stable breakevens and flat term premium that it isn't an inflation story, attributes the move to real yields/policy rates and a higher neutral rate (Warsh's three drivers, Raskin's band now nearly reached), with PMIs/GDPNow/earnings growth/positioning as amplifiers.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Beat-expectation US/Eurozone flash PMIs plus an oil rebound (Iran-deal doubts) drove a hawkish repricing (Fed October-hike odds 53%\u219269%\u219271% this morning; ECB 48%\u219266%), pushing the 10Y to a post-2007 high (+15.2bp, biggest move since Liberation Day) and the 5Y above 5% since 2007 on a weak tailed 5Y auction, with European yields and the Franco-German spread also at multi-year wides, therefore equities fell broadly (S&P -0.75%, worst in a month) except energy.",
+   "brief_chain": "Same chain, same figures and sequence, with one date label swapped: 'rose from 53% Tuesday to 69% by Thursday's close, with this morning's futures pricing 71%' where the source's 69% figure is 'last night's close' (i.e. the prior day, not 'Thursday').",
    "distortions": [
     {
-     "what": "Brief attributes 'echoes of Warsh' hawkishness to Barkin's same-day (Sept 22) remarks; the source attributes the Warsh echo to separate Fri/Sun Fedspeak cited in the Monetization Menu section, and describes Barkin's Sept 22 speech independently as merely 'in line with recent Fedspeak'",
+     "what": "Brief labels the 69% Fed October-hike print as reached 'by Thursday's close'; the source only supports 69% by 'last night's close' (the day before this morning-of report), with 71% being 'this morning' \u2014 the brief effectively invents an extra day in the timeline.",
      "material": false,
-     "would_the_trade_change": "No \u2014 both readings support the same hike-risk / Tactically Cautious stance; only the specific speech attribution is compressed."
+     "would_the_trade_change": "No \u2014 the hawkish-repricing direction, magnitude, and every downstream figure (yields, spreads, equity moves) are unaffected by which calendar day is named for the intermediate print."
     }
    ],
    "material_count": 0,
    "non_material_count": 1
   },
   {
-   "id": "d19",
-   "tier": "top",
-   "bank": "Deutsche Bank",
-   "source_chain": "UNGA headlines (Kyodo report, Araghchi's narrower reopening conditions) suggest a narrowing US-Iran gap, so Brent falls below $100 for the first time in over two weeks despite intraday reversals on Trump's UN speech, 'very productive' talks, and Saudi pipeline hopes; equities finish flat on net but diverge (Nasdaq record high on chips, financials down on AI-margin fears); yields rise (2yr to a two-year high) on 75bp hike pricing; European spreads widen (Franco-German near its post-crisis high) on Nagel's mildly-restrictive ECB signal; weak Australian PMIs reinforce an RBA hike next week.",
-   "brief_chain": "Same causal order and content: narrowing US-Iran gap drives Brent below $100 (two-week low) despite intraday reversals; equities flat but diverging (Nasdaq record high on chips vs financials down on AI-margin fears); 2yr yield hits a two-year high on 75bp hike pricing; Franco-German spread nears its post-crisis high on Nagel's mild-restrictive signal; weak Australian PMIs reinforce an RBA hike.",
-   "distortions": [
-    {
-     "what": "Brief renders the below-$100 close as 'first time in two weeks'; source says 'first time in over two weeks'",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the headline fact (a fresh multi-week low) is preserved."
-    },
-    {
-     "what": "Brief compresses Araghchi's three listed conditions (lift naval blockade, release frozen Iranian assets, end war across resistance fronts) to 'narrower reopening conditions' without itemizing the assets/fronts elements",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the comparative claim (narrower than earlier sanctions-relief/reparations demands) is unchanged."
-    },
-    {
-     "what": "Brief labels Nagel 'Bundesbank's Nagel'; source identifies him only as 'Germany's Nagel' without the title",
-     "material": false,
-     "would_the_trade_change": "No \u2014 Nagel is in fact the Bundesbank president; an accurate identity fill-in, not an invention, and it doesn't change the ECB-policy claim."
-    }
-   ],
-   "material_count": 0,
-   "non_material_count": 3
-  },
-  {
    "id": "d21",
    "tier": "rest",
    "bank": "Zero Hedge",
-   "source_chain": "Agentic-AI anticipation splits the tape (big tech bid to Nasdaq record highs; banks battered on Goldman's AI-spillover-to-financials call layered on Fed-hike/flatter-curve pressure), so the Dow takes the day's worst loss while SPX ends flat; oil whipsaws repeatedly on Iran headlines (Strait-reopening offer, Fars denial, Saudi pipeline hopes, 'very good meeting' optimism, a Midterms caveat, then a fresh Trump momentum headline) and closes WTI -3.5%, while Trump also floats a diesel export ban; yields end flat despite falling inflation expectations (Goldman's 'weird bit', real-rate demand staying high); hyperscaler credit widens a fourth day and both LOs and HFs are net sellers despite subdued volume; breadth deterioration (new lows over new highs; CNBC's 1999/1929 comparison) flags fragility beneath the record highs.",
-   "brief_chain": "Same structure: agentic-AI dispersion (big tech bid/Nasdaq record vs banks battered/Dow's worst loss, SPX flat), Goldman's financials-spillover call layered on Fed-hike/flatter-curve pressure; oil swings repeatedly on Iran headlines to a 3.5% WTI decline, plus a floated diesel export ban; yields flat despite falling inflation expectations (Goldman's 'weird bit'); hyperscaler credit widens a fourth day; LOs and HFs net sellers despite subdued activity; six-session new-lows-over-new-highs breadth echoing 1999/1929.",
+   "source_chain": "Agentic-AI anticipation drove dispersion (big tech bid to Nasdaq record, banks battered on GS's AI-disruption call, dragging the Dow while SPX finished flat), oil whipsawed on a chain of Iran-Hormuz headlines before closing down (WTI -3.5%) on the final 'momentum for a deal / reopening Hormuz' headline even as Trump separately ruled out a deal before the Midterms, Trump floated a diesel export ban, Treasury yields finished flat with rate-hike odds unmoved despite falling inflation expectations (Goldman's 'weird bit'), hyperscaler credit widened a fourth day, both LO and HF desks were net sellers on subdued volume, and breadth (new lows > new highs) drew a 1999/1929 comparison from CNBC for a specific rally-to-highs pattern.",
+   "brief_chain": "Same big-tech-vs-banks dispersion and causes; oil narrative compressed to reversal on the Fars denial and Saudi pipeline hopes, then straight to 'WTI down 3.5% after Trump called his Iran meeting very good' \u2014 skipping the intervening optimism-fade bounce and the second plunge (on the later Hormuz-flow headlines) that the -3.5% print actually followed; yields-flat is described as itself Goldman's 'weird bit' rather than the unmoved rate-hike odds; the six-straight-day new-lows-over-new-highs stat is presented as the same thing CNBC compared to 1999/1929, when CNBC's comparison was to a narrower single-day pattern (S&P near highs with new lows surging/new highs tumbling).",
    "distortions": [
     {
-     "what": "Brief's oil paragraph skips a reversal leg (crude bouncing after Trump's UN speech, and again after the 'very good meeting' optimism faded) and reads the final WTI -3.5% close as flowing from the 'very good meeting' comment, when the source's actual final leg down was triggered by a later, separate Trump headline ('LOT OF MOMENTUM FOR IRAN TO MAKE A DEAL...')",
+     "what": "Brief attributes the final WTI -3.5% print directly to Trump's 'very good meeting' comment, but the source's causal chain has that comment followed by a bounce-back and a second plunge driven by separate 'momentum for a deal / reopening Hormuz' headlines, which is what the -3.5% figure actually follows.",
      "material": false,
-     "would_the_trade_change": "No \u2014 the driver (Trump/Iran headline volatility) and net direction (oil down on the day) are the same either way; no level, instrument, or stance changes."
+     "would_the_trade_change": "No \u2014 oil closed lower on Iran-related headline chop either way; no stance, level call, or instrument changes from naming the wrong link in a multi-leg intraday chain."
     },
     {
-     "what": "Brief drops 'Dem sweep in focus' from Goldman's listed pressure points on financials (Agentic at risk // Fed hikes + flatter curve // Dem sweep in focus)",
+     "what": "Brief says Goldman called 'yields ended flat... the weird bit'; the source attributes 'the weird bit' to rate-hike odds going nowhere despite falling inflation expectations, a related but distinct observation from yields being flat.",
      "material": false,
-     "would_the_trade_change": "No \u2014 the retained pressure points (agentic risk, Fed hikes, flatter curve) carry the thesis; dropping one secondary factor doesn't change it."
+     "would_the_trade_change": "No \u2014 both describe the same disconnect (falling inflation expectations not showing up in rates pricing); no directional or trade implication differs."
     },
     {
-     "what": "Brief presents 'new lows outpacing new highs for six sessions' as the specific pattern CNBC compared to 1999/1929; the source's CNBC citation is actually about a more specific compound condition (S&P rallying >1% to within 1% of record highs while breadth diverges), stated separately from the six-day streak line",
+     "what": "Brief implies CNBC's 1999/1929 comparison applies to the six-straight-day new-lows-over-new-highs statistic; the source's CNBC quote instead compares a narrower one-day pattern (S&P rallying to near record highs while new lows surge and new highs tumble) to 1999 and 1929.",
      "material": false,
-     "would_the_trade_change": "No \u2014 both versions serve the same 'fragility beneath the highs' warning; no trade, level, or instrument is at stake in this historical framing."
+     "would_the_trade_change": "No \u2014 the underlying warning (deteriorating breadth alongside index strength, historically rare and ominous) is preserved; conflating the two breadth stats doesn't change any call."
     }
    ],
    "material_count": 0,
    "non_material_count": 3
-  },
-  {
-   "id": "d18",
-   "tier": "rest",
-   "bank": "Zero Hedge",
-   "source_chain": "Gulf Coast diesel crack spread hits a record >$100 (vs a normal $15-30 range), so \u2014 because diesel is an embedded intermediate input rather than a one-time discretionary tax like gasoline \u2014 the shock migrates with a lag into core CPI, which the Fed can't dismiss as transitory, so diesel margins are now a driver of the long end of the yield curve.",
-   "brief_chain": "Identical: record diesel crack spread vs normal range, diesel's intermediate-input structure (unlike gasoline) pushes the shock into core CPI with a lag, a pass-through the Fed can't call transitory, so diesel margins are now setting the long end of the curve.",
-   "distortions": [],
-   "material_count": 0,
-   "non_material_count": 0
   }
  ],
  "material_total": 0,
- "non_material_total": 7,
+ "non_material_total": 4,
  "audited": 4,
  "dim": "brief_fidelity",
  "agent": "b",

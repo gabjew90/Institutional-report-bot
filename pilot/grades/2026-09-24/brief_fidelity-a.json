@@ -2,96 +2,54 @@
  "metric": "2a",
  "briefs": [
   {
-   "id": "d3",
+   "id": "d10",
    "tier": "top",
    "bank": "JPMorgan",
-   "source_chain": "Post-Meta-Muse +Semis/-AI Vulnerable trade returns, hitting Financials (XLF -2%) while semis/memory rally \u2192 O'Dwyer sees no clean fundamental case, reads consensus-name volume (C/MS/GS/USB) vs regional/LAZ/JEF outperformance as a positioning unwind and fades the selloff into MS/PNC/FITB \u2192 Adler reads Muse as a trust-driven agent shift favoring META/GOOGL/AAPL, cutting reliance on frontier chips (headwind for neoclouds) and broadening AI infra demand toward CPU/memory/storage, cautious on frontier-model economics near RSI \u2192 oil stays choppy on Iran headlines despite Trump's midterm-delay comment \u2192 hawkish Fedspeak raises hike risk \u2192 JPM stays Tactically Cautious/Neutral into the Fed, bullish only on lower oil/yields, holding +Tech/-RTY and a Latam long.",
-   "brief_chain": "Financials selloff vs AI/semis rally, both tied to the returning Muse-driven rotation \u2192 O'Dwyer: no fundamental case, Muse-untrustworthy narrative doesn't hold, positioning unwind not re-rating, fade into MS/PNC/FITB \u2192 Adler: agents-over-chatbots favors META/GOOGL/AAPL on trust, cuts frontier-chip reliance (headwind neoclouds), broadens AI trade to CPU/memory/storage, cautious on frontier economics near RSI \u2192 oil fell on midterm-delay comment despite constructive Iran/Rubio headlines \u2192 Fedspeak (Barkin, echoes of Warsh) raises hike risk \u2192 JPM stays Tactically Cautious/Neutral, bullish only on lower oil/yields, +Tech/-RTY, Latam long.",
-   "distortions": [
-    {
-     "what": "Brief attributes the explicit 'increases the risk of an additional rate hike' framing to Barkin's Sept 22 speech ('Fedspeak (Barkin, echoes of Warsh) raises hike risk'). In the source, that specific hike-risk claim is made in the Sept-21-published Tactically Cautious/Neutral section about 'Fedspeak from Fri/Sun,' not about Barkin's same-day speech, which is only described as 'largely in line with recent Fedspeak' on inflation-vs-employment risk.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 JPM's stance (Tactically Cautious/Neutral into the Fed, elevated hike risk) is identical either way; only the specific speech attribution is conflated."
-    }
-   ],
+   "source_chain": "Stronger US/Eurozone flash PMIs plus UN rhetoric (Iran deal further off, no Russia-sanctions consensus) drove bond yields sharply higher because the market had been underpricing terminal Fed funds, culminating in the 5Y yield breaking 5% for the first time since 2007 after a weak 3.20bp-tail auction, therefore raising Fed hike risk (market sees next hike in October; Barr says more hikes likely needed), while JPM still argues equities can grind higher because SPX earnings track nominal not real GDP, with bond vol (not yield level) the bigger risk, therefore JPM stays Tactically Cautious/Neutral running +Tech vs -RTY, bullish only on lower oil/yields, bearish only on a consumer break or AI capex cut.",
+   "brief_chain": "Same chain: PMIs + UN rhetoric to yields spiking (5Y breaks 5% post weak auction) to hike-risk repricing (Oct hike, Barr) to JPM's nominal-GDP equity-bull argument with bond-vol caveat to Brent/Iran rhetoric context to Tactically Cautious/Neutral +Tech vs -RTY stance with explicit bull/bear triggers.",
+   "distortions": [],
    "material_count": 0,
-   "non_material_count": 1
+   "non_material_count": 0
   },
   {
-   "id": "d19",
+   "id": "d16",
    "tier": "top",
    "bank": "Deutsche Bank",
-   "source_chain": "UNGA-adjacent Iran headlines (Kyodo reopening-within-7-days offer, Araghchi's narrower reopening conditions vs Iran's earlier sanctions/reparations demands) push Brent below $100 for the first time in over two weeks \u2192 oil pares the drop on Trump's UN defense of the war, then falls again on 'productive' US-Iran talks and Saudi pipeline-restart hopes \u2192 equities diverge (Nasdaq fresh high on chip strength, financials hit on AI-margin-erosion fears) \u2192 2yr yield hits a two-year high alongside markets pricing 75bps more Fed hikes by June \u2192 Franco-German spread nears its post-Euro-crisis peak alongside Nagel flagging 'mild restrictive' ECB risk \u2192 weak Australian flash PMIs print alongside a widely expected RBA hike next week (driven by energy-price/inflation pressure, not the weak PMI itself).",
-   "brief_chain": "Brent closes below $100 for the first time in two weeks on narrowing US-Iran gap (Kyodo offer, Araghchi's narrower conditions) \u2192 oil pares decline on Trump's UN defense of the war, falls again on 'productive' talks, Saudi pipeline restart targeted for Saturday \u2192 equities flat but diverge (Nasdaq high on chips, financials down on AI-margin fears) \u2192 2yr yield hits two-year high as markets price 75bps more hikes \u2192 Franco-German spread nears post-crisis high as Nagel flags 'mild restrictive' ECB \u2192 weak Australian PMIs reinforce RBA hike expectations next week.",
-   "distortions": [
-    {
-     "what": "'first time in two weeks' vs source's 'first time in over two weeks' \u2014 trivial rounding.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 immaterial wording difference."
-    },
-    {
-     "what": "Brief frames the 2yr yield's two-year high as occurring 'as' markets priced 75bps more hikes, implying direct causation; source states these as two separate adjacent facts without an explicit causal link.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 both facts are independently true and point the same direction (hawkish rates read)."
-    },
-    {
-     "what": "Brief frames the Franco-German spread nearing its post-crisis high 'as' Nagel flagged 'mild restrictive' ECB risk, implying causation the source doesn't state \u2014 these are separate paragraph items in the source.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 no stance or level changes; just an implied but unstated causal link between two true facts."
-    },
-    {
-     "what": "Brief says weak Australian PMIs 'reinforced' RBA hike expectations, but the source's own causal chain ties the expected hike to elevated energy prices/inflation pressure, with the weak PMI reflecting the growth drag from those same prices \u2014 not the PMI print itself driving the hike call. Weak growth data would not typically reinforce a hike thesis.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the RBA-hike-next-week call is unchanged; only the specific causal driver is mischaracterized."
-    }
-   ],
+   "source_chain": "10Y/5Y yields hit multi-year/2007-era highs alongside rising Brent and CPI, which looks like an inflation story but isn't, therefore (of ~97bps YTD nominal yield rise, only ~10bps is breakevens, which are stable, and term premium is range-bound) the move is about policy rates and a higher neutral rate, driven by economic strength, AI-capex-as-capital-competition, and geopolitics (Warsh), with Raskin's neutral-rate upper bound now being approached, and yesterday's strong PMIs/GDPNow/earnings growth adding fuel, possibly amplified by positioning.",
+   "brief_chain": "Same chain, same figures (97bps, 10bps breakevens, 18-month range-bound term premium, Warsh's three drivers with AI capex reading attributed to DB, Raskin's plausible-range/upper-bound framing, PMI/GDPNow 5.08%/~30% earnings growth as added fuel, positioning as possible amplifier).",
+   "distortions": [],
    "material_count": 0,
-   "non_material_count": 4
+   "non_material_count": 0
+  },
+  {
+   "id": "d20",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Strong US/Eurozone flash PMIs (58.4 vs 55.3; 53.1 vs 51.7) signaled resilient growth reinforcing the case for continued Fed hiking, and a Brent rebound (+3.86% to $103.08) on US-Iran deal doubts added hawkish pressure, therefore Fed October-hike odds rose 53%\u219269%\u219271% and ECB odds rose 48%\u219266%, with year-end Fed pricing at 37bps (near-even odds of two more hikes), driving the 10yr Treasury yield up 15.2bps to a post-2007 high of 5.11% (biggest one-day move since Liberation Day) and the 5yr above 5% for the first time since 2007, worsened by a weak $70bn 5yr auction tailing 3.1bps, with European yields at multi-year highs and the Franco-German spread at 110.4bps (highest since the 2012 euro crisis), therefore equities fell broadly (S&P -0.75%, biggest decline in a month) despite the strong growth data, with only energy gaining.",
+   "brief_chain": "Same chain and same figures throughout, in the same causal order.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
   },
   {
    "id": "d21",
    "tier": "rest",
    "bank": "Zero Hedge",
-   "source_chain": "Agentic-AI anticipation drives dispersion \u2014 Nasdaq record high, Dow's worst day, S&P flat \u2014 as GS flags AI spillover risk into financials/insurance/subscription names, compounded by Fed-hike/flatter-curve pressure \u2192 oil whipsaws all day on Iran headlines (Kyodo/Reuters reopening offer \u2192 Fars denial \u2192 Saudi pipeline hopes \u2192 a further bounce on Trump's UN speech \u2192 a plunge on Trump's 'very good meeting' comment \u2192 a bounce back on faded optimism \u2192 a final plunge to WTI -3.5% on fresh 'momentum for a deal' headlines) \u2192 Trump floats a diesel export ban given Iran/Ukraine-driven price spikes \u2192 yields end flat despite falling inflation expectations, which Goldman calls the 'weird bit' since real-rate demand stays high \u2192 hyperscaler credit widens a 4th straight day \u2192 both long-onlys and hedge funds are net sellers despite subdued activity \u2192 new lows outpacing new highs for six sessions echoes 1999/1929 breadth extremes.",
-   "brief_chain": "Agentic AI drives dispersion (Nasdaq record high, Dow's worst day, S&P flat) as GS flags AI spillover into financials/insurance/subscriptions amid Fed-hike/flatter-curve pressure \u2192 oil swings on Iran-talks headlines (Kyodo offer, Fars denial, Saudi pipeline hopes, then a final tank to WTI -3.5% after Trump's 'very good meeting' comment, even as he separately ruled out a pre-midterm deal) \u2192 Trump floats a diesel export ban on Iran/Ukraine-driven price spikes \u2192 yields flat despite falling inflation expectations, Goldman's 'weird bit' given high real-rate demand \u2192 hyperscaler credit widens a 4th day \u2192 both LO and HF desks net sell despite subdued activity \u2192 new lows outpacing highs for six sessions echoes 1999/1929.",
+   "source_chain": "Agentic-AI anticipation/anxiety drove today's dispersion: big tech bid (Nasdaq record high) while banks were battered (Dow's worst loser, S&P flat), with Goldman flagging negative AI spillover into financials/insurance/subscription businesses compounding Fed-hike/flatter-curve pressure; oil swung repeatedly on Iran headlines (Hormuz-reopening report, Fars denial, Saudi pipeline hopes, Trump's 'very good meeting' comment vs. his no-deal-before-Midterms remark) ending with WTI down 3.5%, while Trump also pushed a diesel-export ban given Iran/Ukraine-driven price spikes; Treasury yields ended flat despite falling inflation expectations (Goldman's 'weird bit', real-rate demand staying high), hyperscaler credit widened a fourth day, and both LO and HF desks were net sellers despite subdued activity, with breadth (new lows over new highs for six sessions) echoing 1999/1929 per CNBC.",
+   "brief_chain": "Same chain and sequence, same attributions (Goldman on AI spillover and the 'weird bit', CNBC on breadth), same figures (3.5% WTI, four days of wider hyperscaler credit, six sessions of new lows over new highs, 1999/1929).",
    "distortions": [
     {
-     "what": "Brief's oil sequence skips the intermediate bounce ('Crude bounced further off the overnight lows as Trump's UN speech delivered slightly less diplomatic progress') between the Saudi-pipeline dip and the 'very good meeting' comment.",
+     "what": "Brief says Trump 'floated' a diesel export ban; source has him saying he already told his people to pursue it ('I've called for it within my people')",
      "material": false,
-     "would_the_trade_change": "No \u2014 compression of an intraday step in a same-day recap, not a stance or level."
-    },
-    {
-     "what": "Brief attributes the final WTI -3.5% close directly to Trump's 'very good meeting' remark, but per the source that comment triggered an earlier plunge which then partly bounced back before a separate, later plunge to the day's actual close low was triggered by different headlines ('TRUMP: LOT OF MOMENTUM FOR IRAN TO MAKE A DEAL...').",
-     "material": false,
-     "would_the_trade_change": "No \u2014 this is a historical intraday recap; no forward stance, level, or trade is at stake."
-    },
-    {
-     "what": "Brief drops 'Dem sweep in focus' from GS's listed financials-risk factors (Agentic risk // Fed hikes + flatter curve // Dem sweep in focus).",
-     "material": false,
-     "would_the_trade_change": "No \u2014 a dropped secondary factor in a list, doesn't change the AI-spillover-to-financials call."
-    },
-    {
-     "what": "Brief compresses GS's disrupted-business list ('Fins, Insurance, consumer-touch-points (personal insurance, wealth, anything subscriptions based)') to 'financials, insurance and subscription businesses,' dropping 'wealth' explicitly.",
-     "material": false,
-     "would_the_trade_change": "No \u2014 the core call (AI spillover hits financials-adjacent, trust/subscription-based businesses) is preserved."
+     "would_the_trade_change": "No \u2014 either phrasing signals the same policy risk to diesel/refiner exposure; the actionable takeaway (export-ban risk from Iran/Ukraine price spikes) is unchanged"
     }
    ],
    "material_count": 0,
-   "non_material_count": 4
-  },
-  {
-   "id": "d18",
-   "tier": "rest",
-   "bank": "Zero Hedge",
-   "source_chain": "The Gulf Coast diesel crack spread hits a record $100/bbl in August against a normal $15-30 range \u2192 unlike a gasoline spike (a one-time discretionary-spending tax), diesel is an intermediate input in nearly every physical good's delivered cost \u2192 so the shock migrates with a lag into core CPI rather than staying in the energy line, a pass-through the Fed can't call transitory \u2192 therefore diesel margins are now a driver setting the long end of the yield curve.",
-   "brief_chain": "Diesel crack spread clears $100/bbl in August, a record vs. the normal $15-30 range \u2192 diesel is an intermediate input across the economy, unlike gasoline's one-time consumer tax \u2192 the price rise migrates with a lag into core CPI, a pass-through the Fed can't dismiss as transitory \u2192 diesel margins are now setting the long end of the yield curve as a driver of future core inflation.",
-   "distortions": [],
-   "material_count": 0,
-   "non_material_count": 0
+   "non_material_count": 1
   }
  ],
  "material_total": 0,
- "non_material_total": 9,
+ "non_material_total": 1,
  "audited": 4,
  "dim": "brief_fidelity",
  "agent": "a",

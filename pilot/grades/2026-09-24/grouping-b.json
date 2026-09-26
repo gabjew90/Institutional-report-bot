@@ -3,45 +3,36 @@
  "total_cards": 694,
  "fragmentation_sets": [
   {
-   "subject": "France's budget crisis showing up as a Franco-German bond spread blowout to euro-crisis-era highs",
+   "subject": "Rates-driven equity/small-cap breakdown and the resulting vol/flow hedge (Market Ear's rates-selloff note)",
+   "labels": [
+    "equity range downside risk",
+    "russell small cap vol hedge"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "France's fiscal crisis widening the Franco-German (OAT-Bund) spread to near euro-crisis highs",
    "labels": [
     "french budget crisis bond spreads",
     "germany vs france fiscal trade"
    ],
    "cards": 12
-  },
-  {
-   "subject": "Agentic AI's economic/commerce disruption thesis catalyzed by Meta Muse (ecommerce TAM + friction-reduction/disinflation framing)",
-   "labels": [
-    "ai agentic commerce playbook",
-    "agentic ai economic disruption"
-   ],
-   "cards": 21
   }
  ],
- "fragmented_mass_share": 0.048,
+ "fragmented_mass_share": 0.05,
  "mis_merges": [
   {
    "label": "hedge fund positioning",
    "subjects": [
-    "JPM systematic/CTA and asset-manager futures positioning flows across rates, equities, commodities and FX",
-    "O'Dwyer's read on bank-stock relative performance amid the Muse-driven selloff"
+    "CTA/asset-manager futures positioning and flow data across rates, commodities and index futures",
+    "O'Dwyer's read on bank stocks selling off on Meta Muse disruption fears"
    ],
    "would_change_theme_selection": false,
-   "why": "Both threads are minor slivers of the label (3 of 12 cards are O'Dwyer's), so the merge muddies one label rather than costing the editor a distinct lead theme."
-  },
-  {
-   "label": "energy election risk",
-   "subjects": [
-    "oil's pass-through to yields and the Fed policy path",
-    "midterm election seasonality correction risk"
-   ],
-   "would_change_theme_selection": false,
-   "why": "Each side is a single unsupported card, too thin to be a theme on its own, so bolting them together only produces a confusing 2-card label rather than hiding real content."
+   "why": "The O'Dwyer bank-selloff color is three cards of desk commentary tied to the Muse story, not a systematic-flows subject, but it is too small a slice to itself be a lead-theme candidate."
   }
  ],
  "pass": true,
- "notes": "misc holds 12 of the sampled cards (declared overflow, not scored as mis-merge); label lists appear capped at roughly 12-13 items each, well below the stated 694-card total, so fragmented_mass_share is computed against the true total but numerator counts are drawn only from the visible sample and likely understate true fragmented mass.",
+ "notes": "The two fragmentation sets are near-duplicate sentence pairs from the same underlying note reported under two labels (23+12=35 of ~694 cards, 5.0%), both well under the 10% ceiling, so grouping integrity passes. The topic-label listing I was given covers 292 cards; the remainder of the day's 694 sit in labels/instruments not shown to me, so this grading is necessarily scoped to the visible sample. 'misc' holds 12 declared-overflow cards (BOJ hike, Turkey lira crisis, gold, BTC print, sector leaders) and is excluded from mis-merge scoring per definition.",
  "dim": "grouping",
  "agent": "b",
  "artifact": "",

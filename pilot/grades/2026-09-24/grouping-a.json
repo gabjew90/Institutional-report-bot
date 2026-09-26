@@ -1,16 +1,7 @@
 {
  "metric": 1,
- "total_cards": 694,
+ "total_cards": 292,
  "fragmentation_sets": [
-  {
-   "subject": "Meta Muse's launch/traction and its agentic-AI and commerce implications",
-   "labels": [
-    "meta muse app momentum",
-    "ai agentic commerce playbook",
-    "agentic ai economic disruption"
-   ],
-   "cards": 32
-  },
   {
    "subject": "France's fiscal crisis and the Franco-German bond spread blowout",
    "labels": [
@@ -20,44 +11,28 @@
    "cards": 12
   },
   {
-   "subject": "Fed hikes and the Treasury yield surge to multi-decade highs",
+   "subject": "Morgan Stanley's S&P 500 target and its energy/midterm-election downside case",
    "labels": [
-    "fed rate hike outlook",
-    "treasury yields rates outlook"
+    "s p 500 earnings valuation outlook",
+    "energy election risk"
    ],
-   "cards": 24
-  },
-  {
-   "subject": "Russell 2000/small-cap weakness and equity range structure amid the rates selloff",
-   "labels": [
-    "equity range downside risk",
-    "russell small cap vol hedge"
-   ],
-   "cards": 23
-  },
-  {
-   "subject": "Middle East oil supply shock and its diesel/inflation pass-through",
-   "labels": [
-    "oil right tail geopolitical risk",
-    "diesel core inflation shock"
-   ],
-   "cards": 17
+   "cards": 7
   }
  ],
- "fragmented_mass_share": 0.156,
+ "fragmented_mass_share": 0.065,
  "mis_merges": [
   {
    "label": "hedge fund positioning",
    "subjects": [
-    "JPM systematic futures/CTA/Asset-Manager/Leveraged-Fund positioning data",
-    "O'Dwyer's discretionary call on bank-stock reaction to the Muse-driven selloff (regional banks/LAZ/JEF outperforming the consensual bank names being sold)"
+    "JPM weekly futures/positioning flow data (CTAs, Asset Managers, Leveraged Funds across rates, equities, commodities)",
+    "Bank stock relative performance amid the Muse-driven AI-disruption selloff (O'Dwyer commentary on which banks are being sold vs. outperforming)"
    ],
-   "would_change_theme_selection": true,
-   "why": "The O'Dwyer banking call is distinct, editor-relevant color tied to the day's Meta Muse mega-story, and sits buried inside a label an editor would read as pure quant positioning data, so it would likely be missed when picking themes."
+   "would_change_theme_selection": false,
+   "why": "The O'Dwyer bank-stock thread is only 3 of the label's 12 cards, too thin to have been picked as its own theme even if correctly separated from the futures-flow data."
   }
  ],
- "pass": false,
- "notes": "misc holds 12/694 cards (~1.7%), correctly excluded from mis-merge judgment. Two smaller same-bank pairs (JPM positioning vs ETF flows; JPM US-outlook vs sector-hedge menu; MS valuation vs quality-factor note) were considered but not counted as fragmentation since their theses are analytically distinct enough to plausibly stand as separate briefs.",
+ "pass": true,
+ "notes": "Ledger header states 694 cards for the day but only 292 appear across the labels actually listed, so fragmented_mass_share is computed over that visible subset. misc holds 12 cards (4.1% of the visible total), all correctly declared overflow.",
  "dim": "grouping",
  "agent": "a",
  "artifact": "",
