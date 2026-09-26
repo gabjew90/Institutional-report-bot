@@ -74,6 +74,11 @@ def upsert_user_profile(
     trader_rank is NOT set here — it's computed on-read via
     get_global_trader_ranks() (the stored column is deprecated).
 
+    racial_humor_score is accepted and dropped: the column is written
+    NULL (2026-09-26). The racism board is db.race_board, and a second,
+    LLM-judged racism number in the same table is what query_data kept
+    finding and quoting against it.
+
     slur_examples and trader_examples are JSON-encoded list[str] payloads
     (use json.dumps in the caller). Stored as TEXT to keep schema simple.
     """
@@ -94,7 +99,7 @@ def upsert_user_profile(
              message_count_at_update = excluded.message_count_at_update,
              last_seen_message_at = excluded.last_seen_message_at,
              slur_count = excluded.slur_count,
-             racial_humor_score = COALESCE(excluded.racial_humor_score, user_profiles.racial_humor_score),
+             racial_humor_score = NULL,
              trader_score = COALESCE(excluded.trader_score, user_profiles.trader_score),
              trader_rationale = COALESCE(excluded.trader_rationale, user_profiles.trader_rationale),
              racism_rationale = COALESCE(excluded.racism_rationale, user_profiles.racism_rationale),
@@ -106,7 +111,7 @@ def upsert_user_profile(
         (
             int(user_id), username, display_name, profile_text,
             int(message_count_at_update), last_seen_message_at,
-            int(slur_count), racial_humor_score,
+            int(slur_count), None,
             trader_score, trader_rationale, racism_rationale,
             slur_examples, trader_examples, personal_ammo,
             last_full_rebuild_at,
@@ -239,6 +244,12 @@ def export_user_profiles_markdown() -> str:
     # the previously-stored trader_rank column. See
     # get_global_trader_ranks() docstring for the deprecation note.
     trader_rank_by_uid, trader_rank_total = _db.get_global_trader_ranks()
+    try:
+        race = _db.race_board()
+        race_rows = {r["user_id"]: r for r in race["rows"]}
+    except Exception as e:
+        log.warning(f"race board failed in snapshot export: {e}")
+        race, race_rows = None, {}
 
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     lines: list[str] = [
@@ -265,7 +276,6 @@ def export_user_profiles_markdown() -> str:
         updated = r["updated_at"] or ""
         body = (r["profile_text"] or "").strip()
         slur_n = r["slur_count"] or 0
-        rh = r["racial_humor_score"]
         ts = r["trader_score"]
         tr_rank = trader_rank_by_uid.get(int(r["user_id"]))
         tr_rationale = (r["trader_rationale"] or "").strip()
@@ -294,18 +304,16 @@ def export_user_profiles_markdown() -> str:
         )
         lines.append("")
 
-        # Scores block — surfaces the hidden hierarchy metrics that the
-        # /ask bot uses internally for clapback context. Reading this
-        # publicly is fine; the bot just doesn't quote raw numbers in
-        # answers (it uses ordinal ranks).
-        # ONE race score shown — racial_humor_score is the canonical
-        # number. The regex-based slur_count is still tracked in the DB
-        # (deterministic floor signal) but no longer surfaced as a
-        # separate display value — collapses two confusing numbers into
-        # the one calibrated 0-100 score.
+        # Scores block. The racism figure is the board's count
+        # (2026-09-26), the same number /ask ranks by.
         score_bits: list[str] = []
-        if rh is not None:
-            score_bits.append(f"**racial-humor:** {rh}/100")
+        rrow = race_rows.get(int(r["user_id"]))
+        if rrow:
+            score_bits.append(
+                f"**racism-rank:** #{rrow['rank']}/{race['total']} "
+                f"({rrow['race_edged']} race-edged msgs in 30d)")
+        elif race is not None:
+            score_bits.append("**racism-rank:** unranked (0 race-edged msgs in 30d)")
         if ts is not None:
             score_bits.append(f"**trader-score:** {ts}/100")
         if tr_rank is not None:
@@ -909,6 +917,33 @@ def get_latest_chat_message_posted_at(channel_id: int | None = None) -> str | No
     return row[0] if row and row[0] else None
 
 
+def trader_evidence(user_id: int, days: int = 21) -> dict:
+    """The documented record behind a trader rank: the same 21-day ledger
+    the score's receipt points come from (db.compute_member_points)."""
+    pts = _db.compute_member_points(int(user_id), days=days) or {}
+    led = _db.member_ledger_summary(int(user_id), days=days, points=pts) or {}
+    avg = led.get("avg_gain_pct")
+    return {
+        "window_days": int(days),
+        "wins": led.get("wins", 0),
+        "losses": led.get("losses", 0),
+        "ghosted": int(pts.get("entries_ghosted") or 0),
+        "receipt_points": int(pts.get("points") or 0),
+        "avg_gain_pct_on_closes": round(avg) if avg is not None else None,
+        "tickers": (led.get("tickers") or [])[:6],
+    }
+
+
+def _racism_payload(standing: dict, examples: list[dict] | None) -> dict:
+    out = {k: standing.get(k) for k in (
+        "race_edged", "racial_slurs", "messages", "per_100", "window_days",
+        "coverage", "prior_rank", "prior_rank_total", "prior_race_edged",
+        "prior_coverage") if k in standing}
+    if examples is not None:
+        out["examples"] = examples
+    return out
+
+
 def lookup_user_ranks(
     *,
     username: str | None = None,
@@ -919,46 +954,27 @@ def lookup_user_ranks(
 ) -> dict:
     """Look up rank info. Three modes (use exactly one):
 
-      1. `username` set → return that user's trader_rank, racism_rank,
-         and both rationales.
+      1. `username` set -> that user's trader rank and racism rank, each
+         with its evidence.
+      2. `metric` + `rank_position` -> the ONE user at that position (no
+         cap on N). `from_bottom` counts from the worst end; the returned
+         `rank` is still the position from the top ("#49/49").
+      3. `metric` in {"trader", "racism"} alone -> the top `top_n`.
 
-    `from_bottom` (rank_position mode only): when True, rank_position=1
-    returns the WORST-ranked user (lowest trader_score / lowest
-    racial_humor_score above 0), =2 returns second-worst, etc. Used to
-    answer "who's the worst trader" without exposing the score ordering
-    to the asker. The returned `rank` field reflects the user's actual
-    position FROM THE TOP (so the bot still says "rank #49/49") — only
-    the lookup direction differs.
-      2. `metric` + `rank_position` set → return the ONE user at that
-         rank position (no cap on N — supports "who's #50" too).
-      3. `username` unset, no rank_position, `metric` in {"trader",
-         "racism"} → return the top `top_n` users by that metric
-         (default 5, no cap; the /ask Gemini exposure hardcodes
-         top_n=5 by policy, but this DB function stays unconstrained
-         for internal callers).
+    Trader ranks order user_profiles.trader_score. Racism ranks come from
+    race_board(): race-edged messages over the last 30 days (2026-09-26,
+    replacing the LLM-judged racial_humor_score). Every user in every
+    mode carries `trader_evidence` or `racism_evidence`, so a rank is
+    never returned without the record behind it (owner, 2026-09-26).
 
-    Returns a dict shaped for tool-response consumption:
-        {"users": [...], "count": int, ...optional metadata}
-    Errors return {"error": "...", "users": []}.
+    Returns {"users": [...], "count": int, ...}; errors return
+    {"error": "...", "users": []}.
     """
     conn = _db.get_connection()
 
-    # Helper: compute global racism-rank ordering. Mirrors
-    # get_global_trader_ranks() shape. NULL or zero scores get no rank.
-    def _global_racism_ranks() -> tuple[dict[int, int], int]:
-        rows = conn.execute(
-            """SELECT user_id FROM user_profiles
-                WHERE racial_humor_score IS NOT NULL
-                  AND racial_humor_score > 0
-                ORDER BY racial_humor_score DESC, user_id ASC"""
-        ).fetchall()
-        return ({int(r["user_id"]): i + 1 for i, r in enumerate(rows)},
-                len(rows))
-
     if username and username.strip():
         row = conn.execute(
-            """SELECT user_id, display_name, username,
-                      trader_rationale, racism_rationale
+            """SELECT user_id, display_name, username, trader_rationale
                  FROM user_profiles
                 WHERE LOWER(username) = LOWER(?)""",
             (username.strip(),),
@@ -969,8 +985,10 @@ def lookup_user_ranks(
                 "users": [],
             }
         trader_ranks, trader_total = _db.get_global_trader_ranks()
-        racism_ranks, racism_total = _global_racism_ranks()
         uid = int(row["user_id"])
+        board = race_board()
+        prior = race_board(offset_days=RACE_WINDOW_DAYS)
+        standing = race_standing(uid, board, prior)
         return {
             "users": [{
                 "username": row["username"],
@@ -979,15 +997,16 @@ def lookup_user_ranks(
                 "trader_rank": trader_ranks.get(uid),
                 "trader_rank_total": trader_total,
                 "trader_rationale": row["trader_rationale"],
-                "racism_rank": racism_ranks.get(uid),
-                "racism_rank_total": racism_total,
-                "racism_rationale": row["racism_rationale"],
+                "trader_evidence": trader_evidence(uid),
+                "racism_rank": standing["rank"],
+                "racism_rank_total": standing["rank_total"],
+                "racism_evidence": _racism_payload(
+                    standing, race_evidence(uid)),
             }],
             "count": 1,
             "mode": "single_user",
         }
 
-    # Metric-based modes (rank_position OR top-N)
     metric = (metric or "").strip().lower()
     if metric not in ("trader", "racism"):
         return {
@@ -997,12 +1016,36 @@ def lookup_user_ranks(
             "users": [],
         }
 
-    # Single-position mode: "who's #N" — no upper cap on N.
-    # Returns the ONE user at that position with their rationale.
-    # When from_bottom=True, OFFSET counts from the worst end (so
-    # rank_position=1 returns the WORST-ranked user); the returned
-    # `rank` field still reflects the user's true top-down position
-    # so /ask can say "rank 49/49" cleanly.
+    if metric == "trader":
+        ranked = [
+            {"user_id": int(r["user_id"]), "username": r["username"],
+             "display_name": r["display_name"],
+             "trader_rationale": r["trader_rationale"]}
+            for r in conn.execute(
+                """SELECT user_id, display_name, username, trader_rationale
+                     FROM user_profiles
+                    WHERE trader_score IS NOT NULL
+                    ORDER BY trader_score DESC, user_id ASC""").fetchall()
+        ]
+    else:
+        board = race_board()
+        ranked = [dict(r) for r in board["rows"]]
+
+    def _with_evidence(u: dict, rank: int, detail: bool) -> dict:
+        out = {"rank": rank, "rank_total": len(ranked), "metric": metric,
+               "username": u["username"], "display_name": u["display_name"],
+               "user_id": u["user_id"]}
+        if metric == "trader":
+            out["trader_rationale"] = u.get("trader_rationale")
+            out["trader_evidence"] = trader_evidence(u["user_id"])
+        else:
+            st = dict(u, rank_total=board["total"],
+                      window_days=board["window_days"],
+                      coverage=board["coverage"])
+            out["racism_evidence"] = _racism_payload(
+                st, race_evidence(u["user_id"]) if detail else None)
+        return out
+
     if rank_position is not None:
         try:
             pos = max(1, int(rank_position))
@@ -1011,123 +1054,24 @@ def lookup_user_ranks(
                 "error": "rank_position must be a positive integer.",
                 "users": [],
             }
-        # Get total ranked count first (drives both bottom-up lookup
-        # and the displayed rank when from_bottom=True).
-        if metric == "trader":
-            total = conn.execute(
-                "SELECT COUNT(*) FROM user_profiles "
-                "WHERE trader_score IS NOT NULL"
-            ).fetchone()[0]
-        else:
-            total = conn.execute(
-                "SELECT COUNT(*) FROM user_profiles "
-                "WHERE racial_humor_score IS NOT NULL "
-                "  AND racial_humor_score > 0"
-            ).fetchone()[0]
-
+        total = len(ranked)
         if pos > total:
             return {
                 "error": f"No user at {metric}-rank #{pos} (fewer "
                          f"than {pos} users have a score).",
                 "users": [],
             }
+        true_rank = total - pos + 1 if from_bottom else pos
+        u = _with_evidence(ranked[true_rank - 1], true_rank, detail=True)
+        u["from_bottom"] = bool(from_bottom)
+        return {"users": [u], "count": 1, "mode": "rank_position"}
 
-        if from_bottom:
-            # Worst N from the bottom = OFFSET (total - pos) from the top.
-            offset = max(0, total - pos)
-            true_rank = total - pos + 1
-        else:
-            offset = pos - 1
-            true_rank = pos
-
-        if metric == "trader":
-            r = conn.execute(
-                """SELECT user_id, display_name, username,
-                          trader_rationale
-                     FROM user_profiles
-                    WHERE trader_score IS NOT NULL
-                    ORDER BY trader_score DESC, user_id ASC
-                    LIMIT 1 OFFSET ?""",
-                (offset,),
-            ).fetchone()
-        else:  # racism
-            r = conn.execute(
-                """SELECT user_id, display_name, username,
-                          racism_rationale
-                     FROM user_profiles
-                    WHERE racial_humor_score IS NOT NULL
-                      AND racial_humor_score > 0
-                    ORDER BY racial_humor_score DESC, user_id ASC
-                    LIMIT 1 OFFSET ?""",
-                (offset,),
-            ).fetchone()
-        if not r:
-            return {
-                "error": f"No user at {metric}-rank #{pos} (fewer "
-                         f"than {pos} users have a score).",
-                "users": [],
-            }
-        user_payload = {
-            "rank": true_rank,
-            "rank_total": total,
-            "metric": metric,
-            "username": r["username"],
-            "display_name": r["display_name"],
-            "from_bottom": bool(from_bottom),
-        }
-        if metric == "trader":
-            user_payload["trader_rationale"] = r["trader_rationale"]
-        else:
-            user_payload["racism_rationale"] = r["racism_rationale"]
-        return {
-            "users": [user_payload],
-            "count": 1,
-            "mode": "rank_position",
-        }
-
-    # Top-N leaderboard mode. No upper cap on top_n internally;
-    # the /ask exposure hardcodes top_n=5 for policy.
     try:
         capped_n = max(1, int(top_n))
     except (TypeError, ValueError):
         capped_n = 5
-    if metric == "trader":
-        rows = conn.execute(
-            """SELECT user_id, display_name, username, trader_rationale
-                 FROM user_profiles
-                WHERE trader_score IS NOT NULL
-                ORDER BY trader_score DESC, user_id ASC
-                LIMIT ?""",
-            (capped_n,),
-        ).fetchall()
-        users = [
-            {
-                "rank": i + 1,
-                "username": r["username"],
-                "display_name": r["display_name"],
-                "trader_rationale": r["trader_rationale"],
-            }
-            for i, r in enumerate(rows)
-        ]
-    else:  # racism
-        rows = conn.execute(
-            """SELECT user_id, display_name, username, racism_rationale
-                 FROM user_profiles
-                WHERE racial_humor_score IS NOT NULL
-                  AND racial_humor_score > 0
-                ORDER BY racial_humor_score DESC, user_id ASC
-                LIMIT ?""",
-            (capped_n,),
-        ).fetchall()
-        users = [
-            {
-                "rank": i + 1,
-                "username": r["username"],
-                "display_name": r["display_name"],
-                "racism_rationale": r["racism_rationale"],
-            }
-            for i, r in enumerate(rows)
-        ]
+    users = [_with_evidence(u, i + 1, detail=False)
+             for i, u in enumerate(ranked[:capped_n])]
     return {
         "users": users,
         "count": len(users),
@@ -1528,3 +1472,196 @@ def set_catchup_watermark(channel_id: int, scanned_through_iso: str) -> None:
         (int(channel_id), str(scanned_through_iso)),
     )
     conn.commit()
+
+
+# --- racism board (2026-09-26) -------------------------------------------
+# One tag per chat message (race_tags, written by discord_bot/race_tagger),
+# counted over a trailing window. Replaces the LLM-judged
+# racial_humor_score as the rank key: that score re-read only the messages
+# since the last 6-hourly refresh, so it measured the last few hours of
+# chat (one member went 10 -> 92 in two days on 13 lifetime slurs) and no
+# member could check it. A count can be checked, and the evidence is the
+# tagged messages themselves.
+
+RACE_WINDOW_DAYS = 30
+
+# The dossier renders the board on every /ask and a rank lookup reads it
+# twice (this window and the prior one). Each read is two GROUP BYs over
+# ~50k rows, so reads within a minute share one result; a tag write
+# clears it.
+_BOARD_TTL_S = 60
+_board_cache: dict[tuple[int, int], tuple[float, dict]] = {}
+
+
+def _window_bounds(days: int, offset_days: int = 0) -> tuple[str, str]:
+    end = datetime.utcnow() - timedelta(days=int(offset_days))
+    start = end - timedelta(days=int(days))
+    return start.isoformat(), end.isoformat()
+
+
+def race_untagged(since_iso: str, limit: int = 1000) -> list[dict]:
+    """Chat messages at or after `since_iso` with no race tag yet, newest
+    first so the current window fills before older history."""
+    rows = _db.get_connection().execute(
+        "SELECT m.id, m.author_id, m.posted_at, m.content FROM chat_messages m "
+        "LEFT JOIN race_tags t ON t.message_id = m.id "
+        "WHERE t.message_id IS NULL AND m.posted_at >= ? "
+        "ORDER BY m.posted_at DESC LIMIT ?",
+        (since_iso, int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def insert_race_tags(rows: list[tuple]) -> int:
+    """rows: (message_id, author_id, posted_at, race_edged, racial_slurs,
+    source). Idempotent: a message already tagged keeps its first tag."""
+    if not rows:
+        return 0
+    _board_cache.clear()
+    conn = _db.get_connection()
+    cur = conn.executemany(
+        "INSERT OR IGNORE INTO race_tags "
+        "(message_id, author_id, posted_at, race_edged, racial_slurs, source) "
+        "VALUES (?, ?, ?, ?, ?, ?)",
+        rows,
+    )
+    conn.commit()
+    return cur.rowcount or 0
+
+
+def race_board(days: int = RACE_WINDOW_DAYS, offset_days: int = 0) -> dict:
+    """The racism board over [now - offset - days, now - offset].
+
+    Rank key: race-edged messages in the window, then racial slurs, then
+    author_id (deterministic). Only members with at least one race-edged
+    message are ranked; everyone else is unranked, not last. `coverage`
+    is the share of the window's chat messages that carry a tag, so a
+    caller can say the count is still filling in.
+    """
+    import time as _time
+    key = (int(days), int(offset_days))
+    hit = _board_cache.get(key)
+    if hit and _time.monotonic() - hit[0] < _BOARD_TTL_S:
+        return hit[1]
+    board = _race_board_uncached(days, offset_days)
+    _board_cache[key] = (_time.monotonic(), board)
+    return board
+
+
+def _race_board_uncached(days: int, offset_days: int) -> dict:
+    start, end = _window_bounds(days, offset_days)
+    conn = _db.get_connection()
+    counts = conn.execute(
+        "SELECT author_id, SUM(race_edged = 1) AS edged, "
+        "       SUM(CASE WHEN race_edged = 1 THEN racial_slurs ELSE 0 END) AS slurs "
+        "FROM race_tags WHERE posted_at >= ? AND posted_at < ? "
+        "GROUP BY author_id HAVING edged > 0",
+        (start, end),
+    ).fetchall()
+    msgs = {int(r[0]): int(r[1]) for r in conn.execute(
+        "SELECT author_id, COUNT(*) FROM chat_messages "
+        "WHERE posted_at >= ? AND posted_at < ? GROUP BY author_id",
+        (start, end),
+    ).fetchall()}
+    total_msgs = sum(msgs.values())
+    tagged = conn.execute(
+        "SELECT COUNT(*) FROM race_tags WHERE posted_at >= ? AND posted_at < ?",
+        (start, end),
+    ).fetchone()[0]
+    ordered = sorted(
+        ((int(r["author_id"]), int(r["edged"]), int(r["slurs"] or 0)) for r in counts),
+        key=lambda t: (-t[1], -t[2], t[0]),
+    )
+    names = _race_names([a for a, _, _ in ordered])
+    rows = []
+    for i, (aid, edged, slurs) in enumerate(ordered):
+        n = msgs.get(aid, 0)
+        rows.append({
+            "rank": i + 1,
+            "user_id": aid,
+            "username": names.get(aid, ("", ""))[0],
+            "display_name": names.get(aid, ("", ""))[1],
+            "race_edged": edged,
+            "racial_slurs": slurs,
+            "messages": n,
+            "per_100": round(100 * edged / n, 1) if n else None,
+        })
+    return {
+        "rows": rows,
+        "total": len(rows),
+        "window_days": int(days),
+        "window_start": start[:10],
+        "window_end": end[:10],
+        "_bounds": (start, end),
+        # capped: tags outlive purged chat rows
+        "coverage": min(1.0, round(tagged / total_msgs, 3)) if total_msgs else 1.0,
+    }
+
+
+def _race_names(author_ids: list[int]) -> dict[int, tuple[str, str]]:
+    """(username, display) per author: the profile row when one exists,
+    else the author's most recent chat message."""
+    if not author_ids:
+        return {}
+    conn = _db.get_connection()
+    ph = ",".join("?" * len(author_ids))
+    out = {int(r["user_id"]): (r["username"] or "", r["display_name"] or r["username"] or "")
+           for r in conn.execute(
+               f"SELECT user_id, username, display_name FROM user_profiles "
+               f"WHERE user_id IN ({ph})", author_ids).fetchall()}
+    for aid in author_ids:
+        if aid in out:
+            continue
+        r = conn.execute(
+            "SELECT author_username, author_display FROM chat_messages "
+            "WHERE author_id = ? ORDER BY posted_at DESC LIMIT 1", (aid,)).fetchone()
+        if r:
+            out[aid] = (r["author_username"] or "", r["author_display"] or r["author_username"] or "")
+    return out
+
+
+def race_standing(author_id: int, board: dict | None = None,
+                  prior: dict | None = None) -> dict:
+    """One member's line on the board, with the prior window's rank for a
+    month-over-month answer. Unranked members get race_edged 0 and their
+    message count, which is the evidence for 'I never said a slur'."""
+    board = board or race_board()
+    aid = int(author_id)
+    row = next((r for r in board["rows"] if r["user_id"] == aid), None)
+    if row is None:
+        start, end = board["_bounds"]
+        n = _db.get_connection().execute(
+            "SELECT COUNT(*) FROM chat_messages WHERE author_id = ? "
+            "AND posted_at >= ? AND posted_at < ?",
+            (aid, start, end),
+        ).fetchone()[0]
+        row = {"rank": None, "user_id": aid, "race_edged": 0, "racial_slurs": 0,
+               "messages": int(n), "per_100": 0.0 if n else None}
+    out = dict(row)
+    out["rank_total"] = board["total"]
+    out["window_days"] = board["window_days"]
+    out["coverage"] = board["coverage"]
+    if prior is not None:
+        prow = next((r for r in prior["rows"] if r["user_id"] == aid), None)
+        out["prior_rank"] = prow["rank"] if prow else None
+        out["prior_rank_total"] = prior["total"]
+        out["prior_race_edged"] = prow["race_edged"] if prow else 0
+        out["prior_coverage"] = prior["coverage"]
+    return out
+
+
+def race_evidence(author_id: int, days: int = RACE_WINDOW_DAYS, n: int = 3) -> list[dict]:
+    """The member's most recent race-edged messages in the window,
+    verbatim, as the receipt for their count."""
+    start, end = _window_bounds(days)
+    rows = _db.get_connection().execute(
+        "SELECT m.posted_at, m.channel_name, m.content FROM race_tags t "
+        "JOIN chat_messages m ON m.id = t.message_id "
+        "WHERE t.author_id = ? AND t.race_edged = 1 "
+        "  AND t.posted_at >= ? AND t.posted_at < ? "
+        "ORDER BY t.posted_at DESC LIMIT ?",
+        (int(author_id), start, end, int(n)),
+    ).fetchall()
+    return [{"date": (r["posted_at"] or "")[:10],
+             "channel": r["channel_name"],
+             "text": " ".join((r["content"] or "").split())[:200]} for r in rows]

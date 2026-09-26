@@ -587,6 +587,26 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_chat_messages_lower_username ON chat_messages(LOWER(author_username), posted_at DESC);
         CREATE INDEX IF NOT EXISTS idx_chat_messages_posted_at ON chat_messages(posted_at);
 
+        -- race_tags (2026-09-26): one row per chat message, tagged once.
+        -- race_edged 1 = uses a racial/ethnic/religious slur or mocks or
+        -- stereotypes people by race, ethnicity or religion; 0 = not;
+        -- -1 = the classifier refused the message (excluded from counts,
+        -- never retried). The racism board counts these rows over a
+        -- trailing window, replacing the LLM-judged racial_humor_score,
+        -- which re-read only the latest refresh's messages and moved
+        -- 10 -> 92 in two days for one member.
+        CREATE TABLE IF NOT EXISTS race_tags (
+            message_id INTEGER PRIMARY KEY,   -- chat_messages.id
+            author_id INTEGER NOT NULL,
+            posted_at TEXT NOT NULL,
+            race_edged INTEGER NOT NULL,
+            racial_slurs INTEGER NOT NULL DEFAULT 0,
+            source TEXT NOT NULL,             -- 'regex' | 'model' | 'empty' | 'refused'
+            tagged_at TEXT NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_race_tags_author_ts ON race_tags(author_id, posted_at);
+        CREATE INDEX IF NOT EXISTS idx_race_tags_ts ON race_tags(posted_at);
+
         -- Protected members promoted from PROTECTED_PENDING_USERNAMES:
         -- a member who hasn't joined yet is registered by exact username;
         -- the first ingested message from that username pins the
@@ -806,6 +826,10 @@ def _init_schema(conn: sqlite3.Connection) -> None:
     # Now-safe indexes that depend on the migrated columns.
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_slur ON user_profiles(slur_count DESC)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_racial_humor ON user_profiles(racial_humor_score DESC)")
+    # Retired 2026-09-26: the racism board is race_tags / race_board.
+    # upsert_user_profile writes NULL; this clears rows written before.
+    conn.execute("UPDATE user_profiles SET racial_humor_score = NULL "
+                 "WHERE racial_humor_score IS NOT NULL")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_user_profiles_rank ON user_profiles(trader_rank)")
     # Idempotent migrations for already-deployed bridge_ingestion_state schemas
     # (the table was first created in step 1 without these columns).
@@ -1442,6 +1466,12 @@ from db_parts.chat import (  # noqa: E402,F401
     maybe_promote_protected,
     prune_user_profiles_to_top_n,
     purge_old_chat_messages,
+    RACE_WINDOW_DAYS,
+    insert_race_tags,
+    race_board,
+    race_evidence,
+    race_standing,
+    race_untagged,
     resolve_username_to_user_id,
     search_chat_messages_for_ask,
     set_catchup_watermark,

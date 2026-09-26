@@ -3388,3 +3388,22 @@ too. Replayed on the existing grades: 9/9 and 9/17 flip to a merge
 9/4 and 9/23 become owner calls (1-1). All are shakedown days. The share
 itself still comes from the tiebreak alone when one ran; a median of
 three would match the vote, not changed.
+
+2026-09-26 racism board. Ranks were challenged in the room on 9/25 (Sam
+"fake news" at #10 with 239 slurs, DarkMark "never thrown a slur" ranked
+#26). The rank was racial_humor_score, a 0-100 Gemini judgment re-made
+every 6 hours from only the messages since the last refresh; the
+snapshot history shows cemini23 10 -> 92 in two days on 13 lifetime
+slurs, Monsoon 28 -> 75 in four. Replaced with per-message tags
+(race_tags, tagged once, racial-slur regex before any model call) and a
+count over 30 days (db.race_board). The old column is written NULL.
+Every rank lookup now returns its evidence, and phase 10 appends it as
+an Evidence block rendered in code (discord_bot/rank_evidence.py), per
+the owner: ranks must come with evidence. Backfill: 60 days, about 115k
+messages, 12k per 15-minute run. Until coverage reaches 95% the footer
+says "tagging N% done".
+
+Follow-ups not done: the profile prompt still asks Gemini for
+racial_humor_score (output discarded; remove from the prompt and
+schema); the trader score's chatter half is still re-read from each
+refresh's new messages (owner asked only whether SV #1 is justified).

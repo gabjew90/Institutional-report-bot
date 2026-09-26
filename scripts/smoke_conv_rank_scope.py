@@ -1,15 +1,17 @@
-"""Smoke test: conv-scoped racism-rank is not a global rank (2026-06-24).
+"""Smoke test: the dossier's racism rank is the GLOBAL board, with counts.
 
-The WHO'S TALKING block ranks racism ONLY among the people active in the
-current conversation. When sunny was the only racism-scored person
-active, his block read "racism-rank #1/1 in this conv" and the bot told
-him "you're actually #1" — contradicting the global top-5 it had just
-given (sunny absent, ZHawk #1). Two fixes:
-  (1) db.format_user_profiles_for_context suppresses the meaningless
-      tiny-denominator ordinal (<3 active) and labels the scope loudly
-      when it does rank.
-  (2) a binding /ask prompt rule: conv-scoped rank != global leaderboard;
-      global-standing questions must use lookup_user_profile.
+History. Until 2026-09-26 WHO'S TALKING ranked racism only among the
+people active in the conversation, and the bot kept presenting that
+ordinal as global standing (2026-06-24: sunny was "#1/1 in this conv"
+and was told "you're actually #1"). The fix then was to label the scope
+loudly and suppress tiny denominators.
+
+2026-09-26 removed the scope itself: the dossier now carries the global
+board rank (db.race_board, race-edged messages over 30 days) with the
+count behind it, so there is no conversation-scoped ordinal left to
+misread. This smoke pins that: a ranked member shows #N/M with counts,
+an unranked member shows zero, and no conversation-scoped wording or
+LLM humor score survives.
 """
 
 import os
@@ -23,12 +25,7 @@ def _ok(msg):
     print(f"PASS {msg}")
 
 
-def _fail(msg):
-    print(f"FAIL {msg}")
-    sys.exit(1)
-
-
-def _profile(uid, name, humor):
+def _profile(name, humor):
     return {
         "display_name": name, "username": name.lower(),
         "racial_humor_score": humor, "slur_count": 19,
@@ -38,53 +35,28 @@ def _profile(uid, name, humor):
     }
 
 
-def test_single_scored_user_no_meaningless_rank():
+BOARD = {
+    "rows": [{"rank": 7, "user_id": 318, "race_edged": 22, "racial_slurs": 9,
+              "messages": 732, "per_100": 3.0}],
+    "total": 44, "window_days": 30, "coverage": 1.0,
+}
+
+
+def test_ranked_member_shows_global_rank_with_counts():
     import db
-    profiles = {318: _profile(318, "SUNNY", 65)}
+    profiles = {318: _profile("SUNNY", 65), 212: _profile("DarkMark", 15)}
     with patch("db.get_profiles_for_users", return_value=profiles), \
-         patch("db.get_global_trader_ranks", return_value=({318: 21}, 54)):
-        out = db.format_user_profiles_for_context([318])
-    assert "#1/1 in this conv" not in out, "meaningless '#1 of 1' must be gone"
-    assert "racism-rank #1" not in out, f"must not assert a global-looking #1: {out}"
-    assert "too few active here to rank" in out, out
-    # the real signal is still shown (slurs), and the global pointer is there
-    assert "slurs:19" in out and "lookup_user_profile" in out, out
-    _ok("annotation: single racism-scored user gets signal, NOT a '#1/1' rank")
-
-
-def test_three_scored_users_rank_with_loud_scope():
-    import db
-    profiles = {
-        1: _profile(1, "ZHawk", 90),
-        2: _profile(2, "SV", 80),
-        3: _profile(3, "SUNNY", 65),
-    }
-    with patch("db.get_profiles_for_users", return_value=profiles), \
-         patch("db.get_global_trader_ranks", return_value=({1: 5, 2: 6, 3: 21}, 54)):
-        out = db.format_user_profiles_for_context([1, 2, 3])
-    # With >=3 active it DOES rank, but the scope is made unmistakable.
-    assert "ACTIVE here" in out and "NOT the global leaderboard" in out, out
-    assert "racism-rank #1 of 3" in out, out
-    _ok("annotation: >=3 active → ranked, but scope is loudly conv-not-global")
-
-
-# RETIRED 2026-09-01 (test_prompt_rule_present): asserted literal pre-diet /ask prompt text.
-# The prompt diet moved tool guidance into discord_bot/tool_docs.py and the
-# behaviour is now asserted by self-testing fixtures (tests/ask_fixtures).
-# def test_prompt_rule_present():
-#     import discord_bot.bot as bot_mod
-#     ins = bot_mod._ASK_SYSTEM_INSTRUCTION
-#     assert "CONV-SCOPED rank ≠ GLOBAL leaderboard" in ins, "rule missing"
-#     assert "not a license to invent a rank" in ins.lower() or \
-#         "roast is not a license to invent a rank" in ins.lower(), \
-#         "the no-fabricated-rank clause is missing"
-#     assert "lookup_user_profile" in ins, "must point global asks at the tool"
-#     _ok("prompt: conv-scoped-vs-global rank rule present + tool pointer")
+         patch("db.get_global_trader_ranks", return_value=({318: 21, 212: 14}, 59)), \
+         patch("db.race_board", return_value=BOARD), \
+         patch("db.member_ledger_summary", return_value={}):
+        out = db.format_user_profiles_for_context([318, 212])
+    assert "racism-rank #7/44 (30d: 22 race-edged of 732 msgs, 9 racial slurs)" in out, out
+    assert "racism-rank: unranked (30d: 0 race-edged msgs)" in out, out
+    metrics = out.split("\n", 1)[1]  # past the block's own heading
+    for stale in ("in this conv", "ACTIVE here", "humor:", "too few active"):
+        assert stale not in metrics, f"stale scope/score wording {stale!r}: {out}"
+    _ok("dossier: global board rank with counts; unranked shows zero; no conv scope")
 
 
 if __name__ == "__main__":
-    print("=== conv-rank scope smoke ===")
-    test_single_scored_user_no_meaningless_rank()
-    test_three_scored_users_rank_with_loud_scope()
-    pass  # retired: test_prompt_rule_present
-    print("\nALL CONV-RANK SCOPE SMOKE TESTS PASS")
+    test_ranked_member_shows_global_rank_with_counts()

@@ -69,6 +69,10 @@ commit-history search key; the rule is what matters now):
               header from world_context; adds 104
               chars, removes 95 (the [1]/[2] marker
               clause, now code), net +9           -> _build_runtime_system_instruction
+  2026-09-25  racism ranks challenged ("fake news",
+              "never thrown a slur"); LLM score
+              moved 10 -> 92 in two days; profile
+              metric line rewritten, net -120      -> race_tags board + Evidence block (code)
 
 (The 2026-07-27 entry above continues: planets sarcasm; ZHawk feedback
 clapback -> price backstop-fetch, FACT jab strip, router feedback
@@ -363,7 +367,7 @@ Injected with the literal header `WHO'S TALKING (background on people active in 
 
 **Scope:** the asker (ALWAYS present — never deflect with "you're not in the block"), anyone explicitly named in the question, and replied-to/forwarded authors. Other chat speakers appear by what they SAID without dossiers — known voices, no character data: answer about them from their chat lines only; don't pull profile material that isn't loaded. Seeing a profile ≠ that profile drives the answer — the Type 1/2/3 rules say whose material sources each take; substance follows the question's actual subject.
 
-**Profile schema:** **Personality and style** (who they are, how they trade) / **Voice** (4-8 verbatim phrases, slurs uncensored when they use them) / **Retarded takes** / **Recent trades** (last 30 days) / **Recent personal life**. The header also carries two hidden-hierarchy metrics: **racism-rank #N/M in this conv (humor:X/100, slurs:Y)** — scoped to THIS conversation only, sub-signals distinguish literal slur usage from broader racial-humor scoring — and **trader-rank #N/M (rationale)** — global, rationale shareable.
+**Profile schema:** **Personality and style** (who they are, how they trade) / **Voice** (4-8 verbatim phrases, slurs uncensored when they use them) / **Retarded takes** / **Recent trades** (last 30 days) / **Recent personal life**. The header also carries two hidden-hierarchy metrics: **racism-rank #N/M (30d: race-edged message count)** and **trader-rank #N/M** with the documented ledger — both global.
 
 **Disclosure policy, complete:**
 - **Ranks (ordinal): shareable. Scores (0-100): hidden.** Ordinals + rationales when asked; raw numbers and internal sub-components NEVER, for anyone. Don't repeat the internal vocabulary or confirm it exists — answer adjacently ("you're #N — the read on you is X") or brush it off in-voice.

@@ -981,7 +981,8 @@ def member_recent_tickers(author_id: int, days: int = 21) -> set[str]:
     return {r[0] for r in rows if r[0]}
 
 
-def member_ledger_summary(author_id: int, days: int = 21) -> dict:
+def member_ledger_summary(author_id: int, days: int = 21,
+                          points: dict | None = None) -> dict:
     """{wins, losses, tickers, avg_gain_pct} for one member's logged trades.
 
     One place to read a member's record, so the dossier the writer sees
@@ -992,7 +993,8 @@ def member_ledger_summary(author_id: int, days: int = 21) -> dict:
     outcome yet and averaging a 0 sentinel into the record would read as
     a break-even trade that never happened.
     """
-    pts = compute_member_points(int(author_id), days=days) or {}
+    pts = points if points is not None else (
+        compute_member_points(int(author_id), days=days) or {})
     row = _db.get_connection().execute(
         "SELECT AVG(gain_pct) FROM analyst_trades "
         "WHERE author_id = ? AND gain_pct IS NOT NULL AND gain_pct != 0 "

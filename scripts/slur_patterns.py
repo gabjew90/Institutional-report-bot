@@ -114,3 +114,32 @@ def find_slur_contexts(text: str, window: int = 50) -> list[str]:
             snippet = " ".join(snippet.split())
             out.append(snippet)
     return out
+
+
+# Racial, ethnic and religious slurs only (2026-09-26). The racism board
+# counts these; `count_slurs_in_text` also counts the r-, f- and t-slurs,
+# which is why a member's "slurs" figure ran several times their racial
+# count. A message with one of these is race-edged without a model call.
+RACIAL_LABELS = frozenset({
+    "n-slur", "n-slur-hard", "k-slur-jew", "c-slur-asian", "g-slur-asian",
+    "s-slur-latino", "w-slur", "tow-slur", "paki",
+})
+
+
+def count_racial_slurs(text: str) -> int:
+    """Racial slur occurrences in `text`, one per matched span. The two
+    n-slur patterns overlap on the hard-r spelling, so spans are
+    de-duplicated rather than summed per pattern."""
+    if not text:
+        return 0
+    spans = set()
+    for label, pat in _COMPILED:
+        if label in RACIAL_LABELS:
+            spans.update(m.span() for m in pat.finditer(text))
+    starts = sorted(spans)
+    n, last_end = 0, -1
+    for s, e in starts:
+        if s >= last_end:
+            n += 1
+            last_end = e
+    return n

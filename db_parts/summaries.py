@@ -515,10 +515,9 @@ def format_user_profiles_for_context(
     drop from the tail when budget gets tight.
 
     Header: `- **DisplayName** (username, <@user_id>): <metrics>: <text>`.
-    Metrics inline (private hierarchies): racism-rank (combined slur +
-    racial-humor signal) among this conv + global trader rank with
-    one-line rationale. Bot uses these ONLY for comparative answers —
-    never enumerated or quoted as raw numbers.
+    Metrics inline: the global racism-rank with its 30-day counts
+    (db.race_board) and the global trader rank with the documented
+    ledger line.
 
     Also injects up to 3 slur_examples and 3 trader_examples per user
     so the bot has actual recent quotes/moments to draw on for Type 3
@@ -529,25 +528,17 @@ def format_user_profiles_for_context(
     if not profiles:
         return ""
 
-    # Fix #6: racism rank uses ONLY racial_humor_score (LLM-judged, 0-100
-    # calibrated). The previous formula summed regex slur_count + this
-    # score, but the regex count's magnitude was either dwarfed by the
-    # LLM score (humor 75 + slurs 5 = 80, score dominates) or wildly
-    # outweighed it for heavy literal-slur users (humor 50 + slurs 250 =
-    # 300, count dominates) — the sum was unstable and the units weren't
-    # comparable. racial_humor_score already INCLUDES literal slurs in
-    # its calibration brackets, so the regex count was double-counting
-    # the same signal anyway. Single source of truth now.
-    by_racism = sorted(
-        [
-            (uid, int(p.get("racial_humor_score") or 0))
-            for uid, p in profiles.items()
-            if (p.get("racial_humor_score") or 0) > 0
-        ],
-        key=lambda t: (-t[1], t[0]),
-    )
-    racism_rank_by_uid: dict[int, int] = {uid: i + 1 for i, (uid, _) in enumerate(by_racism)}
-    racism_total_in_conv = len(by_racism)
+    # Racism standing is the global board (2026-09-26): race-edged
+    # messages over the last 30 days, db.race_board. It replaced a
+    # conversation-scoped ordering of the LLM-judged racial_humor_score,
+    # whose scope the bot kept misreporting as global and whose number
+    # moved 10 -> 92 in two days for one member.
+    try:
+        race = _db.race_board()
+        race_rows = {r["user_id"]: r for r in race["rows"]}
+    except Exception as e:
+        log.warning(f"race board failed (non-fatal): {e}")
+        race, race_rows = None, {}
 
     # trader_rank — GLOBAL ordering across ALL profiled users (not
     # scoped to this conversation). Computed on-read via
@@ -595,9 +586,7 @@ def format_user_profiles_for_context(
         else:
             ident = f"**{dn}** ({mention}{also})"
 
-        # Private metrics inline — surfaced as ordinal ranks only.
-        # racism-rank exposes both signals (humor + literal) so the bot
-        # can answer "who's worst" vs "who actually uses slurs" if asked.
+        # Ranks inline, each with the counts behind it.
         #
         # The rationales are NOT injected (2026-09-19). Both are written
         # to justify a score: `racism_rationale` in trust-and-safety
@@ -616,36 +605,16 @@ def format_user_profiles_for_context(
         # both rationales on demand — which is where a justification
         # belongs.
         metric_bits: list[str] = []
-        rr = racism_rank_by_uid.get(uid)
-        humor = p.get("racial_humor_score")
-        slurs = int(p.get("slur_count") or 0)
-        sub_signal = []
-        if humor is not None:
-            sub_signal.append(f"humor:{humor}/100")
-        if slurs > 0:
-            sub_signal.append(f"slurs:{slurs}")
-        sub = f" ({', '.join(sub_signal)})" if sub_signal else ""
-        if rr and racism_total_in_conv >= 3:
-            # Make the SCOPE unmistakable — this ranks only the people
-            # active in THIS conversation, not the global leaderboard.
-            # The bot conflated the two (2026-06-24: told sunny "you're
-            # #1" off a conv-scoped rank while the global top-5 had him
-            # absent). Leaderboard claims must use lookup_user_profile.
-            metric_bits.append(
-                f"racism-rank #{rr} of {racism_total_in_conv} ACTIVE "
-                f"here (conversation-scoped, NOT the global "
-                f"leaderboard){sub}"
-            )
-        elif rr:
-            # Denominator < 3: "#1 of 1" is a meaningless ordinal the bot
-            # has mis-cited as a global "#1". Show the raw signal, not a
-            # rank — the global leaderboard is the tool's job.
-            metric_bits.append(
-                f"racism signal{sub} — too few active here to rank "
-                f"(global leaderboard via lookup_user_profile)"
-            )
-        else:
-            metric_bits.append(f"racism-rank: not in this conv's top{sub}")
+        if race is not None:
+            rr = race_rows.get(uid)
+            if rr:
+                metric_bits.append(
+                    f"racism-rank #{rr['rank']}/{race['total']} (30d: "
+                    f"{rr['race_edged']} race-edged of {rr['messages']} msgs, "
+                    f"{rr['racial_slurs']} racial slurs)")
+            else:
+                metric_bits.append(
+                    "racism-rank: unranked (30d: 0 race-edged msgs)")
         # trader_rank — computed on-read from current trader_score
         # values, not the (now-deprecated) stored column. Includes
         # rank/total for the answer like "you're #7 of 32 profiled."

@@ -118,7 +118,10 @@ def test_the_ranks_themselves_are_kept():
     and the owner liked that answer. Only the justifying prose goes."""
     out = _render({BK: WINNER})
     assert "trader-rank #2/59" in out
-    assert "humor:70/100" in out and "slurs:19" in out
+    # 2026-09-26: the racism rank is the 30-day board count, not the
+    # LLM humor score (which this fixture still carries, and must not show)
+    assert "racism-rank" in out and "race-edged" in out
+    assert "humor:70/100" not in out
 
 
 def test_the_render_side_trimmer_is_gone():

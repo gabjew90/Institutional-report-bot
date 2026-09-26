@@ -447,6 +447,20 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         # for an hour
         misfire_grace_time=1800,
     )
+    # Racism board tags (2026-09-26): each chat message tagged once. A
+    # run caps at 12,000 messages, so the 60-day backfill after the first
+    # deploy takes about ten runs; after that a run tags one interval's
+    # chat.
+    scheduler.add_job(
+        _race_tag_job,
+        trigger=IntervalTrigger(minutes=15),
+        next_run_time=_dt_al.now(tz) + _td_al(minutes=2),
+        id="race_tag",
+        name="Members: tag chat for the racism board",
+        max_instances=1,
+        coalesce=True,
+        misfire_grace_time=900,
+    )
     # Owner-requested X test post, picked up from a flag file so the
     # work runs in this process rather than a second one against the
     # live DB. Idle cost is one stat() a minute.
@@ -1353,6 +1367,20 @@ async def _daily_calendar_job(bot=None):
             log.error(f"Calendar {date_iso}: send failed on all channels")
     except Exception as e:
         log.error(f"Calendar job failed for {date_iso}: {e}", exc_info=True)
+
+
+async def _race_tag_job():
+    """Tag new chat messages for the racism board (discord_bot.race_tagger).
+    Runs off the loop; the first runs after a deploy backfill 60 days."""
+    import asyncio as _asyncio
+    from discord_bot import race_tagger
+    try:
+        stats = await _asyncio.to_thread(race_tagger.tag_pending)
+    except Exception as e:
+        log.warning(f"race tagger run failed: {e}")
+        return
+    if stats.get("pending"):
+        log.info(f"race tagger: {stats}")
 
 
 async def _refresh_member_aliases_job():

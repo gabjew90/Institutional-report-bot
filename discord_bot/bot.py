@@ -19,6 +19,7 @@ from discord.ext import commands
 
 from config import settings
 from discord_bot import pnl_claims as _pnl_claims
+from discord_bot import rank_evidence as _rank_evidence
 from discord_bot.sender import send_embeds
 import db
 
@@ -5470,6 +5471,10 @@ async def _ask_02_call_model_with_tools(
                         f"data it would have returned."
                     ),
                 }
+            # Phase 10 renders these as the answer's Evidence block.
+            if (fc.name == "lookup_user_profile"
+                    and isinstance(result, dict) and result.get("users")):
+                _ask_meta.setdefault("rank_payloads", []).append(result)
             # Size clamp (2026-07-17: a request blew Gemini's 1M
             # input-token limit — 400 INVALID_ARGUMENT — because a
             # tool result ballooned the contents across rounds).
@@ -8318,7 +8323,22 @@ async def _ask_10_log_and_render(
         pass
 
     sources_footer = _build_sources_footer(grounding_metadata)
-    full = (answer + sources_footer)[:4000]
+    # A rank never ships without the record behind it (owner,
+    # 2026-09-26). Rendered from the tool payloads, not the answer, so it
+    # holds whatever the model chose to mention.
+    evidence_footer = ""
+    try:
+        evidence_footer = _rank_evidence.footer(
+            answer, _ask_meta.get("rank_payloads"))
+    except Exception as e:
+        log.warning(f"/ask: rank evidence footer failed (non-fatal): {e}")
+    if evidence_footer:
+        _ask_meta["guards"].append("rank-evidence")
+    # The footers are the receipts: when the whole post runs past
+    # Discord's 4,000-character embed limit, the answer gives up the
+    # room, not the evidence.
+    _footers = evidence_footer + sources_footer
+    full = (answer[:max(0, 4000 - len(_footers))] + _footers)[:4000]
 
     # Reconcile token budget with EVERYTHING actually spent — the
     # tool-call loop plus all retry calls (repetition, voice-strip,
