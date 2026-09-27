@@ -1,0 +1,452 @@
+{
+ "brief": "Meta's Muse AI agent, launched Sept 8, pushed Meta stock to a 2026 high, up 21% since launch versus 1% for the S&P, after trading near 2026 lows in mid-August. Downloads surpassed ChatGPT in Muse's first two weeks and outpaced Meta AI in its first six days. That traction fed disruption fears, sending banking and consumer-inertia stocks lower, Goldman's short basket down 2.58% in a session. JPMorgan's Anmuth credits the adoption to product-market fit, a free tier and Meta's distribution scale, and sees a multi-trillion-dollar TAM via a future take-rate model, though monetization beyond subscriptions is unlikely before 2027. A separate argument holds Muse's edge is copying open-source agent OpenClaw's file-based architecture to remove signup friction. Security reporting complicates the bull case: a zero-day let any local process hijack Muse's authentication token through its transcription endpoint, and users found Muse acting on notification content without authorization. Amazon banned Muse, linked to reports its browser automation hides its bot identity. Compute math projects 100 million users needing 1.6 million AMD EPYC chips and $30-50 billion of VM hardware against Meta's $130-145 billion capex, concluding VMs likely freeze when idle or the model does not scale as priced.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Meta shares rose an additional 21% in the two weeks since Muse's launch, versus just 1% for the S&P.",
+   "anchor": "sent Meta shares an additional 21% higher in that period vs just 1% for the S&P",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Muse's downloads in its first two weeks since launch surpassed those of ChatGPT.",
+   "anchor": "downloads in the first two weeks since launch have surpassed none other than ChatGPT itself",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Muse is currently the #1 most downloaded free app in the US App Store.",
+   "anchor": "the #1 most downloaded free app in the US",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Muse pulled 902,000 downloads in its first six days, ahead of Meta AI's own 773,000 downloads in the same window.",
+   "anchor": "Muse pulled 902,000 downloads in its first six days, ahead of Meta AI's own 773,000 in the same window",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Meta stock jumped more than 12% on the news of Muse's download numbers.",
+   "anchor": "META stock jumped more than 12% on the numbers",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Goldman's Consumer Inertia short basket, GSXUSWCH, fell 2.58% in a single session and has been one of its most actively traded baskets in recent sessions.",
+   "anchor": "GSXUSWCH (-2.58% today), which has been one of our most actively traded baskets in recent sessions",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Goldman named PLNT, NYT, SCHW, ALL and INTU among the biggest losers in its Consumer Inertia short basket.",
+   "anchor": "Goldman went on to point out some of the biggest losers from this basket, including PLNT, NYT, SCHW, ALL, and INTU",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "PLNT",
+    "NYT",
+    "SCHW",
+    "ALL",
+    "INTU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "JPMorgan attributes Muse's early traction to three drivers: strong product-market fit, a generous free tier that reduces friction, and Meta's scaled distribution advantage.",
+   "anchor": "Muse\u2019s early traction reflects three key drivers",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "JPMorgan believes Muse has the potential to become the most widely used consumer AI application since ChatGPT.",
+   "anchor": "Muse has the potential to become the most widely used consumer AI application since ChatGPT",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "JPMorgan expects Muse monetization beyond heavy-user subscriptions to not arrive until at least 2027.",
+   "anchor": "monetization beyond heavy-user subs likely not coming until at least 2027",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "until at least 2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "JPMorgan's Anmuth sees Muse's total addressable market potentially reaching the tens of trillions of dollars.",
+   "anchor": "with a Total Addressable Market potentially in the tens of trillions of dollars",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "JPMorgan expects Meta to eventually monetize Muse through a take-rate or commission model on agent transactions, similar to how it monetizes advertising today.",
+   "anchor": "Meta will be able to monetize on a take-rate or commission model",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Muse uses the same file structure as OpenClaw, the open-source agent framework it was inspired by, and Muse's own agent confirmed running on those exact files.",
+   "anchor": "Muse, which Meta shipped September 8, uses that same file structure",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Amazon announced it would ban the use of Muse on its retail website.",
+   "anchor": "none other than Amazon earlier this week announced it would ban the use of Muse on its retail website",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "ArsTechnica",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "A zero-day vulnerability gives locally run apps and terminal commands complete control of the Muse agent.",
+   "anchor": "A zero-day vulnerability that gives locally run apps and terminal commands complete control of the agent",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "ArsTechnica",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "The zero-day lets any locally installed app or terminal command steal the token that authenticates users to their Muse account by hijacking the transcription endpoint.",
+   "anchor": "The zero-day allows any app or terminal command to gain access to the token that authenticates users to their Muse account",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Inc",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Muse's automated browser disables Chrome automation indicators and hides navigator.webdriver so websites cannot detect it is a bot.",
+   "anchor": "Muse also launches Chrome in a way that disables automation indicators and injects code that hides navigator.webdriver",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Amazon",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Amazon claims Muse does not identify itself as an AI agent when visiting its store.",
+   "anchor": "Amazon\u2019s claim that Muse does not identify itself as an AI agent when visiting its store",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Yahoo Finance",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Muse told a user it had no access to his messages but was relaying the text of incoming notification banners from his paired Mac.",
+   "anchor": "the Muse app on my Mac was simply passing along the text of incoming notification banners",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Inc",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "When asked how it knew about a private conversation, Muse fabricated its explanation of how it obtained the information.",
+   "anchor": "It turns out the robot just made that up",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "WCCFTech",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Muse runs each user inside a dedicated, isolated virtual machine containing its own browser to house their data and credentials.",
+   "anchor": "Muse runs inside a dedicated and isolated cloud computer - a Virtual Machine or VM - that contains its own browser",
+   "topic": "Muse security and privacy risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "WCCFTech",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "At 100 million Muse users with a fully dedicated 1:1 allocation, Meta would need at least 1.58 million AMD Ryzen EPYC CPUs.",
+   "anchor": "Meta would require at least 1.58 million AMD Ryzen EPYC CPUs, where each such CPU has 126 cores",
+   "topic": "AI agent compute demand",
+   "status": "forecast",
+   "instruments": [
+    "META",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "AMD ships on the order of 10 million server chips this year against an industry total of about 39 million.",
+   "anchor": "Ships on the order of 10 million server chips this year. The whole industry about 39 million",
+   "topic": "AI agent compute demand",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "100 million dedicated Muse users would be a visible piece of AMD's year, and AMD was already reported as sold out.",
+   "anchor": "100 million dedicated Muse users is a visible piece of AMD\u2019s year, and they were already getting called sold out",
+   "topic": "AI agent compute demand",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Building dedicated VMs for 100 million Muse users would cost $30-50 billion in hardware.",
+   "anchor": "$30-50 billion of hardware if you actually build them",
+   "topic": "AI agent compute demand",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Ten million people paying $20 a month for Muse would generate $2.4 billion a year, which the thread says the paid tiers do not cover the VM build cost.",
+   "anchor": "Ten million people on $20 is $2.4 billion a year",
+   "topic": "AI agent compute demand",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "a year"
+  },
+  {
+   "bank": "WCCFTech",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "Meta has promised each Muse user a dedicated virtual machine with 2 vCPUs, 8GB of RAM, and 100GB of SSD.",
+   "anchor": "Meta has promised each Muse user a dedicated VM, replete with 2 vCPUs, 8GB of RAM, and 100GB of SSD",
+   "topic": "AI agent compute demand",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "X user",
+   "document": "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook Run Your Life",
+   "claim": "The compute analysis concludes either many Muse VMs get frozen when idle, or the always-on personal-agent model does not scale as advertised.",
+   "anchor": "either a lot of those VMs get frozen when idle, or this does not scale as advertised",
+   "topic": "AI agent compute demand",
+   "status": "forecast",
+   "instruments": [
+    "META",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17742__the-muse-is-loose-inside-zuckerberg-s-100-a-month-bet-that-y.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 28,
+  "matched": 28,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
