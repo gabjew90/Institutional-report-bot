@@ -1,0 +1,322 @@
+{
+ "brief": "Strong US data this week (University of Michigan consumer sentiment ticked up, durable goods orders beat consensus, and S&P flash PMIs surged) pushed Goldman's 3Q26 GDP tracker up 10bp to +3.4% and drove 10-year Treasury yields up 20bp to 5.17%, even as economists caution the PMI strength may partly reflect nominal bias rather than real activity. Goldman argues rates above 5% and the AI boom are not actually unprecedented: markets performed well in prior high-rate regimes (1990s), and this year's rate rise has not stifled equities (S&P +13% ytd), GDP, or investment. On AI, Goldman estimates the six major hyperscalers (GOOGL, AMZN, MSFT, META, ORCL, SPCX) must generate a combined ~$1.42tn of cumulative CY2028-30 revenue to clear a 15% ROIC hurdle, implying near-term return compression that Goldman frames as a natural investment-cycle consequence, not poor AI economics. Hyperscaler valuations have de-rated to a 10-year low even as GOOGL, MSFT, AMZN, and SPCX show emerging AI profitability, and Meta previewed continued Muse expansion (commerce, payments, security features) and a hardware pivot toward glasses.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "US stocks are on track to post a 1% gain for the week for the S&P 500 as of Friday midday.",
+   "anchor": "on track to post a 1% gain for the week (for the S&P 500 as of 12:00PM Friday)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "The University of Michigan Consumer Sentiment survey's dispersion index rose to 48.1, still indicating more people feel things are getting worse than better, though less so than in prior surveys.",
+   "anchor": "the dispersion index rising to 48.1 \u2014 still signaling that more people feel things are getting worse than getting better",
+   "topic": "US growth data resilience",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "A strong durable goods report led Goldman Sachs economists to raise their 3Q26 GDP growth tracker by 10bp to +3.4%.",
+   "anchor": "raise our 3Q26 GDP growth tracker by another 10bp to +3.4%",
+   "topic": "US growth data resilience",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "S&P's flash PMI surveys showed a strong gain in business sentiment this week.",
+   "anchor": "we saw a strong gain in S&P\u2019s PMI surveys of business sentiment",
+   "topic": "US flash PMI strength",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "10-year Treasury yields are up 20bp for the week to 5.17%.",
+   "anchor": "10-year Treasury yields are up 20 bp for the week to 5.17%.",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "The S&P flash PMI readings have been much firmer than most other business surveys released this month.",
+   "anchor": "The S&P PMIs have been much firmer than most other business surveys",
+   "topic": "US flash PMI strength",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "Goldman Sachs economists caution that part of the recent strength in business surveys likely reflects nominal bias rather than real activity.",
+   "anchor": "part of the strength in the business surveys likely reflects nominal bias",
+   "topic": "US flash PMI strength",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "Goldman Sachs notes markets have historically performed reasonably well in periods of much higher interest rate regimes, citing the 1990s.",
+   "anchor": "markets have performed reasonably well in periods of much higher rate regimes, like the 1990\u2019s",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "This year's move higher in rates has so far done little to stifle stock market performance, with the S&P 500 up about 13% year-to-date.",
+   "anchor": "the move higher in rates has so far done little, if anything, to stifle stock market performance",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "Goldman Sachs estimates the six major US hyperscalers (GOOGL, AMZN, MSFT, META, ORCL, SPCX) must generate a combined ~$1.42 trillion of cumulative CY2028-30 revenues, or ~$11.6 billion of annual revenue per GW, to clear a 15% ROIC hurdle on their AI investments.",
+   "anchor": "must generate a combined ~$1.42 trillion of cumulative CY2028\u201330 revenues (or ~$11.6 billion of annual revenue per GW) to clear a 15% ROIC hurdle",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL",
+    "AMZN",
+    "MSFT",
+    "META",
+    "ORCL",
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "CY2028-30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "Goldman Sachs views the likely near-term compression in AI investment returns as a natural consequence of the upfront investment cycle, not evidence of structurally poor AI economics.",
+   "anchor": "this compression is a natural consequence of the massive upfront investment cycle rather than evidence of structurally poor AI economics",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL",
+    "AMZN",
+    "MSFT",
+    "META",
+    "ORCL",
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "GOOGL is supplementing its search business while remaining on the frontier of LLM development.",
+   "anchor": "GOOGL is supplementing search and remains on the frontier of LLM development",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "MSFT is strengthening its enterprise offering through its Copilot product.",
+   "anchor": "MSFT is strengthening its offering to the enterprise through its CoPilot product",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "AMZN's AWS cloud backlog is so large that it may only need to realize 60% of the backlog to generate strong returns.",
+   "anchor": "AMZN\u2019s AWS cloud backlog is so large that it may only need to realize 60% of its backlog to realize strong returns",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "SPCX is well positioned to lease out excess compute capacity at very high spot prices.",
+   "anchor": "SPCX is in a good position to lease out excess compute capacity at very high spot",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "META just launched its AI platform Muse.",
+   "anchor": "META just launched its AI platform Muse.",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "Meta management is planning a continued expansion of Muse, including computer-use capabilities and additional commerce, payments, and productivity connectors.",
+   "anchor": "management is planning a continued expansion of Muse, including computer-use capabilities and additional commerce, payments and productivity connectors",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "META previewed new Muse products to enhance security, privacy, and voice control at its investor and user event this week.",
+   "anchor": "META previewed Muse products to enhance security, privacy, and voice control at this week\u2019s event.",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "Meta's management framed a strategic shift in its hardware roadmap toward glasses as the primary interface for personal superintelligence.",
+   "anchor": "management also framed a strategic shift in its hardware roadmap toward glasses as a primary interface for personal superintelligence",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "level",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "End of Week Market Intelligence: here comes AI...",
+   "claim": "Hyperscaler valuations (AMZN, GOOGL, META, MSFT, ORCL) have de-rated to their lowest level in 10 years.",
+   "anchor": "Hyperscaler valuations have de-rated to lowest level in 10 years",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17761__end-of-week-market-intelligence-here-comes-ai.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 20,
+  "matched": 20,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
