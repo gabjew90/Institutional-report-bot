@@ -1,0 +1,145 @@
+{
+ "brief": "Goldman derivatives trader Brian Garrett published a chart he calls possibly his \"chart of the year\": almost half of S&P 500 stocks now have a negative beta to the index itself, an all-time high by a significant margin. Garrett attributes this to index concentration driven by AI capex and tech dominance, though he says that is not the only explanation. He warns the dynamic can raise the risk of factor-level momentum unwinds like July's, while the index itself is now providing more diversification against a risk-off unwind than it has historically; that diversification effect also explains the spread between index and single-stock convexity (.VIXVIXEQ). Citing Goldman strategist Christian Mueller-Glissman's related note, Garrett says that if the phenomenon reverses, long S&P index wings and long correlation trades should work. To hedge for that reversal now, the desk likes RSP-outperformance-versus-SPX options (~65% implied correlation) and puts on the GS momentum index (GSP1MOMO), which imploded during July's factor unwind.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "Almost half of the stocks in the S&P 500 have a negative beta to the index itself, an all-time high by a significant margin.",
+   "anchor": "almost half of the stocks in the S&P500 have a negative beta to the index itself (all time high by significant margin)",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "The Financial Times described the negative-beta phenomenon as pick a stock, just not any stock.",
+   "anchor": "pick a stock, just not any stock",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "Index concentration driven by AI capex and tech dominance is a clear explanation for the negative-beta phenomenon, though not the only one.",
+   "anchor": "index concentration as a function of both AI capex and tech dominance is a clear explanation (but not the only one)",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "The negative-beta dynamic can increase the risk of momentum unwinds at the factor level, as seen in July.",
+   "anchor": "this dynamic can increase risks of a momentum unwinds at the factor level (remember July?)",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "The S&P 500 index itself is providing more diversification against a risk-off unwind than it has historically.",
+   "anchor": "the index itself is providing more diversification against a risk-off unwind than historical",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "The negative-beta diversification effect helps explain the relative spread between index and single-stock convexity tracked by the .VIXVIXEQ index.",
+   "anchor": "help explain the relative spread between index vs single stock convexity (.vixvixeq index on bbg)",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "Should the negative-beta phenomenon revert, long S&P index wings and long correlation trades should work.",
+   "anchor": "long S&P index wings should work, and long correlation trades will work",
+   "topic": "S&P index concentration risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "Goldman's trading desk likes RSP outperformance versus SPX options, priced around 65% implied correlation, to hedge for a coming reversal of the phenomenon.",
+   "anchor": "the trading desk likes playing RSP > SPX outperformance options (~65% implied corr)",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Half The Stocks In The S&P Have A Negative Beta To The Index Itself: Goldman's \"Chart Of The Year\"",
+   "claim": "Goldman's trading desk also likes puts on the GS momentum index (GSP1MOMO), which imploded during July's factor momentum unwind.",
+   "anchor": "puts on the GS momentum index (gsp1momo) which imploded during the July factor momentum unwind",
+   "topic": "S&P index concentration risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17736__half-the-stocks-in-the-s-p-have-a-negative-beta-to-the-index.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
