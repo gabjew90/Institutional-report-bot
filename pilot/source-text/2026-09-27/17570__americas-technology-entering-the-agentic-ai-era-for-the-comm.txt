@@ -1,0 +1,4861 @@
+[Page 1]
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors should 
+be aware that the firm may have a conflict of interest that could affect the objectivity of this report. Investors should 
+consider this report as only a single factor in making their investment decision. For Reg AC certification and other 
+important disclosures, see the Disclosure Appendix, or go to www.gs.com/research/hedge.html. Analysts employed by 
+non-US affiliates are not registered/qualified as research analysts with FINRA in the U.S. 
+EQUITY RESEARCH | 24 September, 2026 | 12:00AM EDT
+AMERICAS TECHNOLOGY
+Entering the Agentic AI Era for the Commerce 
+Landscape
+Will Nance 
++1(212)357-7438
+will.nance@gs.com
+Goldman Sachs & Co. LLC
+George K. Tong, CFA 
++1(415)249-7421
+george.tong@gs.com
+Goldman Sachs & Co. LLC
+Kate McShane, CFA 
++1(212)902-6740
+kate.mcshane@gs.com
+Goldman Sachs & Co. LLC
+Brooke Roach, CFA 
++1(212)357-2421
+brooke.roach@gs.com
+Goldman Sachs & Co. LLC
+Eric Sheridan 
++1(917)343-8683
+eric.sheridan@gs.com
+Goldman Sachs & Co. LLC
+Bonnie Herzog 
++1(212)902-0490
+bonnie.herzog@gs.com
+Goldman Sachs & Co. LLC
+Gabriela Borges, CFA 
++1(212)902-7839
+gabriela.borges@gs.com
+Goldman Sachs & Co. LLC
+Stephen Laszczyk 
++1(212)357-9225
+stephen.laszczyk@gs.com 
+Goldman Sachs & Co. LLC
+Leah Jordan, CFA 
++1(713)658-2691
+leah.jordan@gs.com
+Goldman Sachs & Co. LLC
+Beginning with the launch of ChatGPT in November 2022 and the subsequent scaling of large language models 
+(LLMs), and continuing more recently with conversational agentic canvases being increasingly adopted by 1b+ global 
+consumers, AI is increasingly impacting and reshaping the consumer shopping journey. While adoption today is 
+concentrated in product discovery, research, and recommendations, we expect steady, measured progress 
+toward end-to-end agentic shopping, where AI can increasingly act on behalf of consumers across discovery, 
+comparison, purchase, and payment. We view this as a long-duration transition (think over the next 3-5+ years), 
+analogous to the development of eCommerce itself, rather than an overnight disruption (most notably since 
+consumer computing habits change slower than the frontier of technological enablement). Our central conclusion is 
+that value should increasingly follow consumer intent. As AI agents become a more important starting point for 
+shopping, the strategic question shifts from simply who owns the digital storefront to who owns discovery, 
+intent, and the infrastructure required to convert that intent into a trusted transaction. This creates 
+opportunities/challenges across eCommerce, digital advertising, payments, and cybersecurity, while introducing new 
+debates around customer ownership, distribution economics, merchant margins, and liability. Based on the work in 
+the report, we would highlight a range of companies that are positively skewed toward this secular growth 
+theme over the long-term: META, GOOGL, AMZN, V, MA, EFX, TRU, FICO, LYV, SHOP, NET, STUB, WMT, SN, and TPR. 
+The Goldman Sachs Group, Inc.
+ 
+ 
+
+
+[Page 2]
+Examining how Agentic Commerce Might Catalyze the Next Wave of eCommerce Adoption
+ 6 
+Practical Considerations and Scaling Obstacles for Agentic Commerce Adoption
+ 23 
+Agentic Commerce will Create Broad-Based Demand for Fraud and Cybersecurity Solutions 
+ 27 
+Digital Advertising: Distribution, Trust, and Integration as Key
+ 35 
+Retailers and Marketplaces: Amazon, Shopify Ecosystem, Merchants
+ 36 
+Payments and FinTech: We see Networks and Modern Credit Issuers as Well-positioned for Agentic 
+Commerce
+ 41 
+Business Services: Identity, Fraud and Credit Infrastructure: EFX, TRU, FICO
+ 44 
+Live event ticketing: Live Nation, StubHub, and Other 3rd Party Ticketing Platforms
+ 48 
+Valuation
+ 51 
+Disclosure Appendix
+ 54 
+24 September 2026
+ 2
+Goldman Sachs
+Americas Technology
+Table of Contents 
+ 
+ 
+
+
+[Page 3]
+In this deep dive report, we assess the current landscape of agentic commerce (as AI 
+interfaces increasingly shift from conversational to action oriented) and examine how 
+industry participants across commerce (online/offline), digital advertising, 
+payments/fintech, and information services are both currently positioned and might 
+evolve to respond to shifting consumer behavior. 
+We frame four key implications: 
+Agentic commerce could catalyze the next leg of eCommerce penetration, but 
+1.
+adoption should be gradual and category dependent. Consumers are already 
+using AI extensively for shopping-related discovery, but autonomous purchasing 
+remains much less developed. We see the earliest opportunity in lower-risk, 
+recurring and commoditized purchases where consumer preferences are relatively 
+straightforward. More subjective categories, such as apparel and luxury, are likely to 
+progress more slowly. We identify $2.6tn of U.S. consumer spending in 
+high-likelihood categories and estimate that roughly 2% agentic penetration of 
+high-likelihood card-present spending could add approximately 1% to 
+eCommerce growth.  
+In advertising, monetization should migrate with commercial intent rather than 
+2.
+disappear. AI is already improving creative generation, targeting, campaign 
+optimization and measurement. Agentic commerce adds a longer-duration shift as 
+product discovery increasingly begins inside AI interfaces instead of traditional 
+search or merchant sites. We believe this could resemble the desktop-to-mobile 
+transition: the scarce asset may increasingly become being the merchant, service or 
+brand an agent repeatedly selects for a consumer. Retail media and paid search are 
+not necessarily eliminated or disintermediated, but advertising dollars could migrate 
+toward AI-native sponsored recommendations and other mechanisms for 
+influencing agent-driven discovery.  
+Agentic Payments is building off of existing infrastructure, and further 
+3.
+development of liability frameworks should accelerate adoption. Agentic 
+payments introduce technical and governance questions around consumer 
+authorization, agent identity, fraud, disputes, returns, and liability. Emerging 
+protocols from Google, Stripe, Visa, and Mastercard are building the infrastructure 
+for agent-to-merchant interaction and payment authorization, but the broader 
+liability framework remains underdeveloped. We believe that agentic payments will 
+build off the existing platform for consumer payments (and already are), rather than 
+start from scratch with emerging payment form factors. We view the card networks 
+(V/MA) as well positioned, owing to network effects around carded payments, and 
+their infrastructure that is capable of supplying tokenization, identity, 
+authentication, fraud prevention and real-time decisioning at scale. 
+The threat environment may scale faster than legitimate autonomous 
+4.
+commerce. Merchants historically sought to distinguish humans from bots; agentic 
+commerce requires them to distinguish authorized agents from malicious 
+automation. Traditional signals such as device reputation, IP address, navigation 
+patterns, and transaction velocity may become less useful in isolation when 
+legitimate transactions increasingly originate from cloud-based agents operating at 
+24 September 2026
+  3
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 4]
+machine speed. We therefore expect greater demand for verified agent identity, 
+consumer-agent linkage, fraud decision and cybersecurity infrastructure. 
+Where we see the biggest strategic debates: 
+Who owns the consumer? Large retailers (online & offline) may resist ceding 
+n
+discovery and the customer relationship to horizontal agents because doing so risks 
+weakening first-party data, loyalty, cross-selling, and retail-media economics. On 
+this, we note AMZN recently blocked Muse AI (META) from shopping on 
+Amazon.com.  
+Does agentic commerce democratize discovery or reinforce scale? Agents could 
+n
+improve discovery of smaller merchants, benefiting ecosystems such as Shopify, but 
+optimization around price, availability, delivery speed, and transaction reliability 
+could simultaneously favor scaled retailers such as Amazon and Walmart. 
+Does search disruption simply create a new toll collector? AI agents could initially 
+n
+reduce dependence on paid search, but scaled agent platforms may ultimately 
+monetize their control of consumer intent through advertising, referral fees, 
+commissions, or preferred placement. It is likely that the evolution of the top/middle 
+of the advertising funnel will be a critical industry development as digital advertising 
+and retail media networks become increasingly interconnected. 
+Can trust infrastructure keep pace with product innovation? The technology 
+n
+enabling agentic transactions is advancing rapidly, but widespread adoption 
+depends on clear rules around intent verification, erroneous purchases, fraud losses, 
+chargebacks, and returns.  
+Against this backdrop, we see a broad set of potential long-term beneficiaries across 
+eCommerce and commerce infrastructure, payments, identity, fraud prevention, 
+and cybersecurity. Importantly, we believe the winners will be determined less by AI 
+capability alone and more by the combination of distribution, consumer trust, 
+merchant participation, transaction infrastructure, and the ability to capture 
+commercial intent as the consumer internet moves from conversation toward action. 
+Lastly, with the introduction of Muse AI (by Meta) the competitive landscape is now set 
+to intensify in terms of existing advertising, social media and LLM agentic platforms 
+to introduce products, alter consumer behavior and attempt to establish themselves (if 
+successful) as the platform layer for consumer AI. 
+Based on the work in the report, we would highlight in the table below a range of 
+companies that are positively skewed toward this secular growth theme over the 
+long-term (despite some of these stocks reflecting investor sentiment of the opposite 
+view): 
+24 September 2026
+  4
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 5]
+ 
+Exhibit 1: Stocks favorably leveraged to agentic commerce growth 
+Sub-Sector
+Ticker
+Company
+Price
+Rating
+12M Price Target
+Upside%
+Covering Analyst
+Digital Advertising
+META
+Meta Platforms
+$744.10
+Buy
+$725.00
+(2.6%)
+Eric Sheridan
+Digital Advertising
+GOOGL
+Alphabet
+$337.83
+Buy
+$435.00
+28.8%
+Eric Sheridan
+eCommerce
+AMZN
+Amazon.com
+$249.27
+Buy
+$375.00
+50.4%
+Eric Sheridan
+eCommerce
+SHOP
+Shopify
+$142.34
+Buy
+$194.00
+36.3%
+Gabriela Borges
+Payments
+V
+Visa
+$361.52
+Buy
+$438.00
+21.2%
+Will Nance
+Payments
+MA
+Mastercard
+$559.92
+Buy
+$701.00
+25.2%
+Will Nance
+Business & Info Services
+FICO
+Fair Isaac
+$879.62
+Buy
+$1,548.00
+76.0%
+George Tong
+Business & Info Services
+EFX
+Equifax
+$155.32
+Neutral
+$199.00
+28.1%
+George Tong
+Business & Info Services
+TRU
+TransUnion
+$70.95
+Neutral
+$89.00
+25.4%
+George Tong
+Retail
+WMT
+Walmart
+$110.53
+Buy
+$132.00
+19.4%
+Kate McShane
+Apparel & Accessories
+SN
+SharkNinja
+$168.49
+Buy
+$204.00
+21.1%
+Brooke Roach
+Apparel & Accessories
+TPR
+Tapestry
+$110.51
+Buy
+$169.00
+52.9%
+Brooke Roach
+Packaged Food & Food Retail
+HSY
+Hershey
+$168.45
+Buy
+$224.00
+33.0%
+Leah Jordan
+Packaged Food & Food Retail
+MDLZ
+Mondelez International
+$61.44
+Buy
+$72.00
+17.2%
+Leah Jordan
+Personal Care
+EL
+Estee Lauder
+$98.83
+Buy
+$112.00
+13.3%
+Bonnie Herzog
+Cybersecurity
+NET
+Cloudflare
+$352.45
+Buy
+$389.00
+10.4%
+Gabriela Borges
+Entertainment
+LYV
+Live Nation Entertainment
+$169.03
+Buy
+$210.00
+24.2%
+Stephen Laszczyk
+Entertainment
+STUB
+StubHub Holdings
+$5.31
+Buy
+$16.00
+201.3%
+Eric Sheridan
+ 
+Prices as of 9/23/26 
+ 
+Source: FactSet, Goldman Sachs Global Investment Research
+24 September 2026
+  5
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 6]
+Examining how Agentic Commerce Might Catalyze the Next Wave of eCommerce Adoption 
+ 
+ 
+What is the current State of AI in commerce? 
+Agentic commerce is positioned to enable the next phase of the consumer shopping 
+experience. Although still in the early innings, consumers are already putting agents to 
+work for their shopping needs as shopping now ranks the third leading application for AI 
+(Epsilon) and nearly half of shoppers having already shifted to AI for product discovery 
+(~44% of online buyers now use AI tools for product discovery according to Bain & Co. 
+and many already using AI tools for comparative price analysis). We believe the 
+application of agentic AI within retail commerce has the potential to provide 
+incremental pathways for consumers to interact with brands to which consumers will 
+find the most relevancy. This, in turn, will drive incremental conversion while driving 
+minimal incremental marketing dollars. However, we believe there continues to be a 
+significant portion of eCommerce volume that is not exposed/connected to the major 
+foundational models (e.g. Amazon and Walmart), which we believe limits the breadth 
+these models can provide and could hinder broader user adoption if solutions are not 
+reached. 
+ 
+Exhibit 2: How consumers use AI when they shop 
+ 
+Exhibit 3: 6 in 10 consumers use AI when shopping 
+16%
+24%
+27%
+33%
+35%
+36%
+38%
+42%
+Purchase Finalization
+Post-Purchase Information
+Final Merchant Decision
+Rating / Review Summaries
+Compare Product / Brand
+Discount Search
+Initial Research & Info
+Compare Prices
+6%
+10%
+13%
+19%
+15%
+36%
+Never
+Rarely
+Sometimes
+Often
+Almost Always
+Always
+ 
+ 
+Source: Nielsen, Goldman Sachs Global Investment Research
+ 
+ 
+Source: Epsilon Pulse, Goldman Sachs Global Investment Research
+24 September 2026
+  6
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 7]
+Mapping the state of agentic commerce technology today 
+The state of the technology that is powering agentic Commerce today is highly 
+fragmented and still actively evolving. We see the greatest consumer adoption in the 
+upper funnel commerce journey, while the technology and adoption of lower funnel 
+agentic purchase/conversion is more limited, with various competing protocols and 
+consumer journeys. Below we describe the current state of Agentic Commerce 
+technology and adoption across 1) upper funnel product discovery, 2) lower funnel 
+purchase conversion, and 3) protocols in development to enable the broader ecosystem. 
+1) Product Discovery and Research: Agentic commerce is already having a meaningful 
+impact on the upper funnel shopping journey for consumers. Agentic tools have seen 
+meaningful adoption across discovery and advice, with consumers leveraging LLMs to 
+discover, research, and recommend new products and services. The experience is 
+enabled by consumer facing LLMs that can canvas merchant inventory on behalf of the 
+consumer. These agents respond to consumer shopping queries and purchase ideas, 
+products comparisons, and help refine merchants down to those capable of fulfilling 
+certain obligations, like maximum shipping times, price limits, etc. This form of agentic 
+usage can alter the role search engines play in the eCommerce journey, with many 
+consumers either opting to engage with agents (e.g. Muse), or skipping the search engine 
+experience all together.  
+Product highlight: Google (GOOGL) currently has two products that it sells to assist 
+n
+its customers in acquiring and retaining customers. Conversational Commerce 
+(GenAI chat): Real-time, multi-modal conversational shopping that drives customers 
+to the products and services that are desired and assists in making purchasing 
+decisions. Google also offers GenAI for Digital Commerce: Catalog & Content 
+Enrichment (GenAI search) which allows merchants to improve their online product 
+discovery that is hidden in large amounts of product data. We believe consumers are 
+broadly familiar with these solutions. We also note the emergence of personalization 
+engines (such as Mastercard’s adaptML) designed to enable personalized 
+recommendations based on aggregated and anonymized transaction data. The data 
+enables geography-based predictive targeting and spend insights in which retailers 
+can segment while financial institutions can apply the data to tailor advertising for 
+bank cardholders. 
+Retailer based agents: In addition to horizontal agentic experiences, often provided 
+n
+by the large frontier model companies, large retailers have also rolled out merchant 
+specific agents that only exist on the merchants’ digital properties. Examples include 
+Amazon Alexa and  Walmart’s Sparky. While these experiences provide less breadth 
+for the consumer by restricting the search to a specific retailer’s inventory, they have 
+significantly fewer scaling hurdles that have helped them see early adoption. First, 
+they eliminate the need for new payment and security protocols, by using first party 
+identity verification, agents, and payment acceptance. This helps solve many of the 
+trust- and security-related hurdles around consumer adoption. Second, they keep 
+retailers in control of the eCommerce journey, allowing for first party marketing and 
+loyalty solutions. However, this approach prioritizes merchants’ desires to preserve 
+the control over the customer relationship and the primacy of merchant’s digital 
+storefront over providing the consumer with a comprehensive product discovery 
+experience across multiple eCommerce surface areas. We expect these two goals to 
+24 September 2026
+  7
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 8]
+remain at odds, but given the lower scaling barriers for first party agent experiences, 
+we believe retailer agents are likely to lead the adoption curve in the near term until 
+some of the trust and scaling barriers for more horizontal solutions are resolved.  
+2) Lower funnel and end-to-end agentic commerce: Lower funnel agentic commerce, 
+which involves an end-to-end experience from product discovery all the way to 
+conversion and payment, is in earlier stages, but there have been several 
+implementations to enable agentic purchase functionality for consumers, which allows 
+the consumer to delegate permissions to complete a transaction to an AI agent. The 
+technical implementation of these experiences varies widely, but currently fall under 
+several buckets, including 1) browser-based agents (e.g. Claude in Chrome) 2) 
+module-based agents (e.g. LinkedIn’s Hiring Assistant), 3) embedded digital wallets (e.g. 
+Stripe Link Agent Wallet), & most recently 4) personal (operating system) agents (e.g. 
+META’s Muse). For browser-based agents, the consumer is able to research a given 
+product and is presented a set of options with the requested information and details. If 
+the consumer is interested in completing a transaction, the agent transitions/crawls 
+through the normal shopping cart steps and adds the item into the cart on the back end, 
+and when the consumer is interested in completing the purchase, they are redirected to 
+the merchant’s website where payment credentials are requested to complete the 
+transaction. Module or tool-based agents require a higher degree of integration 
+between the AI Application and the merchant. In this case, a consumer can complete or 
+conduct their product research through a merchant provided and embedded tool that 
+sits inside the chat window (consumer not redirected to merchant’s website). Finally, 
+there is an embedded digital wallet model, where the consumer’s payment credentials 
+are stored within the AI application and transactions can be completed through the chat 
+(though merchant catalogs must be exposed). Examples of this include Amazon’s “Buy 
+for Me” and Rufus as well as the launch of UCP, in which Google noted it expects to put a 
+buy button directly on Google surfaces across AI mode in Search and Gemini. 
+ 
+Exhibit 4: Embedded purchase within Gemini 
+ 
+ 
+Source: Company data
+24 September 2026
+  8
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 9]
+Recent agentic product launches have catalyzed renewed investor debate around 
+agentic commerce adoption.  
+With the introduction of several action-based consumer agents in the last few 
+weeks (i.e. Spear Street Technology’s Instinct; Meta’s Muse AI), the consumer AI 
+landscape is undergoing a fundamental paradigm shift, transitioning rapidly from 
+passive, conversational chatbots to proactive, autonomous agents capable of 
+executing real-world tasks. We see the industry moving from simpler 
+call-and-response functionality to completing more complex, high-value personal 
+workflows (e.g. travel booking, bill negotiation, calendar management, shopping, and 
+administrative tasks). Below, we elaborate on these launches and frame ecosystem 
+implications: 
+Instinct: The Instinct platform launched with an end-to-end agentic personal 
+n
+assistant experience that connects directly to a user’s email, messaging apps, 
+calendar, etc. Agent functionality includes reservation making as well as an agentic 
+commerce experience, where consumers can browse products and complete 
+purchases via messenger based communication with the agent. 
+Muse AI (META): Muse similarly allows for an end-to-end agentic personal assistant 
+n
+experience, embedded within Meta’s ecosystem and capable of working across 
+websites and applications (further details here). The user experience was designed 
+around existing messaging behaviors to minimize the learning curve, where users can 
+interact with Muse through a) dedicated iOS and Android applications, b) 
+desktop/web interfaces, and c) WhatsApp.  
+From our perspective, the launch of these personal agents represents a potential 
+conversation-to-action shift in consumer internet behavior. Over time, we believe these 
+agents could become an increasingly important point of aggregation for consumer 
+intent, sitting between users and a broad range of digital services. For scaled platforms 
+like META, with established consumer relationships and large distribution, this creates an 
+opportunity to deepen engagement while expanding the number of user interactions 
+that occur within their ecosystems. Longer term, we believe that successful execution 
+could support additional monetization avenues overtime, notably in commerce and 
+advertising.  
+Within commerce and advertising, we view agentic experiences as a potential 
+extension of ongoing efforts to reduce friction across the consumer journey where 
+consumers may increasingly rely on AI native interfaces to assist with discovery, 
+research, and purchase/transaction. As adoption broadens, we see the potential for 
+greater convergence between commerce and advertising as platforms seek to connect 
+commercial intent more directly with measurable transaction outcomes.  
+As it relates to payments within Muse, we view the current implementation as 
+prioritizing time to market over being at the frontier of technical innovation in payments, 
+with the initial launch highly reliant on Stripe’s “Link for Agents” offering, with ShopPay 
+and PayPal on track to be added shortly. Stripe’s offering is highly reliant on two-step 
+transactions where Stripe charges the consumer’s card and then reissues a virtual card 
+and inputs the second card on the merchant’s website, which introduces a degree of 
+inefficiency and calls into question who is liable for fraud/chargebacks (i.e. is it Stripe as 
+the processor of the consumers card or the merchant as the processor for the virtual 
+24 September 2026
+  9
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 10]
+card). Longer term, we believe the technology will evolve towards the current wallet 
+ecosystem, and we expect V/MA’s agentic token platform to help streamline the 
+payment flows, approval rates, fraud risk, and the merchant’s ability to match incoming 
+transactions to the end consumer. However, our overarching view is that now that 
+consumer agentic platforms are going mainstream, it is much more clear that the 
+card ecosystem is the default platform on which agentic payments are being built. 
+3) Protocols enabling the ecosystem: Several protocols have been developed to 
+address the requirements for agentic commerce. At the merchant level, protocols such 
+as MCP (model context protocol) serve as a foundational layer that enables merchants 
+to expose their catalogs/inventory to the agentic ecosystem (although several notable 
+large merchants have limited 3rd party agents from crawling their catalogs). When 
+consumers are in the early shopping stages, browsing items and conducting product 
+comparisons, their agent will leverage shopping protocols (like UCP) to interact with the 
+merchant exposed inventory. At a high level, protocols like UCP leverage a common 
+language for agents and systems to reduce the burden for communication. Finally, to 
+complete a transaction, payment authorization and authentication are required, 
+leveraging payment protocols like Visa Trusted Agent Protocol and Mastercard Agent 
+Pay. These payment protocols answer many of the questions posed above and facilitate 
+the necessary feedback loop to determine intent and ultimately protect both merchants 
+and consumers (for example, ensuring a consumer requested a certain item in a certain 
+size to ensure a return or dispute request is valid). The overall agentic commerce 
+landscape is still in its early stages with many of the protocols changing over the past 
+year+. We believe that although the protocols establish a clear path for parties to 
+interact and enable purchase facilitation, clear rules and liabilities for each stakeholder 
+still need to be worked out and are required prior to seeing broader ecosystem 
+adoption. In Exhibit 5 we provide a high level overview of the types of agentic 
+commerce-related protocols. 
+ 
+Merchant side product and inventory: Foundational to agentic commerce enabling 
+n
+the connection of agents across commerce ecosystem. For example, the Model 
+Context Protocol (MCP), is an open-source standard designed to connect AI models 
+directly to secure data sources, functioning as an integration standard rather than a 
+payment protocol, standardizing how AI agents interface with external data 
+infrastructure enabling, for instance, a shopping agent to read product catalogs, 
+ 
+Exhibit 5: Agentic Commerce Protocol Overview 
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  10
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 11]
+check inventory, and handle discovery on eCommerce platforms without requiring 
+custom integrations for every distinct system. Google’s Universal Commerce Protocol 
+(UCP) is another service that allows merchants to enable agentic commerce. 
+Agentic infrastructure players that currently offer agentic commerce frameworks in 
+n
+the market: 
+Stripe Link’s wallet for agents: Infrastructure that enables consumers who 
+o
+shop at businesses that accept Link to instantly checkout using their preferred 
+saved payment method, leveraging Stripe’s Shared Payment Token technology. 
+If a merchant does not accept Link, Link’s wallet for agents will provision a 
+single-use virtual card to complete the transaction on the user’s behalf. To get 
+started, consumers must initially approve agent’s access Link account. Once 
+the consumer approves the transaction, the agent will complete the purchase, 
+either leveraging the single-use virtual cards or SPT. 
+(UCP): UCP operates with a wide scope that spans product discovery, identity 
+o
+linking, multi-item card building, checkout, and post-purchase support, the 
+protocol enables users to add items directly from platforms like Search, 
+Gemini, YouTube, and Gmail into a single “Universal Cart.” UCP also includes 
+Google’s payment framework (Agentic Payments Protocol, or AP2), that 
+separates the shopping and discovery related aspects of commerce with the 
+payment related aspects.  
+Commerce Agent Platform: An open-source blueprint that allows for 
+o
+merchants to build AI shopping and merchant-operations agents. 
+Shopping Agent: The shopping agent is embedded within a merchant’s 
+§
+website. The agent can search catalogs, compare products, and build a 
+cart. The current agent framework does not process payments 
+directly, rather it hands payment off to a payment gateway or an 
+external agentic payment provider. The framework enables agents to 
+can integrate with AP2, the x402 protocol, and TAP / Mastercard Agent 
+Pay to deliver payments on after the cart is created or simply hand off 
+the consumer to the traditional checkout page.  
+Merchant Agent: Merchant customized agents are designed to 
+§
+empower store owners and drive incremental commerce insights. 
+Agents can relay useful information, such as proactively suggesting 
+changes to store operation activities (based on the merchant’s 
+commerce data), create in-portal UI such as charts and dashboards, 
+etc. The agent then presents the findings and creates suggestions that 
+allow users to ultimately approve prior to anything going live. 
+Stripe Agentic Commerce Protocol (ACP): Stripe’s ACP is an open-source 
+o
+framework developed that facilitates consumer initiated, agent facilitated 
+purchases via chat interfaces. The ACP protocol standardizes checkout 
+conversations between AI agents and merchants, handling agentic commerce 
+sessions from creation to completion. Supported by Stripe’s Agentic 
+Commerce Suite, which provides hosted endpoints for businesses to share 
+real-time product availability and accept payment terms, the protocol enables 
+24 September 2026
+  11
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 12]
+verified agents to safely initiate payment transactions using single-use, Shared 
+Payment Tokens (SPTs) scoped to a specific merchant and maximum dollar 
+amount. Importantly, more recently, Stripe appears to be leaning more into 
+Stripe Link wallet for agents, particularly with the recent launches of Meta’s 
+Muse, Grok Bot, and Instinct. 
+Payments Protocols: Payments protocols operate at the final phase of an agentic 
+n
+transaction, and operate alongside ACP and UCP at the point of sale. Visa and 
+Mastercard have agentic services that facilitate these transactions including Visa 
+Trusted Agent Protocol (VTAP) and Mastercard Agent Pay. Both protocols handle 
+agent verification and user intent and purchase mandate tracking. Additionally, 
+these protocols rely heavily on each network’s tokenization services, Visa 
+tokenization services (VTS) and Mastercard Digital Enablement Suite (MDES), to 
+create cryptographically secure payment credentials. These tokenization services 
+are foundational to eCommerce card transactions (>50% of V/MA eCommerce 
+transactions are tokenized) and use cryptography to prevent the use of raw account 
+and card numbers in payment transactions. These protocols also add an additional 
+layer of data on top of existing tokenization technology to include data specific to 
+agentic transactions such as User intent, and cart mandate.  
+Tokenization: To reduce the vulnerability of carded transactions, the card 
+o
+networks established a standardized secure method for consumers to transact 
+called tokenization. Tokenization involves provisioning a token which 
+represents a consumers card credentials (or DPAN) or digital wallet which can 
+be decrypted by the networks as it passes through the payments system to the 
+merchant. Tokenized transactions do not expose the consumers credentials 
+and are combined with the cryptographically secured message, adding 
+additional transaction security and reducing the vulnerability to cyber threats. 
+The card networks plan to leverage this technology for agentic transactions, 
+with agentic transactions similarly carrying cryptographically secured 
+messages/signatures and agents being provisioned to operate on behalf of an 
+underlying payment credential (similarly not exposing underlying payment 
+credentials). In traditional payments, tokenization has resulted in significant 
+reductions in online fraud and increased transaction approval rates over time.
+24 September 2026
+  12
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 13]
+Framing the medium term opportunity for the growth in agentic 
+commerce transactions 
+eCommerce has grown rapidly over the years, but has taken share of the total consumer 
+spending relatively slowly over the course of several decades primarily due to the 
+difficulty of changing habitual consumer spending patterns, as well as various trust / 
+security operational challenges for both consumers and merchants. From broad 
+consumer introduction in the mid-90s to broad adoption and mobile expansion in the 
+2010s, we believe agentic commerce could be the next step in eCommerce growth and 
+define a new channel for consumers to shop online going forward. We believe agentic 
+commerce could evolve over time, transitioning from low touch product discovery to 
+autonomous transactions, all built on a suite of agentic protocols. However, as we show 
+below, previous changes in consumer shopping patterns have been gradual, and uneven 
+across categories. We expect the growth in agentic commerce to be similar, with 
+adoption scaling over decades rather than years.  
+Consumer: We see $2.6tn in near-term addressable US spending that 
+could lead the way towards broader consumer adoption 
+The history of eCommerce shows that adoption rates varied across purchase categories. 
+All transactions involve the risk that a consumer will be unhappy with the good they 
+purchased, and consumer shopping behaviors are foundationally tied to how easy it is to 
+minimize risk. Features such as free returns, consumer transaction disputes, detailed 
+product catalogs, or in-person shopping all exist to mitigate the risk of a purchase not 
+meeting the consumer’s expectations. We believe agentic commerce will first see 
+adoption in product categories where the risk that AI misinterprets consumer intent is 
+lowest, with adoption gradually rising in higher risk categories over time as the 
+technology and frameworks improve. As such, in Exhibit 6 we introduce a framework for 
+thinking about transaction risk. Decomposed complexity and subjectivity of the product 
+and the severity of the consequences for misexecuted purchases. Ultimately, we believe 
+that lower risk and more commoditized products are likely to see the fastest adoption 
+whereas subjective categories such as apparel and luxury are likely to lag adoption. 
+ 
+ 
+Exhibit 6: Consumer Agentic Commerce Adoption Framework  
+Consumer Agentic Framework Explanation
+Quadrant
+Explanation
+Examples
+1
+Demonstrate signficant value prop for merchants; consumers 
+could face major consequences if transactions do not meet 
+expectations or are made incorrectly
+Airlines, hotels, etc.
+2
+Low likelihood of transaction failure and likely reflects lower 
+cost items
+Toilet paper, cleaning supplies, packaged foods, groceries etc.
+3
+Specific consumer preferences combined with relativley low 
+consequences if transaction does not meet criteria
+Car-hailing, dining / reservations, delivery
+4
+Longest to see adoption due to high relative costs to 
+consumers if failure occurs combined with high consumer 
+preferences
+Personalized items that may not require urgency, but are 
+specific to user preferences and likely to be returned (shoes, 
+jewelery, etc)
+Significant consequences
+Low consequences
+Consequence/Tolerance for Transaction Mistake
+High Complexity
+Low Complexity
+Transaction Complexity/Personalization
+Luxury Goods
+Travel
+Services
+CPG/Staples
+Groceries
+Electronics
+Furniture
+Live Events
+Apparel
+1
+4
+3
+2
+Hardest to 
+agentify
+Easiest to 
+agentify
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  13
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 14]
+ 
+ 
+Exhibit 7: On average, eCommerce gained ~50bps of total 
+retail spend from 2011 to 2019 
+ 
+Exhibit 8: U.S. eCommerce has been growing in the HSD 
+range 
+15.0% 
+6.5% 
+3.9% 
+0.8% 
+0.1% 
+31.5% 
+12.6% 
+7.8% 
+3.6% 
+0.2% 
+0.0%
+5.0%
+10.0%
+15.0%
+20.0%
+25.0%
+30.0%
+35.0%
+Electronics
+Clothing
+Furniture
+Hardware/supplier
+Food and Bev
+eCommerce Penetration
+2011
+2019
+7%
+5%
+9%
+5%
+8%
+9%
+9% 10%
+8%
+7%
+7%
+9%
+5%
+5%
+5%
+6%
+10%
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+1Q222Q223Q224Q221Q232Q233Q234Q231Q242Q243Q244Q241Q252Q253Q254Q251Q26
+U.S. eCommerce Growth
+ 
+ 
+Source: Census Bureau, Goldman Sachs Global Investment Research
+ 
+ 
+Source: Census Bureau
+ 
+Exhibit 9: eComm has penetrated nearly 1/4 of the 
+addressable consumer market over the last 30+ years 
+ 
+Exhibit 10: Cards, digital wallets, and bank transfers 
+dominate preferred acceptance methods in the market 
+2%
+4%
+7%
+10%
+19%
+22%
+0%
+5%
+10%
+15%
+20%
+25%
+eComm % Retail Sales
+76%
+68%
+63%
+48%
+43%
+41%
+34%
+27%
+26%
+17%
+15%
+ 
+Electronic shopping and mail-order house % Retail sales and food services excl 
+motor vehicle and parts and gasoline stations 
+ 
+Source: Census Bureau, Goldman Sachs Global Investment Research
+ 
+ 
+Source: 2026 Global eCommerce Payments and Fraud Report, Goldman Sachs 
+Global Investment Research
+24 September 2026
+  14
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 15]
+We see a $2.6tn near-term US consumer spending opportunity within 
+existing spending for agentic commerce to take share 
+We believe there is an opportunity for agentic commerce to accelerate eCommerce 
+adoption and capture share of in person retail payments. We believe the attach rate of 
+agentic commerce will be dependent on the category and how much trust or risk is 
+embedded in a transaction (as highlighted earlier). In Exhibit 11 we bucket and size the 
+corresponding categories into a historical time series and highlight the corresponding 
+growth rates. Based on our categorization, and recognizing there will remain categories 
+within each bucket that are unlikely to be adopted in an agentic commerce landscape, 
+we believe that roughly 60% of spend volume (retail and services) today falls into our 
+high and medium likelihood baskets, amounting to over $12.3tn in commerce volume. 
+Putting it all together, we believe roughly ~2% agentic commerce driven 
+penetration into our “high likelihood” card-present categories could drive an 
+incremental 1pt acceleration of total eCommerce growth (or ~50bps penetration of 
+our “high and medium likelihood” card-present categories).
+24 September 2026
+  15
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 16]
+ 
+Exhibit 11: We believe nearly $3tn in commerce activity could be addressable for agentic commerce in the nearer term across retail categories 
+Retail Categorization
+Auto/Parts 
+Dealers
+Furniture
+Electronics and 
+Appliances
+Home 
+Improvement
+Food and 
+Beverage
+Health and 
+Personal Care
+Apparel and 
+Accessories
+Sporting Goods, 
+Hobby, Book, 
+Music
+General 
+Merchandise
+Miscellaneous
+Nonstore 
+retailers
+Categorization
+Low
+Low
+High
+High
+Low
+High
+Low
+Low
+Medium
+Medium
+Medium
+In-store CAGR
+7%
+2%
+4%
+2%
+4%
+6%
+13%
+4%
+3%
+10%
+10%
+eCom CAGR
+9%
+30%
+5%
+9%
+9%
+6%
+3%
+4%
+13%
+6%
+10%
+Agentic Conversion of Card Present to eCom sensitivity
+% eCom acceleration
+0.5%
+0.8%
+1.0%
+1.3%
+1.5%
+% pen of High-likelihood CP
+1.1%
+1.7%
+2.3%
+2.8%
+3.4%
+% eCom acceleration
+0.5%
+0.8%
+1.0%
+1.3%
+1.5%
+% pen of High/Med.-likelihood CP
+0.3%
+0.4%
+0.5%
+0.6%
+0.8%
+GSe Category CAGRs
+In-store Retail
+eCom Retail
+Services
+High
+4%
+6%
+13%
+Medium
+7%
+10%
+9%
+Low
+4%
+6%
+8%
+2,698 
+3,249 
+3,517 
+3,521 
+3,557 
+3,639 
+147 
+178 
+194 
+189 
+193 
+209 
+3,507 
+3,907 
+4,144 
+4,486 
+4,875 
+5,241 
+1,227 
+1,369 
+1,506 
+1,556 
+1,623 
+1,715 
+553 
+653 
+702 
+796 
+866 
+906 
+4,697 
+5,229 
+5,823 
+6,321 
+6,708 
+7,074 
+755 
+855 
+895 
+909 
+914 
+931 
+837 
+1,044 
+1,249 
+1,356 
+1,438 
+1,523 
+0
+5,000
+10,000
+15,000
+20,000
+25,000
+2020
+2021
+2022
+2023
+2024
+2025
+Low In-person Retail
+Low eCom Retail
+Low Services
+Med. In-person Retail
+Med. eCom Retail
+Med. Services
+High In-person Retail
+High eCom Retail
+High Services
+High Likelihood: 
+$2.6tn
+Medium
+Likelihood: $9.7tn
+Low Likelihood: 
+$9.1tn
+ 
+*excludes services like events, travel, etc. 
+ 
+Source: Census Bureau, Goldman Sachs Global Investment Research
+24 September 2026
+ <⌀
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 17]
+A brief case study on the history of eCommerce shows adoption could be slow 
+We look to the phases of growth eComm to assess how quickly widespread consumer adoption can form 
+and the various hurdles/accelerants to the growth seen over the past 30+ years. We believe agentic 
+commerce adoption is likely to follow a similar path, evolving over an extended period. Below we briefly 
+highlight the evolution of eComm:  
+Phase 1, The Initial Phase (1990-1998): At its inception the internet was designed for the transfer of 
+information, disrupting legacy messaging systems like fax machines, pagers, and telephone. After decades 
+of commercial and government use, the internet became widely available in the 90s, driven by the PC 
+boom. In its early years, consumers primarily used the internet for informational purposes and research, 
+which we describe as synonymous with today’s consumer product discovery. Over time, commerce across 
+the internet gained traction, largely credited to the launch/growth in popularity of Amazon and eBay. 
+Phase 2, Building Trust (1998-2007): In its infancy, eCommerce struggled with consumer trust, which was 
+a limiting factor for adoption. For example, simply purchasing a good online now required a consumer to 
+consider 1) will the transaction be approved? 2) will the merchant provide the service/good? 3) how long 
+and how much will it take to deliver? Although liability protections existed, consumers were hesitant to 
+enter card credentials in fear of bad actors intercepting the details. Over the course of the next decade, V 
+and MA launched several protocols, to aid in ensuring that a person using a card online is the legitimate 
+cardholder, with V/MA modern platforms leveraging adaptive risk-based decisioning, compliance 
+standards, and data exchange to ensure consumer authentication. Over the same time, PYPL gained 
+traction, providing an added layer of consumer protection and fueling much of the adoption it has today. In 
+this stage, we saw eComm scale meaningfully with the overall fraud risk falling coinciding with large eComm 
+penetration gains (increasing from 4% to 7%). 
+Phase 3, Reducing Barriers (2007-Current): With protections in place driving both consumer and 
+merchant adoption, eComm saw its next leg of growth come from significantly lower barriers to access the 
+internet, particularly for consumers. Between 2000 and 2010, accessibility to high speed / broadband 
+internet and widespread smart phone adoption gave consumers multiple touchpoints to interact across 
+the web. The growing habituation lent itself to increased screen time and kicked off a new age in digital 
+advertising across the various new surfaces. One of the final catalysts was for shipping costs and delivery 
+times to fall. In the early years of eComm, shipping was often prohibitively costly and had delivery times 
+well in excess of what’s seen today. This led to convenience ultimately playing a much larger role in 
+commerce, while in the past, limited access to physical storefronts or inventory were often a leading factor 
+for eComm use. Finally, V and MA launched tokenization services (replace card account # with secure 
+token), which significantly increased the security behind online purchases, with V noting ~54% of CNP 
+transactions are now tokenized (V estimated ~$650mn reduction in fraud in FY24). 
+ 
+Exhibit 12: Multiple drivers fueled eComm growth over 
+recent decades 
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  17
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 18]
+Agentic commerce has the potential to increase fragmentation of 
+eCommerce, with higher visibility of smaller merchants, and smaller 
+basket sizes 
+We believe agentic commerce adoption, like the rise of eComm, provides the 
+opportunity to increase the visibility of smaller merchants and optimize consumer 
+preferences. eCommerce has lowered the barriers for D2C merchants, removing the 
+need for costly physical store fronts and the operational logistics that come with it. In 
+eComm, consumer traffic is heavily influenced by advertising and meeting consumers 
+where they are (social media, search engines, etc.). Agentic transactions are likely to 
+expand the reach of SMBs and merchants previously less visible to consumers through 
+agentic protocols optimizing for consumer preferences. For example, a consumer 
+searching to purchase an apparel item within a certain budget and criteria could be 
+presented with options from a myriad of providers, not limited to the largest retailers. 
+This has already been occurring, with smaller DTC merchants, evidenced by the share 
+gains of the Shopify platform, taking significant share of eCommerce over time. 
+We believe agentic commerce also has the potential to create fragmentation in baskets 
+and reductions to average order values. For example, a consumer may find the clothing 
+item they were looking for at a specific merchant, but may purchase related items (like 
+shoes, or accessories, etc.) at a different merchant’s website (either for product specific 
+reasons, or because the accessories were available at a different merchant at a lower 
+price). 
+ 
+Exhibit 13: SHOP has taken share in a growing eCommerce marketplace 
+85%
+89%
+86%
+85%
+86%
+84%
+84%
+83%
+82%
+81%
+80%
+2%
+2%
+3%
+3%
+3%
+4%
+4%
+5%
+6%
+7%
+8%
+13%
+9%
+11%
+11%
+11%
+12%
+12%
+12%
+12%
+12%
+12%
+$2.3 
+$3.9 
+$4.6 
+$5.4 
+$6.0 
+$6.1 
+$6.8 
+$7.5 
+$8.1 
+$8.8 
+$9.5 
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025E
+2026E
+2027E
+2028E
+Other
+SHOP
+AMZN
+CAGR: 18%
+CAGR: 8%
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research, WorldPay Global Payments Report
+24 September 2026
+  18
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 19]
+1) Product discovery 
+Prior to the launch of the large foundational models, the primary mechanism for product 
+discovery was for consumers to use search engines. In many instances this required a 
+degree of intent and specificity into the item they expected to purchase. With product 
+discovery responsibilities shifting to the large foundational models, the burden for 
+searching for items is reduced, with consumers capable of leaning into conversational 
+dialogue, where text can be translated to identify intent and personalize user 
+experiences to direct consumers to the relevant merchants. Not surprisingly this would 
+drive incremental volumes away from search engines and result in shopping processes 
+that still end with consumers entering merchant websites, albeit through a different 
+medium. Given search is predominantly consolidated between a few primary platforms, 
+we believe this will likely result in search engine providers adapting their ad models and 
+altering the mechanisms of paid search advertising.  
+2) Purchase transaction initiation 
+Payments Optimization: Merchants have historically preferred consumers to steer 
+away from higher cost payment methods like credit/debit cards and we believe there 
+could be material changes to the payments and financial services ecosystem with 
+consumers initiating transactions through foundational models. Although investors have 
+noted the potential for merchants to systematically optimize payments acceptance 
+costs, we believe the value proposition offered to consumers and the time it takes to 
+materially shift consumer behavior makes it unlikely for preferences to quickly change. In 
+eCommerce today, consumers favor credit cards over alternative payment methods 
+primarily given their 1) attractive reward structure and 2) lower consumer risks. 
+3) Autonomous transactions 
+At the autonomous stage of agentic commerce, the agent has been granted autonomy in 
+acquiring a specific product with consumers giving prerequisites for a specific good or 
+service. Though still in the very early innings, conceptually a consumer can define 
+specific parameter for a specific product and set rules for the agent to follow. For 
+example, the consumer can have spending limit-based rules, where the agent may 
+transact for purchases below a certain dollar amount autonomously, with transactions 
+exceeding a predefined amount requiring consumer authentication. With trust being the 
+focal point of autonomous transactions, high consumer penetration relies on each 
+stakeholder (protocol, merchant, psp, issuer, etc.) establishing a frictionless and safe 
+consumer experience. With autonomous transactions limited to concept opposed to 
+actually currently in process, we believe adoption will rely on establishing trust between 
+all parties involved and answering several questions including: Who owns fraud losses? 
+Who owns charge-backs? Who owns returns? Who bears liability for erroneous 
+purchases? Who governs agent behavior? Ultimately, it remains unclear whether 
+commerce will reach the autonomous transaction level and the degree to which various 
+retail categories are addressable (i.e. more commoditized vs personalized), but what 
+remains clear is the need for a clear established governance framework to drive trust 
+and responsibilities across the ecosystem.
+24 September 2026
+  19
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 20]
+Agentic Commerce as an Evolution on Consumer Intent - A View from Digital Advertising 
+ 
+ 
+Since publishing our report on the impact of AI on advertising profit pools last year 
+(link), investor debates have evolved from discussions around broader AI enablement 
+toward more specific questions - including consumer discovery as agentic commerce has 
+evolved from concept to nascent product deployment over the past 8-12 months. At the 
+same time, operators across our digital advertising coverage continue to uptake AI 
+adoption as a whole, both internally and in driving new product offerings - deploying AI 
+across creative generation, campaign optimization, audience targeting, measurement, 
+and increasingly consumer-facing search and commerce experiences. 
+Our overarching view is the impact of agentic commerce on digital advertising is 
+likely to be more phased than the broader application of AI across the advertising 
+ecosystem. In our view, digital advertising remains the industry subsector (in our 
+coverage) the furthest along in AI adoption today (i.e. within advertiser tooling, 
+targeting, measurement, and workflow automation). By contrast, agentic commerce 
+represents a longer duration shift connected to a broader network of stakeholders 
+across industries, dependent on consumer behavioral change, merchant participation, 
+and trusted transaction infrastructure (along with governance frameworks and 
+approaches to identity/authorization) before it can scale meaningfully. 
+We therefore view agentic commerce as part of AI’s gradual reallocation of value across 
+different layers of the advertising stack. Near term, we believe AI is primarily enhancing 
+advertising efficiency (in terms of lowering creative production costs, improving 
+campaign optimization, increasing ROAS, etc.). Over time, however, as consumers 
+increasingly rely on AI assistants for product discovery and purchase decisions, a greater 
+share of commercial intent may originate within AI interfaces rather than traditional 
+search or retailer/marketplace websites. We take the opportunity to frame a) how AI 
+is impacting the advertising ecosystem today (and where agentic commerce will 
+have the greatest impact) and b) outline how agentic commerce could drive a 
+similar value shift in traffic and engagement as observed with the 
+desktop-to-mobile transition (where our prior report outlines shifts in consumer 
+internet in greater detail).  
+State of AI in Advertising  
+Ads are increasingly embedded directly within AI-native experiences, but ad 
+formats continue to evolve beyond traditional display or search. Today, ads most 
+commonly appear in AI-driven experiences in one of a few ways: a) inside conversational 
+AI/chatbot interfaces as clearly labeled text or images below responses; b) as product 
+feed ads tied to shopping catalogs, or c) more directly aimed to workflows through 
+sponsored recommendations. Overall, publisher approaches (especially AI platforms) 
+emphasize contextual relevance - utilizing the content of the conversation to determine 
+delivery while balancing for separation between ads and organic responses. Given this, 
+we view the industry as nascent and still evolving with ads (both in terms of delivery and 
+format) in AI-native experiences/interfaces as advertisers experiment for both 
+consumer-facing and agent-facing ads (as the potential for AI shopping assistants and 
+personal agents to guide purchasing decisions becomes more significant). 
+From an advertiser perspective, based on a host of industry conversations and channel 
+24 September 2026
+  20
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 21]
+checks, sentiment appears increasingly constructive but still measured. Many 
+advertisers view AI interfaces as significant channels due to evolving consumer behavior 
+(treating AI as a more context-rich search platform to research products and make 
+purchase decisions) where adoption today is being driven by the belief that AI can offer 
+richer context and stronger intent/signals than traditional media. Still, industry 
+enthusiasm is tempered by concerns around attribution and measurement given difficult 
+visibility into whether an AI agent processed an ad, incorporated it into a 
+recommendation, or ultimately influenced a purchase. Thus, the key debate has 
+increasingly shifted towards how effectively value can be measured and captured in an 
+AI-driven world.  
+Parallels to the desktop-to-mobile shift 
+As consumers migrated to mobile interfaces, companies that successfully converted 
+users into app downloads created more durable relationships (i.e through stored 
+credentials, personalized experiences, and direct engagement channels). App users 
+therefore became more valuable than (anonymous) web traffic, while long-tail traffic 
+sources became comparatively less differentiated/valuable. 
+We see the potential for agentic commerce to drive a similar shift, where rather 
+than the key asset being an app install, this would be in the form of being the default 
+merchant/service/brand that an AI agent repeatedly selects on the user’s behalf (given 
+the consumer’s pre-existing preference/frequency habits). 
+Companies that establish durable AI agent relationships could benefit from higher 
+retention, greater purchase frequency, and lower customer acquisition costs, whereas 
+firms that rely heavily on winning traffic at the top of the funnel may face greater 
+competition and commoditization. 
+Given this, the value of users could become increasingly concentrated - similar to how a 
+smaller base of highly engaged (app) users ultimately have become more valuable than a 
+larger pool of occasional web visitors, a relatively smaller (albeit deeply loyal) cohort of 
+customers embedded within an agent’s preference may become disproportionately 
+valuable (and the remaining traffic becomes harder to capture and potentially less 
+monetizable over time). 
+Blurring the lines between eCommerce and advertising 
+As eCommerce platforms have matured, revenue growth has increasingly shifted 
+away from traditional merchandise sales towards Retail Media Networks (RMNs), 
+which allow advertisers to gain access to high intent audiences and give them the ability 
+to link advertising dollars to purchase behavior. For retailers, Retail Media often serves 
+as a high margin revenue stream that leverages their already existing traffic and 1P data 
+assets. We have previously noted (link) Statista estimates the size of retail media to be 
+~$170b globally in 2025, up from $77b in 2020, representing a 17% 5-year CAGR and 
+expect this to continue to be a large contributor to eComm growth overtime.  
+One of the key debates surrounding agentic commerce is whether a greater share of 
+consumer discovery occurring within AI agents ultimately weakens the value proposition 
+of RMNs. While we believe this transition remains in its early stages and have yet to 
+observe any meaningful impact on retail media performance, the long-term implications 
+remain an area of investor focus. On one hand, fewer consumers navigating traditional 
+24 September 2026
+  21
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 22]
+search results and retailer-owned digital properties could reduce opportunities for 
+sponsored listings and native advertising. On the other hand, we are already beginning 
+to see the emergence of sponsored recommendations and AI-native advertising 
+formats, where brands pay for preferential visibility within AI-generated shopping 
+recommendations. As a result, we believe the debate is less about whether advertising 
+disappears and more about how advertising budgets evolve as discovery migrates 
+toward conversational and agent-driven experiences. 
+Ultimately, the debate centers on who owns discovery, traditional retail ecosystems or 
+agentic platforms, as value and monetization are likely to accrue to the party that 
+controls the consumer decision-making process. Many AI agents are designed to 
+optimize around factors such as price, speed, availability, and assortment. As a result, we 
+believe scaled retailers, which consistently perform well across these dimensions, are 
+positioned to benefit as agentic commerce adoption increases (vs smaller brands which 
+have historically relied more heavily on paid acquisition or brand marketing to drive 
+traffic). Over time, we believe agentic commerce may shift competitive advantage away 
+from customer acquisition and toward operational excellence, reinforcing the position of 
+retailers with scale, logistics capabilities, and strong value propositions.
+24 September 2026
+  22
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 23]
+Practical Considerations and Scaling Obstacles for Agentic Commerce Adoption 
+ 
+ 
+Intent verification and liability remain headwinds to both consumer and 
+merchant sponsorship  
+We believe consumer intent verification is a major unsolved issue that will impact 
+merchant willingness to accept and consumer willingness adopt agentic transactions. In 
+an agentic transaction, consumers will need to provide details that their agent is 
+authorized to operate within. This includes budgets, categories, time constraints, etc. 
+Under the current commerce landscape, the liability of a transaction primarily sits with 
+the merchant and the consumer’s bank. The consumer is never held liable for fraud and 
+is heavily favored in transaction disputes with the merchants, resulting in merchants 
+bearing the brunt of the liability for problems that arise with eCommerce transactions. 
+Merchants also have significant financial exposure to transaction risk in eCommerce as a 
+result of favorable return policies. Elevated return rates in agentic channels could 
+significantly reduce the profitability of this channel for merchants , resulting in elevated 
+transaction risk. In the near term we believe that agentic transactions will require more 
+authentication and biometrics. However, as the agentic commerce surface area 
+increases, we believe merchants and banks will be increasingly focused on reducing the 
+financial liability in agentic transactions, which may result in barriers that limit adoption, 
+or changes in how data associated with the consumer’s agentic platform is shared with 
+ecosystem participants.  
+ 
+Exhibit 14: Return rates have increased significantly over 
+the past several years, increasing merchant costs 
+ 
+Exhibit 15: Bad experiences involving returns is key source 
+of customer churn for merchants 
+309 
+428 
+761 
+817 
+890 
+850 
+8%
+11%
+17%
+17%
+17%
+16%
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+14%
+16%
+18%
+0
+200
+400
+600
+800
+1,000
+1,200
+2019
+2020
+2021
+2022
+2024
+2025
+Total Cost of online Retail Returns ($bn)
+Annual Online Return Rates
+40%
+57%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+2024
+2025
+% of shoppers chosing to shop elsewhere after being charged for 
+returns
+ 
+ 
+Source: National Retail Federation
+ 
+ 
+Source: National Retail Federation
+24 September 2026
+  23
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 24]
+Current state of intent verification 
+Consumer purchase intent has been a challenge for agentic providers to solve. The 
+consumer intent problem is generally defined as the necessity to confirm specific 
+transaction details and intentions of the consumer, confirming the final purchase is in 
+fact the intended product (e.g. ensuring consumer intended to purchase a specific item, 
+color, size, etc.), and ensuring in the event of an erroneous transaction, the liable party is 
+identified.  Mastercard/Google’s Verified Intent framework (IP donated to FIDO alliance) 
+and ACP’s permissioned signatures both leverage tokenization technology, and are 
+designed to provide intent information and ensure this remains secure throughout the 
+transaction process. Under these frameworks, agents present a token that contains 
+documentation of the consumer’s intent and is presented to a merchant along with their 
+payment details, with the aim of establishing consumer protections that mimic 
+traditional purchases. The current protocols are primarily designed to provide 
+documentation/audit trail, opposed to supplying banks with transaction level data often 
+provided from traditional transactions. Although the protocols represent a good starting 
+point for defining the underlying protections that we believe are necessary to drive 
+consumer adoption, we believe the data provided to each party liable for incorrect 
+transactions will likely need to increase in order to drive buy-in from the traditional 
+payment ecosystem parties (i.e. banks, and merchants etc.).  
+Agentic commerce opens a new front in the battle over who owns the 
+end consumer relationship in eCommerce 
+Some retailers have exhibited reluctance to allow independent AI agents to become the 
+primary customer interface, which we attribute to concerns around loss of customer 
+ownership, potential margin headwinds, and increased commoditization risk.  
+Loss of customer ownership. If consumers make their purchases with independent 
+n
+AI agents instead of direct channels, retailers lose access to (1) first-party customer 
+data and browsing behavior that enable personalized marketing, (2) loyalty 
+engagement that encourages higher frequency, and (3) cross-selling opportunities 
+that increase average ticket. 
+Higher customer and traffic acquisition costs for merchants. Agent platforms 
+n
+could seek referral fees, advertising revenue, commissions, and preferred placement 
+payments from retailers in exchange for directing consumer agentic traffic to 
+merchant websites, an already established practice across search and marketplace 
+intermediaries. This could introduce a new structural cost layer that could compress 
+retailers’ margins over time, which is likely most acute for larger merchants, such as 
+Amazon, who have established large marketplaces that are less reliant on digital 
+advertising for traffic acquisition. On this note, we note that Amazon recently 
+blocked Muse from its marketplace. 
+Price competition and margin risk. With agentic commerce, consumers are able to 
+n
+compare price, delivery speed, and product availability more easily across retailers. 
+We believe this would also lessen the influence of website experience, brand, and 
+loyalty ecosystem on consumers’ purchasing decisions. Among retail categories, we 
+believe CPGs are most exposed to commoditization risk given that many of these 
+products are widely available across retailers at comparable price points, are often 
+purchased for habitual replenishment rather than active discovery, and are 
+24 September 2026
+  24
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 25]
+vulnerable to private-label substitution (e.g., an AI agent may highlight a lower-cost 
+private-label option). 
+Agentic Shopping Permissioning: We note AMZN’s recent decision to block Muse 
+n
+AI (and other unauthorized shopping agents) from shopping on Amazon.com. 
+ 
+The overall pace of agentic commerce adoption will likely be influenced not only by 
+consumer demand and technological readiness, but also by the willingness of 
+ecosystem participants to expose catalogs, payments, and transaction infrastructure 
+to third-party agents.  
+The launch of Muse provides an early case study in how ecosystem participants are 
+approaching agentic commerce, highlighting a rising divide between open and closed 
+commerce ecosystems. Some participants have embraced agentic commerce as a new 
+distribution channel and are actively enabling their products, catalogs, and transaction 
+infrastructure to be accessed by third-party agents. In many cases, those participants 
+are playing offense as they don’t have a deep, embedded customer relationship. 
+Examples include Shopify’s integration with Muse and other AI shopping surfaces, 
+payment providers such as Stripe, PayPal, Visa, and Mastercard building infrastructure 
+for agent-mediated transactions, and Ticketmaster’s participation in AI-driven discovery 
+experiences. Other ecosystem participants have taken a more restrictive approach, 
+prioritizing ownership of the customer relationship and control of the shopping 
+experience. Amazon’s decision to restrict shopping access from unauthorized agents 
+highlights concerns around first-party data, retail media economics, loyalty programs, 
+and customer ownership. In addition, the behavior of agents on platform (collection of 
+data, signal shared) is more critical to the 1st/3rd party marketplace operator than for 
+payments or merchant enablement. 
+In our own view, it is too early and at too small a scale to know which approach will yield 
+a more defensible and advantageous position against scaled shifts in the broader 
+landscape (over a longer-term horizon than early adopters in the last 10 days). 
+Companies that are already dependent on external traffic acquisition have less to lose 
+and more to gain from agentic commerce adoption, as AI agents can act as another 
+source of demand generation and customer acquisition. Platforms where the shopping 
+journey begins and remains within a single ecosystem face a more complex tradeoff 
+ 
+Exhibit 16: Merchant readiness to accept agentic AI 
+payments (2026, all payment professionals) 
+15%
+31%
+32%
+19%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+No plans or
+solutions in place
+Initial planning /
+exploration
+Plan in place /
+implementing
+Plan / solutions in
+place
+ 
+ 
+Source: 2026 Global Payments & Fraud Report, Goldman Sachs Global Investment 
+Research
+24 September 2026
+  25
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 26]
+between maximizing distribution and preserving control of the consumer relationship. In 
+the case of Muse, Shopify is now positioned to benefit from Muse adoption via Shop Pay 
+while marketplaces could lose share if product discovery begins to shift away from their 
+ecosystem.
+24 September 2026
+  26
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 27]
+Agentic Commerce will Create Broad-Based Demand for Fraud and Cybersecurity Solutions  
+ 
+ 
+Fraud remains a major cost in eCommerce and is the shared liability of banks and 
+merchants to cover fraud in the marketplace. We believe the adoption of agentic 
+commerce will create a more severe threat environment with the cost of account 
+takeover and stolen payment credentials rising precipitously given the speed with which 
+malicious agents can exploit vulnerabilities. As a result of the heightened threat 
+environment, we believe demand for fraud detection identify verification services will 
+increase. We see this demand hitting a range of traditional players such as NET and 
+AKAM, as well as more specific consumer and commerce specific providers such as the 
+card networks (V/MA) and credit bureaus (EFX/TRU).  
+We believe the core problem is that agentic commerce requires merchants to treat 
+some automated traffic as customers, whereas bot controls today are largely 
+designed to distinguish humans from machines and block activity such as scraping 
+or inventory abuse. In an agentic model, merchants need to determine who is 
+behind an agent and whether it is authorized to act for a customer. 
+We see a reasonable base-case: where security intensity (as a percentage of 
+n
+merchant eCommerce revenue) will increase, and we believe much of the 
+functionality will be bundled with existing CDN/application-security and payments 
+offerings 
+Emerging frameworks include: ANS (Agent Name Service), effectively a DNS-like 
+n
+identity and discovery system for agents, while Visa Trusted Agent Protocol and 
+Mastercard Agent Pay are intended to help merchants verify agent identity and 
+purchasing intent. Security vendors enforce across these frameworks.  
+Consumer: consumers generally do not buy separate security products for online 
+n
+transactions because protection is embedded in the merchant or payment network. 
+We expect a similar structure in agentic commerce.  
+In terms of the economics for security platforms, a 2026 IANS survey says that retailers 
+spent an average of approximately 75bps of revenue on cybersecurity, while 
+eCommerce represents approximately 17% of US retail sales. Assuming that 25-50% of 
+a retailer’s security budget supports online operations, this would imply cybersecurity 
+spending equivalent to ~1-2% of eCommerce revenue. At a bare minimum, we would 
+assume this range to hold but long term we would expect higher intensity from the 
+additional risks and unknowns introduced by machine-to-machine transactions. 
+24 September 2026
+  27
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 28]
+ 
+ 
+ 
+ 
+Exhibit 17: Merchant demand for fraud prevention 
+services is broad-based and increasing 
+ 
+Exhibit 18: Fraud continues to be top-of-mind for 
+companies 
+53%
+44%
+37%
+37%
+35%
+28%
+26%
+22%
+27%
+28%
+27%
+28%
+25%
+21%
+74%
+72%
+65%
+64%
+63%
+53%
+48%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+Currently Using
+Likely to add in the next 12 months
+83%
+71%
+60%
+43%
+33%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+Dispute abuse
+Stolen Card
+Credentials
+Refund / policy
+abuse
+Instant
+payments fraud
+Phishing /
+pharming /
+whaling
+Note: Represents MRC member responses 
+(highly specialized, global ecosystem of 
+ 
+ 
+Source: 2026 Global Payments & Fraud Report, Goldman Sachs Global 
+Investment Research
+ 
+Fraud attacks experienced in past 12 months, by MRC membership (2026, 
+fraud professionals) 
+ 
+Source: 2026 Global Payments & Fraud Report, Goldman Sachs Global 
+Investment Research
+ 
+Exhibit 19: Visa annual token issuance has increased 
+significantly over the last several years 
+ 
+Exhibit 20: Visa has shown the ability to shift away from 
+manual entry checkout to tokenized transactions 
+0.0 
+0.1 
+0.1 
+0.2 
+0.5 
+1.3 
+2.5 
+4.8 
+7.8 
+11.5 
+16.0 
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+# of Visa tokens, bns
+4%
+7%
+13%
+26%
+36%
+45%
+54%
+96%
+93%
+87%
+74%
+64%
+55%
+46%
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+Note: Reflects CNP txns, including both "bottom" checkout and card-on-file
+Tokenized Txns:
+Non-Tokenized Txns:
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 21: Where the fraud liability falls within the broader payments ecosystem still needs to be figured out 
+Fraud Liability by Transaction Type
+Typical party responsible for fraud losses
+Transaction Type
+Card-Present 
+Transaction
+Card-Not-Present 
+Transaction
+Non-Card Payments 
+(varies)
+Agentic Commerce
+Responsible Party
+Issuing Bank
+Merchant
+Consumer
+TBD
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  28
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 29]
+ 
+Exhibit 22: Heightened focus on payments security expected as agents are adopted in eCommerce 
+Select eCommerce Fraud Detail
+Dispute abuse
+Stolen Card Credentials
+Refund / policy abuse
+Instant payments fraud
+Phishing / pharming / whaling
+Overview
+Legitimate customers misrepresent 
+txns for financial gain
+Scripts or botnets are used to test the 
+validity of a single card or basket of 
+stolen cards making small, rapid txns 
+on eComm sites - once approved, the 
+attacker can use the card elsewhere
+Post-purchase fraud that exploits a 
+merchant's return / refund policies for 
+financial gain
+Exploitation of instant / irreversible 
+payment networks (e.g. Zelle & 
+Stablecoin) to execute fraudulent 
+transfers
+Phishing: mass deceptive emails 
+Pharming: redirects legitimate web 
+traffic to fraudulent websites with 
+malware
+Whaling: targeted phishing aimed 
+HNWIs
+Current 
+Implications
+Merchants often bear the cost of 
+chargebacks as 90% of disputes are 
+resolved in favor of the consumer
+Merchants could be deemed higher 
+risk due to large spikes in txn 
+decline rates 
+30% of shoppers admitted to 
+buying an item for a specific event 
+to return it after the event
+Consumer trust remains low in 
+instant payments - has yet to gain 
+broad ubiquity
+Used to allow attackers to leverage 
+real login credentials to make 
+unauthorized payments
+Outlook
+Higher velocity of payments 
+increases merchant exposure to 
+fraudulent threats
+Automation of fraud routines making 
+it more difficult to distinguish between 
+fraudulent actors and legitimate 
+customers
+Increased data fragmentation across 
+providers reduces visibility into the 
+individual consumer behavior
+The reduction of friction across 
+payments will drive incremental focus 
+around authorization certainty
+Increased risk of legitimate agentic 
+payments occuring on fraudelent 
+websites
+Market Sizing / 
+Hard Impact
+Average cost to resolve each first 
+party misuse dispute was $80
+Visa reported $1.1bn in 
+enumeration losses were in 2024
+Of the $706bn in returns, 14.2% is 
+preventable due to returns fraud 
+and abuse
+In 2023 APP fraud loss was 
+$4.38bn, 63% was real time 
+payments
+$216bn in phishing / spoofing 
+losses in 2025
+ 
+ 
+Source: Goldman Sachs Global Investment Research, Javelin Strategy & Research, Optoro Returns Survey, FBI, Appriss Retail, Visa Bi-Annual Threats Report Spring 
+2025, 2026 Global eComm Payments and Fraud Report
+24 September 2026
+  29
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 30]
+Identity and decisioning infrastructure complements payment security 
+Agentic commerce requires payment controls to incorporate new agent, identity and 
+transaction context. Emerging commerce and payment protocols provide much of the 
+technical infrastructure required for agents to interact with merchants, transmit 
+consumer consent and initiate transactions. UCP standardizes agent-to-merchant 
+communication across discovery, checkout and post-purchase workflows, and Visa 
+Trusted Agent Protocol, Mastercard Agent Pay and AP2 provide mechanisms for agent 
+registration, user-authentication claims, credential binding and transaction-level 
+consent. Existing payment credentials, issuer authorization, merchant onboarding and 
+network fraud controls will remain central to validating participants and protecting 
+transactions in agentic commerce. That said, selected higher-risk events may require 
+additional context to assess account-takeover or synthetic-identity risk, changes in the 
+relationship between the consumer and payment account, unfamiliar merchant 
+counterparties or financing requests subject to lender policies. Agentic commerce may 
+therefore increase the value of identity verification, counterparty intelligence and 
+real-time fraud and credit decisioning as complementary inputs to existing payment 
+controls. EFX and TRU provide consumer, account, device and merchant-risk inputs that 
+could support these assessments, with FICO providing fraud and credit decisioning 
+infrastructure around events such as new account linkages, unfamiliar merchants and 
+financing requests. 
+24 September 2026
+  30
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 31]
+ 
+Agentic commerce could reduce the standalone effectiveness of several traditional 
+digital-fraud signals. Fraud systems have historically relied on device reputation, IP 
+geolocation, session velocity, navigation patterns, typing cadence and other behavioral 
+signals generated during browser or mobile-app interactions. Authorized agents alter 
+the interpretation of these signals because the originating device may be cloud 
+infrastructure, the IP address may be shared across users, navigation is programmatic 
+and transaction speed may exceed normal human behavior. Legitimate agents may 
+therefore exhibit characteristics that existing fraud models associate with scraping, 
+credential stuffing, card testing or other automated attacks. Fraud models may 
+increasingly need to combine behavioral indicators with verified agent credentials, 
+linkage to the underlying consumer, delegated permissions and transaction-specific 
+context to distinguish malicious agents, authorized agents operating outside their 
+mandates and authorized agents interacting with fraudulent merchants. The relevant 
+question therefore shifts from whether activity is automated to whether the automation 
+is authorized, remains within the consumer’s approved parameters and involves a 
+legitimate counterparty. 
+ 
+Exhibit 23: Agentic commerce could increase demand for identity and risk inputs within existing payment workflows 
+Consumer identity 
+verification
+Account linkage and monitoring
+Merchant onboarding and 
+monitoring
+Borrower verification 
+and credit decisioning
+Identity proofing, document 
+verification and synthetic-identity 
+assessment
+Account ownership, device, 
+access and fraud assessment
+Business identity, ownership, 
+taxpayer and payment-account 
+verification
+Identity, credit, income, 
+affordability and fraud 
+assessment
+Performed by wallets, banks and 
+issuers, including for agent-
+platform workflows
+Performed by wallets, banks and 
+issuers, including for agent-
+platform workflows
+Performed by banks, acquirers, 
+processors and commerce 
+platforms
+Performed by lenders and 
+financing providers
+Consumer mandate
+Agent authentication
+Tokenized credential
+Transaction 
+authorization
+Consent and delegated
+ authority
+Registered and authenticated 
+agent
+Credential binding and lifecycle 
+controls
+Issuer, network and 
+merchant fraud controls
+Decision and execution
+Agentic commerce and payment flow
+Approve, decline or refer for additional review
+Upstream onboarding and risk controls
+ 
+Potential supporting infrastructure includes EFX and TRU identity, account, merchant-risk and borrower-risk inputs, as well as FICO credit and fraud decisioning 
+capabilities. Material changes or elevated risk may trigger reassessment within existing onboarding, monitoring and decisioning workflows. 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  31
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 32]
+ 
+Consumer identity verification 
+Consumer verification may remain relevant when higher-risk changes occur around an 
+authenticated agent. A valid agent credential can demonstrate that a recognized 
+software actor is authorized to transact, but does not independently determine whether 
+the underlying consumer identity is legitimate, synthetic, stolen or associated with a 
+compromised account. EFX and TRU already provide identity resolution, document and 
+account verification, device intelligence, synthetic-identity detection and fraud signals 
+across onboarding and account-access workflows. These capabilities could support 
+risk-based decisions when material changes occur in the consumer’s identity, account 
+relationships or delegated authority. Payment networks and agent platforms would 
+continue to tokenize credentials and enforce transaction controls, with the potential 
+bureau role centered on assessing the consumer identity and account relationship 
+behind the agent credential. 
+ 
+Exhibit 24: Agentic commerce could reduce the standalone effectiveness of traditional digital-fraud signals 
+Fraud Signal
+Status under Agentic 
+Commerce
+Rationale
+Complementary Signal
+Device and Network Signals
+Device reputation
+Potentially misleading
+Origination device may be cloud infrastructure 
+shared across unrelated users
+Verified agent credential and 
+consumer-agent linkage
+Devices linked across accounts
+Potentially misleading
+Shared model-provider infrastructure may 
+connect unrelated consumers
+Persistent consumer, account 
+and device relationships
+Proxy, VPN and hosting detection
+Potentially misleading
+Hosting infrastructure may be the normal 
+execution path for authorized agents
+Agent registration and 
+authorization context
+IP geolocation
+Potentially misleading
+IP address may belong to the model provider and 
+be shared across users
+Consumer, account and 
+transaction context
+Cookie and session persistence
+Less available
+Agent sessions may be ephemeral and lack 
+conventional returning-customer history
+Persistent identity and account 
+relationships
+Behavioral Signals
+Typing cadence and cursor movement
+Unavailable
+No direct human interaction exists at the point of 
+execution
+Agent credentials and consumer 
+authentication
+Navigation patterns
+Potentially misleading
+Navigation is programmatic and more uniform 
+than human browsing
+Mandate, merchant and 
+transaction context
+Session velocity
+Potentially misleading
+Authorized transaction activity may exceed 
+normal human speed
+Real-time transaction anomaly 
+detection
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  32
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 33]
+ 
+Merchant identity verification 
+Agentic commerce could increase the complexity of merchant onboarding and ongoing 
+risk monitoring. Banks, acquirers and commerce platforms already validate merchant 
+identity, ownership, registration status and compliance requirements before enabling 
+card acceptance, with payment networks and fraud controls supporting subsequent 
+transactions. Agent-led discovery does not eliminate these protections or require 
+merchants to undergo a new KYB review for each transaction.  
+That said, agents could direct more commerce toward unfamiliar or recently established 
+merchants, increasing the importance of detecting fraudulent storefronts, mismatches 
+between digital endpoints and represented businesses, undisclosed ownership 
+relationships or changes in merchant payment accounts. EFX could support banks, 
+acquirers and commerce platforms through business, principal, taxpayer and 
+payment-account verification, with TRU providing device, IP and relationship intelligence 
+around digital storefronts. The potential opportunity therefore lies in more 
+sophisticated merchant onboarding, periodic monitoring and risk-based reassessment. 
+Borrower verification and credit decisioning 
+Agent-led commerce could move financing earlier in the purchasing journey and 
+increase verification and decision activity before a purchase is completed. Consumers 
+generally select a product and merchant before applying for a specific financing option, 
+but agents could compare available credit with product prices and merchant terms 
+during discovery. Lenders may therefore provide more eligibility, pricing and 
+prequalification responses across financing alternatives before one option is selected 
+and funded. Borrower verification would become an input into product and merchant 
+selection. This could increase identity, credit, income, affordability and eligibility activity 
+associated with a completed purchase, particularly when agents compare multiple 
+lenders or financing products. The key change is that financing availability may be 
+assessed earlier and more frequently within the commerce workflow. 
+Lenders would retain credit authority, with EFX and TRU supplying data inputs and FICO 
+ 
+Exhibit 25: Higher-risk changes could trigger additional consumer identity assessment 
+Potential trigger
+Incremental risk
+Potential identity response
+New financial account 
+linked
+Account ownership mismatch or 
+compromised account
+Account ownership verification and 
+identity consistency checks
+Unfamiliar device or 
+access pattern
+Potential account takeover
+Device, account and identity-risk 
+assessment
+Broader delegated 
+purchasing authority
+Greater exposure from unauthorized 
+access
+Risk-based identity reassessment or 
+step-up verification
+Financing request 
+initiated
+Identity or application fraud
+Identity, credit, income and fraud 
+checks
+Material change in 
+identity attributes
+Synthetic, stolen or manipulated 
+identity
+Identity resolution and synthetic-
+identity detection
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  33
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 34]
+supporting governed decisioning workflows. An agent could collect 
+consumer-permissioned information and submit a financing request, but lenders would 
+continue to assess the applicant’s identity, repayment history, existing obligations, 
+income and capacity to repay. EFX and TRU could provide credit, income, affordability, 
+identity and fraud inputs used in this assessment. FICO Scores would remain a 
+standardized borrower-risk input, and FICO Platform and lender-controlled systems 
+could apply predictive models, business rules, pricing strategies and decision 
+governance. The lender would remain responsible for eligibility, credit limits, pricing and 
+approval, with the agent comparing the financing options made available to the 
+consumer. Agent-led commerce could therefore create demand for real-time borrower 
+verification and scalable decisioning infrastructure as financing becomes more closely 
+integrated with product discovery. 
+ 
+Establishing secure agent-to-merchant connectivity 
+Cloudflare sits in front of merchant websites and APIs, positioning it to identify and 
+verify shopping agents before they interact with the storefront. Its Bot Management 
+products can help merchants distinguish legitimate purchasing agents from scrapers, 
+fraudsters and other malicious bots. Integrations with Visa Trusted Agent Protocol and 
+Mastercard Agent Pay allow Cloudflare to verify agent identity and purchasing intent 
+using emerging industry standards. Agentic commerce could drive greater adoption and 
+usage of Cloudflare’s bot-management, API-security and application-security products, 
+although the incremental revenue opportunity remains unclear.
+ 
+Exhibit 26: Agent-led commerce could move financing decisions earlier in the purchasing 
+journey 
+Commerce 
+stage
+Potential agent activity
+Required infrastructure
+Relevant 
+providers
+Product 
+discovery
+Compare product prices, 
+merchants and available 
+financing
+Consumer-permissioned 
+information and preliminary 
+eligibility inputs
+EFX, TRU
+Financing 
+comparison
+Request eligibility, pricing and 
+prequalification responses 
+across financing alternatives
+Identity, credit, income, 
+employment, affordability and 
+fraud data
+EFX, TRU
+Offer 
+decisioning
+Compare lender-approved 
+offers based on consumer-
+defined parameters
+Scores, predictive models, 
+business rules, pricing, 
+optimization and governance
+FICO, lenders
+Application
+Submit the consumer-selected 
+financing request
+Identity verification, 
+underwriting and fraud 
+decisioning
+EFX, TRU, FICO, 
+lenders
+Purchase
+Complete the purchase using 
+the approved financing option
+Lender approval, payment 
+authorization and transaction 
+execution
+Lenders, payment 
+providers
+ 
+Agents may facilitate comparison and application submission, but lenders retain responsibility for eligibility, credit limits, 
+pricing and approval. 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  34
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 35]
+Digital Advertising: Distribution, Trust, and Integration as Key 
+ 
+ 
+Within digital advertising, we view META and GOOGL as the primary secular 
+beneficiaries of the emerging agentic commerce landscape. As consumer AI evolves 
+from conversational assistants toward autonomous agents capable of executing 
+end-to-end workflows, we believe value creation will increasingly accrue to platforms 
+that combine distribution, intelligence, trust, and commerce enablement. As model 
+capabilities continue to commoditize, we view competitive differentiation as likely to 
+shift from underlying model quality toward platform integration, distribution, and 
+proprietary data. Similar to the consolidation of mobile operating systems around iOS 
+and Android during the desktop-to-mobile transition, we expect consumer agents to 
+consolidate around platforms with the strongest distribution, trust, and commerce 
+integrations. Thus, within our digital advertising coverage, META and GOOGL stand out 
+in having the existing distribution, intelligence, user base, and access to compute to build 
+and scale the consumer agent opportunity in the coming years.  
+We see META as particularly well-positioned at the intersection of consumer AI and 
+digital advertising. The company has highlighted that AI-driven investment has 
+translated to engagement and ad monetization momentum across its Family of Apps, 
+while more recent announcements like the launch of its personal AI agent, Muse, reflect 
+Meta’s role in the conversation-to-action paradigm in consumer AI, and subsequently in 
+agentic commerce (where Muse can facilitate end-to-end agentic commerce 
+experiences given integrations with 3P networks). Over time, we see the potential for 
+these agentic offerings to enable new monetization vectors across commerce and 
+advertising. We would note that early traction around Muse adoption – with the app 
+seeing over 2.8mm downloads since its release and becoming the top ranked app for 
+free iOS apps in the US in its second week after launch (Sensor Tower). At the same time, 
+we believe scaling agentic commerce experiences requires overcoming meaningful 
+challenges around account connectivity, permissions, and cross-platform integrations – 
+as highlighted by different approaches taken by ecosystem participants, including 
+Shopify’s integration with Muse versus Amazon’s restriction. Broadly, we see these 
+differences in approach as underscoring the significance of 3P participation (across 
+merchants, platforms, and payment networks) in enabling end-to-end experiences.  
+GOOGL is similarly advantaged through its full-stack AI strategy in combination with its 
+extensive distribution. As consumer search behavior continues to evolves from 
+traditional queries toward conversational and multimodal interactions, we believe that 
+the company remains uniquely positioned to aggregate commercial intent (and connect 
+consumers with relevant information, merchants, and advertisers) especially given its 
+expanding integration of Gemini, AI Overviews, and AI Mode. We would also highlight 
+Alphabet’s structural advantages (incl. AI infrastructure, compute capacity, and model 
+intelligence) position the company well to capture increasing AI usage while supporting 
+attractive long-term monetization and margin expansion.
+24 September 2026
+  35
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 36]
+Retailers and Marketplaces: Amazon, Shopify Ecosystem, Merchants 
+ 
+ 
+While AI in commerce remains in the early innings, we see six themes that will define 
+which retailers & CPG manufacturers are best positioned to compete as adoption of 
+agentic commerce rises. In the near term, we believe AI tools at retailers will drive more 
+personalized product recommendations. In the longer term, we expect agentic 
+commerce to shift how consumers transact, rewarding retailers with scale and price 
+competitiveness while potentially pressuring those most exposed to commoditization. In 
+this vein, we believe Consumer Staples companies with a greater exposure to 
+low-involvement commoditized categories such as household care and center-of-store 
+food are likely to see more tangible disruption, while more personalized 
+high-involvement categories such as prestige skincare/beauty are likely to remain 
+relatively more resilient. We believe agentic commerce could ultimately represent one of 
+the most meaningful changes to digital commerce since the emergence of mobile 
+shopping, with AI agents increasingly acting as the interface layer between consumers 
+and merchants. 
+In the near term, we expect retailers who leverage AI shopping tools in their 
+1.
+direct channels to remain competitive as consumers increasingly adopt AI given 
+their ability to create highly personalized recommendations while maintaining a 
+brand-powered experience. We highlight WMT, which identified four primary use 
+cases for agent-based shopping (replenishment, mission-based, spearfishing, and 
+inspiration/discovery) and launched its commerce agent Sparky in Jun’25. Sparky is 
+able to help with customer service, proactively wake up upon a customer opening 
+the app, and offer to build a cart with the same items a customer frequently 
+purchases. For example, Daniel Danker (EVP AI Acceleration, Product, and Design at 
+WMT) highlighted Sparky’s ability to identify which spices need to be replenished in 
+a customer’s kitchen and offer the opportunity to purchase them either one at a 
+time or all at once. Other capabilities of the agent today include synthesizing reviews 
+and offering recommendations, along with helping customers plan, compare, and 
+purchase items. Customers are also using Sparky to solve complex, multi-item 
+shopping journeys (e.g., party planning). Notably, Sparky has seen rapid adoption 
+(weekly active customers doubled y/y, with 60% growth q/q) and drives a 40% 
+higher AOV. Per Walmart, customers tend to buy items that they purchase less 
+frequently and require more exploration when using agent-based shopping tools. As 
+a result, we believe we will see a notable change in categories that have room for 
+inspiration and benefit from conversation (e.g., fashion, baby, beauty, auto care, and 
+electronics). 
+We expect large scale eCommerce providers who can offer compelling prices 
+2.
+(WMT, AMZN) to be best positioned to win customers as agentic commerce 
+adoption increases. Third party AI agents are often programmed to optimize for 
+retail metrics such as the lowest price, fastest speed, and broadest assortment. 
+Given Walmart’s scale, supply chain, and EDLP model, it often wins on these metrics 
+and emerges as the recommended solution for customers that leverage the brand’s 
+partnership with OpenAI, which allows consumers to complete purchases from 
+Walmart directly within ChatGPT. While the agreement between OpenAI and 
+24 September 2026
+  36
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 37]
+Walmart is not exclusive, we believe other retailers would have to beat Walmart in 
+terms of price and speed to successfully compete. In terms of Amazon, we believe 
+the company is similarly well positioned to benefit from a shift toward agentic 
+commerce given its broad assortment, fulfillment scale, and industry-leading 
+delivery speeds. While Amazon may not have the same direct integration with 
+OpenAI today, its extensive product catalog, Prime ecosystem, and logistics network 
+often allow it to compete favorably on the same decision variables that many AI 
+agents are likely to optimize for, namely price, speed, availability, and selection. Over 
+time, we would expect Amazon to participate through a combination of direct 
+partnerships, AI-native shopping experiences such as Alexa for Shopping, and 
+broader agent integrations. More broadly, we believe agentic commerce could 
+further consolidate share among market-leading digital commerce platforms, as AI 
+agents may naturally gravitate toward merchants offering the highest probability of 
+successful transactions, reliable fulfillment, deep inventory availability, and 
+consistent pricing. 
+We see bifurcated potential impact for Consumer Staples and other Softlines / 
+3.
+Apparel brands companies as agentic AI adoption rises over time with 
+commoditized low-involvement categories likely to see more tangible 
+disruption at one end, while more personalized high-involvement categories 
+remain relatively more resilient. In terms of consumer purchase behavior, we 
+expect the impact from agentic AI adoption to be bifurcated. At one end, we believe 
+agents could take over the entire purchase cycle for certain commoditized 
+products/categories such as toilet paper, floor cleaners, center-of-store food, and 
+commoditized apparel basics, where agents could automatically reorder these 
+products based on prior history with minimal human involvement. In such cases, we 
+believe that even in case the original product or SKU is unavailable, agents could 
+decide on behalf of consumers to either buy a different SKU or an alternate 
+brand/private label product, especially where the value offering is more attractive 
+and brand loyalty is relatively low. We view companies with high private label 
+exposure such CLX and KHC potentially at risk in this scenario. However, at the other 
+end for more personalized product categories such as prestige skincare/beauty, 
+agents could be used for providing recommendation to consumers who can then 
+take final purchase decisions. As such, we expect such product categories to be 
+relatively more resilient and see EL well positioned in that regard, with the company 
+recently partnering with Shopify to enhance its DTC experience, and with Profound 
+toward AI-native brand discovery and optimization. We also expect branded apparel 
+names to increase their focus on differentiation to ensure personalized product 
+category decisions. Contrary to consumers’ manual search process (either via search 
+engines like Google or on marketplaces like Amazon) where there is often a broader 
+list of products/recommendations to choose from (i.e., page-1 of search results), AI 
+chatbots/agents are usually much more limited in the number of products they 
+recommend. Therefore, with AI involvement increasing in consumer purchase 
+decisions, it is paramount for companies/brands to ensure that their key 
+attributes/benefits are easily accessible by agentic AI, such that these 
+brands/products readily solve for consumer/agentic queries toward personalized 
+solutions, e.g., suggest the best face cream for dry skin or foods tailored to diet 
+24 September 2026
+  37
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 38]
+preferences. Furthermore, we believe the shift to agent-led purchases can also limit 
+companies/brands that have relied on their large database of first-party data and 
+used it for more effective consumer targeting/marketing programs so far; we see 
+ODD at risk in this regard.  
+We also see multiple areas of focus for Staples companies and other consumer 
+4.
+brands to optimize for evolving agentic AI landscape. As we think about shifting 
+purchase dynamics due to agentic AI’s adoption, we believe there are several areas 
+that Staples companies can address to optimize for this evolving agentic AI 
+landscape. First, as we discussed, it’s becoming increasingly important for 
+companies/brands to adapt their SEO (search engine optimization) to agentic AI. We 
+believe this transition represents a broader shift from Search Engine Optimization 
+(SEO) toward Generative Engine Optimization (GEO), where success is increasingly 
+determined by whether AI systems can accurately ingest, understand, and 
+recommend a brand’s products. In that vein, companies are working toward making 
+sure that their websites including key product/brand attributes are easily readable 
+by AI agents, which is in contrast to their legacy approach where such information 
+was either hidden or not easily machine-readable (e.g., embedded in PDFs). For 
+instance, MDLZ previously highlighted that Oreos were only cited in 10% of AI 
+chatbot cookie recommendations, which was likely attributable to blocked bot 
+crawlers and has since been working toward an agentic commerce strategy to better 
+position itself for an evolving digital commerce environment. Similarly, PG is working 
+toward understanding the decision criteria used by agents to make purchases and 
+actively looking at Generative Engine Optimization (GEO) search to ensure its 
+product information is cleanly and accurately presented to AI engines (which can 
+then be used for recommendations/purchases). As such, we believe established 
+brands may have an advantage in this environment owing to an abundance of 
+reliable information, though smaller brands could also benefit from this shift by 
+ensuring their brand/product characteristics are easily available. Notably, as agents 
+gain even more relevance in making purchase decisions, we believe CPG marketing 
+ROIs/budgets could shift towards more personalized categories in order to develop 
+greater brand loyalty where consumers are still making the final decisions and can 
+potentially override agentic recommendations, away from more commoditized 
+categories where consumer involvement is likely to go down even further as agents 
+take over. Outside of these, Staples companies are leveraging AI more broadly (incl. 
+agentic AI) to optimize their marketing campaigns & innovation pipelines for greater 
+cost-effectiveness and faster execution. In addition, companies like PG and HSY are 
+leveraging AI to make their supply chains more efficient, incl. touchless operations at 
+manufacturing facilities and running platforms autonomously to react to demand 
+signals among other factors. We are also seeing brands adapt to this in softlines and 
+apparel. For example, Tapestry has discussed investments around AI engine 
+optimization and generative search, reflecting a growing focus on ensuring brands 
+remain discoverable, accurately represented, and recommended as consumers 
+increasingly rely on AI-powered agents throughout the shopping journey. 
+We view Shopify as one of the best-positioned beneficiaries of the shift toward 
+5.
+agentic commerce, supported by both product momentum and an increasingly 
+24 September 2026
+  38
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 39]
+strategic role in AI-driven shopping. In our view, the debate is often overly focused 
+on the consumer discovery layer and underappreciates Shopify’s growing role as the 
+infrastructure layer underpinning digital commerce. Over the past year, Shopify has 
+emerged as a leader in standardizing agentic commerce, co-developing the 
+Universal Commerce Protocol (UCP) with Google and launching Agentic Storefronts, 
+which allow merchants to share product catalog information and transact across 
+major AI surfaces from a centralized Shopify integration. As commerce becomes 
+more fragmented across AI interfaces, we believe merchant complexity rises and the 
+value of Shopify’s integrated platform increases, positioning the company to benefit 
+regardless of whether demand originates from traditional storefronts, search, social, 
+marketplaces, or AI agents. 
+We believe Shopify’s position in agentic commerce is often 
+o
+misunderstood, with investors underestimating the breadth of its 
+commerce infrastructure. While some investors view Shopify primarily as a 
+website-building tool that could be disintermediated if consumer shopping 
+agents such as Muse become the primary shopping interface, we believe 
+Shopify’s value increasingly resides in the underlying commerce stack. Shopify 
+today powers merchant catalog management, inventory synchronization, 
+checkout, payments (Shop Pay), fulfillment, customer data, order 
+management, identity, and post-purchase workflows, all of which remain 
+necessary regardless of where discovery originates. In an agentic commerce 
+environment, merchants will still need infrastructure to expose products to AI 
+agents, maintain real-time inventory availability, facilitate transactions, 
+process payments, and manage fulfillment and returns. In our view, AI may 
+alter the consumer-facing discovery layer, but it does not remove the need for 
+the commerce operating system beneath it. As agentic commerce scales, we 
+believe Shopify’s role as the merchant infrastructure layer could become more 
+important, not less, positioning the company as a key enabler of commerce 
+irrespective of whether traffic originates from search, social, marketplaces, or 
+consumer agents. 
+We believe agentic commerce could strengthen Shopify’s merchant 
+o
+ecosystem by helping consumers discover smaller and emerging brands. 
+Historically, consumer discovery has been heavily influenced by marketing 
+budgets, search rankings, and marketplace positioning, often favoring larger 
+retailers and brands. By contrast, AI agents are designed to optimize for 
+consumer intent, relevance, price, and product fit, creating the potential for 
+high-quality merchants to surface regardless of size. We therefore see a 
+scenario where agentic commerce expands the long tail of commerce by 
+reducing discovery barriers and directing consumers toward lesser-known 
+merchants that best satisfy a given need. In our view, this dynamic aligns with 
+Shopify’s merchant base and could further accelerate the shift toward 
+independent brands that has already contributed to Shopify’s share gains 
+within eCommerce. 
+We believe agentic commerce could accelerate Shopify’s share gains 
+o
+versus legacy commerce platforms as AI increases the value of innovation 
+24 September 2026
+  39
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 40]
+velocity. We believe agentic commerce is increasing the urgency for 
+enterprises to move away from older commerce platforms and that Shopify 
+has been the main beneficiary of this. Shopify’s faster pace of innovation, role 
+in shaping the agentic commerce ecosystem, and Shopify’s pace of product 
+innovation has already contributed to share gains against legacy commerce 
+platforms, and agentic commerce could further widen that gap over time. 
+We think marketing spend as a percent of sales could increase as brands seek to 
+6.
+strengthen emotional connections with consumers beyond agentic 
+optimization, ensuring they remain top-of-mind rather than competing solely 
+on product attributes, price, or availability. As agentic discovery becomes more 
+prevalent, we believe brand equity and customer connection will become 
+increasingly important differentiators, particularly in categories where AI agents can 
+easily compare alternatives and recommend substitutes. As a result, companies may 
+invest more heavily in brand-building and customer engagement to influence 
+consumer preference before purchase decisions are delegated to AI-driven 
+recommendations. Storytelling is becoming even more critical. We also expect to see 
+broader bifurcation of outcomes between brands that are technology-forward in 
+optimizing for the agentic landscape and new consumer trends (which channels the 
+consumer spends their time on) vs. the average brand. We believe SN and TPR are 
+well-positioned here. 
+24 September 2026
+  40
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 41]
+Payments and FinTech: We see Networks and Modern Credit Issuers as Well-positioned for Agentic 
+Commerce 
+ 
+ 
+We view agentic commerce as a potential catalyst to accelerate eCommerce volumes, 
+which we see benefiting several areas of the payments and fintech ecosystem. First, we 
+see the card networks potentially benefiting from 1) faster eCommerce growth, 2) yield 
+enhancement from higher value added services (VAS) attach, and 3) yield enhancement 
+from consumer basket fragmentation as a result of the distribution of agentic volumes 
+across smaller merchants. Second, we see agentic commerce raising the technical bar for 
+payment processing, and believe this will reinforce existing competitive dynamics that 
+have led to a small number of eCommerce native processors taking a large share of 
+incremental eCommerce processing. Finally, we see modern consumer finance issuers as 
+benefiting from consumers opting for more flexible, cheaper, and simpler financing 
+options, making BNPL companies clear winners.  
+Card Networks: we see transaction yield opportunities, driven by 
+1.
+network-linked VAS, cyber security, and the potential for basket fragmentation 
+/ lower AOVs: We believe the global card networks (V, MA) are well positioned to 
+benefit, as we believe the network effects behind global card payments will make 
+carded payments the easiest way to catalyze agentic commerce (with both Muse and 
+Instinct as early proof points). In addition to participating in the growth of these 
+volumes, we see numerous opportunities for improved transactions yields on agentic 
+transactions. First, we see a potential for a greater number of smaller ticket sized 
+transactions as agents complete more single item transactions and fragment 
+shopping behavior across a wider range of online merchants. Thus we believe 
+transaction yields could increase due to the networks’ fixed fee per transaction 
+pricing. Second, we see numerous opportunities for higher value added services 
+(VAS) attach on volume in an agentic world, as online transactions typically carry 
+higher VAS attach. In particular, longer term, we expect the vast majority of agentic 
+transactions to ride on network tokenization services (Visa tokenization services, 
+VTS, and Mastercard Digital Enablement Suite, MDES). Finally, we see the broader 
+threat environment resulting in higher demand for fraud and identity verification 
+services, where we believe Mastercard in particular is well positioned to benefit 
+given its product investments and acquisitions in this area.  
+Payment Processors: We believe that agentic commerce will incrementally add to 
+2.
+the complexity of eCommerce payment processing, creating a new lens to measure 
+authorization rates and the quality of technical integrations. We believe this is likely 
+to reinforce existing competitive dynamics, which has historically favored modern 
+eCommerce processors such as Stripe and Adyen over incumbent processors (i.e. 
+GPN/FISV) that have built their platforms through numerous acquisition and have 
+lost share in eCommerce payments over the long run. While we don’t see agentic 
+commerce as intrinsically negative for PayPal, as we believe that consumer choice of 
+wallet will likely drive volumes (just as they do currently in eCommerce), we do not 
+see competitive dynamics improving for PayPal in an agentic world, absent 
+structural changes in the company’s competitive positioning and 
+merchant/consumer value proposition. However, we acknowledge the importance of 
+24 September 2026
+  41
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 42]
+tying agents and the associated payment credentials to the end consumer, and while 
+we believe these linkages will likely be handled at the card network level (through 
+agentic tokens) longer term, in the near term, PayPal’s two-sided ecosystem likely 
+has strategic value in agentic commerce. We view PYPL’s recent enablement within 
+Muse AI by Meta as consistent with this view. 
+Consumer Fintech: We believe consumer choice will continue to dictate the 
+3.
+payment method at checkout, meaning that consumers that typically spend on their 
+preferred rewards credit card (or their choice of debit card) will mostly continue to 
+do so for agentic commerce payments. However, on the margin, we believe that 
+consumers (and their agents) may elect to choose cheaper and simpler forms of 
+financing at the point of sale when faced with the need for financing to complete a 
+purchase.  As such, we believe BNPL providers (AFRM and KLAR in particular) 
+could be beneficiaries of consumer having greater ability to optimize financing 
+at the point of sale. We expect BNPL companies to be available through agentic 
+surfaces over time, leading with their existing wallet integrations as well as 
+direct integrations.  
+Spotlight on Network Risk and Cybersecurity product portfolios 
+We believe value-added services offered by the payment networks (V and MA) will be 
+key products that support fraud prevention when agentic transaction adoption 
+accelerates. Visa has invested billions over the last several years to lay the foundational 
+layer of ‘Visa as a Service’ while Mastercard indicates that a key differentiator of its 
+business is that it can drive 40% more fraud detection from its AI-powered Decision 
+Intelligence. Both are positioned to provide valuable insights to clients based on unique 
+data sets. We believe the scale of the networks gives V and MA the right to sell products 
+in these markets and provides an optimal solution to their acquiring and issuing clients, 
+creating a suite of sticky mission critical products. We estimate that a 5% acceleration 
+of V/MA’s cybersecurity related value added services would drive a 90bps/ 200bps 
+acceleration VAS growth and 20bps / 80bps acceleration in total net revenue 
+respectively.
+24 September 2026
+  42
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 43]
+ 
+ 
+Exhibit 27: Overview of Visa Value-Added Services revenue mix 
+Risk & Security Solutions
+Brief Description
+Transaction Risk
+Visa Advanced Authorization (VAA)
+Network-agnostic, AI-driven risk scoring solution to identify and prevent potential fraud across both Visa and non-Visa payment networks
+Visa Risk Manager (VRM)
+Comprehensive issuer decisioning platform working alongside VAA to mitigate fraud risk while maximizing legitimate transaction authorizations
+Decision Manager
+Enterprise transaction risk solution using real-time AI analytics to assist sellers and acquirers in detecting and preventing payment acceptance fraud
+Visa Deep Authorization (VDA)
+AI-powered risk scoring tool designed specifically for card-not-present (CNP) ecommerce payments, utilizing deep learning models to improve fraud detection
+Visa Protect for A2A
+Real-time fraud prevention engine tailored for non-card payment rails (A2A, P2P wallets, RTP) that automotically blocks fraudulent transfers
+Featurespace
+Leverages adaptive ML and real-time behavioral analytics to monitor transaction risk and protect FIs from complex fraud, scams, and financial crime 
+Agent Score*
+Evaluate merchant's digital storefronts for agentic commerce readiness to ensure AI agents can navigate sites and complete purchases independently
+Visa AR Manager Integration*
+AI-powered B2B payment reconciliation that automatically matches incoming payments with open invoices to minimize processing exceptions
+Authentication
+Cardinal Commerce
+Payment authentication services, identity verification, and EMV 3-D Secure orchestration across rails to help merchants confirm legitimate online buyers
+Visa Secure
+Global authentication framework powered by the EMV 3-D Secure protocol enabling real-time risk data exchange between merchants and issuers
+Visa Trusted Agent Protocol (VTAP)*
+Agentic commerce framework to authenticate AI agents and distinguish between legitimate agents and malicious bots
+Agentic Directory*
+Centralized registry of authenticated, verified AI agents and participating merchants to engage in trusted transactions
+Cybersecurity
+Enumeration
+Cybersecurity suite incorporating tools designed to detect and block automated, programmatic testing of payment data elements
+Device Protection
+Utilizing device-based biometrics and passkeys to secure  endpoints and streamline user authentication experiences.
+BioCatch
+Specializes in behavioral biometrics, analyzing over 3,000 data points to distinguish legitimate users from fraudsters even before the transaction is initiated
+Visa Vulnerability Agentic Harness (VVAH)*
+Open-source, AI powered framework that identifies code vulnerabilities and automatically generates validated remediation steps 
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 28: Overview of Mastercard Value-Added Services revenue mix 
+Security Solutions
+Brief Description
+Cybersecurity and Risk Management
+Mastercard Threat Intelligence
+Network visibility and cyber threat intelligence to help issuers and acquirers detect attacks using dedicated fraud prevention teams and map attack surfaces
+RiskRecon
+Automated TPRM platform that continuously monitors public-facing IP assets to deliver passive security ratings and vulnerability assessments
+Recorded Future
+Threat intelligence platform leveraging real-time threat data, open-source intelligence, and technical telemetry to automate threat detection
+Cyber Front
+Breach and Attack Simulation (BAS) framework executing continuous threat emulations to quantitatively evaluate security control efficacy
+Cyber Quant
+Quantitative risk assessment engine that models breach probability and financial loss vectors aligned with NIST and ISO security standards
+Baffin Bay Networks
+Cloud-native threat protection platform providing automated mitigation of Distributed Denial of Service (DDoS) and application-layer attacks
+Identity and Authentication Solutions
+Ekata
+Identity verification API engine analyzing dynamic global telemetry (email, phone, address, IP) to calculate identity risk scores during customer onboarding
+NuData Security
+Analytics system evaluating biometric signals - such as keystroke dynamics and touch interaction - to block botnets and account takeover attacks
+Verifiable Intent
+Co-developed with GOOG to deliver cryptographic credentials for AI agent purchases
+Mastercard Identity Check
+MV 3-D Secure (3DS) authentication solution leveraging contextual risk scoring, biometrics, and dynamic multi-factor authentication
+Scam Protect
+AI-driven suite combining open banking connectivity, behavioral biometrics, and network telemetry to detect fraud
+AI Decisioning, Risk Scoring and Network Protection
+Decision Intelligence / Decision Intelligence Pro
+Fraud scoring engine utilizing recurrent neural networks (RNNs) to evaluate transaction context
+Brighterion
+AI  / ML for fraud decisioning, AML monitoring, and credit risk scoring
+SafetyNet
+Autonomous network defense layer evaluating real-time transaction anomalies and distributed BIN attack surges
+Consumer Risk Fraud (CFR)
+ML routing model deployed on real-time A2A rails to identify fraudulent transfers prior to settlement
+Rules Cartridges and Rules Discovery
+Risk cartridges and visual data discovery tools that provide rules and pattern identification to augment neural network decisioning
+Merchant and Portfolio Control Platforms
+Mastercard Merchant Trust Services
+Merchant monitoring combining web scraping, transaction anomaly detection, and risk intelligence to evaluate merchant integrity
+Mastercard Credit Intelligence
+Credit decisioning engine integrating open banking data, network txn history, and predictive modeling for dynamic credit risk underwriting
+Mastercard in Control
+Authorization in real-time rule enforcement for spending caps, MCC restrictions, and geographic boundaries at the card or token level
+Onboard Risk Check
+Acquirer underwriting tool analyzing merchant domain riskand regulatory compliance flags to expedite onboarding
+Dispute Mitigation and Resiliency Services
+Ethoca
+Dual-purpose dispute platform delivering Ethoca Alerts for pre-chargeback merchant deflection and Ethoca
+Consumer Clarity
+Embedding merchant receipts into banking channels
+Mastercom
+Centralized dispute management platform automating claim lifecycles, chargeback processing, and inter-bank evidence exchange via RESTful APIs
+First-Party Trust Program
+Standardized protocol enabling merchants to pass detailed delivery and identity telemetry into authorization flows to combat first-party friendly fraud
+Stand-in-Processing (SITP)
+Backup authorization engine that evaluates and approves transactions using issuer-configured parameters during primary host outages
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+ <⌀
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 44]
+Business Services: Identity, Fraud and Credit Infrastructure: EFX, TRU, FICO 
+ 
+ 
+Agentic commerce represents longer-duration optionality rather than a quantified 
+earnings driver for identity, fraud and credit infrastructure providers, with the strongest 
+potential tied to incremental verification and decision activity. We see the most 
+identifiable potential monetization path in FICO Software if agent-led financing and 
+payment activity increases the number and complexity of automated decisions. EFX has 
+the broadest potential exposure across consumer identity, merchant verification, 
+employment, income and credit data, and TRU offers differentiated capabilities in 
+persistent identity resolution and digital identity and network risk. Payment networks, 
+issuers, wallets and agent platforms will continue to control agent credentials, 
+tokenization and transaction authorization, limiting the need for outside verification on 
+lower-risk tokenized purchases. The opportunity for EFX, TRU and FICO should therefore 
+concentrate around higher-risk events such as new account linkages, unfamiliar 
+merchants, financing requests or material changes in an agent’s delegated authority. The 
+central investor question is whether these events create incremental paid decisions or 
+shift verification and decisioning already occurring through existing digital workflows. 
+EFX has the broadest exposure across identity, merchant verification and 
+1.
+underwriting data. Kount 360 and the company’s identity-proofing, digital identity 
+and synthetic-fraud capabilities could help issuers, wallets, platforms and lenders 
+evaluate the consumer behind an agent credential when higher-risk changes occur. 
+EFX also has the most direct merchant-verification exposure among the three 
+companies through its business, principal, taxpayer and payment-account 
+verification capabilities, which could support transactions involving unfamiliar 
+counterparties. Consumer credit data and The Work Number provide additional 
+exposure if agents generate more prequalification and financing decisions during 
+product discovery. This breadth gives EFX exposure across multiple identity, fraud 
+and credit decision points. Revenue contribution will depend on whether clients 
+purchase incremental checks or use existing products more frequently, as opposed 
+to shifting current verification activity into a new channel. 
+TRU is best positioned in persistent identity linkage and digital-network risk. 
+2.
+TruValidate, the company’s identity graph and Neustar-derived capabilities can 
+connect consumers across physical and digital identifiers, with document, device, IP 
+and fraud signals providing additional context when account relationships or identity 
+attributes change. This context could become more valuable as authorized agents 
+operate through shared cloud infrastructure and at machine speed, reducing the 
+standalone usefulness of IP location, navigation patterns, session velocity and other 
+traditional browser signals. TRU could also help identify common digital 
+infrastructure connecting apparently unrelated merchants, although this represents 
+a narrower opportunity than conventional business verification. We believe TRU has 
+differentiated capabilities where agentic commerce requires institutions to connect 
+the underlying consumer with surrounding accounts, devices and digital activity. 
+Revenue contribution will depend on whether this additional context generates new 
+paid decisions or greater product attachment instead of remaining embedded within 
+existing fraud workflows. 
+24 September 2026
+  44
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 45]
+FICO could benefit primarily through Software as automated fraud and 
+3.
+financing decisions increase. Agents may eventually evaluate financing together 
+with product prices and merchant terms, but lenders will continue to determine 
+eligibility, credit limits, pricing and approval. FICO Scores would remain a 
+standardized borrower-risk input, with FICO Platform allowing lenders to combine 
+scores, bureau attributes, predictive models, business rules and pricing strategies 
+within governed decisioning workflows. Agent-led shopping could generate more 
+eligibility, pricing and offer decisions before the consumer selects a financing option, 
+increasing demand for automated underwriting, strategy testing, optimization, 
+monitoring and explainability. Falcon Fraud Manager and Enterprise Fraud Solution 
+provide additional exposure if automated payment activity increases the need to 
+identify anomalies across transactions, customers, products and channels. We see 
+greater potential in decisioning and fraud Software than in incremental Scores 
+volumes, with revenue contribution dependent on greater decision activity, 
+additional module adoption or deeper deployment of FICO Platform. 
+ 
+EFX and TRU: Identity and risk inputs 
+EFX and TRU provide complementary identity and risk capabilities that could support 
+agentic commerce. TRU’s TruValidate suite combines identity verification, document 
+verification, device and IP intelligence, fraud analytics and identity-resolution 
+capabilities supported by the company’s identity graph and Neustar assets. EFX’s Kount 
+360 platform combines identity proofing, digital identity trust, document verification, 
+synthetic-identity detection and digital-risk signals derived from devices, email 
+addresses, payment history and other attributes. The companies have differentiated 
+merchant-risk capabilities, with EFX providing business, principal, taxpayer and 
+ 
+Exhibit 29: EFX, TRU and FICO address different layers of agentic identity, fraud and credit decisions 
+Potential decision
+EFX
+TRU
+FICO
+Potential buyer
+Revenue question
+Is the consumer 
+legitimate?
+Identity proofing, 
+synthetic-identity 
+detection and Kount 
+digital-risk signals
+Identity graph, 
+document 
+verification, device 
+intelligence and IP 
+signals
+Limited direct 
+exposure; can apply 
+third-party identity 
+inputs within fraud 
+decisions
+Issuer, wallet, agent 
+platform or lender
+Incremental 
+verification or 
+existing workflow?
+Is the merchant 
+legitimate?
+Business, principal, 
+taxpayer and 
+payment-account 
+verification
+Device, IP and 
+relationship analysis 
+across digital 
+storefronts
+Limited direct 
+exposure
+Acquirer, network, 
+commerce platform 
+or agent operator
+New verification at 
+discovery or reliance 
+on existing KYB 
+controls?
+Is the transaction 
+anomalous?
+Consumer, account 
+and digital-risk 
+signals
+Persistent identity 
+and digital-network 
+context
+Falcon and 
+Enterprise Fraud 
+decisioning
+Issuer, processor or 
+financial institution
+Greater decision 
+activity or additional 
+product adoption?
+Should financing be 
+offered?
+Credit, income, 
+employment, identity 
+and affordability data
+Credit, affordability, 
+identity and fraud 
+data
+Scores, Platform, 
+business rules, 
+pricing and decision 
+governance
+Lender or financing 
+provider
+Greater data and 
+decisioning activity 
+per completed 
+purchase?
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  45
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 46]
+payment-account verification and TRU providing device, IP and relationship intelligence 
+around digital storefronts. These capabilities could help clients assess the consumer 
+behind an agent credential, identify changes in identity or account risk and evaluate 
+unfamiliar counterparties when higher-risk events occur. Agentic commerce could 
+therefore expand the application of existing EFX and TRU products beyond traditional 
+onboarding and account-access workflows. 
+ 
+FICO: Fraud and credit decisioning 
+FICO provides fraud and credit decisioning capabilities that could support a larger 
+number of automated interactions in agentic commerce. FICO Scores provide lenders 
+ 
+Exhibit 30: Existing EFX and TRU capabilities could support agentic identity and fraud decisions 
+Company and capability
+Existing function
+Potential agentic application
+TransUnion
+TRU Identity Verification
+Verifies consumer-provided information using 
+credit, non-credit, public and digital identity 
+data
+Assess the consumer behind an agent 
+credential when higher-risk changes occur
+TRU Identity Graph / 
+Neustar OneID
+Connects physical and digital identifiers into a 
+persistent identity view
+Link consumers with accounts, devices and 
+digital activity surrounding agent-led 
+transactions
+TRU Document Verification
+Authenticates government-issued 
+identification
+Support step-up verification for higher-risk 
+changes or financing requests
+TRU Synthetic Fraud Model 
+/ Fraud Alerts
+Identifies synthetic, altered or high-risk 
+identities
+Detect synthetic-identity risk in agent 
+provisioning, account linkage or financing
+TRU Device Risk / IP 
+Intelligence
+Assesses device reputation, account linkages 
+and network characteristics
+Provide context when legitimate agents 
+operate through shared cloud infrastructure
+TRU Fraud Analytics
+Identifies relationships across identities, 
+devices and transactions
+Detect connected risks across consumers, 
+accounts and digital storefronts
+Equifax
+EFX Kount 360
+Combines identity, payment-fraud data, 
+analytics and decision workflows
+Support identity and digital-risk assessment 
+around agent-led activity
+EFX Identity Proofing / 
+Digital Identity Trust
+Assesses whether identity information 
+belongs to the represented consumer
+Evaluate the underlying consumer behind an 
+authenticated agent
+EFX Document Verification
+Authenticates government-issued 
+identification
+Support selective step-up verification
+EFX Synthetic Identity Risk
+Identifies synthetic-identity risk across the 
+customer lifecycle
+Assess higher-risk account linkages and 
+financing requests
+EFX Digital Risk Screening
+Uses device, email and digital-interaction 
+signals
+Identify account-opening, access and account-
+takeover risk
+EFX Business / Account 
+Verification
+Validates businesses, principals, taxpayer 
+information and commercial accounts
+Assess unfamiliar merchants and match 
+payment destinations to verified entities
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  46
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 47]
+with a standardized measure of borrower risk, and FICO Platform combines credit data, 
+predictive models, business rules, pricing strategies and governance within real-time 
+decisioning workflows. Falcon Fraud Manager supports transaction monitoring and 
+fraud decisioning across cards, account-to-account payments, card-not-present 
+eCommerce and other payment channels. Enterprise Fraud Solution connects fraud 
+intelligence across customer interactions, accounts, products and channels, allowing 
+institutions to assess risk beyond an individual event. These capabilities could become 
+more relevant if agents generate financing requests and payment activity across multiple 
+merchants, products and channels, increasing the need to apply lender policies, evaluate 
+borrower risk and identify anomalous transactions in real time. We therefore see greater 
+potential in FICO’s decisioning and fraud Software than in incremental Scores volumes. 
+ 
+Exhibit 31: Existing FICO capabilities could support agentic fraud and credit decisions 
+Company and capability
+Existing function
+Potential agentic application
+FICO Scores
+Standardized measures of consumer credit 
+risk used by lenders to support underwriting, 
+pricing and account-management decisions
+Support borrower-risk assessment when 
+agents initiate financing comparisons or 
+applications
+FICO Platform
+Enterprise platform combining data, 
+predictive models, business rules, 
+optimization and orchestration across credit 
+and fraud decisions
+Govern and execute a larger number of real-
+time fraud, eligibility, pricing and offer 
+decisions
+Credit Decisioning and 
+Optimization
+Automates eligibility, underwriting, pricing and 
+offer decisions under lender-defined policies 
+and constraints
+Evaluate and optimize lender-approved 
+financing alternatives generated through 
+agent-led commerce
+FICO Falcon Fraud 
+Manager
+Provides real-time fraud detection, behavioral 
+profiling and case management across cards, 
+account-to-account payments and other 
+transaction channels
+Identify anomalous automated payment 
+activity using transaction, customer and 
+channel context
+FICO Enterprise Fraud 
+Solution
+Connects fraud intelligence across customer 
+interactions, accounts, products and 
+channels
+Assess agent-led activity using a broader 
+customer view instead of evaluating each 
+transaction independently
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  47
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 48]
+Live event ticketing: Live Nation, StubHub, and Other 3rd Party Ticketing Platforms 
+ 
+ 
+Agentic commerce has the potential to reshape discovery, purchasing behavior, and 
+distribution economics across live-event ticketing, but the impact is likely to differ 
+materially between primary and secondary ticketing platforms. In our view, the main 
+beneficiaries of agentic commerce are likely to be primary ticketing platforms, while 
+secondary marketplaces face a more mixed outcome. In terms of opportunities, we 
+expect agentic commerce to improve the efficiency and effectiveness around how 
+ticketing platforms recommend inventory to customers, improving discovery and 
+conversion rates. In terms of risks, agentic commerce could i) lead to increased pricing 
+transparency, resulting in the commoditization of platforms and inventory, resulting in 
+service fee pressure, and ii) limit the opportunity around ancillary services and 
+advertising monetization. On net, we believe primary ticketing platforms are best 
+positioned to benefit from the opportunities around agentic commerce due to their 
+access to differentiated inventory, while secondary ticketing platforms could be more 
+exposed to the risks due to their commoditized inventory. 
+We see this dynamic driven by the following puts & takes: 
+(+) Agentic commerce could improve the ease of ticket discovery for both 
+n
+primary and secondary ticketing platforms. A near-term benefit of agentic 
+commerce may be that it offers customers a simpler, more personalized discovery 
+experience for consumers. Rather than navigating multiple websites, marketplaces, 
+and search results, consumers can increasingly rely on AI assistants to identify 
+relevant events, compare inventory, and surface ticket options based on factors such 
+as price, location, artist, or venue preference. For example, Ticketmaster’s 
+integration with Meta’s Muse illustrates how AI-powered discovery can be layered on 
+top of existing ticketing infrastructure (link). At the 2026 Goldman Sachs 
+Communacopia conference, StubHub similarly described AI as an incremental 
+customer acquisition channel, noting that it is already working with LLM providers 
+and can leverage marketplace data, such as pricing preferences, seating preferences, 
+and historical purchasing behavior, to deliver more relevant recommendations. In 
+our view, agentic commerce has the potential to reduce friction in the ticket-buying 
+journey and make event discovery more efficient for consumers. 
+(+) Agentic buying could increase sell-through of tickets and venue utilization. 
+n
+As a result of improving discovery, agentic commerce could help ticketing platforms, 
+promoters, and venue operators increase attendance and sell-through for events 
+that have excess capacity. Live Nation has previously stated that 95% of concerts do 
+not sell out, with 60-70% sell through at amphitheaters and 65-75% at theaters. 
+Especially for smaller venues and artists, AI assistants could help surface these 
+events to consumers who are actively looking for things to do in a given city or time 
+window, even if they are not searching for a specific artist. In this way, agentic 
+commerce would better service the currently outsized demand without the need for 
+incremental concert supply, which also improves the fan experience (where fans are 
+currently frustrated when they can’t get live concert tickets). We believe agentic 
+commerce has the potential to be net additive to event sell-through by reducing 
+friction in the ticket-buying journey, expanding top-of-funnel discovery, and helping 
+24 September 2026
+  48
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 49]
+connect consumers with relevant events they may not have otherwise found. 
+(+/-) Opportunities & risks for customer acquisition and search optimization 
+n
+costs, particularly for secondary ticketing platforms. Secondary ticketing 
+marketplaces operate in a competitive customer acquisition environment driven by 
+strong purchase intent but also fairly commoditized inventory. As a result, customer 
+acquisition costs represent a meaningful expense for many secondary operators, 
+including companies such as StubHub, SeatGeek, and Vivid Seats, which have 
+historically invested heavily in performance marketing and paid search to drive 
+traffic. Primary ticketing platforms like Ticketmaster, on the other hand, generally 
+secure differentiated inventory through contractual relationships with artists and 
+venues who help promote the events, reducing their reliance on paid customer 
+acquisition.  
+(+ Near-term) Customer acquisition efficiency could represent a 
+o
+near-term margin opportunity. As agentic discovery gains adoption, 
+consumers may increasingly bypass traditional search (e.g., Google) and 
+navigate directly through AI-powered assistants. If agentic channels can 
+deliver consumers at a lower cost than today’s paid-search ecosystem, 
+secondary marketplaces could benefit from meaningful reductions in 
+customer-acquisition expense, resulting in margin expansion. We note that 
+agentic commerce would not increase the number of concerts, games, or 
+tickets available for sale, but instead, we believe it has the potential to 
+improve sell-through for the long-tail of events that do not sell out by 
+improving discovery via personalized recommendations. The key question is 
+whether agent-based distribution proves less expensive (i.e. lower take rates) 
+than the current search-driven model, or simply replaces one distribution 
+intermediary with another. 
+(- Long-term) Rising AI platform pricing power could offset customer 
+o
+acquisition cost savings. Agentic commerce could reduce reliance on 
+traditional paid search, but the key question is whether those savings flow 
+through to ticketing platforms over the long-term. As AI assistants increasingly 
+become the starting point for ticket discovery, platforms may need to pay 
+OpenAI, Google, Meta, Perplexity, or other agent ecosystems to promote their 
+inventory, similar to how they bid for visibility in search today. While these 
+channels could initially offer a lower-cost source of customer acquisition, we 
+believe AI platforms are likely to gain pricing power as consumer usage grows 
+and dependence on agent-driven discovery increases. As a result, what begins 
+as a customer acquisition cost benefit could evolve into a new distribution toll, 
+with ticketing platforms paying referral fees, placement fees, or commissions 
+to secure visibility within AI-generated recommendations. In our view, the 
+long-term debate is less about whether paid search is disrupted and more 
+about whether AI platforms ultimately capture a greater share of ticketing 
+economics than today’s search ecosystem. 
+(-) Agentic price comparison could accelerate the commoditization of 
+n
+undifferentiated inventory. The combination of all-in pricing and AI-driven 
+24 September 2026
+  49
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 50]
+comparison allows agents to evaluate identical inventory across marketplaces with 
+minimal friction, making it easier for consumers to identify the lowest-priced option 
+regardless of platform. As price transparency increases, marketplace differentiation 
+may shift away from brand and marketing, and toward measurable factors such as 
+price and fulfillment reliability. This dynamic could be particularly impactful in 
+secondary ticketing, where inventory is often highly commoditized and the same 
+seat type may be listed across multiple marketplaces, ultimately pressuring the 
+platform’s ability to sustain service fees. In our view, platforms that control inventory 
+and exclusive supply relationships like Ticketmaster are likely to better positioned, 
+while secondary platforms that compete for consumer traffic like Stubhub could face 
+greater pressure. 
+(-) Ancillary and advertising monetization could face incremental pressure from 
+n
+agentic commerce. Ancillary products such as VIP upgrades, parking, ticket 
+insurance, food & beverage pre-orders, merchandise bundles, and seat upgrades are 
+typically sold throughout the checkout journey and benefit from consumers actively 
+navigating a merchandised purchase funnel. As agentic commerce gains adoption, 
+however, consumers may increasingly delegate ticket purchases to agents operating 
+against a specific set of parameters. In that scenario, the agent’s objective is to fulfill 
+the user’s request rather than browse incremental offers, which could result in lower 
+ancillary attach rates, particularly when add-on purchases increase total spend 
+beyond a user’s pre-defined budget. While more sophisticated agents may 
+eventually surface personalized upsell opportunities, we believe the near-term risk is 
+that agentic transactions bypass portions of the funnel that have historically 
+supported high-margin ancillary revenue. On the sponsorship & advertising piece, 
+sponsored listings and promoted inventory have historically been high-margin 
+revenue streams because consumers browse ranked search results and marketplaces 
+can monetize in-platform ad placement. If agents increasingly rank inventory based 
+on factors such as price, availability, and user preferences (and users do not view the 
+platform ads), the value of paid placement on ticketing platforms could be 
+pressured.
+24 September 2026
+  50
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 51]
+Valuation 
+ 
+ 
+GOOGL: We are Buy rated on GOOGL. Our $435 12-month price target is based on an 
+equal blend of (1) EV/GAAP EBIT applied to our NTM + 1 year estimates and (2) a 
+modified DCF using EV/FCF-SBC multiple applied to our NTM + 4 years estimates 
+discounted back 3 years. 
+Risks to our Buy rating include: a) competition of product utility levels and advertising 
+dollars; b) headwinds to monetizable (product) search from industry disruption; c) 
+shifting media consumption habits; d) heavy investments depress operating margins for 
+longer than our forecasts; e) no/low levels of incremental shareholder returns going 
+forward; & f) regulatory scrutiny and industry practices altering the business model’s 
+prospects. In addition, Alphabet is exposed to the volatility caused by the global 
+macroeconomic environment and investor risk appetite for growth stocks. 
+AMZN: Our 12m PT of $375 is based on a sum-of-the-parts methodology: a) 16x 
+EV/GAAP EBIT multiple applied to our North America segment NTM + 1 estimates; b) a 
+1.25x EV/Sales multiple applied to our International segment NTM + 1 estimates; & c) a 
+29.0x EV/GAAP EBIT multiple applied to our AWS segment NTM + 1 estimates. 
+Key risks include: (-) Any impact to eCommerce or Cloud growth from competition; lack 
+of success in scaling high margin businesses including Advertising, Cloud, third-party 
+selling and the subscription business; investments across any array of initiatives creating 
+a headwind to gross or operating margin; any product or platform changes necessary to 
+comply with changes to the global regulatory environment; exposure to the volatility 
+caused by the global macroeconomic environment and investor risk appetite for growth 
+stocks. 
+META: We reiterate our Buy rating and 12-month price target of $725. Our $725, 
+12-month price target is based on an equal blend of (1) 26.0x EV/GAAP EBIT applied to 
+our NTM + 1 year estimates and (2) a modified DCF using 45.0x EV/FCF-SBC multiple 
+applied to our NTM + 4 years estimates discounted back 3 years. Risks to our Buy rating 
+include: a) competition for user growth, user engagement & advertising dollars across an 
+array of incumbent and emerging Internet, media and commerce companies; b) large 
+investments in long-tailed initiatives depress operating margins for longer than our 
+forecasts; c) no/low levels of incremental shareholder returns going forward; d) 
+regulatory scrutiny and industry practices altering the business model’s prospects; e) 
+potential antitrust scrutiny could prove to be a headwind to M&A aspiration (to add 
+talent and product innovation inorganically) and/or result in a break-up or dis-synergies 
+of prior period M&A activity; & f) inability to monetize upside optionality opportunities 
+(messaging layer, social commerce/shopping, Oculus/Metaverse). In addition, Meta is 
+exposed to the volatility caused by the global macroeconomic environment and investor 
+risk appetite for growth stocks. 
+EFX: Our $199 12-m price target is based on 17.5x NTM + 1YR EPS of $11.40. The target 
+multiple comes at a premium to the Info Services peer group median in the context of 
+government tailwinds partially mitigated by consumer credit uncertainty and 
+decelerating mortgage revenue growth post FICO score distribution changes. Risks 
+include macro and interest rate risk, subprime consumer credit origination headwinds 
+and mortgage origination volume volatility. Potential positives include a rebound in 
+24 September 2026
+  51
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 52]
+mortgage origination volumes, expansion in non-mortgage credit inquiries, rapid 
+product introductions, further adoption of EWS offerings and healthy international 
+expansion. 
+FICO: Our $1,548 12-m price target is based on 24.0x NTM + 1YR EPS of $64.51. The 
+target multiple comes at a premium to the Info Services peer median to reflect FICO’s 
+stronger growth and margin profile resulting from its pricing power in the Scores 
+business. Risks include an inability to sustain elevated pricing increases in the Scores 
+business, competitive threats, a macro and credit market downturn, and a lack of 
+traction with FICO’s decision management software transformation. 
+TRU: Our $89 12-m price target is based on 10.0x NTM + 1YR EPS of $18.10. The target 
+multiple comes below the Info Services peer median to reflect near-term uncertainty 
+around CV growth trends and competitive risks from AI. Risks include AI-based 
+competitive threats, softening client demand in response to macro headwinds, tech 
+vendor renewal challenges, reduced federal government spending, budget pressures in 
+tariff-affected industries, financial leverage and FX risk. Potential positives include an 
+improving client spending environment, healthier renewal and pricing dynamics, and 
+steadier government demand. 
+V: Our 12-month price target is $438 based on a 27x Q5-Q8 P/E multiple. Key downside 
+risks include weaker macro environment, slower than expected cross border recovery, 
+competition, and unfavorable regulation. 
+MA: Our 12-month price target is $701 based on a ~28x multiple on our Q5-Q8 EPS 
+estimates. Key downside risks include weaker macro environment, slower than expected 
+cross border recovery, competition, and regulation. 
+SHOP: We are Buy rated. Our 12-month target of $194 is based on 63x our Q5-Q8 uFCF 
+estimates. Key risks include a worsening consumer landscape, increased investments not 
+translating to higher durable growth, potential margin dilution from higher investments 
+and higher competition. 
+LYV: We maintain our Buy rating and our 12-m price target of $210. Our price target 
+remains based on an equal-weighted average of three valuation methodologies: 21.0x 
+2027E EV/GSe Adjusted EBITDA, 60.0x 2027E P/GSe Free Cash Flow, and a DCF using a 
+9.5% WACC and a 5.7% TGR. Risks: A weaker economic and consumer spending 
+backdrop, change in consumer preferences in out of home entertainment, increased 
+competition for talent from promoters, and higher interest rates. 
+STUB: We maintain our Buy rating and our 12-month price target of $16 which is based 
+on an equal blend of: (1) EV/GAAP EBITDA applied to our NTM +1 estimates; and (2) a 
+modified DCF using an EV/FCF-SBC multiple applied to our NTM +4 estimates 
+discounted back 3 years. 
+Downside risks include: Industry growth (slower than expected), elevated levels of 
+competition, rate of execution against key growth initiatives, the regulatory 
+environment, interest rate risk & capital structure, and STUB’s ownership concentration. 
+In addition, StubHub is exposed to broader macroeconomic conditions which could 
+adversely impact the business. 
+WMT: We are Buy rated on WMT. Our 12-month price target is $132, based on our 
+risk-reward framework with downside/base/upside relative P/E multiples of 
+24 September 2026
+  52
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 53]
+160%/165%/170%. 
+Downside risks: slowdown in economic activity; more intense pricing environment; 
+global macro/fx volatility; inability to use expense leverage to offset investments in 
+e-commerce/pricing; pressure from wages or transportation costs; impact from tariffs 
+SN: We are Buy rated on SN with a $204, 12-month price target based on 17.5x Q5-Q8 
+EV/EBITDA valuation methodology. Key downside risks include; (1) Wholesale 
+concentration; (2) Slowing innovation; and (3) Corporate structure. 
+TPR: We are Buy rated on TPR with a $169, 12-month price target based on 14.25x 
+Q5-Q8 EV/EBITDA valuation methodology. Key downside risks include (1) Weaker top 
+line momentum; (2) Higher levels of industry promotionality; (3) Volatility / disruptions in 
+China’s consumer backdrop.
+24 September 2026
+  53
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 54]
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, Eric Sheridan, Will Nance, George K. Tong, CFA, Kate McShane, CFA, Bonnie Herzog, Brooke Roach, CFA, Leah Jordan, CFA, Gabriela Borges, CFA and 
+Stephen Laszczyk, hereby certify that all of the views expressed in this report accurately reflect our personal views about the subject company or 
+companies and its or their securities. We also certify that no part of our compensation was, is or will be, directly or indirectly, related to the specific 
+recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: Eric Sheridan Goldman Sachs & Co. LLC, Will Nance Goldman Sachs & Co. LLC, George K. Tong, CFA Goldman Sachs & Co. LLC, 
+Kate McShane, CFA Goldman Sachs & Co. LLC, Bonnie Herzog Goldman Sachs & Co. LLC, Brooke Roach, CFA Goldman Sachs & Co. LLC, Leah Jordan, CFA 
+Goldman Sachs & Co. LLC, Gabriela Borges, CFA Goldman Sachs & Co. LLC, Stephen Laszczyk Goldman Sachs & Co. LLC. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+The rating(s) for Live Nation Entertainment Inc. is/are relative to the other companies in its/their coverage universe: Cinemark Holdings, Funko 
+Inc., Hasbro Inc., IMAX Corp., Liberty Formula One, Live Nation Entertainment Inc., Madison Square Garden Entertainment Corp., Mattel Inc., Sirius XM 
+Holdings, Sphere Entertainment Co, TKO Group, Universal Music Group, Warner Music Group, iHeartMedia Inc.  
+The rating(s) for SharkNinja, Inc. and Tapestry Inc. is/are relative to the other companies in its/their coverage universe: Amer Sports Inc., 
+Burlington Stores Inc., Canada Goose Holdings, Capri Holdings, Crocs Inc., Deckers Outdoor Corp., FIGS Inc., Gap Inc., Kohl’s Corp., Kontoor Brands Inc., 
+Levi Strauss & Co., Lululemon Athletica Inc., Macy’s Inc., Nike Inc., PVH Corp., Ralph Lauren Corp., Ross Stores Inc., Savers Value Village Inc., SharkNinja, 
+Inc., TJX Cos., Tapestry Inc., Torrid Holdings Inc., Under Armour Inc., Urban Outfitters Inc., VF Corp., Victoria’s Secret & Co., Warby Parker Inc., YETI 
+Holdings  
+The rating(s) for Alphabet Inc., Amazon.com Inc., Meta Platforms Inc. and StubHub Holdings is/are relative to the other companies in its/their 
+coverage universe: Airbnb Inc., Alphabet Inc., Amazon.com Inc., Angi Inc., AppLovin Corp., Bending Spoons S.p.A., Booking Holdings Inc., Bumble Inc., 
+Chewy Inc., Clear Secure Inc., Coursera Inc., DoorDash Inc., DraftKings Inc., Duolingo Inc., Ethos Technologies Inc., Etsy Inc., Expedia Group, Fiverr 
+International Ltd., Frontdoor Inc., Genius Sports Ltd., GoodRx Holdings Inc., Grindr Inc., Groupon Inc., Ibotta Inc., Instacart, Liftoff Mobile Inc., Lyft Inc., 
+Match Group, MediaAlpha Inc., Meta Platforms Inc., Netflix Inc., Neutron Holdings Inc., Nextdoor Holdings, Opera Ltd., Pattern Group Inc., Peloton 
+Interactive Inc., People Inc., Pinterest Inc., Playtika, Reddit Inc., Roblox, Snap Inc., Space Exploration Technologies Corp., Sportradar Group, Spotify 
+Technology S.A., StubHub Holdings, Take-Two Interactive Software Inc., Tripadvisor Inc., Uber Technologies Inc., Unity Software Inc., Upwork Inc., 
+Wayfair Inc., Webtoon Entertainment Inc., Xometry Inc., Yelp Inc., ZipRecruiter Inc.  
+The rating(s) for Adyen NV is/are relative to the other companies in its/their coverage universe: Adyen NV, Capgemini, Dassault Systemes, Indra, 
+Nemetschek, Nexi, Ovh Groupe, SAP, SECO, Sage Group, Sinch AB, TeamViewer, Temenos, TietoEVRY, Wise Group, Worldline  
+The rating(s) for Walmart Inc. is/are relative to the other companies in its/their coverage universe: Academy Sports & Outdoors Inc., Advance 
+Auto Parts Inc., AutoZone Inc., BJ’s Wholesale Club Holdings, Bath & Body Works Inc., Best Buy Co., Bob’s Discount Furniture Inc., Boyd Group, Costco 
+Wholesale, Dick’s Sporting Goods, Dollar General Corp., Dollar Tree Stores Inc., Driven Brands Holdings, Five Below Inc., Floor & Decor Holdings, 
+Genuine Parts Co., Home Depot Inc., Lithia Motors Inc., Lowe’s Cos., National Vision Holdings, O’Reilly Automotive Inc., Ollie’s Bargain Outlet Inc., Petco 
+Health and Wellness Co., RH, Target Corp., Tractor Supply Co., Ulta Beauty Inc., Valvoline Inc., Walmart Inc., Williams-Sonoma Inc.  
+The rating(s) for Equifax Inc., Fair Isaac Corp. and TransUnion is/are relative to the other companies in its/their coverage universe: ADT Inc., 
+Bright Horizons Family, BrightView Holdings, Cintas Corp., Clarivate, CoStar Group, Equifax Inc., FactSet Research Systems Inc., Fair Isaac Corp., Gartner 
+24 September 2026
+  54
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 55]
+Inc., H&R Block Inc., Iron Mountain Inc., KinderCare Learning Cos., Korn Ferry, MSCI Inc., Manpower Group, McGraw Hill, Moody’s Corp., Phoenix 
+Education Partners, Pitney Bowes, Robert Half International Inc., Rollins Inc., S&P Global Inc., The Brink’s Co., Thomson Reuters Corp., TransUnion, UL 
+Solutions, Verisk Analytics Inc., Vestis Corp.  
+The rating(s) for Mastercard Inc. and Visa Inc. is/are relative to the other companies in its/their coverage universe: Affirm Holdings, Bill.com 
+Holdings, Block Inc., Chime Financial Inc., Fidelity National Information Services, Fiserv Inc., Flywire Corp., Global Payments Inc., Global-E Online Ltd., 
+Jack Henry & Associates Inc., Klarna Group Plc., Marqeta Inc., Mastercard Inc., NCR Voyix Corp., PAR Technology Corp., PayPal Holdings, Paymentus 
+Holdings, Remitly Global Inc., Riskified Ltd., Shift4 Payments, SoFi Technologies Inc., Toast Inc., Upstart Holdings, Visa Inc., Western Union Co.  
+The rating(s) for Shopify Inc. is/are relative to the other companies in its/their coverage universe: Adobe Inc., Akamai Technologies Inc., AvePoint, 
+Braze Inc., Check Point, Cloudflare, Commerce.com Inc., CoreWeave Inc., CrowdStrike, Datadog Inc., DigitalOcean Holdings, EverCommerce Inc., Figma 
+Inc., Fortinet, HubSpot Inc., Intuit Inc., Klaviyo, Microsoft Corp., Navan Inc., Octave Intelligence, Okta, Oracle Corp., Palantir Technologies, Palo Alto 
+Networks, SailPoint Inc., Salesforce Inc., SentinelOne, ServiceNow Inc., Shopify Inc., Snowflake Inc., Twilio Inc., Tyler Technologies Inc., Veeva Systems 
+Inc., Workday Inc., Zeta Global, Zscaler  
+Company-specific regulatory disclosures 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+ 
+As of July 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,104 equity securities. Goldman Sachs assigns stocks as Buys 
+and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Price target and rating history chart(s) 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Target price history table(s) 
+ 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+59%
+43%
+StubHub Holdings (STUB)
+SharkNinja, Inc. (SN)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+14-May-26
+16.00
+8.55
+06-Aug-26
+204.00
+179.93
+05-Mar-26
+15.00
+8.91
+29-Jul-26
+165.00
+159.22
+14-Nov-25
+45.00
+14.87
+12-Feb-26
+144.00
+129.02
+13-Oct-25
+46.00
+19.61
+04-Feb-26
+135.00
+116.18
+07-Nov-25
+129.00
+92.44
+20-Oct-25
+127.00
+92.81
+08-Aug-25
+132.00
+116.06
+21-Jul-25
+126.00
+114.81
+09-May-25
+112.00
+92.25
+22-Apr-25
+100.00
+74.47
+14-Feb-25
+133.00
+110.31
+01-Nov-24
+116.00
+89.12
+21-Oct-24
+123.00
+109.86
+09-Aug-24
+102.00
+87.64
+10-May-24
+83.00
+71.84
+25-Apr-24
+74.00
+62.79
+16-Feb-24
+59.00
+52.51
+25-Oct-23
+52.00
+40.68
+Mastercard Inc. (MA)
+Amazon.com Inc. (AMZN)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+30-Jul-26
+701.00
+577.35
+31-Jul-26
+375.00
+271.58
+30-Apr-26
+674.00
+502.92
+08-Jul-26
+335.00
+243.62
+13-Apr-26
+713.00
+508.58
+30-Apr-26
+325.00
+265.06
+29-Jan-26
+739.00
+543.73
+13-Apr-26
+275.00
+239.89
+06-Jan-26
+710.00
+580.34
+06-Feb-26
+280.00
+210.32
+30-Oct-25
+713.00
+553.68
+13-Jan-26
+300.00
+242.60
+13-Oct-25
+665.00
+559.24
+31-Oct-25
+290.00
+244.22
+24 September 2026
+  55
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 56]
+ 
+ 
+Mastercard Inc. (MA)
+Amazon.com Inc. (AMZN)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+31-Jul-25
+688.00
+566.47
+03-Oct-25
+275.00
+219.51
+14-Jul-25
+674.00
+553.02
+01-Aug-25
+240.00
+214.75
+01-May-25
+644.00
+546.63
+21-Apr-25
+220.00
+167.32
+08-Apr-25
+613.00
+479.92
+07-Feb-25
+255.00
+229.15
+02-Apr-25
+633.00
+547.38
+01-Nov-24
+240.00
+197.93
+30-Jan-25
+628.00
+566.01
+02-Aug-24
+230.00
+167.90
+09-Jan-25
+572.00
+516.40
+15-Jul-24
+250.00
+192.72
+02-Dec-24
+557.00
+531.36
+01-May-24
+225.00
+179.00
+31-Oct-24
+563.00
+499.59
+02-Feb-24
+220.00
+171.81
+14-Oct-24
+578.00
+506.66
+10-Jan-24
+200.00
+153.73
+31-Jul-24
+540.00
+463.71
+27-Oct-23
+190.00
+127.74
+12-Jul-24
+519.00
+440.11
+12-Oct-23
+175.00
+132.33
+10-Jul-24
+520.00
+433.64
+01-May-24
+517.00
+442.07
+15-Apr-24
+534.00
+459.79
+31-Jan-24
+514.00
+449.23
+10-Jan-24
+482.00
+428.27
+26-Oct-23
+433.00
+364.59
+Live Nation Entertainment Inc. (LYV)
+Shopify Inc. (SHOP)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+31-Jul-26
+210.00
+174.13
+05-Aug-26
+194.00
+144.24
+08-Jul-26
+202.00
+182.14
+06-May-26
+170.00
+105.44
+06-May-26
+192.00
+167.82
+12-Feb-26
+168.00
+110.66
+11-Mar-26
+190.00
+165.83
+04-Nov-25
+193.00
+160.94
+20-Feb-26
+175.00
+162.67
+06-Aug-25
+176.00
+154.90
+01-Jan-26
+165.00
+142.50
+08-May-25
+120.00
+94.00
+08-Dec-25
+160.00
+138.08
+21-Apr-25
+130.00
+81.64
+05-Nov-25
+162.00
+134.79
+11-Feb-25
+150.00
+123.59
+02-Oct-25
+170.00
+156.67
+12-Nov-24
+135.00
+108.92
+08-Aug-25
+168.00
+153.13
+28-Oct-24
+88.00
+79.87
+17-Jun-25
+162.00
+145.59
+07-Aug-24
+78.00
+63.89
+02-May-25
+157.00
+133.77
+22-May-24
+74.00
+58.70
+17-Apr-25
+155.00
+127.22
+09-May-24
+67.00
+62.45
+21-Feb-25
+170.00
+149.40
+14-Feb-24
+75.00
+80.67
+13-Feb-25
+166.00
+152.58
+02-Nov-23
+67.00
+59.70
+12-Nov-24
+148.00
+129.67
+24-Oct-24
+132.00
+116.45
+03-May-24
+128.00
+94.66
+23-Feb-24
+125.00
+95.32
+03-Nov-23
+122.00
+85.36
+Equifax Inc. (EFX)
+Alphabet Inc. (GOOGL)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+04-Sep-26
+199.00
+177.05
+23-Jul-26
+435.00
+317.69
+21-Jul-26
+182.00
+173.00
+08-Jul-26
+440.00
+361.92
+26-Jun-26
+173.00
+158.48
+30-Apr-26
+450.00
+384.80
+21-Apr-26
+200.00
+192.42
+05-Feb-26
+400.00
+331.25
+02-Apr-26
+192.00
+182.39
+12-Jan-26
+375.00
+331.86
+06-Feb-26
+208.00
+195.62
+30-Oct-25
+330.00
+281.48
+09-Jan-26
+235.00
+226.96
+14-Oct-25
+288.00
+245.45
+21-Oct-25
+239.00
+229.93
+24-Jul-25
+234.00
+192.17
+02-Oct-25
+243.00
+232.35
+10-Jul-25
+225.00
+177.62
+22-Jul-25
+253.00
+238.41
+25-Apr-25
+220.00
+161.96
+04-Apr-25
+255.00
+210.07
+11-Apr-25
+205.00
+157.14
+07-Feb-25
+264.00
+248.28
+05-Feb-25
+220.00
+191.33
+03-Jan-25
+273.00
+253.39
+13-Jan-25
+215.00
+191.01
+05-Dec-24
+278.00
+260.78
+30-Oct-24
+210.00
+174.46
+24 September 2026
+  56
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 57]
+ 
+ 
+Equifax Inc. (EFX)
+Alphabet Inc. (GOOGL)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+17-Oct-24
+293.00
+280.30
+14-Oct-24
+208.00
+164.96
+02-Oct-24
+312.00
+293.33
+24-Jul-24
+217.00
+172.63
+20-Aug-24
+307.00
+296.58
+08-Jul-24
+211.00
+189.03
+18-Jul-24
+277.00
+264.19
+26-Apr-24
+195.00
+171.95
+31-May-24
+246.00
+231.39
+15-Apr-24
+185.00
+154.86
+19-Apr-24
+241.00
+216.20
+31-Jan-24
+171.00
+140.10
+01-Mar-24
+276.00
+270.98
+10-Jan-24
+164.00
+142.28
+08-Feb-24
+252.00
+252.06
+04-Oct-23
+154.00
+135.24
+26-Jan-24
+241.00
+246.12
+29-Dec-23
+222.00
+247.29
+01-Dec-23
+195.00
+222.12
+30-Oct-23
+173.00
+164.02
+19-Oct-23
+188.00
+178.98
+29-Sep-23
+208.00
+183.18
+TransUnion (TRU)
+Visa Inc. (V)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+04-Sep-26
+89.00
+79.88
+29-Jul-26
+438.00
+368.73
+28-Jul-26
+82.00
+83.80
+29-Apr-26
+420.00
+334.86
+26-Jun-26
+72.00
+70.35
+13-Apr-26
+394.00
+309.39
+29-Apr-26
+75.00
+70.47
+30-Jan-26
+408.00
+321.83
+02-Apr-26
+74.00
+69.32
+29-Oct-25
+417.00
+341.28
+13-Feb-26
+80.00
+73.92
+30-Jul-25
+406.00
+350.91
+05-Dec-25
+92.00
+84.47
+14-Jul-25
+416.00
+350.50
+23-Oct-25
+86.00
+83.48
+30-Apr-25
+390.00
+345.50
+03-Oct-25
+78.00
+77.34
+08-Apr-25
+386.00
+308.27
+02-Oct-25
+83.00
+73.51
+02-Apr-25
+392.00
+346.33
+29-Aug-25
+96.00
+88.40
+31-Jan-25
+384.00
+341.80
+24-Jul-25
+102.00
+98.43
+09-Jan-25
+346.00
+312.60
+25-Apr-25
+90.00
+82.09
+02-Dec-24
+347.00
+316.65
+04-Apr-25
+87.00
+71.10
+30-Oct-24
+324.00
+290.16
+28-Feb-25
+102.00
+92.43
+14-Oct-24
+325.00
+280.68
+14-Feb-25
+107.00
+99.74
+24-Jul-24
+317.00
+254.17
+03-Jan-25
+101.00
+92.27
+12-Jul-24
+334.00
+265.74
+05-Dec-24
+111.00
+98.42
+24-Apr-24
+335.00
+275.02
+23-Oct-24
+118.00
+108.67
+15-Apr-24
+328.00
+271.28
+02-Oct-24
+109.00
+105.90
+26-Jan-24
+318.00
+267.94
+20-Aug-24
+97.00
+93.30
+10-Jan-24
+312.00
+264.56
+26-Jul-24
+87.00
+86.46
+25-Oct-23
+285.00
+236.85
+01-Mar-24
+81.00
+78.71
+12-Oct-23
+289.00
+236.78
+14-Feb-24
+78.00
+77.53
+29-Dec-23
+72.00
+68.71
+30-Oct-23
+63.00
+43.30
+25-Oct-23
+73.00
+46.23
+29-Sep-23
+85.00
+71.79
+Fair Isaac Corp. (FICO)
+Walmart Inc. (WMT)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+30-Jul-26
+1,548.00
+1,139.54
+08-Sep-26
+132.00
+106.05
+26-Jun-26
+1,424.00
+1,182.79
+21-Aug-26
+130.00
+103.70
+29-Apr-26
+1,543.00
+1,043.57
+20-Jul-26
+141.00
+112.20
+02-Apr-26
+1,528.00
+1,089.76
+21-May-26
+154.00
+121.34
+02-Feb-26
+1,770.00
+1,450.91
+20-Feb-26
+138.00
+122.99
+06-Nov-25
+2,070.00
+1,674.80
+21-Nov-25
+121.00
+105.32
+03-Oct-25
+2,074.00
+1,850.65
+21-Aug-25
+114.00
+97.96
+31-Jul-25
+1,915.00
+1,436.72
+16-May-25
+101.00
+98.24
+30-Apr-25
+2,244.00
+1,989.68
+16-Apr-25
+99.00
+91.19
+04-Apr-25
+2,144.00
+1,673.98
+21-Feb-25
+106.00
+94.78
+24 September 2026
+  57
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 58]
+ 
+ 
+Tapestry Inc. (TPR) 
+ 
+Fair Isaac Corp. (FICO)
+Walmart Inc. (WMT)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+05-Feb-25
+2,287.00
+1,847.80
+29-Jan-25
+101.00
+97.50
+05-Dec-24
+2,661.00
+2,367.16
+19-Nov-24
+93.00
+86.60
+07-Nov-24
+2,374.00
+2,176.10
+15-Aug-24
+81.00
+73.18
+02-Oct-24
+2,130.00
+1,938.16
+17-May-24
+73.00
+64.65
+20-Aug-24
+1,879.00
+1,750.00
+20-Feb-24
+193.00
+58.62
+01-Aug-24
+1,722.00
+1,578.95
+16-Nov-23
+180.00
+52.01
+02-Jul-24
+1,652.00
+1,529.38
+31-May-24
+1,502.00
+1,289.93
+26-Apr-24
+1,442.00
+1,110.85
+01-Mar-24
+1,448.00
+1,295.20
+26-Jan-24
+1,337.00
+1,196.36
+04-Dec-23
+1,289.00
+1,122.43
+01-Dec-23
+1,156.00
+1,127.71
+09-Nov-23
+1,058.00
+962.70
+Adyen NV (ADYEN.AS)
+Meta Platforms Inc. (META)
+Date of report
+Target price (€)
+Closing price (€)
+Date of report
+Target price ($)
+Closing price ($)
+14-Aug-26
+1,850.00
+1,061.60
+30-Jul-26
+725.00
+539.03
+24-Mar-26
+1,800.00
+888.50
+08-Jul-26
+815.00
+603.12
+12-Feb-26
+1,900.00
+903.30
+30-Apr-26
+830.00
+611.91
+30-Oct-25
+2,225.00
+1,516.40
+13-Apr-26
+840.00
+634.53
+01-Oct-25
+2,100.00
+1,368.00
+29-Jan-26
+835.00
+738.31
+15-Aug-25
+2,200.00
+1,396.40
+30-Oct-25
+815.00
+666.47
+02-May-25
+2,300.00
+1,468.00
+14-Oct-25
+870.00
+708.65
+11-Apr-25
+2,200.00
+1,330.60
+31-Jul-25
+830.00
+773.44
+24-Mar-25
+2,300.00
+1,507.00
+10-Jul-25
+775.00
+727.24
+17-Feb-25
+2,400.00
+1,841.20
+01-May-25
+690.00
+572.21
+30-Jan-25
+2,200.00
+1,563.00
+11-Apr-25
+685.00
+543.57
+11-Nov-24
+2,100.00
+1,303.20
+30-Jan-25
+765.00
+687.00
+19-Aug-24
+1,950.00
+1,313.60
+13-Jan-25
+688.00
+608.33
+13-May-24
+1,900.00
+1,258.00
+31-Oct-24
+630.00
+567.58
+13-Feb-24
+2,000.00
+1,444.20
+14-Oct-24
+636.00
+590.42
+11-Jan-24
+1,600.00
+1,164.20
+01-Aug-24
+555.00
+497.74
+24-Nov-23
+1,425.00
+1,073.60
+08-Jul-24
+522.00
+529.32
+25-Apr-24
+500.00
+441.38
+15-Apr-24
+555.00
+500.23
+02-Feb-24
+500.00
+474.99
+10-Jan-24
+414.00
+370.47
+Date of report
+Target price ($)
+Closing price ($)
+28-Apr-26
+169.00
+143.84
+06-Feb-26
+166.00
+152.10
+29-Jan-26
+146.00
+127.33
+07-Nov-25
+129.00
+103.68
+03-Oct-25
+130.00
+114.92
+14-Aug-25
+116.00
+95.69
+21-Jul-25
+118.00
+106.41
+09-May-25
+93.00
+78.01
+22-Apr-25
+84.00
+64.92
+07-Feb-25
+98.00
+80.38
+10-Dec-24
+72.00
+61.39
+14-Nov-24
+66.00
+57.82
+08-Nov-24
+58.00
+52.22
+21-Oct-24
+52.00
+44.51
+09-Feb-24
+47.00
+42.00
+10-Nov-23
+41.00
+28.12
+24 September 2026
+  58
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 59]
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+24 September 2026
+  59
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 60]
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+24 September 2026
+  60
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 61]
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in part, to train or 
+finetune a machine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+24 September 2026
+  61
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 62]
+For more thematic and long-lived research, visit our Themes page >
+ 
+ 
