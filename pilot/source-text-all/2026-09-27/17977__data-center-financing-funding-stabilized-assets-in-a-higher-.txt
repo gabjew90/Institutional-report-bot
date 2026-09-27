@@ -1,0 +1,7832 @@
+[Page 1]
+M
+ Foundation
+Securitized Products & US Credit Strategy | North 
+America
+Data Center Financing: Funding 
+Stabilized Assets in a Higher 
+Rate Environment
+As interest rates continue to rise, financing stabilized data 
+centers is proving more challenging. Data center operators can 
+accommodate higher funding costs by lowering DSCR levels if 
+the market allows, or tolerating lower returns. Hyperscaler-
+backed issuers may also gravitate towards other credit channels 
+such as the secured bond market. 
+Morgan Stanley & Co. LLC
+Carolyn L Campbell
+Strategist
+ Carolyn.Campbell@morganstanley.com  
+  +1 212 761-3748 
+James Egan
+Strategist
+ James.F.Egan@MorganStanley.com  
+  +1 212 761-4715 
+Fernanda Lima
+Strategist
+ Fernanda.Lima@morganstanley.com  
+  +1 212 761-3021 
+Vishwanath Tirupattur
+Strategist
+ Vishwanath.Tirupattur@morganstanley.com  
+  +1 212 761-1043 
+Vishwas Patkar
+Strategist
+ Vishwas.Patkar@morganstanley.com  
+  +1 212 761-8041 
+Morgan Stanley does and seeks to do business with 
+companies covered in Morgan Stanley Research. As a result, 
+investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of Morgan Stanley 
+Research. Investors should consider Morgan Stanley 
+Research as only a single factor in making their investment 
+decision.
+For analyst certification and other important disclosures, 
+refer to the Disclosure Section, located at the end of this 
+report.
+Key Takeaways
+With 5y rates over 100bps higher since the start of the year and as datacenter 
+spreads leak wider, data center securitized credit supply is slowing. Higher rates 
+make the economics of financing through the ABS space challenging, particularly 
+if rates increase quickly.
+This slowdown in supply will be transitory, in our view. Ultimately, given the 
+amount of leased capacity that is due to energize in the coming years, a majority 
+of those data centers will require debt financing.
+Our analysis shows that an all-in cost of debt around 8% would slow ABS 
+issuance under the current levels of LTV and DSCR. That said, issuers have a 
+number of levers they can pull as rates move higher, primarily LTVs and DSCRs. 
+Further, IRR targets can be malleable after taking into account meaningful 
+completion premiums.
+Taking higher rates into account against the higher GW forecasts, we lower our 
+2027 forecast of datacenter securitized credit issuance to $40-50bn and hold our 
+2028 forecast steady at $55-65bn. We now expect $120-$145bn of gross issuance 
+in securitized credit data centers for 2026-2028.
+We also continue to prefer colocation datacenter ABS over hyperscaler 
+datacenter ABS, believing that the agility of the colocation providers to monetize 
+elevated rental rates as leases are signed or renewed outweighs a potentially 
+weaker structure in the market.
+Higher rates should slow corporate DC issuance, though greater flexibility to 
+renegotiate leases before stabilization may provide more room to adjust than in 
+securitized credit. Lower-cost refinancing of existing deals will likely be more 
+selective, favoring strong tenants or credit support and requiring flexibility across 
+funding markets.
+September 24, 2026 01:53 PM GMT
+ 
+ 
+
+
+[Page 2]
+M
+ Foundation
+2
+Exhibit 1:
+We continue to see more upside in colocation data center ABS than in 
+hyperscaler datacenter ABS given the former's underappreciated diversification 
+benefits and the added benefits of faster monetization against a backdrop of 
+rapidly rising rental rates.
+0
+5
+10
+15
+20
+25
+30
+35
+40
+140
+150
+160
+170
+180
+190
+200
+210
+220
+230
+240
+Jan-26
+Feb-26
+Mar-26
+Apr-26
+May-26
+Jun-26
+Jul-26
+Aug-26
+Sep-26
+5y A-Rated ABS Secondary Spreads ('25 and '26 Vintage) by Classification
+Hyperscale/Colo Basis (RHS)
+Hyperscaler
+Mixed Business
+Colocation
+Source: Bloomberg, Morgan Stanley Research
+
+
+[Page 3]
+M
+ Foundation
+Morgan Stanley Research
+3
+Cost of Capital Concerns: Funding a Stabilized Data Center 
+in Securitized Credit Markets 
+As Treasury rates rise and spreads grind wider in data center ABS, the funding 
+backdrop ahead looks more challenging for data center securitized credit  issuers than 
+it did even just back in 1Q26. At the start of the year, 5y A/A- rated data center ABS 
+bonds were yielding around 5.5% at issuance; the first AAA-rated bond of the year funded 
+at sub 5%. Today, with 5y rates over 100bp higher since January, funding costs on the 
+AAAs are now above 6% (6.21% on the recent Vantage 2026-1, which priced at a spread of 
+140 bp) and the As are approaching 7% (6.81% on the Vantage 2026-1, spread of 200 bp). 
+Exhibit 2:
+New issue yields in data center ABS have risen materially over the course of 
+2026 as both underlying rates and credit spreads widen.
+0.00%
+1.00%
+2.00%
+3.00%
+4.00%
+5.00%
+6.00%
+7.00%
+8.00%
+9.00%
+Jan-18
+Jan-19
+Jan-20
+Jan-21
+Jan-22
+Jan-23
+Jan-24
+Jan-25
+Jan-26
+New Issue Yields of 5y Data Centers 
+5y UST
+Class A2 AAA
+Class A2 A/A-
+Class B BBB/BBB-
+Source: Bloomberg, CreditFlow, Morgan Stanley Research
+Higher funding costs have likely played a role in dampening securitized credit issuance 
+this year. Supply in ABS and CMBS  slowed down in 2Q26 and 3Q26 to date, though it has 
+not yet halted altogether. With $13bn ABS and $6.5bn CMBS brought to market so far this 
+year, issuance is pacing in line with 2025. While in another asset class that may imply 
+continued strength in a higher-rate environment, we think volumes coming in on par with 
+last year is nothing if not an underperformance vs expectations. To be sure, across the 
+fixed income complex data center-backed issuance has been very healthy, around $100bn, 
+though primarily through credit channels (~$43bn in IG and ~$37bn in HY YTD) (see here). 
+Given the current compute environment, it could be easy to argue that elevated funding 
+costs can readily be passed through to the tenant; owners of power supply and 
+interconnected data centers do have material pricing power. However, one important 
+difference between assets financed in corporate credit and securitized credit creates a 
+bigger challenge for securitized credit supply: the time between lease finalization and 
+securitization. 
+ In the HY corporate credit channel, assets can get funding within 1-2 quarters of the lease 
+being signed  (with continued leeway to renegotiate contracts if the funding-cost 
+expectations change). In ABS and CMBS, by contrast, stabilized assets generally have a 
+much longer lag between contract signing and public financing, particularly for the 
+hyperscaler-backed assets. We also think there is likely little room for contract re-
+
+
+[Page 4]
+M
+ Foundation
+4
+negotiation once the lease is underway to account for financing costs. This means that by 
+the time the assets are coming to the  ABS market, there is little flexibility on the 
+annualized adjusted net operating income (AANOI) to adapt to higher debt costs. 
+Exhibit 3:
+Issuance is pacing in-line with 2025 volumes, a 
+surprise….
+0%
+50%
+100%
+150%
+200%
+250%
+300%
+350%
+400%
+450%
+500%
+$0
+$1,000
+$2,000
+$3,000
+$4,000
+$5,000
+$6,000
+$7,000
+Data Center Securitized Credit, Gross Issuance by Month
+2025
+2026
+Pace vs 2025 (RHS)
+Source: Bloomberg, CreditFlow, Trepp, Morgan Stanley Research.
+Exhibit 4:
+… and growth of DC-backed paper has been far 
+faster in corp credit 
+$0
+$20,000
+$40,000
+$60,000
+$80,000
+$100,000
+$120,000
+$140,000
+$160,000
+$180,000
+Jan-18
+May-18
+Sep-18
+Jan-19
+May-19
+Sep-19
+Jan-20
+May-20
+Sep-20
+Jan-21
+May-21
+Sep-21
+Jan-22
+May-22
+Sep-22
+Jan-23
+May-23
+Sep-23
+Jan-24
+May-24
+Sep-24
+Jan-25
+May-25
+Sep-25
+Jan-26
+May-26
+Data Center-Backed Outstanding Balance by Market
+ABS
+CMBS
+IG
+HY
+Source: Bloomberg, CreditFlow, Trepp, Morgan Stanley Research. Data through Aug 31, 2026. 
+With the market currently pricing in elevated 5y rates over the medium term, and with 
+data center ABS spreads more likely to move wider than tighter in our view, data 
+center companies must grapple with persistently higher funding costs. As we show 
+throughout this report, as cost of debt approaches 8%  issuers will be  forced to adapt 
+either structurally or by tolerating lower returns. We think 8% marks a threshold at which 
+supply will meaningfully slow, until such a time that new assets with higher rents and 
+escalators can be securitized.
+The speed with which rates rise matters due to this  lag between the time that the leases 
+are signed and the underlying asset is securitized. As a consequence, we view any 
+slowdown in supply as transitory, given the amount of energized capacity that is 
+scheduled to come online through the end of this decade. In the meantime, we expect to 
+see the data center operators adapt to this higher rate environment as follows:
+1. Lower LTVs, and lower DSCRs: A trend that is already well underway, issuers will 
+be able to raise less debt as interest rates rise to stay within the boundaries of 
+their ABS master trust (or within the boundaries of what the market tolerates). 
+However, there is plenty of latitude within existing trusts: as we show below, most 
+outstanding master trusts have debt service coverage ratios (DSCRs) well above 
+cash sweeps or other trigger levels, and so we would expect to see DSCRs come 
+down.
+2. Bonds issued at a discount: As in a previous cycle when rates rose quickly, deals 
+were brought to the market below par to keep coupons tolerable for DSCR 
+restrictions. 
+3. Increased credit market issuance: The secured bond market has so far proved 
+more tolerant of low DSCRs and high LTVs. The structures in credit are also more 
+customized, with a wider array of terms, amortization schedules, backstops and 
+guarantees. With more levers to pull, the credit markets could pick up some of the 
+securitized credit supply, which for now we view as only for the hyperscaler 
+campuses. 
+We also believe that issuers may be willing to tolerate lower IRRs on a single deal for two 
+reasons: 1) if rates fall and/or rents rise, they may expect to average into better returns 
+
+
+[Page 5]
+M
+ Foundation
+Morgan Stanley Research
+5
+over time and can therefore tolerate a portion of the master trust financed at less-than-
+ideal rates; 2) the construction-to-completion premium (over a 1.5-2y period) has been so 
+significant as to offset the weaker returns once the asset is stabilized. Indeed, focusing 
+myopically on one single deal risks missing the forest for the trees: an ABS deal is part of 
+a broader portfolio funding strategy, and is  just one phase of the asset's useful life. The 
+issuer's assumptions around long-term data center valuations and the forward interest 
+rate environment will therefore play an important role in timing of issuance, even if cost 
+of debt rises above 8%. 
+In this report, we outline what it looks like for various types of data centers to securitize 
+given restrictions on LTV and DSCR, and IRR targets. We also dig deeper into  how these 
+companies may adapt to these interest rate pressures (see Adapting to a Higher Rate 
+Environment ). Finally, in the next section we show that even in a higher rate 
+environment, the quantum of GW that will operationalize in 2027 and beyond is still so 
+large that it will necessitate more debt raises. 
+ For each classification of data center, we assess two scenarios: 1) parameters are based on 
+what the market currently tolerates for that type of shelf and 2) what we think 
+theoretical limits are, either due to shelf parameters or rating agency limits. For simplicity, 
+we are modeling a transaction in isolation;  we are not assuming there is a currently 
+outstanding shelf, which would be more restrictive.  We assume that the equity sponsor 
+(the parent of the issuer) is looking for at least an 8.5% IRR over the life of a 5y deal, 
+based on our analysis of recent issuances. This 8.5% IRR is predicated on a constant cap 
+rate over a five-year period, though we note that if the issuer has more bullish estimates 
+of valuation they may be expecting a higher IRR, likely in excess of  10%. We assess the 
+sensitivity to cap rate levels as well. (Our assumptions for LTV, DSCR, and cap rate are 
+based off of existing shelves; see Appendix: An Overview of Financing Stabilized Assets 
+with Data Center ABS & CMBS   for more). 
+Funding Economics: Hyperscaler Shelves
+Hyperscaler shelves have the most consistent and predictable rents, with leases signed for 
+long durations (e.g. 10-15+ years) with contracted annual rent escalators –  on average 
+about 2.0% per year, based on our estimates of currently outstanding hyperscaler shelves. 
+We note that the pricing power of today could ultimately lead to new contracts being 
+signed at rent escalators of 3% or more, as we are seeing come through the corporate 
+credit space, but for now we assuming escalators in-line with currently outstanding 
+shelves.  If the lease is triple-net, as new hyperscaler leases increasingly are, then all 
+operating costs, including power, security, property taxes, insurance, and maintenance 
+expenses, are passed through to the tenant in addition to base rent. 
+
+
+[Page 6]
+M
+ Foundation
+6
+Current Market Conditions
+We make four assumptions about our model data center, based off of levels that are 
+comparable to current market conditions: 
+1. The market will tolerate a Class A2 LTV up to 65% and a shelf LTV of up to 75%.
+2. The market will tolerate a Class A2 DSCR down to 1.60 and a shelf DSCR down to 
+1.25. 
+3. The data center campus is valued at a 5.65% cap rate, the current universe average 
+for hyperscaler shelves, holding steady over 5y. 
+4. AANOI grows by 2% per annum, in line with many annual rent escalators. 
+The unlevered return of this model data center is around 7.75%, meaning that, should cost 
+of debt rise above that level, debt financing will be dilutive to IRR. Below a 7.75% funding 
+cost, debt financing is accretive to the equity holder. 
+As rates rise and debt service costs increase, the issuer is forced to cut LTV as the DSCR 
+becomes the binding constraint. With a cost of debt at 6.5%, just a little bit higher than 
+where current A2 deals are currently yielding from the hyperscaler class (~6.5%), the 
+issuer would be limited to a ~50% LTV for the A2 class.  Rates need to fall by ~150bps 
+before the issuer can tolerate a 65% LTV on the Class A2, or the issuer needs to set a 
+lower coupon and issue at a discount to maintain DSCR limits. A 100bp increase in cost of 
+debt to 7.5% forces the issuer down further to 45% LTV in our scenario of Class A2 DSCR 
+restrictions. 
+Exhibit 6:
+Based on our modeled assumptions, we show at what cost of debt on the 
+Class A2 the issuer can bring a bond to market, and at what LTV. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class A2 Sensitivity Table
+Coupon
+LTV
+Source: Morgan Stanley Research
+Issuing down the stack allows for greater flexibility, with the deal tolerating a weighted 
+average cost of debt at 6.5% with a 65% LTV. In most shelves, the restrictions are only on 
+the Class A2, so the issuer has far more flexibility theoretically on DSCR and LTV. In 
+practice, the subordinated tranches tend to be small. Less than 10% of total gross 
+issuance in data center ABS has been rated BBB or BB. 
+Exhibit 7:
+Based on our modeled assumptions, we show at what cost of debt on the 
+deal  the issuer can bring a bond to market, and at what LTV. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+90%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+95%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+100%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class B 
+LTV
+WAVG Coupon
+Class B Sensitivity Table
+Source: Morgan Stanley Research
+ However, there are  in two separate constraints on issuance: first, whether the 
+Exhibit 5:
+Modeled scenario for 
+hyperscaler shelves based on current 
+market levels
+Annual Growth in Revenue
+Current Cap Rate
+Terminal Cap Rate
+LTV Max
+DSCR Min
+Class A2
+65%
+1.60
+Class B
+75%
+1.25
+Limitations
+Assumptions
+2.00%
+5.65%
+5.65%
+Source: Morgan Stanley Research
+
+
+[Page 7]
+M
+ Foundation
+Morgan Stanley Research
+7
+structure meets the LTV and DSCR requirements and second, whether the resulting 
+leverage and debt cost will still produce an acceptable equity return. Even if the issuer 
+can bring a 50% LTV bond at a 7% cost of debt, they have to assess whether that makes 
+sense within the context of their own return targets. In our model, we assume a constant 
+cap rate over the 5y of the ABS deal,  and believe that issuers are targeting at least an 
+8.5% IRR. Note that this is just the IRR target over the first five years of stabilization 
+financing, and that, as we show in the following subsection, other phases of the data 
+center's life may be more lucrative. Exhibit 8 , we plot the IRR of the issuer, assuming 
+different levels of debt raised and interest costs. For this model, as cost of debt rises 
+above 7%, the economic incentive to debt-finance these data centers is challenged. 
+Exhibit 8:
+We model the IRR of the data center sponsor over the life of a 5y ABS, 
+assuming that the cap rate is held flat and a 2% annual rent escalator.  
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+9.70%
+9.50%
+9.29%
+9.09%
+8.89%
+8.68%
+8.48%
+8.28%
+8.07%
+7.87%
+7.67%
+7.46%
+7.26%
+7.06%
+6.85%
+6.65%
+6.45%
+6.24%
+6.04%
+5.84%
+5.64%
+5.43%
+35%
+10.19%
+9.94%
+9.68%
+9.43%
+9.17%
+8.92%
+8.66%
+8.41%
+8.15%
+7.90%
+7.64%
+7.39%
+7.13%
+6.88%
+6.63%
+6.37%
+6.12%
+5.86%
+5.61%
+5.36%
+40%
+10.76%
+10.44%
+10.13%
+9.81%
+9.50%
+9.18%
+8.87%
+8.56%
+8.24%
+7.93%
+7.61%
+7.30%
+6.99%
+6.67%
+6.36%
+6.05%
+5.74%
+45%
+11.42%
+11.03%
+10.65%
+10.27%
+9.88%
+9.50%
+9.11%
+8.73%
+8.35%
+7.96%
+7.58%
+7.20%
+6.82%
+6.43%
+6.05%
+50%
+12.21%
+11.74%
+11.27%
+10.80%
+10.34%
+9.87%
+9.40%
+8.94%
+8.47%
+8.01%
+7.54%
+7.08%
+6.61%
+55%
+13.16%
+12.59%
+12.02%
+11.45%
+10.89%
+10.32%
+9.75%
+9.19%
+8.62%
+8.06%
+7.50%
+60%
+14.33%
+13.64%
+12.94%
+12.25%
+11.56%
+10.87%
+10.18%
+9.50%
+8.81%
+8.12%
+65%
+15.81%
+14.96%
+14.11%
+13.26%
+12.42%
+11.57%
+10.73%
+9.88%
+70%
+17.74%
+16.68%
+15.63%
+14.58%
+13.53%
+12.48%
+11.43%
+75%
+20.37%
+19.03%
+17.69%
+16.36%
+15.03%
+13.71%
+12.39%
+80%
+85%
+90%
+95%
+100%
+Cost of Debt
+Implied 5y IRR
+Shelf LTV
+Source: Morgan Stanley Research
+Our analysis is sensitive to our cap rate assumption. If we hold fixed a  7% cost of debt at a 
+60% LTV  with our 2% annual rent escalator, then we find the issuer can tolerate some cap 
+rate expansion over the 5y period, though not too much. We are unsure what these 
+companies are modeling for themselves, given the current rate outlook and the larger 
+thematic backdrop for supply and demand of compute, not to mention their ability to add 
+data centers with higher rent escalators to the master trust if they sign new leases. We 
+believe they could be quite bullish on the medium-term valuations of their assets, but the 
+higher-for-longer rate environment should counterbalance some of this thematic uplift. 
+The more bullish their cap rate assumptions, the higher the debt financing rate they can 
+tolerate. 
+Exhibit 9:
+Modeled equity IRR assuming 7% cost of debt and 60% LTV for a 
+hyperscaler data center, at various valuation levels.  
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
++200
++100
++75
++50
++25
+0
+-25
+-50
+-75
+-100
+-200
+5y IRR
+Cap Rate Expansion/Compression (bp)
+Est. Equity IRR at a 7% Cost of Debt and 60% LTV, Hyperscaler Shelf
+Source: Morgan Stanley Research estimates 
+Below, we show the modeled IRR assuming a 25bps expansion of the cap rate over a 5y 
+period to illustrate how the opportunity set narrows once cap rates widen. 
+
+
+[Page 8]
+M
+ Foundation
+8
+Exhibit 10: Modeling the IRR with a 25bp cap rate expansion narrows the interest rate 
+environment into which the issuer can bring a deal.  
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+8.63%
+8.42%
+8.22%
+8.01%
+7.80%
+7.59%
+7.39%
+7.18%
+6.97%
+6.76%
+6.55%
+6.35%
+6.14%
+5.93%
+5.72%
+5.52%
+5.31%
+5.10%
+4.89%
+4.69%
+4.48%
+4.27%
+35%
+9.05%
+8.79%
+8.53%
+8.27%
+8.01%
+7.75%
+7.49%
+7.23%
+6.97%
+6.71%
+6.45%
+6.19%
+5.93%
+5.67%
+5.41%
+5.15%
+4.89%
+4.63%
+4.37%
+4.11%
+3.85%
+3.59%
+40%
+9.54%
+9.22%
+8.90%
+8.57%
+8.25%
+7.93%
+7.61%
+7.29%
+6.97%
+6.64%
+6.32%
+6.00%
+5.68%
+5.36%
+5.04%
+4.72%
+4.40%
+4.07%
+3.75%
+3.43%
+45%
+10.11%
+9.72%
+9.32%
+8.93%
+8.54%
+8.14%
+7.75%
+7.36%
+6.96%
+6.57%
+6.18%
+5.78%
+5.39%
+5.00%
+4.60%
+4.21%
+3.82%
+50%
+10.80%
+10.32%
+9.84%
+9.36%
+8.88%
+8.40%
+7.92%
+7.44%
+6.96%
+6.48%
+6.00%
+5.52%
+5.05%
+4.57%
+4.09%
+55%
+11.62%
+11.04%
+10.45%
+9.87%
+9.29%
+8.70%
+8.12%
+7.54%
+6.95%
+6.37%
+5.79%
+5.21%
+4.63%
+60%
+12.65%
+11.94%
+11.22%
+10.51%
+9.80%
+9.08%
+8.37%
+7.66%
+6.95%
+6.24%
+5.53%
+4.82%
+65%
+13.96%
+13.08%
+12.20%
+11.32%
+10.44%
+9.57%
+8.69%
+7.82%
+6.94%
+6.07%
+70%
+15.67%
+14.58%
+13.48%
+12.39%
+11.29%
+10.20%
+9.11%
+8.02%
+6.93%
+75%
+18.04%
+16.64%
+15.24%
+13.85%
+12.46%
+11.07%
+9.68%
+8.30%
+80%
+85%
+90%
+95%
+100%
+Shelf LTV
+Cost of Debt
+Implied 5y IRR
+Source: Morgan Stanley Research
+At the Limit
+What the market currently tolerates is different than what the rating agencies and 
+structures ultimately tolerate. Even if the status quo is that LTVs max out at 65% on Class 
+A2, most are allowed to issue up to 70%, with no restrictions on Class B. As rates rise, we 
+think DSCR levels are likely to fall to accommodate higher interest costs while maintaining 
+similar levels of leverage. 
+We make four assumptions about our model data center, based off of levels that we think 
+test the bounds of legal and/or rating agency restrictions: 
+1. The issuer can bring paper with a Class A2 LTV up to 70% and shelf LTV up to 
+85%.
+2. The issuer  will tolerate a Class A2 DSCR down to 1.35 and a shelf DSCR down to 
+1.10.
+3.  As before, the data center campus is valued at a 5.65% cap rate and held flat over 
+the 5y time horizon.
+4. AANOI grows by 2% per annum, in line with many annual rent escalators. 
+In this scenario, the issuer has quite a bit more bandwidth on both the Class A2 and across 
+the stack to issue into the higher-rate environment. A 6.5% cost of debt now allows for up 
+to a 60% LTV, while a 7% cost of debt accommodates up to a 55% LTV (vs 50% each in our 
+previous scenario). This additional LTV gives the issuer more breathing room from the IRR 
+perspective. We highlight in a darker shade of green the opportunities for issuance that 
+are now tolerated in this scenario that were not in the prior. 
+Exhibit 12: Based on our modeled assumptions, we show at what cost of debt on the 
+Class A2 the issuer can bring a bond to market, and at what LTV.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class A2 Sensitivity Table
+Coupon
+Source: Morgan Stanley Research
+Similarly, for Class B a wider combination of rates & leverage opens up:
+Exhibit 11: Modeled scenario for 
+hyperscaler shelves at their limits
+Annual Growth in Revenue
+Current Cap Rate
+Terminal Cap Rate
+LTV Max
+DSCR Min
+Class A2
+70%
+1.35
+Class B
+85%
+1.10
+Assumptions
+2.00%
+5.65%
+5.65%
+Limitations
+Source: Morgan Stanley Research
+
+
+[Page 9]
+M
+ Foundation
+Morgan Stanley Research
+9
+Exhibit 13: Based on our modeled assumptions, we show at what cost of debt on the 
+deal the issuer can bring a bond to market, and at what LTV.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+90%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+95%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+100%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class B Sensitivity Table
+WAVG Coupon
+Source: Morgan Stanley Research
+Consequently, the issuer has more room to issue a bond with a higher modeled IRR:
+Exhibit 14: We model the IRR of the data center sponsor over the life of a 5y ABS, 
+assuming a constant cap rate and the 2% rent escalator.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+9.70%
+9.50%
+9.29%
+9.09%
+8.89%
+8.68%
+8.48%
+8.28%
+8.07%
+7.87%
+7.67%
+7.46%
+7.26%
+7.06%
+6.85%
+6.65%
+6.45%
+6.24%
+6.04%
+5.84%
+5.64%
+5.43%
+35%
+10.19%
+9.94%
+9.68%
+9.43%
+9.17%
+8.92%
+8.66%
+8.41%
+8.15%
+7.90%
+7.64%
+7.39%
+7.13%
+6.88%
+6.63%
+6.37%
+6.12%
+5.86%
+5.61%
+5.36%
+5.10%
+4.85%
+40%
+10.76%
+10.44%
+10.13%
+9.81%
+9.50%
+9.18%
+8.87%
+8.56%
+8.24%
+7.93%
+7.61%
+7.30%
+6.99%
+6.67%
+6.36%
+6.05%
+5.74%
+5.42%
+5.11%
+4.80%
+45%
+11.42%
+11.03%
+10.65%
+10.27%
+9.88%
+9.50%
+9.11%
+8.73%
+8.35%
+7.96%
+7.58%
+7.20%
+6.82%
+6.43%
+6.05%
+5.67%
+5.29%
+50%
+12.21%
+11.74%
+11.27%
+10.80%
+10.34%
+9.87%
+9.40%
+8.94%
+8.47%
+8.01%
+7.54%
+7.08%
+6.61%
+6.15%
+5.69%
+55%
+13.16%
+12.59%
+12.02%
+11.45%
+10.89%
+10.32%
+9.75%
+9.19%
+8.62%
+8.06%
+7.50%
+6.93%
+6.37%
+60%
+14.33%
+13.64%
+12.94%
+12.25%
+11.56%
+10.87%
+10.18%
+9.50%
+8.81%
+8.12%
+7.44%
+6.75%
+65%
+15.81%
+14.96%
+14.11%
+13.26%
+12.42%
+11.57%
+10.73%
+9.88%
+9.04%
+8.20%
+70%
+17.74%
+16.68%
+15.63%
+14.58%
+13.53%
+12.48%
+11.43%
+10.39%
+9.35%
+75%
+20.37%
+19.03%
+17.69%
+16.36%
+15.03%
+13.71%
+12.39%
+11.07%
+80%
+24.18%
+22.42%
+20.67%
+18.93%
+17.20%
+15.47%
+13.75%
+85%
+30.22%
+27.79%
+25.37%
+22.96%
+20.58%
+18.22%
+15.87%
+90%
+95%
+100%
+Implied 5y IRR
+Cost of Debt
+Shelf LTV
+Source: Morgan Stanley Research
+Funding Economics: Colocation Shelves
+Colocation data centers are operated very differently than hyperscaler data centers. For 
+one, there are many more tenants in any single asset, with dozens of companies operating 
+out of the same data center. For another, leases tend to be shorter, with most signing <5y 
+leases that they frequently renew. Lastly, the type of lease itself can vary: where 
+hyperscalers might sign a triple-net lease, other companies could be signing a modified 
+gross lease, where only the power costs get passed through to the tenant and not 
+insurance, taxes, and other opex.  Or they may have a different structure altogether in 
+which they pay for a bundle through a service agreement which includes the space, power, 
+connectivity, and all other expenses. For a deep dive on the colocation sector see 
+Communications Infrastructure: Digital Real Estate - Initiating Coverage of US Data Center 
+REITs. 
+As a consequence, the rent revenue over the life of the ABS deal and beyond is not known 
+for certain, and neither are the other costs, leading to less certainty of the NOI margin. 
+Thus, annual revenue growth is an estimate rather than a known contracted outcome 
+which creates more uncertainty but can lead to greater upside if rents continue to rise. At 
+the moment, with power so scarce the direction of travel for rents is one way: JLL finds 
+that since 2020, data center rental rates are up nearly 70% or on average 9% per year, 
+with vacancy rates nearly down to 1% and pre-commitment rates at 95%. CBRE recently 
+also found that the first half of 2026 saw 3-10MW deployment rates rising 8.3%, while 
+smaller loads of 500kW-3MW saw rents rise 7.9%. 
+We model a faster annual revenue growth of 2.5% for colocation data centers (vs 2% for 
+hyperscalers), based on modeling of the colocation data center shelves in Intex. There are 
+a number of reasons this could be more conservative than recent data points (e.g. from 
+CBRE) suggest: tenants may be grandfathered into lower renewal rate contracts, or third-
+
+
+[Page 10]
+M
+ Foundation
+10
+party modeling itself may be more conservative than reality is currently suggesting to 
+allow for variations over a longer time horizon. 
+Current Market Conditions
+We make four assumptions about our model data center, based off of levels that are 
+comparable to current market conditions: 
+1. The market will tolerate a Class A2 LTV up to 61% and a shelf LTV of up to 68%.
+2. The market will tolerate a Class A2 DSCR down to 1.70 and a shelf DSCR down to 
+1.60.
+3. The data center campus is valued at a 6.50% cap rate, the current universe 
+average for colocation shelves, which we hold steady over 5y.
+4. AANOI grows by 2.5% per annum, in line with modeled growth projections.
+The unlevered return of this model data center is just over 9%, meaning that should cost 
+of debt rise above that level, debt financing will be dilutive to IRR. Below a ~9% funding 
+cost, debt financing is accretive to the equity holder – this is in fact more cushion than the 
+hyperscaler data center because of the higher NOI growth. 
+Yields on Class A2 colocation data center bonds currently sit around 6.8%, higher than 
+both the hyperscaler and mixed business shelves. At 7% funding cost, the issuer is 
+restricted to a 50% LTV in our model; a 100bps rise in rates pushes the issuer down to 
+45% LTV while an improvement of at least 75bps is necessary before the issuer can once 
+again bring a 60% LTV instrument. 
+Exhibit 16: Based on our modeled assumptions, we show at what cost of debt on the 
+Class A2 the issuer can bring a bond to market, and at what LTV.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class A2 Sensitivity Table
+Coupon
+Class A2 
+LTV
+Source: Morgan Stanley Research
+Colocation bonds tend to have less subordinated paper than the hyperscaler shelves in 
+large part because of the uncertainty of future tenancy. As a consequence, we have less 
+data to benchmark our shelf LTV and DSCR levels off of, meaning we model less 
+additional breathing room at the shelf level here than we did for the hyperscaler shelves. 
+Regardless, we think if the market will tolerate a Class B deal,  it will be small and 
+incremental LTV benefits slight. 
+Exhibit 17: Based on our modeled assumptions, we show at what cost of debt on the 
+shelf the issuer can bring a bond to market, and at what LTV
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+90%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+95%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+100%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class B Sensitivity Table
+WAVG Coupon
+Shelf LTV
+Source: Morgan Stanley Research
+Exhibit 15: Modeled scenario for 
+colocation shelves at current levels
+Annual Growth in Revenue
+Current Cap Rate
+Terminal Cap Rate
+LTV Max
+DSCR Min
+Class A2
+61%
+1.70
+Class B
+68%
+1.60
+Assumptions
+2.50%
+6.50%
+6.50%
+Limitations
+Source: Morgan Stanley Research
+
+
+[Page 11]
+M
+ Foundation
+Morgan Stanley Research
+11
+The profile of the data center – with higher estimated rent growth – leaves the colocation 
+data center with more optionality in a higher rate environment. We think the colocation 
+could tolerate funding costs up to ~10% even if that means cutting LTVs  well below 50% 
+(and likely, then, focusing on AAA and AA-rated supply). More realistically though for 
+colocation data centers supply will slow around 8% (a higher level than the hyperscalers) 
+as we think the IRR hurdle for the sponsor could in fact be higher for colocation deals 
+given the less predictable rent paths. 
+Exhibit 18: We model the IRR of the data center sponsor over the life of a 5y ABS, 
+assuming a flat cap rate and the 2.5% rent escalator. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+11.64%
+11.44%
+11.24%
+11.04%
+10.84%
+10.64%
+10.43%
+10.23%
+10.03%
+9.83%
+9.63%
+9.43%
+9.23%
+9.03%
+8.83%
+8.63%
+8.42%
+8.22%
+8.02%
+7.82%
+7.62%
+7.42%
+35%
+12.26%
+12.01%
+11.76%
+11.51%
+11.26%
+11.00%
+10.75%
+10.50%
+10.25%
+10.00%
+9.75%
+9.50%
+9.24%
+8.99%
+8.74%
+8.49%
+8.24%
+7.99%
+40%
+12.98%
+12.67%
+12.36%
+12.05%
+11.74%
+11.43%
+11.12%
+10.81%
+10.50%
+10.19%
+9.88%
+9.57%
+9.26%
+8.95%
+8.64%
+45%
+13.83%
+13.45%
+13.07%
+12.69%
+12.31%
+11.93%
+11.55%
+11.17%
+10.80%
+10.42%
+10.04%
+9.66%
+9.29%
+50%
+14.82%
+14.36%
+13.90%
+13.44%
+12.98%
+12.52%
+12.06%
+11.60%
+11.14%
+10.68%
+10.23%
+55%
+16.03%
+15.47%
+14.91%
+14.35%
+13.79%
+13.23%
+12.68%
+12.12%
+11.56%
+60%
+17.51%
+16.83%
+16.15%
+15.46%
+14.79%
+14.11%
+13.43%
+12.75%
+65%
+19.38%
+18.54%
+17.70%
+16.87%
+16.04%
+15.20%
+14.38%
+70%
+75%
+80%
+85%
+90%
+95%
+100%
+Implied 5y IRR
+Cost of Debt
+Shelf LTV
+Source: Morgan Stanley Research
+As with the hyperscaler deals, the colocation deals can tolerate some cap rate expansion 
+over time while still meeting return targets, though not too much. Below, we show a 
+modeled data center with a 7% cost of debt and 55% LTV while flexing the cap rate 
+expansion over the 5y period. This profile could tolerate up to ~50bps of cap rate 
+expansion over the life of the deal before we would expect that the operator would no 
+longer meet its required returns. 
+Exhibit 19: Modeled equity IRR assuming 7% cost of debt and 55% LTV for a colocation 
+data center, at various valuation levels.
+0%
+5%
+10%
+15%
+20%
+25%
+30%
++200
++100
++75
++50
++25
+0
+-25
+-50
+-75
+-100
+-200
+5y IRR
+Cap Rate Expansion/Compression (bp)
+Est. Equity IRR at a 7% Cost of Debt and 55% LTV, Colocation Shelf
+Source: Morgan Stanley Research
+
+
+[Page 12]
+M
+ Foundation
+12
+At the Limit
+As with the hyperscaler data centers, colocation issuers do in fact have more flexibility 
+written into their trusts than they currently exercise. 
+We make four assumptions about our model data center, based off some of the more 
+restrictive trigger levels in trusts:
+1. The market will tolerate a Class A2 LTV up to 65% and a shelf LTV of up to 70%, 
+tighter restrictions than in hyperscalers based on the FLEX shelf.
+2. The market will tolerate a Class A2 DSCR down to 1.35 and a shelf DSCR down to 
+1.25.
+3. The data center campus is valued at a 6.50% cap rate, the current universe 
+average for colocation shelves.
+4. AANOI grows by 2.5% per annum, in line with modeled growth projections.
+Like with the hyperscaler shelves, this opens up  a higher rate environment in which to 
+continue issuing bonds at the Class A2 and shelf level, and similarly a wider breadth of 
+cost of debt at which they can meet IRR targets. 
+Exhibit 21: Based on our modeled assumptions, we show at what cost of debt on the 
+Class A2 the issuer can bring a bond to market, and at what LTV. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class A2 Sensitivity Table
+Coupon
+Class A2 
+LTV
+Source: Morgan Stanley Research
+Exhibit 22: Based on our modeled assumptions, we show at what cost of debt on the 
+shelf the issuer can bring a bond to market, and at what LTV.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+90%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+95%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+100%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class B Sensitivity Table
+WAVG Coupon
+Shelf LTV
+Source: Morgan Stanley Research
+Exhibit 23: We model the IRR of the data center sponsor over the life of a 5y ABS, 
+assuming a flat cap rate and the 2.5% rent escalator.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+11.64%
+11.44%
+11.24%
+11.04%
+10.84%
+10.64%
+10.43%
+10.23%
+10.03%
+9.83%
+9.63%
+9.43%
+9.23%
+9.03%
+8.83%
+8.63%
+8.42%
+8.22%
+8.02%
+7.82%
+7.62%
+7.42%
+35%
+12.26%
+12.01%
+11.76%
+11.51%
+11.26%
+11.00%
+10.75%
+10.50%
+10.25%
+10.00%
+9.75%
+9.50%
+9.24%
+8.99%
+8.74%
+8.49%
+8.24%
+7.99%
+7.74%
+7.49%
+7.24%
+6.99%
+40%
+12.98%
+12.67%
+12.36%
+12.05%
+11.74%
+11.43%
+11.12%
+10.81%
+10.50%
+10.19%
+9.88%
+9.57%
+9.26%
+8.95%
+8.64%
+8.34%
+8.03%
+7.72%
+7.41%
+7.10%
+6.79%
+45%
+13.83%
+13.45%
+13.07%
+12.69%
+12.31%
+11.93%
+11.55%
+11.17%
+10.80%
+10.42%
+10.04%
+9.66%
+9.29%
+8.91%
+8.53%
+8.15%
+7.78%
+7.40%
+50%
+14.82%
+14.36%
+13.90%
+13.44%
+12.98%
+12.52%
+12.06%
+11.60%
+11.14%
+10.68%
+10.23%
+9.77%
+9.31%
+8.85%
+8.40%
+55%
+16.03%
+15.47%
+14.91%
+14.35%
+13.79%
+13.23%
+12.68%
+12.12%
+11.56%
+11.01%
+10.45%
+9.90%
+9.34%
+60%
+17.51%
+16.83%
+16.15%
+15.46%
+14.79%
+14.11%
+13.43%
+12.75%
+12.08%
+11.40%
+10.73%
+10.05%
+65%
+19.38%
+18.54%
+17.70%
+16.87%
+16.04%
+15.20%
+14.38%
+13.55%
+12.72%
+11.90%
+11.07%
+70%
+21.80%
+20.76%
+19.73%
+18.69%
+17.66%
+16.63%
+15.60%
+14.58%
+13.55%
+75%
+80%
+85%
+90%
+95%
+100%
+Implied 5y IRR
+Cost of Debt
+Shelf LTV
+Source: Morgan Stanley Research
+Funding Economics: Mixed Business Shelves
+Exhibit 20: Modeled scenario for 
+colocation shelves at their limits
+Annual Growth in Revenue
+Current Cap Rate
+Terminal Cap Rate
+LTV Max
+DSCR Min
+Class A2
+65%
+1.35
+Class B
+70%
+1.25
+Assumptions
+2.50%
+6.50%
+6.50%
+Limitations
+Source: Morgan Stanley Research
+
+
+[Page 13]
+M
+ Foundation
+Morgan Stanley Research
+13
+Our third classification of data center shelves – "Mixed Business" – securitize both 
+enterprise colocation and hyperscaler business within the same shelf. We often cannot be 
+sure what type of workload a hyperscaler or other tenant is doing within a data center 
+(e.g. cloud, AI inference, AI training) though we believe that most of the hyperscaler leases 
+within the mixed business shelves skew towards cloud. 
+In some ways, these mixed business shelves offer strengths of the prior two categories: 
+they can be anchored by a long-term lease from a high-quality company, allowing for some 
+rent stability, but a diversity of tenants offsets  the single-name exposure risk and allows 
+for some capitalization on increasing rent rates. We find that these shelves have on 
+average the tightest cap rates at 5.35%, about 30bps inside of the hyperscalers, and they 
+price on top of the hyperscaler shelves. The shelves in our ABS data set also have the 
+highest modeled annual rent growth at 3%. These features combine to an unlevered 
+return of 8.5% for the asset. 
+Current Market Conditions
+We make four assumptions about our model data center, based off of levels that are 
+comparable to current market conditions: 
+1. The market will tolerate a Class A2 LTV up to 60% and a shelf LTV of up to 70%.
+2. The market will tolerate a Class A2 DSCR down to 1.75 and a shelf DSCR down to 
+1.50.
+3. The data center campus is valued at a 5.35% cap rate, the current universe average 
+for mixed business shelves, which we hold steady over 5y.
+4. AANOI grows by 3.0% per annum, in line with modeled growth projections.
+The unlevered return of this model data center is just around 8.5%, meaning that should 
+cost of debt rise above that level, debt financing will be dilutive to IRR. Below an 8.5% 
+funding cost, debt financing is accretive to the equity holder.
+Yields on the Class A2 mixed business shelves currently sit around 6.6%. At a 6.5% yield 
+on Class A2, we think the issuer here maxes out at a 45% LTV – in large part because we 
+restrict the mixed business shelf at a higher DSCR based on the lowest observed level in 
+this category. (On average, colocation shelves have the highest Class A2 DSCR, at around 
+2.15, vs hyperscaler and mixed business at 1.95. But we use here the most lowest  of the 
+group to signal what the market will allow, which is 1.6 for hyperscalers, 1.7 for colocation, 
+and 1.75 for mixed business). 
+Exhibit 25: Based on our modeled assumptions, we show at what cost of debt on the 
+Class A2 the issuer can bring a bond to market, and at what LTV.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class A2 Sensitivity Table
+Coupon
+Class A2 
+LTV
+Source: Morgan Stanley Research
+Exhibit 24: Modeled scenario for mixed 
+business shelves at current market levels
+Annual Growth in Revenue
+Current Cap Rate
+Terminal Cap Rate
+LTV Max
+DSCR Min
+Class A2
+60%
+1.75
+Class B
+70%
+1.50
+Assumptions
+3.00%
+5.35%
+5.35%
+Limitations
+Source: Morgan Stanley Research
+
+
+[Page 14]
+M
+ Foundation
+14
+Exhibit 26: Based on our modeled assumptions, we show at what cost of debt on the 
+shelf the issuer can bring a bond to market, and at what LTV.
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+90%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+95%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+100%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Shelf LTV
+Class B Sensitivity Table
+WAVG Coupon
+Source: Morgan Stanley  Research
+Similar to the colocation shelves, the mixed business profile can tolerate higher rates than 
+we have today and still meet minimum IRR targets – up to around 8.5%, we think with LTV 
+brought down significantly. As before, we also show the IRR sensitivity to the cap rate 
+assumption holding fixed a 7% cost of debt and a 50% LTV (the limit); once again these 
+shelves can tolerate some expansion but a significant move weaker starts to challenge the 
+returns of these assets.
+Exhibit 27: We model the IRR of the data center sponsor over the life of a 5y ABS, 
+assuming a flat cap rate and a 3% rent escalator. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+10.70%
+10.50%
+10.30%
+10.10%
+9.90%
+9.71%
+9.51%
+9.31%
+9.11%
+8.91%
+8.71%
+8.51%
+8.32%
+8.12%
+7.92%
+7.72%
+7.52%
+7.33%
+35%
+11.25%
+11.00%
+10.75%
+10.50%
+10.25%
+10.00%
+9.76%
+9.51%
+9.26%
+9.01%
+8.76%
+8.52%
+8.27%
+8.02%
+7.77%
+40%
+11.88%
+11.57%
+11.26%
+10.96%
+10.65%
+10.35%
+10.04%
+9.74%
+9.43%
+9.13%
+8.82%
+8.52%
+45%
+12.61%
+12.24%
+11.87%
+11.49%
+11.12%
+10.75%
+10.38%
+10.00%
+9.63%
+9.26%
+50%
+13.48%
+13.03%
+12.58%
+12.13%
+11.67%
+11.22%
+10.77%
+10.32%
+9.87%
+55%
+14.53%
+13.98%
+13.43%
+12.88%
+12.34%
+11.79%
+11.24%
+60%
+15.81%
+15.15%
+14.48%
+13.81%
+13.15%
+12.48%
+65%
+17.42%
+16.61%
+15.79%
+14.98%
+14.16%
+70%
+19.51%
+18.49%
+17.48%
+16.48%
+15.47%
+75%
+80%
+85%
+90%
+95%
+100%
+Implied 5y IRR
+Cost of Debt
+Shelf LTV
+Source: Morgan Stanley Research
+Exhibit 28: Modeled equity IRR assuming 7% cost of debt and 50% LTV for a mixed 
+business data center, at various valuation levels
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
++200
++100
++75
++50
++25
+0
+-25
+-50
+-75
+-100
+-200
+5y IRR
+Cap Rate Expansion/Compression (bp)
+Est. Equity IRR at a 7% Cost of Debt and 50% LTV, Mixed Business Shelf
+Source: Morgan Stanley Research
+At the Limit
+As with the previous two types, mixed business shelves also have more flexibility within 
+their structure than they currently exercise. 
+We make four assumptions about our model data center, based off of levels that we think 
+test the bounds of legal and/or rating agency restrictions: 
+Exhibit 29: Modeled scenario for mixed 
+business shelves at their limits
+
+
+[Page 15]
+M
+ Foundation
+Morgan Stanley Research
+15
+1. The market will tolerate a Class A2 LTV up to 70% and a shelf LTV of up to 85%.
+2. The market will tolerate a Class A2 DSCR down to 1.35 and a shelf DSCR down to 
+1.15.
+3. The data center campus is valued at a 5.35% cap rate, the current universe average 
+for mixed business shelves, which we hold steady over 5y.
+4. AANOI grows by 3.0% per annum, in line with modeled growth projections.
+As before, this opens up the higher rate environment in which to issue bonds, as well as 
+higher leverage. Because the mixed business shelves operate so conservatively compared 
+to some of the other shelf profiles, they gain more room to issue than the other two. At a 
+cost of debt of 7% on the Class A2, LTV can rise from 40% all the way up to 55%; at the 
+shelf level similarly at a 7% cost of debt LTV can increase back up to 65%. The issuer can 
+tolerate a cost of debt up to around 8.5% after which we think the modeled IRR would no 
+longer be sufficient. 
+Exhibit 30: Based on our modeled assumptions, we show at what cost of debt on the 
+Class A2 the issuer can bring a bond to market, and at what LTV. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+Class A2 Sensitivity Table
+Coupon
+Class A2 
+LTV
+Source: Morgan Stanley Research
+Exhibit 31: Based on our modeled assumptions, we show at what cost of debt on the 
+shelf the issuer can bring a bond to market, and at what LTV. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+35%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+40%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+45%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+50%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+55%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+60%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+65%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+70%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+75%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+80%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+85%
+TRUE
+TRUE
+TRUE
+TRUE
+TRUE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+90%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+95%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+100%
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+FALSE
+WAVG Coupon
+Shelf LTV
+Source: Morgan Stanley Research
+Exhibit 32: We model the IRR of the data center sponsor over the life of the 5y ABS, 
+assuming a flat cap rate and a 3% rent escalator. 
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+9.00%
+9.50%
+10.00%
+10.50%
+11.00%
+11.50%
+12.00%
+12.50%
+13.00%
+13.50%
+30%
+10.70%
+10.50%
+10.30%
+10.10%
+9.90%
+9.71%
+9.51%
+9.31%
+9.11%
+8.91%
+8.71%
+8.51%
+8.32%
+8.12%
+7.92%
+7.72%
+7.52%
+7.33%
+7.13%
+6.93%
+6.73%
+6.54%
+35%
+11.25%
+11.00%
+10.75%
+10.50%
+10.25%
+10.00%
+9.76%
+9.51%
+9.26%
+9.01%
+8.76%
+8.52%
+8.27%
+8.02%
+7.77%
+7.53%
+7.28%
+7.03%
+6.78%
+6.54%
+6.29%
+40%
+11.88%
+11.57%
+11.26%
+10.96%
+10.65%
+10.35%
+10.04%
+9.74%
+9.43%
+9.13%
+8.82%
+8.52%
+8.21%
+7.91%
+7.60%
+7.30%
+7.00%
+6.69%
+45%
+12.61%
+12.24%
+11.87%
+11.49%
+11.12%
+10.75%
+10.38%
+10.00%
+9.63%
+9.26%
+8.89%
+8.52%
+8.15%
+7.78%
+7.41%
+50%
+13.48%
+13.03%
+12.58%
+12.13%
+11.67%
+11.22%
+10.77%
+10.32%
+9.87%
+9.42%
+8.97%
+8.52%
+8.07%
+55%
+14.53%
+13.98%
+13.43%
+12.88%
+12.34%
+11.79%
+11.24%
+10.70%
+10.15%
+9.61%
+9.06%
+60%
+15.81%
+15.15%
+14.48%
+13.81%
+13.15%
+12.48%
+11.82%
+11.16%
+10.50%
+9.84%
+65%
+17.42%
+16.61%
+15.79%
+14.98%
+14.16%
+13.35%
+12.55%
+11.74%
+10.93%
+70%
+19.51%
+18.49%
+17.48%
+16.48%
+15.47%
+14.47%
+13.48%
+12.48%
+75%
+22.31%
+21.03%
+19.76%
+18.49%
+17.23%
+15.97%
+14.72%
+80%
+26.32%
+24.65%
+23.00%
+21.35%
+19.71%
+18.09%
+85%
+32.56%
+30.27%
+27.99%
+25.74%
+23.52%
+90%
+95%
+100%
+Implied 5y IRR
+Cost of Debt
+Shelf LTV
+Source: Morgan Stanley Research
+Adapting to a Higher Rate Environment 
+Annual Growth in Revenue
+Current Cap Rate
+Terminal Cap Rate
+LTV Max
+DSCR Min
+Class A2
+70%
+1.35
+Class B
+85%
+1.15
+Assumptions
+3.00%
+5.35%
+5.35%
+Limitations
+Source: Morgan Stanley Research
+
+
+[Page 16]
+M
+ Foundation
+16
+What can issuers do if rates rise and spreads continue to widen? First steps we think will 
+be to flex around the LTV and DSCRs, but as we have shown above, at some point rates 
+become too restrictive to continue to issue within the tolerated parameters of the typical 
+ABS trusts. If issuers are forced to adapt to rates in excess of  8%, either because the 
+underlying base  rate continues to climb and/or because spreads widen for the asset class, 
+we think they can pursue a number of strategies and/or tolerate weaker IRRs, as we lay 
+out below. 
+1. Issue at a discount: First, a strategy already undertaken is to set a lower coupon and 
+issue below par so that the yield clears the market while reducing debt service  – this 
+keeps  monthly cashflows contained in tolerable DSCR ranges, but requires some 
+assumption by the issuer that come time to refinance, the data center will have 
+appreciated sufficiently in value. Given the supply/demand imbalance of compute today, 
+and evidence in recent years of rising rents and asset valuations, we think this is an 
+assumption that many data center developers are willing to make. 
+Of course, if rates stay persistently higher for longer, we would expect that data center 
+companies will take these higher funding costs into account when negotiating new leases. 
+In an environment where compute is scarce, these companies have significant pricing 
+power and should be able to negotiate better lease terms to account for the higher 
+interest rates. The main challenge, then, is in the transition period into a higher rate 
+environment, as we can see most clearly in Exhibit 33 between 2021 and 2023. To 
+account for higher rates than  anticipated, bonds were issued at significant discounts to 
+par. 
+We have less visibility on when, exactly, lease terms are struck with no further room for 
+negotiations. Raising financing for construction for a hyperscaler tenant generally requires 
+an anchor tenant. We think it is possible that, prior to stabilization, lease terms could still 
+be finalized if funding costs are more punitive than anticipated. However, once the asset is 
+operational and the contract has been signed, with rent escalators already determined, we 
+believe the issuer has limited ability to increase rents to account for a higher cost of debt.
+Exhibit 33: As yields rise, issuers are more likely to issue bonds at a discount to meet 
+DSCR restrictions, banking on strong valuations down the line to refinance the debt. 
+-0.50%
+0.00%
+0.50%
+1.00%
+1.50%
+2.00%
+2.50%
+3.00%
+3.50%
+4.00%
+4.50%
+5.00%
+5.50%
+6.00%
+6.50%
+7.00%
+7.50%
+8.00%
+8.50%
+Feb-09-18
+Jul-30-19
+Apr-23-20
+Aug-24-20
+Oct-02-20
+Jun-25-21
+Oct-06-21
+Nov-23-21
+Apr-08-22
+Jul-01-22
+Feb-23-23
+Apr-18-23
+Jun-29-23
+Sep-15-23
+Nov-08-23
+Feb-08-24
+Mar-08-24
+Apr-30-24
+Jun-06-24
+Sep-10-24
+Oct-10-24
+Nov-22-24
+Feb-11-25
+Mar-07-25
+Apr-01-25
+May-15-25
+Jul-08-25
+Aug-07-25
+Aug-20-25
+Oct-08-25
+Oct-30-25
+Nov-07-25
+Nov-18-25
+Jan-16-26
+Jan-16-26
+Feb-02-26
+Mar-13-26
+Mar-13-26
+Mar-18-26
+DC ABS Coupons & Issue Yields
+Basis
+Coupon
+Issue Yield
+Source: Bloomberg, CreditFlow, Morgan Stanley Research
+2. Tolerate near-term discomfort expecting relief later in the master trust...: Second, 
+we think data center companies may be willing to tolerate lower near-term IRRs on an 
+
+
+[Page 17]
+M
+ Foundation
+Morgan Stanley Research
+17
+individual deal, either in anticipation of lower interest rates that could later reduce the 
+average cost of funding across the shelf, or in anticipation of more favorable rent 
+escalators on assets added to the master trust at a later date. If the issuer believes rates 
+are likely to decline over the next few years as they continue to build out the trust, they 
+may assume that the shelf's average IRR will improve over time. In that case, some near-
+term underwhelming returns may be an acceptable price to pay to continue financing 
+existing operations and developing new campuses.
+3. … or because construction-to-completion valuations provide a sufficient cushion: 
+The return for the data center operator should be thought of more holistically beyond the 
+term of the ABS deal – from greenfield through to the end of the useful life. We believe 
+the data center developers are seeing meaningful data center valuation increases once the 
+asset does in fact become stabilized. Take the CLDCP shelf, for example: 80MW of leased 
+capacity, valued at $1.32bn upon its recent issuance in July. Assuming a 7.5% cost for a 
+construction loan with a 2y term and an 85% loan-to-cost (levels we think are reasonable, 
+if not conservative for this profile of data center), depending on the build cost per MW of 
+critical IT load, the equity sponsor does well as the data center moves from construction 
+to completion so long as costs are contained below $15mm/MW. There are, of course, a 
+number of variables at play here and we simplify to convey that the returns of the 
+stabilized asset are just one part of the calculus that the developer is making. 
+Ultimately,the data center developer's returns should be evaluated over the full asset life 
+rather than just the five years financed through ABS. Including the construction period 
+gives a more complete picture and may allow for the ABS issuer to tolerate a slightly 
+lower IRR once the completion premium is taken into account. 
+Exhibit 34: Example of the returns 
+$10
+$11
+$12
+$13
+$14
+$15
+Cost of Build
+$800
+$880
+$960
+$1,040
+$1,120
+$1,200
+Completion Premium
+65%
+50%
+38%
+27%
+18%
+10%
+Cost of Construction Loan
+7.50%
+7.50%
+7.50%
+7.50%
+7.50%
+7.50%
+Loan-to-Cost
+85%
+85%
+85%
+85%
+85%
+85%
+Equity Return
+111.2%
+86.0%
+62.0%
+38.5%
+14.7%
+-11.1%
+$mm/MW of Critical IT Load
+Source: Intex, Morgan Stanley Research estimates
+4. Issue instead into the credit markets: Other markets have thus far tolerated higher 
+LTCs and lower DSCRs, which we think could prove beneficial for ABS issuers in a higher-
+for-longer rate environment. We dig deeper into the structures in the credit market in the 
+section Implications for the Corporate Credit Market  , noting that the amortization 
+features in most credit deals makes comparison more challenging. That said, most deals 
+that have come through the IG and HY corporate markets have DSCRs that begin around 
+1.10-1.20  given that cashflow certainty is provided by the backing lease (which tends to be 
+15y with a 3% rent escalator). The one non-amortizing secured credit deal has an average 
+DSCR over the 10y bond term of 1.30, still well below where the ABS market is today. 
+The credit markets are also tolerating higher leverage: nearly all of the deals in credit have 
+a construction component, so loan-to-cost (LTC) (rather than loan-to-value) is the better 
+metric; LTCs average around 85-90% but can be as high as 97% in cases where 
+amortization is full over the life of the bond and the underlying tenant credit quality is 
+very high.  In the one non-amortizing deal, we believe LTV was ~90%. In addition, the depth 
+of the credit markets should be attractive to data center operators, as well as the speed 
+
+
+[Page 18]
+M
+ Foundation
+18
+of execution, particularly in an environment where rate volatility is high. 
+The credit markets are likely more open to the hyperscaler data centers rather than 
+typical colocation data centers, and should a colocation data center seek to issue a 
+secured corporate bond, we would not expect that market to tolerate such high LTVs or 
+low DSCRs given the difference in business model. 
+Of course, our assumptions on the returns for the data center developers are built off of 
+an assumption of data center valuation over the five-year period. We assume a constant 
+cap rate over the 5y period, but in an environment where compute remains so constrained 
+the data center companies could be assuming an increasing pace of valuation.  We have 
+very little visibility into this, given the private nature of these companies, but developers 
+could very well be more constructive on their equity returns than we lay out here.
+
+
+[Page 19]
+M
+ Foundation
+Morgan Stanley Research
+19
+Leased Capacity Projections and Securitized Credit Supply 
+Forecast
+The impossible-to-ignore reality is that the quantity of data centers coming online 
+through the end of the decade is very high – far  more than has come online so far this 
+decade. Estimating the amount of data centers that will require debt financing is 
+challenging, primarily because estimates for the amount of data centers (both online and 
+under construction) vary between data providers. Often data from third-party data 
+providers differ from what companies individually report, if they report at all, both in 
+terms of timing and in capacity. However, all agree: the pace of new additions will remain 
+elevated over the coming years, and we believe that most of those that are leased out will 
+be backed by debt. 
+Our Global Thematics Research team estimates that data center power in the US will 
+grow meaningfully through the end of this decade, based on their bottom-up analysis of 
+computing power associated with chip sales. They forecast that US data center power 
+could grow from nearly 70GW in 2026 to 101GW in 2027 and then to 149GW 2028; 
+however, there is a significant risk of a 30-40% shortfall given myriad constraints that 
+developers continue to face with respect to securing new power access. (Their analysis 
+includes deployment of behind-the-meter gas solutions growing from 4% of power for 
+data centers in 2026 to 27% by 2028). (see their latest note Powering AI: Racking Up the 
+Power Shortfall for more). Even if only 60% of their projected capacity can come online 
+over the next few years, they are forecasting nearly 50GW of incremental capacity in 
+2027-2028 alone. 
+Exhibit 35: Our Thematics team's projections for US data center growth through 2029.
+Part IIB. US Results
+2023
+2024
+2025
+2026
+2027
+2028
+2029
+Power Usage Data
+Total Power Used by GenAI (TWh)
+18
+                       
+43
+                     
+93
+                    
+184
+                
+362
+                  
+650
+                   
+1,061
+               
+  Annual Growth Rate
+139%
+115%
+99%
+96%
+80%
+63%
+ GenAI Power As a % of 2022 US Data Center Power
+10%
+23%
+50%
+99%
+194%
+349%
+570%
+ GenAI Power As a % of 2022 US Power
+0%
+1%
+2%
+4%
+9%
+15%
+25%
+Total US Retail Power Demand, Front-of-Meter (Non-AI & AI, TWh)
+3,874
+               
+3,975
+             
+4,016
+            
+4,112
+           
+4,218
+            
+4,349
+             
+4,493
+             
+Base Data Center Power, ex-GenAI (TWh)
+205
+                     
+225
+                   
+248
+                  
+272
+                
+300
+                  
+330
+                   
+362
+                   
+Growth in Base Data Center Power, ex-GenAI
+10.0%
+10.0%
+10.0%
+10.0%
+10.0%
+10.0%
+Total Projected Data Center Power Usage, Incl. GenAI (TWh)
+223
+                     
+268
+                   
+340
+                  
+456
+                
+661
+                  
+979
+                   
+1,423
+               
+US Data Center Power (GW)
+34
+                       
+41
+                     
+52
+                    
+69
+                   
+101
+                  
+149
+                   
+217
+                   
+US Data Center Power As a % of US Power
+6%
+7%
+8%
+11%
+16%
+23%
+32%
+Increase in Data Center Power YoY (GW)
+6.9
+                    
+11.0
+                
+17.7
+               
+31.2
+                
+48.4
+                 
+67.6
+                 
+Source: Morgan Stanley Research estimates
+Not all of the data centers that energize in the coming years will be leased out; many will 
+still be self-build, which we view as beyond the scope of consideration for securitization. 
+Relying on data from S&P 451, we estimate ~22GW of data center capacity sits currently 
+online within a leased data center in the US and Canada. Of that, roughly 58% – or  over 
+13GW – is operated by an issuer who has brought at least one ABS or CMBS deal to 
+market; only ~4GW and ~2GW sit in the ABS and CMBS markets respectively, though, 
+meaning that issuers have, on average, securitized less than half of their operational 
+capacity. 
+
+
+[Page 20]
+M
+ Foundation
+20
+Exhibit 36: US & Canada data center capacity by operator type, 
+operational and planned
+ -
+ 10
+ 20
+ 30
+ 40
+ 50
+ 60
+ 70
+ Leased
+Hyperscaler
+Crypto Mining
+Current & Planned US/Canada Capacity by Operator Type
+Total Operational Data Centers Net IT Power (GW)
+Next Phase of Construction and Expansion Capacity (GW)
+Source: S&P 451, Morgan Stanley Research
+Exhibit 37: Current US and Canada data center leased capacity 
+by sp market participation
+Securitized 
+Credit Issuer
+58%
+Other
+42%
+Current US & Canada Data Center Leased Capacity 
+Source: S&P 451, Morgan Stanley Research
+Using the same data, S&P numbers indicate that leased capacity additions will total over 
+6GW this year, up from 4GW in 2025, and growing to 12GW in 2027. Their total projection 
+through the end of 2030 is for an additional~55GW. (Note that these 2026 and 2027 
+numbers are higher than we had back in January, where we used ~4.5 and ~6.5GW 
+respectively to model issuance numbers.) Any slowdown in issuance growth will not be 
+for a lack of capacity to securitize or secure, then, in our view. 
+Exhibit 38: Estimated data center capacity by year of operation
+0
+2
+4
+6
+8
+10
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Operational Capacity by Year of Operation (GW), SP 451
+Leased DC
+Hyperscaler DC
+Source: S&&P 451, Morgan Stanley Research
+Exhibit 39: Forecasted planned new capacity, SP estimates
+0
+5
+10
+15
+20
+25
+30
+2026
+2027
+2028
+2029
+2030
+Forecasted Planned Capacity (GW), SP 451
+Leased DCs
+Hyperscaler DCs
+Source: S&P 451, Morgan Stanley Research
+Given the relentless pace of data center construction, the natural question is why, 
+then, securitized credit supply has so far lagged our expectations, and how supply will 
+look in the years to come.  
+The starting point for issuance forecasts in ABS & CMBS is first and foremost these 
+capacity numbers: how much new capacity in MWs is there even to securitize in any given 
+year? We think the data above show that there will be no shortage of new capacity next 
+year and in 2028 that could be financed through the ABS or CMBS markets. 
+The second question is how much of their capacity do the issuers actually want to fund 
+through securitization? A diversity of funding sources is good for a company that will 
+heavily depend on debt financing for growth. These companies are sure to explore the 
+many avenues at their disposal – securitized, unsecured and secured credit, broadly 
+syndicated loans, and private credit – to build a wide buyer base and ensure continued 
+capital market access. The corporate credit markets are deeper and broader, allowing for 
+faster execution, bigger size, and better liquidity. However, we do think some avenues will 
+be more natural for  certain types of assets than others, and expect that multi-tenant, 
+multi-campus sites will continue to find a primary home in securitized products. 
+
+
+[Page 21]
+M
+ Foundation
+Morgan Stanley Research
+21
+Next, as discussed in the section above, it matters how much debt can be raised against a 
+given asset. If LTVs are forced to fall, which we think is likely given the higher rate 
+environment to accommodate the DSCR restrictions, then fewer dollars are raised per 
+MW of critical IT load. 
+Lastly, it comes down to market appetite – what we view as the more restrictive 
+condition. The main buyer base of esoteric ABS has been the insurance companies and 
+other yield buyers; naturally, as yields rise these coupons should look attractive. However 
+we are cautious that the plethora of AI and data center-backed financings that have come 
+across the market risks finding investors close to full, at least on their exposure to some 
+names. We think investors are preferring to take their data center/AI risk elsewhere, too, in 
+structures that delever (see here) and have more transparency on leases.
+Exhibit 40: Data center issuance is now pacing on par with 
+2025, which we expect to continue through year-end. 
+0%
+50%
+100%
+150%
+200%
+250%
+300%
+350%
+400%
+450%
+500%
+$0
+$1,000
+$2,000
+$3,000
+$4,000
+$5,000
+$6,000
+$7,000
+Data Center Securitized Credit, Gross Issuance by Month
+2025
+2026
+Pace vs 2025 (RHS)
+Source: CreditFlow, Intex, Trepp, Morgan Stanley Research
+Exhibit 41: Given the higher rate environment and the liquidity in 
+alternative credit channels, we lower our forecast for the years 
+ahead slightly. 
+ $-
+ $10,000
+ $20,000
+ $30,000
+ $40,000
+ $50,000
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2026e
+2027e
+2028e
+Gross Issuance, Data Center Securitized Credit ($mm)
+US ABS
+US CMBS
+Europe ABS
+Source: CreditFlow, Intex, Trepp, Morgan Stanley Research estimates
+We now modify our original forecasts, bringing our gross issuance expectation for 
+2026 down to $25-30bn with ~$17bn in ABS and ~$10bn in CMBS (down from $30-
+35bn). For 2027, we lower our forecast to $40-50bn, down from our previous estimate of 
+~$55bn. For 2028, we hold our forecast steady at $55-65bn. In total, that means we 
+expect $120-$145bn of gross issuance across ABS & CMBS through 2028 (inclusive of 
+2026).  
+
+
+[Page 22]
+M
+ Foundation
+22
+Implications for the Corporate Credit Market  
+Higher Treasury rates could also slow issuance of new secured data center-backed 
+paper in corporate credit (a contrast from core hyperscaler issuance, which we see 
+being more immune to rates). The slowdown in some cases should be temporary –  
+especially for HQ tenants –  as lease economics can be improved, but it does 
+introduce  a bigger lag in the supply evolution than it would have otherwise. Also, 
+higher rates add to other supply-side constraints that are building, with potential 
+shortages in power, people (work force), and politics. 
+Another interesting debate is what happens to prior HY deals for data centers that 
+are 1) close to completion/stabilization (4Q25 vintages), or 2) those in which debt 
+has been issued, but construction is still some ways off. Stabilizing the assets 
+might  have been enough for issuers to achieve lower cost of capital a few months 
+ago, but is no longer a given for all borrowers. If rates stay high/rise further, we 
+think that deals with higher-quality tenants and appropriate deleveraging through 
+amortization may have the ABS take-out option that could result in lower coupon 
+payments. 
+From a metric standpoint (<70% LTV and >1.35x DSCR), we think corporate deals 
+can meet the requirements to be refinanced in ABS, but if benchmark Treasury 
+rates stay higher for longer, it is unlikely that the securitized credit market will 
+offer materially lower rates to these borrowers. We also note that our current LTV 
+methodology, based on capex and contract value, is likely to evolve: we still do not 
+have enough of a  track record history to differentiate the issuers in the space, but 
+we expect more LTV dispersion as time goes by. 
+It also remains unclear if all the first-time issuers that have come to  market in the 
+last ~12 months will transition into long-term data center developers and 
+operators. Accordingly, some might look to stay in the corporate credit market to 
+preserve optionality on their assets. This is especially true if power and political 
+challenges limit the growth potential of these companies, which has been 
+predicated on their ability to expand their portfolio of data centers. 
+All things considered, particularly for the HY market, we now see less self-
+adjustment in terms of supply and takeout. Asset quality is becoming increasingly 
+important: cleaner deals with high-quality tenants and appropriate structures may 
+still be able to access longer-term refinancing through alternative markets, such as 
+loans and IG. By contrast, deals with lower-quality tenants or structural challenges 
+– whether operational, such as permitting or power-access issues, or financial, such 
+as limited amortization or weaker covenants – face a narrower range of refinancing 
+options.
+New IG/HY DC Issuance Also Likely Dependent on Rates 
+As in securitized credit, data center supply in the corporate credit market should be 
+impacted by higher  rates that affect asset-level IRR economics. Compounding the rate 
+environment,  political backlash regarding AI is increasing and developers are facing 
+
+
+[Page 23]
+M
+ Foundation
+Morgan Stanley Research
+23
+greater challenges related to power access.  In IG, 3 secured bond deals were brought to 
+market in April, followed by one in each of the summer months (June, July and August); 
+there were no deals in September. In HY, there were 3 deals in 1Q26, followed by 9 during 
+2Q26 and now only 3 deals  thus far in 3Q26, plus one loan deal. While there are 3 months 
+left in the year, it is reasonable to assume that the rate sell-off has already led to 
+somewhat slower deal-flow than otherwise. 
+More broadly, we have noted before than lower-rated companies' borrowing ability is 
+likely more sensitive to higher rates (see our note here), which  partially explains the 
+supply story in the HY market. This is in contrast to the unsecured corporate bond 
+issuance we get getting from hyperscaler that is mostly immune to rates. But for the HY 
+deals, the math around debt costs vs. project cash flows vs. other costs needs to work at 
+the project levels for the deal to get under-written. Along these lines, it also notable that 
+investor appetite for recent deals has become more selective, with much higher new-issue 
+concessions to clear. 
+Exhibit 42: HY Deals: 5yr UST is now ~130bp higher since the first deal last October; 
+sector basis vs. BB index is subject to tenant quality and deal structure, in our view 
+Security
+Tenant/Credit 
+Support
+Date Priced
+Size
+($bn)
+Bbg
+Rating
+Coupon
+(%)
+New-issue
+spread (bp)
+5yr UST at
+pricing (bp)
+Yield at 
+issue (%)
+BB index at
+pricing (bp)
+OAS at issuance 
+(bp)
+Sector basis, 
+OAS-adj (bp)
+WULF 7 3/4 10/15/30
+GOOGL Backstop
+10/16/25
+3.20
+BB
+7.750
+419
+355
+7.737
+186
+355
+170
+CIFR 7 1/8 11/15/30
+GOOGL Backstop
+11/05/25
+1.73
+BB-
+7.125
+337
+376
+7.134
+177
+298
+121
+APLD 9 1/4 12/15/30
+CRWV
+11/13/25
+2.35
+BB-
+9.250
+630
+371
+10.006
+180
+688
+509
+FLASHC 7 1/4 12/31/30
+GOOGL Backstop
+12/18/25
+1.30
+NR
+7.250
+358
+366
+7.242
+173
+346
+173
+BLKPRL 6 1/8 02/15/31
+AMZN
+02/04/26
+2.00
+BB-
+6.125
+232
+383
+6.150
+158
+244
+86
+TRACTC 5 7/8 03/01/31
+NVDA
+02/13/26
+3.80
+BB
+5.875
+222
+360
+5.819
+166
+194
+28
+PFORGE 6 3/4 03/15/31
+ORCL
+03/03/26
+2.15
+BB-
+6.750
+357
+364
+7.210
+175
+294
+119
+MERIDI 6 1/4 04/30/31
+GOOGL Guarantee
+04/16/26
+5.70
+BB-
+6.250
+233
+392
+6.248
+166
+210
+44
+EDGCOM 7 1/2 04/30/31
+CRWV/Alibaba
+04/21/26
+1.30
+BB
+7.500
+358
+391
+7.490
+163
+333
+169
+CORZ 7 3/4 05/15/31
+CRWV
+04/22/26
+3.30
+BB-
+7.750
+399
+393
+7.916
+163
+400
+237
+TRACTD 6 1/2 05/01/31
+NVDA
+04/28/26
+4.59
+BB
+6.500
+288
+398
+6.858
+165
+259
+94
+SECMOS 8 7/8 05/01/31
+SoftBank
+04/30/26
+1.00
+NR
+8.875
+499
+401
+8.996
+161
+482
+321
+ELKGVP 7 1/2 06/15/31
+CRWV
+06/02/26
+0.90
+BB-
+7.500
+333
+417
+7.494
+152
+340
+187
+STNGRY 6 06/15/31
+AMZN
+06/08/26
+0.81
+BB-
+6.000
+176
+429
+6.050
+158
+156
+-2
+ELNFOR 7 06/15/31
+CRWV
+06/09/26
+1.59
+BB-
+7.000
+273
+424
+6.974
+161
+248
+87
+YNDRDC 6 7/8 06/30/31
+ORCL
+06/23/26
+0.72
+BB-
+6.875
+260
+427
+6.868
+155
+255
+100
+GALAXY 9 7/8 08/01/31
+CRWV
+07/23/26
+3.51
+BB-
+9.875
+553
+445
+9.982
+161
+557
+396
+ZENARC 8 7/8 08/31/31
+Undisclosed
+08/13/26
+2.25
+NR
+8.875
+467
+432
+8.986
+152
+520
+368
+CLSPRK 7 7/8 10/01/31
+META
+09/18/26
+2.28
+BB-
+7.875
+338
+486
+8.236
+151
+298
+148
+Source: Company filings, Bloomberg, Morgan Stanley Research, S&P, Moody's, Fitch 
+Exhibit 43: IG Deals: Lower impact of treasury benchmark vs. HY deals; sector basis 
+has increased even for higher quality tenants
+Security
+Tenant
+Date Priced
+Size
+($bn)
+Bbg
+Rating
+Coupon
+(%)
+New-issue
+spread (bp)
+Treasury 
+Benchmark
+used (bp)
+Yield at issue,
+price-adj (%)
+BBB index at
+pricing (bp)
+OAS at 
+issuance (bp)
+Sector basis,
+OAS-adj (bp)
+RPLDCI 6.581 05/30/49
+META
+10/16/25
+27.29
+A+ (S&P)
+6.581
+254
+404
+6.580
+78
+179
+101
+QTSQST 5.7 04/15/36
+MSFT
+04/06/26
+4.60
+Baa2
+5.700
+138
+432
+5.700
+82
+142
+60
+RDMICH 7 1/2 03/30/45
+ORCL
+04/24/26
+14.00
+BBB-
+7.500
+329
+433
+7.625
+78
+251
+173
+HUTRBA 6.192 11/15/42
+GOOGL Guarantee
+04/27/26
+3.25
+BBB- (S/F)
+6.192
+185
+434
+6.192
+79
+153
+74
+HUTBPA 6.129 11/30/42
+≥AA- rated
+06/04/26
+4.25
+Baa2
+6.129
+165
+448
+6.129
+72
+146
+74
+TXEDCI 7.534 11/30/48
+META
+07/27/26
+12.64
+A+
+7.534
+288
+466
+7.533
+79
+225
+146
+QTSODY 6 5/8 09/01/31
+MSFT
+08/18/26
+3.90
+BBB-
+6.625
+286
+436
+7.225
+80
+239
+159
+Source: Company filings, Bloomberg, Morgan Stanley Research, S&P, Moody's, Fitch 
+Relative to securitized credit though, corporate credit deals can better adjust higher 
+rates as  it is  plausible for the issuers to try and renegotiate the leases before 
+stabilization to achieve better economics. Given the shortage of power and surging need 
+for compute capacity, we think negotiating leverage currently lies with the powered-shell 
+providers (PSPs). There is usually a lag between when leases are announced and financing 
+comes to market, which could allow for renegotiation (such lag has varied since the 
+beginning of the year, but we think it stays within 3 to 6 months in most cases). 
+Importantly, and compared to securitized credit, this renegotiation happens before the 
+lease would commence. So, purely based on higher rates, corporate credit issuance 
+
+
+[Page 24]
+M
+ Foundation
+24
+might be dampened to smaller extent than in the ABS market.
+By running a sensitivity analysis on the key drivers of IRR for powered shell providers, we 
+estimate that returns are most sensitive to the following factors: 1) lease term; 2) 
+construction cost; 3) starting lease revenue; 4) annual rent escalator; 5) construction 
+period; and 6) margins (in case the lease is not triple-net). DCSR and debt coupon have 
+lower impact on the IRR vs these six factors, so tenants can, in theory, help improve 
+economics of certain deals so that IRRs clear the cost of capital hurdle by adjusting lease 
+tenor, lease revenues, margins and escalators.  Construction cost and construction period 
+are outside of the scope they can control, in our view. 
+If we assume that the required equity return hurdle is  equal to the cost of capital, we 
+find that less deals will clear the bar with cost of debt at 9% or higher ( Exhibit 44 ). 
+We focus here on unlevered all-in IRR in this case, though the levered equity return could 
+be more accurate from a sponsor perspective as debt makes up 80% or more of the total 
+capital in these deals. Moreover, we note that PSPs do not have other sources of capital 
+readily available. A number of these companies issued converts and therefore are already 
+subject to dilution risk. Simply said, if projects are not funded with debt, there is a real risk 
+that they do not have other sources of funding.
+Exhibit 44: We look at all-in IRR for powered shell providers and find that 9-10% cost of 
+debt is where some deals are likely to be unprofitable depending on inputs such as 
+annual revenues per MW and construction cost per MW 
+All-In Development IRR Sensitivities
+Project-level IRR by construction cost ($mm / MW) and starting annual lease revenue ($mm / MW), across debt coupon scenarios
+Input
+Value
+Critical IT capacity
+100 MW
+7.0%
+$10
+$12
+$14
+$16
+8.0%
+$10
+$12
+$14
+$16
+Construction cost ($mm / MW)
+$12.0
+$1.40
+9.0%
+6.8%
+5.2%
+3.8%
+$1.40
+8.8%
+6.7%
+5.1%
+3.8%
+Construction period (years)
+2.0 yrs
+$1.60
+10.8%
+8.4%
+6.6%
+5.2%
+$1.60
+10.5%
+8.2%
+6.5%
+5.1%
+Starting annual lease revenue ($mm / MW)
+$1.50
+$1.80
+12.5%
+10.0%
+8.0%
+6.5%
+$1.80
+12.1%
+9.7%
+7.8%
+6.4%
+Annual rent escalator
+3.0%
+$2.00
+14.0%
+11.4%
+9.3%
+7.6%
+$2.00
+13.6%
+11.1%
+9.0%
+7.5%
+Lease term (years)
+15 yrs
+NOI margin
+100.0%
+Target DSCR
+1.25x
+Debt LTC on total project cost
+90.0%
+Initial debt coupon
+8.50%
+9.0%
+$10
+$12
+$14
+$16
+10.0%
+$10
+$12
+$14
+$16
+Debt maturity / refinance year
+5
+$1.40
+8.6%
+6.7%
+5.1%
+3.7%
+$1.40
+8.5%
+6.6%
+5.0%
+3.7%
+Refi benchmark change
+0.00%
+$1.60
+10.2%
+8.1%
+6.4%
+5.1%
+$1.60
+9.9%
+8.0%
+6.4%
+5.0%
+Refi spread change
+-0.50%
+$1.80
+11.8%
+9.4%
+7.7%
+6.3%
+$1.80
+11.5%
+9.3%
+7.6%
+6.2%
+Financing fees as % of debt
+1.00%
+$2.00
+13.3%
+10.8%
+8.8%
+7.4%
+$2.00
+13.0%
+10.4%
+8.7%
+7.3%
+DSRA as multiple of annual debt service
+0.50x
+Residual value as % of replacement cost
+0.0%
+Clears coupon hurdle
+Within 100bp
+Below coupon hurdle
+Base Inputs
+Construction Cost ($mm / MW)
+All-In Development IRR  —  9% Debt Coupon
+Lease Revenue
+Construction Cost ($mm / MW)
+All-In Development IRR  —  10% Debt Coupon
+Lease Revenue
+Construction Cost ($mm / MW)
+All-In Development IRR  —  7% Debt Coupon
+Lease Revenue
+Construction Cost ($mm / MW)
+All-In Development IRR  —  8% Debt Coupon
+Lease Revenue
+Source: Morgan Stanley Research
+Refinancing Past HY Deals: Potential Avenues
+Higher rates raise uncertainty around what future funding and refinancing paths for 
+legacy HY deals could look like. HY project finance deals have been raised pre-
+construction to finance the build-out of the actual shells. Accordingly,  credit spreads at 
+new issue compensate investors for construction risk ( Exhibit 42 ), which is more front-
+loaded in the initial years of the term of the bond. The leases on the other hand that pay 
+the rent to service this debt are typically longer dated, which suggests that this debt will 
+need to get refinanced at some point beyond the non-call period. 
+When rates were lower, one could make the case that post construction and asset 
+stabilization, existing expensive HY debt could be taken out at cheaper levels, with the 
+ABS market being one potential outlet (apples to apples ABS deals were printing at ~6% 
+
+
+[Page 25]
+M
+ Foundation
+Morgan Stanley Research
+25
+when HY deals were getting done at ~8%). But the rate sell-off, especially if it goes 
+further starts to complicate this thesis, at least on the surface.  
+We think there is a path to lower cost of capital for certain HY issuers once 
+construction is completed (see more details in here), but such path is now  more 
+selective and might require flexibility across funding markets. To the extent that 
+construction risk rolls off, there should be spread compression, and if this  exceeds any 
+increase in Treasury yields, issuers could still refinance at a stable or even lower all-in cost 
+of capital. However, this might be more selective. Observing trading levels since mid-
+July, we think this refinancing is more feasible for deals with either high-quality 
+tenants or strong credit support from high-quality counterparts. As such deals 
+approach stabilization, we expect the differential between the project-finance bond and 
+the tenant's unsecured bond of similar duration will narrow from current levels (which 
+range from ~90bp to ~150bp). For projects with lower-quality public tenants, we expect 
+differentials to be impacted by tenant performance and standalone credit profiles.
+The ABS market has been assumed to be one potential refinancing outlet for data 
+center backed corporate deals,  and we think that still holds even in a higher-for-longer 
+rate environment, but with a smaller tailwind from lower cost of debt. Our 
+understanding, based on data from select deals, is that there is generally a clear path for 
+transactions to meet the <70% LTV and >1.35x DSCR requirements. Importantly, DSCRs in 
+corporate credit are lower than in ABS because of the amortization features that exist in 
+the vast majority of IG and HY deals that does not yet exist in ABS. 
+We introduce a basic framework for LTV calculation, and find that most deals should 
+be in the 40-50%  LTV range. For now, the corporate credit market underwrites deals on 
+LTC (loan-to-cost) instead of LTV (loan-to-value), with a basic approach to LTV being the 
+sum of total capex and total lease contract value. Under such an approach, most of the 
+deals would have LTVs of <35%. We make the following adjustments:
+• We assume a 10% premium on total capex following construction completion.  
+We understand how 10% might be conservative, but we think this is the minimum 
+completion premium afforded to data centers based on our work in Exhibit 34 , 
+assuming a $15mm/MW construction cost for that asset. Other variables, such as 
+overall scarcity, location, and other considerations could result in a higher 
+premium. 
+• We bring the total contract value to present value.  The annual escalator certainly 
+helps adjusting revenue overtime, but as investors have limited access to the 
+leases between the issuer and the tenant, a discount for a potential early 
+termination or reassignment, not to mention the overall uncertainty, might make 
+sense. Bringing the 10 to 15-year leases to present value using the debt coupon as 
+discount rate  results in net present value of the contracts equivalent to ~60% of 
+the total contract face value. In our view, this is another conservative assumption.
+
+
+[Page 26]
+M
+ Foundation
+26
+Exhibit 45: We see a path from LTC of >75% towards… 
+5.0%
+6.0%
+7.0%
+8.0%
+9.0%
+10.0%
+11.0%
+12.0%
+50%
+60%
+70%
+80%
+90%
+100%
+YTW (%)
+Loan-to-Cost (%)
+Select HY Deals: YTW (%) vs. LTC (%)
+4Q25
+1Q26
+2Q26
+3Q26
+Source: Bloomberg, company filings, Morgan Stanley Research. Levels as of 9/22/26 EoD. 
+Exhibit 46: ...LTVs  between 40 and 50%
+5.0%
+6.0%
+7.0%
+8.0%
+9.0%
+10.0%
+11.0%
+12.0%
+20%
+25%
+30%
+35%
+40%
+45%
+50%
+55%
+YTW (%)
+Loan-to-Value (%)
+Select HY Deals: YTW (%) vs. LTV (%)
+4Q25
+1Q26
+2Q26
+3Q26
+Source: Bloomberg, company filings, Morgan Stanley Research. Levels as of 9/22/26 EoD.
+Current DSCR ratios are lower in corporate credit (vs. ABS) because they also include 
+amortization payments (which is usually labeled as DSCR-sculpted amortization – see 
+Exhibit 47 and Exhibit 48 ) and not just interest payments. Assuming that these deals 
+could move to ABS and then be non-amortizing until the ARD, it is not unreasonable to 
+assume that most of the ratios could exceed 1.35x, which we think of as minimum 
+acceptable DSCR threshold for ABS transactions (even if lower than the average amongst 
+existing shelves). 
+While these two key metrics might not prevent deals from refinancing into the ABS 
+market, other aspects could pose challenges: size is the first that comes to mind, but 
+we think issuers' financial policy and business strategy might also matter. We think 
+ABS might lend itself better to issuers that want to be data center operators for the 
+longer run, while corporate credit options likely still make more sense for those 
+looking for potential exits over the medium term. 
+Given this is a nascent industry, we are of the view that not necessarily all PSPs might 
+remain focused in data center development and construction opportunities as their core 
+business. These companies have a clear opportunity at hand given their access to power, 
+but such opportunity might become less economical as 1) other time-to-power solutions 
+emerge (such as more data centers with behind-the-meter solutions), and/or 2) these 
+companies exhaust their current pipeline and cannot find more sites with clear line of 
+sight to power access. 
+In theory, even with 1-2 years of construction and elevated LTC at issuance, the deals in 
+corporate credit offer relatively low LTVs and appropriate DSCR with different levels of 
+amortization during the life of the lease (in case of HY deals, there is limited principal 
+amortization before refinancing at the 5Y maturity; in the case of IG deals, for which in 
+most cases the maturity of the notes matches the lease tenor, there is full amortization). 
+In our view, these two factors should support refinancing at lower cost of capital for 
+certain HY issuers without having to move to the securitized credit market. Depending on 
+the rates trajectory, the loan market and its ability to reprice more frequently might be an 
+attractive path. Importantly, staying in shorter-term and less encumbering markets would 
+allow issuers to better exercise optionality on these assets should their strategy change. 
+
+
+[Page 27]
+M
+ Foundation
+Morgan Stanley Research
+27
+Exhibit 47: HY deals present higher DSCR and lower 
+amortization (as a % of total principal through refi)...
+0.8x
+1.0x
+1.3x
+1.5x
+1.8x
+2.0x
+2.3x
+2.5x
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+Average DSCR Ratio
+Amortization (between issuance and refi)
+HY Deals: Avg. DSCR vs. Amo Through Refi
+Source: Bloomberg, Morgan Stanley Research, S&P, Moody's, Fitch 
+Exhibit 48: ...while IG deals are fully amortizing (except for 2 
+transactions) but have lower avg. DSCR
+0.9x
+1.0x
+1.1x
+1.2x
+1.3x
+1.4x
+1.5x
+0%
+20%
+40%
+60%
+80%
+100%
+Average DSCR Ratio
+Amortization (between issuance and maturity)
+IG Deals: Avg. DSCR vs. Amo Through Maturity
+Source: Bloomberg, Morgan Stanley Research, S&P, Moody's, Fitch
+
+
+[Page 28]
+M
+ Foundation
+28
+Appendix: An Overview of Financing Stabilized Assets with 
+Data Center ABS & CMBS  
+In securitized products, stabilized data centers can be financed either via an ABS or a 
+SASB CMBS deal. As we have written before, the collateral differences are effectively 
+non-existent: there is no clear trend in either market in terms of the types or sizes of data 
+centers that back an ABS over a CMBS deal. The primary difference, in our view, is that an 
+ABS has exposure to a dynamic pool of collateral and a SASB deal has static exposure: in 
+ABS, data centers are part of a mastertrust and so the collateral pool backing a deal may 
+change over time as assets are added to or subtracted from the trust and new deals are 
+issued. In SASB, there is no such flexibility.
+Historically, SASB data center deals were primarily floating rate and followed a 3+1+1 
+structure – a 3y initial term with two one-year extension options. More recently, deals 
+have skewed fixed rate and have mirrored the general design of an ABS, with the 5y IO 
+period followed by an amortization should the deal not refinance. As the market coalesces 
+around this one structure, we focus our analysis on this type of instrument. However, 
+similar analysis could be repeated for a floating rate structure.
+In ABS, bonds are interest-only until an anticipated repayment date (ARD) – generally five, 
+but sometimes seven or more rarely ten years after issuance. If the deal does not 
+refinance by ARD, the bond enters into a period of rapid amortization (which, importantly, 
+does not on its own constitute an Event of Default), with all excess cashflow diverted to 
+pay down principal sequentially. In many shelves, interest from subordinated classes is 
+paused to repay down senior classes. To date, no data center deal has failed to refinance 
+by its ARD, but there have been instances of failure to refinance in other corners of the 
+market like triple-net lease.
+The mastertrusts are evaluated on and restricted by two key metrics: the trust's Loan-to-
+Value (LTV) and the Debt Service Coverage Ratio (DSCR). On the former, often the 
+threshold is that the Class A2 LTV cannot exceed 70%. On the latter, restrictions are a bit 
+more nuanced: prior to ARD, if the Class A2 DSCR falls below a certain level (for example, 
+1.35), then the deal will start trapping cash. A further decline to ~1.2 will cause the deal to 
+amortize until the condition is cured. New deals cannot be issued from an existing trust 
+that would breach those levels. 
+In practice, shelves are well away from their limits. Below, we calculate a simplified DSCR 
+for each shelf of just the AANOI divided by the relevant interest payments, excluding the 
+maintenance capex and servicing fees, which are paid senior to debt cashflows and run ~1-
+2% of AANOI. Shelves with the lowest DSCRs tend to be hyperscaler-backed (our 
+category "Predominantly Hyperscaler") where leases are long term, locked-in, and often 
+triple-net. This reduces the possibility for AANOI fluctuations over the life of the deal as is 
+possible in colocation shelves where leases can be significantly shorter (e.g., 1y) and more 
+noise is possible.  
+Shelf LTVs are similarly low: the highest shelf Class A2 LTV (again, in a hyperscaler shelf 
+ECORE, which has cashflows contracted and basically fixed until 2037) is ~67%, below the 
+threshold of 70%. On average, Class A2 LTV sits around 55% while shelf LTV is a touch 
+
+
+[Page 29]
+M
+ Foundation
+Morgan Stanley Research
+29
+higher at 62% (includes A3, B, and C tranches, the volumes of which are very small). 
+Exhibit 49: Current LTV levels in the data center ABS market
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+Predominantly Hyperscaler
+Mixed Business
+Colocation
+Current LTVs of Data Center ABS
+Shelf LTV Worst
+Shelf LTV Average
+Class A2 LTV Worst
+Class A2 LTV Average
+Source: CreditFlow, Intex, Morgan Stanley Research
+Exhibit 50: Current DSCR levels in the data center ABS market
+ 1.00
+ 1.20
+ 1.40
+ 1.60
+ 1.80
+ 2.00
+ 2.20
+ 2.40
+Predominantly Hyperscaler
+Mixed Business
+Colocation
+Current DSCRs of Data Center ABS
+Shelf DSCR Worst
+Shelf DSCR Average
+Class A2 DSCR Worst
+Class A2 DSCR Average
+Source: CreditFlow, Intex, Morgan Stanley Research
+Exhibit 51: Current cap rates of data center ABS
+0.00%
+1.00%
+2.00%
+3.00%
+4.00%
+5.00%
+6.00%
+7.00%
+8.00%
+Predominantly Hyperscaler
+Mixed Business
+Colocation
+Current Cap Rates of Data Center ABS
+Cap Rate Worst
+Cap Rate Average
+Source: CreditFlow, Intex, Morgan Stanley Research
+Exhibit 52: Current YTM rates of data center ABS
+0.00%
+1.00%
+2.00%
+3.00%
+4.00%
+5.00%
+6.00%
+7.00%
+8.00%
+Predominantly Hyperscaler
+Mixed Business
+Colocation
+Current YTM Rates of Data Center ABS
+Coupon Worst
+Coupon Average
+YTM Worst
+YTM Average
+Source: Bloomberg, CreditFlow, Intex, Morgan Stanley Research. Note: Not all tranches have YTM data  
+available. 
+
+
+[Page 30]
+M
+ Foundation
+30
+Disclosure Section
+Mortgage Backed Securities (MBS) and Collateralized Mortgage Obligations (CMO)
+Principal is returned on a monthly basis over the life of the security. Principal prepayment can significantly affect the monthly income stream and the maturity of any type of MBS, including 
+standard MBS, CMOs and Lottery Bonds. Yields and average lives are estimated based on prepayment assumptions and are subject to change based on actual prepayment of the mortgages 
+in the underlying pools. The level of predictability of an MBS/CMO's average life, and its market price, depends on the type of MBS/CMO class purchased and interest rate movements. In general, 
+as interest rates fall, prepayment speeds are likely to increase, thus shortening the MBS/CMO's average life and likely causing its market price to rise. Conversely, as interest rates rise, prepayment 
+speeds are likely to decrease, thus lengthening average life and likely causing the MBS/CMO's market price to fall. Some MBS/CMOs may have "original issue discount" (OID). OID occurs if the 
+MBS/CMO’s original issue price is below its stated redemption price at maturity, and results in "imputed interest" that must be reported annually for tax purposes, resulting in a tax liability even 
+though interest was not received. Investors are urged to consult their tax advisors for more information. Government agency backing applies only to the face value of the CMO and not to any 
+premium paid.
+The information and opinions in Morgan Stanley Research were prepared by Morgan Stanley & Co. LLC, and/or Morgan Stanley C.T.V.M. S.A., and/or Morgan Stanley Mexico, Casa de Bolsa, 
+S.A. de C.V.. As used in this disclosure section, "Morgan Stanley" includes Morgan Stanley & Co. LLC, Morgan Stanley C.T.V.M. S.A., Morgan Stanley Mexico, Casa de Bolsa, S.A. de C.V. and their 
+affiliates as necessary.
+For important disclosures, stock price charts and equity rating histories regarding companies that are the subject of this report, please see the Morgan Stanley Research Disclosure Website 
+at www.morganstanley.com/eqr/disclosures/webapp/generalresearch, or contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research 
+Management), New York, NY, 10036 USA.
+For valuation methodology and risks associated with any recommendation, rating or price target referenced in this research report, please contact the Client Support Team as follows: US/Canada 
++1 800 303-2495; Hong Kong +852 2848-5999; Latin America +1 718 754-5444 (U.S.); London +44 (0)20-7425-8169; Singapore +65 6834-6860; Sydney +61 (0)2-9770-1505; Tokyo +81 
+(0)3-6836-9000.  Alternatively you may contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research Management), New York, NY 10036 USA.
+Analyst Certification
+The following analysts hereby certify that their views about the companies and their securities discussed in this report are accurately expressed and that they have not received and will not 
+receive direct or indirect compensation in exchange for expressing specific recommendations or views in this report: Carolyn L Campbell; James Egan; Fernanda Lima; Vishwas Patkar; Vishwanath 
+Tirupattur.
+.
+Global Research Conflict Management Policy
+Morgan Stanley Research has been published in accordance with our conflict management policy, which is available at www.morganstanley.com/institutional/research/conflictpolicies. A 
+Portuguese version of the policy can be found at www.morganstanley.com.br
+Important Regulatory Disclosures on Subject Companies
+The equity research analysts or strategists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, including quality 
+of research, investor client feedback, stock picking, competitive factors, firm revenues and overall investment banking revenues. Equity Research analysts' or strategists' compensation is not 
+linked to investment banking or capital markets transactions performed by Morgan Stanley or the profitability or revenues of particular trading desks.
+Morgan Stanley and its affiliates do business that relates to companies/instruments covered in Morgan Stanley Research, including market making, providing liquidity, fund management, 
+commercial banking, extension of credit, investment services and investment banking. Morgan Stanley sells to and buys from customers the securities/instruments of companies covered in 
+Morgan Stanley Research on a principal basis. Morgan Stanley may have a position in the debt of the Company or instruments discussed in this report. Morgan Stanley trades or may trade 
+as principal in the debt securities (or in related derivatives) that are the subject of the debt research report.
+Certain disclosures listed above are also for compliance with applicable regulations in non-US jurisdictions.
+STOCK RATINGS
+Morgan Stanley uses a relative rating system using terms such as Overweight, Equal-weight, Not-Rated or Underweight (see definitions below). Morgan Stanley does not assign ratings of Buy, 
+Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, hold and sell.  Investors should carefully read the definitions of all 
+ratings used in Morgan Stanley Research. In addition, since Morgan Stanley Research contains more complete information concerning the analyst's views, investors should carefully read Morgan 
+Stanley Research, in its entirety, and not infer the contents from the rating alone.  In any case, ratings (or research) should not be used or relied upon as investment advice.  An investor's decision 
+to buy or sell a stock should depend on individual circumstances (such as the investor's existing holdings) and other considerations.
+Global Stock Ratings Distribution
+(as of August 31, 2026)
+The Stock Ratings described below apply to Morgan Stanley's Fundamental Equity Research and do not apply to Debt Research produced by the Firm.
+For disclosure purposes only (in accordance with FINRA requirements), we include the category headings of Buy, Hold, and Sell alongside our ratings of Overweight, Equal-weight, Not-Rated 
+and Underweight. Morgan Stanley does not assign ratings of Buy, Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, 
+hold, and sell but represent recommended relative weightings (see definitions below). To satisfy regulatory requirements, we correspond Overweight, our most positive stock rating, with a 
+buy recommendation; we correspond Equal-weight and Not-Rated to hold and Underweight to sell recommendations, respectively.
+
+
+[Page 31]
+M
+ Foundation
+Morgan Stanley Research
+31
+Coverage Universe
+Investment Banking Clients (IBC)
+Other Material Investment Services 
+Clients (MISC)
+Stock Rating 
+Category
+Count
+% of  Total
+Count
+% of  Total IBC
+% of Rating  
+Category
+Count
+% of Total Other 
+MISC
+Overweight/Buy
+1555
+42%
+450
+48%
+29%
+767
+44%
+Equal-weight/Hold
+1577
+43%
+395
+42%
+25%
+770
+44%
+Not-Rated/Hold
+3
+0%
+1
+0%
+33%
+1
+0%
+Underweight/Sell
+559
+15%
+93
+10%
+17%
+216
+12%
+Total
+3,694
+939
+1754
+Data include common stock and ADRs currently assigned ratings. Investment Banking Clients are companies from whom Morgan Stanley received investment banking compensation in the 
+last 12 months. Due to rounding off of decimals, the percentages provided in the "% of total" column may not add up to exactly 100 percent.
+Analyst Stock Ratings
+Overweight (O). The stock's total return is expected to exceed the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Equal-weight (E). The stock's total return is expected to be in line with the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over 
+the next 12-18 months.
+Not-Rated (NR). Currently the analyst does not have adequate conviction about the stock's total return relative to the average total return of the analyst's industry (or industry team's) coverage 
+universe, on a risk-adjusted basis, over the next 12-18 months.
+Underweight (U). The stock's total return is expected to be below the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Unless otherwise specified, the time frame for price targets included in Morgan Stanley Research is 12 to 18 months.
+Analyst Industry Views
+Attractive (A): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be attractive vs. the relevant broad market benchmark, as indicated 
+below.
+In-Line (I): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be in line with the relevant broad market benchmark, as indicated below.
+Cautious (C): The analyst views the performance of his or her industry coverage universe over the next 12-18 months with caution vs. the relevant broad market benchmark, as indicated below.
+Benchmarks for each region are as follows: North America - S&P 500; Latin America - relevant MSCI country index or MSCI Latin America Index; Europe - MSCI Europe; Japan - TOPIX; Asia - 
+relevant MSCI country index or MSCI sub-regional index or MSCI AC Asia Pacific ex Japan Index.
+Important Disclosures for Morgan Stanley Smith Barney LLC Customers
+Important disclosures regarding any material conflict of interest that can reasonably be expected to have influenced Morgan Stanley Smith Barney LLC's choice of a third-party research provider 
+or the subject company of a third-party research report, are available on the Morgan Stanley Wealth Management disclosure website at www.morganstanley.com/online/researchdisclosures. 
+For Morgan Stanley specific disclosures, you may refer to https://www.morganstanley.com/eqr/disclosures/webapp/generalresearch.
+Each Morgan Stanley research report is reviewed and approved on behalf of Morgan Stanley Smith Barney LLC. This review and approval is conducted by the same person who reviews the 
+research report on behalf of Morgan Stanley. This could create a conflict of interest.
+Other Important Disclosures
+Morgan Stanley Research policy is to update research reports as and when the Research Analyst and Research Management deem appropriate, based on developments with the issuer, the 
+sector, or the market that may have a material impact on the research views or opinions stated therein. In addition, certain Research publications are intended to be updated on a regular periodic 
+basis  (weekly/monthly/quarterly/annual) and will ordinarily be updated with that frequency, unless  the Research Analyst and Research Management determine that a different publication 
+schedule is appropriate based on current conditions.
+Morgan Stanley is not acting as a municipal advisor and the opinions or views contained herein are not intended to be, and do not constitute, advice within the meaning of Section 975 of the 
+Dodd-Frank Wall Street Reform and Consumer Protection Act.
+Morgan Stanley produces an equity research product called a "Tactical Idea." Views contained in a "Tactical Idea" on a particular stock may be contrary to the recommendations or views expressed 
+in research on the same stock. This may be the result of differing time horizons, methodologies, market events, or other factors. For all research available on a particular stock, please contact 
+your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Morgan Stanley Research is provided to our clients through our proprietary research portal on Matrix and also distributed electronically by Morgan Stanley to clients. Certain, but not all, Morgan 
+Stanley Research products are also made available to clients through third-party vendors or redistributed to clients through alternate electronic means as a convenience. For access to all 
+available Morgan Stanley Research, please contact your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Any access and/or use of Morgan Stanley Research is subject to Morgan Stanley's Terms of Use (http://www.morganstanley.com/terms.html). By accessing and/or using Morgan Stanley 
+Research, you are indicating that you have read and agree to be bound by our Terms of Use (http://www.morganstanley.com/terms.html). In addition you consent to Morgan Stanley processing 
+your personal data and using cookies in accordance with our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html), including for the purposes of 
+setting your preferences and to collect readership data so that we can deliver better and more personalized service and products to you. To find out more information about how Morgan Stanley 
+processes personal data, how we use cookies and how to reject cookies see our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html). Please use 
+the provided link to review the Terms and Conditions and Most Important Terms and Conditions for Morgan Stanley India Company Private Limited (https://www.morganstanley.com/assets/
+pdfs/about-us-global-offices/india/Terms_and_conditions.pdf) and the following link to review the audit report (https://ny.matrix.ms.com/eqr/research/webapp/researchdocs/
+MSICPL_Morgan_Stanley_Research_Audit_Report.pdf).
+If you do not agree to our Terms of Use and/or if you do not wish to provide your consent to Morgan Stanley processing your personal data or using cookies please do not access our research.
+
+
+[Page 32]
+M
+ Foundation
+32
+Morgan Stanley Research does not provide individually tailored investment advice. Morgan Stanley Research has been prepared without regard to the circumstances and objectives of those 
+who receive it. Morgan Stanley recommends that investors independently evaluate particular investments and strategies, and encourages investors to seek the advice of a financial adviser. 
+The appropriateness of an investment or strategy will depend on an investor's circumstances and objectives. The securities, instruments, or strategies discussed in Morgan Stanley Research 
+may not be suitable for all investors, and certain investors may not be eligible to purchase or participate in some or all of them. Morgan Stanley Research is not an offer to buy or sell or the 
+solicitation of an offer to buy or sell any security/instrument or to participate in any particular trading strategy. The value of and income from your investments may vary because of changes 
+in interest rates, foreign exchange rates, default rates, prepayment rates, securities/instruments prices, market indexes, operational or financial conditions of companies or other factors. There 
+may be time limitations on the exercise of options or other rights in securities/instruments transactions. Past performance is not necessarily a guide to future performance. Estimates of future 
+performance are based on assumptions that may not be realized. If provided, and unless otherwise stated, the closing price on the cover page is that of the primary exchange for the subject 
+company's securities/instruments.
+The fixed income research analysts, strategists or economists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, 
+including quality, accuracy and value of research, firm profitability or revenues (which include fixed income trading and capital markets profitability or revenues), client feedback and competitive 
+factors. Fixed Income Research analysts', strategists' or economists' compensation is not linked to investment banking or capital markets transactions performed by Morgan Stanley or the 
+profitability or revenues of particular trading desks.
+The "Important Regulatory Disclosures on Subject Companies" section in Morgan Stanley Research lists all companies mentioned where Morgan Stanley owns 1% or more of a class of common 
+equity securities of the companies.  For all other companies mentioned in Morgan Stanley Research, Morgan Stanley may have an investment of less than 1% in securities/instruments or 
+derivatives of securities/instruments of companies and may trade them in ways different from those discussed in Morgan Stanley Research. Employees of Morgan Stanley not involved in the 
+preparation of Morgan Stanley Research may have investments in securities/instruments or derivatives of securities/instruments of companies mentioned and may trade them in ways different 
+from those discussed in Morgan Stanley Research. Derivatives may be issued by Morgan Stanley or associated persons.
+With the exception of information regarding Morgan Stanley, Morgan Stanley Research is based on public information. Morgan Stanley makes every effort to use reliable, comprehensive 
+information, but we make no representation that it is accurate or complete.  We have no obligation to tell you when opinions or information in Morgan Stanley Research change apart from 
+when we intend to discontinue equity research coverage of a subject company. Facts and views presented in Morgan Stanley Research have not been reviewed by, and may not reflect information 
+known to, professionals in other Morgan Stanley business areas, including investment banking personnel.
+Morgan Stanley Research personnel may participate in company events such as site visits and are generally prohibited from accepting payment by the company of associated expenses unless 
+pre-approved by authorized members of Research management.
+Morgan Stanley may make investment decisions that are inconsistent with the recommendations or views in this report.
+To our readers based in Taiwan or trading in Taiwan securities/instruments: Information on securities/instruments that trade in Taiwan is distributed by Morgan Stanley Taiwan Limited ("MSTL"). 
+Such information is for your reference only.  The reader should independently evaluate the investment risks and is solely responsible for their investment decisions.  Morgan Stanley Research 
+may not be distributed to the public media or quoted or used by the public media without the express written consent of Morgan Stanley.  Any non-customer reader within the scope of Article 
+7-1 of the Taiwan Stock Exchange Recommendation Regulations accessing and/or receiving Morgan Stanley Research is not permitted to provide Morgan Stanley Research to any third party 
+(including but not limited to related parties, affiliated companies and any other third parties) or engage in any activities regarding Morgan Stanley Research which may create or give the 
+appearance of creating a conflict of interest. Information on securities/instruments that do not trade in Taiwan is for informational purposes only and is not to be construed as a recommendation 
+or a solicitation to trade in such securities/instruments.  MSTL may not execute transactions for clients in these securities/instruments.
+Morgan Stanley is not incorporated under PRC law and the research in relation to this report is conducted outside the PRC.  Morgan Stanley Research does not constitute an offer to sell or 
+the solicitation of an offer to buy any securities in the PRC.  PRC investors shall have the relevant qualifications to invest in such securities and shall be responsible for obtaining all relevant 
+approvals, licenses, verifications and/or registrations from the relevant governmental authorities themselves. Neither this report nor any part of it is intended as, or shall constitute, provision 
+of any consultancy or advisory service of securities investment as defined under PRC law. Such information is provided for your reference only.
+Morgan Stanley Research is disseminated in Brazil by Morgan Stanley C.T.V.M. S.A. located at Av. Brigadeiro Faria Lima, 3600, 6th floor, São Paulo - SP, Brazil; and is regulated by the Comissão 
+de Valores Mobiliários; in Mexico by Morgan Stanley México, Casa de Bolsa, S.A. de C.V which is regulated by Comision Nacional Bancaria y de Valores. Paseo de los Tamarindos 90, Torre 1, 
+Col. Bosques de las Lomas Floor 29, 05120 Mexico City; in Japan by Morgan Stanley MUFG Securities Co., Ltd. and, for Commodities related research reports only, Morgan Stanley Capital Group 
+Japan Co., Ltd; in Hong Kong by Morgan Stanley Asia Limited (which accepts responsibility for its contents) and by Morgan Stanley Bank Asia Limited; in Singapore by Morgan Stanley Asia 
+(Singapore) Pte. (Registration number 199206298Z) and/or Morgan Stanley Asia (Singapore) Securities Pte Ltd (Registration number 200008434H), regulated by the Monetary Authority of 
+Singapore (which accepts legal responsibility for its contents and should be contacted with respect to any matters arising from, or in connection with, Morgan Stanley Research) and by Morgan 
+Stanley Bank Asia Limited, Singapore Branch (Registration number T14FC0118J); in Australia to "wholesale clients" within the meaning of the Australian Corporations Act by Morgan Stanley 
+Australia Limited A.B.N. 67 003 734 576, holder of Australian financial services license No. 233742, which accepts responsibility for its contents; in Australia to "wholesale clients" and "retail 
+clients" within the meaning of the Australian Corporations Act by Morgan Stanley Wealth Management Australia Pty Ltd (A.B.N. 19 009 145 555, holder of Australian financial services license 
+No. 240813, which accepts responsibility for its contents; in Korea by Morgan Stanley & Co International plc, Seoul Branch; in India by Morgan Stanley India Company Private Limited having 
+Corporate Identification No (CIN) U22990MH1998PTC115305, regulated by the Securities and Exchange Board of India (“SEBI”) and holder of licenses as a Research Analyst (SEBI Registration 
+No. INH000001105); Stock Broker (SEBI Stock Broker Registration No. INZ000244438), Merchant Banker (SEBI Registration No. INM000011203), and depository participant with National 
+Securities Depository Limited (SEBI Registration No. IN-DP-NSDL-567-2021) having registered office at Altimus, Level 39 & 40, Pandurang Budhkar Marg, Worli, Mumbai 400018, India; 
+Telephone no. +91-22-61181000; Compliance Officer Details: Mr. Tejarshi Hardas, Tel. No.: +91-22-61181000 or Email: tejarshi.hardas@morganstanley.com; Grievance officer details: Mr. Tejarshi 
+Hardas, Tel. No.: +91-22-61181000 or Email: msic-compliance@morganstanley.com. Morgan Stanley India Company Private Limited (MSICPL) may use AI tools in providing research services. 
+All recommendations contained herein are made by the duly qualified research analysts; in Germany and the European Economic Area where required by Morgan Stanley Europe S.E., authorised 
+and regulated by Bundesanstalt fuer Finanzdienstleistungsaufsicht (BaFin) under the reference number 149169; in the US by Morgan Stanley & Co. LLC, which accepts responsibility for its 
+contents. Morgan Stanley & Co. International plc, authorized by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority, 
+disseminates in the UK research that it has prepared, and research which has been prepared by any of its affiliates, only to persons who (i) are investment professionals falling within Article 
+19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (as amended, the “Order”); (ii) are persons who are high net worth entities falling within Article 49(2)(a) 
+to (d) of the Order; or (iii) are persons to whom an invitation or inducement to engage in investment activity (within the meaning of section 21 of the Financial Services and Markets Act 2000, 
+as amended) may otherwise lawfully be communicated or caused to be communicated. RMB Morgan Stanley Proprietary Limited is a member of the JSE Limited and A2X (Pty) Ltd. RMB Morgan 
+Stanley Proprietary Limited is a joint venture owned equally by Morgan Stanley International Holdings Inc. and RMB Investment Advisory (Proprietary) Limited, which is wholly owned by 
+FirstRand Limited. Morgan Stanley Research is disseminated in Canada by Morgan Stanley Canada Limited and Morgan Stanley Wealth Management Canada Inc., members of the Canadian 
+Investment Regulatory Organization (CIRO). The information in Morgan Stanley Research is being disseminated by Morgan Stanley Saudi Arabia, regulated by the Capital Market Authority in 
+
+
+[Page 33]
+M
+ Foundation
+Morgan Stanley Research
+33
+the Kingdom of Saudi Arabia, and is directed at Sophisticated investors only.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (DIFC Branch), regulated by the Dubai Financial Services Authority (the DFSA) 
+or by Morgan Stanley & Co. International plc (ADGM Branch), regulated by the Financial Services Regulatory Authority Abu Dhabi (the FSRA), and is directed at Professional Clients only, as 
+defined by the DFSA or the FSRA, respectively. The financial products or financial services to which this research relates will only be made available to a customer who we are satisfied meets 
+the regulatory criteria of a Professional Client. A distribution of the different MS Research ratings or recommendations, in percentage terms for Investments in each sector covered, is available 
+upon request from your sales representative.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (QFC Branch), regulated by the Qatar Financial Centre Regulatory Authority 
+(the QFCRA), and is directed at business customers and market counterparties only and is not intended for Retail Customers as defined by the QFCRA.
+As required by the Capital Markets Board of Turkey, investment information, comments and recommendations stated here, are not within the scope of investment advisory activity. Investment 
+advisory service is provided exclusively to persons based on their risk and income preferences by the authorized firms. Comments and recommendations stated here are general in nature. These 
+opinions may not fit to your financial status, risk and return preferences. For this reason, to make an investment decision by relying solely to this information stated here may not bring about 
+outcomes that fit your expectations.
+The trademarks and service marks contained in Morgan Stanley Research are the property of their respective owners. Third-party data providers make no warranties or representations relating 
+to the accuracy, completeness, or timeliness of the data they provide and shall not have liability for any damages relating to such data. The Global Industry Classification Standard (GICS) was 
+developed by and is the exclusive property of MSCI and S&P.
+Morgan Stanley Research, or any portion thereof may not be reprinted, sold or redistributed without the written consent of Morgan Stanley.
+Indicators and trackers referenced in Morgan Stanley Research may not be used as, or treated as, a benchmark under Regulation EU 2016/1011, or any other similar framework.
+The issuers and/or fixed income products recommended or discussed in certain fixed income research reports may not be continuously followed. Accordingly, investors should regard those 
+fixed income research reports as providing stand-alone analysis and should not expect continuing analysis or additional reports relating to such issuers and/or individual fixed income products.
+Morgan Stanley may hold, from time to time, material financial and commercial interests regarding the company subject to the Research report.
+Registration granted by SEBI and certification from the National Institute of Securities Markets (NISM) in no way guarantee performance 
+of the intermediary or provide any assurance of returns to investors. Investment in securities market are subject to market risks. Read 
+all the related documents carefully before investing.
+The following authors are Fixed Income Research Analysts/Strategists and are not opining on or expressing recommendations on equity securities: Carolyn L Campbell; Vishwanath Tirupattur; 
+James Egan; Vishwas Patkar; Fernanda Lima.
+References to any prediction market or event contract do not constitute an offer, solicitation, recommendation, or endorsement to participate in any such market or contract. Morgan Stanley 
+Research may not be distributed or made available in any jurisdiction where such distribution would be unlawful or otherwise prohibited by applicable law.
+© 2026 Morgan Stanley
