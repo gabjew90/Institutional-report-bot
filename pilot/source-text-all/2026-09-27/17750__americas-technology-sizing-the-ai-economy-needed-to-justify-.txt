@@ -1,0 +1,3180 @@
+[Page 1]
+Eric Sheridan 
++1(917)343-8683 | 
+eric.sheridan@gs.com 
+Goldman Sachs & Co. LLC 
+Gabriela Borges, CFA 
++1(212)902-7839 | 
+gabriela.borges@gs.com 
+Goldman Sachs & Co. LLC 
+James Schneider, Ph.D. 
++1(212)357-2929 | 
+jim.schneider@gs.com 
+Goldman Sachs & Co. LLC 
+Alex Vegliante, CFA 
++1(212)934-1878 | 
+alex.vegliante@gs.com 
+Goldman Sachs & Co. LLC 
+Julia Fein-Ashley 
++1(212)902-5070 | julia.fein-
+ashley@gs.com 
+Goldman Sachs & Co. LLC 
+Emma Huang 
++1(212)902-7229 | 
+emma.huang@gs.com 
+Goldman Sachs & Co. LLC 
+Callie Valenti 
++1(212)357-2790 | 
+callie.valenti@gs.com 
+Goldman Sachs & Co. LLC 
+Maura Hager 
++1(212)9028724 | maura.hager@gs.com 
+Goldman Sachs & Co. LLC 
+Selina Zhang 
++1(212)357-9979 | 
+selina.zhang@gs.com 
+Goldman Sachs & Co. LLC 
+Anmol Makkar 
++1(212)357-1366 | 
+anmol.makkar@gs.com 
+Goldman Sachs & Co. LLC
+Americas Technology: Sizing the AI Economy Needed to Justify ROIC on 
+Hyperscaler AI Capex
+24 September 2026 | 4:30PM EDT
+Against rising compute needs to match outsized and growing AI token consumption, 
+the US-based hyperscalers have undergone a dramatic transformation around 
+capital intensity to match this computational shift. These investments are being 
+made against a combination of both real-time demand signals (in a current 
+supply/demand imbalance) and multi-year compute needs of key customers. 
+Throughout this year (and most notably with this past Q2 earnings season), we’ve 
+noticed that this theme has become better understood – from earnings results and 
+company commentary, investors have achieved greater comfort that both (a) the 
+hyperscalers are earning a sufficient (if not outsized) return on prior-period capex 
+(CY2023-25) through incremental revenues and operating cash flow and (b) that the 
+hyperscalers are currently undergoing the next phase of capex spend (CY2026-27) 
+against a compute-constrained and accelerating end demand environment 
+(producing pricing levels for compute solidly above our assumed long-term baseline). 
+As a result, the debate has shifted in the past few months toward a more forward 
+outlook: how current period capex spend (across CY2026-27) might deliver a return 
+in future (CY2028-30) periods (and how current ROIC earned on prior-period capex 
+can be used as a baseline). In this report, we introduce a framework to analyze the 
+necessary output from the AI economy in order to earn a baseline return on 
+invested capital (“ROIC”) on the current levels of capex spend from the 
+US-based hyperscalers. 
+Our analysis in this report focuses on the revenue hurdles required to produce a 
+15% annual ROIC on “Phase 2” (CY2026-27) AI-compute investments deployed 
+by the US-based hyperscalers. Based on various assumptions (an average upfront 
+cost of ~$42bn per Gigawatt (GW); a buildout mix of ~70% “compute” v. ~30% 
+“shells”; conservative depreciation schedules; ongoing operating cost assumptions; 
+etc.), the analysis implies that the six major US-based hyperscalers (Alphabet, 
+Amazon, Microsoft, Meta, Oracle and SpaceX) must generate a combined ~$1.42 
+trillion of cumulative CY2028–30 revenues (or ~$11.6 billion of annual revenue 
+per GW) to clear the 15% ROIC hurdle. While we expect near-term returns to 
+compress (as near-term results are muted by an accelerated capex cycle), we expect 
+the attractive ROIC on current period capex to be better realized in operating results 
+over the medium-to-long-term. Said differently, we frame the near-term return 
+compression as a natural consequence of the massive upfront investment cycle 
+rather than evidence of structurally poor AI economics. 
+Across a series of notes sizing the token economy (link), the scope for consumer AI 
+ 
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certification and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Equity Research
+ 
+ 
+
+
+[Page 2]
+Framing The Current State of Hyperscaler Capex (and Key Investor Debates)
+ 4 
+Bottom-Up Views on AI Infrastructure Capex — A Semiconductor Perspective
+ 6 
+Introducing a Framework to Analyze US Hyperscaler ROIC and the Necessary Output from the AI Economy 8 
+Using Cloud Backlogs to Contextualize Forward Monetization Potential
+ 15 
+How Have the Companies Framed ROIC?
+ 17 
+Valuation/Risks
+ 19 
+Appendix: Revenue and EBIT Analyses by Company
+ 21 
+Disclosure Appendix
+ 25 
+24 September 2026
+ 2
+Goldman Sachs
+Americas Technology
+Table of Contents 
+ 
+ 
+
+
+[Page 3]
+development (link | link) and the enterprise landscape (link), we have outlined how 
+market share shifts and deflationary token pricing might increase AI adoption and result 
+in rising utility cases across both consumer and enterprise compute. While current 
+market debates have focused on how foundational model companies (operating at the 
+frontier of AI capabilities) might evolve in terms of their market share and the pricing 
+power of their compute (relative to competition from open source/open weight models), 
+we see price/performance of compute as being the landscape for an AI economy that is 
+larger in its scale and scope. Having a number of different models/intelligence levels on 
+an efficient price/performance curve will unlock a range of use cases from 
+“commoditized” intelligence (seeing outsized deflationary pricing) to frontier/”bleeding 
+edge” intelligence (with more resilient pricing power) and be overall supportive of the 
+level of spend today by compute infrastructure providers. In short, while not every token 
+will have the same economics nor every dollar of capex generate a uniform return, in 
+totality we still see a solid return profile to the capital being deployed in the coming 18 
+months against the scope of the market opportunity in the coming 3-5 years. 
+This was recently on display at our Communacopia + Technology conference (link | link | 
+link), with companies demonstrating: (a) how experimentation was resulting in a shift 
+toward implementation; (b) how productivity-driven returns and product 
+development cycles were being accelerated; and (c) how a focused shift from 
+token-maxing to token-optimizing was improving the return profile for enterprises 
+and thus acting as a lead indicator for more enterprise adoption (a direct correlative 
+driver of hyperscaler revenue and incremental operating profit against prior period 
+capex). In addition, the recent releases of prominent consumer-facing agentic AI 
+products (most notably Meta’s Muse) has sparked a potential paradigm shift from 
+conversational AI canvases to more agentic-driven action ones across consumer AI (link) 
+– the scaling of these agentic AI platforms (including the likely subsequent competitive 
+moves by other scaled players aiming for their role at the platform layer of consumer AI) 
+is a potential driver of more compute needs to be followed medium to long term by 
+monetization mechanisms tied to elements of subscription, advertising and commerce 
+(with our frequent framing of blurred lines between those approaches being at the 
+center of any future revenue scaling).
+24 September 2026
+  3
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 4]
+Framing The Current State of Hyperscaler Capex (and Key Investor Debates) 
+ 
+ 
+Capital intensity remains high as the US hyperscalers accelerate AI compute 
+buildout. On the back of the demand curve for AI tokens (and corresponding demand 
+for compute capacity), the capital intensity of the US-based hyperscalers has scaled to 
+demonstrably higher levels than seen in prior compute cycles. One of the dominant 
+themes at our recent Communacopia + Technology conference (link | link | link) was that 
+the overall industry remains capacity-constrained and, as a result, the current pace of 
+capital spending over the next 12-18 months is sustaining and aimed at closing this 
+supply/demand imbalance. 
+That said, this near-term capex spend is already well understood by investors. 
+Having already been well signaled by the companies (through explicit current-period 
+guidance and/or qualitative framing of investment priorities), we believe the near-term 
+(CY26-27) capex spend levels are now well understood and priced into the stocks at 
+current levels — since the start of the year, Visible Alpha Consensus Data capex 
+estimates for CY26-27 for the five US-based hyperscalers that were public at the start of 
+the year (GOOGL, MSFT, AMZN, META and ORCL) have risen by ~66% (or a combined 
+~$750bn total increase for both years across the five companies). Even still, we remain 
+broadly ahead of consensus Street estimates on CY27 capex estimates (and believe our 
+above-Street estimates are more aligned with investor expectations). 
+ 
+ROIC on this capex and longer-term (CY28 and beyond) capital intensity remain the 
+biggest outstanding debates. As near-term capital intensity levels have become better 
+understood, the biggest overhangs facing the US-based hyperscalers (and what 
+ 
+Exhibit 1: Since the start of 2026, consensus CY26-27 capex estimates for the 5 US-based 
+hyperscalers (GOOGL, MSFT, AMZN, META and ORCL) have risen by ~66% (or a combined 
+~$750bn total) 
+Consensus CY26-27 US-Based Hyperscaler Capex Ests. ($bn), at YE2025 v. Current 
+$253 
+$507 
+$227 
+$373 
+$301 
+$505 
+$230 
+$333 
+$126 
+$174 
+$1,138 
+$1,892 
+ $-
+ $200
+ $400
+ $600
+ $800
+ $1,000
+ $1,200
+ $1,400
+ $1,600
+ $1,800
+ $2,000
+ $2,200
+CY26-27 Total Capex
+CY26-27 Total Capex
+YE25 Ests.
+Current Ests.
+GOOGL
+MSFT
+AMZN
+META
+ORCL
+ 
+“Current” represents data as of 9/23/26; MSFT capex represents additions to PP&E (excl. capital leases) 
+ 
+Source: Visible Alpha Consensus Data, Data compiled by Goldman Sachs Global Investment Research
+24 September 2026
+  4
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 5]
+investors are currently seeking greater visibility into) remain two inter-related debates: 
+(1) what will be the return on this near-term (CY26-27) capex spend and (2) what 
+will long-term (CY28 and beyond) capex / capital intensity look like? While the likely 
+trajectory of capex spending over the CY2026-28 timeframe has a great level of investor 
+appreciation and more reflected in Street estimates (including our own) than at any 
+point in the past 12-18 months, the continued debate among investors is how large a 
+market opportunity for the AI economy is needed across CY2027-30 to generate 
+adequate returns on that aggregate level of spend across the next several years — we 
+attempt to address this debate with our framework below. 
+ 
+Exhibit 2: 3 Phases of US-Based Hyperscaler AI Compute Buildout 
+CY2023-30E 
+ 
+*Total capex reflects GSe relevant AI-compute related capex: 85% of GSe total company capex for GOOGL, MSFT and META; 90% of GSe total company capex for 
+ORCL; GSe AWS segment capex for AMZN; GSe AI segment capex for SPCX. **Average annual capex reflects the total aggregate capex spend in a given phase 
+divided by the number of years in each phase. 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  5
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 6]
+Bottom-Up Views on AI Infrastructure Capex — A Semiconductor Perspective 
+ 
+ 
+We present our view on the overall levels of AI infrastructure capex over the next 
+three years, based on the latest guidance from the semiconductor supply chain.  
+Over the past three years, the supply chain has been a reliable indicator of the direction 
+of travel for AI infrastructure capex spending trends.  In general, bottom-up supply 
+chain datapoints and company guidance are far from a perfect predictor of quantitative 
+trends — especially in a supply-constrained environment that encourages customers to 
+be more aggressive in their forecasts.  However, in the medium term we believe they 
+remain a good indicator of spending trends.  On the demand side, we believe 
+semiconductor investors are concerned about the potential “funding gap” between what 
+AI infrastructure providers are spending on capex today relative to the level of 
+present-day EBITDA/FCF they generate.  On the supply side, the most discussed risk is 
+the amount of datacenter land/power/shell that will be available to satisfy the planned 
+infrastructure capex — especially in 2028 and beyond.  
+Here, we present our implied estimates for AI infrastructure capex and associated 
+datacenter deployments, based on semiconductor company guidance and our own 
+forecasts (Exhibit 3).  We estimate AI infrastructure capex of approximately $1.3 
+trillion in 2027 (up 60% YoY) and $2.0 trillion in 2028 (up 42% YoY). In power terms, 
+our analysis implies roughly 20 GW / 35 GW / 57 GW of AI datacenter deployments 
+in 2026/27/28. Importantly, these figures represent AI-specific infrastructure 
+investment and extend beyond traditional hyperscaler capex to include AI labs 
+(including the capex beyond what is contemplated as part of hyperscaler spending), 
+sovereign AI enterprises, and corporate/enterprise customers. 
+We summarize these high-level datapoints below: 
+Broadcom (AVGO) has provided guidance for 10GW and 20GW of AI-related 
+n
+deployments among its customers in FY27 and FY28, respectively, and has indicated 
+its total compute/networking revenue opportunity in the datacenter stands at 
+$20-30 billion per GW. 
+Nvidia (NVDA) has stated that Blackwell systems (between compute and 
+n
+networking) represent roughly $25 billion of revenue per GW, and this figure is set to 
+increase to ~$40 billion per GW for Rubin. We also assume an additional $5 billion 
+per GW will be needed for the Feynman transition, which implies ~$45 billion of 
+revenue per GW. 
+Advanced Micro Devices (AMD) has outlined a $15 billion to $20 billion revenue 
+n
+opportunity per GW, and we use the midpoint of this range to estimate AMD-related 
+AI datacenter deployments. 
+For Marvell (MRVL) and MediaTek (2454.TW), we apply a similar framework, using 
+n
+our assumptions for revenue per GW alongside our datacenter revenue forecasts to 
+derive implied deployment levels. 
+24 September 2026
+  6
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 7]
+ 
+Exhibit 3: Our bottom-up AI Infrastructure Capex build implies $1.3tn/$2tn in annual AI 
+infrastructure spending on compute/networking in 2027/28 
+2026
+2027
+2028
+Nvidia
+Total Blackwell GW Deployments
+12
+                         
+3
+                           
+-
+                        
+Total Rubin GW Deployments
+2
+                           
+15
+                         
+19
+                         
+Total Feynman GW Deployments
+3
+                           
+Total GW deployments
+14
+                         
+18
+                         
+22
+                         
+CapEx per GW ($bn)
+50
+                         
+50
+                         
+50
+                         
+Total CapEx with Nvidia products ($bn)
+682
+                       
+879
+                       
+1,091
+                   
+Broadcom
+Custom XPU revenue ($mn)
+39,373
+                 
+86,176
+                 
+168,126
+               
+AI Connectivity revenue ($mn)
+18,465
+                 
+39,300
+                 
+72,180
+                 
+Total AI Revenue ($mn)
+57,838
+                 
+125,477
+               
+240,306
+               
+Total GW deployments
+5
+10
+                         
+20
+                         
+CapEx per GW ($bn)
+25
+                         
+25
+                         
+25
+                         
+Total CapEx with Broadcom products ($bn)
+126
+                       
+250
+                       
+500
+                       
+AMD
+Datacenter GPU revenue ($mn)
+15,662
+                 
+42,317
+                 
+56,017
+                 
+Revenue per GW ($mn)
+17,500
+                 
+17,500
+                 
+17,500
+                 
+Total GW Deployments
+1
+                           
+2
+                           
+3
+                           
+CapEx per GW ($bn)
+35
+                         
+35
+                         
+35
+                         
+Total CapEx with AMD products ($bn)
+31
+                         
+85
+                         
+112
+                       
+MediaTek
+Datacenter ASIC revenue ($mn)
+2,200
+                   
+20,250
+                 
+52,500
+                 
+Revenue per GW ($mn)
+5,000
+                   
+5,000
+                   
+5,000
+                   
+Total GW Deployments
+0.4
+                        
+4
+                           
+11
+                         
+CapEx per GW ($bn)
+25
+                         
+25
+                         
+25
+                         
+Total CapEx with MediaTek products ($bn)
+11
+                         
+101
+                       
+263
+                       
+Marvell
+Datacenter ASIC revenue ($mn)
+2,283
+                   
+4,662
+                   
+8,435
+                   
+Revenue per GW ($mn)
+5,000
+                   
+5,000
+                   
+5,000
+                   
+Total GW Deployments
+0.5
+                        
+0.9
+                        
+2
+                           
+CapEx per GW ($bn)
+25
+                         
+25
+                         
+25
+                         
+Total CapEx with Marvell products ($bn)
+11
+                         
+23
+                         
+42
+                         
+Consolidated Summary
+Total GW Deployments
+20
+35
+                         
+57
+                         
+Total AI CapEx ($bn)
+861
+                       
+1,338
+                   
+2,008
+                   
+Implied CapEx/GW ($bn)
+42
+                         
+38
+                         
+35
+                         
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  7
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 8]
+Introducing a Framework to Analyze US Hyperscaler ROIC and the Necessary Output from the AI 
+Economy 
+ 
+ 
+Below we provide a framework to answer this key question: What is the aggregate 
+revenue that the US-based hyperscalers need to earn in order to achieve a sufficient 
+ROIC on this “Phase 2” (2026-27) AI capex buildout? 
+Our US hyperscaler ROIC framework can be summarized by a few key 
+points/assumptions: 
+Relevant Companies: This analysis covers the “US-Based Hyperscalers”, which we 
+n
+define as (in market cap order): Alphabet (GOOGL), Microsoft (MSFT), Amazon 
+(AMZN), SpaceX (SPCX), Meta Platforms (META) and Oracle (ORCL). We believe 
+this cohort of companies represents a sufficient proxy for AI-related 
+infrastructure/compute buildout and capital intensity (as it relates to this debate). 
+Defining “Phase 2” (2026-27) Capex: We only include capex related to “AI 
+n
+compute” over the two-year period that we define as “Phase 2” (CY2026-27) to 
+measure the revenue generation needed on this near-term buildout. Importantly, we 
+are isolating this 2-year capex phase and do not include a) revenue/EBIT generated 
+in CY26-27 as compute comes online or b) ongoing capex spend (and resulting 
+revenues or operating expenses on that additional capacity) in CY28 and beyond. 
+The amount of “AI compute” capex spend in Phase 2 utilizes our actual 
+company-specific capex forecasts and includes only AI-related spend to the extent 
+relevant (e.g. GSe AWS capex for AMZN; GSe AI-segment capex for SPCX; etc.) – for 
+companies where AI v. Non-AI capex can’t be easily estimated (e.g. GOOGL), we 
+assume a flat ~85-90% of total company capex in CY26-27 goes toward AI compute. 
+Finally, we categorize capex spend into two buckets, with a consistent % mix 
+between the two: (1) “Compute” (servers/chips, networking hardware & equipment, 
+etc.), or ~70% of 2-year capex, and (2) “Shells” (land, buildings and related 
+infrastructure), or ~30% of 2-year capex. 
+24 September 2026
+  8
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 9]
+ 
+Cost of Compute: We assume a flat cost of ~$42/GW across the two-year period 
+n
+and across all six companies. We arrive at this $42bn/GW assumption from a variety 
+of inputs: (a) leveraging cost input assumptions from Epoch AI as of year-end 2025 
+and assuming a 10% inflation rate from those YE25 figures (we use 10% to be 
+consistent with the rate at which META + AMZN have revised up their capex 
+guidance, citing input costs as the primary factor); (b) a blended average input cost 
+per GW framework from our US Semiconductors coverage team (based on an 
+assumed mix of datacenter capacity by hardware type); and (c) reported / implied 
+realized costs of AI compute infrastructure buildouts YTD from the companies. 
+Below (Exhibit 8) we also provide a scenario analysis flexing a range of capex per GW 
+assumptions (between ~$34-51bn/GW). 
+ 
+Exhibit 4: Breakdown of Aggregate “Phase 2” (CY26-27E) Capex, by Company and Asset Type 
+ 
+Total capex reflects GSe relevant AI-compute related capex: 85% of GSe total company capex for GOOGL, MSFT and META; 90% of GSe total company capex for 
+ORCL; GSe AWS segment capex for AMZN; GSe AI segment capex for SPCX. “Compute” capex = spend on servers/chips, networking hardware and equipment; 
+“Shell” capex = spend on land, buildings and related infrastructure 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  9
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 10]
+ 
+ROIC Thresholds: We use a flat 15% annual return, as defined by annual net 
+n
+operating profit after taxes (“NOPAT”) earned in CY2028-30 as a % of average 
+annual capex in CY2026-27. In Exhibit 8, we also provide a scenario analysis flexing a 
+range of ROIC thresholds (between 0-30%). We note that the ROIC that the 
+hyperscalers are currently seeing on capex spend (and what they are likely 
+forecasting on this wave of capex) is almost certainly higher than this 15% threshold 
+(see “How Have the Companies Framed ROIC?” section below). That said, our 
+framework is designed to show the revenue needed to justify what we view as a 
+reasonable (and likely conservative) 15% return threshold and address some investor 
+concerns that the hyperscalers will realize an even lower (possibly negative) ROIC on 
+current capex. 
+Operating Expenses (EBIT-to-Revenue Bridge): We “gross up” the implied annual 
+n
+NOPAT in CY28-30 by an assumed 21% corporate tax rate (current US corporate 
+income tax rate) to show the annual operating income (“EBIT”) needed. From EBIT, 
+we add the assumed annual operating expenses on the GWs of compute built out to 
+show the annual revenue needed to clear the ROIC hurdle. The operating expenses 
+can be categorized in two buckets: (1) depreciation expense – we assume a useful 
+life of 5 years / 15 years on the “Compute” and “Shells” assets purchased in Phase 2, 
+respectively, and factor in the resulting annual depreciation expense on those assets 
+and (2) non-D&A operating and maintenance expenses – we assume an annual 
+cost to operate these datacenters (power, labor, etc.) of $836mm/GW (this 
+assumption is based on Epoch AI estimates [link] as of YE25 with an assumed 10% 
+inflation rate). 
+ 
+Exhibit 5: We assume a flat upfront capex cost of ~$42/GW for all 6 companies, with the 
+majority going toward servers 
+Upfront Capex Cost per GW, by Asset Type 
+Servers
+$24.1 
+57%
+Network Infra. (Total)
+$12.6 
+29%
+Facilities
+$5.4 
+13%
+Other
+$0.4 
+1%
+Total Capex:
+~$42.4bn per 
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  10
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 11]
+ 
+Importantly, we note below a few areas where this analysis might be overly simplistic or 
+generalized – noting that this is meant to act as a broad framework (with the ability to 
+toggle specific assumptions based on investors’ own views/perspectives, industry or 
+company developments in the coming months, etc.): 
+We are not factoring in post-Phase 2 (2028 and beyond) investments. With this 
+n
+analysis, we attempt to isolate this current near-term wave of compute buildout 
+(and the return needed to justify these next ~18 months of investments). Our 
+ 
+Exhibit 6: Summary of Hyperscaler ROIC Framework (Capex to Revenue Bridge) 
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  11
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 12]
+published company-specific forecasts in 2028 and beyond differ from this analysis, 
+given future periods are impacted by ongoing capital intensity in ’28 and beyond. 
+The amount of compute capacity (in GWs) for each company is illustrative and 
+n
+not meant to be interpreted as actual capacity. Included in our analysis is the 
+implied number of gigawatts of compute capacity that each company would create 
+for their given level of capex spend (assuming cost per GW, timelines for bringing 
+capacity online, etc. are consistent/uniform across companies). There are sizable 
+differences in the amount of capacity that each company currently has and the 
+pipeline for how much each plans to bring online in the coming months (e.g. SPCX 
+management have stated [link] that they expect to bring on ~5-10GWs of additional 
+capacity online by YE27; press reports [link] indicate META plans to scale to ~7GWs 
+by YE26 and ~14GWs by YE27) – we ignore these differences in an attempt to 
+provide a uniform industry-wide ROIC framework. 
+We assume a consistent capex mix and useful life across hyperscalers. Our 
+n
+assumption of a consistent % mix of capex spend across the two buckets 
+(“Compute” and “Shells”) and a consistent useful life (5 years and 15 years, 
+respectively) on those two buckets of spend is overly simplistic (with companies 
+being at different phases of the buildout spending on different types of assets and at 
+various different useful economic lives) but meant to provide an illustrative 
+framework across the industry. 
+We only include the six US-based hyperscalers in our analysis. While the AI 
+n
+infrastructure/compute buildout encompasses a much larger set of 
+industries/companies (neoclouds, corporate developers and datacenter owners, 
+SPVs, frontier model companies, etc.), we attempt to frame the ROIC needed from 
+the perspective of the six largest US-based hyperscalers under our coverage. We 
+also, for the most part, only use capital expenditures related to the buildout of 
+owned and operated datacenter compute capacity and exclude things such as 
+off-balance sheet lease obligations, finance leases, SPVs and 3P compute licensing 
+arrangements for a number of reasons (lack of full visibility into these items, the risk 
+of “double counting” capital investments [e.g. Google-SpaceX compute licensing 
+deal], etc.).  
+Our analysis implies that in order to achieve a 15% ROIC on aggregate Phase 2 
+(CY2026-27) capex, the six US-based hyperscalers need to generate a cumulative 
+~$1.42trn of revenues in 2028-30 (or a blended average annual revenue per GW of 
+~$11.6bn/GW). 
+24 September 2026
+  12
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 13]
+ 
+Scenario Analysis: Flexing ROIC Hurdle Rates  
+Below we provide a scenario analysis of aggregate revenues that the US-based 
+hyperscalers need to earn (total and per GW) by flexing two key input variables to our 
+framework: (1) assumed ROIC earned on Phase 2 capex (between 0-30% ROIC) and (2) 
+assumed upfront capex cost per GW (from ~$34-51bn/GW) achieved by the US 
+hyperscalers on Phase 2 capex. This analysis implies that in order to achieve a 0-30% 
+range of ROICs on aggregate Phase 2 (CY26-27) capex, the six US-based 
+hyperscalers would need to generate a cumulative ~$908bn-1.89trn of revenues in 
+CY2028-30 (or a blended average annual revenue per GW of ~$6.2-18.6bn/GW). 
+ 
+Exhibit 7: A 15% ROIC on CY26-27 capex would imply an aggregate ~$1.42trn of revenues in CY28-30 (or a blended avg 
+monetization rate of ~$11.6bn/GW) 
+US-Based Hyperscaler ROIC Framework 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(1,726,273)
+$     
+[AA]
+Revenue
+465,374
+$         
+473,802
+$         
+475,909
+$         
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(20,403)
+$          
+(27,204)
+$          
+(28,904)
+$          
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(276,204)
+$        
+(276,204)
+$        
+(276,204)
+$        
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(4,881)
+$            
+(6,508)
+$            
+(6,915)
+$            
+[F] = [O] * Other cost per GW
+EBIT
+(1,726,273)
+$     
+163,887
+$         
+163,887
+$         
+163,887
+$         
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(1,726,273)
+$     
+129,470
+$         
+129,470
+$         
+129,470
+$         
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+41GW
+[O]
+Revenue
+1,415,085
+$      
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+491,660
+$         
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+388,411
+$         
+Margin
+27.4%
+per GW
+3.18
+$               
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  13
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 14]
+ 
+Exhibit 8: In order to achieve a range of ROICs on aggregate Phase 2 (CY26-27) capex, the six 
+US-based hyperscalers need to generate a cumulative ~$908bn-1.89trn1.11-1.73trn of 
+revenues in CY2028-30 (or a blended average annual revenue per GW of 
+~$6.2-18.67.3-17.0bn/GW) 
+US-Based Hyperscaler ROIC Framework - Scenario Analysis ($bn) 
+Aggregate 2028-2030 Revenues Needed
+ROIC
+30.0%
+25.0%
+20.0%
+15.0%
+10.0%
+5.0%
+0.0%
+50.9
+$      
+1,890.9
+$ 
+1,727.1
+$   
+1,563.2
+$   
+1,399.3
+$   
+1,235.4
+$   
+1,071.5
+$   
+907.6
+$      
+48.8
+$      
+1,894.4
+$ 
+1,730.5
+$   
+1,566.6
+$   
+1,402.7
+$   
+1,238.8
+$   
+1,074.9
+$   
+911.1
+$      
+46.7
+$      
+1,898.1
+$ 
+1,734.2
+$   
+1,570.4
+$   
+1,406.5
+$   
+1,242.6
+$   
+1,078.7
+$   
+914.8
+$      
+44.6
+$      
+1,902.2
+$ 
+1,738.3
+$   
+1,574.5
+$   
+1,410.6
+$   
+1,246.7
+$   
+1,082.8
+$   
+918.9
+$      
+42.4
+$      
+1,906.7
+$ 
+1,742.9
+$   
+1,579.0
+$   
+1,415.1
+$   
+1,251.2
+$   
+1,087.3
+$   
+923.4
+$      
+40.3
+$      
+1,911.7
+$ 
+1,747.8
+$   
+1,584.0
+$   
+1,420.1
+$   
+1,256.2
+$   
+1,092.3
+$   
+928.4
+$      
+38.2
+$      
+1,917.3
+$ 
+1,753.4
+$   
+1,589.5
+$   
+1,425.6
+$   
+1,261.7
+$   
+1,097.8
+$   
+934.0
+$      
+36.1
+$      
+1,923.5
+$ 
+1,759.6
+$   
+1,595.7
+$   
+1,431.8
+$   
+1,267.9
+$   
+1,104.0
+$   
+940.2
+$      
+34.0
+$      
+1,930.4
+$ 
+1,766.6
+$   
+1,602.7
+$   
+1,438.8
+$   
+1,274.9
+$   
+1,111.0
+$   
+947.1
+$      
+Implied Revenue per GW
+ROIC
+30.0%
+25.0%
+20.0%
+15.0%
+10.0%
+5.0%
+0.0%
+50.9
+$      
+18.6
+$      
+17.0
+$        
+15.4
+$        
+13.8
+$        
+12.1
+$        
+10.5
+$        
+8.9
+$          
+48.8
+$      
+17.9
+$      
+16.3
+$        
+14.8
+$        
+13.2
+$        
+11.7
+$        
+10.1
+$        
+8.6
+$          
+46.7
+$      
+17.1
+$      
+15.6
+$        
+14.2
+$        
+12.7
+$        
+11.2
+$        
+9.7
+$          
+8.2
+$          
+44.6
+$      
+16.4
+$      
+15.0
+$        
+13.5
+$        
+12.1
+$        
+10.7
+$        
+9.3
+$          
+7.9
+$          
+42.4
+$      
+15.6
+$      
+14.3
+$        
+12.9
+$        
+11.6
+$        
+10.3
+$        
+8.9
+$          
+7.6
+$          
+40.3
+$      
+14.9
+$      
+13.6
+$        
+12.3
+$        
+11.1
+$        
+9.8
+$          
+8.5
+$          
+7.2
+$          
+38.2
+$      
+14.1
+$      
+12.9
+$        
+11.7
+$        
+10.5
+$        
+9.3
+$          
+8.1
+$          
+6.9
+$          
+36.1
+$      
+13.4
+$      
+12.3
+$        
+11.1
+$        
+10.0
+$        
+8.8
+$          
+7.7
+$          
+6.5
+$          
+34.0
+$      
+12.7
+$      
+11.6
+$        
+10.5
+$        
+9.4
+$          
+8.4
+$          
+7.3
+$          
+6.2
+$          
+CapEx per GW
+CapEx per GW ($bn)
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  14
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 15]
+Using Cloud Backlogs to Contextualize Forward Monetization Potential 
+ 
+ 
+To help contextualize the output of the analysis above, we look at the three major 
+US-based public cloud companies (AWS [AMZN], Azure [MSFT] and Google Cloud 
+[GOOGL]) as a read on current demand backlogs and the infrastructure buildout that 
+these companies are undergoing in response. Growing enterprise demand for both AI 
+training and inference workloads is driving a sizable uptick in reported revenues and 
+backlog commitments for all three CSPs — as of C2Q26, the three companies reported a 
+combined backlog of ~$1.69trn (+152% YoY and ~1.5x since the start of the year), with 
+management citing capacity constraints limiting the ability to serve strong AI-related 
+demand and being a key reason for the increase in capex investments. 
+ 
+Using the same framework of a 15% ROIC hurdle rate, the combined CY2026-27 capex 
+for these three companies of ~$1.22trn would need to generate a cumulative ~$1.00trn 
+of revenues in CY2028-30 (see Exhibit 12, Exhibit 13 and Exhibit 14 below for details). 
+This required 3-year revenue total represents ~59% of the total current reported 
+backlog of ~$1.69trn as of C2Q26 (compared to company disclosures of an 
+expectation to realize ~1/2 of the reported backlog over the next 24 months and ~1/2 
+thereafter). While some debate can be made about how the current backlog will be 
+converted into revenues going forward (customer concentration risk; product/revenue 
+mix; timing of revenue realization given longer-term contracts; etc.), this assumes no 
+further growth of backlog commitments going forward (a likely conservative assumption 
+given the steady DD%+ sequential backlog growth in recent periods). 
+ 
+Exhibit 9: Growing enterprise demand for AI workloads 
+(training and inference) is driving accelerating cloud 
+revenue growth… 
+Public Cloud Revenues ($bn) 
+ 
+Exhibit 10: ...and scaling revenue backlogs for the major 
+US cloud hyperscalers 
+Public Cloud Reported Revenue Backlogs ($bn) 
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+45%
+50%
+ $-
+ $20,000
+ $40,000
+ $60,000
+ $80,000
+ $100,000
+ $120,000
+1Q23
+2Q23
+3Q23
+4Q23
+1Q24
+2Q24
+3Q24
+4Q24
+1Q25
+2Q25
+3Q25
+4Q25
+1Q26
+2Q26
+AWS (AMZN)
+Azure (MSFT)
+GCP (GOOGL)
+Total % y/y growth
+0%
+20%
+40%
+60%
+80%
+100%
+120%
+140%
+160%
+ $-
+ $200
+ $400
+ $600
+ $800
+ $1,000
+ $1,200
+ $1,400
+ $1,600
+ $1,800
+1Q23
+2Q23
+3Q23
+4Q23
+1Q24
+2Q24
+3Q24
+4Q24
+1Q25
+2Q25
+3Q25
+4Q25
+1Q26
+2Q26
+AWS (AMZN)
+Azure (MSFT)
+GCP (GOOGL)
+Total % y/y growth
+ 
+Azure (MSFT) reflects GS estimates for all periods 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+Backlog figures include non-cloud revenue commitments (“Total Commitments 
+for AMZN; “Commercial RPOs” for MSFT; “Remaining Performance Obligations 
+(RPO)” for GOOGL) and are used as a proxy for future cloud demand 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  15
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 16]
+ 
+Exhibit 11: The implied 3-year revenues required of $1.00trn represents ~59% of the total current backlog of ~$1.69trn 
+reported by the three US-based CSPs (AMZN, MSFT and GOOGL) 
+US-Based Cloud ROIC Framework (AMZN, MSFT and GOOGL) — Benchmarked to Current Cloud Backlogs 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(1,221,705)
+$     
+[AA]
+Revenue
+329,351
+$         
+335,316
+$         
+336,807
+$         
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(14,439)
+$          
+(19,252)
+$          
+(20,456)
+$          
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(195,473)
+$        
+(195,473)
+$        
+(195,473)
+$        
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(3,454)
+$            
+(4,606)
+$            
+(4,894)
+$            
+[F] = [O] * Other cost per GW
+EBIT
+(1,221,705)
+$     
+115,985
+$         
+115,985
+$         
+115,985
+$         
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(1,221,705)
+$     
+91,628
+$           
+91,628
+$           
+91,628
+$           
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+29GW
+[O]
+Revenue
+1,001,474
+$      
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+347,954
+$         
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+274,884
+$         
+Margin
+27.4%
+per GW
+3.18
+$               
+Relative to CSP Backlog
+Reported Backlog (CQ2'26):
+Total
+$1,687,900
+GOOGL
+$496,000
+AMZN
+$513,900
+MSFT
+$678,000
+Revenue Required (CY2028-30)
+% of Backlog
+Total
+1,001,474
+$      
+59.3%
+GOOGL
+385,345
+$         
+77.7%
+AMZN
+347,817
+$         
+67.7%
+MSFT
+268,312
+$         
+39.6%
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  16
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 17]
+How Have the Companies Framed ROIC? 
+ 
+ 
+ Capacity constraints and accelerating demand driving short payback periods on 
+current datacenter capex. 
+On its 2Q26 earnings call, AMZN outlined how it has a clear line of sight into current 
+n
+period AWS/AI-related capex generating strong returns in the future: capex is 
+bucketed into servers and networking equipment (a ~5-6 year useful life v. 
+breakeven point of ~3 years, implying significant cash flow generation for 2-3 years 
+post breakeven) and datacenter shells (30+ year useful life, implying the ability to 
+support 5-6 cycles of server economics). Currently, capex spend begins ~2 years 
+before a datacenter becomes operational (masking current period results against 
+what is otherwise positive/attractive ROIC on AI-related investments). 
+On its F4Q26 earnings call, ORCL disclosed that it sees steady-state ROIC in the high 
+n
+20s % for larger projects within its Infrastructure business (with potential upside 
+from potential elongated GPU replacement cycles and/or initiatives such as 
+“Bring-Your-Own-Hardware” that lower ORCL’s upfront capex spend). 
+At the GS Communacopia + Technology conference, SPCX disclosed that it is 
+n
+currently deploying AI segment capex (on terrestrial datacenter capacity) against a 
+one-year payback period. 
+Datacenter infrastructure is being built with flexibility/fungibility in mind (reducing 
+exposure to one single technology framework or utility). 
+MSFT has previously framed its infrastructure investments as going toward building 
+n
+a “fungible fleet”, including flexibility in terms of geography and  hardware type and 
+able to serve different types of workloads/utilities across the AI lifecycle.  
+META has discussed how it builds out its datacenter capacity through a “staged’ 
+n
+approach, leveraging modular designs, timing of server orders (“as needed” / close 
+to deployment) and leasing of additional 3P capacity (to fill gaps as 1P compute is 
+deployed. 
+Similarly, multiple companies have discussed innovation around datacenter 
+n
+architecture and design – for example, AMZN’s Modular Design enables it to easily 
+retrofit existing infrastructure with new hardware in the future.  
+GOOGL has outlined its ability to dynamically shift capacity between internal 
+n
+(Search, YouTube, Google DeepMind) and external (Google Cloud) use cases and 
+direct workloads across geos and server types to optimize for high utilization rates. 
+The outlook for future monetization potential (across multiple avenues) of 
+compute capacity remains optimistic. 
+The major public CSPs (GOOGL, AMZN, MSFT and ORCL) have raised pricing on 
+n
+various types of workloads and services, with the potential for future price increases 
+(to better align with supply/demand imbalances) as contracts are renewed. 
+MSFT underlined that unit economics are healthier than the same stage of the 
+n
+original cloud cycle, supporting a greater profit pool as any given cohort of capex 
+24 September 2026
+  17
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 18]
+matures. One key learning from the cloud era is having one unified tech stack across 
+Azure and 1P apps (vs. different tech stacks that require a finer grained matching 
+approach with ultimately lower utilization). In addition, MSFT has been able to 
+capture AI-native customers from Y0, vs. being a late entrant in the cloud cycle. On 
+semis, MSFT believes the chip layer will become more diverse, as was the case with 
+CPUs. On token rents, MSFT believes that it will deliver enough value on top of 3P 
+tokens, as well as orchestrate between 1P and 3P tokens, such that the margin 
+impact will be minimal over time. Taken together, Microsoft believes there is no 
+structural reason that gross margin for AI margins can’t approach cloud margins (see 
+recent NDR note for more details). 
+Multiple ways to monetize enterprise compute capacity, from “bare-metal” 
+n
+Infrastructure-as-a-Service (e.g. SPCX’s recently announced compute licensing 
+deals) to full-scale enterprise software services.   
+The continued evolution of consumer-facing monetization opportunities, with 
+n
+advertising (META, GOOGL, AMZN) furthest along and potential for other avenues 
+(subscriptions, agentic commerce, etc.) to develop in the future. 
+24 September 2026
+  18
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 19]
+Valuation/Risks 
+ 
+ 
+AMZN (Buy): Our $375, 12-month price target is based on a sum-of-the-parts 
+methodology: a) 16x EV/GAAP EBIT multiple applied to our North America segment 
+NTM + 1 estimates; b) a 1.25x EV/Sales multiple applied to our International segment 
+NTM + 1 estimates; and c) a 29.0x EV/GAAP EBIT multiple applied to our AWS segment 
+NTM + 1 estimates. Key risks include: (-) Any impact to eCommerce or Cloud growth 
+from competition; lack of success in scaling high margin businesses including 
+Advertising, Cloud, third-party selling and the subscription business; investments across 
+an array of initiatives creating a headwind to gross or operating margin; any product or 
+platform changes necessary to comply with changes to the global regulatory 
+environment; exposure to volatility caused by the global macroeconomic environment; 
+and investor risk appetite for growth stocks. 
+GOOGL (Buy): Our $435, 12-month price target is based on an equal blend of (1) 26.0x 
+EV/GAAP EBIT applied to our NTM + 1 year estimates and (2) a modified DCF using 50.0x 
+EV/FCF-SBC multiple applied to our NTM + 4 years estimates discounted back 3 years. 
+Risks to our Buy rating include: a) competition of product utility levels and advertising 
+dollars; b) headwinds to monetizable (product) search from industry disruption; c) 
+shifting media consumption habits; d) heavy investments depress operating margins for 
+longer than our forecasts; e) no/low levels of incremental shareholder returns going 
+forward; and f) regulatory scrutiny and industry practices altering the business model’s 
+prospects. In addition, Alphabet is exposed to volatility caused by the global 
+macroeconomic environment and investor risk appetite for growth stocks. 
+META (Buy): Our $725, 12-month price target is based on an equal blend of (1) 26.0x 
+EV/GAAP EBIT applied to our NTM + 1 year estimates and (2) a modified DCF using 45.0x 
+EV/FCF-SBC multiple applied to our NTM + 4 years estimates discounted back 3 years. 
+Risks to our Buy rating include: a) competition for user growth, user engagement and 
+advertising dollars across an array of incumbent and emerging Internet, media and 
+commerce companies; b) large investments in long-tailed initiatives depress operating 
+margins for longer than our forecasts; c) no/low levels of incremental shareholder 
+returns going forward; d) regulatory scrutiny and industry practices altering the business 
+model’s prospects; e) potential antitrust scrutiny could prove to be a headwind to M&A 
+aspiration (to add talent and product innovation inorganically) and/or result in a 
+break-up or dis-synergies of prior period M&A activity; and f) inability to monetize 
+upside optionality opportunities (messaging layer, social commerce/shopping, 
+Oculus/Metaverse). In addition, Meta is exposed to volatility caused by the global 
+macroeconomic environment and investor risk appetite for growth stocks. 
+MSFT (Buy): Our $640, 12-month price target is based on a 28x P/E multiple to 
+Microsoft’s SNTM adjusted net income. Key downside risks include: longer ramp for 
+internal silicon, which can limit market share gains or gross margin expansion; greater 
+investments in projects outside of expectations (e.g., non-Azure); key leadership 
+changes; and more meaningful shift to custom software that could negatively impact its 
+applications business. 
+ORCL (Buy): Our $240 12-month price target is based on 15x Oracle’s 2030E adjusted 
+net income, discounted back to SNTM (Q5-Q8). Key risks include: customer 
+concentration risk; timing and execution of the data center build-outs; intense capex 
+24 September 2026
+  19
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 20]
+investment cycle; and accelerating share losses in the database/SaaS market. 
+SPCX (Buy): Our $220, 12-month price target is based on a sum-of-the-parts valuation 
+framework: (1) Space: 9.5x EV/Sales, which includes applied multiples on 2029 segment 
+estimates (Space: 9.5x EV/Sales; Connectivity: 24.0x EV/GAAP EBIT; AI: 28.0x EV/GAAP 
+EBIT), discounted back 1.5 years at 12%. The discount rate represents CAPM using the 
+blended average of companies within our coverage universe consisting of: (1) 3% risk 
+free rate (based on the normalized 10-year rate); (2) average beta of ~1.3; (3) equity risk 
+premium of 7%. Key risks to our Buy rating across the Overall, Space, Connectivity and AI 
+businesses include: Overall: a) Governance risks (majority voting power and significant 
+execution risk concentrated in Founder and CEO); b) Existing related-party transactions 
+across various companies and entities associated with Founder and CEO. (e.g. 
+co-development of Terafab and Macrohard with Tesla; asset purchases of Tesla 
+products by SPCX; etc.); c) Forecasts for high capital intensity and cash burn, requiring 
+sizable future fund raises (assumed primarily through debt); and d) Potential for future 
+equity dilution from stock grants/other forms of compensation (including sizable 
+management stock grants based on various performance targets) and/or potential 
+equity fund raises. Space: a) Competition from other commercial launch companies; b) 
+Higher than expected allocation of launches to internal use cases (i.e. connectivity and 
+AI); c) Reliance on government contracts for revenues; d) Any delays or difficulties in 
+maintaining/renewing required regulatory approvals and licenses for space-related 
+activities (incl. FAA launch and re-entry licenses); and e) Lower than expected 
+profitability (given the fixed-price nature of contracts). Connectivity: a) Competition 
+from other broadband internet and mobile service providers; b) Reliance on significant 
+growth of internal launch capacity (to support Starlink satellite deployment) through 
+Starship, which has yet to prove out full reusability/rapid launch schedules; c) Ability to 
+scale enterprise and government Starlink contracts; d) Reliance on third-party partners 
+for go-to-market/distribution and spectrum; and e) Any delays or difficulties in acquiring 
+regulatory approvals and licenses for satellites. AI: a) A reliance on developing, scaling 
+and maintaining orbital (satellite-based) datacenter compute, an unproven technology 
+with a significant degree of execution risk; b) Competition from other frontier AI models 
+related to both model performance and consumer/ enterprise demand for model 
+access; c) Ability to scale consumer AI revenues (both X advertising and X/Grok paid 
+subscriptions); d) A reliance on significant growth of internal launch capacity (to support 
+orbital compute deployment) through Starship, which has yet to prove out full 
+reusability/rapid launch schedules; and e) Supply chain risks and reliance on third-party 
+partners for key inputs (particularly third-party chips, e.g. NVDA GPUs). In addition, the 
+company is exposed to broader macroeconomic conditions that could adversely impact 
+the business. 
+24 September 2026
+  20
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 21]
+Appendix: Revenue and EBIT Analyses by Company 
+ 
+ 
+ 
+ 
+Exhibit 12: US-Based Hyperscaler ROIC Framework: Alphabet (GOOGL) 
+$mm 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(470,085)
+$        
+[AA]
+Revenue
+126,727
+$         
+129,022
+$         
+129,596
+$         
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(5,556)
+$            
+(7,408)
+$            
+(7,871)
+$            
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(75,214)
+$          
+(75,214)
+$          
+(75,214)
+$          
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(1,329)
+$            
+(1,772)
+$            
+(1,883)
+$            
+[F] = [O] * Other cost per GW
+EBIT
+(470,085)
+$        
+44,628
+$           
+44,628
+$           
+44,628
+$           
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(470,085)
+$        
+35,256
+$           
+35,256
+$           
+35,256
+$           
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+11GW
+[O]
+Revenue
+385,345
+$         
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+133,885
+$         
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+105,769
+$         
+Margin
+27.4%
+per GW
+3.18
+$               
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  21
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 22]
+ 
+ 
+ 
+Exhibit 13: US-Based Hyperscaler ROIC Framework: Microsoft (MSFT) 
+$mm 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(327,316)
+$        
+[AA]
+Revenue
+88,239
+$           
+89,837
+$           
+90,236
+$           
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(3,869)
+$            
+(5,158)
+$            
+(5,480)
+$            
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(52,371)
+$          
+(52,371)
+$          
+(52,371)
+$          
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(925)
+$               
+(1,234)
+$            
+(1,311)
+$            
+[F] = [O] * Other cost per GW
+EBIT
+(327,316)
+$        
+31,074
+$           
+31,074
+$           
+31,074
+$           
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(327,316)
+$        
+24,549
+$           
+24,549
+$           
+24,549
+$           
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+8GW
+[O]
+Revenue
+268,312
+$         
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+93,223
+$           
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+73,646
+$           
+Margin
+27.4%
+per GW
+3.18
+$               
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 14: US-Based Hyperscaler ROIC Framework: Amazon (AMZN) 
+$mmn 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(424,304)
+$        
+[AA]
+Revenue
+114,385
+$         
+116,457
+$         
+116,975
+$         
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(5,015)
+$            
+(6,686)
+$            
+(7,104)
+$            
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(67,889)
+$          
+(67,889)
+$          
+(67,889)
+$          
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(1,200)
+$            
+(1,600)
+$            
+(1,700)
+$            
+[F] = [O] * Other cost per GW
+EBIT
+(424,304)
+$        
+40,282
+$           
+40,282
+$           
+40,282
+$           
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(424,304)
+$        
+31,823
+$           
+31,823
+$           
+31,823
+$           
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+10GW
+[O]
+Revenue
+347,817
+$         
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+120,846
+$         
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+95,468
+$           
+Margin
+27.4%
+per GW
+3.18
+$               
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  22
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 23]
+ 
+ 
+ 
+Exhibit 15: US-Based Hyperscaler ROIC Framework: Meta Platforms (META) 
+$mm 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(308,677)
+$        
+[AA]
+Revenue
+83,214
+$           
+84,721
+$           
+85,098
+$           
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(3,648)
+$            
+(4,864)
+$            
+(5,168)
+$            
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(49,388)
+$          
+(49,388)
+$          
+(49,388)
+$          
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(873)
+$               
+(1,164)
+$            
+(1,236)
+$            
+[F] = [O] * Other cost per GW
+EBIT
+(308,677)
+$        
+29,305
+$           
+29,305
+$           
+29,305
+$           
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(308,677)
+$        
+23,151
+$           
+23,151
+$           
+23,151
+$           
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+7GW
+[O]
+Revenue
+253,033
+$         
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+87,914
+$           
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+69,452
+$           
+Margin
+27.4%
+per GW
+3.18
+$               
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 16: US-Based Hyperscaler ROIC Framework: Oracle (ORCL) 
+$mm 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(165,255)
+$        
+[AA]
+Revenue
+44,550
+$           
+45,357
+$           
+45,558
+$           
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(1,953)
+$            
+(2,604)
+$            
+(2,767)
+$            
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(26,441)
+$          
+(26,441)
+$          
+(26,441)
+$          
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(467)
+$               
+(623)
+$               
+(662)
+$               
+[F] = [O] * Other cost per GW
+EBIT
+(165,255)
+$        
+15,689
+$           
+15,689
+$           
+15,689
+$           
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(165,255)
+$        
+12,394
+$           
+12,394
+$           
+12,394
+$           
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+4GW
+[O]
+Revenue
+135,465
+$         
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+47,066
+$           
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+37,182
+$           
+Margin
+27.4%
+per GW
+3.18
+$               
+ 
+The compute/shell split is for illustrative purposes across cloud providers (given Oracle primarily leases data center capacity) 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  23
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 24]
+ 
+Exhibit 17: US-Based Hyperscaler ROIC Framework: SpaceX (SPCX) 
+$mm 
+US Hyperscaler ROIC Framework
+2026-2027
+2028
+2029
+2030
+Equation
+At 15% ROIC Threshold
+Upfront CapEx (Growth)
+(30,635)
+$          
+[AA]
+Revenue
+8,259
+$             
+8,408
+$             
+8,446
+$             
+[A] = [G] - [F] - [E] - [D]
+Utilization %
+60%
+80%
+85%
+[B]
+per GW 100% Utilization rate
+11.44
+$             
+11.65
+$             
+11.70
+$             
+[C] = ( [A] * 1000 / Average( [B0], [B1] )
+OpEx (Excl. D&A)
+(362)
+$               
+(483)
+$               
+(513)
+$               
+[D] = ( [B] * [O] ) * Opex per GW
+D&A
+(4,902)
+$            
+(4,902)
+$            
+(4,902)
+$            
+[E] = (( [AA] * [L] ) / [K] ) +  (( [AA] * [N] ) / [M] )
+Other Costs
+(87)
+$                 
+(115)
+$               
+(123)
+$               
+[F] = [O] * Other cost per GW
+EBIT
+(30,635)
+$          
+2,908
+$             
+2,908
+$             
+2,908
+$             
+[G] = [I] / ( 1 - [H] )
+% Margin
+35.2%
+34.6%
+34.4%
+Tax Rate
+21%
+21%
+21%
+[H]
+NOPAT
+(30,635)
+$          
+2,298
+$             
+2,298
+$             
+2,298
+$             
+[I] = [J] * ( - [AA] / 2 )
+% Margin
+27.8%
+27.3%
+27.2%
+Target ROIC
+15%
+15%
+15%
+[J]
+"Compute"
+5yrs
+70%
+[K], [L]
+"Shell"
+15yrs
+30%
+[M], [N]
+Implied GWs Added
+1GW
+[O]
+Revenue
+25,113
+$           
+[P]
+per GW
+11.60
+$             
+[Q] = [P] / [O] / 1000 / 3
+EBIT
+8,725
+$             
+Margin
+34.7%
+per GW
+4.03
+$               
+NOPAT
+6,893
+$             
+Margin
+27.4%
+per GW
+3.18
+$               
+ 
+ 
+Source: Epoch AI, Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  24
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 25]
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, Eric Sheridan, Gabriela Borges, CFA, James Schneider, Ph.D., Alex Vegliante, CFA, Julia Fein-Ashley, Emma Huang, Callie Valenti, Maura Hager, Selina 
+Zhang and Anmol Makkar, hereby certify that all of the views expressed in this report accurately reflect our personal views about the subject company 
+or companies and its or their securities. We also certify that no part of our compensation was, is or will be, directly or indirectly, related to the specific 
+recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: Eric Sheridan Goldman Sachs & Co. LLC, Gabriela Borges, CFA Goldman Sachs & Co. LLC, James Schneider, Ph.D. Goldman Sachs 
+& Co. LLC, Alex Vegliante, CFA Goldman Sachs & Co. LLC, Julia Fein-Ashley Goldman Sachs & Co. LLC, Emma Huang Goldman Sachs & Co. LLC, Callie 
+Valenti Goldman Sachs & Co. LLC, Maura Hager Goldman Sachs & Co. LLC, Selina Zhang Goldman Sachs & Co. LLC, Anmol Makkar Goldman Sachs & Co. 
+LLC. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+Rating and pricing information 
+Alphabet Inc. (Buy, $337.83), Amazon.com Inc. (Buy, $249.27), Meta Platforms Inc. (Buy, $744.10), Microsoft Corp. (Buy, $500.59), Oracle Corp. (Buy, 
+$144.56) and Space Exploration Technologies Corp. (Buy, $148.36) 
+The rating(s) for Alphabet Inc., Amazon.com Inc., Meta Platforms Inc. and Space Exploration Technologies Corp. is/are relative to the other 
+companies in its/their coverage universe: Airbnb Inc., Alphabet Inc., Amazon.com Inc., Angi Inc., AppLovin Corp., Bending Spoons S.p.A., Booking 
+Holdings Inc., Bumble Inc., Chewy Inc., Clear Secure Inc., Coursera Inc., DoorDash Inc., DraftKings Inc., Duolingo Inc., Ethos Technologies Inc., Etsy Inc., 
+Expedia Group, Fiverr International Ltd., Frontdoor Inc., Genius Sports Ltd., GoodRx Holdings Inc., Grindr Inc., Groupon Inc., Ibotta Inc., Instacart, Liftoff 
+Mobile Inc., Lyft Inc., Match Group, MediaAlpha Inc., Meta Platforms Inc., Netflix Inc., Neutron Holdings Inc., Nextdoor Holdings, Opera Ltd., Pattern 
+Group Inc., Peloton Interactive Inc., People Inc., Pinterest Inc., Playtika, Reddit Inc., Roblox, Snap Inc., Space Exploration Technologies Corp., Sportradar 
+Group, Spotify Technology S.A., StubHub Holdings, Take-Two Interactive Software Inc., Tripadvisor Inc., Uber Technologies Inc., Unity Software Inc., 
+Upwork Inc., Wayfair Inc., Webtoon Entertainment Inc., Xometry Inc., Yelp Inc., ZipRecruiter Inc.  
+The rating(s) for Microsoft Corp. and Oracle Corp. is/are relative to the other companies in its/their coverage universe: Adobe Inc., Akamai 
+Technologies Inc., AvePoint, Braze Inc., Check Point, Cloudflare, Commerce.com Inc., CoreWeave Inc., CrowdStrike, Datadog Inc., DigitalOcean Holdings, 
+EverCommerce Inc., Figma Inc., Fortinet, HubSpot Inc., Intuit Inc., Klaviyo, Microsoft Corp., Navan Inc., Octave Intelligence, Okta, Oracle Corp., Palantir 
+Technologies, Palo Alto Networks, SailPoint Inc., Salesforce Inc., SentinelOne, ServiceNow Inc., Shopify Inc., Snowflake Inc., Twilio Inc., Tyler 
+Technologies Inc., Veeva Systems Inc., Workday Inc., Zeta Global, Zscaler  
+Company-specific regulatory disclosures 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+24 September 2026
+  25
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 26]
+ 
+As of July 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,104 equity securities. Goldman Sachs assigns stocks as Buys 
+and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Price target and rating history chart(s) 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Target price history table(s) 
+ 
+ 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+59%
+43%
+Oracle Corp. (ORCL)
+Microsoft Corp. (MSFT)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+14-Sep-26
+240.00
+144.79
+30-Jul-26
+640.00
+451.10
+11-Jun-26
+239.00
+184.10
+30-Apr-26
+610.00
+407.78
+11-Mar-26
+228.00
+163.12
+29-Jan-26
+600.00
+433.50
+11-Jan-26
+240.00
+198.52
+11-Jan-26
+655.00
+479.28
+11-Dec-25
+220.00
+198.85
+31-Jul-25
+630.00
+533.50
+17-Oct-25
+320.00
+291.31
+20-May-25
+550.00
+458.17
+12-Sep-25
+310.00
+292.18
+01-May-25
+480.00
+425.40
+12-Jun-25
+195.00
+199.86
+24-Apr-25
+450.00
+387.30
+24-Apr-25
+145.00
+137.51
+10-Oct-24
+500.00
+415.84
+11-Mar-25
+165.00
+144.18
+26-Apr-24
+515.00
+406.32
+10-Dec-24
+185.00
+177.74
+25-Oct-23
+450.00
+340.67
+10-Sep-24
+153.00
+155.89
+12-Jun-24
+137.00
+140.38
+12-Mar-24
+130.00
+127.54
+12-Dec-23
+115.00
+100.81
+Amazon.com Inc. (AMZN)
+Space Exploration Technologies Corp. (SPCX)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+31-Jul-26
+375.00
+271.58
+05-Aug-26
+220.00
+108.27
+08-Jul-26
+335.00
+243.62
+07-Jul-26
+205.00
+149.47
+30-Apr-26
+325.00
+265.06
+13-Apr-26
+275.00
+239.89
+06-Feb-26
+280.00
+210.32
+13-Jan-26
+300.00
+242.60
+31-Oct-25
+290.00
+244.22
+03-Oct-25
+275.00
+219.51
+01-Aug-25
+240.00
+214.75
+21-Apr-25
+220.00
+167.32
+07-Feb-25
+255.00
+229.15
+01-Nov-24
+240.00
+197.93
+02-Aug-24
+230.00
+167.90
+15-Jul-24
+250.00
+192.72
+01-May-24
+225.00
+179.00
+02-Feb-24
+220.00
+171.81
+10-Jan-24
+200.00
+153.73
+27-Oct-23
+190.00
+127.74
+12-Oct-23
+175.00
+132.33
+Alphabet Inc. (GOOGL)
+Meta Platforms Inc. (META)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+23-Jul-26
+435.00
+317.69
+30-Jul-26
+725.00
+539.03
+08-Jul-26
+440.00
+361.92
+08-Jul-26
+815.00
+603.12
+30-Apr-26
+450.00
+384.80
+30-Apr-26
+830.00
+611.91
+05-Feb-26
+400.00
+331.25
+13-Apr-26
+840.00
+634.53
+12-Jan-26
+375.00
+331.86
+29-Jan-26
+835.00
+738.31
+24 September 2026
+  26
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 27]
+ 
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+Alphabet Inc. (GOOGL)
+Meta Platforms Inc. (META)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+30-Oct-25
+330.00
+281.48
+30-Oct-25
+815.00
+666.47
+14-Oct-25
+288.00
+245.45
+14-Oct-25
+870.00
+708.65
+24-Jul-25
+234.00
+192.17
+31-Jul-25
+830.00
+773.44
+10-Jul-25
+225.00
+177.62
+10-Jul-25
+775.00
+727.24
+25-Apr-25
+220.00
+161.96
+01-May-25
+690.00
+572.21
+11-Apr-25
+205.00
+157.14
+11-Apr-25
+685.00
+543.57
+05-Feb-25
+220.00
+191.33
+30-Jan-25
+765.00
+687.00
+13-Jan-25
+215.00
+191.01
+13-Jan-25
+688.00
+608.33
+30-Oct-24
+210.00
+174.46
+31-Oct-24
+630.00
+567.58
+14-Oct-24
+208.00
+164.96
+14-Oct-24
+636.00
+590.42
+24-Jul-24
+217.00
+172.63
+01-Aug-24
+555.00
+497.74
+08-Jul-24
+211.00
+189.03
+08-Jul-24
+522.00
+529.32
+26-Apr-24
+195.00
+171.95
+25-Apr-24
+500.00
+441.38
+15-Apr-24
+185.00
+154.86
+15-Apr-24
+555.00
+500.23
+31-Jan-24
+171.00
+140.10
+02-Feb-24
+500.00
+474.99
+10-Jan-24
+164.00
+142.28
+10-Jan-24
+414.00
+370.47
+04-Oct-23
+154.00
+135.24
+24 September 2026
+  27
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 28]
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+24 September 2026
+  28
+Goldman Sachs
+Americas Technology
+ 
+ 
+
+
+[Page 29]
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in part, to train or 
+finetune a machine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+24 September 2026
+  29
+Goldman Sachs
+Americas Technology
+ 
+ 
