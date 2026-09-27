@@ -1,0 +1,500 @@
+{
+ "brief": "Goldman Sachs frames agentic AI as reshaping the consumer shopping journey, moving from today's discovery/research use toward gradual end-to-end autonomous purchasing over 3-5+ years, not an overnight shift. Central thesis: value follows consumer intent, so the strategic question shifts from who owns the storefront to who owns discovery, intent and the payment infrastructure that converts intent into a transaction. This creates opportunities across eCommerce, advertising, payments and cybersecurity, and opens debates on customer ownership, distribution economics, merchant margins and liability. GS sizes $2.6tn of US spending in high-likelihood categories, estimating roughly 2% agentic penetration of that card-present spend could add about 1 percentage point to eCommerce growth, with $12.3tn in high-and-medium-likelihood volume overall. Card networks Visa and Mastercard are seen as the default payment rail via tokenization, Meta and Google as distribution winners, Equifax, TransUnion and FICO as identity/fraud infrastructure beneficiaries, and Amazon, Walmart and Shopify as retail winners on price/scale. Primary ticketing (Live Nation) is favored over secondary (StubHub) on differentiated inventory. GS names META, GOOGL, AMZN, V, MA, EFX, TRU, FICO, LYV, SHOP, NET, STUB, WMT, SN and TPR as positively skewed to the theme, despite some (EFX, TRU) carrying Neutral ratings.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs identifies $2.6 trillion of US consumer spending in high-likelihood categories as the near-term addressable opportunity for agentic commerce.",
+   "anchor": "We identify $2.6tn of U.S. consumer spending in high-likelihood categories",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs estimates roughly 2% agentic penetration of high-likelihood card-present spending could add approximately 1 percentage point to total eCommerce growth.",
+   "anchor": "roughly 2% agentic penetration of high-likelihood card-present spending could add approximately 1% to eCommerce growth",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs estimates roughly 60% of US retail and services spend, over $12.3 trillion, falls into high and medium agentic-commerce likelihood baskets.",
+   "anchor": "roughly 60% of spend volume (retail and services) today falls into our high and medium likelihood baskets, amounting to over $12.3tn in commerce volume",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates Amazon.com Buy with a 12-month price target of $375 based on a sum-of-the-parts methodology.",
+   "anchor": "Our 12m PT of $375 is based on a sum-of-the-parts methodology",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "target",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Walmart's Sparky shopping agent has seen weekly active customers double year-over-year with 60% quarter-over-quarter growth and drives 40% higher average order value.",
+   "anchor": "Sparky has seen rapid adoption (weekly active customers doubled y/y, with 60% growth q/q) and drives a 40% higher AOV",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "released",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates Walmart Buy with a 12-month price target of $132 based on a risk-reward framework of relative P/E multiples.",
+   "anchor": "Our 12-month price target is $132, based on our risk-reward framework with downside/base/upside relative P/E multiples of",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "target",
+   "instruments": [
+    "WMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates Shopify Buy with a 12-month price target of $194 based on 63x its Q5-Q8 unlevered free cash flow estimate.",
+   "anchor": "Our 12-month target of $194 is based on 63x our Q5-Q8 uFCF estimates",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "target",
+   "instruments": [
+    "SHOP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Mondelez has said Oreos were cited in only 10% of AI chatbot cookie recommendations, a discoverability gap it attributes to blocked bot crawlers.",
+   "anchor": "MDLZ previously highlighted that Oreos were only cited in 10% of AI chatbot cookie recommendations",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "released",
+   "instruments": [
+    "MDLZ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Amazon recently blocked Meta's Muse AI shopping agent from operating on Amazon.com.",
+   "anchor": "AMZN recently blocked Muse AI (META) from shopping on Amazon.com",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates SharkNinja Buy with a 12-month price target of $204 based on 17.5x its Q5-Q8 EV/EBITDA.",
+   "anchor": "We are Buy rated on SN with a $204, 12-month price target based on 17.5x Q5-Q8 EV/EBITDA valuation methodology",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "target",
+   "instruments": [
+    "SN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates Tapestry Buy with a 12-month price target of $169 based on 14.25x its Q5-Q8 EV/EBITDA.",
+   "anchor": "We are Buy rated on TPR with a $169, 12-month price target based on 14.25x Q5-Q8 EV/EBITDA valuation methodology",
+   "topic": "Agentic commerce eCommerce adoption",
+   "status": "target",
+   "instruments": [
+    "TPR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs reiterates a Buy rating on Meta Platforms with a 12-month price target of $725.",
+   "anchor": "We reiterate our Buy rating and 12-month price target of $725",
+   "topic": "Agentic commerce ad platforms",
+   "status": "target",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates Alphabet Buy with a 12-month price target of $435 based on a blended EV/EBIT and DCF methodology.",
+   "anchor": "We are Buy rated on GOOGL. Our $435 12-month price target is based on an equal blend",
+   "topic": "Agentic commerce ad platforms",
+   "status": "target",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Meta's Muse AI app has surpassed 2.8 million downloads since release and became the top-ranked free iOS app in the US in its second week.",
+   "anchor": "the app seeing over 2.8mm downloads since its release and becoming the top ranked app for free iOS apps in the US",
+   "topic": "Agentic commerce ad platforms",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs sets a 12-month price target of $438 on Visa based on a 27x Q5-Q8 P/E multiple.",
+   "anchor": "Our 12-month price target is $438 based on a 27x Q5-Q8 P/E multiple",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "target",
+   "instruments": [
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs sets a 12-month price target of $701 on Mastercard based on roughly a 28x multiple of Q5-Q8 EPS estimates.",
+   "anchor": "Our 12-month price target is $701 based on a ~28x multiple on our Q5-Q8 EPS estimates",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "target",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Mastercard says its AI-powered Decision Intelligence can drive 40% more fraud detection as a key business differentiator.",
+   "anchor": "Mastercard indicates that a key differentiator of its business is that it can drive 40% more fraud detection from its AI-powered Decision Intelligence",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "released",
+   "instruments": [
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs estimates a 5% acceleration in Visa and Mastercard's cybersecurity-related value-added services would drive a 90bps/200bps acceleration in VAS growth and a 20bps/80bps acceleration in total net revenue, respectively.",
+   "anchor": "a 5% acceleration of V/MA\u2019s cybersecurity related value added services would drive a 90bps/ 200bps acceleration VAS growth",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "forecast",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Visa reported approximately 54% of card-not-present transactions were tokenized and estimated a roughly $650 million reduction in fraud in FY24.",
+   "anchor": "with V noting ~54% of CNP transactions are now tokenized (V estimated ~$650mn reduction in fraud in FY24)",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "released",
+   "instruments": [
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "More than 50% of Visa and Mastercard eCommerce transactions are currently tokenized.",
+   "anchor": "tokenization services are foundational to eCommerce card transactions (>50% of V/MA eCommerce transactions are tokenized)",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs believes BNPL providers Affirm and Klarna could benefit as consumers gain greater ability to optimize financing at checkout in agentic commerce.",
+   "anchor": "we believe BNPL providers (AFRM and KLAR in particular) could be beneficiaries of consumer having greater ability to optimize financing",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "forecast",
+   "instruments": [
+    "AFRM",
+    "KLAR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs does not see competitive dynamics improving for PayPal in an agentic commerce world absent structural changes to its positioning.",
+   "anchor": "we do not see competitive dynamics improving for PayPal in an agentic world, absent structural changes in the company\u2019s competitive positioning",
+   "topic": "Agentic commerce payments infrastructure",
+   "status": "forecast",
+   "instruments": [
+    "PYPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates Equifax Neutral with a 12-month price target of $199 based on 17.5x NTM+1yr EPS of $11.40.",
+   "anchor": "Our $199 12-m price target is based on 17.5x NTM + 1YR EPS of $11.40",
+   "topic": "Agentic commerce identity & fraud data",
+   "status": "target",
+   "instruments": [
+    "EFX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates TransUnion Neutral with a 12-month price target of $89 based on 10.0x NTM+1yr EPS of $18.10.",
+   "anchor": "Our $89 12-m price target is based on 10.0x NTM + 1YR EPS of $18.10",
+   "topic": "Agentic commerce identity & fraud data",
+   "status": "target",
+   "instruments": [
+    "TRU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs rates FICO Buy with a 12-month price target of $1,548 based on 24.0x NTM+1yr EPS of $64.51.",
+   "anchor": "Our $1,548 12-m price target is based on 24.0x NTM + 1YR EPS of $64.51",
+   "topic": "Agentic commerce identity & fraud data",
+   "status": "target",
+   "instruments": [
+    "FICO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs estimates cybersecurity spending equivalent to roughly 1-2% of eCommerce revenue for retailers.",
+   "anchor": "this would imply cybersecurity spending equivalent to ~1-2% of eCommerce revenue",
+   "topic": "Agentic commerce identity & fraud data",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "A 2026 IANS survey found retailers spent approximately 75 basis points of revenue on cybersecurity while eCommerce represents approximately 17% of US retail sales.",
+   "anchor": "retailers spent an average of approximately 75bps of revenue on cybersecurity, while eCommerce represents approximately 17% of US retail sales",
+   "topic": "Agentic commerce identity & fraud data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Cloudflare's Bot Management products can help merchants distinguish legitimate shopping agents from scrapers, fraudsters and other malicious bots.",
+   "anchor": "Its Bot Management products can help merchants distinguish legitimate purchasing agents from scrapers, fraudsters and other malicious bots",
+   "topic": "Agentic commerce identity & fraud data",
+   "status": "released",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Live Nation has stated that 95% of concerts do not sell out, with 60-70% sell-through at amphitheaters and 65-75% at theaters.",
+   "anchor": "Live Nation has previously stated that 95% of concerts do not sell out, with 60-70% sell through at amphitheaters and 65-75% at theaters",
+   "topic": "Agentic commerce live event ticketing",
+   "status": "released",
+   "instruments": [
+    "LYV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs maintains a Buy rating and 12-month price target of $210 on Live Nation Entertainment.",
+   "anchor": "We maintain our Buy rating and our 12-m price target of $210",
+   "topic": "Agentic commerce live event ticketing",
+   "status": "target",
+   "instruments": [
+    "LYV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "Goldman Sachs maintains a Buy rating and 12-month price target of $16 on StubHub Holdings.",
+   "anchor": "We maintain our Buy rating and our 12-month price target of $16 which is based on an equal blend of",
+   "topic": "Agentic commerce live event ticketing",
+   "status": "target",
+   "instruments": [
+    "STUB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Entering the Agentic AI Era for the Commerce Landscape",
+   "claim": "StubHub has described AI as an incremental customer acquisition channel and says it is already working with LLM providers.",
+   "anchor": "StubHub similarly described AI as an incremental customer acquisition channel, noting that it is already working with LLM providers",
+   "topic": "Agentic commerce live event ticketing",
+   "status": "released",
+   "instruments": [
+    "STUB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17570__americas-technology-entering-the-agentic-ai-era-for-the-comm.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 32,
+  "matched": 32,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
