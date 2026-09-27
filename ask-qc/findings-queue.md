@@ -685,3 +685,25 @@ at 19:07:53; `LINE/NET` at 19:20:24; `LINE/SV/FAKE/NEWS` at 19:29:31), all
 `status=ok` and harmless. Same shape first flagged 2026-09-19/20/22/23 — now
 a five-day-running, still-unfixed cost/efficiency issue, no wrong answer
 yet.
+
+## 2026-09-26
+
+no findings — 7/7 graded, 6 CLEAN, 1 CONCERN, 0 fail, 0 infra, 0 ungraded.
+The CONCERN (20:03:14, 2Pale: "what have deportation numbers reported by
+DHS looked like lately") is judgment, not mechanically checkable: the
+540,000-ICE-deportations figure and the "Markwayne Mullin" DHS Secretary
+name both verified exactly against real sources, but the "713,000" total
+and "roughly 442,637" FY2025 headline numbers couldn't be confirmed against
+independent trackers, which themselves report FY2025 removals ~40% lower
+than DHS's own public claims (a documented DHS-vs-independent-tracker
+divergence, not something the bot invented). No FAIL, so nothing to
+triage under Step 3. Full reasoning in `pulse-data/ask-qc/2026-09-26.claude.md`.
+
+Every other numeric claim in the day's log — GM Q2 2026 earnings (EPS,
+revenue, guidance), a $7.3B DHS/ICE construction-contract figure, a $1.5B
+CoreCivic facility sale, and live GEO/CXW analyst price targets — verified
+exactly or near-exactly against real September 2026 coverage. Worth noting
+because the CXW price-target answer ($38–$45) would have looked like a
+serious fabrication against a stale 2024 consensus figure ($16.67) turned
+up by a lazier search; the bot's actual grounded search found the correct,
+much-higher current-quarter consensus instead.
