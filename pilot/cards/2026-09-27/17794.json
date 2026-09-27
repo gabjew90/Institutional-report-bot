@@ -1,0 +1,441 @@
+{
+ "brief": "Morning wrap: futures rallied (Nasdaq +70bps, S&P +40bps) as constructive but unresolved US/Iran talks on a phased Hormuz reopening pushed oil down 2.5% and yields off highs in a weekend relief move; the 10-year sat at 5.17% and Brent fell 1%. Trump's meeting with Xi yielded only a 2-month trade truce and APEC/G20 support, no breakthroughs. Single-stock headline: AKAM +20% after Anthropic signed an $11.6bn, seven-year CPU compute contract plus a warrant convertible into 7.7M AKAM shares, building on a prior $1.8bn deal; TWLO fell 3% on an HSBC downgrade. GS's hyperscaler capex framework: 2026 capex on track for $800bn, 2027 consensus $1.1tn; GS sees 2027 spend beating consensus but growth decelerating, with hyperscalers needing roughly $300bn in annual AI revenue to break even against capex, versus cloud revenue already $70bn above trend and $1.5tn of backlog. Meta Connect 2026 recap covers Muse's expansion, a new glasses lineup, VR Glasses (Spring 2027), Muse Charm and a pivot toward glasses as the primary AI interface. Telecom 3Q26E preview: EBITDA growth at TMUS/VZ/T versus declines at Charter and Comcast; SiriusXM's YouTube tie-up expands listener reach but its financial impact is not meaningful until 2H27.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Akamai stock rose 20% after Anthropic agreed to a $12 billion computing deal with the company.",
+   "anchor": "AKAM +20% on a $12bn deal with Anthropic",
+   "topic": "Akamai Anthropic compute deal",
+   "status": "released",
+   "instruments": [
+    "AKAM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Anthropic signed an $11.6 billion, seven-year contract with Akamai for computing power.",
+   "anchor": "Anthropic PBC has signed an $11.6 billion, seven-year contract with Akamai Technologies Inc. for computing power",
+   "topic": "Akamai Anthropic compute deal",
+   "status": "released",
+   "instruments": [
+    "AKAM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "seven years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Akamai issued Anthropic a warrant to buy Series B shares at $111.33 each, convertible into 7.7 million shares of Akamai common stock.",
+   "anchor": "the right to buy Series B shares for $111.33 each that converts into 7.7 million shares of common stock",
+   "topic": "Akamai Anthropic compute deal",
+   "status": "released",
+   "instruments": [
+    "AKAM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "The new Anthropic contract builds on a previous $1.8 billion computing deal Akamai and Anthropic struck earlier in 2026.",
+   "anchor": "a previous $1.8 billion computing deal that the two companies struck earlier this year",
+   "topic": "Akamai Anthropic compute deal",
+   "status": "released",
+   "instruments": [
+    "AKAM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "The largest US AI hyperscalers are on track to spend $800 billion in capex in 2026, with consensus expecting $1.1 trillion in 2027.",
+   "anchor": "The largest US AI hyperscalers are on track to spend $800 billion in capex in 2026 and consensus expects $1.1 trillion in spending in 2027.",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS's baseline forecast is that 2027 capex will increase and surpass consensus estimates, though the pace of capex growth and upside surprises will diminish versus recent quarters.",
+   "anchor": "capex spending will increase in 2027 and surpass consensus estimates but the rate of both capex growth and upside surprises will diminish",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS equity analysts estimate hyperscalers need to generate roughly $300 billion in annual AI revenue in the next few years to break even on their AI capex investments.",
+   "anchor": "the hyperscalers need to generate annual AI revenues of roughly $300 billion in the next few years to break even on their investments",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next few years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Hyperscaler cloud revenues have accelerated sharply in 2026, annualizing roughly $70 billion above the pre-AI trend as of Q2 2026.",
+   "anchor": "Hyperscaler cloud revenues have accelerated sharply this year, annualizing roughly $70 billion above the pre-AI trend in Q2 2026",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Hyperscalers' announced AI revenue backlogs exceed $1.5 trillion.",
+   "anchor": "announced revenue backlogs exceed $1.5 trillion",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Meta announced continued expansion of Muse at Connect 2026, including computer-use capabilities and additional commerce, payments, and productivity connectors.",
+   "anchor": "continued expansion of Muse, including computer-use capabilities and additional commerce, payments and productivity connectors",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Meta announced Meta VR Glasses, a lightweight VR device expected to launch in Spring 2027.",
+   "anchor": "Meta VR Glasses, a lightweight VR device expected in Spring 2027",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Spring 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Meta announced Muse Charm, a standalone device intended to provide persistent voice access to Muse.",
+   "anchor": "Muse Charm, a standalone device intended to provide persistent voice access to Muse",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Meta emphasized privacy and security at Connect 2026 through Muse Secure VM and the forthcoming Muse Confidential VM.",
+   "anchor": "increased emphasis on privacy/security through Muse Secure VM and the forthcoming Muse Confidential VM",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS analyst Sheridan frames Meta's hardware roadmap as shifting toward glasses as the primary interface for personal superintelligence.",
+   "anchor": "management also framed a strategic shift in its hardware roadmap toward glasses as a primary interface for personal superintelligence",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "US equity futures rallied with 10-year Treasury yields off the highs and oil down 2.5% in a relief rally into the weekend.",
+   "anchor": "10yr yields slightly off the highs and Oil -2.5% driving a small relief rally into the weekend",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Negotiators are reportedly exploring a phased reopening of the Strait of Hormuz, though the US said it would not rush into a deal.",
+   "anchor": "negotiators reportedly exploring a phased Hormuz reopening (although the US said it wouldn\u2019t rush into a deal)",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "The US 10-year Treasury yield was lower at 5.17% on the morning of September 25, 2026.",
+   "anchor": "US 10 year yield lower at 5.17%",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Brent crude fell 1% as lower crude and lower yields drove a small relief rally into the weekend.",
+   "anchor": "Brent -1% with lower crude/lower yields driving a small relief rally into the weekend",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS forecasts T-Mobile (Buy) 3Q26E EBITDA of $9.41 billion, up 8.4% year over year.",
+   "anchor": "We forecast 3Q26E EBITDA for: (1) TMUS (Buy) of $9.41 bn (+8.4% yoy)",
+   "topic": "US telecom earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TMUS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS forecasts Verizon (Buy) 3Q26E EBITDA of $13.81 billion, up 8.1% year over year.",
+   "anchor": "(2) VZ (Buy) of $13.81 bn (+8.1% yoy)",
+   "topic": "US telecom earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS forecasts AT&T (Buy) 3Q26E EBITDA of $12.51 billion, up 5.5% year over year.",
+   "anchor": "(3) T (Buy) of $12.51 bn (+5.5% yoy)",
+   "topic": "US telecom earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "T"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS forecasts Charter (Sell) 3Q26E EBITDA of $5.50 billion, down 1.1% year over year.",
+   "anchor": "We forecast EBITDA of $5.50 bn (-1.1% yoy) at Charter (CHTR, Sell)",
+   "topic": "US telecom earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CHTR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "GS forecasts Comcast (Neutral) 3Q26E EBITDA of $8.90 billion, down 1.5% year over year.",
+   "anchor": "$8.90bn (-1.5% yoy) at Comcast (CMCSA, Neutral, published in prior note)",
+   "topic": "US telecom earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "KeyBanc downgraded Comcast to Underweight.",
+   "anchor": "STREET ACTIONS: Upgrades: SNPS (Buy, HSBC) Downgrades: CMCSA (Underweight, KeyBanc), TWLO (Reduce, HSBC)",
+   "topic": "US telecom earnings preview",
+   "status": "released",
+   "instruments": [
+    "CMCSA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Trump's meeting with Xi produced a two-month trade truce and an agreement to support APEC/G20, with no breakthroughs on more challenging topics.",
+   "anchor": "takeaways from Trump\u2019s meeting with Xi (2 month trade truce/agreement to support APEC/G20 but no real breakthroughs on more challenging topics)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "SiriusXM's exclusive YouTube audio ad partnership expands its reach to approximately 255 million monthly listeners, +85 million versus the roughly 170 million listeners across Pandora and its existing podcast network.",
+   "anchor": "The YouTube partnership expands SiriusXM's reach to ~255M monthly listeners, or +85M versus ~170M listeners across Pandora and SiriusXM's existing podcast network today",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SIRI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "SiriusXM management expects its YouTube ad partnership to launch in fall 2026 with limited near-term revenue and more meaningful financial impact emerging in 2H27.",
+   "anchor": "management expects the partnership to launch in fall 2026, with limited revenue contribution in the near term and more meaningful financial impact emerging in 2H27",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "SIRI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fall 2026 to 2H27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "HSBC upgraded Synopsys to Buy.",
+   "anchor": "STREET ACTIONS: Upgrades: SNPS (Buy, HSBC) Downgrades: CMCSA (Underweight, KeyBanc), TWLO (Reduce, HSBC)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 9.25.26",
+   "claim": "Twilio fell 3% on an HSBC downgrade to Reduce.",
+   "anchor": "TWLO -3% on a downgrade (hsbc)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TWLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17794__gs-tmt-today-9-25-26.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 29,
+  "matched": 29,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 5,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
