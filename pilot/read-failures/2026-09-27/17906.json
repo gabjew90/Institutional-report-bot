@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: of a soft landing from 50%\",\"topic\":\"US Treasury yield selloff\",\"status\":\"forecast\",\"instruments\":[],\"macro_key\":\"GDP\",\"",
+ "last_reason": "reader: sector demand has slowed from recent years but has become broader based.\",\"anchor\":\"Official-sector demand has slowed fr",
  "history": [
   {
    "at": "2026-09-28T05:38Z",
    "run_id": "36380009171",
    "reason": "reader: of a soft landing from 50%\",\"topic\":\"US Treasury yield selloff\",\"status\":\"forecast\",\"instruments\":[],\"macro_key\":\"GDP\",\""
+  },
+  {
+   "at": "2026-09-28T09:25Z",
+   "run_id": "36400734114",
+   "reason": "reader: sector demand has slowed from recent years but has become broader based.\",\"anchor\":\"Official-sector demand has slowed fr"
   }
  ]
 }
