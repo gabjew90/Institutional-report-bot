@@ -127,3 +127,15 @@ def test_preflight_blocks_when_the_saved_body_is_gone(tmp_path, capsys):
     (tmp_path / "omnipulse_body.md").unlink()
     assert d.preflight() == "BLOCK"
     assert "omnipulse body incomplete" in capsys.readouterr().out
+
+
+def test_the_gate_passes_the_backup_directory_through(tmp_path):
+    d = _driver(tmp_path)
+    seen = {}
+
+    def run(self, args):
+        seen["args"] = args
+        return 3, "none"
+    with patch.object(O, "ENABLED", True), patch.object(PD.Driver, "_run", run):
+        d.gate_omnipulse("2026-09-28", src_dir="/tmp/omnipulse_src")
+    assert seen["args"][-2:] == ["--from", "/tmp/omnipulse_src"]

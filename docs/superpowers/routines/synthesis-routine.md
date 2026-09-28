@@ -575,13 +575,23 @@ this routine still writes RECAP, WHAT TO WATCH and `## _LEANS`. On a
 python3 scripts/pulse_driver.py gate omnipulse 2>&1 | tee -a /tmp/routine.log
 ```
 
-The gate waits up to 20 minutes for today's Omnipulse. It runs before STEP 2.5 so the press-time check measures freshness after any wait. Act on the token:
+The gate waits up to 10 minutes for today's Omnipulse. It runs before STEP 2.5 so the press-time check measures freshness after any wait. Act on the token:
 
 - **`DECISION: OMNIPULSE`** — `/tmp/pulse_mode.txt` says `omnipulse`;
   `/tmp/omnipulse_body.md` and `/tmp/omnipulse_headline.txt` hold the body.
   Follow every "omnipulse day" instruction below.
-- **`DECISION: CLASSIC`** — run the routine exactly as written, ignoring the
-  omnipulse-day instructions.
+- **`DECISION: CLASSIC` with detail `switch off` or `not usable`** — run
+  the routine exactly as written, ignoring the omnipulse-day instructions.
+- **`DECISION: CLASSIC` with detail `not published` or `fetch error`** —
+  try the backup route ONCE before going classic: with the GitHub MCP
+  read-file tool, read `pilot/shadow/<today ET>.clean.md` and
+  `pilot/shadow/<today ET>.meta.json` from branch `pilot-data` (owner
+  `gabjew90`, repo `Institutional-report-bot`), save them VERBATIM as
+  `/tmp/omnipulse_src/<today ET>.clean.md` and `.meta.json`, then run
+  `python3 scripts/pulse_driver.py gate omnipulse --from /tmp/omnipulse_src --sha <the .clean.md file's sha from the MCP read>`
+  and act on that token. The sha check rejects a copy that is not
+  byte-for-byte the published file; do not retype or reformat it. If
+  either file does not exist, stay classic.
 
 ```bash
 python3 /tmp/progress.py "STEP_2_4_OMNIPULSE_GATE_DONE"

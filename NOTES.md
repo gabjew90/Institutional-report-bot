@@ -3487,3 +3487,14 @@ Figure provenance also accepts a figure equal to the difference of two
 sourced figures written on the same line. Live check on week 3: BK
 trailed f.jamal by 12.6 with one player left projected 13.2, projected
 to win by 0.6.
+
+2026-09-28 first Omnipulse day went CLASSIC. The Omnipulse was published
+at 14:01 UTC; the routine's gate polled 14:11-14:32 and got 404 every
+time, because fetch_text sent the routine's GitHub token and the raw host
+answers 404 to a token it rejects, even for a public file. The pulse
+posted about 20 minutes later than Friday's. Fixed: the fetch goes
+without the token first, the wait is 10 minutes, the gate says why it
+went classic, and the routine has a backup route (read both files
+through the GitHub MCP tool, save them, run `gate omnipulse --from DIR
+--sha <blob sha>`; the sha check rejects a copy that is not the
+published file byte for byte).

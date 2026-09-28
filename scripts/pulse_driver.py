@@ -201,7 +201,9 @@ class Driver:
     # ------------------------------------------------------------------
     # gates
     # ------------------------------------------------------------------
-    def gate_omnipulse(self, date: str | None = None) -> str:
+    def gate_omnipulse(self, date: str | None = None,
+                       src_dir: str | None = None,
+                       sha: str | None = None) -> str:
         """STEP 2.4 — use today's Omnipulse as the pulse body, or run the
         classic pulse. Writes pulse_mode.txt either way; every later
         omnipulse branch reads it."""
@@ -221,6 +223,8 @@ class Driver:
             "scripts/omnipulse_body.py", "fetch", "--date", date,
             "--body", str(self._body_path()),
             "--headline", str(self._headline_path()),
+            *(["--from", src_dir] if src_dir else []),
+            *(["--sha", sha] if sha else []),
         ])
         if code == 0:
             # STITCH (cashtag scrub, ETF normalization) runs on the draft
@@ -776,12 +780,15 @@ def main() -> int:
             "holiday": d.gate_holiday,
             "volume": d.gate_volume,
             "draft_validate": d.gate_draft_validate,
-            "omnipulse": d.gate_omnipulse,
             "lint": d.gate_lint,
             "scrub_relint": d.gate_scrub_relint,
             "strip": d.gate_strip,
         }.get(gate)
-        if gate == "final_validate":
+        if gate == "omnipulse":
+            src = args[args.index("--from") + 1] if "--from" in args else None
+            sha = args[args.index("--sha") + 1] if "--sha" in args else None
+            d.gate_omnipulse(src_dir=src, sha=sha)
+        elif gate == "final_validate":
             d.gate_final_validate(recheck=recheck)
         elif gate == "adversarial":
             d.gate_adversarial(recheck=recheck)

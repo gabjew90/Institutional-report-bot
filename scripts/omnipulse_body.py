@@ -46,6 +46,10 @@ MIN_BRIEFS = 2
 # words); production ran 3-6.
 MAX_BRIEFS = 5
 MAX_FETCH_ERRORS = 3
+# 10 minutes: the Omnipulse normally lands by 14:08 UTC and the gate runs
+# about 14:11, so a longer wait mostly delays the classic fallback (the
+# 20-minute wait on 2026-09-28 made that pulse 20 minutes late).
+DEFAULT_WAIT_S = 600
 
 _MARKER_RE = re.compile(r"\[(?:c|d)\d+\]")
 _H2_RE = re.compile(r"^## .*$", re.MULTILINE)
@@ -61,15 +65,7 @@ def _token() -> str:
     return tok
 
 
-def fetch_text(path: str, token: str) -> str | None:
-    """A file from pilot-data, or None when it does not exist yet.
-
-    raw.githubusercontent.com, not api.github.com: the routine's agent
-    proxy rejects every api.github.com request with 403 (the routine's
-    COMMIT TRANSPORT note), and the routine already reads its context
-    from the raw host. The repo is public; the token is sent only when
-    present, for a private fork."""
-    url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{path}"
+def _raw_get(url: str, token: str) -> str | None:
     req = urllib.request.Request(url, headers={
         "User-Agent": "omnipulse-body",
         "Cache-Control": "no-cache",
@@ -84,11 +80,37 @@ def fetch_text(path: str, token: str) -> str | None:
         raise
 
 
-def fetch(date: str, token: str, wait_s: int = 1200, every_s: int = 60,
+def fetch_text(path: str, token: str) -> str | None:
+    """A file from pilot-data, or None when it does not exist yet.
+
+    raw.githubusercontent.com, not api.github.com: the routine's agent
+    proxy rejects every api.github.com request with 403 (the routine's
+    COMMIT TRANSPORT note).
+
+    WITHOUT the token first. The raw host answers 404 to a request whose
+    token it rejects, even for a public file, and the routine's token is
+    inert there: on 2026-09-28 the Omnipulse was published at 14:01 UTC
+    and the gate polled 404s for its whole 20 minutes. The token is
+    tried second, only for a private fork."""
+    url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{path}"
+    got = _raw_get(url, "")
+    if got is None and token:
+        got = _raw_get(url, token)
+    return got
+
+
+# Why the last fetch() returned None, for the gate's log line: the
+# 2026-09-28 message said "none after 1200s" whatever had happened.
+LAST_FETCH_REASON = ""
+
+
+def fetch(date: str, token: str, wait_s: int = DEFAULT_WAIT_S, every_s: int = 60,
           _sleep=time.sleep, _get=fetch_text) -> tuple[str, dict] | None:
     """Poll for the day's Omnipulse and its meta, up to `wait_s` seconds.
-    The editor starts 13:55 UTC and has landed 14:00-14:08, so the
-    routine usually finds it on the first or second try."""
+    The editor starts 13:55 UTC and has landed 14:00-14:08; the gate
+    runs about 14:11, so the file is usually there on the first try."""
+    global LAST_FETCH_REASON
+    LAST_FETCH_REASON = ""
     waited = 0
     errors = 0
     while True:
@@ -102,18 +124,48 @@ def fetch(date: str, token: str, wait_s: int = 1200, every_s: int = 60,
             errors += 1
             print(f"omnipulse: fetch error ({e})", file=sys.stderr)
             if errors >= MAX_FETCH_ERRORS:
+                LAST_FETCH_REASON = f"fetch error: {str(e)[:120]}"
                 return None
             md = meta_raw = None
         if md and meta_raw:
             try:
                 return md, json.loads(meta_raw)
             except ValueError:
-                print("omnipulse: meta is not JSON", file=sys.stderr)
+                LAST_FETCH_REASON = "meta is not JSON"
                 return None
         if waited >= wait_s:
+            LAST_FETCH_REASON = f"not published after {waited}s"
             return None
         _sleep(every_s)
         waited += every_s
+
+
+def git_blob_sha(text: str) -> str:
+    """Git's blob hash of a file's bytes: the `sha` GitHub returns with
+    every file read."""
+    import hashlib
+    data = text.encode("utf-8")
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def read_local(src_dir: str, date: str, sha: str | None = None) -> tuple[str, dict] | None:
+    """The day's Omnipulse from files the routine saved itself. With
+    `sha` (GitHub's blob hash from the same read), the saved text must
+    hash to it: the routine model writes the file, and a copy it
+    shortened or reworded would otherwise pass every structural check."""
+    global LAST_FETCH_REASON
+    LAST_FETCH_REASON = ""
+    try:
+        md = open(os.path.join(src_dir, f"{date}.clean.md"), encoding="utf-8").read()
+        meta = json.loads(open(os.path.join(src_dir, f"{date}.meta.json"),
+                               encoding="utf-8").read())
+    except (OSError, ValueError) as e:
+        LAST_FETCH_REASON = f"local copy unreadable: {e}"
+        return None
+    if sha and git_blob_sha(md) != sha.strip().lower():
+        LAST_FETCH_REASON = "local copy does not match GitHub's sha"
+        return None
+    return md, meta
 
 
 def _sections(md: str) -> dict[str, str]:
@@ -184,7 +236,12 @@ def main(argv=None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     f = sub.add_parser("fetch")
     f.add_argument("--date", required=True)
-    f.add_argument("--wait", type=int, default=1200)
+    f.add_argument("--wait", type=int, default=DEFAULT_WAIT_S)
+    # Backup route: a directory holding <date>.clean.md and
+    # <date>.meta.json that the routine read through its GitHub
+    # connection, when the direct fetch fails.
+    f.add_argument("--from", dest="src_dir", default=None)
+    f.add_argument("--sha", default=None)
     s = sub.add_parser("splice")
     s.add_argument("--in", dest="src", required=True)
     s.add_argument("--out", required=True)
@@ -196,9 +253,13 @@ def main(argv=None) -> int:
     headline_path = a.headline or HEADLINE_PATH
 
     if a.cmd == "fetch":
-        got = fetch(a.date, _token(), wait_s=a.wait)
+        if a.src_dir:
+            got = read_local(a.src_dir, a.date, a.sha)
+        else:
+            got = fetch(a.date, _token(), wait_s=a.wait)
         if not got:
-            print(f"omnipulse: none for {a.date} after {a.wait}s -> classic pulse")
+            why = LAST_FETCH_REASON or "not found"
+            print(f"omnipulse: none for {a.date} ({why}) -> classic pulse")
             return 3
         md, meta = got
         bad = problems(md, meta)

@@ -126,3 +126,57 @@ def test_the_fetch_reads_the_raw_host_not_the_api():
     import inspect
     src = inspect.getsource(O.fetch_text)
     assert "raw.githubusercontent.com" in src and "api.github.com/repos" not in src
+
+
+# --- 2026-09-28: the routine's token made the raw host answer 404 -------
+def test_the_fetch_tries_without_the_token_first(monkeypatch):
+    seen = []
+
+    def raw(url, token):
+        seen.append(token)
+        return None if token else "# ok"      # a rejected token reads as 404
+    monkeypatch.setattr(O, "_raw_get", raw)
+    assert O.fetch_text("pilot/shadow/x.clean.md", "inert-token") == "# ok"
+    assert seen == [""]
+
+
+def test_the_token_is_a_second_try_for_a_private_fork(monkeypatch):
+    monkeypatch.setattr(O, "_raw_get", lambda url, token: "# ok" if token else None)
+    assert O.fetch_text("p", "good-token") == "# ok"
+
+
+def test_the_gate_says_why_it_went_classic(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(O, "_raw_get", lambda url, token: None)
+    assert O.main(["fetch", "--date", "2026-09-28", "--wait", "0",
+                   "--body", str(tmp_path / "b"), "--headline", str(tmp_path / "h")]) == 3
+    assert "not published" in capsys.readouterr().out
+
+
+def test_the_backup_route_reads_files_the_routine_saved(tmp_path):
+    md, meta = _omni("2026-09-24")
+    (tmp_path / "2026-09-28.clean.md").write_text(md, encoding="utf-8")
+    (tmp_path / "2026-09-28.meta.json").write_text(json.dumps(meta), encoding="utf-8")
+    body, head = tmp_path / "b.md", tmp_path / "h.txt"
+    assert O.main(["fetch", "--date", "2026-09-28", "--from", str(tmp_path),
+                   "--body", str(body), "--headline", str(head)]) == 0
+    assert head.read_text(encoding="utf-8") == "# The Five Percent Problem"
+    assert O.main(["fetch", "--date", "2026-09-29", "--from", str(tmp_path),
+                   "--body", str(body), "--headline", str(head)]) == 3
+
+
+def test_the_default_wait_is_ten_minutes():
+    assert O.DEFAULT_WAIT_S == 600
+
+
+def test_the_backup_copy_must_match_githubs_hash(tmp_path):
+    md, meta = _omni("2026-09-24")
+    (tmp_path / "2026-09-28.clean.md").write_text(md, encoding="utf-8", newline="")
+    (tmp_path / "2026-09-28.meta.json").write_text(json.dumps(meta), encoding="utf-8")
+    good = O.git_blob_sha(md)
+    assert O.read_local(str(tmp_path), "2026-09-28", good) is not None
+    assert O.read_local(str(tmp_path), "2026-09-28", "0" * 40) is None
+    assert "sha" in O.LAST_FETCH_REASON
+
+
+def test_the_hash_is_gits_blob_hash():
+    assert O.git_blob_sha("hello\n") == "ce013625030ba8dba906f756967f9e9ca394464a"
