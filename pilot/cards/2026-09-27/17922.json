@@ -1,0 +1,52 @@
+{
+ "brief": "Goldman Sachs FICC & Equities' weekly calendar note (Kaplan, Fri Sep 25 2026) previews the week of Sep 28-Oct 2. It states the S&P 500's implied move through Friday Oct 2 is 1.27%, framing the week as macro- and AI-catalyst heavy, with investors watching OpenAI's Dev Day Tuesday and Micron's earnings Friday. US macro data due that week: PCE Wednesday, ISM Manufacturing Thursday, and nonfarm payrolls Friday. Following this week's PMI data, the note reports the market now prices 66% odds of an October Fed hike, up from 53% the prior Friday, attributing the shift to the PMI print rather than arguing an independent thesis. On the micro side, it also lists a run of investor days (MongoDB and Alaska Air Tuesday; Synopsys, Cigna and Hewlett Packard Enterprise Wednesday) and Nike earnings Thursday. The note is a preview/calendar: it reports scheduled events and one market-pricing data point, and does not argue a market view beyond noting the PMI-to-hike-odds link.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Week Ahead 25 Sep 2026",
+   "claim": "The S&P 500's implied move through Friday, October 2, is 1.27%.",
+   "anchor": "S&P implied move through next Friday (10/2) is 1.27%",
+   "topic": "US economic data preview",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through Friday, October 2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Week Ahead 25 Sep 2026",
+   "claim": "Following this week's PMI data, the market is now pricing 66% odds of an October Fed rate hike, up from 53% the prior Friday.",
+   "anchor": "market currently pricing in a 66% odds of an Oct Hike (vs 53% last Friday)",
+   "topic": "Fed October hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17922__gs-week-ahead-25-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 2,
+  "matched": 2,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
