@@ -2216,7 +2216,12 @@ _FACTUAL_SPECIFIC_RE = re.compile(
     r"|\b\d[\d,]{3,}\b"                                  # 4-digit+ / year (75,000; 2027)
     r"|\b\d+(?:\.\d+)?\s*(?:million|billion|trillion|bn|k)\b"  # 130 million
     r"|\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d"  # Aug 2027
-    r"|\b\d{1,2}/\d{1,2}(?:/\d{2,4})?\b",               # 8/12
+    r"|\b\d{1,2}/\d{1,2}(?:/\d{2,4})?\b"                # 8/12
+    # Clock times (2026-09-28 "when is trump speaking today" answered
+    # "2:00 PM ET" with no search and no sources; 2026-09-10 gave ORCL's
+    # print and call times the same way). A scheduled time is a fact.
+    r"|\b\d{1,2}(?::\d{2})?\s?[ap]\.?m\b\.?"            # 2 PM, 4:05pm
+    r"|\b\d{1,2}:\d{2}\b",                               # 14:00
     re.IGNORECASE,
 )
 
@@ -7009,6 +7014,20 @@ async def _ask_07_validation_ladder(
                 grounding_metadata = forced_gm
                 _ask_meta["ground_retry"] = "in-voice:grounded"
                 log.info("/ask: grounded retry succeeded")
+            # Checked before the hedged retry (2026-09-28): a search-only
+            # retry that cannot find league or calendar data says it
+            # "couldn't verify", and that used to replace an answer whose
+            # figures all came from a tool payload.
+            elif _tool_sourced(answer, _ask_tool_trace,
+                               _ask_evidence_text(contents, response, question, user_content)):
+                # Google found nothing, but a data tool did: every
+                # figure in the answer is in a payload the turn saw.
+                # Keep the answer, no hedge (2026-09-17).
+                _ask_meta["ground_retry"] = "in-voice:tool-sourced"
+                log.info(
+                    "/ask: retry stayed ungrounded but every figure is in "
+                    "a tool payload; kept the answer without the hedge"
+                )
             elif forced_answer and not _retry_still_ungrounded:
                 # Retry dropped the unverifiable specifics (e.g. said
                 # "couldn't verify") — or rebuilt its price claims on
@@ -7024,16 +7043,6 @@ async def _ask_07_validation_ladder(
                 log.info(
                     "/ask: grounded retry accepted "
                     f"({_ask_meta['ground_retry']})"
-                )
-            elif _tool_sourced(answer, _ask_tool_trace,
-                               _ask_evidence_text(contents, response, question, user_content)):
-                # Google found nothing, but a data tool did: every
-                # figure in the answer is in a payload the turn saw.
-                # Keep the answer, no hedge (2026-09-17).
-                _ask_meta["ground_retry"] = "in-voice:tool-sourced"
-                log.info(
-                    "/ask: retry stayed ungrounded but every figure is in "
-                    "a tool payload; kept the answer without the hedge"
                 )
             elif not needs_web:
                 # Stage 2 is SKIPPED for LOCAL-routed questions. The

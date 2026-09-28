@@ -3498,3 +3498,7 @@ went classic, and the routine has a backup route (read both files
 through the GitHub MCP tool, save them, run `gate omnipulse --from DIR
 --sha <blob sha>`; the sha check rejects a copy that is not the
 published file byte for byte).
+
+## 2026-09-28: /ask clock times count as specifics
+
+"when is trump speaking today" (kloh, 17:47 UTC) routed WEB/FACT and shipped "2:00 PM ET" with no search and no sources. The time was right (the White House schedule listed a 2:00 PM announcement), but nothing backed it. `_FACTUAL_SPECIFIC_RE` had no clock-time pattern, so the web grounding net never forced the search retry. The same gap let the 2026-09-10 ORCL print and call times through. Added `2 PM` / `4:05pm` / `14:00` forms. The retry ladder now keeps a tool-sourced answer before accepting a "couldn't verify" retry, so the wider trigger cannot hedge over league or calendar data.

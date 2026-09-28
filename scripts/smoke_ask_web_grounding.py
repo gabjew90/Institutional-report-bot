@@ -36,6 +36,17 @@ def test_web_ungrounded_specifics_fires_on_any_fact_shape():
         "CoreCivic's total capacity hovers in the 65,000-70,000 bed range.",
     ]:
         assert f(s, None, was_web=True) is True, f"WEB+specifics must fire: {s!r}"
+    # 2026-09-28 / 09-10: a scheduled time is a specific too
+    for s in [
+        "→ **Scheduled announcement at 2:00 PM ET** today in Washington",
+        "numbers typically cross the wire between 4:05 and 4:15 PM ET",
+        "He speaks at 2pm from the Oval Office.",
+        "Remarks are set for 14:00 Eastern.",
+    ]:
+        assert f(s, None, was_web=True) is True, f"clock time must fire: {s!r}"
+    for s in ["I am not sure when he is speaking today.",
+              "Picked up a 2-bagger on the open."]:
+        assert f(s, None, was_web=True) is False, f"no time, no fire: {s!r}"
 
 
 def test_web_grounding_respects_router_and_grounding():
@@ -72,6 +83,11 @@ def test_trigger_and_retry_wired():
     window = src.split("[GROUNDING REQUIRED]", 1)[1][:600]
     assert "pasted" in window and "memory" in window, \
         "directive must forbid answering from memory / a pasted doc"
+    # a tool-sourced answer is kept before a "couldn't verify" retry can
+    # replace it (2026-09-28)
+    assert (src.index('"in-voice:tool-sourced"')
+            < src.index('else "in-voice:hedged"')), \
+        "tool-sourced branch must precede the hedged-retry branch"
     _ok("wired: web trigger + retry acceptance + no-extrapolation directive")
 
 
