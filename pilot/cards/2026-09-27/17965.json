@@ -1,0 +1,132 @@
+{
+ "brief": "Zero Hedge relays Hugh Hendry's argument, published as 30-year Treasury yields near 5.50% and this week's 2Y/5Y/7Y auctions showed large tails. Hendry argues the gold standard is dead but its deflationary arithmetic is not: Kindleberger's insight was that the 1930s world lost its stabiliser when Britain, hollowed out as a creditor by WWI, returned sterling to gold in 1925 at the old $4.86 parity, overvaluing the currency and forcing the Bank of England to raise rates and deflate the domestic economy, while the new creditors, America and France, sterilised rather than expanded credit against the gold inflow, breaking the standard's supposed symmetry. Applied to 2026: surplus savers like China are recycling less into US duration at the old yield just as fiscal deficits and an AI buildout both compete for capital, so the clearing yield on Treasuries must rise, rationing mortgages, private credit, equity multiples and the AI buildout itself. He rejects \"China stops buying Treasuries and America goes broke\" since the US cannot involuntarily run out of its own currency; the constraint instead falls on inflation, the dollar, political legitimacy, and duration's price. His trade: short duration, sized as a medium-term trade rather than a permanent short on America.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "US 30-year Treasury yields are near 5.50%, multi-decade highs.",
+   "anchor": "US Treasury yields are blowing out to multi-decade highs (30Y near 5.50%)",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "This week's US Treasury 2-year, 5-year, and 7-year auctions were ugly, showing large tails.",
+   "anchor": "US Treasury auctions are getting ugly (2Y, 5Y, and 7Y this week with large tails)",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "In 1925 Britain returned sterling to the gold standard at the old pre-war parity of about $4.86 to the pound, overvaluing the currency.",
+   "anchor": "in 1925 it put sterling back on gold at the old pre-war parity. about $4.86 to the pound.",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "Hugh Hendry argues that if the creditor will not spend more, the debtor (the US) eventually has to spend less, and the books have to balance through the price of duration.",
+   "anchor": "If the creditor won't spend more, the debtor eventually has to spend less. There is no magic here. The books have to balance.",
+   "topic": "US Treasury yield selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "The US is financing both a huge federal deficit and a vast AI buildout of data centres, chips, power, grids, reshoring and industrial capex, both competing for the same scarce capital.",
+   "anchor": "america is not just financing a huge federal deficit. it is also financing a vast ai buildout. data centres. chips. power. grids. reshoring. industrial capex.",
+   "topic": "US Treasury yield selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "Hendry rejects the framing that China stopping Treasury purchases means America goes broke, calling it a child's version of the story.",
+   "anchor": "\u201cchina stops buying treasuries and america goes broke\u201d is a child\u2019s version of the story.",
+   "topic": "US Treasury yield selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "A higher clearing yield on Treasury duration will ration mortgages, private credit, equity multiples, and the AI buildout itself.",
+   "anchor": "That higher yield is what then rations everything - mortgages, private credit, equity multiples, and the AI buildout itself.",
+   "topic": "US Treasury yield selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "'The Old Horror In A New Suit': Hugh Hendry Warns The Long Bond Is The New Gold Window",
+   "claim": "The recommended trade is short duration, via short TLT, long the 30-year bond yield, long the term premium, or paying fixed on long-dated swaps.",
+   "anchor": "Short duration (e.g. short TLT, long the 30Y bond yield, long the term premium, pay fixed on long-dated swaps, take your pick)",
+   "topic": "US Treasury yield selloff",
+   "status": "target",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "medium-term"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17965__the-old-horror-in-a-new-suit-hugh-hendry-warns-the-long-bond.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
