@@ -1,0 +1,552 @@
+{
+ "brief": "Monday GS TMT spec-sales note, mostly a news roundup with limited argued causal chains rather than one thesis. US equities closed a three-day losing streak Friday as oil eased on hopes of renewed US-Iran talks. The 30-year Treasury yield rose to 5.53%, its highest since 2004, as hawkish Fed commentary and strong flash PMIs pushed yields to post-2007 highs before Friday's relief on Iran de-escalation reports. Market breadth has narrowed to its lowest since the Dot-Com Bubble even though AI strength keeps the headline S&P 500 resilient: the median stock trades 16% below its 52-week high. Oracle's CDS hit a record high and its 2056 bond yield crossed 8% as credit markets question who funds the next $1tn of data-center spend, widening spreads across AMZN, GOOGL, MSFT, META and NVDA. Meta's Muse app topped app-store charts with 900k+ downloads in six days, driving an 11% Monday rally and reviving momentum trades. This week's focus names are Micron (GIR sees upside to consensus) and Accenture (bookings softened, guidance narrowed). Extensive semis, fintech and telecom M&A news is reported without a house view attached.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Oracle's credit default swaps hit a record high and its 2056 bond yield crossed 8%.",
+   "anchor": "Oracle: CDS hit a record high and its 2056 bond yield crossed 8%",
+   "topic": "AI credit costs rising",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "S&P rates Oracle BBB-, just one notch above junk status.",
+   "anchor": "S&P rates Oracle BBB\u2212 which is just one notch above junk",
+   "topic": "AI credit costs rising",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Credit spreads widened across AMZN, GOOGL, MSFT, META and NVDA as credit markets ask who funds the next $1tn of data-center spend.",
+   "anchor": "spreads also went wider across AMZN, GOOGL, MSFT, META and NVDA as the credit markets ask who funds the next $1tn of data-centre spend",
+   "topic": "AI credit costs rising",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "META",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Meta's Muse app topped the US Apple App Store and Google Play charts with more than 902,000 downloads in its first six days.",
+   "anchor": "Muse topped the US Apple App Store and Google Play charts with more than 902,000 downloads in its first six days",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Meta shares rose about 11% on Monday as Muse topped the US app store charts.",
+   "anchor": "Meta rose about 11% on Monday as Muse topped the US Apple App Store and Google Play charts",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Meta's Muse launch helped revive momentum trades, with the High Beta Momentum basket up 6.61% on the week.",
+   "anchor": "helping revive momentum trades, with the High Beta Momentum basket up 6.61% on the week",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "The 30-year Treasury yield rose to 5.53%, its highest level since 2004.",
+   "anchor": "the 30-year yield rise to 5.53%, its highest since 2004",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Front-end Treasury yields fell even as the 30-year yield rose, steepening the curve.",
+   "anchor": "Treasuries saw front-end yields fall but the 30-year yield rise to 5.53%",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Hawkish Fed commentary pushed Treasury yields to post-2007 highs during the week before easing Friday.",
+   "anchor": "hawkish Fed commentary, which pushed Treasury yields to post-2007 highs before some relief on Friday",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "GIR models mid-single-digit percentage upside to consensus EPS for Micron's Q3-Q4 2027 on better mix and pricing.",
+   "anchor": "GIR is mid-single-digit percentages above consensus EPS for Q3\u2013Q4 2027 on better mix and pricing",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3-Q4 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Consensus expects roughly $50-51bn of revenue and $31-31.5 of EPS for Micron's upcoming quarter.",
+   "anchor": "consensus at roughly $50\u201351bn of revenue and $31\u201331.5 of EPS",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Investors will watch whether Micron's gross margins hold near or above the guided ~86%.",
+   "anchor": "whether gross margins can hold near or above the guided ~86%",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Investors are watching Micron's progress on its 16+ long-term Strategic Customer Agreements and visibility on the previously referenced $100bn+ of minimum commitments.",
+   "anchor": "progress on the 16+ long-term Strategic Customer Agreements, including deposits and visibility on the previously referenced $100bn+ of minimum commitments",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Accenture's Q3 FY2026 delivered solid profitability, but bookings softened and revenue growth guidance was narrowed to 3-4%, or 4-5%.",
+   "anchor": "Q3 FY2026 delivered solid profitability, but bookings softened and revenue growth guidance was narrowed to 3\u20134%, or 4\u20135%",
+   "topic": "ACN earnings preview",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Consensus expects Accenture's Q4 to show around $18bn of revenue and $3.18-3.19 of EPS.",
+   "anchor": "consensus expects around $18bn of revenue and $3.18\u20133.19 of EPS",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "GIR expects Accenture's FY2027 constant-currency revenue growth of 3.0%-4.0%.",
+   "anchor": "GIR expect CC revenue growth of 3.0% - 4.0%",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "GIR models Accenture's FY2027 growth as ~50-150bps organic growth, ~100bps tailwind from lapping prior Federal headwinds, and ~150-200bps from M&A.",
+   "anchor": "which we model as ~50 - 150bps of organic growth, ~100bps tailwind from lapping prior Federal headwinds, and ~150 - 200bps of M&A",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Accenture's key upside scenario is stronger bookings, clearer FY2027 acceleration and tangible AI monetization.",
+   "anchor": "The key upside would be stronger bookings, clearer FY2027 acceleration and tangible AI monetisation",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "A weak bookings print or further growth caution would reinforce concerns over discretionary spending and AI disruption for Accenture.",
+   "anchor": "another weak bookings print or further caution on growth would reinforce concerns over discretionary spending and AI disruption",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Infineon will open its $1.44bn Thailand semiconductor facility on 1 October.",
+   "anchor": "IFX will open its $1.44bn Thailand facility on 1 October",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "China may allow ByteDance and Alibaba to buy new Nvidia chips, a report that sent Chinese semis and optical names lower.",
+   "anchor": "China may allow ByteDance and Alibaba to buy new Nvidia chips (Chinese semis & optical names down this morning on this)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "SK Hynix's Solidigm unit, formed from Intel's former NAND and SSD business, is considering an IPO at a valuation of up to $150bn.",
+   "anchor": "SK Hynix\u2019s Solidigm, formed from Intel\u2019s former NAND and SSD business, is considering an IPO at a valuation of up to $150bn",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Solidigm is considering an IPO as early as next year that could raise around $15bn, potentially the largest US semiconductor listing on record.",
+   "anchor": "considering an IPO as early as next year that could raise around $15bn, potentially making it the largest US semiconductor listing on record",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "TSMC is accelerating 2nm expansion after major customers raised orders by 10%-20%, with year-end capacity potentially reaching 120,000 wafers per month.",
+   "anchor": "TSMC is accelerating 2nm expansion after major customers raised orders by 10%\u201320%, with year-end capacity potentially reaching 120,000 wafers per month",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "PayPal shares rose up to 5.1% on speculation that a US-listed technology company may be considering an all-share takeover.",
+   "anchor": "PayPal shares rose up to 5.1% on speculation that a US-listed technology company may be considering an all-share takeover",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PYPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Talks between PayPal and a Stripe-Advent consortium reportedly stalled over a $2bn break fee despite a potential offer of up to $68 per share.",
+   "anchor": "rival talks with a Stripe\u2013Advent consortium may have stalled over a $2bn break fee despite a potential offer of up to $68 per share",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PYPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "The UK government is on national-security alert over concerns that TalkTalk could collapse within days.",
+   "anchor": "The UK government is on national-security alert over concerns that the debt-laden telecom provider could collapse within days",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Poste Italiane secured 85.82% of Telecom Italia after a \u20ac13bn bid, below the 90% threshold needed for an automatic squeeze-out and delisting.",
+   "anchor": "Poste Italiane secured 85.82% of Telecom Italia after its \u20ac13bn bid, below the 90% threshold needed for an automatic squeeze-out and delisting",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "The median S&P 500 stock trades 16% below its 52-week high, dragging market breadth to its lowest level since the Dot-Com Bubble.",
+   "anchor": "the median stock in the index trades 16% below its 52-week high, dragging market breadth to its lowest level since the Dot-Com Bubble",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "The S&P 500 rose 1.21% on the week, closing 71bp below its all-time high, while the Nasdaq 100 gained 3.25% and the Russell 2000 fell 0.68%.",
+   "anchor": "the S&P 500 up 1.21% and closing just 71bp below its all-time high, while the Nasdaq 100 gained 3.25% and the Russell 2000 fell 0.68%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Asset managers were net sellers last week, particularly across consumer discretionary, communication services, technology and healthcare.",
+   "anchor": "asset managers were net sellers, particularly across consumer discretionary, communication services, technology and healthcare",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Fundamental long/short managers were up 0.4% last week (all beta), up 0.2% month-to-date and 12.9% year-to-date.",
+   "anchor": "Fundamental LS managers up 0.4% (all beta), now up 0.2% MTD and 12.9% YTD.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Systematic long/short managers were down 0.2% last week, up 3.4% month-to-date and 19.7% year-to-date.",
+   "anchor": "Systematic LS managers down 0.2% last week, up 3.4% MTD and 19.7% YTD.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Utilities saw their largest short selling in almost six years.",
+   "anchor": "Utilities saw its largest short selling in almost 6 years.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Anthropic used Claude to identify a potentially novel CRISPR-like enzyme system in bacteriophage DNA in 21 hours, using around 950 agents and 210 million tokens.",
+   "anchor": "used Claude to identify a potentially novel CRISPR-like enzyme system in bacteriophage DNA in 21 hours, using around 950 agents and 210 million tokens",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Netflix will launch its advertising-supported subscription plan in nine additional EMEA countries on March 1, 2027.",
+   "anchor": "Netflix will launch its advertising-supported subscription plan in nine additional EMEA countries on March 1, 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: IFX; HYnix Solidigm spin, PayPal noise; Oracle CDS; Agentic commerce; ACN & Micron in focus; TalkTalk risk; TI stays listed",
+   "claim": "Sony and Universal Music Group are suing AI music generator Suno again, claiming its new v6 model still infringes their copyrights.",
+   "anchor": "Sony (SONY) and Universal Music Group (UMGNF) are suing Suno again, claiming its new v6 model still infringes on their copyrights",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SONY",
+    "UMGNF"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-28/18059__gs-tmt-spec-sales-ifx-hynix-solidigm-spin-paypal-noise-oracl.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 37,
+  "matched": 37,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 18,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
