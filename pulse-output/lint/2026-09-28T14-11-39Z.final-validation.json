@@ -1,0 +1,42 @@
+{
+ "violations": [
+  {
+   "kind": "numeric-scope-drift",
+   "severity": "soft",
+   "message": "The figure '5.22%' is attached to [argues, borrowing, costs, haven, james] but the source uses it for [back, bond, change, close, crypto] -- the subjects don't overlap. This is a segment stat re-scoped to a broader subject (e.g. a memory figure called 'industry sales'). Re-scope the number to the source's subject or drop it.",
+   "figure": "5.22%",
+   "draft_subject": ["argues", "borrowing", "costs", "haven", "james", "leadership", "morning", "narrow"],
+   "source_subject": ["back", "bond", "change", "close", "crypto", "eases", "easing", "elevated"]
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [2.3, 3.7, 4.1]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "When a ceasefire offer collapses and Hormuz flows sit at roughly a quarter of normal, oil has to price a sustained war premium instead of a peace dividend, and that premium is hitting core inflation a"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.3% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL -- near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.3",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday, September 30, 8:30 AM ET: Core PCE (the Fed's preferred inflation gauge).** Desks expect 0.3% for the month, up from 0.2% prior. This is the first place the oil-driven inflation pass-th"
+  },
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "hard",
+   "message": "0.2% stated for Pce MATCHES THE CONSENSUS ESTIMATE on the calendar row, not the ACTUAL -- near-certain estimate-shipped-as-print (the 2026-07-15 CPI failure). Replace with the ACTUAL= value or label it as the expectation.",
+   "figure": "0.2",
+   "event": "PCE",
+   "matches_estimate": true,
+   "sentence": "- **Wednesday, September 30, 8:30 AM ET: Core PCE (the Fed's preferred inflation gauge).** Desks expect 0.3% for the month, up from 0.2% prior. This is the first place the oil-driven inflation pass-th"
+  }
+ ],
+ "hard_count": 0,
+ "soft_count": 4,
+ "exit_code": 4
+}
