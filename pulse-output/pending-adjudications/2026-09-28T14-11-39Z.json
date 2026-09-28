@@ -1,0 +1,87 @@
+{
+  "pulse_date": "2026-09-28",
+  "window_label": "since-last-daily (2026-09-25T14:55)",
+  "themes": [
+    {
+      "theme": "bond market repricing and yield pressure",
+      "selected": true,
+      "stance_counts": {"supportive": 15, "skeptical": 6, "neutral": 15},
+      "consensus_view": "Bond yields have surged to multi-decade highs because traders are betting the Fed keeps raising rates, and while most banks expect that pressure to continue, a minority argue the market has priced in too many future hikes and yields should ease back.",
+      "facts_agreed": [
+        {"claim": "The bond selloff is being driven by real yields and a hawkish repricing of Fed expectations, not by inflation fears.", "banks_for": ["Deutsche Bank", "The Market Ear", "SEB"], "evidence_quotes": ["pretty much all the move being driven by real yields.", "Today's bond selloff is more about real-rate repricing and weak duration demand", "the move is still primarily driven by a sharp repricing of the Fed."]},
+        {"claim": "The 10-year Treasury yield has broken out of its multi-year range to fresh highs and the uptrend is intact.", "banks_for": ["The Market Ear", "FinChartOutlook GmbH"], "evidence_quotes": ["The 10-year has broken out of a three-year range", "The uptrend remains intact unless the support levels at 4.75%, 4.67% and 4.54% are broken."]},
+        {"claim": "Rates volatility is elevated and is now spilling over into how other markets trade.", "banks_for": ["The Market Ear", "Bank of America"], "evidence_quotes": ["MOVE has exploded over the past two sessions.", "Rates vol at current levels of c.90pts is not supportive for flows into riskier assets"]}
+      ],
+      "facts_contested": [
+        {"claim": "whether the market is overpricing the pace of further Fed rate hikes", "banks_for": ["Raymond James", "Morgan Stanley"], "for_evidence": "we think they are overpricing what the Fed will deliver", "banks_against": ["AllianzGI", "Natixis"], "against_evidence": "The September increase is likely to be the first step in a longer cycle"},
+        {"claim": "whether the bond selloff has overshot fair value and duration should be bought, or whether the drivers behind higher yields are still intact", "banks_for": ["RBC BlueBay Asset Management"], "for_evidence": "we see merit in owning duration", "banks_against": ["ING"], "against_evidence": "The bearish narrative remains intact with none of the key drivers behind the recent sell-off"}
+      ],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "US 10-year Treasury yield", "direction_or_level": "declines roughly 10bp", "by_when": "within three months", "source_quote": "Expected decline over next three months based on duration underweight positioning."},
+        {"bank": "Goldman Sachs", "subject": "Australian 10-year bond yield", "direction_or_level": "5.0%, raised from 4.7%", "by_when": "year-end 2026", "source_quote": "YE26 forecast for AUD 10y, raised from 4.7%."},
+        {"bank": "AllianzGI", "subject": "Fed funds rate path (additional hikes)", "direction_or_level": "75 basis points of further hikes, 50bps more than previously forecast", "by_when": "Q2 2027", "source_quote": "Expected by Q2 2027, 50bps higher than previous forecast."},
+        {"bank": "FinChartOutlook GmbH", "subject": "20-Country 10-Year Yield Composite (global sovereign bond yields)", "direction_or_level": "a break above the 4.853%-4.935% resistance zone would extend the move to 5.2%-5.3%", "by_when": "", "source_quote": "Resistance zone; break above signals further yield strength to 5.2%-5.3%."}
+      ]
+    },
+    {
+      "theme": "datacenter power infrastructure transition",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 1, "neutral": 14},
+      "consensus_view": "The research corpus treats surging AI datacenter power demand as an established, ongoing buildout that most banks only mention in passing, while Goldman sees a real investment opportunity in the equipment needed to run datacenters on direct-current power instead of the traditional AC grid, and Morgan Stanley warns that rising borrowing costs are making it harder to finance new datacenter capacity with debt.",
+      "facts_agreed": [],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "Datacenter capacity built on DC (direct-current) power architecture", "direction_or_level": "170GW increase", "by_when": "within five years of end of 2025", "source_quote": "Total capacity increase in DC datacenter additions"},
+        {"bank": "Goldman Sachs", "subject": "Share of new datacenter additions built on DC power architecture", "direction_or_level": "25-40%", "by_when": "2030", "source_quote": "Share of new datacenter additions based on DC"},
+        {"bank": "Goldman Sachs", "subject": "Global data center power supply", "direction_or_level": "217GW", "by_when": "2030", "source_quote": "Global data center supply"},
+        {"bank": "Goldman Sachs", "subject": "US data center power demand", "direction_or_level": "108 GW", "by_when": "2030", "source_quote": "US data center demand"},
+        {"bank": "Goldman Sachs", "subject": "Global data center power demand growth", "direction_or_level": "170% increase", "by_when": "2030 vs 2025", "source_quote": "Global data center power demand growth"},
+        {"bank": "Morgan Stanley", "subject": "US data center power supply shortfall", "direction_or_level": "57 GW shortfall", "by_when": "2026-28", "source_quote": "US data center power supply shortfall"},
+        {"bank": "Goldman Sachs", "subject": "Battery backup unit market opportunity for datacenters", "direction_or_level": "$50bn", "by_when": "2030", "source_quote": "Battery backup unit opportunity"},
+        {"bank": "Goldman Sachs", "subject": "Share of US data center power demand met by behind-the-meter gas power generation", "direction_or_level": "c.28%", "by_when": "2030", "source_quote": "2030 BTM gas-power generation share"}
+      ]
+    },
+    {
+      "theme": "rates volatility impact",
+      "selected": true,
+      "stance_counts": {"supportive": 1, "skeptical": 1, "neutral": 13},
+      "consensus_view": "Goldman Sachs is warning that the recent jump in real Treasury yields, up about half a percentage point in a month and past its own historical speed limit, is nearing the point where stocks stop ignoring rising rates and start reacting to them, while the rest of the desks referencing this move are only noting the yield spike itself without yet taking a side on whether equities will react.",
+      "facts_agreed": [],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "US 10-year Treasury yield", "direction_or_level": "two-standard-deviation move", "by_when": "within one month", "source_quote": "Two-standard-deviation move over one month triggering equity reaction."}
+      ]
+    },
+    {
+      "theme": "us diesel export ban",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 11},
+      "consensus_view": "Eleven banks flagged a possible Trump administration ban on US diesel exports as a live policy risk this week, but none staked a directional trading call on it.",
+      "facts_agreed": [
+        {"claim": "Eleven banks flag a potential Trump administration ban on US diesel exports as a live policy risk this window, without taking a directional stance on the trade.", "banks_for": ["Rabobank", "JPMorgan", "Raymond James", "Bank J. Safra Sarasin", "SEB", "UBS", "The Market Ear", "Goldman Sachs", "Nomura", "BofA Securities", "Academy Securities"], "evidence_quotes": ["US diesel export ban risks", "Diesel export ban risks", "US diesel export ban plan", "US Diesel Export Ban"]}
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": [
+        {"bank": "Goldman Sachs", "subject": "US retail diesel price", "direction_or_level": "down $0.25/gallon per week of a ban, while storage remains available", "by_when": "", "source_quote": "Downward pressure on US retail diesel prices per week of ban"},
+        {"bank": "Goldman Sachs", "subject": "US retail gasoline price", "direction_or_level": "up $0.3/gallon per week of a ban, once diesel storage is full and refinery run cuts are forced", "by_when": "", "source_quote": "Upward pressure on US retail gasoline prices per week of ban"},
+        {"bank": "Goldman Sachs", "subject": "European wholesale diesel (ARA gasoil) price", "direction_or_level": "up $3/bbl per week of a ban", "by_when": "", "source_quote": "Upward pressure on European wholesale diesel prices per week of ban"}
+      ]
+    },
+    {
+      "theme": "us midterm impact",
+      "selected": true,
+      "stance_counts": {"supportive": 0, "skeptical": 0, "neutral": 11},
+      "consensus_view": "Research desks are flagging the US midterm elections as a live but unresolved risk across trade policy, regulation, energy rules and market volatility, with prediction markets favoring a Democratic sweep, but no bank has published a directional trading call on the result.",
+      "facts_agreed": [
+        {"claim": "Research coverage repeatedly flags the US midterm elections as a live catalyst across trade policy, regulation, energy policy and market volatility without staking a directional view on the outcome.", "banks_for": ["Bank J. Safra Sarasin"], "evidence_quotes": ["US midterm election impact on trade policy", "Midterm election regulatory uncertainty", "US mid-term election energy policy", "US midterms impact on Iran diplomacy", "US midterm data center politics"]}
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {"theme": "ai shopping toll", "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'EMARKETER'"},
+    {"theme": "energy supply disruption", "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'BofA Global Research'"},
+    {"theme": "ai infrastructure and capex", "reason": "facts_contested for_evidence not in inputs: 'we do not view this as evidence of structurally poor economics.'"}
+  ]
+}
