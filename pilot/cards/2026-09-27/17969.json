@@ -1,0 +1,143 @@
+{
+ "brief": "Stock-to-stock correlation is at or near an all-time low even as common-factor risks from higher yields and higher yield volatility are rising, per Bloomberg strategist Simon White. Yields remain at levels not seen in over 20 years, yet the S&P is near all-time highs with the VIX near 15. Low index correlation explains the gap: single-stock volatility is relatively elevated, but low correlation dampens the VIX. Six-month realised correlation hit a series low (data since 2011), likely an all-time low, at 5.2%; implied correlation is near but not at its record low. Yield volatility had been falling even as yields rose, since the rise was read as stabilising, driven by inflation-dampening short-rate tightening. Since Wednesday's strong PMI data, yield vol has started rising as the move turns more disorderly. Strong growth combined with a large pro-cyclical deficit deemed inappropriate for this stage of the cycle, plus heavy AI-related spending, intensifies inflation risk, raising the odds of a yield shock that would push stocks to fall together, i.e. become more correlated. Current correlation levels look backward-looking and are not yet pricing that rising common-factor risk.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Six-month realised correlation for the S&P hit a series low, likely an all-time low, at 5.2%.",
+   "anchor": "hitting a series low (data back to 2011) - and likely an all-time low - of only 5.2%",
+   "topic": "US equity correlation breakdown",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Implied correlation for the S&P is not quite at its record lows but is close to them.",
+   "anchor": "Implied correlation is not quite at its record lows, but isn\u2019t too far off it.",
+   "topic": "US equity correlation breakdown",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "The S&P is near all-time highs while the VIX is only around 15.",
+   "anchor": "instead it is near all-time highs, while the VIX is only at ~15",
+   "topic": "US equity correlation breakdown",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Average single-stock volatility is relatively elevated, but low correlation is dampening the VIX.",
+   "anchor": "Average single-stock volatility is relatively more elevated, but the dampening effect of low correlation is clipping the wings of the VIX.",
+   "topic": "US equity correlation breakdown",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Yields have not retreated meaningfully this week and remain at levels not visited in over 20 years.",
+   "anchor": "Yields are yet to retreat in any meaningful way this week, still at levels they have not visited for over 20 years.",
+   "topic": "US equity correlation breakdown",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Yield volatility has started rising since Wednesday's strong PMI data as the move in yields becomes more disorderly.",
+   "anchor": "since Wednesday\u2019s strong PMI data, yield vol has started to rise too as the move becomes more disorderly",
+   "topic": "US equity correlation breakdown",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Strong growth combined with a large pro-cyclical deficit inappropriate for this stage of the cycle, plus heavy AI-related spending, intensifies inflation risk.",
+   "anchor": "Strong growth intensifies inflation risks when accompanied by a massive pro-cyclical deficit inappropriate for this stage in the cycle, alongside huge AI-related spending.",
+   "topic": "US equity correlation breakdown",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Stocks are becoming more prone to yield shocks that would cause them to fall together as one unit, i.e. become more correlated.",
+   "anchor": "stocks are more prone to yield shocks that would cause them to fall more as one unit, ie they would become more correlated",
+   "topic": "US equity correlation breakdown",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Stock Correlation Is Defying All Expectations",
+   "claim": "Current implied and realised index correlation for stocks looks too backward-looking and is not yet pricing the rising potential of common-factor risks, principally from yields.",
+   "anchor": "Current implied and realised index correlation for stocks appears too backwards looking, and neither is yet factoring in the rising potential of common-factor risks",
+   "topic": "US equity correlation breakdown",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17969__stock-correlation-is-defying-all-expectations.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
