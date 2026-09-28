@@ -1,0 +1,332 @@
+[Page 1]
+ 
+Goldman Calculates How Much Revenue Is Needed 
+To Justify $1.7 Trillion In Hyperscaler Capex (And 
+What It Leaves Out) 
+ 
+BY TYLER DURDEN 
+SUNDAY, SEP 27, 2026 - 01:25 PM 
+For the past two years, every since Goldman first poured cold water on the AI sector in the 
+summer of 2024...  
+ 
+Source: Goldman Sachs (available to pro subs) 
+... the question hanging over the AI trade hasn't been whether the hyperscalers can spend (they 
+can, and will, and then some - most recently via bond markets, private credit and a proliferating 
+zoo of SPVs, many of which have gottten monkeyhammered in recent days), but whether all 
+that spending will ever earn anything (and, justs as importantly, how much). Now, after a Q2 
+earnings season in which consensus capex estimates were once again smashed higher, with 
+
+
+[Page 2]
+ 
+most banks now expecting well over $1 trillion in spending in 2027, Goldman has decided to 
+answer that question the old-fashioned way: with a spreadsheet. 
+In a must-read note published overnight titled "Sizing the AI Economy Needed to Justify ROIC 
+on Hyperscaler AI Capex" (available to pro subscribers), Goldman's internet and tech team led 
+by Eric Sheridan attempts to reverse-engineer how much revenue the six US hyperscalers - 
+Alphabet, Microsoft, Amazon, SpaceX (yes, it's a hyperscaler now), Meta and Oracle - must 
+generate to earn a respectable return on the current wave of AI spending. 
+The punchline: to earn a 15% ROIC on "Phase 2" (CY2026-27) AI compute capex of ~
+1.42 trillion in cumulative revenue over 
+1. 73𝑡𝑟𝑖𝑙𝑙𝑖𝑜𝑛, 𝑡ℎ𝑒𝑠𝑖𝑥𝑚𝑢𝑠𝑡𝑔𝑒𝑛𝑒𝑟𝑎𝑡𝑒𝑎𝑐𝑜𝑚𝑏𝑖𝑛𝑒𝑑~
+2028-2030, or ~$11.6 billion of annual revenue per gigawatt of compute. 
+Whether that is a lot or a little depends on who you ask - and, as we show below, on which 
+bank's research you happen to be reading any given week. 
+First, the capex has already been "priced in"... after rising 66% in 
+nine months 
+Goldman starts by making the argument that near-term spending is no longer the debate. Why? 
+Because since the start of the year, consensus estimates for CY26-27 capex at the five public 
+hyperscalers (GOOGL, MSFT, AMZN, META, ORCL) have risen by ~66%, or a combined ~$754 
+billion, from $1.14 trillion to $1.89 trillion. Goldman adds that it remains "broadly ahead" of 
+consensus on CY27 capex, and believes its above-Street numbers "are more aligned with 
+[buyside] investor expectations."    
+
+
+[Page 3]
+ 
+ 
+In other words, the market is no longer surprised by the size of the checks. It is, however, 
+increasingly curious about whether they'll clear. As Goldman puts it, the debate "has shifted in 
+the past few months toward a more forward outlook: how current period capex spend (across 
+CY2026-27) might deliver a return in future (CY2028-30) periods." 
+Regular readers will recall we saw this movie from the other side back in May, when we noted 
+that hyperscaler capex was expected to hit $1.1 trillion in 2027, up from $800BN this year, only 
+for Goldman to follow up with a forecast that 2027 hyperscaler capex could rise as high as $1.4 
+trillion because "consensus 2027 hyperscaler capex estimates are too conservative." Every 
+revision since has gone one way (and it all has to do with a very generous bond market which is 
+funding about half of all future capex growth... how generous the bond market will stay with 10Y 
+yields at 5.2% is a very important topic worthy of its own post). 
+Three phases of the buildout 
+Goldman breaks the AI compute cycle into three phases: 
+●​ Phase 1 (2023-25): ~
+211BN/year), mostly training for a 
+633𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑖𝑛𝑡𝑜𝑡𝑎𝑙𝐴𝐼𝑐𝑎𝑝𝑒𝑥(~
+handful of foundation model companies; 
+●​ Phase 2 (2026-27): ~
+863BN/year) amid capacity shortages and a demand 
+1. 73𝑡𝑟𝑖𝑙𝑙𝑖𝑜𝑛(~
+curve broadening into inference; and 
+
+
+[Page 4]
+ 
+●​ Phase 3 (2028-30): a whopping ~
+1.38 trillion/year), when capex keeps 
+4. 14𝑡𝑟𝑖𝑙𝑙𝑖𝑜𝑛(~
+growing in dollar terms but capital intensity moderates and the hyperscalers "may shift 
+more into 'harvesting' mode."  
+ 
+Note that Goldman's ROIC exercise only addresses Phase 2. Phase 3 - the $4 trillion one - is 
+explicitly left for another day. More on that shortly. 
+For what it's worth, Goldman's semiconductor team's bottom-up view from the supply chain is 
+even bigger: they see total AI infrastructure capex (hyperscalers plus AI labs, sovereigns and 
+enterprises) of ~
+2.0 trillion in 2028 (+42% YoY), equating to 
+1. 3𝑡𝑟𝑖𝑙𝑙𝑖𝑜𝑛𝑖𝑛2027(+ 60%𝑌𝑜𝑌)𝑎𝑛𝑑~
+roughly 20 GW / 35 GW / 57 GW of AI datacenter deployments in 2026/27/28. That build uses 
+Nvidia's own guidance of ~
+40BN for Rubin, plus 
+25𝐵𝑁𝑜𝑓𝑟𝑒𝑣𝑒𝑛𝑢𝑒𝑝𝑒𝑟𝐺𝑊𝑓𝑜𝑟𝐵𝑙𝑎𝑐𝑘𝑤𝑒𝑙𝑙, 𝑟𝑖𝑠𝑖𝑛𝑔𝑡𝑜~
+Broadcom's $20-30BN per GW and AMD's $15-20BN per GW. 
+
+
+[Page 5]
+ 
+ 
+The framework: from capex to the revenue hurdle 
+Here is how Goldman gets from $1.73 trillion of spending to $1.42 trillion of required revenue. Of 
+the Phase 2 capex, ~70% ($1.21 trillion) is "compute" (servers, chips, networking) and ~30% 
+($518 billion) is "shells" (land and buildings). Alphabet (
+424BN) lead the 
+470𝐵𝑁)𝑎𝑛𝑑𝐴𝑚𝑎𝑧𝑜𝑛(
+pack, followed by Microsoft (
+309BN), Oracle (
+31BN).  
+327𝐵𝑁), 𝑀𝑒𝑡𝑎(
+165𝐵𝑁)𝑎𝑛𝑑𝑆𝑝𝑎𝑐𝑒𝑋(
+
+
+[Page 6]
+ 
+ 
+The bank then assumes: 
+●​ Cost of compute of ~$42BN per GW (57% servers, 29% network infrastructure, 13% 
+facilities), based on Epoch AI YE25 figures inflated by 10% - the same rate at which 
+META and AMZN revised up their capex guidance, "citing input costs as the primary 
+factor." That implies ~41 GW added in Phase 2, although at the rate memory prices are 
+soaring this number will likely end up well north of $50BN. 
+●​ A 15% ROIC hurdle, defined as annual NOPAT in 2028-30 as a percent of average 
+annual 2026-27 capex, which Goldman calls "reasonable (and likely conservative)." 
+●​ Depreciation over 5 years for compute and 15 years for shells. 
+●​ Operating costs of ~$836MM per GW per year (energy $653MM, labor $44MM, other 
+$139MM). 
+●​ Utilization of 60% in 2028, 80% in 2029 and 85% in 2030. 
+
+
+[Page 7]
+ 
+ 
+Grind it all through and you get the following: to generate ~$129.5 billion in annual NOPAT (15% 
+of the 
+164 billion of annual EBIT - and on top of that, 
+863𝐵𝑁𝑎𝑣𝑒𝑟𝑎𝑔𝑒𝑎𝑛𝑛𝑢𝑎𝑙𝑐𝑎𝑝𝑒𝑥), 𝑡ℎ𝑒𝑠𝑖𝑥𝑛𝑒𝑒𝑑~
+they must cover ~$276 billion per year in depreciation on the Phase 2 assets alone. The result: 
+annual revenue of ~$465-476 billion, or ~$1.42 trillion cumulatively in 2028-30, at a ~35% EBIT 
+margin. 
+ 
+
+
+[Page 8]
+ 
+The number that jumps out, at least to us (and certainly to Michael Burry), isn't the revenue, it's 
+the depreciation. $276 billion a year in D&A on two years of spending is ~1.7x the EBIT the 
+assets need to produce, which is a polite way of saying that the economics of this cycle live and 
+die on how long a GPU actually stays useful.  No wonder Jensen Huang spent the bulk of his 
+$500 billion "Collateralized Compute" initiative seeking to convince Wall Street that AI computer 
+chips actually appreciate in value over time. And indeed some of them, the most recent ones... 
+ 
+... but that's largely because most of the chips ordered by hyperscalers are collecting dust in 
+boxes in data centers that may or may not be constructed in the next 5 years (the latest Oracle 
+news is hardly reassuring on this front), resulting in a compute supply-constrained market for 
+now. 
+Goldman uses a 5-year life for compute; if the true economic life turns out closer to 3 years 
+(which is roughly where some skeptics - and Nvidia's own annual product cadence - would put 
+it), the hurdle understandably soars as hyperscalers are forced to keep buying new generations 
+of chips at a much more frequent cadence. We discussed exactly this in July, in "AI Capex 
+Depreciation Risk Is The Catch To Record Earnings", where the five largest hyperscalers were 
+spending $760 billion on 2026 capex while expensing only $211 billion in depreciation, with the 
+remaining $549 billion quietly parked on balance sheets. 
+
+
+[Page 9]
+ 
+Flex the assumptions and the range is... wide 
+Being a responsible sell-side shop, Goldman also runs a sensitivity table flexing the ROIC 
+hurdle from 0% to 30% and capex per GW from ~
+51BN (spoiler: it will be much more, 
+34𝐵𝑁𝑡𝑜~
+as even Jensen Huang admits). The result: the six hyperscalers need somewhere between ~
+1.9 trillion in cumulative 2028-30 revenue, or ~$6.2-18.6 billion per GW per 
+0. 9𝑡𝑟𝑖𝑙𝑙𝑖𝑜𝑛𝑎𝑛𝑑~
+year. Even the zero-return scenario - where shareholders get precisely nothing for their two 
+years of capex - requires $920 billion of revenue just to cover depreciation and running costs. 
+ 
+The backlog "bailout" 
+So is $1.42 trillion achievable? Goldman's main piece of evidence is the cloud backlog. As of 
+CQ2 2026, AWS, Azure and Google Cloud reported a combined backlog of ~$1.69 trillion, up 
+152% YoY and ~1.5x since the start of the year, with public cloud revenue growth accelerating 
+to over 45% YoY. 
+
+
+[Page 10]
+ 
+ 
+Running the same framework on just these three, their ~1. 22𝑡𝑟𝑖𝑙𝑙𝑖𝑜𝑛𝑜𝑓𝑃ℎ𝑎𝑠𝑒2𝑐𝑎𝑝𝑒𝑥𝑟𝑒𝑞𝑢𝑖𝑟𝑒𝑠~
+1.00 trillion of 2028-30 revenue - equal to ~59% of the current backlog, and assuming zero 
+further backlog growth. By company, the required revenue is ~40% of Microsoft's backlog, ~68% 
+of Amazon's, and ~78% of Alphabet's.  
+ 
+Goldman calls this assumption "likely conservative." We would add three footnotes: 
+
+
+[Page 11]
+ 
+●​ First, Goldman itself notes that the backlog figures include non-cloud commitments 
+(AMZN's "Total Commitments", MSFT's "Commercial RPOs", GOOGL's "RPO") so they 
+are a proxy, not a purchase order. 
+●​ Second, a big chunk of that backlog comes from a very small number of AI labs whose 
+ability to pay depends on continued access to capital markets - Goldman flags "customer 
+concentration risk" in passing, when in reality the ability of OpenAI to fund its $1.5 trillion 
+in commitments (not to mention its IPO) is now in jeopardy, with both of its largest data 
+centers expected to come online in the next 2-3 years are now in great peril (as 
+discussed here and here). 
+●​ And third, Alphabet's 78% coverage ratio is the tightest of the group, which is notable for 
+the company with the biggest Phase 2 capex bill. 
+Management: "Trust us, the returns are great" 
+Goldman also rounds up what the companies themselves are saying, and unsurprisingly, the 
+people spending the money are very comfortable with it: 
+●​ Amazon says servers and networking have a ~5-6 year useful life against a breakeven 
+of ~3 years, with shells lasting 30+ years and able to support 5-6 server cycles; capex 
+starts ~2 years before a datacenter goes live, "masking current period results." 
+●​ Oracle sees steady-state ROIC "in the high 20s %" for larger infrastructure projects 
+(assuming it can complete them). 
+●​ SpaceX said at Communacopia that it is deploying terrestrial AI datacenter capex 
+against a one-year payback period - a claim that deserves either a Nobel Prize or a 
+follow-up question. 
+●​ Microsoft sees "no structural reason" why AI gross margins can't approach cloud 
+margins. 
+Goldman, for its part, frames near-term return compression "as a natural consequence of the 
+massive upfront investment cycle rather than evidence of structurally poor AI economics." 
+Which is exactly what one would say in both the bull case and the bear case. 
+Where Morgan Stanley comes in 
+It is instructive to set Goldman's hurdle against Morgan Stanley's work on the other side of the 
+ledger. In July, MS estimated that GenAI investments can earn incremental ROICs of 25%-50% 
+- or ~31% for GPU leasing, ~46% for model APIs on proprietary infrastructure, ~25% on 
+
+
+[Page 12]
+ 
+third-party infrastructure. The key: MS assumed ~$22.9 billion of annual revenue per GW for 
+GPU leasing (a GB300 renting at $8.50/hour at 75% utilization) and ~$30.4 billion per GW for 
+model APIs (at $1.75 per million tokens). 
+Compare that with Goldman's 15% ROIC hurdle of 
+11. 6𝐵𝑁𝑝𝑒𝑟𝐺𝑊. 𝑂𝑛𝑀𝑜𝑟𝑔𝑎𝑛𝑆𝑡𝑎𝑛𝑙𝑒𝑦'𝑠𝑝𝑟𝑖𝑐𝑖𝑛𝑔𝑎𝑠𝑠𝑢𝑚𝑝𝑡𝑖𝑜𝑛𝑠, 𝑡ℎ𝑒ℎ𝑦𝑝𝑒𝑟𝑠𝑐𝑎𝑙𝑒𝑟𝑠𝑐𝑙𝑒𝑎𝑟𝐺𝑜𝑙𝑑𝑚𝑎𝑛'𝑠𝑏𝑎𝑟𝑏𝑦2 −2. 6𝑥. 𝑂𝑛𝐺𝑜
+15.6BN/GW. So the two banks broadly agree: if GPU rental prices and token prices hold 
+anywhere near current levels, the math works. 
+That "if" is carrying a lot of weight. As Goldman's own Rich Privorotsky warned in June... 
+Goldman Delta 1 head Rich Privorotsky: “The market’s central premise has been that compute 
+is scarce. If scarcity persists, prices should remain firm and justify continued capex. If supply 
+rises and rental prices continue to drift lower, that is a direct challenge to the… 
+https://t.co/dryvakhCE1 
+— zerohedge (@zerohedge) June 22, 2026 
+... a warning which has now clearly manifested in token prices collapsing to the lowest on 
+record! 
+ 
+Which brings us to the other, and arguably more important, Morgan Stanley report: the one we 
+covered over a year ago in "The Shocking Math: Paying For AI Capex Will Require Over $1 
+Trillion In New Debt By 2028." Back then, MS estimated $2.9 trillion in global datacenter capex 
+over 2025-2028, of which hyperscaler cash flows could cover only ~$1.4 trillion, leaving a $1.5 
+
+
+[Page 13]
+ 
+trillion financing gap to be plugged by ~
+200 billion of corporate 
+800𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑜𝑓𝑝𝑟𝑖𝑣𝑎𝑡𝑒𝑐𝑟𝑒𝑑𝑖𝑡, ~
+bonds, ~
+350 billion of "other." MS also projected GenAI revenue 
+150𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑜𝑓𝐴𝐵𝑆/𝐶𝑀𝐵𝑆𝑎𝑛𝑑~
+could exceed $1 trillion by 2028, up from $45 billion in 2024. 
+Morgan Stanley's Shocking Math: Paying For AI Capex Will Require Over $1 Trillion In New 
+Debt By 2028 https://t.co/d1XfpfNdN2 
+— zerohedge (@zerohedge) July 20, 2025 
+Fourteen months later, the $2.9 trillion looks quaint: Goldman's Phase 2 and Phase 3 alone add 
+up to ~$5.9 trillion across 2026-2030 for just six US companies! And the funding question MS 
+raised is now front and center - which we have chronicled in "Inside The Bottomless Pit: The 
+Definitive Look At The Trillions In Debt Funding The AI Supercycle", "AI Is Now A Debt Bubble 
+Too" and "The $1.8 Trillion Off-Balance Sheet Time Bomb At The Heart Of The AI Supercycle." 
+Chips > hyperscalers > software, most of it funded by IG, HY debt and SPVs 
+pic.twitter.com/2z6qMpinx8 
+— zerohedge (@zerohedge) June 18, 2026 
+What Goldman leaves out 
+And this is where Goldman's framework, to its credit, is admirably transparent about its blind 
+spots. Among the simplifications, the bank acknowledges that it "exclude[s] things such as 
+off-balance sheet lease obligations, finance leases, SPVs and 3P compute licensing 
+arrangements." 
+That's not a small footnote. As we noted this summer, "The Off-Balance Sheet Time Bomb 
+Inside AI Hits $3.1 Trillion: Up $1.3TN In Three Months." 
+CNBC anchors silent after Sara Eisen does the math, shows hyperscaler off-balance sheet 
+obligations are now $3 trillion https://t.co/Hh588Z7Dg0 
+— zerohedge (@zerohedge) August 5, 2026 
+In other words, the ~$1.73 trillion in capex that Goldman is solving for sits alongside roughly $3 
+trillion in off-balance sheet commitments that are not in the ROIC denominator. Those 
+commitments will also need to earn a return - or at least be paid - and the credit market has 
+noticed: 
+One day the hyperscaler bond meltdown will end, but not yet.... not yet.​
+​
+Unprecedented carnage in AI IG CDS continues, matched by another 3bps sweep wider (to a 
+new record) in the hyperscaler CDS basket. pic.twitter.com/7xxTsJ7fty 
+
+
+[Page 14]
+ 
+— zerohedge (@zerohedge) July 27, 2026 
+The other omission is Phase 3. Goldman's framework only attempts to justify the next ~18 
+months of spending. If one naively applies the same ratio of required revenue to capex (~0.82x) 
+to Goldman's ~$4.14 trillion Phase 3 forecast, the hyperscalers would need to find roughly 
+another ~$3.4 trillion in revenue over the three years after it is deployed - on top of the $1.42 
+trillion for Phase 2. (That's our back-of-the-envelope, not Goldman's, and it ignores any 
+improvement in cost per GW - but it gives a sense of the treadmill.) BCA's Peter Berezin went 
+further last month, arguing that $10 trillion in annual AI revenue may be necessary to monetize 
+all the capex going into data centers if spending stays at current levels.  
+And all of this assumes the capacity actually gets built, and the US magically completes all 
+those frozen and delayed dozens of data centers that otherwise will never get built. As we 
+warned in April: 
+The market doesn't seem to understand just how bad it is: only a fraction of the projected AI 
+capex will actually be spent if these bottlenecks aren't fixed. And CapEx is all that is holding up 
+earnings growth https://t.co/sK9JpqiE4r pic.twitter.com/vX4Fht66c1 
+— zerohedge (@zerohedge) April 13, 2026 
+Bottom line 
+Goldman's conclusion is that the Phase 2 hurdle - $1.42 trillion over 2028-30, or $11.6BN per 
+GW - is clearable, with 59% of it already sitting in cloud backlogs and management teams 
+claiming paybacks of anywhere from one to three years. All six names in the report are rated 
+Buy. 
+Here is the skeptic's reading of the same numbers: the hurdle is clearable if compute stays 
+scarce, if GPU and token prices don't deflate, if a 5-year useful life is real, if a handful of AI labs 
+keep paying their bills, and if the $3 trillion off-balance sheet iceberg doesn't need a return of its 
+own. Oh, and then Phase 3 needs roughly two and a half times as much. 
+Or, as we put it last October, the money itself may not be the binding constraint at all: 
+The money is not the problem: AI is the new global arms race, and capex will eventually be 
+funded by governments (US and China). If you want to know why gold/silver/bitcoin is soaring, 
+it's the "debasement" to fund the AI arms race.​
+​
+But you can't print energy https://t.co/qwdD8QbVON 
+— zerohedge (@zerohedge) October 14, 2025 
+
+
+[Page 15]
+ 
+More in the full Goldman note available to pro subscribers. 
+ 
+ 
+ 
