@@ -1,0 +1,569 @@
+{
+ "brief": "Oracle's 2056 bonds hit a record 8.16% yield, and its CDS hit an all-time wide, after the company issued a force majeure on its New Mexico 'Project Jupiter' data center, citing unresolved power and permitting problems: rejected pipeline routes, no air permits, and the removal of land/power partner BorderPlex. Because 8.16% trades where B3/B- junk credits trade, and S&P/Moody's already cut Oracle to one notch above junk in July, the move implies another downgrade is likely, which would reprice Oracle's $120bn bond stack and spill into the hyperscaler complex. Barclays calls the lease's financial impact 'de minimis' and Goldman frames the filing as legal protection rather than Oracle walking away from the capacity, but the deferred rent extends the lease term so the total owed doesn't fall, and Barclays still expects hardware capex delayed by ~$30bn, which could force Goldman to trim its just-raised $1.2 trillion AI capex forecast. Goldman's own analyst still closes downbeat, warning that third-party AI infrastructure isn't the bond-like asset it can appear to be. The ~20 banks financing the project's $18bn construction loan are sitting on $2bn+ of unsyndicated paper losses, and developer-owner Blue Owl's stock has tumbled to two-month lows.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle's 2056 maturity bonds hit a new record high yield of 8.16%.",
+   "anchor": "hit a new record high yield of 8.16% for the 2056 maturity:",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle's CDS hit a new all-time wide, along with the broader hyperscaler complex.",
+   "anchor": "which yesterday hit a new all \ntime wide (along with",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle's 8.16% bond yield trades where comparable B3/B- junk-rated credits trade.",
+   "anchor": "where comparable B3/B- junk rated credits trade,",
+   "topic": "AI infra data center execution risk",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "S&P and Moody's downgraded Oracle to one notch above junk back in July.",
+   "anchor": "S&P and Moodys downgraded the company to just one notch above Junk back in",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle will likely be downgraded to junk again soon.",
+   "anchor": "they will likely downgrade it again soon)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "A downgrade to junk would violently reprice Oracle's $120 billion of bonds and spill over into the broader hyperscaler sector.",
+   "anchor": "which would violently reprice the company's \n$120BN worth of bonds and spill over into the broader hyperscaler sector.",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Barclays",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Barclays says the financial implications of Oracle's force majeure from a lease standpoint are de minimis.",
+   "anchor": "the financial implications \nfrom a lease standpoint are de minimis.",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Barclays",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Barclays says Oracle is likely paying modestly reduced monthly fees while under the force majeure, with the lease expense a relatively small part of the economic picture.",
+   "anchor": "ORCL is likely paying modestly reduced monthly fees \nwhile under a",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Goldman says investors read Oracle's force majeure as legal protection against paying rent before the site is operational if delays persist, not as Oracle abandoning the capacity.",
+   "anchor": "as legal protection \nagainst paying rent before the site is operational if",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle's New Mexico lease carries hell-or-high-water terms, meaning the deal cannot be terminated.",
+   "anchor": "hell-or-high-water terms, meaning the deal can\u2019t be terminated and Oracle is obligated to make",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle is obligated to make rent payments regardless of whether it has secured the power to operate the data centers.",
+   "anchor": "rent payments regardless of whether it has secured the power to operate the data",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Deferring lease payments under the force majeure triggers an automatic extension of the lease duration.",
+   "anchor": "that triggers an automatic extension of the duration of \nits lease, meaning",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "The ultimate amount Oracle pays to Stack would not decline even though it can defer payments.",
+   "anchor": "the ultimate amount it pays to Stack wouldn\u2019t decline.",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle overhauled its original power plans for the New Mexico site to address local resistance.",
+   "anchor": "overhauled its original power plans to address local resistance to its",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "A portion of a proposed 17-mile natural-gas pipeline needed for the site would pass through state land.",
+   "anchor": "a small portion of a proposed 17-mile natural-gas \npipeline would",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "The pipeline route needed for the New Mexico site has been rejected by the state twice.",
+   "anchor": "and it has been rejected twice.",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle booted one of its key land and power partners from the Project Jupiter development.",
+   "anchor": "booted one of its key land and power partners from the",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Project Jupiter's first phase, originally expected to complete in the third quarter of 2028, will now be delayed by at least a year.",
+   "anchor": "It now looks like it will be delayed by at least a year. And",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "at least a year"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Stack Infrastructure is currently earning Blue Owl the equivalent of a 9% annualized return from the money raised to build Project Jupiter.",
+   "anchor": "Stack is earning the equivalent of a 9% annualized return for",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "OWL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "The developer's forecast return on Project Jupiter jumps to 11% once lease payments begin, assuming that happens within three years.",
+   "anchor": "return jumps to 11%. Assuming lease payments begin",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "OWL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "three years"
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "BorderPlex Digital Assets is set to receive a payment from Oracle to relinquish the land and power rights it held on Project Jupiter.",
+   "anchor": "BorderPlex is set to receive a payment from Oracle to relinquish \nthe",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Oracle and BorderPlex planned to use Bloom Energy fuel cells to power Project Jupiter, replacing an earlier plan involving gas turbines and diesel generators.",
+   "anchor": "use Bloom Energy fuel cells to power Project \nJupiter, replacing",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "About 20 banks provided $18 billion in construction financing for Project Jupiter.",
+   "anchor": "about 20 banks \nwhich provided $18 billion in construction financing for the",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "The banks financing Project Jupiter are now nursing over $2 billion in paper losses.",
+   "anchor": "now nursing over $2 \nbillion in paper losses.",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "The banks are unable to syndicate the Project Jupiter loans to third parties even though the loans trade at stressed levels.",
+   "anchor": "unable to syndicate the offering to third parties.",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wall Street Journal",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Banks previously struggled to sell billions of dollars of loans made to build data centers leased to Oracle in Texas and Wisconsin.",
+   "anchor": "banks struggled to sell billions \nof dollars of loans they made to build data centers",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Barclays",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Barclays expects Oracle's hardware capex to be delayed by about $30 billion.",
+   "anchor": "delayed by ~$30bn; typically spent 2-3 months ahead",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Goldman raised its AI capex projection to $1.2 trillion just before the Oracle force majeure news broke.",
+   "anchor": "Goldman raised its capex projections to $1.2 \ntrillion, that",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Goldman's $1.2 trillion AI capex projection may have to be shaved because of the Oracle-linked delays.",
+   "anchor": "that number may have to be shaved.",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Barclays",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Barclays flags read-through risk from Oracle's force majeure to the Related Digital/Saline, Michigan data center site, which also has a public bond.",
+   "anchor": "there have been questions around \nread-through for the Related",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Goldman says the Oracle episode highlights the gap between aggressive AI capacity commitments tied to OpenAI demand and the practical challenge of delivering multi-gigawatt campuses.",
+   "anchor": "the issue highlights the gap between \naggressive AI capacity commitments tied to",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Goldman warns that third-party-developed AI infrastructure is not always the bond-like asset class it can appear to be.",
+   "anchor": "third-party-developed AI infrastructure is not always the bond-like asset class it can appear to",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Meta's Project Hyperion holds the title of the world's largest corporate bond and has seen better days.",
+   "anchor": "the world's largest corporate bond, which sadly has seen better",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Democrats are virtually certain to win the House of Representatives in November.",
+   "anchor": "Democrats virtually certain \nto win the House in November",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "A Democratic House majority is expected to put an indefinite hold on current and future data center developments.",
+   "anchor": "put an indefinite hold on any current and future data \ncenter developments...",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Blue Owl was still relentlessly gating retail investors in its BDCs.",
+   "anchor": "at last check was still relentlessly gating retail investors in its BDCs,",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "OWL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Oracle Bonds Plunge To Record Low As $30 Billion CapEx In Peril On Data Center Turmoil",
+   "claim": "Blue Owl's stock has tumbled to two-month lows and is not much higher than its all-time lows.",
+   "anchor": "has seen its stock tumble to \ntwo month lows and not much higher from its all time",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "OWL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17967__oracle-bonds-plunge-to-record-low-as-30-billion-capex-in-per.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 37,
+  "matched": 37,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
