@@ -1,0 +1,665 @@
+{
+ "brief": "Weekly recap from GS's US industrials/materials analyst: industrials rose 40bps last week, underperforming the broader market, while materials fell about 40bps. Individual movers had mixed drivers: FLY, RKLB, BETA and YSS led gains with no clear explanation; AAON (+16%) followed a sell-side company visit; ESAB (+11%) rose as Middle East fears eased; QXO (+9%) benefited as rates came off multi-decade highs. Decliners included VOYG (convertible offering), CF, SMID cyclicals OSK/DAN/DCH, and FTAI (-8% on a Q3 estimate cut). GS expects industrial seasonality to improve into year-end but sees more downside than upside risk to the coming ISM print versus consensus (55.2 from 54.6). Prime brokerage data show broad de-grossing, with Industrials among the most net-sold global sectors this week even though the book stays overweight the sector versus MSCI World. Previews: ALK's investor day should remove its already-doubted $10 2027 EPS target; CCL's preview is near-term cautious but sees unappreciated long-term PROPEL upside; AYI looks priced for an in-line guide.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Industrials were up 40bps last week, underperforming the broader market.",
+   "anchor": "Industrials were up 40bps last week underperforming broader markets",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Materials were down approximately 40bps last week.",
+   "anchor": "underperforming broader markets with materials down approximately 40bps",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "FLY, RKLB, BETA and YSS led sector upside last week with no clear explanation.",
+   "anchor": "Upside was led by names like FLY RKLB BETA YSS with no clear explanation",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "FLY",
+    "RKLB",
+    "BETA",
+    "YSS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "AAON rose 16% last week, potentially on a sell-side company visit.",
+   "anchor": "AAON up 16% with a sell side company visit (away) a potential reason",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "AAON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "ESAB rose 11% as fears around the Middle East geopolitical situation eased.",
+   "anchor": "ESAB up 11% as fears around the geopolitical situation in the Middle East eased",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "ESAB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "QXO rose 9% as interest rates came off multi-decade highs, though rates remain elevated.",
+   "anchor": "QXO up 9% with rates coming of multi decade highs though still elevated",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "QXO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "VOYG led sector downside last week after offering a convertible.",
+   "anchor": "Downside led by VOYG that offered a convertible",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "VOYG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "CF traded lower last week tied to Middle East exposure.",
+   "anchor": "CF trading with ME highlighted above",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "CF"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "SMID cyclicals OSK, DAN and DCH declined last week catching up to risk-off sentiment.",
+   "anchor": "SMID cyclicals like OSK DAN DCH catching up to risk off",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "OSK",
+    "DAN",
+    "DCH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "FTAI fell 8% after its Q3 estimates were cut, driving fears around the quarter.",
+   "anchor": "FTAI -8% that saw Q3 estimates cut (away) driving fears around the quarter itself",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [
+    "FTAI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Industrial and market seasonality is set to improve through year end.",
+   "anchor": "Industrial seasonality [and market seasonality] set to improve through year end",
+   "topic": "US Industrials sector positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Consensus expects the ISM to reaccelerate to 55.2 from 54.6.",
+   "anchor": "consensus calling for a reacceleration to 55.2 from 54.6",
+   "topic": "US economic data preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS sees more downside than upside potential to the upcoming ISM report versus consensus.",
+   "anchor": "We think there is more downside than upside potential to the report",
+   "topic": "US economic data preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "The global Prime book's overall gross leverage fell 1.2 points to 308.0%, in the 57th percentile of the past year.",
+   "anchor": "Overall book Gross leverage -1.2 pts to 308.0% (57th percentile 1-year)",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "The global Prime book's overall net leverage fell 0.2 points to 77.3%, in the 30th percentile of the past year.",
+   "anchor": "Net leverage -0.2 pts to 77.3% (30th percentile 1-year)",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "The global Prime book's overall long/short ratio rose 0.1% to 1.671, in the 26th percentile of the past year.",
+   "anchor": "Overall book L/S ratio +0.1% to 1.671 (26th percentile 1-year)",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "7 of 11 global sectors were net sold this week, led in dollar terms by Info Comm Svcs, Industrials and Health Care.",
+   "anchor": "7 of 11 global sectors were net sold, led in $ terms by Info Comm Svcs, Industrials, and Health Care",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Industrials saw the largest percentage net selling of any global sector in 3 months, driven by short sales outpacing long buys 4.5 to 1.",
+   "anchor": "the sector saw the largest % net selling in 3 months, driven by short sales outpacing long buys (4.5 to 1)",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "The Prime book is now overweight Industrials versus the MSCI World Index by 3.8 percentage points.",
+   "anchor": "The Prime book is now over-weight Industrials vs. the MSCI World Index by +3.8%",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Gross and net Prime book allocations to Industrials now stand at 14.8% and 14.1%, hovering at 1-year lows.",
+   "anchor": "Gross/Net allocations to Industrials (as a % of the global Prime Book) now stand at 14.8%/14.1%",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "ALK is poorly positioned given its exposure to West Coast jet fuel, which has been more elevated than other refined products.",
+   "anchor": "ALK poorly positioned relative to consuming West Coast jet fuel which has been even more elevated than other parts of the refined products chain",
+   "topic": "ALK investor day preview",
+   "status": "level",
+   "instruments": [
+    "ALK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "ALK's company target is still $10 EPS for 2027.",
+   "anchor": "Company still has $10 EPS target for 2027 out there",
+   "topic": "ALK investor day preview",
+   "status": "target",
+   "instruments": [
+    "ALK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Consensus for ALK's 2027 EPS is clearly skeptical of the company target, at $4.28.",
+   "anchor": "Consensus is clearly skeptical at $4.28",
+   "topic": "ALK investor day preview",
+   "status": "forecast",
+   "instruments": [
+    "ALK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Using the longer-term median multiple, ALK's stock could be pricing in EPS closer to $2.50.",
+   "anchor": "the stock itself could be baking in something closer to $2.50",
+   "topic": "ALK investor day preview",
+   "status": "level",
+   "instruments": [
+    "ALK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS expects ALK to remove its 2027 EPS target and replace it with a framework of drivers and assumptions.",
+   "anchor": "We expect that target to be removed and a framework around the drivers for 2027 and beyond",
+   "topic": "ALK investor day preview",
+   "status": "forecast",
+   "instruments": [
+    "ALK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "ALK has 11.5mm shares short, sticky in recent months, with days-to-cover at highs.",
+   "anchor": "11.5mm shares short sticky in recent months and days to cover at highs",
+   "topic": "ALK investor day preview",
+   "status": "level",
+   "instruments": [
+    "ALK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "ALK at 5-year lows to peers could be an interesting entry point, with the investor day serving as a clearing event around prior targets.",
+   "anchor": "At 5 year lows to peers could create an interesting entry point with the analyst day serving as a clearing event",
+   "topic": "ALK investor day preview",
+   "status": "level",
+   "instruments": [
+    "ALK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "CCL has a 5% implied move into earnings, with the stock 50/50 on recent earnings days.",
+   "anchor": "5% implied move with the stock 50/50 in recent earnings days",
+   "topic": "CCL earnings preview",
+   "status": "level",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "After CCL's roughly 20% pullback over the past month, GS sees considerable valuation support at current levels.",
+   "anchor": "After CCL's pullback of ~20% over the past month, we see considerable valuation support at this level",
+   "topic": "CCL earnings preview",
+   "status": "level",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS believes Street estimates for CCL are still too high for 2027, a year when net yield growth is likely back-half weighted.",
+   "anchor": "Street estimates that are still too high for 2027, in a year where net yield growth is likely back-half weighted",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS lacks enough bookings visibility from CCL's earnings to be certain how demand is shaping up until Wave Season.",
+   "anchor": "not enough bookings visibility by earnings to apply a high degree of certainty on how demand is shaping up until Wave Season",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "until Wave Season"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS expects industry Caribbean capacity growth to be lower in 2027 than in 2026.",
+   "anchor": "industry Caribbean capacity growth is lower than 2026",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "CCL is pulling about 5% of its capacity out of the Caribbean and into the usually higher-yielding Europe.",
+   "anchor": "CCL is pulling ~5% of its capacity out of the Caribbean and into (usually higher yielding) Europe",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "About 20% of CCL's customers are usually brand switchers, and many of its brands are more value-oriented and price sensitive.",
+   "anchor": "with ~20% of CCL's customers usually brand switchers, and many of the brands more value-oriented",
+   "topic": "CCL earnings preview",
+   "status": "level",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS believes CCL's brand-switcher customer base leaves it more levered to macro and promotional pressures than peers.",
+   "anchor": "it leaves CCL more levered to both macro and promotional pressures than peers",
+   "topic": "CCL earnings preview",
+   "status": "level",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS's revised estimates and cost analysis do not point to a positive spread on CCL's yield-to-cost growth in 2027.",
+   "anchor": "our revised estimates and cost analysis do not point to a positive spread on yield-to-cost growth in 2027",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS believes the upside from CCL's long-term PROPEL targets is not fully appreciated by the market.",
+   "anchor": "we believe the upside from the long-term PROPEL targets are not fully appreciated",
+   "topic": "CCL earnings preview",
+   "status": "target",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "AYI has a 7% implied move into earnings, with the stock more often green than red on recent reports.",
+   "anchor": "7% implied move with the stock more green than red on recent reports",
+   "topic": "AYI earnings preview",
+   "status": "level",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Consensus for AYI looks for similar earnings growth in fiscal 2027 versus 2026 on a topline moderately slowing from 7% to 5%.",
+   "anchor": "consensus looks for similar earnings growth in 2027 vs. 2026 on a moderately slowing topline from 7% to 5%",
+   "topic": "AYI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "AYI's stock appears to be pricing in consensus estimates more or less.",
+   "anchor": "Stock appears to be baking in consensus more or less",
+   "topic": "AYI earnings preview",
+   "status": "level",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "AYI could reach $360 on a good earnings guide.",
+   "anchor": "appears to have outcomes of $360 for a good guide",
+   "topic": "AYI earnings preview",
+   "status": "target",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "AYI could find support at $280 on a tough earnings guide.",
+   "anchor": "looking $280 for support if a tough guide",
+   "topic": "AYI earnings preview",
+   "status": "target",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "Global equities in the Prime book were net sold for the first time in 5 weeks.",
+   "anchor": "Global equities were net sold for the first time in 5 weeks",
+   "topic": "US Industrials sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials | 09.21.26 09.25.26 Weekend Edition",
+   "claim": "GS is still missing a positive catalyst for CCL in the short term, absent geopolitical or oil price developments.",
+   "anchor": "Said differently, we're still missing a positive catalyst in the",
+   "topic": "CCL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "short term"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-28/18060__gs-u-s-industrials-materials-09-21-26-09-25-26-weekend-editi.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 44,
+  "matched": 44,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
