@@ -3473,3 +3473,17 @@ STEP 2.4, before the press-time check, so a wait for a late Omnipulse is
 measured by that check (review). OMNIPULSE_BODY=off in the environment
 forces classic for one process; the driver smoke sets it, since with the
 switch on the gate otherwise polls pilot-data for 20 minutes.
+
+2026-09-27 fantasy answers. "What are all the matchups that are still
+close?" (9/28) shipped with "Couldn't verify these specifics": the
+matchups payload was two totals per game, the model subtracted its own
+margins, and figure provenance found no source for them. The matchups
+topic now computes the story in code: leader and margin, each side's
+standout and dud against projection, who is still to play with
+projections, projected finals, comeback_projected, game status, and the
+league's week standouts and busts (owner: "more entertaining than just
+the score, like comebacks, player performance, win conditions").
+Figure provenance also accepts a figure equal to the difference of two
+sourced figures written on the same line. Live check on week 3: BK
+trailed f.jamal by 12.6 with one player left projected 13.2, projected
+to win by 0.6.

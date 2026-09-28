@@ -270,7 +270,13 @@ TOOL_DOCS["lookup_fantasy_league"] = _COMMON + (
     "their projection', 'how did my team actually do'. With `member` it "
     "is that manager's roster; without one it is the week's top scorers "
     "across the NFL. projections is the forecast, stats is the result: "
-    "do not answer one with the other."
+    "do not answer one with the other.\n"
+    "topic=matchups is every game in the week with the story already "
+    "computed: leader and margin, each side's standout and dud, who is "
+    "still to play and their projections, projected finals, "
+    "comeback_projected, and the league's week_standouts and week_busts. "
+    "Any 'how are the games going', 'which are close', 'who's winning' "
+    "question starts here; answer with the story, not two totals."
 )
 
 TOOL_DOCS["lookup_room_positions"] = (

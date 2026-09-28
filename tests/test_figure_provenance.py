@@ -266,3 +266,41 @@ def test_half_unit_reads_the_written_precision():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+# --- a margin the model subtracted on the same line (2026-09-27) ---------
+FANTASY_ANSWER = (
+    "→ **Tulch vs. Abe:** The tightest game on the slate, Tulch leading by a "
+    "razor-thin **3.3 points** (119.88 to 116.56).\n\n"
+    "→ **BK vs. f.jamal:** You're within striking distance, down **12.6 points** "
+    "(140.5 to 127.9) with Swift left to work tomorrow.\n\n"
+    "→ **Declan vs. Arxfic:** Declan holding a **13.4-point edge** "
+    "(132.08 to 118.66) heading down the stretch.")
+FANTASY_EVIDENCE = ("{'matchups': [{'teams': [{'manager': 'Tulch', 'points': 119.88}, "
+                    "{'manager': 'Abe', 'points': 116.56}]}, {'teams': [{'manager': 'BK', "
+                    "'points': 127.9}, {'manager': 'f.jamal', 'points': 140.5}]}, "
+                    "{'teams': [{'manager': 'Declan', 'points': 132.08}, "
+                    "{'manager': 'Arxfic', 'points': 118.66}]}]}")
+
+
+def test_a_margin_between_two_sourced_scores_on_its_line_is_sourced():
+    from discord_bot import figure_provenance as FP
+    rep = FP.check(FANTASY_ANSWER, FANTASY_EVIDENCE)
+    assert rep.action == "none", (rep.action, [f.token for f in rep.unsourced])
+    assert rep.answer == FANTASY_ANSWER
+
+
+def test_a_difference_against_a_number_from_another_line_still_goes():
+    from discord_bot import figure_provenance as FP
+    ans = ("→ Tulch has 119.88.\n\n→ Abe has 116.56.\n\n"
+           "→ So the gap is 3.3 and the league record is 188.4.")
+    rep = FP.check(ans, "119.88 116.56")
+    assert rep.action == "stripped"
+    assert any("3.3" in d for d in rep.stripped_lines)
+
+
+def test_a_wrong_margin_is_not_waved_through():
+    from discord_bot import figure_provenance as FP
+    ans = "→ Tulch leads by 5.1 points (119.88 to 116.56).\n\n→ Abe has 116.56."
+    rep = FP.check(ans, "119.88 116.56")
+    assert rep.action == "stripped" and "5.1" in rep.stripped_lines[0]

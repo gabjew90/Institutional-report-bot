@@ -221,6 +221,27 @@ def unsourced_figures(answer: str, evidence: str) -> tuple[list[Figure], list[Fi
     return figs, missing
 
 
+def _derived_in_line(line: str, missing_tokens: set) -> set:
+    """Unsourced tokens in `line` that are the difference of two sourced
+    figures on the same line (2026-09-27: "Tulch leading by 3.3 points
+    (119.88 to 116.56)" was hedged as unverified because the 3.3 the
+    model subtracted appears in no payload, and every line of the
+    fantasy matchups answer carried one). Both operands must be written
+    in the line and sourced, so the reader can check the subtraction; a
+    difference against a number from elsewhere does not qualify."""
+    figs = extract_figures(line)
+    ok = [f.value for f in figs if f.token not in missing_tokens]
+    out = set()
+    for f in figs:
+        if f.token not in missing_tokens:
+            continue
+        hu = _half_unit(f.token)
+        if any(_close(abs(x - y), f.value, hu)
+               for i, x in enumerate(ok) for y in ok[i + 1:]):
+            out.add(f.token)
+    return out
+
+
 def _lines(answer: str) -> list[str]:
     """Split on the room's arrow bullets and on blank-line paragraphs;
     a plain sentence stream splits on sentence ends."""
@@ -249,11 +270,19 @@ def check(answer: str, evidence: str) -> Report:
         bad_tokens = {m.token for m in missing}
         lines = _lines(answer)
         keep, drop = [], []
+        derived_all: set = set()
         for ln in lines:
-            if any(tok in ln for tok in bad_tokens):
+            derived = _derived_in_line(ln, bad_tokens)
+            derived_all |= derived
+            if any(tok in ln for tok in bad_tokens - derived):
                 drop.append(ln)
             else:
                 keep.append(ln)
+        rep.unsourced = [m for m in missing
+                         if m.token not in derived_all
+                         or any(m.token in d for d in drop)]
+        if not drop:
+            return rep
         if not keep:
             rep.action = "all-unsourced"
             return rep

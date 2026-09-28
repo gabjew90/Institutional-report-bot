@@ -232,6 +232,83 @@ def _name1(pid, resolver) -> str:
     return got[0] if got else "?"
 
 
+def _matchup_side(side: dict, stats: dict, proj: dict, names: dict) -> dict:
+    """One team in a matchup: its starters' points so far, who has not
+    played yet, and what is still projected to come."""
+    pp = side.get("players_points") or {}
+    # "0" is Sleeper's id for an empty starting slot
+    starters = [str(p) for p in (side.get("starters") or []) if p and str(p) != "0"]
+    rows = []
+    for pid in starters:
+        st = stats.get(pid) or {}
+        started = bool(st.get("gp") or st.get("gms_active")) if stats else None
+        actual = pp.get(pid)
+        if actual is None and st.get("pts_ppr") is not None:
+            actual = st.get("pts_ppr")
+        pr = (proj.get(pid) or {}).get("pts_ppr") if proj else None
+        rows.append({
+            "player": names.get(pid, pid),
+            "actual": round(float(actual), 1) if actual is not None else None,
+            "projected": round(float(pr), 1) if pr is not None else None,
+            "game_started": started,
+        })
+    points = round(float(side.get("points") or 0), 2)
+    yet = [r for r in rows if r["game_started"] is False]
+    remaining = (round(sum(r["projected"] or 0 for r in yet), 1)
+                 if proj and stats else None)
+    played = [r for r in rows if r["game_started"] and r["actual"] is not None]
+    out = {
+        "points": points,
+        "yet_to_play": [{"player": r["player"], "projected": r["projected"]}
+                        for r in yet],
+        "remaining_projected": remaining,
+        "projected_final": (round(points + remaining, 1)
+                            if remaining is not None else None),
+        "players_played": sum(1 for r in rows if r["game_started"]),
+        "players_left": len(yet),
+        "_starters": rows,
+    }
+    if played:
+        top = max(played, key=lambda r: r["actual"])
+        out["standout"] = {k: top[k] for k in ("player", "actual", "projected")}
+        with_proj = [r for r in played if r["projected"] is not None]
+        if with_proj:
+            dud = min(with_proj, key=lambda r: r["actual"] - r["projected"])
+            if dud["actual"] < dud["projected"]:
+                out["dud"] = {k: dud[k] for k in ("player", "actual", "projected")}
+    return out
+
+
+def _game_story(sides: list[dict]) -> dict:
+    """Leader, margin and the projected result for a two-team game."""
+    if len(sides) != 2:
+        return {}
+    a, b = sides
+    if a["points"] == b["points"]:
+        story = {"leader": None, "margin": 0.0}
+    else:
+        lead, trail = (a, b) if a["points"] > b["points"] else (b, a)
+        story = {"leader": lead["manager"],
+                 "margin": round(lead["points"] - trail["points"], 2)}
+    if a.get("projected_final") is not None and b.get("projected_final") is not None:
+        pa, pb = a["projected_final"], b["projected_final"]
+        if pa != pb:
+            win = a if pa > pb else b
+            story["projected_winner"] = win["manager"]
+            story["projected_margin"] = round(abs(pa - pb), 1)
+            story["comeback_projected"] = bool(
+                story["leader"] and win["manager"] != story["leader"])
+    if any(s.get("remaining_projected") is None for s in sides):
+        story["status"] = "unknown"          # game status endpoint down
+    elif all(s["players_left"] == 0 for s in sides):
+        story["status"] = "final"
+    elif all(s["players_played"] == 0 for s in sides):
+        story["status"] = "not started"
+    else:
+        story["status"] = "in progress"
+    return story
+
+
 def build_topic_payload(
     league_id: str,
     topic: str,
@@ -320,24 +397,73 @@ def build_topic_payload(
 
     elif topic == "matchups":
         mus = fetch_matchups(league_id, wk)
+        # Player detail per side (2026-09-27, owner: "more entertaining
+        # than just the score, like comebacks, player performance, win
+        # conditions"). The payload was two totals per game, so answers
+        # read as a scoreboard, and the model computed its own margins,
+        # which the figure-provenance guard could not find in any source
+        # and hedged ("Couldn't verify these specifics"). Margins,
+        # remaining projections and projected finals are computed HERE.
+        stats, proj = {}, {}
+        if season and mus:
+            # both endpoints are independent and each can be slow
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=2) as pool:
+                f_stats = pool.submit(fetch_weekly_stats, season, wk)
+                f_proj = pool.submit(fetch_projections, season, wk)
+                stats = f_stats.result() or {}
+                proj = f_proj.result() or {}
         by_matchup: dict = {}
         for m in mus:
             by_matchup.setdefault(m.get("matchup_id"), []).append(m)
-        games = []
+        ids = sorted({str(p) for m in mus for p in (m.get("starters") or [])
+                      if p and str(p) != "0"})
+        names = dict(zip(ids, _names(ids, resolver)))
+        games, performances = [], []
         for mid, pair in sorted(by_matchup.items(), key=lambda kv: kv[0] or 0):
+            if mid is None:
+                continue  # teams without an opponent this week (bye)
             sides = []
             for side in pair:
                 owner = roster_owner.get(side.get("roster_id"), "")
-                sides.append({
-                    "manager": _owner_label(owner, users_by_id),
-                    "points": side.get("points"),
-                })
-            games.append({"matchup": mid, "teams": sides})
+                team = _matchup_side(side, stats, proj, names)
+                team["manager"] = _owner_label(owner, users_by_id)
+                for r in team.pop("_starters"):
+                    if r["game_started"]:
+                        performances.append({
+                            "player": r["player"], "actual": r["actual"],
+                            "projected": r["projected"],
+                            "manager": team["manager"]})
+                sides.append(team)
+            games.append({"matchup": mid, "teams": sides, **_game_story(sides)})
         out["matchups"] = games
         if not games:
             out["note"] = (
                 f"No matchups for week {wk} — the season may not have "
                 "started. Say so; do NOT invent scores."
+            )
+        else:
+            played = [p for p in performances if p["actual"] is not None]
+            out["week_standouts"] = sorted(
+                played, key=lambda r: r["actual"], reverse=True)[:3]
+            out["week_busts"] = sorted(
+                [p for p in played if p["projected"]],
+                key=lambda r: r["actual"] - r["projected"])[:3]
+            out["note"] = (
+                "Tell each game as a story, not a scoreboard: who leads "
+                "and by how much (margin), who each side still has to "
+                "play and what they are projected for (yet_to_play, "
+                "remaining_projected), the standout and the dud on each "
+                "side, and whether the trailing team is projected to "
+                "come back (comeback_projected). week_standouts and "
+                "week_busts are the league's best and worst starter "
+                "performances against projection. Quote the margins and "
+                "projected finals given here; do not work out your own. "
+                "Projections or game status missing (null) means Sleeper's "
+                "unofficial endpoint was down: say so rather than guess. A "
+                "starter on bye or ruled out never gets a game status, so "
+                "he shows in yet_to_play; if yet_to_play names someone who "
+                "is out, say the projection counts him."
             )
 
     elif topic == "roster":
