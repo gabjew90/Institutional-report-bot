@@ -1,0 +1,175 @@
+{
+ "brief": "The S&P 500 trades near record highs, but only about a quarter of its stocks sit above their 50-day averages. Earnings estimates show the same split: the index's Q3 estimate rose 1.2% from 30 June to 31 August, but estimates fell in seven of eleven sectors, and FactSet's pre-September revisions were led by Energy (+11.8%) while Materials fell 9.1%, so the aggregate gain did not spread broadly. Goldman's September flash PMIs show input-price pressures accelerating faster than output prices, adding margin risk on top of the earnings divide. Separately, the US 10-year real yield rose from 2.44% to 2.76% between 1 and 23 September as breadth deteriorated, raising the rerating hurdle for a broad set of equities beyond the current earnings winners. The piece frames the trade as conditional. If post-report Q4 estimate upgrades spread to most sectors while RSP/SPY stays depressed, the equal-weight catch-up case strengthens. If cuts stay widespread and RSP/SPY keeps weakening, the index stays propped by a narrow group of earnings winners. The first post-report Q4 revisions are called the decision point.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "Only about a quarter of S&P 500 stocks are above their 50-day averages even as the index trades near its highs.",
+   "anchor": "only about a quarter of its stocks are above their 50-day averages",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "The S&P 500's Q3 earnings estimate rose 1.2% from 30 June to 31 August while estimates fell in seven of eleven sectors over the same period.",
+   "anchor": "The index\u2019s Q3 estimate rose 1.2% from 30 June to 31\nAugust, while estimates fell in seven of eleven sectors.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "FactSet's pre-September Q3 earnings revisions were led by the Energy sector, which rose 11.8%.",
+   "anchor": "FactSet\u2019s pre-September Q3 revisions were led by Energy (+11.8%), while Materials fell 9.1%.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "FactSet's pre-September Q3 earnings revisions showed the Materials sector falling 9.1%.",
+   "anchor": "FactSet\u2019s pre-September Q3 revisions were led by Energy (+11.8%), while Materials fell 9.1%.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "Goldman's September flash PMIs show input-price pressures accelerating across developed-market manufacturing and services.",
+   "anchor": "Goldman\u2019s September flash PMIs show input-price pressures accelerating across developed-market\nmanufacturing and services.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "Output-price gauges in the September flash PMIs also rose, but by less than input-price gauges.",
+   "anchor": "Output-price gauges rose too, but by less.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "The US 10-year real yield rose from 2.44% on 1 September to 2.76% on 23 September while S&P 500 breadth deteriorated.",
+   "anchor": "The US 10-year real yield rose from 2.44% on 1 September to 2.76% on 23 September while S&P 500\nbreadth deteriorated.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "The rise in real yields has materially raised the hurdle for an equal-weight catch-up in US equities.",
+   "anchor": "the hurdle for an equal-weight catch-up just got\nmaterially higher",
+   "topic": "US equity breadth narrowing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "If post-report Q4 estimate upgrades reach a majority of sectors while RSP/SPY stays depressed, the earnings case for equal weight strengthens.",
+   "anchor": "If post-report Q4 estimate upgrades begin reaching a majority of sectors while RSP/SPY remains\ndepressed, the earnings argument for equal weight starts getting much stronger.",
+   "topic": "US equity breadth narrowing",
+   "status": "forecast",
+   "instruments": [
+    "RSP",
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "Q4 earnings season"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "If Q4 estimates are cut across most sectors and RSP/SPY keeps weakening, the S&P 500 can still be held up by a handful of earnings winners.",
+   "anchor": "If Q4 estimates are cut across most sectors and RSP/SPY continues to weaken, the index can still be\nsupported by a handful of earnings winners.",
+   "topic": "US equity breadth narrowing",
+   "status": "forecast",
+   "instruments": [
+    "RSP",
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "Q4 earnings season"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The S&P Is Near Record Highs. Underneath, Something Is Breaking",
+   "claim": "The first post-report Q4 revisions will show whether the divergence beneath the S&P 500 is an opportunity or fundamentals catching up with price.",
+   "anchor": "the first post-report Q4 revisions will tell us whether the\ndivergence beneath the index is an opportunity, or simply fundamentals catching up with\nprice.",
+   "topic": "US equity breadth narrowing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4 earnings season"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-28/17986__the-s-p-is-near-record-highs-underneath-something-is-breakin.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 11,
+  "matched": 11,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
