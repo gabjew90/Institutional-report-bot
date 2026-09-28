@@ -1,0 +1,549 @@
+{
+ "brief": "GS's Callahan flags reserved optimism: NDX has risen 7 of 8 sessions to new highs and SPX has beaten the equal-weight index in 18 of 21 sessions, but GS's sentiment indicator is firmly negative and market breadth (median stock 16% below its 52-week high) is at its lowest level since 2000/the dot-com bubble. GS is unsure whether the rally is bottoms-up (Muse, personal agents, model updates, ROIC confidence) or macro-led (rates, oil post-FOMC). Within tech, CPU semis INTC and AMD (each +35%+ in September) are outperforming NVDA (+2%) and AVGO (-5%, now below its 200-dma and at a 1-2x fwd P/E discount to NVDA), while inference-economy names like Cloudflare extend gains; broader Semis are down 11% in Q3 but up four straight weeks, with SOX valuation inversely tied to oil. MU reports Wednesday with balanced positioning; ACN reports Thursday, with GS modeling a cautious FY27 guide (3-4% CC growth, 6-8% EPS growth) amid AI-disruption fears. TTWO sits near 10-year lows versus the S&P 500 ahead of GTA 6. The week ahead brings JOLTS, PCE, ISM and NFP data.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The NDX has risen in 7 of the last 8 sessions and registered new all-time highs.",
+   "anchor": "NDX now up 7 of 8 sessions, registering new ATHs along the way",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The sentiment indicator is firmly negative while market breadth is at its lowest level since 2000.",
+   "anchor": "sentiment indicator in firmly negative territory and market breadth at the lowest levels since 2000.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The median S&P 500 stock trades 16% below its 52-week high, pulling market breadth down to its lowest level since the Dot-Com Bubble.",
+   "anchor": "16% below its 52-week high, dragging market breadth to its lowest level since the Dot-Com Bubble.",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The S&P 500 has outperformed the S&P 500 Equal-Weight index in 18 of the last 21 sessions.",
+   "anchor": "SPX > S&P Equal-weight for 18 of 21 sessions",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "GS cannot tell whether recent Tech/AI strength is a bottoms-up rally driven by Muse, personal agents, model updates and ROIC confidence, or a macro-led rally.",
+   "anchor": "rally (think; Muse / Personal Agents + model updates + ROIC confidence), or, simply, a hard-to-rely on",
+   "topic": "US equity breadth narrowing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "AMD, INTC and VICR are trading in overbought territory per 14-day RSI above 70.",
+   "anchor": "names that are now in overbought territory (per 14-day RSIs >70): AMD, INTC, VICR,",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "INTC",
+    "VICR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "CALX and DY are trading in oversold territory per 14-day RSI below 30.",
+   "anchor": "oversold territory (14-day RSIs <30): CALX, DY,",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CALX",
+    "DY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "INTC and AMD are each up more than 35% in the month of September.",
+   "anchor": "INTC and AMD each up 35%+ in the month of September",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "INTC",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The SOX semiconductor index is up 10% in September while investors debate what it will take for NVDA to catch up to the index.",
+   "anchor": "(and the SOX up 10%), investors are trying to figure out what it will take for NVDA",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "NVDA is up only about 2% in the month of September.",
+   "anchor": "NVDA (up only +2% on the",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "AVGO is down 5% in the month of September and needs to catch up to the broader index.",
+   "anchor": "AVGO (down 5% on the month) to 'catch-up' to the index",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "NVDA still trades at a 1x-2x discount to AVGO.",
+   "anchor": "note, even looking more closely at NVDA vs AVGO, while NVDA still trades at a 1x-2x discount to",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "AVGO is one of the few semiconductor names currently trading below its 200-day moving average.",
+   "anchor": "as AVGO is one of the few semiconductor names I could find that currently sits below its 200-dma...",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "TTWO closed near roughly 10-year lows relative to the S&P 500 with 53 days left until the GTA 6 launch.",
+   "anchor": "we are now 53 days out from the launch of GTA 6 .. yet .. TTWO just closed near ~10 year",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Investor inbounds about TTWO have started to pick up on whether it is worth revisiting ahead of the GTA 6 launch.",
+   "anchor": "lows relative to the s&P500 (chart below) .. inbounds have started to pick-up if worth revisiting ahead of",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Semis are down 11% in Q3 2026, with KLAC, AMAT and LRCX down more than 30%.",
+   "anchor": "down -11% in 3Q with names like KLAC / AMAT / LRCX down 30%+), the group (Semis, SOX) is",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "KLAC",
+    "AMAT",
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The Semis (SOX) group is quietly up four weeks in a row, unwinding some of the summer malaise.",
+   "anchor": "quietly up 4 weeks in a row, burning off some of the Summer malaise and driving an uptick in investor",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The SOX's forward P/E multiple has been inversely correlated with moves in oil prices.",
+   "anchor": "sustain as the fwd P/E multiple of the SOX has been inversely correlated to the moves in Oil prices.",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "The market continues to reward inference economy names, asset-light AI-levered plays such as cyber security or data infra names.",
+   "anchor": "continue to reward \u2018inference\u2019 economy names (asset light, AI levered plays \u2013 think Cyber Security or",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Cloudflare (NET) is bumping into the upper end of its trading range as a market leader in the inference economy trade.",
+   "anchor": "especially as market leaders like Cloudflare (NET) bump into the upper end of their",
+   "topic": "Semis inference economy rotation",
+   "status": "released",
+   "instruments": [
+    "NET"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Micron (MU) is set to report earnings on Wednesday evening.",
+   "anchor": "Micron set to report earnings on Wednesday evening \u2013 positioning feels",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Wednesday (9/30)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "MU is just about 10% below its all-time highs, versus Samsung and Hynix which remain 20-40% below their highs.",
+   "anchor": "though, worth noting that MU is just ~10% below ATHs vs Samsung & Hynix",
+   "topic": "MU earnings preview",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "MU has beaten EPS estimates by 10-30% over the last roughly six quarters.",
+   "anchor": "limit the beat size (.. at least relative to MU beating EPS by 10-30% over the last ~6 quarters).",
+   "topic": "MU earnings preview",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last ~6 quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Investors are watching whether MU guides November quarter revenue up 10% q/q relative to the street.",
+   "anchor": "1) Nov qtr revenues guide relative to the street up +10% q/q (e.g.",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "MU's stock price has fallen below its EPS estimate trend.",
+   "anchor": "stock price (white) has now fallen below MU earnings (EPS) estimate trend (orange) \u2013 chart below ...",
+   "topic": "MU earnings preview",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "ACN reports earnings Thursday morning (10/1) with investor sentiment guarded and short interest near five-year highs.",
+   "anchor": "9. ACN preview .. earnings Thurs morning (10/1) .. investor sentiment remains guarded here (short",
+   "topic": "ACN earnings preview",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "ahead of 10/1 earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Investors are debating Accenture's long-term growth rate in the AI era.",
+   "anchor": "big picture, investors are debating Accenture\u2019s long-term growth rate in the AI era (... esp",
+   "topic": "ACN earnings preview",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Consensus forecasts call for Accenture's revenue growth to re-accelerate toward about 5% in FY28/29.",
+   "anchor": "relative to consensus forecasts that call for revenues to re-accelerate towards ~5% in FY28/29)",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28/29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Goldman Sachs' research believes investors remain negatively positioned on ACN stock ahead of its October 1 earnings.",
+   "anchor": "We believe investors remain negatively positioned on the stock and",
+   "topic": "ACN earnings preview",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "ahead of October 1 earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Goldman Sachs ticked down its ACN estimates to reflect about 1% organic growth in the coming year and expects a largely in-line quarter.",
+   "anchor": "to reflect ~1% organic growth in the coming year. We expect Accenture to deliver a largely in-line quarter",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "coming year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Goldman Sachs expects Accenture to guide FY27 revenue growth of 3%-4% in constant currency with 10-30bps of operating margin expansion.",
+   "anchor": "and guide for FY27 revenue growth of 3% - 4% in CC, along with 10-30bps of operating margin",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Goldman Sachs expects Accenture's EPS growth of 6%-8% in FY27.",
+   "anchor": "expansion and EPS growth of 6% - 8%.\u201d [GIR preview] Source: Goldman Sachs FICC & Equities,",
+   "topic": "ACN earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "JOLTS data is due Tuesday 9/29.",
+   "anchor": "9/29: JOLTS Earnings: Post: CNXC GS Hosts: APH HQ trip MDB hosting Investor Day: The Innovations",
+   "topic": "US economic data preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "9/29 (Tuesday)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "PCE inflation data is due Wednesday 9/30.",
+   "anchor": "Conference Wed 9/30: PCE Earnings: Pre: JBL, FDS, KMX, CCL // Post: MU CMPR hosting Investor",
+   "topic": "US economic data preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "9/30 (Wednesday)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Consensus expects Thursday's (10/1) ISM Manufacturing print at 55.",
+   "anchor": "\u2018Fully Connected 2026\u2018 Thu 10/1: US Auto Sales + ISM Manuf (cons 55) Earnings: Pre: ACN Semicap /",
+   "topic": "US economic data preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10/1 (Thursday)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Callahan - 10 things 27 Sep 2026",
+   "claim": "Consensus expects the September nonfarm payrolls report, due Friday 10/2, to show +100k.",
+   "anchor": "Conference \u2018Fully Connected 2026\u2018 Fri 10/2: NFPs (cons +100k) + Durable Goods",
+   "topic": "US economic data preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "10/2 (Friday)"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-28/17996__gs-callahan-10-things-27-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 36,
+  "matched": 36,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 3,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
