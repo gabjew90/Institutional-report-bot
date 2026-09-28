@@ -1,0 +1,143 @@
+{
+ "brief": "ING previews two Friday releases. James Knightley writes financial markets now price an October Fed rate hike as more likely than not, with the September jobs report and the September inflation print (due 14 October) the two data points that determine the decision. August's jobs report beat expectations after a weak run. Given the low-hire, low-fire dynamic still in place, ING expects a downward revision to that August figure and September payrolls near 100k, with unemployment holding at 4.1%. That outcome would keep an October hike in play. Bert Colijn writes eurozone inflation is currently driven mainly by energy prices. Core inflation remains at 2.4%, unchanged from February and from before the Middle East war began, with attention on whether second-round effects are now emerging.",
+ "cards": [
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "Financial markets have priced an October Federal Reserve rate hike as more likely than not.",
+   "anchor": "Financial markets have moved to price an October Federal Reserve interest rate hike as being more likely than not.",
+   "topic": "Fed October hike odds",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "The August US jobs report was much stronger than expected after a subdued run.",
+   "anchor": "The August report was much stronger than expected after a subdued run.",
+   "topic": "Fed October hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "ING expects a downward revision to the August jobs number and September payrolls to come in around 100k.",
+   "anchor": "we expect a downward revision to that August number, with September coming in at around 100k jobs added.",
+   "topic": "Fed October hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "ING expects the US unemployment rate to hold at 4.1% in the September jobs report.",
+   "anchor": "The unemployment rate is expected to hold at 4.1%.",
+   "topic": "Fed October hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Friday"
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "A September jobs report of around 100k with unemployment at 4.1% would keep an October Fed rate hike in play.",
+   "anchor": "This outcome will keep an October rate hike in play.",
+   "topic": "Fed October hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "The next key US data release after the jobs report is September inflation, due on 14 October.",
+   "anchor": "The next key data release will be September inflation, due on 14 October.",
+   "topic": "Fed October hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "14 October"
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "Eurozone inflation is currently moving mainly on energy prices.",
+   "anchor": "Eurozone inflation continues to move mainly on energy prices at the moment.",
+   "topic": "Eurozone inflation outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "Eurozone core inflation remains at 2.4%, the same level as before the Middle East war started, matching both February and August.",
+   "anchor": "core inflation still at the same level as it was before the Middle East war started \u2013 2.4% in both February and August",
+   "topic": "Eurozone inflation outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "ING",
+   "document": "THINK Ahead: US jobs report and eurozone inflation data",
+   "claim": "Attention is on whether second-round effects are now emerging in eurozone inflation.",
+   "anchor": "eyes will once again be on whether signs of second-round effects are kicking in.",
+   "topic": "Eurozone inflation outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Friday"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17821__think-ahead-us-jobs-report-and-eurozone-inflation-data.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
