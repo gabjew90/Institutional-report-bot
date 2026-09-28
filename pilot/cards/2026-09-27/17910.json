@@ -1,0 +1,241 @@
+{
+ "brief": "Meta's Muse signals agentic AI going mass-market. GS's Rich Privorotsky expects more such products as corporates provide safety, infrastructure and distribution, and sees the aggregate impact as positive for equities and structurally disinflationary. GS argues the original AI infrastructure trade is still cheap: hyperscaler earnings have caught up with performance while the median AI infrastructure stock has de-rated from 32x forward earnings in April to 22x today. DB's Jim Reid says a powerful global capex cycle, driven by AI and government strategic-autonomy spending, is the growth 'superglue' explaining surging yields alongside record-high equities, tight credit spreads and subdued cross-asset vol. DB estimates the cycle could run five years and add 3-6% cumulatively to GDP. On ROIC, GS's Eric Sheridan estimates Alphabet, Amazon, Microsoft, Meta, Oracle and SpaceX need $1.42 trillion combined revenue in 2028-30 to earn 15% ROIC on their 2026-27 AI capex. Amazon, Microsoft and Alphabet already hold a $1.69 trillion backlog and need to convert only about 59% of it to clear that hurdle. Hyperscaler CDS spreads have widened relative to QQQ put vol, so credit is pricing more AI stress than equity options. The desk's call: run AI longs hedged with cheap QQQ puts.",
+ "cards": [
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "GS's Rich Privorotsky expects Meta's Muse to be the first of many products that bring AI super-user capabilities to the mass market.",
+   "anchor": "sees Muse as only the first of many products bringing capabilities previously reserved for AI super-users to the mass market",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "GS's Rich Privorotsky sees the aggregate impact of mass AI adoption as positive for equities and structurally disinflationary.",
+   "anchor": "Privorotsky sees the aggregate impact as positive for equities and structurally disinflationary",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "GS notes the median AI infrastructure stock has de-rated from 32x forward earnings in April to 22x forward earnings today.",
+   "anchor": "the median AI infrastructure stock has de-rated from 32x forward earnings in April to 22x today",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "GS's Eric Sheridan estimates Alphabet, Amazon, Microsoft, Meta, Oracle and SpaceX need $1.42 trillion combined cumulative revenue in 2028-30 to earn a 15% ROIC on their 2026-27 AI buildout.",
+   "anchor": "need to generate a combined $1.42 trillion of cumulative revenue in 2028\u201330 to earn a 15% ROIC on their 2026\u201327 AI buildout",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL",
+    "AMZN",
+    "MSFT",
+    "META",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028-30"
+  },
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "Amazon, Microsoft and Alphabet already have a combined $1.69 trillion backlog, per GS.",
+   "anchor": "already have a combined $1.69 trillion backlog",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "MSFT",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "GS calculates the three big cloud players need to convert only around 59% of their existing backlog into future revenue to clear the 15% ROIC hurdle on their AI investments.",
+   "anchor": "need to convert only around 59% of that existing backlog into future revenue to clear the 15% ROIC hurdle",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "MSFT",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "Amazon points to roughly three-year breakevens on its server and networking capex.",
+   "anchor": "Amazon, for example, points to roughly three-year breakevens on server and networking capex",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three years"
+  },
+  {
+   "bank": "DB",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "DB's Jim Reid argues growth is the superglue holding markets together, explaining surging yields alongside record-high equities, tight credit spreads and subdued cross-asset vol.",
+   "anchor": "growth remains the \u201csuperglue\u201d holding markets together",
+   "topic": "Global capex cycle growth outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "DB",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "DB notes the largest historical capex cycles have averaged around three years.",
+   "anchor": "the largest historical capex cycles averaged around three years",
+   "topic": "Global capex cycle growth outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "three years"
+  },
+  {
+   "bank": "DB",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "DB estimates the current global capex boom could run for five years and add 3-6% cumulatively to GDP, potentially making it the second-largest post-war capex cycle.",
+   "anchor": "estimates the boom could run for five years and add 3\u20136% cumulatively to GDP",
+   "topic": "Global capex cycle growth outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "DB",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "DB says global economic data surprises are already on track for their strongest positive run on record.",
+   "anchor": "Global data surprises are already on track for their strongest positive run on record",
+   "topic": "Global capex cycle growth outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "DB",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "DB argues consensus may still be underestimating the growth impulse from the global capex cycle.",
+   "anchor": "Consensus may still be underestimating the growth impulse",
+   "topic": "Global capex cycle growth outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "GS sees enterprises shifting from experimental token-maxing toward productive token-optimizing as agentic AI moves platforms from chat interfaces to action-driven use.",
+   "anchor": "enterprises shifting from experimental \u201ctoken-maxing\u201d toward productive \u201ctoken-optimizing",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "Hyperscaler CDS spreads have blown out relative to QQQ put vol, meaning credit is pricing more AI stress than equity options.",
+   "anchor": "Hyperscaler CDS spreads have blown out relative to QQQ put vol",
+   "topic": "AI credit costs rising",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The AI Bubble Bears Have A Problem",
+   "claim": "The desk recommends running AI-related long equity positions hedged with cheap QQQ puts.",
+   "anchor": "Run the longs, hedge them with cheap QQQ puts",
+   "topic": "AI credit costs rising",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17910__the-ai-bubble-bears-have-a-problem.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 15,
+  "matched": 15,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
