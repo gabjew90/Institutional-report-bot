@@ -707,3 +707,8 @@ because the CXW price-target answer ($38–$45) would have looked like a
 serious fabrication against a stale 2024 consensus figure ($16.67) turned
 up by a lazier search; the bot's actual grounded search found the correct,
 much-higher current-quarter consensus instead.
+
+## 2026-09-27
+
+no findings — 4/4 graded, 3 CLEAN, 1 CONCERN, 0 fail, 0 infra, 0 ungraded.
+The CONCERN (18:03:42, Arxfic, Drake Maye): the A.J. Brown high-ankle sprain verified, but the "Cover 6 baiting" and "ball velocity is dipping" claims found no independent source. Judgment, not mechanically checkable. Full reasoning in `pulse-data/ask-qc/2026-09-27.claude.md`.

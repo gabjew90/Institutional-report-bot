@@ -1119,3 +1119,27 @@ Not filing a fresh queue item for the staleness itself, per the
   future session acts on STEP 7's "re-verify and re-attach the correct
   citation" suggestion, the citation to attach here is The Market Ear,
   not BTIG.
+
+## 2026-09-28 (headless QC, 2026-09-28T14-11-39Z)
+
+- **deterministic-fixable** — `pulse-context/latest.json` at QC time is not the
+  pulse's context: dumped 20:50Z with pdf_count 57 and a 09-27T20:49 window,
+  versus 217 PDFs at pulse time. The headless judge cannot verify most MAIN
+  EVENT figures (Goldman 3-5bp, Saudi exports, Rubio meeting, NFP 98,000,
+  Brent $108). Archive the pulse-time context dump next to the pulse (or stop
+  overwriting latest.json) so rule 2 verification is possible.
+- **prompt-session** — Rotation brief closes "Long $RSP over $SPY, paired
+  with puts on Goldman's own momentum index". The RSP/SPY leg has no named
+  desk; the source idea exists in a PDF but is unattributed in the prose.
+  Same class as the unattributed USO/TLT imperatives EDIT introduced earlier
+  this run and later removed.
+- **deterministic-fixable** — Adversarial trail mismatch: the verdict file
+  quotes text no longer in the published pulse, and an out-of-loop direct
+  edit to the committed pulse is recorded only as a free-text note, while
+  budgets show adversarial_repairs=1. Record such edits in the driver trail
+  and re-run the checker on the shipped text.
+- **observation** — WATCH says NFP consensus 98,000. The calendar feed was the
+  ForexFactory fallback with no NFP row, and research figures ranged from
+  +45k to +100k. Source of 98,000 not found in the dump.
+- **observation** — Draft re-roll budget spent 2/2 and the omnipulse waited
+  the full 1200s and fell back to classic. Track recurrence.
