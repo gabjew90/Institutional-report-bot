@@ -1,0 +1,108 @@
+{
+ "metric": 1,
+ "total_cards": 2495,
+ "fragmentation_sets": [
+  {
+   "subject": "AI data-center financing/credit stress (Oracle force majeure, SoftBank/CoreWeave financing costs, hyperscaler CDS)",
+   "labels": [
+    "ai infra data center execution risk",
+    "ai credit costs rising"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Biotech/healthcare positioning unwind (GS and JPM prime-broker data on the same de-risking)",
+   "labels": [
+    "biotech positioning unwind",
+    "biotech crowding unwind"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Hedge fund gross/net de-risking amid rising volatility",
+   "labels": [
+    "hedge fund positioning unwind",
+    "hedge fund flow degrossing"
+   ],
+   "cards": 20
+  },
+  {
+   "subject": "Middle East conflict driving the oil/diesel price shock and export-ban debate",
+   "labels": [
+    "middle east oil risk",
+    "diesel export ban risk"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Fed hiking-cycle path: how many more hikes",
+   "labels": [
+    "fed terminal rate outlook",
+    "fed october hike odds"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Muse launch and the agentic-commerce investment theme across the value chain",
+   "labels": [
+    "meta muse adoption monetization",
+    "muse security privacy risk",
+    "ai agent compute demand",
+    "agentic commerce ecommerce adoption",
+    "agentic commerce ad platforms",
+    "agentic commerce payments infrastructure",
+    "agentic commerce identity fraud data",
+    "agentic commerce live event ticketing"
+   ],
+   "cards": 69
+  },
+  {
+   "subject": "S&P 500 negative-beta / index-concentration dynamic and its derivatives implications",
+   "labels": [
+    "s p index concentration risk",
+    "equity derivatives positioning skew"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "NDX/QQQ upside-breakout call-spread trade",
+   "labels": [
+    "ndx breakout pain trade",
+    "tech mega cap re risking"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Low cross-stock correlation compressing index vol (dispersion dynamic)",
+   "labels": [
+    "us equity correlation breakdown",
+    "us equity dispersion trade"
+   ],
+   "cards": 17
+  }
+ ],
+ "fragmented_mass_share": 0.0922,
+ "mis_merges": [
+  {
+   "label": "credit market stress",
+   "subjects": [
+    "public high-yield/CDS spread-widening technicals",
+    "private-credit fund redemption gating at Morgan Stanley/Blackstone/Cliffwater tied to the A-CAP fraud-investigation mention"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The private-credit redemption-freeze story is a distinct, headline-worthy event (real funds blocking withdrawals, linked to a firm under criminal fraud investigation) that an editor scanning a generic 'credit market stress' label could miss entirely as its own theme."
+  }
+ ],
+ "pass": false,
+ "notes": "misc correctly holds 12/2495 cards (0.5%) as declared overflow, not scored as a mis-merge. Several fragmentation sets are corroborated by literally duplicated sentences split across two labels (Oracle CDS/force majeure, SPX negative-beta, QQQ 750/780 call spread, low-correlation dispersion), which is the clearest signal of reader-grain fragmentation rather than genuinely distinct subjects.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

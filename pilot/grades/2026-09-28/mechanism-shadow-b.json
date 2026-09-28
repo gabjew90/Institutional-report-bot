@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-27/17896__early-morning-reid-macro-strategy.txt",
+ "source_span": "the move being driven by real yields... 10yr US real yields rising +9.8bps to a post-2008 high of 2.87% but 10yr breakevens actually falling by -1.3bps",
+ "source_chain": "Oil spikes and resilient growth data (jobless claims, home sales) push yields to multi-decade highs, therefore decomposing the move shows breakevens flat-to-lower while real yields did nearly all the work (+9.8bp to 2.87%, +97bp YTD vs +9bp for breakevens) and term premium has sat flat 18 months, therefore at face value there is no inflation-compensation story despite oil up ~75%, with Reid's own bias that breakevens are too low / real yields too high (no hard trigger given).",
+ "pulse_chain": "Yields hit multi-decade highs in the fastest 2-day move since Liberation Day, therefore the same decomposition (real yields +9.8bp to 2.87% vs breakevens -1.3bp, term premium flat 18 months) shows it's a growth/real-yield story not inflation or deficits, reinforced by mechanical selling (weak 5-year auction, light buyback takeup) and set against a GS-vs-BofA position debate, with Goldman's own speed-rule (50bp/month or 30bp/2wk trigger, currently ~35bp/25bp) as the falsifiable condition, cut against near-max CTA shorts that could force a squeeze instead.",
+ "preserved": true,
+ "why": "The pulse reproduces Reid's real-yield-vs-breakeven decomposition and figures in the same direction without reversing or misattributing it, and layers in a different note's own explicitly-sourced invalidation (Goldman's speed rule) rather than swapping out Reid's argument for an invented one.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

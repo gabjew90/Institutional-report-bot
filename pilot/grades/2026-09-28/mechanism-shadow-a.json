@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-27/17896__early-morning-reid-macro-strategy.txt",
+ "source_span": "One important theme at the moment is that Treasuries continue to sell-off with oil but that breakevens aren't moving, with pretty much all the move being driven by real yields... Overall it feels to me that breakevens are too low and that real yields might be getting too high.",
+ "source_chain": "Treasuries sold off alongside oil but breakevens stayed flat/fell (-1.3bp) while real yields rose sharply (+9.8bp to a post-2008 high, +97bp YTD) therefore the move is being driven almost entirely by real yields, not inflation expectations, and with term premium range-bound ~18 months the sell-off isn't a fiscal/deficit story therefore Reid's own read is that breakevens look too low and real yields too high -- i.e. he is skeptical the current pricing is correct, not asserting that the move is confirmed 'growth' repricing. No growth-specific mechanism or invalidation is stated.",
+ "pulse_chain": "10y/30y yields hit multi-decade highs, the biggest 2-day move since Liberation Day, therefore real yields rose to a post-2008 high while inflation priced into the bond market fell and term premium stayed range-bound, which argues against a deficit story, therefore 'the bond market repriced growth, not inflation' -- stated as the resolved verdict, with BofA vs Goldman then debating how to trade that growth move, invalidated by Goldman's technical speed rule.",
+ "preserved": false,
+ "why": "The source rules out a fiscal/deficit story and flags real yields as the locus of the move but explicitly withholds a growth conclusion (Reid calls breakevens 'too low,' i.e. skeptical of the pricing, not confirming growth optimism), while the pulse asserts 'repriced growth, not inflation' as settled fact and builds the whole debate on that invented mechanism -- one the same source basket's Goldman note undercuts by listing hawkish Fed-hike repricing (Oct-hike odds jumping to 70-71%) alongside oil and technicals as the actual drivers, not growth data.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

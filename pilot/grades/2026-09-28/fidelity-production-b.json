@@ -1,0 +1,105 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17998__gs-flood-this-mkt-has-bad-breadth-27-sep-2026.txt",
+   "span": "Yesterday President Trump confirmed that he rejected Iran's proposal for a 7 day ceasefire",
+   "why": "The rejection is real, but per this source (dated Sun 27 Sep, 'yesterday' = Saturday) and 17989 ('On Friday after the close, Trump announced that he had rejected Iran's proposal to reopen the Strait of Hormuz'), it happened Fri/Sat, not 'this morning.' No source in the pool is dated after Sun 27 Sep 3:51pm ET, so nothing supports a fresh, repeat ('again') Monday-morning rejection.",
+   "searched": [
+    "ceasefire collapsed",
+    "Trump rejected this morning"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17989__turning-point-the-gradual-and-the-sudden.txt",
+   "span": "Strait of Hormuz flows are hovering at ~13-14 million barrels a day (7-day average). That's about the same as the brief peak in July",
+   "why": "13-14m/day is ~65% of the 21.2m/day 2025 normal cited in 17740, not 'roughly a quarter.' The ~quarter figure (4.9m/21.2m) is 17740's Q2 low, not the current level implied by the sentence's present tense 'sit at.'",
+   "searched": [
+    "Hormuz flows",
+    "quarter of normal"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17896__early-morning-reid-macro-strategy.txt",
+   "span": "After hitting an intra-day high of $108.16/bbl Brent crude did see a mostly temporary drop of around $4",
+   "why": "Sources (this file and 17866: 'rose to as high as USD 108... but has since fallen by around USD 2') show $108 was a brief intraday touch followed by a pullback, not a level Brent is 'holding above.'",
+   "searched": [
+    "Brent $108",
+    "Brent holding"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17739__jpmorgan-traders-remain-tactically-cautious-after-treasury-t.txt",
+   "span": "NO DEAL WITH ESCALATION \u2013 a return to $100/bbl oil and the 10Y yield above 5%",
+   "why": "The JPM scenario framework and figures are real, but no source anywhere mentions a Saudi foreign minister meeting Rubio in Washington, and the Trump rejection is dated Fri/Sat (17989/17998), not 'this morning.'",
+   "searched": [
+    "Rubio",
+    "Saudi Arabia's foreign minister"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17908__bonds-break-oil-whipsaws-stocks-don-t-blink.txt",
+   "span": "Watch the 5.2% area first. Beyond that, the next major level is 5.5%",
+   "why": "The 5.2%/5.5% levels are real, and 17896 confirms the 10yr 'rose to a post-2007 high of 5.20%' \u2014 but that happened midweek (Wed/Thu Sep 23-25), not 'this morning' of the pulse date; nothing in the pool confirms a same-day move.",
+   "searched": [
+    "5.2% Treasury",
+    "TLT this morning"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-27/17743__abb-ltd-abbn-s-takeaways-from-webcast-on-new-800vdc-product-.txt",
+   "span": "ABB expects 25-40% of new datacenter additions in 2030 to be based on Direct Current",
+   "why": "The 25-40% DC figure is ABB's; the $50bn battery-backup market figure is a separate Goldman note on Panasonic ('Batteries - Framing the battery backup unit opportunity, $50bn by 2030'). The sentence merges two different companies/theses into one causal 'its fix... opens' narrative.",
+   "searched": [
+    "direct-current data-center capacity",
+    "$50 billion battery backup"
+   ]
+  },
+  {
+   "id": "s11",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-27/17960__cio-views-weekly-bulletin-week-38.txt",
+   "span": "investors are likely to scrutinise whether outsized capital expenditure is translating into sustainable return on equity",
+   "why": "This ROE-skepticism argument belongs to Eastspring, not Jefferies. Jefferies' actual documented AI skepticism in the pool (17989) is about physical data-center buildout capacity via satellite tracking, a different critique.",
+   "searched": [
+    "Jefferies return on equity",
+    "Jefferies capex bill"
+   ]
+  }
+ ],
+ "faithful": 8,
+ "distorted": 7,
+ "unsupported": 0,
+ "faithful_rate": 1.143,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": true,
+ "problems": [
+  "counts do not match the sentence list"
+ ]
+}

@@ -1,0 +1,170 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17998__gs-flood-this-mkt-has-bad-breadth-27-sep-2026.txt",
+   "span": "Yesterday President Trump confirmed that he rejected Iran's proposal for a 7 day ceasefire",
+   "why": "The rejection is real but happened Friday/Saturday (both 17998, dated Sun 27 Sep 12:38pm ET, and 17989, 'On Friday after the close, Trump announced that he had rejected Iran's proposal') \u2014 no source shows a fresh rejection 'again this morning.' The sentence asserts a same-day repeat event that isn't in the corpus.",
+   "searched": [
+    "ceasefire",
+    "this morning",
+    "rejected"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17928__gs-wilson-weekly-mash-25-sep-2026.txt",
+   "span": "Both a de-escalation in the Gulf & the (safe) passage past the Mid-Terms are required before re-risking",
+   "why": "Multiple sources (GS Wilson, 17991 'Short-term direction hinges on Iran de-escalation') show markets conditioned on de-escalation; with the ceasefire rejected and oil/yields pushing higher, the escalation case is what's printing instead. Framing-level synthesis, not a specific figure \u2014 no contradiction found."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17989__turning-point-the-gradual-and-the-sudden.txt",
+   "span": "Strait of Hormuz flows are hovering at ~13-14 million barrels a day (7-day average). That's about the same as the brief peak in July.",
+   "why": "No source states Hormuz flows at 'roughly a quarter of normal' \u2014 the only Hormuz flow-rate data found (17989, citing Javier Blas/Bloomberg) puts flows near the July peak, not a quarter of it. Separately, most inflation sources in the corpus (17848, 18023, 17928) show core inflation holding stable/moderating even as energy prices rise, contradicting 'hitting core inflation as much as...pump prices.'",
+   "searched": [
+    "quarter of normal",
+    "Hormuz flows",
+    "25% Hormuz",
+    "core inflation oil"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-27/17845__inside-commodities-september-25-2026.txt",
+   "span": "Saudi crude exports via Hormuz were on track to rebound to 3.6 million barrels per day in September, up from about 900,000 bpd in August",
+   "why": "3.6M/0.9M is exactly a ~4x ('quadrupling') increase off August's low. The $150/bbl escalation threshold is directly supported by 18006 ('Brent prices could rise well beyond current levels and potentially exceed $150/bbl') and corroborated by 17878 and 17906/17907's 120-150/bbl range."
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17739__jpmorgan-traders-remain-tactically-cautious-after-treasury-t.txt",
+   "span": "NO DEAL WITH ESCALATION \u2013 a return to $100/bbl oil and the 10Y yield above 5% is the assumption here",
+   "why": "JPMorgan's framework has three scenarios (DEAL / NO DEAL BUT NO ESCALATION / NO DEAL WITH ESCALATION); oil-near-$100/10Y-above-5% belongs specifically to the escalation sub-case, not to 'the no-deal case' generally, so collapsing it into a single 'no-deal case' misattributes which scenario is printing. Separately, no source in the corpus supports 'Saudi Arabia's foreign minister meeting Rubio in Washington' \u2014 searched found only unrelated Rubio mentions (G20/Venezuela, PRC-hawk commentary).",
+   "searched": [
+    "Rubio",
+    "Saudi foreign minister",
+    "no-deal case"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "distorted",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17896__early-morning-reid-macro-strategy.txt",
+   "span": "After hitting an intra-day high of $108.16/bbl Brent crude did see a mostly temporary drop of around $4",
+   "why": "Brent touched $108.16 intraday then pulled back roughly $4; the same doc's data box shows Brent closing at $105.61. 'Holding above $108' overstates a brief intraday spike as a sustained level \u2014 no source shows Brent holding above $108.",
+   "searched": [
+    "Brent holding",
+    "$108",
+    "108.16"
+   ]
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17908__bonds-break-oil-whipsaws-stocks-don-t-blink.txt",
+   "span": "The 10-year has broken out of a three-year range, MOVE has surged, and small caps are feeling the pressure",
+   "why": "Directly matches the breakout claim; MOVE's sharp two-session jump is separately confirmed in 17870 ('MOVE Index has jumped 33% past 2 days'), and 17862 independently glosses MOVE as 'the bond market's version of the VIX.'"
+  },
+  {
+   "id": "s8",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "",
+   "span": "",
+   "why": "No source document can attest to what 'this pulse' called on September 22 \u2014 that is a claim about the pulse's own prior edition, not something any of the day's research PDFs would contain. The 5.2%/5.5% levels themselves are corroborated elsewhere (17908: 'Watch the 5.2% area first. Beyond that, the next major level is 5.5%'), but the sentence's load-bearing claim \u2014 the prior call and 'got there' framing \u2014 has zero source support in this corpus.",
+   "searched": [
+    "September 22",
+    "short $TLT",
+    "TLT call"
+   ]
+  },
+  {
+   "id": "s9",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-27/17758__connecting-the-dots-german-conference-feedback-muse-instinct.txt",
+   "span": "Batteries - Framing the battery backup unit opportunity, $50bn by 2030 (CAGR +87%); Buy Panasonic HD",
+   "why": "The $50bn battery figure is real but comes from a separate GS note on Panasonic HD, unconnected to the DC-power-systems forecast (which is ABB's, from 17743: 'ABB expects 25-40% of new datacenter additions in 2030 to be based on [DC]'). The sentence attributes both to a single 'it,' implying one company's DC shift opens the $50bn battery market \u2014 that causal link isn't in either source.",
+   "searched": [
+    "$50 billion battery",
+    "battery backup",
+    "25-40%"
+   ]
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17570__americas-technology-entering-the-agentic-ai-era-for-the-comm.txt",
+   "span": "META $744.10 Buy $725.00 ... GOOGL $337.83 Buy $435.00 ... AMZN $249.27 Buy $375.00 ... V $361.52 Buy $438.00 ... MA $559.92 Buy $701.00",
+   "why": "Goldman's Exhibit 1 confirms all five names (META, GOOGL, AMZN, V, MA) as Buy-rated within the agentic-commerce/toll thesis, with META PT $725 and AMZN PT $375 matching exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-28/18003__greed-and-fear-the-virtues-of-small-over-large.txt",
+   "span": "hyperscaler-funded data centers risk becoming the most capital-destructive stranded assets in the history of technology ... Are the four hyperscalers really going to spend US$990bn on capex in 2027 ... GREED & fear severely doubts it",
+   "why": "Jefferies (Chris Wood's Greed & Fear) is explicitly and strongly skeptical of AI capex paying off, doubting the $990bn 2027 consensus estimate and warning of 'capital-destructive stranded assets' \u2014 a fair gloss of a capex-vs-return skepticism, even though the exact phrase 'return on equity' isn't used here."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17570__americas-technology-entering-the-agentic-ai-era-for-the-comm.txt",
+   "span": "META Buy $725.00 ... AMZN Buy $375.00",
+   "why": "Attributed to Goldman's actual Buy ratings and price targets on META/AMZN under the toll thesis; watching earnings vs. targets is a reasonable framing of an actual analyst call, not an invented house position."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17986__the-s-p-is-near-record-highs-underneath-something-is-breakin.txt",
+   "span": "The S&P 500 is near its highs, but only about a quarter of its stocks are above their 50-day averages",
+   "why": "Directly matches; corroborated by 17998 ('median stock in the index trades 16% below its 52-week high, dragging market breadth to its lowest level since the Dot-Com Bubble')."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-09-27/17960__cio-views-weekly-bulletin-week-38.txt",
+   "span": "investors are likely to scrutinise whether outsized capital expenditure is translating into sustainable return on equity",
+   "why": "Direct match to Eastspring's (CIO Views bulletin author) stated question, correctly attributed."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17809__us-weekly-kickstart-what-equity-investors-are-paying-for-tod.txt",
+   "span": "investors are paying an above-average P/E premium for 3-year ahead sales growth",
+   "why": "Closing synthesis line consistent with multiple sources in the set (P/E premium for growth, deteriorating breadth, Eastspring's ROE question) without asserting a specific figure or attribution that could be checked and found wrong."
+  }
+ ],
+ "faithful": 9,
+ "distorted": 5,
+ "unsupported": 1,
+ "faithful_rate": 0.6,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

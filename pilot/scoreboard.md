@@ -8,12 +8,12 @@ Scope limit (plan 6): ~19 HIGH PDFs/day is the lightest month on record. A passi
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-09-02 | shakedown | — | no | — | — | no | 1.00 | 100% | 1.00 | 0.00 | 46% | no | 0 | m1, m2_shadow, m2_production |
 | 2026-09-03 | VOID (stale cards) | — | no | — | — | no | 1.00 | 100% | 1.00 | 0.00 | 45% | no | 25 | m1, m2_shadow |
-| 2026-09-04 | VOID (stale cards) | 24% | yes | 87% | — | no | — | 80% | 1.00 | — | 42% | no | 8 | m2a, m3_production |
+| 2026-09-04 | VOID (stale cards) | 24% | — | 87% | — | no | — | 80% | 1.00 | — | 42% | no | 8 | m2a, m3_production, m1 merge |
 | 2026-09-05 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
 | 2026-09-06 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
 | 2026-09-07 | shakedown | — | — | — | — | no | — | — | — | — | 42% | no | 0 |  |
 | 2026-09-08 | shakedown | — | yes | — | — | no | 0.00 | 100% | 1.00 | 1.00 | 45% | yes | 0 | m1, m2_shadow, m2_production |
-| 2026-09-09 | VOID (stale cards) | 23% | no | 100% | 67% | yes | 0.00 | 100% | 1.00 | 0.00 | 49% | yes | 4 |  |
+| 2026-09-09 | VOID (stale cards) | 23% | yes | 100% | 67% | yes | 0.00 | 100% | 1.00 | 0.00 | 49% | yes | 4 |  |
 | 2026-09-10 | shakedown | 48% | yes | 73% | — | no | 0.00 | 100% | 1.00 | 0.00 | 45% | yes | 0 |  |
 | 2026-09-11 | VOID (stale cards) | 9% | yes | 100% | — | no | 0.00 | 100% | 1.00 | 1.00 | 26% | yes | 11 |  |
 | 2026-09-12 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
@@ -21,15 +21,18 @@ Scope limit (plan 6): ~19 HIGH PDFs/day is the lightest month on record. A passi
 | 2026-09-14 | VOID (stale cards) | 2% | no | — | 53% | no | 0.00 | 100% | 1.00 | 0.00 | 38% | no | 2 |  |
 | 2026-09-15 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
 | 2026-09-16 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
-| 2026-09-17 | shakedown | 4% | no | — | — | no | 0.00 | 100% | 1.00 | 0.00 | 40% | yes | 0 | m2_shadow, m2_production |
+| 2026-09-17 | shakedown | 4% | yes | — | — | no | 0.00 | 100% | 1.00 | 0.00 | 40% | yes | 0 | m2_shadow, m2_production |
 | 2026-09-18 | shakedown | 4% | no | — | 67% | no | 0.00 | 100% | 1.00 | 1.00 | 30% | yes | 0 | m2_shadow |
 | 2026-09-19 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
 | 2026-09-20 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
 | 2026-09-21 | shakedown | 25% | no | 87% | 47% | yes | 1.00 | 50% | 1.00 | 0.00 | 45% | yes | 0 |  |
 | 2026-09-22 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
-| 2026-09-23 | shakedown | 36% | yes | 80% | 80% | yes | 0.00 | 100% | 1.00 | 1.00 | 40% | yes | 0 |  |
+| 2026-09-23 | shakedown | 36% | — | 80% | 80% | yes | 0.00 | 100% | 1.00 | 1.00 | 40% | yes | 0 | m1 merge |
 | 2026-09-24 | shakedown | 6% | no | 100% | 73% | yes | 0.00 | 50% | 1.00 | 0.00 | 49% | yes | 0 |  |
 | 2026-09-25 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
+| 2026-09-26 | shakedown | — | — | — | — | no | — | — | — | — | — | no | — |  |
+| 2026-09-27 | shakedown | — | — | — | — | no | — | — | — | — | — | yes | — |  |
+| 2026-09-28 | shakedown | 15% | yes | 100% | 67% | yes | 0.00 | 100% | 1.00 | 0.00 | 38% | no | 0 |  |
 
 **Void days (5):** 2026-09-03, 2026-09-04, 2026-09-09, 2026-09-11, 2026-09-14 — the editor ran with source files still unread, so the shadow pulse was written from an incomplete card set. Shown above, excluded from every metric.
 

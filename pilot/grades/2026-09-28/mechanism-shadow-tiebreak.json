@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-27/17896__early-morning-reid-macro-strategy.txt",
+ "source_span": "10yr US real yields rising +9.8bps to a post-2008 high of 2.87% but 10yr breakevens actually falling by -1.3bps... So at face value there is no concern about longer-term inflation... In addition measures of term premium have been range bound for around 18 months so the sell-off isn't really fiscal related.",
+ "source_chain": "Real yields rose (+9.8bp to 2.87%, +97bp YTD) while breakevens fell/were flat (-1.3bp, only +9bp YTD) therefore the sell-off is not an inflation story (breakevens aren't pricing more inflation despite oil +75%) therefore, with term premium range-bound ~18 months, it isn't a fiscal/deficit story either, leaving Reid's own read that breakevens are too low and real yields too high. No explicit falsifiable invalidation is stated for this specific read.",
+ "pulse_chain": "Real yields rose 9.8bp to a post-2008 high of 2.87% while breakevens fell 1.3bp, and real yields are up 97bp on the year against 9bp for breakevens with term premium range-bound ~18 months, therefore the move is a growth/real-rate repricing, not an inflation move and not a deficit story, therefore banks split on what happens next (BofA: buy bonds on policymaker panic; Goldman's Pasquariello: short bonds against equity length), with the falsifiable line set at Goldman's own two-standard-deviation speed rule for when equities start reacting, cut against by CTAs already near max short (99-100%, ~$390bn) who would be squeezed rather than validated by a cool print.",
+ "preserved": true,
+ "why": "The theme reproduces Reid's real-yield-vs-breakeven arithmetic and his explicit 'not inflation, not fiscal' conclusion in the same direction with correct attribution and figures, and layers a second, separately and correctly sourced Goldman mechanism (the speed rule and CTA positioning, both accurately quoted from d43/d48) as the invalidation rather than inventing one or misattributing either bank's argument.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

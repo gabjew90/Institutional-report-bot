@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-27/17740__mr-xi-comes-to-washington-what-wall-street-banks-are-expecti.txt",
+ "source_span": "Oil flows through the Strait of Hormuz averaged 21.2 million barrels per day in 2025 and fell to 4.9 million in the second quarter of this year... On September 15, Brent hit $130.80, US retail gasoline $4.37, and diesel $6.31.",
+ "source_chain": "Hormuz flows collapsed from 21.2mb/d (2025) to 4.9mb/d (Q2 2026) and Brent already spiked to $130.80 on Sept 15, therefore JPMorgan (per 17739, the same bank's scenario note) frames three live outcomes tied to US/Iran talks: a deal this week collapses energy and sends small caps (RTY) leading a squeeze; no deal/no escalation lets AI/Tech lead with crude choppy-lower; no deal with escalation returns oil to ~$100 and pushes the 10Y above 5%, hitting equities; therefore JPM stays tactically cautious pending clarity. Invalidation: a US/Iran deal flips them bullish (lower oil/yields, RTY-led rally); escalation pushes equities down another 2-3%.",
+ "pulse_chain": "Iran's ceasefire offer collapsed over the weekend and Trump rejected it 'again this morning,' therefore oil is pricing the escalation case, with Brent's $108 Thursday print framed as the highest level since the war began and up 36%, therefore this is exactly JPMorgan's no-deal-with-escalation scenario (oil near $100, 10-year above 5%) printing, and it keeps printing until a real deal flips it to the collapse/small-cap-rally scenario. Invalidation: Brent holding above $108 keeps the no-deal case printing; a real deal flips it.",
+ "preserved": false,
+ "why": "The pulse frames $108 as a fresh, record escalation high driving the whole chain, but the same JPM note supplying its Hormuz-flow figures records Brent at $130.80 just nine days earlier, so the sources show oil off its cycle highs rather than breaking a new one, reversing the intensification step the chain depends on, compounded by an invented 'rejected the proposal again this morning' event no source dates to the pulse's publication morning (the actual rejection, per GS Flood, happened over the weekend).",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

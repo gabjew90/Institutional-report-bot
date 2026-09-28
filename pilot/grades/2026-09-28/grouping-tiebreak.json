@@ -1,0 +1,88 @@
+{
+ "metric": 1,
+ "total_cards": 789,
+ "fragmentation_sets": [
+  {
+   "subject": "Healthcare/biotech hedge-fund positioning unwind (GS Prime Brokerage + JPM Positioning Intelligence describing the same weekly de-risking)",
+   "labels": [
+    "biotech positioning unwind",
+    "biotech crowding unwind"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Fed hiking path / how many more hikes (terminal-rate framework and October-meeting odds are one Fed-policy thread)",
+   "labels": [
+    "fed terminal rate outlook",
+    "fed october hike odds"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Equity valuations vs. the bond-yield surge (GS's P/E de-rating and MS's unchanged equity risk premium are two banks' reads of the same question)",
+   "labels": [
+    "s p 500 valuation derating",
+    "equity risk premium resilience"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Light/underweight positioning argues for cheap upside convexity (same GS derivatives-desk thesis: buy calls because positioning is light)",
+   "labels": [
+    "us equity light positioning",
+    "equity derivatives positioning skew"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Standard Chartered's global regional equity allocation (index targets and the earnings/OW-UW rationale behind them are one asset-allocation call, with near-verbatim overlapping sentences on Japan, Europe ex-UK and UK)",
+   "labels": [
+    "global equity regional allocation",
+    "global equity earnings resilience"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "NDX upside-breakout trade (both labels recommend the identical QQQ October 750/780 call spread off the same tech mega-cap re-risking/range-breakout thesis)",
+   "labels": [
+    "tech mega cap re risking",
+    "ndx breakout pain trade"
+   ],
+   "cards": 17
+  }
+ ],
+ "fragmented_mass_share": 0.15,
+ "mis_merges": [
+  {
+   "label": "hedge fund positioning unwind",
+   "subjects": [
+    "US hedge-fund equity sector/CTA/pension flow rotation (GS)",
+    "European rates volatility and carry-trade unwind (Nomura: EUR swaptions, curve flies)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The buried Nomura rates-vol content reinforces the day's already-prominent Treasury-yield-selloff theme rather than being a theme an editor would otherwise miss."
+  },
+  {
+   "label": "us futures positioning caution",
+   "subjects": [
+    "US/global equity index futures positioning (JPM)",
+    "OAT-Bund European rates positioning",
+    "WTI crude futures positioning"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The OAT-Bund and crude fragments are minor and already duplicated by dedicated France-fiscal labels, so nothing would be missed."
+  }
+ ],
+ "pass": false,
+ "notes": "The ledger header claims 2495 cards for the day but only 789 are actually enumerated (most labels cap at exactly 12, suggesting per-label display truncation), so this grade covers the visible sample only. misc holds 12/789 (1.5%) and is excluded from fragmented mass per definition.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

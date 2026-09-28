@@ -1,0 +1,144 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17896__early-morning-reid-macro-strategy.txt",
+   "span": "10yr US real yields rising +9.8bps to a post-2008 high of 2.87% but 10yr breakevens actually falling by -1.3bps",
+   "why": "Exact match: real yields (10y) up 9.8bp to a post-2008 high of 2.87%; breakevens (the market's priced inflation rate) down 1.3bp."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17896__early-morning-reid-macro-strategy.txt",
+   "span": "The former has now risen +97bps in 2026 and the latter only +9bps ... measures of term premium have been range bound for around 18 months so the sell-off isn't really fiscal related",
+   "why": "97bp real yield rise vs 9bp breakeven rise in 2026 matches; term premium (extra yield for long maturities) range-bound ~18 months, explicitly used to argue against a fiscal/deficit explanation."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17734__bessent-plays-hardball-with-bloomberg-bros-yields-spike-as-t.txt",
+   "span": "accepted just $4.078 billion, which is only 68% of the $6 billion cap ... sure enough yields spiked to a new multi-decade high",
+   "why": "Figures and outcome match exactly: $4.078bn accepted of $6bn cap (68%), followed by a spike to a new multi-decade yield high."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17803__gs-pasquariello-markets-macro-25-sep-2026.txt",
+   "span": "if you want to carry significant length in stocks, marry it with a trading short in bonds (one that is simply expressed)",
+   "why": "GS's Pasquariello is explicitly short bonds while BofA's Hartnett (s5 source) is explicitly buying/long bonds on the same day's tape -- a genuine opposite-sides split between two bulge-bracket houses. 'Two largest houses' is a fair gloss on GS vs. BofA rather than a specific verbatim claim, and no figure/attribution is misstated.",
+   "searched": [
+    "two largest houses",
+    "opposite sides",
+    "largest bank"
+   ]
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17870__the-flow-show-china-in-a-bull-shop.txt",
+   "span": "policymaker panic to cap yields has begun, time to nibble bonds\u2026returns = 10% in 5-year, 14% in 10-year, 22% in 30-year UST should yields drop 100bps next 12 months",
+   "why": "BofA (Global Investment Strategy / Hartnett Flow Show) explicit call and figures match: 10%/14%/22% five/ten/thirty-year returns if yields fall 100bp in 12 months, framed as policymaker panic to cap yields."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17875__global-economic-weekly-divided-nations.txt",
+   "span": "We expect the Fed to hike in October and December, with a hold thereafter, but the market is pricing almost four additional hikes from here",
+   "why": "BofA Global Economic Weekly states exactly this: Fed hikes Oct+Dec then hold (BofA's own forecast) vs. market pricing near four hikes."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17991__something-s-gotta-give.txt",
+   "span": "Since 1990 there have only been 25 other days that had less than 50% of S&P 500 stocks above their 200 DMA and the SPX itself was closer to a 52wk high ... If we only look at times when we had this reading and weren't coming out of a bear market, it was late '99 early '00",
+   "why": "BTIG (Jonathan Krinsky) identifies exactly one qualifying non-bear-market window since 1990, in late 1999/early 2000, matching the sentence's 'only one prior window... December 1999 into January 2000' as a reasonable specific reading of 'late 99 early 00.'"
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17991__something-s-gotta-give.txt",
+   "span": "It's now been 213 trading days since the last 80%+ NYSE downside volume day. The average calendar year sees 21 such days",
+   "why": "Verbatim match on both figures (213 trading days, 80%+ threshold, 21/year average) from BTIG."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17793__what-matters-today-ai-capex-required-revenues-sizing-the-ai-.txt",
+   "span": "our equity analysts estimate that the hyperscalers need to generate annual AI revenues of roughly $300 billion in the next few years to break even on their investments",
+   "why": "GS Armbrust note gives exactly $300bn as the simple capex-based breakeven AI revenue figure, alongside a separate, more complex ROIC-sizing framework in the same report -- consistent with 's 'simpler breakeven basis' framing."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17739__jpmorgan-traders-remain-tactically-cautious-after-treasury-t.txt",
+   "span": "What would make us BEARISH: Signs that the Consumer and economy are breaking or that the AI theme has ended, which would likely be initiated by a capex cut",
+   "why": "JPMorgan traders explicitly name a capex cut as the bearish-turning signal."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17968__oracle-still-on-the-hook-to-pay-data-center-investors-despit.txt",
+   "span": "Oracle is still liable to pay a 'carry cost' in lieu of rent payments for up to three years ... it still had to pay a fee that would cover the interest payments to debt holders in full as well as a certain level of equity return ... 'The power delivery risk sits with Oracle, not the investors'",
+   "why": "All elements match: carry cost in lieu of rent up to three years, full coverage of lenders' (debt holders') interest plus an equity return, and power delivery risk borne by the tenant (Oracle, here generically described as 'the tenant')."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17989__turning-point-the-gradual-and-the-sudden.txt",
+   "span": "unveiling Muse (META stock up 45% in 25 trading days on the news!!) ... Note, GSXUSWCH has declined -12% since launch in end August",
+   "why": "45% Meta run in 25 trading days matches Bear Traps; -12% since end-August launch for GSXUSWCH ('consumer inertia'/switching-cost basket) confirmed in a separate GS note (17962)."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17989__turning-point-the-gradual-and-the-sudden.txt",
+   "span": "Within six months, Amazon, Google, Microsoft, and Apple will all ship their own versions ... Multiply that across four competitors all subsidizing the same free experience, and you get a race to the bottom where the winner is the one who can burn the most cash the longest ... We love a META put spread here for a trade",
+   "why": "Bear Traps explicitly forecasts the four rivals shipping clones within six months, frames it as a cash-burn contest, and recommends a META put spread."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17963__shaken-stirred-agents-beat-bonds-in-week-of-punchy-pmis-dipl.txt",
+   "span": "BofA, for its part, has flagged diesel as the key real-economy pressure point, warning that prices near these levels have historically echoed inflation spikes above 5%",
+   "why": "Near-verbatim match, including the headline-crude vs. diesel distinction made in the preceding sentence of the same source."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-27/17908__bonds-break-oil-whipsaws-stocks-don-t-blink.txt",
+   "span": "The largest and most reliable price-insensitive bid is going quiet. Per Goldman, an estimated '64% of S&P 500 Index corporates had entered the blackout window as of 09/21/26' ... Rising to ~85% by week-end means the corporate bid steps back just as CTAs are set up to sell",
+   "why": "64% as of 9/21 and ~85% by week-end match exactly; 'largest price-insensitive bid' and CTAs ('trend followers') set up to sell both match."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

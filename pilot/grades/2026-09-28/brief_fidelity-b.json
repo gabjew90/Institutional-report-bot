@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d54",
+   "tier": "top",
+   "bank": "Deutsche Bank",
+   "source_chain": "Iran escalation rhetoric + Houthi attack on Saudi Arabia pushes Brent to $106.60 (intraday $108.16) -> bond selloff extends, driven almost entirely by real yields (+9.8bps to 2.87%, post-2008 high) not breakevens (-1.3bps) -> 10yr hits post-2007 high 5.20%, 30yr 5.48%, biggest 2-day 10yr rise since Liberation Day -> author concludes no added long-term inflation concern despite oil +75% YTD and 18mo range-bound term premium (not fiscal-driven), and believes breakevens are too low / real yields too high -> Reuters phased Hormuz deal talk briefly pulls Brent down $4, but Iran's separate 7-day ceasefire offer stays anchored to a June MoU the US has resisted -> resilient US data (jobless claims, new home sales) plus strong German Ifo add hawkish pressure -> S&P breadth negative but Mag-7 gains cushion the index.",
+   "brief_chain": "Oil's jump reignited a broader bond selloff (Brent to $106.60, intraday $108.16, on Iran escalation warnings and a Houthi attack on Saudi Arabia) -> 10yr to post-2007 high 5.20%, 30yr to 5.48%, biggest 2-day 10yr rise since Liberation Day -> author's central point: selloff is real-yield driven (+9.8bps to post-2008 high 2.87%), not breakevens (-1.3bps), so no added long-term inflation concern despite oil +75% in 2026, and an 18-month range-bound term premium argues it isn't fiscal -> author's own view: breakevens too low, real yields may be too high -> Reuters US/Iran phased Hormuz reopening talk briefly pulled Brent down $4, though Iran's competing 7-day ceasefire proposal stays tied to a June MoU the US has resisted -> resilient data (jobless claims, new home sales) plus strong German Ifo added hawkish pressure -> S&P breadth negative but Mag-7 gains limited the decline.",
+   "distortions": [
+    {
+     "what": "Brief frames the Reuters Hormuz talk and Iran's ceasefire proposal as 'competing' offers; source presents them side by side without using that framing but supports the substance (two different, non-aligned tracks).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying fact (two separate, unresolved diplomatic tracks) is unchanged either way."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d58",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Hot Sept PMI (input-cost inflation up most since 2020) + Brent back above $100 ($103.59) on Iran UN rhetoric + weak 3.20bp-tailed 5Y auction + 5Y yield breaking 5% -> yields jump as market had under-priced terminal Fed funds -> Market Intel desk: PMI implies ~5% real GDP growth, which should still buttress SPX earnings (nominal-GDP-linked) despite the inflation, and strong balance sheets mean a real slowdown needs time or more hikes, though bond vol (not yield level) is the bigger equity risk -> desk stays tactically cautious pending 3 US/Iran scenarios this week (deal = US short squeeze/RTY-led rally, EU outperforms; no deal/no escalation = AI/Tech-led narrowing market, NDX>EU>SPX; no deal/escalation = oil back to $100, 10Y >5%, equities down but Tech/US outperform the decline) -> core call: long Tech (Mag7/Memory/Semis) vs short RTY (dollar- or market-neutral), plus Brazil/LatAm long as a hedge against AI fear, with US tactically outperforming DM on higher yields/stronger dollar.",
+   "brief_chain": "Same chain: hot PMI + Brent > $100 ($103.59) on Iran UN rhetoric + weak 3.20bp-tailed 5Y auction + 5Y yield breaking 5% implying under-priced terminal Fed funds -> desk reads PMI as ~5% real GDP growth, still buttressing SPX earnings (nominal not real GDP) despite inflation, strong balance sheets meaning a slowdown needs time/more hikes, though bond vol is the bigger equity risk -> tactically cautious pending 3 scenarios (deal = US short squeeze/RTY rally, EU outperform; no deal/no escalation = AI/Tech leads narrowing market, NDX>EU>SPX, breadth thinning; no deal/escalation = oil to $100, 10Y>5%, equities pressured, Tech/US outperform the decline) -> core call: long Tech (Mag7/Memory/Semis) vs short RTY, dollar-/market-neutral, plus Brazil/LatAm long as AI-fear hedge; US outperforms DM on higher yields/dollar.",
+   "distortions": [
+    {
+     "what": "Brief ties 'the market had under-priced terminal Fed funds' specifically to the 5Y auction/yield break; source states this as the summary conclusion of the whole combination of factors (PMI + rhetoric + auction + yield break), not the auction detail alone.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the causal attribution is reorganized for narrative flow but the underlying set of drivers and the conclusion are the same."
+    },
+    {
+     "what": "Brief renders 'increasingly concentrated ... more 52-week lows than highs' as 'breadth thinning' and renders the LatAm rationale ('fear/uncertainty around AI ... non-AI plays') as an 'AI-fear hedge'.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both are faithful paraphrases of the same underlying claims, not changes to the call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d1",
+   "tier": "rest",
+   "bank": "Bear Traps",
+   "source_chain": "Weak 5Y (5.0%) and 7Y (5.1%) auctions, indirect bidders falling to 54% from 61.5%, alongside UK gilts at 5.3% and French-German OAT spreads past 100bps, look like the 'gradual' phase of a debt-stress story -> yields have disconnected from oil, pointing to growth and, more specifically, competition for capital from hyperscaler AI financing (MS: $1.7T of the $3.2T buildout must come from credit markets; JPM: ~$2.1T broader financing need) landing in the same IG market as Treasury supply, pushing 2026-27 IG issuance to ~$3.9-4.0T -> credit shows hidden stress: HY breadth deteriorating despite a still-healthy 2.90 OAS, and private-credit funds (MS, Blackstone, Cliffwater) gating redemptions even though underlying loans are still paying -> equities show weak internals (under 50% of S&P above 200dma) despite index highs -> Meta's Muse pop is expected to be competed away within six months as rivals ship copies, turning it into a subsidized margin war, with Meta expected to follow Alphabet's capital-raise playbook with its own raise before Anthropic prices -> separately, Hormuz crude flows have recovered toward July highs, but refined-product (diesel/gasoline) capacity stays constrained, and a full US diesel-export ban would spike prices in the importing regions (Europe/LatAm/Africa).",
+   "brief_chain": "Same chain: weak 5Y (5.0%)/7Y (5.1%) auctions with indirect bidders down to 54% from 61.5%, UK gilts 5.3%, French OAT spread over 100bps vs Bunds -> yield rise framed as more about growth/competition for capital than oil, because hyperscaler AI financing needs ($1.7-2.1T of credit-market supply) land in the same market as Treasury supply, pushing 2026-27 IG issuance to $3.9-4.0T -> hidden credit stress: HY breadth deteriorating despite still-tight OAS, private-credit funds (MS/Blackstone/Cliffwater) gating redemptions though underlying loans haven't defaulted -> weak equity internals (under 50% of S&P above 200dma) despite index highs -> Meta's Muse pop expected to be matched by rivals within six months, turning into a subsidized margin war, with Meta expected to follow Alphabet's capital raise with its own before Anthropic's listing -> Hormuz oil flows recovered but refined-product (diesel) capacity remains constrained, with a US export ban risking a further price spike abroad.",
+   "distortions": [
+    {
+     "what": "Brief compresses two distinct analyst estimates (Morgan Stanley's $1.7T credit-market share of a $3.2T buildout, and JPMorgan's separate $2.1T 'broader financing need') into a single '$1.7-2.1T of credit-market supply' range.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both figures point the same direction (large, comparable-to-Treasury AI financing demand); the range framing doesn't change the stance or level of conviction."
+    },
+    {
+     "what": "Brief omits the note's explicit named trade alerts (Sell 1/3 FAZ, PLTR put spread) in favor of the bond-stress/credit/equity-breadth/Meta/oil themes.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are separate calls the brief simply doesn't cover, not a distortion of the themes it does cover."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d9",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Oracle's force-majeure notice to the Blue Owl-backed Project Jupiter (New Mexico) developer is read by the desk as legal protection against paying rent pre-operation, not an exit, but it crystallizes rising execution risk (permitting, power, community opposition) in hyperscale AI builds and shows third-party AI infrastructure isn't the bond-like asset it can appear -> Anthropic's $11.6bn/7-year Akamai CPU deal (expandable by $9bn to ~$20bn, ~6x May's contract, $5.5bn capex + $1.7bn extra 2026 supply-chain spend) shows frontier-model demand spreading beyond GPUs -> two GIR pieces reframe the AI capex debate from spending size to required returns: hyperscalers need ~$1.42tn cumulative 2028-30 AI revenue (~$11.6bn/GW/yr) for 15% ROIC on 2026-27 capex, or per Portfolio Strategy ~$300bn/yr AI revenue plus up to $1tn app spend, against realized ROIC that has fallen from 40% to 25% -> conclusion: the AI trade stays supported, but future returns should come from selective winners, not broad capex exposure.",
+   "brief_chain": "Same chain, same figures and same conclusion: Oracle force majeure read as legal protection not exit, but signals rising execution risk and a non-bond-like asset class -> Anthropic's $11.6bn/7-year Akamai deal (expandable to ~$20bn, ~6x May contract, $5.5bn capex + $1.7bn extra spend) shows demand spreading beyond GPUs -> GIR pieces: ~$1.42tn cumulative 2028-30 revenue (~$11.6bn/GW/yr) needed for 15% ROIC, or ~$300bn/yr plus up to $1tn app spend per Portfolio Strategy, against ROIC down from 40% to 25% -> AI trade stays supported, future returns from selective winners not broad capex exposure.",
+   "distortions": [
+    {
+     "what": "Brief drops two of the source's four listed execution-risk factors ('power redesigns' shortened to 'power'; 'local infrastructure constraints' dropped), and omits the note's separate advertising-tracker and telecom-preview sections entirely.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the retained factors and the AI-infra/capex thread carry the call; the dropped items are secondary detail or separate, un-covered sections."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,106 @@
+{
+ "metric": 1,
+ "total_cards": 779,
+ "fragmentation_sets": [
+  {
+   "subject": "Biotech/healthcare hedge-fund positioning unwind, reported separately from GS and JPM data",
+   "labels": [
+    "biotech positioning unwind",
+    "biotech crowding unwind"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Standard Chartered's global equity strategy and regional allocation call",
+   "labels": [
+    "global equity earnings resilience",
+    "global equity regional allocation"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI infrastructure financing stress: execution risk and rising credit costs are the same Oracle/SoftBank/CoreWeave story",
+   "labels": [
+    "ai infra data center execution risk",
+    "ai credit costs rising"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Meta's Muse AI agent: adoption, monetization outlook, compute economics, and security risk",
+   "labels": [
+    "meta muse adoption monetization",
+    "ai agent compute demand",
+    "muse security privacy risk"
+   ],
+   "cards": 27
+  },
+  {
+   "subject": "Agentic commerce disruption for Amazon/Meta/Alphabet/Shopify, including the Amazon-blocks-Muse thread shared by both labels",
+   "labels": [
+    "agentic commerce ecommerce adoption",
+    "agentic commerce ad platforms"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Small-cap / market-breadth deterioration amid the rates selloff",
+   "labels": [
+    "us equity breadth narrowing",
+    "us small cap underperformance"
+   ],
+   "cards": 23
+  }
+ ],
+ "fragmented_mass_share": 0.194,
+ "mis_merges": [
+  {
+   "label": "systematic cta flow positioning",
+   "subjects": [
+    "Cross-asset CTA trend-following flows/positioning",
+    "SPX dealer/hedger gamma exposure"
+   ],
+   "would_change_theme_selection": true,
+   "why": "SPX hedger gamma at its second-highest level in a year is a distinct options-market-structure story with no other label, and it's easy to miss buried inside 9 cards of unrelated CTA trend-following data."
+  },
+  {
+   "label": "hedge fund positioning unwind",
+   "subjects": [
+    "GS US equity sector/CTA and institutional positioning flows",
+    "Nomura FX/rates vol-driven degrossing (EUR swaptions, curve flies)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Nomura's rates-vol-driven unwind, tied to the same day's Treasury selloff, is a distinct dateable story with no other home and could be missed if only the healthcare/tech flow content is skimmed."
+  },
+  {
+   "label": "middle east oil risk",
+   "subjects": [
+    "Iran ceasefire / Brent geopolitical risk premium",
+    "diesel export ban / refiner margin risk"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The diesel-export-ban story already has its own well-developed 12-card label elsewhere, so an editor would surface it as a theme regardless of this label's overlap."
+  },
+  {
+   "label": "us futures positioning caution",
+   "subjects": [
+    "US/global equity index futures positioning",
+    "European OAT-Bund sovereign rates positioning"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The OAT-Bund positioning cards are thin (4 cards, no fresh price action) and unlikely to justify a standalone lead theme even if separated out."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/779 cards (~1.5%), a mix of unrelated geopolitics, sector calls and M&A chatter correctly left ungrouped. The header states 2495 cards for the day; only 779 are individually enumerated in this ledger excerpt, so all mass/share figures here are computed over those 779 visible cards.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
