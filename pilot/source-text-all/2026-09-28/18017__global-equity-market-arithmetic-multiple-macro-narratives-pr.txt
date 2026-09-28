@@ -1,0 +1,12814 @@
+[Page 1]
+ 
+ 
+ 
+ 
+ 
+GLOBAL QUANTITATIVE RESEARCH 
+21 September 2026 
+ 
+ 
+ 
+ 
+Global Equity Market Arithmetic 
+Multiple macro narratives providing diversified sources of stock returns 
+Cast your mind back to the late 1990s, the last time market concentration reached extremes. 
+Most remember the TMT bubble, but there was much more going on beneath the surface. Asia 
+was recovering from crisis, Europe had a new currency and oil, having fallen into single digits, 
+was about to embark on a powerful rally. While market cap indices were dominated by TMT, 
+stock returns were being driven by multiple macro and thematic forces. Today's market looks 
+surprisingly similar. 
+Sector performance (page five) tells the same story. Energy and AI-related sectors are pulling 
+away from more consumer-facing areas of the market, creating meaningful dispersion beneath 
+the headline indices. Joe Hay has applied our "dimensionality" measure to sectors using both 
+market cap-weighted and equal-weighted covariance matrices, and demonstrated that sectors 
+are once again providing diversification rather than moving in lockstep. 
+We see the same pattern in our Momentum indices, where pairwise stock correlations are at 
+record lows. Plenty of stocks are rising, but not for the same reasons. For systematic investors, 
+that matters. Greater dispersion in return drivers means more opportunities to extract alpha 
+from relative stock performance. Encouragingly, our multi-factor long/short models have 
+navigated the latest bout of macro noise reasonably well. 
+Concentrated markets can have significant divergence in stock 
+prices (S&P 500 breadth vs pair-wise correlation) 
+ 
+Global sector “dimensionality” is at high levels on a non-
+market cap-weighted basis, yet very low on a market cap basis. 
+ 
+Going up, but for different reasons: correlation of stocks in our 
+Momentum indices is also at historically low levels! 
+ 
+Systematic market-neutral equity long/short models continue 
+to exploit cross-sectional stock divergence (including costs) 
+ 
+Source: SG Cross Asset Research/Equity Quant, Factset, Bloomberg 
+ 
+ 
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+0.60
+40
+60
+80
+100
+120
+140
+160
+Aug-96
+Aug-98
+Aug-00
+Aug-02
+Aug-04
+Aug-06
+Aug-08
+Aug-10
+Aug-12
+Aug-14
+Aug-16
+Aug-18
+Aug-20
+Aug-22
+Aug-24
+Aug-26
+Market breadth (inverse HII ratio)
+Average pair-wise correlation (rhs)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+Aug-78
+Aug-81
+Aug-84
+Aug-87
+Aug-90
+Aug-93
+Aug-96
+Aug-99
+Aug-02
+Aug-05
+Aug-08
+Aug-11
+Aug-14
+Aug-17
+Aug-20
+Aug-23
+Aug-26
+Unweighted
+Weighted
+0.00
+0.10
+0.20
+0.30
+0.40
+0.50
+0.60
+0.70
+0.80
+Jun-06
+Jun-08
+Jun-10
+Jun-12
+Jun-14
+Jun-16
+Jun-18
+Jun-20
+Jun-22
+Jun-24
+Jun-26
+US
+Europe
+96
+98
+100
+102
+104
+106
+108
+110
+112
+Dec-25
+Jan-26
+Jan-26
+Feb-26
+Feb-26
+Mar-26
+Mar-26
+Apr-26
+Apr-26
+May-26
+May-26
+Jun-26
+Jun-26
+Jul-26
+Jul-26
+Jul-26
+Aug-26
+Aug-26
+Sep-26
+SG Multi-Factor l/s with Machine Learning
+SG Multi-Factor long/short
+Societe Generale (“SG”) does and seeks to do business with companies covered in its research reports.  As a result, investors should be aware that SG may 
+have a conflict of interest that could affect the objectivity of this report.  Investors should consider this report as only a single factor in making their 
+investment decision.  PLEASE SEE APPENDIX AT THE END OF THIS REPORT FOR THE ANALYST(S) CERTIFICATION(S), IMPORTANT DISCLOSURES AND 
+DISCLAIMERS. ALTERNATIVELY, VISIT OUR GLOBAL RESEARCH DISCLOSURE WEBSITE 
+ 
+Andrew Lapthorne 
++44 20 7762 5762 
+andrew.lapthorne@sgcib.com 
+ 
+Georgios Oikonomou 
++44 20 7762 5261 
+georgios.oikonomou@sgcib.com 
+ 
+Laura Tossan 
++44 20 7762 5629 
+laura.tossan@sgcib.com 
+ 
+Hugo Cellier 
++44 20 7762 1892 
+hugo.cellier@sgcib.com 
+ 
+Puneet Singh 
++65 6326 7835 
+puneet.singh@sgcib.com 
+ 
+ 
+Solomon Tadesse 
++1 212-278-6484 
+solomon.tadesse@sgcib.com 
+ 
+ 
+ 
+
+
+[Page 2]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+2 
+21 September 2026 
+ 
+Contents 
+Market performance 
+ 
+ 
+ 
+ 
+ 
+ 
+3 
+Market & factor index performance 
+ 
+ 
+ 
+ 
+ 
+4 
+Sector performance  
+ 
+ 
+ 
+ 
+ 
+ 
+5 
+Market P/E ratios and growth 
+ 
+ 
+ 
+ 
+ 
+6 
+Sector P/E ratios by region 
+ 
+ 
+ 
+ 
+ 
+ 
+7 
+Sector EPS growth by region  
+ 
+ 
+ 
+ 
+ 
+8 
+Country P/E ratios and EPS growth 
+ 
+ 
+ 
+ 
+ 
+9 
+Regional EPS momentum 
+ 
+ 
+ 
+ 
+ 
+ 
+10 
+US sales, profit, and margin diffusion indicators 
+ 
+ 
+ 
+11 
+US sales, profit, and margin diffusion indicators by sector 
+ 
+ 
+12 
+YTD sector and region consensus earnings changes 
+ 
+ 
+ 
+13 
+Quarterly US, Europe, and Japan sector consensus earnings changes 
+ 
+14 
+US consensus quarterly earnings 
+ 
+ 
+ 
+ 
+ 
+15 
+Monthly factor performance (long vs short) 
+ 
+ 
+ 
+ 
+16 
+Monthly factor performance (long vs universe)  
+ 
+ 
+ 
+18 
+Monthly top and bottom 10 factor performance by region 
+ 
+ 
+20 
+Year-to-date factor performance (long vs short) 
+ 
+ 
+ 
+21 
+Year-to-date factor performance (long vs universe) 
+ 
+ 
+ 
+23 
+Year-to-date top and bottom 10 factor performance by region  
+ 
+25 
+Europe factor performance by period (long vs short) 
+ 
+ 
+ 
+26 
+Europe factor performance by period (long vs universe) 
+                      
+ 
+28 
+US factor performance by period (long vs short)   
+ 
+ 
+ 
+30 
+US factor performance by period (long vs universe)  
+ 
+ 
+ 
+32 
+ 
+ 
+ 
+
+
+[Page 3]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+3
+ 
+Market performance (%) 
+Regional Summary 
+Currency 
+Close
+1W 
+1M
+3M
+12M
+YTD
+MSCI Developed World ($) 
+USD 
+4937.3
+-1.0 
+-1.2
+4.0
+16.0
+11.4
+MSCI Developed World Equal Weight ($) 
+USD 
+4870.0
+-1.6 
+-2.0
+4.1
+12.3
+10.2
+US (S&P 500) 
+USD 
+7657.0
+-0.8 
+-0.9
+3.6
+16.2
+11.9
+Europe ($) 
+USD 
+213.6
+-1.9 
+-2.7
+3.6
+13.7
+6.8
+Eurozone ($) 
+USD 
+2046.4
+-1.2 
+-2.8
+3.6
+15.6
+7.8
+Europe excl. UK ($) 
+USD 
+252.1
+-1.9 
+-3.0
+3.3
+13.6
+6.5
+UK ($) 
+USD 
+5733.6
+-1.7 
+-1.8
+4.9
+13.6
+7.7
+Japan ($) 
+USD 
+4028.3
+-0.4 
+1.6
+9.8
+22.4
+20.2
+Pacific excl. Japan ($) 
+USD 
+1725.5
+-2.9 
+-3.2
+6.3
+8.6
+10.4
+Emerging markets ($) 
+USD 
+1721.5
+-0.3 
+3.4
+3.4
+31.4
+22.6
+ 
+ 
+North America 
+ 
+ 
+S&P 500 
+USD 
+7657.0
+-0.8 
+-0.9
+3.6
+16.2
+11.9
+S&P 500 equal weighted 
+USD 
+8686.2
+-1.9 
+-2.8
+2.4
+12.9
+11.9
+NASDAQ 100 
+USD 
+29368.4
+-0.6 
+-0.5
+-0.3
+22.4
+16.3
+NASDAQ Composite 
+USD 
+26333.0
+-0.7 
+-0.4
+2.0
+19.5
+13.3
+Russell 2000 
+USD 
+2903.9
+-2.4 
+-4.1
+-0.6
+19.9
+17.0
+DJ Industrials 
+USD 
+52573.3
+-1.6 
+-2.3
+3.4
+14.0
+9.4
+Canada (S&P/TSX Composite) 
+CAD 
+35697.5
+-2.2 
+-2.1
+3.0
+21.4
+12.6
+ 
+ 
+Japan 
+ 
+ 
+Nikkei 225 
+YEN 
+64011.3
+-1.6 
+-4.4
+-0.3
+44.3
+27.2
+Topix 500 
+YEN 
+3148.3
+-1.8 
+-1.8
+5.1
+28.3
+18.3
+Mothers 
+YEN 
+767.9
+-3.6 
+4.2
+6.2
+0.6
+13.7
+ 
+ 
+Pacific ex Japan 
+ 
+ 
+Australia (S&P/All Ordinaries) 
+AUD 
+8741.2
+-2.9 
+-5.5
+1.3
+-0.7
+0.3
+Hong Kong (Hang Seng) 
+HK$ 
+24805.6
+-3.3 
+-3.3
+2.3
+-4.9
+-3.2
+Hong Kong (China Affiliated) 
+HK$ 
+4133.9
+-1.9 
+0.3
+-3.0
+-5.6
+2.9
+Hong Kong (China Enterprises) 
+HK$ 
+8246.3
+-3.6 
+-3.3
+0.4
+-10.9
+-7.5
+New Zealand (NZSX 50) 
+NZ$ 
+13580.3
+-2.8 
+-2.0
+2.9
+2.7
+0.2
+Singapore (Strait Times) 
+S$ 
+5695.9
+-1.8 
+-1.0
+14.2
+30.8
+22.6
+ 
+ 
+Europe 
+ 
+ 
+MSCI Europe (€) 
+EUR 
+213.6
+-1.7 
+-3.2
+2.8
+15.1
+8.1
+MSCI Europe excl. UK (€) 
+EUR 
+252.1
+-1.7 
+-3.5
+2.5
+15.0
+7.8
+MSCI Eurozone (€) 
+EUR 
+2046.4
+-1.0 
+-3.4
+2.8
+17.0
+9.1
+FTSE Eurofirst 300 (€) 
+EUR 
+2554.2
+-1.6 
+-3.3
+2.8
+15.9
+8.2
+DJ Stoxx 50 
+EUR 
+5332.6
+-1.8 
+-3.9
+2.6
+16.5
+8.4
+DJ Euro Stoxx 50 
+EUR 
+6325.1
+-1.1 
+-3.5
+4.4
+17.4
+9.2
+UK 
+ 
+ 
+FTSE All Share 
+GBP 
+5733.6
+-1.8 
+-2.0
+3.5
+14.1
+7.2
+FTSE100 
+GBP 
+10650.4
+-1.7 
+-1.8
+3.4
+14.6
+7.2
+FTSE250 
+GBP 
+23975.7
+-2.5 
+-3.3
+4.4
+10.5
+6.7
+FTSE Smallcap 
+GBP 
+8056.5
+-1.7 
+-2.0
+3.2
+13.2
+6.9
+France 
+ 
+ 
+CAC 40 
+EUR 
+8179.8
+-1.2 
+-6.1
+-0.3
+4.6
+0.4
+SBF 120 
+EUR 
+6199.7
+-1.2 
+-5.9
+-0.2
+4.6
+0.5
+SBF 250 
+EUR 
+6075.9
+-1.2 
+-5.9
+-0.2
+4.6
+0.5
+Germany 
+ 
+ 
+DAX 
+EUR 
+25568.6
+-1.8 
+-3.1
+5.6
+7.9
+4.4
+MDAX 
+EUR 
+31663.8
+-2.1 
+-1.7
+0.7
+5.0
+3.4
+Source: Bloomberg, SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+
+
+[Page 4]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+4 
+21 September 2026 
+ 
+Market performance (%) (page 2) 
+Regional Summary 
+Currency 
+Close
+1W 
+1M
+3M
+12M
+YTD
+Other Developed Europe 
+ 
+Austria (ATX) 
+EUR 
+6885.2
+0.4 
+3.2
+13.4
+48.2
+29.3
+Belgium (Bel 20) 
+EUR 
+5713.4
+-2.4 
+-0.1
+1.2
+19.1
+12.5
+Denmark (OMX Copenhagen 20) 
+DKK 
+1865.1
+-2.5 
+1.4
+6.1
+12.8
+2.2
+Finland (OMX Helsinki General) 
+EUR 
+6540.5
+1.3 
+4.8
+4.8
+29.2
+14.7
+Greece (FTSE/ASE 20) 
+EUR 
+7004.5
+1.3 
+4.8
+15.2
+36.4
+30.9
+Ireland (ISEQ Overall) 
+EUR 
+14457.3
+-0.4 
+1.6
+9.6
+26.3
+10.4
+Italy (FTSE MIB) 
+EUR 
+52512.0
+0.8 
+-2.2
+4.0
+23.8
+16.8
+Netherlands (AEX) 
+EUR 
+1098.8
+-1.3 
+-1.6
+3.4
+21.3
+15.5
+Norway (Oslo All Share) 
+NOK 
+2523.8
+0.9 
+3.8
+6.9
+33.1
+30.0
+Portugal (PSI) 
+EUR 
+9524.7
+1.4 
+3.4
+5.5
+22.8
+15.3
+Spain (IBEX 35) 
+EUR 
+19838.5
+-1.1 
+-1.9
+8.5
+29.5
+14.6
+Sweden (OMX Stockholm 30) 
+SEK 
+3255.2
+-0.9 
+-1.3
+6.2
+23.5
+12.9
+Switzerland (SMI Index) 
+CHF 
+13775.3
+-4.3 
+-5.5
+1.8
+12.1
+3.8
+ 
+ 
+Emerging markets ($) 
+ 
+ 
+EM (emerging markets) 
+USD 
+1721.5
+-0.3 
+3.4
+3.4
+31.4
+22.6
+EM Asia 
+USD 
+971.7
+-0.3 
+3.3
+2.6
+33.9
+25.3
+EM eastern Europe 
+USD 
+90.9
+1.7 
+3.5
+14.1
+45.5
+28.7
+EM Europe & Middle East, Africa 
+USD 
+279.2
+0.0 
+2.1
+8.0
+16.6
+7.7
+EM Latin America 
+USD 
+3159.9
+0.0 
+6.5
+6.8
+27.3
+16.6
+ 
+ 
+Selected emerging market Indices
+ 
+ 
+China (Shanghai A) 
+CNY 
+4076.8
+-1.1 
+-1.2
+-2.5
+0.4
+-2.0
+China (Shanghai B) ($) 
+USD 
+292.6
+-1.4 
+3.7
+11.3
+10.7
+15.3
+China (CS 300) 
+CNY 
+4510.2
+-0.8 
+-3.3
+-4.5
+-0.8
+-2.6
+South Korea (KOSPI) 
+KRW 
+6909.9
+3.3 
+8.9
+-11.0
+106.6
+64.0
+Brazil (Bovespa) 
+BRL 
+187206.9
+1.1 
+11.5
+9.2
+30.8
+16.2
+India (S&P BSE 100) 
+INR 
+25130.0
+-1.9 
+-4.1
+2.3
+-4.1
+-8.1
+South Africa (FTSE/JSE All Share) 
+ZAR 
+115165.3
+-1.3 
+-0.7
+4.5
+10.8
+-0.6
+Mexico (IPC) 
+MXN 
+63924.8
+-1.5 
+-2.5
+-4.6
+3.9
+-0.6
+Source: Bloomberg, SG Cross Asset Research/Equity Quant, Bloomberg 
+Factor performance (%, SG Indices)  
+Currency 
+Close
+1W 
+1M
+3M
+12M
+YTD
+US 
+ 
+ 
+Value 
+USD 
+1695.3
+-2.0 
+-1.6
+6.3
+21.4
+17.9
+Low Risk 
+USD 
+1213.0
+-2.1 
+-3.5
+-0.1
+-3.2
+1.5
+Momentum 
+USD 
+1793.7
+-0.1 
+0.3
+-1.1
+32.9
+27.0
+Growth 
+USD 
+1553.6
+-1.8 
+-2.9
+1.4
+7.5
+10.9
+Fundamental Quality 
+USD 
+1527.4
+-2.4 
+-3.0
+2.0
+7.8
+8.6
+Europe 
+ 
+ 
+Value 
+EUR 
+1786.4
+-2.0 
+-2.2
+9.1
+26.0
+17.3
+Low Risk 
+EUR 
+1299.0
+-2.1 
+-2.7
+1.4
+1.8
+2.8
+Momentum 
+EUR 
+1583.4
+-1.0 
+-2.1
+-0.4
+19.6
+11.6
+Growth 
+EUR 
+1602.9
+-1.5 
+-2.2
+6.1
+16.0
+12.1
+Fundamental Quality 
+EUR 
+1541.7
+-1.8 
+-1.9
+5.1
+17.7
+12.8
+Japan 
+ 
+ 
+Value 
+YEN 
+1920.7
+-2.1 
+2.0
+10.7
+31.7
+19.2
+Low Risk 
+YEN 
+1229.4
+-2.5 
+-3.0
+5.6
+3.3
+1.5
+Momentum 
+YEN 
+1561.1
+-2.8 
+-5.1
+-0.2
+22.0
+10.5
+Growth 
+YEN 
+1734.0
+-3.7 
+-3.9
+6.7
+26.7
+19.1
+Fundamental Quality 
+YEN 
+1769.7
+-3.3 
+-3.9
+6.9
+26.9
+20.0
+Source: Bloomberg, SG Cross Asset Research/Equity Quant, Factset 
+
+
+[Page 5]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+5
+ 
+Sector performance* (%, in USD) 
+World 
+US 
+Europe 
+JP 
+UK 
+EM 
+1W 
+1M 
+YTD 
+1W 
+1M 
+YTD 
+1W 
+1M 
+YTD 
+1W 
+1M 
+YTD 
+1W 
+1M 
+YTD 
+1W 
+1M 
+YTD 
+Market 
+-0.5 
+-0.9 
+13.4 
+-0.2 
+-1.0 
+12.7 
+-1.9 
+-4.0 
+7.4 
+-1.0 
+2.5 
+20.2 
+-1.1 
+-2.7 
+9.4 
+0.0 
+1.0 
+12.1 
+Market ex Financials 
+-0.2 
+-0.9 
+13.8 
+0.1 
+-0.8 
+13.7 
+-1.5 
+-4.8 
+5.0 
+-0.7 
+1.7 
+16.1 
+-0.4 
+-2.8 
+7.4 
+0.3 
+0.5 
+13.1 
+Market ex Energy 
+-0.5 
+-0.9 
+12.5 
+-0.1 
+-1.1 
+11.7 
+-1.9 
+-4.3 
+5.8 
+-1.0 
+2.4 
+20.1 
+-1.0 
+-3.2 
+7.1 
+0.1 
+0.9 
+12.3 
+Market ex Financials ex Energy 
+-0.2 
+-1.0 
+12.8 
+0.2 
+-0.9 
+12.7 
+-1.9 
+-4.0 
+7.4 
+-0.7 
+1.7 
+16.0 
+-0.2 
+-3.6 
+4.0 
+0.4 
+0.4 
+13.5 
+Basic Materials 
+-2.0 
+-1.8 
+17.1 
+-2.0 
+-3.7 
+18.1 
+-3.1 
+-2.8 
+18.4 
+-0.7 
+-0.5 
+24.1 
+-4.3 
+-3.2 
+26.6 
+-2.5 
+-0.2 
+10.8 
+Basic Resources 
+-2.2 
+-1.8 
+17.4 
+-2.1 
+-3.0 
+23.1 
+-3.7 
+-2.4 
+23.6 
+-1.2 
+1.0 
+25.0 
+-4.4 
+-3.2 
+27.3 
+-3.2 
+-1.7 
+6.6 
+Chemicals 
+-1.6 
+-1.7 
+16.1 
+-1.9 
+-4.6 
+11.9 
+-2.2 
+-3.4 
+12.2 
+-0.5 
+-1.2 
+23.6 
+-1.0 
+-2.7 
+14.5 
+-0.6 
+4.3 
+23.6 
+Consumer Discretionary 
+-1.8 
+-5.7 
+-6.2 
+-1.8 
+-6.0 
+-5.4 
+-3.2 
+-7.4 
+-13.3 
+-1.5 
+-0.6 
+3.7 
+-1.5 
+-6.0 
+-2.9 
+0.1 
+-6.5 
+-16.8 
+Automobiles and Parts 
+-1.9 
+-0.5 
+-12.9 
+-1.1 
+1.8 
+-16.4 
+-4.9 
+-3.3 
+-15.4 
+-2.2 
+0.8 
+-1.2 
+-6.6 
+-11.3 
+-41.8 
+0.0 
+-6.7 
+-19.4 
+Consumer Products and Services 
+-1.7 
+-5.8 
+-9.2 
+-2.0 
+-7.6 
+-12.2 
+-3.0 
+-9.2 
+-17.6 
+-0.3 
+-0.6 
+5.8 
+-1.5 
+-5.7 
+-10.3 
+-0.9 
+-2.3 
+-5.7 
+Travel and Leisure 
+-2.6 
+-9.0 
+-7.4 
+-2.8 
+-11.1 
+-7.6 
+-2.2 
+-2.9 
+-0.5 
+-3.6 
+0.4 
+3.9 
+-1.6 
+-5.6 
+0.4 
+-0.4 
+-6.1 
+-22.0 
+Retail 
+-1.2 
+-6.7 
+0.4 
+-1.3 
+-6.2 
+2.6 
+-4.1 
+-10.5 
+-5.9 
+-1.6 
+-5.4 
+13.0 
+-2.1 
+-8.2 
+2.6 
+0.8 
+-9.2 
+-19.2 
+Media 
+-3.9 
+-6.3 
+-13.9 
+-4.4 
+-7.0 
+-14.8 
+-1.0 
+-4.6 
+-4.8 
+-2.5 
+3.2 
+2.5 
+-0.8 
+-4.3 
+4.4 
+1.8 
+-1.4 
+-26.8 
+Consumer Staples 
+-1.2 
+-2.9 
+4.5 
+-1.1 
+-2.8 
+10.2 
+-1.2 
+-3.8 
+-2.0 
+-1.7 
+-1.0 
+3.2 
+-0.5 
+-2.3 
+-1.4 
+-0.7 
+-2.8 
+-7.5 
+Food, Beverage and Tobacco 
+-1.3 
+-3.3 
+7.0 
+-1.1 
+-2.9 
+13.6 
+-1.6 
+-4.6 
+-1.3 
+-1.7 
+-1.7 
+18.0 
+-0.5 
+-2.8 
+0.1 
+-0.9 
+-3.1 
+-5.6 
+Personal Care, Drug, Grocery Stores 
+-1.0 
+-2.3 
+0.5 
+-1.3 
+-2.7 
+5.2 
+-0.3 
+-1.9 
+-3.7 
+-1.8 
+0.3 
+-13.7 
+-0.4 
+-1.7 
+-3.0 
+-0.2 
+-2.0 
+-11.4 
+Energy 
+-1.6 
+0.5 
+36.0 
+-1.6 
+0.6 
+43.6 
+-1.6 
+-0.4 
+36.0 
+-2.7 
+8.5 
+25.5 
+-1.7 
+1.7 
+32.1 
+-2.2 
+1.4 
+7.6 
+Financials 
+-2.1 
+-0.8 
+11.5 
+-2.4 
+-2.7 
+4.3 
+-2.8 
+-1.8 
+15.0 
+-2.5 
+6.0 
+43.6 
+-2.9 
+-2.2 
+15.5 
+-1.1 
+2.9 
+8.5 
+Banks 
+-2.6 
+-0.3 
+17.3 
+-3.7 
+-3.4 
+8.1 
+-3.6 
+-1.1 
+20.7 
+-3.2 
+5.1 
+49.6 
+-3.7 
+-1.6 
+22.0 
+-1.2 
+2.7 
+9.8 
+Financial Services 
+-2.2 
+-2.6 
+2.7 
+-2.0 
+-2.3 
+1.6 
+-3.4 
+-5.3 
+5.1 
+-2.9 
+4.3 
+21.5 
+-1.0 
+-5.0 
+-2.3 
+-1.3 
+0.8 
+2.2 
+Insurance 
+-0.4 
+0.6 
+9.8 
+-0.7 
+-2.5 
+3.8 
+-0.3 
+-0.9 
+8.9 
+-0.3 
+9.8 
+40.3 
+-0.5 
+-1.8 
+10.4 
+-0.2 
+6.5 
+8.1 
+Health Care 
+1.7 
+-4.2 
+6.9 
+1.9 
+-4.1 
+10.9 
+1.5 
+-6.1 
+-2.9 
+0.5 
+-1.7 
+3.2 
+4.5 
+-0.9 
+-5.5 
+1.5 
+-0.3 
+7.8 
+Industrials 
+-1.4 
+-4.4 
+8.4 
+-1.6 
+-6.0 
+6.3 
+-2.0 
+-5.7 
+4.5 
+0.0 
+2.9 
+21.8 
+-0.5 
+-5.9 
+12.5 
+-0.2 
+-1.8 
+10.0 
+Industrial Goods and Services 
+-1.2 
+-4.1 
+9.8 
+-1.4 
+-5.7 
+6.8 
+-1.7 
+-5.3 
+7.7 
+0.1 
+2.8 
+24.2 
+-0.5 
+-6.0 
+12.4 
+0.1 
+-1.6 
+15.0 
+Construction and Materials 
+-2.8 
+-6.3 
+-1.9 
+-3.2 
+-9.1 
+2.1 
+-3.4 
+-7.7 
+-8.3 
+-0.4 
+4.4 
+1.6 
+2.1 
+-2.3 
+13.7 
+-1.4 
+-2.3 
+-6.5 
+Real Estate 
+-1.8 
+-5.3 
+2.1 
+-2.0 
+-5.7 
+7.5 
+-2.1 
+-7.5 
+-6.3 
+-2.4 
+-0.3 
+-9.6 
+-1.1 
+-6.8 
+3.8 
+-0.5 
+-3.0 
+-2.8 
+Technology 
+1.2 
+3.6 
+25.1 
+1.5 
+3.8 
+22.4 
+-2.1 
+-4.7 
+18.9 
+0.6 
+1.1 
+39.6 
+0.3 
+-4.9 
+-8.8 
+1.6 
+3.7 
+35.2 
+Telecommunications 
+-2.5 
+1.9 
+35.3 
+-2.8 
+-1.0 
+24.4 
+-3.7 
+-3.5 
+10.5 
+-3.8 
+14.5 
+29.0 
+-2.9 
+1.2 
+19.2 
+-0.2 
+-0.6 
+1.3 
+Utilities 
+-2.0 
+-3.8 
+2.3 
+-2.7 
+-6.3 
+-2.1 
+-0.7 
+-2.4 
+9.3 
+-2.8 
+11.0 
+14.2 
+0.4 
+-3.1 
+4.9 
+-1.7 
+1.4 
+5.9 
+Source: FactSet, SG Cross Asset Research/Equity Quant *based on a broad universe of 9000+ stocks 
+ 
+Global sector performance 1W/1M (USD) 
+ 
+Global sector performance YTD (USD) 
+ 
+ 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+ 
+ 
+-8%
+-6%
+-4%
+-2%
+0%
+2%
+4%
+6%
+1W
+1M
+-10%
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+40%
+
+
+[Page 6]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+6 
+21 September 2026 
+ 
+Market P/E ratio aggregates 
+Region 
+P/E 2025
+PE 2026e
+P/E 2027e 
+P/E 12m
+2026e EPS Growth
+2027e EPS Growth
+World 
+24.24
+18.35
+15.94 
+16.61
+32.40
+15.08
+World excl. US 
+19.78
+14.39
+12.74 
+13.17
+37.78
+12.95
+US 
+28.26
+21.71
+18.69 
+19.53
+30.36
+16.13
+Europe 
+18.17
+15.44
+14.12 
+14.54
+17.87
+9.36
+Eurozone 
+18.68
+15.79
+13.99 
+14.54
+18.30
+12.86
+UK 
+15.89
+13.09
+12.40 
+12.63
+21.71
+5.51
+Japan 
+20.64
+17.09
+15.13 
+15.62
+21.24
+12.99
+Pacific excl. Japan 
+23.14
+9.68
+8.08 
+8.41
+139.05
+19.84
+Emerging 
+19.22
+15.22
+13.03 
+13.68
+26.34
+16.79
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+Year-to-date change in 2026 growth rate (in % points) 
+ 
+2026 bottom-up consensus growth rates by region (%) 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+21.7
+18.3
+17.1
+15.8
+15.4
+15.2
+14.4
+13.1
+9.7
+18.7
+15.9
+15.1
+14.0
+14.1
+13.0
+12.7
+12.4
+8.1
+19.5
+16.6
+15.6
+14.5
+14.5
+13.7
+13.2
+12.6
+8.4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+US
+World
+Japan
+Eurozone
+Europe
+Emerging
+World excl. US
+UK
+Pacific excl.
+Japan
+2026 P/E
+2027 P/E
+12m Forward P/E
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+30.0
+World
+World excl. US
+US
+Europe
+Eurozone
+UK
+Japan
+Emerging
+0.0
+5.0
+10.0
+15.0
+20.0
+25.0
+30.0
+35.0
+40.0
+World
+World excl. US
+US
+Europe
+Eurozone
+UK
+Japan
+Emerging
+
+
+[Page 7]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+7
+ 
+ 
+Sector P/E ratio aggregates (based on a universe of around 9,000 stocks) 
+World 
+US 
+Europe 
+JP 
+UK 
+EM 
+2025 
+2026e 
+2027e 
+2025 
+2026e 
+2027e 
+2025 
+2026e 
+2027e 
+2025 
+2026e 
+2027e 
+2025 
+2026e 
+2027e 
+2025 
+2026e 
+2027e 
+Market 
+24.0 
+18.1 
+15.6 
+28.1 
+21.5 
+18.5 
+17.7 
+15.0 
+13.7 
+20.3 
+16.6 
+14.7 
+15.5 
+12.7 
+12.0 
+19.0 
+15.1 
+12.9 
+Market ex Financials 
+27.0 
+19.5 
+16.6 
+30.3 
+22.8 
+19.3 
+20.0 
+16.5 
+15.1 
+21.2 
+17.2 
+15.1 
+17.1 
+13.5 
+13.3 
+23.8 
+17.5 
+14.5 
+Market ex Energy 
+24.2 
+18.6 
+15.8 
+28.3 
+22.1 
+18.7 
+17.7 
+15.6 
+13.9 
+20.4 
+16.7 
+14.7 
+15.5 
+13.7 
+12.3 
+19.5 
+15.5 
+13.1 
+Market ex Financials ex Energy 
+27.5 
+20.2 
+16.9 
+30.8 
+23.5 
+19.6 
+20.3 
+17.7 
+15.7 
+21.4 
+17.3 
+15.2 
+17.5 
+15.5 
+14.0 
+25.1 
+18.5 
+15.0 
+Basic Materials 
+25.1 
+16.0 
+14.1 
+27.7 
+18.5 
+16.5 
+23.2 
+16.4 
+14.6 
+21.8 
+15.7 
+13.4 
+23.9 
+14.5 
+13.3 
+31.0 
+18.9 
+14.6 
+Basic Resources 
+24.4 
+15.2 
+13.2 
+30.2 
+17.7 
+15.0 
+23.0 
+14.9 
+12.8 
+18.0 
+13.4 
+11.5 
+24.2 
+14.4 
+13.3 
+38.1 
+19.0 
+14.2 
+Chemicals 
+27.1 
+18.3 
+16.6 
+25.0 
+19.7 
+19.0 
+23.4 
+19.0 
+17.8 
+24.2 
+17.0 
+14.4 
+19.1 
+15.9 
+13.6 
+25.0 
+18.8 
+15.2 
+Consumer Discretionary 
+24.4 
+20.1 
+18.1 
+28.9 
+23.1 
+22.0 
+18.5 
+15.8 
+13.3 
+18.7 
+15.4 
+13.3 
+14.3 
+14.3 
+12.9 
+23.0 
+17.9 
+13.7 
+Automobiles and Parts 
+25.0 
+19.9 
+16.1 
+55.6 
+44.0 
+35.9 
+15.4 
+10.2 
+7.9 
+13.3 
+11.4 
+9.5 
+-3.7 
+-7.2 
+-19.2 
+27.5 
+20.9 
+16.5 
+Consumer Products and Services 
+20.4 
+19.0 
+16.3 
+18.3 
+19.7 
+16.7 
+24.2 
+21.4 
+18.5 
+22.8 
+18.2 
+16.1 
+17.6 
+17.4 
+16.0 
+17.0 
+15.3 
+11.6 
+Travel and Leisure 
+20.2 
+19.3 
+16.1 
+23.7 
+21.1 
+17.6 
+12.3 
+12.8 
+10.8 
+21.6 
+21.5 
+19.5 
+12.6 
+13.3 
+11.4 
+35.2 
+27.9 
+18.3 
+Retail 
+28.4 
+21.0 
+21.1 
+30.7 
+21.7 
+23.0 
+18.6 
+16.8 
+15.2 
+27.0 
+24.4 
+22.4 
+13.6 
+13.0 
+11.9 
+15.5 
+13.2 
+11.1 
+Media 
+23.0 
+19.8 
+16.9 
+24.1 
+21.4 
+18.1 
+13.2 
+12.8 
+11.5 
+na 
+18.8 
+17.1 
+12.1 
+12.1 
+10.9 
+-93.7 
+21.7 
+16.0 
+Consumer Staples 
+18.4 
+17.0 
+15.8 
+19.1 
+17.9 
+16.7 
+15.6 
+14.9 
+13.8 
+22.1 
+18.0 
+17.6 
+14.2 
+13.6 
+12.6 
+19.1 
+17.0 
+13.0 
+Food, Beverage and Tobacco 
+18.1 
+16.8 
+15.6 
+19.4 
+18.2 
+17.0 
+15.4 
+14.8 
+13.7 
+22.5 
+16.8 
+16.9 
+12.2 
+11.8 
+11.0 
+18.6 
+15.8 
+12.3 
+Personal Care, Drug and Grocery Stores 
+18.7 
+17.5 
+16.2 
+18.7 
+17.3 
+16.3 
+16.0 
+15.3 
+14.0 
+21.4 
+20.2 
+19.1 
+17.0 
+16.1 
+14.9 
+20.9 
+23.5 
+16.7 
+Energy 
+19.9 
+11.4 
+12.5 
+22.9 
+12.8 
+13.8 
+17.4 
+9.3 
+10.9 
+13.1 
+9.4 
+9.7 
+15.5 
+7.8 
+10.1 
+24.5 
+9.3 
+9.4 
+Financials 
+14.8 
+13.0 
+11.9 
+16.9 
+14.5 
+13.3 
+13.2 
+11.8 
+10.7 
+16.9 
+14.3 
+13.0 
+12.3 
+10.8 
+9.5 
+13.1 
+11.7 
+10.2 
+Banks 
+14.0 
+12.2 
+11.0 
+15.4 
+12.7 
+11.5 
+12.9 
+11.5 
+10.0 
+18.7 
+15.1 
+13.2 
+12.6 
+10.8 
+9.4 
+9.6 
+9.5 
+8.6 
+Financial Services 
+19.3 
+16.2 
+15.0 
+21.5 
+18.2 
+16.4 
+13.7 
+12.1 
+12.3 
+14.8 
+11.0 
+11.7 
+10.5 
+9.9 
+8.9 
+15.6 
+13.1 
+11.1 
+Insurance 
+12.6 
+11.8 
+11.1 
+12.2 
+11.4 
+11.1 
+13.6 
+12.7 
+11.9 
+14.1 
+14.4 
+13.1 
+13.4 
+12.4 
+11.0 
+15.7 
+13.6 
+12.3 
+Health Care 
+22.6 
+21.6 
+17.9 
+24.2 
+23.6 
+18.8 
+16.8 
+15.9 
+14.5 
+23.6 
+20.3 
+18.1 
+15.5 
+14.3 
+12.9 
+37.2 
+27.6 
+20.6 
+Industrials 
+25.1 
+21.2 
+18.5 
+25.9 
+22.6 
+19.7 
+24.6 
+20.6 
+18.0 
+21.7 
+18.1 
+16.4 
+26.1 
+22.7 
+19.9 
+25.7 
+20.3 
+16.5 
+Industrial Goods and Services 
+25.7 
+21.6 
+18.9 
+26.0 
+22.5 
+19.8 
+26.4 
+21.8 
+18.9 
+22.5 
+18.6 
+16.8 
+26.9 
+23.1 
+20.2 
+28.4 
+22.3 
+18.0 
+Construction and Materials 
+21.3 
+18.5 
+16.1 
+25.3 
+22.8 
+19.1 
+18.6 
+16.2 
+14.3 
+16.0 
+14.1 
+13.3 
+14.4 
+14.2 
+13.1 
+20.2 
+15.9 
+13.1 
+Real Estate 
+23.2 
+22.4 
+20.6 
+34.9 
+34.5 
+31.6 
+13.8 
+13.6 
+13.0 
+15.9 
+14.7 
+14.2 
+16.6 
+16.0 
+14.9 
+15.6 
+12.9 
+11.4 
+Technology 
+38.2 
+22.8 
+17.7 
+39.7 
+25.3 
+19.7 
+33.7 
+26.5 
+20.8 
+39.7 
+19.7 
+14.3 
+20.1 
+17.9 
+16.1 
+53.8 
+23.2 
+17.3 
+Telecommunications 
+21.2 
+10.9 
+8.8 
+19.5 
+17.8 
+16.0 
+18.3 
+16.0 
+14.5 
+11.8 
+17.5 
+23.3 
+15.5 
+14.1 
+12.2 
+23.7 
+24.8 
+19.3 
+Utilities 
+18.2 
+16.6 
+15.2 
+19.9 
+17.8 
+16.3 
+16.8 
+15.2 
+14.1 
+11.9 
+11.3 
+9.9 
+15.3 
+13.2 
+11.9 
+12.4 
+11.3 
+10.4 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+Global 2027 sector P/E ratios 
+ 
+Source: SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+0
+5
+10
+15
+20
+25
+Retail
+Real Estate
+Industrial Goods…
+Health Care
+Technology
+Media
+Chemicals
+Consumer…
+Personal Care,…
+Automobiles and…
+Travel and Leisure
+Construction and…
+Food, Beverage…
+Utilities
+Financial Services
+Basic Resources
+Energy
+Insurance
+Banks
+Telecommunicati…
+
+
+[Page 8]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+8 
+21 September 2026 
+ 
+Sector EPS Growth aggregates (based on a universe of around 9,000 stocks) 
+World 
+US 
+Europe 
+JP 
+UK 
+EM 
+2026e 
+2027e 
+2026e 
+2027e 
+2026e 
+2027e 
+2026e 
+2027e 
+2026e 
+2027e 
+2026e 
+2027e 
+Market 
+32.8 
+15.8 
+30.7 
+16.5 
+18.3 
+9.4 
+22.7 
+13.3 
+22.6 
+5.5 
+26.4 
+16.7 
+Market ex Financials 
+38.9 
+17.6 
+33.4 
+17.9 
+21.7 
+9.1 
+24.0 
+14.0 
+27.1 
+1.9 
+36.1 
+20.7 
+Market ex Energy 
+30.5 
+17.6 
+28.4 
+18.1 
+13.5 
+12.2 
+22.5 
+13.5 
+13.3 
+11.5 
+25.6 
+18.3 
+Market ex Financials ex Energy 
+36.3 
+20.0 
+30.8 
+19.9 
+14.5 
+13.4 
+23.7 
+14.3 
+13.0 
+10.2 
+35.8 
+23.7 
+Basic Materials 
+57.4 
+13.8 
+49.7 
+12.4 
+41.0 
+12.7 
+39.7 
+17.7 
+65.1 
+8.6 
+65.3 
+29.8 
+Basic Resources 
+60.9 
+15.1 
+70.3 
+18.1 
+54.5 
+16.5 
+33.2 
+17.0 
+67.8 
+8.3 
+107.9 
+34.4 
+Chemicals 
+48.8 
+10.2 
+27.1 
+4.0 
+23.2 
+6.5 
+43.6 
+18.1 
+19.8 
+17.4 
+30.1 
+23.7 
+Consumer Discretionary 
+21.4 
+11.1 
+25.0 
+5.2 
+17.0 
+18.6 
+21.4 
+16.1 
+0.3 
+11.3 
+30.5 
+31.0 
+Automobiles and Parts 
+25.4 
+23.5 
+26.6 
+22.4 
+51.4 
+29.8 
+16.7 
+20.0 
+-48.3 
+-62.3 
+28.4 
+27.0 
+Consumer Products and Services 
+7.8 
+16.1 
+-7.2 
+18.1 
+13.3 
+15.5 
+26.0 
+13.1 
+1.5 
+8.3 
+13.2 
+#VALUE! 
+Travel and Leisure 
+4.6 
+20.2 
+12.1 
+19.8 
+-4.0 
+17.9 
+-1.3 
+10.2 
+-5.5 
+16.7 
+23.0 
+52.4 
+Retail 
+35.2 
+-0.5 
+41.5 
+-5.8 
+10.3 
+11.1 
+16.4 
+9.1 
+4.8 
+9.0 
+17.1 
+18.7 
+Media 
+16.2 
+17.0 
+12.8 
+18.1 
+3.1 
+11.0 
+-314.0 
+9.6 
+0.1 
+11.7 
+-369.3 
+39.0 
+Consumer Staples 
+7.9 
+7.8 
+6.9 
+6.9 
+4.3 
+8.4 
+24.8 
+1.8 
+3.9 
+7.8 
+12.4 
+30.2 
+Food, Beverage and Tobacco 
+8.1 
+7.7 
+6.2 
+7.1 
+4.2 
+8.3 
+35.9 
+-0.2 
+2.8 
+7.4 
+18.2 
+28.2 
+Personal Care, Drug and Grocery Stores 
+7.5 
+8.0 
+7.8 
+6.6 
+4.5 
+8.7 
+7.4 
+5.8 
+5.4 
+8.5 
+-11.1 
+40.7 
+Energy 
+74.3 
+-8.6 
+78.8 
+-7.0 
+86.8 
+-14.6 
+37.4 
+-2.5 
+97.5 
+-22.2 
+193.5 
+-1.3 
+Financials 
+13.8 
+9.2 
+17.0 
+8.8 
+11.7 
+10.1 
+17.9 
+10.5 
+13.7 
+13.6 
+11.0 
+14.1 
+Banks 
+14.0 
+10.9 
+21.8 
+9.8 
+12.2 
+14.2 
+23.1 
+14.6 
+16.9 
+14.6 
+3.2 
+11.0 
+Financial Services 
+19.6 
+8.2 
+17.9 
+11.4 
+15.8 
+-1.7 
+33.0 
+-5.5 
+6.6 
+10.6 
+16.5 
+16.7 
+Insurance 
+7.6 
+5.4 
+7.2 
+2.3 
+7.8 
+6.7 
+-0.9 
+10.1 
+7.5 
+12.7 
+15.7 
+10.3 
+Health Care 
+4.4 
+20.7 
+2.6 
+25.8 
+5.4 
+9.6 
+16.3 
+12.2 
+9.0 
+10.1 
+40.2 
+35.1 
+Industrials 
+18.6 
+14.3 
+14.8 
+14.6 
+19.6 
+14.6 
+20.7 
+10.3 
+13.2 
+14.0 
+28.1 
+23.5 
+Industrial Goods and Services 
+19.1 
+14.1 
+15.3 
+14.1 
+21.1 
+15.1 
+21.3 
+10.8 
+13.9 
+14.3 
+26.9 
+24.5 
+Construction and Materials 
+15.2 
+15.4 
+10.8 
+19.5 
+14.8 
+12.9 
+15.6 
+5.7 
+1.2 
+8.7 
+30.7 
+21.3 
+Real Estate 
+3.1 
+9.1 
+1.3 
+9.2 
+1.7 
+5.1 
+8.7 
+3.5 
+3.9 
+7.1 
+18.1 
+13.6 
+Technology 
+67.3 
+29.2 
+57.3 
+28.1 
+27.3 
+27.4 
+102.3 
+38.3 
+12.3 
+11.6 
+126.0 
+49.9 
+Telecommunications 
+97.9 
+24.2 
+16.1 
+10.9 
+14.0 
+10.7 
+-32.7 
+-24.8 
+9.6 
+15.3 
+-13.8 
+28.6 
+Utilities 
+10.0 
+9.5 
+11.7 
+9.3 
+10.7 
+7.7 
+5.1 
+15.2 
+15.4 
+10.9 
+5.6 
+6.1 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+ 
+Global 2026 EPS growth expectations (%) 
+ 
+Global 2027 EPS growth expectations (%) 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+ 
+ 
+0
+20
+40
+60
+80
+100
+120
+Telecoms
+Energy
+Technology
+Basic Materials
+Consumer
+Discretionary
+Industrials
+Financials
+Utilities
+Consumer Staples
+Health Care
+Real Estate
+-15
+-10
+-5
+0
+5
+10
+15
+20
+25
+30
+Technology
+Telecoms
+Health Care
+Industrials
+Basic Materials
+Consumer
+Discretionary
+Utilities
+Financials
+Real Estate
+Consumer Staples
+Energy
+
+
+[Page 9]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+9
+ 
+Country P/E ratio & EPS Growth aggregates (based on a universe of around 9,000 stocks) 
+Region 
+2025e P/E 
+2026e P/E
+2027e P/E 
+P/E 12m
+2026 EPS Growth
+2027 EPS Growth
+Australia 
+20.54 
+18.22
+17.06 
+17.39
+13.02
+6.75
+Austria 
+15.38 
+12.10
+10.66 
+11.02
+28.80
+13.52
+Belgium / Luxembourg 
+19.42 
+16.60
+15.10 
+15.49
+16.95
+9.70
+Brazil 
+12.23 
+9.00
+8.73 
+8.81
+35.95
+3.01
+Canada 
+22.22 
+17.28
+15.51 
+16.00
+28.63
+11.35
+Chile 
+14.05 
+12.79
+11.63 
+11.94
+9.02
+10.04
+China 
+13.16 
+11.57
+9.98 
+10.38
+13.47
+15.95
+Colombia 
+14.38 
+9.53
+9.33 
+9.39
+50.80
+2.19
+Czech Republic 
+18.18 
+16.16
+15.92 
+15.99
+12.51
+1.45
+Denmark 
+16.15 
+14.97
+14.83 
+14.87
+7.91
+0.92
+Egypt 
+6.95 
+6.83
+6.07 
+6.27
+1.74
+12.47
+Finland 
+21.16 
+17.34
+15.46 
+15.95
+22.01
+12.19
+France 
+17.04 
+14.26
+13.12 
+13.43
+19.56
+8.64
+Germany 
+18.18 
+15.73
+13.53 
+14.06
+15.59
+16.27
+Greece 
+13.60 
+11.63
+10.75 
+10.99
+14.18
+8.25
+Hong Kong 
+16.83 
+14.15
+13.05 
+13.37
+18.17
+8.43
+Hungary 
+10.67 
+9.37
+8.77 
+8.93
+13.85
+6.85
+India 
+26.20 
+22.84
+19.28 
+20.20
+15.12
+18.42
+Indonesia 
+10.31 
+9.58
+8.62 
+8.88
+9.30
+11.11
+Ireland 
+15.80 
+14.29
+12.74 
+13.16
+10.60
+12.14
+Israel 
+15.35 
+15.89
+13.26 
+13.92
+-4.68
+19.82
+Italy 
+15.58 
+13.76
+12.18 
+12.59
+13.22
+12.99
+Japan 
+20.31 
+16.62
+14.67 
+15.09
+22.73
+13.27
+Korea 
+27.22 
+6.62
+5.02 
+5.32
+310.42
+31.72
+Kuwait 
+17.40 
+16.36
+15.84 
+15.98
+3.81
+3.32
+Malaysia 
+16.17 
+15.29
+14.17 
+14.48
+5.86
+7.92
+Mexico 
+15.00 
+12.36
+11.52 
+11.75
+21.31
+7.37
+Netherlands 
+27.00 
+20.83
+17.16 
+18.07
+29.62
+21.38
+New Zealand 
+-367.00 
+39.01
+24.30 
+25.09
+-1040.85
+60.53
+Norway 
+17.54 
+11.65
+12.25 
+12.07
+51.24
+-4.88
+Philippines 
+9.88 
+9.99
+9.00 
+9.24
+-1.06
+10.98
+Poland 
+16.02 
+11.47
+11.11 
+11.21
+39.74
+3.19
+Portugal 
+16.29 
+13.80
+13.62 
+13.67
+18.03
+1.28
+Qatar 
+10.65 
+11.24
+9.65 
+10.06
+-5.89
+16.43
+Romania 
+12.89 
+12.20
+11.61 
+11.77
+4.83
+5.06
+Saudi Arabia 
+18.87 
+14.83
+13.49 
+13.85
+28.20
+9.91
+Singapore 
+18.16 
+17.45
+16.21 
+16.61
+4.16
+7.67
+South Africa 
+13.38 
+9.92
+8.86 
+9.11
+35.35
+11.92
+Spain 
+16.70 
+14.12
+12.72 
+13.09
+18.25
+11.04
+Sweden 
+17.49 
+16.40
+16.34 
+16.35
+9.90
+0.34
+Switzerland 
+20.43 
+18.63
+16.77 
+17.25
+9.71
+11.08
+Taiwan 
+36.76 
+21.82
+17.00 
+18.02
+68.47
+29.21
+Thailand 
+16.77 
+13.71
+13.91 
+13.77
+22.11
+-1.47
+Turkey 
+13.43 
+8.67
+6.84 
+7.36
+47.45
+24.05
+United Arab Emirates 
+10.30 
+9.99
+9.26 
+9.46
+0.45
+7.77
+United Kingdom 
+15.53 
+12.70
+12.03 
+12.22
+22.63
+5.51
+United States 
+28.07 
+21.51
+18.46 
+19.18
+30.68
+16.54
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+
+
+[Page 10]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+10 
+21 September 2026 
+ 
+ 
+Regional EPS momentum – 4 week rolling upgrades vs. total estimate changes. 
+World 
+ 
+US 
+ 
+ 
+ 
+ 
+Europe 
+ 
+Japan 
+ 
+ 
+ 
+ 
+UK 
+ 
+Emerging 
+ 
+ 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+ 
+ 
+50
+52
+54
+56
+58
+60
+62
+03-Jul
+17-Jul
+31-Jul
+14-Aug
+28-Aug
+11-Sep
+FY1
+FY2
+50
+55
+60
+65
+70
+75
+03-Jul
+17-Jul
+31-Jul
+14-Aug
+28-Aug
+11-Sep
+FY1
+FY2
+40
+45
+50
+55
+60
+65
+03-Jul
+17-Jul
+31-Jul
+14-Aug
+28-Aug
+11-Sep
+FY1
+FY2
+50
+55
+60
+65
+70
+75
+80
+03-Jul
+17-Jul
+31-Jul
+14-Aug
+28-Aug
+11-Sep
+FY1
+FY2
+30
+35
+40
+45
+50
+55
+60
+65
+03-Jul
+17-Jul
+31-Jul
+14-Aug
+28-Aug
+11-Sep
+FY1
+FY2
+38
+40
+42
+44
+46
+48
+50
+52
+54
+56
+03-Jul
+17-Jul
+31-Jul
+14-Aug
+28-Aug
+11-Sep
+FY1
+FY2
+
+
+[Page 11]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+11
+ 
+Percentage of US non-financial companies seeing historical sales higher than previous year. 
+(based on 12m trailing sales) 
+ 
+Source: SG Cross Asset Research/Equity Quant, Factset 
+Percentage of US non-financial companies seeing historical net income higher than previous 
+year (based on 12m trailing net income) 
+ 
+Source: SG Cross Asset Research/Equity Quant, Factset 
+Percentage of US non-financial companies seeing historical net income margins higher than 
+previous year (based on 12m trailing net income margins) 
+ 
+Source: SG Cross Asset Research/Equity Quant 
+20
+30
+40
+50
+60
+70
+80
+90
+100
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+S&P 500
+Midcaps
+Russell 2000
+20
+30
+40
+50
+60
+70
+80
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+S&P 500
+Midcaps
+Russell 2000
+20
+30
+40
+50
+60
+70
+80
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+S&P 500
+Midcaps
+Russell 2000
+
+
+[Page 12]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+12 
+21 September 2026 
+ 
+Percentage of US non-financial companies by selected sectors seeing historical sales higher than previous year  
+(based on 12m trailing sales, Russell 1000 universe) 
+ 
+ 
+ 
+ 
+Percentage of US non-financial companies by selected sectors seeing historical net income higher than previous year  
+(based on 12m trailing net income, Russell 1000 universe) 
+ 
+ 
+ 
+ 
+Percentage of US non-financial companies by selected sector seeing historical net income margins higher than previous year 
+(based on 12m trailing margins, Russell 1000 universe) 
+ 
+ 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+ 
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Consumers
+Technology
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Energy + Materials
+Industrials
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Consumers
+Technology
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Energy + Materials
+Industrials
+10
+20
+30
+40
+50
+60
+70
+80
+90
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Consumers
+Technology
+10
+20
+30
+40
+50
+60
+70
+80
+90
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Energy + Materials
+Industrials
+
+
+[Page 13]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+13
+ 
+Regional earnings consensus changes (3m%, in local currency) 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+Global sector earnings consensus changes (3m%, currency neutral) 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+-5.0
+0.0
+5.0
+10.0
+15.0
+Australia
+Canada
+China
+Germany
+France
+Switzerland
+Emerging
+Eurozone
+Europe ex UK
+Europe
+UK
+Nordic
+Emerging ex China
+World ex US
+World
+US
+Japan
+Pacific ex Japan
+3 months % change
+2027
+2026
+-10
+-5
+0
+5
+10
+15
+20
+Basic Resources
+Real Estate
+Automobiles and Parts
+Media
+Travel and Leisure
+Utilities
+Health Care
+Construction and Materials
+Personal Care, Drug and Grocery Stores
+Food, Beverage and Tobacco
+Chemicals
+Consumer Products and Services
+Banks
+Insurance
+Industrial Goods and Services
+Financial Services
+Telecommunications
+Technology
+Energy
+Retail
+3 months % change
+2027
+2026
+
+
+[Page 14]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+14 
+21 September 2026 
+ 
+US earnings consensus changes (3m) 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+Europe earnings consensus changes (3m) 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+Japan earnings consensus changes (3m) 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+-5
+0
+5
+10
+15
+20
+25
+Chemicals
+Real Estate
+Basic Resources
+Health Care
+Media
+Travel and Leisure
+Utilities
+Construction and Materials
+Food, Beverage and Tobacco
+Consumer Products and Services
+Personal Care, Drug and Grocery Stores
+Automobiles and Parts
+Industrial Goods and Services
+Insurance
+Financial Services
+Banks
+Telecommunications
+Technology
+Energy
+Retail
+3 months % change
+2027
+2026
+-15
+-10
+-5
+0
+5
+10
+15
+Automobiles and Parts
+Basic Resources
+Travel and Leisure
+Real Estate
+Personal Care, Drug and Grocery Stores
+Retail
+Media
+Consumer Products and Services
+Construction and Materials
+Insurance
+Food, Beverage and Tobacco
+Chemicals
+Utilities
+Health Care
+Banks
+Financial Services
+Telecommunications
+Industrial Goods and Services
+Technology
+Energy
+3 months % change
+2027
+2026
+-10
+-5
+0
+5
+10
+15
+20
+25
+Media
+Insurance
+Real Estate
+Travel and Leisure
+Personal Care, Drug and Grocery Stores
+Retail
+Utilities
+Health Care
+Construction and Materials
+Telecommunications
+Banks
+Basic Resources
+Consumer Products and Services
+Chemicals
+Automobiles and Parts
+Industrial Goods and Services
+Food, Beverage and Tobacco
+Technology
+Energy
+Financial Services
+3 months % change
+2027
+2026
+
+
+[Page 15]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+15
+ 
+US consensus quarterly earnings (indexed to 100) 
+S&P500 
+ 
+S&P 500 ex Magnificent Seven 
+ 
+ 
+ 
+ 
+ 
+Russell 2000 
+ 
+Nasdaq100 
+ 
+ 
+ 
+Source: FactSet, SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+ 
+US quarterly consensus earnings (3m % change) 
+ 
+US consensus earnings (monthly % change) 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant, Factset 
+ 
+ 
+ 
+ 
+98
+100
+102
+104
+106
+108
+110
+112
+114
+20-Mar
+20-Apr
+20-May
+20-Jun
+20-Jul
+20-Aug
+4Q26e
+1Q27e
+2Q27e
+3Q27e
+98
+100
+102
+104
+106
+108
+110
+112
+20-Mar
+20-Apr
+20-May
+20-Jun
+20-Jul
+20-Aug
+4Q26e
+1Q27e
+2Q27e
+3Q27e
+94
+96
+98
+100
+102
+104
+106
+20-Mar
+20-Apr
+20-May
+20-Jun
+20-Jul
+20-Aug
+4Q26e
+1Q27e
+2Q27e
+3Q27e
+95
+100
+105
+110
+115
+120
+125
+20-Mar
+20-Apr
+20-May
+20-Jun
+20-Jul
+20-Aug
+4Q26e
+1Q27e
+2Q27e
+3Q27e
+0.0
+2.0
+4.0
+6.0
+8.0
+10.0
+12.0
+4Q26e
+1Q27e
+2Q27e
+3Q27e
+% change
+S&P 500
+S&P 500 ex Mag-7
+Nasdaq 100
+0.00
+1.00
+2.00
+3.00
+4.00
+5.00
+4Q26e
+1Q27e
+2Q27e
+3Q27e
+1m % change
+S&P 500
+S&P 500 ex Mag-7
+Nasdaq 100
+
+
+[Page 16]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+16 
+21 September 2026 
+ 
+Monthly factor performance across regions: Long vs Short (page 1 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus P/E 
+2.7% 
+0.5% 
+0.7% 
+4.6% 
+3.0% 
+3.1% 
+5.3% 
+2.3% 
+1.0% 
+4.2% 
+Price/earnings 
+2.4% 
+-0.9% 
+1.6% 
+3.2% 
+1.0% 
+2.1% 
+2.9% 
+1.8% 
+0.8% 
+4.0% 
+Price/book 
+2.5% 
+-3.0% 
+-0.3% 
+3.8% 
+-1.1% 
+3.1% 
+-0.4% 
+1.3% 
+1.2% 
+3.4% 
+Price/tangible book 
+2.1% 
+-2.3% 
+0.9% 
+2.9% 
+2.3% 
+2.6% 
+1.9% 
+0.8% 
+2.0% 
+3.0% 
+Price/cash flow 
+2.0% 
+-0.4% 
+2.0% 
+3.0% 
+0.8% 
+4.4% 
+1.6% 
+2.6% 
+1.1% 
+5.7% 
+Price/FCF 
+1.0% 
+0.4% 
+1.1% 
+0.3% 
+0.3% 
+3.9% 
+1.0% 
+0.8% 
+-0.2% 
+5.5% 
+Price/sales 
+2.7% 
+-0.2% 
+1.0% 
+5.0% 
+-0.2% 
+6.5% 
+0.3% 
+1.4% 
+0.0% 
+2.5% 
+EV/EBITDA 
+2.1% 
+-0.7% 
+1.2% 
+2.5% 
+2.1% 
+5.2% 
+2.6% 
+2.6% 
+-0.3% 
+3.5% 
+EV/FCF 
+1.2% 
+-0.1% 
+0.7% 
+0.1% 
+0.7% 
+5.6% 
+1.2% 
+0.3% 
+-0.1% 
+4.8% 
+EV/sales 
+3.0% 
+0.3% 
+1.3% 
+4.4% 
+-0.1% 
+7.3% 
+0.4% 
+2.2% 
+0.5% 
+3.5% 
+Profit vs loss making 
+-1.4% 
+-6.9% 
+0.1% 
+1.3% 
+-2.4% 
+1.0% 
+0.5% 
+2.8% 
+2.6% 
+3.8% 
+Value 
+2.7% 
+-1.3% 
+1.3% 
+4.1% 
+2.8% 
+3.1% 
+3.6% 
+2.7% 
+1.3% 
+4.5% 
+12m1m price mom 
+0.9% 
+-0.7% 
+4.5% 
+-6.5% 
+4.8% 
+-3.8% 
+4.6% 
+6.9% 
+6.9% 
+-2.3% 
+12m1m res mom 
+0.6% 
+-1.2% 
+4.0% 
+-4.9% 
+3.2% 
+-2.0% 
+1.9% 
+3.1% 
+3.7% 
+-4.5% 
+3m1m price mom 
+-1.9% 
+-4.8% 
+0.0% 
+-2.3% 
+-2.1% 
+-2.0% 
+1.3% 
+2.2% 
+2.0% 
+-4.8% 
+3m1m res mom 
+-1.7% 
+-5.4% 
+0.0% 
+0.3% 
+-2.2% 
+-1.9% 
+0.7% 
+2.3% 
+1.9% 
+-6.0% 
+3m EPS chg. (SUE) 
+-0.7% 
+2.9% 
+0.9% 
+-3.8% 
+2.5% 
+0.3% 
+3.1% 
+4.3% 
+5.7% 
+1.8% 
+6m EPS chg. (SUE) 
+1.0% 
+2.0% 
+2.7% 
+-3.3% 
+4.0% 
+0.5% 
+4.0% 
+4.9% 
+5.5% 
+0.7% 
+3m EPS revisions 
+-0.6% 
+-0.3% 
+0.1% 
+-4.6% 
+2.6% 
+0.7% 
+2.7% 
+2.6% 
+4.1% 
+1.1% 
+6m EPS revisions 
+-0.6% 
+0.1% 
+-0.2% 
+-4.2% 
+2.2% 
+0.1% 
+2.8% 
+2.9% 
+4.2% 
+-0.2% 
+Momentum 
+0.2% 
+0.2% 
+2.5% 
+-4.7% 
+3.0% 
+-1.3% 
+2.0% 
+4.0% 
+5.3% 
+-2.6% 
+Value + price mom 
+2.5% 
+-0.7% 
+2.4% 
+-2.2% 
+4.6% 
+0.3% 
+3.6% 
+5.9% 
+6.5% 
+1.7% 
+Value + res mom 
+2.6% 
+-0.8% 
+2.4% 
+-0.8% 
+4.3% 
+0.2% 
+2.4% 
+2.7% 
+1.9% 
+-0.9% 
+Value + momentum 
+2.3% 
+-0.5% 
+2.3% 
+-1.0% 
+5.0% 
+1.2% 
+3.7% 
+4.1% 
+4.6% 
+0.7% 
+Total accruals 
+-0.8% 
+1.0% 
+-1.3% 
+1.5% 
+-0.6% 
+0.3% 
+0.0% 
+0.8% 
+-0.4% 
+1.0% 
+Asset growth 
+0.3% 
+-2.0% 
+1.3% 
+0.1% 
+-0.9% 
+2.2% 
+1.2% 
+2.5% 
+2.0% 
+1.6% 
+Asset turnover 
+-1.5% 
+-2.7% 
+-1.4% 
+-1.8% 
+-2.1% 
+0.9% 
+1.2% 
+-0.7% 
+-1.1% 
+0.0% 
+5y ROE trend 
+-0.2% 
+-0.4% 
+-0.6% 
+-2.4% 
+1.4% 
+0.9% 
+0.1% 
+-2.0% 
+-1.9% 
+0.5% 
+5y FCFROIC trend 
+-1.0% 
+-2.4% 
+-0.1% 
+-2.1% 
+-1.9% 
+1.3% 
+-0.8% 
+-2.2% 
+-1.5% 
+-2.0% 
+Earnings quality 
+0.2% 
+0.2% 
+-0.5% 
+-0.7% 
+1.1% 
+-0.3% 
+1.8% 
+2.3% 
+2.0% 
+-0.2% 
+Fund. quality 
+-0.1% 
+0.8% 
+-0.5% 
+-1.8% 
+-0.6% 
+3.7% 
+1.4% 
+0.2% 
+0.0% 
+1.1% 
+Low vol 
+0.5% 
+-5.2% 
+2.0% 
+5.2% 
+-1.7% 
+3.4% 
+2.2% 
+0.6% 
+0.9% 
+8.4% 
+Low residual vol 
+0.5% 
+-5.2% 
+1.2% 
+4.0% 
+-3.0% 
+3.5% 
+0.8% 
+1.5% 
+0.5% 
+8.0% 
+Low beta 
+1.6% 
+-0.9% 
+2.3% 
+6.2% 
+0.2% 
+3.7% 
+3.1% 
+1.7% 
+4.5% 
+7.4% 
+Merton DD 
+-0.3% 
+-4.6% 
+0.8% 
+1.1% 
+-1.0% 
+0.5% 
+0.3% 
+-1.4% 
+-0.9% 
+-1.4% 
+EPS dispersion 
+-3.1% 
+-0.9% 
+-3.3% 
+-0.4% 
+-4.6% 
+1.2% 
+-0.8% 
+-0.7% 
+-0.4% 
+-0.3% 
+Low size 
+1.3% 
+-3.9% 
+1.0% 
+2.3% 
+-1.5% 
+-0.1% 
+-2.9% 
+-1.0% 
+-1.7% 
+-4.3% 
+Low risk 
+-0.4% 
+-4.2% 
+0.9% 
+-0.2% 
+-0.4% 
+0.6% 
+1.2% 
+-0.5% 
+0.1% 
+-0.2% 
+FY1 EPS growth 
+0.7% 
+2.1% 
+1.0% 
+-2.9% 
+3.6% 
+-1.3% 
+2.4% 
+2.5% 
+3.0% 
+-3.9% 
+FY2 EPS growth 
+-1.7% 
+0.4% 
+-2.2% 
+-3.2% 
+-1.9% 
+0.0% 
+-4.2% 
+-2.4% 
+-1.8% 
+-3.3% 
+Long-term growth 
+-2.2% 
+-0.2% 
+-1.4% 
+-3.2% 
+0.0% 
+-0.2% 
+-0.8% 
+-1.5% 
+-0.3% 
+-2.0% 
+3y EPS growth 
+-1.1% 
+0.3% 
+-1.8% 
+-2.6% 
+-0.8% 
+-0.2% 
+-1.0% 
+-1.6% 
+-1.4% 
+1.3% 
+3y FCF growth 
+-0.2% 
+1.7% 
+0.1% 
+-1.8% 
+0.7% 
+-0.1% 
+-2.5% 
+0.3% 
+-0.6% 
+-0.9% 
+3y sales growth 
+-1.7% 
+1.5% 
+-3.3% 
+-1.1% 
+-0.4% 
+0.8% 
+-0.9% 
+-3.4% 
+-4.1% 
+0.5% 
+5y EPS trend 
+-0.9% 
+0.7% 
+-2.0% 
+-2.4% 
+0.4% 
+0.2% 
+-0.4% 
+-3.4% 
+-2.5% 
+0.5% 
+5y FCF trend 
+-1.4% 
+0.3% 
+-0.3% 
+-1.2% 
+-2.3% 
+0.9% 
+-0.9% 
+-0.4% 
+-1.7% 
+-1.4% 
+5y sales trend 
+-1.9% 
+-0.6% 
+-3.9% 
+-1.0% 
+-3.1% 
+0.9% 
+-0.9% 
+-4.5% 
+-4.9% 
+-1.9% 
+Growth 
+-0.2% 
+1.7% 
+-1.8% 
+-1.7% 
+-0.5% 
+-0.2% 
+-0.8% 
+-3.0% 
+-2.3% 
+-0.9% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 17]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+17
+ 
+Monthly factor performance across regions: Long vs Short (page 2 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus yield 
+1.3% 
+-3.6% 
+2.7% 
+4.7% 
+4.1% 
+1.6% 
+2.7% 
+4.2% 
+2.4% 
+7.3% 
+Trailing yield 
+1.1% 
+-3.4% 
+3.3% 
+4.3% 
+3.4% 
+2.4% 
+2.0% 
+3.2% 
+2.2% 
+6.4% 
+Net buybacks 
+0.4% 
+0.0% 
+0.0% 
+2.4% 
+-1.2% 
+5.5% 
+-0.6% 
+-0.4% 
+-0.6% 
+-1.7% 
+Shareholder yield 
+1.1% 
+-1.2% 
+2.0% 
+4.2% 
+-0.4% 
+5.5% 
+0.7% 
+1.9% 
+0.8% 
+5.7% 
+Divi payers vs non-payers 
+-0.5% 
+-2.6% 
+0.6% 
+-1.8% 
+2.7% 
+1.5% 
+0.9% 
+2.4% 
+3.1% 
+4.6% 
+Quality Income 
+1.3% 
+-0.2% 
+2.7% 
+1.8% 
+3.7% 
+6.9% 
+3.8% 
+0.9% 
+0.5% 
+3.4% 
+Dividend aristocrats 
+-0.6% 
+-1.2% 
+0.0% 
+1.5% 
+0.8% 
+0.8% 
+-0.7% 
+-1.5% 
+-0.3% 
+n/a 
+Next 12m DPS growth 
+-0.8% 
+-1.5% 
+-1.9% 
+-1.7% 
+-1.5% 
+3.7% 
+0.9% 
+1.1% 
+1.0% 
+-3.5% 
+3y Dividend growth 
+-0.6% 
+-0.9% 
+-1.4% 
+-0.3% 
+2.4% 
+2.7% 
+0.9% 
+1.0% 
+-0.1% 
+2.3% 
+5y DPS trend 
+-1.8% 
+0.9% 
+-1.8% 
+-0.8% 
+1.7% 
+1.5% 
+0.4% 
+-3.0% 
+-2.9% 
+2.2% 
+Dividend cover 
+-0.3% 
+2.4% 
+-0.2% 
+-1.6% 
+-0.2% 
+-0.3% 
+-1.2% 
+-3.4% 
+-2.7% 
+-2.9% 
+12m DPS surprise 
+1.0% 
+0.9% 
+1.3% 
+-2.4% 
+2.8% 
+4.0% 
+3.8% 
+4.3% 
+3.7% 
+-1.7% 
+Dividend potential 
+0.2% 
+2.0% 
+0.2% 
+-3.2% 
+2.5% 
+1.8% 
+3.2% 
+1.9% 
+3.5% 
+-3.2% 
+1m price reversals 
+-3.2% 
+-3.4% 
+-0.3% 
+-4.2% 
+0.1% 
+-3.0% 
+-3.3% 
+-0.3% 
+-1.5% 
+-5.0% 
+1m res reversals 
+-2.8% 
+-1.7% 
+0.5% 
+-5.0% 
+2.8% 
+-3.1% 
+-2.3% 
+0.6% 
+-0.3% 
+-5.4% 
+1m reversals (vol adj) 
+-2.0% 
+-1.4% 
+0.3% 
+-4.5% 
+1.6% 
+-2.1% 
+-2.4% 
+0.6% 
+-1.2% 
+-5.7% 
+Debt/EBITDA 
+0.5% 
+0.4% 
+0.6% 
+-2.8% 
+0.3% 
+0.2% 
+1.3% 
+1.5% 
+1.0% 
+0.4% 
+Debt/Equity 
+1.0% 
+0.1% 
+1.4% 
+-1.5% 
+2.1% 
+-0.2% 
+-0.6% 
+-0.4% 
+1.0% 
+0.3% 
+Net debt/EBITDA 
+0.9% 
+1.8% 
+0.0% 
+-2.9% 
+1.3% 
+-0.4% 
+1.4% 
+-0.8% 
+0.0% 
+0.7% 
+Net debt/equity 
+1.8% 
+1.2% 
+1.5% 
+-2.1% 
+2.8% 
+-3.5% 
+-0.2% 
+-0.7% 
+0.6% 
+-0.3% 
+Return on assets 
+-1.4% 
+-0.2% 
+0.9% 
+-3.5% 
+-1.0% 
+2.8% 
+1.1% 
+-1.3% 
+-1.8% 
+0.8% 
+Return on equity 
+-1.4% 
+-0.4% 
+0.2% 
+-1.8% 
+0.6% 
+2.6% 
+2.1% 
+1.3% 
+0.6% 
+1.0% 
+ROIC 
+-0.4% 
+0.4% 
+1.1% 
+-2.7% 
+0.5% 
+3.6% 
+2.2% 
+-0.2% 
+0.1% 
+0.3% 
+FCF ROIC 
+0.1% 
+2.3% 
+-0.3% 
+-1.7% 
+-0.5% 
+5.8% 
+-0.4% 
+2.1% 
+1.4% 
+2.2% 
+Gross margin 
+-1.9% 
+-0.9% 
+-1.3% 
+-3.0% 
+-0.9% 
+-0.4% 
+0.3% 
+1.1% 
+-0.8% 
+-1.1% 
+Gross profits/assets 
+-0.7% 
+1.0% 
+0.2% 
+-2.2% 
+-1.3% 
+5.1% 
+-1.3% 
+2.5% 
+0.0% 
+0.9% 
+Sustainalytics ESG 
+-1.7% 
+0.0% 
+-2.1% 
+-1.9% 
+-1.8% 
+1.0% 
+-3.4% 
+1.2% 
+-0.3% 
+-1.0% 
+MSCI ESG 
+0.6% 
+1.1% 
+0.5% 
+0.8% 
+0.4% 
+-1.0% 
+-2.2% 
+1.9% 
+0.9% 
+0.2% 
+MSCI Environmental 
+0.5% 
+0.9% 
+-0.2% 
+1.3% 
+-2.3% 
+-0.6% 
+-1.8% 
+-1.1% 
+-2.9% 
+-0.7% 
+MSCI Social 
+0.8% 
+0.8% 
+0.0% 
+-0.1% 
+0.6% 
+0.2% 
+-0.3% 
+1.7% 
+2.6% 
+0.9% 
+MSCI Governance 
+-0.6% 
+-1.5% 
+0.8% 
+-0.4% 
+-1.1% 
+-0.5% 
+-1.0% 
+2.2% 
+0.9% 
+-1.4% 
+WACI (Scope 1&2) 
+1.2% 
+0.7% 
+-1.0% 
+1.8% 
+0.5% 
+1.4% 
+-2.7% 
+-0.3% 
+-2.0% 
+-0.8% 
+WACI (Scope 1&2&3) 
+1.9% 
+3.5% 
+-0.8% 
+4.3% 
+-2.4% 
+0.9% 
+-2.1% 
+-0.1% 
+-2.4% 
+0.5% 
+Chg in GHG (1&2) 
+0.8% 
+-0.1% 
+1.0% 
+1.0% 
+-0.5% 
+0.8% 
+-0.1% 
+0.8% 
+0.9% 
+0.3% 
+Chg in GHG (1&2&3) 
+-0.3% 
+0.2% 
+-0.5% 
+-1.6% 
+-1.9% 
+-0.4% 
+-0.9% 
+1.2% 
+-0.1% 
+0.9% 
+ESG Controversies 
+-1.4% 
+-1.2% 
+-1.4% 
+n/a 
+n/a 
+n/a 
+n/a 
+-2.8% 
+-1.6% 
+n/a 
+Product Involvement 
+1.8% 
+3.2% 
+2.9% 
+-1.0% 
+3.9% 
+2.7% 
+-6.0% 
+1.5% 
+1.2% 
+-3.8% 
+SBTi target 
+-0.4% 
+1.3% 
+-1.3% 
+-1.6% 
+0.6% 
+-0.9% 
+-2.0% 
+4.7% 
+5.4% 
+n/a 
+10y bond beta 
+2.6% 
+2.0% 
+3.6% 
+5.1% 
+0.7% 
+0.3% 
+2.7% 
+0.2% 
+1.2% 
+7.5% 
+Yield curve beta 
+5.1% 
+1.6% 
+0.9% 
+6.7% 
+-0.9% 
+1.2% 
+-0.7% 
+-2.6% 
+-0.7% 
+4.9% 
+BAA yield beta 
+3.5% 
+0.6% 
+1.8% 
+6.1% 
+3.6% 
+1.4% 
+4.0% 
+-1.2% 
+-1.0% 
+0.8% 
+High yield beta 
+4.1% 
+0.3% 
+2.2% 
+5.8% 
+4.4% 
+2.0% 
+3.8% 
+-2.6% 
+-1.3% 
+0.8% 
+Inflation beta 
+-0.8% 
+-0.7% 
+2.1% 
+-2.2% 
+4.5% 
+1.1% 
+2.7% 
+3.5% 
+0.2% 
+1.5% 
+Agriculture beta 
+1.5% 
+-1.8% 
+1.9% 
+4.2% 
+2.6% 
+3.6% 
+3.1% 
+2.7% 
+0.0% 
+6.2% 
+Energy beta 
+2.0% 
+-1.9% 
+3.1% 
+5.0% 
+-1.1% 
+1.3% 
+4.5% 
+2.4% 
+1.0% 
+8.8% 
+Industrial metals beta 
+-0.1% 
+-0.3% 
+-0.3% 
+-2.4% 
+-0.5% 
+-0.1% 
+-1.0% 
+0.0% 
+-1.3% 
+0.2% 
+Precious metals beta 
+-0.8% 
+-3.7% 
+-1.9% 
+-3.5% 
+0.7% 
+-1.7% 
+-2.5% 
+-1.5% 
+-2.4% 
+-5.2% 
+DXY beta 
+0.7% 
+1.6% 
+3.0% 
+-0.1% 
+0.5% 
+-1.7% 
+2.8% 
+-0.4% 
+2.6% 
+2.6% 
+EURUSD beta 
+-0.1% 
+-2.5% 
+-2.4% 
+-1.1% 
+-1.1% 
+0.7% 
+-2.7% 
+0.1% 
+-2.0% 
+-3.1% 
+GBPEUR beta 
+-2.7% 
+-0.4% 
+-2.3% 
+-1.9% 
+-2.6% 
+0.3% 
+-3.0% 
+0.4% 
+1.1% 
+2.2% 
+GBPUSD beta 
+-1.5% 
+-2.9% 
+-2.6% 
+-1.4% 
+-2.3% 
+1.6% 
+-2.8% 
+1.3% 
+-1.7% 
+-2.4% 
+USDJPY beta 
+-0.4% 
+1.4% 
+1.9% 
+-4.0% 
+0.1% 
+-2.1% 
+2.1% 
+0.7% 
+3.3% 
+2.4% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+
+
+[Page 18]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+18 
+21 September 2026 
+ 
+Monthly factor performance across regions: Long vs Universe (page 1 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus P/E 
+1.5% 
+1.3% 
+0.0% 
+2.2% 
+2.4% 
+2.4% 
+2.6% 
+0.8% 
+-0.1% 
+2.3% 
+Price/earnings 
+0.8% 
+-1.1% 
+0.7% 
+1.5% 
+1.2% 
+2.2% 
+1.5% 
+0.2% 
+-0.1% 
+1.6% 
+Price/book 
+1.1% 
+-1.2% 
+-1.0% 
+1.9% 
+-2.4% 
+1.2% 
+-1.2% 
+-0.6% 
+-0.7% 
+1.8% 
+Price/tangible book 
+1.5% 
+-0.7% 
+0.2% 
+2.0% 
+1.5% 
+1.9% 
+0.7% 
+-0.1% 
+0.5% 
+2.0% 
+Price/cash flow 
+1.0% 
+-0.5% 
+0.9% 
+1.8% 
+-0.3% 
+2.5% 
+0.8% 
+0.0% 
+-0.8% 
+1.9% 
+Price/FCF 
+1.0% 
+0.5% 
+0.2% 
+1.1% 
+0.9% 
+2.5% 
+0.5% 
+-0.4% 
+-1.2% 
+2.6% 
+Price/sales 
+1.9% 
+0.0% 
+0.6% 
+1.5% 
+0.9% 
+2.0% 
+1.0% 
+-0.3% 
+-0.8% 
+0.1% 
+EV/EBITDA 
+1.1% 
+-0.1% 
+0.5% 
+0.5% 
+1.3% 
+2.6% 
+1.6% 
+-0.2% 
+-1.9% 
+0.5% 
+EV/FCF 
+1.0% 
+0.9% 
+0.2% 
+0.8% 
+1.1% 
+2.9% 
+0.9% 
+-1.1% 
+-0.7% 
+1.7% 
+EV/sales 
+2.1% 
+0.5% 
+0.6% 
+1.4% 
+1.1% 
+2.5% 
+0.9% 
+-0.4% 
+-1.3% 
+1.0% 
+Profit vs loss making 
+-0.1% 
+-0.4% 
+0.0% 
+0.0% 
+-0.2% 
+0.4% 
+0.1% 
+0.1% 
+0.1% 
+0.4% 
+Value 
+1.0% 
+-0.6% 
+0.5% 
+1.7% 
+0.9% 
+2.3% 
+1.8% 
+0.5% 
+-0.6% 
+2.7% 
+12m1m price mom 
+0.4% 
+1.6% 
+2.4% 
+-4.0% 
+3.0% 
+-2.1% 
+2.0% 
+3.5% 
+3.3% 
+-3.1% 
+12m1m res mom 
+0.4% 
+1.8% 
+1.7% 
+-2.7% 
+1.6% 
+-1.7% 
+1.3% 
+1.1% 
+1.4% 
+-4.3% 
+3m1m price mom 
+-1.0% 
+-0.9% 
+-0.4% 
+-1.6% 
+-2.3% 
+-1.2% 
+0.9% 
+1.6% 
+1.8% 
+-3.9% 
+3m1m res mom 
+-0.7% 
+-1.4% 
+-0.3% 
+-0.6% 
+-1.6% 
+-1.7% 
+1.1% 
+1.9% 
+2.1% 
+-4.9% 
+3m EPS chg. (SUE) 
+-0.1% 
+2.1% 
+0.8% 
+-1.5% 
+0.1% 
+0.0% 
+1.3% 
+2.2% 
+2.9% 
+1.4% 
+6m EPS chg. (SUE) 
+0.4% 
+0.8% 
+1.7% 
+-1.7% 
+1.2% 
+0.9% 
+2.5% 
+2.4% 
+3.1% 
+1.7% 
+3m EPS revisions 
+-0.3% 
+0.0% 
+0.2% 
+-2.8% 
+0.3% 
+0.4% 
+1.1% 
+1.0% 
+1.6% 
+0.6% 
+6m EPS revisions 
+-0.5% 
+0.4% 
+-0.3% 
+-2.3% 
+0.5% 
+0.1% 
+1.0% 
+1.3% 
+1.9% 
+0.7% 
+Momentum 
+0.3% 
+1.1% 
+1.4% 
+-2.7% 
+2.4% 
+-1.1% 
+1.0% 
+1.8% 
+2.8% 
+-2.1% 
+Value + price mom 
+1.3% 
+0.5% 
+1.2% 
+-1.0% 
+3.3% 
+-0.4% 
+1.7% 
+2.7% 
+3.2% 
+1.0% 
+Value + res mom 
+1.3% 
+0.3% 
+0.7% 
+0.0% 
+2.5% 
+-0.9% 
+1.1% 
+1.6% 
+1.3% 
+-1.2% 
+Value + momentum 
+1.4% 
+0.3% 
+0.8% 
+-0.2% 
+3.0% 
+0.6% 
+2.4% 
+2.3% 
+3.0% 
+0.1% 
+Total accruals 
+-0.2% 
+0.9% 
+-0.8% 
+-0.3% 
+0.6% 
+-0.5% 
+0.5% 
+-0.5% 
+-1.2% 
+-1.3% 
+Asset growth 
+0.3% 
+0.0% 
+0.5% 
+0.1% 
+-0.7% 
+0.4% 
+0.8% 
+1.5% 
+0.8% 
+-0.3% 
+Asset turnover 
+-0.6% 
+-0.5% 
+-1.0% 
+-1.0% 
+-1.7% 
+0.1% 
+1.4% 
+-1.0% 
+-1.0% 
+-1.1% 
+5y ROE trend 
+-0.2% 
+-0.5% 
+-0.2% 
+-1.2% 
+0.7% 
+0.8% 
+0.0% 
+-1.7% 
+-1.0% 
+0.3% 
+5y FCFROIC trend 
+-0.7% 
+-0.4% 
+-0.4% 
+-1.4% 
+-0.8% 
+0.5% 
+-0.3% 
+-2.0% 
+-1.7% 
+-2.3% 
+Earnings quality 
+-0.1% 
+0.9% 
+0.0% 
+-0.2% 
+-0.1% 
+-0.7% 
+1.7% 
+0.7% 
+0.6% 
+-0.8% 
+Fund. quality 
+0.0% 
+1.3% 
+0.4% 
+-0.8% 
+-0.7% 
+0.7% 
+0.6% 
+-0.1% 
+-0.5% 
+0.2% 
+Low vol 
+0.4% 
+-1.0% 
+1.2% 
+1.0% 
+0.7% 
+1.7% 
+1.2% 
+1.2% 
+1.9% 
+5.7% 
+Low residual vol 
+0.4% 
+-0.9% 
+0.7% 
+0.8% 
+-0.6% 
+1.5% 
+0.4% 
+1.7% 
+1.1% 
+5.6% 
+Low beta 
+0.7% 
+1.2% 
+1.6% 
+1.5% 
+2.0% 
+2.4% 
+1.9% 
+1.7% 
+3.3% 
+5.5% 
+Merton DD 
+-0.2% 
+-1.0% 
+-0.2% 
+0.3% 
+-1.7% 
+0.1% 
+0.0% 
+-2.5% 
+-1.4% 
+-1.6% 
+EPS dispersion 
+-1.5% 
+0.1% 
+-1.6% 
+0.4% 
+-0.6% 
+0.7% 
+-1.5% 
+-0.1% 
+-0.4% 
+2.2% 
+Low size 
+0.9% 
+-1.7% 
+0.0% 
+1.6% 
+-0.8% 
+-0.6% 
+-1.6% 
+-1.6% 
+-1.2% 
+-1.7% 
+Low risk 
+0.0% 
+-1.0% 
+0.4% 
+-0.3% 
+-1.1% 
+0.5% 
+0.3% 
+-0.9% 
+-0.1% 
+0.0% 
+FY1 EPS growth 
+1.1% 
+1.6% 
+0.6% 
+-0.7% 
+3.1% 
+-0.1% 
+1.7% 
+1.4% 
+1.4% 
+-0.7% 
+FY2 EPS growth 
+-0.4% 
+1.2% 
+-1.0% 
+-1.8% 
+-0.8% 
+-0.5% 
+-2.2% 
+0.6% 
+0.8% 
+-0.6% 
+Long-term growth 
+-1.5% 
+-0.1% 
+-1.1% 
+-1.5% 
+0.4% 
+-0.9% 
+-0.5% 
+-0.5% 
+-0.2% 
+-1.5% 
+3y EPS growth 
+-0.2% 
+0.9% 
+-0.8% 
+-1.4% 
+0.4% 
+0.1% 
+-1.0% 
+-0.7% 
+-1.3% 
+-0.2% 
+3y FCF growth 
+0.2% 
+1.2% 
+0.5% 
+-1.8% 
+1.2% 
+0.7% 
+-1.0% 
+-1.3% 
+-1.6% 
+-1.3% 
+3y sales growth 
+-0.4% 
+1.7% 
+-1.6% 
+-1.2% 
+0.6% 
+1.4% 
+0.2% 
+-1.8% 
+-1.9% 
+-0.7% 
+5y EPS trend 
+-0.4% 
+0.2% 
+-0.7% 
+-1.2% 
+0.4% 
+-0.5% 
+-0.5% 
+-1.5% 
+-1.6% 
+-0.3% 
+5y FCF trend 
+-1.1% 
+0.9% 
+-0.9% 
+-1.4% 
+-0.5% 
+-0.7% 
+-0.5% 
+-1.9% 
+-2.5% 
+-1.3% 
+5y sales trend 
+-1.0% 
+-0.2% 
+-2.4% 
+-1.0% 
+-2.3% 
+1.0% 
+-1.3% 
+-2.7% 
+-3.5% 
+-1.9% 
+Growth 
+0.2% 
+2.0% 
+-0.5% 
+-0.5% 
+-0.2% 
+0.4% 
+-1.0% 
+-1.7% 
+-1.9% 
+-0.2% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 19]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+19
+ 
+Monthly factor performance across regions: Long vs Universe (page 2 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus yield 
+0.4% 
+-1.4% 
+1.0% 
+0.2% 
+1.7% 
+1.8% 
+1.0% 
+2.1% 
+0.8% 
+4.8% 
+Trailing yield 
+0.3% 
+-1.3% 
+1.5% 
+0.3% 
+2.0% 
+1.5% 
+1.5% 
+1.8% 
+0.5% 
+4.8% 
+Net buybacks 
+0.3% 
+0.0% 
+0.4% 
+1.3% 
+-1.9% 
+1.7% 
+-0.5% 
+-0.6% 
+-0.9% 
+0.4% 
+Shareholder yield 
+-0.1% 
+-0.4% 
+0.3% 
+0.8% 
+-0.1% 
+1.9% 
+0.2% 
+1.3% 
+0.0% 
+4.8% 
+Divi payers vs non-payers 
+-0.1% 
+-0.6% 
+0.0% 
+0.0% 
+0.4% 
+0.9% 
+0.1% 
+0.2% 
+0.3% 
+0.6% 
+Quality Income 
+1.0% 
+-
+0.1% 
+2.0% 
+1.4% 
+3.4% 
+7.4% 
+3.3% 
+0.3% 
+-0.1% 
+1.9% 
+Dividend aristocrats 
+-0.5% 
+-0.7% 
+0.1% 
+1.3% 
+0.7% 
+0.8% 
+-0.6% 
+-1.4% 
+-0.2% 
+n/a 
+Next 12m DPS growth 
+-0.4% 
+-1.2% 
+-0.5% 
+-1.7% 
+1.1% 
+2.8% 
+1.1% 
+1.4% 
+0.9% 
+-0.1% 
+3y Dividend growth 
+0.0% 
+-1.1% 
+-0.1% 
+-0.5% 
+1.9% 
+2.2% 
+0.0% 
+2.0% 
+1.3% 
+0.3% 
+5y DPS trend 
+-0.8% 
+-0.2% 
+-0.2% 
+-0.1% 
+1.0% 
+0.3% 
+-1.3% 
+-1.5% 
+-1.4% 
+1.8% 
+Dividend cover 
+-0.8% 
+0.5% 
+0.1% 
+-1.8% 
+0.2% 
+0.7% 
+-0.9% 
+-2.3% 
+-2.2% 
+-1.1% 
+12m DPS surprise 
+0.4% 
+-0.1% 
+0.8% 
+-1.9% 
+2.1% 
+2.8% 
+2.4% 
+1.9% 
+2.0% 
+-0.4% 
+Dividend potential 
+-0.6% 
+0.4% 
+-0.1% 
+-2.7% 
+1.2% 
+0.7% 
+2.0% 
+0.7% 
+1.4% 
+0.0% 
+1m price reversals 
+-1.9% 
+-1.6% 
+-0.6% 
+-3.0% 
+0.2% 
+-1.8% 
+-1.9% 
+0.1% 
+-0.3% 
+-1.4% 
+1m res reversals 
+-1.3% 
+-0.7% 
+-0.3% 
+-3.2% 
+1.4% 
+-2.0% 
+-1.3% 
+0.9% 
+0.6% 
+-2.2% 
+1m reversals (vol adj) 
+-1.3% 
+-1.1% 
+0.0% 
+-2.8% 
+0.5% 
+-0.7% 
+-1.6% 
+1.0% 
+-0.1% 
+-2.5% 
+Debt/EBITDA 
+0.9% 
+0.3% 
+0.4% 
+-0.7% 
+1.8% 
+1.7% 
+0.4% 
+0.1% 
+0.4% 
+0.0% 
+Debt/Equity 
+0.9% 
+0.6% 
+0.5% 
+0.2% 
+2.2% 
+-0.3% 
+0.4% 
+-0.2% 
+-0.1% 
+-0.3% 
+Net debt/EBITDA 
+0.8% 
+1.3% 
+0.7% 
+-0.2% 
+1.7% 
+0.6% 
+0.6% 
+-1.8% 
+-1.0% 
+0.1% 
+Net debt/equity 
+0.6% 
+0.9% 
+0.4% 
+-0.1% 
+2.7% 
+-2.8% 
+1.0% 
+-1.8% 
+-1.4% 
+-1.3% 
+Return on assets 
+-0.2% 
+0.3% 
+0.7% 
+-1.1% 
+0.4% 
+1.3% 
+1.0% 
+-0.3% 
+-0.8% 
+0.1% 
+Return on equity 
+-0.5% 
+0.1% 
+0.0% 
+-0.8% 
+0.7% 
+1.4% 
+0.5% 
+0.8% 
+-0.2% 
+0.6% 
+ROIC 
+0.2% 
+0.5% 
+1.1% 
+-1.0% 
+1.5% 
+1.8% 
+1.6% 
+-1.0% 
+-0.6% 
+-1.0% 
+FCF ROIC 
+0.5% 
+2.0% 
+-0.1% 
+-0.7% 
+-0.2% 
+3.1% 
+-0.4% 
+-0.1% 
+-0.4% 
+0.4% 
+Gross margin 
+-0.1% 
+0.5% 
+-0.6% 
+-0.8% 
+0.7% 
+-0.1% 
+1.0% 
+0.2% 
+-1.1% 
+-0.8% 
+Gross profits/assets 
+-0.1% 
+0.8% 
+-0.3% 
+-0.6% 
+-1.4% 
+1.0% 
+-0.5% 
+-0.3% 
+-0.5% 
+-0.3% 
+Sustainalytics ESG 
+-0.5% 
+0.0% 
+-1.6% 
+-0.5% 
+-
+1.3% 
+1.0% 
+-1.2% 
+0.6% 
+-0.1% 
+-0.3% 
+MSCI ESG 
+0.3% 
+0.4% 
+-0.5% 
+0.3% 
+-
+0.1% 
+0.3% 
+-1.0% 
+1.2% 
+0.7% 
+-0.3% 
+MSCI Environmental 
+0.0% 
+0.1% 
+-1.0% 
+1.3% 
+-1.4% 
+0.1% 
+-0.4% 
+-1.2% 
+-1.7% 
+0.0% 
+MSCI Social 
+0.1% 
+-0.2% 
+-0.6% 
+0.2% 
+-0.5% 
+1.0% 
+-0.4% 
+0.4% 
+0.8% 
+0.6% 
+MSCI Governance 
+-0.2% 
+0.1% 
+-0.4% 
+0.1% 
+-0.6% 
+-0.9% 
+-0.9% 
+1.2% 
+0.6% 
+-0.3% 
+WACI (Scope 1&2) 
+0.7% 
+0.5% 
+-0.6% 
+1.6% 
+-0.5% 
+2.0% 
+-0.7% 
+0.2% 
+-0.6% 
+-0.3% 
+WACI (Scope 1&2&3) 
+0.8% 
+2.1% 
+0.1% 
+2.1% 
+-1.5% 
+1.9% 
+-1.3% 
+0.6% 
+-0.9% 
+-0.1% 
+Chg in GHG (1&2) 
+0.2% 
+-0.2% 
+0.5% 
+1.0% 
+-0.4% 
+0.0% 
+0.2% 
+1.2% 
+1.0% 
+-0.2% 
+Chg in GHG (1&2&3) 
+0.2% 
+0.9% 
+-0.2% 
+-0.6% 
+-1.0% 
+0.0% 
+-0.9% 
+0.9% 
+-0.2% 
+0.5% 
+ESG Controversies 
+0.0% 
+0.0% 
+0.0% 
+n/a 
+n/a 
+n/a 
+n/a 
+0.0% 
+0.0% 
+n/a 
+Product Involvement 
+0.1% 
+0.3% 
+0.2% 
+-0.1% 
+0.2% 
+0.1% 
+-0.2% 
+0.1% 
+0.1% 
+-0.2% 
+SBTi target 
+-0.3% 
+0.9% 
+-0.7% 
+-1.1% 
+0.4% 
+-0.9% 
+-1.4% 
+4.1% 
+4.5% 
+n/a 
+10y bond beta 
+1.5% 
+1.4% 
+1.8% 
+2.0% 
+-
+0.5% 
+0.9% 
+2.7% 
+0.1% 
+0.7% 
+3.5% 
+Yield curve beta 
+2.7% 
+1.1% 
+0.7% 
+2.6% 
+0.3% 
+0.5% 
+-0.2% 
+-0.6% 
+0.5% 
+1.1% 
+BAA yield beta 
+1.4% 
+0.4% 
+0.1% 
+2.8% 
+1.6% 
+0.5% 
+2.6% 
+-1.1% 
+-0.4% 
+0.3% 
+High yield beta 
+1.8% 
+0.6% 
+1.0% 
+2.7% 
+2.7% 
+1.2% 
+2.6% 
+-1.8% 
+-1.1% 
+-0.3% 
+Inflation beta 
+0.3% 
+-0.1% 
+1.5% 
+-0.5% 
+2.8% 
+0.4% 
+1.2% 
+2.3% 
+0.3% 
+-0.5% 
+Agriculture beta 
+1.4% 
+0.7% 
+1.7% 
+1.9% 
+1.4% 
+1.7% 
+2.1% 
+1.7% 
+0.5% 
+2.3% 
+Energy beta 
+1.4% 
+0.2% 
+1.9% 
+2.0% 
+0.7% 
+1.3% 
+3.3% 
+2.0% 
+1.4% 
+4.5% 
+Industrial metals beta 
+0.4% 
+0.9% 
+-0.1% 
+-1.4% 
+-0.1% 
+-0.1% 
+-0.1% 
+-1.2% 
+-1.1% 
+-1.1% 
+Precious metals beta 
+0.2% 
+-1.2% 
+-0.4% 
+-0.6% 
+0.8% 
+-0.8% 
+-1.3% 
+-1.7% 
+-2.0% 
+-2.6% 
+DXY beta 
+0.6% 
+1.5% 
+1.5% 
+-0.2% 
+0.6% 
+-0.9% 
+2.5% 
+0.2% 
+1.7% 
+2.2% 
+EURUSD beta 
+0.0% 
+-0.8% 
+-1.3% 
+-0.6% 
+-0.3% 
+0.6% 
+-0.7% 
+0.4% 
+-1.1% 
+-0.3% 
+GBPEUR beta 
+-1.0% 
+1.4% 
+-0.4% 
+-1.0% 
+0.3% 
+-0.1% 
+-0.6% 
+0.1% 
+-0.5% 
+0.1% 
+GBPUSD beta 
+-0.5% 
+-0.7% 
+-1.9% 
+-1.0% 
+-1.7% 
+1.0% 
+-0.2% 
+0.8% 
+-0.4% 
+-0.3% 
+USDJPY beta 
+0.1% 
+1.2% 
+1.1% 
+-2.3% 
+-0.6% 
+-0.7% 
+1.9% 
+-0.4% 
+0.9% 
+1.6% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+
+
+[Page 20]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+20 
+21 September 2026 
+ 
+Monthly top vs bottom 10 factor performance 
+Developed: Long vs Short 
+ 
+Developed: Long vs Universe 
+ 
+ 
+ 
+US: Long vs Short 
+ 
+US: Long vs Universe 
+ 
+ 
+ 
+Japan: Long vs Short 
+ 
+Japan: Long vs Universe 
+ 
+ 
+ 
+Europe: Long vs Short 
+ 
+Europe: Long vs Universe 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+-4.0%
+-2.0%
+0.0%
+2.0%
+4.0%
+6.0%
+-2.5%
+-2.0%
+-1.5%
+-1.0%
+-0.5%
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+3.0%
+-8.0%
+-6.0%
+-4.0%
+-2.0%
+0.0%
+2.0%
+4.0%
+-2.0%
+-1.5%
+-1.0%
+-0.5%
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+-8.0%
+-6.0%
+-4.0%
+-2.0%
+0.0%
+2.0%
+4.0%
+6.0%
+8.0%
+-5.0%
+-4.0%
+-3.0%
+-2.0%
+-1.0%
+0.0%
+1.0%
+2.0%
+3.0%
+-6.0%
+-4.0%
+-2.0%
+0.0%
+2.0%
+4.0%
+6.0%
+-2.5%
+-2.0%
+-1.5%
+-1.0%
+-0.5%
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+
+
+[Page 21]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+21
+ 
+Year-to-date factor performance across regions: Long vs Short (page 1 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus P/E 
+7.8% 
+2.7% 
+9.8% 
+-4.3% 
+5.7% 
+1.6% 
+8.2% 
+7.0% 
+8.9% 
+6.7% 
+Price/earnings 
+3.4% 
+1.0% 
+3.0% 
+-9.0% 
+6.9% 
+5.2% 
+11.2% 
+6.8% 
+4.0% 
+1.4% 
+Price/book 
+8.2% 
+-1.2% 
+0.9% 
+3.7% 
+2.8% 
+13.0% 
+1.4% 
+7.6% 
+6.5% 
+-21.2% 
+Price/tangible book 
+10.6% 
+8.0% 
+2.4% 
+3.8% 
+13.0% 
+18.1% 
+9.1% 
+7.0% 
+7.3% 
+-13.2% 
+Price/cash flow 
+5.6% 
+2.9% 
+10.3% 
+2.1% 
+11.2% 
+6.9% 
+9.5% 
+16.0% 
+15.7% 
+-7.6% 
+Price/FCF 
+-2.6% 
+-6.1% 
+0.3% 
+-4.1% 
+2.2% 
+0.6% 
+-4.3% 
+-1.8% 
+-5.3% 
+-2.9% 
+Price/sales 
+7.8% 
+11.3% 
+7.4% 
+-3.7% 
+9.4% 
+5.9% 
+4.5% 
+11.2% 
+7.8% 
+-19.9% 
+EV/EBITDA 
+6.8% 
+5.5% 
+8.1% 
+-6.3% 
+14.2% 
+2.6% 
+12.6% 
+18.5% 
+13.1% 
+-2.5% 
+EV/FCF 
+-3.4% 
+-7.7% 
+-1.4% 
+-6.2% 
+7.2% 
+2.7% 
+-4.7% 
+1.0% 
+-2.2% 
+-4.0% 
+EV/sales 
+9.9% 
+10.3% 
+10.7% 
+1.5% 
+11.2% 
+7.4% 
+4.4% 
+11.8% 
+8.7% 
+-20.2% 
+Profit vs loss making 
+-5.3% 
+-16.7% 
+-3.2% 
+-3.6% 
+-1.6% 
+-0.2% 
+4.0% 
+2.1% 
+1.4% 
+25.3% 
+Value 
+6.1% 
+4.4% 
+9.6% 
+-1.4% 
+11.7% 
+5.3% 
+8.2% 
+8.7% 
+5.7% 
+-8.1% 
+12m1m price mom 
+14.9% 
+21.1% 
+12.9% 
+9.0% 
+3.9% 
+-5.5% 
+8.0% 
+27.2% 
+29.8% 
+17.3% 
+12m1m res mom 
+8.3% 
+17.4% 
+11.2% 
+-9.9% 
+-6.1% 
+-3.3% 
+3.0% 
+8.4% 
+8.3% 
+1.3% 
+3m1m price mom 
+-5.9% 
+-15.6% 
+-7.0% 
+-0.3% 
+-16.5% 
+-17.7% 
+1.1% 
+8.8% 
+13.6% 
+-33.4% 
+3m1m res mom 
+-1.1% 
+-6.0% 
+-2.8% 
+-4.8% 
+-16.5% 
+-10.1% 
+3.7% 
+-7.0% 
+-2.0% 
+-27.1% 
+3m EPS chg. (SUE) 
+0.4% 
+5.5% 
+5.1% 
+-5.4% 
+2.5% 
+-1.1% 
+4.8% 
+16.7% 
+18.7% 
+11.1% 
+6m EPS chg. (SUE) 
+3.4% 
+5.4% 
+7.9% 
+-5.8% 
+7.0% 
+0.7% 
+-0.2% 
+21.2% 
+20.2% 
+20.8% 
+3m EPS revisions 
+5.9% 
+7.5% 
+2.0% 
+0.9% 
+-1.3% 
+2.3% 
+10.0% 
+27.5% 
+30.2% 
+11.2% 
+6m EPS revisions 
+5.4% 
+8.9% 
+1.1% 
+0.5% 
+-1.1% 
+5.0% 
+10.2% 
+24.3% 
+27.6% 
+14.8% 
+Momentum 
+10.1% 
+21.5% 
+7.9% 
+-7.8% 
+-5.1% 
+-2.3% 
+5.5% 
+24.6% 
+25.8% 
+8.7% 
+Value + price mom 
+17.4% 
+25.2% 
+12.0% 
+15.3% 
+11.0% 
+2.2% 
+7.0% 
+37.0% 
+40.6% 
+35.2% 
+Value + res mom 
+13.0% 
+22.6% 
+8.3% 
+-2.7% 
+5.3% 
+1.7% 
+7.8% 
+11.3% 
+8.1% 
+19.1% 
+Value + momentum 
+13.5% 
+20.4% 
+8.6% 
+1.2% 
+1.1% 
+4.0% 
+11.6% 
+19.9% 
+22.4% 
+23.0% 
+Total accruals 
+1.2% 
+4.1% 
+4.6% 
+20.7% 
+-3.1% 
+-5.4% 
+-1.6% 
+7.2% 
+3.3% 
+-10.8% 
+Asset growth 
+4.5% 
+2.5% 
+4.2% 
+11.3% 
+-7.5% 
+4.5% 
+-5.0% 
+3.8% 
+5.2% 
+-23.9% 
+Asset turnover 
+4.6% 
+1.5% 
+-3.7% 
+13.9% 
+-0.4% 
+6.8% 
+6.3% 
+0.1% 
+8.0% 
+15.9% 
+5y ROE trend 
+-4.9% 
+-5.7% 
+-0.6% 
+-10.3% 
+-3.1% 
+-1.9% 
+-0.1% 
+-9.8% 
+-12.1% 
+12.1% 
+5y FCFROIC trend 
+-5.6% 
+-3.7% 
+-3.6% 
+-7.0% 
+-11.6% 
+-5.1% 
+-4.6% 
+-6.6% 
+-7.6% 
+-6.3% 
+Earnings quality 
+9.1% 
+1.1% 
+-2.4% 
+23.9% 
+-5.7% 
+-5.5% 
+-7.2% 
+14.4% 
+11.4% 
+-2.0% 
+Fund. quality 
+1.2% 
+-0.8% 
+1.4% 
+8.5% 
+-1.6% 
+-1.7% 
+-3.1% 
+2.2% 
+2.3% 
+-0.2% 
+Low vol 
+-15.9% 
+-25.4% 
+-2.6% 
+-26.3% 
+-9.8% 
+-2.4% 
+-13.1% 
+-25.9% 
+-28.8% 
+-34.6% 
+Low residual vol 
+-11.8% 
+-22.2% 
+2.5% 
+-21.2% 
+-8.4% 
+-2.3% 
+-13.5% 
+-21.2% 
+-23.1% 
+-31.5% 
+Low beta 
+-18.3% 
+-22.6% 
+-6.8% 
+-32.5% 
+-10.9% 
+-19.0% 
+-10.8% 
+-9.2% 
+-5.8% 
+-42.0% 
+Merton DD 
+-19.5% 
+-25.8% 
+-12.1% 
+-22.6% 
+-10.7% 
+-2.1% 
+-11.5% 
+-23.3% 
+-22.9% 
+-8.3% 
+EPS dispersion 
+-11.9% 
+-9.8% 
+-7.9% 
+-15.7% 
+-8.1% 
+-0.6% 
+1.5% 
+-9.8% 
+-10.7% 
+14.3% 
+Low size 
+-0.8% 
+-4.1% 
+4.0% 
+-4.5% 
+4.4% 
+-0.6% 
+-4.6% 
+-1.1% 
+0.5% 
+-5.8% 
+Low risk 
+-18.0% 
+-21.4% 
+-10.9% 
+-24.2% 
+-9.1% 
+1.9% 
+-6.3% 
+-19.5% 
+-18.1% 
+-3.1% 
+FY1 EPS growth 
+2.8% 
+9.6% 
+-3.3% 
+3.2% 
+-5.7% 
+-5.8% 
+-6.5% 
+21.9% 
+22.6% 
+3.5% 
+FY2 EPS growth 
+9.6% 
+12.9% 
+-7.1% 
+23.9% 
+-0.4% 
+-0.9% 
+-0.7% 
+15.3% 
+17.3% 
+6.7% 
+Long-term growth 
+9.2% 
+7.6% 
+-1.4% 
+24.2% 
+-5.0% 
+3.2% 
+-6.9% 
+10.3% 
+14.6% 
+6.4% 
+3y EPS growth 
+-9.0% 
+-7.3% 
+-3.6% 
+-16.3% 
+6.2% 
+0.1% 
+-1.8% 
+-6.7% 
+-11.4% 
+16.1% 
+3y FCF growth 
+-5.0% 
+5.6% 
+-10.4% 
+-8.5% 
+1.7% 
+-4.2% 
+-12.3% 
+0.0% 
+-2.1% 
+1.0% 
+3y sales growth 
+-12.1% 
+-11.8% 
+-9.9% 
+-20.2% 
+8.8% 
+1.7% 
+-2.9% 
+-3.0% 
+-9.2% 
+22.7% 
+5y EPS trend 
+-5.8% 
+-6.9% 
+-2.1% 
+-14.7% 
+0.9% 
+4.6% 
+-0.4% 
+-14.4% 
+-12.2% 
+10.0% 
+5y FCF trend 
+-7.5% 
+-6.7% 
+-5.8% 
+-3.2% 
+-9.7% 
+-0.2% 
+-8.9% 
+6.9% 
+3.9% 
+-10.7% 
+5y sales trend 
+-13.4% 
+-15.7% 
+-9.8% 
+-21.7% 
+6.0% 
+-6.7% 
+-5.0% 
+-17.1% 
+-18.6% 
+4.2% 
+Growth 
+-0.2% 
+-0.5% 
+-2.0% 
+3.5% 
+-1.6% 
+-0.6% 
+-2.4% 
+4.7% 
+4.5% 
+18.8% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 22]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+22 
+21 September 2026 
+ 
+Year-to-date factor performance across regions: Long vs Short (page 2 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus yield 
+3.3% 
+1.6% 
+16.0% 
+-4.5% 
+6.1% 
+-2.4% 
+3.9% 
+8.9% 
+7.6% 
+-6.5% 
+Trailing yield 
+3.7% 
+5.8% 
+10.1% 
+-0.6% 
+6.8% 
+1.7% 
+4.9% 
+5.4% 
+12.8% 
+-30.0% 
+Net buybacks 
+3.2% 
+-4.1% 
+-2.1% 
+7.1% 
+3.2% 
+2.3% 
+5.8% 
+3.1% 
+7.7% 
+-5.6% 
+Shareholder yield 
+5.1% 
+0.6% 
+4.0% 
+6.2% 
+7.4% 
+2.1% 
+5.3% 
+6.8% 
+9.9% 
+-26.7% 
+Divi payers vs non-payers 
+5.4% 
+5.4% 
+0.7% 
+3.2% 
+0.5% 
+0.3% 
+-1.9% 
+12.0% 
+17.9% 
+18.2% 
+Quality Income 
+-1.4% 
+-0.3% 
+4.0% 
+3.4% 
+4.0% 
+12.6% 
+3.9% 
+-9.5% 
+-10.0% 
+-8.4% 
+Dividend aristocrats 
+-2.1% 
+-1.6% 
+-2.5% 
+-6.1% 
+4.2% 
+-2.5% 
+-11.5% 
+-23.9% 
+-14.1% 
+n/a 
+Next 12m DPS growth 
+1.6% 
+0.8% 
+0.4% 
+0.7% 
+-5.9% 
+11.6% 
+0.0% 
+9.7% 
+10.6% 
+8.0% 
+3y Dividend growth 
+2.5% 
+-4.2% 
+5.0% 
+-6.7% 
+7.1% 
+11.3% 
+5.3% 
+1.7% 
+-3.4% 
+23.3% 
+5y DPS trend 
+-2.4% 
+-9.3% 
+-1.3% 
+-7.7% 
+6.5% 
+12.5% 
+0.2% 
+-13.5% 
+-16.4% 
+12.0% 
+Dividend cover 
+4.4% 
+9.0% 
+-6.8% 
+6.3% 
+-6.1% 
+0.0% 
+-2.2% 
+-2.6% 
+-1.4% 
+17.7% 
+12m DPS surprise 
+2.4% 
+5.5% 
+2.5% 
+-5.7% 
+2.4% 
+3.7% 
+10.6% 
+8.9% 
+9.3% 
+0.0% 
+Dividend potential 
+6.3% 
+10.7% 
+1.1% 
+1.9% 
+-4.8% 
+1.8% 
+8.4% 
+13.9% 
+19.3% 
+16.1% 
+1m price reversals 
+-3.9% 
+-10.0% 
+-4.8% 
+-8.7% 
+-0.5% 
+3.8% 
+-9.4% 
+1.7% 
+-6.5% 
+2.6% 
+1m res reversals 
+-10.3% 
+-6.1% 
+-6.1% 
+-22.9% 
+-4.3% 
+6.7% 
+-11.3% 
+-7.5% 
+-13.4% 
+-1.2% 
+1m reversals (vol adj) 
+-8.1% 
+-3.6% 
+-4.7% 
+-18.4% 
+-3.5% 
+3.6% 
+-9.0% 
+-6.5% 
+-11.9% 
+0.2% 
+Debt/EBITDA 
+2.1% 
+10.2% 
+2.2% 
+-2.4% 
+3.9% 
+-2.4% 
+-0.7% 
+7.4% 
+6.0% 
+25.0% 
+Debt/Equity 
+1.3% 
+5.0% 
+-3.7% 
+-6.7% 
+8.6% 
+6.2% 
+2.9% 
+4.1% 
+5.3% 
+4.7% 
+Net debt/EBITDA 
+1.5% 
+6.3% 
+4.3% 
+-6.3% 
+13.1% 
+-1.6% 
+-1.7% 
+-2.8% 
+-6.0% 
+12.9% 
+Net debt/equity 
+4.7% 
+7.5% 
+1.7% 
+-7.6% 
+13.2% 
+-3.0% 
+-2.8% 
+5.4% 
+1.9% 
+5.6% 
+Return on assets 
+-6.2% 
+-1.3% 
+-1.4% 
+-15.4% 
+3.3% 
+4.5% 
+8.0% 
+-2.4% 
+0.4% 
+20.4% 
+Return on equity 
+-5.2% 
+1.2% 
+-1.1% 
+-9.7% 
+0.3% 
+7.2% 
+9.0% 
+0.3% 
+1.0% 
+24.9% 
+ROIC 
+-1.6% 
+6.8% 
+0.7% 
+-12.3% 
+3.4% 
+-2.7% 
+7.9% 
+3.8% 
+7.7% 
+24.7% 
+FCF ROIC 
+-3.2% 
+9.6% 
+-4.1% 
+-1.1% 
+-3.6% 
+-0.3% 
+-5.4% 
+1.4% 
+2.2% 
+-4.6% 
+Gross margin 
+-7.8% 
+-19.6% 
+-7.6% 
+-0.1% 
+-7.5% 
+-10.4% 
+3.5% 
+-6.9% 
+-4.0% 
+12.0% 
+Gross profits/assets 
+1.3% 
+-9.1% 
+4.8% 
+3.1% 
+5.8% 
+-15.3% 
+-0.9% 
+8.0% 
+6.2% 
+18.1% 
+Sustainalytics ESG 
+-5.1% 
+11.8% 
+-7.8% 
+-5.8% 
+-14.1% 
+-3.6% 
+-5.2% 
+9.5% 
+13.3% 
+-3.8% 
+MSCI ESG 
+0.6% 
+5.0% 
+0.4% 
+3.7% 
+-3.3% 
+-4.4% 
+1.3% 
+6.7% 
+2.3% 
+-10.0% 
+MSCI Environmental 
+-10.7% 
+-15.0% 
+-6.8% 
+-10.2% 
+-0.7% 
+-8.9% 
+-2.3% 
+-10.5% 
+-14.7% 
+-27.5% 
+MSCI Social 
+0.7% 
+2.0% 
+2.4% 
+-4.5% 
+-1.4% 
+6.5% 
+2.4% 
+7.0% 
+5.6% 
+1.9% 
+MSCI Governance 
+-1.1% 
+0.4% 
+3.6% 
+7.9% 
+-2.8% 
+-5.0% 
+4.7% 
+13.5% 
+5.1% 
+-2.5% 
+WACI (Scope 1&2) 
+-6.1% 
+-15.7% 
+-6.5% 
+-4.6% 
+-3.7% 
+-6.8% 
+-9.2% 
+-4.7% 
+-5.7% 
+-14.5% 
+WACI (Scope 1&2&3) 
+-14.1% 
+-21.0% 
+-11.3% 
+-12.1% 
+-6.6% 
+-2.1% 
+-7.9% 
+-8.4% 
+-13.5% 
+-3.3% 
+Chg in GHG (1&2) 
+3.3% 
+0.9% 
+-0.4% 
+5.4% 
+-6.4% 
+6.8% 
+-3.5% 
+3.5% 
+3.2% 
+-8.6% 
+Chg in GHG (1&2&3) 
+4.7% 
+17.4% 
+-0.9% 
+1.4% 
+-0.9% 
+4.8% 
+-6.1% 
+1.7% 
+0.3% 
+-4.8% 
+ESG Controversies 
+-3.5% 
+-1.7% 
+-14.1% 
+n/a 
+n/a 
+n/a 
+n/a 
+2.3% 
+-1.1% 
+n/a 
+Product Involvement 
+3.8% 
+8.6% 
+4.6% 
+0.0% 
+11.3% 
+13.0% 
+-0.7% 
+3.2% 
+5.8% 
+-14.8% 
+SBTi target 
+-3.1% 
+-1.2% 
+-8.0% 
+-0.5% 
+-0.5% 
+-4.0% 
+-1.9% 
+23.0% 
+22.1% 
+n/a 
+10y bond beta 
+11.7% 
+11.1% 
+14.6% 
+4.4% 
+11.7% 
+1.1% 
+12.3% 
+-18.7% 
+-15.2% 
+-6.6% 
+Yield curve beta 
+2.1% 
+-0.4% 
+0.7% 
+-16.8% 
+-6.3% 
+-9.9% 
+-9.5% 
+-23.9% 
+-27.9% 
+0.6% 
+BAA yield beta 
+-8.5% 
+-8.1% 
+-3.2% 
+-28.5% 
+-2.8% 
+-5.6% 
+5.8% 
+-27.3% 
+-29.2% 
+-3.4% 
+High yield beta 
+-2.9% 
+-5.5% 
+-0.9% 
+-19.9% 
+-1.0% 
+-7.4% 
+2.9% 
+-35.3% 
+-37.6% 
+-18.5% 
+Inflation beta 
+11.4% 
+20.6% 
+14.3% 
+20.2% 
+8.9% 
+6.1% 
+11.5% 
+18.0% 
+21.5% 
+-13.0% 
+Agriculture beta 
+-2.7% 
+-1.8% 
+-3.9% 
+-1.8% 
+-1.4% 
+-5.8% 
+8.4% 
+-3.9% 
+-0.8% 
+-29.5% 
+Energy beta 
+12.8% 
+20.0% 
+14.9% 
+6.9% 
+-6.3% 
+2.8% 
+10.2% 
+-3.6% 
+-3.5% 
+2.5% 
+Industrial metals beta 
+7.9% 
+23.8% 
+6.7% 
+21.9% 
+4.6% 
+8.0% 
+1.0% 
+6.8% 
+7.9% 
+-8.7% 
+Precious metals beta 
+4.1% 
+1.9% 
+-0.8% 
+7.5% 
+-4.9% 
+-1.9% 
+-7.9% 
+6.3% 
+4.4% 
+9.4% 
+DXY beta 
+7.1% 
+9.6% 
+6.2% 
+2.5% 
+8.0% 
+5.5% 
+10.8% 
+-2.0% 
+3.5% 
+16.8% 
+EURUSD beta 
+-5.0% 
+-9.0% 
+-2.6% 
+-4.2% 
+-8.8% 
+-5.9% 
+-8.4% 
+-1.0% 
+-5.6% 
+-15.3% 
+GBPEUR beta 
+2.3% 
+3.5% 
+-3.2% 
+14.6% 
+-7.0% 
+1.2% 
+-4.8% 
+16.2% 
+21.4% 
+-4.1% 
+GBPUSD beta 
+-4.7% 
+-9.2% 
+-4.9% 
+2.9% 
+-11.8% 
+-4.7% 
+-8.6% 
+6.3% 
+2.5% 
+-15.2% 
+USDJPY beta 
+8.5% 
+9.2% 
+10.2% 
+8.6% 
+9.8% 
+1.6% 
+11.7% 
+3.8% 
+12.3% 
+18.2% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+
+
+[Page 23]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+23
+ 
+Year-to-date factor performance across regions: Long vs Universe (page 1 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus P/E 
+5.0% 
+5.3% 
+6.0% 
+-1.6% 
+5.2% 
+0.7% 
+6.9% 
+4.0% 
+1.8% 
+-3.5% 
+Price/earnings 
+0.8% 
+-2.4% 
+0.5% 
+-2.9% 
+3.6% 
+1.7% 
+7.3% 
+1.9% 
+-0.8% 
+-4.0% 
+Price/book 
+4.0% 
+0.2% 
+-2.0% 
+5.5% 
+-2.0% 
+1.8% 
+-0.7% 
+3.7% 
+3.6% 
+-8.6% 
+Price/tangible book 
+5.0% 
+4.3% 
+-0.6% 
+6.5% 
+5.2% 
+6.3% 
+6.0% 
+5.9% 
+5.8% 
+-5.8% 
+Price/cash flow 
+4.1% 
+3.6% 
+5.2% 
+-1.7% 
+4.7% 
+6.8% 
+4.2% 
+8.3% 
+7.8% 
+0.3% 
+Price/FCF 
+1.6% 
+-0.2% 
+1.1% 
+-0.1% 
+1.9% 
+2.1% 
+0.2% 
+-1.4% 
+-4.6% 
+-6.7% 
+Price/sales 
+5.9% 
+7.7% 
+1.7% 
+-1.5% 
+6.7% 
+9.5% 
+4.5% 
+8.4% 
+6.6% 
+-9.7% 
+EV/EBITDA 
+4.9% 
+2.6% 
+5.0% 
+-3.7% 
+12.6% 
+2.6% 
+9.0% 
+9.4% 
+7.3% 
+1.0% 
+EV/FCF 
+0.5% 
+0.8% 
+1.7% 
+-2.3% 
+3.2% 
+0.8% 
+0.4% 
+0.9% 
+-0.3% 
+-7.8% 
+EV/sales 
+7.5% 
+9.3% 
+5.8% 
+-0.6% 
+7.3% 
+8.3% 
+4.9% 
+6.0% 
+2.8% 
+-10.1% 
+Profit vs loss making 
+-0.3% 
+-1.0% 
+-0.1% 
+-0.2% 
+-0.2% 
+0.2% 
+0.6% 
+0.0% 
+0.0% 
+2.2% 
+Value 
+4.1% 
+2.5% 
+6.0% 
+0.7% 
+7.6% 
+2.6% 
+6.5% 
+2.1% 
+0.9% 
+-6.9% 
+12m1m price mom 
+9.6% 
+17.5% 
+6.4% 
+8.7% 
+3.2% 
+-3.8% 
+6.5% 
+17.6% 
+18.9% 
+11.8% 
+12m1m res mom 
+3.0% 
+12.3% 
+3.6% 
+-5.4% 
+-3.3% 
+-4.7% 
+5.3% 
+4.4% 
+5.6% 
+-2.3% 
+3m1m price mom 
+-2.0% 
+-7.4% 
+-4.6% 
+3.2% 
+-8.1% 
+-10.2% 
+2.1% 
+6.6% 
+9.4% 
+-16.1% 
+3m1m res mom 
+0.1% 
+-0.8% 
+-3.8% 
+-0.4% 
+-12.5% 
+-10.4% 
+4.3% 
+-0.4% 
+3.7% 
+-13.7% 
+3m EPS chg. (SUE) 
+2.0% 
+3.4% 
+2.2% 
+2.8% 
+0.7% 
+0.4% 
+5.4% 
+10.8% 
+11.3% 
+0.6% 
+6m EPS chg. (SUE) 
+3.1% 
+5.4% 
+5.1% 
+-0.8% 
+3.1% 
+2.8% 
+3.7% 
+14.1% 
+13.6% 
+11.8% 
+3m EPS revisions 
+5.1% 
+2.8% 
+1.8% 
+3.7% 
+0.0% 
+4.4% 
+6.2% 
+21.1% 
+20.8% 
+5.4% 
+6m EPS revisions 
+4.1% 
+3.2% 
+-0.1% 
+4.8% 
+-2.3% 
+5.9% 
+4.4% 
+17.8% 
+19.2% 
+4.8% 
+Momentum 
+7.1% 
+13.6% 
+2.7% 
+-2.7% 
+0.0% 
+-4.5% 
+4.3% 
+12.7% 
+13.0% 
+5.2% 
+Value + price mom 
+7.4% 
+15.1% 
+2.4% 
+8.6% 
+6.2% 
+-0.8% 
+5.6% 
+21.2% 
+22.2% 
+15.7% 
+Value + res mom 
+5.9% 
+13.0% 
+1.7% 
+0.4% 
+3.4% 
+-0.8% 
+4.6% 
+6.5% 
+2.5% 
+3.5% 
+Value + momentum 
+6.3% 
+11.8% 
+2.9% 
+2.2% 
+4.1% 
+3.3% 
+7.0% 
+10.3% 
+11.2% 
+8.4% 
+Total accruals 
+1.5% 
+4.0% 
+2.0% 
+10.3% 
+-1.7% 
+-6.5% 
+0.9% 
+9.6% 
+6.4% 
+-3.4% 
+Asset growth 
+1.1% 
+-1.1% 
+4.4% 
+6.7% 
+-2.8% 
+-0.7% 
+-3.5% 
+4.7% 
+3.7% 
+-15.0% 
+Asset turnover 
+4.2% 
+3.2% 
+-2.0% 
+9.1% 
+-2.8% 
+4.2% 
+6.2% 
+-0.1% 
+4.4% 
+9.5% 
+5y ROE trend 
+-3.7% 
+-4.6% 
+-1.7% 
+-8.2% 
+0.8% 
+0.1% 
+-1.5% 
+-6.0% 
+-6.1% 
+6.7% 
+5y FCFROIC trend 
+-2.9% 
+-3.6% 
+-1.8% 
+-3.8% 
+-6.4% 
+0.7% 
+-1.3% 
+-1.9% 
+-1.2% 
+-3.6% 
+Earnings quality 
+5.8% 
+3.1% 
+-0.2% 
+15.2% 
+-4.2% 
+-1.8% 
+0.0% 
+6.0% 
+4.6% 
+2.8% 
+Fund. quality 
+0.8% 
+-2.3% 
+0.1% 
+6.1% 
+-0.5% 
+-5.5% 
+-1.0% 
+0.8% 
+0.6% 
+-0.4% 
+Low vol 
+-4.9% 
+-6.3% 
+2.0% 
+-12.6% 
+-4.0% 
+-2.2% 
+-5.0% 
+-7.9% 
+-6.7% 
+-5.4% 
+Low residual vol 
+-2.2% 
+-5.3% 
+4.5% 
+-9.0% 
+-1.1% 
+-1.9% 
+-5.4% 
+-6.0% 
+-6.0% 
+-4.9% 
+Low beta 
+-6.2% 
+-4.2% 
+-0.2% 
+-13.7% 
+-3.2% 
+-5.6% 
+-1.5% 
+-0.6% 
+1.1% 
+-7.1% 
+Merton DD 
+-9.9% 
+-10.6% 
+-7.7% 
+-9.7% 
+-6.9% 
+2.5% 
+-4.8% 
+-10.7% 
+-9.4% 
+-7.8% 
+EPS dispersion 
+-6.6% 
+-2.4% 
+-5.5% 
+-8.6% 
+0.7% 
+4.0% 
+0.4% 
+-4.9% 
+-6.7% 
+3.2% 
+Low size 
+1.2% 
+0.5% 
+0.6% 
+-1.2% 
+1.3% 
+-4.4% 
+-3.0% 
+-2.8% 
+-0.9% 
+-9.8% 
+Low risk 
+-9.5% 
+-10.0% 
+-5.0% 
+-13.2% 
+-5.4% 
+1.0% 
+-3.8% 
+-8.2% 
+-6.3% 
+-6.6% 
+FY1 EPS growth 
+5.1% 
+8.3% 
+0.5% 
+5.8% 
+3.6% 
+-2.7% 
+1.1% 
+18.1% 
+18.8% 
+4.0% 
+FY2 EPS growth 
+8.4% 
+14.3% 
+-3.4% 
+12.7% 
+1.1% 
+-0.2% 
+1.3% 
+16.7% 
+18.4% 
+2.2% 
+Long-term growth 
+10.1% 
+7.7% 
+2.6% 
+26.6% 
+-2.0% 
+8.2% 
+-3.2% 
+15.9% 
+17.9% 
+-1.2% 
+3y EPS growth 
+-2.0% 
+0.8% 
+0.9% 
+-3.5% 
+3.3% 
+-0.4% 
+-1.1% 
+0.4% 
+-3.6% 
+10.1% 
+3y FCF growth 
+-0.2% 
+10.2% 
+-6.5% 
+-4.6% 
+3.2% 
+2.5% 
+-3.4% 
+4.6% 
+3.5% 
+8.1% 
+3y sales growth 
+-3.3% 
+-1.4% 
+-0.1% 
+-5.4% 
+7.0% 
+4.0% 
+3.2% 
+0.6% 
+-3.8% 
+12.0% 
+5y EPS trend 
+-2.7% 
+-2.9% 
+-0.1% 
+-8.2% 
+4.1% 
+2.9% 
+-2.1% 
+-6.9% 
+-7.8% 
+6.0% 
+5y FCF trend 
+-4.7% 
+-3.3% 
+-5.2% 
+-2.0% 
+-12.8% 
+0.2% 
+-3.4% 
+2.2% 
+1.1% 
+-4.1% 
+5y sales trend 
+-5.8% 
+-4.9% 
+-3.4% 
+-5.8% 
+1.1% 
+0.9% 
+-1.9% 
+-11.3% 
+-12.6% 
+-0.3% 
+Growth 
+0.6% 
+2.4% 
+0.9% 
+3.1% 
+0.5% 
+0.0% 
+-1.8% 
+5.1% 
+3.5% 
+10.4% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 24]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+24 
+21 September 2026 
+ 
+Year-to-date factor performance across regions: Long vs Universe (page 2 of 2) 
+Factor 
+Developed 
+US 
+Europe 
+Japan 
+UK 
+Russell 2000 
+EU SmallCap 
+Emerging 
+APAC x JP 
+China A 
+Consensus yield 
+1.3% 
+1.3% 
+9.5% 
+-4.7% 
+5.4% 
+1.0% 
+6.1% 
+4.2% 
+-0.2% 
+-4.5% 
+Trailing yield 
+1.1% 
+3.6% 
+8.6% 
+-6.5% 
+5.7% 
+1.6% 
+6.4% 
+1.1% 
+3.4% 
+-1.8% 
+Net buybacks 
+2.0% 
+-0.1% 
+-0.4% 
+3.3% 
+-1.7% 
+1.8% 
+2.8% 
+1.5% 
+1.6% 
+-8.2% 
+Shareholder yield 
+3.8% 
+4.1% 
+3.3% 
+2.1% 
+5.2% 
+2.7% 
+4.2% 
+2.7% 
+2.9% 
+-6.4% 
+Divi payers vs non-payers 
+0.5% 
+1.2% 
+0.1% 
+0.2% 
+0.7% 
+0.7% 
+-0.7% 
+2.1% 
+2.4% 
+1.6% 
+Quality Income 
+-1.0% 
+0.2% 
+1.7% 
+4.1% 
+2.7% 
+16.6% 
+4.8% 
+-6.2% 
+-6.5% 
+-8.3% 
+Dividend aristocrats 
+-1.8% 
+-1.4% 
+-1.8% 
+-5.8% 
+3.9% 
+-2.0% 
+-11.5% 
+-23.4% 
+-13.5% 
+n/a 
+Next 12m DPS growth 
+5.0% 
+6.9% 
+3.6% 
+8.7% 
+0.2% 
+5.0% 
+1.1% 
+10.2% 
+12.6% 
+15.3% 
+3y Dividend growth 
+4.5% 
+5.5% 
+4.3% 
+-1.7% 
+3.0% 
+4.8% 
+3.2% 
+11.0% 
+9.2% 
+14.1% 
+5y DPS trend 
+-3.3% 
+-3.6% 
+-1.8% 
+-3.2% 
+3.2% 
+-2.0% 
+-5.0% 
+-8.9% 
+-10.1% 
+1.4% 
+Dividend cover 
+0.9% 
+7.4% 
+-4.4% 
+2.6% 
+-2.0% 
+0.7% 
+-1.8% 
+-0.8% 
+-1.5% 
+11.7% 
+12m DPS surprise 
+3.3% 
+5.3% 
+3.5% 
+0.7% 
+6.1% 
+-0.8% 
+6.9% 
+9.3% 
+11.3% 
+4.2% 
+Dividend potential 
+4.3% 
+11.4% 
+1.2% 
+1.2% 
+-
+1.4% 
+-3.2% 
+2.6% 
+10.1% 
+14.1% 
+15.5% 
+1m price reversals 
+0.6% 
+-4.8% 
+0.9% 
+-2.3% 
+1.0% 
+0.1% 
+-3.7% 
+5.1% 
+0.5% 
+9.7% 
+1m res reversals 
+-3.4% 
+-3.4% 
+-1.0% 
+-11.6% 
+-1.2% 
+2.5% 
+-4.9% 
+-3.8% 
+-6.8% 
+5.9% 
+1m reversals (vol adj) 
+-3.1% 
+-1.6% 
+0.1% 
+-10.8% 
+-0.9% 
+3.1% 
+-3.8% 
+-3.7% 
+-7.6% 
+7.9% 
+Debt/EBITDA 
+2.0% 
+9.6% 
+0.6% 
+-4.9% 
+0.9% 
+0.7% 
+1.6% 
+4.1% 
+3.0% 
+10.5% 
+Debt/Equity 
+0.9% 
+3.6% 
+-2.1% 
+-4.7% 
+6.2% 
+1.9% 
+0.4% 
+0.6% 
+1.3% 
+-0.1% 
+Net debt/EBITDA 
+1.1% 
+4.4% 
+2.8% 
+-4.0% 
+4.6% 
+1.6% 
+-0.5% 
+-6.1% 
+-6.1% 
+6.2% 
+Net debt/equity 
+1.2% 
+5.0% 
+-0.3% 
+-6.0% 
+6.1% 
+-2.9% 
+-1.3% 
+-0.9% 
+-3.7% 
+6.2% 
+Return on assets 
+-1.2% 
+0.6% 
+-0.2% 
+-6.3% 
+3.0% 
+-0.9% 
+5.0% 
+1.4% 
+3.2% 
+7.5% 
+Return on equity 
+-1.4% 
+0.8% 
+-2.3% 
+-3.2% 
+-1.4% 
+0.1% 
+5.8% 
+0.7% 
+1.2% 
+11.2% 
+ROIC 
+1.6% 
+6.6% 
+0.7% 
+-4.0% 
+1.9% 
+1.0% 
+7.2% 
+4.4% 
+7.6% 
+11.8% 
+FCF ROIC 
+0.6% 
+7.7% 
+-3.3% 
+1.4% 
+-5.3% 
+0.4% 
+0.6% 
+1.6% 
+3.2% 
+-1.8% 
+Gross margin 
+-5.7% 
+-8.9% 
+-5.5% 
+-1.6% 
+-0.9% 
+-2.5% 
+4.3% 
+-2.6% 
+-3.5% 
+3.8% 
+Gross profits/assets 
+-1.3% 
+-5.9% 
+-0.4% 
+-1.1% 
+-0.7% 
+-9.2% 
+1.5% 
+5.0% 
+6.4% 
+3.3% 
+Sustainalytics ESG 
+-1.1% 
+7.1% 
+-3.3% 
+-1.0% 
+-
+8.0% 
+-1.6% 
+-2.8% 
+2.5% 
+4.3% 
+-2.3% 
+MSCI ESG 
+0.4% 
+-0.1% 
+-1.7% 
+1.9% 
+-
+1.5% 
+-1.0% 
+-0.7% 
+3.0% 
+-0.7% 
+-6.0% 
+MSCI Environmental 
+-4.2% 
+-9.1% 
+-3.4% 
+-3.1% 
+-0.7% 
+-3.6% 
+2.3% 
+-6.9% 
+-8.9% 
+-16.3% 
+MSCI Social 
+-1.5% 
+0.5% 
+-0.6% 
+-5.4% 
+-1.3% 
+5.4% 
+-0.9% 
+2.5% 
+1.1% 
+3.6% 
+MSCI Governance 
+-3.0% 
+0.7% 
+-0.7% 
+2.4% 
+-4.9% 
+-1.6% 
+1.5% 
+7.8% 
+2.4% 
+-4.4% 
+WACI (Scope 1&2) 
+-3.4% 
+-6.3% 
+-4.8% 
+-0.6% 
+-4.6% 
+-1.2% 
+-2.3% 
+-2.5% 
+-2.5% 
+-6.9% 
+WACI (Scope 1&2&3) 
+-6.1% 
+-10.4% 
+-4.4% 
+-5.0% 
+-0.8% 
+0.8% 
+-4.0% 
+-4.0% 
+-7.8% 
+-6.3% 
+Chg in GHG (1&2) 
+0.5% 
+-3.7% 
+1.5% 
+2.1% 
+-4.2% 
+1.5% 
+-5.8% 
+1.9% 
+0.6% 
+-1.8% 
+Chg in GHG (1&2&3) 
+3.8% 
+9.7% 
+0.6% 
+3.3% 
+-1.1% 
+4.6% 
+-5.4% 
+5.7% 
+4.7% 
+-5.9% 
+ESG Controversies 
+-0.1% 
+0.0% 
+-0.2% 
+n/a 
+n/a 
+n/a 
+n/a 
+0.0% 
+0.0% 
+n/a 
+Product Involvement 
+0.3% 
+0.7% 
+0.4% 
+0.0% 
+0.5% 
+0.3% 
+0.0% 
+0.3% 
+0.5% 
+-1.0% 
+SBTi target 
+-2.1% 
+-0.7% 
+-4.5% 
+-0.3% 
+-0.2% 
+-3.9% 
+-1.3% 
+19.8% 
+18.3% 
+n/a 
+10y bond beta 
+8.9% 
+7.2% 
+10.9% 
+5.5% 
+5.0% 
+5.2% 
+9.2% 
+-6.4% 
+-4.9% 
+-2.9% 
+Yield curve beta 
+2.1% 
+0.9% 
+1.5% 
+-5.5% 
+-3.8% 
+-1.0% 
+-4.3% 
+-9.6% 
+-12.2% 
+-3.7% 
+BAA yield beta 
+-5.1% 
+-2.7% 
+-3.2% 
+-10.7% 
+-1.9% 
+0.3% 
+1.4% 
+-10.3% 
+-11.6% 
+-6.5% 
+High yield beta 
+-2.0% 
+-1.7% 
+-1.0% 
+-3.6% 
+0.6% 
+-0.8% 
+0.4% 
+-13.3% 
+-15.8% 
+-11.4% 
+Inflation beta 
+6.7% 
+16.9% 
+7.7% 
+10.3% 
+5.6% 
+1.6% 
+6.0% 
+8.6% 
+10.9% 
+-2.5% 
+Agriculture beta 
+0.8% 
+3.4% 
+0.9% 
+-0.8% 
+1.3% 
+-3.0% 
+7.7% 
+-0.9% 
+1.6% 
+-13.1% 
+Energy beta 
+7.4% 
+10.8% 
+9.5% 
+5.7% 
+-4.0% 
+2.6% 
+9.1% 
+-1.1% 
+-2.2% 
+4.5% 
+Industrial metals beta 
+4.2% 
+21.1% 
+3.6% 
+14.1% 
+1.9% 
+4.8% 
+0.8% 
+4.2% 
+5.6% 
+-0.9% 
+Precious metals beta 
+3.8% 
+7.9% 
+2.8% 
+7.1% 
+-3.7% 
+-0.3% 
+-2.1% 
+2.9% 
+2.9% 
+5.1% 
+DXY beta 
+4.6% 
+6.7% 
+3.2% 
+2.8% 
+2.0% 
+1.0% 
+8.7% 
+-2.4% 
+0.2% 
+12.9% 
+EURUSD beta 
+-1.9% 
+-2.9% 
+-1.6% 
+-0.6% 
+-7.6% 
+-2.8% 
+-1.8% 
+-2.4% 
+-5.0% 
+-6.0% 
+GBPEUR beta 
+1.4% 
+2.0% 
+0.8% 
+9.2% 
+1.2% 
+0.5% 
+-0.8% 
+7.7% 
+8.7% 
+-5.8% 
+GBPUSD beta 
+-1.2% 
+-2.6% 
+-2.2% 
+5.2% 
+-8.8% 
+-1.7% 
+-0.7% 
+2.3% 
+0.0% 
+-2.4% 
+USDJPY beta 
+3.2% 
+7.8% 
+5.3% 
+3.1% 
+1.1% 
+2.9% 
+6.1% 
+0.3% 
+3.2% 
+13.9% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+
+
+[Page 25]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+25
+ 
+Year-to-date top vs bottom 10 factor performance 
+Developed: Long vs Short 
+ 
+Developed: Long vs Universe 
+ 
+ 
+ 
+US: Long vs Short 
+ 
+US: Long vs Universe 
+ 
+ 
+ 
+Japan: Long vs Short 
+ 
+Japan: Long vs Universe 
+ 
+ 
+ 
+Europe: Long vs Short 
+ 
+Europe: Long vs Universe 
+ 
+ 
+ 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+-25.0%
+-20.0%
+-15.0%
+-10.0%
+-5.0%
+0.0%
+5.0%
+10.0%
+15.0%
+20.0%
+-15.0%
+-10.0%
+-5.0%
+0.0%
+5.0%
+10.0%
+15.0%
+-30.0%
+-20.0%
+-10.0%
+0.0%
+10.0%
+20.0%
+30.0%
+-15.0%
+-10.0%
+-5.0%
+0.0%
+5.0%
+10.0%
+15.0%
+20.0%
+25.0%
+-40.0%
+-30.0%
+-20.0%
+-10.0%
+0.0%
+10.0%
+20.0%
+30.0%
+-15.0%
+-10.0%
+-5.0%
+0.0%
+5.0%
+10.0%
+15.0%
+20.0%
+25.0%
+30.0%
+-15.0%
+-10.0%
+-5.0%
+0.0%
+5.0%
+10.0%
+15.0%
+20.0%
+-10.0%
+-8.0%
+-6.0%
+-4.0%
+-2.0%
+0.0%
+2.0%
+4.0%
+6.0%
+8.0%
+10.0%
+12.0%
+
+
+[Page 26]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+26 
+21 September 2026 
+ 
+Europe Factor performance across periods: Long vs Short (page 1 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus P/E 
+-1.1% 
+-1.7% 
+0.4% 
+2.7% 
+9.1% 
+9.8% 
+14.7% 
+9.8% 
+Price/earnings 
+-0.4% 
+-0.4% 
+0.9% 
+3.0% 
+7.5% 
+2.2% 
+6.8% 
+3.0% 
+Price/book 
+-1.7% 
+-1.6% 
+0.3% 
+-0.4% 
+1.1% 
+2.2% 
+9.3% 
+0.9% 
+Price/tangible book 
+-0.9% 
+-0.8% 
+0.9% 
+1.8% 
+-1.1% 
+-0.2% 
+9.3% 
+2.4% 
+Price/cash flow 
+-0.8% 
+-1.1% 
+1.3% 
+2.9% 
+5.9% 
+5.7% 
+21.0% 
+10.3% 
+Price/FCF 
+0.0% 
+-0.4% 
+0.3% 
+2.4% 
+6.5% 
+0.3% 
+2.6% 
+0.3% 
+Price/sales 
+-1.8% 
+-1.1% 
+1.3% 
+2.0% 
+6.1% 
+6.1% 
+18.2% 
+7.4% 
+EV/EBITDA 
+-1.0% 
+-1.9% 
+0.4% 
+2.3% 
+7.7% 
+7.9% 
+17.8% 
+8.1% 
+EV/FCF 
+0.3% 
+-0.4% 
+0.1% 
+2.5% 
+6.1% 
+0.2% 
+0.0% 
+-1.4% 
+EV/sales 
+-1.5% 
+-0.9% 
+1.6% 
+2.7% 
+7.3% 
+8.8% 
+23.6% 
+10.7% 
+Profit vs loss making 
+0.9% 
+1.3% 
+0.6% 
+2.7% 
+3.3% 
+-4.0% 
+-5.2% 
+-3.2% 
+Value 
+-1.2% 
+-1.4% 
+0.9% 
+3.5% 
+8.7% 
+7.7% 
+17.4% 
+9.6% 
+12m1m price mom 
+-0.1% 
+3.1% 
+5.3% 
+1.1% 
+-4.8% 
+1.5% 
+22.2% 
+12.9% 
+12m1m res mom 
+0.4% 
+2.0% 
+3.4% 
+-0.3% 
+-4.1% 
+0.1% 
+18.8% 
+11.2% 
+3m1m price mom 
+1.2% 
+0.9% 
+1.5% 
+-0.8% 
+-7.4% 
+-11.8% 
+0.0% 
+-7.0% 
+3m1m res mom 
+2.1% 
+1.1% 
+1.2% 
+-1.2% 
+-5.6% 
+-9.2% 
+3.0% 
+-2.8% 
+3m EPS chg. (SUE) 
+0.8% 
+1.8% 
+1.8% 
+1.5% 
+-0.1% 
+0.1% 
+5.2% 
+5.1% 
+6m EPS chg. (SUE) 
+1.2% 
+3.1% 
+3.2% 
+3.8% 
+2.9% 
+2.4% 
+11.8% 
+7.9% 
+3m EPS revisions 
+-0.1% 
+0.7% 
+1.2% 
+0.4% 
+-4.4% 
+-0.2% 
+6.0% 
+2.0% 
+6m EPS revisions 
+0.0% 
+0.7% 
+1.2% 
+-0.7% 
+-4.5% 
+-1.5% 
+5.0% 
+1.1% 
+Momentum 
+0.1% 
+1.5% 
+2.9% 
+-0.1% 
+-5.0% 
+-0.7% 
+13.8% 
+7.9% 
+Value + price mom 
+-1.1% 
+0.7% 
+3.0% 
+1.7% 
+-0.9% 
+5.9% 
+23.6% 
+12.0% 
+Value + res mom 
+-1.2% 
+-0.1% 
+2.3% 
+0.8% 
+-0.7% 
+2.4% 
+20.2% 
+8.3% 
+Value + momentum 
+-1.1% 
+0.1% 
+2.4% 
+2.1% 
+0.4% 
+3.9% 
+19.9% 
+8.6% 
+Total accruals 
+-0.9% 
+-0.9% 
+-1.4% 
+-1.1% 
+-3.9% 
+-2.9% 
+10.8% 
+4.6% 
+Asset growth 
+-0.1% 
+0.0% 
+1.5% 
+-0.3% 
+1.5% 
+4.6% 
+6.9% 
+4.2% 
+Asset turnover 
+-0.5% 
+-0.7% 
+-1.7% 
+-1.8% 
+-3.0% 
+-3.1% 
+-7.2% 
+-3.7% 
+5y ROE trend 
+0.3% 
+0.5% 
+0.1% 
+-0.6% 
+-1.4% 
+-0.7% 
+-0.8% 
+-0.6% 
+5y FCFROIC trend 
+-0.5% 
+-0.2% 
+0.1% 
+-2.2% 
+-4.4% 
+-4.0% 
+-4.2% 
+-3.6% 
+Earnings quality 
+-0.9% 
+-0.9% 
+-1.3% 
+-2.0% 
+-4.2% 
+-4.5% 
+-1.4% 
+-2.4% 
+Fund. quality 
+0.3% 
+0.1% 
+-0.4% 
+-1.0% 
+-1.7% 
+-0.1% 
+0.7% 
+1.4% 
+Low vol 
+1.6% 
+1.4% 
+2.5% 
+-2.2% 
+2.3% 
+-8.9% 
+-6.0% 
+-2.6% 
+Low residual vol 
+0.9% 
+1.1% 
+2.2% 
+-3.3% 
+-0.3% 
+-2.6% 
+1.6% 
+2.5% 
+Low beta 
+1.9% 
+2.1% 
+2.6% 
+2.3% 
+6.6% 
+-12.1% 
+-13.4% 
+-6.8% 
+Merton DD 
+2.1% 
+1.0% 
+0.3% 
+-0.9% 
+-3.5% 
+-7.1% 
+-22.3% 
+-12.1% 
+EPS dispersion 
+1.7% 
+-0.5% 
+-2.6% 
+-4.4% 
+-3.2% 
+-6.4% 
+-11.4% 
+-7.9% 
+Low size 
+-0.1% 
+-0.7% 
+0.3% 
+3.6% 
+5.4% 
+7.1% 
+0.7% 
+4.0% 
+Low risk 
+2.3% 
+0.9% 
+0.6% 
+-1.8% 
+-3.0% 
+-8.6% 
+-19.1% 
+-10.9% 
+FY1 EPS growth 
+-1.2% 
+-0.2% 
+0.4% 
+1.1% 
+-3.4% 
+-1.0% 
+-4.8% 
+-3.3% 
+FY2 EPS growth 
+-1.4% 
+-2.0% 
+-2.1% 
+-1.4% 
+-8.6% 
+-0.3% 
+-5.1% 
+-7.1% 
+Long-term growth 
+-1.5% 
+-0.8% 
+-1.2% 
+-0.8% 
+-4.2% 
+1.5% 
+-1.6% 
+-1.4% 
+3y EPS growth 
+0.4% 
+-0.1% 
+-0.6% 
+-1.7% 
+-1.8% 
+-0.4% 
+-4.9% 
+-3.6% 
+3y FCF growth 
+0.0% 
+-1.4% 
+-1.7% 
+-0.3% 
+-4.5% 
+-2.8% 
+-11.9% 
+-10.4% 
+3y sales growth 
+0.1% 
+-1.6% 
+-3.3% 
+-2.3% 
+-5.2% 
+-3.6% 
+-16.2% 
+-9.9% 
+5y EPS trend 
+0.4% 
+-0.2% 
+-0.8% 
+-0.6% 
+-1.6% 
+1.3% 
+-5.6% 
+-2.1% 
+5y FCF trend 
+0.5% 
+-0.1% 
+-0.6% 
+0.0% 
+-1.3% 
+-3.0% 
+-9.7% 
+-5.8% 
+5y sales trend 
+0.1% 
+-1.1% 
+-3.2% 
+-2.1% 
+-1.4% 
+-2.5% 
+-17.4% 
+-9.8% 
+Growth 
+-0.8% 
+-0.5% 
+-1.4% 
+-0.1% 
+-4.7% 
+1.5% 
+-7.3% 
+-2.0% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 27]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+27
+ 
+Europe Factor performance across periods: Long vs Short (page 2 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus yield 
+0.0% 
+0.9% 
+3.1% 
+1.6% 
+8.7% 
+8.3% 
+20.2% 
+16.0% 
+Trailing yield 
+0.4% 
+1.2% 
+3.3% 
+2.3% 
+9.1% 
+4.7% 
+14.0% 
+10.1% 
+Net buybacks 
+-0.1% 
+0.1% 
+0.7% 
+1.4% 
+3.7% 
+1.7% 
+-2.2% 
+-2.1% 
+Shareholder yield 
+0.1% 
+0.1% 
+1.8% 
+3.2% 
+9.1% 
+1.9% 
+6.0% 
+4.0% 
+Divi payers vs non-payers 
+0.8% 
+0.5% 
+0.6% 
+1.1% 
+3.8% 
+-2.5% 
+-4.0% 
+0.7% 
+Quality Income 
+0.8% 
+1.6% 
+2.3% 
+1.3% 
+2.0% 
+-2.5% 
+4.6% 
+4.0% 
+Dividend aristocrats 
+1.5% 
+0.3% 
+-0.6% 
+0.7% 
+1.8% 
+-1.5% 
+-6.0% 
+-2.5% 
+Next 12m DPS growth 
+-1.4% 
+-0.9% 
+-1.4% 
+0.7% 
+-3.1% 
+1.0% 
+-2.4% 
+0.4% 
+3y Dividend growth 
+-0.7% 
+-0.5% 
+-0.2% 
+-0.1% 
+-0.4% 
+5.7% 
+1.0% 
+5.0% 
+5y DPS trend 
+0.4% 
+0.2% 
+-0.7% 
+-2.1% 
+-0.4% 
+3.2% 
+-7.3% 
+-1.3% 
+Dividend cover 
+-0.9% 
+-1.5% 
+-0.6% 
+1.1% 
+0.3% 
+2.3% 
+-6.2% 
+-6.8% 
+12m DPS surprise 
+-0.1% 
+0.7% 
+1.1% 
+2.3% 
+1.6% 
+0.4% 
+4.9% 
+2.5% 
+Dividend potential 
+-0.3% 
+0.2% 
+0.3% 
+2.2% 
+-1.9% 
+1.2% 
+2.5% 
+1.1% 
+1m price reversals 
+0.0% 
+-0.3% 
+-0.7% 
+-0.3% 
+5.4% 
+-2.0% 
+-8.5% 
+-4.8% 
+1m res reversals 
+-0.1% 
+0.4% 
+0.5% 
+1.0% 
+4.3% 
+-2.5% 
+-9.0% 
+-6.1% 
+1m reversals (vol adj) 
+0.1% 
+0.4% 
+0.3% 
+0.5% 
+3.7% 
+-0.6% 
+-8.1% 
+-4.7% 
+Debt/EBITDA 
+0.3% 
+0.3% 
+0.5% 
+1.5% 
+0.1% 
+0.8% 
+-0.6% 
+2.2% 
+Debt/Equity 
+0.3% 
+0.5% 
+1.5% 
+1.5% 
+1.1% 
+-2.9% 
+-5.0% 
+-3.7% 
+Net debt/EBITDA 
+0.3% 
+0.1% 
+0.4% 
+1.7% 
+0.0% 
+3.1% 
+6.1% 
+4.3% 
+Net debt/equity 
+0.0% 
+0.7% 
+2.0% 
+2.2% 
+0.5% 
+1.4% 
+5.4% 
+1.7% 
+Return on assets 
+1.3% 
+1.4% 
+-0.2% 
+0.9% 
+2.5% 
+-1.9% 
+-7.2% 
+-1.4% 
+Return on equity 
+1.4% 
+1.1% 
+-0.4% 
+1.6% 
+3.4% 
+-1.1% 
+-6.4% 
+-1.1% 
+ROIC 
+1.0% 
+1.2% 
+0.3% 
+2.2% 
+3.1% 
+-0.2% 
+-4.0% 
+0.7% 
+FCF ROIC 
+1.1% 
+0.3% 
+-1.0% 
+0.5% 
+0.6% 
+-4.8% 
+-5.8% 
+-4.1% 
+Gross margin 
+0.2% 
+-1.1% 
+-2.3% 
+-1.4% 
+-3.0% 
+-1.9% 
+-12.9% 
+-7.6% 
+Gross profits/assets 
+0.2% 
+-0.2% 
+-0.8% 
+-0.1% 
+1.5% 
+7.9% 
+1.2% 
+4.8% 
+Sustainalytics ESG 
+0.3% 
+-0.6% 
+-2.0% 
+-3.8% 
+-3.6% 
+-4.9% 
+-10.3% 
+-7.8% 
+MSCI ESG 
+1.2% 
+0.8% 
+0.7% 
+-1.0% 
+1.3% 
+-0.4% 
+0.5% 
+0.4% 
+MSCI Environmental 
+0.0% 
+-0.8% 
+-0.4% 
+-0.7% 
+0.6% 
+0.6% 
+-9.4% 
+-6.8% 
+MSCI Social 
+1.3% 
+0.7% 
+0.1% 
+-0.8% 
+0.9% 
+-2.4% 
+3.2% 
+2.4% 
+MSCI Governance 
+1.3% 
+1.0% 
+0.9% 
+0.3% 
+3.6% 
+-1.0% 
+2.1% 
+3.6% 
+WACI (Scope 1&2) 
+1.0% 
+0.5% 
+-0.8% 
+0.2% 
+2.7% 
+-1.0% 
+-9.8% 
+-6.5% 
+WACI (Scope 1&2&3) 
+1.4% 
+0.3% 
+-1.5% 
+0.6% 
+1.8% 
+-7.1% 
+-17.5% 
+-11.3% 
+Chg in GHG (1&2) 
+0.4% 
+0.5% 
+0.9% 
+1.1% 
+2.1% 
+0.1% 
+4.1% 
+-0.4% 
+Chg in GHG (1&2&3) 
+-0.3% 
+-0.8% 
+-0.5% 
+0.1% 
+-0.9% 
+0.4% 
+0.5% 
+-0.9% 
+ESG Controversies 
+1.7% 
+1.0% 
+0.0% 
+-2.9% 
+-5.0% 
+-5.0% 
+-23.2% 
+-14.1% 
+Product Involvement 
+-0.1% 
+-0.1% 
+1.5% 
+0.6% 
+3.3% 
+7.6% 
+8.0% 
+4.6% 
+SBTi target 
+0.1% 
+-0.2% 
+-1.1% 
+-2.1% 
+-2.3% 
+-5.9% 
+-9.2% 
+-8.0% 
+10y bond beta 
+0.8% 
+2.8% 
+4.0% 
+5.9% 
+8.8% 
+2.8% 
+18.3% 
+14.6% 
+Yield curve beta 
+0.8% 
+0.9% 
+0.8% 
+1.2% 
+3.7% 
+-5.1% 
+3.2% 
+0.7% 
+BAA yield beta 
+3.2% 
+3.4% 
+2.1% 
+1.8% 
+6.3% 
+-11.8% 
+-8.3% 
+-3.2% 
+High yield beta 
+2.7% 
+3.4% 
+2.3% 
+1.9% 
+6.1% 
+-11.5% 
+-2.8% 
+-0.9% 
+Inflation beta 
+-2.3% 
+-0.8% 
+2.0% 
+3.6% 
+1.2% 
+15.0% 
+25.7% 
+14.3% 
+Agriculture beta 
+0.2% 
+0.8% 
+1.5% 
+1.1% 
+2.6% 
+-1.1% 
+-2.0% 
+-3.9% 
+Energy beta 
+-0.3% 
+1.8% 
+3.8% 
+4.1% 
+9.3% 
+5.9% 
+23.6% 
+14.9% 
+Industrial metals beta 
+-1.9% 
+-1.7% 
+-1.2% 
+-0.8% 
+-4.5% 
+8.4% 
+12.6% 
+6.7% 
+Precious metals beta 
+-0.2% 
+-1.1% 
+-2.7% 
+-4.2% 
+-7.7% 
+0.7% 
+-1.6% 
+-0.8% 
+DXY beta 
+0.9% 
+2.6% 
+3.0% 
+3.1% 
+6.6% 
+-1.9% 
+5.0% 
+6.2% 
+EURUSD beta 
+-0.6% 
+-1.6% 
+-2.0% 
+-3.0% 
+-5.1% 
+2.5% 
+-1.5% 
+-2.6% 
+GBPEUR beta 
+-1.0% 
+-2.6% 
+-2.1% 
+-1.4% 
+-2.5% 
+8.5% 
+-0.4% 
+-3.2% 
+GBPUSD beta 
+-1.1% 
+-2.9% 
+-2.7% 
+-3.3% 
+-6.6% 
+7.3% 
+-2.6% 
+-4.9% 
+USDJPY beta 
+0.3% 
+2.2% 
+2.5% 
+2.9% 
+5.0% 
+-1.1% 
+11.1% 
+10.2% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+
+
+[Page 28]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+28 
+21 September 2026 
+ 
+Europe Factor performance across periods: Long vs Universe (page 1 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus P/E 
+-0.8% 
+-1.0% 
+-0.1% 
+1.3% 
+3.6% 
+5.6% 
+9.0% 
+6.0% 
+Price/earnings 
+-0.4% 
+-0.4% 
+0.3% 
+0.8% 
+2.3% 
+0.8% 
+1.9% 
+0.5% 
+Price/book 
+-1.2% 
+-1.4% 
+-0.9% 
+-0.6% 
+0.2% 
+-0.5% 
+2.1% 
+-2.0% 
+Price/tangible book 
+-0.5% 
+-0.6% 
+0.2% 
+0.6% 
+-0.1% 
+-0.7% 
+3.2% 
+-0.6% 
+Price/cash flow 
+-0.5% 
+-0.4% 
+0.2% 
+1.3% 
+1.2% 
+1.7% 
+10.1% 
+5.2% 
+Price/FCF 
+-0.2% 
+-0.4% 
+-0.2% 
+0.6% 
+2.0% 
+0.2% 
+3.8% 
+1.1% 
+Price/sales 
+-1.1% 
+-0.5% 
+0.3% 
+0.9% 
+1.4% 
+1.2% 
+6.3% 
+1.7% 
+EV/EBITDA 
+-0.5% 
+-0.9% 
+-0.1% 
+1.8% 
+3.0% 
+4.0% 
+9.4% 
+5.0% 
+EV/FCF 
+0.1% 
+-0.1% 
+-0.1% 
+0.9% 
+1.6% 
+0.4% 
+3.8% 
+1.7% 
+EV/sales 
+-0.7% 
+-0.3% 
+0.5% 
+1.3% 
+2.5% 
+4.3% 
+12.0% 
+5.8% 
+Profit vs loss making 
+0.1% 
+0.1% 
+0.0% 
+0.2% 
+0.2% 
+-0.2% 
+-0.2% 
+-0.1% 
+Value 
+-0.6% 
+-0.6% 
+0.2% 
+2.0% 
+3.5% 
+4.1% 
+9.5% 
+6.0% 
+12m1m price mom 
+-0.6% 
+1.2% 
+2.4% 
+2.1% 
+-2.2% 
+3.5% 
+10.3% 
+6.4% 
+12m1m res mom 
+0.1% 
+0.8% 
+1.1% 
+0.7% 
+-2.4% 
+-0.1% 
+7.4% 
+3.6% 
+3m1m price mom 
+0.1% 
+0.1% 
+0.4% 
+-0.5% 
+-3.9% 
+-5.7% 
+-1.3% 
+-4.6% 
+3m1m res mom 
+0.6% 
+0.4% 
+0.5% 
+-0.9% 
+-3.9% 
+-6.0% 
+-0.4% 
+-3.8% 
+3m EPS chg. (SUE) 
+0.3% 
+0.9% 
+1.3% 
+1.4% 
+0.1% 
+-1.1% 
+4.5% 
+2.2% 
+6m EPS chg. (SUE) 
+0.2% 
+1.6% 
+1.8% 
+2.4% 
+1.8% 
+2.2% 
+8.8% 
+5.1% 
+3m EPS revisions 
+-0.1% 
+0.5% 
+0.7% 
+0.5% 
+-2.4% 
+0.7% 
+4.3% 
+1.8% 
+6m EPS revisions 
+0.0% 
+0.5% 
+0.6% 
+-0.3% 
+-2.9% 
+-1.2% 
+1.5% 
+-0.1% 
+Momentum 
+-0.1% 
+0.7% 
+1.6% 
+-0.1% 
+-3.5% 
+-0.9% 
+5.6% 
+2.7% 
+Value + price mom 
+-0.7% 
+0.2% 
+1.2% 
+1.6% 
+-0.8% 
+2.5% 
+8.7% 
+2.4% 
+Value + res mom 
+-0.8% 
+-0.4% 
+0.5% 
+0.9% 
+-0.6% 
+0.7% 
+8.4% 
+1.7% 
+Value + momentum 
+-0.8% 
+-0.1% 
+0.7% 
+1.2% 
+0.0% 
+0.1% 
+9.3% 
+2.9% 
+Total accruals 
+-0.4% 
+-0.5% 
+-1.2% 
+-0.5% 
+-2.4% 
+-3.6% 
+5.8% 
+2.0% 
+Asset growth 
+-0.3% 
+-0.1% 
+0.5% 
+0.3% 
+1.4% 
+3.2% 
+4.0% 
+4.4% 
+Asset turnover 
+-0.1% 
+-0.1% 
+-1.1% 
+-1.1% 
+-2.8% 
+-3.1% 
+-4.5% 
+-2.0% 
+5y ROE trend 
+0.4% 
+0.3% 
+0.0% 
+0.7% 
+0.7% 
+0.3% 
+-3.0% 
+-1.7% 
+5y FCFROIC trend 
+0.2% 
+-0.1% 
+-0.5% 
+-1.2% 
+-3.0% 
+-3.7% 
+-2.9% 
+-1.8% 
+Earnings quality 
+-0.1% 
+-0.2% 
+-0.7% 
+0.0% 
+-2.5% 
+-4.3% 
+0.1% 
+-0.2% 
+Fund. quality 
+0.3% 
+0.3% 
+0.3% 
+0.1% 
+-0.2% 
+0.3% 
+-1.3% 
+0.1% 
+Low vol 
+0.8% 
+0.7% 
+1.4% 
+-0.8% 
+1.1% 
+-2.9% 
+0.4% 
+2.0% 
+Low residual vol 
+0.4% 
+0.5% 
+1.0% 
+-1.2% 
+0.2% 
+0.7% 
+4.3% 
+4.5% 
+Low beta 
+0.7% 
+1.0% 
+1.6% 
+1.4% 
+3.2% 
+-4.6% 
+-2.7% 
+-0.2% 
+Merton DD 
+0.7% 
+0.2% 
+-0.6% 
+-1.6% 
+-3.6% 
+-4.9% 
+-14.5% 
+-7.7% 
+EPS dispersion 
+1.0% 
+-0.3% 
+-1.6% 
+-2.5% 
+-1.5% 
+-5.9% 
+-6.9% 
+-5.5% 
+Low size 
+-0.3% 
+-0.8% 
+-0.3% 
+1.8% 
+2.1% 
+4.5% 
+-0.6% 
+0.6% 
+Low risk 
+0.9% 
+0.5% 
+0.4% 
+-1.2% 
+-2.1% 
+-3.6% 
+-10.3% 
+-5.0% 
+FY1 EPS growth 
+-0.7% 
+-0.1% 
+0.4% 
+0.9% 
+-1.7% 
+0.0% 
+1.3% 
+0.5% 
+FY2 EPS growth 
+-0.7% 
+-0.7% 
+-0.9% 
+-0.4% 
+-4.7% 
+-1.3% 
+-0.8% 
+-3.4% 
+Long-term growth 
+-1.2% 
+-0.7% 
+-0.8% 
+-0.2% 
+-2.5% 
+1.2% 
+4.7% 
+2.6% 
+3y EPS growth 
+0.0% 
+-0.1% 
+0.0% 
+-0.5% 
+-0.5% 
+1.7% 
+1.9% 
+0.9% 
+3y FCF growth 
+0.2% 
+-0.5% 
+-1.1% 
+-0.5% 
+-3.2% 
+-5.6% 
+-5.9% 
+-6.5% 
+3y sales growth 
+0.7% 
+0.0% 
+-1.6% 
+0.4% 
+-1.7% 
+-0.4% 
+-5.0% 
+-0.1% 
+5y EPS trend 
+0.3% 
+-0.1% 
+-0.3% 
+1.0% 
+0.4% 
+2.7% 
+-3.0% 
+-0.1% 
+5y FCF trend 
+0.6% 
+-0.2% 
+-1.2% 
+-0.5% 
+-2.4% 
+-3.5% 
+-9.4% 
+-5.2% 
+5y sales trend 
+0.9% 
+0.1% 
+-1.8% 
+-0.3% 
+-0.5% 
+-1.0% 
+-9.1% 
+-3.4% 
+Growth 
+-0.1% 
+0.5% 
+-0.3% 
+1.1% 
+-1.5% 
+1.8% 
+-2.3% 
+0.9% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 29]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+29
+ 
+Europe Factor performance across periods: Long vs Universe (page 2 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus yield 
+0.0% 
+0.6% 
+1.4% 
+0.9% 
+4.3% 
+5.9% 
+10.0% 
+9.5% 
+Trailing yield 
+0.2% 
+0.9% 
+1.9% 
+1.5% 
+5.2% 
+4.9% 
+10.2% 
+8.6% 
+Net buybacks 
+0.0% 
+0.2% 
+1.0% 
+0.9% 
+3.1% 
+2.3% 
+0.1% 
+-0.4% 
+Shareholder yield 
+0.0% 
+0.0% 
+0.7% 
+1.3% 
+3.1% 
+2.0% 
+4.2% 
+3.3% 
+Divi payers vs non-payers 
+0.1% 
+0.0% 
+0.0% 
+-0.1% 
+0.2% 
+-0.3% 
+-0.2% 
+0.1% 
+Quality Income 
+0.8% 
+1.3% 
+1.4% 
+0.9% 
+0.8% 
+-4.3% 
+1.7% 
+1.7% 
+Dividend aristocrats 
+1.4% 
+0.3% 
+-0.5% 
+0.6% 
+1.7% 
+-1.2% 
+-4.9% 
+-1.8% 
+Next 12m DPS growth 
+-0.8% 
+-0.3% 
+-0.2% 
+1.9% 
+-0.2% 
+3.0% 
+4.1% 
+3.6% 
+3y Dividend growth 
+-0.6% 
+-0.2% 
+0.4% 
+1.1% 
+0.3% 
+3.3% 
+4.0% 
+4.3% 
+5y DPS trend 
+0.5% 
+0.4% 
+0.1% 
+-0.2% 
+0.9% 
+0.3% 
+-3.9% 
+-1.8% 
+Dividend cover 
+-0.3% 
+-0.3% 
+0.1% 
+0.1% 
+-1.1% 
+-0.4% 
+-3.8% 
+-4.4% 
+12m DPS surprise 
+-0.5% 
+0.1% 
+0.6% 
+2.7% 
+2.1% 
+2.2% 
+6.2% 
+3.5% 
+Dividend potential 
+-0.2% 
+0.1% 
+0.0% 
+1.4% 
+-0.9% 
+1.2% 
+3.0% 
+1.2% 
+1m price reversals 
+-0.2% 
+-0.3% 
+-0.8% 
+0.3% 
+3.6% 
+1.7% 
+0.0% 
+0.9% 
+1m res reversals 
+-0.2% 
+-0.1% 
+-0.3% 
+0.1% 
+2.2% 
+1.1% 
+-1.6% 
+-1.0% 
+1m reversals (vol adj) 
+0.1% 
+0.2% 
+-0.1% 
+0.6% 
+2.7% 
+1.4% 
+-1.0% 
+0.1% 
+Debt/EBITDA 
+0.1% 
+0.1% 
+0.0% 
+0.9% 
+-1.5% 
+-0.6% 
+-1.7% 
+0.6% 
+Debt/Equity 
+0.2% 
+0.4% 
+1.0% 
+0.9% 
+0.3% 
+-1.3% 
+-2.5% 
+-2.1% 
+Net debt/EBITDA 
+0.2% 
+0.3% 
+0.6% 
+1.9% 
+-0.5% 
+1.4% 
+3.9% 
+2.8% 
+Net debt/equity 
+0.3% 
+0.6% 
+0.8% 
+1.2% 
+-0.9% 
+-1.0% 
+0.8% 
+-0.3% 
+Return on assets 
+0.5% 
+0.5% 
+-0.1% 
+0.4% 
+0.3% 
+-0.3% 
+-3.4% 
+-0.2% 
+Return on equity 
+0.8% 
+0.4% 
+-0.6% 
+0.5% 
+1.2% 
+-1.4% 
+-5.3% 
+-2.3% 
+ROIC 
+0.4% 
+0.4% 
+0.0% 
+1.6% 
+0.3% 
+-0.5% 
+-2.1% 
+0.7% 
+FCF ROIC 
+0.6% 
+0.1% 
+-0.8% 
+-0.2% 
+-1.6% 
+-4.7% 
+-2.8% 
+-3.3% 
+Gross margin 
+0.5% 
+-0.6% 
+-1.5% 
+-0.4% 
+-1.7% 
+-3.1% 
+-8.1% 
+-5.5% 
+Gross profits/assets 
+0.1% 
+-0.3% 
+-1.0% 
+-0.6% 
+-0.6% 
+1.0% 
+-3.2% 
+-0.4% 
+Sustainalytics ESG 
+-0.1% 
+-0.5% 
+-1.6% 
+-2.5% 
+-2.4% 
+-2.2% 
+-4.0% 
+-3.3% 
+MSCI ESG 
+0.5% 
+0.0% 
+-0.4% 
+-1.3% 
+-0.5% 
+-1.4% 
+-2.4% 
+-1.7% 
+MSCI Environmental 
+0.1% 
+-0.4% 
+-0.9% 
+-0.7% 
+0.2% 
+0.8% 
+-6.7% 
+-3.4% 
+MSCI Social 
+0.6% 
+0.3% 
+-0.3% 
+-0.8% 
+-0.2% 
+-2.9% 
+-1.3% 
+-0.6% 
+MSCI Governance 
+0.6% 
+0.4% 
+-0.1% 
+-0.7% 
+1.4% 
+-2.5% 
+-1.2% 
+-0.7% 
+WACI (Scope 1&2) 
+0.5% 
+-0.2% 
+-0.5% 
+-0.7% 
+0.8% 
+-0.9% 
+-7.4% 
+-4.8% 
+WACI (Scope 1&2&3) 
+0.6% 
+0.2% 
+-0.5% 
+0.6% 
+1.1% 
+-1.9% 
+-7.6% 
+-4.4% 
+Chg in GHG (1&2) 
+0.0% 
+0.1% 
+0.4% 
+0.8% 
+1.0% 
+0.7% 
+3.9% 
+1.5% 
+Chg in GHG (1&2&3) 
+-0.4% 
+-0.5% 
+-0.2% 
+-0.3% 
+-0.5% 
+1.1% 
+1.9% 
+0.6% 
+ESG Controversies 
+0.0% 
+0.0% 
+0.0% 
+0.0% 
+-0.1% 
+-0.1% 
+-0.3% 
+-0.2% 
+Product Involvement 
+0.0% 
+0.0% 
+0.1% 
+0.0% 
+0.2% 
+0.5% 
+0.6% 
+0.4% 
+SBTi target 
+0.0% 
+-0.1% 
+-0.6% 
+-1.2% 
+-1.3% 
+-3.3% 
+-5.2% 
+-4.5% 
+10y bond beta 
+0.3% 
+1.5% 
+2.3% 
+3.4% 
+5.8% 
+4.2% 
+12.2% 
+10.9% 
+Yield curve beta 
+0.1% 
+0.3% 
+0.5% 
+1.3% 
+1.4% 
+-2.6% 
+3.0% 
+1.5% 
+BAA yield beta 
+1.3% 
+1.4% 
+0.4% 
+-0.4% 
+1.0% 
+-8.3% 
+-5.2% 
+-3.2% 
+High yield beta 
+1.3% 
+1.7% 
+1.0% 
+0.6% 
+1.9% 
+-7.3% 
+-2.4% 
+-1.0% 
+Inflation beta 
+-1.1% 
+-0.6% 
+1.0% 
+1.4% 
+0.2% 
+6.7% 
+14.9% 
+7.7% 
+Agriculture beta 
+-0.1% 
+0.6% 
+1.3% 
+1.3% 
+2.6% 
+1.0% 
+2.8% 
+0.9% 
+Energy beta 
+-0.1% 
+1.1% 
+2.0% 
+3.0% 
+6.4% 
+3.4% 
+13.8% 
+9.5% 
+Industrial metals beta 
+-1.1% 
+-1.2% 
+-0.8% 
+0.0% 
+-2.4% 
+3.2% 
+7.1% 
+3.6% 
+Precious metals beta 
+0.0% 
+-0.3% 
+-1.0% 
+-1.2% 
+-2.7% 
+2.4% 
+3.8% 
+2.8% 
+DXY beta 
+0.5% 
+1.1% 
+1.3% 
+1.5% 
+3.4% 
+-1.3% 
+3.5% 
+3.2% 
+EURUSD beta 
+-0.2% 
+-1.0% 
+-1.2% 
+-1.8% 
+-2.6% 
+0.4% 
+-0.9% 
+-1.6% 
+GBPEUR beta 
+0.0% 
+-0.7% 
+-0.4% 
+1.1% 
+0.4% 
+4.9% 
+2.5% 
+0.8% 
+GBPUSD beta 
+-0.7% 
+-1.6% 
+-1.9% 
+-2.4% 
+-3.6% 
+2.3% 
+-1.9% 
+-2.2% 
+USDJPY beta 
+0.0% 
+0.9% 
+1.1% 
+1.9% 
+3.6% 
+-0.3% 
+6.6% 
+5.3% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+
+
+[Page 30]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+30 
+21 September 2026 
+ 
+US Factor performance across periods: Long vs Short (page 1 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus P/E 
+-1.2% 
+-1.5% 
+0.1% 
+3.0% 
+13.1% 
+3.3% 
+9.9% 
+2.7% 
+Price/earnings 
+-1.0% 
+-1.2% 
+-1.1% 
+-0.3% 
+6.2% 
+-2.9% 
+7.9% 
+1.0% 
+Price/book 
+-1.9% 
+-2.4% 
+-3.9% 
+-2.1% 
+2.3% 
+-0.9% 
+4.5% 
+-1.2% 
+Price/tangible book 
+0.1% 
+0.3% 
+-1.2% 
+-2.3% 
+-4.8% 
+5.4% 
+18.2% 
+8.0% 
+Price/cash flow 
+-1.8% 
+-2.6% 
+-2.1% 
+0.1% 
+9.9% 
+-4.0% 
+10.8% 
+2.9% 
+Price/FCF 
+-2.0% 
+-3.5% 
+-2.0% 
+1.1% 
+11.8% 
+-7.4% 
+-2.9% 
+-6.1% 
+Price/sales 
+-2.5% 
+-2.5% 
+-1.0% 
+1.1% 
+8.4% 
+5.2% 
+17.7% 
+11.3% 
+EV/EBITDA 
+-2.3% 
+-3.0% 
+-2.8% 
+-2.0% 
+5.8% 
+-3.5% 
+16.9% 
+5.5% 
+EV/FCF 
+-1.9% 
+-3.4% 
+-2.2% 
+1.5% 
+11.4% 
+-8.2% 
+-4.5% 
+-7.7% 
+EV/sales 
+-2.1% 
+-2.0% 
+-0.6% 
+1.6% 
+8.6% 
+6.0% 
+18.6% 
+10.3% 
+Profit vs loss making 
+-2.4% 
+-3.2% 
+-4.4% 
+-13.0% 
+-8.5% 
+-25.2% 
+-14.9% 
+-16.7% 
+Value 
+-2.1% 
+-3.2% 
+-2.0% 
+-0.4% 
+8.7% 
+0.0% 
+13.0% 
+4.4% 
+12m1m price mom 
+1.4% 
+5.2% 
+4.6% 
+-6.2% 
+-15.1% 
+11.7% 
+15.1% 
+21.1% 
+12m1m res mom 
+1.1% 
+4.9% 
+2.4% 
+-6.0% 
+-11.7% 
+4.6% 
+15.7% 
+17.4% 
+3m1m price mom 
+1.4% 
+-0.5% 
+-2.3% 
+-6.0% 
+-19.6% 
+-18.2% 
+-16.6% 
+-15.6% 
+3m1m res mom 
+0.5% 
+-2.1% 
+-4.1% 
+-6.3% 
+-14.1% 
+-9.2% 
+-3.1% 
+-6.0% 
+3m EPS chg. (SUE) 
+1.0% 
+3.2% 
+5.5% 
+6.9% 
+5.4% 
+12.2% 
+7.6% 
+5.5% 
+6m EPS chg. (SUE) 
+0.8% 
+3.7% 
+4.3% 
+6.4% 
+5.0% 
+12.8% 
+9.4% 
+5.4% 
+3m EPS revisions 
+0.8% 
+2.7% 
+2.6% 
+-1.1% 
+-4.1% 
+5.2% 
+13.1% 
+7.5% 
+6m EPS revisions 
+0.9% 
+2.8% 
+2.9% 
+-0.4% 
+-1.4% 
+7.5% 
+14.4% 
+8.9% 
+Momentum 
+1.5% 
+4.4% 
+4.1% 
+-1.2% 
+-5.8% 
+10.3% 
+24.3% 
+21.5% 
+Value + price mom 
+0.2% 
+2.9% 
+3.4% 
+-1.6% 
+-4.9% 
+15.2% 
+25.5% 
+25.2% 
+Value + res mom 
+0.2% 
+2.2% 
+1.7% 
+-1.2% 
+0.3% 
+9.0% 
+29.4% 
+22.6% 
+Value + momentum 
+-0.1% 
+1.3% 
+2.1% 
+0.3% 
+3.1% 
+10.5% 
+28.4% 
+20.4% 
+Total accruals 
+0.3% 
+0.1% 
+0.2% 
+2.3% 
+6.1% 
+5.5% 
+4.7% 
+4.1% 
+Asset growth 
+-0.9% 
+-0.9% 
+-1.4% 
+-3.3% 
+-2.0% 
+-1.0% 
+8.7% 
+2.5% 
+Asset turnover 
+-1.3% 
+-1.7% 
+-2.2% 
+-3.8% 
+-5.3% 
+1.7% 
+10.3% 
+1.5% 
+5y ROE trend 
+1.0% 
+0.0% 
+-0.3% 
+2.0% 
+2.3% 
+-5.2% 
+-10.4% 
+-5.7% 
+5y FCFROIC trend 
+-0.1% 
+-1.6% 
+-2.1% 
+-2.4% 
+-4.4% 
+-1.2% 
+-4.4% 
+-3.7% 
+Earnings quality 
+1.1% 
+0.9% 
+1.0% 
+3.3% 
+3.7% 
+1.1% 
+2.2% 
+1.1% 
+Fund. quality 
+0.3% 
+0.0% 
+0.7% 
+0.0% 
+3.1% 
+-0.4% 
+0.6% 
+-0.8% 
+Low vol 
+-1.6% 
+-2.8% 
+-3.3% 
+-14.4% 
+-4.1% 
+-29.7% 
+-27.9% 
+-25.4% 
+Low residual vol 
+-1.7% 
+-2.1% 
+-2.8% 
+-15.0% 
+-5.6% 
+-26.6% 
+-24.3% 
+-22.2% 
+Low beta 
+-0.5% 
+-1.5% 
+-1.3% 
+-5.3% 
+11.5% 
+-27.1% 
+-22.9% 
+-22.6% 
+Merton DD 
+1.5% 
+0.3% 
+-3.8% 
+-8.1% 
+-9.6% 
+-23.4% 
+-30.5% 
+-25.8% 
+EPS dispersion 
+1.1% 
+0.2% 
+-0.2% 
+-0.4% 
+3.2% 
+-4.7% 
+-8.4% 
+-9.8% 
+Low size 
+-1.5% 
+-4.0% 
+-5.9% 
+-4.1% 
+3.8% 
+-5.3% 
+-5.7% 
+-4.1% 
+Low risk 
+1.1% 
+0.7% 
+-2.7% 
+-8.4% 
+-8.7% 
+-21.3% 
+-23.9% 
+-21.4% 
+FY1 EPS growth 
+0.5% 
+3.4% 
+4.6% 
+5.2% 
+0.0% 
+15.8% 
+13.6% 
+9.6% 
+FY2 EPS growth 
+0.1% 
+0.1% 
+0.0% 
+2.0% 
+-8.4% 
+16.3% 
+10.5% 
+12.9% 
+Long-term growth 
+0.7% 
+1.7% 
+2.2% 
+-0.3% 
+-7.5% 
+15.9% 
+9.9% 
+7.6% 
+3y EPS growth 
+0.9% 
+0.3% 
+1.1% 
+2.9% 
+0.6% 
+1.5% 
+-9.6% 
+-7.3% 
+3y FCF growth 
+1.0% 
+0.8% 
+1.0% 
+3.8% 
+0.1% 
+10.0% 
+2.7% 
+5.6% 
+3y sales growth 
+1.3% 
+1.7% 
+1.9% 
+10.4% 
+6.6% 
+9.7% 
+-13.6% 
+-11.8% 
+5y EPS trend 
+0.6% 
+0.0% 
+0.5% 
+3.9% 
+4.9% 
+-5.1% 
+-12.2% 
+-6.9% 
+5y FCF trend 
+1.2% 
+0.1% 
+0.5% 
+3.8% 
+3.7% 
+8.1% 
+-10.4% 
+-6.7% 
+5y sales trend 
+1.0% 
+0.1% 
+-0.3% 
+6.0% 
+8.7% 
+3.2% 
+-21.0% 
+-15.7% 
+Growth 
+0.9% 
+1.8% 
+2.5% 
+4.8% 
+1.0% 
+15.7% 
+-2.1% 
+-0.5% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 31]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+31
+ 
+US Factor performance across periods: Long vs Short (page 2 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus yield 
+-2.4% 
+-1.8% 
+-2.1% 
+-10.8% 
+-5.4% 
+-14.5% 
+5.0% 
+1.6% 
+Trailing yield 
+-2.1% 
+-1.4% 
+-2.0% 
+-10.1% 
+-3.8% 
+-10.7% 
+9.5% 
+5.8% 
+Net buybacks 
+-1.3% 
+-2.4% 
+-2.1% 
+3.5% 
+9.4% 
+-2.0% 
+0.3% 
+-4.1% 
+Shareholder yield 
+-2.0% 
+-3.7% 
+-3.1% 
+-1.6% 
+8.4% 
+-9.5% 
+5.7% 
+0.6% 
+Divi payers vs non-payers 
+-1.8% 
+-1.0% 
+-1.2% 
+-8.3% 
+-4.3% 
+-9.8% 
+11.8% 
+5.4% 
+Quality Income 
+-0.2% 
+-0.2% 
+1.1% 
+-3.0% 
+2.2% 
+-7.4% 
+-0.4% 
+-0.3% 
+Dividend aristocrats 
+-0.6% 
+-0.2% 
+-0.2% 
+-4.2% 
+-1.4% 
+-6.0% 
+-1.3% 
+-1.6% 
+Next 12m DPS growth 
+-0.6% 
+-0.5% 
+-0.6% 
+0.3% 
+-0.4% 
+5.0% 
+0.9% 
+0.8% 
+3y Dividend growth 
+0.0% 
+-0.3% 
+0.4% 
+-1.9% 
+-2.9% 
+-4.7% 
+-4.2% 
+-4.2% 
+5y DPS trend 
+0.3% 
+0.9% 
+2.3% 
+-1.4% 
+-0.8% 
+-7.3% 
+-14.8% 
+-9.3% 
+Dividend cover 
+0.8% 
+1.4% 
+2.7% 
+9.6% 
+6.9% 
+17.5% 
+19.5% 
+9.0% 
+12m DPS surprise 
+0.2% 
+1.1% 
+0.8% 
+3.1% 
+1.9% 
+4.8% 
+4.2% 
+5.5% 
+Dividend potential 
+1.1% 
+2.3% 
+3.3% 
+6.3% 
+2.4% 
+14.0% 
+15.4% 
+10.7% 
+1m price reversals 
+-1.6% 
+-0.3% 
+-1.0% 
+-0.4% 
+8.0% 
+-2.7% 
+-15.7% 
+-10.0% 
+1m res reversals 
+-1.1% 
+0.7% 
+1.0% 
+1.4% 
+6.7% 
+1.2% 
+-12.4% 
+-6.1% 
+1m reversals (vol adj) 
+-1.3% 
+0.5% 
+1.2% 
+2.1% 
+9.2% 
+4.0% 
+-9.8% 
+-3.6% 
+Debt/EBITDA 
+0.8% 
+1.3% 
+1.3% 
+2.0% 
+-0.4% 
+4.7% 
+16.7% 
+10.2% 
+Debt/Equity 
+1.2% 
+1.8% 
+0.9% 
+0.7% 
+-2.5% 
+3.0% 
+7.8% 
+5.0% 
+Net debt/EBITDA 
+2.1% 
+2.2% 
+2.5% 
+6.4% 
+4.1% 
+9.6% 
+4.1% 
+6.3% 
+Net debt/equity 
+1.6% 
+2.1% 
+1.8% 
+5.8% 
+3.0% 
+10.2% 
+6.5% 
+7.5% 
+Return on assets 
+0.7% 
+0.5% 
+-0.2% 
+-2.5% 
+-3.9% 
+-7.0% 
+-0.2% 
+-1.3% 
+Return on equity 
+0.1% 
+0.1% 
+0.6% 
+-1.6% 
+-0.1% 
+-3.3% 
+1.4% 
+1.2% 
+ROIC 
+0.6% 
+0.9% 
+1.5% 
+-1.2% 
+-1.3% 
+0.8% 
+9.5% 
+6.8% 
+FCF ROIC 
+1.0% 
+1.1% 
+2.6% 
+3.1% 
+8.5% 
+6.8% 
+7.8% 
+9.6% 
+Gross margin 
+0.1% 
+-1.5% 
+-2.8% 
+2.3% 
+3.0% 
+-10.4% 
+-22.8% 
+-19.6% 
+Gross profits/assets 
+1.0% 
+0.1% 
+0.1% 
+2.0% 
+5.4% 
+-3.6% 
+-12.4% 
+-9.1% 
+Sustainalytics ESG 
+-0.2% 
+0.5% 
+0.3% 
+-0.2% 
+-0.7% 
+8.0% 
+13.8% 
+11.8% 
+MSCI ESG 
+0.9% 
+1.2% 
+1.2% 
+0.7% 
+3.3% 
+2.9% 
+5.2% 
+5.0% 
+MSCI Environmental 
+0.0% 
+-1.4% 
+-1.0% 
+2.0% 
+6.5% 
+-2.5% 
+-18.3% 
+-15.0% 
+MSCI Social 
+0.1% 
+0.9% 
+1.5% 
+0.7% 
+0.6% 
+1.7% 
+0.0% 
+2.0% 
+MSCI Governance 
+0.0% 
+-0.7% 
+-1.0% 
+-4.8% 
+-3.2% 
+-3.0% 
+-2.6% 
+0.4% 
+WACI (Scope 1&2) 
+-0.2% 
+-1.9% 
+-1.0% 
+6.8% 
+12.2% 
+0.6% 
+-17.9% 
+-15.7% 
+WACI (Scope 1&2&3) 
+0.4% 
+-1.5% 
+-0.6% 
+7.4% 
+15.8% 
+-6.6% 
+-24.0% 
+-21.0% 
+Chg in GHG (1&2) 
+-0.3% 
+-0.8% 
+-0.1% 
+-0.6% 
+0.4% 
+-0.9% 
+1.9% 
+0.9% 
+Chg in GHG (1&2&3) 
+0.2% 
+1.5% 
+2.1% 
+-1.8% 
+-2.4% 
+7.2% 
+20.1% 
+17.4% 
+ESG Controversies 
+-1.0% 
+-1.9% 
+-0.4% 
+0.7% 
+2.8% 
+-1.7% 
+-9.7% 
+-1.7% 
+Product Involvement 
+0.6% 
+-0.1% 
+0.6% 
+8.8% 
+6.4% 
+17.3% 
+8.5% 
+8.6% 
+SBTi target 
+0.2% 
+0.5% 
+0.1% 
+1.4% 
+2.6% 
+2.3% 
+0.1% 
+-1.2% 
+10y bond beta 
+0.5% 
+1.2% 
+3.4% 
+3.5% 
+14.8% 
+-2.6% 
+13.8% 
+11.1% 
+Yield curve beta 
+0.1% 
+-0.8% 
+-0.2% 
+3.3% 
+10.8% 
+-5.5% 
+-0.4% 
+-0.4% 
+BAA yield beta 
+0.7% 
+0.0% 
+0.5% 
+-2.3% 
+7.5% 
+-15.4% 
+-9.0% 
+-8.1% 
+High yield beta 
+-0.4% 
+-0.8% 
+0.5% 
+-3.2% 
+7.7% 
+-13.0% 
+-5.7% 
+-5.5% 
+Inflation beta 
+-1.0% 
+-0.2% 
+-0.4% 
+0.0% 
+-5.2% 
+9.4% 
+22.6% 
+20.6% 
+Agriculture beta 
+0.2% 
+-0.6% 
+-2.4% 
+-6.6% 
+-2.8% 
+-9.0% 
+1.6% 
+-1.8% 
+Energy beta 
+-1.6% 
+-0.8% 
+-0.2% 
+-5.4% 
+-0.8% 
+4.1% 
+28.9% 
+20.0% 
+Industrial metals beta 
+-0.4% 
+1.2% 
+0.2% 
+-1.4% 
+-6.0% 
+12.5% 
+28.9% 
+23.8% 
+Precious metals beta 
+0.0% 
+-1.1% 
+-3.9% 
+-9.6% 
+-8.2% 
+-3.1% 
+2.6% 
+1.9% 
+DXY beta 
+0.8% 
+2.0% 
+3.4% 
+5.6% 
+12.8% 
+3.5% 
+8.3% 
+9.6% 
+EURUSD beta 
+-1.2% 
+-2.5% 
+-3.6% 
+-6.5% 
+-10.8% 
+-5.8% 
+-7.2% 
+-9.0% 
+GBPEUR beta 
+0.5% 
+0.5% 
+-1.2% 
+2.3% 
+-6.5% 
+9.7% 
+4.1% 
+3.5% 
+GBPUSD beta 
+-1.0% 
+-2.6% 
+-4.3% 
+-5.9% 
+-13.7% 
+-4.2% 
+-6.6% 
+-9.2% 
+USDJPY beta 
+0.6% 
+1.7% 
+3.4% 
+5.0% 
+10.7% 
+0.4% 
+10.2% 
+9.2% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+
+
+[Page 32]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+32 
+21 September 2026 
+ 
+US Factor performance across periods: Long vs Universe (page 1 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus P/E 
+-0.2% 
+-0.3% 
+0.7% 
+3.3% 
+8.0% 
+5.4% 
+7.8% 
+5.3% 
+Price/earnings 
+-0.6% 
+-1.1% 
+-1.3% 
+0.8% 
+4.0% 
+-2.5% 
+1.3% 
+-2.4% 
+Price/book 
+-1.0% 
+-1.2% 
+-1.6% 
+-1.0% 
+1.4% 
+0.0% 
+2.3% 
+0.2% 
+Price/tangible book 
+-0.4% 
+-0.6% 
+-0.7% 
+-0.2% 
+0.1% 
+3.8% 
+10.6% 
+4.3% 
+Price/cash flow 
+-0.8% 
+-1.0% 
+-1.2% 
+1.1% 
+4.4% 
+-0.1% 
+8.2% 
+3.6% 
+Price/FCF 
+-1.0% 
+-1.9% 
+-0.8% 
+2.9% 
+6.5% 
+-1.4% 
+2.3% 
+-0.2% 
+Price/sales 
+-1.0% 
+-0.8% 
+-0.2% 
+0.8% 
+3.8% 
+4.8% 
+10.1% 
+7.7% 
+EV/EBITDA 
+-0.5% 
+-0.7% 
+-1.2% 
+1.2% 
+4.5% 
+0.5% 
+7.4% 
+2.6% 
+EV/FCF 
+-0.5% 
+-1.5% 
+-0.5% 
+4.0% 
+7.8% 
+0.2% 
+3.6% 
+0.8% 
+EV/sales 
+-0.7% 
+-0.3% 
+0.4% 
+1.4% 
+4.3% 
+6.5% 
+12.2% 
+9.3% 
+Profit vs loss making 
+-0.2% 
+-0.2% 
+-0.3% 
+-0.9% 
+-0.5% 
+-1.7% 
+-0.9% 
+-1.0% 
+Value 
+-0.7% 
+-1.1% 
+-1.0% 
+1.1% 
+5.0% 
+1.7% 
+6.2% 
+2.5% 
+12m1m price mom 
+1.1% 
+3.0% 
+3.6% 
+1.8% 
+-4.8% 
+14.3% 
+14.3% 
+17.5% 
+12m1m res mom 
+0.8% 
+3.0% 
+2.6% 
+1.2% 
+-3.3% 
+7.6% 
+11.4% 
+12.3% 
+3m1m price mom 
+1.1% 
+0.1% 
+-0.2% 
+0.3% 
+-10.4% 
+-8.1% 
+-9.4% 
+-7.4% 
+3m1m res mom 
+0.6% 
+-0.7% 
+-1.1% 
+-0.1% 
+-7.9% 
+-2.6% 
+-0.1% 
+-0.8% 
+3m EPS chg. (SUE) 
+0.4% 
+1.5% 
+3.2% 
+4.3% 
+1.9% 
+8.0% 
+4.7% 
+3.4% 
+6m EPS chg. (SUE) 
+0.4% 
+2.0% 
+2.1% 
+3.4% 
+1.0% 
+10.1% 
+6.3% 
+5.4% 
+3m EPS revisions 
+0.1% 
+1.0% 
+1.3% 
+-0.6% 
+-3.8% 
+1.5% 
+5.7% 
+2.8% 
+6m EPS revisions 
+0.2% 
+1.0% 
+1.5% 
+-0.4% 
+-3.1% 
+1.9% 
+6.1% 
+3.2% 
+Momentum 
+0.7% 
+2.5% 
+2.8% 
+0.7% 
+-3.5% 
+8.0% 
+16.6% 
+13.6% 
+Value + price mom 
+0.0% 
+1.4% 
+2.4% 
+1.1% 
+-2.1% 
+12.4% 
+15.6% 
+15.1% 
+Value + res mom 
+0.2% 
+1.3% 
+1.6% 
+1.1% 
+1.6% 
+8.4% 
+16.5% 
+13.0% 
+Value + momentum 
+-0.1% 
+0.6% 
+1.3% 
+1.2% 
+1.9% 
+7.5% 
+17.8% 
+11.8% 
+Total accruals 
+0.7% 
+0.4% 
+0.2% 
+3.7% 
+5.1% 
+3.6% 
+5.2% 
+4.0% 
+Asset growth 
+-0.4% 
+-0.6% 
+-0.7% 
+-1.0% 
+-1.2% 
+-1.3% 
+0.6% 
+-1.1% 
+Asset turnover 
+-0.2% 
+-0.6% 
+-0.9% 
+-1.1% 
+-4.2% 
+2.1% 
+8.2% 
+3.2% 
+5y ROE trend 
+0.3% 
+-0.4% 
+-0.5% 
+1.4% 
+0.6% 
+-3.7% 
+-6.2% 
+-4.6% 
+5y FCFROIC trend 
+0.3% 
+-0.5% 
+-0.7% 
+0.7% 
+-1.9% 
+-2.0% 
+-4.6% 
+-3.6% 
+Earnings quality 
+1.1% 
+0.6% 
+0.6% 
+4.2% 
+2.6% 
+2.1% 
+3.4% 
+3.1% 
+Fund. quality 
+0.3% 
+-0.3% 
+0.2% 
+1.4% 
+3.1% 
+-0.9% 
+-3.3% 
+-2.3% 
+Low vol 
+-0.4% 
+0.0% 
+0.7% 
+-6.2% 
+-3.2% 
+-9.5% 
+-7.3% 
+-6.3% 
+Low residual vol 
+-0.6% 
+-0.1% 
+1.0% 
+-6.2% 
+-3.3% 
+-8.0% 
+-5.6% 
+-5.3% 
+Low beta 
+0.0% 
+0.7% 
+1.5% 
+-2.0% 
+3.1% 
+-8.6% 
+-3.9% 
+-4.2% 
+Merton DD 
+0.9% 
+0.5% 
+-1.0% 
+-1.6% 
+-2.4% 
+-8.3% 
+-14.3% 
+-10.6% 
+EPS dispersion 
+1.0% 
+0.2% 
+0.0% 
+0.5% 
+3.4% 
+-1.5% 
+-2.9% 
+-2.4% 
+Low size 
+-0.7% 
+-2.2% 
+-3.0% 
+-1.1% 
+2.8% 
+0.5% 
+1.1% 
+0.5% 
+Low risk 
+0.5% 
+0.3% 
+-0.8% 
+-2.9% 
+-2.6% 
+-8.6% 
+-12.7% 
+-10.0% 
+FY1 EPS growth 
+0.0% 
+1.8% 
+2.7% 
+3.0% 
+-2.0% 
+10.1% 
+10.7% 
+8.3% 
+FY2 EPS growth 
+0.0% 
+0.4% 
+0.7% 
+1.9% 
+-5.1% 
+13.4% 
+13.1% 
+14.3% 
+Long-term growth 
+0.2% 
+0.9% 
+1.2% 
+0.3% 
+-5.6% 
+12.5% 
+8.3% 
+7.7% 
+3y EPS growth 
+0.4% 
+-0.2% 
+0.8% 
+2.1% 
+0.4% 
+4.7% 
+-1.1% 
+0.8% 
+3y FCF growth 
+0.6% 
+0.8% 
+1.1% 
+2.7% 
+-0.8% 
+7.2% 
+7.2% 
+10.2% 
+3y sales growth 
+1.3% 
+1.8% 
+1.8% 
+7.7% 
+3.6% 
+9.9% 
+-2.5% 
+-1.4% 
+5y EPS trend 
+0.1% 
+-0.1% 
+0.1% 
+2.7% 
+2.7% 
+-1.3% 
+-5.9% 
+-2.9% 
+5y FCF trend 
+1.0% 
+0.4% 
+1.0% 
+4.5% 
+2.7% 
+6.9% 
+-5.9% 
+-3.3% 
+5y sales trend 
+0.8% 
+0.1% 
+0.0% 
+5.1% 
+6.6% 
+3.9% 
+-8.4% 
+-4.9% 
+Growth 
+0.8% 
+1.1% 
+2.3% 
+3.6% 
+1.3% 
+12.7% 
+-0.7% 
+2.4% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+[Page 33]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+33
+ 
+US Factor performance across periods: Long vs Universe (page 2 of 2) 
+Factor 
+1 week 
+2 weeks 
+4 weeks 
+8weeks 
+13 weeks 
+26 weeks 
+52 weeks 
+YTD 
+Consensus yield 
+-0.8% 
+-0.8% 
+-0.9% 
+-3.6% 
+0.0% 
+-4.2% 
+0.8% 
+1.3% 
+Trailing yield 
+-0.8% 
+-0.8% 
+-0.9% 
+-3.5% 
+0.4% 
+-2.5% 
+2.6% 
+3.6% 
+Net buybacks 
+-1.1% 
+-1.7% 
+-1.3% 
+2.9% 
+6.7% 
+0.2% 
+2.8% 
+-0.1% 
+Shareholder yield 
+-1.1% 
+-1.6% 
+-1.2% 
+1.6% 
+5.7% 
+-0.7% 
+5.7% 
+4.1% 
+Divi payers vs non-payers 
+-0.5% 
+-0.2% 
+-0.3% 
+-2.1% 
+-1.0% 
+-2.3% 
+2.6% 
+1.2% 
+Quality Income 
+0.0% 
+0.1% 
+1.0% 
+-2.1% 
+2.3% 
+-7.4% 
+0.3% 
+0.2% 
+Dividend aristocrats 
+-0.4% 
+-0.1% 
+-0.1% 
+-2.7% 
+-0.6% 
+-4.0% 
+-1.3% 
+-1.4% 
+Next 12m DPS growth 
+-0.8% 
+-0.8% 
+-0.8% 
+-1.1% 
+-1.9% 
+2.4% 
+9.1% 
+6.9% 
+3y Dividend growth 
+-0.5% 
+-0.5% 
+-0.4% 
+-2.8% 
+-3.2% 
+-1.1% 
+7.3% 
+5.5% 
+5y DPS trend 
+-0.2% 
+0.2% 
+0.6% 
+-3.1% 
+-1.5% 
+-6.6% 
+-4.3% 
+-3.6% 
+Dividend cover 
+0.3% 
+1.0% 
+1.4% 
+2.9% 
+1.8% 
+7.3% 
+13.6% 
+7.4% 
+12m DPS surprise 
+-0.5% 
+0.1% 
+0.0% 
+-0.5% 
+-0.8% 
+1.1% 
+3.9% 
+5.3% 
+Dividend potential 
+-0.1% 
+0.7% 
+1.2% 
+1.6% 
+-0.6% 
+8.4% 
+15.1% 
+11.4% 
+1m price reversals 
+-0.4% 
+-0.3% 
+-0.5% 
+0.8% 
+4.2% 
+-1.1% 
+-6.1% 
+-4.8% 
+1m res reversals 
+-0.2% 
+0.2% 
+0.3% 
+1.3% 
+2.3% 
+-0.2% 
+-5.2% 
+-3.4% 
+1m reversals (vol adj) 
+-0.4% 
+-0.1% 
+0.1% 
+1.3% 
+4.3% 
+1.1% 
+-4.3% 
+-1.6% 
+Debt/EBITDA 
+0.4% 
+0.4% 
+0.5% 
+2.6% 
+0.2% 
+4.2% 
+13.2% 
+9.6% 
+Debt/Equity 
+0.6% 
+0.7% 
+1.0% 
+2.1% 
+0.3% 
+2.7% 
+4.9% 
+3.6% 
+Net debt/EBITDA 
+1.1% 
+1.1% 
+1.3% 
+5.4% 
+4.3% 
+5.3% 
+1.9% 
+4.4% 
+Net debt/equity 
+1.0% 
+1.1% 
+1.1% 
+5.6% 
+3.7% 
+6.3% 
+2.5% 
+5.0% 
+Return on assets 
+0.7% 
+0.5% 
+0.0% 
+-0.3% 
+-1.9% 
+-2.6% 
+0.5% 
+0.6% 
+Return on equity 
+0.5% 
+0.1% 
+0.1% 
+-0.3% 
+0.3% 
+-1.7% 
+0.2% 
+0.8% 
+ROIC 
+0.9% 
+0.9% 
+0.9% 
+0.7% 
+-1.5% 
+2.6% 
+7.7% 
+6.6% 
+FCF ROIC 
+0.9% 
+0.9% 
+1.7% 
+3.9% 
+4.9% 
+6.3% 
+6.8% 
+7.7% 
+Gross margin 
+-0.1% 
+-0.5% 
+-1.0% 
+3.9% 
+4.2% 
+-5.1% 
+-10.0% 
+-8.9% 
+Gross profits/assets 
+0.9% 
+0.5% 
+0.2% 
+1.5% 
+1.4% 
+-3.2% 
+-6.8% 
+-5.9% 
+Sustainalytics ESG 
+-0.1% 
+0.7% 
+0.5% 
+-1.1% 
+-0.8% 
+3.7% 
+8.6% 
+7.1% 
+MSCI ESG 
+0.4% 
+0.4% 
+0.3% 
+0.2% 
+1.3% 
+0.3% 
+-1.0% 
+-0.1% 
+MSCI Environmental 
+-0.2% 
+-1.0% 
+-0.9% 
+1.0% 
+3.8% 
+-1.9% 
+-10.3% 
+-9.1% 
+MSCI Social 
+-0.1% 
+0.0% 
+0.2% 
+-0.3% 
+-2.0% 
+-0.4% 
+-0.4% 
+0.5% 
+MSCI Governance 
+0.0% 
+-0.2% 
+-0.4% 
+-1.4% 
+-0.6% 
+-0.9% 
+-0.9% 
+0.7% 
+WACI (Scope 1&2) 
+-0.3% 
+-1.2% 
+-0.7% 
+3.0% 
+5.6% 
+1.8% 
+-7.3% 
+-6.3% 
+WACI (Scope 1&2&3) 
+0.0% 
+-1.2% 
+-0.4% 
+4.5% 
+9.2% 
+-1.6% 
+-11.5% 
+-10.4% 
+Chg in GHG (1&2) 
+-0.6% 
+-1.0% 
+-0.7% 
+-0.2% 
+0.0% 
+-2.3% 
+-4.2% 
+-3.7% 
+Chg in GHG (1&2&3) 
+0.0% 
+1.2% 
+1.9% 
+-1.1% 
+-2.0% 
+5.2% 
+10.1% 
+9.7% 
+ESG Controversies 
+0.0% 
+0.0% 
+0.0% 
+0.0% 
+0.1% 
+0.0% 
+-0.2% 
+0.0% 
+Product Involvement 
+0.0% 
+0.0% 
+0.1% 
+0.7% 
+0.5% 
+1.3% 
+0.7% 
+0.7% 
+SBTi target 
+0.1% 
+0.3% 
+0.1% 
+0.9% 
+1.7% 
+1.5% 
+0.1% 
+-0.7% 
+10y bond beta 
+0.5% 
+0.7% 
+1.8% 
+2.5% 
+7.5% 
+-1.1% 
+9.5% 
+7.2% 
+Yield curve beta 
+0.5% 
+0.2% 
+0.1% 
+2.9% 
+5.2% 
+-1.1% 
+0.6% 
+0.9% 
+BAA yield beta 
+0.3% 
+0.1% 
+0.7% 
+-2.0% 
+1.2% 
+-6.0% 
+-1.7% 
+-2.7% 
+High yield beta 
+0.1% 
+0.0% 
+0.8% 
+-1.6% 
+2.1% 
+-5.6% 
+0.4% 
+-1.7% 
+Inflation beta 
+-0.6% 
+-0.2% 
+-0.1% 
+1.0% 
+-1.5% 
+8.5% 
+19.2% 
+16.9% 
+Agriculture beta 
+-0.1% 
+0.1% 
+0.2% 
+-0.1% 
+1.7% 
+-1.0% 
+3.7% 
+3.4% 
+Energy beta 
+-0.6% 
+0.1% 
+0.9% 
+-0.1% 
+2.9% 
+4.0% 
+13.2% 
+10.8% 
+Industrial metals beta 
+-0.2% 
+0.8% 
+0.9% 
+1.3% 
+-2.9% 
+13.0% 
+24.0% 
+21.1% 
+Precious metals beta 
+0.3% 
+0.0% 
+-1.2% 
+-2.2% 
+-1.8% 
+4.6% 
+8.6% 
+7.9% 
+DXY beta 
+0.5% 
+1.0% 
+1.7% 
+4.3% 
+6.7% 
+4.2% 
+6.0% 
+6.7% 
+EURUSD beta 
+-0.6% 
+-1.3% 
+-1.8% 
+-1.3% 
+-5.0% 
+-0.7% 
+-2.2% 
+-2.9% 
+GBPEUR beta 
+0.7% 
+0.3% 
+0.4% 
+2.8% 
+-1.9% 
+5.9% 
+2.7% 
+2.0% 
+GBPUSD beta 
+-0.2% 
+-1.2% 
+-2.0% 
+-1.2% 
+-5.5% 
+0.7% 
+-0.5% 
+-2.6% 
+USDJPY beta 
+0.6% 
+0.8% 
+1.6% 
+3.7% 
+5.9% 
+3.0% 
+8.0% 
+7.8% 
+Source: SG Cross Asset Research/Equity Quant, FactSet 
+ 
+
+
+[Page 34]
+ 
+Global Equity Market Arithmetic
+ 
+ 
+ 
+ 
+34 
+21 September 2026 
+ 
+ 
+ 
+
+
+[Page 35]
+ 
+ 
+Global Equity Market Arithmetic
+ 
+ 
+21 September 2026 
+35
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
