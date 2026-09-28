@@ -1,0 +1,715 @@
+{
+ "brief": "Goldman Sachs raises its global data center capacity forecast to 217GW by 2030 (from 168GW in February 2026), implying 116GW of net additions and roughly $6tn of capex at a $50bn/GW rule of thumb, which GS says is covered by ~$1tn/year of consensus hyperscale capex. GS has turned more positive on neoclouds after recent lease and GPU-as-a-service deals, and flags Nvidia's new credit-support and revenue-share model with Sharon AI and Firmus as lowering neocloud cost of capital for smaller, shorter-term buildouts. Off this capacity growth plus updated server-shipment and regional power forecasts, GS raises 2030 global data center power demand growth to 170% versus 2025 (from 117% previously), framing the buildout around seven constraints: AI pervasiveness, chip/server efficiency, power pricing, policy, parts availability, people availability, and physical siting risk. US demand should reach ~108GW by 2030, led by PJM, then MISO overtaking ERCOT. GS stays Buy on regulated utilities and IPPs (FE, XEL, DUK, SRE, TLN, VST, NRG) as beneficiaries, Buy on DLR, and Neutral on EQIX and IREN.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs forecasts 217GW of global data center supply by 2030, up from a prior estimate of 168GW made in its February 2026 update.",
+   "anchor": "now forecast 217GW of global data center supply by 2030 (v. 168GW prior from our last update in February 2026)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs estimates the forecast 116GW of net global data center capacity additions represents about $6 trillion of capex assuming a $50 billion per GW rule of thumb.",
+   "anchor": "This addition of 116GW would represent $6 tn of capex, assuming a $50B/GW rule-of-thumb",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs says the data center capex buildout is well covered by current consensus expectations for hyperscale capex of about $1 trillion per year.",
+   "anchor": "We see this capex well-covered by current consensus expectations for hyperscale capex (~$1 tn/year on average)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "per year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs estimates average neocloud data center lease rates of $166 per kW per month with base lease terms of 15-20 years.",
+   "anchor": "We estimate average lease rates were $166/kw/month with base terms in the 15-20 year range",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "15-20 year lease terms"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Nvidia announced a new credit-support and revenue-share model with Sharon AI and Firmus that reduces neoclouds' cost of capital to build capacity.",
+   "anchor": "Nvidia announced a new credit support and revenue share model with Sharon AI and Firmus",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Sharon AI signed a 6-year deal with Nvidia for 40,000 GB300 GPUs under the new revenue-share model.",
+   "anchor": "Sharon AI (SHAZ, Not Covered), which has a 6-year deal with Nvidia for 40,000 GB300 GPUs",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "SHAZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "6-year deal"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs cites several recent GPU-as-a-service deals, including by SpaceX and by IREN with Nvidia, Perplexity and Figure.",
+   "anchor": "several GPU-as-a-service deals including SpaceX (Google, Anthropic, Reflection AI) and IREN (Nvidia, Perplexity, Figure)",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "GPU-as-a-service pricing has ranged up to over $50 per MW, which Goldman Sachs says demonstrates current scarcity of compute at scale.",
+   "anchor": "ranged from >$50/MW, which demonstrates the current scarcity of compute at scale",
+   "topic": "AI infra data center execution risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "GPU-as-a-service pricing has fallen as low as under $10 per MW in the Sharon AI deal, representing Nvidia's floor revenue rate.",
+   "anchor": "to <$10/MW, which represents the Nvidia floor revenue in the Sharon AI deal",
+   "topic": "AI infra data center execution risk",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "SHAZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs forecasts 125 GW of US IT power data center supply by the end of 2030.",
+   "anchor": "we forecast 125 GW of IT Power data center supply by the end of 2030",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs' Utilities team estimates about 108 GW of US data center demand on an annual average basis in 2030.",
+   "anchor": "our Utilities team estimates ~108 GW of data center demand in the US on an annual average basis in 2030",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs expects US power demand to grow at a 3.5% CAGR through 2030, driven partly by data center load.",
+   "anchor": "This drives an expectation of a 3.5% power demand CAGR through 2030",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs expects about 31 GW of behind-the-meter capacity and 22 GW of power delivery available to serve US data center load by 2030.",
+   "anchor": "with BTM capacity available to serve data center load of ~31 GW and ~22 GW of power delivery by 2030",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs names FE and TLN in PJM, SRE, VST and NRG in ERCOT, XEL in MISO, and DUK in the Southeast as key beneficiaries of the data center power inflection.",
+   "anchor": "including FE/TLN in PJM, SRE/VST/NRG in ERCOT, XEL in MISO, and DUK in the Southeast",
+   "topic": "Power grid investment trade",
+   "status": "forecast",
+   "instruments": [
+    "FE",
+    "TLN",
+    "SRE",
+    "VST",
+    "NRG",
+    "XEL",
+    "DUK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "451 Research's 1Q26 global data center capacity forecasts for 2026-2030 were revised up 5% versus 4Q25 and 13% versus 3Q25.",
+   "anchor": "1Q26 451 Research data for 2026-2030 annual global data center capacity was revised upwards by 5% on average v. 4Q25, and by 13% v. 3Q25",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Retail/wholesale providers and hyperscalers should account for 70-90% of total global net data center capacity additions annually through 2030.",
+   "anchor": "capacity additions should predominantly be from retail/wholesale providers & hyperscalers (70-90% of total global net capacity additions annually through 2030)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "About 60-70% of total global net data center capacity adds through 2030 should be located in the US.",
+   "anchor": "be located in the US (~60-70% of total global net adds through 2030)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "650 Group estimates data center equipment capex will reach about $2.3 trillion by 2030, up 320% from $555 billion in 2025.",
+   "anchor": "650 Group estimates should now reach ~$2.3 trillion by 2030 (+320% vs. $555 bn in 2025)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Flexential told Goldman Sachs it expects data center pricing per kilowatt to approach $250 later this year, up from about $70 in 2021.",
+   "anchor": "the company stated it expects to see pricing per kilowatt approach $250 later this year (v. ~$70 in 2021)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "later this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs expects agentic workloads to keep data center demand tight because growing end-user demand should more than offset new capacity and efficiency gains.",
+   "anchor": "Agentic workloads to support continued demand tightness as growing end-user demand more than offsetting new capacity and improved compute efficiency",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs now sees 170% global data center power demand growth in 2030 versus 2025 levels, up from a prior estimate of 117%.",
+   "anchor": "We see 170% global data center power demand growth in 2030 vs. 2025 levels (117% previously)",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "GE Vernova said on its 2Q26 earnings call that it expects more than 50% of its capacity contracted for 2031 by the end of 2026.",
+   "anchor": "it expects to have more than 50% of its capacity contracted for 2031 by the end of 2026",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "by end of 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs expects more than 500,000 new jobs will be needed to meet overall US power demand growth from data centers.",
+   "anchor": "We continue to expect >500K new jobs to meet overall US",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Of the jobs needed for US power demand growth, Goldman Sachs believes more than 200,000 are needed for transmission and distribution.",
+   "anchor": "Of this, we believe more than 200K are needed to meet transmission and distribution needs",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs' US Utilities team expects behind-the-meter, largely natural gas, solutions to drive about 30% of data center growth through 2030.",
+   "anchor": "our US Utilities team expects will drive ~30% of the data center growth through 2030",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs estimates 56% of new global and 55% of new US data centers will be built in areas with elevated physical risk from heat, humidity or drought.",
+   "anchor": "56%/55% of new global/US data centers are set to be built in areas with elevated physical risk to heat, humidity and/or drought",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs expects 43% of new data center capacity to deploy white space direct-to-chip or immersion cooling inside the facility.",
+   "anchor": "we expect that 43% of new data center capacity will deploy white space direct-to-chip or immersion cooling",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs' updated forecasts imply data center carbon dioxide emissions will increase about 370 million tons, or 210%, by 2030 versus 2023 levels.",
+   "anchor": "Our updated forecasts imply carbon dioxide emissions increase by ~370 mn tons (+210%) in 2030 vs. 2023 levels",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Renewable and nuclear power purchase agreements signed by technology companies rose 17% year-over-year in 2025.",
+   "anchor": "agreements (PPAs) for renewable + nuclear power signed by technology companies has remained strong, rising 17% in 2025 yoy",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2025"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs estimates the present value social cost of cumulative data center emissions increases from 2024-2030 at $140-170 billion, using a $190/ton social cost of carbon.",
+   "anchor": "emissions increases in 2024-30 is $140-$170 bn consistent with our prior framework that applies a $190/ton social cost of carbon",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2024-2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "PJM will remain the largest US data center demand market, with 38 GW of demand by 2030.",
+   "anchor": "PJM continuing to host the largest amount of data center demand (38 GW) by 2030",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "MISO will overtake ERCOT as the second-largest US data center demand market, reaching 17 GW by 2030.",
+   "anchor": "MISO overtaking ERCOT as the second largest data center demand market with 17 GW by 2030",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "ERCOT will be the third-largest US data center demand market, with 15 GW of demand in 2030.",
+   "anchor": "ERCOT following as third largest data center demand market in the US, with 15 GW of demand",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs expects the growing MISO market to reach a 16% share of total US data center demand in 2030, supporting its constructive view on XEL.",
+   "anchor": "growing MISO market, which we expect to have a 16% share of total US demand in 2030",
+   "topic": "Power grid investment trade",
+   "status": "forecast",
+   "instruments": [
+    "XEL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "DUK is positioned to benefit from a roughly 15.4 GW high-confidence large load pipeline.",
+   "anchor": "DUK also stands to benefit through its ~15.4 GW high-confidence large load pipeline",
+   "topic": "Power grid investment trade",
+   "status": "released",
+   "instruments": [
+    "DUK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs expects ERCOT's data center market to grow at a 20% CAGR, supporting its constructive view on SRE's Texas T&D exposure.",
+   "anchor": "we expect ERCOT\u2019s data center market to grow at a 20% CAGR",
+   "topic": "Power grid investment trade",
+   "status": "forecast",
+   "instruments": [
+    "SRE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs views TLN, VST and NRG as among the independent power producers best positioned to benefit from rising power prices and data center PPAs.",
+   "anchor": "the IPPs, including TLN, VST, and NRG, as among the best positioned to benefit from rising power prices",
+   "topic": "Power grid investment trade",
+   "status": "forecast",
+   "instruments": [
+    "TLN",
+    "VST",
+    "NRG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates FirstEnergy (FE) Buy with a 12-month price target of $54.",
+   "anchor": "We are Buy rated on FE with a 12-month target price of $54",
+   "topic": "Power grid investment trade",
+   "status": "target",
+   "instruments": [
+    "FE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates Xcel Energy (XEL) Buy with a 12-month price target of $93.",
+   "anchor": "We are Buy rated on XEL. Our 12-month price target is $93",
+   "topic": "Power grid investment trade",
+   "status": "target",
+   "instruments": [
+    "XEL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates Duke Energy (DUK) Buy with a 12-month price target of $145, implying a 19% total return.",
+   "anchor": "We are Buy rated on DUK and see a 19% total return to our 12-month, $145 price target",
+   "topic": "Power grid investment trade",
+   "status": "target",
+   "instruments": [
+    "DUK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates Sempra (SRE) Buy with a 12-month sum-of-the-parts based price target of $109.",
+   "anchor": "We are Buy rated on Sempra with a 12-month SOTP based PT of $109",
+   "topic": "Power grid investment trade",
+   "status": "target",
+   "instruments": [
+    "SRE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates Talen Energy (TLN) Buy with a 12-month price target of $499, based on a 10.0x EV/EBITDA multiple and 7.0% FCF yield.",
+   "anchor": "our 12-month price target of $499 reflects a target EV/EBITDA multiple of 10.0x and FCF yield of 7.0%",
+   "topic": "Power grid investment trade",
+   "status": "target",
+   "instruments": [
+    "TLN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates Vistra (VST) Buy with a 12-month price target of $209, based on a 10.5x EV/EBITDA multiple and 7.0% FCF yield.",
+   "anchor": "our 12-month price target of $209 is based on a 10.5x EV/EBITDA multiple and a 7.0%",
+   "topic": "Power grid investment trade",
+   "status": "target",
+   "instruments": [
+    "VST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates NRG Energy (NRG) Buy with a 12-month price target of $197, based on a 9x EV/EBITDA multiple and 8.0% FCF yield.",
+   "anchor": "our 12-month price target of $197 is based on a 9x EV/EBITDA multiple and an 8.0% FCF yield",
+   "topic": "Power grid investment trade",
+   "status": "target",
+   "instruments": [
+    "NRG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates Digital Realty Trust (DLR) Buy with an unchanged 12-month price target of $215, based on a 26x NTM+1Y P/AFFO multiple.",
+   "anchor": "We are Buy rated on DLR with a 12-month target price of $215 (unchanged) based on a 26X (unchanged) NTM+1Y P/AFFO",
+   "topic": "AI infra data center execution risk",
+   "status": "target",
+   "instruments": [
+    "DLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates Equinix (EQIX) Neutral with an unchanged 12-month price target of $1,015, based on a 21.0x NTM+1Y P/AFFO multiple.",
+   "anchor": "We are Neutral rated on EQIX with a 12-month target price to $1,015 (unchanged), which reflects 21.0X (unchanged) NTM+1Y P/AFFO",
+   "topic": "AI infra data center execution risk",
+   "status": "target",
+   "instruments": [
+    "EQIX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs rates IREN Neutral with an unchanged 12-month price target of $50, based on a blended valuation methodology.",
+   "anchor": "We are Neutral rated on IREN with a 12-month target price of $50 (unchanged) based on a blended valuation methodology",
+   "topic": "AI infra data center execution risk",
+   "status": "target",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "IREN is a Bitcoin miner in the process of converting to an AI cloud operator.",
+   "anchor": "IREN is a Bitcoin miner in the process of converting to an AI cloud operator",
+   "topic": "AI infra data center execution risk",
+   "status": "released",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Global Data Center Capacity update: Increased capacity expectations, but continued tightness",
+   "claim": "Goldman Sachs flags elevated customer concentration from IREN's announced Microsoft deal as a risk that could create revenue volatility.",
+   "anchor": "elevated customer concentration from its announced Microsoft deal could create revenue volatility and negotiating leverage concerns",
+   "topic": "AI infra data center execution risk",
+   "status": "forecast",
+   "instruments": [
+    "IREN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-28/17994__global-data-center-capacity-update-increased-capacity-expect.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 49,
+  "matched": 49,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
