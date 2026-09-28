@@ -1,0 +1,168 @@
+{
+ "brief": "Tech CDS spreads have returned to recent highs and bond volatility (the MOVE index) has surged, both warning signs, but NDX and SPX are not selling off, unlike NDX's reaction to widening CDS spreads back in July. The note argues price is still the final arbiter. SPX's resilience against the MOVE surge can persist if higher yields reflect stronger growth, but becomes harder to sustain if bond market stress starts forcing broader risk reduction. Framing the setup as a cork bobbing in water, the note asks what happens if NDX takes out its range highs, arguing there is only vacuum above, meaning no technical resistance to further upside. With NDX seasonality starting now and volatility reset lower, the note argues playing a possible upside breakout via call spreads looks attractive, favoring short-dated structures because it suspects a breakout would be violent. It cites the QQQ October 750/780 call spread as offering up to 4x maximum payout.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "Several of the hottest tech CDS spreads are back to recent highs, unlike in July when NDX reacted to this move.",
+   "anchor": "Several of the \"hot\" tech CDS spreads are back to recent highs.",
+   "topic": "NDX breakout pain trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "Tech CDS spreads are widening and bond volatility has exploded higher.",
+   "anchor": "tech CDS spreads are widening and bond vol has exploded.",
+   "topic": "NDX breakout pain trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "NDX is still holding its trading range despite the CDS and bond-vol warning signs.",
+   "anchor": "With NDX still holding its range, the more interesting question may be where the real pain trade sits from here.",
+   "topic": "NDX breakout pain trade",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "SPX's resilience against the surge in the MOVE index can persist if higher yields are read as a sign of stronger growth.",
+   "anchor": "SPX has also held up against the MOVE surge. That divergence can last if stocks see higher yields as a sign of stronger growth.",
+   "topic": "NDX breakout pain trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "The SPX-bond-vol divergence gets harder to sustain if bond-market stress starts forcing broader risk reduction.",
+   "anchor": "It gets harder to sustain if bond-market stress starts forcing broader risk reduction.",
+   "topic": "NDX breakout pain trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "If NDX takes out its range highs, there is only vacuum above with no technical resistance to further upside.",
+   "anchor": "what happens if NDX takes out the range highs? There is only vacuum above.",
+   "topic": "NDX breakout pain trade",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "NDX seasonality historically turns favorable starting now.",
+   "anchor": "NDX seasonality basically starts now. Given the vol reset,",
+   "topic": "NDX breakout pain trade",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "Given the reset in volatility, playing a possible upside breakout via call spreads looks attractive.",
+   "anchor": "Given the vol reset, playing a possible upside breakout/pain trade via call spreads looks attractive to us.",
+   "topic": "NDX breakout pain trade",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "If the breakout comes it could be violent, which argues for relatively short-dated option strategies.",
+   "anchor": "If the breakout comes, we suspect it could be violent, which argues for relatively short-dated strategies.",
+   "topic": "NDX breakout pain trade",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "short-dated"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "What Happens When A Market That Refuses To Fall Breaks Higher",
+   "claim": "The QQQ October 750/780 call spread is highlighted as offering up to 4x maximum payout.",
+   "anchor": "The second chart shows the QQQ Oct 750/780 call spread, offering +4x max payout.",
+   "topic": "NDX breakout pain trade",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "October"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17913__what-happens-when-a-market-that-refuses-to-fall-breaks-highe.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
