@@ -1,0 +1,1886 @@
+[Page 1]
+We update our global data center capacity forecasts using the latest data from 
+451 Research’s database and now forecast 217GW of global data center supply 
+by 2030 (v. 168GW prior from our last update in February 2026), representing 
+116GW of additional capacity from 101GW in 2025 (restated higher from 74GW 
+prior). This addition of 116GW would represent $6 tn of capex, assuming a $50B/GW 
+rule-of-thumb while acknowledging that IT infrastructure costs continue to see 
+upward pressure. We see this capex well-covered by current consensus expectations 
+for hyperscale capex (~$1 tn/year on average), which does not include SpaceX AI 
+capex, private company capex, or datacenter platform capex. 
+We’ve become more positive on the neocloud segment following several large 
+data center lease announcements in the last 3 months including by TeraWulf 
+(Anthropic), Hut8 (undisclosed IG tenant), and others. We estimate average lease 
+rates were $166/kw/month with base terms in the 15-20 year range.  
+There were also several GPU-as-a-service deals including SpaceX (Google, 
+Anthropic, Reflection AI) and IREN (Nvidia, Perplexity, Figure). Notably, Nvidia 
+announced a new credit support and revenue share model with Sharon AI and 
+Firmus, providing a revenue backstop and thereby reducing the cost of capital for 
+neoclouds to build out capacity for shorter-term leases and smaller deals. Prices 
+ranged from >$50/MW, which demonstrates the current scarcity of compute at 
+scale, to <$10/MW, which represents the Nvidia floor revenue in the Sharon AI deal.  
+For the US alone, we forecast 125 GW of IT Power data center supply by the end 
+of 2030, where our Utilities team estimates ~108 GW of data center demand in the 
+US on an annual average basis in 2030. This drives an expectation of a 3.5% power 
+demand CAGR through 2030 with BTM capacity available to serve data center load 
+of ~31 GW and ~22 GW of power delivery by 2030. We highlight select regulated 
+utilities and IPPs as key beneficiaries of the inflection based on their regional 
+exposure, including FE/TLN in PJM, SRE/VST/NRG in ERCOT, XEL in MISO, and DUK 
+in the Southeast. Our GS SUSTAIN team continues to highlight the cross-sector 
+investment theme of Reliability, driven by both AI/data center power growth and 
+global investment to mitigate risks of physical/network/supply chain/power/water 
+outages.  
+Michael Ng, CFA 
++1(212)902-8618 | michael.ng@gs.com 
+Goldman Sachs & Co. LLC 
+Brian Singer, CFA 
++1(212)902-8259 | brian.singer@gs.com 
+Goldman Sachs & Co. LLC 
+Carly Davenport 
++1(212)357-1914 | 
+carly.davenport@gs.com 
+Goldman Sachs & Co. LLC 
+Lindsey Shema 
++1(801)578-2673 | 
+lindsey.shema@gs.com 
+Goldman Sachs & Co. LLC 
+Yash Goenka, CFA 
++1(212)934-6312 | 
+yash.goenka@gs.com 
+Goldman Sachs India SPL 
+Jaya Patel 
++1(212)357-9901 | jaya.patel@gs.com 
+Goldman Sachs & Co. LLC 
+Xavier Zhang 
++852-2978-6681 | xavier.zhang@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Brendan Corbett 
++1(415)249-7440 | 
+brendan.corbett@gs.com 
+Goldman Sachs & Co. LLC 
+Zorayda Montemayor 
++1(212)357-6403 | 
+zorayda.montemayor@gs.com 
+Goldman Sachs & Co. LLC
+24 July 2026 | 5:00AM EDT
+ 
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certification and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Equity Research
+GLOBAL TECHNOLOGY 
+Global Data Center Capacity update: Increased capacity expectations, 
+but continued tightness
+ 
+ 
+
+
+[Page 2]
+Increasing global data center capacity to 217GW by 2030E (v. 101GW in 2025) 
+ 
+ 
+We update our global data center capacity forecasts for the latest updates to 451 
+Research’s data center tracker (through C1Q26). Per 451 Research data center project 
+tracking, we now expect ~217 GW of live global data center capacity by 2030, implying 
+growth from ~101 GW in 2025 at a 17% 2025-2030 CAGR. This +116GW of capacity net 
+addition over the next 5 years would approximate a cumulative $5.8 bn capex assuming 
+$50 bn per GW, which should be covered by the forecast average ~$1 tn hyperscale 
+capex (per annum, using Visible Alpha Consensus Data), which has historically been 
+revised higher and does not include SpaceX’s AI capex, private AI lab capex, or 
+datacenter platform capex.  
+1Q26 451 Research data for 2026-2030 annual global data center capacity was revised 
+upwards by 5% on average v. 4Q25, and by 13% v. 3Q25. Per 451 Research, global data 
+center capacity additions should predominantly be from retail/wholesale providers & 
+hyperscalers (70-90% of total global net capacity additions annually through 2030) and 
+be located in the US (~60-70% of total global net adds through 2030). 
+ 
+ 
+Exhibit 1: Global Data Center Capacity should scale to 
+~217 MW by 2030 (+116 GW v. 2025) 
+Gloabl Data Center Capacity (MWs) & year-over-year change (%) 
+ 
+Exhibit 2: Global Data Center Capacity forecasts for 
+2026-2030 have been revised upwards over time (+5% v. 
+4Q25 forecasts, +13% v. 3Q25 forecasts) 
+Global Data Center Capacity forecast estimates over time (MW) 
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+ -
+ 50,000
+ 100,000
+ 150,000
+ 200,000
+ 250,000
+year-over-year change (%)
+Global Data Center Capacity (MWs)
+Global data center capacity (MWs)
+year-over-year change (%)
+ -
+ 50,000
+ 100,000
+ 150,000
+ 200,000
+ 250,000
+2025
+2026
+2027E
+2028E
+2029E
+2030E
+Global Data Center Capacity forecasts 
+(MW)
+3Q25
+4Q25
+1Q26
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+24 July 2026
+  2
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 3]
+ 
+ 
+Increased data center capacity estimates may prove conservative given increasing 
+expectations for data center equipment capex, which 650 Group estimates should 
+now reach ~$2.3 trillion by 2030 (+320% vs. $555 bn in 2025). We continue to view 
+data center supply & demand conditions as extremely tight given continued 
+compression of data center vacancy rates (per CBRE), which should continue to support 
+pricing power for data center operators in releasing existing capacity or leasing newly 
+added capacity, which is in-line with commentary from Flexential during our June 2026 
+Denver bus tour, where the company stated it expects to see pricing per kilowatt 
+approach $250 later this year (v. ~$70 in 2021).  
+ 
+Exhibit 3: Global data center capacity net adds should 
+predominantly be cloud/crypto/wholesale/retail capacity 
+Share of global data center capacity net adds by vertical (%) 
+ 
+Exhibit 4: Global data center capacity net adds should 
+predominantly be in North America 
+Share of global data center capacity net adds by region (%) 
+18% 
+19% 
+27% 
+31% 
+30% 
+31% 
+28% 
+22% 
+74% 
+73% 
+63% 
+60% 
+64% 
+61% 
+63% 
+64% 
+62% 
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2022
+2023
+2024
+2025
+2026E 2027E 2028E 2029E 2030E
+Share of global data center capacity net 
+adds (%)
+Hyperscale-owned
+Cloud/Neocloud/Crypto/Wholesale/Retail
+Other
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2023
+2024
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Share of global data center capacity net 
+adds (%)
+United States & Canada
+Asia-Pacific
+Europe
+Latin America & Caribbean
+Middle East
+Africa
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+ 
+Exhibit 5: US data center capacity should grow to ~125 GW 
+by 2030 (+76 GW from 2025) 
+US data center capacity (MW) & year-over-year change (%); end 
+of period capacity 
+ 
+Exhibit 6: US data center capacity should be led by 
+Cloud/Wholesale/Retail providers & hyperscale-owned 
+facilities 
+Share of US data center capacity (MW) by vertical (%) 
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+ -
+ 20,000
+ 40,000
+ 60,000
+ 80,000
+ 100,000
+ 120,000
+ 140,000
+2024
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+year-over-year change (%)
+US data center capacity (MW)
+US
+year-over-year change (%)
+28% 
+28% 
+27% 
+26% 
+27% 
+28% 
+31% 
+32% 
+32% 
+16% 
+16% 
+18% 
+20% 
+21% 
+22% 
+22% 
+22% 
+21% 
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2022
+2023
+2024
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Share of US data center capacity (%)
+Hyperscale-owned
+Cloud/Neocloud/Crypto/Retail/Wholesale
+Other
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+24 July 2026
+  3
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 4]
+ 
+ 
+ 
+Neocloud cost of capital to decline following NVIDIA credit support. Earlier this 
+month, Nvidia announced a new revenue sharing and credit-support model with AI 
+ 
+Exhibit 7: US capacity add forecasts have also been revised 
+upwards over time (+6% v. 4Q25; +12% v. 1Q26) 
+US net add forecasts (MW) 
+ 
+Exhibit 8: Data center vacancy rates have compressed 
+signficantly over time 
+Data Center Vacancy rates across select US markets 
+ -
+ 5,000
+ 10,000
+ 15,000
+ 20,000
+ 25,000
+2025
+2026
+2027E
+2028E
+2029E
+2030E
+US net add forecasts (MW)
+3Q25
+4Q25
+1Q26
+0%
+1%
+2%
+3%
+4%
+5%
+6%
+7%
+8%
+9%
+10%
+1Q23
+1Q24
+1Q25
+1Q26
+Data Center Vacancy Rates
+Northern Virginia
+Atlanta
+Dallas-Ft. Worth
+Chicago
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+ 
+ 
+Source: CBRE
+ 
+Exhibit 9: Average Net IT Power (MW) per site should grow 
+over time towards ~67 MW by 2030 (v. ~26 MW in 2025) 
+Average Net IT Power (MW) per site & year-over-year change (%) 
+ 
+Exhibit 10: Data Center equipment spend should more 
+than triple by 2030 to $2.3 trillion (v. $444 bn in 2025) 
+Cloud Data Center Equipment spend ($, mn) & year-over-year 
+change (%) 
+(20%)
+(10%)
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+ -
+ 10
+ 20
+ 30
+ 40
+ 50
+ 60
+ 70
+ 80
+2021 2022 2023 2024 2025 2026E2027E2028E2029E2030E
+year-over-year change (%)
+Average Net IT Power (MW) per site
+Average Net IT Power (MW) per site
+year-over-year change (%)
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+$0
+$500,000
+$1,000,000
+$1,500,000
+$2,000,000
+$2,500,000
+year-over-year change (%)
+Cloud DC equi[pment capex ($, mn) 
+Cloud data center equipment capex ($, mn)
+year-over-year change (%)
+ 
+ 
+Source: 451 Research, Data compiled by Goldman Sachs Global Investment 
+Research
+ 
+ 
+Source: 650 Group, Data compiled by Goldman Sachs Global Investment 
+Research
+ 
+Exhibit 11: AI/Cloud player spend should grow to ~$1.2 trillion by 2030 at a 22% 2025-2030 CAGR 
+Consensus capex estimates on select AI players/Cloud players ($, mn) 
+Select US cloud
+2024
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+AAPL
+10,264
+    
+12,262
+    
+11,394
+    
+13,161
+       
+14,250
+       
+15,114
+       
+15,849
+       
+AMZN
+82,999
+    
+131,819
+  
+203,623
+  
+238,651
+     
+258,537
+     
+262,932
+     
+271,362
+     
+META
+37,256
+    
+69,691
+    
+136,723
+  
+174,523
+     
+189,094
+     
+204,024
+     
+215,239
+     
+GOOGL
+52,535
+    
+91,447
+    
+187,786
+  
+265,836
+     
+292,538
+     
+305,685
+     
+320,552
+     
+MSFT
+54,514
+    
+91,008
+    
+153,736
+  
+200,931
+     
+228,709
+     
+253,712
+     
+261,779
+     
+ORCL
+14,041
+    
+38,439
+    
+74,066
+    
+98,594
+       
+98,727
+       
+89,046
+       
+74,028
+       
+CRWV
+8,702
+      
+10,309
+    
+33,987
+    
+39,769
+       
+36,829
+       
+41,233
+       
+55,367
+       
+Total capex ($, mn)
+260,311
+  
+444,975
+  
+801,314
+  
+1,031,465
+  
+1,118,683
+  
+1,171,747
+  
+1,214,176
+  
+Year-over-year growth
+53%
+71%
+80%
+29%
+8%
+5%
+4%
+ 
+ 
+Source: Visible Alpha Consensus Data
+24 July 2026
+  4
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 5]
+clouds. In this new business model, the neoclouds receive a minimum revenue guarantee 
+on GPU capacity (e.g., revenue per GPU per hour), which reduces the risk for the 
+neocloud as well as its cost of financing to purchase the GPUs. Neoclouds can then 
+provide access to enterprise, startup, and AI native customers that otherwise may have a 
+more difficult time securing short-term capacity, with revenue generated beyond the 
+minimum revenue guarantee being split with Nvidia. This new model was first announced 
+with Firmus (Private) and Sharon AI (SHAZ, Not Covered), which has a 6-year deal with 
+Nvidia for 40,000 GB300 GPUs.  
+Agentic workloads to support continued demand tightness as growing end-user 
+demand more than offsetting new capacity and improved compute efficiency. Our 
+channel checks, including an Expert Network Series call with a former Director of AI 
+Transformation at Microsoft, helped us better understand the vision of end-user 
+demand, which should be supported by multi-agent systems: a network of AI agents that 
+can work autonomously but still need a cloud-based AI agent to help orchestrate 
+workloads. Enterprises continue to be in the early stages of the deployment of agents, 
+with many still experimenting, which should be a positive sign for future demand once 
+experimentation transitions into full production.  
+Implications for global data center power demand growth  
+ 
+ 
+This section authored by Brian Singer, GS SUSTAIN  
+On the back of greater data center capacity, recent increases from our TMT team to 
+their AI server shipments forecasts and our US power team’s regional outlook on data 
+center power demand, we raise our global forecasts for data center power demand 
+through 2030. We see 170% global data center power demand growth in 2030 vs. 2025 
+levels (117% previously), which also incorporates estimated historical data center power 
+demand following recent reports by the DOE and IEA.  
+We now see 7 Ps driving data center power demand growth/constraints:  
+Pervasiveness of AI. Greater industry AI capex has contributed to increased server 
+n
+shipments and data center capacity. Ultimate returns-enhancing AI outcomes will be 
+critical to longevity.  
+Productivity of chips/servers/models. We continue to assume energy intensity 
+n
+reductions for AI (compute per unit of power) at a faster pace than for non-AI. 
+However, pent-up demand for tokens/compute is likely to continue until there is 
+more corporate/government confidence that reducing budgets will not sacrifice 
+competitive positioning or until demand for tokens/compute has been sufficiently 
+defined. At that point, we believe AI will shift from the Appraisal/Hopes & Dreams 
+Phase to the Execution/Efficiency phase, characterized by downward revisions to 
+budgets in response to productivity gains.  
+Price of power. This remains a key community concern (in addition to reliability of 
+n
+power/water), though we believe hyperscalers continue to have financial flexibility 
+via strong balance sheets. We do not believe the US Green Reliability Premium will 
+limit hyperscaler willingness to take an all-of-the-above approach to power 
+sourcing. 
+24 July 2026
+  5
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 6]
+Policy. Permitting and execution risk continue to be sources of industry frustration, 
+n
+even as there appears to be bipartisan support for speeding up processes. Increased 
+attention to risks of delays driven by US community pushback to data center 
+development is driving greater connectivity between corporates, investors and 
+communities on potential solutions. The key areas of pushback from 
+communities/broader consumers are: risk of power reliability issues, risk of rising 
+power prices, risk of depletion of water supply, noise and warming impact from 
+rejected heat. Broadly, there are solutions (take-or-pay contracting, interruptibility, 
+closed-loop cooling/chillers, waste heat capture) that can mitigate these risks. 
+However, perception and broader NIMBY concerns could supersede 
+innovation/solutions. 
+Parts availability. Constraints in the timing/availability of power generation 
+n
+equipment continue to drive how data center power will be sourced as part of an 
+overall all-in strategy — renewables/battery storage/simple cycle natural gas in the 
+shorter term, natural gas combined cycle in the medium term, nuclear in the longer 
+term. Natural gas combined cycle generator manufacturer GE Vernova highlighted 
+on its 2Q26 earnings call on July 22 that it expects to have more than 50% of its 
+capacity contracted for 2031 by the end of 2026.  
+People availability. We continue to expect >500K new jobs to meet overall US 
+n
+power demand growth. Of this, we believe more than 200K are needed to meet 
+transmission and distribution needs. We continue to see risks that skilled labor 
+availability constraints — particularly for electricians — represents a key risk to 
+execution. This is also, in our view, helping to drive greater consideration for 
+behind-the-meter power solutions that require less electricity transmission. 
+Time-to-market priorities and long lead times for grid connectivity are driving 
+behind-the-meter solutions — largely natural gas — that our US Utilities team 
+expects will drive ~30% of the data center growth through 2030.  
+Physical environment. Ambient conditions — heat, humidity and drought — where 
+n
+data centers are being built are increasingly a driver of both stock performance and 
+innovation. Higher heat, humidity and drought risks limit cooling technology 
+selection optionality for data centers and require greater power demand in affected 
+regions where minimizing direct water demand is a priority. Our analysis suggests 
+that 56%/55% of new global/US data centers are set to be built in areas with 
+elevated physical risk to heat, humidity and/or drought. Based on our analysis of 
+data center location and type, we expect that 43% of new data center capacity will 
+deploy white space direct-to-chip or immersion cooling inside the data center. 
+Separately, we expect 56% of new data center capacity will deploy gray space 
+chillers, adiabatic systems or mechanical cooling back-up to transfer heat to the 
+outside. We see this as at least a partial offset to efficiency gains, all else equal 
+putting upward pressure on power usage effectiveness (PUE) and power demand.  
+24 July 2026
+  6
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 7]
+ 
+ 
+The increase in data center power outlook drives upward revisions to our outlook 
+for data center emissions, even as power purchase agreements from technology 
+companies for low-carbon power have remained strong. As mentioned above, we 
+continue to expect an all-of-the-above approach to power sourcing based on relative 
+economics, parts availability, time-to-market considerations and long-term 
+decarbonization objectives. We assume thermal power (largely natural gas) sources a 
+majority of the data center power growth through 2030. However, power purchase 
+agreements (PPAs) for renewable + nuclear power signed by technology companies has 
+remained strong, rising 17% in 2025 yoy. Our updated forecasts imply carbon dioxide 
+emissions increase by ~370 mn tons (+210%) in 2030 vs. 2023 levels, the equivalent of 
+1.0% of global energy emissions. The present value social cost of cumulative annual 
+ 
+Exhibit 12: We now see 170% global data center power 
+demand growth in 2030 vs. 2025 levels, more than 60% of 
+which comes from the US 
+Data center (AI + non-AI) power demand in US and rest of world, 
+TWh 
+ 
+Exhibit 13: Weighting of higher power vs. lower power AI 
+servers, mix within high power AI servers of latest 
+generation (more expensive, higher energy consumption, 
+greater energy efficiency per server) vs. older generations 
+and ultimate pace of AI server spending will be key to AI 
+data center power demand 
+AI servers in operation implied by our global TMT team forecasts 
+(LHS); implied annual AI server revenues (RHS) 
+0
+200
+400
+600
+800
+1,000
+1,200
+1,400
+1,600
+Data center power demand, TWh
+US ex-AI
+RoW ex-AI
+RoW AI
+US AI
+$0
+$100
+$200
+$300
+$400
+$500
+$600
+$700
+$800
+$900
+0
+5,000
+10,000
+15,000
+20,000
+25,000
+2022
+2023
+2024
+2025
+2026E 2027E 2028E 2029E 2030E
+AI server shipment revenues, $ bn
+AI servers in operation
+AI inference 
+servers in 
+operation
+AI training 
+servers in 
+operation
+Revenues from AI 
+server shipments
+ 
+ 
+Source: Masanet et al. (2020), EIA, EMBER, IEA, Cisco, Goldman Sachs Global 
+Investment Research
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+ 
+Exhibit 14: We see a swifter pace of energy efficiency per 
+unit of demand for AI, as we did for non-AI 
+Power demand per unit of workload for non-AI and per unit of 
+compute speed for AI 
+0.0
+1.0
+2.0
+3.0
+4.0
+5.0
+6.0
+0
+200
+400
+600
+800
+1,000
+1,200
+Non-AI power use per unit of workload
+AI power use per unit of compute speed
+(Ex-AI power 
+intensity)
+(AI power 
+intensity)
+ 
+ 
+Source: Masanet et al. (2020), IEA, Cisco, NVIDIA, Goldman Sachs Global 
+Investment Research
+24 July 2026
+  7
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 8]
+emissions increases in 2024-30 is $140-$170 bn consistent with our prior framework 
+that applies a $190/ton social cost of carbon and a discount rate range of 7%-10%. 
+ 
+US Data Center Power Demand Outlook 
+ 
+ 
+We explore the data center demand outlook across regions in the US in our latest power 
+demand update report and now forecast 108 GW/947 TWh of data center demand by 
+2030. This is based on 121 GW of IT Power, an implied PUE of ~1.3, and weighted 
+average utilization and occupancy rates of 70%/97%, respectively. We take a 
+bottom-up approach to measure demand across key regional power markets, where we 
+find PJM will remain the market with the highest concentration data center demand by 
+2030 followed by MISO and then ERCOT. Overall, our forecasts imply a 23% data center 
+demand CAGR from 2025-2030, though we recognize risks exist, which we discuss 
+further below. Among covered Buy-rated stocks in Power/Utilities, we highlight FE, XEL, 
+DUK, and SRE as key regulated beneficiaries of the data center demand inflection in the 
+US, and TLN, VST, and NRG as independent power producers that are well positioned to 
+benefit from rising power prices and incremental data center PPAs.  
+ 
+Exhibit 15: We see data center emissions increasing ~210% 
+by 2030 vs. 2023 levels (+1.0% increase in global energy 
+emissions), net of impact of power purchase agreements 
+(PPAs) from technology companies 
+Carbon dioxide emissions in millions of tons (LHS); percent of 2022 
+energy emissions (RHS) 
+0.0%
+0.2%
+0.4%
+0.6%
+0.8%
+1.0%
+1.2%
+1.4%
+1.6%
+1.8%
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+Data center emissions covered by PPAs
+Data center cumulative incremental emissions
+% of 2022 global energy emissions
+(Million tons 
+of CO2)
+(% of 2022 energy
+emissions)
+ 
+ 
+Source: IEA, Goldman Sachs Global Investment Research
+24 July 2026
+  8
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 9]
+ 
+Regional Overview 
+Our latest supply forecasts from the 451 database, consistent with the global TMT team, 
+and our regional demand assumptions point to (1) PJM continuing to host the largest 
+amount of data center demand (38 GW) by 2030, (2) MISO overtaking ERCOT as the 
+second largest data center demand market with 17 GW by 2030, and (3) ERCOT 
+following as third largest data center demand market in the US, with 15 GW of demand 
+in 2030. Our utilization and occupancy rate assumptions vary by region and may be 
+impacted by workload (i.e. inference vs. training) and construction/development 
+strategy. 
+ 
+Overall Power Demand 
+As a result of this update, our overall power demand CAGR comes up from 3.2% to 
+ 
+Exhibit 16: We forecast ~108 GW of data center demand in 
+2030 
+Total US data center demand on an annual average basis 
+ 
+Exhibit 17: We assume a 70% utilization rate and 97% 
+occupancy rate on a weighted average basis in our 
+forecast 
+GSe for utilization and occupancy rates (%) regionally for 
+2025-2030 
+39 GW
+50 GW
+66 GW
+84 GW
+100 GW
+108 GW
+0 GW
+20 GW
+40 GW
+60 GW
+80 GW
+100 GW
+120 GW
+2025
+2026
+2027
+2028
+2029
+2030
+US Data Center Demand  (GW)
+93%
+94%
+95%
+96%
+97%
+98%
+99%
+100%
+50%
+55%
+60%
+65%
+70%
+75%
+80%
+85%
+CAISO- IT
+Power
+ERCOT- IT
+Power
+PJM- IT
+Power
+New
+England- IT
+Power
+MISO- IT
+Power
+Non-ISO
+Northwest-
+IT Power
+Utilization (%)
+Occupancy (%)
+ 
+ 
+Source: S&P Global Market Intelligence, Goldman Sachs Global Investment 
+Research
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+ 
+Exhibit 18: We expect to see 108 GW of data center demand in the US in 2030 
+US data center demand by the end of 2030 by region 
+3 GW
+9 GW
+9 GW
+13 GW
+15 GW
+17 GW
+38 GW 108 GW
+2 GW
+2 GW
+0 GW
+20 GW
+40 GW
+60 GW
+80 GW
+100 GW
+120 GW
+ 
+ 
+Source: S&P Global Market Intelligence, Goldman Sachs Global Investment Research
+24 July 2026
+  9
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 10]
+3.5% and our BTM capacity available to serve data center load increases to ~31 GW of 
+capacity and ~22 GW of power delivery by 2030 (from 20 GW capacity/14 GW power 
+delivery before). We expect BTM data center demand to make up 20% of overall data 
+center demand by 2030, where we continue to view BTM opportunities as a bridge 
+solution in the near-term to address speed to market, and we expect grid connected 
+power solutions to be the preference over the long-term for large scale data centers. 
+ 
+Key Risks 
+We see affordability concerns and local level pushback (due to water usage, noise, 
+concerns over AI, etc) as key risks to monitor regarding data center expansion. While we 
+acknowledge this pushback is valid, we believe that through regulation, proper cost 
+allocation, and responsible corporate citizenship, these risks can be mitigated and the 
+expansion can provide benefits to communities.  
+Stock views 
+We highlight Buy-rated stocks within our coverage that we believe will be key 
+beneficiaries of the data center demand inflection in the US attributed to regional 
+differences. We see FE as a regulated beneficiary given its exposure to PJM and upside 
+from generation/transmission opportunities in West Virginia. For exposure to the 
+growing MISO market, which we expect to have a 16% share of total US demand in 2030, 
+we are constructive on XEL. DUK also stands to benefit through its ~15.4 GW 
+high-confidence large load pipeline, and benefits from a favorable regulatory 
+environment in the Southeast, which is the largest non-ISO data center market. We also 
+view SRE as well positioned to capture opportunities in Texas via T&D capital 
+investment, where we expect ERCOT’s data center market to grow at a 20% CAGR 
+ 
+Exhibit 19: Our total power demand CAGR increases to 3.5% through 2030, driven by both 
+BTM and FTM data center demand 
+Overall power demand CAGR by driver 
+0.4%
+0.4%
+0.4%
+0.2%
+1.8%
+0.8%
+-0.4%
+3.5%
+0.0%
+0.5%
+1.0%
+1.5%
+2.0%
+2.5%
+3.0%
+3.5%
+4.0%
+4.5%
+ 
+Numbers do not sum to total due to rounding 
+ 
+Source: Goldman Sachs Global Investment Research
+24 July 2026
+  10
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 11]
+through 2030. Lastly, we view the IPPs, including TLN, VST, and NRG, as among the best 
+positioned to benefit from rising power prices and incremental data center PPAs across 
+both PJM and ERCOT. 
+Valuation and Key Risks 
+FE. We are Buy rated on FE with a 12-month target price of $54, which is based on an 
+18x P/E multiple on our Q5-Q8 estimates, reflecting a 1x premium over our baseline. Key 
+downside risks relate to 1) an unfavorable outcome from its Ohio rate case; 2) pension 
+expense and/or interest expense that could come in higher than expected; and 3) mild 
+weather that could weigh on earnings. 
+XEL. We are Buy rated on XEL. Our 12-month price target is $93. We apply a 20.0x 
+multiple to our Q5-Q8 earnings, representing a 3x premium to our baseline multiple to 
+account for attractive leverage to renewables and transmission, as well as 
+above-average growth versus peers and a strong track record of execution. Key 
+downside risks include 1) negative rate case outcomes, 2) litigation, 3) failure to close the 
+gap between earned vs authorized ROE, and 4) cost management. 
+DUK. We are Buy rated on DUK and see a 19% total return to our 12-month, $145 price 
+target, which is based on a P/E multiple of 19.5x on our Q5-Q8 estimates to capture the 
+upside opportunities around generation capex and improved regulatory position. Key 
+downside risks include: DUK’s balance sheet not improving; regulatory uncertainty from 
+recently filed rate case; and any decline in the strong load growth forecast impacting 
+expected earnings growth. 
+SRE. We are Buy rated on Sempra with a 12-month SOTP based PT of $109. Key 
+downside risks for SRE include (1) management execution and communication 
+challenges, (2) balance sheet strength weakens, and (3) constructive regulatory 
+outcomes.  
+TLN. We value Buy rated TLN with a blended EV/EBITDA and FCF yield based valuation; 
+our 12-month price target of $499 reflects a target EV/EBITDA multiple of 10.0x and 
+FCF yield of 7.0% (on our Q5-Q8 estimates). Key downside risks for TLN include 1) 
+regulatory and interconnection risk, 2) lower than anticipated power prices, 3) slowdown 
+in data center demand. 
+VST. We are Buy rated on VST with a blended EV/EBITDA and FCF yield based valuation; 
+our 12-month price target of $209 is based on a 10.5x EV/EBITDA multiple and a 7.0% 
+FCF yield (on our Q5-Q8 estimates). Key downside risks for VST include: (1) PJM capacity 
+auction uncertainty; (2) lower than anticipated power prices; and (3) future of the power 
+demand theme. 
+NRG. We are Buy rated on NRG with a blended EV/EBITDA and FCF yield based 
+valuation; our 12-month price target of $197 is based on a 9x EV/EBITDA multiple and 
+an 8.0% FCF yield (on our Q5-Q8 estimates). Key downside risks for NRG include: (1) 
+increased headline risk tied to AI and data center theme; (2) lower-than-anticipated 
+power prices; and (3) PJM capacity auction price uncertainty. 
+Digital Realty Trust Inc (DLR, Buy) 
+Our estimates are unchanged. 
+24 July 2026
+  11
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 12]
+Valuation.  We are Buy rated on DLR with a 12-month target price of $215 (unchanged) 
+based on a 26X (unchanged) NTM+1Y P/AFFO. 
+Digital Realty Trust Inc. (DLR, Buy) is a leading global wholesale provider of data center, 
+colocation, and interconnect solutions for hyperscalers and large enterprises, operating 
+as a Real Estate Investment Trust (REIT) that owns and manages over 300 facilities across 
+over 50 metros globally for nearly 6,000 customers. DLR is strategically positioned to 
+benefit from secular tailwinds from cloud computing, AI investments, and digital 
+transformation that should support structural data center supply & demand tightness, 
+which supports substantial pricing power that can translate to future growth as leases 
+expire and are renewed at current market rates. Additionally, DLR’s extensive backlog 
+and use of joint ventures with institutional partners provide visibility into multi-year 
+revenue and profit growth while managing capital requirements and customer 
+concentration risks. 
+Key downside risks include: (-) data center supply exceeding demand, which could lead 
+to pricing pressure and margin compression; (-) demand erosion from hyperscalers; (-) 
+elevation of financing rates, which can negatively impact the company’s growth 
+capacity; (-) technology obsolescence if customer requirements shift towards 
+infrastructure configurations that existing facilities cannot support without substantial 
+retrofitting investments. 
+Equinix Inc (EQIX, Neutral) 
+Our estimates are unchanged. 
+Valuation. We are Neutral rated on EQIX with a 12-month target price to $1,015 
+(unchanged), which reflects 21.0X (unchanged) NTM+1Y P/AFFO. 
+Equinix is a global leading provider of data center, colocation, and interconnection 
+solutions within the retail colocation market to 10K+ customers across nearly 80 metros. 
+While the company should continue to be a beneficiary of structural tightness in data 
+center supply and demand, its position in serving medium to large enterprises is unlikely 
+to make it a primary beneficiary of the current wave of AI infrastructure spending, which 
+is largely focused on large-scale model training favoring wholesale operators. That said, 
+Equinix should benefit from the eventual shift towards AI inference workloads due to its 
+distributed metro footprint and position in interconnection. Additionally, capital 
+investments needed to support AI workload capacity should constrain near-term AFFO 
+per share growth through higher expenses. 
+Key risks include: (+) further data center supply tightness driving upside to pricing; (+) 
+greater demand for EQIX’s metro-focused footprint to optimize low-latency 
+infrastrucutre; (+) chip and power innovation diminishing the need for facility 
+modernization investments; (+) interest rate reductions allowing EQIX to raise 
+incremental debt & refinance existing debt amidst continued growth investments; (-) 
+data center oversupply could drive pricing weakness and margin compression; (-) 
+customer demand from medium to large enterprises may weaken; (-) escalating power 
+density requirements could render some of EQIX’s footprint inadequate for next-gen 
+applications, requirining greater capex for maintenance and retrofits; (-) elevated 
+financing rates could negatively impact EQIX’s ability to invest in growth 
+24 July 2026
+  12
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 13]
+IREN Ltd (IREN, Neutral)  
+Our estimates are unchanged. 
+Valuation. We are Neutral rated on IREN with a 12-month target price of $50 
+(unchanged) based on a blended valuation methodology using an 85% fundamental 
+value weight at a 7.0X (unchanged) NTM+1Y EV/EBITDA and a 15% M&A value weight at 
+21X (unchanged) EBITDA.  
+IREN is a Bitcoin miner in the process of converting to an AI cloud operator. Upon this 
+transition, the company should be well positioned to benefit from the growing demand 
+for AI-optimized compute infrastructure and the scarcity of grid-connected power 
+capacity suitable for GPU deployments. IREN’s access to secured grid-connected power 
+capacity positions the company to potentially capture additional hyperscaler demand in 
+an environment where power availability is the primary constraint limiting new data 
+center development in primary markets. Execution risk and re-leasing uncertainty are 
+key factors that could impact the durability of this opportunity. The capital intensity of 
+IREN’s business model, negative free cash flow expected through at least F2028, and 
+elevated customer concentration remain key considerations for investors evaluating the 
+risk/reward profile. 
+Key risks include: (+) greater-than-expected demand for AI infrastructure could result in 
+stronger pricing power and accelerated contract signings; (+) greater GPU supply 
+constraints could drive premium pricing for IREN’s capacity; (+) greater-than-expected 
+Bitcoin pricing appreciation could provide more cash flow to fund AI cloud capex; (+) 
+GPU useful life could extend beyond the initial five-year contract term and potentially 
+improve long-term project IRRs; (+) funding solutions could prove more favorable than 
+expected, including project-level financing at attractive rates and strategic equity 
+investments from hyperscalers; (-) construction delays could prevent the company from 
+delivering data center infrastructure and impact revenue ramp assumptions; (-) GPUs 
+could have a shorter useful life than expected, limiting the company’s ability to monetize 
+them in follow-on AI cloud services deals; (-) competitive pressure or technological 
+advancement driving non-renewals or renewals with lower pricing; (-) Bitcoin price 
+volatility could create funding uncertainty; (-) elevated customer concentration from its 
+announced Microsoft deal could create revenue volatility and negotiating leverage 
+concerns.
+24 July 2026
+  13
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 14]
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, Michael Ng, CFA, Brian Singer, CFA, Carly Davenport, Lindsey Shema, Yash Goenka, CFA, Jaya Patel, Xavier Zhang, Brendan Corbett and Zorayda 
+Montemayor, hereby certify that all of the views expressed in this report accurately reflect our personal views about the subject company or companies 
+and its or their securities. We also certify that no part of our compensation was, is or will be, directly or indirectly, related to the specific 
+recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: Michael Ng, CFA Goldman Sachs & Co. LLC, Brian Singer, CFA Goldman Sachs & Co. LLC, Carly Davenport Goldman Sachs & Co. 
+LLC, Lindsey Shema Goldman Sachs & Co. LLC, Yash Goenka, CFA Goldman Sachs India SPL, Jaya Patel Goldman Sachs & Co. LLC, Xavier Zhang Goldman 
+Sachs (Asia) L.L.C., Brendan Corbett Goldman Sachs & Co. LLC, Zorayda Montemayor Goldman Sachs & Co. LLC. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+Rating and pricing information 
+Digital Realty Trust Inc. (Buy, $178.41), Duke Energy Corp. (Buy, $127.95), Equinix Inc. (Neutral, $1,028.74), FirstEnergy Corp. (Buy, $49.33), IREN Ltd. 
+(Neutral, $41.28), NRG Energy Inc. (Buy, $139.98), Sempra (Buy, $93.05), Talen Energy Corp. (Buy, $377.41), Vistra Corp. (Buy, $166.74) and Xcel Energy 
+Inc. (Buy, $80.19) 
+The rating(s) for Duke Energy Corp., FirstEnergy Corp., NRG Energy Inc., Sempra, Talen Energy Corp., Vistra Corp. and Xcel Energy Inc. is/are 
+relative to the other companies in its/their coverage universe: Ameren Corp., American Electric Power, Consolidated Edison Inc., Constellation 
+Energy Corp., Duke Energy Corp., Edison International, Eversource Energy, Exelon Corp., FirstEnergy Corp., NRG Energy Inc., PG&E Corp., Public Service 
+Enterprise Group, Sempra, Southern Co., Talen Energy Corp., Vistra Corp., WEC Energy Group, Xcel Energy Inc.  
+The rating(s) for Digital Realty Trust Inc., Equinix Inc. and IREN Ltd. is/are relative to the other companies in its/their coverage universe: AT&T 
+Inc., American Tower Corp., Apple Inc., Arista Networks Inc., Axon Enterprise Inc., Blend Labs, Celestica Inc., Charter Communications Inc., Cisco 
+Systems Inc., Cogent Communications Holdings, Comcast Corp., Compass Inc., Crown Castle Inc., Dell Technologies Inc., Digital Realty Trust Inc., Equinix 
+Inc., F5 Inc., HP Inc., Hewlett Packard Enterprise Co., IREN Ltd., Ingram Micro, Lumen Technologies Inc., NetApp Inc., Opendoor Technologies Inc., 
+Optimum Communications Inc., Penguin Solutions Inc., SBA Communications Corp., Stagwell Inc., Super Micro Computer Inc., T-Mobile US Inc., TD 
+SYNNEX Corp., Verizon Communications, Versant Media Group, Walt Disney Co., Zillow Group  
+Company-specific regulatory disclosures 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+24 July 2026
+  14
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 15]
+ 
+As of July 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,104 equity securities. Goldman Sachs assigns stocks as Buys 
+and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Price target and rating history chart(s) 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Target price history table(s) 
+ 
+ 
+ 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+59%
+43%
+Vistra Corp. (VST)
+NRG Energy Inc. (NRG)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+12-May-26
+209.00
+146.87
+18-Jun-26
+184.00
+135.06
+06-Mar-26
+212.00
+158.65
+12-May-26
+197.00
+137.34
+06-Feb-26
+205.00
+149.65
+27-Apr-26
+198.00
+160.15
+19-Nov-25
+200.00
+179.14
+06-Mar-26
+197.00
+154.32
+12-Aug-25
+203.00
+209.56
+04-Apr-25
+129.00
+83.61
+24-Jul-25
+179.00
+196.24
+23-May-25
+164.00
+158.16
+04-Apr-25
+134.00
+98.07
+FirstEnergy Corp. (FE)
+IREN Ltd. (IREN)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+29-Apr-26
+54.00
+48.94
+27-May-26
+50.00
+67.84
+19-Feb-26
+53.00
+49.57
+08-May-26
+44.00
+61.20
+28-Oct-25
+50.00
+46.16
+05-Mar-26
+39.00
+40.13
+31-Jul-25
+48.00
+42.71
+06-Feb-26
+37.00
+41.83
+25-Apr-25
+47.00
+42.34
+18-Dec-25
+39.00
+35.80
+28-Feb-25
+45.00
+38.77
+09-Oct-24
+49.00
+42.55
+31-Jul-24
+48.00
+41.91
+02-May-24
+46.00
+39.09
+09-Apr-24
+45.00
+38.47
+Xcel Energy Inc. (XEL)
+Sempra (SRE)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+16-Jul-26
+93.00
+79.98
+08-May-26
+109.00
+91.53
+01-May-26
+92.00
+82.58
+02-Mar-26
+107.00
+95.67
+20-Mar-26
+91.00
+76.77
+21-Dec-25
+105.00
+86.94
+06-Feb-26
+90.00
+75.90
+13-Nov-25
+106.00
+92.22
+30-Oct-25
+89.00
+81.59
+14-Oct-25
+88.00
+91.33
+24-Sep-25
+87.00
+77.93
+12-Aug-25
+83.00
+82.09
+04-Aug-25
+83.00
+74.24
+15-Jul-25
+79.00
+74.14
+28-Apr-25
+80.00
+69.58
+13-May-25
+78.00
+75.13
+07-Feb-25
+79.00
+66.60
+26-Feb-25
+76.00
+72.85
+03-Nov-24
+78.00
+66.69
+07-Nov-24
+99.00
+89.76
+09-Oct-24
+77.00
+62.58
+09-Oct-24
+96.00
+81.52
+05-Aug-24
+73.00
+57.99
+07-Aug-24
+91.00
+77.26
+26-Apr-24
+72.00
+53.96
+08-May-24
+89.00
+75.23
+07-Mar-24
+71.00
+50.04
+28-Feb-24
+88.00
+70.67
+29-Jan-24
+75.00
+59.66
+25-Jan-24
+87.00
+70.73
+01-Aug-23
+74.00
+62.85
+07-Aug-23
+178.00
+71.20
+Talen Energy Corp. (TLN)
+Digital Realty Trust Inc. (DLR)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+18-Jun-26
+499.00
+436.29
+24-Jul-26
+223.00
+179.34
+24 July 2026
+  15
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 16]
+ 
+ 
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; for equity securities, market making and/or specialist role. Goldman Sachs trades or may trade as a 
+principal in debt securities (or in related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+Talen Energy Corp. (TLN)
+Digital Realty Trust Inc. (DLR)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+24-Apr-26
+215.00
+200.00
+06-Feb-26
+190.00
+171.62
+18-Dec-25
+188.00
+147.93
+24-Jul-25
+205.00
+180.02
+03-Apr-25
+195.00
+141.09
+14-Feb-25
+205.00
+164.28
+12-Dec-24
+208.00
+187.13
+25-Oct-24
+190.00
+181.01
+26-Sep-24
+185.00
+162.06
+01-Jul-24
+175.00
+152.13
+Duke Energy Corp. (DUK)
+Equinix Inc. (EQIX)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price ($)
+Closing price ($)
+05-May-26
+145.00
+127.58
+30-Apr-26
+1,015.00
+1,082.83
+11-Feb-26
+142.00
+125.20
+12-Feb-26
+894.00
+957.87
+12-Nov-25
+141.00
+123.90
+18-Dec-25
+785.00
+744.08
+05-Aug-25
+138.00
+124.00
+30-Oct-25
+910.00
+833.16
+15-Jul-25
+133.00
+117.10
+01-Jul-25
+880.00
+795.38
+25-Jun-25
+132.00
+115.95
+13-Feb-25
+1,020.00
+923.00
+13-May-25
+125.00
+113.07
+10-Jan-25
+1,060.00
+899.83
+18-Feb-25
+122.00
+110.89
+12-Dec-24
+1,066.00
+975.30
+08-Nov-24
+121.00
+113.23
+26-Sep-24
+980.00
+878.98
+09-Oct-24
+120.00
+111.32
+01-Jul-24
+870.00
+759.68
+09-Aug-24
+113.00
+112.67
+10-Oct-23
+845.00
+738.79
+09-May-24
+102.00
+103.02
+03-Aug-23
+885.00
+759.42
+09-Feb-24
+100.00
+91.69
+18-Jan-24
+101.00
+95.86
+10-Nov-23
+98.00
+88.27
+09-Aug-23
+97.00
+92.82
+24 July 2026
+  16
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 17]
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+24 July 2026
+  17
+Goldman Sachs
+Global Technology
+ 
+ 
+
+
+[Page 18]
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, and buy or sell, the 
+securities or derivatives, if any, referred to in this research, unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in part, to train or 
+finetune a machine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+24 July 2026
+  18
+Goldman Sachs
+Global Technology
+ 
+ 
