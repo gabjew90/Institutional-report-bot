@@ -1,0 +1,299 @@
+{
+ "brief": "The Market Ear frames a rates-vs-equities disconnect: 10-year yield RSI is as stretched as the January 2025 local high, the MOVE-VIX gap has blown out, and tech CDS spreads are back near recent highs, yet NDX is not reacting the way it did to CDS stress in July. Deutsche Bank's Jim Reid attributes this year's yield rise mostly to real yields and growth repricing, not inflation expectations. The Market Ear's own read: stronger growth may let the S&P 500 absorb higher yields at the index level, but Russell 2000 weakness shows rate-sensitive stocks already feeling it; if real yields stay elevated, the gap between calm equities and panicked bonds gets harder to ignore. Separately, Goldman Sachs frames the AI capex debate: hyperscalers need $1.42 trillion of 2028-30 revenue for a 15% ROIC on 2026-27 buildout, but their existing $1.69 trillion backlog covers most of it at ~59% conversion, so GS says it is too early to exit AI winners. GS likes NDX upside via short-dated QQQ call spreads, hedging longs with QQQ puts since hyperscaler credit spreads price more AI stress than equity options do.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "The 10-year Treasury yield's RSI has reached levels not seen in a long time amid the rates surge.",
+   "anchor": "the 10-year yield\u2019s RSI to levels we haven\u2019t seen in a long time",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "The 10-year yield's RSI is similarly stretched now as it was around the local yield high in January 2025, though the macro backdrop differs.",
+   "anchor": "RSI was similarly stretched around the local yield high in January 2025",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Thursday's late move in yields had the feel of a large position being stopped out, arguing against chasing yields higher rather than signaling a top.",
+   "anchor": "Thursday\u2019s late move had the feel of someone big getting stopped out",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "The gap between bond volatility and VIX has widened to extreme levels, with bond markets pricing a shock that VIX is not reflecting.",
+   "anchor": "The MOVE\u2013VIX gap has blown out to extreme levels",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Several of the tech sector's most-watched CDS spreads have returned to their recent highs.",
+   "anchor": "Several of the \"hot\" tech CDS spreads are back to recent highs",
+   "topic": "AI credit costs rising",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "NDX reacted to rising tech CDS spreads in July but is not reacting to the same stress signal this time.",
+   "anchor": "NDX cared about this back in July. This time around, the broader NDX simply does not care.",
+   "topic": "AI credit costs rising",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Almost all of this year's rise in the 10-year Treasury yield has come from real yields, with little change in inflation expectations, per Deutsche Bank's Jim Reid.",
+   "anchor": "almost all of this year\u2019s rise in the 10-year yield has come from real yields, with little change in inflation expectations",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Stronger growth may be helping the S&P 500 absorb higher yields through earnings at the index level.",
+   "anchor": "stronger growth may be helping SPX absorb higher yields through earnings",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Russell 2000 weakness shows that more rate-sensitive stocks are already feeling the squeeze from higher yields, unlike the index-level resilience in the S&P 500.",
+   "anchor": "Russell\u2019s weakness shows that more rates-sensitive stocks are already feeling the squeeze",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "If real yields remain elevated, the gap between calm equity markets and panicked bond markets will become harder to ignore.",
+   "anchor": "If real yields stay up here, the gap between calm equities and panicked bonds becomes harder to ignore",
+   "topic": "US Treasury yield selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Goldman Sachs' Eric Sheridan estimates Alphabet, Amazon, Microsoft, Meta, Oracle and SpaceX need to generate a combined $1.42 trillion of cumulative revenue in 2028-30 to earn a 15% ROIC on their 2026-27 AI buildout.",
+   "anchor": "need to generate a combined $1.42 trillion of cumulative revenue in 2028\u201330 to earn a 15% ROIC",
+   "topic": "AI capex ROIC economics",
+   "status": "target",
+   "instruments": [
+    "GOOGL",
+    "AMZN",
+    "MSFT",
+    "META",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028-30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Amazon, Microsoft and Alphabet already have a combined $1.69 trillion backlog.",
+   "anchor": "already have a combined $1.69 trillion backlog",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "MSFT",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Goldman Sachs calculates Amazon, Microsoft and Alphabet need to convert only around 59% of their existing backlog into future revenue to clear the 15% ROIC hurdle on their AI investments.",
+   "anchor": "need to convert only around 59% of that existing backlog into future revenue to clear the 15% ROIC hurdle",
+   "topic": "AI capex ROIC economics",
+   "status": "target",
+   "instruments": [
+    "AMZN",
+    "MSFT",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Goldman Sachs argues it is too early for investors to move on from the original AI winners.",
+   "anchor": "GS argues it is too early to move on",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Hyperscaler earnings have caught up with stock performance, leaving valuations much more reasonable than investors might think.",
+   "anchor": "Hyperscaler earnings have caught up with performance, leaving valuations much more reasonable than you might think",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Hyperscaler CDS spreads have widened relative to QQQ put volatility, indicating credit markets are pricing more AI-related stress than equity options markets.",
+   "anchor": "Hyperscaler CDS spreads have blown out relative to QQQ put vol",
+   "topic": "AI credit costs rising",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Goldman Sachs recommends running long AI-linked positions while hedging them with QQQ puts.",
+   "anchor": "Run the longs, hedge them with cheap QQQ puts",
+   "topic": "AI credit costs rising",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Goldman Sachs finds playing a possible NDX upside breakout via call spreads attractive given the volatility reset heading into seasonal strength.",
+   "anchor": "playing a possible upside breakout/pain trade via call spreads looks attractive to us",
+   "topic": "Tech mega-cap re-risking",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Bears Have All The Evidence. Except Price.",
+   "claim": "Goldman Sachs highlights the QQQ October 750/780 call spread, which offers up to 4x maximum payout, as a short-dated way to play a violent upside breakout.",
+   "anchor": "the QQQ Oct 750/780 call spread, offering +4x max payout",
+   "topic": "Tech mega-cap re-risking",
+   "status": "target",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17911__the-bears-have-all-the-evidence-except-price.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 19,
+  "matched": 19,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
