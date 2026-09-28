@@ -1,0 +1,659 @@
+{
+ "brief": "GS forecasts hyperscaler capex of $1.2tn in 2027 and $1.4tn in 2028, above consensus but decelerating from roughly 98% growth in 2026 to 54% in 2027 and 12% in 2028; funding is shifting toward private credit and equity because capex now exceeds operating cash flow and investment-grade bond capacity is the binding constraint. To break even on average 2026-2027 capex, hyperscalers need about $300bn in annual AI revenue; incremental cloud revenue is already running near $70bn above the pre-AI trend in Q2 2026, backed by a $1.7tn backlog across AMZN, GOOGL and MSFT. For the application layer to also earn adequate margins on that compute spend, GS sizes required annual revenue as high as $1tn-plus at a 30% EBIT margin and 10-20% ROIC, comparable to $1.5tn in global software spending and a potential $1.8tn in AI-driven US productivity gains, not all of which will flow to infrastructure or application layers. On pricing, AI-infrastructure skepticism is partly reflected already: median AI-infra forward P/E fell from 32x to 22x, memory stocks are priced for roughly 50% earnings declines, and hyperscalers trade at their smallest P/E premium to the S&P 500 in a decade, so decelerating capex plus emerging monetization should support those shares.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "The largest US hyperscalers are on track to spend $800 billion in capex in 2026.",
+   "anchor": "on track to spend $800 billion in capex in 2026",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Consensus estimates imply the hyperscalers will spend $1.1 trillion in capex in 2027.",
+   "anchor": "consensus estimates imply they will spend $1.1 trillion in 2027",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Consensus 2027 hyperscaler capex estimates have been revised higher by $175 billion since the start of the Q2 earnings season.",
+   "anchor": "Consensus 2027 capex estimates have been revised higher by $175 billion since the start of the Q2 earnings season",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since start of Q2 earnings season"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS equity analysts estimate hyperscaler capex will register $1.2 trillion in 2027 and $1.4 trillion in 2028, above consensus by $130 billion and $100 billion respectively.",
+   "anchor": "hyperscaler capex will register $1.2 trillion in 2027 and $1.4 trillion in 2028",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS's capex estimates imply hyperscaler capex growth will decelerate from nearly 100% in 2026 to 54% in 2027 and 12% in 2028.",
+   "anchor": "deceleration in capex growth from nearly 100% in 2026 to 54% in 2027 and 12% in 2028",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "2027 hyperscaler capex is on track to reach a larger share of GDP than any technological investment cycle since the railroad build-out in the late 1800s.",
+   "anchor": "larger share of GDP than any technological investment cycle since the railroad build-out in the late 1800\u2019s",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Hyperscaler capex spending now exceeds cash flow from operations.",
+   "anchor": "Hyperscaler capex spending now exceeds cash flow from operations",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Hyperscaler balance sheets do not appear to be a binding constraint on further capex, and their interest coverage ratios remain extremely healthy.",
+   "anchor": "their balance sheets do not appear to be a binding constraint and their interest coverage ratios remain extremely healthy",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS credit strategists view concentration in the investment grade market, rather than balance sheet capacity, as the more relevant bottleneck on hyperscaler capex funding.",
+   "anchor": "credit strategists instead point to concentration in the investment grade market as the more relevant bottleneck",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Hyperscalers need to generate annual AI revenues of roughly $300 billion in the next few years to break even on their average annual 2026-2027 capex investments.",
+   "anchor": "generate annual AI revenues of roughly $300 billion in the next few years to break even on their average annual capex investments",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": "next few years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Hyperscalers' current estimated AI revenues remain below the level needed to break even on their capex, though those revenues are growing quickly.",
+   "anchor": "current estimated AI revenues remain below the amount that would allow them to break even on their capex",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Year/year cloud revenue growth for AMZN, GOOGL, MSFT, and ORCL accelerated from 25% in 2024 to 48% in Q2 2026.",
+   "anchor": "Year/year cloud revenue growth for AMZN, GOOGL, MSFT, and ORCL has accelerated from 25% in 2024 to 48% in Q2 2026",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2024-Q2 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Annualized AMZN, GOOGL, MSFT and ORCL cloud revenues in excess of the 2024 growth rate registered nearly $70 billion in Q2 2026, roughly doubling over the past few quarters.",
+   "anchor": "annualized cloud revenues in excess of their 2024 growth rate registered nearly $70 billion in Q2",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "AMZN, GOOGL, and MSFT have announced a combined revenue backlog of $1.7 trillion.",
+   "anchor": "announced a combined revenue backlog of $1.7 trillion",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Announced AI revenue backlogs across the hyperscalers exceed $1.5 trillion.",
+   "anchor": "announced revenue backlogs exceed $1.5 trillion",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Realized hyperscaler return on invested capital has declined from 40% to 25%.",
+   "anchor": "Realized hyperscaler return on invested capital has declined from 40% to 25%",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "The AI application layer would have to generate over $1 trillion in annual revenues if those companies had a 30% EBIT margin and the hyperscalers generated a 10%-20% return on invested capital.",
+   "anchor": "application layer would have to generate over $1 trillion in annual revenues if those companies had a 30% EBIT margin",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "EBIT margins for large-cap software companies have averaged 40% during the past five years.",
+   "anchor": "EBIT margins for large-cap software companies have averaged 40% during the past five years",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "past five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Estimates of global advertising and software spending each equal roughly $1.5 trillion in 2026, a scale comparable to the required application-layer AI revenues.",
+   "anchor": "estimates of global advertising and software spending each equal roughly $1.5 trillion in 2026",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS economists estimate total annual AI-related US labor productivity gains that could accrue to capital total roughly $1.8 trillion, though not all of these gains will necessarily accrue to the infrastructure and application layers.",
+   "anchor": "annual AI US labor productivity gains that will potentially accrue to capital total roughly $1.8 trillion",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "The median AI infrastructure stock has de-rated from 32x consensus forward earnings in April 2026 to 22x today.",
+   "anchor": "median AI infrastructure stock has de-rated from 32x consensus forward earnings in April 2026 to 22x today",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "April 2026 to present"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Among AI infrastructure baskets, the ratio of market-cap change to earnings change remains most elevated among optical networking, electrical grid, and liquid cooling stocks, while it appears most conservative among semiconductors and utilities.",
+   "anchor": "remains most elevated among optical networking, electrical grid, and liquid cooling stocks while expectations appear most conservative among semiconductors and utilities",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS equity analysts are Buy-rated on NVDA and AVGO.",
+   "anchor": "Our equity analysts are Buy-rated on NVDA and AVGO but Neutral-rated on MU",
+   "topic": "AI capex ROIC economics",
+   "status": "target",
+   "instruments": [
+    "NVDA",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS equity analysts are Neutral-rated on MU.",
+   "anchor": "Our equity analysts are Buy-rated on NVDA and AVGO but Neutral-rated on MU",
+   "topic": "AI capex ROIC economics",
+   "status": "target",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Semiconductor stock valuations have declined sharply, which is typical among cyclical companies with strong near-term growth but uncertain medium-term growth.",
+   "anchor": "Valuations have declined sharply among Semis stocks, which is typical among cyclical companies with strong near-term growth but uncertain medium-term growth",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Memory stocks currently trade at a 2-year forward P/E of 4x, half their 15-year average.",
+   "anchor": "Memory stocks currently trade at a 2-year forward P/E of 4x, half their 15-year average",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "15-year average"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Memory firms currently enjoy gross margins of roughly 80%, more than double their historical average.",
+   "anchor": "Memory firms currently enjoy gross margins of roughly 80%, more than double their historical average",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Fabless chip stock earnings would need to decline by about 10% to bring the P/E back to its historical average.",
+   "anchor": "Earnings in the next few years would need to decline by about 10% to bring the P/E back to its historical average",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "NVDA",
+    "AVGO",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Hyperscalers have de-rated to their lowest P/E multiples in over a decade.",
+   "anchor": "the hyperscalers have de-rated to their lowest P/E multiples in over a decade",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Hyperscalers now trade just four turns above the median S&P 500 company, their smallest P/E premium on record.",
+   "anchor": "the group now trades just four turns above the median S&P 500 company, its smallest premium on record",
+   "topic": "AI capex ROIC economics",
+   "status": "level",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS expects the combination of increasing signs of ROI and the likelihood of decelerating capex growth to be supportive for hyperscaler stocks.",
+   "anchor": "the combination of increasing signs of ROI and the likelihood of decelerating capex growth should be supportive for these stocks",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "A group of Software stocks has rallied 45% and is now within 8% of its high reached in late 2025.",
+   "anchor": "A group of Software stocks has rallied by 45% and is now within 8% of its high reached in late 2025",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "late 2025 to present"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Annual recurring revenue growth for the median stock in GS Software analyst coverage has accelerated slightly in recent quarters.",
+   "anchor": "annual recurring revenue growth for the median stock in GS analyst coverage accelerating slightly in recent quarters",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "recent quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "The GS 'consumer inertia' basket (GSXUSWCH) has lagged a sector-neutral hedge by 5 percentage points since mid-September.",
+   "anchor": "The basket has lagged a sector-neutral hedge by 5 pp since mid-September",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since mid-September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "The increasing use of AI agents, including new consumer-facing tools such as Muse, may disrupt the business models of some consumer firms with high switching costs.",
+   "anchor": "the increasing use of agents, including by new consumer-facing tools such as Muse, may disrupt the business models of some consumer firms",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "A Census Bureau survey suggests 40% of large US firms are using AI in the production of goods and services.",
+   "anchor": "The Census Bureau survey suggests that 40% of large US firms are using AI in the production of goods and services",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS analysis of Q2 2026 earnings commentary suggests roughly 50% of S&P 500 companies are using AI in the context of productivity, though very few have quantified the productivity uplift.",
+   "anchor": "roughly 50% of S&P 500 companies are using AI in the context of productivity, but very few companies have quantified the productivity uplift",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q2 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Unlike past periods of market exuberance, today's equity market does not appear to be pricing expectations of widespread AI productivity gains.",
+   "anchor": "the equity market today does not appear to be pricing expectations of widespread productivity gains",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "Measures of frontier AI token demand slowed in July, coinciding with sell-offs in many AI infrastructure stocks, but accelerated again in August.",
+   "anchor": "Measures of frontier token demand slowed in July, simultaneous with sell-offs of many AI infrastructure stocks, but accelerated again in August",
+   "topic": "AI capex ROIC economics",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "July-August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equity Views: AI capex, required revenues, and what's priced in the AI trade",
+   "claim": "GS expects continued upward revisions to consensus 2027 capex estimates to support continued positive revisions to consensus 2027 EPS estimates for many AI infrastructure stocks.",
+   "anchor": "should support continued positive revisions to consensus 2027 EPS estimates for many AI infrastructure stocks",
+   "topic": "AI capex ROIC economics",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-27/17808__us-equity-views-ai-capex-required-revenues-and-what-s-priced.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 40,
+  "matched": 40,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
