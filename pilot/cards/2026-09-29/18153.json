@@ -1,0 +1,164 @@
+{
+ "brief": "Goldman's CTA model puts US 10-year Treasury positioning at roughly 99% of maximum short, and its funds positioning indicator shows an extreme duration underweight, a setup that has historically preceded lower 10-year yields over the following three months. CTAs also hold extreme upside convexity in bonds, so a rally in Treasuries could trigger further systematic buying. Separately, utilities were the most heavily shorted US sector last week (the largest Goldman-tracked utility short selling in almost six years), and JPMorgan's prime-brokerage data shows hedge-fund utility exposure at its lowest since 2018, about 2.5 standard deviations below normal. From September 4 to 25 the 10-year yield rose 39bp while XLU fell about 8.4% relative to SPY, continuing a pattern seen through spring and summer. BofA estimates its Treasury trend position holds unless the 10-year falls roughly 18bp in a week. The note argues that if yields break lower and utilities start outperforming, the two crowded shorts could unwind together, giving the bond rally an equity leg; falling yields without relative utility strength would weaken the thesis.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "The next rates rally has an equity leg",
+   "claim": "Goldman Sachs S&T's CTA model shows US 10-year Treasury short positioning at roughly 99% of its maximum.",
+   "anchor": "CTA model puts US 10-year Treasury positioning at roughly 99% of its maximum",
+   "topic": "Hedge fund positioning unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The next rates rally has an equity leg",
+   "claim": "Goldman's broader funds positioning indicator shows an extreme duration underweight, a setup that has historically preceded lower 10-year Treasury yields over the following three months.",
+   "anchor": "setup that has historically preceded lower 10-year yields over the following three months.",
+   "topic": "Hedge fund positioning unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The next rates rally has an equity leg",
+   "claim": "CTAs are sitting on extreme upside convexity in Treasuries, so a move higher in bond prices could trigger additional systematic buying that adds fuel to the rally.",
+   "anchor": "CTAs are sitting on extreme upside convexity in bonds.",
+   "topic": "Hedge fund positioning unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The next rates rally has an equity leg",
+   "claim": "Utilities were the most heavily shorted US sector last week, with Goldman recording the largest utility short selling in almost six years.",
+   "anchor": "Utilities were the most heavily shorted US sector last week, with Goldman seeing the largest short",
+   "topic": "Hedge fund positioning unwind",
+   "status": "level",
+   "instruments": [
+    "XLU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The next rates rally has an equity leg",
+   "claim": "JPMorgan's prime-brokerage data shows hedge-fund net exposure to utilities has fallen to its lowest since 2018, about 2.5 standard deviations below normal.",
+   "anchor": "to its lowest since 2018, around 2.5 standard deviations below normal.",
+   "topic": "Hedge fund positioning unwind",
+   "status": "level",
+   "instruments": [
+    "XLU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "The next rates rally has an equity leg",
+   "claim": "From September 4 to 25 the 10-year Treasury yield rose 39bp while XLU fell around 8.4% relative to SPY.",
+   "anchor": "From September 4 to 25, the 10-year yield rose 39bp, while XLU fell around 8.4% relative to SPY.",
+   "topic": "Hedge fund positioning unwind",
+   "status": "released",
+   "instruments": [
+    "XLU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "LSEG Workspace",
+   "document": "The next rates rally has an equity leg",
+   "claim": "The inverse pattern between the 10-year yield and XLU's relative performance to SPY has persisted through the spring and summer.",
+   "anchor": "inverse pattern has persisted through the spring and summer.",
+   "topic": "Hedge fund positioning unwind",
+   "status": "released",
+   "instruments": [
+    "XLU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BofA",
+   "document": "The next rates rally has an equity leg",
+   "claim": "BofA estimates its Treasury trend positions would likely hold unless the 10-year yield falls roughly 18bp in a week.",
+   "anchor": "BofA estimates its Treasury trend positions would likely hold unless the 10-year yield falls roughly 18bp",
+   "topic": "Hedge fund positioning unwind",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "a week"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The next rates rally has an equity leg",
+   "claim": "Falling Treasury yields without relative utility strength would weaken the crowded-shorts-unwind thesis.",
+   "anchor": "Falling yields without relative utility strength would weaken the thesis.",
+   "topic": "Hedge fund positioning unwind",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The next rates rally has an equity leg",
+   "claim": "If Treasury yields break lower and utilities start outperforming, the crowded bond short and crowded utility short could start unwinding together.",
+   "anchor": "utilities start outperforming, two crowded shorts could start unwinding together.",
+   "topic": "Hedge fund positioning unwind",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-29/18153__two-of-the-market-s-most-crowded-shorts-are-about-to-collide.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 10,
+  "matched": 10,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
