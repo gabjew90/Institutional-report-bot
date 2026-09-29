@@ -89,8 +89,12 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 priority="low",
                 key_insights=[triage.summary] if triage.summary else [],
                 total_pages=len(pages),
-                input_tokens=triage.input_tokens,
-                output_tokens=triage.output_tokens,
+                # Zero, not triage's counts: insert_analysis below adds
+                # triage's tokens to these, and carrying them here too
+                # recorded every LOW row at exactly twice its real cost
+                # (20,354 recorded against 10,177 spent, 2026-09-29).
+                input_tokens=0,
+                output_tokens=0,
             )
         else:
             # HIGH-priority routing fork: when settings.high_ingestion_backend
@@ -188,7 +192,11 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 title=analysis.title or file_name,
                 priority=triage.priority,
                 published_at=analysis.published_at,
-                full_text=extraction.full_text,
+                # `full_text` from the triage extraction: `extraction` is
+                # only bound on the deep-analysis branch, and a LOW PDF
+                # raised NameError here (caught, logged as a failed
+                # dispatch) on every run.
+                full_text=full_text,
             )
         except Exception as e:
             log.warning(f"pilot publish dispatch failed (non-fatal): {e}")
