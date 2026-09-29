@@ -1,0 +1,758 @@
+{
+ "brief": "Mixed US/Iran headlines (Trump rejected Iran's 7-day proposal but talks continue; Saudi restored its oil pipeline to half capacity) left WTI only modestly higher, so equity weakness was driven instead by a bond selloff: 2/5/10/30y yields rose 6-7bp, with the 10y hitting 5.25% intraday, a 19-year high, as hawkish Fedspeak (Cook said AI buildout can be inflationary; Barkin said AI isn't immune to rate pressure) combined with a hot Dallas Fed Mfg print. SPX fell 0.8%, tech lagged except NVDA (+1.3%) on an incremental $150bn buyback. META fell 5% for a second straight day even as it launched Meta Enterprise Platform and hired away MongoDB's CEO; the launch dragged enterprise software (HUBS, ADBE, CRM, NOW) and Muse-linked CPU names (INTC, AMD, ARM) lower on profit-taking and de-risking. JPM's US Market Intelligence desk moved back to Tactically Bullish from its Aug 31 Cautious/Neutral call, arguing yields will stabilize (Barry sees 10y at 5.05% by year-end) and oil trends lower; it drops the NDX/RTY pairing on squeeze risk, favoring Tech outright plus Banks ex-AI. Also previews JOLTS (openings seen rising to 7.40mn) and MU earnings, where Sur expects a beat on DRAM/NAND ASP strength.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "The 10-year Treasury yield hit 5.25% intraday, a 19-year high, as stocks sold off.",
+   "anchor": "the 10y yield hitting 5.25% intraday, a 19-year high",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Fed Governor Cook flagged that AI buildout itself can be inflationary.",
+   "anchor": "hawkish Fed rhetoric (Cook flagged that AI buildout itself can be inflationary) and macro data",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Fed's Barkin wouldn't say AI is immune to rate pressure.",
+   "anchor": "*BARKIN: WOULDN'T SAY AI IS IMMUNE TO RATE PRESSURE",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Today's Dallas Fed Manufacturing index reiterated the high-growth, high-inflation narrative.",
+   "anchor": "today\u2019s Dallas Fed Mfg index reiterated the high growth, high inflation narrative",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's Jay Barry forecasts the 10-year yield moving to 5.18-5.20% over the next month, then ending the year at 5.05%.",
+   "anchor": "10Y yield moving from 5.18% to 5.20% over the next month and then ending the year at 5.05%.",
+   "topic": "US Treasury yield selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end 2026"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM says hotter PCE or ISM-Mfg Prices Paid prints this week could bear-flatten the Treasury yield curve.",
+   "anchor": "Hotter prints here could bear flatten the yield curve.",
+   "topic": "US Treasury yield selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Trump rejected Iran's latest 7-day proposal, though negotiation efforts continue.",
+   "anchor": "rejected Iran\u2019s latest 7-day proposal; (ii) despite the rejection, negotiation efforts remain as the",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "The Iran-talks mediator is expected to hold separate discussions with Iran's foreign minister in New York.",
+   "anchor": "they are expected to hold separate discussions with Iranian FM in New York",
+   "topic": "Middle East oil risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Headlines that Iran offered to halve enrichment for sanctions relief were supportive for risk assets and reversed the earlier oil rally.",
+   "anchor": "supportive for risk assets and reversed the earlier oil rally",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Saudi Arabia said it has restored a key oil pipeline to half of its capacity.",
+   "anchor": "Saudi said it has restored a key pipeline to half of its capacity.",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Oil's reaction to the day's mixed Iran headlines was muted, with WTI up about 1%.",
+   "anchor": "actions (WTI +1%) and mixed geopolitical headlines",
+   "topic": "Middle East oil risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "META fell 5% today, a laggard among Muse-related names.",
+   "anchor": "META/CPI/Muse-related names were mostly laggards, with META -5%",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "META has pulled back for a second straight day despite announcing the launch of Meta Enterprise Platform.",
+   "anchor": "straight day despite the announcement of hiring MDB CEO and launching \"META Enterprise",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "MongoDB's CEO CJ Desai has left to become META's Chief Enterprise Platform Officer.",
+   "anchor": "Well-liked MDB CEO CJ Desai has left MDB to become",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "MDB",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "MDB shares are dipping on news of CEO CJ Desai's departure to META.",
+   "anchor": "MDB is unsurprisingly dipping on this news.",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "MDB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's Schilsky says META's enterprise-platform launch is bullish for META and less so for MSFT, AMZN and other hyperscalers.",
+   "anchor": "META. Less so for MSFT, AMZN, etc",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "forecast",
+   "instruments": [
+    "META",
+    "MSFT",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Enterprise App software names (HUBS, ADBE, CRM, NOW) are seeing a meaningful pullback as a result of META's enterprise push.",
+   "anchor": "Enterprise App software is seeing a meaningful pullback as a result (HUBS, ADBE,",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "HUBS",
+    "ADBE",
+    "CRM",
+    "NOW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "The popular infra-software long positions are getting hit on a combination of the MDB CEO's departure and the SNOW convertible.",
+   "anchor": "The popular infra SW longs are geting hit on a combo of MDB CEO leaving and",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "SNOW"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "CPU plays that benefited from META Muse optimism (INTC, AMD, ARM) are pulling back again.",
+   "anchor": "the META Muse optimism pulling back again as well.",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "INTC",
+    "AMD",
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's desk flows show selling in CABLE-basket names and profit-taking in META, with buyside de-risking from infra-software longs.",
+   "anchor": "better or sale - selling CABLE names, profit-taking in META. Also seeing de-risking from LOs in",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's flows show some covering in the beaten-up Muse/tax-loss names.",
+   "anchor": "infra SW. Seeing some covering in the beaten up MUSE/TAX loss names as well.",
+   "topic": "Meta Muse adoption and monetization",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's Harlan Sur previewed MU's print and feedback so far is that he's quite bullish.",
+   "anchor": "feedback so far is that he's quite bullish",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Sur expects a beat driven by DRAM ASPs up 20%+ QoQ and similar NAND ASP gains, with an HBM4 12-high mix that has shipped over $1b.",
+   "anchor": "DRAM ASPs up 20%+ QoQ and NAND ASPs up similarly Q, and with HBM4 12-high mix (>$1b",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "MU's HBM4 12-high mix is ramping twice as fast as HBM3E, as of the May quarter.",
+   "anchor": "shipped as of May-Q, ramping 2x faster than HBM3E) and DC SSD revenue likely tracking",
+   "topic": "MU earnings preview",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "MU's DC SSD revenue is likely tracking above $5b again, providing further gross-margin upside to the guided ~86%.",
+   "anchor": "above $5b again, providing further GM upside to the guided ~86%. On the F1Q27 guide, he",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Sur expects MU's F1Q27 guide to come in well above Street consensus of $56.3b revenue, 86.5% gross margin, and $35.71 EPS.",
+   "anchor": "expects management to raise well above Street consensus ($56.3b/86.5%/$35.71), underpinned",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F1Q27"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Customer demand signals for MU have increased even further since the last print.",
+   "anchor": "by customer demand signals that have \"increased even further\" since the last print and",
+   "topic": "MU earnings preview",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "MU management has raised its HBM total addressable market guidance to easily crossing $100b in CY27.",
+   "anchor": "TAM that management has raised to \"easily crossing $100b\" in CY27 (vs. Harlan's own model",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Harlan Sur's own model points to a $160b/$282b HBM TAM in CY27E/28E on 54%/25% blended ASP hikes.",
+   "anchor": "pointing to $160b/$282b in CY27E/28E on 54%/25% blended ASP hikes). Harlan expects the",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27E/28E"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Sur's base case is that MU's bit production coverage has stepped to 35%+, from about 20% DRAM/33% NAND last quarter.",
+   "anchor": "coverage has stepped to 35%+ (from ~20% DRAM/~33% NAND last quarter), with potential it's",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "After the CHIPS Act anniversary on 12/9/26, MU commits to returning 100% of excess cash, buybacks primary.",
+   "anchor": "date MU commits to returning 100% of excess cash (buybacks primary), with FCF running at",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "post 12/9/26"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "MU's free cash flow is running at $24b+ in the August quarter alone, with cumulative FCF potentially approaching $200b through year-end CY27.",
+   "anchor": "$24b+ in Aug-Q alone and cumulative FCF potentially approaching $200b through year-end",
+   "topic": "MU earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through year-end CY27"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's US Market Intelligence desk moved to a Cautious/Neutral equity stance on Aug 31 given uncertainty from the Fed, positioning, credit spreads, negative seasonality, and the momentum unwind.",
+   "anchor": "We moved to a Cautious / Neutral stance on Aug 31 given",
+   "topic": "US equity tactical bullish reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "since Aug 31"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Since JPM's Aug 31 Cautious/Neutral call, SPX is up 75bp and the +NDX/-RTY pair returned 7.9%, with the US outperforming the rest of world.",
+   "anchor": "SPX is +75bp and the +NDX / -RTY pair returned 7.9% with the US outperforming RoW.",
+   "topic": "US equity tactical bullish reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since Aug 31"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM now sees a more favorable setup for markets as bond yields find a level and oil prices are likely to trend lower.",
+   "anchor": "see a more favorable setup for markets as bond yields find a level and oil prices are likely to",
+   "topic": "US equity tactical bullish reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's Macro Fundamentals rationale for its bullish call is that priced-in growth should support hiring, consumption and corporate earnings.",
+   "anchor": "priced-in growth which should support hiring, consumption, and corporate earnings. SPX EPS",
+   "topic": "US equity tactical bullish reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM says consumer spending continues to defy expectations, supporting the economy and refuting the K-shaped hypothesis.",
+   "anchor": "continue to see spending defy expectations, supporting the economy, and refuting the K-shaped",
+   "topic": "US equity tactical bullish reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "RETAIL_SALES",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM notes SPX earnings growth printed +52% in 26Q2, with the market now expecting about 29% for 26Q3.",
+   "anchor": "after printing a +52% earnings growth in 26Q2 the market sees ~29%",
+   "topic": "US equity tactical bullish reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "26Q3"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM warns of a 'Good News is Bad News' dynamic, where the market prices in additional Fed hikes as the growth story improves.",
+   "anchor": "News\u2019 mentality with the market pricing in additional hikes as the growth story improves; (iii) AI",
+   "topic": "US equity tactical bullish reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM still likes Tech as a core long but would no longer pair it with a RTY short, given squeeze risk.",
+   "anchor": "We still like Tech as a core Long but would no longer pair with a RTY",
+   "topic": "US equity tactical bullish reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Excluding AI-related plays, JPM favors Banks given the growth reboot, a potentially steeper yield curve, and a favorable capital markets outlook.",
+   "anchor": "excluding AI-related plays, we favor Banks given the growth reboot, potentially steeper",
+   "topic": "US equity tactical bullish reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's Financials desk says financials have sold off hard approaching the end of Q3, nearing post-GFC/COVID relative valuation lows.",
+   "anchor": "Approaching end 3Q, financials have sold off hard,",
+   "topic": "US equity tactical bullish reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "end of Q3"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM flags the COVID Reopening Theme (Airlines, Autos, Cruise Lines, Discretionary, Hotels) as another area of interest.",
+   "anchor": "higher; plus, the COVID Reopening Theme (Airlines, Autos, Cruise Lines, Discretionary, Hotels,",
+   "topic": "US equity tactical bullish reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM says the biggest catalyst would be a US/Iran deal, which would squeeze EU and RTY higher.",
+   "anchor": "ex-AI plays. The biggest catalyst would be a US / Iran deal which would squeeze EU and RTY",
+   "topic": "US equity tactical bullish reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "SPX fell 0.8%, NDX fell 1.1%, and RTY fell 0.7% today.",
+   "anchor": "SPX -0.8%, NDX -1.1%, RTY -0.7%. WTI +21bps at $92.60, NatGas -613bps to $3.00, UK",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "NVDA rallied 1.7% today, the exception to broad Tech and AI weakness, after its buyback announcement.",
+   "anchor": "the exception of the 1.7% rally in NVDA after its",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "NVDA announced an incremental $150b buyback through F28, taking the total buyback to $235b over the next roughly 18 months.",
+   "anchor": "buyback through F28 (taking total buyback to $235b through the the next ~18 months).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through F28"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "NVDA said the buyback authorization reflects its confidence in the long-term opportunity ahead.",
+   "anchor": "authorization reflects our confidence in the long-term opportunity ahead.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "JPM's Feroli projects JOLTS job openings in August to rise to 7400mn from 7271mn in July, leaving the openings rate steady.",
+   "anchor": "by the JOLTS report to rise to 7400mn from 7271mn in July, leaving the openings rate steady at",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "The NFIB survey's share of firms planning to increase employment inched down to 17% from a recent peak of 20% in July.",
+   "anchor": "increase employment inched down to 17% from a recent peak of 20% in July. The labor market",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "Citi and Coinbase's stablecoin partnership shows crypto plumbing advancing despite no Clarity Act.",
+   "anchor": "Citi/Coinbase stablecoin partnership shows crypto plumbing advancing despite no",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Afternoon Briefing - Sept 28",
+   "claim": "MBGL was initiated at Neutral: a strong CARFAX moat, but execution and margin proof are still needed.",
+   "anchor": "MBGL initiated Neutral: strong CARFAX moat, but",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MBGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-29/18087__us-market-intelligence-afternoon-briefing-sept-28.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 52,
+  "matched": 52,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
