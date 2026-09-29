@@ -1,0 +1,311 @@
+{
+ "brief": "US bond yields hit a two-decade high last week, but the cross-asset vol reaction was mixed: rates vol (MOVE) jumped near a 1-year high while equity vol (VIX) held near a 1-year low. The note attributes the muted equity reaction to the yield move coming almost entirely from higher real yields (tighter financial conditions) rather than higher inflation expectations, leaving stocks near record highs. Credit vol widened more sharply (VIXIG, LQD both at multi-decade percentile highs) on spread widening, and oil vol rose despite falling oil prices, on geopolitical risk. Separately, single-stock dispersion (VIXEQSM) is rising ahead of Q3 earnings, and the note expects further dispersion given higher rates' historical link to it. Brazil's EWZ has the richest implied vol among global indices ahead of its Oct 4 presidential election, near a 4-year high, consistent with past election-driven vol spikes. Despite rising yields, demand for downside protection has fallen to a 1-year low: SPX skew is near 1-year lows and ~40% of top-100 stocks show inverted call skew, a bullish signal.",
+ "cards": [
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "US bond yields climbed to a two-decade high last week, with a mixed reaction across the cross-asset volatility market.",
+   "anchor": "US bond yields climbed to a two-decade high last week, yet reaction in the cross-asset vol market was mixed.",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "The MOVE Index surged to near a 1-year high of 96 bps vol on rates volatility.",
+   "anchor": "rates vol jumped higher, with the MOVE Index surging over 15nms to near a 1-year high of 96 bps vol",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "The VIX Index ended the week near a 1-year low of 14.9% even as rates volatility spiked.",
+   "anchor": "equity vol ended the week almost unch\u2019d, with the VIX\u00ae Index hovering near a 1-year low of 14.9%",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "The rise in yields came almost entirely from higher real yields rather than higher inflation expectations.",
+   "anchor": "the increase in yields came almost entirely from higher real yields (i.e. tighter financial conditions) rather than higher inflation expectations",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "Risk assets remain unfazed by the yield spike, with stocks trading near record highs.",
+   "anchor": "risk assets remain largely unfazed with stocks trading near record highs",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "The VIXIG Index gained about 5 points to 25 bps vol, a 52nd percentile high over the past year, as credit spreads widened.",
+   "anchor": "the VIXIG Index gaining ~5 pts to 25 bps vol (52nd percentile high over the past year)",
+   "topic": "Credit market stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "LQD 1-month implied volatility jumped to the 96th percentile high over the past year.",
+   "anchor": "LQD 1M implied volatility jumping to the 96th percentile high",
+   "topic": "Credit market stress",
+   "status": "level",
+   "instruments": [
+    "LQD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "Oil volatility rose even as oil prices fell, with the OVX Index up 5 points to 55% on elevated geopolitical risk.",
+   "anchor": "oil volatility gained, with the OVX Index up 5 pts to 55% on the back of elevated geopolitical risk",
+   "topic": "Middle East oil risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "Single stock volatility increased further last week, with the VIXEQSM Index up another 2 points to 38.5%.",
+   "anchor": "single stock volatility increased further, with the VIXEQSM Index up another 2 pts to 38.5%",
+   "topic": "US equity dispersion volatility",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "There is scope for single stock volatility to rise further relative to index volatility as Q3 earnings approach.",
+   "anchor": "scope for single stock volatility to rise even more relative to index vol",
+   "topic": "US equity dispersion volatility",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3 earnings"
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "The spread between VIXEQ and the VIX Index widened by 5 points over two weeks to 23.5%.",
+   "anchor": "The spread between VIXEQ and VIX Index has already widened by 5 pts over the past two weeks to 23.5%",
+   "topic": "US equity dispersion volatility",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "Both RTY and QQQ 1-month implied volatilities gained more than 1.0 point last week.",
+   "anchor": "both RTY and QQQ 1M implied volatilities gained by 1.0+ pt last week",
+   "topic": "US equity dispersion volatility",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "The RTY 1-month implied-realized volatility spread is particularly rich, at a 76th percentile high.",
+   "anchor": "the RTY 1M implied-realized volatility spread screening as particularly rich (76th percentile high",
+   "topic": "US equity dispersion volatility",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "Brazil has the richest implied volatility among global equity indices ahead of its October 4th presidential election.",
+   "anchor": "Brazil stands out as having the richest implied volatility ahead of its presidential election on Oct 4th",
+   "topic": "Brazil election volatility trade",
+   "status": "level",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Oct 4th"
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "EWZ 1-month implied volatility has almost doubled over the past month to near a 4-year high of 46%.",
+   "anchor": "EWZ 1M implied volatility has almost doubled over the past month to near a 4-year high of 46%",
+   "topic": "Brazil election volatility trade",
+   "status": "level",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "The spread between EWZ implied and realized volatility is at 22.5%, an 8-year high.",
+   "anchor": "The spread between the implied vs. realized volatility, at 22.5%, is also trading at an 8-year high.",
+   "topic": "Brazil election volatility trade",
+   "status": "level",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "EWZ 1-month realized volatility has exceeded 50% in each of the last 3 Brazilian presidential elections.",
+   "anchor": "EWZ 1M realized vol has exceeded 50% in each of the last 3 presidential elections",
+   "topic": "Brazil election volatility trade",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "Equity market sentiment remains constructive despite sharply rising bond yields.",
+   "anchor": "Sentiment in the equity market remains remarkably constructive despite sharply rising bond yields",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "Demand for downside protection has fallen to near a 1-year low as the market sits at a record high.",
+   "anchor": "demand for protection has also fallen to near a 1-year low",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "SPX 1-month skew is trading in the 5th percentile low as investors rotate out of hedges into upside calls.",
+   "anchor": "SPX 1M skew is trading in the 5th percentile low currently as investors rotate out of hedges and into upside calls",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Cboe",
+   "document": "Macro Volatility Digest",
+   "claim": "About 40% of the top 100 stocks are trading with inverted call skew, a sign of extreme bullishness.",
+   "anchor": "about 40% of the top 100 stocks are trading with inverted call skew (a sign of extreme bullishness)",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-09-29/18109__macro-volatility-digest.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 21,
+  "matched": 21,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
