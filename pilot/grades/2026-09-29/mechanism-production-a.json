@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+ "source_span": "reports midday that Trump is ready to ease sanctions by releasing frozen assets in exchange for nuclear concessions quickly rebutted by Iranian officials. Oil and rates continued to move higher, driving the risk off tape, with yields greater than 5.2% pressuring",
+ "source_chain": "A midday Iran-sanctions-relief headline is rebutted by Tehran within hours, therefore oil and rates keep climbing into the close, therefore >5.2% yields press equities to a broad red finish (SPX -77bp to 7,683, 334 names lower, RTY>SPX>NDX); GS flags the tape has already passed its own 'negative forward returns' technical levels.",
+ "pulse_chain": "A midday report that Washington would release frozen Iranian assets for nuclear concessions is rebutted by Tehran within hours, therefore oil and yields rise on the round trip, therefore equities are pushed lower (SPX -77bp to 7,683, 334 red); Goldman's short-term 7,665 pivot is already breached to the upside and the piece's invalidation is what breaks if the 10-year heads toward 6%.",
+ "preserved": true,
+ "why": "The lead theme reproduces Jeter's same-direction sequence (Iran headline rebutted -> oil/yields up -> equities pressured) with matching figures, layers in the Sharkey midday basket data and GS's 7,665 pivot (18189/18188) without altering that mechanism, and correctly attributes the constructive-vs-bearish counter-arguments to GS Sharkey, JPM Market Intelligence (18087), and BTIG (17991) respectively, each matching its source's own chain and invalidation.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

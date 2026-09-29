@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+ "source_span": "with reports midday that Trump is ready to ease sanctions by releasing frozen assets in exchange for nuclear concessions quickly rebutted by Iranian officials. Oil and rates continued to move higher, driving the risk off tape",
+ "source_chain": "Midday report that Trump would ease sanctions by releasing frozen Iranian assets for nuclear concessions, therefore quickly rebutted by Iranian officials, therefore oil and rates continued higher driving the risk-off tape, therefore yields above 5.2% pressured equities into a weak-breadth red close, through the note's 'negative forward returns' technical levels. No numeric invalidation given; the note frames the day as headline-driven and unresolved.",
+ "pulse_chain": "Midday report that Washington would release frozen Iranian assets for nuclear concessions, therefore rebutted by Tehran within hours, therefore oil and yields rose on the round trip, therefore equities were pushed lower to a red, breadth-weak close (S&P -77bp, 334 names red). Invalidation given as the index sitting just above Goldman's 7,665 short-term pivot, having already passed the technical levels tied to negative forward returns, with the open question being what breaks if the 10-year heads toward 6%.",
+ "preserved": true,
+ "why": "The pulse reproduces GS Jeter's headline-roulette chain \u2014 Iran asset-release report, rebuttal, oil/yields up, risk-off close \u2014 in the same direction with the same 'negative forward returns' technical framing, compressed and left unattributed but not reversed, misattributed, or replaced with an invented mechanism.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

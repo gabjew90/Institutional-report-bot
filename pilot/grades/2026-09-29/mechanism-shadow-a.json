@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+ "source_span": "reports midday that Trump is ready to ease sanctions by releasing frozen assets in exchange for nuclear concessions quickly rebutted by Iranian officials. Oil and rates continued to move higher, driving the risk off tape, with yields greater than 5.2% pressuring equities",
+ "source_chain": "Midday headline that Washington would ease sanctions/release frozen Iranian assets for nuclear concessions gets rebutted by Iran, therefore oil and rates keep climbing, therefore the tape goes risk-off and yields >5.2% pressure equities into the close (334 SPX names red, high-beta/AI baskets hit hardest); invalidation is implicit in 'we are through the negative forward returns levels.'",
+ "pulse_chain": "Midday report that Washington would release frozen Iranian assets for nuclear concessions is rebutted by Tehran within hours, therefore oil and yields rise on the round trip, therefore equities are pushed lower (high-beta/AI baskets hit hardest); Goldman's equities desk (unchanged-but-better-priced risk) and JPMorgan (back to Tactically Bullish off the Aug 31 Cautious/Neutral call, Jay Barry's 5.05% year-end 10Y) read the drop as more constructive, BTIG reads it as a setup for an imminent high-correlation selloff citing CCC spreads widening toward 2022 levels and IG tech CDS at 2023 wides, and the invalidation is Goldman's 7,665 short-term SPX pivot (closed just above it) with the open question of what breaks if the 10Y reaches 6%.",
+ "preserved": true,
+ "why": "Every step in the pulse's chain traces to a correctly attributed source (GS Headline Roulette for the rebuffed-headline mechanism, GS MidDay Color for the constructive read, JPM's afternoon briefing for the Tactically Bullish pivot and Barry forecast, BTIG's Something's Gotta Give for the credit-driven bear case, GS Morgan for the 7,665 pivot, GS Garrett weekend prep for the 6% anxiety line) with no reversed direction, no swapped bank, and no invented mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

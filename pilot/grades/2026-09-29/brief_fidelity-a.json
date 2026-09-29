@@ -1,0 +1,118 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d10",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Muted Iran/oil headlines leave a renewed bond selloff (10y to 5.25% intraday, 19-yr high) driven by hawkish Fedspeak and a hot Dallas Fed print as the main equity headwind, therefore tech/AI lags except NVDA's buyback while META slides on the MDB-CEO poach/Enterprise Platform launch dragging enterprise software and Muse-linked CPU names, therefore JPM's US Mkt Intel desk returns to Tactically Bullish from Cautious/Neutral on stabilizing yields and falling oil, dropping the +NDX/-RTY pair for Tech outright plus Banks ex-AI, and previews a JOLTS uptick and an MU beat.",
+   "brief_chain": "Mixed US/Iran headlines keep oil only modestly higher, so equity weakness comes from a bond selloff (yields +6-7bp, 10y to 5.25% intraday, 19-yr high) on hawkish Fedspeak and a hot Dallas Fed print; tech lags except NVDA (+1.3%, $150bn buyback) while META falls 5% on the MDB-CEO poach/Enterprise Platform launch, dragging enterprise software and Muse-linked CPU names; therefore JPM flips back to Tactically Bullish, dropping the NDX/RTY pair for Tech outright plus Banks ex-AI, and flags a JOLTS uptick and an MU beat ahead.",
+   "distortions": [
+    {
+     "what": "Source quotes Barkin as 'wouldn't say AI is immune to rate pressure' (a declined-to-affirm hedge); brief renders it as a direct assertion, 'Barkin said AI isn't immune to rate pressure.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the hawkish-Fed framing and the stance shift to Tactically Bullish rest on Cook's explicit quotes and the yield/oil rationale, not on this one line; rewording a hedge into an assertion doesn't flip the desk's call."
+    },
+    {
+     "what": "Source's own text is internally split between 'muted oil price actions (WTI +1%)' and a later clause crediting 'elevated oil prices' as part of what weighed on risk; the brief keeps only the muted-oil framing and attributes weakness to the bond selloff plus Fedspeak/data.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the source's topic sentence for the US equity move ('amid a renewed bond selloff') matches the brief's framing, and either reading still points to the same Tactically Bullish call on stabilizing yields/falling oil."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d13",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "A midday Iran-sanctions-easing headline gets rebutted, and with oil/rates already grinding higher (10y >5.2%), SPX closes -77bps through GS's negative-forward-returns level as breadth hits dot-com-bubble lows, therefore AI/tech underperforms (OpenAI training pause on breach incidents, Musk's Muse privacy concerns, MDB -18.5%) partly offset by NVDA's buyback/safety-platform news, therefore the desk finishes net-for-sale (AMs and HFs both selling) while GS's model flags one of the largest CTA RTY-selling estimates in 6 years and dealers stay long SPX gamma but flip short NDX above +4%.",
+   "brief_chain": "A rebutted Iran sanctions-easing headline plus a persistent oil/rate rise (10y >5.2%) drives SPX -77bps through GS's negative-forward-returns level with dot-com-era-low breadth; AI/tech underperforms on the OpenAI pause and Musk/Meta Muse concerns plus MDB -18.5%, partly offset by NVDA's buyback and new safety platform; the desk finishes net-for-sale (AMs and HFs both selling) while GS projects one of the largest CTA RTY-selling estimates in 6 years, with dealers long SPX gamma but flipping short NDX above +4%.",
+   "distortions": [
+    {
+     "what": "Source specifies the OpenAI training pause was 'due to breach incidents'; brief drops the stated cause and just says 'OpenAI training pause.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the AI/tech underperformance call doesn't hinge on the specific pause rationale."
+    },
+    {
+     "what": "Source gives the desk's precise activity level (3/10, -781bps better-for-sale) and dollar flows ($1.3bn AM, $1.7bn HF); brief compresses to 'net seller, asset managers and hedge funds both better for sale' without figures.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 direction of flow (net sell, broad-based) is preserved; only magnitude detail is lost."
+    },
+    {
+     "what": "Source says dealers are long NDX gamma too and only flip short above +4%; brief states only the flip point without noting they're long below it.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the actionable flip level (+4%) is preserved intact."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d28",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "No Middle East breakthrough sends oil and yields higher (10y >5.25%, Oct hike odds >70%) and equities broadly lower, sharpest in high-beta baskets (Agentic AI, Mag7, 12M losers, Non-Profitable Tech), therefore GS's desk sees a compelling short in Non-Profitable Tech given 7 straight months of rising 10y yields, but argues rates/energy/AI risk are unchanged-but-better-priced, tilting the pricing asymmetry more constructive, with light positioning (sentiment/breadth/valuation) insulating against bigger declines, while desk flow stays quiet with HFs and LOs both net sellers (macro products plus semis/TMT).",
+   "brief_chain": "Lack of a Mideast breakthrough pushes oil/yields higher (10y >5.25%, Oct hike odds >70%) and equities lower, sharpest in high-beta themes (Agentic AI, Mag7, 12M losers, Non-Profitable Tech), where GS's desk views a Non-Profitable Tech short as compelling given 7 straight months of rising 10y yields; GS's counter-thesis is that rates/energy/AI risks are unchanged but better priced, shifting pricing toward a more constructive asymmetry, with light positioning (sentiment/breadth/valuation) insulating against bigger declines; desk flow stays quiet with HFs and LOs both net sellers (macro products plus semis/TMT).",
+   "distortions": [
+    {
+     "what": "Source's 4th positioning point \u2014 a watchlist of high-growth names by dispersion of 3-year analyst sales estimates \u2014 is dropped from the brief's positioning list.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the three positioning metrics kept (sentiment, breadth, valuation) already support the light-positioning/insulation call; the dropped watchlist item is a research pointer, not a call."
+    },
+    {
+     "what": "Source's line 'So far this has limited gains but hasn't broke risk assets' is omitted from the brief's 'Paths to Relief' summary.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a qualifying aside, not the thesis itself."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d15",
+   "tier": "rest",
+   "bank": "Cboe",
+   "source_chain": "Yields hit a 20-year high but equity vol (VIX) stays muted because the move is real-yield- not inflation-driven, while rates vol (MOVE) jumps and credit vol widens (VIXIG a middling 52nd 1-year percentile, LQD a sharp 96th 1-year percentile) and oil vol rises despite falling oil prices on geopolitical risk, therefore single-stock dispersion (VIXEQSM) climbs into Q3 earnings and Brazil's EWZ vol is richest globally ahead of its Oct 4 election, while SPX skew near 1-year lows and ~40% top-100 inverted call skew signal fading demand for downside protection despite the yield spike.",
+   "brief_chain": "Yields hit a two-decade high but equity vol stays muted (real-yield- not inflation-driven) while rates vol jumps and credit vol widens sharply (VIXIG, LQD both cast as multi-decade percentile highs) and oil vol rises despite falling oil prices on geopolitical risk; single-stock dispersion climbs into Q3 earnings and Brazil's EWZ vol is richest globally ahead of its Oct 4 election; SPX skew near 1-year lows and ~40% top-100 inverted call skew signal fading demand for downside protection despite the yield spike.",
+   "distortions": [
+    {
+     "what": "Source gives VIXIG at a '52nd percentile high over the past year' (roughly median) and LQD at a 96th percentile, both explicitly on a 1-year lookback (confirmed by the exhibit table's 'Percentile (1Y)' column); the brief recasts both as being at 'multi-decade percentile highs,' inventing a decades-long lookback the source never uses and mischaracterizing VIXIG's median-ish reading as a 'high.'",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a trader reading 'multi-decade percentile highs' would treat credit vol as a rare, extreme dislocation warranting a defensive/hedging conviction, whereas the source's actual 1-year reading for VIXIG (52nd percentile) is roughly average and doesn't support that urgency; the invented longer lookback inflates the conviction behind the credit-stress read.",
+     "searched": [
+      "52nd percentile",
+      "96th percentile",
+      "multi-decade",
+      "Percentile (1Y)"
+     ]
+    },
+    {
+     "what": "Source calls the inverted call skew in ~40% of top-100 stocks 'a sign of extreme bullishness'; brief softens this to 'a bullish signal.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both readings are directionally bullish; only the intensity wording is softened, not the signal itself."
+    },
+    {
+     "what": "Brief drops most specific magnitudes throughout (MOVE at 96bps, VIX at 14.9%, OVX +5pts to 55%, VIXEQSM +2pts to 38.5%, EWZ's near-doubling to 46% vol, its 8-year-high implied-realized spread, SPX skew's 5th percentile).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the directional reads (rates vol near highs, equity vol near lows, EWZ richest globally, skew near lows) are all preserved without the underlying figures."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 9,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,54 @@
+{
+ "metric": 1,
+ "total_cards": 1359,
+ "fragmentation_sets": [
+  {
+   "subject": "Iran ceasefire negotiations and Strait of Hormuz oil risk",
+   "labels": [
+    "middle east oil risk",
+    "iran war ceasefire negotiations"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Goldman Sachs weekly hedge fund / prime brokerage positioning (sector net buying-selling, gross-net leverage)",
+   "labels": [
+    "hedge fund positioning unwind",
+    "us futures positioning caution"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Fed hike-odds repricing / terminal rate outlook",
+   "labels": [
+    "fed terminal rate outlook",
+    "fed october hike odds"
+   ],
+   "cards": 14
+  }
+ ],
+ "fragmented_mass_share": 0.0383,
+ "mis_merges": [
+  {
+   "label": "us treasury yield selloff",
+   "subjects": [
+    "US Treasury auction/issuance supply stress",
+    "UK/France sovereign fiscal-crisis yield spike"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The two UK/France cards folded in here (gilt at 5.3%, OAT-Bund spread, Lecornu's spending cuts) belong to a different causal story than US auction weakness, but France is already fully and separately covered by the dedicated 'france fiscal risk premium' label, so no theme is actually missed or changed."
+  }
+ ],
+ "pass": true,
+ "notes": "misc correctly holds 12/1359 cards (~0.9%) as declared overflow, not scored. Considered but rejected several tempting merges as within-tolerance judgment calls rather than true fragmentation: the four 'us equity ___' bullish-equity labels (sentiment/vol divergence, light positioning, year-end rally case, tactical reversal) each carry enough distinct, bank-specific content to stand as separate briefs rather than one; the AI-capex/infra/credit-cost trio likewise reads as three distinct angles, not wording variants.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

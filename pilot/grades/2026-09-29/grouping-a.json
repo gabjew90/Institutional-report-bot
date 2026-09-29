@@ -1,0 +1,107 @@
+{
+ "metric": 1,
+ "total_cards": 1359,
+ "fragmentation_sets": [
+  {
+   "subject": "Iran/Strait of Hormuz oil-supply risk and ceasefire rejection",
+   "labels": [
+    "middle east oil risk",
+    "iran war ceasefire negotiations"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Weekly hedge fund / institutional positioning check (GS Prime Services + MS Prime Brokerage flow, leverage, sector buy/sell data)",
+   "labels": [
+    "hedge fund weekly positioning flows",
+    "hedge fund positioning unwind",
+    "us futures positioning caution",
+    "us equity light positioning"
+   ],
+   "cards": 48
+  },
+  {
+   "subject": "AI data-center capex: buildout feasibility and its credit-market financing/risk",
+   "labels": [
+    "ai capex roic economics",
+    "ai infra data center execution risk",
+    "ai credit costs rising"
+   ],
+   "cards": 36
+  },
+  {
+   "subject": "Meta Muse launch, monetization race, and downstream agentic-commerce/persistent-agent effects",
+   "labels": [
+    "meta muse adoption monetization",
+    "persistent ai agent adoption",
+    "agentic commerce ecommerce adoption"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "This week's US/global economic data preview (JOLTS/PCE/ISM/NFP + ECB/BoJ/Eurozone-Tokyo CPI)",
+   "labels": [
+    "us economic data preview",
+    "global inflation data preview"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "Fed hike-odds pricing for October and into 2026",
+   "labels": [
+    "fed terminal rate outlook",
+    "fed october hike odds"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Banks turning tactically bullish / making the year-end re-risking case",
+   "labels": [
+    "us equity year end rally case",
+    "us equity tactical bullish reversal"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "EUR credit spread widening driven by France's fiscal risk premium",
+   "labels": [
+    "eur credit spread outlook",
+    "france fiscal risk premium"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.148,
+ "mis_merges": [
+  {
+   "label": "semis inference economy rotation",
+   "subjects": [
+    "semiconductor intra-sector rotation/catch-up trade (AMD/INTC/NVDA/AVGO/SOX)",
+    "inference-economy asset-light AI winners (cybersecurity/data-infra names like Cloudflare)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The inference-economy angle points to non-chip beneficiaries (cyber/data-infra) as a distinct investable idea, which an editor reading this as one 'semis' theme would likely miss or fold incorrectly into a chips-only story."
+  },
+  {
+   "label": "us industrials sector positioning",
+   "subjects": [
+    "weekly single-stock movers in Industrials/Materials",
+    "Goldman Prime Services book-wide gross leverage statistic"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Only one stray leverage stat sits among twelve industrials-specific mover cards, too minor to change which theme an editor would select."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/1359 cards (0.9%), all single-fact snippets correctly left ungrouped. Two labels (us equity light positioning; france fiscal risk premium) contain near-verbatim internally duplicated cards restating the same facts twice, which inflated their card counts but did not affect the fragmentation judgment.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

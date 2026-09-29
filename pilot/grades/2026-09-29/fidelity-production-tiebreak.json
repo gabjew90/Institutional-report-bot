@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18087__us-market-intelligence-afternoon-briefing-sept-28.txt",
+   "span": "10y yield hitting 5.25% intraday, a 19-year high",
+   "why": "Sept 28 2026 was the Monday in question; source states the 10y touched 5.25% intraday, a 19-year high, matching the sentence exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+   "span": "S&P -77bps closing @ 7,683 ... 334 names in the SPX finished in the red on the day",
+   "why": "Both the -77bps/7,683 close and the 334-name red count are stated verbatim in the same GS Jeter note."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+   "span": "reports midday that Trump is ready to ease sanctions by releasing frozen assets in exchange for nuclear concessions quickly rebutted by Iranian officials. Oil and rates continued to move higher",
+   "why": "Matches the midday report, quick rebuttal by Iranian officials, and the resulting rise in oil/rates that pressured equities."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18188__gs-midday-color-us-equities-mid-day-color-28-sep-2026.txt",
+   "span": "Agentic AI (GSXUAGNT) -250bps, Mag7 (GSX1MEGA) -130bps, 12M Losers(GSXULMOM) -250bps, Non Profitable tech (GSX1NPTC) -240bps",
+   "why": "Speculative/momentum baskets fell 130-250bps versus the SPX's -77bps close, supporting the characterization that damage concentrated in higher-beta names."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18188__gs-midday-color-us-equities-mid-day-color-28-sep-2026.txt",
+   "span": "Agentic AI (GSXUAGNT) -250bps",
+   "why": "Goldman's GSXUAGNT agentic AI basket fell 250bps intraday, exactly as stated."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18188__gs-midday-color-us-equities-mid-day-color-28-sep-2026.txt",
+   "span": "Rates, Energy and AI = same risks, better priced...the asymmetry is shifting to the constructive side...Light Positioning helping insulate bigger moves lower...Valuation 19x, matching the 10-yaer avg",
+   "why": "Goldman's desk note states risks are unchanged but better priced, asymmetry turning constructive, light positioning cushioning downside, and 19x valuation matching the 10-year average."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18189__gs-morgan-eq-positioning-and-key-levels-28-sep-2026.txt",
+   "span": "Key pivot levels for SPX: Short term: 7665",
+   "why": "GS short-term SPX pivot of 7665 confirmed; SPX closed 7,683 (s2), just above it. 'Negative forward returns' technical levels corroborated in 18187 ('we are through the negative forward returns levels')."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18190__what-s-trending-across-credit-27-sep-2026.txt",
+   "span": "All-in yields are approaching multi-year highs (~5.95%)...leaving an attractive income story but a less compelling spread story",
+   "why": "Matches figure (5.95%) and the income-vs-spread framing exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/18078__sizing-the-ai-economy-needed-to-justify-roic-on-hyperscaler-.txt",
+   "span": "Goldman has decided to answer that question the old-fashioned way: with a spreadsheet...to earn a 15% ROIC...the six must generate a combined ~$1.73 trillion in cumulative revenue",
+   "why": "Goldman published a quantified estimate of revenue needed to justify hyperscaler AI capex ROIC, supporting the vague-but-checkable claim that Goldman 'put a number on the AI question.'"
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/18026__early-morning-reid-macro-strategy.txt",
+   "span": "Brent is up +2.58% to $107.01",
+   "why": "Brent figure matches exactly (DB Early Morning Reid, Monday morning); WTI +71bps @ $93.09 confirmed separately in 18187 (Monday close)."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17989__turning-point-the-gradual-and-the-sudden.txt",
+   "span": "it's clear the problem is not oil but refined product...Refined Product Prices Much Higher than Oil",
+   "why": "Bear Traps Report's explicit view that refined product markets are tighter than crude supports the stated stance."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17989__turning-point-the-gradual-and-the-sudden.txt",
+   "span": "US diesel and gasoline inventories are at the lowest levels in 15 years",
+   "why": "15-year inventory low confirmed here; $6.52/gallon, 91 cents above a month ago, and the White House's 90-day diesel export ban all confirmed verbatim in pilot-data/pilot/source-text/2026-09-29/18126__globalmarkets-weekly-wrap-up.txt ('The average price for a gallon of diesel was $6.52 Wednesday, up 91 cents from a month ago'; 'White House is preparing plan for 90-day diesel exports ban')."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18153__two-of-the-market-s-most-crowded-shorts-are-about-to-collide.txt",
+   "span": "Goldman Sachs S&T's CTA model puts US 10-year Treasury positioning at roughly 99% of its maximum short...an extreme duration underweight, a setup that has historically preceded lower 10-year yields over the following three months",
+   "why": "99% max short and the 'extreme duration underweight preceding lower yields' claim both confirmed; $22.7bn notional confirmed separately in 17999 ('99% of max short (-22.7bn)')."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18153__two-of-the-market-s-most-crowded-shorts-are-about-to-collide.txt",
+   "span": "Utilities were the most heavily shorted US sector last week, with Goldman seeing the largest short selling in the sector in almost six years...hedge-fund net exposure to utilities has fallen to its lowest since 2018, around 2.5 standard deviations below normal",
+   "why": "Both the Goldman six-year short-selling record and JPMorgan's 2018-low/2.5-SD prime-brokerage figure are stated verbatim."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18153__two-of-the-market-s-most-crowded-shorts-are-about-to-collide.txt",
+   "span": "From September 4 to 25, the 10-year yield rose 39bp, while XLU fell around 8.4% relative to SPY",
+   "why": "Matches figures and date range exactly."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

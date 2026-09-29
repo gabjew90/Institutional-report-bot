@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+ "source_span": "reports midday that Trump is ready to ease sanctions by releasing frozen assets in exchange for nuclear concessions quickly rebutted by Iranian officials. Oil and rates continued to move higher, driving the risk off tape, with yields greater than 5.2%",
+ "source_chain": "A midday report that Washington would ease sanctions by releasing frozen Iranian assets for nuclear concessions therefore Iranian officials quickly rebutted it therefore oil and rates (yields >5.2%) moved higher and drove risk-off therefore equities finished in the red (S&P -77bps); no forward invalidation stated, this is a same-day wrap, not a standing thesis.",
+ "pulse_chain": "A midday report that Washington would release frozen Iranian assets for nuclear concessions therefore Tehran rebutted it within hours therefore oil and yields rose on the round trip therefore that is what pushed equities lower (S&P closed down 77bps at 7,683); no invalidation attached to this specific step, consistent with the source.",
+ "preserved": true,
+ "why": "The pulse reproduces the note's exact sequence (headline, rebuttal, oil/yields up, equities down) in the same direction and without inventing an attribution or invalidation the note doesn't make.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

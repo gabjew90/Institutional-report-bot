@@ -1,0 +1,95 @@
+{
+ "metric": 1,
+ "total_cards": 465,
+ "fragmentation_sets": [
+  {
+   "subject": "Iran's ceasefire rejection and the Middle East oil-supply risk it feeds",
+   "labels": [
+    "middle east oil risk",
+    "iran war ceasefire negotiations"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Fed hike pricing: October odds plus the terminal-rate path",
+   "labels": [
+    "fed terminal rate outlook",
+    "fed october hike odds"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "The AI capex funding gap and its credit-market fallout",
+   "labels": [
+    "ai capex roic economics",
+    "ai credit costs rising"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Wall Street flips bullish into year-end (Goldman's Wilson call and JPM's desk reversal)",
+   "labels": [
+    "us equity year end rally case",
+    "us equity tactical bullish reversal"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Weekly hedge-fund and institutional positioning flows",
+   "labels": [
+    "hedge fund weekly positioning flows",
+    "hedge fund positioning unwind",
+    "us futures positioning caution"
+   ],
+   "cards": 36
+  },
+  {
+   "subject": "Light positioning and cheap convexity: the case for buying upside calls",
+   "labels": [
+    "us equity light positioning",
+    "equity derivatives positioning skew"
+   ],
+   "cards": 21
+  },
+  {
+   "subject": "Meta's Muse and the scramble for agentic commerce among retailers/travel",
+   "labels": [
+    "meta muse adoption monetization",
+    "agentic commerce ecommerce adoption"
+   ],
+   "cards": 17
+  },
+  {
+   "subject": "Bearish sentiment failing to dent a resilient, expensive market",
+   "labels": [
+    "us equity sentiment vol divergence",
+    "s p 500 valuation derating"
+   ],
+   "cards": 16
+  }
+ ],
+ "fragmented_mass_share": 0.357,
+ "mis_merges": [
+  {
+   "label": "us treasury yield selloff",
+   "subjects": [
+    "US Treasury auction weakness and issuance supply/demand",
+    "UK and French sovereign yield selloff driven by fiscal risk"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The French fiscal-crisis story is substantial enough to carry its own 12-card label elsewhere in this ledger, so burying the UK/France sovereign selloff inside a US-Treasury-labeled theme would make an editor scanning labels miss or under-weight the European fiscal angle as its own theme."
+  }
+ ],
+ "pass": false,
+ "notes": "465 cards are actually enumerable in the ledger excerpt provided, versus the 1359 stated in the header; all counts above are computed against the visible 465. misc holds 12 cards (2.6%), correctly excluded from fragmented mass.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

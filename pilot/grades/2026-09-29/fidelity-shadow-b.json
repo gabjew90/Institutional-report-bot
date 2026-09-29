@@ -1,0 +1,147 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18087__us-market-intelligence-afternoon-briefing-sept-28.txt",
+   "span": "TACTICALLY BULLISH \u2013 We moved to a Cautious / Neutral stance on Aug 31... Jay Barry sees the 10Y yield moving from 5.18% to 5.20% over the next month and then ending the year at 5.05%.",
+   "why": "JPMorgan US Market Intelligence desk explicitly moved from cautious (Aug 31) to tactically bullish, citing yields finding a level and oil trending lower; Jay Barry's year-end 10Y forecast of 5.05% matches exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17991__something-s-gotta-give.txt",
+   "span": "CCC spreads have widened 11 of the last 14 days, approaching '22 levels... IG Tech CDS at their widest since '23... we continue to think the clock is ticking, and we see one [a correlation-one selloff] sooner than later.",
+   "why": "BTIG (Something's Gotta Give) states all three claims verbatim: the CCC widening count/direction, the IG tech CDS level, and the expectation of an imminent high-correlation selloff."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/18078__sizing-the-ai-economy-needed-to-justify-roic-on-hyperscaler-.txt",
+   "span": "AWS, Azure and Google Cloud reported a combined backlog of ~$1.69 trillion, up 152% YoY... their ~$1.22 trillion of Phase 2 capex requires ~$1.00 trillion of 2028-30 revenue - equal to ~59% of the current backlog",
+   "why": "The $1.69T and 152% YoY figures are correct, but the source says the required revenue is 59% of the backlog (i.e., the backlog more than covers the requirement, ~1.7x). The sentence inverts this into 'the backlog covers 59% of the requirement,' which reads as the backlog falling short \u2014 the opposite of the bull case the source is describing.",
+   "searched": [
+    "1.69 trillion",
+    "59% of the current backlog"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18126__globalmarkets-weekly-wrap-up.txt",
+   "span": "Goldman estimates that the global oil deficit has narrowed from roughly 7mb/d near the start of the war in March to approximately 1mb/d in Q3... Oil does not need the conflict to end. It needs the disruption to stop getting worse.",
+   "why": "Near-verbatim match, including the March starting point, the Q3 endpoint, and the closing framing line."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/18031__us-economic-notes-sep-28.txt",
+   "span": "our base case of two further hikes (at the December and March meetings)... if recent data trends continue, we see scope for the Fed to hike again in October.",
+   "why": "Deutsche Bank's US Economic Notes state the two-hike base case (Dec/March) and flag October as an earlier-move risk if data runs hot, matching the sentence exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18087__us-market-intelligence-afternoon-briefing-sept-28.txt",
+   "span": "FEDSPEAK \u2013 Fedspeak today from Barkin and Cook gave further insights... *BARKIN: WOULDN'T SAY AI IS IMMUNE TO RATE PRESSURE... *FED'S COOK: AI PRODUCTIVITY GAINS WON'T OFFSET NEAR-TERM INFLATION",
+   "why": "JPM's desk note describes two Fed officials delivering hawkish-leaning commentary the same day, supporting the characterization that officials are not aiding a dovish case."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17991__something-s-gotta-give.txt",
+   "span": "<50% of SPX names above their 200 DMA, and more 52wk lows than highs for nine straight days\u2014both with the index near highs... nine straight days of 52wk lows > highs while SPX was within 2% of a 52wk high",
+   "why": "All three figures (under 50% above 200-day, within 2% of 52-week high, nine straight sessions of lows outnumbering highs) match BTIG's note exactly."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17991__something-s-gotta-give.txt",
+   "span": "Since '90 the only times there have been nine straight days of 52wk lows > highs while SPX was within 2% of a 52wk high: Dec. '99, Jan. '00, Sep. '26.",
+   "why": "Exact match on the three occurrences and the since-1990 lookback window."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17991__something-s-gotta-give.txt",
+   "span": "From July '99 through Feb. '00, SPW -16% vs. SPX +8%. They then reversed with the SPX -17% into late Dec. while SPW +20%.",
+   "why": "SPW (equal-weight) and SPX (cap-weighted) moves and their subsequent reversal match the sentence's figures and direction exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+   "span": "MDB (-18.5%) weighed on broader software after CEO is to assume a new role at META.",
+   "why": "Exact figure and causal attribution (CEO departure to Meta) match."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/18028__meta-rich-product-cycle-begins.txt",
+   "span": "usage limits on the free tier -- up to 100mn tokens per week... an all-in cost of ~$5/mo for the Free users",
+   "why": "Deutsche Bank's Meta note states both the 100M-token weekly free-tier allowance and the ~$5/month all-in cost estimate for free users."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/17989__turning-point-the-gradual-and-the-sudden.txt",
+   "span": "We love a META put spread here for a trade... Within six months, Amazon, Google, Microsoft, and Apple will all ship their own versions, because none of them can afford to let Meta own the consumer AI interface.",
+   "why": "Bear Traps' six-month competitor-response call and the META put spread recommendation both match; 'the stock' refers to META, the subject of the put spread call."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-29/18187__us-equities-color-headline-roulette-28-sep-2026.txt",
+   "span": "gold -383bps @ 4,120 ... [prior week, Deutsche Bank Early Morning Reid, 2026-09-28] gold prices fell -2.14% (+0.23% Friday)",
+   "why": "Monday's close (-383bps to $4,120) is confirmed in the GS US Equities Color note; the prior week's -2.14% decline is confirmed in Deutsche Bank's Early Morning Reid note from the same day."
+  },
+  {
+   "id": "s14",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source ties a single named driver to pressure on 'everything else.' The sentence has no checkable subject (no named driver, no named set of pressured assets) and no source frames rates/yields or any other factor this way as a unifying cross-asset driver.",
+   "searched": [
+    "the driver",
+    "pressuring everything else",
+    "driving everything",
+    "is the driver"
+   ]
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-09-28/18072__gold-is-breaking-just-weeks-after-record-speculative-buying.txt",
+   "span": "A close below the mega trend line would be a major technical deterioration, with $4,000 the next obvious downside level to watch... GS trading has flagged sovereign/institutional buying around there.",
+   "why": "The 2025 trend line, the $4,000 downside level on a close below it, and the sovereign/institutional buying interest at that level all match the source directly."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d10",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Mixed Iran headlines leave oil only modestly higher, so hawkish Fedspeak (Cook, Barkin) plus a hot Dallas Fed print drive a bond selloff to a 19-year yield high, which drags equities down (tech lags ex-NVDA on its buyback; META's Enterprise Platform launch/MDB-CEO hire drags related software and CPU names) -> JPM flips back to Tactically Bullish from its Aug 31 Cautious/Neutral call on expected yield stabilization and lower oil, dropping the +NDX/-RTY pair for Tech outright plus Banks ex-AI, and previews JOLTS/MU.",
+   "brief_chain": "Same structure: mixed Iran headlines -> oil only modestly higher -> bond selloff/yields to 19-year high on hawkish Fedspeak + hot Dallas Fed -> SPX down, tech lags ex-NVDA -> META drop drags enterprise software/CPU names -> JPM flips Tactically Bullish, drops NDX/RTY pair for Tech + Banks ex-AI, previews JOLTS/MU.",
+   "distortions": [
+    {
+     "what": "Brief states NVDA +1.3%. The source itself carries two different NVDA figures in different sections (1.7% in the Afternoon Updates line, 1.3% in the Trading Desk Commentary line); the brief silently picks one without flagging the internal inconsistency.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both figures are positive and close in magnitude; the buyback-driven bullish read on NVDA is unchanged either way."
+    },
+    {
+     "what": "Brief attributes both 'profit-taking and de-risking' broadly to the dragged-down enterprise software AND CPU names, while the source specifically ties profit-taking to META and de-risking to infra software (long-onlys), not explicitly to the CPU-names group.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the directional read (bearish pressure on these groups) is unchanged; only the mechanism attribution is compressed."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d13",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "A midday Iran sanctions-relief headline is quickly rebutted -> oil/rates rise, driving a risk-off tape with breadth at dot-com-era lows and SPX through 'negative forward returns' technical levels -> AI/tech takes added pressure from OpenAI's training pause, Musk's Muse privacy comments and MDB's CEO departure, partly offset by NVDA's buyback boost and new safety platform -> desk finishes a net seller (asset managers and hedge funds both better for sale) -> GS's model projects heavy CTA RTY-futures selling next week, while dealers stay long S&P gamma but flip short NDX above +4%.",
+   "brief_chain": "Same: Iran headline reversal -> oil/rates up, risk-off, breadth at dot-com lows, through negative-forward-return levels -> AI/tech pressured (OpenAI pause, Musk/Muse, MDB) offset by NVDA buyback/safety platform -> desk net seller (asset managers and hedge funds both better for sale) -> CTA RTY-futures selling projected, dealers long SPX gamma but flip short NDX above +4%.",
+   "distortions": [
+    {
+     "what": "Brief compresses 'the desk was a net seller, with asset managers and hedge funds both better for sale' and drops the specific activity level (3/10) and dollar amounts ($1.3bn asset managers, $1.7bn hedge funds) behind it.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the net-seller directional read is preserved; only supporting magnitude detail is omitted."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d28",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "No Middle East breakthrough pushes oil/yields higher and October hike odds above 70%, hitting high-beta/AI baskets hardest (desk views shorting Non-Profitable Tech as compelling given 7 straight months of rising 10y yields) -> GS's counter-thesis is that rates/energy/AI risks are the same but now better priced, so the pricing distribution has shifted adverse yet the asymmetry is shifting constructive -> light positioning (low sentiment, weak breadth, average valuation) helps cushion further downside -> desk flow itself was quiet, with hedge funds and long-onlys both modestly net sellers in macro products/semis and macro products/TMT respectively.",
+   "brief_chain": "Same: no breakthrough -> oil/yields up, hike odds >70% -> high-beta/AI baskets sharpest decliners, short Non-Profitable Tech seen as compelling given the 7-month yield climb -> GS counter-thesis: same risks now better priced, shifting toward a more constructive asymmetry -> light positioning (sentiment, breadth, valuation) cushions declines -> quiet desk flow, HFs and LOs both net sellers in macro products/semis and macro products/TMT.",
+   "distortions": [
+    {
+     "what": "Brief renders the 'Paths to Relief' line as simply 'shifting the distribution of pricing toward a more constructive asymmetry,' dropping the source's own qualifier that the distribution 'shifted in a more adverse direction' before the asymmetry turned constructive.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the net conclusion (constructive asymmetry) is preserved; only an intermediate clause is compressed."
+    },
+    {
+     "what": "Brief omits the fourth 'Light Positioning' bullet (a watchlist of high-growth stocks by dispersion of analyst 3-year sales estimates).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the three positioning metrics kept (sentiment, breadth, valuation) carry the point; the dropped bullet is a supplementary watch-item, not part of the stance."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d15",
+   "tier": "rest",
+   "bank": "Cboe",
+   "source_chain": "Yields hit a two-decade high but equity vol stays near a 1-year low because the move is real-rate (not inflation) driven -> credit and oil vol widen on spreads/geopolitics while single-stock dispersion should keep rising into Q3 earnings, and Brazil's EWZ vol is richest globally ahead of its Oct 4 election -> yet SPX skew and downside-hedge demand sit near 1-year lows with ~40% of top-100 names showing inverted call skew, a bullish sentiment signal despite the rate backdrop.",
+   "brief_chain": "Same overall arc, but recharacterizes the credit-vol readings (VIXIG, LQD) as 'multi-decade percentile highs' rather than the source's stated one-year percentile readings.",
+   "distortions": [
+    {
+     "what": "Brief states VIXIG and LQD implied vol are at 'multi-decade percentile highs.' The source's own data table labels these readings 'Percentile (1Y)' \u2014 a one-year lookback, not multi-decade \u2014 and VIXIG's reading (52nd percentile) sits barely above its one-year median, nowhere near a rare extreme. Searched 'decade' (only hit: yields' 'two-decade high,' unrelated to credit vol), '52nd percentile', '96th percentile', and 'multi-decade' (no hits) before concluding this is unsupported.",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader told credit vol sits at a rare multi-decade extreme would take a much higher-conviction stance (e.g., sizing up a vol-sell/fade trade) than one told it sits near an unremarkable one-year median-to-high percentile, which supports no real edge."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 5,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}
