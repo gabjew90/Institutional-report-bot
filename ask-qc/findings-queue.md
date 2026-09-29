@@ -712,3 +712,8 @@ much-higher current-quarter consensus instead.
 
 no findings — 4/4 graded, 3 CLEAN, 1 CONCERN, 0 fail, 0 infra, 0 ungraded.
 The CONCERN (18:03:42, Arxfic, Drake Maye): the A.J. Brown high-ankle sprain verified, but the "Cover 6 baiting" and "ball velocity is dipping" claims found no independent source. Judgment, not mechanically checkable. Full reasoning in `pulse-data/ask-qc/2026-09-27.claude.md`.
+
+## 2026-09-28
+
+### 13:06:48 UTC, 2Pale, Q3 domestic box office over $3B
+- Bucket: judgment. Grounded-web answer contradicted by coverage. It said 2016 was the first Q3 above $3B and that 2018/2019 cleared it. Coverage says 2016's $2.98B was the prior Q3 record and Q3 2026 is the first over $3B. `validate_answer.py` returned no violation (only a detector-unavailable note, aiohttp missing in the runner). No mechanical shape: it is a wrong historical statistic sourced from a search snippet. Prompt-session material: a historical-statistic shape ("first year X crossed Y") should not accept a single-snippet claim and should say it can't confirm.

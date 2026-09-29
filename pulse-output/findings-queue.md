@@ -1143,3 +1143,11 @@ Not filing a fresh queue item for the staleness itself, per the
   +45k to +100k. Source of 98,000 not found in the dump.
 - **observation** — Draft re-roll budget spent 2/2 and the omnipulse waited
   the full 1200s and fell back to classic. Track recurrence.
+
+## 2026-09-29
+- **deterministic-fixable** — No adversarial verdict file for 2026-09-29T15-09-35Z in `pulse-output/adversarial/` (driver trail shows the adversarial gate ran, 16 findings). Gap in the control series. The routine's failure-marker write got 403 and raw.githubusercontent reads got 404 x3 that day; commit the verdict file through the same MCP path or fail preflight when it is absent.
+- **deterministic-fixable** — `pulse-context/latest.json` again overwritten after the pulse (dumped 19:36Z, 61 PDFs, vs 94 at pulse time). Second consecutive report of this. Archive the pulse-time dump next to the pulse.
+- **prompt-session** — Omnipulse body shipped with 15 unrepaired adversarial findings, including a `fabricated-event` (White House 90-day diesel export ban; the dump says only "potential" bans). The locked body exempts it from repair. Needs a rule: soft-downgrade or drop claims the checker flags as fabricated-event, since the body is not otherwise reviewed.
+- **pilot-territory** — Omnipulse body cites figures (Barry attribution, $6.52 diesel, 152% backlog, $920B) not traceable to the production context. Check against `pilot/shadow/2026-09-29.clean.md` citations; the body's source material may differ from the pulse's context.
+- **observation** — RECAP removed "$22.7B" as unsupported while the last BRIEF still states it. Also the driver trail is condensed with no full state file, so re-rolls and SCRUB detail are not auditable.
+- **observation** — Selection: US fiscal sustainability (7 banks) not in the pulse. Low confidence, dump is a later 61-PDF snapshot.
