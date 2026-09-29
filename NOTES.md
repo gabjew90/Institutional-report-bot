@@ -3502,3 +3502,11 @@ published file byte for byte).
 ## 2026-09-28: /ask clock times count as specifics
 
 "when is trump speaking today" (kloh, 17:47 UTC) routed WEB/FACT and shipped "2:00 PM ET" with no search and no sources. The time was right (the White House schedule listed a 2:00 PM announcement), but nothing backed it. `_FACTUAL_SPECIFIC_RE` had no clock-time pattern, so the web grounding net never forced the search retry. The same gap let the 2026-09-10 ORCL print and call times through. Added `2 PM` / `4:05pm` / `14:00` forms. The retry ladder now keeps a tool-sourced answer before accepting a "couldn't verify" retry, so the wider trigger cannot hedge over league or calendar data.
+
+## 2026-09-29: first Omnipulse pulse, SCRUB instrument guard, token-less context reads
+
+The 9/29 pulse shipped with `body_source: omnipulse` (gate found it on the first fetch). It posted 11:17 ET because the Claude.ai scheduler fired the routine at 15:08 UTC instead of ~14:05. The run itself took 9 minutes. The adversarial checker flagged 15 claims in the locked body; every one traces to a reader card from a real PDF (BTIG c557/c826/c831, Goldman c579/c586, JPM c648, Syz c776/c777). The checker sees only production's per-PDF extractions, so those were false alarms.
+
+STEP 2's context fetch 404'd three times with the token and the routine fell back to the GitHub MCP read. Same failure as the 9/28 Omnipulse fetch. The three raw-host reads in the routine (context, volume-gate refetch, progress read) now send no Authorization header. The repo is public.
+
+9/28: SCRUB, a voice pass whose prompt keeps tickers verbatim, swapped the rotation theme's `$VIXY` hedge for "puts on Goldman's own momentum index (GSP1MOMO)", a ticker in no source, and it shipped. `gate_scrub_relint` now runs `revert_new_instruments` first: any heading block (a `###` theme, or a `##` section) where SCRUB added a cashtag or a letter-led code with a digit goes back to its pre-SCRUB block. Plain acronyms and period codes (PCE, FY26, Q3) do not count, so a gloss SCRUB adds is kept. Replaying 9/28 restores `$VIXY`.

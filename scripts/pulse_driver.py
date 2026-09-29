@@ -94,6 +94,52 @@ MAX_SCRUB_ITERS = 2
 # gate may dispatch before shipping with a labeled residual note.
 MAX_ADVERSARIAL_REPAIRS = 2
 
+# Instrument tokens SCRUB may not add: cashtags and letter-led codes
+# with a digit (GSP1MOMO, SPXW7700C). Plain acronyms are not instruments
+# (a gloss like "(PCE)" is a legitimate SCRUB rewrite), and neither are
+# fiscal-period codes (FY26, Q3, 1H27).
+_CASHTAG_TOKEN_RE = re.compile(r"\$[A-Za-z][A-Za-z0-9.]{0,9}\b")
+_CODE_TOKEN_RE = re.compile(r"\b[A-Z][A-Z0-9]*\d[A-Z0-9]*\b")
+_PERIOD_CODE_RE = re.compile(r"^(?:FY|CY|Q|H|[12]H|COVID)\d{1,4}$")
+
+
+def _instrument_tokens(text: str) -> set[str]:
+    out = {t.upper().rstrip(".") for t in _CASHTAG_TOKEN_RE.findall(text)}
+    out |= {t for t in _CODE_TOKEN_RE.findall(text)
+            if len(t) >= 4 and not _PERIOD_CODE_RE.match(t)}
+    return out
+
+
+_BLOCK_SPLIT_RE = re.compile(r"(?m)^(?=#{1,3} )")
+
+
+def revert_new_instruments(pre: str, post: str) -> tuple[str, list[str]]:
+    """(post with every heading block that gained an instrument token put
+    back to its pre-SCRUB block, the added tokens). The unit is a heading
+    block (a ### theme, or a ## section without themes), which SCRUB does
+    not merge or split, so nothing inside the block is lost or doubled.
+    Blocks pair by heading line first, then by text similarity."""
+    import difflib
+    added = sorted(_instrument_tokens(post) - _instrument_tokens(pre))
+    if not added:
+        return post, []
+    pre_blocks = _BLOCK_SPLIT_RE.split(pre)
+    post_blocks = _BLOCK_SPLIT_RE.split(post)
+
+    def heading(b: str) -> str:
+        return b.split("\n", 1)[0].strip()
+
+    by_heading = {heading(b): b for b in pre_blocks if b.startswith("#")}
+    for i, b in enumerate(post_blocks):
+        if not (_instrument_tokens(b) & set(added)):
+            continue
+        match = by_heading.get(heading(b))
+        if match is None:
+            match = max(pre_blocks, key=lambda p: difflib.SequenceMatcher(
+                None, p, b, autojunk=False).ratio())
+        post_blocks[i] = match
+    return "".join(post_blocks), added
+
 # Severity is assigned HERE, deterministically, from the finding's
 # kind. It was the checker's field until 2026-08-28, and the checker
 # used it to wave its own findings through: two misattributions came
@@ -384,8 +430,29 @@ class Driver:
                     "reason": "sidecar missing -- treating as clean",
                     "hard_issue_count": 0}
 
+    def _revert_scrub_instruments(self) -> list[str]:
+        """Undo any paragraph where SCRUB added an instrument. SCRUB is a
+        voice pass; on 2026-09-28 it swapped a theme's `$VIXY` hedge for
+        "puts on Goldman's own momentum index (GSP1MOMO)", a ticker in no
+        source, and it shipped. Each such paragraph goes back to its
+        pre-SCRUB text. Returns the tokens that triggered a revert."""
+        try:
+            pre = (self.tmp / "pre_scrub_final.md").read_text(encoding="utf-8")
+            post = (self.tmp / "final.md").read_text(encoding="utf-8")
+        except OSError:
+            return []
+        fixed, added = revert_new_instruments(pre, post)
+        if added:
+            (self.tmp / "final.md").write_text(fixed, encoding="utf-8")
+            print(f"RESTORED: SCRUB added {added[:6]}; reverted to pre-SCRUB text")
+            self.state["history"].append(
+                {"record": "scrub_instrument_revert", "tokens": added[:20]})
+            self._save()
+        return added
+
     def gate_scrub_relint(self) -> str:
         """STEP 5.7.3 — re-lint after a SCRUB pass; progress + budget."""
+        self._revert_scrub_instruments()
         prev_hard = self.state.get("lint", {}).get("last_hard", 0)
         out_json = self.tmp / "lint_report.json"
         self._run([

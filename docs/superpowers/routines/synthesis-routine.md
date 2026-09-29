@@ -197,7 +197,7 @@ def _progress_events() -> str:
         return '(no /tmp/pulse_ts.txt — fire failed before STEP 2 completed setup)'
     try:
         url = f'https://raw.githubusercontent.com/{REPO}/{BRANCH}/pulse-output/progress/{ts}.json'
-        req = urllib.request.Request(url, headers={'Authorization': f'token {GH_TOKEN}'})
+        req = urllib.request.Request(url)  # public repo, no token (see fetch_with_retry)
         with urllib.request.urlopen(req, timeout=8) as resp:
             d = json.load(resp)
         ev = d.get('events') or []
@@ -313,10 +313,12 @@ def fetch_with_retry(url: str, attempts: int = 3) -> bytes:
     last_err: Exception | None = None
     for i in range(attempts):
         try:
-            req = urllib.request.Request(
-                url,
-                headers={'Authorization': f'token {GH_TOKEN}'},
-            )
+            # No Authorization header. The repo is public, and the raw
+            # host answers 404 to a token it rejects: on 2026-09-29 all
+            # three attempts 404'd with the token while the same URL
+            # returned 200 without it (the Omnipulse fetch had the same
+            # failure on 2026-09-28).
+            req = urllib.request.Request(url)
             with urllib.request.urlopen(req, timeout=20) as resp:
                 return resp.read()
         except urllib.error.HTTPError as e:
@@ -525,7 +527,7 @@ while count < MIN_PDFS and waited < MAX_WAITS:
         pass
     time.sleep(WAIT_SECS)
     try:
-        req = urllib.request.Request(URL, headers={'Authorization': f'token {GH_TOKEN}'})
+        req = urllib.request.Request(URL)  # public repo, no token (see fetch_with_retry)
         with urllib.request.urlopen(req, timeout=20) as resp:
             body = resp.read()
         new_ctx = json.loads(body)
