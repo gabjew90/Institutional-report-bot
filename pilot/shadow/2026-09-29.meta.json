@@ -1,0 +1,48 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 90,
+ "pack": {
+  "documents": 44,
+  "cards": 1359
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 95,
+  "brief_citations": 2,
+  "distinct_cards_cited": 93,
+  "card_count": 1359,
+  "quintiles": [
+   20,
+   8,
+   38,
+   20,
+   9
+  ],
+  "edge_quintile_share": 0.305,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Its basket of the seven largest technology companies fell 130 [c588], and its basket of unprofitable technology names fell 240 [c590].",
+    "cite": "c588,c590",
+    "reason": "figures not in cited card(s): ['130', '240']"
+   },
+   {
+    "sentence": "Goldman put a number on the AI question.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Under 50% of S&P 500 members trade above their 200-day average while the index sits within 2% of a 52-week high, and 52-week lows have outnumbered highs for nine straight sessions [c551][c552].",
+    "cite": "c551,c552",
+    "reason": "figures not in cited card(s): ['2%']"
+   }
+  ],
+  "word_count": 1572
+ }
+}
