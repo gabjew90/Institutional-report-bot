@@ -213,7 +213,7 @@ def fetch_bls(series_ids: list[str], *, force: bool = False) -> dict[str, list[t
 
 BEA_URL = "https://apps.bea.gov/api/data/"
 BEA_PCE_TABLE = "T20804"
-_BEA_CACHE: dict = {"at": None, "key": None, "obs": None}
+_BEA_CACHE: dict[tuple, dict] = {}   # (table, series) -> {"at", "obs"}
 
 
 def _bea_get(table: str, years: list[int]) -> dict | None:
@@ -265,21 +265,20 @@ def parse_bea(payload: dict, series_codes: list[str] | None = None) -> dict[str,
 
 def fetch_bea(series_codes: list[str], *, table: str = BEA_PCE_TABLE, force: bool = False) -> dict[str, list[tuple[str, float]]]:
     """Observations for the series in one NIPA table, two calendar years
-    back, cached ten minutes like the BLS fetch. Empty without a BEA key.
-    The cache holds one (table, series) entry at a time, so a release
-    that reads three tables fetches all three on every poll."""
+    back, cached ten minutes per (table, series) like the BLS fetch. Empty
+    without a BEA key."""
     now = datetime.utcnow()
     key = (table, tuple(sorted(series_codes)))
-    c = _BEA_CACHE
-    if not force and c["obs"] is not None and c["key"] == key and c["at"] \
+    c = _BEA_CACHE.setdefault(key, {"at": None, "obs": None})
+    if not force and c["obs"] is not None and c["at"] \
             and (now - c["at"]).total_seconds() < _BLS_CACHE_TTL_S:
         return c["obs"]
     payload = _bea_get(table, [now.year - 1, now.year])
     obs = parse_bea(payload, list(key[1])) if payload else {}
     obs = {k: v for k, v in obs.items() if k in key[1]}
     if obs:
-        c.update({"at": now, "key": key, "obs": obs})
-    return obs or (c["obs"] if c["key"] == key and c["obs"] else {})
+        c.update({"at": now, "obs": obs})
+    return obs or (c["obs"] or {})
 
 
 def fetch_observations(lines: list, *, force: bool = False) -> dict[str, list[tuple[str, float]]]:
@@ -289,7 +288,8 @@ def fetch_observations(lines: list, *, force: bool = False) -> dict[str, list[tu
     groups: dict[tuple[str, str], list[str]] = {}
     for ln in lines:
         if ln.series:
-            table = ln.table or (BEA_PCE_TABLE if ln.source == "bea" else "")
+            # only BEA lines carry a table, so a BLS line never splits the BLS request
+            table = (ln.table or BEA_PCE_TABLE) if ln.source == "bea" else ""
             groups.setdefault((ln.source, table), []).append(ln.series)
     for (source, table), series in groups.items():
         if not source_available(source):

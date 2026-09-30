@@ -242,7 +242,7 @@ def test_the_feed_fills_a_core_pce_row_from_bea():
         dt.utcnow.return_value = real(2026, 9, 25, 13, 0)
         dt.strptime = real.strptime
         dt.fromisoformat = real.fromisoformat
-        PW._BEA_CACHE.update({"at": None, "key": None, "obs": None})
+        PW._BEA_CACHE.clear()
         out = PW.enrich_rows_with_agency_actuals(rows)
     assert out[0]["actual"] == 0.2 and out[0]["actual_source"] == "bea:DPCCRG" and out[0]["actual_period"] == "2026-08"
 
@@ -278,9 +278,25 @@ def test_bea_fetch_groups_series_by_table(monkeypatch):
         return {"BEAAPI": {"Results": {"Data": []}}}
     monkeypatch.setattr(PW, "_bea_get", fake_get)
     monkeypatch.setattr("config.settings.bea_api_key", "k")
-    PW._BEA_CACHE.clear(); PW._BEA_CACHE.update({"at": None, "key": None, "obs": None})
+    PW._BEA_CACHE.clear()
     PW.fetch_observations(PW.PCE.lines, force=True)
     assert sorted(calls) == ["T20600", "T20804", "T20806"]
+
+
+def test_bea_cache_holds_one_entry_per_table(monkeypatch):
+    calls = []
+
+    def fake_get(table, years):
+        calls.append(table)
+        rows = [{"SeriesCode": ln.series, "TimePeriod": "2026M08", "DataValue": "1.0"}
+                for ln in PW.PCE.lines if (ln.table or PW.BEA_PCE_TABLE) == table]
+        return {"BEAAPI": {"Results": {"Data": rows}}}
+    monkeypatch.setattr(PW, "_bea_get", fake_get)
+    monkeypatch.setattr("config.settings.bea_api_key", "k")
+    PW._BEA_CACHE.clear()
+    PW.fetch_observations(PW.PCE.lines)
+    PW.fetch_observations(PW.PCE.lines)
+    assert sorted(calls) == ["T20600", "T20804", "T20806"], "one request per table, not one per call"
 
 
 if __name__ == "__main__":
