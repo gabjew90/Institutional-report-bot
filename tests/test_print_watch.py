@@ -428,6 +428,24 @@ def test_revision_line_compares_last_months_posted_payrolls_with_the_new_vintage
     assert PW.revision_line(PW.JOBS, obs, "2026-08", None) == ""
 
 
+def test_fomc_row_carries_the_feeds_expected_upper_bound():
+    parsed = PW.parse_fomc_statement(FOMC_HTML)     # maintain, 3.50 to 3.75, 9-3
+    ff = [{"event": "FOMC Interest Rate Decision", "estimate": 3.75, "prev": 3.75}]
+    row = PW._fomc_row(parsed, ff, "2026-07")
+    assert row["actual"] == "3.50% to 3.75%" and row["actual_value"] == 3.75 and row["period"] == "2026-07"
+    assert row["consensus"] == "3.75%" and row["consensus_value"] == 3.75 and row["verdict"] == "as expected"
+    assert PW.render_release([row]) == ["• Target range: 3.50% to 3.75% (vs. 3.75% exp, as expected)"]
+    # a surprise hold against an expected cut, and an expected cut delivered
+    cut_exp = [{"event": "FOMC Interest Rate Decision", "estimate": 3.5}]
+    assert PW._fomc_row(parsed, cut_exp, "2026-07")["verdict"] == "above expected"
+    hike_exp = [{"event": "FOMC Interest Rate Decision", "estimate": 4.0}]
+    assert PW._fomc_row(parsed, hike_exp, "2026-07")["verdict"] == "below expected"
+    # no feed row: the bullet is the range alone
+    bare = PW._fomc_row(parsed, [], "2026-07")
+    assert bare["consensus"] is None and bare["consensus_value"] is None and bare["verdict"] == ""
+    assert PW.render_release([bare]) == ["• Target range: 3.50% to 3.75%"]
+
+
 def test_statement_changes_list_the_sentences_that_moved():
     prev = "The Committee decided to maintain the target range. Inflation remains elevated. Job gains have been solid."
     cur = "The Committee decided to maintain the target range. Inflation has eased somewhat. Job gains have been solid. The Committee will monitor carefully."

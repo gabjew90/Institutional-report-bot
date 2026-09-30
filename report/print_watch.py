@@ -719,6 +719,27 @@ def render_release(rows: list[dict], computed: list[str] | tuple = (), takeaway:
     return out
 
 
+def _fomc_row(parsed: dict, ff_rows: list[dict], period: str) -> dict:
+    """The one row the FOMC decision renders through render_release. The
+    actual is the range, the consensus is the feed's expected upper bound
+    (None without a feed row), and the verdict compares the new upper
+    bound with it, so the bullet reads
+    '• Target range: 3.50% to 3.75% (vs. 3.75% exp, as expected)'."""
+    high = parsed["high"]
+    cons = _ff_value(ff_rows, "FOMC Interest Rate Decision", "estimate")
+    if cons is None:
+        verdict_ = ""
+    elif f"{high:.2f}" == f"{cons:.2f}":
+        verdict_ = "as expected"
+    else:
+        verdict_ = "above expected" if high > cons else "below expected"
+    return {"label": "Target range", "display": "Target range", "pair": "", "row": "",
+            "optional": False, "unit": "%", "transform": "range", "period": period,
+            "actual": f"{parsed['low']:.2f}% to {high:.2f}%", "actual_value": high,
+            "consensus": f"{cons:.2f}%" if cons is not None else None, "consensus_value": cons,
+            "prior": None, "prior_value": None, "verdict": verdict_}
+
+
 def fomc_lines(parsed: dict, ff_rows: list[dict]) -> list[str]:
     verb = {"maintain": "holds", "raise": "hikes", "lower": "cuts"}.get(parsed["action"], parsed["action"])
     line = f"**Fed {verb}** · target range {parsed['low']:.2f}%–{parsed['high']:.2f}%"
@@ -904,24 +925,22 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     wait_s = max(MAX_WAIT_S_BY_AGENCY.get(s.agency, MAX_WAIT_S) for s in due)
     deadline = datetime.now(_ET) + timedelta(seconds=wait_s)
     pending = list(due)
+    # What the ledger holds from the last post of each release: the rows
+    # the revision line compares against, the statement the FOMC diffs.
+    prev_by_key = {s.key: previous_post(s.key, before=today) for s in pending}
     while pending and datetime.now(_ET) < deadline:
         for spec in list(pending):
             try:
-                prev = previous_post(spec.key, before=today)
+                prev = prev_by_key.get(spec.key)
                 if spec.key == "fomc":
                     parsed = await asyncio.to_thread(fetch_fomc_today, today)
                     if not parsed:
                         continue
-                    # One row for the renderer. With no consensus and the
-                    # "range" transform, _comparison yields "", so the bullet
-                    # is the range alone. The action and vote lead the
-                    # computed lines, then the sentences that changed since
-                    # the statement the ledger kept from the last decision.
-                    rows = [{"label": "Target range", "display": "Target range", "pair": "", "row": "",
-                             "optional": False, "unit": "%", "transform": "range", "period": today[:7],
-                             "actual": f"{parsed['low']:.2f}% to {parsed['high']:.2f}%", "actual_value": parsed["high"],
-                             "consensus": None, "consensus_value": None, "prior": None, "prior_value": None,
-                             "verdict": {"maintain": "held", "raise": "hike", "lower": "cut"}.get(parsed["action"], "")}]
+                    # One row for the renderer, with the feed's expected
+                    # upper bound as its consensus. The action and vote lead
+                    # the computed lines, then the sentences that changed
+                    # since the statement the ledger kept last decision.
+                    rows = [_fomc_row(parsed, ff_rows, today[:7])]
                     computed = [f"Fed {'holds' if parsed['action'] == 'maintain' else parsed['action'] + 's'}"
                                 + (f" · vote {parsed['vote']}" if parsed.get("vote") else "")]
                     computed += [f"Statement change: {s}" for s in
