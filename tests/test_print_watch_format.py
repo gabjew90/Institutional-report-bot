@@ -1,4 +1,4 @@
-"""Print embed layout, color and room ping (owner, 2026-09-30)."""
+"""Print embed body in the owner's layout (2026-09-30)."""
 import asyncio
 import json
 import tempfile
@@ -11,7 +11,17 @@ BLS = json.loads(Path("tests/fixtures/bls_cpi_jobs_2026-09-11.json").read_text(e
 FF = [
     {"event": "CPI m/m", "country": "US", "time": "2026-09-11T12:30:00", "estimate": 0.4, "prev": 0.1, "actual": None, "unit": "%"},
     {"event": "Core CPI m/m", "country": "US", "time": "2026-09-11T12:30:00", "estimate": 0.2, "prev": 0.2, "actual": None, "unit": "%"},
+    {"event": "CPI y/y", "country": "US", "time": "2026-09-11T12:30:00", "estimate": 3.4, "prev": 3.4, "actual": None, "unit": "%"},
+    {"event": "Core CPI y/y", "country": "US", "time": "2026-09-11T12:30:00", "estimate": 2.4, "prev": 2.5, "actual": None, "unit": "%"},
 ]
+
+
+def _row(label, actual, consensus=None, prior=None, verdict="", display=None, pair="", row="",
+         transform="mom", actual_value=None, prior_value=None):
+    return {"label": label, "display": display or label, "pair": pair, "row": row, "optional": False,
+            "unit": "%", "transform": transform, "actual": actual, "actual_value": actual_value,
+            "consensus": consensus, "consensus_value": None, "prior": prior, "prior_value": prior_value,
+            "verdict": verdict}
 
 
 def test_verdict_compares_at_the_displayed_precision():
@@ -22,27 +32,57 @@ def test_verdict_compares_at_the_displayed_precision():
     assert PW.verdict(None, 0.3, "%", "mom") == "" and PW.verdict(0.3, None, "%", "mom") == ""
 
 
-def test_the_body_leads_with_the_consensus_line_and_aligns_a_table():
+def test_cpi_body_from_the_real_print():
     obs = PW.parse_bls(BLS)
     rows = PW.build_rows(PW.CPI, obs, "2026-08", FF)
-    body = PW.render_release(rows)
-    assert body[0] == "**Core CPI m/m +0.3%** vs +0.2% consensus, above"
-    assert body[1] == "```" and body[-1] == "```"
-    table = body[2:-1]
-    assert table[0].split() == ["actual", "consensus", "prior"]
-    # every data row has the same width up to the verdict column
-    core = next(l for l in table if l.startswith("Core CPI m/m"))
-    assert core.endswith("above"), core
-    yoy = next(l for l in table if l.startswith("CPI y/y"))
-    assert yoy.split()[3] == "-", "no consensus in the feed renders as a dash"
-    assert len(core.rsplit("  ", 1)[0]) == len(yoy)
+    body = PW.render_release(rows, computed=["Core CPI 3-month annualized: 2.0%"],
+                             source=PW.source_line(PW.CPI))
+    assert body[0] == "• Core CPI (MoM): +0.3% (vs. +0.2% exp, above)"
+    assert body[1] == "• Core CPI (YoY): 2.4% (vs. 2.4% exp, in line)"
+    assert body[2] == "• Headline CPI: +0.4% MoM / 3.4% YoY (vs. +0.4% / 3.4% exp, in line / in line)"
+    assert body[3] == "• Core CPI 3-month annualized: 2.0%"
+    assert body[-1].startswith("Source: bls.gov") and "ForexFactory" in body[-1]
+    assert body[-2] == ""
 
 
-def test_a_release_with_no_consensus_at_all_still_renders():
-    rows = [{"label": "PCE m/m", "actual": "+0.3%", "consensus": None, "prior": "+0.1%", "verdict": ""}]
+def test_pairs_fall_back_to_priors_and_levels_say_up_or_down():
+    rows = [
+        _row("PCE m/m", "+0.3%", prior="+0.1%", display="Headline PCE", pair="headline"),
+        _row("PCE y/y", "3.4%", prior="3.4%", display="Headline PCE", pair="headline", transform="yoy"),
+        _row("Personal Income m/m", "+0.2%", consensus="+0.5%", verdict="below", display="Personal Income", row="income"),
+        _row("Saving Rate", "4.1%", prior="4.4%", display="Saving Rate", row="income", transform="level",
+             actual_value=4.1, prior_value=4.4),
+        _row("Participation Rate", "62.6%", prior="62.6%", transform="level", actual_value=62.6, prior_value=62.6),
+        _row("Shelter m/m", "+0.3%", display="Shelter (MoM)"),
+    ]
     body = PW.render_release(rows)
-    assert body[0] == "**PCE m/m +0.3%** (prior +0.1%)"
+    assert body[0] == "• Headline PCE: +0.3% MoM / 3.4% YoY (prior +0.1% / 3.4%)"
+    assert body[1] == "• Personal Income: +0.2% (vs. +0.5% exp, below) | Saving Rate: 4.1% (down from 4.4%)"
+    assert body[2] == "• Participation Rate: 62.6% (unchanged from 62.6%)"
+    assert body[3] == "• Shelter (MoM): +0.3%"
+
+
+def test_takeaway_sits_between_the_numbers_and_the_source():
+    rows = [_row("Core PCE m/m", "+0.2%", consensus="+0.3%", verdict="below", display="Core PCE (MoM)")]
+    body = PW.render_release(rows, takeaway=["• **Cooler core:** below the +0.3% consensus."],
+                             source="Source: bea.gov")
+    assert body == [
+        "• Core PCE (MoM): +0.2% (vs. +0.3% exp, below)",
+        "", "**Quick Takeaway**", "• **Cooler core:** below the +0.3% consensus.",
+        "", "Source: bea.gov",
+    ]
     assert PW.render_release([]) == []
+
+
+def test_titles_and_annualized_rate():
+    assert PW.release_title(PW.CPI, "2026-08") == "August CPI Inflation Print"
+    assert PW.release_title(PW.JOBS, "2026-09") == "September Jobs Report"
+    obs = PW.parse_bls(BLS)
+    a = PW.annualized_3m(obs["CUSR0000SA0L1E"], "2026-08")
+    assert a is not None and 1.5 < a < 2.5, a
+    assert PW.annualized_3m([("2026-08", 100.0)], "2026-08") is None
+    assert PW.source_line(PW.PCE).startswith("Source: bea.gov (NIPA tables 2.8.4, 2.6, 2.8.6)")
+    assert PW.source_line(PW.FOMC) == "Source: federalreserve.gov, FOMC statement"
 
 
 def test_the_post_is_green_and_pings_everyone():
@@ -58,7 +98,7 @@ def test_the_post_is_green_and_pings_everyone():
             return _Chan()
 
     with patch("config.settings.print_alert_channel_id", "123"):
-        ok = asyncio.run(PW._post(_Bot(), "CPI · August 2026", ["**x**", "```", "t", "```"], "f"))
+        ok = asyncio.run(PW._post(_Bot(), "CPI · August 2026", ["• x"], "f"))
     assert ok and len(sent) == 1
     embed, kw = sent[0]
     assert embed.color.value == 0x228B22
@@ -66,7 +106,7 @@ def test_the_post_is_green_and_pings_everyone():
     assert kw["allowed_mentions"].everyone is True
 
 
-def test_the_job_posts_the_table_body_and_records_the_plain_lines():
+def test_the_job_posts_the_bullet_body_and_records_the_plain_lines():
     sent = []
 
     class _Chan:
@@ -92,7 +132,6 @@ def test_the_job_posts_the_table_body_and_records_the_plain_lines():
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1
         desc = sent[0].description
-        assert desc.startswith("**Core CPI m/m +0.3%** vs +0.2% consensus, above")
-        assert "```" in desc and "CPI m/m" in desc
+        assert desc.startswith("• Core CPI (MoM): +0.3% (vs. +0.2% exp, above)")
         ledger = json.loads((Path(td) / "print-alerts" / "2026-09-11.json").read_text(encoding="utf-8"))
         assert ledger["cpi"]["lines"][0].startswith("**Core CPI m/m** +0.3%")

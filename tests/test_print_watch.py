@@ -148,8 +148,8 @@ def test_job_posts_once_and_records_it():
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1
         assert sent[0].title == "CPI · August 2026"
-        # table body since 2026-09-30 (tests/test_print_watch_format.py has the layout)
-        assert "CPI y/y" in sent[0].description and "3.4%" in sent[0].description
+        # bullet body since 2026-09-30 (tests/test_print_watch_format.py has the layout)
+        assert "Headline CPI" in sent[0].description and "3.4% YoY" in sent[0].description
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1, "second run must not repost"
 

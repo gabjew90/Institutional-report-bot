@@ -572,34 +572,104 @@ def build_lines(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: li
     return out
 
 
-def render_release(rows: list[dict]) -> list[str]:
-    """The embed body (owner, 2026-09-30: clearer than the one-line-per-
-    series list). A bold headline sentence for the first series that has
-    a consensus (else the first series), then a monospace table so the
-    actual, consensus and prior columns line up, with the verdict at the
-    end of each row that has one."""
+BULLET = "•"
+
+SOURCES = {
+    "cpi": "Source: bls.gov (CPI-U release) <https://www.bls.gov/cpi/> · consensus: ForexFactory",
+    "jobs": "Source: bls.gov (Employment Situation) <https://www.bls.gov/news.release/empsit.toc.htm> · consensus: ForexFactory",
+    "pce": "Source: bea.gov (NIPA tables 2.8.4, 2.6, 2.8.6) <https://www.bea.gov/data/personal-consumption-expenditures-price-index> · consensus: ForexFactory",
+    "fomc": "Source: federalreserve.gov, FOMC statement",
+}
+
+
+def source_line(spec: ReleaseSpec) -> str:
+    return SOURCES.get(spec.key, f"Source: {spec.agency}")
+
+
+def release_title(spec: ReleaseSpec, period: str) -> str:
+    """'August CPI Inflation Print': the reference month and the headline."""
+    month = period_label(period).split()[0]
+    return f"{month} {spec.headline or spec.title}"
+
+
+def annualized_3m(series: list[tuple[str, float]], period: str) -> float | None:
+    """The last three monthly index changes compounded to a year, one
+    decimal, or None when a month is missing."""
+    idx = {p: v for p, v in series or []}
+    end, start = idx.get(period), idx.get(month_shift(period, -3))
+    if not end or not start:
+        return None
+    return round(((end / start) ** 4 - 1) * 100, 1)
+
+
+def _level_change(r: dict) -> str:
+    a, p = r.get("actual_value"), r.get("prior_value")
+    if a is None or p is None:
+        return ""
+    if r["actual"] == r["prior"]:
+        return f"unchanged from {r['prior']}"
+    return f"{'up' if a > p else 'down'} from {r['prior']}"
+
+
+def _comparison(r: dict) -> str:
+    if r.get("consensus") is not None:
+        return f"vs. {r['consensus']} exp, {r['verdict']}".rstrip(", ")
+    if r.get("transform") == "level":
+        return _level_change(r)
+    if r.get("prior") is not None:
+        return f"prior {r['prior']}"
+    return ""
+
+
+def _single(r: dict) -> str:
+    cmp_ = _comparison(r)
+    return f"{r['display']}: {r['actual']}" + (f" ({cmp_})" if cmp_ else "")
+
+
+def _pair(a: dict, b: dict) -> str:
+    """m/m and y/y on one line. Consensus wins when either side has one."""
+    head = f"{a['display']}: {a['actual']} MoM / {b['actual']} YoY"
+    if a.get("consensus") is not None or b.get("consensus") is not None:
+        cons = f"{a.get('consensus') or '-'} / {b.get('consensus') or '-'}"
+        verd = f"{a.get('verdict') or '-'} / {b.get('verdict') or '-'}"
+        return f"{head} (vs. {cons} exp, {verd})"
+    if a.get("prior") is not None or b.get("prior") is not None:
+        return f"{head} (prior {a.get('prior') or '-'} / {b.get('prior') or '-'})"
+    return head
+
+
+def render_release(rows: list[dict], computed: list[str] | tuple = (), takeaway: list[str] | tuple = (),
+                   source: str = "") -> list[str]:
+    """The embed body in the owner's layout (2026-09-30): one bullet per
+    series, m/m and y/y pairs on one line, short series sharing a line,
+    computed lines, the Quick Takeaway, then the source citation."""
     if not rows:
         return []
-    lead = next((r for r in rows if r["consensus"] is not None), rows[0])
-    if lead["consensus"] is not None:
-        head = (f"**{lead['label']} {lead['actual']}** vs {lead['consensus']} consensus, "
-                f"{lead['verdict']}")
-    else:
-        head = f"**{lead['label']} {lead['actual']}**"
-        if lead["prior"] is not None:
-            head += f" (prior {lead['prior']})"
-    dash = "-"          # no consensus or prior in the feed
-    w_label = max(len(r["label"]) for r in rows)
-    cols = ("actual", "consensus", "prior")
-    widths = {c: max(len(c), *(len(r[c] or dash) for r in rows)) for c in cols}
-    table = [" " * w_label + "  " + "  ".join(c.rjust(widths[c]) for c in cols)]
-    for r in rows:
-        cells = "  ".join((r[c] or dash).rjust(widths[c]) for c in cols)
-        line = f"{r['label'].ljust(w_label)}  {cells}"
-        if r["verdict"]:
-            line += f"  {r['verdict']}"
-        table.append(line)
-    return [head, "```", *table, "```"]
+    out: list[str] = []
+    done: set[int] = set()
+    for i, r in enumerate(rows):
+        if i in done:
+            continue
+        if r.get("pair"):
+            j = next((k for k in range(i + 1, len(rows)) if rows[k].get("pair") == r["pair"] and k not in done), None)
+            if j is not None:
+                done.update({i, j})
+                out.append(f"{BULLET} {_pair(r, rows[j])}")
+                continue
+        if r.get("row"):
+            mates = [k for k in range(i, len(rows)) if rows[k].get("row") == r["row"] and k not in done]
+            done.update(mates)
+            out.append(f"{BULLET} " + " | ".join(_single(rows[k]) for k in mates))
+            continue
+        done.add(i)
+        out.append(f"{BULLET} {_single(r)}")
+    for c in computed:
+        out.append(f"{BULLET} {c}")
+    if takeaway:
+        out += ["", "**Quick Takeaway**", *takeaway]
+    if source:
+        out += ["", source]
+    return out
 
 
 def fomc_lines(parsed: dict, ff_rows: list[dict]) -> list[str]:
