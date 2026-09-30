@@ -192,7 +192,9 @@ def _fake_light(tmp):
         if args[0].endswith("omnipulse_body.py") and args[1] == "fetch":
             (tmp / "omnipulse_body.md").write_text(O.light_body(), encoding="utf-8")
             (tmp / "omnipulse_headline.txt").write_text("", encoding="utf-8")
-            return O.EXIT_LIGHT, "omnipulse: none for 2026-09-30 (not published after 600s) -> light pulse"
+            # stderr-style retry line first, as _run returns stdout + stderr
+            return O.EXIT_LIGHT, ("omnipulse: fetch error (HTTP 500)\n"
+                                  "omnipulse: none for 2026-09-30 (not published after 600s) -> light pulse\n")
         return real(self, args)
     return patch.object(PD.Driver, "_run", run)
 
@@ -203,27 +205,41 @@ def test_a_light_day_runs_the_omnipulse_path_around_the_note(tmp_path):
         assert d.gate_omnipulse("2026-09-30") == "LIGHT"
         assert d.omnipulse_mode()
         assert (tmp_path / "pulse_mode.txt").read_text(encoding="utf-8") == "light"
-        assert "not published" in (tmp_path / "light_reason.txt").read_text(encoding="utf-8")
+        assert (tmp_path / "light_reason.txt").read_text(encoding="utf-8") == "not published after 600s"
         d.gate_draft_validate()
     draft = (tmp_path / "draft.md").read_text(encoding="utf-8")
-    assert draft.startswith("# ")                      # DRAFT's own headline kept
+    fixture_h1 = (FX / "draft-2026-09-25.md").read_text(encoding="utf-8").splitlines()[0]
+    assert draft.startswith(fixture_h1)                # DRAFT's own headline kept
     assert O.LIGHT_BODY_NOTE in draft
     assert "The bond market's break higher isn't finished" not in draft
     assert "## 1. RECAP" in draft and "## 3. WHAT TO WATCH" in draft and "## _LEANS" in draft
 
 
-def test_preflight_accepts_a_light_body_and_restores_it_when_cut(tmp_path):
+def test_preflight_accepts_a_light_body_and_restores_it_when_cut(tmp_path, capsys):
     d = _driver(tmp_path)
     with patch.object(O, "ENABLED", True), _fake_light(tmp_path):
         d.gate_omnipulse("2026-09-30")
         d.gate_draft_validate()
     final = (tmp_path / "draft.md").read_text(encoding="utf-8")
     (tmp_path / "final.md").write_text(final, encoding="utf-8")
-    assert d.preflight() != "BLOCK"
+    # Check stdout, not the return value: preflight also blocks on gates
+    # this test never consults, so its verdict says nothing about the body.
+    d.preflight()
+    assert "omnipulse body incomplete" not in capsys.readouterr().out
     cut = final.replace(O.LIGHT_BODY_NOTE, "Nothing here.")
     (tmp_path / "final.md").write_text(cut, encoding="utf-8")
-    assert d.preflight() != "BLOCK"
+    d.preflight()
+    assert "omnipulse body incomplete" not in capsys.readouterr().out
     assert O.LIGHT_BODY_NOTE in (tmp_path / "final.md").read_text(encoding="utf-8")
+    assert any(h.get("record") == "omnipulse_body_restored" for h in d.state["history"])
+
+
+def test_body_markers_cover_a_heading_less_body(tmp_path):
+    d = _driver(tmp_path)
+    (tmp_path / "omnipulse_body.md").write_text(O.light_body(), encoding="utf-8")
+    assert d._body_markers() == [O.LIGHT_BODY_NOTE]
+    (tmp_path / "omnipulse_body.md").write_text(O.INSIGHTS_HEADER + "\n", encoding="utf-8")
+    assert d._body_markers() == []
 
 
 def test_the_env_override_still_forces_classic_on_a_light_day(tmp_path, monkeypatch):

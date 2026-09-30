@@ -269,6 +269,7 @@ class Driver:
         # (smokes, a test fire) without touching the committed switch.
         if not o.ENABLED or os.environ.get("OMNIPULSE_BODY", "").lower() == "off":
             mode_file.write_text("classic", encoding="utf-8")
+            (self.tmp / "light_reason.txt").unlink(missing_ok=True)
             return self._decide("omnipulse", "CLASSIC", "switch off")
         if date is None:
             from zoneinfo import ZoneInfo
@@ -288,16 +289,26 @@ class Driver:
             body = str(self._body_path())
             self._run(["scripts/pulse_stitch.py", body, body])
             mode_file.write_text("omnipulse", encoding="utf-8")
+            (self.tmp / "light_reason.txt").unlink(missing_ok=True)
             return self._decide("omnipulse", "OMNIPULSE", out.strip()[-300:])
         if code == o.EXIT_LIGHT:
             # Miss day under MISS_DAY="light": the note is the locked
             # body and every omnipulse-day branch applies. The reason is
             # kept for STEP 6's frontmatter and the bridge's ops page.
-            reason = out.strip().splitlines()[-1] if out.strip() else "miss day"
-            (self.tmp / "light_reason.txt").write_text(reason[:300], encoding="utf-8")
+            # _run returns stdout plus stderr, and fetch prints its retry
+            # errors to stderr first, so pick the decision line by its
+            # prefix instead of taking the last line.
+            lines = [l.strip() for l in out.splitlines() if l.strip()]
+            line = next((l for l in reversed(lines)
+                         if l.startswith("omnipulse: none for")),
+                        lines[-1] if lines else "miss day")
+            m = re.search(r"\((.*)\) -> light pulse$", line)
+            reason = (m.group(1) if m else line)[:300]
+            (self.tmp / "light_reason.txt").write_text(reason, encoding="utf-8")
             mode_file.write_text("light", encoding="utf-8")
-            return self._decide("omnipulse", "LIGHT", reason[-300:])
+            return self._decide("omnipulse", "LIGHT", reason)
         mode_file.write_text("classic", encoding="utf-8")
+        (self.tmp / "light_reason.txt").unlink(missing_ok=True)
         return self._decide("omnipulse", "CLASSIC",
                             out.strip()[-300:] or f"exit {code}")
 
