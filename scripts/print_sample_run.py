@@ -30,7 +30,8 @@ def main(argv: list[str]) -> int:
     key, arg = argv[0], argv[1]
     import db
     from config import settings
-    ro = sqlite3.connect(f"file:{settings.db_path}?mode=ro", uri=True, timeout=5)
+    ro = sqlite3.connect(f"file:{settings.db_path}?mode=ro", uri=True, timeout=5,
+                         check_same_thread=False)
     ro.row_factory = sqlite3.Row
     db.get_connection = lambda: ro          # read-only for everything below
     from report import print_watch as PW

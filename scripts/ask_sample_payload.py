@@ -28,7 +28,10 @@ def main(argv: list[str]) -> int:
     sym = argv[0].upper()
     import db
     from config import settings
-    ro = sqlite3.connect(f"file:{settings.db_path}?mode=ro", uri=True, timeout=5)
+    # The executors read from a worker thread (asyncio.to_thread), so the
+    # one shared read-only connection must allow cross-thread use.
+    ro = sqlite3.connect(f"file:{settings.db_path}?mode=ro", uri=True, timeout=5,
+                         check_same_thread=False)
     ro.row_factory = sqlite3.Row
     db.get_connection = lambda: ro
     from discord_bot.ask_tools import _execute_earnings_date, _execute_market_price
