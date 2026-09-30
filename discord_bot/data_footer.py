@@ -21,9 +21,11 @@ FEEDS: dict[str, str] = {
     "lookup_user_profile": "room trade ledger",
     "lookup_trade_log": "room trade ledger",
     "lookup_room_positions": "room trade ledger",
-    "search_chat_messages": "room chat",
     "query_data": "research database",
 }
+# Tools whose data is the room's own conversation. The reader is in the
+# room, so "Data: room chat" told them nothing (owner, 2026-09-30).
+NOT_CITED = frozenset({"search_chat_messages"})
 
 # Statuses that mean the call produced nothing (mirrors bot._FAILED_TOOL_STATUSES).
 _FAILED = frozenset({"no_data", "error", "empty", "not_found", "timeout"})
