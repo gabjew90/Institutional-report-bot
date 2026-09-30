@@ -113,7 +113,7 @@ PRODUCTION_CONFIG = {
     "include_server_side_tool_invocations": True,
     "safety_all_block_none": True,
     # how many declared function tools ride alongside google_search
-    "function_tool_count": 12,  # 12 since 2026-09-04: lookup_room_positions (11 on 09-01: lookup_earnings_slate)
+    "function_tool_count": 13,  # 13 since 2026-09-30: lookup_research (12 on 09-04: lookup_room_positions; 11 on 09-01: lookup_earnings_slate)
     # production declares google_search on every turn
     "search_on_every_fixture": True,
 }
@@ -978,6 +978,7 @@ def main() -> int:
             _build_options_chain_tool, _build_economic_calendar_tool,
             _build_earnings_date_tool, _build_earnings_slate_tool, _build_query_data_tool,
             _build_price_history_tool, _build_fantasy_league_tool,
+            _build_room_positions_tool, _build_research_tool,
         )
     except Exception as e:
         print(f"HARNESS ERROR: cannot import bot surface ({e})")
@@ -1006,6 +1007,12 @@ def main() -> int:
         _build_earnings_date_tool(), _build_earnings_slate_tool(),
         _build_query_data_tool(),
         _build_price_history_tool(),
+        # Missing from this list since they shipped (room positions on
+        # 2026-09-04, research on 2026-09-30) while PRODUCTION_CONFIG
+        # counted them, so the config guard refused every run. The list
+        # must be the deployed list; the guard exists to say so.
+        _build_room_positions_tool(),
+        _build_research_tool(),
         # Registered unconditionally, NOT gated on settings like
         # production gates it. Railway has SLEEPER_LEAGUE_ID set, so the
         # deployed bot always sees this tool; a local run without the env
