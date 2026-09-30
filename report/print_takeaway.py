@@ -1,0 +1,188 @@
+"""Quick Takeaway under an economic print (owner, 2026-09-30).
+
+The print embed carries the numbers. The takeaway is two or three
+bullets that say what they mean, written by Gemini from exactly two
+inputs and nothing else:
+
+  1. the print itself: every series with its actual, consensus, prior
+     and verdict, plus any computed extras (a 3-month annualized rate,
+     a saving-rate change, a revision);
+  2. the bank research the pulse ingested in the last ten days that
+     speaks to this release (previews, consensus calls, what the desks
+     said would matter), each item carrying its bank.
+
+It never sees prices, news or the room. Guardrails in code: every
+figure in a bullet must appear in those inputs (discord_bot.
+figure_provenance) or the bullet is dropped, the pulse voice rules
+apply (ai_analysis.voice_rules), bullets are capped at three and 60
+words, and any failure returns no takeaway so the print is never
+delayed or blocked by it.
+"""
+from __future__ import annotations
+
+import json
+import logging
+import re
+
+log = logging.getLogger(__name__)
+
+MAX_BULLETS = 3
+MAX_WORDS = 60
+RESEARCH_DAYS = 10
+RESEARCH_NOTES = 10
+
+# What in the research counts as being about each release.
+RESEARCH_TERMS = {
+    "cpi": r"\bcpi\b|consumer price|core inflation|shelter inflation",
+    "jobs": r"payrolls?|\bnfp\b|unemployment|jobs report|labor market|hourly earnings",
+    "pce": r"\bpce\b|personal income|personal spending|saving rate|consumer spending",
+    "fomc": r"\bfomc\b|\bfed\b.{0,40}\b(?:hike|cut|hold|decision|meeting|pause)|rate (?:hike|cut) odds|dot plot|fed funds",
+}
+
+
+def research_for_release(key: str, days: int = RESEARCH_DAYS, limit: int = RESEARCH_NOTES) -> list[dict]:
+    """Bank notes from the last `days` that mention the release: the
+    matching macro_indicators (with their released/forecast status) and
+    key_insights, newest first, one entry per PDF. Never raises."""
+    import db
+    pat = RESEARCH_TERMS.get(key)
+    if not pat:
+        return []
+    rx = re.compile(pat, re.I)
+    try:
+        rows = db.get_connection().execute(
+            """SELECT a.created_at, a.analysis_json FROM pdf_analyses a
+               WHERE a.id IN (SELECT MAX(id) FROM pdf_analyses GROUP BY pdf_file_id)
+                 AND a.created_at >= datetime('now', ?)
+                 AND a.priority IN ('high', 'medium')
+               ORDER BY a.id DESC""",
+            (f"-{int(days)} days",)).fetchall()
+    except Exception as e:
+        log.warning(f"print takeaway: research query failed: {e}")
+        return []
+    return reduce_research(
+        [(r["created_at"], r["analysis_json"]) for r in rows], rx, limit)
+
+
+def reduce_research(rows: list[tuple[str, str]], rx: re.Pattern, limit: int) -> list[dict]:
+    out: list[dict] = []
+    for created_at, raw in rows:
+        try:
+            a = json.loads(raw or "{}")
+        except Exception:
+            continue
+        macro = [
+            {k: m.get(k) for k in ("indicator", "reading", "interpretation", "status", "period") if m.get(k)}
+            for m in (a.get("macro_indicators") or [])
+            if isinstance(m, dict) and rx.search(json.dumps(m))
+        ]
+        insights = [str(s)[:300] for s in (a.get("key_insights") or []) if rx.search(str(s))]
+        if not (macro or insights):
+            continue
+        out.append({
+            "source": a.get("source") or "",
+            "title": (a.get("title") or "")[:120],
+            "published": (a.get("published_at") or created_at or "")[:10],
+            "macro": macro[:3],
+            "insights": insights[:3],
+        })
+        if len(out) >= limit:
+            break
+    return out
+
+
+SYSTEM = (
+    "You write the Quick Takeaway under an economic data print for a Discord of "
+    "self-directed options and crypto traders. They are smart but not finance "
+    "professionals: plain English, no jargon left untranslated.\n\n"
+    "You get two blocks. DATA is the print: each series with actual, consensus, "
+    "prior and a verdict, plus computed extras. RESEARCH is what banks wrote about "
+    "this release in the last ten days, each item with its bank.\n\n"
+    "Write two or three bullets. Each bullet is one short bold label (one to four "
+    "words, like 'Disinflation in play' or 'The caveat') followed by one or two "
+    "sentences, under 60 words. Say what the numbers mean and how they compare with "
+    "what the banks expected. Attribute every bank view to the bank by name.\n\n"
+    "Hard rules: every number you write must appear in DATA or RESEARCH, and if a "
+    "figure is not there you do not state it. No trade recommendations. No "
+    "prediction of the market reaction unless a named bank made it. No em-dashes, "
+    "no semicolons, no words like crucial, pivotal, robust, notably. Do not repeat "
+    "the table.\n\n"
+    "Return JSON only: {\"bullets\": [{\"label\": str, \"text\": str}]}"
+)
+
+
+def build_user(title: str, rows: list[dict], extras: list[str], research: list[dict]) -> str:
+    data = {"release": title, "series": rows, "extras": extras}
+    return (f"DATA\n{json.dumps(data, ensure_ascii=False)}\n\n"
+            f"RESEARCH\n{json.dumps(research, ensure_ascii=False)[:6000]}")
+
+
+def evidence_text(rows: list[dict], extras: list[str], research: list[dict]) -> str:
+    return json.dumps({"rows": rows, "extras": extras, "research": research}, ensure_ascii=False)
+
+
+def guard(bullets: list[dict], evidence: str) -> list[str]:
+    """Keep bullets whose every figure is in the evidence and whose text
+    passes the voice rules. Returns rendered '**Label:** text' lines."""
+    from ai_analysis.voice_rules import compose_lint_patterns
+    from discord_bot import figure_provenance as fp
+    pats = [(re.compile(rx, re.I), kind) for rx, kind in compose_lint_patterns()]
+    out: list[str] = []
+    for b in bullets:
+        if not isinstance(b, dict):
+            continue
+        label = re.sub(r"[*:]+$", "", str(b.get("label") or "").strip())
+        text = str(b.get("text") or "").strip()
+        if not label or not text:
+            continue
+        line = f"{label}: {text}"
+        if "—" in line or ";" in line:
+            line = line.replace("—", ",").replace(";", ",")
+        if len(line.split()) > MAX_WORDS + 6:
+            continue
+        if any(p.search(line) for p, _ in pats):
+            continue
+        _figs, missing = fp.unsourced_figures(line, evidence)
+        if missing:
+            log.info(f"print takeaway: dropped bullet with unsourced {[m.token for m in missing]}")
+            continue
+        out.append(f"• **{label}:** {text}")
+        if len(out) >= MAX_BULLETS:
+            break
+    return out
+
+
+def generate(key: str, title: str, rows: list[dict], extras: list[str] | None = None,
+             research: list[dict] | None = None, client=None, model: str | None = None) -> list[str]:
+    """The rendered takeaway lines, or [] when nothing usable came back."""
+    from google.genai import types
+    from config import settings
+    extras = extras or []
+    if research is None:
+        research = research_for_release(key)
+    try:
+        if client is None:
+            from ai_analysis.usage_ledger import make_client
+            client = make_client("print_takeaway")
+        resp = client.models.generate_content(
+            model=model or settings.gemini_model,
+            contents=build_user(title, rows, extras, research),
+            config=types.GenerateContentConfig(
+                system_instruction=SYSTEM, temperature=0.3, max_output_tokens=700,
+                response_mime_type="application/json"),
+        )
+        data = json.loads(resp.text or "{}")
+        bullets = data.get("bullets") if isinstance(data, dict) else data
+    except Exception as e:
+        log.warning(f"print takeaway: generation failed (print posts without it): {e}")
+        return []
+    if not isinstance(bullets, list):
+        return []
+    return guard(bullets, evidence_text(rows, extras, research))
+
+
+def render(lines: list[str]) -> list[str]:
+    """Body lines to append under the table: a header and the bullets."""
+    if not lines:
+        return []
+    return ["", "**Quick Takeaway**", *lines]
