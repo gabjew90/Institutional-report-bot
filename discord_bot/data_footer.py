@@ -21,6 +21,7 @@ FEEDS: dict[str, str] = {
     "lookup_user_profile": "room trade ledger",
     "lookup_trade_log": "room trade ledger",
     "lookup_room_positions": "room trade ledger",
+    "lookup_research": "bank research notes",
     "query_data": "research database",
 }
 # Tools whose data is the room's own conversation. The reader is in the

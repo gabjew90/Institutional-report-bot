@@ -61,7 +61,16 @@ CASES = [
     ("Thinking to take the other side of this trade.", R.UNKNOWN, []),
     ("you good?", R.UNKNOWN, []),
     ("is the dave chappelle show the best show ever?", R.UNKNOWN, []),
-    ("thoughts on NVDA here", R.UNKNOWN, []),
+    # a view on one stock: the bank research is the prefetched primary
+    # source (2026-09-30, the MU question had been answered from the room)
+    ("thoughts on NVDA here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("what do you think of MU upcoming earnings", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE, R.T_EDATE]),
+    ("how does AMD look into the print", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE, R.T_EDATE]),
+    ("bullish on $CRWV?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("should i buy PLTR here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    # not opinions: a price read, a profile, a room read
+    ("how is MU looking", R.PRICE, [R.T_PRICE]),
+    ("what do you think of the market today", R.UNKNOWN, []),
 ]
 
 
@@ -103,6 +112,14 @@ def test_tool_policy_hides_chat_search_from_data_shapes():
     assert R.T_TRADES in ledger.allowed_tools() and not ledger.google_allowed()
     slate = R.classify("who reports today")
     assert not slate.google_allowed(), "a slate question never goes to Google"
+    # 2026-09-30: the room's chat is a room tool, never a research source
+    view = R.classify("what do you think of MU upcoming earnings")
+    assert R.T_CHAT not in view.allowed_tools() and R.T_RESEARCH in view.allowed_tools()
+    assert view.google_allowed() and view.needs_web and not view.is_factual
+    unknown = R.classify("you good?")
+    assert R.T_CHAT not in unknown.allowed_tools(), "the catch-all no longer offers chat search"
+    assert R.T_CHAT in R.classify("what did BK say about MU yesterday").allowed_tools()
+    assert R.T_CHAT in R.classify("show all of Abe's current holdings").allowed_tools()
 
 
 def _tool(names=None, google=False, code=False):
@@ -418,9 +435,11 @@ def test_implied_move_routes_to_the_chain_unless_past_tense():
     assert r.shape == R.OPTIONS_CHAIN and r.prefetch == [(R.T_CHAIN, {"symbol": "LULU"})], r
     assert R.classify("expected move on nvda").shape == R.OPTIONS_CHAIN
     # After the print the chain prices the next expiry; the answer lives
-    # in chat or on the web, so the shape must keep those tools.
+    # on the web, so the shape must keep Google. Chat search left the
+    # catch-all on 2026-09-30 (the room is not a research source); a
+    # room-history question still reaches it through the CHAT shape.
     r = R.classify("what was the implied move for LULU earnings?")
-    assert r.shape == R.UNKNOWN and r.google_allowed() and R.T_CHAT in r.allowed_tools(), r
+    assert r.shape == R.UNKNOWN and r.google_allowed() and R.T_CHAT not in r.allowed_tools(), r
 
 
 # 2026-09-04, owner: "is the bot able to tell when most of the room are

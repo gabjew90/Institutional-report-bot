@@ -1168,6 +1168,86 @@ def conference_sessions_for_date(date_iso: str, *, days_back: int = 7) -> list[d
     return out
 
 
+def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[dict]:
+    """What the banks wrote about one ticker in the last `days`: the
+    latest analysis per PDF whose entities_mentioned names it, newest
+    first, reduced to the parts about that name (rating and target
+    calls, earnings lines, insights, trade ideas). The primary source
+    for an opinion question in /ask (2026-09-30: "what do you think of
+    MU earnings" had been answered from the room's own chat). Best
+    effort, never raises."""
+    import json as _json
+    import re as _re
+    sym = (symbol or "").strip().upper()
+    if not sym:
+        return []
+    try:
+        rows = _db.get_connection().execute(
+            """SELECT a.id, a.created_at, a.analysis_json, e.name AS entity_name
+               FROM pdf_analyses a
+               JOIN pdf_entities e ON e.analysis_id = a.id
+               WHERE e.ticker = ?
+                 AND a.id IN (SELECT MAX(id) FROM pdf_analyses GROUP BY pdf_file_id)
+                 AND a.created_at >= datetime('now', ?)
+               ORDER BY a.id DESC LIMIT ?""",
+            (sym, f"-{int(days)} days", int(limit) * 3)).fetchall()
+    except Exception as e:
+        log.warning(f"research_for_ticker query failed: {e}")
+        return []
+    out: list[dict] = []
+    seen: set[int] = set()
+    for r in rows:
+        if r["id"] in seen:
+            continue
+        seen.add(r["id"])
+        try:
+            a = _json.loads(r["analysis_json"] or "{}")
+        except Exception:
+            continue
+        name = (r["entity_name"] or "").strip()
+        # The ticker as a whole word (a bare "MU" must not match "must"),
+        # the full company name, and its first word when that is a real
+        # name ("Micron" for "Micron Technology", not "The" or "US").
+        pats = [_re.compile(rf"(?<![A-Za-z]){_re.escape(sym)}(?![A-Za-z])", _re.I)]
+        if name:
+            pats.append(_re.compile(_re.escape(name), _re.I))
+            first = name.split()[0]
+            if len(first) >= 4 and first.lower() not in ("the", "united", "american", "general", "first", "global"):
+                pats.append(_re.compile(rf"\b{_re.escape(first)}\b", _re.I))
+
+        def _about(text: str) -> bool:
+            t = text or ""
+            return any(p.search(t) for p in pats)
+
+        movers = [
+            {k: m.get(k) for k in ("action", "rating", "price_target", "rationale", "conviction") if m.get(k)}
+            for m in (a.get("market_movers") or []) if isinstance(m, dict)
+            and (m.get("ticker") or "").strip().upper() == sym
+        ]
+        ideas = [
+            {k: t.get(k) for k in ("description", "rationale", "risk", "time_horizon", "conviction") if t.get(k)}
+            for t in (a.get("trade_ideas") or []) if isinstance(t, dict)
+            and (sym in [str(x).upper() for x in (t.get("instruments") or [])] or _about(t.get("description")))
+        ]
+        earnings = [str(x)[:400] for x in (a.get("earnings_insights") or []) if _about(str(x))]
+        insights = [str(x)[:400] for x in (a.get("key_insights") or []) if _about(str(x))]
+        if not (movers or ideas or earnings or insights):
+            continue
+        out.append({
+            "source": a.get("source") or "",
+            "title": (a.get("title") or "")[:160],
+            "report_type": a.get("report_type") or "",
+            "published": (a.get("published_at") or r["created_at"] or "")[:10],
+            "calls": movers[:3],
+            "earnings": earnings[:3],
+            "insights": insights[:3],
+            "trade_ideas": ideas[:2],
+        })
+        if len(out) >= limit:
+            break
+    return out
+
+
 def recently_covered_tickers(days: int = 7) -> set[str]:
     """Tickers a bank wrote EARNINGS content about in the last `days`
     (owner call 2026-09-02, for the calendar's bold rows): the latest

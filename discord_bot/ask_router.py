@@ -43,6 +43,10 @@ HISTORICAL_STAT = "historical_stat"
 NEWS_EVENT = "news_event"
 ROOM_CROWDING = "room_crowding"
 BANTER = "banter"
+# A view on one stock ("what do you think of MU into earnings"). The
+# bank research is prefetched so the answer leads with named desks, not
+# with the room's own chatter (2026-09-30).
+TICKER_OPINION = "ticker_opinion"
 UNKNOWN = "unknown"
 
 # A ledger or chat lookup is a data question too: it gets the straight-
@@ -66,30 +70,37 @@ T_QUERY = "query_data"
 T_HISTORY = "lookup_price_history"
 T_FANTASY = "lookup_fantasy_league"
 T_ROOM = "lookup_room_positions"
+T_RESEARCH = "lookup_research"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
-             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM}
+             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH}
 
 # Which function tools a shape may see. Google is a separate flag.
+# Chat search is a ROOM tool: it appears only where the question is
+# about the room (ledger, chat history, fantasy, banter). A stock or
+# market question cannot be answered from the room's own chatter, which
+# is what the catch-all used to allow (2026-09-30, "what do you think of
+# MU upcoming earnings" searched the room for MU earnings).
 TOOL_POLICY: dict[str, set[str]] = {
     EARNINGS_SLATE: {T_SLATE, T_EDATE, T_PRICE},
-    EARNINGS_DATE: {T_EDATE, T_PRICE, T_CHAIN},
+    EARNINGS_DATE: {T_EDATE, T_PRICE, T_CHAIN, T_RESEARCH},
     PRICE: {T_PRICE, T_HISTORY, T_CHAIN},
     OPTIONS_CHAIN: {T_CHAIN, T_PRICE},
     ECON_CALENDAR: {T_ECON, T_SLATE},
     PRICE_HISTORY: {T_HISTORY, T_PRICE},
-    COMPANY_PROFILE: {T_PRICE},
+    COMPANY_PROFILE: {T_PRICE, T_RESEARCH},
     MEMBER_LEDGER: {T_TRADES, T_QUERY, T_PROFILE, T_PRICE, T_CHAT},
     CHAT_HISTORY: {T_CHAT, T_PROFILE, T_QUERY},
     FANTASY: {T_FANTASY, T_CHAT},
     HISTORICAL_STAT: {T_HISTORY},
-    NEWS_EVENT: {T_PRICE, T_EDATE, T_CHAIN},
+    NEWS_EVENT: {T_PRICE, T_EDATE, T_CHAIN, T_RESEARCH},
     ROOM_CROWDING: {T_ROOM, T_TRADES, T_QUERY, T_PRICE},
+    TICKER_OPINION: {T_RESEARCH, T_EDATE, T_PRICE, T_CHAIN},
     BANTER: ALL_TOOLS - {T_GOOGLE},
-    UNKNOWN: ALL_TOOLS - {T_GOOGLE},
+    UNKNOWN: ALL_TOOLS - {T_GOOGLE, T_CHAT},
 }
 GOOGLE_POLICY: dict[str, bool] = {
     EARNINGS_SLATE: False, EARNINGS_DATE: True, PRICE: True, OPTIONS_CHAIN: False,
-    ECON_CALENDAR: True, PRICE_HISTORY: False, COMPANY_PROFILE: True,
+    ECON_CALENDAR: True, PRICE_HISTORY: False, COMPANY_PROFILE: True, TICKER_OPINION: True,
     # Google is allowed on FANTASY: half the questions in that channel are
     # NFL news (injuries, player outlooks) that the league tool cannot
     # answer. League STATE still comes only from the injected payload,
@@ -117,7 +128,7 @@ class Route:
     @property
     def needs_web(self) -> bool:
         return GOOGLE_POLICY.get(self.shape, True) and self.shape in (
-            NEWS_EVENT, HISTORICAL_STAT, COMPANY_PROFILE)
+            NEWS_EVENT, HISTORICAL_STAT, COMPANY_PROFILE, TICKER_OPINION)
 
     def allowed_tools(self) -> set[str]:
         return set(TOOL_POLICY.get(self.shape, ALL_TOOLS - {T_GOOGLE}))
@@ -456,6 +467,14 @@ _CROWD_RE = re.compile(
     r"|same\s+(?:trade|play|position|boat)|room(?:'s)?\s+(?:book|positioning|positions|exposure)"
     r"|what(?:'s| is)\s+the\s+room\s+(?:in|holding|long|short)|who(?:'s| is|s)\s+(?:all\s+)?in\s+\$?[A-Za-z]{1,5}\b)", re.I)
 _SINGLE_TICKER_OPINION_RE = re.compile(r"\b(?:thoughts?\s+on|bullish|bearish|buy|sell|long|short)\b", re.I)
+# A view on a named stock. "how is X looking" stays a price question
+# (_PRICE_RE), so only the "how does X look" form is here.
+_OPINION_RE = re.compile(
+    r"\b(?:what\s+do\s+(?:you|u|ya)\s+think\s+(?:of|about|on)|thoughts?\s+on"
+    r"|(?:your|ur)\s+(?:take|read|view|opinion)\s+on|opinion\s+on|(?:bullish|bearish)\s+on"
+    r"|how\s+(?:does|do)\s+\S+\s+look(?:ing)?\b|should\s+i\s+(?:buy|sell|hold|short|long|add|trim)"
+    r"|worth\s+(?:buying|a\s+buy|holding|a\s+look)|(?:into|going\s+into|ahead\s+of)\s+(?:the\s+)?(?:print|earnings|er|report)"
+    r"|how\s+(?:do|does|will)\s+\S+\s+(?:do|hold\s+up|fare|trade)\s+(?:into|on|after)\s+earnings)\b", re.I)
 
 
 def _last_line(question: str) -> str:
@@ -525,6 +544,14 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         r.shape, r.reason = OPTIONS_CHAIN, "options words + ticker"
         sym = tickers[0] if tickers else re.search(r"\b(spy|qqq|iwm)\b", ql).group(1).upper()
         r.prefetch = [(T_CHAIN, {"symbol": sym})]
+        return r
+    if _OPINION_RE.search(q) and tickers:
+        r.shape, r.reason = TICKER_OPINION, "view words + ticker"
+        sym = tickers[0]
+        r.prefetch = [(T_RESEARCH, {"symbol": sym, "days": 14}),
+                      (T_PRICE, {"symbols": [price_symbol(sym)]})]
+        if re.search(r"\b(?:earnings|print|report|er)\b", ql):
+            r.prefetch.append((T_EDATE, {"symbol": sym}))
         return r
     if _EDATE_RE.search(q) and tickers:
         r.shape, r.reason = EARNINGS_DATE, "single-ticker earnings shape"
@@ -615,6 +642,13 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                  "the feed, give consensus and prior as such, and never fill the actual from memory or from the "
                  "previous month."),
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
+        T_RESEARCH: ("INSTITUTIONAL RESEARCH ON THE TICKER, system-fetched from the bank notes "
+                     "the bot ingested. This is the primary source for a view question: lead "
+                     "with what the named banks say (rating and target calls, earnings previews, "
+                     "the debate between desks) and attribute every view to its bank. Google may "
+                     "add public news. The room's chat is not a source for this. status=no_data: "
+                     "say no bank note covers the name and give the public view, never a made-up "
+                     "desk call."),
         T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
                  "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "
                  "close. The ledger is entry-biased (exits are posted far less often than entries): "

@@ -224,6 +224,20 @@ TOOL_DOCS["lookup_earnings_date"] = (
     "quarters.'"
 ) + _COMMON
 
+TOOL_DOCS["lookup_research"] = (
+    "WHEN TO CALL: what the banks (Goldman, Morgan Stanley, JPM, Citi, "
+    "BofA, UBS and the rest of the ingested research) wrote about ONE "
+    "ticker in the last two weeks: rating and price-target calls, "
+    "earnings previews, insights and trade ideas, each with the bank "
+    "named. This is THE primary source for any view, outlook or 'what do "
+    "you think of X' question on a stock, and for 'what are the banks "
+    "saying about X'. Attribute every view to its bank. The room's chat "
+    "is never a substitute for it. NOT for prices "
+    "(`lookup_market_price`), dates (`lookup_earnings_date`) or macro "
+    "prints. status=no_data means no note names the ticker: say so and "
+    "use Google for the public view, never invent a desk call."
+) + _COMMON
+
 TOOL_DOCS["query_data"] = (
     "WHEN TO CALL: read-only SQL SELECT over the bot's SQLite DB, for "
     "aggregates, trends over time, activity-by-hour, and group-bys the "
