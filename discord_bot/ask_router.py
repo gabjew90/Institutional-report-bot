@@ -220,8 +220,12 @@ def extract_tickers(text: str, *, lowercase: bool = True,
     return out
 
 
+# "think of mu" / "thoughts on mu" joined the lead-ins 2026-09-30: the
+# bare opinion question typed in lowercase had no ticker and fell to the
+# catch-all, so the research prefetch never ran.
 _LOWER_LEADIN_RE = re.compile(
-    r"\b(?:why\s+(?:is|are|did|was)|explain|what(?:'s|s| is)|how(?:'s|s| is)|is|odds|off|about|on|in)\s+"
+    r"\b(?:why\s+(?:is|are|did|was)|explain|what(?:'s|s| is)|how(?:'s|s| is)|is|odds|off|about|on|in"
+    r"|think\s+(?:of|about)|thoughts?\s+on|(?:bullish|bearish)\s+on|(?:take|view|read)\s+on)\s+"
     r"(?:the\s+)?([a-z]{2,5})\b", re.I)
 _COMMON_WORDS = {
     "the", "market", "gold", "oil", "this", "that", "it", "he", "she", "they", "we", "my",

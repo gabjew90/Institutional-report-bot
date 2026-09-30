@@ -920,7 +920,9 @@ def main() -> int:
     ap_.add_argument("--allow-model-change", dest="allow_model_change",
                      action="store_true",
                      help="permit comparing against a baseline recorded on "
-                          "a different model")
+                          "a different model, and run the suite under a "
+                          "--model that differs from production (a model "
+                          "trial: the model change is what is measured)")
     ap_.add_argument("--allow-config-change", dest="allow_config_change",
                      action="store_true",
                      help="permit comparing against a baseline recorded "
@@ -935,6 +937,11 @@ def main() -> int:
                           "record the grounding/tool-routing delta")
     ap_.add_argument("--json", dest="json_out", default=None)
     args = ap_.parse_args()
+    if args.allow_model_change and args.model != PRODUCTION_CONFIG["ask_model"]:
+        # A model trial: the config guard must let the one deliberate
+        # difference through, with its reason printed, and block any other.
+        ALLOWED_CONFIG_DIFFS["ask_model"] = (
+            f"model trial requested with --model {args.model} --allow-model-change")
 
     fixtures = load_fixtures(args.only)
     if not fixtures:

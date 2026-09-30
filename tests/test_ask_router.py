@@ -68,6 +68,8 @@ CASES = [
     ("how does AMD look into the print", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE, R.T_EDATE]),
     ("bullish on $CRWV?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
     ("should i buy PLTR here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("what do you think of mu", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("what do you think of gold", R.UNKNOWN, []),      # a word, not Barrick
     # not opinions: a price read, a profile, a room read
     ("how is MU looking", R.PRICE, [R.T_PRICE]),
     ("what do you think of the market today", R.UNKNOWN, []),
