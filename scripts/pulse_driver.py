@@ -296,11 +296,12 @@ class Driver:
             # body and every omnipulse-day branch applies. The reason is
             # kept for STEP 6's frontmatter and the bridge's ops page.
             # _run returns stdout plus stderr, and fetch prints its retry
-            # errors to stderr first, so pick the decision line by its
-            # prefix instead of taking the last line.
-            lines = [l.strip() for l in out.splitlines() if l.strip()]
-            line = next((l for l in reversed(lines)
-                         if l.startswith("omnipulse: none for")),
+            # errors to stderr, which trails stdout in the combined output,
+            # so pick the decision line by its prefix instead of taking
+            # the last line.
+            lines = [ln.strip() for ln in out.splitlines() if ln.strip()]
+            line = next((ln for ln in reversed(lines)
+                         if ln.startswith("omnipulse: none for")),
                         lines[-1] if lines else "miss day")
             m = re.search(r"\((.*)\) -> light pulse$", line)
             reason = (m.group(1) if m else line)[:300]

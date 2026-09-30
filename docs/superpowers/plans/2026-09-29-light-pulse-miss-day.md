@@ -192,9 +192,10 @@ def _fake_light(tmp):
         if args[0].endswith("omnipulse_body.py") and args[1] == "fetch":
             (tmp / "omnipulse_body.md").write_text(O.light_body(), encoding="utf-8")
             (tmp / "omnipulse_headline.txt").write_text("", encoding="utf-8")
-            # stderr-style retry line first, as _run returns stdout + stderr
-            return O.EXIT_LIGHT, ("omnipulse: fetch error (HTTP 500)\n"
-                                  "omnipulse: none for 2026-09-30 (not published after 600s) -> light pulse\n")
+            # _run returns stdout + stderr, so the stderr retry line trails
+            # the decision line and the last line is not the decision.
+            return O.EXIT_LIGHT, ("omnipulse: none for 2026-09-30 (not published after 600s) -> light pulse\n"
+                                  "omnipulse: fetch error (HTTP 500)\n")
         return real(self, args)
     return patch.object(PD.Driver, "_run", run)
 
