@@ -615,7 +615,9 @@ def _comparison(r: dict) -> str:
     if r.get("consensus") is not None:
         return f"vs. {r['consensus']} exp, {r['verdict']}".rstrip(", ")
     if r.get("transform") == "level":
-        return _level_change(r)
+        change = _level_change(r)
+        if change:
+            return change
     if r.get("prior") is not None:
         return f"prior {r['prior']}"
     return ""
@@ -626,23 +628,31 @@ def _single(r: dict) -> str:
     return f"{r['display']}: {r['actual']}" + (f" ({cmp_})" if cmp_ else "")
 
 
+_PERIOD_TAG = {"mom": "MoM", "yoy": "YoY"}
+
+
 def _pair(a: dict, b: dict) -> str:
-    """m/m and y/y on one line. Consensus wins when either side has one."""
-    head = f"{a['display']}: {a['actual']} MoM / {b['actual']} YoY"
-    if a.get("consensus") is not None or b.get("consensus") is not None:
-        cons = f"{a.get('consensus') or '-'} / {b.get('consensus') or '-'}"
-        verd = f"{a.get('verdict') or '-'} / {b.get('verdict') or '-'}"
-        return f"{head} (vs. {cons} exp, {verd})"
-    if a.get("prior") is not None or b.get("prior") is not None:
-        return f"{head} (prior {a.get('prior') or '-'} / {b.get('prior') or '-'})"
-    return head
+    """m/m and y/y on one line. When both sides have a consensus the
+    parenthetical is compact. Otherwise each side is compared on its own
+    terms (consensus, else prior) and the two are joined with " / "."""
+    def tag(r: dict) -> str:
+        return _PERIOD_TAG.get(r.get("transform"), r["display"])
+
+    head = f"{a['display']}: {a['actual']} {tag(a)} / {b['actual']} {tag(b)}"
+    if a.get("consensus") is not None and b.get("consensus") is not None:
+        return (f"{head} (vs. {a['consensus']} / {b['consensus']} exp, "
+                f"{a.get('verdict') or '-'} / {b.get('verdict') or '-'})")
+    parts = [c for c in (_comparison(a), _comparison(b)) if c]
+    return f"{head} ({' / '.join(parts)})" if parts else head
 
 
 def render_release(rows: list[dict], computed: list[str] | tuple = (), takeaway: list[str] | tuple = (),
                    source: str = "") -> list[str]:
     """The embed body in the owner's layout (2026-09-30): one bullet per
     series, m/m and y/y pairs on one line, short series sharing a line,
-    computed lines, the Quick Takeaway, then the source citation."""
+    computed lines, the Quick Takeaway, then the source citation.
+    `computed` items get the bullet prepended here, while `takeaway` lines
+    arrive already bulleted (print_takeaway.render produces them)."""
     if not rows:
         return []
     out: list[str] = []

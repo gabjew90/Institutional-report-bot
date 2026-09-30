@@ -56,10 +56,31 @@ def test_pairs_fall_back_to_priors_and_levels_say_up_or_down():
         _row("Shelter m/m", "+0.3%", display="Shelter (MoM)"),
     ]
     body = PW.render_release(rows)
-    assert body[0] == "• Headline PCE: +0.3% MoM / 3.4% YoY (prior +0.1% / 3.4%)"
+    assert body[0] == "• Headline PCE: +0.3% MoM / 3.4% YoY (prior +0.1% / prior 3.4%)"
     assert body[1] == "• Personal Income: +0.2% (vs. +0.5% exp, below) | Saving Rate: 4.1% (down from 4.4%)"
     assert body[2] == "• Participation Rate: 62.6% (unchanged from 62.6%)"
     assert body[3] == "• Shelter (MoM): +0.3%"
+
+
+def test_pair_with_consensus_on_one_side_compares_each_side_on_its_own_terms():
+    ahe = [
+        _row("Avg Hourly Earnings m/m", "+0.3%", consensus="+0.3%", prior="+0.2%", verdict="in line",
+             display="Avg Hourly Earnings", pair="ahe"),
+        _row("Avg Hourly Earnings y/y", "3.1%", prior="3.2%", display="Avg Hourly Earnings", pair="ahe",
+             transform="yoy"),
+    ]
+    assert PW.render_release(ahe) == [
+        "• Avg Hourly Earnings: +0.3% MoM / 3.1% YoY (vs. +0.3% exp, in line / prior 3.2%)"]
+    # labels come from each row's transform, not from argument order
+    assert PW.render_release(list(reversed(ahe)))[0].startswith(
+        "• Avg Hourly Earnings: 3.1% YoY / +0.3% MoM")
+    # no comparison on either side: no parenthetical
+    bare = [_row("A m/m", "+0.1%", display="A", pair="p"), _row("A y/y", "2.0%", display="A", pair="p",
+                                                               transform="yoy")]
+    assert PW.render_release(bare) == ["• A: +0.1% MoM / 2.0% YoY"]
+    # a level row with no numeric values falls back to its prior
+    lvl = _row("Rate", "4.1%", prior="4.4%", transform="level")
+    assert PW.render_release([lvl]) == ["• Rate: 4.1% (prior 4.4%)"]
 
 
 def test_takeaway_sits_between_the_numbers_and_the_source():
