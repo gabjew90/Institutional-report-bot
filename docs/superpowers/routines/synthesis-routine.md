@@ -140,8 +140,12 @@ def _read_target_channels() -> str:
 
 GH_TOKEN = _read_token()
 if not GH_TOKEN:
-    print('FATAL: no GH_TOKEN in env or /tmp/gh_token.txt — body did not bootstrap auth correctly')
-    raise SystemExit(2)
+    # No token is the normal case since 2026-09-30. The bootstrap no
+    # longer carries one: the repo is public, every read here goes to
+    # the raw host without auth, and every commit goes through the
+    # GitHub MCP tool (COMMIT TRANSPORT). The api.github.com paths below
+    # will 403 without it exactly as they did with it.
+    print('note: no GH_TOKEN; reads are unauthenticated and commits go through MCP')
 
 # Re-export so any subprocess this Python invokes (and the rest of this
 # heredoc's logic) sees a consistent value. This does NOT propagate to
@@ -1838,8 +1842,10 @@ def _read_token() -> str:
 
 GH_TOKEN = _read_token()
 if not GH_TOKEN:
-    print('FATAL: STEP 6 has no GH_TOKEN in env or /tmp/gh_token.txt — cannot commit')
-    raise SystemExit(2)
+    # Expected since 2026-09-30 (no token in the bootstrap). This step
+    # only BUILDS the artifacts; the commits go through the GitHub MCP
+    # tool per the COMMIT TRANSPORT override, which needs no PAT.
+    print('note: STEP 6 has no GH_TOKEN; build the files, commit them via MCP')
 os.environ['GH_TOKEN'] = GH_TOKEN
 REPO = 'gabjew90/Institutional-report-bot'
 BRANCH = 'pulse-data'
