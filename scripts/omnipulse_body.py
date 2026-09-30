@@ -54,8 +54,8 @@ MAX_BRIEFS = 5
 # LIGHT_BODY_NOTE, no research body. Flipped in the retirement commit.
 MISS_DAY = "classic"
 LIGHT_BODY_NOTE = (
-    "No research body today. The morning's bank research did not reach "
-    "the desk in time. The market read above and the calendar below are "
+    "No research body today. The morning's bank research was not ready "
+    "in time. The market read above and the calendar below are "
     "current, and the full edition returns tomorrow."
 )
 EXIT_LIGHT = 4
@@ -238,7 +238,8 @@ def light_body() -> str:
 def splice(pulse_md: str, headline: str, insights: str) -> str:
     """Replace the pulse's `# ` headline and its INSIGHTS section (header
     through the next H2) with the Omnipulse ones. Raises ValueError when
-    the pulse has no INSIGHTS section to replace."""
+    the pulse has no INSIGHTS section to replace. An empty headline keeps
+    the pulse's own H1 (light pulse)."""
     m = re.search(r"(?m)^## (?:\d+\. )?INSIGHTS & ALPHA[^\n]*\n", pulse_md)
     if not m:
         raise ValueError("pulse has no INSIGHTS & ALPHA section")

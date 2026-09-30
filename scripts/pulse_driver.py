@@ -211,9 +211,11 @@ class Driver:
     # omnipulse mode (spec 2026-09-26-omnipulse-body-in-production.md)
     # ------------------------------------------------------------------
     def omnipulse_mode(self) -> bool:
+        """True on an omnipulse day AND a light day: both run with a
+        locked body the routine did not write."""
         try:
             return (self.tmp / "pulse_mode.txt").read_text(
-                encoding="utf-8").strip() == "omnipulse"
+                encoding="utf-8").strip() in ("omnipulse", "light")
         except OSError:
             return False
 
@@ -237,12 +239,19 @@ class Driver:
             print(f"omnipulse splice into {path.name} failed: {e}")
             return False
 
-    def _body_headings(self) -> list[str]:
+    def _body_markers(self) -> list[str]:
+        """Strings that must survive in final.md: the body's `###`
+        headings, or, for a light body with none, its note text."""
         try:
-            return re.findall(r"(?m)^### .+$",
-                              self._body_path().read_text(encoding="utf-8"))
+            body = self._body_path().read_text(encoding="utf-8")
         except OSError:
             return []
+        heads = re.findall(r"(?m)^### .+$", body)
+        if heads:
+            return heads
+        paras = [p.strip() for p in re.split(r"\n\s*\n", body)
+                 if p.strip() and not p.strip().startswith("#")]
+        return paras[:1]
 
     # ------------------------------------------------------------------
     # gates
@@ -280,6 +289,14 @@ class Driver:
             self._run(["scripts/pulse_stitch.py", body, body])
             mode_file.write_text("omnipulse", encoding="utf-8")
             return self._decide("omnipulse", "OMNIPULSE", out.strip()[-300:])
+        if code == o.EXIT_LIGHT:
+            # Miss day under MISS_DAY="light": the note is the locked
+            # body and every omnipulse-day branch applies. The reason is
+            # kept for STEP 6's frontmatter and the bridge's ops page.
+            reason = out.strip().splitlines()[-1] if out.strip() else "miss day"
+            (self.tmp / "light_reason.txt").write_text(reason[:300], encoding="utf-8")
+            mode_file.write_text("light", encoding="utf-8")
+            return self._decide("omnipulse", "LIGHT", reason[-300:])
         mode_file.write_text("classic", encoding="utf-8")
         return self._decide("omnipulse", "CLASSIC",
                             out.strip()[-300:] or f"exit {code}")
@@ -797,7 +814,7 @@ class Driver:
             problems.append("draft.md missing (forensics artifact "
                             "required for commit)")
         if self.omnipulse_mode() and final.exists():
-            heads = self._body_headings()
+            heads = self._body_markers()
             lost = [h for h in heads
                     if h not in final.read_text(encoding="utf-8")]
             if heads and lost:

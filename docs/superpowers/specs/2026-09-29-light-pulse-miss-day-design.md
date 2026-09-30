@@ -31,7 +31,7 @@ The routine treats LIGHT like OMNIPULSE: skip STEP 3.5 adjudication, DRAFT write
 
 The body file holds the `## 2. INSIGHTS & ALPHA` header and one paragraph, no `###` themes:
 
-> No research body today. The morning's bank research did not reach the desk in time. The market read above and the calendar below are current; the full edition returns tomorrow.
+> No research body today. The morning's bank research was not ready in time. The market read above and the calendar below are current, and the full edition returns tomorrow.
 
 The text lives as a constant in `omnipulse_body.py` (`LIGHT_BODY_NOTE`) so lint's voice rules can be checked against it once in a test. It carries no figures, so the fact checker has nothing to find in it.
 
