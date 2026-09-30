@@ -180,3 +180,43 @@ def test_the_backup_copy_must_match_githubs_hash(tmp_path):
 
 def test_the_hash_is_gits_blob_hash():
     assert O.git_blob_sha("hello\n") == "ce013625030ba8dba906f756967f9e9ca394464a"
+
+
+# --- 2026-09-29: light pulse on a miss day (owner option a) -------------
+def test_the_light_body_is_one_note_under_the_insights_header():
+    body = O.light_body()
+    assert body.startswith(O.INSIGHTS_HEADER + "\n\n")
+    assert O.LIGHT_BODY_NOTE in body
+    assert "### " not in body and "—" not in body and ";" not in body
+
+
+def test_splice_keeps_the_pulses_own_headline_when_none_is_supplied():
+    draft = _read("draft-2026-09-25.md")
+    out = O.splice(draft, "", O.light_body())
+    assert out.splitlines()[0] == draft.splitlines()[0]
+    insights = out.split("## 3. WHAT TO WATCH")[0].split("## 2.")[1]
+    assert O.LIGHT_BODY_NOTE in out and "### " not in insights
+
+
+def test_a_miss_day_writes_the_light_body_when_the_switch_says_so(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(O, "_raw_get", lambda url, token: None)
+    body, head = tmp_path / "b.md", tmp_path / "h.txt"
+    args = ["fetch", "--date", "2026-09-30", "--wait", "0",
+            "--body", str(body), "--headline", str(head)]
+    monkeypatch.setattr(O, "MISS_DAY", "classic")
+    assert O.main(args) == 3 and not body.exists()
+    monkeypatch.setattr(O, "MISS_DAY", "light")
+    assert O.main(args) == 4
+    assert body.read_text(encoding="utf-8") == O.light_body()
+    assert head.read_text(encoding="utf-8") == ""
+    assert "light pulse" in capsys.readouterr().out and "not published" in O.LAST_FETCH_REASON
+
+
+def test_an_unusable_omnipulse_also_goes_light(tmp_path, monkeypatch):
+    md, meta = _omni("2026-09-24")
+    monkeypatch.setattr(O, "fetch", lambda *a, **k: (md, dict(meta, structural_problems=["x"])))
+    monkeypatch.setattr(O, "MISS_DAY", "light")
+    body, head = tmp_path / "b.md", tmp_path / "h.txt"
+    assert O.main(["fetch", "--date", "2026-09-24", "--wait", "0",
+                   "--body", str(body), "--headline", str(head)]) == 4
+    assert body.read_text(encoding="utf-8") == O.light_body()

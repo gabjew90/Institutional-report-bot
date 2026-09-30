@@ -10,7 +10,9 @@ and the TRADE BOARD, which need live data only it has.
   fetch   poll pilot-data for today's Omnipulse, check it, and write
           /tmp/omnipulse_body.md (the INSIGHTS section in production's
           format) and /tmp/omnipulse_headline.txt. Exit 0 = use it,
-          3 = not usable (classic pulse), 2 = usage error.
+          3 = not usable (classic pulse), 2 = usage error,
+          4 = light pulse (only when MISS_DAY = "light": the body file
+          holds a one-paragraph note and the headline file is empty).
   splice  replace a pulse's headline and INSIGHTS section with the saved
           Omnipulse ones. Used after DRAFT and again after EDIT, so
           neither can change the body.
@@ -45,6 +47,18 @@ MIN_BRIEFS = 2
 # the Omnipulse editor wrote them. It writes 8-11 themes (1,500-1,850
 # words); production ran 3-6.
 MAX_BRIEFS = 5
+# What a miss day publishes when the Omnipulse is missing or unusable
+# after the wait (owner option a, 2026-09-29, spec
+# 2026-09-29-light-pulse-miss-day-design.md). "classic" = today's
+# classic pulse. "light" = RECAP, TRADE BOARD and WHAT TO WATCH around
+# LIGHT_BODY_NOTE, no research body. Flipped in the retirement commit.
+MISS_DAY = "classic"
+LIGHT_BODY_NOTE = (
+    "No research body today. The morning's bank research did not reach "
+    "the desk in time. The market read above and the calendar below are "
+    "current, and the full edition returns tomorrow."
+)
+EXIT_LIGHT = 4
 MAX_FETCH_ERRORS = 3
 # 10 minutes: the Omnipulse normally lands by 14:08 UTC and the gate runs
 # about 14:11, so a longer wait mostly delays the classic fallback (the
@@ -215,6 +229,12 @@ def to_insights(md: str) -> tuple[str, str]:
     return headline, INSIGHTS_HEADER + "\n\n" + "\n\n".join(themes) + "\n"
 
 
+def light_body() -> str:
+    """The INSIGHTS section for a light pulse: the header and the note,
+    no themes."""
+    return INSIGHTS_HEADER + "\n\n" + LIGHT_BODY_NOTE + "\n"
+
+
 def splice(pulse_md: str, headline: str, insights: str) -> str:
     """Replace the pulse's `# ` headline and its INSIGHTS section (header
     through the next H2) with the Omnipulse ones. Raises ValueError when
@@ -225,10 +245,27 @@ def splice(pulse_md: str, headline: str, insights: str) -> str:
     nxt = _H2_RE.search(pulse_md, m.end())
     end = nxt.start() if nxt else len(pulse_md)
     out = pulse_md[:m.start()] + insights.rstrip() + "\n\n" + pulse_md[end:]
+    if not headline.strip():
+        return out          # light pulse: DRAFT's own H1 stands
     out, n = re.subn(r"(?m)^# (?!#).*$", lambda _m: headline, out, count=1)
     if not n:
         out = headline + "\n\n" + out
     return out
+
+
+def _miss_day(date: str, why: str, body_path: str, headline_path: str) -> int:
+    """Exit for a day without a usable Omnipulse: 3 = classic pulse,
+    EXIT_LIGHT = the light body is written and the routine runs the
+    omnipulse-day path around it."""
+    if MISS_DAY != "light":
+        print(f"omnipulse: none for {date} ({why}) -> classic pulse")
+        return 3
+    with open(body_path, "w", encoding="utf-8") as fh:
+        fh.write(light_body())
+    with open(headline_path, "w", encoding="utf-8") as fh:
+        fh.write("")
+    print(f"omnipulse: none for {date} ({why}) -> light pulse")
+    return EXIT_LIGHT
 
 
 def main(argv=None) -> int:
@@ -257,15 +294,16 @@ def main(argv=None) -> int:
             got = read_local(a.src_dir, a.date, a.sha)
         else:
             got = fetch(a.date, _token(), wait_s=a.wait)
+        why = ""
         if not got:
             why = LAST_FETCH_REASON or "not found"
-            print(f"omnipulse: none for {a.date} ({why}) -> classic pulse")
-            return 3
-        md, meta = got
-        bad = problems(md, meta)
-        if bad:
-            print(f"omnipulse: {a.date} not usable -> classic pulse: " + "; ".join(bad))
-            return 3
+        else:
+            md, meta = got
+            bad = problems(md, meta)
+            if bad:
+                why = "not usable: " + "; ".join(bad)
+        if why:
+            return _miss_day(a.date, why, body_path, headline_path)
         headline, insights = to_insights(md)
         with open(body_path, "w", encoding="utf-8") as fh:
             fh.write(insights)
