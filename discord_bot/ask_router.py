@@ -643,15 +643,17 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                  "previous month."),
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
         T_RESEARCH: ("INSTITUTIONAL RESEARCH ON THE TICKER, system-fetched from the bank notes "
-                     "the bot ingested. This is the primary source for a view question. Lead "
-                     "with what the named banks say and, for each view, the reasoning the note "
-                     "gives: the mechanism, the figure it rests on (a target, an estimate change, "
-                     "a margin, a unit number) and what the desk says would break it. A direction "
-                     "with no reason is not an answer, and 'bullish on AI demand' is not a reason. "
-                     "Where desks disagree, state the disagreement and what each side is counting "
-                     "on. Attribute every view to its bank. Google may add public news. The "
-                     "room's chat is not a source for this. status=no_data: say no bank note "
-                     "covers the name and give the public view, never a made-up desk call."),
+                     "the bot ingested. This is the primary source for a view question. One arrow "
+                     "per bank view, and every arrow carries the desk's own numbers from the "
+                     "`calls`, `earnings`, `insights` and `data_points` fields: the estimate the "
+                     "desk expects against the Street figure, the target or margin or cash figure "
+                     "it cites, the positioning it flags (consensus long, expectations high after "
+                     "the last beat), and what it says would break the call. A direction with no "
+                     "number is not an answer, and 'bullish on AI demand' or 'structural tightness' "
+                     "is not a reason. Where desks disagree, state the disagreement and what each "
+                     "side is counting on. Attribute every view to its bank. Google may add public "
+                     "news. The room's chat is not a source for this. status=no_data: say no bank "
+                     "note covers the name and give the public view, never a made-up desk call."),
         T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
                  "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "
                  "close. The ledger is entry-biased (exits are posted far less often than entries): "
@@ -691,4 +693,41 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
         if tool == T_FANTASY:
             tail += (" Specifically: this payload is the asker's OMNIBETA "
                      "league, so a roster in the image is a different team.")
+    if tool == T_RESEARCH and (result or {}).get("status") == "ok":
+        # A per-bank digest, not nested JSON: on 2026-09-30 the model
+        # summarized "$56.3B / 86.5% GM / $35.71 EPS, JPM expects the
+        # guide well above" down to "structural tightness" when it read
+        # the raw dump. Figures written out in prose get copied.
+        return f"[{lead}{tail}]\n" + render_research(result)[:7000]
     return f"[{lead}{tail}]\n" + _json.dumps(result, default=str)[:6000]
+
+
+def render_research(result: dict) -> str:
+    """The research payload as one paragraph per note: bank, date, title,
+    then its calls, earnings lines, insights, figures, trade ideas and
+    risks about the ticker, each on its own line."""
+    sym = result.get("symbol") or ""
+    out = [f"BANK RESEARCH ON {sym}, last {result.get('days', 14)} days, "
+           f"{len(result.get('notes') or [])} notes from {', '.join(result.get('banks') or [])}."]
+    for n in result.get("notes") or []:
+        out.append(f"\n{n.get('source')} ({n.get('published')}): {n.get('title')}")
+        for c in n.get("calls") or []:
+            pt = c.get("price_target")
+            bits = [c.get("action"), c.get("rating"),
+                    f"PT {pt}" if pt and str(pt).upper() != "N/A" else None,
+                    f"{c['conviction']} conviction" if c.get("conviction") else None]
+            head = " · ".join(b for b in bits if b and b != "N/A")
+            out.append(f"  call: {head}. {c.get('rationale') or ''}".rstrip())
+        for e in n.get("earnings") or []:
+            out.append(f"  earnings: {e}")
+        for i in n.get("insights") or []:
+            out.append(f"  insight: {i}")
+        for d in n.get("data_points") or []:
+            ctx = f" ({d['context']})" if d.get("context") else ""
+            out.append(f"  figure: {d.get('figure')} {d.get('metric')}{ctx}")
+        for t in n.get("trade_ideas") or []:
+            out.append(f"  trade idea: {t.get('description')}. {t.get('rationale') or ''} "
+                       f"Risk: {t.get('risk') or 'not stated'}.")
+        for r in n.get("risks") or []:
+            out.append(f"  risk: {r}")
+    return "\n".join(out)

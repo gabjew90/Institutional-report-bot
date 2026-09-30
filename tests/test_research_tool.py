@@ -39,6 +39,11 @@ GS = {
     "key_insights": ["Micron's HBM supply is sold out for 2027.", "Oil is a policy problem."],
     "trade_ideas": [{"description": "Long MU into earnings", "rationale": "beat and raise", "risk": "guide",
                      "time_horizon": "swing", "instruments": ["MU"]}],
+    "key_data_points": [
+        {"figure": "$56.3B", "metric": "MU F1Q27 revenue consensus", "context": "JPM expects the guide above it",
+         "source_bank": "Goldman Sachs", "figure_status": "forecast"},
+        {"figure": "$751B", "metric": "2026 hyperscaler capex", "context": "", "source_bank": "Goldman Sachs"},
+    ],
 }
 MS = {"source": "Morgan Stanley", "title": "Semis weekly", "report_type": "sales_trading",
       "key_insights": ["Memory names are crowded longs, MU the most."], "market_movers": [], "earnings_insights": []}
@@ -60,6 +65,8 @@ def test_notes_are_reduced_to_the_parts_about_the_ticker():
     assert gs["insights"] == ["Micron's HBM supply is sold out for 2027."], "the oil line is not about MU"
     assert gs["trade_ideas"][0]["description"] == "Long MU into earnings"
     assert gs["published"] == "2026-09-29"
+    assert gs["data_points"] == [{"figure": "$56.3B", "metric": "MU F1Q27 revenue consensus",
+                                  "context": "JPM expects the guide above it", "figure_status": "forecast"}]
 
 
 def test_a_short_ticker_matches_as_a_word_not_a_substring():
@@ -90,6 +97,27 @@ def test_the_executor_reports_banks_and_no_data():
     assert ok["status"] == "ok" and ok["banks"] == ["Goldman Sachs"] and ok["days"] == 60
     assert none["status"] == "no_data" and "invent" in none["error"]
     assert asyncio.run(RT._execute_research({}))["status"] == "error"
+
+
+def test_the_injected_block_is_a_prose_digest_with_the_figures():
+    from discord_bot import ask_router as R
+    payload = {"status": "ok", "symbol": "MU", "days": 14, "banks": ["JPMorgan"], "notes": [{
+        "source": "JPMorgan", "title": "Afternoon Briefing", "published": "2026-09-29", "report_type": "x",
+        "calls": [{"action": "positive_catalyst_watch", "rating": "N/A", "price_target": "N/A",
+                   "rationale": "Beat vs Street and raised guidance on HBM4 demand.", "conviction": "high"}],
+        "earnings": ["MU F1Q27: Street consensus $56.3B revenue / 86.5% GM / $35.71 EPS; JPM expects a raise well above."],
+        "insights": [], "trade_ideas": [], "risks": ["Higher yields."],
+        "data_points": [{"figure": "$24B+", "metric": "Aug-Q FCF run-rate", "context": "cumulative near $200B through CY27"}],
+    }]}
+    block = R.inject_text(R.T_RESEARCH, payload)
+    assert block.startswith("[INSTITUTIONAL RESEARCH")
+    assert "JPMorgan (2026-09-29): Afternoon Briefing" in block
+    assert "earnings: MU F1Q27: Street consensus $56.3B" in block
+    assert "figure: $24B+ Aug-Q FCF run-rate (cumulative near $200B through CY27)" in block
+    assert "call: positive_catalyst_watch · high conviction. Beat vs Street" in block
+    assert "risk: Higher yields." in block and '"notes"' not in block
+    # no_data keeps the JSON form, which carries the instruction text
+    assert '"status": "no_data"' in R.inject_text(R.T_RESEARCH, {"status": "no_data", "error": "x"})
 
 
 def test_the_tool_is_declared_and_routed():

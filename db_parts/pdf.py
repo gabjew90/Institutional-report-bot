@@ -1237,7 +1237,14 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
         earnings = [str(x)[:500] for x in (a.get("earnings_insights") or []) if _about(str(x))]
         insights = [str(x)[:500] for x in (a.get("key_insights") or []) if _about(str(x))]
         risks = [str(x)[:300] for x in (a.get("risk_factors") or []) if _about(str(x))]
-        if not (movers or ideas or earnings or insights):
+        # The extracted figures about the name (a target, an estimate, a
+        # margin), the numbers a view should rest on.
+        data_points = [
+            {k: d.get(k) for k in ("figure", "metric", "context", "figure_status") if d.get(k)}
+            for d in (a.get("key_data_points") or []) if isinstance(d, dict)
+            and _about(f"{d.get('metric') or ''} {d.get('context') or ''}")
+        ]
+        if not (movers or ideas or earnings or insights or data_points):
             continue
         out.append({
             "source": a.get("source") or "",
@@ -1249,6 +1256,7 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
             "insights": insights[:3],
             "trade_ideas": ideas[:2],
             "risks": risks[:2],
+            "data_points": data_points[:4],
         })
         if len(out) >= limit:
             break
