@@ -34,7 +34,7 @@ MAX_OTHER_NOTES = 2
 TIER_ONE = ("goldman sachs", "morgan stanley", "jpmorgan", "j.p. morgan", "citi", "bofa",
             "bank of america", "deutsche bank", "ubs", "barclays")
 _DEGREE_ADVERBS = re.compile(
-    r"\b(?:perfectly|significantly|dramatically|massively|extremely|incredibly|remarkably|hugely|very)\b",
+    r"\b(?:perfectly|significantly|dramatically|massively|extremely|incredibly|remarkably|hugely)\b",
     re.I)
 
 # What in the research counts as being about each release.
@@ -172,13 +172,14 @@ def guard(bullets: list[dict], evidence: str) -> list[str]:
     for b in bullets:
         if not isinstance(b, dict):
             continue
+        # Em-dashes and semicolons are the hard voice ban. They are
+        # rewritten in the strings that ship, not in a checked copy.
         label = re.sub(r"[*:]+$", "", str(b.get("label") or "").strip())
-        text = str(b.get("text") or "").strip()
+        label = label.replace("—", ",").replace(";", ",")
+        text = str(b.get("text") or "").strip().replace("—", ",").replace(";", ",")
         if not label or not text:
             continue
         line = f"{label}: {text}"
-        if "—" in line or ";" in line:
-            line = line.replace("—", ",").replace(";", ",")
         if len(line.split()) > MAX_WORDS + 6:
             continue
         if any(p.search(line) for p, _ in pats) or _DEGREE_ADVERBS.search(line):
@@ -224,8 +225,3 @@ def generate(key: str, title: str, rows: list[dict], extras: list[str] | None = 
     return guard(bullets, evidence_text(rows, extras, research))
 
 
-def render(lines: list[str]) -> list[str]:
-    """Body lines to append under the table: a header and the bullets."""
-    if not lines:
-        return []
-    return ["", "**Quick Takeaway**", *lines]

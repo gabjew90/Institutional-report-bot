@@ -11,9 +11,10 @@ Two jobs, one module:
 1. The WATCH. On a day the ForexFactory calendar lists a supported US
    release, a scheduler job wakes just before the release time, polls
    the agency until the reference month appears (CPI on September 11
-   reports August; anything else is not the print), posts one embed
-   with actual / consensus / prior per line, and records the post so a
-   restart cannot repeat it.
+   reports August; anything else is not the print), posts one embed in
+   the owner's bullet layout (each series against its consensus, the
+   Quick Takeaway from report/print_takeaway.py, the agency source
+   line), and records the post so a restart cannot repeat it.
 2. The FEED. `enrich_rows_with_agency_actuals` fills `actual` on the
    econ-calendar rows from the same agency data, ahead of the FRED
    layer, so /ask and the pulse context carry the print as soon as it
@@ -725,7 +726,7 @@ def render_release(rows: list[dict], computed: list[str] | tuple = (), takeaway:
     series, m/m and y/y pairs on one line, short series sharing a line,
     computed lines, the Quick Takeaway, then the source citation.
     `computed` items get the bullet prepended here, while `takeaway` lines
-    arrive already bulleted (print_takeaway.render produces them)."""
+    arrive already bulleted (print_takeaway.guard produces them)."""
     if not rows:
         return []
     out: list[str] = []
@@ -776,8 +777,12 @@ def _fomc_row(parsed: dict, ff_rows: list[dict], period: str) -> dict:
             "prior": None, "prior_value": None, "verdict": verdict_}
 
 
+# The trader's verbs for a decision, shared by the body and fomc_lines.
+_FED_VERBS = {"maintain": "holds", "raise": "hikes", "lower": "cuts"}
+
+
 def fomc_lines(parsed: dict, ff_rows: list[dict]) -> list[str]:
-    verb = {"maintain": "holds", "raise": "hikes", "lower": "cuts"}.get(parsed["action"], parsed["action"])
+    verb = _FED_VERBS.get(parsed["action"], parsed["action"])
     line = f"**Fed {verb}** · target range {parsed['low']:.2f}%–{parsed['high']:.2f}%"
     cons = _ff_value(ff_rows, "FOMC Interest Rate Decision", "estimate")
     if cons is not None:
@@ -982,7 +987,7 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                     # the computed lines, then the sentences that changed
                     # since the statement the ledger kept last decision.
                     rows = [_fomc_row(parsed, ff_rows, today[:7])]
-                    computed = [f"Fed {'holds' if parsed['action'] == 'maintain' else parsed['action'] + 's'}"
+                    computed = [f"Fed {_FED_VERBS.get(parsed['action'], parsed['action'])}"
                                 + (f" · vote {parsed['vote']}" if parsed.get("vote") else "")]
                     computed += [f"Statement change: {s}" for s in
                                  statement_changes((prev or {}).get("statement", ""), parsed.get("text", ""))]

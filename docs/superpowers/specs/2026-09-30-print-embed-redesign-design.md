@@ -29,7 +29,7 @@ Body, in order:
    - two short series may share a line with ` | ` (personal income and saving rate) by giving them the same `row` key.
    Order is the spec's line order: core first, headline pair, then the extras.
 2. **Computed lines**: `• Core CPI 3-month annualized: 2.4%` (CPI, PCE core index compounded over the last three months), `• Prior month revised: +120K from +142K` (jobs, from last month's posted rows, so it appears from the second report on).
-3. **Quick Takeaway** (bold header, then `• **Label:** text` bullets) from `report/print_takeaway.py` (built 2026-09-30 in this thread): two or three bullets written by `gemini-3.1-flash-lite` from the print rows, the computed lines and the last ten days of bank research on the release, with the figure guard (every number must appear in those inputs), the voice rules, and the 60-word cap. A failed or empty takeaway is omitted; it never delays the post.
+3. **Quick Takeaway** (bold header, then `• **Label:** text` bullets) from `report/print_takeaway.py` (built 2026-09-30 in this thread): two or three bullets written by `gemini-3.1-flash-lite` from the print rows, the computed lines and the last ten days of bank research on the release, with the figure guard (every number must appear in those inputs), the voice rules, and the 60-word cap. A failed or empty takeaway is omitted. The post waits for it at most 20 seconds (`TAKEAWAY_TIMEOUT_S`), the accepted price of carrying it in the same embed.
 4. **Source line**: `Source: bea.gov (NIPA tables 2.8.4, 2.6, 2.8.6) · consensus: ForexFactory`, one per release, with the agency link in angle brackets so Discord does not unfurl it. FOMC: `Source: federalreserve.gov, FOMC statement`.
 
 Footer keeps `released 8:30 ET · <agency>`.
