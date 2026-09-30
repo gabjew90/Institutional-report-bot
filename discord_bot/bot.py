@@ -8332,6 +8332,16 @@ async def _ask_10_log_and_render(
         pass
 
     sources_footer = _build_sources_footer(grounding_metadata)
+    if not sources_footer:
+        # Tool-sourced answers name their feeds (2026-09-30): a price or
+        # an earnings date from our own data is a source too.
+        try:
+            from discord_bot import data_footer as _data_footer
+            sources_footer = _data_footer.footer(_ask_tool_trace)
+            if sources_footer:
+                _ask_meta["guards"].append("data-footer")
+        except Exception as e:
+            log.warning(f"/ask: data footer failed (non-fatal): {e}")
     # A rank never ships without the record behind it (owner,
     # 2026-09-26). Rendered from the tool payloads, not the answer, so it
     # holds whatever the model chose to mention.

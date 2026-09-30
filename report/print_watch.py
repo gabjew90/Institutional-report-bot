@@ -491,8 +491,10 @@ def _ff_value(ff_rows: list[dict], event: str, key: str) -> float | None:
     return None
 
 
-def build_lines(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: list[dict]) -> list[str]:
-    """One rendered line per series: actual, consensus, prior."""
+def build_rows(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: list[dict]) -> list[dict]:
+    """One row per series: label, formatted actual / consensus / prior
+    (consensus and prior are None when the feed has none) and the
+    verdict against consensus."""
     out = []
     for ln in spec.lines:
         actual = compute(obs_by_series.get(ln.series) or [], ln.transform, period)
@@ -500,13 +502,70 @@ def build_lines(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: li
         prior = _ff_value(ff_rows, ln.ff_event, "prev") if ln.ff_event else None
         if prior is None and ln.series:
             prior = compute(obs_by_series.get(ln.series) or [], ln.transform, month_shift(period, -1))
-        bits = [f"**{ln.label}** {_fmt(actual, ln.unit, ln.transform)}"]
-        if cons is not None:
-            bits.append(f"consensus {_fmt(cons, ln.unit, ln.transform)}")
-        if prior is not None:
-            bits.append(f"prior {_fmt(prior, ln.unit, ln.transform)}")
+        out.append({
+            "label": ln.label,
+            "actual": _fmt(actual, ln.unit, ln.transform),
+            "consensus": _fmt(cons, ln.unit, ln.transform) if cons is not None else None,
+            "prior": _fmt(prior, ln.unit, ln.transform) if prior is not None else None,
+            "verdict": verdict(actual, cons, ln.unit, ln.transform),
+        })
+    return out
+
+
+def verdict(actual: float | None, cons: float | None, unit: str, transform: str) -> str:
+    """'above' / 'below' / 'in line' against consensus at the displayed
+    precision, '' when either side is missing. Direction words only:
+    whether above is good depends on the series, and the reader knows."""
+    if actual is None or cons is None:
+        return ""
+    a, c = _fmt(actual, unit, transform), _fmt(cons, unit, transform)
+    if a == c:
+        return "in line"
+    return "above" if actual > cons else "below"
+
+
+def build_lines(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: list[dict]) -> list[str]:
+    """One rendered line per series: actual, consensus, prior. The
+    ledger's record of the print and the shape the econ tool quotes."""
+    out = []
+    for r in build_rows(spec, obs_by_series, period, ff_rows):
+        bits = [f"**{r['label']}** {r['actual']}"]
+        if r["consensus"] is not None:
+            bits.append(f"consensus {r['consensus']}")
+        if r["prior"] is not None:
+            bits.append(f"prior {r['prior']}")
         out.append(" · ".join(bits))
     return out
+
+
+def render_release(rows: list[dict]) -> list[str]:
+    """The embed body (owner, 2026-09-30: clearer than the one-line-per-
+    series list). A bold headline sentence for the first series that has
+    a consensus (else the first series), then a monospace table so the
+    actual, consensus and prior columns line up, with the verdict at the
+    end of each row that has one."""
+    if not rows:
+        return []
+    lead = next((r for r in rows if r["consensus"] is not None), rows[0])
+    if lead["consensus"] is not None:
+        head = (f"**{lead['label']} {lead['actual']}** vs {lead['consensus']} consensus, "
+                f"{lead['verdict']}")
+    else:
+        head = f"**{lead['label']} {lead['actual']}**"
+        if lead["prior"] is not None:
+            head += f" (prior {lead['prior']})"
+    dash = "-"          # no consensus or prior in the feed
+    w_label = max(len(r["label"]) for r in rows)
+    cols = ("actual", "consensus", "prior")
+    widths = {c: max(len(c), *(len(r[c] or dash) for r in rows)) for c in cols}
+    table = [" " * w_label + "  " + "  ".join(c.rjust(widths[c]) for c in cols)]
+    for r in rows:
+        cells = "  ".join((r[c] or dash).rjust(widths[c]) for c in cols)
+        line = f"{r['label'].ljust(w_label)}  {cells}"
+        if r["verdict"]:
+            line += f"  {r['verdict']}"
+        table.append(line)
+    return [head, "```", *table, "```"]
 
 
 def fomc_lines(parsed: dict, ff_rows: list[dict]) -> list[str]:
@@ -574,6 +633,14 @@ def alert_channel_ids() -> list[int]:
     return out
 
 
+# The /ask embeds' green (discord_bot.bot._build_ask_embeds), so a print
+# reads as the bot's own data post (owner, 2026-09-30).
+EMBED_COLOR = 0x228B22
+# Every release the watch posts is a Tier-1 print (CPI, jobs, PCE, FOMC),
+# so each one pings the room (owner, 2026-09-30).
+MENTION_EVERYONE = True
+
+
 async def _post(bot, title: str, lines: list[str], footer: str) -> bool:
     """Post the same embed to every alert channel at once. True when at
     least one channel took it; the ledger then marks the print posted."""
@@ -582,16 +649,21 @@ async def _post(bot, title: str, lines: list[str], footer: str) -> bool:
     cids = alert_channel_ids()
     if not cids:
         return False
-    embed = discord.Embed(title=title, description="\n".join(lines), color=0xE5A93F)
+    embed = discord.Embed(title=title, description="\n".join(lines), color=EMBED_COLOR)
     embed.set_footer(text=footer)
+    send_kw: dict = {}
+    if MENTION_EVERYONE:
+        send_kw = {"content": "@everyone",
+                   "allowed_mentions": discord.AllowedMentions(everyone=True)}
 
     async def _one(cid: int) -> bool:
         try:
             channel = bot.get_channel(cid)
             if channel is None:
                 channel = await bot.fetch_channel(cid)
-            ok, err = await _send_with_retry(lambda emb=embed: channel.send(embed=emb),
-                                             label=f"print-watch {title} -> {cid}")
+            ok, err = await _send_with_retry(
+                lambda emb=embed: channel.send(embed=emb, **send_kw),
+                label=f"print-watch {title} -> {cid}")
         except Exception as e:
             ok, err = False, str(e)
         if not ok:
@@ -656,10 +728,12 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                     obs = await asyncio.to_thread(fetch_observations, spec.lines, force=True)
                     if not release_ready(spec, obs, period):
                         continue
+                    rows = build_rows(spec, obs, period, ff_rows)
                     lines = build_lines(spec, obs, period, ff_rows)
+                    body = render_release(rows)
                     title = f"{spec.title} · {period_label(period)}"
                 footer = f"released {release_et} ET · {spec.agency} · consensus and prior from the calendar feed"
-                if await _post(bot, title, lines, footer):
+                if await _post(bot, title, body if spec.key != "fomc" else lines, footer):
                     mark_posted(today, spec.key, lines)
                     log.info(f"print-watch: posted {spec.key} for {period}")
                 pending.remove(spec)
