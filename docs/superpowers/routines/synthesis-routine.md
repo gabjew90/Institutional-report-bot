@@ -18,7 +18,7 @@ Daily Market Pulse synthesis using GitHub as the message bus. **PRODUCTION RUN**
 
 Pipeline stages in this fire:
 
-0. **Omnipulse gate** (STEP 2.4): on an omnipulse day the Omnipulse supplies MAIN EVENT and BRIEFS, adjudication is skipped, and the steps below write and check RECAP and WHAT TO WATCH around it.
+0. **Omnipulse gate** (STEP 2.4): on an omnipulse day the Omnipulse supplies MAIN EVENT and BRIEFS, adjudication is skipped, and the steps below write and check RECAP and WHAT TO WATCH around it. On a light day (no usable Omnipulse, `MISS_DAY = "light"`) a one-paragraph note stands in for the body and the same steps apply.
 1. **Adjudicate** the top themes via parallel sub-agents. Each sub-agent sees only one theme's evidence and emits structured JSON. Lint rejects any sub-agent output that fabricates evidence quotes, bank attributions, or stance counts.
 2. **DRAFT** the analytical pulse from research analyses + the adjudicated themes block.
 3. **STITCH + EDIT** the draft (mechanical normalization + AUDIT sub-agent fresh-eyes editorial pass).
@@ -589,8 +589,12 @@ The gate waits up to 10 minutes for today's Omnipulse. It runs before STEP 2.5 s
   instruction below exactly as for OMNIPULSE, with two differences: write
   the H1 yourself from the live tape (there is no supplied headline), and
   write `## _LEANS` from desk calls in the research as on a classic day.
-  Do not try the backup route, the driver already did the waiting.
-  `/tmp/light_reason.txt` says why.
+  If the detail begins `fetch error`, the Omnipulse may exist and only the
+  download failed: try the backup route ONCE exactly as the CLASSIC
+  `fetch error` bullet below describes, then act on the new token (the
+  `--from` run returns OMNIPULSE when the copy is good and LIGHT again when
+  it is not). For any other detail do not try the backup route. The driver
+  already did the waiting. `/tmp/light_reason.txt` says why.
 - **`DECISION: CLASSIC` with detail `switch off` or `not usable`** — run
   the routine exactly as written, ignoring the omnipulse-day instructions.
 - **`DECISION: CLASSIC` with detail `not published` or `fetch error`** —
@@ -1472,8 +1476,9 @@ evidence supports):
 `/tmp/omnipulse_body.md` where marked, to the DRAFT input:
 
 ```
-OMNIPULSE DAY. THE MAIN EVENT and BRIEFS are already written; they are
-below. Do not write themes of your own and do not edit these.
+OMNIPULSE DAY. The INSIGHTS body is already written and appears below (on
+an omnipulse day it is THE MAIN EVENT and BRIEFS, on a light day it is a
+single note). Do not write themes of your own and do not edit these.
 - Under `## 2. INSIGHTS & ALPHA` write exactly one line: <<OMNIPULSE_BODY>>
 - Write `## 1. RECAP` and `## 3. WHAT TO WATCH` as usual. Do not repeat
   the supplied themes' analysis there.
@@ -1943,7 +1948,7 @@ except FileNotFoundError:
 frontmatter_lines.append(f'body_source: {_mode}')
 if _mode == 'light':
     try:
-        _why = open('/tmp/light_reason.txt').read().strip().replace('\n', ' ')[:200]
+        _why = open('/tmp/light_reason.txt', encoding='utf-8').read().strip().replace('\n', ' ')[:200]
     except FileNotFoundError:
         _why = ''
     if _why:
