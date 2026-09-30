@@ -211,7 +211,7 @@ def extract_tickers(text: str, *, lowercase: bool = True,
     # earnings", "explain pltr death"). With no cashtag and no uppercase
     # token, take the 2-5 letter word that follows a lead-in verb, unless
     # it is an English word we know.
-    for m in _LOWER_LEADIN_RE.finditer(text):
+    for m in list(_LOWER_LEADIN_RE.finditer(text)) + list(_LOWER_TRAILING_RE.finditer(text)):
         t = m.group(1).upper()
         if t in _NOT_TICKERS or t.lower() in _COMMON_WORDS:
             continue
@@ -227,6 +227,11 @@ _LOWER_LEADIN_RE = re.compile(
     r"\b(?:why\s+(?:is|are|did|was)|explain|what(?:'s|s| is)|how(?:'s|s| is)|is|odds|off|about|on|in"
     r"|think\s+(?:of|about)|thoughts?\s+on|(?:bullish|bearish)\s+on|(?:take|view|read)\s+on)\s+"
     r"(?:the\s+)?([a-z]{2,5})\b", re.I)
+# "mu thoughts?" / "mu bull or bear?": the ticker precedes the view word,
+# which closes the question. Shared with _trailing_view so the uppercase
+# and lowercase paths accept the same phrasings.
+_TRAILING_VIEW = r"(?:thoughts|bull\s+or\s+bear|long\s+or\s+short)[?!.]*\s*$"
+_LOWER_TRAILING_RE = re.compile(r"\b([a-z]{2,5})\s+" + _TRAILING_VIEW, re.I)
 _COMMON_WORDS = {
     "the", "market", "gold", "oil", "this", "that", "it", "he", "she", "they", "we", "my",
     "our", "your", "his", "her", "abe", "kyle", "bk", "jamal", "room", "fed", "rate", "rates",
@@ -253,6 +258,10 @@ _COMMON_WORDS = {
     "again", "after", "before", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug",
     "sep", "sept", "oct", "nov", "dec", "march", "april", "june", "july", "cpi", "pce",
     "gdp", "nfp", "ppi", "ism", "fomc", "eps", "ath", "ytd", "vs", "per", "like",
+    # 2026-09-30 review: adjectives that precede a trailing "thoughts?"
+    # ("quick thoughts?", "bear thoughts") are not tickers.
+    "quick", "bear", "bull", "bears", "bulls", "final", "honest", "other", "early",
+    "wild", "crazy", "nice", "few", "two", "three", "ur", "yall", "hot", "fresh",
 }
 
 
@@ -481,6 +490,16 @@ _OPINION_RE = re.compile(
     r"|how\s+(?:do|does|will)\s+\S+\s+(?:do|hold\s+up|fare|trade)\s+(?:into|on|after)\s+earnings)\b", re.I)
 
 
+def _trailing_view(q: str, tickers: list[str]) -> str | None:
+    """The ticker that directly precedes a closing view word ("MU
+    thoughts?", "$MU bull or bear?"), or None. Tied to the ticker so a
+    price question that happens to end in "thoughts?" is not claimed."""
+    for t in tickers:
+        if re.search(r"(?<![A-Za-z])\$?" + re.escape(t) + r"\s+" + _TRAILING_VIEW, q, re.I):
+            return t
+    return None
+
+
 def _last_line(question: str) -> str:
     """The actual ask: after any reply/verbatim context blocks."""
     q = (question or "").strip()
@@ -549,9 +568,10 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         sym = tickers[0] if tickers else re.search(r"\b(spy|qqq|iwm)\b", ql).group(1).upper()
         r.prefetch = [(T_CHAIN, {"symbol": sym})]
         return r
-    if _OPINION_RE.search(q) and tickers:
+    trailing = _trailing_view(q, tickers) if tickers else None
+    if tickers and (_OPINION_RE.search(q) or trailing):
         r.shape, r.reason = TICKER_OPINION, "view words + ticker"
-        sym = tickers[0]
+        sym = trailing or tickers[0]
         r.prefetch = [(T_RESEARCH, {"symbol": sym, "days": 14}),
                       (T_PRICE, {"symbols": [price_symbol(sym)]})]
         if re.search(r"\b(?:earnings|print|report|er)\b", ql):

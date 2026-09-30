@@ -69,6 +69,16 @@ CASES = [
     ("bullish on $CRWV?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
     ("should i buy PLTR here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
     ("what do you think of mu", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("what your thoughts on MU", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("MU thoughts?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("MU thoughts??", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("mu thoughts", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("$MU bull or bear?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    # a trailing "thoughts?" is tied to the ticker before it
+    ("market thoughts?", R.UNKNOWN, []),
+    ("quick thoughts?", R.UNKNOWN, []),
+    ("bear thoughts", R.UNKNOWN, []),
+    ("whats MU at, thoughts?", R.PRICE, [R.T_PRICE]),
     ("what do you think of gold", R.UNKNOWN, []),      # a word, not Barrick
     # not opinions: a price read, a profile, a room read
     ("how is MU looking", R.PRICE, [R.T_PRICE]),
