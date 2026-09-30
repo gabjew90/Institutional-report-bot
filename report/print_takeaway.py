@@ -30,6 +30,12 @@ MAX_BULLETS = 3
 MAX_WORDS = 60
 RESEARCH_DAYS = 10
 RESEARCH_NOTES = 10
+MAX_OTHER_NOTES = 2
+TIER_ONE = ("goldman sachs", "morgan stanley", "jpmorgan", "j.p. morgan", "citi", "bofa",
+            "bank of america", "deutsche bank", "ubs", "barclays")
+_DEGREE_ADVERBS = re.compile(
+    r"\b(?:perfectly|significantly|dramatically|massively|extremely|incredibly|remarkably|hugely|very)\b",
+    re.I)
 
 # What in the research counts as being about each release.
 RESEARCH_TERMS = {
@@ -40,10 +46,12 @@ RESEARCH_TERMS = {
 }
 
 
-def research_for_release(key: str, days: int = RESEARCH_DAYS, limit: int = RESEARCH_NOTES) -> list[dict]:
+def research_for_release(key: str, days: int = RESEARCH_DAYS, limit: int = RESEARCH_NOTES,
+                         period: str = "") -> list[dict]:
     """Bank notes from the last `days` that mention the release: the
     matching macro_indicators (with their released/forecast status) and
-    key_insights, newest first, one entry per PDF. Never raises."""
+    key_insights, one entry per PDF, ranked by reduce_research (`period`
+    is the month name of the release). Never raises."""
     import db
     pat = RESEARCH_TERMS.get(key)
     if not pat:
@@ -61,11 +69,24 @@ def research_for_release(key: str, days: int = RESEARCH_DAYS, limit: int = RESEA
         log.warning(f"print takeaway: research query failed: {e}")
         return []
     return reduce_research(
-        [(r["created_at"], r["analysis_json"]) for r in rows], rx, limit)
+        [(r["created_at"], r["analysis_json"]) for r in rows], rx, limit, period)
 
 
-def reduce_research(rows: list[tuple[str, str]], rx: re.Pattern, limit: int) -> list[dict]:
-    out: list[dict] = []
+def _tier(source: str) -> int:
+    """0 for the big-bank desks, 1 for everyone else."""
+    s = (source or "").lower()
+    return 0 if any(re.search(rf"\b{re.escape(t)}", s) for t in TIER_ONE) else 1
+
+
+def reduce_research(rows: list[tuple[str, str]], rx: re.Pattern, limit: int,
+                    period: str = "") -> list[dict]:
+    """One entry per PDF, ranked: tier-1 banks first, and within a tier the
+    notes with a forecast for `period` (the month name the extraction
+    stores, like "August") ahead of the rest. At most MAX_OTHER_NOTES
+    notes from outside tier 1 are kept so a gold council or a regional
+    bank cannot crowd out the desks. The sort is stable, so ties keep
+    the newest-first order the rows arrive in."""
+    found: list[dict] = []
     for created_at, raw in rows:
         try:
             a = json.loads(raw or "{}")
@@ -79,13 +100,28 @@ def reduce_research(rows: list[tuple[str, str]], rx: re.Pattern, limit: int) -> 
         insights = [str(s)[:300] for s in (a.get("key_insights") or []) if rx.search(str(s))]
         if not (macro or insights):
             continue
-        out.append({
+        found.append({
             "source": a.get("source") or "",
             "title": (a.get("title") or "")[:120],
             "published": (a.get("published_at") or created_at or "")[:10],
             "macro": macro[:3],
             "insights": insights[:3],
         })
+
+    def same_period(n: dict) -> bool:
+        return bool(period) and any(
+            m.get("status") == "forecast" and period.lower() in str(m.get("period") or "").lower()
+            for m in n["macro"])
+
+    found.sort(key=lambda n: (_tier(n["source"]), 0 if same_period(n) else 1))
+    out: list[dict] = []
+    others = 0
+    for n in found:
+        if _tier(n["source"]) == 1:
+            if others >= MAX_OTHER_NOTES:
+                continue
+            others += 1
+        out.append(n)
         if len(out) >= limit:
             break
     return out
@@ -102,11 +138,16 @@ SYSTEM = (
     "words, like 'Disinflation in play' or 'The caveat') followed by one or two "
     "sentences, under 60 words. Say what the numbers mean and how they compare with "
     "what the banks expected. Attribute every bank view to the bank by name.\n\n"
+    "Each bullet makes one point a trader can act on or check: what changed versus "
+    "expectation, what it implies for the next Fed decision or for the series next "
+    "month, and which bank said so. If a bullet only restates a number from the "
+    "table, drop it.\n\n"
     "Hard rules: every number you write must appear in DATA or RESEARCH, and if a "
     "figure is not there you do not state it. No trade recommendations. No "
     "prediction of the market reaction unless a named bank made it. No em-dashes, "
-    "no semicolons, no words like crucial, pivotal, robust, notably. Do not repeat "
-    "the table.\n\n"
+    "no semicolons, no words like crucial, pivotal, robust, notably. No adverbs of "
+    "degree (perfectly, significantly, dramatically): say the number and the gap "
+    "instead. The room's own chat is never an input. Do not repeat the table.\n\n"
     "Return JSON only: {\"bullets\": [{\"label\": str, \"text\": str}]}"
 )
 
@@ -140,7 +181,7 @@ def guard(bullets: list[dict], evidence: str) -> list[str]:
             line = line.replace("—", ",").replace(";", ",")
         if len(line.split()) > MAX_WORDS + 6:
             continue
-        if any(p.search(line) for p, _ in pats):
+        if any(p.search(line) for p, _ in pats) or _DEGREE_ADVERBS.search(line):
             continue
         _figs, missing = fp.unsourced_figures(line, evidence)
         if missing:
@@ -153,13 +194,15 @@ def guard(bullets: list[dict], evidence: str) -> list[str]:
 
 
 def generate(key: str, title: str, rows: list[dict], extras: list[str] | None = None,
-             research: list[dict] | None = None, client=None, model: str | None = None) -> list[str]:
-    """The rendered takeaway lines, or [] when nothing usable came back."""
+             research: list[dict] | None = None, client=None, model: str | None = None,
+             period: str = "") -> list[str]:
+    """The rendered takeaway lines, or [] when nothing usable came back.
+    `period` is the release's month name, used to rank the research."""
     from google.genai import types
     from config import settings
     extras = extras or []
     if research is None:
-        research = research_for_release(key)
+        research = research_for_release(key, period=period)
     try:
         if client is None:
             from ai_analysis.usage_ledger import make_client

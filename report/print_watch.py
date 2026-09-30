@@ -856,13 +856,16 @@ MAX_WAIT_S_BY_AGENCY = {"BEA": 30 * 60}
 TAKEAWAY_TIMEOUT_S = 20
 
 
-def _takeaway_lines(key: str, title: str, rows: list[dict], computed: list[str]) -> list[str]:
+def _takeaway_lines(key: str, title: str, rows: list[dict], computed: list[str],
+                    period: str = "") -> list[str]:
     """The Quick Takeaway bullets, or [] on any failure. Runs in a thread.
     Only the bullets: render_release adds the header, so the module that
-    knows the body layout owns it and it appears once."""
+    knows the body layout owns it and it appears once. `period` is the
+    release's YYYY-MM, turned into the month name banks' notes carry."""
     try:
         from report import print_takeaway
-        return print_takeaway.generate(key, title, rows, computed)
+        month = period_label(period).split()[0] if period else ""
+        return print_takeaway.generate(key, title, rows, computed, period=month)
     except Exception as e:
         log.warning(f"print-watch: takeaway skipped ({e})")
         return []
@@ -1003,7 +1006,8 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                     statement = None
                 try:
                     takeaway = await asyncio.wait_for(
-                        asyncio.to_thread(_takeaway_lines, spec.key, title, rows, computed),
+                        asyncio.to_thread(_takeaway_lines, spec.key, title, rows, computed,
+                                          today[:7] if spec.key == "fomc" else period),
                         timeout=TAKEAWAY_TIMEOUT_S)
                 except asyncio.TimeoutError:
                     log.warning(f"print-watch: takeaway for {spec.key} took over {TAKEAWAY_TIMEOUT_S}s, posting without it")

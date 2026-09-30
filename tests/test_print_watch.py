@@ -255,8 +255,8 @@ def test_job_puts_the_takeaway_under_the_numbers_once():
     assert "**Quick Takeaway**" in desc
     assert desc.count("**Quick Takeaway**") == 1
     assert desc.index("3.4% YoY") < desc.index("**Quick Takeaway**") < desc.index("• **X:** y") < desc.index("Source: bls.gov")
-    key, title, rows, computed = tk.call_args.args
-    assert key == "cpi" and title == "August CPI Inflation Print"
+    key, title, rows, computed, period = tk.call_args.args
+    assert key == "cpi" and title == "August CPI Inflation Print" and period == "2026-08"
     assert [r["label"] for r in rows][:2] == ["Core CPI m/m", "Core CPI y/y"]
     assert any(c.startswith("Core CPI 3-month annualized:") for c in computed), computed
 
