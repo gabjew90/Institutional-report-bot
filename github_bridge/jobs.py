@@ -600,11 +600,14 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 leans = parse_lean_block(markdown)
                 lean_source = "block"
                 if not leans:
-                    log.warning(
-                        "Bridge: pulse has no parseable ## _LEANS block — "
-                        "rendering board with HC calls only (the DRAFT "
-                        "validator should have caught this)."
-                    )
+                    if (meta.get("body_source") or "").strip() == "light":
+                        log.info("Bridge: light pulse, no leans rows (expected)")
+                    else:
+                        log.warning(
+                            "Bridge: pulse has no parseable ## _LEANS block — "
+                            "rendering board with HC calls only (the DRAFT "
+                            "validator should have caught this)."
+                        )
                 flips = db.upsert_pulse_leans(today, leans)
                 flip_instruments = {
                     (f.get("instrument") or "").upper() for f in flips

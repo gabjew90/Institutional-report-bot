@@ -589,12 +589,14 @@ The gate waits up to 10 minutes for today's Omnipulse. It runs before STEP 2.5 s
   instruction below exactly as for OMNIPULSE, with two differences: write
   the H1 yourself from the live tape (there is no supplied headline), and
   write `## _LEANS` from desk calls in the research as on a classic day.
-  If the detail begins `fetch error`, the Omnipulse may exist and only the
-  download failed: try the backup route ONCE exactly as the CLASSIC
-  `fetch error` bullet below describes, then act on the new token (the
-  `--from` run returns OMNIPULSE when the copy is good and LIGHT again when
-  it is not). For any other detail do not try the backup route. The driver
-  already did the waiting. `/tmp/light_reason.txt` says why.
+  If the detail begins `not published` or `fetch error`, the Omnipulse may
+  exist and only the download failed (a token-rejected 404 on the raw host
+  looks like `not published` while the MCP read can still see the file):
+  try the backup route ONCE exactly as the CLASSIC bullet below describes,
+  then act on the new token (the `--from` run returns OMNIPULSE when the
+  copy is good and LIGHT again when it is not). For any other detail do not
+  try the backup route. The driver already did the waiting.
+  `/tmp/light_reason.txt` says why.
 - **`DECISION: CLASSIC` with detail `switch off` or `not usable`** — run
   the routine exactly as written, ignoring the omnipulse-day instructions.
 - **`DECISION: CLASSIC` with detail `not published` or `fetch error`** —

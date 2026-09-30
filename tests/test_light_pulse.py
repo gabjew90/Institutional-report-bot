@@ -34,6 +34,27 @@ def test_the_splitter_leaves_a_theme_less_body_alone():
     assert split_main_event_briefs(md) == md
 
 
+def test_strip_and_lean_parse_accept_the_light_document():
+    from report.pulse_sections import parse_lean_block, strip_lean_block
+    md = _light_md()
+    assert "## _LEANS" in md
+    assert isinstance(parse_lean_block(md), list)
+    stripped = strip_lean_block(md)
+    assert "## _LEANS" not in stripped
+    assert O.LIGHT_BODY_NOTE in stripped
+
+
+def test_the_internal_notes_strip_keeps_the_note_and_drops_the_draft_notes(tmp_path):
+    doc = tmp_path / "light.md"
+    doc.write_text(_light_md(), encoding="utf-8")
+    code, out = _run("scripts/pulse_strip_internal_notes.py", str(doc))
+    assert code == 0, out
+    result = doc.read_text(encoding="utf-8")
+    assert O.LIGHT_BODY_NOTE in result
+    assert "## 3. WHAT TO WATCH" in result
+    assert "## _DRAFT" not in result
+
+
 def test_the_formatter_renders_the_note_as_a_section_embed():
     from report.formatter import format_report_embeds
     from report.models import DailyReport

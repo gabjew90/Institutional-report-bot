@@ -47,7 +47,7 @@ Every consumer that reads the INSIGHTS section must accept a section with no `##
 | `report/formatter.py` | One embed per section, color by header keyword | The INSIGHTS header keeps its legacy blue; the note renders as one short embed between RECAP and TRADE BOARD |
 | `github_bridge/jobs.py` post sanity check | Refuses an archive whose INSIGHTS or WATCH header is missing or empty | The light pulse has both headers with text, so it passes; covered by a test |
 | `scripts/pulse_dashboard.py :: render_pulse_fragment` | Emits `.insights-body` with theme markup | Emits `.insights-body` holding the note paragraph, same class hooks (the dashboard repo's CSS is unchanged) |
-| `scripts/pulse_leans.py` | Parses `_LEANS` rows | Zero rows is a normal result, not an error |
+| `report/pulse_sections.py :: parse_lean_block`, and the bridge (`github_bridge/jobs.py`, the `_LEANS` handling in the post job) | Parses `_LEANS` rows | Zero rows is a normal result, not an error |
 | `scripts/pulse_draft_validate.py`, `pulse_lint.py` | Theme-count, section-length and theme-choice checks | Under `--omnipulse` (which LIGHT reuses) the theme-choice kinds are already exempt; section-length is soft and skips a section with no themes |
 | `pulse_driver.py preflight` | Verifies the saved body is intact in final.md | Same check against the light body |
 

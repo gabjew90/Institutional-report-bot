@@ -516,8 +516,8 @@ In STEP 2.4, after the `DECISION: OMNIPULSE` bullet, add:
   "omnipulse day" instruction below exactly as for OMNIPULSE, with two
   differences: write the H1 yourself from the live tape (there is no
   supplied headline), and write `## _LEANS` from desk calls in the
-  research as on a classic day. Do not try the backup route; the driver
-  already did the waiting. `/tmp/light_reason.txt` says why.
+  research as on a classic day. `/tmp/light_reason.txt` says why.
+  (Superseded: the shipped bullet tries the backup route once on a not published or fetch error detail.)
 ```
 
 In the DRAFT omnipulse-day block (the fenced text starting `OMNIPULSE DAY.`), add after the `_LEANS` bullet:
