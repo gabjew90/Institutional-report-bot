@@ -60,7 +60,9 @@ def test_a_missing_reference_month_is_not_ready_and_computes_nothing():
 
 def test_fomc_statement_parses_range_action_and_vote():
     p = PW.parse_fomc_statement(FOMC_HTML)
+    text = p.pop("text")
     assert p == {"action": "maintain", "low": 3.5, "high": 3.75, "vote": "9-3"}, p
+    assert "target range for the federal funds rate" in text and "<" not in text, "cleaned statement text rides along"
     hike = "The Committee decided to raise the target range for the federal funds rate by 1/4 percentage point to 3-3/4 to 4 percent."
     assert PW.parse_fomc_statement(hike)["action"] == "raise"
     assert PW.parse_fomc_statement(hike)["high"] == 4.0
@@ -138,6 +140,7 @@ def test_job_posts_once_and_records_it():
          patch("config.settings.print_alert_channel_id", "123"), \
          patch("report.print_watch._ff_rows_for_day", return_value=FF), \
          patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)), \
+         patch("report.print_watch._takeaway_lines", return_value=[]), \
          patch("report.print_watch.datetime") as dt:
         from datetime import datetime as real
         fixed = real(2026, 9, 11, 8, 31, tzinfo=PW._ET)
@@ -147,11 +150,58 @@ def test_job_posts_once_and_records_it():
         dt.fromisoformat = real.fromisoformat
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1
-        assert sent[0].title == "CPI · August 2026"
+        assert sent[0].title == "August CPI Inflation Print"
         # bullet body since 2026-09-30 (tests/test_print_watch_format.py has the layout)
         assert "Headline CPI" in sent[0].description and "3.4% YoY" in sent[0].description
+        assert "Source: bls.gov" in sent[0].description
+        assert "**Quick Takeaway**" not in sent[0].description, "no header without bullets"
+        assert sent[0].footer.text == "released 08:30 ET · BLS"
+        ledger = json.loads((Path(td) / "print-alerts" / "2026-09-11.json").read_text(encoding="utf-8"))
+        assert ledger["cpi"]["rows"][0]["label"] == "Core CPI m/m"
+        assert ledger["cpi"]["rows"][0]["period"] == "2026-08"
+        assert ledger["cpi"]["rows"][0]["actual_value"] == 0.3
+        assert ledger["cpi"]["lines"] == sent[0].description.split("\n")
+        assert "statement" not in ledger["cpi"]
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1, "second run must not repost"
+
+
+def test_job_puts_the_takeaway_under_the_numbers_once():
+    """The takeaway bullets come from print_takeaway.generate and
+    render_release adds the header, so the header appears exactly once."""
+    sent = []
+
+    class _Chan:
+        async def send(self, embed=None, **kw):
+            sent.append(embed)
+            return object()
+
+    class _Bot:
+        def get_channel(self, cid):
+            return _Chan()
+
+    with tempfile.TemporaryDirectory() as td, \
+         patch("config.settings.db_path", str(Path(td) / "reports.db")), \
+         patch("config.settings.print_alert_channel_id", "123"), \
+         patch("report.print_watch._ff_rows_for_day", return_value=FF), \
+         patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)), \
+         patch("report.print_watch._takeaway_lines", return_value=["• **X:** y"]) as tk, \
+         patch("report.print_watch.datetime") as dt:
+        from datetime import datetime as real
+        dt.now.return_value = real(2026, 9, 11, 8, 31, tzinfo=PW._ET)
+        dt.utcnow.return_value = real(2026, 9, 11, 12, 31)
+        dt.strptime = real.strptime
+        dt.fromisoformat = real.fromisoformat
+        asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
+    assert len(sent) == 1
+    desc = sent[0].description
+    assert "**Quick Takeaway**" in desc
+    assert desc.count("**Quick Takeaway**") == 1
+    assert desc.index("3.4% YoY") < desc.index("**Quick Takeaway**") < desc.index("• **X:** y") < desc.index("Source: bls.gov")
+    key, title, rows, computed = tk.call_args.args
+    assert key == "cpi" and title == "August CPI Inflation Print"
+    assert [r["label"] for r in rows][:2] == ["Core CPI m/m", "Core CPI y/y"]
+    assert any(c.startswith("Core CPI 3-month annualized:") for c in computed), computed
 
 
 def test_the_print_goes_to_every_alert_channel_and_one_failure_does_not_block_the_rest():
@@ -174,7 +224,14 @@ def test_the_print_goes_to_every_alert_channel_and_one_failure_does_not_block_th
         def get_channel(self, cid):
             return _Chan(cid)
 
-    with tempfile.TemporaryDirectory() as td,          patch("config.settings.db_path", str(Path(td) / "reports.db")),          patch("config.settings.print_alert_channel_id", "123, 456,999,123"),          patch("report.print_watch._ff_rows_for_day", return_value=FF),          patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)),          patch("discord_bot.sender._RETRY_SLEEP_S", 0, create=True),          patch("report.print_watch.datetime") as dt:
+    with tempfile.TemporaryDirectory() as td, \
+         patch("config.settings.db_path", str(Path(td) / "reports.db")), \
+         patch("config.settings.print_alert_channel_id", "123, 456,999,123"), \
+         patch("report.print_watch._ff_rows_for_day", return_value=FF), \
+         patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)), \
+         patch("report.print_watch._takeaway_lines", return_value=[]), \
+         patch("discord_bot.sender._RETRY_SLEEP_S", 0, create=True), \
+         patch("report.print_watch.datetime") as dt:
         from datetime import datetime as real
         fixed = real(2026, 9, 11, 8, 31, tzinfo=PW._ET)
         dt.now.return_value = fixed
@@ -347,3 +404,33 @@ def test_a_scheduled_release_with_no_key_pings_ops_before_it_is_missed():
         dt.now.return_value = _real(2026, 9, 30, 8, 29, tzinfo=PW._ET)
         asyncio.run(PW.print_watch_job(bot=object(), release_et="08:30"))
     assert any("PCE" in t and "key is not set" in t for t in sent), sent
+
+
+# --- the ledger remembers the print, the next print compares (2026-09-30) ---
+def test_ledger_keeps_rows_and_statement_and_finds_the_previous_post():
+    with tempfile.TemporaryDirectory() as td, patch("config.settings.db_path", str(Path(td) / "reports.db")):
+        PW.mark_posted("2026-09-11", "cpi", ["x"], rows=[{"label": "CPI m/m", "actual_value": 0.4}])
+        PW.mark_posted("2026-09-17", "fomc", ["y"], statement="The Committee decided to maintain.")
+        assert PW.previous_post("cpi", before="2026-10-15")["rows"][0]["actual_value"] == 0.4
+        assert PW.previous_post("cpi", before="2026-09-11") is None, "same day is not previous"
+        assert PW.previous_post("fomc", before="2026-10-29")["statement"].startswith("The Committee")
+        assert PW.previous_post("pce", before="2026-10-29") is None
+
+
+def test_revision_line_compares_last_months_posted_payrolls_with_the_new_vintage():
+    obs = PW.parse_bls(BLS)          # August +162K; July is whatever the payload now says
+    july_now = PW.compute(obs["CES0000000001"], "m_change_k", "2026-07")
+    prev = {"rows": [{"label": "Non Farm Payrolls", "actual_value": july_now + 20, "period": "2026-07"}]}
+    line = PW.revision_line(PW.JOBS, obs, "2026-08", prev)
+    assert line == f"Prior month revised: {PW._fmt(july_now, 'K', 'm_change_k')} from {PW._fmt(july_now + 20, 'K', 'm_change_k')}"
+    same = {"rows": [{"label": "Non Farm Payrolls", "actual_value": july_now, "period": "2026-07"}]}
+    assert PW.revision_line(PW.JOBS, obs, "2026-08", same) == ""
+    assert PW.revision_line(PW.JOBS, obs, "2026-08", None) == ""
+
+
+def test_statement_changes_list_the_sentences_that_moved():
+    prev = "The Committee decided to maintain the target range. Inflation remains elevated. Job gains have been solid."
+    cur = "The Committee decided to maintain the target range. Inflation has eased somewhat. Job gains have been solid. The Committee will monitor carefully."
+    changes = PW.statement_changes(prev, cur)
+    assert changes == ["Inflation has eased somewhat.", "The Committee will monitor carefully."]
+    assert PW.statement_changes("", cur) == [] and PW.statement_changes(cur, cur) == []

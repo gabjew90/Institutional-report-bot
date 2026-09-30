@@ -127,7 +127,9 @@ def test_the_post_is_green_and_pings_everyone():
     assert kw["allowed_mentions"].everyone is True
 
 
-def test_the_job_posts_the_bullet_body_and_records_the_plain_lines():
+def test_the_job_posts_the_bullet_body_and_records_it_with_the_rows():
+    """Since the ledger redesign (2026-09-30, Task 3) the ledger keeps the
+    body as posted plus the rows with numeric actuals, not build_lines."""
     sent = []
 
     class _Chan:
@@ -144,6 +146,7 @@ def test_the_job_posts_the_bullet_body_and_records_the_plain_lines():
          patch("config.settings.print_alert_channel_id", "123"), \
          patch("report.print_watch._ff_rows_for_day", return_value=FF), \
          patch("report.print_watch.fetch_bls", return_value=PW.parse_bls(BLS)), \
+         patch("report.print_watch._takeaway_lines", return_value=[]), \
          patch("report.print_watch.datetime") as dt:
         from datetime import datetime as real
         dt.now.return_value = real(2026, 9, 11, 8, 31, tzinfo=PW._ET)
@@ -154,5 +157,8 @@ def test_the_job_posts_the_bullet_body_and_records_the_plain_lines():
         assert len(sent) == 1
         desc = sent[0].description
         assert desc.startswith("• Core CPI (MoM): +0.3% (vs. +0.2% exp, above)")
+        assert "• Core CPI 3-month annualized:" in desc
         ledger = json.loads((Path(td) / "print-alerts" / "2026-09-11.json").read_text(encoding="utf-8"))
-        assert ledger["cpi"]["lines"][0].startswith("**Core CPI m/m** +0.3%")
+        assert ledger["cpi"]["lines"][0].startswith("• Core CPI (MoM): +0.3%")
+        assert [r["label"] for r in ledger["cpi"]["rows"]] == ["Core CPI m/m", "Core CPI y/y", "CPI m/m", "CPI y/y"]
+        assert ledger["cpi"]["rows"][2] == {"label": "CPI m/m", "actual_value": 0.4, "period": "2026-08"}

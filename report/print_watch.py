@@ -34,7 +34,6 @@ import asyncio
 import html as _html
 import json
 import logging
-import os
 import re
 import urllib.parse
 import urllib.request
@@ -366,11 +365,13 @@ _DASHES = dict.fromkeys(map(ord, "‐‑‒–—−�"), "-")
 
 
 def parse_fomc_statement(html_text: str) -> dict | None:
-    """{'action', 'low', 'high', 'vote'} from a statement's HTML, or None.
-    The Fed sets '3-1/2' with a non-breaking hyphen (U+2011) and the
-    vote tally with an en dash; both fold to '-' before matching."""
+    """{'action', 'low', 'high', 'vote', 'text'} from a statement's HTML,
+    or None. The Fed sets '3-1/2' with a non-breaking hyphen (U+2011) and
+    the vote tally with an en dash; both fold to '-' before matching.
+    'text' is the cleaned statement, kept in the ledger so the next
+    decision can list the sentences that changed."""
     txt = _html.unescape(re.sub(r"<[^>]+>", " ", html_text or ""))
-    txt = re.sub(r"\s+", " ", txt.replace("\xa0", " ").translate(_DASHES))
+    txt = re.sub(r"\s+", " ", txt.replace("\xa0", " ").translate(_DASHES)).strip()
     m = _RANGE_RE.search(txt)
     if not m:
         return None
@@ -381,7 +382,20 @@ def parse_fomc_statement(html_text: str) -> dict | None:
     action = {"increase": "raise", "decrease": "lower", "reduce": "lower"}.get(action, action)
     v = _VOTE_RE.search(txt)
     return {"action": action, "low": low, "high": high,
-            "vote": f"{v.group(1)}-{v.group(2)}" if v else ""}
+            "vote": f"{v.group(1)}-{v.group(2)}" if v else "", "text": txt}
+
+
+def _sentences(text: str) -> list[str]:
+    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", (text or "").strip()) if s.strip()]
+
+
+def statement_changes(prev_text: str, cur_text: str, limit: int = 3) -> list[str]:
+    """Sentences in the new statement that were not in the previous one,
+    in order, up to `limit`. Empty without a previous statement."""
+    if not prev_text or not cur_text:
+        return []
+    before = set(_sentences(prev_text))
+    return [s for s in _sentences(cur_text) if s not in before][:limit]
 
 
 def _http_text(url: str, timeout: int = 20) -> str:
@@ -522,8 +536,9 @@ def _ff_value(ff_rows: list[dict], event: str, key: str) -> float | None:
 
 def build_rows(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: list[dict]) -> list[dict]:
     """One row per series: label, formatted actual / consensus / prior
-    (consensus and prior are None when the feed has none) and the
-    verdict against consensus."""
+    (consensus and prior are None when the feed has none), the verdict
+    against consensus and the reference month, which the ledger keeps so
+    next month's revision line knows which vintage it posted."""
     out = []
     for ln in spec.lines:
         actual = compute(obs_by_series.get(ln.series) or [], ln.transform, period)
@@ -537,7 +552,7 @@ def build_rows(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: lis
         out.append({
             "label": ln.label, "display": ln.display or ln.label,
             "pair": ln.pair, "row": ln.row, "optional": ln.optional,
-            "unit": ln.unit, "transform": ln.transform,
+            "unit": ln.unit, "transform": ln.transform, "period": period,
             "actual": _fmt(actual, ln.unit, ln.transform), "actual_value": actual,
             "consensus": _fmt(cons, ln.unit, ln.transform) if cons is not None else None, "consensus_value": cons,
             "prior": _fmt(prior, ln.unit, ln.transform) if prior is not None else None, "prior_value": prior,
@@ -559,8 +574,9 @@ def verdict(actual: float | None, cons: float | None, unit: str, transform: str)
 
 
 def build_lines(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: list[dict]) -> list[str]:
-    """One rendered line per series: actual, consensus, prior. The
-    ledger's record of the print and the shape the econ tool quotes."""
+    """One rendered line per series: actual, consensus, prior. The job
+    posts render_release's body and the ledger keeps that body (Task 3,
+    2026-09-30), so this is the plain shape the tests check."""
     out = []
     for r in build_rows(spec, obs_by_series, period, ff_rows):
         bits = [f"**{r['label']}** {r['actual']}"]
@@ -600,6 +616,27 @@ def annualized_3m(series: list[tuple[str, float]], period: str) -> float | None:
     if not end or not start:
         return None
     return round(((end / start) ** 4 - 1) * 100, 1)
+
+
+def revision_line(spec: ReleaseSpec, obs_by_series: dict, period: str, prev: dict | None) -> str:
+    """'Prior month revised: +120K from +142K' when the agency's new value
+    for last month differs from what we posted last month. Empty when
+    there is no prior post, no payroll line, or no change."""
+    if not prev:
+        return ""
+    ln = next((x for x in spec.lines if x.transform == "m_change_k"), None)
+    if ln is None:
+        return ""
+    last = month_shift(period, -1)
+    posted = next((r for r in prev.get("rows") or []
+                   if r.get("label") == ln.label and r.get("period") == last), None)
+    if not posted or posted.get("actual_value") is None:
+        return ""
+    now = compute(obs_by_series.get(ln.series) or [], ln.transform, last)
+    if now is None or round(now) == round(posted["actual_value"]):
+        return ""
+    return (f"Prior month revised: {_fmt(now, ln.unit, ln.transform)} "
+            f"from {_fmt(posted['actual_value'], ln.unit, ln.transform)}")
 
 
 def _level_change(r: dict) -> str:
@@ -711,15 +748,41 @@ def already_posted(today_iso: str, key: str) -> bool:
         return False
 
 
-def mark_posted(today_iso: str, key: str, lines: list[str]) -> None:
+def mark_posted(today_iso: str, key: str, lines: list[str], rows: list[dict] | None = None,
+                statement: str | None = None) -> None:
+    """Record the print: the body lines, the rows with their numeric
+    actuals (next month's revision line compares against them) and, for
+    the FOMC, the statement text (next meeting's changes diff against it)."""
     p = _ledger_path(today_iso)
     try:
         p.parent.mkdir(parents=True, exist_ok=True)
         d = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
     except Exception:
         d = {}
-    d[key] = {"at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"), "lines": lines}
+    entry: dict = {"at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"), "lines": lines}
+    if rows is not None:
+        entry["rows"] = [{k: r.get(k) for k in ("label", "actual_value", "period")} for r in rows]
+    if statement:
+        entry["statement"] = statement[:8000]
+    d[key] = entry
     p.write_text(json.dumps(d, indent=1), encoding="utf-8")
+
+
+def previous_post(key: str, before: str) -> dict | None:
+    """The most recent ledger entry for `key` on a day before `before`."""
+    base = Path(settings.db_path).resolve().parent / "print-alerts"
+    try:
+        days = sorted((f.stem for f in base.glob("*.json") if f.stem < before), reverse=True)
+    except OSError:
+        return None
+    for day in days:
+        try:
+            d = json.loads((base / f"{day}.json").read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if key in d:
+            return d[key]
+    return None
 
 
 # ------------------------------------------------------------- the job
@@ -732,6 +795,18 @@ MAX_WAIT_S = 12 * 60
 # minutes (2026-09-25 review). BLS stays at 12: unregistered BLS allows
 # 25 requests a day and the 30 s poll spends about 20 of them.
 MAX_WAIT_S_BY_AGENCY = {"BEA": 30 * 60}
+
+
+def _takeaway_lines(key: str, title: str, rows: list[dict], computed: list[str]) -> list[str]:
+    """The Quick Takeaway bullets, or [] on any failure. Runs in a thread.
+    Only the bullets: render_release adds the header, so the module that
+    knows the body layout owns it and it appears once."""
+    try:
+        from report import print_takeaway
+        return print_takeaway.generate(key, title, rows, computed)
+    except Exception as e:
+        log.warning(f"print-watch: takeaway skipped ({e})")
+        return []
 
 
 def alert_channel_ids() -> list[int]:
@@ -832,23 +907,48 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     while pending and datetime.now(_ET) < deadline:
         for spec in list(pending):
             try:
+                prev = previous_post(spec.key, before=today)
                 if spec.key == "fomc":
                     parsed = await asyncio.to_thread(fetch_fomc_today, today)
                     if not parsed:
                         continue
-                    lines = fomc_lines(parsed, ff_rows)
-                    title = f"FOMC decision · {now.strftime('%B %-d') if os.name != 'nt' else now.strftime('%B %d')}"
+                    # One row for the renderer. With no consensus and the
+                    # "range" transform, _comparison yields "", so the bullet
+                    # is the range alone. The action and vote lead the
+                    # computed lines, then the sentences that changed since
+                    # the statement the ledger kept from the last decision.
+                    rows = [{"label": "Target range", "display": "Target range", "pair": "", "row": "",
+                             "optional": False, "unit": "%", "transform": "range", "period": today[:7],
+                             "actual": f"{parsed['low']:.2f}% to {parsed['high']:.2f}%", "actual_value": parsed["high"],
+                             "consensus": None, "consensus_value": None, "prior": None, "prior_value": None,
+                             "verdict": {"maintain": "held", "raise": "hike", "lower": "cut"}.get(parsed["action"], "")}]
+                    computed = [f"Fed {'holds' if parsed['action'] == 'maintain' else parsed['action'] + 's'}"
+                                + (f" · vote {parsed['vote']}" if parsed.get("vote") else "")]
+                    computed += [f"Statement change: {s}" for s in
+                                 statement_changes((prev or {}).get("statement", ""), parsed.get("text", ""))]
+                    title = release_title(spec, today[:7])
+                    statement = parsed.get("text", "")
                 else:
                     obs = await asyncio.to_thread(fetch_observations, spec.lines, force=True)
                     if not release_ready(spec, obs, period):
                         continue
                     rows = build_rows(spec, obs, period, ff_rows)
-                    lines = build_lines(spec, obs, period, ff_rows)
-                    body = render_release(rows)
-                    title = f"{spec.title} · {period_label(period)}"
-                footer = f"released {release_et} ET · {spec.agency} · consensus and prior from the calendar feed"
-                if await _post(bot, title, body if spec.key != "fomc" else lines, footer):
-                    mark_posted(today, spec.key, lines)
+                    computed = []
+                    core = next((x for x in spec.lines if x.label.startswith("Core") and x.transform == "mom"), None)
+                    if core is not None:
+                        a3 = annualized_3m(obs.get(core.series) or [], period)
+                        if a3 is not None:
+                            computed.append(f"{core.display.split(' (')[0]} 3-month annualized: {a3:.1f}%")
+                    rev = revision_line(spec, obs, period, prev)
+                    if rev:
+                        computed.append(rev)
+                    title = release_title(spec, period)
+                    statement = None
+                takeaway = await asyncio.to_thread(_takeaway_lines, spec.key, title, rows, computed)
+                body = render_release(rows, computed=computed, takeaway=takeaway, source=source_line(spec))
+                footer = f"released {release_et} ET · {spec.agency}"
+                if await _post(bot, title, body, footer):
+                    mark_posted(today, spec.key, body, rows=rows, statement=statement)
                     log.info(f"print-watch: posted {spec.key} for {period}")
                 pending.remove(spec)
             except Exception as e:
