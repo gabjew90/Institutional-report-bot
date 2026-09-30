@@ -363,15 +363,42 @@ def _fraction(s: str) -> float | None:
 
 _DASHES = dict.fromkeys(map(ord, "‐‑‒–—−�"), "-")
 
+# The statement body sits between the release line ("For release at
+# 2:00 p.m. EDT", followed by a "Share" button label) and the press
+# contact. Some statements open with "Recent indicators" instead.
+_STATEMENT_START_RE = re.compile(r"For release at \d{1,2}:\d{2} [ap]\.m\. [A-Z]{2,4}\s*(?:Share\s+)?", re.I)
+_STATEMENT_END_MARKERS = ("For media inquiries", "Implementation Note")
+
+
+def _statement_body(txt: str, range_at: int) -> str:
+    """The statement alone, cut out of the whole page's text. `range_at`
+    is where the target-range sentence sits, which is always inside the
+    statement, so the start is the release line or the "Recent
+    indicators" opener before it, else that sentence's own start."""
+    start = None
+    for m in _STATEMENT_START_RE.finditer(txt, 0, range_at + 1):
+        start = m.end()
+    if start is None:
+        i = txt.rfind("Recent indicators", 0, range_at)
+        start = i if i >= 0 else txt.rfind(". ", 0, range_at) + 2
+    end = len(txt)
+    for marker in _STATEMENT_END_MARKERS:
+        j = txt.find(marker, start)
+        if j >= 0:
+            end = j
+            break
+    return txt[start:end].strip()
+
 
 def parse_fomc_statement(html_text: str) -> dict | None:
     """{'action', 'low', 'high', 'vote', 'text'} from a statement's HTML,
     or None. The Fed sets '3-1/2' with a non-breaking hyphen (U+2011) and
     the vote tally with an en dash; both fold to '-' before matching.
-    'text' is the cleaned statement, kept in the ledger so the next
-    decision can list the sentences that changed."""
+    'text' is the statement body alone (no page navigation or footer),
+    kept in the ledger so the next decision can list the sentences that
+    changed."""
     txt = _html.unescape(re.sub(r"<[^>]+>", " ", html_text or ""))
-    txt = re.sub(r"\s+", " ", txt.replace("\xa0", " ").translate(_DASHES)).strip()
+    txt = re.sub(r"\s+", " ", txt.replace("﻿", "").replace("\xa0", " ").translate(_DASHES)).strip()
     m = _RANGE_RE.search(txt)
     if not m:
         return None
@@ -382,11 +409,20 @@ def parse_fomc_statement(html_text: str) -> dict | None:
     action = {"increase": "raise", "decrease": "lower", "reduce": "lower"}.get(action, action)
     v = _VOTE_RE.search(txt)
     return {"action": action, "low": low, "high": high,
-            "vote": f"{v.group(1)}-{v.group(2)}" if v else "", "text": txt}
+            "vote": f"{v.group(1)}-{v.group(2)}" if v else "",
+            "text": _statement_body(txt, m.start())}
+
+
+# Periods that do not end a sentence: "U.S.", "p.m.", "a.m." and a
+# single-capital initial ("Stephen I. Miran").
+_ABBREV_RE = re.compile(r"\b(?:U\.S\.|[ap]\.m\.|[A-Z]\.)(?=\s)")
+_DOT_HOLD = "\x00"
 
 
 def _sentences(text: str) -> list[str]:
-    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", (text or "").strip()) if s.strip()]
+    held = _ABBREV_RE.sub(lambda m: m.group(0).replace(".", _DOT_HOLD), (text or "").strip())
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z])", held)
+    return [s.replace(_DOT_HOLD, ".").strip() for s in parts if s.strip()]
 
 
 def statement_changes(prev_text: str, cur_text: str, limit: int = 3) -> list[str]:
@@ -732,7 +768,7 @@ def _fomc_row(parsed: dict, ff_rows: list[dict], period: str) -> dict:
     elif f"{high:.2f}" == f"{cons:.2f}":
         verdict_ = "as expected"
     else:
-        verdict_ = "above expected" if high > cons else "below expected"
+        verdict_ = "higher than expected" if high > cons else "lower than expected"
     return {"label": "Target range", "display": "Target range", "pair": "", "row": "",
             "optional": False, "unit": "%", "transform": "range", "period": period,
             "actual": f"{parsed['low']:.2f}% to {high:.2f}%", "actual_value": high,
@@ -801,7 +837,7 @@ def previous_post(key: str, before: str) -> dict | None:
             d = json.loads((base / f"{day}.json").read_text(encoding="utf-8"))
         except Exception:
             continue
-        if key in d:
+        if isinstance(d, dict) and isinstance(d.get(key), dict):
             return d[key]
     return None
 
@@ -816,6 +852,8 @@ MAX_WAIT_S = 12 * 60
 # minutes (2026-09-25 review). BLS stays at 12: unregistered BLS allows
 # 25 requests a day and the 30 s poll spends about 20 of them.
 MAX_WAIT_S_BY_AGENCY = {"BEA": 30 * 60}
+# A hung Gemini call must never delay the print.
+TAKEAWAY_TIMEOUT_S = 20
 
 
 def _takeaway_lines(key: str, title: str, rows: list[dict], computed: list[str]) -> list[str]:
@@ -963,7 +1001,13 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                         computed.append(rev)
                     title = release_title(spec, period)
                     statement = None
-                takeaway = await asyncio.to_thread(_takeaway_lines, spec.key, title, rows, computed)
+                try:
+                    takeaway = await asyncio.wait_for(
+                        asyncio.to_thread(_takeaway_lines, spec.key, title, rows, computed),
+                        timeout=TAKEAWAY_TIMEOUT_S)
+                except asyncio.TimeoutError:
+                    log.warning(f"print-watch: takeaway for {spec.key} took over {TAKEAWAY_TIMEOUT_S}s, posting without it")
+                    takeaway = []
                 body = render_release(rows, computed=computed, takeaway=takeaway, source=source_line(spec))
                 footer = f"released {release_et} ET · {spec.agency}"
                 if await _post(bot, title, body, footer):

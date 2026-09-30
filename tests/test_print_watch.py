@@ -62,7 +62,13 @@ def test_fomc_statement_parses_range_action_and_vote():
     p = PW.parse_fomc_statement(FOMC_HTML)
     text = p.pop("text")
     assert p == {"action": "maintain", "low": 3.5, "high": 3.75, "vote": "9-3"}, p
-    assert "target range for the federal funds rate" in text and "<" not in text, "cleaned statement text rides along"
+    # the statement body alone, not the page (the ledger diffs it next meeting)
+    assert text.startswith("The Federal Open Market Committee approved the following statement"), text[:120]
+    assert "target range for the federal funds rate" in text and "<" not in text
+    assert "Skip to main content" not in text and "﻿" not in text
+    assert "For media inquiries" not in text and "Implementation Note" not in text
+    assert text.endswith("at this meeting."), text[-80:]
+    assert len(text) < 4000, len(text)
     hike = "The Committee decided to raise the target range for the federal funds rate by 1/4 percentage point to 3-3/4 to 4 percent."
     assert PW.parse_fomc_statement(hike)["action"] == "raise"
     assert PW.parse_fomc_statement(hike)["high"] == 4.0
@@ -164,6 +170,57 @@ def test_job_posts_once_and_records_it():
         assert "statement" not in ledger["cpi"]
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1, "second run must not repost"
+
+
+def test_fomc_job_posts_the_decision_with_the_statement_changes():
+    """The 14:00 slot on a scheduled FOMC day (OFFICIAL_RELEASES lists
+    2026-10-28): the statement is the real 7/29 fixture, the ledger holds
+    a previous decision whose statement differs by one sentence."""
+    sent = []
+
+    class _Chan:
+        async def send(self, embed=None, **kw):
+            sent.append(embed)
+            return object()
+
+    class _Bot:
+        def get_channel(self, cid):
+            return _Chan()
+
+    parsed = PW.parse_fomc_statement(FOMC_HTML)
+    kept = "The Committee is continuing its policy of maintaining ample reserves in the banking system."
+    assert kept in parsed["text"]
+    prev_text = parsed["text"].replace(kept, "The Committee is continuing to reduce its holdings of Treasury securities.")
+    ff = [{"event": "FOMC Interest Rate Decision", "country": "US", "time": "2026-10-28T18:00:00",
+           "estimate": 3.75, "prev": 3.75, "actual": None, "unit": "%"}]
+    with tempfile.TemporaryDirectory() as td, \
+         patch("config.settings.db_path", str(Path(td) / "reports.db")), \
+         patch("config.settings.print_alert_channel_id", "123"), \
+         patch("report.print_watch._ff_rows_for_day", return_value=ff), \
+         patch("report.print_watch.fetch_fomc_today", return_value=dict(parsed)), \
+         patch("report.print_watch._takeaway_lines", return_value=[]), \
+         patch("report.print_watch.datetime") as dt:
+        from datetime import datetime as real
+        dt.now.return_value = real(2026, 10, 28, 14, 1, tzinfo=PW._ET)
+        dt.utcnow.return_value = real(2026, 10, 28, 18, 1)
+        dt.strptime = real.strptime
+        dt.fromisoformat = real.fromisoformat
+        PW.mark_posted("2026-09-17", "fomc", ["y"], statement=prev_text)
+        asyncio.run(PW.print_watch_job(_Bot(), "14:00"))
+        assert len(sent) == 1
+        assert sent[0].title == "October FOMC Decision"
+        lines = sent[0].description.split("\n")
+        assert lines[0] == "• Target range: 3.50% to 3.75% (vs. 3.75% exp, as expected)"
+        assert lines[1] == "• Fed holds · vote 9-3"
+        changes = [ln for ln in lines if ln.startswith("• Statement change:")]
+        assert changes == [f"• Statement change: {kept}"], changes
+        assert not any("Skip to main content" in ln for ln in lines)
+        assert sent[0].footer.text == "released 14:00 ET · Federal Reserve"
+        assert lines[-1] == "Source: federalreserve.gov, FOMC statement"
+        ledger = json.loads((Path(td) / "print-alerts" / "2026-10-28.json").read_text(encoding="utf-8"))
+        assert ledger["fomc"]["statement"] == parsed["text"]
+        assert ledger["fomc"]["rows"] == [{"label": "Target range", "actual_value": 3.75, "period": "2026-10"}]
+        assert ledger["fomc"]["lines"] == lines
 
 
 def test_job_puts_the_takeaway_under_the_numbers_once():
@@ -437,9 +494,9 @@ def test_fomc_row_carries_the_feeds_expected_upper_bound():
     assert PW.render_release([row]) == ["• Target range: 3.50% to 3.75% (vs. 3.75% exp, as expected)"]
     # a surprise hold against an expected cut, and an expected cut delivered
     cut_exp = [{"event": "FOMC Interest Rate Decision", "estimate": 3.5}]
-    assert PW._fomc_row(parsed, cut_exp, "2026-07")["verdict"] == "above expected"
+    assert PW._fomc_row(parsed, cut_exp, "2026-07")["verdict"] == "higher than expected"
     hike_exp = [{"event": "FOMC Interest Rate Decision", "estimate": 4.0}]
-    assert PW._fomc_row(parsed, hike_exp, "2026-07")["verdict"] == "below expected"
+    assert PW._fomc_row(parsed, hike_exp, "2026-07")["verdict"] == "lower than expected"
     # no feed row: the bullet is the range alone
     bare = PW._fomc_row(parsed, [], "2026-07")
     assert bare["consensus"] is None and bare["consensus_value"] is None and bare["verdict"] == ""
@@ -452,3 +509,8 @@ def test_statement_changes_list_the_sentences_that_moved():
     changes = PW.statement_changes(prev, cur)
     assert changes == ["Inflation has eased somewhat.", "The Committee will monitor carefully."]
     assert PW.statement_changes("", cur) == [] and PW.statement_changes(cur, cur) == []
+    # abbreviations and initials do not end a sentence
+    abbr = "Growth in the U.S. economy slowed. For release at 2:00 p.m. EDT. Voting for were Stephen I. Miran and Lisa D. Cook."
+    assert PW._sentences(abbr) == ["Growth in the U.S. economy slowed.", "For release at 2:00 p.m. EDT.",
+                                   "Voting for were Stephen I. Miran and Lisa D. Cook."]
+    assert PW.statement_changes(prev, prev + " " + abbr) == PW._sentences(abbr)
