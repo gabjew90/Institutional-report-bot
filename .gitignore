@@ -36,8 +36,9 @@ Thumbs.db
 sample_*.py
 explore_dropbox.py
 
-# Claude Code internals
-.claude/
+# Claude Code internals, except the repo's own skills (2026-09-30)
+.claude/*
+!.claude/skills/
 
 # Local-only scratch / debug dumps — ask logs, pulse context, QC
 # snapshots. These routinely contain Discord chat content + member

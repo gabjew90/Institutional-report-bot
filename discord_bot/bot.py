@@ -18,6 +18,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from config import settings
+from discord_bot import chat_context
 from discord_bot import pnl_claims as _pnl_claims
 from discord_bot import rank_evidence as _rank_evidence
 from discord_bot.sender import send_embeds
@@ -1195,19 +1196,17 @@ async def _fetch_chat_context(
             # like any other user — leading to loops where it repeats the same
             # canned take across multiple calls without realizing it.
             if bot_user_id is not None and msg.author.id == bot_user_id:
-                line = f"[YOU said earlier]: {text or '(image)'}{image_placeholder}"
+                line = chat_context.line(chat_context.BOT_SPEAKER, text, image_placeholder)
             else:
                 # Render as "DisplayName (username): text" so the model can
                 # unambiguously match each speaker back to their WHO'S TALKING
                 # profile entry (which is also keyed by username). When the
                 # two are identical, drop the parens to keep the line short.
+                # The format lives in chat_context so the live harness
+                # (scripts/ask_live.py) builds the identical block.
                 dn = getattr(msg.author, "display_name", None) or msg.author.name
-                uname = msg.author.name
-                if dn and uname and dn.lower() != uname.lower():
-                    speaker = f"{dn} ({uname})"
-                else:
-                    speaker = dn or uname
-                line = f"{speaker}: {text or '(image)'}{image_placeholder}"
+                line = chat_context.line(chat_context.speaker(dn, msg.author.name),
+                                         text, image_placeholder)
                 # Track distinct non-bot authors for the profile lookup
                 if not msg.author.bot:
                     author_ids.add(msg.author.id)
@@ -1230,12 +1229,7 @@ async def _fetch_chat_context(
     if bot_client is not None:
         collected = await _resolve_ocr_targets(collected, bot_client)
 
-    body = "\n".join(line for _, line, _ in collected)
-    block = (
-        "Recent channel chat (oldest → newest, for context only — "
-        "the actual question follows after):\n"
-        f"{body}"
-    )
+    block = chat_context.block([line for _, line, _ in collected])
     return block, sorted(author_ids)
 
 
