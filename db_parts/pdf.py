@@ -1219,18 +1219,24 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
             t = text or ""
             return any(p.search(t) for p in pats)
 
+        # The rationale is the answer's substance (owner, 2026-09-30: a
+        # direction with no reasoning is fluff), so it keeps its full
+        # length up to 600 characters, more than the insight lines.
         movers = [
-            {k: m.get(k) for k in ("action", "rating", "price_target", "rationale", "conviction") if m.get(k)}
+            {k: (str(m.get(k))[:600] if k == "rationale" else m.get(k))
+             for k in ("action", "rating", "price_target", "rationale", "conviction") if m.get(k)}
             for m in (a.get("market_movers") or []) if isinstance(m, dict)
             and (m.get("ticker") or "").strip().upper() == sym
         ]
         ideas = [
-            {k: t.get(k) for k in ("description", "rationale", "risk", "time_horizon", "conviction") if t.get(k)}
+            {k: (str(t.get(k))[:600] if k in ("rationale", "risk") else t.get(k))
+             for k in ("description", "rationale", "risk", "time_horizon", "conviction") if t.get(k)}
             for t in (a.get("trade_ideas") or []) if isinstance(t, dict)
             and (sym in [str(x).upper() for x in (t.get("instruments") or [])] or _about(t.get("description")))
         ]
-        earnings = [str(x)[:400] for x in (a.get("earnings_insights") or []) if _about(str(x))]
-        insights = [str(x)[:400] for x in (a.get("key_insights") or []) if _about(str(x))]
+        earnings = [str(x)[:500] for x in (a.get("earnings_insights") or []) if _about(str(x))]
+        insights = [str(x)[:500] for x in (a.get("key_insights") or []) if _about(str(x))]
+        risks = [str(x)[:300] for x in (a.get("risk_factors") or []) if _about(str(x))]
         if not (movers or ideas or earnings or insights):
             continue
         out.append({
@@ -1242,6 +1248,7 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
             "earnings": earnings[:3],
             "insights": insights[:3],
             "trade_ideas": ideas[:2],
+            "risks": risks[:2],
         })
         if len(out) >= limit:
             break

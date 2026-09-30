@@ -643,12 +643,15 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                  "previous month."),
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
         T_RESEARCH: ("INSTITUTIONAL RESEARCH ON THE TICKER, system-fetched from the bank notes "
-                     "the bot ingested. This is the primary source for a view question: lead "
-                     "with what the named banks say (rating and target calls, earnings previews, "
-                     "the debate between desks) and attribute every view to its bank. Google may "
-                     "add public news. The room's chat is not a source for this. status=no_data: "
-                     "say no bank note covers the name and give the public view, never a made-up "
-                     "desk call."),
+                     "the bot ingested. This is the primary source for a view question. Lead "
+                     "with what the named banks say and, for each view, the reasoning the note "
+                     "gives: the mechanism, the figure it rests on (a target, an estimate change, "
+                     "a margin, a unit number) and what the desk says would break it. A direction "
+                     "with no reason is not an answer, and 'bullish on AI demand' is not a reason. "
+                     "Where desks disagree, state the disagreement and what each side is counting "
+                     "on. Attribute every view to its bank. Google may add public news. The "
+                     "room's chat is not a source for this. status=no_data: say no bank note "
+                     "covers the name and give the public view, never a made-up desk call."),
         T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
                  "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "
                  "close. The ledger is entry-biased (exits are posted far less often than entries): "
