@@ -63,6 +63,11 @@ class Line:
     ff_event: str            # ForexFactory event name for consensus/prior ("" = none)
     unit: str = "%"
     source: str = "bls"      # bls | bea
+    table: str = ""          # BEA NIPA table, "" means the release default (BEA_PCE_TABLE)
+    display: str = ""        # reader-facing name, defaults to label
+    pair: str = ""           # m/m and y/y lines that share one bullet share a key
+    row: str = ""            # short lines that share one bullet with " | " share a key
+    optional: bool = False   # not needed to post, dropped when the agency has no value
 
 
 @dataclass
@@ -73,30 +78,35 @@ class ReleaseSpec:
     ff_arming_events: tuple  # any of these on today's FF calendar arms the watch
     lines: list[Line] = field(default_factory=list)
     agency: str = "BLS"      # footer credit
+    headline: str = ""       # the title after the month, e.g. "CPI Inflation Print"
 
 
 CPI = ReleaseSpec(
-    key="cpi", title="CPI", release_et="08:30",
+    key="cpi", title="CPI", release_et="08:30", headline="CPI Inflation Print",
     ff_arming_events=("CPI m/m", "Core CPI m/m", "CPI y/y"),
     lines=[
-        Line("CPI m/m", "CUSR0000SA0", "mom", "CPI m/m"),
-        Line("CPI y/y", "CUUR0000SA0", "yoy", "CPI y/y"),
-        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m"),
-        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y"),
+        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m", display="Core CPI (MoM)"),
+        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y", display="Core CPI (YoY)"),
+        Line("CPI m/m", "CUSR0000SA0", "mom", "CPI m/m", display="Headline CPI", pair="headline"),
+        Line("CPI y/y", "CUUR0000SA0", "yoy", "CPI y/y", display="Headline CPI", pair="headline"),
+        Line("Shelter m/m", "CUSR0000SAH1", "mom", "", display="Shelter (MoM)", optional=True),
+        Line("Energy m/m", "CUSR0000SA0E", "mom", "", display="Energy (MoM)", optional=True),
+        Line("Food m/m", "CUSR0000SAF1", "mom", "", display="Food (MoM)", optional=True),
     ])
 
 JOBS = ReleaseSpec(
-    key="jobs", title="Employment Situation", release_et="08:30",
+    key="jobs", title="Employment Situation", release_et="08:30", headline="Jobs Report",
     ff_arming_events=("Non Farm Payrolls", "Unemployment Rate"),
     lines=[
-        Line("Non Farm Payrolls", "CES0000000001", "m_change_k", "Non Farm Payrolls", unit="K"),
+        Line("Non Farm Payrolls", "CES0000000001", "m_change_k", "Non Farm Payrolls", unit="K", display="Nonfarm Payrolls"),
         Line("Unemployment Rate", "LNS14000000", "level", "Unemployment Rate"),
-        Line("Avg Hourly Earnings m/m", "CES0500000003", "mom", "Average Hourly Earnings m/m"),
-        Line("Avg Hourly Earnings y/y", "CES0500000003", "yoy", ""),
+        Line("Avg Hourly Earnings m/m", "CES0500000003", "mom", "Average Hourly Earnings m/m", display="Avg Hourly Earnings", pair="ahe"),
+        Line("Avg Hourly Earnings y/y", "CES0500000003", "yoy", "", display="Avg Hourly Earnings", pair="ahe"),
+        Line("Participation Rate", "LNS11300000", "level", "", optional=True),
     ])
 
 FOMC = ReleaseSpec(
-    key="fomc", title="FOMC decision", release_et="14:00",
+    key="fomc", title="FOMC decision", release_et="14:00", headline="FOMC Decision",
     ff_arming_events=("FOMC Interest Rate Decision",),
     lines=[Line("Target range", "", "range", "FOMC Interest Rate Decision")],
     agency="Federal Reserve")
@@ -108,14 +118,27 @@ FOMC = ReleaseSpec(
 # no key the release is never armed and the feed skips it. The calendar
 # feed lists only the core m/m line, so headline and y/y lines carry
 # no consensus.
+# T20600 is Personal Income and Its Disposition (A065RC personal income,
+# DPCERC nominal PCE, A072RC saving rate). T20806 is real PCE by type of
+# product (DPCERX). If a code is wrong, parse_bea logs what the table
+# carries on the first live run and the line is dropped from the body,
+# while the core lines still post.
 PCE = ReleaseSpec(
-    key="pce", title="PCE price index", release_et="08:30",
+    key="pce", title="PCE price index", release_et="08:30", headline="PCE Inflation Print",
     ff_arming_events=("Core PCE Price Index m/m",),
     lines=[
-        Line("PCE m/m", "DPCERG", "mom", "", source="bea"),
-        Line("PCE y/y", "DPCERG", "yoy", "", source="bea"),
-        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea"),
-        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea"),
+        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea", display="Core PCE (MoM)"),
+        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea", display="Core PCE (YoY)"),
+        Line("PCE m/m", "DPCERG", "mom", "", source="bea", display="Headline PCE", pair="headline"),
+        Line("PCE y/y", "DPCERG", "yoy", "", source="bea", display="Headline PCE", pair="headline"),
+        Line("Real Consumer Spending m/m", "DPCERX", "mom", "", source="bea", table="T20806",
+             display="Real Consumer Spending", optional=True),
+        Line("Personal Spending m/m", "DPCERC", "mom", "Personal Spending m/m", source="bea", table="T20600",
+             display="Personal Spending", optional=True),
+        Line("Personal Income m/m", "A065RC", "mom", "Personal Income m/m", source="bea", table="T20600",
+             display="Personal Income", row="income", optional=True),
+        Line("Saving Rate", "A072RC", "level", "", source="bea", table="T20600",
+             display="Saving Rate", row="income", optional=True),
     ],
     agency="BEA")
 
@@ -240,18 +263,20 @@ def parse_bea(payload: dict, series_codes: list[str] | None = None) -> dict[str,
     return out
 
 
-def fetch_bea(series_codes: list[str], *, force: bool = False) -> dict[str, list[tuple[str, float]]]:
-    """PCE price-index observations, two calendar years back, cached ten
-    minutes like the BLS fetch. Empty without a BEA key."""
+def fetch_bea(series_codes: list[str], *, table: str = BEA_PCE_TABLE, force: bool = False) -> dict[str, list[tuple[str, float]]]:
+    """Observations for the series in one NIPA table, two calendar years
+    back, cached ten minutes like the BLS fetch. Empty without a BEA key.
+    The cache holds one (table, series) entry at a time, so a release
+    that reads three tables fetches all three on every poll."""
     now = datetime.utcnow()
-    key = tuple(sorted(series_codes))
+    key = (table, tuple(sorted(series_codes)))
     c = _BEA_CACHE
     if not force and c["obs"] is not None and c["key"] == key and c["at"] \
             and (now - c["at"]).total_seconds() < _BLS_CACHE_TTL_S:
         return c["obs"]
-    payload = _bea_get(BEA_PCE_TABLE, [now.year - 1, now.year])
-    obs = parse_bea(payload, list(key)) if payload else {}
-    obs = {k: v for k, v in obs.items() if k in key}
+    payload = _bea_get(table, [now.year - 1, now.year])
+    obs = parse_bea(payload, list(key[1])) if payload else {}
+    obs = {k: v for k, v in obs.items() if k in key[1]}
     if obs:
         c.update({"at": now, "key": key, "obs": obs})
     return obs or (c["obs"] if c["key"] == key and c["obs"] else {})
@@ -259,17 +284,20 @@ def fetch_bea(series_codes: list[str], *, force: bool = False) -> dict[str, list
 
 def fetch_observations(lines: list, *, force: bool = False) -> dict[str, list[tuple[str, float]]]:
     """Observations for every series a release's lines need, from
-    whichever agency each line names."""
+    whichever agency and table each line names."""
     out: dict[str, list[tuple[str, float]]] = {}
-    by_source: dict[str, list[str]] = {}
+    groups: dict[tuple[str, str], list[str]] = {}
     for ln in lines:
         if ln.series:
-            by_source.setdefault(ln.source, []).append(ln.series)
-    for source, series in by_source.items():
+            table = ln.table or (BEA_PCE_TABLE if ln.source == "bea" else "")
+            groups.setdefault((ln.source, table), []).append(ln.series)
+    for (source, table), series in groups.items():
         if not source_available(source):
             continue
-        fetcher = fetch_bea if source == "bea" else fetch_bls
-        out.update(fetcher(sorted(set(series)), force=force))
+        if source == "bea":
+            out.update(fetch_bea(sorted(set(series)), table=table, force=force))
+        else:
+            out.update(fetch_bls(sorted(set(series)), force=force))
     return out
 
 
@@ -302,9 +330,10 @@ def compute(obs: list[tuple[str, float]], transform: str, period: str) -> float 
 
 
 def release_ready(spec: ReleaseSpec, obs_by_series: dict, period: str) -> bool:
-    """Every line of the release has its reference-month observation."""
+    """Every required line of the release has its reference-month
+    observation. Optional lines never hold a post."""
     return all(_value_at(obs_by_series.get(ln.series) or [], period) is not None
-               for ln in spec.lines if ln.series)
+               for ln in spec.lines if ln.series and not ln.optional)
 
 
 # ---------------------------------------------------------------- FOMC
@@ -502,11 +531,16 @@ def build_rows(spec: ReleaseSpec, obs_by_series: dict, period: str, ff_rows: lis
         prior = _ff_value(ff_rows, ln.ff_event, "prev") if ln.ff_event else None
         if prior is None and ln.series:
             prior = compute(obs_by_series.get(ln.series) or [], ln.transform, month_shift(period, -1))
+        if ln.optional and actual is None:
+            log.info(f"print-watch: {spec.key} extra line {ln.label} has no {period} value, dropped")
+            continue
         out.append({
-            "label": ln.label,
-            "actual": _fmt(actual, ln.unit, ln.transform),
-            "consensus": _fmt(cons, ln.unit, ln.transform) if cons is not None else None,
-            "prior": _fmt(prior, ln.unit, ln.transform) if prior is not None else None,
+            "label": ln.label, "display": ln.display or ln.label,
+            "pair": ln.pair, "row": ln.row, "optional": ln.optional,
+            "unit": ln.unit, "transform": ln.transform,
+            "actual": _fmt(actual, ln.unit, ln.transform), "actual_value": actual,
+            "consensus": _fmt(cons, ln.unit, ln.transform) if cons is not None else None, "consensus_value": cons,
+            "prior": _fmt(prior, ln.unit, ln.transform) if prior is not None else None, "prior_value": prior,
             "verdict": verdict(actual, cons, ln.unit, ln.transform),
         })
     return out

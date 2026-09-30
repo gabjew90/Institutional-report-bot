@@ -26,7 +26,7 @@ def test_the_body_leads_with_the_consensus_line_and_aligns_a_table():
     obs = PW.parse_bls(BLS)
     rows = PW.build_rows(PW.CPI, obs, "2026-08", FF)
     body = PW.render_release(rows)
-    assert body[0] == "**CPI m/m +0.4%** vs +0.4% consensus, in line"
+    assert body[0] == "**Core CPI m/m +0.3%** vs +0.2% consensus, above"
     assert body[1] == "```" and body[-1] == "```"
     table = body[2:-1]
     assert table[0].split() == ["actual", "consensus", "prior"]
@@ -92,7 +92,7 @@ def test_the_job_posts_the_table_body_and_records_the_plain_lines():
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1
         desc = sent[0].description
-        assert desc.startswith("**CPI m/m +0.4%** vs +0.4% consensus, in line")
-        assert "```" in desc and "Core CPI m/m" in desc
+        assert desc.startswith("**Core CPI m/m +0.3%** vs +0.2% consensus, above")
+        assert "```" in desc and "CPI m/m" in desc
         ledger = json.loads((Path(td) / "print-alerts" / "2026-09-11.json").read_text(encoding="utf-8"))
-        assert ledger["cpi"]["lines"][0].startswith("**CPI m/m** +0.4%")
+        assert ledger["cpi"]["lines"][0].startswith("**Core CPI m/m** +0.3%")

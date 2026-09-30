@@ -33,10 +33,10 @@ def test_cpi_lines_match_the_bls_print():
     assert PW.release_ready(PW.CPI, obs, "2026-08")
     assert not PW.release_ready(PW.CPI, obs, "2026-09"), "September is not out"
     lines = PW.build_lines(PW.CPI, obs, "2026-08", FF)
-    assert lines[0].startswith("**CPI m/m** +0.4%") and "consensus +0.4%" in lines[0] and "prior +0.1%" in lines[0]
-    assert lines[1].startswith("**CPI y/y** 3.4%")
-    assert lines[2].startswith("**Core CPI m/m** +0.3%") and "consensus +0.2%" in lines[2]
-    assert lines[3].startswith("**Core CPI y/y** 2.4%"), lines[3]
+    assert lines[0].startswith("**Core CPI m/m** +0.3%") and "consensus +0.2%" in lines[0]
+    assert lines[1].startswith("**Core CPI y/y** 2.4%"), lines[1]
+    assert lines[2].startswith("**CPI m/m** +0.4%") and "consensus +0.4%" in lines[2] and "prior +0.1%" in lines[2]
+    assert lines[3].startswith("**CPI y/y** 3.4%")
 
 
 def test_jobs_lines_from_the_same_payload():
@@ -219,10 +219,10 @@ def test_pce_lines_match_the_bea_print():
     obs = PW.parse_bea(BEA)
     assert PW.release_ready(PW.PCE, obs, "2026-08")
     lines = PW.build_lines(PW.PCE, obs, "2026-08", FF_PCE)
-    assert lines[0] == "**PCE m/m** +0.3%"  # no calendar row and no June index, so no consensus or prior
-    assert lines[1].startswith("**PCE y/y** 3.2%")
-    assert lines[2] == "**Core PCE m/m** +0.2% · consensus +0.2% · prior +0.3%"
-    assert lines[3].startswith("**Core PCE y/y** 3.3%")
+    assert lines[0] == "**Core PCE m/m** +0.2% · consensus +0.2% · prior +0.3%"
+    assert lines[1].startswith("**Core PCE y/y** 3.3%")
+    assert lines[2] == "**PCE m/m** +0.3%"  # no calendar row and no June index, so no consensus or prior
+    assert lines[3].startswith("**PCE y/y** 3.2%")
 
 
 def test_pce_is_armed_only_with_a_bea_key():
@@ -245,6 +245,42 @@ def test_the_feed_fills_a_core_pce_row_from_bea():
         PW._BEA_CACHE.update({"at": None, "key": None, "obs": None})
         out = PW.enrich_rows_with_agency_actuals(rows)
     assert out[0]["actual"] == 0.2 and out[0]["actual_source"] == "bea:DPCCRG" and out[0]["actual_period"] == "2026-08"
+
+
+def test_specs_carry_the_extra_series_as_optional_lines():
+    core = [ln for ln in PW.PCE.lines if not ln.optional]
+    extra = [ln for ln in PW.PCE.lines if ln.optional]
+    assert [ln.series for ln in core] == ["DPCCRG", "DPCCRG", "DPCERG", "DPCERG"]
+    assert {ln.series for ln in extra} == {"DPCERX", "DPCERC", "A065RC", "A072RC"}
+    assert {ln.table for ln in extra} == {"T20806", "T20600"}
+    assert [ln.pair for ln in core] == ["", "", "headline", "headline"]
+    assert {ln.row for ln in extra if ln.row} == {"income"}
+    assert {ln.series for ln in PW.CPI.lines if ln.optional} == {"CUSR0000SAH1", "CUSR0000SA0E", "CUSR0000SAF1"}
+    assert {ln.series for ln in PW.JOBS.lines if ln.optional} == {"LNS11300000"}
+    assert PW.CPI.headline == "CPI Inflation Print" and PW.JOBS.headline == "Jobs Report"
+    assert PW.PCE.headline == "PCE Inflation Print" and PW.FOMC.headline == "FOMC Decision"
+
+
+def test_release_ready_ignores_optional_lines_and_build_rows_drops_them_when_absent():
+    obs = PW.parse_bls(BLS)      # the fixture has no shelter/energy/food series
+    assert PW.release_ready(PW.CPI, obs, "2026-08")
+    rows = PW.build_rows(PW.CPI, obs, "2026-08", FF)
+    assert [r["label"] for r in rows] == ["Core CPI m/m", "Core CPI y/y", "CPI m/m", "CPI y/y"]
+    assert rows[2]["pair"] == "headline" and rows[0]["display"] == "Core CPI (MoM)"
+    assert rows[0]["actual_value"] == 0.3 and rows[0]["consensus_value"] == 0.2
+
+
+def test_bea_fetch_groups_series_by_table(monkeypatch):
+    calls = []
+
+    def fake_get(table, years):
+        calls.append(table)
+        return {"BEAAPI": {"Results": {"Data": []}}}
+    monkeypatch.setattr(PW, "_bea_get", fake_get)
+    monkeypatch.setattr("config.settings.bea_api_key", "k")
+    PW._BEA_CACHE.clear(); PW._BEA_CACHE.update({"at": None, "key": None, "obs": None})
+    PW.fetch_observations(PW.PCE.lines, force=True)
+    assert sorted(calls) == ["T20600", "T20804", "T20806"]
 
 
 if __name__ == "__main__":
