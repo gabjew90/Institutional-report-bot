@@ -55,7 +55,7 @@ The bridge's post job reads the archive markdown; nothing there assumes a theme 
 
 ### Ops visibility
 
-A LIGHT decision sends one ops ping (`discord_bot/ops_alert.py`, key `pulse-light-day`, 1 h dedupe) naming the reason. Frontmatter `body_source: light` lets `pulse-output/archive/` be counted for miss days. The QC review notes the reason.
+A LIGHT decision sends one ops ping (`discord_bot/ops_alert.py`, key `pulse-light-<pulse filename>`, keyed per pulse file so a bridge retry does not page twice, 1 h dedupe) naming the reason. Frontmatter `body_source: light` lets `pulse-output/archive/` be counted for miss days. The QC review notes the reason.
 
 ### Out of scope
 

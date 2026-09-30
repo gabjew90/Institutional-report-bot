@@ -582,6 +582,15 @@ The gate waits up to 10 minutes for today's Omnipulse. It runs before STEP 2.5 s
 - **`DECISION: OMNIPULSE`** — `/tmp/pulse_mode.txt` says `omnipulse`;
   `/tmp/omnipulse_body.md` and `/tmp/omnipulse_headline.txt` hold the body.
   Follow every "omnipulse day" instruction below.
+- **`DECISION: LIGHT`** — a miss day with `MISS_DAY = "light"` in
+  `scripts/omnipulse_body.py`: no usable Omnipulse after the wait, so
+  `/tmp/omnipulse_body.md` holds a one-paragraph note and
+  `/tmp/omnipulse_headline.txt` is empty. Follow every "omnipulse day"
+  instruction below exactly as for OMNIPULSE, with two differences: write
+  the H1 yourself from the live tape (there is no supplied headline), and
+  write `## _LEANS` from desk calls in the research as on a classic day.
+  Do not try the backup route, the driver already did the waiting.
+  `/tmp/light_reason.txt` says why.
 - **`DECISION: CLASSIC` with detail `switch off` or `not usable`** — run
   the routine exactly as written, ignoring the omnipulse-day instructions.
 - **`DECISION: CLASSIC` with detail `not published` or `fetch error`** —
@@ -593,7 +602,9 @@ The gate waits up to 10 minutes for today's Omnipulse. It runs before STEP 2.5 s
   `python3 scripts/pulse_driver.py gate omnipulse --from /tmp/omnipulse_src --sha <the .clean.md file's sha from the MCP read>`
   and act on that token. The sha check rejects a copy that is not
   byte-for-byte the published file; do not retype or reformat it. If
-  either file does not exist, stay classic.
+  either file does not exist, stay classic. A detail of "local copy
+  unreadable" or "local copy does not match GitHub's sha" comes from the
+  backup route itself and means stay classic.
 
 ```bash
 python3 /tmp/progress.py "STEP_2_4_OMNIPULSE_GATE_DONE"
@@ -1457,7 +1468,7 @@ evidence supports):
 <contents of /tmp/adjudication.json's `themes` array, pretty-printed>
 ```
 
-**Omnipulse day:** append this block, with the contents of
+**Omnipulse or light day:** append this block, with the contents of
 `/tmp/omnipulse_body.md` where marked, to the DRAFT input:
 
 ```
@@ -1470,6 +1481,9 @@ below. Do not write themes of your own and do not edit these.
   supplied themes (the first theme is THE MAIN EVENT; its desk call, if
   any, comes first). If the supplied themes call no trade, use desk
   calls from the research as on any other day.
+- LIGHT DAY (the supplied body below is a single note, no themes): write
+  the H1 from RECAP's tape as on a classic day. Write `## _LEANS` from
+  desk calls in the research. Do not write themes of your own.
 
 SUPPLIED THEMES:
 <contents of /tmp/omnipulse_body.md>
@@ -1927,6 +1941,13 @@ try:
 except FileNotFoundError:
     _mode = 'classic'
 frontmatter_lines.append(f'body_source: {_mode}')
+if _mode == 'light':
+    try:
+        _why = open('/tmp/light_reason.txt').read().strip().replace('\n', ' ')[:200]
+    except FileNotFoundError:
+        _why = ''
+    if _why:
+        frontmatter_lines.append(f'light_reason: {_why}')
 target_channels = _read_target_channels()
 if target_channels:
     frontmatter_lines.append(f"target_channels: {target_channels}")

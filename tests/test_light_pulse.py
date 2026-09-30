@@ -120,3 +120,14 @@ def test_a_light_pulse_without_a_reason_still_pages(monkeypatch):
     monkeypatch.setattr("discord_bot.ops_alert.ops_alert", fake_alert)
     asyncio.run(J._light_day_ping({"body_source": "light"}, "z.md"))
     assert sent and "no reason recorded" in sent[0]
+
+
+def test_the_routine_documents_the_light_decision():
+    md = (REPO / "docs/superpowers/routines/synthesis-routine.md").read_text(encoding="utf-8")
+    assert "DECISION: LIGHT" in md
+    assert "light_reason" in md
+    step = md.index("### STEP 2.4")
+    nxt = md.index("### STEP 2.5")
+    assert step < md.index("DECISION: LIGHT") < nxt
+    # STEP 6 stamps the reason only on a light day
+    assert "if _mode == 'light':" in md and "light_reason: {_why}" in md
