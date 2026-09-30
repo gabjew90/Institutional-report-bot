@@ -29,8 +29,13 @@ TIMEOUT_S = 150
 def _run(name: str) -> tuple[str, int, str]:
     env = dict(os.environ, PYTHONPATH=str(REPO), PYTHONIOENCODING="utf-8")
     try:
+        # The child is told to write UTF-8 (PYTHONIOENCODING above), so
+        # decode it as UTF-8. Without this the Windows default codepage
+        # raised on a 0x9d byte in one smoke's output and the runner
+        # counted that smoke as failed (157/158) with no FAIL line.
         r = subprocess.run([sys.executable, str(REPO / "scripts" / f"{name}.py")],
                            capture_output=True, text=True, env=env,
+                           encoding="utf-8", errors="replace",
                            cwd=REPO, timeout=TIMEOUT_S)
         tail = "\n".join(((r.stdout or "") + (r.stderr or "")).strip().splitlines()[-4:])
         return name, r.returncode, tail
