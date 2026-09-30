@@ -358,6 +358,23 @@ def _parse_frontmatter(markdown: str) -> tuple[dict, str]:
     return meta, body
 
 
+async def _light_day_ping(meta: dict, name: str) -> None:
+    """One ops page when a light pulse posts (spec 2026-09-29): the
+    Omnipulse did not land and the reader got RECAP and WATCH around a
+    note. Keyed per pulse file so a bridge retry does not page twice."""
+    if (meta.get("body_source") or "").strip() != "light":
+        return
+    reason = (str(meta.get("light_reason") or "").strip()) or "no reason recorded"
+    try:
+        from discord_bot.ops_alert import ops_alert as _ops_alert
+        await _ops_alert(
+            f"🟠 pulse {name} went out LIGHT (no research body): {reason}",
+            dedupe_key=f"pulse-light-{name}",
+        )
+    except Exception as e:
+        log.warning(f"Bridge: light-day page failed: {e}")
+
+
 def _fetch_matching_adjudication(pulse_md_name: str) -> tuple[dict | None, str | None]:
     """For pulse markdown filename '<base>.md', look for the matching adjudication
     JSON at PENDING_ADJUDICATIONS_DIR/<base>.json.
@@ -902,6 +919,8 @@ async def _process_one_pulse(bot, item: dict[str, Any]) -> None:
                 )
             except Exception as e:
                 log.warning(f"Bridge: residual owner page failed: {e}")
+
+        await _light_day_ping(meta, name)
 
         await asyncio.to_thread(
             gh.put_file,

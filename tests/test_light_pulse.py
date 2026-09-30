@@ -90,3 +90,33 @@ def test_the_note_obeys_the_voice_rules():
     # Each entry is (regex, kind_label).
     for rx, kind in compose_lint_patterns():
         assert not re.search(rx, O.LIGHT_BODY_NOTE, re.I), (kind, rx)
+
+
+def test_a_light_pulse_pages_ops_once_with_the_reason(monkeypatch):
+    import asyncio
+    from github_bridge import jobs as J
+    sent = []
+
+    async def fake_alert(text, dedupe_key=""):
+        sent.append((text, dedupe_key))
+    monkeypatch.setattr("discord_bot.ops_alert.ops_alert", fake_alert)
+    asyncio.run(J._light_day_ping(
+        {"body_source": "light", "light_reason": "not published after 600s"}, "2026-09-30T14-11-00Z.md"))
+    asyncio.run(J._light_day_ping({"body_source": "omnipulse"}, "x.md"))
+    asyncio.run(J._light_day_ping({}, "y.md"))
+    assert len(sent) == 1
+    text, key = sent[0]
+    assert "light" in text.lower() and "not published after 600s" in text
+    assert key == "pulse-light-2026-09-30T14-11-00Z.md"
+
+
+def test_a_light_pulse_without_a_reason_still_pages(monkeypatch):
+    import asyncio
+    from github_bridge import jobs as J
+    sent = []
+
+    async def fake_alert(text, dedupe_key=""):
+        sent.append(text)
+    monkeypatch.setattr("discord_bot.ops_alert.ops_alert", fake_alert)
+    asyncio.run(J._light_day_ping({"body_source": "light"}, "z.md"))
+    assert sent and "no reason recorded" in sent[0]
