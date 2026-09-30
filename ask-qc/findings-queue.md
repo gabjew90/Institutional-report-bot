@@ -717,3 +717,8 @@ The CONCERN (18:03:42, Arxfic, Drake Maye): the A.J. Brown high-ankle sprain ver
 
 ### 13:06:48 UTC, 2Pale, Q3 domestic box office over $3B
 - Bucket: judgment. Grounded-web answer contradicted by coverage. It said 2016 was the first Q3 above $3B and that 2018/2019 cleared it. Coverage says 2016's $2.98B was the prior Q3 record and Q3 2026 is the first over $3B. `validate_answer.py` returned no violation (only a detector-unavailable note, aiohttp missing in the runner). No mechanical shape: it is a wrong historical statistic sourced from a search snippet. Prompt-session material: a historical-statistic shape ("first year X crossed Y") should not accept a single-snippet claim and should say it can't confirm.
+
+## 2026-09-29
+
+no findings - 3/3 graded, 2 CLEAN, 1 CONCERN, 0 fail, 0 infra, 0 ungraded.
+The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full session of Q3 before tomorrow's month-end close" is wrong, since Sep 30 is also a full session. Judgment, not mechanically checkable. Side note for a session: the 11:42:36 turn called `lookup_options_chain symbol=LINE` on a trivia question, where "LINE" comes from the "quote LINE FOR LINE" boilerplate in the injected verbatim-messages header. Full reasoning in `pulse-data/ask-qc/2026-09-29.claude.md`.

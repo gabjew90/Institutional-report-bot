@@ -1151,3 +1151,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **pilot-territory** — Omnipulse body cites figures (Barry attribution, $6.52 diesel, 152% backlog, $920B) not traceable to the production context. Check against `pilot/shadow/2026-09-29.clean.md` citations; the body's source material may differ from the pulse's context.
 - **observation** — RECAP removed "$22.7B" as unsupported while the last BRIEF still states it. Also the driver trail is condensed with no full state file, so re-rolls and SCRUB detail are not auditable.
 - **observation** — Selection: US fiscal sustainability (7 banks) not in the pulse. Low confidence, dump is a later 61-PDF snapshot.
+
+## 2026-09-30
+- **deterministic-fixable** — Adversarial verdict file quotes text not in the published pulse (Brent $95 "which assumes the strait reopens", RBA line). A post-recheck manual edit is recorded only in the driver `note`. Second consecutive day. Re-run the adversarial checker on the final shipped text, or record the edit as a gate entry.
+- **deterministic-fixable** — 2026-09-29 adversarial verdict file is still missing from the archive (control-series gap, carried from 09-29).
+- **prompt-session** — MAIN EVENT states "October hike odds above 70% (Goldman)". Dump has "near 70%" from PNC and 64% from UBS, no Goldman source. The figure recurs in WATCH. Also "Goldman's desk points to seven straight months of rising 10-year yields" has no matching text in the dump. Attribution of market-implied probabilities to a bank needs a check against the named desk's own entry.
+- **observation** — Discovered themes `us diesel export restrictions` (5 banks) and `meta muse agent` (4 banks) dropped with no DRAFT/EDIT note. An open $BNO long premise (diesel inventories) and an open $META read are left unaddressed.
+- **observation** — `rba tightening cycle` rank #2 is 3 Scotiabank PDFs only (bank count from mentions inside one author's PDFs). Lint `top-3-theme-missing` fired as a residual on it and shipped anyway.
+- **observation** — Brent shown as $106 to $108 in RECAP and about $106 in the Hormuz brief after SCRUB.
