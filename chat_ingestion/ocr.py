@@ -68,7 +68,8 @@ _client: genai.Client | None = None
 def _get_client() -> genai.Client:
     global _client
     if _client is None:
-        _client = genai.Client(api_key=settings.google_api_key)
+        from ai_analysis.usage_ledger import make_client
+        _client = make_client("chat_ocr")
     return _client
 
 

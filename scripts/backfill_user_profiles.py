@@ -1952,7 +1952,8 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
-    gemini_client = genai.Client(api_key=settings.google_api_key)
+    from ai_analysis.usage_ledger import make_client
+    gemini_client = make_client("profile_refresh")
 
     summary_lines: list[str] = []
 

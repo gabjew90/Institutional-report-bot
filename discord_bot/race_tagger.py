@@ -83,8 +83,8 @@ def _get_client():
     global _client
     with _client_lock:
         if _client is None:
-            from google import genai
-            _client = genai.Client(api_key=settings.google_api_key)
+            from ai_analysis.usage_ledger import make_client
+            _client = make_client("race_tagger")
         return _client
 
 

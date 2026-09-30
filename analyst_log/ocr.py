@@ -26,6 +26,8 @@ from datetime import datetime, timezone
 from google import genai
 from google.genai import types
 
+from ai_analysis.usage_ledger import as_caller
+
 from config import settings
 
 log = logging.getLogger(__name__)
@@ -36,7 +38,8 @@ _client: genai.Client | None = None
 def _get_client() -> genai.Client:
     global _client
     if _client is None:
-        _client = genai.Client(api_key=settings.google_api_key)
+        from ai_analysis.usage_ledger import make_client
+        _client = make_client("alert_trades")
     return _client
 
 
@@ -258,18 +261,19 @@ async def extract_trade_from_image(
     prompt = build_prompt(today_iso, composed_caption, caller_name=caller_name)
     try:
         client = _get_client()
-        response = await client.aio.models.generate_content(
-            model=settings.gemini_model,
-            contents=[
-                types.Part.from_bytes(data=image_bytes, mime_type=mime_type),
-                types.Part.from_text(text=prompt),
-            ],
-            config=types.GenerateContentConfig(
-                temperature=0.0,
-                max_output_tokens=600,
-                response_mime_type="application/json",
-            ),
-        )
+        async with as_caller("screenshot_ocr"):
+            response = await client.aio.models.generate_content(
+                model=settings.gemini_model,
+                contents=[
+                    types.Part.from_bytes(data=image_bytes, mime_type=mime_type),
+                    types.Part.from_text(text=prompt),
+                ],
+                config=types.GenerateContentConfig(
+                    temperature=0.0,
+                    max_output_tokens=600,
+                    response_mime_type="application/json",
+                ),
+            )
     except Exception as e:
         log.error(f"Gemini extraction call failed: {e}")
         return None
@@ -458,15 +462,16 @@ async def extract_trade_from_caption(
     )
     try:
         client = _get_client()
-        response = await client.aio.models.generate_content(
-            model=settings.gemini_model,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.0,
-                max_output_tokens=600,
-                response_mime_type="application/json",
-            ),
-        )
+        async with as_caller("trade_classifier"):
+            response = await client.aio.models.generate_content(
+                model=settings.gemini_model,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.0,
+                    max_output_tokens=600,
+                    response_mime_type="application/json",
+                ),
+            )
     except Exception as e:
         log.error(f"Caption extraction call failed: {e}")
         return None
@@ -619,15 +624,16 @@ async def _call_gemini_classifier(prompt_parts: list, model: str):
     without intercepting the whole genai client. Returns the raw
     response object — caller parses `.text`."""
     client = _get_client()
-    response = await client.aio.models.generate_content(
-        model=model,
-        contents=[types.Content(role="user", parts=prompt_parts)],
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            max_output_tokens=400,
-            temperature=0.1,
-        ),
-    )
+    async with as_caller("trade_classifier"):
+        response = await client.aio.models.generate_content(
+            model=model,
+            contents=[types.Content(role="user", parts=prompt_parts)],
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                max_output_tokens=400,
+                temperature=0.1,
+            ),
+        )
     return response
 
 

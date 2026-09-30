@@ -318,6 +318,24 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             fetched_at TEXT NOT NULL DEFAULT (datetime('now'))
         );
 
+        -- One row per Gemini call from any feature (2026-09-29). Only
+        -- the PDF pipeline recorded tokens before this; every other
+        -- feature's share of the bill was an estimate. Written by
+        -- ai_analysis.usage_ledger through the instrumented clients,
+        -- read by db.gemini_spend for /status. ~2,000 rows a day.
+        CREATE TABLE IF NOT EXISTS gemini_calls (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            called_at TEXT NOT NULL DEFAULT (datetime('now')),
+            caller TEXT NOT NULL,
+            model TEXT NOT NULL,
+            input_tokens INTEGER NOT NULL DEFAULT 0,
+            output_tokens INTEGER NOT NULL DEFAULT 0,   -- includes thinking
+            thinking_tokens INTEGER NOT NULL DEFAULT 0,
+            cached_tokens INTEGER NOT NULL DEFAULT 0,
+            ref TEXT
+        );
+        CREATE INDEX IF NOT EXISTS idx_gemini_calls_time ON gemini_calls(called_at);
+
         -- Books the bot published, so a caller's correction can be
         -- attributed (2026-08-26). BK's book listed MU 980C and AVGO
         -- 450C as open; he replied "No AVGO" / "No MU anymore". Both
@@ -1585,4 +1603,8 @@ from db_parts.summaries import (  # noqa: E402,F401
     receipts_ceiling_from_points,
     recompute_trader_ranks_on_profiles,
     vacuum_db,
+)
+from db_parts.usage import (  # noqa: E402,F401
+    gemini_spend,
+    record_gemini_call,
 )

@@ -17,6 +17,8 @@ import time
 from google import genai
 from google.genai import types
 
+from ai_analysis.usage_ledger import as_caller
+
 from ai_analysis.models import (
     TriageResult, PdfAnalysis, MarketMover, SectorView,
     MacroIndicator, TradeIdea, EntityMention,
@@ -91,7 +93,8 @@ _rate_limiter: RateLimiter | None = None
 def _get_client() -> genai.Client:
     global _client
     if _client is None:
-        _client = genai.Client(api_key=settings.google_api_key)
+        from ai_analysis.usage_ledger import make_client
+        _client = make_client("pdf_analysis")
     return _client
 
 
@@ -190,7 +193,7 @@ async def triage_pdf(file_name: str, text_preview: str, folder_path: str = "") -
         text_preview=preview,
     )
 
-    async with limiter:
+    async with limiter, as_caller("pdf_triage"):
         response = await client.aio.models.generate_content(
             model=settings.gemini_triage_model,
             contents=user_prompt,
@@ -352,7 +355,7 @@ async def analyze_pdf_deep(
     max_out = settings.gemini_max_tokens
     truncated = False
     for attempt in (1, 2):
-        async with limiter:
+        async with limiter, as_caller("pdf_deep"):
             response = await client.aio.models.generate_content(
                 model=settings.gemini_model,
                 contents=content_parts,

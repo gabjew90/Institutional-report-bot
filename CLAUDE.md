@@ -138,6 +138,7 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `ai_analysis/prompts.py` | Gemini prompt templates (triage, deep analysis, synthesis) |
 | `ai_analysis/analyzer.py` | Gemini orchestrator (triage + deep analysis, text-only) |
 | `ai_analysis/rate_limiter.py` | Concurrency + RPM management |
+| `ai_analysis/usage_ledger.py` | Gemini call ledger (2026-09-29): `make_client(caller)` wraps a genai client so every generate_content lands in `gemini_calls`; `as_caller(name)` narrows the label inside one client; `db.gemini_spend(days)` prices it per feature for `/status` |
 | `ai_analysis/models.py` | Dataclasses: TriageResult, PdfAnalysis, MarketMover, SectorView, MacroIndicator, TradeIdea, EntityMention |
 | `report/synthesizer.py` | Cross-PDF synthesis via Gemini; builds ticker map; handles prev_pulse context |
 | `report/market_data.py` | CoinGecko + Yahoo Finance live price snapshot |
@@ -291,7 +292,8 @@ Do not hardcode the tape or the geopolitics in this file; both move daily. The l
 
 Measured 2026-09-26 from the AI Studio spend page (project **BESS**, `gen-lang-client-0723421357`, the bot's key) for Aug 30 - Sep 26: **$50.81 Gemini** ($35.95 gemini-3.1-flash-lite, $12.30 gemini-3.5-flash-lite, the rest other SKUs). Railway is ~$4 of usage against the $5 Hobby minimum (worker: ~377 MB, <0.01 vCPU, 0.5 GB volume).
 - gemini-3.1-flash-lite ($0.25/M in, $1.50/M out): PDF triage + deep analysis (~60M in / 3.8M out a month, recorded in `pdf_analyses`), the alert-channel trade classifier (`analyst_log/watcher.py`, pre-filtered 2026-09-26, was ~41,900 calls a month for ~900 trades), screenshot OCR.
-- gemini-3.5-flash-lite ($0.30/M in, $2.50/M out): /ask and the 6-hourly profile refresh. Neither records token counts; the spend page is the source.
+- gemini-3.5-flash-lite ($0.30/M in, $2.50/M out): /ask and the profile refresh.
+- **Per-feature spend is measured since 2026-09-29**, not estimated: every live Gemini client is built with `ai_analysis.usage_ledger.make_client(caller)`, which records each call's usage_metadata in `gemini_calls`. `db.gemini_spend(days)` prices the rows per model (`PRICES_PER_M`, list prices) and `/status` shows the last 7 days by caller (`pdf_triage`, `pdf_deep`, `ask`, `profile_refresh`, `trade_classifier`, `screenshot_ocr`, `member_trade_batch`, `race_tagger`, `chat_ocr`). The AI Studio spend page remains the bill; the ledger says which feature ran it up. A new Gemini call site must use `make_client`, never a bare `genai.Client`.
 - Google Search grounding: 5,000 free a month across Gemini 3.x, then $14 per 1,000. /ask runs ~400 questions a month.
 - Spend cap at ai.studio/spend is $90/month. AI Studio also shows a prepay switch dated October 12 after which requests fail until credits are bought; that is the owner's billing action.
 

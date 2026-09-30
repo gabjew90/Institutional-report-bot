@@ -1248,8 +1248,8 @@ def _get_gemini_ask_client():
     if not key:
         return None
     try:
-        from google import genai
-        _gemini_ask_client = genai.Client(api_key=key)
+        from ai_analysis.usage_ledger import make_client
+        _gemini_ask_client = make_client("ask", api_key=key)
         return _gemini_ask_client
     except Exception as e:
         log.error(f"Failed to init Gemini /ask client: {e}")
@@ -9586,6 +9586,26 @@ def create_bot() -> commands.Bot:
             value=f"In: {full['input_tokens']:,} | Out: {full['output_tokens']:,}",
             inline=False,
         )
+
+        # Gemini spend per feature, last 7 days, from the call ledger
+        # (2026-09-29). Estimated at list prices; the AI Studio spend
+        # page is the bill.
+        try:
+            spend = db.gemini_spend(days=7)
+            if spend:
+                total = sum(r["usd"] for r in spend)
+                lines = [
+                    f"{r['caller']}: ${r['usd']:.2f} · {r['calls']:,} calls · "
+                    f"{r['input_tokens'] / 1e6:.1f}M in / {r['output_tokens'] / 1e3:.0f}K out"
+                    for r in spend[:8]
+                ]
+                embed.add_field(
+                    name=f"Gemini spend, 7d (est. ${total:.2f})",
+                    value="\n".join(lines)[:1024],
+                    inline=False,
+                )
+        except Exception as e:
+            log.warning(f"/status: gemini spend unavailable: {e}")
 
         # Opus-bridge ingestion stats (last 24h) — only show if backend
         # is set to opus_bridge OR there's any historical bridge activity.
