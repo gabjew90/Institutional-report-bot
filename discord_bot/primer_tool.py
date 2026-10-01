@@ -35,14 +35,18 @@ _inflight: dict[str, asyncio.Task] = {}
 _failed: dict[str, float] = {}
 
 PROMPT = (
-    "Search the web, then describe the US-listed company {sym}{name} for a retail trader "
-    "in plain English. Exactly these five lines, each starting with its label:\n"
+    "Today is {today}. Search the web, then describe the US-listed company {sym}{name} for a "
+    "retail trader in plain English. Exactly these five lines, each starting with its label:\n"
     "SELLS: what it sells and to whom, in one sentence.\n"
-    "SEGMENTS: its reported segments with their approximate share of revenue in the "
-    "latest fiscal year, each segment explained in a few words (say what the product "
-    "is, e.g. 'HBM: high-bandwidth memory stacked beside AI chips').\n"
-    "DRIVERS: which segment drives revenue growth now and which carries the highest "
-    "margin, and why.\n"
+    "SEGMENTS: its reported segments, named exactly as in its most recent 10-K or 10-Q "
+    "(companies rename and regroup segments, so never use older names), with their "
+    "approximate share of revenue in the latest fiscal year, each segment explained in a "
+    "few words (say what the product is, e.g. 'HBM: high-bandwidth memory stacked beside "
+    "AI chips'). If the segments are regions, also give the split it reports by product, "
+    "service line or type of work (e.g. consulting vs managed services), named as the "
+    "company names it.\n"
+    "DRIVERS: which segment, product or service line drives revenue growth now and which "
+    "carries the highest margin, and why, named as in the SEGMENTS line.\n"
     "WATCHED: the two or three figures investors judge it on at earnings, each "
     "explained.\n"
     "OUTSIDE: what moves it besides its own results (prices of what it sells or buys, "
@@ -50,6 +54,18 @@ PROMPT = (
     "Facts only, no opinion, no price targets, no stock recommendation. Spell out "
     "every acronym the first time."
 )
+
+
+# Primers built before this were asked for "reported segments" with no
+# date and no filing to anchor them; MU's came back with its pre-2025
+# names ("Compute and Networking"). Older rows are rebuilt on next use.
+MIN_BUILT_AT = "2026-10-01T15:40:00"    # UTC, after this change deploys
+
+
+def _today_et() -> str:
+    from datetime import datetime, timezone
+    from zoneinfo import ZoneInfo
+    return datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).strftime("%B %d, %Y")
 
 
 def _get_client():
@@ -98,7 +114,8 @@ async def _build(sym: str, name: str) -> dict:
         try:
             resp = await asyncio.wait_for(client.aio.models.generate_content(
                 model=settings.ask_gemini_model or settings.gemini_model,
-                contents=PROMPT.format(sym=sym, name=f" ({name})" if name else ""),
+                contents=PROMPT.format(sym=sym, name=f" ({name})" if name else "",
+                                       today=_today_et()),
                 config=types.GenerateContentConfig(
                     tools=[types.Tool(google_search=types.GoogleSearch())],
                     temperature=0.1, max_output_tokens=1200,
@@ -139,7 +156,7 @@ async def _execute_ticker_primer(args: dict) -> dict:
     except Exception as e:
         log.warning(f"primer {sym}: read failed ({e})")
         stored = None
-    if stored:
+    if stored and str(stored.get("built_at") or "").replace(" ", "T") >= MIN_BUILT_AT:
         return {"status": "ok", **stored}
     failed_at = _failed.get(sym)
     if failed_at is not None and time.monotonic() - failed_at < FAILED_TTL_S:

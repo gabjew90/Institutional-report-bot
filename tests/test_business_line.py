@@ -94,6 +94,23 @@ def test_the_named_line_must_be_the_driver_the_primer_names():
     assert B.names_business_line("Graphics was flat", NVDA), "no DRIVERS line: any segment counts"
 
 
+ACN_REGIONS = (
+    "SELLS: Accenture sells consulting, technology and managed services.\n"
+    "SEGMENTS: Americas: approximately 49% of revenue; EMEA: approximately 37% of revenue; "
+    "Asia Pacific: approximately 14% of revenue.\n"
+    "DRIVERS: Growth is currently driven by enterprise demand for artificial intelligence "
+    "transformations, cloud migrations, and digital core modernizations, while margins remain "
+    "relatively balanced across geographic markets.")
+
+
+def test_region_segments_take_the_driver_line_words_not_a_region():
+    """ACN reports by region; the highlight is the work, not the Americas."""
+    terms = B.driver_terms(ACN_REGIONS)
+    assert {"transformations", "migrations"} <= terms and "americas" not in terms
+    assert B.names_business_line("bookings from AI transformation work are the tell", ACN_REGIONS)
+    assert not B.names_business_line("the Americas drove the quarter", ACN_REGIONS)
+
+
 def _run_move(answer, client, move=None, shape="options_chain", earnings=True, primer=None):
     from discord_bot import bot
     from google.genai import types as gt

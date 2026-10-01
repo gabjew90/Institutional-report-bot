@@ -35,6 +35,16 @@ _SEG_PREFIX_RE = re.compile(
 _LEAD_NAME_RE = re.compile(r"^((?:[A-Z][\w/-]*|&)(?:\s+(?:[A-Z][\w/-]*|&))*)")
 _PAREN_ACRONYM_RE = re.compile(r"\(([A-Za-z][A-Za-z0-9&]{1,7})\)")
 _ACRONYM_RE = re.compile(r"\b([A-Z][A-Z0-9&]{1,5})\b")
+# Words in a DRIVERS line that name no business line.
+_DRIVER_FILLER = {
+    "currently", "growth", "driven", "drives", "driving", "margins", "highest", "relatively",
+    "balanced", "because", "pricing", "delivery", "uniformly", "globally", "markets", "geographic",
+    "increasing", "strong", "demand", "segment", "segments", "remains", "remain", "carries",
+    "carrying", "higher", "costs", "models", "service", "scale", "scales", "across", "between",
+    "overall", "particularly", "especially", "significant", "continued",
+    # topic words every AI-era answer uses: they say nothing about the business
+    "artificial", "intelligence", "enterprise", "digital", "technology", "companies",
+}
 # Words of a segment name too general to count alone.
 _WEAK = {"center", "client", "other", "others", "global", "group", "total", "products", "services"}
 
@@ -100,13 +110,31 @@ def driver_terms(primer: str) -> set[str]:
     highlight" (the ACN rewrite hung two industry groups off the revenue
     consensus instead of naming what drives growth)."""
     drivers = _line(primer, "DRIVERS").lower()
-    return {t for t in business_terms(primer)
-            if re.search(rf"(?<![a-z]){re.escape(t)}(?![a-z])", drivers)}
+    named = {t for t in business_terms(primer)
+             if re.search(_term_re(t), drivers)}
+    if named:
+        return named
+    # The DRIVERS line names no segment (ACN reports by region; the
+    # highlight is a type of work, "artificial intelligence transformations,
+    # cloud migrations"). Its own content words are the business line then.
+    return {w for w in re.findall(r"[a-z][a-z-]{6,}", drivers)
+            if w not in _STOP and w not in _DRIVER_FILLER}
+
+
+def _term_re(t: str) -> str:
+    """Whole-word match, singular or plural ("transformations" matches
+    "transformation")."""
+    stem = t
+    if t.endswith("es") and len(t) > 5 and t[-3] in "sxz":
+        stem = t[:-2]                               # processes -> process
+    elif t.endswith("s") and not t.endswith("ss") and len(t) > 4:
+        stem = t[:-1]                               # migrations -> migration
+    return rf"(?<![a-z]){re.escape(stem)}(?:es|s)?(?![a-z])"
 
 
 def _mentions(text: str, terms: set[str]) -> bool:
     low = (text or "").lower()
-    return any(re.search(rf"(?<![a-z]){re.escape(t)}(?![a-z])", low) for t in terms)
+    return any(re.search(_term_re(t), low) for t in terms)
 
 
 def names_business_line(answer: str, primer: str) -> bool:
@@ -118,12 +146,15 @@ def names_business_line(answer: str, primer: str) -> bool:
 
 
 REWRITE_PROMPT = (
-    "Rewrite the answer below so it says which part of {sym}'s business is driving the "
-    "figures it discusses, using the BUSINESS PRIMER. Use its DRIVERS line: name the segment "
-    "or product that is driving growth or margin now, say in plain words what it sells and "
-    "why that moves the figure (a beat, a guide, a margin, the expected move). Tie it to the "
-    "figure it explains, as a reason, not as a list of segments hung on a total. Keep every "
-    "figure, date, bank name and attribution exactly as written. Add no figure that is not in "
-    "the answer or the primer. Keep the arrow format; you may add one arrow. Output only the "
-    "rewritten answer.\n\nBUSINESS PRIMER:\n{primer}\n\nANSWER:\n{answer}"
+    "Rewrite the answer below so it says which part of {sym}'s business matters for the "
+    "figures it discusses, using the BUSINESS PRIMER and its DRIVERS line: name the segment "
+    "or product that is driving growth or margin now and say in plain words what it sells. "
+    "For a reported result, say how that segment produced it. For a forecast (a consensus, "
+    "an estimate, a guide not yet reported), do not say the segment drives the total: say "
+    "what the result turns on in that segment, the figure to watch and why it matters. One "
+    "sentence, as a reason, never a list of segments hung on a total and never a claim the "
+    "primer does not support. Keep every figure, date, bank name and attribution exactly as "
+    "written. Add no figure that is not in the answer or the primer. Keep the arrow format; "
+    "you may add one arrow. Output only the rewritten answer.\n\n"
+    "BUSINESS PRIMER:\n{primer}\n\nANSWER:\n{answer}"
 )

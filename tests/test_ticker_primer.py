@@ -77,6 +77,7 @@ def test_an_unsourced_reply_is_retried_and_never_stored(conn, monkeypatch):
 
 
 def test_a_stored_primer_is_served_and_an_old_one_is_rebuilt(conn, monkeypatch):
+    monkeypatch.setattr(P, "MIN_BUILT_AT", "2000-01-01T00:00:00")
     db.upsert_ticker_primer("NVDA", "SELLS: GPUs", [{"title": "t", "url": "u"}])
     c = _Client([])
     monkeypatch.setattr(P, "_get_client", lambda: c)
@@ -129,6 +130,19 @@ def test_a_building_primer_is_not_a_source():
     from discord_bot import bot, data_footer as F
     assert "building" in bot._FAILED_TOOL_STATUSES
     assert F.footer([{"tool": "ticker_primer", "status": "building"}]) == ""
+
+
+def test_a_primer_built_with_the_old_prompt_is_rebuilt(conn, monkeypatch):
+    """MU's first primer used its pre-2025 segment names."""
+    db.upsert_ticker_primer("MU", "SEGMENTS: Compute and Networking", [{"title": "t", "url": "u"}])
+    monkeypatch.setattr(P, "MIN_BUILT_AT", "2999-01-01T00:00:00")
+    c = _Client([_resp(GOOD, 2)])
+    monkeypatch.setattr(P, "_get_client", lambda: c)
+    P._failed.clear()
+    r = asyncio.run(P._execute_ticker_primer({"symbol": "MU"}))
+    assert c.calls == 1 and r["primer"].startswith("SELLS: Memory chips")
+    assert "Today is " in P.PROMPT.format(sym="MU", name="", today="October 01, 2026") \
+        and "10-K or 10-Q" in P.PROMPT
 
 
 def test_the_primer_block_and_its_absence():
