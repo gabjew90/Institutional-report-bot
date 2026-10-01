@@ -651,6 +651,32 @@ def test_speeches_revisions_and_minor_prints_stay_regular():
     assert not imp("Trade Balance", "low")
 
 
+def test_only_the_chair_speaks_on_the_sheet():
+    """2026-09-30: the 10/1 sheet listed eight FOMC member speeches."""
+    from report.calendar_data import is_non_chair_fed_speech as fed
+    for ev in ("FOMC Member Waller Speaks", "Fed Vice Chair Jefferson Speaks",
+               "Fed Vice Chair for Supervision Bowman Speaks",
+               "Fed Governor Cook Testifies", "FOMC Member Powell Speaks"):
+        assert fed(ev), ev
+    for ev in ("Fed Chair Warsh Speaks", "Fed Chair Warsh Testifies", "FOMC Statement",
+               "FOMC Press Conference", "FOMC Meeting Minutes", "Beige Book",
+               "Fed Monetary Policy Report Speech",          # a release, not a person
+               "Fed Chair Smith Speaks",                     # the feed's title outranks a stale world_context
+               "Federal Funds Rate", "President Trump Speaks", "ISM Manufacturing PMI"):
+        assert not fed(ev), ev
+    day = _build_with([], econ_rows=[
+        {"time": "2026-10-01T13:05:00Z", "event": "FOMC Member Barkin Speaks", "impact": "low"},
+        {"time": "2026-10-01T14:00:00Z", "event": "FOMC Member Waller Speaks", "impact": "medium"},
+        {"time": "2026-10-01T14:00:00Z", "event": "ISM Manufacturing PMI", "impact": "medium"},
+        {"time": "2026-10-01T18:00:00Z", "event": "Fed Chair Warsh Speaks", "impact": "high"}])
+    assert [r.event for r in day.econ] == ["ISM Manufacturing PMI", "Fed Chair Warsh Speaks"]
+    assert [r.important for r in day.econ] == [True, True]
+    # 9/28 had only member speeches: an empty block that is not a feed outage
+    quiet = _build_with([], econ_rows=[
+        {"time": "2026-09-28T12:15:00Z", "event": "FOMC Member Bowman Speaks", "impact": "low"}])
+    assert quiet.econ == [] and quiet.econ_available and not quiet.econ_partial
+
+
 def test_build_marks_important_rows():
     day = _build_with([], econ_rows=[
         {"time": "2026-08-27T12:30:00Z", "event": "Unemployment Claims", "impact": "medium"},

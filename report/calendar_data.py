@@ -13,6 +13,7 @@ from zoneinfo import ZoneInfo
 
 import db
 from report import news_data
+from world_context import FED_CHAIR
 
 log = logging.getLogger(__name__)
 
@@ -60,13 +61,42 @@ _ECON_UNIMPORTANT_RE = re.compile(
 )
 
 
+# A Fed official speaking ("FOMC Member Waller Speaks", "Fed Vice Chair
+# Jefferson Speaks", "Fed Governor Cook Testifies"): a person's title
+# before the verb, so a scheduled release is never caught. Only the
+# chair's appearances reach the sheet (owner call 2026-09-30): the week
+# after a meeting the feed lists 6-8 member speeches a day, and the 10/1
+# sheet was half Fed speakers with ISM buried among them. Stricter than
+# the pulse, whose FED_SPEAKER_KEYWORDS also pass the predecessor.
+_FED_SPEECH_RE = re.compile(
+    r"\b(?:FOMC\s+Member|Fed(?:eral\s+Reserve)?\s+(?:Vice\s+Chair|Governor|President|Chair|Member))\b"
+    r".*\b(?:Speaks|Testifies|Remarks|Speech)\b", re.IGNORECASE)
+# The chair: by the configured name, or by the feed's own "Fed Chair"
+# title, so a chair change that has not reached world_context.py yet
+# does not drop the chair's speech.
+_CHAIR_RE = re.compile(
+    rf"\b{re.escape(FED_CHAIR)}\b|\bFed(?:eral\s+Reserve)?\s+Chair(?:man)?\b(?!\s+for\b)", re.IGNORECASE)
+_VICE_CHAIR_RE = re.compile(r"\bVice\s+Chair", re.IGNORECASE)
+
+
+def is_chair_event(event: str) -> bool:
+    ev = event or ""
+    if _VICE_CHAIR_RE.search(ev) and not re.search(rf"\b{re.escape(FED_CHAIR)}\b", ev, re.IGNORECASE):
+        return False
+    return bool(_CHAIR_RE.search(ev))
+
+
+def is_non_chair_fed_speech(event: str) -> bool:
+    return bool(_FED_SPEECH_RE.search(event or "")) and not is_chair_event(event)
+
+
 def econ_is_important(event: str, impact: str) -> bool:
     """Bold on the sheet: a Tier-1 series by name, or anything the feed
     rates high impact. Fed member speeches, revisions and second prints
     stay regular even when their name contains a Tier-1 word ("FOMC
     Member Waller Speaks" is not the FOMC decision)."""
     ev = (event or "").strip()
-    if _ECON_UNIMPORTANT_RE.search(ev) and not re.search(r"\b(?:Powell|Warsh)\b", ev, re.I):
+    if _ECON_UNIMPORTANT_RE.search(ev) and not is_chair_event(ev):
         return False
     if (impact or "").lower() == "high":
         return True
@@ -601,6 +631,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
             )
             for e in rows
             if e.get("time") and e.get("event")
+            and not is_non_chair_fed_speech(e.get("event") or "")
         ])
 
     # --- industry events: verified conference sessions from the corpus
