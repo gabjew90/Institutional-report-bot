@@ -1,0 +1,3 @@
+# shell scripts and git hooks run under sh: LF on every checkout (2026-10-01)
+*.sh text eol=lf
+.githooks/* text eol=lf

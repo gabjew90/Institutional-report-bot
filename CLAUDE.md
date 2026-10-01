@@ -6,6 +6,22 @@ Write in direct, technically accurate, plain English. Avoid melodramatic, flower
 
 Scope: responses to the user, commit messages, code comments, docs, and reports. This is separate from the bot's output voice — the pulse and /ask have their own voice contracts (`discord_bot/ask_prompt.py`, DRAFT_USER, `ai_analysis/voice_rules.py`) and those rules win for bot-facing text.
 
+## Owner decisions and working agreements (binding on all sessions)
+
+Moved here from local session memory on 2026-10-01 so a cloud session has them. Product and process only; notes about specific members stay out of this public file.
+
+- **How to work:** plain-English progress updates while building; run the code-review skill on every change before pushing and at milestones; bring risks and product decisions to the owner rather than deciding them.
+- **Evidence before claims:** verify a claimed error (the web for facts, the full source sentence for a statistic) before calling it wrong; search the transcript, heredocs included, before saying an action was not this session's; three or more findings in one subsystem mean a design flaw, so propose the structural fix instead of a fourth patch.
+- **/ask model stays `gemini-3.5-flash-lite`** (owner declined 3.8 Flash on 2026-09-30). Close quality gaps in code and data. Do not re-propose without new evidence.
+- **/ask stock answers:** narrate data, never grade it (no thresholds: "low float", "liquid", "risky"); growth and beat/miss first with the dollar figure beside it, computed in code; name the part of the business that drives the figure as a reason; a desk is credited only with what its own note says; a print that already happened leads. Fix quality in `discord_bot/stock_outline.py` or the data, not with another rewrite pass. Show every sample through the live harness (`.claude/skills/ask-harness`).
+- **Pulse voice:** no news-source attribution ("per Reuters"); no corpus meta-narration ("8 notes flag", "consensus is firming"); no single-name shorts built from intraday dispersion; no house trade calls (see Writing voice).
+- **Bot behavior:** a reply to the bot always gets an answer, even when it tags someone else; member identity is `author_id`, never a display name.
+- **Declined, do not re-raise:** rotating the GitHub PAT; the 2026-09-01 review's P0 about the public repository.
+
+## Working from a cloud session
+
+Everything the code needs is in this repository; three things were local to the owner's machine until 2026-10-01. `scripts/cloud_setup.sh` handles two of them: it builds `.venv` on Python 3.12 (the push gate refuses any other version), installs the pinned requirements, and points git at the versioned push gate in `.githooks/pre-push` (`git config core.hooksPath .githooks`; the local machine uses the same hook). Run it at session start or set it as the cloud environment's setup script. The third is production access: `railway logs`, `railway ssh`, the read-only DB probes and the /ask live harness need a Railway token in the session environment (`RAILWAY_API_TOKEN`, an account token, which the script links to `marvelous-dream`/`production`/`worker`; or `RAILWAY_TOKEN`, a project token). Without one, production checks are unavailable and the session should say so rather than guess. Live API keys (Gemini, Finnhub, Dropbox) are not needed in the cloud: anything live runs on the worker through `railway ssh`, which has them.
+
 ## /ask prompt: enforcement policy (binding on all sessions)
 
 The system prompt is a scarce shared resource, currently ~64,000 chars.
