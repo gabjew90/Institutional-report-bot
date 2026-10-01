@@ -1,0 +1,58 @@
+{
+ "unread_source_files_at_edit": 4,
+ "given_up_at_edit": 90,
+ "pack": {
+  "documents": 10,
+  "cards": 352
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 147,
+  "brief_citations": 0,
+  "distinct_cards_cited": 142,
+  "card_count": 352,
+  "quintiles": [
+   20,
+   39,
+   30,
+   33,
+   25
+  ],
+  "edge_quintile_share": 0.306,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Paramount Skydance launched the investment-grade bond sale that is the largest piece of a $52 billion debt package funding its Warner Bros.",
+    "cite": "",
+    "reason": "figures with no card citation: ['52000000000']"
+   },
+   {
+    "sentence": "Goldman Sachs cut its third-quarter operating profit estimate for Samsung Electronics by 5% to 106 trillion won from 112 trillion on a stronger Korean won [c251].",
+    "cite": "c251",
+    "reason": "figures not in cited card(s): ['106000000000000', '112000000000000']"
+   },
+   {
+    "sentence": "It still expects profit above 100 trillion won on DRAM and NAND strength [c228] and keeps a Buy rating with a 490,000 won target [c230].",
+    "cite": "c228,c230",
+    "reason": "figures not in cited card(s): ['100000000000000', '490000']"
+   },
+   {
+    "sentence": "Goldman Sachs reads the puzzle as smaller than it looks.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Industrials closed yesterday down 125 basis points and materials down 80, both well behind the broader market [c255], ending the month down 465 and 750 basis points [c256].",
+    "cite": "c255,c256",
+    "reason": "figures not in cited card(s): ['465']"
+   }
+  ],
+  "word_count": 2486
+ }
+}
