@@ -96,7 +96,8 @@ def test_the_source_tags_never_reach_the_reader():
     assert "[live prices]" not in out and "[JPMorgan]" not in out
     assert "[company background]" not in out and "[exchange and filing data]" not in out
     assert "[the filing](<https://sec.gov/x>)" in out, "links survive"
-    assert "[Q4]" in out, "other bracketed text survives"
+    assert "the (Q4) slide" in out, "other bracketed names read as parentheses"
+    assert O.strip_source_tags("→ revenue $18.68B [Stock Titan]", set()) == "→ revenue $18.68B (Stock Titan)"
     assert out.startswith("→ **$MU $1,076.15**, **+1.0%** session-to-date\n")
     assert O.strip_source_tags("→ BofA expects a beat [BofA-ML]", {"BofA-ML"}) == "→ BofA expects a beat"
 

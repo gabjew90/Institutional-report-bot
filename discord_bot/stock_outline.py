@@ -228,14 +228,22 @@ def strip_source_tags(answer: str, banks: set[str] | None = None) -> str:
     """Remove the outline's bracketed source tags from an answer. A bare
     '[Name]' is removed only when Name is one of the outline's banks, so
     other bracketed text survives; markdown links are never touched."""
+    text = answer or ""
+
     def _drop(m):
         tag = m.group(0).strip()[1:-1]
         bare = ";" not in tag and tag not in _GENERIC_TAGS and not tag.startswith(
             ("company background", "the publisher"))
         if bare and tag not in (banks or set()):
-            return m.group(0)
+            # a publisher the model named in the outline's bracket style
+            # ("[Stock Titan]"): a real attribution, written as one, keeping
+            # the whitespace it had; inside an open parenthesis just unbracket
+            lead = m.group(0)[:len(m.group(0)) - len(m.group(0).lstrip())]
+            before = text[:m.start()]
+            inside = before.count("(") > before.count(")")
+            return f"{lead}{tag}" if inside else f"{lead}({tag})"
         return ""
-    return _SOURCE_TAG_RE.sub(_drop, answer or "")
+    return _SOURCE_TAG_RE.sub(_drop, text)
 
 
 _GENERIC_TAGS = {"live prices", "company report", "consensus data", "exchange and filing data",
