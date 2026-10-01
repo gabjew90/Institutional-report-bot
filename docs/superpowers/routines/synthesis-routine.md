@@ -1,9 +1,9 @@
 # Daily Market Pulse Synthesis Routine (with Adjudication)
 
-> **Live source for the Claude.ai scheduled-routine prompt — auto-fetched.**
-> The production routine prompt on Claude.ai is the small bootstrap in `routine-bootstrap.md`. Every fire, it `curl`s THIS file from the working branch and executes it verbatim. **You do not need to paste anything into Claude.ai when you edit this file** — push to the working branch and the next fire picks it up. The bootstrap was set up once; after that, this file is the canonical, auto-deployed source.
+> **Live source for the Claude.ai scheduled-routine prompt, read from the session's checkout.**
+> The production routine prompt on Claude.ai is the small bootstrap in `routine-bootstrap.md`. Every fire clones this repository at the working branch's latest commit, and the bootstrap copies THIS file from that checkout and executes it verbatim. **You do not need to paste anything into Claude.ai when you edit this file**: push to the working branch and the next fire picks it up. (Until 2026-10-01 the bootstrap downloaded this file with `curl`; Claude.ai's auto-mode classifier blocked running code from the download as "Code from External" on 9/30 and 10/1.)
 >
-> **If you need to change the branch the bootstrap fetches from, OR rotate the GitHub PAT**, edit `routine-bootstrap.md` and paste its body into the live routine config. That's the only time you touch the live prompt.
+> **If you need to change the bootstrap itself**, edit `routine-bootstrap.md` and update the live routine prompt (the RemoteTrigger API `update` with `{"prompt": ...}`). That's the only time you touch the live prompt.
 >
 > **Secrets:** the `${GH_TOKEN}` reference in the Constants block below is documentation — the live value is the env var that the bootstrap exports at fire start. Do NOT paste the actual token into this file. The token is a fine-grained PAT with write access to `gabjew90/Institutional-report-bot`; rotate it whenever it leaves a controlled environment.
 
