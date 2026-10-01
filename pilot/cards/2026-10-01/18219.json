@@ -1,0 +1,606 @@
+{
+ "brief": "Desk note combining a market recap, a GIR rates call, and single-name updates. Industrials closed down 125bps and materials down 80bps yesterday, underperforming broader markets. Both are down sharply for the month, 465bps and 750bps. Futures are firmer this morning, lifted by Micron's bullish forecast, while Europe lags on France's budget reveal and Brent holds above $100. GIR's causal chain: August core PCE rose 0.25% m/m and 3.01% y/y, both below expectations, partly from a methodology-driven revision. This leads GS to forecast 3.0% Q4/Q4 core PCE versus the FOMC median of 3.4%, which combined with NY Fed President Williams' comments leads GS to see an October hike as unlikely, pushing the second hike to December with a strong chance the FOMC ultimately hikes no further. Separately, Q2 GDP was revised up 0.7pp to +2.2% and 2026Q1 up 0.4pp to +2.5%, while Q3 GDP tracking was trimmed 0.1pp to +3.3% on weaker Advance Economic Indicators data. The note also reports an AYI fiscal Q4 beat, a constructive PWR update reiterating Buy, and an AAL/LUV field trip citing resilient demand despite higher fuel.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Industrials closed on lows yesterday down 125bps with materials off 80bps, both meaningfully underperforming the broader markets.",
+   "anchor": "Industrials closed on lows yesterday down 125bps with materials off 80bps both meaningfully underperforming the broader markets.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "yesterday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Industrials ended the month down 465bps and materials ended the month down 750bps.",
+   "anchor": "Industrials ending the month down 465bps materials down 750bps.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "month-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Technology shares were helped pre-market by Micron's bullish forecast given the prior night.",
+   "anchor": "Technology shares helped pre-market by MU\u2019s bullish forecast last night.",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "pre-market"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Japan rose 330bps and the tech-heavy KOSPI rose 195bps overnight.",
+   "anchor": "Japan up 330bps, tech heavy KOSPI up 195bps.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "overnight"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Europe led to the downside by France, down 120bps on the heels of its budget reveal.",
+   "anchor": "led on the downside by France down 120bps on the heels of their budget reveal.",
+   "topic": "France 2027 budget and OAT spreads",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Brent moved back above $100 and WTI rose 200bps to $92 to start the month.",
+   "anchor": "Brent back above $100, WTI $92 up 200bps.",
+   "topic": "Brent crude and US-Iran tensions",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Corn approached $5 after the prior day's WASDE supply-demand update.",
+   "anchor": "Corn a notable flag back approaching $5 after yesterday\u2019s WASDE supply demand update.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "The 10-year Treasury yield touched local highs of 5.31% this morning.",
+   "anchor": "10-year at local highs this morning 5.31%.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "this morning"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "The dollar was higher, with the DXY approaching $102.",
+   "anchor": "Dollar higher as well DXY approaching $102",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Bitcoin was flat at $83.7k.",
+   "anchor": "DXY approaching $102 and Bitcoin flat $83.7k.",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Nasdaq is threatening the highs while the market still feels underexposed.",
+   "anchor": "Nasdaq is threatening the highs and the market still feels underexposed.",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "AI is behaving exactly as it should while Europe and the Russell lag and vol hedges remain relatively cheap.",
+   "anchor": "AI is\nbehaving exactly as it should, while Europe/Russell lag and vol hedges remain relatively cheap.",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Given even stable rates, AI can keep dragging the index higher.",
+   "anchor": "Give us even stable rates and AI can keep dragging the index higher.",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "If productivity growth starts resembling the late-90s, equities can tolerate higher real rates than people think, though not uniformly.",
+   "anchor": "If productivity growth\nstarts resembling the late-90s, equities can tolerate higher real rates than people think",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "AYI reported a small fiscal Q4 beat with EPS of $5.77 versus $5.57 expected, on revenue in line at $1.24bn.",
+   "anchor": "AYI out\n\nwith small fiscal Q4 beat EPS $5.77 vs. $5.57 on revenue that came in line $1.24bn",
+   "topic": "Acuity Brands earnings beat",
+   "status": "released",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "AYI's EBIT came in slightly ahead at $233mm versus $231mm expected.",
+   "anchor": "EBIT slightly\nahead $233mm vs. $231mm.",
+   "topic": "Acuity Brands earnings beat",
+   "status": "released",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "AYI's gross margin strength continued at 50.2%, ahead of the 49.8% consensus.",
+   "anchor": "Gross margin strength continued 50.2% ahead of\n49.8% consensus.",
+   "topic": "Acuity Brands earnings beat",
+   "status": "released",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "AYI's ABL segment sales declined year over year but were about in line with consensus.",
+   "anchor": "ABL sales\ndown year over year but about in line with consensus.",
+   "topic": "Acuity Brands earnings beat",
+   "status": "released",
+   "instruments": [
+    "AYI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fiscal Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS remains constructive on PWR, seeing incremental growth opportunities beyond the guided 7-10% organic growth CAGR through 2030.",
+   "anchor": "We remain constructive on PWR as we see\nincremental growth opportunities beyond the guided 7-10% organic growth CAGR through 2030",
+   "topic": "Quanta Services data center growth",
+   "status": "forecast",
+   "instruments": [
+    "PWR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS reiterated its Buy rating on PWR and continues to see a compelling risk/reward.",
+   "anchor": "We reiterate our Buy rating and continue to see a compelling risk/reward.",
+   "topic": "Quanta Services data center growth",
+   "status": "level",
+   "instruments": [
+    "PWR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS sees incremental growth for PWR from past M&A aiding customer awards for large data center projects, given PWR's vertically-integrated model.",
+   "anchor": "we see incremental growth from past M&A aiding in customer awards for large projects as PWR\noffers a vertically-integrated model.",
+   "topic": "Quanta Services data center growth",
+   "status": "forecast",
+   "instruments": [
+    "PWR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "AAL and LUV both noted demand strength has continued despite higher fares in response to significantly higher fuel costs.",
+   "anchor": "both companies noting demand strength has continued despite\nhigher fares in response to significantly higher fuel",
+   "topic": "Airline demand and margin outlook",
+   "status": "released",
+   "instruments": [
+    "AAL",
+    "LUV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Southwest flagged strong September trends.",
+   "anchor": "with Southwest flagging strong September trends.",
+   "topic": "Airline demand and margin outlook",
+   "status": "released",
+   "instruments": [
+    "LUV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "AAL and LUV are assessing capacity plans given the material move higher in fuel, with possible December schedule changes.",
+   "anchor": "both companies are assessing capacity plans,\nnoting there could still be some changes to schedules in December",
+   "topic": "Airline demand and margin outlook",
+   "status": "level",
+   "instruments": [
+    "AAL",
+    "LUV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "If higher fuel prices persist, both AAL and LUV management teams see downside risk to 2027 growth plans, which GS expects across the industry.",
+   "anchor": "If higher fuel prices persist, both\nmanagement teams noted there could be\ndownside risk to 2027 growth plans",
+   "topic": "Airline demand and margin outlook",
+   "status": "forecast",
+   "instruments": [
+    "AAL",
+    "LUV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "American expects its fleet, onboard and airport product investments, loyalty growth, and network changes to be key drivers to margin growth going forward.",
+   "anchor": "American expects its fleet, onboard and airport product investments, loyalty\n\ngrowth, and network changes to be key drivers to margin growth going forward.",
+   "topic": "Airline demand and margin outlook",
+   "status": "forecast",
+   "instruments": [
+    "AAL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Southwest expects product enhancements, network, and loyalty initiatives to drive margins higher over the coming years.",
+   "anchor": "Southwest also called out\nthat product enhancements, network, and loyalty are expected to drive margins higher over the coming\nyears.",
+   "topic": "Airline demand and margin outlook",
+   "status": "forecast",
+   "instruments": [
+    "LUV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "coming years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Core PCE rose 0.25% in August, somewhat below expectations.",
+   "anchor": "The core PCE price index rose 0.25% in August,\nsomewhat below expectations",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Core PCE's year-over-year rate stands at 3.01%, well below expectations.",
+   "anchor": "the year-over-year rate now stands at 3.01%, well below expectations.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year-over-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS now expects 3.0% core PCE growth on a Q4/Q4 basis, well below the median FOMC participant's forecast of 3.4%.",
+   "anchor": "we now expect 3.0% growth for core PCE on a Q4/Q4\nbasis, well below the median FOMC participant's forecast of 3.4%.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q4/Q4 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Coupled with comments from NY Fed President John Williams, GS now thinks an October rate hike is unlikely.",
+   "anchor": "Coupled with comments from New\nYork Fed President John Williams yesterday, we now think that an October hike is unlikely.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS is pushing back the second rate hike in its forecast to December.",
+   "anchor": "We are\npushing back the second hike in our forecast to December",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS sees a strong chance the FOMC ultimately concludes that additional rate hikes are unnecessary.",
+   "anchor": "we see a strong chance that the FOMC will\nultimately conclude that additional rate hikes are unnecessary.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Real GDP was revised up by 0.7pp to +2.2% in its third Q2 release, largely reflecting upward revisions to consumption and investment growth.",
+   "anchor": "Real GDP was revised up by 0.7pp to\n+2.2% in its third Q2 release (quarter-over-quarter annualized), largely reflecting upward revisions to\nconsumption and investment growth.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2 2026 third release"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "Real GDP growth for 2026Q1 was revised up by 0.4pp to +2.5%, but revisions to prior years were modest.",
+   "anchor": "Real GDP growth was revised up by 0.4pp to +2.5% in 2026Q1 but revisions to prior years were modest.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "The savings rate was revised up significantly and stands at 4.1% in August.",
+   "anchor": "The savings rate was revised up significantly and\nstands at 4.1% in August.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS lowered its Q3 GDP tracking estimate by 0.1pp to +3.3% on net weaker Advance Economic Indicators data.",
+   "anchor": "we lowered our Q3 GDP tracking estimate by 0.1pp to +3.3% (quarter-over-quarter\nannualized).",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS added Amazon, Burlington Stores, Huntington Ingalls, Johnson Controls, and Occidental Petroleum to its Conviction List.",
+   "anchor": "We add Amazon (AMZN), Burlington Stores (BURL), Huntington\nIngalls (HII), Johnson Controls (JCI), and Occidental Petroleum (OXY)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "AMZN",
+    "BURL",
+    "HII",
+    "JCI",
+    "OXY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "GS removed Air Products and Chemicals, ConocoPhillips, Golar LNG, Loar Holdings, and Tyson Foods from its Conviction List.",
+   "anchor": "removing Air Products and\nChemicals (APD), ConocoPhillips (COP), Golar LNG (GLNG), Loar Holdings (LOAR), and Tyson Foods\n(TSN).",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "APD",
+    "COP",
+    "GLNG",
+    "LOAR",
+    "TSN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "CTVA traded lower pre-market as the company began trading Corteva and Vylor separately today.",
+   "anchor": "CTVA \u201cdown\u201d pre-market as the company trades Corteva / Vylor today.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials Fed PWR AAL LUV AYI 1 Oct 2026",
+   "claim": "There was more investor interest in Vylor, with debate around multiples for each piece.",
+   "anchor": "More interest in Vylor for sure but debate around multiples in each.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-01/18219__gs-u-s-industrials-materials-fed-pwr-aal-luv-ayi-1-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 41,
+  "matched": 41,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 9,
+  "labels_over_cap": 4,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
