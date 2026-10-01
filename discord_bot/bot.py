@@ -91,6 +91,7 @@ from discord_bot.ask_tools import (  # noqa: E402,F401  re-exported: call sites,
     _validate_select_sql,
 )
 from discord_bot.news_tool import _execute_ticker_news  # noqa: E402
+from discord_bot.primer_tool import _execute_ticker_primer  # noqa: E402
 from discord_bot.snapshot_tool import (  # noqa: E402,F401  re-exported for the fixture harness
     _build_snapshot_tool,
     _execute_snapshot,
@@ -890,14 +891,15 @@ def _build_runtime_system_instruction(extra_directive: str = "") -> str:
     # block that already changes per call (2026-09-16: an answer named
     # a "Powell press conference" three months after the transition).
     import world_context as _wc
+    # New York first, and named as the day "today" means: with UTC on top
+    # the model called ACN's next-morning print "today" at 23:20 ET,
+    # when UTC had already rolled to Thursday (2026-09-30).
     header = (
+        f"CURRENT TIME (ET):     {et_label}; 'today' and 'tomorrow' mean this date\n"
         f"CURRENT TIME (UTC):    "
         f"{now_utc.strftime('%Y-%m-%d %H:%M:%S')} UTC, "
         f"{now_utc.strftime('%A')}\n"
-        f"CURRENT TIME (ET):     {et_label}\n"
-        f"When the asker says a local time (5pm EST, this morning, "
-        f"last hour), convert to UTC before passing as start_iso/"
-        f"end_iso to search_chat_messages.\n"
+        f"Asker-local times go to search_chat_messages start_iso/end_iso in UTC.\n"
         f"FED CHAIR:             {_wc.FED_CHAIR_FULL} "
         f"({_wc.TRANSITION_DESCRIPTION}); {_wc.PREDECESSOR_NAME} is now a "
         f"{_wc.PREDECESSOR_ROLE_NOW}.\n"
@@ -1998,7 +2000,7 @@ def _grounding_has_sources(gm) -> bool:
 # Tool-result statuses that mean the call produced nothing the model
 # could use. Shared vocabulary with scripts/ask_response_validate.py.
 _FAILED_TOOL_STATUSES = frozenset({"no_data", "error", "empty", "not_found", "timeout",
-                                   "not_a_stock"})
+                                   "not_a_stock", "building"})
 
 
 def _trace_has_source(tool_trace) -> bool:
@@ -5214,6 +5216,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_RESEARCH: _execute_research,
         _ask_router.T_SNAPSHOT: _execute_snapshot,
         _ask_router.T_NEWS: _execute_ticker_news,
+        _ask_router.T_PRIMER: _execute_ticker_primer,
     }
     _ask_meta["route_shape"] = _ask_route.shape
 
@@ -5269,10 +5272,12 @@ async def _ask_02_call_model_with_tools(
             _ask_meta["news"] = {"sources": _pf_res.get("sources") or [],
                                  "digest": _pf_res.get("digest") or ""}
         _ask_tool_log.append(_pf_tool)
+        _pf_text = _ask_router.inject_text(_pf_tool, _pf_res, has_images=_has_attached_image)
+        if not _pf_text:
+            continue          # e.g. a primer still being built: no block at all
         contents.append(types.Content(
             role="user",
-            parts=[types.Part.from_text(text=_ask_router.inject_text(
-                _pf_tool, _pf_res, has_images=_has_attached_image))],
+            parts=[types.Part.from_text(text=_pf_text)],
         ))
     _round_gm_chunks: list = []
     for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):

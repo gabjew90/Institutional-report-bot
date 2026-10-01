@@ -105,3 +105,43 @@ def get_recent_bot_answers_to_asker(
          f"-{int(max_age_days)} day", int(limit)),
     ).fetchall()
     return [dict(r) for r in rows]
+
+
+# ------------------------------------------------- ticker primers (2026-09-30)
+
+PRIMER_TTL_DAYS = 30
+
+
+def get_ticker_primer(symbol: str, max_age_days: int = PRIMER_TTL_DAYS) -> dict | None:
+    """The stored primer for `symbol` if it is younger than `max_age_days`."""
+    row = _db.get_connection().execute(
+        "SELECT symbol, primer, sources, built_at FROM ticker_primers WHERE symbol = ?",
+        ((symbol or "").upper(),)).fetchone()
+    if not row:
+        return None
+    try:
+        built = datetime.fromisoformat(str(row["built_at"]).replace(" ", "T")[:19])
+    except ValueError:
+        return None
+    from datetime import timezone
+    if datetime.now(timezone.utc).replace(tzinfo=None) - built > timedelta(days=max_age_days):
+        return None
+    import json
+    try:
+        sources = json.loads(row["sources"] or "[]")
+    except ValueError:
+        sources = []
+    return {"symbol": row["symbol"], "primer": row["primer"], "sources": sources,
+            "built_at": str(row["built_at"])}
+
+
+def upsert_ticker_primer(symbol: str, primer: str, sources: list[dict]) -> None:
+    import json
+    conn = _db.get_connection()
+    conn.execute(
+        "INSERT INTO ticker_primers (symbol, primer, sources, built_at) "
+        "VALUES (?, ?, ?, strftime('%Y-%m-%dT%H:%M:%S', 'now')) "
+        "ON CONFLICT(symbol) DO UPDATE SET primer = excluded.primer, "
+        "sources = excluded.sources, built_at = excluded.built_at",
+        ((symbol or "").upper(), primer, json.dumps(sources or [])))
+    conn.commit()

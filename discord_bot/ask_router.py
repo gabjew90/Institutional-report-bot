@@ -75,6 +75,8 @@ T_SNAPSHOT = "lookup_ticker_snapshot"
 # Prefetch only, never declared to the model (it already has Google):
 # discord_bot/news_tool.py runs the grounded search in code.
 T_NEWS = "ticker_news"
+# Prefetch only: discord_bot/primer_tool.py, the stored business primer.
+T_PRIMER = "ticker_primer"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
              T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT}
 
@@ -539,6 +541,9 @@ def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None
     if want_news:
         out.append((T_NEWS, {"symbol": sym}))
     out.append((T_SNAPSHOT, {"symbol": sym}))
+    # A price or date lookup does not wait on a cold primer build; it
+    # starts one for the next question.
+    out.append((T_PRIMER, {"symbol": sym, "wait": bool(research)}))
     return out
 
 
@@ -752,6 +757,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                  "supersedes any bank note written before it: if the company has reported, lead "
                  "with what it reported against the estimates. Name the publisher for anything "
                  "you take from it. status=no_data: nothing dated was found; do not fill it in."),
+        T_PRIMER: ("BUSINESS PRIMER, a stored plain-English description of the company built from "
+                   "a web search. Use it to say which part of the business drives the figure being "
+                   "discussed (a desk's estimate, a margin, a guide, a move), in its words: name the "
+                   "segment and what it sells, not a code or acronym."),
         T_SNAPSHOT: ("TICKER SNAPSHOT, system-fetched from Yahoo. What the company does and the "
                      "trading facts on it. Use the figures that bear on the question, each with "
                      "its date where it has one (short interest is exchange-reported twice a "
@@ -807,6 +816,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
         pubs = ", ".join(s.get("title") or "" for s in result.get("sources") or [] if s.get("title"))
         return (f"[{lead}{tail}]\nNEWS ON {result.get('symbol')}:\n{result.get('digest')}"
                 + (f"\n(searched: {pubs})" if pubs else ""))
+    if tool == T_PRIMER:
+        if (result or {}).get("status") == "ok":
+            return f"[{lead}{tail}]\nBUSINESS OF {result.get('symbol')}:\n{result.get('primer')}"
+        return ""        # not built yet: nothing to say, and nothing to imply
     if tool == T_SNAPSHOT:
         if (result or {}).get("status") == "ok":
             from report.ticker_snapshot import render as _render_snapshot

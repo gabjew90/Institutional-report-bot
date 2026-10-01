@@ -40,6 +40,15 @@ def test_ask_tool_docs_name_the_current_chair():
     assert "_wc.FED_CHAIR" in src and "Powell" not in src.replace("PREDECESSOR", "")
 
 
+def test_ask_runtime_header_puts_new_york_first():
+    """2026-09-30: with UTC first the model called a next-morning print
+    'today' after 8 PM ET."""
+    from discord_bot import bot as B
+    text = B._build_runtime_system_instruction()
+    assert text.index("CURRENT TIME (ET)") < text.index("CURRENT TIME (UTC)")
+    assert "'today' and 'tomorrow' mean this date" in text
+
+
 def test_ask_runtime_header_carries_the_chair():
     from discord_bot import bot as B
     text = B._build_runtime_system_instruction()

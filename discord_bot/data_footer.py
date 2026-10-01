@@ -26,6 +26,7 @@ FEEDS: dict[str, str] = {
     "lookup_research": "bank research notes",
     "lookup_ticker_snapshot": "company and trading data (Yahoo)",
     "ticker_news": "news search (Google)",
+    "ticker_primer": "company background (Google)",
     "query_data": "research database",
 }
 # Tools whose data is the room's own conversation. The reader is in the
@@ -33,7 +34,7 @@ FEEDS: dict[str, str] = {
 NOT_CITED = frozenset({"search_chat_messages"})
 
 # Statuses that mean the call produced nothing (mirrors bot._FAILED_TOOL_STATUSES).
-_FAILED = frozenset({"no_data", "error", "empty", "not_found", "timeout", "not_a_stock"})
+_FAILED = frozenset({"no_data", "error", "empty", "not_found", "timeout", "not_a_stock", "building"})
 
 
 def footer(tool_trace: list[dict] | None) -> str:

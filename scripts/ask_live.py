@@ -99,6 +99,9 @@ def _install_stubs(db, conn: sqlite3.Connection) -> None:
     db.record_gemini_call = _record_gemini_call
     db.record_ask_bot_answer = _record_ask_bot_answer
     db.set_chat_image_ocr = _set_chat_image_ocr
+    # A primer built during a harness run is not stored: the next channel
+    # question builds its own.
+    db.upsert_ticker_primer = lambda *a, **k: None
 
 
 def _chat_block(conn: sqlite3.Connection, channel_name: str, bot_user_id: int | None,

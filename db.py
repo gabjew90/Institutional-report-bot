@@ -336,6 +336,17 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         );
         CREATE INDEX IF NOT EXISTS idx_gemini_calls_time ON gemini_calls(called_at);
 
+        -- One plain-English business primer per ticker for /ask
+        -- (discord_bot/primer_tool.py, 2026-09-30): what the company sells,
+        -- revenue by segment, which segment drives growth and margin, the
+        -- metrics it trades on. Rebuilt after 30 days.
+        CREATE TABLE IF NOT EXISTS ticker_primers (
+            symbol TEXT PRIMARY KEY,
+            primer TEXT NOT NULL,
+            sources TEXT,              -- JSON list[{title, url}]
+            built_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S', 'now'))
+        );
+
         -- Books the bot published, so a caller's correction can be
         -- attributed (2026-08-26). BK's book listed MU 980C and AVGO
         -- 450C as open; he replied "No AVGO" / "No MU anymore". Both
@@ -1467,8 +1478,10 @@ from db_parts.ask import (  # noqa: E402,F401
     count_ask_queries_today_for_user,
     get_recent_bot_answers_in_channel,
     get_recent_bot_answers_to_asker,
+    get_ticker_primer,
     record_ask_bot_answer,
     record_ask_query,
+    upsert_ticker_primer,
 )
 from db_parts.chat import (  # noqa: E402,F401
     PINNED_ALIASES,
