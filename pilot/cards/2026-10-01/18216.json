@@ -1,0 +1,547 @@
+{
+ "brief": "Daily flow note; clearest chains: Micron beat and raised (revenue $54.2bn vs $50.9bn consensus, guide $61.50bn midpoint vs $57.6bn consensus) on tight DRAM/NAND supply-demand through 2027-2028 and 10 new long-term agreements covering ~35% of expected FY30 revenue; GS reads the agreements as support for a higher multiple on peak earnings and raises its price target to $1250 from $1100. On the Fed, August core PCE rose 0.25% m/m, 3.01% yoy versus 3.4% expected, so GS cuts its Q4/Q4 core PCE forecast to 3.0% (below the FOMC median of 3.4%); with NY Fed's Williams saying there is no need for urgency, GS pushes its forecast second hike to December and sees a strong chance of no further hikes, even as the market prices only 36% odds of an October hike and the 10yr sits at 5.28%. Bitcoin rallied +43% in Q3 despite higher yields, oil and Middle East tensions, which GS ties to ETF inflows and now calls technically constructive. Gold: GS cuts its year-end target to $4650 from $4900 on rate-driven ETF demand but keeps its 2027 target at $5400 on central-bank buying. Remaining items (bond-proxy idea, DoorDash drones, software fundamentals, OpenAI funding, money-market balances) are reported, not argued.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "The S&P 500 closed the quarter down 25bps at 7651, up 11.8% year to date, capping a +2.5% quarterly performance.",
+   "anchor": "S&P -25bps @7651 (+11.8% ytd) closing an intense quarter with +2.5% performance",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "The Nasdaq closed higher in 9 of the last 11 sessions despite higher rates.",
+   "anchor": "Nasdaq now higher 9 of 11 sessions despite higher rates",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron shares rose only +0.4% in post-market trading despite another beat-and-raise quarter.",
+   "anchor": "Micron with another beat & raise (only +0.4% post market; see below)",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "The US 10-year Treasury yield stood at 5.28% despite softer inflation data.",
+   "anchor": "US 10yr at 5.28% despite softer inflation (only 36% for a Oct hike)",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Markets are pricing only a 36% probability of an October Fed rate hike.",
+   "anchor": "US 10yr at 5.28% despite softer inflation (only 36% for a Oct hike)",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "The Nikkei rose +3% on better macro data.",
+   "anchor": "Nikkei +3% on better macro data",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Brent crude fell to $97 a barrel.",
+   "anchor": "Brent lower at $97, Gold $4179 and Bitcoin $84k",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Gold traded at $4,179.",
+   "anchor": "Brent lower at $97, Gold $4179 and Bitcoin $84k",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Bitcoin traded at $84,000.",
+   "anchor": "Brent lower at $97, Gold $4179 and Bitcoin $84k",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron's fiscal quarter revenue of $54.2bn beat consensus of $50.9bn.",
+   "anchor": "revenue of $54.2bn vs Cons $50.9bn",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron's gross margin of 87.0% came in line with expectations.",
+   "anchor": "gross margin of 87.0% in line",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron guided next-quarter revenue to a $61.50bn midpoint, above consensus of $57.6bn.",
+   "anchor": "revenue guided to $61.50bn at the midpoint vs Cons at $57.6bn",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron continues to see tight supply and demand conditions persisting in both DRAM and NAND through 2027 and 2028.",
+   "anchor": "continues to see tight supply/demand conditions persisting in both DRAM and NAND through 2027 and 2028",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2027 and 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron signed 10 additional long-term agreements covering roughly 35% of its expected revenue through fiscal 2030.",
+   "anchor": "signed 10 additional long-term agreements (~35% of expected revenue through FY30)",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs raised its Micron price target from $1,100 to $1,250.",
+   "anchor": "raise our price target from $1100 to $1250",
+   "topic": "Micron earnings",
+   "status": "target",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron management said it has no line of sight to when DRAM and NAND supply and demand will balance, citing diminishing returns from technology transitions on the supply side.",
+   "anchor": "We made the statement that we really don't have line of sight to when supply and demand balances.",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Micron management said agentic AI workloads are already driving real value and are one reason server unit growth is in the high teens.",
+   "anchor": "server units are growing so strongly, as we noted in the high teens.",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Core PCE rose 0.25% in August, putting the year-over-year rate at 3.01%, below the 3.4% expected.",
+   "anchor": "core PCE rose 0.25% in August and the yoy rate now stands at 3.01% (below expectations of 3.4%)",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs now forecasts 3.0% core PCE growth on a Q4/Q4 basis, below the median FOMC participant's forecast of 3.4%.",
+   "anchor": "we now expect 3.0% growth for core PCE on a Q4/Q4 basis, well below the median FOMC participant's forecast of 3.4%",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q4/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs now thinks an October hike is unlikely and pushed back its forecast second hike to December.",
+   "anchor": "we now think that an October hike is unlikely; we are pushing back the second hike in our forecast to December",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs sees a strong chance the FOMC ultimately concludes additional rate hikes are unnecessary.",
+   "anchor": "we see a strong chance that the FOMC will ultimately conclude that additional rate hikes are unnecessary",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "NY Fed's Williams said there is no need for urgency after the September policy action.",
+   "anchor": "with the policy action we took at our September meeting, there is no need for urgency",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs's DRAM sentiment indicator for September pointed again in a moderately positive direction, with DDR5/DDR4 pricing continuing its upward trend.",
+   "anchor": "our DRAM sentiment indicator for Sep is pointing again in a moderately positive direction; DDR5/DDR4 pricing continued its upward trend",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Taiwan server ODM monthly revenue reached a record high growth rate of +130% year over year.",
+   "anchor": "server ODM monthly revenue reaching record high growth rate at +130% yoy",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Expectations for both conventional memory and HBM pricing have been largely reset and have started to recover.",
+   "anchor": "conventional memory and HBM pricing have been largely reset, and have started to recover",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "The GSXUBOND basket of 48 stocks, a clean long-duration bond-proxy equity expression, presents a strong tactical opportunity or hedge after its RSI fell below 30 with a forward dividend yield above 4%.",
+   "anchor": "GSXUBOND Index (48 stocks) is a clean equity expression of a long-duration view; RSI is <30 and forward div yield is >4%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "In the five prior instances when the GSXUBOND basket met this setup, 1-month returns averaged +2.7% with an 80% hit rate, while 3-month returns averaged +5.9%.",
+   "anchor": "month returns averaged +2.7% with an 80% hit rate, while 3-month returns averaged +5.9%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1 and 3 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "DoorDash unveiled an autonomous aircraft for an end-to-end drone delivery system, with pilot deliveries beginning in Northern California in partnership with brands including Chipotle.",
+   "anchor": "DoorDash: unveiled its autonomous aircraft for an end-to-end drone delivery system; pilot drone",
+   "topic": "DoorDash product platform expansion",
+   "status": "released",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "DoorDash's new AI agent takes orders inside Apple's Messages app.",
+   "anchor": "their new AI agent also takes orders inside Apple\u2019s Messages app",
+   "topic": "DoorDash product platform expansion",
+   "status": "released",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Money market funds now hold $8.44 trillion, a new all-time high.",
+   "anchor": "money market funds: $8.44 trillion is now sitting in money market funds which is a new all-time high.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "OpenAI is reportedly in talks to raise at least $30bn in a pre-IPO funding round at a valuation of roughly $1.4 trillion.",
+   "anchor": "OpenAI: reportedly in talks with investors to raise at least $30bn in a pre-IPO funding round at a valuation of roughly $1.4 trillion.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Median ARR growth across Goldman Sachs's software coverage sample moderated to 21.3% from 22.3%, with 20 of 40 companies accelerating year-over-year ARR growth.",
+   "anchor": "median ARR growth moderated to 21.3% from 22.3% with 20 of the 40 companies in our sample accelerating yoy ARR growth",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs revised 2026 revenue estimates upward for all four software segments it tracks, led by Infra/Platform.",
+   "anchor": "2026 revenue was revised upwards for all four segments we track, led by Infra / Platform",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Bitcoin posted one of its strongest Q3 performances on record, up +43%, despite 10-year Treasury yields rising +100bps YTD, Brent up +60% YTD, and unresolved Middle East tensions.",
+   "anchor": "strongest 3Q performances on record at +43% despite (i) 10y UST yields +100bps YTD, (ii) Brent +60% YTD, (iii) Middle East tensions unresolved",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Bitcoin has been supported by robust ETF inflows and its technical setup now appears constructive.",
+   "anchor": "has been supported by robust ETF inflows and now the technical setup appears constructive",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs lowered its gold year-end target to $4,650 from $4,900.",
+   "anchor": "recently lowered out year-end target to $4650 (vs $4900)",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Goldman Sachs maintains its $5,400 gold price target for end-2027.",
+   "anchor": "maintain our $5400 for end 2027",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "end 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Duttenhoefer's Daily (01.10.2026)",
+   "claim": "Year-over-year cloud revenue growth for AMZN, GOOGL, MSFT, and ORCL accelerated from 25% in 2024 to 48% in Q2 2026.",
+   "anchor": "yoy cloud revenue growth for AMZN, GOOGL, MSFT, and ORCL has accelerated from 25% in 2024 to 48% in Q2 2026",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q2 2026"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-01/18216__gs-duttenhoefer-duttenhoefer-s-daily-01-10-2026-1-oct-2026-p.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 38,
+  "matched": 38,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 11,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
