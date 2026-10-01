@@ -1,0 +1,779 @@
+{
+ "brief": "Daily GS TMT sales roundup, not a single-thesis note. Micron beat Q4 revenue ($54.23bn) and EPS ($33.42) and guided Q1 above consensus ($61.5bn revenue, ~$38.15 EPS); AI/HBM demand outstripping supply, with most 2027 HBM capacity already contracted, gives better visibility that the desk reads as positive for memory and WFE names (SK Hynix, Samsung, Lam Research, Applied Materials, ASML, Tokyo Electron, Advantest), while shifting risk toward future capex, valuation and AI-return scrutiny rather than near-term demand. Shares were flat after hours on already-high expectations. Infineon Taiwan MD says AI datacenter power demand (rising rack density, 800V architectures, SiC/GaN content) is causing structural power-semiconductor tightness that normalizes only in 2-3 years, prompting Taiwanese price hikes. On rates, yields rose despite a softer PCE print and Fed Williams comments; GIR pushed its Fed hike call from October to December, and GS own core PCE forecast (3.0% Q4/Q4) sits below the FOMC median (3.4%), implying an October hike is unlikely. Also reported without an argued chain: Tencent ~$7bn Oracle AI-chip lease, Google Gemini 4 Argon launch, Accenture earnings preview, and GS stock calls on Scout24 and Omnicom.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Micron's Q4 revenue of $54.23bn and adjusted EPS of $33.42 came in ahead of expectations.",
+   "anchor": "Q4 revenue of $54.23bn and adjusted EPS of $33.42 ahead of expectations",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Micron guided Q1 revenue to $61.5bn and EPS to about $38.15, well above consensus.",
+   "anchor": "Q1 guidance of $61.5bn revenue and about $38.15 EPS was also well above consensus",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Most of Micron's 2027 HBM capacity is already contracted at higher prices.",
+   "anchor": "most 2027 HBM capacity is already contracted at higher prices",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Micron management expects DRAM and NAND markets to remain tight through 2027-28 despite rising capex.",
+   "anchor": "management expects DRAM and NAND markets to remain tight through 2027\u201328 despite rising capex",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Micron shares were broadly flat after hours because expectations and valuation were already high.",
+   "anchor": "The shares were broadly flat after hours because expectations and valuation were already high",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "The Micron read-through is positive for memory suppliers SK Hynix and Samsung and for wafer-fab equipment and test names including Lam Research, Applied Materials and ASML.",
+   "anchor": "the broader read-through is positive for memory suppliers SK Hynix and Samsung, as well as wafer-fab equipment and test names",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "LRCX",
+    "AMAT",
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS's Jim raised his Micron revenue estimates by more than 14% per year and EPS estimates by more than 12% per year for the next three years.",
+   "anchor": "raising his revenue estimates for the next 3 years by >14% per year and EPS > 12% per year",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 3 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "TrendForce expects PC, server and mobile DRAM prices to rise 13-18%, 10-15% and 0-5% quarter on quarter respectively in 4Q26, and NAND prices to increase 15-20%.",
+   "anchor": "TrendForce expecting PC, server and mobile DRAM prices to rise 13\u201318%, 10\u201315% and 0\u20135% quarter on quarter, respectively, and NAND prices to increase 15\u201320%",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS's DRAM Sentiment Indicator remained moderately positive in September, supported by rising DDR5/DDR4 pricing and record 130% year-on-year server ODM revenue growth.",
+   "anchor": "The GS DRAM Sentiment Indicator remained moderately positive in September, supported by rising DDR5 and DDR4 pricing, record 130% year-on-year server ODM revenue growth",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR cut its Samsung 3Q26 operating-profit estimate by 5% to W106tn.",
+   "anchor": "GIR has cut its 3Q26 operating-profit estimate by 5% to W106tn,",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR's Samsung 2027-28 forecasts remain 8-17% above Street consensus on stronger DRAM pricing, particularly HBM.",
+   "anchor": "2027\u201328 forecasts remain 8\u201317% above the Street because stronger DRAM pricing",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR expects Samsung's HBM revenue next year to exceed W100tn on higher pricing and volumes.",
+   "anchor": "GIR expects next year\u2019s HBM revenue to exceed W100tn on higher pricing and volumes",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Rising DRAM prices are a negative read-through for Ericsson, which uses significant memory content.",
+   "anchor": "Ericsson pushed a negative given the rising DRAM prices",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "ERIC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Jabil, Ericsson's EMS partner, describes a subdued 5G market that it expects to remain muted near-term.",
+   "anchor": "Ericsson EMS partner Jabil describing a subdued 5G market it expects to remain muted near-term",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "JBL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Quarter-end saw a large $11.5bn market-on-close sell imbalance.",
+   "anchor": "Large $11.5B MOC sell imbal for month end",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "month end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Pensions were modelled to sell $30.5bn of US equities at quarter-end, ranking in the 89th percentile over the past three years.",
+   "anchor": "pensions were modelled to sell $30.5b of US equities which ranked in the 89th percentile over the past three years",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "quarter end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "PCE printed softer than expected this morning at +25bps versus +30bps forecast.",
+   "anchor": "the softer PCE this AM (+25bps vs +30bps)",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Treasury yields continued to march higher despite the softer PCE print, as the street looked through the data.",
+   "anchor": "Yields continued to march higher today",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR pushed back its Fed hike timing call from October to December, following comments from Fed President John Williams.",
+   "anchor": "Coupled with comments from Fed President John Williams yesterday, GIR pushed back Fed hike timing from October to December",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October to December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS's GIR team's latest view is that an October Fed hike is unlikely based on the latest inflation report.",
+   "anchor": "GS GIR team\u2019s latest view on rate hike is that we an October hike is unlikely",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS now expects 3.0% core PCE growth on a Q4/Q4 basis, well below the median FOMC participant's forecast of 3.4%.",
+   "anchor": "We now expect 3.0% growth for core PCE on a Q4/Q4 basis, well below the median FOMC participant",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS's trading floor activity level registered a 4 out of 10, finishing the session +6% net to buy.",
+   "anchor": "Our floor was a 4 on a 1-10 scale in terms of overall activity levels, finishing +6% net to buy",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "quarter-end session"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "AI data-center buildout is now hitting power semiconductor supply as hard as memory supply.",
+   "anchor": "AI data-center buildout is now hitting power semis as hard as memory",
+   "topic": "AI datacenter power semis tightness",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Infineon's Taiwan MD flagged structural power-semi tightness driven by rack power density scaling toward hundreds of kW/1MW, 800V architectures, and higher SiC/GaN content.",
+   "anchor": "structural tightness driven by rack power density scaling toward hundreds of kW / 1 MW, 800 V architectures and higher SiC/GaN content",
+   "topic": "AI datacenter power semis tightness",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Infineon's Taiwan MD expects power-semi supply to normalize only in 2-3 years once incremental capacity ramps.",
+   "anchor": "He sees supply only normalizing in 2\u20133 years once incremental capacity ramps",
+   "topic": "AI datacenter power semis tightness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2-3 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Taiwanese power-semi names are already following the IDM lead from Infineon and onsemi with non-contract product price hikes of 10-15%, concentrated in MOSFETs.",
+   "anchor": "Taiwanese names are already following the IDM lead (Infineon, onsemi)",
+   "topic": "AI datacenter power semis tightness",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Infineon is investing 48bn baht to expand semiconductor assembly and packaging in Thailand.",
+   "anchor": "Infineon is investing 48bn baht to expand semiconductor assembly and packaging in Thailand",
+   "topic": "AI datacenter power semis tightness",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Thailand's government is targeting at least 500bn baht of semiconductor investment in the first five years and 2.5tn baht by 2050.",
+   "anchor": "targeting at least 500bn baht of semiconductor investment in the first five years and 2.5tn baht by 2050",
+   "topic": "AI datacenter power semis tightness",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by 2050"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Scout24 was added to the GS Conviction List, with upside seen from faster private-subscriber growth.",
+   "anchor": "Added to the GS Conviction List, with upside from faster private-subscriber growth",
+   "topic": "Scout24 Conviction List add",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS expects Scout24's average private subscribers to be 616k in 2027, versus consensus at 589k.",
+   "anchor": "He expects average private subscribers to be 616k in 2027 (vs. consensus at 589k)",
+   "topic": "Scout24 Conviction List add",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS expects Scout24's average private subscribers to reach 700k in 2028, versus consensus at 651k.",
+   "anchor": "700k in 2028 (vs. consensus at 651k)",
+   "topic": "Scout24 Conviction List add",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS expects Scout24 to reach its mid-term margin target of c.64% by FY28E, above VA consensus of 63.4%.",
+   "anchor": "reaching its mid-term target of c.64% by FY28E, which puts him above VA consensus of 63.4%",
+   "topic": "Scout24 Conviction List add",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY28E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GS expects Scout24 to execute a \u20ac350m buyback in 2026 and a \u20ac250m buyback in 2027.",
+   "anchor": "expecting a \u20ac350m buyback in 2026 and \u20ac250m in 2027",
+   "topic": "Scout24 Conviction List add",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR expects Omnicom's Q3 organic core revenue growth of 4.9%, ahead of consensus.",
+   "anchor": "GIR expectingv organic core revenue growth of 4.9%, ahead of consensus",
+   "topic": "Omnicom Q3 preview",
+   "status": "forecast",
+   "instruments": [
+    "OMC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Omnicom's Q3 organic growth is expected to be driven mainly by 10% media growth, with advertising down 8%, healthcare flat, PR up 7% and experiential up 5%.",
+   "anchor": "driven mainly by 10% media growth, while advertising is expected to fall 8%, healthcare remain flat, PR grow 7% and experiential rise 5%",
+   "topic": "Omnicom Q3 preview",
+   "status": "forecast",
+   "instruments": [
+    "OMC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR forecasts Omnicom Q3 reported revenue of $6.17bn, adjusted EBIT of $1.14bn, and adjusted EPS of $2.76 versus consensus of $2.65.",
+   "anchor": "GIR forecasts reported revenue of $6.17bn, adjusted EBIT of $1.14bn and adjusted EPS of $2.76 versus consensus of $2.65",
+   "topic": "Omnicom Q3 preview",
+   "status": "forecast",
+   "instruments": [
+    "OMC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Omnicom's recent account wins including Novo Nordisk, L'Oreal, KPN, Uber and Adidas should largely offset the $1.1bn Pepsi media loss.",
+   "anchor": "Recent account wins including Novo Nordisk, L\u2019Or\u00e9al, KPN, Uber and Adidas should largely offset the $1.1bn Pepsi media loss",
+   "topic": "Omnicom Q3 preview",
+   "status": "forecast",
+   "instruments": [
+    "OMC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Omnicom trades at 6x 2027 EPS, below WPP at 7x, leaving room for a positive reaction to the Q3 results.",
+   "anchor": "the shares\u2019 valuation of 6x 2027 EPS, below WPP at 7x, leaves room for a positive reaction to the results",
+   "topic": "Omnicom Q3 preview",
+   "status": "level",
+   "instruments": [
+    "OMC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "FT/Reuters reported Tencent signed a five-year ~$7bn Oracle Asia lease for ~100k advanced AI chips, per press reports not confirmed by the companies.",
+   "anchor": "Tencent\u2019s five-year ~$7bn Oracle Asia lease for ~100k advanced AI chips",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "The Tencent lease supports Oracle's remaining-capacity and backlog narrative, following OpenAI and ByteDance deals.",
+   "anchor": "Supports Oracle remaining capacity and backlog narrative (OpenAI + ByteDance + now Tencent)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Google's post-close Gemini 4 'Argon' launch looked solid.",
+   "anchor": "close \u201cArgon\u201d launch looked solid. Gemini 4 \u201cArgon,\u201d a larger flagship",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Google claims strong coding performance for Gemini 4 Argon, but some reported benchmarks and employee feedback appear less convincing.",
+   "anchor": "Google claims strong coding performance, but some reported benchmarks and employee feedback appear less convincing",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "The Trump administration launched America.gov as an AI-powered front door to the federal government, currently answering questions via Gemini and Grok.",
+   "anchor": "The Trump administration has launched America.gov as an AI-powered front door to the federal government",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "DeepSeek is partnering with Huawei to open-source programming and communications tools optimised for Huawei's Ascend chips, reducing reliance on Nvidia.",
+   "anchor": "DeepSeek is partnering with Huawei to open-source programming and communications tools optimised for Huawei\u2019s Ascend chips",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "ElevenLabs completed a $300m employee tender offer at a $22bn valuation, double its February level.",
+   "anchor": "ElevenLabs has completed a $300m employee tender offer at a $22bn valuation, double its February level",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Consensus expects Accenture Q4 revenue of around $18bn and EPS of $3.18-3.19.",
+   "anchor": "Consensus expects Q4 revenue of around $18bn and EPS of $3.18\u20133.19",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR forecasts Accenture FY2027 constant-currency growth of 3-4%, including 50-150bp of organic growth.",
+   "anchor": "GIR forecasts FY2027 constant-currency growth of 3\u20134%, including 50\u2013150bp of organic growth",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "GIR's Indian IT Services preview forecasts organic growth of 1.8% in FY2027 and 3.2% in FY2028, with flat margins and broad estimate cuts.",
+   "anchor": "GIR\u2019s Indian IT Services preview forecasts organic growth of 1.8% in FY2027 and 3.2% in FY2028",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY2027-FY2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Global Revenue Passenger Kilometers decreased -0.8% yoy in August 2026, versus +0.3% yoy restated in July.",
+   "anchor": "global Revenue Passenger Kilometers (RPKs) decreasing by -0.8% yoy (vs. July: +0.3% yoy restated)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Synopsys targets ~15% revenue CAGR from FY26-30 with 50% operating margin in FY30.",
+   "anchor": "Long-term financial targets: ~15% revenue CAGR from FY26-30, with 50% operating margin in FY30",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26-30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "DoorDash unveiled an autonomous aircraft for an end-to-end drone delivery system, with pilot deliveries beginning in Northern California in partnership with brands like Chipotle.",
+   "anchor": "unveiled its autonomous aircraft for an end-to-end drone delivery system; pilot drone deliveries will begin in Northern California",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Handelsblatt alleges Deutsche Telekom and SoftBank disadvantaged minority shareholders in the 2020 T-Mobile/Sprint merger, with potential damages up to $10.1bn.",
+   "anchor": "Deutsche Telekom and SoftBank disadvantaged minority shareholders in the 2020 T-Mobile/Sprint merger",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TMUS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "Jabil fell 10% despite a beat and raise, weighing on sentiment ahead of Micron's print, while FactSet rose 4% on a mixed print.",
+   "anchor": "JBL -10% on a beat/raise weighing on sentiment into MU tonight vs FDS +4% on a mixed print",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "JBL",
+    "FDS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Micron delivers; Oracle Tencent deal; Google Argon; ACN results in focus; IFX AI datacentre demand; Scout24, DT, OMC",
+   "claim": "A full Huawei/ZTE equipment replacement across mobile, fixed and transport networks could cost up to \u20ac40bn and limit telecom investment.",
+   "anchor": "a full replacement across mobile, fixed and transport networks could cost up to \u20ac40bn and limit investment",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-01/18218__gs-tmt-spec-sales-micron-delivers-oracle-tencent-deal-google.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 54,
+  "matched": 54,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 16,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
