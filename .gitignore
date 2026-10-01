@@ -36,9 +36,12 @@ Thumbs.db
 sample_*.py
 explore_dropbox.py
 
-# Claude Code internals, except the repo's own skills (2026-09-30)
+# Claude Code internals, except the repo's own skills (2026-09-30) and the
+# shared project settings that install the plugins (2026-10-01).
+# settings.local.json stays ignored: it is per-machine.
 .claude/*
 !.claude/skills/
+!.claude/settings.json
 
 # Local-only scratch / debug dumps — ask logs, pulse context, QC
 # snapshots. These routinely contain Discord chat content + member

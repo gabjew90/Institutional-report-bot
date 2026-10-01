@@ -40,10 +40,45 @@ chmod +x .githooks/pre-push
 git config core.hooksPath .githooks
 echo "pre-push hook: .githooks/pre-push"
 
-echo "== railway"
 # Nothing below may stop the script: Python and the push gate above are
-# what a session needs first; production access is reported, not required.
+# what a session needs first; memory and production access are reported,
+# not required.
 set +e
+
+echo "== memory"
+# Session memory lives in the PRIVATE repo gabjew90/institutional-report-bot-memory
+# (notes about room members stay out of this public repo). Claude Code reads
+# memory from ~/.claude/projects/<working dir with / as ->/memory; that path
+# becomes a checkout of the private repo, so a memory written here is a
+# commit away from every other session.
+MEM_REPO="gabjew90/institutional-report-bot-memory"
+# Claude Code names a project's directory by replacing every character that
+# is not a letter or digit with '-' (C:\Users\gabje\Institutional-report-bot
+# -> C--Users-gabje-Institutional-report-bot).
+MEM_DIR="$HOME/.claude/projects/$(pwd | sed 's#[^A-Za-z0-9]#-#g')/memory"
+if [ -d "$MEM_DIR/.git" ]; then
+  git -C "$MEM_DIR" pull -q --ff-only && echo "memory: up to date at $MEM_DIR"
+else
+  mkdir -p "$(dirname "$MEM_DIR")"
+  if [ -d "$MEM_DIR" ] && [ ! -L "$MEM_DIR" ]; then
+    # a plain directory Claude Code made before setup ran: keep its files
+    # beside the checkout rather than under it
+    mv "$MEM_DIR" "$MEM_DIR.local-$(date +%s)" && echo "memory: moved an existing local memory dir aside"
+  fi
+  SIBLING="$(dirname "$(pwd)")/institutional-report-bot-memory"
+  if [ -d "$SIBLING/.git" ]; then                 # attached to the session as a second repo
+    ln -sfn "$SIBLING" "$MEM_DIR" && echo "memory: linked $SIBLING"
+  elif git clone -q "https://github.com/$MEM_REPO.git" "$MEM_DIR" 2>/dev/null; then
+    echo "memory: cloned to $MEM_DIR"
+  elif [ -n "${GH_TOKEN:-}" ] && command -v gh >/dev/null 2>&1 \
+       && gh repo clone "$MEM_REPO" "$MEM_DIR" -- -q 2>/dev/null; then
+    echo "memory: cloned with GH_TOKEN"
+  else
+    echo "memory: NOT loaded. Attach $MEM_REPO to the session or set GH_TOKEN (read/write on that repo only)" >&2
+  fi
+fi
+
+echo "== railway"
 if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
   if ! command -v railway >/dev/null 2>&1; then
     # global first; a non-root sandbox falls back to a user prefix
