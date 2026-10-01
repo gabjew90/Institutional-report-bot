@@ -90,6 +90,10 @@ from discord_bot.ask_tools import (  # noqa: E402,F401  re-exported: call sites,
     _safe_echo_parts,
     _validate_select_sql,
 )
+from discord_bot.snapshot_tool import (  # noqa: E402,F401  re-exported for the fixture harness
+    _build_snapshot_tool,
+    _execute_snapshot,
+)
 from discord_bot.research_tool import (  # noqa: E402
     _build_research_tool,
     _execute_research,
@@ -4619,6 +4623,7 @@ async def _ask_00_setup_tools_and_context(
             _build_price_history_tool(),
             _build_room_positions_tool(),
             _build_research_tool(),
+            _build_snapshot_tool(),
             # Sleeper fantasy tool only exists when a league is
             # configured — an unregistered tool costs no schema
             # tokens and can't be miscalled.
@@ -5205,6 +5210,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_FANTASY: _execute_fantasy_league,
         _ask_router.T_ROOM: _execute_room_positions,
         _ask_router.T_RESEARCH: _execute_research,
+        _ask_router.T_SNAPSHOT: _execute_snapshot,
     }
     _ask_meta["route_shape"] = _ask_route.shape
 
@@ -5433,6 +5439,7 @@ async def _ask_02_call_model_with_tools(
             "lookup_fantasy_league": _execute_fantasy_league,
             "lookup_room_positions": _execute_room_positions,
             "lookup_research": _execute_research,
+            "lookup_ticker_snapshot": _execute_snapshot,
         }
         tool_response_parts = []
         for fc in function_calls:

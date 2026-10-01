@@ -239,6 +239,22 @@ TOOL_DOCS["lookup_research"] = (
     "use Google for the public view, never invent a desk call."
 ) + _COMMON
 
+TOOL_DOCS["lookup_ticker_snapshot"] = (
+    "WHEN TO CALL: the facts a trader checks first on ONE stock: what the "
+    "company does and its industry, market cap, 52-week range and where "
+    "the price sits in it, average true range and beta, average daily "
+    "volume in shares and dollars with the latest session's relative "
+    "volume, float and short interest with its report date, cash, debt "
+    "and cash flow, and offering registrations (S-1, S-3, 424B5) filed in "
+    "the last year. Use it for any question about a single stock. Report "
+    "the figures that bear on the question, each with its date where it "
+    "has one, and use the business line to say what drives the metric "
+    "being discussed. Do not grade a figure ('low float', 'liquid', "
+    "'squeeze setup', 'safe'): the reader judges. NOT for news "
+    "(Google), bank views (`lookup_research`) or the earnings date "
+    "(`lookup_earnings_date`)."
+) + _COMMON
+
 TOOL_DOCS["query_data"] = (
     "WHEN TO CALL: read-only SQL SELECT over the bot's SQLite DB, for "
     "aggregates, trends over time, activity-by-hour, and group-bys the "

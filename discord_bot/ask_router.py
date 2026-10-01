@@ -71,8 +71,9 @@ T_HISTORY = "lookup_price_history"
 T_FANTASY = "lookup_fantasy_league"
 T_ROOM = "lookup_room_positions"
 T_RESEARCH = "lookup_research"
+T_SNAPSHOT = "lookup_ticker_snapshot"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
-             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH}
+             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT}
 
 # Which function tools a shape may see. Google is a separate flag.
 # Chat search is a ROOM tool: it appears only where the question is
@@ -80,26 +81,34 @@ ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_
 # market question cannot be answered from the room's own chatter, which
 # is what the catch-all used to allow (2026-09-30, "what do you think of
 # MU upcoming earnings" searched the room for MU earnings).
+# Every single-stock shape carries the snapshot and the bank research
+# (owner, 2026-09-30: a ticker question, whatever its shape, should say
+# what the business is and what drives the number). An options question
+# is a view on the stock with a chain attached, so it gets the same
+# research, earnings date and Google as a view question; it used to see
+# the chain and the price only, and "should i slam calls on ACN
+# earnings" never reached Goldman's consensus-short preview.
+_STOCK = {T_SNAPSHOT, T_RESEARCH}
 TOOL_POLICY: dict[str, set[str]] = {
     EARNINGS_SLATE: {T_SLATE, T_EDATE, T_PRICE},
-    EARNINGS_DATE: {T_EDATE, T_PRICE, T_CHAIN, T_RESEARCH},
-    PRICE: {T_PRICE, T_HISTORY, T_CHAIN},
-    OPTIONS_CHAIN: {T_CHAIN, T_PRICE},
+    EARNINGS_DATE: {T_EDATE, T_PRICE, T_CHAIN} | _STOCK,
+    PRICE: {T_PRICE, T_HISTORY, T_CHAIN} | _STOCK,
+    OPTIONS_CHAIN: {T_CHAIN, T_PRICE, T_EDATE} | _STOCK,
     ECON_CALENDAR: {T_ECON, T_SLATE},
-    PRICE_HISTORY: {T_HISTORY, T_PRICE},
-    COMPANY_PROFILE: {T_PRICE, T_RESEARCH},
+    PRICE_HISTORY: {T_HISTORY, T_PRICE} | _STOCK,
+    COMPANY_PROFILE: {T_PRICE} | _STOCK,
     MEMBER_LEDGER: {T_TRADES, T_QUERY, T_PROFILE, T_PRICE, T_CHAT},
     CHAT_HISTORY: {T_CHAT, T_PROFILE, T_QUERY},
     FANTASY: {T_FANTASY, T_CHAT},
     HISTORICAL_STAT: {T_HISTORY},
-    NEWS_EVENT: {T_PRICE, T_EDATE, T_CHAIN, T_RESEARCH},
+    NEWS_EVENT: {T_PRICE, T_EDATE, T_CHAIN} | _STOCK,
     ROOM_CROWDING: {T_ROOM, T_TRADES, T_QUERY, T_PRICE},
-    TICKER_OPINION: {T_RESEARCH, T_EDATE, T_PRICE, T_CHAIN},
+    TICKER_OPINION: {T_EDATE, T_PRICE, T_CHAIN} | _STOCK,
     BANTER: ALL_TOOLS - {T_GOOGLE},
     UNKNOWN: ALL_TOOLS - {T_GOOGLE, T_CHAT},
 }
 GOOGLE_POLICY: dict[str, bool] = {
-    EARNINGS_SLATE: False, EARNINGS_DATE: True, PRICE: True, OPTIONS_CHAIN: False,
+    EARNINGS_SLATE: False, EARNINGS_DATE: True, PRICE: True, OPTIONS_CHAIN: True,
     ECON_CALENDAR: True, PRICE_HISTORY: False, COMPANY_PROFILE: True, TICKER_OPINION: True,
     # Google is allowed on FANTASY: half the questions in that channel are
     # NFL news (injuries, player outlooks) that the league tool cannot
@@ -500,6 +509,29 @@ def _trailing_view(q: str, tickers: list[str]) -> str | None:
     return None
 
 
+# Funds and indices have no business line, float or bank coverage.
+_NOT_STOCKS = {"SPY", "QQQ", "IWM", "DIA", "TLT", "GLD", "SLV", "USO", "UVXY", "VXX", "SQQQ",
+               "TQQQ", "SOXL", "SOXS", "SMH", "SOXX", "XLE", "XLF", "XLK", "ARKK", "IBIT", "HYG",
+               "EEM", "FXI", "KRE", "GDX", "VOO", "VTI"}
+_BARE_TICKER_Q_RE = re.compile(r"^\s*\$?[A-Za-z]{1,5}\s*[?!.]*\s*$")
+
+
+def is_stock(sym: str) -> bool:
+    s = (sym or "").upper()
+    return bool(s) and s not in _CRYPTO and s not in INDEX_SYMBOLS and s not in _NOT_STOCKS
+
+
+def _stock_prefetch(sym: str, *, research: bool = True) -> list:
+    """Bank research and the snapshot for a single stock; nothing for a
+    fund, an index or a coin."""
+    if not is_stock(sym):
+        return []
+    out = [(T_SNAPSHOT, {"symbol": sym})]
+    if research:
+        out.insert(0, (T_RESEARCH, {"symbol": sym, "days": 14}))
+    return out
+
+
 def _last_line(question: str) -> str:
     """The actual ask: after any reply/verbatim context blocks."""
     q = (question or "").strip()
@@ -566,25 +598,28 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if _CHAIN_RE.search(q) and not _past_move and (tickers or re.search(r"\b(spy|qqq|iwm)\b", ql)):
         r.shape, r.reason = OPTIONS_CHAIN, "options words + ticker"
         sym = tickers[0] if tickers else re.search(r"\b(spy|qqq|iwm)\b", ql).group(1).upper()
-        r.prefetch = [(T_CHAIN, {"symbol": sym})]
+        r.prefetch = [(T_CHAIN, {"symbol": sym})] + _stock_prefetch(sym)
+        if is_stock(sym) and re.search(r"\b(?:earnings|print|report|er)\b", ql):
+            r.prefetch.append((T_EDATE, {"symbol": sym}))
         return r
     trailing = _trailing_view(q, tickers) if tickers else None
     if tickers and (_OPINION_RE.search(q) or trailing):
         r.shape, r.reason = TICKER_OPINION, "view words + ticker"
         sym = trailing or tickers[0]
-        r.prefetch = [(T_RESEARCH, {"symbol": sym, "days": 14}),
-                      (T_PRICE, {"symbols": [price_symbol(sym)]})]
+        r.prefetch = _stock_prefetch(sym) + [(T_PRICE, {"symbols": [price_symbol(sym)]})]
         if re.search(r"\b(?:earnings|print|report|er)\b", ql):
             r.prefetch.append((T_EDATE, {"symbol": sym}))
         return r
     if _EDATE_RE.search(q) and tickers:
         r.shape, r.reason = EARNINGS_DATE, "single-ticker earnings shape"
-        r.prefetch = [(T_EDATE, {"symbol": tickers[0]})]
+        r.prefetch = [(T_EDATE, {"symbol": tickers[0]})] + _stock_prefetch(tickers[0], research=False)
         return r
     if _NEWS_RE.search(q):
         r.shape, r.reason = NEWS_EVENT, "why/what-happened/odds shape"
         if tickers:
             r.prefetch = [(T_PRICE, {"symbols": [price_symbol(t) for t in tickers[:4]]})]
+            if len(tickers) == 1:
+                r.prefetch += _stock_prefetch(tickers[0])
             if re.search(r"\bodds\b|\bbeat|\bmiss", ql):
                 r.prefetch.append((T_EDATE, {"symbol": tickers[0]}))
         return r
@@ -594,7 +629,7 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         return r
     if _HISTORY_RE.search(q) and tickers:
         r.shape, r.reason = PRICE_HISTORY, "history words + ticker"
-        r.prefetch = [(T_HISTORY, {"symbol": tickers[0]})]
+        r.prefetch = [(T_HISTORY, {"symbol": tickers[0]})] + _stock_prefetch(tickers[0], research=False)
         return r
     if _STAT_RE.search(q):
         r.shape, r.reason = HISTORICAL_STAT, "historical-statistic shape"
@@ -602,10 +637,22 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if _PRICE_RE.search(q) and tickers:
         r.shape, r.reason = PRICE, "price shape + ticker"
         r.prefetch = [(T_PRICE, {"symbols": [price_symbol(t) for t in tickers[:6]]})]
+        if len(tickers) == 1:
+            r.prefetch += _stock_prefetch(tickers[0], research=False)
         return r
     if _PROFILE_RE.search(q) and tickers and not _SINGLE_TICKER_OPINION_RE.search(q):
         r.shape, r.reason = COMPANY_PROFILE, "what-does-X-do shape"
-        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(tickers[0])]})]
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(tickers[0])]})] + _stock_prefetch(tickers[0])
+        return r
+    # A bare ticker ("MU?", "$mu", "aeva??") is a view question: the room
+    # asks that way and it fell to the catch-all with no data at all.
+    # Cashtag or capitals only, and never a word we know ("BK?" is a
+    # member, "WHAT?" is a word); a lowercase "huh?" stays banter.
+    if (strong and is_stock(strong[0]) and _BARE_TICKER_Q_RE.match(q)
+            and ("$" in q or strong[0].lower() not in _COMMON_WORDS)):
+        tickers = strong
+        r.shape, r.reason = TICKER_OPINION, "bare ticker"
+        r.prefetch = _stock_prefetch(tickers[0]) + [(T_PRICE, {"symbols": [tickers[0]]})]
         return r
     # Last: in the football channel a question nothing else claimed is a
     # league question if it carries any football word. Words too generic
@@ -675,9 +722,21 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                      "the last beat), and what it says would break the call. A direction with no "
                      "number is not an answer, and 'bullish on AI demand' or 'structural tightness' "
                      "is not a reason. Where desks disagree, state the disagreement and what each "
-                     "side is counting on. Attribute every view to its bank. Google may add public "
-                     "news. The room's chat is not a source for this. status=no_data: say no bank "
+                     "side is counting on. Attribute every view to its bank. Say each view in your "
+                     "own plain words, tied to the business line that moves the number (from the "
+                     "TICKER SNAPSHOT): never carry a desk's shorthand or an acronym the payload "
+                     "does not explain; if you cannot explain a term, leave it out. Answer the "
+                     "question asked: on a general stock question an upcoming print is one arrow, "
+                     "not the whole answer. A note dated before a print that has since happened "
+                     "is a preview: say the print happened and give the result from Google. "
+                     "The room's chat is not a source for this. status=no_data: say no bank "
                      "note covers the name and give the public view, never a made-up desk call."),
+        T_SNAPSHOT: ("TICKER SNAPSHOT, system-fetched from Yahoo. What the company does and the "
+                     "trading facts on it. Use the figures that bear on the question, each with "
+                     "its date where it has one (short interest is exchange-reported twice a "
+                     "month). Narrate, never grade: no 'low float', 'liquid', 'squeeze setup', "
+                     "'safe' or 'risky'; the reader judges. Use the business line and industry to "
+                     "say what drives any metric you discuss."),
         T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
                  "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "
                  "close. The ledger is entry-biased (exits are posted far less often than entries): "
@@ -723,6 +782,16 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
         # guide well above" down to "structural tightness" when it read
         # the raw dump. Figures written out in prose get copied.
         return f"[{lead}{tail}]\n" + render_research(result)[:7000]
+    if tool == T_SNAPSHOT:
+        if (result or {}).get("status") == "ok":
+            from report.ticker_snapshot import render as _render_snapshot
+            return f"[{lead}{tail}]\n" + _render_snapshot(result)
+        # A guessed symbol that is a word ("apple") or a fund: one quiet
+        # line, not an authoritative "unavailable" block that reads as
+        # "there is no data on this company".
+        return (f"[TICKER SNAPSHOT: none for {(result or {}).get('symbol') or 'this symbol'} "
+                f"({(result or {}).get('status')}); it may be a fund or not a ticker. "
+                f"This says nothing about the company.]")
     return f"[{lead}{tail}]\n" + _json.dumps(result, default=str)[:6000]
 
 

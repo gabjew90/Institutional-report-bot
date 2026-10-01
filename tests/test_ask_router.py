@@ -20,31 +20,31 @@ CASES = [
     # tool answers one date and today's names are not the week.
     ("what on the economic calendar for this week ? Who's reporting earnings", R.EARNINGS_SLATE, []),
     # single-ticker earnings
-    ("when does NVDA report", R.EARNINGS_DATE, [R.T_EDATE]),
-    ("did PLTR beat last quarter", R.EARNINGS_DATE, [R.T_EDATE]),
-    ("what's expected for AVGO earnings", R.EARNINGS_DATE, [R.T_EDATE]),
+    ("when does NVDA report", R.EARNINGS_DATE, [R.T_EDATE, R.T_SNAPSHOT]),
+    ("did PLTR beat last quarter", R.EARNINGS_DATE, [R.T_EDATE, R.T_SNAPSHOT]),
+    ("what's expected for AVGO earnings", R.EARNINGS_DATE, [R.T_EDATE, R.T_SNAPSHOT]),
     # news / odds
-    ("odds HPE beats earnings", R.NEWS_EVENT, [R.T_PRICE, R.T_EDATE]),
+    ("odds HPE beats earnings", R.NEWS_EVENT, [R.T_PRICE, R.T_RESEARCH, R.T_SNAPSHOT, R.T_EDATE]),
     ("why is mrvl down off avgo earnings", R.NEWS_EVENT, [R.T_PRICE]),
-    ("explain pltr death", R.NEWS_EVENT, [R.T_PRICE]),
+    ("explain pltr death", R.NEWS_EVENT, [R.T_PRICE, R.T_RESEARCH, R.T_SNAPSHOT]),
     # price
-    ("what's TSLA at", R.PRICE, [R.T_PRICE]),
+    ("what's TSLA at", R.PRICE, [R.T_PRICE, R.T_SNAPSHOT]),
     ("how's BTC doing", R.PRICE, [R.T_PRICE]),
     ("is SPY green today", R.PRICE, [R.T_PRICE]),
     # options
     ("SPY 0dte put/call ratio", R.OPTIONS_CHAIN, [R.T_CHAIN]),
-    ("what's the OI on NVDA 200c", R.OPTIONS_CHAIN, [R.T_CHAIN]),
+    ("what's the OI on NVDA 200c", R.OPTIONS_CHAIN, [R.T_CHAIN, R.T_RESEARCH, R.T_SNAPSHOT]),
     # macro
     ("when is CPI", R.ECON_CALENDAR, [R.T_ECON]),
     ("what did NFP come in at", R.ECON_CALENDAR, [R.T_ECON]),
     ("is the fed cutting this meeting", R.ECON_CALENDAR, [R.T_ECON]),
     # history
-    ("how has NVDA done since january", R.PRICE_HISTORY, [R.T_HISTORY]),
-    ("PLTR ytd", R.PRICE_HISTORY, [R.T_HISTORY]),
+    ("how has NVDA done since january", R.PRICE_HISTORY, [R.T_HISTORY, R.T_SNAPSHOT]),
+    ("PLTR ytd", R.PRICE_HISTORY, [R.T_HISTORY, R.T_SNAPSHOT]),
     # company profile
-    ("what does CLS do", R.COMPANY_PROFILE, [R.T_PRICE]),
-    ("what does SPSC do?", R.COMPANY_PROFILE, [R.T_PRICE]),
-    ("tell me about GOLD , gold.com", R.COMPANY_PROFILE, [R.T_PRICE]),
+    ("what does CLS do", R.COMPANY_PROFILE, [R.T_PRICE, R.T_RESEARCH, R.T_SNAPSHOT]),
+    ("what does SPSC do?", R.COMPANY_PROFILE, [R.T_PRICE, R.T_RESEARCH, R.T_SNAPSHOT]),
+    ("tell me about GOLD , gold.com", R.COMPANY_PROFILE, [R.T_PRICE, R.T_RESEARCH, R.T_SNAPSHOT]),
     # ledger
     ("show all of Abe's current holdings", R.MEMBER_LEDGER, []),
     ("what is Abe's % win rate on semi calls ?", R.MEMBER_LEDGER, []),
@@ -63,25 +63,35 @@ CASES = [
     ("is the dave chappelle show the best show ever?", R.UNKNOWN, []),
     # a view on one stock: the bank research is the prefetched primary
     # source (2026-09-30, the MU question had been answered from the room)
-    ("thoughts on NVDA here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("what do you think of MU upcoming earnings", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE, R.T_EDATE]),
-    ("how does AMD look into the print", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE, R.T_EDATE]),
-    ("bullish on $CRWV?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("should i buy PLTR here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("what do you think of mu", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("what your thoughts on MU", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("MU thoughts?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("MU thoughts??", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("mu thoughts", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
-    ("$MU bull or bear?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_PRICE]),
+    ("thoughts on NVDA here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("what do you think of MU upcoming earnings", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE, R.T_EDATE]),
+    ("how does AMD look into the print", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE, R.T_EDATE]),
+    ("bullish on $CRWV?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("should i buy PLTR here", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("what do you think of mu", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("what your thoughts on MU", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("MU thoughts?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("MU thoughts??", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("mu thoughts", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("$MU bull or bear?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
     # a trailing "thoughts?" is tied to the ticker before it
     ("market thoughts?", R.UNKNOWN, []),
     ("quick thoughts?", R.UNKNOWN, []),
     ("bear thoughts", R.UNKNOWN, []),
-    ("whats MU at, thoughts?", R.PRICE, [R.T_PRICE]),
+    ("whats MU at, thoughts?", R.PRICE, [R.T_PRICE, R.T_SNAPSHOT]),
     ("what do you think of gold", R.UNKNOWN, []),      # a word, not Barrick
+    # 2026-09-30: an options question on a stock is a view with a chain attached
+    ("should i slam calls on ACN earnings", R.OPTIONS_CHAIN,
+     [R.T_CHAIN, R.T_RESEARCH, R.T_SNAPSHOT, R.T_EDATE]),
+    ("what's the OI on SPY 600c", R.OPTIONS_CHAIN, [R.T_CHAIN]),     # a fund: no snapshot
+    # a bare ticker is a view question; a word or a member is not
+    ("MU?", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("$aeva", R.TICKER_OPINION, [R.T_RESEARCH, R.T_SNAPSHOT, R.T_PRICE]),
+    ("BK?", R.UNKNOWN, []),
+    ("huh?", R.UNKNOWN, []),
+    ("SPY?", R.UNKNOWN, []),
     # not opinions: a price read, a profile, a room read
-    ("how is MU looking", R.PRICE, [R.T_PRICE]),
+    ("how is MU looking", R.PRICE, [R.T_PRICE, R.T_SNAPSHOT]),
     ("what do you think of the market today", R.UNKNOWN, []),
 ]
 
@@ -177,7 +187,8 @@ def test_inject_text_says_so_on_error():
 # words that became tickers.
 def test_quote_and_public_figure_questions_are_not_room_history():
     r = R.classify("quote TSLA")
-    assert r.shape == R.PRICE and r.prefetch == [(R.T_PRICE, {"symbols": ["TSLA"]})], r
+    assert r.shape == R.PRICE and r.prefetch == [(R.T_PRICE, {"symbols": ["TSLA"]}),
+                                                  (R.T_SNAPSHOT, {"symbol": "TSLA"})], r
     r = R.classify("what did powell say today")
     assert r.shape != R.CHAT_HISTORY and r.google_allowed(), r
     assert R.classify("what did abe say about semis").shape == R.CHAT_HISTORY
@@ -406,7 +417,7 @@ def test_every_manager_maps_to_a_room_name():
 def test_prefetch_plan_never_hashes_the_args_dict():
     from discord_bot.bot import _ask_prefetch_plan
     execs = {R.T_SLATE: 1, R.T_EDATE: 1, R.T_PRICE: 1, R.T_CHAIN: 1,
-             R.T_ECON: 1, R.T_HISTORY: 1, R.T_FANTASY: 1}
+             R.T_ECON: 1, R.T_HISTORY: 1, R.T_FANTASY: 1, R.T_RESEARCH: 1, R.T_SNAPSHOT: 1}
     questions = [
         "who reports today", "when does NVDA report", "what's TSLA at",
         "NVDA options chain", "when is CPI", "how has NVDA done since january",
@@ -427,7 +438,18 @@ def test_prefetch_plan_reports_a_tool_with_no_executor():
     route = R.classify("what's TSLA at")
     assert route.prefetch, "fixture needs a prefetch"
     plan, missing = _ask_prefetch_plan(route, {})
-    assert plan == [] and missing == [R.T_PRICE], (plan, missing)
+    assert plan == [] and missing == [R.T_PRICE, R.T_SNAPSHOT], (plan, missing)
+
+
+def test_every_router_tool_has_a_production_prefetch_executor():
+    """A tool the router prefetches but bot.py cannot run is dropped
+    silently at runtime; pin that every T_* the router emits is mapped."""
+    import inspect
+    from discord_bot import bot
+    src = inspect.getsource(bot._ask_02_call_model_with_tools)
+    for name in ("T_SLATE", "T_EDATE", "T_PRICE", "T_CHAIN", "T_ECON", "T_HISTORY",
+                 "T_FANTASY", "T_ROOM", "T_RESEARCH", "T_SNAPSHOT"):
+        assert f"_ask_router.{name}:" in src, name
 
 
 # 2026-09-03 ask-log review: figures answered from memory with no tool
@@ -444,7 +466,9 @@ def test_sourced_figure_questions_route_to_the_web():
 
 def test_implied_move_routes_to_the_chain_unless_past_tense():
     r = R.classify("implied move on lulu earnings")
-    assert r.shape == R.OPTIONS_CHAIN and r.prefetch == [(R.T_CHAIN, {"symbol": "LULU"})], r
+    assert r.shape == R.OPTIONS_CHAIN and r.prefetch == [
+        (R.T_CHAIN, {"symbol": "LULU"}), (R.T_RESEARCH, {"symbol": "LULU", "days": 14}),
+        (R.T_SNAPSHOT, {"symbol": "LULU"}), (R.T_EDATE, {"symbol": "LULU"})], r
     assert R.classify("expected move on nvda").shape == R.OPTIONS_CHAIN
     # After the print the chain prices the next expiry; the answer lives
     # on the web, so the shape must keep Google. Chat search left the
