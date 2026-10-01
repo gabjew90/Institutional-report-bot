@@ -517,7 +517,27 @@ def summarize_options_chain(raw: dict) -> dict:
         "num_call_strikes": len(calls),
         "num_put_strikes": len(puts),
         "source": raw.get("source", "yahoo"),
+        **_straddle_move(calls, puts, spot),
     }
+
+
+def _straddle_move(calls: list, puts: list, spot) -> dict:
+    """The move the at-the-money straddle prices through this expiration,
+    in dollars and percent of spot (2026-09-30): "121% IV" is a figure a
+    reader cannot use, "the market prices about $14, 7.7%, either way by
+    Friday" is. Empty when either leg lacks a real two-sided quote."""
+    from report.implied_move import _mid, _nearest_strike
+    if not spot or spot <= 0 or not calls or not puts:
+        return {}
+    strike = _nearest_strike(calls, spot)
+    call = next((c for c in calls if c.get("strike") == strike), None)
+    put = next((p for p in puts if p.get("strike") == strike), None)
+    cm, pm = (_mid(call) if call else None), (_mid(put) if put else None)
+    if cm is None or pm is None:
+        return {}
+    straddle = cm + pm
+    return {"atm_strike": strike, "implied_move_dollars": round(straddle, 2),
+            "implied_move_pct": round(straddle / float(spot) * 100, 1)}
 
 
 def _fetch_finnhub_quote(symbol: str) -> dict | None:

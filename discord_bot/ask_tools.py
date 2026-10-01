@@ -1691,11 +1691,33 @@ async def _execute_earnings_date(args: dict) -> dict:
             ),
         }
 
+    for key in ("next", "last"):
+        row = result.get(key)
+        if isinstance(row, dict) and row.get("date"):
+            row["when"] = _relative_day_et(str(row["date"]), row.get("timing") or "")
     return {
         "status": "ok",
         **result,
         "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     }
+
+
+def _relative_day_et(date_iso: str, timing: str = "", now=None) -> str:
+    """'tomorrow (Thu Oct 1), before market open', in New York time. The
+    model reads dates against the UTC clock and called a next-morning
+    print 'today' at 10:45 PM ET (2026-09-30, ACN)."""
+    from datetime import date as _date, datetime as _dt, timezone as _tz
+    from zoneinfo import ZoneInfo
+    try:
+        d = _date.fromisoformat(date_iso[:10])
+    except ValueError:
+        return ""
+    today = (now or _dt.now(_tz.utc)).astimezone(ZoneInfo("America/New_York")).date()
+    n = (d - today).days
+    rel = {0: "today", 1: "tomorrow", -1: "yesterday"}.get(
+        n, f"in {n} days" if n > 1 else f"{-n} days ago")
+    out = f"{rel} ({d.strftime('%a %b')} {d.day})"
+    return f"{out}, {timing}" if timing else out
 
 
 def _build_options_chain_tool():

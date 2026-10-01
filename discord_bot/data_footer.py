@@ -9,6 +9,8 @@ so the model cannot omit or invent it.
 """
 from __future__ import annotations
 
+import re
+
 # tool name -> what the reader is told the figures came from
 FEEDS: dict[str, str] = {
     "lookup_market_price": "live prices (Finnhub, Binance.US)",
@@ -23,6 +25,7 @@ FEEDS: dict[str, str] = {
     "lookup_room_positions": "room trade ledger",
     "lookup_research": "bank research notes",
     "lookup_ticker_snapshot": "company and trading data (Yahoo)",
+    "ticker_news": "news search (Google)",
     "query_data": "research database",
 }
 # Tools whose data is the room's own conversation. The reader is in the
@@ -48,3 +51,45 @@ def footer(tool_trace: list[dict] | None) -> str:
     if not seen:
         return ""
     return "\n\nData: " + " · ".join(seen)
+
+
+_FIGURE_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?\s?(?:%|[BMKT]\b|bn\b)?")
+
+
+def _figures(text: str) -> set[str]:
+    """Figures worth matching: a currency or percent, or a number with a
+    decimal or at least three digits. Bare small integers ("3 notes",
+    "Q4") match everything."""
+    out = set()
+    for m in _FIGURE_RE.finditer(text or ""):
+        f = m.group(0).replace(",", "").replace(" ", "")
+        digits = sum(c.isdigit() for c in f)
+        if f.isdigit() and len(f) == 4 and f[:2] in ("19", "20"):
+            continue                                    # a year, in every dated line
+        if f.startswith("$") or f.endswith("%") or "." in f or digits >= 3:
+            out.add(f.rstrip("."))
+    return out
+
+
+def compose(grounding_footer: str, answer: str, news: dict | None,
+            tool_trace: list[dict] | None) -> str:
+    """The answer's citation block.
+
+    Google grounding on the answer wins outright, as before. Otherwise:
+    the news prefetch's links, but only when the answer carries a figure
+    from the news digest (a link cited for a headline the answer never
+    used says nothing about where its numbers came from), then the Data
+    line naming the bot's own feeds, which includes the news search."""
+    if grounding_footer:
+        return grounding_footer
+    out = ""
+    news = news or {}
+    links = news.get("sources") or []
+    if links and _figures(answer) & _figures(news.get("digest") or ""):
+        out = "\n\nSources:\n" + "\n".join(
+            f"[{i + 1}] [{(s.get('title') or s['url'])[:80]}](<{s['url']}>)"
+            for i, s in enumerate(links[:2]))
+    data = footer(tool_trace)
+    if data:
+        out = out + "\n" + data.lstrip("\n") if out else data
+    return out

@@ -90,6 +90,7 @@ from discord_bot.ask_tools import (  # noqa: E402,F401  re-exported: call sites,
     _safe_echo_parts,
     _validate_select_sql,
 )
+from discord_bot.news_tool import _execute_ticker_news  # noqa: E402
 from discord_bot.snapshot_tool import (  # noqa: E402,F401  re-exported for the fixture harness
     _build_snapshot_tool,
     _execute_snapshot,
@@ -1996,7 +1997,8 @@ def _grounding_has_sources(gm) -> bool:
 
 # Tool-result statuses that mean the call produced nothing the model
 # could use. Shared vocabulary with scripts/ask_response_validate.py.
-_FAILED_TOOL_STATUSES = frozenset({"no_data", "error", "empty", "not_found", "timeout"})
+_FAILED_TOOL_STATUSES = frozenset({"no_data", "error", "empty", "not_found", "timeout",
+                                   "not_a_stock"})
 
 
 def _trace_has_source(tool_trace) -> bool:
@@ -5211,6 +5213,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_ROOM: _execute_room_positions,
         _ask_router.T_RESEARCH: _execute_research,
         _ask_router.T_SNAPSHOT: _execute_snapshot,
+        _ask_router.T_NEWS: _execute_ticker_news,
     }
     _ask_meta["route_shape"] = _ask_route.shape
 
@@ -5261,6 +5264,10 @@ async def _ask_02_call_model_with_tools(
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue
+        if _pf_tool == _ask_router.T_NEWS and _pf_res.get("status") == "ok":
+            # Cited in phase 10 when the answer uses a figure from it.
+            _ask_meta["news"] = {"sources": _pf_res.get("sources") or [],
+                                 "digest": _pf_res.get("digest") or ""}
         _ask_tool_log.append(_pf_tool)
         contents.append(types.Content(
             role="user",
@@ -8341,11 +8348,13 @@ async def _ask_10_log_and_render(
 
     sources_footer = _build_sources_footer(grounding_metadata)
     if not sources_footer:
-        # Tool-sourced answers name their feeds (2026-09-30): a price or
-        # an earnings date from our own data is a source too.
+        # Tool-sourced answers name their feeds, and the news prefetch's
+        # links are cited when the answer uses a figure from it
+        # (data_footer.compose, 2026-09-30).
         try:
             from discord_bot import data_footer as _data_footer
-            sources_footer = _data_footer.footer(_ask_tool_trace)
+            sources_footer = _data_footer.compose(
+                "", answer, _ask_meta.get("news"), _ask_tool_trace)
             if sources_footer:
                 _ask_meta["guards"].append("data-footer")
         except Exception as e:

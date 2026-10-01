@@ -72,6 +72,9 @@ T_FANTASY = "lookup_fantasy_league"
 T_ROOM = "lookup_room_positions"
 T_RESEARCH = "lookup_research"
 T_SNAPSHOT = "lookup_ticker_snapshot"
+# Prefetch only, never declared to the model (it already has Google):
+# discord_bot/news_tool.py runs the grounded search in code.
+T_NEWS = "ticker_news"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
              T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT}
 
@@ -514,6 +517,8 @@ _NOT_STOCKS = {"SPY", "QQQ", "IWM", "DIA", "TLT", "GLD", "SLV", "USO", "UVXY", "
                "TQQQ", "SOXL", "SOXS", "SMH", "SOXX", "XLE", "XLF", "XLK", "ARKK", "IBIT", "HYG",
                "EEM", "FXI", "KRE", "GDX", "VOO", "VTI"}
 _BARE_TICKER_Q_RE = re.compile(r"^\s*\$?[A-Za-z]{1,5}\s*[?!.]*\s*$")
+_RESULT_Q_RE = re.compile(
+    r"\b(?:beat|beats|miss|missed|did|results?|reported|guid(?:e|ance)|numbers|how\s+(?:did|was))\b", re.I)
 
 
 def is_stock(sym: str) -> bool:
@@ -521,14 +526,19 @@ def is_stock(sym: str) -> bool:
     return bool(s) and s not in _CRYPTO and s not in INDEX_SYMBOLS and s not in _NOT_STOCKS
 
 
-def _stock_prefetch(sym: str, *, research: bool = True) -> list:
-    """Bank research and the snapshot for a single stock; nothing for a
-    fund, an index or a coin."""
+def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None) -> list:
+    """Bank research, recent news and the snapshot for a single stock;
+    nothing for a fund, an index or a coin. News follows research unless
+    set: a price read does not need it, a view or a print does."""
     if not is_stock(sym):
         return []
-    out = [(T_SNAPSHOT, {"symbol": sym})]
+    want_news = research if news is None else news
+    out = []
     if research:
-        out.insert(0, (T_RESEARCH, {"symbol": sym, "days": 14}))
+        out.append((T_RESEARCH, {"symbol": sym, "days": 14}))
+    if want_news:
+        out.append((T_NEWS, {"symbol": sym}))
+    out.append((T_SNAPSHOT, {"symbol": sym}))
     return out
 
 
@@ -612,7 +622,10 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         return r
     if _EDATE_RE.search(q) and tickers:
         r.shape, r.reason = EARNINGS_DATE, "single-ticker earnings shape"
-        r.prefetch = [(T_EDATE, {"symbol": tickers[0]})] + _stock_prefetch(tickers[0], research=False)
+        # A result question ("did PLTR beat") needs the news; a date
+        # lookup ("when does NVDA report") does not pay for a search.
+        r.prefetch = [(T_EDATE, {"symbol": tickers[0]})] + _stock_prefetch(
+            tickers[0], research=False, news=bool(_RESULT_Q_RE.search(q)))
         return r
     if _NEWS_RE.search(q):
         r.shape, r.reason = NEWS_EVENT, "why/what-happened/odds shape"
@@ -707,7 +720,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                  "Authoritative: answer from it, lead with the biggest names, never substitute a search list.",
         T_EDATE: "EARNINGS DATE, system-fetched from the earnings feed. Authoritative for date, timing and consensus.",
         T_PRICE: "LIVE PRICES, system-fetched. The number comes from here; Google may supply the why, never the price.",
-        T_CHAIN: "OPTIONS CHAIN, system-fetched. Every OI, volume, IV and strike figure comes from here or is not stated.",
+        T_CHAIN: ("OPTIONS CHAIN, system-fetched. Every OI, volume, IV and strike figure comes from here or is "
+                  "not stated. implied_move_dollars and implied_move_pct are the at-the-money straddle: the "
+                  "move the market prices either way by that expiration. Say it that way; a bare IV "
+                  "percentage means nothing to the reader."),
         T_ECON: ("ECONOMIC CALENDAR, system-fetched. Print dates, consensus and actuals come from here, never from memory. "
                  "A row with status past_no_data has NO print in the feed yet: say the number has not reached "
                  "the feed, give consensus and prior as such, and never fill the actual from memory or from the "
@@ -731,6 +747,11 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                      "is a preview: say the print happened and give the result from Google. "
                      "The room's chat is not a source for this. status=no_data: say no bank "
                      "note covers the name and give the public view, never a made-up desk call."),
+        T_NEWS: ("RECENT NEWS ON THE TICKER, from a Google search the system ran just now; "
+                 "each line is dated and names its publisher. A result, guidance or event here "
+                 "supersedes any bank note written before it: if the company has reported, lead "
+                 "with what it reported against the estimates. Name the publisher for anything "
+                 "you take from it. status=no_data: nothing dated was found; do not fill it in."),
         T_SNAPSHOT: ("TICKER SNAPSHOT, system-fetched from Yahoo. What the company does and the "
                      "trading facts on it. Use the figures that bear on the question, each with "
                      "its date where it has one (short interest is exchange-reported twice a "
@@ -782,6 +803,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
         # guide well above" down to "structural tightness" when it read
         # the raw dump. Figures written out in prose get copied.
         return f"[{lead}{tail}]\n" + render_research(result)[:7000]
+    if tool == T_NEWS and (result or {}).get("status") == "ok":
+        pubs = ", ".join(s.get("title") or "" for s in result.get("sources") or [] if s.get("title"))
+        return (f"[{lead}{tail}]\nNEWS ON {result.get('symbol')}:\n{result.get('digest')}"
+                + (f"\n(searched: {pubs})" if pubs else ""))
     if tool == T_SNAPSHOT:
         if (result or {}).get("status") == "ok":
             from report.ticker_snapshot import render as _render_snapshot
