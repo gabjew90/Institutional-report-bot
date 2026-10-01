@@ -17,6 +17,15 @@ def _fresh_cache():
     N._CACHE.clear()
 
 
+from datetime import timedelta as _td
+from zoneinfo import ZoneInfo as _Z
+
+_TODAY = datetime.now(timezone.utc).astimezone(_Z("America/New_York")).date()
+D = _TODAY.isoformat()                       # inside the news window
+D2 = (_TODAY - _td(days=2)).isoformat()
+OLD = (_TODAY - _td(days=30)).isoformat()    # outside it
+
+
 def _resp(text, urls):
     chunks = [types.SimpleNamespace(web=types.SimpleNamespace(uri=u, title=t)) for t, u in urls]
     gm = types.SimpleNamespace(grounding_chunks=chunks)
@@ -34,7 +43,7 @@ class _Client:
 
 
 def test_a_grounded_digest_comes_back_with_its_sources(monkeypatch):
-    c = _Client(_resp("2026-09-30 Micron Q4 EPS $33.42 vs $31.61 est (reuters.com)",
+    c = _Client(_resp(f"{D} Micron Q4 EPS $33.42 vs $31.61 est (reuters.com)",
                       [("reuters.com", "https://r/1"), ("cnbc.com", "https://c/2"),
                        ("reuters.com", "https://r/1")]))
     monkeypatch.setattr(N, "_get_client", lambda: c)
@@ -44,9 +53,45 @@ def test_a_grounded_digest_comes_back_with_its_sources(monkeypatch):
     assert "MU" in c.kw["contents"] and c.kw["config"].tools[0].google_search is not None
 
 
-def test_no_news_an_ungrounded_reply_and_a_failure_are_not_news(monkeypatch):
+def test_lines_dated_this_week_count_even_when_the_api_drops_the_links(monkeypatch):
+    c = _Client(_resp(f"- {D}: Micron EPS $33.42 vs $31.61 est (GlobeNewswire)", []))
+    monkeypatch.setattr(N, "_get_client", lambda: c)
+    r = asyncio.run(N._execute_ticker_news({"symbol": "MU"}))
+    assert r["status"] == "ok" and r["sources"] == [] and "$33.42" in r["digest"]
+
+
+def test_a_miss_is_cached_briefly_and_unlinked_news_is_flagged(monkeypatch):
+    import time as _t
+    c = _Client(_resp("NO RECENT NEWS", []))
+    monkeypatch.setattr(N, "_get_client", lambda: c)
+    assert asyncio.run(N._execute_ticker_news({"symbol": "QUIET"}))["status"] == "no_data"
+    age = _t.monotonic() - N._CACHE["QUIET"][0]
+    assert N.CACHE_TTL_S - age <= N.MISS_TTL_S + 1, "a miss expires in about two minutes"
+    from discord_bot import ask_router as R
+    block = R.inject_text(R.T_NEWS, {"status": "ok", "symbol": "MU", "digest": f"{D} beat",
+                                     "sources": []})
+    assert "returned no links" in block
+
+
+def test_an_error_is_retried_once(monkeypatch):
+    replies = [RuntimeError("503"), _resp(f"{D} beat (x)", [("x", "https://x")])]
+
+    class _Flaky:
+        def __init__(self):
+            async def gen(**kw):
+                r = replies.pop(0)
+                if isinstance(r, Exception):
+                    raise r
+                return r
+            self.aio = types.SimpleNamespace(models=types.SimpleNamespace(generate_content=gen))
+    monkeypatch.setattr(N, "_get_client", lambda: _Flaky())
+    assert asyncio.run(N._execute_ticker_news({"symbol": "MU"}))["status"] == "ok"
+
+
+def test_no_news_an_undated_or_old_reply_and_a_failure_are_not_news(monkeypatch):
     for client in (_Client(_resp("NO RECENT NEWS", [("x", "https://x")])),
-                   _Client(_resp("Micron did great", [])),           # no grounding = memory
+                   _Client(_resp("Micron did great", [])),           # undated = memory
+                   _Client(_resp(f"{OLD} Micron launched a chip (x)", [("x", "https://x")])),
                    _Client(exc=RuntimeError("500"))):
         monkeypatch.setattr(N, "_get_client", lambda c=client: c)
         assert asyncio.run(N._execute_ticker_news({"symbol": "MU"}))["status"] in ("no_data", "error")
@@ -54,18 +99,19 @@ def test_no_news_an_ungrounded_reply_and_a_failure_are_not_news(monkeypatch):
 
 
 def test_a_no_news_category_does_not_erase_the_dated_items():
-    text = ("- 2026-09-28: Nvidia authorized a $150B buyback (NVIDIA)\n"
+    text = (f"- {D2}: Nvidia authorized a $150B buyback (NVIDIA)\n"
             "- earnings: NO RECENT NEWS\n"
-            "- 2026-09-28: Nvidia introduced OASP (Forkast.News)")
-    assert N.dated_lines(text) == ["- 2026-09-28: Nvidia authorized a $150B buyback (NVIDIA)",
-                                   "- 2026-09-28: Nvidia introduced OASP (Forkast.News)"]
+            f"- {OLD}: last month's launch, outside the window\n"
+            f"- {D2}: Nvidia introduced OASP (Forkast.News)")
+    assert N.dated_lines(text) == [f"- {D2}: Nvidia authorized a $150B buyback (NVIDIA)",
+                                   f"- {D2}: Nvidia introduced OASP (Forkast.News)"]
     assert N.dated_lines("NO RECENT NEWS") == []
     assert N._clip("a\nbb\nccc", limit=5) == "a\nbb"
 
 
 def test_the_news_is_cached_per_symbol(monkeypatch):
     N._CACHE.clear()
-    c = _Client(_resp("2026-09-30 beat (x)", [("x", "https://x")]))
+    c = _Client(_resp(f"{D} beat (x)", [("x", "https://x")]))
     calls = []
     monkeypatch.setattr(N, "_get_client", lambda: calls.append(1) or c)
     asyncio.run(N._execute_ticker_news({"symbol": "MU"}))

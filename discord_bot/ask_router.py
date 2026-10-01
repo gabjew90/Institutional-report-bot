@@ -815,7 +815,9 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
     if tool == T_NEWS and (result or {}).get("status") == "ok":
         pubs = ", ".join(s.get("title") or "" for s in result.get("sources") or [] if s.get("title"))
         return (f"[{lead}{tail}]\nNEWS ON {result.get('symbol')}:\n{result.get('digest')}"
-                + (f"\n(searched: {pubs})" if pubs else ""))
+                + (f"\n(searched: {pubs})" if pubs else
+                   "\n(the search returned no links: attribute a line only to the publisher it "
+                   "names, and do not present a line with no publisher as confirmed)"))
     if tool == T_PRIMER:
         if (result or {}).get("status") == "ok":
             return f"[{lead}{tail}]\nBUSINESS OF {result.get('symbol')}:\n{result.get('primer')}"

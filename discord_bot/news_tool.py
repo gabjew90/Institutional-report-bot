@@ -24,10 +24,12 @@ log = logging.getLogger(__name__)
 
 NEWS_TIMEOUT_S = 7.5          # under the router's 8 s prefetch deadline
 MAX_SOURCES = 4
+NEWS_ATTEMPTS = 2
 DIGEST_CHARS = 2500
 # A search took 6.4 s for MU on 2026-09-30 and every stock answer waits on
 # the slowest prefetch; the room asks about the same name in bursts.
 CACHE_TTL_S = 10 * 60
+MISS_TTL_S = 2 * 60
 _CACHE: dict[str, tuple[float, dict]] = {}
 _client = None
 
@@ -87,52 +89,88 @@ async def _execute_ticker_news(args: dict) -> dict:
         return {"status": "error", "symbol": sym, "error": "No Gemini key configured."}
     name = (args.get("name") or "").strip()
     prompt = PROMPT.format(sym=sym, name=f" ({name})" if name else "")
-    try:
-        resp = await asyncio.wait_for(client.aio.models.generate_content(
-            model=settings.ask_gemini_model or settings.gemini_model,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                tools=[types.Tool(google_search=types.GoogleSearch())],
-                temperature=0.1, max_output_tokens=900,
-                # A list of dated facts needs little reasoning. Budget 0 is
-                # rejected (400) on gemini-3.5-flash-lite; MINIMAL is the
-                # floor and was the fastest setting measured on 2026-09-30.
-                thinking_config=types.ThinkingConfig(thinking_level="MINIMAL"),
-            ),
-        ), NEWS_TIMEOUT_S)
-    except asyncio.TimeoutError:
-        return {"status": "timeout", "symbol": sym, "error": "News search did not finish in time."}
-    except Exception as e:
-        log.warning(f"ticker news {sym}: {e}")
-        return {"status": "error", "symbol": sym, "error": "News search failed."}
-    text = (getattr(resp, "text", None) or "").strip()
-    cand = (getattr(resp, "candidates", None) or [None])[0]
-    sources = _sources(getattr(cand, "grounding_metadata", None))
-    dated = dated_lines(text)
-    if not dated or not sources:
-        # No dated fact, or an ungrounded reply (the model's memory, not news).
+    config = types.GenerateContentConfig(
+        tools=[types.Tool(google_search=types.GoogleSearch())],
+        temperature=0.1, max_output_tokens=900,
+        # A list of dated facts needs little reasoning. Budget 0 is
+        # rejected (400) on gemini-3.5-flash-lite; MINIMAL is the floor
+        # and was the fastest setting measured on 2026-09-30.
+        thinking_config=types.ThinkingConfig(thinking_level="MINIMAL"),
+    )
+    t0 = time.monotonic()
+    out: dict = {"status": "error", "symbol": sym, "error": "News search failed."}
+    # A second try when the first fails or comes back with nothing dated,
+    # as long as it can still finish inside the prefetch deadline. On
+    # 2026-09-30 one search in two came back with no usable lines.
+    for _attempt in range(NEWS_ATTEMPTS):
+        left = NEWS_TIMEOUT_S - (time.monotonic() - t0)
+        if left < 1.5:
+            break
+        try:
+            resp = await asyncio.wait_for(client.aio.models.generate_content(
+                model=settings.ask_gemini_model or settings.gemini_model,
+                contents=prompt, config=config), left)
+        except asyncio.TimeoutError:
+            out = {"status": "timeout", "symbol": sym, "error": "News search did not finish in time."}
+            break
+        except Exception as e:
+            log.warning(f"ticker news {sym}: {e}")
+            out = {"status": "error", "symbol": sym, "error": "News search failed."}
+            continue
+        text = (getattr(resp, "text", None) or "").strip()
+        cand = (getattr(resp, "candidates", None) or [None])[0]
+        dated = dated_lines(text)
+        if dated:
+            # Links when the API returned them; the in-window dates are what
+            # make the lines news rather than memory (see dated_lines).
+            out = {"status": "ok", "symbol": sym, "digest": _clip("\n".join(dated)),
+                   "sources": _sources(getattr(cand, "grounding_metadata", None))}
+            break
         out = {"status": "no_data", "symbol": sym,
-               "error": f"No sourced news on {sym} in the last 5 trading days."}
-    else:
-        out = {"status": "ok", "symbol": sym, "digest": _clip("\n".join(dated)), "sources": sources}
-    now = time.monotonic()
-    for k, (t0, _) in list(_CACHE.items()):
-        if now - t0 >= CACHE_TTL_S:
-            _CACHE.pop(k, None)
-    _CACHE[sym] = (now, out)
+               "error": f"No dated news on {sym} in the last {WINDOW_DAYS} days."}
+    if out["status"] in ("ok", "no_data"):
+        now = time.monotonic()
+        for k, (ts, _) in list(_CACHE.items()):
+            if now - ts >= CACHE_TTL_S:
+                _CACHE.pop(k, None)
+        # A miss is kept briefly: a release can cross minutes after it.
+        # Stored with a back-dated stamp so the shared TTL check expires it.
+        stamp = now if out["status"] == "ok" else now - (CACHE_TTL_S - MISS_TTL_S)
+        _CACHE[sym] = (stamp, out)
     return out
 
 
 _DATED_RE = re.compile(r"^\s*[-*•]?\s*\(?(20\d\d-\d\d-\d\d)")
 
 
-def dated_lines(text: str) -> list[str]:
-    """The lines that open with a date. The model writes "NO RECENT NEWS"
-    under one category while listing real items under another (NVDA,
-    2026-09-30, beside the $150B buyback), so the phrase anywhere cannot
-    mean the whole reply is empty."""
-    return [ln.strip() for ln in (text or "").splitlines()
-            if _DATED_RE.match(ln) and "NO RECENT NEWS" not in ln.upper()]
+WINDOW_DAYS = 7
+
+
+def dated_lines(text: str, today=None) -> list[str]:
+    """The lines that open with a date inside the last WINDOW_DAYS (New
+    York calendar). The model writes "NO RECENT NEWS" under one category
+    while listing real items under another (NVDA, 2026-09-30, beside the
+    $150B buyback), so the phrase anywhere cannot mean the reply is empty.
+    The window is what makes a line trustworthy without a link: about half
+    of the grounded replies on 2026-09-30 came back with no grounding
+    metadata at all while carrying that evening's print, which only a
+    search could supply; a line dated in the last week cannot come from
+    the model's training data."""
+    from datetime import date, datetime, timedelta, timezone
+    from zoneinfo import ZoneInfo
+    today = today or datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
+    out = []
+    for ln in (text or "").splitlines():
+        m = _DATED_RE.match(ln)
+        if not m or "NO RECENT NEWS" in ln.upper():
+            continue
+        try:
+            d = date.fromisoformat(m.group(1))
+        except ValueError:
+            continue
+        if today - timedelta(days=WINDOW_DAYS) <= d <= today + timedelta(days=1):
+            out.append(ln.strip())
+    return out
 
 
 def _clip(text: str, limit: int = DIGEST_CHARS) -> str:
