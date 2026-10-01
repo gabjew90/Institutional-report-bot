@@ -31,6 +31,7 @@ FILINGS_LOOKBACK_DAYS = 365
 MAX_FILINGS = 5
 SUMMARY_CHARS = 360
 ATR_DAYS = 14
+GROWTH_BUDGET_S = 5.0   # start the growth reads only if the base fetch took less
 ADV_DAYS = 30
 
 
@@ -168,6 +169,115 @@ def build(symbol: str, info: dict, history: list[dict], filings: list[dict],
             if k == "offering_filings_12m" or (v is not None and v != "")}
 
 
+def _pct(v) -> float | None:
+    f = _num(v)
+    return None if f is None else round(f * 100, 1)
+
+
+def _recent(quarter_end_iso: str, today: date | None = None, days: int = 75) -> bool:
+    """A quarter that ended within `days`: its report is weeks old at most."""
+    try:
+        q = date.fromisoformat(str(quarter_end_iso)[:10])
+    except ValueError:
+        return False
+    return ((today or datetime.now(timezone.utc).date()) - q).days <= days
+
+
+def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
+                 quarterly_revenue: list[tuple[str, float]], today: date | None = None) -> dict:
+    """Growth, the way a trader reads a print (owner, 2026-10-01: "instead
+    of absolute dollars ... better to also show YoY growth"). Computed here,
+    not by the model.
+
+    rev_est / eps_est: Yahoo's estimate tables keyed by period ('0q' is the
+    quarter to be reported next, '0y' the current fiscal year), each row
+    {avg, yearAgoRevenue|yearAgoEps, growth, numberOfAnalysts}.
+    eps_history: [{quarter, epsActual, epsEstimate, surprisePercent}].
+    quarterly_revenue: [(quarter_end_iso, revenue)], any order."""
+    out: dict = {}
+    for period, key in (("0q", "next_quarter"), ("0y", "fiscal_year")):
+        r, e = (rev_est or {}).get(period) or {}, (eps_est or {}).get(period) or {}
+        row = {
+            "revenue": _num(r.get("avg")), "revenue_year_ago": _num(r.get("yearAgoRevenue")),
+            "revenue_growth_pct": _pct(r.get("growth")),
+            "eps": _num(e.get("avg")), "eps_year_ago": _num(e.get("yearAgoEps")),
+            "eps_growth_pct": _pct(e.get("growth")),
+            "analysts": _num(r.get("numberOfAnalysts") or e.get("numberOfAnalysts")),
+        }
+        if row["eps_year_ago"] is not None and row["eps_year_ago"] <= 0:
+            # Growth from a loss or from zero is not a growth rate: -$0.10
+            # to $0.20 printed as "-300%". The two figures carry it.
+            row["eps_growth_pct"] = None
+        row = {k: v for k, v in row.items() if v is not None}
+        if row.get("revenue") is not None or row.get("eps") is not None:
+            out[key] = row
+    reports = []
+    for h in sorted(eps_history or [], key=lambda x: str(x.get("quarter")), reverse=True)[:4]:
+        act, est = _num(h.get("epsActual")), _num(h.get("epsEstimate"))
+        if act is None:
+            continue
+        reports.append({"quarter": str(h.get("quarter"))[:10], "actual": act, "estimate": est,
+                        "surprise_pct": _pct(h.get("surprisePercent"))})
+    if reports:
+        out["eps_reports"] = reports
+        nq = out.get("next_quarter") or {}
+        newest = reports[0]
+        # Hours after a print Yahoo can still list the reported quarter as
+        # "0q". Its consensus then matches the newest report's estimate;
+        # calling it the quarter "to be reported next" previews a print
+        # that already happened.
+        if (nq.get("eps") is not None and newest.get("estimate")
+                and abs(nq["eps"] - newest["estimate"]) <= 0.01 * abs(newest["estimate"])
+                and _recent(newest["quarter"], today)):
+            out.pop("next_quarter", None)
+    revs = sorted(((str(q)[:10], _num(v)) for q, v in (quarterly_revenue or []) if _num(v)),
+                  reverse=True)
+    rev_reports = []
+    for i, (q, v) in enumerate(revs[:2]):
+        if i + 4 < len(revs) and revs[i + 4][1]:
+            rev_reports.append({"quarter": q, "revenue": v,
+                                "yoy_pct": round((v / revs[i + 4][1] - 1) * 100, 1)})
+    if rev_reports:
+        out["revenue_reports"] = rev_reports
+    return out
+
+
+def _fetch_growth(t, sym: str) -> dict:
+    """The four Yahoo reads behind growth_block; any one may fail alone."""
+    rev_est = eps_est = {}
+    history: list[dict] = []
+    qrev: list[tuple[str, float]] = []
+    try:
+        rev_est = _table(t.revenue_estimate)
+    except Exception as e:
+        log.info(f"snapshot {sym}: revenue estimate failed ({e})")
+    try:
+        eps_est = _table(t.earnings_estimate)
+    except Exception as e:
+        log.info(f"snapshot {sym}: eps estimate failed ({e})")
+    try:
+        eh = t.earnings_history
+        history = [{"quarter": str(idx)[:10], **{str(k): v for k, v in row.items()}}
+                   for idx, row in eh.iterrows()]
+    except Exception as e:
+        log.info(f"snapshot {sym}: earnings history failed ({e})")
+    try:
+        qis = t.quarterly_income_stmt
+        if "Total Revenue" in qis.index:
+            qrev = [(str(c)[:10], v) for c, v in qis.loc["Total Revenue"].items()]
+    except Exception as e:
+        log.info(f"snapshot {sym}: quarterly revenue failed ({e})")
+    return growth_block(rev_est, eps_est, history, qrev)
+
+
+def _table(df) -> dict:
+    """A yfinance estimate DataFrame as {period: {column: value}}."""
+    try:
+        return {str(idx): {str(k): v for k, v in row.items()} for idx, row in df.iterrows()}
+    except Exception:
+        return {}
+
+
 def fetch(symbol: str) -> dict:
     """Network fetch plus build, cached 15 minutes per symbol."""
     sym = (symbol or "").strip().upper()
@@ -177,6 +287,7 @@ def fetch(symbol: str) -> dict:
     if hit and time.monotonic() - hit[0] < CACHE_TTL_S:
         return hit[1]
     import yfinance as yf
+    t0 = time.monotonic()
     t = yf.Ticker(sym)
     try:
         info = t.info or {}
@@ -198,6 +309,11 @@ def fetch(symbol: str) -> dict:
         except Exception as e:
             log.info(f"snapshot {sym}: filings failed ({e})")
     snap = build(sym, info, rows, filings)
+    # The four growth reads come last and only with time to spare: the
+    # executor gives the whole fetch 12 s, and a slow estimate table must
+    # cost the growth lines, not the business, float and filings above.
+    if snap.get("status") == "ok" and time.monotonic() - t0 < GROWTH_BUDGET_S:
+        snap["growth"] = _fetch_growth(t, sym)
     # Cache only a complete read: a snapshot built after the quote summary
     # failed has no business line, float or filings, and serving it for
     # 15 minutes turns one Yahoo hiccup into a quarter hour of thin answers.
@@ -231,6 +347,42 @@ def _count(v: float | None) -> str:
         if abs(v) >= div:
             return f"{v / div:.1f}{unit}"
     return f"{v:,.0f}"
+
+
+def _signed(p: float | None) -> str:
+    return "n/a" if p is None else f"{p:+.1f}%"
+
+
+def _eps(v: float | None) -> str:
+    return "n/a" if v is None else f"${v:,.2f}"
+
+
+def render_growth(g: dict) -> list[str]:
+    """Growth first, the dollar figure beside it."""
+    lines = []
+    for key, label in (("next_quarter", "quarter to be reported next"),
+                       ("fiscal_year", "this fiscal year")):
+        row = g.get(key)
+        if not row:
+            continue
+        bits = []
+        if row.get("revenue") is not None:
+            bits.append(f"revenue {_signed(row.get('revenue_growth_pct'))} y/y "
+                        f"({_money(row['revenue'])} vs {_money(row.get('revenue_year_ago'))})")
+        if row.get("eps") is not None:
+            bits.append(f"EPS {_signed(row.get('eps_growth_pct'))} y/y "
+                        f"({_eps(row['eps'])} vs {_eps(row.get('eps_year_ago'))})")
+        n = f", {int(row['analysts'])} analysts" if row.get("analysts") else ""
+        lines.append(f"consensus, {label}{n}: " + ", ".join(bits))
+    if g.get("eps_reports"):
+        lines.append("EPS reports, actual vs estimate (newest first): " + "; ".join(
+            f"quarter ended {r['quarter']}: {_eps(r['actual'])} vs {_eps(r.get('estimate'))} "
+            f"({_signed(r.get('surprise_pct'))})" for r in g["eps_reports"]))
+    if g.get("revenue_reports"):
+        lines.append("reported revenue: " + "; ".join(
+            f"quarter ended {r['quarter']}: {_money(r['revenue'])} ({_signed(r['yoy_pct'])} y/y)"
+            for r in g["revenue_reports"]))
+    return lines
 
 
 def _market_open(now: datetime | None = None) -> bool:
@@ -308,6 +460,7 @@ def render(snap: dict) -> str:
             bs.append(f"{label} {_money(s[key])}")
     if bs:
         lines.append("balance sheet: " + ", ".join(bs))
+    lines += render_growth(s.get("growth") or {})
     offs = s.get("offering_filings_12m") or []
     if offs:
         lines.append("offering registrations filed in the last 12 months: "

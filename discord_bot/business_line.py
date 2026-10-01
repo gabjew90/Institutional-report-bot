@@ -93,21 +93,37 @@ def business_terms(primer: str) -> set[str]:
     return terms
 
 
-def names_business_line(answer: str, primer: str) -> bool:
-    """True when the answer names at least one business line from the
-    primer, or when the primer gives nothing to check against."""
-    terms = business_terms(primer)
-    if not terms:
-        return True
-    low = (answer or "").lower()
+def driver_terms(primer: str) -> set[str]:
+    """The business terms the primer's DRIVERS line names: the segment or
+    product that is the highlight right now. Owner, 2026-10-01: "the
+    'driven by' part should align with what part of its business is the
+    highlight" (the ACN rewrite hung two industry groups off the revenue
+    consensus instead of naming what drives growth)."""
+    drivers = _line(primer, "DRIVERS").lower()
+    return {t for t in business_terms(primer)
+            if re.search(rf"(?<![a-z]){re.escape(t)}(?![a-z])", drivers)}
+
+
+def _mentions(text: str, terms: set[str]) -> bool:
+    low = (text or "").lower()
     return any(re.search(rf"(?<![a-z]){re.escape(t)}(?![a-z])", low) for t in terms)
 
 
+def names_business_line(answer: str, primer: str) -> bool:
+    """True when the answer names the business line the primer calls the
+    driver, or, when the DRIVERS line names none, any business line from
+    the primer; also True when the primer gives nothing to check."""
+    terms = driver_terms(primer) or business_terms(primer)
+    return not terms or _mentions(answer, terms)
+
+
 REWRITE_PROMPT = (
-    "Rewrite the answer below so it says which part of {sym}'s business drives the figures "
-    "it discusses, using the BUSINESS PRIMER: name the segment or product line and what it "
-    "sells, in plain words, beside the figure it explains. Keep every figure, date, bank name "
-    "and attribution exactly as written. Add no figure that is not in the answer or the "
-    "primer. Keep the arrow format; you may add one arrow. Output only the rewritten answer.\n\n"
-    "BUSINESS PRIMER:\n{primer}\n\nANSWER:\n{answer}"
+    "Rewrite the answer below so it says which part of {sym}'s business is driving the "
+    "figures it discusses, using the BUSINESS PRIMER. Use its DRIVERS line: name the segment "
+    "or product that is driving growth or margin now, say in plain words what it sells and "
+    "why that moves the figure (a beat, a guide, a margin, the expected move). Tie it to the "
+    "figure it explains, as a reason, not as a list of segments hung on a total. Keep every "
+    "figure, date, bank name and attribution exactly as written. Add no figure that is not in "
+    "the answer or the primer. Keep the arrow format; you may add one arrow. Output only the "
+    "rewritten answer.\n\nBUSINESS PRIMER:\n{primer}\n\nANSWER:\n{answer}"
 )

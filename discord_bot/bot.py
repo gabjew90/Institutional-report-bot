@@ -5219,6 +5219,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_PRIMER: _execute_ticker_primer,
     }
     _ask_meta["route_shape"] = _ask_route.shape
+    _ask_meta["route_prefetch"] = [t for t, _ in _ask_route.prefetch]
 
     async def _run_prefetch(_pf_tool, _pf_args):
         """One prefetch under its own deadline. Returns the result dict,
@@ -5267,6 +5268,14 @@ async def _ask_02_call_model_with_tools(
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue
+        if _pf_tool == _ask_router.T_CHAIN and _pf_res.get("status") == "ok":
+            # Read by the implied-move guard in phase 9.
+            _s = _pf_res.get("summary") or {}
+            if _s.get("implied_move_pct") is not None:
+                _ask_meta["chain_move"] = {
+                    "symbol": _s.get("underlying_symbol") or _pf_args.get("symbol"),
+                    "pct": _s["implied_move_pct"], "dollars": _s.get("implied_move_dollars"),
+                    "expiration": _s.get("expiration_iso")}
         if _pf_tool == _ask_router.T_PRIMER and _pf_res.get("status") == "ok":
             # Read by the business-line guard in phase 9.
             _ask_meta["primer"] = {"symbol": _pf_res.get("symbol"),
@@ -8290,6 +8299,8 @@ async def _ask_09_rank_and_regen_guards(
 
     answer = await _business_line_guard(
         answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
+    answer = await _implied_move_guard(
+        answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
     return (answer, grounding_metadata)
 
 
@@ -8301,23 +8312,39 @@ async def _business_line_guard(answer, _ask_meta, client, ask_model, safety_sett
     the primer in hand; keep the rewrite only if it now names one and kept
     every figure. Code, not prompt text (CLAUDE.md /ask policy rule 1)."""
     from discord_bot import business_line as _bl
-    from discord_bot import data_footer as _df
     primer = (_ask_meta.get("primer") or {})
-    if (not answer or not primer.get("primer")
-            or _ask_meta.get("route_shape") not in _BUSINESS_LINE_SHAPES
-            # A canned fallback ("ran out of room", "no response came
-            # back") or banter has no figures to explain; rewriting it
-            # would ship a primer recital as the answer.
-            or _ask_meta.get("empty_retry") or not _df.figures(answer)
+    if (not _rewritable_stock_answer(answer, _ask_meta, _BUSINESS_LINE_SHAPES)
+            or not primer.get("primer")
             or _bl.names_business_line(answer, primer["primer"])):
         return answer
-    _ask_meta["guards"].append("business-line")
+    return await _stock_answer_rewrite(
+        "business-line", answer, _ask_meta, client, ask_model, safety_settings, types,
+        _tally_retry_usage,
+        prompt=_bl.REWRITE_PROMPT.format(sym=primer.get("symbol") or "the company",
+                                         primer=primer["primer"], answer=answer),
+        accept=lambda new: _bl.names_business_line(new, primer["primer"]))
+
+
+def _rewritable_stock_answer(answer, _ask_meta, shapes) -> bool:
+    """A real answer on one of `shapes`. A canned fallback ("ran out of
+    room", "no response came back") or banter has no figures; rewriting it
+    would ship a primer or chain recital as the answer."""
+    from discord_bot import data_footer as _df
+    return bool(answer and _ask_meta.get("route_shape") in shapes
+                and not _ask_meta.get("empty_retry") and _df.figures(answer))
+
+
+async def _stock_answer_rewrite(name, answer, _ask_meta, client, ask_model, safety_settings,
+                                types, _tally_retry_usage, *, prompt, accept):
+    """One rewrite of a stock answer for a named code check. The rewrite
+    gets phase 4's voice cleanup and is kept only when it keeps every
+    figure (numeric cores, so spelled-out units pass) and `accept(new)`."""
+    from discord_bot import data_footer as _df
+    _ask_meta["guards"].append(name)
     try:
         resp = await client.aio.models.generate_content(
             model=ask_model,
-            contents=[types.Content(role="user", parts=[types.Part.from_text(
-                text=_bl.REWRITE_PROMPT.format(sym=primer.get("symbol") or "the company",
-                                               primer=primer["primer"], answer=answer))])],
+            contents=[types.Content(role="user", parts=[types.Part.from_text(text=prompt)])],
             config=types.GenerateContentConfig(
                 system_instruction=("You edit a trading-room bot's answer about a stock. "
                                     "Direct, plain English, same register."),
@@ -8328,17 +8355,64 @@ async def _business_line_guard(answer, _ask_meta, client, ask_model, safety_sett
         _tally_retry_usage(resp)
         new = (resp.text or "").strip()
     except Exception as e:
-        log.warning(f"/ask: business-line rewrite failed (non-fatal): {e}")
+        log.warning(f"/ask: {name} rewrite failed (non-fatal): {e}")
         return answer
-    # Phase 4's voice cleanup already ran on the original; the rewrite
-    # gets the same pass (em-dashes, semicolons, HTML entities).
     new, _ = _clean_voice_violations(new)
-    kept_figures = _df.numeric_cores(answer) <= _df.numeric_cores(new)
-    if new and kept_figures and _bl.names_business_line(new, primer["primer"]):
-        log.info("/ask: business-line rewrite applied")
+    if new and _df.numeric_cores(answer) <= _df.numeric_cores(new) and accept(new):
+        log.info(f"/ask: {name} rewrite applied")
         return new
-    _ask_meta["guards"].append("business-line:kept-original")
+    _ask_meta["guards"].append(f"{name}:kept-original")
     return answer
+
+
+def _states_move(answer: str, move: dict) -> bool:
+    """The answer gives the straddle's move, as a percent or in dollars."""
+    from discord_bot import data_footer as _df
+    cores = _df.numeric_cores(answer)
+    want = set()
+    for v, fmts in ((move.get("pct"), ("{:.1f}", "{:g}", "{:.0f}")),
+                    (move.get("dollars"), ("{:.2f}", "{:.1f}", "{:g}", "{:.0f}"))):
+        if v is not None:
+            want |= {f.format(v) for f in fmts}     # "about 7%" states a 7.1% move
+    return bool(cores & want)
+
+
+_IMPLIED_MOVE_PROMPT = (
+    "Rewrite the answer below so it states the move the options market is pricing on "
+    "{sym}: about {pct:.1f}% (${dollars:.2f}) either way by the {expiration} expiration, from "
+    "the at-the-money straddle. Put it beside what the desks or the consensus expect, so the "
+    "reader can weigh the price of the bet against the expectation. Do not quote implied "
+    "volatility as a bare percentage. Keep every figure, date, bank name and attribution "
+    "exactly as written. Keep the arrow format; you may add one arrow. Output only the "
+    "rewritten answer.\n\nANSWER:\n{answer}"
+)
+
+
+async def _implied_move_guard(answer, _ask_meta, client, ask_model, safety_settings, types,
+                              _tally_retry_usage):
+    """An options question whose chain priced a move must say the move
+    (owner, 2026-10-01: the ACN calls answer dropped it, the one figure an
+    options question turns on)."""
+    from discord_bot import business_line as _bl
+    move = _ask_meta.get("chain_move") or {}
+    if (not _rewritable_stock_answer(answer, _ask_meta, {"options_chain"})
+            # a bet on the print; an open-interest or put/call question
+            # did not ask what the straddle prices
+            or "lookup_earnings_date" not in (_ask_meta.get("route_prefetch") or [])
+            or move.get("pct") is None or _states_move(answer, move)):
+        return answer
+    primer = (_ask_meta.get("primer") or {}).get("primer") or ""
+    had_line = bool(primer) and _bl.names_business_line(answer, primer)
+    return await _stock_answer_rewrite(
+        "implied-move", answer, _ask_meta, client, ask_model, safety_settings, types,
+        _tally_retry_usage,
+        prompt=_IMPLIED_MOVE_PROMPT.format(
+            sym=move.get("symbol") or "the stock", pct=move["pct"],
+            dollars=move.get("dollars") or 0.0, expiration=move.get("expiration") or "nearest",
+            answer=answer),
+        # and it keeps the business line the previous guard may have added
+        accept=lambda new: _states_move(new, move)
+        and (not had_line or _bl.names_business_line(new, primer)))
 
 
 # The shapes that wait for the primer (ask_router._stock_prefetch with

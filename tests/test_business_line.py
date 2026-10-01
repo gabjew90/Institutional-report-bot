@@ -86,6 +86,57 @@ def test_a_rewrite_that_drops_a_figure_or_still_skips_the_business_is_discarded(
     assert out == ACN_ANSWER
 
 
+def test_the_named_line_must_be_the_driver_the_primer_names():
+    """Owner, 2026-10-01: 'driven by' should name the highlight, not any segment."""
+    assert B.driver_terms(MU) >= {"cloud memory", "core data center"}
+    assert not B.names_business_line("Mobile & Client chips shipped 3% more", MU)
+    assert B.names_business_line("Cloud Memory, AI server chips, carried the beat", MU)
+    assert B.names_business_line("Graphics was flat", NVDA), "no DRIVERS line: any segment counts"
+
+
+def _run_move(answer, client, move=None, shape="options_chain", earnings=True, primer=None):
+    from discord_bot import bot
+    from google.genai import types as gt
+    meta = {"guards": [], "route_shape": shape,
+            "route_prefetch": ["lookup_options_chain"] + (["lookup_earnings_date"] if earnings else []),
+            "chain_move": move or {"symbol": "ACN", "pct": 7.1, "dollars": 13.1,
+                                   "expiration": "2026-10-02"}}
+    if primer:
+        meta["primer"] = {"symbol": "ACN", "primer": primer}
+    out = asyncio.run(bot._implied_move_guard(answer, meta, client, "m", None, gt, lambda r: None))
+    return out, meta["guards"]
+
+
+def test_an_options_answer_without_the_priced_move_gets_it_added():
+    no_move = ("→ ACN reports today, consensus revenue **$18.2B** (+2.5% y/y).\n\n"
+               "→ Goldman expects an in-line quarter.")
+    with_move = no_move + ("\n\n→ Options price about **7.1%** (**$13.10**) either way by Friday, "
+                           "against an in-line expectation.")
+    c = _Client(with_move)
+    out, guards = _run_move(no_move, c)
+    assert out == with_move and guards == ["implied-move"] and c.calls == 1
+
+
+def test_the_move_check_is_satisfied_by_percent_or_dollars_and_skips_other_shapes():
+    c = _Client("x")
+    for ans in ("→ Options price a ±7.1% move, revenue $18.2B",
+                "→ the straddle prices $13.10 either way, revenue $18.2B"):
+        assert _run_move(ans, c)[0] == ans
+    assert _run_move("→ revenue $18.2B", c, shape="ticker_opinion")[0] == "→ revenue $18.2B"
+    assert _run_move("→ revenue $18.2B", c, move={"pct": None})[0] == "→ revenue $18.2B"
+    assert _run_move("→ open interest 12,400 at $200", c, earnings=False)[0] == \
+        "→ open interest 12,400 at $200", "not a bet on the print"
+    assert _run_move("→ options price roughly 7% either way, revenue $18.2B", c)[0].startswith("→ options")
+    assert c.calls == 0
+
+
+def test_the_move_rewrite_may_not_drop_the_business_line():
+    line = "→ Consulting, half the revenue, carries the AI work. Revenue $18.2B."
+    lost = "→ Revenue $18.2B. Options price 7.1% either way."
+    out, guards = _run_move(line, _Client(lost), primer=ACN)
+    assert out == line and guards == ["implied-move", "implied-move:kept-original"]
+
+
 def test_a_fallback_message_is_never_rewritten_into_a_primer_recital():
     c = _Client("→ Accenture is half Consulting and half Outsourcing.")
     fallback = "→ Thought myself in circles and ran out of room. Try asking it more directly."

@@ -87,6 +87,48 @@ def test_partial_volume_note_only_while_the_session_is_open(monkeypatch):
     assert "still open, so this is partial" in S.render(snap)
 
 
+def test_growth_is_computed_and_rendered_growth_first():
+    """Owner, 2026-10-01: show y/y growth, not only absolute dollars. ACN's
+    live Yahoo figures that morning."""
+    rev = {"0q": {"avg": 18037776350, "yearAgoRevenue": 17596260000, "growth": 0.0251,
+                  "numberOfAnalysts": 20},
+           "0y": {"avg": 73566672090, "yearAgoRevenue": 69672977000, "growth": 0.0559,
+                  "numberOfAnalysts": 26}}
+    eps = {"0q": {"avg": 3.18294, "yearAgoEps": 3.03, "growth": 0.0505, "numberOfAnalysts": 20}}
+    hist = [{"quarter": "2026-05-31", "epsActual": 3.80, "epsEstimate": 3.70865, "surprisePercent": 0.0246},
+            {"quarter": "2026-02-28", "epsActual": 2.93, "epsEstimate": 2.83739, "surprisePercent": 0.0326}]
+    qrev = [("2026-05-31", 1.871814e10), ("2026-02-28", 1.804407e10), ("2025-11-30", 1.874212e10),
+            ("2025-08-31", 1.759626e10), ("2025-05-31", 1.772787e10)]
+    g = S.growth_block(rev, eps, hist, qrev)
+    assert g["next_quarter"]["revenue_growth_pct"] == 2.5 and g["next_quarter"]["analysts"] == 20
+    assert g["eps_reports"][0] == {"quarter": "2026-05-31", "actual": 3.80, "estimate": 3.70865,
+                                   "surprise_pct": 2.5}
+    assert g["revenue_reports"] == [{"quarter": "2026-05-31", "revenue": 1.871814e10, "yoy_pct": 5.6}]
+    lines = S.render_growth(g)
+    assert lines[0] == ("consensus, quarter to be reported next, 20 analysts: revenue +2.5% y/y "
+                        "($18.0B vs $17.6B), EPS +5.1% y/y ($3.18 vs $3.03)")
+    assert "quarter ended 2026-05-31: $3.80 vs $3.71 (+2.5%)" in lines[2]
+    assert S.growth_block({}, {}, [], []) == {} and S.render_growth({}) == []
+
+
+def test_growth_from_a_loss_is_not_a_percent():
+    g = S.growth_block({}, {"0q": {"avg": 0.20, "yearAgoEps": -0.10, "growth": -3.0}}, [], [])
+    assert "eps_growth_pct" not in g["next_quarter"]
+    assert "EPS n/a y/y ($0.20 vs $-0.10)" in S.render_growth(g)[0]
+
+
+def test_a_quarter_that_just_reported_is_not_the_next_one():
+    """Yahoo can lag after a print: '0q' still holds the reported quarter."""
+    rev = {"0q": {"avg": 54e9, "yearAgoRevenue": 11.3e9, "growth": 3.8}}
+    eps = {"0q": {"avg": 31.82, "yearAgoEps": 2.83, "growth": 10.2}}
+    hist = [{"quarter": "2026-08-31", "epsActual": 33.42, "epsEstimate": 31.818, "surprisePercent": 0.05}]
+    g = S.growth_block(rev, eps, hist, [], today=date(2026, 9, 30))
+    assert "next_quarter" not in g and g["eps_reports"][0]["actual"] == 33.42
+    rolled = S.growth_block(rev, {"0q": {"avg": 38.02, "yearAgoEps": 4.78, "growth": 6.95}}, hist, [],
+                            today=date(2026, 9, 30))
+    assert rolled["next_quarter"]["eps"] == 38.02
+
+
 def test_injected_block_uses_the_rendered_text():
     from discord_bot import ask_router as R
     snap = S.build("AEVA", INFO, BARS, FILINGS, today=date(2026, 9, 30))

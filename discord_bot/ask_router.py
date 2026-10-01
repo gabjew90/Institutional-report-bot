@@ -758,15 +758,19 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                  "with what it reported against the estimates. Name the publisher for anything "
                  "you take from it. status=no_data: nothing dated was found; do not fill it in."),
         T_PRIMER: ("BUSINESS PRIMER, a stored plain-English description of the company built from "
-                   "a web search. Use it to say which part of the business drives the figure being "
-                   "discussed (a desk's estimate, a margin, a guide, a move), in its words: name the "
-                   "segment and what it sells, not a code or acronym."),
+                   "a web search. Use its DRIVERS line to say which part of the business is driving "
+                   "the figure being discussed (a beat, a guide, a margin, a move) and why: name "
+                   "that segment and what it sells, as the reason for the figure, not a list of "
+                   "segments, and never a code or acronym."),
         T_SNAPSHOT: ("TICKER SNAPSHOT, system-fetched from Yahoo. What the company does and the "
                      "trading facts on it. Use the figures that bear on the question, each with "
                      "its date where it has one (short interest is exchange-reported twice a "
                      "month). Narrate, never grade: no 'low float', 'liquid', 'squeeze setup', "
                      "'safe' or 'risky'; the reader judges. Use the business line and industry to "
-                     "say what drives any metric you discuss."),
+                     "say what drives any metric you discuss. Give an earnings figure as its "
+                     "growth first (y/y, or the beat or miss against the estimate, both computed "
+                     "here) with the dollar figure beside it; a dollar total alone tells the "
+                     "reader nothing."),
         T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
                  "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "
                  "close. The ledger is entry-biased (exits are posted far less often than entries): "
