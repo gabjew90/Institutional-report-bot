@@ -1,0 +1,344 @@
+{
+ "brief": "GS Research's August core PCE print rose 0.25% m/m, below expectations, with the y/y rate at 3.01%, also below expectations; a downward methodology-driven revision, mostly from the portfolio management component, was larger than GS expected. GS lowers its Q4/Q4 core PCE forecast to 3.0%, below the FOMC median of 3.4%. Combined with NY Fed President Williams' comments, GS now sees an October hike as unlikely, pushes the second hike to December, and sees a strong chance the FOMC ultimately judges further hikes unnecessary. Separately, yields still rose on the day as the street looked through the soft print. In equities: GS upgrades OXY (PT $69) on debt reduction, a $4.0bn self-help cash-flow target by 2030 and valuation, and downgrades TOU to Sell (PT C$49) on Western Canadian gas weakness and valuation. GS expects Micron shares modestly higher post-print on guidance ahead of Street despite gross-margin softness, keeping its Neutral rating. DoorDash's Dash Forward event signals continued evolution toward three-sided local commerce. Quarter-end flows show an $11.5B MOC sell imbalance, pension selling at the 89th percentile, short-interest unwind, and a Software-over-Semis tilt into Micron's print.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "The core PCE price index rose 0.25% in August, below expectations, with the year-over-year rate at 3.01%, well below expectations.",
+   "anchor": "The core PCE price index rose 0.25% in August, somewhat below expectations, and the year-over-year rate now stands at 3.01%, well below expectations",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "The downward revision to year-over-year core PCE growth from methodological changes was larger than GS expected, mostly from the portfolio management component.",
+   "anchor": "The downward revision to year-over-year core PCE growth resulting from the methodological changes was larger than we expected",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS now expects 3.0% core PCE growth on a Q4/Q4 basis, below the median FOMC participant's forecast of 3.4%.",
+   "anchor": "we now expect 3.0% growth for core PCE on a Q4/Q4 basis, well below the median FOMC participant's forecast of 3.4%",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q4/Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS now thinks an October Fed rate hike is unlikely.",
+   "anchor": "we now think that an October hike is unlikely",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS is pushing back the second Fed rate hike in its forecast to December.",
+   "anchor": "We are pushing back the second hike in our forecast to December",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS sees a strong chance the FOMC ultimately concludes additional rate hikes are unnecessary.",
+   "anchor": "we see a strong chance that the FOMC will ultimately conclude that additional rate hikes are unnecessary",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "Yields continued to march higher on the day as the street looked through the softer core PCE print.",
+   "anchor": "Yields continued to march higher today with street looking through the softer PCE this AM",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS upgrades OXY with a raised 12-month price target of $69.",
+   "anchor": "We upgrade OXY with a raised 12-month price target to $69",
+   "topic": "Oil E&P rating changes",
+   "status": "target",
+   "instruments": [
+    "OXY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "OXY has a self-help initiative targeting $4.0bn in cash flow improvement by 2030.",
+   "anchor": "self-help initiative with a target of $4.0 bn in cash flow improvement by 2030",
+   "topic": "Oil E&P rating changes",
+   "status": "target",
+   "instruments": [
+    "OXY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS's oil E&P coverage has seen strong YTD share price performance of +34%.",
+   "anchor": "we have seen strong YTD share price performance from our oil E&P coverage (+34%)",
+   "topic": "Oil E&P rating changes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS downgrades TOU to Sell with a lowered 12-month price target of C$49.",
+   "anchor": "we downgrade to Sell with a lowered 12-month price target of C$49",
+   "topic": "Oil E&P rating changes",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS expects Micron shares to trade modestly higher following a strong quarter and guidance well ahead of the Street.",
+   "anchor": "We expect the stock to trade modestly higher following a strong quarter and guidance that were well ahead of the Street",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "Micron continues to see tight DRAM and NAND supply/demand conditions persisting through 2027 and 2028.",
+   "anchor": "Micron continues to see tight supply/demand conditions persisting in both DRAM and NAND through 2027 and 2028",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2027 and 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "Micron has signed 10 additional long-term agreements totaling about 35% of expected revenue through FY30.",
+   "anchor": "Micron has also signed 10 additional long-term agreements, in total amounting to ~35% of expected revenue through FY30",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS remains Neutral-rated on Micron given a roughly balanced risk/reward at current levels.",
+   "anchor": "We remain Neutral-rated on the stock given our view of roughly balanced risk/reward at current levels",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "DoorDash's Dash Forward announcements continue its evolution from a food delivery platform toward a three-sided local commerce company.",
+   "anchor": "today's announcements continue a trend of the evolution of DASH from a purely food delivery platform toward a three-sided local commerce company",
+   "topic": "DoorDash product platform expansion",
+   "status": "level",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "DoorDash's AI and autonomy investments, including Air and Dot, are an opportunistic deployment of capital supportive of long-term consumer engagement.",
+   "anchor": "are an opportunistic deployment of capital and should be supportive of driving long-term consumer engagement/retention",
+   "topic": "DoorDash product platform expansion",
+   "status": "level",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "long-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "Pensions were modelled to sell $30.5b of US equities at month end, ranking in the 89th percentile over the past three years.",
+   "anchor": "pensions were modelled to sell $30.5b of US equities which ranked in the 89th percentile over the past three years",
+   "topic": "Quarter-end equity flows and dispersion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "month end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "Positioning was a bit unwindy today, with short interest and non-profitable tech pockets outperforming.",
+   "anchor": "it was a bit unwindy with short interest, non-profitable tech pockets outperforming",
+   "topic": "Quarter-end equity flows and dispersion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "JBL fell 10% on a beat/raise weighing on sentiment into Micron's print, while FDS rose 4% on a mixed print and outlook.",
+   "anchor": "JBL -10% on a beat/raise weighing on sentiment into MU tonight vs FDS +4% on a mixed print / outlook",
+   "topic": "Quarter-end equity flows and dispersion",
+   "status": "released",
+   "instruments": [
+    "JBL",
+    "FDS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "The desk finished the day +6% net to buy, with asset managers net buyers in tech and macro while hedge funds were roughly flat.",
+   "anchor": "finishing +6% net to buy with Asst Mgrs finishing net buyers (tech and macro) while HFs were ~flat",
+   "topic": "Quarter-end equity flows and dispersion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "GS forecasts initial jobless claims for the week ended September 26 at 200k, in line with consensus and up from 197k prior.",
+   "anchor": "Initial jobless claims, week ended September 26 (GS 200k, consensus 200k, last 197k)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "week ended September 26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 1 Oct 2026",
+   "claim": "Consensus expects the S&P Global US manufacturing PMI September final reading at 57.0, unchanged from the prior reading.",
+   "anchor": "S&P Global US manufacturing PMI, September final (consensus 57.0, last 57.0)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September final"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-01/18209__gs-us-daily-download-1-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 23,
+  "matched": 23,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
