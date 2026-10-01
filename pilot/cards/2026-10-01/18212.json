@@ -1,0 +1,537 @@
+{
+ "brief": "Micron reports its August quarter after the close, with sentiment described as less euphoric than ahead of the June print, when Micron beat Q2 revenue ($41.5BN vs $35.7BN expected) and margin (84.9% vs 81.9%) estimates and guided August to $49-51BN, prompting SK Hynix and Kioxia to rally in sympathy. Goldman expects another beat and a November guide above consensus ($57.7BN vs $56.7BN), with Jim Schneider above Street estimates (median sellside: $51.49bn revenue, 86.2% margin, $31.83 EPS) across the board. Positioning feels relatively balanced, but investors expect the shift toward Strategic Customer Agreements, long-term floor-priced contracts, to cap beat magnitude below Micron's typical 10-30% EPS beats over the last six quarters, trading beat size for earnings durability. The swing factors are SCA mix, capital-return size and timing once CHIPS Act restrictions lift in December (JPMorgan expects cumulative FCF near $200BN through 2027), and HBM share. Asia markets are watching closely: Samsung and SK Hynix buybacks are nearly finished, raising liquidity-void concerns, while regional memory stocks remain well below their peaks.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman's Jay Narain says the August-quarter print itself is largely well understood while the market's focus is on Micron's November-quarter outlook and forward-looking commentary.",
+   "anchor": "the Q4 print itself is largely well understood; the market is focused on the November quarter outlook and forward-looking commentary",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Micron's May-quarter (Q2) revenue came in at $41.5 billion versus $35.7 billion expected.",
+   "anchor": "printing $41.5BN in revenue vs $35.7BN expected",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "May quarter (Q2)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Micron's May-quarter (Q2) gross margin came in at 84.9% versus 81.9% expected.",
+   "anchor": "an 84.9% gross margin vs 81.9%",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "May quarter (Q2)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Micron guided its August quarter to $49-51 billion in revenue, about $7 billion above where the Street had been.",
+   "anchor": "guiding the August quarter to $49-51BN, some $7BN above where the Street was",
+   "topic": "Micron earnings",
+   "status": "target",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "August quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "SK Hynix rose 11% and Kioxia rose as much as 15% in sympathy the morning after Micron's June 24 beat.",
+   "anchor": "SK Hynix was up 11% and Kioxia as much as 15% in sympathy",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman semis analyst Jim Schneider's November-quarter estimates for Micron are above the Street across the board.",
+   "anchor": "GS semis analyst Jim Schneider is above the Street across the board",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Median sellside estimates for Micron's November quarter are $51.49 billion in revenue.",
+   "anchor": "are as follows: \u25cf\u200b Revenue $51.49 billion",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Median sellside estimates for Micron's November quarter are 86.2% gross margin.",
+   "anchor": "Revenue $51.49 billion \u25cf\u200b Gross Margin 86.2%",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Median sellside estimates for Micron's November quarter are $31.83 in EPS.",
+   "anchor": "Gross Margin 86.2% \u25cf\u200b EPS $31.83",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "If Goldman's November-quarter estimate is right, Micron's quarterly revenue will have grown from $41.5 billion in May to nearly $58 billion in November, a 40% jump in two quarters.",
+   "anchor": "gone from $41.5BN in quarterly revenue in May to nearly $58BN by November, a 40% jump in two quarters",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "May to November (two quarters)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Consensus for Micron's August-quarter print is roughly $50-51 billion in revenue and $31-31.50 in EPS.",
+   "anchor": "consensus at roughly $50-51BN of revenue and $31-31.50 in EPS",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "August quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman research expects persistent memory supply-demand tightness to drive another strong quarter for Micron, with upside to consensus and robust guidance.",
+   "anchor": "to drive another strong quarter, upside to consensus and robust guidance",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman is mid-single-digit percentages above consensus EPS for Micron's fiscal Q3-Q4 2027 on better mix and pricing.",
+   "anchor": "mid-single-digit percentages above consensus EPS for Q3-Q4 2027 on better mix and pricing",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3-Q4 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman's London sales desk expects another strong beat for Micron with about 3% revenue upside to the Street as persistent DRAM/NAND tightness continues to support pricing.",
+   "anchor": "another strong beat, with ~3% revenue upside to Street as persistent DRAM/NAND tightness continues to support pricing",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Positioning into Micron's print feels relatively balanced, according to Goldman's Peter Callahan.",
+   "anchor": "positioning into the print \"feels relatively balanced,\"",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Micron is about 10% below its all-time high heading into the print, while Samsung and SK Hynix are still 20-40% below their respective highs.",
+   "anchor": "Micron is just 10% below its all-time high while Samsung and Hynix are still 20-40% below theirs",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Investors broadly expect the mix shift toward Strategic Customer Agreements to somewhat limit the size of Micron's beat.",
+   "anchor": "investors broadly expecting the mix towards SCAs to somewhat limit the beat size",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Micron has beaten EPS by 10-30% over the last roughly six quarters.",
+   "anchor": "MU beating EPS by 10-30% over the last ~6 quarters",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "last ~6 quarters"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Peter Callahan expects Micron's November-quarter revenue guide to come in up about 10% quarter-over-quarter relative to the Street.",
+   "anchor": "The November-quarter revenue guide relative to the Street (up ~10% q/q)",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Investors want Micron to hold or grow its roughly 20% HBM market share.",
+   "anchor": "HBM market share (investors want Micron to hold or grow its ~20% share)",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Micron held a net cash position of about $24.4 billion and generated $18.3 billion in adjusted free cash flow last quarter.",
+   "anchor": "Micron's net cash position of ~$24.4BN and $18.3BN in adjusted FCF last quarter",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "JPMorgan's Harlan Sur calls the December 9 CHIPS Act anniversary a capital return inflection point for Micron, after which the company has committed to returning 100% of excess cash, buybacks primary.",
+   "anchor": "a capital return inflection point,\" after which Micron has committed to returning 100% of excess cash",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "after December 9, 2026"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "JPMorgan's Harlan Sur estimates Micron's cumulative free cash flow could approach $200 billion through year-end 2027.",
+   "anchor": "cumulative FCF could approach $200BN through year-end 2027",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through year-end 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Nvidia recently added $150 billion to its own buyback program.",
+   "anchor": "Nvidia just adding $150BN to its own buyback",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "JPMorgan's Harlan Sur's base case is that Micron's bit production coverage under Strategic Customer Agreements has stepped up to 35%+, from about 20% for DRAM and 33% for NAND last quarter, possibly already above 50%.",
+   "anchor": "bit production coverage has stepped up to 35%+ (from ~20% for DRAM and ~33% for NAND last quarter), possibly already 50%+",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "last quarter"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "JPMorgan's Harlan Sur expects Strategic Customer Agreement floor pricing to lock in Micron gross margins well above its prior roughly 62% peak.",
+   "anchor": "floor pricing that locks in gross margins \"well above\" Micron's prior\n\n \n\n~62% peak",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman's desk flagged progress on Micron's 16-plus long-term Strategic Customer Agreements, including deposits and visibility on previously referenced minimum commitments of over $100 billion.",
+   "anchor": "progress on the 16+ long-term Strategic Customer Agreements, including deposits and visibility on the previously referenced $100bn+ of minimum commitments",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Memory stocks in the Asia region remain materially below their peaks heading into Micron's print.",
+   "anchor": "memory stocks in the region are still materially below their peaks",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman's Jay Narain says Asia memory stocks remain fundamentally compelling but have suffered from relative overweight positioning during a period of intense de-grossing.",
+   "anchor": "remain fundamentally compelling but have suffered from relative OW positioning in a period of intense de-grossing",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "About 60% of US data centers planned for completion in 2027 have not yet started construction, mostly due to power constraints.",
+   "anchor": "60% of US data centers planned for completion in 2027 haven't started construction yet",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Samsung's 15 trillion won buyback is 87% complete and SK Hynix's 40 trillion won buyback program is about 75% done, with both set to finish in early October.",
+   "anchor": "Samsung's W15TN buyback is 87% complete and SK Hynix's W40TN program is ~75% done",
+   "topic": "Micron earnings",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "early October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Foreign and retail investors were joint net sellers of Samsung and SK Hynix in September, sparking concerns about a potential liquidity void once their buyback programs end.",
+   "anchor": "has sparked concerns about a potential liquidity void once the buyback program ends",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Kioxia trades at 3.3x March-2028 P/E with a 101% ROE and 116% upside to Goldman's \u00a538,667 price target.",
+   "anchor": "trades at 3.3x March-2028 P/E with a 101% ROE and 116% upside to GS' \u00a538,667 target",
+   "topic": "Micron earnings",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Hynix (local) and Kioxia have underperformed the SK Hynix ADR and Micron since July.",
+   "anchor": "the underperformance of Hynix (local) and Kioxia vs. the Hynix ADR and Micron since July",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since July"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Micron Earnings Preview: Another Beat And Guide Above Street... But SCAs May Cap Upside Surprise",
+   "claim": "Goldman expects Micron to beat and guide its November quarter above consensus, at $57.7 billion versus $56.7 billion consensus.",
+   "anchor": "Goldman expects a beat and a November guide above consensus ($57.7BN vs $56.7BN)",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November quarter"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-01/18212__micron-earnings-preview-another-beat-and-guide-above-street-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 35,
+  "matched": 35,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
