@@ -5267,6 +5267,10 @@ async def _ask_02_call_model_with_tools(
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue
+        if _pf_tool == _ask_router.T_PRIMER and _pf_res.get("status") == "ok":
+            # Read by the business-line guard in phase 9.
+            _ask_meta["primer"] = {"symbol": _pf_res.get("symbol"),
+                                   "primer": _pf_res.get("primer") or ""}
         if _pf_tool == _ask_router.T_NEWS and _pf_res.get("status") == "ok":
             # Cited in phase 10 when the answer uses a figure from it.
             _ask_meta["news"] = {"sources": _pf_res.get("sources") or [],
@@ -8283,7 +8287,63 @@ async def _ask_09_rank_and_regen_guards(
                 f"→ No response came back (reason: {finish_reason}). "
                 f"Try again or rephrase."
             )
+
+    answer = await _business_line_guard(
+        answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
     return (answer, grounding_metadata)
+
+
+async def _business_line_guard(answer, _ask_meta, client, ask_model, safety_settings, types,
+                               _tally_retry_usage):
+    """A stock answer names the part of the business that drives its
+    figures (owner, 2026-09-30). When a business primer was injected and
+    the answer names no segment or product line from it, rewrite once with
+    the primer in hand; keep the rewrite only if it now names one and kept
+    every figure. Code, not prompt text (CLAUDE.md /ask policy rule 1)."""
+    from discord_bot import business_line as _bl
+    from discord_bot import data_footer as _df
+    primer = (_ask_meta.get("primer") or {})
+    if (not answer or not primer.get("primer")
+            or _ask_meta.get("route_shape") not in _BUSINESS_LINE_SHAPES
+            # A canned fallback ("ran out of room", "no response came
+            # back") or banter has no figures to explain; rewriting it
+            # would ship a primer recital as the answer.
+            or _ask_meta.get("empty_retry") or not _df.figures(answer)
+            or _bl.names_business_line(answer, primer["primer"])):
+        return answer
+    _ask_meta["guards"].append("business-line")
+    try:
+        resp = await client.aio.models.generate_content(
+            model=ask_model,
+            contents=[types.Content(role="user", parts=[types.Part.from_text(
+                text=_bl.REWRITE_PROMPT.format(sym=primer.get("symbol") or "the company",
+                                               primer=primer["primer"], answer=answer))])],
+            config=types.GenerateContentConfig(
+                system_instruction=("You edit a trading-room bot's answer about a stock. "
+                                    "Direct, plain English, same register."),
+                safety_settings=safety_settings, max_output_tokens=1500, temperature=0.3,
+                thinking_config=types.ThinkingConfig(thinking_budget=512),
+            ),
+        )
+        _tally_retry_usage(resp)
+        new = (resp.text or "").strip()
+    except Exception as e:
+        log.warning(f"/ask: business-line rewrite failed (non-fatal): {e}")
+        return answer
+    # Phase 4's voice cleanup already ran on the original; the rewrite
+    # gets the same pass (em-dashes, semicolons, HTML entities).
+    new, _ = _clean_voice_violations(new)
+    kept_figures = _df.numeric_cores(answer) <= _df.numeric_cores(new)
+    if new and kept_figures and _bl.names_business_line(new, primer["primer"]):
+        log.info("/ask: business-line rewrite applied")
+        return new
+    _ask_meta["guards"].append("business-line:kept-original")
+    return answer
+
+
+# The shapes that wait for the primer (ask_router._stock_prefetch with
+# research): a view, an options question, a why, a profile.
+_BUSINESS_LINE_SHAPES = {"ticker_opinion", "options_chain", "news_event", "company_profile"}
 
 
 async def _ask_10_log_and_render(

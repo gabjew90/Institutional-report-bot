@@ -57,7 +57,7 @@ def footer(tool_trace: list[dict] | None) -> str:
 _FIGURE_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?\s?(?:%|[BMKT]\b|bn\b)?")
 
 
-def _figures(text: str) -> set[str]:
+def figures(text: str) -> set[str]:
     """Figures worth matching: a currency or percent, or a number with a
     decimal or at least three digits. Bare small integers ("3 notes",
     "Q4") match everything."""
@@ -69,6 +69,18 @@ def _figures(text: str) -> set[str]:
             continue                                    # a year, in every dated line
         if f.startswith("$") or f.endswith("%") or "." in f or digits >= 3:
             out.add(f.rstrip("."))
+    return out
+
+
+def numeric_cores(text: str) -> set[str]:
+    """The numbers in `figures(text)` without their formatting: '$18.2B',
+    '$18.2 billion' and '18.2' all give '18.2'. For checking that a
+    rewrite kept every figure when it may spell out units."""
+    out = set()
+    for f in figures(text):
+        m = re.search(r"\d[\d.]*", f)
+        if m:
+            out.add(m.group(0).rstrip("."))
     return out
 
 
@@ -86,7 +98,7 @@ def compose(grounding_footer: str, answer: str, news: dict | None,
     out = ""
     news = news or {}
     links = news.get("sources") or []
-    if links and _figures(answer) & _figures(news.get("digest") or ""):
+    if links and figures(answer) & figures(news.get("digest") or ""):
         out = "\n\nSources:\n" + "\n".join(
             f"[{i + 1}] [{(s.get('title') or s['url'])[:80]}](<{s['url']}>)"
             for i, s in enumerate(links[:2]))
