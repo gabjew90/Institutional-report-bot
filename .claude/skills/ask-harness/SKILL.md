@@ -64,6 +64,13 @@ character-for-character what `discord_bot/sender.py` would post.
    block. Images in chat are not OCR'd on the fly.
 3. `<@id>` mentions are not resolved through the guild. Type member names.
 
+A `railway ssh` shell does not inherit the worker's Nix library path, so a
+fresh Python cannot import numpy (and yfinance with it). The script re-execs
+itself with PID 1's `LD_LIBRARY_PATH` and imports `zlib` first; without that,
+every Yahoo-backed tool (options chain, price history) errors in the harness
+while working in the channel. If a Yahoo tool shows `error` in a run, check
+that before blaming production.
+
 If a run raises `attempt to write a readonly database`, a code path writes
 during /ask that the harness does not know about. Add a capturing stub in
 `_install_stubs`, do not open the database writable.

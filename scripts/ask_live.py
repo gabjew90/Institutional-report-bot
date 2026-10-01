@@ -38,6 +38,29 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CAPTURED: dict = {"ask_log": None, "gemini_calls": [], "quota_increments": 0}
 
 
+def _adopt_worker_env() -> None:
+    """Re-exec with the worker process's LD_LIBRARY_PATH. A `railway ssh`
+    shell lacks the Nix gcc lib path the worker (PID 1) runs with, so
+    numpy, and with it yfinance, fails to import and every Yahoo-backed
+    tool (options chain, price history) returned an error that the
+    channel never sees (2026-09-30, the ACN run). libz is the other half:
+    it is not on that path either, and the worker only resolves it because
+    the interpreter maps it when `zlib` is imported, so main() imports
+    zlib before anything pulls in numpy."""
+    if os.environ.get("ASK_LIVE_ENV_ADOPTED"):
+        return
+    try:
+        with open("/proc/1/environ", "rb") as h:
+            env1 = dict(kv.split("=", 1) for kv in h.read().decode(errors="replace").split("\0") if "=" in kv)
+    except OSError:
+        return                                   # not on the worker (local run)
+    want = env1.get("LD_LIBRARY_PATH")
+    if not want or want == os.environ.get("LD_LIBRARY_PATH"):
+        return
+    env = dict(os.environ, LD_LIBRARY_PATH=want, ASK_LIVE_ENV_ADOPTED="1")
+    os.execve(sys.executable, [sys.executable] + sys.argv, env)
+
+
 def _open_readonly(db_path: str) -> sqlite3.Connection:
     # The executors read from worker threads (asyncio.to_thread), so the
     # one shared connection must allow cross-thread use.
@@ -154,6 +177,8 @@ def _render(embeds, files, out_dir: str | None) -> str:
 
 
 def main(argv: list[str]) -> int:
+    _adopt_worker_env()
+    import zlib  # noqa: F401  maps libz.so.1 before numpy's extensions need it (see above)
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("question")
     ap.add_argument("--asker", default="", help="Discord username of the asker (resolved from the DB)")
