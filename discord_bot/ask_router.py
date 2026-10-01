@@ -839,6 +839,55 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
     return f"[{lead}{tail}]\n" + _json.dumps(result, default=str)[:6000]
 
 
+FRESH_PRINT_DAYS = 3
+
+
+def fresh_print(snapshot: dict | None, today=None, now=None) -> dict | None:
+    """The snapshot's last report when it came out in the last
+    FRESH_PRINT_DAYS (New York calendar) and carries an actual and an
+    estimate. Failing that, a scheduled report whose time has already
+    passed but whose figures Yahoo has not filled yet (the first hours
+    after a release): returned with `actual` None, so the notes are still
+    marked previews while the print guard, which needs the figure, stays
+    off. Else None."""
+    from datetime import date, datetime, timedelta, timezone
+    from zoneinfo import ZoneInfo
+    et_now = (now or datetime.now(timezone.utc)).astimezone(ZoneInfo("America/New_York"))
+    today = today or et_now.date()
+    growth = (snapshot or {}).get("growth") or {}
+    sym = (snapshot or {}).get("symbol")
+
+    def _date(row):
+        try:
+            return date.fromisoformat(str(row.get("date"))[:10])
+        except ValueError:
+            return None
+    last = growth.get("last_report") or {}
+    d = _date(last) if last else None
+    if (d and last.get("actual") is not None and last.get("estimate") is not None
+            and timedelta(0) <= today - d <= timedelta(days=FRESH_PRINT_DAYS)):
+        return {**last, "symbol": sym}
+    nxt = growth.get("next_report") or {}
+    nd = _date(nxt) if nxt else None
+    if nd and nd <= today and today - nd <= timedelta(days=FRESH_PRINT_DAYS):
+        released = nd < today or (
+            nxt.get("session") == "before the open" and et_now.hour * 60 + et_now.minute >= 570
+        ) or (nxt.get("session") == "after the close" and et_now.hour * 60 + et_now.minute >= 975)
+        if released:
+            return {"date": nxt["date"], "session": nxt.get("session") or "", "actual": None,
+                    "estimate": nxt.get("estimate"), "symbol": sym}
+    return None
+
+
+def _is_preview(note: dict, fresh: dict) -> bool:
+    """Written before the report: dated earlier, or dated the same day as
+    an after-the-close report."""
+    pub, rep = str(note.get("published") or "")[:10], str(fresh.get("date") or "")[:10]
+    if not pub or not rep:
+        return False
+    return pub < rep or (pub == rep and fresh.get("session") != "before the open")
+
+
 def render_research(result: dict) -> str:
     """The research payload as one paragraph per note: bank, date, title,
     then its calls, earnings lines, insights, figures, trade ideas and
@@ -846,8 +895,22 @@ def render_research(result: dict) -> str:
     sym = result.get("symbol") or ""
     out = [f"BANK RESEARCH ON {sym}, last {result.get('days', 14)} days, "
            f"{len(result.get('notes') or [])} notes from {', '.join(result.get('banks') or [])}."]
+    fresh = result.get("fresh_print") or {}
+    if fresh:
+        # 2026-09-30/10-01: MU was answered twice from "bullish into the
+        # print" previews after it had reported. Marked in code, from the
+        # report date, so the label does not depend on the model noticing.
+        head = f"RESULTS ARE OUT: {sym} reported {fresh['date']} {fresh.get('session', '')}".rstrip()
+        if fresh.get("actual") is not None and fresh.get("estimate") is not None:
+            head += f": EPS ${fresh['actual']:,.2f} vs ${fresh['estimate']:,.2f} estimated."
+        else:
+            head += ". The figures are not in the data yet: take them from the news block."
+        out.append(head + " Notes marked PREVIEW were written before that report: give them as "
+                   "what the desks expected, set against the result, never as the outlook into a "
+                   "print still to come.")
     for n in result.get("notes") or []:
-        out.append(f"\n{n.get('source')} ({n.get('published')}): {n.get('title')}")
+        tag = " PREVIEW, written before the report" if fresh and _is_preview(n, fresh) else ""
+        out.append(f"\n{n.get('source')} ({n.get('published')}){tag}: {n.get('title')}")
         for c in n.get("calls") or []:
             pt = c.get("price_target")
             bits = [c.get("action"), c.get("rating"),

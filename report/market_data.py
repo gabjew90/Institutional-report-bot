@@ -499,14 +499,25 @@ def summarize_options_chain(raw: dict) -> dict:
 
     exp_iso = chain.get("expiration_iso")
 
+    # Outside market hours Yahoo serves every contract with a zero bid and
+    # ask, zero open interest and a placeholder IV of 1e-05 (ACN, 01:30 ET
+    # 2026-10-01: the bot reported "ATM IV 0.8%, zero open interest"). With
+    # no live bid anywhere the quote fields are not data; the volumes are
+    # the last session's and stay.
+    live = any((c.get("bid") or 0) > 0 for c in calls + puts)
+    if not live:
+        call_oi = put_oi = 0
+        atm_iv = None
+
     return {
+        "live_quotes": live,
         "underlying_symbol": raw.get("underlying_symbol"),
         "underlying_spot_price": spot,
         "expiration_iso": exp_iso,
         "call_volume": call_vol,
         "put_volume": put_vol,
-        "call_oi": call_oi,
-        "put_oi": put_oi,
+        "call_oi": call_oi if live else None,
+        "put_oi": put_oi if live else None,
         "put_call_volume_ratio": (
             round(put_vol / call_vol, 3) if call_vol else None
         ),

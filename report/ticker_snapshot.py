@@ -174,13 +174,24 @@ def _pct(v) -> float | None:
     return None if f is None else round(f * 100, 1)
 
 
-def _recent(quarter_end_iso: str, today: date | None = None, days: int = 75) -> bool:
-    """A quarter that ended within `days`: its report is weeks old at most."""
+def _recent(date_iso: str, today: date | None = None, days: int = 10) -> bool:
+    """A date within the last `days` (and not in the future)."""
     try:
-        q = date.fromisoformat(str(quarter_end_iso)[:10])
+        q = date.fromisoformat(str(date_iso)[:10])
     except ValueError:
         return False
-    return ((today or datetime.now(timezone.utc).date()) - q).days <= days
+    return 0 <= ((today or datetime.now(timezone.utc).date()) - q).days <= days
+
+
+def _session(ts) -> str:
+    """'before the open' / 'during the session' / 'after the close' from a
+    report timestamp in New York time."""
+    try:
+        mins = ts.hour * 60 + ts.minute
+    except AttributeError:
+        return ""
+    # 9:00 is still before the 9:30 open
+    return "before the open" if mins < 570 else "after the close" if mins >= 960 else "during the session"
 
 
 def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
@@ -192,7 +203,9 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
     rev_est / eps_est: Yahoo's estimate tables keyed by period ('0q' is the
     quarter to be reported next, '0y' the current fiscal year), each row
     {avg, yearAgoRevenue|yearAgoEps, growth, numberOfAnalysts}.
-    eps_history: [{quarter, epsActual, epsEstimate, surprisePercent}].
+    eps_history: [{date, session, epsActual, epsEstimate, surprisePercent}],
+    one row per report (date = report date, session = 'before the open' /
+    'after the close'); a row without epsActual is a scheduled report.
     quarterly_revenue: [(quarter_end_iso, revenue)], any order."""
     out: dict = {}
     for period, key in (("0q", "next_quarter"), ("0y", "fiscal_year")):
@@ -211,15 +224,22 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
         row = {k: v for k, v in row.items() if v is not None}
         if row.get("revenue") is not None or row.get("eps") is not None:
             out[key] = row
-    reports = []
-    for h in sorted(eps_history or [], key=lambda x: str(x.get("quarter")), reverse=True)[:4]:
+    reports, upcoming = [], []
+    for h in sorted(eps_history or [], key=lambda x: str(x.get("date")), reverse=True):
         act, est = _num(h.get("epsActual")), _num(h.get("epsEstimate"))
+        row = {"date": str(h.get("date"))[:10], "session": h.get("session") or "",
+               "actual": act, "estimate": est, "surprise_pct": _pct(h.get("surprisePercent"))}
         if act is None:
-            continue
-        reports.append({"quarter": str(h.get("quarter"))[:10], "actual": act, "estimate": est,
-                        "surprise_pct": _pct(h.get("surprisePercent"))})
+            upcoming.append(row)
+        elif len(reports) < 4:
+            reports.append(row)
+    if upcoming:
+        # the nearest scheduled report: the list is newest first
+        nxt = upcoming[-1]
+        out["next_report"] = {k: nxt[k] for k in ("date", "session", "estimate") if nxt.get(k)}
     if reports:
         out["eps_reports"] = reports
+        out["last_report"] = reports[0]
         nq = out.get("next_quarter") or {}
         newest = reports[0]
         # Hours after a print Yahoo can still list the reported quarter as
@@ -228,7 +248,7 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
         # that already happened.
         if (nq.get("eps") is not None and newest.get("estimate")
                 and abs(nq["eps"] - newest["estimate"]) <= 0.01 * abs(newest["estimate"])
-                and _recent(newest["quarter"], today)):
+                and _recent(newest["date"], today, days=10)):
             out.pop("next_quarter", None)
     revs = sorted(((str(q)[:10], _num(v)) for q, v in (quarterly_revenue or []) if _num(v)),
                   reverse=True)
@@ -256,11 +276,18 @@ def _fetch_growth(t, sym: str) -> dict:
     except Exception as e:
         log.info(f"snapshot {sym}: eps estimate failed ({e})")
     try:
-        eh = t.earnings_history
-        history = [{"quarter": str(idx)[:10], **{str(k): v for k, v in row.items()}}
-                   for idx, row in eh.iterrows()]
+        # Report dates with actual vs estimate. Unlike earnings_history
+        # (keyed by quarter end) this says WHEN the print came out, which
+        # is what tells a fresh result from an old one.
+        ed = t.get_earnings_dates(limit=8)
+        for idx, row in ed.iterrows():
+            sp = _num(row.get("Surprise(%)"))
+            history.append({"date": str(idx)[:10], "session": _session(idx),
+                            "epsActual": row.get("Reported EPS"),
+                            "epsEstimate": row.get("EPS Estimate"),
+                            "surprisePercent": None if sp is None else sp / 100})
     except Exception as e:
-        log.info(f"snapshot {sym}: earnings history failed ({e})")
+        log.info(f"snapshot {sym}: earnings dates failed ({e})")
     try:
         qis = t.quarterly_income_stmt
         if "Total Revenue" in qis.index:
@@ -374,10 +401,15 @@ def render_growth(g: dict) -> list[str]:
                         f"({_eps(row['eps'])} vs {_eps(row.get('eps_year_ago'))})")
         n = f", {int(row['analysts'])} analysts" if row.get("analysts") else ""
         lines.append(f"consensus, {label}{n}: " + ", ".join(bits))
+    if g.get("next_report"):
+        n = g["next_report"]
+        est = f", EPS estimate {_eps(n['estimate'])}" if n.get("estimate") is not None else ""
+        lines.append(f"next report: {n['date']} {n.get('session', '')}".rstrip() + est)
     if g.get("eps_reports"):
         lines.append("EPS reports, actual vs estimate (newest first): " + "; ".join(
-            f"quarter ended {r['quarter']}: {_eps(r['actual'])} vs {_eps(r.get('estimate'))} "
-            f"({_signed(r.get('surprise_pct'))})" for r in g["eps_reports"]))
+            f"reported {r['date']} {r.get('session', '')}".rstrip()
+            + f": {_eps(r['actual'])} vs {_eps(r.get('estimate'))} ({_signed(r.get('surprise_pct'))})"
+            for r in g["eps_reports"]))
     if g.get("revenue_reports"):
         lines.append("reported revenue: " + "; ".join(
             f"quarter ended {r['quarter']}: {_money(r['revenue'])} ({_signed(r['yoy_pct'])} y/y)"

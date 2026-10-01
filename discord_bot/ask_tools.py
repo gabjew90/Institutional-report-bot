@@ -1809,6 +1809,13 @@ def _build_options_chain_tool():
     )
 
 
+# The last chain summary with live quotes per (symbol, requested expiry),
+# served with its time when the market is closed. 20 h covers the close to
+# the next open.
+_LAST_LIVE_CHAIN: dict = {}
+_LAST_LIVE_CHAIN_TTL_S = 20 * 3600
+
+
 async def _execute_options_chain(args: dict) -> dict:
     """Run the lookup_options_chain tool call.
 
@@ -1943,12 +1950,30 @@ async def _execute_options_chain(args: dict) -> dict:
         }
 
     summary = _md.summarize_options_chain(raw)
-    return {
-        "status": "ok",
-        "summary": summary,
-        "available_expirations": expirations[:12],
-        "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
-    }
+    as_of = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    key = (symbol, expiration_iso)
+    out = {"status": "ok", "summary": summary,
+           "available_expirations": expirations[:12], "as_of": as_of}
+    if summary.get("live_quotes"):
+        now = time.monotonic()
+        for k, (ts, _s, _a) in list(_LAST_LIVE_CHAIN.items()):
+            if now - ts >= _LAST_LIVE_CHAIN_TTL_S:
+                _LAST_LIVE_CHAIN.pop(k, None)
+        _LAST_LIVE_CHAIN[key] = (now, summary, as_of)
+        return out
+    # No live quote anywhere: overnight or before the open. Serve the last
+    # live read this process saw, labelled with its time, rather than
+    # zeros (2026-10-01, ACN "ATM IV 0.8%, zero open interest").
+    hit = _LAST_LIVE_CHAIN.get(key)
+    if hit and time.monotonic() - hit[0] < _LAST_LIVE_CHAIN_TTL_S:
+        return {**out, "summary": hit[1], "as_of": hit[2],
+                "quotes_note": (f"Options are not quoting right now. These are the last live "
+                                f"quotes, from {hit[2]}; say so.")}
+    return {**out, "quotes_note": (
+        "Options are not quoting right now (market closed or before the open): there is no "
+        "live bid, so implied volatility, open interest and the implied move are unavailable "
+        "until quotes return. The volumes are the last session's. Do not quote IV or open "
+        "interest from this.")}
 
 
 def _build_fantasy_league_tool():

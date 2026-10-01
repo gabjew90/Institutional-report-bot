@@ -59,8 +59,10 @@ def test_summarize_aggregates_volume_and_oi():
             "calls": [
                 {"strike": 745, "openInterest": 10000, "volume": 5000,
                  "impliedVolatility": 0.22},
+                # a live bid: without one the summary treats the chain as
+                # not quoting (market closed) and drops IV and OI
                 {"strike": 750, "openInterest": 20000, "volume": 8000,
-                 "impliedVolatility": 0.24},
+                 "impliedVolatility": 0.24, "bid": 5.1, "ask": 5.3},
                 {"strike": 755, "openInterest": 15000, "volume": 7000,
                  "impliedVolatility": 0.26},
             ],
@@ -232,9 +234,11 @@ def test_executor_ok_path():
         "chain": {
             "expiration_iso": "2026-06-12",
             "calls": [{"strike": 750, "openInterest": 20000,
-                       "volume": 8000, "impliedVolatility": 0.24}],
+                       "volume": 8000, "impliedVolatility": 0.24,
+                       "bid": 5.1, "ask": 5.3}],          # live quote
             "puts": [{"strike": 750, "openInterest": 25000,
-                      "volume": 10000, "impliedVolatility": 0.25}],
+                      "volume": 10000, "impliedVolatility": 0.25,
+                      "bid": 4.9, "ask": 5.1}],
         },
         "source": "yahoo",
     }

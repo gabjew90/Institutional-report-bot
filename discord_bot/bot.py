@@ -5265,9 +5265,20 @@ async def _ask_02_call_model_with_tools(
     for _pf_tool in _pf_missing:
         log.error(f"/ask: router prefetch {_pf_tool} has no executor; skipped")
     _pf_results = await asyncio.gather(*[_run_prefetch(t, a) for t, a in _pf_plan])
+    # A print in the last few days, from the snapshot's report dates:
+    # labels the bank notes written before it and arms the print guard in
+    # phase 9 (2026-10-01).
+    _fresh = None
+    for (_pf_tool, _), _pf_res in zip(_pf_plan, _pf_results):
+        if _pf_tool == _ask_router.T_SNAPSHOT and isinstance(_pf_res, dict):
+            _fresh = _ask_router.fresh_print(_pf_res)
+    if _fresh:
+        _ask_meta["fresh_print"] = _fresh
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue
+        if _fresh and _pf_tool == _ask_router.T_RESEARCH and _pf_res.get("status") == "ok":
+            _pf_res = {**_pf_res, "fresh_print": _fresh}
         if _pf_tool == _ask_router.T_CHAIN and _pf_res.get("status") == "ok":
             # Read by the implied-move guard in phase 9.
             _s = _pf_res.get("summary") or {}
@@ -8297,6 +8308,8 @@ async def _ask_09_rank_and_regen_guards(
                 f"Try again or rephrase."
             )
 
+    answer = await _fresh_print_guard(
+        answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
     answer = await _business_line_guard(
         answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
     answer = await _implied_move_guard(
@@ -8363,6 +8376,55 @@ async def _stock_answer_rewrite(name, answer, _ask_meta, client, ask_model, safe
         return new
     _ask_meta["guards"].append(f"{name}:kept-original")
     return answer
+
+
+_FRESH_PRINT_SHAPES = {"ticker_opinion", "options_chain", "news_event", "company_profile",
+                       "earnings_date"}
+
+_FRESH_PRINT_PROMPT = (
+    "Rewrite the answer below. {sym} already reported, {date} {session}: EPS ${actual:,.2f} "
+    "against ${estimate:,.2f} expected ({surprise}). Open with that result. Any bank view "
+    "written before it is a preview: give it as what the desks expected, set against the "
+    "result, never as the outlook into a report still to come. Keep every other figure, date, "
+    "bank name and attribution exactly as written. Keep the arrow format; you may add one "
+    "arrow. Output only the rewritten answer.\n\nANSWER:\n{answer}"
+)
+
+
+async def _fresh_print_guard(answer, _ask_meta, client, ask_model, safety_settings, types,
+                             _tally_retry_usage):
+    """A stock answer in the days after a print carries the printed EPS
+    (2026-09-30/10-01: two MU answers given after the report led with the
+    banks' 'into the print' previews). The report date, actual and estimate
+    come from Yahoo's earnings dates in the snapshot."""
+    from discord_bot import data_footer as _df
+    fresh = _ask_meta.get("fresh_print") or {}
+
+    def _has_actual(text):
+        # exact cents only ("$33.42"; "$3.8" for $3.80); a rounded "$33" or
+        # "$4" could be any figure
+        v = fresh["actual"]
+        forms = {f"{v:.2f}"} | ({f"{v:.1f}"} if round(v, 1) == round(v, 2) else set())
+        return bool(forms & _df.numeric_cores(text))
+    if (not fresh or fresh.get("actual") is None or fresh.get("estimate") is None
+            or not _rewritable_stock_answer(answer, _ask_meta, _FRESH_PRINT_SHAPES)
+            # a next-date lookup ("when does MU report") is not about the
+            # print; the router sends news only to a result question
+            or (_ask_meta.get("route_shape") == "earnings_date"
+                and "ticker_news" not in (_ask_meta.get("route_prefetch") or []))
+            or _has_actual(answer)):
+        return answer
+    sp = fresh.get("surprise_pct")
+    return await _stock_answer_rewrite(
+        "fresh-print", answer, _ask_meta, client, ask_model, safety_settings, types,
+        _tally_retry_usage,
+        prompt=_FRESH_PRINT_PROMPT.format(
+            sym=fresh.get("symbol") or "The company", date=fresh["date"],
+            session=fresh.get("session") or "", actual=fresh["actual"],
+            estimate=fresh["estimate"],
+            surprise=f"{sp:+.1f}%" if sp is not None else "against the estimate",
+            answer=answer),
+        accept=_has_actual)
 
 
 def _states_move(answer: str, move: dict) -> bool:
