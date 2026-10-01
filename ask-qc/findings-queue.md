@@ -722,3 +722,11 @@ The CONCERN (18:03:42, Arxfic, Drake Maye): the A.J. Brown high-ankle sprain ver
 
 no findings - 3/3 graded, 2 CLEAN, 1 CONCERN, 0 fail, 0 infra, 0 ungraded.
 The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full session of Q3 before tomorrow's month-end close" is wrong, since Sep 30 is also a full session. Judgment, not mechanically checkable. Side note for a session: the 11:42:36 turn called `lookup_options_chain symbol=LINE` on a trivia question, where "LINE" comes from the "quote LINE FOR LINE" boilerplate in the injected verbatim-messages header. Full reasoning in `pulse-data/ask-qc/2026-09-29.claude.md`.
+
+## 2026-09-30
+
+### 17:10:38 UTC, BK, public stocks that benefit or lose from IDR
+- Bucket: judgment. The answer cites `MPLN` for MultiPlan. The company rebranded to Claritev and the ticker became `CTEV` in February 2025. The grounded search did not catch it. `validate_answer.py` returned no violation (detector-unavailable note, aiohttp missing in the runner). Possible structural fix for a session: when an answer names tickers in a "which stocks" shape, check each against `lookup_market_price` or the ticker snapshot and drop or correct any that return not_found.
+
+### 21:13:30 UTC, Ry_spaceman, Mac mini price history
+- Bucket: judgment. "Hovered between $499 and $699 across the 2010s and early 2020s" is contradicted by the 2018 Mac mini at $799 starting price. Grounded-web answer built on snippets. Same family as the 2026-09-28 box-office finding: a historical series or "first/range" statistic from snippets should be stated only for years the snippets give, or the answer should say it can't confirm the rest.

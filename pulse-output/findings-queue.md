@@ -1159,3 +1159,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Discovered themes `us diesel export restrictions` (5 banks) and `meta muse agent` (4 banks) dropped with no DRAFT/EDIT note. An open $BNO long premise (diesel inventories) and an open $META read are left unaddressed.
 - **observation** — `rba tightening cycle` rank #2 is 3 Scotiabank PDFs only (bank count from mentions inside one author's PDFs). Lint `top-3-theme-missing` fired as a residual on it and shipped anyway.
 - **observation** — Brent shown as $106 to $108 in RECAP and about $106 in the Hormuz brief after SCRUB.
+
+## 2026-10-01
+- **deterministic-fixable** — 2026-09-29 adversarial verdict file still missing (control-series gap, third day carried).
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 3h after the pulse (19:58Z vs 16:54Z) and already holds this pulse's text in `prev_consensus_block`; live prices in it no longer match the pulse. Archive the pulse-time dump next to the pulse.
+- **deterministic-fixable** — No STEP 7 self-review file for 2026-10-01T16-54-43Z in `qc-reviews/`.
+- **observation** — Driver trail is a 388-byte gate summary. The 3 hard lint kinds and "5 false-positive release-figure/scope flags" are not itemized, so they cannot be audited.
+- **observation** — ISM Manufacturing actual not ingested ~3h after the 10:00 print, so RECAP carries only consensus. print_watch does not cover ISM.
+- **observation** — France brief: Goldman "near 1.20" spread and the Euro Stoxx 6,200 "line" not traceable to a bank entry in the dump (6,200 appears only in the open-reads block).
+- **observation** — Omnipulse fell back to classic: "4 source files unread at edit". Track recurrence.
