@@ -5303,6 +5303,20 @@ async def _ask_02_call_model_with_tools(
             role="user",
             parts=[types.Part.from_text(text=_pf_text)],
         ))
+    # A single-stock view gets its answer outline built in code: slots in
+    # order, each fact with its true source (discord_bot/stock_outline.py,
+    # 2026-10-01). Last block before the model writes.
+    try:
+        from discord_bot import stock_outline as _so
+        _pf_by_tool = {t: r for (t, _), r in zip(_pf_plan, _pf_results) if isinstance(r, dict)}
+        _outline = _so.build_outline(_pf_by_tool, _ask_route.shape,
+                                     _so.outline_symbol(_pf_plan), fresh=_fresh)
+        if _outline:
+            contents.append(types.Content(role="user",
+                                          parts=[types.Part.from_text(text=_outline)]))
+            _ask_meta["guards"].append("outline")
+    except Exception as e:
+        log.warning(f"/ask: stock outline failed (non-fatal): {e}")
     _round_gm_chunks: list = []
     for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
         # Contents-size guard: fail CLEANLY (friendly reply + a log
