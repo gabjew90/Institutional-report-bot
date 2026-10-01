@@ -1,0 +1,944 @@
+{
+ "brief": "GS's TMT Today wrap reports a busy earnings morning. Micron beat on revenue ($54.23bn), EPS ($33.42) and DRAM/NAND revenue, with FY1Q guidance above Street on revenue and EPS but below on gross margin (86.25% vs Street 87.4%); the stock still traded -1% in premarket. Micron also raised its strategic customer agreement count to 26 (from 16), covering about 35% of anticipated FY30 revenue with about $150bn in five-year committed revenue at floor prices. Accenture beat broadly (revenue, bookings, margin, EPS) against tempered expectations and guided FY27 revenue above Street; GS calls the resulting +17% premarket move potentially the largest one-day gain in company history, lifting CTSH and IBM in sympathy. Alphabet rose 2% after unveiling Gemini 4 Argon post-close, following a prior-day selloff on reports of internal skepticism about model performance; Google says Argon sets records on coding, cybersecurity and professional benchmarks and will roll out in phases to trusted partners pending a US government safety review. Synopsys held its roughly 5% Investor Day gain on raised long-term targets. Macro: the 10-year yield hit its highest level since 2002 (5.313%), oil and gold ticked higher, and France's new fiscal plan sent the OAT-Bund spread to its widest since 2012 before retracing.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron reported revenue of $54.23bn for the quarter, well above GS's estimate of $51.91bn and the Street at $50.95bn.",
+   "anchor": "Micron reported revenue of $54.23 bn, well above GS at $51.91 bn and the Street at $50.95 bn",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron's quarterly gross margin of 87.0% was just below GS's estimate of 87.3% but in line with the Street at 86.9%.",
+   "anchor": "gross margin of 87.0% was just below GS at 87.3% but in line with the Street at 86.9%",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron's non-GAAP EPS of $33.42 was above GS's estimate of $32.54 and well above the Street at $31.63.",
+   "anchor": "Non-GAAP EPS of $33.42 was above GS at $32.54 and well above the Street at $31.63",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron's DRAM revenue of $39.8bn was just above GS's estimate of $39.19bn and well above the Street at $38.45bn.",
+   "anchor": "DRAM revenue of $39.8 bn was just above GS at $39.19 bn and well above the Street at $38.45 bn",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron's NAND revenue of $14.1bn was well above GS's estimate of $12.53bn and the Street at $12.28bn.",
+   "anchor": "NAND revenue of $14.1 bn was well above GS at $12.53 bn and the Street at $12.28 bn",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron shares traded down 1% premarket despite a very solid set of results and guidance.",
+   "anchor": "positive commentary around new customer agreement updates and supply/demand conditions in 2027 and 2028. Stock -1% in pre.",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron has now signed 26 strategic customer agreements, up from 16 last quarter, across datacenter, consumer, automotive and other end markets.",
+   "anchor": "The company has now signed 26 agreements (up from 16 last quarter) across a range of datacenter, consumer, automotive, and other end markets",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron's strategic customer agreements carry annual take-or-pay revenue targets with associated up-front customer deposits totaling $32bn so far.",
+   "anchor": "annual \"take or pay\" revenue targets with associated up-front customer deposits ($32bn in total thus far)",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron's signed agreements represent about 35% of its anticipated revenue through FY30, and it expects to cover about 50% of its expected revenue over time.",
+   "anchor": "The company currently has signed agreements representing about 35% of its anticipated revenue through FY30, and expects to cover ~50% of its expected revenue over time",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "About 75% of Micron's strategic customer agreements now contain structured pricing.",
+   "anchor": "About 75% of these agreements now contain structured pricing",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron management said the aggregate committed revenue for its signed customer agreements represents about $150bn over five years at floor prices, at gross margins above prior peak levels.",
+   "anchor": "the aggregate amount of committed revenue for agreements signed represents ~$150bn over five years at floor prices, at gross margins above prior peak levels",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron guided FY1Q revenue to $61.5bn at the midpoint, well above GS at $57.70bn and the Street at $57.57bn.",
+   "anchor": "Revenue was guided to $61.5 bn at the midpoint, which is well above GS at $57.70 bn and the Street at $57.57 bn",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY1Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron guided FY1Q non-GAAP gross margin to 86.25%, below GS at 88.1% and the Street at 87.4%.",
+   "anchor": "Non-GAAP gross margin was guided to 86.25%, below GS at 88.1% and the Street at 87.4%",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY1Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Micron guided FY1Q non-GAAP EPS to $37.15-$39.15 (midpoint $38.15), above GS at $37.06 and well above the Street at $35.81.",
+   "anchor": "Non-GAAP EPS guidance of $37.15 - $39.15 (midpoint of $38.15) was above GS at $37.06 and well above the Street at $35.81",
+   "topic": "Micron earnings",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY1Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture shares rose 17% premarket, which GS said would be the largest one-day move higher in the company's history.",
+   "anchor": "ACN +17% (which would be largest 1d move higher in the company\u2019s history) following better #s across the board",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture reported 4Q26 revenue of $18.68bn, above the Street (Visible Alpha Consensus Data) at $18.04bn and GS's estimate of $18.13bn.",
+   "anchor": "Accenture reported 4Q26 revenue of $18.68 bn, above the Street (Visible Alpha Consensus Data) at $18.04 bn and our estimate of $18.13 bn",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture's Managed Services revenue of $9.40bn and Consulting revenue of $9.28bn were both above Street expectations.",
+   "anchor": "Managed Services revenue was above the Street ($9.40 bn), and Consulting revenue ($9.28 bn) was also above the Street",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture's adjusted operating margin was 15.3%, slightly above the Street and GS's estimates of 15.2%.",
+   "anchor": "Adjusted operating margin was 15.3%, slightly above the Street and our estimates at 15.2%",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture's EPS from continuing operations of $3.29 was above the Street at $3.19 and GS's estimate of $3.12.",
+   "anchor": "EPS from continuing operations of $3.29 was above the Street at $3.19 and our estimate of $3.12",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture reported new bookings of $22.7bn in 4Q26, an increase of 5% in local currency.",
+   "anchor": "Accenture reported new bookings of $22.7 bn in 4Q26, an increase of 5% in local currency",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture's Managed Services bookings were $12.77bn, up 3% and described as lumpy, with total 4Q26 bookings well above the Street's $19.90bn estimate.",
+   "anchor": "$12.77 bn in Managed Services (up 3%, albeit lumpy) and was well above the Street at $19.90 bn",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture's Communications/Media/Technology vertical led 4Q26 growth at +11% in constant currency, ahead of Financials (+6%), Health & Public Services (+9%) and Products (+4%).",
+   "anchor": "Communications/Media/Technology was up 11% in CC, Financials was up 6%, Health & Public Services was up 9%, Products was up 4%",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture guided FY27 constant-currency revenue growth of 3%-6%, or $76.4bn-$78.6bn, above GS's prior estimate of 3.0%-4.0% growth.",
+   "anchor": "For FY27, Accenture guided to constant currency revenue growth of 3% - 6%, or $76.4 - $78.6 bn (vs. our estimate of 3.0% - 4.0%",
+   "topic": "Accenture earnings beat",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture guided for 10-30bps of FY27 operating margin expansion, in line with GS's own estimate of 10-30bps.",
+   "anchor": "Accenture guided for 10-30 bps of operating margin expansion (vs. our estimate of 10 - 30bps of expansion; we model 20 bps of expansion",
+   "topic": "Accenture earnings beat",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture guided FY27 adjusted EPS to $14.39-$14.81, or growth of 3%-6%, below GS's estimate of 6.0%-8.0% growth.",
+   "anchor": "Accenture also guided for FY27 adjusted EPS of $14.39 - $14.81, or growth of 3% - 6% (vs. our estimate of 6.0% - 8.0%",
+   "topic": "Accenture earnings beat",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture guided FY27 free cash flow of $11.9bn-$12.7bn and aims to return about $9.5bn to shareholders through dividends and buybacks.",
+   "anchor": "The company guided free cash flow in the range of $11.9 - $12.7 bn, and aims to return ~$9.5 bn through dividends and share repurchases",
+   "topic": "Accenture earnings beat",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Accenture guided 1Q27 constant-currency revenue growth of 2%-6% with a negative 1% FX impact, or $18.95bn-$19.60bn.",
+   "anchor": "For 1Q27, Accenture guided for 2% - 6% in constant currency revenue growth with a negative 1% FX impact, or $18.95 - 19.60 bn",
+   "topic": "Accenture earnings beat",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1Q27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "CTSH rose 8% and IBM rose 6% premarket in sympathy with Accenture's earnings beat.",
+   "anchor": "against extremely bearish expectations (CTSH +8%, IBM +6% in sympathy); and SNPS +3.5% on better",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "CTSH",
+    "IBM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GOOGL rose 2% after announcing Gemini 4 Argon post-close, following a roughly 2% selloff into the prior day's close on reports of internal skepticism around model performance.",
+   "anchor": "GOOGL +2% (after a sharp ~2% sell-off into yesterday\u2019s close on reports of \u201cinternal skepticism\u201d around model performance)",
+   "topic": "Google Gemini 4 Argon launch",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Alphabet unveiled Gemini 4 Argon on Wednesday, calling it its most advanced AI model yet, with major improvements in coding, cybersecurity and complex professional work.",
+   "anchor": "Alphabet unveiled Gemini 4 Argon on Wednesday, its most advanced artificial intelligence model yet, offering major improvements in coding, cybersecurity, and complex professional work",
+   "topic": "Google Gemini 4 Argon launch",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Google said Gemini 4 Argon sets a new record in real-world software engineering performance and ties for first in cybersecurity benchmark performance.",
+   "anchor": "the model sets a new record in real-world software engineering, ties for first in cybersecurity, and leads another benchmark measuring performance across finance, legal",
+   "topic": "Google Gemini 4 Argon launch",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Argon is already being used internally to optimize memory at Google's data centers, freeing up hundreds of terabytes of memory without buying additional hardware.",
+   "anchor": "Argon is already being used internally to optimize memory at Google's data centers, freeing up hundreds of terabytes of memory without buying additional hardware",
+   "topic": "Google Gemini 4 Argon launch",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Google plans to launch Gemini 4 Argon in phases, starting with trusted cybersecurity partners, while it works on a pre-release safety evaluation with the US government.",
+   "anchor": "Google said it plans to launch the new model in phases, starting with trusted cybersecurity partners, as it works on a pre-release safety evaluation",
+   "topic": "Google Gemini 4 Argon launch",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "US rates remained in the driver's seat, with the 10-year Treasury yield at its highest level since 2002.",
+   "anchor": "Rates remain in the drivers seat (10YR at highest level since 2002), while MU earnings, new",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "US 10-year Treasury yields rose 2.8bps to 5.313% and 2-year yields rose 1.0bp to 4.898%, pushing the 2s10s spread to +41.5bps.",
+   "anchor": "US 10-year yields +2.8bps @ 5.313%, US 2-year yields +1.0bp @ 4.898%, 2s10s @ +41.5bps",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS expects SNPS stock to hold its roughly 5% gain from the Investor Day, driven by three key themes.",
+   "anchor": "and expect the stock to hold its gains (up ~5%), driven by three key themes",
+   "topic": "Synopsys Investor Day growth targets",
+   "status": "released",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Synopsys set long-term targets of about 15% revenue CAGR from FY26-30, 50% operating margin in FY30, and mid-20% EPS growth to $35.00 in FY30, above Street expectations.",
+   "anchor": "Long-term financial targets: ~15% revenue CAGR from FY26-30, with 50% operating margin in FY30, and mid-20% EPS growth to $35.00 in FY30)",
+   "topic": "Synopsys Investor Day growth targets",
+   "status": "forecast",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26-30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Synopsys highlighted greater visibility into AI monetization and accelerating AI-driven revenue opportunities, including an OpenAI partnership and new agentic AI tools.",
+   "anchor": "Greater visibility into AI monetization and accelerating AI-driven revenue opportunities, including an OpenAI partnership and new agentic AI tools",
+   "topic": "Synopsys Investor Day growth targets",
+   "status": "released",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Synopsys laid out a clearer roadmap to accelerate its Design IP business through higher-value, custom platforms for hyperscalers and other customers.",
+   "anchor": "Clearer roadmap to accelerate the Design IP business through higher-value, custom platforms for hyperscalers and other customers",
+   "topic": "Synopsys Investor Day growth targets",
+   "status": "released",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "WTI crude rose 0.89% to $91.38 per barrel.",
+   "anchor": "WTI +0.89% @ $91.38, Gold +0.12% @ $4,162/oz",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Gold rose 0.12% to $4,162/oz.",
+   "anchor": "Gold +0.12% @ $4,162/oz, VIX @ 16.27, DXY @ 101.80",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "GOLD",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "VIX was at 16.27.",
+   "anchor": "Gold +0.12% @ $4,162/oz, VIX @ 16.27, DXY @ 101.80",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "DXY was at 101.80.",
+   "anchor": "Gold +0.12% @ $4,162/oz, VIX @ 16.27, DXY @ 101.80",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "There was little incremental news on Iran overnight, with a lack of diplomatic traction in the Middle East still seemingly overshadowing better oil flow data.",
+   "anchor": "Little incremental on Iran overnight, with lack of diplomatic traction in the Middle East still seemingly overshadowing better flow data",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Asia was broadly higher ex-China/Hong Kong, with the Nikkei up 3.30% to 68,957 and the KOSPI up 1.95% to 6,971, while the Hang Seng was flat and closed for the National Day holiday.",
+   "anchor": "Asia broadly higher ex-China/HK (NKY +3.30% @ 68,957, HSI flat/closed for National Day holiday, KOSPI +1.95% @ 6,971), while Europe lower (STOXX -0.74%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "France unveiled a \u20ac54 billion ($61.2B) fiscal consolidation plan targeting a budget deficit of 5% of GDP in 2027, down from 5.4% this year.",
+   "anchor": "France unveiled a \u20ac54 billion ($61.2B) fiscal consolidation plan targeting a deficit of 5% of GDP in 2027, down from 5.4% this year",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "The OAT-Bund spread widened to 134bps intraday, the widest since 2012, before partially retracing to about 129bps post-auction.",
+   "anchor": "The OAT-Bund spread widened to 134bps intraday \u2014 the widest since 2012 \u2014 before partially retracing to ~129bps post-auction",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Tencent signed its largest overseas lease deal with Oracle, agreeing to a five-year lease across multiple Oracle data centres in Southeast Asia.",
+   "anchor": "Tencent has signed its largest overseas lease deal with US cloud provider Oracle as the Chinese tech giant strives to catch up in an escalating AI race",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "five-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "The Oracle-Tencent deal gives Tencent access to about 100,000 advanced AI chips not available in China, used to further advance its AI models.",
+   "anchor": "The deal enabled Tencent to access about 100,000 advanced AI chips that were not available in China as it further advanced its AI models",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "The Oracle-Tencent lease deal is estimated to be worth about $7bn, with an upfront payment of about 30%.",
+   "anchor": "The agreement is estimated to be worth about $7bn, with an upfront payment of about 30 per cent",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "On September 30th, DoorDash announced several product and platform updates at its annual Dash Forward 2026 event.",
+   "anchor": "On September 30th, DoorDash announced several product/platform updates with their annual Dash Forward 2026 event",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS said DoorDash's announcements continue its evolution from a purely food-delivery platform toward a three-sided local commerce company.",
+   "anchor": "we highlight that today\u2019s announcements continue a trend of the evolution of DASH from a purely food delivery platform toward a three-sided local commerce company",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "DASH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "DBS Bank downgraded Sea Limited (SE) to Hold.",
+   "anchor": "STREET ACTIONS: Downgrades: SE (Hold, DBS Bank)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "SE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS added Amazon (AMZN), Burlington Stores (BURL), Huntington Ingalls (HII), Johnson Controls (JCI) and Occidental Petroleum (OXY) to its US Conviction List \u2013 Directors' Cut for October 2026.",
+   "anchor": "We add Amazon (AMZN), Burlington Stores (BURL), Huntington Ingalls (HII), Johnson Controls (JCI), and Occidental Petroleum (OXY), while removing Air Products and Chemicals (APD)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "AMZN",
+    "BURL",
+    "HII",
+    "JCI",
+    "OXY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS removed Air Products and Chemicals (APD), ConocoPhillips (COP), Golar LNG (GLNG), Loar Holdings (LOAR) and Tyson Foods (TSN) from its US Conviction List \u2013 Directors' Cut for October 2026.",
+   "anchor": "while removing Air Products and Chemicals (APD), ConocoPhillips (COP), Golar LNG (GLNG), Loar Holdings (LOAR), and Tyson Foods (TSN)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "APD",
+    "COP",
+    "GLNG",
+    "LOAR",
+    "TSN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "ISM Manufacturing for September is due Thursday 10/1, with consensus at 55.",
+   "anchor": "Thu 10/1: US Auto Sales + ISM Manuf (cons 55)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Thu 10/1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "Nonfarm payrolls for September are due Friday 10/2, with consensus at +100k.",
+   "anchor": "Fri 10/2: *NFPs (cons +100k) + Durable Goods",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Fri 10/2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS lowered its 3Q26E operating profit estimate for Samsung Electronics by 5% to W106tn, from W112tn previously, on a stronger-than-expected Korean won.",
+   "anchor": "We lower our 3Q26E operating profit estimate for SEC by 5% to W106tn (from W112tn previously), to mainly reflect the stronger-than-expected KRW compared to",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS still expects a solid 3Q26 for Samsung Electronics, with operating profit above W100tn backed by strong DRAM and NAND fundamentals.",
+   "anchor": "We still expect a solid quarter with W100tn+ OP backed by the strong underlying fundamentals in both DRAM and NAND, especially highlighting the continued",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS expects Samsung Electronics' HBM business revenue to exceed W100tn next year, backed by growth in both pricing and volume.",
+   "anchor": "where we expect revenue for next year to exceed W100tn backed by the significant growth in both pricing and volume",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS reiterated its Buy rating on Samsung Electronics with an unchanged target price of W490,000.",
+   "anchor": "and reiterate our Buy rating with an unchanged W490,000 TP",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "GS reiterated its Buy rating on Samsung Electronics, noting it is on its Conviction List, and on SK Hynix.",
+   "anchor": "We reiterate our Buy ratings on SEC (on CL) and Hynix",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.1.26",
+   "claim": "TrendForce expects 4Q26 DRAM ASP to rise 13-18% for PC, 10-15% for server and 0-5% for mobile qoq, while NAND ASP is forecast to grow 15-20% qoq over the same period.",
+   "anchor": "TrendForce expects 4Q26 DRAM ASP for PC/server/mobile to increase by +13-18%/+10-15%/+0-5% qoq, while forecasts NAND ASP to grow 15-20% qoq during the same period",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "4Q26"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-01/18211__gs-tmt-today-10-1-26.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 63,
+  "matched": 63,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 24,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
