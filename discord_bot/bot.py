@@ -5315,6 +5315,7 @@ async def _ask_02_call_model_with_tools(
             contents.append(types.Content(role="user",
                                           parts=[types.Part.from_text(text=_outline)]))
             _ask_meta["guards"].append("outline")
+            _ask_meta["outline_banks"] = sorted(_so.outline_banks(_pf_by_tool.get(_ask_router.T_RESEARCH)))
     except Exception as e:
         log.warning(f"/ask: stock outline failed (non-fatal): {e}")
     _round_gm_chunks: list = []
@@ -8322,12 +8323,19 @@ async def _ask_09_rank_and_regen_guards(
                 f"Try again or rephrase."
             )
 
+    from discord_bot import stock_outline as _so
+    if "outline" in _ask_meta.get("guards", []) and answer:
+        # the outline's [source] tags are for the model, not the reader
+        answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
     answer = await _fresh_print_guard(
         answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
     answer = await _business_line_guard(
         answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
     answer = await _implied_move_guard(
         answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
+    if "outline" in _ask_meta.get("guards", []) and answer:
+        # once more after the rewrites, in case one echoed a tag
+        answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
     return (answer, grounding_metadata)
 
 

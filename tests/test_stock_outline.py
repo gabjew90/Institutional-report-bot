@@ -85,6 +85,22 @@ def test_options_not_quoting_and_last_live_quotes_are_said_so():
     assert "(last live quotes, 2026-09-30 19:55 UTC)" in O._options_slot(last)
 
 
+def test_the_source_tags_never_reach_the_reader():
+    """The first outline answers ended arrows with '[live prices]', '[JPMorgan]'."""
+    live = ("→ **$MU $1,076.15**, **+1.0%** session-to-date [live prices]\n\n"
+            "→ Driven by Cloud Memory [company background]\n\n"
+            "→ JPMorgan expected a beat [JPMorgan]\n\n"
+            "→ Short interest 2.5% [exchange and filing data]\n\n"
+            "→ See [the filing](<https://sec.gov/x>) and the [Q4] slide")
+    out = O.strip_source_tags(live, {"JPMorgan"})
+    assert "[live prices]" not in out and "[JPMorgan]" not in out
+    assert "[company background]" not in out and "[exchange and filing data]" not in out
+    assert "[the filing](<https://sec.gov/x>)" in out, "links survive"
+    assert "[Q4]" in out, "other bracketed text survives"
+    assert out.startswith("→ **$MU $1,076.15**, **+1.0%** session-to-date\n")
+    assert O.strip_source_tags("→ BofA expects a beat [BofA-ML]", {"BofA-ML"}) == "→ BofA expects a beat"
+
+
 def test_no_outline_for_other_shapes_or_too_little_data():
     assert O.build_outline(_results(), "price", "MU") == ""
     assert O.build_outline({R.T_PRICE: PRICE}, "ticker_opinion", "MU") == ""

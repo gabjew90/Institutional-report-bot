@@ -20,6 +20,8 @@ fetched and returns text. No network, no model.
 """
 from __future__ import annotations
 
+import re
+
 MAX_DESKS = 2
 MAX_NEWS_LINES = 2
 _STOCK_SHAPES = {"ticker_opinion", "options_chain", "news_event", "company_profile"}
@@ -204,11 +206,44 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
     body = "\n".join(f"{i}. {s}" for i, s in enumerate(slots, 1))
     return ("[ANSWER OUTLINE, built by the system from the blocks above. Write one arrow per "
             "numbered slot, in this order. Use the facts in that slot, and name only the source "
-            "in its brackets: a figure from the news or the company report is never a bank's. "
+            "in its brackets, in words, never the bracket itself: a figure from the news or the "
+            "company report is never a bank's. "
             "Say each in plain words, growth first where there is growth. The RESULT or "
             "UPCOMING slot keeps its own arrow and its own source; you may fold the PRICE slot "
             "into it, and drop the POSITIONING slot if it does not bear on the question. Add no "
             "facts that are not in the blocks above.]\n" + body)
+
+
+# The source tags the outline puts in brackets. The model copied them into
+# the first live answers ("+1.0% session-to-date [live prices]",
+# "... [JPMorgan]"); they are for the model, not the reader.
+_SOURCE_TAG_RE = re.compile(
+    r"\s*\[(?:live prices|company report|consensus data|company background[^\]\n]*|"
+    r"exchange and filing data|options chain|news search|company and trading data|"
+    r"the publisher[^\]\n]*|[A-Z][A-Za-z0-9.&' -]{1,40}; this view only|"
+    r"[A-Z][A-Za-z0-9.&' -]{1,40})\](?!\()")
+
+
+def strip_source_tags(answer: str, banks: set[str] | None = None) -> str:
+    """Remove the outline's bracketed source tags from an answer. A bare
+    '[Name]' is removed only when Name is one of the outline's banks, so
+    other bracketed text survives; markdown links are never touched."""
+    def _drop(m):
+        tag = m.group(0).strip()[1:-1]
+        bare = ";" not in tag and tag not in _GENERIC_TAGS and not tag.startswith(
+            ("company background", "the publisher"))
+        if bare and tag not in (banks or set()):
+            return m.group(0)
+        return ""
+    return _SOURCE_TAG_RE.sub(_drop, answer or "")
+
+
+_GENERIC_TAGS = {"live prices", "company report", "consensus data", "exchange and filing data",
+                 "options chain", "news search", "company and trading data"}
+
+
+def outline_banks(research: dict | None) -> set[str]:
+    return {n.get("source") for n in (research or {}).get("notes") or [] if n.get("source")}
 
 
 def outline_symbol(prefetch: list) -> str:
