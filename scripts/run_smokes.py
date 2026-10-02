@@ -26,7 +26,25 @@ MANIFEST = REPO / "scripts" / "smoke_manifest.json"
 TIMEOUT_S = 150
 
 
+# Windows occasionally refuses a native extension load when several
+# interpreters start at once ("DLL load failed while importing _ctypes:
+# The handle is invalid"). The same smoke passes 30/30 run alone, so a
+# failure carrying this signature is the OS, not the code: run it once
+# more. Any other failure, including an assertion, is final.
+_OS_LOAD_FLAKE = "DLL load failed while importing"
+
+
 def _run(name: str) -> tuple[str, int, str]:
+    name, rc, tail, os_flake = _run_once(name)
+    if rc != 0 and os_flake:
+        print(f"retry {name}: the OS refused a DLL load")
+        name, rc, tail, _ = _run_once(name)
+    return name, rc, tail
+
+
+def _run_once(name: str) -> tuple[str, int, str, bool]:
+    """(name, returncode, last 4 output lines, whether the full output
+    carries the DLL-load signature anywhere, not only in the tail)."""
     env = dict(os.environ, PYTHONPATH=str(REPO), PYTHONIOENCODING="utf-8")
     try:
         # The child is told to write UTF-8 (PYTHONIOENCODING above), so
@@ -37,10 +55,11 @@ def _run(name: str) -> tuple[str, int, str]:
                            capture_output=True, text=True, env=env,
                            encoding="utf-8", errors="replace",
                            cwd=REPO, timeout=TIMEOUT_S)
-        tail = "\n".join(((r.stdout or "") + (r.stderr or "")).strip().splitlines()[-4:])
-        return name, r.returncode, tail
+        out = ((r.stdout or "") + (r.stderr or "")).strip()
+        tail = "\n".join(out.splitlines()[-4:])
+        return name, r.returncode, tail, _OS_LOAD_FLAKE in out
     except subprocess.TimeoutExpired:
-        return name, 124, f"timed out after {TIMEOUT_S}s"
+        return name, 124, f"timed out after {TIMEOUT_S}s", False
 
 
 def main() -> int:
