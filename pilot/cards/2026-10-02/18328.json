@@ -1,0 +1,130 @@
+{
+ "brief": "Softer PCE readings have pulled some Fed-hike fear out of the market, with October hike odds falling from around 45% to 37%. The note argues the long end is not responding: the 30-year holds near 5.64%, so the dovish repricing at the front end (2-year near 4.89%) has not eased financial conditions further out. The 2s30s spread has re-steepened from roughly 50bp to 75bp, still below August's ~113bp extreme but moving in that direction, showing yields rising faster at the long end than the front. Bond volatility (MOVE near 110 after a recent spike) remains elevated even as equity volatility (VIX near 16) stays contained, a divergence the note flags as equities absorbing the rates shock while bond uncertainty persists. The stated risk: normally weaker growth lowers yields and cushions valuations, but if growth weakens while the long end stays high, equities could see softer earnings without that valuation relief. The note frames the open question as whether the bond market, not the Fed, ultimately responds.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "October Fed hike odds fell from around 45% to 37% after softer PCE data.",
+   "anchor": "October hike odds falling from\naround 45% to 37%",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "The 30-year Treasury yield remains around 5.64%, meaning the dovish repricing at the front end has offered little relief to long duration.",
+   "anchor": "The 30-year remains around 5.64%, meaning\nthe dovish repricing at the front end has so far offered very little relief to long duration.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "The 2-year yield is around 4.89% while the 30-year remains near 5.64%, a widening gap across the curve.",
+   "anchor": "The 2-year is around 4.89%, while the 30-year\nremains near 5.64%.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "The 2s30s curve has re-steepened from roughly 50bp to 75bp as long yields rose faster than the front end.",
+   "anchor": "2s30s has re-steepened from roughly 50bp to 75bp as long yields have risen faster than the front end.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "The current 2s30s steepening remains well below the August extreme near 113bp, though the direction of travel is clear.",
+   "anchor": "We're still well below the August extreme near 113bp,\nbut the direction of travel is clear.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "The MOVE index is back around 110 after a recent spike, indicating elevated bond market uncertainty.",
+   "anchor": "MOVE is back around 110 after the latest spike, while VIX\nremains relatively contained near 16.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "VIX remains relatively contained near 16 as equities continue to absorb the rates shock well, even as bond uncertainty stays elevated.",
+   "anchor": "equities\ncontinue to absorb the rates shock remarkably well,\neven as uncertainty in bonds remains elevated.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The fed just got less scary bonds are still screaming",
+   "claim": "If growth starts to weaken while the long end stays stubbornly high, equities could face softer earnings expectations without the usual valuation cushion from falling rates.",
+   "anchor": "if growth starts\nto weaken while the long end remains stubbornly high, equities could face softer earnings\nexpectations without getting the usual valuation cushion",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18328__the-fed-just-got-less-scary-bonds-are-still-screaming.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
