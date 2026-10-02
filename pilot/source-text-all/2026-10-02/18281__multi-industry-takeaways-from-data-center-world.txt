@@ -1,0 +1,607 @@
+Daniela Costa 
++44(20)7774-8354 | 
+daniela.costa@gs.com 
+Goldman Sachs International 
+Ines Lefranc 
++44(20)7051-8710 | 
+ines.lefranc@gs.com 
+Goldman Sachs International 
+Joe Ritchie 
++1(212)357-8914 | 
+joseph.ritchie@gs.com 
+Goldman Sachs & Co. LLC 
+Mark Delaney, CFA 
++1(212)357-0535 | 
+mark.delaney@gs.com 
+Goldman Sachs & Co. LLC 
+Jacqueline Du 
++852-2978-1783 | 
+jacqueline.du@gs.com 
+Goldman Sachs (Asia) L.L.C.
+Multi-Industry: Takeaways from Data Center World
+1 October 2026 | 6:27AM BST
+We hosted a day of investor meetings at Data Center World in Singapore this 
+week. Our trip included booth tours with Alfa Laval, Caterpillar, Cummins 
+(unscheduled), Eaton Corp., Honeywell International Inc., INNIO, Schneider 
+Electric, Shenzhen Envicool Technology, Vertiv and Wartsila (unscheduled). 
+Overall, we note that demand for datacenter equipment remains strong across the 
+board with political and environmental pushback not yet having a real impact on the 
+ground. Capacity is tight but supply chains seem to be holding up and modularisation 
+has emerged as a clear trend crucial for reducing time to market. On 800VDC, 
+product launches are generally being targeted for 1H27 with a broader pick up 
+expected by the end of 2027/ beginning of 2028. Liquid cooling is expected to be 
+crucial for this transition.  
+Our key takeaways below and deeper dives into each of our covered companies 
+within.  
+Demand for datacenter equipment remains strong and capacity is tight but 
+n
+supply chains are holding up with certain OEMs pre-ordering key 
+components well in advance. Alfa Laval and Schneider Electric continue to 
+report triple-digit order growth across both training and inference workloads 
+while Eaton’s customers are signing 3y capacity agreements (vs previously <1y) 
+and INNIO’s customers are reserving slots extending out to 2031. Lead times 
+range from 3-4 months for cooling solutions (Alfa Laval, Envicool) and 9-13 
+months for low voltage products in the data hall (Honeywell) to 20-24+ months 
+for engines (Cummins, INNIO, Wartsila) and 2.5-3 years for high voltage 
+transformers. All companies are ramping capacity and for now do not see 
+challenges in the supply chain, mitigating potential bottlenecks by pre-ordering 
+components well in advance (Vertiv and Eaton) and leveraging local 
+manufacturing (Vertiv, Schneider, INNIO, Envicool). 
+800VDC product launches are generally being targeted for 1H27 with a 
+n
+broader pick up in the transition expected by end of 2027/ beginning of 
+2028. Eaton, Schneider and Vertiv are developing comprehensive 800VDC 
+product portfolios, all of which include solid state transformers (SSTs) and 
+sidecars. Eaton targets 2Q27 for first deployment of its 2.5MW MV SST with a 
+broader industry-wide adoption in late 2027 and Vertiv expects its sidecars to 
+be launched in 1H27. While Schneider anticipates its sidecar to also be 
+introduced next year, it expects LV rectifiers to only be deployed in 2028/2029 
+ 
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certification and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Equity Research
+ 
+ 
+
+and SSTs by the end of the decade. During its recent CMD, Legrand similarly said that 
+its sidecar would be ready in 2027 while its AI load stabilizer (required for full 
+800VDC) would only be ready by 2028 (see our takeaways here). Debates remain 
+around where to locate storage (historically at rack level), whether to replace back 
+up facility diesel generators with MV UPS or BESS, whether MV UPS will in fact be 
+needed in full 800VDC architecture (Eaton believes not), which technology to use for 
+load smoothing (Schneider believes sidecars could be) and creation of microgrids for 
+the future. 
+Liquid cooling is expected to be crucial for 800VDC architecture. Alfa Laval, 
+n
+Envicool and Schneider all highlighted that liquid cooling will be crucial to sustain 
+MW-scale rack loads in 800VDC data centers. Envicool and Vertiv have broad 
+offerings comprising cold plates, piping and CDUs while Alfa is the market leader for 
+copper-brazed heat exchangers used in CDUs (directly supplying eight of the top ten 
+CDU OEMs). Schneider and Eaton have both gained exposure to liquid cooling 
+through acquisitions, namely Motivair and Boyd, respectively, both of which are well 
+integrated. In particular, Schneider offers prefabricated, high-density liquid-cooled 
+AI clusters which combine chillers, CDUs and MV switchgear. 
+Engine and turbine OEMs have different product offerings for base load/back up 
+n
+power but all note high demand and long lead times. Wartsila supplies heavy-duty 
+9-24MW gas and/or diesel engines while INNIO’s Jenbacher supplies smaller 
+1.8-4.5MW gas engines and Cummins supplies 1-3.25MW diesel engines. In contrast, 
+Caterpillar’s solar turbines span 1-38MW. These sizing strategies dictate physical 
+installation and delivery models with INNIO’s smaller engines far easier to 
+containerize and install vs Wartsila’s heavy-duty units that are not offered in 
+containerized formats. Despite these varying product approaches, all companies are 
+experiencing unprecedented demand: INNIO has a 15GW order backlog, Cummins 
+has 20-24m lead times, Wartsila has >24m lead times and Caterpillar is fully booked 
+through 2027. While Wartsila and Caterpillar have decided not to take slot 
+reservations, INNIO reports slot reservations extending to 2031. This demand is 
+triggering capacity expansions across the board with Caterpillar increasing 
+engine/turbine capacity by 3x/2.5x and INNIO tripling its annual Jenbacher 
+production capacity. Caterpillar also sees datacenters as most likely having mixed 
+engine/turbine/storage solutions. 
+Modular solutions are becoming increasingly popular as they reduce complexity 
+n
+and accelerate time-to-market. Eaton reported that modular systems now 
+represent 60-70% of total demand (up from 10-20% in prior years), allowing 
+operators to reduce DC construction times to just 1 year (from 2-3y historically). 
+Similarly, Vertiv has developed standardized offsite-prefabricated 50 MW modular 
+blocks which reduce lead times to 1y. Schneider and Shenzhen Envicool are also 
+providing modular solutions where possible to reduce time to market whilst INNIO 
+are providing containerised engines (enabled by their smaller size relative to 
+Wartsila). By contrast, Honeywell does not offer modular solutions and does not 
+think this will take over much of the market given customers will not want to be 
+locked in with a single supplier. 
+As AI workloads drive up operational criticality of DC infrastructure, 
+n
+1 October 2026
+  2
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+hyperscalers are bypassing facility managers to secure long-term service 
+agreements directly with OEMs. Vertiv highlighted that customers are directly 
+locking in 15-20y service agreements to guarantee uptime requirements. Similarly, 
+INNIO has secured 20-year service agreements across 100% of its installed base 
+yielding revenues that exceed the initial upfront equipment capex. While Wartsila 
+also offers comprehensive lifecycle services, it manages its contract durations more 
+conservatively, typically limiting agreements to 5-year periods to insulate itself 
+against long-term inflationary risks. 
+Datacenters are under increasing political and environmental scrutiny but there 
+n
+has not yet been a real impact on the ground. This is highlighted by localized 
+actions such as a two week pause on datacenters in Thailand (mentioned by 
+Schneider) and a community-driven project cancellation in Australia (mentioned by 
+Wartsila but not a Wartsila project). However, other industry players confirm that 
+this political pushback has otherwise not had real impact on the ground. Instead, 
+sustainability has catalyzed a push for renewables PPAs, reduced water usage and 
+advanced generator technologies. 
+1 October 2026
+  3
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+Company-specific takeaways 
+ 
+ 
+Alfa Laval (covered by Daniela Costa; hosted by Head of Data Centers) 
+Alfa has been selling to data centers for 20 years (traditionally supplying large 
+gasketed heat exchangers directly to hyperscalers) and has been tracking 
+customers more closely for 10 years. Data centers now represent 5-6% of group 
+sales and are recording triple digit order growth, with demand seen in both training 
+and inference as well as general cloud computing. Even though the company is 
+building capacity in line with customer expansion, capacity is very tight and lead times 
+span several months; even a 50% market deceleration would not alleviate the fight for 
+product supply in the industry. The company does not see datacenter pushback 
+impacting the environment and while some projects have been delayed due to power 
+constraints, this has been less than originally expected.  
+As next generation NVIDIA chips reach thermal limits (measured in heat load per square 
+cm), Alfa highlighted the need for direct-to-chip liquid cooling. While Alfa does not 
+manufacture cold plates, it is the market leader for copper brazed heat exchangers 
+required in CDUs, directly supplying eight of the top ten CDU OEMs (often not 
+knowing the end customer as they sell to CDU OEMs). The heat exchangers are neither 
+CDU-specific (with CDUs often varying in terms of customization) nor DC-specific (can 
+be used in HVAC, heat pumps and O&G). However, unlike gasketed heat exchangers, 
+there is no aftermarket for liquid cooling. 
+Looking ahead, the company remains coolant-agnostic and expects to capture 
+more content from emerging technologies including more developed CDUs for 
+higher-MW retrofits, two-phase cooling, cryogenic solutions for quantum computing, 
+re-use of rainwater, and waste-heat recovery for district heating.  
+Eaton Corp. (covered by Joe Ritchie) 
+Eaton showcased its 800VDC portfolio anchored by its MV SST (currently 2.5MW 
+and scaling to 5MW) which should be first deployed with a customer in Singapore in 
+2Q27, with broader 800VDC adoption picking up in late 2027. The SST is designed to 
+lower capital costs by replacing traditional LV UPS and switchgear. Eaton now also offers 
+a sidecar for refurbishment (although this has not yet been sold) and believes that MV 
+UPS may not be needed for full 800VDC. There has also been an industry shift towards 
+prefabricated modular systems that now represent 60-70% of demand (vs 10-20% in 
+prior years) and have helped cut data center construction times to 1y (vs historically 
+2-3y).  
+Market demand remains strong with customers signing 3y capacity agreements (vs 
+previously not even 1y) which Eaton does not think includes double-booking. They 
+do not see environmental concerns having a real impact on the ground and are also not 
+worried about Chinese competition, noting that Chinese OEMs are not even used by 
+hyperscalers in Asia given they do not have the service network and uptime guarantee. 
+Eaton has been ramping capacity for 4-5 years and does not see any pressure points in 
+the supply chain having already pre-bought some long lead time components. Eaton 
+sees inflation on components but is passing this through to customers and expects 
+pricing to stabilise at some point. 
+1 October 2026
+  4
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+Honeywell International Inc. (covered by Joe Ritchie; hosted by Head of Asia Building 
+Automation & Head of Global Datacenters) 
+Honeywell is now a pure play automation provider and has been investing in new 
+products both organically and through M&A with a key focus on data centers. 
+Operating with global key accounts representatives and across eight Asian countries, 
+Honeywell has been capitalizing on the transition of data centers into power-generating 
+assets which increases the value of industrial automation and provides more revenues 
+per square meter than traditional buildings. Data hall building automation and power 
+island were said to each amount to c.2% of total capex (non-construction costs) while 
+general electric is 30% and IT is 50%. Typically, customers look at critical power and 
+electrical ordering when 75% of design is completed. Lead times are up to 2.5-3y for 
+high voltage transformers and 9-13 months for low voltage products in the data hall. 
+Honeywell’s portfolio is concentrated inside the data hall, spanning building 
+management systems (vendor-agnostic), power management systems (cooling 
+chillers and electrical equipment), physical security/ access controls and fire 
+protection (particularly for batteries). Honeywell positions itself as an integrator 
+rather than an equipment provider in the grey space and is not involved in white space 
+mechanical cooling. Key competitors include Schneider Electric, Siemens and JCI as well 
+as Rockwell and Emerson specifically for automation. Honeywell has also partnered with 
+LS Electric (not exclusive) to expand its electrical and BESS footprint, aiming to be a 
+value-added reseller of their products but to also co-develop software. 
+Honeywell highlighted that modular solutions are becoming increasingly popular 
+and the company can supply controls and automation for these. However, Honeywell 
+does not offer modular solutions themselves and does not think modular will take over 
+much of the market given customers do not want to be locked in with only one supplier. 
+INNIO (covered by Joe Ritchie; hosted by Head of Asia Sales) 
+INNIO supplies gas engines (50% natural gas, 50% biogas/hydrogen) through two 
+brands: Jenbacher (five main types of gas engines 0.25-10.4MW) and Waukesha 
+(mainly compression engines 1-3MW). The company first sold engines in Asia 30 years 
+ago and it now has Japan and Indonesia’s biggest installed base. While it historically 
+worked with distributors, INNIO is increasingly selling direct to customers and can do 
+engineering, procurement and construction (which they note is a big advantage). It has 
+now been selling its Type 6 engines to data centers for 6 years, providing 1.8-4.5MW 
+(smaller than Wartsila at 10-30MW but easier to containerize and install) primarily for 
+base load power and to a lesser degree back up power.  
+INNIO has a 15GW order backlog valued at $7bn (64% BTM) and slot reservations 
+extending out to 2031 with demand coming from colocators and IPPs in the US 
+(including Volta Grid) as well as from grid balancing of renewables in 
+Germany/Brazil. The company is tripling its annual Jenbacher production capacity from 
+1,500 engines produced in 2025 (including 200 type 3, 200 type 4, 1000 type 6 and 120 
+type 9) to 4,500 by 2030 (including 2000 type 6 in Austria and 1000 in US). This will 
+involve doubling its Austrian manufacturing capacity (where all key components are 
+made) as well as expanding US production. INNIO does not see any changes in customer 
+behavior with these recent capacity announcements. In the US, INNIO primarily sells 
+direct to customer and has 100% market share in several datacenter power ranges, 
+highlighting that it has been difficult for Chinese players to enter. Pricing per MW 
+1 October 2026
+  5
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+depends a lot on scope which itself differs between regions but INNIO disclosed that 
+J620 at 3.5mW typically stands at $4mn.  
+INNIO’s 20y service agreements (which they currently have on 100% of installed 
+base) generate recurring revenues that significantly exceed initial upfront 
+equipment capex. This typically involves 10y of maintenance every 80,000 operating 
+hours then major overhauls done typically three times for an engine. 
+Schneider Electric (covered by Daniela Costa) 
+Schneider Electric’s data center business is now close to 30% of sales and growing 
+fast, with triple digit order growth and double digit sales growth. Over 60% of DC 
+revenues come from North America, while the rest is evenly split between Europe, South 
+Asia and China. Globally, they see 65% of new builds dedicated to AI workloads although 
+the shift towards AI loads has been progressive, with Asia seeing more inference/less 
+training and more collocation customers. Schneider has not seen supply chain challenges 
+for the moment, nothing that, while the US may have had memory challenges, the 
+company has extra stock and this has not impacted RoW. There has been increased 
+political focus on the industry (exemplified by 2w pause on DCs in Thailand) and 
+sustainability is top-of-mind, marked by a push for renewables PPA and reduced water 
+usage. However, these pushbacks have not impacted Schneider and moratoriums 
+provide time to clean up backlog. 
+Operating on a regional hub model, Schneider helps customers design, build and 
+maintain datacenters, tailoring equipment for local requirements while also providing 
+modular solutions where possible to reduce time to market. On the software front, 
+Schneider has been partnering with NVIDIA to develop full 3D data center digital 
+twins that can test architectural changes before physical implementation. This 
+leverages Schneider’s Aveva, ETAP and Power SCADA softwares with NVIDIA’s 
+Omniverse. On the hardware front, the company offers primary and secondary MV 
+switchgear (and is scaling its non-SF6 switchgear for increased sustainability) as well as 
+the most compact UPS on the market. Schneider’s 800VDC roadmap features its 
+industry-first 660kV sidecar prototype (to be deployed next year), followed by LV 
+rectifiers (expected for 2028/29) and SSTs (only by the end of the decade). Schneider 
+highlights circuit breakers as very important (similarly to our data center expert call). 
+Various debates on 800VDC include where to locate storage (historically at rack level), 
+whether to replace back up facility diesel generators with MV UPS or BESS, which 
+technology to use for load smoothing (currently LV UPS but for VDC could be sidecar) 
+and creation of microgrids for the future. On cooling, integration of Motivair is 
+developing well (with manufacturing in all regions) and Schneider now offers 
+prefabricated high density liquid-cooled AI clusters (including chillers, CDUs and MV 
+switchgear) which consume less water than traditional air-cooling (big focus in the 
+industry).  
+Shenzhen Envicool Technology (covered by Jacqueline Du) 
+Envicool offers NVIDIA-certified air and liquid cooling solutions (including cold 
+plates, piping and CDUs) and expects 800VDC architecture to rely on liquid cooling. 
+They also provide modular solutions globally and energy storage solutions in the US. 
+Products are mostly manufactured in China and Thailand as well as Dallas with lead 
+times currently at 3-4 months. Envicool differentiates itself from Vertiv (its biggest 
+1 October 2026
+  6
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+competitor) on pricing, product customization and lead times (enabled by Chinese 
+supply chains) and has been gaining market share in Asia.  
+Vertiv (covered by Mark Delaney; hosted by Head of Asia Strategic Accounts) 
+Vertiv’s data center portfolio spans power, thermal and service solutions (vs most 
+peers with 1-2 products) and serves hyperscalers, emerging neoclouds and 
+colocators. The company is getting engaged much earlier in the design process than 
+typical procurement (at around 12m before the decision to build is made) and is trying 
+to move the business more towards a pipeline model rather than acting 
+project-by-project.  
+To address rising project complexities and time-to-market demands, Vertiv works 
+with general contractors on shell buildings while standardizing 
+offsite-prefabricated, plug-and-play 50 MW modular blocks which maximise Vertiv’s 
+share of wallet and reduce lead times (12m time to market). Vertiv is trying to stay ahead 
+of supply chain constraints by pre-purchasing key components 2-3y in advance and by 
+localising its manufacturing footprint (with recent additions to cooling capacity in 
+Malaysia and capability enhancements in Australia and Japan). As criticality of AI 
+infrastructure increases, customers are securing 15-20y service agreements directly 
+with OEMs rather than facility managers. Vertiv has 5300 service engineers and leads 
+on liquid cooling service, noting that the current build cycle is creating an enormous 
+installed base for them.  
+Vertiv is actively developing SSTs and an 800VDC portfolio, with sidecars expected 
+to launch in 1H27 (they are currently talking to data centers that will be 800VDC in 2y 
+time).  Vertiv highlights that while the industry has broadened in number of players, it is 
+bifurcating into a few full-suite companies with deep expertise. 
+1 October 2026
+  7
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, Daniela Costa, Ines Lefranc, Joe Ritchie, Mark Delaney, CFA and Jacqueline Du, hereby certify that all of the views expressed in this report 
+accurately reflect our personal views about the subject company or companies and its or their securities. We also certify that no part of our 
+compensation was, is or will be, directly or indirectly, related to the specific recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: Daniela Costa Goldman Sachs International, Ines Lefranc Goldman Sachs International, Joe Ritchie Goldman Sachs & Co. LLC, 
+Mark Delaney, CFA Goldman Sachs & Co. LLC, Jacqueline Du Goldman Sachs (Asia) L.L.C.. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+ 
+As of July 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,104 equity securities. Goldman Sachs assigns stocks as Buys 
+and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+59%
+43%
+1 October 2026
+  8
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+1 October 2026
+  9
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+1 October 2026
+  10
+Goldman Sachs
+Multi-Industry
+ 
+ 
+
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in part, to train or 
+finetune a machine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+1 October 2026
+  11
+Goldman Sachs
+Multi-Industry
+ 
+ 
