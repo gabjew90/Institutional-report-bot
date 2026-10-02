@@ -1,0 +1,246 @@
+{
+ "brief": "BTIG's technical strategy note argues October is historically a bullish reversal month (2002, 2011, 2022), but those reversals followed drawdowns of about 48%, 22%, and 27%, while the SPX is currently about flat since June and near all-time highs, which weakens the seasonal analog. Despite 9 of 11 sectors falling more than 2% over the last month, equity and composite put/call ratios are near the year's lows and the VIX Daily Sentiment Index is just 19%, which the note reads as complacent positioning, making the risk of a higher-correlation volatility event high for October. Separately, 30-year yields rose from 5.25% to 5.69% in 7 sessions with bond Daily Sentiment at 10%, which the note treats as tactical upside exhaustion and a risk of a snap-back lower in yields. If yields fall, the note expects the QQQ vs IWM ratio to reverse, so breadth could rebound even as QQQ and Mag7 move lower. RSP's tactical risk/reward is no longer negative as it nears its 200-day moving average, versus greater downside risk the note sees in SPY, QQQ and Mag7. B vs CCC credit spreads are also at fresh wides, through 7%.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "October is historically known as the 'Bear Killer', with bullish reversals ending bear markets in 2002, 2011, and 2022.",
+   "anchor": "October is known as the 'Bear Killer', with many bullish reversals ending bear markets including '02, '11, and most recently '22.",
+   "topic": "October equity volatility risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "The 2002, 2011, and 2022 October lows followed drawdowns of approximately 48%, 22%, and 27% respectively.",
+   "anchor": "Those three October lows came after significant drawdowns of ~48%, ~22% and ~27%, respectively.",
+   "topic": "October equity volatility risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "The SPX is currently approximately flat since June and not far from all-time highs.",
+   "anchor": "Currently, the SPX is ~flat since June and not far from all-time highs.",
+   "topic": "October equity volatility risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "9 of 11 S&P sectors are down more than 2% over the last month.",
+   "anchor": "9 of 11 sectors are down by more than 2% over the last month",
+   "topic": "October equity volatility risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "The 10-day moving average of equity and composite put/call ratios is near the lows of the year.",
+   "anchor": "10-DMA of equity and composite put/call ratios are near the lows of the year.",
+   "topic": "October equity volatility risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "The Daily Sentiment Index for the VIX is just 19%.",
+   "anchor": "The Daily Sentiment Index for the VIX is just 19%.",
+   "topic": "October equity volatility risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "BTIG thinks the risk of a higher-correlation index volatility event is quite high for October.",
+   "anchor": "which is exactly why we think the risk of that is quite high for October.",
+   "topic": "October equity volatility risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "October"
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "30-year Treasury yields moved from 5.25% to 5.69% in just 7 sessions.",
+   "anchor": "30yr yields moving from 5.25% to 5.69% in just 7 sessions",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "The Daily Sentiment Index for bonds is at 10%.",
+   "anchor": "Daily Sentiment (DSI) for bonds at 10%",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "BTIG sees the risk of a quick snap-back lower in Treasury yields.",
+   "anchor": "the risk is a quick snap-back lower in yields.",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "BTIG expects a reversion of the QQQ vs. IWM ratio if yields fall.",
+   "anchor": "it's likely to see a reversion of the QQQ vs. IWM ratio and all the similar correlations.",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "forecast",
+   "instruments": [
+    "QQQ",
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "BTIG thinks lower rates could cause QQQ and Mag7 to move lower.",
+   "anchor": "lower rates could also see QQQ and Mag7 actually move LOWER.",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "RSP's tactical risk/reward is no longer negative as it nears its 200-day moving average.",
+   "anchor": "with RSP nearing its 200 DMA, the tactical risk/reward is no longer negative.",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "level",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "BTIG sees much greater downside risk to SPY, QQQ, and Mag7 than to RSP.",
+   "anchor": "we see much greater downside risk to SPY, QQQ, Mag7 etc.",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "forecast",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "BTIG's August 19 study on RSP/BKX found many names were within a week or two of a cyclical or tactical top.",
+   "anchor": "many were within a week or two of a cyclical or tactical top.",
+   "topic": "RSP-to-SPY rotation risk",
+   "status": "released",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "The Hunt for Red October",
+   "claim": "B vs. CCC credit spreads have reached fresh wides, now through 7%.",
+   "anchor": "Fresh wides for B vs. CCC spreads now through 7%.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18321__the-hunt-for-red-october.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 16,
+  "matched": 16,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
