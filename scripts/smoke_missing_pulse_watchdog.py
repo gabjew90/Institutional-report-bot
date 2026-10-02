@@ -22,6 +22,11 @@ import sqlite3
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# The watchdog returns before posting when no channel is configured. On the
+# owner's machine .env supplies one; a cloud checkout has no .env, and the
+# smoke failed there on every market-open weekday (2026-10-02). Set before
+# config is imported; a real value from .env or the environment still wins.
+os.environ.setdefault("DISCORD_CHANNEL_ID", "123")
 
 
 def _ok(msg):

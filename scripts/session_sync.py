@@ -42,7 +42,9 @@ def git(repo: Path, *args: str, timeout: int = 30) -> tuple[int, str]:
 
 
 def project_dir() -> Path:
-    return Path(os.environ.get("CLAUDE_PROJECT_DIR") or Path(__file__).resolve().parents[1])
+    # The repo this script lives in, not CLAUDE_PROJECT_DIR: a cloud session
+    # can start one level up (/home/user) with the repo as a subfolder.
+    return Path(__file__).resolve().parents[1]
 
 
 def memory_dir(project: Path) -> Path:
@@ -93,6 +95,11 @@ def sync_to(repo: Path, target: str, label: str) -> list[str]:
 def start() -> None:
     project = project_dir()
     lines = sync_to(project, DEPLOY_BRANCH, "code") + sync_to(memory_dir(project), MEMORY_BRANCH, "memory")
+    if Path(os.getcwd()).resolve() != project:
+        # Started outside the repo, so its CLAUDE.md (binding rules) is not
+        # loaded yet. This line reaches the session as context.
+        lines.append(f"this session started in {os.getcwd()}, not the repo. "
+                     f"Work in {project} and read {project / 'CLAUDE.md'} before anything else.")
     if lines:
         print("session sync:\n" + "\n".join(f"- {l}" for l in lines))
 

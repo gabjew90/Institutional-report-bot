@@ -128,6 +128,37 @@ else
   fi
 fi
 
+# A cloud session can start one level up (/home/user, 2026-10-02) with this
+# repo as a subfolder. The repo's .claude/settings.json hooks then do not
+# load, and memory is read from the parent's project folder. Give the
+# parent the same hooks (absolute paths, so they work from there) and point
+# its memory folder at the same checkout. Skipped when the parent is $HOME,
+# where .claude/settings.json would be the user-level file.
+PARENT="$(dirname "$(pwd)")"
+if [ "$PARENT" != "$HOME" ] && [ -e "$MEM_DIR" ]; then
+  PARENT_MEM="$HOME/.claude/projects/$(printf %s "$PARENT" | sed 's#[^A-Za-z0-9]#-#g')/memory"
+  if [ -d "$PARENT_MEM" ] && [ ! -L "$PARENT_MEM" ]; then
+    mv "$PARENT_MEM" "$PARENT_MEM.local-$(date +%s)"
+  fi
+  if [ ! -e "$PARENT_MEM" ]; then
+    mkdir -p "$(dirname "$PARENT_MEM")" \
+      && ln -sfn "$(readlink -f "$MEM_DIR")" "$PARENT_MEM" \
+      && echo "memory: also linked for sessions started in $PARENT"
+  fi
+  # (re)write it when absent or ours, so a stale copy is refreshed; a file
+  # someone else made is left alone
+  if [ -w "$PARENT" ] && { [ ! -e "$PARENT/.claude/settings.json" ] \
+       || grep -q "session_sync.py" "$PARENT/.claude/settings.json"; }; then
+    SYNC="$(pwd)/scripts/session_sync.py"
+    mkdir -p "$PARENT/.claude" && printf '%s\n' \
+      '{"hooks": {' \
+      "  \"SessionStart\": [{\"matcher\": \"startup|resume\", \"hooks\": [{\"type\": \"command\", \"command\": \"python3 $SYNC start || exit 0\", \"timeout\": 90}]}]," \
+      "  \"Stop\": [{\"hooks\": [{\"type\": \"command\", \"command\": \"python3 $SYNC stop || exit 0\", \"timeout\": 90}]}]" \
+      '}}' > "$PARENT/.claude/settings.json" \
+      && echo "hooks: sync hooks also set for sessions started in $PARENT"
+  fi
+fi
+
 echo "== railway"
 if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
   if ! command -v railway >/dev/null 2>&1; then
@@ -168,6 +199,13 @@ if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
     # a cloud container starts with none. The dedicated cloud key lives in
     # the environment settings as one base64 line, the private key file
     # encoded, and is written here each session. Never printed.
+    if [ -n "${RAILWAY_SSH_KEY_B64:-}" ] && ! command -v ssh-keygen >/dev/null 2>&1 \
+       && command -v apt-get >/dev/null 2>&1; then
+      # the cloud image ships without ssh (2026-10-02)
+      SUDO=""; [ "$(id -u)" != 0 ] && command -v sudo >/dev/null 2>&1 && SUDO=sudo
+      { $SUDO apt-get update -qq && DEBIAN_FRONTEND=noninteractive $SUDO apt-get install -y -qq openssh-client; } \
+        >/dev/null 2>&1 && echo "railway ssh: installed openssh-client"
+    fi
     if [ -n "${RAILWAY_SSH_KEY_B64:-}" ] && ! command -v ssh-keygen >/dev/null 2>&1; then
       problem "railway ssh: the image has no ssh-keygen (openssh-client), so the cloud key cannot be installed"
     elif [ -n "${RAILWAY_SSH_KEY_B64:-}" ]; then

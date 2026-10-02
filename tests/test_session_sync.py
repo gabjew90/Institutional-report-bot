@@ -104,5 +104,20 @@ def test_stop_with_nothing_changed_makes_no_commit(origin, monkeypatch):
     assert sh(here, "rev-parse", "HEAD") == before
 
 
+def test_start_outside_the_repo_points_at_its_claude_md(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(ss, "sync_to", lambda *a: [])
+    monkeypatch.chdir(tmp_path)
+    ss.start()
+    out = capsys.readouterr().out
+    assert "not the repo" in out and "CLAUDE.md" in out
+
+
+def test_start_inside_the_repo_and_in_sync_is_silent(monkeypatch, capsys):
+    monkeypatch.setattr(ss, "sync_to", lambda *a: [])
+    monkeypatch.chdir(ss.project_dir())
+    ss.start()
+    assert capsys.readouterr().out == ""
+
+
 def test_memory_dir_matches_claude_code_naming():
     assert ss.memory_dir(Path("/home/user/Institutional-report-bot")).parts[-2] == "-home-user-Institutional-report-bot"
