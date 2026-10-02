@@ -1,0 +1,199 @@
+{
+ "brief": "Taiwan's equity market keeps printing fresh all-time highs even as investors debate whether the AI trade has run too far, because retail is buying, foreign positioning stays light, and the semiconductor cycle keeps accelerating rather than slowing. GS notes margin balances have risen for 10 straight sessions, with TWSE just 0.2% below its record and TPEx already at one, while leverage relative to market cap stays below July's highs, implying room left to run. JPM argues the earnings backdrop remains intact with steady EPS revisions and no capex downturn being priced in, citing TSMC's 100%+ utilization at N3/N5 as validation. Taiwan IC revenues, after growing about 23% last year, are seen surging 41% in 2026; Franklin Templeton puts consensus Taiwan EPS growth above 50% in 2026. JPM notes foreign investors sold aggressively over the summer and remain underpositioned despite the rally, and estimates 55% of TWSE market cap has positive Apple exposure, historically adding about 9% to forward EPS revisions in the three months after major Apple upgrade cycles. TSMC says customer engagement on leading-edge nodes now starts two to three years out. JPM likes buying Dec 2026 TWSE 110% calls as Taiwan vol has normalized.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Taiwan's stock market is printing another fresh all-time high.",
+   "anchor": "Taiwan doing what Taiwan does best: printing another fresh all-time high.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Taiwan margin balances have risen for 10 straight sessions, with TWSE balances 0.2% below all-time highs and TPEx already at a record.",
+   "anchor": "Margin balances have risen for 10 straight sessions, with TWSE balances just 0.2% below all-time highs and TPEx already at a record.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "GS",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Taiwan retail leverage relative to market cap remains below the July highs, leaving room for local retail sentiment to run further.",
+   "anchor": "relative to market cap, leverage remains below the July highs, suggesting there is still room for local retail sentiment to run.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "JPM argues the earnings backdrop for Taiwan hardware remains intact, with steady EPS revisions and no imminent capex downturn being priced in.",
+   "anchor": "JPM argues that the earnings backdrop remains intact, with steady EPS revisions and no imminent capex downturn being priced into hardware.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "TSMC is running 100%+ utilization at its N3/N5 nodes on robust AI accelerator demand.",
+   "anchor": "TSMC is the key validation point, with robust AI accelerator demand and 100%+ utilization at N3/N5.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Franklin Templeton",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Taiwan IC revenues, after growing around 23% last year, are expected to surge another 41% in 2026.",
+   "anchor": "After growing around 23% last year, Taiwan IC revenues are expected to surge another 41% in 2026.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Franklin Templeton",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Consensus expects Taiwan EPS growth of more than 50% in 2026, following the major earnings recovery of the past few years.",
+   "anchor": "Franklin says consensus expects Taiwan EPS growth of more than 50% in 2026, following the major earnings recovery of the past few years.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "JPM",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Foreign investors dumped Taiwan aggressively during the summer and their cumulative positioning remains light despite the market pushing higher.",
+   "anchor": "Foreign investors dumped Taiwan aggressively during the summer, and cumulative positioning remains light despite the market pushing higher.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Around 55% of TWSE market cap has positive Apple exposure.",
+   "anchor": "JPM estimates that around 55% of TWSE market cap has positive Apple exposure.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPM",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "During major Apple upgrade cycles, Taiwan supply-chain forward EPS revisions have historically risen around 9% in the three months following the announcement.",
+   "anchor": "During major Apple upgrade cycles, Taiwan supply-chain forward EPS revisions have historically risen around 9% in the three months following the announcement.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "three months following the announcement"
+  },
+  {
+   "bank": "TSMC",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "TSMC says customer engagement on increasingly complex leading-edge technology now begins at least two to three years in advance, giving visibility into customers' multi-year production plans.",
+   "anchor": "customer engagement on increasingly complex leading-edge technology now begins at least two to three years in advance, giving visibility into customers' multi-year production plans.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "two to three years in advance"
+  },
+  {
+   "bank": "JPM",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "JPM likes buying Dec 2026 TWSE 110% calls.",
+   "anchor": "JPM likes buying Dec 2026 TWSE 110% calls.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec 2026"
+  },
+  {
+   "bank": "JPM",
+   "document": "The AI bears have a Taiwan problem",
+   "claim": "Taiwan volatility has normalized from the recent spike, making outright upside calls a cleaner way to play continued upside.",
+   "anchor": "Taiwan vol has normalized from the recent spike, making outright upside calls a cleaner way to play continued upside.",
+   "topic": "Taiwan AI semiconductor rally",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18366__the-ai-bears-have-a-taiwan-problem.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 13,
+  "matched": 13,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
