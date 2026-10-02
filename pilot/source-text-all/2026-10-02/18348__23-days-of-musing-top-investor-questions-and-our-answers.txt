@@ -1,0 +1,1759 @@
+M
+ Idea
+Meta Platforms Inc | North America
+23 Days of Musing...Top Investor 
+Questions and Our Answers  
+How and when will Muse monetize?  How much is Muse's cost to 
+serve and how much capacity does Meta have to scale this?  
+What is Meta's quantitative and qualitative enterprise 
+opportunity?  What are Amazon and Meta likely negotiating 
+across retail and AWS? What do we do with Meta shares now?
+We are 23 days into the age of Meta's Muse….with downloads remaining strong, 
+new use cases and partnerships announced weekly (feels daily) and Meta starting to 
+integrate the product more into Instagram/Facebook (check your feeds). And while 
+we have written much on agentic over the past 3 and 52 weeks including The 
+Morgan Stanley Agentic Playbook (18 Sep 2026) and Muse: Rewriting the Retail/
+Consumer Playbook (28 Sep 2026), today we want to address 6 of the most 
+common agentic/Muse investor questions and debates.  We also have new 
+interactive Muse cost to serve models and Meta CPU capacity models available, 
+so let us know if interested.  
+1. How and When Could Meta Monetize Muse Directly? First, we expect Muse 
+subscription revenue to be quite small for a while as Meta focuses on scaling a user 
+base, engagement and commercial behavior well before monetization. To this point, 
+we believe initial "take rates" on the connection agreements are de minimis. But over 
+the long-term as the agentic behavior scales (think late '27/'28 at the earliest) we 
+would expect Meta to monetize through a real-time bidding auction market 
+(businesses paying for transactions/acquisitions) with businesses across the 
+economy bidding based on return on investment and paying Meta for completed 
+transactions. The $30tn of consumer spend to be digitized by agentic highlights the 
+opportunity here. In the meantime, we do see Muse being a further source of data 
+capture and profile build for Meta's core products to showcase even more targeted 
+organic content to drive more engagement. 
+Morgan Stanley & Co. LLC
+Brian Nowak, CFA
+Equity Analyst
+ Brian.Nowak@morganstanley.com  
+  +1 212 761-3365 
+Gregory Gao
+Research Associate
+ Greg.Gao@morganstanley.com  
+  +1 212 296-3125 
+Nikhil Javeri
+Research Associate
+ Nikhil.Javeri1@morganstanley.com  
+  +1 212 761-3742 
+Julian Herrera
+Research Associate
+ Julian.Herrera@morganstanley.com  
+  +1 212 761-1784 
+Kavya A Narayanan
+Research Associate
+ Kavya.Narayanan@morganstanley.com  
+  +1 212 761-4183 
+Meta Platforms Inc (META.O, META US)
+  Top Pick  
+Internet | United States of America
+Stock Rating
+Overweight
+Industry View
+Attractive
+Price target
+$775.00
+Shr price, close (Sep 30, 2026)
+$725.18
+Mkt cap, curr (mm)
+$2,267,560
+52-Week Range
+$779.82-520.26
+Morgan Stanley does and seeks to do business with 
+companies covered in Morgan Stanley Research. As a result, 
+investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of Morgan Stanley 
+Research. Investors should consider Morgan Stanley 
+Research as only a single factor in making their investment 
+decision.
+For analyst certification and other important disclosures, 
+refer to the Disclosure Section, located at the end of this 
+report.
+September 30, 2026 10:55 PM GMT
+ 
+ 
+
+M
+ Idea
+2
+Exhibit 1:
+We See $30tn of Consumer Spend for Agents to Address
+$16
+$16
+$16
+$17
+$17
+$17
+$4
+$4
+$4
+$4
+$4
+$4
+$3
+$4
+$4
+$4
+$4
+$4
+$3
+$3
+$3
+$3
+$3
+$3
+$3
+$3
+$3
+$3
+$3
+$3
+$1
+$1
+$1
+$1
+$1
+$1
+$29
+$30
+$30
+$31
+$32
+$32
+$0
+$5
+$10
+$15
+$20
+$25
+$30
+$35
+$40
+2023
+2024
+2025
+2026
+2027
+2028
+Retail + Travel
+Autonomous Driving/Rideshare
+Restaurant Delivery
+Advertising
+Logistics
+Wearables
+Global AI TAM
+Source: Company data, Morgan Stanley Research 
+2. How Much Are Muse Serving Costs? Our sensitivity work showcases how it  
+ranges from $3-$130 per user per month based on token consumption.  We have 
+built a detailed cost to serve model separating the two primary compute workloads 
+of GPU inference (which scales with tokens consumed) and the CPU sandbox (which 
+scales with how frequently users activate Muse and how long the underlying VM 
+remains provisioned). The GPU workloads consist of running Muse's underlying 
+model inference (processing user prompts, reasoning through tasks, etc.) while the 
+CPU workloads likely support the agent environment itself, including running the 
+VM, browser, tools, code execution, etc. The mix of these costs shifts with intensity 
+as the CPU sandbox expense is the larger cost driver for lower-usage users, while 
+GPU inference becomes the dominant component for users consuming the full 
+token allowance. Please let us know if interested in our new interactive Muse Cost 
+to Serve Model fully shown in  Exhibit 2.
+There are many assumptions behind this analysis that investors can flex...and while 
+drawing a clean analogy to Meta's historical cost to serve is difficult (given limited 
+disclosure on users across FB/Instagram/WhatsApp) we think this analysis does 
+speak to the cost prohibitive barriers to entry for smaller players to scale a 
+competitive product to Meta. Meta's $250bn core ad business growing 27% y/y 
+(that is only getting stronger) certainly provides cushion too.  Consider too that 
+META's global ARPU (total revenue divided by FOA users) is ~$70 (with North 
+America multiples higher)...so the company certainly does have a history of driving 
+monetization of its behavior.  
+
+M
+ Idea
+Morgan Stanley Research
+3
+Exhibit 2:
+We estimate Muse cost to serve per user is anywhere from $3-$130/
+month...depending on token consumption.  This speaks to the cost prohibitive 
+moats around Muse's free go-to-market strategy.
+$1
+$5
+$10
+$24
+$49
+$97
+$2
+$5
+$8
+$13
+$19
+$31
+$3
+$10
+$18
+$37
+$68
+$128
+$0
+$20
+$40
+$60
+$80
+$100
+$120
+$140
+$160
+1%
+5%
+10%
+25%
+50%
+100%
+Muse Cost to Serve ($/user/month)
+Percent of Weekly Token Allowance Used
+GPU inference ($/month)
+CPU sandbox cost ($/month)
+Source: Company data, Morgan Stanley Research 
+3. Is Meta at Risk of Being Capacity Constrained When it Comes to Scaling Muse? 
+No, we estimate Meta is acquiring the equivalent CPU capacity in '26 alone to 
+serve 1bn Muse DAUs who spend 25% of their weekly token allowance.  Even this 
+25% could be high but we would rather assume adoption and use cases ramp in this 
+instance to show the large amount of capacity Meta already has coming on.  As 
+shown, our bottom up estimates of Meta's expected CPU purchases in '26 and 
+Graviton capacity acquired from Amazon earlier this year (see AMZN and META: A 
+Graviton Enabled Muse Ahead?) could potentially serve as many as 1bn DAUs 
+(assuming they use 25% of their weekly token allowance).  Note too this does not 
+consider other CPUs they may already have in the fleet to use.  
+
+M
+ Idea
+4
+Exhibit 3:
+We estimate that the CPU capacity META is acquiring in '26 alone 
+could be enough to serve 1bn Muse DAUs spending 25% of their weekly token 
+allowance.
+321,360,000
+300,000,000
+0
+100,000,000
+200,000,000
+300,000,000
+400,000,000
+Muse Instance Capacity Added in '26
+Muse Instance Needs for 1bn DAUs
+vCPUs
+Source: Company data, Morgan Stanley Research. Note: In '26, we estimate META is adding sufficient CPU capacity to service 
+~320mn Muse Instances. These CPUs are being procured from a variety of vendors including AMD, NVDA and AWS Graviton. We 
+estimate META would need ~300mn simultaneously active Muse instances to support 1bn DAUs. Key underlying assumptions include 
+1) Muse agents are active 3 out of 24 hours each day 2) Peak capacity usage of about 2x average usage and 3) An additional 20% 
+instance buffer above requirements for peak utilization. For more detail, please see Exhibit 10 in the "Exhibits and Models" section  
+below. 
+ Importantly, too, we believe these costs are already in our model for $209bn of 
+'27 opex  as the CPUs are captured in our $145bn/$225bn of capex in '26/'27 leading 
+to $59bn of '27 D&A.  And our model also includes $26bn of third party compute 
+deals in '27 (vs $17bn in '26), which includes AWS Graviton at an estimated ~$4-5bn 
+(for perspective, we estimate 30mn Graviton cores would cost ~$5.5bn annualized).  
+This again speaks to Meta's competitive advantage with its access to 
+compute...and ability to tactically scale ahead of others.  
+Exhibit 4:
+We estimate 30mn Graviton cores (30mn units of vCPU capacity) 
+would cost Meta ~$6bn on a fully annualized basis
+Source: Company data, Morgan Stanley Research 
+4. How Should We Think About Meta Enterprise Platform Opportunity? Big 
+picture, Meta is working to better address the $25tn global knowledge work 
+economy that we see being digitized and impacted by next generation AI tools.  In 
+effect, Meta is now addressing the $30tn consumer TAM and $25tn enterprise 
+TAM.  This will come through multiple products including Muse for Small Businesses 
+and other WhatsApp/Messenger agentic tools, an enterprise product push, Muse 
+Coding and an eventual comprehensive Meta model API offering (Watermelon and 
+other models).  
+
+M
+ Idea
+Morgan Stanley Research
+5
+Exhibit 5:
+We see Meta's suite of AI products addressing both the $25tn 
+knowledge work and $30tn consumer TAM
+$17
+$4
+$4
+$3
+$3
+$25
+$31
+$0
+$5
+$10
+$15
+$20
+$25
+$30
+$35
+$40
+Retail + Travel
+Autonomous Driving/Rideshare
+Restaurant Delivery
+Advertising
+Logistics
+Wearables
+Knowledge Work
+$ trillions
+Source: Company data, Morgan Stanley Research 
+In some ways, Meta for Enterprise is also designed to fuel META's consumer 
+agentic opportunity because we believe companies' underlying "Web 1.0" 
+architecture needs to evolve to support agent-to-agent interactions. All 
+companies from SMBs to large enterprises will need to build or adopt an agentic 
+interaction layer including MCP/tool interfaces and observability to allow external 
+agents to securely discover and transact with their systems. This presents a large 
+opportunity for META as it builds its Meta Enterprise Platform, giving business 
+customers access to its full suite of agentic tools. Muse pinging websites through 
+browsers and calling human call centers isn't a high-quality, consistent or repeatable 
+experience that will scale. Instead, consumer agents ultimately need a machine-
+native way to interact directly with enterprise systems… and Meta is aiming to help 
+solve this problem. In our view, SMBs are likely going to be easier to penetrate 
+with agentic tools than large enterprises (given large enterprises will likely look 
+for more cross-platform independence), but we expect Meta to work to address all 
+companies...in particular given its recent hire to head Meta Enterprise. 
+What about Monetization? Meta has now launched its Meta One subscription 
+product in the US  and we have shown how charging anywhere from $15-$50/month 
+to businesses and influencers for its latest models, content creation/business 
+management tools, and higher AI limits can scale quickly given the 100mn 
+businesses on Meta Platforms.  We would think of Meta for Enterprise through a 
+similar lens.  
+But Meta Enterprise Platform also represents an opportunity to scale an eventual 
+API business...which as we have shown even assuming 100 MW of allocated API 
+capacity can add 4% (~$1) to '28 EPS.  The models need to be compelling (very low 
+cost, fast, compute capable, etc.) but this at least speaks to the opportunity that 
+META is going after with Watermelon on the horizon. 
+
+M
+ Idea
+6
+Exhibit 6:
+With 100mn businesses on the platform, META's subscription 
+opportunity can scale quickly and is highly accretive to EPS 
+5.4%
+40
+50
+60
+70
+80
+$5
+1.8%
+2.3%
+2.7%
+3.2%
+3.6%
+$10
+3.6%
+4.5%
+5.4%
+6.3%
+7.2%
+$15
+5.4%
+6.8%
+8.2%
+9.5%
+10.9%
+$20
+7.2%
+9.1%
+10.9%
+12.7%
+14.5%
+$25
+9.1%
+11.3%
+13.6%
+15.9%
+18.1%
+190.3%
+40
+50
+60
+70
+80
+$5
+$0.63
+$0.79
+$0.95
+$1.11
+$1.27
+$10
+$1.27
+$1.59
+$1.90
+$2.22
+$2.54
+$15
+$1.90
+$2.38
+$2.85
+$3.33
+$3.81
+$20
+$2.54
+$3.17
+$3.81
+$4.44
+$5.07
+$25
+$3.17
+$3.96
+$4.76
+$5.55
+$6.34
+META $ Upside to '28 EPS from Subscription Revenue 
+Subscriber Monthly ARPU
+Subscribers (mn)
+META % Upside to '28 EPS from Subscription Revenue 
+Subscriber Monthly ARPU
+Subscribers (mn)
+Source: Company data, Morgan Stanley Research 
+Exhibit 7:
+We estimate 100 MW of dedicated API capacity for META's AI models 
+could add 4% upside or ~$1 to '28 EPS
+Source: Company data, Morgan Stanley Research 
+5. What Could Meta and Amazon be Negotiating Across E-Comm and AWS? 
+Amazon is ~40% of the US e-commerce market and at the top of the e-commerce 
+funnel and wants to ensure this remains the case even as horizontal agents emerge. 
+We have detailed AMZN’s sources of leverage in our “5 I's" framework here and 
+here. 
+But merchant of record, controlling the shopper experience (the role and offerings 
+of Prime benefits, retail media, what inventory do people see, upsell opportunities, 
+etc.), and data sharing back to the Muse agent are all important. Any META deal is 
+also particularly unique as 1) It is likely to be the first agentic partnership with 
+
+M
+ Idea
+Morgan Stanley Research
+7
+AMZN that sets a potential precedent structure for others to come and 2) in our 
+view, META needs AMZN’s fulfillment and shipping prowess and AWS for its cloud 
+capacity (CPU and GPU) and model distribution (API access to Watermelon via 
+Bedrock). 
+6. After a Muse-Driven Re-rate to 21X, What are We Focused on For META Shares 
+From Here?  META shares have re-rated to 21X NTM consensus EPS (from 14X 
+before it settled the state AG case), driven largely off of improved sentiment 
+following the release of Muse. We believe today's multiple now largely reflects 
+META's position of strength, with a first mover advantage bringing a free Muse to 
+market and better models on the horizon. That said, further upward multiple 
+revisions will be dependent on 1) user adoption of Muse, 2) commercial behavior on 
+the agent platform and 3) the competitive set of agentic products rolled out by 
+GOOGL/SPCX/privates and others in the space. It is still early in the consumer 
+agentic landscape, and while not our base case, we  would remind investors that 
+META traded at 28X as recently as February 2025, so there is precedent for taking 
+the multiple higher from here even after the recent move if un-contested 
+momentum continues.  On the revision side, we are focused on more durable core 
+engagement and monetization (from GPU enabled machine learning), business 
+messaging/agents, or the API to drive upside.  
+Exhibit 8:
+META now trades at 21X, and we will be looking for further updates on 
+user adoption of Muse and commercial behavior on the platform to re-rate further 
+from here 
+Average: 20.0x
++1 Std Dev: 23.7x
+-1 Std Dev: 16.2x
+6.0x
+10.0x
+14.0x
+18.0x
+22.0x
+26.0x
+30.0x
+Sep-16
+Sep-18
+Sep-20
+Sep-22
+Sep-24
+Sep-26
+META P/E
+Average: 20.0x
+Source: Company data, Morgan Stanley Research 
+
+M
+ Idea
+8
+Key Exhibit and Models  
+Further Logic on Our Cost to Serve Muse... Importantly, we see these figures as a 
+framework rather than a point estimate given limited disclosure around actual user 
+behavior and META’s underlying infrastructure costs as well as the model served at 
+runtime. Our CPU analysis assumes ~10 minutes of provisioned sandbox time per 
+activation (see here) and benchmarks the 2 vCPU/8 GB environment to AWS on-demand 
+pricing, while our GPU analysis applies our existing GB300 infrastructure framework 
+outlined in The Paths to 25-50% GenAI ROIC (27 Jul 2026). We would in turn view our ~
+$37/user base case as more of a ceiling as it assumes META rents all of its CPU sandbox 
+capacity at AWS on-demand pricing for comparable AMD instances. This will likely prove 
+to be conservative as META 1) drives utilization of Muse, 2) negotiates more 3P capacity 
+and 3) brings online and optimizes significant amounts of 1P CPU capacity. This reinforces 
+why we expect META to focus first on building engagement and high-value commercial 
+behaviors before scaling monetization. 
+Exhibit 9:
+Muse Cost to Serve Model
+Demand: free allowance x share consumed
+Weekly allowance (mn tokens)
+100
+100
+100
+100
+100
+100
+(X) Allowance consumed (%)
+1%
+5%
+10%
+25%
+50%
+100%
+(X) Weeks In Year
+52
+52
+52
+52
+52
+52
+(/) Months In Year
+12
+12
+12
+12
+12
+12
+(=) Monthly tokens consumed (mn)
+4
+22
+43
+108
+217
+433
+GPU inference
+GB300 GPUs per 1GW (#)
+410,256
+410,256
+410,256
+410,256
+410,256
+410,256
+(X) Benchmark tokens / second / GPU
+3,500
+3,500
+3,500
+3,500
+3,500
+3,500
+(X) GPU fleet utilization
+75%
+75%
+75%
+75%
+75%
+75%
+(=) 1GW token output (tn tokens/year)
+33,962
+33,962
+33,962
+33,962
+33,962
+33,962
+IT capex per 1GW ($bn)
+$22.8
+$22.8
+$22.8
+$22.8
+$22.8
+$22.8
+(/) IT useful life (years)
+5
+5
+5
+5
+5
+5
+Non-IT capex per 1GW ($bn)
+$16.2
+$16.2
+$16.2
+$16.2
+$16.2
+$16.2
+(/) Non-IT useful life (years)
+15
+15
+15
+15
+15
+15
+(=) IT depreciation per GW per year ($bn)
+$4.55
+$4.55
+$4.55
+$4.55
+$4.55
+$4.55
+(=) Non-IT depreciation per GW per year ($bn)
+$1.08
+$1.08
+$1.08
+$1.08
+$1.08
+$1.08
+(+) Energy + other opex per GW per year ($bn)
+$2
+$2
+$2
+$2
+$2
+$2
+(=) Infrastructure cost per GW per year ($bn)
+$7.63
+$7.63
+$7.63
+$7.63
+$7.63
+$7.63
+Monthly tokens consumed (mn)
+4
+22
+43
+108
+217
+433
+(X) GPU serving cost ($/mn tokens)
+$0.225
+$0.225
+$0.225
+$0.225
+$0.225
+$0.225
+(=) GPU inference cost ($/user/month)
+$0.97
+$4.87
+$9.74
+$24.35
+$48.69
+$97.38
+CPU sandbox – usage and vCPU capacity
+Sessions  / day
+2
+8
+12
+20
+30
+50
+(X) Active days / month
+30
+30
+30
+30
+30
+30
+(=) Sessions / month
+60
+240
+360
+600
+900
+1500
+(X) Active sandbox minutes / session
+10.0
+10.0
+10.0
+10.0
+10.0
+10.0
+(=) VM hours / user / month
+10.0
+40.0
+60.0
+100.0
+150.0
+250.0
+Implied hours per active day
+0.3
+1.3
+2.0
+3.3
+5.0
+8.3
+Implied tokens / session
+72,222
+90,278
+120,370
+180,556
+240,741
+288,889
+VM hours / user / month
+10.0
+40.0
+60.0
+100.0
+150.0
+250.0
+(X) AWS Pricing on AMD Instances ($/hour)
+$0.1217
+$0.1217
+$0.1217
+$0.1217
+$0.1217
+$0.1217
+(=) VM compute at AWS list price ($/month)
+$1.22
+$4.87
+$7.30
+$12.17
+$18.26
+$30.43
+(+) Provisioned storage (GB)
+7.5
+7.5
+7.5
+7.5
+7.5
+7.5
+(X) Storage at AWS list price ($/month)
+$0.60
+$0.60
+$0.60
+$0.60
+$0.60
+$0.60
+(=) CPU sandbox at AWS list price ($/month)
+$1.82
+$5.47
+$7.90
+$12.77
+$18.86
+$31.03
+Total cost to serve per user
+(+) GPU inference ($/month)
+$0.97
+$4.87
+$9.74
+$24.35
+$48.69
+$97.38
+(+) CPU sandbox at cost ($/month)
+$1.82
+$5.47
+$7.90
+$12.77
+$18.86
+$31.03
+(=) Total Cost to Serve ($/user/month)
+$2.79
+$10.34
+$17.64
+$37.12
+$67.55
+$128.41
+Total cost to serve ($/user/year)
+$33
+$124
+$212
+$445
+$811
+$1,541
+Source: Company data, Morgan Stanley Research 
+
+M
+ Idea
+Morgan Stanley Research
+9
+Exhibit 10: We Estimate META Will Build/Rent Capacity for ~600mn vCPUs in '26, 
+Enough to Serve ~1bn DAUs  
+Meta Muse vCPU Capacity Analysis
+Meta vCPU Capacity from '26 AMD Purchases: 
+Assumptions:
+'26 AMD Chip Unit Sales
+10,900,000 MS estimates
+(X) META mix
+20% MS estimates
+(=) META AMD Chip Unit Purchases
+2,180,000
+(X) Cores/CPU
+126 AMD company/CPU Benchmark data
+(X) Threads/Core
+2 AMD company data
+(=) vCPU Capacity from AMD
+549,360,000
+Meta vCPU Capacity from '26 NVDA Vera CPU Purchases: 
+MS Asia Hardware/Semis Rack Estimates
+93,000
+(X) CPUs/Rack
+36
+(=) Vera CPUs in Racks
+3,348,000
+MS Asia Hardware/Semis CoWoS Vera Estimates
+5,750,000
+Remaining non-rack Vera CPUs
+2,402,000
+(X) META mix of remaining CPUs
+15%
+(=) '26 META Implied Unit Purchases
+360,000 MS Asia estimates
+(X) Cores/CPU
+88 NVDA company data
+(X) Threads/Core
+2 NVDA company data
+(=) vCPU Capacity from NVDA
+63,360,000
+Meta vCPU Capacity from '26 AWS Graviton5 Deal:
+Implied Chips
+156,250
+Cores/Chip
+192 AWS company data
+Graviton5 Cores
+30,000,000 MS est. of "tens of millions"
+(X) Threads/Core
+1 AWS company data
+(=) vCPU Capacity from AWS
+30,000,000
+Capacity to Instance/User Math
+Est. META Theoretical CPU Capacity (vCPU-equivalent)
+642,720,000
+(/) Observed vCPUs per Muse instance
+2 META company data
+(=) Muse instance capacity
+321,360,000
+Could Meta Serve 1bn Muse DAUs?
+DAUs
+1,000,000,000
+(x) % agent active hours/day
+12.5% 3 out of 24 hours/day
+(x) Peak Multiplier
+2.0x Ms est. of peak capacity vs. average
+(x) Headroom 
+1.2 MS est. capacity buffer
+(=) Simultaneously Active Instance Capacity
+300,000,000
+% of '26 vCPU capacity purchases 
+93%
+Source: Company data, Morgan Stanley Research Estimates. Note: Estimates for META's Vera CPU capacity bridges to supply chain estimates 
+from our MS Asia Hardware and Semis Research teams. 
+ 
+
+M
+ Idea
+10
+Risk Reward - Amazon.com Inc (AMZN.O)
+$335.00
+Our $335 PT is based on applying a ~25X P/E multiple to an average of our $14 of '27/'28 EPS
+(roll to mid-year), which implies ~28X '27 EPS and ~22X '28 EPS.
+Morgan Stanley Estimates
+Mean
+Consensus Price Target Distribution
+$207.00
+$405.00
+Source: Refinitiv, Morgan Stanley Research
+MS Rating
+▪Amazon's high-margin businesses continue
+to allow Amazon to drive greater
+profitability while still continuing to invest
+(last mile delivery, fulfillment, Prime Now,
+Fresh, Prime digital content, Alexa/Echo,
+India, AWS, etc).
+▪Amazon Prime membership growth drives
+recurring revenue and positive mix shift.
+▪Cloud adoption hitting an inflection point.
+▪Advertising serves as a key area for both
+further growth potential and profitability
+flow-through.
+Consensus Rating Distribution
+97% Overweight
+3%
+Equal-weight
+0%
+Underweight
+Source: Refinitiv, Morgan Stanley Research
+Risk Reward Themes
+Secular Growth:
+Positive
+New Data Era:
+Positive
+Technology Diffusion:
+Positive
+View descriptions of Risk Rewards Themes here
+$410.00
+~27X an average of $15 of bull '27/'28 EPS
+Our Bull case is derived from higher
+Revenue and EBIT margin assumptions than
+in our base case
+$335.00
+~25X an average of $14 of base '27/'28 EPS
+Our $335 PT is based on applying a ~25X
+P/E multiple to an average of our $14 of
+'27/'28 EPS (roll to mid-year), which implies
+~28X '27 EPS and ~22X '28 EPS.
+$215.00
+~17X an average of $12 of bear '27/'28 EPS
+Our Bear case is derived from lower
+Revenue and EBIT margin assumptions than
+in our base case
+Risk Reward – Amazon.com Inc (AMZN.O)
+AMZN Risk Reward
+PRICE TARGET
+MS PT
+$322.42
+RISK REWARD CHART AND OPTIONS IMPLIED PROBABILITIES (12M)
+Key:
+ Historical Stock Performance
+ Current Stock Price
+ Price Target
+Source: Refinitiv, Morgan Stanley Research, Morgan Stanley Institutional Equities Division. The probabilities of our Bull,
+Base, and Bear case scenarios playing out were estimated with implied volatility data from the options market as of 30
+Sep 2026. All figures are approximate risk-neutral probabilities of the stock reaching beyond the scenario price in either
+three-months’ or one-years’ time. View explanation of Options Probabilities methodology here
+$249.15
+$249.15
+$249.15
+$410.00
+$410.00(+64.56%)
+(+64.56%)
+$410.00(+64.56%)
+Prob (>410.00)~4.7%
+Prob (>410.00)~4.7%
+Prob (>410.00)~4.7%
+$215.00
+$215.00(-13.71%)
+(-13.71%)
+$215.00(-13.71%)
+Prob (<215.00)~32.2%
+Prob (<215.00)~32.2%
+Prob (<215.00)~32.2%
+$335.00
+$335.00(+34.46%)
+(+34.46%)
+$335.00(+34.46%)
+Prob (>335.00)~16.7%
+Prob (>335.00)~16.7%
+Prob (>335.00)~16.7%
+SEP '25
+MAR '26
+SEP '26
+SEP '27
+0
+100
+200
+300
+400
+USD
+OVERWEIGHT THESIS
+BULL CASE
+BASE CASE
+BEAR CASE
+
+M
+ Idea
+Morgan Stanley Research
+11
+Drivers
+Dec 2025
+Dec 2026e
+Dec 2027e
+Dec 2028e
+Revenue ($, mm)
+716,924
+833,352
+973,667
+1,134,182
+Gross Profit ($, mm)
+361,287
+433,328
+534,679
+656,405
+GAAP EBIT ($, mm)
+79,975
+116,753
+166,089
+227,300
+Paid Unit Growth (y/y) (%)
+10.8
+12.9
+9.6
+9.1
+AWS Revenue Growth (%)
+19.7
+37.4
+40.8
+36.8
+3/5
+BEST
+24 Month
+Horizon
+2/5
+MOST
+3 Month
+Horizon
+Amazon's high-margin businesses continue to
+allow Amazon to drive greater profitability while
+still continuing to invest
+Cloud is in a multi-decade secular adoption cycle
+Amazon is gaining share in eCommerce/retail
+and share of consumers' wallets
+0-10%
+APAC, ex Japan, Mainland
+China and India
+0-10%
+India
+0-10%
+Japan
+0-10%
+Latin America
+0-10%
+Mainland China
+0-10%
+UK
+10-20% Europe ex UK
+60-70% North America
+Source: Morgan Stanley Research Estimate
+View explanation of regional hierarchies here
+Source: Refinitiv, FactSet, Morgan Stanley Research; 1 is
+the highest favored Quintile and 5 is the least favored
+Quintile
+Inst. Owners, % Active
+55.8%
+HF Sector Long/Short Ratio
+1.8x
+HF Sector Net Exposure
+11.3%
+Refinitiv; MSPB Content. Includes certain hedge fund
+exposures held with MSPB. Information may be
+inconsistent with or may not reflect broader market
+trends. Long/Short Ratio = Long Exposure / Short
+exposure. Sector % of Total Net Exposure = (For a
+particular sector: Long Exposure - Short Exposure) /
+(Across all sectors: Long Exposure – Short Exposure).
+Faster than expected AWS rev growth and
+stable margin expansion
+Faster than expected Retail rev growth, stable
+to expanding 1P Merch Margins
+Greater than expected shipping and fulfillment
+leverage
+Investments step up and continue for longer
+than expected
+Merch margins worse than expected
+AWS revenue decelerates and /or margins
+decline
+Morgan Stanley Estimates
+Mean
+Source: Refinitiv, Morgan Stanley Research
+FY Dec 2026e
+Sales /
+Revenue
+($, mm)
+815,866
+841,977
+EBITDA
+($, mm)
+197,862
+235,567
+Net income
+($, mm)
+96,276
+148,986
+EPS
+($)
+9.00
+13.70
+Risk Reward – Amazon.com Inc (AMZN.O)
+KEY EARNINGS INPUTS
+INVESTMENT DRIVERS
+GLOBAL REVENUE EXPOSURE
+MS ALPHA MODELS
+RISKS TO PT/RATING
+RISKS TO UPSIDE
+RISKS TO DOWNSIDE
+OWNERSHIP POSITIONING
+MS ESTIMATES VS. CONSENSUS
+833,352
+828,763
+224,292
+216,474
+146,557
+138,852
+13.43
+12.86
+
+M
+ Idea
+12
+Risk Reward - Meta Platforms Inc (META.O)
+$775.00
+Our $775 PT is based on applying a ~23X P/E multiple to the average of our $34/$35 EPS in
+'27/'28.
+Morgan Stanley Estimates
+Mean
+Consensus Price Target Distribution
+$580.00
+$1,000.00
+Source: Refinitiv, Morgan Stanley Research
+MS Rating
+▪A Structural Pivot to Focus on Multi-Year
+Efficiency, Productivity and Leaner
+Operations... We think META's "year of
+efficiency" is more than just a 365 day
+change...but rather a structural and cultural
+pivot to operate leaner and with a greater
+focus on investor returns...even through
+investment.  
+▪Importantly, Revenue and Engagement
+Trends Are Also Improving Across META's
+Platform... our industry and company
+conversations speak to progress driving
+incremental Reels engagement and
+monetization...and traction improving ad
+measurement/attribution in the post IDFA
+world. 
+▪3 Underappreciated "Call Options"
+including 1) further AI driven upside, 2)
+subscription adoption and 3) click-to-
+message.
+Consensus Rating Distribution
+89% Overweight
+10% Equal-weight
+2%
+Underweight
+Source: Refinitiv, Morgan Stanley Research
+Risk Reward Themes
+New Data Era:
+Positive
+Self-help:
+Positive
+Technology Diffusion:
+Positive
+View descriptions of Risk Rewards Themes here
+$1,000.00
+Implied ~28x blended '27/'28 P/E
+AI investments drive increased engagement
+and lead to new products/services, which
+supports outsized ad monetization and
+revenue growth. Execution on newer
+offerings (like click to message,
+subscriptions, and Meta Business AI) could
+also contribute to higher than expected
+growth. META could also drive further
+efficiency gains and be more successful in
+closing the Reels monetization gap.
+$775.00
+Implied ~23X base case blended '27/'28 P/E
+Ad revenue grows ~27% in '26 as META's AI
+investments drive incremental Reels
+engagement/monetization and support
+improved performance and ad
+measurement/attribution across the Family
+of Apps. We also see META continuing to
+focus on efficiency and explore new ways to
+monetize META's extensive data center
+capacity.
+$450.00
+Implied ~15x blended '27/'28 P/E
+Declines in engagement and/or evidence of
+Reels monetization ramping more slowly
+than expected could lead to lower growth
+and greater uncertainty. We also watch for
+any macro uncertainty, regulation that limits
+META's ability to target ads, Higher capital
+intensity from mis-execution around the
+data center build widens losses with
+minimal ROIC. Any additional opex and
+capex could weigh on operating income
+growth and FCF.
+Risk Reward – Meta Platforms Inc (META.O) 
+Top Pick
+The Age of Efficiency
+PRICE TARGET
+MS PT
+$789.78
+RISK REWARD CHART AND OPTIONS IMPLIED PROBABILITIES (12M)
+Key:
+ Historical Stock Performance
+ Current Stock Price
+ Price Target
+Source: Refinitiv, Morgan Stanley Research, Morgan Stanley Institutional Equities Division. The probabilities of our Bull,
+Base, and Bear case scenarios playing out were estimated with implied volatility data from the options market as of 30
+Sep 2026. All figures are approximate risk-neutral probabilities of the stock reaching beyond the scenario price in either
+three-months’ or one-years’ time. View explanation of Options Probabilities methodology here
+$725.18
+$725.18
+$725.18
+$1,000.00
+$1,000.00(+37.90%)
+(+37.90%)
+$1,000.00(+37.90%)
+Prob (>1,000.00)~14.4%
+Prob (>1,000.00)~14.4%
+Prob (>1,000.00)~14.4%
+$450.00
+$450.00(-37.95%)
+(-37.95%)
+$450.00(-37.95%)
+Prob (<450.00)~13.7%
+Prob (<450.00)~13.7%
+Prob (<450.00)~13.7%
+$775.00
+$775.00(+6.87%)
+(+6.87%)
+$775.00(+6.87%)
+Prob (>775.00)~35.9%
+Prob (>775.00)~35.9%
+Prob (>775.00)~35.9%
+SEP '25
+MAR '26
+SEP '26
+SEP '27
+0
+300
+600
+900
+1200
+USD
+OVERWEIGHT THESIS
+BULL CASE
+BASE CASE
+BEAR CASE
+
+M
+ Idea
+Morgan Stanley Research
+13
+Drivers
+Dec 2025
+Dec 2026e Dec 2027e Dec 2028e
+Constant Currency % Growth (%)
+22.5
+26.6
+22.2
+19.9
+Operating income (GAAP) ($, mm)
+83,276
+89,133
+103,424
+111,210
+Consolidated Total Daily Active
+Users (mm)
+2,239.9
+2,294.5
+2,344.5
+2,389.2
+3/5
+BEST
+24 Month
+Horizon
+2/5
+MOST
+3 Month
+Horizon
+We are positive on META's structural pivot
+towards efficiency and improving revenue,
+engagement and Reels. We continue to monitor
+META's progress on call options (AI,
+subscriptions, click-to-message) and further
+investment in AI/data centers.
+0-10%
+APAC, ex Japan, Mainland
+China and India
+0-10%
+India
+0-10%
+Japan
+0-10%
+Latin America
+0-10%
+UK
+20-30% Europe ex UK
+40-50% North America
+Source: Morgan Stanley Research Estimate
+View explanation of regional hierarchies here
+Source: Refinitiv, FactSet, Morgan Stanley Research; 1 is
+the highest favored Quintile and 5 is the least favored
+Quintile
+Inst. Owners, % Active
+55.2%
+HF Sector Long/Short Ratio
+2.2x
+HF Sector Net Exposure
+9.9%
+Refinitiv; MSPB Content. Includes certain hedge fund
+exposures held with MSPB. Information may be
+inconsistent with or may not reflect broader market
+trends. Long/Short Ratio = Long Exposure / Short
+exposure. Sector % of Total Net Exposure = (For a
+particular sector: Long Exposure - Short Exposure) /
+(Across all sectors: Long Exposure – Short Exposure).
+Faster than expected Reels monetization &
+higher engagement growth
+Increased benefit from AI investment
+Revenue driven by subscriptions and/or click-to-
+message ads
+Further efficiency improvements drive outsized
+FCF growth
+Macro pressures/weaker consumer spend
+Regulation impacts ability to target ads
+Reality labs losses widen further
+Mis-execution risk could result in higher LT
+capital intensity
+Morgan Stanley Estimates
+Mean
+Source: Refinitiv, Morgan Stanley Research
+FY Dec 2026e
+Sales /
+Revenue
+($, mm)
+251,000
+257,877
+EBITDA
+($, mm)
+106,638
+162,162
+Net income
+($, mm)
+71,742
+93,113
+EPS
+($)
+27.78
+33.65
+Risk Reward – Meta Platforms Inc (META.O)
+KEY EARNINGS INPUTS
+INVESTMENT DRIVERS
+GLOBAL REVENUE EXPOSURE
+MS ALPHA MODELS
+RISKS TO PT/RATING
+RISKS TO UPSIDE
+RISKS TO DOWNSIDE
+OWNERSHIP POSITIONING
+MS ESTIMATES VS. CONSENSUS
+255,888
+254,048
+146,354
+140,768
+82,353
+80,977
+31.80
+31.29
+
+M
+ Idea
+14
+Risk Reward Reference  links
+ 1. View explanation of Options Probabilities methodology -  
+Options_Probabilities_Exhibit_Link.pdf  
+ 2. View descriptions of Risk Rewards Themes -  RR_Themes_Exhibit_Link.pdf  
+ 3. View explanation of regional hierarchies -  GEG_Exhibit_Link.pdf  
+ 4. View explanation of Theme/Exposure methodology -  
+ESG_Sustainable_Solutions_External_Link.pdf  
+ 5. View explanation of HERS methodology -  ESG_HERS_External_Link.pdf  
+
+M
+ Idea
+Morgan Stanley Research
+15
+Disclosure Section
+The information and opinions in Morgan Stanley Research were prepared by Morgan Stanley & Co. LLC, and/or Morgan Stanley C.T.V.M. S.A., and/or Morgan Stanley Mexico, Casa de Bolsa, 
+S.A. de C.V.. As used in this disclosure section, "Morgan Stanley" includes Morgan Stanley & Co. LLC, Morgan Stanley C.T.V.M. S.A., Morgan Stanley Mexico, Casa de Bolsa, S.A. de C.V. and their 
+affiliates as necessary.
+For important disclosures, stock price charts and equity rating histories regarding companies that are the subject of this report, please see the Morgan Stanley Research Disclosure Website 
+at www.morganstanley.com/eqr/disclosures/webapp/generalresearch, or contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research 
+Management), New York, NY, 10036 USA.
+For valuation methodology and risks associated with any recommendation, rating or price target referenced in this research report, please contact the Client Support Team as follows: US/Canada 
++1 800 303-2495; Hong Kong +852 2848-5999; Latin America +1 718 754-5444 (U.S.); London +44 (0)20-7425-8169; Singapore +65 6834-6860; Sydney +61 (0)2-9770-1505; Tokyo +81 
+(0)3-6836-9000.  Alternatively you may contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research Management), New York, NY 10036 USA.
+Analyst Certification
+The following analysts hereby certify that their views about the companies and their securities discussed in this report are accurately expressed and that they have not received and will not 
+receive direct or indirect compensation in exchange for expressing specific recommendations or views in this report: Brian Nowak, CFA.
+.
+Global Research Conflict Management Policy
+Morgan Stanley Research has been published in accordance with our conflict management policy, which is available at www.morganstanley.com/institutional/research/conflictpolicies. A 
+Portuguese version of the policy can be found at www.morganstanley.com.br
+Important Regulatory Disclosures on Subject Companies
+The analyst or strategist (or a household member) identified below owns the following securities (or related derivatives): Gregory Gao - Alphabet Inc.(common or preferred stock), Amazon.com 
+Inc(common or preferred stock), Meta Platforms Inc(common or preferred stock), Reddit Inc(common or preferred stock), Uber Technologies Inc(common or preferred stock).
+As of August 31, 2026, Morgan Stanley beneficially owned 1% or more of a class of common equity securities of the following companies covered in Morgan Stanley Research: Airbnb Inc, Alphabet 
+Inc., Amazon.com Inc, AppLovin Corp, Booking Holdings Inc, Chewy Inc, Criteo SA, DoorDash Inc, DoubleVerify Holdings Inc, Duolingo Inc, eBay Inc, Etsy Inc, Expedia Inc., FIGS, Inc., Grindr Inc., 
+Instacart, Lyft Inc, Match Group Inc, Meta Platforms Inc, Opendoor Technologies Inc, Peloton Interactive, Inc., Pinterest Inc, Reddit Inc, Revolve Group Inc, Roblox Corporation, Take-Two 
+Interactive Software, Trade Desk Inc, Uber Technologies Inc, Unity Software Inc, Yelp Inc, Zillow Group Inc.
+Within the last 12 months, Morgan Stanley managed or co-managed a public offering (or 144A offering) of securities of Airbnb Inc, Alphabet Inc., Amazon.com Inc, Compass, Inc., eBay Inc, Liftoff 
+Mobile Inc., Meta Platforms Inc, Uber Technologies Inc.
+Within the last 12 months, Morgan Stanley has received compensation for investment banking services from Airbnb Inc, Alphabet Inc., Amazon.com Inc, Chewy Inc, DoorDash Inc, eBay Inc, 
+Instacart, Liftoff Mobile Inc., Meta Platforms Inc, Uber Technologies Inc.
+In the next 3 months, Morgan Stanley expects to receive or intends to seek compensation for investment banking services from Airbnb Inc, Alphabet Inc., Amazon.com Inc, AppLovin Corp, Booking 
+Holdings Inc, Bumble Inc., Chewy Inc, Criteo SA, DoorDash Inc, DoubleVerify Holdings Inc, Duolingo Inc, eBay Inc, Etsy Inc, Expedia Inc., FIGS, Inc., Instacart, Liftoff Mobile Inc., Lyft Inc, Match Group 
+Inc, Meta Platforms Inc, MNTN Inc, Opendoor Technologies Inc, Peloton Interactive, Inc., Pinterest Inc, Playtika Holding Corp, Reddit Inc, Revolve Group Inc, Roblox Corporation, Snap Inc., 
+Take-Two Interactive Software, Trade Desk Inc, Uber Technologies Inc, Unity Software Inc, Webtoon Entertainment Inc, Yelp Inc, Zillow Group Inc.
+Within the last 12 months, Morgan Stanley has received compensation for products and services other than investment banking services from Airbnb Inc, Alphabet Inc., Amazon.com Inc, AppLovin 
+Corp, Booking Holdings Inc, Chewy Inc, DoorDash Inc, eBay Inc, Expedia Inc., Instacart, Liftoff Mobile Inc., Match Group Inc, Meta Platforms Inc, Opendoor Technologies Inc, Peloton Interactive, 
+Inc., Pinterest Inc, Playtika Holding Corp, Reddit Inc, Revolve Group Inc, Snap Inc., Take-Two Interactive Software, Uber Technologies Inc, Unity Software Inc, WW International Inc.
+Within the last 12 months, Morgan Stanley has provided or is providing investment banking services to, or has an investment banking client relationship with, the following company: Airbnb 
+Inc, Alphabet Inc., Amazon.com Inc, AppLovin Corp, Booking Holdings Inc, Bumble Inc., Chewy Inc, Compass, Inc., Criteo SA, DoorDash Inc, DoubleVerify Holdings Inc, Duolingo Inc, eBay Inc, Etsy 
+Inc, Expedia Inc., FIGS, Inc., Instacart, Liftoff Mobile Inc., Lyft Inc, Match Group Inc, Meta Platforms Inc, MNTN Inc, Opendoor Technologies Inc, Peloton Interactive, Inc., Pinterest Inc, Playtika 
+Holding Corp, Reddit Inc, Revolve Group Inc, Roblox Corporation, Snap Inc., Take-Two Interactive Software, Trade Desk Inc, Uber Technologies Inc, Unity Software Inc, Webtoon Entertainment 
+Inc, Yelp Inc, Zillow Group Inc.
+Within the last 12 months, Morgan Stanley has either provided or is providing non-investment banking, securities-related services to and/or in the past has entered into an agreement to provide 
+services or has a client relationship with the following company: Airbnb Inc, Alphabet Inc., Amazon.com Inc, AppLovin Corp, Booking Holdings Inc, Chewy Inc, DoorDash Inc, eBay Inc, Etsy Inc, 
+Expedia Inc., Instacart, Liftoff Mobile Inc., Lyft Inc, Match Group Inc, Meta Platforms Inc, Opendoor Technologies Inc, Peloton Interactive, Inc., Pinterest Inc, Playtika Holding Corp, Reddit Inc, 
+Revolve Group Inc, Snap Inc., Take-Two Interactive Software, Uber Technologies Inc, Unity Software Inc, WW International Inc, Zillow Group Inc.
+An employee, director or consultant of Morgan Stanley is a director of eBay Inc. This person is not a research analyst or a member of a research analyst's household.
+Morgan Stanley & Co. LLC makes a market in the securities of DoubleVerify Holdings Inc, FIGS, Inc., Grindr Inc., Playtika Holding Corp, Revolve Group Inc, Webtoon Entertainment Inc, Yelp Inc.
+The equity research analysts or strategists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, including quality 
+of research, investor client feedback, stock picking, competitive factors, firm revenues and overall investment banking revenues. Equity Research analysts' or strategists' compensation is not 
+linked to investment banking or capital markets transactions performed by Morgan Stanley or the profitability or revenues of particular trading desks.
+Morgan Stanley and its affiliates do business that relates to companies/instruments covered in Morgan Stanley Research, including market making, providing liquidity, fund management, 
+commercial banking, extension of credit, investment services and investment banking. Morgan Stanley sells to and buys from customers the securities/instruments of companies covered in 
+Morgan Stanley Research on a principal basis. Morgan Stanley may have a position in the debt of the Company or instruments discussed in this report. Morgan Stanley trades or may trade 
+as principal in the debt securities (or in related derivatives) that are the subject of the debt research report.
+Certain disclosures listed above are also for compliance with applicable regulations in non-US jurisdictions.
+STOCK RATINGS
+Morgan Stanley uses a relative rating system using terms such as Overweight, Equal-weight, Not-Rated or Underweight (see definitions below). Morgan Stanley does not assign ratings of Buy, 
+Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, hold and sell.  Investors should carefully read the definitions of all 
+ratings used in Morgan Stanley Research. In addition, since Morgan Stanley Research contains more complete information concerning the analyst's views, investors should carefully read Morgan 
+
+M
+ Idea
+16
+Stanley Research, in its entirety, and not infer the contents from the rating alone.  In any case, ratings (or research) should not be used or relied upon as investment advice.  An investor's decision 
+to buy or sell a stock should depend on individual circumstances (such as the investor's existing holdings) and other considerations.
+Global Stock Ratings Distribution
+(as of September 30, 2026)
+The Stock Ratings described below apply to Morgan Stanley's Fundamental Equity Research and do not apply to Debt Research produced by the Firm.
+For disclosure purposes only (in accordance with FINRA requirements), we include the category headings of Buy, Hold, and Sell alongside our ratings of Overweight, Equal-weight, Not-Rated 
+and Underweight. Morgan Stanley does not assign ratings of Buy, Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, 
+hold, and sell but represent recommended relative weightings (see definitions below). To satisfy regulatory requirements, we correspond Overweight, our most positive stock rating, with a 
+buy recommendation; we correspond Equal-weight and Not-Rated to hold and Underweight to sell recommendations, respectively.
+Coverage Universe
+Investment Banking Clients (IBC)
+Other Material Investment Services 
+Clients (MISC)
+Stock Rating 
+Category
+Count
+% of  Total
+Count
+% of  Total IBC
+% of Rating  
+Category
+Count
+% of Total Other 
+MISC
+Overweight/Buy
+1599
+43%
+455
+48%
+28%
+783
+44%
+Equal-weight/Hold
+1563
+42%
+394
+42%
+25%
+763
+43%
+Not-Rated/Hold
+2
+0%
+1
+0%
+50%
+1
+0%
+Underweight/Sell
+570
+15%
+96
+10%
+17%
+227
+13%
+Total
+3,734
+946
+1774
+Data include common stock and ADRs currently assigned ratings. Investment Banking Clients are companies from whom Morgan Stanley received investment banking compensation in the 
+last 12 months. Due to rounding off of decimals, the percentages provided in the "% of total" column may not add up to exactly 100 percent.
+Analyst Stock Ratings
+Overweight (O). The stock's total return is expected to exceed the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Equal-weight (E). The stock's total return is expected to be in line with the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over 
+the next 12-18 months.
+Not-Rated (NR). Currently the analyst does not have adequate conviction about the stock's total return relative to the average total return of the analyst's industry (or industry team's) coverage 
+universe, on a risk-adjusted basis, over the next 12-18 months.
+Underweight (U). The stock's total return is expected to be below the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Unless otherwise specified, the time frame for price targets included in Morgan Stanley Research is 12 to 18 months.
+Analyst Industry Views
+Attractive (A): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be attractive vs. the relevant broad market benchmark, as indicated 
+below.
+In-Line (I): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be in line with the relevant broad market benchmark, as indicated below.
+Cautious (C): The analyst views the performance of his or her industry coverage universe over the next 12-18 months with caution vs. the relevant broad market benchmark, as indicated below.
+Benchmarks for each region are as follows: North America - S&P 500; Latin America - relevant MSCI country index or MSCI Latin America Index; Europe - MSCI Europe; Japan - TOPIX; Asia - 
+relevant MSCI country index or MSCI sub-regional index or MSCI AC Asia Pacific ex Japan Index.
+Stock Price, Price Target and Rating History (See Rating Definitions)
+
+M
+ Idea
+Morgan Stanley Research
+17
+
+M
+ Idea
+18
+Important Disclosures for Morgan Stanley Smith Barney LLC Customers
+Important disclosures regarding any material conflict of interest that can reasonably be expected to have influenced Morgan Stanley Smith Barney LLC's choice of a third-party research provider 
+or the subject company of a third-party research report, are available on the Morgan Stanley Wealth Management disclosure website at www.morganstanley.com/online/researchdisclosures. 
+For Morgan Stanley specific disclosures, you may refer to https://www.morganstanley.com/eqr/disclosures/webapp/generalresearch.
+Each Morgan Stanley research report is reviewed and approved on behalf of Morgan Stanley Smith Barney LLC. This review and approval is conducted by the same person who reviews the 
+research report on behalf of Morgan Stanley. This could create a conflict of interest.
+Other Important Disclosures
+A member of Research who had or could have had access to the research prior to completion owns securities (or related derivatives) in the Alphabet Inc., Amazon.com Inc, Booking Holdings 
+Inc, Meta Platforms Inc, Uber Technologies Inc. This person is not a research analyst or a member of research analyst's household.
+Morgan Stanley Research policy is to update research reports as and when the Research Analyst and Research Management deem appropriate, based on developments with the issuer, the 
+sector, or the market that may have a material impact on the research views or opinions stated therein. In addition, certain Research publications are intended to be updated on a regular periodic 
+basis  (weekly/monthly/quarterly/annual) and will ordinarily be updated with that frequency, unless  the Research Analyst and Research Management determine that a different publication 
+schedule is appropriate based on current conditions.
+Morgan Stanley is not acting as a municipal advisor and the opinions or views contained herein are not intended to be, and do not constitute, advice within the meaning of Section 975 of the 
+Dodd-Frank Wall Street Reform and Consumer Protection Act.
+Morgan Stanley produces an equity research product called a "Tactical Idea." Views contained in a "Tactical Idea" on a particular stock may be contrary to the recommendations or views expressed 
+in research on the same stock. This may be the result of differing time horizons, methodologies, market events, or other factors. For all research available on a particular stock, please contact 
+your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Morgan Stanley Research is provided to our clients through our proprietary research portal on Matrix and also distributed electronically by Morgan Stanley to clients. Certain, but not all, Morgan 
+Stanley Research products are also made available to clients through third-party vendors or redistributed to clients through alternate electronic means as a convenience. For access to all 
+available Morgan Stanley Research, please contact your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Any access and/or use of Morgan Stanley Research is subject to Morgan Stanley's Terms of Use (http://www.morganstanley.com/terms.html). By accessing and/or using Morgan Stanley 
+Research, you are indicating that you have read and agree to be bound by our Terms of Use (http://www.morganstanley.com/terms.html). In addition you consent to Morgan Stanley processing 
+your personal data and using cookies in accordance with our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html), including for the purposes of 
+setting your preferences and to collect readership data so that we can deliver better and more personalized service and products to you. To find out more information about how Morgan Stanley 
+processes personal data, how we use cookies and how to reject cookies see our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html). Please use 
+the provided link to review the Terms and Conditions and Most Important Terms and Conditions for Morgan Stanley India Company Private Limited (https://www.morganstanley.com/assets/
+pdfs/about-us-global-offices/india/Terms_and_conditions.pdf) and the following link to review the audit report (https://ny.matrix.ms.com/eqr/research/webapp/researchdocs/
+MSICPL_Morgan_Stanley_Research_Audit_Report.pdf).
+If you do not agree to our Terms of Use and/or if you do not wish to provide your consent to Morgan Stanley processing your personal data or using cookies please do not access our research.
+Morgan Stanley Research does not provide individually tailored investment advice. Morgan Stanley Research has been prepared without regard to the circumstances and objectives of those 
+who receive it. Morgan Stanley recommends that investors independently evaluate particular investments and strategies, and encourages investors to seek the advice of a financial adviser. 
+The appropriateness of an investment or strategy will depend on an investor's circumstances and objectives. The securities, instruments, or strategies discussed in Morgan Stanley Research 
+may not be suitable for all investors, and certain investors may not be eligible to purchase or participate in some or all of them. Morgan Stanley Research is not an offer to buy or sell or the 
+solicitation of an offer to buy or sell any security/instrument or to participate in any particular trading strategy. The value of and income from your investments may vary because of changes 
+in interest rates, foreign exchange rates, default rates, prepayment rates, securities/instruments prices, market indexes, operational or financial conditions of companies or other factors. There 
+may be time limitations on the exercise of options or other rights in securities/instruments transactions. Past performance is not necessarily a guide to future performance. Estimates of future 
+performance are based on assumptions that may not be realized. If provided, and unless otherwise stated, the closing price on the cover page is that of the primary exchange for the subject 
+company's securities/instruments.
+The fixed income research analysts, strategists or economists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, 
+including quality, accuracy and value of research, firm profitability or revenues (which include fixed income trading and capital markets profitability or revenues), client feedback and competitive 
+factors. Fixed Income Research analysts', strategists' or economists' compensation is not linked to investment banking or capital markets transactions performed by Morgan Stanley or the 
+profitability or revenues of particular trading desks.
+The "Important Regulatory Disclosures on Subject Companies" section in Morgan Stanley Research lists all companies mentioned where Morgan Stanley owns 1% or more of a class of common 
+equity securities of the companies.  For all other companies mentioned in Morgan Stanley Research, Morgan Stanley may have an investment of less than 1% in securities/instruments or 
+derivatives of securities/instruments of companies and may trade them in ways different from those discussed in Morgan Stanley Research. Employees of Morgan Stanley not involved in the 
+preparation of Morgan Stanley Research may have investments in securities/instruments or derivatives of securities/instruments of companies mentioned and may trade them in ways different 
+from those discussed in Morgan Stanley Research. Derivatives may be issued by Morgan Stanley or associated persons.
+With the exception of information regarding Morgan Stanley, Morgan Stanley Research is based on public information. Morgan Stanley makes every effort to use reliable, comprehensive 
+information, but we make no representation that it is accurate or complete.  We have no obligation to tell you when opinions or information in Morgan Stanley Research change apart from 
+when we intend to discontinue equity research coverage of a subject company. Facts and views presented in Morgan Stanley Research have not been reviewed by, and may not reflect information 
+known to, professionals in other Morgan Stanley business areas, including investment banking personnel.
+Morgan Stanley Research personnel may participate in company events such as site visits and are generally prohibited from accepting payment by the company of associated expenses unless 
+pre-approved by authorized members of Research management.
+Morgan Stanley may make investment decisions that are inconsistent with the recommendations or views in this report.
+To our readers based in Taiwan or trading in Taiwan securities/instruments: Information on securities/instruments that trade in Taiwan is distributed by Morgan Stanley Taiwan Limited ("MSTL"). 
+Such information is for your reference only.  The reader should independently evaluate the investment risks and is solely responsible for their investment decisions.  Morgan Stanley Research 
+may not be distributed to the public media or quoted or used by the public media without the express written consent of Morgan Stanley.  Any non-customer reader within the scope of Article 
+7-1 of the Taiwan Stock Exchange Recommendation Regulations accessing and/or receiving Morgan Stanley Research is not permitted to provide Morgan Stanley Research to any third party 
+(including but not limited to related parties, affiliated companies and any other third parties) or engage in any activities regarding Morgan Stanley Research which may create or give the 
+
+M
+ Idea
+Morgan Stanley Research
+19
+appearance of creating a conflict of interest. Information on securities/instruments that do not trade in Taiwan is for informational purposes only and is not to be construed as a recommendation 
+or a solicitation to trade in such securities/instruments.  MSTL may not execute transactions for clients in these securities/instruments.
+Morgan Stanley is not incorporated under PRC law and the research in relation to this report is conducted outside the PRC.  Morgan Stanley Research does not constitute an offer to sell or 
+the solicitation of an offer to buy any securities in the PRC.  PRC investors shall have the relevant qualifications to invest in such securities and shall be responsible for obtaining all relevant 
+approvals, licenses, verifications and/or registrations from the relevant governmental authorities themselves. Neither this report nor any part of it is intended as, or shall constitute, provision 
+of any consultancy or advisory service of securities investment as defined under PRC law. Such information is provided for your reference only.
+Morgan Stanley Research is disseminated in Brazil by Morgan Stanley C.T.V.M. S.A. located at Av. Brigadeiro Faria Lima, 3600, 6th floor, São Paulo - SP, Brazil; and is regulated by the Comissão 
+de Valores Mobiliários; in Mexico by Morgan Stanley México, Casa de Bolsa, S.A. de C.V which is regulated by Comision Nacional Bancaria y de Valores. Paseo de los Tamarindos 90, Torre 1, 
+Col. Bosques de las Lomas Floor 29, 05120 Mexico City; in Japan by Morgan Stanley MUFG Securities Co., Ltd. and, for Commodities related research reports only, Morgan Stanley Capital Group 
+Japan Co., Ltd; in Hong Kong by Morgan Stanley Asia Limited (which accepts responsibility for its contents) and by Morgan Stanley Bank Asia Limited; in Singapore by Morgan Stanley Asia 
+(Singapore) Pte. (Registration number 199206298Z) and/or Morgan Stanley Asia (Singapore) Securities Pte Ltd (Registration number 200008434H), regulated by the Monetary Authority of 
+Singapore (which accepts legal responsibility for its contents and should be contacted with respect to any matters arising from, or in connection with, Morgan Stanley Research) and by Morgan 
+Stanley Bank Asia Limited, Singapore Branch (Registration number T14FC0118J); in Australia to "wholesale clients" within the meaning of the Australian Corporations Act by Morgan Stanley 
+Australia Limited A.B.N. 67 003 734 576, holder of Australian financial services license No. 233742, which accepts responsibility for its contents; in Australia to "wholesale clients" and "retail 
+clients" within the meaning of the Australian Corporations Act by Morgan Stanley Wealth Management Australia Pty Ltd (A.B.N. 19 009 145 555, holder of Australian financial services license 
+No. 240813, which accepts responsibility for its contents; in Korea by Morgan Stanley & Co International plc, Seoul Branch; in India by Morgan Stanley India Company Private Limited having 
+Corporate Identification No (CIN) U22990MH1998PTC115305, regulated by the Securities and Exchange Board of India (“SEBI”) and holder of licenses as a Research Analyst (SEBI Registration 
+No. INH000001105); Stock Broker (SEBI Stock Broker Registration No. INZ000244438), Merchant Banker (SEBI Registration No. INM000011203), and depository participant with National 
+Securities Depository Limited (SEBI Registration No. IN-DP-NSDL-567-2021) having registered office at Altimus, Level 39 & 40, Pandurang Budhkar Marg, Worli, Mumbai 400018, India; 
+Telephone no. +91-22-61181000; Compliance Officer Details: Mr. Tejarshi Hardas, Tel. No.: +91-22-61181000 or Email: tejarshi.hardas@morganstanley.com; Grievance officer details: Mr. Tejarshi 
+Hardas, Tel. No.: +91-22-61181000 or Email: msic-compliance@morganstanley.com. Morgan Stanley India Company Private Limited (MSICPL) may use AI tools in providing research services. 
+All recommendations contained herein are made by the duly qualified research analysts; in Germany and the European Economic Area where required by Morgan Stanley Europe S.E., authorised 
+and regulated by Bundesanstalt fuer Finanzdienstleistungsaufsicht (BaFin) under the reference number 149169; in the US by Morgan Stanley & Co. LLC, which accepts responsibility for its 
+contents. Morgan Stanley & Co. International plc, authorized by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority, 
+disseminates in the UK research that it has prepared, and research which has been prepared by any of its affiliates, only to persons who (i) are investment professionals falling within Article 
+19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (as amended, the “Order”); (ii) are persons who are high net worth entities falling within Article 49(2)(a) 
+to (d) of the Order; or (iii) are persons to whom an invitation or inducement to engage in investment activity (within the meaning of section 21 of the Financial Services and Markets Act 2000, 
+as amended) may otherwise lawfully be communicated or caused to be communicated. RMB Morgan Stanley Proprietary Limited is a member of the JSE Limited and A2X (Pty) Ltd. RMB Morgan 
+Stanley Proprietary Limited is a joint venture owned equally by Morgan Stanley International Holdings Inc. and RMB Investment Advisory (Proprietary) Limited, which is wholly owned by 
+FirstRand Limited. Morgan Stanley Research is disseminated in Canada by Morgan Stanley Canada Limited and Morgan Stanley Wealth Management Canada Inc., members of the Canadian 
+Investment Regulatory Organization (CIRO). The information in Morgan Stanley Research is being disseminated by Morgan Stanley Saudi Arabia, regulated by the Capital Market Authority in 
+the Kingdom of Saudi Arabia, and is directed at Sophisticated investors only.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (DIFC Branch), regulated by the Dubai Financial Services Authority (the DFSA) 
+or by Morgan Stanley & Co. International plc (ADGM Branch), regulated by the Financial Services Regulatory Authority Abu Dhabi (the FSRA), and is directed at Professional Clients only, as 
+defined by the DFSA or the FSRA, respectively. The financial products or financial services to which this research relates will only be made available to a customer who we are satisfied meets 
+the regulatory criteria of a Professional Client. A distribution of the different MS Research ratings or recommendations, in percentage terms for Investments in each sector covered, is available 
+upon request from your sales representative.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (QFC Branch), regulated by the Qatar Financial Centre Regulatory Authority 
+(the QFCRA), and is directed at business customers and market counterparties only and is not intended for Retail Customers as defined by the QFCRA.
+As required by the Capital Markets Board of Turkey, investment information, comments and recommendations stated here, are not within the scope of investment advisory activity. Investment 
+advisory service is provided exclusively to persons based on their risk and income preferences by the authorized firms. Comments and recommendations stated here are general in nature. These 
+opinions may not fit to your financial status, risk and return preferences. For this reason, to make an investment decision by relying solely to this information stated here may not bring about 
+outcomes that fit your expectations.
+The trademarks and service marks contained in Morgan Stanley Research are the property of their respective owners. Third-party data providers make no warranties or representations relating 
+to the accuracy, completeness, or timeliness of the data they provide and shall not have liability for any damages relating to such data. The Global Industry Classification Standard (GICS) was 
+developed by and is the exclusive property of MSCI and S&P.
+Morgan Stanley Research, or any portion thereof may not be reprinted, sold or redistributed without the written consent of Morgan Stanley.
+Indicators and trackers referenced in Morgan Stanley Research may not be used as, or treated as, a benchmark under Regulation EU 2016/1011, or any other similar framework.
+The issuers and/or fixed income products recommended or discussed in certain fixed income research reports may not be continuously followed. Accordingly, investors should regard those 
+fixed income research reports as providing stand-alone analysis and should not expect continuing analysis or additional reports relating to such issuers and/or individual fixed income products.
+Morgan Stanley may hold, from time to time, material financial and commercial interests regarding the company subject to the Research report.
+Registration granted by SEBI and certification from the National Institute of Securities Markets (NISM) in no way guarantee performance 
+of the intermediary or provide any assurance of returns to investors. Investment in securities market are subject to market risks. Read 
+all the related documents carefully before investing.
+References to any prediction market or event contract do not constitute an offer, solicitation, recommendation, or endorsement to participate in any such market or contract. Morgan Stanley 
+Research may not be distributed or made available in any jurisdiction where such distribution would be unlawful or otherwise prohibited by applicable law.
+INDUSTRY COVERAGE: Internet
+
+M
+ Idea
+20
+Company (Ticker)
+Rating (As Of)
+Price* (09/30/2026)  
+Brian Nowak, CFA
+Alphabet Inc. (GOOGL.O)  
+O  (08/11/2015)  
+$344.08
+Amazon.com Inc (AMZN.O)  
+O  (04/24/2015)  
+$249.15
+DoorDash Inc (DASH.O)  
+O  (02/21/2024)  
+$183.55
+Instacart (CART.O)  
+E  (01/29/2024)  
+$43.12
+Lyft Inc (LYFT.O)  
+E  (10/24/2019)  
+$15.01
+Meta Platforms Inc (META.O)  
+O  (03/20/2023)  
+$725.18
+Pinterest Inc (PINS.N)  
+O  (07/20/2025)  
+$18.89
+Reddit Inc (RDDT.N)  
+O  (12/08/2024)  
+$142.44
+Snap Inc. (SNAP.N)  
+E  (07/22/2024)  
+$5.40
+Uber Technologies Inc (UBER.N)  
+++
+$68.51
+Matthew Cost
+Airbnb Inc (ABNB.O)  
+E  (09/16/2026)  
+$160.65
+AppLovin Corp (APP.O)  
+O  (04/10/2025)  
+$290.43
+Booking Holdings Inc (BKNG.O)  
+O  (02/23/2026)  
+$162.91
+Compass, Inc. (COMP.N)  
+E  (01/12/2026)  
+$8.88
+Criteo SA (CRTO.O)  
+E  (01/26/2016)  
+$15.20
+DoubleVerify Holdings Inc (DV.N)  
+E  (06/25/2024)  
+$13.49
+Expedia Inc. (EXPE.O)  
+U  (09/16/2026)  
+$263.36
+Liftoff Mobile Inc. (LFTO.O)  
+E  (06/29/2026)  
+$15.80
+MNTN Inc (MNTN.N)  
+E  (06/16/2025)  
+$10.17
+Opendoor Technologies Inc (OPEN.O)  
+E  (07/24/2023)  
+$2.37
+Playtika Holding Corp (PLTK.O)  
+E  (11/27/2022)  
+$2.14
+Roblox Corporation (RBLX.N)  
+O  (11/04/2024)  
+$42.37
+Take-Two Interactive Software (TTWO.O)  
+O  (02/01/2018)  
+$207.50
+Trade Desk Inc (TTD.O)  
+E  (09/10/2025)  
+$12.17
+Unity Software Inc (U.N)  
+O  (09/02/2024)  
+$40.93
+Webtoon Entertainment Inc (WBTN.O)  
+E  (07/22/2024)  
+$10.79
+Yelp Inc (YELP.N)  
+U  (01/10/2019)  
+$18.50
+Zillow Group Inc (Z.O)  
+E  (04/18/2018)  
+$27.13
+Nathan Feather
+Bumble Inc. (BMBL.O)  
+E  (03/08/2021)  
+$2.63
+Chewy Inc (CHWY.N)  
+O  (10/31/2023)  
+$18.20
+Duolingo Inc (DUOL.O)  
+E  (02/27/2026)  
+$142.40
+eBay Inc (EBAY.O)  
+O  (04/18/2024)  
+$106.05
+Etsy Inc (ETSY.N)  
+E  (07/20/2025)  
+$71.49
+FIGS, Inc. (FIGS.N)  
+E  (02/29/2024)  
+$13.86
+Grindr Inc. (GRND.N)  
+O  (07/01/2026)  
+$15.43
+Match Group Inc (MTCH.O)  
+E  (04/18/2024)  
+$40.15
+Peloton Interactive, Inc. (PTON.O)  
+U  (09/08/2026)  
+$4.99
+Revolve Group Inc (RVLV.N)  
+E  (10/20/2024)  
+$21.33
+WW International Inc (WW.O)  
+E  (08/01/2025)  
+$15.46
+Stock Ratings are subject to change. Please see latest research for each company.
+* Historical prices are not split adjusted.
+© 2026 Morgan Stanley
