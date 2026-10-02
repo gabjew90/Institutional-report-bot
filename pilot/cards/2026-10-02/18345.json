@@ -1,0 +1,25 @@
+{
+ "brief": "Extraction failure: the source text file for this document (Citi, \"Digital Asset Take: Forecast update - Sentiment boosted by debasement fears and agency regulation\", 30 Sep 2026) contains no extracted text, only blank lines. No content is available to compress into a brief or to support claim cards. This is not a document that was read and found to have no checkable claims; it is a document that was never successfully extracted, so nothing here should be treated as a summary of its argument.",
+ "cards": [],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18345__digital-asset-take-forecast-update-sentiment-boosted-by-deba.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 0,
+  "matched": 0,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 0,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
