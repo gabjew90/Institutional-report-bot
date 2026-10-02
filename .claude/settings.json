@@ -23,6 +23,31 @@
     "frontend-design@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true
   },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/session_sync.py start || python scripts/session_sync.py start || exit 0",
+            "timeout": 90
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/session_sync.py stop || python scripts/session_sync.py stop || exit 0",
+            "timeout": 90
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(git push:*)"
