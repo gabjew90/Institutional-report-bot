@@ -1,0 +1,201 @@
+{
+ "brief": "The Russell 2000 has been hit hard by the rates shock, but the setup for a reversal is improving. The index is sitting on major support near its 200-day moving average, the same level where the last undershoot preceded a strong rally. Positioning has been washed out: Goldman's Robert Quinn finds non-dealers bought about $3bn of Russell 2k futures between September 1 and 22, mostly asset managers ($2.2bn), after entering September at a multi-year-low starting point. Small-cap volatility (RVX) has risen only modestly relative to VXN despite the scale of the selloff, showing little panic. The reversal case hinges on rates: the 30-year yield jumped from 5.25% to 5.69% in seven sessions and bond Daily Sentiment collapsed to 10%, leading BTIG, previously positioned for higher yields, to now see rising risk of a sharp tactical reversal lower. BTIG argues this would not necessarily rescue tech; instead it could flip the QQQ/IWM relationship, producing better breadth and stronger small caps while the Mag 7 and QQQ move lower.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "The Russell 2000 is trading right at a major trend line near its 200-day moving average.",
+   "anchor": "The Russell is trading right on the huge trend line, around the 200-day moving average.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "The last time the Russell 2000 undershot its 200-day moving average, it marked a great buying opportunity.",
+   "anchor": "The last time we undershot the 200-day, it turned out to be a great buying opportunity.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "Non-dealers bought around $3bn of Russell 2000 futures between September 1 and September 22.",
+   "anchor": "non-dealers bought around $3bn of Russell 2k futures between September 1 and 22",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "Asset managers accounted for $2.2bn of the non-dealer Russell 2000 futures buying, with smaller participation from hedge funds and non-reportables.",
+   "anchor": "Asset managers dominated the buying with $2.2bn, with smaller participation from hedge funds and non-reportables.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "Non-dealer Russell 2000 positioning entered September at a multi-year low.",
+   "anchor": "non-dealer positioning entered September at a multi-year low",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "The 30-year Treasury yield rose from 5.25% to 5.69% in seven trading sessions.",
+   "anchor": "The 30-year has gone from 5.25% to 5.69% in just seven sessions",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "Bond Daily Sentiment has collapsed to 10% amid the rates selloff.",
+   "anchor": "bond Daily Sentiment has collapsed to 10%",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "BTIG, which had been looking for higher yields for months, now sees increasing risk of a sharp tactical reversal lower in yields.",
+   "anchor": "BTIG, which has been looking for higher yields for months, now sees increasing risk of a sharp tactical reversal lower.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "A possible reversal in the 10-year yield could quickly feed through to small caps catching a bid.",
+   "anchor": "A possible reversal in the 10-year could quickly feed through to small caps catching a bid.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "forecast",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "BTIG argues that a reversal lower in yields may not necessarily rescue tech.",
+   "anchor": "BTIG argues that a reversal lower in yields may not necessarily rescue tech.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "A reversal lower in yields could instead trigger a reversal in the QQQ/IWM relationship, with better breadth and stronger small caps while the Mag 7 and QQQ move lower.",
+   "anchor": "That could mean better breadth and stronger small caps while QQQ and Mag 7 actually move lower.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "forecast",
+   "instruments": [
+    "QQQ",
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Smart Money Is Buying Small Caps",
+   "claim": "Russell 2000 volatility (RVX) has risen only modestly despite the scale of the small-cap selloff, showing surprisingly little panic relative to VXN.",
+   "anchor": "For a market down this much, the vol market is showing surprisingly little panic.",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18327__smart-money-is-buying-small-caps.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 12,
+  "matched": 12,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
