@@ -1,0 +1,578 @@
+{
+ "brief": "Monthly GS cross-sector desk sentiment survey (TMT, Financials, Healthcare, Consumer, Industrials, Energy, Special Situations), no single thesis. TMT: September's biggest inflection was META's best month since July 2013 on Muse-driven product momentum, plus a trending Inference Economy theme (capex/asset-light AI plays via data infra and cyber). Q3 hyperscaler earnings and cloud margins are next catalysts. Financials: higher rates hit capital markets activity. Bank earnings (10/13) and the October FOMC are next. Healthcare: TMO's long-range-plan walkthrough at a competitor conference was the key inflection. Consumer: sentiment turned more negative on European-exposed apparel names and on low-income consumers given a widening K-shaped economy, per feedback at GS's Retail conference, while cruise bookings strengthened. Core consumer stocks have stayed largely immune to agentic-AI pressure, which instead hit internet names, financials and business services. Industrials: the sector fell to 1- and 5-year lows versus the market as AI/data-center, short-cycle, aerospace and transport sentiment soured. Conference commentary from JBHT, CARR and LECO flags price/cost as a widening Q3 headwind. Energy: refiners screen bullish on 3Q revisions but specialists are cautious on diesel-export-ban risk. Special situations: MGM is reportedly now pursuing PPLI, a day after PPLI dropped its own $48.30-per-share bid for MGM.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "META notched its best month of performance since July 2013, with product momentum accelerating via its Muse product.",
+   "anchor": "META notched its best month of performance since July \u201813 with product momentum accelerating via Muse",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS TMT desk says the Inference Economy, framed as capex and asset-light ways to play continued AI proliferation such as data infrastructure names and cyber, continued trending as a topic through September.",
+   "anchor": "Inference Economy continued to trend as a topic across the month",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS TMT desk says Q3 earnings kicking off toward month-end, with hyperscaler revenues and cloud margins in focus, is the key catalyst for the broader AI trade next month.",
+   "anchor": "Q3 earnings kick-off toward month-end & watching revenues + cloud margins at the Hyperscalers for broader AI Trade",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS TMT desk flags SEMICON West on October 13-15 and NVDA's GTC Berlin event on October 20-22 as catalysts for the sector next month.",
+   "anchor": "SEMICON West (10/13-15) & NVDA GTC Berlin (10/20-22)",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS TMT desk's 14-day RSI screen shows INTU, BILL, TTWO, ZG, COMP, CHTR, NU, TTD, TCOM and PAYX as technically oversold.",
+   "anchor": "Oversold: INTU, BILL, LFTO, TTWO, ZG, COMP, CHTR, NU, TTD, TCOM, PAYX",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "level",
+   "instruments": [
+    "INTU",
+    "BILL",
+    "TTWO",
+    "ZG",
+    "COMP",
+    "CHTR",
+    "NU",
+    "TTD",
+    "TCOM",
+    "PAYX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS TMT desk's 14-day RSI screen shows DDOG, TWLO, OKTA, DT, META, ASML, AMD and TSM as technically overbought.",
+   "anchor": "Overbought: DDOG, TWLO, OKTA, DT, META, ASML, AMD, TSM",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "level",
+   "instruments": [
+    "DDOG",
+    "TWLO",
+    "OKTA",
+    "DT",
+    "META",
+    "ASML",
+    "AMD",
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS TMT desk says the debate over whether SemiCap, Memory, or both segments can work from current levels is among the most topical in the sector.",
+   "anchor": "SemiCap v Memory (can either \u2013 or both \u2013 work?)",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk reports more negative sentiment on companies with heavy European exposure, especially in apparel, as a key September inflection.",
+   "anchor": "More negative sentiment on companies with heavy European exposure, especially those in apparel",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk reports more negative sentiment on the low-income consumer, following comments at the GS Retail conference about a widening K-shaped economy.",
+   "anchor": "sentiment on the low-income consumer, following comments from companies at our GS Retail conference about the widening K-economy",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk notes strength in cruise travel bookings in September despite geopolitical and macro concerns.",
+   "anchor": "Strength in cruise travel bookings, despite geopolitical and macro concerns",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk flags negative sentiment on RL as a quality name with European exposure.",
+   "anchor": "Negative sentiment on quality European exposed names (RL)",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [
+    "RL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk says there is a more structural debate on why off-price trends at TJX and BURL are not better.",
+   "anchor": "More structural debate on why off-price trends (TJX, BURL) are not better",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [
+    "TJX",
+    "BURL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk says core consumer stock prices have been largely immune to the recent pressure from the agentic AI theme.",
+   "anchor": "Core consumer stock prices have actually been somewhat immune to the very recent pressures of this theme",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk says weakness from the agentic AI theme has been more concentrated in internet names, pockets of financials and business services.",
+   "anchor": "Weakness has been more concentrated in internet, pockets of Fins and business services",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Consumer desk says high frequency data remains the single largest correlation to changes in consumer stock direction, citing recent improvement at BURL, GAP and AEO.",
+   "anchor": "High frequency data remains the single largest correlation to changes in stock direction (recent improvement at BURL, GAP, AEO, etc)",
+   "topic": "Consumer sentiment and K-economy divergence",
+   "status": "released",
+   "instruments": [
+    "BURL",
+    "GAP",
+    "AEO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Industrials desk says the sector inflected lower broadly in September and is trading at 1- and 5-year lows relative to the broader market.",
+   "anchor": "Industrials inflected lower broadly and are trading at 1 and 5 year lows vs. the broader market",
+   "topic": "Industrials sentiment and price-cost headwinds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Industrials desk says sentiment has soured across previously popular areas including AI/data center, short cycle, aerospace and transports.",
+   "anchor": "Sentiment has soured across all the previously popular areas including AI/data center, short cycle, aerospace and transports",
+   "topic": "Industrials sentiment and price-cost headwinds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Industrials desk says updates from JBHT, CARR and LECO during conference season suggest price and cost pressure could be a widespread headwind versus prior thinking heading into Q3.",
+   "anchor": "JBHT CARR LECO to name a few during conference season suggesting price / cost could be a widespread headwind vs. prior thinking in Q3",
+   "topic": "Industrials sentiment and price-cost headwinds",
+   "status": "forecast",
+   "instruments": [
+    "JBHT",
+    "CARR",
+    "LECO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Industrials desk flags ISM, truck orders and auto sales as the next new data points for the sector.",
+   "anchor": "New data points \u2013 ISM, truck orders, auto sales",
+   "topic": "Industrials sentiment and price-cost headwinds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Industrials desk says Q3 earnings will be a battle between topline strength and price and cost headwinds amid macro uncertainty that has risen dramatically in recent months.",
+   "anchor": "Q3 earnings where the battle becomes topline strength vs. price/cost headwinds and macro uncertainty that has risen dramatically in recent months",
+   "topic": "Industrials sentiment and price-cost headwinds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Energy desk says refiners' third-quarter earnings revisions screen bullish, but more specialists are tilting cautious on valuation given potential policy controls and demand destruction with diesel prices at highs.",
+   "anchor": "3Q revisions screen bullish, though more specialists tilting cautious on valuation, potential for policy controls and demand destruction with diesel at highs",
+   "topic": "Energy refining sentiment and diesel export risk",
+   "status": "forecast",
+   "instruments": [
+    "VLO",
+    "MPC",
+    "PBF",
+    "DK",
+    "DINO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Energy desk notes the refining group is still up 130% year-to-date versus a 38% gain for the XLE energy ETF.",
+   "anchor": "Would note the group is still +130% YTD vs XLE +38%",
+   "topic": "Energy refining sentiment and diesel export risk",
+   "status": "released",
+   "instruments": [
+    "XLE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Energy desk says gas midstream stocks KMI, WMB, DTM and TRP have broken their respective 200-day moving average levels in September as rates pressure the group.",
+   "anchor": "majority of the stocks have broken their respective 200d levels in September",
+   "topic": "Energy refining sentiment and diesel export risk",
+   "status": "released",
+   "instruments": [
+    "KMI",
+    "WMB",
+    "DTM",
+    "TRP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Energy desk says the knock-on effects of a potential diesel export ban have been the most topical story on the desk over the last couple of weeks.",
+   "anchor": "Knock on effects of a potential diesel export ban (Iink) has been the most topical story on the desk over the last couple of weeks",
+   "topic": "Energy refining sentiment and diesel export risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Energy desk says FY guidance updates will focus on OFS international downtime and conservatism levels versus NAM pricing power near term.",
+   "anchor": "FY guidance updates will be most in focus for OFS (International downtime and levels of conservatism vs NAM pricing power near term)",
+   "topic": "Energy refining sentiment and diesel export risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "mid-October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Energy desk says E&P FY guidance could show potential capex step-up or production revisions given elevated crude prices.",
+   "anchor": "E&P (potential for capex step-up / production revisions given elevated crude)",
+   "topic": "Energy refining sentiment and diesel export risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "mid-October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "MGM Resorts ($8bn market cap) is reportedly discussing a proposal to acquire Barry Diller's PPLI ($3bn market cap).",
+   "anchor": "MGM Resorts (MGM / $8bn mkt cap) is reportedly discussing a proposal to acquire Barry Diller's People (PPLI / $3bn mkt cap)",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "released",
+   "instruments": [
+    "MGM",
+    "PPLI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "PPLI walked away from its $48.30 per share proposal for MGM just one day before the reported reversal, sending MGM shares lower.",
+   "anchor": "The report comes just 1 day after PPLI walked away from its $48.30/shr proposal for the Casino co, sending MGM shares lower.",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "released",
+   "instruments": [
+    "MGM",
+    "PPLI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Special Situations desk names KVUE/KMB, NSC/UNP, AES, ROKU/FOXA and CZR as the most popular arbitrage names on the desk.",
+   "anchor": "What Are The Most Popular Arb Names \u2026 KVUE/KMB, NSC/UNP, AES, ROKU/FOXA, CZR",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "released",
+   "instruments": [
+    "KVUE",
+    "KMB",
+    "NSC",
+    "UNP",
+    "AES",
+    "ROKU",
+    "FOXA",
+    "CZR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Special Situations desk flags KVUE/KMB's EU Phase I expiry, AES's EU FSR and Phase I expiry, and LNTH's refiled HSR expiry as regulatory catalysts next month.",
+   "anchor": "KVUE/KMB (EU Phase I Expires); AES (EU FSR & Phase I Expires); LNTH (HSR Refiled Expires)",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "forecast",
+   "instruments": [
+    "KVUE",
+    "KMB",
+    "AES",
+    "LNTH"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Special Situations desk says NSC/UNP and ZIM's regulatory approval paths, and LNTH's HSR review, are among the most debated special situations right now.",
+   "anchor": "NSC/UNP (Regulatory Path), LNTH (HSR), ZIM (Regulatory Path)",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "released",
+   "instruments": [
+    "NSC",
+    "UNP",
+    "LNTH",
+    "ZIM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Financials desk says the impact from higher rates on capital markets activity was the biggest sector inflection this past month.",
+   "anchor": "Impact from higher rates on Capital Markets activity",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Financials desk flags big bank earnings kicking off on October 13 and the October FOMC meeting as the key catalysts next month.",
+   "anchor": "Earnings (big banks kick off 10/13) .. October FOMC",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Financials desk says there is a live debate over evolving market share between FICO and Vantage, with potential to move away from the tri-merge credit model.",
+   "anchor": "FICO/EFX/TRU (evolving market share between FICO and Vantage .. Potential to move away from tri-merge)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "FICO",
+    "EFX",
+    "TRU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Healthcare desk says TMO walking through its long-range plan at a competitor conference was the biggest sector inflection this past month.",
+   "anchor": "TMO walking through LRP at a competitor conference",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TMO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Equities: Sector Sentiment + Standouts | September",
+   "claim": "GS Healthcare desk flags Medicare Advantage STARs scores and the ESMO presentation of MRNA/MRK cancer interim data as next month's key catalysts.",
+   "anchor": "MA STARs scores, ESMO presentation of MRNA/MRK cancer INT data",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "MRNA",
+    "MRK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next month"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18285__gs-equities-sector-sentiment-standouts-september.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 36,
+  "matched": 36,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 5,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
