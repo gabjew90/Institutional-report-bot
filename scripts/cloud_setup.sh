@@ -163,6 +163,41 @@ if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
         || problem "railway: the token works but linking marvelous-dream/production/worker failed; run 'railway link' by hand"
     fi
     railway status || problem "railway: status failed after linking"
+    # `railway ssh` (logs and DB probes on the worker, the /ask harness)
+    # authenticates with an SSH key registered on the Railway account, and
+    # a cloud container starts with none. The dedicated cloud key lives in
+    # the environment settings as one base64 line, the private key file
+    # encoded, and is written here each session. Never printed.
+    if [ -n "${RAILWAY_SSH_KEY_B64:-}" ] && ! command -v ssh-keygen >/dev/null 2>&1; then
+      problem "railway ssh: the image has no ssh-keygen (openssh-client), so the cloud key cannot be installed"
+    elif [ -n "${RAILWAY_SSH_KEY_B64:-}" ]; then
+      mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
+      NEW="$HOME/.ssh/.railway_cloud_key.tmp"
+      ( umask 077; printf %s "$RAILWAY_SSH_KEY_B64" | tr -d " \r\n\"'" | base64 -d > "$NEW" 2>/dev/null )
+      if ! ssh-keygen -y -f "$NEW" >/dev/null 2>&1; then
+        rm -f "$NEW"
+        problem "railway ssh: RAILWAY_SSH_KEY_B64 is set but does not decode to a valid private key; re-paste it"
+      else
+        # The default name, because `railway ssh` hands off to ssh, which
+        # offers only default-named keys unless given -i. A different key
+        # already there is left alone (a re-run finds its own key: fine).
+        KEY="$HOME/.ssh/id_ed25519"
+        if [ -s "$KEY" ] && ! cmp -s "$KEY" "$NEW"; then
+          KEY="$HOME/.ssh/railway_cloud_ed25519"
+          problem "railway ssh: another ~/.ssh/id_ed25519 exists; the cloud key is at $KEY, pass '-i $KEY' to railway ssh"
+        fi
+        mv -f "$NEW" "$KEY" && chmod 600 "$KEY" && ssh-keygen -y -f "$KEY" > "$KEY.pub" \
+          && echo "railway ssh: cloud key installed at $KEY"
+        # A key on disk is useless unless the Railway account knows it
+        # (never registered, or revoked since).
+        FP="$(ssh-keygen -lf "$KEY.pub" 2>/dev/null | awk '{print $2}')"
+        if [ -n "$FP" ] && ! railway ssh keys list 2>/dev/null | grep -qF "$FP"; then
+          problem "railway ssh: the cloud key ($FP) is not registered on the Railway account; register its public half or ssh is refused"
+        fi
+      fi
+    else
+      problem "railway ssh unavailable (no RAILWAY_SSH_KEY_B64): logs and DB probes on the worker will not run"
+    fi
   fi
 else
   problem "no RAILWAY_API_TOKEN: production commands (logs, ssh, harness) unavailable"
