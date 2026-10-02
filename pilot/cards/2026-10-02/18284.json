@@ -1,0 +1,268 @@
+{
+ "brief": "GS midday US equities color, 1 Oct 2026. Equities rally into the close (NDX, then RTY, then SPX) as yields cool and WTI retreats, with the equal-weight S&P reversing September's historic cap-weight-vs-equal-weight dispersion by outperforming the cap-weighted index intraday. Accenture jumps 18%, its largest one-day gain on record, beating heavily bearish expectations against a short setup, lifting the broader IT services group. The credit desk flags four points: spreads sit at historical tights but, roll-adjusted, are back at July's wides; issuance stays heavy despite higher rates, which combined with weak performance of recent large deals is causing indigestion; quality is diverging within high yield, concentrated in consumer-exposed levered names; and the cross-asset desk sees rising interest in credit as a macro hedge. Amazon is added to GIR's conviction list, up 8% YTD, trailing only Microsoft among megacaps; the price target rises to $375 on AWS strength and AI-driven margin upside. Flow desk notes ETFs at 32% of tape, SPX CTA levels, the floor net better-to-buy, long-onlys mixed, hedge funds net buyers. Chart of the day: the 10-year's break above 5% this month has driven a surge in fixed income ETF trading volume.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "NDX gained 50bps, outpacing RTY's 34bps and SPX's 27bps, as Treasury yields cooled and WTI crude backed off its highs.",
+   "anchor": "NDX +50bps > RTY +34bps > SPX +27bps as yields cool and WTI backs off the highs.",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "September's S&P 500 market-cap-weighted versus equal-weight performance was among the top 5 such moves over more than 30 years.",
+   "anchor": "September's SPX mkt cap vs equal weight performance had a top 5 move over last 30+ yrs.",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "The equal-weight S&P 500 (SPW) rose 47bps today versus SPX's 27bps, a reversion of the recent mega-cap dispersion.",
+   "anchor": "Seeing reversion today with SPW +47bps vs SPX +27bps",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Accenture shares rose 18%, the largest one-day gain in the name on record, on better-than-expected results against extremely bearish expectations and a heavy short setup.",
+   "anchor": "ACN +18% (highest 1d move higher in the name on record) off better numbers across the board vs extremely bearish expectations and short setup.",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Global IT Services (GSXGITSV) rose 6% and was well bid off the back of the Accenture print.",
+   "anchor": "Global IT Services (GSXGITSV) +6% well bid off the ACN print.",
+   "topic": "Accenture earnings beat",
+   "status": "released",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Credit spreads are still at historical tights, but adjusted for the roll they are now back at July's wide levels.",
+   "anchor": "we are still at historical tights in credit, and adjusted for the roll are now at the July wides",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Issuance expectations remain high despite the higher rate picture, which combined with underperformance of recent large issuance is creating indigestion.",
+   "anchor": "issuance expectations, despite the higher rate picture, remain high \u2013 which combined with the backdrop of underperformance in recent large issuance",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "There has recently been divergence between higher- and lower-quality credit within high yield, concentrated in levered credits exposed to the consumer.",
+   "anchor": "there has recently been divergence between higher & lower quality credit within high yield",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "The cross-asset desk is seeing a pickup in interest in using credit as a macro hedging vehicle.",
+   "anchor": "our cross asset desk is seeing a pickup in interest in using credit as a macro hedging vehicle",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Amazon was added to GIR's conviction list, up 8% year-to-date and trailing only Microsoft in megacap performance this year.",
+   "anchor": "AMZN added to GIR conviction list.. AMZN +8% YTD and leads only MSFT in Megacap performance this year",
+   "topic": "AMZN conviction list add",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Goldman raised its Amazon price target to $375 on AWS strength, seeing extended upside from AI workloads driving topline momentum and operating margins.",
+   "anchor": "PT raised to $375 due to AWS strength, where they see extended upside supported by AI workloads driving topline momentum and operating margins",
+   "topic": "AMZN conviction list add",
+   "status": "target",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "ETF share of trading volume has ticked higher over the last few sessions to 32% of the tape.",
+   "anchor": "ETF % of tape has ticked higher over the last few sessions to 32% of the tape.",
+   "topic": "Equity flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "CTA thresholds to watch on the S&P 500 are short-term 7661, medium-term 7448, and long-term 6980.",
+   "anchor": "CTA thresholds to watch on SPX.. ST = 7661, MT = 7448, LT 6980",
+   "topic": "Equity flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Goldman's flow desk is currently 3% better to buy across the floor, with activity levels at 4 out of 10.",
+   "anchor": "We are currently 3% better to buy across the floor. Our activity levels are a 4 out of 10.",
+   "topic": "Equity flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Long-only investors are mostly balanced but skewed slightly better sellers on small notional today.",
+   "anchor": "LOs are mostly balanced but skewed slightly better sellers on small notional.",
+   "topic": "Equity flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Long-only investors are selling financials, communication services, materials and industrials while buying most heavily in info tech, healthcare and macro products.",
+   "anchor": "They are sellers of Fins, comms svcs, materials, and industrials vs buyers most pronounced in info tech, hcare, and macro products",
+   "topic": "Equity flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "Hedge funds are skewed better buyers, with demand most pronounced in macro products, info tech, financials and consumer discretionary versus supply in materials and healthcare.",
+   "anchor": "HFs are skewed better buyer with demand most pronounced in macro products, info tech, fins, and consumer discretionary versus supply in materials and hcare.",
+   "topic": "Equity flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Sharkey - US Equities Mid Day Color 1 Oct 2026",
+   "claim": "As the 10-year Treasury yield pushed through 5% this month, fixed income ETFs have seen a rapid acceleration in trading volumes.",
+   "anchor": "As the 10yr pushed through 5% this month, fixed income ETFs have seen a rapid acceleration in trading volumes",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this month"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18284__gs-midday-color-us-equities-mid-day-color-1-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 18,
+  "matched": 18,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 4,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
