@@ -1,0 +1,209 @@
+GS Sousa - STS Insights | Systematic Dispersion The Vol Trade of
+2026 1 Oct 2026
+Rivando de Sousa  ·  Goldman Sachs  ·  STS Volatility
+1 Oct 2026, 12:18pm ET
+Dispersion trading has been one of the most talked-about trades of 2026. Below we provide a deep dive
+into the performance of the GS Dispersion suite while also sharing recent innovations and our R&D
+roadmap. ## Table of Contents
+| 1. | Dispersion in 2026 | | 2. | New Tools | | 3. | Reporting and Risk Innovations | | 4. | Appendix |
+1. Dispersion in 2026
+1.1 Performance Review — A Goldilocks Combination
+The dislocation between single-stock and index implied volatility, fueled by the AI narrative and the
+subsequent sector/factor rotation, has been the engine behind the trade all year. Despite implied correlation
+sitting near historical lows, realized correlation fell further, allowing Dispersion strategies to deliver strong
+risk-adjusted returns across implementations.
+At the same time, single-stock volatility paid off for buyers as earnings-related jumps exceeded implied
+moves:
+| • | AMZN: +15.32% (Jul 31) | | • | MSFT: +15.51% (Jul 30) | | • | NVDA: +7.87% (Feb 6) |
+That combination made for a goldilocks scenario for Dispersion traders, as both sources of return/risk paid
+off simultaneously.
+Additionally, from a volatility relative-value perspective, dispersion trades have outperformed analogous
+long/short vol variants in recent years. Please see Appendix 4.1 for more information.
+Table 1: Performance Summary
+
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+Figure 1: Dispersion — The Vol Trade of 2026
+
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+1.2 A framework for realized correlation
+To assess what is actually driving realized correlation (RC) lower, we decompose it into two components:
+| • | Intra-sector RC: correlation between stocks within the same GICS sector | | • | Inter-sector RC:
+correlation between stocks across different sectors |
+Index-level correlation is a risk-weighted average of these two components, where weights reflect each
+pair's contribution to index variance. This decomposition lets us isolate whether the drop in correlation is a
+broad, index-wide phenomenon or concentrated in specific cross-sector relationships.
+What the data shows:
+Inter-sector RC compressed to ~0% by late summer, its most extreme level YTD. Intra-sector RC has
+stayed range-bound, consistent with a "stock-picker's market" within sectors rather than idiosyncratic
+dispersion across the board.
+Where does this leave us? Under a broadening lens, where sector-specific narratives continue to diverge
+rather than converge, we see continued room for the Dispersion trade to perform, with the between-sector
+
+correlation compression acting as the main marginal driver rather than a broad re-rating of correlation
+across the index.
+For a deep dive into this framework, we encourage readers to see this article.
+Figure 2:
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+Figure 3:
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+1.3 Outlook from the Trading Desk:
+Riccardo Gasparotto - Systematic Dispersion Trader:
+Dispersion had a strong Apr–Jul run, with GS SPX Gamma-Weighted Enhanced Dispersion [BBG:
+GSVIDUG6 Index] up 20%+ before the early August vol meltdown gave some back. The story was pretty
+clean: vols looked expensive vs history but were expensive for a reason. Being long vol on the highest
+implied names since April (e.g., MU, AMD, SNDK) was a very good trade. If anything, high implied
+volatility flagged where realized was going to show up rather than warning you off.
+Post-reset, the setup looks more attractive. Implied spread is materially lower so we don't see much risk of
+a repeat of August, and most of the catalysts are still in place: earnings dispersion, ongoing rotation in and
+out of AI and its sub pockets, and LETF outstanding shares that haven't really come down (the AUM drop
+was driven by spot selling off, so it can ramp back up quickly). On vehicle choice, GS SPX Vega-
+Weighted Downside Dispersion [BBG: GSVIDUV9 Index] picks up SPX skew carry while GS SPX Vega-
+Weighted Enhanced Dispersion [BBG: GSVIDUV6 Index] fits better with the spot up / vol up single name
+regime we've been in, so it comes down to which side of that you want. A repeat of the Jan–Jul path is
+unlikely given how unique that catalyst mix was, but that shouldn't discourage putting on dispersion here.
+
+Below we show the indicative P&L of 50k Vega on 6-month strangles rolled every month on high implied
+volatility stocks throughout the year.
+Figure 4: Simulated P&L of Long Volatility Strategies on High-IV Single Names
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+2. New Tools:
+2.1 Downside Dispersion:
+In the summer of 2025 we launched our first Downside Dispersion strategy, the GS SPX Vega-Weighted
+Downside Dispersion [BBG: GSVIDUV9 Index]. The construction:
+| • | Benefits from richer carry on the short index leg, given elevated index put skew | | • | Concentrates the
+single-stock leg on downside strikes |
+The trade-off: investors give up upside earnings convexity in exchange for leveraged exposure to down
+moves. As a result, GS SPX Vega-Weighted Downside Dispersion [BBG: GSVIDUV9 Index] tends to
+outperform the flagship implementation in bearish scenarios, while in bullish regimes the single-stock leg
+bleeds more due to the absence of upside convexity.
+
+Figure 5: GS Downside Dispersion
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+2.2 US Diversified Dispersion (NDX Suite):
+Since the spring of 2026 we have offered the same construction as the flagship SPX Dispersion strategies
+on NDX, for investors seeking a tech-concentrated correlation/relative-value exposure.
+Running SPX and NDX together adds real portfolio diversification: NDX's capped-weight methodology
+flattens the top-of-index concentration curve, and while the two universes share ~20 names between the
+NDX top-30 and SPX top-50, each carries distinct constituents and their implied-correlation dynamics
+have diverged materially over time.
+Figure 6: Weighting scheme and implied correlation - SPX and NDX
+
+Source: Goldman Sachs FICC and Equities, as of 29Sep26.
+Figure 7: GS Diversified Dispersion
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+2.3 Thematic Dispersion:
+
+In the same spirit as the thematic long-volatility strategies we launched late last year, we can offer a
+relative-value trade by pairing long vol on a thematic single-stock basket with a short-vol leg on SPX or
+NDX. Below we show indicative performance for Semiconductor, AI, and Mag7 baskets, each constructed
+with the same parameters as GS SPX Vega-Weighted Downside Dispersion [BBG: GSVIDUV6 Index].
+Note that our flagship dispersion runs at a 6-month tenor to capture single-stock vol supply from the
+structured-product market, even though several of our flagship long-vol strategies trade at shorter tenors.
+Figure 8:
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+Table 2: Thematic Long Volatility Strategies - Performance Summary
+
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+2.4 Dynamic Dispersion:
+Beyond our flagship dispersion strategies, we also offer clients a dynamic dispersion setup: clients submit
+their own list of single-stock underliers and weights, and the strategy systematically trades the
+corresponding strangles or variance-swap replications on the long leg against an SPX or NDX short-vol
+leg, with a pre-agreed delta-hedging model. This gives clients full control over the basket while inheriting
+the same execution, hedging, and reporting infrastructure as our flagship products.
+On top of that, we've been running R&D on how to tilt the basket away from a plain market-cap
+weighting, and we can share the resulting stock-selection signals in a regular report (chart below shows an
+example). Signal families we currently track and can incorporate into a report include:
+| • | Style / fundamental factors — e.g., Barra factors | | • | Vol signals — e.g., RV–IV spread, skew, vol-of-
+vol | | • | Flow data — e.g., structured-product and levered-ETF positioning |
+The charts below show (i) indicative backtests of dispersion baskets tilted by some signal families vs a
+market-cap-weighted benchmark, and (ii) a sample page from the weekly monitoring report we send.
+
+For interested readers, we recommend reaching out to the team and reading this piece.
+Figure 9:
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+Figure 10:
+
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+3. Reporting and Risk Innovations
+3.1 Re-vamped Reporting:
+Dispersion is one of our most position-heavy strategies: a single flagship basket can carry 20,000+ live
+positions daily across the index leg, single-stock legs, and delta hedges. The team has rebuilt the reporting
+stack to give clients the same position-level insight we use internally: aggregated Greeks and Greeks
+decomposition at basket / leg / underlier name, top/bottom Greek contributors by name, and spot/vol shock
+grid on the combined basket (see Figure 11 for an example report).
+Figure 11: Example P&L Attribution Report Source: Goldman Sachs FICC and Equities, as of September
+2026.
+
+3.2 Shock Analysis Innovation:
+When analyzing the effect of different spot and volatility shocks on dispersion strategies, the standard
+practice of applying the same spot and volatility shock to both legs implicitly assumes 100% correlation
+and therefore systematically overstates losses in stress scenarios. We embed an explicit correlation
+assumption in the stock-leg shock, using a Greeks-based approach on the stock leg – i.e. stock
+gamma/realized variance contribution is scaled up by and stock vega/vol-change contribution by of the
+relevant index shock. This lets clients read the shock grid at a chosen correlation regime, and lets us report
+a break-even correlation for any stress cell: the joint (ρ_I, ρ_R) at which the combined return crosses zero.
+For GSVIDUV6 on 25-Sep-2026, the -15% spot / +10% vol stress cell breaks even at implied correlation
+≈ 29% when realized correlation is set 1.5× current implied, i.e. 28% vs the 19% currently implied —
+comfortably above current implied and consistent with the ~40% 6m realized peak seen during Liberation
+Day. Full grids, sensitivities, and methodology are in Appendix 4.2.
+Figure 12:
+
+4. Appendix:
+4.1 From a Vol RV perspective, dispersion offers an alternative to Long/Short Variance
+The relative-value construction of Dispersion makes it a more balanced exposure than outright long or
+short volatility. The variations available let investors tilt that balance:
+| • | Investors with higher risk tolerance seeking volatility carry exposure may prefer the GS SPX Theta-
+Weighted Dispersion [BBG: GSVIDUT6 Index] as an alternative to shorting 3-month index variance
+outright. | | • | Investors with a constructive view on single-stock volatility may prefer the GS SPX
+Gamma-Weighted Dispersion [BBG: GSVIDUG6 Index] as an alternative to going outright long single-
+stock vol. |
+Figure 13:
+
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+Figure 14:
+
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+4.2 Shock Analysis Detail
+Correlations to 100%
+A standard spot/vol shock table which shocks both index and stock leg with the same shock effectively
+assumes 100% correlation, which tends to overstate losses for Dispersion baskets:
+Table 3: Combined shock 25Sep2026 - GSVIDUV6
+| Spot \ Vol | -30% | -10% | -5% | 0% | +5% | +10% | +20% | +30% | | -15% | -39% | -35% | -33% | -32% |
+-31% | -29% | -27% | -24% | | -10% | -23% | -19% | -18% | -17% | -15% | -14% | -11% | -9% | | -5% | -12% |
+-8% | -6% | -5% | -4% | -3% | -0% | +3% | | +0% | -7% | -3% | -1% | +0% | +1% | +3% | +6% | +8% | | +5% |
+-9% | -4% | -3% | -1% | +0% | +2% | +5% | +8% | | +10% | -15% | -9% | -8% | -6% | -5% | -3% | +1% | +4%
+| | +15% | -20% | -14% | -13% | -11% | -10% | -8% | -4% | -1% |
+Source: Goldman Sachs FICC and Equities, as of September 2026.
+Correlations at Current Implied – No Correlation Shock
+
+On the other hand, if we assume that shocked correlations (feeding into stock vega and gamma
+contribution) remain at the same level as currently implied (GSVIDUV6: Realized Correlation = Implied
+Correlation at 19%), we get a sense of arguably the upper range of the potential outcomes, given that in
+large spot moves we would also expect correlations to pick up (offsetting some of the gains).
+On the 25Sep2026 snapshot, GSVIDUV6 shows a broad profitability cone across the spot/vol shock grid,
+with a clear asymmetry between upside and downside spot moves. Its combined shock return ranges from
+-8% to 67% of notional, and the best outcome is the +15% spot / +30% vol cell. Cells with strong spot
+shocks remain consistently profitable. The few mildly negative prints are concentrated in small-spot / vol-
+down scenarios, where gamma-theta support is limited and cannot fully offset the long-vega drag.
+For each shock cell, total return is computed as the sum of the observed index-leg shock and a Greeks-
+based stock-leg shock, with the stock-leg methodology described below.
+Table 4: Combined basket — 25Sep2026 shock (; unchanged) – GSVIDUV6
+| Spot \ Vol | -30% | -10% | -5% | 0% | +5% | +10% | +20% | +30% | | -15% | +23% | +29% | +31% | +32% |
++34% | +35% | +38% | +41% | | -10% | +4% | +10% | +11% | +12% | +13% | +15% | +17% | +20% | | -5% |
+-6% | -0% | +1% | +2% | +3% | +4% | +7% | +9% | | +0% | -8% | -3% | -1% | +0% | +1% | +3% | +5% | +7%
+| | +5% | -4% | +3% | +4% | +6% | +8% | +9% | +12% | +15% | | +10% | +12% | +20% | +22% | +23% |
++25% | +27% | +30% | +34% | | +15% | +45% | +52% | +54% | +56% | +58% | +60% | +64% | +67% |
+Note: in a pure VarSwap or proxy Greek decomposition the spot shocks would be expected to be
+symmetrical, we note, however, that the index leg has been shocked based on the actual option positions
+(rather than Greek proxy), such that limitations of the replication, such as strike cutoffs, may impact the
+gamma profile and sensitivity to large shocks.
+The Greeks-based stock-leg P-L is decomposed into delta, gamma, and vega terms. To map the index
+shock into a stock-leg shock, we embed an explicit correlation assumption: the stock gamma / realized-
+variance contribution is scaled up by, and stock vega/vol-change contribution by of the corresponding
+index shock:
+| • | Delta term — for a market-cap-weighted basket the weighted-average single-stock return equals the
+index return, so the delta P-L uses ΔS/S directly. | | • | Gamma term — single-stock gamma P-L depends
+on E[r2] across names, which equals (ΔS/S)2/ρR for a given index move and realized correlation. This is
+where dispersion enters. | | • | Vega term — a relative index-vol bump combined with an assumed level of
+implied correlation pins down the corresponding single-stock vol move via ρI = (σI/σS)2. |
+Source: Goldman Sachs FICC & Equities, Marquee, as of September 2026.
