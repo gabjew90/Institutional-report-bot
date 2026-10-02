@@ -247,17 +247,23 @@ def check_notes_intact() -> None:
 
 def check_requirements_pinned() -> None:
     """Every dependency line is ==-pinned (2026-09-01 review). A `>=`
-    line means the next deploy resolves whatever is newest that minute."""
+    line means the next deploy resolves whatever is newest that minute.
+    requirements-dev.txt (test-only, installed by scripts/cloud_setup.sh)
+    is held to the same rule so cloud sessions match the owner's machine."""
     import re as _re
     bad = []
-    for raw in open(os.path.join(REPO, "requirements.txt"), encoding="utf-8"):
-        line = raw.split("#", 1)[0].strip()
-        if not line:
+    for name in ("requirements.txt", "requirements-dev.txt"):
+        path = os.path.join(REPO, name)
+        if not os.path.exists(path):
             continue
-        spec = line.split(";", 1)[0].strip()
-        if not _re.match(r"^[A-Za-z0-9_.-]+==\S+$", spec):
-            bad.append(line)
-    _record("requirements.txt is fully ==-pinned", not bad,
+        for raw in open(path, encoding="utf-8"):
+            line = raw.split("#", 1)[0].strip()
+            if not line:
+                continue
+            spec = line.split(";", 1)[0].strip()
+            if not _re.match(r"^[A-Za-z0-9_.-]+==\S+$", spec):
+                bad.append(f"{name}: {line}")
+    _record("requirements files are fully ==-pinned", not bad,
             "unpinned: " + ", ".join(bad) if bad else "")
 
 

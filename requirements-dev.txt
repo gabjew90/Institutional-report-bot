@@ -1,0 +1,5 @@
+# Test-only packages, pinned to the owner's machine (2026-10-01). Not
+# installed on the worker. scripts/cloud_setup.sh installs this file
+# beside requirements.txt.
+pytest==9.1.1
+PyYAML==6.0.3

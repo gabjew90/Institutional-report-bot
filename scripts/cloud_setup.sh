@@ -57,10 +57,10 @@ fi
 if [ -x .venv/bin/python ]; then
   .venv/bin/python --version
   if command -v uv >/dev/null 2>&1; then
-    uv pip install -q --python .venv/bin/python -r requirements.txt pytest \
+    uv pip install -q --python .venv/bin/python -r requirements.txt -r requirements-dev.txt \
       || problem "pip install failed (network access to pypi.org?)"
   else
-    .venv/bin/python -m pip install -q -r requirements.txt pytest \
+    .venv/bin/python -m pip install -q -r requirements.txt -r requirements-dev.txt \
       || problem "pip install failed (network access to pypi.org?)"
   fi
 else
@@ -86,8 +86,27 @@ MEM_REPO="gabjew90/institutional-report-bot-memory"
 # is not a letter or digit with '-' (C:\Users\gabje\Institutional-report-bot
 # -> C--Users-gabje-Institutional-report-bot).
 MEM_DIR="$HOME/.claude/projects/$(pwd | sed 's#[^A-Za-z0-9]#-#g')/memory"
+# Memory lives on the memory repo's main branch. A repo attached to the
+# session arrives on a throwaway claude/... branch with no upstream, and a
+# memory committed there never reaches main or the owner's machine. Move
+# to main when that loses nothing (HEAD already contained in origin/main),
+# then fast-forward.
+mem_on_main() {
+  git -C "$1" fetch -q origin main 2>/dev/null || { problem "memory: cannot fetch origin/main"; return; }
+  if [ "$(git -C "$1" rev-parse --abbrev-ref HEAD)" != main ]; then
+    if git -C "$1" merge-base --is-ancestor HEAD origin/main \
+       && [ -z "$(git -C "$1" status --porcelain)" ]; then
+      git -C "$1" checkout -q -B main origin/main
+    else
+      problem "memory: checkout is on $(git -C "$1" rev-parse --abbrev-ref HEAD) with work not on main; merge it into main by hand"
+      return
+    fi
+  fi
+  git -C "$1" branch -q --set-upstream-to=origin/main main 2>/dev/null
+  git -C "$1" merge -q --ff-only origin/main && echo "memory: on main, up to date"
+}
 if [ -d "$MEM_DIR/.git" ]; then
-  git -C "$MEM_DIR" pull -q --ff-only && echo "memory: up to date at $MEM_DIR"
+  mem_on_main "$MEM_DIR"
 else
   mkdir -p "$(dirname "$MEM_DIR")"
   if [ -d "$MEM_DIR" ] && [ ! -L "$MEM_DIR" ]; then
@@ -98,6 +117,7 @@ else
   SIBLING="$(dirname "$(pwd)")/institutional-report-bot-memory"
   if [ -d "$SIBLING/.git" ]; then                 # attached to the session as a second repo
     ln -sfn "$SIBLING" "$MEM_DIR" && echo "memory: linked $SIBLING"
+    mem_on_main "$SIBLING"
   elif git clone -q "https://github.com/$MEM_REPO.git" "$MEM_DIR" 2>/dev/null; then
     echo "memory: cloned to $MEM_DIR"
   elif [ -n "${GH_TOKEN:-}" ] && command -v gh >/dev/null 2>&1 \
@@ -127,14 +147,22 @@ if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
   fi
   if ! command -v railway >/dev/null 2>&1; then
     problem "railway: could not install the CLI (no npm, or npm failed); production commands unavailable"
+  elif [ -n "${RAILWAY_API_TOKEN:-}" ] && ! railway whoami >/dev/null 2>&1; then
+    # Check the token before linking, so a bad paste reads as one problem
+    # about the token. Describe its shape, never its value: an account
+    # token is a 36-character UUID, and a paste that kept quotes, a space
+    # or a newline is rejected as Unauthorized.
+    shape="${#RAILWAY_API_TOKEN} chars"
+    case "$RAILWAY_API_TOKEN" in *[!0-9a-fA-F-]*) shape="$shape, contains characters a UUID token does not (quotes, spaces, newline?)" ;; esac
+    problem "railway: token rejected ($shape; a valid account token is 36 chars). Re-paste it in the environment settings, value only, no quotes"
   else
     if [ -n "${RAILWAY_API_TOKEN:-}" ]; then
       # an account token needs the project linked; a project token is
       # already scoped to one project and environment
       railway link --project marvelous-dream --environment production --service worker \
-        || problem "railway: link failed; run 'railway link' by hand (the CLI may want the project ID)"
+        || problem "railway: the token works but linking marvelous-dream/production/worker failed; run 'railway link' by hand"
     fi
-    railway status || problem "railway: token present but status failed; check the token, and that RAILWAY_TOKEN is not also set"
+    railway status || problem "railway: status failed after linking"
   fi
 else
   problem "no RAILWAY_API_TOKEN: production commands (logs, ssh, harness) unavailable"
