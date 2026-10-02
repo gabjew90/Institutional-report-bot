@@ -1115,7 +1115,7 @@ def check_dollar_pnl(answer: str, tool_calls=None, **_) -> list[Violation]:
 # near-identical GPS turn that grounded via real search and was
 # CORRECT to state the date.
 _FAILED_TOOL_STATUSES = {"no_data", "error", "empty", "not_found", "timeout", "not_a_stock",
-                         "building"}
+                         "building", "metric_not_asked"}
 _EARN_TOOL = "lookup_earnings_date"
 
 _EARN_DATE_RE = re.compile(

@@ -393,6 +393,14 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
             text=_ask_router.inject_text(
                 _pf_tool, _stub, has_images=bool(fx.get("images"))))]))
         _prefetched.append(_pf_tool)
+    # Mirror of production's room-ranking rules (discord_bot/room_rank.py,
+    # 2026-10-02): the unmeasured-superlative block here, the metric gate
+    # in the stub loop below.
+    from discord_bot import room_rank as _room_rank
+    _superlative = _room_rank.superlative_note(fx.get("question") or "")
+    if _superlative:
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_superlative)]))
 
     resp = client.models.generate_content(
         model=model, contents=contents, config=cfg)
@@ -449,11 +457,14 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
         contents.append(resp.candidates[0].content)
         parts = []
         for c in calls:
-            payload = stubs.get(c.name, {
-                "status": "empty",
-                "note": ("No fixture stub for this tool. Answer from what "
-                         "you have; do not invent data."),
-            })
+            payload = (_room_rank.gate(dict(c.args or {}), fx.get("question") or "")
+                       if c.name == "lookup_user_profile" else None)
+            if payload is None:
+                payload = stubs.get(c.name, {
+                    "status": "empty",
+                    "note": ("No fixture stub for this tool. Answer from what "
+                             "you have; do not invent data."),
+                })
             parts.append(types.Part.from_function_response(
                 name=c.name, response={"result": payload}))
         contents.append(types.Content(role="user", parts=parts))

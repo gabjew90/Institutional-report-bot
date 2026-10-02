@@ -2000,7 +2000,7 @@ def _grounding_has_sources(gm) -> bool:
 # Tool-result statuses that mean the call produced nothing the model
 # could use. Shared vocabulary with scripts/ask_response_validate.py.
 _FAILED_TOOL_STATUSES = frozenset({"no_data", "error", "empty", "not_found", "timeout",
-                                   "not_a_stock", "building"})
+                                   "not_a_stock", "building", "metric_not_asked"})
 
 
 def _trace_has_source(tool_trace) -> bool:
@@ -5204,6 +5204,7 @@ async def _ask_02_call_model_with_tools(
     # text (CLAUDE.md /ask policy, rule 1). The trace entries let the
     # grounding nets count these as sources.
     from discord_bot import ask_router as _ask_router
+    from discord_bot import room_rank as _room_rank
     _prefetch_exec = {
         _ask_router.T_SLATE: _execute_earnings_slate,
         _ask_router.T_EDATE: _execute_earnings_date,
@@ -5318,6 +5319,14 @@ async def _ask_02_call_model_with_tools(
             _ask_meta["outline_banks"] = sorted(_so.outline_banks(_pf_by_tool.get(_ask_router.T_RESEARCH)))
     except Exception as e:
         log.warning(f"/ask: stock outline failed (non-fatal): {e}")
+    # "who's the most <trait>" for a trait the bot does not measure: pick
+    # real people from their profiles, never a data ranking
+    # (discord_bot/room_rank.py, owner 2026-10-02).
+    _superlative = _room_rank.superlative_note(question)
+    if _superlative:
+        contents.append(types.Content(role="user",
+                                      parts=[types.Part.from_text(text=_superlative)]))
+        _ask_meta["guards"].append("superlative")
     _round_gm_chunks: list = []
     for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
         # Contents-size guard: fail CLEANLY (friendly reply + a log
@@ -5511,8 +5520,17 @@ async def _ask_02_call_model_with_tools(
                     {"tool": fc.name, "status": "unknown_tool"}
                 )
                 continue
+            # A racism or trader ranking runs only when the conversation
+            # asked for that metric (discord_bot/room_rank.py, 2026-10-02:
+            # "who's the most gay" was answered with the racism board).
+            _rank_refusal = (_room_rank.gate(args, question)
+                             if fc.name == "lookup_user_profile" else None)
             try:
-                result = await executor(args)
+                if _rank_refusal is not None:
+                    result = _rank_refusal
+                    _ask_meta["guards"].append(f"rank-metric-refused:{args.get('metric')}")
+                else:
+                    result = await executor(args)
                 # A published book is the antecedent a later "No
                 # AVGO" refers to. Capture whose book and which
                 # tickers; the send site pairs it with the message

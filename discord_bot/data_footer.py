@@ -34,7 +34,24 @@ FEEDS: dict[str, str] = {
 NOT_CITED = frozenset({"search_chat_messages"})
 
 # Statuses that mean the call produced nothing (mirrors bot._FAILED_TOOL_STATUSES).
-_FAILED = frozenset({"no_data", "error", "empty", "not_found", "timeout", "not_a_stock", "building"})
+_FAILED = frozenset({"no_data", "error", "empty", "not_found", "timeout", "not_a_stock", "building",
+                     "metric_not_asked"})
+
+
+def _label(entry: dict) -> str | None:
+    """The feed label for one trace entry. The profile tool's racism
+    ranking comes from the chat tags, not the trade ledger (2026-10-01:
+    a racism board was footed 'room trade ledger'), and a lookup by
+    username returns both ranks."""
+    tool = str(entry.get("tool") or "")
+    if tool == "lookup_user_profile":
+        args = entry.get("args") or {}
+        metric = str(args.get("metric") or "").lower() if isinstance(args, dict) else ""
+        if metric == "racism":
+            return "room chat tags"
+        if metric != "trader":
+            return "room trade ledger and chat tags"
+    return FEEDS.get(tool)
 
 
 def footer(tool_trace: list[dict] | None) -> str:
@@ -46,7 +63,7 @@ def footer(tool_trace: list[dict] | None) -> str:
             continue
         if str(entry.get("status") or "ok") in _FAILED:
             continue
-        label = FEEDS.get(str(entry.get("tool") or ""))
+        label = _label(entry)
         if label and label not in seen:
             seen.append(label)
     if not seen:
