@@ -1,0 +1,43 @@
+{
+  "pulse_date": "2026-10-02",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure demand",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 0, "neutral": 0},
+      "consensus_view": "Both banks see demand for AI computing capacity continuing to grow, with no bank in the evidence arguing against it.",
+      "facts_agreed": [
+        {
+          "claim": "Both banks say demand for compute and inference capacity is rising and is not being met.",
+          "banks_for": ["The Market Ear", "Goldman Sachs"],
+          "evidence_quotes": [
+            "millions of persistent agents doing work continuously, that is another powerful accelerator for inference",
+            "If compute keeps getting more valuable because there isn’t enough, it is very hard to be bearish"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai memory demand",
+      "selected": true,
+      "stance_counts": {"supportive": 2, "skeptical": 0, "neutral": 0},
+      "consensus_view": "Both banks covering this theme are positive, saying demand for AI memory chips is running ahead of supply and is helping hold up the broader tech and AI trade.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs and JPMorgan both see AI-driven memory demand as a fundamental support for tech.",
+          "banks_for": ["Goldman Sachs", "JPMorgan"],
+          "evidence_quotes": [
+            "AI and HBM demand continues to outstrip supply",
+            "we still see the tech/AI complex being supported fundamentally"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
