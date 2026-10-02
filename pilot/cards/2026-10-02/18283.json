@@ -1,0 +1,244 @@
+{
+ "brief": "Goldman's ETF desk reports over $1.5 trillion has flowed into US ETFs in the first three quarters of 2026, already surpassing 2025's full-year record, running at roughly $167 billion a month and $8 billion a session. Citing that pace plus seasonal Q4 tailwinds, the desk expects full-year flows to exceed $2 trillion. Beyond the headline number, the note catalogs several standalone cross-asset flow and performance observations without tying them into a single thesis. SPX is outperforming RTY for a seventh straight week (longest since 2018) and XLK has outperformed SPX for six weeks, with mega-cap ETF MAGS seeing inflows in 12 of 13 sessions while equal-weight ETF RSP is on a seven-week losing streak. Cybersecurity ETFs are near a best-ever inflow month (+$950mm). TLT hit an all-time low and is on its longest losing streak in two years. Muni bond ETFs are having one of their worst performance months in 20 years yet keep attracting inflows through tax-loss harvesting. Spot-bitcoin ETFs have posted nine straight days of inflows (+$3bn, largest 9-day haul YTD, +$6bn over two months). Rising 10-year yields above 5% have accelerated fixed-income ETF trading volumes.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "US ETFs have taken in over $1.5 trillion in 2026, surpassing 2025's full-year record in just three quarters.",
+   "anchor": "Over $1.5 trillion has poured into ETFs this year, surpassing last year\u2019s record annual haul in only three\nquarters.",
+   "topic": "US ETF inflows record pace",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "2026 US ETF inflows are running at approximately $167 billion per month and approximately $8 billion per trading session.",
+   "anchor": "$1.5 trillion over 3 quarters,\n~$167 billion/month,\n~$8 billion/session",
+   "topic": "US ETF inflows record pace",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "Goldman Sachs expects US ETF flows to surpass $2 trillion in 2026, citing the current pace of inflows and seasonal fourth-quarter tailwinds.",
+   "anchor": "Given these metrics (and seasonal Q4 tailwinds), we expect US ETF flows to surpass $2 trillion in 2026.",
+   "topic": "US ETF inflows record pace",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "The S&P 500 is on track to outperform the Russell 2000 for seven straight weeks, its longest such streak since 2018.",
+   "anchor": "SPX is on track to outperform RTY for 7 straight weeks (longest streak since 2018)",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "The technology sector ETF XLK is on track to outperform the S&P 500 for six straight weeks.",
+   "anchor": "coupled with XLK\noutperforming SPX for 6 straight weeks",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [
+    "XLK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "The MAGS ETF has recorded inflows in 12 of the past 13 sessions, one of its longest stretches of recurring demand since launch.",
+   "anchor": "MAGS has garnered 12 inflows over\nthe past 13 sessions, one of the fund\u2019s longest stretches of recurring demand since the fund launched years\nago",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [
+    "MAGS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "The equal-weight RSP ETF is on track for seven consecutive weeks lower, which would tie its longest such stretch.",
+   "anchor": "RSP is on track for 7 consecutive weeks lower (which would tie its longest stretch)",
+   "topic": "US equity dispersion and AI narrative",
+   "status": "released",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "AI-fueled demand for cybersecurity exposure has the cybersecurity ETF complex on track for one of its best inflow months on record, at over $950 million.",
+   "anchor": "AI-fueled demand for cybersecurity exposure has the ETF complex on track for one of its best months\nof inflows in our dataset (+$950mm)",
+   "topic": "Mega-cap and cybersecurity ETF inflows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "The TLT ETF hit an all-time low this week, in its nearly 25-year operating history.",
+   "anchor": "In the fund\u2019s near 25 years of operating history, TLT hit an all-time low this week",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "TLT is on track for losses over seven consecutive sessions, its longest daily losing stretch in two years.",
+   "anchor": "on track for losses over 7 consecutive sessions (its longest daily stretch lower in 2 years)",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "Muni bond ETFs are collectively on track for one of their worst months of index performance in 20 years.",
+   "anchor": "Muni bond ETFs are collectively tracking for one of their worst months of index performance in 20\nyears",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "Despite weak performance, inflows into muni bond ETFs persist, supported by tax-loss harvesting rotations.",
+   "anchor": "yet inflows persist supported tax loss harvesting rotations",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "The spot-bitcoin ETF complex has registered nine consecutive days of inflows totaling more than $3 billion, its largest 9-day haul year to date.",
+   "anchor": "the complex has registered\n9 consecutive days of inflows, totaling to more $3 billion collected (its largest 9-day haul YTD)",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "Over $6 billion has poured into the spot-bitcoin ETF complex over the past two months.",
+   "anchor": "over $6 billion pouring into the complex over the past two\nmonths",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "past two months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "As market volatility accelerates, ETF trading activity accelerates with it.",
+   "anchor": "as\nvol accelerates, so does ETF trading activity",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color charts bullets 30 Sep 2026",
+   "claim": "As the 10-year Treasury yield pushed through 5% this month, fixed income ETFs saw a rapid acceleration in trading volumes.",
+   "anchor": "As the 10yr pushed through 5% this month, fixed income ETFs have seen a rapid\nacceleration in trading volumes",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "this month"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18283__gs-etf-color-charts-bullets-30-sep-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 16,
+  "matched": 16,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 3,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
