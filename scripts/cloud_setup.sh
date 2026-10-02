@@ -160,6 +160,8 @@ if [ "$PARENT" != "$HOME" ] && [ -e "$MEM_DIR" ]; then
 fi
 
 echo "== railway"
+SSH_NOTE=""
+NO_SSH="railway ssh: not available from this session (cloud traffic goes through an HTTP/HTTPS proxy, so SSH never connects). Logs, status, variables and deploys work. Worker DB probes and the /ask harness run on the owner's PC."
 if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
   if ! command -v railway >/dev/null 2>&1; then
     # global first; a non-root sandbox falls back to a user prefix
@@ -232,18 +234,18 @@ if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
         if [ -n "$FP" ] && ! railway ssh keys list 2>/dev/null | grep -qF "$FP"; then
           problem "railway ssh: the cloud key ($FP) is not registered on the Railway account; register its public half or ssh is refused"
         fi
-        # The environment's network policy can block port 22, and then
-        # `railway ssh` hangs instead of failing (2026-10-02). Probe it with
-        # a short timeout. accept-new also records the host key, so the
-        # first real connection does not stop at a prompt.
-        out="$(ssh -o ConnectTimeout=6 -o BatchMode=yes -o StrictHostKeyChecking=accept-new ssh.railway.com exit 2>&1)"
-        case "$out" in
-          *"timed out"*|*"unreachable"*|*"Could not resolve"*)
-            problem "railway ssh: cannot reach ssh.railway.com port 22 (cloud network policy). Set the environment's Network access to Full, or allow ssh.railway.com" ;;
-        esac
+        # Anthropic-hosted sessions send all outbound traffic through an
+        # HTTP/HTTPS proxy at every network level, Full included, so SSH on
+        # port 22 never connects there and `railway ssh` hangs instead of
+        # failing (confirmed 2026-10-02 against the cloud-environments docs).
+        # Probe with a short timeout and say so once, as a fact about the
+        # platform rather than a problem to fix. accept-new records the host
+        # key in case a future environment does allow it.
+        ssh -o ConnectTimeout=6 -o BatchMode=yes -o StrictHostKeyChecking=accept-new \
+          ssh.railway.com exit >/dev/null 2>&1 || SSH_NOTE="$NO_SSH"
       fi
     else
-      problem "railway ssh unavailable (no RAILWAY_SSH_KEY_B64): logs and DB probes on the worker will not run"
+      SSH_NOTE="$NO_SSH"
     fi
   fi
 else
@@ -266,4 +268,5 @@ if [ -z "$PROBLEMS" ]; then
 else
   echo "set up with problems:$PROBLEMS"
 fi
+[ -n "$SSH_NOTE" ] && echo "$SSH_NOTE"
 exit 0
