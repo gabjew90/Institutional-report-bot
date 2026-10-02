@@ -14,36 +14,66 @@
 #      for a project token), so `railway ssh` / `railway logs` and the /ask
 #      live harness work. Without a token it says so and skips.
 # It never writes a secret to disk.
-set -e
+#
+# It always exits 0 and ends with a SETUP SUMMARY: a cloud environment's
+# setup script that exits non-zero stops the session from starting at all
+# (2026-10-01, "cannot open scripts/cloud_setup.sh", exit 2), and a session
+# that starts with one piece missing is more useful than no session.
+PROBLEMS=""
+problem() { echo "!! $1" >&2; PROBLEMS="$PROBLEMS
+- $1"; }
+
+# The environment's setup script runs from the home directory, not the
+# checkout; find the checkout first.
+if ! git rev-parse --show-toplevel >/dev/null 2>&1; then
+  for d in "$HOME/Institutional-report-bot" /home/user/Institutional-report-bot \
+           "$(dirname "$0")/.."; do
+    [ -f "$d/scripts/cloud_setup.sh" ] && cd "$d" && break
+  done
+fi
+if [ ! -f "$(git rev-parse --show-toplevel 2>/dev/null)/scripts/cloud_setup.sh" ]; then
+  # Carrying on here would build .venv and clone memory into the wrong
+  # place; report and stop (still exit 0 so the session starts).
+  echo "== SETUP SUMMARY"
+  echo "checkout not found from $(pwd): run 'sh scripts/cloud_setup.sh' from inside Institutional-report-bot"
+  exit 0
+fi
 cd "$(git rev-parse --show-toplevel)"
+echo "repo: $(pwd)"
 
 echo "== python 3.12"
 if [ ! -x .venv/bin/python ]; then
+  if ! command -v python3.12 >/dev/null 2>&1 && ! command -v uv >/dev/null 2>&1; then
+    # uv fetches a 3.12 build when the image has none
+    curl -LsSf https://astral.sh/uv/install.sh 2>/dev/null | sh >/dev/null 2>&1
+    export PATH="$HOME/.local/bin:$PATH"
+  fi
   if command -v python3.12 >/dev/null 2>&1; then
     python3.12 -m venv .venv
   elif command -v uv >/dev/null 2>&1; then
-    uv venv --python 3.12 .venv
-  else
-    echo "no python3.12 and no uv: install one, then rerun" >&2
-    exit 1
+    uv venv -q --python 3.12 .venv
   fi
 fi
-.venv/bin/python --version
-if command -v uv >/dev/null 2>&1; then
-  uv pip install --python .venv/bin/python -q -r requirements.txt pytest
+if [ -x .venv/bin/python ]; then
+  .venv/bin/python --version
+  if command -v uv >/dev/null 2>&1; then
+    uv pip install -q --python .venv/bin/python -r requirements.txt pytest \
+      || problem "pip install failed (network access to pypi.org?)"
+  else
+    .venv/bin/python -m pip install -q -r requirements.txt pytest \
+      || problem "pip install failed (network access to pypi.org?)"
+  fi
 else
-  .venv/bin/python -m pip install -q -r requirements.txt pytest
+  problem "no Python 3.12 (neither python3.12 nor uv could be found or installed)"
 fi
 
 echo "== push gate"
-chmod +x .githooks/pre-push
-git config core.hooksPath .githooks
-echo "pre-push hook: .githooks/pre-push"
-
-# Nothing below may stop the script: Python and the push gate above are
-# what a session needs first; memory and production access are reported,
-# not required.
-set +e
+if [ -f .githooks/pre-push ]; then
+  chmod +x .githooks/pre-push
+  git config core.hooksPath .githooks && echo "pre-push hook: .githooks/pre-push"
+else
+  problem "not in the Institutional-report-bot checkout (no .githooks/pre-push)"
+fi
 
 echo "== memory"
 # Session memory lives in the PRIVATE repo gabjew90/institutional-report-bot-memory
@@ -74,7 +104,7 @@ else
        && gh repo clone "$MEM_REPO" "$MEM_DIR" -- -q 2>/dev/null; then
     echo "memory: cloned with GH_TOKEN"
   else
-    echo "memory: NOT loaded. Attach $MEM_REPO to the session or set GH_TOKEN (read/write on that repo only)" >&2
+    problem "memory NOT loaded: attach $MEM_REPO to the session, or set GH_TOKEN (fine-grained, contents read/write on that repo only)"
   fi
 fi
 
@@ -83,22 +113,39 @@ if [ -n "${RAILWAY_API_TOKEN:-}${RAILWAY_TOKEN:-}" ]; then
   if ! command -v railway >/dev/null 2>&1; then
     # global first; a non-root sandbox falls back to a user prefix
     npm install -g @railway/cli >/dev/null 2>&1 \
-      || { npm install --prefix "$HOME/.local" @railway/cli >/dev/null 2>&1 \
+      || { npm install -g --prefix "$HOME/.local" @railway/cli >/dev/null 2>&1 \
            && export PATH="$HOME/.local/bin:$PATH"; }
   fi
+  # The session does not inherit this script's PATH: a CLI that landed in
+  # ~/.local/bin goes onto a directory the session already searches.
+  if [ -x "$HOME/.local/bin/railway" ]; then
+    for bin in /usr/local/bin "$HOME/bin"; do
+      if [ -d "$bin" ] && [ -w "$bin" ]; then
+        ln -sf "$HOME/.local/bin/railway" "$bin/railway" && break
+      fi
+    done
+  fi
   if ! command -v railway >/dev/null 2>&1; then
-    echo "railway: could not install the CLI (no npm, or npm failed); production commands unavailable" >&2
+    problem "railway: could not install the CLI (no npm, or npm failed); production commands unavailable"
   else
     if [ -n "${RAILWAY_API_TOKEN:-}" ]; then
       # an account token needs the project linked; a project token is
       # already scoped to one project and environment
       railway link --project marvelous-dream --environment production --service worker \
-        || echo "railway: link failed; run 'railway link' by hand (the CLI may want the project ID)" >&2
+        || problem "railway: link failed; run 'railway link' by hand (the CLI may want the project ID)"
     fi
-    railway status || echo "railway: token present but status failed; check the token's scope" >&2
+    railway status || problem "railway: token present but status failed; check the token, and that RAILWAY_TOKEN is not also set"
   fi
 else
-  echo "no RAILWAY_API_TOKEN / RAILWAY_TOKEN: production commands (logs, ssh, harness) unavailable"
+  problem "no RAILWAY_API_TOKEN: production commands (logs, ssh, harness) unavailable"
 fi
 
-echo "== done. Tests: .venv/bin/python -m pytest tests -q"
+echo
+echo "== SETUP SUMMARY"
+if [ -z "$PROBLEMS" ]; then
+  echo "all set: python 3.12, push gate, memory, railway. Tests: .venv/bin/python -m pytest tests -q"
+  echo "railway: $(command -v railway) (use the full path if the session says 'command not found')"
+else
+  echo "set up with problems:$PROBLEMS"
+fi
+exit 0
