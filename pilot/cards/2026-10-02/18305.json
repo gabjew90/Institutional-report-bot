@@ -1,0 +1,454 @@
+{
+ "brief": "Weekly retail-flows note. September closed as the weakest month for retail activity since December 2024, with flows this week at $4.1B versus a 12-month average of $6.8B, as retail favored ETFs over single stocks. ETF demand weakened toward 2025 Momentum Unwind levels on declines in International, Crypto and Commodity ETFs, partly offset by the largest-ever rotation into long-end Treasury ETFs (+5.4z), led by a record +6.1z inflow into TLT as yields kept rising. Mag7 names dominated single-stock buying (NVDA, TSLA, GOOG/L, AMZN bought; AAPL, MSFT, META sold) while every other sector outside Tech was net sold. Rising Treasury yields, now at 22-year highs, coincided with small caps underperforming large caps: retail stayed net sellers of Russell 2000 stocks, where short interest is now at the 99.8th percentile, and net buyers of Russell 1000. Energy flows flipped mildly negative even as Middle East oil exports recovered toward pre-war levels and crude held near $100. Retail positioned minimally ahead of Micron's earnings, which then beat with guidance above expectations.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "September closed as the weakest month for retail trading activity since December 2024.",
+   "anchor": "September closed as the weakest month for retail activity since Dec 2024",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Retail flows were $4.1B this week, well below the 12-month average of $6.8B per week.",
+   "anchor": "Retail flows were $4.1B this week, well below the 12-month average of $6.8B/week.",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Outside of Broad Based Large Cap Equity ETFs (+$1.4B), retail ETF buying was influenced by Fixed Income Treasuries among other themes.",
+   "anchor": "Outside of Broad Based Large Cap Equity ETFs (+$1.4B), retail ETF buying was influenced by Fixed Income Treasuries",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Retail ETF flows saw the largest rotation into long-end Treasury ETFs on record this week, at +5.4 standard deviations.",
+   "anchor": "the largest rotation into long-end Treasury ETFs on record (+5.4z)",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Retail inflows into TLT were outsized this week at a record +6.1 standard deviations.",
+   "anchor": "driven mainly by outsized inflows into TLT (6.1z",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Retail investors bought NVDA (+$1,286M), TSLA (+$514M), GOOG/L (+$153M) and AMZN (+$146M) in Mag7 names this week.",
+   "anchor": "Activity in Mag7 this week: Retail investors bought NVDA (+$1,286M), TSLA (+$514M), GOOG/L (+$153M), AMZN (+\n$146M)",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "TSLA",
+    "GOOGL",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "The top five retail-bought stocks last week were NVDA (+$1,286M), TSLA (+$514M), SNDK (+$327M), GOOG/L (+$153M) and AMZN (+$146M).",
+   "anchor": "Top five retail stocks last week: NVDA (+$1,286M), TSLA (+$514M), SNDK (+$327M), GOOG/L (+$153M), AMZN (+\n$146M)",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "TSLA",
+    "SNDK",
+    "GOOGL",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Retail's share of options trading is off its highs.",
+   "anchor": "In options, retail share is off its highs",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "The most-traded retail options names this week, echoing previous weeks, were TSLA, META, MU, NVDA, AMD, SNDK, AMZN, MSFT, GOOG/L and AAPL.",
+   "anchor": "TSLA, META, MU, NVDA, AMD, SNDK, AMZN, MSFT, GOOG/L and AAPL",
+   "topic": "Retail trading flows and positioning",
+   "status": "released",
+   "instruments": [
+    "TSLA",
+    "META",
+    "MU",
+    "NVDA",
+    "AMD",
+    "SNDK",
+    "AMZN",
+    "MSFT",
+    "GOOGL",
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Small caps have continued to underperform large caps as Treasury yields rise.",
+   "anchor": "Small caps have continued to underperform large caps as Treasury yields",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Retail investors are net buyers of R1000 stocks and net sellers of R2000 stocks, an accelerating trend.",
+   "anchor": "net buyers of R1000 stocks, and net sellers of R2000 stocks, a trend that has",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Median short interest as a percentage of shares outstanding across Russell 2000 companies is now at the 99.8th percentile.",
+   "anchor": "across Russell 2000 companies, now at the 99.8%ile",
+   "topic": "Russell 2k rate-driven reversal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Oil prices have held near $100 this week.",
+   "anchor": "Oil prices have held near $100 this week",
+   "topic": "Brent crude and US-Iran tensions",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Middle East oil exports are now just 11% below pre-war levels.",
+   "anchor": "despite Middle East oil exports now just 11% below pre-war levels",
+   "topic": "Brent crude and US-Iran tensions",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Crude flows have rebounded to 98% of pre-war levels, while product exports remain at just 58%.",
+   "anchor": "rebounded to 98% of pre-war levels, while product exports remain at 58%",
+   "topic": "Brent crude and US-Iran tensions",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Hormuz oil flows have nearly returned to their late June highs.",
+   "anchor": "Hormuz flows have now nearly returned to their late June highs.",
+   "topic": "Brent crude and US-Iran tensions",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Micron reported a revenue and earnings beat today after market close, as largely expected.",
+   "anchor": "Micron reported a revenue and earnings beat today AMC, as largely",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Micron's stock rose about 2% after hours as next quarter's guidance also came in above expectations.",
+   "anchor": "with the stock rising ~2% after hours. Next quarter\u2019s guidance also came in above expectations.",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next quarter"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "The setup heading into Micron's print was constructive for another beat-and-raise, with a memory backdrop that remains structurally tight.",
+   "anchor": "another beat-and-raise was constructive heading into the print with a memory backdrop that remains structurally tight across",
+   "topic": "Micron earnings",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "MGM Resorts International is considering making a bid for PPLI, according to the WSJ.",
+   "anchor": "MGM Resorts International is considering making a bid for PPLI ($1.7M",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "released",
+   "instruments": [
+    "MGM",
+    "PPLI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "J.P. Morgan's analysts said MGM's approach to PPLI could make sense.",
+   "anchor": "according to the WSJ. According to our analysts, MGM\u2019s approach could make sense as",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "released",
+   "instruments": [
+    "MGM",
+    "PPLI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "MGM is down about 10% since the PPLI bid news broke, versus PPLI up about 15%.",
+   "anchor": "MGM is down ~10% since the news vs. PPLI +15%",
+   "topic": "MGM PPLI acquisition talks reversal",
+   "status": "released",
+   "instruments": [
+    "MGM",
+    "PPLI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Carnival Corporation's shares rose about 13% after the cruise line operator's results.",
+   "anchor": "Carnival Corporation\u2019s shares rose +13% after the cruise line operator",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Carnival delivered a very strong quarter despite rising oil prices and raised its full-year guidance.",
+   "anchor": "delivered a very strong quarter despite rising oil prices and raised its full-year guidance",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Kodiak Sciences shares jumped more than 170% after the clinical-stage biopharma company's drug trial news.",
+   "anchor": "Kodiak Sciences shares jumped 170%+ after the clinical stage biopharma",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "KOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Kodiak Sciences' two experimental eye drugs, Zenkuda and tabirafusp-ted, met primary endpoints in a Phase 3 study.",
+   "anchor": "company announced that its two experimental eye drugs, Zenkuda and tabirafusp-ted, met primary endpoints in a Phase 3",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "KOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "ALOY appointed a rare-earth processing veteran as COO and has existing offtake agreements to purchase the majority of SRC's planned rare-earth production.",
+   "anchor": "earth processing veteran as COO, and has existing offtake agreements to purchase the majority of SRC\u2019s planned production",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ALOY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Retail investors have shown strong interest in ALOY since mid-March 2026, with net purchases in the stock.",
+   "anchor": "Retail investors have shown strong interest since mid-March 2026, with net purchases",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ALOY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "Retail Radar - Sep 30 \u2013 Weak Sentiment, Record Tilt to TLT",
+   "claim": "Non-retail futures traders bought a heavy $33B over the past week, majorly led by ES futures.",
+   "anchor": "The past week witnessed heavy buying from futures traders at $33B, majorly led by ES",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18305__retail-radar-sep-30-weak-sentiment-record-tilt-to-tlt.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 29,
+  "matched": 29,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 7,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
