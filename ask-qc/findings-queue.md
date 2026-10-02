@@ -730,3 +730,10 @@ The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full 
 
 ### 21:13:30 UTC, Ry_spaceman, Mac mini price history
 - Bucket: judgment. "Hovered between $499 and $699 across the 2010s and early 2020s" is contradicted by the 2018 Mac mini at $799 starting price. Grounded-web answer built on snippets. Same family as the 2026-09-28 box-office finding: a historical series or "first/range" statistic from snippets should be stated only for years the snippets give, or the answer should say it can't confirm the rest.
+
+## 2026-10-01
+
+- **predates-class** — 19:40 UTC, Ligma "Gimmie top 5, who has the crown" (follow-up to "who's the most gay in chat?"): bot called `lookup_user_profile metric=racism` and posted a racism top 5 with slur counts. `room_rank.gate` / `superlative_note` deployed 2026-10-02T08:36-07:00, after the turn. No action beyond confirming the gate fires on this exact two-turn sequence (fixture check in `scripts/ask_fixture_run.py`).
+- **judgment** — 19:39 UTC, "who's the most gay in chat?": bot refused to name anyone. Owner rule says pick real people. Predates `superlative_note`; recheck after deploy.
+- **judgment** — 15:57 UTC, banter roast carried the "Couldn't verify these specifics against a live source" footer. The grounding hedge fires on profile-derived figures in a LOCAL/BANTER answer (`grounding:calendar` / hedged(local-skip) retry). Worth a look at why the banter route adds it.
+- **judgment** — 20:44 UTC, "how many USA mortgages are floating rate": answered with ARM share of applications, not the share of outstanding mortgages; ARM is not equal to floating.

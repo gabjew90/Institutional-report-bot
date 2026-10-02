@@ -1168,3 +1168,13 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — ISM Manufacturing actual not ingested ~3h after the 10:00 print, so RECAP carries only consensus. print_watch does not cover ISM.
 - **observation** — France brief: Goldman "near 1.20" spread and the Euro Stoxx 6,200 "line" not traceable to a bank entry in the dump (6,200 appears only in the open-reads block).
 - **observation** — Omnipulse fell back to classic: "4 source files unread at edit". Track recurrence.
+
+## 2026-10-02
+- **deterministic-fixable** — September payrolls shipped without the actual (dump calendar: ACTUAL=29K vs est 89K, unemployment 4.2%). The calendar fallback feed text ("PRINTED — actual not ingested yet") makes the writer emit "first desk reads are still coming in" and a WATCH item for a past print. `released-actual-missing` did not hard-fail. Cover payrolls in print_watch and feed its actual into the context, or fail the gate when a high-impact print has no actual.
+- **deterministic-fixable** — Lint has no pattern for data-gap meta-narration ("no actual number in our data yet", "first desk reads are still coming in").
+- **deterministic-fixable** — 2026-09-29 adversarial verdict file still missing (control-series gap, fourth day carried). Also no 2026-10-01 STEP 7 self-review file.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 19:41Z, 5.5h after the pulse, with 102 PDFs vs 18. Figures cannot be audited against the pulse-time context (second day).
+- **observation** — Adversarial file records only the post-repair verdict (0 findings) after a 2-soft DISPATCH_SOFT_REPAIR. The pre-repair findings are lost; driver trail is a one-line abridged summary.
+- **observation** — SCRUB reversed a yield claim ("all maturities rising" to "long-dated rising while 2-year fell"). Re-check SCRUB fact preservation.
+- **observation** — Omnipulse fell back to classic for the second day running (10-01, 10-02).
+- **observation** — Headline "Bonds ignore soft PCE" and the lead theme repeat 10-01.
