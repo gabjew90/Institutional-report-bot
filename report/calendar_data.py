@@ -536,6 +536,22 @@ def lineup_signature(day: CalendarDay) -> str:
     return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
+def lineup_json(day: CalendarDay) -> str:
+    """Everything the posted sheet carried, as JSON without the logo
+    bytes: rows, sessions, implied moves, econ events, the feed flags
+    and the QC lists. Stored with the post (calendar_posts.lineup_json,
+    2026-10-02) so the quality audit can check the moves and sources of
+    the sheet that actually went out, not a rebuild hours later."""
+    import json
+    from dataclasses import asdict
+
+    data = asdict(day)
+    for band in ("bmo", "amc"):
+        for row in data.get(band) or []:
+            row.pop("logo", None)
+    return json.dumps(data, default=str)
+
+
 def _econ_minutes(time_et: str) -> int | None:
     """"8:15" -> 495. None when the string is not a clock time."""
     try:

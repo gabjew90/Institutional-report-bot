@@ -1296,6 +1296,31 @@ async def _sleeper_players_refresh_job():
         log.error(f"Sleeper players cache refresh failed: {e}")
 
 
+CALENDAR_PNG_DIR = "/data/calendar-posts"
+CALENDAR_PNG_KEEP_DAYS = 60
+
+
+def _keep_calendar_png(date_iso: str, png: bytes) -> None:
+    """Keep the posted sheet on the volume for the quality audit
+    (.claude/skills/quality-audit, 2026-10-02): the bot cannot read its
+    own message back from the calendar channel (Discord 403), and a
+    rebuild hours later prices different moves. About 200 KB a day,
+    pruned after CALENDAR_PNG_KEEP_DAYS. Never fails the job."""
+    import os
+    import time as _time
+    try:
+        os.makedirs(CALENDAR_PNG_DIR, exist_ok=True)
+        with open(os.path.join(CALENDAR_PNG_DIR, f"{date_iso}.png"), "wb") as f:
+            f.write(png)
+        cutoff = _time.time() - CALENDAR_PNG_KEEP_DAYS * 86400
+        for name in os.listdir(CALENDAR_PNG_DIR):
+            path = os.path.join(CALENDAR_PNG_DIR, name)
+            if os.path.getmtime(path) < cutoff:
+                os.remove(path)
+    except Exception as e:
+        log.warning(f"Calendar {date_iso}: could not keep the posted PNG: {e}")
+
+
 async def _daily_calendar_job(bot=None):
     """Nightly Omnibeta calendar graphic (2026-08-20, spec
     docs/superpowers/specs/2026-08-15-daily-calendar-graphic-design.md).
@@ -1369,10 +1394,13 @@ async def _daily_calendar_job(bot=None):
         )
         sent = len(posts)
         if sent:
+            from report.calendar_data import lineup_json
             try:
-                db.record_calendar_posts(date_iso, posts, lineup_signature(day))
+                db.record_calendar_posts(date_iso, posts, lineup_signature(day),
+                                         lineup_json(day))
             except Exception as e:
                 log.error(f"Calendar {date_iso}: could not record posts: {e}")
+            _keep_calendar_png(date_iso, png)
             db.record_pipeline_event(
                 "calendar_posted", "completed",
                 payload=f"{date_iso}: {sent} channel(s), "
