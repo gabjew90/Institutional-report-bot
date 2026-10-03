@@ -1,0 +1,338 @@
+{
+ "brief": "Morning US Industrials & Materials note with two dedicated previews: airlines and NFP. Airlines: capacity cuts and a better competitive landscape drove RASM growth from flat exiting 2025 to mid-teens in GS's 3Q26 forecast, but jet fuel has risen sharply off its June low to near 2026 highs, so GS cuts 4Q26 industry net income to about $250mm from $3.7bn prior and cuts 2027/2028 net income forecasts 28% and 24%. GS keeps ALGT Buy-rated on a smaller FY26 cut than peers, leading 2027 margins from merger synergies, and a cheap valuation (about 7.5x 2027 earnings vs about 14x historical). NFP: GIR forecasts +80k payrolls, below +88k consensus, as later Labor Day timing drags against low layoffs and a pickup in big-data job indicators, and September will not repeat August's leisure/hospitality and local-education boost; unemployment forecast cut to 4.0% from 4.1% on falling continuing claims; wage growth forecast +0.2% month over month, below consensus, on calendar effects. The desk reflags Q3 longs (ETN, EXPD, PCAR, XPO, TT) against funding shorts (DOV, OC, GWW, AAL, CRH). Macro color: futures up 50bp, France-German spread widening toward 150bp, Brazil's election deadlocked, crude down 3%, the 10-year easing to 5.22%, Bitcoin up 2%.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs forecasts US airline industry unit revenue (RASM) will accelerate from flat at the end of 2025 to mid-teens growth in its third-quarter 2026 forecast.",
+   "anchor": "unit revenue (\"RASM\") acceleration from flat exiting 2025 to the mid-teens growth underlying our 3Q 2026 forecast",
+   "topic": "Airline demand and margin outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs is cutting its 4Q 2026 US airline industry net income outlook to about $250 million from $3.7 billion previously because of a materially higher jet fuel price forecast.",
+   "anchor": "reducing our 4Q 2026 industry outlook substantially to ~$250 million vs. $3.7 billion prior",
+   "topic": "Airline demand and margin outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "4Q 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs cut its 2027 and 2028 US airline industry net income forecasts by 28% and 24% respectively, primarily due to higher jet fuel prices.",
+   "anchor": "28% and 24% reductions to our 2027 and 2028 industry net income forecasts, respectively",
+   "topic": "Airline demand and margin outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs rates Allegiant Travel (ALGT) Buy, expecting one of the airline industry's leading margins in 2027 and noting shares trade at about 7.5x its reduced 2027 earnings forecast versus a historical P/E average of about 14x.",
+   "anchor": "ALGT shares trading ~7.5x our reduced 2027 forecast vs. its historical P/E average of ~14x",
+   "topic": "Airline demand and margin outlook",
+   "status": "target",
+   "instruments": [
+    "ALGT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs Global Investment Research estimates September nonfarm payrolls rose by 80,000, slightly below consensus of +88,000.",
+   "anchor": "We estimate nonfarm payrolls rose by 80k in September, slightly below consensus of +88k",
+   "topic": "September NFP preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs now expects the September unemployment rate to have edged down to 4.0%, revised from a prior forecast of 4.1% that had matched consensus and the prior month's rate.",
+   "anchor": "unemployment rate edged down to 4.0% (vs. our previous forecast that was in line with consensus and the prior month at 4.1%)",
+   "topic": "September NFP preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs forecasts average hourly earnings rose 0.2% month-over-month in September, below consensus, reflecting negative calendar effects.",
+   "anchor": "We forecast a 0.2% month-over-month increase in average hourly earnings, below consensus, reflecting negative calendar effects",
+   "topic": "September NFP preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs' industrials desk is reflagging long ideas in ETN, EXPD, PCAR, XPO and TT heading into third-quarter earnings season.",
+   "anchor": "Longs: ETN EXPD PCAR XPO TT",
+   "topic": "Industrials Q3 EPS long/short calls",
+   "status": "target",
+   "instruments": [
+    "ETN",
+    "EXPD",
+    "PCAR",
+    "XPO",
+    "TT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026 earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goldman Sachs' industrials desk flags DOV, OC, GWW, AAL and CRH as sources of funds for the same third-quarter earnings season reflagging.",
+   "anchor": "Sources of Funds: DOV OC GWW AAL CRH",
+   "topic": "Industrials Q3 EPS long/short calls",
+   "status": "target",
+   "instruments": [
+    "DOV",
+    "OC",
+    "GWW",
+    "AAL",
+    "CRH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026 earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "The US Dollar Index traded just below 92 on the morning of October 2, 2026.",
+   "anchor": "dollar similar with DXY just below $92",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Bitcoin was risk-on, up 2% to start the day at $86,400 on October 2, 2026.",
+   "anchor": "Bitcoin risk on to start up 2% to $86.4k",
+   "topic": "Dollar, gold and bitcoin moves",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "The French-German 10-year government bond yield spread is widening toward 150 basis points, a sign of a growing crisis.",
+   "anchor": "French German 10 year yield spread widening towards 150bps, signs of a growing crisis",
+   "topic": "European sovereign spread widening",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "The two candidates in Brazil's presidential election are deadlocked in polls ahead of Sunday's vote.",
+   "anchor": "Brazil the two candidates are deadlocked in the pools ahead of elections Sunday",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "ahead of Sunday's election"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "The 10-year Treasury yield eased to 5.22% on the morning of October 2, 2026.",
+   "anchor": "Some relief on rates as well with 10-year \u201cdown\u201d to 5.22%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "US S&P futures were up 50 basis points in the early session on October 2, 2026, capping off a volatile week.",
+   "anchor": "US S&P futures up 50bps in the early session to cap off this volatile week",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Crude oil fell 3%, with Brent back below $100 and WTI below $90, on the morning of October 2, 2026.",
+   "anchor": "crude down 3% Brent back below $100 and WTI below $90",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Nike (NKE) issued very weak fiscal 2027 topline guidance, which the desk views as more company-specific than a broad read on the consumer.",
+   "anchor": "very weak fiscal 2027 topline guidance \u2013 feels more company specific than a broad blanket comment on the consumer",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "fiscal 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "RTX won a $24.4 billion multi-year contract for SM-6 interceptors, building on existing agreements between RTX and the Department of War.",
+   "anchor": "RTX with a $24.4bn multi year contract for SM-6 interceptors which builds on landmark agreements between RTX and the Department of War",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "RTX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goodyear (GT) plans to close its chemical manufacturing plants in Niagara Falls and Bayport, incurring $55 to $75 million in total charges, including $30 million in cash charges.",
+   "anchor": "$55-75mm of charges $30mm in cash",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Goodyear (GT) expects its plant closures to improve Americas segment operating income by $15 to $20 million annually beginning in 2027.",
+   "anchor": "Improve Americas segment operating income by $15-20mm annually beginning in 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "GT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "beginning 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Granite Construction (GVA) was awarded the $325 million Big Creek Tunnel project in Ohio.",
+   "anchor": "GVA awarded $325mm Big Creek Tunnel project in OH",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials NFP airlines EPS 2 Oct 2026",
+   "claim": "Boeing (BA) averted a strike after workers ratified a new contract offer.",
+   "anchor": "BA averts a strike as workers ratify new contract offer yesterday",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "BA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18406__gs-u-s-industrials-materials-nfp-airlines-eps-2-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 10,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
