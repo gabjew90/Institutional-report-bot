@@ -1,0 +1,365 @@
+{
+ "brief": "GS's payrolls preview estimates September nonfarm payrolls at 80k, below consensus of 88k, because Labor Day fell later this year (a drag on the print) and August's boost from leisure/hospitality and local education hiring will not repeat. Unemployment is seen edging down to 4.0% on falling continuing claims, while average hourly earnings growth is forecast at 0.2% m/m, below consensus, on calendar effects. In markets, PCE plus dovish Fed commentary bull-steepened the curve and cut October hike odds to 30% (about 3 hikes priced through YE'27), drawing front-end buyers; separately France's fiscal plan triggered flight-to-safety flows and a 2-standard-deviation DXY move. On micro, ACN's +16% earnings reaction and SNPS's +13% investor-day move squeezed popular shorts and AI-at-risk names, with hedge funds net buying rather than adding shorts despite wanting to; activity stayed muted. Stock-specific: Adobe's CEO transition is framed as a potential AI-turnaround catalyst but GS keeps its Sell rating; Nike's FY27 guidance missed and introduced a new turnaround plan as non-performance segments offset healthy performance-business growth; GS initiated Enbridge at Neutral, weighing pipeline competition and a constrained balance sheet against US gas demand growth.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs estimates September nonfarm payrolls rose by 80k, slightly below consensus of +88k.",
+   "anchor": "nonfarm payrolls rose by 80k in September, slightly below consensus of +88k.",
+   "topic": "September NFP preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs estimates the unemployment rate edged down to 4.0% in September from 4.1% the prior month.",
+   "anchor": "the unemployment rate edged down to 4.0% (vs. our previous forecast that was in line with consensus and the prior month at 4.1%)",
+   "topic": "September NFP preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs forecasts a 0.2% month-over-month increase in September average hourly earnings, below consensus.",
+   "anchor": "We forecast a 0.2% month-over-month increase in average hourly earnings, below consensus, reflecting negative calendar effects.",
+   "topic": "September NFP preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "October Fed hike odds have fallen to 30%, with about 3 hikes priced in through year-end 2027.",
+   "anchor": "Oct hike odds are down to 30% with ~3 hikes priced in through YE '27.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through YE '27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "The Treasury curve continued to bull-steepen following the PCE print and recent dovish Fed commentary.",
+   "anchor": "Curve continued to bull-steepen following PCE + recent dovish Fed speak.",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman's rates desk saw a variety of buyers in front-end rates as clients got comfortable with fewer Fed hikes.",
+   "anchor": "Rates desk saw a variety of buyers in front end rates (getting comfortable around less hikes)",
+   "topic": "US rates selloff and Fed hike pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Anil Chakravarthy will become Adobe's President and CEO on 12/1 as part of its previously announced leadership transition.",
+   "anchor": "Anil Chakravarthy will be stepping into the President and CEO role on 12/1, as part of Adobe's planned leadership transition",
+   "topic": "Adobe CEO transition and Sell thesis",
+   "status": "released",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "David Wadhwani, President of Adobe's Creativity & Productivity Business, is simultaneously stepping down to found a new venture.",
+   "anchor": "David Wadhwani, President of the Creativity & Productivity Business, is simultaneously stepping down to found a new venture",
+   "topic": "Adobe CEO transition and Sell thesis",
+   "status": "released",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs believes Adobe's new leadership provides a catalyst for the company to transition from an 'AI loser' to an 'AI winner'.",
+   "anchor": "execute a transition from \"AI loser\" to \"AI winner\" -- and believe new leadership provides a catalyst for change",
+   "topic": "Adobe CEO transition and Sell thesis",
+   "status": "target",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs maintains its Sell rating on Adobe pending visibility into strategic decisions and execution on new initiatives.",
+   "anchor": "We maintain our Sell rating: we look for visibility into strategic decisions, followed by execution on new initiatives",
+   "topic": "Adobe CEO transition and Sell thesis",
+   "status": "target",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Nike introduced FY27 guidance materially below FactSet expectations alongside F1Q results and a new 'Pace' operating model transformation plan.",
+   "anchor": "NKE introduced FY27 guidance materially below FactSet expectations and introduced Pace, a new operating model transformation plan.",
+   "topic": "Nike FY27 guidance reset",
+   "status": "forecast",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Nike's performance business continues to show healthy growth in the double digits.",
+   "anchor": "NKE continues to demonstrate healthy growth in its performance business (+DD%)",
+   "topic": "Nike FY27 guidance reset",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Nike's performance-business growth is more than offset by declines in Sportswear, Jordan, and China, down low-double-digits, mid-teens, and 26% ex-FX respectively.",
+   "anchor": "this is more than offset by significant pressure in its Sportswear, Jordan, and China businesses, down LDD%, mid-teens%, and -26% ex-FX, respectively.",
+   "topic": "Nike FY27 guidance reset",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs expects the key debate on Nike to be its FY28 earnings power under various recovery scenarios.",
+   "anchor": "the key debate from here to be the earnings power of NKE in FY28 under various scenarios",
+   "topic": "Nike FY27 guidance reset",
+   "status": "forecast",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs resumed coverage of Enbridge with a Neutral rating.",
+   "anchor": "We resume coverage of Enbridge (ENB/ENB.TO) with a Neutral rating.",
+   "topic": "Enbridge coverage initiation",
+   "status": "target",
+   "instruments": [
+    "ENB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Enbridge has underperformed year to date, down 3% versus a 18% gain for the AMNA midstream index.",
+   "anchor": "despite recent underperformance (ENB -3% YTD vs. AMNA +18%) for three reasons.",
+   "topic": "Enbridge coverage initiation",
+   "status": "released",
+   "instruments": [
+    "ENB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs believes Enbridge can execute on roughly a 5% EBITDA CAGR through 2030, with its estimates just below consensus on average.",
+   "anchor": "believe ENB can execute on a ~5% EBITDA CAGR through 2030 (with our estimates just below consensus on average",
+   "topic": "Enbridge coverage initiation",
+   "status": "forecast",
+   "instruments": [
+    "ENB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman Sachs sees Enbridge's balance sheet as relatively constrained, limiting capital allocation flexibility and making upside to its growth outlook modestly challenging.",
+   "anchor": "we see the balance sheet as relatively constrained - limiting capital allocation flexibility and making upside to the growth outlook as modestly challenging",
+   "topic": "Enbridge coverage initiation",
+   "status": "released",
+   "instruments": [
+    "ENB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Global Fundamental long/short managers finished September down 0.55%, outperforming the market benchmark.",
+   "anchor": "Global Fundamental L/S managers finished -0.55% in September, outperforming the market benchmark.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Accenture's +16% earnings move and Synopsys's +13% investor-day move drove big squeezes higher in popular shorts and perceived AI-at-risk names.",
+   "anchor": "move in ACN +16% and investor day move in SNPS +13% drove big squeezes higher in popular shorts and perceived AI-at-risk names (GSTMTAIR +3.7%).",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ACN",
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Despite most hedge funds wanting to add shorts in the AI-at-risk complex on the move, Goldman's desk actually saw more buying than selling.",
+   "anchor": "most HFs wanting to add shorts in this complex on the move, we actually saw more buying here vs selling.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "Goldman's floor rated overall activity levels a 4 on a 1-10 scale, with overall client skews benign.",
+   "anchor": "Our floor was a 4 on a 1-10 scale in terms of overall activity levels with overall client skews benign.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "France's fiscal consolidation plan drove cross-border moves and a flight to safety.",
+   "anchor": "France's fiscal consolidation plan drove some cross border moves & a 'flight to safety'",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 2 Oct 2026",
+   "claim": "The dollar index had a roughly 2-standard-deviation positive move on the day.",
+   "anchor": "DXY also had a ~2std positive move today (TY Matt Kaplan)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-02/18397__gs-us-daily-download-2-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 24,
+  "matched": 24,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 6,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
