@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: ```json {\"bank\": \"BofA\", \"document\": \"The Flow Show: A Tail of Two Cities\", \"claim\": \"Municipal bonds have seen inflows ",
+ "last_reason": "reader: All 30 anchors verify as exact substrings against the source text (whitespace-normalized). Also confirmed labels stay wi",
  "history": [
   {
    "at": "2026-10-02T21:11Z",
    "run_id": "37064126976",
    "reason": "reader: ```json {\"bank\": \"BofA\", \"document\": \"The Flow Show: A Tail of Two Cities\", \"claim\": \"Municipal bonds have seen inflows "
+  },
+  {
+   "at": "2026-10-03T01:06Z",
+   "run_id": "37084356876",
+   "reason": "reader: All 30 anchors verify as exact substrings against the source text (whitespace-normalized). Also confirmed labels stay wi"
   }
  ]
 }
