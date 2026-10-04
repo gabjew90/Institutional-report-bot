@@ -1,0 +1,717 @@
+{
+ "brief": "Goldman's consumer morning note leads with Nike (-8%), where a top-line miss and FY27 EPS guidance of $1.15-$1.35 (vs $1.68 consensus) landed close to what bears already expected, as a 26% ex-FX decline in Greater China overwhelmed +2% North America growth. Management's new Pace program targets $2.5bn in cumulative savings through FY31. The debate shifts to whether FY27 is the trough, though Goldman sees no clear evidence of that yet; applying a 25x multiple to the $1.25 guidance midpoint implies a $31.25 stock. Separately, tax-loss-selling pressure is building: GS's consumer short-candidate basket fell 9% in September, its second-worst month, and October carries a larger share of mutual-fund year-end selling than September, consistent with the prime book showing both discretionary and staples net sold. The broader prime positioning update shows the global book modestly net sold in September, short sales outpacing long buys in single stocks (1.2:1), and the US Consumer Discretionary long/short ratio at a one-year low of 2.06. The rest of the note is a factual roundup: overnight macro levels, September auto SAAR near 16.0mn, retail promotional checks with Buy-rated DKS and ASO, and Macau September GGR down 1% yoy, in line with expectations.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "US equity futures were rallying this morning, with SPX up 45bps, NDX up 75bps and RTY up 60bps.",
+   "anchor": "US equity futures are rallying (SPX +45bps, NDX +75bps, RTY +60bps)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Treasuries held onto the prior day's gains, with the 2yr yield unchanged at 4.79%, the 10yr down 0.5bp at 5.235% and the 30yr down 0.5bp at 5.605%.",
+   "anchor": "Treasuries hold onto yesterday's gains (2yr unch at 4.79%, 10yr -0.5bps at 5.235%, 30yr -0.5bps at 5.605%)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Crude oil was retreating, with WTI down 3.75% at $89.40, on reports that European nations are weighing a release of diesel and crude stockpiles.",
+   "anchor": "Crude is retreating (WTI -3.75% at $89.40) on reports European nations are weighing a release of diesel/crude stockpiles",
+   "topic": "France diesel reserve release",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "France was reportedly suggesting a release of 100mb of diesel and crude stockpiles.",
+   "anchor": "a release of diesel/crude stockpiles, with France reportedly suggesting 100mb",
+   "topic": "France diesel reserve release",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Eurozone headline CPI ran slightly hotter than expected overnight while core inflation was in line.",
+   "anchor": "Eurozone headline CPI ran slightly hotter with core in-line",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Tokyo CPI printed hot across the board overnight.",
+   "anchor": "Tokyo CPI printed hot across the board",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Focus today shifts to the US September NFP and unemployment rate release at 8:30am, with Fed voter Logan speaking at 10am and non-voter Goolsbee at 12pm.",
+   "anchor": "Focus now shifts to US September NFP/Unemployment Rate at 8:30am, alongside Fed speakers Logan (Voter, 10am) and Goolsbee",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Nike fell 8% after a top-line miss and disappointing guidance.",
+   "anchor": "Consumer focus all on NKE (-8%) results where top-line missed again and guidance disappointed",
+   "topic": "Nike earnings reaction",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Goldman frames the debate as whether Nike's results represent a trough level the company can grow off of, with no obvious evidence yet that they do.",
+   "anchor": "Now it\u2019s all about whether this represents a trough level the company can grow off of",
+   "topic": "Nike earnings reaction",
+   "status": "level",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Nike's EPS was $0.48 versus $0.44 consensus, on revenue of $11.21B versus $11.32B consensus.",
+   "anchor": "EPS was $0.48 (vs $0.44 cons) on revenue of $11.21B (vs $11.32B cons)",
+   "topic": "Nike earnings reaction",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Nike's gross margin was 42.8% versus 42.4% consensus, aided by lower logistics costs.",
+   "anchor": "gross margin of 42.8% (vs 42.4% cons) aided by lower logistics costs",
+   "topic": "Nike earnings reaction",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Greater China remained Nike's key problem area, down 26% ex-FX, while North America grew 2%.",
+   "anchor": "Greater China remained the key problem area, down 26% ex-FX, while North America grew +2%",
+   "topic": "Nike earnings reaction",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Nike guided FY27 EPS to $1.15-$1.35 ex-items versus $1.68 consensus, with revenue seen down high-single digits versus down 2.3% consensus.",
+   "anchor": "FY27 EPS is guided to $1.15-$1.35 ex-items (vs $1.68 cons), with revenue seen down high-single digits (vs down 2.3% cons)",
+   "topic": "Nike earnings reaction",
+   "status": "forecast",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Nike introduced a new operating model called Pace targeting $2.5B in cumulative savings through FY31.",
+   "anchor": "Management introduced Pace, a new operating model targeting $2.5B in cumulative savings through FY31",
+   "topic": "Nike earnings reaction",
+   "status": "target",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through FY31"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Nike CEO Elliott Hill said the company still has more work to do in Nike Sportswear, Jordan Brand and Greater China.",
+   "anchor": "we have more work to do in NIKE Sportswear, Jordan Brand and Greater China.",
+   "topic": "Nike earnings reaction",
+   "status": "level",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Applying a 25x multiple to the midpoint of Nike's FY27 EPS guidance of $1.25 implies a $31.25 stock.",
+   "anchor": "positioning and recovery 'hope' keeps valuation elevated)...you have a $31.25 stock.",
+   "topic": "Nike earnings reaction",
+   "status": "target",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Goldman's basket tracking tax-loss-selling candidates (GSCBMF26) fell 9% in September, its second worst month of the year.",
+   "anchor": "our basket that tracks candidates (GSCBMF26) down -9% in September, its second worst month of the year",
+   "topic": "US consumer tax-loss selling",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "October has an even larger share of mutual fund year-ends compared to September, so tax-loss selling will stay a theme investors watch.",
+   "anchor": "recall October has an even larger share of Mutual Fund year-ends compared to September",
+   "topic": "US consumer tax-loss selling",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "The list of consumer stocks down on the year is plentiful.",
+   "anchor": "the list of consumer stocks down on year is plentiful",
+   "topic": "US consumer tax-loss selling",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Goldman's prime brokerage update showed both discretionary and staples stocks were net sold in September.",
+   "anchor": "our prime team's update on September noted both discretionary and staples were net sold on the month",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Next week brings earnings from LW, STZ, LEVI, PEP and DAL plus another consumer conference.",
+   "anchor": "Next week brings earnings from LW, STZ, LEVI, PEP, DAL and another consumer conference",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "LW",
+    "STZ",
+    "LEVI",
+    "PEP",
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "next week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Goldman's prime book shows the global book was modestly net sold in September, as short sales modestly outpaced long buys.",
+   "anchor": "The global book was modestly net sold in September, as short sales modestly outpaced long buys",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Gross trading activity in Goldman's prime book increased at the fastest pace since May.",
+   "anchor": "Gross trading activity increased at the fastest pace since May",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Single stocks collectively were net sold in September, driven by short sales outpacing long buys 1.2 to 1.",
+   "anchor": "Single Stocks collectively were net sold, driven by short sales outpacing long buys (1.2 to 1)",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Communication Services, Info Tech and Financials were the most net-bought global sectors in September.",
+   "anchor": "Communication Svcs, Info Tech, and Financials were the most $ net bought global sectors in September",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Industrials, Health Care and Staples were the most net-sold global sectors in September.",
+   "anchor": "Industrials, Health Care, and Staples were the most net sold",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Macro products (index and ETF combined) were net bought in September, led by short covers.",
+   "anchor": "Macro Products (Index and ETF combined) were net bought, led by short covers",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "US-listed ETF shorts increased 4% in September, led by shorting in Credit and Small-Cap ETFs.",
+   "anchor": "US-listed ETF shorts increased +4% in September, led by shorting in Credit and Small-Cap ETFs",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "ETF shorts now make up 10.1% of the US equity short book excluding index products, versus 10.2% at the end of August.",
+   "anchor": "ETF shorts now make up 10.1% of the US equity short book excl. Index products (vs. 10.2% at the end of August)",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "ETF shorts' share of the ex-index US equity short book sits in the 2nd percentile versus both the past year and the past five years.",
+   "anchor": "in the 2nd percentile vs. both the past year and the past five years",
+   "topic": "hedge fund positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Discretionary stocks were net sold in September, driven by short sales outpacing long buys 1.5 to 1.",
+   "anchor": "Discretionary stocks were net sold, driven by short sales outpacing long buys (1.5 to 1)",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Automobiles, Textiles/Apparel & Luxury Goods, and Household Durables were the most net-sold consumer subsectors.",
+   "anchor": "Automobiles, Textiles, Apparel & Luxury Goods, and Household Durables were the most net sold subsectors",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Specialty Retail and Hotels, Restaurants & Leisure were the most net-bought consumer subsectors.",
+   "anchor": "Specialty Retail and Hotels, Restaurants & Leisure were the most net bought",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "The US Consumer Discretionary long/short ratio stands at 2.06, a 1-year low and in the 63rd percentile versus the past five years.",
+   "anchor": "US Consumer Discretionary long/short ratio now stands at 2.06, which is a 1-year low and in the 63rd percentile",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Defensive sectors saw the largest percentage of net selling in nearly a year.",
+   "anchor": "Defensive sectors saw the largest % net selling in nearly 1 year",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Health Care and Staples were net sold while Utilities saw little net positioning activity.",
+   "anchor": "Health Care and Staples were net sold, while Utilities saw little net activity",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "September US auto SAAR ran at approximately 16.0mn, slightly below the StreetAccounts consensus of 16.1mn.",
+   "anchor": "ran at a seasonally adjusted annualized rate (SAAR) of ~16.0 mn per both Motor Intelligence and Wards, slightly below the StreetAccounts consensus of 16.1 mn",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Total September US auto sales were up approximately 4% year over year but down 5% sequentially, with Ford up about 2% year over year and GM about flat.",
+   "anchor": "total sales were up ~4% yoy (down 5% sequentially), with Ford up ~2% yoy and GM about flat",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "F",
+    "GM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "US EV sales fell approximately 46% year over year to 6% of volumes in September, while hybrid sales rose approximately 35% year over year.",
+   "anchor": "EV sales fell ~46% yoy (6% of volumes) and hybrids rose ~35% yoy",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "US auto incentive spending per vehicle was down approximately 8% year over year in September while inventory rose to approximately 2.71 million units.",
+   "anchor": "incentive spending per vehicle was down ~8% yoy and inventory rose to ~2.71 mn units",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "For 3Q26, total US auto units were down 1% year over year and 4% quarter over quarter, with GM down 6% year over year while holding top market share at 17%, and Ford down 7% year over year.",
+   "anchor": "For 3Q26, total units were down 1% yoy and 4% qoq, with GM down 6% yoy (top market share at 17%) and Ford down 7%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GM",
+    "F"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Third-quarter-to-date promotional activity was mixed year over year, running higher in store at both Dick's and Academy.",
+   "anchor": "3Q-to-date promotions were mixed y/y, running higher in store at both Dick's and Academy",
+   "topic": "specialty retail promotional activity",
+   "status": "level",
+   "instruments": [
+    "DKS",
+    "ASO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3QTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Foot Locker's promotional breadth trended higher but its promotional depth trended lower sequentially.",
+   "anchor": "Foot Locker's promotional breadth trended higher and depth lower sequentially",
+   "topic": "specialty retail promotional activity",
+   "status": "level",
+   "instruments": [
+    "DKS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "GIR reiterates its Buy rating on Dick's Sporting Goods, citing health and wellness trends, strong brand heat, and market share gains.",
+   "anchor": "reiterates its Buy rating on DKS, which should continue to benefit from health and wellness trends, strong brand heat, market share gains",
+   "topic": "specialty retail promotional activity",
+   "status": "level",
+   "instruments": [
+    "DKS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "GIR reiterates its Buy rating on Academy Sports & Outdoors based on expanded offerings, an emerging unit growth story, and attractive valuation at 7.0x NTM P/E.",
+   "anchor": "GIR also reiterates its Buy rating on ASO based on expanded offerings, an emerging unit growth story, and attractive valuation at 7.0x NTM P/E",
+   "topic": "specialty retail promotional activity",
+   "status": "level",
+   "instruments": [
+    "ASO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "The lifestyle footwear slowdown largely impacts mall-based chains and items outside Academy Sports & Outdoors' assortment.",
+   "anchor": "the lifestyle footwear slowdown largely impacts mall-based chains and items outside Academy's assortment",
+   "topic": "specialty retail promotional activity",
+   "status": "level",
+   "instruments": [
+    "ASO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Macau's gross gaming revenue fell 1% year over year to MOP18.1bn in September, broadly in line with lowered market expectations and tracking at 82% of FY19 levels.",
+   "anchor": "Macau's gross gaming revenue (GGR) fell -1% yoy to MOP18.1bn in September, broadly in line with lowered market expectations and tracking at 82% of FY19",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Macau 3Q26 industry GGR totaled MOP60.2bn, down 1% quarter over quarter or down 4% year over year including World Cup spending diversion in July.",
+   "anchor": "3Q26 industry GGR totaled MOP60.2bn (-1% qoq or -4% yoy, including World Cup spending diversion in July)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Macau year-to-date GGR grew 3% year over year, in line with GIR's full-year forecast of 3% year-over-year growth.",
+   "anchor": "YTD GGR grew +3% yoy, in line with GIR's full-year forecast of +3% yoy",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "full-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Consumer | Morning Trading Update (US), 2 Oct 2026",
+   "claim": "Macau visitation remained healthy, with average daily tourist arrivals of 128k during the Mid-Autumn Festival and inbound visitation recovering to up 6% year over year in August.",
+   "anchor": "average daily tourist arrivals of 128k during the Mid-Autumn Festival and inbound visitation recovering to +6% yoy in August",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-04/18511__gs-consumer-morning-trading-update-us-2-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 50,
+  "matched": 50,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 15,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
