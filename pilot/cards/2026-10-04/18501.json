@@ -1,0 +1,927 @@
+{
+ "brief": "Goldman's Prime Brokerage weekly rundown (Oct 2) reports the S&P 500 down 0.3% on the week despite a Friday rally, as investors digested a weak NFP print, an in-line ISM Manufacturing survey, and a demanding macro backdrop (oil, rates, geopolitics). Softer PCE and NFP data eased rate expectations (30bp of cuts now priced through year-end), triggering short covering in Russell 2000 futures: open interest fell $900mm since 9/29 and RTY funding spreads richened, though the desk says sustained RTY outperformance needs durable rate relief before end-user length rebuilds. US Fundamental long/short net leverage fell a third straight week to 46.4% (2nd percentile, five-year), with equities modestly net bought on short covering in Macro Products that offset continued Single Stock shorting; Health Care was the most net-bought sector via short covering while Energy was net sold for a sixth straight week despite oil near multi-year highs. NDX hit a new all-time high even as the equal-weight S&P fell for a seventh straight week, reflecting mega-cap concentration; the desk likes IWM and QQQ upside into Q3 earnings and the midterms, arguing the market is underpositioned for EPS, especially in tech.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The S&P 500 was down 0.3% on the week even though US stocks traded higher Friday, as investors digested a weak NFP print, an in-line ISM Manufacturing survey, and a demanding macro backdrop.",
+   "anchor": "US stocks traded higher Friday with the S&P 500 -0.3% on the week, as investors have been digesting a weak NFP, an in-line ISM Manufacturing",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Optical Networks, Momentum Longs, and Data Centers were among the equity themes that outperformed this week.",
+   "anchor": "Optical Networks, Momentum Longs, and Data Centers were",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Quantum Computing, Rare Earths, and Gold Miners were among the equity themes that underperformed this week.",
+   "anchor": "among the themes that outperformed, while Quantum Computing, Rare Earths, and Gold Miners were among the themes that underperformed.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "US Fundamental long/short net leverage decreased for a third consecutive week, down 2.2 points to 46.4%, the lowest level since April 2025 around 'Liberation Day'.",
+   "anchor": "US Fundamental L/S Net leverage decreased for a third consecutive week by -2.2 pts to 46.4% \u2013 the lowest level since Apr \u201925 (around",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "US equities were modestly net bought on the week from a flow perspective.",
+   "anchor": "From a flow perspective, US equities were modestly net bought on the week,",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The week's net equity buying was driven by short covering in Macro Products, partially offset by shorting in Single Stocks, while 8 of 11 US sectors were net sold, led by Communication Services.",
+   "anchor": "driven by short covering in Macro Products partially offset by shorting in Single Stocks. 8 of 11 sectors were net sold, led by Comm Svcs",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Health Care was by far the most net-bought US sector this week, driven by aggressive short covering, though it remains net sold on a month-over-month basis.",
+   "anchor": "Discretionary, and Materials, while Health Care was by far the most net bought driven by aggressive short covering (still net sold month/month).",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The Nasdaq 100 closed at a new all-time high, breaking through previous highs set on June 3 and September 22.",
+   "anchor": "NDX eclipsed a new ATH to end the week, blowing through previous highs set on 6/3 and 9/22.",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Russell 2000 futures positioning is deeply depressed, with Goldman estimating systematic exposure in the 7th percentile and leveraged funds carrying record short exposure as of September 22.",
+   "anchor": "Russell 2K positioning is deeply depressed via the futures lens, with GS estimating systematic exposure in the 7th percentile and leveraged",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Softer PCE and NFP data eased rate expectations, with 30bp of cuts now priced through year-end, sparking short covering in Russell 2000 futures.",
+   "anchor": "Softer PCE and NFP data have eased rate expectations, with 30bp now priced through year-end, sparking short covering",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Open interest in Russell 2000 futures has declined by $900 million since September 29.",
+   "anchor": "OI has declined by $900 million since 9/29, while RTY",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since September 29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Sustained Russell 2000 outperformance will require durable relief in rates before end-user length can rebuild, per the desk.",
+   "anchor": "Sustained Russell 2K outperformance, however, will require durable relief in rates before end-user length can rebuild.",
+   "topic": "hedge fund positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Gold fell 3.6% on the week as of mid-Friday, pressured by continued strength in deferred real rates and the dollar even as Fed hike pricing provided some reprieve.",
+   "anchor": "the ongoing strength in deferred real rates and the Dollar weighed on Gold",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Gold's option surface shows rising bearish concern, with the 3-month normalized 25-delta put-call skew richening to a two-month high ahead of the Nonfarm Payrolls release.",
+   "anchor": "delta put-call skew richening to a 2-month high and 62% 1-year rank prior to the Nonfarm payrolls release",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "CTA positioning in gold remains relatively short, which the desk calls the only solace for gold bulls since it leaves less momentum supply on continued weakness.",
+   "anchor": "only solace for outstanding bulls: CTA positioning remains relatively short, leaving less momentum supply on continued",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GLD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The Russell 2000 started October up 1.3% at time of writing, showing signs of stabilization after a difficult September.",
+   "anchor": "Russell 2K is starting October in the green (+1.3% at time of writing), showing signs of stabilization after a difficult month",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The Russell 2000 underperformed by 5.4% in September, leaving the RTY/SPX ratio in the bottom quartile of its one-year range.",
+   "anchor": "of underperformance (-5.4% in Sep) that left the RTY/SPX ratio in the bottom quartile of its one-year range.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The equal-weight S&P 500 is down seven straight weeks, which the desk says reflects continued concentration into Tech at the expense of other sectors, more pronounced in September.",
+   "anchor": "that, equal-weight S&P is down seven straight weeks which speaks to continued concentration into Tech, at expense of",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "SPX is on track to outperform the Russell 2000 for seven straight weeks, the longest streak since 2018, coupled with XLK outperforming SPX for six straight weeks.",
+   "anchor": "SPX is on track to outperform RTY for 7 straight weeks (longest streak since 2018), coupled with XLK outperforming SPX for 6 straight weeks",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "SPY",
+    "IWM",
+    "XLK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "MAGS (the Magnificent Seven ETF) has garnered inflows in 12 of the past 13 sessions, one of its longest stretches of recurring demand since launch.",
+   "anchor": "conduits to concentrated exposures\u2026 MAGS has garnered 12 inflows over the past 13 sessions, one of the fund\u2019s",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "MAGS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "RSP is on track for seven consecutive weeks lower, which would tie its longest such stretch, reaffirming support concentrated at the top of the market-cap spectrum.",
+   "anchor": "worth noting that RSP is on track for 7 consecutive weeks lower (which would tie its longest stretch), reaffirming the",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Goldman's derivatives desk likes IWM and QQQ upside into Q3 earnings and the midterms to capture the asymmetry.",
+   "anchor": "As we head into Q3 earnings and midterms, the desk likes IWM and QQQ upside to capture the asymmetry.",
+   "topic": "US mega-cap tech leadership",
+   "status": "target",
+   "instruments": [
+    "IWM",
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into Q3 earnings and the midterms"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Goldman's derivatives desk thinks the market is underpositioned for Q3 EPS, especially in tech, as relief emerges in rates and oil.",
+   "anchor": "We are starting to see relief in rates/oil and think the market is underpositioned for EPS, especially in tech",
+   "topic": "US mega-cap tech leadership",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "QQQ's 1-month and 3-month implied volatilities sit in the 36th and 34th percentiles on a one-year lookback.",
+   "anchor": "QQQ 1m and 3m implied vols are in the 36th and 34th percentiles",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "A Goldman Sachs customer bought 30,500 QQQ December 18 850 calls on Friday.",
+   "anchor": "respectively on a 1y lookback (GS customer bought 30.5k QQQ 18Dec 850 calls on Fri) and IWM is similarly in 34th",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The desk traded over $140 million notional of NDX December 2026 105%-115% Up and Out Calls, currently trading in the 43rd percentile, slightly below average.",
+   "anchor": "The desk traded over 140mm of NDX Dec26 105% 115% Up and Out Calls, which are currently trading in the 43rd percentile, slightly below average",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "December 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The desk also likes NDX outperformance versus RTY and NDX upside variance as ways to isolate tech outperformance.",
+   "anchor": "We also like NDX > RTY outperformance and NDX upvar as ways to isolate tech outperformance.",
+   "topic": "US mega-cap tech leadership",
+   "status": "target",
+   "instruments": [
+    "QQQ",
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The desk is watching the odds of a correlation-one move higher creep up, which would set up shorts to cover and laggards to catch up if rates, oil, or macro data continue to improve.",
+   "anchor": "We are also watching the odds of a corr-1 move higher creep up. If rates, oil or the macro data continue to improve,",
+   "topic": "hedge fund positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The desk thinks the current setup favors owning upside convexity rather than chasing downside.",
+   "anchor": "move here is favoring owning upside convexity rather than chasing downside.",
+   "topic": "hedge fund positioning",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Rising oil prices, higher yields, and geopolitical uncertainty have weighed on high-beta equities over the past few months.",
+   "anchor": "Rising oil prices, higher yields, and geopolitical uncertainty have weighed on high-beta equities over the past few months,",
+   "topic": "high-beta equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The desk has seen continued demand for beta hedging over the past few months in anticipation of a higher-rate regime.",
+   "anchor": "we have seen continued demand for beta hedging over the past few months in",
+   "topic": "high-beta equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Friday's softer payroll print pushed yields lower without sparking recession fears, which the desk says could be a strong tailwind for equities given weak market breadth and light net positioning that leaves room for a catch-up rally from laggards.",
+   "anchor": "recession fears \u2014 this could provide a strong tailwind for equities, where weak market breadth and light net positioning",
+   "topic": "high-beta equity positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Goldman's desk likes its sector/industry-neutral high-beta basket, GSPUBETA, for clients looking for upside on high-beta stocks.",
+   "anchor": "For clients looking for upside on high-beta stocks, we like our GS sector/industry-neutral basket, GSPUBETA.",
+   "topic": "high-beta equity positioning",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Clients' beta exposure is at the 83rd percentile over the last five years in Goldman's Prime book.",
+   "anchor": "which is at the 83rd percentile over the last 5 years in our Prime book",
+   "topic": "high-beta equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The desk likes hedging beta exposure with its Beta-ex-AI pair, GSPUBETX.",
+   "anchor": "we like hedging with our Beta-ex-AI pair (GSPUBETX).",
+   "topic": "high-beta equity positioning",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Beta exposure in Goldman's Prime book is hovering around the 90th percentile.",
+   "anchor": "Beta Exposure in our Prime Book is hovering around the 90th percentile",
+   "topic": "high-beta equity positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The macro backdrop continues to drive price action, with market focus on rates and oil leaving positioning depressed across the board, especially in vol.",
+   "anchor": "The macro backdrop continues to drive price action, with the markets focus on rates/oil leaving positioning depressed",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Goldman's Monetary Policy Factor reads -8, basically at the bottom end of the last 30 years, reflecting a lot of policy pessimism in the macro complex.",
+   "anchor": "Our GS Monetary Policy Factor is at -8, basically at the bottom-end of the last 30 years (a lot of policy pessimism is",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Over $1.5 trillion has poured into US ETFs so far this year, surpassing last year's record annual haul in only three quarters.",
+   "anchor": "Over $1.5 trillion has poured into ETFs this year, surpassing last year\u2019s record annual haul in only three quarters.",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year to date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Goldman expects US ETF flows to surpass $2 trillion in 2026, citing current run-rate metrics and seasonal Q4 tailwinds.",
+   "anchor": "Given these metrics (and seasonal Q4 tailwinds), we expect US ETF flows to surpass $2 trillion in 2026.",
+   "topic": "US ETF flow records",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "AI-fueled demand for cybersecurity exposure has the ETF complex on track for one of its best months of inflows in Goldman's dataset, at about $950 million.",
+   "anchor": "AI-fueled demand for cybersecurity exposure has the ETF complex on track for one of its best months of inflows in our dataset (+$950mm)",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "TLT hit an all-time low this week, the lowest in the fund's near 25-year operating history, and is on track for a multi-session losing streak.",
+   "anchor": "In the fund\u2019s near 25 years of operating history, TLT hit an all-time low this week\u2026 further, the fund is on track for",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Muni bond ETFs are collectively tracking for one of their worst months of index performance in 20 years, yet inflows persist, supported by tax-loss harvesting rotations.",
+   "anchor": "Muni bond ETFs are collectively tracking for one of their worst months of index performance in 20 years, yet inflows persist supported tax loss",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Spot-bitcoin ETFs registered nine consecutive days of inflows totaling more than $3 billion, the complex's largest nine-day haul year to date.",
+   "anchor": "days of inflows, totaling to more $3 billion collected (its largest 9-day haul YTD)\u2026 The demand spans beyond the past two",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Over $6 billion has poured into spot-bitcoin ETFs over the past two months.",
+   "anchor": "weeks, with over $6 billion pouring into the complex over the past two months\u2026",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past two months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "As the 10-year Treasury yield pushed through 5% this month, fixed income ETFs saw a rapid acceleration in trading volumes.",
+   "anchor": "through 5% this month, fixed income ETFs have seen a rapid acceleration in trading volumes\u2026",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Semiconductors regained footing this week, with the SOX up 4% versus NDX up 70 basis points.",
+   "anchor": "Semis continued to re-gain their footing (SOX +4% vs NDX +70bps) in another long week with continued factor rotations under",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SOXX",
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "The valuation backdrop for tech looks un-demanding ahead of EPS season, with NDX's 12-month forward multiple sitting below its multi-year average.",
+   "anchor": "expects begins ahead of EPS season, the valuation backdrop looks un-demanding with NDX\u2019s 12m fwd multiple sitting below its",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "'Fade energy' continues to dominate conversations among Goldman's energy sector specialists, with more caution on relative upside to crude at current levels.",
+   "anchor": "\u2018Fade energy\u2019 continues to dominate conversations on the desk with specialists \u2013 with more caution on relative upside to crude",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "USO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Refining has been the most topical Energy subsector on the desk given potential policy intervention on the products front.",
+   "anchor": "at current levels and potential policy intervention on the products front. Refining has been the most topical subsector on the",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Refining has seen strong client inbounds on the potential knock-on effects of a diesel export ban or quota.",
+   "anchor": "desk \u2013 with strong inbounds on potential knock-on effects of a diesel export ban or quota. OFS",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Integrated Energy (US and Canada) is seen as more defensive in an Energy pullback, with 3Q setups expected to be strong, specifically on trading and downstream.",
+   "anchor": "generally more defensive in an Energy pullback and 3Q setups are expected to be strong \u2013 specifically on trading and downstream.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Financials sector focus is shifting toward earnings, with the big banks kicking off results roughly 1.5 weeks from the note's October 2 date.",
+   "anchor": "the big banks kicking things off roughly 1.5 weeks from now.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "1.5 weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Healthcare lagged this week, with XLV down 2.8% versus SPY flat, amid an unfavorable macro overlay for the sector against semiconductor and AI outperformance.",
+   "anchor": "Healthcare lagged this week (XLV -2.8% vs. SPY flat) with an unfavorable macro overlay for HC with SMH/AI outperformance",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "XLV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Goldman's Industrials specialists expect cyclicals to remain for sale, and Industrials have inflected lower broadly.",
+   "anchor": "expect cyclicals to remain for sale. Industrials inflected lower broadly",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "XLI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Industrials are trading at 1-year and 5-year lows versus the broader market, with sentiment soured across previously popular areas.",
+   "anchor": "and are trading at 1 and 5 year lows vs. the broader market. Sentiment has soured across all the previously popular areas",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "XLI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Sentiment has soured across previously popular Industrials areas including AI/data center, short cycle, aerospace, and transports, with ISM, truck orders, and auto sales as key October catalysts.",
+   "anchor": "including AI/data center, short cycle, aerospace and transports. What catalysts matter most in October: New data points \u2013 ISM,",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "XLI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Asset managers and hedge funds showed increased demand for Semiconductors on positive catalysts including solid Micron earnings and Nvidia's $150 billion buyback increase.",
+   "anchor": "positive catalysts (solid MU earnings, NVDA $150bn buyback increase, etc).",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [
+    "MU",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "There is minimal willingness among asset managers and hedge funds to chase the market's move higher despite light positioning, and activity levels remain spotty given ongoing performance challenges.",
+   "anchor": "willingness to chase this move higher despite light positioning. Activity levels remain spotty given ongoing performance",
+   "topic": "US mega-cap tech leadership",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "US Energy stocks were collectively net sold for a sixth straight week, 8 of the last 9 weeks, driven by short sales outpacing long buys.",
+   "anchor": "US Energy stocks collectively were net sold for a sixth straight week (8 of last 9), driven by short sales outpacing long buys",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Hedge funds are now underweight US Energy stocks by 0.4% relative to the Russell 3000, versus a five-year high of 1% overweight seen in July.",
+   "anchor": "are now U/W Energy stocks by -0.4% relative to the Russel 3000 (vs. 5-year high of +1% O/W seen in July), in the 57th",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "Hedge funds net bought US Health Care stocks at the fastest pace in more than six months, after selling the sector for six straight weeks.",
+   "anchor": "After selling the sector for six straight weeks, hedge funds net bought US Health Care stocks at the fastest pace in",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "This week's Health Care short covering ranked in the 99th percentile on a five-year lookback, the largest since October 2022.",
+   "anchor": "Oct\u2019 22 and ranks in the 99th percentile on a 5-year lookback.",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "US long/short gross leverage fell 1.4 points to 209.2%, in the 34th percentile on a one-year lookback.",
+   "anchor": "US L/S Gross leverage fell -1.4 pts to 209.2% (34th percentile one-year), while US L/S Net leverage decreased for a",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "US Equities Weekly Rundown: Positioning, Flows, and Observations Across the Floor",
+   "claim": "US Fundamental long/short ratio by market value fell 1.9% to 1.57, in the 1st percentile on a five-year lookback.",
+   "anchor": "US Fundamental long/short ratio (MV) decreased -1.9% to 1.57 (1st percentile five-year).",
+   "topic": "hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-04/18501__us-equities-weekly-rundown-positioning-flows-and-observation.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 65,
+  "matched": 65,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 19,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
