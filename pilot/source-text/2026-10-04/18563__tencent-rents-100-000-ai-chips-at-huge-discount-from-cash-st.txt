@@ -1,0 +1,156 @@
+ 
+Tencent Rents 100,000 AI Chips At Huge Discount 
+From Cash-Strapped Oracle In $7BN Deal 
+ 
+BY TYLER DURDEN 
+THURSDAY, OCT 01, 2026 - 07:35 PM 
+With its flagship US data center in force majeure, its CDS at record wides and its founder busy 
+funding Hollywood, Oracle has found a new customer eager to pay upfront: China. And based 
+on the reported terms, Oracle is also giving it a very good price. 
+According to the FT, Tencent has signed its largest-ever overseas lease with Oracle: a five-year 
+agreement covering multiple Oracle data centers in south-east Asia that gives the Chinese 
+social media and gaming giant access to roughly 100,000 advanced AI chips that are not 
+available in China. The deal is estimated at about $7 billion, with an upfront payment of about 
+30%, or roughly $2.1 billion. Neither company commented. As we put it overnight: "Since 
+Oracle's data centers in the US are mothballed, Larry now doing business with Beijing." 
+The arrangement is perfectly legal: US export controls block the sale of Nvidia's top chips to 
+China, but not the rental of them in a third country. It is the same loophole Tencent used last 
+December to tap roughly 15,000 Nvidia Blackwell chips in Japan via Datasection (a ~$1.2BN 
+contract), and the one ByteDance and Alibaba have used for years as the biggest clients of 
+south-east Asian data centers. According to the FT, Washington's attempts to stop chips from 
+leaking into China via intermediate locations have only made these leases pricier, with longer 
+terms and bigger upfront checks. Which, as it turns out, is exactly what Oracle needs right now. 
+The math: $1.60 an hour 
+The FT numbers make the price easy to back out. $7 billion over five years for about 100,000 
+chips is $14,000 per chip per year, or roughly $1,170 a month. A lease bills around the clock 
+whether the GPUs are busy or not, so over 8,760 hours a year that comes to about $1.60 per 
+GPU-hour, all-in, for compute that by definition can't be bought in China. 
+Compare that with the market, which by all accounts has rarely been tighter: 
+
+ 
+ 
+For context, Goldman TMT specialist Sean Johnstone flagged two weeks ago that Nebius was 
+raising on-demand GPU prices again from today: H100 to $4.50 (+17%), H200 to $5.40 (+20%), 
+B200 to $8.50 (+19%) and B300 to $9.50 (+21%). That followed a previous round of hikes in 
+May, which he took as a sign of "continued strong AI compute demand and tight supply."  
+The FT doesn't say which chips are in the deal, beyond "advanced AI chips that were not 
+available in China." If they are Blackwells, Tencent is paying roughly a quarter of the going B200 
+rate. If they're older Hoppers, it's still about 40% below the H100 index. While multi-year 
+take-or-pay contracts always clear below spot, and a 30% prepayment is certainly worth 
+something to a borrower whose 2056 bonds yield well over 8%, valued at the B200 index, 
+100,000 GPUs for five years is worth about $25 billion of compute, against a $7 billion headline. 
+That leaves three explanations: the $7BN reported to the FT covers only part of the deal, the 
+chips are older than "advanced" suggests, or - more likely - Oracle is selling capacity at a steep 
+discount to raise cash. The third would fit Oracle's history. In October 2025 The Information 
+reported that Oracle made just 
+900MN of Nvidia rental revenue (a 
+125𝑀𝑁𝑜𝑓𝑔𝑟𝑜𝑠𝑠𝑝𝑟𝑜𝑓𝑖𝑡𝑜𝑛~
+14% margin), and lost almost $100MN renting out Blackwells in a single quarter (Tech, Crypto 
+Dump On Report Exposing ORCL's 'Razor Thin' Margins On AI Chips, Oct 7, 2025). At $14,000 
+per GPU per year, five years of rent brings in about $70,000 per chip. That has to cover a 
+Blackwell-class system (estimated at well over $40,000 per GPU in hardware alone, before 
+memory price hikes), plus the building, power, networking and interest on the debt that paid for it 
+
+ 
+all. Seen that way, the 30% upfront payment may be the most valuable part of the deal for 
+Oracle. 
+Tencent: spending like an American hyperscaler (and burning cash like 
+one) 
+For Tencent, which for years was the most capex-shy of China's megacaps, the bill is already 
+showing up. Per the FT, the Oracle prepayment contributed to negative free cash flow of 
+Rmb13.8bn ($2bn) in Q2, Tencent's first negative quarter in more than a decade, while capex 
+jumped 176% YoY to Rmb53bn ($7.9bn), covering AI infrastructure and prepayments for 
+compute. 
+Goldman's Prosus team (Adam Berlin et al), writing the day after the August 12 print, noted that 
+2Q capex came in 47% above GSe, flipping FCF to roughly -Rmb14bn from +Rmb43bn a year 
+earlier and sending the stock down 4.5%. GS Tencent analyst Ronald Keung raised his 
+FY26/27/28 capex estimates by +39%/+49%/+42%, trimmed EPS, and cut his price target to HK
+700, although he was "encouraged by the aggressive spend" given Tencent has 
+670𝑓𝑟𝑜𝑚𝐻𝐾
+historically lagged ByteDance and Alibaba. One detail looks different today: management told 
+analysts it could "rent their compute at attractive prices if needed." It now seems Tencent is also 
+the one doing the renting. 
+At Goldman's Asia Leaders Conference a few weeks later, Tencent Chief Strategy Officer 
+James Mitchell said AI remains the company's "highest capital allocation priority" and that Q3 
+capex and prepayments would stay "meaningful," because Tencent is front-loading 
+infrastructure to lock in compute economics before memory prices rise further (they are rising: 
+Micron just guided Q1 revenue to $61.5BN). Keung kept his Buy after the early launch of the 
+Hy4 (Hunyuan 4) preview, a 770bn-parameter model with major gains in coding and agentic 
+tasks. That is the model Tencent needs the Oracle GPUs to train, since, as the FT points out, 
+domestic chips still can't handle frontier training. The applications it feeds include Xiaowei, the 
+WeChat-embedded agent we flagged in March and which sent the stock soaring the most since 
+2022 in June, plus the WorkBuddy office agent. 
+Goldman's TMT specialist Sean Johnstone summed up the deal this morning: 
+For Tencent it gets frontier compute without waiting on domestic silicon.... Supports Oracle 
+remaining capacity and backlog narrative (OpenAI + ByteDance + now Tencent) – will be 
+interesting to see how Oracle CDS reacts today." 
+That last line is the real story. 
+
+ 
+Oracle: the $664 billion backlog with a funding problem 
+On paper, Oracle has never looked better: its fiscal Q1 RPO reached $664 billion, cloud 
+infrastructure revenue rose 121%, and it booked over $30BN in new AI contracts. Alas, funding 
+all of that is a different matter. Q1 capex was 
+5.4BN, and 
+28. 5𝐵𝑁, 𝑓𝑟𝑒𝑒𝑐𝑎𝑠ℎ𝑓𝑙𝑜𝑤𝑤𝑎𝑠−
+management guided to up to $95BN in annual capex and a roughly $40BN debt-and-equity 
+raise. BofA's pre-earnings note showed the shape of it, modeling FY27 capex of $92.5BN 
+(+66%) and FCF margins bottoming around -50%/-38% in fiscal Q2/Q3. BofA noted that 
+customer prepayments should cover only about 25% of annual capex. 
+ 
+Which is why a Chinese customer wiring even a modest $2.1BN upfront is so welcome, even at 
+about $1.60 an hour. It also explains how quickly things have gone wrong over the past ten 
+days: 
+●​ Sept 24-25: Oracle declared force majeure at Project Jupiter, its 2.25GW New Mexico 
+campus. Its 2056 bonds broke through an 8% yield for the first time, and roughly $30BN 
+of hardware capex was suddenly in limbo (Oracle Bonds Plunge To Record Low As $30 
+Billion CapEx In Peril On Data Center Turmoil). The contagion soon reached Meta's 
+data-center bonds, which traded down to B2/B levels despite an A+ rating. 
+●​ Sept 28: Goldman's desk flagged "cracks in the credit space." Oracle CDS hit a record 
+251bps, and hyperscaler CDS widened 2-4bps across the board as "issuance continues 
+to fund the AI buildout into a rising-yield backdrop." Johnstone noted that S&P rates 
+
+ 
+Oracle BBB-, one notch above junk, and that "the credit markets ask who funds the next 
+$1tn of data-centre spend." Our take: "Downgrade to junk now not if but when, pushing 
+$120BN over the fallen angel cliff," and an Oracle downgrade "will singlehandedly make 
+the entire junk bond market 10% bigger." 
+The supply problem predates all of this. SocGen's credit team counts Oracle's outstanding USD 
+bonds at $117BN, up from $95BN at the end of 2025, in a hyperscaler bond pile that has grown 
+by $143BN in nine months and which SG expects to reach about $200BN of new USD issuance 
+by year-end. 
+ 
+Meanwhile, at Paramount... 
+While Oracle bondholders worry about who funds the massive (and increasingly delayed) data 
+centers, the Ellison family has been busy borrowing for something else. This week Paramount 
+Skydance, run by Larry's son David with Larry as financial backstop, launched one of the largest 
+acquisition financings on record to pay for Warner Bros. Discovery: a $52BN package made up 
+of roughly $32BN of investment-grade secured bonds across eight tranches out to 2066, about 
+$12.4BN of high-yield bonds marketed in the low-9% range, and a $7.5BN term loan. The IG 
+portion drew over $109BN of orders, so spreads tightened. Still, S&P had just cut Paramount to 
+BB, Moody's rates the first-lien notes junk, and the combined company will carry nearly $80BN 
+of debt at around 7x EBITDA. The deal is now slated to close October 6. 
+
+ 
+This matters for Oracle because the collateral behind Larry's commitment is largely Oracle 
+stock. Last week Ellison pledged another ~350 million Oracle shares (~$9.2BN) as loan 
+collateral, bringing total pledged shares to about $57BN, just as the stock was falling and the 
+CDS was making new records. So Oracle's largest shareholder is posting Oracle equity to fund 
+a highly levered media merger in the same week the market is asking whether Oracle can fund 
+itself. The two sales are also competing for the same buyers: Paramount's 40-year paper priced 
+into the same IG market that just sent Oracle's 2056s past 8%. 
+Bottom line 
+Tencent gets 100,000 Nvidia-class GPUs it can't buy at home, five years of training capacity, 
+and a model roadmap that no longer depends on Huawei's yields. Oracle gets about $2BN of 
+upfront cash, another headline for its backlog, and a customer whose deposits help cover capex 
+the bond market is increasingly reluctant to finance. Washington gets a reminder that "not 
+available in China" mostly means "available in Johor." On that last point, Goldman's ASEAN 
+data center primer expects live capacity across the region's six main hubs to grow from about 
+3GW today to 13GW by 2030 (a 33% CAGR), with Johor alone accounting for a third, and 
+power delivery as the main bottleneck. 
+Whether the Tencent deal is enough to help Oracle's credit is something Oracle's CDS will show 
+us (check back in a few hours). Goldman said it would be watching it today for the market's 
+verdict, and so will we. 
+ 
+ 
+ 
