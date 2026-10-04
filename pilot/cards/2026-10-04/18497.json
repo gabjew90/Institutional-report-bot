@@ -1,0 +1,815 @@
+{
+ "brief": "Asian markets closed Friday mixed: Hong Kong fell sharply despite stronger August retail sales, Japan slipped on an inflation acceleration seen as unsustainable, and Korea rose as CPI cooled to 2.9% from 3.1%. European equities are higher, oil is down over $2 to around $100 per barrel, and 10-year Treasury yields are flat at 5.23%. Goldman's AI adoption tracker shows firm adoption rising 1.4 percentage points in September to 23.8%, with labor effects described as narrow: drags in marketing, design, customer service and some tech roles are offset by data-center construction jobs, up 317k since 2022, and AI-attributed layoffs reached 3.4k in August, 203k cumulative since May 2023. Productivity gains are large where AI is deployed but only modest economy-wide, with higher-adoption industries showing a slight acceleration. This comes against continued AI investment, with semiconductor revenue seen reaching $868bn by end-2026 and AI-related hardware investment $555bn above its 2022 level. Today brings September payrolls, where Goldman's forecast of +80k sits below the +90k consensus. Nike cut its 12-month price target to $30 from $38 after Sportswear, Jordan and China weakness offset performance-segment growth.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Hong Kong's August retail sales value rose 5.6% year over year across major categories.",
+   "anchor": "stronger August retail sales, with sales value rising 5.6% YoY across major categories",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Japan's Tokyo inflation saw a surprising acceleration in September that Goldman says is likely not sustainable.",
+   "anchor": "a surprising acceleration (albeit likely not sustainable) of Tokyo inflation",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "South Korea's headline CPI slowed to 2.9% year over year from 3.1%, broadly in line with expectations.",
+   "anchor": "with headline CPI slowing to 2.9% YoY from 3.1%, broadly in line with expectations",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "European equities are trading higher this morning amid a quiet macro calendar.",
+   "anchor": "European equities are trading higher this morning amidst a quiet macro calendar.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Front-month Brent oil is down more than $2 overnight, trading around $100 per barrel.",
+   "anchor": "front month Brent oil is down by more than $2 overnight and is trading around $100/bbl",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "US 10-year Treasury yields are unchanged at 5.23%.",
+   "anchor": "yields on US 10-yr Treasuries are unchanged at 5.23%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs estimates firm-level AI adoption rose 1.4 percentage points in September to 23.8% among establishments.",
+   "anchor": "firm adoption rose by 1.4pp in September to 23.8% among establishments.",
+   "topic": "AI adoption tracker",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "AI's labor impact includes employment drags in marketing, graphic design, customer service and some tech roles, offset by data-center construction jobs.",
+   "anchor": "employment drags in marketing, graphic design, customer service, and some tech roles, offset by data-center construction jobs",
+   "topic": "AI adoption tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Data-center construction jobs have risen 317,000 since 2022.",
+   "anchor": "data-center construction jobs (+317k since 2022).",
+   "topic": "AI adoption tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "since 2022"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "AI-attributed layoffs hit 3,400 in August, bringing the cumulative total to 203,000 since May 2023.",
+   "anchor": "AI-attributed layoffs hit 3.4k in August (203k cumulatively since May 2023).",
+   "topic": "AI adoption tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Productivity gains from AI are large where it is deployed but only modest economy-wide, with higher-adoption industries showing a slight acceleration.",
+   "anchor": "Productivity gains are large where AI is deployed but only modest economy-wide, with higher-adoption industries now showing a slight productivity acceleration in",
+   "topic": "AI adoption tracker",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Semiconductor revenue is seen reaching $868bn by end-2026.",
+   "anchor": "Semiconductor revenue is seen reaching $868bn by end-2026 and AI-related",
+   "topic": "AI adoption tracker",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "end-2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "AI-related hardware investment is now trending $555bn above its 2022 level, or 1.7% of GDP.",
+   "anchor": "hardware investment is now trending $555bn above its 2022 level (1.7% of GDP).",
+   "topic": "AI adoption tracker",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Fed Vice Chair Jefferson hinted at an October pause, saying future policy adjustments require carefully examining trends.",
+   "anchor": "Examining Trends,\u201d Hinting at an October Pause",
+   "topic": "Fed October pause odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts September nonfarm payrolls at +80k, below the +90k consensus and last month's +162k.",
+   "anchor": "08:30 AM Nonfarm payroll employment, September (GS +80k, consensus +90k, last +162k)",
+   "topic": "US jobs report weakness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts September private payroll employment at +75k, below the +87k consensus and last month's +127k.",
+   "anchor": "Private payroll employment, September (GS +75k, consensus +87k, last +127k)",
+   "topic": "US jobs report weakness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts September average hourly earnings month-over-month at +0.2%, below the +0.3% consensus and matching last month's +0.3%.",
+   "anchor": "Average hourly earnings (MoM), September (GS +0.2%, consensus +0.3%, last +0.3%)",
+   "topic": "US jobs report weakness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts the September unemployment rate at 4.1%, matching consensus and the prior month.",
+   "anchor": "Unemployment rate, September (GS 4.1%, consensus 4.1%, last 4.1%)",
+   "topic": "US jobs report weakness",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman forecasts August factory orders at +0.2%, above the +0.1% consensus but below last month's +0.8%.",
+   "anchor": "10:00 AM Factory orders, August (GS +0.2%, consensus +0.1%, last +0.8%)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs rates Nike Neutral.",
+   "anchor": "Nike Inc. (NKE, Neutral), Roach: F1Q27 Earnings Review: Mid-term earnings power",
+   "topic": "Nike earnings reaction",
+   "status": "level",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Nike shares fell 10% pre-market following its F1Q27 earnings report.",
+   "anchor": "Stay Neutral on NKE following F1Q earnings reported last night (stock -10% pre-market).",
+   "topic": "Nike earnings reaction",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Nike's performance business grew strongly (+DD%), but that growth was more than offset by significant pressure in its Sportswear and Jordan businesses.",
+   "anchor": "Healthy growth in its performance business (+DD%), is more than offset by significant pressure in its Sportswear, Jordan,",
+   "topic": "Nike earnings reaction",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Nike's Sportswear, Jordan and China businesses declined low double digits, mid-teens percent, and 26% ex-FX respectively.",
+   "anchor": "and China businesses, down LDD%, mid-teens%, and -26% ex-FX, respectively.",
+   "topic": "Nike earnings reaction",
+   "status": "released",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs lowered its 12-month price target on Nike to $30 from $38.",
+   "anchor": "Lower 12m price target to $30 (from $38).",
+   "topic": "Nike earnings reaction",
+   "status": "target",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman flags Nike's Investor Day on November 17th as the next catalyst to watch.",
+   "anchor": "Key to watch: Investor Day on November 17th.",
+   "topic": "Nike earnings reaction",
+   "status": "forecast",
+   "instruments": [
+    "NKE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November 17"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Adobe, rated Sell, is changing its CEO on December 1 as part of a planned leadership change.",
+   "anchor": "Sell-rated ADBE is changing its CEO on Dec-1 as part of a planned",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "December 1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs' 12-month price target on Adobe is $200.",
+   "anchor": "and targeted M&A, and convert feature adoption into monetization. 12m price target, $200.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "China's biopharma sector has a 5-year plan targeting 25% global share of first-in-class drugs.",
+   "anchor": "progress toward novel innovation, supported by a 5-year plan targeting 25% global share of first-in-class drugs.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "5-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs estimates a 10.5% industry average increase in Medicare Advantage out-of-pocket limits, supportive of improving medical loss ratios.",
+   "anchor": "preferred provider organization exposure. We estimate a 10.5% industry average increase in out-of-pocket limits that is particularly supportive of improving medical loss",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs rates UNH Buy.",
+   "anchor": "ratios. Buy: UNH. Separately, Buy CI following its Investor Day earlier this week which",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "UNH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Cigna pledged 12% compound EPS growth into the 2030s at its Investor Day.",
+   "anchor": "The Cigna Group (CI, Buy), Fidel: Investor Day Recap: CI Pledges 12% Compound EPS Growth into 2030\u2019s;",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030s"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Cigna's updated bridge framework supports a 2030 adjusted EPS floor of at least $45.",
+   "anchor": "an updated bridge framework supporting a 2030 adjusted EPS floor of at least $45.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Cigna's Specialty & Care segment, alongside Cigna Healthcare's new $3bn modernization plan, is the core growth engine, and Goldman's 12-month price target is $352.",
+   "anchor": "Specialty & Care as the core growth engine with Cigna Healthcare, a new $3bn modernization/productivity plan. 12m price target, $352.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "CI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Higher rates are weighing on capital markets stocks through negative impact on activity and terminal values.",
+   "anchor": "Higher rates are weighing on cap markets stocks (negative impact on activity and",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Alts, Wealth Brokers and Exchanges are trading at a 20-30% P/E discount relative to history.",
+   "anchor": "terminal values) and leaving Alts, Wealth Brokers, and Exchanges at a 20-30% P/E",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs believes exchanges look most mispriced versus fundamentals, citing solid 3Q volumes and easier comps into 4Q.",
+   "anchor": "discount relative to history. We believe exchanges look most mispriced versus fundamentals, with solid 3Q volumes, easier comps into 4Q, and longer-term",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs' top capital markets ideas into 3Q include TPG, STEP and APO among alternatives, BLK and BEN among traditional managers, and TW, ICE and BNY/STT among exchanges.",
+   "anchor": "Top ideas into 3Q include - TPG, STEP, APO among Alts ; BLK and BEN in Trad Mgrs, TW and ICE in Exchanges, BNY/STT",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "TPG",
+    "STEP",
+    "APO",
+    "BLK",
+    "BEN",
+    "TW",
+    "ICE",
+    "BNY",
+    "STT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs' top idea in Wealth is LPLA.",
+   "anchor": "in Trusts, and LPLA in Wealth.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "LPLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs upgraded Cboe Global Markets to Neutral as structural overhangs fade and the Index Options franchise proves more durable.",
+   "anchor": "Cboe Global Markets Inc. (CBOE, Neutral), Blostein: Structural overhangs fade as Index Options franchise proves more durable; Upgrade to Neutral.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CBOE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs' 12-month price target on Cboe Global Markets is $300.",
+   "anchor": "backdrop remains supportive. 12m price target, $300.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "CBOE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "US consumer credit trends improved in August with year-over-year declines in delinquencies across non-mortgage categories, though lower-tier performance remained mixed.",
+   "anchor": "US consumer credit trends improved in August, with y/y declines in delinquencies across non-mortgage categories, though lower-tier performance remains mixed.",
+   "topic": "US consumer credit trends",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "60+ day bankcard delinquencies fell to 2.71% from 2.73%.",
+   "anchor": "bankcard delinquencies fell to 2.71% (from 2.73%),",
+   "topic": "US consumer credit trends",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Personal loan delinquencies fell to 3.17% from 3.25% and auto loan delinquencies fell to 1.32% from 1.54%.",
+   "anchor": "personal loans to 3.17% (from 3.25%) and auto to 1.32% (from 1.54%),",
+   "topic": "US consumer credit trends",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Card originations rose 8.1% and personal loan originations rose 9.9%.",
+   "anchor": "with card originations +8.1% and personal loans +9.9%.",
+   "topic": "US consumer credit trends",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "The FHFA is moving to a single LLPA pricing grid for FICO Classic and VantageScore 4.0, raising FICO's share risk.",
+   "anchor": "FHFA moves to single LLPA grid for FICO Classic and VantageScore 4.0, raising FICO share risk",
+   "topic": "US consumer credit trends",
+   "status": "released",
+   "instruments": [
+    "FICO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs rates FICO Buy, citing its newly approved direct licensing program as a positive offset to FHFA-related pricing risk.",
+   "anchor": "Separately, Buy-rated FICO\u2019s newly approved direct licensing program and",
+   "topic": "US consumer credit trends",
+   "status": "level",
+   "instruments": [
+    "FICO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs' 12-month price target on FICO is $1,322.",
+   "anchor": "should keep any erosion gradual. 12m price target, $1,322.",
+   "topic": "US consumer credit trends",
+   "status": "target",
+   "instruments": [
+    "FICO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs introduces a new framework for Japan's expanding AI investment universe.",
+   "anchor": "Japan Portfolio Strategy, Kirk: More than meets the AI: a new framework for Japan\u2019s",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs highlights cross-asset opportunities in oil tail scenarios.",
+   "anchor": "Global Markets Daily, Chang: Cross-Asset Opportunities in Oil Tail Scenarios",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs examines who would be exposed to a ban on US diesel exports.",
+   "anchor": "Global Economics Comment, Peters: Who Would Be Exposed to a Ban on US Diesel",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Lithium 2027 supply growth is exposed to risk, with softening China demand sentiment though order books remain full.",
+   "anchor": "growth exposed to risk; Softening China demand sentiment though order books remain full",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "September US auto sales ran at a seasonally adjusted annual rate in the 16.0 million range.",
+   "anchor": "September US auto SAAR was in the 16.0 mn",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "RETAIL_SALES",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs initiated Salmon sector coverage, describing it as entering a new era of profitability, with a Buy rating.",
+   "anchor": "Europe Food, Darbyshire: Salmon initiations: Entering a new era of profitability: Buy",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs upgraded MonotaRO to Buy from Neutral, citing better-than-expected customer retention.",
+   "anchor": "retention; AI may further solidify competitive edge, valuation also compelling; Up from Neutral to Buy",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs previews Johnson & Johnson's 3Q26 earnings, with focus remaining on the company's product cycles.",
+   "anchor": "Johnson & Johnson (JNJ), Haider: 3Q26 Earnings Preview: Focus Remains on",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "JNJ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs previews airlines' 3Q 2026 results, marking estimates to market for higher fuel costs.",
+   "anchor": "Transportation, O\u2019Brien: Airlines: 3Q 2026 Preview; marking-to-market for",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "3Q 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Market Intelligence: US Morning Update",
+   "claim": "Goldman Sachs downgraded Meitu to Neutral on fair valuation versus coverage.",
+   "anchor": "Meitu down to Neutral on fair valuation vs. coverage",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-04/18497__market-intelligence-us-morning-update.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 57,
+  "matched": 57,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 32,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
