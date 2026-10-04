@@ -1,0 +1,25 @@
+{
+ "brief": "Goldman Sachs Securities Lending's daily short activity report for 10/02/2026 tracks day-over-day changes in US equity short positions and prices, ex-ETFs and ETFs, by sector and by individual stock. The broad ex-ETF short index moved -0.4% day/day; ETF short flow was flat. Sector short flows ranged from +1.9% (Real Estate) to -1.4% (Technology), each paired with the sector's same-day price change. The report ranks the top shorted and covered industries and the top GC and non-GC stocks by market value of share change: FedEx Freight Holding (FDXF) shows the largest single-name short increase (+54.2% short, price +1.2%), and SanDisk (SNDK) the largest covered position (-20.4% short, price +2.7%). Sector-level tables (communication services, consumer discretionary, consumer staples, energy, financials, health care, industrials, information technology, materials, real estate, utilities) and four custom baskets (Expensive Software, Energy, Artificial Intelligence, Capex Beneficiaries, AI at Risk) break the same short-flow and price data down further by constituent. The document is a positioning data report: it states measured short-interest and price changes for the stated date only, with no forecast, target, thesis, or explicit trading call attached to any name or sector.",
+ "cards": [],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-04/18469__us-equities-daily-short-activity.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 0,
+  "matched": 0,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 0,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
