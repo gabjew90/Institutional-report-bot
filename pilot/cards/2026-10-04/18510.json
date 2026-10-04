@@ -1,0 +1,529 @@
+{
+ "brief": "Goldman's TMT desk note frames Friday's tape around the September payrolls print: GS forecasts +80k, below the +88k consensus, as futures rally and yields ease off highs. Oil falls on talk that European governments, including France, may release diesel and crude reserves. Premarket moves cluster around single-name news: STX and WDC fall on reports Toshiba will double HDD production capacity by fiscal 2027 to fill an AI-driven storage gap, ON rises after sweetening its Synaptics acquisition to an all-cash $5.7bn/$123-per-share deal from a stock offer near $7bn, APP extends a 13-of-14-session slide on a bearish note, and TWLO rises on its S&P 500 addition. Separately, Amazon is reported seeking to offload $8bn of Nvidia chips into a leased-back special-purpose vehicle funded by debt, an asset-light balance-sheet move. In research, GS maintains its Sell on Adobe despite a new CEO it frames as a possible AI-turnaround catalyst, wanting proof of execution first. A Micron read-across argues 2027-2028 memory supply/demand tightens versus 2026, supporting reiterated Buy ratings on Samsung and SK Hynix as Korean DRAM exports hit a record $33bn, up 552% year over year.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Seagate and Western Digital fell premarket on reports Toshiba will double HDD production capacity.",
+   "anchor": "STX -11% and WDC -7% on reports of Toshiba investing \u00a560bn to double its production capacity for hard disk drives",
+   "topic": "toshiba hdd capacity expansion",
+   "status": "released",
+   "instruments": [
+    "STX",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Toshiba plans to double HDD production capacity for AI data centers within fiscal 2027.",
+   "anchor": "Toshiba plans to double production capacity for hard disk drives used in artificial intelligence data centers within fiscal 2027",
+   "topic": "toshiba hdd capacity expansion",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fiscal 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Toshiba will invest roughly 60 billion yen ($380 million) to expand its Philippines HDD facilities.",
+   "anchor": "The company will invest roughly 60 billion yen ($380 million) to expand facilities in the Philippines",
+   "topic": "toshiba hdd capacity expansion",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Toshiba holds just over 10% HDD storage-capacity share and aims to reach 30% in the medium term.",
+   "anchor": "The Japanese player's share by storage capacity stands at just over 10%, but it aims to reach 30% in the medium term.",
+   "topic": "toshiba hdd capacity expansion",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "medium term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Toshiba's new HDD products will increase per-unit memory capacity by as much as 40%.",
+   "anchor": "Toshiba will handle new products that increase per-unit memory capacity by as much as 40%",
+   "topic": "toshiba hdd capacity expansion",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "The Philippines expansion is Toshiba's first major HDD investment in around five years.",
+   "anchor": "The Philippine expansion marks the company's first major HDD investment in around five years.",
+   "topic": "toshiba hdd capacity expansion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Onsemi rose premarket after amending its Synaptics deal to an all-cash, immediately EPS-accretive structure.",
+   "anchor": "ON +8% on an amendment to Synaptics deal terms (now all cash deal, immediately accretive to EPS)",
+   "topic": "onsemi synaptics acquisition",
+   "status": "released",
+   "instruments": [
+    "ON",
+    "SYNA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Onsemi revised its Synaptics acquisition to about $5.7 billion in cash from roughly $7 billion in shares.",
+   "anchor": "agreeing to pay about $5.7 billion in cash rather than roughly $7 billion in shares",
+   "topic": "onsemi synaptics acquisition",
+   "status": "released",
+   "instruments": [
+    "ON",
+    "SYNA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Onsemi will pay $123 per share for Synaptics under the revised terms.",
+   "anchor": "Onsemi will pay $123 per share, according to a statement Thursday.",
+   "topic": "onsemi synaptics acquisition",
+   "status": "released",
+   "instruments": [
+    "ON",
+    "SYNA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Onsemi expects the revised Synaptics deal to immediately add to earnings while giving Synaptics shareholders value certainty.",
+   "anchor": "The company expects the deal to immediately add to its earnings, while providing \"value certainty\" for Synaptics shareholders.",
+   "topic": "onsemi synaptics acquisition",
+   "status": "released",
+   "instruments": [
+    "ON",
+    "SYNA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Goldman frames Adobe's leadership change as entering an AI turnaround phase with five strategic questions.",
+   "anchor": "The AI Turnaround Phase? Five strategic questions into new leadership",
+   "topic": "adobe ai turnaround",
+   "status": "released",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Anil Chakravarthy will become Adobe's President and CEO on December 1.",
+   "anchor": "Anil Chakravarthy will be stepping into the President and CEO role on 12/1",
+   "topic": "adobe ai turnaround",
+   "status": "released",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12/1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Goldman maintains its Sell rating on Adobe, wanting visibility into strategic decisions followed by execution.",
+   "anchor": "We maintain our Sell rating: we look for visibility into strategic decisions, followed by execution on new initiatives",
+   "topic": "adobe ai turnaround",
+   "status": "released",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Goldman frames Adobe's opportunity as executing a transition from AI loser to AI winner.",
+   "anchor": "execute a transition from \"AI loser\" to \"AI winner\"",
+   "topic": "adobe ai turnaround",
+   "status": "forecast",
+   "instruments": [
+    "ADBE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Goldman's Micron read-across expects 2027-2028 memory supply/demand to be much tighter than 2026, with a Buy on Samsung and SK Hynix.",
+   "anchor": "Expecting 2027 and 2028 memory S/D to be much\ntighter than 2026; Buy SEC/Hynix",
+   "topic": "south korea memory supply tightening",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Micron expects memory supply/demand in CY27 and CY28 to be much tighter than CY26.",
+   "anchor": "MU expects CY27 and CY28 S/D\nto be much tighter compared to CY26",
+   "topic": "south korea memory supply tightening",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27-CY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Micron's DRAM ASP growth came in line while NAND ASP growth beat Goldman's prior estimates for Samsung and SK Hynix.",
+   "anchor": "MU DRAM ASP growth inline, while NAND ASP growth\nhigher than our 3Q26 estimates for SEC/Hynix",
+   "topic": "south korea memory supply tightening",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Ten additional supply commitment agreements were signed, with customers requesting longer duration and larger supply.",
+   "anchor": "10 additional SCAs signed; customers requesting\nlonger duration and larger supply from SCAs",
+   "topic": "south korea memory supply tightening",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "HBM pricing is expected to increase significantly in 2027, in line with Goldman's expectations for Samsung's HBM pricing growth.",
+   "anchor": "HBM pricing to increase significantly in 2027; in line\nwith our expectations on SEC's substantial HBM pricing growth",
+   "topic": "south korea memory supply tightening",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Micron has additional capex planned to prepare for demand beyond 2028.",
+   "anchor": "additional capex planned to\nprepare for beyond 2028",
+   "topic": "south korea memory supply tightening",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "beyond 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Goldman reiterates its Buy rating on Samsung Electronics and SK Hynix.",
+   "anchor": "Reiterate Buy on SEC (on APAC CL) and Hynix.",
+   "topic": "south korea memory supply tightening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "South Korean DRAM exports reached an all-time high of US$33bn, up 552% year over year.",
+   "anchor": "DRAM exports reach another all-time high at\nUS$33bn (+552% yoy)",
+   "topic": "south korea memory supply tightening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "South Korean memory exports grew 359% year over year, marking eight consecutive months of 200%-plus growth.",
+   "anchor": "memory exports delivering growth of +359% yoy, marking 8 consecutive\nmonths of 200%+ yoy growth",
+   "topic": "south korea memory supply tightening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "South Korean DRAM export value growth reached 552% year over year in September.",
+   "anchor": "DRAM export value growth reached +552% yoy in September",
+   "topic": "south korea memory supply tightening",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Amazon is seeking to offload about $8bn of Nvidia chips to external investors through a new special-purpose vehicle.",
+   "anchor": "Amazon is seeking to offload about $8bn of advanced Nvidia chips to external investors through a new\nvehicle aimed at strengthening its balance sheet",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Amazon would spin off thousands of Grace Blackwell chips deployed in US data centers into a special-purpose vehicle.",
+   "anchor": "allow the company to spin off thousands of Grace Blackwell chips it is deploying in data centres across\nthe US into a special-purpose vehicle",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Amazon would lease the AI chips back from the SPV, which would tap outside investors through debt issuance.",
+   "anchor": "Amazon will then lease the advanced AI chips back from the SPV,\nwhich would tap outside investors through debt issuance.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Goldman estimates September nonfarm payrolls rose 80k, below the 88k consensus.",
+   "anchor": "GS\nestimates nonfarm payrolls rose by 80k in September, slightly below consensus of +88k.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Crude is retreating on reports European countries are discussing releasing diesel stockpiles.",
+   "anchor": "Crude is retreating after reports European countries are holding talks about potentially releasing diesel\nstockpiles",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "France suggested releasing 100 million barrels of diesel and crude oil from reserves.",
+   "anchor": "Franch suggested 100mb of diesel + crude oil (FT/BBG)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "AppLovin fell premarket on another negative sell-side note, now lower in 13 of the last 14 sessions.",
+   "anchor": "APP -5% on\nanother negative sell-side note (stock now lower in 13 of 14 sessions)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "APP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Twilio will join the S&P 500, replacing Warner Bros. Discovery, effective October 6.",
+   "anchor": "Twilio set to join S&P500 index, replacing Warner Bros. Discovery, effective October 6",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TWLO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "AT&T, T-Mobile and Verizon named Paul Roth interim CEO of their satellite connectivity joint venture.",
+   "anchor": "AT&T, T-Mobile, and Verizon have appointed wireless industry veteran Paul Roth as interim chief\nexecutive of their new joint venture",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "T",
+    "TMUS",
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "UST yields are roughly flat to slightly lower across the curve, with the 10-year at 5.235%.",
+   "anchor": "UST2yr unch @ 4.79% //\nUST10yr -0.5bps @ 5.235% // UST30yr -0.5bps @ 5.605%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.2.26",
+   "claim": "Eurozone headline CPI ran slightly hot with core in line, while Tokyo CPI printed very hot.",
+   "anchor": "Eurozone headline CPI was slightly\nhotter while core printed in-line and Tokyo CPI printed very hot across the board.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-04/18510__gs-tmt-today-10-2-26.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 35,
+  "matched": 35,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
