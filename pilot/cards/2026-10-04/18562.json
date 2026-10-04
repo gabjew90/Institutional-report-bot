@@ -1,0 +1,143 @@
+{
+ "brief": "Citadel Securities' Frank Flight applies an options framework to Iran's strategic calculus in the ongoing conflict. Iran's position resembles being long a high-strike oil call expiring around the US midterms: its leverage has risen as the conflict persisted and oil moved higher, since polling shows gasoline prices are politically costly for the White House. This implies Tehran's leverage is worth more before the midterms than after. With oil near local highs but showing signs of upside exhaustion, and only weeks left to the midterms, Iran is approaching peak gamma, close to the strike and close to expiry, where small moves in oil produce large swings in Iran's leverage (high convexity), even as accelerating time decay shortens the window to convert disruption of the Strait of Hormuz into political pressure. The note argues the rational move, as with an option holder facing elevated time decay, may be to monetize this leverage now by reopening Hormuz in exchange for ending the war, converting temporary convexity into a more durable political outcome.",
+ "cards": [
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "Iran's strategic decision calculus resembles being long a high-strike oil call option with an expiry around the US midterms.",
+   "anchor": "being long a high-strike oil call with an expiry around the US midterms",
+   "topic": "Iran war escalation risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "around the US midterms"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "Iran's regime leverage has risen sharply as the conflict has persisted and oil prices have moved higher.",
+   "anchor": "The regime\u2019s leverage has risen sharply as the conflict has persisted and oil has moved higher",
+   "topic": "Iran war escalation risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "Polling indicates that gasoline prices are politically consequential for the White House.",
+   "anchor": "polling suggesting that gasoline prices are politically consequential for the White House",
+   "topic": "Iran war escalation risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "The value of Iran's leverage may be greater ahead of the US midterms than it will be once they have passed.",
+   "anchor": "the value of Tehran\u2019s leverage may be greater ahead of the midterms than it will be once they have passed",
+   "topic": "Iran war escalation risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "ahead of the US midterms"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "Oil is trading close to local highs but is beginning to show signs of upside exhaustion.",
+   "anchor": "oil still trading close to local highs but beginning to show signs of upside exhaustion",
+   "topic": "Iran war escalation risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "With only a few weeks remaining until the US midterms, Iran is approaching peak gamma in its oil-leverage position.",
+   "anchor": "only a few weeks remaining until the midterms, one could argue that Tehran is approaching peak gamma",
+   "topic": "Iran war escalation risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "a few weeks until the US midterms"
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "Iran holds a highly convex position in which accelerating time decay shortens the window for converting disruption to the Strait of Hormuz into maximum political pressure.",
+   "anchor": "accelerating theta decay shortens the window in which disruption to Hormuz can be converted into maximum political pressure",
+   "topic": "Iran war escalation risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "An option holder near the strike price and close to expiry may rationally choose to monetize the position ahead of expiry rather than hold for a binary terminal payoff.",
+   "anchor": "may choose to monetise the option ahead of expiry",
+   "topic": "Iran war escalation risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Citadel Securities",
+   "document": "Iran: Peak Gamma",
+   "claim": "Reopening the Strait of Hormuz in exchange for ending the war could let Iran convert a temporary, highly convex source of leverage into a more durable political outcome.",
+   "anchor": "reopening Hormuz in exchange for an end to the war could allow it to convert a temporary and highly convex source of leverage",
+   "topic": "Iran war escalation risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "ahead of the US midterms"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-04/18562__iran-peak-gamma.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
