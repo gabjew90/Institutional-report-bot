@@ -1,0 +1,803 @@
+{
+ "brief": "Oracle, with its US data centers in force majeure and CDS at record wides, signed a $7bn five-year lease giving Tencent roughly 100,000 advanced AI chips via Oracle's south-east Asia data centers, exploiting the legal gap that blocks selling top Nvidia chips to China but not renting them from a third country. About 30% ($2.1bn) is paid upfront. The implied rate, about $1.60 per GPU-hour, is far below spot GPU rental prices, and valued at spot the deal would be worth about $25bn against the $7bn headline, implying either a partial deal, older chips, or Oracle discounting sharply to raise cash, consistent with Oracle's thin or negative 2025 GPU rental margins. For Tencent, the prepayment helped push Q2 free cash flow negative for the first time in a decade as capex jumped 176% YoY, feeding training for its Hy4 model since domestic chips can't handle frontier training. For Oracle, the cash is needed because its $664bn backlog contrasts with a funding gap: up to $95bn in capex guidance, a roughly $40bn debt-and-equity raise, CDS at a record 251bps, and 2056 bonds through an 8% yield.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent has signed its largest-ever overseas lease with Oracle, a five-year agreement covering multiple Oracle data centers in south-east Asia.",
+   "anchor": "Tencent has signed its largest-ever overseas lease with Oracle: a five-year agreement covering multiple Oracle data centers in south-east Asia",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL",
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "The Tencent-Oracle lease deal is estimated at about $7 billion, with an upfront payment of about 30%, or roughly $2.1 billion.",
+   "anchor": "The deal is estimated at about $7 billion, with an upfront payment of about 30%, or roughly $2.1 billion.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL",
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent used the same leasing loophole last December to tap roughly 15,000 Nvidia Blackwell chips in Japan via Datasection, a ~$1.2BN contract.",
+   "anchor": "tap roughly 15,000 Nvidia Blackwell chips in Japan via Datasection (a ~$1.2BN contract)",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "last December"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "The $7 billion Tencent-Oracle lease works out to $14,000 per chip per year, or roughly $1,170 a month, for the 100,000 GPUs.",
+   "anchor": "$7 billion over five years for about 100,000 chips is $14,000 per chip per year, or roughly $1,170 a month.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "The Tencent-Oracle lease prices out to about $1.60 per GPU-hour, all-in, for compute that cannot be bought in China.",
+   "anchor": "that comes to about $1.60 per GPU-hour, all-in, for compute that by definition can't be bought in China.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Sean Johnstone flagged that Nebius raised on-demand GPU prices to $4.50 for H100 (+17%), $5.40 for H200 (+20%), $8.50 for B200 (+19%) and $9.50 for B300 (+21%).",
+   "anchor": "H100 to $4.50 (+17%), H200 to $5.40 (+20%), B200 to $8.50 (+19%) and B300 to $9.50 (+21%).",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "If the leased chips are Blackwells, Tencent is paying roughly a quarter of the going B200 rental rate.",
+   "anchor": "Tencent is paying roughly a quarter of the going B200 rate.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "If the leased chips are older Hoppers, the Tencent-Oracle lease price is still about 40% below the H100 index rate.",
+   "anchor": "If they're older Hoppers, it's still about 40% below the H100 index.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Valued at the B200 index rate, the 100,000 GPUs leased to Tencent for five years would be worth about $25 billion of compute, against the deal's $7 billion headline.",
+   "anchor": "100,000 GPUs for five years is worth about $25 billion of compute, against a $7 billion headline.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Zero Hedge said the most likely explanation for the pricing gap is that Oracle is selling capacity at a steep discount to raise cash.",
+   "anchor": "Oracle is selling capacity at a steep discount to raise cash.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Oracle lost almost $100MN renting out Blackwells in a single quarter, per an October 2025 report on its razor-thin AI rental margins.",
+   "anchor": "lost almost $100MN renting out Blackwells in a single quarter",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Under the Tencent-Oracle lease, five years of rent at $14,000 per GPU per year brings in about $70,000 per chip.",
+   "anchor": "five years of rent brings in about $70,000 per chip.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Zero Hedge estimates a Blackwell-class system costs well over $40,000 per GPU in hardware alone, before memory price hikes.",
+   "anchor": "estimated at well over $40,000 per GPU in hardware alone, before memory price hikes",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent management had told analysts it could rent out its own compute at attractive prices if needed, before itself becoming the one leasing compute from Oracle.",
+   "anchor": "management told analysts it could \"rent their compute at attractive prices if needed.\"",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Sean Johnstone said the Tencent deal gets Tencent frontier compute without waiting on domestic silicon.",
+   "anchor": "For Tencent it gets frontier compute without waiting on domestic silicon",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Sean Johnstone said the Tencent deal supports Oracle's remaining capacity and backlog narrative, following similar deals with OpenAI and ByteDance.",
+   "anchor": "Supports Oracle remaining capacity and backlog narrative (OpenAI + ByteDance + now Tencent)",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "The FT noted that domestic Chinese chips still can't handle frontier AI model training.",
+   "anchor": "domestic chips still can't handle frontier training.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "The Oracle lease gives Tencent a model roadmap that no longer depends on Huawei's chip yields.",
+   "anchor": "a model roadmap that no longer depends on Huawei's yields.",
+   "topic": "Oracle Tencent GPU lease deal",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent posted negative free cash flow of Rmb13.8bn ($2bn) in Q2, its first negative quarter in more than a decade.",
+   "anchor": "negative free cash flow of Rmb13.8bn ($2bn) in Q2, Tencent's first negative quarter in more than a decade",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q2"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent's capex jumped 176% YoY to Rmb53bn ($7.9bn), covering AI infrastructure and prepayments for compute.",
+   "anchor": "capex jumped 176% YoY to Rmb53bn ($7.9bn), covering AI infrastructure and prepayments for compute.",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Prosus team said Tencent's 2Q capex came in 47% above Goldman's estimate, flipping FCF to roughly -Rmb14bn from +Rmb43bn a year earlier and sending the stock down 4.5%.",
+   "anchor": "2Q capex came in 47% above GSe, flipping FCF to roughly -Rmb14bn from +Rmb43bn a year earlier and sending the stock down 4.5%.",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2Q"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Ronald Keung raised his FY26/27/28 Tencent capex estimates by +39%/+49%/+42%, trimmed EPS, and cut his price target.",
+   "anchor": "raised his FY26/27/28 capex estimates by +39%/+49%/+42%, trimmed EPS, and cut his price target",
+   "topic": "Tencent AI capex surge",
+   "status": "target",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY26/27/28"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Ronald Keung said he was encouraged by the aggressive spend, given Tencent has historically lagged ByteDance and Alibaba on AI capex.",
+   "anchor": "although he was \"encouraged by the aggressive spend\" given Tencent has",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Ronald Keung kept his Buy rating on Tencent after the early launch of the Hy4 (Hunyuan 4) preview, a 770bn-parameter model with major gains in coding and agentic tasks.",
+   "anchor": "Keung kept his Buy after the early launch of the Hy4 (Hunyuan 4) preview, a 770bn-parameter model with major gains in coding and agentic tasks.",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent CSO James Mitchell said AI remains the company's highest capital allocation priority and that Q3 capex and prepayments would stay meaningful.",
+   "anchor": "AI remains the company's \"highest capital allocation priority\" and that Q3 capex and prepayments would stay \"meaningful,\"",
+   "topic": "Tencent AI capex surge",
+   "status": "forecast",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent is front-loading AI infrastructure spend to lock in compute economics before memory prices rise further.",
+   "anchor": "because Tencent is front-loading infrastructure to lock in compute economics before memory prices rise further",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Micron guided Q1 revenue to $61.5BN, cited as evidence that memory prices are rising.",
+   "anchor": "Micron just guided Q1 revenue to $61.5BN",
+   "topic": "Tencent AI capex surge",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Tencent's WeChat-embedded Xiaowei agent sent the stock soaring the most since 2022 in June.",
+   "anchor": "sent the stock soaring the most since 2022 in June",
+   "topic": "Tencent AI capex surge",
+   "status": "released",
+   "instruments": [
+    "TCEHY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "June"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Oracle's fiscal Q1 RPO reached $664 billion, cloud infrastructure revenue rose 121%, and it booked over $30BN in new AI contracts.",
+   "anchor": "its fiscal Q1 RPO reached $664 billion, cloud infrastructure revenue rose 121%, and it booked over $30BN in new AI contracts.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q1"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Oracle management guided to up to $95BN in annual capex and a roughly $40BN debt-and-equity raise.",
+   "anchor": "management guided to up to $95BN in annual capex and a roughly $40BN debt-and-equity raise.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "BofA modeled Oracle's FY27 capex at $92.5BN (+66%) with FCF margins bottoming around -50%/-38% in fiscal Q2/Q3.",
+   "anchor": "modeling FY27 capex of $92.5BN (+66%) and FCF margins bottoming around -50%/-38% in fiscal Q2/Q3.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "BofA noted that customer prepayments like Tencent's should cover only about 25% of Oracle's annual capex.",
+   "anchor": "BofA noted that customer prepayments should cover only about 25% of annual capex.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Oracle declared force majeure at Project Jupiter, its 2.25GW New Mexico data center campus.",
+   "anchor": "Oracle declared force majeure at Project Jupiter, its 2.25GW New Mexico campus.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Sept 24-25"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Oracle's 2056 bonds broke through an 8% yield for the first time, and roughly $30BN of hardware capex was suddenly in limbo.",
+   "anchor": "Its 2056 bonds broke through an 8% yield for the first time, and roughly $30BN of hardware capex was suddenly in limbo",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Sept 24-25"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Credit contagion from Oracle's bond selloff reached Meta's data-center bonds, which traded down to B2/B levels despite an A+ rating.",
+   "anchor": "The contagion soon reached Meta's data-center bonds, which traded down to B2/B levels despite an A+ rating.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "level",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Oracle's CDS hit a record 251bps on Sept 28, and hyperscaler CDS widened 2-4bps across the board.",
+   "anchor": "Oracle CDS hit a record 251bps, and hyperscaler CDS widened 2-4bps across the board",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Sept 28"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's Sean Johnstone said S&P rates Oracle BBB-, one notch above junk.",
+   "anchor": "S&P rates Oracle BBB-, one notch above junk",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Zero Hedge said an Oracle downgrade to junk is now a matter of when, not if, pushing $120BN over the fallen angel cliff.",
+   "anchor": "Downgrade to junk now not if but when, pushing $120BN over the fallen angel cliff",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Zero Hedge said an Oracle downgrade would singlehandedly make the entire junk bond market 10% bigger.",
+   "anchor": "will singlehandedly make the entire junk bond market 10% bigger.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "SocGen's credit team counts Oracle's outstanding USD bonds at $117BN, up from $95BN at the end of 2025.",
+   "anchor": "SocGen's credit team counts Oracle's outstanding USD bonds at $117BN, up from $95BN at the end of 2025",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "end of 2025"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "SocGen expects the hyperscaler bond pile to reach about $200BN of new USD issuance by year-end.",
+   "anchor": "which SG expects to reach about $200BN of new USD issuance by year-end.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Paramount Skydance launched one of the largest acquisition financings on record to pay for Warner Bros. Discovery, a $52BN package.",
+   "anchor": "launched one of the largest acquisition financings on record to pay for Warner Bros. Discovery: a $52BN package",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "released",
+   "instruments": [
+    "PSKY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Paramount's financing package includes roughly $32BN of investment-grade secured bonds across eight tranches out to 2066.",
+   "anchor": "roughly $32BN of investment-grade secured bonds across eight tranches out to 2066",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "released",
+   "instruments": [
+    "PSKY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "to 2066"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Paramount's financing package also includes about $12.4BN of high-yield bonds marketed in the low-9% range, and a $7.5BN term loan.",
+   "anchor": "about $12.4BN of high-yield bonds marketed in the low-9% range, and a $7.5BN term loan.",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "released",
+   "instruments": [
+    "PSKY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Paramount's investment-grade bond tranche drew over $109BN of orders, so spreads tightened.",
+   "anchor": "The IG portion drew over $109BN of orders, so spreads tightened.",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "released",
+   "instruments": [
+    "PSKY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "S&P had just cut Paramount to BB, and Moody's rates the first-lien notes junk.",
+   "anchor": "S&P had just cut Paramount to BB, Moody's rates the first-lien notes junk",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "level",
+   "instruments": [
+    "PSKY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "The combined Paramount-Warner Bros. Discovery company will carry nearly $80BN of debt at around 7x EBITDA.",
+   "anchor": "the combined company will carry nearly $80BN of debt at around 7x EBITDA.",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "forecast",
+   "instruments": [
+    "PSKY",
+    "WBD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "The Paramount Skydance-Warner Bros. Discovery deal is now slated to close October 6.",
+   "anchor": "The deal is now slated to close October 6.",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "forecast",
+   "instruments": [
+    "PSKY",
+    "WBD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 6"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Larry Ellison pledged another ~350 million Oracle shares (~$9.2BN) as loan collateral, bringing his total pledged Oracle shares to about $57BN.",
+   "anchor": "Ellison pledged another ~350 million Oracle shares (~$9.2BN) as loan collateral, bringing total pledged shares to about $57BN",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Zero Hedge noted Paramount's 40-year paper priced into the same IG market that just sent Oracle's 2056 bonds past an 8% yield.",
+   "anchor": "Paramount's 40-year paper priced into the same IG market that just sent Oracle's 2056s past 8%.",
+   "topic": "Paramount Skydance WBD financing",
+   "status": "level",
+   "instruments": [
+    "ORCL",
+    "PSKY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Goldman's ASEAN data center primer expects live capacity across the region's six main hubs to grow from about 3GW today to 13GW by 2030, a 33% CAGR.",
+   "anchor": "expects live capacity across the region's six main hubs to grow from about 3GW today to 13GW by 2030 (a 33% CAGR)",
+   "topic": "ASEAN AI datacenter capacity growth",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Tencent Rents 100,000 AI Chips At Huge Discount From Cash-Strapped Oracle In $7BN Deal",
+   "claim": "Within Goldman's ASEAN capacity growth forecast, Johor alone accounts for a third, with power delivery as the main bottleneck.",
+   "anchor": "with Johor alone accounting for a third, and power delivery as the main bottleneck.",
+   "topic": "ASEAN AI datacenter capacity growth",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-04/18563__tencent-rents-100-000-ai-chips-at-huge-discount-from-cash-st.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 52,
+  "matched": 52,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
