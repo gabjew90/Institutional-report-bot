@@ -37,9 +37,9 @@ def test_cpi_body_from_the_real_print():
     rows = PW.build_rows(PW.CPI, obs, "2026-08", FF)
     body = PW.render_release(rows, computed=["Core CPI 3-month annualized: 2.0%"],
                              source=PW.source_line(PW.CPI))
-    assert body[0] == "• Core CPI (MoM): +0.3% (vs. +0.2% exp, above)"
-    assert body[1] == "• Core CPI (YoY): 2.4% (vs. 2.4% exp, in line)"
-    assert body[2] == "• Headline CPI: +0.4% MoM / 3.4% YoY (vs. +0.4% / 3.4% exp, in line / in line)"
+    assert body[0] == "• Core CPI (on the month): +0.3% (expected +0.2%, came in higher)"
+    assert body[1] == "• Core CPI (over the year): 2.4% (in line with 2.4% expected)"
+    assert body[2] == "• Headline CPI: +0.4% on the month (in line with +0.4% expected) · 3.4% over the year (in line with 3.4% expected)"
     assert body[3] == "• Core CPI 3-month annualized: 2.0%"
     assert body[-1].startswith("Source: bls.gov") and "ForexFactory" in body[-1]
     assert body[-2] == ""
@@ -56,8 +56,8 @@ def test_pairs_fall_back_to_priors_and_levels_say_up_or_down():
         _row("Shelter m/m", "+0.3%", display="Shelter (MoM)"),
     ]
     body = PW.render_release(rows)
-    assert body[0] == "• Headline PCE: +0.3% MoM / 3.4% YoY (prior +0.1% / prior 3.4%)"
-    assert body[1] == "• Personal Income: +0.2% (vs. +0.5% exp, below) | Saving Rate: 4.1% (down from 4.4%)"
+    assert body[0] == "• Headline PCE: +0.3% on the month (prior +0.1%) · 3.4% over the year (prior 3.4%)"
+    assert body[1] == "• Personal Income: +0.2% (expected +0.5%, came in lower) | Saving Rate: 4.1% (down from 4.4%)"
     assert body[2] == "• Participation Rate: 62.6% (unchanged from 62.6%)"
     assert body[3] == "• Shelter (MoM): +0.3%"
 
@@ -70,14 +70,14 @@ def test_pair_with_consensus_on_one_side_compares_each_side_on_its_own_terms():
              transform="yoy"),
     ]
     assert PW.render_release(ahe) == [
-        "• Avg Hourly Earnings: +0.3% MoM / 3.1% YoY (vs. +0.3% exp, in line / prior 3.2%)"]
+        "• Avg Hourly Earnings: +0.3% on the month (in line with +0.3% expected) · 3.1% over the year (prior 3.2%)"]
     # labels come from each row's transform, not from argument order
     assert PW.render_release(list(reversed(ahe)))[0].startswith(
-        "• Avg Hourly Earnings: 3.1% YoY / +0.3% MoM")
+        "• Avg Hourly Earnings: 3.1% over the year (prior 3.2%) · +0.3% on the month")
     # no comparison on either side: no parenthetical
     bare = [_row("A m/m", "+0.1%", display="A", pair="p"), _row("A y/y", "2.0%", display="A", pair="p",
                                                                transform="yoy")]
-    assert PW.render_release(bare) == ["• A: +0.1% MoM / 2.0% YoY"]
+    assert PW.render_release(bare) == ["• A: +0.1% on the month · 2.0% over the year"]
     # a level row with no numeric values falls back to its prior
     lvl = _row("Rate", "4.1%", prior="4.4%", transform="level")
     assert PW.render_release([lvl]) == ["• Rate: 4.1% (prior 4.4%)"]
@@ -88,7 +88,7 @@ def test_takeaway_sits_between_the_numbers_and_the_source():
     body = PW.render_release(rows, takeaway=["• **Cooler core:** below the +0.3% consensus."],
                              source="Source: bea.gov")
     assert body == [
-        "• Core PCE (MoM): +0.2% (vs. +0.3% exp, below)",
+        "• Core PCE (MoM): +0.2% (expected +0.3%, came in lower)",
         "", "**Quick Takeaway**", "• **Cooler core:** below the +0.3% consensus.",
         "", "Source: bea.gov",
     ]
@@ -156,9 +156,43 @@ def test_the_job_posts_the_bullet_body_and_records_it_with_the_rows():
         asyncio.run(PW.print_watch_job(_Bot(), "08:30"))
         assert len(sent) == 1
         desc = sent[0].description
-        assert desc.startswith("• Core CPI (MoM): +0.3% (vs. +0.2% exp, above)")
+        assert desc.startswith("• Core CPI (on the month): +0.3% (expected +0.2%, came in higher)")
         assert "• Core CPI 3-month annualized:" in desc
         ledger = json.loads((Path(td) / "print-alerts" / "2026-09-11.json").read_text(encoding="utf-8"))
-        assert ledger["cpi"]["lines"][0].startswith("• Core CPI (MoM): +0.3%")
+        assert ledger["cpi"]["lines"][0].startswith("• Core CPI (on the month): +0.3%")
         assert [r["label"] for r in ledger["cpi"]["rows"]] == ["Core CPI m/m", "Core CPI y/y", "CPI m/m", "CPI y/y"]
         assert ledger["cpi"]["rows"][2] == {"label": "CPI m/m", "actual_value": 0.4, "period": "2026-08"}
+
+
+# --- payroll revisions from FRED's archive (2026-10-05 audit) -----------
+_NOW = {"CES0000000001": [("2026-06", 158892.0), ("2026-07", 158882.0),
+                          ("2026-08", 159015.0), ("2026-09", 159044.0)]}
+_BEFORE = {"observations": [{"date": "2026-06-01", "value": "158892"},
+                            {"date": "2026-07-01", "value": "158913"},
+                            {"date": "2026-08-01", "value": "159075"}]}
+
+
+def test_both_revised_months_come_from_freds_archive():
+    """The 2026-10-02 jobs post had no revision line: our ledger held no
+    August post. BLS revised July +21K to -10K and August +162K to +133K."""
+    from unittest.mock import patch
+    jobs = next(s for s in PW.SPECS if s.key == "jobs")
+    with patch("report.fred_data._fred_get", return_value=_BEFORE) as get:
+        before = PW.payroll_vintage(jobs, "2026-09", "2026-10-02")
+    line = PW.payroll_revisions(jobs, _NOW, "2026-09", before)
+    assert line == "Revisions: July -10K (was +21K) · August +133K (was +162K) · net -60K over two months"
+    params = get.call_args[0][1]
+    assert params["realtime_start"] == params["realtime_end"] == "2026-10-01"
+
+
+def test_no_revision_line_when_nothing_changed_or_fred_is_down():
+    from unittest.mock import patch
+    jobs = next(s for s in PW.SPECS if s.key == "jobs")
+    same = {"observations": [{"date": f"{p}-01", "value": str(v)} for p, v in _NOW["CES0000000001"][:3]]}
+    with patch("report.fred_data._fred_get", return_value=same):
+        assert PW.payroll_revisions(jobs, _NOW, "2026-09", PW.payroll_vintage(jobs, "2026-09", "2026-10-02")) == ""
+    with patch("report.fred_data._fred_get", return_value=None):
+        assert PW.payroll_vintage(jobs, "2026-09", "2026-10-02") is None
+    assert PW.payroll_revisions(jobs, _NOW, "2026-09", None) == ""
+    cpi = next(s for s in PW.SPECS if s.key == "cpi")
+    assert PW.payroll_vintage(cpi, "2026-09", "2026-10-14") is None

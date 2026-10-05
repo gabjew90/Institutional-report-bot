@@ -158,7 +158,7 @@ def test_job_posts_once_and_records_it():
         assert len(sent) == 1
         assert sent[0].title == "August CPI Inflation Print"
         # bullet body since 2026-09-30 (tests/test_print_watch_format.py has the layout)
-        assert "Headline CPI" in sent[0].description and "3.4% YoY" in sent[0].description
+        assert "Headline CPI" in sent[0].description and "3.4% over the year" in sent[0].description
         assert "Source: bls.gov" in sent[0].description
         assert "**Quick Takeaway**" not in sent[0].description, "no header without bullets"
         assert sent[0].footer.text == "released 08:30 ET · BLS"
@@ -210,7 +210,7 @@ def test_fomc_job_posts_the_decision_with_the_statement_changes():
         assert len(sent) == 1
         assert sent[0].title == "October FOMC Decision"
         lines = sent[0].description.split("\n")
-        assert lines[0] == "• Target range: 3.50% to 3.75% (vs. 3.75% exp, as expected)"
+        assert lines[0] == "• Target range: 3.50% to 3.75% (in line with 3.75% expected)"
         assert lines[1] == "• Fed holds · vote 9-3"
         changes = [ln for ln in lines if ln.startswith("• Statement change:")]
         assert changes == [f"• Statement change: {kept}"], changes
@@ -254,7 +254,7 @@ def test_job_puts_the_takeaway_under_the_numbers_once():
     desc = sent[0].description
     assert "**Quick Takeaway**" in desc
     assert desc.count("**Quick Takeaway**") == 1
-    assert desc.index("3.4% YoY") < desc.index("**Quick Takeaway**") < desc.index("• **X:** y") < desc.index("Source: bls.gov")
+    assert desc.index("3.4% over the year") < desc.index("**Quick Takeaway**") < desc.index("• **X:** y") < desc.index("Source: bls.gov")
     key, title, rows, computed, period = tk.call_args.args
     assert key == "cpi" and title == "August CPI Inflation Print" and period == "2026-08"
     assert [r["label"] for r in rows][:2] == ["Core CPI m/m", "Core CPI y/y"]
@@ -380,7 +380,7 @@ def test_release_ready_ignores_optional_lines_and_build_rows_drops_them_when_abs
     assert PW.release_ready(PW.CPI, obs, "2026-08")
     rows = PW.build_rows(PW.CPI, obs, "2026-08", FF)
     assert [r["label"] for r in rows] == ["Core CPI m/m", "Core CPI y/y", "CPI m/m", "CPI y/y"]
-    assert rows[2]["pair"] == "headline" and rows[0]["display"] == "Core CPI (MoM)"
+    assert rows[2]["pair"] == "headline" and rows[0]["display"] == "Core CPI (on the month)"
     assert rows[0]["actual_value"] == 0.3 and rows[0]["consensus_value"] == 0.2
 
 
@@ -499,7 +499,7 @@ def test_fomc_row_carries_the_feeds_expected_upper_bound():
     row = PW._fomc_row(parsed, ff, "2026-07")
     assert row["actual"] == "3.50% to 3.75%" and row["actual_value"] == 3.75 and row["period"] == "2026-07"
     assert row["consensus"] == "3.75%" and row["consensus_value"] == 3.75 and row["verdict"] == "as expected"
-    assert PW.render_release([row]) == ["• Target range: 3.50% to 3.75% (vs. 3.75% exp, as expected)"]
+    assert PW.render_release([row]) == ["• Target range: 3.50% to 3.75% (in line with 3.75% expected)"]
     # a surprise hold against an expected cut, and an expected cut delivered
     cut_exp = [{"event": "FOMC Interest Rate Decision", "estimate": 3.5}]
     assert PW._fomc_row(parsed, cut_exp, "2026-07")["verdict"] == "higher than expected"

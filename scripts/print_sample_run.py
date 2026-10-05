@@ -8,6 +8,7 @@ worker owns the writable one):
   /opt/venv/bin/python scripts/print_sample_run.py cpi 2026-08
   /opt/venv/bin/python scripts/print_sample_run.py pce 2026-08
   /opt/venv/bin/python scripts/print_sample_run.py jobs 2026-08
+  /opt/venv/bin/python scripts/print_sample_run.py jobs 2026-09 2026-10-02   (past release date)
   /opt/venv/bin/python scripts/print_sample_run.py fomc <statement-url>
 
 Prints the title, the body lines and the research notes the takeaway
@@ -28,6 +29,9 @@ def main(argv: list[str]) -> int:
         print(__doc__)
         return 2
     key, arg = argv[0], argv[1]
+    # the release date (YYYY-MM-DD) for a past print: revisions are read
+    # as FRED showed them the day before it
+    release_day = argv[2] if len(argv) > 2 else None
     import db
     from config import settings
     ro = sqlite3.connect(f"file:{settings.db_path}?mode=ro", uri=True, timeout=5,
@@ -63,7 +67,9 @@ def main(argv: list[str]) -> int:
             a3 = PW.annualized_3m(obs.get(core.series) or [], period)
             if a3 is not None:
                 computed.append(f"{core.display.split(' (')[0]} 3-month annualized: {a3:.1f}%")
-        rev = PW.revision_line(spec, obs, period, PW.previous_post(spec.key, before=today))
+        before = PW.payroll_vintage(spec, period, release_day or today)
+        rev = (PW.payroll_revisions(spec, obs, period, before)
+               or PW.revision_line(spec, obs, period, PW.previous_post(spec.key, before=today)))
         if rev:
             computed.append(rev)
     title = PW.release_title(spec, period)

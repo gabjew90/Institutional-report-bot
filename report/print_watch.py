@@ -89,13 +89,13 @@ CPI = ReleaseSpec(
     key="cpi", title="CPI", release_et="08:30", headline="CPI Inflation Print",
     ff_arming_events=("CPI m/m", "Core CPI m/m", "CPI y/y"),
     lines=[
-        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m", display="Core CPI (MoM)"),
-        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y", display="Core CPI (YoY)"),
+        Line("Core CPI m/m", "CUSR0000SA0L1E", "mom", "Core CPI m/m", display="Core CPI (on the month)"),
+        Line("Core CPI y/y", "CUUR0000SA0L1E", "yoy", "Core CPI y/y", display="Core CPI (over the year)"),
         Line("CPI m/m", "CUSR0000SA0", "mom", "CPI m/m", display="Headline CPI", pair="headline"),
         Line("CPI y/y", "CUUR0000SA0", "yoy", "CPI y/y", display="Headline CPI", pair="headline"),
-        Line("Shelter m/m", "CUSR0000SAH1", "mom", "", display="Shelter (MoM)", optional=True),
-        Line("Energy m/m", "CUSR0000SA0E", "mom", "", display="Energy (MoM)", optional=True),
-        Line("Food m/m", "CUSR0000SAF1", "mom", "", display="Food (MoM)", optional=True),
+        Line("Shelter m/m", "CUSR0000SAH1", "mom", "", display="Shelter (on the month)", optional=True),
+        Line("Energy m/m", "CUSR0000SA0E", "mom", "", display="Energy (on the month)", optional=True),
+        Line("Food m/m", "CUSR0000SAF1", "mom", "", display="Food (on the month)", optional=True),
     ])
 
 JOBS = ReleaseSpec(
@@ -131,8 +131,8 @@ PCE = ReleaseSpec(
     key="pce", title="PCE price index", release_et="08:30", headline="PCE Inflation Print",
     ff_arming_events=("Core PCE Price Index m/m",),
     lines=[
-        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea", display="Core PCE (MoM)"),
-        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea", display="Core PCE (YoY)"),
+        Line("Core PCE m/m", "DPCCRG", "mom", "Core PCE Price Index m/m", source="bea", display="Core PCE (on the month)"),
+        Line("Core PCE y/y", "DPCCRG", "yoy", "", source="bea", display="Core PCE (over the year)"),
         Line("PCE m/m", "DPCERG", "mom", "", source="bea", display="Headline PCE", pair="headline"),
         Line("PCE y/y", "DPCERG", "yoy", "", source="bea", display="Headline PCE", pair="headline"),
         Line("Real Consumer Spending m/m", "DPCERX", "mom", "", source="bea", table="T20806",
@@ -652,6 +652,62 @@ def revision_line(spec: ReleaseSpec, obs_by_series: dict, period: str, prev: dic
             f"from {_fmt(posted['actual_value'], ln.unit, ln.transform)}")
 
 
+# FRED twins of the agency series whose revisions the post reports.
+_FRED_TWIN = {"CES0000000001": "PAYEMS"}
+
+
+def _revised_line(spec: ReleaseSpec) -> Line | None:
+    ln = next((x for x in spec.lines if x.transform == "m_change_k"), None)
+    return ln if ln and ln.series in _FRED_TWIN else None
+
+
+def payroll_vintage(spec: ReleaseSpec, period: str, today_iso: str) -> list[tuple[str, float]] | None:
+    """The payroll levels as FRED's archive of past values (ALFRED) showed
+    them the day before the release: the first prints the release then
+    revises. Known before 8:30, so the job fetches it while it waits for
+    the release, off the posting path. None when FRED cannot answer."""
+    ln = _revised_line(spec)
+    if ln is None:
+        return None
+    from report.fred_data import _fred_get
+    asof = (datetime.fromisoformat(today_iso) - timedelta(days=1)).date().isoformat()
+    data = _fred_get("series/observations", {
+        "series_id": _FRED_TWIN[ln.series], "realtime_start": asof, "realtime_end": asof,
+        "observation_start": f"{month_shift(period, -3)}-01"})
+    if not data:
+        return None
+    return [(o["date"][:7], float(o["value"])) for o in data.get("observations", [])
+            if o.get("value") not in (None, ".")]
+
+
+def payroll_revisions(spec: ReleaseSpec, obs_by_series: dict, period: str,
+                      before: list[tuple[str, float]] | None) -> str:
+    """'Revisions: July -10K (was +21K) · August +133K (was +162K) · net
+    -60K over two months'. BLS revises the two months before the
+    reference month in every jobs report; `before` is payroll_vintage, so
+    the line needs no earlier post of ours (on 2026-10-02 our ledger had
+    no August post and the -60K revision never reached the room). Empty
+    when nothing changed or the vintage is missing."""
+    ln = _revised_line(spec)
+    if ln is None or not before:
+        return ""
+    now_obs = obs_by_series.get(ln.series) or []
+    parts, net, changed = [], 0.0, False
+    for back in (-2, -1):
+        month = month_shift(period, back)
+        was = compute(before, "m_change_k", month)
+        now = compute(now_obs, "m_change_k", month)
+        if was is None or now is None:
+            return ""
+        net += now - was
+        changed = changed or round(now) != round(was)
+        parts.append(f"{period_label(month).split()[0]} {_fmt(now, ln.unit, ln.transform)} "
+                     f"(was {_fmt(was, ln.unit, ln.transform)})")
+    if not changed:
+        return ""
+    return "Revisions: " + " · ".join(parts) + f" · net {_fmt(net, ln.unit, ln.transform)} over two months"
+
+
 def _level_change(r: dict) -> str:
     a, p = r.get("actual_value"), r.get("prior_value")
     if a is None or p is None:
@@ -661,9 +717,26 @@ def _level_change(r: dict) -> str:
     return f"{'up' if a > p else 'down'} from {r['prior']}"
 
 
+# Plain words for a reader who does not know the shorthand (2026-10-05
+# audit: "(vs. +0.3% exp, below / prior 3.1%)" mixed the monthly forecast
+# with the yearly prior in one bracket, and "MoM", "exp" and "above" went
+# unexplained). Direction only: whether higher is good depends on the
+# series, and the Quick Takeaway says what it means.
+_VERDICT_WORD = {"above": "higher", "below": "lower",
+                 "higher than expected": "higher", "lower than expected": "lower"}
+
+
+def _versus(r: dict) -> str:
+    v = r.get("verdict") or ""
+    if v in ("in line", "as expected"):
+        return f"in line with {r['consensus']} expected"
+    v = _VERDICT_WORD.get(v, v)
+    return f"expected {r['consensus']}" + (f", came in {v}" if v else "")
+
+
 def _comparison(r: dict) -> str:
     if r.get("consensus") is not None:
-        return f"vs. {r['consensus']} exp, {r['verdict']}".rstrip(", ")
+        return _versus(r)
     if r.get("transform") == "level":
         change = _level_change(r)
         if change:
@@ -678,22 +751,20 @@ def _single(r: dict) -> str:
     return f"{r['display']}: {r['actual']}" + (f" ({cmp_})" if cmp_ else "")
 
 
-_PERIOD_TAG = {"mom": "MoM", "yoy": "YoY"}
+_PERIOD_TAG = {"mom": "on the month", "yoy": "over the year"}
 
 
 def _pair(a: dict, b: dict) -> str:
-    """m/m and y/y on one line. When both sides have a consensus the
-    parenthetical is compact. Otherwise each side is compared on its own
-    terms (consensus, else prior) and the two are joined with " / "."""
-    def tag(r: dict) -> str:
-        return _PERIOD_TAG.get(r.get("transform"), r["display"])
+    """m/m and y/y on one line, each value followed by its own comparison
+    (forecast, else prior), so a forecast never sits beside the other
+    side's number: 'Avg Hourly Earnings: +0.1% on the month (expected
+    +0.3%, came in lower) · 3.0% over the year (prior 3.1%)'."""
+    def side(r: dict) -> str:
+        cmp_ = _comparison(r)
+        tag = _PERIOD_TAG.get(r.get("transform"), "")
+        return f"{r['actual']} {tag}".rstrip() + (f" ({cmp_})" if cmp_ else "")
 
-    head = f"{a['display']}: {a['actual']} {tag(a)} / {b['actual']} {tag(b)}"
-    if a.get("consensus") is not None and b.get("consensus") is not None:
-        return (f"{head} (vs. {a['consensus']} / {b['consensus']} exp, "
-                f"{a.get('verdict') or '-'} / {b.get('verdict') or '-'})")
-    parts = [c for c in (_comparison(a), _comparison(b)) if c]
-    return f"{head} ({' / '.join(parts)})" if parts else head
+    return f"{a['display']}: {side(a)} · {side(b)}"
 
 
 def render_release(rows: list[dict], computed: list[str] | tuple = (), takeaway: list[str] | tuple = (),
@@ -939,10 +1010,19 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     log.info(f"print-watch: armed for {[s.key for s in due]} at {release_et} ET")
     hh, mm = (int(x) for x in release_et.split(":"))
     release_at = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
+    period = reference_period(today)
+    # The pre-release payroll levels the revision line compares against,
+    # fetched now so the post does not wait on FRED after the release.
+    vintages: dict = {}
+    for s in due:
+        if _revised_line(s) is not None:
+            try:
+                vintages[s.key] = await asyncio.to_thread(payroll_vintage, s, period, today)
+            except Exception as e:
+                log.warning(f"print-watch: FRED vintage for {s.key} failed, ledger fallback: {e}")
     wait = (release_at - datetime.now(_ET)).total_seconds()
     if wait > 0:
         await asyncio.sleep(wait)
-    period = reference_period(today)
     poll = POLL_S_WITH_KEY if settings.bls_api_key else POLL_S_NO_KEY
     wait_s = max(MAX_WAIT_S_BY_AGENCY.get(s.agency, MAX_WAIT_S) for s in due)
     deadline = datetime.now(_ET) + timedelta(seconds=wait_s)
@@ -980,7 +1060,8 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
                         a3 = annualized_3m(obs.get(core.series) or [], period)
                         if a3 is not None:
                             computed.append(f"{core.display.split(' (')[0]} 3-month annualized: {a3:.1f}%")
-                    rev = revision_line(spec, obs, period, prev)
+                    rev = (payroll_revisions(spec, obs, period, vintages.get(spec.key))
+                           or revision_line(spec, obs, period, prev))
                     if rev:
                         computed.append(rev)
                     title = release_title(spec, period)
