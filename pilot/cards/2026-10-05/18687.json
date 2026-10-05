@@ -1,0 +1,251 @@
+{
+ "brief": "SpaceX exited 2Q26 with 1.4 GW of AI compute and had guided for more than 2 GW exiting 2026. Musk said another 220k NVIDIA GB300 GPUs go live this week, a further 220k in November, and possibly a third 220k batch by late December if conditions allow. DB estimates each 220k GB300 cluster equals 440 MW, implying SpaceX reaches roughly 2.3 GW exiting November and roughly 2.7 GW in early 2027, which DB says gives ample capacity for cloud hosting deals, growing inference demand (Cursor, Grok Bot), and Grok 5 training. SpaceX is also building the largest grid-connected battery bank in the US, at 3.3 GWh. On monetization, DB estimates SpaceX's five signed neocloud customers represent $54.5bn in annualized revenue run-rate. Management has not disclosed the compute behind those deals, but DB estimates 1.2-1.4 GW, implying $40-45bn per GW, toward the high end of a $30-50bn industry range. DB expects more large deals given industry capacity constraints, with agentic AI offerings further lifting compute demand.",
+ "cards": [
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "SpaceX exited the second quarter of 2026 with 1.4 GW of AI compute capacity.",
+   "anchor": "the company exited 2Q26 with 1.4 GW of compute",
+   "topic": "SpaceX AI compute buildout",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "SpaceX guided for more than 2 GW of compute capacity exiting 2026.",
+   "anchor": "guided for >2 GW exiting 2026",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "exiting 2026"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Elon Musk said another 220,000 NVIDIA GB300 GPUs will be fully operational at SpaceX this week.",
+   "anchor": "another 220k NVIDIA GB300s will be fully operational this week",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Elon Musk said another 220,000 GB300 GPUs will come online at SpaceX in November.",
+   "anchor": "will be fully operational this week and another 220k in November",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November 2026"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Elon Musk said SpaceX could add a further 220,000 GB300 GPUs by late December if conditions allow.",
+   "anchor": "And then potentially another 220k \"if we get lucky\" by late December.",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "late December 2026"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank estimates each 220,000-GPU GB300 cluster is equivalent to 440 MW of compute.",
+   "anchor": "We estimate each 220k GB300 cluster is equivalent to 440 MW of compute",
+   "topic": "SpaceX AI compute buildout",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank estimates SpaceX will have about 2.3 GW of compute exiting November.",
+   "anchor": "implying SpaceX should be at ~2.3 GW of compute exiting November",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November 2026"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank estimates SpaceX will have about 2.7 GW of compute in early 2027.",
+   "anchor": "and ~2.7 GW in early 2027",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "early 2027"
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "SpaceX is building the largest grid-connected battery pack bank in the US, sized at 3.3 GWh.",
+   "anchor": "SpaceX is putting up the largest grid-connected battery pack bank in the US worth 3.3 GWh",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank estimates SpaceX's five signed neocloud customers are worth $54.5bn on an annualized revenue run-rate basis.",
+   "anchor": "we estimate the five signed customers are worth $54.5bn on an annualized revenue run-rate basis",
+   "topic": "SpaceX AI compute buildout",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank estimates the compute allocated to SpaceX's neocloud deals at 1.2-1.4 GW, since management has not disclosed the exact figure.",
+   "anchor": "the exact compute allocation to these contracts but we estimate 1.2-1.4 GW",
+   "topic": "SpaceX AI compute buildout",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank estimates SpaceX's neocloud deals are priced at $40-45bn per GW, toward the higher end of a $30-50bn industry range.",
+   "anchor": "implying $40-45bn per GW pricing, toward the higher end of $30-50bn range",
+   "topic": "SpaceX AI compute buildout",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank expects at least a few more large neocloud deals to materialize given industry capacity constraints.",
+   "anchor": "we expect at least a few more large deals to materialize given industry constraints",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank thinks the rise of agentic AI offerings will further increase compute demand.",
+   "anchor": "with the rise of agentic AI offerings, we think this will only further increase compute demand",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Deutsche Bank",
+   "document": "Got compute?",
+   "claim": "Deutsche Bank says SpaceX's compute buildout should provide ample capacity for its cloud hosting deals, growing inference needs from Cursor and Grok Bot, and Grok 5 training.",
+   "anchor": "this should provide ample capacity for its cloud hosting deals, growing inference needs (Cursor, Grok Bot), and training (Grok 5)",
+   "topic": "SpaceX AI compute buildout",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-05/18687__spacex-got-compute.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 15,
+  "matched": 15,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
