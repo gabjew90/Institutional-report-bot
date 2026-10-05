@@ -383,7 +383,12 @@ def run_fixture(fx: dict, client, model, tools, safety) -> dict:
     # an error payload, which is what production would inject if the
     # feed were down.
     from discord_bot import ask_router as _ask_router
-    _route = _ask_router.classify(fx.get("question") or "")
+    _deferred = _ask_router.deferred_question(fx.get("question") or "")
+    _route = _ask_router.classify(
+        _deferred["question"] if _deferred else (fx.get("question") or ""))
+    if _deferred:
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_ask_router.deferred_note(_deferred["author"]))]))
     cfg.tools = _ask_router.filter_tools(_route, list(tools))
     _prefetched: list[str] = []
     for _pf_tool, _pf_args in _route.prefetch:

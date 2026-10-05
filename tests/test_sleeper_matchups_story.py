@@ -17,7 +17,7 @@ def _resolver(ids):
     return {i: NAMES.get(i, f"id:{i}") for i in ids}
 
 
-def _run(monkeypatch, *, matchups, stats, proj):
+def _run(monkeypatch, *, matchups, stats, proj, states=None):
     monkeypatch.setattr(SD, "fetch_state", lambda: {"season": "2026", "week": 3})
     monkeypatch.setattr(SD, "fetch_league", lambda lid: {
         "name": "Omnibeta", "season": "2026", "status": "in_season"})
@@ -30,6 +30,7 @@ def _run(monkeypatch, *, matchups, stats, proj):
     monkeypatch.setattr(SD, "fetch_matchups", lambda lid, wk: matchups)
     monkeypatch.setattr(SD, "fetch_weekly_stats", lambda s, wk: stats)
     monkeypatch.setattr(SD, "fetch_projections", lambda s, wk: proj)
+    monkeypatch.setattr(SD, "fetch_game_states", lambda s, wk: states or {})
     return SD.build_topic_payload("L1", "matchups", player_name_resolver=_resolver)
 
 

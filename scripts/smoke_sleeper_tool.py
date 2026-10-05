@@ -75,6 +75,7 @@ def _patched(**over):
         "fetch_trending": lambda kind="add", **kw: [],
         "fetch_projections": lambda s, w: {},
         "fetch_weekly_stats": lambda s, w: {},   # keeps every smoke offline
+        "fetch_game_states": lambda s, w: {},
     }
     base.update(over)
     return [patch.object(sd, k, v) for k, v in base.items()]

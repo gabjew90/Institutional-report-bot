@@ -130,6 +130,9 @@ class Route:
     tickers: list[str] = field(default_factory=list)
     prefetch: list[tuple[str, dict]] = field(default_factory=list)  # (tool, args)
     reason: str = ""
+    # Set by the caller when the asker handed over another member's
+    # question ("weigh in on this"): whose question the answer is about.
+    deferred_author: str = ""
 
     @property
     def deterministic(self) -> bool:
@@ -409,7 +412,65 @@ _FOOTBALL_RE = re.compile(
     r"|outlook|rank(?:ed|ings?)?|tiers?|compare|versus|\bvs\.?\b|better"
     r"|gonna\s+win|whos?\s+winning|waiver|claim|stash|grab"
     r"|who(?:'s|s| is)\s+(?:winning|losing|best|worst)|record|standings?|playoffs?"
-    r"|sunday|monday\s+night|thursday\s+night|red\s*zone|snaps?|targets?|carries)\b", re.I)
+    r"|sunday|monday\s+night|thursday\s+night|red\s*zone|snaps?|targets?|carries"
+    # Win chances and team names (2026-10-04: "what % chance of winning did
+    # Jamal have before this Panthers?" matched nothing, got no league data,
+    # and the bot gave BK's own 23% as Jamal's).
+    r"|chances?|odds|probabilit(?:y|ies)|win\s*(?:pct|percentage)"
+    r"|cardinals|falcons|ravens|bills|panthers|bears|bengals|browns|cowboys|broncos"
+    r"|lions|packers|texans|colts|jaguars|jags|chiefs|raiders|chargers|rams|dolphins"
+    r"|vikings|patriots|pats|saints|giants|jets|eagles|steelers|49ers|niners|seahawks"
+    r"|buccaneers|bucs|titans|commanders)\b", re.I)
+
+
+_WIN_CHANCE_RE = re.compile(
+    r"\b(?:(?:chances?|odds|probabilit(?:y|ies))\s+(?:of|to|at|for)\s+(?:win|winning|pull)"
+    r"|win(?:ning)?\s+(?:chances?|odds|probabilit(?:y|ies)|pct|percentage)"
+    r"|gonna\s+win|going\s+to\s+win|pull\s+(?:it\s+)?out\s+(?:a\s+|the\s+)?w(?:in)?)\b", re.I)
+
+
+# "weigh in on this", "thoughts?", "answer him": the asker hands the bot
+# someone else's question by replying to it. Route on THAT question and
+# answer about ITS author (2026-10-04: BK replied "Weigh in on this." to
+# 2Pale's "Any chance my fantasy team is gonna pull out a win?", the bot
+# fetched BK's week first and told BK "you're 0-3 with a league-low 270",
+# which was 2Pale's record).
+_DEFERRAL_RE = re.compile(
+    r"^\s*(?:<@!?\d+>\s*)?(?:weigh\s+in|thoughts|answer\s+(?:this|him|her|them|that|it)"
+    r"|what\s+do\s+(?:you|u)\s+think|wdyt|ruling|verdict|settle\s+this|you\s+tell\s+(?:him|her|them)"
+    r"|help\s+(?:him|her|them)|explain\s+(?:it\s+)?to\s+(?:him|her|them))"
+    # only filler may follow: "thoughts on puka?" is a question of its own
+    r"(?:\s+(?:on|about|for|with)\s+(?:this|that|it|him|her|them))?"
+    r"(?:\s+(?:here|bot|omniwiz|pls|please|lol|bro))*\s*[?.!]*\s*$",
+    re.I)
+_REPLY_BLOCK_RE = re.compile(
+    r"\[MESSAGE BEING REPLIED TO — from (?P<who>[^\]]*?) — user_id (?P<uid>\d+)\]\s*\n"
+    r"\"(?P<parent>.*?)\"\s*\n\n\[[^\]\n]*message to you\]\s*\n(?P<own>.*)\Z", re.S)
+
+
+def deferred_note(author: str) -> str:
+    """The prompt block for a handed-over question."""
+    return (f"HANDED-OVER QUESTION: the asker is passing on {author}'s question "
+            f"(the message they replied to). Answer it about {author}: name "
+            f"{author} and use {author}'s numbers. Do not say 'you' for "
+            f"{author}'s team or record, and do not give the asker's own "
+            f"figures as {author}'s.")
+
+
+def deferred_question(question: str, bot_user_id: int | None = None) -> dict | None:
+    """When the asker's whole message defers to the message they replied
+    to, return {'question', 'author', 'user_id'} for that message. None
+    otherwise, and never for a reply to the bot's own message."""
+    m = _REPLY_BLOCK_RE.search(question or "")
+    if not m:
+        return None
+    uid = int(m.group("uid"))
+    if bot_user_id is not None and uid == int(bot_user_id):
+        return None
+    if not _DEFERRAL_RE.match(_last_line(question)):
+        return None
+    return {"question": m.group("parent").strip(), "author": m.group("who").strip(),
+            "user_id": uid}
 
 # A ledger question in the football channel means the league record, not
 # the trade log, unless it names trading material.
@@ -547,12 +608,19 @@ def _stock_prefetch(sym: str, *, research: bool = True, news: bool | None = None
     return out
 
 
+_VERBATIM_BLOCK_RE = re.compile(
+    r"\[VERBATIM RECENT MESSAGES[^\]]*\]\s*\n(?:[ \t]+.*(?:\n|$))*\s*")
+
+
 def _last_line(question: str) -> str:
-    """The actual ask: after any reply/verbatim context blocks."""
+    """The actual ask: after any reply/verbatim context blocks. A quoted
+    member block can sit between '[X's message to you]' and the asker's
+    words (2026-10-04, 'Weigh in on this.'), so it is stripped here too:
+    routing must read the asker, not the people quoted to them."""
     q = (question or "").strip()
     m = re.search(r"\[[^\]]*message to you\]\s*\n(.*)$", q, re.S)
     if m:
-        return m.group(1).strip()
+        return _VERBATIM_BLOCK_RE.sub("", m.group(1)).strip()
     if q.startswith("["):
         q = re.sub(r"^\[.*?\]\s*\n?", "", q, flags=re.S).strip()
         if "\n\n" in q:
@@ -631,6 +699,18 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         # lookup ("when does NVDA report") does not pay for a search.
         r.prefetch = [(T_EDATE, {"symbol": tickers[0]})] + _stock_prefetch(
             tickers[0], research=False, news=bool(_RESULT_Q_RE.search(q)))
+        return r
+    # In the football channel a win-chance question is about the league
+    # before it is a prediction-market question (2026-10-04: "what % chance
+    # of winning did Jamal have" took the news shape, no league data).
+    if in_channel and _WIN_CHANCE_RE.search(q):
+        r = _as_fantasy(r, q, "win-chance words in the football channel",
+                        default_topic="matchups", asker_manager=asker_manager)
+        # Every game with its win estimate: "what were Jamal's odds" is
+        # about another manager's game, and situation holds only the
+        # asker's.
+        if (T_FANTASY, {"topic": "matchups"}) not in r.prefetch:
+            r.prefetch.append((T_FANTASY, {"topic": "matchups"}))
         return r
     if _NEWS_RE.search(q):
         r.shape, r.reason = NEWS_EVENT, "why/what-happened/odds shape"

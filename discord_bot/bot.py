@@ -4592,14 +4592,27 @@ async def _ask_00_setup_tools_and_context(
         from report.sleeper_data import manager_for_discord_id as _mgr
         _asker_manager = _mgr(user_id)
     except Exception:
+        _mgr = None
         _asker_manager = ""
+    # "Weigh in on this" in reply to a member's question hands the bot
+    # that question: route on it, and aim the league lookup at its author
+    # (2026-10-04, ask_router.deferred_question).
+    _route_question = question
+    _deferred = _ask_router.deferred_question(question, _BOT_USER_ID)
+    if _deferred:
+        _route_question = _deferred["question"]
+        if _mgr is not None:
+            _asker_manager = _mgr(_deferred["user_id"])
     _ask_route = _ask_router.classify(
-        question,
+        _route_question,
         fantasy_enabled=bool((settings.sleeper_league_id or "").strip()),
         # A question asked in the football channel is a league question
         # unless a stronger shape claims it (2026-09-03, owner).
         channel_name=channel_name or "",
         asker_manager=_asker_manager)
+    if _deferred:
+        _ask_route.deferred_author = _deferred["author"]
+        _ask_route.reason = f"deferred to {_deferred['author']}'s question: {_ask_route.reason}"
     log.info(f"/ask: route shape={_ask_route.shape} tickers={_ask_route.tickers[:4]} "
              f"prefetch={[t for t, _ in _ask_route.prefetch]} ({_ask_route.reason}) "
              f"channel={channel_name or '?'}")
@@ -5327,6 +5340,12 @@ async def _ask_02_call_model_with_tools(
         contents.append(types.Content(role="user",
                                       parts=[types.Part.from_text(text=_superlative)]))
         _ask_meta["guards"].append("superlative")
+    # "Weigh in on this" on another member's question: answer about that
+    # member, not the asker (ask_router.deferred_question, 2026-10-04).
+    if getattr(_ask_route, "deferred_author", ""):
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_ask_router.deferred_note(_ask_route.deferred_author))]))
+        _ask_meta["guards"].append("deferred-question")
     _round_gm_chunks: list = []
     for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
         # Contents-size guard: fail CLEANLY (friendly reply + a log
@@ -9158,6 +9177,12 @@ def _safe_json(s: str | None) -> list:
         return []
 
 
+# The bot's own Discord id, set when it connects. Routing needs it outside
+# the handlers (ask_router.deferred_question must not treat a reply to the
+# bot's own answer as another member's question). None in the harness.
+_BOT_USER_ID: int | None = None
+
+
 def create_bot() -> commands.Bot:
     """Create and configure the Discord bot."""
     intents = discord.Intents.default()
@@ -9167,6 +9192,8 @@ def create_bot() -> commands.Bot:
 
     @bot.event
     async def on_ready():
+        global _BOT_USER_ID
+        _BOT_USER_ID = bot.user.id if bot.user else None
         log.info(f"Discord bot connected as {bot.user}")
         try:
             synced = await bot.tree.sync()

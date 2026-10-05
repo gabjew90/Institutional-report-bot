@@ -389,6 +389,54 @@ def test_the_six_common_league_questions():
     assert r.prefetch == [(R.T_FANTASY, {"topic": "projections"})], r.prefetch
 
 
+_SUNDAY_DEFERRAL = (
+    "[MESSAGE BEING REPLIED TO — from 2pale — user_id 264777559026171905]\n"
+    "\"Any chance my fantasy team is gomna pull out a win?\"\n\n"
+    "[BK's message to you]\n"
+    "[VERBATIM RECENT MESSAGES — 2Pale (2pale) — for accurate\n"
+    "quoting when the question references them; quote LINE FOR LINE]\n"
+    "  2026-10-05T01:14 #🏈-fantasy-football-yapping-🏈 — Im cracked\n\n"
+    "Weigh in on this.")
+
+
+def test_last_line_skips_a_quoted_block_after_the_reply_marker():
+    assert R._last_line(_SUNDAY_DEFERRAL) == "Weigh in on this."
+
+
+def test_a_handed_over_question_is_routed_as_its_author_asked_it():
+    d = R.deferred_question(_SUNDAY_DEFERRAL, bot_user_id=1422761344322502807)
+    assert d == {"question": "Any chance my fantasy team is gomna pull out a win?",
+                 "author": "2pale", "user_id": 264777559026171905}
+    r = R.classify(d["question"], fantasy_enabled=True, channel_name=_FC,
+                   asker_manager="2Pale")
+    assert r.shape == R.FANTASY
+    assert r.prefetch[0] == (R.T_FANTASY, {"topic": "situation", "member": "2Pale"})
+    assert "2pale" in R.deferred_note("2pale")
+
+
+def test_a_real_question_in_a_reply_is_not_a_hand_over():
+    for own in ("how many points did puka score", "thoughts on puka?",
+                "weigh in on nvda calls"):
+        assert R.deferred_question(_SUNDAY_DEFERRAL.replace("Weigh in on this.", own)) is None, own
+    for own in ("thoughts?", "weigh in", "answer him bot", "wdyt"):
+        assert R.deferred_question(_SUNDAY_DEFERRAL.replace("Weigh in on this.", own)), own
+    q = _SUNDAY_DEFERRAL.replace("Weigh in on this.", "how many points did puka score")
+    to_bot = _SUNDAY_DEFERRAL.replace("user_id 264777559026171905", "user_id 1")
+    assert R.deferred_question(to_bot, bot_user_id=1) is None
+
+
+def test_win_chance_questions_in_the_football_channel_get_league_data():
+    for q in ("what % chance of winning did Jamal have before this Panthers?",
+              "whats my win probability", "odds of winning this week?"):
+        r = R.classify(q, fantasy_enabled=True, channel_name=_FC, asker_manager="BK")
+        assert r.shape == R.FANTASY, q
+        assert (R.T_FANTASY, {"topic": "matchups"}) in r.prefetch, q
+    # outside the football channel the same words stay a market question
+    r = R.classify("what are the odds of a fed cut in december", fantasy_enabled=True,
+                   channel_name="stonks-yapping", asker_manager="BK")
+    assert r.shape == R.NEWS_EVENT
+
+
 def test_first_person_lookups_need_a_known_manager():
     # A non-manager asking "my roster" gets no prefetch rather than a
     # "could not match a manager" payload labelled authoritative.

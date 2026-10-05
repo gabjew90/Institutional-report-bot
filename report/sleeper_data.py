@@ -17,6 +17,7 @@ two topics and nothing else.
 
 import json
 import logging
+import re
 import urllib.error
 import urllib.request
 
@@ -139,6 +140,99 @@ def fetch_weekly_stats(season: str, week: int) -> dict:
         return {}
 
 
+_SCHEDULE_URL = "https://api.sleeper.app/schedule/nfl/regular/{season}"
+_STATUS_CACHE: dict = {}          # (season, week) -> (fetched_at, {team: state})
+_STATUS_TTL_S = 60
+
+
+def fetch_game_states(season: str, week: int) -> dict[str, str]:
+    """NFL team -> 'pre' | 'live' | 'final' for one week, from Sleeper's
+    schedule (undocumented, public). {} on any failure.
+
+    2026-10-04: the payload counted a player as done once his game had
+    STARTED (weekly stats carry `gp` from kickoff), so during Sunday Night
+    Football 2Pale's QB Bryce Young was "played", the tool reported zero
+    players left, and the bot told the room 2Pale had "0% chance" with
+    "zero players left to play". The schedule is the only Sleeper source
+    that says a game is still in progress ('in_game')."""
+    import time as _time
+    key = (str(season), int(week))
+    hit = _STATUS_CACHE.get(key)
+    if hit and _time.monotonic() - hit[0] < _STATUS_TTL_S:
+        return hit[1]
+    try:
+        req = urllib.request.Request(_SCHEDULE_URL.format(season=season),
+                                     headers={"User-Agent": "MarketPulseBot/1.0"})
+        with urllib.request.urlopen(req, timeout=_TIMEOUT) as resp:
+            games = json.loads(resp.read().decode("utf-8")) or []
+    except Exception as e:
+        log.info(f"sleeper schedule unavailable (undocumented): {e}")
+        return {}
+    states: dict[str, str] = {}
+    for g in games:
+        if not isinstance(g, dict) or g.get("week") != int(week):
+            continue
+        s = str(g.get("status") or "")
+        state = "final" if s == "complete" else "live" if s == "in_game" else "pre"
+        for team in (g.get("home"), g.get("away")):
+            if team:
+                states[str(team)] = state
+    _STATUS_CACHE[key] = (_time.monotonic(), states)
+    return states
+
+
+# 'Bryce Young (QB, CAR)' -> 'CAR'. The resolver labels players from the
+# sleeper_players cache as name (position, team); a team defense is
+# labelled by its abbreviation alone.
+_TEAM_IN_LABEL = re.compile(r"\((?:[A-Z0-9/]+,\s*)?([A-Z]{2,3})\)\s*$")
+
+
+def team_of(label: str) -> str:
+    m = _TEAM_IN_LABEL.search(label or "")
+    if m:
+        return m.group(1)
+    bare = (label or "").strip()
+    return bare if re.fullmatch(r"[A-Z]{2,3}", bare) else ""
+
+
+def game_state(label: str, started: bool | None, states: dict[str, str]) -> str | None:
+    """'pre', 'live' or 'final' for one starter. Falls back to the stats
+    flag when the schedule is down or the team is unknown: a started
+    game then counts as 'final' (the old behaviour) and an unstarted one
+    as 'pre'. None when neither source knows."""
+    s = states.get(team_of(label)) if states else None
+    if s:
+        return s
+    if started is None:
+        return None
+    return "final" if started else "pre"
+
+
+# Spread of one player's weekly score around his projection. Sleeper does
+# not publish a variance; 0.6 of the projection is the usual rule of thumb
+# for fantasy scoring and is what makes a 20-point lead with one QB left
+# a likely win, not a certain one.
+_PLAYER_SD_FRACTION = 0.6
+
+
+def win_chance(points_a: float, rem_a: list[float],
+               points_b: float, rem_b: list[float]) -> tuple[int, int] | None:
+    """(A %, B %) that each side finishes ahead: current points plus the
+    projection still to come, with each remaining player's score spread
+    around his projection. The bot's own estimate. Sleeper's in-app Win%
+    is not in any Sleeper API (checked 2026-10-04: REST and GraphQL)."""
+    import math
+    mean = (points_a + sum(rem_a)) - (points_b + sum(rem_b))
+    sd = math.sqrt(sum((_PLAYER_SD_FRACTION * r) ** 2 for r in rem_a + rem_b))
+    if sd < 0.5:
+        if abs(mean) < 0.005:
+            return 50, 50
+        return (100, 0) if mean > 0 else (0, 100)
+    pa = 0.5 * (1 + math.erf(mean / (sd * math.sqrt(2))))
+    a = max(0, min(100, round(pa * 100)))
+    return a, 100 - a
+
+
 def fetch_players_trimmed() -> list[tuple[str, str, str, str]]:
     """Download the full ~15MB players dump and trim to
     (player_id, name, position, team) rows for the DB cache. Called at
@@ -232,9 +326,24 @@ def _name1(pid, resolver) -> str:
     return got[0] if got else "?"
 
 
-def _matchup_side(side: dict, stats: dict, proj: dict, names: dict) -> dict:
+def _still_to_come(row: dict) -> float:
+    """Projected points a starter has left: the whole projection before
+    kickoff, the unscored part while his game is live, none after."""
+    pr = row.get("projected") or 0.0
+    if row.get("game_state") == "pre":
+        return pr
+    if row.get("game_state") == "live":
+        # A player already past his projection still has game left: keep a
+        # quarter of it so the estimate does not treat him as finished.
+        return max(pr - (row.get("actual") or 0.0), 0.25 * pr)
+    return 0.0
+
+
+def _matchup_side(side: dict, stats: dict, proj: dict, names: dict,
+                  states: dict | None = None) -> dict:
     """One team in a matchup: its starters' points so far, who has not
-    played yet, and what is still projected to come."""
+    played yet, who is playing right now, and what is still projected to
+    come."""
     pp = side.get("players_points") or {}
     # "0" is Sleeper's id for an empty starting slot
     starters = [str(p) for p in (side.get("starters") or []) if p and str(p) != "0"]
@@ -246,27 +355,39 @@ def _matchup_side(side: dict, stats: dict, proj: dict, names: dict) -> dict:
         if actual is None and st.get("pts_ppr") is not None:
             actual = st.get("pts_ppr")
         pr = (proj.get(pid) or {}).get("pts_ppr") if proj else None
+        label = names.get(pid, pid)
+        state = game_state(label, started, states or {})
+        if state is None and states:
+            state = "pre"        # schedule up, stats down, team unknown: still to come
         rows.append({
-            "player": names.get(pid, pid),
+            "player": label,
             "actual": round(float(actual), 1) if actual is not None else None,
             "projected": round(float(pr), 1) if pr is not None else None,
-            "game_started": started,
+            "game_started": state in ("live", "final") if state else started,
+            "game_state": state,
         })
     points = round(float(side.get("points") or 0), 2)
-    yet = [r for r in rows if r["game_started"] is False]
-    remaining = (round(sum(r["projected"] or 0 for r in yet), 1)
-                 if proj and stats else None)
+    yet = [r for r in rows if r["game_state"] == "pre"]
+    live = [r for r in rows if r["game_state"] == "live"]
+    known = bool(proj) and (bool(stats) or bool(states))
+    rem_each = [round(_still_to_come(r), 1) for r in yet + live]
+    remaining = round(sum(rem_each), 1) if known else None
     played = [r for r in rows if r["game_started"] and r["actual"] is not None]
     out = {
         "points": points,
         "yet_to_play": [{"player": r["player"], "projected": r["projected"]}
                         for r in yet],
+        # Starters whose game is in progress: still scoring. A side with
+        # anyone here is not done, whatever yet_to_play says.
+        "playing_now": [{"player": r["player"], "points_so_far": r["actual"],
+                         "projected": r["projected"]} for r in live],
         "remaining_projected": remaining,
         "projected_final": (round(points + remaining, 1)
                             if remaining is not None else None),
-        "players_played": sum(1 for r in rows if r["game_started"]),
-        "players_left": len(yet),
+        "players_played": sum(1 for r in rows if r["game_state"] == "final"),
+        "players_left": len(yet) + len(live),
         "_starters": rows,
+        "_remaining_each": rem_each if known else None,
     }
     if played:
         top = max(played, key=lambda r: r["actual"])
@@ -302,10 +423,14 @@ def _game_story(sides: list[dict]) -> dict:
         story["status"] = "unknown"          # game status endpoint down
     elif all(s["players_left"] == 0 for s in sides):
         story["status"] = "final"
-    elif all(s["players_played"] == 0 for s in sides):
+    elif all(s["players_played"] == 0 and not s.get("playing_now") for s in sides):
         story["status"] = "not started"
     else:
         story["status"] = "in progress"
+    if all(s.get("_remaining_each") is not None for s in sides):
+        ca, cb = win_chance(a["points"], a["_remaining_each"],
+                            b["points"], b["_remaining_each"])
+        story["win_chance_estimate"] = {a["manager"]: ca, b["manager"]: cb}
     return story
 
 
@@ -419,6 +544,7 @@ def build_topic_payload(
         ids = sorted({str(p) for m in mus for p in (m.get("starters") or [])
                       if p and str(p) != "0"})
         names = dict(zip(ids, _names(ids, resolver)))
+        states = fetch_game_states(season, wk) if season else {}
         games, performances = [], []
         for mid, pair in sorted(by_matchup.items(), key=lambda kv: kv[0] or 0):
             if mid is None:
@@ -426,7 +552,7 @@ def build_topic_payload(
             sides = []
             for side in pair:
                 owner = roster_owner.get(side.get("roster_id"), "")
-                team = _matchup_side(side, stats, proj, names)
+                team = _matchup_side(side, stats, proj, names, states)
                 team["manager"] = _owner_label(owner, users_by_id)
                 for r in team.pop("_starters"):
                     if r["game_started"]:
@@ -435,7 +561,10 @@ def build_topic_payload(
                             "projected": r["projected"],
                             "manager": team["manager"]})
                 sides.append(team)
-            games.append({"matchup": mid, "teams": sides, **_game_story(sides)})
+            story = _game_story(sides)
+            for team in sides:
+                team.pop("_remaining_each", None)
+            games.append({"matchup": mid, "teams": sides, **story})
         out["matchups"] = games
         if not games:
             out["note"] = (
@@ -453,9 +582,14 @@ def build_topic_payload(
                 "Tell each game as a story, not a scoreboard: who leads "
                 "and by how much (margin), who each side still has to "
                 "play and what they are projected for (yet_to_play, "
-                "remaining_projected), the standout and the dud on each "
+                "remaining_projected), who is playing right now and still "
+                "scoring (playing_now: a side with anyone there is not "
+                "done, never say it has no players left), the standout and the dud on each "
                 "side, and whether the trailing team is projected to "
-                "come back (comeback_projected). week_standouts and "
+                "come back (comeback_projected). win_chance_estimate is "
+                "the bot's own estimate from points and projections; call "
+                "it that, never Sleeper's or Kalshi's Win%, which no API "
+                "exposes. week_standouts and "
                 "week_busts are the league's best and worst starter "
                 "performances against projection. Quote the margins and "
                 "projected finals given here; do not work out your own. "
@@ -546,27 +680,34 @@ def build_topic_payload(
             s = stats.get(str(pid)) or {}
             return bool(s.get("gp") or s.get("gms_active"))
 
+        states = fetch_game_states(season, wk) if season else {}
+
+        def _row(p, label: str, slot: str) -> dict:
+            # no stats at all -> _started is False -> 'pre', the old
+            # behaviour: every starter counts as still to play
+            state = game_state(label, _started(p), states)
+            return {"player": label, "slot": slot, "projected": _pts(p),
+                    "actual": _actual(p),
+                    "game_started": state in ("live", "final") if state else _started(p),
+                    "game_state": state}
+
         def _lineup(r: dict) -> dict:
             starters = [p for p in (r.get("starters") or []) if p]
             bench = [p for p in (r.get("players") or []) if p not in starters]
             names = dict(zip([str(p) for p in starters + bench],
                              _names(starters + bench, resolver)))
-            rows = []
-            for p in starters:
-                rows.append({"player": names[str(p)], "slot": "starter",
-                             "projected": _pts(p), "actual": _actual(p),
-                             "game_started": _started(p)})
-            for p in bench:
-                rows.append({"player": names[str(p)], "slot": "bench",
-                             "projected": _pts(p), "actual": _actual(p),
-                             "game_started": _started(p)})
+            rows = ([_row(p, names[str(p)], "starter") for p in starters]
+                    + [_row(p, names[str(p)], "bench") for p in bench])
             starters_rows = [x for x in rows if x["slot"] == "starter"]
             total = round(sum(x["projected"] or 0 for x in starters_rows), 1)
-            yet = [x["player"] for x in starters_rows if not x["game_started"]]
-            remaining = round(sum(x["projected"] or 0 for x in starters_rows
-                                  if not x["game_started"]), 1)
+            yet = [x["player"] for x in starters_rows if x["game_state"] == "pre"]
+            live = [x["player"] for x in starters_rows if x["game_state"] == "live"]
+            rem_each = [round(_still_to_come(x), 1) for x in starters_rows
+                        if x["game_state"] in ("pre", "live")]
             return {"players": rows, "projected_total": total,
-                    "yet_to_play": yet, "remaining_projected": remaining}
+                    "yet_to_play": yet, "playing_now": live,
+                    "remaining_projected": round(sum(rem_each), 1),
+                    "_remaining_each": rem_each}
 
         mine = next((x for x in rosters if str(x.get("owner_id")) == sid), None)
         if not mine:
@@ -600,10 +741,19 @@ def build_topic_payload(
                         "my_points_so_far": my_m.get("points"),
                         "lineup": _lineup(opp_roster) if opp_roster else None,
                     }
+                    if opp["lineup"] and proj:
+                        mine_pct, opp_pct = win_chance(
+                            float(my_m.get("points") or 0), out["roster"]["_remaining_each"],
+                            float(other.get("points") or 0), opp["lineup"]["_remaining_each"])
+                        opp["win_chance_estimate"] = {out["manager"]: mine_pct,
+                                                      opp["manager"]: opp_pct}
         except Exception as e:
             log.info(f"sleeper matchups failed (non-fatal): {e}")
         out["matchup"] = opp or {
             "note": f"No matchup for week {wk} — the season may not have started."}
+        out["roster"].pop("_remaining_each", None)
+        if opp and opp.get("lineup"):
+            opp["lineup"].pop("_remaining_each", None)
 
         rows = []
         for r in rosters:
@@ -621,10 +771,15 @@ def build_topic_payload(
             "start/sit is bench vs starter at an eligible slot, the "
             "matchup is lineup vs lineup, the standings give the stakes. "
             "Each player carries projected, actual (points so far) and "
-            "game_started; yet_to_play NAMES the starters whose game has "
-            "not started and remaining_projected is what is still on the "
-            "board, for both sides. Use those names: never say 'depending "
-            "on who is left' when the list is right here. Projections "
+            "game_state (pre, live, final); yet_to_play NAMES the starters "
+            "whose game has not started, playing_now the ones whose game is "
+            "in progress and still scoring, and remaining_projected is what "
+            "is still on the board, for both sides. Use those names: never "
+            "say 'depending on who is left' when the list is right here, "
+            "and never say a side has no one left while playing_now names "
+            "someone. matchup.win_chance_estimate is the bot's own estimate "
+            "from points and projections; call it that, never Sleeper's or "
+            "Kalshi's Win%, which no API exposes. Projections "
             "missing (null) means the endpoint was down; say so rather "
             "than inventing numbers. Draft, transactions and trending are "
             "separate topics."

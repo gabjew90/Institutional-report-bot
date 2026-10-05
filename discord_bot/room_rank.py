@@ -46,11 +46,10 @@ _SUPERLATIVE_RE = re.compile(
 
 
 def asker_message(question: str) -> str:
-    """The asker's own words: for a reply, the part after the
-    '[X's message to you]' line; otherwise the whole question."""
-    q = question or ""
-    m = re.search(r"message to you\]\s*\n", q)
-    return q[m.end():] if m else q
+    """The asker's own words, without the reply and quoted-message blocks
+    (the router's extraction, so both read the same text)."""
+    from discord_bot.ask_router import _last_line
+    return _last_line(question or "")
 
 
 def asked_metrics(question: str) -> set[str]:
