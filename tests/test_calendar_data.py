@@ -1006,6 +1006,30 @@ def test_one_schedule_feeds_the_print_alerts_and_the_calendar():
     assert set(W.OFFICIAL_RELEASES_NOT_ON_FRED) <= keys
 
 
+def test_sheet_times_are_12_hour_with_no_zone_per_row():
+    """Owner, 2026-10-05: '16:30 EDT' became '4:30 PM'; the footer's
+    ALL TIMES ET carries the zone once."""
+    from unittest.mock import patch as _p
+    from report import calendar_render as R
+    from report.calendar_data import CalendarDay, EconRow, ConfRow
+    assert R._clock("16:30") == "4:30 PM" and R._clock("8:15") == "8:15 AM"
+    day = CalendarDay(date_iso="2026-10-06", weekday_label="TUESDAY 10/6", is_holiday=False,
+                      econ=[EconRow("16:30", "API Weekly Statistical Bulletin", "low")])
+    drawn = []
+    real = R.ImageDraw.ImageDraw.text
+
+    def spy(self, xy, text, *a, **k):
+        drawn.append(text)
+        return real(self, xy, text, *a, **k)
+
+    with _p.object(R.ImageDraw.ImageDraw, "text", spy):
+        R.render_calendar_png(day)
+        day.conferences = [ConfRow("Morgan Stanley TMT", "12:30", ["NVDA"], True)]
+        R.render_calendar_png(day)
+    assert "4:30 PM" in drawn and "12:30 PM" in drawn
+    assert not any("EDT" in t or "EST" in t for t in drawn)
+
+
 def test_the_partial_note_promises_nothing_that_does_not_happen():
     from report import calendar_render as R
     assert "Sunday" not in R.ECON_PARTIAL_EMPTY + R.ECON_PARTIAL_NOTE

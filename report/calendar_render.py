@@ -137,16 +137,12 @@ def _wrap(d, text, font, max_w) -> list[str]:
     return lines or [""]
 
 
-def _et_abbrev(date_str: str) -> str:
-    """EDT or EST for a given ET date. Never a hardcoded guess."""
-    try:
-        from datetime import datetime
-        from zoneinfo import ZoneInfo
-        dt = datetime.strptime(date_str[:10], "%Y-%m-%d").replace(
-            hour=12, tzinfo=ZoneInfo("America/New_York"))
-        return dt.tzname() or "ET"
-    except Exception:
-        return "ET"
+def _clock(t: str) -> str:
+    """'16:30' -> '4:30 PM'. No zone on the row: the footer says ALL TIMES
+    ET once (owner, 2026-10-05; the rows carried 'EDT' since 2026-08-26 and
+    a 24-hour clock)."""
+    from report.calendar_data import time_12h
+    return time_12h(t)
 
 
 def _band(d, label, x0, x1, y, f):
@@ -386,13 +382,8 @@ def _econ_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
     y = _band(d, "Economic", _MARGIN, _W - _MARGIN, y, f)
     cy = y
     for r in day.econ:
-        # White, with the zone spelled out after the time.
-        # The abbreviation is DERIVED, not hardcoded: the room
-        # is on ET, which is EDT from March to November and EST
-        # the rest of the year. Printing a flat "EST" in August
-        # would put a wrong label on a correct time.
-        _t = f"{r.time_et} {_et_abbrev(day.date_iso)}"
-        d.text((_MARGIN, cy), _t, font=f["time"], fill=TEXT)
+        # White, 12-hour clock; the footer carries the zone.
+        d.text((_MARGIN, cy), _clock(r.time_et), font=f["time"], fill=TEXT)
         # Important rows (Tier-1 series or feed-rated high impact) are
         # bold and full-bright; the rest stay regular and slightly
         # dimmed so the eye lands on the prints that move the tape
@@ -420,8 +411,7 @@ def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
     and the admitted names hanging under the name in the symbol font,
     market-cap order (owner calls 2026-09-09 and 2026-09-10). Names
     wrap; nothing truncates."""
-    tz = _et_abbrev(day.date_iso)
-    t_w = 144 * _S                      # room for '13:01 EDT' plus a gap
+    t_w = 144 * _S                      # room for '12:30 PM' plus a gap
     name_w = col_w - t_w - 6 * _S
 
     # ---- left: economic
@@ -435,7 +425,7 @@ def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
             cy += 30 * _S
         cy += 10 * _S
     for r in day.econ:
-        d.text((x_l, cy), f"{r.time_et} {tz}", font=f["time"], fill=TEXT)
+        d.text((x_l, cy), _clock(r.time_et), font=f["time"], fill=TEXT)
         imp = getattr(r, "important", False)
         font = f["evb"] if imp else f["ev"]
         fill = TEXT if imp else _dim(TEXT, 0.80)
@@ -454,7 +444,7 @@ def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
     x_txt = x_r + t_w
     for c in day.conferences:
         if c.time_et:
-            d.text((x_r, cy), f"{c.time_et} {tz}", font=f["time"], fill=TEXT)
+            d.text((x_r, cy), _clock(c.time_et), font=f["time"], fill=TEXT)
         name_font = f["evb"] if getattr(c, "important", False) else f["ev"]
         for line in _wrap(d, c.conference, name_font, name_w):
             d.text((x_txt, cy + 1 * _S), line, font=name_font, fill=TEXT)

@@ -40,6 +40,9 @@ from __future__ import annotations
 
 from datetime import date, datetime, timedelta
 
+# shared with the sheet (report/calendar_render.py), 2026-10-05
+from report.calendar_data import time_12h as _time_12h
+
 X_LIMIT = 280
 
 ICON_TITLE = "\U0001F4C5"   # calendar
@@ -72,17 +75,6 @@ def cashtag_name(day) -> str | None:
 
 def _tags(symbols, lead: str | None = None) -> str:
     return ", ".join(f"${s}" if s == lead else s for s in symbols)
-
-
-def _time_12h(t: str) -> str:
-    """'14:00' -> '2:00 PM', '8:30' -> '8:30 AM'. Anything else as is."""
-    try:
-        h, m = (int(x) for x in t.split(":"))
-    except (ValueError, AttributeError):
-        return t
-    if not (0 <= h < 24 and 0 <= m < 60):
-        return t
-    return f"{(h % 12) or 12}:{m:02d} {'AM' if h < 12 else 'PM'}"
 
 
 def _heading(day, today_iso: str | None) -> str:

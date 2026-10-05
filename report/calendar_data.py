@@ -103,6 +103,17 @@ def econ_is_important(event: str, impact: str) -> bool:
     return bool(_ECON_IMPORTANT_RE.search(ev))
 
 
+def time_12h(t: str) -> str:
+    """'14:00' -> '2:00 PM', '8:30' -> '8:30 AM'. Anything else as is."""
+    try:
+        h, m = (int(x) for x in t.split(":"))
+    except (ValueError, AttributeError):
+        return t
+    if not (0 <= h < 24 and 0 <= m < 60):
+        return t
+    return f"{(h % 12) or 12}:{m:02d} {'AM' if h < 12 else 'PM'}"
+
+
 @dataclass
 class EarnRow:
     symbol: str
