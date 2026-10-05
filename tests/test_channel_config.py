@@ -19,10 +19,18 @@ def test_a_renamed_channel_still_matches_by_id():
 
 
 def test_every_channel_is_ingested_except_test_channel():
-    assert cc.ingests(_ch(1317611433235841126, "👔-equities-ideas-👔"))
+    assert cc.ingests(_ch(1448522270535585912, "👨‍🍳cooking-channel-🥘"))
     assert cc.ingests(_ch(999, "a-channel-created-tomorrow"))
     assert not cc.ingests(_ch(TEST, "test-channel"))
     assert not cc.ingests(_ch(TEST, "renamed-test-channel"))
+    # the private channels stay out even if access is granted later
+    for cid in (1433287712810467432, 1404927980685230212,
+                1480543318378152069, 1432569389273710613):
+        assert not cc.ingests(_ch(cid, "👨🏻-private")), cid
+    # and the webhook-feed channels, member comments included
+    for cid in (1317611433235841126, 1317740920258428959, 1404891421558702201):
+        assert not cc.ingests(_ch(cid, "a-feed")), cid
+    assert cc.ingests(_ch(1317611693844463656, "🔔-0dte-yapping-🔔"))
 
 
 def test_a_thread_in_test_channel_is_excluded_too():

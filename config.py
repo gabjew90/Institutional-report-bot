@@ -235,8 +235,26 @@ class Settings(BaseSettings):
     # Owner, 2026-10-04: read every channel except test-channel, new ones
     # included automatically. chat_ingestion_channels (when set) still
     # narrows ingestion to its list.
+    # Excluded (owner, 2026-10-04): test-channel, the four private
+    # channels (out even if the bot is later given access) and the eight
+    # webhook-feed channels (their webhook posts are never stored anyway;
+    # listing them keeps member comments there out too).
     chat_ingest_all_channels: bool = True
-    chat_ingest_exclude: str = "1458515262168109253"   # test-channel
+    chat_ingest_exclude: str = (
+        "1458515262168109253,"            # test-channel
+        "1433287712810467432,"            # 👨🏻-must-read-macro-takes
+        "1404927980685230212,"            # 👨🏻-private-all-in
+        "1480543318378152069,"            # 👨🏻-private-tribute-labs
+        "1432569389273710613,"            # 👨🏻-time-sensitive-private
+        "1317611433235841126,"            # 👔-equities-ideas-👔 (feed)
+        "1405990577006186506,"            # 🧱-crypto-ideas-⛓️ (feed)
+        "1317740920258428959,"            # 🌶️-unusual-options-🌶️ (feed)
+        "1404891421558702201,"            # 🗞️-news-flow-🗞️ (feed)
+        "1414778066160451705,"            # 💡-prediction-market-signals-💡 (feed)
+        "1430048837858361384,"            # 🌚-skylit-ideas-🌚 (feed)
+        "1317596144007643156,"            # 🎰-earnings-gambling-🎰 (feed)
+        "1317599860748324914"             # 👩🏻-pocket-watching-👨🏻 (feed)
+    )
 
     # Per-/ask cap on lazy OCR — how many image-bearing messages will
     # be OCR'd inline during a single /ask. Each OCR call adds ~1-3s
