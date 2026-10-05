@@ -154,11 +154,24 @@ SYSTEM = (
 )
 
 
-# The retry, sent only when a bullet repeated the table (restates_table).
+# The retry's feedback, one line per reason a bullet was discarded.
 RESTATED_FEEDBACK = (
     "Your last answer repeated numbers from DATA without saying what they mean. "
     "Write the bullets again. Each one says why the print came out this way or what "
     "it means for the Fed or next month, using what a named bank in RESEARCH said.")
+def _voice_feedback() -> str:
+    from ai_analysis.voice_rules import BANNED_FILLER_PHRASES
+    words = ", ".join(p.strip(" ,") for p in BANNED_FILLER_PHRASES)
+    return ("Some bullets were discarded for wording. Name a bank inside the sentence, "
+            "never as an opener with a verb of saying ('BofA says', 'Goldman notes'), "
+            f"and use none of these words: {words}.")
+
+
+VOICE_FEEDBACK = _voice_feedback()
+UNSOURCED_FEEDBACK = ("Some bullets were discarded for a number that is in neither "
+                      "DATA nor RESEARCH. Use only figures that appear there.")
+# Fewer surviving bullets than this triggers the one retry.
+MIN_BULLETS = 2
 RETRY_IF_FIRST_UNDER_S = 7.0
 # The whole takeaway, research query included, must finish inside
 # print_watch.TAKEAWAY_TIMEOUT_S (20 s); this leaves room for the guard.
@@ -223,10 +236,14 @@ def guard(bullets: list[dict], evidence: str, data_evidence: str | None = None,
         broken = [kind for p, kind in pats if p.search(line)]
         if broken or _DEGREE_ADVERBS.search(line):
             log.info(f"print takeaway: dropped bullet for voice {broken or ['degree-adverb']}: {line[:80]!r}")
+            if stats is not None:
+                stats["voice"] = stats.get("voice", 0) + 1
             continue
         _figs, missing = fp.unsourced_figures(line, evidence)
         if missing:
             log.info(f"print takeaway: dropped bullet with unsourced {[m.token for m in missing]}")
+            if stats is not None:
+                stats["unsourced"] = stats.get("unsourced", 0) + 1
             continue
         if data_evidence is not None and restates_table(line, data_evidence):
             log.info(f"print takeaway: dropped bullet that repeats the table: {line[:80]!r}")
@@ -278,16 +295,22 @@ def generate(key: str, title: str, rows: list[dict], extras: list[str] | None = 
         return []
     stats: dict = {}
     lines = guard(bullets, evidence, table, stats)
-    # One retry when a bullet only repeated the table and the research has
-    # something to say. print_watch gives the whole takeaway 20 s
-    # (TAKEAWAY_TIMEOUT_S) and posts without it on a timeout, so the retry
-    # runs in its own thread and is abandoned, keeping the first answer,
-    # once the budget is spent.
+    # One retry when a bullet only repeated the table, or when fewer than
+    # MIN_BULLETS survived (the 2026-10-05 live samples kept one bullet
+    # after voice drops), and the research has something to say.
+    # print_watch gives the whole takeaway 20 s (TAKEAWAY_TIMEOUT_S) and
+    # posts without it on a timeout, so the retry runs in its own thread
+    # and is abandoned, keeping the first answer, once the budget is spent.
     elapsed = time.monotonic() - started
-    if stats.get("restated") and research and elapsed < RETRY_IF_FIRST_UNDER_S:
+    thin = stats.get("restated") or (
+        len(lines) < MIN_BULLETS and (stats.get("voice") or stats.get("unsourced")))
+    if thin and research and elapsed < RETRY_IF_FIRST_UNDER_S:
+        feedback = "\n".join(f for f, hit in ((RESTATED_FEEDBACK, stats.get("restated")),
+                                              (VOICE_FEEDBACK, stats.get("voice")),
+                                              (UNSOURCED_FEEDBACK, stats.get("unsourced"))) if hit)
         import concurrent.futures as cf
         pool = cf.ThreadPoolExecutor(max_workers=1)
-        fut = pool.submit(ask, user + "\n\n" + RESTATED_FEEDBACK)
+        fut = pool.submit(ask, user + "\n\n" + feedback)
         try:
             again = fut.result(timeout=max(0.0, BUDGET_S - elapsed))
         except Exception as e:

@@ -117,6 +117,28 @@ def test_a_retry_that_runs_long_keeps_the_first_answer(monkeypatch):
     assert [o.split(":**")[0] for o in out] == ["• **Seasonal payback"]
 
 
+def test_a_thin_answer_after_voice_drops_is_retried_with_wording_feedback():
+    """2026-10-05 live sample: 'Goldman notes ...' and a filler word cost a
+    bullet and the takeaway shipped with one."""
+    voice = [MEANING[0], {"label": "Wages", "text": "Notably, BofA says wage growth is slowing."}]
+    c = _Client(voice, MEANING + [{"label": "Payroll miss",
+                                   "text": "Payrolls rose 29K against BofA's 60K call."}])
+    out = T.generate("jobs", "Jobs", JOBS_ROWS, [], BOFA, client=c, model="m")
+    assert len(c.prompts) == 2 and T.VOICE_FEEDBACK in c.prompts[1]
+    assert T.RESTATED_FEEDBACK not in c.prompts[1]
+    assert len(out) == 2
+    from ai_analysis.voice_rules import BANNED_FILLER_PHRASES
+    assert all(p.strip(" ,") in T.VOICE_FEEDBACK for p in BANNED_FILLER_PHRASES)
+
+
+def test_a_thin_answer_after_an_unsourced_drop_is_retried():
+    bad = [MEANING[0], {"label": "Made up", "text": "Payrolls missed by 47K."}]
+    c = _Client(bad, MEANING + [{"label": "Payroll miss",
+                                 "text": "Payrolls rose 29K against BofA's 60K call."}])
+    T.generate("jobs", "Jobs", JOBS_ROWS, [], BOFA, client=c, model="m")
+    assert len(c.prompts) == 2 and T.UNSOURCED_FEEDBACK in c.prompts[1]
+
+
 def test_no_retry_without_research_or_when_nothing_was_restated():
     c = _Client(RESTATED)
     assert T.generate("jobs", "Jobs", JOBS_ROWS, [], [], client=c, model="m") == []
