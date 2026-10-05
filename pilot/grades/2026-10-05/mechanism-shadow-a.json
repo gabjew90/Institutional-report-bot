@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+ "source_span": "the long-term growth & productivity potential from the AI boom has acted as a mitigator to the various macro risks in focus today, in some sense like an 'AI put'",
+ "source_chain": "AI growth narratives (Meta's Muse, mega-cap earnings/buybacks) absorb a fixed supply of investor attention, therefore macro risk (a failed 5Y auction, multi-decade-high yields, a MOVE spike above 100) gets ignored and dip-buying continues regardless of rates, therefore equities (Nasdaq +3%, new ATH) decouple from and outrun a breaking bond market. Invalidation: a slip-up in the AI narrative / a re-pricing of AI growth lower ends the attention diversion and lets the macro stress become 'real US equity risk.'",
+ "pulse_chain": "Same as source: fixed attention supply -> AI narrative wins it from macro risk -> aggressive dip-buying irrespective of the bond blowup, invalidated by a downward re-pricing of AI growth expectations (explicitly named and attributed to BofA). The theme layers on a second, correctly-attributed GS/Pasquariello counter-chain (rates are a headwind not a 2022-style wrecking ball because earnings growth, not inflation, is driving the multiple compression; the 2-std-dev/50bps 'speed limit' was just triggered; Privorotsky's three-item re-risking checklist and the oil-falling-but-credit-widening observation) that matches its source notes step for step, including the $5.5bn/25bps figures.",
+ "preserved": true,
+ "why": "Both the BofA AI-put mechanism/invalidation and the Goldman counter-argument (headwind-not-wrecking-ball, the triggered speed-of-move rule, Privorotsky's three-item checklist, the $5.5bn/25bps liquidation figures) are reproduced with correct direction and correct bank attribution; the only deviation is an unsourced 'or a credit seizure' addendum to Pasquariello's stated invalidation condition, which is additive color rather than a reversed or substituted step.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

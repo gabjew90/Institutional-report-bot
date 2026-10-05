@@ -1,0 +1,116 @@
+{
+ "metric": 1,
+ "total_cards": 2364,
+ "fragmentation_sets": [
+  {
+   "subject": "September jobs report comes in weak, feeding Fed pause-vs-hike debate",
+   "labels": [
+    "fed october pause odds",
+    "us jobs report weakness"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Equity breadth collapse under mega-cap tech concentration (one melt-up/breadth-divergence story)",
+   "labels": [
+    "us equity breadth collapse",
+    "us mega cap tech leadership"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI trade shrugging off higher rates, framed via the railroad-bubble analogy",
+   "labels": [
+    "ai narrative macro offset",
+    "ai bubble railroad analog"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI capex debt-funding and circularity risk (issuance, specific circular deals, and cash-flow math skepticism are one sustainability thesis)",
+   "labels": [
+    "hyperscaler ai debt issuance",
+    "circular ai financing risk",
+    "ai capex cash flow mismatch"
+   ],
+   "cards": 32
+  },
+  {
+   "subject": "Tencent's AI capex surge, including the Oracle GPU lease it signed while itself negative-FCF",
+   "labels": [
+    "tencent ai capex surge",
+    "oracle tencent gpu lease deal"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "Dollar rally: risk-off bid vs. overextension/reversal risk",
+   "labels": [
+    "us dollar risk off trigger",
+    "us dollar rally overextension"
+   ],
+   "cards": 10
+  },
+  {
+   "subject": "Middle East oil risk premium: escalation odds, cross-asset tail-risk positioning, rebalancing data, and the diesel-reserve-release bearish catalyst",
+   "labels": [
+    "iran war escalation risk",
+    "oil tail risk cross asset positioning",
+    "global oil market rebalancing",
+    "france diesel reserve release"
+   ],
+   "cards": 32
+  }
+ ],
+ "fragmented_mass_share": 0.07,
+ "mis_merges": [
+  {
+   "label": "semiconductor squeeze setup",
+   "subjects": [
+    "SOX technical breakout/squeeze setup (Market Ear)",
+    "Memory chip (DRAM/HBM) fundamental supply-demand tightness (JPM/GS)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The memory-shortage fundamentals thread (also split out separately as 'south korea memory supply tightening') is a large, multi-bank, structurally-driven story on its own; folding it into a short-term technical squeeze label makes an editor read it as a minor trading note rather than a standalone brief-worthy theme."
+  },
+  {
+   "label": "global growth divergence",
+   "subjects": [
+    "Cross-country growth divergence (US/EU/China/Japan)",
+    "US consumption resilience driven by wealth effects despite a falling savings rate"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The wealth-effect consumption thesis is a distinct, named debate that also appears in 'us consumer spending outlook'; burying roughly half of it inside a country-comparison label understates its combined weight as a dedicated theme candidate."
+  },
+  {
+   "label": "us consumer credit trends",
+   "subjects": [
+    "Macro consumer credit delinquency/origination health",
+    "FICO-specific stock catalyst from an FHFA pricing-grid change"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The FICO catalyst is a single card in a 7-card label and too small on its own to be a lead theme either way."
+  },
+  {
+   "label": "paramount skydance wbd financing",
+   "subjects": [
+    "Paramount-WBD acquisition bond/loan financing",
+    "Larry Ellison's personal Oracle share-pledge leverage"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The Ellison share-pledge fact is one card used as color/comparison within the financing note, not enough mass to redirect theme selection."
+  }
+ ],
+ "pass": false,
+ "notes": "misc correctly holds 12 ungrouped cards and is not counted as a mis-merge. The sourced text shown totals roughly 661 cards against the ledger's stated 2364, so fragmented_mass_share is computed over the visible subset and should be treated as directional. Fails on the mis-merge criterion (two 'would_change_theme_selection: true' cases) even though fragmented mass share is under the 0.10 threshold.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

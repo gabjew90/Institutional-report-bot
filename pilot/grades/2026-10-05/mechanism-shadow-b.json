@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+ "source_span": "the long-term growth & productivity potential from the AI boom has acted as a mitigator to the various macro risks in focus today, in some sense like an 'AI put'.",
+ "source_chain": "A: bond-market stress is accelerating (failed 5Y auction, multi-decade 10Y/30Y highs, MOVE above 100) therefore B: equities ignore it because a roughly fixed supply of investor attention keeps flowing to AI growth stories, driving dip-buying regardless of rates (the 'AI put') therefore C: the AI narrative becomes the market's single point of failure. Invalidation: a slip-up in the AI narrative / a re-pricing of AI growth lower would turn the existing macro stress into real US equity risk.",
+ "pulse_chain": "A: bond-market stress (5Y auction tail/bid-to-cover, 10Y above 5.3%, 30Y above 5.6%, MOVE above 100) coincides with equities diverging (Nasdaq +3%/new high, equal-weight S&P down seven weeks) therefore B: BofA's AI put \u2014 fixed investor attention keeps getting won by AI growth stories, producing dip-buying regardless of rates therefore C: BofA calls the AI narrative the market's single point of failure. Invalidation: a downward re-pricing of AI growth expectations is what would turn macro stress into real equity risk.",
+ "preserved": true,
+ "why": "The pulse reproduces BofA's exact attention-scarcity mechanism, the 'AI put' label, the single-point-of-failure conclusion, and the AI-repricing invalidation in the same order and direction, and correctly keeps the competing Goldman views (Pasquariello's headwind-not-wrecking-ball view with its triggered 2-standard-deviation rule, and Privorotsky's three-item checklist) attributed to their own named desks rather than merged into BofA's argument.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+   "span": "BofA's explanation is that in a market with \"a relatively fixed supply of attention\"... AI FOMO drives aggressive dip-buying, which the bank calls simply the \"AI put.\"",
+   "why": "BofA (source field confirms bank) coins and names the concept exactly as the sentence states."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+   "span": "macro risk \"is struggling to compete for attention with the growth potential of AI narratives.\" AI FOMO drives aggressive dip-buying, which the bank calls simply the \"AI put.\"",
+   "why": "Fixed attention supply, AI narratives winning attention from macro risk, and dip-buying mechanism are all stated directly; the bracket citation markers are not evidence but the underlying claim is fully supported."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "Have higher rates been a constraint on the stock market of late? For sure... Now, for the bears... Now, for the bulls...",
+   "why": "Pasquariello (Goldman hedge-fund coverage desk) lays out a bear case (Ben Snider / 2-sigma rule) and a bull case (Privorotsky / 1999 analog, Goldman one-delta/EMEA cash desk) on what the bond-market move means for stocks \u2014 a genuine split between two Goldman desks."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "one year ago, the forward P/E of S&P was 23x; today it's 19x... S&P has been mired in a tyrannical range trade around the 7700 level for the past two months.",
+   "why": "Both the multiple compression (23x to 19x) and the ~7700 range are stated verbatim."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18560__bonds-aren-t-cheap-yet-goldman-says-long-end-still-totally-b.txt",
+   "span": "The recent rapid rise in yields has triggered a number of historical-data backed red flags (it's the velocity, not the level)...",
+   "why": "Matches almost verbatim; the companion Pasquariello note (18561) independently corroborates with its 'speed limit' / 2-standard-deviation framing."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18559__if-oil-isn-t-the-solve-this-gets-more-complicated.txt",
+   "span": "His checklist for getting more constructive is refreshingly simple: \"I need rates to calm, credit to stop widening and a more definitive energy solution before taking nets up here.\"",
+   "why": "The three-item checklist (rates, credit, energy) and the attribution to Privorotsky match exactly; 'taking nets up' is desk shorthand for adding equity risk."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18668__france-just-printed-a-16-sigma-move-and-thats-not-even-the-w.txt",
+   "span": "France, with its deteriorating fiscal trajectory, could be the first sign of the cracks.",
+   "why": "Directly supports the framing that France is where the global rates move is breaking something."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18431__global-rates-weekly-start-of-rates-bite.txt",
+   "span": "Fair value for the 10y OAT-Bund spread stands at 100-110bp... We cut our French growth forecasts again, to 0.3% and 0.6% for this year and next",
+   "why": "Both figures (spread fair value and growth forecast cuts) match exactly, attributed to BofA Global Research."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18668__france-just-printed-a-16-sigma-move-and-thats-not-even-the-w.txt",
+   "span": "The bigger question is structural: can Europe sustain US-driven higher global rates when growth is running at just ~1%?",
+   "why": "Matches the sentence's framing of the open question; the paragraph is explicitly tagged \"GS\" in the source."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18505__gs-crook-ai-issuance-pulsecheck-2-oct-2026.txt",
+   "span": "2026 projected hyperscaler issuance of $250bn... most of this year's funding ($230bn) completed... now expecting $420bn of global direct IG issuance from the cohort (vs. $400bn previously)... 35% of 2027's hyperscaler CapEx spending will be debt funded",
+   "why": "Every figure (current-year total, amount done, revised 2027 forecast and prior forecast, debt-funded share) is stated verbatim by Goldman's credit strategists."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18672__bond-vigilantes-battle-bad-news-bulls-big-tech-bid-hides-ugl.txt",
+   "span": "The junkiest junk is leading credit losses but the rest of high yield is starting to catch up.",
+   "why": "Directly supports the framing that stress is concentrated at the bottom of the credit stack."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18672__bond-vigilantes-battle-bad-news-bulls-big-tech-bid-hides-ugl.txt",
+   "span": "CCCs hit 1,007 bps, the first time above 1,000 since the March 2023 bank scare... Oracle matters here purely as a credit story. Its 5Y CDS hit a record ~227 bps, its 2056 bonds yield above 8%",
+   "why": "Both the CCC-spread figure/comparison and the Oracle CDS/bond-yield figures are stated verbatim in the same source."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "I should also note here that the \"speed limit\" is most acute when it's driven by a surge in real yields.",
+   "why": "Pasquariello's bear case and Privorotsky's note (18559: \"Real rates are very high\", framed as the structural driver of the stress) both center the equity-risk trigger on real yields, supporting the 'both sides name the same trigger' framing."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18672__bond-vigilantes-battle-bad-news-bulls-big-tech-bid-hides-ugl.txt",
+   "span": "Oil prices extended the week's rise, with Brent above $102 by late Friday",
+   "why": "Price figure matches exactly; the Persian Gulf export figure (23.6mb/d, just above 2025 average) and 'roughly balanced' market framing are independently confirmed in 18660 (Daan Struyven, Goldman): 'recovered to 23.6mb/d over the last week or just above their 2025 average... global oil market appears roughly balanced.'"
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18660__gs-crook-connecting-you-to-gs-thoughts-from-the-floor-3-oct-.txt",
+   "span": "our base case that Brent prices moderate to $85/bbl by year-end and to $80 in 2027",
+   "why": "Goldman's Brent forecast matches exactly; the G7 100-million-barrel release is independently confirmed in 18672: 'G7 nations agreed to release 100 million barrels of' oil and diesel."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

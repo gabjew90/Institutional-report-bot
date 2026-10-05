@@ -1,0 +1,76 @@
+{
+ "metric": 1,
+ "total_cards": 2364,
+ "fragmentation_sets": [
+  {
+   "subject": "September jobs report miss and the Fed-pause-odds read on it",
+   "labels": [
+    "fed october pause odds",
+    "us jobs report weakness"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "AI memory-chip (DRAM/HBM) supply squeeze lifting semis",
+   "labels": [
+    "semiconductor squeeze setup",
+    "south korea memory supply tightening"
+   ],
+   "cards": 22
+  },
+  {
+   "subject": "Market breadth collapse masked by mega-cap tech concentration",
+   "labels": [
+    "us equity breadth collapse",
+    "us mega cap tech leadership"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Gulf oil-flow recovery and GS's oil tail-risk framework",
+   "labels": [
+    "oil tail risk cross asset positioning",
+    "global oil market rebalancing"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "BofA's AI-mania-vs-rate-risk framing (the AI trade as a historical bubble analog)",
+   "labels": [
+    "ai narrative macro offset",
+    "ai bubble railroad analog"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Dollar rally extended and its risk-off unwind trigger",
+   "labels": [
+    "us dollar rally overextension",
+    "us dollar risk off trigger"
+   ],
+   "cards": 10
+  },
+  {
+   "subject": "Tencent's AI compute spending blitz: capex surge and the Oracle GPU lease",
+   "labels": [
+    "tencent ai capex surge",
+    "oracle tencent gpu lease deal"
+   ],
+   "cards": 23
+  }
+ ],
+ "fragmented_mass_share": 0.0596,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "misc holds 12 cards (0.5% of the ledger), all genuine overflow, not counted as fragmentation. 'q3 2026 cross asset markets recap' and 'asia em rates trade ideas' bundle several asset classes/countries under one label but read as single-note roundup formats (a quarterly cross-asset wrap, an EM rates trade-idea sheet) rather than a mis-merge of unrelated theses, so they were not flagged.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

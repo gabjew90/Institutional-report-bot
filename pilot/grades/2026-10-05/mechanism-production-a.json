@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+ "source_span": "it's a bull market and the primary trend is higher, but core length in US equities should be paired with some trading length in commodities (BCOM and GSCI have done their job this year) and a trading short in fixed income",
+ "source_chain": "Rates have surged and the 2-SD-in-a-month 'speed limit' (~50bps) was just triggered, therefore a historical caution flag exists for equities; but absent an inflation surge or a credit seizure, Pasquariello's bottom line is higher rates are a headwind not a wrecking ball, so the primary trend stays higher and he stays net long equities/commodities with a short in fixed income and cheap tail hedges as insurance. Invalidation: an inflation surge or a credit problem turning the headwind into a wrecking ball.",
+ "pulse_chain": "Rates have surged (5Y tail, 10Y/30Y at multi-decade highs, MOVE >100) while equities keep rallying; BofA's AI-put explains the gap (invalidation: AI narrative re-pricing lower); Pasquariello counters it's a headwind not a wrecking ball, evidenced by P/E compression offset by earnings; but Goldman's own speed-limit rule 'settles this, not the level' and was just triggered, and real yields/outflows are accelerating; therefore Privorotsky's three-item checklist (rates calm, credit stop widening, energy clarity) is the live condition, with credit flagged as currently failing it.",
+ "preserved": false,
+ "why": "The pulse uses Pasquariello's own 'speed limit triggered' data point to settle the theme toward an unresolved, cautionary ending and substitutes Privorotsky's checklist as the closing invalidation, dropping Pasquariello's actual bottom line that the primary trend stays higher and he remains net long with hedges \u2014 reversing the note's bullish resolution into an open bearish one.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

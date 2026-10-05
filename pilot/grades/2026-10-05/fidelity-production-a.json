@@ -1,0 +1,164 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+   "span": "AI FOMO drives aggressive dip-buying, which the bank calls simply the \"AI put.\"",
+   "why": "BofA's equity derivatives team coins the term directly in this note.",
+   "searched": []
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+   "span": "a relatively fixed supply of attention\", macro risk \"is struggling to compete for attention with the growth potential of AI narratives.\" AI FOMO drives aggressive dip-buying",
+   "why": "Matches the mechanism, the fixed-attention framing, and the dip-buying conclusion verbatim.",
+   "searched": []
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "on the tug of war between stocks, bonds",
+   "why": "Opinion-shaped framing sentence grounded in genuinely different emphases: Goldman's Pasquariello debates what bonds mean for stocks while BofA frames bonds via the AI put/doom-level lens.",
+   "searched": []
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "S&P has been mired in a tyrannical range trade around the 7700 level for the past two months... one year ago, the forward P/E of S&P was 23x; today it's 19x",
+   "why": "Both the multiple compression and the 7700 range level are stated directly.",
+   "searched": []
+  },
+  {
+   "id": "s5",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18685__investor-positioning-and-flows-rates-vol-taking-a-toll.txt",
+   "span": "the increase in rates vol, which as we have previously pointed out is the key for equities, not the level of rates",
+   "why": "The clean, explicitly-attributed statement of this exact rule belongs to Deutsche Bank (Parag Thatte), not Goldman. The only Goldman-adjacent phrasing found (\"it's the velocity, not the level\" in the Zero Hedge Privorotsky writeup) is the aggregator's own unattributed parenthetical, immediately followed by a BNP Paribas quote asserting a specific level (5.5%) does matter \u2014 the opposite of \"not the level.\" Attributing this rule to Goldman misstates who said it.",
+   "searched": [
+    "speed of the move",
+    "velocity, not the level",
+    "not the level of rates",
+    "rule of thumb"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18559__if-oil-isn-t-the-solve-this-gets-more-complicated.txt",
+   "span": "I need rates to calm, credit to stop widening and a more definitive energy solution before taking nets up here",
+   "why": "Privorotsky's three-item checklist is quoted directly and matches the sentence's three conditions.",
+   "searched": []
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18504__macro-roadmap-2-oct-2026.txt",
+   "span": "Perhaps this week is the first sign of cracks appearing - Europe might not be able to sustain these levels of rates and funding when growth is just ~1%",
+   "why": "Goldman's Macro Roadmap names France/Europe explicitly as where the rates move is breaking something.",
+   "searched": []
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18431__global-rates-weekly-start-of-rates-bite.txt",
+   "span": "Fair value for the 10y OAT-Bund spread stands at 100-110bp... We cut our French growth forecasts again, to 0.3% and 0.6% for this year and next",
+   "why": "BofA Global Research states both figures directly and exactly.",
+   "searched": []
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18504__macro-roadmap-2-oct-2026.txt",
+   "span": "The US-centric AI capex cycle is pushing the cost of capital higher globally... does Europe reap enough of the benefits from a growth perspective to be fine too?... growth is just ~1%",
+   "why": "Goldman (Codacci-Pisanelli) poses exactly this question with the ~1% growth figure.",
+   "searched": []
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18505__gs-crook-ai-issuance-pulsecheck-2-oct-2026.txt",
+   "span": "2026 projected hyperscaler issuance of $250bn... most of this year's funding ($230bn) completed. 2027 Hyperscaler forecasts of $420bn of gross issuance... (vs. $400bn...) 35% of 2027's hyperscaler CapEx spending will be debt funded",
+   "why": "Every figure (250bn, 230bn, 420bn vs 400bn, 35%) matches Goldman's credit desk note exactly.",
+   "searched": []
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18672__bond-vigilantes-battle-bad-news-bulls-big-tech-bid-hides-ugl.txt",
+   "span": "The junkiest junk is leading credit losses but the rest of high yield is starting to catch up",
+   "why": "Directly describes stress concentrated at the bottom of the credit stack (CCC-rated).",
+   "searched": []
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18672__bond-vigilantes-battle-bad-news-bulls-big-tech-bid-hides-ugl.txt",
+   "span": "Oracle matters here purely as a credit story. Its 5Y CDS hit a record ~227 bps, its 2056 bonds yield above 8%... CCCs hit 1,007 bps, the first time above 1,000 since the March 2023 bank scare",
+   "why": "Every figure (1,007bp, March 2023, Oracle 227bp CDS, 2056 bonds above 8%) matches exactly.",
+   "searched": []
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18559__if-oil-isn-t-the-solve-this-gets-more-complicated.txt",
+   "span": "I need rates to calm, credit to stop widening and a more definitive energy solution before taking nets up here",
+   "why": "Goldman's actual named condition is a three-item checklist (rates calm, credit stop widening, energy resolution), not \"a reversal in real yields.\" BofA's framing (\"Stuck in a 5% World\") names nominal yield levels (5%/6%/7% doom levels) as the thing that matters, not a real-yields reversal either. No source has either desk naming \"a reversal in real yields\" as the shared trigger; the sentence manufactures a specific convergence between the two banks that the source texts do not state.",
+   "searched": [
+    "reversal in real yields",
+    "real yields reversal",
+    "same trigger",
+    "doom level of rates"
+   ]
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18672__bond-vigilantes-battle-bad-news-bulls-big-tech-bid-hides-ugl.txt",
+   "span": "Oil prices extended the week's rise, with Brent above $102 by late Friday",
+   "why": "Brent level/timing matches exactly; the Persian Gulf exports figure (23.6mb/d, just above 2025 average, roughly balanced market) matches Goldman's Daan Struyven in a companion file (18660__gs-crook-connecting-you-to-gs-thoughts-from-the-floor-3-oct-.txt: \"recovered to 23.6mb/d over the last week or just above their 2025 average\" / \"global oil market appears roughly balanced\").",
+   "searched": []
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18660__gs-crook-connecting-you-to-gs-thoughts-from-the-floor-3-oct-.txt",
+   "span": "our base case that Brent prices moderate to $85/bbl by year-end and to $80 in 2027",
+   "why": "Goldman's base case figures match exactly; the G7 100 million barrel release is confirmed in a companion Goldman file (pilot-data/pilot/source-text-all/2026-10-05/18703__gs-evans-weekly-commodity-thoughts-4-oct-2026.txt: \"the G7 agreed on Friday to release 100mb of crude and distillate from emergency reserves\").",
+   "searched": []
+  }
+ ],
+ "faithful": 13,
+ "distorted": 2,
+ "unsupported": 0,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,44 @@
+{
+ "metric": 1,
+ "total_cards": 2364,
+ "fragmentation_sets": [
+  {
+   "subject": "Weak September jobs report (payrolls miss, prior-month revisions, unemployment uptick, softer earnings) and its Fed-pause read",
+   "labels": [
+    "fed october pause odds",
+    "us jobs report weakness"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Narrow market breadth: equal-weight S&P underperformance / mega-cap tech concentration holding the index up",
+   "labels": [
+    "us equity breadth collapse",
+    "us mega cap tech leadership"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "BofA/Hartnett's thesis that the AI trade overrides macro/rates risk, argued via the 'AI put' framing and the dot-com/railroad bubble analogy",
+   "labels": [
+    "ai narrative macro offset",
+    "ai bubble railroad analog"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.03,
+ "mis_merges": [],
+ "pass": true,
+ "notes": "misc overflow is 12 cards (~0.5%), all single-country/idiosyncratic BofA items, correctly left ungrouped. 'semiconductor squeeze setup' mixes a TME technical-squeeze read with JPM/GS memory-fundamentals cards that substantially overlap 'south korea memory supply tightening' (shared Korean DRAM export stats); considered but not counted as a mis-merge since the technical and fundamental threads plausibly belong in one squeeze-driven-by-shortage brief.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

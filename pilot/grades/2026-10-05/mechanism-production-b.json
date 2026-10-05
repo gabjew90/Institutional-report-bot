@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+ "source_span": "the long-term growth & productivity potential from the AI boom has acted as a mitigator to the various macro risks in focus today, in some sense like an 'AI put'",
+ "source_chain": "A: 5Y auction tails badly, 10Y/30Y yields hit multi-decade highs, MOVE spikes above 100 (bond market under stress) therefore B: equities ignore it because AI growth narratives absorb the market's fixed supply of attention, producing dip-buying regardless of rates -- BofA's 'AI put' therefore C: that makes the AI narrative the market's single point of failure. Invalidation: a slip-up in the AI narrative / a re-pricing of AI growth expectations lower, which would remove the put and let macro stress become real US equity risk.",
+ "pulse_chain": "A: 5Y auction tails, 10Y briefly above 5.3%, 30Y above 5.6%, MOVE spikes above 100 (bond stress) therefore B: equities ignore it -- Nasdaq rallies to a new high while AI growth stories keep winning the fixed pool of investor attention, producing aggressive dip-buying regardless of rates, which the pulse names BofA's 'AI put' therefore C: BofA calls the AI narrative the market's single point of failure. Invalidation: a downward re-pricing of AI growth expectations, the thing that would turn macro stress into real equity risk.",
+ "preserved": true,
+ "why": "The pulse reproduces BofA's full causal chain (bond stress ignored because AI absorbs attention, therefore AI itself becomes the point of failure) with the same invalidation and correct attribution, and layers in Goldman's counter (Pasquariello's speed-limit rule, Privorotsky's three-item checklist) without reversing any step or swapping banks.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

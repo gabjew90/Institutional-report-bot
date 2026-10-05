@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+   "span": "That disconnect is the starting point for the latest Equity Volatility Insights note ... AI FOMO drives aggressive dip-buying, which the bank calls simply the \"AI put.\"",
+   "why": "BofA names the stock/bond disconnect \"the AI put.\""
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+   "span": "in a market with \"a relatively fixed supply of attention\", macro risk \"is struggling to compete for attention with the growth potential of AI narratives.\" AI FOMO drives aggressive dip-buying",
+   "why": "Matches the fixed-attention/AI-wins-attention/dip-buying mechanism described."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt; pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "BofA: macro faces \"a high bar to derail the AI trade\" / Goldman: \"I view higher rates as a headwind to stocks, NOT as a wrecking ball\"",
+   "why": "Connective framing sentence; the two named tier-1 desks (BofA, Goldman) genuinely offer different lenses on the bond-market stress in the cited notes, consistent with a 'split' framing."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "in the absence of an inflation surge -- or a credit problem, more on this in a minute -- I view higher rates as a headwind to stocks, NOT as a wrecking ball.",
+   "why": "Direct match to Pasquariello's stated position and conditions."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18561__goldman-s-pasquariello-on-the-tug-of-war-between-stocks-bond.txt",
+   "span": "when 10-year notes back up 2 standard deviations in one month's time, S&P usually begins to show some strain... that rule of thumb was just triggered.",
+   "why": "The 2-stdev-per-month framing is a speed-of-move rule, matching the sentence."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18559__if-oil-isn-t-the-solve-this-gets-more-complicated.txt",
+   "span": "I need rates to calm, credit to stop widening and a more definitive energy solution before taking nets up here.",
+   "why": "Exact three-item checklist attributed to Privorotsky."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18672__bond-vigilantes-battle-bad-news-bulls-big-tech-bid-hides-ugl.txt",
+   "span": "The French 10-year OAT yield climbed to around 4.92-4.95%, its highest in roughly two decades, and the spread over Bunds pushed through 140bps, the widest since the euro crisis of 2012",
+   "why": "Verbatim match of both figures and the 2012 comparison."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18431__global-rates-weekly-start-of-rates-bite.txt",
+   "span": "Fair value for the 10y OAT-Bund spread stands at 100-110bp ... We cut our French growth forecasts again, to 0.3% and 0.6% for this year and next",
+   "why": "Both the fair-value range and the growth-forecast cut appear verbatim in the same BofA note."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18668__france-just-printed-a-16-sigma-move-and-thats-not-even-the-w.txt",
+   "span": "The bigger question is structural: can Europe sustain US-driven higher global rates when growth is running at just ~1%? ... GS",
+   "why": "The block is tagged GS in the TME compilation, matching the Goldman attribution."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18489__global-rates-trader-reaching-limits.txt",
+   "span": "signs of successful negotiations for the 2027 budget - keeping the deficit as close as possible to the government objective of 5.0% - ... could offer support",
+   "why": "Matches the budget/deficit-target route to resolving the French spread stress; Goldman source."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18505__gs-crook-ai-issuance-pulsecheck-2-oct-2026.txt",
+   "span": "2026 projected hyperscaler issuance of $250bn ... with most of this year's funding ($230bn) completed. 2027 Hyperscaler forecasts of $420bn ... now expecting $420bn ... (vs. $400bn previously) ... 35% of 2027's hyperscaler CapEx spending will be debt funded",
+   "why": "All four figures (2026 $250bn/$230bn, 2027 $420bn from $400bn, 35% debt-funded) match exactly."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-04/18571__cooler-us-jobs-growth-supports-a-federal-reserve-pause-in-oc.txt",
+   "span": "it will require a hot September CPI print (due 14 October) to make the meeting interesting",
+   "why": "Matches date and the October-meeting-contingent framing (corroborated by 18719's \"September CPI report on October 14th will be key\" and MS Gapen's \"bring October back into play\")."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18686__meta-rich-product-cycle-begins.txt",
+   "span": "we are raising our price target to $820 from $750 that is now based on 25x our FY27 EPS estimate (previously 23x)",
+   "why": "Exact match, Deutsche Bank source."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18686__meta-rich-product-cycle-begins.txt",
+   "span": "Muse has quickly become the #1 app in Productivity, with 4.9 stars among 38k ratings ... generated >3mn app installs in the US during its first 16 days ... ChatGPT ... took ~35 days to match Muse's cumulative downloads in its first 16 days",
+   "why": "All figures (rank, rating, ratings count, installs, 16 days, ChatGPT's ~35 days) match exactly."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-05/18686__meta-rich-product-cycle-begins.txt",
+   "span": "Meta has been very generous with the usage limits on the free tier ... we do not think there is a large incentive for users to upgrade ... Muse could represent ~Mid-SD% of Meta's 2030 revenue ... roughly $25-$50 per Muse user in CapEx",
+   "why": "Matches free-tier/acquisition framing, mid-single-digit 2030 revenue share, and $25-$50 capex-per-user figure."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

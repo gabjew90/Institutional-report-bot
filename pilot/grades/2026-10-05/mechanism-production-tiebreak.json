@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-05/18678__the-ai-put-is-now-the-treasury-market-s-last-line-of-defense.txt",
+ "source_span": "the long-term growth & productivity potential from the AI boom has acted as a mitigator to the various macro risks in focus today, in some sense like an 'AI put'. Consequently, a slip-up in the AI narrative and an associated re-pricing of growth lower is likely to further exacerbate macro stress and create real US equity risk",
+ "source_chain": "A: a failed 5Y auction and multi-decade-high yields (MOVE >100) show real bond-market stress, therefore B: because investor attention is fixed and AI growth stories keep winning it away from macro risk ('the AI put'), equities (Nasdaq) keep dip-buying regardless of rates, therefore C: the real danger is reversed \u2014 not bonds hitting stocks but an AI-narrative hiccup, since a re-pricing of AI growth lower would remove the put and let macro stress become real equity risk. Invalidation: a slip-up/downward re-pricing in the AI growth narrative.",
+ "pulse_chain": "A: the same auction/yield/MOVE stress while the Nasdaq rallies to a new high and the equal-weight S&P falls a seventh week, therefore B: BofA's 'AI put' \u2014 fixed attention supply, AI growth stories win it from macro risk, driving dip-buying regardless of rates (with the 1990s precedent of rates rising 200bp into the internet bubble), therefore C: the AI narrative is the market's single point of failure, with a downward re-pricing of AI growth expectations the thing that turns macro stress into real equity risk. Invalidation: that AI re-pricing, same as the source.",
+ "preserved": true,
+ "why": "The lead theme reproduces BofA's AI-put chain and invalidation intact, and the subordinate Goldman debate it adds (Pasquariello's 'headwind not wrecking ball absent inflation surge or credit seizure,' the 23x\u219219x P/E evidence, the 2-sigma/~50bp speed-limit rule just triggered, the 57bp real-yield and $5.5bn asset-manager liquidation figures, and Privorotsky's three-item checklist \u2014 rates calm, credit stop widening, a clearer energy resolution) all trace verbatim to the cited Goldman notes (18561, 18559, 18565, 18662/18718) with correct attribution and unreversed direction.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
