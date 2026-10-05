@@ -1,0 +1,230 @@
+ 
+Amazon, Broadcom Pile Into Off-Balance Sheet 
+SPVs As AI Circularity "Undeniably Increasing" 
+ 
+BY TYLER DURDEN 
+SATURDAY, OCT 03, 2026 - 11:16 AM 
+Around five weeks ago, we updated our running tally of the "liabilities that aren't liabilities" 
+propping up the AI bubblebuildout. The off-balance sheet commitments of the hyperscalers plus 
+Nvidia and Broadcom had reached $3.1 trillion, up $1.3 trillion in a single quarter from the $1.8 
+trillion we first flagged in June. We said the number was only going one way. 
+It took until about half past midnight last night for two more data points to land within one minute 
+of each other: 
+The first one is new: Amazon has been the most restrained of the big three when it comes to 
+off-balance sheet engineering, and it is now looking to do with GPUs what Meta did with data 
+center shells. 
+The second is the follow-through on the Broadcom "AI XPV" machine we have been tracking 
+since June, and which incinerated AVGO's CDS one month ago. 
+Together they show, in case there was still any doubt, where the AI financing stack is heading: 
+off the balance sheet and into special purpose vehicles. Not even Goldman's in-house bulls can 
+wave that away anymore. More on that below. 
+Amazon: Sell The Chips, Rent Them Back, Call It "Asset-Light" 
+According to the FT, Amazon has spent the recent weeks sounding out investors on moving 
+about $8 billion of Nvidia Grace Blackwell chips into a special purpose vehicle. The chips are 
+already running in more than a dozen US data centers across five states, including Nevada and 
+Virginia (and unlike H100 and A100 which recently peaked their rental values, are not yet 
+depreciating). 
+The SPV would raise the money through debt, buy the chips, and lease them straight back to 
+Amazon. Investors expect the vehicle to get an investment-grade rating on the back of 
+Amazon's AA credit, which opens the door to insurers and pension funds (why note: ORCL 
+
+ 
+bonds are still pretending they are investment grade even though they trade through B2/B junk). 
+Amazon would offer outside investors up to 10% of the SPV's equity and keep no stake itself. 
+Translation: on paper, Amazon has nothing to do with the vehicle that owns the chips Amazon 
+uses, other than paying its rent for years. 
+The stated goal, per the FT, is a "more asset-light" balance sheet. The FT also says outright that 
+tech companies are reaching for these structures "to move debt off their balance sheets to 
+preserve their creditworthiness", and that the approach "has obscured the amount of risk that 
+tech giants are taking on." Coming from the FT, that's a strong statement. Coming from us, it is a 
+regular weekday. 
+Several details are worth slowing down for: 
+●​ The timing. Amazon is expected to spend about $220 billion on capex this year, most of 
+it on AWS chips and data centers. In March it planned roughly $50 billion of bond sales, 
+upsized from $37 billion on strong demand. By July's $25 billion deal, the FT notes, 
+demand for the long-dated paper had weakened and investors wanted higher yields. 
+When the bond market starts charging more, the SPV starts to look attractive. 
+●​ The collateral. These are Grace Blackwell chips, which are about to be superseded by 
+Nvidia's Vera Rubin. Amazon's filings assume each chip generation lasts at least five 
+years (yes, yes, we know that according to the AI permabulls chips will never depreciate 
+but maybe, maybe just maybe, they are wrong). Indeed, once a third party owns the 
+chips and has lent against them, the useful-life assumption stops being an accounting 
+choice and becomes someone's recovery value. That is the bet the SPV's bondholders 
+are taking. 
+●​ The circle. Amazon has committed to invest up to $83 billion in Anthropic, one of the labs 
+that trains on these chips. Anthropic, in turn, is the main beneficiary of the Broadcom 
+vehicle discussed below, and is reportedly racing to IPO before Thanksgiving. Keep that 
+triangle in mind. 
+There is another reason why Amazon would be euphoria to get the deal done:  as Kashyap 
+Sriram observes, "NVDA gives its customers 60 days to pay their bill, but books the revenue 
+upfront. AMZN buys the chips but only books 1/6th of the expense each year as depreciation, 
+even though the chips become worthless in under 3 years." 
+As a result, Nvidia inflates revenue, while Amazon understates expenses, and both companies 
+show higher profits, which Wall St uses to increase the forward PE and make the stocks look 
+cheap.  
+●​ The problem: too many worthless chips accumulating on Amazon's balance sheet. 
+
+ 
+●​ The solution: SPVs backed by private credit. 
+Sriram's conclusion: "Enron didn't hide their Raptors. Amazon is mimicking Enron's playbook, in 
+plain sight of regulators. Welcome to peak AI mania."  
+For those who have forgotten, this is the "art of the Enron deal." 
+ 
+An Enron SPV; source: WSJ 
+There is also an obvious irony. Amazon wants to shed GPUs from its balance sheet at the same 
+moment AWS is charging more to rent them! Overnight, Goldman's Rich Privorotsky noted that 
+AWS is raising prices on its EC2 Capacity Blocks for machine learning by about 15%, effective 
+October 7. It is the fourth straight quarterly increase, and for the first time since January the hike 
+includes the older A100 instances. Compute is so scarce that six-year-old chips are getting 
+more expensive, and Amazon still wants them owned by someone else. If the chips are that 
+valuable, why sell them? Possibly because the balance sheet matters even more right now. 
+For context, here is Morgan Stanley's breakdown of disclosed off-balance sheet commitments 
+from our August update. Amazon's stack was mostly purchase obligations and leases, with no 
+GPU sale-leaseback line yet. Guess what: that line is about to absolutely explode once this deal 
+goes through as we expect it will. 
+
+ 
+ 
+Broadcom: The Supplier Lends You The Money To Buy The 
+Supplier's Chips 
+The second headline is the bigger one. According to Bloomberg, Broadcom's bank syndicate is 
+starting to raise $60 billion of new AI chip financing for Anthropic and other companies. Banks 
+are about to send syndication letters for a $42 billion Class A senior-secured tranche. 
+Blackstone is leading an $18 billion Class B junior tranche, committing $9 billion from its own 
+funds and planning to syndicate the rest. 
+
+ 
+ 
+Regular readers will recognize the structure. In June we covered the first deal on this platform, 
+Project "Big Sky", in which Apollo and Blackstone raised $35 billion for Anthropic to buy chips 
+made by Broadcom. Broadcom backed the senior notes so they could get investment-grade 
+ratings. Our summary at the time: 
+In August, when Bloomberg first reported the second deal, the talk was of "up to $100 billion", 
+which would have been the largest SPV ever funded. The credit market's reaction then was 
+immediate: 
+Six weeks later the ask is $60 billion. We don't know whether that is the full deal or the first 
+installment. Either way, the platform is meant to finance more than 20 gigawatts of compute, so 
+it will be back. Morgan Stanley's tally already listed $29 billion of chip-lease residual value 
+support at Broadcom, and up to $125 billion of potential residual value support at Nvidia from its 
+$500 billion "compute financing platform". The FT confirmed the $125 billion backstop figure 
+overnight. The vendors are now lenders. 
+Even Goldman Is Getting A Little Uneasy 
+Which brings us to the most interesting reaction of the night. Rich Privorotsky, Goldman's head 
+of EMEA Delta One and one of the more reliably constructive voices on the Street, opened his 
+AI section with "Party continues", then wrote this: 
+
+ 
+"Amazon is reportedly looking at moving ~$8bn of Nvidia GPUs into an SPV, selling it to outside 
+investors and leasing the chips back. Pretty standard evolution of the financing stack as capex 
+gets enormous… I don't read it as Amazon suddenly worrying about the collateral, but it is 
+another way to keep spending without swallowing all the balance sheet intensity. The one I like 
+less is Broadcom lending up to $42bn to support leases of compute built around its own chips. 
+Supplier financing the customer buying the supplier's product… circularity is undeniably 
+increasing but not today's problem." 
+Two observations. First, "another way to keep spending without swallowing all the balance sheet 
+intensity" is a very polite way to describe exactly what we have been saying since January, 
+when we profiled Meta's Project Beignet and predicted the playbook would go everywhere: 
+As a reminder, META is already neck deep in off-balance sheet debt. Here is a schematic of its 
+$27.3 billion SPV with Blue Owl "Project Beignet" for the Hyperion data center. None of this 
+touches META's balance sheet.​
+​
+Expect hundreds of billions of these in 2026 
+— zerohedge (@zerohedge) January 29, 2026 
+We are well past "hundreds of billions." 
+ 
+Second, a small correction for Rich. Strictly speaking, Broadcom isn't lending the $42 billion. 
+The banks are. Broadcom's role, as in Big Sky, is to put its credit behind the senior paper so it 
+prices like Broadcom rather than like an unrated AI lab. You could argue that is worse. A lender 
+
+ 
+at least has to show the loan on its books. A guarantor of a vehicle it doesn't consolidate mostly 
+gets a footnote. As for "not today's problem", we agree on the "today" part. These problems 
+always arrive on a day that was supposed to be some other day. 
+And yes, the circle is now hard to miss. Amazon invests in Anthropic. Anthropic rents compute 
+from AWS and leases Broadcom chips through a vehicle that Broadcom backstops and 
+Blackstone helps fund. Blackstone is also an Anthropic investor whose stake has, per 
+Bloomberg, been flattering the returns of its private equity fund for wealthy clients. Meanwhile 
+Nvidia is reportedly in talks to anchor the Anthropic IPO with up to $10 billion. Our view at the 
+time: 
+Why Now: The On-Balance Sheet Route Is Getting Expensive 
+The simplest explanation for the rush into SPVs is that the public bond market is getting tired of 
+AI paper just as the AI paper is getting bigger. Adam Crook, who runs FICC distribution at 
+Goldman, put together a "pulse-check on AI issuance" overnight with Goldman's credit 
+strategists, rates strategists and credit desk. It should be required reading for anyone who still 
+thinks this cycle is "funded from cash flow": 
+●​ Hyperscaler bond issuance is on track for $250 billion in 2026 ($230 billion already 
+done). In 2024 it was under $20 billion. 
+●​ Goldman's credit strategists, led by Amanda Lynam, just raised their 2027 forecast to 
+$420 billion (from $400 billion) and assume 35% of 2027 hyperscaler capex will be 
+debt-funded. 
+●​ The hyperscalers account for "only" 40% of the $575 billion-plus of global AI-related debt 
+issued so far this year. Most of the rest comes from project finance issuers, both IG and 
+HY, funding data centers and chips. That is the SPV universe. 
+●​ That $420 billion excludes data center financings issued by special purpose vehicles. In 
+other words, the scariest number in the note leaves out the category growing fastest. 
+
+ 
+ 
+Are the issuers worried about what this does to the long end? Goldman's FICC credit strats say 
+no, not the hyperscalers, "for whom the interest expense is a very small portion of their 
+earnings." But their behavior is changing. Since June, 46.4% of hyperscaler issuance has come 
+in the 0-5 year bucket, up from 29.9% in the first half. The share of 20-year-plus paper has 
+dropped sharply. Someone noticed the long end is getting expensive. 
+ 
+
+ 
+The broader market has noticed too. Goldman's head of US rates strategy Will Marshall wrote 
+that "the sense that investment plans (and the issuance needs behind them) are relatively rate 
+insensitive is among factors likely weighing on duration risk appetite." He added that the 
+borrowing raises the risk that long-end yields "overshoot fair value by a larger margin." That is 
+happening with the 10-year above 5.2% and the IG index yielding about 5.95%, near 3-year 
+highs. Goldman's credit desk adds that hyperscaler curves have steepened another 8bp relative 
+to the market since August, and that AI single-name CDS volumes are up 400% year on year. 
+The liquid universe has grown from 4 names last year to 10-12 now, led by ORCL, AVGO, 
+NVDA, META, AMZN, GOOGL and MSFT. When a sector gets its own CDS complex, the 
+market has started pricing the possibility that something breaks. 
+Put it together and the logic of the SPV is simple. Each new hyperscaler bond widens the 
+issuer's own curve, pushes Treasury yields higher, and shows up in the leverage ratios the 
+rating agencies watch. A sale-leaseback or a vendor-backstopped chip vehicle raises the same 
+money, at nearly the same IG cost, without showing up as parent debt. As Morgan Stanley's 
+Todd Castagno put it in the note we covered in August, capex is understated and FCF 
+overstated to the extent operating leases fund the build. Note that the rating agencies treat 
+lease liabilities as debt regardless. The equity market mostly doesn't. 
+Here, once more, is the bridge from $1.8 trillion to $3.1 trillion in a single quarter. With Amazon's 
+sale-leaseback and the next Broadcom tranche, the Q3 update is likely to show another leg 
+higher. 
+ 
+
+ 
+ 
+What Could Possibly Go Wrong 
+Privorotsky's framing is the consensus one: this is the "standard evolution of the financing 
+stack," and it is not a problem while compute stays scarce and AWS can raise prices every 
+quarter. That holds as long as utilization holds. The trouble with sale-leasebacks and 
+vendor-guaranteed chip SPVs is that they turn an operating risk into a credit risk. Today, if 
+demand for Blackwell-era compute disappoints, Amazon takes a depreciation hit. After the SPV, 
+someone holds bonds secured by a depreciating asset whose fate depends on a lease from a 
+company that has decided it would rather not own that asset. 
+We have seen what happens when an SPV-financed project stalls. Oracle's $300 billion Project 
+Jupiter in New Mexico was funded by bonds, loans and Blue Owl equity to deliver compute to 
+OpenAI. It is now effectively mothballed (and may never be finished one Dems sweep 
+Congress), and the loans backing it have tumbled. As we wrote in "Forget CDOs, Meet CCOs," 
+these structures don't need demand to collapse in order to break. They only need growth to stop 
+accelerating. 
+To be clear, none of this is fraud, and the FT, Bloomberg and Goldman all describe deals done 
+in plain sight with top-tier counterparties. That is the point. In June we called the hidden AI 
+liabilities "obligations hidden in space." In August Morgan Stanley put them at $3.1 trillion. In 
+October, Amazon, Broadcom, Blackstone and a bank syndicate are adding to the pile in the 
+
+ 
+same week, while Goldman's most bullish trader calls the circularity "undeniable." The financing 
+stack is evolving, as Privorotsky says, and most of it now sits outside the balance sheets 
+investors actually read. 
+Broadcom CDS, which was trading at a record 122bps when we last looked at it in August, will 
+tell us whether credit is still paying attention. We expect it is. 
+* * *  
+Much more in Goldman's full "AI Issuance Pulsecheck" and Morgan Stanley's "AI: Funding the 
+Buildout Beyond the Balance Sheet", both available to pro subscribers. 
+ 
+ 
+ 
