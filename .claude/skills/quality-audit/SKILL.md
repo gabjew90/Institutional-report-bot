@@ -1,6 +1,6 @@
 ---
 name: quality-audit
-description: Audit everything the bot published since the last audit (Omniwiz /ask answers, member profiles, economic print alerts, the omni-calendar and its X post) and report each problem classified as code, process, rule or fact, with evidence, worst first. Use when the owner asks for an audit, a QC pass, or "check what the bot has been saying". Omnipulse is out of scope (it gets its own skill).
+description: Audit everything the bot published since the last audit (Omniwiz /ask answers, member profiles, economic print alerts, the omni-calendar and its X post) and report every problem in one table per area, classified by cause as code, process or rule, with impact, evidence and fix. Use when the owner asks for an audit, a QC pass, or "check what the bot has been saying". Omnipulse is out of scope (it gets its own skill).
 ---
 
 # Quality audit
@@ -129,23 +129,56 @@ For every profile in the window:
 `ingestion_pdfs_per_day`: a market day well under ~100 PDFs means the
 Dropbox feed stalled (2026-09-30 to 10-02 it fell to 0, 27, 0). Report it.
 
-## 4. Classify and report
+## 4. Classify and report (required format)
 
-Every finding gets:
+The owner's diagnostic is the point of the audit: every finding says WHY it
+happened, as one of three classes. The class is the CAUSE, never the symptom.
 
-| field | values |
-|---|---|
-| class | **code** (a bug), **process** (a feed, job or input failed), **rule** (a prompt rule or design produced the wrong behavior), **fact** (a false statement, verified against a source before it is called wrong) |
-| severity | high (wrong or harmful to a member, reached the room), medium (wrong but minor, or a near miss), low (polish) |
-| evidence | the exact answer line, log line or row, with its time |
-| fix | the smallest change that removes the cause, in code where possible (CLAUDE.md /ask policy: deterministic first) |
+| class | the cause is | examples |
+|---|---|---|
+| **code** | the program did the wrong thing | the router read the wrong text or missed a shape, a tool returned wrong or incomplete data, a check or guard is missing or fires wrongly, a renderer mis-drew |
+| **process** | an input, feed, job or schedule failed; the code would have been right with the input | Dropbox delivered no PDFs, a job did not run or ran late, an API was down, a key expired, a post went out late |
+| **rule** | a prompt rule, design decision or owner policy produced the behavior; the model followed (or ignored) an instruction | a prompt line says "you have no chart view", the plain-English rule did not hold, the model invented a claim the rules forbid |
 
-Three or more findings of one kind in one subsystem are one design problem:
-say so and propose the structural fix instead of three patches.
+What went wrong for the reader is a separate column, **impact**: false fact,
+wrong person, wrong tool, unsourced figure, repeated joke, unclear, late,
+missing, misdrawn. A false statement is an impact; its class is whatever
+caused it. Verify a false statement against a source before calling it false.
 
-Report worst first, then walk the owner through them one at a time when they
-want that. A clean area gets one line saying it was checked and passed. Do
-not fix anything until the owner picks what to fix.
+Area guidance, so the same kind of problem gets the same class every run:
+
+| area | code | process | rule |
+|---|---|---|---|
+| /ask answers | router, tool payload, guard, footer | a tool's feed down or stale | prompt rule, voice rule, model invention |
+| profiles | facts mixed between people by the builder, wrong alias mapping | refresh job did not run, profile stale | profile-writer prompt produced vague or room-level prose |
+| economic prints | poller or parser bug, wrong series | agency late, feed down, alert posted late | layout or takeaway prompt produced unclear text |
+| omni-calendar | filter dropped a name, renderer misdrew, move mispriced | feed down, post late, X post failed | display decision (what is bold, what is shown) |
+
+**Report one table per area**, in this order: /ask answers, profiles,
+economic prints, omni-calendar, process. Same columns every time:
+
+| # | finding | class | impact | severity | evidence | fix | status |
+|---|---|---|---|---|---|---|---|
+
+- class: exactly one of code, process, rule. Two causes means two rows.
+- severity: high (wrong or harmful, reached the room), medium (wrong but
+  minor, or a near miss), low (polish).
+- evidence: the exact line, row or log line, with its time.
+- fix: the smallest change that removes the cause, in code where possible
+  (CLAUDE.md /ask policy: deterministic first). A rule fix that reverses an
+  owner decision is marked "owner's call".
+- status: open, fixed (commit), or owner's call.
+- An area with no findings still appears, as one line: "checked N items, no
+  findings".
+
+After the tables, a one-line count by class per area, then the design check:
+three or more code findings in one subsystem are one design problem; say so
+and propose the structural fix instead of the patches.
+
+**Before sending, check:** every row has a class of code, process or rule
+and nothing else; every area appears; every false-fact row cites the source
+that shows it false. Then walk the owner through the rows one at a time when
+they want that. Do not fix anything until the owner picks what to fix.
 
 ## 5. Record the run
 
@@ -154,7 +187,7 @@ it the first time, with the memory frontmatter, type `project`):
 
 ```
 Last audit covered through: <the UTC time noted in step 1>
-Findings: <count by class>, open: <ids or one-line titles the owner deferred>
+Findings: <count by class (code / process / rule) per area>, open: <ids or one-line titles the owner deferred>
 ```
 
 Commit and push the memory repository so the other machine sees it (the Stop

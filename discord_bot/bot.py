@@ -3921,6 +3921,40 @@ def _repeated_span(answer: str, prior_answers: list[str],
     return best
 
 
+# A reused punchline is shorter than a reused sentence (2026-10-01:
+# "his mom's CRDO bags get torched" went to Sam's question at 11:57 and to
+# Monsoon's at 12:00; six words, so the 12-word span check passed, and the
+# hook check is gated to second-person clapbacks, which these were not).
+_REPEATED_JOKE_MIN_WORDS = 5
+_JOKE_MIN_DISTINCT = 2
+
+
+def _repeated_joke(answer: str, prior_answers: list[str]) -> str:
+    """A run of at least _REPEATED_JOKE_MIN_WORDS words shared verbatim
+    with a recent answer that carries at least _JOKE_MIN_DISTINCT
+    distinctive words (four letters or more and not connective, or a
+    ticker or figure). '' when there is none."""
+    if not answer or not prior_answers:
+        return ""
+    cur = re.findall(r"[a-z0-9$%']+", answer.lower())
+    n = _REPEATED_JOKE_MIN_WORDS
+    cur_spans = {" ".join(cur[i:i + n]) for i in range(len(cur) - n + 1)}
+
+    def _distinct(span: str) -> int:
+        return sum(1 for w in span.split()
+                   if w not in _SPAN_STOPWORDS and w not in _HOOK_STOPWORDS
+                   and (len(w) >= 4 or any(c.isdigit() or c == "$" for c in w)))
+    best = ""
+    for pa in prior_answers:
+        prev = re.findall(r"[a-z0-9$%']+", (pa or "").lower())
+        for i in range(len(prev) - n + 1):
+            span = " ".join(prev[i:i + n])
+            if span in cur_spans and _distinct(span) >= _JOKE_MIN_DISTINCT \
+                    and len(span) > len(best):
+                best = span
+    return best
+
+
 def _recycled_roast_hooks(answer: str, prior_answers: list[str]) -> list[str]:
     """Hooks the new answer shares with ANY single prior answer to the
     same asker. Compared per-prior-answer (not against the union) so the
@@ -4603,6 +4637,23 @@ async def _ask_00_setup_tools_and_context(
         _route_question = _deferred["question"]
         if _mgr is not None:
             _asker_manager = _mgr(_deferred["user_id"])
+    # "what happened" names nothing: its subject is what the asker was
+    # just looking at, in their own last messages (2026-10-02, the
+    # Cornell answer to a Seagate/Western Digital question).
+    _context_tickers: list[str] = []
+    # A reply has its subject in the message replied to; only a bare
+    # question borrows the asker's own recent messages.
+    if (not _deferred and user_id and "[MESSAGE BEING REPLIED TO" not in question
+            and _ask_router.is_subjectless(question)):
+        try:
+            _recent_own = await asyncio.to_thread(
+                db.get_recent_messages_by_author, user_id, channel_name or "")
+            _context_tickers = _ask_router.recent_subject(_recent_own)
+        except Exception as e:
+            log.info(f"/ask: recent-subject lookup failed (non-fatal): {e}")
+        if _context_tickers:
+            _route_question = "what happened with " + " and ".join(
+                f"${t}" for t in _context_tickers)
     _ask_route = _ask_router.classify(
         _route_question,
         fantasy_enabled=bool((settings.sleeper_league_id or "").strip()),
@@ -4613,6 +4664,10 @@ async def _ask_00_setup_tools_and_context(
     if _deferred:
         _ask_route.deferred_author = _deferred["author"]
         _ask_route.reason = f"deferred to {_deferred['author']}'s question: {_ask_route.reason}"
+    if _context_tickers:
+        _ask_route.context_tickers = _context_tickers
+        _ask_route.reason = (f"subject from the asker's last messages "
+                             f"({', '.join(_context_tickers)}): {_ask_route.reason}")
     log.info(f"/ask: route shape={_ask_route.shape} tickers={_ask_route.tickers[:4]} "
              f"prefetch={[t for t, _ in _ask_route.prefetch]} ({_ask_route.reason}) "
              f"channel={channel_name or '?'}")
@@ -5349,6 +5404,10 @@ async def _ask_02_call_model_with_tools(
         contents.append(types.Content(role="user", parts=[types.Part.from_text(
             text=_ask_router.deferred_note(_ask_route.deferred_author))]))
         _ask_meta["guards"].append("deferred-question")
+    if getattr(_ask_route, "context_tickers", None):
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_ask_router.subject_note(_ask_route.context_tickers))]))
+        _ask_meta["guards"].append("subject-from-context")
     _round_gm_chunks: list = []
     for round_idx in range(_CHAT_SEARCH_MAX_ROUNDS + 1):
         # Contents-size guard: fail CLEANLY (friendly reply + a log
@@ -6770,7 +6829,8 @@ async def _ask_06_roast_subject_guards(
                   if (answer and not _route_is_factual
                       and not _analysis_extra) else [])
     if _span_pool:
-        _span = _repeated_span(answer, _span_pool)
+        _span = (_repeated_span(answer, _span_pool)
+                 or _repeated_joke(answer, _span_pool))
         if _span:
             _ask_meta["guards"].append("repeat-span")
             log.warning(
@@ -6808,6 +6868,7 @@ async def _ask_06_roast_subject_guards(
                 if _span_text:
                     _span_text, _ = _clean_voice_violations(_span_text)
                 if _span_text and not _repeated_span(
+                        _span_text, _span_pool) and not _repeated_joke(
                         _span_text, _span_pool):
                     answer = _span_text
                     _ask_meta["guards"].append("repeat-span:reworded")
@@ -7160,8 +7221,16 @@ async def _ask_07_validation_ladder(
                 # excellent in-voice GLW read). The in-voice retry
                 # above already attempted grounding WITH context;
                 # failing that, hedge and keep the answer.
-                answer = answer.rstrip() + _UNVERIFIED_HEDGE
-                _ask_meta["ground_retry"] = "hedged(local-skip)"
+                # Banter keeps no hedge: a roast's specifics come from
+                # the profiles and the chat, which no web source can
+                # confirm, and a data warning under a joke reads as
+                # broken (2026-10-01, the spockbones/Monsoon roast).
+                from discord_bot import data_footer as _df_h
+                if not _route_is_factual and not _df_h.figures(answer):
+                    _ask_meta["ground_retry"] = "banter(local-skip)"
+                else:
+                    answer = answer.rstrip() + _UNVERIFIED_HEDGE
+                    _ask_meta["ground_retry"] = "hedged(local-skip)"
                 log.warning(
                     "/ask: LOCAL-routed answer failed grounding retry "
                     "— skipped the context-blind bare probe, kept "

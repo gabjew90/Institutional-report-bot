@@ -133,6 +133,9 @@ class Route:
     # Set by the caller when the asker handed over another member's
     # question ("weigh in on this"): whose question the answer is about.
     deferred_author: str = ""
+    # Set by the caller when a subjectless question ("what happened") took
+    # its subject from the asker's own last messages.
+    context_tickers: list[str] = field(default_factory=list)
 
     @property
     def deterministic(self) -> bool:
@@ -448,6 +451,48 @@ _REPLY_BLOCK_RE = re.compile(
     r"\"(?P<parent>.*?)\"\s*\n\n\[[^\]\n]*message to you\]\s*\n(?P<own>.*)\Z", re.S)
 
 
+# A question that names nothing: "what happened", "wtf is going on", "why".
+# Its subject is whatever the asker was just looking at (2026-10-02:
+# spockbones asked "what happened" right after "Fc stx 5" and "Fc wdc 5",
+# and the bot answered with a Cornell story other members had posted).
+_SUBJECTLESS_RE = re.compile(
+    r"^\s*(?:wtf\s+|what\s+the\s+(?:hell|fuck)\s+)?"
+    r"(?:what(?:'s|s| is)?\s+(?:just\s+)?(?:happened|happening|going\s+on)"
+    r"|why(?:\s+(?:is|are|did)\s+(?:it|they|this|these|that))?\s*(?:up|down|dumping|ripping|moving)?"
+    r"|what\s+happened\s+(?:here|there|today|just\s+now)"
+    r"|happened|(?:is\s+)?going\s+on)\s*[?!.]*\s*$", re.I)
+_CHART_CMD_RE = re.compile(r"^\s*fc\s+\$?([A-Za-z]{1,5})\b", re.I)
+
+
+def is_subjectless(question: str) -> bool:
+    """The asker's own words name no subject at all."""
+    last = _last_line(question)
+    return bool(_SUBJECTLESS_RE.match(last)) and not extract_tickers(last)
+
+
+def recent_subject(messages: list[str], limit: int = 3) -> list[str]:
+    """Tickers from the asker's own recent messages, newest first: a chart
+    command ('Fc stx 5') or a ticker written in caps or as a cashtag."""
+    out: list[str] = []
+    for text in messages or []:
+        m = _CHART_CMD_RE.match(text or "")
+        found = [m.group(1).upper()] if m else extract_tickers(text or "", lowercase=False)
+        for t in found:
+            if t not in out:
+                out.append(t)
+        if len(out) >= limit:
+            break
+    return out[:limit]
+
+
+def subject_note(tickers: list[str]) -> str:
+    """The prompt block that names what a subjectless question is about."""
+    cash = ", ".join(f"${t}" for t in tickers)
+    return (f"SUBJECT FROM CONTEXT: the asker's question names nothing, and their own "
+            f"last messages were about {cash}. Answer about {cash}, not about other "
+            f"topics in the chat.")
+
+
 def deferred_note(author: str) -> str:
     """The prompt block for a handed-over question."""
     return (f"HANDED-OVER QUESTION: the asker is passing on {author}'s question "
@@ -554,6 +599,18 @@ _CROWD_RE = re.compile(
     r"(?:all\s+)?(?:in|holding|long|short|positioned\s+in|piled\s+in(?:to)?|loaded\s+(?:in|up\s+on))\b"
     r"|same\s+(?:trade|play|position|boat)|room(?:'s)?\s+(?:book|positioning|positions|exposure)"
     r"|what(?:'s| is)\s+the\s+room\s+(?:in|holding|long|short)|who(?:'s| is|s)\s+(?:all\s+)?in\s+\$?[A-Za-z]{1,5}\b)", re.I)
+# Why the ROOM holds a view (2026-10-02: "why they all bullish cbrs" and
+# "I'm asking why r people in. Chat bullish" were answered from web news,
+# with an invented "heavy retail flow" line; the answer was in the room's
+# own positions and messages).
+# "people" and "everyone" alone are market participants ("why are people
+# buying gold"); only a room marker makes them the room.
+_ROOM_WHO = (r"(?:y'?all|yall|the\s+room|(?:the\s+)?chat|they\s+all|u\s+guys|you\s+guys"
+             r"|(?:people|everyone|everybody|ppl)\s+(?:in\s+(?:here|chat|the\s+room)|here)"
+             r"|(?:people|ppl)\s+in\b(?=.*\bchat\b))")
+_ROOM_OPINION_RE = re.compile(
+    rf"\bwhy\s+(?:are|r|is|do|does)?\s*{_ROOM_WHO}"
+    rf"|\b{_ROOM_WHO}\s+(?:so\s+|all\s+)?(?:bullish|bearish|buying|loading|piling)\b", re.I)
 _SINGLE_TICKER_OPINION_RE = re.compile(r"\b(?:thoughts?\s+on|bullish|bearish|buy|sell|long|short)\b", re.I)
 # A view on a named stock. "how is X looking" stays a price question
 # (_PRICE_RE), so only the "how does X look" form is here.
@@ -654,6 +711,15 @@ def classify(question: str, *, fantasy_enabled: bool = False,
             return _as_fantasy(r, q, "ledger words in the football channel",
                                asker_manager=asker_manager)
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
+        return r
+    # a "why" is about reasons even when it also names positions
+    if _ROOM_OPINION_RE.search(q) and (re.search(r"\bwhy\b", ql) or not _CROWD_RE.search(q)):
+        # WHY the room holds a view is in what it said: chat search, with
+        # what it holds fetched up front. Crowding ("what's everyone in")
+        # stays a count of logged positions, never a chat search.
+        r.shape, r.reason = CHAT_HISTORY, "why the room holds a view"
+        days = 3 if re.search(r"\b(?:right\s+now|today|this\s+week|currently|rn)\b", ql) else 14
+        r.prefetch = [(T_ROOM, {"days": days})]
         return r
     if _CROWD_RE.search(q):
         r.shape, r.reason = ROOM_CROWDING, "room positioning words"

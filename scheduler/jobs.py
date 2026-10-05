@@ -78,6 +78,18 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=3600,
         )
 
+    # Research feed watchdog (2026-10-04): the Dropbox feed stalled for two
+    # days with no signal. 11:00 and 16:00 ET, market days.
+    scheduler.add_job(
+        _research_feed_watchdog_job,
+        trigger=CronTrigger(day_of_week="mon-fri", hour="11,16", minute=0, timezone=tz),
+        id="research_feed_watchdog",
+        name="Watchdog: research feed stalled",
+        kwargs={"bot": bot},
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+
     # Bridge jobs (only register if GITHUB_TOKEN is set)
     if bridge_active:
         from github_bridge.jobs import dump_context_job
@@ -1100,6 +1112,94 @@ async def _retention_purge_job():
                 log.debug(f"retention purge: {table} clean")
     except Exception as e:
         log.error(f"retention purge job failed: {e}", exc_info=True)
+
+
+# The feed is bursty, so a morning count is the wrong test: measured over
+# 2026-08-25..10-02, 2026-09-22 had 0 PDFs by 11 AM ET and 281 by night,
+# and four other normal days had under 15 by 11. What a stall looks like
+# is a long gap since the LAST PDF: 2026-09-30 and 10-02 went over a day
+# with none. Checked at 11:00 and 16:00 ET on market days.
+RESEARCH_FEED_MAX_GAP_HOURS = 24
+
+
+async def _research_feed_watchdog_job(bot=None):
+    """Ops ping when a market day has almost no new research by 11 AM ET.
+
+    2026-09-30 to 10-02 the Dropbox feed delivered 0, 27 and 0 PDFs. The
+    bot polled every 15 minutes, found nothing and said nothing, and the
+    stall surfaced two days later as a failed Omnipulse editor run. The
+    cause sits upstream of this repo (whatever fills /Current), so the
+    check tests for the absence of a result, like the missing-pulse
+    watchdog, and names the count so the owner can tell a slow morning
+    from a dead feed."""
+    try:
+        import db
+        from datetime import datetime
+        from pytz import timezone as _tz, utc as _utc
+
+        local_now = datetime.now(_tz(settings.timezone))
+        today = local_now.strftime("%Y-%m-%d")
+        if local_now.weekday() >= 5:
+            return
+        try:
+            import world_context
+            if world_context.is_us_market_holiday(today):
+                return
+        except Exception:
+            pass
+        last = db.get_connection().execute(
+            "SELECT MAX(created_at) FROM pdf_files").fetchone()[0]
+        gap_h = None
+        if last:
+            # created_at is SQLite's space format, UTC
+            last_dt = datetime.strptime(last[:19].replace("T", " "), "%Y-%m-%d %H:%M:%S") \
+                .replace(tzinfo=_utc)
+            gap_h = market_gap_hours(last_dt, datetime.now(_utc), settings.timezone)
+        text = research_feed_alert(gap_h)
+        if not text:
+            log.info(f"Research feed watchdog: last PDF {gap_h:.1f} h ago, fine")
+            return
+        from discord_bot.ops_alert import ops_alert
+        await ops_alert(text, dedupe_key=f"research-feed-{today}")
+        log.warning(f"Research feed watchdog: {text}")
+    except Exception as e:
+        log.error(f"Research feed watchdog failed: {e}")
+
+
+def market_gap_hours(last_utc, now_utc, tz_name: str, is_closed=None) -> float:
+    """Hours between two times, minus 24 for every whole calendar day in
+    between (New York dates) that is a weekend or market holiday, so a
+    Friday-afternoon PDF and a Monday-morning check read as about 20 hours,
+    not 68. `is_closed(date_iso)` defaults to world_context's holiday list."""
+    from datetime import timedelta
+    from pytz import timezone as _tz
+    if is_closed is None:
+        def is_closed(d):
+            try:
+                import world_context
+                return bool(world_context.is_us_market_holiday(d))
+            except Exception:
+                return False
+    tz = _tz(tz_name)
+    gap = (now_utc - last_utc).total_seconds() / 3600
+    day = last_utc.astimezone(tz).date() + timedelta(days=1)
+    end = now_utc.astimezone(tz).date()
+    while day < end:
+        if day.weekday() >= 5 or is_closed(day.isoformat()):
+            gap -= 24
+        day += timedelta(days=1)
+    return max(gap, 0.0)
+
+
+def research_feed_alert(gap_hours: float | None) -> str:
+    """The ops line when the newest PDF is older than
+    RESEARCH_FEED_MAX_GAP_HOURS (or there is none), '' otherwise."""
+    if gap_hours is not None and gap_hours <= RESEARCH_FEED_MAX_GAP_HOURS:
+        return ""
+    age = "no PDF on record" if gap_hours is None else f"the last one arrived {gap_hours:.0f} hours ago"
+    return (f"Research feed: no new PDF in Dropbox for over {RESEARCH_FEED_MAX_GAP_HOURS} "
+            f"hours ({age}). The bot is polling fine; check whatever fills Dropbox "
+            f"/Current. The pulse and Omnipulse run on this research.")
 
 
 async def _missing_pulse_watchdog_job(bot=None):

@@ -1502,6 +1502,7 @@ from db_parts.chat import (  # noqa: E402,F401
     get_profiles_for_users,
     get_promoted_protected_ids,
     get_recent_user_chat_trades,
+    get_recent_messages_by_author,
     get_recent_user_messages,
     get_sleeper_player_names,
     get_user_profile,
