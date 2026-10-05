@@ -90,6 +90,18 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         misfire_grace_time=3600,
     )
 
+    # Channel config watchdog (2026-10-04): a channel renamed in Discord
+    # stops being read with no signal. Daily 9:05 ET.
+    scheduler.add_job(
+        _channel_config_watchdog_job,
+        trigger=CronTrigger(hour=9, minute=5, timezone=tz),
+        id="channel_config_watchdog",
+        name="Watchdog: configured channel renamed or deleted",
+        kwargs={"bot": bot},
+        max_instances=1,
+        misfire_grace_time=3600,
+    )
+
     # Bridge jobs (only register if GITHUB_TOKEN is set)
     if bridge_active:
         from github_bridge.jobs import dump_context_job
@@ -1112,6 +1124,54 @@ async def _retention_purge_job():
                 log.debug(f"retention purge: {table} clean")
     except Exception as e:
         log.error(f"retention purge job failed: {e}", exc_info=True)
+
+
+def configured_channel_names() -> dict[str, str]:
+    """Every channel the bot is configured to read or act in, by NAME,
+    mapped to what the name is used for."""
+    out: dict[str, str] = {}
+    for name in settings.resolve_chat_ingestion_channels():
+        out[name] = "chat ingestion"
+    for name in settings.resolve_chat_eager_ocr_channels():
+        out.setdefault(name, "screenshot OCR")
+    for c in settings.resolve_analyst_callers():
+        if c.get("enabled") and c.get("channel"):
+            out[c["channel"]] = f"{c.get('display') or c.get('name')}'s trade log"
+    for name in (settings.pulse_command_channels or "").split(","):
+        if name.strip():
+            out.setdefault(name.strip(), "admin commands")
+    return out
+
+
+def missing_channels(configured: dict[str, str], live_names: set[str]) -> list[str]:
+    """Configured names with no channel of that name in the server, as
+    'name (use)' lines."""
+    return [f"{n} ({use})" for n, use in sorted(configured.items()) if n not in live_names]
+
+
+async def _channel_config_watchdog_job(bot=None):
+    """Ops ping when a configured channel name no longer exists in the
+    server. Channels are configured by name, so a rename in Discord cuts
+    the bot off silently: kloh's alert channel was renamed around
+    2026-10-02 and nothing it posted was read until an audit noticed on
+    10-04. Daily, so a rename costs at most a day."""
+    try:
+        if bot is None or not getattr(bot, "guilds", None):
+            return
+        live = {ch.name for g in bot.guilds for ch in g.channels}
+        gone = missing_channels(configured_channel_names(), live)
+        if not gone:
+            log.info("Channel config watchdog: every configured channel exists")
+            return
+        from discord_bot.ops_alert import ops_alert
+        await ops_alert(
+            "Channel config: these configured channels no longer exist by that name "
+            "(renamed or deleted in Discord), so the bot reads nothing from them: "
+            + "; ".join(gone) + ". Update the names in config.py.",
+            dedupe_key="channel-config-" + ",".join(gone)[:80])
+        log.warning(f"Channel config watchdog: missing {gone}")
+    except Exception as e:
+        log.error(f"Channel config watchdog failed: {e}")
 
 
 # The feed is bursty, so a morning count is the wrong test: measured over

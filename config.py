@@ -202,7 +202,7 @@ class Settings(BaseSettings):
         "💲-gain-loss-porn-💲,"
         # Caller-owned alert channels (1:1 user → channel — every post is
         # an entry commitment from that user, structurally no-cherry-pick)
-        "🦉-kloh-alerts-🦉,"
+        "🦉-big-gloh-alerts-🦉,"          # kloh's, renamed ~2026-10-02
         "🧙🏻‍♀️-wiz-of-cemini-alerts-🐸,"
         "🫦-zhawk-thawghts-🗣,"
         # 2026-07-11 review fix: abe-alerts + kyle-alerts were MISSING —
@@ -217,7 +217,6 @@ class Settings(BaseSettings):
         # entry commitment, just not 1:1 to a single caller)
         "🕰️-member-alerts-🕰️,"
         "🐄-spot-bag-alerts-🐄,"
-        "🚨-0dte-lotto-alerts-🚨,"
         "🪙-crypto-alerts-🪙,"
         # 2026-07-11 review fix: the main room is where members actually
         # post their P&L screenshots (879 attachment msgs in 30d vs 51
@@ -274,11 +273,14 @@ class Settings(BaseSettings):
         # Ingestion + profiles only — NOT a registered analyst caller
         # (owner call: "just ingestion").
         "🧙🏻‍♀️-wiz-of-cemini-alerts-🐸,"
-        "🦉-kloh-alerts-🦉,"
+        # kloh's channel, renamed in Discord around 2026-10-02 from
+        # "🦉-kloh-alerts-🦉"; the old name read nothing from then on.
+        # "🚨-0dte-lotto-alerts-🚨" was renamed to Cemini's channel above
+        # on 2026-08-13 and is gone.
+        "🦉-big-gloh-alerts-🦉,"
         "🫦-zhawk-thawghts-🗣,"
         "🕰️-member-alerts-🕰️,"
         "🐄-spot-bag-alerts-🐄,"
-        "🚨-0dte-lotto-alerts-🚨,"
         "🪙-crypto-alerts-🪙"
     )
     # How many days of history to use for each refresh pass.

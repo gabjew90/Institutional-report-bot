@@ -177,6 +177,8 @@ OWNED_ALERT_CHANNELS: list[tuple[str, str, str]] = [
     ("💲-gain-loss-porn-💲",           "*shared",         "(shared P&L receipts — anyone)"),
     ("💅🏾-kyle-alerts-💅🏾",          "bankerkyle",     "BK"),
     ("🥷🏽-abe-alerts-🥷🏽",            "abullish_xyz",   "abe"),
+    ("🦉-big-gloh-alerts-🦉",          "kloh.",           "kloh"),   # renamed ~2026-10-02
+    # the old name stays: posts before the rename are stored under it
     ("🦉-kloh-alerts-🦉",              "kloh.",           "kloh"),
     ("🫦-zhawk-thawghts-🗣",           ".zhawk",          "ZHawk"),
 ]
@@ -209,7 +211,7 @@ def owned_channels_prompt_block() -> str:
         "NOT in this table are shared alert rooms (member-alerts,"
     )
     lines.append(
-        "spot-bag-alerts, 0dte-lotto-alerts, crypto-alerts); posts there also"
+        "spot-bag-alerts, crypto-alerts, wiz-of-cemini-alerts); posts there also"
     )
     lines.append(
         "feed the points ledger via member-mode extraction."

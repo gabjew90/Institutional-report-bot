@@ -61,6 +61,20 @@ def test_research_feed_alert_on_a_long_gap_only():
     assert "no PDF on record" in jobs.research_feed_alert(None)
 
 
+def test_configured_channels_exist_in_the_server_as_of_2026_10_04():
+    # the live channel names read from Discord on 2026-10-04
+    live = {"💬-stonks-yapping-💬", "₿-crypto-yapping-₿", "🏃-fitness-yapping-🏋",
+            "🎲-gambling-yapping-🎲", "🏈-fantasy-football-yapping-🏈",
+            "🧙🏻‍♀️-wiz-of-cemini-alerts-🐸", "🦉-big-gloh-alerts-🦉", "🫦-zhawk-thawghts-🗣",
+            "🕰️-member-alerts-🕰️", "🐄-spot-bag-alerts-🐄", "🪙-crypto-alerts-🪙",
+            "💲-gain-loss-porn-💲", "🥷🏽-abe-alerts-🥷🏽", "💅🏾-kyle-alerts-💅🏾",
+            "test-channel"}
+    cfg = {k: v for k, v in jobs.configured_channel_names().items() if v != "admin commands"}
+    assert jobs.missing_channels(cfg, live) == []
+    assert jobs.missing_channels({"🦉-kloh-alerts-🦉": "chat ingestion"}, live) == [
+        "🦉-kloh-alerts-🦉 (chat ingestion)"]
+
+
 def test_market_gap_skips_weekends_and_holidays():
     from datetime import datetime, timezone
     utc = timezone.utc
