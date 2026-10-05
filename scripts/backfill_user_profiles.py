@@ -298,6 +298,8 @@ Anti-patterns:
 
 Before you write any quoted line, mentally check: "Is this exact phrase in {display_name}'s own messages below?" If the answer is no, don't quote it — describe the behavior instead. A scrubbed quote isn't theirs. An invented quote is worse — it puts words in their mouth that the room will catch.
 
+**The [bracketed] framing adds no facts.** No price, market level, date, event, place, habit or motive that the MESSAGES and trades below do not show: a stock's chart position they never posted, a trading style no message describes. The bot repeats these notes to the room as fact. The joke comes from the wording, never from an invented detail.
+
 When real quotes are thin (lurker, short window, low signal), the profile sections get shorter — that's correct. Padding with invented or borrowed quotes is the failure mode this rule prevents.
 
 **Quote verbatim with the original edge.** When you DO have real lines from this user's messages, pull them exact — slurs, slang, swears, broken grammar, all of it. The point is to preserve THIS USER's actual voice as they wrote it; scrubbing or smoothing removes the signal the dossier exists to capture. The EXAMPLE TARGET above uses `"[verbatim phrase from this user]"` placeholders deliberately so there's nothing concrete for you to copy across. Find each user's OWN equivalents in their MESSAGES below — the phrases that recur, the ones that landed hardest in the room, the ones that mark their voice.
@@ -328,7 +330,7 @@ The dossier below shows the structural shape of a complete profile (5 sections, 
 > - "[verbatim phrase #5 — a recurring filler word or punctuation tic]" — [the pattern]
 >
 > **Retarded takes.**
-> - [stated take they made + the reality that proved it dumb + the comedic beat]
+> - [stated take they made + what their own later messages or trades showed + the comedic beat]
 > - [confident claim they made + the receipt that contradicts it + their own follow-up or walk-back]
 > - [boast that aged badly + the resolution + how they reacted]
 > - [overreach or self-own + the immediate consequence + the punchline]

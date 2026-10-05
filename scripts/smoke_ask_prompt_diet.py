@@ -24,6 +24,12 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
+# The self-tests print arrows and curly quotes. On a Windows console the
+# child's stdout is cp1252 and the print raises, which read as "a rule is
+# enforced by nothing" (2026-10-05). Force UTF-8 for the children.
+_UTF8_ENV = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+
+
 def _ok(msg):
     print(f"PASS {msg}")
 
@@ -176,7 +182,7 @@ def test_fixture_assertions_self_test():
     decoration, and it reads as a green build while detecting nothing.
     """
     r = subprocess.run([sys.executable, _RUNNER, "--self-test"],
-                       capture_output=True, text=True)
+                       capture_output=True, text=True, encoding="utf-8", env=_UTF8_ENV)
     if r.returncode != 0:
         tail = "\n".join((r.stdout or "").strip().splitlines()[-25:])
         _fail("ask_fixture_run.py --self-test failed (TOO WEAK / BROKEN / "
@@ -195,7 +201,7 @@ def test_response_validator():
     gone. This check is what makes the deletion safe.
     """
     r = subprocess.run([sys.executable, _VALIDATOR, "--self-test"],
-                       capture_output=True, text=True)
+                       capture_output=True, text=True, encoding="utf-8", env=_UTF8_ENV)
     if r.returncode != 0:
         tail = "\n".join((r.stdout or "").strip().splitlines()[-20:])
         _fail("ask_response_validate --self-test failed. A rule deleted "
