@@ -1178,3 +1178,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — SCRUB reversed a yield claim ("all maturities rising" to "long-dated rising while 2-year fell"). Re-check SCRUB fact preservation.
 - **observation** — Omnipulse fell back to classic for the second day running (10-01, 10-02).
 - **observation** — Headline "Bonds ignore soft PCE" and the lead theme repeat 10-01.
+
+## 2026-10-05
+- **deterministic-fixable** — No STEP 7 self-review file for 2026-10-05T14-07-40Z in `qc-reviews/` (latest is 10-02; 10-01 also missing earlier).
+- **deterministic-fixable** — Residual hard `released-actual-missing` shipped (ISM 54.5/77.9 lack a % sign, so the validator cannot match them) and the `source-prefix` "Goldman says" hard sits in the locked Omnipulse body, so SCRUB cannot fix it. Both were waived. Validator should accept index values; the Omnipulse body should be linted before lock.
+- **pilot-territory** — Omnipulse-body figures (bid-to-cover, tail, 23% above 50-day, forward P/E 23x to 19x, France 4.92-4.95%, Twilio, 2-year 4.83%) cannot be traced to the production context dump, and the 50-day share conflicts with a dump entry (25%). The citation verifier should cover this.
+- **observation** — "$1.3 trillion of authorized buybacks" has no support in the dump (only a Morgan Stanley balance-sheet figure carries that number). Check the card source.
+- **observation** — Driver trail is again a condensed summary ("original not committed verbatim").
+- **observation** — Omnipulse returned (body_source omnipulse) after two classic fallback days.
