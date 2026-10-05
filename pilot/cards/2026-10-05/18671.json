@@ -1,0 +1,455 @@
+{
+ "brief": "Zero Hedge argues a costlier bond market is pushing hyperscaler AI capex off balance sheet into special purpose vehicles, and that resulting circularity is growing. Demand for Amazon's long-dated bonds weakened at its July $25bn sale versus March's upsized $50bn one, so Amazon is reportedly moving about $8bn of Nvidia Grace Blackwell chips into an SPV, selling up to 10% of its equity and leasing the chips back for an investment-grade rating off its AA credit, even as AWS raises GPU rental prices about 15%. Separately, Broadcom's bank syndicate is raising $60bn, split into a $42bn senior tranche and an $18bn Blackstone-led junior tranche, to finance Anthropic's purchase of Broadcom chips, with Broadcom backstopping the senior notes. The circle: Amazon has committed up to $83bn to Anthropic, which leases AWS compute and Broadcom chips. Blackstone is both lender and Anthropic investor. Nvidia is reportedly in talks to anchor Anthropic's IPO. Goldman's Privorotsky calls this standard evolution but says circularity is undeniably increasing. The document's own view: this converts operating risk into credit risk, the dynamic that stalled Oracle's SPV-funded Project Jupiter without demand collapsing, only growth decelerating.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Off-balance sheet AI financing commitments from the hyperscalers plus Nvidia and Broadcom reached $3.1 trillion, up $1.3 trillion in a single quarter from the $1.8 trillion flagged in June.",
+   "anchor": "had reached $3.1 trillion, up $1.3 trillion in a single quarter from the $1.8 trillion we first flagged in June.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Amazon has been sounding out investors on moving about $8 billion of Nvidia Grace Blackwell chips into a special purpose vehicle.",
+   "anchor": "sounding out investors on moving about $8 billion of Nvidia Grace Blackwell chips into a special purpose vehicle",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Amazon would offer outside investors up to 10% of the SPV's equity and keep no stake itself.",
+   "anchor": "Amazon would offer outside investors up to 10% of the SPV's equity and keep no stake itself.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "AWS is raising prices on its EC2 Capacity Blocks for machine learning by about 15%, effective October 7.",
+   "anchor": "AWS is raising prices on its EC2 Capacity Blocks for machine learning by about 15%, effective October 7.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Broadcom's bank syndicate is starting to raise $60 billion of new AI chip financing for Anthropic and other companies.",
+   "anchor": "Broadcom's bank syndicate is starting to raise $60 billion of new AI chip financing for Anthropic and other companies.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Banks are about to send syndication letters for a $42 billion Class A senior-secured tranche of the Broadcom AI chip financing.",
+   "anchor": "Banks are about to send syndication letters for a $42 billion Class A senior-secured tranche.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Blackstone is leading an $18 billion Class B junior tranche of the deal, committing $9 billion from its own funds and planning to syndicate the rest.",
+   "anchor": "Blackstone is leading an $18 billion Class B junior tranche, committing $9 billion from its own funds and planning to syndicate the rest.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "BX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Goldman's Rich Privorotsky says circularity in AI financing is undeniably increasing but not today's problem.",
+   "anchor": "circularity is undeniably increasing but not today's problem.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Oracle's $300 billion Project Jupiter in New Mexico was funded by bonds, loans and Blue Owl equity to deliver compute to OpenAI.",
+   "anchor": "Oracle's $300 billion Project Jupiter in New Mexico was funded by bonds, loans and Blue Owl equity to deliver compute to OpenAI.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Oracle's Project Jupiter is now effectively mothballed and the loans backing it have tumbled.",
+   "anchor": "It is now effectively mothballed (and may never be finished one Dems sweep Congress), and the loans backing it have tumbled.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Amazon has committed to invest up to $83 billion in Anthropic, one of the labs that trains on Nvidia chips.",
+   "anchor": "Amazon has committed to invest up to $83 billion in Anthropic, one of the labs that trains on these chips.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Nvidia is reportedly in talks to anchor the Anthropic IPO with up to $10 billion.",
+   "anchor": "Nvidia is reportedly in talks to anchor the Anthropic IPO with up to $10 billion.",
+   "topic": "circular AI financing risk",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Goldman's credit strategists raised their 2027 hyperscaler bond issuance forecast to $420 billion from $400 billion and assume 35% of 2027 hyperscaler capex will be debt-funded.",
+   "anchor": "raised their 2027 forecast to $420 billion (from $400 billion) and assume 35% of 2027 hyperscaler capex will be debt-funded.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Hyperscaler bond issuance is on track for $250 billion in 2026, with $230 billion already done.",
+   "anchor": "Hyperscaler bond issuance is on track for $250 billion in 2026 ($230 billion already done).",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Hyperscaler bond issuance was under $20 billion in 2024.",
+   "anchor": "In 2024 it was under $20 billion.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2024"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Hyperscalers account for only 40% of the $575 billion-plus of global AI-related debt issued so far this year, with the rest from project finance issuers funding data centers and chips.",
+   "anchor": "The hyperscalers account for \"only\" 40% of the $575 billion-plus of global AI-related debt issued so far this year.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Since June, 46.4% of hyperscaler bond issuance has come in the 0-5 year maturity bucket, up from 29.9% in the first half of the year.",
+   "anchor": "Since June, 46.4% of hyperscaler issuance has come in the 0-5 year bucket, up from 29.9% in the first half.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "The 10-year Treasury yield is above 5.2%.",
+   "anchor": "the 10-year above 5.2% and the IG index yielding about 5.95%, near 3-year highs.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "The investment-grade corporate bond index is yielding about 5.95%, near three-year highs.",
+   "anchor": "the 10-year above 5.2% and the IG index yielding about 5.95%, near 3-year highs.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Hyperscaler credit curves have steepened another 8 basis points relative to the broader market since August.",
+   "anchor": "hyperscaler curves have steepened another 8bp relative to the market since August",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "AI single-name CDS trading volumes are up 400% year on year.",
+   "anchor": "AI single-name CDS volumes are up 400% year on year.",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Broadcom CDS was trading at a record 122 basis points when last checked in August.",
+   "anchor": "Broadcom CDS, which was trading at a record 122bps when we last looked at it in August",
+   "topic": "circular AI financing risk",
+   "status": "level",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Amazon is expected to spend about $220 billion on capex this year, most of it on AWS chips and data centers.",
+   "anchor": "Amazon is expected to spend about $220 billion on capex this year, most of it on AWS chips and data centers.",
+   "topic": "circular AI financing risk",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "By Amazon's July $25 billion bond deal, demand for the long-dated paper had weakened and investors wanted higher yields.",
+   "anchor": "demand for the long-dated paper had weakened and investors wanted higher yields",
+   "topic": "hyperscaler AI debt issuance",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Nvidia gives its customers 60 days to pay their bill but books the revenue upfront.",
+   "anchor": "NVDA gives its customers 60 days to pay their bill, but books the revenue upfront.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Amazon buys Nvidia chips but only books 1/6th of the expense each year as depreciation, even though the chips become worthless in under 3 years.",
+   "anchor": "AMZN buys the chips but only books 1/6th of the expense each year as depreciation, even though the chips become worthless in under 3 years.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Amazon is mimicking Enron's playbook in plain sight of regulators, per Kashyap Sriram.",
+   "anchor": "Amazon is mimicking Enron's playbook, in plain sight of regulators.",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Morgan Stanley's tally already listed $29 billion of chip-lease residual value support at Broadcom.",
+   "anchor": "Morgan Stanley's tally already listed $29 billion of chip-lease residual value support at Broadcom",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Morgan Stanley's tally listed up to $125 billion of potential residual value support at Nvidia from its $500 billion compute financing platform.",
+   "anchor": "up to $125 billion of potential residual value support at Nvidia from its $500 billion",
+   "topic": "circular AI financing risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "Amazon, Broadcom Pile Into Off-Balance Sheet SPVs As AI Circularity Undeniably Increasing",
+   "claim": "Broadcom's AI chip financing platform is meant to finance more than 20 gigawatts of compute.",
+   "anchor": "the platform is meant to finance more than 20 gigawatts of compute",
+   "topic": "circular AI financing risk",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-05/18671__amazon-broadcom-pile-into-off-balance-sheet-spvs-as-ai-circu.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
