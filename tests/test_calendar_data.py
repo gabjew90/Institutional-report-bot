@@ -965,6 +965,52 @@ def test_fred_that_cannot_answer_is_unavailable_not_quiet():
     assert day.econ_available is False
 
 
+def _fallback_for(date_iso, fred_rows):
+    from unittest.mock import patch as _p
+    from report import fred_data as fd
+    from report import news_data as nd
+    with _p("config.settings.fred_api_key", "k"), \
+         _p.object(fd, "fetch_fred_release_schedule", return_value=fred_rows), \
+         _p.dict(fd._SCHEDULE_CACHE, {"rows": list(fred_rows)}):
+        return nd.fetch_us_major_releases_from_fred(date_iso)
+
+
+def test_the_monday_fallback_carries_ism():
+    """2026-10-05: the Friday sheet for Monday said 'no major US releases
+    scheduled' while ISM Services printed at 10:00. FRED does not
+    schedule ISM, so the published dates are merged in."""
+    rows = _fallback_for("2026-10-05", [])
+    assert [(r["event"], r["time"]) for r in rows] == [("ISM Services PMI", "2026-10-05T14:00:00")]
+    from report.calendar_data import econ_is_important
+    assert econ_is_important(rows[0]["event"], rows[0]["impact"])
+
+
+def test_the_fallback_merges_fred_ism_and_fomc_in_time_order():
+    cpi = dict(FRED_PCE[0], event="CPI (Consumer Price Index)", time="2026-12-01T13:30:00")
+    rows = _fallback_for("2026-12-01", [cpi])
+    assert [r["event"] for r in rows] == ["CPI (Consumer Price Index)", "ISM Manufacturing PMI"]
+    fomc = _fallback_for("2026-10-28", [])
+    assert [(r["event"], r["time"]) for r in fomc] == [("FOMC Statement", "2026-10-28T18:00:00")]
+    assert _fallback_for("2026-10-06", []) == []
+
+
+def test_one_schedule_feeds_the_print_alerts_and_the_calendar():
+    """One table, one annual update, one expiry alarm (2026-10-05 review:
+    two tables in two files would drift)."""
+    import world_context as W
+    from report import print_watch as PW
+    assert PW.OFFICIAL_RELEASES is W.OFFICIAL_RELEASES
+    assert W.OFFICIAL_RELEASES["2026-10-05"] == ("ism_services",)
+    keys = {k for ks in W.OFFICIAL_RELEASES.values() for k in ks}
+    assert {"ism_manufacturing", "ism_services"} <= keys
+    assert set(W.OFFICIAL_RELEASES_NOT_ON_FRED) <= keys
+
+
+def test_the_partial_note_promises_nothing_that_does_not_happen():
+    from report import calendar_render as R
+    assert "Sunday" not in R.ECON_PARTIAL_EMPTY + R.ECON_PARTIAL_NOTE
+
+
 def test_fred_helper_returns_none_without_a_key():
     from unittest.mock import patch as _p
     from report import news_data as nd

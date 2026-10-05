@@ -281,3 +281,52 @@ def upcoming_market_events(today_iso: str, days_ahead: int = 12) -> list[str]:
             line += " [IN PROGRESS]"
         out.append(line)
     return out
+
+
+# The agencies' own published release schedules for the rest of 2026,
+# read from bls.gov/schedule (empsit, cpi), bea.gov/news/schedule and
+# the Fed's FOMC calendar on 2026-09-25, and ISM's dates (manufacturing
+# and services PMI, 10:00 ET) on 2026-10-05. UPDATE ANNUALLY, like
+# US_MARKET_HOLIDAYS; report/print_watch.py pings ops once this table
+# runs out. Moved here from print_watch on 2026-10-05 so the print
+# alerts and the omni-calendar read one table.
+#
+# Why a second source next to ForexFactory (2026-09-25): arming keyed on
+# the ForexFactory weekly feed alone, by exact event name. A feed gap or
+# a renamed row means the watch never arms and nobody hears about it.
+# The same day I told the owner PCE printed on 9/25 and then 10/30, both
+# from memory of "usually the last Friday"; BEA's schedule says 9/30 and
+# 10/29. Dates come from the agency, never from recall. ISM's January
+# dates move off its first/third-business-day rule, so they are listed,
+# not computed. FRED does not schedule ISM: a Monday calendar built from
+# FRED alone said "no major US releases scheduled" on the morning ISM
+# Services printed (2026-10-05).
+OFFICIAL_RELEASES: dict[str, tuple[str, ...]] = {
+    "2026-09-30": ("pce",),
+    "2026-10-01": ("ism_manufacturing",),
+    "2026-10-02": ("jobs",),
+    "2026-10-05": ("ism_services",),
+    "2026-10-14": ("cpi",),
+    "2026-10-28": ("fomc",),
+    "2026-10-29": ("pce",),
+    "2026-11-02": ("ism_manufacturing",),
+    "2026-11-04": ("ism_services",),
+    "2026-11-06": ("jobs",),
+    "2026-11-10": ("cpi",),
+    "2026-11-25": ("pce",),
+    "2026-12-01": ("ism_manufacturing",),
+    "2026-12-03": ("ism_services",),
+    "2026-12-04": ("jobs",),
+    "2026-12-09": ("fomc",),
+    "2026-12-10": ("cpi",),
+    "2026-12-23": ("pce",),
+}
+
+# The OFFICIAL_RELEASES keys FRED's release schedule does not carry,
+# with their New York release time and calendar name. The omni-calendar
+# adds these to FRED's rows when the ForexFactory feed cannot serve a day.
+OFFICIAL_RELEASES_NOT_ON_FRED: dict[str, tuple[str, str]] = {
+    "ism_manufacturing": ("10:00", "ISM Manufacturing PMI"),
+    "ism_services": ("10:00", "ISM Services PMI"),
+    "fomc": ("14:00", "FOMC Statement"),
+}

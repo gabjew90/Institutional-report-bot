@@ -158,9 +158,10 @@ def _band(d, label, x0, x1, y, f):
 
 EMPTY_BAND_TEXT = "no names at scale confirmed"
 # Friday's sheet covers Monday, past the end of the ForexFactory week:
-# the econ rows are FRED's scheduled majors only (2026-09-25).
-ECON_PARTIAL_EMPTY = "no major US releases scheduled · full list posts Sunday"
-ECON_PARTIAL_NOTE = "major releases only · full list posts Sunday"
+# the econ rows are the scheduled majors only (2026-09-25). Until
+# 2026-10-05 these said "full list posts Sunday", which nothing does.
+ECON_PARTIAL_EMPTY = "no major US releases scheduled · smaller releases not listed yet"
+ECON_PARTIAL_NOTE = "major releases only · smaller releases not listed yet"
 # The ForexFactory feed was unreachable for a date it covers
 # (2026-09-26): the full list exists, it just could not be fetched.
 ECON_DOWN_EMPTY = "no major US releases scheduled · full list unavailable"

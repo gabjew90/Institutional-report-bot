@@ -72,8 +72,9 @@ def test_feed_down_falls_back_to_fred_majors():
 
 
 def test_a_feed_outage_is_not_described_as_next_week():
-    """'full list posts Sunday' is true only past the feed's week; on a
-    covered weekday the full list exists and could not be fetched."""
+    """'smaller releases not listed yet' is true only past the feed's
+    week; on a covered weekday the full list exists and could not be
+    fetched."""
     from types import SimpleNamespace
     from report import calendar_render as R
     down = SimpleNamespace(econ_partial=True, econ_partial_reason="feed_down")
@@ -81,7 +82,7 @@ def test_a_feed_outage_is_not_described_as_next_week():
     assert R._econ_empty_text(down) == R.ECON_DOWN_EMPTY
     assert R._econ_partial_note(down) == R.ECON_DOWN_NOTE
     assert R._econ_empty_text(nxt) == R.ECON_PARTIAL_EMPTY
-    assert "Sunday" not in R.ECON_DOWN_NOTE
+    assert "not listed yet" not in R.ECON_DOWN_NOTE
 
 
 def test_disk_saves_use_a_per_writer_temp_file(tmp_path):

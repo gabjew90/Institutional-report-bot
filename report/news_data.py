@@ -1103,10 +1103,30 @@ def ff_feed_covers(date_iso: str) -> bool | None:
     return date_iso <= max(dates)
 
 
+def _scheduled_row(date_iso: str, hhmm_et: str, event: str) -> dict:
+    """One FF-shaped row for a release at `hhmm_et` New York time."""
+    local = _ET.localize(datetime.strptime(f"{date_iso} {hhmm_et}", "%Y-%m-%d %H:%M"))
+    return {"event": event, "country": "US",
+            "time": local.astimezone(pytz.UTC).strftime("%Y-%m-%dT%H:%M:%S"),
+            "impact": "high", "estimate": None, "prev": None, "actual": None,
+            "unit": "", "source": "official"}
+
+
+def _official_releases_for(date_iso: str) -> list[dict]:
+    """The scheduled releases for `date_iso` that FRED's schedule does
+    not carry (the ISM reports, the FOMC decision), from the agencies'
+    published dates in world_context."""
+    from world_context import OFFICIAL_RELEASES, OFFICIAL_RELEASES_NOT_ON_FRED
+    return [_scheduled_row(date_iso, *OFFICIAL_RELEASES_NOT_ON_FRED[k])
+            for k in OFFICIAL_RELEASES.get(date_iso, ())
+            if k in OFFICIAL_RELEASES_NOT_ON_FRED]
+
+
 def fetch_us_major_releases_from_fred(date_iso: str) -> list[dict] | None:
-    """The Tier-1 releases FRED schedules for `date_iso` (CPI, jobs,
-    GDP, retail sales, PPI, PCE; all 8:30 ET), in the ForexFactory row
-    shape. For dates the FF feed does not reach yet.
+    """The Tier-1 releases scheduled for `date_iso`, in the ForexFactory
+    row shape, for dates the FF feed does not reach yet or cannot serve:
+    FRED's schedule (CPI, jobs, GDP, retail sales, PPI, PCE; all 8:30
+    ET) plus the published ISM and FOMC dates.
 
     None when FRED cannot answer (no key, or no schedule ever fetched),
     so the sheet says "unavailable" rather than asserting that nothing
@@ -1119,7 +1139,8 @@ def fetch_us_major_releases_from_fred(date_iso: str) -> list[dict] | None:
         rows = _fred.fetch_fred_release_schedule()
         if not rows and _fred._SCHEDULE_CACHE.get("rows") is None:
             return None
-        return [r for r in rows if _et_date(r.get("time") or "") == date_iso]
+        day = [r for r in rows if _et_date(r.get("time") or "") == date_iso]
+        return sorted(day + _official_releases_for(date_iso), key=lambda r: r["time"])
     except Exception as e:
         log.warning(f"FRED schedule for {date_iso} unavailable: {e}")
         return None

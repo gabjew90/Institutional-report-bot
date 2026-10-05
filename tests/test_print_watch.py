@@ -438,7 +438,15 @@ def test_the_schedule_holds_the_published_dates():
     assert O["2026-09-30"] == ("pce",) and O["2026-10-29"] == ("pce",)
     assert "2026-09-25" not in O and "2026-10-30" not in O
     assert O["2026-10-14"] == ("cpi",) and O["2026-12-09"] == ("fomc",)
-    assert all(k in {"cpi", "jobs", "pce", "fomc"} for ks in O.values() for k in ks)
+    assert all(k in {"cpi", "jobs", "pce", "fomc", "ism_manufacturing", "ism_services"}
+               for ks in O.values() for k in ks)
+
+
+def test_ism_dates_on_the_schedule_never_arm_the_watch():
+    """The ISM keys are for the omni-calendar; the watch has no spec for
+    them and must not arm or ping on an ISM-only day."""
+    assert PW.due_releases("2026-10-05", [], "08:30") == []
+    assert PW.due_releases("2026-10-05", [], "13:59") == []
 
 
 def test_an_exhausted_schedule_is_flagged():

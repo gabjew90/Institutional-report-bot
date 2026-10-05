@@ -45,6 +45,10 @@ from zoneinfo import ZoneInfo
 
 from config import settings
 from report.fred_data import month_shift, reference_period
+# The agencies' published release schedule (2026-10-05: moved to
+# world_context so the omni-calendar reads the same table). Keys with no
+# ReleaseSpec here, the ISM reports, are ignored by the watch.
+from world_context import OFFICIAL_RELEASES
 
 log = logging.getLogger(__name__)
 
@@ -499,34 +503,6 @@ def _ff_rows_for_day(today_iso: str) -> list[dict]:
     return out
 
 
-# The agencies' own published schedules for the rest of 2026, read from
-# bls.gov/schedule (empsit, cpi), bea.gov/news/schedule and the Fed's
-# FOMC calendar on 2026-09-25. UPDATE ANNUALLY, like
-# world_context.US_MARKET_HOLIDAYS; the watch pings ops once this table
-# runs out.
-#
-# Why a second source (2026-09-25): arming keyed on the ForexFactory
-# weekly feed alone, by exact event name. A feed gap or a renamed row
-# means the watch never arms and nobody hears about it. The same day I
-# told the owner PCE printed on 9/25 and then 10/30, both from memory
-# of "usually the last Friday"; BEA's schedule says 9/30 and 10/29.
-# Dates come from the agency, never from recall.
-OFFICIAL_RELEASES: dict[str, tuple[str, ...]] = {
-    "2026-09-30": ("pce",),
-    "2026-10-02": ("jobs",),
-    "2026-10-14": ("cpi",),
-    "2026-10-28": ("fomc",),
-    "2026-10-29": ("pce",),
-    "2026-11-06": ("jobs",),
-    "2026-11-10": ("cpi",),
-    "2026-11-25": ("pce",),
-    "2026-12-04": ("jobs",),
-    "2026-12-09": ("fomc",),
-    "2026-12-10": ("cpi",),
-    "2026-12-23": ("pce",),
-}
-
-
 def official_calendar_exhausted(today_iso: str) -> bool:
     return today_iso > max(OFFICIAL_RELEASES)
 
@@ -939,8 +915,8 @@ async def print_watch_job(bot=None, release_et: str = "08:30") -> None:
     now = datetime.now(_ET)
     today = now.date().isoformat()
     if official_calendar_exhausted(today):
-        await ops_alert("print-watch: OFFICIAL_RELEASES in report/print_watch.py has "
-                        "no dates left; add next year's BLS/BEA/Fed schedule",
+        await ops_alert("print-watch: OFFICIAL_RELEASES in world_context.py has "
+                        "no dates left; add next year's BLS/BEA/Fed/ISM schedule",
                         dedupe_key=f"print-watch-calendar-{today}")
     ff_rows = _ff_rows_for_day(today)
     # A release the agency schedule lists for this slot but the watch
