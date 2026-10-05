@@ -137,19 +137,32 @@ SYSTEM = (
     "Write two or three bullets. Each bullet is one short bold label (one to four "
     "words, like 'Disinflation in play' or 'The caveat') followed by one or two "
     "sentences, under 60 words. Say what the numbers mean and how they compare with "
-    "what the banks expected. Attribute every bank view to the bank by name.\n\n"
+    "what the banks expected. Attribute every bank view to the bank by name, inside "
+    "the sentence ('BofA expected 60K', 'payback BofA had flagged'). Never open with "
+    "the bank and a verb of saying ('BofA says', 'GS notes', 'JPM sees'): those "
+    "bullets are discarded.\n\n"
     "Each bullet makes one point a trader can act on or check: what changed versus "
     "expectation, what it implies for the next Fed decision or for the series next "
-    "month, and which bank said so. If a bullet only restates a number from the "
-    "table, drop it.\n\n"
+    "month, and which bank said so.\n\n"
     "Hard rules: every number you write must appear in DATA or RESEARCH, and if a "
     "figure is not there you do not state it. No trade recommendations. No "
     "prediction of the market reaction unless a named bank made it. No em-dashes, "
     "no semicolons, no words like crucial, pivotal, robust, notably. No adverbs of "
     "degree (perfectly, significantly, dramatically): say the number and the gap "
-    "instead. The room's own chat is never an input. Do not repeat the table.\n\n"
+    "instead. The room's own chat is never an input.\n\n"
     "Return JSON only: {\"bullets\": [{\"label\": str, \"text\": str}]}"
 )
+
+
+# The retry, sent only when a bullet repeated the table (restates_table).
+RESTATED_FEEDBACK = (
+    "Your last answer repeated numbers from DATA without saying what they mean. "
+    "Write the bullets again. Each one says why the print came out this way or what "
+    "it means for the Fed or next month, using what a named bank in RESEARCH said.")
+RETRY_IF_FIRST_UNDER_S = 7.0
+# The whole takeaway, research query included, must finish inside
+# print_watch.TAKEAWAY_TIMEOUT_S (20 s); this leaves room for the guard.
+BUDGET_S = 17.0
 
 
 def build_user(title: str, rows: list[dict], extras: list[str], research: list[dict]) -> str:
@@ -162,9 +175,34 @@ def evidence_text(rows: list[dict], extras: list[str], research: list[dict]) -> 
     return json.dumps({"rows": rows, "extras": extras, "research": research}, ensure_ascii=False)
 
 
-def guard(bullets: list[dict], evidence: str) -> list[str]:
+# Words that say what a print means rather than what it was: a cause, a
+# trend, the Fed. A bullet whose figures all come from the print table
+# and that carries none of these only repeats the table (2026-10-02 jobs
+# takeaway: "The unemployment rate hit 4.2% ... Average hourly earnings
+# grew 0.1%, missing the 0.3% consensus", while BofA's preview in the
+# research said a weak headline would be seasonal payback and would not
+# move Fed pricing).
+_MEANING_RE = re.compile(
+    r"\b(?:fed|fomc|rate cuts?|rate hikes?|cuts?|hikes?|policy|pric(?:ing|ed)|odds"
+    r"|impl(?:y|ies)|means?|signals?|suggests?|points? to|payback|seasonal|underlying"
+    r"|trend|revis(?:ion|ions|ed)|next month|cpi|because|driven|despite|offsets?)\b",
+    re.I)
+
+
+def restates_table(line: str, data_evidence: str) -> bool:
+    """True when every figure in `line` is in the print's own rows and the
+    line says nothing about cause, trend or the Fed."""
+    from discord_bot import figure_provenance as fp
+    figs, beyond_table = fp.unsourced_figures(line, data_evidence)
+    return bool(figs) and not beyond_table and not _MEANING_RE.search(line)
+
+
+def guard(bullets: list[dict], evidence: str, data_evidence: str | None = None,
+          stats: dict | None = None) -> list[str]:
     """Keep bullets whose every figure is in the evidence and whose text
-    passes the voice rules. Returns rendered '**Label:** text' lines."""
+    passes the voice rules. With `data_evidence` (the print's own rows),
+    a bullet that only repeats the table is dropped too and counted in
+    stats["restated"]. Returns rendered '**Label:** text' lines."""
     from ai_analysis.voice_rules import compose_lint_patterns
     from discord_bot import figure_provenance as fp
     pats = [(re.compile(rx, re.I), kind) for rx, kind in compose_lint_patterns()]
@@ -182,11 +220,18 @@ def guard(bullets: list[dict], evidence: str) -> list[str]:
         line = f"{label}: {text}"
         if len(line.split()) > MAX_WORDS + 6:
             continue
-        if any(p.search(line) for p, _ in pats) or _DEGREE_ADVERBS.search(line):
+        broken = [kind for p, kind in pats if p.search(line)]
+        if broken or _DEGREE_ADVERBS.search(line):
+            log.info(f"print takeaway: dropped bullet for voice {broken or ['degree-adverb']}: {line[:80]!r}")
             continue
         _figs, missing = fp.unsourced_figures(line, evidence)
         if missing:
             log.info(f"print takeaway: dropped bullet with unsourced {[m.token for m in missing]}")
+            continue
+        if data_evidence is not None and restates_table(line, data_evidence):
+            log.info(f"print takeaway: dropped bullet that repeats the table: {line[:80]!r}")
+            if stats is not None:
+                stats["restated"] = stats.get("restated", 0) + 1
             continue
         out.append(f"• **{label}:** {text}")
         if len(out) >= MAX_BULLETS:
@@ -201,27 +246,59 @@ def generate(key: str, title: str, rows: list[dict], extras: list[str] | None = 
     `period` is the release's month name, used to rank the research."""
     from google.genai import types
     from config import settings
+    import time
+    started = time.monotonic()
     extras = extras or []
     if research is None:
         research = research_for_release(key, period=period)
-    try:
-        if client is None:
-            from ai_analysis.usage_ledger import make_client
-            client = make_client("print_takeaway")
+
+    def ask(contents: str) -> list | None:
         resp = client.models.generate_content(
-            model=model or settings.gemini_model,
-            contents=build_user(title, rows, extras, research),
+            model=model or settings.gemini_model, contents=contents,
             config=types.GenerateContentConfig(
                 system_instruction=SYSTEM, temperature=0.3, max_output_tokens=700,
                 response_mime_type="application/json"),
         )
         data = json.loads(resp.text or "{}")
         bullets = data.get("bullets") if isinstance(data, dict) else data
+        return bullets if isinstance(bullets, list) else None
+
+    user = build_user(title, rows, extras, research)
+    evidence = evidence_text(rows, extras, research)
+    table = evidence_text(rows, extras, [])
+    try:
+        if client is None:
+            from ai_analysis.usage_ledger import make_client
+            client = make_client("print_takeaway")
+        bullets = ask(user)
     except Exception as e:
         log.warning(f"print takeaway: generation failed (print posts without it): {e}")
         return []
-    if not isinstance(bullets, list):
+    if bullets is None:
         return []
-    return guard(bullets, evidence_text(rows, extras, research))
+    stats: dict = {}
+    lines = guard(bullets, evidence, table, stats)
+    # One retry when a bullet only repeated the table and the research has
+    # something to say. print_watch gives the whole takeaway 20 s
+    # (TAKEAWAY_TIMEOUT_S) and posts without it on a timeout, so the retry
+    # runs in its own thread and is abandoned, keeping the first answer,
+    # once the budget is spent.
+    elapsed = time.monotonic() - started
+    if stats.get("restated") and research and elapsed < RETRY_IF_FIRST_UNDER_S:
+        import concurrent.futures as cf
+        pool = cf.ThreadPoolExecutor(max_workers=1)
+        fut = pool.submit(ask, user + "\n\n" + RESTATED_FEEDBACK)
+        try:
+            again = fut.result(timeout=max(0.0, BUDGET_S - elapsed))
+        except Exception as e:
+            log.info(f"print takeaway: retry failed or ran long, keeping the first answer: {e!r}")
+            again = None
+        finally:
+            pool.shutdown(wait=False)
+        if again is not None:
+            retry_lines = guard(again, evidence, table, {})
+            if len(retry_lines) > len(lines):
+                lines = retry_lines
+    return lines
 
 
