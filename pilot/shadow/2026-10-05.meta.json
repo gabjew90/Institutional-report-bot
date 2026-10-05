@@ -1,0 +1,113 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 90,
+ "pack": {
+  "documents": 70,
+  "cards": 2364
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 51,
+  "brief_citations": 1,
+  "distinct_cards_cited": 51,
+  "card_count": 2364,
+  "quintiles": [
+   11,
+   12,
+   13,
+   12,
+   3
+  ],
+  "edge_quintile_share": 0.275,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "A 5-year Treasury auction cleared at 5.033% last week, the first time that maturity has priced with a 5-handle since 2007, and it came with the second-largest tail on record and the weakest bid-to-cov",
+    "cite": "",
+    "reason": "figures with no card citation: ['5.033%']"
+   },
+   {
+    "sentence": "BofA has a name for the split.",
+    "cite": "",
+    "reason": "bank named (['bofa']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "The S&P's forward price-to-earnings multiple compressed from 23 times to 19 times over the past year while the index held its range near 7700 [c1700, c1758].",
+    "cite": "",
+    "reason": "figures with no card citation: ['700', '758', '7700']"
+   },
+   {
+    "sentence": "Goldman's own rule says the speed of the move settles this, not the level.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "The open question Goldman poses is whether Europe, growing near 1%, can carry the cost of capital the US investment cycle is setting globally [d53].",
+    "cite": "",
+    "reason": "figures with no card citation: ['1%']"
+   },
+   {
+    "sentence": "Budget talks that keep the 2027 deficit near the government's 5% target would settle it [c1446].",
+    "cite": "c1446",
+    "reason": "figures not in cited card(s): ['5%']"
+   },
+   {
+    "sentence": "CCC-rated spreads hit 1,007 basis points, the first reading above 1,000 since the March 2023 bank scare [c1357], and Oracle's 5-year credit default swaps hit a record near 227 basis points while its 2",
+    "cite": "c1357",
+    "reason": "figures not in cited card(s): ['227bp', '8%']"
+   },
+   {
+    "sentence": "September payrolls rose 29,000 against a 90,000 estimate, with the prior two months revised down by a combined 60,000 and unemployment up to 4.2% [c1197, c1198, c1199].",
+    "cite": "",
+    "reason": "figures with no card citation: ['197', '198', '199', '29000', '4.2%', '60000', '90000']"
+   },
+   {
+    "sentence": "Futures-implied odds of an October hike collapsed to 15% from almost 75% a week earlier while December held near 85% [c631, c675], which makes this a postponement rather than a turn.",
+    "cite": "",
+    "reason": "figures with no card citation: ['15%', '75%', '85%']"
+   },
+   {
+    "sentence": "Non-dealers have sold $63.7 billion of S&P 500 futures over six weeks, and more than 70% of that was long liquidation rather than new shorts [c2039, c2040].",
+    "cite": "",
+    "reason": "figures with no card citation: ['039', '040', '63700000000', '70%']"
+   },
+   {
+    "sentence": "Citadel Securities' Rubner has flipped bullish on exactly that setup, pointing to US equity CTA positioning swinging from plus 2.35 standard deviations at the end of August to minus 0.80, a move of mo",
+    "cite": "c1979",
+    "reason": "figures not in cited card(s): ['1300000000000', '874', '875']"
+   },
+   {
+    "sentence": "Brent traded above $102 late Friday [c1512] even though Goldman estimates Persian Gulf exports have recovered to 23.6 million barrels a day, just above their 2025 average, leaving the global market ro",
+    "cite": "c1512",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Brent traded above $102 late Friday [c1512] even though Goldman estimates Persian Gulf exports have recovered to 23.6 million barrels a day, just above their 2025 average, leaving the global market ro",
+    "cite": "c1512",
+    "reason": "figures not in cited card(s): ['23600000', '517', '563']"
+   },
+   {
+    "sentence": "Citadel Securities frames Iran's position as a long oil call expiring around the US midterms, with the leverage worth more before the vote than after, so the rational move may be to monetize it by reo",
+    "cite": "",
+    "reason": "figures with no card citation: ['169', '172']"
+   },
+   {
+    "sentence": "SEB reads the path differently, arguing renewed US strikes are more likely to provoke large-scale Iranian retaliation against regional energy infrastructure than to produce a deal, which makes October",
+    "cite": "",
+    "reason": "figures with no card citation: ['182', '203']"
+   },
+   {
+    "sentence": "Muse, Meta's AI agent, became the number one app in the iOS productivity category with a 4.9-star rating across 38,000 ratings [c7], and drew more than 3 million US installs in its first 16 days again",
+    "cite": "c7",
+    "reason": "figures not in cited card(s): ['3000000']"
+   }
+  ],
+  "word_count": 1457
+ }
+}
