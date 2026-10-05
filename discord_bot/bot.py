@@ -5305,6 +5305,9 @@ async def _ask_02_call_model_with_tools(
             # Read by the business-line guard in phase 9.
             _ask_meta["primer"] = {"symbol": _pf_res.get("symbol"),
                                    "primer": _pf_res.get("primer") or ""}
+        if _pf_tool == _ask_router.T_FANTASY:
+            from discord_bot.fantasy_guard import win_estimates as _we
+            _ask_meta.setdefault("fantasy_estimates", {}).update(_we(_pf_res))
         if _pf_tool == _ask_router.T_NEWS and _pf_res.get("status") == "ok":
             # Cited in phase 10 when the answer uses a figure from it.
             _ask_meta["news"] = {"sources": _pf_res.get("sources") or [],
@@ -5576,6 +5579,11 @@ async def _ask_02_call_model_with_tools(
             if (fc.name == "lookup_user_profile"
                     and isinstance(result, dict) and result.get("users")):
                 _ask_meta.setdefault("rank_payloads", []).append(result)
+            # The only win chances a fantasy answer may give (phase 9,
+            # _fantasy_percent_guard).
+            if fc.name == "lookup_fantasy_league":
+                from discord_bot.fantasy_guard import win_estimates as _we
+                _ask_meta.setdefault("fantasy_estimates", {}).update(_we(result))
             # Size clamp (2026-07-17: a request blew Gemini's 1M
             # input-token limit — 400 INVALID_ARGUMENT — because a
             # tool result ballooned the contents across rounds).
@@ -8370,6 +8378,9 @@ async def _ask_09_rank_and_regen_guards(
         answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
     answer = await _implied_move_guard(
         answer, _ask_meta, client, ask_model, safety_settings, types, _tally_retry_usage)
+    answer = await _fantasy_percent_guard(
+        answer, question, _ask_meta, client, ask_model, safety_settings, types,
+        _tally_retry_usage)
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
@@ -8407,10 +8418,14 @@ def _rewritable_stock_answer(answer, _ask_meta, shapes) -> bool:
 
 
 async def _stock_answer_rewrite(name, answer, _ask_meta, client, ask_model, safety_settings,
-                                types, _tally_retry_usage, *, prompt, accept):
-    """One rewrite of a stock answer for a named code check. The rewrite
-    gets phase 4's voice cleanup and is kept only when it keeps every
-    figure (numeric cores, so spelled-out units pass) and `accept(new)`."""
+                                types, _tally_retry_usage, *, prompt, accept,
+                                keep_figures=True,
+                                system="You edit a trading-room bot's answer about a stock."):
+    """One rewrite of an answer for a named code check. The rewrite gets
+    phase 4's voice cleanup and is kept only when `accept(new)` and, with
+    keep_figures, it keeps every figure (numeric cores, so spelled-out
+    units pass). A check whose job is to remove a wrong figure passes
+    keep_figures=False."""
     from discord_bot import data_footer as _df
     _ask_meta["guards"].append(name)
     try:
@@ -8418,8 +8433,7 @@ async def _stock_answer_rewrite(name, answer, _ask_meta, client, ask_model, safe
             model=ask_model,
             contents=[types.Content(role="user", parts=[types.Part.from_text(text=prompt)])],
             config=types.GenerateContentConfig(
-                system_instruction=("You edit a trading-room bot's answer about a stock. "
-                                    "Direct, plain English, same register."),
+                system_instruction=f"{system} Direct, plain English, same register.",
                 safety_settings=safety_settings, max_output_tokens=1500, temperature=0.3,
                 thinking_config=types.ThinkingConfig(thinking_budget=512),
             ),
@@ -8430,7 +8444,8 @@ async def _stock_answer_rewrite(name, answer, _ask_meta, client, ask_model, safe
         log.warning(f"/ask: {name} rewrite failed (non-fatal): {e}")
         return answer
     new, _ = _clean_voice_violations(new)
-    if new and _df.numeric_cores(answer) <= _df.numeric_cores(new) and accept(new):
+    if new and (not keep_figures or _df.numeric_cores(answer) <= _df.numeric_cores(new)) \
+            and accept(new):
         log.info(f"/ask: {name} rewrite applied")
         return new
     _ask_meta["guards"].append(f"{name}:kept-original")
@@ -8534,6 +8549,34 @@ async def _implied_move_guard(answer, _ask_meta, client, ask_model, safety_setti
         # and it keeps the business line the previous guard may have added
         accept=lambda new: _states_move(new, move)
         and (not had_line or _bl.names_business_line(new, primer)))
+
+
+async def _fantasy_percent_guard(answer, question, _ask_meta, client, ask_model,
+                                 safety_settings, types, _tally_retry_usage):
+    """A win percentage in a fantasy answer must be one of the league
+    payload's estimates (discord_bot/fantasy_guard.py, 2026-10-05: BK's own
+    posted 23% was given as Jamal's chance, twice)."""
+    from discord_bot import fantasy_guard as _fg
+    # a fantasy route, or any answer the model built from league data
+    if (not answer or _ask_meta.get("empty_retry")
+            or (_ask_meta.get("route_shape") != "fantasy"
+                and "fantasy_estimates" not in _ask_meta)):
+        return answer
+    est = _ask_meta.get("fantasy_estimates") or {}
+    if not _fg.stray_percents(answer, est):
+        return answer
+    new = await _stock_answer_rewrite(
+        "fantasy-percent", answer, _ask_meta, client, ask_model, safety_settings, types,
+        _tally_retry_usage,
+        prompt=_fg.rewrite_prompt(answer, question, est),
+        accept=lambda new: not _fg.stray_percents(new, est),
+        keep_figures=False,
+        system="You edit a fantasy-football room bot's answer.")
+    if _fg.stray_percents(new, est):
+        # the rewrite failed: the wrong figure must not ship regardless
+        _ask_meta["guards"].append("fantasy-percent:stripped")
+        new = _fg.strip_stray(new, est)
+    return new
 
 
 # The shapes that wait for the primer (ask_router._stock_prefetch with
