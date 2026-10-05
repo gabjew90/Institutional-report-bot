@@ -29,6 +29,10 @@ log = logging.getLogger(__name__)
 # Far-out-of-the-money lottos and deep in-the-money calls both sit well
 # inside this; the rows it is for were off by 3.5x to 150x.
 BAND = (0.4, 2.5)
+# Moving a trade to another index needs the strike near that index's
+# level: on the 30-day replay the wide band moved "10/2 1800c" (most
+# likely SNDK) to RUT. The SPX strikes stored under NDX were within 1%.
+MOVE_BAND = (0.85, 1.15)
 
 # Yahoo symbol and scale for the index tickers the room trades by strike.
 _INDEX = {"SPX": ("^GSPC", 1.0), "SPXW": ("^GSPC", 1.0), "XSP": ("^GSPC", 0.1),
@@ -84,8 +88,8 @@ def price_on(ticker: str, day_iso: str) -> float | None:
     return None if px is None else px * scale
 
 
-def fits(strike: float, price: float) -> bool:
-    return BAND[0] * price <= strike <= BAND[1] * price
+def fits(strike: float, price: float, band: tuple[float, float] = BAND) -> bool:
+    return band[0] * price <= strike <= band[1] * price
 
 
 def apply(extracted: dict, posted_at: str) -> dict:
@@ -119,7 +123,7 @@ def apply(extracted: dict, posted_at: str) -> dict:
                 alt_px = price_on(alt, day)
             except Exception:
                 alt_px = None
-            if alt_px is not None and fits(strike, alt_px):
+            if alt_px is not None and fits(strike, alt_px, MOVE_BAND):
                 log.info(f"strike check: {ticker} {strike:g} moved to {alt} "
                          f"({ticker} {px:,.0f}, {alt} {alt_px:,.0f})")
                 extracted["ticker"] = alt

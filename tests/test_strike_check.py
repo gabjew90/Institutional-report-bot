@@ -39,6 +39,12 @@ def test_an_index_strike_moves_to_the_index_it_fits():
     assert "moved from NDX" in out["notes"]
     # 370 fits no index: rejected, not moved
     assert _apply(_x("SPX", 370))["is_trade_screenshot"] is False
+    # 1800 is inside RUT's wide band but nowhere near its level (the
+    # 30-day replay moved "10/2 1800c", most likely SNDK, to RUT)
+    assert _apply(_x("SPX", 1800))["is_trade_screenshot"] is False
+    # the move band's edges: 9% from SPX moves, 20% does not
+    assert _apply(_x("NDX", 7000))["ticker"] == "SPX"
+    assert _apply(_x("NDX", 6100))["is_trade_screenshot"] is False
 
 
 def test_an_index_level_strike_under_an_etf_moves_too():
