@@ -1317,19 +1317,19 @@ def find_user_messages_matching(
     return [dict(r) for r in rows]
 
 
-def get_recent_messages_by_author(author_id: int, channel_name: str, *,
+def get_recent_messages_by_author(author_id: int, channel_id: int, *,
                                   minutes: int = 20, limit: int = 6) -> list[str]:
     """The texts of one member's messages in one channel over the last
-    `minutes`, newest first. By author_id, never by name (CLAUDE.md). Used
-    to give a subjectless /ask ("what happened") the subject the asker was
-    just looking at."""
+    `minutes`, newest first. By author_id and channel_id, never by name
+    (CLAUDE.md; channel names change). Used to give a subjectless /ask
+    ("what happened") the subject the asker was just looking at."""
     from datetime import datetime, timedelta, timezone
     since = (datetime.now(timezone.utc) - timedelta(minutes=minutes)).strftime(
         "%Y-%m-%dT%H:%M:%S")
     rows = _db.get_connection().execute(
-        "SELECT content FROM chat_messages WHERE author_id = ? AND channel_name = ? "
+        "SELECT content FROM chat_messages WHERE author_id = ? AND channel_id = ? "
         "AND posted_at >= ? ORDER BY posted_at DESC LIMIT ?",
-        (int(author_id), channel_name or "", since, int(limit))).fetchall()
+        (int(author_id), int(channel_id or 0), since, int(limit))).fetchall()
     return [r[0] or "" for r in rows]
 
 
