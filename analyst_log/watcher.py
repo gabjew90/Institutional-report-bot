@@ -12,6 +12,7 @@ Flow per message:
      announce channel (`settings.analyst_test_announce_channel`).
 """
 
+import asyncio
 import re
 import logging
 from datetime import datetime, timedelta, timezone
@@ -20,6 +21,7 @@ from typing import Any
 import discord
 
 import db
+from analyst_log import strike_check
 from analyst_log.ocr import extract_trade_from_caption, extract_trade_from_image
 from config import settings
 
@@ -738,6 +740,8 @@ async def watch_message(
                 f"msg={message.id} caption={caption[:120]!r}"
             )
             return
+        # A strike the underlying cannot have is not a trade (2026-10-05).
+        await asyncio.to_thread(strike_check.apply, extracted, posted_at)
         try:
             is_trade = record_caption_extraction(
                 discord_message_id=message.id,
@@ -792,6 +796,8 @@ async def watch_message(
                 "extraction failed integrity check (missing ticker, "
                 "strike=0, or non-trade action like 'viewing')"
             )
+        if extracted:
+            await asyncio.to_thread(strike_check.apply, extracted, posted_at)
         if extracted is None:
             # OCR failed entirely — don't insert a row, so we'll retry on
             # the next bot restart. (Rare; usually means Gemini call errored.)

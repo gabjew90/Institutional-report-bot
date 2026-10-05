@@ -61,6 +61,35 @@ def test_ticker_and_strike_must_be_in_the_text_parent_or_own_history():
     assert not MB._grounded(_t("NVDA", 195), _m(1, BK, "BK", "sold half @3"), ctx)
 
 
+def test_ticker_and_strike_come_from_the_same_message():
+    """2026-10-05: 'Just bought 5 165 0dte' took 165 from itself and QQQ
+    from an earlier post with no 165, and was stored as a QQQ 165 call."""
+    ctx = {BK: [{"posted_at": "x", "content": "I don't have a good read on QQQ but I am bullish SOXL"},
+                {"posted_at": "x", "content": "175 by Wednesday!!!"}]}
+    m = _m(1, BK, "BK", "Just bought 5 165 0dte")
+    assert not MB._grounded(_t("QQQ", 165), m, ctx)
+    assert not MB._grounded(_t("SOXL", 165), m, ctx)
+    # a follow-up still borrows a whole contract from one earlier post
+    ctx2 = {BK: [{"posted_at": "x", "content": "20x SOXL 0dte 140c @0.50"}]}
+    assert MB._grounded({**_t("SOXL", 140), "action": "trim"}, _m(2, BK, "BK", "Sold half @ 0.87"), ctx2)
+    # and from the post it replies to
+    assert MB._grounded({**_t("SOXL", 140), "action": "close"},
+                        _m(3, BK, "BK", "Sold @0.8", parent="20x SOXL 140c @0.53"), {})
+    # a follow-up that names the ticker may take the strike from earlier
+    ctx3 = {BK: [{"posted_at": "x", "content": "20x 140c @0.5"}]}
+    assert MB._grounded({**_t("SOXL", 140), "action": "close"},
+                        _m(4, BK, "BK", "out of soxl @1.1"), ctx3)
+
+
+def test_a_gain_report_is_not_an_entry():
+    assert not MB._grounded(_t("SOXL", 165), _m(1, BK, "BK", "Soxl 165c +100%"), {})
+    assert MB._grounded(_t("SOXL", 165), _m(1, BK, "BK", "Bought soxl 165c, already +20%"), {})
+    assert MB._grounded({**_t("SOXL", 165), "action": "close"},
+                        _m(1, BK, "BK", "Sold soxl 165c +100%"), {})
+    assert MB._grounded({**_t("SOXL", 150), "action": "add"},
+                        _m(1, BK, "BK", "Doubled down on soxl 150c, -30% here"), {})
+
+
 def test_index_options_trade_by_strike_alone():
     assert MB._grounded(_t("SPX", 7725), _m(1, BK, "BK", "Sold my 7725c at 5.6"), {})
     assert not MB._grounded(_t("NVDA", 7725), _m(1, BK, "BK", "Sold my 7725c at 5.6"), {})

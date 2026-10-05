@@ -245,6 +245,12 @@ def to_extracted(t: dict) -> dict:
 
 
 _WORD_RE = re.compile(r"[A-Za-z]{2,}")
+_SIGNED_PCT_RE = re.compile(r"[+-]\s?\d+(?:\.\d+)?\s?%")
+_ENTRY_RE = re.compile(
+    r"\b(?:bought|buy(?:ing)?|bto|grabb?(?:ed|ing)?|picked up|in at|entered|entry"
+    r"|add(?:ed|ing)?|reload(?:ed|ing)?|loaded|short(?:ed|ing)?|opened|starter|back in"
+    r"|doubl(?:ed|ing)|more|averag(?:ed|ing))\b",
+    re.I)
 _MENTION_RE = re.compile(r"<@!?\d+>|<#\d+>|https?://\S+")
 
 
@@ -257,15 +263,24 @@ def _grounded(t: dict, m: dict, context: dict | None) -> bool:
         numbers, mentions or links) and no question mark;
       - name a ticker that is letters and appears in the message, its
         reply parent, or the author's own earlier posts;
-      - for an option, name a strike that appears in one of those."""
+      - for an option, find the ticker and the strike in the same place
+        (the message with its parent, or one earlier post), except an
+        index traded by strike alone (2026-10-05);
+      - not be an open or add that is only a gain report ("+100%" with
+        no entry word, 2026-10-05)."""
     text = m.get("content") or ""
     bare = _MENTION_RE.sub(" ", text)
     if "?" in bare or not _WORD_RE.search(bare):
         return False
-    sources = [text, m.get("parent_content") or ""]
-    sources += [p.get("content") or "" for p in (context or {}).get(m["author_id"], [])]
-    sources += [x.get("content") or "" for x in m.get("_same_author_earlier", [])]
-    hay = " ".join(sources).lower()
+    # "Soxl 165c +100%" is a gain report, not an entry (2026-10-05)
+    if ((t.get("action") or "").lower() in ("open", "add")
+            and _SIGNED_PCT_RE.search(bare) and not _ENTRY_RE.search(bare)):
+        return False
+    primary = " ".join([text, m.get("parent_content") or ""]).lower()
+    earlier = [p.get("content") or "" for p in (context or {}).get(m["author_id"], [])]
+    earlier += [x.get("content") or "" for x in m.get("_same_author_earlier", [])]
+    earlier = [e.lower() for e in earlier]
+    hay = " ".join([primary] + earlier)
     ticker = (t.get("ticker") or "").upper().lstrip("$")
     if not re.fullmatch(r"[A-Z]{1,5}(\.[A-Z])?", ticker):
         return False
@@ -276,21 +291,35 @@ def _grounded(t: dict, m: dict, context: dict | None) -> bool:
     if ticker.lower() in names or ticker.lower() in _member_aliases():
         return False
     aliases = {ticker.lower()} | {k for k, v in _ALIASES.items() if v == ticker}
-    named = any(re.search(rf"(?<![a-z]){re.escape(a)}(?![a-z])", hay) for a in aliases)
-    # index options are traded by strike alone ("Sold my 7725c at 5.6");
-    # the strike check below still has to hold
-    if not named and ticker not in _INDEX_BY_STRIKE:
+
+    def named(s: str) -> bool:
+        return any(re.search(rf"(?<![a-z]){re.escape(a)}(?![a-z])", s) for a in aliases)
+
+    if (t.get("contract_type") or "").lower() not in ("call", "put"):
+        return named(hay)
+    try:
+        sf = float(t.get("strike"))
+    except (TypeError, ValueError):
         return False
-    if (t.get("contract_type") or "").lower() in ("call", "put"):
-        strike = t.get("strike")
-        try:
-            sf = float(strike)
-        except (TypeError, ValueError):
-            return False
-        forms = {f"{sf:g}", str(int(sf)) if sf == int(sf) else f"{sf:g}"}
-        if not any(re.search(rf"(?<![\d.]){re.escape(f)}(?![\d])", hay) for f in forms):
-            return False
-    return True
+    forms = {f"{sf:g}", str(int(sf)) if sf == int(sf) else f"{sf:g}"}
+
+    def has_strike(s: str) -> bool:
+        return any(re.search(rf"(?<![\d.]){re.escape(f)}(?![\d])", s) for f in forms)
+
+    # index options are traded by strike alone ("Sold my 7725c at 5.6");
+    # strike_check then confirms the strike fits that index
+    if ticker in _INDEX_BY_STRIKE and not named(hay):
+        return has_strike(hay)
+    # A ticker borrowed from an earlier post must come with its strike
+    # from that same post. "Just bought 5 165 0dte" took 165 from itself
+    # and QQQ from "I don't have a good read on QQQ but I am bullish
+    # SOXL" and was stored as a QQQ 165 call with QQQ near 750
+    # (2026-10-05). A follow-up that names the ticker itself may still
+    # take the strike from an earlier post ("out of soxl @1.1" after
+    # "20x 140c @0.5"); strike_check catches an impossible pairing.
+    if named(primary):
+        return has_strike(hay)
+    return any(named(e) and has_strike(e) for e in earlier)
 
 
 # shorthand the prompt teaches, so a grounded check accepts it
@@ -373,6 +402,7 @@ def run_channel(channel, now: datetime | None = None) -> dict:
     duplicated: the trade table ignores a repeated message id)."""
     import db
     from datetime import timedelta, timezone
+    from analyst_log import strike_check
     from analyst_log.watcher import could_be_trade_caption, record_caption_extraction
 
     now = now or datetime.now(timezone.utc)
@@ -406,6 +436,8 @@ def run_channel(channel, now: datetime | None = None) -> dict:
     by_id = {m["id"]: m for m in msgs}
     for mid, extracted in trades.items():
         m = by_id[mid]
+        # a strike the underlying cannot have is not a trade (2026-10-05)
+        strike_check.apply(extracted, m["posted_at"])
         try:
             if record_caption_extraction(
                     discord_message_id=mid, author_name=m["author"],
