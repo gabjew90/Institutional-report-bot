@@ -83,8 +83,8 @@ def test_receipt_ledger_dispatch():
     assert len(win) == 2, "receipt-to-ledger dispatch missing"
     rl = win[1][:2200]
     assert 'tracking_mode="member"' in rl, "must use member mode (no announce)"
-    assert "resolve_chat_eager_ocr_channels" in rl and \
-        "caller_by_channel" in rl, \
+    # by channel ID through channel_config since 2026-10-04
+    assert "eager_ocr(" in rl and "caller_for(" in rl, \
         "must skip channels the watcher already covers"
     assert "create_task" in rl, "dispatch must be non-blocking"
     _ok("receipt→ledger: image-bearing message dispatched to member-mode "

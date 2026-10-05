@@ -71,11 +71,11 @@ class Settings(BaseSettings):
     # Password guard for destructive / token-heavy commands (/load, /reanalyze).
     # Empty = no gate; any string = required to match the `password` slash arg.
     command_password: str = ""
-    # Comma-separated channel NAMES (not IDs) where pulse/admin slash commands
-    # are allowed. Applies to /pulse, /load, /reanalyze, /clearqueue,
-    # /seedcursor, /status, /reprocess. /ask is intentionally NOT gated.
-    # Empty = no restriction (commands work in every channel).
-    pulse_command_channels: str = "test,tldr"
+    # Comma-separated channel IDs (a name still works) where pulse/admin
+    # slash commands are allowed. Applies to /pulse, /load, /reanalyze,
+    # /clearqueue, /seedcursor, /status, /reprocess. /ask is intentionally
+    # NOT gated. Empty = no restriction. Owner, 2026-10-04: test-channel.
+    pulse_command_channels: str = "1458515262168109253"
     # Comma-separated Discord AUTHOR IDs the /ask bot must never insult,
     # clap back at, or use sarcasm toward, and must defend and praise
     # (with material that actually exists — no invented achievements).
@@ -136,6 +136,7 @@ class Settings(BaseSettings):
             "display": "Abe",
             "username": "abullish_xyz",
             "channel": "🥷🏽-abe-alerts-🥷🏽",
+            "channel_id": 1317587853282119747,
             "enabled": True,
         },
         {
@@ -143,6 +144,7 @@ class Settings(BaseSettings):
             "display": "BK",
             "username": "bankerkyle",
             "channel": "💅🏾-kyle-alerts-💅🏾",
+            "channel_id": 1420507457708621824,
             "enabled": True,
         },
         {
@@ -150,6 +152,7 @@ class Settings(BaseSettings):
             "display": "Jamal",
             "username": "f.jamal",
             "channel": "test-channel",
+            "channel_id": 1458515262168109253,
             "announce_channel": "test-channel",
             # Disabled 2026-05-28 — Jamal was a test caller; /ask
             # was showing his RECENT TRADES block in every response
@@ -197,27 +200,29 @@ class Settings(BaseSettings):
     # Channels in this list are auto-added to the chat ingestion union
     # (no need to also list them in chat_ingestion_channels). OCR runs
     # as a background asyncio task so on_message returns immediately.
+    # Channel IDs since 2026-10-04 (a name still works); see
+    # channel_config.py, which owns every channel check.
     chat_eager_ocr_channels: str = (
         # Closed-trade P&L screenshots (everyone posts here)
-        "💲-gain-loss-porn-💲,"
+        "1404879999239979251,"            # 💲-gain-loss-porn-💲
         # Caller-owned alert channels (1:1 user → channel — every post is
         # an entry commitment from that user, structurally no-cherry-pick)
-        "🦉-big-gloh-alerts-🦉,"          # kloh's, renamed ~2026-10-02
-        "🧙🏻‍♀️-wiz-of-cemini-alerts-🐸,"
-        "🫦-zhawk-thawghts-🗣,"
+        "1415429535268343919,"            # 🦉-big-gloh-alerts-🦉 (kloh)
+        "1415073939184422973,"            # 🧙🏻‍♀️-wiz-of-cemini-alerts-🐸
+        "1498438283380789248,"            # 🫦-zhawk-thawghts-🗣
         # 2026-07-11 review fix: abe-alerts + kyle-alerts were MISSING —
         # 47 and 7 attachment messages in 30d with ZERO chat-store OCR,
         # so profile claim-verification and /ask context couldn't read
         # the two most-followed callers' own screenshots. (The analyst
         # LEDGER still processed them via caller-mode watching; the gap
         # was only in chat_messages.image_ocr_*.)
-        "🥷🏽-abe-alerts-🥷🏽,"
-        "💅🏾-kyle-alerts-💅🏾,"
+        "1317587853282119747,"            # 🥷🏽-abe-alerts-🥷🏽
+        "1420507457708621824,"            # 💅🏾-kyle-alerts-💅🏾
         # Shared alert channels (multiple posters; each post is still an
         # entry commitment, just not 1:1 to a single caller)
-        "🕰️-member-alerts-🕰️,"
-        "🐄-spot-bag-alerts-🐄,"
-        "🪙-crypto-alerts-🪙,"
+        "1408508350202908845,"            # 🕰️-member-alerts-🕰️
+        "1405199403286794393,"            # 🐄-spot-bag-alerts-🐄
+        "1407763027339509950,"            # 🪙-crypto-alerts-🪙
         # 2026-07-11 review fix: the main room is where members actually
         # post their P&L screenshots (879 attachment msgs in 30d vs 51
         # in gain-loss-porn) — none reached the ledger, starving member
@@ -225,8 +230,13 @@ class Settings(BaseSettings):
         # images through member-mode trade extraction (memes/gifs
         # no-op). Cost: ~30 imgs/day through Flash-Lite vision ≈
         # single-digit dollars/month.
-        "💬-stonks-yapping-💬"
+        "1317587853282119745"             # 💬-stonks-yapping-💬
     )
+    # Owner, 2026-10-04: read every channel except test-channel, new ones
+    # included automatically. chat_ingestion_channels (when set) still
+    # narrows ingestion to its list.
+    chat_ingest_all_channels: bool = True
+    chat_ingest_exclude: str = "1458515262168109253"   # test-channel
 
     # Per-/ask cap on lazy OCR — how many image-bearing messages will
     # be OCR'd inline during a single /ask. Each OCR call adds ~1-3s
@@ -263,25 +273,19 @@ class Settings(BaseSettings):
     # only controls ingestion defaults today. Kept the name for
     # backward-compat with the PROFILE_CHANNELS env var on existing
     # Railway deploys.
+    # Only consulted when chat_ingest_all_channels is off. Channel IDs.
     profile_channels: str = (
-        "💬-stonks-yapping-💬,"
-        "₿-crypto-yapping-₿,"
-        "🏃-fitness-yapping-🏋,"
-        "🎲-gambling-yapping-🎲,"
-        "🏈-fantasy-football-yapping-🏈,"
-        # 2026-08-22: Cemini's alerts channel (shared with wizard_of_alt).
-        # Ingestion + profiles only — NOT a registered analyst caller
-        # (owner call: "just ingestion").
-        "🧙🏻‍♀️-wiz-of-cemini-alerts-🐸,"
-        # kloh's channel, renamed in Discord around 2026-10-02 from
-        # "🦉-kloh-alerts-🦉"; the old name read nothing from then on.
-        # "🚨-0dte-lotto-alerts-🚨" was renamed to Cemini's channel above
-        # on 2026-08-13 and is gone.
-        "🦉-big-gloh-alerts-🦉,"
-        "🫦-zhawk-thawghts-🗣,"
-        "🕰️-member-alerts-🕰️,"
-        "🐄-spot-bag-alerts-🐄,"
-        "🪙-crypto-alerts-🪙"
+        "1317587853282119745,"            # 💬-stonks-yapping-💬
+        "1317606449341534222,"            # ₿-crypto-yapping-₿
+        "1410655131631878174,"            # 🏃-fitness-yapping-🏋
+        "1317744932974235658,"            # 🎲-gambling-yapping-🎲
+        "1537498564090134538,"            # 🏈-fantasy-football-yapping-🏈
+        "1415073939184422973,"            # 🧙🏻‍♀️-wiz-of-cemini-alerts-🐸
+        "1415429535268343919,"            # 🦉-big-gloh-alerts-🦉 (kloh)
+        "1498438283380789248,"            # 🫦-zhawk-thawghts-🗣
+        "1408508350202908845,"            # 🕰️-member-alerts-🕰️
+        "1405199403286794393,"            # 🐄-spot-bag-alerts-🐄
+        "1407763027339509950"             # 🪙-crypto-alerts-🪙
     )
     # How many days of history to use for each refresh pass.
     profile_window_days: int = 30
@@ -522,6 +526,10 @@ class Settings(BaseSettings):
                     "display": str(c.get("display") or c["name"]),
                     "username": str(c["username"]).strip(),
                     "channel": str(c["channel"]).strip(),
+                    # permanent Discord ID; channel_config matches on it
+                    # first so a renamed channel keeps its caller
+                    "channel_id": (int(c["channel_id"])
+                                   if str(c.get("channel_id") or "").isdigit() else None),
                     "announce_channel": (
                         str(announce).strip() if announce else None
                     ),
@@ -583,15 +591,13 @@ class Settings(BaseSettings):
             if s.strip()
         }
 
-    def caller_by_channel(self, channel_name: str) -> dict | None:
-        """Look up which caller owns this channel name (case-insensitive)."""
-        if not channel_name:
+    def caller_by_channel(self, channel) -> dict | None:
+        """The caller who owns this channel: a channel object or ID (by
+        channel_id) or a name. Delegates to channel_config."""
+        if not channel:
             return None
-        chan_lower = channel_name.strip().lower()
-        for c in self.resolve_analyst_callers():
-            if c["channel"].lower() == chan_lower:
-                return c
-        return None
+        import channel_config
+        return channel_config.caller_for(channel)
 
     @property
     def discord_channel_ids(self) -> list[int]:

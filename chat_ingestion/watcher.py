@@ -110,8 +110,8 @@ async def ingest_message(
     chan_name = getattr(message.channel, "name", None)
     if not chan_name:
         return False
-    allowlist = settings.resolve_chat_ingestion_channels()
-    if allowlist and chan_name not in allowlist:
+    import channel_config
+    if not channel_config.ingests(message.channel):
         return False
 
     content = (message.content or "").strip()
@@ -157,8 +157,7 @@ async def ingest_message(
     #     text — /ask falls back to the lazy path on next reference.
     if stored and attachment_urls and trigger_eager_ocr:
         try:
-            eager_channels = settings.resolve_chat_eager_ocr_channels()
-            if chan_name in eager_channels:
+            if channel_config.eager_ocr(message.channel):
                 asyncio.create_task(
                     _safe_ocr_inline(message, chan_name),
                     name=f"eager_ocr_{message.id}",
@@ -363,26 +362,29 @@ async def run_chat_catchup(
             return 0
     _last_catchup_at["global"] = now
 
-    target_names = settings.resolve_chat_ingestion_channels()
-    if not target_names:
+    # Every channel the bot ingests, found by what it IS (channel_config,
+    # by ID), not by a configured name that a rename can orphan.
+    import channel_config
+    def _readable(ch) -> bool:
+        # A channel the bot cannot read history in would burn three
+        # retries (50 s) on every catch-up; all channels are in scope
+        # since 2026-10-04, so check up front.
+        try:
+            perms = ch.permissions_for(ch.guild.me)
+            return bool(perms.view_channel and perms.read_message_history)
+        except Exception:
+            return True
+    targets = [ch for guild in bot.guilds for ch in guild.text_channels
+               if channel_config.ingests(ch) and _readable(ch)]
+    if not targets:
         log.debug("Chat catchup: no channels configured")
         return 0
 
     total_new = 0
     hard_floor = now - timedelta(days=_CATCHUP_HARD_CAP_DAYS)
 
-    for chan_name in target_names:
-        target = None
-        for guild in bot.guilds:
-            for ch in guild.text_channels:
-                if ch.name == chan_name:
-                    target = ch
-                    break
-            if target:
-                break
-        if target is None:
-            log.debug(f"Chat catchup: channel '{chan_name}' not found")
-            continue
+    for target in targets:
+        chan_name = target.name
 
         if force_full_window:
             # Recovery mode — ignore MAX(posted_at), scan the full 30d
@@ -563,7 +565,7 @@ async def run_chat_catchup(
             {
                 "reason": reason,
                 "force_full_window": bool(force_full_window),
-                "channels_configured": len(target_names),
+                "channels_configured": len(targets),
                 "total_new_rows": total_new,
             },
         )

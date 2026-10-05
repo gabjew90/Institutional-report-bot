@@ -4647,7 +4647,7 @@ async def _ask_00_setup_tools_and_context(
             and _ask_router.is_subjectless(question)):
         try:
             _recent_own = await asyncio.to_thread(
-                db.get_recent_messages_by_author, user_id, channel_name or "")
+                db.get_recent_messages_by_author, user_id, channel_id)
             _context_tickers = _ask_router.recent_subject(_recent_own)
         except Exception as e:
             log.info(f"/ask: recent-subject lookup failed (non-fatal): {e}")
@@ -4660,7 +4660,8 @@ async def _ask_00_setup_tools_and_context(
         # A question asked in the football channel is a league question
         # unless a stronger shape claims it (2026-09-03, owner).
         channel_name=channel_name or "",
-        asker_manager=_asker_manager)
+        asker_manager=_asker_manager,
+        channel_id=channel_id)
     if _deferred:
         _ask_route.deferred_author = _deferred["author"]
         _ask_route.reason = f"deferred to {_deferred['author']}'s question: {_ask_route.reason}"
@@ -9253,18 +9254,17 @@ async def _check_pulse_channel(interaction: discord.Interaction) -> bool:
     Returns True if the interaction may proceed, False if it was rejected
     (and the rejection message was already sent ephemerally).
 
-    Allowlist comes from settings.pulse_command_channel_names (channel
-    names, lowercase). Empty allowlist = unrestricted (return True).
+    Allowlist comes from settings.pulse_command_channels (channel IDs or
+    names, checked by channel_config). Empty allowlist = unrestricted.
     /ask intentionally does NOT call this — it's open in every channel.
     """
     allowed = settings.pulse_command_channel_names
     if not allowed:
         return True
-    chan = interaction.channel
-    chan_name = getattr(chan, "name", None) or ""
-    if chan_name.lower() in allowed:
+    import channel_config
+    if channel_config.is_command_channel(interaction.channel):
         return True
-    pretty = ", ".join(f"#{c}" for c in allowed)
+    pretty = ", ".join(channel_config.label(c) for c in allowed)
     try:
         await interaction.response.send_message(
             f"This command is only available in {pretty}. /ask works in any channel.",
@@ -10278,9 +10278,10 @@ def create_bot() -> commands.Bot:
         # - Else: skip — the message isn't from a trade-tracking channel.
         # Runs side-by-side with @mention handling below.
         try:
+            import channel_config
             chan_name = getattr(message.channel, "name", None)
             matched_caller = (
-                settings.caller_by_channel(chan_name) if chan_name else None
+                channel_config.caller_for(message.channel) if chan_name else None
             )
             if matched_caller:
                 from analyst_log.watcher import watch_message
@@ -10288,8 +10289,7 @@ def create_bot() -> commands.Bot:
                     bot, message, caller=matched_caller, tracking_mode="caller",
                 )
             elif chan_name:
-                eager_ocr_channels = settings.resolve_chat_eager_ocr_channels()
-                if chan_name in eager_ocr_channels:
+                if channel_config.eager_ocr(message.channel):
                     from analyst_log.watcher import watch_message
                     await watch_message(
                         bot, message, caller=None, tracking_mode="member",
@@ -10597,11 +10597,10 @@ def create_bot() -> commands.Bot:
                 # the rest.
                 if images and _image_source_msg is not None:
                     try:
-                        _rcpt_chan = getattr(message.channel, "name", "") or ""
+                        import channel_config as _cc
                         _covered = (
-                            _rcpt_chan
-                            in settings.resolve_chat_eager_ocr_channels()
-                            or bool(settings.caller_by_channel(_rcpt_chan))
+                            _cc.eager_ocr(message.channel)
+                            or bool(_cc.caller_for(message.channel))
                         )
                         if not _covered:
                             from analyst_log.watcher import (

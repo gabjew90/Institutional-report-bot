@@ -999,8 +999,9 @@ def check_self_generated_ta(answer: str, tool_calls=None,
                     continue
         return [Violation(
             "self-generated-ta", m.group(0).strip(), m.span(), sentence,
-            "technical-analysis claim with no attributed source "
-            "(no chart view or indicator feed exists)")]
+            "technical-analysis claim with no attributed source (no "
+            "indicator feed exists; a level read off a chart the asker "
+            "attached says so: 'on your chart')")]
     return []
 
 

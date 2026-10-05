@@ -174,7 +174,17 @@ def main():
         help="Clear all backfill checkpoints, start over",
     )
     args = ap.parse_args()
-    channels = sorted(settings.resolve_chat_eager_ocr_channels())
+    # The setting holds channel IDs since 2026-10-04; this script reads
+    # by name, so use each channel's latest stored name.
+    import channel_config
+    conn = db.get_connection()
+    channels = []
+    for e in sorted(channel_config.parse(settings.chat_eager_ocr_channels)):
+        if e.isdigit():
+            row = conn.execute("SELECT channel_name FROM chat_messages WHERE channel_id = ? "
+                               "ORDER BY posted_at DESC LIMIT 1", (int(e),)).fetchone()
+            e = row[0] if row else channel_config.KNOWN.get(int(e), e)
+        channels.append(e)
     print(f"Target channels ({len(channels)}):")
     for ch in channels:
         print(f"  - {ch}")

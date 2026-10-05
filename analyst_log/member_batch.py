@@ -352,14 +352,21 @@ MAX_PER_RUN = 2000        # messages per channel per run (catch-up bound)
 _FIRST_RUN_LOOKBACK_H = 1  # a channel with no saved position starts here
 
 
-def member_channels() -> list[str]:
+def member_channels() -> list:
     """Alert channels read in member mode: the eager-OCR channels that are
-    not an official caller's own channel (those stay live)."""
-    return sorted(ch for ch in settings.resolve_chat_eager_ocr_channels()
-                  if not settings.caller_by_channel(ch))
+    not an official caller's own channel (those stay live). Channel IDs
+    (int) since 2026-10-04, so a renamed channel keeps its position; an
+    entry written as a name is passed through as a name."""
+    import channel_config
+    out: list = []
+    for entry in sorted(channel_config.parse(settings.chat_eager_ocr_channels)):
+        ch = int(entry) if entry.isdigit() else entry
+        if not channel_config.caller_for(ch):
+            out.append(ch)
+    return out
 
 
-def run_channel(channel: str, now: datetime | None = None) -> dict:
+def run_channel(channel, now: datetime | None = None) -> dict:
     """Read one channel from its saved position. Every model call for the
     window must succeed before the position moves; a failed call leaves
     the whole window for the next run (rows already written are not

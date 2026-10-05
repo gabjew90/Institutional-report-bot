@@ -1508,36 +1508,58 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
 
 # --- member trade batch (2026-09-26, analyst_log/member_batch.py) ---------
 
-def member_batch_watermark(channel_name: str) -> str | None:
-    row = _db.get_connection().execute(
+# A channel is an int Discord ID (since 2026-10-04, channel_config) or,
+# for an old-style setting, a name. Names break on a rename; IDs do not.
+def _chan_where(channel, alias: str = "") -> tuple[str, object]:
+    col = f"{alias}." if alias else ""
+    if isinstance(channel, int) or (isinstance(channel, str) and channel.isdigit()):
+        return f"{col}channel_id = ?", int(channel)
+    return f"{col}channel_name = ?", channel
+
+
+def member_batch_watermark(channel) -> str | None:
+    conn = _db.get_connection()
+    row = conn.execute(
         "SELECT processed_through FROM member_batch_state WHERE channel_name = ?",
-        (channel_name,),
+        (str(channel),),
     ).fetchone()
-    return row[0] if row else None
+    if row:
+        return row[0]
+    if isinstance(channel, int):
+        # first run keyed by ID: carry over the position saved under any
+        # name this channel was stored with, so nothing is read twice
+        row = conn.execute(
+            "SELECT MAX(CAST(s.processed_through AS INTEGER)) FROM member_batch_state s "
+            "WHERE s.channel_name IN (SELECT DISTINCT channel_name FROM chat_messages "
+            "WHERE channel_id = ?)", (channel,)).fetchone()
+        if row and row[0]:
+            return str(row[0])
+    return None
 
 
-def set_member_batch_watermark(channel_name: str, posted_at: str) -> None:
+def set_member_batch_watermark(channel, posted_at: str) -> None:
     conn = _db.get_connection()
     conn.execute(
         "INSERT INTO member_batch_state (channel_name, processed_through, updated_at) "
         "VALUES (?, ?, datetime('now')) ON CONFLICT(channel_name) DO UPDATE SET "
         "processed_through = excluded.processed_through, updated_at = excluded.updated_at",
-        (channel_name, posted_at),
+        (str(channel), posted_at),
     )
     conn.commit()
 
 
-def member_batch_start_row(channel_name: str, before_iso: str) -> int:
+def member_batch_start_row(channel, before_iso: str) -> int:
     """Where a channel with no saved position starts: the last row stored
     before `before_iso` (0 when there is none)."""
+    where, val = _chan_where(channel)
     row = _db.get_connection().execute(
-        "SELECT MAX(id) FROM chat_messages WHERE channel_name = ? AND posted_at < ?",
-        (channel_name, before_iso),
+        f"SELECT MAX(id) FROM chat_messages WHERE {where} AND posted_at < ?",
+        (val, before_iso),
     ).fetchone()
     return int(row[0] or 0)
 
 
-def member_batch_messages(channel_name: str, after_row: int,
+def member_batch_messages(channel, after_row: int,
                           limit: int) -> list[dict]:
     """Text posts in one alert channel stored after chat row `after_row`,
     in insertion order, that no trade row covers yet. Insertion order, not
@@ -1545,35 +1567,37 @@ def member_batch_messages(channel_name: str, after_row: int,
     original, older timestamps, and a time-based position had already
     moved past them. Screenshots are excluded: they stay on the live
     path. Each row carries its reply parent's text and author."""
+    where, val = _chan_where(channel, "m")
     rows = _db.get_connection().execute(
-        """SELECT m.id AS row_id, m.discord_message_id AS id, m.author_id,
+        f"""SELECT m.id AS row_id, m.discord_message_id AS id, m.author_id,
                   COALESCE(m.author_display, m.author_username) AS author,
                   m.posted_at, m.content, m.reply_parent_id,
                   p.content AS parent_content,
                   COALESCE(p.author_display, p.author_username) AS parent_author
              FROM chat_messages m
              LEFT JOIN chat_messages p ON p.discord_message_id = m.reply_parent_id
-            WHERE m.channel_name = ? AND m.id > ?
+            WHERE {where} AND m.id > ?
               AND m.has_attachments = 0
               AND m.content IS NOT NULL AND m.content != ''
               AND NOT EXISTS (SELECT 1 FROM analyst_trades a
                                WHERE a.discord_message_id = m.discord_message_id)
             ORDER BY m.id
             LIMIT ?""",
-        (channel_name, int(after_row), int(limit)),
+        (val, int(after_row), int(limit)),
     ).fetchall()
     return [dict(r) for r in rows]
 
 
-def member_batch_context(channel_name: str, author_id: int, before: str,
+def member_batch_context(channel, author_id: int, before: str,
                          since: str, n: int) -> list[dict]:
     """An author's last `n` posts in the channel in [since, before), oldest
     first: context for follow-ups like "sold half"."""
+    where, val = _chan_where(channel)
     rows = _db.get_connection().execute(
-        """SELECT posted_at, content FROM chat_messages
-            WHERE channel_name = ? AND author_id = ? AND posted_at < ?
+        f"""SELECT posted_at, content FROM chat_messages
+            WHERE {where} AND author_id = ? AND posted_at < ?
               AND posted_at >= ? AND content IS NOT NULL AND content != ''
             ORDER BY posted_at DESC LIMIT ?""",
-        (channel_name, int(author_id), before, since, int(n)),
+        (val, int(author_id), before, since, int(n)),
     ).fetchall()
     return [dict(r) for r in reversed(rows)]

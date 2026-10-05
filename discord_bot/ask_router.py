@@ -524,7 +524,13 @@ _TRADING_LEDGER_RE = re.compile(
     r"|ported|portfolio|shares?|options?|tickers?)\b", re.I)
 
 
-def in_fantasy_channel(channel_name: str | None) -> bool:
+def in_fantasy_channel(channel_name: str | None, channel_id: int | None = None) -> bool:
+    """The league channel, by its ID (a rename cannot break that), or any
+    channel whose name says fantasy or football."""
+    if channel_id:
+        import channel_config
+        if int(channel_id) == channel_config.FANTASY_CHANNEL_ID:
+            return True
     return bool(_FANTASY_CHANNEL_RE.search(channel_name or ""))
 
 
@@ -686,14 +692,15 @@ def _last_line(question: str) -> str:
 
 
 def classify(question: str, *, fantasy_enabled: bool = False,
-             channel_name: str = "", asker_manager: str = "") -> Route:
+             channel_name: str = "", asker_manager: str = "",
+             channel_id: int | None = None) -> Route:
     """Shape a question deterministically. Order matters: the more
     specific shape wins, and the ledger/chat shapes beat the data shapes
     when a member is named ("Abe's win rate on semi calls" is a ledger
     question even though it says 'calls')."""
     q = _last_line(question)
     ql = q.lower()
-    in_channel = fantasy_enabled and in_fantasy_channel(channel_name)
+    in_channel = fantasy_enabled and in_fantasy_channel(channel_name, channel_id)
     tickers = extract_tickers(q)
     # Cashtag or uppercase only: a lowercase lead-in guess must not veto
     # the macro route ("when is the next fed meeting").

@@ -54,13 +54,14 @@ def test_guard_name_set_includes_member_authors():
 
 
 def test_eager_ocr_channels_cover_the_gaps():
-    from config import settings
-    chans = settings.resolve_chat_eager_ocr_channels()
-    for ch in ("🥷🏽-abe-alerts-🥷🏽", "💅🏾-kyle-alerts-💅🏾",
-               "💬-stonks-yapping-💬"):
-        assert ch in chans, f"eager OCR missing channel: {ch}"
+    # channel IDs since 2026-10-04 (channel_config); checked by ID
+    import channel_config as cc
+    for cid in (1317587853282119747,      # abe-alerts
+                1420507457708621824,      # kyle-alerts
+                1317587853282119745):     # stonks-yapping
+        assert cc.eager_ocr(cid), f"eager OCR missing channel: {cc.KNOWN[cid]}"
     # the original set stays intact
-    assert "💲-gain-loss-porn-💲" in chans
+    assert cc.eager_ocr(1404879999239979251)     # gain-loss-porn
     _ok("eager OCR: abe/kyle alerts + main room covered; originals intact")
 
 

@@ -141,6 +141,24 @@ async def _backfill_one(row: dict, dry_run: bool) -> dict:
     }
 
 
+def _member_channel_filter():
+    """The member-mode alert channels (analyst_log.member_batch, by channel
+    ID since 2026-10-04 so a renamed channel still matches) and the SQL
+    filter for them: (channels, where, params)."""
+    from analyst_log.member_batch import member_channels
+    chans = member_channels()
+    ids = [c for c in chans if isinstance(c, int)]
+    names = [c for c in chans if not isinstance(c, int)]
+    parts, params = [], []
+    if ids:
+        parts.append(f"channel_id IN ({','.join('?' for _ in ids)})")
+        params += ids
+    if names:
+        parts.append(f"channel_name IN ({','.join('?' for _ in names)})")
+        params += names
+    return chans, "(" + (" OR ".join(parts) or "0") + ")", params
+
+
 async def run_backfill(
     days: int = 14,
     max_rows: int = 2000,
@@ -151,22 +169,15 @@ async def run_backfill(
     from a slash command on the live bot. Returns a dict with counts +
     short list of written-row details (first 30).
     """
-    eager_channels = sorted(settings.resolve_chat_eager_ocr_channels())
-    caller_channel_names = {
-        c["channel"] for c in settings.resolve_analyst_callers()
-    }
-    member_channels = [
-        c for c in eager_channels if c not in caller_channel_names
-    ]
+    member_channels, chan_where, chan_params = _member_channel_filter()
     conn = db.get_connection()
-    placeholders = ",".join("?" for _ in member_channels)
     user_clause = " AND author_id = ?" if user_id else ""
     sql = f"""
         SELECT discord_message_id, channel_name, author_id, author_username,
                author_display, posted_at, content, has_attachments,
                image_ocr_text, image_ocr_status
           FROM chat_messages
-         WHERE channel_name IN ({placeholders})
+         WHERE {chan_where}
            AND author_id IS NOT NULL
            AND posted_at > datetime('now', ?)
            AND (
@@ -177,7 +188,7 @@ async def run_backfill(
          ORDER BY posted_at DESC
          LIMIT {max_rows}
     """
-    params: list = list(member_channels)
+    params: list = list(chan_params)
     params.append(f"-{days} days")
     if user_id:
         params.append(int(user_id))
@@ -224,17 +235,13 @@ async def main() -> int:
     # Exclude analyst_callers' OWN channels — those are handled in
     # caller-mode by the live watcher already. Member-mode is for
     # everyone else's posts in shared channels.
-    caller_channel_names = {
-        c["channel"] for c in settings.resolve_analyst_callers()
-    }
-    member_channels = [c for c in eager_channels if c not in caller_channel_names]
+    member_channels, chan_where, chan_params = _member_channel_filter()
     print(f"\nMember-eligible channels ({len(member_channels)}):")
     for c in member_channels:
         print(f"  - {c}")
 
     # Build candidate query
     conn = db.get_connection()
-    placeholders = ",".join("?" for _ in member_channels)
     user_clause = " AND author_id = ?" if args.user_id else ""
     # Order DESC so the newest candidates (most likely to contain
     # actual trade activity worth extracting) get processed first.
@@ -246,7 +253,7 @@ async def main() -> int:
                author_display, posted_at, content, has_attachments,
                image_ocr_text, image_ocr_status
           FROM chat_messages
-         WHERE channel_name IN ({placeholders})
+         WHERE {chan_where}
            AND author_id IS NOT NULL
            AND posted_at > datetime('now', ?)
            AND (
@@ -257,7 +264,7 @@ async def main() -> int:
          ORDER BY posted_at DESC
          LIMIT {args.max}
     """
-    params: list = list(member_channels)
+    params: list = list(chan_params)
     params.append(f"-{args.days} days")
     if args.user_id:
         params.append(int(args.user_id))

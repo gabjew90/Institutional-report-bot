@@ -1126,27 +1126,33 @@ async def _retention_purge_job():
         log.error(f"retention purge job failed: {e}", exc_info=True)
 
 
-def configured_channel_names() -> dict[str, str]:
-    """Every channel the bot is configured to read or act in, by NAME,
-    mapped to what the name is used for."""
+def configured_channels() -> dict[str, str]:
+    """Every channel entry the bot is configured with (an ID, or a name
+    written the old way), mapped to what it is used for. Ingestion is all
+    channels since 2026-10-04, so only the specific lists are here."""
+    import channel_config
     out: dict[str, str] = {}
-    for name in settings.resolve_chat_ingestion_channels():
-        out[name] = "chat ingestion"
-    for name in settings.resolve_chat_eager_ocr_channels():
-        out.setdefault(name, "screenshot OCR")
+    for e in channel_config.parse(settings.chat_ingestion_channels):
+        out[e] = "chat ingestion"
+    for e in channel_config.parse(settings.chat_eager_ocr_channels):
+        out.setdefault(e, "screenshot OCR and member trades")
     for c in settings.resolve_analyst_callers():
-        if c.get("enabled") and c.get("channel"):
-            out[c["channel"]] = f"{c.get('display') or c.get('name')}'s trade log"
-    for name in (settings.pulse_command_channels or "").split(","):
-        if name.strip():
-            out.setdefault(name.strip(), "admin commands")
+        if c.get("enabled"):
+            key = str(c.get("channel_id") or c.get("channel") or "").lower()
+            if key:
+                out[key] = f"{c.get('display') or c.get('name')}'s trade log"
+    for e in channel_config.parse(settings.pulse_command_channels):
+        out.setdefault(e, "admin commands")
     return out
 
 
-def missing_channels(configured: dict[str, str], live_names: set[str]) -> list[str]:
-    """Configured names with no channel of that name in the server, as
-    'name (use)' lines."""
-    return [f"{n} ({use})" for n, use in sorted(configured.items()) if n not in live_names]
+def missing_channels(configured: dict[str, str], live_ids: set[str],
+                     live_names: set[str]) -> list[str]:
+    """Configured entries that match no channel in the server, by ID or by
+    (lowercase) name, as 'entry (use)' lines."""
+    import channel_config
+    return [f"{channel_config.label(e)} ({use})" for e, use in sorted(configured.items())
+            if e not in live_ids and e not in live_names]
 
 
 async def _channel_config_watchdog_job(bot=None):
@@ -1158,16 +1164,19 @@ async def _channel_config_watchdog_job(bot=None):
     try:
         if bot is None or not getattr(bot, "guilds", None):
             return
-        live = {ch.name for g in bot.guilds for ch in g.channels}
-        gone = missing_channels(configured_channel_names(), live)
+        chans = [ch for g in bot.guilds for ch in g.channels]
+        gone = missing_channels(configured_channels(),
+                                {str(ch.id) for ch in chans},
+                                {ch.name.lower() for ch in chans})
         if not gone:
             log.info("Channel config watchdog: every configured channel exists")
             return
         from discord_bot.ops_alert import ops_alert
         await ops_alert(
-            "Channel config: these configured channels no longer exist by that name "
-            "(renamed or deleted in Discord), so the bot reads nothing from them: "
-            + "; ".join(gone) + ". Update the names in config.py.",
+            "Channel config: these configured channels are not in the server "
+            "(deleted, or a name entry whose channel was renamed), so the bot "
+            "reads nothing from them: " + "; ".join(gone) + ". Update config.py "
+            "(use channel IDs; channel_config.py).",
             dedupe_key="channel-config-" + ",".join(gone)[:80])
         log.warning(f"Channel config watchdog: missing {gone}")
     except Exception as e:

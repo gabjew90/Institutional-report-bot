@@ -86,10 +86,13 @@ async def run_caller_catchup(
         chan_name = caller.get("channel")
         if not chan_name:
             continue
+        # by the caller's channel ID when it has one, so a rename does not
+        # orphan the caller (channel_config, 2026-10-04)
+        import channel_config
         target = None
         for guild in bot.guilds:
             for ch in guild.text_channels:
-                if ch.name == chan_name:
+                if (channel_config.caller_for(ch) or {}).get("name") == caller.get("name"):
                     target = ch
                     break
             if target:
