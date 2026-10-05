@@ -1,0 +1,248 @@
+{
+ "brief": "ETF demand has shifted from a structural story to a flow event. Through three quarters, more than $1.5 trillion has entered the US ETF complex, already clearing last year's full-year record at a pace of roughly $167 billion a month and about $8 billion a session. On that trajectory, Goldman's desk now looks for 2026 full-year flows to top $2 trillion once seasonal Q4 tailwinds land. The same wrapper is carrying several distinct threads at once: mega-cap concentration (MAGS inflows, SPX outperforming RTY for 7 weeks, XLK outperforming SPX for 6 weeks, RSP lower for 7 weeks), a 25-year low in TLT with its longest losing streak in 2 years, one of munis' worst index months in 20 years (with inflows persisting on tax-loss harvesting), a record 9-day haul into spot bitcoin ETFs, and a pickup in fixed-income ETF trading volume as the 10-year yield pushed through 5% this month. Lucas frames rising ETF volume as tracking rising volatility, with the ETF complex now the channel through which nearly every part of the market expresses itself.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "US ETF flows have exceeded $1.5 trillion through three quarters of 2026, already clearing last year's full-year record.",
+   "anchor": "more than $1.5 trillion has already entered the complex, clearing last year's record annual haul",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "The current US ETF inflow pace is roughly $167 billion a month and about $8 billion a session.",
+   "anchor": "at a pace of roughly $167 billion a month and about $8 billion a session",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "Goldman's desk forecasts US ETF flows will top $2 trillion in 2026 once seasonal fourth-quarter tailwinds arrive.",
+   "anchor": "Goldman's desk now looking for US ETF flows to top $2 trillion in 2026 once seasonal fourth-quarter tailwinds land",
+   "topic": "US ETF flow records",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "SPX is on track to outperform RTY for 7 straight weeks, its longest such streak since 2018.",
+   "anchor": "SPX is on track to outperform RTY for 7 straight weeks (longest streak since 2018)",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [
+    "SPX",
+    "RTY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "XLK is outperforming SPX for 6 straight weeks.",
+   "anchor": "XLK outperforming SPX for 6 straight weeks",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [
+    "XLK",
+    "SPX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "MAGS has garnered inflows in 12 of the past 13 sessions, one of its longest stretches of recurring demand since launch.",
+   "anchor": "MAGS has garnered 12 inflows over the past 13 sessions",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [
+    "MAGS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "RSP is on track for 7 consecutive weeks lower, which would tie its longest such stretch.",
+   "anchor": "RSP is on track for 7 consecutive weeks lower (which would tie its longest stretch)",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "AI-fueled demand for cybersecurity exposure has the ETF complex on track for one of its best months of inflows in Goldman's dataset, at roughly $950 million.",
+   "anchor": "AI-fueled demand for cybersecurity exposure has the ETF complex on track for one of its best months of inflows in our dataset (+$950mm)",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "Muni bond ETFs have suffered one of their worst months of index performance in 20 years.",
+   "anchor": "Muni bond ETFs are collectively suffered one of their worst months of index performance in 20 years",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "Despite the weak index performance, muni ETF inflows persist, supported by tax loss harvesting rotations.",
+   "anchor": "yet inflows persist supported tax loss harvesting rotations",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "Spot bitcoin ETFs have registered 9 consecutive days of inflows totaling more than $3 billion, their largest 9-day haul year-to-date.",
+   "anchor": "The complex has registered 9 consecutive days of inflows, totaling to more $3 billion collected (its largest 9-day haul YTD)",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "Spot bitcoin ETFs have taken in over $6 billion over the past two months.",
+   "anchor": "over $6 billion pouring into the complex over the past two months",
+   "topic": "US ETF flow records",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "TLT hit an all-time low this week, the lowest in the fund's nearly 25-year operating history.",
+   "anchor": "In the fund's near 25 years of operating history, TLT hit an all-time low this week",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "TLT is on track for losses over 7 consecutive sessions, its longest daily losing stretch in 2 years.",
+   "anchor": "the fund is on track for losses over 7 consecutive sessions (its longest daily stretch lower in 2 years)",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [
+    "TLT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "The 10-year Treasury yield pushed through 5% this month, and fixed income ETFs have seen a rapid acceleration in trading volumes.",
+   "anchor": "As the 10yr pushed through 5% this month, fixed income ETFs have seen a rapid acceleration in trading volumes",
+   "topic": "US Treasury yield selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Are These The WTFest ETF Charts You've Ever Seen?",
+   "claim": "Market commentary attributes recent bond market dysfunction to Jane Street, which previously mangled precious metals trading in December and January.",
+   "anchor": "Bond markets turns weird, and of course Jane is behind it all",
+   "topic": "US Treasury yield selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-05/18670__are-these-the-wtfest-etf-charts-you-ve-ever-seen.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 16,
+  "matched": 16,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
