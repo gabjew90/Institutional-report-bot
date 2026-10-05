@@ -10,6 +10,18 @@ def test_a_chat_percentage_not_in_the_data_is_stray():
     assert fg.stray_percents(JAMAL, EST) == ["23%"]
 
 
+def test_a_win_chance_question_makes_any_percentage_a_win_percentage():
+    # the harness answer after the router fix: no win word in the sentence
+    live = "→ **23%**, as BK noted in chat after Tetairoa McMillan's monster first half."
+    q = "what % chance of winning did Jamal have before this Panthers?"
+    assert fg.stray_percents(live, EST) == []
+    assert fg.stray_percents(live, EST, q) == ["23%"]
+    assert fg.strip_stray(live, EST, q) == fg.NO_ESTIMATE_LINE
+    # a target-share answer to a non-win question still passes
+    for q in ("how is puka doing", "who won the puka trade?", "how likely is puka to play"):
+        assert fg.stray_percents("→ Puka has a 28% target share.", EST, q) == [], q
+
+
 def test_an_estimate_from_the_data_passes():
     assert fg.stray_percents("→ The bot's estimate gives Jamal a **96%** chance.", EST) == []
 

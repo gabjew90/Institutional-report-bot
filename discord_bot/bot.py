@@ -8563,19 +8563,19 @@ async def _fantasy_percent_guard(answer, question, _ask_meta, client, ask_model,
                 and "fantasy_estimates" not in _ask_meta)):
         return answer
     est = _ask_meta.get("fantasy_estimates") or {}
-    if not _fg.stray_percents(answer, est):
+    if not _fg.stray_percents(answer, est, question):
         return answer
     new = await _stock_answer_rewrite(
         "fantasy-percent", answer, _ask_meta, client, ask_model, safety_settings, types,
         _tally_retry_usage,
         prompt=_fg.rewrite_prompt(answer, question, est),
-        accept=lambda new: not _fg.stray_percents(new, est),
+        accept=lambda new: not _fg.stray_percents(new, est, question),
         keep_figures=False,
         system="You edit a fantasy-football room bot's answer.")
-    if _fg.stray_percents(new, est):
+    if _fg.stray_percents(new, est, question):
         # the rewrite failed: the wrong figure must not ship regardless
         _ask_meta["guards"].append("fantasy-percent:stripped")
-        new = _fg.strip_stray(new, est)
+        new = _fg.strip_stray(new, est, question)
     return new
 
 

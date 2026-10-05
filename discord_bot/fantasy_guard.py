@@ -33,20 +33,34 @@ def win_estimates(payload) -> dict[str, int]:
     return out
 
 
+def _asker_words(question: str) -> str:
+    """The asker's own message, without quoted blocks (the router's view)."""
+    if not question:
+        return ""
+    from discord_bot.ask_router import _last_line
+    return _last_line(question)
+
+
 _WIN_WORDS_RE = re.compile(r"\b(?:win|wins|winning|won|chances?|odds|probabilit|likely|kalshi)",
                            re.I)
 # a sentence ends at . ! ? followed by whitespace, so "41.0" stays whole
 _SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+|\n+")
 
 
-def stray_percents(answer: str, estimates: dict[str, int]) -> list[str]:
+def stray_percents(answer: str, estimates: dict[str, int], question: str = "") -> list[str]:
     """Win percentages in the answer that are not one of the estimates.
-    Only a percentage in a sentence about winning counts: target share,
-    roster rate and snap share are percentages too."""
+    A percentage counts when its sentence is about winning, or when the
+    question asked about win chances (2026-10-05: "**23%**, as BK noted in
+    chat" answered "what % chance of winning" with no win word of its
+    own). Target share, roster rate and snap share are percentages too."""
     allowed = {float(v) for v in estimates.values()}
+    # the router's win-chance pattern, not the broad word list: "who won
+    # the trade?" does not make a target share a win chance
+    from discord_bot.ask_router import _WIN_CHANCE_RE
+    asked = bool(_WIN_CHANCE_RE.search(_asker_words(question)))
     out = []
     for sentence in _SENTENCE_SPLIT_RE.split(answer or ""):
-        if not _WIN_WORDS_RE.search(sentence):
+        if not asked and not _WIN_WORDS_RE.search(sentence):
             continue
         out += [m.group(0) for m in _PCT_RE.finditer(sentence)
                 if float(m.group(1)) not in allowed]
@@ -57,14 +71,14 @@ NO_ESTIMATE_LINE = ("→ I don't have a win chance for that one: Sleeper doesn't
                     "Win%, and the odds people post in here are about their own games.")
 
 
-def strip_stray(answer: str, estimates: dict[str, int]) -> str:
+def strip_stray(answer: str, estimates: dict[str, int], question: str = "") -> str:
     """Last resort when the rewrite failed: drop the sentences that carry
     a stray win percentage. If nothing of substance is left, say plainly
     that the bot has no win chance for it."""
     kept = []
     for line in (answer or "").split("\n"):
         parts = _SENTENCE_SPLIT_RE.split(line)
-        good = [s for s in parts if not stray_percents(s, estimates)]
+        good = [s for s in parts if not stray_percents(s, estimates, question)]
         if len(good) == len(parts):
             kept.append(line)
         elif any(s.strip(" →*") for s in good):
