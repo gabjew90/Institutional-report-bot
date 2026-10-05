@@ -2885,20 +2885,11 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                     max(0, _receipt_d)
                     if prior_trader is not None else None
                 )
-                # last_seen stays as the prior value — they haven't
-                # posted, so no new last_seen to record. Use prior
-                # last_seen_message_at to keep the row coherent.
-                last_seen = prior.get("last_seen_message_at")
+                # Score and message count only: the profile text, its
+                # updated_at and slur_count are left as they were
+                # (2026-10-05 audit, db.rescore_dormant_profile).
                 try:
-                    db.upsert_user_profile(
-                        user_id=uid,
-                        username=username,
-                        display_name=display_name,
-                        profile_text=(prior.get("profile_text") or ""),
-                        message_count_at_update=0,
-                        last_seen_message_at=last_seen,
-                        trader_score=rescored_trader,
-                    )
+                    db.rescore_dormant_profile(uid, rescored_trader)
                     n_dormant += 1
                 except Exception as d_err:
                     print(

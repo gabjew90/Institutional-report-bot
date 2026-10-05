@@ -158,6 +158,23 @@ def stamp_profile_rebuild(user_id: int, stamp: str) -> None:
     conn.commit()
 
 
+def rescore_dormant_profile(user_id: int, trader_score: int | None) -> None:
+    """The weekly dormant sweep's only write: the trader score from
+    receipts alone (None keeps the stored one) and message_count_at_update
+    0, which the prune ranks by so a silent member drops off first.
+    Nothing else changes. Until 2026-10-05 the sweep rewrote the whole row
+    through upsert_user_profile, which re-stamped updated_at (10 of 42
+    "rewritten" profiles in the audit window were only re-stamped, one of
+    them five months stale) and reset slur_count to 0."""
+    conn = _db.get_connection()
+    conn.execute(
+        "UPDATE user_profiles SET trader_score = COALESCE(?, trader_score), "
+        "message_count_at_update = 0 WHERE user_id = ?",
+        (trader_score, int(user_id)),
+    )
+    conn.commit()
+
+
 def get_user_profile(user_id: int) -> dict | None:
     row = _db.get_connection().execute(
         "SELECT * FROM user_profiles WHERE user_id = ?", (int(user_id),)
