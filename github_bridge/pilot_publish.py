@@ -47,8 +47,13 @@ def _slug(title: str) -> str:
 def publish_high_document(*, pdf_file_id: int, file_name: str,
                           source: str, title: str, priority: str,
                           published_at: str | None,
-                          full_text: str, total_pages: int = 0) -> bool:
+                          full_text: str, total_pages: int = 0,
+                          date: str | None = None) -> bool:
     """Commit one HIGH document's text + meta. True when published.
+
+    `date` names the folder; by default it is the document's own date
+    (`published_at`), else today. The Claude-lane hand-off passes the
+    date it will look for the analysis under (github_bridge/claude_lane.py).
 
     Best-effort by contract: this runs inside the analysis pipeline
     and must never be able to fail an analysis. Every exit is a return,
@@ -72,10 +77,10 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
         from scripts.pilot_config import PILOT_BRANCH, SOURCE_TEXT_ALL_DIR, SOURCE_TEXT_DIR
 
         base = SOURCE_TEXT_DIR if pri == "high" else SOURCE_TEXT_ALL_DIR
-        date = (published_at or "")[:10] or _today()
+        date = date or (published_at or "")[:10] or _today()
         stem = f"{pdf_file_id}__{_slug(title or file_name)}"
         text_path = f"{base}/{date}/{stem}.txt"
-        meta_path = f"{base}/{date}/{pdf_file_id}.meta.json"
+        meta_path = meta_path_for(pdf_file_id, date, base)
 
         # Idempotence: a published document is never republished. A
         # duplicate would be read twice and double-count in every
@@ -123,6 +128,13 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
         log.warning(f"pilot publish failed for {pdf_file_id} "
                     f"(non-fatal): {e}")
         return False
+
+
+def meta_path_for(pdf_file_id: int, date: str, base: str | None = None) -> str:
+    """Where a HIGH document's meta file lives on the pilot branch."""
+    if base is None:
+        from scripts.pilot_config import SOURCE_TEXT_DIR as base
+    return f"{base}/{date}/{pdf_file_id}.meta.json"
 
 
 def _today() -> str:

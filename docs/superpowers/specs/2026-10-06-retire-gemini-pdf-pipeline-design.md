@@ -144,3 +144,14 @@ roughly $10-12 of it with low risk. Retiring all of it needs Phase 2.
 3. Is Phase 2 (MEDIUM through Claude) worth about $11 a month, given that it
    doubles reader volume and adds hours of latency to /ask desk research on
    fresh notes?
+
+## 9. Status (2026-10-06)
+
+- The lane runs in shadow: `.github/workflows/pilot-analysis.yml` writes a
+  record for every HIGH document to `pilot/analyses/`. First comparison, 24
+  documents: Claude 363 insights to Gemini's 179, 293 data points to 105,
+  anchors found in the source 99.7% to 99.0%; Gemini found more desk calls
+  (17 to 12) and described more charts (64 to 34).
+- The cutover switch is built and off (`github_bridge/claude_lane.py`,
+  `HIGH_INGESTION_BACKEND=claude_lane`). Owner call: compare for a couple
+  more days, then flip it.

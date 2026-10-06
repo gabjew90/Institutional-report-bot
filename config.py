@@ -475,8 +475,13 @@ class Settings(BaseSettings):
     # bridge (committed to GitHub, processed by an Anthropic-side cron routine,
     # results pulled back into the same pdf_analyses table). Auto-falls-back to
     # Gemini per-PDF if the bridge stalls > opus_bridge_timeout_minutes.
-    # Acceptable values: "gemini" | "opus_bridge"
+    # "claude_lane" (2026-10-06, github_bridge/claude_lane.py) hands HIGH
+    # PDFs to the Claude analysis lane on pilot-data instead; Gemini runs
+    # when the lane gives up, after claude_lane_timeout_minutes, or at the
+    # sweep 30 minutes before the scheduled pulse.
+    # Acceptable values: "gemini" | "opus_bridge" | "claude_lane"
     high_ingestion_backend: str = "gemini"
+    claude_lane_timeout_minutes: int = 120
     opus_bridge_timeout_minutes: int = 30
     # PDFs over these limits skip the bridge and go straight to Gemini fallback.
     # Anthropic's PDF Read tool caps at ~100 pages / ~32MB.

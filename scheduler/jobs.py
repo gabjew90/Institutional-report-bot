@@ -168,6 +168,45 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
             misfire_grace_time=120,
         )
 
+    # Claude analysis lane for HIGH documents (2026-10-06). New documents
+    # go to it only with HIGH_INGESTION_BACKEND=claude_lane; these jobs run
+    # whenever GitHub is configured, so turning the switch off still
+    # finishes what was handed off. See github_bridge/claude_lane.py.
+    from github_bridge import claude_lane
+    if claude_lane.reachable():
+        scheduler.add_job(
+            _claude_lane_pull_job,
+            trigger=IntervalTrigger(minutes=5),
+            id="claude_lane_pull",
+            name="Claude lane: pull analyses, route overdue to Gemini",
+            max_instances=1,
+            misfire_grace_time=300,
+        )
+        scheduler.add_job(
+            _claude_lane_fallback_job,
+            trigger=IntervalTrigger(minutes=5),
+            id="claude_lane_fallback",
+            name="Claude lane: Gemini on fallback rows",
+            max_instances=1,
+            misfire_grace_time=300,
+        )
+        # Before the pulse hour (Eastern) and before the routine's own UTC
+        # cron; they are the same moment in summer and the second is a no-op.
+        _lead = claude_lane.SWEEP_LEAD_MIN
+        _et = settings.daily_pulse_hour * 60 + settings.daily_pulse_minute - _lead
+        _utc = claude_lane.ROUTINE_UTC[0] * 60 + claude_lane.ROUTINE_UTC[1] - _lead
+        for _id, _minutes, _zone in (("et", _et, tz), ("utc", _utc, "UTC")):
+            scheduler.add_job(
+                _claude_lane_sweep_job,
+                trigger=CronTrigger(day_of_week="mon-fri", hour=_minutes // 60,
+                                    minute=_minutes % 60, timezone=_zone),
+                id=f"claude_lane_pre_pulse_sweep_{_id}",
+                name=f"Claude lane: pre-pulse sweep ({_id})",
+                max_instances=1,
+                misfire_grace_time=600,
+            )
+        log.info("Claude lane: pull (5m), fallback (5m), pre-pulse sweep registered")
+
     # Opus-bridge HIGH ingestion (only registers when backend=opus_bridge AND
     # GITHUB_TOKEN is set). Job is a no-op otherwise — see opus_bridge_enabled().
     from github_bridge.ingestion import opus_bridge_enabled
@@ -759,6 +798,31 @@ async def _ingest_feed_tick_job(bot=None):
         await announce_next_pending(bot=bot)
     except Exception as e:
         log.error(f"Ingestion feed tick failed: {e}", exc_info=True)
+
+
+async def _claude_lane_pull_job():
+    import asyncio
+    try:
+        from github_bridge import claude_lane
+        await asyncio.to_thread(claude_lane.pull)
+    except Exception as e:
+        log.error(f"Claude lane pull failed: {e}", exc_info=True)
+
+
+async def _claude_lane_fallback_job():
+    try:
+        from github_bridge import claude_lane
+        await claude_lane.run_fallbacks()
+    except Exception as e:
+        log.error(f"Claude lane fallback failed: {e}", exc_info=True)
+
+
+async def _claude_lane_sweep_job():
+    try:
+        from github_bridge import claude_lane
+        await claude_lane.sweep_before_pulse()
+    except Exception as e:
+        log.error(f"Claude lane pre-pulse sweep failed: {e}", exc_info=True)
 
 
 async def _bridge_dump_high_ingestion_job():

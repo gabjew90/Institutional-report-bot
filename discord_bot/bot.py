@@ -10042,7 +10042,7 @@ def create_bot() -> commands.Bot:
         from datetime import datetime, timedelta
         bridge_cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
         bridge = db.count_bridge_outcomes_since(bridge_cutoff)
-        if settings.high_ingestion_backend == "opus_bridge" or bridge["total"] > 0:
+        if settings.high_ingestion_backend in ("opus_bridge", "claude_lane") or bridge["total"] > 0:
             backend = settings.high_ingestion_backend
             n_total = bridge["total"]
             n_completed = bridge["completed"]
@@ -10053,11 +10053,13 @@ def create_bot() -> commands.Bot:
                 f"{100 * n_completed / n_total:.0f}%"
                 if n_total else "n/a"
             )
+            lane = "Claude" if backend == "claude_lane" else "Opus"
             embed.add_field(
-                name=f"Opus bridge — last 24h (backend={backend})",
+                name=f"HIGH hand-off, last 24h (backend={backend})",
                 value=(
-                    f"Total: **{n_total}** | Completed via Opus: **{n_completed}** ({success_rate})\n"
-                    f"Fallback to Gemini: **{n_fallback}** | In-flight: **{n_pending}** | Hard failed: **{n_failed}**"
+                    f"Total: **{n_total}** | Completed via {lane}: **{n_completed}** ({success_rate})\n"
+                    f"Gemini after fallback: **{bridge['gemini_done']}** | Fallback queued: **{n_fallback}** | "
+                    f"In-flight: **{n_pending}** | Hard failed: **{n_failed}**"
                 ),
                 inline=False,
             )

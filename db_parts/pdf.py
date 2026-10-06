@@ -438,6 +438,71 @@ def queue_for_opus_bridge(pdf_file_id: int) -> None:
     _db.get_connection().commit()
 
 
+def queue_for_claude_lane(pdf_file_id: int, analysis_path: str,
+                          triage_json: str) -> None:
+    """Record a HIGH PDF handed to the Claude analysis lane (2026-10-06,
+    github_bridge/claude_lane.py). Same table as the Opus bridge; a lane
+    row is told apart by bridge_filename, the path of the record it waits
+    for under pilot/analyses/. It starts 'committed' because its source
+    text is already on pilot-data. Re-queuing resets the row."""
+    conn = _db.get_connection()
+    conn.execute(
+        """INSERT INTO bridge_ingestion_state
+             (pdf_file_id, status, queued_at, committed_at, bridge_filename, triage_json)
+           VALUES (?, 'committed', datetime('now'), datetime('now'), ?, ?)
+           ON CONFLICT(pdf_file_id) DO UPDATE SET
+             status = 'committed',
+             queued_at = datetime('now'),
+             committed_at = datetime('now'),
+             completed_at = NULL,
+             bridge_filename = excluded.bridge_filename,
+             triage_json = excluded.triage_json,
+             error_message = NULL,
+             fallback_reason = NULL""",
+        (int(pdf_file_id), analysis_path, triage_json),
+    )
+    conn.commit()
+
+
+def get_lane_rows(status: str, path_prefix: str, limit: int = 100) -> list[dict]:
+    """Claude-lane rows in one status, oldest hand-off first."""
+    rows = _db.get_connection().execute(
+        """SELECT b.*, pf.file_name, pf.dropbox_path, pf.local_path,
+                  pf.dropbox_modified_at, pf.file_size_bytes
+           FROM bridge_ingestion_state b
+           JOIN pdf_files pf ON pf.id = b.pdf_file_id
+           WHERE b.status = ? AND b.bridge_filename LIKE ?
+           ORDER BY b.committed_at ASC
+           LIMIT ?""",
+        (status, path_prefix + "%", int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def move_bridge_row(pdf_file_id: int, from_status: str, to_status: str,
+                    reason: str | None = None) -> bool:
+    """Move a bridge row only if it is still in `from_status`. True when
+    this caller moved it, so two jobs racing on one row cannot both act
+    (the pull and the pre-pulse sweep both read 'committed' rows)."""
+    conn = _db.get_connection()
+    sets = ["status = ?"]
+    params: list = [to_status]
+    if to_status in ("completed", "gemini_done", "fallback_to_gemini", "failed"):
+        sets.append("completed_at = datetime('now')")
+    if reason is not None:
+        sets.append("fallback_reason = ?" if to_status == "fallback_to_gemini"
+                    else "error_message = ?")
+        params.append(reason[:200])
+    params += [int(pdf_file_id), from_status]
+    cur = conn.execute(
+        f"UPDATE bridge_ingestion_state SET {', '.join(sets)} "
+        "WHERE pdf_file_id = ? AND status = ?",
+        params,
+    )
+    conn.commit()
+    return cur.rowcount == 1
+
+
 def get_bridge_state(pdf_file_id: int) -> dict | None:
     row = _db.get_connection().execute(
         "SELECT * FROM bridge_ingestion_state WHERE pdf_file_id = ?",
@@ -580,7 +645,7 @@ def count_bridge_outcomes_since(cutoff_iso: str) -> dict:
     rows = _db.get_connection().execute(
         """SELECT status, COUNT(*) AS n
            FROM bridge_ingestion_state
-           WHERE queued_at > ?
+           WHERE replace(queued_at, ' ', 'T') > ?
            GROUP BY status""",
         (cutoff,),
     ).fetchall()
@@ -590,6 +655,7 @@ def count_bridge_outcomes_since(cutoff_iso: str) -> dict:
         "committed": 0,
         "completed": 0,
         "fallback_to_gemini": 0,
+        "gemini_done": 0,
         "failed": 0,
     }
     for r in rows:

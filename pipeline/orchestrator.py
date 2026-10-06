@@ -23,12 +23,18 @@ import db
 log = logging.getLogger(__name__)
 
 
-async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
+async def process_single_pdf(pdf_data: dict, use_claude_lane: bool = True) -> PdfAnalysis | None:
     """Process a single PDF through the full pipeline.
 
     extract text → triage (Gemini text-only) → deep analysis (Gemini text-only,
     full document). LOW-priority PDFs skip deep analysis and store the triage
     summary as the analysis result.
+
+    With HIGH_INGESTION_BACKEND=claude_lane a HIGH PDF is handed to the
+    Claude analysis lane instead (github_bridge/claude_lane.py) and this
+    returns None; the lane's pull job finishes it. /reanalyze passes
+    use_claude_lane=False: it exists to re-run the current prompt, and the
+    lane would hand back the record it already has.
     """
     pdf_id = pdf_data["id"]
     file_name = pdf_data["file_name"]
@@ -97,6 +103,16 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 output_tokens=0,
             )
         else:
+            if triage.priority == "high" and use_claude_lane:
+                from github_bridge import claude_lane
+                # GitHub round trips: off the event loop
+                if await asyncio.to_thread(
+                        claude_lane.hand_off, pdf_file_id=pdf_id, file_name=file_name,
+                        triage=triage, full_text=full_text, total_pages=len(pages)):
+                    # PROCESSING until the lane's record arrives or Gemini
+                    # runs as the fallback; the local PDF stays for that.
+                    return None
+
             # HIGH-priority routing fork: when settings.high_ingestion_backend
             # is set to "opus_bridge", route to the parallel Opus routine via
             # the GitHub bridge instead of running Gemini deep analysis here.
@@ -580,7 +596,7 @@ async def reanalyze_recent_pdfs(
                     recent_files.append(f"✗ {pdf_data['file_name'][:70]} (download missing)")
                 else:
                     pdf_data["local_path"] = str(local_path)
-                    analysis = await process_single_pdf(pdf_data)
+                    analysis = await process_single_pdf(pdf_data, use_claude_lane=False)
                     if analysis:
                         outcome = "processed"
                         stats["input_tokens"] += analysis.input_tokens

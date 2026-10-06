@@ -70,6 +70,7 @@ def _ensure_schema(conn: sqlite3.Connection) -> None:
         try:
             _migrate_pdf_query_surface(conn)
             _migrate_calendar_posts_lineup(conn)
+            _migrate_bridge_triage_json(conn)
         except Exception as e:  # never block boot on a query-surface migration
             log.warning(f"pdf query-surface migration skipped: {e}")
         _schema_ready = True
@@ -223,6 +224,7 @@ def _init_schema(conn: sqlite3.Connection) -> None:
             attempt_count INTEGER NOT NULL DEFAULT 0,
             error_message TEXT,
             fallback_reason TEXT,
+            triage_json TEXT,
             FOREIGN KEY (pdf_file_id) REFERENCES pdf_files(id)
         );
         CREATE INDEX IF NOT EXISTS idx_bridge_status ON bridge_ingestion_state(status);
@@ -1060,6 +1062,19 @@ def _migrate_calendar_posts_lineup(conn) -> None:
         log.warning(f"calendar_posts.lineup_json migration skipped: {e}")
 
 
+def _migrate_bridge_triage_json(conn) -> None:
+    """bridge_ingestion_state.triage_json (2026-10-06): the Claude lane's
+    Gemini fallback reuses the triage instead of running it again.
+    Idempotent."""
+    try:
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(bridge_ingestion_state)")}
+        if cols and "triage_json" not in cols:
+            conn.execute("ALTER TABLE bridge_ingestion_state ADD COLUMN triage_json TEXT")
+            conn.commit()
+    except Exception as e:  # never block boot
+        log.warning(f"bridge_ingestion_state.triage_json migration skipped: {e}")
+
+
 def _migrate_pdf_query_surface(conn) -> None:
     """Make the PDF research data queryable by a text-to-SQL bot
     (2026-07-29 storage review). Idempotent — safe on every boot.
@@ -1570,6 +1585,9 @@ from db_parts.pdf import (  # noqa: E402,F401
     log_event,
     max_announceable_pdf_file_id,
     queue_for_opus_bridge,
+    queue_for_claude_lane,
+    get_lane_rows,
+    move_bridge_row,
     record_pipeline_event,
     reset_stale_processing,
     run_retention_purge,
