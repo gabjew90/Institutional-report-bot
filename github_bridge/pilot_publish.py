@@ -47,7 +47,7 @@ def _slug(title: str) -> str:
 def publish_high_document(*, pdf_file_id: int, file_name: str,
                           source: str, title: str, priority: str,
                           published_at: str | None,
-                          full_text: str) -> bool:
+                          full_text: str, total_pages: int = 0) -> bool:
     """Commit one HIGH document's text + meta. True when published.
 
     Best-effort by contract: this runs inside the analysis pipeline
@@ -108,6 +108,9 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
             "published_at": published_at,
             "text_path": text_path,
             "truncated": truncated,
+            # the Claude analysis lane copies it into its records
+            # (scripts/pilot_analyze.py, 2026-10-06)
+            "total_pages": int(total_pages or 0),
         }, indent=1),
             f"pilot: meta {pdf_file_id}", ref=PILOT_BRANCH)
         log.info(f"pilot: published {pdf_file_id} ({source}) "

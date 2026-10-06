@@ -36,6 +36,12 @@ PILOT_WORKFLOWS = {
                          + [(h, 0, "*") for h in (1, 5, 17, 21)],
     "pilot-editor.yml": [(13, 55, "mon-fri")],
     "pilot-graders.yml": [(17, 0, "mon-fri")],
+    # Claude analysis lane (2026-10-06, Gemini retirement spec phase 1):
+    # every 30 minutes on weekdays 06:00-22:30 UTC so a HIGH note is
+    # analysed within the hour, every 2 hours at weekends. A run with
+    # nothing pending ends in about a minute.
+    "pilot-analysis.yml": [(h, m, "mon-fri") for h in range(6, 23) for m in (0, 30)]
+                          + [(h, 0, "sat,sun") for h in range(0, 24, 2)],
 }
 
 

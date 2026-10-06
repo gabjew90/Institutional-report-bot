@@ -197,6 +197,7 @@ async def process_single_pdf(pdf_data: dict) -> PdfAnalysis | None:
                 # raised NameError here (caught, logged as a failed
                 # dispatch) on every run.
                 full_text=full_text,
+                total_pages=len(pages),
             )
         except Exception as e:
             log.warning(f"pilot publish dispatch failed (non-fatal): {e}")

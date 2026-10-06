@@ -214,7 +214,11 @@ def test_wiring_from_analyzer_to_sheet():
     from ai_analysis import analyzer
     from report import calendar_data
     assert callable(db.conference_sessions_for_date)
-    assert "resolve_sessions(" in inspect.getsource(analyzer.analyze_pdf_deep)
+    # the mapping moved to analysis_build (2026-10-06) so the Claude lane
+    # shares it: the deep analysis calls build_analysis, which resolves
+    assert "build_analysis(" in inspect.getsource(analyzer.analyze_pdf_deep)
+    from ai_analysis import analysis_build
+    assert "resolve_sessions(" in inspect.getsource(analysis_build.build_analysis)
     src = inspect.getsource(calendar_data.build_calendar_day)
     assert "db.conference_sessions_for_date(date_iso)" in src
     assert "build_conference_rows(" in src
