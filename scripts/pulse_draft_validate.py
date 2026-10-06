@@ -570,6 +570,11 @@ _EXPECT_WINDOW = 40
 # calendar whitelist that reaches synthesis.
 _EVENT_KEYWORDS = ("CPI", "PPI", "PCE", "GDP", "NFP", "PAYROLLS",
                    "RETAIL SALES", "ISM", "UNEMPLOYMENT")
+# Released as index levels, written without a "%" (2026-10-05).
+_INDEX_LEVEL_EVENTS = {"ISM"}
+# A sentence-ending full stop is fine ("printed 54.5."); a decimal point
+# followed by more digits is part of a longer number.
+_BARE_FIGURE_RE = re.compile(r"(?<![\w.])(\d+(?:\.\d+)?)(?![\w%]|\.\d)")
 
 
 def _seg_numbers(row_tail: str, label: str) -> set[float]:
@@ -800,7 +805,7 @@ def _missing_release_actual_violations(
     if not rows:
         return []
     body = md_text
-    figures = {float(m.group(1)) for m in _PCT_FIGURE_RE.finditer(body)}
+    pct_figures = {float(m.group(1)) for m in _PCT_FIGURE_RE.finditer(body)}
     up = body.upper()
     out: list[dict] = []
     for kw, slot in sorted(rows.items()):
@@ -809,6 +814,19 @@ def _missing_release_actual_violations(
             continue          # nothing printed, or the feed lacks it
         if kw not in up:
             continue          # the pulse does not discuss this event
+        # A survey index is a level, not a percentage: "ISM services 54.5"
+        # is the print. Counting only "%" figures failed the 2026-10-05
+        # pulse twice on a correct "54.5" and "77.9" (two re-rolls, then
+        # a residual hard violation shipped). Bare numbers count only in
+        # sentences that name the event, so an oil price of $54.50
+        # elsewhere cannot stand in for the print.
+        is_index = kw in _INDEX_LEVEL_EVENTS
+        figures = set(pct_figures)
+        if is_index:
+            for sent in re.split(r"(?<=[.!?])\s+|\n", body):
+                if kw in sent.upper():
+                    figures |= {float(m.group(1)) for m in _BARE_FIGURE_RE.finditer(sent)}
+        unit = "" if is_index else "%"
         # Rounding match, NOT the 0.06 tolerance the reconcile check
         # uses. That tolerance exists there to absorb sign and rounding
         # noise while hunting for a mismatch; here it would let a
@@ -833,7 +851,7 @@ def _missing_release_actual_violations(
             "severity": "hard",
             "message": (
                 f"{kw.title()} has already printed "
-                f"(ACTUAL={', '.join(f'{a:g}%' for a in sorted(actual))}) "
+                f"(ACTUAL={', '.join(f'{a:g}{unit}' for a in sorted(actual))}) "
                 f"and the pulse discusses it, but none of those values "
                 f"appear anywhere in the text. The 2026-08-12 CPI recap "
                 f"shipped three banks' forecasts and never the print. "

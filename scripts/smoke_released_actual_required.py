@@ -164,6 +164,33 @@ def test_hard_kind_is_registered():
     _ok("released-actual-missing drives the hard exit code")
 
 
+ISM_CTX = {"economic_calendar": (
+    "ECONOMIC EVENTS ALREADY RELEASED (belongs in RECAP, NEVER in WHAT TO WATCH):\n"
+    "  2026-10-05 10:00 EDT | [US] | ISM Services PMI | impact=high | "
+    "ACTUAL=54.5 (for 2026-09) | est=53.9 | prev=52.0\n"
+)}
+
+
+def test_an_index_print_without_a_percent_sign_counts():
+    """2026-10-05: 'ISM services printed 54.5' failed twice because only
+    figures written with '%' counted, and a residual hard shipped."""
+    if _by_kind("- ISM services printed 54.5 against 53.9 expected.",
+                "released-actual-missing", ISM_CTX):
+        _fail("a correct ISM level without a % sign is still flagged")
+    v = _by_kind("- ISM services beat what the desks expected.",
+                 "released-actual-missing", ISM_CTX)
+    if not v:
+        _fail("an ISM bullet that never states the print passes")
+    if "54.5%" in v[0]["message"]:
+        _fail("an index level is reported with a % sign: " + v[0]["message"])
+    if _by_kind("- ISM services came in at 54.5.", "released-actual-missing", ISM_CTX):
+        _fail("a print at the end of a sentence is not counted")
+    if not _by_kind("- WTI sits at $54.5 a barrel.\n- ISM services beat what the desks expected.",
+                    "released-actual-missing", ISM_CTX):
+        _fail("an unrelated 54.5 in another sentence stands in for the ISM print")
+    _ok("an ISM index level counts as the print, and its absence is still caught")
+
+
 if __name__ == "__main__":
     test_the_shipped_bullet_is_caught()
     test_estimate_shipped_as_print_is_now_hard()
@@ -172,4 +199,5 @@ if __name__ == "__main__":
     test_unreleased_event_is_not_required()
     test_no_calendar_is_a_no_op()
     test_hard_kind_is_registered()
+    test_an_index_print_without_a_percent_sign_counts()
     print("\nAll released-actual smoke tests passed.")
