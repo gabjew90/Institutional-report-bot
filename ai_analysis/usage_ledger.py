@@ -15,6 +15,10 @@ was measuring.
 
 `as_caller(name)` narrows the label inside one client, e.g. the PDF
 client records `pdf_triage` and `pdf_deep` separately.
+
+The same wrappers adapt each request for Gemini 3.6 and later
+(`modernize_config`, 2026-10-06): no sampling fields, a thinking level
+instead of a budget. Older models get requests unchanged.
 """
 from __future__ import annotations
 
@@ -107,6 +111,103 @@ def _model_arg(args, kwargs) -> str:
     return str(m or "")
 
 
+# Deprecated request parameters (Google notice, 2026-10-06). Gemini models
+# before 3.6 still honour temperature/top_p/top_k and remap thinking_budget,
+# and the bot's call sites set them on purpose (OCR at 0, retries warmer to
+# break a repetition loop), so those models get requests unchanged. From
+# 3.6 on the sampling fields do nothing, and newer models answer 400 to them
+# and to thinking_budget, so a feature switched to one keeps working on day
+# one: the guard drops the sampling fields and turns a budget into a level.
+# The levels are a starting point, to be tuned when a feature switches.
+_SAMPLING_FIELDS = ("temperature", "top_p", "top_k")
+_LEGACY_BEFORE = (3, 6)
+_logged_models: set[str] = set()
+
+
+def _version(model: str) -> tuple[int, int] | None:
+    import re
+    m = re.match(r"(?:models/)?gemini-(\d+)(?:\.(\d+))?", (model or "").lower())
+    return (int(m.group(1)), int(m.group(2) or 0)) if m else None
+
+
+def needs_modern_params(model: str) -> bool:
+    """True for Gemini 3.6 and later, and for an unversioned Gemini alias
+    ("gemini-flash-latest"), which points at the newest model. Anything
+    else is left alone."""
+    v = _version(model)
+    if v is None:
+        name = (model or "").lower().removeprefix("models/")
+        return name.startswith("gemini-")
+    return v >= _LEGACY_BEFORE
+
+
+def level_for_budget(budget: int | None) -> str | None:
+    """None for a dynamic budget (-1) or none at all: the model default."""
+    if budget is None or budget < 0:
+        return None
+    if budget == 0:
+        return "MINIMAL"
+    if budget <= 1024:
+        return "LOW"
+    if budget <= 8192:
+        return "MEDIUM"
+    return "HIGH"
+
+
+def _get(obj, key):
+    return obj.get(key) if isinstance(obj, dict) else getattr(obj, key, None)
+
+
+def _with(obj, update: dict):
+    if isinstance(obj, dict):
+        out = dict(obj)
+        out.update(update)
+        return {k: v for k, v in out.items() if v is not None}
+    return obj.model_copy(update=update)
+
+
+def modernize_config(model: str, config):
+    """The request config the model accepts. Unchanged for models before
+    3.6 and for unknown names; never raises (the call then goes as built)."""
+    if config is None or not needs_modern_params(model):
+        return config
+    try:
+        update = {f: None for f in _SAMPLING_FIELDS if _get(config, f) is not None}
+        tc = _get(config, "thinking_config")
+        if tc is not None and _get(tc, "thinking_budget") is not None:
+            level = _get(tc, "thinking_level") or level_for_budget(_get(tc, "thinking_budget"))
+            if isinstance(tc, dict):
+                update["thinking_config"] = _with(tc, {"thinking_budget": None,
+                                                       "thinking_level": level})
+            else:
+                # rebuilt, not copied, so the level string is validated
+                # into the SDK's enum
+                fields = {k: v for k, v in tc.model_dump(exclude_none=True).items()
+                          if k not in ("thinking_budget", "thinking_level")}
+                if level is not None:
+                    fields["thinking_level"] = level
+                update["thinking_config"] = type(tc)(**fields)
+        if not update:
+            return config
+        if model not in _logged_models:
+            _logged_models.add(model)
+            log.info(f"gemini params: {model} gets no sampling fields and a "
+                     f"thinking level instead of a budget")
+        return _with(config, update)
+    except Exception as e:
+        log.warning(f"gemini params: could not adapt the config for {model}: {e}")
+        return config
+
+
+def _adapt(args, kwargs):
+    model = _model_arg(args, kwargs)
+    if "config" in kwargs:
+        kwargs = {**kwargs, "config": modernize_config(model, kwargs["config"])}
+    elif len(args) >= 3:
+        args = (*args[:2], modernize_config(model, args[2]), *args[3:])
+    return args, kwargs
+
+
 def instrument(client, caller: str):
     """Wrap `client.models.generate_content` and the aio twin so every
     response is recorded under `caller` (or the `as_caller` label)."""
@@ -117,6 +218,7 @@ def instrument(client, caller: str):
     orig_async = getattr(aio, "generate_content", None)
     if orig_async is not None:
         async def gen_async(*args, **kwargs):
+            args, kwargs = _adapt(args, kwargs)
             resp = await orig_async(*args, **kwargs)
             record(_caller_var.get() or caller, _model_arg(args, kwargs), resp)
             return resp
@@ -126,6 +228,7 @@ def instrument(client, caller: str):
     orig_sync = getattr(sync, "generate_content", None)
     if orig_sync is not None:
         def gen_sync(*args, **kwargs):
+            args, kwargs = _adapt(args, kwargs)
             resp = orig_sync(*args, **kwargs)
             record(_caller_var.get() or caller, _model_arg(args, kwargs), resp)
             return resp

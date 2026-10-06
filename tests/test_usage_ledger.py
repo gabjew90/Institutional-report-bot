@@ -108,3 +108,74 @@ def test_spend_is_priced_per_model_and_sorted():
 def test_unknown_models_price_at_the_default():
     assert L.price_per_m("gemini-9-ultra") == L._DEFAULT_PRICE
     assert L.cost_usd("gemini-3.5-flash-lite", 1_000_000, 0) == 0.30
+
+
+# ---- deprecated request parameters (Google notice, 2026-10-06) ----
+
+from google.genai import types as _t
+
+from ai_analysis import usage_ledger as _UL
+
+
+def _cfg():
+    return _t.GenerateContentConfig(
+        temperature=0.3, top_p=0.9, max_output_tokens=500,
+        system_instruction="sys",
+        thinking_config=_t.ThinkingConfig(thinking_budget=2000))
+
+
+def test_current_models_get_requests_unchanged():
+    for model in ("gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "models/gemini-3.5-flash-lite",
+                  "gemini-2.5-flash", "some-other-model"):
+        cfg = _cfg()
+        assert _UL.modernize_config(model, cfg) is cfg
+
+
+def test_newer_models_lose_sampling_and_get_a_level():
+    assert _UL.modernize_config("gemini-flash-latest", _cfg()).temperature is None
+    out = _UL.modernize_config("gemini-3.8-flash", _cfg())
+    assert out.temperature is None and out.top_p is None
+    assert out.max_output_tokens == 500 and out.system_instruction == "sys"
+    assert out.thinking_config.thinking_budget is None
+    assert out.thinking_config.thinking_level == _t.ThinkingLevel.MEDIUM
+
+
+def test_dict_configs_are_adapted_too():
+    out = _UL.modernize_config("gemini-4.0-flash", {
+        "temperature": 0.7, "thinking_config": {"thinking_budget": 256}, "max_output_tokens": 9})
+    assert out == {"thinking_config": {"thinking_level": "LOW"}, "max_output_tokens": 9}
+
+
+def test_budget_to_level():
+    assert [_UL.level_for_budget(b) for b in (None, -1, 0, 256, 1024, 2000, 9000)] == \
+        [None, None, "MINIMAL", "LOW", "LOW", "MEDIUM", "HIGH"]
+
+
+def test_an_existing_level_is_kept():
+    cfg = _t.GenerateContentConfig(temperature=0.1,
+                                   thinking_config=_t.ThinkingConfig(thinking_level="MINIMAL"))
+    out = _UL.modernize_config("gemini-3.8-flash", cfg)
+    assert out.temperature is None
+    assert out.thinking_config.thinking_level == _t.ThinkingLevel.MINIMAL
+
+
+def test_the_wrapper_adapts_what_it_sends():
+    import asyncio
+    from types import SimpleNamespace
+    sent = []
+
+    async def agen(*a, **kw):
+        sent.append(kw["config"])
+        return SimpleNamespace(usage_metadata=None)
+
+    def gen(*a, **kw):
+        sent.append(a[2])
+        return SimpleNamespace(usage_metadata=None)
+
+    client = SimpleNamespace(models=SimpleNamespace(generate_content=gen),
+                             aio=SimpleNamespace(models=SimpleNamespace(generate_content=agen)))
+    _UL.instrument(client, "test")
+    asyncio.run(client.aio.models.generate_content(model="gemini-3.8-flash", contents="x", config=_cfg()))
+    client.models.generate_content("gemini-3.5-flash-lite", "x", _cfg())
+    assert sent[0].temperature is None and sent[0].thinking_config.thinking_level is not None
+    assert sent[1].temperature == 0.3 and sent[1].thinking_config.thinking_budget == 2000

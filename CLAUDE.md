@@ -157,7 +157,7 @@ Per-PDF JSON passed to synthesis includes: source, title, type, priority, publis
 | `ai_analysis/prompts.py` | Gemini prompt templates (triage, deep analysis, synthesis) |
 | `ai_analysis/analyzer.py` | Gemini orchestrator (triage + deep analysis, text-only) |
 | `ai_analysis/rate_limiter.py` | Concurrency + RPM management |
-| `ai_analysis/usage_ledger.py` | Gemini call ledger (2026-09-29): `make_client(caller)` wraps a genai client so every generate_content lands in `gemini_calls`; `as_caller(name)` narrows the label inside one client; `db.gemini_spend(days)` prices it per feature for `/status` |
+| `ai_analysis/usage_ledger.py` | Gemini call ledger (2026-09-29): `make_client(caller)` wraps a genai client so every generate_content lands in `gemini_calls`; `as_caller(name)` narrows the label inside one client; `db.gemini_spend(days)` prices it per feature for `/status`. It also adapts requests for Gemini 3.6 and later (`modernize_config`, 2026-10-06, Google's deprecation notice): those models drop temperature/top_p/top_k and get a thinking level instead of `thinking_budget`, which newer models reject with a 400. Models before 3.6, which the bot runs today and which still honour those fields, get requests unchanged. `report/synthesizer.py` and `report/theme_clusterer.py` build bare clients and are not covered |
 | `ai_analysis/models.py` | Dataclasses: TriageResult, PdfAnalysis, MarketMover, SectorView, MacroIndicator, TradeIdea, EntityMention |
 | `report/synthesizer.py` | Cross-PDF synthesis via Gemini; builds ticker map; handles prev_pulse context |
 | `report/market_data.py` | CoinGecko + Yahoo Finance live price snapshot |
