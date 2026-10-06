@@ -215,3 +215,45 @@ def test_the_env_override_still_forces_classic_on_a_light_day(tmp_path, monkeypa
     with patch.object(O, "ENABLED", True), patch.object(O, "MISS_DAY", "light"), _fake_light(tmp_path):
         assert d.gate_omnipulse("2026-09-30") == "CLASSIC"
     assert not d.omnipulse_mode()
+
+
+# --- owner option C, 2026-10-06: narrow repairs to the locked body ------
+def _omni_day(tmp_path):
+    d = _driver(tmp_path)
+    with patch.object(O, "ENABLED", True), _fake_fetch(d, tmp_path):
+        d.gate_omnipulse("2026-09-24")
+        d.gate_draft_validate()
+    (tmp_path / "final.md").write_text((tmp_path / "draft.md").read_text(encoding="utf-8"),
+                                       encoding="utf-8")
+    return d
+
+
+def test_a_fabricated_claim_in_the_body_is_cut_everywhere(tmp_path):
+    d = _omni_day(tmp_path)
+    body = (tmp_path / "omnipulse_body.md").read_text(encoding="utf-8")
+    line = next(l for l in body.splitlines() if l.strip() and not l.startswith("#") and ". " in l)
+    target = line.split(". ")[0] + "."
+    verdict = {"findings": [
+        {"kind": "fabricated-event", "quote": target, "why": "x", "fix": "y"},
+        {"kind": "overstated-claim", "quote": line.split(". ")[1][:50], "why": "x", "fix": "y"}]}
+    (tmp_path / "adversarial_verdict.json").write_text(json.dumps(verdict), encoding="utf-8")
+    assert d.gate_adversarial() == "CONTINUE"
+    assert target not in (tmp_path / "final.md").read_text(encoding="utf-8")
+    assert target not in (tmp_path / "omnipulse_body.md").read_text(encoding="utf-8")
+    rec = json.loads((tmp_path / "adversarial_omnipulse_body.json").read_text(encoding="utf-8"))
+    assert [f["cut"] for f in rec] == [True, False]
+    assert any(h.get("record") == "omnipulse_body_cut" for h in d.state["history"])
+
+
+def test_a_bank_says_opener_in_the_body_is_fixed_before_lint(tmp_path):
+    d = _omni_day(tmp_path)
+    bp = tmp_path / "omnipulse_body.md"
+    body = bp.read_text(encoding="utf-8")
+    line = next(l for l in body.splitlines() if l.strip() and not l.startswith("#"))
+    bp.write_text(body.replace(line, line + " Goldman says the move has further to run.", 1),
+                  encoding="utf-8")
+    d.gate_lint()
+    final = (tmp_path / "final.md").read_text(encoding="utf-8")
+    assert "Goldman says" not in final
+    assert "In Goldman's view, the move has further to run." in final
+    assert any(h.get("record") == "omnipulse_body_voice" for h in d.state["history"])

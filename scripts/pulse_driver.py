@@ -88,6 +88,15 @@ def _omni():
     return m
 
 
+def _repair():
+    """scripts/omnipulse_repair.py, same import pattern as _omni()."""
+    try:
+        from scripts import omnipulse_repair as m
+    except ImportError:  # run as scripts/pulse_driver.py
+        import omnipulse_repair as m
+    return m
+
+
 MAX_DRAFT_REROLLS = 2
 MAX_SCRUB_ITERS = 2
 # Redesign sequencing step 3 (spec §6): repair rounds the adversarial
@@ -238,6 +247,20 @@ class Driver:
         except (OSError, ValueError) as e:
             print(f"omnipulse splice into {path.name} failed: {e}")
             return False
+
+    def _repair_body(self, fn, findings=None) -> list[str]:
+        """Apply an omnipulse_repair function to the saved body, keep the
+        result as the saved body (every later splice and the preflight
+        restore use it) and return its notes. The pilot branch keeps the
+        editor's original."""
+        try:
+            body = self._body_path().read_text(encoding="utf-8")
+        except OSError:
+            return []
+        new, notes = fn(body, findings) if findings is not None else fn(body)
+        if notes and new != body:
+            self._body_path().write_text(new, encoding="utf-8")
+        return notes
 
     def _body_markers(self) -> list[str]:
         """Strings that must survive in final.md: the body's `###`
@@ -431,8 +454,14 @@ class Driver:
         SINGLE authority on hard vs soft), emit the dispatch token."""
         out_json = self.tmp / "lint_report.json"
         # EDIT ran just before this gate: undo anything it did to the
-        # Omnipulse body. SCRUB (after this gate) may still fix wording.
+        # Omnipulse body. Dashes, semicolons and "Bank says" openers in
+        # the body are fixed in code first (owner option C, 2026-10-06:
+        # "Goldman says" shipped in the 10/5 body because SCRUB is not
+        # sent into the locked body).
         if self.omnipulse_mode():
+            fixes = self._repair_body(_repair().fix_voice)
+            if fixes:
+                self.record("omnipulse_body_voice", "; ".join(fixes))
             self._splice_body(self.tmp / "final.md")
         self._run([
             "scripts/pulse_lint.py", str(self.tmp / "final.md"),
@@ -689,6 +718,22 @@ class Driver:
                 soft.append(f)
 
         if out_of_scope:
+            # Fabricated or invented claims in the body are cut, at most
+            # two a day; every other body finding stays recorded only
+            # (owner option C, 2026-10-06: the 9/29 body shipped a diesel
+            # export ban the research never reported).
+            budgets = self.state.setdefault("budgets", {})
+            left = _repair().MAX_CUTS - budgets.get("omnipulse_body_cuts", 0)
+            cut = (self._repair_body(lambda b, f: _repair().cut_findings(b, f, left),
+                                     out_of_scope) if left > 0 else [])
+            if cut:
+                budgets["omnipulse_body_cuts"] = budgets.get("omnipulse_body_cuts", 0) + len(cut)
+                self._save()
+                self._splice_body(self.tmp / "final.md")
+                self.record("omnipulse_body_cut", " | ".join(cut))
+                out_of_scope = [{**f, "cut": any(_repair()._norm(f.get("quote") or "")[:60]
+                                                 in _repair()._norm(c) for c in cut)}
+                                for f in out_of_scope]
             (self.tmp / "adversarial_omnipulse_body.json").write_text(
                 json.dumps(out_of_scope, indent=1), encoding="utf-8")
         budgets = self.state.setdefault("budgets", {})
