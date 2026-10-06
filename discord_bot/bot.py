@@ -5982,6 +5982,20 @@ async def _ask_04_clean_answer(
             f"(q={question[:80]!r}) — feeding register rewrite"
         )
 
+    # Desk idiom on a FACT answer ("dealer balance sheets", "long-end
+    # duration supply", 2026-10-05 audit #12) feeds the same rewrite
+    # with the plain meanings (discord_bot/plain_english.py).
+    # Not on outline-built stock answers: their quality is fixed in
+    # stock_outline.py, not by another rewrite (CLAUDE.md owner rule).
+    from discord_bot import plain_english as _plain
+    from discord_bot.stock_outline import _STOCK_SHAPES as _OUTLINE_SHAPES
+    _jargon = (_plain.find(answer)
+               if (answer and _route_is_factual
+                   and _ask_meta.get("route_shape") not in _OUTLINE_SHAPES)
+               else {})
+    if _jargon:
+        hit_kinds.append("jargon")
+
     # Architecture-leak rewrite. The 2026-06-01 QC caught one shipped:
     # SV asked "what was discussed in chat between 5pm and 9pm est"
     # and the bot returned "Can't pull a clean summary for that
@@ -5995,7 +6009,7 @@ async def _ask_04_clean_answer(
     # leaks (or fails), ship the original — better SOMETHING than
     # blank.
     _register_rewrite_kinds = {
-        "meta-narration", "passive-aggressive", "asker-mockery"
+        "meta-narration", "passive-aggressive", "asker-mockery", "jargon"
     } & set(hit_kinds or [])
     if answer and _register_rewrite_kinds:
         _ask_meta["guards"].extend(
@@ -6051,7 +6065,8 @@ async def _ask_04_clean_answer(
                 "decline ('can't pull that one'), keep the decline but "
                 "drop the architecture excuse — just say what you don't "
                 "have, not why your data layer doesn't have it. "
-                + _pa_directive + _am_directive +
+                + _pa_directive + _am_directive
+                + (_plain.directive(_jargon) if "jargon" in _register_rewrite_kinds else "") +
                 "Do NOT add any new facts, names, tickers, or numbers. "
                 "Every characterization detail in your rewrite must "
                 "already appear in the ORIGINAL below or in the SUBJECT "
@@ -6103,13 +6118,21 @@ async def _ask_04_clean_answer(
                         and _asker_mockery_violations(rewritten)):
                     rewrite_hits = list(rewrite_hits or [])
                     rewrite_hits.append("asker-mockery")
+                # A plain-English rewrite must drop the terms and keep
+                # every number the original stated.
+                if "jargon" in _register_rewrite_kinds and (
+                        _plain.find(rewritten)
+                        or not _plain.keeps_numbers(answer, rewritten)):
+                    rewrite_hits = list(rewrite_hits or [])
+                    rewrite_hits.append("jargon")
                 # Fidelity check: reject a rewrite that invented
                 # substance (words traceable to neither the original
                 # answer, the dossier, nor the question). Fiction is
                 # worse than a weak register — ship the original.
                 _novel = _rewrite_novel_ratio(
                     rewritten,
-                    f"{answer} {profiles_block or ''} {question or ''}",
+                    f"{answer} {profiles_block or ''} {question or ''} "
+                    f"{' '.join(_jargon.values())}",
                 )
                 if _novel > _REWRITE_NOVEL_MAX_RATIO:
                     _ask_meta["guards"].append("rewrite:novel-rejected")

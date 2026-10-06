@@ -656,6 +656,67 @@ def check_unforced_market_data(answer: str, tool_calls=None,
     return []
 
 
+# ---------------------------------- class 4b: unsourced flow claims
+# Who is buying what is data too: options flow, retail buying, dealer
+# gamma, short covering. With no chain tool and no web grounding this
+# turn, nothing returned it. The 2026-10-02 shape: asked why chat was
+# bullish on CBRS, the answer added "Heavy retail flow stacking cheap
+# calls and 0DTEs into the lows" with no source at all. The rule ("any
+# specific factual claim must come from injected context, search results
+# ...") was already in the prompt and lost, so it is enforced here.
+_FLOW_CLAIM = re.compile(
+    r"\b(?:heavy|big|massive|aggressive|strong|steady)\s+"
+    r"(?:retail\s+|call\s+|put\s+|options?\s+|institutional\s+)?(?:flow|buying|selling|accumulation)\b"
+    r"|\bretail\s+(?:flow|buying|is\s+(?:piling|stacking|loading|buying)"
+    r"|traders?\s+(?:are\s+)?(?:piling|stacking|loading|buying))\b"
+    r"|\b(?:stacking|piling\s+into|loading\s+up\s+on)\s+(?:cheap\s+)?(?:calls|puts|0dtes?)\b"
+    r"|\bdealers?\s+(?:are\s+)?(?:short|long)\s+gamma\b"
+    r"|\bshort[- ]covering\b|\bshorts?\s+(?:are\s+)?(?:covering|getting\s+squeezed)\b"
+    r"|\b(?:call|put)\s+(?:sweeps?|buying)\b",
+    re.I,
+)
+# The tools whose payloads can carry flow: the chain, and bank notes or
+# dated news lines the router prefetches for a stock question.
+_FLOW_SOURCES = {_CHAIN_TOOL, "lookup_research", "ticker_news"}
+# A sentence about the room itself is sourced from the room's own chat.
+_ROOM_SCOPE = re.compile(r"\b(?:chat|the room|members?|you guys|y'?all|this server)\b", re.I)
+
+
+def check_unsourced_flow(answer: str, tool_calls=None, grounded=False,
+                         **_) -> list[Violation]:
+    """Flag a market-flow or positioning claim with nothing behind it:
+    no chain, research or news payload and no web grounding this turn."""
+    if grounded or set(tool_calls or []) & _FLOW_SOURCES:
+        return []
+    text = answer or ""
+    for m in _FLOW_CLAIM.finditer(text):
+        sentence = _line_at(text, m.start())
+        if _ROOM_SCOPE.search(sentence):
+            continue
+        if re.search(r"(?i)\b(?:don'?t|do not|no|not)\s+(?:have|see)\b", sentence):
+            continue
+        return [Violation(
+            "unsourced-flow", m.group(0), m.span(), sentence,
+            f"flow or positioning claim with no {_CHAIN_TOOL} call and no grounding")]
+    return []
+
+
+_FLOW_BAD = [
+    ("→ **Gamma and options leverage:** Heavy retail flow stacking cheap calls and 0DTEs "
+     "into the lows, setting up a sharp options-driven squeeze if it catches a bid.", []),
+    ("Dealers are short gamma above 7,700, so any pop gets chased.", []),
+    ("The bounce was mostly short covering after the lockup.", ["lookup_market_price"]),
+]
+_FLOW_GOOD = [
+    ("Chat is stacking cheap calls into the lows, per the room's own posts.", []),
+    ("Heavy call buying showed up in the chain: 41,000 contracts at the 180 strike.",
+     ["lookup_options_chain"]),
+    ("Goldman's desk flagged heavy call buying into the print.", ["lookup_research"]),
+    ("The $25.4 billion backlog is the bull case.", []),
+    ("I don't have flow data for CBRS today.", []),
+]
+
+
 # --------------------------------- class 5: unforced time-series claims
 # lookup_market_price and lookup_options_chain both return a SNAPSHOT --
 # one moment. A trend, a delta, a multi-day change or a "highest since"
@@ -1233,6 +1294,7 @@ _CHECKS = {
     "repetition-glitch": check_repetition,
     "unforced-price": check_unforced_price,
     "unforced-market-data": check_unforced_market_data,
+    "unsourced-flow": check_unsourced_flow,
     "unforced-time-series": check_unforced_time_series,
     "self-generated-ta": check_self_generated_ta,
     "dollar-pnl": check_dollar_pnl,
@@ -1510,6 +1572,8 @@ def _self_test() -> int:
     for label, bad, good, fn in (
             ("CLASS 4 (chain stat, no chain tool)",
              _CHAIN_BAD, _CHAIN_GOOD, check_unforced_market_data),
+            ("CLASS 4b (flow claim, no chain tool or grounding)",
+             _FLOW_BAD, _FLOW_GOOD, check_unsourced_flow),
             ("CLASS 5 (trend from snapshot tools)",
              _SERIES_BAD, _SERIES_GOOD, check_unforced_time_series)):
         print(f"\n{label} — MUST FLAG:")
