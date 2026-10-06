@@ -362,7 +362,7 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     )
     log.info(
         f"User-profile system active — ALL ingested channels, "
-        f"refresh every 6h (03/09/15/21 {settings.timezone}) "
+        f"refresh at hour(s) {settings.profile_refresh_hours} {settings.timezone} "
         f"(delta threshold: {settings.profile_delta_threshold} new msgs)"
     )
 
