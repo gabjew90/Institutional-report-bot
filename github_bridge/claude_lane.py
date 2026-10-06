@@ -33,6 +33,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import re
 from collections import defaultdict
 from dataclasses import asdict
 from datetime import datetime, timezone
@@ -118,6 +119,20 @@ def _today() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
+def title_from_file_name(file_name: str) -> str:
+    """A readable title from a PDF's file name, for the pilot meta (the
+    Omnipulse editor labels notes by it). Gemini's extracted title is not
+    available yet at hand-off. Dropbox names replace ':' '?' and quotes
+    with '_': "Rollercoaster_ How August's Seasonal _Gift_ Came" becomes
+    "Rollercoaster: How August's Seasonal 'Gift' Came"."""
+    t = re.sub(r"\.pdf$", "", (file_name or "").strip(), flags=re.I)
+    t = re.sub(r"(^|\s)_([^_]+?)_(?=\s|$)", r"\1'\2'", t)  # _quoted_
+    t = re.sub(r"(?<=\w)_(?=\w)", " ", t)  # GS_US_Economics
+    t = re.sub(r"_ ", ": ", t)  # colon
+    t = t.replace("_", "")  # a trailing ? or '
+    return re.sub(r"\s+", " ", t).strip() or (file_name or "")
+
+
 def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
              total_pages: int) -> bool:
     """Give one HIGH document to the lane. False means "run Gemini now":
@@ -139,7 +154,7 @@ def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
         date = _date_of(prior_path) if prior_path.startswith(_prefix()) else _today()
         published = publish_high_document(
             pdf_file_id=pdf_file_id, file_name=file_name, source=triage.source,
-            title=file_name, priority="high", published_at=None,
+            title=title_from_file_name(file_name), priority="high", published_at=None,
             full_text=full_text, total_pages=total_pages, date=date)
         # False also means "already there" (a retried document); the lane
         # reads it either way.

@@ -295,3 +295,18 @@ def test_notes_arriving_in_the_pulse_window_go_to_gemini(monkeypatch):
     assert W(winter(13, 35))          # 8:35 ET, before the routine's 14:00 UTC
     assert W(winter(15, 20))          # 10:20 ET, after the 10 ET pulse
     assert not W(datetime(2026, 10, 10, 13, 45, tzinfo=timezone.utc))  # Saturday
+
+
+@pytest.mark.parametrize("name,title", [
+    ("Inside The Jobs Rollercoaster_ How August's Seasonal _Gift_ Came Due.pdf",
+     "Inside The Jobs Rollercoaster: How August's Seasonal 'Gift' Came Due"),
+    ("Lock And Re-Load_ Rubner Flips Bullish As _The Buyers Are Coming Back_.pdf",
+     "Lock And Re-Load: Rubner Flips Bullish As 'The Buyers Are Coming Back'"),
+    ("Are These The WTFest ETF Charts You've Ever Seen_.pdf",
+     "Are These The WTFest ETF Charts You've Ever Seen"),
+    ("GS_US_Economics.pdf", "GS US Economics"),
+    ("Meta - Sep 28.pdf", "Meta - Sep 28"),
+    ("BTIG - SOX Continue to Track 2000 Analog.PDF", "BTIG - SOX Continue to Track 2000 Analog"),
+])
+def test_titles_come_from_cleaned_file_names(name, title):
+    assert L.title_from_file_name(name) == title
