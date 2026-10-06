@@ -341,6 +341,13 @@ class Settings(BaseSettings):
     # toward delta. 20 = ~half a day of typical yapping for an active
     # member, catches drift sooner without much extra token spend.
     profile_delta_threshold: int = 20
+    # Hours (America/New_York, comma-separated) the profile refresh runs.
+    # Owner call 2026-10-06 for cost: once a day at 21:00, after the
+    # close, so trader_score (written only on a rebuild, and what trader
+    # ranks sort by) includes the day's trades. It was "3,9,15,21" from
+    # 2026-06-02; at ~45 rebuild calls a weekday the refresh was about a
+    # quarter of the Gemini bill.
+    profile_refresh_hours: str = "21"
     # Image OCR for user profiles. When True, the backfill downloads up
     # to profile_image_cap most-recent images per user and sends them
     # alongside the text to Gemini (multipart). Vision extracts specific

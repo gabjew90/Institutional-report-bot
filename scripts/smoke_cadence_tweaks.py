@@ -4,9 +4,9 @@ Validates the scheduler configuration in scheduler/jobs.py uses the
 intended periodicity for the three jobs whose freshness affects the
 trader-log overhaul's user experience:
 
-  1. user_profile_refresh — was daily 15:00 ET, now every 6h
-     so new analyst_trades rows reflect in trader_score within ~6h
-     instead of waiting up to 24h.
+  1. user_profile_refresh — every 6h from 2026-06-02, back to once
+     daily (21:00 ET, settings.profile_refresh_hours) on 2026-10-06
+     for cost.
   2. analyst_expire_sweep — was daily 4:00 AM ET, now daily 4:00 PM ET
      (16:00) — runs right after market close so 0DTE options expiring
      that day get marked the same day instead of 12h later.
@@ -41,23 +41,21 @@ def _scheduler_source() -> str:
 
 
 def test_profile_refresh_runs_every_6_hours():
-    """Block ID 'user_profile_refresh' should have an interval / cron
-    trigger that fires multiple times per day, not once daily."""
+    """Owner call 2026-10-06 (cost): the refresh runs on the hours in
+    settings.profile_refresh_hours, once a day at 21:00 ET by default
+    (after the close, so trader_score carries the day's trades). It ran
+    every 6h from 2026-06-02 to 2026-10-06. The name is kept so the
+    manifest entry and the runner keep pointing here."""
     src = _scheduler_source()
     idx = src.find('id="user_profile_refresh"')
     assert idx > 0, "couldn't find user_profile_refresh add_job block"
-    # Grab the 800 chars before id= (the trigger lives above the id= line)
     block = src[max(0, idx - 800):idx + 200]
-    # Look for either an IntervalTrigger with hours= OR a CronTrigger
-    # with hour="X,Y,Z" listing multiple values.
-    has_interval = "IntervalTrigger(hours=6)" in block
-    has_multi_cron = bool(re.search(r'CronTrigger\([^)]*hour\s*=\s*"[\d,]+"', block))
-    assert has_interval or has_multi_cron, (
-        "user_profile_refresh trigger should be IntervalTrigger(hours=6) OR "
-        "CronTrigger with explicit hour='3,9,15,21' (4x/day). "
-        f"Got block: {block[-300:]!r}"
-    )
-    _ok("user_profile_refresh runs every 6h (4x per day)")
+    assert "hour=settings.profile_refresh_hours" in block, (
+        "user_profile_refresh must read its hours from settings.profile_refresh_hours. "
+        f"Got block: {block[-300:]!r}")
+    from config import Settings
+    assert Settings.model_fields["profile_refresh_hours"].default == "21"
+    _ok("user_profile_refresh runs at settings.profile_refresh_hours (daily 21:00 ET)")
 
 
 def test_expire_sweep_runs_at_market_close():

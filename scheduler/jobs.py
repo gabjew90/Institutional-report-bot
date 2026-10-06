@@ -310,9 +310,11 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
     # profile_delta_threshold gate still filters out users without
     # meaningful activity since their last refresh, so most 6h ticks
     # only re-profile a handful of users.
+    # 2026-10-06 (owner, cost): once daily by default, see
+    # settings.profile_refresh_hours.
     scheduler.add_job(
         _user_profile_refresh_job,
-        trigger=CronTrigger(hour="3,9,15,21", minute=0, timezone=tz),
+        trigger=CronTrigger(hour=settings.profile_refresh_hours, minute=0, timezone=tz),
         id="user_profile_refresh",
         name="User profiles: refresh active members",
         kwargs={"bot": bot},
