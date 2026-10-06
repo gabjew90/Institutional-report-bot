@@ -105,6 +105,17 @@ does not fit one serial lane).
 
 ## 7. Recommendation
 
+**T1 result (dry run 2026-10-06, 200 pilot documents, 100 HIGH and 100
+MEDIUM, production prompt, plain client):** rejected. Agreement with a
+full-length re-run: 16,000 characters 92%, 8,000 characters 84% (a
+full-length re-run agrees with the stored priority 88% of the time, so
+triage is noisy to begin with). Input tokens per call: 8,000 at full
+length, 6,000 at 16k, 4,500 at 8k, because the fixed prompt is about
+half of every call, so the saving is $2-3.50 a month at best. 8,000
+characters moved 14 of 100 MEDIUM documents to LOW against 7 at full
+length. The code comment in `ai_analysis/analyzer.py` records that 8,000
+was tried before and raised to 32,000 for the same reason. Not shipped.
+
 Phase 0, now, during the gate (no production change):
 - T1 sample: re-triage the last 300 PDFs with 8,000 characters in a dry run
   and compare priorities with the stored ones. If at least 95% agree, ship it:
