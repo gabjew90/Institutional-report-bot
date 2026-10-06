@@ -570,6 +570,24 @@ def test_resolve_logos_caches_a_real_empty_logo():
     assert db.get_symbol_logos(["NOART"]).get("NOART") == b""
 
 
+def test_an_override_logo_wins_over_a_stale_cached_one():
+    """2026-10-05 audit: Finnhub still serves PENG's old SGH mark. The
+    override fetches Penguin's own site icon and never caches it."""
+    from report import calendar_data as cd
+    _write_logo("PENG", b"old-sgh-png", age_days=1)
+    calls = []
+    orig_http, orig_down = cd._http_bytes, cd._downscale_logo
+    try:
+        cd._http_bytes = lambda url, timeout=8: calls.append(url) or b"raw"
+        cd._downscale_logo = lambda raw: b"penguin"
+        got = cd._resolve_logos(["PENG"], {})
+    finally:
+        cd._http_bytes, cd._downscale_logo = orig_http, orig_down
+    assert got["PENG"] == b"penguin"
+    assert calls == ["https://www.google.com/s2/favicons?domain=penguinsolutions.com&sz=128"]
+    assert db.get_symbol_logos(["PENG"])["PENG"] == b"old-sgh-png", "cache untouched"
+
+
 def test_resolve_logos_never_downloads_a_cached_symbol():
     from report import calendar_data as cd
     _write_logo("CACHEDLOGO", b"\x89PNG-ish", age_days=1)

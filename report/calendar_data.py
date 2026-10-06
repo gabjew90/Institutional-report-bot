@@ -356,6 +356,15 @@ def _downscale_logo(raw: bytes) -> bytes:
         return b""
 
 
+# Finnhub's profile logo is stale for a few names: PENG still carries
+# Smart Global Holdings' SGH mark (2026-10-05 audit). These use the
+# company's own site icon instead, fetched each render (only when the
+# name is on the sheet) and never written to the logo cache, so removing
+# an entry restores the Finnhub logo at once.
+LOGO_DOMAIN_OVERRIDES = {"PENG": "penguinsolutions.com"}
+_FAVICON_URL = "https://www.google.com/s2/favicons?domain={domain}&sz=128"
+
+
 def _resolve_logos(symbols: list[str], profiles: dict) -> dict:
     """symbol -> render-ready PNG bytes (b'' = no logo).
 
@@ -370,11 +379,15 @@ def _resolve_logos(symbols: list[str], profiles: dict) -> dict:
     """
     if not symbols:
         return {}
+    overridden = {s: LOGO_DOMAIN_OVERRIDES[s] for s in symbols if s in LOGO_DOMAIN_OVERRIDES}
     try:
-        cached = db.get_symbol_logos(symbols)
+        cached = db.get_symbol_logos([s for s in symbols if s not in overridden])
     except Exception as e:
         log.warning(f"calendar: logo cache read failed ({e})")
         return {}
+    for sym, domain in overridden.items():
+        raw = _http_bytes(_FAVICON_URL.format(domain=domain))
+        cached[sym] = _downscale_logo(raw) if raw else b""
 
     # A name whose cap came from cache made no profile call this run,
     # so we know nothing about its logo. That used to mean "skip", and a
