@@ -100,3 +100,31 @@ def test_a_usage_limit_is_not_a_document_failure():
     assert PA.is_limit(json.dumps({"result": "You've hit your weekly limit. Resets Monday."}))
     assert PA.is_limit("Claude AI usage limit reached|1759800000")
     assert not PA.is_limit(json.dumps({"result": '{"key_insights": ["rate limit on banks"]}'}))
+
+
+def test_sources_are_one_name_per_house():
+    from ai_analysis.analysis_build import canonical_source as C
+    assert C("Citi (via ZeroHedge / Market Ear)") == "Citi"
+    assert C("BofA Global Research") == "Bank of America"
+    assert C("BofA (via ZeroHedge, Tyler Durden)") == "Bank of America"
+    assert C("Goldman Sachs (ETF desk, Chris Hussey)") == "Goldman Sachs"
+    assert C("Zero Hedge") == "ZeroHedge"
+    assert C("Société Générale") == "Societe Generale"
+    assert C("Raymond James") == "Raymond James"
+    assert C("") == "Unknown"
+
+
+def test_a_market_ear_document_keeps_its_banned_source(tmp_path):
+    """The TRADE BOARD drops calls sourced to The Market Ear; a Claude
+    re-attribution to the underlying desk must not bypass that."""
+    _doc(tmp_path)
+    _, text, meta, _ = PA.pending(tmp_path / "pilot", 3, 25)[0]
+    m = json.loads(open(meta, encoding="utf-8").read())
+    m["source"] = "The Market Ear"
+    open(meta, "w", encoding="utf-8").write(json.dumps(m))
+    raw = tmp_path / "r.json"
+    raw.write_text(json.dumps({"key_insights": ["x"], "source": "Goldman Sachs (ETF desk)"}),
+                   encoding="utf-8")
+    rec = PA.finalize(str(raw), text, meta, str(tmp_path / "a.json"), "m")
+    assert rec["analysis"]["source"] == "The Market Ear"
+    assert rec["claude_source"] == "Goldman Sachs"

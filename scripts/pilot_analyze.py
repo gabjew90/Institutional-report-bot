@@ -121,8 +121,20 @@ def finalize(raw: str, text_path: str, meta_path: str, out: str, model: str) -> 
         + int(usage.get("cache_read_input_tokens") or 0)
         + int(usage.get("cache_creation_input_tokens") or 0),
         output_tokens=int(usage.get("output_tokens") or 0))
+    # A banned publication (The Market Ear) keeps its name as the source,
+    # as Gemini's rows do: the TRADE BOARD drops calls by that name, and
+    # Claude naming the underlying author ("Goldman Sachs", "ZeroHedge")
+    # would let a TME repost through as a desk call. Claude's attribution
+    # is kept beside it.
+    from ai_analysis.analysis_build import canonical_source
+    from ai_analysis.voice_rules import BANNED_PUBLICATION_NAMES
+    claude_source = analysis.source
+    folder_source = canonical_source(meta.get("source") or "")
+    if folder_source in {canonical_source(b) for b in BANNED_PUBLICATION_NAMES}:
+        analysis.source = folder_source
     record = {
         "pdf_file_id": int(meta["pdf_file_id"]),
+        "claude_source": claude_source,
         "model": model,
         "at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "analysis": asdict(analysis),

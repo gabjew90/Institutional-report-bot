@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 
 from ai_analysis.models import (
     EntityMention, KeyDataPoint, MacroIndicator, MarketMover, PdfAnalysis,
@@ -66,6 +67,38 @@ def _safe_dataclass(cls, data: dict):
         return None
 
 
+# One name per house, spelled the way Gemini's 30-day rows most often had
+# it (2026-10-06). Both lanes varied ("BofA Securities", "BofA Global
+# Research", "Bank of America"), and the Claude lane added provenance
+# notes ("Citi (via ZeroHedge / Market Ear)"). /ask groups desk notes by
+# this field and credits the desk by it.
+_SOURCE_ALIASES = {
+    "bofa": "Bank of America", "bofa securities": "Bank of America",
+    "bofa global research": "Bank of America", "bank of america securities": "Bank of America",
+    "bank of america global research": "Bank of America", "merrill lynch": "Bank of America",
+    "gs": "Goldman Sachs", "goldman": "Goldman Sachs",
+    "goldman sachs global investment research": "Goldman Sachs",
+    "jpm": "JPMorgan", "j.p. morgan": "JPMorgan", "jp morgan": "JPMorgan",
+    "jpmorgan chase": "JPMorgan", "j.p. morgan chase": "JPMorgan",
+    "citigroup": "Citi", "citi research": "Citi", "citibank": "Citi",
+    "ms": "Morgan Stanley", "db": "Deutsche Bank",
+    "société générale": "Societe Generale", "socgen": "Societe Generale",
+    "tme": "The Market Ear", "market ear": "The Market Ear",
+    "zero hedge": "ZeroHedge", "zerohedge": "ZeroHedge",
+}
+
+
+def canonical_source(source: str) -> str:
+    """'Citi (via ZeroHedge / Market Ear)' -> 'Citi'; 'BofA Global Research'
+    -> 'Bank of America'. Anything unknown passes through trimmed."""
+    s = re.sub(r"\([^)]*\)", " ", source or "")
+    s = re.split(r"\s+via\s+|\s*,?\s+citing\s+", s, maxsplit=1, flags=re.I)[0]
+    s = re.sub(r"\s+", " ", s).strip(" ,;-")
+    if not s:
+        return (source or "").strip() or "Unknown"
+    return _SOURCE_ALIASES.get(s.lower(), s)
+
+
 def build_analysis(data: dict, *, pdf_file_id: int, file_name: str, priority: str,
                    text_content: str, total_pages: int, pages_analyzed: int = 0,
                    input_tokens: int = 0, output_tokens: int = 0) -> PdfAnalysis:
@@ -74,7 +107,7 @@ def build_analysis(data: dict, *, pdf_file_id: int, file_name: str, priority: st
     analysis = PdfAnalysis(
         pdf_file_id=pdf_file_id,
         file_name=file_name,
-        source=data.get("source", "Unknown"),
+        source=canonical_source(data.get("source") or "Unknown"),
         title=data.get("title", file_name),
         report_type=data.get("report_type", "other"),
         priority=priority,
