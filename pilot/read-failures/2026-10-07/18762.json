@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: ninth\",\"topic\":\"Fed policy outlook\",\"status\":\"released\",\"instruments\":[],\"macro_key\":\"GDP\",\"direction\":\"bullish\",\"convic",
+ "last_reason": "reader: over the last year\",\"topic\":\"misc\",\"status\":\"released\",\"instruments\":[],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"convi",
  "history": [
   {
    "at": "2026-10-07T10:28Z",
    "run_id": "37604419117",
    "reason": "reader: ninth\",\"topic\":\"Fed policy outlook\",\"status\":\"released\",\"instruments\":[],\"macro_key\":\"GDP\",\"direction\":\"bullish\",\"convic"
+  },
+  {
+   "at": "2026-10-07T11:40Z",
+   "run_id": "37611097128",
+   "reason": "reader: over the last year\",\"topic\":\"misc\",\"status\":\"released\",\"instruments\":[],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"convi"
   }
  ]
 }
