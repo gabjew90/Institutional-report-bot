@@ -34,13 +34,19 @@ def test_record_survives_corrupt_input_and_caps_history():
     assert len(doc["history"]) == 10 and doc["attempts"] == 21
 
 
-def _seed(root, date, doc_id, attempts=None):
+def _seed(root, date, doc_id, attempts=None, note_date=None, read=False):
     d = os.path.join(root, SOURCE_TEXT_SUBDIR, date)
     os.makedirs(d, exist_ok=True)
     with open(os.path.join(d, f"{doc_id}__slug.txt"), "w", encoding="utf-8") as fh:
         fh.write("text")
     with open(os.path.join(d, f"{doc_id}.meta.json"), "w", encoding="utf-8") as fh:
-        json.dump({"source": "Goldman"}, fh)
+        json.dump({"source": "Goldman", **({"note_date": note_date} if note_date else {})}, fh)
+    if read:
+        from scripts.pilot_config import CARDS_SUBDIR
+        c = os.path.join(root, CARDS_SUBDIR, date)
+        os.makedirs(c, exist_ok=True)
+        with open(os.path.join(c, f"{doc_id}.json"), "w", encoding="utf-8") as fh:
+            fh.write("{}")
     if attempts is not None:
         p = failure_path(root, date, doc_id)
         os.makedirs(os.path.dirname(p), exist_ok=True)
@@ -85,6 +91,66 @@ def test_read_failure_cli_upserts_one_file_per_document():
         files = os.listdir(os.path.join(td, READ_FAILURES_SUBDIR, "2026-09-04"))
         assert files == ["9.json"]
         assert given_up(td, "2026-09-04", "9")
+
+
+def _list(td, *extra):
+    out = os.path.join(td, "unread.json")
+    res = subprocess.run([sys.executable, "scripts/pilot_list_unread.py", "--root", td,
+                          "--out", out, *extra], capture_output=True, text=True, check=True)
+    return [d["id"] for d in json.load(open(out, encoding="utf-8"))], res.stdout
+
+
+def test_a_day_is_read_newest_first_up_to_the_cap():
+    """2026-10-07: two days of research landed at once and the readers
+    took Monday's notes first; Tuesday's mostly went unread."""
+    with tempfile.TemporaryDirectory() as td:
+        for i in range(1, 5):
+            _seed(td, "2026-10-07", str(100 + i), note_date="2026-10-05")
+        for i in range(1, 5):
+            _seed(td, "2026-10-07", str(200 + i), note_date="2026-10-06")
+        ids, stdout = _list(td, "--max-per-day", "5")
+        assert ids == ["204", "203", "202", "201", "104"]
+        assert "3 over the 5-a-day cap" in stdout
+
+
+def test_read_notes_hold_their_place_under_the_cap():
+    with tempfile.TemporaryDirectory() as td:
+        _seed(td, "2026-10-07", "1", read=True)
+        _seed(td, "2026-10-07", "2", read=True)
+        _seed(td, "2026-10-07", "3")
+        _seed(td, "2026-10-07", "4")
+        ids, _ = _list(td, "--max-per-day", "3")
+        assert ids == ["4", "3"]          # 4, 3 and 2 are in scope; 2 is read
+        ids, _ = _list(td, "--max-per-day", "2")
+        assert ids == ["4", "3"]
+
+
+def test_given_up_notes_take_no_slot_and_are_still_reported():
+    with tempfile.TemporaryDirectory() as td:
+        _seed(td, "2026-10-07", "5", attempts=MAX_READ_ATTEMPTS)
+        _seed(td, "2026-10-07", "4")
+        _seed(td, "2026-10-07", "3")
+        _seed(td, "2026-10-07", "2")
+        gu = os.path.join(td, "gu.json")
+        ids, _ = _list(td, "--max-per-day", "2", "--given-up-out", gu)
+        assert ids == ["4", "3"]
+        assert [d["id"] for d in json.load(open(gu, encoding="utf-8"))] == ["5"]
+
+
+def test_without_note_dates_arrival_order_decides():
+    with tempfile.TemporaryDirectory() as td:
+        for i in (7, 9, 8):
+            _seed(td, "2026-10-08", str(i))
+        ids, _ = _list(td, "--max-per-day", "2")
+        assert ids == ["9", "8"]
+
+
+def test_note_date_comes_from_the_dropbox_day_folder():
+    from github_bridge.pilot_publish import note_date_from_path as f
+    assert f("/Current/2026/October/Oct 6/Goldman Sachs/S&T/x.pdf") == "2026-10-06"
+    assert f("/Current/2026/September/Sep 30/JPM/y.pdf") == "2026-09-30"
+    assert f("/Current/Hedge Fund Letters/z.pdf") is None
+    assert f("") is None
 
 
 if __name__ == "__main__":

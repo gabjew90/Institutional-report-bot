@@ -134,7 +134,7 @@ def title_from_file_name(file_name: str) -> str:
 
 
 def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
-             total_pages: int) -> bool:
+             total_pages: int, dropbox_path: str = "") -> bool:
     """Give one HIGH document to the lane. False means "run Gemini now":
     the switch is off, or the source text could not be put where the
     lane reads it. Never raises."""
@@ -155,7 +155,8 @@ def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
         published = publish_high_document(
             pdf_file_id=pdf_file_id, file_name=file_name, source=triage.source,
             title=title_from_file_name(file_name), priority="high", published_at=None,
-            full_text=full_text, total_pages=total_pages, date=date)
+            full_text=full_text, total_pages=total_pages, date=date,
+            dropbox_path=dropbox_path)
         # False also means "already there" (a retried document); the lane
         # reads it either way.
         if not published and not gh.get_file(meta_path_for(pdf_file_id, date), ref=branch):

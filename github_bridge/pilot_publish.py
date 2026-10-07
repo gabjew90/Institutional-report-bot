@@ -48,7 +48,8 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
                           source: str, title: str, priority: str,
                           published_at: str | None,
                           full_text: str, total_pages: int = 0,
-                          date: str | None = None) -> bool:
+                          date: str | None = None,
+                          dropbox_path: str = "") -> bool:
     """Commit one HIGH document's text + meta. True when published.
 
     `date` names the folder; by default it is the document's own date
@@ -116,6 +117,9 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
             # the Claude analysis lane copies it into its records
             # (scripts/pilot_analyze.py, 2026-10-06)
             "total_pages": int(total_pages or 0),
+            # the bank's day, from the Dropbox day folder: the readers take
+            # the newest first (scripts/pilot_list_unread.py, 2026-10-07)
+            "note_date": note_date_from_path(dropbox_path),
         }, indent=1),
             f"pilot: meta {pdf_file_id}", ref=PILOT_BRANCH)
         log.info(f"pilot: published {pdf_file_id} ({source}) "
@@ -128,6 +132,22 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
         log.warning(f"pilot publish failed for {pdf_file_id} "
                     f"(non-fatal): {e}")
         return False
+
+
+_MONTHS = {m: i for i, m in enumerate(
+    ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+
+
+def note_date_from_path(dropbox_path: str) -> str | None:
+    """'/Current/2026/October/Oct 6/Goldman/x.pdf' -> '2026-10-06'."""
+    m = re.search(r"/(\d{4})/[A-Za-z]+/([A-Za-z]{3})[a-z]*\.? (\d{1,2})/", dropbox_path or "")
+    if not m or m.group(2).lower() not in _MONTHS:
+        return None
+    from datetime import date
+    try:
+        return date(int(m.group(1)), _MONTHS[m.group(2).lower()], int(m.group(3))).isoformat()
+    except ValueError:
+        return None
 
 
 def meta_path_for(pdf_file_id: int, date: str, base: str | None = None) -> str:

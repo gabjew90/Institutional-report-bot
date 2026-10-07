@@ -108,7 +108,8 @@ async def process_single_pdf(pdf_data: dict, use_claude_lane: bool = True) -> Pd
                 # GitHub round trips: off the event loop
                 if await asyncio.to_thread(
                         claude_lane.hand_off, pdf_file_id=pdf_id, file_name=file_name,
-                        triage=triage, full_text=full_text, total_pages=len(pages)):
+                        triage=triage, full_text=full_text, total_pages=len(pages),
+                        dropbox_path=dropbox_path):
                     # PROCESSING until the lane's record arrives or Gemini
                     # runs as the fallback; the local PDF stays for that.
                     return None
@@ -214,6 +215,7 @@ async def process_single_pdf(pdf_data: dict, use_claude_lane: bool = True) -> Pd
                 # dispatch) on every run.
                 full_text=full_text,
                 total_pages=len(pages),
+                dropbox_path=dropbox_path,
             )
         except Exception as e:
             log.warning(f"pilot publish dispatch failed (non-fatal): {e}")

@@ -155,3 +155,23 @@ def test_nul_bytes_are_stripped_so_the_graders_can_search_the_file():
         config.settings, gh.put_file, gh.get_file = orig_settings, orig_put, orig_get
     txt = next(v for k, v in written.items() if k.endswith(".txt"))
     assert "\x00" not in txt and "MS, PNC and FITB." in txt
+
+
+def test_meta_carries_the_banks_day_from_the_dropbox_folder():
+    """The readers take the newest notes first (2026-10-07)."""
+    import json
+    import config
+    from github_bridge import client as gh
+    written = {}
+    orig_settings, orig_put, orig_get = config.settings, gh.put_file, gh.get_file
+    try:
+        config.settings = _Settings(True)
+        gh.put_file = lambda path, content, msg, ref=None: written.update({path: content}) or {}
+        gh.get_file = lambda path, ref=None: None
+        publish_high_document(pdf_file_id=8, file_name="n.pdf", source="Goldman", title="t",
+                              priority="high", published_at=None, full_text="b",
+                              dropbox_path="/Current/2026/October/Oct 6/Goldman/n.pdf")
+    finally:
+        config.settings, gh.put_file, gh.get_file = orig_settings, orig_put, orig_get
+    meta = next(json.loads(c) for p, c in written.items() if p.endswith(".meta.json"))
+    assert meta["note_date"] == "2026-10-06"
