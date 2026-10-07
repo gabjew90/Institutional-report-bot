@@ -1,7 +1,7 @@
 {
- "attempts": 2,
- "given_up": false,
- "last_reason": "reader: over the last year\",\"topic\":\"misc\",\"status\":\"released\",\"instruments\":[],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"convi",
+ "attempts": 3,
+ "given_up": true,
+ "last_reason": "reader: 11.6% to 15.3% in a single year.\",\"anchor\":\"Margins expanded from \\n11.6% to 15.3% in a single year\",\"topic\":\"AI investm",
  "history": [
   {
    "at": "2026-10-07T10:28Z",
@@ -12,6 +12,11 @@
    "at": "2026-10-07T11:40Z",
    "run_id": "37611097128",
    "reason": "reader: over the last year\",\"topic\":\"misc\",\"status\":\"released\",\"instruments\":[],\"macro_key\":\"OTHER\",\"direction\":\"bullish\",\"convi"
+  },
+  {
+   "at": "2026-10-07T13:14Z",
+   "run_id": "37617897791",
+   "reason": "reader: 11.6% to 15.3% in a single year.\",\"anchor\":\"Margins expanded from \\n11.6% to 15.3% in a single year\",\"topic\":\"AI investm"
   }
  ]
 }
