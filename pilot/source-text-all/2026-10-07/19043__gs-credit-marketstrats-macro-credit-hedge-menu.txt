@@ -1,0 +1,43 @@
+GS Zhou - GS Credit MarketStrats Macro Credit Hedge Menu
+October 2026 6 Oct 2026
+Reid Zhou  ·  Goldman Sachs  ·  Vice President, Credit MarketStrats
+Tue 6 Oct 2026, 1:59pm ET
+Attractive Credit Hedges:
+1/ GS Ex-Hyperscaler basket via TRS
+Rationale: IG credit spreads have remained resilient despite recent weakness in the cash space, where rates
+- not credit - have been the main driver of underperformance. Generic IG cash spreads are roughly
+unchanged from the beginning of September. For a short, the 30y ex-hyperscaler basket continues to
+screen attractive. Should supply from the broader IG issuer base catch up and long-end rates continue to
+sell off, both would drive credit spreads wider - and so far we have seen only limited widening in ex-
+hyperscaler spreads.
+Implementation: Sell 500mm GSIG30NH basket on swap, buy 439mm UST on swap.
+Max Loss: Notional
+Carry Analysis: Carry analysis does not include roll-down. Please reach out to discuss.
+Payoff Analysis:
+2/ CDX IG payer spread
+Rationale: Credit has stayed out of the eye of the storm over the past month - rates took center stage
+instead. As a result, credit vol continues to screen the cheapest across asset classes. With payer skew
+steepening back up, payer spread presents a more cost-effective way to protect against moderate widening.
+
+Implementation: IG47 Dec 60/75 PS /12.75 ref 58 35d 5.2x gross, 4.2x net
+Max Loss: Premium Paid
+Payoff Analysis (Assuming 1mm premium spent):
+3/ CDX IG Equity Index Tranche
+Rationale: With the pick-up in supply through September, the market has begun to see greater divergence
+in single-name performance. Within IG, idiosyncratic headlines have become more frequent, and older
+names in the index have grown more vulnerable. Owning IG equity tranche protection (delta-hedged) is
+the most direct way to express that dispersion. Entry looks attractive, with realized correlation moving
+meaningfully lower over the past month against a stable implied correlation. The longer-dated nature
+requires less frequent rolling and therefore saves roll cost.
+Implementation: 25 mm CDX IG47 0-3% /31.328 ref IG47 58
+Max Loss: MTM net of carry + rolldown
+
+Charts:
+Credit Valuations | Remain stretched
+CDX Non-Dealer Net Positioning | On-the-run + 2 off-the-run, near all time highs
+
+Cross Asset Volatility | Credit vol continue to screen the lowest across asset classes
+
+Simulated results are for illustrative purposes only. Simulated and/or past performance figures are not a
+reliable indicator of future results.
+Source: GS FICC and Equities as of October 6, 2026. Past performance figures are not a reliable indicator of future results.
