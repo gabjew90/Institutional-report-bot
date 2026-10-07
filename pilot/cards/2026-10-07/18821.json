@@ -1,0 +1,1504 @@
+{
+ "brief": "Following a two-month sector pullback (SOX down 11% vs SPX up 4%) driven by de-risking, Goldman Sachs sees a more constructive setup heading into 3Q earnings than its cautious 2Q call, with upside to estimates across most semiconductor sub-sectors. SemiCap gets positive estimate revisions from pulled-in WFE spending and long-term visibility into 2028. Compute benefits from an upward bias to hyperscaler capex, lifting server CPUs (rising agentic AI attach) and key ASIC programs. Analog is favored, with a preference for industrial, aerospace/defense and datacenter exposure. Memory/storage has fundamental upside, but GS prefers HDDs and NAND given limited near-term supply additions. Tactical calls: upside for AMAT, STX and MCHP (MCHP a favorite name, with GS arguing the Street under-models the analog recovery); downside for QCOM, KLAC and WDC. Company theses include: AMAT raising margin targets at SEMICON West; STX's HAMR ramp beating WDC; QCOM's datacenter-ramp expectations running ahead of itself; KLAC lagging peers on DRAM-skewed WFE; AMD's Helios ramp lifting 2027 estimates above Street; and ARM facing AGI CPU supply constraints against persistent smartphone royalty weakness.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "The semiconductor index (SOX) fell 11% over the past two months while the S&P 500 (SPX) rose 4%, a divergence Goldman Sachs attributes to significant de-risking.",
+   "anchor": "Following a significant pullback in the sector over the past two months driven by significant de-risking (SOX down 11% vs. SPX up 4%)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "past two months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs sees upside to estimates across most sub-sectors of the semiconductor ecosystem heading into 3Q earnings.",
+   "anchor": "We see upside to estimates across most sub-sectors of the semiconductor ecosystem heading into 3Q earnings.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects significant positive estimate revisions for SemiCap companies given pull-ins to WFE spending and long-term visibility into 2028.",
+   "anchor": "We expect significant positive estimate revisions for SemiCap companies given pull-ins to WFE spending, and long-term visibility into 2028.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "An upward bias to hyperscaler capex gives Goldman Sachs upside views on both server CPUs, via increasing agentic AI attach, and key ASIC programs.",
+   "anchor": "In compute, given an upward bias to hyperscaler CapEx, we see upside for both server CPUs (increasing agentic AI attach) and key ASIC programs.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs is favorable on analog given upside to estimates and prefers stocks with the greatest industrial, aerospace/defense and datacenter exposures.",
+   "anchor": "We are favorable on analog given upside to estimates - and we prefer stocks with the greatest industrial, aero/defense and datacenter exposures.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs sees fundamental upside for the memory/storage complex but prefers HDDs and NAND given a lack of near-term supply additions.",
+   "anchor": "Finally, we see fundamental upside for the memory/storage complex, but prefer HDDs and NAND given a lack of near-term supply additions.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' tactical ideas see upside for AMAT, STX and MCHP heading into 3Q earnings.",
+   "anchor": "Tactical Ideas: See upside for AMAT, STX, MCHP; downside for QCOM, KLAC, WDC",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMAT",
+    "STX",
+    "MCHP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' tactical ideas see downside for QCOM, KLAC and WDC heading into 3Q earnings.",
+   "anchor": "Tactical Ideas: See upside for AMAT, STX, MCHP; downside for QCOM, KLAC, WDC",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "QCOM",
+    "KLAC",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Microchip (MCHP) is among Goldman Sachs' favorite names, as the Street continues to under-model the analog recovery.",
+   "anchor": "MCHP is among our favorite names.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MCHP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs raised AMD's 12-month price target to $700 (from $640), based on a 32X P/E multiple on a normalized EPS estimate of $22 (up from $20).",
+   "anchor": "Our 12-month target price of $700 (up from $640) is based on a 32X P/E multiple (unchanged) applied to our normalized EPS estimate of $22 (up from $20 on higher estimates).",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' 2027 EPS estimate for AMD of $17.10 is 7% above the Street.",
+   "anchor": "Our 2027 EPS estimate of $17.10 is 7% above Street.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs increased its AMD EPS estimates by about 6% on average, driven by higher Server CPU revenues and higher margins.",
+   "anchor": "We increase our EPS estimates by ~6% on average driven by higher Server CPU revenues and higher margins.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs believes greater visibility into a sustained AMD server CPU growth cycle, driven by mainstream adoption of agentic AI, could be a positive stock catalyst.",
+   "anchor": "We believe greater visibility into a sustained server CPU growth cycle driven by the mainstream adoption of agentic AI",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates ARM Sell with a 12-month price target of $160, based on 50X its normalized EPS estimate of $3.20.",
+   "anchor": "Our 12-month price target of $160 is based on 50X our normalized EPS estimate of $3.20.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "ARM management previously cited $2 billion of AGI CPU demand in FY27-28, with supply constraints restricting fulfillment of an incremental $1 billion of that demand.",
+   "anchor": "Management previously cited $2 bn of AGI CPU demand in FY27-28, with supply constraints restricting fulfillment of an incremental $1 bn of demand",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27-28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects ARM to deliver an in-line quarter with EPS guidance above consensus, driven by better margins.",
+   "anchor": "We expect an in-line quarter with EPS guidance above consensus, driven by better margins.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs flags near-term risk to ARM's royalty business from persistent smartphone weakness, which is likely to offset strength in CPUs and datacenters.",
+   "anchor": "We would highlight near-term risk to the royalty business driven by persistent smartphone weakness, which is likely to offset strength in CPUs and datacenters.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Cadence (CDNS) Buy with a 12-month price target of $470, based on a 45.5X multiple on a normalized EPS estimate of $10.50.",
+   "anchor": "Our 12-month target price of $470 is based on a 45.5X multiple applied to our normalized EPS estimate of $10.50.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Cadence to raise its full-year CY26 guidance to about 21% year-over-year revenue growth, up from about 18% previously.",
+   "anchor": "raise full-year guidance for CY26 to ~21% YoY revenue growth (vs. ~18% YoY previously)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Cadence's stock rallied about 15% over the two weeks before the print, driven by growing AI monetization opportunities.",
+   "anchor": "in light of the stock\u2019s ~15% rally over the past two weeks, driven by growing AI monetization opportunities.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "past two weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' 2027 EPS estimates for Cadence are about 4% above Street consensus.",
+   "anchor": "our EPS estimates are ~4% above Street consensus",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Intel (INTC) Neutral with a 12-month price target of $150, based on a 30X P/E multiple on a normalized EPS estimate of $5.00.",
+   "anchor": "Our 12-month target price of $150 is based on a 30X P/E multiple applied to our normalized EPS estimate of $5.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs raised its Intel EPS estimates by 2% on average to reflect stronger server CPU demand.",
+   "anchor": "We raise our EPS estimates by 2% on average to reflect stronger server CPU demand.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs moved its Intel 2026/27/28 EPS estimates to $1.65/$2.75/$4.70, from $1.65/$2.70/$4.60 prior.",
+   "anchor": "Our 2026/27/28 EPS estimates move to $1.65/$2.75/$4.70 for 2026/27/28, from $1.65/$2.70/$4.60 prior.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs believes Intel's stock remains underpinned by a structural turnaround thesis that should stay intact following earnings, with much of the near-term upside already priced in.",
+   "anchor": "the stock remains underpinned by a structural turnaround thesis that should remain intact following earnings",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Qualcomm (QCOM) Neutral with an unchanged 12-month price target of $180, based on a 15X P/E multiple on a normalized EPS estimate of $12.00.",
+   "anchor": "Our 12-month target price of $180 (unchanged) reflects a 15X P/E multiple applied to our normalized EPS estimate of $12.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "QCOM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs models $600 million in Qualcomm datacenter revenue in fiscal 1Q.",
+   "anchor": "We model $600 mn in datacenter revenue in 1Q.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "QCOM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY1Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs believes investor expectations for Qualcomm are likely too high in the short term.",
+   "anchor": "We believe investor expectations are likely too high in the short term",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "QCOM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "short term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs modestly reduced its Qualcomm EPS estimates by 3% on average to reflect lower margins from persistent component cost inflation.",
+   "anchor": "We modestly reduce our EPS estimates by 3% on average to reflect lower margins due to persistent component cost inflation.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "QCOM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Microchip (MCHP) Buy with a 12-month price target of $115, based on a 26X P/E multiple on a normalized EPS forecast of $4.50.",
+   "anchor": "Our 12-month target price of $115 is based on a 26X P/E multiple applied to our normalized EPS forecast of $4.50.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "MCHP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Microchip to deliver about 1% revenue upside in the quarter and guide to low-single-digit revenue growth quarter-over-quarter.",
+   "anchor": "We expect Microchip to deliver ~1% revenue upside in the quarter and guide for low-single-digits revenue growth QoQ.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MCHP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Microchip's gross margin to recover to about 66% (ex. stock-based compensation) exiting CY26.",
+   "anchor": "We are expecting gross margin to recover to ~66% (ex. SBC) exiting CY26.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MCHP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Microchip has disclosed that datacenter accounts for about 17% of its revenue.",
+   "anchor": "Microchip has disclosed its datacenter exposure (~17%)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "MCHP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates NXP Semiconductors (NXPI) Buy with a 12-month price target of $325, based on an 18X P/E multiple on a normalized EPS forecast of $18.00.",
+   "anchor": "Our 12-month price target of $325 is based on an 18X P/E multiple applied to our normalized EPS forecast of $18.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects NXP to deliver about 1% revenue upside and 40 basis points of margin upside in the quarter, and guide to low-single-digit revenue growth quarter-over-quarter.",
+   "anchor": "We expect NXP to deliver ~1% revenue and 40 bps margin upside in the quarter, and guide to low-single digit revenue growth QoQ.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY26 non-GAAP EPS estimates for NXP are about 1% above the Street.",
+   "anchor": "For CY26, our non-GAAP EPS estimates are ~1% above the Street.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "NXP has a target of doubling its datacenter revenue in 2026.",
+   "anchor": "progress towards its target of doubling datacenter revenue in 2026",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates onsemi (ON) Neutral with a 12-month price target of $95, based on a 20X P/E multiple on a normalized EPS estimate of $4.75.",
+   "anchor": "Our 12-month target price of $95 reflects a 20X P/E multiple applied to our normalized EPS of $4.75.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects onsemi to deliver about 1% revenue upside in the quarter and guide to low-single-digit revenue growth quarter-over-quarter.",
+   "anchor": "We expect onsemi to deliver ~1% revenue upside in the quarter and guide to low-single-digit revenue growth QoQ.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Onsemi's large automotive exposure, about 50% of revenue, is tempering investor optimism around its datacenter and macro tailwinds.",
+   "anchor": "the company\u2019s large automotive exposure (~50% of revenue)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Onsemi expects its automotive business to grow about 9% above seasonally adjusted rate (SAR) over the medium term.",
+   "anchor": "which it expects to grow ~9% above SAR over the medium term",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "medium term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates SiTime (SITM) Buy with a 12-month price target of $900, based on 60X its normalized EPS forecast of $15.00.",
+   "anchor": "Our 12-month target price $900 is based on 60X applied to our normalized EPS forecast of $15.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects SiTime to deliver about 5% revenue upside in the quarter and guide revenue up about 4.5% quarter-over-quarter.",
+   "anchor": "We expect SiTime to deliver ~5% revenue upside in the quarter and guide revenue up ~4.5% QoQ",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "SiTime has slightly underperformed the broader benchmark in the quarter, though it is largely in line with its analog peer average.",
+   "anchor": "SITM has slightly underperformed the broader benchmark in the quarter, though is largely in-line with its analog peer average",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY26 overall revenue estimates for SiTime are about 2% above the Street.",
+   "anchor": "For CY26, our overall revenue estimates are ~2% above the Street",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "SITM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Texas Instruments (TXN) Sell with a 12-month price target of $225, based on a 25X P/E multiple on a normalized EPS estimate of $9.00.",
+   "anchor": "Our 12-month price target of $225 is based on a 25X P/E multiple applied to our normalized EPS estimate of $9.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Texas Instruments to deliver about 3% revenue upside in the quarter and guide 4Q revenue about 2% above the Street.",
+   "anchor": "We expect Texas Instruments to deliver ~3% revenue upside in the quarter and guide 4Q revenue ~2% above the Street.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Any commentary on Texas Instruments' $8-per-share free cash flow target for 2026 is likely to move the stock.",
+   "anchor": "Any commentary on the company\u2019s $8/share FCF target for 2026 is likely to move the stock.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Texas Instruments has slightly outperformed its analog peers in CY3Q26, down about 6% versus about 10% on average for Goldman Sachs' analog coverage.",
+   "anchor": "TXN has slightly outperformed its analog peers in CY3Q26 (~-6% vs. ~-10% on average for analog companies within our coverage)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "CY3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Applied Materials (AMAT) Buy with a 12-month price target of $670, based on a 32X P/E multiple on a normalized EPS estimate of $21.00.",
+   "anchor": "Our 12-month price target of $670 is based on a 32X P/E multiple applied to our normalized EPS estimate of $21.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Applied Materials management to speak to accelerating growth toward a WFE market of $300 billion over time, at SEMICON West.",
+   "anchor": "management to speak to accelerating growth to a WFE market of $300bn over time, plus increased long-term margin targets.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "over time"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Applied Materials to raise its margin targets and provide a robust growth outlook at SEMICON West in October, ahead of earnings.",
+   "anchor": "We expect Applied to raise its margin targets and provide a robust growth outlook at SEMICON West in October",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Applied Materials' stock rallied about 12% in the week before the print, and Goldman Sachs believes investor expectations are elevated heading into it.",
+   "anchor": "Following a ~12% price rally in the past week, we believe investor expectations are elevated heading into the print",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "past week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Applied Materials has a target of 70% advanced packaging revenue growth for CY26.",
+   "anchor": "progress toward its 70% advanced packaging revenue growth target for CY26",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Amkor (AMKR) Neutral with a 12-month price target of $65, based on a 25X P/E multiple on a normalized EPS estimate of $2.60.",
+   "anchor": "Our 12-month price target is $65, which is based on a 25X P/E multiple applied to our normalized EPS of $2.60.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Amkor to deliver about 2% revenue upside and guide 4Q revenue above the Street.",
+   "anchor": "We expect Amkor to deliver ~2% revenue upside and guide 4Q revenue above the Street",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY27 EPS estimate for Amkor is about 2% above the Street.",
+   "anchor": "For CY27, our EPS estimate is ~2% above the Street.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMKR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Camtek (CAMT) Neutral with a 12-month price target of $160, based on a 38X P/E multiple on a normalized EPS estimate of $4.20.",
+   "anchor": "Our 12-m price target of $160 is based on a 38X P/E multiple applied to our normalized EPS of $4.20.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "CAMT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Camtek is guiding to strong growth projections of 30% in the second half of 2026 relative to the first half.",
+   "anchor": "following strong growth projections of 30% in 2H26 relative to 1H26",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CAMT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY27 EPS estimate for Camtek is about 12% below Street consensus, driven by a weaker outlook for its HPC and CMOS imaging segments.",
+   "anchor": "For CY27, our EPS estimate is ~12% below Street consensus driven by our weaker outlook for its HPC and CMOS imaging segments",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "CAMT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Entegris (ENTG) Sell with a 12-month price target of $120, based on a 30X P/E multiple on a normalized EPS estimate of $4.00.",
+   "anchor": "Our 12-month target price of $120 is based on a 30X P/E multiple applied to our normalized EPS of $4.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "ENTG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Investors will focus on Entegris' progress toward its approximately 3X net leverage target.",
+   "anchor": "Investors will focus on the company\u2019s progress towards its ~3X net leverage target",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "ENTG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects investors to pivot to Entegris' Capital Markets Day on November 9 after the print.",
+   "anchor": "We expect investors to pivot to Entegris\u2019 Capital Markets Day on November 9",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ENTG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November 9"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates GlobalFoundries (GFS) Neutral with a price target of $70, based on a 25X P/E multiple on a normalized EPS estimate of $2.80.",
+   "anchor": "Our price target is $70, which is based on a 25X P/E multiple applied to our normalized EPS of $2.80.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "GFS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs sees optimism around GlobalFoundries' silicon photonics business scaling to a run rate of more than $1 billion by CY28.",
+   "anchor": "optimism around silicon photonics scaling to a >$1B run rate by CY28",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "GFS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "GlobalFoundries' silicon photonics optimism is partially offset by an expected low-double-digit decline in its smartphone market.",
+   "anchor": "partially offset by weakness in the smartphone market (expected low-double-digit decline)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "GFS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs sees GlobalFoundries capturing incremental GaN share as TSMC exits that market in 2027.",
+   "anchor": "the potential to capture incremental GaN share as TSMC exits the market in 2027",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "GFS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates KLA (KLAC) Neutral with a 12-month price target of $210, based on a 32X P/E multiple on a normalized EPS estimate of $6.50.",
+   "anchor": "Our 12-month price target is $210, which is based on a 32X P/E multiple applied to our normalized EPS of $6.50.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "KLAC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "KLA has guided to CY26 and CY27 revenue growth in the mid-20% range, despite more bullish WFE spending forecasts from Goldman Sachs.",
+   "anchor": "management has guided to CY26 and CY27 growth in the mid-20% range, despite more bullish WFE spending forecasts from GS",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "KLAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "CY26-CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects KLA to deliver about 5% revenue upside and guide for high-single-digit revenue growth quarter-over-quarter.",
+   "anchor": "We expect KLA to deliver ~5% revenue upside and guide for high-single-digit revenue growth QoQ",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "KLAC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects KLA's results to lag peers because WFE spending is skewed toward DRAM.",
+   "anchor": "we expect results to lag peers, as WFE spending is skewed toward DRAM",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "KLAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Lam Research (LRCX) Buy with a price target of $380, based on a 35X multiple on a normalized EPS forecast of $10.75.",
+   "anchor": "Our price target is $380, which is based on a 35X multiple applied to our normalized EPS forecast of $10.75.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "After a roughly 20% stock pullback over three months, Goldman Sachs believes Lam Research's risk/reward is significantly more favorable.",
+   "anchor": "Following a ~20% stock pullback over the past three months, we believe risk/reward is significantly more favorable",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past three months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Lam Research has an upwardly revised gross margin target of about 55%.",
+   "anchor": "the company achieving its upwardly revised gross margin target of ~55%",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY4Q26 non-GAAP EPS estimate for Lam Research is about 7% above Street consensus.",
+   "anchor": "For CY4Q26, our non-GAAP EPS estimate is ~7% above Street consensus.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates MKS Instruments (MKSI) Sell with a 12-month price target of $270, based on a 20X P/E multiple on a normalized EPS estimate of $13.50.",
+   "anchor": "Our 12-month price target is $270, which is based on a 20X P/E multiple applied to our normalized EPS of $13.50.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "MKSI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Following a roughly 7% decline since MKS Instruments last reported, Goldman Sachs believes investor expectations remain conservative.",
+   "anchor": "Following a ~7% decline since MKS last reported, we believe investor expectations remain conservative",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [
+    "MKSI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY27 non-GAAP EPS estimate for MKS Instruments is 3% below Street consensus.",
+   "anchor": "For CY27, our non-GAAP EPS estimate is 3% below Street consensus.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MKSI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Onto Innovation (ONTO) Buy with a 12-month price target of $400, based on 32X its normalized EPS estimate of $12.50.",
+   "anchor": "Our12-month price target is $400, which is based on 32X our normalized EPS estimate of $12.50.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "ONTO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Onto Innovation to deliver about 2% revenue upside and guide revenue up by mid-single-digits quarter-over-quarter.",
+   "anchor": "We expect Onto to deliver ~2% revenue upside and guide revenue up by mid-single-digits QoQ",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ONTO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY27 EPS estimate for Onto Innovation is about 6% above Street consensus.",
+   "anchor": "For CY27, our EPS estimate is ~6% above Street consensus.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "ONTO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Onto Innovation is targeting about 350 basis points of gross margin expansion and about 750 basis points of operating margin expansion.",
+   "anchor": "goals of ~350bps of gross margin and ~750bps of operating margin expansion",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "ONTO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Qnity (Q) Buy with a 12-month price target of $175, based on a 32X P/E multiple on a normalized EPS estimate of $5.50.",
+   "anchor": "Our 12-month price target is $175, which is based on a 32X P/E multiple applied to our normalized EPS of $5.50.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "Q"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Qnity to deliver 3%-4% revenue upside in the quarter and to guide revenue flat quarter-over-quarter.",
+   "anchor": "We expect Qnity to deliver 3%-4% revenue upside in the quarter and to guide revenue flat QoQ",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "Q"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY27 EPS estimate for Qnity is about 11% above the Street.",
+   "anchor": "For CY27, our EPS estimate is ~11% above the Street.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "Q"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Teradyne (TER) Buy with a 12-month price target of $465, based on a 37X P/E multiple on a normalized EPS forecast of $12.50.",
+   "anchor": "Our 12-month price target is $465, which is based on a 37X P/E multiple applied to our normalized EPS forecast of $12.50.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Teradyne to deliver about 3% revenue upside in the quarter and guide revenue flattish quarter-over-quarter.",
+   "anchor": "We expect Teradyne to deliver ~3% revenue upside in the quarter and guide revenue flattish QoQ.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Teradyne has a path toward a $300 million to $700 million CPO test TAM opportunity by 2028.",
+   "anchor": "the path toward the company\u2019s $300M-$700M TAM opportunity by 2028",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "TER"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates SanDisk (SNDK) Buy with a 12-month price target of $2,200, based on a 20X P/E multiple on a normalized EPS estimate of $110.",
+   "anchor": "Our 12-month target price of $2,200 is based on a 20X P/E multiple applied to our normalized EPS estimate of $110.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs believes SanDisk will deliver about 5%-6% upside to the Street estimate and guidance midpoint respectively in the quarter.",
+   "anchor": "believe SanDisk will deliver ~5%/~6% upside to the Street/guidance midpoint respectively in the quarter",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs' CY26 non-GAAP EPS estimate for SanDisk is about 6% above Street consensus.",
+   "anchor": "For CY26, our non-GAAP EPS estimate is ~6% above Street consensus",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs introduced a SanDisk FY29 non-GAAP EPS projection of $300.44.",
+   "anchor": "a non-GAAP EPS projection of $300.44",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Seagate (STX) Buy with a 12-month price target of $960, based on a 24X P/E multiple on a normalized EPS estimate of $40.00.",
+   "anchor": "Our 12-month price target of $960 is based on a 24X P/E multiple applied to our normalized EPS estimate of $40.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Seagate to deliver about 2% revenue upside in the quarter and guide about 3% above the Street for fiscal 2Q27.",
+   "anchor": "We expect Seagate to deliver ~2% revenue upside in the quarter and guide ~3% above the Street for FY 2Q27",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2Q27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Investors will closely watch additional color from Seagate management on the timing and scope of its capital return policy.",
+   "anchor": "additional color from management on the timing and scope of its capital return policy will be closely watched by investors",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs rates Western Digital (WDC) Neutral with a price target of $615, based on a 22X P/E multiple on a normalized EPS estimate of $28.00.",
+   "anchor": "Our price target of $615 is based on a 22X P/E multiple applied to our normalized EPS of $28.00.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs expects Western Digital to deliver revenue upside of about 1% above consensus in the quarter and guidance about 1% above the Street.",
+   "anchor": "We expect WDC to deliver revenue upside in the quarter (~1% above consensus) and provide guidance ~1% above the Street.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs introduced a Western Digital FY29 non-GAAP EPS projection of $30.97.",
+   "anchor": "including a non-GAAP EPS projection of $30.97.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Americas Technology: Semiconductors: 3Q Preview: Expect stocks to work on better numbers following sector-wide pullback",
+   "claim": "Goldman Sachs is constructive on the HDD sector and Western Digital but prefers Buy-rated Seagate given its faster HAMR progress, which should yield incremental near-term share gains.",
+   "anchor": "but prefer Buy-rated STX given faster progress on the HAMR ramp which should yield incremental share gains in the near term",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "WDC",
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/18821__americas-technology-semiconductors-3q-preview-expect-stocks-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 99,
+  "matched": 99,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
