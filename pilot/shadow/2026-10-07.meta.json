@@ -1,0 +1,48 @@
+{
+ "unread_source_files_at_edit": 49,
+ "given_up_at_edit": 91,
+ "pack": {
+  "documents": 22,
+  "cards": 944
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 114,
+  "brief_citations": 3,
+  "distinct_cards_cited": 114,
+  "card_count": 944,
+  "quintiles": [
+   11,
+   27,
+   18,
+   32,
+   26
+  ],
+  "edge_quintile_share": 0.325,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "That put the spread at 141, and it touched 160 at one point on Friday [c666][c667].",
+    "cite": "c666,c667",
+    "reason": "figures not in cited card(s): ['141', '160']"
+   },
+   {
+    "sentence": "Deutsche Bank's call is that this resolves against stocks.",
+    "cite": "",
+    "reason": "bank named (['deutsche']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "BofA supplies the level that settles it.",
+    "cite": "",
+    "reason": "bank named (['bofa']) is not the bank of any cited card or brief"
+   }
+  ],
+  "word_count": 1894
+ }
+}
