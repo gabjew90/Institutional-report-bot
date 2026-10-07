@@ -1,0 +1,188 @@
+GS Jhunjhunwala - Introducing the Option on Implied Dispersion 6
+Oct 2026
+Natasha Jhunjhunwala  ·  Goldman Sachs  ·  Managing Director, FICC & Equities, Goldman Sachs International (with Jean
+Santini, VP)
+Tue 6 Oct 2026, 11:34am ET
+Overview
+Dispersion trading has become of increasing focus over the past years, as a way for clients to take
+exposure to correlation within the equity market. The classic long dispersion trade involves buying single
+stock vol and selling index vol. More recently, we have seen more two way flows with clients also trading
+reverse dispersion (i.e. long correlation) as dispersion entry points reached all-time highs earlier this year.
+The dispersion trade can be implemented in a variety of formats, the most popular being delta hedged
+vanilla options, volatility swaps or corridor variance swaps.
+We are now also able to offer clients a way to trade an option on the implied dispersion level, without the
+realised component coming into play.
+
+Figure 1: Dispersion entry levels reached all-time highs this year
+Strategic Use Cases
+The Structure
+TENOR: the trade has an option tenor (e.g. 3m) and a dispersion package tenor (e.g. 1y).
+UNDERLYING: the underlying of the dispersion option is the package of forward-starting straddles on
+a pre-defined basket of names. The straddles each have a tenor of [1y] from strike date and they strike
+on the maturity date of the implied dispersion option.
+AT MATURITY of the dispersion option, the option physically settles into the full package of [1Y]
+straddles at the strike price. Each straddle is struck at the then prevailing at-the-money spot levels.
+
+PHYSICAL SETTLEMENT of the straddle portfolio ensures that there is a clear & transparent
+mechanism for settlement of the dispersion option. The parties may alternatively agree to terminate the
+transaction at an agreed price, mimicking a cash settlement at or prior to maturity.
+MAX LOSS for buying options is equal to the premium spent. Max loss for selling options is
+potentially unlimited.
+As the premiums of ATMF option are approximately linear vs volatility in normal volatility ranges,
+these straddles provides efficient exposure to the implied dispersion spread (see Figure 2 below).
+We can offer 2-way markets on both calls and puts options.
+Worked Pricing Example: 3M Put on Implied Dispersion
+We show an example of the bespoke basket shown below comprising some US and some EMEA based
+stocks.
+We target a $1m vega on each leg and see that the resulting current premium for a 1Y ATMS Straddle
+package would be $24,875,845 (corresponding to an ATMS Implied vol spread of 24.4v).
+We set the 3m dispersion put strike at $21,875,845 (3v lower).
+In 3m time, if the price of a 1Y ATMS straddle package is lower than the strike, the investor is in the
+money. They can then sell straddle vanilla option package at the strike.
+The investor pays $800,000 upfront to buy this this option (equivalent of 0.8v).
+Option Pricing (as of 11th Sep)
+3m expiry
+Bid
+Offer
+Put -3v
+0.35v
+0.80v
+Call +3v
+0.30v
+0.75v
+
+Basket Details (as of 11th Sep)
+Underlying
+Straddle
+Vega
+Target Vega (USD
+equiv)
+Straddle Notional (USD
+equiv)
+Current Premium (USD
+equiv)
+AAPL.OQ
+0.77%
+$50,000
+$6,531,491
+$1,463,379
+AMD.OQ
+0.75%
+$50,000
+$6,652,531
+$2,917,795
+AMZN.OQ
+0.77%
+$50,000
+$6,533,842
+$1,848,094
+AVGO.OQ
+0.76%
+$50,000
+$6,571,123
+$2,244,171
+COIN.OQ
+0.74%
+$50,000
+$6,790,918
+$3,708,129
+CSCO.OQ
+0.76%
+$50,000
+$6,555,776
+$1,889,342
+INTC.OQ
+0.74%
+$50,000
+$6,729,864
+$3,387,585
+JNJ.N
+0.77%
+$50,000
+$6,529,799
+$1,289,605
+JPM.N
+0.77%
+$50,000
+$6,529,621
+$1,310,789
+META.OQ
+0.76%
+$50,000
+$6,559,805
+$2,165,085
+MSFT.OQ
+0.77%
+$50,000
+$6,530,728
+$1,604,261
+MU.OQ
+0.75%
+$50,000
+$6,705,767
+$3,233,253
+NVDA.OQ
+0.76%
+$50,000
+$6,548,962
+$2,021,973
+PLTR.OQ
+0.75%
+$50,000
+$6,653,008
+$2,942,934
+TSLA.OQ
+0.76%
+$50,000
+$6,580,236
+$2,421,876
+ASML.AS
+0.77%
+$50,000
+$6,510,252
+$2,173,166
+BNPP.PA
+0.76%
+$50,000
+$6,590,447
+$1,522,999
+LVMH.PA
+0.77%
+$50,000
+$6,493,121
+$1,538,896
+RHMG.DE
+0.77%
+$50,000
+$6,522,083
+$2,186,580
+TTEF.PA
+0.77%
+$50,000
+$6,507,766
+$1,210,410
+Single-stock legs total
+$1,000,000
+$131,627,139
+$43,080,322
+.SPX
+0.76%
+-$750,000
+-$98,908,648
+-$13,897,414
+.STOXX50E
+0.78%
+-$250,000
+-$32,210,857
+-$4,307,063
+Index legs total
+-$1,000,000
+-$131,119,505
+-$18,204,477
+TOTAL PREMIUM
+(CURRENT)
+$24,875,845
+Figure 2: The premium of a vanilla ATM straddle package very closely tracks the ATM vol spread (shown here for SPX
+Top50 for illustration) [chart image not included: under 15KB size cutoff]
+Source for all charts: Goldman Sachs FICC and Equities, as of October 2026. Past performance is not indicative of future results. All
+references to “we/us/our” refer to the views and observations of the desk.
