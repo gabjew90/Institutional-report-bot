@@ -1,0 +1,901 @@
+{
+ "brief": "Goldman's industrials/A&D sales desk opens with morning macro color: Brazil's Bolsonaro surprise lead lifts local markets, Spain's snap-election call pressures the Euro to 17-month lows, and French political uncertainty weighs on French equities. Aerospace stocks resemble March/April (elevated jet fuel, travel-slowdown fears), but seven to eight further months into the Middle East conflict mean time is now working against the growth outlook rather than allowing adjustment, and OEM-side length (Boeing and the supply chain) has proven frustrating. More-owned names include BA, RBC, CRS, ATI and DPC, with warming interest in HONA. WWD and HWM are debated. TDG, HEI and TXT are underowned. Defense primes have underperformed even during risk-off periods. A midterm blue wave and SPCX lockup expirations add overhangs, with sentiment split: LMT and GD positive, RTX mixed, NOC and LHX negative. Separately, GS Eco expects most S&P 500 companies to beat again in Q3 as median-stock EPS growth decelerates to 9% from 14%, with AI beneficiaries driving over half of index EPS growth on 116% hyperscaler capex growth. DAL, reporting Friday, guided full-year EPS of $6.50-7.50 against a Street estimate of $5.89. RPM, reporting Tuesday, shows unusually low sentiment despite consensus EBITDA growth sitting at its guidance midpoint.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Aerospace stocks are behaving like March/April (higher jet fuel, fears of a global travel slowdown), but with the Middle East conflict now 7-8 months further along, time is working against the growth outlook rather than allowing adjustment.",
+   "anchor": "we are 7-8 months further into the conflict in the Middle East and jet fuel staying elevated",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Building length in aerospace OEMs, including Boeing and its supply chain, has proven frustrating and difficult amid a range of unresolved issues.",
+   "anchor": "proven frustrating and difficult with the myriad issues tempering the enthusiasm",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "BA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Investors hold more ownership in BA, RBC Bearings, Carpenter Technology, ATI and DPC within aerospace and defense.",
+   "anchor": "names that are more owned here include BA RBC CRS ATI DPC",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "BA",
+    "RBC",
+    "CRS",
+    "ATI",
+    "DPC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Investors are increasingly warming to HONA given its valuation.",
+   "anchor": "folks warming to HONA given the valuation",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "HONA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "WWD and HWM are more debated names, with WWD needing to guide and HWM facing debate over its CPP deal.",
+   "anchor": "WWD (need to guide) HWM (CPP deal debate)",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "WWD",
+    "HWM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "TDG, HEI and TXT are underowned within aerospace and defense.",
+   "anchor": "and underowned would include TDG HEI TXT",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "TDG",
+    "HEI",
+    "TXT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Defense primes have generally underperformed even during risk-off periods and heightened geopolitical escalation, which the desk finds confusing.",
+   "anchor": "widespread confusion as to why the defense primes have generally acted so poorly even during risk off",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "A potential midterm blue wave is viewed as a clear overhang on defense positioning for now.",
+   "anchor": "Midterm potential blue wave is a clear overhang for now",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The desk believes SPCX lockup expirations serve as an added source of pressure on defense-related positioning.",
+   "anchor": "desk believes SPCX lock ups serve as added pressure as well",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Investors are generally more positive on LMT and GD.",
+   "anchor": "more positive on LMT GD, mixed on RTX and more negative NOC LHX",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "LMT",
+    "GD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Investor sentiment on RTX is mixed.",
+   "anchor": "more positive on LMT GD, mixed on RTX and more negative NOC LHX",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "RTX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Investors are generally more negative on NOC and LHX.",
+   "anchor": "more positive on LMT GD, mixed on RTX and more negative NOC LHX",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "NOC",
+    "LHX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Federal IT spending remains a source of funds for investors, with some debate whether the DOGE initiative could reaccelerate.",
+   "anchor": "Fed IT remains a source of funds with some debate whether the debate around DOGE could reaccelerate",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Boeing has seen incrementally positive headlines suggesting its software glitch is not being viewed as a safety issue.",
+   "anchor": "incrementally positive headlines around the software glitch not being viewed as a safety issue",
+   "topic": "Aerospace and defense sector positioning",
+   "status": "released",
+   "instruments": [
+    "BA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Q3 2026 earnings season will kick off during the week of October 12.",
+   "anchor": "The Q3 2026 earnings season will kick off during the week of October 12",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "week of October 12"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "By the end of October, roughly 70% of S&P 500 market cap will have reported Q3 earnings, with most hyperscalers reporting during the last week of October.",
+   "anchor": "By the end of October, roughly 70% of S&P 500 market cap will have reported",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by end of October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Consensus expects S&P 500 year/year EPS growth of 27% in Q3.",
+   "anchor": "Consensus expects S&P 500 year/year EPS growth of 27% in Q3",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "S&P 500 realized year/year EPS growth was 33% in Q2, excluding some accounting distortions.",
+   "anchor": "realized growth of 33% in Q2, excluding some accounting distortions",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Beneficiaries of AI infrastructure spending account for over 50% of S&P 500 EPS growth this quarter.",
+   "anchor": "beneficiaries of AI infrastructure spending accounting for over 50% of S&P 500 EPS growth this quarter",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Hyperscaler capex growth is estimated at 116% this quarter.",
+   "anchor": "alongside hyperscaler capex growth of 116%",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "GS expects most S&P 500 companies will once again surpass consensus earnings estimates this quarter.",
+   "anchor": "We expect most companies will once again surpass consensus earnings estimates this quarter",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "For the median S&P 500 stock, consensus estimates show year/year EPS growth slowing from 14% in Q2 to 9% in Q3.",
+   "anchor": "consensus estimates show year/year EPS growth slowing from 14% in Q2 to 9% in Q3",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Input cost pressures will likely limit the magnitude of sequential margin expansion in Q3.",
+   "anchor": "Input cost pressures will likely limit the magnitude of sequential margin expansion in Q3",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The dollar should provide a modestly smaller tailwind to S&P 500 revenue growth this quarter than last quarter.",
+   "anchor": "the dollar should provide a modestly smaller tailwind to S&P 500 revenue growth this quarter than last quarter",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 vs Q2"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Recent economic growth data have been strong and S&P 500 earnings revision breadth has remained positive.",
+   "anchor": "recent economic growth data have been strong and S&P 500 earnings revision breadth has remained positive",
+   "topic": "S&P 500 Q3 earnings outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "DAL reports Friday October 9th pre-market at 6:30am with the call at 10am.",
+   "anchor": "DAL reports Friday October 9th pre-market at 6:30am with the call at 10am",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 9"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The options market is pricing a 6% implied move for DAL around its earnings print.",
+   "anchor": "the call at 10am. 6% implied move",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "level",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 9"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "DAL stock has been more green than red in recent quarters, though moves have been relatively muted over the last four quarters.",
+   "anchor": "Stock more green than red in recent quarters but relatively muted moves in the last four quarters",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "released",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The desk expects DAL to update its full-year guidance with an implied Q4 outlook at this print.",
+   "anchor": "Expect we will get an update to full year guide with an implied Q4",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Revenue trends have come in strong to better across airlines anecdotally.",
+   "anchor": "Revenue trends have come in strong to better across airlines anecdotally",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Airline cost trends have been worse than expected, both including and excluding fuel.",
+   "anchor": "Cost trends have been worse including fuel and excluding fuel",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Airlines have faced a push-pull between raising fares to capture or more than recapture rising jet fuel costs.",
+   "anchor": "push pull between pushing price to capture / more than recapture rising jet fuel",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "DAL is more protected on margins than peers and benefits from owning its Trainer refinery.",
+   "anchor": "DAL is more protected on balance with better margins and owning Trainer",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "released",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "DAL's run to relative highs has set an elevated bar for this earnings print.",
+   "anchor": "That has led the stock to relative highs but also sets an elevated bar in this one",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "released",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "DAL's full-year guidance stands at $6.50-7.50 in EPS and $3-4bn in free cash flow.",
+   "anchor": "Full year guidance right now for $6.50-7.50 in EPS, $3-4bn in free cash flow",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "target",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "full year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Street consensus EPS for DAL is below the low end of guidance at $5.89.",
+   "anchor": "Street is below the low end of EPS $5.89",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "released",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "full year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Topline growth for DAL is expected to accelerate to +17% year over year in Q4.",
+   "anchor": "topline growth expected to accelerate to +17% year over year growth in Q4",
+   "topic": "Delta Air Lines earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "RPM reports Tuesday pre-market around 6:45am with the call at 10am.",
+   "anchor": "RPM reports Tuesday pre-market around 6:45am with the call at 10am",
+   "topic": "RPM International earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Tuesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "RPM stock has seen more green than red in recent earnings moves.",
+   "anchor": "Stock has seen more green than red in recent earnings moves",
+   "topic": "RPM International earnings preview",
+   "status": "released",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The options market is pricing a 4% implied move for RPM around this earnings print.",
+   "anchor": "4% implied move this time around",
+   "topic": "RPM International earnings preview",
+   "status": "level",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "This report will be fiscal Q1, so there could be fewer updates to the full-year outlook.",
+   "anchor": "Will be fiscal Q1 so could be less updates to the full year",
+   "topic": "RPM International earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "fiscal Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "RPM stock has been consistently green when reporting fiscal Q1 in recent years.",
+   "anchor": "Stock consistently green when reporting fiscal Q1 in recent years",
+   "topic": "RPM International earnings preview",
+   "status": "released",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Valuation suggests sentiment on RPM is very low, which the desk finds almost surprising given what RPM is relative to many peers.",
+   "anchor": "Valuation suggests sentiment is very low here \u2013 almost surprising with what RPM is vs. many peers",
+   "topic": "RPM International earnings preview",
+   "status": "released",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Consensus for RPM's 2027 EBITDA growth sits squarely at the midpoint of full-year guidance of +5-10%.",
+   "anchor": "Consensus for 2027 EBITDA growth squarely at the midpoint of full year guide of +5-10%",
+   "topic": "RPM International earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "RPM's Q1 comparison looks relatively easy from a sequential standpoint.",
+   "anchor": "Q1 looks relatively easy from a sequential standpoint",
+   "topic": "RPM International earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q1"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The desk is looking for topline color from RPM across its CPG, PCG and Consumer segments.",
+   "anchor": "Looking for topline color across CPG PCG and Consumer",
+   "topic": "RPM International earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Potential cost headwinds are building on the cost side for RPM.",
+   "anchor": "with potential headwinds on the cost side building",
+   "topic": "RPM International earnings preview",
+   "status": "released",
+   "instruments": [
+    "RPM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Schneider Electric (SU FP) is down 10% this morning on news of a $24bn acquisition of PTC.",
+   "anchor": "SU FP in the headlines down 10% this morning with a $24bn acquisition of PTC",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "released",
+   "instruments": [
+    "PTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Bolsonaro surged ahead to a surprise lead in the first round of Brazil's presidential election, with local markets well bid ahead of the open.",
+   "anchor": "Bolsonaro surged ahead to a surprise lead in the first round of the presidential election",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Spain's PM called for an early snap election for late November.",
+   "anchor": "Spanish PM called for an early snap election for late November",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "late November"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The Spanish snap election call helped send the Euro to 17-month lows.",
+   "anchor": "helping send the Euro to 17 month lows",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The market is still looking for alternative French candidates with a credible path to fiscal sustainability.",
+   "anchor": "market still looking alternatives French candidates with a credible path towards fiscal sustainability",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "European equities were weaker this morning, led on the downside by France, off 105bps.",
+   "anchor": "Europe weaker led on the downside by France off 105bps",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Japan's equity market led overseas markets higher, up 240bps this morning.",
+   "anchor": "Overseas markets mixed with Japan leading up 240bps",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The KOSPI was modestly positive this morning.",
+   "anchor": "KOSPI modestly in the green with Europe weaker",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "US S&P futures were more or less flat to start the session.",
+   "anchor": "S&P futures more or less flat to start",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Crude oil started the week roughly flat, with WTI at $91 and Brent at $102.",
+   "anchor": "crude starts the week more of less flat with WTI $91, Brent $102",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The 10-year Treasury yield was modestly off its highs at 5.28%.",
+   "anchor": "10-year very modestly off highs 5.28%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The dollar was bid this morning as a function of other currencies' weakness, with the DXY at $102.",
+   "anchor": "dollar bid a function of other currencies DXY $102",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Bitcoin traded at $86k this morning.",
+   "anchor": "dollar bid a function of other currencies DXY $102 and Bitcoin $86k",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "The desk is watching ISM Services data later this morning.",
+   "anchor": "Watching ISM services later this morning",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "this morning"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials breadth A&D into Q3",
+   "claim": "Equipment rental names are showing positive Q3 checks on better time utilization, extending lead times and rates that improved quarter over quarter.",
+   "anchor": "positive Q3 checks (away) on better time utilization, extending lead times and rates that improved quarter over quarter",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Q3"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/18859__gs-novak-gs-u-s-industrials-materials-breadth-a-d-into-q3.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 62,
+  "matched": 62,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 14,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
