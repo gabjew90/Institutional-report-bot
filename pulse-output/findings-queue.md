@@ -1186,3 +1186,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — "$1.3 trillion of authorized buybacks" has no support in the dump (only a Morgan Stanley balance-sheet figure carries that number). Check the card source.
 - **observation** — Driver trail is again a condensed summary ("original not committed verbatim").
 - **observation** — Omnipulse returned (body_source omnipulse) after two classic fallback days.
+
+## 2026-10-07
+- **deterministic-fixable** — No driver file for 2026-10-06 (driver/ lists 10-05 then 10-07), and the driver trail is again a condensed one-line summary, so the 6 hard lint kinds on 10-07 are not auditable.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 16:17 EDT, about 6h after the pulse, so RECAP live figures cannot be audited (third day running).
+- **prompt-session** — The MAIN EVENT deck ("Stocks are holding while bonds break") contradicts the edited headline and RECAP (stocks lower). EDIT rewrote the headline but not the deck.
+- **prompt-session** — SCRUB source-prefix fix turned "Goldman and UBS push the next Fed hike to December" into the passive "The next Fed hike is pushed to December", which reads as a Fed decision. EDIT also dropped desk names from the SPLIT AI theme (per STEP 7).
+- **observation** — Omnipulse fell back to classic again (no shadow file after 600s).
+- **observation** — Per STEP 7, Spanish snap election, French presidential election and BOJ never appear. Counts not independently re-derived. Single-PDF compilations inflate bank counts.
+- **observation** — Meta $628B figure traces to a ZeroHedge summary of Needham, shipped as "(Needham)".
