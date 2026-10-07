@@ -1,0 +1,5876 @@
+EQUITY RESEARCH | 24 September 2026 | 12:41 AM JST
+The Goldman Sachs Group, Inc.
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors should be 
+aware that the firm may have a conflict of interest that could affect the objectivity of this report. Investors should consider 
+this report as only a single factor in making their investment decision. For Reg AC certification and other important disclosures, 
+see the Disclosure Appendix, or go to www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not 
+registered/qualified as research analysts with FINRA in the U.S.
+We are focusing on power supply-related products as a key theme of technological 
+innovation in generative AI data centers (AI DCs). Among these, we see Battery Backup 
+Units (BBUs), a new form of distributed power backup, as particularly critical. In 
+addition to standard power backup functions, BBUs are experiencing increasing 
+adoption rates as devices that handle the sharp power consumption fluctuations (peak 
+shaving) unique to generative AI data centers. In the long term, they are also expected 
+to be deployed in tandem with Capacitor Backup Units (CBUs). 
+At present, investor sentiment toward AI investment is not entirely favorable due to 
+concerns over massive capital expenditure risks in generative AI, the impact of rising 
+interest rates, power shortages, and the profitability and ROIC of LLMs. While no AI-
+related products can be completely immune to these risks, the BBU remains one of 
+the most promising areas, as it is poised to benefit from both secular AI growth 
+and rising attach rates (increased unit volume per system). For BBUs, design-ins 
+appear to be locked-in several years in advance. Indeed, Panasonic HD has stated that 
+it has already secured “Awards” (formal agreements on product development and 
+future orders) for its combined BBU and CBU sales targets through FY3/29. 
+Consequently, we believe there is minimal downside risk to BBU attach rates across 
+successive GPU generations. 
+In this report, in collaboration with our Global Tech Team, we project the global BBU 
+market size to expand 23x from $2.2 billion in 2025 to $50.2 billion in 2030. We also 
+map out the competitive positioning of global players in this space. Based on this 
+analysis, we raise our earnings estimates and target price for Panasonic Holdings 
+(HD), one of the primary beneficiaries.
+Ryo Harada 
++81(3)4587-9865 
+ryo.harada@gs.com 
+Goldman Sachs Japan Co., Ltd.
+Daiki Takayama 
++81(3)4587-9870 
+daiki.takayama@gs.com 
+Goldman Sachs Japan Co., Ltd.
+Allen Chang 
++852-2978-2930 
+allen.k.chang@gs.com 
+Goldman Sachs (Asia) L.L.C.
+Nick Zheng, CFA 
++852-2978-1405 
+nick.zheng@gs.com 
+Goldman Sachs (Asia) L.L.C.
+Nikhil Bhandari 
++65-6889-2867 
+nikhil.bhandari@gs.com 
+Goldman Sachs (Singapore) Pte
+Chao Wang 
++886(2)2730-4195 
+kuan-chao.wang@gs.com 
+Goldman Sachs (Asia) L.L.C.,
+Taipei Branch
+Katherine Murphy 
++1(212)902-1151 
+katherine.a.murphy@gs.com
+Goldman Sachs & Co. LLC 
+Michael Ng, CFA 
++1(212)902-8618 
+michael.ng@gs.com 
+Goldman Sachs & Co. LLC
+Mark Delaney, CFA 
++1(212)357-0535 
+mark.delaney@gs.com 
+Goldman Sachs & Co. LLC
+Hao Chen 
++86(21)2401-8812 
+hao.z.chen@goldmansachs.cn 
+Goldman Sachs (China) 
+Securities Company Limited 
+Hiroki Muramatsu 
++81(3)4587-9872 
+hiroki.muramatsu@gs.com 
+Goldman Sachs Japan Co., Ltd.
+Framing the Battery Backup Unit 
+Opportunity: $50bn by 2030 
+(CAGR +87%); Buy Panasonic HD
+GLOBAL TECHNOLOGY: HARDWARE
+ 
+ 
+
+Overview of BBU TAM and related companies
+ 5 
+Revision to our Panasonic HD earnings estimates
+ 7 
+BBU TAM calculation framework
+ 10 
+The BBU Industry Ecosystem
+ 12 
+BBU TAM: Power Demand, Attach Rate & ASP
+ 14 
+BBU Technology: Its Power Peak Shaving Role 
+ 20 
+BBU Players & Key Business Opportunities 
+ 26 
+Panasonic HD: BBU Leader; Reiterate Buy and Raise TP to ¥6,300; Scenario Analysis Shows Potential 
+Valuation Up to ¥14,100
+ 29 
+Appendix
+ 33 
+Disclosure Appendix
+ 45 
+24 September 2026
+ 2
+Goldman Sachs
+Global Technology: Hardware
+Table of Contents 
+ 
+ 
+
+The key takeaways we highlight for investors are as follows: 
+The Technological Pivot: Generative AI servers are characterized by sharp 
+n
+fluctuations in power consumption between active GPU execution and CPU 
+processing. Direct connection of these servers to the power grid would impose 
+severe grid instability. BBUs are deployed to mitigate these extreme power 
+fluctuations, and their significance is growing rapidly as GPU power consumption 
+rises. As GPU power demands increase with each successive generation, BBU 
+adoption (attach rates) is climbing in tandem. 
+Surging BBU Attach Rates: The BBU attach rate is set to climb alongside the 
+n
+increasing power requirements of newer GPUs. We estimate attach rates at 40–50% 
+for the Blackwell generation, rising to 55–65% for the Rubin generation (which 
+entered mass production in 2026), and exceeding 90% for the Feynman generation 
+slated for shipment in 2028. Consequently, the growth rate of the BBU market over 
+the next few years is poised to substantially outpace that of typical AI-related 
+hardware. 
+Robust BBU Market Outlook (2025–2030): Driven by the dual tailwinds of surging 
+n
+global GPU power consumption (CAGR of +62% from 2025–2030) and soaring 
+average BBU attach rates (climbing from 38% in 2025 to 95% in 2030), we look for 
+the BBU market to grow at a CAGR of +87%, expanding 23x from $2.2 billion in 2025 
+to $50.2 billion in 2030. 
+Scenario Analysis: We also perform scenario analyses for cases where BBU 
+o
+adoption accelerates faster than expected (Bull Case) or progresses more 
+gradually (Bear Case). We estimate the 2025–2030 CAGR at +103% in our Bull 
+Case and +73% in our Bear Case. 
+Recommended Stocks (Buy Ratings): Panasonic HD, Murata Manufacturing, TDK, 
+n
+MinebeaMitsumi, Delta Electronics, Flex, and LG Energy Solution. 
+Primary Beneficiary (Panasonic HD): According to the company, Panasonic HD 
+n
+currently holds 70–80% share of the global BBU market. Panasonic’s key competitive 
+advantages include: 
+Deep-rooted, long-standing relationships with major hyperscalers in the BBU 
+a.
+space. 
+A unique vertically integrated business model spanning battery cells, modules, 
+b.
+and full systems. 
+World-class battery manufacturing capacity and scalability honed through its 
+c.
+EV batteries business. 
+A broad product portfolio capable of integrating future BBU-CBU co-designs 
+d.
+(comprehensive group synergy). 
+We see no other peer possessing this combination of strengths, ensuring highly 
+robust competitiveness. Reflecting this dominant positioning, we raise our adjusted 
+operating profit estimates for Panasonic Energy’s BBU business from this fiscal year 
+onward by +9%/+20%/+14% (adjusted operating profit estimates for Panasonic 
+Energy raised by +10%/+25%/+21%). Consequently, we revise up our consolidated 
+24 September 2026
+  3
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+adjusted operating profit estimates for Panasonic HD by +3%/+10% /+10% and our 
+operating profit estimates by +3%/+11%/+11%, raise our target EV/EBITDA multiple 
+from 9x to 10.5x, and raise our 12-month target price from ¥5,100 to ¥6,300. 
+Panasonic HD: Key Monitoring Points and Potential Risks for the BBU Business : 
+n
+While we currently rate Panasonic Holdings (HD) highly for its strong 
+competitiveness and dominant market share, holding a high share in the early stages 
+of a market does not guarantee that a company will remain the winner as the market 
+scales. To track Panasonic HD’s long-term competitive advantages, we believe the 
+following key metrics and risks are crucial: 
+Revenue Growth vs. Market Growth: It is critical that the revenue growth 
+o
+rate of Panasonic HD’s BBU business matches or exceeds the expansion rate of 
+the overall BBU market. 
+OP margin sustainability: Operating margins must remain at high levels. A 
+o
+decline in profit margins could indicate downward pressure on ASPs driven by 
+intensifying competition. 
+Technological Dynamics (NCA/NMC vs. LFP): There is a trend in the industry 
+o
+toward adopting Lithium Iron Phosphate (LFP) chemistry alongside the 
+NCA/NMC chemistry currently favored by Panasonic HD (NCA). At present, 
+NCA/NMC are preferred due to high energy density, which delivers superior 
+space efficiency in constrained server rack environments. However, if power 
+sidecars are introduced, these space constraints will ease. This could 
+accelerate the adoption of LFP, which offers distinct advantages in unit 
+economics and cycle life, potentially boosting the market presence of 
+LFP-centric competitors. 
+Capacity Expansion Execution: 
+o
+Battery Cells: Panasonic HD currently utilizes its domestic battery 
+§
+factories in Japan for BBU production, but plans to leverage its Kansas 
+plant in the future. Mass production of data center battery cells at the 
+Kansas facility is scheduled to begin in FY3/2029. Any delay in this 
+transition could lead to capacity constraints. 
+Modules: Panasonic HD is expanding its module assembly footprint in 
+§
+Mexico. Mass production at the second factory is scheduled to begin in 
+Q2 of FY3/27, followed by the third factory in FY3/28. The successful 
+ramp-up of these facilities is vital for securing adequate supply 
+capacity. 
+Decision-Making Agility: Panasonic HD is a large conglomerate, which 
+o
+typically exhibit slower decision-making due to multi-layered corporate 
+hierarchies. In a tech sector characterized by exceptionally rapid technological 
+advancement and market scaling, the company’s organizational agility and 
+ability to keep pace with industry shifts will be a primary focus for investors.
+24 September 2026
+  4
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Overview of BBU TAM and related companies 
+ 
+ 
+We expect the BBU TAM (Bull/Base/Bear) to grow rapidly at a CAGR of 
++103%/+87%/+73% from 2025 to 2030. We forecast the market size 
+(Bull/Base/Bear) will expand from USD 2.2 bn in 2025 to USD 75.1 bn/USD 50.2 
+bn/USD 34.2 bn in 2030. This market expansion is set to be driven by the following 
+three factors: 
+Rising GPU power consumption: GPU power consumption is raised with each new 
+1.
+generation, requiring greater backup and peak shaving capacity. 
+Increasing GPU shipment volume: Shipments of GPUs for data centers are 
+2.
+expanding in tandem with the acceleration of AI investments. 
+Rising BBU adoption rates: BBU adoption rates are increasing alongside the 
+3.
+adoption of next-generation GPU architectures. 
+We assume BBU adoption rates are currently around 40% for Blackwell, 50% for 
+Blackwell Ultra, and 55% for Rubin, and will be 60-65% for Rubin Ultra, and 90% or more 
+for Feynman. As these new products gradually become mainstream, the overall average 
+adoption rate should improve, and as a result, we expect the BBU market size to grow 
+rapidly over the next few years. 
+BBU-related players 
+The BBU-related supply chain is divided into battery manufacturers, module 
+manufacturers, and energy storage system manufacturers. The main companies are as 
+follows. Panasonic HD can be described as a company with advanced vertical integration 
+among these. 
+Battery manufacturers: Panasonic HD, Murata Manufacturing, TDK, Samsung SDI, LG 
+n
+Energy Solution, Ampace, Tenpower, etc. 
+Module manufacturers: Panasonic HD, AES-KY, Sysgration, Dynapack, STL 
+n
+Technology, Celxpert Energy, etc. 
+Energy storage system manufacturers: Panasonic HD, Delta Electronics, LITEON 
+n
+Technology, Flex, XING Mobility, Lead Wealth, Megmeet, etc. 
+In addition, MinebeaMitsumi, whose BBU protection module business is growing rapidly, 
+can also be said to be a beneficiary stock. 
+ 
+ 
+Exhibit 1: BBU-related GS coverage stock highlights 
+Company Name
+Ticker
+Rating
+Analyst
+Currency
+Current Price
+Target Price
+Upside
+FY26 P/E
+FY27 P/E
+FY28 P/E
+Panasonic HD
+6752.T
+Buy
+Ryo Harada
+JPY
+4,262
+6,300
+47.8%
+19.4x
+13.2x
+10.2x
+Murata Manufacturing
+6981.T
+Buy
+Daiki Takayama
+JPY
+7,431
+12,900
+73.6%
+33.8x
+22.6x
+17.0x
+TDK
+6762.T
+Buy
+Daiki Takayama
+JPY
+2,806
+4,900
+74.6%
+18.2x
+17.0x
+15.3x
+MinebeaMitsumi
+6479.T
+Buy
+Daiki Takayama
+JPY
+3,445
+5,500
+59.7%
+14.6x
+12.6x
+11.5x
+Delta Electronics
+2308.TW
+Buy
+Chao Wang
+TWD
+1,685
+4,120
+144.5%
+41.6x
+22.4x
+9.8x
+Megmeet
+002851.SZ
+Neutral
+Hao Chen
+RMB
+122
+120
+-1.3%
+123.8x
+51.9x
+29.2x
+Flex
+FLEX
+Buy
+Mark Delaney
+USD
+108
+154
+42.7%
+25.4x
+15.9x
+13.8x
+Samsung SDI
+006400.KS
+Neutral
+Nikhil Bhandari
+KRW
+544,000
+695,000
+27.8%
+104.1x
+23.1x
+15.3x
+LG Energy Solution
+373220.KS
+Buy
+Nikhil Bhandari
+KRW
+367,000
+520,000
+41.7%
+NM
+43.5x
+19.0x
+ 
+Murata is on the APAC Conviction List. Target prices are on a 12-month basis. Share prices are based on September 17, 2026 closing prices. 
+ 
+Source: Company data, LSEG Data & Analytics, Goldman Sachs Global Investment Research
+24 September 2026
+  5
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+BBU components and technology trends 
+Battery: A major component accounting for around 80-90% of the BOM cost of a 
+n
+BBU module. As for the storage batteries used, ternary lithium-ion batteries are 
+currently the mainstream, but there are also moves to adopt LFP for some 
+applications. 
+Module: Many players procure battery cells externally, integrate them with BMS and 
+n
+interconnect components, and assemble them into BBU modules. 
+Energy storage system: Integrates and optimizes the BBU with the entire data center 
+n
+rack, server architecture, and overall power supply system.
+24 September 2026
+  6
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Revision to our Panasonic HD earnings estimates 
+ 
+ 
+Based on the aforementioned BBU market forecast (base case), we revise our earnings 
+estimates, centering on Energy, and revise up our operating profits estimates from this 
+fiscal year onward by +3%/+11%/+11%. For valuation, we switch from a format that 
+references the company’s historical EV/EBITDA and EBITDA margins to a valuation based 
+on the correlation between EV/EBITDA and EBITDA margins for global competitors, 
+including BBU. As a result, we raise the applied EV/EBITDA from 9X to 10.5X. With this, 
+we raise our target price for Panasonic HD from ¥5,100 to ¥6,300. 
+ 
+ 
+Exhibit 2: Panasonic Energy’s financial performance is being driven by BBU-related business, resulting in a significant 
+upward revision on a monetary basis 
+Panasonic Energy: Comparison of New vs Old forecasts for Sales and Adjusted OP by sub-segment 
+Sales (mnJPY)
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+Energy
+Automotive
+512,200
+512,200
+512,200
+512,200
+522,400
+532,800
+0
+10,200
+20,600
+BBU
+542,079
+921,534
+1,327,009
+595,700 1,250,970 1,876,455
+53,621
+329,436
+549,446
+Others
+213,200
+218,400
+223,700
+262,300
+262,300
+262,300
+49,100
+43,900
+38,600
+Total
+1,267,479
+1,652,134
+2,062,909
+1,370,200 2,035,670 2,671,555
+102,721
+383,536
+608,646
+YoY
+Energy
+Automotive
+18%
+0%
+0%
+18%
+2%
+2%
+BBU
+68%
+70%
+44%
+85%
+110%
+50%
+Others
+-7%
+2%
+2%
+15%
+0%
+0%
+Total
+29%
+30%
+25%
+39%
+49%
+31%
+AOP (mnJPY)
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+Energy
+Automotive
+39,475
+58,830
+69,074
+40,975
+87,480
+113,600
+1,500
+28,650
+44,526
+BBU
+136,198
+287,980
+450,170
+147,886
+344,467
+513,348
+11,688
+56,487
+63,178
+Others
+20,772
+21,396
+22,032
+26,664
+26,664
+26,664
+5,892
+5,268
+4,632
+Total
+196,445
+368,206
+541,276
+215,525
+458,611
+653,612
+19,080
+90,405
+112,336
+YoY
+Energy
+Automotive
+NA
+49%
+17%
+NA
+113%
+30%
+BBU
+84%
+111%
+56%
+100%
+133%
+49%
+Others
+107%
+3%
+3%
+166%
+0%
+0%
+Total
+172%
+87%
+47%
+199%
+113%
+43%
+diff.
+NEW
+OLD
+OLD
+NEW
+diff.
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  7
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+ 
+ 
+Exhibit 3: In our long-term forecast, BBU’s adjusted OP in FY3/30E is projected to be -26% 
+compared to the base case in the bear scenario, and +91% in the bull scenario. 
+Panasonic Energy: Sales and Adjusted OP by Scenario for BBU business 
+Sales (mnJPY)
+3/2027E
+3/2028E
+3/2029E
+3/2030E
+3/2027E
+3/2028E
+3/2029E
+3/2030E
+Bull
+644,000
+1,545,600
+3,091,200
+6,182,400
+8%
+24%
+65%
+90%
+Base
+595,700
+1,250,970
+1,876,455
+3,246,267
+0%
+0%
+0%
+0%
+Bear
+579,600
+1,188,180
+1,722,861
+2,412,005
+-3%
+-5%
+-8%
+-26%
+YoY
+Bull
+100%
+140%
+100%
+100%
+Base
+85%
+110%
+50%
+73%
+Bear
+80%
+105%
+45%
+40%
+AOP (mnJPY)
+3/2027E
+3/2028E
+3/2029E
+3/2030E
+3/2027E
+3/2028E
+3/2029E
+3/2030E
+Bull
+160,927
+431,407
+848,719
+1,683,343
+9%
+25%
+65%
+91%
+Base
+147,886
+344,467
+513,348
+883,197
+0%
+0%
+0%
+0%
+Bear
+143,539
+326,113
+470,477
+656,546
+-3%
+-5%
+-8%
+-26%
+AOP margin
+3/2027E
+3/2028E
+3/2029E
+3/2030E
+Bull
+25%
+28%
+27%
+27%
+Base
+25%
+28%
+27%
+27%
+Bear
+25%
+27%
+27%
+27%
+% diff. vs base case
+% diff. vs base case
+BBU by scenario
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 4: Panasonic Energy: BBU revenue forecast by 
+scenario, Old vs New (in mn JPY) 
+ 
+Exhibit 5: Panasonic Energy: BBU Adjusted OP forecast by 
+scenario, Old vs New (in mn JPY) 
+2,000,000
+3,000,000
+4,000,000
+5,000,000
+6,000,000
+7,000,000
+0
+1,000,000
+2,000,000
+3,000,000
+4,000,000
+5,000,000
+6,000,000
+7,000,000
+3/2027E
+3/2028E
+3/2029E
+3/2030E
+Old
+Bear
+Base
+Bull
+ -
+ 200,000
+ 400,000
+ 600,000
+ 800,000
+ 1,000,000
+ 1,200,000
+ 1,400,000
+ 1,600,000
+ 1,800,000
+3/2027E
+3/2028E
+3/2029E
+3/2030E
+Old
+Bear
+Base
+Bull
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  8
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Exhibit 6: Upward revision of +3%/+11%/+11% to company-wide operating profits estimates for FY3/27-FY3/29 
+Panasonic HD: Old vs. new earnings estimates by segment 
+Sales
+(mn JPY)
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+Smart Life
+1,345,300
+1,361,300
+1,369,500
+1,345,300
+1,361,300
+1,369,500
+0%
+0%
+0%
+HVAC &CC
+1,373,400
+1,434,300
+1,500,100
+1,373,400
+1,434,300
+1,500,100
+0%
+0%
+0%
+Electric Works
+1,207,000
+1,243,200
+1,280,500
+1,207,000
+1,243,200
+1,280,500
+0%
+0%
+0%
+Connect
+1,450,700
+1,525,400
+1,604,200
+1,450,700
+1,525,400
+1,604,200
+0%
+0%
+0%
+Industry 
+1,274,082
+1,339,412
+1,423,404
+1,274,082
+1,339,412
+1,423,404
+0%
+0%
+0%
+Energy
+1,267,479
+1,652,134
+2,062,909
+1,370,200
+2,035,670
+2,671,555
+8%
+23%
+30%
+Other/Elimination/Adjustment
+-10,200
+-10,200
+-10,200
+-10,200
+-10,200
+-10,200
+0%
+0%
+0%
+Total
+7,907,761
+8,545,545
+9,230,413
+8,010,482
+8,929,082
+9,839,059
+1%
+4%
+7%
+Adj. OP
+(mn JPY)
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+Smart Life
+74,300
+77,800
+82,300
+74,300
+77,800
+82,300
+0%
+0%
+0%
+HVAC &CC
+60,100
+62,700
+65,500
+60,100
+62,700
+65,500
+0%
+0%
+0%
+Electric Works
+95,700
+98,300
+100,900
+95,700
+98,300
+100,900
+0%
+0%
+0%
+Connect
+107,270
+132,791
+144,079
+107,270
+132,791
+144,079
+0%
+0%
+0%
+Industry 
+126,193
+144,650
+168,370
+126,193
+144,650
+168,370
+0%
+0%
+0%
+Energy
+196,445
+368,206
+541,276
+215,525
+458,611
+653,612
+10%
+25%
+21%
+Other/Elimination/Adjustment
+-5,000
+-5,000
+-5,000
+-5,000
+-5,000
+-5,000
+0%
+0%
+0%
+Total
+655,009
+879,447
+1,097,426
+674,088
+969,851
+1,209,761
+3%
+10%
+10%
+OP
+(mn JPY)
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+3/2027E
+3/2028E
+3/2029E
+Smart Life
+67,300
+70,800
+75,300
+67,300
+70,800
+75,300
+0%
+0%
+0%
+HVAC &CC
+59,100
+61,700
+64,500
+59,100
+61,700
+64,500
+0%
+0%
+0%
+Electric Works
+85,700
+88,300
+90,900
+85,700
+88,300
+90,900
+0%
+0%
+0%
+Connect
+103,270
+128,791
+140,079
+103,270
+128,791
+140,079
+0%
+0%
+0%
+Industry 
+116,193
+134,650
+158,370
+116,193
+134,650
+158,370
+0%
+0%
+0%
+Energy
+196,445
+368,206
+541,276
+215,525
+458,611
+653,612
+10%
+25%
+21%
+Other/Elimination/Adjustment
+-21,000
+-21,000
+-21,000
+-21,000
+-21,000
+-21,000
+0%
+0%
+0%
+Total
+607,009
+831,447
+1,049,426
+626,088
+921,851
+1,161,761
+3%
+11%
+11%
+OLD
+NEW
+% Change
+OLD
+NEW
+% Change
+OLD
+NEW
+% Change
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  9
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+BBU TAM calculation framework 
+ 
+ 
+ 
+ 
+Exhibit 7: Our TAM estimate is calculated by multiplying GPU power demand by architecture x BBU adoption ratio x ASP 
+(USD/W) 
+Concept for calculating BBU TAM 
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  10
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+ 
+Exhibit 8: Forecast to reach USD 50.2 bn (CAGR +87%) by 2030 in the base case. 
+BBU TAM forecast 
+BBU TAM - Bear/Base/Bull Scenarios
+(USD, mn)
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+25-30E
+Bull
+TAM
+2,185
+4,850
+12,115
+26,469
+59,288
+75,112
+YoY
+292%
+122%
+150%
+118%
+124%
+27%
+CAGR:
+103%
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Base
+TAM
+2,185
+4,134
+9,793
+19,027
+40,587
+50,157
+YoY
+292%
+89%
+137%
+94%
+113%
+24%
+CAGR:
+87%
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Bear
+TAM
+2,185
+3,924
+9,011
+16,364
+29,098
+34,226
+YoY
+292%
+80%
+130%
+82%
+78%
+18%
+CAGR:
+73%
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 9: We expect the BBU TAM to expand from USD 2.2 bn in 2025 to USD 50.2 bn in 2030 
+(CAGR +87%). 
+BBU TAM forecast 
+2,185 
+4,134 
+9,793 
+19,310 
+40,587 
+50,157 
+ -
+ 10,000
+ 20,000
+ 30,000
+ 40,000
+ 50,000
+ 60,000
+ 70,000
+ 80,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+USD, mn
+BBU TAM
+Bull
+Bear
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  11
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+The BBU Industry Ecosystem 
+ 
+ 
+In this chapter, we provide an overview of major players in the BBU industry supply 
+chain. 
+Major players in the BBU industry 
+In the BBU industry, there are mainly three categories of players: (1) battery 
+manufacturers, (2) module manufacturers, and (3) energy storage system 
+manufacturers. 
+(1) Battery manufacturers: Manufacture battery cells and supply them to 
+module/energy storage system manufacturers. Major players include Panasonic HD, 
+Murata Manufacturing, TDK, Samsung SDI, LG Energy Solution, Ampace, Tenpower, etc. 
+(2) Module manufacturers: Procure battery cells externally, integrate them with DC-DC 
+converters, BMS, MCUs, etc., assemble them into BBU modules, and supply them to 
+energy storage system manufacturers. Major players include Panasonic HD, AES-KY, 
+Sysgration, Dynapack, STL Technology, Celxpert Energy, etc. 
+(3) Energy storage system manufacturers: Procure BBU modules externally, or procure 
+battery cells and components to assemble BBU modules themselves, integrate them 
+with enclosures, busbars, cooling fans, capacitors, etc., and ultimately complete them as 
+BBU systems. In some cases, they manufacture battery cells in-house and operate a 
+vertically integrated business. Major players include Panasonic HD, Delta Electronics, 
+LITEON Technology, Flex, XING Mobility, Lead Wealth, Megmeet, etc. 
+ 
+ 
+Exhibit 10: BBU industry supply chain 
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+24 September 2026
+  12
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Exhibit 11: AI server power supply chain 
+ 
+ 
+Source: Data compiled by Goldman Sachs Global Investment Research
+24 September 2026
+  13
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+BBU TAM: Power Demand, Attach Rate & ASP 
+ 
+ 
+In calculating the BBU market TAM, we focus on three elements: (1) power demand per 
+GPU, (2) BBU adoption rate per GPU, and (3) BBU ASP per 1W. We calculate the TAM by 
+multiplying these together. Note that because BBUs provide backup and peak shaving 
+functions for GPUs, we assume that the system requires larger BBU capacity as GPU 
+power output increases (assuming a proportional relationship between GPU power 
+demand and BBU power demand). 
+(1) Calculating power demand per GPU: Total GPU power demand to 
+grow at a CAGR (2025->2030) of +62% 
+We calculate total GPU power demand by generation by multiplying the GPU shipment 
+volume forecast by GPU architecture generation (covered by Nvidia analyst James 
+Schneider) by the GPU power consumption of each generation (referencing thermal 
+design power (TDP) in spec sheets). For non-Nvidia ASICs, we use GS rack shipment data 
+(covered by Taiwan Tech analyst Chao Wang) and assume a one-generation lag 
+compared to mainstream Nvidia architectures, multiplying this by GPU power 
+consumption per rack to calculate the total power demand for ASICs. 
+ 
+ 
+Exhibit 12: Expected to increase from 13,510MW in 2025 
+to 150,081MW in 2030 at a CAGR of +62%,... 
+GPU power demand for global data centers 
+ 
+Exhibit 13: ...with the release of high power consumption 
+products like Rubin and Feynman expected to push up 
+GPU power demand. 
+GPU power demand for global data centers by architecture 
+generation 
+13,510 
+21,653 
+45,868 
+74,373 
+132,753 
+150,081 
+ -
+ 20,000
+ 40,000
+ 60,000
+ 80,000
+ 100,000
+ 120,000
+ 140,000
+ 160,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+MW
+Global Data Center GPU Power Demand
+ -
+ 20,000
+ 40,000
+ 60,000
+ 80,000
+ 100,000
+ 120,000
+ 140,000
+ 160,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Global Data Center GPU Power Demand
+Legacy Models
+Blackwell
+Rubin
+Feynman + Future model
+Other ASICS
+MW
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  14
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+(2) BBU attach rate: Expected to rise rapidly by 2030, with 95% of 
+servers using Nvidia chips projected to be equipped with BBUs by 2030 
+BBU attach rates are fundamentally driven by GPU power consumption. BBUs, which 
+are connected to the DC busbar of the rack and supply backup power to the GPUs, are 
+expected to see higher attach rates as high-end AI servers adopt new GPU architectures 
+and GPU power output increases. We assume an attach rate of 0% for legacy models 
+(A100, H100/200), and believe a certain level (40-50%) of adoption is progressing from 
+the Blackwell generation onward, as NVIDIA has begun recommending BBUs as an 
+option for reference designs. Furthermore, with power consumption increasing to 
+1,800W for Rubin and 3,600W for Rubin Ultra, combined with the emergence of 
+architectures adopting side racks and thereby expanding installation space, attach rates 
+are expected to increase further. In addition, for Feynman, which is expected to launch 
+in 2028 or later, we believe it is highly likely that BBUs will become a nearly standard 
+feature, as power consumption will increase further and side racks may be adopted in 
+almost all servers alongside the transition to 800VDC architectures. 
+The BBU attach rate is expected to be a key driver influencing the BBU TAM. As shown in 
+Exhibit 15, we calculate estimates in three scenarios: bull case, base case, and bear case. 
+ 
+Exhibit 14: Power consumption (TDP) for each GPU chip 
+increases in power output with each passing generation. 
+400 
+700 
+700 
+1,200 
+1,400 
+1,800 
+3,600 
+5,200 
+ -
+ 1,000
+ 2,000
+ 3,000
+ 4,000
+ 5,000
+ 6,000
+A100
+H100
+H200
+Blackwell
+Blackwell
+Ultra
+Rubin
+Rubin Ultra Feynman +
+Future
+model
+GPU Power Output (TDP)
+W
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  15
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+(1) x (2): Total BBU power demand to grow at a CAGR (2025->2030) of 
++90% 
+ 
+(3) BBU ASP: ASP per shelf increases from USD 15,589 in 2025 to USD 
+26,271 in 2030; ASP per kW is assumed to moderately decline as battery 
+cell output improves 
+Calculation of BBU shelf ASP (a) 
+In calculating ASP, we first calculated the BOM cost of a BBU shelf based on the Open 
+Compute Project (OCP) BBU Configuration (Link). The basic configuration consists of six 
+BBU modules per BBU shelf, with each module featuring a 6x11 lithium-ion battery array 
+(although in reality, various configuration patterns exist). We assume the cost of 
+ 
+Exhibit 15: BBU attach rates are expected to increase at an 
+accelerating pace due to rising GPU power consumption and 
+increased adoption of side racks, reaching 95% in the base 
+case in 2030. 
+BBU attach rate (Nvidia) 
+68%
+95%
+38%
+100%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+BBU Attach Rates
+Bear
+Base
+Bull
+ 
+A weighted average of the BBU attach rate for each NVIDIA GPU generation based 
+on the shipment volume of each generation. 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 16: Expected to increase from 4,603MW in 2025 to 
+113,029MW in 2030 in the base case (CAGR +90%). 
+Global BBU power demand by case 
+ 
+Exhibit 17: BBU power demand expected to increase 
+rapidly from the Rubin generation onward in tandem with 
+improving attach rates 
+BBU power demand by architecture (base case) 
+4,603 
+8,816 
+21,157 
+41,719 
+90,690 
+113,029 
+ -
+ 20,000
+ 40,000
+ 60,000
+ 80,000
+ 100,000
+ 120,000
+ 140,000
+ 160,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+MW
+Global BBU Power Demand
+Bull
+Bear
+ -
+ 20,000
+ 40,000
+ 60,000
+ 80,000
+ 100,000
+ 120,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+BBU Power Demand by architecture
+A100
+H100
+H200
+Blackwell
+Blackwell Ultra
+Rubin
+Rubin Ultra
+Feynman + Future model
+Other ASICS
+MW
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  16
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+lithium-ion batteries is the largest BOM component, accounting for 80-90% of the total. 
+We calculate ASP by assuming a profit margin of around 25% on this BOM (based on GS 
+estimates for Panasonic’s BBU margin). Since the profit margin assumption is also 
+expected to change due to shifts in the market’s competitive environment, we vary the 
+assumption for each of the bull, base, and bear cases. 
+Calculation of power output per shelf (b) 
+To estimate power output per shelf, we base our calculation on Panasonic’s 
+development roadmap, using a weighted average that applies attach rates to three BBU 
+shelf configurations: (1) 33kW/shelf (using 80W battery cells), (2) 72kW/shelf (using 
+120W battery cells), and (3) 102kW/shelf (using 200W battery cells). Currently, 
+33kW/shelf is the mainstream, but shipments of 72kW/shelf have recently begun, and 
+commercialization of 102kW/shelf is expected to start around 2027-28. 
+ 
+ASP per kW (c) 
+Calculated by dividing BBU shelf BOM cost calculation (a) by power output per shelf 
+calculation (b). We assume ASP per kW will moderately decline in line with improved 
+battery cell output (Exhibit 20). 
+ 
+Exhibit 18: Development of next-generation 102kW/shelf is currently underway 
+Panasonic HD’s BBU development roadmap 
+ 
+This is a development roadmap and differs from actual commercialization timing. 
+ 
+Source: Company data, Data compiled by Goldman Sachs Global Investment Research
+24 September 2026
+  17
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+(1) x (2) x (3 (c)) BBU TAM (Bull/Base/Bear): CAGR (25-30) is 
++103%/+87%/+73% 
+Bull case (CAGR 103%) 
+When BBU attach rates increase in non-generative AI data centers, in addition to the 
+n
+attach rates in generative AI data centers. 
+And when BBUs are widely used in data centers adopting ASICs. 
+n
+When a supply-demand tightness emerges in response to growing BBU demand, 
+n
+causing prices to rise. 
+Bear case (CAGR 73%) 
+When BBU attach rates generally fall below assumptions. 
+n
+When competition in BBU products intensifies due to new entrants and other 
+n
+factors, causing prices to fall. 
+See Appendix for detailed assumptions under each scenario 
+ 
+Exhibit 19: ASP of BBU shelf (USD) 
+The ASP of BBU shelves is expected to rise alongside enhanced 
+battery cell performance and accelerating adoption of 
+next-generation products. 
+ 
+Exhibit 20: ASP of BBU shelf (USD/kW) 
+We view ASP per kW as being on a downward trend, outpaced by 
+the rate of increase in power output. 
+20,785
+22,419
+24,450
+27,299
+32,180
+35,028
+0
+5,000
+10,000
+15,000
+20,000
+25,000
+30,000
+35,000
+40,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+BBU ASP per Shelf
+USD
+475 
+469 
+463 
+456 
+448 
+444 
+44 
+48 
+53 
+60 
+72 
+79 
+ -
+ 10
+ 20
+ 30
+ 40
+ 50
+ 60
+ 70
+ 80
+ 90
+ 100
+ -
+ 100
+ 200
+ 300
+ 400
+ 500
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Shelf ASP per kW(USD/kW)
+BBU Power Output (kW) RHS
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  18
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Exhibit 21: Expected to expand from USD 2.2 bn in 2025 to USD 50.2 bn in 2030 (CAGR +87%). 
+BBU TAM forecast 
+2,185 
+4,134 
+9,793 
+19,310 
+40,587 
+50,157 
+ -
+ 10,000
+ 20,000
+ 30,000
+ 40,000
+ 50,000
+ 60,000
+ 70,000
+ 80,000
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+USD, mn
+BBU TAM
+Bull
+Bear
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  19
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+BBU Technology: Its Power Peak Shaving Role  
+ 
+ 
+Role of BBUs in data centers 
+A Battery Backup Unit (BBU) is a distributed energy storage system installed within 
+server racks in a data center. It supports efficient power operation of the data center by 
+supplying backup power to GPUs during momentary outages or voltage drops, and 
+providing a peak shaving function to compensate for shortfalls during peak power 
+consumption. Recent AI servers consume massive amounts of power in short periods to 
+maintain parallel processing by multiple GPUs. As a result, power peaks rise sharply and 
+voltage tends to become unstable, making highly reliable and stable power supply 
+indispensable for AI data centers. Against the backdrop of this demand environment, 
+the importance of BBUs as a rack-level distributed power supply solution is growing. 
+BBUs consist of energy storage modules containing lithium-ion battery cells and shelves 
+to house them, connected to the DC busbar of the server rack.  
+ 
+ 
+Exhibit 22: BBUs are connected to the DC busbar, handling backup during power outages and power stabilization, 
+ensuring continuity of power supply 
+AI server rack power configuration 
+ 
+ 
+Source: Company data, Data compiled by Goldman Sachs Global Investment Research
+24 September 2026
+  20
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Standard BBU configuration 
+Standard BBU configurations are primarily determined by the Open Compute Project 
+(OCP), a non-profit organization dedicated to standardizing configurations and 
+specifications for data center hardware equipment. OCP was established by Meta 
+(formerly Facebook) in 2011, and currently involves around 400 companies including 
+Intel, Microsoft, and NVIDIA, having thus far set specifications for equipment such as 
+servers, storage, and network switches. 
+For BBUs, a backplane voltage of 12V was standard under the initial Open Compute 
+Project Open Rack Version 2 (OCP ORV2) specifications, but with improvements in 
+power density, ORV3 was established, making 48V the standard (Link). 
+The following specifications were primarily set for standard BBU configurations under 
+ORV3: 
+BBU module: Backup output of 3kW, backup time of 4 minutes or more, design life of 
+n
+4 years, battery cell type is lithium-ion 18650, battery pack configuration is 11S6P 
+(11 in series, 6 in parallel for a total of 66 cells). 
+BBU shelf: 6 modules per shelf (5+1 redundant configuration). 
+n
+ 
+Exhibit 23: In addition to voltage conversion by DC-DC converters, rapid charging/discharging by HSCs, and power 
+aggregation by power shelves, BBUs handle backup during power outages. 
+Major power components within an AI server rack 
+ 
+ 
+Source: Company data, Data compiled by Goldman Sachs Global Investment Research
+24 September 2026
+  21
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+ 
+BBU specifications for high power 
+In response to the trend toward even higher power server racks, OCP has also 
+established the HPR (High Power Rack) specifications, a high-power version of ORV3 
+(LINK). There are major changes mainly in terms of power capacity/voltage and power 
+sidecars, and currently there is a gradual transition from the mainstream HPR v2 to HPR 
+v3, with development also progressing toward the launch of HPR v4, which corresponds 
+to 800VDC architectures. 
+The main specifications for HPR are as follows: 
+HPR v1: Maximum power capacity of 92kW (scalable up to 140kW depending on 
+n
+specifications), voltage of 50VDC. BBU shelf is built into the IT rack. 
+HPR v2: Maximum power capacity of 190kW, voltage of 50VDC. BBU shelf is built 
+n
+into the IT rack. BBU shelf transitions from 33kW/shelf to 72kW/shelf. Adopts a 
+capacitor tray for power fluctuation smoothing. 
+ 
+Exhibit 24: Consists of 66 lithium-ion cells (6 x 11), a main 
+power board, MCU, BMS, etc. 
+BBU module structure based on OCP specifications 
+ 
+ 
+Source: OCP
+ 
+Exhibit 25: Consists of six BBU modules, connectors, etc. 
+BBU shelf structure 
+ 
+Image quoted from Panasonic HD’s website. 
+ 
+Source: Company data
+24 September 2026
+  22
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+HPR v3: Maximum power capacity of 300kW, voltage of 50VDC. BBU shelves and 
+n
+capacitor trays are housed in a power sidecar independent from the IT rack. 
+HPR v4: Maximum power capacity of 800kW (scalable up to 1MW depending on 
+n
+specifications), voltage of ±400VDC (800VDC). Supports 800VDC architecture, 
+adopting a high-voltage DC system power sidecar. 
+ 
+ 
+Exhibit 26: Format where the BBU shelf is built into the IT 
+rack 
+ORV3 HPR V2 rack specifications 
+ 
+Exhibit 27: BBU shelves are built into a power sidecar 
+independent from the IT rack 
+ORV3 HPR V3 rack specifications 
+ 
+ 
+Source: OCP, Data compiled by Goldman Sachs Global Investment Research
+ 
+ 
+Source: OCP, Data compiled by Goldman Sachs Global Investment Research
+24 September 2026
+  23
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+BBU battery chemicals and formats 
+The chemistry (chemical composition) and format of battery cells are currently 
+dominated by cylindrical ternary (NCA/NMC) battery cells, but they could diversify in the 
+future to include prismatic LFP and others. The strength of ternary batteries lies in their 
+high energy density, enabling them to achieve high space efficiency even in limited 
+installation spaces. LFP has strengths in terms of cost and lifespan, and in addition, the 
+prismatic format offers the advantage of allowing cells to be stacked together without 
+any gaps. 
+Power supply systems in 800VDC architecture 
+Current data center backup power systems feature a coexistence of centralized UPS 
+units installed in dedicated power rooms (grey space) and distributed BBUs built into 
+server racks or power sidecars. On the other hand, for future 800VDC architectures, 
+discussions are underway to transition to DC-direct systems combining SST (solid-state 
+transformers) + ESS + BBU, eliminating traditional UPS units which suffer from power loss 
+due to AC -> DC -> AC conversion. In this next-generation system, high-voltage AC 
+transmitted from the grid is converted directly to high-voltage DC (800VDC) using SST 
+and fed directly to ESS and BBUs, which is said to enable reductions in power conversion 
+loss and the shrinking of grey space used for UPS installation. 
+That said, as SST has not yet achieved technological maturity in terms of cost and 
+reliability, hurdles remain for immediate adoption on a GW scale. As such, in the current 
+transition period, inquiries for MV UPS (medium-voltage UPS), which improve power 
+efficiency by eliminating step-up/step-down transformers, are surging, particularly 
+among major Western electrical equipment manufacturers (LINK). As a result, we expect 
+ 
+Exhibit 28: Adopts an independent high-voltage DC system 
+power rack supporting 800VDC architecture 
+ORV3 HPR V4 rack specifications 
+ 
+ 
+Source: OCP, Data compiled by Goldman Sachs Global Investment Research
+24 September 2026
+  24
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+the coexistence of UPS and BBUs to continue for the time being until the transition to 
+800VDC architecture.
+24 September 2026
+  25
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+BBU Players & Key Business Opportunities  
+ 
+ 
+Panasonic HD 
+Panasonic HD is the largest player, and according to the company it is holding an 
+approximate 70-80% share in distributed power supply systems (BBU) for data centers.  
+It is the only company that comprehensively handles everything from battery cell 
+development to module design and system integration in-house, and its strengths lie in 
+the high reliability of its battery cells and modules and its ability to propose total 
+solutions to customers. In the data center energy storage system business, the company 
+aims for sales on the scale of ¥1 tn in FY3/29 and ¥1.5 tn in FY3/31, and management 
+has commented that its award acquisition ratio (projects for which product 
+development has been promoted or orders agreed upon) has reached almost 100% 
+regarding its sales guidance for FY3/29. 
+Furthermore, in addition to Panasonic Energy, which handles BBUs, Panasonic Industry 
+said that it is developing CBUs (Capacitor Backup Units) and supercapacitors, with plans 
+to begin mass production of first-generation products during FY3/27. We believe that if 
+these devices, which absorb power load fluctuations, are launched, combining them 
+with BBUs will lead to further value-add enhancements. 
+Murata Manufacturing 
+We expect BBU-bound sales to account for more than 30% of Murata Manufacturing’s 
+battery business sales in FY3/27. With structural reforms completed and profitability 
+having improved to a break-even level for the battery business as a whole, the increase 
+in BBU-bound sales is expected to make a positive contribution in terms of enhancing 
+profitability depth. The company is heading toward expanding its business for BBUs in 
+the form of LFP cell supply, and its stated strategy is to advance business expansion by 
+leveraging LFP’s high safety and its status as the only domestic Japanese cell 
+manufacturer (making it easy to differentiate itself geopolitically for Western 
+customers). While we believe its number of customers is currently likely to be limited and 
+its industry position is low, we believe it will grow into a more material business scale 
+amid robust demand and changing technologies. 
+TDK 
+TDK’s medium-sized batteries have up to now been used mainly for household 
+ESS/e-bikes/drones, but per the company, it is expected to make a full-scale push for 
+UPS applications from 1HFY3/27 and BBU applications from 2HFY3/27. We see it as a 
+major growth driver for the next medium-term plan (FY3/28-FY3/30), drawing on 
+strengths in LFP materials and design structure. Aside from supply via its JV with CATL, 
+Linergy (Malaysia), which it acquired in May 2026, could play an important role. Linergy 
+is currently mainly focused on UPS and power tools, but is moving to handle BBU 
+applications as well. We believe medium-sized batteries for AI/data centers, which 
+contributed almost nothing to sales through FY3/26, have the potential to expand to 
+nearly ¥300 bn by FY3/31, and management said that it is aiming for major expansion in 
+line with GPU technological evolution, especially in the latter half of the next 
+medium-term plan. 
+24 September 2026
+  26
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+MinebeaMitsumi 
+MinebeaMitsumi’s BBU protection modules are beginning to grow rapidly. The former 
+Mitsumi Electric originally had strengths in protection modules/semiconductors that 
+efficiently control mobile phone battery consumption, and the company is beginning to 
+secure business opportunities for BBUs as an applied development of this. On our 
+estimates, the company holds a share of around 80% with its largest customer, and we 
+believe there is potential for substantial sales growth in tandem with the growth of its 
+supply destinations. These products are included in the MLS division, where a cluster of 
+new growth products, such as BBU protection modules and humanoid sensors, are 
+beginning to develop alongside the mainstay motors. 
+Delta Electronics 
+Delta Electronics is the global top power supply supplier (by sales) in the AI server power 
+supply market, per the company. The company procures BBU modules from major 
+Taiwan battery module manufacturer AES-KY and others, combines them with BMS and 
+cooling devices to build BBU systems, and ships them to its hyperscaler customers. The 
+company’s strength lies in its ability to offer power supply units (PSU), power shelves, 
+BBUs, and cooling systems all together as a single package, which provides customers 
+with the benefit of reducing verification costs for individual components. The company 
+is jointly advancing the development of 800VDC architecture with NVIDIA, and plans for 
+a full-scale rollout in 2027. 
+LITEON Technology 
+LITEON Technology is one of the global leading players among energy storage system 
+manufacturers alongside Delta Electronics. The company has introduced BBU modules 
+compatible with NVIDIA’s Blackwell (GB200/GB300) and next-generation Vera Rubin 
+platforms to the market. Per disclosures, the company strength lies not only in the 
+supply of BBU modules but also in its system integration capabilities combining PSU and 
+BBUs. Furthermore, the company said that it is advancing the development of 
+high-voltage compatible architecture, such as exhibiting a BBU integrated into a 
+next-generation 800VDC liquid-cooled power rack at COMPUTEX 2026. Thanks to this 
+product portfolio, sales in its Cloud & AIoT division posted a high yoy growth rate of 
++60% in 1HFY26, per mgmt. 
+AES-KY 
+AES-KY falls under the umbrella of Simplo Technology, the world’s largest notebook PC 
+battery pack manufacturer, and is a company that provides high-output lithium-ion 
+battery modules. The company mainly supplies modules for electric-assisted bicycles 
+and data centers, and is one of the global leading companies particularly in data center 
+BBU modules. Per mgmt, the company’s biggest strength lies in its solid relationships 
+with US hyperscalers and it has currently made inroads into the supply chains of three of 
+the four major US CSPs, establishing a position as a joint development partner 
+participating from the initial customer design stages. Additionally, the company’s BBU 
+modules are also integrated into the power shelves of major power supply manufacturer 
+Delta Electronics. 
+Megmeet 
+Megmeet is a major Chinese power supply solutions provider that has rapidly expanded 
+24 September 2026
+  27
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+its BBU and integrated power supply system businesses for AI data centers in recent 
+years. The company said that it is participating in NVIDIA’s Blackwell and Vera Rubin 
+ecosystem as a power supply partner, and serves as a designated supplier for 
+components such as BBUs, PSUs, and capacitors. Alongside Delta Electronics and 
+LITEON Technology, Megmeet is one of three major power supply suppliers participating 
+in NVIDIA’s Blackwell supply chain. Moreover, beyond providing individual components, 
+Megmeet offers integrated power solutions, such as an 800VDC sidecar power rack that 
+integrates BBUs, PSUs, capacitors, and other items into a single rack. 
+Flex 
+Flex offers custom power supply solutions that cover everything from grid to chip for AI 
+data centers, supplying BBU systems as one of its backup power products to US 
+hyperscalers and others. In addition, to address the sharp power fluctuations 
+characteristic of AI data centers, the company has aimed to roll out power supply 
+systems equipped with a capacitor-based energy storage system (CESS) centered on 
+Musashi Seimitsu’s hybrid supercapacitors (HSC) in addition to BBUs. 
+Samsung SDI 
+Samsung SDI is one of the global leading players alongside Panasonic HD in the BBU 
+battery cell market. According to the company, it holds an approximate 50% share in 
+BBU cells, supplying high-output cylindrical lithium-ion battery cells to BBU module 
+integrators and suppliers. The company’s strength is its tabless structure battery cells, 
+possessing technology that dramatically reduces the internal resistance of the cell by 
+eliminating tabs from traditional electrodes and using the entire end face of the 
+electrode as a conductive path. The company is currently promoting a transition from 
+conventional 18650 cells to higher capacity, higher output 21700 cells, and in July 2026, 
+it began mass production of its new “40V3” 21700 cylindrical lithium-ion battery cells 
+for AI data centers at its Malaysia plant. 
+LG Energy Solution 
+Against the backdrop of slowing growth in the EV market, LG Energy Solution has 
+recently been strengthening its focus on AI data centers and robotics as new growth 
+drivers. The company is developing high-output 2170 cylindrical lithium-ion battery 
+cells that adopt a tabless structure, pursuing space efficiency, high output, and safety. 
+The company plans to begin mass production at its Ochang plant in South Korea during 
+2026, intending to expand supply for AI data center BBUs and robotics.
+24 September 2026
+  28
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Panasonic HD: BBU Leader; Reiterate Buy and Raise TP to ¥6,300; Scenario Analysis Shows Potential 
+Valuation Up to ¥14,100 
+ 
+ 
+Earnings estimates 
+Based on the aforementioned BBU market forecast (base case), we revise our earnings 
+estimates primarily for the Energy segment, raising our adjusted operating profit 
+estimates for this fiscal year onward by 3%/10%/10% and similarly raising our operating 
+profit estimates by 3%/11%/11%. These estimates are 3%/25%/33% above consensus 
+(Bloomberg), respectively (although it should be noted that the consensus estimates 
+may contain a mix of adjusted operating profits and operating profits). BBUs feature 
+both high sales growth and profit growth.  
+ 
+Target price and valuation 
+We switch our valuation methodology from the previous approach of referencing the 
+company’s historical EV/EBITDA and EBITDA margins to a valuation based on the 
+correlation between EV/EBITDA and EBITDA margins of global peers, including those in 
+BBUs. As a result, we raise our applied EV/EBITDA from 9X to 10.5X. Accordingly, we 
+revise up our target price for Panasonic HD from ¥5,100 to ¥6,300.  
+ 
+Exhibit 29: BBU business shows high sales growth and OP 
+growth 
+Panasonic HD: Sales and Adjusted OPM of Panasonic Energy 
+ 
+Exhibit 30: We expect Panasonic Energy to comprise 
+c.60% of company-wide operating profits in FY3/29 
+Ratio of Energy business to company-wide operating profits 
+-5%
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+0
+500,000
+1,000,000
+1,500,000
+2,000,000
+2,500,000
+3,000,000
+3,500,000
+3/2025
+3/2026
+3/2027E
+3/2028E
+3/2029E
+AOP margin
+Sales (JPY mn)
+Fiscal year
+EV batteries Sales
+BBU Sales
+Others Sales
+EV batteries Margin
+BBU Margin
+Others Margin
+32%
+44%
+52%
+34%
+50%
+56%
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+3/2027E
+3/2028E
+3/2029E
+OLD
+NEW
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  29
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Simulation of value per share using DCF: ¥6,000 in the lowest case (+41%), and up to 
+¥14,100 in the maximum case (+231%). 
+Given that we expect the BBU market to grow significantly through 2030, for illustrative 
+purposes only we calculated the per-share valuation for Panasonic HD when factoring in 
+BBU business growth up to FY3/29 and FY3/31 using the DCF method, respectively. In 
+conclusion, compared to our 12-month target price of ¥6,300 (+48% implied upside) 
+based on applying an EV/EBITDA of 10.5X to our FY3/28 estimated EBITDA, the lowest 
+valuation comes out to ¥6,000 (+41%). Furthermore, the highest valuation, calculated on 
+the assumption that the BBU growth story through FY3/31 is fully factored in and the 
+competitive environment does not deteriorate, this analysis implies a per share valuation 
+of ¥14,100 (+231%), all else equal.  
+ 
+Exhibit 31: Applied multiple is EV/EBITDA of 10.5X 
+Correlation between EBITDA margin and EV/EBITDA for global peers 
+Whirlpool
+Haier
+Midea
+LG Electronics
+Samsung SDI
+LGES
+CATL
+Lite-On
+Delta Electronics
+Murata
+Elite Material
+Fuji Elec.
+Daikin
+Carrier
+Trane
+TDK
+Kyocera
+Melco
+Omron
+Yaskawa
+Vertiv
+Eaton
+Taiyo Yuden
+Manhattan Associates
+Nichicon
+Resonac AES-KY
+Dynapack
+Flex
+y = 37.791x + 4.6165
+R² = 0.3677
+0
+5
+10
+15
+20
+25
+0.0%
+5.0%
+10.0%
+15.0%
+20.0%
+25.0%
+30.0%
+35.0%
+40.0%
+EV/EBITDA
+EBITDA margin
+15.0%
+(FY3/28E)
+10.5x
+ 
+ 
+Source: LSEG Data & Analytics, Goldman Sachs Global Investment Research
+24 September 2026
+  30
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Valuation details when factoring in estimates up to FY3/29 using DCF 
+We believe that products and orders for BBUs and CBUs are largely confirmed for the 
+next two to three years. In fact, Panasonic HD has published its sales guidance for BBUs 
+and CBUs up to FY3/29, and it states that this guidance is based on Awards already 
+acquired (projects for which product development promotion and order agreements 
+have been reached). When factoring in the outlook up to FY3/29 using DCF, the value 
+per share is calculated at ¥6,300 in the base case (in line with our target price; +48% 
+implied upside), ¥6,000 in the bear case (+41%), and potentially ¥8,200 in a bull case 
+(+92%). 
+The assumptions for the calculation are as follows. 
+Energy business: We forecast BBU sales in the Energy business based on our BBU 
+n
+TAM growth scenario. We forecast operating profits assuming a marginal profit ratio 
+of around 30%. We calculate the earnings estimates for the Energy business by 
+combining this with automotive batteries, dry batteries, etc. We calculate the NPV by 
+DCF based on the following assumptions. 
+Cost of equity: The risk-free rate is the current 10-year JGB yield. The market 
+o
+risk premium is a figure based on calculations by our strategy team. Adjusted 
+Beta is the figure for Panasonic HD over the past two years. 
+Cost of debt: Calculated by dividing the company’s interest paid (FY3/26 
+o
+actual) by interest-bearing debt (after adjusting for the equity credit of 
+subordinated bonds). 
+D/E ratio: For equity, we reference the market capitalization as of September 
+o
+17; for debt, we reference our FY3/27 estimate for interest-bearing debt 
+(after adjusting for the equity credit of subordinated bonds). 
+Tax rate: We assume an effective tax rate of 20% based on historical average. 
+o
+ 
+Exhibit 32: Per-share valuation of PHD implied under each valuation methodology/scenario 
+per share Valuation (yen)
+Bull
+Base
+Bear
+Upside/Downside
+Bull
+Base
+Bear
+Implied EV/EBITDA based in FY3/28
+Bull
+Base
+Bear
+10.5
+13.0
+24.0
+10.5
+10.4
+11.5
+10.5
+10.5
+14.1
+Our valuation method
+DCF (~FY3/29)
+DCF (~FY3/31)
+EV/EBITDA 10.5x * EBITDA in FY3/28
+Our valuation method
+DCF (~FY3/29)
+DCF (~FY3/31)
+EV/EBITDA 10.5x * EBITDA in FY3/28
+6,200
+6,700
+6,000
+6,300
+8,200
+6,700
+8,300
+14,100
+6,300
+Our valuation method
+DCF (~FY3/29)
+DCF (~FY3/31)
+EV/EBITDA 10.5x * EBITDA in FY3/28
+45%
+40%
+56%
+47%
+47%
+94%
+56%
+91%
+229%
+ 
+The stock price is based on the closing price on September 17, 2026. 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  31
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Perpetual growth rate: We assume 0% as a conservative premise. 
+o
+Non-Energy businesses: We calculate the EV of non-Energy businesses by applying 
+n
+the average forward EV/EBITDA of domestic and overseas peers in each business to 
+our FY3/28 estimated EBITDA for Panasonic HD’s Smart Life, HVAC & CC, Electric 
+Works, Connect, and Industry businesses.  
+ 
+Valuation details when factoring in estimates up to FY3/31 using DCF 
+Meanwhile, the BBU and CBU markets are actually expected to grow rapidly through 
+2030. Assuming that the certainty of this market growth increases and the stock market 
+prices it in, we ran calculations factoring in our earnings estimates up to FY3/31 using 
+DCF. In this case, the value per share is calculated at ¥8,300 in the base case (+95% 
+implied upside), ¥6,700 the bear case (+57%), and ¥14,100 in the bull case (+231%). The 
+calculation assumptions are the same as those for when factoring in earnings up to 
+FY3/29, as described above. Additionally, this simulation assumes that Panasonic HD will 
+maintain its competitiveness even as the BBU and CBU markets grow. 
+ 
+Exhibit 33: Calculation of per-share valuation when factoring in BBU/CBU growth up to FY3/29 
+(mn yen)
+(mn JPY)
+Bear Case
+Base Case
+Bull Case
+Assumption
+NPV for Energy business
+8,380,247
+8,970,342
+13,352,099
+CoE
+7%
+EV for other businesses
+5,443,550
+5,443,550
+5,443,550
+Risk free rate
+3%
+Total EV
+13,823,797
+14,413,892
+18,795,649
+Market risk premium
+3%
+Net debt
+158,740
+158,740
+158,740
+Adjusted Beta
+1.2
+Full value
+13,665,056
+14,255,152
+18,636,909
+Shares outstanding (mn units)
+2,290
+2,290
+2,290
+CoD
+3%
+Implied per-share value (JPY)
+6,000
+6,300
+8,200
+Interest-bearing debt
+1,404,310
+Upside
+41%
+48%
+92%
+Interest paid
+41,998
+Total EBITDA (3/28E)
+1,324,867
+1,342,271
+1,449,722
+Equity (Market Value)
+10,462,090
+Implied EV/EBITDA
+10.4
+10.7
+13.0
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+7%
+Stock price (JPY)
+4,262 yen
+tax rate
+20%
+Terminal g
+0%
+ 
+The stock price is based on the closing price on September 17, 2026. See the Appendix for details on the NPV calculation for the Energy business. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+ 
+Exhibit 34: Calculation of per-share valuation when factoring in BBU/CBU growth up to FY3/31 
+(mn yen)
+(mn JPY)
+Bear Case
+Base Case
+Bull Case
+Assumption
+NPV for Energy business
+10,002,734
+13,538,384
+26,782,322
+CoE
+7%
+EV for other businesses
+5,443,550
+5,443,550
+5,443,550
+Risk free rate
+3%
+Total EV
+15,446,284
+18,981,933
+32,225,872
+Market risk premium
+3%
+Net debt
+158,740
+158,740
+158,740
+Adjusted Beta
+1.2
+Full value
+15,287,543
+18,823,193
+32,067,131
+Shares outstanding (mn units)
+2,290
+2,290
+2,290
+CoD
+3%
+Implied per-share value (JPY)
+6,700
+8,300
+14,100
+Interest-bearing debt
+1,404,310
+Upside
+57%
+95%
+231%
+Interest paid
+41,998
+Total EBITDA (3/28E)
+1,342,271
+1,342,271
+1,342,271
+Equity (Market Value)
+10,462,090
+Implied EV/EBITDA
+11.5
+14.1
+24.0
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+7%
+Stock price (JPY)
+4,262 yen
+tax rate
+20%
+Terminal g
+0%
+ 
+The stock price is based on the closing price on September 17, 2026. See the Appendix for details on the NPV calculation for the Energy business. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+24 September 2026
+  32
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Appendix 
+ 
+ 
+ 
+ 
+Exhibit 35: Details of BBU TAM forecast (Bull case) 
+BBU TAM
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Global Data Center GPU Power Demand
+MW
+Legacy Models
+504
+                           
+18
+                             
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell / Blackwell Ultra
+4,494
+                        
+8,017
+                        
+1,897
+                        
+-
+                            
+-
+                            
+-
+                            
+Rubin / Rubin Ultra
+-
+                            
+2,175
+                        
+22,652
+                      
+40,470
+                      
+10,280
+                      
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+8,320
+                        
+68,750
+                      
+96,357
+                      
+Other ASICS
+8,511
+                        
+11,443
+                      
+21,319
+                      
+25,583
+                      
+53,723
+                      
+53,723
+                      
+Total
+13,510
+                     
+21,653
+                     
+45,868
+                     
+74,373
+                     
+132,753
+                   
+150,081
+                   
+YoY
+72%
+60%
+112%
+62%
+78%
+13%
+BBU Attach Rate - Bull Case
+%
+A100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H100
+0%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H200
+0%
+0%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell
+40%
+40%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell Ultra
+50%
+55%
+60%
+-
+                            
+-
+                            
+-
+                            
+Rubin
+-
+                            
+55%
+55%
+55%
+-
+                            
+-
+                            
+Rubin Ultra
+-
+                            
+-
+                            
+65%
+75%
+85%
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+100%
+100%
+100%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Other ASICS
+30%
+40%
+50%
+60%
+80%
+100%
+Weighted BBU Attach Rate (Nvidia)
+%
+38%
+54%
+58%
+75%
+97%
+100%
+BBU Power Demand
+MW
+A100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H200
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell
+791
+                           
+200
+                           
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell Ultra
+1,259
+                        
+4,135
+                        
+1,138
+                        
+-
+                            
+-
+                            
+-
+                            
+Rubin
+-
+                            
+1,196
+                        
+6,937
+                        
+1,997
+                        
+-
+                            
+-
+                            
+Rubin Ultra
+-
+                            
+-
+                            
+6,525
+                        
+27,629
+                      
+8,738
+                        
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+8,320
+                        
+68,750
+                      
+96,357
+                      
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Other ASICS
+2,553
+                        
+4,577
+                        
+10,659
+                      
+15,350
+                      
+42,979
+                      
+53,723
+                      
+Total
+4,603
+                        
+10,108
+                     
+25,260
+                     
+53,296
+                     
+120,466
+                   
+150,081
+                   
+YoY
+301%
+120%
+150%
+111%
+126%
+25%
+BBU ASP
+BBU ASP
+Shelf ASP per kW
+USD / kW
+475
+                           
+480
+                           
+480
+                           
+497
+                           
+492
+                           
+500
+                           
+YoY
+%
+-2%
+1%
+0%
+4%
+-1%
+2%
+BBU TAM
+BBU Demand
+USD, mn
+2,185
+                        
+4,850
+                        
+12,115
+                     
+26,469
+                     
+59,288
+                     
+75,112
+                     
+YoY
+%
+292%
+122%
+150%
+118%
+124%
+27%
+JPY/USD
+148
+                          
+160
+                          
+160
+                          
+160
+                          
+160
+                          
+160
+                          
+BBU Demand
+JPY, mn
+322,994
+                   
+775,961
+                   
+1,938,350
+                
+4,235,001
+                
+9,486,142
+                
+12,017,866
+              
+YoY
+%
+301%
+140%
+150%
+118%
+124%
+27%
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  33
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+ 
+Exhibit 36: Details of BBU TAM forecast (Base case) 
+BBU TAM
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Global Data Center GPU Power Demand
+MW
+Legacy Models
+504
+                           
+18
+                             
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell / Blackwell Ultra
+4,494
+                        
+8,017
+                        
+1,897
+                        
+-
+                            
+-
+                            
+-
+                            
+Rubin / Rubin Ultra
+-
+                            
+2,175
+                        
+22,652
+                      
+40,470
+                      
+10,280
+                      
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+8,320
+                        
+68,750
+                      
+96,357
+                      
+Other ASICS
+8,511
+                        
+11,443
+                      
+21,319
+                      
+25,583
+                      
+53,723
+                      
+53,723
+                      
+Total
+13,510
+                     
+21,653
+                     
+45,868
+                     
+74,373
+                     
+132,753
+                   
+150,081
+                   
+YoY
+72%
+60%
+112%
+62%
+78%
+13%
+BBU Attach Rate - Base Case
+%
+A100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H100
+0%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H200
+0%
+0%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell
+40%
+40%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell Ultra
+50%
+50%
+50%
+-
+                            
+-
+                            
+-
+                            
+Rubin
+-
+                            
+55%
+55%
+55%
+-
+                            
+-
+                            
+Rubin Ultra
+-
+                            
+-
+                            
+60%
+63%
+65%
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+90%
+93%
+95%
+Other ASICS
+30%
+32%
+34%
+36%
+38%
+40%
+BBU Attach Rate (Nvidia)
+%
+38%
+50%
+56%
+65%
+88%
+95%
+BBU Power Demand
+MW
+A100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H200
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell
+791
+                           
+200
+                           
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell Ultra
+1,259
+                        
+3,759
+                        
+949
+                           
+-
+                            
+-
+                            
+-
+                            
+Rubin
+-
+                            
+1,196
+                        
+6,937
+                        
+1,997
+                        
+-
+                            
+-
+                            
+Rubin Ultra
+-
+                            
+-
+                            
+6,023
+                        
+23,024
+                      
+6,682
+                        
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+7,488
+                        
+63,593
+                      
+91,540
+                      
+Other ASICS
+2,553
+                        
+3,662
+                        
+7,248
+                        
+9,210
+                        
+20,415
+                      
+21,489
+                      
+Total
+4,603
+                        
+8,816
+                        
+21,157
+                     
+41,719
+                     
+90,690
+                     
+113,029
+                   
+YoY
+301%
+92%
+140%
+97%
+117%
+25%
+BBU ASP
+BBU ASP
+Shelf ASP per kW
+USD / kW
+475
+                           
+469
+                           
+463
+                           
+456
+                           
+448
+                           
+444
+                           
+YoY
+%
+-2%
+-1%
+-1%
+-1%
+-2%
+-1%
+BBU TAM
+BBU Demand
+USD, mn
+2,185
+                        
+4,134
+                        
+9,793
+                        
+19,027
+                     
+40,587
+                     
+50,157
+                     
+YoY
+%
+292%
+89%
+137%
+94%
+113%
+24%
+JPY/USD
+148
+                          
+160
+                          
+160
+                          
+160
+                          
+160
+                          
+160
+                          
+BBU Demand
+JPY, mn
+322,994
+                   
+661,486
+                   
+1,566,890
+                
+3,044,362
+                
+6,493,933
+                
+8,025,132
+                
+YoY
+%
+301%
+105%
+137%
+94%
+113%
+24%
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  34
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Exhibit 37: Details of BBU TAM forecast (Bear case) 
+BBU TAM
+2025
+2026E
+2027E
+2028E
+2029E
+2030E
+Global Data Center GPU Power Demand
+MW
+Legacy Models
+504
+                           
+18
+                             
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell / Blackwell Ultra
+4,494
+                        
+8,017
+                        
+1,897
+                        
+-
+                            
+-
+                            
+-
+                            
+Rubin / Rubin Ultra
+-
+                            
+2,175
+                        
+22,652
+                      
+40,470
+                      
+10,280
+                      
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+8,320
+                        
+68,750
+                      
+96,357
+                      
+Other ASICS
+8,511
+                        
+11,443
+                      
+21,319
+                      
+25,583
+                      
+53,723
+                      
+53,723
+                      
+Total
+13,510
+                     
+21,653
+                     
+45,868
+                     
+74,373
+                     
+132,753
+                   
+150,081
+                   
+YoY
+72%
+60%
+112%
+62%
+78%
+13%
+BBU Attach Rate - Bear Case
+%
+A100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H100
+0%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H200
+0%
+0%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell
+40%
+40%
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell Ultra
+50%
+50%
+50%
+-
+                            
+-
+                            
+-
+                            
+Rubin
+-
+                            
+55%
+55%
+55%
+-
+                            
+-
+                            
+Rubin Ultra
+-
+                            
+-
+                            
+60%
+62%
+64%
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+64%
+66%
+68%
+Other ASICS
+30%
+31%
+32%
+33%
+34%
+35%
+Weighted BBU Attach Rate (Nvidia)
+%
+38%
+50%
+56%
+61%
+66%
+68%
+BBU Power Demand
+MW
+A100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H100
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+H200
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell
+791
+                           
+200
+                           
+-
+                            
+-
+                            
+-
+                            
+-
+                            
+Blackwell Ultra
+1,259
+                        
+3,759
+                        
+949
+                           
+-
+                            
+-
+                            
+-
+                            
+Rubin
+-
+                            
+1,196
+                        
+6,937
+                        
+1,997
+                        
+-
+                            
+-
+                            
+Rubin Ultra
+-
+                            
+-
+                            
+6,023
+                        
+22,840
+                      
+6,579
+                        
+-
+                            
+Feynman + Future model
+-
+                            
+-
+                            
+-
+                            
+5,325
+                        
+45,375
+                      
+65,523
+                      
+Other ASICS
+2,553
+                        
+3,547
+                        
+6,822
+                        
+8,442
+                        
+18,266
+                      
+18,803
+                      
+Total
+4,603
+                        
+8,702
+                        
+20,731
+                     
+38,604
+                     
+70,220
+                     
+84,326
+                     
+YoY
+301%
+89%
+138%
+86%
+82%
+20%
+BBU ASP
+BBU ASP
+Shelf ASP per kW
+USD / kW
+475
+                           
+451
+                           
+435
+                           
+424
+                           
+414
+                           
+406
+                           
+YoY
+%
+-2%
+-5%
+-4%
+-2%
+-2%
+-2%
+BBU TAM
+BBU Demand
+USD, mn
+2,185
+                        
+3,924
+                        
+9,011
+                        
+16,364
+                     
+29,098
+                     
+34,226
+                     
+YoY
+%
+292%
+80%
+130%
+82%
+78%
+18%
+JPY/USD
+148
+                          
+160
+                          
+160
+                          
+160
+                          
+160
+                          
+160
+                          
+BBU Demand
+JPY, mn
+322,994
+                   
+627,790
+                   
+1,441,798
+                
+2,618,167
+                
+4,655,684
+                
+5,476,118
+                
+YoY
+%
+301%
+94%
+130%
+82%
+78%
+18%
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+24 September 2026
+  35
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Simulation of Energy business NPV using DCF and EV of other businesses through 
+FY3/29 (details) 
+ 
+ 
+Exhibit 38: DCF simulation through FY3/29 (bull case) 
+Value per share estimated at ¥8,200 (+92% implied upside) 
+Panasonic HD (Bull case)
+(JPYmn)
+Assumption
+3/2027E
+3/2028E
+3/2029E
+Terminal
+CoE
+7%
+Energy
+0
+1
+2
+Value
+Risk free rate
+3%
+OP
+228,566
+545,551
+988,983
+Market risk premium
+3%
+OP*(1-tax)
+182,853
+436,441
+791,186
+Adjusted Beta
+1.2
++) Depreciation
+102,027
+114,520
+357,354
+-) Capex
+251,588
+217,072
+294,352
+CoD
+3%
+FCF
+33,291
+333,889
+854,189
+13,808,798
+Interest-bearing debt
+1,404,310
+PV of FCF
+33,291
+314,438
+757,566
+12,246,803
+Interest Paid
+41,998
+DCF Valuation
+Equity (Market Value)
+10,462,090
+NPV for Energy (a)
+13,352,099
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+6%
+Other business
+tax rate
+20%
+Total EBITDA
+1,062,951
+1,449,722
+2,394,087
+Terminal g
+0%
+Energy EBITDA
+354,488
+680,582
+1,568,638
+Other EBITDA
+708,463
+769,140
+825,449
+ Smart Life
+110,400
+113,900
+118,400
+ HVAC &CC
+106,800
+109,400
+112,200
+ Electric Works
+122,600
+125,200
+127,800
+ Connect
+180,270
+206,791
+219,879
+ Industry 
+188,393
+213,850
+247,170
+EV/EBITDA
+ Smart Life
+6
+ HVAC &CC
+9
+ Electric Works
+9
+ Connect
+6
+ Industry 
+9
+Other EV (b)
+5,443,550
+Energy + Other
+EV (a+b)
+18,795,649
+-)Net debt
+158,740
+Full value
+18,636,909
+S/O
+2,290
+Implied per-share value
+8,200 yen
+Implied EV/EBITDA
+17.7
+13.0
+7.9
+Share price as of Sep 17.
+4,262
+Upside/downside
+92%
+ 
+Share prices are based on September 17, 2026 closing prices. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+24 September 2026
+  36
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+ 
+Exhibit 39: DCF simulation through FY3/29 (base case) 
+Value per share estimated at ¥6,300 (+48% implied upside) 
+Panasonic HD (Base case)
+(JPYmn)
+Assumption
+3/2027E
+3/2028E
+3/2029E
+Terminal
+CoE
+7%
+Energy
+0
+1
+2
+Value
+Risk free rate
+3%
+OP
+215,525
+458,611
+653,612
+Market risk premium
+3%
+OP*(1-tax)
+172,420
+366,889
+522,890
+Adjusted Beta
+1.2
++) Depreciation
+102,027
+114,520
+272,354
+-) Capex
+248,345
+202,340
+233,614
+CoD
+3%
+FCF
+26,102
+279,068
+561,629
+9,210,562
+Interest-bearing debt
+1,404,310
+PV of FCF
+26,102
+263,030
+498,928
+8,182,283
+Interest Paid
+41,998
+DCF Valuation
+Equity (Market Value)
+10,462,090
+NPV for Energy (a)
+8,970,342
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+6%
+Other business
+tax rate
+20%
+Total EBITDA
+1,026,015
+1,342,271
+1,751,415
+Terminal g
+0%
+Energy EBITDA
+317,552
+573,131
+925,966
+Other EBITDA
+708,463
+769,140
+825,449
+ Smart Life
+110,400
+113,900
+118,400
+ HVAC &CC
+106,800
+109,400
+112,200
+ Electric Works
+122,600
+125,200
+127,800
+ Connect
+180,270
+206,791
+219,879
+ Industry 
+188,393
+213,850
+247,170
+EV/EBITDA
+ Smart Life
+6
+ HVAC &CC
+9
+ Electric Works
+9
+ Connect
+6
+ Industry 
+9
+Other EV (b)
+5,443,550
+Energy + Other
+EV (a+b)
+14,413,892
+-)Net debt
+158,740
+Full value
+14,255,152
+S/O
+2,290
+Implied per-share value
+6,300 yen
+Implied EV/EBITDA
+14.0
+10.7
+8.2
+Share price as of Sep 15.
+4,262
+Upside/downside
+48%
+ 
+Share prices are based on September 17, 2026 closing prices. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+24 September 2026
+  37
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Exhibit 40: DCF simulation through FY3/29 (bear case) 
+Value per share estimated at ¥6,000 (+41% implied upside) 
+Panasonic HD (Bear case)
+(JPYmn)
+Assumption
+3/2027E
+3/2028E
+3/2029E
+Terminal
+CoE
+7%
+Energy
+0
+1
+2
+Value
+Risk free rate
+3%
+OP
+211,178
+440,257
+610,741
+Market risk premium
+3%
+OP*(1-tax)
+168,942
+352,206
+488,593
+Adjusted Beta
+1.2
++) Depreciation
+102,027
+114,520
+261,654
+-) Capex
+247,264
+199,201
+225,935
+CoD
+3%
+FCF
+23,705
+267,525
+524,312
+8,598,571
+Interest-bearing debt
+1,404,310
+PV of FCF
+23,705
+252,149
+465,777
+7,638,615
+Interest Paid
+41,998
+DCF Valuation
+Equity (Market Value)
+10,462,090
+NPV for Energy (a)
+8,380,247
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+6%
+Other business
+tax rate
+20%
+Total EBITDA
+1,025,760
+1,324,867
+1,887,027
+Terminal g
+0%
+Energy EBITDA
+317,297
+555,726
+1,061,578
+Other EBITDA
+708,463
+769,140
+825,449
+ Smart Life
+110,400
+113,900
+118,400
+ HVAC &CC
+106,800
+109,400
+112,200
+ Electric Works
+122,600
+125,200
+127,800
+ Connect
+180,270
+206,791
+219,879
+ Industry 
+188,393
+213,850
+247,170
+EV/EBITDA
+ Smart Life
+6
+ HVAC &CC
+9
+ Electric Works
+9
+ Connect
+6
+ Industry 
+9
+Other EV (b)
+5,443,550
+Energy + Other
+EV (a+b)
+13,823,797
+-)Net debt
+158,740
+Full value
+13,665,056
+S/O
+2,290
+Implied per-share value
+6,000 yen
+Implied EV/EBITDA
+13.5
+10.4
+7.3
+Share price as of Sep 17.
+4,262
+Upside/downside
+41%
+ 
+Share prices are based on September 17, 2026 closing prices. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+24 September 2026
+  38
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Simulation of Energy business NPV using DCF and EV of other businesses through 
+FY3/31 (details) 
+ 
+ 
+ 
+Exhibit 41: DCF simulation through FY3/31 (bull case) 
+Value per share estimated at ¥14,100 (+231% implied upside) 
+Panasonic HD (Bull case)
+(JPYmn)
+Assumption
+3/2027E
+3/2028E
+3/2029E
+3/2030GSE
+3/2031GSE
+Terminal
+CoE
+7%
+Energy
+0
+1
+2
+3
+4
+Value
+Risk free rate
+3%
+OP
+228,566
+545,551
+988,983
+1,769,257
+2,073,217
+Market risk premium
+3%
+OP*(1-tax)
+182,853
+436,441
+791,186
+1,415,406
+1,658,573
+Adjusted Beta
+1.2
++) Depreciation
+102,027
+114,520
+357,354
+587,826
+657,716
+-) Capex
+251,588
+217,072
+294,352
+448,912
+510,736
+CoD
+3%
+FCF
+33,291
+333,889
+854,189
+1,554,320
+1,805,554
+29,188,551
+Interest-bearing debt
+1,404,310
+PV of FCF
+33,291
+314,438
+757,566
+1,298,197
+1,420,183
+22,958,646
+Interest Paid
+41,998
+DCF Valuation
+Equity (Market Value)
+10,462,090
+NPV for Energy (a)
+26,782,322
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+6%
+Other business
+tax rate
+20%
+Total EBITDA
+1,026,015
+1,342,271
+1,751,415
+2,244,150
+2,383,219
+Terminal g
+0%
+Energy EBITDA
+317,552
+573,131
+925,966
+1,351,437
+1,415,187
+Other EBITDA
+708,463
+769,140
+825,449
+892,713
+968,032
+ Smart Life
+110,400
+113,900
+118,400
+117,100
+117,800
+ HVAC &CC
+106,800
+109,400
+112,200
+116,700
+121,200
+ Electric Works
+122,600
+125,200
+127,800
+138,500
+142,700
+ Connect
+180,270
+206,791
+219,879
+233,275
+248,211
+ Industry 
+188,393
+213,850
+247,170
+287,137
+338,121
+EV/EBITDA
+ Smart Life
+6
+ HVAC &CC
+9
+ Electric Works
+9
+ Connect
+6
+ Industry 
+9
+Other EV (b)
+5,443,550
+Energy + Other
+EV (a+b)
+32,225,872
+-)Net debt
+158,740
+Full value
+32,067,131
+S/O
+2,290
+Implied per-share value
+14,100 yen
+Implied EV/EBITDA
+31
+24
+18
+14
+14
+Share price as of Sep 17.
+4,262
+Upside/downside
+231%
+ 
+Share prices are based on September 17, 2026 closing prices. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+ 
+Exhibit 42: DCF simulation through FY3/31 (base case) 
+Value per share estimated at ¥8,300 (+95% upside) 
+Panasonic HD (Base case)
+(JPYmn)
+Assumption
+3/2027E
+3/2028E
+3/2029E
+3/2030GSE
+3/2031GSE
+Terminal
+CoE
+7%
+Energy
+0
+1
+2
+3
+4
+Value
+Risk free rate
+3%
+OP
+215,525
+458,611
+653,612
+969,111
+1,026,870
+Market risk premium
+3%
+OP*(1-tax)
+172,420
+366,889
+522,890
+775,289
+821,496
+Adjusted Beta
+1.2
++) Depreciation
+102,027
+114,520
+272,354
+382,326
+388,316
+-) Capex
+248,345
+202,340
+233,614
+302,105
+318,336
+CoD
+3%
+FCF
+26,102
+279,068
+561,629
+855,510
+891,477
+14,411,591
+Interest-bearing debt
+1,404,310
+PV of FCF
+26,102
+262,811
+498,100
+714,538
+701,203
+11,335,630
+Interest Paid
+41,998
+DCF Valuation
+Equity (Market Value)
+10,462,090
+NPV for Energy (a)
+13,538,384
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+6%
+Other business
+tax rate
+20%
+Total EBITDA
+1,026,015
+1,342,271
+1,751,415
+2,244,150
+2,383,219
+Terminal g
+0%
+Energy EBITDA
+317,552
+573,131
+925,966
+1,351,437
+1,415,187
+Other EBITDA
+708,463
+769,140
+825,449
+892,713
+968,032
+ Smart Life
+110,400
+113,900
+118,400
+117,100
+117,800
+ HVAC &CC
+106,800
+109,400
+112,200
+116,700
+121,200
+ Electric Works
+122,600
+125,200
+127,800
+138,500
+142,700
+ Connect
+180,270
+206,791
+219,879
+233,275
+248,211
+ Industry 
+188,393
+213,850
+247,170
+287,137
+338,121
+EV/EBITDA
+ Smart Life
+6
+ HVAC &CC
+9
+ Electric Works
+9
+ Connect
+6
+ Industry 
+9
+Other EV (b)
+5,443,550
+Energy + Other
+EV (a+b)
+18,981,933
+-)Net debt
+158,740
+Full value
+18,823,193
+S/O
+2,290
+Implied per-share value
+8,300 yen
+Implied EV/EBITDA
+19
+14
+11
+8
+8
+Share price as of Sep 17.
+4,262
+Upside/downside
+95%
+ 
+Share prices are based on September 17, 2026 closing prices. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+24 September 2026
+  39
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+Investment Thesis - Panasonic Holdings  
+Panasonic Holdings has a broad range of businesses, including home appliances, 
+automotive batteries, industrial equipment, automotive equipment, and e-components. 
+While its traditional core businesses have been home appliances (accounting for 30-40% 
+of sales and profits), automotive batteries supplied mainly to Tesla, and Blue Yonder, 
+which became a wholly owned subsidiary in 2021, attention has recently shifted to 
+products for data centers, such as BBUs, CCLs, and high-performance capacitors. In 
+addition, with benefits from structural reforms and a peak in investment in automotive 
+batteries and Blue Yonder, we believe strong cash flow will be generated, potentially 
+resulting in large-scale share buybacks. We are Buy rated. 
+Price Target Risks and Methodology - Panasonic Holdings  
+We are Buy rated. Our 12-month target price is ¥6,300. We apply an EV/EBITDA multiple 
+of 10.5X (FY3/28E basis, derived from the correlation between EV/EBITDA and EBITDA 
+margin for global competitors / historical correlation between EV/EBITDA and EBITDA 
+margin). Risks: Companywide: (1) Weaker-than-expected progress with fixed-cost 
+reductions or insufficiently realized benefits from business reforms across the company 
+as a whole, (2) weaker growth prospects due to the loss of key personnel during the 
+fixed-cost reduction process, (3) slower-than-expected progress in revamping the 
+business portfolio as a result of delays selecting buyers, (4) additional investment and 
+depreciation burdens arising due to increased demand for cylindrical batteries, and (5) 
+forex trends (we estimate that every ¥1 appreciation vs. the USD/EUR/CNY impacts 
+annual adjusted operating profits by -¥0.9 bn/-¥1.0 bn/+¥4.7 bn, respectively). 
+Lifestyle updates business: Weaker demand for residential/commercial air 
+conditioners due to a downturn in the global economy, or the loss of market share to 
+ 
+Exhibit 43: DCF simulation through FY3/31 (bear case) 
+Value per share estimated at ¥6,700 (+57% upside) 
+Panasonic HD (Bear case)
+(JPYmn)
+Assumption
+3/2027E
+3/2028E
+3/2029E
+3/2030GSE
+3/2031GSE
+Terminal
+CoE
+7%
+Energy
+0
+1
+2
+3
+4
+Value
+Risk free rate
+3%
+OP
+211,178
+440,257
+610,741
+742,460
+745,132
+Market risk premium
+3%
+OP*(1-tax)
+168,942
+352,206
+488,593
+593,968
+596,106
+Adjusted Beta
+1.2
++) Depreciation
+102,027
+114,520
+261,654
+323,926
+315,616
+-) Capex
+247,264
+199,201
+225,935
+260,392
+266,422
+CoD
+3%
+FCF
+23,705
+267,525
+524,312
+657,502
+645,300
+10,431,908
+Interest-bearing debt
+1,404,310
+PV of FCF
+23,705
+251,940
+465,004
+549,158
+507,569
+8,205,357
+Interest Paid
+41,998
+DCF Valuation
+Equity (Market Value)
+10,462,090
+NPV for Energy (a)
+10,002,734
+Debt (Interest-bearing debt)
+1,404,310
+WACC
+6%
+Other business
+tax rate
+20%
+Total EBITDA
+1,026,015
+1,342,271
+1,751,415
+2,244,150
+2,383,219
+Terminal g
+0%
+Energy EBITDA
+317,552
+573,131
+925,966
+1,351,437
+1,415,187
+Other EBITDA
+708,463
+769,140
+825,449
+892,713
+968,032
+ Smart Life
+110,400
+113,900
+118,400
+117,100
+117,800
+ HVAC &CC
+106,800
+109,400
+112,200
+116,700
+121,200
+ Electric Works
+122,600
+125,200
+127,800
+138,500
+142,700
+ Connect
+180,270
+206,791
+219,879
+233,275
+248,211
+ Industry 
+188,393
+213,850
+247,170
+287,137
+338,121
+EV/EBITDA
+ Smart Life
+6
+ HVAC &CC
+9
+ Electric Works
+9
+ Connect
+6
+ Industry 
+9
+Other EV (b)
+5,443,550
+Energy + Other
+EV (a+b)
+15,446,284
+-)Net debt
+158,740
+Full value
+15,287,543
+S/O
+2,290
+Implied per-share value
+6,700 yen
+Implied EV/EBITDA
+15
+12
+9
+7
+6
+Share price as of Sep 17.
+4,262
+Upside/downside
+57%
+ 
+Share prices are based on September 17, 2026 closing prices. 
+ 
+Source: Company data, LSEG Data & Analytics, Bloomberg, Goldman Sachs Global Investment Research
+24 September 2026
+  40
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+more popular or cheaper products at competitors. Panasonic Connect: (1) A slump in 
+the company’s aircraft services business if the “bring your own devices” trend were to 
+become more common for in-flight entertainment on commercial aircraft, (2) 
+weaker-than-expected sales growth at acquired company Blue Yonder (standalone 
+basis), (3) major impairment losses on Blue Yonder if the calculation of its present value 
+were to require a higher WACC due to rising interest rates, softer demand or other 
+factors (indication of impairment is checked every quarter), and (4) a 
+longer-than-anticipated decline in demand for various mounting systems used in 
+process automation, such as the manufacture of PCs and smartphones. Panasonic 
+Energy: Tesla opting to increase its use of batteries made by other companies, leading 
+to stronger pricing pressures, a further slowdown in the EV market, or increased 
+competition in the generative AI-related battery backup unit (BBU) business. Panasonic 
+Industry: Weaker-than-expected factory automation-related demand, stiffer 
+competition in the generative AI-related hybrid capacitor and circuit board material 
+businesses, or a longer-than-expected downturn in demand for smartphones and other 
+consumer electronics. 
+Investment Thesis - Murata Mfg. 
+Murata Mfg.’s main business is the manufacture of MLCCs, which account for about 50% 
+of sales, as well as RF modules and MetroCirc. Demand for small, high-capacity MLCCs 
+for AI/DC has expanded rapidly from 2025 onwards, tightening overall MLCC 
+supply/demand. MLCCs for AI/DC are characterized by high technical requirements from 
+customers to cope with surging power consumption within limited baseboard areas, 
+resulting in higher ASPs compared to those for other products (they are also more likely 
+to benefit from increased content per device due to technological changes). In April 
+2026, the company decided on an ¥80.0 bn capacity expansion investment specializing 
+in AI/DC, and as the global market share leader (estimated at over 50% for AI/DC alone), 
+we think it will continue to strongly benefit from AI demand. We believe this cycle will be 
+prolonged due to factors such as further supply/demand tightening from a recovery in 
+consumer electronics, an increase in long-term agreements (LTAs) for FY3/28, and 
+further penetration into edge devices. We are Buy rated on Murata. 
+Price Target Risks and Methodology - Murata Mfg. 
+Valuation methodology: We are Buy rated on Murata Mfg. with a 12-month price target 
+of ¥12,900. Our target price is based on a FY3/29E EV/GCI vs. CROCI/WACC, applying an 
+80% premium to our sector multiple of 10X (implies FY3/29E P/E of 30X). 
+Key risks: Decline in smartphone production volume, deterioration in MLCC 
+supply/demand, and yen appreciation. 
+Investment Thesis - TDK 
+TDK is a Japan-based company that operates a passive components business, which 
+manufactures ceramic capacitors, aluminum electrolytic capacitors, and piezo 
+materials/components; a sensor application products business, which supplies 
+temperature/pressure, magnetic, and MEMS sensors; a magnetic application products 
+business, which produces HDD heads/suspensions and magnets; and an energy 
+application products business, which manufactures secondary electron and power 
+supply products. We are Buy rated on TDK, as we expect balanced earnings 
+contributions from growth in batteries, sensors, passive components, and magnetic 
+24 September 2026
+  41
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+applications. We see gradual revenue and profit growth in batteries, assuming no 
+changes in material costs and selling prices. We forecast continued improvement in the 
+sensor business, with signs that the business will remain consistently in the black. In 
+passive components, we see automotive/industrial MLCCs driving growth, and in 
+magnetic applications, we see nearline HDDs driving growth. We believe valuations are 
+attractive considering the company’s well-balanced business drivers and growth 
+potential of the battery business. 
+Price Target Risks and Methodology - TDK 
+Valuation methodology: We are Buy rated on TDK with a 12-month price target of 
+¥4,900. Our target price is based on a FY3/29E EV/GCI vs. CROCI/WACC, applying a 10% 
+premium to our sector average EV/DACF multiple of 10X (implies FY3/28E P/E of 27X). 
+Key risks: Decline in smartphone production volume, higher input costs, and yen 
+appreciation. 
+Investment Thesis - MinebeaMitsumi 
+MinebeaMitsumi mainly manufactures bearings (miniature bearings of 30 mm or less), 
+analog semiconductors, motors, and products for optical image stabilization (OIS 
+actuators). It has a share of over 60% of the global ball bearing market 
+(miniature/small-diameter ball bearings). The four core businesses are affected by the 
+cycle to some extent, but we think all these businesses will contribute to longer-term 
+growth. We are Buy-rated on MinebeaMitsumi. 
+Price Target Risks and Methodology - MinebeaMitsumi  
+We are Buy-rated. Our 12-month price target is ¥5,500, based on FY3/29E EV/GCI vs. 
+CROCI/WACC, applying the sector average EV/DACF multiple of 10X. Our target price 
+implies FY3/28E P/E of 20X. Key risks include sharper-than-expected rises in input 
+costs, a decline in auto production, and forex swings. 
+Delta Electronics is the largest vendor of power supply components globally (in terms of 
+sales) and a key servo motor/inverter/PLC supplier in mainland China. It is also a key 
+supplier for the EV/server power industry, holding one of the largest market shares in 
+both markets. We are positive on Delta’s long-term growth opportunity driven by 
+multiple factors (EV/EV charger/5G infrastructure/Datacenter power/ESS etc.) in the 
+coming years. We also expect demand for its AI server power and cooling systems to 
+deliver solid growth given the increasing demand for high computing performance AI 
+servers, which will require higher efficiency power components and better cooling 
+systems to improve the overall performance. Trading at a 1-year forward P/E multiple 
+that is below our target multiple, we believe the stock is undervalued, given the 
+company’s strong revenue outlook (50%+ 2025-28E CAGR) for its growth sectors 
+(including EV & EV charging / green capex & renewable energy / cloud computing / 
+smart manufacturing / satellite communication & smart connectivity), and its leadership 
+in the power component industry. We are Buy rated. Key downside risks include: (1) 
+slower-than-expected AI server power consumption growth momentum, (2) potential 
+market share loss risk in AI server DC-DC power system or the potential design change 
+on AI server DC-DC system, and (3) slower than expected of future products 
+deployment, including power rack, SST and SOFC. 
+24 September 2026
+  42
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Valuation methodology: We are Buy rated on Delta. Our 12m TP of NT$4,120 is based 
+on a target P/E multiple of 26.5x (1.6x s.d. higher than Delta’s past 15-year average 
+valuation) applied to our 2028E EPS and discounted back to 2027 at a CoE of 11%. 
+Key downside risks: (1) slower-than-expected AI server power consumption growth 
+momentum, (2) potential market share loss risk in AI server DC-DC power system or the 
+potential design change on AI server DC-DC system, and (3) slower than expected of 
+future products deployment, including power rack, SST and SOFC. 
+Megmeet is undergoing a structural transformation from an automation & control 
+specialist to a global AI server power supply contender. The company has secured 
+volume orders for 5.5kW PSUs (GB200/GB300) with new orders and shipments to 
+continue through 2026. While its entry into the NVIDIA MGX ecosystem validates its R&D 
+capabilities, a gap remains in its high-efficiency product portfolio compared to tier-1 
+peers such as Delta Electronics. Moreover, the blurring of supply chain boundaries - with 
+increasing new entrants could intensify competition for next-gen 800 VDC products and 
+potentially higher uncertainties with the adoption of solid-state transformers (SST). At 
+current valuations, we see a balanced risk-reward profile, with upside potential 
+contingent on faster GPU/ASIC order wins or accelerated 800V product validation. Going 
+forward, we will continue to monitor its execution on mass production yields and R&D 
+progress of next-generation products. We are Neutral rated on a sector-relative basis 
+considering earnings growth rate, return profile and P/E valuation. 
+Price Target Risks and Methodology - Megmeet 
+Valuation methodology: Our 12-month TP of Rmb120.0 is based on 32x 2028E P/E 
+discounted back to 2027E with 11% CoE. 
+Key up/downside risks: (1) Faster/slower AI server PSU market share gain within NVIDIA 
+ecosystem; (2) Faster/slower product validation progress with ASIC hardware supply 
+chains; (3) Better/worse-than-expected execution on mass production; (4) 
+Shorter/longer R&D cycles on 800VDC power products; (5) Faster/slower industry 
+adoption on 800V DC power distribution architecture; (6) Global AI capex growth 
+sustainability and AIDC supply/demand dynamics. 
+Investment Thesis - Samsung SDI 
+Samsung SDI (SDI) is a battery and electronic materials manufacturer maintaining 
+industry-leading profitability levels in the large-sized battery business while becoming 
+more of a pure-play battery company. We expect Samsung SDI battery margins to be 
+more resilient than that of peers given long-term contracts with premium customers.  
+Meanwhile, SDI is making good progress on technology leadership (alongside LGES) with 
+strong know-how and a diversified new product offering (mass production of prismatic 
+P6 with Ni >90%, cylindrical 46-pi, and solid state batteries). We also see potential for 
+further cell order momentum in the US market as OEMs look for battery suppliers and 
+form factor diversification.  
+While we remain positive on SDI’s fundamentals, the stock is now already pricing in our 
+base case xEV long-term market share and core xEV EBITDA margin growth; as well as 
+our base case ESS assumptions. The stock is also trading above its long-term average 
+12m forward P/B multiple. We are Neutral rated on the stock. 
+24 September 2026
+  43
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Price Target Risks and Methodology - Samsung SDI Co. 
+We are Neutral rated on Samsung SDI with a 2027E/28E SOTP-based 12m TP of 
+W695,000 (xEV Battery: DCF; Small-size Battery/ESS/EM: 11x/14x/8x 27E/28E EBITDA 
+multiple; Listed/unlisted subsidiaries: market/book value). 
+Key upside/downside risks:  
+(1) Higher/lower-than-expected global EV penetration rate growth; (2) 
+faster/slower-than-expected EV/ESS shipment and market share growth in 
+battery-related business; (3) higher/lower-than-expected battery business margins, 
+higher/lower-than-expected EM business margins and; (4) 
+weaker/stronger-than-expected KRW:USD. 
+Investment Thesis - LG Energy Solution 
+LGES is the largest battery manufacturer outside China, with leadership in high nickel 
+battery chemistries. We remain positive on LGES’ fundamentals given its widening global 
+technology leadership in batteries with upcoming commercial production of new 
+technology battery products such as large size cylindrical 4680 batteries, cell-to-pack 
+LFP batteries (from 2025) and dry electrode process (from 2028). Meanwhile, we see 
+market share growth in the US, driven by rapidly expanding capacities where we expect 
+the company’s US market share growth to be margins and returns accretive (GSe 
+2026E-28E EBITDA CAGR of 51% and 6.5% CROCI expansion during this period). 
+While the market is anchored on near-term EV battery weakness, we believe it is 
+underestimating the emerging clearer path to utilization rate recovery which we 
+estimate to rise from ~42% in FY26E to ~67% in 2028E. We also see improving visibility 
+in medium-term earnings (doubling of EBITDA between FY26E-28E), supported by ESS 
+demand and strong order momentum for new products. We are Buy rated on LGES. 
+Price Target Risks and Methodology - LG Energy Solution 
+We are Buy rated on LGES with a 12m TP of W520,000 derived using a 50%/50% blend 
+of DCF (WACC: 8.4%, TGR: 3.3%) and 2027E/28E EV/EBITDA. We apply a mid-cycle 20x 
+multiple to adjusted (ex-JV share) 2027E/28E EBITDA.  
+Key downside risks: (1) Lower-than-expected market share; (2) Slower-than-expected 
+ramp-up of new EV/ESS battery plant lines; (3) Lower global EV penetration rate 
+Price Target Risks and Methodology - Flex 
+We are Buy rated on Flex shares. Our 12-month price target of $154 is based on 21X 
+Q5-Q8 EPS including SBC. Our estimates do not include the proposed transaction of EPC 
+Power. 
+Key risks to our view relate to macroeconomic demand, supply/demand dynamics, Flex’s 
+ability to expand margins, tariff impacts and geopolitical uncertainty, and FCF.
+24 September 2026
+  44
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, Ryo Harada, Daiki Takayama, Allen Chang, Nikhil Bhandari, Chao Wang, Nick Zheng, CFA, Michael Ng, CFA, Mark Delaney, CFA, Katherine Murphy, 
+Hao Chen and Hiroki Muramatsu, hereby certify that all of the views expressed in this report accurately reflect our personal views about the subject 
+company or companies and its or their securities. We also certify that no part of our compensation was, is or will be, directly or indirectly, related to the 
+specific recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: Ryo Harada Goldman Sachs Japan Co., Ltd., Daiki Takayama Goldman Sachs Japan Co., Ltd., Allen Chang Goldman Sachs (Asia) 
+L.L.C., Nikhil Bhandari Goldman Sachs (Singapore) Pte, Chao Wang Goldman Sachs (Asia) L.L.C., Taipei Branch, Nick Zheng, CFA Goldman Sachs (Asia) 
+L.L.C., Michael Ng, CFA Goldman Sachs & Co. LLC, Mark Delaney, CFA Goldman Sachs & Co. LLC, Katherine Murphy Goldman Sachs & Co. LLC, Hao Chen 
+Goldman Sachs (China) Securities Company Limited, Hiroki Muramatsu Goldman Sachs Japan Co., Ltd.. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+Financial Advisory Disclosure 
+Goldman Sachs and/or one of its affiliates is acting as a financial advisor in connection with an announced strategic matter involving the following 
+company or one of its affiliates: FLEX LTD. 
+The rating(s) for MinebeaMitsumi Inc., Murata Mfg. and TDK is/are relative to the other companies in its/their coverage universe: Alps Alpine, 
+Dai Nippon Printing, Hirose Electric, IRISO Electronics, Ibiden, Japan Aviation Electronics Industry, Kohoku Kogyo, Kyocera, MARUWA, Mabuchi Motor, 
+Maxell Ltd., MinebeaMitsumi Inc., Murata Mfg., NGK Corp., Nichicon, Nidec, Nippon Ceramic, Niterra, Nitto Denko, Renesas Electronics, Rohm, TDK, 
+TOPPAN Holdings, Taiyo Yuden  
+The rating(s) for Flex is/are relative to the other companies in its/their coverage universe: Aeva Technologies Inc., Amphenol Corp., Aptiv Plc, 
+Aurora Innovation Inc., Belden Inc., BorgWarner Inc., Cerence Inc., Flex, Ford Motor Co., General Motors Co., Gentex Corp., Innoviz Technologies, Jabil 
+Circuit Inc., Keysight Technologies Inc., Lear Corp., Magna International Inc., Mobileye Global Inc., QuantumScape Corp., Rivian Automotive Inc., Sensata 
+Technologies Holding, Symbotic Inc., TE Connectivity Plc, Tesla Inc., Versigent PLC, Vertiv Holdings, Visteon Corp.  
+The rating(s) for LG Energy Solution and Samsung SDI Co. is/are relative to the other companies in its/their coverage universe: Ecopro BM, L&F, 
+LG Chem, LG Energy Solution, Posco Future M, SK Innovation, Samsung SDI Co.  
+The rating(s) for Panasonic Holdings is/are relative to the other companies in its/their coverage universe: Anritsu, Daihen, Fuji Electric Co., 
+Fujikura, Furukawa Electric, Hitachi, Meidensha, Mitsubishi Electric, Panasonic Holdings, SWCC, Sumitomo Electric Industries  
+The rating(s) for Delta Electronics is/are relative to the other companies in its/their coverage universe: AWSC, Airtac International Group, Co-Tech 
+Development Corp., Delta Electronics, Elite Material, GCE, Hiwin Corp., ITEQ Corp, Kinsus, Lotes, NYPCB, Taiwan Union Technology Corp., Unimicron 
+Technology, Win Semiconductors Corp., Yageo Corp., Zhen Ding Technology Holding  
+The rating(s) for Megmeet is/are relative to the other companies in its/their coverage universe: Best, Bochu, CRRC Corp. (A), CRRC Corp. (H), 
+Centre Testing Intl Group, Estun Automation Co.(A), Estun Automation Co.(H), Faratronic, Haitian International Holdings, Han’s Laser Technology, 
+Hongfa Technology, Huaming, Kehua Data Co., Lead Intelligent (A), Lead Intelligent (H), Leader Harmonious Drive Systems Co., Luster LightTech Co., 
+Megmeet, Moons’ Electric, NARI Technology, Nantong Jianghai Capacitor Co., OPT Machine Vision Tech Co., Sanhua Intelligent Controls (A), Sanhua 
+Intelligent Controls (H), Shanghai Baosight Software, Shenzhen Envicool Technology, Shenzhen Inovance Technology Co., Shenzhen Kstar Science & 
+24 September 2026
+  45
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+Tech, Shuanghuan Driveline, Sieyuan Electric, Sungrow Power Supply Co., Techtronic Industries, Wuhan Raycus Fiber Laser Tech, Yiheda Automation, 
+Yingliu, Zhejiang Supcon Technology Co., Zhuzhou CRRC Times Electric Co. (A), Zhuzhou CRRC Times Electric Co. (H)  
+Company-specific regulatory disclosures 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+ 
+As of July 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,104 equity securities. Goldman Sachs assigns stocks as Buys 
+and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Price target and rating history chart(s) 
+Compendium report: please see disclosures at  
+. Disclosures applicable to the companies included in this 
+compendium can be found in the latest relevant published research  
+Target price history table(s) 
+ 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+59%
+43%
+Delta Electronics (2308.TW)
+Panasonic Holdings (6752.T)
+Date of report
+Target price (NT$)
+Closing price (NT$)
+Date of report
+Target price (¥)
+Closing price (¥)
+30-Jul-26
+4,120.00
+1,530.00
+30-Jul-26
+5,100
+3,584
+05-Jun-26
+4,500.00
+2,300.00
+07-Jul-26
+5,000
+4,400
+30-Apr-26
+2,420.00
+2,165.00
+29-May-26
+4,220
+3,700
+16-Apr-26
+2,110.00
+1,845.00
+30-Apr-26
+4,000
+3,203
+26-Feb-26
+1,835.00
+1,430.00
+19-Feb-26
+2,600
+2,525
+15-Jan-26
+1,600.00
+1,045.00
+04-Feb-26
+2,500
+2,194
+10-Oct-25
+1,400.00
+999.00
+19-Jan-26
+2,450
+2,351
+02-Oct-25
+1,300.00
+894.00
+05-Jan-26
+2,300
+2,079
+31-Aug-25
+670.00
+711.00
+30-Oct-25
+2,100
+1,924
+31-Jul-25
+586.00
+567.00
+23-Jul-25
+2,000
+1,506
+30-Apr-25
+510.00
+333.50
+10-Feb-25
+2,500
+1,784
+06-Apr-25
+545.00
+369.50
+04-Feb-25
+1,770
+1,530
+24-Mar-25
+550.00
+392.00
+23-Jan-25
+1,750
+1,548
+27-Feb-25
+580.00
+402.00
+31-Oct-24
+1,450
+1,238
+11-Nov-24
+535.00
+401.00
+07-Oct-24
+1,400
+1,318
+01-Aug-24
+494.00
+424.00
+18-Jul-24
+1,450
+1,318
+02-May-24
+430.00
+309.50
+09-May-24
+1,580
+1,387
+21-Mar-24
+415.00
+338.00
+24-Apr-24
+1,630
+1,393
+01-Mar-24
+365.00
+293.50
+12-Mar-24
+1,650
+1,394
+01-Nov-23
+415.00
+287.00
+02-Feb-24
+1,900
+1,383
+19-Dec-23
+1,950
+1,370
+30-Oct-23
+1,900
+1,437
+17-Oct-23
+2,000
+1,585
+Murata Mfg. (6981.T)
+MinebeaMitsumi Inc. (6479.T)
+Date of report
+Target price (¥)
+Closing price (¥)
+Date of report
+Target price (¥)
+Closing price (¥)
+31-Jul-26
+12,900
+7,416
+08-Jun-26
+5,500
+4,546
+08-Jun-26
+12,600
+8,711
+12-May-26
+4,000
+3,566
+30-Apr-26
+5,400
+5,156
+23-Mar-26
+3,800
+2,541
+23-Mar-26
+4,200
+3,508
+12-Jan-26
+3,700
+2,997
+12-Jan-26
+3,900
+3,194
+06-Nov-25
+3,400
+3,114
+31-Oct-25
+3,600
+3,392
+02-Oct-25
+3,300
+2,764
+02-Oct-25
+3,300
+2,770
+05-Aug-25
+3,000
+2,395
+30-Apr-25
+3,000
+2,214
+09-May-25
+2,900
+2,177
+31-Mar-25
+3,400
+2,306
+31-Mar-25
+3,000
+2,174
+01-Oct-24
+3,500
+2,893
+05-Feb-25
+3,300
+2,447
+02-Jul-24
+3,800
+3,364
+06-Nov-24
+3,400
+2,858
+24 September 2026
+  46
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+ 
+ 
+ 
+Murata Mfg. (6981.T)
+MinebeaMitsumi Inc. (6479.T)
+Date of report
+Target price (¥)
+Closing price (¥)
+Date of report
+Target price (¥)
+Closing price (¥)
+03-Apr-24
+3,400
+2,768
+01-Oct-24
+3,500
+2,941
+06-Dec-23
+3,300
+2,892
+02-Jul-24
+3,700
+3,552
+04-Oct-23
+3,100
+2,657
+03-Apr-24
+3,400
+2,907
+02-Feb-24
+3,200
+3,101
+06-Dec-23
+3,100
+2,831
+02-Nov-23
+2,800
+2,504
+04-Oct-23
+2,700
+2,398
+Samsung SDI Co. (006400.KS)
+Megmeet (002851.SZ)
+Date of report
+Target price (W)
+Closing price (W)
+Date of report
+Target price (Rmb)
+Closing price (Rmb)
+01-Jun-26
+695,000
+652,000
+31-Aug-26
+120.00
+130.60
+11-Feb-26
+410,000
+377,000
+30-Apr-26
+112.00
+120.21
+11-Jan-26
+360,000
+267,500
+25-Feb-26
+98.00
+118.33
+03-Oct-25
+225,000
+206,500
+13-Jan-26
+86.80
+97.12
+28-Aug-25
+235,000
+216,000
+31-Jul-25
+240,000
+201,000
+08-Jun-25
+260,000
+174,300
+27-Apr-25
+270,000
+185,100
+10-Apr-25
+300,000
+177,200
+02-Mar-25
+340,000
+218,876
+06-Nov-24
+530,000
+291,672
+04-Sep-24
+560,000
+349,811
+30-Jul-24
+630,000
+322,940
+25-Mar-24
+730,000
+474,883
+30-Jan-24
+740,000
+365,934
+09-Jan-24
+800,000
+422,118
+26-Oct-23
+850,000
+413,324
+03-Oct-23
+890,000
+500,289
+Flex (FLEX)
+TDK (6762.T)
+Date of report
+Target price ($)
+Closing price ($)
+Date of report
+Target price (¥)
+Closing price (¥)
+30-Jul-26
+154.00
+111.91
+31-Jul-26
+4,900
+3,008
+07-May-26
+177.00
+133.01
+08-Jun-26
+4,600
+3,715
+13-Apr-26
+84.00
+78.31
+28-Apr-26
+3,000
+2,677
+05-Feb-26
+77.00
+60.15
+23-Mar-26
+2,900
+2,043
+09-Dec-25
+74.00
+68.50
+12-Jan-26
+2,800
+2,142
+25-Nov-25
+67.00
+57.35
+31-Oct-25
+2,700
+2,673
+29-Oct-25
+73.00
+66.10
+02-Oct-25
+2,400
+2,154
+29-Sep-25
+66.00
+57.55
+01-Aug-25
+2,100
+1,876
+24-Jul-25
+65.00
+49.67
+28-Apr-25
+2,000
+1,460
+11-Jul-25
+64.00
+52.19
+31-Mar-25
+2,100
+1,546
+09-Jun-25
+51.00
+43.72
+01-Nov-24
+2,300
+1,848
+12-May-25
+48.00
+40.88
+01-Oct-24
+2,230
+1,948
+08-May-25
+45.00
+38.52
+02-Sep-24
+11,300
+2,023
+10-Apr-25
+41.00
+29.42
+30-Jul-24
+11,500
+2,029
+23-Feb-25
+53.00
+40.36
+02-Jul-24
+11,200
+2,004
+29-Jan-25
+50.00
+41.51
+26-Apr-24
+8,300
+1,462
+25-Nov-24
+46.00
+41.07
+03-Apr-24
+8,700
+1,488
+30-Oct-24
+43.00
+35.78
+31-Jan-24
+7,800
+1,488
+25-Jul-24
+39.00
+30.94
+06-Dec-23
+7,500
+1,338
+18-Jun-24
+37.00
+31.62
+01-Nov-23
+6,500
+1,158
+02-May-24
+34.00
+27.42
+04-Oct-23
+6,400
+1,052
+04-Mar-24
+37.00
+29.97
+01-Feb-24
+29.00
+25.04
+24-Jan-24
+27.00
+23.03
+26-Oct-23
+34.00
+18.75
+24 September 2026
+  47
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+LG Energy Solution (373220.KS) 
+ 
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+Date of report
+Target price (W)
+Closing price (W)
+01-Jun-26
+520,000
+455,000
+11-Feb-26
+410,000
+392,000
+11-Jan-26
+440,000
+363,000
+13-Oct-25
+355,000
+360,000
+03-Oct-25
+350,000
+399,000
+28-Aug-25
+365,000
+364,000
+27-Jul-25
+375,000
+363,500
+08-Jun-25
+345,000
+291,000
+10-Apr-25
+355,000
+349,500
+02-Mar-25
+375,000
+352,000
+08-Oct-24
+455,000
+436,500
+04-Sep-24
+450,000
+399,500
+25-Jul-24
+455,000
+332,500
+08-Jul-24
+485,000
+358,500
+25-Apr-24
+500,000
+372,500
+25-Mar-24
+515,000
+414,500
+28-Jan-24
+530,000
+381,000
+09-Jan-24
+550,000
+417,500
+25-Oct-23
+610,000
+409,500
+03-Oct-23
+620,000
+476,500
+24 September 2026
+  48
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+24 September 2026
+  49
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in part, to train or 
+finetune a machine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+24 September 2026
+  50
+Goldman Sachs
+Global Technology: Hardware
+ 
+ 
+
+MINDCRAFT: OUR THEMATIC DEEP DIVES
+Defense
+Carbonomics
+Green Capex
+Trade and 
+tariffs
+Obesity
+China 
+Property
+Market  
+Concentration 
+Power 
+Demand
+Cybersecurity 
+and Defense 
+Black  
+Womenomics
+Market Cycles
+Top of Mind
+Computing  
+Advances
+Top Projects
+Tracking the 
+Consumer
+Clean Hydrogen
+Magnificent 7 
+China Grid 
+Tech
+China Going 
+Global
+ 
+Electric vehicles
+Artificial  
+Intelligence
+Space
+China 
+Consumer
+CHIPS Act 
+Impact
+Korea Value 
+in Action
+China 
+Biopharma
+ESG
+Suppy Chain 
+ Shifts
+Future of  
+Energy
+Geopolitics
+Autonomous  
+driving
+Understanding 
+China's Statistics
+Humanoid 
+Robots
+GS Research 
+Data Trackers
+Resurgent 
+Japan
+ 
+Digital Assets
+Investing in 
+India
+China going  
+global
+ 
+ 
