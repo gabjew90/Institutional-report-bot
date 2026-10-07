@@ -1,0 +1,577 @@
+{
+ "brief": "Goldman TMT sales note covering multiple threads. TSMC hit an all-time high after Musk confirmed preliminary talks on a TSMC role in Terafab's Texas chip project ($16.8bn initial, $55-119bn total planned spend); a partnership could cut execution risk but complicate Intel's role, no deal yet, next catalyst TSMC's 15 October call. GS semis analyst Jim is constructive into Q3 after the SOX's 11% pullback, preferring AMAT, STX and MCHP into earnings and seeing QCOM, KLAC and WDC as relatively less attractive, with SemiCap and memory (MCHP, NXP, ADI) favored on improving visibility. Schneider Electric's $23.7bn all-cash deal for PTC ($205/share, 42% premium) raises competitive pressure on Dassault Systemes but does not threaten it near-term; family control (~40%) complicates any DSY takeover. BT confirmed buying TalkTalk/PlatformX, c\u00a3400m FY27 cash impact, guidance unchanged. GS upgrades Stagwell to Buy ($13 PT) and initiates Havas at Neutral (\u20ac19 PT) as agency growth reaccelerates to ~6%. Separately, Goldman flags Q3 S&P 500 earnings increasingly AI-driven (27% EPS growth, hyperscaler capex +116%) and hyperscaler debt issuance scaling toward $420bn by 2027, pressuring long-end yields.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "TSMC shares hit an all-time high after Elon Musk confirmed preliminary talks over a potential role for TSMC in Terafab's Texas chip project.",
+   "anchor": "TSMC hitting ATH after Elon Musk confirmed preliminary talks over a potential role for TSMC in Terafab\u2019s Texas chip project",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "The Terafab Texas chip project could involve an initial $16.8 billion investment and $55-119 billion of total spending.",
+   "anchor": "The project could involve an initial US$16.8bn investment and US$55\u2013119bn of total spending",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "A TSMC-Terafab partnership may reduce execution risk but could complicate Intel's role, and no agreement has been reached.",
+   "anchor": "a partnership may reduce execution risk but could complicate Intel\u2019s role, although no agreement has been reached",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM",
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Attention now turns to TSMC's 15 October earnings call for updates on capex, CoWoS, Texas and pricing.",
+   "anchor": "Attention now turns to TSMC\u2019s 15 October call for updates on capex, CoWoS, Texas and pricing",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "15 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GS semiconductor analyst Jim is constructive heading into Q3 after the SOX's 11% pullback, seeing expectations as more achievable with upside likely across most sub-sectors.",
+   "anchor": "Jim is constructive after the SOX\u2019s 11% pullback, with expectations now more achievable and upside likely across most sub-sectors",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GS favors SemiCap, compute, select analog and memory/storage subsectors heading into Q3 semiconductor earnings.",
+   "anchor": "He favours SemiCap, compute, select analog and memory/storage",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GS highlights Applied Materials, Seagate and Microchip as preferred longs into Q3 earnings.",
+   "anchor": "Applied Materials (AMAT), Seagate (STX) and Microchip (MCHP) as preferred longs into earnings",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMAT",
+    "STX",
+    "MCHP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GS views Qualcomm, KLA and Western Digital as less attractive on a relative basis into Q3 earnings.",
+   "anchor": "Qualcomm (QCOM), KLA (KLAC) and Western Digital (WDC) as less attractive on a relative basis",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "QCOM",
+    "KLAC",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GS sees SemiCap benefiting from stronger wafer fab equipment spending and improved visibility into 2028, which could drive meaningful estimate revisions.",
+   "anchor": "stronger wafer fab equipment spending and improved visibility into 2028 could drive meaningful estimate revisions",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GS remains most positive on Microchip, NXP and Analog Devices within memory/storage given they under-shipped the most during the downturn.",
+   "anchor": "Goldman expects the recovery to continue and remains most positive on Microchip, NXP and Analog Devices",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MCHP",
+    "NXPI",
+    "ADI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Overall semiconductor shipments are running about 10% above long-term demand trends.",
+   "anchor": "semiconductor shipments are now running about 10% above long-term demand trends",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Schneider Electric has signed a definitive all-cash agreement to acquire PTC at $205 per share.",
+   "anchor": "Schneider Electric has signed a definitive all-cash agreement to acquire PTC at $205/share",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "released",
+   "instruments": [
+    "PTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "The PTC deal has an equity value of approximately $22.6 billion and enterprise value of approximately $23.7 billion, a premium of about 42% to PTC's last close.",
+   "anchor": "Equity value ~$22.6B (\u20ac20.1B), EV ~$23.7B (\u20ac21.1B). Premium is ~42% to last close.",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "released",
+   "instruments": [
+    "PTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Schneider's acquisition of PTC creates a scaled industrial software platform spanning product design/PLM through operations, data and AI.",
+   "anchor": "Schneider\u2019s acquisition of PTC creates a scaled industrial software platform that spans product design/PLM through operations, data, and AI",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "released",
+   "instruments": [
+    "PTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Schneider Electric's acquisition of PTC strengthens the competitive threat to Dassault Systemes and validates industrial-software valuations, although Dassault remains differentiated in simulation and complex verticals.",
+   "anchor": "Schneider Electric\u2019s $23.7bn acquisition of PTC strengthens the competitive threat to DSY and validates industrial-software valuations, although DSY remains differentiated in simulation and complex verticals",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "forecast",
+   "instruments": [
+    "PTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Dassault Systemes retains clear differentiation in deep multi-physics simulation, complex systems engineering and long-cycle verticals such as aerospace, automotive and life sciences.",
+   "anchor": "DSY retains clear differentiation in deep multi-physics simulation, complex systems engineering, and long-cycle verticals (aerospace, automotive, life sciences)",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Dassault Systemes is a consensus short, so there is risk of a squeeze.",
+   "anchor": "DSY is a consensus short \u2013 so risk of a squeeze",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "A takeover of Dassault Systemes is not simple because control rests with the Dassault family, who hold roughly 39.9-40.5%.",
+   "anchor": "remember for DSY a takeover is not simple as control rest with the Dassault family (~39.9\u201340.5%)",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Medium-term, pressure mounts on Dassault Systemes to accelerate its own data/AI layer or face share shifts in contested deals.",
+   "anchor": "medium-term the pressure mounts of DSY to accelerates its own data/AI layer or faces share shifts in contested deals",
+   "topic": "Schneider Electric PTC acquisition",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "BT has confirmed the acquisition of TalkTalk and PlatformX Communications out of administration on a debt-free basis.",
+   "anchor": "BT has now confirmed the acquisition of TalkTalk and PlatformX Communications out of administration on a debt-free basis",
+   "topic": "BT acquires TalkTalk",
+   "status": "released",
+   "instruments": [
+    "BT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "The estimated FY27 cash impact of the TalkTalk deal to BT is approximately \u00a3400 million, including consideration, transaction and administration costs.",
+   "anchor": "The estimated FY27 cash impact is c\u00a3400m, including consideration, transaction and administration costs",
+   "topic": "BT acquires TalkTalk",
+   "status": "forecast",
+   "instruments": [
+    "BT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "BT has reiterated its underlying FY27 and multi-year guidance and expects the TalkTalk deal to become value accretive as the business is stabilised and synergies are realised.",
+   "anchor": "BT has reiterated its underlying FY27 and multi-year guidance and expects the deal to become value accretive as the business is stabilised and synergies are realised",
+   "topic": "BT acquires TalkTalk",
+   "status": "forecast",
+   "instruments": [
+    "BT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "BT's confirmed TalkTalk acquisition moves the situation beyond the weekend press speculation that had underpinned Goldman's earlier view.",
+   "anchor": "moving the situation beyond the weekend press speculation underpinning my earlier view",
+   "topic": "BT acquires TalkTalk",
+   "status": "released",
+   "instruments": [
+    "BT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Investor feedback is likely to frame the BT/TalkTalk transaction as broadly a wash over time.",
+   "anchor": "Investor feedback is therefore likely to frame the transaction as broadly a wash over time",
+   "topic": "BT acquires TalkTalk",
+   "status": "forecast",
+   "instruments": [
+    "BT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Media growth at the large holding companies accelerated to around 6% in the second quarter of 2026, versus around 3% in 2025.",
+   "anchor": "Media growth at the large holding companies has accelerated back towards ~6% in 2Q26 versus ~3% in 2025",
+   "topic": "Media agency sector outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "There has been very little evidence of advertisers bringing media buying in-house, with only one significant media account moving in-house this year.",
+   "anchor": "there has been very little evidence of advertisers bringing media buying in-house, with only one significant media account moving in-house this year",
+   "topic": "Media agency sector outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Digital-native independent media agencies tend to focus on advertisers with media budgets below $200 million.",
+   "anchor": "These agencies tend to focus on advertisers with media budgets below $200m",
+   "topic": "Media agency sector outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GS sees Publicis as the least exposed to digital-native agency competition due to its larger-account mix, while WPP and Omnicom have greater exposure.",
+   "anchor": "Adam sees Publicis as the least exposed due to its larger-account mix, while WPP and Omnicom have greater exposure",
+   "topic": "Media agency sector outlook",
+   "status": "forecast",
+   "instruments": [
+    "WPP",
+    "OMC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GIR upgrades Stagwell to Buy with a $13 price target, implying 54% upside.",
+   "anchor": "GIR upgrades Stagwell to Buy with a $13 target (54% upside)",
+   "topic": "Media agency sector outlook",
+   "status": "target",
+   "instruments": [
+    "STGW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GIR initiates coverage of Havas at Neutral with a \u20ac19 price target, implying 8% upside.",
+   "anchor": "initiates Havas at Neutral with a \u20ac19 target (8% upside)",
+   "topic": "Media agency sector outlook",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "GIR is more cautious on the outlook for Havas's media business given its smaller scale and increasing competition from newer entrants.",
+   "anchor": "GIR is more cautious on the outlook for its media business given its smaller scale and increasing competition from newer entrants",
+   "topic": "Media agency sector outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Deutsche Telekom aims to increase AI-related revenue from non-U.S. enterprise customers to around \u20ac800 million by 2030 and deliver approximately \u20ac2.5 billion of indirect cost savings versus 2023.",
+   "anchor": "DT aims to increase AI-related revenue from non-U.S. enterprise customers to around \u20ac800m by 2030 and deliver approximately \u20ac2.5bn of indirect cost savings versus 2023",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Consensus expects S&P 500 EPS growth of 27% year over year in Q3, with AI beneficiaries accounting for more than half of that growth and hyperscaler capex up 116%.",
+   "anchor": "consensus expects S&P 500 EPS growth of 27% year/year, with AI beneficiaries accounting for more than half of that growth and hyperscaler capex up 116%",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Median stock EPS growth is expected to slow from 14% in Q2 to 9% in Q3 as input costs and a smaller dollar tailwind limit margin upside.",
+   "anchor": "median stock EPS growth slows from 14% in Q2 to 9% in Q3 and input costs plus a smaller dollar tailwind limit margin upside",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Hyperscaler cloud revenue growth is expected to accelerate further to 55% in Q3.",
+   "anchor": "hyperscaler cloud revenue growth expected to accelerate further to 55% in Q3",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "The broader S&P 500 earnings picture still looks resilient, with most companies expected to beat again and earnings revision breadth still positive.",
+   "anchor": "The broader market picture still looks resilient, with most companies expected to beat again and earnings revision breadth still positive",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Credit strategists estimate hyperscaler debt issuance will reach roughly $250 billion in 2026, versus less than $20 billion in 2024, and rise further to $420 billion in 2027.",
+   "anchor": "Credit strategists estimate hyperscaler debt issuance will reach roughly $250bn in 2026 (versus less than $20bn in 2024) and rise further to $420bn in 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "Hyperscalers account for only about 40% of the more than $575 billion of global AI-related debt issuance this year.",
+   "anchor": "hyperscalers account for only about 40% of the more than $575bn of global AI-related debt issuance this year",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES TSMC Terafab talks; DSY read from Schneider; BT acquires TalkTalk; DT AI CMD; AI Credit; Q3 semis preview 5 Oct 2026",
+   "claim": "The scale of planned AI-related borrowing is reducing investor appetite for duration risk and increasing the likelihood that long-term yields overshoot fair value.",
+   "anchor": "the scale of planned borrowing is reducing investor appetite for duration risk and increasing the likelihood that long-term yields overshoot fair value",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/18834__gs-tmt-spec-sales-tsmc-terafab-talks-dsy-read-from-schneider.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 39,
+  "matched": 39,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 8,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
