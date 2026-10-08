@@ -1,0 +1,409 @@
+{
+ "brief": "GS's TMT desk notes NDX closed +50bps on 6 Oct while the Russell 2000 fell about 50bps, with breadth again mixed. Sentiment feels mixed at best as investors debate whether to keep chasing Tech/AI, the only US equity story working over the past month, given the current backdrop of rates, oil, weak breadth and elections, or wait for a pullback as leaders like Semis, Mag 7 and Cyber near overbought levels. In Cyber Security, CRWD now trades near 40x forward EV/Sales, approaching its 2020/21 peak multiple, but 10-year yields are near 5.5% now versus about 1% then, leaving GS fielding questions on whether fundamentals can grow into that multiple even as the thematic trend argues for staying with it. Heading into 3Q internet earnings, investors increasingly ask whether chasing follow-through beyond the print is worth it, tied to Agentic Commerce and oil/rates debates, with OTA weakness (ABNB) but few bottom-fishing calls across BKNG, EXPE, UBER, NFLX, PINS and APP. In Semis, Optics/Networking/Compute names (AMD, ANET, LITE, MRVL) trade near 40x forward P/E versus NVDA, AVGO and TSM at a discount, a gap GS ties to margin and scale differences that have stayed fluid for over 3.5 years.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "The Nasdaq 100 closed up about 50 basis points on 6 October 2026 while the Russell 2000 closed down about 50 basis points, with market breadth again mixed.",
+   "anchor": "NDX closed +50 bps, though, market breadth was again mixed as the R2K closed down ~50 bps",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Trading volumes and activity levels were again subdued, with overall market sentiment feeling mixed at best.",
+   "anchor": "volumes & activity levels were again measured as sentiment feels \u2018mixed\u2019 - at best",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Tech and AI has been the only US equity story that has worked over the past roughly one month.",
+   "anchor": "Tech/AI (seemingly the only US equity story that is working over the last ~1-month)",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "~1 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Investors are debating whether it still makes sense to keep chasing Tech and AI given the current backdrop of rates, oil, weak breadth and elections.",
+   "anchor": "investors debate if chasing Tech/AI (seemingly the only US equity story that is working over the last ~1-month) still makes sense in",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Some investors think it may be better to wait for a pullback as market leaders such as Semis, Mag 7 and Cyber approach overbought levels.",
+   "anchor": "or, if better to \u2018wait\u2019 for a pullback as market leaders approach \u2018overbought\u2019 levels (Semis, Mag 7, Cyber, etc)",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "CRWD now trades at roughly 40 times forward EV/Sales, approaching the multiple levels it topped out at in 2020/2021.",
+   "anchor": "CRWD is now ~40x fwd EV/Sales (chart below), approaching levels it topped out at back in \u201820/\u201921",
+   "topic": "Cybersecurity sector valuation",
+   "status": "level",
+   "instruments": [
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "10-year Treasury yields were around 1% back in 2020/2021 when CrowdStrike's valuation multiple last peaked, versus approaching 5.5% now.",
+   "anchor": "admittedly when 10yr Yields were ~1%, not approaching 5.5%..",
+   "topic": "Cybersecurity sector valuation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "GS continues to get client inbounds questioning the durability of the multiple expansion in Cyber Security stocks.",
+   "anchor": "we continue to get inbounds around the durability of the multiple expansion in Cyber Security",
+   "topic": "Cybersecurity sector valuation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Despite the valuation debate, GS says the trend favors staying with Cyber Security since it is hard to argue against the thematic framing behind it.",
+   "anchor": "the \u2018trend has been your friend\u2019 as it remains hard to argue against the thematic framing that",
+   "topic": "Cybersecurity sector valuation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Away from the megacaps, there is a growing debate over whether chasing 3Q internet earnings is worth it, with investors questioning the odds of follow-through beyond the day after results.",
+   "anchor": "we sense a growing \u201cis it worth it\u201d dialogue into 3Q internet earnings season with investors debating the likelihood for any \u2018follow-through\u2019 (beyond t+1)",
+   "topic": "Internet sector 3Q earnings outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "The skepticism about internet earnings follow-through is tied to ongoing top-down debates over Agentic Commerce and oil and rates.",
+   "anchor": "given ongoing top-down debates (Agentic Commerce + Oil/Rates)",
+   "topic": "Internet sector 3Q earnings outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "GS charts US internet stocks against oil prices, inverted, framing internet performance against the oil/rates debate.",
+   "anchor": "chart below is US Internet (black) charted against Oil prices (inverted, blue)",
+   "topic": "Internet sector 3Q earnings outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "There have not been many bottom-fishing calls across BKNG, EXPE, UBER, NFLX, PINS and APP despite the internet earnings skepticism.",
+   "anchor": "despite not many bottom-fishing calls across BKNG, EXPE, UBER, NFLX, PINS, APP types",
+   "topic": "Internet sector 3Q earnings outlook",
+   "status": "level",
+   "instruments": [
+    "BKNG",
+    "EXPE",
+    "UBER",
+    "NFLX",
+    "PINS",
+    "APP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "GS is fielding client questions on whether there is any downside left in these internet names.",
+   "anchor": "it is worth noting that we are getting some \u201cany downside left\u201d types of questions",
+   "topic": "Internet sector 3Q earnings outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Online travel agency stocks, especially ABNB, have shown weakness.",
+   "anchor": "weakness in OTAs (esp ABNB)? \u2026why is TWLO -6%?",
+   "topic": "Internet sector 3Q earnings outlook",
+   "status": "level",
+   "instruments": [
+    "ABNB"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Semicap stocks, especially KLAC and LRCX, have been lagging and were the top client inbound topic of the day.",
+   "anchor": "Top inbounds today .. #1 by far = why is Semicap lagging - esp KLAC, LRCX?",
+   "topic": "Semiconductor valuation dispersion",
+   "status": "level",
+   "instruments": [
+    "KLAC",
+    "LRCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "On 6 October 2026, Optical semiconductor stocks rose sharply while Memory and SPE stocks fell sharply.",
+   "anchor": "after a day like today (Optical up a lot vs Memory / SPE down a lot)",
+   "topic": "Semiconductor valuation dispersion",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "There is an ongoing debate over what the right valuation multiples are across different pockets of AI, Semis and hardware stocks.",
+   "anchor": "we sense an ongoing debate re: what the \u2018right\u2019 multiples are across pockets of AI / Semis / HW",
+   "topic": "Semiconductor valuation dispersion",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Optics/Networking/Compute names AMD, ANET, LITE and MRVL trade in the 40s on forward P/E, while NVDA, AVGO and TSM all trade at a discount to the market.",
+   "anchor": "Optics/Networking/Compute (AMD, ANET, LITE, MRVL) trade in the 40s on fwd P/E vs NVDA / AVGO / TSM all at a discount to the market",
+   "topic": "Semiconductor valuation dispersion",
+   "status": "level",
+   "instruments": [
+    "AMD",
+    "ANET",
+    "LITE",
+    "MRVL",
+    "NVDA",
+    "AVGO",
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "Most client feedback attributes the valuation gap between these semis groups to differences in gross margin trajectory or relative size, measured by market cap or revenue.",
+   "anchor": "most feedback points to GMs trajectories or relative \u201csize\u201d (think market cap or revenues) as the reasons",
+   "topic": "Semiconductor valuation dispersion",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "The relative valuations between these semiconductor subsector groups have been fluid over the last roughly 3.5-plus years.",
+   "anchor": "there has been plenty of \u2018fluidity\u2019 to these valuations over the last ~3.5+ years",
+   "topic": "Semiconductor valuation dispersion",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "~3.5+ years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "FOMC Minutes are scheduled for release on 7 October 2026.",
+   "anchor": "Events tomorrow .. not much on the docket .. FOMC Minutes",
+   "topic": "Fed policy outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "7 Oct 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "MSFT is holding a Windows & Surface event on 7 October 2026 at 1pm ET.",
+   "anchor": "MSFT Windows & Surface Event @ 1pm ET",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "7 Oct 2026, 1pm ET"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "AMZN is hosting its Prime Big Deal Days event starting 7 October 2026.",
+   "anchor": "AMZN hosting Prime Big Deal Days .. Siemens Bay Area Semiconductor Summit",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "starting 7 Oct 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "AMZN's stock chart appears to be trying to break above its recent downtrend after months of consolidation, ahead of a seasonally stronger period later in the year.",
+   "anchor": "AMZN chart appears to be trying to break above its recent downtrend (\u2026 ahead of better \u201cseasonality\u201d down the stretch of the year)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "down the stretch of the year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "TWLO fell about 6% on 6 October 2026, drawing client inbound questions.",
+   "anchor": "Interesting? .. weakness in OTAs (esp ABNB)? \u2026why is TWLO -6%? ..",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TWLO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT quick hits 6 Oct 2026",
+   "claim": "SPHR has pulled back, with clients asking about the magnitude of the move.",
+   "anchor": "magnitude of SPHR pullback? Interesting? .. weakness in OTAs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SPHR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/19024__gs-us-tmt-quick-hits-6-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 27,
+  "matched": 27,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 5,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
