@@ -1460,7 +1460,8 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
     days = max(1, min(int(14 if days is None else days), 90))
     rows = conn.execute(
         """
-        SELECT ticker, author_id, LOWER(COALESCE(action, ''))
+        SELECT ticker, author_id, LOWER(COALESCE(action, '')),
+               LOWER(COALESCE(contract_type, ''))
         FROM analyst_trades
         WHERE is_trade = 1
           AND ticker IS NOT NULL AND ticker NOT IN ('', 'UNKNOWN')
@@ -1474,11 +1475,16 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
     entries: dict[str, int] = defaultdict(int)
     exits: dict[str, int] = defaultdict(int)
     active: set = set()
-    for ticker, author_id, action in rows:
+    # Direction: an entry in puts is a bet the other way. Counting entries
+    # without it called the room "structurally long" QQQ when BK's QQQ
+    # entries included puts (2026-10-08 audit).
+    side: dict[str, dict[str, set]] = defaultdict(lambda: defaultdict(set))
+    for ticker, author_id, action, ctype in rows:
         active.add(author_id)
         if action in ("open", "add"):
             entered[ticker].add(author_id)
             entries[ticker] += 1
+            side[ticker][ctype if ctype in ("call", "put") else "other"].add(author_id)
         elif action == "close":
             exited[ticker].add(author_id)
             exits[ticker] += 1
@@ -1496,6 +1502,9 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
             "entries": entries[ticker],
             "exits": exits[ticker],
             "members_entered_not_exited": n_in - both,
+            "members_in_calls": len(side[ticker]["call"]),
+            "members_in_puts": len(side[ticker]["put"]),
+            "members_in_shares_or_other": len(side[ticker]["other"]),
             "share_of_active_members": round(n_in / len(active), 2) if active else None,
         })
     out.sort(key=lambda r: (-r["members_entered"], -r["entries"], r["ticker"]))
@@ -1508,7 +1517,9 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
             "(one person renaming is still one person). members_exited = distinct people "
             "who posted a close. The ledger is ENTRY-BIASED: exits are posted far less "
             "often than entries, so members_entered_not_exited is an UPPER bound on who "
-            "still holds it. Say that when you use these numbers."
+            "still holds it. Say that when you use these numbers. members_in_calls / "
+            "members_in_puts give the direction: a name with as many members in puts as in "
+            "calls is not a long the room shares."
         ),
     }
 

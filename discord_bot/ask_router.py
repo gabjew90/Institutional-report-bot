@@ -604,6 +604,10 @@ _NEWS_RE = re.compile(
 # into". Must be tested BEFORE the chat shape, whose `what's the room`
 # alternative otherwise claims it and searches chat text for ticker
 # mentions instead of counting logged positions.
+# "What is the room in" asked about now reads the last 3 days of entries, not
+# 14 (2026-10-07: "heading into tomorrow" was answered from two weeks).
+_NOW_WINDOW_RE = re.compile(
+    r"\b(?:right\s+now|today|tonight|tomorrow|tmrw|this\s+week|currently|rn|heading\s+into)\b")
 _CROWD_RE = re.compile(
     r"\b(?:piled\s+into|crowded\s+(?:position|trade|name|into)|most\s+crowded"
     # Subject then a position verb. Bare "we ... in" is excluded: "are we
@@ -744,12 +748,12 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         # what it holds fetched up front. Crowding ("what's everyone in")
         # stays a count of logged positions, never a chat search.
         r.shape, r.reason = CHAT_HISTORY, "why the room holds a view"
-        days = 3 if re.search(r"\b(?:right\s+now|today|this\s+week|currently|rn)\b", ql) else 14
+        days = 3 if _NOW_WINDOW_RE.search(ql) else 14
         r.prefetch = [(T_ROOM, {"days": days})]
         return r
     if _CROWD_RE.search(q):
         r.shape, r.reason = ROOM_CROWDING, "room positioning words"
-        days = 3 if re.search(r"\b(?:right\s+now|today|this\s+week|currently|rn)\b", ql) else 14
+        days = 3 if _NOW_WINDOW_RE.search(ql) else 14
         r.prefetch = [(T_ROOM, {"days": days})]
         return r
     if _CHAT_RE.search(q) and not _PUBLIC_FIGURE_RE.search(q):
@@ -773,8 +777,13 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if _CHAIN_RE.search(q) and not _past_move and (tickers or re.search(r"\b(spy|qqq|iwm)\b", ql)):
         r.shape, r.reason = OPTIONS_CHAIN, "options words + ticker"
         sym = tickers[0] if tickers else re.search(r"\b(spy|qqq|iwm)\b", ql).group(1).upper()
-        r.prefetch = [(T_CHAIN, {"symbol": sym})] + _stock_prefetch(sym)
-        if is_stock(sym) and re.search(r"\b(?:earnings|print|report|er)\b", ql):
+        earnings = is_stock(sym) and bool(re.search(r"\b(?:earnings|print|report|er)\b", ql))
+        # About a print: the chain must be the first expiry that covers it
+        # (2026-10-06: GS's earnings move was priced on the Oct 9 expiry
+        # for an Oct 13 report).
+        chain_args = {"symbol": sym, "through_earnings": True} if earnings else {"symbol": sym}
+        r.prefetch = [(T_CHAIN, chain_args)] + _stock_prefetch(sym)
+        if earnings:
             r.prefetch.append((T_EDATE, {"symbol": sym}))
         return r
     trailing = _trailing_view(q, tickers) if tickers else None
@@ -812,6 +821,14 @@ def classify(question: str, *, fantasy_enabled: bool = False,
                 r.prefetch += _stock_prefetch(tickers[0])
             if re.search(r"\bodds\b|\bbeat|\bmiss", ql):
                 r.prefetch.append((T_EDATE, {"symbol": tickers[0]}))
+        else:
+            # "why is memory down" names a group, not a ticker: price the
+            # group's bellwethers and search the news on the first one
+            # (2026-10-06: no tools ran, the move size was never given).
+            basket = sector_basket(ql)
+            if basket:
+                r.tickers = basket
+                r.prefetch = [(T_PRICE, {"symbols": basket}), (T_NEWS, {"symbol": basket[0]})]
         return r
     if _ECON_RE.search(q) and not strong:
         r.shape, r.reason = ECON_CALENDAR, "macro print words"
@@ -1148,3 +1165,26 @@ def render_research(result: dict) -> str:
         for r in n.get("risks") or []:
             out.append(f"  risk: {r}")
     return "\n".join(out)
+
+
+# A group the room names instead of a ticker -> its bellwethers, a stock
+# first (the news search runs on it), the group's ETF last.
+SECTOR_BASKETS: list[tuple["re.Pattern", list[str]]] = [
+    (re.compile(r"\b(?:memory|dram|nand|hbm)\b"), ["MU", "SNDK", "WDC", "STX"]),
+    (re.compile(r"\b(?:semis?|semiconductors?|chips?|chip\s+stocks)\b"), ["NVDA", "AVGO", "AMD", "SMH"]),
+    (re.compile(r"\b(?:banks?|financials)\b"), ["JPM", "BAC", "GS", "XLF"]),
+    (re.compile(r"\b(?:energy|oil\s+stocks|oil\s+names)\b"), ["XOM", "CVX", "XLE"]),
+    (re.compile(r"\b(?:software|saas)\b"), ["MSFT", "CRM", "NOW", "IGV"]),
+    (re.compile(r"\b(?:homebuilders?|housing\s+stocks)\b"), ["DHI", "LEN", "XHB"]),
+    (re.compile(r"\b(?:quantum)\b"), ["IONQ", "RGTI", "QBTS"]),
+    (re.compile(r"\b(?:nuclear|uranium)\b"), ["CCJ", "OKLO", "SMR"]),
+    (re.compile(r"\b(?:solar)\b"), ["FSLR", "ENPH", "TAN"]),
+    (re.compile(r"\b(?:biotech)\b"), ["XBI", "IBB"]),
+]
+
+
+def sector_basket(ql: str) -> list[str]:
+    for rx, syms in SECTOR_BASKETS:
+        if rx.search(ql or ""):
+            return list(syms)
+    return []

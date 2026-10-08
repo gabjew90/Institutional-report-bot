@@ -125,3 +125,16 @@ def test_the_tool_is_declared_and_routed():
     assert tool.function_declarations[0].name == "lookup_research"
     from discord_bot import data_footer as F
     assert "bank research" in F.footer([{"tool": "lookup_research", "status": "ok"}])
+
+
+def test_a_reported_move_is_not_the_desks_call():
+    """2026-10-06: a note that only reported GS falling was credited with
+    a "negative catalyst watch"."""
+    conn = _conn()
+    _add(conn, 1, {"source": "Edmond de Rothschild", "key_insights": [], "market_movers": [
+        {"ticker": "GS", "action": "negative_catalyst_watch",
+         "rationale": "GS fell after management's comments on trading"}]}, [("GS", "Goldman")])
+    with patch("db_parts.pdf._db.get_connection", return_value=conn):
+        note = db.research_for_ticker("GS")[0]
+    assert note["calls"] == []
+    assert note["insights"] == ["(reported) GS fell after management's comments on trading"]

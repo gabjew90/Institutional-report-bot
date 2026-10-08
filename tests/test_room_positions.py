@@ -66,3 +66,24 @@ def test_min_members_filters_singletons_and_days_is_clamped():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+def test_entries_carry_their_direction():
+    """2026-10-08 audit: the room was called "structurally long" QQQ while
+    BK's QQQ entries included puts."""
+    _cleanup()
+    try:
+        conn = db.get_connection()
+        for i, (aid, ctype) in enumerate([(911, "call"), (912, "put"), (913, "put"), (914, None)]):
+            conn.execute(
+                "INSERT INTO analyst_trades (discord_message_id, discord_attachment_id, author, "
+                "posted_at, is_trade, ticker, action, author_id, contract_type, tracking_mode, "
+                "extraction_source) VALUES (?, 0, 'x', datetime('now','-1 day'), 1, ?, 'open', ?, ?, "
+                "'member', 'test')", (990000 + i, _T, aid, ctype))
+        conn.commit()
+        row = next(p for p in db.get_room_positions(days=3, min_members=2)["positions"]
+                   if p["ticker"] == _T)
+        assert (row["members_in_calls"], row["members_in_puts"],
+                row["members_in_shares_or_other"]) == (1, 2, 1)
+    finally:
+        _cleanup()

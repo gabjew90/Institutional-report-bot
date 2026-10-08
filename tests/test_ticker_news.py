@@ -186,3 +186,14 @@ def test_a_report_earlier_today_reads_as_released():
     before = datetime(2026, 10, 7, 19, 0, tzinfo=timezone.utc)   # 3:00 PM ET
     assert "already released" not in f("2026-10-07", "after market close", now=before)
     assert "already released" in f("2026-10-07", "before market open", now=before)
+
+
+def test_an_earnings_move_uses_the_first_expiry_after_the_report():
+    """2026-10-06: GS's earnings move was priced on the Oct 9 expiry for
+    an Oct 13 report."""
+    from discord_bot.ask_tools import expiry_covering as f
+    ex = ["2026-10-09", "2026-10-16", "2026-10-23"]
+    assert f(ex, "2026-10-13", "before market open") == "2026-10-16"
+    assert f(ex, "2026-10-16", "after market close") == "2026-10-23"
+    assert f(ex, "2026-10-16", "before market open") == "2026-10-16"
+    assert f(ex, "2026-11-30", "") is None

@@ -1302,6 +1302,14 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
         ]
         earnings = [str(x)[:500] for x in (a.get("earnings_insights") or []) if _about(str(x))]
         insights = [str(x)[:500] for x in (a.get("key_insights") or []) if _about(str(x))]
+        # Only a rating or target action is the desk's call. Ingestion also
+        # tags a note's reporting as a mover ("negative_catalyst_watch" on a
+        # note that only said GS fell, 2026-10-06), and the desk got credit
+        # for a view it never took; those lines are reporting, not calls.
+        calls = [m for m in movers if _is_rating_call(m)]
+        insights = [f"(reported) {m.get('rationale')}" for m in movers
+                    if not _is_rating_call(m) and m.get("rationale")][:2] + insights
+        movers = calls
         risks = [str(x)[:300] for x in (a.get("risk_factors") or []) if _about(str(x))]
         # The extracted figures about the name (a target, an estimate, a
         # margin), the numbers a view should rest on.
@@ -1373,3 +1381,12 @@ def recently_covered_tickers(days: int = 7) -> set[str]:
                (len(name) >= 4 and name in hay):
                 out.add(t)
     return out
+
+
+def _is_rating_call(mover: dict) -> bool:
+    """A desk's own rating or price-target action, not a move it reported."""
+    import re as _re
+    if mover.get("rating") or mover.get("price_target"):
+        return True
+    return bool(_re.search(r"upgrad|downgrad|initiat|reiterat|target|rating|resum",
+                           str(mover.get("action") or ""), _re.I))

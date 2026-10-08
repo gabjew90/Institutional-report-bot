@@ -1796,6 +1796,15 @@ def _build_options_chain_tool():
                                 "summary + list of available dates."
                             ),
                         ),
+                        "through_earnings": types.Schema(
+                            type=types.Type.BOOLEAN,
+                            description=(
+                                "True for an earnings move: returns the first "
+                                "expiry that settles after the next report "
+                                "(covers_earnings says which). An expiry before "
+                                "the report prices a different event."
+                            ),
+                        ),
                         "strike": types.Schema(
                             type=types.Type.NUMBER,
                             description=(
@@ -1827,6 +1836,38 @@ _LAST_LIVE_CHAIN: dict = {}
 _LAST_LIVE_CHAIN_TTL_S = 20 * 3600
 
 
+def expiry_covering(expirations: list[str], report_date: str, timing: str = "") -> str | None:
+    """The first expiry whose straddle prices the report: on or after a
+    before-the-open date, strictly after an after-the-close (or unknown)
+    one, since a same-day expiry settles hours before the numbers. Same
+    rule as report/implied_move.py."""
+    day = str(report_date)[:10]
+    bmo = "before" in (timing or "").lower()
+    return next((e for e in sorted(expirations) if (e >= day if bmo else e > day)), None)
+
+
+async def _none():
+    return None
+
+
+async def _next_report(symbol: str) -> dict | None:
+    """{'date', 'timing'} of the next report within 60 days, else None."""
+    from datetime import date as _date
+    from report import news_data as _nd
+    try:
+        res = await asyncio.to_thread(_nd.fetch_earnings_date_for_symbol, symbol)
+    except Exception:
+        return None
+    row = (res or {}).get("next") or {}
+    try:
+        d = _date.fromisoformat(str(row.get("date") or "")[:10])
+    except ValueError:
+        return None
+    if (d - _date.today()).days > 60:
+        return None
+    return {"date": d.isoformat(), "timing": row.get("timing") or ""}
+
+
 async def _execute_options_chain(args: dict) -> dict:
     """Run the lookup_options_chain tool call.
 
@@ -1845,6 +1886,8 @@ async def _execute_options_chain(args: dict) -> dict:
         return {"status": "error", "error": "symbol is required"}
 
     expiration_iso = (args.get("expiration") or "").strip()
+    want_report = (not expiration_iso
+                   and str(args.get("through_earnings") or "").lower() in ("true", "1"))
 
     # Validate ISO date shape BEFORE the fetch so we can return a clean
     # error without spending a Yahoo call. yfinance is generally tolerant
@@ -1873,10 +1916,12 @@ async def _execute_options_chain(args: dict) -> dict:
     # to_thread: yfinance fetch = multiple sync HTTP round-trips (options
     # list + chain + fast_info). Blocking the event loop here froze the
     # whole bot for the fetch duration (2026-06-10 second-pass review).
-    raw = await asyncio.to_thread(
-        _md._fetch_yahoo_options_chain,
-        symbol,
-        expiration_iso=(expiration_iso or None),
+    # The next report (for an earnings move) is looked up alongside the
+    # first chain fetch, not before it.
+    raw, report = await asyncio.gather(
+        asyncio.to_thread(_md._fetch_yahoo_options_chain, symbol,
+                          expiration_iso=(expiration_iso or None)),
+        _next_report(symbol) if want_report else _none(),
     )
     if raw is None:
         return {
@@ -1889,6 +1934,20 @@ async def _execute_options_chain(args: dict) -> dict:
         }
 
     expirations = raw.get("expiration_dates") or []
+    covers = None
+    if report and expirations:
+        target = expiry_covering(expirations, report["date"], report.get("timing") or "")
+        if target and target != ((raw.get("chain") or {}).get("expiration_iso")):
+            again = await asyncio.to_thread(
+                _md._fetch_yahoo_options_chain, symbol, expiration_iso=target)
+            if again:
+                raw = again
+        # only claimed when the chain really is that expiry
+        if target and ((raw.get("chain") or {}).get("expiration_iso")) == target:
+            covers = {"report_date": report["date"], "timing": report.get("timing") or "",
+                      "expiration": target,
+                      "note": "first expiry that settles after the report, so its "
+                              "straddle prices the earnings move"}
     if not expirations:
         return {
             "status": "no_chain",
@@ -1962,9 +2021,11 @@ async def _execute_options_chain(args: dict) -> dict:
 
     summary = _md.summarize_options_chain(raw)
     as_of = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    key = (symbol, expiration_iso)
+    key = (symbol, expiration_iso or (covers or {}).get("expiration") or "")
     out = {"status": "ok", "summary": summary,
            "available_expirations": expirations[:12], "as_of": as_of}
+    if covers:
+        out["covers_earnings"] = covers
     if summary.get("live_quotes"):
         now = time.monotonic()
         for k, (ts, _s, _a) in list(_LAST_LIVE_CHAIN.items()):
@@ -2313,6 +2374,33 @@ async def _execute_market_price(args: dict) -> dict:
                 })
                 continue
 
+            # Index and yield symbols (^TNX, ^GSPC) are Yahoo's: Finnhub has
+            # none of them and every one came back no_data, so yields were
+            # taken from Google (2026-10-08 audit).
+            if sym.startswith("^"):
+                try:
+                    yi = yh or await asyncio.to_thread(_md._fetch_yahoo_extended_hours, sym)
+                except Exception as e:
+                    log.info(f"yahoo index quote for {sym} raised: {e}")
+                    yi = None
+                if yi and yi.get("last_price") is not None:
+                    lp, pc = float(yi["last_price"]), yi.get("prev_close")
+                    if sym in ("^TNX", "^FVX", "^TYX", "^IRX"):
+                        # a yield: its move is in basis points, not a percent of itself
+                        quotes.append({
+                            "symbol": sym, "price": lp, "yield_pct": lp, "prev_close": pc,
+                            "change_bps": round((lp - float(pc)) * 100.0, 1) if pc else None,
+                            "source": "yahoo",
+                            "note": "a Treasury yield index: yield_pct is the yield in percent; "
+                                    "its move is change_bps (basis points)"})
+                    else:
+                        quotes.append({
+                            "symbol": sym, "price": lp,
+                            "change_pct": ((lp - float(pc)) / float(pc) * 100.0) if pc else None,
+                            "prev_close": pc, "source": "yahoo"})
+                else:
+                    quotes.append({"symbol": sym, "error": f"no Yahoo quote for {sym} right now"})
+                continue
             try:
                 # to_thread: sync urllib I/O — never on the event loop.
                 data = await asyncio.to_thread(_md._fetch_finnhub_quote, sym)

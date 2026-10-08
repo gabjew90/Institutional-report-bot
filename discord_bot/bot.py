@@ -5300,6 +5300,9 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_PRIMER: _execute_ticker_primer,
     }
     _ask_meta["route_shape"] = _ask_route.shape
+    # Read by the tool loop: a shape without chat search must not reach
+    # chat through query_data either (2026-10-08 audit).
+    _ask_meta["chat_allowed"] = _ask_router.T_CHAT in _ask_route.allowed_tools()
     _ask_meta["route_prefetch"] = [t for t, _ in _ask_route.prefetch]
 
     async def _run_prefetch(_pf_tool, _pf_args):
@@ -5628,10 +5631,25 @@ async def _ask_02_call_model_with_tools(
             # "who's the most gay" was answered with the racism board).
             _rank_refusal = (_room_rank.gate(args, question)
                              if fc.name == "lookup_user_profile" else None)
+            _query_refusal = None
+            # Chat is a room source. On a shape where chat search is off,
+            # query_data may not read it either (2026-10-05: DRAM "opex
+            # positioning" chatter was served as the news behind a move).
+            if (fc.name == "query_data" and not _ask_meta.get("chat_allowed", True)
+                    and "chat_messages" in str(args.get("sql") or "").lower()):
+                _query_refusal = {
+                    "status": "error",
+                    "error": ("chat_messages is not a source for this question: the room's "
+                              "chat is not news or research. Use the data and research you "
+                              "have, or Google for the news."),
+                }
+                _ask_meta["guards"].append("query-chat-refused")
             try:
                 if _rank_refusal is not None:
                     result = _rank_refusal
                     _ask_meta["guards"].append(f"rank-metric-refused:{args.get('metric')}")
+                elif _query_refusal is not None:
+                    result = _query_refusal
                 else:
                     result = await executor(args)
                 # A published book is the antecedent a later "No

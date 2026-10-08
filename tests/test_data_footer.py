@@ -10,7 +10,7 @@ def test_feeds_are_listed_once_in_first_use_order():
         {"tool": "lookup_earnings_slate", "args": {}, "status": "ok"},   # same feed, no repeat
     ]
     assert F.footer(trace) == (
-        "\n\nData: earnings calendar (Finnhub, Nasdaq) · live prices (Finnhub, Binance.US)")
+        "\n\nData: earnings calendar (Finnhub, Nasdaq) · live prices (Finnhub, Binance.US, Yahoo)")
     assert F.footer([{"tool": "search_chat_messages", "status": "ok"}]) == ""
 
 

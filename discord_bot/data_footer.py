@@ -13,7 +13,7 @@ import re
 
 # tool name -> what the reader is told the figures came from
 FEEDS: dict[str, str] = {
-    "lookup_market_price": "live prices (Finnhub, Binance.US)",
+    "lookup_market_price": "live prices (Finnhub, Binance.US, Yahoo)",
     "lookup_earnings_date": "earnings calendar (Finnhub, Nasdaq)",
     "lookup_earnings_slate": "earnings calendar (Finnhub, Nasdaq)",
     "lookup_options_chain": "options chain (Yahoo)",

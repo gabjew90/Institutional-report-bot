@@ -517,7 +517,7 @@ def test_sourced_figure_questions_route_to_the_web():
 def test_implied_move_routes_to_the_chain_unless_past_tense():
     r = R.classify("implied move on lulu earnings")
     assert r.shape == R.OPTIONS_CHAIN and r.prefetch == [
-        (R.T_CHAIN, {"symbol": "LULU"}), (R.T_RESEARCH, {"symbol": "LULU", "days": 14}),
+        (R.T_CHAIN, {"symbol": "LULU", "through_earnings": True}), (R.T_RESEARCH, {"symbol": "LULU", "days": 14}),
         (R.T_NEWS, {"symbol": "LULU"}), (R.T_SNAPSHOT, {"symbol": "LULU"}),
         (R.T_PRIMER, {"symbol": "LULU", "wait": True}),
         (R.T_EDATE, {"symbol": "LULU"})], r
@@ -688,3 +688,12 @@ def test_audit_2026_10_08_stock_questions_get_stock_data():
     # banter stays banter
     for q in ("WTF?", "LMAO", _reply("CoreWeave ($CRWV) carries $35B of debt", "lol")):
         assert R.classify(q).shape == R.UNKNOWN, q
+
+
+def test_a_sector_question_prices_its_bellwethers():
+    r = R.classify("why is memory down today")
+    assert r.shape == R.NEWS_EVENT and r.tickers[0] == "MU"
+    assert (R.T_PRICE, {"symbols": ["MU", "SNDK", "WDC", "STX"]}) in r.prefetch
+    assert (R.T_NEWS, {"symbol": "MU"}) in r.prefetch
+    assert R.classify("what is the room positioned in heading into tomorrow").prefetch == [
+        (R.T_ROOM, {"days": 3})]
