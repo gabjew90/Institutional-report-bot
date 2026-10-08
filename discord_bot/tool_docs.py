@@ -307,7 +307,12 @@ TOOL_DOCS["lookup_fantasy_league"] = _COMMON + (
     "still to play and their projections, projected finals, "
     "comeback_projected, and the league's week_standouts and week_busts. "
     "Any 'how are the games going', 'which are close', 'who's winning' "
-    "question starts here; answer with the story, not two totals."
+    "question starts here; answer with the story, not two totals.\n"
+    "DO NOT use for people outside the league: only the twelve managers "
+    "in the payload play in it. 'Who won Owen v spockbones' is an argument "
+    "in chat, not a game (2026-10-07). Each manager's label carries their "
+    "Sleeper username ('stinky dill pickle' is StinkyDillPickle), and "
+    "`member` also accepts a Sleeper team name."
 )
 
 TOOL_DOCS["lookup_room_positions"] = (

@@ -278,14 +278,22 @@ TOPICS = (
 
 
 def _owner_label(sleeper_user_id: str, users_by_id: dict) -> str:
-    """'BK (bankerkyle)' when mapped, Sleeper display name otherwise."""
+    """'BK (bankerkyle)' when mapped, Sleeper display name otherwise.
+
+    A mapped member's Sleeper username follows it: the room names teams
+    by it ("how is stinky dill pickle's team doing" is
+    StinkyDillPickle, DeeP FRieD's account), and on 2026-10-07 the model,
+    seeing only Discord names, answered with 2Pale's team."""
     mapped = SLEEPER_TO_DISCORD.get(str(sleeper_user_id))
     sleeper_name = (
         users_by_id.get(str(sleeper_user_id), {}).get("display_name")
         or str(sleeper_user_id)
     )
+    # Team names stay out of the label: one is an anti-Islam joke that the
+    # safety filter can block a whole payload over. _resolve_member still
+    # matches them when a member is named that way.
     label = (
-        f"{mapped[2]} ({mapped[1]})" if mapped
+        f"{mapped[2]} ({mapped[1]}) · Sleeper {sleeper_name}" if mapped
         else f"{sleeper_name} (not on discord)"
     )
     co = CO_OWNERS.get(str(sleeper_user_id))
@@ -298,15 +306,30 @@ def _resolve_member(member: str, users_by_id: dict) -> str | None:
     m = (member or "").strip().lower().lstrip("@")
     if not m:
         return None
+    def _within(name: str) -> bool:
+        # a name inside the question counts only as a whole word: "Ry"
+        # inside "reverse terry" is not Ry
+        return bool(re.search(rf"(?<![a-z0-9]){re.escape(name)}(?:'?s)?(?![a-z0-9])", m))
+
     for sid, (_aid, uname, room) in SLEEPER_TO_DISCORD.items():
-        if m in uname.lower() or uname.lower() in m \
-                or m in room.lower() or room.lower() in m:
+        if m in uname.lower() or _within(uname.lower()) \
+                or m in room.lower() or _within(room.lower()):
             return sid
+    # Sleeper usernames and team names, compared without spaces or
+    # punctuation: "stinky dill pickle" is StinkyDillPickle.
+    flat = _flat(m)
+    if len(flat) < 3:
+        return None
     for sid, u in users_by_id.items():
-        dn = (u.get("display_name") or "").lower()
-        if dn and (m in dn or dn in m):
-            return sid
+        for name in (u.get("display_name"), (u.get("metadata") or {}).get("team_name")):
+            n = _flat(name or "")
+            if len(n) >= 3 and (flat in n or n in flat):
+                return sid
     return None
+
+
+def _flat(s: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", (s or "").lower())
 
 
 def _names(ids: list, resolver) -> list[str]:

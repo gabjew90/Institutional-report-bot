@@ -416,10 +416,15 @@ _FOOTBALL_RE = re.compile(
     r"|gonna\s+win|whos?\s+winning|waiver|claim|stash|grab"
     r"|who(?:'s|s| is)\s+(?:winning|losing|best|worst)|record|standings?|playoffs?"
     r"|sunday|monday\s+night|thursday\s+night|red\s*zone|snaps?|targets?|carries"
-    # Win chances and team names (2026-10-04: "what % chance of winning did
-    # Jamal have before this Panthers?" matched nothing, got no league data,
-    # and the bot gave BK's own 23% as Jamal's).
-    r"|chances?|odds|probabilit(?:y|ies)|win\s*(?:pct|percentage)"
+    # Team names (2026-10-04: "what % chance of winning did Jamal have
+    # before this Panthers?" matched nothing). Bare "chance" is not here:
+    # "gimme a second chance" (a sex joke, 2026-10-07) got BK's Week 5
+    # matchup. Win-chance phrasings go through _WIN_CHANCE_RE.
+    r"|odds|probabilit(?:y|ies)|win\s*(?:pct|percentage)"
+    # "how do I know if I'm doing well" in the football channel is about
+    # the asker's team; it got trading advice (2026-10-07).
+    r"|how\s+(?:am\s+i|are\s+we|is\s+my\s+team|'?s\s+my\s+team)\s+doing"
+    r"|(?:am\s+i|i'?m|i\s+am|we'?re)\s+doing\s+(?:well|good|ok(?:ay)?|bad(?:ly)?|great|terrible|alright)"
     r"|cardinals|falcons|ravens|bills|panthers|bears|bengals|browns|cowboys|broncos"
     r"|lions|packers|texans|colts|jaguars|jags|chiefs|raiders|chargers|rams|dolphins"
     r"|vikings|patriots|pats|saints|giants|jets|eagles|steelers|49ers|niners|seahawks"
@@ -679,16 +684,27 @@ def _last_line(question: str) -> str:
     """The actual ask: after any reply/verbatim context blocks. A quoted
     member block can sit between '[X's message to you]' and the asker's
     words (2026-10-04, 'Weigh in on this.'), so it is stripped here too:
-    routing must read the asker, not the people quoted to them."""
+    routing must read the asker, not the people quoted to them.
+
+    Curly quotes become straight ones: phones send "Abe’s" and "I’m", and
+    every pattern here is written with "'" (2026-10-06/07: "Abe’s record"
+    missed the ledger, "I’m doing well" missed the football channel)."""
     q = (question or "").strip()
     m = re.search(r"\[[^\]]*message to you\]\s*\n(.*)$", q, re.S)
     if m:
-        return _VERBATIM_BLOCK_RE.sub("", m.group(1)).strip()
+        return _straight(_VERBATIM_BLOCK_RE.sub("", m.group(1)).strip())
     if q.startswith("["):
         q = re.sub(r"^\[.*?\]\s*\n?", "", q, flags=re.S).strip()
         if "\n\n" in q:
             q = q.split("\n\n")[-1].strip()
-    return q
+    return _straight(q)
+
+
+_CURLY = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"'})
+
+
+def _straight(q: str) -> str:
+    return q.translate(_CURLY)
 
 
 def classify(question: str, *, fantasy_enabled: bool = False,

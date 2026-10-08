@@ -643,3 +643,23 @@ def test_the_caller_passes_the_image_flag_through():
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+def test_audit_2026_10_08_fantasy_routing():
+    # a sex joke ending "gimme a second chance" got BK's Week 5 matchup
+    q = "I’ll clap Brenda’s cheeks in the school bathroom then tell her to gimme a second chance"
+    assert R.classify(q, fantasy_enabled=True, channel_name=_FC).shape != R.FANTASY
+    # "how am I doing" in the football channel is the asker's team, with a
+    # phone's curly apostrophe
+    for q in ("how do I know if I’m doing well", "how am I doing", "hows my team doing"):
+        r = R.classify(q, fantasy_enabled=True, channel_name=_FC, asker_manager="DeeP FRieD")
+        assert r.shape == R.FANTASY, q
+        assert (R.T_FANTASY, {"topic": "situation", "member": "DeeP FRieD"}) in r.prefetch, q
+    # a real win-chance question still gets league data
+    assert R.classify("what % chance of winning did Jamal have", fantasy_enabled=True,
+                      channel_name=_FC).shape == R.FANTASY
+
+
+def test_curly_apostrophes_route_like_straight_ones():
+    q = "Abe’s record on slams the last 90 days"
+    assert R.classify(q).shape == R.classify(q.replace("’", "'")).shape == R.MEMBER_LEDGER
