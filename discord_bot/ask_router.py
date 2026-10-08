@@ -245,6 +245,8 @@ def extract_tickers(text: str, *, lowercase: bool = True,
 # catch-all, so the research prefetch never ran.
 _LOWER_LEADIN_RE = re.compile(
     r"\b(?:why\s+(?:is|are|did|was)|explain|what(?:'s|s| is)|how(?:'s|s| is)|is|odds|off|about|on|in"
+    # "what happened to twst" (2026-10-06: the price came from Google only)
+    r"|happened\s+(?:to|with)|news\s+(?:on|for|about|regarding)"
     r"|think\s+(?:of|about)|thoughts?\s+on|(?:bullish|bearish)\s+on|(?:take|view|read)\s+on)\s+"
     r"(?:the\s+)?([a-z]{2,5})\b", re.I)
 # "mu thoughts?" / "mu bull or bear?": the ticker precedes the view word,
@@ -261,7 +263,8 @@ _COMMON_WORDS = {
     "was", "were", "is", "are", "did", "does", "do", "so", "not", "no", "yes", "all", "some",
     "big", "small", "cap", "caps", "vol", "vix", "dollar", "yield", "yields", "stock", "stocks",
     "call", "calls", "put", "puts", "trade", "trades", "print", "beat", "miss", "odds", "guy",
-    "guys", "man", "bro", "lol", "lmao", "what", "who", "when", "where", "why", "how", "me",
+    "guys", "man", "bro", "lol", "lmao", "wtf", "omg", "bruh", "smh", "idk", "imo", "tbh",
+    "what", "who", "when", "where", "why", "how", "me",
     "you", "him", "them", "there", "here", "now", "then", "still", "just", "even", "only",
     # 2026-09-02 review: "what's the price of gold" made PRICE the ticker
     # and "when is the next fed meeting" made NEXT one, which then
@@ -848,8 +851,53 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if in_channel and _FOOTBALL_RE.search(q):
         return _as_fantasy(r, q, "football words in the football channel",
                            default_topic=None, asker_manager=asker_manager)
+    # A stock question no pattern above claimed still gets the stock data
+    # (2026-10-06: "why is WDC hammered today" and "any news on SNAP" fell
+    # to the catch-all with no price, snapshot or dated news). Needs a
+    # market word or a cashtag, or a question about a carried ticker, so
+    # "WTF?" and a "lol" reply to a stock answer stay banter.
+    # A follow-up that names no ticker takes the one in the message it
+    # replies to (2026-10-07: "the earnings numbers" 16 minutes after APLD
+    # printed got consensus, "so is dogshit" got no data on CRWV). Only
+    # here, after every other shape had its turn with the asker's words.
+    carried = False
+    if not tickers:
+        parent = reply_parent_tickers(question)
+        if parent:
+            strong, carried = parent[:1], True
+    if (strong and is_stock(strong[0]) and strong[0].lower() not in _COMMON_WORDS
+            and ("$" in q or _MARKET_WORD_RE.search(q) or (carried and "?" in q))):
+        r.tickers = strong
+        r.shape, r.reason = TICKER_OPINION, (
+            "ticker from the replied-to message" if carried else "ticker with no other shape")
+        r.prefetch = _stock_prefetch(strong[0]) + [(T_PRICE, {"symbols": [strong[0]]})]
+        if re.search(r"\b(?:earnings|print|report(?:ed|s)?|numbers|er)\b", ql):
+            r.prefetch.append((T_EDATE, {"symbol": strong[0]}))
+        return r
     r.shape = UNKNOWN
     return r
+
+
+# Words that make a capitalised token a stock question. Everyday words
+# (up, down, red, buy, cash) are left out: "SV up early?" is about a member.
+_MARKET_WORD_RE = re.compile(
+    r"\b(?:rip(?:ping|ped)|dump(?:ing|ed)|hammered|smoked|nuked|tank(?:ing|ed)?"
+    r"|moon(?:ing)?|crash(?:ing|ed)?|pump(?:ing|ed)?|squeez(?:e|ing)|stock|shares?"
+    r"|earnings|revenue|sales|guidance|news|chart|calls?|puts?|price\s+target|pt"
+    r"|(?:market\s+)?cap|worth|debt|valuation|float|dilution|offering|iv|options?"
+    r"|a\s+buy|a\s+sell|bull(?:ish)?|bear(?:ish)?)\b", re.I)
+
+
+def reply_parent_tickers(question: str) -> list[str]:
+    """Tickers the replied-to message names, cashtag or capitals only.
+    One or two distinct ones only: a wider answer is not one subject."""
+    m = re.search(r"\[MESSAGE BEING REPLIED TO[^\]]*\]\s*\n(.*?)(?=\n\[[^\]\n]*message to you\]|\Z)",
+                  question or "", re.S)
+    if not m:
+        return []
+    found = [t for t in extract_tickers(m.group(1), lowercase=False)
+             if is_stock(t) and t.lower() not in _COMMON_WORDS]
+    return found if 1 <= len(found) <= 2 else []
 
 
 def filter_tools(route: Route, tools: list, *, google_tool=None) -> list:

@@ -172,3 +172,15 @@ def test_earnings_dates_are_said_in_new_york_terms():
     assert _relative_day_et("2026-09-30", now=late_evening_et) == "today (Wed Sep 30)"
     assert _relative_day_et("2026-10-08", now=late_evening_et).startswith("in 8 days")
     assert _relative_day_et("2026-09-25", now=late_evening_et).startswith("5 days ago")
+
+
+def test_a_report_earlier_today_reads_as_released():
+    """2026-10-07: APLD and LEVI were called "reports today after the
+    close" 10-16 minutes after they reported."""
+    from datetime import datetime, timezone
+    from discord_bot.ask_tools import _relative_day_et as f
+    after = datetime(2026, 10, 7, 20, 20, tzinfo=timezone.utc)   # 4:20 PM ET
+    assert "already released" in f("2026-10-07", "after market close", now=after)
+    before = datetime(2026, 10, 7, 19, 0, tzinfo=timezone.utc)   # 3:00 PM ET
+    assert "already released" not in f("2026-10-07", "after market close", now=before)
+    assert "already released" in f("2026-10-07", "before market open", now=before)

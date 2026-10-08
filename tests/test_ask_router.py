@@ -527,7 +527,10 @@ def test_implied_move_routes_to_the_chain_unless_past_tense():
     # catch-all on 2026-09-30 (the room is not a research source); a
     # room-history question still reaches it through the CHAT shape.
     r = R.classify("what was the implied move for LULU earnings?")
-    assert r.shape == R.UNKNOWN and r.google_allowed() and R.T_CHAT not in r.allowed_tools(), r
+    # not the options chain; since 2026-10-08 a ticker with no other shape
+    # gets the stock data, which keeps Google
+    assert r.shape in (R.UNKNOWN, R.TICKER_OPINION) and r.shape != R.OPTIONS_CHAIN
+    assert r.google_allowed() and R.T_CHAT not in r.allowed_tools(), r
 
 
 # 2026-09-04, owner: "is the bot able to tell when most of the room are
@@ -663,3 +666,25 @@ def test_audit_2026_10_08_fantasy_routing():
 def test_curly_apostrophes_route_like_straight_ones():
     q = "Abe’s record on slams the last 90 days"
     assert R.classify(q).shape == R.classify(q.replace("’", "'")).shape == R.MEMBER_LEDGER
+
+
+def _reply(parent, own):
+    return (f'[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n"{parent}"\n\n'
+            f"[Monsoon's message to you]\n{own}")
+
+
+def test_audit_2026_10_08_stock_questions_get_stock_data():
+    # a ticker and a market word, no other shape
+    for q, sym in (("why is WDC hammered today", "WDC"), ("is NVDA a buy", "NVDA")):
+        r = R.classify(q)
+        assert r.shape == R.TICKER_OPINION and r.tickers[0] == sym, q
+        assert (R.T_SNAPSHOT, {"symbol": sym}) in r.prefetch
+    assert R.classify("what happened to twst").tickers == ["TWST"]
+    # a follow-up takes the ticker of the message it replies to
+    r = R.classify(_reply("$APLD reports today after the close", "give me the earnings numbers"))
+    assert r.tickers == ["APLD"] and (R.T_EDATE, {"symbol": "APLD"}) in r.prefetch
+    assert R.classify(_reply("CoreWeave ($CRWV) carries $35B of debt", "how much the cap worths")
+                      ).tickers == ["CRWV"]
+    # banter stays banter
+    for q in ("WTF?", "LMAO", _reply("CoreWeave ($CRWV) carries $35B of debt", "lol")):
+        assert R.classify(q).shape == R.UNKNOWN, q

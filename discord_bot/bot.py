@@ -5344,6 +5344,15 @@ async def _ask_02_call_model_with_tools(
             _fresh = _ask_router.fresh_print(_pf_res)
     if _fresh:
         _ask_meta["fresh_print"] = _fresh
+    # A report whose time has passed but whose figures Yahoo has not filled:
+    # the dated news is where the print is (2026-10-07: "what time apld
+    # report earnings" at 4:20 PM ET was answered as upcoming).
+    if (_fresh and _fresh.get("actual") is None and _fresh.get("symbol")
+            and _ask_router.T_NEWS in _prefetch_exec
+            and not any(t == _ask_router.T_NEWS for t, _ in _pf_plan)):
+        _extra = (_ask_router.T_NEWS, {"symbol": _fresh["symbol"]})
+        _pf_plan = list(_pf_plan) + [_extra]
+        _pf_results = list(_pf_results) + [await _run_prefetch(*_extra)]
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue

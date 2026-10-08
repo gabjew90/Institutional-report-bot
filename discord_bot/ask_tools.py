@@ -1714,12 +1714,21 @@ def _relative_day_et(date_iso: str, timing: str = "", now=None) -> str:
         d = _date.fromisoformat(date_iso[:10])
     except ValueError:
         return ""
-    today = (now or _dt.now(_tz.utc)).astimezone(ZoneInfo("America/New_York")).date()
+    et = (now or _dt.now(_tz.utc)).astimezone(ZoneInfo("America/New_York"))
+    today = et.date()
     n = (d - today).days
     rel = {0: "today", 1: "tomorrow", -1: "yesterday"}.get(
         n, f"in {n} days" if n > 1 else f"{-n} days ago")
     out = f"{rel} ({d.strftime('%a %b')} {d.day})"
-    return f"{out}, {timing}" if timing else out
+    out = f"{out}, {timing}" if timing else out
+    # A report earlier today has happened (2026-10-07: APLD and LEVI were
+    # called "reports today after the close" 10-16 minutes after release).
+    minutes = et.hour * 60 + et.minute
+    t = (timing or "").lower()
+    if n == 0 and (("after" in t and minutes >= 16 * 60 + 15)
+                   or ("before" in t and minutes >= 9 * 60 + 30)):
+        out += " (already released: the results are out)"
+    return out
 
 
 def _build_options_chain_tool():
