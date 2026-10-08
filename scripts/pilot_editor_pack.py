@@ -58,6 +58,45 @@ def has_own_day_cards(cards_root: str, day_iso: str) -> bool:
     return os.path.isdir(d) and bool(load_cards(d))
 
 
+def doc_ids(cards_root: str, day_iso: str, days: int) -> list[int]:
+    """Document ids with cards in the window (card files are <id>.json).
+    Ids grow with arrival, so the highest one marks how far an edition read."""
+    ids = []
+    for d in window_dirs(cards_root, day_iso, days):
+        for p in glob.glob(os.path.join(d, "*.json")):
+            stem = os.path.basename(p).split(".")[0]
+            if stem.isdigit():
+                ids.append(int(stem))
+    return ids
+
+
+def last_edition_max_id(cards_root: str, day_iso: str) -> int | None:
+    """The highest document id the previous published edition packed, from
+    its shadow meta; None when unknown."""
+    shadow = os.path.join(os.path.dirname(os.path.normpath(cards_root)), "shadow")
+    prior = [m for m in sorted(glob.glob(os.path.join(shadow, "*.meta.json")))
+             if os.path.basename(m)[:10] < day_iso]
+    if not prior:
+        return None
+    try:
+        with open(prior[-1], encoding="utf-8") as fh:
+            v = (json.load(fh).get("pack") or {}).get("max_doc_id")
+        return int(v) if v else None
+    except Exception:
+        return None
+
+
+def has_fresh_cards(cards_root: str, day_iso: str, days: int) -> bool:
+    """Cards the previous edition has not seen: the edit date's own, or
+    cards in the window for documents that arrived after the last edition
+    (2026-10-08: Oct 7's research landed at 6 PM ET, filed under Oct 7, and
+    the Oct 8 edition refused because its own folder was empty)."""
+    if has_own_day_cards(cards_root, day_iso):
+        return True
+    prev = last_edition_max_id(cards_root, day_iso)
+    return prev is not None and any(i > prev for i in doc_ids(cards_root, day_iso, days))
+
+
 def _doc_key(c: dict) -> str:
     return c.get("_file") or f"{c.get('bank')}::{c.get('document')}"
 
@@ -272,7 +311,7 @@ def main() -> int:
                     help="pack even when the edit date has no cards of its own "
                          "(backfill only; a scheduled run must never pass this)")
     a = ap.parse_args()
-    if not a.allow_stale and not has_own_day_cards(a.cards_root, a.date):
+    if not a.allow_stale and not has_fresh_cards(a.cards_root, a.date, a.days):
         print(f"REFUSING: no reader cards for {a.date} in {a.cards_root}. "
               f"The readers did not run or produced nothing; editing now would "
               f"write today's pulse from an earlier day's cards (2026-09-03).",
@@ -281,6 +320,8 @@ def main() -> int:
     cards = load_window(a.cards_root, a.date, a.days)
     briefs = load_briefs(a.cards_root, a.date, a.days)
     md, meta = build_pack(cards, briefs)
+    ids = doc_ids(a.cards_root, a.date, a.days)
+    meta["max_doc_id"] = max(ids) if ids else None
     with open(a.out + ".md", "w", encoding="utf-8") as fh:
         fh.write(md)
     with open(a.out + ".json", "w", encoding="utf-8") as fh:

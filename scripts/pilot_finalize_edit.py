@@ -85,7 +85,8 @@ def main() -> int:
     meta.update({
         "unread_source_files_at_edit": a.unread,
         "given_up_at_edit": a.given_up,
-        "pack": {"documents": pack.get("document_count"), "cards": pack.get("card_count")},
+        "pack": {"documents": pack.get("document_count"), "cards": pack.get("card_count"),
+                 "max_doc_id": pack.get("max_doc_id")},
         "provenance": provenance(a.model, ver, prompt_text),
         "reasked": bool(a.reasked) or bool(meta.get("reasked")),
     })

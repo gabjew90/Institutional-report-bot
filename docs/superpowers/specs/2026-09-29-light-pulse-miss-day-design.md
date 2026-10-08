@@ -59,7 +59,7 @@ A LIGHT decision sends one ops ping (`discord_bot/ops_alert.py`, key `pulse-ligh
 
 ### Out of scope
 
-- Retiring deep analysis itself, re-pointing RECAP and WATCH to the pilot's cards, deleting the classic DRAFT path. Those are the retirement commit, gated on 10 consecutive market days with `body_source: omnipulse`.
+- Retiring deep analysis itself, re-pointing RECAP and WATCH to the pilot's cards, deleting the classic DRAFT path. Those are the retirement commit, gated on 10 consecutive market days with `body_source: omnipulse`. A light day whose reason is no new bank research since the last pulse is neutral: it neither counts toward the 10 nor breaks the run (owner, 2026-10-08; `scripts/omnipulse_streak.py`).
 - Changing the 10-minute wait or the fetch routes.
 - Any change to the dashboard repo.
 

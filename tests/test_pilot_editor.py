@@ -255,3 +255,28 @@ def test_the_editor_rules_name_the_three_accuracy_cases():
     assert "Running figures come from the newest note" in ed
     assert "never stage a disagreement" in ed
     assert "Name the disagreement between banks and the\n  invalidation." not in ed
+
+
+def test_research_that_arrived_after_the_last_edition_counts_as_fresh():
+    """2026-10-08: Oct 7's research landed at 6 PM ET, filed under Oct 7, and
+    the Oct 8 edition refused because its own folder was empty."""
+    import json as _json
+    import os
+    import tempfile
+    from scripts.pilot_editor_pack import has_fresh_cards
+
+    base = tempfile.mkdtemp()
+    cards, shadow = os.path.join(base, "cards"), os.path.join(base, "shadow")
+    os.makedirs(os.path.join(cards, "2026-10-07"))
+    os.makedirs(shadow)
+    with open(os.path.join(shadow, "2026-10-07.meta.json"), "w", encoding="utf-8") as fh:
+        _json.dump({"pack": {"max_doc_id": 100}}, fh)
+
+    def card(doc_id):
+        with open(os.path.join(cards, "2026-10-07", f"{doc_id}.json"), "w", encoding="utf-8") as fh:
+            _json.dump({"cards": [CARDS[0]]}, fh)
+
+    card(99)
+    assert has_fresh_cards(cards, "2026-10-08", 1) is False   # already in the Oct 7 edition
+    card(101)
+    assert has_fresh_cards(cards, "2026-10-08", 1) is True    # arrived after it
