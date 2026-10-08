@@ -851,7 +851,8 @@ def load_chat_messages_for_profiles(
         rows = _db.get_connection().execute(
             f"""SELECT author_id, author_username, author_display,
                        channel_name, content, posted_at,
-                       attachment_urls, embed_texts, image_ocr_text
+                       attachment_urls, embed_texts, image_ocr_text,
+                       discord_message_id, reply_parent_id
                 FROM chat_messages
                 WHERE channel_name IN ({placeholders})
                   AND posted_at >= ?
@@ -862,7 +863,8 @@ def load_chat_messages_for_profiles(
         rows = _db.get_connection().execute(
             """SELECT author_id, author_username, author_display,
                       channel_name, content, posted_at,
-                      attachment_urls, embed_texts, image_ocr_text
+                      attachment_urls, embed_texts, image_ocr_text,
+                       discord_message_id, reply_parent_id
                FROM chat_messages
                WHERE posted_at >= ?
                ORDER BY posted_at ASC""",

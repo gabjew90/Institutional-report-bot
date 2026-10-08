@@ -562,6 +562,14 @@ def format_user_profiles_for_context(
     for uid, p in profile_items:
         dn = p.get("display_name") or p.get("username") or f"user_{uid}"
         uname = p.get("username") or ""
+        # The name stored at the last rebuild can be months old: use the
+        # member's latest chat name and keep the old one as a pointer
+        # (2026-10-08 audit: a May display name still headed the profile
+        # in October).
+        current = _latest_display_name(uid)
+        renamed_from = ""
+        if current and current != dn:
+            renamed_from, dn = dn, current
         # No per-profile truncation. The total-block budget below
         # (running_chars > max_chars → omit this profile) provides
         # the only cap. New 5-section profiles average 3000-3500
@@ -581,6 +589,8 @@ def format_user_profiles_for_context(
         # broke _PROFILE_METRICS_RE, so lean mode stopped dropping the
         # racism bit for those members (2026-09-24 review).
         also = _also_called(uid, dn, uname)
+        if renamed_from:
+            also += f"; profile written under the name {renamed_from}"
         if uname and uname.lower() != dn.lower():
             ident = f"**{dn}** ({uname}, {mention}{also})"
         else:
@@ -636,6 +646,12 @@ def format_user_profiles_for_context(
             ledger_line = ""
         if ledger_line:
             metric_bits.append(ledger_line)
+        # A member who has not posted in a month: their "Recent" sections
+        # are from then (2026-10-08 audit: a profile last fed in April
+        # still said "recent activity: INTC pre-market").
+        stale = _stale_note(p.get("last_seen_message_at"))
+        if stale:
+            metric_bits.append(stale)
         metrics_line = " · ".join(metric_bits)
 
         # Examples surface is now profile_text itself — the Voice,
@@ -794,3 +810,30 @@ def vacuum_db() -> dict:
     after = conn.execute("PRAGMA page_count").fetchone()[0]
     return {"pages_before": before, "freelist_before": free_before,
             "pages_after": after}
+
+
+def _stale_note(last_seen: str | None, days: int = 30) -> str:
+    """'last active 2026-04-29: the Recent sections are from then, not now'
+    for a member silent `days` or longer; '' otherwise."""
+    from datetime import datetime, timezone
+    try:
+        t = datetime.fromisoformat(str(last_seen or "")[:19].replace(" ", "T"))
+    except ValueError:
+        return ""
+    if t.tzinfo is None:
+        t = t.replace(tzinfo=timezone.utc)
+    if (datetime.now(timezone.utc) - t).days < days:
+        return ""
+    return f"last active {t.date().isoformat()}: the Recent sections are from then, not now"
+
+
+def _latest_display_name(uid) -> str:
+    """The member's display name on their newest stored message, or ""."""
+    try:
+        row = _db.get_connection().execute(
+            "SELECT author_display FROM chat_messages WHERE author_id = ? "
+            "AND author_display IS NOT NULL AND author_display != '' "
+            "ORDER BY posted_at DESC LIMIT 1", (int(uid),)).fetchone()
+        return (row[0] or "").strip() if row else ""
+    except Exception:
+        return ""

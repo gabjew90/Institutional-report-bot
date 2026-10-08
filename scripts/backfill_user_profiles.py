@@ -29,6 +29,7 @@ import argparse
 import asyncio
 import io
 import json
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
@@ -298,7 +299,7 @@ Anti-patterns:
 
 Before you write any quoted line, mentally check: "Is this exact phrase in {display_name}'s own messages below?" If the answer is no, don't quote it — describe the behavior instead. A scrubbed quote isn't theirs. An invented quote is worse — it puts words in their mouth that the room will catch.
 
-**The [bracketed] framing adds no facts.** No price, market level, date, event, place, habit or motive that the MESSAGES and trades below do not show: a stock's chart position they never posted, a trading style no message describes. The bot repeats these notes to the room as fact. The joke comes from the wording, never from an invented detail.
+**The [bracketed] framing adds no facts.** No price, market level, date, event, place, job, habit or motive that the MESSAGES and trades below do not show: a stock's chart position they never posted, a trading style no message describes, a job read into a joke ("I'm the best man" is not a wedding career). The bot repeats these notes to the room as fact. The joke comes from the wording, never from an invented detail. A message marked "(replying to X)" or "(to @X)" is said to or about X: it is never a fact about this user's own life or trades.
 
 When real quotes are thin (lurker, short window, low signal), the profile sections get shorter — that's correct. Padding with invented or borrowed quotes is the failure mode this rule prevents.
 
@@ -906,7 +907,9 @@ _ROOM_REACTION_RE = __import__("re").compile(
     r"fact-checks?|fact-checked|calls?\s+(?:him|her|them|it)?\s*out|"
     r"clowns?|clowned|roasts?|roasted|speculates?|speculated|teases?|"
     r"teased|rips?|ripped|laughs?|laughed|cackles?|finds?\s+(?:it|this|"
-    r"him|her|them)|running\s+joke|response|reaction)"
+    r"him|her|them)|running\s+joke|response|reaction"
+    # 2026-10-08 audit: "though the room assumes it's because..."
+    r"|assumes?|assumed|suspects?|suspected)"
     r"|endless(?:ly)?\s+[^.\n]{0,30}?speculation"
     r"|leading\s+to\s+endless",
     __import__("re").IGNORECASE,
@@ -1096,6 +1099,18 @@ def _load_user_data_from_store(
     slur_examples: dict[int, list[str]] = defaultdict(list)
     _SLUR_EXAMPLES_PER_USER = 5
 
+    # Who wrote each message, and every member's name, so a reply or a
+    # <@id> mention reads as addressed to someone (2026-10-08 audit: a
+    # line tulch wrote ABOUT trieukha500 became tulch's own history, and a
+    # "<@2Pale> I smoke a pack of 2 pales" read as cigarettes).
+    _author_of_msg = {r.get("discord_message_id"): (r.get("author_display") or r.get("author_username"))
+                      for r in rows if r.get("discord_message_id")}
+    _author_id_of_msg = {r.get("discord_message_id"): r.get("author_id")
+                         for r in rows if r.get("discord_message_id")}
+    for r in rows:
+        if r.get("author_id"):
+            _NAME_BY_ID[str(r["author_id"])] = (r.get("author_display")
+                                                or r.get("author_username") or "")
     for r in rows:
         uid = r.get("author_id")
         if not uid:
@@ -1131,6 +1146,11 @@ def _load_user_data_from_store(
             "image_count": len(att_list),
             "embed_texts": embed_list,
             "image_ocr_text": ocr_text,
+            # a reply to their own message continues their own story
+            "reply_to": (_author_of_msg.get(r.get("reply_parent_id"))
+                         if r.get("reply_parent_id")
+                         and _author_id_of_msg.get(r.get("reply_parent_id")) != uid
+                         else None),
         })
         # Slur counting runs against the full searchable surface — text
         # body + embed snippets + OCR'd screenshot content. A meme with a
@@ -1233,6 +1253,16 @@ def _format_analyst_trades_block(user_id: int, days: int = 30) -> str:
     return profile_trades.render_block(profile_trades.member_trades(user_id, days))
 
 
+# Member id -> current name, filled by the message loader; read by
+# _resolve_mentions so the writer sees "@2Pale", not "<@264777...>".
+_NAME_BY_ID: dict[str, str] = {}
+
+
+def _resolve_mentions(text: str) -> str:
+    return re.sub(r"<@!?(\d+)>",
+                  lambda m: "@" + (_NAME_BY_ID.get(m.group(1)) or "someone"), text or "")
+
+
 def _format_messages_block(messages: list[dict]) -> str:
     """Render the per-user message list for the Gemini prompt.
 
@@ -1278,7 +1308,13 @@ def _format_messages_block(messages: list[dict]) -> str:
         if ch:
             prefix = f"{prefix} #{ch}"
         if parts:
-            out.append(f"{prefix}: {' | '.join(parts)}")
+            text = _resolve_mentions(" | ".join(parts))
+            to = m.get("reply_to")
+            if to:
+                text = f"(replying to {to}) {text}"
+            elif re.match(r"\s*@\S", text):
+                text = f"(to {text.split()[0]}) {text}"
+            out.append(f"{prefix}: {text}")
         else:
             out.append(f"{prefix}: [empty / sticker]")
     return "\n".join(out)
