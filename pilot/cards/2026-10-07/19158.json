@@ -1,0 +1,271 @@
+{
+ "brief": "Goldman's 7 Oct US Daily Download opens with the S&P 500 at a fresh all-time high ($7,844, the year's 28th record) on an NDX breakout GS ties to clean investor positioning (GS Prime Brokerage HF net exposure near a 5-year low, GS Sentiment indicator near multi-year lows), covering of macro hedges, and continued dollar concentration into Tech/AI even as market breadth falls to its lowest level since 2000. On data, GS lowered its Q3 GDP tracking estimate by 0.3pp to +3.1% q/q annualized after August's trade deficit widened by $12.7bn to $105.6bn, worse than GS's prior assumptions. On single names: GS stayed Neutral on Marvell after its Investor Day, expecting the stock to hold its post-event 6% gain on above-Street FY31 targets (revenue CAGR 55%-60%, EPS ~$30) but wants stronger evidence of design-win execution before turning more constructive. GS also reiterated its Buy on Costco with a $1,134 price target after a Texas club tour reinforced its view that Costco keeps gaining value share into FY27. Session color also flagged HDD weakness (STX, WDC), a biotech selloff led by AVBP, and a Power Up America/AI power-demand bid in GOOGL and CEG.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "The S&P 500 hit another all-time high at $7,844, the 28th record high of 2026.",
+   "anchor": "The S&P 500 hit another ATH at $7,844 yesterday, the 28th record high in 2026.",
+   "topic": "NDX breakout breadth risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "The US trade deficit widened by $12.7bn to $105.6bn in August from an upwardly revised July level, above expectations.",
+   "anchor": "The trade deficit widened by $12.7bn to $105.6bn in August from an upwardly revised level in July, above expectations.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs lowered its Q3 GDP tracking estimate by 0.3 percentage points to +3.1% quarter-over-quarter annualized.",
+   "anchor": "We lowered our Q3 GDP tracking estimate by 0.3pp to +3.1% (quarter-over-quarter annualized).",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GDP",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs expects Marvell Technology stock to hold its post-Investor Day gain of 6%.",
+   "anchor": "we expect the stock to hold its gains (up 6%), as we came away from the event favourably impressed by",
+   "topic": "Marvell investor day outlook",
+   "status": "forecast",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Marvell management outlined FY31 targets of 55%-60% revenue CAGR, 56%-59% gross margin, 44%-46% operating margin, and EPS of about $30.00.",
+   "anchor": "Management outlined FY31 targets including revenue growing at a 55%-60% CAGR (FY26-31), with gross margin of 56%-59%, operating margin of 44%-46%, and EPS of ~$30.00.",
+   "topic": "Marvell investor day outlook",
+   "status": "target",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY31"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs is Neutral on Marvell Technology, which trades at about 9.5x the company's FY31 EPS target.",
+   "anchor": "Although we are Neutral on the stock trading at ~9.5X company's FY31 EPS target",
+   "topic": "Marvell investor day outlook",
+   "status": "level",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs says it would turn more constructive on Marvell Technology with stronger evidence of execution and a clearer path to the ramp of other design wins.",
+   "anchor": "we would be more constructive if we gain stronger evidence of execution and a clearer path the",
+   "topic": "Marvell investor day outlook",
+   "status": "level",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs expects Costco's value proposition to keep resonating with consumers and the company to continue gaining share into FY27.",
+   "anchor": "Looking to FY27, we continue to have confidence in Costco\u2019s value proposition resonating with consumers, and we expect the company to continue gaining share.",
+   "topic": "Costco value share gains",
+   "status": "forecast",
+   "instruments": [
+    "COST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs reiterates a Buy rating on Costco with a 12-month price target of $1,134.",
+   "anchor": "We reiterate our Buy rating with a 12- month price target of $1,134.",
+   "topic": "Costco value share gains",
+   "status": "target",
+   "instruments": [
+    "COST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Costco called out strong population growth in the DFW area and sees an opportunity to gain market share there.",
+   "anchor": "Costco called out strong population growth in DFW area and sees an opportunity to gain market share",
+   "topic": "Costco value share gains",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Costco is investing tariff refunds into price.",
+   "anchor": "The company is investing tariff refunds into price",
+   "topic": "Costco value share gains",
+   "status": "released",
+   "instruments": [
+    "COST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs says the NDX breakout is driven partly by clean investor positioning, with GS Prime Brokerage HF net exposure approaching a 5-year low and the GS Sentiment indicator near multi-year lows.",
+   "anchor": "clean investor positioning (GS PB has HF nets approaching a 5 year low ... GS\nSentiment indicator also hovering around multi year lows)",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman's trading floor rated overall activity a 4 on a 1-10 scale, finishing +670bps better to buy.",
+   "anchor": "Our floor was a 4 on a 1-10 scale in terms of overall activity levels finishing +670bps better to buy.",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman Sachs says concentration into Tech/AI has left market breadth at its lowest level since 2000.",
+   "anchor": "steady drumbeat of $ concentration into Tech/AI at the expense of pretty much everything else in market\n(market breadth plummeting, lowest level since 2000)",
+   "topic": "NDX breakout breadth risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Crowded longs Seagate and Western Digital traded down 8-10% on another wave of competition concerns.",
+   "anchor": "crowded longs STX and WDC trading down 8-10% on another wave of competition concerns",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "STX",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "AVBP fell 46% on a clinical miss.",
+   "anchor": "AVBP down 46% on a clinical miss",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AVBP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US Daily Download 7 Oct 2026",
+   "claim": "Goldman's Power Up America basket led the leader board, up about 450bps, following GOOGL headlines on increased AI power demand.",
+   "anchor": "Our Power Up America basket (GSENEPOW up\n~450bps) at the top of the leader board following GOOGL headlines this AM",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GOOGL",
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/19158__gs-us-daily-download-7-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 17,
+  "matched": 17,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 5,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
