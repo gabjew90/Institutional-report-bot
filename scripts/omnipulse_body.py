@@ -58,6 +58,13 @@ LIGHT_BODY_NOTE = (
     "in time. The market read above and the calendar below are "
     "current, and the full edition returns tomorrow."
 )
+# A morning when no new bank research arrived since the last pulse (owner,
+# 2026-10-08): the light pulse instead of re-serving the previous notes.
+NO_RESEARCH_NOTE = (
+    "No new bank research came in since the last pulse. The market read "
+    "above and the calendar below are current, and the full edition "
+    "returns with the next research."
+)
 EXIT_LIGHT = 4
 MAX_FETCH_ERRORS = 3
 # 10 minutes: the Omnipulse normally lands by 14:08 UTC and the gate runs
@@ -229,10 +236,10 @@ def to_insights(md: str) -> tuple[str, str]:
     return headline, INSIGHTS_HEADER + "\n\n" + "\n\n".join(themes) + "\n"
 
 
-def light_body() -> str:
+def light_body(note: str | None = None) -> str:
     """The INSIGHTS section for a light pulse: the header and the note,
     no themes."""
-    return INSIGHTS_HEADER + "\n\n" + LIGHT_BODY_NOTE + "\n"
+    return INSIGHTS_HEADER + "\n\n" + (note or LIGHT_BODY_NOTE) + "\n"
 
 
 def splice(pulse_md: str, headline: str, insights: str) -> str:

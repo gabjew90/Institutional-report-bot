@@ -257,3 +257,20 @@ def test_a_bank_says_opener_in_the_body_is_fixed_before_lint(tmp_path):
     assert "Goldman says" not in final
     assert "In Goldman's view, the move has further to run." in final
     assert any(h.get("record") == "omnipulse_body_voice" for h in d.state["history"])
+
+
+def test_a_morning_with_no_new_research_is_a_light_pulse(tmp_path):
+    """Owner, 2026-10-08: no new bank research since the last pulse means
+    the light pulse, not a body written from the previous days' notes. No
+    Omnipulse fetch is attempted."""
+    d = _driver(tmp_path)
+    (tmp_path / "ctx.json").write_text(json.dumps(
+        {"today": "2026-10-06", "theme_map": {}, "no_new_research": True}), encoding="utf-8")
+
+    def no_fetch(self, args):
+        raise AssertionError("no Omnipulse fetch on a no-research morning")
+    with patch.object(O, "ENABLED", True), patch.object(PD.Driver, "_run", no_fetch):
+        assert d.gate_omnipulse("2026-10-06") == "LIGHT"
+    assert (tmp_path / "light_reason.txt").read_text(encoding="utf-8") == \
+        "no new bank research since the last pulse"
+    assert O.NO_RESEARCH_NOTE in (tmp_path / "omnipulse_body.md").read_text(encoding="utf-8")

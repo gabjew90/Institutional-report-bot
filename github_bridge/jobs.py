@@ -161,6 +161,10 @@ def _dump_context_job_inner() -> None:
 
         rows = db.get_analyses_since(cutoff)
         no_new_research = False
+        # Only HIGH and MEDIUM reach synthesis, so a window of nothing but
+        # LOW notes is a window with no new research.
+        if not any((r.get("priority") or "").lower() != "low" for r in rows):
+            rows = []
         if not rows and _before_scheduled_pulse(datetime.utcnow()):
             # No research in the window, but the pulse is coming: still
             # dump, so its prices, news and calendar are current. On

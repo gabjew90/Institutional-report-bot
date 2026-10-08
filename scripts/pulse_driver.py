@@ -294,6 +294,20 @@ class Driver:
             mode_file.write_text("classic", encoding="utf-8")
             (self.tmp / "light_reason.txt").unlink(missing_ok=True)
             return self._decide("omnipulse", "CLASSIC", "switch off")
+        # No new bank research since the last pulse (the bridge marks the
+        # context no_new_research): the light pulse, not a body written
+        # from the previous days' notes (owner, 2026-10-08).
+        try:
+            _ctx = json.loads((self.tmp / "ctx.json").read_text(encoding="utf-8"))
+        except Exception:
+            _ctx = {}
+        if _ctx.get("no_new_research"):
+            reason = "no new bank research since the last pulse"
+            self._body_path().write_text(o.light_body(o.NO_RESEARCH_NOTE), encoding="utf-8")
+            self._headline_path().write_text("", encoding="utf-8")
+            (self.tmp / "light_reason.txt").write_text(reason, encoding="utf-8")
+            mode_file.write_text("light", encoding="utf-8")
+            return self._decide("omnipulse", "LIGHT", reason)
         if date is None:
             from zoneinfo import ZoneInfo
             date = datetime.datetime.now(
