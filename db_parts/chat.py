@@ -611,11 +611,15 @@ def find_users_mentioned_in_text(text: str) -> list[int]:
         # Pass 2: prefix match — an input token (≥4 chars, e.g. "zach")
         # is the prefix of a profile token (≥5 chars, e.g. "zachary").
         # Constrained to ≥4/≥5 to avoid "any" matching "anything".
+        # Targets are letter-only name words: "report" matched the username
+        # reportfirst1112 and a slur matched a member's display name, each
+        # loading two dozen unrelated messages (2026-10-08 audit).
         for inp in input_tokens_lower:
-            if inp in STOP:
+            if inp in STOP or _is_slur(inp):
                 continue
             for prof in profile_tokens_lower:
-                if len(prof) >= 5 and prof.startswith(inp) and prof != inp:
+                if (len(prof) >= 5 and prof.isalpha() and prof.startswith(inp)
+                        and prof != inp):
                     matches.add(user_id)
                     matched = True
                     break
@@ -1711,3 +1715,11 @@ def race_evidence(author_id: int, days: int = RACE_WINDOW_DAYS, n: int = 3) -> l
     return [{"date": (r["posted_at"] or "")[:10],
              "channel": r["channel_name"],
              "text": " ".join((r["content"] or "").split())[:200]} for r in rows]
+
+
+def _is_slur(token: str) -> bool:
+    try:
+        from scripts.slur_patterns import count_racial_slurs
+        return count_racial_slurs(token) > 0
+    except Exception:
+        return False

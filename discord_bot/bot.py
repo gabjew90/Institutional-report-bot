@@ -4366,6 +4366,17 @@ def _is_hostile_exchange(question: str) -> bool:
     return bool(_HOSTILE_RE.search(q))
 
 
+def _trace_figs(result) -> list[str]:
+    """The numbers in a tool payload, kept on its trace entry so the Data
+    footer names a figure feed only when the answer used one of them
+    (data_footer.footer, 2026-10-08)."""
+    try:
+        from discord_bot.data_footer import payload_figs
+        return sorted(payload_figs(str(result)))[:800]
+    except Exception:
+        return []
+
+
 def _is_clapback_shaped(answer: str) -> bool:
     """True when the answer is a clapback AT THE ASKER — it addresses
     them in second person. The fidelity guard only applies here: a
@@ -5323,6 +5334,7 @@ async def _ask_02_call_model_with_tools(
             "status": str(_pf_res.get("status") or "ok"),
             "via": "prefetch",
             "result_chars": len(str(_pf_res)),
+            "figs": _trace_figs(_pf_res),
             "seconds": round(time.monotonic() - _pf_t0, 2),
         })
         return _pf_res
@@ -5703,6 +5715,7 @@ async def _ask_02_call_model_with_tools(
                 "args": _trace_args,
                 "status": _trace_status,
                 "result_chars": len(str(result)),
+                "figs": _trace_figs(result),
             })
         contents.append(
             types.Content(role="user", parts=tool_response_parts)
@@ -7114,6 +7127,7 @@ async def _ask_07_validation_ladder(
                         "args": {"symbols": str(_price_symbols)[:80]},
                         "status": "backstop-fetch",
                         "result_chars": len(str(_price_result)),
+                        "figs": _trace_figs(_price_result),
                     })
                     contents.append(types.Content(
                         role="user",
@@ -8483,6 +8497,12 @@ async def _ask_09_rank_and_regen_guards(
     answer = await _fantasy_percent_guard(
         answer, question, _ask_meta, client, ask_model, safety_settings, types,
         _tally_retry_usage)
+    # no reminder, timer or ping tool exists: never claim one (2026-10-08)
+    from discord_bot import action_claims as _ac
+    from discord_bot.ask_router import _last_line as _ac_last
+    answer, _ac_hit = _ac.guard(answer, _ac_last(question))
+    if _ac_hit:
+        _ask_meta["guards"].append("action-claim")
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
@@ -8752,18 +8772,23 @@ async def _ask_10_log_and_render(
         pass
 
     sources_footer = _build_sources_footer(grounding_metadata)
-    if not sources_footer:
-        # Tool-sourced answers name their feeds, and the news prefetch's
-        # links are cited when the answer uses a figure from it
-        # (data_footer.compose, 2026-09-30).
-        try:
-            from discord_bot import data_footer as _data_footer
-            sources_footer = _data_footer.compose(
-                "", answer, _ask_meta.get("news"), _ask_tool_trace)
-            if sources_footer:
-                _ask_meta["guards"].append("data-footer")
-        except Exception as e:
-            log.warning(f"/ask: data footer failed (non-fatal): {e}")
+    try:
+        from discord_bot import data_footer as _data_footer
+        # A banter reply with no figure cites nothing: Google links under a
+        # joke support none of it (2026-10-08 audit).
+        if (sources_footer and _ask_meta.get("kind") == "BANTER"
+                and not _data_footer.figures(answer)):
+            sources_footer = ""
+        # Tool-sourced answers name their feeds (also under Google sources),
+        # and the news prefetch's links are cited when the answer uses a
+        # figure from it (data_footer.compose, 2026-09-30/10-08).
+        _with_data = _data_footer.compose(
+            sources_footer, answer, _ask_meta.get("news"), _ask_tool_trace)
+        if _with_data != sources_footer:
+            _ask_meta["guards"].append("data-footer")
+        sources_footer = _with_data
+    except Exception as e:
+        log.warning(f"/ask: data footer failed (non-fatal): {e}")
     # A rank never ships without the record behind it (owner,
     # 2026-09-26). Rendered from the tool payloads, not the answer, so it
     # holds whatever the model chose to mention.
@@ -10515,7 +10540,11 @@ def create_bot() -> commands.Bot:
                 # matches no longer auto-load profiles — that goes through
                 # lookup_user_profile tool calls. The reply-parent's AUTHOR
                 # still triggers profile load below (ref_uid handling).
-                if ref_content:
+                # The bot's own earlier answer is not a member's text:
+                # "Uncle Sam" in it loaded member Sam (2026-10-08 audit).
+                _ref_is_bot = bool(bot.user is not None and ref_uid
+                                   and int(ref_uid) == bot.user.id)
+                if ref_content and not _ref_is_bot:
                     try:
                         ref_mentioned = db.find_users_mentioned_in_text(
                             ref_content

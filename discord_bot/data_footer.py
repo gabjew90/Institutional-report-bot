@@ -54,7 +54,45 @@ def _label(entry: dict) -> str | None:
     return FEEDS.get(tool)
 
 
-def footer(tool_trace: list[dict] | None) -> str:
+# Feeds whose contribution is figures: cited only when one of the
+# payload's numbers is in the answer (2026-10-08 audit: "live prices" on an
+# answer whose figures all came from a member's quoted post, "Sleeper
+# league" on an answer built from chat). Research, news and the primer
+# carry words as much as numbers and stay cited when they ran.
+NUMERIC_TOOLS = frozenset({
+    "lookup_market_price", "lookup_earnings_date", "lookup_earnings_slate",
+    "lookup_options_chain", "lookup_price_history", "lookup_economic_calendar",
+    "lookup_fantasy_league", "lookup_ticker_snapshot", "lookup_trade_log",
+    "lookup_room_positions"})
+
+
+def _loose(cores) -> set[str]:
+    """Numbers with their whole-number part as well: an answer rounds
+    $405.42 to $405."""
+    out = set(cores)
+    out |= {c.split(".")[0] for c in cores if len(c.split(".")[0]) >= 2}
+    return out
+
+
+_RECORD_RE = re.compile(r"\b\d{1,2}-\d{1,2}(?:-\d{1,2})?\b")
+
+
+def payload_figs(text: str) -> set[str]:
+    """What a payload contributes: its figures and its win-loss records
+    ("1-3" is the whole answer to "how is his team doing")."""
+    return numeric_cores(text) | set(_RECORD_RE.findall(text or ""))
+
+
+def _used(entry: dict, answer: str | None) -> bool:
+    if answer is None or str(entry.get("tool") or "") not in NUMERIC_TOOLS:
+        return True
+    figs = entry.get("figs")
+    if figs is None:            # no payload numbers recorded for this entry
+        return True
+    return bool(_loose(figs) & _loose(payload_figs(answer)))
+
+
+def footer(tool_trace: list[dict] | None, answer: str | None = None) -> str:
     """'\\n\\nData: a · b' for the feeds that returned data this turn, in
     first-use order and without repeats. Empty when no tool did."""
     seen: list[str] = []
@@ -63,6 +101,12 @@ def footer(tool_trace: list[dict] | None) -> str:
             continue
         if str(entry.get("status") or "ok") in _FAILED:
             continue
+        if not _used(entry, answer):
+            continue
+        args = entry.get("args") or {}
+        if (entry.get("tool") == "query_data" and isinstance(args, dict)
+                and "chat_messages" in str(args.get("sql") or "")):
+            continue            # the room's own chat, like search_chat_messages
         label = _label(entry)
         if label and label not in seen:
             seen.append(label)
@@ -111,7 +155,11 @@ def compose(grounding_footer: str, answer: str, news: dict | None,
     used says nothing about where its numbers came from), then the Data
     line naming the bot's own feeds, which includes the news search."""
     if grounding_footer:
-        return grounding_footer
+        # Google sources plus the bot's own feeds: a grounding footer used
+        # to replace the Data line, so a Yahoo price or calendar row went
+        # uncited on a grounded answer (2026-10-08 audit, 9 answers).
+        data = footer(tool_trace, answer)
+        return grounding_footer + ("\n" + data.lstrip("\n") if data else "")
     out = ""
     news = news or {}
     links = news.get("sources") or []
@@ -119,7 +167,7 @@ def compose(grounding_footer: str, answer: str, news: dict | None,
         out = "\n\nSources:\n" + "\n".join(
             f"[{i + 1}] [{(s.get('title') or s['url'])[:80]}](<{s['url']}>)"
             for i, s in enumerate(links[:2]))
-    data = footer(tool_trace)
+    data = footer(tool_trace, answer)
     if data:
         out = out + "\n" + data.lstrip("\n") if out else data
     return out

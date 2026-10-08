@@ -130,7 +130,9 @@ def test_news_links_are_cited_only_when_the_answer_uses_the_news():
     assert "news search (Google)" in used and used.count("Data:") == 1
     ignored = F.compose("", "→ Goldman sees a 2026 beat on HBM", news, trace)
     assert "Sources" not in ignored and ignored.startswith("\n\nData: bank research notes")
-    assert F.compose("\n\nSources:\n[1] g", "x", news, trace) == "\n\nSources:\n[1] g"
+    # Google sources keep the Data line beneath them (2026-10-08)
+    grounded = F.compose("\n\nSources:\n[1] g", "x", news, trace)
+    assert grounded.startswith("\n\nSources:\n[1] g\nData: ") and grounded.count("Data:") == 1
     assert F.compose("", "x", None, []) == ""
 
 
