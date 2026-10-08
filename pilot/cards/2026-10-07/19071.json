@@ -1,0 +1,186 @@
+{
+ "brief": "Elon Musk said over the weekend that Tesla/SpaceX are in discussions with TSMC for US semiconductor capacity, following last week's report that TSMC is weighing a second US fab cluster in Texas. JPM's supply-chain checks indicate early talks are aimed at a pure-foundry or JV structure (similar to JSMC/ESMC), giving Tesla/SpaceX a dedicated capacity corridor; the fab would ramp in 2030 and beyond, with the first three phases of TSMC's US expansion still centered on Arizona. JPM expects TSMC to keep process/technology control and majority fab ownership, unlike Intel's Tesla TeraFab 14A agreement. The driver cited is strong compute demand (SpaceX reportedly selling compute at $20-30 per watt) plus signs of slower competitor process ramps (Tesla AI6 possibly re-engaging TSMC; new ASIC programs with MediaTek going to TSMC, not Intel). JPM reads this as diminishing TSMC's competitive-threat narrative, supporting its PE multiple, and reiterates Overweight with a NT$3300 price target (20x 12-month forward EPS). A Tesla switch-back to TSMC could also benefit GUC, Tesla's AI5 design partner, which had faced AI6 share-loss risk.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "Tesla and SpaceX are in discussions with TSMC for semiconductor capacity in the US.",
+   "anchor": "TSLA / SPCX is in discussions with TSMC for semiconductor capacity in the US",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSLA",
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "JPM expects the TSMC-Tesla fab to ramp production in 2030 and beyond.",
+   "anchor": "We expect this Fab to ramp in 2030 and beyond",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030 and beyond"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "The first three phases of TSMC's US expansion are expected to remain focused on Arizona.",
+   "anchor": "the first three phases of the US expansion are likely to still focus on Arizona",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "JPM would be surprised if the new Tesla-linked fab is not majority owned by TSMC.",
+   "anchor": "we would be surprised if the Fab is not majority owned by TSMC",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "SpaceX has been able to sell compute at $20-30 per watt, indicating significant ROIC for compute sales.",
+   "anchor": "SPCX has been able to sell compute at $20-30 per watt, indicating significant ROIC for compute sales",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "JPM maintains its Overweight rating on TSMC with a price target of NT$3300, based on 20x 12-month forward EPS.",
+   "anchor": "We maintain our OW rating on TSMC with a price target of NT$3300 (20x 12m forward EPS)",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Jun-27"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "A larger switch-back to TSMC for Tesla could benefit GUC, which is currently the design partner for AI5.",
+   "anchor": "a larger switch-back to TSMC for TSLA could benefit GUC, which is currently the design partner for AI5",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "GUC, Tesla's AI5 design partner, had previously faced the prospect of losing share on the AI6 program.",
+   "anchor": "GUC, which is currently the design partner for AI5 but had previously been facing the prospect of share loss on AI6",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "JPM expects TSMC's A14 process to enter mass production in 1H28, generating some revenue in 2H28.",
+   "anchor": "We expect A14 to go into mass production in 1H28, which could generate some revenue in 2H28.",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "1H28-2H28"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "JPM believes TSMC's gross margins could approach 70% once N2 dilution becomes modest, likely in late 2027 or early 2028.",
+   "anchor": "We believe that GMs have a chance to approach 70% levels once N2 dilution becomes modest (likely in late 2027 or early 2028).",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "late 2027 or early 2028"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "TSMC: Potential collaboration with Tesla for US fab \u2013 JPM thoughts",
+   "claim": "Key downside risks to TSMC's rating and price target are the duration of the AI capex growth cycle and weak PC/smartphone demand in 2H26.",
+   "anchor": "the debate on the duration of the AI capex growth cycle and (2) any negative impact from weak PC/smartphone demand in 2H26",
+   "topic": "TSMC Terafab Texas chip project",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "2H26"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/19071__tsmc-potential-collaboration-with-tesla-for-us-fab-jpm-thoug.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 11,
+  "matched": 11,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
