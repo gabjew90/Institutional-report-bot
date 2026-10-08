@@ -96,6 +96,10 @@ from discord_bot.snapshot_tool import (  # noqa: E402,F401  re-exported for the 
     _build_snapshot_tool,
     _execute_snapshot,
 )
+from discord_bot.ask_tools import (  # noqa: E402,F401  the TreasuryDirect auction tool
+    _build_treasury_auctions_tool,
+    _execute_treasury_auctions,
+)
 from discord_bot.research_tool import (  # noqa: E402
     _build_research_tool,
     _execute_research,
@@ -4711,6 +4715,7 @@ async def _ask_00_setup_tools_and_context(
             _build_room_positions_tool(),
             _build_research_tool(),
             _build_snapshot_tool(),
+            _build_treasury_auctions_tool(),
             # Sleeper fantasy tool only exists when a league is
             # configured — an unregistered tool costs no schema
             # tokens and can't be miscalled.
@@ -5319,6 +5324,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_NEWS: _execute_ticker_news,
         _ask_router.T_PRIMER: _execute_ticker_primer,
         _ask_router.T_CHAT: _execute_chat_search,
+        _ask_router.T_AUCTION: _execute_treasury_auctions,
     }
     _ask_meta["route_shape"] = _ask_route.shape
     # Read by the tool loop: a shape without chat search must not reach
@@ -5627,6 +5633,7 @@ async def _ask_02_call_model_with_tools(
             "lookup_room_positions": _execute_room_positions,
             "lookup_research": _execute_research,
             "lookup_ticker_snapshot": _execute_snapshot,
+            "lookup_treasury_auctions": _execute_treasury_auctions,
         }
         tool_response_parts = []
         for fc in function_calls:

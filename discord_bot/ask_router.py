@@ -72,13 +72,15 @@ T_FANTASY = "lookup_fantasy_league"
 T_ROOM = "lookup_room_positions"
 T_RESEARCH = "lookup_research"
 T_SNAPSHOT = "lookup_ticker_snapshot"
+T_AUCTION = "lookup_treasury_auctions"
 # Prefetch only, never declared to the model (it already has Google):
 # discord_bot/news_tool.py runs the grounded search in code.
 T_NEWS = "ticker_news"
 # Prefetch only: discord_bot/primer_tool.py, the stored business primer.
 T_PRIMER = "ticker_primer"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
-             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT}
+             T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT,
+             T_AUCTION}
 
 # Which function tools a shape may see. Google is a separate flag.
 # Chat search is a ROOM tool: it appears only where the question is
@@ -99,7 +101,7 @@ TOOL_POLICY: dict[str, set[str]] = {
     EARNINGS_DATE: {T_EDATE, T_PRICE, T_CHAIN} | _STOCK,
     PRICE: {T_PRICE, T_HISTORY, T_CHAIN} | _STOCK,
     OPTIONS_CHAIN: {T_CHAIN, T_PRICE, T_EDATE} | _STOCK,
-    ECON_CALENDAR: {T_ECON, T_SLATE},
+    ECON_CALENDAR: {T_ECON, T_SLATE, T_AUCTION, T_PRICE},
     PRICE_HISTORY: {T_HISTORY, T_PRICE} | _STOCK,
     COMPANY_PROFILE: {T_PRICE} | _STOCK,
     MEMBER_LEDGER: {T_TRADES, T_QUERY, T_PROFILE, T_PRICE, T_CHAT},
@@ -837,6 +839,13 @@ def classify(question: str, *, fantasy_enabled: bool = False,
                 r.tickers = basket
                 r.prefetch = [(T_PRICE, {"symbols": basket}), (T_NEWS, {"symbol": basket[0]})]
         return r
+    # Treasury auction results come from TreasuryDirect (2026-10-07: "how
+    # did the 10-year auction go" two minutes after the close got no result
+    # and a market yield that read as the auction's).
+    if _AUCTION_RE.search(q) and (auction_term(q) or _TREASURY_WORD_RE.search(q)):
+        r.shape, r.reason = ECON_CALENDAR, "treasury auction"
+        r.prefetch = [(T_AUCTION, {"term": auction_term(q)})]
+        return r
     if _ECON_RE.search(q) and not strong:
         r.shape, r.reason = ECON_CALENDAR, "macro print words"
         r.prefetch = [(T_ECON, {"days": 7})]
@@ -1012,6 +1021,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                      "growth first (y/y, or the beat or miss against the estimate, both computed "
                      "here) with the dollar figure beside it; a dollar total alone tells the "
                      "reader nothing."),
+        T_AUCTION: ("TREASURY AUCTIONS, system-fetched from TreasuryDirect: results (high yield = "
+                    "where it cleared, bid-to-cover, who bought) with the previous auction of the "
+                    "same tenor, and the schedule. Authoritative for any auction figure; a market "
+                    "yield is not an auction result."),
         T_CHAT: ("CHAT SEARCH, system-fetched from the room's messages for the word the asker "
                  "named. Count and quote from these rows; the search ran, so never say you "
                  "cannot search chat."),
@@ -1233,3 +1246,22 @@ def subject_terms(question: str) -> list[str]:
         if w.lower() not in _COMMON_WORDS and w not in out:
             out.append(w)
     return out[:4]
+
+
+_AUCTION_RE = re.compile(r"\b(?:auction|auctions|bid[\s-]*to[\s-]*cover|tailed|stop[\s-]*through)\b", re.I)
+_TENOR_RE = re.compile(r"\b(\d{1,2})\s*(?:-\s*)?(?:year|yr|y)\b|\b(\d{1,2})\s*(?:-\s*)?(?:week|wk)\b", re.I)
+
+
+# An auction is a Treasury one only with a tenor or a bond word: "how much
+# did the Christie's auction make" is not.
+_TREASURY_WORD_RE = re.compile(
+    r"\b(?:treasury|treasuries|bonds?|notes?|bills?|tips|tail(?:ed)?|bid[\s-]*to[\s-]*cover"
+    r"|stop[\s-]*through|refunding)\b", re.I)
+
+
+def auction_term(q: str) -> str:
+    """'10-Year' from "10y auction", '13-Week' from "13 week bills", else ''."""
+    m = _TENOR_RE.search(q or "")
+    if not m:
+        return ""
+    return f"{m.group(1)}-Year" if m.group(1) else f"{m.group(2)}-Week"

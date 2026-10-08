@@ -332,3 +332,17 @@ TOOL_DOCS["lookup_room_positions"] = (
     "DO NOT use for one member's own trades (lookup_trade_log) or for "
     "a registered caller's open book (lookup_trade_log caller anchor)."
 )
+
+TOOL_DOCS["lookup_treasury_auctions"] = (
+    "WHEN TO CALL: any US Treasury auction question: how an auction went "
+    "('how did the 10-year auction go', 'did the 30y tail'), when the next "
+    "one is, its size. Returns TreasuryDirect's results (high yield, which "
+    "is where the auction cleared; bid-to-cover; indirect, direct and "
+    "dealer shares) with the previous auction of the same tenor, and the "
+    "upcoming schedule. Results post about a minute after the 1:00 PM ET "
+    "close for notes and bonds.\n"
+    "DO NOT use for market yields (lookup_market_price with ^TNX) or "
+    "economic data (lookup_economic_calendar). A market yield is not an "
+    "auction result, and a tail needs the when-issued yield, which this "
+    "feed does not carry."
+)

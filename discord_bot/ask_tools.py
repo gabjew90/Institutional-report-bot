@@ -2543,3 +2543,40 @@ async def _execute_room_positions(args: dict) -> dict:
                        f"the last {days} days. Say the room is not crowded into anything on "
                        "the ledger; do NOT infer positions from chat.")
     return res
+
+
+def _build_treasury_auctions_tool():
+    """FunctionDeclaration for `lookup_treasury_auctions` (TreasuryDirect,
+    2026-10-08 audit)."""
+    from google.genai import types
+    return types.Tool(function_declarations=[types.FunctionDeclaration(
+        name="lookup_treasury_auctions",
+        description=_TOOL_DOCS["lookup_treasury_auctions"],
+        parameters=types.Schema(type=types.Type.OBJECT, properties={
+            "term": types.Schema(type=types.Type.STRING, description=(
+                "Optional tenor, e.g. '10-Year', '30-Year', '13-Week'. Omit for every "
+                "auction in the window.")),
+            "days": types.Schema(type=types.Type.INTEGER, description=(
+                "Days of results to read, default 10.")),
+        }),
+    )])
+
+
+async def _execute_treasury_auctions(args: dict) -> dict:
+    """Run the lookup_treasury_auctions tool call (blocking HTTP in a thread)."""
+    from datetime import datetime, timezone
+    from report import treasury_auctions as _ta
+    term = str(args.get("term") or "").strip()
+    try:
+        days = max(1, min(int(args.get("days") or 10), 60))
+    except (TypeError, ValueError):
+        days = 10
+    try:
+        res = await asyncio.to_thread(_ta.lookup, term, days)
+    except Exception as e:
+        log.warning(f"lookup_treasury_auctions failed: {e}")
+        return {"status": "error", "error": "TreasuryDirect is unavailable right now; say so, "
+                                            "do not give an auction result from memory."}
+    status = "ok" if (res.get("results") or res.get("upcoming")) else "empty"
+    return {"status": status, "term": term or "all", "days": days,
+            "as_of": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"), **res}

@@ -25,6 +25,7 @@ FEEDS: dict[str, str] = {
     "lookup_room_positions": "room trade ledger",
     "lookup_research": "bank research notes",
     "lookup_ticker_snapshot": "company and trading data (Yahoo)",
+    "lookup_treasury_auctions": "Treasury auction results (TreasuryDirect)",
     "ticker_news": "news search (Google)",
     "ticker_primer": "company background (Google)",
     "query_data": "research database",
@@ -63,7 +64,7 @@ NUMERIC_TOOLS = frozenset({
     "lookup_market_price", "lookup_earnings_date", "lookup_earnings_slate",
     "lookup_options_chain", "lookup_price_history", "lookup_economic_calendar",
     "lookup_fantasy_league", "lookup_ticker_snapshot", "lookup_trade_log",
-    "lookup_room_positions"})
+    "lookup_room_positions", "lookup_treasury_auctions"})
 
 
 def _loose(cores) -> set[str]:
