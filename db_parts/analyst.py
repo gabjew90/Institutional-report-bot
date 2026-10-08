@@ -412,11 +412,15 @@ def get_recent_analyst_trades(
     limit: int = 50,
     caller: str | None = None,
     tracking_mode: str | None = "caller",
+    author_id: int | None = None,
 ) -> list[dict]:
     """Recent trade-tagged rows (is_trade=1) ordered newest first.
 
     `caller` filters by canonical caller (case-insensitive); None reads
-    across all callers.
+    across all callers. `author_id` scopes to one member in SQL: the
+    profile builder took the newest 200 rows across everyone and filtered
+    afterwards, so on 2026-10-08 its 30-day window reached back 6 days and
+    profiles called members with winning closes "all talk".
 
     `tracking_mode` defaults to 'caller' so the /ask RECENT TRADES
     context block stays clean — only official-caller rows surface there.
@@ -442,6 +446,9 @@ def get_recent_analyst_trades(
     if tracking_mode is not None:
         where.append("tracking_mode = ?")
         params.append((tracking_mode or "").strip().lower() or "caller")
+    if author_id is not None:
+        where.append("author_id = ?")
+        params.append(int(author_id))
     rows = _db.get_connection().execute(
         f"""SELECT * FROM analyst_trades
            WHERE {' AND '.join(where)}

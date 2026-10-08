@@ -1225,98 +1225,12 @@ def _format_points_block(user_id: int) -> str:
 
 
 def _format_analyst_trades_block(user_id: int, days: int = 30) -> str:
-    """Render this user's analyst_trades rows as a structured block for the
-    profile prompt. Both 'caller' rows (official caller-channel posts,
-    e.g. Abe/BK) and 'member' rows (user-mode shared-alert posts) are
-    surfaced. Empty when the user has no trade history in the window.
-
-    Goal: replace the model's chat-text trade inference (which hallucinates
-    percentages — Abe's profile claimed $GLW +430% when log shows +100.73%,
-    and TSLA Flat when log shows -40%) with structured ground truth.
-
-    Format example per row:
-      - 2026-05-18  CLOSE  GLW 185C  exp 5/22  gain +100.73%  (caller log)
-    """
-    rows = db.get_recent_analyst_trades(
-        hours=days * 24,
-        limit=200,
-        caller=None,
-        tracking_mode=None,  # read both caller and member rows
-    )
-    # Filter to this user — either author_id match (member rows + new
-    # caller rows) or caller-name pre-author_id legacy rows (fallback).
-    own: list[dict] = []
-    for r in rows:
-        if r.get("author_id") and int(r["author_id"]) == int(user_id):
-            own.append(r)
-    if not own:
-        return (
-            "(no structured trade log entries for this user in the window — "
-            "Recent trades section must describe positions from chat WITHOUT "
-            "inventing percentages)"
-        )
-    from datetime import date as _date
-    today = _date.today()
-    lines: list[str] = []
-    # Render oldest first so the model reads chronologically
-    for r in sorted(own, key=lambda x: x.get("posted_at") or ""):
-        ts = (r.get("posted_at") or "")[:16].replace("T", " ")
-        action = (r.get("action") or "?").upper()
-        ticker = r.get("ticker") or "?"
-        ct = (r.get("contract_type") or "").lower()
-        ct_suffix = {"call": "C", "put": "P"}.get(ct, "")
-        strike = r.get("strike")
-        if strike is not None:
-            strike_str = (
-                f"{int(strike)}" if strike == int(strike) else f"{strike}"
-            )
-        else:
-            strike_str = "?"
-        expiry = r.get("expiry") or ""
-        exp_short = expiry[5:] if len(expiry) >= 10 else (expiry or "?")
-        gain = r.get("gain_pct")
-        price = r.get("price")
-        gain_str = f"gain {gain:+.2f}%" if gain is not None else "gain ?"
-        price_str = f" @{price}" if price not in (None, 0) else ""
-        mode_tag = (
-            "(caller log)" if (r.get("tracking_mode") or "caller") == "caller"
-            else "(member alert)"
-        )
-        # STATUS TAG — the 2026-06-16 fix. Without this the model read a
-        # bare OPEN row with a past expiry as "still open, waiting to
-        # materialize" (ZHawk's TSLA 410C exp 06-12 narrated as Open on
-        # 06-16, 4 days after it expired) and an open-with-no-close as
-        # "still holding in limbo" — fabricated outcomes on real trades.
-        # The tag states what is and isn't KNOWN so the profile can't
-        # invent a status.
-        status = (r.get("inferred_status") or "").lower()
-        expired_by_date = False
-        if len(expiry) >= 10:
-            try:
-                expired_by_date = _date.fromisoformat(expiry[:10]) < today
-            except ValueError:
-                expired_by_date = False
-        status_tag = ""
-        if action in ("OPEN", "ADD"):
-            if status == "expired_unknown" or expired_by_date:
-                status_tag = (
-                    "  [EXPIRED — expiry passed, NO close posted; "
-                    "OUTCOME UNKNOWN (may have sold early, expired ITM, "
-                    "or expired worthless — do NOT assert which)]"
-                )
-            else:
-                status_tag = (
-                    "  [OPEN per log — no exit posted; we only see "
-                    "screenshotted trades, so they MAY have closed it "
-                    "without posting — do NOT assert it's still held]"
-                )
-        elif status == "close_without_open":
-            status_tag = "  [EXIT only — no logged entry]"
-        lines.append(
-            f"  - {ts}  {action:>5}  {ticker} {strike_str}{ct_suffix}  "
-            f"exp {exp_short}  {gain_str}{price_str}  {mode_tag}{status_tag}"
-        )
-    return "\n".join(lines)
+    """This member's analyst_trades rows as the STRUCTURED TRADE LOG block
+    (both caller and member rows). Built by scripts/profile_trades.py:
+    scoped to the member in SQL, closes matched to their opens, impossible
+    gains blanked (2026-10-08 audit)."""
+    from scripts import profile_trades
+    return profile_trades.render_block(profile_trades.member_trades(user_id, days))
 
 
 def _format_messages_block(messages: list[dict]) -> str:
@@ -2772,6 +2686,17 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             force or uid in cold_uids
                             or uid not in existing_profiles
                         )
+                        # Recent-trades commentary may not claim an
+                        # outcome the log lacks (2026-10-08 audit:
+                        # "stopped out", "realized loss" on open trades).
+                        try:
+                            from scripts import profile_trades as _pt
+                            profile, _fixed = _pt.ground_recent_trades(
+                                profile, _pt.member_trades(uid))
+                            for _f in _fixed:
+                                print(f"  [trades] {meta['username']}: {_f}")
+                        except Exception as _e:
+                            print(f"  [trades] grounding skipped for {uid}: {_e}")
                         db.upsert_user_profile(
                             user_id=uid,
                             username=meta["username"],
