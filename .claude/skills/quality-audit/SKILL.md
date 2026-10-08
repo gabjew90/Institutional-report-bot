@@ -54,6 +54,12 @@ never `import db`), the agency page, or the web. Re-running a question through
 
 For every entry:
 
+- **Answers the question asked.** Read the question in its channel and its
+  reply chain, then ask whether the answer is about that. "How am I doing" in
+  the fantasy channel is about the asker's league team, not trading. An
+  answer about something else is a finding at **high** severity whether or
+  not anyone complained, and gets its own row (never folded into a routing
+  row with other questions).
 - **Data and citations.** Every figure in the answer appears in a tool payload,
   a grounding source, or the prompt. Cited sources exist and say what the
   answer claims; the Sources/Data footer names the feed the figure actually
@@ -77,6 +83,40 @@ For every entry:
 - **Room feedback.** Read `room_after`. Corrections ("I said gay not racist"),
   complaints, "wrong person", "that's not true", or the question asked again
   point at a failure. Praise and laughter count as signal too.
+
+### Fantasy answers (a separate pass, its own table)
+
+The owner flagged fantasy answers as the area audits under-report
+(2026-10-08). List every ask that is fantasy-shaped by ANY of: asked in the
+fantasy channel, called `lookup_fantasy_league`, or mentions the league, a
+matchup, a roster, a player, start/sit, waivers, standings or a win chance.
+Also list fantasy-channel asks that did NOT reach the fantasy tool. Then
+check each one against Sleeper's public API, not the bot's own payload:
+
+```bash
+L=1395566811415588864   # report/sleeper_data.py league id
+curl -s https://api.sleeper.app/v1/league/$L/users      # display names (Sleeper usernames)
+curl -s https://api.sleeper.app/v1/league/$L/rosters    # owner_id, record, fpts
+curl -s https://api.sleeper.app/v1/league/$L/matchups/<week>  # starters, players_points, points
+curl -s https://api.sleeper.app/v1/players/nfl          # player id -> name, team (14 MB, cache it)
+```
+
+- **Routing.** A non-fantasy question (a joke that says "chance", a room
+  argument between people who are not in the league) must not get league
+  data; a league question ("how am I doing", "how's my team") must.
+  `report/sleeper_data.py :: SLEEPER_TO_DISCORD` lists who is in the league.
+- **Right team.** The team answered is the one asked about. Members are named
+  by Discord name, room nickname, Sleeper username ("stinky dill pickle" is
+  StinkyDillPickle) or a player on the roster ("the team with McCaffrey").
+- **Scores and live state.** Records, points, projections and "players left"
+  match Sleeper at the time of the answer: a player whose game was over is not
+  "still to play", a player in a live game is not "done", an inactive player
+  scores 0 and is not "on the board". Win percentages come only from the
+  tool's `win_chance_estimate`.
+- **Room reaction** ("bro wtf is this", "wrong team", "not quite it") marks a
+  failure; quote it.
+
+Report this pass as its own table after the /ask table, same columns.
 
 ### Member profiles
 
@@ -154,7 +194,7 @@ Area guidance, so the same kind of problem gets the same class every run:
 | economic prints | poller or parser bug, wrong series | agency late, feed down, alert posted late | layout or takeaway prompt produced unclear text |
 | omni-calendar | filter dropped a name, renderer misdrew, move mispriced | feed down, post late, X post failed | display decision (what is bold, what is shown) |
 
-**Report one table per area**, in this order: /ask answers, profiles,
+**Report one table per area**, in this order: /ask answers, fantasy answers, profiles,
 economic prints, omni-calendar, process. Same columns every time:
 
 | # | finding | class | impact | severity | evidence | fix | status |
