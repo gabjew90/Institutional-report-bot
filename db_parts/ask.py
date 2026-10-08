@@ -145,3 +145,24 @@ def upsert_ticker_primer(symbol: str, primer: str, sources: list[dict]) -> None:
         "sources = excluded.sources, built_at = excluded.built_at",
         ((symbol or "").upper(), primer, json.dumps(sources or [])))
     conn.commit()
+
+
+def bot_answers_mentioning(terms: list[str], days: int = 7, limit: int = 2) -> list[dict]:
+    """The bot's own recent answers, any channel, whose question or answer
+    names one of `terms`, newest first. What the room was already told
+    about a subject (2026-10-06: the bot listed Anduril exposure without
+    KRKNF, which it had named the day before)."""
+    terms = [t for t in (terms or []) if t and len(t) >= 2][:4]
+    if not terms:
+        return []
+    where = " OR ".join(["(question LIKE ? OR answer LIKE ?)"] * len(terms))
+    params: list = []
+    for t in terms:
+        params += [f"%{t}%", f"%{t}%"]
+    rows = _db.get_connection().execute(
+        "SELECT question, answer, answered_at FROM ask_bot_answers "
+        f"WHERE answered_at >= datetime('now', ?) AND ({where}) "
+        "ORDER BY answered_at DESC, id DESC LIMIT ?",
+        (f"-{int(days)} day", *params, int(limit)),
+    ).fetchall()
+    return [dict(r) for r in rows]

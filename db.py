@@ -1492,6 +1492,7 @@ from db_parts.analyst import (  # noqa: E402,F401
 from db_parts.ask import (  # noqa: E402,F401
     count_ask_queries_today_for_user,
     get_recent_bot_answers_in_channel,
+    bot_answers_mentioning,
     get_recent_bot_answers_to_asker,
     get_ticker_primer,
     record_ask_bot_answer,

@@ -697,3 +697,15 @@ def test_a_sector_question_prices_its_bellwethers():
     assert (R.T_NEWS, {"symbol": "MU"}) in r.prefetch
     assert R.classify("what is the room positioned in heading into tomorrow").prefetch == [
         (R.T_ROOM, {"days": 3})]
+
+
+def test_a_chat_count_question_searches_before_the_first_call():
+    r = R.classify('how many times has Abe said "slam" in the last 90 days')
+    assert r.shape == R.CHAT_HISTORY
+    assert r.prefetch == [(R.T_CHAT, {"keyword": "slam", "days": 90})]
+    assert R.classify("what did kloh say about gamma").prefetch == []
+
+
+def test_an_apostrophe_is_not_a_quote():
+    assert R._quoted_term("how many times did Abe's crew say 'slam'") == "slam"
+    assert R._quoted_term('did he type "send it" today') == "send it"

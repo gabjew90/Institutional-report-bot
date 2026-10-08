@@ -4673,7 +4673,10 @@ async def _ask_00_setup_tools_and_context(
         channel_name=channel_name or "",
         asker_manager=_asker_manager,
         channel_id=channel_id)
-    if _deferred:
+    # Replying "thoughts?" to your OWN earlier message hands over nothing:
+    # it is still your question, and the handed-over note made the bot talk
+    # about the asker in the third person (2026-10-06, 2Pale).
+    if _deferred and not (user_id and int(_deferred["user_id"]) == int(user_id)):
         _ask_route.deferred_author = _deferred["author"]
         _ask_route.reason = f"deferred to {_deferred['author']}'s question: {_ask_route.reason}"
     if _context_tickers:
@@ -4842,6 +4845,23 @@ async def _ask_00_setup_tools_and_context(
                             f"[YOU said earlier to this asker]: {a_snip}"
                         )
                 cross_window_block = "\n".join(lines)
+            # What the room was already told about this subject, any
+            # asker or channel, last 7 days (2026-10-06: Anduril exposure
+            # listed without KRKNF, named by the bot the day before).
+            _terms = _ask_router.subject_terms(question)
+            _seen = {(r.get("answer") or "") for r in (prior_answers or [])}
+            _subject_rows = [
+                r for r in (await asyncio.to_thread(db.bot_answers_mentioning, _terms) if _terms else [])
+                if (r.get("answer") or "") not in _seen]
+            if _subject_rows:
+                sub = ["[WHAT YOU ALREADY TOLD THE ROOM about " + ", ".join(_terms)
+                       + " — stay consistent with it, and include what it named when it "
+                       "answers this question too, unless it was wrong]"]
+                for r in _subject_rows:
+                    sub.append(f"[{(r.get('answered_at') or '')[:10]}, re: "
+                               f"{(r.get('question') or '').strip()[-120:]!r}]: "
+                               f"{(r.get('answer') or '').strip().replace(chr(10), ' ')[:600]}")
+                cross_window_block = (cross_window_block + "\n" if cross_window_block else "") + "\n".join(sub)
         except Exception as e:
             log.info(
                 f"Cross-window bot-answers fetch failed (non-fatal): {e}"
@@ -5298,6 +5318,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_SNAPSHOT: _execute_snapshot,
         _ask_router.T_NEWS: _execute_ticker_news,
         _ask_router.T_PRIMER: _execute_ticker_primer,
+        _ask_router.T_CHAT: _execute_chat_search,
     }
     _ask_meta["route_shape"] = _ask_route.shape
     # Read by the tool loop: a shape without chat search must not reach
@@ -7101,6 +7122,16 @@ async def _ask_07_validation_ladder(
         answer, grounding_metadata, needs_web,
         is_opinion=_is_opinion_request(question),
     )
+    # A draft whose every figure is in a tool payload the turn saw is
+    # sourced: the web net must not throw it away for a Google-only retry
+    # (2026-10-05: BK's earnings slate was rebuilt from Google in 80 s, a
+    # CRWD snapshot answer was discarded). The same check used to run only
+    # after the retry.
+    if _ground_trigger_web and _tool_sourced(
+            answer, _ask_tool_trace,
+            _ask_evidence_text(contents, response, question, user_content)):
+        _ground_trigger_web = False
+        _ask_meta["guards"].append("grounding:tool-sourced")
     # Calendar-slate questions trigger on question shape, not answer
     # shape — a ticker-and-times slate carries no factual-specific
     # markers the other two nets can see (2026-07-20 terlin). Any
@@ -8521,6 +8552,14 @@ async def _ask_09_rank_and_regen_guards(
     answer, _ac_hit = _ac.guard(answer, _ac_last(question))
     if _ac_hit:
         _ask_meta["guards"].append("action-claim")
+    # a ticker the answer introduced must still trade (2026-10-08 audit)
+    try:
+        from discord_bot import ticker_liveness as _tl
+        answer, _dead = await _tl.guard(answer, question, _execute_market_price)
+        if _dead:
+            _ask_meta["guards"].append("dead-ticker:" + ",".join(_dead))
+    except Exception as e:
+        log.warning(f"/ask: ticker liveness check failed (non-fatal): {e}")
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))

@@ -758,6 +758,13 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         return r
     if _CHAT_RE.search(q) and not _PUBLIC_FIGURE_RE.search(q):
         r.shape, r.reason = CHAT_HISTORY, "room-history words"
+        # "how many times has Abe said 'slam'": search before the first
+        # model call. When the content filter blocked that call, the retry
+        # dropped the tools and the bot said it could not search chat
+        # (2026-10-06).
+        term = _quoted_term(q)
+        if term:
+            r.prefetch = [(T_CHAT, {"keyword": term, "days": 90})]
         return r
     if _SLATE_RE.search(q) and not _EDATE_RE.search(q):
         if re.search(r"\b(?:this|next)\s+week\b", ql):
@@ -1005,6 +1012,9 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                      "growth first (y/y, or the beat or miss against the estimate, both computed "
                      "here) with the dollar figure beside it; a dollar total alone tells the "
                      "reader nothing."),
+        T_CHAT: ("CHAT SEARCH, system-fetched from the room's messages for the word the asker "
+                 "named. Count and quote from these rows; the search ran, so never say you "
+                 "cannot search chat."),
         T_ROOM: ("ROOM POSITIONING, system-fetched from the member trade ledger. Counts are distinct "
                  "members by author_id who LOGGED AN ENTRY (open/add); members_exited is who posted a "
                  "close. The ledger is entry-biased (exits are posted far less often than entries): "
@@ -1188,3 +1198,38 @@ def sector_basket(ql: str) -> list[str]:
         if rx.search(ql or ""):
             return list(syms)
     return []
+
+
+# Double quotes, or single quotes that are not apostrophes ("Abe's crew
+# said 'slam'" must give slam, not "s crew said ").
+_QUOTED_RE = re.compile(r"[\"“]([^\"”]{2,30})[\"”]|(?<![A-Za-z])['‘]([^'’]{2,30})['’](?![A-Za-z])")
+_SAID_WORD_RE = re.compile(
+    r"\b(?:say|says|said|saying|type[ds]?|post(?:s|ed)?|use[ds]?|call(?:s|ed)?)\s+"
+    r"(?:the\s+word\s+)?([a-z][a-z0-9]{2,20})\b", re.I)
+_NOT_TERMS = {"that", "this", "something", "anything", "about", "it", "the", "what", "when"}
+
+
+def _quoted_term(q: str) -> str:
+    """The word a chat-count question asks about: quoted, or after say/said."""
+    m = _QUOTED_RE.search(q or "")
+    if m:
+        return (m.group(1) or m.group(2)).strip()
+    m = _SAID_WORD_RE.search(q or "")
+    if m and m.group(1).lower() not in _NOT_TERMS:
+        return m.group(1)
+    return ""
+
+
+_PROPER_RE = re.compile(r"(?<![.!?]\s)(?<!^)\b([A-Z][a-zA-Z]{3,})\b")
+
+
+def subject_terms(question: str) -> list[str]:
+    """Tickers and proper names the asker's own words name: the subjects an
+    earlier answer may already have covered."""
+    q = _last_line(question)
+    out = [t for t in extract_tickers(q, lowercase=False) if t.lower() not in _COMMON_WORDS]
+    for m in _PROPER_RE.finditer(q):
+        w = m.group(1)
+        if w.lower() not in _COMMON_WORDS and w not in out:
+            out.append(w)
+    return out[:4]
