@@ -1,0 +1,890 @@
+{
+ "brief": "GS TMT Specialist Sales morning note covering earnings previews, M&A and flow commentary across TMT. GIR raises TSMC's 2027E/2028E capex forecasts to $85bn/$98bn from $78bn/$82bn on equipment inflation and Texas expansion, while holding 2026E capex at $64bn. N2 ramp dilutes 3Q/4Q26 gross margin to 67.5%/67.3%, but full-year GM still holds near 67%, supporting raised EPS forecasts of 110/150/195 for 2026-28. Desk feedback frames TSMC's 17-18x FY27 valuation as cheap against other AI names trading above 20x. SAP's organic cloud backlog guidance (c.23% CCB growth, 22% 4Q exit rate, c.24% FY26 cloud growth) is unchanged. Informa is buying faster-growing Clarion from Blackstone for \u00a32.24bn, funded by financing, a \u00a3940m equity raise and a paused buyback, while separating slower-growing Taylor & Francis, so the desk reads this as buying growth and funding it by shedding the slow asset. Deutsche Telekom frames AI as a cost opportunity, targeting \u20ac1.1bn savings by 2027 and \u20ac2.5bn by 2030, but analysts stayed skeptical it reaches earnings because guidance was not raised. Brazil's election outcome beat market fears, squeezing EWZ shorts (+13%), while US long/short net leverage sits near five-year lows despite indices near highs, meaning further upside would force buying.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR raises TSMC's 2027E and 2028E capex forecasts to US$85bn and US$98bn, up from US$78bn and US$82bn, due to equipment inflation.",
+   "anchor": "2026E CapEx is held at US$64bn, while the 2027E and 2028E CapEx forecasts are raised to US$85bn and US$98bn due to equipment inflation",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR holds TSMC's 2026E capex at US$64bn even as it raises 2027E and 2028E capex forecasts.",
+   "anchor": "2026E CapEx is held at US$64bn, while the 2027E and 2028E CapEx forecasts are raised to US$85bn and US$98bn due to equipment inflation",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR forecasts TSMC's monthly capacity will scale to 200kwpm for N3 and 140kwpm for N2 by end-2027E, accelerating toward 220kwpm for N3 by end-2028E.",
+   "anchor": "scale monthly capacity by end-2027E to 200kwpm for N3 and 140kwpm for N2, further accelerating by end-2028E to 220kwpm for N3",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR's EPS forecast for TSMC is 110 for 2026, 150 for 2027, and 195 for 2028.",
+   "anchor": "Our latest EPS forecast for 2026/2027/2028 is 110/150/195.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR forecasts TSMC revenue to surge 42% YoY in 2026E and 36.9% YoY in 2027E.",
+   "anchor": "revenue is forecast to surge 42% YoY in 2026E and 36.9% YoY in 2027E",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR forecasts TSMC's full-year gross margin at 67.2% in 2026 and 67.5% in 2027.",
+   "anchor": "supporting full-year GM of 67.2% and 67.5%.",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR estimates TSMC's 4Q26E revenue will grow 11.0% QoQ, with N2 ramp dilution trimming 3Q and 4Q26 gross margins to 67.5% and 67.3% respectively.",
+   "anchor": "4Q26E growing 11.0% QoQ, while N2 ramp dilution slightly trims quarterly gross margins to 67.5% and 67.3%respectively in 3Q and 4Q26",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3Q-4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Desk feedback characterized TSMC as trading at only 17-18x GIR's FY27 EPS forecast, a reasonable valuation with room to catch up to other AI plays trading above 20x.",
+   "anchor": "TSMC now only traded 17-18x based on our FY27 EPS forecast 150, at very reasonable valuation",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "level",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Informa is acquiring Clarion, a faster-growing B2B exhibitions and live-events operator, from Blackstone for \u00a32.24bn.",
+   "anchor": "Informa is acquiring Clarion, a faster-growing B2B exhibitions and live-events operator, from Blackstone for \u00a32.24bn.",
+   "topic": "Informa Clarion acquisition",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The Informa/Clarion deal price equates to 11.1x expected 2027 EBITDA, falling to c.9x with cost synergies and c.8x with cost and revenue synergies.",
+   "anchor": "price equates to 11.1x expected 2027 EBITDA, falling to c.9x including cost synergies and c.8x including cost and revenue synergies.",
+   "topic": "Informa Clarion acquisition",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The Clarion deal will be funded through acquisition financing and a roughly \u00a3940m equity raise, with Informa's share buyback paused.",
+   "anchor": "funded through acquisition financing and a c.\u00a3940m equity raise, with the buyback paused",
+   "topic": "Informa Clarion acquisition",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Informa expects the Clarion deal to close in Q4 2026, add mid-single-digit EPS in 2027, and keep leverage below 3x at end-2026 and 2.5x at end-2027.",
+   "anchor": "expected to close in Q4 2026, add mid-single-digit EPS in 2027 and keep leverage below 3x at end-2026 and 2.5x at end-2027.",
+   "topic": "Informa Clarion acquisition",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4 2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Informa plans to separate Taylor & Francis, its academic publishing business growing c.4%, from the B2B Live Events division expected to grow more than 7%.",
+   "anchor": "Taylor & Francis, its slower-growing academic publishing business, which is growing at c.4%, versus expected growth of more than 7% for the combined B2B",
+   "topic": "Informa Clarion acquisition",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Bulls see a higher standalone Events multiple from greater scale and diversification, including increased US exposure, and from removing the AI overhang tied to Taylor & Francis.",
+   "anchor": "greater scale, geographic and vertical diversification\u2014particularly increased US exposure and lower macro sensitivity\u2014and the removal of the AI overhang associated with Taylor & Francis.",
+   "topic": "Informa Clarion acquisition",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The desk views the Clarion deal as sensible: Informa is buying a faster-growing asset that could ultimately be funded largely by selling the slower-growing Taylor & Francis.",
+   "anchor": "the deal looks sensible: Informa is buying a faster-growing asset that could ultimately be funded largely through the sale of a slower-growing business in Taylor",
+   "topic": "Informa Clarion acquisition",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "BT acquired TalkTalk's consumer and wholesale businesses out of administration in a debt-free rescue, protecting services for 1.5 million customers.",
+   "anchor": "BT acquire TalkTalk\u2019s consumer and wholesale businesses out of administration in a debt-free rescue, protecting services for 1.5 million customers",
+   "topic": "BT acquires TalkTalk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Creditors in the TalkTalk rescue are owed nearly \u00a31.5bn and face heavy losses, though Ares is expected to recover more than \u00a3100m.",
+   "anchor": "leaving creditors owed nearly \u00a31.5bn facing heavy losses, although Ares is expected to recover more than \u00a3100m.",
+   "topic": "BT acquires TalkTalk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The UK government fast-tracked a competition and public-interest review of the BT/TalkTalk deal, with the CMA due to report by 19 October.",
+   "anchor": "UK government has fast-tracked a competition and public-interest review because of the risk to critical services, with the CMA due to report by 19 October",
+   "topic": "BT acquires TalkTalk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 19 October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "VMO2 has criticized the \u00a3400m BT/TalkTalk deal as favouring BT and entrenching its market position.",
+   "anchor": "VMO2 has criticised the \u00a3400m deal as favouring BT and entrenching its market position",
+   "topic": "BT acquires TalkTalk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Brazil's election results, with Bolsonaro at 47.0% and Lula at 45.2%, came in substantially better for the market than expected.",
+   "anchor": "Brazil remained topical post-election results (Fl\u00e1vio Bolsonaro 47.0%, Lula 45.2%, substantially better for the market than expected)",
+   "topic": "Brazil election flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "EWZ traded up 13% on the Brazil election outcome, with the desk seeing broad hedge fund demand versus long-only supply in high-beta pockets.",
+   "anchor": "with EWZ trading up +13% (macro shorts likely getting squeezed, our desk saw broad HF demand vs LO supply in high beta pockets)",
+   "topic": "Brazil election flows",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Early derivatives flows on the Brazil election were dominated by a chase for upside in EWZ short-dated calls alongside monetization of existing positions.",
+   "anchor": "early flows were dominated by a chase for upside, mainly in EWZ short dated calls, alongside monetization of existing positions.",
+   "topic": "Brazil election flows",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The desk rated overall US market activity a 4 on a 1-10 scale, with overall flow skews described as benign.",
+   "anchor": "Our floor was a 4 on a 1-10 scale in terms of overall activity levels with overall flow skews benign",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Long-onlys finished slight net sellers driven by macro products while hedge funds finished slight net buyers driven by tech.",
+   "anchor": "LOs finishing slight net sellers driven by macro products while HFs finished slight net buyers driven by tech.",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "US long/short net leverage is at its lowest level since April 2025 and approaching five-year lows in the 2nd percentile.",
+   "anchor": "US L/S net leverage is currently at its lowest level since Apr \u201925 (around \u201cLiberation Day\u201d) and approaching five-year lows in the 2nd percentile.",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The desk argues a continued index move higher will force investors to buy the tape given how low current positioning is.",
+   "anchor": "A continued index move higher is going to force investors to buy this tape.",
+   "topic": "Equity investor positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "US indices closed further in the green with a spot-up, vol-up chase across the board, and skew was crushed, especially in short-dated S&P.",
+   "anchor": "all indices closed further in the green with a spot up vol up chase across the board. Skew was crushed",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The vol desk sees room for further equity upside and continues to like owning QQQ optionality heading into earnings.",
+   "anchor": "the vol desk still sees room for further upside, and we continue to like owning QQQ optionality heading into earnings",
+   "topic": "Equity investor positioning",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Derivatives flows showed some bigger vol sellers as well as a large VIX downside trade in the market.",
+   "anchor": "we saw some bigger vol sellers out of the gates as well as a large VIX downside trade in the market",
+   "topic": "Equity investor positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR continues to expect c.23% organic CCB growth ex-FX for SAP in 3Q26, with a modest deceleration through the remainder of the year.",
+   "anchor": "continuing to expect c.23% organic CCB growth ex-FX for 3Q26, with a modest deceleration through the remainder of the year",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3Q26-4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR expects SAP's FY26 cloud revenue growth of c.24% ex-FX, in line with company guidance.",
+   "anchor": "FY26 cloud revenue growth of c.24% ex-fx in line with guidance.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "BESI was downgraded elsewhere on competition concerns in hybrid bonding from ASML.",
+   "anchor": "Interesting downgrade away on BESI on competition in HB from ASML",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Semianalysis says ASML is launching a hybrid bonding tool that will be D2W rather than W2W first.",
+   "anchor": "Semianalysis saying ASML is launching a hybrid bonding tool and it's going to be D2W \"rather than W2W first",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "A change in Spain's government from the election could materially alter the state's relationship with Telefonica, including a potential gradual sale of SEPI's 10% stake.",
+   "anchor": "could materially alter the state\u2019s relationship with the company (same applies to INDRA), including leading to a potential gradual sale of SEPI\u2019s 10% stake",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TEF"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "The opposition PP's intended policy is to divest the Spanish state's Telefonica holding, which could also create uncertainty around the company's board and management.",
+   "anchor": "the PP's intended policy is to divest the state's holding) It could also create uncertainty around board and management.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TEF"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Deutsche Telekom targeted \u20ac1.1bn of gross AI-driven savings by 2027 and \u20ac2.5bn by 2030, alongside more than \u20ac1bn of AI-enabled revenue led by B2B and sovereign AI.",
+   "anchor": "targeting \u20ac1.1bn of gross savings by 2027 and \u20ac2.5bn by 2030, alongside more than \u20ac1bn of AI-enabled revenue, led by B2B and sovereign AI.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Analysts at Deutsche Telekom's AI Capital Markets Day remained sceptical these AI benefits will translate into incremental earnings, as management did not raise guidance or commit to additional margin expansion.",
+   "anchor": "analysts remained that these benefits and whether they will translate into incremental earnings, as DT did not raise guidance or commit to additional margin expansion",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Deutsche Telekom management argued core telco capex should not structurally increase, with larger AI infrastructure projects potentially partnered.",
+   "anchor": "Management also argued that core telco capex should not structurally increase, with larger AI infrastructure projects potentially partnered.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Alphabet is nearing a $1bn+ nuclear power offtake agreement with Constellation.",
+   "anchor": "Alphabet nears $1bn+ nuclear offtake with Constellation.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Amazon signed a 20-year deal for 690MW of power from the Calvert Cliffs nuclear plant.",
+   "anchor": "Amazon recently signed a 20-year deal for 690MW from the Calvert Cliffs plant",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "20-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Microsoft has partnered with Constellation to restart Three Mile Island Unit 1.",
+   "anchor": "Microsoft has partnered with Constellation to restart Three Mile Island Unit 1.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "DeepSeek is close to securing at least $12bn in its latest funding round ahead of a planned IPO in early 2027.",
+   "anchor": "close to securing at least $12bn in its latest round of funding ahead of a landmark initial public offering in early 2027",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "early 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Moonshot AI completed a private funding round at a valuation of about $50bn and is preparing a potential Hong Kong IPO in 1Q27.",
+   "anchor": "completed a private funding round at a valuation of about $50bn and is preparing for a potential Hong Kong IPO in 1Q27 that could raise",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "1Q27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "TikTok is launching an AI shopping assistant and a new in-app checkout feature letting users buy directly from brands.",
+   "anchor": "launching an AI shopping assistant and a new in-app checkout feature that lets users buy directly from brands.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Meta and Microsoft are cutting back internal use of Anthropic's Claude AI to curb costs and transition staff toward their own in-house AI infrastructure.",
+   "anchor": "Meta and Microsoft are actively cutting back their internal usage of Anthropic's Claude AI to curb operating costs and transition staff toward their own",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "META",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "OpenAI is in talks for a $30 billion funding round with UAE funds and BlackRock.",
+   "anchor": "OpenAI in $30 Billion Round Talks With UAE Funds, BlackRock.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Norway plans a temporary ban on AI glasses in selected public places amid privacy concerns.",
+   "anchor": "Norway plans a temporary ban on AI glasses in selected public places amid concerns",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR raised its SpaceX AI segment forecasts across capacity, revenue and margins ahead of Q3 2026 results, citing company deal activity and enterprise use cases.",
+   "anchor": "we take the opportunity to refresh and raise our AI segment forecasts (across capacity, revenue & margins) on the back of company deal activity",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26-28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "GIR believes its SpaceX AI segment estimates still look relatively conservative versus Street estimates over the next 6-18 months absent a correction in the AI operating landscape.",
+   "anchor": "believe that AI segment estimates still look relatively conservative (relative to Street estimates) over the next 6-18 months absent a correction",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "6-18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Samsung is set to increase next year's supply price for HBM4 more than three times the price of HBM3E.",
+   "anchor": "Set to increase next year's supply price for HBM4 more than three times the price of HBM3E.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Samsung Foundry has begun mass production of the Exynos 2700 applications processor for the Galaxy S27, with volume about 10% higher than its predecessor.",
+   "anchor": "Samsung Foundry has reportedly begun the mass production of the Exynos 2700, the application processor for its Galaxy S27 smartphone series",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "AMD CEO Lisa Su is visiting South Korea for the second time in seven months to expand AI partnerships with Korean firms.",
+   "anchor": "Lisa Su, the Chair and CEO of AMD, is visiting S. Korea to expand AMD\u2019s AI partnerships, marking her second trip in seven months",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Hon Hai reportedly posted September sales exceeding TWD$1tr, a first for a Taiwanese company, driven by AI and iPhone momentum.",
+   "anchor": "Reportedly released September sales exceeding TWD$1tr, a first for a company in Taiwan, driven by AI and iPhone momentum",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Hon Hai's September sales brought its Q3 sales to 107% of the consensus estimate.",
+   "anchor": "this also brings Q3 sales to 107% of the consensus estimate.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Netflix shares are down 10% since its last earnings report on 7/16, versus the S&P 500's +3%, reflecting investor scrutiny of engagement metrics.",
+   "anchor": "shares are down (10)% (vs. the S&P 500 +3%) reflecting increasing investor scrutiny around NFLX's engagement metrics",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since Jul 16"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Investors increasingly believe Netflix needs materially higher 2027-and-beyond content spend or an IP-driven acquisition to create competitive differentiation.",
+   "anchor": "a materially higher level of cash content spend in 2027 and beyond is needed for the business to create competitive differentiation",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027 and beyond"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "C.H. Robinson announced a deal to acquire RXO for $5.8bn.",
+   "anchor": "C.H Robinson announced a deal to acquire RXO for $5.8bn",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "CHRW",
+    "RXO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "An FT headline reported McKesson and CD&R were near a $5bn-plus deal to buy an infusion services provider, sending OPCH up 20% after hours.",
+   "anchor": "McKesson and CD&R near $5bn-plus deal to buy infusion services provider\u2019. OPCH +20% AH.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "MCK",
+    "OPCH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "US equities moved higher on light volumes, with the Nasdaq 100 reaching a record close and the S&P 500 ending within 0.5% of its peak.",
+   "anchor": "US equities moved higher on light volumes, with the Nasdaq 100 reaching a record close and the S&P 500 ending within 0.5% of its peak.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Software led gains, supported by Schneider's $22.6bn PTC deal and strength in e-commerce and cybersecurity.",
+   "anchor": "Software led, supported by Schneider\u2019s $22.6bn PTC deal and strength in e-commerce and cybersecurity",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "Semis lagged despite gains in Nvidia and Broadcom.",
+   "anchor": "semis lagged despite gains in Nvidia and Broadcom",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES Informa deal; TSMC GIR raising capex again; SPA preview; DT CMD; TEF questions; BT debate 6 Oct 2026",
+   "claim": "HDD names rebounded, but neocloud stocks and Intel fell.",
+   "anchor": "HDD names rebounded, but neocloud stocks and Intel fell.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/19033__gs-tmt-spec-sales-informa-deal-tsmc-gir-raising-capex-again-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 62,
+  "matched": 62,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 33,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
