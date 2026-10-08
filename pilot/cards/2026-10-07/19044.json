@@ -1,0 +1,551 @@
+{
+ "brief": "Ahead of SpaceX's Q3'26 print, Goldman Sachs refreshes its AI segment forecasts on the back of new hosting deals, public disclosures and model progress, raising AI segment revenue estimates to ~$27.3bn (FY26), ~$90.4bn (FY27) and ~$146.7bn (FY28), reiterating Buy and raising its price target to $230 from $220. The raise rests on two legs: compute capacity (visibility to ~2.4GW by YE26, ~7.0GW by YE27, ~10.6GW by YE28, driven by power/cooling, datacenter shells and GPU supply) and monetization (short-term hosting deals at ~$40-50bn+/GW, long-term floor ~$20bn/GW), which together imply current Street estimates are under-modeled and could see 9-31% upside through FY28. Orbital compute stays out of estimates through YE28, scaling only from 2029. Supporting context: Starship's Flight 14 succeeded, management announced a $100bn Starbase LA facility, and consumer metrics are mixed (Starlink MAU growth decelerated to 21% YoY from 63% in Q2, while X and Grok app growth inflected positive). Key risks flagged: governance concentration in the Founder/CEO, and AI segment reliance on unproven orbital datacenter technology.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs reiterates its Buy rating on SpaceX and raises its 12-month price target to $230 from $220.",
+   "anchor": "We reiterate our Buy rating and raise our 12-month price target from $220 to $230 for \nSpaceX shares.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs now forecasts SpaceX AI segment revenues of approximately $27.3 billion in FY26, $90.4 billion in FY27 and $146.7 billion in FY28.",
+   "anchor": "and now forecast AI segment revenues of ~$27.3bn in FY26, \n~$90.4bn in FY27 and ~$146.7bn in FY28.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY26-FY28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs estimates SpaceX reaches approximately 1.8 gigawatts of terrestrial compute capacity by the end of Q3'26.",
+   "anchor": "We estimate SpaceX reaches ~1.8GWs by end of Q3\u201926. Management recently",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "SpaceX management disclosed that, as of late September, the company had approximately 1.0 million total Nvidia GPUs operational across its COLOSSUS I and II datacenters.",
+   "anchor": "disclosed that, as of late September, the company had ~1.0mm total NVDA GPUs \ncurrently operational across its COLOSSUS I & II datacenters.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs has increased visibility into SpaceX scaling to at least approximately 2.3 gigawatts of compute capacity by YE2026.",
+   "anchor": "Increased visibility into scaling to at least ~2.3GWs by YE2026, with potential",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YE2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs' estimate lands at approximately 2.4 gigawatts of compute capacity for SpaceX by YE2026.",
+   "anchor": "land between these two outcomes (GSe ~2.4GWs by YE2026).",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YE2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs's estimates imply SpaceX reaches terrestrial compute capacity of approximately 7.0 gigawatts by YE27 and 10.6 gigawatts by YE28.",
+   "anchor": "estimates imply SPCX reaching terrestrial compute capacity of ~7.0GWs by YE27 and \n~10.6GWs by YE28.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YE27-YE28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "SpaceX management announced plans to invest $100 billion into a new launch facility, Starbase LA, on the Louisiana Gulf Coast.",
+   "anchor": "Launch infrastructure. Management announced plans to invest $100bn into a new",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Starship Flight 14, which launched on 9/28, was largely successful and achieved several significant milestones.",
+   "anchor": "Starship. In our view, Flight 14, which launched on 9/28 (link), was largely successful",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "The planned Starbase LA launch site is expected to include five launch complexes, each with two launch pads.",
+   "anchor": "it is expected to include five launch complexes, each with two launch",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2029+"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs expects SpaceX to scale the number of launch pads across all sites to 10 or more by 2029.",
+   "anchor": "expect for SpaceX to scale the number of launch pads to 10+ by \n2029.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Starlink monthly active users grew 21% year-over-year.",
+   "anchor": "Starlink MAUs grew +21% YoY. Despite the solid double digit growth - we would",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Starlink monthly active user growth decelerated relative to Q2, when it grew 63% year-over-year.",
+   "anchor": "note that growth has decelerated relative to Q2, where MAUs grew +63% YoY.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Starlink app download growth accelerated from 31% year-over-year in July to 59% in September.",
+   "anchor": "September, app download growth (on a YoY basis) accelerated from 31% in July to \n59% in September.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "July-September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "X app monthly active user growth inflected into positive territory for the first time in the last 18 or more months.",
+   "anchor": "X app MAU growth inflected into positive territory for the first time in the last",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Grok AI's standalone app user growth outpaced X's during the quarter.",
+   "anchor": "Grok AI (standalone) app users grew at an even faster rate vs. X.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Short-term, 3-6 month SpaceX compute hosting deals are pricing at approximately $40-50 billion or more per gigawatt.",
+   "anchor": "Short-term (~3-6 months) hosting deals pricing at ~$40-50bn+/GW - SpaceX has",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3-6 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Longer-term SpaceX compute hosting deals are pricing at a floor of approximately $20 billion per gigawatt, with upside.",
+   "anchor": "Longer-term hosting deals pricing at floor of ~$20bn/GW (with upside) \u2013",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs estimates SpaceX is on track to reach an annualized AI segment revenue run rate of approximately $62.7 billion by the end of the year.",
+   "anchor": "SPCX is on track to reach an annualized revenue run rate of ~$62.7bn for their AI \nsegment",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs expects SpaceX's IaaS hosting business to generate approximately $40-45 billion of annual revenues in FY2027-28.",
+   "anchor": "we expect this \u201cIaaS\u201d/hosting business to generate ~$40-45bn of annual \nrevenues in FY2027-28 (the primary driver of our raised revenue estimates).",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2027-28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs sees potential for sizable upside to current consensus AI segment revenue estimates for SpaceX over the next few years.",
+   "anchor": "we see the \npotential for sizable upside to current consensus AI segment revenue estimates \nover the next few years.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next few years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Current Street estimates imply SpaceX's non-hosting AI compute monetizes at approximately $8-13 billion per gigawatt in 2027 and 2028, significantly lower than current industry rates.",
+   "anchor": "Street \nestimates imply non-IaaS compute monetizes at ~$8-13bn/GW in 2027 & 2028 \n(significantly lower than current industry rates).",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "If SpaceX's hosting deals were cancelled, current estimates imply it would need to monetize the reallocated compute at approximately $18 billion per gigawatt in 2028.",
+   "anchor": "current estimates imply SpaceX would \nneed to monetize reallocated compute at ~$18bn/GW in 2028",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Assuming non-hosting compute monetizes at $20 billion per gigawatt implies approximately 31% and 9% upside to current FY2027 and FY2028 consensus estimates, respectively.",
+   "anchor": "this would imply \n~31% and ~9% upside to current FY2027 and FY2028 consensus estimates, respectively.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2027-FY2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs expects incremental orbital compute capacity to imply approximately 5 gigawatts in 2029 and approximately 19 gigawatts total in 2030.",
+   "anchor": "for incremental compute capacity to be driven by orbital compute scaling, which \nwould imply ~5GW of orbital compute in 2029 and ~19GW (total) in 2030.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2029-2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs continues to expect SpaceX's compute buildout to be 100% terrestrial through year-end 2028, with orbital compute beginning to scale in 2029 and beyond.",
+   "anchor": "year-end 2028, with orbital compute beginning to scale in 2029 & beyond.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "through YE2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "SpaceX management disclosed at a conference that it aims to deploy its first AI satellites by next year.",
+   "anchor": "Conference of aims to deploy first AI satellites by next year)",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Google's Project Suncatcher prototype satellite officially launched on SpaceX's Falcon 9 and reached orbit.",
+   "anchor": "Google\u2019s Project Suncatcher prototype satellite officially launching on SPCX\u2019s Falcon 9 \nand reaching orbit",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs applies a 9.5x EV/Sales multiple, unchanged, to its 2029 Space segment revenue estimate for SpaceX.",
+   "anchor": "Space: 9.5x EV/Sales (unchanged) applied to our 2029 Space segment revenue",
+   "topic": "SpaceX AI segment outlook",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs applies a 24.0x EV/EBIT multiple, unchanged, to its 2029 Connectivity segment GAAP EBIT estimate for SpaceX.",
+   "anchor": "Connectivity: 24.0x EV/EBIT (unchanged) applied to our 2029 Connectivity",
+   "topic": "SpaceX AI segment outlook",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs applies a 28.0x EV/EBIT multiple, unchanged, to its 2029 AI segment GAAP EBIT estimate for SpaceX.",
+   "anchor": "Artificial Intelligence (AI): 28.0x EV/EBIT (unchanged) applied to our 2029 AI",
+   "topic": "SpaceX AI segment outlook",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "A key risk to SpaceX is governance risk from majority voting power and execution risk.",
+   "anchor": "Governance risks (majority voting power & significant execution risk",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "A key risk to SpaceX's AI segment is reliance on orbital satellite-based datacenter compute, an unproven technology with significant execution risk.",
+   "anchor": "datacenter compute, an unproven technology with a significant degree of execution \nrisk",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Goldman Sachs assumes SpaceX's Starmind power capacity is approximately 150 kilowatts.",
+   "anchor": "supporting launches, we assume that Starmind power capacity is ~150kW.",
+   "topic": "SpaceX AI segment outlook",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Space Exploration Technologies Corp. (SPCX) Q3'26 Preview",
+   "claim": "Elon Musk noted that Starmind super intelligence spacecraft could have 250 kilowatts or more of solar power.",
+   "anchor": "Musk recently noted (on X) that Starmind super intelligence spacecrafts could have \n250kW+ of solar power",
+   "topic": "SpaceX AI segment outlook",
+   "status": "released",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/19044__space-exploration-technologies-corp-spcx-q3-26-preview-frami.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 35,
+  "matched": 35,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
