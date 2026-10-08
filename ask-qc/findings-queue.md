@@ -747,3 +747,20 @@ The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full 
 
 ### 14:50:03 UTC, 2Pale, "give me tickers" (shorts for freight-cost victims)
 - Bucket: judgment, mechanical fix available. Answer named GMS (acquired by Home Depot's SRS, 2025) and BECN (acquired by QXO, delisted 2025-04-29). The asker caught GMS in the next turn, and the 14:51 reply did not withdraw it or check BECN. `validate_answer.py` returned no violation (aiohttp missing in the runner). Third occurrence of the "which stocks" family after MPLN (2026-09-30) and the box-office/Mac mini statistics. Structural fix for a session: in any answer that names tickers as picks, run each through `lookup_market_price` or the ticker snapshot and drop or flag one that returns not_found or a stale quote date.
+
+## 2026-10-07
+
+### 03:13:51 UTC, BK, ACT follow-up ("caught googling answers on my phone")
+- Bucket: judgment. Ungrounded answer states "bans you from ever testing again" and "flags the incident" to schools as the standard outcome. Web sources say a ban is rare and severe-case only. A LOCAL/BANTER route answered a factual consequence question from memory with no grounding.
+
+### 03:15:08 UTC, BK, reply to Brenda joke
+- Bucket: judgment. A crude joke reply was routed LOCAL/FACT and answered with a Sleeper matchup summary unrelated to the message (BK: "bro wtf is this"). Router/intent miss: a fantasy-channel reply to a banter line should not trigger `lookup_fantasy_league`.
+
+### 13:46:59 UTC, BK, "remind me to ping Wock in 2 hours and 13 minutes"
+- Bucket: predates-class. Answer claimed "stopwatch is running. lunch-time index report locked in." `action_claims.py` deployed 2026-10-08T12:14 -07:00, after this turn. Validator CLI could not run (aiohttp missing in the runner), so replay against the new class is unverified here.
+
+### 16:35:41 UTC, BK, "you never sent me a reminder"
+- Bucket: predates-class. Answer: "consider wock officially pinged." Invented excuse and a false action claim. Same deploy gap as 13:46. Candidate check for the new class: a follow-up complaint about a missing reminder must not be answered with a claim that something was sent.
+
+### 22:12:45 UTC, BK, "how is stinky dill pickle's team doing in our league"
+- Bucket: judgment. Two chat searches found no tie between the nickname and a member; the answer picked 2Pale and gave his record as fact. BK corrected next turn. Should say it cannot match the name and ask, or list teams.

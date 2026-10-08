@@ -1195,3 +1195,13 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Omnipulse fell back to classic again (no shadow file after 600s).
 - **observation** — Per STEP 7, Spanish snap election, French presidential election and BOJ never appear. Counts not independently re-derived. Single-PDF compilations inflate bank counts.
 - **observation** — Meta $628B figure traces to a ZeroHedge summary of Needham, shipped as "(Needham)".
+
+## 2026-10-08
+- **prompt-session** — Brief 1 ("10-year is stuck at 5.3%") calls the 10-year and 30-year auctions "coming"; the 10-year auction already happened (dump news: CNBC 10:11 EDT, "after strong sales of 10-y"), and WATCH says "No major catalysts still to come today" while the 30-year auction is that afternoon. EDIT should re-check auction/event timing against the news and calendar.
+- **deterministic-fixable** — Adjudication validator discarded 2 of 4 themes with "falsifiable_prediction bank not in inputs: 'Goldman Sachs'" although Goldman is in the coverage block's banks for the hyperscaler theme (per STEP 7). Compare the validator's input source set with theme_stances banks.
+- **deterministic-fixable** — `driver/2026-10-06T14-08-09Z.json` still missing, and the driver trail is again a condensed summary. Adversarial verdict is `findings: []` although one soft repair was spent, so the pre-repair findings are not preserved.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 16:20 EDT, 6h after the pulse, so RECAP live figures are unauditable (fourth day running).
+- **deterministic-fixable** — TRADE BOARD renders `$AVBP · Neutral · Down 46% on a clinical miss`, a price move with no desk trade. `render_trade_board` should require an actionable call (buy/sell/long/short or a stated PT change), not negative_catalyst_watch.
+- **prompt-session** — Gold brief headline "Central banks keep a floor under gold" with a $4,070 figure that is Goldman's downside scenario; `_LEANS` labels it a floor. WATCH lists $UNH under "big-bank earnings".
+- **observation** — Omnipulse fell back to classic again (no pilot-data file after 600s plus backup route).
+- **observation** — Waller's "more hikes needed" (in dump news) is absent from the RECAP; France and the Hormuz/Fed-odds near-miss clusters were not themes (per STEP 7).
