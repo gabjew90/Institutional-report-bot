@@ -1,0 +1,477 @@
+{
+ "brief": "Goldman's TMT morning wrap for Oct 6, 2026. Mostly reports a risk-on backdrop rather than arguing one: Nasdaq futures +60bps to new highs, global bond yields easing (US 10yr -3bps to 5.27%), WTI -2% to $87, Le Pen's deficit-reduction proposal lifting French sentiment, Bessent saying the US can bend the debt curve quickly, and Yemen/Saudi Middle East supply developments. In TMT: Alphabet signed a 20-year, 890MW nuclear deal with Constellation Energy ($4.3bn build-out); Seagate and Toshiba are bidding for TDK's hard-drive-head unit; AMD's Su says chip demand stays very high for years and is outpacing supply, reaffirming a $10bn Taiwan investment; NVDA nears $6T market cap after its buyback; Pinterest hired an Amazon veteran as CFO. Three embedded research pieces do argue: GS raises SPCX's AI-segment forecasts and $230 target, calling its estimates still conservative versus Street; GS frames NFLX's selloff as reversible on new hit content, modeling content spend growing slower than revenue while advertising gains momentum; GS reiterates TSMC Buy (TP NT$3,300), raising 2027-28E capex to $85bn/$98bn on broadening AI demand, and separately downgrades GNTX while preferring Industrial Tech over Autos into 3Q26.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Alphabet agreed to a 20-year deal to buy 890 megawatts of new nuclear power from Constellation Energy for its data centers.",
+   "anchor": "a 20-year deal to buy nuclear power from Constellation Energy Corp.",
+   "topic": "AI investment boom and bubble risk",
+   "status": "released",
+   "instruments": [
+    "GOOGL",
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "20 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Constellation Energy will spend more than $4.3 billion building out the new nuclear capacity for its deal with Alphabet.",
+   "anchor": "Constellation will spend more than $4.3 billion on the build out.",
+   "topic": "AI investment boom and bubble risk",
+   "status": "forecast",
+   "instruments": [
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "AMD CEO Lisa Su said chip demand will stay very high for the next few years, with demand currently outpacing AMD's supply.",
+   "anchor": "predicted \u201cvery high\u201d chip demand continuing for the next few years",
+   "topic": "AI investment boom and bubble risk",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next few years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "AMD reiterated it will invest more than $10 billion in Taiwan to meet rising chip demand.",
+   "anchor": "AMD will invest more than $10 billion in Taiwan to address rising demand.",
+   "topic": "AI investment boom and bubble risk",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "NVDA is approaching a $6 trillion market cap, up five of the last six sessions since announcing a new $150 billion buyback, and up 1% this morning.",
+   "anchor": "NVDA approaching $6T market cap (up 5 of 6 sessions since the new $150bn buyback announcement, +1% this morning)",
+   "topic": "AI investment boom and bubble risk",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs reiterated its Buy rating on TSMC and raised its price target to NT$3,300 ahead of 3Q26 earnings.",
+   "anchor": "reiterate Buy; TP up to NT$3,300",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "target",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs forecasts TSMC revenue will grow 42.0% in 2026 and 36.9% in 2027 year over year in USD terms.",
+   "anchor": "forecast 2026E/2027E revenue growth of 42.0%/36.9% YoY (USD terms)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs raised its TSMC capex forecasts to $85 billion for 2027 and $98 billion for 2028, up from $78 billion and $82 billion previously.",
+   "anchor": "raise our 2027E/2028E CapEx forecasts to US$85bn/US$98bn (vs. US$78bn/US$82bn previously)",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs expects TSMC's 3Q26 revenue to grow 15.3% quarter over quarter, followed by a further 11.0% quarter-over-quarter rise in 4Q26.",
+   "anchor": "expect TSMC\u2019s 3Q26E revenue to grow 15.3% QoQ, followed by a further 11.0% QoQ increase in 4Q26E",
+   "topic": "Semiconductor 3Q earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q-4Q 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs raised its price target on SPCX to $230 in a bullish preview as the stock broke out to post-IPO highs.",
+   "anchor": "GS Research out with bullish preview, raising target to $230",
+   "topic": "SpaceX AI segment outlook",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs raised its SPCX AI segment forecasts across capacity, revenue and margins on company deal activity, public statements and enterprise use-case progress.",
+   "anchor": "we take the opportunity to refresh and raise our AI segment forecasts (across capacity, revenue & margins) on the back of company deal activity",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26-28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs believes its SPCX AI segment estimates still look relatively conservative versus Street estimates over the next 6-18 months absent a broader AI correction.",
+   "anchor": "AI segment estimates still look relatively conservative (relative to Street estimates) over the next 6-18 months",
+   "topic": "SpaceX AI segment outlook",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "6-18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Netflix shares are down 10% since its last earnings report on July 16, compared with the S&P 500's 3% gain over the same period.",
+   "anchor": "shares are down (10)% (vs. the S&P 500 +3%) reflecting increasing investor scrutiny",
+   "topic": "Netflix Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since 7/16 earnings"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs still models Netflix's cash content expense growing slower than its revenue growth.",
+   "anchor": "we still model cash content expense to grow slower than revenue growth",
+   "topic": "Netflix Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs' digital advertising analysis keeps it very positive on Netflix's advertising revenue gaining operating and competitive momentum.",
+   "anchor": "our digital advertising work keeps us very positive that NFLX\u2019s advertising revenue",
+   "topic": "Netflix Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs says content success, such as a new hit series or movie, could reverse Netflix's stock underperformance in short order.",
+   "anchor": "could reverse the stock performance in short order",
+   "topic": "Netflix Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "NFLX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "short order"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "France's Marine Le Pen, currently leading in polls ahead of next year's election, proposed a sharp deficit reduction that helped sentiment in the region.",
+   "anchor": "Marine Le Pen (currently leading in polls ahead of next year\u2019s election) proposed a sharp deficit reduction helping sentiment in the region",
+   "topic": "France fiscal and political risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "ahead of next year's election"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "US equity futures were bid up again, with Nasdaq futures +60bps and S&P futures +40bps, as the Nasdaq continued breaking out to new all-time highs.",
+   "anchor": "Futures bid up again (Nasd +60bps, S&P +40bps) as Nasdaq continues to break out to new ATHs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "The US 10-year Treasury yield eased 3 basis points to 5.27% as part of a broader easing in global bond yields.",
+   "anchor": "Global bond yields are easing (US 10Yr -3bps to 5.27%)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "WTI crude retreated 2% to $87 a barrel.",
+   "anchor": "a retreat in Crude (WTI -2% to $87)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "US Treasury Secretary Bessent said the US can bend the debt curve very quickly.",
+   "anchor": "Bessent said the US can \u201cvery quickly\u201d bend the US debt curve",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Yemen recaptured critical territory from the Houthis near the Bab el-Mandeb Strait.",
+   "anchor": "Yemen recaptured critical territory from the Houthis near the Bab el-Mandeb Straight",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Saudi Arabia confirmed its East-West pipeline is flowing at 5.8 million barrels per day.",
+   "anchor": "Saudi confirmed its East-West pipeline is flowing at 5.8mbd",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Seagate and Western Digital shares fell about 2% on renewed hard-drive competition concerns tied to Toshiba.",
+   "anchor": "STX and WDC -2% on further competition concerns with Toshiba",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "STX",
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "The Seagate-Toshiba contest for TDK's hard-drive magnetic-heads business is expected to be worth as much as several billion dollars.",
+   "anchor": "The acquisition is expected to be worth as much as several billion dollars, according to the people",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "TDK is the only independent maker of hard-disk-drive magnetic-recording heads and supplies both Seagate and Toshiba as well as Western Digital.",
+   "anchor": "TDK is the only independent maker of HDD magnetic-recording heads",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "WDC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Pinterest appointed Amazon veteran James Dibbo as CFO, effective October 26, reporting to CEO Bill Ready.",
+   "anchor": "Dibbo will join the search-and-discovery company as chief financial officer on Oct. 26 and report to Chief Executive Officer Bill Ready",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "PINS"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs downgraded Gentex and expects Auto sector 3Q26 results and guidance to come in line to below Street estimates on average.",
+   "anchor": "Expect Auto results and guidance to be in line to below the Street on average, and we downgrade GNTX",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "GNTX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "Goldman Sachs is more positive on Industrial Tech than Autos heading into 3Q26, noting Industrial Tech stocks are up 9% at the median since 2Q26 results and up 30% YTD.",
+   "anchor": "Industrial Tech stocks up 9% at the median since reporting 2Q results and up 30% YTD at the median",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YTD / since 2Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "B Riley upgraded Skyworks Solutions to Buy.",
+   "anchor": "STREET ACTIONS: Upgrades: SWKS (Buy, B Riley)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SWKS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT TODAY 10.6.26",
+   "claim": "William Blair initiated coverage of Lattice Semiconductor with an Outperform rating.",
+   "anchor": "Upgrades: SWKS (Buy, B Riley) Initiations: LSCC (Outperform, William Blair)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "LSCC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-07/19034__gs-tmt-today-10-6-26.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 31,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 14,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
