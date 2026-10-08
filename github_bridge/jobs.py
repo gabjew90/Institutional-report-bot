@@ -160,6 +160,19 @@ def _dump_context_job_inner() -> None:
         cutoff, window_label = _compute_window_cutoff()
 
         rows = db.get_analyses_since(cutoff)
+        no_new_research = False
+        if not rows and _before_scheduled_pulse(datetime.utcnow()):
+            # No research in the window, but the pulse is coming: still
+            # dump, so its prices, news and calendar are current. On
+            # 2026-10-06 the last dump was at 4:34 AM ET and the 10 AM
+            # pulse quoted those prices and called Monday's ISM print
+            # "not in hand yet". The research is the last 96 hours'
+            # and the context says none of it is new.
+            from datetime import timedelta as _td
+            cutoff = (datetime.utcnow() - _td(hours=96)).isoformat()
+            window_label = "no new research: last 96h, live data refreshed"
+            rows = db.get_analyses_since(cutoff)
+            no_new_research = True
         if not rows:
             log.info(f"Bridge: no analyses since {cutoff[:16]} — skipping context dump")
             return
@@ -182,6 +195,7 @@ def _dump_context_job_inner() -> None:
         ctx["dumped_at_utc"] = datetime.utcnow().isoformat() + "Z"
         ctx["window_cutoff"] = cutoff
         ctx["window_label"] = window_label
+        ctx["no_new_research"] = no_new_research
         # Market-holiday stamp (2026-07-02: the scheduled pulse fires on
         # market-open days only). The routine's STEP 2 reads this and
         # exits with a skip marker on a full NYSE closure. Name string
@@ -1346,3 +1360,12 @@ def publish_web_fragment_job() -> None:
             f"Bridge: web publish — {new_fragments} new fragments, "
             f"{len(archive_entries)} archive entries"
         )
+
+
+def _before_scheduled_pulse(now_utc) -> bool:
+    """Weekdays from 11:00 to 15:30 UTC: the hours before the routine's
+    14:00 UTC run, in summer and in winter, plus its own read time."""
+    if now_utc.weekday() >= 5:
+        return False
+    minutes = now_utc.hour * 60 + now_utc.minute
+    return 11 * 60 <= minutes <= 15 * 60 + 30
