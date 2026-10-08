@@ -1,0 +1,74 @@
+{
+  "pulse_date": "2026-10-08",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai infrastructure spending",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 3
+      },
+      "consensus_view": "Goldman Sachs is the only desk staking a view and it is positive: AI infrastructure spending is driving over half of S&P 500 profit growth this quarter, and no desk in the evidence argues the other side.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs says AI infrastructure spending accounts for over half of S&P 500 earnings-per-share growth this quarter.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "beneficiaries of AI infrastructure spending accounting for over 50% of S&P 500 EPS growth",
+            "AI infrastructure spending accounting for over 50% of S&P 500 EPS growth this quarter"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs sees AI-linked leadership in stocks as justified by fundamentals.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "Constructive AI and think the leadership is justified by the fundamentals"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "central bank gold demand",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 2,
+        "skeptical": 0,
+        "neutral": 2
+      },
+      "consensus_view": "The two desks that took a position both say central banks moving reserves out of dollar assets and into gold is the main support for higher gold prices, and neither argues against it.",
+      "facts_agreed": [
+        {
+          "claim": "Both banks treat central bank diversification into gold as an ongoing structural driver of gold prices.",
+          "banks_for": [
+            "The Market Ear",
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "the case for further diversification into gold remains significant",
+            "Continued central bank diversification remains the main structural driver of our constructive gold view"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": [
+    {
+      "theme": "hyperscaler competitive advantage",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    },
+    {
+      "theme": "french bond market",
+      "reason": "falsifiable_prediction bank not in inputs or agency whitelist: 'Goldman Sachs'"
+    }
+  ]
+}
