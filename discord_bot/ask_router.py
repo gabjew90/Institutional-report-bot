@@ -751,15 +751,36 @@ _TECH_SHARE_RE = re.compile(
     rf"|{_TECH_WORD}[^?\n]{{0,20}}{_SHARE_WORD}[^?\n]{{0,20}}(?<!my\s)\b{_INDEX_RE}\b", re.I)
 
 
-def tech_share_note(question: str) -> str:
-    """The note for a "how much of the S&P is tech" question, or ''."""
-    if not _TECH_SHARE_RE.search(asker_text(question)):
+def is_tech_share_question(question: str) -> bool:
+    return bool(_TECH_SHARE_RE.search(asker_text(question)))
+
+
+def tech_share_note(question: str, data: dict | None = None) -> str:
+    """The note for a "how much of the S&P is tech" question, or ''.
+    `data` is report.index_weights.tech_share(): the figures computed in
+    code, which the answer quotes. Without it the answer searches."""
+    if not is_tech_share_question(question):
         return ""
+    if data:
+        adds = data["adds"]
+        parts = " + ".join(f"{n} {v}%" for n, v in adds.items())
+        return (
+            "TECH SHARE OF THE S&P 500, computed from SPY's latest holdings "
+            "(Yahoo). Authoritative: quote these figures, do not search for "
+            f"others. Broad tech: {data['broad']}% = tech sector "
+            f"{data['tech']}% + {parts} (Alphabet is both share classes). "
+            f"The tech sector alone: {data['tech']}%. Give the broad figure "
+            "first with the companies added, then the sector alone, and say "
+            "Alphabet and Meta are filed under communication services and "
+            "Amazon under consumer discretionary. Name SPY's latest "
+            "reported holdings as the source and give no date: Yahoo does "
+            "not say which day they are from.")
     return (
         "TECH SHARE OF THE S&P 500: give two figures, each from a search and "
         "dated. First the broad tech share: the Information Technology "
         "sector's weight plus Alphabet (both share classes), Meta and Amazon, "
-        "naming the companies added and saying the official sector scheme "
+        "each with its own weight, written as the sum so it adds up "
+        "(together the three are roughly 10 to 13 points), and saying the official sector scheme "
         "files them under Communication Services and Consumer Discretionary. "
         "Then the Information Technology sector's weight on its own.")
 

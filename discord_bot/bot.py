@@ -5464,7 +5464,22 @@ async def _ask_02_call_model_with_tools(
         _ask_meta["guards"].append("superlative")
     # "what % of the S&P is tech": the broad share and the IT sector, both
     # (ask_router.tech_share_note, owner 2026-10-10)
-    _tech_share = _ask_router.tech_share_note(question)
+    _tech_share = ""
+    if _ask_router.is_tech_share_question(question):
+        try:
+            from report.index_weights import tech_share as _tech_share_data
+            _ts = await asyncio.to_thread(_tech_share_data)
+        except Exception as e:
+            log.info(f"/ask: tech share data failed (non-fatal): {e}")
+            _ts = None
+        _tech_share = _ask_router.tech_share_note(question, _ts)
+        if _ts:
+            # a source like any tool payload: the grounding net must not
+            # discard the computed figures for a search-only retry
+            _ask_tool_trace.append({
+                "tool": "spy_holdings", "args": {}, "status": "ok",
+                "via": "prefetch", "result_chars": len(str(_ts)),
+                "figs": _trace_figs(_ts), "excerpt": _trace_excerpt(_ts)})
     if _tech_share:
         contents.append(types.Content(role="user",
                                       parts=[types.Part.from_text(text=_tech_share)]))
