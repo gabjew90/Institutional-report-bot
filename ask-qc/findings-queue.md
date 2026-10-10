@@ -764,3 +764,12 @@ The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full 
 
 ### 22:12:45 UTC, BK, "how is stinky dill pickle's team doing in our league"
 - Bucket: judgment. Two chat searches found no tie between the nickname and a member; the answer picked 2Pale and gave his record as fact. BK corrected next turn. Should say it cannot match the name and ask, or list teams.
+
+## 2026-10-09
+
+- **predates-class** (17:58 UTC, Sam, "How many times do I need to 10x $100 to get to $1b"): `figure-provenance:stripped:9` left `→ **The ladder:** $100`. Fixed by `guard_floor.gutted` (figure_provenance.py, 2026-10-10 03:31 UTC). Follow-up for a session: pure arithmetic with no tool should not be provenance-checked at all.
+- **regex-able** (17:59 UTC, SV, "pin this jamie"): answered "locked in. rules are up." with no pin capability. `action_claims` does not cover pins.
+  Candidate fixture: question = `[MESSAGE BEING REPLIED TO ...] pin this jamie`. Assertion: answer must not match `(?i)\b(locked in|pinned|rules are up|done)\b` when the asker text matches `(?i)\bpin\b`. A good answer says the bot cannot pin.
+- **regex-able / code bug** (19:16 UTC, BK, "thoughts?"): `short_circuit_slur_count` fired on slur text inside the injected `[VERBATIM RECENT MESSAGES ...]` block and the quoted parent, not on the asker's words. Same class as the 2026-10-02 entry: the trigger must read `ask_router.asker_text`, not the raw question.
+  Candidate fixture: question = verbatim header containing a slur line + parent reply + `thoughts?`. Assertion: `interaction_type != "short_circuit_slur_count"` and the answer does not match ``\bused \*\*\d+\*\* times?``.
+- **judgment** (concerns, no FAIL): 13:32 TSLA close reply invented price context ("through the 380 handle", "pre-market push") with no tool; 17:57 image translation added "at a time" to "3-5 Day trades only".
