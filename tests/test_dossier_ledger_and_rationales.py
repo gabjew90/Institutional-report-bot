@@ -178,3 +178,22 @@ def test_the_window_travels_with_the_numbers():
     # a summary from before the field existed still renders
     assert "documented 21d" in format_member_ledger_line(
         {"wins": 4, "losses": 1, "tickers": {"QQQ"}, "avg_gain_pct": None})
+
+
+def test_the_average_drops_gains_that_cannot_be_results():
+    """2026-10-09 audit: Monsoon's line read "0W/14L · avg +245% on closes"
+    because an APLD share close stored as +2009% and two closes below
+    -100% went into the average."""
+    import sqlite3
+    from db_parts import analyst as A
+    conn = sqlite3.connect(":memory:")
+    conn.execute("CREATE TABLE analyst_trades (author_id INTEGER, gain_pct REAL, "
+                 "contract_type TEXT, action TEXT, posted_at TEXT, ticker TEXT)")
+    for g, ct in [(2009.0, "stock"), (-600.0, "unclear"), (-107.0, "unclear"),
+                  (-45.0, "stock"), (-30.0, "unclear")]:
+        conn.execute("INSERT INTO analyst_trades VALUES (7, ?, ?, 'close', datetime('now'), 'APLD')",
+                     (g, ct))
+    with patch.object(A._db, "get_connection", return_value=conn):
+        s = A.member_ledger_summary(7, days=21, points={"entries_lost": 14})
+    assert s["avg_gain_pct"] == -37.5
+    assert "avg -38% on closes" in format_member_ledger_line(s)

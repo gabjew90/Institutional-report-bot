@@ -332,7 +332,12 @@ _CHAT_RE = re.compile(
     r"\b(?:who\s+said|what\s+did\s+\S+\s+say|room\s+(?:saying|think|consensus)|what(?:'s| is)\s+the\s+room"
     r"|(?:earlier|yesterday|last\s+week)\s+(?:someone|\S+)\s+(?:said|posted|called)"
     r"|quote\s+(?:from\s+)?(?:abe|kyle|bk|jamal|him|her|them|me|\w+'s)\b"
-    r"|messages?\s+(?:from|about)|how\s+many\s+(?:messages|times))\b", re.I)
+    r"|messages?\s+(?:from|about)|how\s+many\s+messages"
+    # "how many times" is the room's history only when someone said or
+    # posted something ("how many times do I need to 10x $100" is math,
+    # 2026-10-10 audit)
+    r"|how\s+many\s+times\b[^?\n]{0,60}\b(?:said|say|says|posted|post|typed|mentioned|used|called|asked))\b",
+    re.I)
 # "what did powell say" is a news question, not a room-history one; the
 # chat shape would strip Google and every market tool (2026-09-02 review).
 _PUBLIC_FIGURE_RE = re.compile(
@@ -601,7 +606,23 @@ _NEWS_RE = re.compile(
     # the intent classifier called them banter). Web on, FACT register.
     r"|(?:probability|odds|chances?)\s+(?:of|that|on|according)|according\s+to\s+(?:kalshi|polymarket|the\s+\w+)"
     r"|shares\s+outstanding|market\s+cap(?:italization)?\b|(?:shares?\s+|free\s+)float\b|float\s+(?:of|for)\s+\$?[A-Za-z]{1,5}\b"
-    r"|why\s+didn'?t\s+you\s+(?:tell|mention|flag|say)|(?:was|is)\s+there\s+(?:a|an)\s+\w+\s+(?:event|meeting|call|print)\s+today)\b", re.I)
+    r"|why\s+didn'?t\s+you\s+(?:tell|mention|flag|say)|(?:was|is)\s+there\s+(?:a|an)\s+\w+\s+(?:event|meeting|call|print)\s+today"
+    # Elections and votes are news (2026-10-10 audit: "How many votes did
+    # Hitler Mussolini win by today in Peru" went to banter with no search
+    # and was answered "zero"; he had won a mayoral race by 25 votes).
+    r"|how\s+many\s+votes|votes?\s+did\s+\S+|who\s+(?:won|wins|is\s+winning)\s+(?:the\s+)?"
+    r"(?:election|race|vote|primary|runoff|referendum|mayor\w*|governor\w*|senate|house\s+seat)"
+    r"|(?:election|runoff|primary|referendum)\s+results?"
+    r")\b", re.I)
+# A correction that states an event is checked, not argued from memory
+# (2026-10-10 audit: "Wrong. Hitler Mussolini won." got a second joke). A
+# correction about the asker ("nope you lost") or a named room member
+# ("nope abe lost that trade", see classify's names_member) is banter.
+_CORRECTION_RE = re.compile(
+    r"^(?:wrong|false|incorrect|nope|not\s+true|that'?s\s+(?:wrong|false|not\s+true)|fake(?:\s+news)?)\b"
+    r"(?![\s.,!]{0,4}(?:you|u|i|we|ur|your|my)\b)"
+    r"[^\n]{0,80}\b(?:won|wins|lost|elected|died|passed\s+away|resigned|signed|announced|happened"
+    r"|released|reported|confirmed)\b", re.I)
 # The room's own book, aggregated (2026-09-04): "what's everyone piled
 # into". Must be tested BEFORE the chat shape, whose `what's the room`
 # alternative otherwise claims it and searches chat text for ticker
@@ -709,6 +730,15 @@ def _last_line(question: str) -> str:
     return _straight(q)
 
 
+def asker_text(question: str) -> str:
+    """The asker's own typed words, without the reply parent or the quoted
+    member blocks. Every check that decides something from "what the asker
+    said" reads this (2026-10-10 audit: the slur-count shortcut scored a
+    quoted block of another member's messages, which held "how many
+    times" and a slur, and answered BK's "thoughts?" with a slur tally)."""
+    return _last_line(question)
+
+
 _CURLY = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"'})
 
 
@@ -718,7 +748,7 @@ def _straight(q: str) -> str:
 
 def classify(question: str, *, fantasy_enabled: bool = False,
              channel_name: str = "", asker_manager: str = "",
-             channel_id: int | None = None) -> Route:
+             channel_id: int | None = None, names_member: bool = False) -> Route:
     """Shape a question deterministically. Order matters: the more
     specific shape wins, and the ledger/chat shapes beat the data shapes
     when a member is named ("Abe's win rate on semi calls" is a ledger
@@ -838,6 +868,11 @@ def classify(question: str, *, fantasy_enabled: bool = False,
             if basket:
                 r.tickers = basket
                 r.prefetch = [(T_PRICE, {"symbols": basket}), (T_NEWS, {"symbol": basket[0]})]
+        return r
+    # `names_member`: the caller found a room member named in the asker's
+    # words, so the correction is about the room, not the news.
+    if _CORRECTION_RE.search(q) and not names_member:
+        r.shape, r.reason = NEWS_EVENT, "correction states an event"
         return r
     # Treasury auction results come from TreasuryDirect (2026-10-07: "how
     # did the 10-year auction go" two minutes after the close got no result

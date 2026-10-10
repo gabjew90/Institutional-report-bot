@@ -250,20 +250,81 @@ def _lines(answer: str) -> list[str]:
     # with an arrow or carries several. A prose answer with one arrow
     # (the ladder's hedge line) used to become a single "line" and be
     # stripped whole (2026-09-09).
-    if text.lstrip().startswith("→") or text.count("→") >= 2:
-        parts = re.split(r"(?=→)", text)
+    # Only an arrow that STARTS a line is a bullet. An arrow inside a line
+    # is the writer's connector ("$100 → $1,000 → $10,000"), and splitting
+    # on it checked each rung as a line of its own (2026-10-10 audit).
+    if re.search(r"(?m)^\s*→", text):
+        parts = re.split(r"(?m)(?=^\s*→)", text)
         return [p for p in parts if p.strip()]
     if "\n\n" in text:
         return [p for p in re.split(r"\n\s*\n", text) if p.strip()]
     return [p for p in re.split(r"(?<=[.!?])\s+", text) if p.strip()]
 
 
-def check(answer: str, evidence: str) -> Report:
+def _norm(f: Figure) -> float:
+    return f.value * _SCALE.get(f.unit, 1.0)
+
+
+def _from_asker(figs: list[Figure], missing_tokens: set, question: str) -> set:
+    """Unsourced tokens that are arithmetic on the asker's own numbers.
+
+    "How many times do I need to 10x $100 to get to $1b" is answered with
+    a ladder ($1,000, $10,000, ...) and a 10,000,000x multiplier that no
+    payload holds, because the model multiplied the asker's figures
+    (2026-10-10 audit). A product or quotient counts as sourced when one
+    operand is a figure the asker typed and the other is the asker's or
+    already accepted, so the chain climbs rung by rung. Only the asker's
+    numbers seed it: a figure built from two payload numbers proves
+    nothing, and a question without numbers adds none."""
+    seeds = []
+    for f in extract_figures(question or ""):
+        seeds.append(_norm(f))
+        if f.unit == "%":
+            seeds.append(f.value / 100.0)   # "5% of $20k" multiplies by 0.05
+    if not seeds:
+        return set()
+    accepted = seeds + [_norm(f) for f in figs if f.token not in missing_tokens]
+    pending = [f for f in figs if f.token in missing_tokens]
+    out: set = set()
+    grew = True
+    while grew:
+        grew = False
+        for f in pending:
+            if f.token in out:
+                continue
+            v = _norm(f)
+            hu = _half_unit(f.token) * _SCALE.get(f.unit, 1.0)
+            if any(_close(a * q, v, hu)
+                   or (q and _close(a / q, v, hu))
+                   or (a and _close(q / a, v, hu))
+                   for q in seeds for a in accepted):
+                out.add(f.token)
+                accepted.append(v)
+                grew = True
+    return out
+
+
+def _carries(line: str, token: str) -> bool:
+    """`token` written in `line` as a whole figure: "$1,000" is not inside
+    "$1,000,000,000" (2026-10-10 audit: the substring test dropped the line
+    holding the asker's own target because one rung was unsourced)."""
+    # A trailing comma or period is part of the number only when a digit
+    # follows it ("4.2B, up" still carries 4.2B); a comma before the token
+    # is a separator ("(119.88,116.56)"), a period before it is a decimal.
+    pat = r"(?<!\d)(?<!\d\.)" + re.escape(token) + r"(?!\d|[,.]\d)"
+    return re.search(pat, line) is not None
+
+
+def check(answer: str, evidence: str, question: str = "") -> Report:
     """Strip the lines that carry an unsourced figure. Total: any
-    internal failure returns the answer untouched with action=error."""
+    internal failure returns the answer untouched with action=error.
+    `question` is the asker's own words, the seed for arithmetic."""
     rep = Report(answer=answer or "")
     try:
         figs, missing = unsourced_figures(answer, evidence)
+        if missing and question:
+            ok = _from_asker(figs, {m.token for m in missing}, question)
+            missing = [m for m in missing if m.token not in ok]
         rep.figures, rep.unsourced = figs, missing
         if not missing:
             return rep
@@ -274,20 +335,27 @@ def check(answer: str, evidence: str) -> Report:
         for ln in lines:
             derived = _derived_in_line(ln, bad_tokens)
             derived_all |= derived
-            if any(tok in ln for tok in bad_tokens - derived):
+            if any(_carries(ln, tok) for tok in bad_tokens - derived):
                 drop.append(ln)
             else:
                 keep.append(ln)
         rep.unsourced = [m for m in missing
                          if m.token not in derived_all
-                         or any(m.token in d for d in drop)]
+                         or any(_carries(d, m.token) for d in drop)]
         if not drop:
             return rep
         if not keep:
             rep.action = "all-unsourced"
             return rep
         sep = "" if "→" in (answer or "") else ("\n\n" if "\n\n" in (answer or "") else " ")
-        rep.answer = sep.join(k.rstrip() + ("\n\n" if sep == "" else "") for k in keep).strip()
+        trimmed = sep.join(k.rstrip() + ("\n\n" if sep == "" else "") for k in keep).strip()
+        # Never gut an answer: a strip that would leave a stub ships the
+        # answer with the hedge instead, as when every line is unsourced.
+        from discord_bot.guard_floor import gutted
+        if gutted(answer, trimmed):
+            rep.action = "all-unsourced"
+            return rep
+        rep.answer = trimmed
         rep.stripped_lines = [d.strip() for d in drop]
         rep.action = "stripped"
         return rep

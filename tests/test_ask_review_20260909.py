@@ -95,7 +95,7 @@ def test_a_hedged_prose_answer_keeps_its_sourced_sentences():
     assert "46.7B" in rep.answer and "41.1B" in rep.answer and "54B" not in rep.answer
     src = B._ask_pipeline_source()
     assert "_fp_hedged = answer.endswith(_UNVERIFIED_HEDGE)" in src
-    assert "_rep = _fp.check(_fp_body, _ev)" in src
+    assert "_rep = _fp.check(_fp_body, _ev, _fp_asker(question))" in src
 
 
 # --- finding 6: dossiers and the model's own words are not evidence ----

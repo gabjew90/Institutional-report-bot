@@ -294,3 +294,20 @@ def test_two_concurrent_posts_of_one_date_send_once():
         [t.start() for t in ts]; [t.join() for t in ts]
     assert sorted(r is None for r in res) == [False, True]
     assert calls.count(X.X_POST_URL) == 1
+
+
+def test_an_empty_calendar_is_not_posted_to_x():
+    """Owner, 2026-10-10: Monday 10/12 (Columbus Day) went to X as a
+    caption with nothing under it. Discord still gets the sheet."""
+    from types import SimpleNamespace
+    from unittest.mock import patch
+    from report import x_client as X
+    empty = SimpleNamespace(bmo=[], amc=[], econ=[])
+    with patch.object(X, "post_image") as post:
+        assert X.post_calendar("2026-10-12", empty, b"png") is None
+        post.assert_not_called()
+    busy = SimpleNamespace(bmo=[object()], amc=[], econ=[])
+    with patch.object(X, "post_image", return_value="123") as post, \
+            patch("report.calendar_caption.calendar_caption", return_value="cap"):
+        assert X.post_calendar("2026-10-09", busy, b"png") == "123"
+        post.assert_called_once()

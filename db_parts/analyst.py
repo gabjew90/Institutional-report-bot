@@ -988,6 +988,29 @@ def member_recent_tickers(author_id: int, days: int = 21) -> set[str]:
     return {r[0] for r in rows if r[0]}
 
 
+def plausible_gain(gain, contract_type=None) -> float | None:
+    """A logged gain that can be a real result, else None.
+
+    Below -100% is impossible for a long position. A share position does
+    not gain more than +300% inside the few weeks this ledger covers:
+    those rows are a dollar profit read as a percent (2026-10-09 audit:
+    Monsoon's APLD share close stored as +2009% printed his record as
+    "0W/14L · avg +245% on closes"). Only a row logged as a call or put
+    keeps a larger gain, since a same-day lotto can return 20x; rows the
+    extractor could not type ("unclear", blank) are mostly share posts."""
+    if gain is None:
+        return None
+    try:
+        g = float(gain)
+    except (TypeError, ValueError):
+        return None
+    if g < -100:
+        return None
+    if (contract_type or "").lower() not in ("call", "put") and g > 300:
+        return None
+    return g
+
+
 def member_ledger_summary(author_id: int, days: int = 21,
                           points: dict | None = None) -> dict:
     """{wins, losses, tickers, avg_gain_pct} for one member's logged trades.
@@ -1002,14 +1025,15 @@ def member_ledger_summary(author_id: int, days: int = 21,
     """
     pts = points if points is not None else (
         compute_member_points(int(author_id), days=days) or {})
-    row = _db.get_connection().execute(
-        "SELECT AVG(gain_pct) FROM analyst_trades "
+    rows = _db.get_connection().execute(
+        "SELECT gain_pct, contract_type FROM analyst_trades "
         "WHERE author_id = ? AND gain_pct IS NOT NULL AND gain_pct != 0 "
         "  AND LOWER(action) IN ('close', 'trim') "
         "  AND posted_at >= datetime('now', ?)",
         (int(author_id), f"-{int(days)} day"),
-    ).fetchone()
-    avg = row[0] if row and row[0] is not None else None
+    ).fetchall()
+    gains = [g for g in (plausible_gain(r[0], r[1]) for r in rows) if g is not None]
+    avg = sum(gains) / len(gains) if gains else None
     return {
         "wins": int(pts.get("entries_won") or 0)
         + int(pts.get("screenshot_wins") or 0),

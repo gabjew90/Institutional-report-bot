@@ -709,3 +709,21 @@ def test_a_chat_count_question_searches_before_the_first_call():
 def test_an_apostrophe_is_not_a_quote():
     assert R._quoted_term("how many times did Abe's crew say 'slam'") == "slam"
     assert R._quoted_term('did he type "send it" today') == "send it"
+
+
+def test_election_and_correction_questions_are_news_2026_10_10():
+    """"How many votes did Hitler Mussolini win by today in Peru" went to
+    banter with no search and was answered "zero"; he had won. The asker's
+    "Wrong. Hitler Mussolini won." then got a second joke."""
+    assert R.classify("How many votes did Hitler Mussolini win by today in Peru").shape == R.NEWS_EVENT
+    assert R.classify("who won the election in argentina").shape == R.NEWS_EVENT
+    q = ('[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n"zero, unless"\n\n'
+         "[Sam's message to you]\nWrong. Hitler Mussolini won. You’re a fool.")
+    assert R.classify(q).shape == R.NEWS_EVENT
+    # a correction about the asker is banter, not news
+    assert R.classify("nope you lost").shape != R.NEWS_EVENT
+
+
+def test_math_with_how_many_times_is_not_chat_history_2026_10_10():
+    assert R.classify("How many times do I need to 10x $100 to get to $1b").shape != R.CHAT_HISTORY
+    assert R.classify("how many times has kyle said gay this week").shape == R.CHAT_HISTORY

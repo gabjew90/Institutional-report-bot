@@ -232,6 +232,18 @@ def _post_image_locked(text: str, png: bytes, *, key: str, date_iso: str,
     return pid
 
 
+def calendar_is_empty(day) -> bool:
+    """No earnings in either session and no economic release."""
+    return not (getattr(day, "bmo", None) or getattr(day, "amc", None)
+                or getattr(day, "econ", None))
+
+
 def post_calendar(date_iso: str, day, png: bytes) -> str | None:
+    """Post the sheet to X, except an empty one (owner, 2026-10-10: the
+    sheet for Columbus Day went out as "Monday's market calendar · 10/12"
+    with nothing under it). Discord still gets the empty sheet."""
+    if calendar_is_empty(day):
+        log.info(f"X calendar {date_iso}: empty sheet, not posted")
+        return None
     from report.calendar_caption import calendar_caption
     return post_image(calendar_caption(day), png, key="calendar", date_iso=date_iso)

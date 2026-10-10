@@ -3201,17 +3201,12 @@ def _is_slur_count_question(question: str) -> bool:
     Strips reply-chain prefix so the scoring matches the asker's actual
     typed question, not the embedded prior message.
     """
-    q = (question or "").strip()
+    from discord_bot.ask_router import asker_text
+    # The asker's typed words only: a quoted block of another member's
+    # messages sits after the reply marker too (2026-10-10 audit).
+    q = asker_text(question)
     if not q:
         return False
-    # If this is a reply chain, the asker's typed text comes AFTER a
-    # marker like "[asker's message to you]" or "[username's message]".
-    # Find the marker and score only what follows.
-    for marker in ("'s message to you]", "'s message]"):
-        idx = q.lower().rfind(marker)
-        if idx != -1:
-            q = q[idx + len(marker):].strip()
-            break
     return bool(_COUNT_INTENT_RE.search(q)) and bool(_SLUR_REFERENCE_RE.search(q))
 
 
@@ -3342,15 +3337,10 @@ _TARGET_EXTRACTION_STOPWORDS = {
 
 
 def _is_message_count_question(question: str) -> bool:
-    q = (question or "").strip()
+    from discord_bot.ask_router import asker_text
+    q = asker_text(question)
     if not q:
         return False
-    # Strip reply-chain prefix so we score the asker's typed text
-    for marker in ("'s message to you]", "'s message]"):
-        idx = q.lower().rfind(marker)
-        if idx != -1:
-            q = q[idx + len(marker):].strip()
-            break
     return bool(_MSG_COUNT_INTENT_RE.search(q))
 
 
@@ -3358,12 +3348,8 @@ def _extract_message_count_target(question: str) -> str | None:
     """Pull the target user/name from the question. Returns the raw
     matched substring (e.g. 'kyle', 'BK', 'grandnagusyeezy'). The
     resolver below normalizes to a real user_id."""
-    q = (question or "").strip()
-    for marker in ("'s message to you]", "'s message]"):
-        idx = q.lower().rfind(marker)
-        if idx != -1:
-            q = q[idx + len(marker):].strip()
-            break
+    from discord_bot.ask_router import asker_text
+    q = asker_text(question)
     for pat in _TARGET_EXTRACT_PATTERNS:
         m = pat.search(q)
         if m:
@@ -4353,6 +4339,16 @@ _HOSTILE_RE = re.compile(
 )
 
 
+def _names_a_member(question: str) -> bool:
+    """A room member is named in the asker's own words (alias map in
+    memory, no database read). Total: False on any failure."""
+    try:
+        from discord_bot.ask_router import asker_text
+        return bool(db.members_named_in_text(asker_text(question)))
+    except Exception:
+        return False
+
+
 def _is_hostile_exchange(question: str) -> bool:
     """True when the asker actually came at the bot in THIS message.
     Gates the disengage line (2026-08-25): "you done?" is the right
@@ -4362,12 +4358,11 @@ def _is_hostile_exchange(question: str) -> bool:
     bot insulting someone who asked a normal question."""
     if not question:
         return False
-    # Strip the quoted [MESSAGE BEING REPLIED TO] block: the bot's own
-    # prior words are not the asker's hostility.
-    q = re.sub(r"\[MESSAGE BEING REPLIED TO.*?\]\s*\".*?\"",
-               " ", question, flags=re.S)
-    q = re.sub(r"\[VERBATIM RECENT MESSAGES.*?\]", " ", q, flags=re.S)
-    return bool(_HOSTILE_RE.search(q))
+    # The asker's own words: neither the bot's quoted prior message nor
+    # the lines of a quoted member block (the old strip removed only the
+    # block's header, so another member's insults counted as the asker's).
+    from discord_bot.ask_router import asker_text
+    return bool(_HOSTILE_RE.search(asker_text(question)))
 
 
 def _trace_figs(result) -> list[str]:
@@ -4676,7 +4671,8 @@ async def _ask_00_setup_tools_and_context(
         # unless a stronger shape claims it (2026-09-03, owner).
         channel_name=channel_name or "",
         asker_manager=_asker_manager,
-        channel_id=channel_id)
+        channel_id=channel_id,
+        names_member=_names_a_member(_route_question))
     # Replying "thoughts?" to your OWN earlier message hands over nothing:
     # it is still your question, and the handed-over note made the bot talk
     # about the asker in the third person (2026-10-06, 2Pale).
@@ -7568,7 +7564,8 @@ async def _ask_07_validation_ladder(
             # detach it, check, reattach (2026-09-09).
             _fp_hedged = answer.endswith(_UNVERIFIED_HEDGE)
             _fp_body = answer[: -len(_UNVERIFIED_HEDGE)] if _fp_hedged else answer
-            _rep = _fp.check(_fp_body, _ev)
+            from discord_bot.ask_router import asker_text as _fp_asker
+            _rep = _fp.check(_fp_body, _ev, _fp_asker(question))
             if _rep.action == "stripped":
                 answer = _rep.answer + (_UNVERIFIED_HEDGE if _fp_hedged else "")
                 _ask_meta["guards"].append(f"figure-provenance:stripped:{len(_rep.stripped_lines)}")
@@ -8555,15 +8552,21 @@ async def _ask_09_rank_and_regen_guards(
         _tally_retry_usage)
     # no reminder, timer or ping tool exists: never claim one (2026-10-08)
     from discord_bot import action_claims as _ac
-    from discord_bot.ask_router import _last_line as _ac_last
+    from discord_bot.ask_router import asker_text as _ac_last
     answer, _ac_hit = _ac.guard(answer, _ac_last(question))
     if _ac_hit:
         _ask_meta["guards"].append("action-claim")
     # a ticker the answer introduced must still trade (2026-10-08 audit)
     try:
         from discord_bot import ticker_liveness as _tl
+        from discord_bot.guard_floor import gutted as _gutted
+        _tl_before = answer
         answer, _dead = await _tl.guard(answer, question, _execute_market_price)
-        if _dead:
+        if _dead and _gutted(_tl_before, answer):
+            # a check may trim an answer, never gut it (guard_floor)
+            answer = _tl_before
+            _ask_meta["guards"].append("dead-ticker:stood-down:" + ",".join(_dead))
+        elif _dead:
             _ask_meta["guards"].append("dead-ticker:" + ",".join(_dead))
     except Exception as e:
         log.warning(f"/ask: ticker liveness check failed (non-fatal): {e}")

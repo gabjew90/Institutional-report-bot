@@ -722,11 +722,21 @@ def build_topic_payload(
             rows = ([_row(p, names[str(p)], "starter") for p in starters]
                     + [_row(p, names[str(p)], "bench") for p in bench])
             starters_rows = [x for x in rows if x["slot"] == "starter"]
-            total = round(sum(x["projected"] or 0 for x in starters_rows), 1)
             yet = [x["player"] for x in starters_rows if x["game_state"] == "pre"]
             live = [x["player"] for x in starters_rows if x["game_state"] == "live"]
             rem_each = [round(_still_to_come(x), 1) for x in starters_rows
                         if x["game_state"] in ("pre", "live")]
+            # Points already scored plus what is still to come, the same
+            # sum win_chance uses. The sum of every starter's pre-game
+            # projection ignored points already on the board, so a live
+            # week read "projected 129.6 vs 133.0" beside a 77% win
+            # estimate for the same side (2026-10-09, BK vs Ry after the
+            # Thursday game). Before kickoff the two are equal.
+            scored = sum(x["actual"] or 0 for x in starters_rows
+                         if x["game_state"] in ("live", "final"))
+            unknown = sum(x["projected"] or 0 for x in starters_rows
+                          if x["game_state"] is None)
+            total = round(scored + sum(rem_each) + unknown, 1)
             return {"players": rows, "projected_total": total,
                     "yet_to_play": yet, "playing_now": live,
                     "remaining_projected": round(sum(rem_each), 1),
@@ -765,11 +775,20 @@ def build_topic_payload(
                         "lineup": _lineup(opp_roster) if opp_roster else None,
                     }
                     if opp["lineup"] and proj:
+                        mine_pts = float(my_m.get("points") or 0)
+                        opp_pts = float(other.get("points") or 0)
                         mine_pct, opp_pct = win_chance(
-                            float(my_m.get("points") or 0), out["roster"]["_remaining_each"],
-                            float(other.get("points") or 0), opp["lineup"]["_remaining_each"])
+                            mine_pts, out["roster"]["_remaining_each"],
+                            opp_pts, opp["lineup"]["_remaining_each"])
                         opp["win_chance_estimate"] = {out["manager"]: mine_pct,
                                                       opp["manager"]: opp_pct}
+                        # The totals quoted beside the estimate are built
+                        # from the same points, Sleeper's league-scored
+                        # matchup points, so the two cannot disagree.
+                        out["roster"]["projected_total"] = round(
+                            mine_pts + sum(out["roster"]["_remaining_each"]), 1)
+                        opp["lineup"]["projected_total"] = round(
+                            opp_pts + sum(opp["lineup"]["_remaining_each"]), 1)
         except Exception as e:
             log.info(f"sleeper matchups failed (non-fatal): {e}")
         out["matchup"] = opp or {

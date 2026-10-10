@@ -81,3 +81,13 @@ def test_an_earlier_round_trip_does_not_license_a_reopen():
 
 def test_a_spread_strike_does_not_break_the_block():
     assert "TSLA 450/460" in T.render_block([_row("open", "TSLA", "450/460", "call", "2026-10-06T15:00")])
+
+
+def test_a_share_close_up_thousands_of_percent_is_an_extraction_error():
+    """2026-10-09 audit: an APLD share close stored as +2009% (a dollar
+    profit read as a percent) made a 0W/14L record read avg +245%."""
+    assert T.shown_gain(2009.0, "stock") is None
+    assert T.shown_gain(2009.0, "call") == 2009.0
+    assert T.shown_gain(45.0, "stock") == 45.0
+    assert T.shown_gain(1500.0, "unclear") is None
+    assert T.shown_gain(1500.0, "put") == 1500.0

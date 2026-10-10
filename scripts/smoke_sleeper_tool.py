@@ -163,7 +163,9 @@ def test_situation_is_the_whole_week():
     slots), this week's opponent with their lineup, record and standings.
     The prefetch for any league question from a manager."""
     proj = {"4034": {"pts_ppr": 21.4}, "6794": {"pts_ppr": 18.2}, "1111": {"pts_ppr": 9.9}}
-    mus = [{"roster_id": 1, "matchup_id": 7, "points": 0},
+    # Sleeper's matchup points include Chase's finished game, as live
+    # data does once a starter has played
+    mus = [{"roster_id": 1, "matchup_id": 7, "points": 27.7},
            {"roster_id": 8, "matchup_id": 7, "points": 0}]
     # weekly stats (2026-09-13): Chase has played, Robinson has not
     stats = {"4034": {"pts_ppr": 27.7, "gp": 1.0}}
@@ -177,7 +179,8 @@ def test_situation_is_the_whole_week():
     assert rows == [("Ja'Marr Chase (WR, CIN)", 21.4, "starter"),
                     ("Bijan Robinson (RB, ATL)", 18.2, "starter"),
                     ("id:1111", 9.9, "bench")], rows
-    assert out["roster"]["projected_total"] == 39.6, out["roster"]
+    # Chase's 27.7 already scored plus Bijan's 18.2 still to come
+    assert out["roster"]["projected_total"] == 45.9, out["roster"]
     assert out["roster"]["yet_to_play"] == ["Bijan Robinson (RB, ATL)"], out["roster"]
     assert out["roster"]["remaining_projected"] == 18.2
     assert out["roster"]["players"][0]["actual"] == 27.7 and out["roster"]["players"][0]["game_started"]

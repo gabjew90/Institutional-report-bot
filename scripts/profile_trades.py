@@ -34,16 +34,12 @@ def member_trades(user_id: int, days: int = 30) -> list[dict]:
         author_id=int(user_id))
 
 
-def shown_gain(gain) -> float | None:
-    """A gain worth printing. A long option cannot lose more than 100%;
-    anything below that is an extraction error, not a result."""
-    if gain is None:
-        return None
-    try:
-        g = float(gain)
-    except (TypeError, ValueError):
-        return None
-    return None if g < -100 else g
+def shown_gain(gain, contract_type=None) -> float | None:
+    """A gain worth printing: the shared rule in db_parts.analyst
+    (below -100% is an extraction error, and so is a share position up
+    more than 300% in a month)."""
+    from db_parts.analyst import plausible_gain
+    return plausible_gain(gain, contract_type)
 
 
 def _key(r: dict) -> tuple:
@@ -91,7 +87,7 @@ def render_block(rows: list[dict], today: date | None = None) -> str:
         strike_str = _strike_str(r.get("strike"))
         expiry = r.get("expiry") or ""
         exp_short = expiry[5:] if len(expiry) >= 10 else (expiry or "?")
-        gain = shown_gain(r.get("gain_pct"))
+        gain = shown_gain(r.get("gain_pct"), r.get("contract_type"))
         gain_str = f"gain {gain:+.2f}%" if gain is not None else "gain ?"
         price = r.get("price")
         price_str = f" @{price}" if price not in (None, 0) else ""
@@ -142,7 +138,8 @@ _SECTION_RE = re.compile(r"(\*\*Recent trades\.\*\*\s*\n)(.*?)(?=\n\s*\*\*|\Z)",
 
 def _log_says(contract_rows: list[dict], exits: list[dict]) -> str:
     if exits:
-        g = shown_gain(sorted(exits, key=lambda e: e.get("posted_at") or "")[-1].get("gain_pct"))
+        last = sorted(exits, key=lambda e: e.get("posted_at") or "")[-1]
+        g = shown_gain(last.get("gain_pct"), last.get("contract_type"))
         return f"[closed {g:+.2f}% per the log]" if g is not None else "[an exit is logged, gain not recorded]"
     return "[no exit posted in the log]"
 
@@ -186,7 +183,7 @@ def ground_recent_trades(profile_text: str, rows: list[dict]) -> tuple[str, list
             continue
         comment = com.group(0)
         # A comment quoting a logged exit's own gain is about that exit.
-        logged = {round(g, 2) for g in (shown_gain(e.get("gain_pct")) for e in contract_exits)
+        logged = {round(g, 2) for g in (shown_gain(e.get("gain_pct"), e.get("contract_type")) for e in contract_exits)
                   if g is not None}
         quoted = {round(float(x), 2) for x in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", comment)}
         if logged & quoted or {abs(q) for q in quoted} & {abs(g) for g in logged}:
@@ -205,8 +202,8 @@ def ground_recent_trades(profile_text: str, rows: list[dict]) -> tuple[str, list
                            and not re.search(r"\bunrealized\b", comment, re.I))
             bad = bool(_OUTCOME_RE.search(comment) or claims_loss)
         else:
-            g = shown_gain(sorted(contract_exits, key=lambda e: e.get("posted_at") or "")[-1]
-                           .get("gain_pct"))
+            last = sorted(contract_exits, key=lambda e: e.get("posted_at") or "")[-1]
+            g = shown_gain(last.get("gain_pct"), last.get("contract_type"))
             if g is not None:
                 bad = bool((g > 0 and _LOSS_RE.search(comment))
                            or (g < 0 and _WIN_RE.search(comment)))

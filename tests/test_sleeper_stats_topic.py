@@ -150,5 +150,8 @@ def test_situation_names_who_has_not_played_and_what_is_left():
     assert by["Kelce"]["actual"] is None and by["Kelce"]["game_started"] is False
     assert mine["yet_to_play"] == ["Kelce"], "the starter whose game has not started, by name"
     assert mine["remaining_projected"] == 14.5
-    assert mine["projected_total"] == 35.5
+    # points on the board plus what is left (24.4 + 14.5), the same sum
+    # the win estimate uses; the pre-game sum (35.5) contradicted it
+    # once a game had been played (2026-10-09)
+    assert mine["projected_total"] == 38.9
     assert "yet_to_play" in out["note"] and "who is left" in out["note"]
