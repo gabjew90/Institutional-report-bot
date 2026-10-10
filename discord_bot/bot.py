@@ -5462,6 +5462,13 @@ async def _ask_02_call_model_with_tools(
         contents.append(types.Content(role="user",
                                       parts=[types.Part.from_text(text=_superlative)]))
         _ask_meta["guards"].append("superlative")
+    # "what % of the S&P is tech": the broad share and the IT sector, both
+    # (ask_router.tech_share_note, owner 2026-10-10)
+    _tech_share = _ask_router.tech_share_note(question)
+    if _tech_share:
+        contents.append(types.Content(role="user",
+                                      parts=[types.Part.from_text(text=_tech_share)]))
+        _ask_meta["guards"].append("tech-share")
     # "Weigh in on this" on another member's question: answer about that
     # member, not the asker (ask_router.deferred_question, 2026-10-04).
     if getattr(_ask_route, "deferred_author", ""):

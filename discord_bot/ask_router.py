@@ -740,6 +740,30 @@ def _last_line(question: str) -> str:
     return _straight(q)
 
 
+# "What % of the S&P is tech" (owner, 2026-10-10: answering the official
+# Information Technology sector alone was called a terrible answer, since
+# the room counts Alphabet, Meta and Amazon as tech).
+_INDEX_RE = r"(?:s\s*&\s*p(?:\s*500)?|sp\s*500|spx|spy|the\s+index)"
+_SHARE_WORD = r"(?:%|\b(?:percent(?:age)?|share|weight(?:ing)?|how\s+much|portion|chunk)\b)"
+_TECH_WORD = r"\btech(?:nology|s)?\b"   # not "technically"
+_TECH_SHARE_RE = re.compile(
+    rf"{_SHARE_WORD}[^?\n]{{0,30}}(?<!my\s)\b{_INDEX_RE}\b[^?\n]{{0,25}}{_TECH_WORD}"
+    rf"|{_TECH_WORD}[^?\n]{{0,20}}{_SHARE_WORD}[^?\n]{{0,20}}(?<!my\s)\b{_INDEX_RE}\b", re.I)
+
+
+def tech_share_note(question: str) -> str:
+    """The note for a "how much of the S&P is tech" question, or ''."""
+    if not _TECH_SHARE_RE.search(asker_text(question)):
+        return ""
+    return (
+        "TECH SHARE OF THE S&P 500: give two figures, each from a search and "
+        "dated. First the broad tech share: the Information Technology "
+        "sector's weight plus Alphabet (both share classes), Meta and Amazon, "
+        "naming the companies added and saying the official sector scheme "
+        "files them under Communication Services and Consumer Discretionary. "
+        "Then the Information Technology sector's weight on its own.")
+
+
 def asker_text(question: str) -> str:
     """The asker's own typed words, without the reply parent or the quoted
     member blocks. Every check that decides something from "what the asker
@@ -898,6 +922,10 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if _HISTORY_RE.search(q) and tickers:
         r.shape, r.reason = PRICE_HISTORY, "history words + ticker"
         r.prefetch = [(T_HISTORY, {"symbol": tickers[0]})] + _stock_prefetch(tickers[0], research=False)
+        return r
+    if _TECH_SHARE_RE.search(q):
+        # a current weight from a search; tech_share_note says which two
+        r.shape, r.reason = HISTORICAL_STAT, "tech share of the index"
         return r
     if _STAT_RE.search(q):
         r.shape, r.reason = HISTORICAL_STAT, "historical-statistic shape"

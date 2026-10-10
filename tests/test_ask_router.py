@@ -757,3 +757,20 @@ def test_outline_labels_and_chip_acronyms_are_not_tickers_2026_10_10():
                             all_tiers=True)
     assert "NBIS" in got and "DRAM" in got
     assert not {"PRICE", "NEWS", "GPU"} & set(got)
+
+
+def test_tech_share_of_the_index_gets_both_figures_owner_2026_10_10():
+    """Owner: "what % of the S&P is tech" counts Alphabet, Meta and Amazon,
+    not only the Information Technology sector."""
+    for q in ("what percentage of s&p500 is tech", "how much of the S&P is tech",
+              "what % of spx is tech stocks", "tech weight in the s&p"):
+        assert R.classify(q).shape == R.HISTORICAL_STAT, q
+        note = R.tech_share_note(q)
+        assert "Alphabet" in note and "Information Technology" in note, q
+    assert R.tech_share_note("what percent of my portfolio is tech") == ""
+    assert R.classify("how much is spy up today").shape == R.PRICE
+
+
+def test_tech_share_ignores_technically_and_own_positions():
+    assert R.tech_share_note("how much of the s&p is technically overbought") == ""
+    assert R.tech_share_note("how much of my spy calls are tech") == ""
