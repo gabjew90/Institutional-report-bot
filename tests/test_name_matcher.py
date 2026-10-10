@@ -24,3 +24,18 @@ def test_a_slur_never_prefix_matches_a_member():
     word = "nigga"
     assert count_racial_slurs(word) > 0
     assert 910003 not in db.find_users_mentioned_in_text(f"LMAO I wish a {word} would")
+
+
+def test_a_one_letter_display_name_matches_as_a_standalone_capital():
+    """2026-10-10 audit: "what G and wock we're talking about" never
+    loaded G (display name "G"), and the answer put BK in his place."""
+    _profile(910004, "biggestg55", "G")
+    assert 910004 in db.find_users_mentioned_in_text("what G and wock we're talking about")
+    assert 910004 in db.find_users_mentioned_in_text("G's take on nbis")
+    assert 910004 not in db.find_users_mentioned_in_text("5G rollout and g force")
+    assert 910004 not in db.find_users_mentioned_in_text("going to the gym")
+
+
+def test_a_capital_letter_inside_a_longer_name_is_not_an_alias():
+    _profile(910005, "abullish_xyz", "A Bullish Grand Nagus")
+    assert 910005 not in db.find_users_mentioned_in_text("A good day for semis")

@@ -4365,6 +4365,21 @@ def _is_hostile_exchange(question: str) -> bool:
     return bool(_HOSTILE_RE.search(asker_text(question)))
 
 
+_TRACE_EXCERPT_CHARS = 1500
+
+
+def _trace_excerpt(result) -> str:
+    """The start of a tool result, kept on its trace entry for the ask
+    log. Audits had to replay a question to see what a tool returned
+    (2026-10-10: the fantasy totals behind BK's matchup answer)."""
+    try:
+        import json as _json
+        s = _json.dumps(result, default=str, ensure_ascii=False)
+    except Exception:
+        s = str(result)
+    return s[:_TRACE_EXCERPT_CHARS]
+
+
 def _trace_figs(result) -> list[str]:
     """The numbers in a tool payload, kept on its trace entry so the Data
     footer names a figure feed only when the answer used one of them
@@ -5361,6 +5376,7 @@ async def _ask_02_call_model_with_tools(
             "via": "prefetch",
             "result_chars": len(str(_pf_res)),
             "figs": _trace_figs(_pf_res),
+            "excerpt": _trace_excerpt(_pf_res),
             "seconds": round(time.monotonic() - _pf_t0, 2),
         })
         return _pf_res
@@ -5758,6 +5774,7 @@ async def _ask_02_call_model_with_tools(
                 "status": _trace_status,
                 "result_chars": len(str(result)),
                 "figs": _trace_figs(result),
+                "excerpt": _trace_excerpt(result),
             })
         contents.append(
             types.Content(role="user", parts=tool_response_parts)
@@ -7180,6 +7197,7 @@ async def _ask_07_validation_ladder(
                         "status": "backstop-fetch",
                         "result_chars": len(str(_price_result)),
                         "figs": _trace_figs(_price_result),
+                        "excerpt": _trace_excerpt(_price_result),
                     })
                     contents.append(types.Content(
                         role="user",
@@ -8751,6 +8769,10 @@ async def _fantasy_percent_guard(answer, question, _ask_meta, client, ask_model,
             or (_ask_meta.get("route_shape") != "fantasy"
                 and "fantasy_estimates" not in _ask_meta)):
         return answer
+    # the win estimate is the bot's, never Sleeper's (2026-10-10 audit)
+    answer, _fixed = _fg.fix_attribution(answer)
+    if _fixed:
+        _ask_meta["guards"].append("fantasy-attribution")
     est = _ask_meta.get("fantasy_estimates") or {}
     if not _fg.stray_percents(answer, est, question):
         return answer

@@ -721,6 +721,31 @@ def _verify_profile_claims(
     }
 
 
+def _drop_unverified_quote_lines(profile_text: str,
+                                 unverified: list[str]) -> tuple[str, list[str]]:
+    """(profile, dropped lines): bullets whose double-quoted line is not in
+    the member's messages are removed before saving.
+
+    2026-10-10 audit: G's profile carried "Stop losses are for homosexuals.
+    For a straight man there's only liquidation", which nobody in the room
+    ever wrote; one invented quote out of twelve passed the >50% lint. The
+    burst fallback in _verify_profile_claims already accepts quotes the
+    writer stitched across consecutive messages, so an unverified quote
+    left after it is an invention. Single-quoted phrases are the writer's
+    own commentary ("the classic 'I'm living the life' posturing") and
+    never drop a line."""
+    if not profile_text or not unverified:
+        return profile_text, []
+    keep, dropped = [], []
+    for line in profile_text.split("\n"):
+        dq = line.replace("“", '"').replace("”", '"')
+        if line.lstrip().startswith("-") and any(f'"{p}"' in dq for p in unverified):
+            dropped.append(line.strip())
+        else:
+            keep.append(line)
+    return "\n".join(keep), dropped
+
+
 _BURST_GAP_SECONDS = 180
 _BURST_FETCH_LIMIT = 4000
 
@@ -2722,6 +2747,12 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             force or uid in cold_uids
                             or uid not in existing_profiles
                         )
+                        # A quote the member never wrote does not ship
+                        # (2026-10-10 audit, G's invented quote).
+                        profile, _dq = _drop_unverified_quote_lines(
+                            profile, claim_check.get("unverified_quotes") or [])
+                        for _d in _dq:
+                            print(f"  [quotes] {meta['username']}: dropped {_d[:100]}")
                         # Recent-trades commentary may not claim an
                         # outcome the log lacks (2026-10-08 audit:
                         # "stopped out", "realized loss" on open trades).

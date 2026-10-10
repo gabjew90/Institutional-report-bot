@@ -433,6 +433,19 @@ def append_ask_interaction(
                 "|---|---|---|---|\n"
                 + "\n".join(rows) + "\n\n"
             )
+            # What each tool returned, clipped (2026-10-10 audit: checking
+            # a fantasy answer's numbers needed a replay of the question).
+            excerpts = [t for t in tool_trace[:12] if t.get("excerpt")]
+            if excerpts:
+                tools_section += (
+                    "<details>\n<summary>🧾 Tool results (first "
+                    "1,500 chars each)</summary>\n\n"
+                    + "".join(
+                        # four backticks: a result may quote ``` itself
+                        f"**{t.get('tool', '?')}**\n\n````json\n"
+                        f"{_clip(t['excerpt'], 1600)}\n````\n\n"
+                        for t in excerpts)
+                    + "</details>\n\n")
 
         # Raw-answer block — only when cleanup/retries actually changed
         # the output, so the log shows ground truth without doubling

@@ -180,6 +180,12 @@ _NOT_TICKERS = {
     "USD", "EUR", "GBP", "JPY", "YOY", "QOQ", "FDA", "DOJ", "FTC", "AWS", "GCP", "OCI",
     "LLM", "OPEC", "BLS", "BEA", "REV", "RPO", "OTC", "EOD", "MCAP", "AH", "COO", "CTO",
     "ETFS", "PLUS", "AND", "THE", "FOR", "NOT", "ALL",
+    # The stock outline's slot labels and hardware acronyms (2026-10-10
+    # audit: the price backstop priced PRICE, NEWS and GPU on an NBIS
+    # answer). GPU, CPU, TPU and NPU are not listed US stocks; DRAM, HBM
+    # and ARR are (the room trades DRAM), so they stay tickers.
+    "PRICE", "NEWS", "RESULT", "UPCOMING", "DRIVER", "DESK", "OPTIONS", "POSITIONING",
+    "GPU", "GPUS", "CPU", "CPUS", "TPU", "NPU",
 }
 _CRYPTO = {"BTC", "ETH", "SOL"}
 # Index names the price tool quotes in Yahoo's caret form. They stay
@@ -660,6 +666,10 @@ _OPINION_RE = re.compile(
     r"|(?:your|ur)\s+(?:take|read|view|opinion)\s+on|opinion\s+on|(?:bullish|bearish)\s+on"
     r"|how\s+(?:does|do)\s+\S+\s+look(?:ing)?\b|should\s+i\s+(?:buy|sell|hold|short|long|add|trim)"
     r"|worth\s+(?:buying|a\s+buy|holding|a\s+look)|(?:into|going\s+into|ahead\s+of)\s+(?:the\s+)?(?:print|earnings|er|report)"
+    # "is hood a good short here" (2026-10-10 audit: no research or
+    # outline ran, and the answer invented a "$106 support floor")
+    r"|is\s+\$?[A-Za-z.]{1,6}\s+(?:a\s+)?(?:good\s+|great\s+|solid\s+|decent\s+|smart\s+)?(?:buy|sell|short|long|hold)"
+    r"|(?:good|bad|decent)\s+(?:short|long|buy|entry|spot)\s+(?:here|now|at|rn)"
     r"|how\s+(?:do|does|will)\s+\S+\s+(?:do|hold\s+up|fare|trade)\s+(?:into|on|after)\s+earnings)\b", re.I)
 
 
@@ -942,8 +952,23 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         if re.search(r"\b(?:earnings|print|report(?:ed|s)?|numbers|er)\b", ql):
             r.prefetch.append((T_EDATE, {"symbol": strong[0]}))
         return r
+    # A reply to the bot's own trade-log post ("📝 Logged: OPEN TSLA 400C")
+    # stays banter, but the trade's price comes from the feed, not a search
+    # snippet (2026-10-10 audit: TSLA and RDDT were quoted from YouTube,
+    # Kraken and Fidelity pages, RDDT "around $150" while it traded 153-156).
+    logged = _LOGGED_PARENT_RE.search(question or "") if not tickers else None
+    if logged:
+        r.tickers = [logged.group(1)]
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(logged.group(1))]})]
     r.shape = UNKNOWN
     return r
+
+
+# The log post's layout: the action word, then the bolded symbol
+# ("OPEN **TSLA 400C 10-16**", "TRIM **RDDT 160C 10-16**").
+_LOGGED_PARENT_RE = re.compile(
+    r"\[MESSAGE BEING REPLIED TO[^\]]*\]\s*\n\"📝 Logged:[^\n]*?"
+    r"\b(?:OPEN|ADD|TRIM|CLOSE|EXIT)\s+\*\*\$?([A-Z][A-Z.]{0,5})\b")
 
 
 # Words that make a capitalised token a stock question. Everyday words

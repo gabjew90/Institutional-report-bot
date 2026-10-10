@@ -65,6 +65,22 @@ US_MARKET_HOLIDAYS = {
 _HOLIDAY_YEARS_COVERED = {y for y in
                           {d[:4] for d in US_MARKET_HOLIDAYS}}
 
+# Days stocks trade but the US bond market is closed (SIFMA's recommended
+# full closes that are not NYSE holidays). The omni-calendar notes them
+# (2026-10-10 audit: Columbus Day's sheet said nothing). Update annually
+# with US_MARKET_HOLIDAYS.
+BOND_ONLY_CLOSURES = {
+    "2026-10-12": "Columbus Day",
+    "2026-11-11": "Veterans Day",
+    "2027-10-11": "Columbus Day",
+    "2027-11-11": "Veterans Day",
+}
+
+
+def bond_market_closed(date_iso: str) -> str:
+    """The holiday name when bonds are shut and stocks are open, else ""."""
+    return BOND_ONLY_CLOSURES.get((date_iso or "")[:10], "")
+
 
 def is_us_market_holiday(date_iso: str) -> str | bool | None:
     """Holiday name if `date_iso` (YYYY-MM-DD) is a full NYSE closure,

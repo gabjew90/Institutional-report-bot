@@ -55,3 +55,16 @@ def test_rewrite_prompt_lists_the_estimates_or_says_none():
     p = fg.rewrite_prompt(JAMAL, "what % chance did Jamal have", EST)
     assert "- farmerjamal: 96%" in p and "OWN matchup" in p
     assert "give no win percentage at all" in fg.rewrite_prompt(JAMAL, "q", {})
+
+
+def test_a_win_percentage_is_never_credited_to_sleeper_2026_10_10():
+    """"Sleeper has you holding a 62% win probability": the figure was the
+    bot's own estimate, which no Sleeper API publishes."""
+    from discord_bot.fantasy_guard import fix_attribution
+    new, changed = fix_attribution(
+        "→ Sleeper has you holding a **62%** win probability, projecting 143.7.")
+    assert changed and "Sleeper" not in new and "→ My estimate puts you at **62%**" in new
+    assert fix_attribution("Sleeper's win probability sits at 77%.")[0].startswith("My estimated")
+    # a projection is Sleeper's, and stays credited to it
+    assert fix_attribution("Sleeper projects you at 143.7 points.") == (
+        "Sleeper projects you at 143.7 points.", False)

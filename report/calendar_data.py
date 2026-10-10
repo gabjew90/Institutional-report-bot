@@ -243,6 +243,8 @@ class CalendarDay:
     weekday_label: str            # "THURSDAY 8/20"
     is_holiday: str | bool        # holiday name or False
     econ: list[EconRow] = field(default_factory=list)
+    # stocks open, bond market closed (world_context.BOND_ONLY_CLOSURES)
+    bond_closed: str = ""
     econ_available: bool = True   # False = FF feed down (vs quiet day)
     # True = the FF feed does not reach this date yet (Friday's sheet for
     # Monday): rows are FRED's scheduled majors only, and the sheet says so
@@ -627,7 +629,7 @@ def _dedupe_econ(rows: list[EconRow]) -> list[EconRow]:
 
 def build_calendar_day(date_iso: str) -> CalendarDay:
     """Assemble everything the renderer needs for one session date."""
-    from world_context import is_us_market_holiday
+    from world_context import bond_market_closed, is_us_market_holiday
     from report.implied_move import reset_chain_presence
 
     reset_chain_presence()
@@ -635,6 +637,7 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
         date_iso=date_iso,
         weekday_label=_weekday_label(date_iso),
         is_holiday=is_us_market_holiday(date_iso) or False,
+        bond_closed=bond_market_closed(date_iso),
     )
 
     # --- economic events (FF; None = feed down, [] = quiet day) ---

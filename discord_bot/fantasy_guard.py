@@ -108,3 +108,29 @@ def rewrite_prompt(answer: str, question: str, estimates: dict[str, int]) -> str
              if not estimates else "")
     return REWRITE_PROMPT.format(estimates=lines, empty=empty, question=question,
                                  answer=answer)
+
+
+# Sleeper credited with a win percentage it never published (2026-10-10
+# audit: "Sleeper has you holding a 62% win probability"; the figure was
+# the bot's own estimate, and the tool note already says never to call it
+# Sleeper's). Rewritten in code: the claim names the wrong source.
+_SLEEPER_CLAIM_RE = re.compile(
+    r"\b(?:Sleeper(?:'s|’s)?(?:\s+app)?|the\s+app)\s+"
+    r"(?:has|gives|puts|shows|projects|says|lists|is\s+giving)\s+"
+    r"(?P<who>you|him|them|[A-Z][\w']*)\s+(?:holding\s+|sitting\s+)?(?:at\s+)?(?:an?\s+)?"
+    r"(?=\**\d{1,3}(?:\.\d+)?\s?%)")
+_SLEEPER_POSSESSIVE_RE = re.compile(
+    r"\bSleeper(?:'s|’s)\s+(?=(?:win\s+)?(?:probability|odds|chances?|win\s*%))", re.I)
+
+
+def fix_attribution(answer: str) -> tuple[str, bool]:
+    """(answer, changed): a win percentage credited to Sleeper is credited
+    to the bot's estimate instead."""
+    if not answer or "leeper" not in answer and "the app" not in answer:
+        return answer, False
+    new = _SLEEPER_CLAIM_RE.sub(lambda m: f"my estimate puts {m.group('who')} at ", answer)
+    new = _SLEEPER_POSSESSIVE_RE.sub("my estimated ", new)
+    # capital at a sentence or bullet start ("→ My estimate puts you ...")
+    new = re.sub(r"(^|\n|→\s*|[.!?]\s+)(\**)my estimat",
+                 lambda m: m.group(1) + m.group(2) + "My estimat", new)
+    return new, new != answer

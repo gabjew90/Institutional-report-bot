@@ -727,3 +727,33 @@ def test_election_and_correction_questions_are_news_2026_10_10():
 def test_math_with_how_many_times_is_not_chat_history_2026_10_10():
     assert R.classify("How many times do I need to 10x $100 to get to $1b").shape != R.CHAT_HISTORY
     assert R.classify("how many times has kyle said gay this week").shape == R.CHAT_HISTORY
+
+
+def test_is_x_a_good_short_is_a_stock_view_2026_10_10():
+    """"is hood a good short here" ran no research or outline and invented
+    support levels."""
+    for q in ("is hood a good short here", "is nvda a buy", "is mu a good long here"):
+        assert R.classify(q).shape == R.TICKER_OPINION, q
+
+
+def test_a_reply_to_a_logged_trade_prices_its_symbol_2026_10_10():
+    """Replies to the bot's trade-log posts quoted prices from search
+    snippets (RDDT "around $150" while it traded 153-156)."""
+    head = ('[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1422761344322502807]\n'
+            '"📝 Logged: [**#kyle-alerts**](https://discord.com/channels/1/2/3) ')
+    q = head + ('TRIM **RDDT 160C 10-16** @4.05 (+97.6%) — "Out half""\n\n'
+                "[Sam's message to you]\nHoly fuck Reddit about to go on a generational run")
+    r = R.classify(q)
+    assert r.shape == R.UNKNOWN          # still banter, the classifier decides
+    assert r.prefetch == [(R.T_PRICE, {"symbols": ["RDDT"]})]
+    q2 = head + ('OPEN **TSLA 400C 10-16** @1.98 — "4x TSLA""\n\n'
+                 "[Sam's message to you]\nNice I’m already in")
+    assert R.classify(q2).prefetch == [(R.T_PRICE, {"symbols": ["TSLA"]})]
+
+
+def test_outline_labels_and_chip_acronyms_are_not_tickers_2026_10_10():
+    """The price backstop priced PRICE, NEWS and GPU on an NBIS answer."""
+    got = R.extract_tickers("PRICE: NBIS at $221, GPU demand, NEWS and DRAM", lowercase=False,
+                            all_tiers=True)
+    assert "NBIS" in got and "DRAM" in got
+    assert not {"PRICE", "NEWS", "GPU"} & set(got)

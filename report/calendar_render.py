@@ -220,7 +220,11 @@ def render_calendar_png(day: CalendarDay) -> bytes:
     d.text((_W / 2, y), day.weekday_label, font=f["day"], fill=TEXT,
            anchor="ma")
     y += 74 * _S
-    _tracked(d, y, "MARKET CALENDAR", f["sub"], _dim(TEXT, 0.5),
+    # stocks open, bonds shut (Columbus Day, Veterans Day): said on the
+    # kicker line, which has room, so the layout below does not move
+    kicker = ("MARKET CALENDAR · BOND MARKET CLOSED"
+              if getattr(day, "bond_closed", "") else "MARKET CALENDAR")
+    _tracked(d, y, kicker, f["sub"], _dim(TEXT, 0.5),
              int(6 * _S), _W / 2)
     y += 52 * _S
 

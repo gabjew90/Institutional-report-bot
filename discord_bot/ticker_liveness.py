@@ -21,6 +21,43 @@ _GONE_WORDS_RE = re.compile(
     r"\b(?:acquired|bought|merged|delisted|taken\s+private|went\s+private)\b", re.I)
 
 
+_MARKET_WORDS_RE = re.compile(
+    r"\$|%|\b(?:short|long|buy|sell|calls?|puts?|stock|shares?|price|trade[sd]?|trading"
+    r"|position|ticker|earnings|bullish|bearish|target|upside|downside)\b", re.I)
+
+
+def _defines_acronym(answer: str, m: re.Match, acr: str) -> bool:
+    """True for "Artificial Superintelligence (ASI)": the parenthesis
+    follows its own spelled-out phrase (at least half the letters are the
+    initials of the words before it, the first one included) on a line
+    with no trading words. 2026-10-10 audit: the superintelligence half of
+    an answer was dropped as a dead ticker. "Beacon Roofing (BECN)" is not
+    a definition (one initial of four), and a trading line is always
+    checked."""
+    start = answer.rfind("\n", 0, m.start()) + 1
+    end = answer.find("\n", m.end())
+    line = answer[start:end if end != -1 else len(answer)]
+    if _MARKET_WORDS_RE.search(line):
+        return False
+    words = re.findall(r"[A-Za-z][A-Za-z\-]*", answer[start:m.start()])[-(len(acr) + 2):]
+    # a name that carries the symbol itself is a company and its ticker
+    # ("GMS Supply (GMS)"), never a definition
+    if any(w.upper() == acr for w in words):
+        return False
+    initials = [w[0].upper() for w in words]
+    if len(words) < 2 or acr[0] not in initials:
+        return False
+    i = initials.index(acr[0])
+    hits, j = 0, i
+    for ch in acr:
+        while j < len(initials) and initials[j] != ch:
+            j += 1
+        if j < len(initials):
+            hits += 1
+            j += 1
+    return hits * 2 >= len(acr)
+
+
 def introduced_tickers(answer: str, question: str) -> list[str]:
     """Stock tickers in the answer that the question did not name."""
     from discord_bot import ask_router as R
@@ -29,6 +66,8 @@ def introduced_tickers(answer: str, question: str) -> list[str]:
     for m in _MARKED_RE.finditer(answer or ""):
         t = (m.group(1) or m.group(2) or m.group(3)).upper()
         if t in asked or t in out or not R.is_stock(t) or t.lower() in R._COMMON_WORDS:
+            continue
+        if m.group(3) and _defines_acronym(answer, m, t):
             continue
         out.append(t)
     return out[:MAX_CHECKED]

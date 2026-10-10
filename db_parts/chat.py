@@ -591,6 +591,14 @@ def find_users_mentioned_in_text(text: str) -> list[int]:
                 profile_tokens_lower.add(raw_l)
             if 2 <= len(raw) <= 3 and raw.isalpha() and raw.isupper():
                 short_distinctive.add(raw)
+            # A display name that is one capital letter ("G") is matched
+            # the same way, as a standalone capital (2026-10-10 audit: "what
+            # G and wock we're talking about" loaded wock and never G, and
+            # the answer put BK in G's place). Only the whole display name,
+            # never a token of a longer one, and never "A" or "I".
+            if (raw == r["display_name"] and len(raw) == 1 and raw.isalpha()
+                    and raw.isupper() and raw not in ("A", "I")):
+                short_distinctive.add(raw)
             for tok in _split_tokens(raw):
                 if len(tok) >= 3:
                     profile_tokens_lower.add(tok.lower())

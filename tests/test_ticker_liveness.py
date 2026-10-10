@@ -35,3 +35,24 @@ def test_acronyms_and_delisting_explanations_are_kept():
     ans = "→ DRAM contract prices rose for `MU`\n→ BECN (`BECN`) was acquired by QXO"
     assert L.introduced_tickers(ans, "q") == ["MU", "BECN"]
     assert L.drop_lines(ans, ["BECN"]) == ans
+
+
+def test_a_spelled_out_acronym_is_not_a_ticker_2026_10_10():
+    """"what's the difference of AI vs super intelligence" lost its second
+    half: "(ASI)" was priced, found nowhere, and its line dropped."""
+    from discord_bot import ticker_liveness as TL
+    ans = ("→ **AI** covers current systems built for specific tasks.\n\n"
+           "→ **Artificial Superintelligence (ASI)** is a hypothetical system "
+           "that exceeds human cognition in every field.")
+    assert "ASI" not in TL.introduced_tickers(ans, "difference of AI vs super intelligence")
+    # a company and its symbol on a trading line is still checked
+    short = "→ Short **Beacon Roofing (BECN)** into the housing slowdown."
+    assert "BECN" in TL.introduced_tickers(short, "what are we shorting")
+    frc = "→ Short **First Republic Corp (FRC)** here."
+    assert "FRC" in TL.introduced_tickers(frc, "what are we shorting")
+
+
+def test_a_company_name_carrying_its_symbol_is_still_checked():
+    from discord_bot import ticker_liveness as TL
+    ans = "→ Home Depot bought GMS Supply (GMS) last year."
+    assert "GMS" in TL.introduced_tickers(ans, "who did home depot buy")
