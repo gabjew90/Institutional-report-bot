@@ -5425,8 +5425,10 @@ async def _ask_02_call_model_with_tools(
             _ask_meta["primer"] = {"symbol": _pf_res.get("symbol"),
                                    "primer": _pf_res.get("primer") or ""}
         if _pf_tool == _ask_router.T_FANTASY:
-            from discord_bot.fantasy_guard import win_estimates as _we
+            from discord_bot.fantasy_guard import win_estimates as _we, sides as _sides
             _ask_meta.setdefault("fantasy_estimates", {}).update(_we(_pf_res))
+            if _sides(_pf_res):
+                _ask_meta["fantasy_sides"] = _sides(_pf_res)
         if _pf_tool == _ask_router.T_NEWS and _pf_res.get("status") == "ok":
             # Cited in phase 10 when the answer uses a figure from it.
             _ask_meta["news"] = {"sources": _pf_res.get("sources") or [],
@@ -5749,8 +5751,10 @@ async def _ask_02_call_model_with_tools(
             # The only win chances a fantasy answer may give (phase 9,
             # _fantasy_percent_guard).
             if fc.name == "lookup_fantasy_league":
-                from discord_bot.fantasy_guard import win_estimates as _we
+                from discord_bot.fantasy_guard import win_estimates as _we, sides as _sides
                 _ask_meta.setdefault("fantasy_estimates", {}).update(_we(result))
+                if _sides(result):
+                    _ask_meta["fantasy_sides"] = _sides(result)
             # Size clamp (2026-07-17: a request blew Gemini's 1M
             # input-token limit — 400 INVALID_ARGUMENT — because a
             # tool result ballooned the contents across rounds).
@@ -8805,6 +8809,28 @@ async def _fantasy_percent_guard(answer, question, _ask_meta, client, ask_model,
     answer, _fixed = _fg.fix_attribution(answer)
     if _fixed:
         _ask_meta["guards"].append("fantasy-attribution")
+    # each side's players and chance stay with that side (2026-10-11 audit)
+    _sides = _ask_meta.get("fantasy_sides") or {}
+    if _fg.wrong_side(answer, _sides):
+        answer = await _stock_answer_rewrite(
+            "fantasy-sides", answer, _ask_meta, client, ask_model, safety_settings, types,
+            _tally_retry_usage,
+            prompt=_fg.wrong_side_prompt(answer, question, _sides),
+            accept=lambda new: not _fg.wrong_side(new, _sides),
+            keep_figures=False,
+            system="You edit a fantasy-football room bot's answer.")
+        _bad = _fg.wrong_side(answer, _sides)
+        if _bad:
+            # the rewrite failed: the wrong side must not ship
+            from discord_bot.guard_floor import gutted as _gutted
+            _trim = answer
+            for _sent in _bad:
+                _trim = _trim.replace(_sent, "")
+            _trim = re.sub(r"\n{3,}", "\n\n",
+                           re.sub(r"(?m)^\s*→\s*$", "", _trim)).strip()
+            if _trim and not _gutted(answer, _trim):
+                answer = _trim
+                _ask_meta["guards"].append("fantasy-sides:stripped")
     est = _ask_meta.get("fantasy_estimates") or {}
     if not _fg.stray_percents(answer, est, question):
         return answer

@@ -68,3 +68,36 @@ def test_a_win_percentage_is_never_credited_to_sleeper_2026_10_10():
     # a projection is Sleeper's, and stays credited to it
     assert fix_attribution("Sleeper projects you at 143.7 points.") == (
         "Sleeper projects you at 143.7 points.", False)
+
+
+_SIDES = {"you_manager": "2Pale (2pale) · Sleeper Lord2Pale",
+          "opp_manager": "Abe (abullish_xyz) · Sleeper ayatollahabdullah",
+          "you_players": ["Jacoby Brissett", "Cam Skattebo", "MarShawn Lloyd", "Mark Andrews",
+                          "Pittsburgh Steelers"],
+          "opp_players": ["Josh Allen", "Chuba Hubbard", "Kyle Pitts", "Denver Broncos",
+                          "Ja'Marr Chase", "Garrett Wilson"],
+          "you_pct": 48, "opp_pct": 52}
+
+
+def test_the_opponents_players_and_chance_given_to_the_asker_2026_10_11():
+    """2Pale was told he had Abe's Allen, Hubbard, Pitts and Denver left,
+    with (most likely) Abe's 52%."""
+    from discord_bot.fantasy_guard import wrong_side
+    ans = ("→ You're down **61.4** to **41.1** against Abe as you hunt for your first win.\n\n"
+           "→ Despite trailing on the board, you hold a **52%** win probability with "
+           "**Josh Allen**, **Chuba Hubbard**, **Kyle Pitts**, and the **Denver Defense** "
+           "still to play.\n\n"
+           "→ Abe's total is backed by **Ja'Marr Chase** and **Garrett Wilson**.")
+    bad = wrong_side(ans, _SIDES)
+    assert len(bad) == 1 and "Josh Allen" in bad[0]
+    right = ("→ You're down 61.4 to 41.1 against Abe.\n\n→ You have Brissett and Andrews "
+             "left at a 48% chance.\n\n→ Abe still has Josh Allen and Kyle Pitts to play.")
+    assert wrong_side(right, _SIDES) == []
+    assert wrong_side("→ You sit at 52% to win.", _SIDES)       # the opponent's number
+
+
+def test_a_shared_last_name_is_not_the_opponents_player():
+    from discord_bot.fantasy_guard import wrong_side
+    s = dict(_SIDES, you_players=_SIDES["you_players"] + ["Michael Wilson"])
+    assert wrong_side("→ You still have Wilson to play.", s) == []
+    assert wrong_side("→ You still have Garrett Wilson to play.", s)

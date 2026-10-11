@@ -184,8 +184,9 @@ def test_situation_is_the_whole_week():
     assert out["roster"]["yet_to_play"] == ["Bijan Robinson (RB, ATL)"], out["roster"]
     assert out["roster"]["remaining_projected"] == 18.2
     assert out["roster"]["players"][0]["actual"] == 27.7 and out["roster"]["players"][0]["game_started"]
-    assert out["matchup"]["manager"].startswith("Tulch"), out["matchup"]
-    assert out["matchup"]["lineup"]["projected_total"] == 0, out["matchup"]
+    assert out["matchup"]["opponent"]["manager"].startswith("Tulch"), out["matchup"]
+    assert out["matchup"]["you"]["points"] == 27.7, out["matchup"]
+    assert out["matchup"]["opponent"]["projected_final"] == 0, out["matchup"]
     assert out["standings"][0]["record"] == "2-0"
     assert "start/sit" in out["note"]
     # unknown member degrades honestly

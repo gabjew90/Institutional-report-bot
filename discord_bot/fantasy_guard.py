@@ -134,3 +134,102 @@ def fix_attribution(answer: str) -> tuple[str, bool]:
     new = re.sub(r"(^|\n|→\s*|[.!?]\s+)(\**)my estimat",
                  lambda m: m.group(1) + m.group(2) + "My estimat", new)
     return new, new != answer
+
+
+# The asker's side and the opponent's, from the situation payload
+# (2026-10-11 audit: "you hold a 52% win probability with Josh Allen,
+# Chuba Hubbard, Kyle Pitts, and the Denver Defense still to play" was
+# said to 2Pale; all four were Abe's, and so most likely was the 52%).
+_YOU_RE = re.compile(r"\b(?:you|your|you're|youre|yours|ya)\b", re.I)
+
+
+def _player_names(rows) -> list[str]:
+    out = []
+    for r in rows or []:
+        label = r.get("player") if isinstance(r, dict) else r
+        if label:
+            out.append(str(label).split(" (")[0].strip())
+    return out
+
+
+def sides(payload) -> dict:
+    """{you_manager, opp_manager, you_players, opp_players, you_pct,
+    opp_pct} from a situation payload, or {} for any other shape."""
+    if not isinstance(payload, dict):
+        return {}
+    m = payload.get("matchup")
+    if not (isinstance(m, dict) and isinstance(m.get("you"), dict)
+            and isinstance(m.get("opponent"), dict)):
+        return {}
+    you, opp = m["you"], m["opponent"]
+    roster = (payload.get("roster") or {}).get("players") or []
+    return {"you_manager": you.get("manager") or "", "opp_manager": opp.get("manager") or "",
+            "you_players": _player_names(roster),
+            "opp_players": _player_names(opp.get("players")),
+            "you_pct": you.get("win_chance_pct"), "opp_pct": opp.get("win_chance_pct")}
+
+
+def _manager_words(label: str) -> list[str]:
+    """'Abe (abullish_xyz) · Sleeper ayatollahabdullah' -> its names."""
+    words = re.findall(r"[A-Za-z0-9_.]{3,}", label or "")
+    return [w for w in words if w.lower() != "sleeper"]
+
+
+def _mentions(sentence: str, name: str, shared_last: frozenset = frozenset()) -> bool:
+    """A player named by full name, last name (unless the other side has a
+    player with that last name too), or a defense by its city."""
+    low = sentence.lower()
+    parts = name.split()
+    forms = {name.lower()}
+    if len(parts) >= 2 and len(parts[-1]) >= 4 and parts[-1].lower() not in shared_last:
+        forms.add(parts[-1].lower())
+    if len(parts) >= 2 and parts[-1].lower() in _NFL_NICKNAMES:
+        forms = {name.lower(), f"{parts[0].lower()} defense", f"{parts[0].lower()} d/st",
+                 f"{parts[0].lower()} dst", f"{parts[-1].lower()} defense"}
+    return any(re.search(r"(?<![a-z])" + re.escape(f) + r"(?![a-z])", low) for f in forms)
+
+
+_NFL_NICKNAMES = frozenset({
+    "cardinals", "falcons", "ravens", "bills", "panthers", "bears", "bengals", "browns",
+    "cowboys", "broncos", "lions", "packers", "texans", "colts", "jaguars", "chiefs",
+    "raiders", "chargers", "rams", "dolphins", "vikings", "patriots", "saints", "giants",
+    "jets", "eagles", "steelers", "49ers", "seahawks", "buccaneers", "titans", "commanders"})
+
+
+def wrong_side(answer: str, s: dict) -> list[str]:
+    """Sentences addressed to the asker that give them the opponent's
+    players or the opponent's win chance, without naming the opponent."""
+    if not answer or not s:
+        return []
+    you_set = set(s["you_players"])
+    opp_only = [p for p in s["opp_players"] if p not in you_set]
+    opp_words = _manager_words(s["opp_manager"])
+    you_last = frozenset(p.split()[-1].lower() for p in s["you_players"] if p.split())
+    bad = []
+    for sent in _SENTENCE_SPLIT_RE.split(answer):
+        if not sent.strip() or not _YOU_RE.search(sent):
+            continue
+        if any(re.search(r"(?<![A-Za-z0-9_])" + re.escape(w) + r"(?![A-Za-z0-9_])", sent, re.I)
+               for w in opp_words):
+            continue        # the sentence names the opponent: his players are his
+        if any(_mentions(sent, p, you_last) for p in opp_only):
+            bad.append(sent.strip())
+            continue
+        pcts = {round(float(v)) for v in _PCT_RE.findall(sent)}
+        if (s.get("opp_pct") is not None and s.get("you_pct") != s.get("opp_pct")
+                and s["opp_pct"] in pcts and s.get("you_pct") not in pcts):
+            bad.append(sent.strip())
+    return bad
+
+
+def wrong_side_prompt(answer: str, question: str, s: dict) -> str:
+    return (
+        "A fantasy-football bot answered the question below, but some sentences "
+        "give the asker the OTHER manager's players or win chance. Rewrite the "
+        "answer with each side right. Keep everything else, same voice and length. "
+        "Output only the answer.\n\n"
+        f"The asker is {s['you_manager']}: {s['you_pct']}% to win; their starters: "
+        f"{', '.join(s['you_players'][:20])}.\n"
+        f"The opponent is {s['opp_manager']}: {s['opp_pct']}% to win; their starters: "
+        f"{', '.join(s['opp_players'][:20])}.\n\n"
+        f"QUESTION: {question}\n\nANSWER:\n{answer}")

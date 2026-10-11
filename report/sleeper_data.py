@@ -810,35 +810,44 @@ def build_topic_payload(
                 if other:
                     opp_roster = next((x for x in rosters
                                        if x.get("roster_id") == other.get("roster_id")), None)
-                    opp = {
-                        "manager": _owner_label(roster_owner.get(other.get("roster_id"), ""),
-                                                users_by_id),
-                        "points_so_far": other.get("points"),
-                        "my_points_so_far": my_m.get("points"),
-                        "lineup": _lineup(opp_roster) if opp_roster else None,
-                    }
-                    if opp["lineup"] and proj:
-                        mine_pts = float(my_m.get("points") or 0)
-                        opp_pts = float(other.get("points") or 0)
+                    opp_lineup = _lineup(opp_roster) if opp_roster else None
+                    mine_pts = float(my_m.get("points") or 0)
+                    opp_pts = float(other.get("points") or 0)
+                    # Two labelled sides (2026-10-11 audit: with the
+                    # opponent under "matchup" beside a "my_points_so_far",
+                    # the answer gave 2Pale Abe's players still to play and
+                    # Abe's win chance). Each side carries its own points,
+                    # starters left, projected final and win chance.
+                    you = {"manager": out["manager"], "points": mine_pts,
+                           "still_to_play": out["roster"]["yet_to_play"],
+                           "playing_now": out["roster"]["playing_now"]}
+                    them = {"manager": _owner_label(
+                                roster_owner.get(other.get("roster_id"), ""), users_by_id),
+                            "points": opp_pts,
+                            "still_to_play": (opp_lineup or {}).get("yet_to_play", []),
+                            "playing_now": (opp_lineup or {}).get("playing_now", []),
+                            "players": (opp_lineup or {}).get("players", [])}
+                    opp = {"you": you, "opponent": them}
+                    if opp_lineup and proj:
                         mine_pct, opp_pct = win_chance(
                             mine_pts, out["roster"]["_remaining_each"],
-                            opp_pts, opp["lineup"]["_remaining_each"])
-                        opp["win_chance_estimate"] = {out["manager"]: mine_pct,
-                                                      opp["manager"]: opp_pct}
-                        # The totals quoted beside the estimate are built
-                        # from the same points, Sleeper's league-scored
-                        # matchup points, so the two cannot disagree.
-                        out["roster"]["projected_total"] = round(
+                            opp_pts, opp_lineup["_remaining_each"])
+                        you["win_chance_pct"], them["win_chance_pct"] = mine_pct, opp_pct
+                        # the totals beside the estimate come from the same
+                        # points, Sleeper's league-scored matchup points
+                        you["projected_final"] = round(
                             mine_pts + sum(out["roster"]["_remaining_each"]), 1)
-                        opp["lineup"]["projected_total"] = round(
-                            opp_pts + sum(opp["lineup"]["_remaining_each"]), 1)
+                        them["projected_final"] = round(
+                            opp_pts + sum(opp_lineup["_remaining_each"]), 1)
+                        out["roster"]["projected_total"] = you["projected_final"]
+                        opp["win_chance_estimate"] = {
+                            f"{you['manager']} (you)": mine_pct,
+                            f"{them['manager']} (opponent)": opp_pct}
         except Exception as e:
             log.info(f"sleeper matchups failed (non-fatal): {e}")
         out["matchup"] = opp or {
             "note": f"No matchup for week {wk} — the season may not have started."}
         out["roster"].pop("_remaining_each", None)
-        if opp and opp.get("lineup"):
-            opp["lineup"].pop("_remaining_each", None)
 
         rows = []
         for r in rosters:
@@ -855,6 +864,11 @@ def build_topic_payload(
             "Everything about this manager's week. Analyse from it: "
             "start/sit is bench vs starter at an eligible slot, the "
             "matchup is lineup vs lineup, the standings give the stakes. "
+            "matchup.you is the asker's side and matchup.opponent the other "
+            "manager's, each with its own points, still_to_play, "
+            "playing_now, projected_final and win_chance_pct: a player "
+            "listed under opponent is never the asker's, and each side's "
+            "percentage is its own. "
             "Each player carries projected, actual (points so far) and "
             "game_state (pre, live, final); yet_to_play NAMES the starters "
             "whose game has not started, playing_now the ones whose game is "
@@ -862,7 +876,7 @@ def build_topic_payload(
             "is still on the board, for both sides. Use those names: never "
             "say 'depending on who is left' when the list is right here, "
             "and never say a side has no one left while playing_now names "
-            "someone. matchup.win_chance_estimate is the bot's own estimate "
+            "someone. win_chance_pct is the bot's own estimate "
             "from points and projections; call it that, never Sleeper's or "
             "Kalshi's Win%, which no API exposes. Projections "
             "missing (null) means the endpoint was down; say so rather "
