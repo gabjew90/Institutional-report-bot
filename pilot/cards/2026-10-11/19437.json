@@ -1,0 +1,741 @@
+{
+ "brief": "Futures slide pre-market, tech-led, as a tanker strike off Qatar pushes Brent to $105 and WTI near $92, lifting the 10-year to 5.33% and the dollar while Bitcoin falls with risk appetite; GS flags that Hormuz-area risk can spread, and notes sovereign-risk concern is spreading from France into Italy and Greece. Industrials cyclicals (CAT, HUBG, QXO, CGNX, ALLE, ROAD, GVA) sell off harder than the broad tape despite relief in rates and oil, leaving cyclicals vs. equal-weight S&P back at recent lows. September FOMC minutes showed all participants backing a 25bp hike on insufficient inflation progress, upside inflation risk and balanced labor risk; GS still expects a second hike in December but sees a strong chance further tightening proves unnecessary. Ahead of Friday's DAL print (6% implied move), GS calls positioning mixed (6-7/10): consensus sits below DAL's guide while buyside expects a Q4 acceleration. Separately, GS argues the market is mispricing Corteva (CTVA) post Vylor (VYLR) spinoff - ag chem is a specialty, not commodity, business, and FMC is a poor comp - setting a $20 CTVA target (~38% upside) and initiating VYLR at Buy, $87 target, on moat, licensing and M&A optionality.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "US S&P futures were down about 30bps pre-market, led on the downside by technology shares.",
+   "anchor": "US S&P futures down 30bps led on the downside in technology shares",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Samsung fell about 300bps despite record profits and TSMC also failed to excite markets.",
+   "anchor": "Samsung (down 300bps despite record profits) & TSMC are failing to excite markets",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "KOSPI led overseas markets down about 260bps, Japan fell 140bps, and Europe held up better, down 50-75bps.",
+   "anchor": "KOSPI leading the downside overseas off 260bps, Japan down 140bps with Europe holding in better down 50-75bps",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Geopolitical concerns in France are spreading into Italian and Greek sovereign risk.",
+   "anchor": "Geopolitical concerns in France are spreading beyond into Italian and Greek sovereign risk",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FISCAL",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Crude spiked about 4%, with Brent at $105 and WTI approaching $92, after a tanker was struck off Qatar.",
+   "anchor": "crude spiking up 4% with Brent to $105, WTI approaching $92 on the back of a tanker struck off Qatar",
+   "topic": "Iran oil shock risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "GS flags the tanker strike as a reminder that attacks can extend beyond the immediate Strait of Hormuz.",
+   "anchor": "reminder that attacks can extend beyond the immediate Straight of Hormuz",
+   "topic": "Iran oil shock risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "The 10-year yield rose 4bps to a local high of 5.33%.",
+   "anchor": "10-year back up 4bps to local highs 5.33%",
+   "topic": "Iran oil shock risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "The dollar moved higher, with DXY above $102.",
+   "anchor": "dollar moving as well DXY above $102",
+   "topic": "Iran oil shock risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Bitcoin fell to $82.8k along with broader risk appetite.",
+   "anchor": "Bitcoin down with broader risk appetite $82.8k",
+   "topic": "Iran oil shock risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Client inbounds questioned why industrials cyclicals were selling off harder intraday even as rates and oil pulled back.",
+   "anchor": "why are cyclicals getting hit harder over the day with relief in rates and oil",
+   "topic": "industrials cyclicals selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Caterpillar (CAT) shares were down about 6% pre-market.",
+   "anchor": "CAT -6% \u2026. What do UPS headlines mean?",
+   "topic": "industrials cyclicals selloff",
+   "status": "level",
+   "instruments": [
+    "CAT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Hub Group (HUBG) and QXO shares were each down about 7% pre-market, with QXO on heavy volume.",
+   "anchor": "HUBG -7% \u2026 QXO -7% on heavy volume",
+   "topic": "industrials cyclicals selloff",
+   "status": "level",
+   "instruments": [
+    "HUBG",
+    "QXO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Cognex (CGNX) shares were down about 8% pre-market.",
+   "anchor": "lack of resilient in aerospace \u2026 CGNX -8%",
+   "topic": "industrials cyclicals selloff",
+   "status": "level",
+   "instruments": [
+    "CGNX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Allegion (ALLE) shares were down about 5% pre-market amid competitive news.",
+   "anchor": "ALLE -5% what to make of the competitive news",
+   "topic": "industrials cyclicals selloff",
+   "status": "level",
+   "instruments": [
+    "ALLE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Construction Partners (ROAD) and Granite Construction (GVA) shares were each down about 5% pre-market.",
+   "anchor": "WSO where is the bottom \u2026 ROAD GVA -5%",
+   "topic": "industrials cyclicals selloff",
+   "status": "level",
+   "instruments": [
+    "ROAD",
+    "GVA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "US cyclicals versus the equal-weight S&P have fallen back to their recent lows.",
+   "anchor": "Another way to look at the recent weakness in industrials is US cyclicals vs. equal weight S&P",
+   "topic": "industrials cyclicals selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "The September FOMC minutes showed all participants supported a 25bp hike to a 3.75-4% target range for the federal funds rate.",
+   "anchor": "\"all\" participants supported raising the target range for the federal funds rate by 25bp to 3.75-4%",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "The September FOMC minutes said participants judged progress on lowering inflation had not been sufficient.",
+   "anchor": "judging that progress on lowering inflation had not been \"sufficient.\"",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Almost all FOMC participants in September assessed that risks to inflation were tilted to the upside.",
+   "anchor": "\"Almost all\" participants assessed that risks to inflation were \"tilted to the upside,\"",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "FOMC minutes said risks to the labor market had diminished and were now broadly balanced as of the September meeting.",
+   "anchor": "while risks to the labor market had \"diminished\" and were now \"broadly balanced.\"",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Many FOMC participants framed the September hike as prudent on risk-management grounds against inflation remaining persistently above target.",
+   "anchor": "\"Many\" participants framed the hike as \"prudent on risk-management grounds\" against inflation remaining \"persistently above target,\"",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "A number of FOMC participants viewed the September hike as necessary under their modal outlook rather than for risk-management reasons.",
+   "anchor": "while \"a number\" viewed it as \"necessary under their modal outlook rather than for risk-management reasons.\"",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Most FOMC participants assessed in September that another rate increase would likely be appropriate by year end.",
+   "anchor": "\"Most\" participants assessed that another increase would likely be \"appropriate by year end,\"",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "by year end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "FOMC minutes stressed the Committee would approach each meeting with an open mind, with future decisions depending on incoming information.",
+   "anchor": "though they stressed the Committee would approach each meeting with \"an open mind,\" as future decisions \"would depend on incoming information.\"",
+   "topic": "Fed December hike odds",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Following August core PCE data and recent Fed speeches, Goldman Sachs expects a second Fed hike in December but sees a strong chance the FOMC ultimately concludes further tightening is unnecessary.",
+   "anchor": "we expect the second Fed hike in December, though we see a strong chance the FOMC ultimately concludes further tightening is unnecessary.",
+   "topic": "Fed December hike odds",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs rates positioning into Delta's (DAL) print as a 6-7 out of 10, noting DAL has materially outperformed other travel names.",
+   "anchor": "we think positioning is a 6-7/10 with an interesting set up as DAL has materially outperformed other parts of travel",
+   "topic": "DAL earnings preview",
+   "status": "level",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Consensus estimates for Delta (DAL) sit well below the low end of the company's guidance, while buyside investors expect an acceleration in topline growth in Q4.",
+   "anchor": "consensus is well below the low end of their guide and buyside expects an acceleration in topline in Q4.",
+   "topic": "DAL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Delta (DAL) reports earnings Friday October 9th pre-market at 6:30am with the call at 10am, and the options market implies a 6% move.",
+   "anchor": "DAL reports Friday October 9th pre-market at 6:30am with the call at 10am. 6% implied move.",
+   "topic": "DAL earnings preview",
+   "status": "level",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Delta's (DAL) full-year guidance currently stands at $6.50-7.50 in EPS and $3-4 billion in free cash flow.",
+   "anchor": "Full year guidance right now for $6.50-7.50 in EPS, $3-4bn in free cash flow.",
+   "topic": "DAL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "full year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Street consensus EPS for Delta (DAL) sits at $5.89, below the low end of guidance, with topline growth expected to accelerate to +17% year-over-year in Q4.",
+   "anchor": "Street is below the low end of EPS $5.89 with topline growth expected to accelerate to +17% year over year growth in Q4.",
+   "topic": "DAL earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Delta (DAL) is more protected than peers on costs due to better margins and owning the Trainer refinery, which has driven the stock to relative highs but also sets an elevated bar into earnings.",
+   "anchor": "DAL is more protected on balance with better margins and owning Trainer. That has led the stock to relative highs but also sets an elevated bar in this one.",
+   "topic": "DAL earnings preview",
+   "status": "released",
+   "instruments": [
+    "DAL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Vylor (VYLR), the seed business Corteva (CTVA) spun off, represented approximately two-thirds of old Corteva's sales and EBITDA.",
+   "anchor": "Vylor (VYLR), its seed business, which represents approximately 2/3s of old CTVA's sales and EBITDA.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "released",
+   "instruments": [
+    "CTVA",
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "In the five trading days after the spinoff, about 62 million VYLR shares traded versus more than 465 million CTVA shares.",
+   "anchor": "In the five days post spin, ~62mn shares of VYLR have traded versus >465mn CTVA shares.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "released",
+   "instruments": [
+    "CTVA",
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Corteva (CTVA) trades at 9.2x EV/EBITDA on Goldman Sachs' Q5-Q8 estimates versus the bank's target multiple of 10.5x.",
+   "anchor": "CTVA is trading at 9.2x EV/EBITDA on Q5-Q8 vs our target multiple of 10.5x.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "level",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs views Corteva's (CTVA) ag chem business as a specialty business rather than a commoditized one, despite investor perception otherwise.",
+   "anchor": "however in our view ag chem is a specialty business.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "released",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Corteva's (CTVA) ag chem segment has patent, brand, formulation, labeling and distribution protection, leaving profitability much less volatile than commodity chemicals.",
+   "anchor": "CTVA's ag chem has some patent protection, brand protection, formulation protection, labeling protection and distribution protection leaving profitability much less volatile than commodity chems.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "released",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs believes FMC is a poor comp for Corteva (CTVA) because FMC is highly levered, facing a large patent expiry, and executing an asset restructuring.",
+   "anchor": "we believe FMC is a poor comp as it is: a) highly levered, b) facing a large patent expiry, and c) executing an asset restructuring.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "released",
+   "instruments": [
+    "CTVA",
+    "FMC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "FMC traded at an average EV/EBITDA of 9.1x from 2020-24, versus its current 7.7x.",
+   "anchor": "Before these issues arose, FMC traded at an average EV/EBITDA of 9.1x from 2020-24 (vs current 7.7x).",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "level",
+   "instruments": [
+    "FMC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs applies a $1.75 billion NPV deduction in its enterprise value for Corteva (CTVA) to account for PFAS and pension liabilities.",
+   "anchor": "We use $1.75bn of NPV in our EV to account for these liabilities.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "level",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Corteva's (CTVA) guidance midpoint of $600 million a year in free cash flow for 2027-29 implies a greater than 6% FCF yield, well above Goldman Sachs' 2.2% coverage average.",
+   "anchor": "Midpoint of guidance is $600mn/yr of FCF in 2027-29 for CTVA, which represents a >6% FCF yield, well above our 2.2% coverage average.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "forecast",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs uses Syngenta's 2004-2017 average forward EV/EBITDA multiple of 10.7x as the comp to value Corteva (CTVA) at 10.5x in its base case.",
+   "anchor": "Between 2004 and 2017 Syngenta traded at an average forward EV/EBITDA multiple of 10.7x; we value CTVA at 10.5x in our base case.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "target",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs sets a 12-month price target of $20 for Corteva (CTVA), implying about 38% upside from current levels.",
+   "anchor": "it will trade up to 10.5x EV/EBITDA over the next year which drives our price target of $20, implying ~38% upside from current levels.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "target",
+   "instruments": [
+    "CTVA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs initiates coverage on Vylor (VYLR) with a Buy rating and an $87 price target, implying 19% upside.",
+   "anchor": "We are initiating research coverage on Vylor Inc. (VYLR) with a Buy rating and an $87 price target (+19%).",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "target",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Vylor (VYLR) and Bayer have maintained stable combined top-two market share over the last 25 years, evidencing wide moats in the seed business.",
+   "anchor": "The business has wide moats as evidenced by the combined market share stability of the top two companies (Vylor and Bayer) over the last 25 years.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "released",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "25 years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs does not expect smaller producers to make share gains against Vylor (VYLR) and Bayer over the next five years.",
+   "anchor": "We do not see smaller producers necessarily making gains against the big two in the next five years.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "forecast",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next five years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs forecasts Vylor's (VYLR) base business growth at approximately 4% revenue and approximately 8% EBITDA.",
+   "anchor": "This leads to our ~4% revenue and ~8% EBITDA base business growth.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "forecast",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Vylor (VYLR) believes its new Xpedite technology overcomes the cost-of-goods issue in hybrid wheat, which could be a differentiator.",
+   "anchor": "Vylor believes its new Xpedite technology overcomes the COGS issue which could be a differentiator.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "forecast",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Out-licensing gene editing discoveries to third parties would greatly increase Vylor's (VYLR) total addressable market.",
+   "anchor": "This out licensing greatly increases the TAM for VYLR.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "forecast",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs says M&A could accelerate Vylor's (VYLR) growth given its new valuation multiple and ability to push gene-edited enhancements into purchased germplasm.",
+   "anchor": "M&A could accelerate growth as VYLR's new multiple and ability to push gene edited enhancements into purchased germplasm will give it greater opportunities.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "forecast",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS U.S. Industrials & Materials FOMC CTVA VYLR DAL",
+   "claim": "Goldman Sachs believes Vylor (VYLR) is the highest quality ag company and warrants 15-20x EBITDA, with a midpoint of 17.5x in its base case.",
+   "anchor": "We think a range of 15-20x EBITDA is warranted with a midpoint of 17.5x as our base case.",
+   "topic": "Corteva-Vylor spinoff valuation",
+   "status": "target",
+   "instruments": [
+    "VYLR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19437__gs-u-s-industrials-materials-fomc-ctva-vylr-dal-8-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 50,
+  "matched": 50,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 4,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
