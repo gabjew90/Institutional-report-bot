@@ -40,18 +40,89 @@ def compute(sector_weights: dict, holdings: dict) -> dict | None:
             "broad": round(tech_pct + sum(adds.values()), 1)}
 
 
+def ex_top_return(spy_ytd: float, holdings: dict, ytd: dict) -> dict | None:
+    """Year-to-date return of the S&P without its ten largest holdings.
+
+    Each holding's start-of-year weight is backed out of today's weight
+    (w0 = w * (1 + R) / (1 + r)); the rest of the index returned
+    (R - sum(w0 * r)) / (1 - sum(w0)). Exact for a buy-and-hold
+    cap-weighted index, close for the real one (rebalances and share
+    changes are ignored). Inputs are fractions; output is percent.
+    2026-10-11 audit: "what would the S&P gain be without the top 10"
+    got an equal-weight range and no number."""
+    if spy_ytd is None or not holdings:
+        return None
+    rows, w0_sum, contrib = [], 0.0, 0.0
+    for sym, w in holdings.items():
+        r = ytd.get(sym)
+        if r is None:
+            return None
+        w0 = w * (1 + spy_ytd) / (1 + r)
+        w0_sum += w0
+        contrib += w0 * r
+        rows.append({"symbol": sym, "weight_pct": round(100 * w, 1), "ytd_pct": round(100 * r, 1)})
+    if w0_sum >= 1:
+        return None
+    rest = (spy_ytd - contrib) / (1 - w0_sum)
+    return {"spx_ytd_pct": round(100 * spy_ytd, 1),
+            "top_holdings": rows,
+            "top_contribution_pts": round(100 * contrib, 1),
+            "ex_top_ytd_pct": round(100 * rest, 1)}
+
+
+def _spy_holdings() -> tuple[dict, dict]:
+    import yfinance as yf
+    fd = yf.Ticker("SPY").funds_data
+    sectors = dict(fd.sector_weightings or {})
+    holdings = {str(sym).upper(): float(row["Holding Percent"])
+                for sym, row in fd.top_holdings.iterrows()}
+    return sectors, holdings
+
+
+def ex_top10() -> dict | None:
+    """ex_top_return for SPY's current top ten holdings, cached six hours;
+    None if Yahoo fails. Alphabet's two share classes are two holdings."""
+    now = time.time()
+    cached = _cache.get("ex_top10")
+    if cached and now - cached[0] < _CACHE_SECONDS:
+        return cached[1]
+    try:
+        import datetime as _dt
+        import yfinance as yf
+        import math
+        _, holdings = _spy_holdings()
+        # Yahoo spells share classes with a hyphen (BRK.B is BRK-B)
+        holdings = {s.replace(".", "-"): w for s, w in holdings.items()}
+        syms = ["SPY"] + list(holdings)
+        year = _dt.date.today().year
+        close = yf.download(syms, start=f"{year - 1}-12-20", progress=False,
+                            auto_adjust=True)["Close"]
+        base = close.loc[:f"{year - 1}-12-31"].iloc[-1]
+        last = close.iloc[-1]
+        ytd = {}
+        for s in syms:
+            v = float(last[s] / base[s] - 1) if s in close.columns else float("nan")
+            if not math.isfinite(v):
+                return None     # a name Yahoo could not price: no estimate
+            ytd[s] = v
+        value = ex_top_return(ytd["SPY"], holdings, ytd)
+        if value:
+            value["as_of"] = str(close.index[-1].date())
+    except Exception as e:
+        log.info(f"index_weights: ex-top-10 unavailable: {e}")
+        return None
+    if value:
+        _cache["ex_top10"] = (now, value)
+    return value
+
+
 def tech_share() -> dict | None:
     """The computed shares, cached six hours; None if Yahoo fails."""
     now = time.time()
     if _cache["value"] and now - _cache["at"] < _CACHE_SECONDS:
         return _cache["value"]
     try:
-        import yfinance as yf
-        fd = yf.Ticker("SPY").funds_data
-        sectors = dict(fd.sector_weightings or {})
-        top = fd.top_holdings
-        holdings = {str(sym).upper(): float(row["Holding Percent"])
-                    for sym, row in top.iterrows()}
+        sectors, holdings = _spy_holdings()
         value = compute(sectors, holdings)
     except Exception as e:
         log.info(f"index_weights: SPY holdings unavailable: {e}")

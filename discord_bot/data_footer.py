@@ -26,7 +26,7 @@ FEEDS: dict[str, str] = {
     "lookup_research": "bank research notes",
     "lookup_ticker_snapshot": "company and trading data (Yahoo)",
     "lookup_treasury_auctions": "Treasury auction results (TreasuryDirect)",
-    "spy_holdings": "S&P 500 weights from SPY's holdings (Yahoo)",
+    "spy_holdings": "S&P 500 figures from SPY's holdings and prices (Yahoo)",
     "ticker_news": "news search (Google)",
     "ticker_primer": "company background (Google)",
     "query_data": "research database",
@@ -109,6 +109,9 @@ def footer(tool_trace: list[dict] | None, answer: str | None = None) -> str:
         if (entry.get("tool") == "query_data" and isinstance(args, dict)
                 and "chat_messages" in str(args.get("sql") or "")):
             continue            # the room's own chat, like search_chat_messages
+        if (entry.get("tool") == "query_data" and isinstance(args, dict)
+                and not re.search(r"\bfrom\b", str(args.get("sql") or ""), re.I)):
+            continue            # "SELECT 1" reads no table (2026-10-11 audit)
         label = _label(entry)
         if label and label not in seen:
             seen.append(label)

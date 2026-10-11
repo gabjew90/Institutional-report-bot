@@ -32,3 +32,33 @@ def gutted(before: str, after: str) -> bool:
     if b < _MIN_WORDS:
         return False
     return _words(after) < _KEEP_FRACTION * b
+
+
+# Text a rewrite model writes about its task rather than as the reply.
+_ECHO_RE = re.compile(
+    r"->|=>|```|\bkeep it simple\b|\brewrite\b|\boutput only\b|\bthe reply\b"
+    r"|\boriginal (?:reply|answer)\b|\bhere(?:'s| is) the\b", re.I)
+
+
+def plausible_rewrite(before: str, after: str) -> bool:
+    """True when a rewrite still reads as a reply that can ship.
+
+    2026-10-11 audit: the naming check asked for a rewrite that named the
+    member, got back the model's working notes ("**...)` -> Keep it
+    simple: `→ **Week 5 Matchup:** ... up **25.3 points"), saw the name in
+    it and shipped it. Every check that swaps in a rewrite also asks this:
+    no task echo or code marks the original did not have, no unclosed
+    bold, and a length in proportion to the original."""
+    if not after or not after.strip():
+        return False
+    for mark in ("`",):
+        if mark in after and mark not in (before or ""):
+            return False
+    if _ECHO_RE.search(after) and not _ECHO_RE.search(before or ""):
+        return False
+    if after.count("**") % 2:
+        return False
+    b, a = _words(before), _words(after)
+    if b >= 8 and not (0.5 * b <= a <= 2.0 * b):
+        return False
+    return True

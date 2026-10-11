@@ -71,3 +71,12 @@ def test_a_league_record_counts_as_used():
               "figs": sorted(_DF.payload_figs('{"record": "1-3", "fpts": 488.0}'))}]
     assert "Sleeper league" in _DF.footer(trace, "DeepFried is 1-3 this season")
     assert _DF.footer(trace, "Owen and spockbones argued about APLD") == ""
+
+
+def test_a_probe_query_is_not_a_source_2026_10_11():
+    """"Data: research database" was printed for a SELECT 1 probe."""
+    from discord_bot.data_footer import footer
+    trace = [{"tool": "query_data", "args": {"sql": "SELECT 1"}, "status": "ok"}]
+    assert footer(trace, "the top 10 are 38% of the index") == ""
+    real = [{"tool": "query_data", "args": {"sql": "SELECT count(*) FROM pdf_files"}, "status": "ok"}]
+    assert "research database" in footer(real, "120 notes")

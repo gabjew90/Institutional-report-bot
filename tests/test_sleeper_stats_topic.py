@@ -155,3 +155,16 @@ def test_situation_names_who_has_not_played_and_what_is_left():
     # once a game had been played (2026-10-09)
     assert mine["projected_total"] == 38.9
     assert "yet_to_play" in out["note"] and "who is left" in out["note"]
+
+
+def test_projections_for_players_the_question_names_2026_10_11():
+    """"Michael Wilson is the better pick for DeepFried instead of Odunze?"
+    got the league's top 15 projections, which held neither player."""
+    rosters = [{"owner_id": "u1", "starters": ["10"], "players": ["10", "11", "12"]},
+               {"owner_id": "u2", "starters": ["20"], "players": ["20"]}]
+    names = {"10": "Michael Wilson (WR, ARI)", "11": "Rome Odunze (WR, CHI)",
+             "12": "Josh Allen (QB, BUF)", "20": "Mike Evans (WR, TB)"}
+    got = SD._players_named("is wilson the better pick instead of Odunze?", rosters,
+                            lambda ids: {i: names[i] for i in ids if i in names})
+    assert [(p, slot) for p, _, _, slot in got] == [("10", "starter"), ("11", "bench")]
+    assert SD._players_named("start him?", rosters, lambda ids: names) == []

@@ -339,9 +339,14 @@ def test_football_channel_does_not_swallow_stronger_shapes_or_banter():
 def test_channel_fallback_does_not_prefetch_a_guessed_topic():
     # A player-news ask has no league topic; injecting standings would
     # label an irrelevant payload authoritative.
-    for q in ("any injury news on cmc", "is bijan a good start", "stream a defense this week"):
+    for q in ("any injury news on cmc", "stream a defense this week"):
         r = R.classify(q, fantasy_enabled=True, channel_name=_FC)
         assert r.shape == R.FANTASY and r.prefetch == [], (q, r.prefetch)
+    # A start/sit question fetches the named player's projection, which is
+    # his data, not a guessed topic (2026-10-11).
+    r = R.classify("is bijan a good start", fantasy_enabled=True, channel_name=_FC)
+    assert r.prefetch == [(R.T_FANTASY, {"topic": "projections",
+                                         "players": "is bijan a good start"})], r.prefetch
     # One that does name a topic still prefetches it.
     r = R.classify("whos winning this week", fantasy_enabled=True, channel_name=_FC)
     assert r.prefetch == [(R.T_FANTASY, {"topic": "matchups"})], r.prefetch
@@ -774,3 +779,10 @@ def test_tech_share_of_the_index_gets_both_figures_owner_2026_10_10():
 def test_tech_share_ignores_technically_and_own_positions():
     assert R.tech_share_note("how much of the s&p is technically overbought") == ""
     assert R.tech_share_note("how much of my spy calls are tech") == ""
+
+
+def test_start_sit_prefetches_named_players_2026_10_11():
+    q = "Michael Wilson is the better pick for DeepFried instead of Odunze, right?"
+    r = R.classify(q, fantasy_enabled=True, channel_name="🏈-fantasy-football-yapping-🏈",
+                   asker_manager="bankerkyle")
+    assert (R.T_FANTASY, {"topic": "projections", "players": q}) in r.prefetch

@@ -5464,26 +5464,32 @@ async def _ask_02_call_model_with_tools(
         _ask_meta["guards"].append("superlative")
     # "what % of the S&P is tech": the broad share and the IT sector, both
     # (ask_router.tech_share_note, owner 2026-10-10)
-    _tech_share = ""
-    if _ask_router.is_tech_share_question(question):
+    # S&P questions answered from SPY's holdings, computed in code
+    # (report/index_weights.py): the tech share (owner 2026-10-10) and the
+    # return without the top 10 (2026-10-11 audit).
+    from report import index_weights as _iw
+    for _iw_ask, _iw_data, _iw_note, _iw_guard in (
+            (_ask_router.is_tech_share_question, _iw.tech_share,
+             _ask_router.tech_share_note, "tech-share"),
+            (_ask_router.is_ex_top_question, _iw.ex_top10,
+             _ask_router.ex_top_note, "ex-top-10")):
+        if not _iw_ask(question):
+            continue
         try:
-            from report.index_weights import tech_share as _tech_share_data
-            _ts = await asyncio.to_thread(_tech_share_data)
+            _iw_val = await asyncio.to_thread(_iw_data)
         except Exception as e:
-            log.info(f"/ask: tech share data failed (non-fatal): {e}")
-            _ts = None
-        _tech_share = _ask_router.tech_share_note(question, _ts)
-        if _ts:
+            log.info(f"/ask: {_iw_guard} data failed (non-fatal): {e}")
+            _iw_val = None
+        if _iw_val:
             # a source like any tool payload: the grounding net must not
             # discard the computed figures for a search-only retry
             _ask_tool_trace.append({
-                "tool": "spy_holdings", "args": {}, "status": "ok",
-                "via": "prefetch", "result_chars": len(str(_ts)),
-                "figs": _trace_figs(_ts), "excerpt": _trace_excerpt(_ts)})
-    if _tech_share:
-        contents.append(types.Content(role="user",
-                                      parts=[types.Part.from_text(text=_tech_share)]))
-        _ask_meta["guards"].append("tech-share")
+                "tool": "spy_holdings", "args": {"figure": _iw_guard}, "status": "ok",
+                "via": "prefetch", "result_chars": len(str(_iw_val)),
+                "figs": _trace_figs(_iw_val), "excerpt": _trace_excerpt(_iw_val)})
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_iw_note(question, _iw_val))]))
+        _ask_meta["guards"].append(_iw_guard)
     # "Weigh in on this" on another member's question: answer about that
     # member, not the asker (ask_router.deferred_question, 2026-10-04).
     if getattr(_ask_route, "deferred_author", ""):
@@ -6431,7 +6437,8 @@ async def _ask_05_strip_asker_mockery(
                     _fid_answer, _ = _clean_voice_violations(
                         _fid_answer
                     )
-                if _fid_answer and not _clapback_fidelity_violations(
+                from discord_bot.guard_floor import plausible_rewrite
+                if plausible_rewrite(answer, _fid_answer) and not _clapback_fidelity_violations(
                         _fid_answer, _fid_material):
                     answer = _fid_answer
                     log.info("/ask: fidelity rewrite accepted")
@@ -6756,7 +6763,8 @@ async def _ask_06_roast_subject_guards(
                         _nm_answer = ""
                     if _nm_answer:
                         _nm_answer, _ = _clean_voice_violations(_nm_answer)
-                    _nm_ok = bool(_nm_answer) and any(
+                    from discord_bot.guard_floor import plausible_rewrite
+                    _nm_ok = plausible_rewrite(answer, _nm_answer) and any(
                         re.search(rf"\b{re.escape(h)}\b", _nm_answer,
                                   re.I)
                         for h in (_nm_disp, _nm_uname) if len(h) >= 3
@@ -8673,7 +8681,9 @@ async def _stock_answer_rewrite(name, answer, _ask_meta, client, ask_model, safe
         log.warning(f"/ask: {name} rewrite failed (non-fatal): {e}")
         return answer
     new, _ = _clean_voice_violations(new)
-    if new and (not keep_figures or _df.numeric_cores(answer) <= _df.numeric_cores(new)) \
+    from discord_bot.guard_floor import plausible_rewrite
+    if plausible_rewrite(answer, new) \
+            and (not keep_figures or _df.numeric_cores(answer) <= _df.numeric_cores(new)) \
             and accept(new):
         log.info(f"/ask: {name} rewrite applied")
         return new

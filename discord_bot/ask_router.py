@@ -586,8 +586,21 @@ def _as_fantasy(r: "Route", q: str, reason: str, *,
         args: dict = {"topic": topic}
         if topic and (topic != "roster"):
             prefetch.append((T_FANTASY, args))
+    # A start/sit question names players: their projections, wherever they
+    # are rostered (2026-10-11 audit: Wilson vs Odunze for another manager
+    # was answered from memory, since only the asker's own week was fetched).
+    if _START_SIT_RE.search(q) and not any(
+            t == T_FANTASY and a.get("topic") == "projections" for t, a in prefetch):
+        prefetch.append((T_FANTASY, {"topic": "projections", "players": q}))
     r.prefetch = prefetch
     return r
+
+
+_START_SIT_RE = re.compile(
+    # "start" as a lineup word, not "when does the game start"
+    r"\b(?:start(?!s?\s*(?:at|time)\b)(?<!game\sstart)(?<!kick\sstart)|sit"
+    r"|better\s+(?:pick|play|start|option|flex)|instead\s+of|flex"
+    r"|swap|who\s+should\s+(?:i|he|she|they)\s+(?:start|play))\b", re.I)
 
 
 def fantasy_topic(question: str, *, default: str | None = "standings") -> str | None:
@@ -753,6 +766,40 @@ _TECH_SHARE_RE = re.compile(
 
 def is_tech_share_question(question: str) -> bool:
     return bool(_TECH_SHARE_RE.search(asker_text(question)))
+
+
+# "What would the S&P gain for the year be if you removed the top 10"
+# (2026-10-11 audit: answered with an equal-weight range, no number).
+_EX_TOP_RE = re.compile(
+    rf"\b(?:without|excluding|ex|exclude|remove[ds]?|removing|minus|strip(?:ping)?\s+out|take\s+out)"
+    rf"\s+(?:the\s+)?(?:top|biggest|largest)\s+(?:10|ten)\b[^?\n]{{0,60}}\b{_INDEX_RE}\b"
+    rf"|\b{_INDEX_RE}\b[^?\n]{{0,60}}\b(?:without|excluding|ex|minus|remove[ds]?|removing)"
+    rf"\s+(?:the\s+)?(?:top|biggest|largest)\s+(?:10|ten)\b", re.I)
+
+
+def is_ex_top_question(question: str) -> bool:
+    return bool(_EX_TOP_RE.search(asker_text(question)))
+
+
+def ex_top_note(question: str, data: dict | None = None) -> str:
+    """The note for a "the S&P without its top 10" question, or ''."""
+    if not is_ex_top_question(question):
+        return ""
+    if not data:
+        return ("S&P 500 WITHOUT ITS TOP 10: the computed figures are unavailable "
+                "right now. Say so; do not give an equal-weight index or any range "
+                "as the answer.")
+    names = ", ".join(f"{h['symbol']} {h['ytd_pct']:+}%" for h in data["top_holdings"])
+    return (
+        f"S&P 500 WITHOUT ITS TOP 10, computed from SPY's holdings and Yahoo prices "
+        f"through {data['as_of']}. Authoritative: quote these, do not search. SPY "
+        f"year to date: {data['spx_ytd_pct']:+}%. Its ten largest holdings "
+        f"(Alphabet's two share classes count as two) added "
+        f"{data['top_contribution_pts']} points of that: {names}. The other "
+        f"holdings together: {data['ex_top_ytd_pct']:+}% year to date. Lead with "
+        f"that number, then the contribution, and say it is an estimate that "
+        f"backs out each name's start-of-year weight and ignores index changes "
+        f"during the year.")
 
 
 def tech_share_note(question: str, data: dict | None = None) -> str:
@@ -947,6 +994,9 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if _TECH_SHARE_RE.search(q):
         # a current weight from a search; tech_share_note says which two
         r.shape, r.reason = HISTORICAL_STAT, "tech share of the index"
+        return r
+    if _EX_TOP_RE.search(q):
+        r.shape, r.reason = HISTORICAL_STAT, "index return without its top 10"
         return r
     if _STAT_RE.search(q):
         r.shape, r.reason = HISTORICAL_STAT, "historical-statistic shape"

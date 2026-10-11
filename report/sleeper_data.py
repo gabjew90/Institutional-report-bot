@@ -349,6 +349,48 @@ def _name1(pid, resolver) -> str:
     return got[0] if got else "?"
 
 
+# Surnames that are everyday words: matched only by the full name, so
+# "my young wr" is not Bryce Young.
+_WORD_SURNAMES = frozenset({
+    "young", "love", "hill", "white", "brown", "green", "king", "price", "rice",
+    "hunt", "bell", "cook", "long", "little", "wood", "worthy", "waddle", "golden",
+    "pace", "wells", "banks", "mayer", "booth", "guy", "hall", "ward", "hand"})
+
+
+def _players_named(text: str, rosters: list[dict], resolver) -> list[tuple]:
+    """[(player_id, label, owner_id, slot)] for every rostered player the
+    text names by full name, or by last name when no other rostered
+    player shares it. Labels are the resolver's "Name (POS, TEAM)"."""
+    low = (text or "").lower()
+    if not low:
+        return []
+    owner_slot: dict[str, tuple[str, str]] = {}
+    for r in rosters or []:
+        starters = {str(p) for p in (r.get("starters") or []) if p}
+        for p in r.get("players") or []:
+            owner_slot[str(p)] = (str(r.get("owner_id") or ""),
+                                  "starter" if str(p) in starters else "bench")
+    ids = list(owner_slot)
+    labels = dict(zip(ids, _names(ids, resolver)))
+    full = {pid: lab.split(" (")[0].strip() for pid, lab in labels.items()
+            if not lab.startswith("id:")}
+    last_count: dict[str, int] = {}
+    for name in full.values():
+        last = name.split()[-1].lower() if name.split() else ""
+        last_count[last] = last_count.get(last, 0) + 1
+
+    def _says(word: str) -> bool:
+        return re.search(r"(?<![a-z])" + re.escape(word) + r"(?![a-z])", low) is not None
+
+    out = []
+    for pid, name in full.items():
+        last = name.split()[-1].lower() if name.split() else ""
+        if _says(name.lower()) or (len(last) >= 4 and last_count.get(last) == 1
+                                   and last not in _WORD_SURNAMES and _says(last)):
+            out.append((pid, labels[pid], *owner_slot[pid]))
+    return out[:6]
+
+
 def _still_to_come(row: dict) -> float:
     """Projected points a starter has left: the whole projection before
     kickoff, the unscored part while his game is live, none after."""
@@ -464,6 +506,7 @@ def build_topic_payload(
     week: int | None = None,
     member: str | None = None,
     player_name_resolver=None,
+    players: str | None = None,
 ) -> dict:
     """Compose Sleeper API calls into one compact dict for the model.
 
@@ -977,6 +1020,33 @@ def build_topic_payload(
                     "projected points."
                 ),
             }
+        named = _players_named(players, rosters, resolver) if players else []
+        if named:
+            # The players the question named, wherever they are rostered
+            # (2026-10-11 audit: "Michael Wilson is the better pick for
+            # DeepFried instead of Odunze?" got the league's top 15, which
+            # held neither, and the answer was written from memory).
+            out["players_asked"] = [
+                {"player": label,
+                 "pts": round((proj.get(pid) or {}).get("pts_ppr") or 0, 1),
+                 "has_projection": bool((proj.get(pid) or {}).get("pts_ppr")),
+                 "manager": _owner_label(owner, users_by_id),
+                 "slot": slot}
+                for pid, label, owner, slot in named]
+            out["note"] = (
+                "players_asked are the players the question named, with "
+                "this week's projection and who has them. has_projection "
+                "false means no projection this week (out, injured or on "
+                "bye): say that, never guess a number. A start/sit answer "
+                "compares these projections; injuries, targets, ranks and "
+                "matchups not in this payload are not stated.")
+            out["status"] = "ok"
+            return out
+        if players:
+            return {"status": "empty",
+                    "note": "The question names no rostered player. A start/sit "
+                            "answer about the asker's own team uses the "
+                            "situation payload's roster projections."}
         sid = _resolve_member(member or "", users_by_id)
         slot_of: dict[str, str] = {}
         if sid:

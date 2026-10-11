@@ -2111,6 +2111,15 @@ def _build_fantasy_league_tool():
                                 "name) — for roster/projections/stats."
                             ),
                         ),
+                        "players": types.Schema(
+                            type=types.Type.STRING,
+                            description=(
+                                "projections only: text naming players "
+                                "(\"Wilson or Odunze\"); returns each "
+                                "rostered player named, with projection, "
+                                "team and the manager who has him."
+                            ),
+                        ),
                     },
                     required=["topic"],
                 ),
@@ -2153,6 +2162,7 @@ async def _execute_fantasy_league(args: dict) -> dict:
             week=args.get("week"),
             member=(args.get("member") or "").strip() or None,
             player_name_resolver=db.get_sleeper_player_names,
+            players=(args.get("players") or "").strip() or None,
         )
 
     try:
