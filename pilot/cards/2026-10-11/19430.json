@@ -1,0 +1,629 @@
+{
+ "brief": "GS TMT Spec Sales morning note (8 Oct 2026). Overnight tape rotated: semis/software lagged while memory, AI hardware and beaten-up internet names outperformed, with firm memory pricing and supply constraints (including a threatened Micron Taiwan strike) supporting the memory outlook. Samsung posted a fourth straight record quarter but slightly missed street and shares slipped as investors debated the result; TSMC beat guidance on AI-chip demand. Samsung is reportedly advancing HBM4E qualification with Nvidia/hyperscalers though production size is undecided, while downstream OEMs (LG Innotek) face margin pressure from rising memory costs. AI capex financing is expanding: Broadcom is exploring ~$30bn of debt financing for OpenAI's custom chips, following its $60bn Anthropic deal, with Oracle and SpaceX seeking similar financing; Terafab and ASML's setup stay open questions, with hedge funds reportedly using ASML as a sector funding short. Prime brokerage data shows clients rotating back into Mag7 and semis (near multi-year exposure highs) even as overall net positioning stays low. The note also carries a grab-bag of single-name items: a bearish DSY stance, a bullish Capgemini view, a VOD UK guidance raise, Prosus/JET's growth inflection, SpaceX's FCC Starlink approval, a CityFibre going-concern warning, and a Telef\u00f3nica contract win.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Samsung reported preliminary operating profit of \u20a9107.4tn, slightly below street estimates, marking a fourth consecutive record quarter.",
+   "anchor": "Samsung reported preliminary operating profit of \u20a9107.4tn, slightly below street\nand marking a fourth consecutive record quarter",
+   "topic": "memory chip supply squeeze",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Samsung shares slipped 1% as investors debated whether the earnings result cleared a high bar.",
+   "anchor": "the shares slipped 1% as investors debated",
+   "topic": "memory chip supply squeeze",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Samsung is reportedly qualifying its 12-high HBM4E chips with Nvidia and hyperscalers, unconfirmed by the company.",
+   "anchor": "Samsung reportedly qualifying its 12-high HBM4E chips",
+   "topic": "memory chip supply squeeze",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Samsung is said to have passed a qualification test for its HBM4E chips against Nvidia and major hyperscalers but has not decided supply size or mass-production schedules.",
+   "anchor": "Said to have passed qualification test for its HBM4E chips against NVDA and major\nhyperscalers, but is yet to decide on size of supply or mass production schedules.",
+   "topic": "memory chip supply squeeze",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Samsung's MX division is said to cut 4Q26 smartphone production by up to 30% amid spiking memory prices.",
+   "anchor": "MX division is said to cut down 4Q26 smartphone production up to max 30% amid spiking memory",
+   "topic": "memory chip supply squeeze",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "LG Electronics' 3Q miss points to weaker appliance and vehicle-component margins and implies LG Innotek operating profit of around \u20a980bn, below the \u20a990-130bn expected range.",
+   "anchor": "LG Electronics\u2019 3Q miss points to weaker appliance and vehicle-component\nmargins and implies LG Innotek operating profit of only around \u20a980bn, below expectations of \u20a990\u2013",
+   "topic": "memory chip supply squeeze",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Firm memory pricing and supply constraints continue to support Micron and the broader memory outlook.",
+   "anchor": "firm memory pricing and supply constraints continuing to support Micron and the broader memory",
+   "topic": "memory chip supply squeeze",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "A potential Micron strike is viewed as positive for memory stocks because it could cause supply disruption.",
+   "anchor": "The MU potential strikes viewed as positive for memory stocks as it could see supply disruption.",
+   "topic": "memory chip supply squeeze",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Micron Taiwan's Taoyuan labor union reportedly voted 88.3% in favor of a strike.",
+   "anchor": "Micron Taiwan\u2019s Taoyuan labor union yesterday reportedly announced 88.3% of members\nvoted to strike",
+   "topic": "memory chip supply squeeze",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Micron's Taichung plant and union will hold a second round of talks with management on 10/22 and may also vote to strike.",
+   "anchor": "the Taichung plant and union will hold second round talks w/ management 10/22,\nand may also vote to strike",
+   "topic": "memory chip supply squeeze",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "10/22"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "TSMC's 3Q revenue reached a record NT$1.49tn (US$46.7bn), above the top end of guidance, driven by strong AI-chip demand.",
+   "anchor": "TSMC\u2019s 3Q revenue reached a record NT$1.49tn (US$46.7bn), above the top end of guidance, driven by\nstrong AI-chip demand.",
+   "topic": "AI chip capacity buildout",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Sell-side views on ASML remain broadly bullish ahead of its Q3 guide, but buyside sentiment is more mixed with two-way flows.",
+   "anchor": "Sell-side views remain broadly bullish, but buyside sentiment is more mixed and flows\nhave been two-way.",
+   "topic": "AI chip capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "US hedge funds appear to be using ASML as a sector funding short in favour of other semicap names despite it looking inexpensive relative to history and peers.",
+   "anchor": "US hedge funds appear to be using ASML as a sector funding short in favour of other\nsemicap names",
+   "topic": "AI chip capacity buildout",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "AMD continues to explore a foundry partnership.",
+   "anchor": "AMD continues to explore a foundry",
+   "topic": "AI chip capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Elon Musk clarified his companies will build and operate the Terafab chip plant independently, with TSMC potentially subleasing part of the facility rather than leading the project.",
+   "anchor": "Elon Musk clarified that his companies will build and operate the chip plant independently, with\nTSMC potentially subleasing part of the facility rather than leading the project",
+   "topic": "AI chip capacity buildout",
+   "status": "released",
+   "instruments": [
+    "TSM",
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Intel is still expected to participate in Terafab, including through its reported collaboration with UMC on 12-inch fabrication.",
+   "anchor": "Intel is still expected to\nparticipate, including through its reported collaboration with UMC on 12-inch fabrication.",
+   "topic": "AI chip capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Broadcom is exploring around $30bn of debt financing to help OpenAI buy the custom AI chips the two are developing together.",
+   "anchor": "Broadcom is exploring around $30bn of debt financing to help OpenAI buy the custom AI\nchips they are developing together",
+   "topic": "AI chip capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Broadcom's prospective OpenAI debt financing follows its $60bn financing for Anthropic's AI infrastructure.",
+   "anchor": "following its $60bn financing for Anthropic\u2019s AI infrastructure.",
+   "topic": "AI chip capacity buildout",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Oracle and SpaceX are also seeking similar large debt financing to fund AI chip purchases.",
+   "anchor": "with Oracle\nand SpaceX also seeking similar financing.",
+   "topic": "AI chip capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Mag 7 net exposure is now near 22% of total US exposure, the highest since 2022, while Semis/Semi Equipment exposure is around 12% versus about 6% at the start of the year.",
+   "anchor": "Mag 7 net exposure\nis now near 22% of total US exposure, the highest since 2022, while Semis / Semi Equipment are ~12% vs",
+   "topic": "Mag7 and semis hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "US Tech was the only sector net bought on Goldman's Prime book in September.",
+   "anchor": "~6% at the start of the year. US Tech was also the only sector net bought on our Prime book in September,",
+   "topic": "Mag7 and semis hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "September's US Tech buying on Goldman's Prime book was the largest monthly buying since February 2025.",
+   "anchor": "with the largest monthly buying since Feb 2025. Overall market net positioning is still low though, and our",
+   "topic": "Mag7 and semis hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman's Prime book shows US Fundamental L/S asset-weighted net positioning in the 2nd percentile on a 5-year lookback.",
+   "anchor": "Prime book shows US Fundamental L/S (asset-weighted) nets in the 2nd %ile on a 5-year lookback.",
+   "topic": "Mag7 and semis hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman raised its Capgemini organic growth forecasts to 3.8% for Q3 and 3.2% for Q4, implying 4.1% for FY26, slightly above guidance.",
+   "anchor": "GIR raise our organic growth forecasts to 3.8% for Q3 and 3.2% for Q4, implying 4.1%\nfor FY26, slightly above guidance",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman continues to model Dassault Syst\u00e8mes FY26 revenue growth at the midpoint of guidance (c.4% y/y ex-FX) and believes the low end of full-year guidance is now largely de-risked.",
+   "anchor": "GIR continues to model FY26 revenue growth at the midpoint of guidance (c.4% y/y ex-FX)\nand believes the low end of full-year guidance is now largely de-risked",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman maintains a Neutral rating and \u20ac21 price target on Dassault Syst\u00e8mes.",
+   "anchor": "maintains its Neutral rating and \u20ac21\nprice target.",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Investor sentiment on Dassault Syst\u00e8mes remains bearish, with questions persisting around the medium-term guidance.",
+   "anchor": "Investor sentiment on this one remains bearish and questions on the mid term guide",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman's Adyen Q3 estimates are largely unchanged, with some 3Q phasing adjustments for comparable modelling.",
+   "anchor": "estimates are largely unchanged, with some 3Q\nphasing adjustments for comparable modelling.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Prosus's CEO shareholder letter highlighted JET's return to order growth after 55 months of decline.",
+   "anchor": "Prosus CEO Shareholder Letter - highlighting JET's return to order growth after 55 months of decline",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman interprets Prosus's letter as implying FY27 adjusted EBITDA guidance for iFood and JET will be at the lower end of prior ranges, with risk of trickling back further.",
+   "anchor": "adj. EBITDA for iFood and JET to be at the lower end of prior ranges (could trickle back further).",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Consensus for iFood EBITDA is currently $134mn versus guidance of $100-150mn.",
+   "anchor": "Consensus for iFood EBITDA is currently $134mn vs. guidance of $100-150mn, and JET consensus is",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "JET consensus is $95mn versus guidance of $100mn or more, sitting below the guided floor.",
+   "anchor": "and JET consensus is\n$95mn vs. guidance of $100mn+.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Vodafone now sees its UK business delivering a mid-to-high-single-digit EBITDA CAGR from FY25-32 with OpFCF tripling over the period.",
+   "anchor": "Vodafone now\nsees its UK business mid-to-high-single-digit EBITDA CAGR from FY25-32 and OpFCF tripling over the",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "VOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY25-32"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman would expect consensus OpFCF for Vodafone UK to rise by 1-2% by FY29/30 as a result of the guidance upgrade.",
+   "anchor": "GIR would expect consensus OpFCF to rise by 1-2% by FY29/30 as a result.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "VOD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY29/30"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "The FCC has authorised SpaceX to launch 15,000 next-generation low-orbit satellites for Starlink Mobile and to sell direct-to-phone service without relying on a terrestrial carrier's spectrum agreement.",
+   "anchor": "The FCC has authorised SpaceX to launch 15,000 next-generation low-orbit satellites for\nStarlink Mobile and to sell direct-to-phone service without relying on a terrestrial carrier\u2019s spectrum",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Taiwan's Ministry of Economic Affairs announced an immediate import ban on Chinese-made fiberglass silicone sleeves.",
+   "anchor": "Taiwan's Ministry of Economic Affairs (MOEA) has announced an immediate import ban",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Nanya and Taiwan Glass hit their daily limit up on massive trading volume following the fiberglass import ban.",
+   "anchor": "Heavyweights Nanya (1303) and Taiwan Glass (1802) hit their daily limit up on massive\ntrading volume",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "VMO2's CEO has urged DCMS not to fast-track BT's \u00a3400m acquisition of TalkTalk Consumer and PlatformX out of administration.",
+   "anchor": "VMO2 CEO Lutz Sch\u00fcler has urged DCMS not to fast-track BT\u2019s \u00a3400m acquisition of\nTalkTalk Consumer and PlatformX from administration",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Auditor BDO has warned of a material uncertainty over CityFibre's ability to continue as a going concern, citing limited headroom under its debt covenants by June 2027.",
+   "anchor": "Independent auditor BDO has warned of a \u201cmaterial uncertainty\u201d over CityFibre\u2019s ability to\ncontinue as a going concern, citing limited headroom under its debt covenants by June 2027",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by June 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "CityFibre plans to raise \u00a3900m from shareholders to support acquisitions.",
+   "anchor": "The company plans to raise \u00a3900m\nfrom shareholders to support acquisitions",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "The Spanish government restarted the award of the \u20ac100mn-plus CORA III cybersecurity and data-centre interconnection contract to Telef\u00f3nica, ending a 14-month legal dispute.",
+   "anchor": "The Spanish government has restarted the award of the \u20ac100mn-plus CORA III cybersecurity\nand data-centre interconnection contract to Telef\u00f3nica, ending a 14-month legal dispute",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "TEF"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Informa management highlighted that its flagship pharma events franchise, led by CPHI, remains well positioned for sustained growth.",
+   "anchor": "management highlighted that its flagship\npharma events franchise, led by CPHI, remains well positioned for sustained growth",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "The BBC and Channel 4 are in preliminary talks on a commercial joint venture, per Reuters.",
+   "anchor": "BBC and Channel 4 in preliminary talks on a commercial JV per Reuters.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES - Samsung slightly below; TSMC beats; CAP & DSY previews; Prosus estimates; Starlink licence approval; VOD UK raise",
+   "claim": "Goldman's Online Travel industry work points to a broadly stable to strong end-demand environment, most pronounced in the US travel market in the September quarter.",
+   "anchor": "our industry work points to a broadly stable to strong end",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19430__gs-tmt-spec-sales-samsung-slightly-below-tsmc-beats-cap-dsy-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 44,
+  "matched": 44,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 21,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
