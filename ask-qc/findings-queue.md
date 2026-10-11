@@ -773,3 +773,8 @@ The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full 
 - **regex-able / code bug** (19:16 UTC, BK, "thoughts?"): `short_circuit_slur_count` fired on slur text inside the injected `[VERBATIM RECENT MESSAGES ...]` block and the quoted parent, not on the asker's words. Same class as the 2026-10-02 entry: the trigger must read `ask_router.asker_text`, not the raw question.
   Candidate fixture: question = verbatim header containing a slur line + parent reply + `thoughts?`. Assertion: `interaction_type != "short_circuit_slur_count"` and the answer does not match ``\bused \*\*\d+\*\* times?``.
 - **judgment** (concerns, no FAIL): 13:32 TSLA close reply invented price context ("through the 380 handle", "pre-market push") with no tool; 17:57 image translation added "at a time" to "3-5 Day trades only".
+
+## 2026-10-10
+
+- **judgment** (18:05 UTC, Ry_spaceman, "What would the sp500 gain for the year be if you removed the top 10 stocks"): the answer never gave the ex-top-10 return, swapped in the equal-weight index YTD as a "+8.5% to +11.8%" range, then concluded the index return is "an illusion driven entirely by" mega-caps. Equal weight includes the top 10, so it does not support that conclusion. The only tool call was `query_data` `SELECT 1`. Validator CLI could not run (aiohttp missing), so no class was evaluated. Not mechanically checkable. Prompt-session material: a "what if X were removed" question should either compute from constituent weights and returns or say it cannot, and a substitute metric must be labeled as a substitute.
+- **concern, no FAIL**: 16:50 UTC BK run-game answer ended with a restating wrap-up arrow.
