@@ -1,0 +1,188 @@
+{
+ "brief": "BTIG's technical strategist flags a key reversal day in 30yr Treasury yields: an overnight marginal new high gave way to a close below the prior day's lows, following yesterday's note that yields showed upside exhaustion and a tactical pullback over coming weeks would not surprise. He does not call this the end of the yield up-cycle, but says tactical risk/reward has turned firmly against higher yields. A sentiment signal reinforces this: a widely read publication's \"Will bonds blow up?\" cover, from a title with a history of running covers late in a move as a contrarian indicator. On what a yield pullback means for stocks, he pushes back on the consensus bullish read: lower yields plausibly helps small-caps (IWM) and equal-weight (RSP), which were hurt by the yield surge, but it is curious semis or QQQ would benefit when they were immune to rising rates. His pain trade is therefore lower rates alongside lower SMH, QQQ and XLK. Separately, the RTY/NDX ratio sits at its 8th-lowest RSI reading since 1985; a yield reversion should support that ratio, but direction is unclear. RTY is down ~10% into its 200-day average, a setup that usually bounces, but he has more conviction NDX moves lower than that many would expect during a bond rally.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "30-year Treasury yields made a marginal overnight new high before reversing to close below the previous day's lows, a key reversal day.",
+   "anchor": "30yr yields overnight made a new high by less than 1bp, and are now red and below yesterday's lows, a key reversal day",
+   "topic": "yield reversal pain trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "This is not the end of the up-cycle for yields, but the risk/reward for tactical trades is now firmly lower for yields.",
+   "anchor": "we don't think this is the end of the cycle for yields, but the risk/reward for tactical trades is now firmly lower for yields",
+   "topic": "yield reversal pain trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "Yields were showing upside exhaustion, so a tactical pullback in yields would not be surprising over the coming weeks.",
+   "anchor": "Yesterday we discussed how yields were showing upside exhaustion, and a tactical pullback would not be surprising over the coming weeks",
+   "topic": "yield reversal pain trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "coming weeks"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "A widely read publication's \"Will bonds blow up?\" cover is a contrarian sentiment signal, since that publication has a history of running covers well after a move is already underway.",
+   "anchor": "they have a long history of putting out covers well after a move has been underway, and often create a contrarian signal",
+   "topic": "yield reversal pain trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "A yield pullback would plausibly be bullish for small-caps (IWM) and equal-weight (RSP), which have been punished during the yield surge.",
+   "anchor": "we could sympathize with that view for something like small-caps (IWM) or equal-weight (RSP) which have been punished during the surge in yields",
+   "topic": "yield reversal pain trade",
+   "status": "forecast",
+   "instruments": [
+    "IWM",
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "It is curious that semiconductors or QQQ would benefit from lower yields, since they were immune to the surge in rates.",
+   "anchor": "we find it curious that something like semis or QQQ would benefit from lower yields when they were immune to the surge in rates",
+   "topic": "yield reversal pain trade",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "The pain trade is lower interest rates combined with lower SMH, QQQ and XLK, the opposite of the consensus view that falling yields lift tech.",
+   "anchor": "the pain trade would likely be lower rates, and LOWER SMH, QQQ, XLK etc",
+   "topic": "yield reversal pain trade",
+   "status": "forecast",
+   "instruments": [
+    "SMH",
+    "QQQ",
+    "XLK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "The RTY/NDX ratio has the 8th lowest 14-day RSI reading (12.77) on record dating back to 1985.",
+   "anchor": "the RTY/NDX ratio had the 8th lowest RSI (12.77) on record back to 1985",
+   "topic": "yield reversal pain trade",
+   "status": "released",
+   "instruments": [
+    "IWM",
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "A reversion lower in yields should support the RTY/NDX ratio, though whether RTY rises or NDX falls to drive that is unclear.",
+   "anchor": "A reversion lower in yields should be supportive to that ratio, but the question is: which way?",
+   "topic": "yield reversal pain trade",
+   "status": "forecast",
+   "instruments": [
+    "IWM",
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "RTY is down roughly 10% from its highs and into its 200-day moving average, a setup that more often than not leads to a bounce.",
+   "anchor": "RTY is down ~10% from highs and into its 200 DMA. More often than not that should lead to a bounce, so we wouldn't fight that",
+   "topic": "yield reversal pain trade",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Key Reversal Day for Bonds",
+   "claim": "There is more conviction that NDX moves lower than that many would expect NDX weakness during a bond rally.",
+   "anchor": "we also have more conviction that NDX moves lower, and again we don't think many would expect that to happen during a bond rally",
+   "topic": "yield reversal pain trade",
+   "status": "forecast",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19483__key-reversal-day-for-bonds.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 11,
+  "matched": 11,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
