@@ -1,0 +1,318 @@
+QUICK TAKE
+14 September 2026
+US Communications Infrastructure
+Quick Take: Data centers and neoclouds - winners and losers if
+frontier models do slow development
+Madison Rezaei
++1 917 344 8622
+madison.rezaei@bernsteinsg.com
+Nancy Wu
++1 917 344 8545
+nancy.wu@bernsteinsg.com
+Over the weekend, Dario Amodei published an essay arguing frontier models should
+deliberately start to slow capability gains. Sam Altman endorsed the essay, as did Elon
+Musk. The framework is really around minimizing security risks - independent reviewers,
+coordination on safety standards, and international cooperation - at this point, it’s not a call
+for a lowering of capex or stopping model training. However, many investors have started to
+question what happens if training slows.
+From the infrastructure and neocloud perspective: a decline or slowing in training pulls
+demand away from rural data center locations, many of which have been purpose-
+built for this latency-insensitive training demand. We have a development pipeline of
+488GW of nameplate capacity in the U.S. (170GW of which we consider to be credible).
+Of that pipeline, 36% sits in rural areas, another 34% in Tier 3 markets (like West Texas).
+That means 70% of the development pipeline is built with training (or latency-insensitive
+inference) in mind.
+There is little debate that inference will take an increasing share of AI data center
+capacity over time. The big questions are a) how fast is that demand shifting and b)
+how latency-sensitive will it be? Unfortunately, the answer is not straightforward - we
+don’t yet know what the (profitable?), widely adopted use cases will be. Certainly some will
+be latency insensitive or tolerant: bulk document, synthetic data generation and distillation,
+overnight batch scoring, etc. will all be fine in more training-type data centers. However,
+more agentic workflows requiring serialized tool calls, real-time voice applications, live
+translation, payment fraud authorization, and robotics are likely to need lower-latency
+infrastructure.
+Regardless of the shift timing and the overall latency sensitivity of inference, Tier 1 metros
+are the safest and most valuable, with Tier 4 rural markets being the riskiest. Impacts will
+disproportionately hit portfolios of new, not-yet-leased construction for the developers and
+contracted-but-not-sold and/or shorter-term contracts for the neoclouds.
+The most exposed name in our coverage is CoreWeave. We estimate that 25% of their
+existing active U.S. power with an additional ~74% of their contracted power is situated in
+Tier 3 and Tier 4 markets. The backlog is primarily comprised of take-or-pay contracts, so
+we do not anticipate a threat there, but could see a pullback in demand for the contracted-
+not-yet-sold rural power if training development slows.
+Conversely, EQIX, DLR, and CSQR are all insulated with 95%, 92%, and 94% of
+existing U.S. capacity sitting in Major (Tier 1) and Minor (Tier 2) Metros. Most future
+development will also fall within Tier 1 and 2 Metros. Finally, Interconnection density is a
+strength for all three of these companies (especially EQIX), and will support demand for
+their Tier 1 and 2 locations in a more inference-based market.
+See the Disclosure Appendix of this report for required disclosures, analyst certifications and other
+important information. Alternatively, visit our  Global Research Disclosure Website.
+www.bernsteinresearch.com
+First Published: 14 Sep 2026 05:24 UTC  Completion Date: 14 Sep 2026 05:24 UTC
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+14 September 2026
+EXHIBIT 1: U.S. Data Center Capacity Active Today (% of
+U.S. footprint, GW)
+49%
+76%
+79%
+63%
+27%
+19%
+13%
+31%
+25%
+4%
+7%
+2%
+CoreWeave
+Equinix
+Digital Realty
+Csquare
+Active U.S. Data Center Capacity by Region
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging Market)
+Tier 4 (Rural)
+Source: Aterio Data as of August 31, 2026; Bernstein Research and Analysis
+EXHIBIT 2: U.S. Data Center Capacity Active, Under
+Construction, and Announced (% of U.S. footprint, GW)
+14%
+90%
+73%
+63%
+22%
+8%
+21%
+31%
+26%
+1%
+0%
+3%
+39%
+1%
+6%
+2%
+CoreWeave
+Equinix
+Digital Realty
+Csquare
+U.S. DC Capacity: Active, Under Construction, Announced
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging Market)
+Tier 4 (Rural)
+Source: Aterio Data as of August 31, 2026; Bernstein Research and Analysis
+EXHIBIT 3: CoreWeave Data Center Capacity (Nameplate
+GW Contracted, U.S.)
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+4500
+Operating today
+Under construction
+Announced only
+CoreWeave 
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging Markets)
+Tier 4 (Rural)
+Source: Aterio Data as of August 31, 2026; Bernstein Research and Analysis
+EXHIBIT 4: Digital Realty Data Center Capacity
+(Nameplate GW, U.S.)
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+4500
+Operating today
+Under construction
+Announced only
+Digital Realty 
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging Market)
+Tier 4 (Rural)
+Source: Aterio Data as of August 31, 2026; Bernstein Research and Analysis
+EXHIBIT 5: Equinix Data Center Capacity (Nameplate GW,
+U.S.)
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+4500
+Operating today
+Under construction
+Announced only
+Equinix
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging Market)
+Tier 4 (Rural)
+Source: Aterio Data as of August 31, 2026; Bernstein Research and Analysis
+EXHIBIT 6: Csquare Data Center Capacity (Nameplate GW,
+U.S.)
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+4500
+Operating today
+Under construction
+Announced only
+Csquare
+Tier 1 (Major Metro)
+Tier 2 (Minor Metro)
+Tier 3 (Emerging Market)
+Tier 4 (Rural)
+Source: Aterio Data as of August 31, 2026; Bernstein Research and Analysis
+US COMMUNICATIONS INFRASTRUCTURE
+2
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+14 September 2026
+EXHIBIT 7: Directional Network Latency Added by
+Distance
+0
+500
+1000
+1500
+2000
+2500
+50
+250
+500
+1000
+2000
+Added Network Latency (ms)
+Miles between user and inference cluster
+Directional: Network Latency Added by Distance
+1 Step (Single-Shot Chat)
+10 Steps
+50 Steps (Agentic)
+Source: Bernstein Research and Analysis
+METRO TIERING:
+• Tier 1 (Major Metro): Northern Virginia, Dallas–Fort Worth, Silicon Valley, Phoenix, Chicago, Atlanta, New York / Northern
+New Jersey
+• Tier 2 (Minor Metro): Columbus, Hillsboro/Portland, Reno/Sparks, Las Vegas, Salt Lake City, Austin, San Antonio, Houston,
+Charlotte, Raleigh/RTP, Denver, Minneapolis, Seattle, Miami, Boston, Philadelphia, Los Angeles / Inland Empire, San Diego,
+Sacramento, Detroit, St. Louis, Kansas City, Nashville, Richmond, Washington DC / Maryland, Baltimore, Toronto, Montréal,
+Vancouver, Calgary, Edmonton
+• Tier 3 (Emerging):West Texas (Abilene, San Angelo, Permian, Panhandle), Central & Southern Utah (Delta, Howell), Eastern &
+Central Oregon (Boardman, Prineville), Central Louisiana, Mississippi, Indiana (New Carlisle, Indianapolis), Iowa (Des Moines,
+Council Bluffs), Omaha, SE New Mexico (Lea/Permian), Augusta and outer GA, Pennsylvania (Scranton/NEPA, Lehigh Valley,
+Harrisburg, Pittsburgh), Southside VA, Hampton Roads, upstate NY, Ohio secondary (Cleveland, Cincinnati, Dayton), Tucson,
+NC/SC/FL/TN/AL/KY/WI/OK/AR secondary metros, Central Washington (Quincy, Wenatchee), Boise, Cheyenne, Fargo,
+Sioux Falls, New England secondary, Delaware, California non-metro
+• Tier 4 (Rural): Single-site rural builds across the US - rural Minnesota, Kansas, Maine, and other tertiary US sites outside any
+recognized data center cluster
+US COMMUNICATIONS INFRASTRUCTURE
+3
+
+Madison Rezaei    +1 917 344 8622  madison.rezaei@bernsteinsg.com
+14 September 2026
+INVESTMENT IMPLICATIONS
+We maintain our Outperform ratings on EQIX ($1270), DLR ($226), and CSQR ($27).
+We maintain our Underperform rating on CRWV ($74).
+BERNSTEIN TICKER TABLE
+11 Sep
+2026
+TTM
+Adjusted EPS
+Adjusted P/E (x)
+Closing
+Price
+Rel.
+Ticker
+Rating
+Cur
+Price
+Target
+Perf.
+Cur
+2025A
+2026E
+2027E
+2025A
+2026E
+2027E
+CRWV (CoreWeave)
+U
+USD
+88.99
+74.00
+(37.3)%
+USD
+(1.20)
+(4.56)
+(4.77)
+N/M
+305
+38.7
+CSQR (Csquare)
+O
+USD
+17.42
+27.00
+NA
+USD
+0.00
+(1.34)
+(1.06)
+(13.0)
+(16.4)
+DLR (Digital Realty)
+O
+USD
+188.58
+226.00
+(8.3)%
+USD
+3.87
+3.09
+3.21
+48.7
+61.0
+58.8
+EQIX (Equinix)
+O
+USD
+1,037.72
+1,270.00
+13.9%
+USD
+14.96
+17.79
+20.87
+69.4
+58.3
+49.7
+SPX
+7,656.98
+O - Outperform, M - Market-Perform, U - Underperform, NR - Not Rated, CS - Coverage Suspended
+CRWV valuation is EV/EBIT (x);
+Source: Bloomberg, Bernstein estimates and analysis.
+US COMMUNICATIONS INFRASTRUCTURE
+4
