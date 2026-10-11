@@ -1,0 +1,1790 @@
+The key debates around AI and data center infrastructure is shifting from 
+capacity commitments to capacity conversion. Recent community pushback in the 
+US demonstrates that demand alone is no longer sufficient to guarantee data center 
+growth, with power affordability, water consumption, emissions, noise and 
+permitting increasingly influencing project outcomes. As operators scale 
+multi-gigawatt AI campuses globally, we see debates will increasingly emerge across 
+APAC. In this report, we apply a framework to assess data center capacity 
+conversion — identifying bottlenecks, mitigation pathways and beneficiaries — 
+as a guide for how quickly committed capacity in APAC can be brought online 
+from the capacity supply perspective. We use Ulanqab and Johor as case studies 
+to illustrate how resource constraints can evolve from operational considerations 
+into infrastructure-planning and permitting issues. 
+We identify 10 capacity conversion bottlenecks among three categories 
+Hard Infrastructure Bottlenecks — Grid Connection & Reliability, Power 
+n
+Equipment Supply, Optical Networking, and Land Availability (risk elevated in 
+Hong Kong, Singapore, Tokyo) — represent critical requirements that can 
+physically delay or prevent committed capacity from becoming operational, with 
+benefits typically accruing to a limited group of suppliers given scarce capacity 
+and limited substitutes. 
+Emerging Constraints — Ambient Environment, Water Demand, Skilled Labor, 
+n
+and Infrastructure-Ready Land (risk elevated in Indonesia, Thailand, Malaysia) — 
+are yet to halt growth today but are becoming increasingly important as AI 
+infrastructure scales, influencing project economics, cooling architecture 
+selection, site readiness, deployment timelines and permitting outcomes. 
+Social License-to-Operate — Noise Impacts, Localized Warming, and Air 
+n
+Pollution & Emissions — reflect areas of rising community and regulatory scrutiny 
+that can increasingly shape permitting decisions, infrastructure planning and the 
+long-term sustainability of data center expansion.
+Xavier Zhang 
++852-2978-6681 | xavier.zhang@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Brian Singer, CFA 
++1(212)902-8259 | brian.singer@gs.com 
+Goldman Sachs & Co. LLC 
+Timothy Zhao 
++852-2978-2673 | 
+timothy.zhao@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Eunice Liu 
++852-2978-7472 | eunice.liu@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Ronald Keung, CFA 
++852-2978-0856 | 
+ronald.keung@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Kelsey Santoso 
++65-6889-2473 | 
+kelsey.santoso@gs.com 
+Goldman Sachs (Singapore) Pte 
+Jacqueline Du 
++852-2978-1783 | 
+jacqueline.du@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Hao Chen 
++86(21)2401-8812 | 
+hao.z.chen@goldmansachs.cn 
+Goldman Sachs (China) Securities 
+Company Limited 
+Mark Delaney, CFA 
++1(212)357-0535 | 
+mark.delaney@gs.com 
+Goldman Sachs & Co. LLC 
+Brendan Corbett 
++1(415)249-7440 | 
+brendan.corbett@gs.com 
+Goldman Sachs & Co. LLC 
+Evan Tylenda, CFA 
++44(20)7774-1153 | 
+evan.tylenda@gs.com 
+Goldman Sachs International 
+Grace Chen 
++44(20)7774-5119 | 
+grace.j.chen@gs.com 
+Goldman Sachs International
+11 October 2026 | 3:44PM HKT
+ 
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certification and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Equity Research
+GS SUSTAIN & APAC DATA CENTERS 
+From Commitments to Capacity: Bottlenecks, Mitigation Pathways and 
+Beneficiaries
+ 
+ 
+
+Sector and Stock Implications 
+We believe suppliers of critical infrastructure components — power equipment, 
+behind-the-meter (BTM) solutions, optical networking components — are best 
+positioned to benefit. We also note a broader set of enablers should see tailwinds from 
+growing adoption of mitigation solutions aimed at addressing emerging constraints and 
+maintaining a social license-to-operate, including advanced liquid cooling, adiabatic 
+cooling systems, water technology, noise mitigation and waste heat recovery. We 
+highlight 53 Buy-rated stocks globally exposed to these solutions. Among the list, 
+Shengyi, Weichai Power and Panasonic HD are on our APAC Conviction List (Directors’ 
+Cut). We spotlight Vertiv and Envicool as key cooling enablers for APAC data centers. 
+For APAC data center operators, while power usage requirements are sometimes more 
+stringent than water usage requirements in certain markets (e.g. China, Japan, 
+Singapore), we see operators that can demonstrate credible water-management 
+strategies, recycled-water usage and lower summer peak water demand should be 
+better positioned to convert committed capacity into operating capacity. We also see 
+increasing integration between data center operation, GPUaaS and liquid cooling on the 
+company level e.g. Range Intelligent, Guangdong HEC, which may become one of the 
+differentiating factors among data center operators.
+11 October 2026
+  2
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+ 
+ 
+11 October 2026
+  3
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+APAC data center capacity conversion bottlenecks and solutions 
+ 
+ 
+Data center capacity conversion is becoming an increasingly important investment 
+focus as operators move from securing committed capacity to bringing projects into 
+live operation. While demand for AI infrastructure remains robust, the ability to convert 
+planned capacity into operating capacity is increasingly influenced by a combination of 
+critical infrastructure supply, emerging resource constraints and community 
+relations. Beyond hard infrastructure bottlenecks such as power availability, grid 
+connectivity and networking infrastructure, we are seeing growing regulatory scrutiny 
+and community push-back expand beyond the US globally (i.e. South Korea), particularly 
+around water consumption, noise, environmental impacts and resource allocation. These 
+dynamics are already influencing permitting outcomes in markets like the US and 
+Malaysia and are likely to become increasingly relevant across APAC as data center 
+clusters continue to scale.  
+In this report, we identify 10 potential capacity conversion bottlenecks across the 
+data center value chain globally and assess areas that are most relevant for APAC 
+operators. We highlight a range of mitigation pathways that could see increasing 
+adoption as operators navigate these constraints. From an investment perspective, we 
+distinguish between companies benefiting from the scarce supply of critical 
+infrastructure components and those exposed to growing demand for mitigation 
+solutions, highlighting the stocks best positioned to benefit as the industry puts greater 
+resources into ensuring that capacity can be permitted, built and operated sustainably. 
+We group data center capacity conversion bottlenecks into three categories:  
+Hard Bottlenecks 
+Hard Bottlenecks reflect foundational challenges such as power availability, grid connectivity 
+and critical component shortages that can physically delay or prevent committed capacity from 
+becoming operational, with benefits typically accruing to a limited set of suppliers given the 
+lack of practical substitutes. 
+Grid Connection & Reliability: Securing sufficient grid power remains the primary 
+n
+capacity-conversion requirement for AI data centers, while maintaining system 
+reliability is becoming increasingly important as power demand accelerates. 
+Interconnection delays continue to be a major gating factor globally, creating 
+growing incentives for hyperscalers to adopt behind-the-meter (BTM) generation, 
+storage and backup capacity to accelerate time-to-market as well as accommodate 
+potential future grid interruptibility. Beyond physical connectivity, power 
+affordability is also emerging as a capacity-conversion consideration, as rising 
+household electricity bills increase regulatory scrutiny and community pushback 
+around large-load customers. Our US Utilities team expects average consumer bills 
+to rise by 3.7% annually through 2029, while our EMEA Utilities team expects Europe 
+average consumer bills to rise by 2%-4% annually through 2030. 
+Power Equipment Supply: Global supply constraints of transformers, switchgear, 
+n
+generators and UPS systems have emerged as a key capacity conversion bottleneck. 
+Unlike many resource constraints, shortages of critical power equipment offer 
+limited mitigation pathways and can materially delay commissioning timelines. As 
+11 October 2026
+  4
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+AI-related power demand scales, available manufacturing capacity, long lead times 
+and supplier concentration are becoming increasingly important determinants of 
+deployment speed, making qualified equipment suppliers disproportionately 
+valuable. 
+Optical Networking: Unlike traditional cloud infrastructure, next-generation AI 
+n
+systems require high-bandwidth, low-latency interconnections across both scale-up 
+and scale-out architectures, making optical connectivity essential for unlocking 
+computing performance rather than simply transmitting data. Analysis by our Global 
+Tech team highlights that networking is becoming the next frontier of AI 
+infrastructure, with networking content per computing unit expected to increase 
+materially as GPU clusters scale and interconnect density rises. Similar to power 
+equipment, optical networking constraints offer limited mitigation pathways once a 
+cluster architecture is determined, with bottlenecks often emerging in optical 
+modules, optical engines, lasers, fiber infrastructure and associated supply chains. 
+As a result, scarce manufacturing capacity, technology leadership and the ability to 
+support speed migration from 800G to 1.6T, 3.2T and beyond are increasingly 
+valuable, while operators continue to invest in fiber buildouts, network upgrades and 
+optical technologies to ensure computing capacity can be fully utilized once 
+deployed. 
+Land Availability (within APAC, elevated risk in Tokyo, Hong Kong and 
+n
+Singapore): Our recent industry discussions suggest land constraints are most acute 
+in Singapore, Hong Kong and Tokyo, where limited developable land and 
+competing commercial uses continue to restrict large-scale campus development 
+and increase costs. As a result, we view land as a primary constraint in select 
+developed markets rather than a structural limitation for regional AI infrastructure 
+growth, with beneficiaries more likely to be data center property developers, 
+industrial park operators and integrated campus providers in land-constrained 
+locations. 
+Emerging Constraints 
+Emerging Constraints, such as water availability, cooling efficiency, infrastructure-ready land 
+and labour supply, are not yet limiting growth today but could increasingly influence project 
+economics, site selection and permitting outcomes as AI infrastructure scales. 
+Ambient Environment: Higher heat, humidity and drought risks limit cooling 
+n
+technology selection optionality for data centers and requires greater power 
+demand in affected regions where minimizing direct water demand is a priority. Our 
+analysis suggests that 89% of new APAC data centers are set to be built in areas 
+with elevated physical risk to heat, humidity and/or drought. We expect growing 
+adoption of advanced liquid cooling and adiabatic solutions to mitigate the physical 
+environment constraints of data center cooling efficiency. We highlighted data 
+center cooling stock ecosystem in our July 2026 report. 
+Water Demand: As AI workloads drive higher cooling intensity, freshwater 
+n
+availability is becoming more relevant to both permitting outcomes and long-term 
+capacity expansion, particularly in water-stressed markets. Recent developments in 
+11 October 2026
+  5
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Malaysia and Thailand suggest regulators are moving beyond monitoring water use 
+toward actively incorporating water management into project approvals and 
+infrastructure planning. While advanced liquid cooling can help mitigate water 
+constraints, regional regulatory priorities, particularly China’s strong focus on power 
+usage effectiveness (PUE) optimization and cost minimization, may incentivize 
+operators to pursue a more water-intensive pathway. As such, we remain bullish on 
+water technologies including recycling, wastewater reuse, reverse-osmosis 
+treatment, alternative industrial water sourcing and water-efficient cooling 
+architectures, which can support future capacity growth while reducing reliance on 
+municipal freshwater supplies without compromising energy efficiency. 
+Skilled Labour Availability: We continue to see risks that skilled labor availability 
+n
+constraints — particularly electricians — represents a key risk to execution globally. 
+In Asia, talent is also emerging as an underappreciated capacity conversion 
+constraint. Labour shortages are particularly acute in fast growing markets such as 
+Malaysia, Indonesia and the Philippines, where data center capacity is expanding 
+faster than the local pool of experienced engineers and operators, according to 
+CBRE analysis. This is driving greater investment in training, automation and 
+AI-enabled operations to improve workforce productivity and support long term 
+growth. 
+Land Availability (Indonesia, Thailand, Malaysia): Infrastructure-ready land is 
+n
+increasingly becoming a growth constraint across emerging markets. Our ASEAN 
+analysis suggests the key challenge is often not securing land, but obtaining timely 
+access to sufficient power, water, transmission capacity and fiber connectivity. In 
+Thailand, power deliverability into the Eastern Economic Corridor (EEC) has 
+emerged as a key gating factor; while in Indonesia, utility readiness and the 
+availability of industrial-scale infrastructure remain important considerations for 
+future hyperscale deployment. As a result, the most valuable sites are increasingly 
+not those with the lowest land cost, but those with pre-existing access to power 
+substations, water infrastructure, fiber backbones and industrial-zoned 
+development rights. 
+Social License-to-Operate 
+Social License-to-Operate considerations including air emissions, noise and environmental 
+impacts reflect areas of rising community and regulatory scrutiny; while these debates are most 
+visible in the US today, we see similar risks emerging across APAC based on projects delay 
+examples witnessed in South Korea.  
+Noise Impacts: Recent media reports suggest noise is becoming an increasingly 
+n
+important source of community pushback, particularly when larger AI-oriented data 
+centers are built closer to residential areas. Unlike many industrial sources that see 
+activity decline overnight, data centers operate continuously, generating 
+low-frequency noise and vibration from cooling equipment, ventilation systems and 
+backup generators. As a result, developers face a growing risk of permitting delays, 
+legal challenges and additional mitigation costs, particularly in densely populated 
+areas. We expect greater adoption of acoustic shielding, enhanced site buffers and 
+liquid cooling technologies, which can materially reduce fan-related noise while also 
+11 October 2026
+  6
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+improving thermal management efficiency. 
+Localized Warming: Recent pushback to Utah’s Stratos data center project — and 
+n
+subsequent project scope changes — highlights risks that large‑scale data center 
+developments could intensify local heat stress alongside water depletion. In this 
+context, redirecting heat into productive use reduces thermal discharge to the 
+environment and reframes data centers from heat sources into energy suppliers 
+potentially — increasingly important as social license becomes a gating factor for 
+new capacity. While waste heat capture at data centers is in earlier stages, we note it 
+is being done in areas such as Finland and France and can serve as a solution where 
+the economics warrant. 
+Pollution & Waste Management: Community concerns in the US have increasingly 
+n
+focused on pollutants emissions from onsite power generation, with backup diesel 
+generators attracting greater permitting scrutiny given their disproportionately high 
+emissions of NOx and particulate matter (PM2.5) despite relatively limited operating 
+hours. We believe this could also become increasingly relevant in parts of emerging 
+Asia, where grid readiness remains a constraint and data center operators may rely 
+more heavily on captive generation — particularly coal — to accelerate capacity 
+deployment. This should support growing adoption of battery backup units, 
+purification and selective catalytic reduction (SCR) technologies. 
+ 
+In Exhibit 1, we highlight 53 Buy-rated stocks levered to data center capacity 
+conversion framework. Among the list, Shengyi (600183.SS, covered by Allen Chang), 
+Weichai Power (2338.HK, covered by Nick Zheng, CFA) and Panasonic HD (6752.T, 
+covered by Ryo Harada) are on our APAC Conviction List Directors’ - Directors’ Cut. We 
+also highlight Kinetics Noise Control and IAC Acoustics among private companies in the 
+data center noise-abatement space, as well as AERINOX, MIRATECH Corporation and 
+Nett Technologies among private companies for providing captive-power emissions 
+control, purification and SCR technologies. 
+Please see below reports for more on data center power demand and AI infrastructure: 
+GS SUSTAIN: AI/Data Centers: Power demand, cyclical progression and Sustainability implications 
+n
+GS SUSTAIN: Reliability: How heat, humidity and water use minimization could drive data center cooling, 
+n
+power demand and stocks 
+GS SUSTAIN: AI/Data Center Power Demand: How rising hyperscaler reinvestment impacts the 6 Ps 
+n
+driving power growth/constraints 
+Carbonomics: Behind-the-meter power solutions for data centers: gas turbines, fuel cells and 
+n
+reciprocating engines 
+Framing the Battery Backup Unit Opportunity: $50bn by 2030 (CAGR +87%); Buy Panasonic HD 
+n
+Optical Networking: The next mega trend in AI infrastructure 
+n
+ASEAN DATA CENTER PRIMER: Mapping the ecosystem 
+n
+China Data Centers: Scaling the AI Infrastructure; Initiate Range Intelligent at Buy, Athub at Neutral
+n
+11 October 2026
+  7
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+ 
+Exhibit 1: We select Buy-rated stocks that could see tailwinds from data center capacity conversion bottlenecks 
+BTM Power 
+Solutions
+Power 
+Equipment
+Optical 
+Networking
+Advanced 
+Cooling
+Water 
+Technology
+Noise 
+Reduction
+Waste Heat 
+Recycling
+3308.HK
+Innolight
+HK$999.5
+227%
+China
+✓
+603308.SS
+Yingliu
+Rmb36.1
+100%
+China
+✓
+2308.TW
+Delta Electronics
+NT$1965.0
+110%
+Taiwan
+✓
+✓
+600183.SS
+Shengyi Tech
+Rmb131.9
+89%
+China
+✓
+2338.HK
+Weichai Power
+HK$28.4
+94%
+China
+✓
+002518.SZ
+Shenzhen Kstar
+Rmb32.9
+82%
+China
+✓
+002028.SZ
+Sieyuan Electric
+Rmb117.1
+75%
+China
+✓
+300502.SZ
+Eoptolink
+Rmb378.5
+69%
+China
+✓
+7011.T
+MHI
+¥3679.0
+69%
+Japan
+✓
+6503.T
+Mitsubishi Electric
+¥5118.0
+54%
+Japan
+✓
+002837.SZ
+Shenzhen Envicool
+Rmb51.9
+52%
+China
+✓
+6981.T
+Murata Mfg.
+¥8004.0
+61%
+Japan
+✓
+6368.T
+Organo Corp.
+¥2776.5
+44%
+Japan
+✓
+6254.T
+Nomura Micro Science
+¥3770.0
+43%
+Japan
+✓
+5801.T
+Furukawa Electric
+¥4089.0
+57%
+Japan
+✓
+8801.T
+Mitsui Fudosan
+¥1442.0
+39%
+Japan
+6479.T
+MinebeaMitsumi
+¥3661.0
+50%
+Japan
+✓
+8804.T
+Tokyo Tatemono
+¥3178.0
+38%
+Japan
+KEPE.SI
+Keppel DC REIT
+S$2.2
+36%
+Singapore
+6762.T
+TDK
+¥3290.0
+49%
+Japan
+✓
+373220.KS
+LG Energy Solution
+W401000.0
+30%
+South Korea
+✓
+6752.T
+Panasonic Holdings
+¥4449.0
+42%
+Japan
+✓
+5802.T
+Sumitomo Electric
+¥2369.5
+39%
+Japan
+✓
+5803.T
+Fujikura
+¥5435.0
+40%
+Japan
+✓
+3402.T
+Toray Industries
+¥1232.5
+29%
+Japan
+✓
+6370.T
+Kurita Water
+¥7768.0
+29%
+Japan
+✓
+KPLM.SI
+Keppel Ltd.
+S$10.5
+30%
+Singapore
+3017.TW
+AVC
+NT$3440.0
+31%
+Taiwan
+✓
+300394.SZ
+TFC Optical
+Rmb235.1
+32%
+China
+✓
+6501.T
+Hitachi
+¥5701.0
+16%
+Japan
+✓
+3324.TWO
+Auras
+NT$1520.0
+-11%
+Taiwan
+✓
+CWR.L
+Ceres Power
+£369.0
+148%
+UK
+✓
+LGN
+Legence
+$51.6
+84%
+USA
+✓
+✓
+INIO
+INNIO
+$19.2
+82%
+USA
+✓
+XYL
+Xylem
+$102.0
+57%
+USA
+✓
+ACM
+AECOM
+$59.5
+53%
+USA
+✓
+ENR1n.DE
+Siemens Energy
+€142.5
+49%
+Germany
+✓
+✓
+CSL
+Carlisle
+$321.3
+48%
+USA
+✓
+WBI
+WaterBridge
+$29.8
+38%
+USA
+✓
+PRY.MI
+Prysmian
+€122.3
+42%
+Italy
+✓
+CARR
+Carrier Global
+$55.8
+33%
+USA
+✓
+AWI
+AWI
+$163.1
+33%
+USA
+✓
+FLEX
+Flex
+$114.7
+34%
+USA
+✓
+✓
+ROCKb.CO
+Rockwool
+Dkr179.0
+34%
+Denmark
+✓
+✓
+CRLI.MI
+Carel Industries
+€26.8
+35%
+Italy
+✓
+MMM
+3M
+$163.6
+23%
+USA
+✓
+DOV
+Dover
+$189.0
+24%
+USA
+✓
+VLTO
+Veralto
+$96.5
+22%
+USA
+✓
+J
+Jacobs Solutions
+$138.6
+23%
+USA
+✓
+JCI
+Johnson Controls
+$154.0
+24%
+Switzerland
+✓
+GEV
+GE Vernova
+$999.4
+22%
+USA
+✓
+VRT
+Vertiv Holdings
+$243.7
+23%
+USA
+✓
+NVT
+nVENT Electric
+$164.2
+17%
+USA
+✓
+✓
+✓
+✓
+✓
+Data 
+Center 
+Land
+Hard Bottleneck Beneficiaries
+Growing Constraint Mitigants
+Social License-to-
+Operate Enablers
+Ticker
+Company Name
+Price
+Upside 
+to TP
+Markets
+ 
+Stocks priced as of 10/08/2026 
+ 
+Source: Goldman Sachs Global Investment Research
+11 October 2026
+  8
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Takeaways from New York Climate Week on Data Center Bottlenecks 
+Discussions during New York Climate Week reinforced that the key challenge for AI infrastructure is 
+increasingly capacity conversion rather than demand creation. Industry participants consistently 
+highlighted grid interconnection delays, shortages of critical power equipment, workforce constraints and 
+growing community pushback as the most important hurdles to bringing committed capacity online. 
+Industry participants also highlighted potential implications from midterm elections for the development 
+queue as well, as roughly 70% of planned data center load sits in front of commissions facing electoral 
+change in upcoming elections. Because of these bottlenecks, hyperscalers are underwriting clean firm 
+technologies (e.g., SMR nuclear, advanced geothermal, long duration energy storage) with deployment 
+horizons that might have previously been considered uninvestable, i.e., 2030-35. 
+Momentum for behind-the-meter development remains given interconnection delays. One estimate 
+referenced during the week was that roughly half of the existing US data center pipeline plans to source its 
+own power via hybrid or fully behind-the-meter (BTM) approaches. Comments throughout the week 
+reiterated that BTM is not the optimal grid design — it is the cost of developing AI at speed. 
+Interconnection delays are the clearest explanation for why hyperscalers are increasingly behaving like 
+utilities, why developer consolidation is accelerating, and why powered land and queue positions have 
+become acquirable assets. The preference for most BTM assets to be eventually grid-connected was also 
+reiterated consistently throughout the week. 
+Community pushback has changed the stakes of engagement. Power affordability/reliability, water use, 
+noise and heat pollution were all cited as common topics of data center scrutiny that have forced 
+adjustments from developers and regulators. Large-load tariffs have proliferated to 37 states, with certain 
+designs cited as cutting ratepayer exposure by over 85%. Collateral requirements, exit fees and large-load 
+tariff design were cited as additional tools being deployed to abate cost externalization to ratepayers, 
+particularly for transmission upgrades and incremental grid capacity. Hyperscaler willingness to accept 
+curtailment and non-firm interconnection in exchange for speed has also changed materially over the past 
+year. Demand response, workload scheduling and aggregated flexibility are seen as some of the most likely 
+tools to be deployed to allow for this flexibility. 
+Ongoing need for increased community engagement. Beyond the physical operating impacts of data 
+centers, general NIMBYism and broader distrust of AI’s societal impact were cited as more intractable 
+sources of pushback to development. Broader local engagement, workforce programs and direct 
+community investment, e.g., home weatherization programs, jobs and ratepayers savings were all cited as a 
+cost of doing business for DC developers/operators that will be increasingly necessary to shifting some of 
+this public sentiment. Demonstrating clear value to local communities was referenced as a common social 
+license to operate threshold for historically extractive or heavy industries with an emphasis that no two 
+communities are alike and that frameworks oversimplify local concerns.
+11 October 2026
+  9
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Case Study #1: Cooling tradeoff among China data centers 
+ 
+ 
+Following our July data center cooling report, investors have increasingly asked 
+whether China’s policy focus on maximizing energy efficiency and achieving 
+industry-leading power usage effectiveness (PUE) could result in greater water 
+consumption, and ultimately whether water could emerge as a constraint on data 
+center capacity expansion. At the same time, Ulanqab located approximately 240 km 
+from Beijing, has rapidly emerged as one of APAC’s largest and fastest-growing AI 
+computing clusters, with 12.5 GW of committed capacity. The region combines several 
+competitive advantages, including low-cost renewable power, direct connectivity to 
+Beijing (~4.2ms latency), electricity prices of Rmb0.33-Rmb0.36/kWh and a cool climate 
+with annual average temperatures of ~4°C, enabling extensive use of free cooling and 
+helping operators meet China’s stringent PUE requirements. However, the scale of 
+planned expansion has raised growing investor debate over whether such a large 
+concentration of future capacity could create tension between data center water 
+demand and local agricultural and residential consumption in a region already facing 
+water stress challenges. 
+ 
+Water demand in Ulanqab has remained relatively stable over the past five years, with 
+agriculture as the major driver of total consumption. However, the full build-out of 
+Ulanqab’s 12.5GW committed data center capacity could add c.17-67mn m³ of 
+annual water demand, equivalent to c.3%-14% of the city’s average annual water 
+consumption over 2020-24. The key swing factor is not only the amount of data center 
+capacity itself, but the cooling pathway ultimately adopted. At the low end, Ulanqab’s 
+cool climate enables extensive use of dry and free cooling for much of the year, while 
+operators could aggressively deploy advanced liquid cooling and indirect evaporative 
+cooling technologies to maximize both thermal and water efficiency as compute 
+densities increase. At the high end, operators may instead prioritize lower initial capex 
+and operating costs and stronger energy efficiency, relying more heavily on evaporative 
+cooling to achieve China’s stringent PUE requirements, resulting in materially higher 
+water consumption. While the range remains wide, we believe China’s policy emphasis on 
+energy efficiency, combined with operators’ incentives on cost advantages, suggests 
+actual water usage is likely to trend toward the middle-to-upper end of the range rather 
+ 
+Exhibit 2: Total data center capacity (live, under 
+construction and pipeline) in key APAC hubs (GW) 
+ 
+Exhibit 3: We see GDS, VNET and Envision group 
+contributing to the pipeline capacity in Ulanqab 
+Pipeline capacity share by company 
+12.5 
+4.2 
+3.3 
+3.1 
+2.6 
+2.2 
+2.1 
+1.6 
+1.5 
+1.3 
+2GW
+2GW
+2GW
+1GW
+1GW
+7GW
+GDS
+Envision Group
+VNET
+Chindata
+Centrin Data
+Others
+ 
+ 
+Source: Local government websites, Cushman & Wakefield, Data compiled by 
+Goldman Sachs Global Investment Research
+ 
+ 
+Source: Company data, Sina News, Data compiled by Goldman Sachs Global 
+Investment Research
+11 October 2026
+  10
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+than the most water-efficient outcome. 
+Scenario A: Water usage of c.17 mn m³ annually. This represents a best-in-class 
+n
+deployment scenario where new facilities broadly adopt advanced liquid cooling, 
+indirect evaporative cooling and extensive dry/free cooling for the majority of the 
+year. Under this outcome, portfolio-wide water efficiency would gradually converge 
+toward best-in-class levels, with water usage effectiveness (WUE) largely below 0.1 
+L/kWh for new builds, requiring both aggressive advanced liquid cooling adoption 
+and disciplined water management across the cluster. 
+Scenario B: Water usage of c.25 mn m³ annually. This assumes WUE gradually 
+n
+declines from 0.8 L/kWh today toward 0.3 L/kWh by 2031, reflecting increasing 
+adoption of indirect evaporative cooling and seasonal wet-mode operation during 
+summer peak periods, alongside a gradual shift away from traditional cooling 
+towers. We note a green data center project in Ulanqab has disclosed WUE of 0.6 
+L/kWh, suggesting this scenario could potentially already assume continued 
+improvement beyond currently disclosed performance, and therefore remains a 
+relatively optimistic water-efficiency pathway. 
+Scenario C: Water usage of c.67 mn m³ annually. We assume data centers operate 
+n
+at the current regulatory ceiling of 0.8 L/kWh WUE, the maximum level permitted 
+for new facilities in water-stressed regions. This scenario reflects our view that 
+operators are likely to prioritize lower power consumption and compliance with 
+China’s stringent PUE requirements over maximizing water efficiency. As a result, we 
+view this as a realistic upper-end scenario for assessing Ulanqab’s potential 
+long-term water footprint.  
+We also note that our analysis is based on annual water consumption, which may 
+understate the severity of seasonal water stress. In practice, the most acute pressure 
+on local water resources is likely to occur during the summer months, when data center 
+cooling demand, agricultural irrigation and residential water consumption all peak 
+simultaneously. This overlap is particularly relevant for Ulanqab given its role as a major 
+potato producing region in China, where the key irrigation season broadly coincides with 
+the June-August period when cooling systems are most likely to operate in wet mode. As 
+a result, the challenge is not only the magnitude of annual water demand, but also the 
+concentration of demand during a relatively short seasonal window. Hence, in our view, 
+managing peak summer water demand is likely to become a more important 
+consideration than annual water consumption alone. Operators that can reduce 
+reliance on freshwater during summer peak periods may be better positioned to 
+accommodate future capacity additions while reducing competition with agricultural 
+and residential users for limited water resources. 
+11 October 2026
+  11
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+ 
+ 
+On the supply side, Ulanqab’s water resources appear considerably less flexible 
+than its growing demand profile, given the city’s heavy dependence on 
+groundwater. Groundwater currently accounts for an estimated 70%-80% of total 
+water supply, supporting both residential consumption and agricultural activities, but 
+local policies are increasingly focused on limiting extraction due to historical 
+over-pumping and expanding groundwater depression cones. In 2024, the local 
+government also formally banned data centers in Ji Ning district (Ulanqab) from using 
+ground water for cooling. Surface water contributes another 15%-20% of supply, 
+although future expansion potential appears constrained by limited local runoff and 
+dependence on larger cross-basin diversion projects. By contrast, recycled water 
+currently represents only 5%-10% of supply but offers the greatest potential for 
+future growth, particularly as wastewater treatment infrastructure expands and 
+reclaimed water is increasingly directed toward industrial applications such as data 
+center cooling. As a result, while overall water supply expansion opportunities appear 
+ 
+Exhibit 4: 12.5 GW data center capacity in Ulanqab could drive additional 17-67 million m3 of 
+water demand annually by 2031... 
+Potential data center water consumption for cooling under various scenarios, mn m3 
+6.3
+9.6
+12.9
+15.6
+16.9
+16.6
+10.4
+15.1
+19.8
+23.3
+25.0
+12.6
+22.4
+35.7
+51.2
+66.6
+Current (2026)
+2027
+2028
+2029
+2030
+2031
+Scenario A: operators to achieve best-in-class WUE of 0.1
+L/kWh of new builds
+Scenario B: operators to gradually achieve WUE
+improvement base on current water profile
+Scenario C: operators to follow mandatory cap WUE of 0.8
+L/kWh to minimize cost
+(mn m3)
+ 
+ 
+Source: Company data, Goldman Sachs Global Investment Research
+ 
+Exhibit 5: ...which would be equivalent to c.3%-14% of the city’s average annual water 
+consumption over 2020-24 
+Ulanqab’s water consumption by sector and potential incremental demand from new built data centers 
+465
+469
+510
+658
+490
+17
+25
+67
+0
+100
+200
+300
+400
+500
+600
+700
+2020
+2021
+2022
+2023
+2024
+Agricultural
+Residential
+Industrial
+Environmental
+(mn m3)
+Ulanqab consumed 518mn m3 of water 
+annually on average (2020-2024)
+Scenario A 
+Scenario B 
+Scenario C 
+ 
+ 
+Source: National Bureau of Statistics of China, Goldman Sachs Global Investment Research
+11 October 2026
+  12
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+limited, recycled water is likely to be the most scalable source of incremental water 
+supply to support Ulanqab’s next phase of data center growth. 
+ 
+ 
+Exhibit 6: The supply of water in Ulanqab is less flexible and has limited potential to expand, 
+given high reliance on groundwater source 
+Water Source 
+Type
+Estimated % 
+Share of 
+Supply
+Primary Application
+Potential to Increase Supply
+Ground
+-water
+70% - 80%
+- Residential: urban & rural drinking 
+water;
+- Agricultural: traditional crop 
+irrigation and livestocks;
+No Potential (Decreasing)
+Due to severe historical over-
+extraction and expanding depression 
+cones, local policy mandates strict 
+capping and reduction of groundwater 
+pumping.
+Surface
+Water
+15% - 20%
+- Agricultural: seasonal irrigation, 
+- Ecological: river and lake 
+restoration, partial urban backup
+Moderate Potential
+Local natural runoff is highly 
+constrained, meaning future volume 
+increases rely heavily on national and 
+provincial cross-basin water diversion 
+projects.
+Recycled
+Water
+5% - 10%
+- Industrial: data center cooling, 
+manufacturing processing and urban 
+greening
+High Potential
+As the city expands its wastewater 
+treatment infrastructure, reclaimed 
+water could support booming data 
+centers without depleting natural 
+reserves.
+ 
+ 
+Source: National Bureau of Statistics of China, Goldman Sachs Global Investment Research
+China data center operators: a close look at their water-related disclosure 
+GDS (9698.HK) | Lead Analyst: Timothy Zhao | GS Rating: Buy 
+GDS (2GW capacity committed in Ulanqab) reported a 31% yoy increase in water consumption to 11 mn m³ 
+in 2025, from 8 mn m³ in 2024, while WUE edged up to 1.69 L/kWh from 1.66 L/kWh. The broadly stable 
+WUE suggests capacity growth, rather than a material deterioration in operating efficiency, was the 
+primary driver of higher absolute water demand. GDS has not disclosed a portfolio-level WUE target, but 
+continues to deploy dry or zero-water cooling in water-stressed regions and expand reclaimed-water, 
+rainwater-harvesting and recycling systems, including reverse-osmosis technology capable of recovering 
+approximately 70% of cooling-system wastewater. 
+VNET (VNET) | Lead Analyst: Timothy Zhao | GS Rating: Buy 
+VNET’s group level water consumption increased 40% yoy to 4.4 mn m³ in 2025, from 3 mn m³ in 2024, 
+alongside continued expansion of its operating footprint. While VNET does not disclose portfolio-wide 
+WUE or a formal group-level target, project-level progress is more encouraging: reclaimed water supplies 
+over 50% of demand at one Langfang facility, contributing to a 9.2% YoY reduction in site WUE in 2025, 
+while its air-liquid hybrid solution for water-constrained locations is designed to achieve WUE below 0.1 
+L/kWh and PUE below 1.2.  
+We note that Chindata (private) and Centerin (private) have not disclosed WUE for their data center facilities 
+historically. Other China IDC players i.e. Range (300442.SZ, Buy), Sinnet (300383.SZ, Sell) and Athub (603881.SS, 
+Neutral) do not have meaningful capacities exposed to Ulanqab area.
+11 October 2026
+  13
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Case Study #2: Emerging water concerns for ASEAN data centers 
+ 
+ 
+Johor, Malaysia: An Asian example of water becoming a permitting constraint 
+Importantly, Ulanqab is not the only fast-growing APAC data center hub where 
+water availability and usage are sources of local debates. Johor, Malaysia provides 
+one of the recent examples in APAC of water evolving from an operational consideration 
+into a capacity-fulfillment and permitting constraint. Benefiting from sub-5 
+millisecond latency to Singapore, lower power costs, abundant land availability and 
+significant hyperscaler investment, Johor has become the primary destination for 
+Singapore spillover demand and is expected to become ASEAN’s largest data center 
+market, with live capacity forecast (GSe) to grow from 897 MW in 2025 to 4.3 GW by 
+2030E.  
+ 
+Despite being one of the least power-constrained markets in ASEAN, Johor has 
+increasingly encountered water-related bottlenecks. Since late 2025, Johor 
+authorities have reportedly stopped approving data centers with high WUE and 
+requested operators to defer water-cooled expansions by approximately 18 months, to 
+around mid-2027. In other words, the limiting factor has not been demand, land 
+availability or even power supply, but rather concerns around the sustainability of local 
+water resources as data center development accelerates. As water became a more 
+visible permitting issue, cooling architecture and water-resource management 
+increasingly became prerequisites for project approval rather than simply operational 
+design choices. Our analysis of Johor’s future data center water demand helps 
+explain why water has moved to the center of the regulatory debate. We estimate 
+data center cooling water demand in Johor could increase from c.11 mn m³ in 2025 to 
+c.23-51 mn m³ annually by 2030 (Exhibit 8), depending on the pace of efficiency 
+ 
+Exhibit 7: ASEAN within the global context 
+Data center live capacity by 2030E
+(absolute growth / CAGR vs 2025)
+ 
+ 
+Source: Cushman & Wakefield, DC Byte, JLL, IMDA, Goldman Sachs Global Investment Research
+11 October 2026
+  14
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+improvements. This would be equivalent to roughly 4%-10% of Johor’s average 
+municipal water consumption between 2018-22. While these levels do not imply an 
+outright water shortage, they are sufficiently material to attract regulatory scrutiny, 
+particularly given the rapid pace of capacity additions and competing residential and 
+industrial demand. In our view, Johor provides an example that water could emerge as a 
+permitting and infrastructure-planning issue well before it becomes a physical resource 
+constraint. 
+ 
+Johor’s response to data center-related water constraints has increasingly shifted 
+from resource management toward economic and regulatory intervention. Rather 
+than relying solely on delaying expansion, authorities have begun using fiscal tools to 
+discourage dependence on municipal freshwater supplies. A notable example is the 
+introduction of a dedicated RM5.33/m³ treated-water tariff for data centers, above 
+standard industrial water rates, designed both to discourage freshwater-intensive 
+cooling and to generate funding for broader water infrastructure upgrades. Alongside 
+demand-side controls, Johor is pursuing an aggressive buildout of alternative water 
+infrastructure to decouple future data center growth from municipal water supply. 
+The state is increasingly steering operators toward reclaimed and non-potable water 
+sources, including wastewater recycling systems developed through cooperation 
+between state utility providers and sanitation agencies. Major operators i.e. BDC and 
+AirTrunk have responded by investing directly in water-treatment and distribution 
+infrastructure, including large-scale reclamation facilities, reverse-osmosis systems, and 
+dedicated recycled-water pipeline networks. At the same time, Johor is accelerating 
+multi-billion-ringgit upgrades to regional water infrastructure, including the expansion 
+of treatment plants and off-river storage facilities to improve system resilience before 
+the next phase of data center growth. In our view, the Johor experience demonstrates 
+that large-scale computing hubs do not necessarily need to rely on freshwater expansion 
+alone; instead, water recycling, alternative supply networks and targeted infrastructure 
+capex can become critical enablers of future capacity growth once water emerges as a 
+permitting constraint.
+ 
+Exhibit 8: For Johor, we estimate data center cooling water demand could reach 23-51 mn m³ by 2030, equivalent to 
+4%-10% of Johor’s average municipal water consumption between 2018-22 
+Potential data center water consumption for cooling under various scenarios, mn m3 (LHS); data center water demand as % of Johor’s 
+municipal water consumption, 2018-2022 average (RHS) 
+2%
+3%
+5%
+7%
+8%
+10%
+11
+17
+25
+34
+43
+51
+-2%
+0%
+2%
+4%
+6%
+8%
+10%
+0
+10
+20
+30
+40
+50
+60
+2025
+2026
+2027
+2028
+2029
+2030
+11
+16
+22
+29
+34
+37
+2%
+3%
+4%
+6%
+7%
+7%
+0%
+1%
+2%
+3%
+4%
+5%
+6%
+7%
+8%
+9%
+10%
+0
+10
+20
+30
+40
+50
+60
+2025
+2026
+2027
+2028
+2029
+2030
+11
+15
+19
+23
+24
+23
+2%
+3%
+4%
+4%
+5%
+4%
+-2%
+0%
+2%
+4%
+6%
+8%
+10%
+0
+10
+20
+30
+40
+50
+60
+2025
+2026
+2027
+2028
+2029
+2030
+Bear Case: Operators to maintain 
+mandatory cap 
+1.8 L/kWh WUE in Johor
+Base Case: Operators to 
+achieve 6% annual efficiency 
+improvement for WUE 
+Bull Case: Operators to achieve 
+15% annual efficiency 
+improvement for WUE 
+ 
+We assume the average WUE level of Johor data centers to be 1.8 L/kWh in 2025, which has factored in the tropical inefficiency of evaporative cooling. 
+ 
+Source: Department of Statistics Malaysia, Goldman Sachs Global Investment Research
+11 October 2026
+  15
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Focus Stock: Vertiv Holdings (VRT, Buy-rated by Mark Delaney, CFA) 
+ 
+ 
+Thematic Relevance 
+Vertiv is well positioned to benefit from rising cooling intensity across APAC data 
+center markets as operators increasingly balance power efficiency, water 
+availability and higher AI compute densities. The company has already established 
+relationships with major operators across the region, including supplying its water-free 
+Liebert DSE natural-cooling system to Centrin Data’s Ulanqab facility and maintaining a 
+strategic cooling partnership with VNET. While Ulanqab provides a visible example of 
+cooling demand linked to large-scale AI deployment, we see the broader opportunity 
+extending across emerging AI hubs where operators are seeking to optimize capacity 
+conversion amid infrastructure, resource and permitting considerations. 
+Vertiv’s thermal management portfolio is particularly well aligned with the growing 
+adoption of hybrid cooling architectures. Its solutions can operate in dry or 
+free-cooling mode when ambient temperature and humidity permit, minimizing both 
+power and water consumption, before switching to mechanical or wet cooling when 
+required. This flexibility is increasingly valuable across APAC, where operators are 
+balancing stricter efficiency requirements, higher rack densities and growing scrutiny 
+around water use. Vertiv’s portfolio spans dry coolers, trim coolers, free-cooling chillers 
+and water-cooled chillers, allowing customers to tailor cooling architectures to local 
+climatic and infrastructure conditions rather than relying on a single cooling approach 
+year-round. 
+Beyond gray-space cooling, Vertiv remains a leader in coolant distribution units 
+(CDUs), a critical component of direct-to-chip liquid cooling, while its integrated 
+power, cooling, controls and services capabilities position it to capture a larger 
+share of data center infrastructure spending. In our view, the combination of liquid 
+cooling adoption inside the white space and intelligent hybrid cooling systems outside 
+the data hall should support sustained demand for Vertiv’s solutions as AI campuses 
+scale from individual facilities toward multi-phase, gigawatt-scale deployments. Its 
+ability to provide both equipment and lifecycle services further strengthens its 
+positioning as capacity conversion becomes an increasingly important focus for 
+operators globally. 
+Valuation/Risks 
+We are Buy rated on the stock. Our 12-month price target is $301, which is based on a 
+22X EV/EBITDA multiple applied to our updated Q5-Q8 EBITDA estimate. 
+Key downside risks to our view include: 1) Revenue growth — Vertiv has a portion of 
+its datacenter revenue still tied to traditional on-premise datacenters, which is a part of 
+the market that could be impacted by either enterprise spending weakness or by the 
+shift to the cloud. In addition, Vertiv’s ability to continue to improve its cloud/hyperscale 
+revenue and grow in the channel will be important factors in how fast its revenue will 
+increase. Also, market share will be a factor in revenue trends. 2) Margins — There are 
+risks to our expectation for margin expansion. This could come from increased 
+competitive pressure, mix, or execution, tariffs.
+11 October 2026
+  16
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Focus Stock: Envicool (002837.SZ, Buy-rated by Jacqueline Du) 
+ 
+ 
+Thematic Relevance 
+We see Envicool as a key beneficiary of greater usage of advanced, water-efficient 
+cooling in China. Envicool’s full-chain liquid-cooling portfolio spans cold plates, quick 
+connectors, manifolds, CDUs, coolant, piping and primary-side heat-rejection 
+equipment, supporting both direct-to-chip and immersion architectures. Its air-liquid 
+hybrid platform can accommodate rack densities of 20-200kW and multiple cooling 
+sources, positioning the company to capture demand from both new AI facilities and the 
+progressive conversion of existing air-cooled data centers. 
+In gray-space cooling, Envicool’s offerings are particularly well aligned with key 
+China hubs’ seasonal climate and water constraints. Its XFlex 5.0 indirect 
+evaporative cooling system uses AI controls to switch dynamically among dry, wet, 
+hybrid, energy-saving, water-saving and fully water-free modes, enabling water-free 
+operation at ambient temperatures of up to 30°C. A disclosed deployment of Tencent 
+achieved annual PUE of 1.16 and WUE below 0.5 L/kWh. For liquid-cooled facilities, 
+Envicool’s Coolinside dry coolers use free cooling and variable-speed fans to deliver 
+heat rejection with extremely low water consumption, with optional adiabatic assistance 
+available during warmer periods.  
+Valuation/Risks 
+We are Buy-rated on Envicool. Our 12-month target price of Rmb79.0 is based on a 
+42x 2028E P/E discounted back to 2027E with a 10% cost of equity. 
+Key downside risks to our view include: 1) Slow R&D/business progress with key 
+customers; 2) tougher liquid cooling competition and margin risks; 3) ESS demand 
+growth hiccups; 4) geopolitical changes impacting the global server/data center and ESS 
+supply chain.
+11 October 2026
+  17
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, Xavier Zhang, Brian Singer, CFA, Timothy Zhao, Eunice Liu, Ronald Keung, CFA, Kelsey Santoso, Jacqueline Du, Hao Chen, Mark Delaney, CFA, 
+Brendan Corbett, Evan Tylenda, CFA and Grace Chen, hereby certify that all of the views expressed in this report accurately reflect our personal views 
+about the subject company or companies and its or their securities. We also certify that no part of our compensation was, is or will be, directly or 
+indirectly, related to the specific recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: Xavier Zhang Goldman Sachs (Asia) L.L.C., Brian Singer, CFA Goldman Sachs & Co. LLC, Timothy Zhao Goldman Sachs (Asia) 
+L.L.C., Eunice Liu Goldman Sachs (Asia) L.L.C., Ronald Keung, CFA Goldman Sachs (Asia) L.L.C., Kelsey Santoso Goldman Sachs (Singapore) Pte, 
+Jacqueline Du Goldman Sachs (Asia) L.L.C., Hao Chen Goldman Sachs (China) Securities Company Limited, Mark Delaney, CFA Goldman Sachs & Co. LLC, 
+Brendan Corbett Goldman Sachs & Co. LLC, Evan Tylenda, CFA Goldman Sachs International, Grace Chen Goldman Sachs International. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+The rating(s) for Vertiv Holdings is/are relative to the other companies in its/their coverage universe: Aeva Technologies Inc., Amphenol Corp., 
+Aptiv Plc, Aurora Innovation Inc., Belden Inc., BorgWarner Inc., Cerence Inc., Flex, Ford Motor Co., General Motors Co., Gentex Corp., Innoviz 
+Technologies, Jabil Circuit Inc., Keysight Technologies Inc., Lear Corp., Magna International Inc., Mobileye Global Inc., QuantumScape Corp., Rivian 
+Automotive Inc., Sensata Technologies Holding, Symbotic Inc., TE Connectivity Plc, Tesla Inc., Versigent PLC, Vertiv Holdings, Visteon Corp.  
+The rating(s) for Shenzhen Envicool Technology is/are relative to the other companies in its/their coverage universe: Best, Bochu, CRRC Corp. (A), 
+CRRC Corp. (H), Centre Testing Intl Group, Estun Automation Co.(A), Estun Automation Co.(H), Faratronic, Haitian International Holdings, Han’s Laser 
+Technology, Hongfa Technology, Huaming, Kehua Data Co., Lead Intelligent (A), Lead Intelligent (H), Leader Harmonious Drive Systems Co., Luster 
+LightTech Co., Megmeet, Moons’ Electric, NARI Technology, Nantong Jianghai Capacitor Co., OPT Machine Vision Tech Co., Sanhua Intelligent Controls 
+(A), Sanhua Intelligent Controls (H), Shanghai Baosight Software, Shenzhen Envicool Technology, Shenzhen Inovance Technology Co., Shenzhen Kstar 
+Science & Tech, Shuanghuan Driveline, Sieyuan Electric, Sungrow Power Supply Co., Techtronic Industries, Wuhan Raycus Fiber Laser Tech, Yiheda 
+Automation, Yingliu, Zhejiang Supcon Technology Co., Zhuzhou CRRC Times Electric Co. (A), Zhuzhou CRRC Times Electric Co. (H)  
+Company-specific regulatory disclosures 
+The following disclosures relate to relationships between The Goldman Sachs Group, Inc. (with its affiliates, “Goldman Sachs”) and companies covered 
+by Goldman Sachs Global Investment Research and referred to in this research. 
+Goldman Sachs beneficially owned 1% or more of common equity (excluding positions managed by affiliates and business units not required to be 
+aggregated under US securities law) as of the month end preceding this report: Shenzhen Envicool Technology (Rmb50.89) 
+Goldman Sachs has received compensation for investment banking services in the past 12 months: Vertiv Holdings ($242.78) 
+Goldman Sachs expects to receive or intends to seek compensation for investment banking services in the next 3 months: Shenzhen Envicool 
+Technology (Rmb50.89) and Vertiv Holdings ($242.78) 
+Goldman Sachs had an investment banking services client relationship during the past 12 months with: Shenzhen Envicool Technology (Rmb50.89) and 
+Vertiv Holdings ($242.78) 
+Goldman Sachs had a non-investment banking securities-related services client relationship during the past 12 months with: Vertiv Holdings ($242.78) 
+11 October 2026
+  18
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Goldman Sachs had a non-securities services client relationship during the past 12 months with: Vertiv Holdings ($242.78) 
+Goldman Sachs has managed or co-managed a public or Rule 144A offering in the past 12 months: Vertiv Holdings ($242.78) 
+Goldman Sachs is a registered market maker in the securities or derivatives thereof: Vertiv Holdings ($242.78) 
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+ 
+As of July 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,104 equity securities. Goldman Sachs assigns stocks as Buys 
+and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Price target and rating history chart(s) 
+ 
+Target price history table(s) 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+59%
+43%
+Shenzhen Envicool Technology (002837.SZ)
+Vertiv Holdings (VRT)
+Date of report
+Target price (Rmb)
+Closing price (Rmb)
+Date of report
+Target price ($)
+Closing price ($)
+25-Aug-26
+79.00
+60.23
+30-Jul-26
+301.00
+227.50
+21-Apr-26
+110.00
+83.82
+21-May-26
+352.00
+323.40
+24-Feb-26
+118.60
+83.92
+23-Apr-26
+338.00
+321.75
+12-Jan-26
+121.10
+76.98
+13-Apr-26
+311.00
+299.96
+07-Oct-25
+81.00
+61.52
+12-Feb-26
+277.00
+236.51
+24-Aug-25
+70.80
+50.51
+09-Dec-25
+204.00
+178.38
+06-Aug-25
+34.50
+33.15
+22-Oct-25
+182.00
+171.59
+13-May-25
+39.50
+20.16
+29-Sep-25
+159.00
+143.31
+28-Apr-25
+37.40
+17.86
+30-Jul-25
+156.00
+144.17
+11-Mar-25
+50.60
+28.37
+11-Jul-25
+139.00
+123.30
+25-Oct-24
+30.20
+18.76
+09-Jun-25
+122.00
+112.00
+05-Sep-24
+27.60
+12.36
+12-May-25
+106.00
+101.05
+13-Aug-24
+33.10
+12.80
+24-Apr-25
+93.00
+83.88
+09-May-24
+42.40
+14.71
+10-Apr-25
+85.00
+67.73
+26-Apr-24
+38.40
+15.38
+13-Feb-25
+135.00
+109.28
+17-Jan-24
+37.50
+11.27
+19-Nov-24
+140.00
+140.94
+08-Jan-24
+40.30
+11.43
+23-Oct-24
+126.00
+108.36
+20-Oct-23
+51.40
+12.24
+14-Oct-24
+117.00
+112.41
+25-Jul-24
+104.00
+76.48
+16-May-24
+116.00
+97.29
+25-Apr-24
+103.00
+90.35
+09-Apr-24
+98.00
+81.80
+22-Feb-24
+73.00
+62.90
+03-Jan-24
+56.00
+45.57
+11 October 2026
+  19
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+ 
+Price targets shown in table(s) are unadjusted for corporate actions. 
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Shenzhen Envicool Technology (002837.SZ)
+Vertiv Holdings (VRT)
+Date of report
+Target price (Rmb)
+Closing price (Rmb)
+Date of report
+Target price ($)
+Closing price ($)
+30-Nov-23
+52.00
+43.66
+26-Oct-23
+46.00
+34.86
+11 October 2026
+  20
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+11 October 2026
+  21
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
+
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in part, to train or 
+finetune a machine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+11 October 2026
+  22
+Goldman Sachs
+GS SUSTAIN & APAC Data Centers
+ 
+ 
