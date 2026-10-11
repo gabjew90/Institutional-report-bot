@@ -1,0 +1,632 @@
+{
+ "brief": "GS's desk note frames the regime first: index vols stay low versus history even as SPX notches record highs, skew is crushed into the front end, and dealer long gamma is dampening realized moves, a low-vol backdrop that coincides with rising dispersion between AI leaders and rate-sensitive laggards. That dispersion is the engine of 2026's dispersion trade: implied correlation sits near historical lows while realized correlation falls further as single-stock earnings (AMZN, MSFT, NVDA) keep beating implied pricing, so the SPX top-50-vs-index vol spread has cratered from July highs, and some clients are now buying single-stock vol and selling index vol to defend the trade after months of the opposite flow. GS also flags early signs of a breadth recovery (SPX vs ex-AI SPXXAI). Separately, GS pitches tactical longs in nuclear/AI-power names (Uranium basket, URA) on accelerating buildout headlines, a constructive setup into semis earnings (AMAT, CDNS) and SPCX's reiterated Buy, record-short VIX futures positioning that leaves vol vulnerable to a squeeze (GS rolled a client's hedge further out to November), a record EWZ inflow on Brazil's election rally with a tactical put hedge, and a bullish CSI 300 AI-hardware swap idea.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Headline index vols remain low versus history even as equities notch a record high close.",
+   "anchor": "notching a record high close on Tuesday, headline index vols remain \"low\" vs history",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS attributes the market's subdued volatility to subdued sentiment and positioning in cash and vol, plus rising dispersion between AI leaders and rate-sensitive laggards.",
+   "anchor": "A few drivers include subdued market sentiment and positioning (in cash and vol) and increased dispersion (e.g., between AI leaders and rate-sensitive laggards)",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Equity skew has been crushed across indices, especially in the front end, as the market closed at all-time highs Tuesday, though it caught a strong bid Wednesday morning.",
+   "anchor": "Skew continues to get crushed across indices especially in the front end as the market closed at ATHs",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS estimates the market is trading around a pocket of dealer long gamma that is dampening realized moves in either direction.",
+   "anchor": "We estimate the market is trading around a pocket of dealer long gamma here, dampening realized moves in either direction",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Cross-asset correlation dynamics among equities, rates and energy have differed materially from one trading session to the next.",
+   "anchor": "equities, rates, and energy exhibiting materially different correlation dynamics from one session to the next",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Dispersion trading has been one of the most discussed derivatives trades of 2026, driven by extreme sector rotation and low realized correlation.",
+   "anchor": "Dispersion trading has been one of the most discussed derivatives trades of 2026, fueled by a",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Despite implied correlation sitting near historical lows, realized correlation fell even further as single-stock earnings moves from AMZN, MSFT and NVDA consistently outperformed implied pricing.",
+   "anchor": "implied correlation sitting near historical lows, realized correlation fell further as single stock earnings moves consistently outperformed implied pricing",
+   "topic": "equity dispersion trade",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "MSFT",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS can facilitate vanilla options on the implied dispersion level itself, stripped of the realized component, for clients wanting a defined-risk way to express a view or hedge.",
+   "anchor": "facilitate vanilla options on the implied dispersion level itself (stripping out the realized component)",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "The spread between SPX top-50 single-stock implied vol and index implied vol has cratered from its July record highs.",
+   "anchor": "SPX top 50 singles minus index implied vol spread has cratered from July record highs",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Implied vols across AI-related names such as MU, SNDK and AMD have fallen very aggressively as single-stock vol compresses.",
+   "anchor": "steep decline in implied vols across AI related names (MU, SNDK, AMD, etc) has been very aggressive",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [
+    "MU",
+    "SNDK",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "When the single-stock-vs-index vol spread was near its highs, GS saw strong client interest to sell dispersion by selling single-stock vol and buying index vol.",
+   "anchor": "we saw strong client interest to sell dispersion (sell singles vol, buy index vol)",
+   "topic": "equity dispersion trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "As the spread continues to narrow, some clients are stepping in to defend the dispersion theme by buying single-stock vol and selling index vol.",
+   "anchor": "some clients are stepping in to defend the theme (buy singles vol, sell index vol)",
+   "topic": "equity dispersion trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "The 30-day return gap between the SPX and the ex-AI SPXXAI index is near its widest since January 2023, unusual given the two indices rarely move in opposite directions.",
+   "anchor": "rolling 30-day difference in cumulative returns between SPX and SPXXAI is near the widest it\u2019s been since January 2023",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS sees early signs of a market breadth recovery, with the share of stocks above their 50-day moving average turning higher over the past few days.",
+   "anchor": "beginning of a recovery in market breadth, with the % of stocks >50dma pivoting higher over the past few days",
+   "topic": "equity dispersion trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends SPXXAI 20Nov26 102% calls for 1.31% premium (ref 3112.23, 36 days) to position for a convergence between the largest SPX weights and the broader economy-linked names if the macro turns more supportive.",
+   "anchor": "SPXXAI 20Nov26 102% calls for 1.31% (ref 3112.23, 36d)... especially if the macro becomes more friendly",
+   "topic": "equity dispersion trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "20Nov26 (36d)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Recent headlines, including a $120bn US-Korea strategic nuclear build, a $4.2bn conditional DOE loan for Vistra, and Google's 890 MW power deal with Constellation, confirm a rapid acceleration in the domestic nuclear buildout.",
+   "anchor": "$120bn US-Korea strategic build, $4.2bn conditional DOE loan for Vistra, and Google's 890 MW Constellation deal",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS thinks the market is not paying enough attention to the accelerating domestic nuclear buildout.",
+   "anchor": "We think the market is not paying enough attention here",
+   "topic": "AI power basket trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS says its Uranium basket's position sizing sits at structural lows, presenting a clean tactical entry point via the index or the URA ETF through call spreads.",
+   "anchor": "our Uranium basket (GSXURANI Index) sits at structural lows, presenting a clean tactical entry point via index or ETF (URA) call spreads",
+   "topic": "AI power basket trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends GSXURANI 20Nov26 107.5%/125% call spreads for 2.16% premium (ref 139.86, 26 days, 8.1x max gross payout).",
+   "anchor": "GSXURANI 20Nov26 107.5%/125% call spreads for 2.16% (ref 139.86, 26d, 8.1x max gross payout)",
+   "topic": "AI power basket trade",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "20Nov26 (26d)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends URA 20Nov26 45/50 call spreads for 0.67 (ref 40.19, 16 days, 7.5x max gross payout).",
+   "anchor": "URA 20Nov26 45/50 call spreads for 0.67 (ref 40.19, 16d, 7.5x max gross payout)",
+   "topic": "AI power basket trade",
+   "status": "level",
+   "instruments": [
+    "URA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "20Nov26 (16d)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Near-dated implied vols in several semiconductor single names sit below the 20th percentile versus the past two years as option players focus on CPU and Muse-related dynamics.",
+   "anchor": "near-dated vols <20th %ile vs the past 2 years across several names as option players are seemingly more focused on CPU and Muse-adjacent dynamics",
+   "topic": "earnings season AI capex setup",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Following a two-month sector pullback driven by significant de-risking, GIR sees a more constructive trading setup for semis ahead of earnings.",
+   "anchor": "Following a pullback in the sector over the past two months driven by significant de-risking, GIR sees a more constructive trading setup",
+   "topic": "earnings season AI capex setup",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GIR expects AMAT to raise its margin targets and give robust DRAM and logic commentary at SEMICON West in October.",
+   "anchor": "Expect AMAT to raise its margin targets and provide robust DRAM/logic commentary at SEMICON West in October",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GIR expects CDNS to benefit from agentic AI synergies and looks for the company to raise its 2026 guidance.",
+   "anchor": "CDNS to benefit from agentic AI synergies / look for company to raise '26 guidance",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends AMAT 20Nov26 600/720 call spreads for 14.50 (ref 520, 21 days, 8.3x max gross payout).",
+   "anchor": "AMAT 20Nov26 600/720 call spreads for 14.50 (ref 520, 21d, 8.3x max gross payout)",
+   "topic": "earnings season AI capex setup",
+   "status": "level",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "20Nov26 (21d)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends CDNS 20Nov26 380/450 call spreads for 13.95 (ref 356, 30 days, 5.0x max gross payout).",
+   "anchor": "CDNS 20Nov26 380/450 call spreads for 13.95 (ref 356, 30d, 5.0x max gross payout)",
+   "topic": "earnings season AI capex setup",
+   "status": "level",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "20Nov26 (30d)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GIR reiterated its Buy rating on SPCX ahead of its 17 November earnings and raised its 12-month price target to $230.",
+   "anchor": "GIR reiterated their Buy rating (ahead of 17Nov earnings), raising our 12m PT to $230",
+   "topic": "earnings season AI capex setup",
+   "status": "target",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12m"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GIR says SPCX's AI segment estimates still look relatively conservative versus Street estimates over the next 6 to 18 months.",
+   "anchor": "AI segment estimates still look relatively conservative (relative to Street estimates) over the next 6-18 months",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "6-18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "SPCX implied vol continues to trade at its lows since the stock's options were listed on 16 June.",
+   "anchor": "Vol continues to trade at the lows since options listed on 16Jun",
+   "topic": "earnings season AI capex setup",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends SPCX 19Mar27 200 calls for 12.25 (ref 168, 35 days).",
+   "anchor": "SPCX 19Mar27 200 calls for 12.25 (ref 168, 35d)",
+   "topic": "earnings season AI capex setup",
+   "status": "level",
+   "instruments": [
+    "SPCX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "19Mar27 (35d)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Vol of vol (VVIX) has collapsed over the past few weeks to near its August lows.",
+   "anchor": "Vol of vol (VVIX) has collapsed over the last few weeks to near its August lows",
+   "topic": "VIX short squeeze setup",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Asset managers have sold VIX futures to historical net-short extremes, surpassing even the depths of July 2024, while S&P positioning remains elevated relative to history.",
+   "anchor": "asset managers have sold VIX futures to historical net-short extremes, surpassing even the depths of July",
+   "topic": "VIX short squeeze setup",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS says this record-short VIX futures positioning leaves the VIX complex offside and vulnerable to a sharp squeeze.",
+   "anchor": "This structural imbalance leaves the VIX complex highly offside and vulnerable to a sharp squeeze",
+   "topic": "VIX short squeeze setup",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS expects vol to stay sticky or drift higher regardless of spot direction, with this positioning dynamic carrying especially well into the November VIX expiry.",
+   "anchor": "We expect vol to stay sticky or drift higher regardless of spot, meaning these positioning dynamics should carry exceptionally well into the November expiry",
+   "topic": "VIX short squeeze setup",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "November expiry"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends VIX 18Nov26 20/30 call spreads for 0.81 (ref 17.8 UX2, 24 days, 12.3x max gross payout).",
+   "anchor": "VIX 18Nov26 20/30 call spreads for 0.81 (ref 17.8 UX2, 24d, 12.3x max gross payout)",
+   "topic": "VIX short squeeze setup",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "18Nov26 (24d)"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "A GS customer sold 98,000 VIX 16Oct26 20/30 call spreads to buy 125,000 VIX 20Nov26 20/30 call spreads for a $2.5mm premium spend.",
+   "anchor": "GS cust sold 98k VIX 16Oct26 20/30 call spreads to buy 125k VIX 20Nov26 20/30 call spreads ($2.5mm premium spend)",
+   "topic": "VIX short squeeze setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "EWZ has rallied 13% since Flavio Bolsonaro's surprise showing in Brazil's election, accompanied by a sharp pickup in options activity.",
+   "anchor": "EWZ has seen a sharp pickup in activity around Brazil\u2019s election, with the ETF rallying 13%",
+   "topic": "Brazil election EM equity flows",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "The EWZ rally has been accompanied by $700mm of ETF share creation, the largest daily inflow on record.",
+   "anchor": "accompanied by $700mm of EWZ creation, the largest daily inflow on record",
+   "topic": "Brazil election EM equity flows",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "The record EWZ inflow marks a reversal from August's $2.7bn redemption wave.",
+   "anchor": "reversal following the August $2.7bn redemption wave",
+   "topic": "Brazil election EM equity flows",
+   "status": "released",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "A GS customer tactically added EWZ downside after the rally, buying 36,000 EWZ 23Oct26 38 puts.",
+   "anchor": "EWZ 23Oct26 38 puts, GS cust bot 36k",
+   "topic": "Brazil election EM equity flows",
+   "status": "level",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "23Oct26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "Funding spreads on onshore Chinese AI hardware proxies in the CSI 300 are now quite negative, alongside a pickup in flow into calls, call spreads and floored swaps.",
+   "anchor": "funding spreads are quite negative now. We have seen a decent amount of flow into calls, call spreads, and floored swaps",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS likes the China AI-hardware trade for washed-out positioning and improving fundamentals, citing Q2 EPS growth.",
+   "anchor": "We like the trade given 1) washed-out positioning, 2) improving fundamentals (Q2 EPS growth",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS also cites record negative funding levels, cheap vol, and the migration of smaller AI hardware names into larger-cap indices as reasons to like the CSI 300 AI hardware trade.",
+   "anchor": "3) record negative funding levels, 4) cheap vol, and 5) migration of used-to-be smaller AI hardware stocks into larger cap indices",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Vol Views 7 Oct 2026",
+   "claim": "GS recommends buying its GSCB300P CSI 300 ex-sanctioned-names basket via a 17Sep27 99% CNH floored swap for SOFR + 0bps.",
+   "anchor": "GSCB300P (GS basket of CSI 300 ex-sanctioned names) 17Sep27 99% CNH floored swap for SOFR + 0bps",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "17Sep27"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19443__gs-vol-views-7-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 44,
+  "matched": 44,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 4,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
