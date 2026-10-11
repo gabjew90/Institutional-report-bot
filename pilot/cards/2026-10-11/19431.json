@@ -1,0 +1,130 @@
+{
+ "brief": "Goldman's Jason Klein gives a quarter-end read on US equity market liquidity. Headline: YTD 2026 volumes average a record 19B shares and $1T executed value a day, up 10% y/y through Q3, yet top-of-book liquidity is flat and the trading environment stays fragile. Executed value has doubled since 2023 ($511B to $1,041B daily) while top-of-book size fell 21% over the same stretch. June had the two busiest volume days ever (33B shares 6/18, 32B shares 6/26), but top-of-book liquidity that month plunged 33% versus May before recovering to YTD highs. Since 2017, top-of-book depth is down 76% even as daily share volume nearly tripled, and depth has stabilized at $11M/day for the last two years. Conclusion: despite the shift to a structurally higher-volume regime, top-of-book depth still evaporates in stressed tapes, thinnest exactly when it is needed most.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "US equity YTD 2026 volumes are averaging a record 19 billion shares and $1 trillion in executed value per day.",
+   "anchor": "YTD volumes are averaging a record 19B shares / $1T a day.",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "Despite US equity volumes rising 10% year over year through the third quarter of 2026, top-of-book liquidity is flat and the trading environment remains fragile.",
+   "anchor": "Despite volumes up +10% y/y\nthru 3Q, top-of-book liquidity is flat and the trading environment remains fragile.",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "US equity executed value has doubled from $511 billion to $1,041 billion daily since 2023, while top-of-book liquidity fell 21% over the same period.",
+   "anchor": "Executed value has doubled since 2023 - $511B to $1,041B daily - while top of book fell -21% over\nthat same time",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "US equities saw the two busiest volume days ever in June 2026, with 33 billion shares traded on June 18 and 32 billion shares on June 26.",
+   "anchor": "Massive volume spike in June included the two busiest volume days ever - 33B shrs on 6/18 & 32B shrs\non 6/26",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "US equity top-of-book liquidity plunged 33% in June 2026 versus May but has since recovered back to year-to-date highs.",
+   "anchor": "top of book liquidity that month plunged -33% vs. May (but has since recovered back\nto YTD highs)",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "US equity top-of-book depth is down 76% since 2017 even as daily share volume has nearly tripled.",
+   "anchor": "Top of book depth is down -76% since 2017, while daily shares volume has nearly tripled.",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "US equity top-of-book liquidity has stabilized at $11 million per day over the last two years.",
+   "anchor": "top of book liquidity has stabilized at $11M/day over the last two years.",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Klein - Liquidity snapshot 8 Oct 2026",
+   "claim": "Despite the shift into a higher-volume trading regime, US equity top-of-book depth still evaporates in stressed tapes, thinnest exactly when it is needed most.",
+   "anchor": "Despite the shift into a higher volume regime, top-of-book depth still evaporates in stressed tapes \u2013\nthinnest exactly when it's needed most.",
+   "topic": "equity market liquidity depth",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19431__gs-klein-liquidity-snapshot-8-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 8,
+  "matched": 8,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
