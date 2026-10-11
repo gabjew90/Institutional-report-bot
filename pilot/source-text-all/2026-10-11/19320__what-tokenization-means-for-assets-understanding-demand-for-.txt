@@ -1,0 +1,537 @@
+What 
+Tokenization 
+Means for 
+Assets
+Understanding Demand for 
+Tokenized Assets and the 
+Drivers of Widening Adoption
+As of October 2026
+
+Table of Contents
+Authors:
+What does tokenization change for assets?	
+3
+What drives demand for tokenized assetst? 	
+5
+Why is tokenization by itself not enough, and what more is needed?	
+8
+Tokenized Assets and Liquidity 	
+9
+Robert Crossley
+Global Head of Industry 
+Advisory Services,
+Franklin Templeton
+Azril Ikram
+Global Lead Fintech Analyst,
+Franklin Templeton
+David Ching, CFA 
+Investment Director & 
+Head of Research, 
+Animoca Brands
+Andrew Ho
+Research & Content, 
+Animoca Brands
+
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+2
+Note: Franklin Templeton and Animoca Brands have entered into a strategic collaboration to explore 
+and facilitate institutional adoption of tokenized real-world assets, and each party may derive financial 
+or other benefits from the relationship.
+The co-authored article series reflects the parties’ opinions on tokenization, real-world assets and the 
+development of financial infrastructure. This article series is for informational and educational purposes 
+only and should not be construed as investment advice, endorsement, recommendation or assessment 
+by Franklin Templeton of Animoca Brands or NUVA, its holdings or its suitability as an investment. 
+Nothing in this material constitutes an offer to sell, a solicitation of an offer to buy or a recommendation 
+to purchase or sell any security or other investment.
+In the previous article, we discussed what has brought us to this tipping point and showed how crypto 
+technology is driving change through the infrastructure and payment layers. This article looks at the 
+implications for the asset or product layer. Assets represent the vehicle or mechanism by which financial 
+markets channel savings to productive enterprises. Looked at this way, we can see that tokenization lies 
+at the very heart of the next stage of the evolution of capital allocation in the global economy. The 
+intersection of the traditional financial system with the technology and innovations of defi has 
+implications for how we think about investing, what we invest in, and how we go about it. 
+This article focuses in on what the factors and dynamics described in the preceding articles mean for the 
+trajectory of tokenized assets and how this relates to current and future demand for real-world assets 
+(RWAs). We will discuss how reasons for holding an asset in a traditional account and in a defi wallet differ, 
+how these are directly related to the ways the asset can be used within each infrastructure, and why this 
+is key to understanding the convergence and integration of the two systems. We will explain where and 
+why attempts to accelerate and broaden the scale of RWA adoption have varied in their success, and 
+what the platforms bridging the gap between defi and tradfi will require to differentiate themselves and 
+attract growing volumes of traffic. 
+To this end there are three key questions which this article will address:
+1.	 What does tokenization change for assets? 
+How and why do the potential properties of an onchain wallet-based asset differ from 
+an off-chain account-based asset?
+2.	 What drives demand for tokenized assets?  
+When and how are the reasons for holding an asset different in defi from in traditional finance, 
+and how do tokenized assets themselves differ?
+3.	 Why is tokenization by itself not enough, and what more is needed?
+Lorem ipsum
+
+3
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+What does tokenization change for assets? 
+Tokenization makes new things possible, not just in terms of the ability to transfer the asset using 
+more efficient infrastructure and processes, but at the asset level itself.
+The range of things that onchain assets can represent and do, what they can yield, and the ways 
+in which they can potentially be used, is significantly wider than traditional assets. (Please see 
+Franklin Templeton’s “Future of Investing—Future Portfolios” for a previous discussion of the 
+important impacts of this on wealth management).1 
+•	 What a token can represent—an expanded set of rights
+In the traditional system, an asset is thought of simply in terms of its cashflow rights, and in the 
+case of equities, its voting rights. Any additional considerations such as interest, passion, or very 
+high friction of ownership, usually render it a big-ticket “collectible,” e.g., art, cars. We think of 
+“assets” almost exclusively in terms of their financial return, but for certain assets, the investor 
+base is often defined as much by their willingness and ability to tolerate and navigate the 
+frictions associated with ownership than their overall financial return targets.
+Tokenization provides the ability to separate the ownership of the different rights traditionally 
+fused together in an asset, e.g., cash flows, voting rights, access, utilization rights, naming rights. 
+A token can also represent different combinations of these rights. And the source of those rights 
+could be a traditional fund, a security or alternative assets, but it could also be an individual 
+intangible asset, such as the rights to a song or associated with a work of art, e.g., merchandising, 
+share of future resale value, exclusive viewings and events. However, separating or combining 
+rights through tokenization can introduce legal complexity, particularly around how those rights 
+are defined, documented and enforced within different onchain structures, or in some 
+structures, such as synthetic exposures, underlying rights may not be available at all. 
+•	 What a token can do—programmability and customizability
+When an asset is put “onchain,” or tokenized, it becomes software, and software is 
+programmable. This has numerous implications.
+For example, rights can be automatically administered by smart contracts embedded in a token. 
+(Smart contracts are essentially if-then statements enshrined in code and triggered when certain 
+conditions are satisfied). Because rights can be combined and embedded into the token, an 
+asset can yield not only financial return but also automatically unlock exclusive access rights and 
+privileges or incentives. This is common in Web3. The programmability of rights associated with 
+and embedded in the asset can also be used to enhance its value and or/appeal to certain 
+buyers or cohorts. At the same time, programmability can introduce operational complexity, 
+particularly where automated rules or smart contracts determine how rights are administered 
+or transactions are executed. These uses may also create additional risks, particularly where 
+tokenized assets are borrowed against, used as collateral or staked. This may expose holders 
+to leverage, liquidity, liquidation or operational risks associated with automated execution.
+While tokenization refers to a process, we can also usefully think of a token as a “smart wrapper.” 
+Automated logic can be embedded directly into the asset itself, e.g., rather than relying on 
+manual back-office administration, the asset can be instructed to automatically distribute 
+dividends, or transfer ownership the exact moment predefined market conditions are met. 
+1
+
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+4
+Future “smart assets” will run through flexible networks of “smart pipes,” compared to today’s 
+system of fixed “dumb pipes” transporting inert assets. And as tokenized forms of various assets 
+become more prevalent, we will see these tokenized wrappers combined into tokens of tokens, 
+a token representing and controlling multiple asset tokens, i.e., a portfolio. 
+•	 How a token can be used—utility
+In traditional financial markets, an asset is static and its ownership passive in the sense that it sits 
+in a siloed custody account until such time as it has de/appreciated in value sufficiently to be 
+sold. For large institutions, collateralized lending and borrowing in the form of stock loan and 
+repo is a cumbersome and specialized endeavor.
+Defi protocols allow any onchain investor to do more than just passively hold their assets. 
+Certain tokenized assets can be posted as collateral to borrow other assets, or they can be used 
+in borrowing strategies or in liquidity pools. A liquidity pool is a smart-contract-based pool of 
+assets used by decentralized exchanges to support trading; by temporarily committing the asset 
+to a specific digital vault or network protocol—a process known as “staking”—the holder earns 
+yield in exchange for supporting the network’s liquidity or operations. This is not unlike repo in 
+traditional finance.
+Onchain investors can borrow against many tokenized assets and use the borrowed funds to 
+acquire or deposit more of the same or another yield-bearing asset and repeat the process to 
+increase exposure. Traditional investors will instantly recognize this as a form of leverage, but 
+unlike in traditional finance, an asset in your wallet can be immediately recognized by automated 
+lending protocols, or be used as collateral for real-time borrowing, and be subjected to rules and 
+limits. And because all assets are controlled by a wallet (rather than distributed across siloed 
+accounts) this creates the possibility to cross-collateralize/cross-margin within a single wallet 
+which can hold all assets in the portfolio, e.g., using your asset holdings to reduce your interest 
+rate on a longer-term loan. 
+As these examples illustrate, in an onchain environment—and depending on the type of 
+tokenization (see below)—an asset can be used in multiple ways to generate different and 
+additional forms of value for the holder, including but not limited to additional financial return. 
+The programmability of the asset and the ability to automatically put it to work in new ways, 
+sometimes simultaneously, means that in defi an asset can often be “sweated” much harder 
+and can potentially be designed to much more closely match the needs and preferences of 
+the holder. The flexibility of the asset, and the expanded set of opportunities offered by the defi 
+machinery, mean that many tokenized assets are able to generate additional yield and utility not 
+available in the traditional system. Even when these possibilities don’t exist, the tokenized 
+wrapper enables faster settlement, and more transparent and lower cost movement and holding 
+of the asset.
+
+5
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+What drives demand for tokenized assets? 
+We will address this question from two angles: first, how tokenized assets differ, and why and how 
+these differences are important; and second, the real-world benefits (RWBs) that can be generated 
+by RWAs.
+•	 A. How do tokenized assets differ from one another?
+Whenever there is discussion of “tokenized assets,” it is useful to distinguish and identify the type 
+of tokenization been talked about. This has a direct bearing on the types and breadth of utility 
+afforded by the tokenization. The utility of a tokenized asset is a function of the model of 
+tokenization and the machinery or marketplace for its creation and movement. 
+As highlighted in a previous article, there are multiple models of tokenization, and not all 
+tokenization is equal.2 The range and types of benefits depend on the model of tokenization 
+employed. 
+2
+Synthetic exposure uses a token to provide the economic return of an underlying asset without giving 
+the holder direct ownership of that asset. This distinction offers greater versatility and freedom of 
+movement throughout the machinery of DeFi, but does not necessarily provide the same shareholder 
+rights, such as voting rights or direct entitlement to dividends.
+Digitally native tokenized RWAs offer the most direct ownership protections. Where the token itself 
+is a security, however, KYC/AML and investor eligibility requirements can limit transfers to approved 
+participants, restricting its use in more open DeFi protocols and narrowing its utility. 
+Digital twin tokens, or shadow tokenization, are a steppingstone to the native tokenization which 
+unlocks the potential benefits of the technology by creating an onchain representation of an asset 
+while the legal ownership record remains offchain. In cases where it is enabling a much shorter gap 
+between trade and settlement, it is delivering a real benefit for the user. But in the cases where it 
+simply involves the creation of additional but legally meaningless trading receipts which are 
+unnecessary for future change of ownership, this adds cost and complexity and creates an extra 
+set of reconciliations to be performed (between the off-chain legal record and the onchain receipt).
+It is important to note that one model is not necessarily superior to the other; it is contextual and 
+different buyers have different needs and trade-off functions, but different tokenization models 
+have a direct bearing on this. These variations are summarised in the table on the next page.
+
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+6
+Overview of Tokenization Models
+xxxxxxx
+Tokenization 
+model
+What the token 
+provides
+Rights and 
+protections
+Ownership 
+recording and 
+settlement
+Potential Benefits
+Potential 
+Trade-offs
+Examples
+Digitally native 
+tokenized product
+Direct ownership/ 
+exposure to the 
+underlying stock/
+bond/fund. 
+Full ownership 
+rights and 
+protections 
+associated with 
+the asset.
+Official ownership 
+recorded onchain, 
+with atomic 
+settlement of 
+asset and 
+payment.
+Significant 
+collateral utility, 
+instant settlement, 
+real-time interest 
+and daily yield 
+payout.
+KYC/AML and 
+investor eligibility 
+requirements can 
+limit transfers to 
+approved 
+participants, 
+restricting 
+transferability and 
+some DeFi uses 
+due to comingling 
+of assets.
+Franklin 
+Templeton's 
+natively on-chain 
+money market 
+fund3
+Synthetic 
+exposure token 
+(SPV)
+Economic 
+exposure to the 
+underlying asset 
+without direct 
+ownership.
+No direct 
+shareholder rights 
+or claim on the 
+underlying asset.
+Token ownership 
+recorded onchain; 
+the token and 
+payment can 
+settle 
+simultaneously 
+where supported, 
+while the 
+underlying asset 
+itself does not 
+transfer.
+24/7/365 transfer 
+and broad DeFi 
+utility, including 
+use as collateral 
+or in other yield-
+generating 
+strategies.
+Holders rely on 
+the token 
+structure rather 
+than the 
+underlying asset 
+and do not 
+receive the same 
+direct shareholder 
+rights or 
+protections.
+Tokenized stocks 
+such as those 
+offered by 
+Robinhood,4 
+Kraken5 and 
+Ondo6
+Digital twin token 
+(steppingstone to 
+full tokenization)
+Onchain 
+representation of 
+an asset whose 
+legal ownership 
+remains offchain
+Legal title and 
+associated rights 
+remain with the 
+traditional 
+offchain 
+ownership record.
+Official ownership 
+remains offchain 
+and final 
+settlement of 
+token depends on 
+reconciliation with 
+the traditional 
+offchain record.
+Greater 
+transparency 
+through an 
+onchain record, 
+in the investor’s 
+wallet, with 
+potential for 
+24/7/365 trading 
+and real-time 
+updates.
+Duplicate onchain 
+and offchain 
+records can add 
+reconciliation, 
+cost and 
+complexity and 
+potentially 
+retaining some 
+legacy settlement 
+lags.
+Traditional TMMFs 
++ planned 
+tokenized 
+offerings from 
+DTCC,7 NYSE8 
+and NASDAQ9
+This provides the context for understanding how and why demand for tokenized assets differs. Different 
+tokens do different things, i.e., have different utility, and the greater number and types of uses to which 
+certain tokenized assets can be put in defi means that onchain investors think about assets from a very 
+different and much wider frame of reference from traditional investors. Demand for assets from and in an 
+onchain ecosystem is much broader and more diverse than demand from traditional investors looking at 
+an asset through a much narrower lens.
+Source: Franklin Templeton Industry Advisory Services, based on “Revolution—Not Evolution: Detangling tokenization of RWAs.” Franklin Templeton. March 26, 2026 and sources cited therein.3,4,5,6,7,8,9
+
+7
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+•	 B. Moving from A to B: real-world assets (RWAs) to real-world benefits (RWBs) to real-
+world adoption
+Thus, we can see that investor demand is not for tokenized assets per se, but for the different 
+forms of utility—the real-world benefits (RWBs) they provide. For example, for traditional investors, 
+the expanded utility that tokenized forms of assets may provide include:
+While these benefits are real, discussions of tokenization sometimes fall into the trap of 
+breathlessly articulating only positives and avoiding explaining when and how new costs or risks 
+can be mitigated, with the result that inertia prevails. Similarly, tokenizing an asset may broaden 
+the potential base of buyers, e.g., by reducing the minimum viable investable size and making the 
+asset accessible to new audiences, but unless ownership of the asset provides those investors 
+with new utility there is no reason to buy it. 
+The much bigger trap that explanations of the benefits of tokenization often fall into is failing to 
+take into account that however divisible an asset is, and however great the advantages of buying 
+it initially, its holder needs to be able to sell it at some stage. Tokenization can provide a platform 
+or mechanism to enhance or expand the properties of an asset, but while it can create utility, it 
+can’t create liquidity. A tokenized wrapper/form of an asset doesn’t automatically create 
+liquidity—unless there is an existing pool of buyers and sellers of the underlying asset (however 
+it is wrapped), tokenizing it won’t magically increase its liquidity. To do that, a combination of 
+specific conditions have to obtain or be created.
+Access, e.g., to exposures previously restricted by geography, e.g., Robinhood offering European 
+investors access to exposure to the returns of individual US ETFs.10
+Exposure to new growth/the new economy, e.g., Ethereum, via investing in the currency of the 
+blockchain, and the ability to own intangible assets directly, e.g., the rights to a song or part of an 
+artwork.
+Control of assets via wallet, e.g., stablecoins providing low-cost instant, direct, international money 
+transfers; being able to move collateral to/from an exchange in real time/instantly; or the ability for 
+asset or wallet keys to be recreated if lost, such as with Franklin Templeton patented hot and cold 
+wallet system.11
+Efficiency, by reducing leakage of return by avoiding inherent frictions in legacy infrastructure, e.g., 
+eliminating cash drag and interest leakage by owning a natively tokenized money market fund 
+(TMMF) where the interest earned is directly related to duration of ownership of asset to the minute, 
+rather than losing days or weeks of interest.12
+
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+8
+Why is tokenization by itself not enough, and what more is needed? 
+The failure of many existing tokenization platforms and marketplaces to fulfil their initial promise 
+and live up to their aspirations can be traced back to an absence of these factors in combination. 
+Many tokenized assets have been issued in closed or disconnected ecosystems. Fragmented 
+and limited secondary liquidity negate the benefits of the tokenized format and can result in an 
+asset which can be inferior to its traditional counterpart, or at least with different and less familiar 
+frictions and disadvantages. For this reason, many POC bond issuances are quietly converted 
+back into traditional form after purchase to enable trading.
+For a long time, there was a misplaced focus or implicit belief that tokenization of individual 
+securities (increasing supply) would somehow create its own demand, what economists might 
+call a digital “Say’s Law,” and that enough duplicated POCs would create critical mass. But simply 
+putting RWAs onchain is not enough: Tokenization is the starting point, not the ending point. 
+At the same time, the criticism of tokenization that it does not create liquidity is misplaced. 
+But understanding why points to what the solution needs to look like. 
+3
+
+9
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+Tokenized Assets and Liquidity
+Liquidity is notoriously a “chicken-and-egg” concept. For a deep market, you need lots of buyers, but to 
+attract buyers, you need lots of sellers, who in turn won’t come unless there are lots of buyers, and so on). 
+But essentially, liquidity is a function of:
+•	 Breadth of demand for the underlying asset, and different views and timing of needs for the utility that 
+asset affords, e.g., price appreciation potential, cash flow. 
+A market needs both buyers and sellers with different needs, views and timetables. A two-way market 
+needs underlying (existing) demand for the asset. While the wrapper might favorably enhance the 
+properties of the asset, the wrapper is secondary to the underlying benefits the asset provides. There 
+also needs to be clear incentives for market makers to consistently make two-way prices, with the 
+appropriate level of regularity and depth. It is important to note that liquidity is not the ability to sell 
+immediately, it is the ability to find a price in an acceptable timeframe. And it is a relative and not an 
+absolute concept; a niche asset can be acceptably liquid if there is sufficient regularity of demand in 
+opposite directions from participants whereas and SPX future has to be tradeable continuously 
+(market opening times currently permitting!)
+•	 It boils down to simple and reliable price discovery, acceptably low transaction costs relative to the 
+asset value, minimal friction of transfer of ownership, and connection of the marketplace to safe and 
+convenient payment and custody mechanisms.
+More generally, whatever the features and design of a marketplace or platform—unless it is as 
+institutionally sound and familiar as traditional infrastructure—it is unlikely to be adopted at any scale. 
+Institutional investor adoption of tokenized assets requires institutional-grade infrastructure, controls 
+and governance, e.g., identity, permissioning, auditability, regulation, transparency, compliance and 
+reporting. The benefits of technology do not exist in a vacuum, and multi-billion-dollar businesses 
+cannot rely on a startup for their fundamental technology or their risk controls.
+This is one of the reasons why the USDTC’s project to offer tokenized forms of US $100 trillion of US 
+assets is so significant. This represent top-down institutional tokenization and of traditional assets for 
+which there is existing an extensive two-way demand, i.e., liquidity. By offering market participants 
+choice of which system to use, people will vote with their feet/wallet for the one which offers them 
+more advantages: cheaper, faster, simpler, safer, etc. This is one of the key mechanisms by which 
+tokenized forms of RWAs will displace traditional account-based formats.13
+In short, there has to be a clear and significant combination of incentives for buyers and sellers to use 
+the tokenized form of the asset or venue over alternatives—both the presence of positives and the 
+absence of negatives. So, at the asset level, that balance is heavily tipped to the positive for a natively 
+tokenized 40-Act money market fund paying real-time interest, in the same way as it is for existing 
+systemic infrastructure providers like the DTC, NASDAQ, and NYSE offering services. But any sustainably 
+successful new platform will have to combine existing scale of connection to new groups of potential 
+buyers with existing and growing access to a range of tokenized or tokenizable assets (supply), 
+institutional-grade controls and credibility, sharing the benefits of infrastructure efficiencies such as 
+instant settlement and paying real-time interest on balances. And they will need to offer offer access 
+to new, or previously hard to access, sources of return.14
+In the fourth and final article in the series, we describe a potential institutional solution to many of the 
+issues discussed above at the intersection of defi and traditional finance, helping to bridge decentralized 
+and traditional finance and bring the benefits of tokenization to both institutional investors and 
+participants in the onchain ecosystem.
+
+What Tokenization Means for Assets: Understanding Demand for Tokenized Assets and the Drivers of Widening Adoption
+10
+Endnotes
+1.	
+Source: “The Future of Investing: Future portfolio—New investment options and opportunities from commingling assets in crypto wallets.” Franklin Templeton. November 2024.
+2.	
+Source: “Revolution—Not Evolution: Detangling tokenization of RWAs.” Franklin Templeton. March 26, 
+3.	
+Source: “Franklin Onchain U.S. Government Money Fund—FOBXX.” Franklin Templeton.
+4.	
+Source: “Tokenization of Assets Is Freight Train Coming to Markets: Robinhood CEO.” CNBC. October 2, 2025.
+5.	
+Source: “Kraken Launches xChange Engine to Power Tokenized Stock Trading.” TradingView News. March 6, 2026.
+6.	
+Source: “Ondo Becomes the Largest Provider of Both Tokenized Treasuries & Stocks, Surpassing $2.5 Billion in Total Value Locked.” Ondo. January 23, 2026.
+7.	
+Source: “DTCC Authorized to Offer New Tokenization Service, Paving the Way to Tokenized DTC-Custodied Assets.” DTCC. December 11, 2025.
+8.	
+Source: “The New York Stock Exchange Develops Tokenized Securities Platform.” Intercontinental Exchange. January 19, 2026.
+9.	
+Source: “Nasdaq to Launch Equity Token Design, Putting Issuers at the Center of Tokenization.” Nasdaq. March 9, 2026
+10.	 Source: “Tokenization of assets is freight train coming to markets: Robinhood CEO.” CNBC. October 2, 2025.   
+11.	
+Sources: “The Rise of Stablecoin Remittances: Insights from Coinbase Data.” Coinbase Institute.  August 14, 2025; U.S. Patent No. 12,314,938, “Multilayer system and method for securing a blockchain-
+based token using random temporal windowing.” May 27, 2025.
+12.	 Source: “Franklin Templeton, Stellar Development Foundation Mark Five Years of BENJI, the First U.S.-Registered Tokenized Money Market Fund.” Franklin Templeton. April 30, 2026.
+13.	 Sources: “DTCC Authorized to Offer New Tokenization Service, Paving the Way to Tokenized DTC-Custodied Assets.” DTCC. December 11, 2025; “DTCC Central Securities Depository Subsidiary Surpasses 
+$100 Trillion in Assets Under Custody, Marking Historic Milestone.” DTCC. June 18, 2025.
+14.	 Sources: “Franklin Templeton, Stellar Development Foundation Mark Five Years of BENJI, the First U.S.-Registered Tokenized Money Market Fund.” Franklin Templeton. April 30, 2026; “DTCC Authorized 
+to Offer New Tokenization Service, Paving the Way to Tokenized DTC-Custodied Assets.” DTCC. December 11, 2025; “The New York Stock Exchange Develops Tokenized Securities Platform.” Interconti­
+nental Exchange. January 19, 2026; “Nasdaq to launch equity token design, putting issuers at the center of tokenization.” Nasdaq. March 9, 2026.
+
+This report has been jointly prepared and is published by Animoca Brands Research and Franklin Templeton for informational and 
+educational purposes only.  
+The views expressed in this report are for general purposes only and are not intended to guide investment choices or serve as a substitute for legal, 
+financial, or other professional advice. This report does not take into account any particular circumstances or objectives of the reader. Nothing in this 
+report constitutes, or is to be construed as, an offer, invitation, solicitation or recommendation to buy, sell or subscribe for any security, any interest in 
+any fund or collective investment scheme, any cryptocurrency or digital asset, or any other product or service, or to engage in any investment activity, 
+in any jurisdiction.  
+References in this report to any specific fund, company, product or service are for illustrative purposes only and do not constitute an offer or 
+recommendation of that fund, product or service; any fund referred to in this report is offered only pursuant to its official offering documents and 
+only in jurisdictions in which it is authorized or registered for distribution. Assets, instruments or funds referred to in this report may not have been 
+authorized by a regulatory authority for the public.  
+An investment in a money market fund is not a bank deposit and is not insured or guaranteed by any government or government agency, and 
+it is possible to lose money by investing in such a fund. This report is not directed at, and may not be distributed to or relied upon by, any person 
+in any jurisdiction where such distribution or use would be contrary to applicable law or regulation. Redistribution or reproduction without our 
+written consent is prohibited. This report is not intended to guide investment choices in respect of the acquisition, holding, or disposition of any 
+cryptocurrency (or digital asset) or serve as a substitute for legal, financial, or other professional advice. Cryptocurrencies and digital assets carry 
+inherent risks; always conduct your own research before making any investment decisions.  
+Discussions in this article may be theoretical in nature and are intended to explore the future potential of developing infrastructure and 
+technologies. The concepts, technologies, and activities discussed may not develop or materialize as described. This information is provided for 
+educational and informational purposes only. 
+Blockchain technology represents a new and rapidly evolving industry which is subject to regulatory uncertainty, competitive pressures, security 
+risk, limited performance history and volatility. Digital assets and cryptocurrencies are highly speculative investments that are subject to significant 
+risks. Cryptocurrency investments are subject to various risks, including inability to develop digital asset applications or to capitalize on those 
+applications, theft, loss, or destruction of cryptographic keys, the possibility that digital asset technologies may never  be fully implemented, 
+cybersecurity risk, conflicting intellectual property claims, and inconsistent and changing regulations. 
+Accordingly, readers should consider the appropriateness of the information in this report and, if necessary, seek professional advice. Any decisions 
+based on this report are solely the reader’s responsibility. The authors of this report, as well as Animoca Brands Research, Franklin Templeton and their 
+respective affiliates, may hold positions in the securities, funds, cryptocurrencies or digital assets mentioned in this report. 
+This report has been jointly authored by contributors from Animoca Brands Research and Franklin Templeton. The views expressed are those of 
+the authors as at the date of publication and do not necessarily reflect the views of Animoca Brands, Franklin Templeton, or any of their respective 
+affiliates. Where this report includes data, analysis, or commentary provided by other third parties, any such views or opinions are solely those of the 
+respective third parties, and we make no endorsement of those views or opinions. 
+While we strive to present accurate information, neither Animoca Brands Research nor Franklin Templeton has independently verified the information 
+contained herein (including information presented in third-party contributions) and we make no guarantees nor assume any responsibility regarding 
+its completeness or accuracy. You should undertake independent verification of any information or statement made in this report. Any information 
+contained in this report is based on information that is publicly available, and any views expressed are held, in each case, at the time of publication. 
+All information and views set out in this report are subject to change without notice and neither Animoca Brands Research nor Franklin Templeton 
+is obligated to update this report for any reason nor notify you of any changes to this report. Animoca Brands Research, Franklin Templeton and their 
+affiliates make no guarantee, representation or warranty as to any aspect of this report and Animoca Brands Research, Franklin Templeton and their 
+affiliates disclaim any liability arising from the use of this report. This report may contain forward-looking statements, which are based on current 
+expectations and assumptions and are subject to known and unknown risks and uncertainties; actual events or results may differ materially from those 
+expressed or implied. Past performance is not indicative of future results. The information presented in this report is not intended to be 
+a forecast of future events or a guarantee of future results. 
+Investment strategies and services may not be available in all jurisdictions. Please consult your financial professional or Franklin Templeton 
+contact for further information.  
+Brazil: Issued by Franklin Templeton Brasil Ltda. Canada: Issued by Franklin Templeton Investments Corp. Franklin Templeton and Franklin Templeton Canada are business names used by Franklin 
+Templeton Investments Corp. Offshore Americas: In the United States, this publication is made available by Franklin Templeton. United States: Issued by Franklin Templeton. Investments are not FDIC 
+insured; may lose value; and are not bank guaranteed.  
+Europe: Issued by Franklin Templeton International Services S.à r.l., 8A, rue Albert Borschette, L1246 Luxembourg. Poland: Issued by Templeton Asset Management (Poland) TFI S.A.; Rondo ONZ 1; 00-124 
+Warsaw. Switzerland: Issued by Franklin Templeton Switzerland Ltd, Talstrasse 41, CH-8001 Zurich. United Kingdom: Issued by Franklin Templeton Investment Management Limited (FTIML), registered 
+office: Cannon Place, 78 Cannon Street, London EC4N 6HL. 
+Australia: Issued by Franklin Templeton Australia Limited (ABN 76 004 835 849) (Australian Financial Services License Holder No. 240827), Level 47, 120 Collins Street, Melbourne, Victoria 3000. Hong Kong: 
+Issued by Franklin Templeton Investments (Asia) Limited. Japan: Issued by Franklin Templeton Japan Co., Ltd. South Korea: Issued by Franklin Templeton Investment Advisors Korea Co., Ltd. Malaysia: 
+Issued by Franklin Templeton Asset Management (Malaysia) Sdn. Bhd. & Franklin Templeton GSC Asset Management Sdn. Bhd. Singapore:  Issued by Templeton Asset Management Ltd. Registration No. 
+(UEN) 199205211E, 2 Central Boulevard, IOI Central Boulevard Towers, West Tower #34-01, Singapore 018916. 
+Access your local website at https://www.franklintempleton.com/corporate/all-sites.
+US-GTM-12970608-12870608
+FT-TL-BRANDING-0926_Article 3
+© 2026 Franklin Templeton and Animoca Brands Research. All rights reserved.
+franklintempleton.com
