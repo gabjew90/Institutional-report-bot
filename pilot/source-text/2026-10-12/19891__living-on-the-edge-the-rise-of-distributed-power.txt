@@ -1,0 +1,1970 @@
+M
+North America Insight
+Autos & Shared Mobility / Utilities & Clean Tech / 
+Energy / Industrials
+Living on the Edge: The Rise of 
+Distributed Power
+The AI buildout is colliding with a grid that cannot deliver power 
+fast enough. As inference moves compute closer to users, we 
+expect behind-the-meter power and storage to become core 
+infrastructure – a durable architectural shift with spillover from 
+data centers into C&I. 
+Morgan Stanley & Co. LLC
+Andrew S Percoco
+Equity Analyst
+ Andrew.Percoco@morganstanley.com  
+  +1 212 296-4322 
+David Arcaro, CFA
+Equity Analyst
+ David.Arcaro@morganstanley.com  
+  +1 212 761-1817 
+Stephen C Byrd
+Equity Analyst
+ Stephen.Byrd@morganstanley.com  
+  +1 212 761-3865 
+Adam Jonas, CFA
+Equity Analyst
+ Adam.Jonas@morganstanley.com  
+  +1 212 761-1726 
+Devin McDermott
+Equity Analyst and Commodities Strategist
+ Devin.McDermott@morganstanley.com  
+  +1 212 761-1125 
+Kristine T Liwag
+Equity Analyst
+ Kristine.Liwag@morganstanley.com  
+  +1 212 761-2980 
+Morgan Stanley & Co. International plc+
+Max R Yates
+Equity Analyst
+ Max.Yates@morganstanley.com  
+  +44 20 7425-1917 
+Morgan Stanley & Co. LLC
+Angel Castillo
+Equity Analyst
+ Angel.Castillo@morganstanley.com  
+  +1 212 761-1931 
+Joe Laetsch, CFA
+Equity Analyst
+ Joe.Laetsch@morganstanley.com  
+  +1 212 761-8804 
+Daniel Kutz
+Equity Analyst
+ Dan.Kutz@morganstanley.com  
+  
+Morgan Stanley Asia Limited+
+Jack Lu
+Equity Analyst
+ Jack.Lu@morganstanley.com  
+  +852 2848-5044 
+Morgan Stanley & Co. LLC
+Robert S Kad
+Equity Analyst
+ Robert.Kad@morganstanley.com  
+  +1 212 761-0065 
+Michelle M. Weaver, CFA
+Equity Strategist
+ Michelle.M.Weaver@morganstanley.com  
+  +1 212 296-5254 
+Ariana Salvatore
+Equity Strategist
+ Ariana.Salvatore@morganstanley.com  
+  
+AI infrastructure is approaching a physical tipping 
+point. The power shortfall is growing, inference is 
+increasingly suited to smaller nodes closer to 
+users, and political resistance is making the mega-
+campus data centers harder to scale. We believe 
+the result is a structural shift toward distributed 
+behind-the-meter (BTM) power.
+Key Takeaways 
+• Time-to-power is becoming as important as cost-of-power. We introduce 
+the Stranded Compute Adjusted Cost of Power (SCACP), which adds  the 
+economic cost of idle compute to the conventional Levelized Cost of 
+Electricity (LCOE). Technologies that can be deployed quickly can justify a 
+higher headline power cost because of the accelerated path to an energized 
+GPU. But economics are only part of the equation. Data center developers 
+must also weigh load-following capability, reliability and modularity, 
+emissions, noise and local/NIMBY considerations, and technology maturity. 
+These attributes matter  as projects move closer to population centers and 
+Morgan Stanley does and seeks to do business with 
+companies covered in Morgan Stanley Research. As a result, 
+investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of Morgan Stanley 
+Research. Investors should consider Morgan Stanley 
+Research as only a single factor in making their investment 
+decision.
+For analyst certification and other important disclosures, 
+refer to the Disclosure Section, located at the end of this 
+report.
++= Analysts employed by non-U.S. affiliates are not registered 
+with FINRA, may not be associated persons of the member 
+and may not be subject to FINRA restrictions on 
+communications with a subject company, public appearances 
+and trading securities held by a research analyst account. 
+Key Takeaways
+A growing power shortfall, political pushback to data centers, and the shift from 
+training to inference likely pushes power and compute to the edge.
+Behind-the-meter (BTM) power is a structural architectural shift in how power is 
+consumed, in our view. 
+Front-of-the-meter (FTM) grid power is still relevant for many customers, but we 
+believe going 'off grid' will become more common for inference data center and 
+Commercial & Industrial (C&I) customers.  
+We forecast  a ~120 GW, or $240bn, power equipment TAM for BTM  solutions 
+through 2029 (77 GW DC + 40 GW C&I).  
+We build a composite scoring of several BTM power solutions. Bloom Energy's 
+SOFC, BorgWarner's Turbine Generator, and FTAI's aeroderivative solutions rank 
+highest on our scorecard. 
+October 6, 2026 04:01 AM GMT
+ 
+ 
+
+M
+North America Insight
+2
+face greater scrutiny around air quality, noise and community impact. 
+Incorporating these factors alongside SCACP, Bloom Energy's SOFC ranks 
+#1, BorgWarner's Turbine Generator #2 and FTAI's Aeroderivative solution 
+#3 for behind-the-meter power today (see Exhibit 4 ). 
+• We believe growth in BTM power drives a power flywheel effect. Growth 
+in BTM power for data centers is driving manufacturing scale and innovation 
+across fuel cells, turbines, microgrids and storage, lowering costs and 
+expanding the addressable market into commercial and industrial 
+applications. As such, we do not believe behind-the-meter power is merely a 
+bridge solution. We believe it will become a more conventional way to 
+consume power, particularly for Commercial & Industrial (C&I) customers, 
+where we estimate 40 GW of incremental power demand through  2029.
+• The grid will still play  an important role.  While we are bullish on growth in 
+behind-the-meter power generation, we believe the grid will still play a 
+major role for many customers.  We believe it is important to distinguish 
+between large mega-campuses (1 GW+) for training, and smaller inference 
+nodes. We believe CCGTs or the grid are best suited to provide the primary 
+source of power for large mega-sites (1 GW+) given economies of scale and 
+the proven nature of the technology. However, as AI compute moves to the 
+edge, we believe the opportunity for more modular solutions (fuel cells, 
+small turbines, etc) improves.  
+• Storage remains the balancing factor for data center power. We expect US 
+ESS deployments will reach 279 GWh in 2030, including 169 GWh of annual 
+data-center demand. Virtual Power Plants (VPPs), which involve aggregating 
+home solar + storage + EV battery capacity as a flexible source of power for 
+the grid during peak demand periods remains a small but growing part of the 
+equation. 
+• Physical AI creates a new distributed infrastructure layer. As vehicles, 
+robots and other hardware become more compute-intensive, each becomes a 
+potential inference node – and, where battery-equipped, a distributed power 
+asset. We estimate robot/EV compute capacity could grow to ~1.0 TW by 
+2040. 
+We compile a list of stocks within Morgan Stanley Research coverage that we 
+expect to be key beneficiaries of the movement towards BTM power and 
+storage. 
+• Top ideas for onsite power equipment suppliers: Bloom Energy (BE),  Baker 
+Hughes (BKR), BorgWarner (BWA –  see our corresponding upgrade here), 
+Cummins (CMI), ERock (EROC), FTAI Aviation (FTAI), INNIO (INIO),  and Rolls 
+Royce (RR). 
+• Top ideas within onsite power developers: Solaris (SEI), Liberty (LBRT),  
+Halliburton (HAL), Williams (WMB).
+• Key ESS/VPP providers:  Tesla (TSLA), Ford (F), Fluence (FLNC), BorgWarner 
+(BWA), Sunrun (RUN). 
+Morgan Stanley & Co. International plc+
+Ross Law, CFA
+Equity Analyst
+ Ross.Law@morganstanley.com  
+  +44 20 7677-0560 
+Morgan Stanley & Co. International plc, Seoul Branch+
+Young Suk Shin
+Equity Analyst
+ Young.Shin@morganstanley.com  
+  +82 2 399-4994 
+Morgan Stanley MUFG Securities Co., Ltd.+
+Takeshi Kitaura
+Equity Analyst
+ Takeshi.Kitaura@morganstanleymufg.com  
+  +81 3 6836-5427 
+Morgan Stanley & Co. LLC
+Daniela M Haigian
+Equity Analyst
+ Daniela.Haigian@morganstanley.com  
+  +1 212 761-6071 
+Alexandre Zimmermann
+Research Associate
+ Alexandre.Zimmermann@morganstanley.com  
+  +1 212 761-3617 
+Jeremy Herring
+Research Associate
+ Jeremy.Herring@morganstanley.com  
+  +1 212 761-4182 
+Stefan Diaz, CFA
+Equity Analyst
+ Stefan.Diaz@morganstanley.com  
+  +1 212 761-1834 
+Morgan Stanley & Co. International plc+
+Sara Chemello
+Research Associate
+ Sara.Chemello@morganstanley.com  
+  +44 20 7425-2931 
+Morgan Stanley & Co. LLC
+Jahvonte G Bain
+Research Associate
+ Jahvonte.Bain@morganstanley.com  
+  +1 212 761-9231 
+William Tackett, CFA
+Research Associate
+ William.Tackett@morganstanley.com  
+  +1 212 761-6028 
+Katherine A Bennorth
+Research Associate
+ Katie.A.Bennorth@morganstanley.com  
+  +1 212 761-3753 
+Autos & Shared Mobility
+North America
+Industry View
+In-Line
+
+M
+North America Insight
+Morgan Stanley Research
+3
+Exhibit 1:
+Distributed Power Mapping
+Source: Morgan Stanley Research
+
+M
+North America Insight
+4
+Executive Summary: Reaching  a Tipping Point 
+As AI penetrates deeper into the physical world, we expect compute to become 
+increasingly distributed. Vehicles, robots, drones and other intelligent hardware require 
+meaningful onboard compute to perform perception, prediction, planning and control – 
+often under latency, connectivity and safety constraints that make continuous reliance on 
+centralized cloud inference less practical. 
+Importantly, these assets are unlikely to utilize their compute capacity continuously. A 
+vehicle, for example, contains substantial processing capability but spends much of its life 
+parked. Over time, we believe this creates the potential for otherwise-idle compute to 
+serve external inference workloads, effectively turning millions of intelligent physical 
+assets into a Distributed Inference Cloud (DIC). The same logic can eventually extend 
+from vehicles to homes, humanoids, drones and other AI-enabled devices.
+We see these trends as mutually reinforcing. Distributed inference pushes compute 
+closer to the end user; distributed power allows those nodes to operate with greater 
+resilience and independence from constrained centralized infrastructure. As the number of 
+intelligent physical assets scales, the distinction between a compute asset and a power 
+asset increasingly begins to blur. While this represents the longer-term evolution of the 
+architecture, the forces driving decentralization are already visible today. 
+The centralized cloud model is  confronting two constraints: power scarcity and the 
+shift towards inference. The grid cannot deliver power fast enough to keep up with AI-
+driven demand while political pushback is making large-scale data center development 
+more difficult. At the same time, inference is more distributed and latency sensitive than 
+training, favoring compute closer to users. 
+Together, these forces are pushing compute and power toward a more distributed 
+architecture. Smaller edge facilities can bring inference closer to users, but they also 
+require faster, more localized power - often behind-the-meter. We believe the result is a 
+durable shift toward smaller, more self-sufficient compute-and-power nodes rather than a 
+handful of enormous grid-dependent campuses.
+The power shortfall is growing. Our Morgan Stanley Thematics team forecasts 160 GW 
+of incremental data center power demand from 2026-2029, 22 GW of which are already 
+under construction and have a power grid connection. We also estimate 36 GW of 
+available US grid capacity. After the available grid capacity is spoken for, we expect data 
+centers to largely deploy various behind-the-meter power generation. As it stands today, 
+there is 23 GW of BTM power generation equipment that has been procured by various 
+BTM power developers (SEI, PUMP, WMB, LBRT, HAL/VoltaGrid) that we expect to be 
+deployed at data center sites. This leaves a 77 GW shortfall, which we expect  to be 
+filled with various behind-the-meter power generation solutions including solid-oxide 
+fuel cells (SOFC), reciprocating gas engines, and gas turbines (aeros, HD, industrial, micro).
+
+M
+North America Insight
+Morgan Stanley Research
+5
+Exhibit 2:
+Data Center Power Shortage
+21.8
+36.2
+22.8
+2.8
+160.0
+76.5
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+Total US DC Power
+Demand
+Less: DCs Under
+Construction
+Less: Utility Grid Access
+Less: BTM
+Turbines/Engines (in
+backlog)
+Less: Nuclear Plant
+Siting (prob-wtd)
+Net Shortfall Through
+2029
+GW
+US Data Center Power Shortfall Through 2029 — Midpoint Scenario (GW)
+Source: Morgan Stanley Research estimates
+Not all onsite power is created equal. In an effort to analyze various behind the meter 
+power solutions we are introducing a ranking system. Cost is still important, but we 
+believe power supply decisions is increasingly being driven by (i) time to power 
+considerations, (ii) quality of power supply (load following, modularity/reliability), (iii) 
+noise considerations given the NIMBY movement around data centers, and (iv) gas 
+consumptions and emissions profile.  With this report, we created a metric to standardize 
+the levelized cost of electricity (LCOE) across various onsite power generation 
+technologies and compare that to the supply availability, which we refer to as the 
+Stranded Compute Adjusted Cost of Power (SCACP). SCACP takes the conventional 
+LCOE and adds a stranded compute premium, the monetized opportunity cost of GPUs, 
+capital and contracted revenue sitting idle during the interval between when the GPU is 
+purchased and when it is energized. 
+How to interpret this metric. The grid provides the lowest cost of power. However, given 
+delayed interconnection timelines (5-7 years) data centers developers waiting for this 
+source of power face significant opportunity costs. As a result, solutions that allow quick 
+time to power offer the most attractive unit economics for a data center through the end 
+of the decade. For example, Solid-Oxide Fuel Cells are towards the higher end of the 
+LCOE cost curve today, but also offer the quickest time to power for customer, as well as 
+other important attributes such as 800V DC power output, load following capabilities, 
+and low noise and emissions, which is increasingly important in the NIMBY data center 
+environment. 
+
+M
+North America Insight
+6
+Exhibit 3:
+Stranded Compute Adjusted Cost of Power
+$131
+$111
+$114
+$104
+$131
+$89
+$21
+$21
+$85
+$127
+$233
+$131
+$132
+$135
+$189
+$258
+$323
+$0
+$50
+$100
+$150
+$200
+$250
+$300
+$350
+SOFC
+Aero GT (CFM56)
+Micro Turbine
+Gas Recip
+IGT
+Grid Power
+BTM LCOE ($/MWh)
+Stranded Compute Premium ($/MWh)
+Source: Morgan Stanley Research estimates
+Layering in other considerations, such as load-following capabilities, emissions profile, 
+and noise/NIMBY considerations, we construct a composite ranking across various 
+technologies for behind-the-meter power consumption. We find that SOFCs, namely 
+from Bloom Energy, rank as the most attractive source of behind the meter power 
+today, while industrial gas turbines rank towards the bottom of the list based on the 
+various time-to-power, NIMBY, and emissions considerations. Note that in many cases, 
+these technologies may be working in tandem in a behind-the-meter microgrid 
+configuration and as such, should not always be considered direct competitors to each 
+other. It is also worth highlighting that this composite ranking has various weighting's 
+across the different characteristics - for example, we place a 50% score weighting on 
+SCACP, 15% on noise/NIMBY, 15% on technology maturity, and 10% on load following as 
+well as emissions profile. Developers may therefore have different priorities and 
+objectives, which could meaningfully affect the weighting assigned to each characteristic 
+(i.e. noise/NIMBY may be a more significant consideration in a densely populated region). 
+Please reach out to your MS sales rep if you are interested in a copy of our model. 
+Exhibit 4:
+Behind-the-Meter Power Composite Scoring: Today
+TECHNOLOGY
+SCACP
+($/MWh)
+SCACP
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+SOLID OXIDE FUEL CELL (SOFC)
+$131
+5.0
+3.5
+5.0
+4.0
+3.5
+4.5
+1
+MICRO TURBINE GENERATOR
+$135
+4.9
+4.5
+2.5
+2.5
+1.0
+3.7
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$132
+5.0
+2.5
+1.0
+2.5
+1.0
+3.4
+3
+RECIPROCATING GAS ENGINE (FAST START)
+$189
+3.2
+4.0
+3.0
+2.0
+5.0
+3.3
+4
+INDUSTRIAL GAS TURBINE
+$258
+1.0
+1.0
+1.0
+2.5
+5.0
+1.8
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power 
+applications.  
+
+M
+North America Insight
+Morgan Stanley Research
+7
+Exhibit 5:
+Top Ideas Across BTM Power Gen Equipment Suppliers
+Rank
+Technology
+BTM Score (/5)
+SCACP 
+($/MWh)
+Key Overweight-rated Stocks
+MS Analyst
+1
+SOLID OXIDE FUEL CELL (SOFC)
+4.5
+$131
+Bloom Energy (BE)
+David Arcaro
+2
+MICRO TURBINE GENERATOR
+3.7
+$135
+BorgWarner (BWA)
+Andrew Percoco
+3
+AERODERIVATIVE GAS TURBINE (RETROFITTED 
+CFM56)
+3.4
+$132
+FTAI Aviation (FTAI)
+Kristine Liwag
+4
+RECIPROCATING GAS ENGINE (FAST START)
+3.3
+$189
+INNIO Jenbacher (INIO), ERock (EROC), 
+Cummins (CMI)
+David Arcaro, Angel 
+Castillo
+5
+INDUSTRIAL GAS TURBINE
+1.8
+$258
+Baker Hughes (BKR)
+Joe Laetsch
+Source: Morgan Stanley Research estimates
+Time-to-power has a notable impact on the composite rankings. If we normalize for a 
+standard time to power, and solely analyze these technologies on a basis of cost of power 
+(i.e. assumes no wait time for delivery of the technology), we get different answers 
+( Exhibit 6 ), albeit with a narrowed range of scores.  In a world where there is unlimited 
+availability of across power gen technology providers, the time to power differential 
+narrows dramatically. This is particularly relevant as the market debate evolves around 
+how long the acute time-to-power issues last. 
+Exhibit 6:
+Behind-the-Meter Power Composite Scoring: Assuming No Time Premium 
+(2030)
+TECHNOLOGY
+BTM LCOE
+($/MWh)
+BTM LCOE
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+RECIPROCATING GAS ENGINE (FAST START)
+$110
+4.4
+4.0
+3.0
+2.0
+4.5
+3.8
+1
+SOLID OXIDE FUEL CELL (SOFC)
+$116
+3.7
+3.5
+5.0
+4.0
+3.5
+3.8
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$104
+5.0
+2.5
+1.0
+2.5
+2.0
+3.7
+3
+MICRO TURBINE GENERATOR
+$111
+4.2
+4.5
+2.5
+2.5
+1.0
+3.5
+4
+INDUSTRIAL GAS TURBINE
+$144
+1.0
+1.0
+1.0
+2.5
+5.0
+1.6
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power applications
+Energy storage serves as a complement to most onsite power technologies. Batteries 
+do not generate power, but they smooth the sub-second power transients that dense GPU 
+racks create, they allow for peak shaving, and are often times installed alongside 
+dispatchable power solutions. As a result, we expect hybrid configurations –  a fast 
+thermal source paired with storage for transient response and load following –  to become 
+the default onsite architecture. As such, we expect the ESS market to grow from 57 GWh 
+in 2025 to 280 GWh by 2030, of which ~60% will be for data center usage ( Exhibit 7 ).  
+
+M
+North America Insight
+8
+Exhibit 7:
+US Energy Storage Demand
+57 
+80 
+95 
+103 
+109 
+110 
+14 
+31 
+62 
+108 
+169 
+ -
+ 50
+ 100
+ 150
+ 200
+ 250
+ 300
+2025
+2026e
+2027e
+2028e
+2029e
+2030e
+GWh
+Non-DC Demand (Renewables+)
+Data Center ESS Demand
+Source: Morgan Stanley Research estimates
+Virtual power plants as a growing flex source of power. Virtual power plants, which can 
+come in various different form factors including Vehicle-to-Grid (bidirectional power from 
+EVs) or Home-to-Grid (residential solar + battery storage discharged to the grid during 
+peak periods). While VPPs take time to scale, there is growing evidence of their impact. 
+For example, Sunrun and Tesla recently coordinated more than 140,000 residential 
+batteries to deliver over 580 MW of peak power to the California grid for a three-hour 
+evening dispatch in September. We believe home-to-grid and vehicle-to-grid will become 
+more meaningful contributors to serving peak load requirements of the grid over time. 
+Exhibit 8:
+Virtual Power Plant Configuration
+Source: Morgan Stanley Research estimates
+The Distributed Power Flywheel
+This structural shift extends well beyond data centers. Rising grid power prices and lack 
+
+M
+North America Insight
+Morgan Stanley Research
+9
+of sufficient power, coupled with grid instability creates a powerful flywheel and 
+structural shift to onsite power. It first starts with data centers driving mass consumption 
+of power onsite, leading to significant innovation and manufacturing scale, which drives 
+down the cost of more nascent onsite power solutions (fuel cells, microgrids, and even 
+SMRs in the 2030s). This provides a stronger value proposition for other large consumers 
+of power, namely Commercial & Industrial (C&I)  to start leveraging onsite power 
+solutions. Reshoring of industrial manufacturing, a bipartisan effort, is also driving greater 
+electricity consumption more broadly, generating an even larger TAM for onsite solutions. 
+We forecast ~10 GW of incremental US C&I demand, annually through 2030 reflecting 
+our Utility teams onshoring scenario, which is additive to our BTM power TAM. 
+Exhibit 9:
+Potential US C&I Demand
+9.8
+10.2
+10.6
+11.0
+11.4
+11.9
+12.3
+12.8
+13.3
+0
+2
+4
+6
+8
+10
+12
+14
+2027E
+2028E
+2029E
+2030E
+2031E
+2032E
+2033E
+2034E
+2035E
+Incremental US C&I Demand (GW)
+Source: Morgan Stanley Research estimates
+
+M
+North America Insight
+10
+Behind-the-Meter Power as the Enabling Layer  
+The binding constraint on AI infrastructure is power and grid access. Our Global Thematics 
+team, led by Stephen Byrd, has highlighted throughout recent research that we are 
+entering an unprecedented power shortage. As a result, we believe there is a structural 
+"bring your own power" movement occurring across the US. We expect this trend to be 
+exacerbated by the growing local political pushback around data centers, which is 
+increasingly focused on the inflationary impact that data centers are having on local 
+energy prices. The clear answer in our view is smaller more distributed data centers 
+with localized on-site power tied directly to the data center. 
+The power shortfall is growing. We forecast 160 GW of incremental data center power 
+demand from 2026-2029, 22 GW of which are already under construction and have a 
+power grid connection. We also estimate 36 GW of available US grid capacity. As it stands 
+today, there is 23 GW of BTM power generation equipment that has been procured by 
+various BTM power developers (SEI, PUMP, WMB, LBRT, HAL/VoltaGrid)  that we expect to 
+be deployed at data center sites. This leaves a 77 GW shortfall, which we expect  to be 
+filled with various behind-the-meter power generation solutions including solid-oxide 
+fuel cells (SOFC), reciprocating gas engines, and gas turbines (aeros, HD, industrial, micro). 
+Exhibit 10: Data Center Power Shortage
+21.8
+36.2
+22.8
+2.8
+160.0
+76.5
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+Total US DC Power
+Demand
+Less: DCs Under
+Construction
+Less: Utility Grid Access
+Less: BTM
+Turbines/Engines (in
+backlog)
+Less: Nuclear Plant
+Siting (prob-wtd)
+Net Shortfall Through
+2029
+GW
+US Data Center Power Shortfall Through 2029 — Midpoint Scenario (GW)
+Source: Morgan Stanley Research estimates
+There are many different solutions to help bridge the gap, including: 
+• Natural Gas Turbines and Reciprocating Engines: the largest share by capacity 
+today, chosen due to maturity of technology, ability to provide prime power (high 
+capacity factor), and fuel availability, but carry emissions and permitting trade-offs.
+• Solid Oxide Fuel Cells (SOFCs):  Electrochemical generation (no combustion), 
+fuel-flexible across natural gas, biogas, and hydrogen, and increasingly chosen due 
+to its best-in-class time to power characteristics (<6 months). Additionally, in the 
+case of Bloom Energy (covered by Dave Arcaro), this technology can deliver high 
+voltage direct current (DC) power, which is becoming increasingly more important 
+in the data center market.  
+• Small Modular Reactors (SMRs): Offer continuous, high-uptime baseload power, 
+but on a 5-10 year permitting and construction timelines. Importantly, there are no 
+
+M
+North America Insight
+Morgan Stanley Research
+11
+commercially available SMRs on the market today, adding technology/construction 
+risk for prospective customers. 
+• Solar + Storage: Relatively low-cost and quick to build. However, solar + storage is 
+less prevalent in the behind-the-meter power market today due to lack of energy 
+density (i.e. need a lot of land) and intermittency, even when coupled with storage.
+• Vehicle-to-grid (V2G) and Virtual Power Plants (VPPs): Aggregating EV and 
+residential home batteries (paired with solar) as a distributed energy resource. 
+Modern V2G increasingly pairs reinforcement-learning-based charge/discharge 
+scheduling with real-time electricity pricing, letting vehicles and residential 
+customers charge when demand is low and discharge back to the grid (or to a co-
+located data center) when demand and prices spike. 
+• Microgrids (i.e. all of the above). Microgrids combine various power generation 
+and energy storage technologies into a small power grid, which is typically 
+distributed across multiple customers.  
+With various solutions available to the market, we built a model to standardize the 
+unit economics (Levelized Cost of Electricity)  across various power generation 
+solutions that we believe are well-suited for BTM applications. Within our analysis, we 
+compare five power-generation technologies on a single, apples-to-apples basis. Every 
+technology runs through an identical 15-year project model. The only inputs that differ 
+between them are the technology-specific costs and performance characteristics (heat 
+rate, non-fuel O&M, capex, etc.). Defining Levelized Cost of Electricty (LCOE): The price 
+of power the utility/asset owner must charge to a data center in order to earn a desired 
+return on invested capital (capex) and ongoing operating expenses. 
+Parameters that we hold constant. For every technology, we assume 60% debt / 40% 
+equity capital structure at a 7.5% cost of debt, 1.5% inflation, 21% income-tax rate, 1% 
+property tax, 15-year project life (i.e. PPA term), and an 80% capacity factor. Importantly, 
+we assume a 15% project return - the model backs into the revenue requirement (i.e. 
+power price on a $/MWh basis) needed to hit that return, based on the set of standard 
+project assumptions and technology-specific operating characteristics. 
+Flexed technology-specific inputs. There are four levers that we flex per technology: 
+• Total Capex ($/kW): This ranged from $1,500/kW for Solar Titan Turbines on the 
+low end to $3,500/kW on the high end for Bloom's SOFC. 
+• Fixed O&M ($/kW-yr): Ranging from  $25 for aeroderivative to $225 for Bloom's 
+SOFC. 
+• Plant heat rate (Btu/kWh): The fuel-efficiency driver, from 6,450 (SOFC) to 
+10,600 (IGT), which feeds fuel cost against a delivered gas price. 
+• Overbuild %: The amount of spare capacity that must be added onsite to ensure 
+sufficient redundancy and reliability.  Technologies with larger footprints (i.e. 50 
+MW+ gas turbines) typically require more overbuild vs. smaller footprint 
+technologies (300kW fuel cells) to achieve similar levels of reliability (4 or 5 9's of 
+reliability).  
+
+M
+North America Insight
+12
+Exhibit 11: Key Technology-Specific Operating Assumptions
+TECHNOLOGY
+CAPEX ($/KW)
+FIXED O&M 
+($/KW-YR)
+HEAT RATE 
+(BTU/KWH) OVERBUILD %
+LCOE 
+($/MWH)
+RECIPROCATING GAS ENGINE (FAST START)
+$1,650
+$75.0
+8,744
+13%
+$104
+AERODERIVATIVE GAS TURBINE (RETROFITTED CFM56)
+$1,650
+$25.0
+10,634
+25%
+$111
+MICRO TURBINE GENERATOR
+$1,750
+$75.0
+10,469
+10%
+$114
+INDUSTRIAL GAS TURBINE
+$1,500
+$120.0
+10,612
+20%
+$131
+SOLID OXIDE FUEL CELL (SOFC)
+$3,500
+$225.0
+6,450
+10%
+$131
+Source: EIA, Morgan Stanley Research estimates. Note that this represents 2026 capex estimates.
+Unit economics is a function of cost and time to power. Introducing the  Stranded 
+Compute Adjusted Cost of Power (SCACP). Cost is still important, but we believe power 
+supply decisions is increasingly being driven by (i) time to power considerations, (ii) 
+quality of power supply (load following, modularity/reliability), (iii) noise considerations 
+given the NIMBY movement around data centers, and (iv) gas consumptions and 
+emissions profile.  With this report, we created a metric to standardize the levelized cost 
+of electricity (LCOE) across various onsite power generation technologies and compare 
+that to the supply availability, which we refer to as the Stranded Compute Adjusted 
+Cost of Power (SCACP). 
+SCACP takes the conventional LCOE and adds a stranded compute premium – the 
+monetized opportunity cost of GPUs sitting idle during the interval between when the 
+GPU is purchased and when it is energized. The stranded compute premium assumes 
+$4,500/kW of economic benefit for every year of accelerated grid connection and 
+amortizes it over the energy per kW over the term of the project (reach out for our model 
+for more detail). The math:  every year of expedited power access is worth ~$42/MWh 
+over a 15 year project life: $4,500/kW opportunity cost divided by 105 MWh (15 year 
+project x 80% capacity factor x 8,760 hours in a year). 
+How to interpret this metric. The grid provides the lowest cost of power. However, given 
+delayed interconnection timelines (5-7 years) data centers developers waiting for this 
+source of power face significant opportunity costs and therefore the highest SCACP 
+( Exhibit 12 and Exhibit 13 ). Conversely, Solid-Oxide Fuel Cells are towards the higher end 
+of the LCOE cost curve today, but also offer the quickest time to power for customer, as 
+well as other important attributes such as 800V DC power output, load following 
+capabilities, and low noise and emissions output, which is increasingly important in the 
+NIMBY data center environment. 
+
+M
+North America Insight
+Morgan Stanley Research
+13
+Exhibit 12: Stranded Compute Adjusted Cost of Power ($/MWh)
+$131
+$111
+$114
+$104
+$131
+$89
+$21
+$21
+$85
+$127
+$233
+$131
+$132
+$135
+$189
+$258
+$323
+$0
+$50
+$100
+$150
+$200
+$250
+$300
+$350
+SOFC
+Aero GT
+(CFM56)
+Micro Turbine
+Gas Recip
+IGT
+Grid Power
+BTM LCOE ($/MWh)
+Stranded Compute Premium ($/MWh)
+Source: Morgan Stanley Research estimates
+Exhibit 13: Cost of Power vs. Time to Power
+IGT
+SOFC
+Micro Turbine
+Gas recips
+Aeroderivative
+Grid Power
+$80
+$90
+$100
+$110
+$120
+$130
+$140
+0.0
+1.0
+2.0
+3.0
+4.0
+5.0
+6.0
+7.0
+LCOE ($/MWh)
+Time to Power (Years)
+LCOE vs. Time to Power
+Source: Morgan Stanley Research estimates
+Layering in other considerations ( Exhibit 14 ), such as load-following capabilities, 
+emissions profile, and noise/NIMBY considerations, we construct a composite ranking 
+across various technologies for behind-the-meter power consumption. We find that 
+SOFCs, namely from Bloom Energy, rank as the most attractive source of behind the 
+meter power today, while industrial gas turbines rank towards the bottom of the list 
+based on the various time-to-power, NIMBY, and emissions considerations. Note that in 
+many cases, these technologies may be working in tandem in a behind-the-meter microgrid 
+configuration and as such, should not always be considered direct competitors to each 
+other. 
+It is also worth highlighting that this composite ranking has various weighting's across the 
+different characteristics - for example, we place a 50% score weighting on SCACP, 15% on 
+noise/NIMBY, 15% on technology maturity, and 10% on load following as well as emissions 
+profile. Developers may therefore have different priorities and objectives, which could 
+meaningfully affect the weighting assigned to each characteristic (i.e. noise/NIMBY may be 
+a more significant consideration in a densely populated region). Please reach out to your 
+MS sales rep if you are interested in a copy of our model.
+Exhibit 14: Behind the Meter Power Composite Ranking: Today
+TECHNOLOGY
+SCACP
+($/MWh)
+SCACP
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+SOLID OXIDE FUEL CELL (SOFC)
+$131
+5.0
+3.5
+5.0
+4.0
+3.5
+4.5
+1
+MICRO TURBINE GENERATOR
+$135
+4.9
+4.5
+2.5
+2.5
+1.0
+3.7
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$132
+5.0
+2.5
+1.0
+2.5
+1.0
+3.4
+3
+RECIPROCATING GAS ENGINE (FAST START)
+$189
+3.2
+4.0
+3.0
+2.0
+5.0
+3.3
+4
+INDUSTRIAL GAS TURBINE
+$258
+1.0
+1.0
+1.0
+2.5
+5.0
+1.8
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power applications
+
+M
+North America Insight
+14
+Exhibit 15: Key Behind-the-Meter Power Equipment Suppliers
+TECHNOLOGY
+COMPANY
+LISTING / TICKER
+FLAGSHIP PRODUCT / PLATFORM
+REPRESENTED 
+IN SCACP/LCOE 
+MODEL
+SOLID OXIDE FUEL CELL (SOFC)
+Bloom Energy
+NYSE: BE
+Energy Server (SOFC platform)
+✔
+Mitsubishi Heavy Industries
+TSE: 7011
+MEGAMIE pressurised SOFC / SOFC-GT hybrid
+FuelCell Energy
+NASDAQ: FCEL
+Solid oxide power & electrolysis platform
+Doosan Fuel Cell
+KRX: 336260
+SOFC (Ceres SteelCell licence), Iksan plant
+Ceres Power
+LSE: CWR
+SteelCell — technology licensor, not a genset OEM
+MICRO TURBINE GENERATOR
+BorgWarner (TurboCell)
+NYSE: BWA
+TG350 TurboCell turbine generator system (334 kWe)
+✔
+Capstone Green Energy
+Private (US)
+C200S / C600S / C1000S signature series
+AERODERIVATIVE GAS TURBINE
+FTAI Aviation (FTAI Power)
+NASDAQ: FTAI
+CFM56 Mod-1 aeroderivative genset (~25 MW)
+✔
+GE Vernova
+NYSE: GEV
+LM2500XPRESS / LM6000 / LM9000
+Siemens Energy
+XETRA: ENR
+SGT-A65 (Industrial Trent 60)
+Mitsubishi Power (PW Power Systems)
+TSE: 7011
+FT8 MOBILEPAC / SwiftPac
+ProEnergy
+Private (US)
+PE6000 packaged LM6000 units
+RECIPROCATING GAS ENGINE (FAST START)
+INNIO Jenbacher
+NASDAQ: INIO
+Jenbacher J620 Fast Start (Type 6 platform)
+✔
+Caterpillar
+NYSE: CAT
+Cat G3520 / CG260 gas gensets
+Wärtsilä
+HEL: WRT1V
+Wärtsilä 34SG / Balanced Power plants
+Rolls Royce (Power Systems-mtu)
+LSE: RR
+mtu Series 4000 L64 gas gensets
+Cummins
+NYSE: CMI
+HSK78G lean-burn gas genset
+ERock
+NYSE: EROC
+RockBlock 1.5–3.5 MW modular gas gensets / ERT500
+INDUSTRIAL GAS TURBINE
+Solar Turbines (Caterpillar)
+NYSE: CAT
+Titan 130 / Titan 250 (SoLoNOx)
+✔
+Siemens Energy
+XETRA: ENR
+SGT-800 / SGT-750
+GE Vernova
+NYSE: GEV
+NovaLT / 6B.03 heavy-duty frames
+Kawasaki Heavy Industries
+TSE: 7012
+GPB series gas turbine gensets
+Baker Hughes
+NASDAQ: BKR
+NovaLT12 / NovaLT16
+Source: Morgan Stanley Research
+Time-to-power has a notable impact on the composite rankings. If we normalize for a 
+standard time to power, and solely analyze these technologies on a basis of cost of power 
+(i.e. assumes no wait time for technology), we get different answers ( Exhibit 6 ), albeit 
+with a tighter range on the composite ranking. This is particularly relevant as the market 
+debate evolves around how long the acute time-to-power issues last. In a world where 
+there is unlimited availability of across power gen technology providers, the time to 
+power differential narrows dramatically and the winning technology then is based more 
+on the basis of cost and the other operating characteristics, rather than time to power. 
+Exhibit 16: Behind-the-Meter Power Composite Scoring: Assuming No Time Premium 
+(2030)
+TECHNOLOGY
+BTM LCOE
+($/MWh)
+BTM LCOE
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+RECIPROCATING GAS ENGINE (FAST START)
+$110
+4.4
+4.0
+3.0
+2.0
+4.5
+3.8
+1
+SOLID OXIDE FUEL CELL (SOFC)
+$116
+3.7
+3.5
+5.0
+4.0
+3.5
+3.8
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$104
+5.0
+2.5
+1.0
+2.5
+2.0
+3.7
+3
+MICRO TURBINE GENERATOR
+$111
+4.2
+4.5
+2.5
+2.5
+1.0
+3.5
+4
+INDUSTRIAL GAS TURBINE
+$144
+1.0
+1.0
+1.0
+2.5
+5.0
+1.6
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power applications
+Battery storage serves as a complementary balancing layer. As inference scales and 
+workloads become more user-facing, power demand will likely become more volatile and 
+less predictable. These inference-driven loads create sharp peaks rather than steady base-
+load requirements, increasing the value of peak-shaving and fast-response capacity. 
+Flexible power solutions are increasingly well positioned to absorb this volatility, offering 
+modularity, faster deployment timelines, rapid response to sudden load ramps, and the 
+ability to smooth peaks without requiring the overbuild of generation or transmission 
+infrastructure. As inference inflects, this flexibility should move from a “nice-to‑have” 
+to a system-level necessity, in our view.
+Energy storage systems (ESS) are a practical solution to help mitigate the power 
+
+M
+North America Insight
+Morgan Stanley Research
+15
+shortfall, particularly where grid access is constrained or new generation cannot be built 
+quickly enough. ESS are stationary battery systems that store and discharge electricity at 
+different times of the day to supply power either to the grid or directly to behind-the-
+meter customers. These systems capture excess generation and release power during 
+periods of elevated demand, enabling the grid to manage volatility without adding surplus 
+generation capacity. For instance, ESS will charge during off‑peak periods when power is 
+adequate and prices are low, and can discharge instantaneously as inference demand 
+spikes and electricity is most expensive. This reduces a facility’s maximum grid draw, 
+effectively “shaving” the top of the demand curve and lowering peak‑related costs such as 
+demand charges and capacity charges. Energy storage is also location‑agnostic and 
+modular, so it can be deployed directly at data centers, industrial facilities, or commercial 
+buildings where peak demand occurs. For a deeper dive in the opportunity for BESS at data 
+centers please see our note here. 
+Exhibit 17: Solar and Storage Unit Economics
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+110
+2025
+2027E
+2030E
+$/MWh
+Solar LCOE
+ESS LCOE (w/ ITC)
+Added Cost w/o ESS ITC
+20%, 3H 
+35%, 4H 
+40%, 4H 
+CCGT LCOE
+Source: Morgan Stanley Research estimates
+Exhibit 18: Standalone ESS Unit Economics
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+200
+2025
+2027E
+2030E
+$/MWh
+ESS LCOE with ITC
+Added Cost w/o ITC
+3 Hr 
+4 Hr 
+4 Hr 
+Gas Peaker LCOE
+CCGT LCOE
+Source: Morgan Stanley Research estimates
+We forecast meaningful growth in ESS demand over the next five years, driven by 
+three structural forces.
+• The rapid growth of AI inference workloads is making power demand more volatile 
+and peak‑heavy, increasing the need for ESS to perform peak-shaving and smooth 
+sudden load spikes.
+• ESS is increasingly being deployed as a practical mitigation to traditional power 
+capacity constraints, including limited availability of gas turbines, grid congestion, 
+and long interconnection timelines.
+• Growing penetration of renewables, which require storage to balance 
+intermittency. 
+In the US, we continue to see strong demand for FTM and BTM battery storage. The 
+US is one of the largest markets for energy storage globally, with potential to reach 
+~1,000 GWh of storage installed by 2030 vs. ~90 GWh in 2024. Our US Clean Tech team 
+
+M
+North America Insight
+16
+projects net additions to the US energy-storage market to grow at a 38% CAGR from 
+2025-2030, reaching 279 GWh annual deployments by 2030. This is driven by: (1) the 
+continuously improving economics of renewables + battery storage both at grid scale 
+(front-of-the-meter or FTM) and residential/commercial (behind-the-meter or BTM); (2) 
+increased storage penetration required to manage renewable energy asset intermittency 
+and grid reliability; (3) increased demand for decarbonization solutions in the Commercial 
+and Industrial sectors as well as demand for distributed generation (DG) solutions to help 
+lower utility bills; and (4) policy changes (such as OBBA, NEM 3.0 and IRA), which further 
+incentivize the adoption of battery storage. 
+Exhibit 19: We Project Cumulative Installed ESS Capacity in the 
+US to Reach ~1,000 GWh in 2030
+14
+26
+53
+91
+148
+228 
+323 
+427 
+536 
+646 
+0.3 
+14 
+45 
+107 
+215 
+384 
+0
+200
+400
+600
+800
+1,000
+1,200
+2021
+2022
+2023
+2024
+2025
+2026e
+2027e
+2028e
+2029e
+2030e
+Total Cumulative Deployment (GWh)
+Utility Scale Storage
+US Data Center
+Source: Morgan Stanley Research estimates
+Exhibit 20: Energy Storage Annual Demand – Data Center and 
+Non-Data Center (Renewables, Grid, etc.)
+57 
+80 
+95 
+103 
+109 
+110 
+14 
+31 
+62 
+108 
+169 
+ -
+ 50
+ 100
+ 150
+ 200
+ 250
+ 300
+2025
+2026e
+2027e
+2028e
+2029e
+2030e
+GWh
+Non-DC Demand (Renewables+)
+Data Center ESS Demand
+Source: Morgan Stanley Research estimates
+Virtual Power Plants: The Next Flex Load 
+Virtual Power Plants (VPPs) are emerging as one of the fastest ways to create 
+incremental grid capacity by extracting more capacity from assets that are already 
+connected to the grid. A VPP uses software to aggregate thousands of distributed energy 
+resources – residential batteries, rooftop solar, EVs, thermostats and flexible loads – and 
+dispatch them as if they were a single power plant. For a grid increasingly constrained by 
+load growth, transmission bottlenecks and lengthy interconnection timelines, the key 
+attraction is speed: much of the underlying hardware, land and grid connectivity already 
+exists. 
+
+M
+North America Insight
+Morgan Stanley Research
+17
+Exhibit 21: Virtual Power Plant Configuration
+Source: Morgan Stanley Research
+This is increasingly important because the US power problem is not simply a shortage of 
+energy. In many markets, the binding constraint is having enough capacity at a particular 
+location during a relatively small number of peak hours. VPPs aim to solve this problem. A 
+battery can discharge during the evening peak; a thermostat can temporarily reduce HVAC 
+consumption; an EV can shift charging until overnight. Aggregated across tens or 
+hundreds of thousands of customers, the result can be hundreds of megawatts of 
+incremental headroom without waiting for a new power plant or transmission line.
+RUN and TSLA are demonstrating that VPPs can operate at power-plant scale. The 
+strongest evidence that this concept can scale came in California in September 2026. 
+During a heat wave on September 9, Sunrun and Tesla coordinated more than 140,000 
+residential batteries to deliver over 580 MW of peak power to the California grid for a 
+three-hour evening dispatch. Of that capacity, 517 MW came from approximately 
+110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other 
+manufacturers. Importantly, Sunrun owned and operated 55% of the participating 
+Powerwalls and also dispatched more than 30,000 additional customer batteries. 
+A 580 MW dispatch is comparable in instantaneous output to a conventional power 
+plant, but it was assembled from assets distributed across customers' homes. The 
+batteries responded when California needed capacity most: the Demand Side Grid Support 
+program was triggered after CAISO's day-ahead locational marginal price exceeded $200/
+MWh, while PG&E simultaneously called an Emergency Load Reduction Program event 
+during the heat wave. A day later, Sunrun and Tesla supplied another 140+ MW at 
+Southern California Edison's request. 
+VPPs are beginning to intersect directly with the AI power constraint. For data centers, 
+this could become highly relevant. Rather than waiting several years for a utility to 
+upgrade a substation or transmission corridor to accommodate a new 100-500 MW load, 
+some portion of the required capacity could potentially be created by aggregating flexible 
+resources elsewhere on the constrained portion of the grid. That does not eliminate the 
+
+M
+North America Insight
+18
+need for traditional infrastructure, but it can increase effective utilization of the 
+infrastructure already in place and potentially bridge the period before permanent 
+upgrades arrive.
+Sunrun, Tesla and Renew Home have explicitly begun targeting this opportunity. In June 
+2026, the companies entered into a non-binding framework aimed at aggregating more 
+than 16 GW of flexible capacity from residential batteries, solar systems, smart 
+thermostats and EVs for utilities and hyperscalers. The stated strategy is to use existing 
+distributed resources to free transmission capacity, reduce distribution congestion and 
+create additional headroom for large new loads. The companies estimate they already 
+have more than 300 MW of potentially flexible resources in Virginia – the center of the 
+U.S. data-center market – with that figure potentially reaching at least 500 MW by 2030.
+Exhibit 22: VPP Growth
+Source: Ohm Analytics
+Supply vs. Demand Debate
+A key debate for onsite power equipment suppliers has been if the industry will be 
+oversupplied or if demand will continue to outpace supply by 2030.  Based on a bottom 
+up build of announced capacity plans, we estimate 149 GW of primary power gas 
+equipment supply (turbines, engines, fuel cells, etc.) by 2030. This would support 120 GW 
+of data center power, assuming 20% capacity overbuild at each data center site for 
+redundancy. Our MS data center model estimates ~150 GW of incremental data center 
+demand by 2030, thus keeping us bullish on supply/demand dynamics.  
+Exhibit 23: Power Gen Equipment Supply vs. Global Data Center Demand
+Total Demand & Supply–Demand Balance 
+2027E
+2028E
+2029E
+2030E
+Power Demand (DC only)
+GW/yr
+54.2
+84.4
+121.5
+151.9
+Overbuild Assumption
+20.0%
+20.0%
+20.0%
+20.0%
+Total Demand (including redundancy)
+GW/yr
+65.0
+101.2
+145.8
+182.3
+Total gas-gen equipment supply
+GW/yr
+88.9
+107.0
+127.7
+147.2
+Supply Surplus (Shortage)
+GW/yr
+19.9
+4.8
+-15.1
+-29.2
+Source: Morgan Stanley Research estimates. Reflective of prime power applications ex. engines for construction and mining machines
+Key considerations that keep us bullish:
+• Price still rising across the board. We are seeing prices rise meaningfully for large 
+frame gas turbines, industrial gas turbines, and grid pricing.
+• Pricing terms are still getting tighter. Down payment requirements for slot 
+reservations are rising, up to 25% for 2030 delivery of large frame turbines 
+currently.
+
+M
+North America Insight
+Morgan Stanley Research
+19
+• Rising and broadening demand for onsite power. Onsite power project sizes have 
+increased (multiple >2 GW projects announced) and customers have spanned 
+hyperscalers to other data center developers.
+• Demand locked in through 2028; 2030 now the pivot point. INIO and CAT are 
+fully booked through 2028 with pricing and shipment levels locked in. Competing 
+suppliers are signing supply agreements into the 2029 and 2030 years for onsite 
+power equipment. 
+• Supply potentially overstated and demand understated in 2030. Both supply 
+and demand for onsite power are not well understood in our view. Additional 
+supply is coming from many players but there is a meaningful amount of 
+equipment that is destined for non-data center markets, new entrant capacity is 
+speculative and less likely to disrupt pricing trends of established scale 
+incumbents, and quality of equipment varies significantly. On the demand side, 
+onsite power requires 10% to 35% overbuild of equipment relative to data center 
+consumption, and some new entrant technologies may be used for temporary 
+bridge power such that we would not consider it a cannibalization of prime power 
+applications.
+
+M
+North America Insight
+20
+Distributed Power Flywheel  
+ Behind the meter power production is not a new concept, but historically its been 
+primarily used as a backup source of power (diesel generators, etc.). That's rapidly 
+changing in our view. 
+Four key reasons that this is structural: 
+• Resilience. On-site generation plus islanding capability through local microgrids 
+protects against grid outages and extreme weather, where AI-workload downtime 
+can run into the millions of dollars per minute. This extends beyond data centers, 
+where we expect industrial applications (manufacturing, warehousing, hospitals, 
+etc.) to increasingly rely upon onsite power generation as a primary source of 
+power. 
+• Locality. For data centers, inference benefits from proximity to user and devices. 
+For the broader market, removing T&D infrastructure requirements also lowers 
+cost to deploy incremental power generation.
+• Incremental scalability. Smaller, faster-to-deploy increments beat committing to 
+multi-billion-dollar  capacity with concentrated project risk (permitting, local 
+regulatory pushback, etc.). 
+• Time-to-power. Outside of data centers, time to power remains an important 
+consideration, particularly for the onshoring of manufacturing. 
+• Inflationary pressure on grid electricity prices drives a durable wedge in the 
+economic moat for onsite power. 
+The distributed power flywheel. As data centers drive large-scale adoption of onsite 
+power, they accelerate manufacturing investment, product innovation and supply-chain 
+development across distributed power technologies. Greater scale should lower costs and 
+improve the maturity and reliability of solutions such as fuel cells, packaged microgrids 
+and, over time, SMRs. As the economics improve, we expect adoption to broaden beyond 
+data centers to C&I customers facing similar needs around grid access, resilience and time-
+to-power.
+
+M
+North America Insight
+Morgan Stanley Research
+21
+Exhibit 24: Distributed Power Flywheel
+Source: Morgan Stanley Research
+Onshoring of manufacturing drives the next leg of BTM power consumption. Beyond 
+data centers, reshoring in the US offerings a large secondary market for onsite power 
+solutions. Driven by bipartisan support and attractive policy incentives, the US is taking 
+strides to bring manufacturing back to the US after a decades long shift to regions with 
+cheaper labor markets. In partnership with our Multi-Industrials team, we've sensitized the 
+potential impact of the US growing its share of global manufacturing production such that 
+if the US were to return to a 20% share by 2050 (vs 16% in 2025) the industry would 
+require as much as 113 GW of incremental electricity capacity through 2035 to remain 
+on track, including commercial growth. Given the power shortages across the US, we 
+believe onsite power will play an increasingly important role in supporting the onshoring 
+of manufacturing. In building this TAM analysis, we've leveraged previous work with our 
+multi-industrial team: US Reshoring Flame Has Been Lit For $10tn Opportunity and CoTD: 
+What does US Reshoring Mean for Electricity Demand?
+
+M
+North America Insight
+22
+Exhibit 25: Potential US C&I Demand
+9.8
+10.2
+10.6
+11.0
+11.4
+11.9
+12.3
+12.8
+13.3
+0
+2
+4
+6
+8
+10
+12
+14
+2027E
+2028E
+2029E
+2030E
+2031E
+2032E
+2033E
+2034E
+2035E
+Incremental US C&I Demand (GW)
+Source: Morgan Stanley Research estimates
+Political Pushback Could Support BTM Power 
+The political climate is intensifying, which should benefit behind-the-meter solutions. 
+Retail electricity prices rose meaningfully in 2025 and are expected to keep rising, and 
+data centers have become the convenient explanation whether or not they are the 
+dominant cause.  Politics are becoming impossible to separate from the data center 
+build-out: We highlighted "The Politics of Energy" as one of our 10 thematic predictions to 
+watch heading in 2026, in particular the risk of rising backlash against data center growth 
+becoming a key wedge issue ahead of the midterm elections. This has played out so far: as 
+the issue rises in salience with voters, third parties report an estimated value of ~$156 
+billion of projects were cancelled or delayed in 2025, and $130 billion already in 1Q26. 
+These instances of local opposition have grown louder across state lines, as lawmakers at 
+the federal level are now introducing legislation toward this end. 
+Data center moratoriums have precedent, and are expanding at the state and local 
+level. To be sure, a growing number of localities have passed or proposed guardrails and 
+restrictions on data center projects: guardrails introduced include infrastructure cost-
+sharing requirements, ratepayer protection initiatives, environmental disclosure rules and 
+zoning changes. Restrictions have mostly been in the form of temporary moratoriums, 
+impacting future projects or those lacking vested status. Further, although the explicit 
+public opposition has tended to concentrate more in blue states and among Democratic-
+leaning voters, we're seeing state-wide data center moratorium proposals emerge roughly 
+evenly in Democratic trifectas, Republican trifectas, and divided governments. 
+Importantly, most efforts are aimed at slowing,  not reversing  the build-out, as many 
+of these policy initiatives are temporary. 
+Policy action is building as community pushback to data centers intensifies.  Texas is 
+auditing every data center advancing through ERCOT's interconnection process against 
+more than 474 GW of pending requests, ~90% data center-related, with major developers 
+indicating they will comply. Virginia's July 31 Rider T1 order moves Dominion toward "cost 
+causer pays" for direct-connect transmission. Ohio's debate has become electoral through 
+Vivek Ramaswamy's "Ohioans-First" proposal, which is not current law and is better read 
+as a sentiment indicator than a change to project economics. Pennsylvania Governor Josh 
+
+M
+North America Insight
+Morgan Stanley Research
+23
+Shapiro issued an executive order ending the state’s fast-track permitting program and 
+mandating that data center projects must first be approved by local officials. It also 
+prevents NDAs from being used, introduces new environmental standards, and 
+requirements to bring your own capacity. 
+We expect this conversation to spread as it gains relevance with voters ahead of the 
+midterms - the majority of community pushback is concentrated around 3 issues: (1) 
+Affordability and the concern that data center power consumption will raise consumer 
+power bills, (2) Environmental issues especially water use and air pollution, and (3) 
+Quality of life concerns including noise, dust, and traffic. 
+Exhibit 26: Core Concerns In Data Center Opposition
+Source: Morgan Stanley Research
+We recently published an update on data center opposition dynamics - for more, please see 
+Power Struggle: Data Center Pushback Update & Expert Call Takeaways.
+
+M
+North America Insight
+24
+Disclosure Section
+The information and opinions in Morgan Stanley Research were prepared by Morgan Stanley & Co. LLC, and/or Morgan Stanley C.T.V.M. S.A., and/or Morgan Stanley Mexico, Casa de Bolsa, 
+S.A. de C.V.. As used in this disclosure section, "Morgan Stanley" includes Morgan Stanley & Co. LLC, Morgan Stanley C.T.V.M. S.A., Morgan Stanley Mexico, Casa de Bolsa, S.A. de C.V. and their 
+affiliates as necessary.
+For important disclosures, stock price charts and equity rating histories regarding companies that are the subject of this report, please see the Morgan Stanley Research Disclosure Website 
+at www.morganstanley.com/eqr/disclosures/webapp/generalresearch, or contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research 
+Management), New York, NY, 10036 USA.
+For valuation methodology and risks associated with any recommendation, rating or price target referenced in this research report, please contact the Client Support Team as follows: US/Canada 
++1 800 303-2495; Hong Kong +852 2848-5999; Latin America +1 718 754-5444 (U.S.); London +44 (0)20-7425-8169; Singapore +65 6834-6860; Sydney +61 (0)2-9770-1505; Tokyo +81 
+(0)3-6836-9000.  Alternatively you may contact your investment representative or Morgan Stanley Research at 1585 Broadway, (Attention: Research Management), New York, NY 10036 USA.
+Analyst Certification
+The following analysts hereby certify that their views about the companies and their securities discussed in this report are accurately expressed and that they have not received and will not 
+receive direct or indirect compensation in exchange for expressing specific recommendations or views in this report: David Arcaro, CFA; Stephen C Byrd; Angel Castillo; Stefan Diaz, CFA; Daniela 
+M Haigian; Adam Jonas, CFA; Robert S Kad; Takeshi Kitaura; Daniel Kutz; Joe Laetsch, CFA; Ross Law, CFA; Kristine T Liwag; Jack Lu; Devin McDermott; Andrew S Percoco; Ariana Salvatore; Young 
+Suk Shin; Michelle M. Weaver, CFA; Max R Yates.
+.
+Global Research Conflict Management Policy
+Morgan Stanley Research has been published in accordance with our conflict management policy, which is available at www.morganstanley.com/institutional/research/conflictpolicies. A 
+Portuguese version of the policy can be found at www.morganstanley.com.br
+Important Regulatory Disclosures on Subject Companies
+The analyst or strategist (or a household member) identified below owns the following securities (or related derivatives): Jahvonte G Bain - Tesla Inc(common or preferred stock); Stefan Diaz, 
+CFA - Rivian Automotive, Inc.(common or preferred stock); Adam Jonas, CFA - Caterpillar Inc(common or preferred stock); Ariana Salvatore - Tesla Inc(common or preferred stock); Alexandre 
+Zimmermann - Tesla Inc(common or preferred stock).
+As of August 31, 2026, Morgan Stanley beneficially owned 1% or more of a class of common equity securities of the following companies covered in Morgan Stanley Research: Adient PLC, 
+Aptiv Plc, Asbury Automotive Group Inc, AutoNation Inc., Avis Budget Group Inc, Bloom Energy Corp., BorgWarner Inc., Carmax Inc, Carvana Co, Caterpillar Inc, Cummins Inc, Dauch Corporation, 
+Fluence Energy Inc, Ford Motor Company, FTAI Aviation Ltd, General Motors Company, Goodyear Tire & Rubber Company, Group 1 Automotive, Inc, Halliburton Co, Lear Corporation, Liberty 
+Energy, Lithia Motors Inc., Lucid Group Inc, Magna International Inc., Mobileye Global Inc, Quantumscape Corp, Rivian Automotive, Inc., Solaris Energy Infrastructure, Sonic Automotive Inc, Tesla 
+Inc, Versigent Plc, Visteon Corporation, Williams Companies Inc.
+Within the last 12 months, Morgan Stanley managed or co-managed a public offering (or 144A offering) of securities of Avis Budget Group Inc, Bloom Energy Corp., ERock Inc, Fluence Energy 
+Inc, Ford Motor Company, General Motors Company, Hertz Global Holdings Inc, Innio N.V., Rivian Automotive, Inc., Solaris Energy Infrastructure, Tesla Inc, Williams Companies Inc.
+Within the last 12 months, Morgan Stanley has received compensation for investment banking services from Avis Budget Group Inc, Bloom Energy Corp., ERock Inc, Ford Motor Company, General 
+Motors Company, Hertz Global Holdings Inc, Innio N.V., Liberty Energy, Rivian Automotive, Inc., Solaris Energy Infrastructure, Tesla Inc, Williams Companies Inc.
+In the next 3 months, Morgan Stanley expects to receive or intends to seek compensation for investment banking services from Aptiv Plc, AutoNation Inc., Avis Budget Group Inc, Bloom Energy 
+Corp., BorgWarner Inc., Caterpillar Inc, Cummins Inc, ERock Inc, Fluence Energy Inc, Ford Motor Company, FTAI Aviation Ltd, General Motors Company, Halliburton Co, Hertz Global Holdings 
+Inc, Innio N.V., Lear Corporation, Liberty Energy, Magna International Inc., Mobileye Global Inc, Quantumscape Corp, Rivian Automotive, Inc., Solaris Energy Infrastructure, Tesla Inc, Visteon 
+Corporation, Williams Companies Inc.
+Within the last 12 months, Morgan Stanley has received compensation for products and services other than investment banking services from Aptiv Plc, Avis Budget Group Inc, Bloom Energy 
+Corp., BorgWarner Inc., Caterpillar Inc, Cummins Inc, Dauch Corporation, ERock Inc, Fluence Energy Inc, Ford Motor Company, General Motors Company, Goodyear Tire & Rubber Company, 
+Halliburton Co, Hertz Global Holdings Inc, Innio N.V., Lear Corporation, Liberty Energy, Penske Automotive Group, Inc, Rivian Automotive, Inc., Tesla Inc, Visteon Corporation, Williams Companies 
+Inc.
+Within the last 12 months, Morgan Stanley has provided or is providing investment banking services to, or has an investment banking client relationship with, the following company: Aptiv Plc, 
+AutoNation Inc., Avis Budget Group Inc, Bloom Energy Corp., BorgWarner Inc., Caterpillar Inc, Cummins Inc, ERock Inc, Fluence Energy Inc, Ford Motor Company, FTAI Aviation Ltd, General Motors 
+Company, Halliburton Co, Hertz Global Holdings Inc, Innio N.V., Lear Corporation, Liberty Energy, Magna International Inc., Mobileye Global Inc, Quantumscape Corp, Rivian Automotive, Inc., 
+Solaris Energy Infrastructure, Tesla Inc, Visteon Corporation, Williams Companies Inc.
+Within the last 12 months, Morgan Stanley has either provided or is providing non-investment banking, securities-related services to and/or in the past has entered into an agreement to provide 
+services or has a client relationship with the following company: Aptiv Plc, Avis Budget Group Inc, Bloom Energy Corp., BorgWarner Inc., Caterpillar Inc, Cummins Inc, Dauch Corporation, ERock 
+Inc, Fluence Energy Inc, Ford Motor Company, General Motors Company, Goodyear Tire & Rubber Company, Halliburton Co, Hertz Global Holdings Inc, Innio N.V., Lear Corporation, Liberty Energy, 
+Penske Automotive Group, Inc, Rivian Automotive, Inc., Tesla Inc, Visteon Corporation, Williams Companies Inc.
+An employee, director or consultant of Morgan Stanley is a director of Caterpillar Inc, Cummins Inc, General Motors Company. This person is not a research analyst or a member of a research 
+analyst's household.
+Morgan Stanley & Co. LLC makes a market in the securities of Adient PLC, Asbury Automotive Group Inc, AutoNation Inc., Cummins Inc, Dauch Corporation, Group 1 Automotive, Inc, Lear 
+Corporation, Penske Automotive Group, Inc, Solaris Energy Infrastructure, Sonic Automotive Inc, Visteon Corporation.
+The equity research analysts or strategists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, including quality 
+of research, investor client feedback, stock picking, competitive factors, firm revenues and overall investment banking revenues. Equity Research analysts' or strategists' compensation is not 
+linked to investment banking or capital markets transactions performed by Morgan Stanley or the profitability or revenues of particular trading desks.
+Morgan Stanley and its affiliates do business that relates to companies/instruments covered in Morgan Stanley Research, including market making, providing liquidity, fund management, 
+commercial banking, extension of credit, investment services and investment banking. Morgan Stanley sells to and buys from customers the securities/instruments of companies covered in 
+Morgan Stanley Research on a principal basis. Morgan Stanley may have a position in the debt of the Company or instruments discussed in this report. Morgan Stanley trades or may trade 
+as principal in the debt securities (or in related derivatives) that are the subject of the debt research report.
+
+M
+North America Insight
+Morgan Stanley Research
+25
+Certain disclosures listed above are also for compliance with applicable regulations in non-US jurisdictions.
+STOCK RATINGS
+Morgan Stanley uses a relative rating system using terms such as Overweight, Equal-weight, Not-Rated or Underweight (see definitions below). Morgan Stanley does not assign ratings of Buy, 
+Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, hold and sell.  Investors should carefully read the definitions of all 
+ratings used in Morgan Stanley Research. In addition, since Morgan Stanley Research contains more complete information concerning the analyst's views, investors should carefully read Morgan 
+Stanley Research, in its entirety, and not infer the contents from the rating alone.  In any case, ratings (or research) should not be used or relied upon as investment advice.  An investor's decision 
+to buy or sell a stock should depend on individual circumstances (such as the investor's existing holdings) and other considerations.
+Global Stock Ratings Distribution
+(as of September 30, 2026)
+The Stock Ratings described below apply to Morgan Stanley's Fundamental Equity Research and do not apply to Debt Research produced by the Firm.
+For disclosure purposes only (in accordance with FINRA requirements), we include the category headings of Buy, Hold, and Sell alongside our ratings of Overweight, Equal-weight, Not-Rated 
+and Underweight. Morgan Stanley does not assign ratings of Buy, Hold or Sell to the stocks we cover. Overweight, Equal-weight, Not-Rated and Underweight are not the equivalent of buy, 
+hold, and sell but represent recommended relative weightings (see definitions below). To satisfy regulatory requirements, we correspond Overweight, our most positive stock rating, with a 
+buy recommendation; we correspond Equal-weight and Not-Rated to hold and Underweight to sell recommendations, respectively.
+Coverage Universe
+Investment Banking Clients (IBC)
+Other Material Investment Services 
+Clients (MISC)
+Stock Rating 
+Category
+Count
+% of  Total
+Count
+% of  Total IBC
+% of Rating  
+Category
+Count
+% of Total Other 
+MISC
+Overweight/Buy
+1599
+43%
+455
+48%
+28%
+783
+44%
+Equal-weight/Hold
+1563
+42%
+394
+42%
+25%
+763
+43%
+Not-Rated/Hold
+2
+0%
+1
+0%
+50%
+1
+0%
+Underweight/Sell
+570
+15%
+96
+10%
+17%
+227
+13%
+Total
+3,734
+946
+1774
+Data include common stock and ADRs currently assigned ratings. Investment Banking Clients are companies from whom Morgan Stanley received investment banking compensation in the 
+last 12 months. Due to rounding off of decimals, the percentages provided in the "% of total" column may not add up to exactly 100 percent.
+Analyst Stock Ratings
+Overweight (O). The stock's total return is expected to exceed the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Equal-weight (E). The stock's total return is expected to be in line with the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over 
+the next 12-18 months.
+Not-Rated (NR). Currently the analyst does not have adequate conviction about the stock's total return relative to the average total return of the analyst's industry (or industry team's) coverage 
+universe, on a risk-adjusted basis, over the next 12-18 months.
+Underweight (U). The stock's total return is expected to be below the average total return of the analyst's industry (or industry team's) coverage universe, on a risk-adjusted basis, over the next 
+12-18 months.
+Unless otherwise specified, the time frame for price targets included in Morgan Stanley Research is 12 to 18 months.
+Analyst Industry Views
+Attractive (A): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be attractive vs. the relevant broad market benchmark, as indicated 
+below.
+In-Line (I): The analyst expects the performance of his or her industry coverage universe over the next 12-18 months to be in line with the relevant broad market benchmark, as indicated below.
+Cautious (C): The analyst views the performance of his or her industry coverage universe over the next 12-18 months with caution vs. the relevant broad market benchmark, as indicated below.
+Benchmarks for each region are as follows: North America - S&P 500; Latin America - relevant MSCI country index or MSCI Latin America Index; Europe - MSCI Europe; Japan - TOPIX; Asia - 
+relevant MSCI country index or MSCI sub-regional index or MSCI AC Asia Pacific ex Japan Index.
+Important Disclosures for Morgan Stanley Smith Barney LLC Customers
+Important disclosures regarding any material conflict of interest that can reasonably be expected to have influenced Morgan Stanley Smith Barney LLC's choice of a third-party research provider 
+or the subject company of a third-party research report, are available on the Morgan Stanley Wealth Management disclosure website at www.morganstanley.com/online/researchdisclosures. 
+For Morgan Stanley specific disclosures, you may refer to https://www.morganstanley.com/eqr/disclosures/webapp/generalresearch.
+Each Morgan Stanley research report is reviewed and approved on behalf of Morgan Stanley Smith Barney LLC. This review and approval is conducted by the same person who reviews the 
+research report on behalf of Morgan Stanley. This could create a conflict of interest.
+Other Important Disclosures
+A member of Research who had or could have had access to the research prior to completion owns securities (or related derivatives) in the Ford Motor Company. This person is not a research 
+analyst or a member of research analyst's household.
+Morgan Stanley Research policy is to update research reports as and when the Research Analyst and Research Management deem appropriate, based on developments with the issuer, the 
+sector, or the market that may have a material impact on the research views or opinions stated therein. In addition, certain Research publications are intended to be updated on a regular periodic 
+basis  (weekly/monthly/quarterly/annual) and will ordinarily be updated with that frequency, unless  the Research Analyst and Research Management determine that a different publication 
+
+M
+North America Insight
+26
+schedule is appropriate based on current conditions.
+Morgan Stanley is not acting as a municipal advisor and the opinions or views contained herein are not intended to be, and do not constitute, advice within the meaning of Section 975 of the 
+Dodd-Frank Wall Street Reform and Consumer Protection Act.
+Morgan Stanley produces an equity research product called a "Tactical Idea." Views contained in a "Tactical Idea" on a particular stock may be contrary to the recommendations or views expressed 
+in research on the same stock. This may be the result of differing time horizons, methodologies, market events, or other factors. For all research available on a particular stock, please contact 
+your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Morgan Stanley Research is provided to our clients through our proprietary research portal on Matrix and also distributed electronically by Morgan Stanley to clients. Certain, but not all, Morgan 
+Stanley Research products are also made available to clients through third-party vendors or redistributed to clients through alternate electronic means as a convenience. For access to all 
+available Morgan Stanley Research, please contact your sales representative or go to Matrix at http://www.morganstanley.com/matrix.
+Any access and/or use of Morgan Stanley Research is subject to Morgan Stanley's Terms of Use (http://www.morganstanley.com/terms.html). By accessing and/or using Morgan Stanley 
+Research, you are indicating that you have read and agree to be bound by our Terms of Use (http://www.morganstanley.com/terms.html). In addition you consent to Morgan Stanley processing 
+your personal data and using cookies in accordance with our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html), including for the purposes of 
+setting your preferences and to collect readership data so that we can deliver better and more personalized service and products to you. To find out more information about how Morgan Stanley 
+processes personal data, how we use cookies and how to reject cookies see our Privacy Policy and our Global Cookies Policy (http://www.morganstanley.com/privacy_pledge.html). Please use 
+the provided link to review the Terms and Conditions and Most Important Terms and Conditions for Morgan Stanley India Company Private Limited (https://www.morganstanley.com/assets/
+pdfs/about-us-global-offices/india/Terms_and_conditions.pdf) and the following link to review the audit report (https://ny.matrix.ms.com/eqr/research/webapp/researchdocs/
+MSICPL_Morgan_Stanley_Research_Audit_Report.pdf).
+If you do not agree to our Terms of Use and/or if you do not wish to provide your consent to Morgan Stanley processing your personal data or using cookies please do not access our research.
+Morgan Stanley Research does not provide individually tailored investment advice. Morgan Stanley Research has been prepared without regard to the circumstances and objectives of those 
+who receive it. Morgan Stanley recommends that investors independently evaluate particular investments and strategies, and encourages investors to seek the advice of a financial adviser. 
+The appropriateness of an investment or strategy will depend on an investor's circumstances and objectives. The securities, instruments, or strategies discussed in Morgan Stanley Research 
+may not be suitable for all investors, and certain investors may not be eligible to purchase or participate in some or all of them. Morgan Stanley Research is not an offer to buy or sell or the 
+solicitation of an offer to buy or sell any security/instrument or to participate in any particular trading strategy. The value of and income from your investments may vary because of changes 
+in interest rates, foreign exchange rates, default rates, prepayment rates, securities/instruments prices, market indexes, operational or financial conditions of companies or other factors. There 
+may be time limitations on the exercise of options or other rights in securities/instruments transactions. Past performance is not necessarily a guide to future performance. Estimates of future 
+performance are based on assumptions that may not be realized. If provided, and unless otherwise stated, the closing price on the cover page is that of the primary exchange for the subject 
+company's securities/instruments.
+The fixed income research analysts, strategists or economists principally responsible for the preparation of Morgan Stanley Research have received compensation based upon various factors, 
+including quality, accuracy and value of research, firm profitability or revenues (which include fixed income trading and capital markets profitability or revenues), client feedback and competitive 
+factors. Fixed Income Research analysts', strategists' or economists' compensation is not linked to investment banking or capital markets transactions performed by Morgan Stanley or the 
+profitability or revenues of particular trading desks.
+The "Important Regulatory Disclosures on Subject Companies" section in Morgan Stanley Research lists all companies mentioned where Morgan Stanley owns 1% or more of a class of common 
+equity securities of the companies.  For all other companies mentioned in Morgan Stanley Research, Morgan Stanley may have an investment of less than 1% in securities/instruments or 
+derivatives of securities/instruments of companies and may trade them in ways different from those discussed in Morgan Stanley Research. Employees of Morgan Stanley not involved in the 
+preparation of Morgan Stanley Research may have investments in securities/instruments or derivatives of securities/instruments of companies mentioned and may trade them in ways different 
+from those discussed in Morgan Stanley Research. Derivatives may be issued by Morgan Stanley or associated persons.
+With the exception of information regarding Morgan Stanley, Morgan Stanley Research is based on public information. Morgan Stanley makes every effort to use reliable, comprehensive 
+information, but we make no representation that it is accurate or complete.  We have no obligation to tell you when opinions or information in Morgan Stanley Research change apart from 
+when we intend to discontinue equity research coverage of a subject company. Facts and views presented in Morgan Stanley Research have not been reviewed by, and may not reflect information 
+known to, professionals in other Morgan Stanley business areas, including investment banking personnel.
+Morgan Stanley Research personnel may participate in company events such as site visits and are generally prohibited from accepting payment by the company of associated expenses unless 
+pre-approved by authorized members of Research management.
+Morgan Stanley may make investment decisions that are inconsistent with the recommendations or views in this report.
+To our readers based in Taiwan or trading in Taiwan securities/instruments: Information on securities/instruments that trade in Taiwan is distributed by Morgan Stanley Taiwan Limited ("MSTL"). 
+Such information is for your reference only.  The reader should independently evaluate the investment risks and is solely responsible for their investment decisions.  Morgan Stanley Research 
+may not be distributed to the public media or quoted or used by the public media without the express written consent of Morgan Stanley.  Any non-customer reader within the scope of Article 
+7-1 of the Taiwan Stock Exchange Recommendation Regulations accessing and/or receiving Morgan Stanley Research is not permitted to provide Morgan Stanley Research to any third party 
+(including but not limited to related parties, affiliated companies and any other third parties) or engage in any activities regarding Morgan Stanley Research which may create or give the 
+appearance of creating a conflict of interest. Information on securities/instruments that do not trade in Taiwan is for informational purposes only and is not to be construed as a recommendation 
+or a solicitation to trade in such securities/instruments.  MSTL may not execute transactions for clients in these securities/instruments.
+Morgan Stanley is not incorporated under PRC law and the research in relation to this report is conducted outside the PRC.  Morgan Stanley Research does not constitute an offer to sell or 
+the solicitation of an offer to buy any securities in the PRC.  PRC investors shall have the relevant qualifications to invest in such securities and shall be responsible for obtaining all relevant 
+approvals, licenses, verifications and/or registrations from the relevant governmental authorities themselves. Neither this report nor any part of it is intended as, or shall constitute, provision 
+of any consultancy or advisory service of securities investment as defined under PRC law. Such information is provided for your reference only.
+Morgan Stanley Research is disseminated in Brazil by Morgan Stanley C.T.V.M. S.A. located at Av. Brigadeiro Faria Lima, 3600, 6th floor, São Paulo - SP, Brazil; and is regulated by the Comissão 
+de Valores Mobiliários; in Mexico by Morgan Stanley México, Casa de Bolsa, S.A. de C.V which is regulated by Comision Nacional Bancaria y de Valores. Paseo de los Tamarindos 90, Torre 1, 
+Col. Bosques de las Lomas Floor 29, 05120 Mexico City; in Japan by Morgan Stanley MUFG Securities Co., Ltd. and, for Commodities related research reports only, Morgan Stanley Capital Group 
+Japan Co., Ltd; in Hong Kong by Morgan Stanley Asia Limited (which accepts responsibility for its contents) and by Morgan Stanley Bank Asia Limited; in Singapore by Morgan Stanley Asia 
+(Singapore) Pte. (Registration number 199206298Z) and/or Morgan Stanley Asia (Singapore) Securities Pte Ltd (Registration number 200008434H), regulated by the Monetary Authority of 
+Singapore (which accepts legal responsibility for its contents and should be contacted with respect to any matters arising from, or in connection with, Morgan Stanley Research) and by Morgan 
+Stanley Bank Asia Limited, Singapore Branch (Registration number T14FC0118J); in Australia to "wholesale clients" within the meaning of the Australian Corporations Act by Morgan Stanley 
+
+M
+North America Insight
+Morgan Stanley Research
+27
+Australia Limited A.B.N. 67 003 734 576, holder of Australian financial services license No. 233742, which accepts responsibility for its contents; in Australia to "wholesale clients" and "retail 
+clients" within the meaning of the Australian Corporations Act by Morgan Stanley Wealth Management Australia Pty Ltd (A.B.N. 19 009 145 555, holder of Australian financial services license 
+No. 240813, which accepts responsibility for its contents; in Korea by Morgan Stanley & Co International plc, Seoul Branch; in India by Morgan Stanley India Company Private Limited having 
+Corporate Identification No (CIN) U22990MH1998PTC115305, regulated by the Securities and Exchange Board of India (“SEBI”) and holder of licenses as a Research Analyst (SEBI Registration 
+No. INH000001105); Stock Broker (SEBI Stock Broker Registration No. INZ000244438), Merchant Banker (SEBI Registration No. INM000011203), and depository participant with National 
+Securities Depository Limited (SEBI Registration No. IN-DP-NSDL-567-2021) having registered office at Altimus, Level 39 & 40, Pandurang Budhkar Marg, Worli, Mumbai 400018, India; 
+Telephone no. +91-22-61181000; Compliance Officer Details: Mr. Tejarshi Hardas, Tel. No.: +91-22-61181000 or Email: tejarshi.hardas@morganstanley.com; Grievance officer details: Mr. Tejarshi 
+Hardas, Tel. No.: +91-22-61181000 or Email: msic-compliance@morganstanley.com. Morgan Stanley India Company Private Limited (MSICPL) may use AI tools in providing research services. 
+All recommendations contained herein are made by the duly qualified research analysts; in Germany and the European Economic Area where required by Morgan Stanley Europe S.E., authorised 
+and regulated by Bundesanstalt fuer Finanzdienstleistungsaufsicht (BaFin) under the reference number 149169; in the US by Morgan Stanley & Co. LLC, which accepts responsibility for its 
+contents. Morgan Stanley & Co. International plc, authorized by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority, 
+disseminates in the UK research that it has prepared, and research which has been prepared by any of its affiliates, only to persons who (i) are investment professionals falling within Article 
+19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (as amended, the “Order”); (ii) are persons who are high net worth entities falling within Article 49(2)(a) 
+to (d) of the Order; or (iii) are persons to whom an invitation or inducement to engage in investment activity (within the meaning of section 21 of the Financial Services and Markets Act 2000, 
+as amended) may otherwise lawfully be communicated or caused to be communicated. RMB Morgan Stanley Proprietary Limited is a member of the JSE Limited and A2X (Pty) Ltd. RMB Morgan 
+Stanley Proprietary Limited is a joint venture owned equally by Morgan Stanley International Holdings Inc. and RMB Investment Advisory (Proprietary) Limited, which is wholly owned by 
+FirstRand Limited. Morgan Stanley Research is disseminated in Canada by Morgan Stanley Canada Limited and Morgan Stanley Wealth Management Canada Inc., members of the Canadian 
+Investment Regulatory Organization (CIRO). The information in Morgan Stanley Research is being disseminated by Morgan Stanley Saudi Arabia, regulated by the Capital Market Authority in 
+the Kingdom of Saudi Arabia, and is directed at Sophisticated investors only.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (DIFC Branch), regulated by the Dubai Financial Services Authority (the DFSA) 
+or by Morgan Stanley & Co. International plc (ADGM Branch), regulated by the Financial Services Regulatory Authority Abu Dhabi (the FSRA), and is directed at Professional Clients only, as 
+defined by the DFSA or the FSRA, respectively. The financial products or financial services to which this research relates will only be made available to a customer who we are satisfied meets 
+the regulatory criteria of a Professional Client. A distribution of the different MS Research ratings or recommendations, in percentage terms for Investments in each sector covered, is available 
+upon request from your sales representative.
+The information in Morgan Stanley Research is being communicated by Morgan Stanley & Co. International plc (QFC Branch), regulated by the Qatar Financial Centre Regulatory Authority 
+(the QFCRA), and is directed at business customers and market counterparties only and is not intended for Retail Customers as defined by the QFCRA.
+As required by the Capital Markets Board of Turkey, investment information, comments and recommendations stated here, are not within the scope of investment advisory activity. Investment 
+advisory service is provided exclusively to persons based on their risk and income preferences by the authorized firms. Comments and recommendations stated here are general in nature. These 
+opinions may not fit to your financial status, risk and return preferences. For this reason, to make an investment decision by relying solely to this information stated here may not bring about 
+outcomes that fit your expectations.
+The trademarks and service marks contained in Morgan Stanley Research are the property of their respective owners. Third-party data providers make no warranties or representations relating 
+to the accuracy, completeness, or timeliness of the data they provide and shall not have liability for any damages relating to such data. The Global Industry Classification Standard (GICS) was 
+developed by and is the exclusive property of MSCI and S&P.
+Morgan Stanley Research, or any portion thereof may not be reprinted, sold or redistributed without the written consent of Morgan Stanley.
+Indicators and trackers referenced in Morgan Stanley Research may not be used as, or treated as, a benchmark under Regulation EU 2016/1011, or any other similar framework.
+The issuers and/or fixed income products recommended or discussed in certain fixed income research reports may not be continuously followed. Accordingly, investors should regard those 
+fixed income research reports as providing stand-alone analysis and should not expect continuing analysis or additional reports relating to such issuers and/or individual fixed income products.
+Morgan Stanley may hold, from time to time, material financial and commercial interests regarding the company subject to the Research report.
+Registration granted by SEBI and certification from the National Institute of Securities Markets (NISM) in no way guarantee performance 
+of the intermediary or provide any assurance of returns to investors. Investment in securities market are subject to market risks. Read 
+all the related documents carefully before investing.
+The following authors are Fixed Income Research Analysts/Strategists and are not opining on or expressing recommendations on equity securities: Ariana Salvatore.
+References to any prediction market or event contract do not constitute an offer, solicitation, recommendation, or endorsement to participate in any such market or contract. Morgan Stanley 
+Research may not be distributed or made available in any jurisdiction where such distribution would be unlawful or otherwise prohibited by applicable law.
+INDUSTRY COVERAGE: Autos & Shared Mobility
+Company (Ticker)
+Rating (As Of)
+Price* (10/05/2026)  
+Andrew S Percoco
+Adient PLC (ADNT.N)  
+E  (12/07/2025)  
+$17.24
+Aptiv Plc (APTV.N)  
+E  (08/04/2026)  
+$43.89
+Avis Budget Group Inc (CAR.O)  
+E  (12/07/2025)  
+$107.98
+BorgWarner Inc. (BWA.N)  
+E  (12/07/2025)  
+$60.26
+Dauch Corporation (DCH.N)  
+E  (12/07/2025)  
+$5.65
+Ford Motor Company (F.N)  
+E  (09/25/2024)  
+$12.15
+General Motors Company (GM.N)  
+O  (12/07/2025)  
+$80.23
+Hertz Global Holdings Inc (HTZ.O)  
+E  (02/08/2024)  
+$1.79
+Lear Corporation (LEA.N)  
+E  (12/07/2025)  
+$121.33
+
+M
+North America Insight
+28
+Lucid Group Inc (LCID.O)  
+U  (12/07/2025)  
+$4.17
+Magna International Inc. (MGA.N)  
+E  (09/25/2024)  
+$64.92
+Mobileye Global Inc (MBLY.O)  
+E  (08/02/2024)  
+$7.58
+Quantumscape Corp (QS.O)  
+E  (12/07/2025)  
+$4.62
+Rivian Automotive, Inc. (RIVN.O)  
+U  (12/07/2025)  
+$14.60
+Tesla Inc (TSLA.O)  
+E  (12/07/2025)  
+$378.73
+Versigent Plc (VGNT.N)  
+O  (05/07/2026)  
+$47.27
+Visteon Corporation (VC.O)  
+E  (06/01/2022)  
+$89.27
+Daniela M Haigian
+Asbury Automotive Group Inc (ABG.N)  
+E  (09/25/2024)  
+$171.83
+AutoNation Inc. (AN.N)  
+E  (10/04/2026)  
+$161.67
+Carmax Inc (KMX.N)  
+E  (11/10/2025)  
+$54.86
+Carvana Co (CVNA.N)  
+O  (08/07/2025)  
+$63.72
+Group 1 Automotive, Inc (GPI.N)  
+U  (10/04/2026)  
+$241.44
+Lithia Motors Inc. (LAD.N)  
+E  (09/25/2024)  
+$303.00
+Penske Automotive Group, Inc (PAG.N)  
+E  (07/23/2026)  
+$200.59
+Sonic Automotive Inc (SAH.N)  
+U  (08/06/2026)  
+$62.63
+Javier Martinez de Olcoz Cerdan
+Goodyear Tire & Rubber Company (GT.O)  
+U  (09/28/2025)  
+$4.68
+Stock Ratings are subject to change. Please see latest research for each company.
+* Historical prices are not split adjusted.
+© 2026 Morgan Stanley
