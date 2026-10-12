@@ -1,0 +1,39 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 91,
+ "pack": {
+  "documents": 50,
+  "cards": 1619,
+  "max_doc_id": 19879
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 66,
+  "brief_citations": 9,
+  "distinct_cards_cited": 66,
+  "card_count": 1619,
+  "quintiles": [
+   11,
+   11,
+   20,
+   13,
+   11
+  ],
+  "edge_quintile_share": 0.333,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "The Ibovespa closed up 7.7% at a record 206,912 on Monday, its best day in more than six years [c1514].",
+    "cite": "c1514",
+    "reason": "figures not in cited card(s): ['206912', '7.7%']"
+   }
+  ],
+  "word_count": 1507
+ }
+}
