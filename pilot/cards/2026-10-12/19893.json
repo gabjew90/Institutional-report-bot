@@ -1,0 +1,456 @@
+{
+ "brief": "Morgan Stanley answers investor questions on its prior call sizing a US data center power shortfall at 57 GW gross, 32 GW net of time-to-power fixes, 34% of demand through 2028. Nvidia's own commentary confirms the power constraint is real, but Morgan Stanley stays convicted Nvidia and Broadcom hit their combined ~$800bn 12-month AI revenue outlook, citing management visibility into chip placement, geographic diversification, and Nvidia's higher tokens-per-watt. If a slowdown hits, the firm expects memory, optics and small-dollar components, not Nvidia or Broadcom, to absorb the disruption, with ASICs at risk of losing share to GPUs. Access to power is concentrating among large, credit-worthy hyperscalers and neoclouds, forecast at 60-95% of global data center capacity additions, squeezing smaller, international and ASIC-dependent players; Google's heavy incremental build could make securing power harder for it specifically. Upside depends on behind-the-meter generation (11-49 GW, 19 GW base case) and international expansion, but Morgan Stanley does not see overseas capacity as sufficient to close the US shortfall, cuts its US compute-share estimate to 55% from 60%, and flags labor and political constraints as caps on how fast BTM capacity can scale.",
+ "cards": [
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley sizes the US data center power shortfall at 57 GW gross from 2026-2028, or 32 GW net of time-to-power solutions.",
+   "anchor": "we sized the US  data center power shortfall at 57 GW from 2026-28.  We forecast this is 32 GW net of time to power solutions",
+   "topic": "AI semis-energy barbell",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley remains convicted in Nvidia and Broadcom's ability to meet their 12-month forward outlooks despite the power shortfall.",
+   "anchor": "We remain convicted in Nvidia and Broadcom's ability to meet their 12 month forward outlooks, given 1) conservative management guidance",
+   "topic": "AI semis-energy barbell",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Broadcom raised FY27 AI revenue guidance from well above $100 billion in March to $115 billion in September.",
+   "anchor": "after guiding for FY27 AI revenue well above $100bn in March, the company's most recent guidance from September was for $115bn",
+   "topic": "AI semis-energy barbell",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Nvidia and Broadcom have given 12-month outlooks for a combined $800 billion of AI revenue.",
+   "anchor": "Nvidia and Broadcom have given 12 month outlooks for ~$800bn of combined AI revenue.",
+   "topic": "AI semis-energy barbell",
+   "status": "forecast",
+   "instruments": [
+    "NVDA",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Nvidia and Broadcom have a combined market share in XPUs of about 90%.",
+   "anchor": "Nvidia and Broadcom have a combined market share in XPUs of ~90%",
+   "topic": "AI semis-energy barbell",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley says AMD faces pressure from the power shortfall but warrant dynamics with its largest customers de-risk AMD's estimates.",
+   "anchor": "We think this puts some pressure on AMD as well, but the warrant dynamics with their largest customers do significantly  de-risk their estimates",
+   "topic": "AI semis-energy barbell",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley says the components most likely to see disruption from a power-driven slowdown are memory, optics, and other small dollar content components.",
+   "anchor": "To us, that looks like  memory, optics, and other small dollar content components that are most likely to be over-ordered",
+   "topic": "AI semis-energy barbell",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley sees a risk that ASICs will lose market share to GPUs in a power-constrained environment.",
+   "anchor": "We see a risk that ASICs will lose share in a power-constrained environment relative to GPUs",
+   "topic": "AI semis-energy barbell",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley's power-shortfall thesis drives its preference for Nvidia due to its broadest geographic and customer footprint.",
+   "anchor": "The power risk drives our preference for Nvidia, who has the broadest geographic and customer footprint",
+   "topic": "AI semis-energy barbell",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley values Broadcom at 28x CY2027 estimated ModelWare EPS of $18.04.",
+   "anchor": "We value AVGO at 28X CY2027e ModelWare EPS of $18.04.",
+   "topic": "AI semis-energy barbell",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley's Nvidia valuation implies roughly 20x its CY2027 ModelWare EPS estimate of $15.01, in line with the broader market.",
+   "anchor": "~20 our MW CY27 EPS estimate of $15.01, in-line with the broader market and a discount to",
+   "topic": "AI semis-energy barbell",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "CY2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley's Internet team forecasts hyperscaler and neocloud capacity additions, including Amazon, Alphabet, Microsoft, Meta, CoreWeave and Nebius, at 60-95% of forecasted global data center capacity coming online.",
+   "anchor": "forecasts capacity additions from the hyperscalers and neoclouds (AMZN, GOOGL, MSFT, META, SPCX, CRWV, NBIS) at 60-95% of our forecasted global data",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "META",
+    "CRWV",
+    "NBIS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley hears Amazon is well-positioned to get access to power.",
+   "anchor": "we're hearing Amazon is well-positioned to get access to power",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley says Google is adding the most incremental data center capacity in 2027/2028 and could mathematically face more challenges securing power for it.",
+   "anchor": "GOOGL is adding the most incremental capacity in '27/'28 and thus could mathematically face more challenges in securing power for the compute they are buying.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley believes data center energization is concentrating across a handful of large, credit-worthy players.",
+   "anchor": "We believe we're in an environment where data center energization is being concentrated across a handful of large, credit-worthy players.",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley's Internet team forecasts hyperscalers and neoclouds bringing on 32 GW of capacity in 2027 and 39 GW in 2028, with Google leading incremental capacity brought online.",
+   "anchor": "Our Internet team forecasts the hyperscalers/neoclouds bringing on 32 GW in '27 and 39 GW in '28, with Google leading in terms of incremental",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley projects US data center developers will face a 32-42 GW shortfall through 2028, 34-43% of demanded power, net of time-to-power solutions.",
+   "anchor": "we project that US data center developers will face a 32-42GW Shortfall through 2028, 34-43% of demanded power.",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley forecasts 11-49 GW of behind-the-meter turbines and engines coming online, with 19 GW in its base case.",
+   "anchor": "we forecast  11-49 GW of BTM turbines/ engines coming online, with 19 GW in our base case.",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley's Utilities team, led by Dave Arcaro, can track 25-30 GW of manufacturer orders from 2026 to 2028.",
+   "anchor": "Our Utilities  team, led by Dave Arcaro, can track 25-30 GW of manufacturer orders from 2026- 28",
+   "topic": "behind-the-meter power outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley says if 30 GW of behind-the-meter power comes online from 2026-2028, between its bull and base case, the shortfall narrows to 21 GW.",
+   "anchor": "Between our bull and base case, if 30 GW  of BTM power successfully comes online from 2026-28, that implies a 21 GW shortfall.",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley currently forecasts 6 GW of Bloom Energy fuel cells from 2026-2028, with potential upside given recent site expansion reports.",
+   "anchor": "currently forecast 6GW of fuels cells from 2026-28, but there could be upside to this, given recent reports of site expansion",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley views Bloom Energy as a key beneficiary of the time-to-power shortfall.",
+   "anchor": "Energy is a key beneficiary of this \"time to power\" shortfall, in our view.",
+   "topic": "behind-the-meter power outlook",
+   "status": "released",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley says the existing labor base would likely support only 10-20 GW of annual gas power additions, considering large power plants and onsite projects.",
+   "anchor": "The existing labor base would likely support 10-20 GW of annual gas additions, considering both large power plants and onsite",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley says continued labor-force investment could allow gas power additions to reach 50+ GW a year by the end of the decade.",
+   "anchor": "companies are heavily investing in their labor forces to grow these numbers, such that it could be possible to reach 50+ GW of annual gas",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by end of decade"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "CSIS estimates the US will require 140,000-plus incremental skilled trades people by 2030, beyond current capacity, in a scenario like the Second Industrial Revolution.",
+   "anchor": "CSIS estimates that by 2030 the US requires 140K+ incremental skilled trades people beyond current capacity in a scenario like the Second Industrial Revolution.",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Nvidia noted Australia is a region with excess energy where it stood up 2 GW for 2027.",
+   "anchor": "noting that Australia is a region \"with excess energy\" where they stood up 2 GW for 2027.",
+   "topic": "behind-the-meter power outlook",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley cuts its US share of global compute estimate to 55% from 60% previously.",
+   "anchor": "Given these latest data points, we move our US share of global compute to 55% from 60% previously",
+   "topic": "behind-the-meter power outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley expects international data center expansion to continue but does not see it as a solution to the US power problem.",
+   "anchor": "While we expect international expansion to continue, we don't see it as a solution to the US power problem.",
+   "topic": "behind-the-meter power outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley's Asia data center team, led by Mayank Maheshwari, forecasts 14 GW of US hyperscaler demand spilling over into Asia through 2030.",
+   "anchor": "Our  Asia data center team's forecast (led by Mayank Maheshwari) bakes in 14 GW of US hyperscaler demand spilling over into Asia through 2030",
+   "topic": "behind-the-meter power outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "What Does the Power Shortfall Mean for Semis?",
+   "claim": "Morgan Stanley cites an AWS data center being hit by Iran strikes as an example of why Middle East data center expansion is difficult given geopolitical instability.",
+   "anchor": "we believe this is difficult given geopolitical instability (see example of AWS data center being hit by Iran strikes).",
+   "topic": "behind-the-meter power outlook",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 31,
+  "matched": 30,
+  "failed": 1,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 1,
+  "needs_reask": false
+ }
+}
