@@ -1,0 +1,832 @@
+{
+ "brief": "Goldman's weekly flow note argues investors remain structurally underweight the market even as SPX made a Tuesday all-time high, and the desk expects the next leg of chasing to show up through call options rather than net buying or put protection (dubbed 'FOBU'). Evidence: Tuesday's break of the SPX 7800 gamma wall drove the busiest bullish options stretch in months, 25-delta call vol stayed bid even as spot pulled back, and hedge fund net exposure, though up slightly to the 4th percentile over 3 years, remains near historic lows while gross exposure and VIX-over-SPX skew both point to chasing convexity rather than hedging it. The desk recommends 30-October expiry calls on SPX/SPY/QQQ/IWM, which capture the Fed, data and ~65% of earnings without paying for midterm risk. Separate trades: EWZ long into a Brazil catalyst, a biotech positioning opportunity, a long-ITA/short-XLI defense pair, and outperformance options betting non-AI names (RSP, SPXXAI) catch up to SPX even if markets fall. Financials are underperforming into earnings despite cheap implied moves, and the desk's favored AI theme is the power bottleneck via basket GSENEPOW.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "SPX's Tuesday all-time high previewed the upside convexity embedded in the market's exceptionally low net exposure.",
+   "anchor": "tuesday's all-time high offered a preview of the upside convexity embedded in the market\u2019s exceptionally low net exposure",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The SPX breakout failed to sustain, with index implied volatility ending the week near five-year lows.",
+   "anchor": "breakout failed to sustain and index implieds ended the week at some of the lowest levels in the 5 years",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "QQQ stood out most among index implieds, and the fear of benchmark underperformance (FOBU) showed its hand.",
+   "anchor": "(qqq most stand out), but the fear of benchmark underperformance (fobu, new acronym?) showed its hand",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk debates whether cautiously positioned investors will chase in stocks, in options, or both.",
+   "anchor": "remain positioned this cautiously (on net), will we see a chase in stocks or in options (or both)?\u201d \u2026",
+   "topic": "equity positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "SPX broke through the 7800 gamma wall on Tuesday morning, finally, kicking off that first 90 minutes of trading.",
+   "anchor": "tuesday morning, SPX broke through the 7800 gamma wall (finally) and that first 90 minutes was",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The first 90 minutes of Tuesday's SPX move was the desk's busiest bullish options stretch in months.",
+   "anchor": "categorically the busiest we\u2019ve been in months with bullish activity \u2026 aggressive spot up vol up as short",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Short-dated SPX implied vol notched higher, driven by a cocktail of factors including higher realized vol and significant call option demand.",
+   "anchor": "dated implieds notched higher driven by a cocktail of 1/ higher realized, 2/ significant call option demand,",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The desk also cites underweight index exposure, clean gamma positioning, and 57 trading sessions left in the year as drivers of the move.",
+   "anchor": "3/ underweight index exposure, 4/ clean gamma positioning, and 5/ realizing there\u2019s 57 sessions left in the",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Being underweight index exposure is now a crowded position, the desk says.",
+   "anchor": "year and \u201cunderweight\u201d is crowded \u2026 SPX 1m 25 delta call implied vol was actually higher when spot",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "SPX's 1-month 25-delta call implied vol was higher when spot traded near 7900 than later in the week when spot was back at 7800.",
+   "anchor": "SPX 1m 25 delta call implied vol was actually higher when spot\ntraded near 7900 than it was when spot traded 7800 later in the week",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The marginal options premium dollar is increasingly likely to chase upside through calls rather than protect downside through puts.",
+   "anchor": "upside through calls than protect downside through puts \u2026 what if stocks finally get some good news",
+   "topic": "equity positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Last quarter was the most volatile in a decade for Mag7 names, with an average realized move of 11%.",
+   "anchor": "recall last quarter was the most volatile in a decade for mag 7 names (11% avg\nrealized move)",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "When asked which tenor the index desk likes, 30-October stands out because it avoids paying up for midterm election risk.",
+   "anchor": "when asked what tenor the index desk likes, 30october stands out \u2026 you don\u2019t pay up for midterms and",
+   "topic": "equity positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "30 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 30-October expiry captures the Fed decision, economic data, and most earnings prints, with about 65% of SPX market cap reporting by then.",
+   "anchor": "yet you capture fed, economic data, and majority of earnings prints (~65% of SPX market cap reports",
+   "topic": "equity positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "30 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 102.5% strike call for the 30-October expiry costs 19bps for SPY.",
+   "anchor": "the 102.5% call for 30oct expiry costs 19bps, 58bps, and 62bps for spy, qqq,\nand iwm respectively",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "30 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 102.5% strike call for the 30-October expiry costs 58bps for QQQ.",
+   "anchor": "the 102.5% call for 30oct expiry costs 19bps, 58bps, and 62bps for spy, qqq,\nand iwm respectively",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "30 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 102.5% strike call for the 30-October expiry costs 62bps for IWM.",
+   "anchor": "the 102.5% call for 30oct expiry costs 19bps, 58bps, and 62bps for spy, qqq,\nand iwm respectively",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "30 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 30-October trade construct extends down to sector ETFs as well, given a similarly low vol dynamic.",
+   "anchor": "sector ETFs as well \u2013 similar low vol dynamic)",
+   "topic": "equity positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "30 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Week on week, asset managers finished as small net sellers while hedge funds were balanced.",
+   "anchor": "2/ onedelta (i) \u2026 week on week asset mangers finished small net seller and hedge funds were balanced \u2026",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Hedge fund gross exposure rose 3.8 points for the week, to the 53rd percentile over 1 year and 80th percentile over 3 years.",
+   "anchor": "gross exposure +3.8 points for the week\n(53rd pctl 1y, 80th pctl 3y)",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Hedge fund net exposure finally lifted off zero but remains meaningfully depressed, rising 0.5 points to 46.9, the 2nd percentile over 1 year and 4th percentile over 3 years.",
+   "anchor": "net exposure \u201cfinally\u201d lifted off zero but is still meaningfully depressed,\nrising 0.5 points to 46.9 (2nd pctl 1y, 4th pctl 3y)",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The long-short ratio by market value fell to a 1-year low, the 1st percentile over 5 years.",
+   "anchor": "the long short ratio (mv) decreased to a 1y low (1st\npctl 5y)",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "VIX upside convexity has gone extremely bid while SPX downside convexity remains extremely offered.",
+   "anchor": "VIX upside\nconvexity has gone extremely bid while SPX downside convexity remains extremely offered",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "A colleague on Goldman's index vol desk quipped that it feels like there is a higher probability of VIX above 25 than of SPX falling 2%.",
+   "anchor": "colleague on our index vol desk quipped, \u201cit feels like there is a higher probability of VIX >25 than there\nis of SPX -2%\u201d",
+   "topic": "equity positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk sees two outcomes: either a correlated correction with a VIX spike, or markets drift while SPX puts decay away.",
+   "anchor": "either we get a correlated correction (VIX spike) or we drift (SPX puts decay away)",
+   "topic": "equity positioning extremes",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The desk reports a lot of client conversations on the underperformance of everything 'non-AI'.",
+   "anchor": "a lot of conversations on the underperformance of everything \u201cnon-AI\u201d \u2026 outperformance options allow",
+   "topic": "AI micro vs macro divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Outperformance options give exposure to a market that broadens out with limited loss, priced in $100m notional.",
+   "anchor": "for exposure to a market that broadens out with limited loss (priced in $100m notional) \u2026 reminder this",
+   "topic": "AI micro vs macro divergence",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The RSP-over-SPX outperformance structure still pays even if both indices finish lower, e.g. SPX -10% and RSP -3% is 700bps of outperformance.",
+   "anchor": "could work even for the bears, as the outperformance still pays if both finish lower (ie, SPX -10% and\nRSP -3% is technically 700bps of outperformance)",
+   "topic": "AI micro vs macro divergence",
+   "status": "forecast",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman priced a 31-December SPXXAI-over-SPX outperformance structure at 22 implied correlation.",
+   "anchor": "31Dec SPXXAI > SPX outperf (22 implied cor)",
+   "topic": "AI micro vs macro divergence",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "31 December 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 31-December SPXXAI-over-SPX outperformance structure at 2.5% OTM is priced at 2.75%, struck off 22 implied correlation.",
+   "anchor": "(22 implied cor)\n2.5% OTM @ 2.75%",
+   "topic": "AI micro vs macro divergence",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "31 December 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 31-December SPXXAI-over-SPX outperformance structure at 5% OTM is priced at 1.95%, versus 2.75% at 2.5% OTM.",
+   "anchor": "2.5% OTM @ 2.75%\n5% OTM @ 1.95%",
+   "topic": "AI micro vs macro divergence",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "31 December 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman priced a 31-December RSP-over-SPX outperformance structure at 62 implied correlation.",
+   "anchor": "31Dec RSP > SPX outperf (62 implied corr)",
+   "topic": "AI micro vs macro divergence",
+   "status": "level",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "31 December 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The 31-December RSP-over-SPX outperformance structure is priced at 1.75% for 2.5% OTM and 1.15% for 5% OTM.",
+   "anchor": "2.5% OTM @ 1.75%\n5% OTM @ 1.15%",
+   "topic": "AI micro vs macro divergence",
+   "status": "level",
+   "instruments": [
+    "RSP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "31 December 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "A single headline about AI model revenues on Thursday afternoon brought out significant semis and tech selling, reflecting nervous, forced length in the space.",
+   "anchor": "one headline around AI model revenues on Thursday afternoon brought out\nsignificant semis and tech supply (speaks to nervous / forced length in the space)",
+   "topic": "Mag7 and semis hedge fund positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Financials have underperformed meaningfully into earnings, with XLF down 6.5% from its highs despite SPX hitting record highs.",
+   "anchor": "financials have underperformed meaningfully into their respective prints (xlf -6.5% from\nthe highs despite SPX hitting records)",
+   "topic": "financials earnings season",
+   "status": "released",
+   "instruments": [
+    "XLF"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The implied move on financials' EPS prints does not reflect heightened uncertainty: the ratio of recent drawdown to earnings straddle is about 5x, making the implied move look cheap.",
+   "anchor": "implied move on EPS is not reflective of heightened uncertainty\n(below) as the ratio of recent drawdown vs earnings straddle is ~5x (implied move cheap)",
+   "topic": "financials earnings season",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The desk expects the most debate this earnings season to center on trading activity and the AI funding calendar.",
+   "anchor": "around trading activity and AI funding calendar will be the most debated",
+   "topic": "financials earnings season",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Morgan Stanley is 20% off its highs heading into earnings, with a 3.7% implied move.",
+   "anchor": "(MS -20% from highs w/ 3.7%\nimplied move",
+   "topic": "financials earnings season",
+   "status": "level",
+   "instruments": [
+    "MS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Bank of America is 19% off its recent highs heading into earnings, with a 3.4% implied move.",
+   "anchor": "BAC -19% from recent highs w/ 3.4% implied move",
+   "topic": "financials earnings season",
+   "status": "level",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Wells Fargo is 18% off its recent highs heading into earnings, with a 4.8% implied move.",
+   "anchor": "WFC -18% from recent highs w/\n4.8% implied move)",
+   "topic": "financials earnings season",
+   "status": "level",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk views power as the most underappreciated bottleneck in AI infrastructure.",
+   "anchor": "the desk thinks that the most under appreciated ai bottleneck is power",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The Power Up America basket (GSENEPOW) is Goldman's favored way to express the AI power bottleneck thesis.",
+   "anchor": "the power up\namerica basket (gsenepow) is our favored expression",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "In the AI power basket, positioning is low, valuation has normalized, and fundamentals are intact, per Goldman's desk.",
+   "anchor": "positioning is low, valuation has normalized, and\nfundamentals are intact",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman expects higher earnings revisions for independent power producers as they announce long-term partnerships with mega-cap tech companies.",
+   "anchor": "we expect higher earnings revisions as IPPs announce long term partnerships\nwith mega cap tech companies",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "RTY futures positioning is at record shorts and IWM short interest is at record highs.",
+   "anchor": "rty futures positioning at record shorts and iwm short interest is at record highs",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk highlighted demand this week in small-cap call options.",
+   "anchor": "the desk highlights demand this week in small\ncap calls",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "IWM implied vol remains below the 10th percentile, and traders unwilling to cover their short directly can create a synthetic put via upside options.",
+   "anchor": "IWM vol\nremains sub 10th percentile, and for those unwilling to cover linear, you can create a synthetic put via\nupside",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "IWM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman expects 2026 to go down as the most dispersive calendar year in history, by average single-stock versus index realized vol.",
+   "anchor": "chart below, 2026 will likely go down as the most dispersive calendar year in history (avg",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The three months ended October 8 saw a realized vol spread between stocks and the index of 27.",
+   "anchor": "the 3m ended 8oct saw a realized vol spread of 27",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3 months ended 8 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The nine months ended October 8 saw a realized vol spread between stocks and the index of 24.",
+   "anchor": "the 9m ended 8oct saw a realized\nvol spread of 24",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "9 months ended 8 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Last quarter, next-day (t+1) stock performance versus SPX after earnings beats was one of the narrowest in history at 35bps of outperformance, versus a historical average of 95bps.",
+   "anchor": "t+1 performance vs the spx was one of the narrowest in history (35bps of\noutperformance vs 95bps historically)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Brazil has an important catalyst at the end of the month, and the desk says the upside chase there is real.",
+   "anchor": "\u2026 brazil has a very important catalyst at the end of the\nmonth, and upside chase is real",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "end of October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk traded a lot of light-exotic structures on Brazil, preferring EWZ higher paired with euro weaker.",
+   "anchor": "(we traded a lot of light-exo structures here, prefer EWZ higher w/ euro\nweaker dual)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "EWZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk sees an opportunity in biotech sector positioning, as the magnitude of its 8-week gross-down is almost without precedent.",
+   "anchor": "this positioning in the biotech sector is looking like an opportunity (the magnitude of 8\nweek gross-down is almost without precedent)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "XLU rallied 4% over the last week but remains well off its highs, with street positioning at max short gamma.",
+   "anchor": "XLU, utilities\nripped 4% in the last week but remain well off their highs (street max short gamma)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "XLU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk went long defense names (ITA), which are 20% off their August highs.",
+   "anchor": "defense names (ITA, -20% from aug highs)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "ITA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Goldman's desk went short industrials ex-defense (XLI), which are 9% off their August highs.",
+   "anchor": "short industrials ex-defense (XLI, -9% from aug highs)",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "XLI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "The pair trade buys industrial exposure tied to government-backed demand against shorting the part of the market exposed to rates and the economic cycle.",
+   "anchor": "buy industrial exposure with gov backed demand vs short the part of the market prisoner to rates and the",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ITA",
+    "XLI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Garrett - weekend prep ... 11 Oct 2026",
+   "claim": "Some municipal bonds are offering tax-equivalent yields at 10%+, in line with long-run equity returns.",
+   "anchor": "some municipal bonds are offering tax equivalent yields at the same level as long-run equity\nreturns (10%+)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19869__gs-garrett-weekend-prep-11-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 59,
+  "matched": 59,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 15,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
