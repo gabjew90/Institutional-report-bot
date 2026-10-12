@@ -1,0 +1,607 @@
+{
+ "brief": "Bernstein argues data center construction has replaced power availability as the binding constraint on AI buildout. US grid interconnection delays pushed developers to behind-the-meter power (22% of construction, 40% of pipeline), then engines and fuel cells, and now to modularisation as the next time-to-power lever: moving work from field to factory cuts deployment time 30-60% and eases an MEP labour ceiling Bernstein puts at up to 35GW of US additions by 2030 against roughly double that implied demand. Beyond speed, the thesis is that modularisation shifts value: procurement consolidates from individual components to integrated modules, letting vertically integrated OEMs supply 80-90% of module content internally and driving a modeled ~3pp net share gain for the best-positioned players. Halving a 30-month deployment could unlock $0.9B/GW of incremental value, ~$0.2B/GW (25%) captured by OEMs. Bernstein rates Schneider, Vertiv and Eaton best positioned on positioning and execution, while Legrand, ABB and Siemens lag with narrower, less-integrated portfolios unless they integrate further.",
+ "cards": [
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein's bottom-up sizing and competitive mapping show Schneider, Vertiv and Eaton best positioned to capture the value shift from data center modularisation.",
+   "anchor": "Our bottom-up sizing and competitive mapping point to Schneider, Vertiv and Eaton best capturing this shift.",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [
+    "VRT",
+    "ETN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Moving data center construction work from field to factory can cut deployment time by 30-60% and ease the MEP labour bottleneck.",
+   "anchor": "Moving work from field to factory can cut deployment time by 30-60% and ease the MEP labour bottleneck.",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "The shift to 800 VDC architecture raises data center installation complexity and increases labour hours by about 50%.",
+   "anchor": "as 800 VDC raises installation complexity and labour hours by c.50%",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Behind-the-meter power solutions now account for 22% of data center projects under construction and 40% of the pipeline, versus 6% of active data centers.",
+   "anchor": "behind-the-meter (BTM) solutions now 22% of construction and 40% of pipeline (vs 6% of active)",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein estimates the field-to-factory shift in data center construction can cut labour costs by about 37%.",
+   "anchor": "The field-to-factory shift reduces labour hours (we think costs can fall by c.37%)",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Modular data center additions are forecast to grow at a 24% CAGR, 10 percentage points faster than the 14% growth rate of the wider data center market.",
+   "anchor": "Modular additions grow at a 24% CAGR, +10pp faster than the wider market at 14%",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Modular penetration of data center construction is expected to rise from about 40% today to about 57% by 2030.",
+   "anchor": "modular penetration rising from c.40% today to c.57% by 2030",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Module providers increasingly control specification and sourcing, letting vertically integrated OEMs supply 80-90% of module content internally.",
+   "anchor": "allowing OEMs to supply 80-90% of content internally, even more so for",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein models potential net market share gains of about 3 percentage points for the best-positioned vertically integrated OEMs as modular penetration rises.",
+   "anchor": "potential for c.3pp net share gains for the best-positioned integrated OEMs",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [
+    "VRT",
+    "ETN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Halving a conventional 30-month data center deployment could create $0.9B/GW of incremental present value, of which $0.2B/GW (about 25%) would be captured by electrical OEMs.",
+   "anchor": "Halving a conventional 30-month deployment could create $0.9B / GW of incremental present value, including $0.2B / GW (c.25%) captured by OEMs",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Schneider has taken a hybrid approach to modular data centers, adding prefabrication capacity that is up 270% over two years, alongside partnerships.",
+   "anchor": "a hybrid approach adding prefabrication capacity (+270% in 2 years) and partnerships",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2 years"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Vertiv stands out for its ambitious modular strategy, with a SmartRun IT pod roadmap scaling over 6MW and a OneCore architecture reaching 1 GW campuses.",
+   "anchor": "Vertiv stand-out for ambitious strategy, with SmartRun IT pod roadmap over >6MW, and the \u2018OneCore\u2019 architecture to 1 GW campuses",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Eaton has improved its modular data center position through acquisitions and partnerships but remains less mature than Schneider and Vertiv.",
+   "anchor": "Eaton has improved its position through acquisitions and partnerships but remains less mature.",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [
+    "ETN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "IT modules differentiate the 'big-3' electrical OEMs, as they remain much scarcer than power modules.",
+   "anchor": "IT modules differentiate the \u2018big-3\u2019 here, much scarcer than power modules.",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein's survey suggests modularisation increases customers' willingness to single-source, leaving the narrower portfolios of Legrand, ABB and Siemens disadvantaged unless they integrate further.",
+   "anchor": "Our survey suggests modularisation increases willingness to single-source, leaving narrower portfolios at Legrand, ABB and Siemens disadvantaged unless they integrate further.",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Schneider Outperform with a price target of \u20ac350.",
+   "anchor": "We rate Schneider (PT \u20ac350), Siemens (PT \u20ac330), and Legrand (PT \u20ac170) Outperform, and rate ABB (PT CHF 80) Market-Perform.",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Siemens Outperform with a price target of \u20ac330.",
+   "anchor": "We rate Schneider (PT \u20ac350), Siemens (PT \u20ac330), and Legrand (PT \u20ac170) Outperform, and rate ABB (PT CHF 80) Market-Perform.",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Legrand Outperform with a price target of \u20ac170.",
+   "anchor": "We rate Schneider (PT \u20ac350), Siemens (PT \u20ac330), and Legrand (PT \u20ac170) Outperform, and rate ABB (PT CHF 80) Market-Perform.",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates ABB Market-Perform with a price target of CHF 80.",
+   "anchor": "We rate Schneider (PT \u20ac350), Siemens (PT \u20ac330), and Legrand (PT \u20ac170) Outperform, and rate ABB (PT CHF 80) Market-Perform.",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Vertiv Outperform with a price target of $368.",
+   "anchor": "We rate Vertiv (PT $368) and nVent (PT $229) Outperform.",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates nVent Outperform with a price target of $229.",
+   "anchor": "We rate Vertiv (PT $368) and nVent (PT $229) Outperform.",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [
+    "NVT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates GE Vernova Outperform with a price target of $1,298.",
+   "anchor": "We rate GEV Outperform (PT $1,298) and BE Market-Perform (PT $282)",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [
+    "GEV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Bloom Energy Market-Perform with a price target of $282.",
+   "anchor": "We rate GEV Outperform (PT $1,298) and BE Market-Perform (PT $282)",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Eaton Outperform with a price target of $534.",
+   "anchor": "We rate ETN and HUBB Outperform (PT: $534 and $584, respectively) and PWR Market-Perform (PT $748)",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [
+    "ETN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Hubbell Outperform with a price target of $584.",
+   "anchor": "We rate ETN and HUBB Outperform (PT: $534 and $584, respectively) and PWR Market-Perform (PT $748)",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [
+    "HUBB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein rates Quanta Services Market-Perform with a price target of $748.",
+   "anchor": "We rate ETN and HUBB Outperform (PT: $534 and $584, respectively) and PWR Market-Perform (PT $748)",
+   "topic": "AI power basket trade",
+   "status": "target",
+   "instruments": [
+    "PWR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Vertiv's Q2'26 results showed the impact of internal and external supply chain teething issues tied to its higher vertical-integration project risk.",
+   "anchor": "one doesn\u2019t need to look any further than VRT\u2019s Q2\u201926 results to see the impact of both internal and external supply chain teething issues",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q2'26"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Vertiv's SmartRun IT pod roadmap scales from 1.5MW to over 6MW per pod, versus Schneider's pod topping out at 1.2MW.",
+   "anchor": "with their \u2018SmartRun\u2019 IT pod roadmap from 1.5MW to >6MW (Schneider tops out at 1.2MW)",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Vertiv's OneCore architecture scales integrated modular Power, IT, cooling and service from deployments as small as 12.5MW up to 250MW and above.",
+   "anchor": "the \u2018OneCore\u2019 architecture scaling integrated modular Power, IT, Cooling and Service from deployments as small as 12.5MW to 250MW and above",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Schneider cut stick-built lead times of 88 weeks down to 34 weeks using modular construction.",
+   "anchor": "Schneider (88 week stick-built lead times down to 34 weeks)",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Vertiv cites 10 weeks on-site with modular construction versus 70 weeks for a traditional build.",
+   "anchor": "Vertiv (10 weeks on site with modular vs 70 weeks otherwise)",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "ABB reports a 50% reduction in deployment time using predesigned, prefabricated modules.",
+   "anchor": "ABB (50% reduction in deployment time using predesigned, prefabricated modules)",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bernstein's U.S. Electrical Equipment team identifies an MEP labour ceiling of up to 35 GW for US data center additions by 2030.",
+   "anchor": "an MEP labour ceiling of up to 35 GW in US data center additions by 2030",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "US power grid interconnection timelines increased from 1.5 years in 2005 to over 5 years in 2025.",
+   "anchor": "US interconnection timelines increased from 1.5 years in 2005 to >5 years in 2025",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2005-2025"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Consensus expectations for hyperscaler and neocloud capital expenditure show spending rising significantly in 2026 and continuing to scale through the second half of the decade.",
+   "anchor": "Consensus expecations for Hyperscaler and Neocloud capex suggest spending rises significantly in 2026 and continues to scale throughout the second half of the decade",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "In 2025, China added generation capacity equal to 40% of total US installed capacity in a single year.",
+   "anchor": "in 2025 China added 40% of the US total 2025 installed capacity (c.1.5 TW) in a single year",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2025"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "As of end-May 2026, Epoch AI found the year-to-date average capability lag between open and closed frontier AI models was 4 months.",
+   "anchor": "Epoch AI find the year-to-date average lag of open and closed frontier performance is 4 months",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "as of May 2026"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Bloom Energy has outperformed GE Vernova by almost 150 percentage points year-to-date, and the S&P 500 Industrials index by close to 180 percentage points.",
+   "anchor": "Bloom Energy has outperformed GEV by almost 150pp ytd, and the S&P 500 Industrials index by close to 180pp.",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [
+    "BE",
+    "GEV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "ytd"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "52% of respondents to Bernstein's proprietary survey prefer both Power and IT pods together for future AI data center deployments.",
+   "anchor": "52% of respondents to our proprietary survey prefer both Power and IT pods for future AI deployments",
+   "topic": "AI power basket trade",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "The data center equipment market is increasingly likely to single-source as modular construction takes share of additions, driving share gains for the largest suppliers.",
+   "anchor": "The market is increasingly likely to single-source if modular data centers take share of additions",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "BCE Consulting estimates more integrated, end-to-end modular data center deployments will take share within the overall modular market, rising from 20% to 35% by 2030.",
+   "anchor": "BCE Consulting estimates more integrated, \u2018end-to-end\u2019 modular deployments take share within overall modular (which includes prefab and skids), going from 20% to 35% by 2030.",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "Powering AI: The modular advantage - how value shifts and who captures it",
+   "claim": "Modularisation should improve data center equipment order visibility, backlog conversion, and EBITA per MW for electrical OEMs.",
+   "anchor": "Modularisation should improve order visibility, backlog conversion, and EBITA per MW.",
+   "topic": "AI power basket trade",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19804__powering-ai-the-modular-advantage-how-value-shifts-and-who-c.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 42,
+  "matched": 42,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
