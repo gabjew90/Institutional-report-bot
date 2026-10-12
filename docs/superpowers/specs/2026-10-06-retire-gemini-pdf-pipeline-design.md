@@ -66,8 +66,10 @@ slots, `github_bridge/workflow_dispatch.py:34-36`), and runs are serialized at
 ## 5. Constraints
 
 1. The classic pulse stays the fallback until the Omnipulse passes its
-   retirement gate (10 consecutive market days with `body_source:
-   omnipulse`, `scripts/omnipulse_body.py`). Earliest pass: 2026-10-16.
+   retirement gate (5 consecutive market days with `body_source:
+   omnipulse`, `scripts/omnipulse_body.py`; shortened from 10 by the owner
+   on 2026-10-12, and counted by `scripts/omnipulse_streak.py`). Earliest
+   pass: Friday 2026-10-16, counting today's Omnipulse.
 2. The reader prompt and model strings are frozen during the pilot; a change
    restarts the pilot clock (`scripts/pilot_config.py`).
 3. The existing Opus ingestion bridge (`github_bridge/ingestion.py`,

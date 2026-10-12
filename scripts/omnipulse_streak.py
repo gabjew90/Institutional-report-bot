@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """The Omnipulse retirement streak (spec 2026-09-26: the classic pulse
-retires after 10 consecutive market days with body_source: omnipulse).
+retires after 10 consecutive market days with body_source: omnipulse;
+the owner shortened it to 5 on 2026-10-12).
 
 A light day whose reason is no new bank research is NEUTRAL (owner,
 2026-10-08): it neither counts toward the streak nor breaks it, since no
@@ -22,7 +23,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-TARGET = 10
+TARGET = 5
 NEUTRAL_REASON = "no new bank research"
 
 
