@@ -1,0 +1,378 @@
+{
+ "brief": "GS TMT desk roundup, 11 Oct 2026. NDX closed higher a fourth straight week (6 of 7) but index calm masks dispersion underneath: software outperformed semis by ~800bps, and while investors expect steady Mag7/semis earnings beats, confidence those beats convert to near-term alpha is lower, leaving the bull case resting on compute demand outstripping supply to support 2027+ capex. Separately, UoM consumer sentiment sits near 20-year lows and GIR's indicator shows light equity positioning even as the index sits near highs. Cyclicals vs defensives just had their worst week since mid-August, the Russell 2000 fell a fifth straight week, and Analog Semis decoupled from its usual ISM relationship, which the desk frames as either opportunity or warning. TSM (reports Thursday) sits upbeat on sentiment despite its biggest 4-day pullback since late July; GIR models $85bn/$98bn 2027E/2028E capex and stable near-term margins with out-year upside from the N2 ramp. A Dell site visit found management rejecting an AI-infrastructure-commoditization narrative, citing supply (especially constrained memory) as the gating factor to growth and storage/operating leverage as the margin driver, with enterprise AI adoption still early and FY27 revenue estimates up ~100% in a year. Inference-economy software names (SNOW, CRWD, PANW, NET, PLTR) stay bid near highs even as semis stumble because investors see them as deployment-levered rather than capex-levered, raising the question of whether earnings growth supports current multiples into earnings season.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "The NDX closed higher for a fourth consecutive week and six of the last seven weeks.",
+   "anchor": "The NDX grinded out another \u2018win\u2019 on the week (4 in a row and 6 of 7)",
+   "topic": "AI micro vs macro divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Software outperformed Semis by approximately 800 basis points over the past week even as the NDX traded near all-time highs.",
+   "anchor": "a dynamic stretch of trading under the hood \u2013 think: Software o/p Semis by ~800 bps this past week",
+   "topic": "AI micro vs macro divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Investors expect steady earnings beats across Semis and the Mag 7 this quarter.",
+   "anchor": "expectations are for steady beats across Semis and the Mag 7",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "The durable bull case of compute demand outstripping compute supply continues to drive confidence in 2027-plus capex.",
+   "anchor": "the still durable bull case of compute demand outstripping compute supply (in turn, driving confidence in 2027+ capex)",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027+"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "The inference-economy ecosystem, including SNOW, CRWD, PANW, NET and PLTR, remains well bid and trading at or near all-time highs.",
+   "anchor": "the \u201cinference economy\u201d ecosystem remains well bid with names like SNOW, CRWD, PANW, NET & PLTR all at/near ATHs",
+   "topic": "AI micro vs macro divergence",
+   "status": "released",
+   "instruments": [
+    "SNOW",
+    "CRWD",
+    "PANW",
+    "NET",
+    "PLTR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Investors believe inference-economy names' outlook is less tied to AI capex and more to the deployment of AI.",
+   "anchor": "investors believe their outlook as less beta to capex and more to do with the \u201cdeployment\u201d of AI",
+   "topic": "AI micro vs macro divergence",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Investors are questioning whether earnings growth will be sufficient to support current multiples for leading inference-economy names including PLTR, NET, SNOW and CRWD.",
+   "anchor": "what multiples are implying (e.g. will numbers going to go up \u2018enough\u2019 to support these multiples?)",
+   "topic": "AI micro vs macro divergence",
+   "status": "level",
+   "instruments": [
+    "PLTR",
+    "NET",
+    "SNOW",
+    "CRWD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "The University of Michigan Consumer Sentiment Index is back at its lowest level in more than 20 years.",
+   "anchor": "UoM Consumer Sentiment Index = back at 20+ year lows",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "GIR's sentiment indicator shows light equity investor positioning.",
+   "anchor": "GIR\u2019s sentiment indicator = light equity investor positioning",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "The GS Cyclicals versus Defensives pair just had its worst week since mid-August.",
+   "anchor": "the GS CYCS v DEFS pair just had its worst week since mid-August",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "The Russell 2000 has closed lower for five straight weeks.",
+   "anchor": "the R2K has closed lower for 5 straight weeks",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Analog Semis are now meaningfully underperforming their historical directional relationship with ISM data.",
+   "anchor": "Analog Semis now meaningfully underperforming its (directional) relationship with ISM data",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "ISM",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "SNPS, NTAP, NTNX, HPE, FFIV, OKTA, PLTR, DT, GTLB, DDOG, PD, ZS and FTNT are overbought or extended to the upside per 14-day RSIs.",
+   "anchor": "whats overbought / extended (per 14-day RSIs): SNPS, P, NTAP, NTNX, HPE, FFIV, OKTA, PLTR, DT, GTLB, DDOG, PD, NTSK, ZS, FTNT, VIA",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [
+    "SNPS",
+    "NTAP",
+    "NTNX",
+    "HPE",
+    "FFIV",
+    "OKTA",
+    "PLTR",
+    "DT",
+    "GTLB",
+    "DDOG",
+    "PD",
+    "ZS",
+    "FTNT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "INDI, CRUS, ALKT, VRRM, FICO, OPEN, CMCSA, CHTR, VZ, T and SPHR are oversold or extended to the downside per RSIs.",
+   "anchor": "whats oversold / extended to the downside (per RSIs): INDI, CRUS, SHAZ, ALKT, VRRM, FICO, OPEN, CMCSA, CHTR, VZ, T, SPHR",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [
+    "INDI",
+    "CRUS",
+    "ALKT",
+    "VRRM",
+    "FICO",
+    "OPEN",
+    "CMCSA",
+    "CHTR",
+    "VZ",
+    "T",
+    "SPHR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "TSM reports earnings Thursday 10/15 before market open with sentiment remaining upbeat into the print.",
+   "anchor": "TSM preview .. reports Thursday 10/15 (pre-market) .. sentiment remains upbeat",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2026-10-15"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "TSM just turned in its biggest 4-day pullback since late July, down approximately 7% from Tuesday through Friday of the past week.",
+   "anchor": "TSM did just turn in its biggest 4-day pullback since late-July (down ~7% Tues-Fri of this past week)",
+   "topic": "earnings season AI capex setup",
+   "status": "released",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "GIR models Taiwan Semiconductor capital expenditure at $85 billion in 2027 and $98 billion in 2028.",
+   "anchor": "GIR sits at $85bn / $98bn in 2027E / 2028E CapEx",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "GIR models relatively stable TSM gross margins quarter over quarter in the second half versus second-quarter levels, but raises out-year gross margins on milder dilution from the N2 ramp.",
+   "anchor": "GIR models relatively stable GMs (q/q in 2H vs 2Q levels, though does raise out-year GMs on milder GM dilution from N2 ramp",
+   "topic": "earnings season AI capex setup",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Dell management pushed back on the view that AI infrastructure is becoming commoditized.",
+   "anchor": "Dell mgmt pushed back on the view that AI infrastructure is becoming commoditized",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Supply remains the primary gating factor to AI infrastructure growth, and Dell expects memory markets to remain constrained into next year.",
+   "anchor": "Supply remains the primary gating factor to AI infrastructure growth, and Dell expects memory markets to remain constrained into next year",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "The primary drivers of Dell's future margin expansion remain storage and operating leverage.",
+   "anchor": "The primary drivers of future margin expansion remain storage and operating leverage",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Enterprise AI adoption is still in the very early innings.",
+   "anchor": "Enterprise AI adoption is being in the very early innings",
+   "topic": "data center capacity buildout",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS US TMT: ... 10 things \u2026 11 Oct 2026",
+   "claim": "Dell's FY2027 revenue revisions are up nearly 100% over the last year.",
+   "anchor": "Dell FY\u201927 revenue revisions (up nearly ~100% over the last ~1yr)",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY2027"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 23,
+  "matched": 23,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
