@@ -449,6 +449,11 @@ def _events_block(d, day: CalendarDay, f, y, col_w, x_l, x_r) -> int:
     for c in day.conferences:
         if c.time_et:
             d.text((x_r, cy), _clock(c.time_et), font=f["time"], fill=TEXT)
+        else:
+            # The note gave the day but no time (2026-10-12: Goldman listed
+            # Intel's Open Compute keynote for 10/13 with none). A blank
+            # gutter read as missing data; say the time is not announced.
+            d.text((x_r, cy), "TBA", font=f["time"], fill=_dim(TEXT, 0.5))
         name_font = f["evb"] if getattr(c, "important", False) else f["ev"]
         for line in _wrap(d, c.conference, name_font, name_w):
             d.text((x_txt, cy + 1 * _S), line, font=name_font, fill=TEXT)

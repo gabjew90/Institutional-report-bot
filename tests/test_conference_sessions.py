@@ -259,3 +259,23 @@ def test_db_helper_dedupes_across_documents_and_filters_by_date(tmp_path=None):
 
 if __name__ == "__main__":
     sys.exit("run via: py -3.12 tests/run_tests.py")
+
+
+def test_an_untimed_event_renders_with_tba_2026_10_12():
+    """Goldman listed Intel's Open Compute keynote for 10/13 with no time;
+    the sheet left the time slot blank. It now says TBA."""
+    from unittest.mock import patch
+    from report import calendar_render as R
+    from report.calendar_data import CalendarDay, ConfRow
+    day = CalendarDay(date_iso="2026-10-13", weekday_label="TUESDAY 10/13", is_holiday=False,
+                      conferences=[ConfRow("Open Compute Project Global Summit", None,
+                                           ["INTC"], False, 1)])
+    drawn = []
+    real = R.ImageDraw.ImageDraw.text
+
+    def spy(self, xy, text, *a, **k):
+        drawn.append(text)
+        return real(self, xy, text, *a, **k)
+    with patch.object(R.ImageDraw.ImageDraw, "text", spy):
+        png = R.render_calendar_png(day)
+    assert png[:4] == b"\x89PNG" and "TBA" in drawn
