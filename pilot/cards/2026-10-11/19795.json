@@ -1,0 +1,774 @@
+{
+ "brief": "AI chip-debt SPVs are stampeding: Broadcom is arranging over $50bn for OpenAI's custom chips (talks with Apollo and Blackstone), Oracle is negotiating an off-balance-sheet vehicle with Apollo and Goldman to bridge chip costs against delayed cloud revenue, and SpaceX is seeking roughly $40bn after already issuing $65bn of debt since its June IPO (76% of IPO proceeds). Goldman's Privorotsky argues this borrowing, on top of hyperscalers' projected $500-800bn of debt issuance next year, is crowding out other borrowers from capital markets and keeping yields elevated: Q3 AI-ecosystem interest-rate-risk issuance ran about 25% above all Treasury issuance, and off-balance-sheet hyperscaler liabilities hit $3.8tn, up $700bn since June. The piece ties this to credit cracks: SpaceX's 5-year CDS hit a record 197bp, Oracle's bonds yield over 8% after the Project Jupiter force majeure, and USD CCC spreads closed near 998bp, the 99th percentile of the year, while IG spreads stayed flat at 80bp. Privorotsky frames the outcome as a fork: AI becomes self-financing via its own cash flow, or capital gets rationed and weaker credits break; the piece argues the second path is already being priced.",
+ "cards": [
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "SpaceX went looking for $40 billion in chip-collateralized SPV debt.",
+   "anchor": "SpaceX went looking for $40 billion in chip-collateralized SPV debt",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Broadcom has spent the past few weeks working to arrange more than $50 billion in financing for OpenAI's custom AI chip.",
+   "anchor": "Broadcom has spent the past few weeks working to arrange more than $50 billion in financing for OpenAI's custom AI chip",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Oracle is in talks with Apollo and Goldman Sachs to fund a big chip purchase through an off-balance sheet vehicle.",
+   "anchor": "is in talks with Apollo and Goldman Sachs to fund a big chip purchase through an off-balance sheet vehicle",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Oracle has emerged as the weakest link in the credit-fueled AI bubble and will likely be the first domino to fall.",
+   "anchor": "which has emerged as the weakest link in the entire credit-fueled AI bubble and will likely be the first domino to fall",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Counting the SpaceX, Broadcom-OpenAI and Broadcom-Anthropic deals, the AI ecosystem has lined up roughly $150 billion in chip debt in about a week, not counting Oracle's still-unsized deal.",
+   "anchor": "the AI ecosystem has lined up roughly $150 billion in chip debt in about a week",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Broadcom's $60 billion Anthropic financing started syndicating last week.",
+   "anchor": "Broadcom's $60 billion Anthropic financing, which started syndicating last week",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's Rich Privorotsky says the crowding out effect from AI chip-debt issuance is potentially immense.",
+   "anchor": "The crowding out effect is potentially immense.",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "US government bond yields are rising because hyperscalers have between $500 billion and $800 billion in debt to issue next year.",
+   "anchor": "hyperscalers have between 800BN in debt to issue next year. 500 \u2212",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "JPMorgan's Brian Heavey says price action this morning is bearish early, with the Recession basket leading and Beta plus rate-sensitive stocks lagging.",
+   "anchor": "price action is bearish early with Recession basket leading and Beta + rate sensitive lagging",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "JPMorgan's Brian Heavey says the SpaceX bond raise shouldn't be surprising but continues to pressure government bonds.",
+   "anchor": "SPCX bond raise getting a lot of attention but really shouldn't be surprising",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "The Broadcom financing for OpenAI could include several gigawatts of OpenAI chip capacity.",
+   "anchor": "could include several gigawatts of OpenAI chip capacity",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "The Broadcom-OpenAI chip financing is expected to close before the end of the year.",
+   "anchor": "and is expected to close before the end of the year",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "before end of year"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "OpenAI and Broadcom announced a plan a year ago to co-develop 10 gigawatts of custom chips, to be deployed from the second half of 2026 through the end of 2029.",
+   "anchor": "a plan to co-develop 10 gigawatts of custom chips, to be deployed from the second half of 2026 through the end of 2029",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2H2026 through end of 2029"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Bloomberg reports OpenAI and Broadcom could seek around $30 billion of debt for the next leg of financing, a smaller figure than the WSJ's $50 billion-plus.",
+   "anchor": "around $30 billion of debt for the next leg",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Banks sent out syndication letters last week for a $42 billion Class A senior-secured tranche of the Broadcom-Anthropic financing.",
+   "anchor": "banks sent out syndication letters last week for a $42 billion Class A senior-secured tranche",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Blackstone is leading an $18 billion Class B junior tranche of the Broadcom-Anthropic financing and committing $9 billion from its own funds.",
+   "anchor": "Blackstone is leading an $18 billion Class B junior tranche and committing $9 billion from its own funds",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Broadcom set up a platform in June with Apollo and Blackstone as anchors to finance more than 20 gigawatts of AI compute through 2028.",
+   "anchor": "to finance more than 20 gigawatts of AI compute through 2028",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Per Bloomberg, Broadcom's 20-gigawatt AI compute financing platform will require hundreds of billions of dollars.",
+   "anchor": "will require hundreds of billions of dollars",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "The Oracle chip financing is meant to bridge the gap between when Oracle has to pay for the hardware and when its cloud computing revenue starts coming in.",
+   "anchor": "bridge the gap between when it has to pay for the hardware and when its cloud computing revenue starts coming in",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Nvidia chips for a 1-gigawatt data center would cost tens of billions of dollars.",
+   "anchor": "would cost tens of billions of dollars",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "The rule of thumb for a 1-gigawatt data center's cost rises to $100 billion by the time Nvidia's Vera Rubin generation becomes the default chip.",
+   "anchor": "rising to $100BN by the time Vera",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Oracle wants its chip financing vehicle done as soon as this year.",
+   "anchor": "Oracle wants it done as soon as this year",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Two weeks before this note, Oracle's 2056 bonds plunged to a record low after the force majeure at Project Jupiter, yielding over 8%.",
+   "anchor": "Oracle's 2056 bonds plunged to a record low after the force majeure at Project Jupiter, yielding over 8%",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Oracle's 2056 bond yield of over 8% is wider than the average single-B junk bond.",
+   "anchor": "which is wider than the average single-B junk bond",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Roughly $80 billion of project debt already backs Oracle-leased data centers.",
+   "anchor": "roughly $80 billion of project debt already backing Oracle-leased data centers",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Oracle's Jupiter project loans already trade at 89-91 cents on the dollar.",
+   "anchor": "The Jupiter loans already trade at 89-91 cents",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "SpaceX is seeking about $10 billion in bank loans plus $30 billion of investment-grade debt to buy Nvidia chips, led by Apollo, with Pimco circling.",
+   "anchor": "about $10 billion in bank loans plus $30 billion of IG debt to buy Nvidia chips, led by Apollo, with Pimco circling",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "SpaceX raised a record $86 billion in its June IPO and then sold $25 billion in bonds two weeks later.",
+   "anchor": "raised a record $86 billion in its June IPO and then sold $25 billion in bonds two weeks later",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "SpaceX has raised $65 billion of debt since June, equal to 76% of its IPO proceeds.",
+   "anchor": "That's $65 billion of debt since June, or 76% of the IPO proceeds",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "SpaceX's five-year CDS widened almost 15 basis points to a record on news of its debt talks.",
+   "anchor": "SpaceX's five-year CDS widened almost 15bp to a record",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "SpaceX's 5-year CDS jumped from around 181 basis points to 197 basis points, a new record wide, up about 30% since mid-September.",
+   "anchor": "SpaceX 5Y CDS jumped from around 181bp to 197bp, a new record wide",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Since SpaceX's June IPO, when its CDS traded near 110bp, the market has nearly doubled the price of insuring SpaceX debt in under four months.",
+   "anchor": "the market has nearly doubled the price of insuring SpaceX debt in under four months",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "under four months"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Rating agencies still rate SpaceX BBB while the CDS market is pricing something else, and far worse, entirely.",
+   "anchor": "the rating agencies still say BBB; the CDS market says it is pricing something else",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "SpaceX's 2056 bonds already trade around 85 cents on the dollar.",
+   "anchor": "SpaceX's 2056 bonds already trade around 85 cents",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "The author expects SpaceX's CDS to widen further, with 200 basis points the next stop, probably already reached by the time of reading.",
+   "anchor": "Next stop: 200bp (by the time you read this, probably already there).",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Apollo is also involved in Nvidia's $500 billion compute financing platform announced in August.",
+   "anchor": "Nvidia's $500 billion \"compute financing platform\" from August",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "August"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Investment-grade and high-yield issuance from hyperscalers, data centers and AI infrastructure projects has hit at least $360 billion this year, or 5.8% of all global bond sales, triple last year's 1.9% share.",
+   "anchor": "has hit at least $360 billion this year, or 5.8% of all global bond sales, triple last year's 1.9% share",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's Adam Crook counts $575 billion-plus of global gross AI-related debt issuance this year.",
+   "anchor": "$575bn+ of global gross AI-related debt issuance this year",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's Adam Crook says hyperscalers account for only 40% of this year's $575 billion-plus AI-related debt issuance total.",
+   "anchor": "hyperscalers \"only\" 40% of the total",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Morgan Stanley expected a busier fall and fourth quarter for AI debt issuance, as the focus shifts to 2027 capex.",
+   "anchor": "a busier fall and 4Q, as the focus shifts to 2027 capex",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "fall/Q4, into 2027"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Zero Hedge's tracker of hyperscaler off-balance-sheet liabilities shows $3.8 trillion as of September 30, up $700 billion from June 30.",
+   "anchor": "shows $3.8 trillion as of Sept 30, up $700BN from June 30",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "as of Sept 30"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "The interest-rate risk issued by the AI ecosystem in the third quarter was about 25% higher than all Treasury issuance.",
+   "anchor": "the DV01 issued by the AI ecosystem in Q3 was about 25% higher than all Treasury issuance",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's Privorotsky says if investors believe scarce compute can generate 20-30% compounding IRRs, they will happily borrow at high single-digit rates to build it.",
+   "anchor": "If you believe scarce compute can generate 20\u201330% compounding IRRs, you will happily borrow at high single digit rates to build it",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "A blowout 10-year Treasury auction was followed by 10-year yields being pushed back up to 5.31% in Asia on the prospect of more corporate competition for capital.",
+   "anchor": "pushed 10Y yields back up to 5.31% in Asia",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Ahead of the day's 30-year Treasury auction, yields were around 5.70%.",
+   "anchor": "Next up: the 30Y today, with yields around 5.70%.",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "the day of the 30Y auction"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's Privorotsky sees two ways this ends: AI generates enough organic cash flow to become self-financing, or capital gets rationed elsewhere and the weaker parts of the economy begin to break.",
+   "anchor": "or capital gets rationed elsewhere and the weaker parts of the economy begin to break",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's Privorotsky says the economy may already be seeing the beginnings of capital rationing in CCC spreads.",
+   "anchor": "We may already be seeing the beginnings of that in CCC spreads.",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's credit sales strats say USD CCC spreads closed Wednesday at 998 basis points, up 219bp in three months and 123bp in one month, in the 99th percentile of the past year.",
+   "anchor": "USD CCC spreads closed Wednesday at 998bp, up 219bp in three months and 123bp in one month, in the 99th percentile of the past year",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "as of Wednesday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Over the same period that CCC spreads blew out, the investment-grade credit index was unchanged at 80 basis points.",
+   "anchor": "the IG index was unchanged at 80bp",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Goldman's Privorotsky flagged that the Russell 2000 has underperformed the Nasdaq in 17 of the last 20 sessions.",
+   "anchor": "the Russell has underperformed the Nasdaq in 17 of the last 20 sessions",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "last 20 sessions"
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "The bond behind Meta's Hyperion data center project, codenamed Beignet, hit a record low.",
+   "anchor": "Bond behind Meta's Hyperion data center (proj Beignet) hit record low",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Paramount's CDS is trading at financial-crisis levels.",
+   "anchor": "Paramount CDS trading at financial crisis levels",
+   "topic": "sovereign capital crowding out",
+   "status": "level",
+   "instruments": [
+    "PARA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Three of the four credits showing record stress (Oracle, SpaceX and the Meta data-center bond) are AI borrowers, and all are still rated investment grade.",
+   "anchor": "Three of the four are AI borrowers. All are still somehow rated investment grade.",
+   "topic": "sovereign capital crowding out",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Zero Hedge",
+   "document": "The Crowding Out Effect Is Immense: Broadcom, Oracle Join SpaceX In AI Chip-Debt SPV Stampede",
+   "claim": "Zero Hedge concludes that the path where capital gets rationed and weak links break is already being priced, while the self-financing path still depends on next quarter's hyperscaler earnings.",
+   "anchor": "we think the second path is already being priced, while the first one still depends on next quarter's hyperscaler earnings",
+   "topic": "sovereign capital crowding out",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": "next quarter"
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19795__the-crowding-out-effect-is-immense-broadcom-oracle-join-spac.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 54,
+  "matched": 54,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
