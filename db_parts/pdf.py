@@ -355,42 +355,75 @@ def set_ingest_feed_last_announced(pdf_file_id: int) -> None:
     conn.commit()
 
 
-def get_next_pdf_to_announce(after_pdf_file_id: int) -> dict | None:
-    """Next analyzed HIGH/MEDIUM PDF whose pdf_file_id > after_pdf_file_id.
+# The feed posts each HIGH/MEDIUM PDF once, at its FIRST analysis, in the
+# order analyses land (2026-10-12). It used to walk pdf_file_id upward; with
+# the Claude lane a HIGH note's analysis arrives up to two hours after later
+# MEDIUM notes Gemini already finished, so the cursor passed its id first
+# and the note was never posted. pdf_analyses is append-only, so a late
+# analysis always gets a newer row id.
+_FIRST_ANALYSIS_WHERE = """
+        pa.priority IN ('high', 'medium')
+          AND pa.id = (SELECT MIN(id) FROM pdf_analyses
+                       WHERE pdf_file_id = pa.pdf_file_id)"""
 
-    Joins pdf_files with the LATEST pdf_analyses row per file (so reanalyses
-    are deduped). Skips LOW priority. Returns dict or None if none pending.
-    """
+
+def get_ingest_feed_cursor() -> int:
+    """The newest pdf_analyses id the feed has dealt with. First call after
+    the switch from the pdf_file_id cursor starts at the newest analysis of
+    any PDF the old cursor had passed, so nothing is posted twice."""
+    conn = _db.get_connection()
+    row = conn.execute(
+        "SELECT last_announced_pdf_file_id, last_announced_analysis_id "
+        "FROM ingest_feed_state WHERE id = 1").fetchone()
+    if not row:
+        return 0
+    if row["last_announced_analysis_id"] is not None:
+        return int(row["last_announced_analysis_id"])
+    start = conn.execute(
+        "SELECT COALESCE(MAX(id), 0) AS m FROM pdf_analyses WHERE pdf_file_id <= ?",
+        (int(row["last_announced_pdf_file_id"] or 0),)).fetchone()["m"]
+    conn.execute("UPDATE ingest_feed_state SET last_announced_analysis_id = ? WHERE id = 1",
+                 (int(start),))
+    conn.commit()
+    return int(start)
+
+
+def set_ingest_feed_cursor(analysis_id: int, pdf_file_id: int | None = None) -> None:
+    conn = _db.get_connection()
+    conn.execute(
+        """UPDATE ingest_feed_state
+           SET last_announced_analysis_id = ?,
+               last_announced_pdf_file_id = MAX(last_announced_pdf_file_id, ?),
+               updated_at = datetime('now')
+           WHERE id = 1""",
+        (int(analysis_id), int(pdf_file_id or 0)),
+    )
+    conn.commit()
+
+
+def get_next_pdf_to_announce(after_analysis_id: int) -> dict | None:
+    """The next PDF whose first HIGH/MEDIUM analysis is newer than the cursor."""
     row = _db.get_connection().execute(
-        _db._LATEST_ANALYSIS_CTE + """
-        SELECT la.*, pf.id AS pf_id, pf.file_name, pf.dropbox_path,
-               pf.dropbox_modified_at, pf.file_size_bytes
-        FROM latest_analyses la
-        JOIN pdf_files pf ON la.pdf_file_id = pf.id
-        WHERE la.priority IN ('high', 'medium')
-          AND pf.id > ?
-        ORDER BY pf.id ASC
-        LIMIT 1""",
-        (int(after_pdf_file_id),),
+        f"""SELECT pa.*, pa.id AS analysis_id, pf.id AS pf_id, pf.file_name,
+                   pf.dropbox_path, pf.dropbox_modified_at, pf.file_size_bytes
+            FROM pdf_analyses pa
+            JOIN pdf_files pf ON pa.pdf_file_id = pf.id
+            WHERE pa.id > ? AND {_FIRST_ANALYSIS_WHERE}
+            ORDER BY pa.id ASC
+            LIMIT 1""",
+        (int(after_analysis_id),),
     ).fetchone()
     return dict(row) if row else None
 
 
-def count_pending_announcements(after_pdf_file_id: int) -> dict:
-    """Count HIGH/MEDIUM PDFs queued for announcement after the given id.
-
-    Used at startup to decide whether to trickle or post a backfill summary.
-    Returns {'high': N, 'medium': M, 'total': N+M}.
-    """
+def count_pending_announcements(after_analysis_id: int) -> dict:
+    """HIGH/MEDIUM PDFs waiting to be posted: {'high', 'medium', 'total'}."""
     rows = _db.get_connection().execute(
-        _db._LATEST_ANALYSIS_CTE + """
-        SELECT la.priority, COUNT(*) as n
-        FROM latest_analyses la
-        JOIN pdf_files pf ON la.pdf_file_id = pf.id
-        WHERE la.priority IN ('high', 'medium')
-          AND pf.id > ?
-        GROUP BY la.priority""",
-        (int(after_pdf_file_id),),
+        f"""SELECT pa.priority, COUNT(*) AS n
+            FROM pdf_analyses pa
+            WHERE pa.id > ? AND {_FIRST_ANALYSIS_WHERE}
+            GROUP BY pa.priority""",
+        (int(after_analysis_id),),
     ).fetchall()
     out = {"high": 0, "medium": 0, "total": 0}
     for r in rows:
@@ -399,17 +432,12 @@ def count_pending_announcements(after_pdf_file_id: int) -> dict:
     return out
 
 
-def max_announceable_pdf_file_id() -> int:
-    """Current MAX(pdf_file_id) among HIGH/MEDIUM analyzed PDFs.
-
-    Used at startup to fast-forward last_announced past a backfilled batch.
-    """
+def max_announceable_analysis_id() -> int:
+    """Newest first-analysis id among HIGH/MEDIUM PDFs: the startup
+    catch-up fast-forwards the cursor here."""
     row = _db.get_connection().execute(
-        _db._LATEST_ANALYSIS_CTE + """
-        SELECT COALESCE(MAX(pf.id), 0) AS m
-        FROM latest_analyses la
-        JOIN pdf_files pf ON la.pdf_file_id = pf.id
-        WHERE la.priority IN ('high', 'medium')"""
+        f"""SELECT COALESCE(MAX(pa.id), 0) AS m FROM pdf_analyses pa
+            WHERE {_FIRST_ANALYSIS_WHERE}"""
     ).fetchone()
     return int(row["m"]) if row else 0
 

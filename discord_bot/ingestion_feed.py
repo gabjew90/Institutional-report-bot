@@ -7,14 +7,15 @@ pipeline (key_insights, entities_mentioned, trade_ideas, etc.).
 
 Flow:
 - 60s scheduler tick calls announce_next_pending(bot)
-- Pulls the next pdf_file_id > last_announced where priority IN ('high','medium')
+- Pulls the next HIGH/MEDIUM PDF whose FIRST analysis is newer than the cursor
+  (a pdf_analyses id, so a Claude-lane analysis that lands late is still posted)
 - Builds an embed from the cached analysis_json + a 4h Dropbox download link
 - Posts to DISCORD_INGEST_FEED_CHANNEL_ID (single configured channel)
-- Updates last_announced
+- Advances the cursor to that analysis id
 
 On startup: announce_startup_backfill() checks for backlog. If more than
 INGEST_FEED_BACKLOG_THRESHOLD PDFs are queued, posts a single summary card
-and fast-forwards last_announced to current MAX (skips the backfill items).
+and fast-forwards the cursor to the current MAX (skips the backfill items).
 Otherwise lets the trickle catch them up at 60s cadence.
 """
 
@@ -157,7 +158,7 @@ async def announce_next_pending(bot) -> None:
         log.warning("Ingest feed: invalid DISCORD_INGEST_FEED_CHANNEL_ID")
         return
 
-    last = db.get_ingest_feed_last_announced()
+    last = db.get_ingest_feed_cursor()
     row = db.get_next_pdf_to_announce(last)
     if not row:
         return
@@ -179,7 +180,7 @@ async def announce_next_pending(bot) -> None:
 
         # Mark as announced AFTER successful post so a transient Discord error
         # doesn't permanently skip the entry. If post fails the next tick retries.
-        db.set_ingest_feed_last_announced(pf_id)
+        db.set_ingest_feed_cursor(int(row["analysis_id"]), pf_id)
     except Exception as e:
         log.error(f"Ingest feed: failed to announce pdf_file_id={pf_id}: {e}", exc_info=True)
 
@@ -192,7 +193,7 @@ async def announce_startup_backfill(bot) -> None:
     if cid is None:
         return
 
-    last = db.get_ingest_feed_last_announced()
+    last = db.get_ingest_feed_cursor()
     pending = db.count_pending_announcements(last)
     threshold = settings.ingest_feed_backlog_threshold
 
@@ -209,7 +210,7 @@ async def announce_startup_backfill(bot) -> None:
         return
 
     # Large backlog — post a summary card and fast-forward
-    current_max = db.max_announceable_pdf_file_id()
+    current_max = db.max_announceable_analysis_id()
     embed = discord.Embed(
         title="📦 Ingestion catch-up",
         description=(
@@ -223,7 +224,7 @@ async def announce_startup_backfill(bot) -> None:
         value=f"🟢 HIGH: **{pending['high']}**   🟡 MEDIUM: **{pending['medium']}**",
         inline=False,
     )
-    embed.set_footer(text=f"fast-forwarded past pdf_file_id {last + 1}–{current_max}")
+    embed.set_footer(text=f"fast-forwarded past analysis {last + 1}–{current_max}")
 
     try:
         channel = bot.get_channel(cid)
@@ -231,10 +232,10 @@ async def announce_startup_backfill(bot) -> None:
             log.warning(f"Ingest feed: channel {cid} not found at startup")
             return
         await channel.send(embed=embed)
-        db.set_ingest_feed_last_announced(current_max)
+        db.set_ingest_feed_cursor(current_max)
         log.info(
             f"Ingest feed: posted backfill summary ({pending['total']} PDFs), "
-            f"fast-forwarded last_announced to {current_max}"
+            f"fast-forwarded the cursor to analysis {current_max}"
         )
     except Exception as e:
         log.error(f"Ingest feed: backfill summary post failed: {e}", exc_info=True)

@@ -750,6 +750,11 @@ def _init_schema(conn: sqlite3.Connection) -> None:
         ("image_ocr_text", "ALTER TABLE chat_messages ADD COLUMN image_ocr_text TEXT"),
         ("image_ocr_status", "ALTER TABLE chat_messages ADD COLUMN image_ocr_status TEXT"),
         ("image_ocr_at", "ALTER TABLE chat_messages ADD COLUMN image_ocr_at TEXT"),
+        # Ingestion feed cursor by analysis row, not pdf_file_id (2026-10-12:
+        # Claude-lane analyses land late). NULL until first use, when it
+        # starts from the old cursor (db_parts.pdf.get_ingest_feed_cursor).
+        ("last_announced_analysis_id",
+         "ALTER TABLE ingest_feed_state ADD COLUMN last_announced_analysis_id INTEGER"),
     ]:
         try:
             conn.execute(ddl)
@@ -1573,6 +1578,9 @@ from db_parts.pdf import (  # noqa: E402,F401
     get_ingest_feed_last_announced,
     get_latest_dropbox_modified_at,
     get_next_pdf_to_announce,
+    get_ingest_feed_cursor,
+    set_ingest_feed_cursor,
+    max_announceable_analysis_id,
     get_pdf_by_path,
     get_pending_bridge_pdfs,
     get_pending_pdfs,
@@ -1585,7 +1593,6 @@ from db_parts.pdf import (  # noqa: E402,F401
     insert_analysis,
     insert_pdf_file,
     log_event,
-    max_announceable_pdf_file_id,
     queue_for_opus_bridge,
     queue_for_claude_lane,
     get_lane_rows,
