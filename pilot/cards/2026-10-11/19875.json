@@ -1,0 +1,299 @@
+{
+ "brief": "The Market Ear opens with three indicators past peak: Trump's approval rating sliding to a declining baseline rather than mean-reverting as in his first term, Anthropic's annualized revenue run rate growth slowing sharply after rising from about $10bn in January to $74bn by July 24 but only to $76.8bn by September 24 (about 4% growth in two months versus a sevenfold rise over the prior seven months), and the share of US adults who drink alcohol falling to 54%, the lowest since Gallup began asking almost 90 years ago. The rest is a 15-chart roundup reporting disparate data with no single thesis: CCC-rated credit spreads above 1,000bps and at a record ratio to high-yield; Oracle's five-year CDS near record highs around 261bps, implying roughly 20% five-year default risk; France and NVDA CDS trading at a similar level; US banks the most oversold versus the market since 1993; Taiwan and Korea now half the MXAPJ index weight, displacing China; EM equities starting to outperform US equities; buyback authorizations at $1.1 trillion YTD, over 20% ahead of last year; and hedge fund long/short positioning at its lowest in a year.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Trump's approval rating has shown a persistent decline to a lower baseline rather than mean-reverting, unlike during his first term, per Nate Silver.",
+   "anchor": "Kind of striking how persistent the decline in Trump's approval rating has been.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Anthropic's annualized revenue run rate exploded from roughly $10 billion in January to $74 billion by July 24.",
+   "anchor": "exploded from roughly $10 billion in January to $74 billion by July 24",
+   "topic": "Anthropic revenue growth deceleration",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Anthropic's annualized revenue run rate stood at $76.8 billion on September 24.",
+   "anchor": "on September 24, the figure stood at just $76.8 billion",
+   "topic": "Anthropic revenue growth deceleration",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Anthropic's annualized revenue run rate grew only about 4% over the two months to September 24, compared with a more than sevenfold increase over the prior seven months.",
+   "anchor": "barely 4% growth over two months, following a more than sevenfold increase during the first seven months of the year",
+   "topic": "Anthropic revenue growth deceleration",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "The share of US adults who say they drink alcohol fell to 54%, the lowest since Gallup began asking almost 90 years ago.",
+   "anchor": "share of US adults who say they drink alcohol just fell to 54%, the lowest since Gallup started asking almost 90 years ago",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "CCC-rated credit spreads have pushed above 1,000 basis points.",
+   "anchor": "CCC-rated spreads have pushed above 1,000bps, while the ratio of CCC spreads to the broader high-yield market has reached a record high",
+   "topic": "credit quality stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "The ratio of CCC-rated spreads to the broader high-yield market has reached a record high.",
+   "anchor": "CCC-rated spreads have pushed above 1,000bps, while the ratio of CCC spreads to the broader high-yield market has reached a record high",
+   "topic": "credit quality stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Oracle's five-year credit default swap spread has surged to roughly 261 basis points, near record highs.",
+   "anchor": "Oracle's five-year CDS has surged to roughly 261bps, near record highs",
+   "topic": "credit quality stress",
+   "status": "level",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Assuming a 40% recovery rate, Oracle's CDS level implies approximately 20% cumulative risk-neutral default probability over five years.",
+   "anchor": "Assuming a 40% recovery rate, that translates into approximately 20% cumulative risk-neutral default probability over five years",
+   "topic": "credit quality stress",
+   "status": "forecast",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "five years"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "France's sovereign credit default swaps and NVIDIA's credit default swaps are trading at roughly the same level.",
+   "anchor": "Yet their credit default swaps are trading at roughly the same level",
+   "topic": "France sovereign risk premium",
+   "status": "level",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "US bank stocks are the most oversold versus the overall market since 1993.",
+   "anchor": "US Banks the most oversold vs overall market since 1993",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Taiwan and Korea now account for half of the MXAPJ index weight, having displaced China as the dominant market.",
+   "anchor": "Taiwan and Korea now account for half of the MXAPJ index weight, having displaced China, which was the dominant market",
+   "topic": "EM equity rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "The largest Korean retail broker is down 65% since May after previously posting a '4-bagger' gain.",
+   "anchor": "Largest Korean retail broker down 65% since May after \u201c4-bagger\u201d",
+   "topic": "EM equity rotation",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "since May"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "EM equities are starting to outperform US equities, per BofA.",
+   "anchor": "EM equities starting to outperform US equities",
+   "topic": "EM equity rotation",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "The ratio of the equal-weight (RSP) to market-cap-weight (SPY) S&P 500 has never been lower.",
+   "anchor": "The ratio of the equal weight (RSP) to market cap weight (SPY) S&P 500 has never been lower",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [
+    "RSP",
+    "SPY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "United Wholesale Mortgage, the largest US mortgage lender, fell to its lowest closing price in history.",
+   "anchor": "United Wholesale Mortgage, just fell to its lowest closing price in history",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [
+    "UWMC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "United Wholesale Mortgage is on track for its 9th consecutive red month, its longest losing streak in history.",
+   "anchor": "is on track for its 9th consecutive red month, its longest losing streak in history",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "UWMC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Share buyback authorizations have reached $1.1 trillion year-to-date, more than 20% ahead of last year's pace.",
+   "anchor": "Share buyback authorizations have reached $1.1 trillion YTD, running more than 20% ahead of last year's pace",
+   "topic": "equity positioning extremes",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-to-date"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "Hedge funds ended the week with their long/short ratio at its lowest level of the past year.",
+   "anchor": "Hedge funds are ending the week with their long/short ratio at the lowest level of the past year",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past year"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "The Trump Trend, Anthropic ARR and Alcohol",
+   "claim": "GS Prime frames the hedge fund long/short positioning extreme as an open question: either a warning sign or the setup for a short squeeze.",
+   "anchor": "The question is whether this is a warning sign or the setup for the next squeeze",
+   "topic": "equity positioning extremes",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19875__the-trump-trend-anthropic-arr-and-alcohol.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 20,
+  "matched": 20,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 4,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
