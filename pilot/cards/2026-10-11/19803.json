@@ -1,0 +1,454 @@
+{
+ "brief": "Bernstein extends its AI data center pod-cost model from Nvidia Blackwell/Vera Rubin to AMD and ASIC architectures. It cuts Vera Rubin to $7.5M per rack (from $9.1M), driven by lower per-rack NAND assumptions and more conservative HBM4 pricing, now near the $7-8M supply-chain consensus. AMD's MI455X lands at $7.3M, similar overall: AMD earns lower GPU margins (less compute content) but higher CPU value than Nvidia's Vera, and higher networking content from up to 3 NICs per GPU. OpenAI's Jalapeno is put at $5.0M per pod; unlike expected, it is not a white-label Nvidia design but expands the scale-up domain and keeps data in HBM/DRAM rather than scale-out/NAND. Google's TPU v7 Ironwood is estimated at $2.7M but with low conviction given sparse disclosure. Capex/GW ranges $35B (Jalapeno) to ~$40B (Vera Rubin). Implied 2026-27 GW shipments (36GW to 43GW) run well above Bernstein's own US data-center capacity model (18GW to 26GW), which it attributes to growing international buildout (e.g., OpenAI-Firmus in APAC) amid US siting delays.",
+ "cards": [
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein revises its Vera Rubin rack cost estimate to $7.5M per rack from a prior estimate of $9.1M.",
+   "anchor": "We revise our Vera Rubin estimates and land at $7.5M per rack vs. our prior estimate of $9.1M.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein's revised Vera Rubin rack cost estimate is now in line with supply chain expectations of $7-8M per rack.",
+   "anchor": "Our estimates are now much more in line with supply chain expectations of $7-8M per rack.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein estimates AMD's MI455X architecture rack cost at $7.3M, similar to Vera Rubin.",
+   "anchor": "We estimate AMD\u2019s MI455X architecture to be a $7.3M rack, relatively similar to Vera Rubin.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein believes AMD earns lower margins on GPUs giving it lower computing content, despite higher CPU value than Nvidia's Vera.",
+   "anchor": "we think AMD is earning lower margins on GPUs and thus has lower computing content, despite higher CPU value than Nvidia\u2019s Vera.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "AMD's networking content is significantly higher than Nvidia's because AMD includes up to 3 NICs per GPU.",
+   "anchor": "Networking content appears significantly higher, due to AMD including \u201cup to 3\u201d NICs per GPU.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein expects OpenAI's Jalapeno pod to cost $5.0M per pod.",
+   "anchor": "We expect OpenAI Jalapeno to be $5.0M per pod.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "OpenAI's Jalapeno design expands the scale-up domain and holds data locally in HBM and DRAM, reducing dependence on scale-out and NAND.",
+   "anchor": "OpenAI intends to expand the scale-up domain and hold data locally in HBM (and DRAM), and reduce dependence on scale-out and NAND.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein's best guess for Google's TPU v7 Ironwood rack is $2.7M, with low conviction due to lacking disclosure.",
+   "anchor": "Our best guess is TPU v7 Ironwood is a $2.7M, however we found disclosures to be lacking, and lack conviction in very granular estimates as result.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein estimates total data center capex per GW ranges from $35B for OpenAI's Jalapeno to about $40B for Nvidia's VR NVL72.",
+   "anchor": "we then reach estimates of total capex / GW, ranging from $35B / GW for OpenAI Jalepno to ~$40B / GW for VR NVL72.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein's rack-level analysis implies notably higher GW shipments than its own US data center capacity model, which it attributes to growing international builds amid US data center delays.",
+   "anchor": "While our estimates imply notably higher GW shipments than our US data center model, we believe the disconnect could be explained by the increasing importance of international builds amid US data center delays.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein's rack-architecture analysis implies 36 GW of AI accelerator capacity shipped in 2026, rising to 43 GW in 2027.",
+   "anchor": "implies 36 GW shipped in 2026, increasing to 43 GB in 2027.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein's US data center capacity model separately estimates only 18 GW of US capacity adds in 2026 and 26 GW in 2027.",
+   "anchor": "This is notably higher than our estimate of 18 GW in US capacity adds in 2026E and 26 GW in 2027E",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "OpenAI has a data center capacity deal with Firmus covering Australia, Singapore, Indonesia and Malaysia.",
+   "anchor": "OpenAI\u2019s deal with Firmus for AI data center capacity across Australia, Signapore, Indonesia and Malaysia.",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein sees continued acceleration in available AI compute as an unlock for further AI adoption.",
+   "anchor": "Available compute continues to accelerate, which we see as an unlock for AI adoption.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein estimates it costs about $1.3B in electricity to run 1 GW of data center capacity for a year at $0.15 per kWh.",
+   "anchor": "it costs ~$1.3B in electricity to run a GW of data center capacity for a year.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein notes personnel costs are negligible, with even the largest data centers reportedly operating with 8-10 people costing $30-80k per year each.",
+   "anchor": "Personnel costs are also negligible, with even the largest data centers reportedly operating with 8-10 people costing $30-80k per year each.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Even on a 6-year depreciation cycle, Bernstein estimates capex costs about $6.6B in annual depreciation for Rubin.",
+   "anchor": "even on a 6 year depreciation cycle, capex costs ~$6.6B in annual depreciation for Rubin.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein's estimates are consistent with widespread reporting that Rubin GPUs are selling for $55k per GPU.",
+   "anchor": "Our estimates are consistent with widespread reporting that the Rubin GPUs are selling for $55k per GPU2.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "The Vera CPU is reportedly selling for $5k per CPU, pointing to $180k in total cost for 36 CPUs per rack.",
+   "anchor": "the Vera CPU is reportedly selling for $5k per CPU, pointing to $180k in total cost for 36 CPUs per rack.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein revises its HBM4 price estimate from $48/GB to $30.6/GB given weaker channel signals.",
+   "anchor": "we revise our price estimate from $48/GB to $30.6 GB, given weaker signals from the channel",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein believes Nvidia can pass HBM price increases to end customers and collect a 10% mark-up.",
+   "anchor": "we continue to believe that Nvidia can price on price increases to end customers and collect a mark-up of 10%",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein updates its DRAM price assumption from $14.85/GB to $16.45/GB to reflect market price increases.",
+   "anchor": "we update our DRAM price assumption from $14.85/GB to $16.45/GB, to reflect market price increases.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein updates its TLC NAND price estimate from $0.37/GB to $0.38/GB to reflect contract price increases.",
+   "anchor": "we update our estimate for TLC NAND from $0.37/GB to $0.38/GB to reflect contract price increases.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "The AMD MI455X GPU is priced at about $35k, roughly comparable to a GB200.",
+   "anchor": "the AMD MI455X GPU is a $35k GPU, putting its price roughly comparable to a GB200.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein estimates Google's TPU ASIC at $22k versus about $30k for GB200, reflecting Broadcom's 55% margin versus Nvidia's 70%.",
+   "anchor": "assuming that Broadcom is earning 55% margins vs. Nvidia at 70% implies that this is a $22k ASIC, vs. GB200 being closer to $30k.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein rates Nvidia Outperform with a price target of $400.",
+   "anchor": "NVDA (OP, US$400.00): We rate Nvidia Outperform, PT=US$400.00.",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein rates Advanced Micro Devices Outperform with a price target of $650.",
+   "anchor": "AMD (OP, US$650.00): We rate Advanced Micro Devices Outperform, PT=US$650.00",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein rates Broadcom Outperform with a price target of $575.",
+   "anchor": "AVGO (OP, US$575.00): We rate Broadcom Outperform, PT=$US$575.00",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein rates CoreWeave Underperform with a price target of $74.",
+   "anchor": "Coreweave (UP, $74): We rate Coreweave Underperform, PT=$74.",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "AI Value Chain: How much does a GW of AI ASIC data center capacity actually cost?",
+   "claim": "Bernstein rates Vertiv Outperform with a price target of $368.",
+   "anchor": "We rate VRT Outperform, TP $ 368",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19803__ai-value-chain-how-much-does-a-gw-of-ai-asic-data-center-cap.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 30,
+  "matched": 30,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
