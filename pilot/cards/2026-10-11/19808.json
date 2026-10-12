@@ -1,0 +1,606 @@
+{
+ "brief": "Bernstein surveys 63 outside 2030 U.S. data center capacity forecasts spanning 59-186 GW and attributes the spread to five analyst \"seats,\" each anchored on a different methodology that systematically skews its own output. Infrastructure/REIT investors count sites and skew conservative, yielding 135-167 IT-GW by 2030 (base 142). Industrials analysts extrapolate incremental-addition growth rates and skew higher: 124-242 IT-GW (base 161). Tech analysts derive capacity from hyperscaler capex, landing at a base of 152 IT-GW (range 115-195). Semis analysts derive it from server/hardware shipments: base 149 IT-GW (range 137-160). Labor analysts model available craft labor as a ceiling rather than a demand forecast: 142 GW (range 120-204). Reconciling the five, Bernstein's stated definitive estimate is 149 IT-GW by 2030, adding 19 IT-GW in 2027 and 25 IT-GW in 2028; its PM Summary separately states the most reasonable outcome is closer to ~160 IT-GW, implying over 4.5x growth from 2025 levels. Because today's market is supply constrained, Bernstein favors names with direct exposure to energized capacity over names dependent on AI-adoption pace, and flags the largest risk in valuations already pricing the most aggressive capacity outcomes.",
+ "cards": [
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "A survey of 63 available forecasts from 40 sources found 2030 U.S. data center capacity estimates spreading from 59 to 186 GW.",
+   "anchor": "A survey of 63 available forecasts from 40 sources yielded a spread of 59 to 186 GW by 2030.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's site-based method forecasts a 135-167 IT-GW range for U.S. data center capacity by 2030, with a base case of 142 IT-GW.",
+   "anchor": "we forecast a range of 135-167 IT GW in the U.S. by 2030, with a base case of 142 IT-GW.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's incremental growth-rate method yields a 124-242 IT-GW range for U.S. data center capacity by 2030, with a base case of 161 IT-GW.",
+   "anchor": "This approach yields 124-242 IT-GW by 2030 (base 161 IT-GW).",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's hyperscaler-capex method produces a base case of 152 IT-GW of U.S. data center capacity in 2030, with a wide range of 115-195 IT-GW.",
+   "anchor": "we end up at a base of 152 IT-GW in 2030 with this approach, but with a very wide range of 115-195.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's server-based method approaches 149 IT-GW of U.S. data center capacity by 2030, with a range of 137-160 IT-GW.",
+   "anchor": "we approach 149 IT-GW by 2030 (range 137-160).",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's craft-labor analysis puts a potential ceiling of 142 GW on U.S. data center capacity by 2030, with a range of 120-204 GW.",
+   "anchor": "it is indeed a potential ceiling - 142 GW by 2030 (range 120-204).",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's definitive estimate is 149 IT-GW of U.S. data center capacity by 2030, adding 19 IT-GW (about 25 facility GW) in 2027 and 25 IT-GW (about 32 facility GW) in 2028.",
+   "anchor": "149 IT-GW by 2030, adding 19 IT-GW (~25 facility GW) in 2027 and 25 IT-GW (~32 facility) in 2028.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2027-2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's PM Summary states the most reasonable outcome is approximately 160 IT-GW of installed U.S. data center capacity by 2030.",
+   "anchor": "we believe the most reasonable outcome is ~160 IT-GW of installed U.S. capacity by 2030",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's ~160 IT-GW 2030 base case implies U.S. data center capacity growth of more than 4.5 times 2025 levels.",
+   "anchor": "implying capacity growth of more than 4.5x from 2025 levels.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2025-2030"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein states today's U.S. data center market remains supply constrained, with AI infrastructure demand exceeding available capacity in many regions.",
+   "anchor": "Today's market remains supply constrained, with demand for AI infrastructure exceeding available capacity in many regions.",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein favors companies with direct exposure to energized data center capacity growth over those whose outlook depends on the current pace of AI adoption.",
+   "anchor": "we continue to favor companies with direct exposure to energized capacity growth rather than whose outlook depends on the current pace of AI adoption.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein sees the greatest risk concentrated in situations where valuations already assume the most aggressive data center capacity outcomes materialize without execution challenges or delays.",
+   "anchor": "the greatest risk appears concentrated in situations where valuations already assume the most aggressive capacity outcomes materialize and without execution challenges or delays.",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Credible estimates for U.S. data center capacity at the end of 2025 range between 30 and 80 GW.",
+   "anchor": "Credible estimates put capacity between 30 and 80 GW by the end of 2025",
+   "topic": "data center capacity buildout",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "end of 2025"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein anchors its forecasts to a single 2025 U.S. data center capacity figure of 35 IT-GW, based on its project pipeline data.",
+   "anchor": "we have anchored our forecasts to a single 2025 number (35 IT-GW), based on our project pipeline data",
+   "topic": "data center capacity buildout",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2025"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein thinks the true 2025 starting point for U.S. data center capacity should perhaps be closer to 45 GW.",
+   "anchor": "We think this starting point should perhaps be closer to 45GW",
+   "topic": "data center capacity buildout",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2025"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein's analysis puts credible gigawatts at approximately 35% of the total U.S. data center project pipeline across all stages, from announced to nearly final.",
+   "anchor": "our analysis puts credible GWs at ~35% of total pipeline across all stages (announced to nearly-final)",
+   "topic": "data center capacity buildout",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein uses a simplified Power Use Efficiency assumption of 1.3 for 2026, trending gently down in later years.",
+   "anchor": "we are using a simplified annual Power Use Efficiency assumption of 1.3 in 2026 (trending gently down)",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "McKinsey raised its 2030 U.S. data center capacity forecast by 258% between 2025 and 2026.",
+   "anchor": "McKinsey bumped their 2030 forecast by 258% between 2025 and 2026.",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2025-2026"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "BCG raised its 2030 forecast for U.S. data center capacity by 155% between 2025 and 2026.",
+   "anchor": "BCG raised theirs 155%, and EPRI took theirs up 99%.",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2025-2026"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "EPRI raised its 2030 forecast for U.S. data center capacity by 99% between 2025 and 2026.",
+   "anchor": "BCG raised theirs 155%, and EPRI took theirs up 99%.",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2025-2026"
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Hyperscalers represent the majority of U.S. data center capacity across self-builds and colocation.",
+   "anchor": "Hyperscalers represent the majority of capacity across self-builds and colo.",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Vistra Outperform with a price target of $181.",
+   "anchor": "We rate VST, NEE, CEG Outperform, TP $181, $296 and $108 respectively",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "VST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates NextEra Energy Outperform with a price target of $296.",
+   "anchor": "We rate VST, NEE, CEG Outperform, TP $181, $296 and $108 respectively",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "NEE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Constellation Energy Outperform with a price target of $108.",
+   "anchor": "We rate VST, NEE, CEG Outperform, TP $181, $296 and $108 respectively",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Bloom Energy Market-Perform with a price target of $282.",
+   "anchor": "We rate BE Market-Perform, TP $282",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "BE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Vertiv Outperform with a price target of $368.",
+   "anchor": "We rate VRT Outperform, TP $ 368",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates nVent Outperform with a price target of $229.",
+   "anchor": "We rate NVT Outperform, TP $ 229",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "NVT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Carrier Market-Perform with a price target of $78.",
+   "anchor": "We rate CARR Market-Perform, TP $ 78",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "CARR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Johnson Controls Outperform with a price target of $190.",
+   "anchor": "We rate JCI Outperform, TP $ 190",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "JCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Trane Technologies Outperform with a price target of $575.",
+   "anchor": "We rate TT Outperform, TP $ 575",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "TT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Amphenol Outperform with a price target of $99.",
+   "anchor": "We rate APH Outperform, TP $ 99",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "APH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates TE Connectivity Outperform with a price target of $243.",
+   "anchor": "We rate TEL Outperform, TP $ 243",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "TEL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Microsoft Outperform with a price target of $660.",
+   "anchor": "We rate MSFT Outperform TP $660",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Oracle Outperform with a price target of $325.",
+   "anchor": "We rate ORCL Outperform TP $325",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Schneider Electric Outperform with a price target of \u20ac350.",
+   "anchor": "We rate SU Outperform, TP \u20ac 350",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates ABB Market-Perform with a price target of CHF 80.",
+   "anchor": "We rate ABB Market-Perform, TP CHF 80",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "ABB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Legrand Outperform with a price target of \u20ac170.",
+   "anchor": "We rate LR Outperform, TP \u20ac 170",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Siemens Outperform with a price target of \u20ac330.",
+   "anchor": "We rate SIE Outperform, TP \u20ac 330",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Siemens Energy Outperform with a price target of \u20ac210.",
+   "anchor": "We rate ENR Outperform, TP \u20ac 210",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Meta Outperform with a price target of $800.",
+   "anchor": "We rate META Outperform, TP $800",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Amazon Outperform with a price target of $320.",
+   "anchor": "We rate AMZN Outperform, TP $320",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Bernstein",
+   "document": "U.S. Data Center Capacity: Your seat is skewing your numbers. Five ways to forecast DC capacity (and our definitive view)",
+   "claim": "Bernstein rates Alphabet Market-Perform with a price target of $385.",
+   "anchor": "We rate GOOGL Market-Perform, TP $385",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-11/19808__u-s-data-center-capacity-your-seat-is-skewing-your-numbers-f.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 42,
+  "matched": 42,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
