@@ -1828,7 +1828,13 @@ python3 scripts/pulse_driver.py preflight 2>&1 | tee -a /tmp/routine.log
 - **`DECISION: BLOCK`** — do NOT commit. The output names each problem (a gate that was never consulted, a FIXUP without its recheck, a SCRUB dispatch without its relint, a missing or leaking artifact). Fix exactly what it names — usually by running the named `gate` command — then re-run preflight. There is no legitimate path to STEP 6's commit while preflight says BLOCK; a BLOCK override is not a judgment call available to this routine.
 
 
-> **TRANSPORT (see the COMMIT TRANSPORT override near the top):** the `urllib` PUT in the heredoc below WILL 403 in this environment. Use it to BUILD the pulse content and write it to `/tmp/final_with_frontmatter.md`, then commit that file to `pulse-output/pending/<ts>.md` (and each other artifact to its path) via the `mcp__github__*` GitHub tool. The bridge posts only what reaches `pulse-output/pending/`, so this commit is terminal-critical.
+> **TRANSPORT (see the COMMIT TRANSPORT override near the top):** the `urllib` PUT in the heredoc below WILL 403 in this environment. Use it to BUILD the pulse content and write it to `/tmp/final_with_frontmatter.md`. Then run
+>
+> ```bash
+> python3 scripts/pulse_driver.py push_list 2>&1 | tee -a /tmp/routine.log
+> ```
+>
+> and make **ONE** `mcp__github__push_files` call (`owner: gabjew90`, `repo: Institutional-report-bot`, `branch: pulse-data`, message `routine: pulse <ts> + artifacts`) whose `files` is the **entire** JSON array in `/tmp/push_files.json`: the pulse, its adjudication, the driver trail, the lint report, the final validation, the adversarial verdict and every other artifact the fire produced. Do not choose a subset. On 2026-10-12 the routine pushed only the pulse and its adjudication, the driver trail never reached the branch, and the daily QC reported a published pulse as failed. If `push_list` prints `BLOCK`, the pulse file is missing: build it, then re-run. The bridge posts only what reaches `pulse-output/pending/`, so this push is terminal-critical; if it fails, retry it once, then push the pulse file alone so the pulse still ships, and say so in the report.
 
 ```bash
 python3 << 'PYEOF' 2>&1 | tee -a /tmp/routine.log

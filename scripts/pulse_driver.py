@@ -962,8 +962,62 @@ def main() -> int:
     if cmd == "status":
         d.status()
         return 0
+    if cmd == "push_list":
+        return push_list()
     print(f"unknown command: {cmd}")
     return 2
+
+
+# Every file STEP 6 commits: (/tmp source, pulse-data path with {ts}). The
+# pulse and its adjudication are required; the rest are pushed when the
+# fire produced them.
+PUSH_FILES = (
+    ("/tmp/final_with_frontmatter.md", "pulse-output/pending/{ts}.md", True),
+    ("/tmp/adjudication.json", "pulse-output/pending-adjudications/{ts}.json", True),
+    ("/tmp/driver_state.json", "pulse-output/driver/{ts}.json", False),
+    ("/tmp/lint_report.json", "pulse-output/lint/{ts}.json", False),
+    ("/tmp/final_validation.json", "pulse-output/lint/{ts}.final-validation.json", False),
+    ("/tmp/adversarial_verdict.json", "pulse-output/adversarial/{ts}.json", False),
+    ("/tmp/adversarial_residuals.json", "pulse-output/adversarial-residuals/{ts}.json", False),
+    ("/tmp/adjudication_inputs.json", "pulse-output/qc-inputs/{ts}.adjudication-inputs.json", False),
+    ("/tmp/draft.md", "pulse-output/drafts/{ts}.md", False),
+    ("/tmp/stitched.md", "pulse-output/stitched/{ts}.md", False),
+    ("/tmp/scrubbed.md", "pulse-output/scrubbed/{ts}.md", False),
+    ("/tmp/pre_scrub_final.md", "pulse-output/pre-scrub/{ts}.md", False),
+)
+
+
+def push_list(out_path: str = "/tmp/push_files.json") -> int:
+    """Write the ONE file list STEP 6 pushes, as mcp__github__push_files
+    expects it: [{"path": ..., "content": ...}].
+
+    2026-10-12: with no token in the session, every commit goes through
+    the GitHub connector, and the routine pushed only the pulse and its
+    adjudication; the driver trail, lint report and adversarial verdict
+    existed in /tmp and never reached the branch, so the daily QC reported
+    a published pulse as failed. Building the list here leaves the push
+    no choice about what to include. Exit 3 when the pulse itself is
+    missing (nothing may be pushed without it)."""
+    try:
+        ts = Path("/tmp/pulse_ts.txt").read_text(encoding="utf-8").strip()
+    except OSError:
+        print("push_list: /tmp/pulse_ts.txt missing -- run STEP 2 first")
+        return 3
+    files, missing_required = [], []
+    for src, dest, required in PUSH_FILES:
+        p = Path(src)
+        if p.exists() and p.stat().st_size:
+            files.append({"path": dest.format(ts=ts),
+                          "content": p.read_text(encoding="utf-8", errors="replace")})
+        elif required:
+            missing_required.append(src)
+    if missing_required:
+        print(f"push_list: BLOCK -- required file(s) missing: {missing_required}")
+        return 3
+    Path(out_path).write_text(json.dumps(files), encoding="utf-8")
+    print(f"push_list: {len(files)} file(s) -> {out_path}: "
+          + ", ".join(f["path"].split("/")[1] for f in files))
+    return 0
 
 
 if __name__ == "__main__":

@@ -568,6 +568,14 @@ _EXPECT_MARKERS = ("estimate", "est.", "est ", "expected", "consensus",
 _EXPECT_WINDOW = 40
 # Only rows for these events are worth reconciling — matches the hard
 # calendar whitelist that reaches synthesis.
+def _names_event(text_up: str, kw: str) -> bool:
+    """The (upper-cased) text names the event as a word: "PPI" is not in
+    "SHIPPING", nor "ISM" in "MECHANISM" (2026-10-12: "Hormuz shipping"
+    in the Omnipulse body read as a PPI discussion and failed the draft
+    twice on a print it never mentioned)."""
+    return re.search(r"(?<![A-Z])" + re.escape(kw) + r"(?![A-Z])", text_up) is not None
+
+
 _EVENT_KEYWORDS = ("CPI", "PPI", "PCE", "GDP", "NFP", "PAYROLLS",
                    "RETAIL SALES", "ISM", "UNEMPLOYMENT")
 # Released as index levels, written without a "%" (2026-10-05).
@@ -692,7 +700,7 @@ def _released_figure_violations(md_text: str, ctx: dict) -> list[dict]:
     # exactly the failure shape this check exists for.
     for sent in md_text.splitlines():
         up = sent.upper()
-        hit_kws = [kw for kw in rows if kw in up]
+        hit_kws = [kw for kw in rows if _names_event(up, kw)]
         if not hit_kws:
             continue
         valid: set[float] = set()
@@ -812,7 +820,7 @@ def _missing_release_actual_violations(
         actual = slot.get("actual") or set()
         if not actual:
             continue          # nothing printed, or the feed lacks it
-        if kw not in up:
+        if not _names_event(up, kw):
             continue          # the pulse does not discuss this event
         # A survey index is a level, not a percentage: "ISM services 54.5"
         # is the print. Counting only "%" figures failed the 2026-10-05
@@ -824,7 +832,7 @@ def _missing_release_actual_violations(
         figures = set(pct_figures)
         if is_index:
             for sent in re.split(r"(?<=[.!?])\s+|\n", body):
-                if kw in sent.upper():
+                if _names_event(sent.upper(), kw):
                     figures |= {float(m.group(1)) for m in _BARE_FIGURE_RE.finditer(sent)}
         unit = "" if is_index else "%"
         # Rounding match, NOT the 0.06 tolerance the reconcile check

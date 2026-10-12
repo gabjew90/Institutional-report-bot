@@ -155,6 +155,18 @@ jobs:
               echo "ready=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
+            # The posted pulse is archived by the bridge after the
+            # routine finished, so an archive with no driver trail means
+            # the routine skipped its artifact commits (2026-10-12: it
+            # pushed only the pulse, and this job reported a published
+            # pulse as failed). Grade the pulse; flag the missing trail.
+            ARCH=$(ls pulse-data/pulse-output/archive/ 2>/dev/null | grep "^$TODAY" | grep '\.md$' | sort | tail -1)
+            if [ -n "$ARCH" ]; then
+              echo "QC_PULSE_TS=${ARCH%.md}" >> "$GITHUB_ENV"
+              echo "::warning::today's pulse ${ARCH%.md} was published but the routine committed no driver trail (pulse-output/driver/). Grading the pulse; the gate trail is missing."
+              echo "ready=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
             echo "no pulse artifact for $TODAY yet (poll $i/21)"
             sleep 60
           done
