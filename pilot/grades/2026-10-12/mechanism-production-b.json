@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-11/19791__bond-traders-hunt-for-the-biting-point-as-openai-s-20-billio.txt",
+ "source_span": "The UST market is on a path to find the biting point where the level of sensitivity of AI issuance to yields picks up, or other parts of the economy break... a 50-100bp move higher in the cost of funding does little to slow down the pace of borrowing",
+ "source_chain": "This year's Treasury selloff is almost entirely real-rate driven (98bp of the 108bp 10Y rise, not inflation), therefore AI capex borrowing (SpaceX, Broadcom, Oracle SPV debt; AI issuance ~25% above Treasury issuance per Privorotsky's 'crowding out effect is potentially immense') is bidding against sovereigns for capital, therefore yields keep rising until AI issuance becomes rate-sensitive (Shah: 50-100bp more funding cost barely dents borrowing against double-digit ROI) or something else breaks first \u2014 invalidated by a re-pricing lower of AI ROI or a cyclical deterioration elsewhere, with CPI flagged as the near-term trigger and CCC/credit stress as the first visible cracks.",
+ "pulse_chain": "Of the 108bp 10Y rise, 98bp is real rates not inflation, therefore the AI buildout (SpaceX's $40BN raise, Broadcom's $50BN OpenAI chip financing, AI issuance ~25% above all Treasury issuance, Goldman's Privorotsky calling the crowding-out effect 'potentially immense') is what is bidding against the government for that capital, therefore the decisive question (Goldman's Rikin Shah) is the yield at which AI borrowers themselves start to care \u2014 a 50-100bp funding-cost rise does little against double-digit expected returns, so the market hunts for the level where AI issuance turns rate-sensitive or another part of the economy breaks first \u2014 with CPI next week as the near-term trigger and credit (Oracle/Broadcom CDS, CCC spreads) already cracking.",
+ "preserved": true,
+ "why": "The pulse reproduces Shah's real-rate attribution, the crowding-out mechanism, the 'biting point' invalidation, and the CPI trigger in the same direction and correctly attributed to Goldman (Shah/Privorotsky), with only compression and added secondary desk color.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,97 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI capex pushes real yields up (98bp of the 108bp 10Y rise) while Nasdaq keeps absorbing it, so Shah expects the Treasury selloff to continue until AI borrowing turns rate-sensitive or something else breaks; since everything non-AI has already cracked, hedge funds have crowded record exposure into Mag7/semis; Thursday's OpenAI revenue headline tested that crowded trade; Goldman's net-vs-gross accounting explanation calmed equities but not credit (CDS records, CCC blowout), so the real stress signal is in credit, with CPI next week the next test.",
+   "brief_chain": "Same chain: real-rate-driven Treasury selloff continues until AI borrowing slows or something else breaks; Nasdaq has absorbed 5.23% 10Y without AI borrowers slowing; everything outside AI has cracked (breadth, Russell 2000, ex-AI gap); hedge funds crowded into Mag7/semis; Thursday's OpenAI revenue miss explained as an accounting basis mismatch; equities bounced, credit didn't (CDS records, CCC 1,014bp); CPI next week is the next test.",
+   "distortions": [
+    {
+     "what": "Brief states 'most S&P members falling even as the index sits near a record'; the source's closest figures are that 85% of names sit >10% below their all-time highs (59% >20%, 17% halved) and, on Thursday specifically, ~70% of the S&P actually finished UP. The brief's 'falling' compresses a below-high-water-mark stat into present-tense decline.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying point (narrow, AI-driven index strength masking broad weakness) is unchanged either way; no trade lean, instrument, or invalidation hinges on the word 'falling' vs 'below highs'."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d5",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Pasquariello calls the primary S&P/NDX uptrend intact but with the least conviction since summer after the OpenAI-headline pullback; his six claims (trend up on AI, positioning crowded only into Mag7/semis despite low aggregate net, 28% EPS growth too strong to short even as breadth/median growth weakens and the top 10 dominate, rates shifting from headwind to bigger risk via crowding-out) resolve into 'one big trade' where the bull case needs AI earnings/capex to keep delivering while rates stay contained and the bear case needs only one leg to miss; his concrete advice is to stay long the US/Japan paired with a short-rates position, with midterm volatility ahead.",
+   "brief_chain": "Same six-claim walk-through (trend, positioning, earnings, rates) collapsing into the same 'one trade' bull/bear framing, but stops at that conclusion and omits Pasquariello's stated hedge recommendation (long US/Japan + paired short-rates leg) and the seasonals/midterms claim.",
+   "distortions": [
+    {
+     "what": "Brief drops Pasquariello's explicit tactical recommendation (stay long US/Japan, pair with a short-rates/paid-rates position) and the midterms seasonality claim, ending instead at the generic bull/bear-fork conclusion.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief's stated bull/bear fork is consistent with and implied by the dropped recommendation; a reader acting only on the brief would not be pointed toward a wrong instrument or direction, just a less specific one."
+    },
+    {
+     "what": "Brief attributes the closing 'bull case needs X, bear case needs one leg to miss' line to Pasquariello ('He concludes'), but in the source that exact synthesis sentence is the zerohedge author's own bottom-line framing, built from Pasquariello's claims rather than a line Pasquariello wrote himself.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 Pasquariello's own claim 5 ('this is basically just one big trade') and his non-objection to that framing make the synthesis a faithful restatement of his view regardless of exact authorship; no stance or figure changes."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d10",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "Three near-simultaneous AI chip-debt SPV deals (Broadcom/OpenAI $50bn+, Oracle off-balance-sheet vehicle, SpaceX $40bn on top of $65bn already raised) push total AI borrowing demand high enough that Goldman's Privorotsky calls the crowding-out of other borrowers 'potentially immense'; issuance data (Q3 AI DV01 ~25% above all Treasury issuance, $3.8tn off-balance-sheet liabilities) back that up; credit markets are already pricing stress (SpaceX CDS record, Oracle yields >8%, CCC spreads near 1,000bp vs flat IG), so Privorotsky's self-financing-vs-rationing fork is, in the author's view, already resolving toward the rationing/breakage path.",
+   "brief_chain": "Same chain: three SPV deals stampeding, crowding out other borrowers and keeping yields elevated, backed by the same issuance and off-balance-sheet figures, tied to the same credit cracks, ending at Privorotsky's self-financing-or-rationing fork with the piece arguing the rationing path is already being priced.",
+   "distortions": [
+    {
+     "what": "Brief attributes the '$500-800bn of debt issuance next year... crowding out... keeping yields elevated' framing wholesale to 'Goldman's Privorotsky', but in the source the $500-800bn figure and the 'that's why yields keep rising' conclusion are the zerohedge author's own gloss layered onto Privorotsky's shorter quoted line ('The crowding out effect is potentially immense').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the figures themselves are accurately stated and the crowding-out thesis is genuinely Privorotsky's; blending his attribution with the author's restatement doesn't change the direction, size, or conclusion of the argument."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "A grab-bag morning wrap: oil rebounds on Middle East supply threats, pushing European equities lower today after yesterday's dip-driven rally; yesterday's session saw distinct European sector rotation (healthcare up on lower real yields, defence giving back gains as Iran-Qatar tensions eased) and a separate US session at fresh highs with its own sector rotation (utilities led on AI power, semis lagged on competition) on modestly buy-skewed but light flows; separately, GS Research's AI capex stat, an H1 M&A record with a weak Q3 for large deals, hot ISM prices paid cutting GDPNow, and Le Pen's expanded French savings plan easing (but not resolving) OAT-Bund stress \u2014 none of these items are causally linked to each other.",
+   "brief_chain": "Same grab-bag of facts and figures, but folds the US session's utilities/semis rotation into one undifferentiated 'yesterday's rotation' alongside the European healthcare/defence moves without distinguishing the two markets, and tightens 'flows... skewed to the buy side but on subdued volume' into 'flows... stayed subdued,' and calls the H1 M&A figure a 'record' where the source says 'highest since 2002.'",
+   "distortions": [
+    {
+     "what": "Brief merges the European sector rotation (healthcare, defence) and the US sector rotation (utilities, semis) into a single unattributed 'yesterday's rotation' list; the source clearly separates them ('Across the Atlantic...' marks the shift to US sectors).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 all four sector facts are individually accurate; conflating which continent each belongs to is a comprehension/compression error, not a change to any stance, instrument, or figure status."
+    },
+    {
+     "what": "Brief says asset manager/hedge fund 'flows stayed subdued'; the source says flows skewed modestly to the buy side while overall volumes were subdued \u2014 a mild bullish tilt, not flow inactivity.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is background color in a recap item with no trade attached; losing the buy-side tilt doesn't reverse a call or invalidate anything."
+    },
+    {
+     "what": "Brief calls the H1 M&A figure ($2.77tn) a 'first-half record'; the source specifies 'highest amount during the first half of a year since 2002,' i.e., a 24-year high, not necessarily an all-time record.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 descriptive historical stat with no trade or forecast riding on the record/near-record distinction."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 7,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

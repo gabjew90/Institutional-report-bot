@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19878__this-is-basically-just-one-big-trade-goldman-s-pasquariello-.txt",
+   "span": "Now a historic investment cycle is bidding for the same dollars, and governments are having to pay ever-higher concessions.",
+   "why": "Wilson's framing (relayed by Pasquariello) matches the sentence's claim that AI buildout competes with/bids against government for capital; corroborated by Privorotsky's 'crowding out' and 'competing for that capital' language in the capital-squeeze note."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19709__gs-shah-macro-roadmap-divergence-9-oct-2026.txt",
+   "span": "The UST market is on a path to find the biting point where the level of sensitivity of AI issuance to yields picks up, or other parts of the economy break.",
+   "why": "Shah's own note frames the decisive question as the yield level at which AI borrowers become rate-sensitive, matching the sentence."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19709__gs-shah-macro-roadmap-divergence-9-oct-2026.txt",
+   "span": "a 50-100bp move higher in the cost of funding does little to slow down the pace of borrowing...re-pricing lower in the ROI of AI-related investment, or a change in the cyclical outlook",
+   "why": "Matches the 50-100bp/double-digit-ROI claim and the two ways out (AI issuance turning rate sensitive, or another part of the economy breaking) verbatim in substance."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19749__key-reversal-day-for-bonds-here-s-the-pain-trade.txt",
+   "span": "As Krinsky notes, that is a 'key reversal' day...the pain trade would likely be lower rates, and LOWER SMH, QQQ, XLK etc.",
+   "why": "Krinsky is BTIG's chief technical strategist; the 30yr key-reversal call and the pain-trade-is-lower-yields-and-lower-Nasdaq(QQQ) framing both appear verbatim."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19791__bond-traders-hunt-for-the-biting-point-as-openai-s-20-billio.txt",
+   "span": "Broadcom's (AVGO) 5Y CDS printed a record 136bp",
+   "why": "CDS is default insurance; figure and 'record' status match exactly, in the same passage as Oracle's CDS record (the 'same insurance')."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19878__this-is-basically-just-one-big-trade-goldman-s-pasquariello-.txt",
+   "span": "He then quotes an investor he clearly reveres...\"you know, this is basically just one big trade, don't you?\"",
+   "why": "Direct quote attributed to an investor speaking to Pasquariello."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19878__this-is-basically-just-one-big-trade-goldman-s-pasquariello-.txt",
+   "span": "the top 10 contributors will generate 68% of S&P EPS growth this quarter, up from 48% last quarter",
+   "why": "Figures (68%, up from 48%) match exactly, offered as support for Pasquariello's earnings-growth claim."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19791__bond-traders-hunt-for-the-biting-point-as-openai-s-20-billio.txt",
+   "span": "OpenAI reports revenue net of what its cloud partners sell, while Anthropic \"reports closer to gross revenue\"",
+   "why": "Attribution to Sean Johnstone and the net-vs-gross explanation match exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19879__hormuz-hurricanes-hikes-hiccups-in-ai-s-accounting-trump-put.txt",
+   "span": "Bloomberg then reported that the company expects to reach at least $70 billion by year-end, which was enough to lift NDX back to unchanged on the week",
+   "why": "Figure and market-impact claim match verbatim."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19455__usa-fed-governor-waller-says-he-anticipates-additional-hikes.txt",
+   "span": "he likely expects two additional rate hikes to be appropriate, which would raise the funds rate to 4.25-4.50%",
+   "why": "Matches GS economists' note on Waller verbatim."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19457__usa-fomc-minutes-note-most-participants-saw-another-increase.txt",
+   "span": "Participants pointed to \"ongoing geopolitical developments\" and \"surging AI-related investments\" as sources of inflation pressure",
+   "why": "Verbatim match to the FOMC minutes summary."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19469__flows-liquidity-an-overhang-of-long-duration-and-spread-expo.txt",
+   "span": "the short interest of EWZ ETF which saw little change post the election...the short interest on the EWZ ETF is only slightly lower post the election",
+   "why": "J.P. Morgan Flows & Liquidity note; 'barely changed after the vote' matches 'little change'/'only slightly lower' post-election. Sentence is truncated mid-attribution but its factual content is supported."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19876__forget-ai-goldman-says-it-s-time-to-get-a-life.txt",
+   "span": "Live Nation: Fan growth exceeding 10%, with no signs of consumer weakness.",
+   "why": "Verbatim match; also corroborated by the GSX basket note's ticker form (LYV reported more than 10% fan growth and no signs of consumer weakness)."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19876__forget-ai-goldman-says-it-s-time-to-get-a-life.txt",
+   "span": "Sphere Entertainment: 3.6 million tickets and $450 million generated by The Wizard of Oz.",
+   "why": "Verbatim match."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19435__gs-miller-gsx-trade-idea-buy-consumer-experiences-gsxucexp-i.txt",
+   "span": "GSXUCEXP 15Jan27 110% 120% call spread indicatively costs 1.61% ref 91.12",
+   "why": "Verbatim match to Goldman's Louis Miller trade idea."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

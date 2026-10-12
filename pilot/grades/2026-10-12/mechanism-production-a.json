@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-11/19709__gs-shah-macro-roadmap-divergence-9-oct-2026.txt",
+ "source_span": "the move being almost entirely real rate driven (98bp of the 108bp 10y sell-off)... If the ROI of AI-related investment is expected to be easily double digits, a 50-100bp move higher in the cost of funding does little to slow down the pace of borrowing... The UST market is on a path to find the biting point where the level of sensitivity of AI issuance to yields picks up, or other parts of the economy break.",
+ "source_chain": "This year's 108bp rise in the 10Y is 98bp real-rate driven, i.e. a supply/demand fight for capital between heavy Treasury issuance and AI capex (>$1tn next year, per Privorotsky's companion note the AI ecosystem's debt issuance is crowding out sovereigns), therefore because AI's expected ROI is double-digit a 50-100bp rise in funding costs doesn't slow AI borrowing (Nasdaq resilience), therefore the market is hunting for the 'biting point' where either AI issuance turns rate-sensitive or another part of the economy breaks first (Russell underperforming Nasdaq is the early evidence of the latter); invalidation is a re-pricing lower of AI's ROI or a cyclical/K-shaped deterioration (Privorotsky: AI becomes self-financing, or capital gets rationed and weak links break).",
+ "pulse_chain": "The 108bp 10Y rise is 98bp real-rate driven (competition for capital, not inflation), and what's bidding against the government is the AI buildout (SpaceX's $40BN raise, Broadcom arranging $50BN for OpenAI, Q3 AI-ecosystem issuance ~25% above all Treasury issuance; Privorotsky: crowding out 'potentially immense'), therefore Shah's question is at what yield AI borrowers start to care, and his answer is that 50-100bp does little to slow AI borrowing given double-digit ROI expectations, therefore the market hunts for the level where either AI issuance turns rate-sensitive or another part of the economy breaks first (equities haven't blinked: S&P +1.28% vs ex-AI -5.19% since Aug 27); desks split on timing (Goldman fades the selloff, BTIG's Krinsky warns of a reversal, Jefferies stays structurally bearish bonds), and credit has already answered (Oracle/Broadcom CDS at records, CCC spreads widest in 3+ years) with next week's CPI as the near-term trigger.",
+ "preserved": true,
+ "why": "The pulse reproduces Shah's exact A-therefore-B-therefore-C chain (real-rate-driven selloff \u2192 AI borrowing insensitive to the move \u2192 market searching for the biting point where AI issuance turns rate-sensitive or something else breaks) with the same fork-based invalidation and correct attribution to Goldman (Shah/Privorotsky), only compressing and adding consistent secondary desk commentary and credit confirmation drawn from the same day's companion notes.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

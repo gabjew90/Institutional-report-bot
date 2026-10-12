@@ -1,0 +1,98 @@
+{
+ "metric": 1,
+ "total_cards": 1619,
+ "fragmentation_sets": [
+  {
+   "subject": "Fed's September hike plus hawkish signals pointing to a second hike in December",
+   "labels": [
+    "fed september hike odds",
+    "fed december hike odds"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Mag7/semis hedge fund positioning at record highs on Goldman's prime book",
+   "labels": [
+    "mag7 semis hedge fund positioning",
+    "mag7 tech positioning rebound"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "Nomura: crushed vol and stretched positioning leave the tape exposed to an upside squeeze even as narrow AI leadership masks a rolling correction underneath",
+   "labels": [
+    "equity positioning extremes",
+    "systematic vol positioning",
+    "spx vol compression"
+   ],
+   "cards": 30
+  },
+  {
+   "subject": "Goldman's bull case for S&P 500 8,000: buybacks, 27% EPS growth, and issuance the market can absorb",
+   "labels": [
+    "corporate buyback demand",
+    "us equity supply demand outlook",
+    "equity earnings resilience"
+   ],
+   "cards": 29
+  },
+  {
+   "subject": "Taiwan and Korea displace China as the dominant Asia/EM equity story",
+   "labels": [
+    "asia equity flow rotation",
+    "em equity rotation"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "AI capex's capital demands colliding with sovereign fiscal stress, pushing yields higher",
+   "labels": [
+    "sovereign capital crowding out",
+    "us federal debt sustainability risk"
+   ],
+   "cards": 17
+  }
+ ],
+ "fragmented_mass_share": 0.08,
+ "mis_merges": [
+  {
+   "label": "credit quality stress",
+   "subjects": [
+    "AI-related corporate debt (Oracle/Broadcom CDS) blowing out as ~$500bn of 2026 AI borrowing gets repriced",
+    "a methodological debate over true private-credit default rates (1-3% industry measures vs JPM's own ~15% BDC-loan measure)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The two halves share no event, instrument, or driver (one is AI-specific public-debt CDS pricing, the other an unrelated private-credit measurement dispute), so burying the private-credit debate under the dominant AI-CDS cards risks the editor never surfacing it as its own brief."
+  },
+  {
+   "label": "earnings season ai capex setup",
+   "subjects": [
+    "Goldman's semis/SPCX earnings-vol trade setup (AMAT, CDNS, SPCX call spreads)",
+    "JPM's generic bullish market call on post-midterm seasonality and light retail participation"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Only 2 of 12 cards are the stray JPM content, which duplicates material already in 'jpm sector rotation stance'; the dominant GS semis-trade subject stays intact and would still be picked as its own theme."
+  },
+  {
+   "label": "ai chip capacity buildout",
+   "subjects": [
+    "semiconductor foundry/manufacturing capacity (TSMC, ASML, AMD, Terafab)",
+    "AI chip debt financing (Broadcom/OpenAI/Anthropic, Oracle, SpaceX)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The debt-financing cards are a minority (3 of 9) and that financing story already has a prominent dedicated home in 'sovereign capital crowding out', so the editor would not miss it."
+  }
+ ],
+ "pass": false,
+ "notes": "misc correctly holds 12 of 1619 cards (0.7%) as pure market-wrap overflow. The AI-debt-financing fact pattern (Broadcom/OpenAI/Anthropic, Oracle, SpaceX) also recurs loosely across 'sovereign capital crowding out', 'credit quality stress' and 'ai chip capacity buildout'; only the clearest, most consequential split is scored as a mis-merge.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

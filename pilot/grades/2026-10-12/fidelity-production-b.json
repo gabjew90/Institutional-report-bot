@@ -1,0 +1,144 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19795__the-crowding-out-effect-is-immense-broadcom-oracle-join-spac.txt",
+   "span": "A day after SpaceX went looking for $40 billion in chip-collateralized SPV debt, sending its CDS into geostationary orbit",
+   "why": "Every source (19795, 19327, 19753, 19323, 19439, 19418, 19751, 19730, and others) describes SpaceX as 'seeking', 'looking to raise', or 'wanting to raise' $40bn \u2014 talks in progress, not a completed raise. The WSJ quote even says SpaceX 'talked to lenders in recent days.' The pulse sentence asserts 'SpaceX raised $40BN' as a completed fact, turning an in-progress financing search into a done deal.",
+   "searched": [
+    "SpaceX raised $40",
+    "SpaceX $40BN",
+    "crowding out sovereign"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19795__the-crowding-out-effect-is-immense-broadcom-oracle-join-spac.txt",
+   "span": "Broadcom has spent the past few weeks working to arrange more than $50 billion in financing for OpenAI's custom AI chip, with Apollo and Blackstone among the lenders it has approached",
+   "why": "Direct, near-verbatim match."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19831__global-rates-trader-establishing-a-foothold.txt",
+   "span": "we recommend adding a receive position in 10s versus 5s and 30s on the 5s10s30s SOFR fly (entry: 2bp; target: -4bp; stop: 6bp)",
+   "why": "Goldman Sachs (Global Rates Trader) note matches the trade, entry, target and stop exactly; 'fading the latest phase of 10y underperformance' supports the 'selloff has run far enough' framing."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19215__crowded-ai-booming-earnings-and-a-euro-in-freefall.txt",
+   "span": "GS Prime data shows Mag 7 exposure has climbed to around 22% of total US exposure, the highest level since their data begins in 2022",
+   "why": "Matches figure (22%) and the 'highest since 2022' framing, corroborated across many other files (19424, 19421, 19839, etc.)."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19791__bond-traders-hunt-for-the-biting-point-as-openai-s-20-billio.txt",
+   "span": "Simonet is telling clients that \"positioning is no longer a cushion\" and pitching $859 million of 6-month best-of puts across 29 AI and AI-adjacent names",
+   "why": "Figures match exactly (Adrien Simonet, Goldman equity derivatives desk, referred to as 'his desk')."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19791__bond-traders-hunt-for-the-biting-point-as-openai-s-20-billio.txt",
+   "span": "Goldman TMT specialist Sean Johnstone explains that it was all a misunderstanding. OpenAI reports revenue net of what its cloud partners sell, while Anthropic \"reports closer to gross revenue\"",
+   "why": "Direct match of attribution and explanation."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19879__hormuz-hurricanes-hikes-hiccups-in-ai-s-accounting-trump-put.txt",
+   "span": "the Nasdaq fell 1.25%, the SOX dropped 3.4%, and Oracle (ORCL) lost 5.5%, Broadcom (AVGO) 4.4%, Nvidia (NVDA) 2.9% and CoreWeave (CRWV) 7.8%",
+   "why": "Exact match of all six figures."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19879__hormuz-hurricanes-hikes-hiccups-in-ai-s-accounting-trump-put.txt",
+   "span": "Bloomberg then reported that the company expects to reach at least $70 billion by year-end, which was enough to lift NDX back to unchanged on the week",
+   "why": "Direct, near-verbatim match including the causal claim about the Nasdaq 100 move."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19879__hormuz-hurricanes-hikes-hiccups-in-ai-s-accounting-trump-put.txt",
+   "span": "Oracle's 5-year CDS hit a record 261bp and Broadcom's a record 136bp once the revenue question was raised about their largest customer",
+   "why": "'Default insurance' is a faithful plain-English rendering of CDS; both figures and the causal link to the OpenAI revenue question match."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19455__usa-fed-governor-waller-says-he-anticipates-additional-hikes.txt",
+   "span": "Governor Waller's comments suggested that he likely expects two additional rate hikes to be appropriate, which would raise the funds rate to 4.25-4.50%",
+   "why": "Near-verbatim match; note this is distinct from GS's own separate house forecast (one hike, to 4-4.25%) elsewhere in the same note, but the sentence correctly attributes the two-hike/4.25-4.50% figure to Waller's own view."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19467__db-cotd-21-out-of-23-ain-t-bad.txt",
+   "span": "See Binky and Parag's preview of US Q3 earnings here where they see a stunning 34% YoY EPS growth",
+   "why": "Deutsche Bank (DB CoTD) note states its own strategists' 34% YoY EPS growth forecast for Q3."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19879__hormuz-hurricanes-hikes-hiccups-in-ai-s-accounting-trump-put.txt",
+   "span": "oil still closed up 4% on the day, and the real decline only arrived overnight, when Brent slid back toward $103",
+   "why": "Exact match; the source's own section header calls Trump's pledge 'A Midterm (One-Sided) Ceasefire', supporting the 'ceasefire pledge' framing."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19879__hormuz-hurricanes-hikes-hiccups-in-ai-s-accounting-trump-put.txt",
+   "span": "Hormuz flows running at roughly 9.5 million barrels a day, still about 30% below pre-war levels",
+   "why": "Exact figures match; source separately states physical/dated-Brent tightness is driving price persistence, supporting the 'stickiness' framing."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19879__hormuz-hurricanes-hikes-hiccups-in-ai-s-accounting-trump-put.txt",
+   "span": "Nomura's Charlie McElligott... writing that it is \"100d\" (that is, a 100-delta certainty in his view) that the attacks resume once the votes are counted",
+   "why": "Matches McElligott's certainty and the claim that (Trump's) Iran attacks resume after the midterms; the pledge itself was that the US would not attack Iran before the midterms, so 'Trump resumes Iran attacks' is the correct referent."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-11/19868__oil-analyst-supply-adaptation-meets-global-restocking-demand.txt",
+   "span": "For investors seeking to hedge upside risk to oil prices, we still recommend long summer2027 European gasoline positions",
+   "why": "Direct, near-verbatim match including the hedge rationale."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

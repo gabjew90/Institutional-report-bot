@@ -1,0 +1,105 @@
+{
+ "metric": 1,
+ "total_cards": 1619,
+ "fragmentation_sets": [
+  {
+   "subject": "Fed rate path read-through from the September FOMC minutes to a December hike",
+   "labels": [
+    "fed december hike odds",
+    "fed september hike odds"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "OpenAI revenue-reporting shock and the mega-cap tech selloff it triggered",
+   "labels": [
+    "openai revenue accounting shock",
+    "ai micro vs macro divergence"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Suppressed realized vol and narrow AI-led breadth explained by extreme systematic/dealer positioning",
+   "labels": [
+    "equity positioning extremes",
+    "systematic vol positioning",
+    "spx vol compression"
+   ],
+   "cards": 30
+  },
+  {
+   "subject": "AI-capex debt-financing boom repricing credit risk",
+   "labels": [
+    "sovereign capital crowding out",
+    "credit quality stress"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Hedge fund Mag7/semis positioning at record prime-book exposure",
+   "labels": [
+    "mag7 semis hedge fund positioning",
+    "mag7 tech positioning rebound"
+   ],
+   "cards": 14
+  },
+  {
+   "subject": "US equity capital-markets supply/demand framework (issuance, buybacks, M&A)",
+   "labels": [
+    "us equity supply demand outlook",
+    "corporate buyback demand",
+    "m&a volume slowdown"
+   ],
+   "cards": 26
+  },
+  {
+   "subject": "Iran escalation risk: market reaction and the diplomatic standoff driving it",
+   "labels": [
+    "iran oil shock risk",
+    "iran negotiations geopolitical standoff"
+   ],
+   "cards": 16
+  },
+  {
+   "subject": "Taiwan/Korea displacing China as Asia's dominant equity market, with hedge funds rotating out",
+   "labels": [
+    "em equity rotation",
+    "asia equity flow rotation"
+   ],
+   "cards": 14
+  }
+ ],
+ "fragmented_mass_share": 0.106,
+ "mis_merges": [
+  {
+   "label": "credit quality stress",
+   "subjects": [
+    "AI-related corporate debt/CDS stress (Oracle, Broadcom, CCC spreads, IG yield)",
+    "Private-credit default-rate methodology debate (BDC/PIK loans, Cliffwater vs. reported rates)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The private-credit BDC/PIK debate (5 of 12 cards, all J.P. Morgan) is a distinct, data-rich, pulse-worthy story about actual vs. reported default rates with no AI-debt content at all; filed under a label framed by Oracle/Broadcom CDS prints, an editor scanning labels would plausibly never surface it as its own theme."
+  },
+  {
+   "label": "ai chip capacity buildout",
+   "subjects": [
+    "AI chip/foundry capacity buildout (TSMC, ASML, AMD, Terafab, Intel)",
+    "AI debt financing for chip purchases (Broadcom/Oracle/SpaceX)"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The debt-financing content is a minority tail (3 of 9 cards) that only restates facts already fully present in the dedicated 'credit quality stress' and 'sovereign capital crowding out' labels, so its presence here is unlikely to flip which theme an editor leads with."
+  }
+ ],
+ "pass": false,
+ "notes": "misc is the declared overflow (12/1619 cards, ~0.7%) and is excluded from fragmentation per the frozen rule. Two of the eight fragmentation sets (equity supply/demand framework; Iran market-reaction vs. diplomatic-standoff) are closer judgment calls than the other six, but the mis-merge finding on 'credit quality stress' fails the gate on its own regardless of how those two sets are scored.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

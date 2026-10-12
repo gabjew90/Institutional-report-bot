@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-11/19791__bond-traders-hunt-for-the-biting-point-as-openai-s-20-billio.txt",
+ "source_span": "The UST market is on a path to find the biting point where the level of sensitivity of AI issuance to yields picks up, or other parts of the economy break... a 50-100bp move higher in the cost of funding does little to slow down the pace of borrowing.",
+ "source_chain": "Treasuries are selling off almost entirely on real rates (98 of 108bp) because AI capex is crowding out the bond market for capital, therefore yields must keep rising until the 'biting point' where AI borrowers become rate-sensitive, therefore because expected AI ROI runs double-digit, a 50-100bp funding-cost rise does nothing to slow AI borrowing while everything else (small caps, breadth, credit) has already cracked, therefore the search is for whether AI ROI re-prices lower or the cyclical outlook breaks first, with next week's CPI as the near-term test; invalidation = a re-pricing lower in AI ROI or a cyclical-outlook break.",
+ "pulse_chain": "Treasury yields are rising almost entirely on real rates (98 of 108bp) as the AI buildout crowds out the government for capital, therefore Goldman's Shah asks at what yield AI borrowers start to care, therefore a 50-100bp rise does little to slow AI borrowing given double-digit expected returns, leaving the market hunting for the level where AI issuance turns rate-sensitive or another part of the economy breaks first, while equities haven't blinked but credit (Oracle/Broadcom CDS at records, CCC spreads widest in 3+ years) already has; next week's CPI is the near-term trigger.",
+ "preserved": true,
+ "why": "The pulse reproduces Shah's 'biting point' disjunction, its real-rate/crowding-out premise, the double-digit-ROI reason AI borrowing is rate-insensitive, the equity-vs-credit divergence, and the CPI trigger, correctly attributed to Goldman's Shah, without reversing or dropping a step.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

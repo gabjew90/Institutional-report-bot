@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-11/19791__bond-traders-hunt-for-the-biting-point-as-openai-s-20-billio.txt",
+ "source_span": "The UST market is on a path to find the biting point where the level of sensitivity of AI issuance to yields picks up, or other parts of the economy break.",
+ "source_chain": "This year's Treasury selloff is almost entirely real-rate driven (98bp of the 108bp 10Y rise), therefore AI capex demand for capital is the thing bidding yields up rather than inflation fear; AI borrowers don't slow down when funding costs rise 50-100bp because expected ROI runs in double digits, therefore the usual higher-rates-cure-higher-rates mechanism is broken and yields keep rising until a 'biting point' is reached: either AI issuance itself turns rate-sensitive, or another part of the economy breaks first (shown already in Russell-2000-vs-Nasdaq and S&P-ex-AI divergence, and in Oracle/Broadcom CDS and CCC spreads). Invalidation: a re-pricing lower of AI ROI expectations or a cyclical deterioration; CPI next week is flagged as the near-term trigger.",
+ "pulse_chain": "108bp rise in the 10-year, 98bp from real rates not inflation, therefore what's bidding against the government for that money is the AI buildout (SpaceX, Broadcom/OpenAI, Oracle financing; AI-ecosystem interest-rate risk issuance ~25% above Treasury issuance; Privorotsky: crowding out 'potentially immense'), therefore the question is at what yield AI borrowers start to care (Shah), and since a 50-100bp rise does little to slow AI borrowing against double-digit expected returns, the market is left hunting for the level where either AI issuance turns rate-sensitive or another part of the economy breaks first (shown in S&P-vs-S&P-ex-AI divergence and in Oracle/Broadcom CDS records, CCC spreads at a 3-year wide). Invalidation/trigger: next week's CPI print.",
+ "preserved": true,
+ "why": "The lead theme reproduces Shah's 'biting point' mechanism step-for-step (real-rate-driven yields -> AI capex crowding out capital -> the either/or resolution of AI issuance turning rate-sensitive or something else breaking), keeps the same invalidation and CPI trigger, and attributes the framework and the crowding-out line correctly to Goldman's Shah and Privorotsky respectively.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

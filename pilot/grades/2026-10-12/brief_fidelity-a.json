@@ -1,0 +1,91 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI capex pushes real yields up (98bp of the 108bp 10Y rise); Nasdaq keeps absorbing it so AI borrowing hasn't slowed, so everything non-AI has already cracked (Russell 2000, S&P-ex-AI basket, narrow breadth) while hedge funds crowd further into AI (record Mag7/semis exposure) -> the OpenAI revenue-gap headline was the first real stress test, explained away for equities (Johnstone's net-vs-gross reporting distinction) but not believed by credit (Oracle/Broadcom CDS at records, CCC spreads at a cycle-wide 1,014bp) -> CPI next week is flagged as the next test of whether the 'biting point' has been found.",
+   "brief_chain": "Shah's Divergence note: Treasury selloff (98bp of 108bp, almost entirely real-rate driven) continues until AI borrowing becomes rate-sensitive or something else breaks; Nasdaq has absorbed 5.23% 10Y without AI borrowers slowing; everything outside AI already cracked (Russell underperformance, ~10% S&P-ex-AI gap in five weeks, most members falling near a record); hedge funds crowded in (Mag7 ~22% prime exposure, semis doubled to ~12%) -> Thursday's stress test: FT's $20bn OpenAI revenue gap, explained by Johnstone's net-vs-gross distinction -> equities bounced, credit didn't (Oracle/Broadcom CDS records, CCC 1,014bp) -> CPI next week flagged as the next test.",
+   "distortions": [
+    {
+     "what": "Brief states 'most S&P members falling even as the index sits near a record'; source's same-day data point is the opposite direction (70% of members finished UP the day the index fell), with the 'falling' framing only supported by a separate statistic (85% of names >10% below their all-time highs).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 either reading supports the same underlying 'narrow rally, broken breadth' thesis the piece and Shah's note are making; no stance, lean, or invalidation hinges on which single-day breadth stat is cited."
+    },
+    {
+     "what": "Brief synthesizes 'Nasdaq has absorbed a 5.23% 10-year without AI borrowers slowing down' by combining the 5.23% figure (from the article's intro) with Shah's separate observation that Nasdaq 'has barely budged off the highs' and borrowing hasn't slowed.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both source facts point the same direction and the combination doesn't alter Shah's conclusion or the invalidation condition (AI issuance becoming rate-sensitive, or something else breaking)."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d5",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Pasquariello's primary-trend-up call holds but with less conviction after the OpenAI-driven pullback from 7,818 to 7,765; positioning is a crowded paradox (overall net exposure at 1/3/5-year lows, but Mag7 at a record ~22% of Prime Book exposure and semis doubled to ~12%); strong headline EPS growth (27%->28%) discourages shorting even though median-stock growth is slowing (14%->9%) and the growth is concentrated in the top 10 (68% of growth, up from 48%, with Micron/Nvidia alone half), with both earnings growth and hyperscaler capex growth (>100%) at a cycle peak; rates have shifted from headwind to acute risk for sovereigns and corporates because AI capex is crowding out government/corporate funding -> conclusion: it's one trade, bull case needs AI delivery plus the Fed stopping at two hikes and the long bond finding a buyer, bear case needs just one leg to fail.",
+   "brief_chain": "Same structure: trend intact but least conviction since summer after the 7,818->7,765 pullback; positioning at multi-year net lows except record Mag7 (22%) and doubled semis (12%) exposure, i.e. low net/high gross concentrated in one trade; 28% Q3 EPS growth (up from 27%) discourages shorting even as median growth slows 14%->9%, top 10 names generate 68% of growth (up from 48%) with Micron/Nvidia half of that, earnings and >100% capex growth both at cycle peak; rising rates (30Y at 5.618%, 10Y at 5.23%) now a bigger risk to sovereigns/corporates via AI capex crowding out funding; conclusion: facets of one trade, bull needs AI delivery plus contained rates, bear needs one leg to fail.",
+   "distortions": [
+    {
+     "what": "The 'rates crowding out government funding' reasoning behind Pasquariello's claim 4 is elaborated in the source via colleague Mike Wilson's framing, not stated as Pasquariello's own words; the brief folds it into the claim without attribution.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's presented in the same note as supporting color for the same claim either way; no stance or figure changes."
+    },
+    {
+     "what": "Brief's closing line 'rates stay contained' compresses the source's more specific bull-case conditions ('the Fed to stop at two' hikes and 'the long bond to find a buyer at 5.6%').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's a faithful compression of the same two conditions into one phrase; the invalidation logic (bear case needs just one leg to fail) is preserved intact."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d10",
+   "tier": "rest",
+   "bank": "Zero Hedge",
+   "source_chain": "The public bond market is saturated, so Broadcom, Oracle and SpaceX are each turning to off-balance-sheet SPV/private-credit financing (Apollo, Blackstone, Goldman) to fund AI chip buildouts, adding ~$150bn of fresh debt in a week on top of hyperscalers' $500-800bn 2027 funding need and a $3.8tn (+$700bn) off-balance-sheet liability pile -> this is crowding out other borrowers and keeping yields elevated (Q3 AI issuance ~25% above all Treasury issuance) -> credit markets are already pricing the strain (SpaceX CDS record 197bp, Oracle CDS/bond yields at records, CCC spreads near 1,000bp while IG stays flat at 80bp) -> Privorotsky frames it as a fork (AI becomes self-financing via its own cash flow, or capital gets rationed and weaker credits break) and the piece concludes the rationing path is already being priced.",
+   "brief_chain": "Same: Broadcom arranging >$50bn for OpenAI chips (Apollo/Blackstone), Oracle negotiating an off-balance-sheet vehicle with Apollo/Goldman to bridge chip costs against delayed cloud revenue, SpaceX seeking ~$40bn after $65bn of debt since its June IPO (76% of proceeds) -> Privorotsky: this plus hyperscalers' $500-800bn projected 2027 issuance is crowding out borrowers and keeping yields elevated (Q3 AI issuance ~25% above all Treasury issuance, off-balance-sheet liabilities $3.8tn, +$700bn since June) -> credit cracks: SpaceX CDS record 197bp, Oracle yields >8% after Project Jupiter force majeure, CCC spreads near 998bp (99th percentile) vs flat 80bp IG -> Privorotsky's fork (self-financing vs rationing) with the piece arguing the rationing path is already being priced.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Oil rebounded on Middle East supply-threat headlines (Hormuz attacks, Saudi-Houthi tension), pushing European equities lower this morning, reversing yesterday's oil-driven relief rally; yesterday's session saw rate-driven sector rotation (healthcare up on lower EU real yields, defence down as Iran-Qatar tensions eased, utilities up on the AI-power theme, semis lagging on competition) while US equities closed at fresh highs heading into Q3 earnings, on a tape where asset-manager/hedge-fund flows skewed modestly to the buy side even though overall volumes stayed subdued; separately, GS projects >$1tn global AI investment this year concentrated in the US/Asia; H1 global M&A hit its highest level since 2002, but Q3's big-deal count was the lowest since Q4 2024; US inflation signals (ISM prices paid at a multi-year high, a record-import-driven trade deficit) are cutting the Atlanta Fed's GDPNow estimate to 3.7%; and France's Le Pen raised her savings-plan figure to \u20ac140bn as the OAT-Bund spread eased off its post-2011 wide.",
+   "brief_chain": "Same structure and figures, with two shadings: (1) 'Global M&A hit a first-half record ($2.77tn)' states it as an outright record rather than the source's 'highest since 2002'; (2) 'asset manager/hedge fund flows stayed subdued' characterizes flows themselves as subdued, where the source attributes the subdued reading to overall trading volumes while flows actually skewed modestly to the buy side.",
+   "distortions": [
+    {
+     "what": "'Global M&A hit a first-half record' overstates the source, which qualifies the $2.77tn figure as the highest first-half total 'since 2002' (implying H1 2002 was higher, so it is not an all-time record).",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is background color in a morning wrap, not a stance, trade lean, or invalidation condition; nothing is bought, sold, or avoided on the strength of 'record' vs 'highest since 2002'."
+    },
+    {
+     "what": "'Flows stayed subdued' attributes the subdued qualifier to flows; the source instead says flows skewed to the buy side and separately notes overall volumes were subdued.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no specific trade or positioning call rides on this descriptive nuance; it's a wrap-up characterization, not a thesis driver."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 6,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}
