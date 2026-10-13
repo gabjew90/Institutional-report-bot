@@ -1,0 +1,574 @@
+B I T W I S E I N V E S T M E N T S . C O M
+NEAR
+IN PLAIN
+ENGLISH
+OCTOBER
+2026
+Why NEAR matters for AI agents, cross-chain 
+trading, and the next wave of crypto adoption
+
+01
+02
+The Problem That NEAR Solves
+03
+Overview of the NEAR Ecosystem
+05
+Why the NEAR Token Has Value
+06
+NEAR in Context
+07
+The Bitwise NEAR ETF (NRR)
+07
+Risks and Considerations
+Matt Hougan
+Chief Investment Officer
+@Matt_Hougan
+Previously CEO at ETF.com, co-
+founder of Future Proof. Co-authored 
+two publications for the CFA Institute 
+Research Foundation: “A Comprehensive 
+Guide to Exchange Traded Funds” and 
+“Cryptoassets: The Guide to Bitcoin, 
+Blockchain, and Cryptocurrencies for 
+Professional Investors.”
+Ryan Rasmussen
+Head of Research
+@RasterlyRock
+Previously Manager of Financial Planning 
+and Analytics at Cetera Financial Group. 
+Co-authored Bitwise’s 2026 and 2025 
+crypto predictions, the first-ever “Bitcoin 
+Long-Term Capital Market Assumptions,” 
+and “Decentralized Finance (DeFi): A 
+Primer for Professional Investors.”
+Camran Khosravi
+Research Analyst
+@CamKhosravi
+Previously a Quantitative Analyst at 
+Nasdaq Global Indexes, publishing 
+analytical models and research for new 
+and existing market indices. Co-authored 
+the Nasdaq Taxonomy framework used 
+to analyze product-market fit for new 
+exchange-traded products across the 
+organization.
+AUTHORS
+Table of Contents
+
+02
+The Problem That NEAR Solves
+Crypto has a usability problem.
+There are now hundreds of blockchains, each with its own 
+assets, applications, and rules. Moving money between 
+them has historically been costly, cumbersome, and risky. 
+For crypto to serve billions of people, this fragmented 
+system has to feel like one seamless network.
+Artificial intelligence has a different problem: centralization. 
+A handful of companies control the world’s most powerful 
+AI models, along with the data users and companies 
+share with them. As AI systems begin to act on our 
+behalf—managing money, booking travel, negotiating 
+purchases—they will need infrastructure that lets them 
+transact securely without broadcasting all of our data and 
+our decisions to a few large corporations.
+NEAR sits at the intersection of these two problems. 
+NEAR was co-founded in 2018 by Alex Skidanov and Illia 
+Polosukhin, one of the co-authors of the landmark research 
+paper that introduced the architecture behind ChatGPT, 
+Claude, and Gemini. With NEAR, Polosukhin’s team set 
+out to build a blockchain fast enough, cheap enough, and 
+simple enough to serve not just millions of people, but 
+billions of AI agents transacting on their behalf. 
+That work is now paying off. NEAR’s flagship product, 
+NEAR Intents, simplifies trading assets across different 
+blockchains into a single step. A user who wants to swap, 
+say, $1,000 of stablecoins for Ethereum simply picks the 
+assets and the amount, and a network of specialist bots 
+(known as “solvers”) competes to execute it for the best 
+available price. The user experience is seamless, and the 
+product supports more than 35 blockchains. Executing 
+that same transaction without NEAR Intents would typically 
+involve multiple steps, bridges, and layers of fees. 
+Introduced in late 2024 and scaled through 2025, NEAR 
+Intents has processed more than $30 billion in cumulative 
+volume, with $4 billion of that occurring in the past 30 
+days. NEAR recently added perpetual futures (or “perps”) 
+on Hyperliquid, giving Intents users access to the world’s 
+largest onchain derivatives exchange. They have also 
+partnered with Ondo Finance, a leader in tokenized 
+equities, to enable users to buy, sell, and hold tokenized 
+stocks and ETFs in a crypto wallet. 
+NEAR has also built a confidential AI cloud. This lets 
+people and businesses add privacy protections while 
+running leading AI models, such as Claude, ChatGPT, 
+Gemini, or DeepSeek, by removing sensitive information 
+from requests before they reach the model provider. The 
+highest privacy levels, built on leading open-weight models 
+like DeepSeek, ensure no one—not the cloud operator, 
+not NEAR, not the model provider—can see the user’s 
+prompts, conversations, or information. Simply put, NEAR’s 
+AI Cloud lets users get access to AI without handing over 
+their sensitive or proprietary data. 
+In the rest of this paper, we explain how these pieces fit 
+together, why the NEAR token is designed to capture the 
+value they create, and what it means for investors.
+
+03
+NEAR’s platform spans three layers that build on each 
+other: a high-performance blockchain, a cross-chain 
+execution layer, and confidential AI infrastructure.
+NEAR’s High-Performance Blockchain:
+NEAR Protocol
+Every blockchain faces the same bottleneck: how to 
+process more transactions without sacrificing security or 
+decentralization. Ethereum answered with rollups (separate 
+networks that batch transactions back to Ethereum), and 
+Solana with one giant, ultrafast chain. NEAR took a third 
+path, known as “sharding,” which splits the network into 
+parallel lanes that process transactions simultaneously. 
+With “dynamic resharding,” live since 2026, the network 
+automatically adds lanes when traffic builds—like a 
+highway that can automatically add lanes at rush hour.
+The results are among some of the best in crypto. In 
+2025, NEAR demonstrated it could handle one million 
+transactions per second in a public test, a level far beyond 
+what leading blockchains handle today. The network 
+settles transactions in roughly a second, charges fees 
+often less than a penny, and has run essentially without 
+interruption since launching in 2020. The protocol is also 
+futureproofing itself against future risks: It was one of the 
+first major L1s to adopt quantum-safe signatures in July 
+2026, raising confidence in its long-term positioning.
+NEAR’s Cross-Chain Execution Layer:
+NEAR Intents
+The bulk of the economic activity across the NEAR 
+network is tied to its flagship product, NEAR Intents, a 
+smart-contract-based platform built on the NEAR protocol 
+that lets users swap assets and trade perpetual futures 
+across 35+ blockchains by enlisting “solvers” to find the 
+best deal.
+In February 2026, NEAR launched NEAR.com, a consumer 
+app that allows users to access Intents through a 
+single user account. NEAR also introduced Confidential 
+Intents the same month, which shields transaction 
+details—like the asset being traded, the amount, and 
+the counterparty—from public view before settlement 
+while keeping execution verifiable and auditable. In 
+September 2026, NEAR Intents added perpetual futures 
+on Hyperliquid, giving users access to the world’s largest 
+onchain derivatives exchange with built-in confidentiality. 
+Built for traders and institutions that need to trade without 
+publicizing their strategies, NEAR Confidential Intents 
+already accounts for 50.6% of the total value held in Intents.
+Importantly, NEAR Intents demonstrated significant growth 
+through the late stages of the recent crypto winter, and 
+demand surged when the market rebounded in Q3. That 
+suggests demand could grow further if crypto markets 
+strengthen in 2027 and beyond.
+NEAR’s Private AI Infrastructure:
+NEAR AI Cloud
+The third layer is where NEAR’s founding vision comes into 
+focus. NEAR AI runs AI models and agents inside trusted 
+execution environments (“TEEs”). TEEs are like encrypted 
+vaults inside a computer chip that even the machine’s owner 
+cannot see into. On that foundation, NEAR has launched 
+NEAR AI Cloud, which gives companies private access to 
+AI models, from leading open-weight models like DeepSeek 
+to frontier models like GPT, Claude, and Gemini.1 NEAR also 
+built an embedded agent experience on NEAR.com that 
+lets AI agents operate 24/7 without exposing credentials 
+or confidential user data to them (like names, passwords, 
+and API keys), and a confidential GPU marketplace where 
+enterprises and governments can rent computing power 
+for sensitive AI workloads. Since July 2026, customers 
+have been able to pay for NEAR AI Cloud and for hosting 
+embedded agents by staking NEAR tokens, with credits 
+scaling with the amount of NEAR staked.
+Put together, the three layers form a valuable technology 
+stack. NEAR Protocol is the foundation, providing a 
+settlement engine fast and cheap enough for AI-scale 
+commerce. NEAR Intents builds on that foundation, 
+enabling people and institutions to transact across 
+dozens of blockchains. Confidential Intents adds privacy 
+to those features, leveraging the same trusted hardware 
+NEAR uses to run AI models confidentially. NEAR AI gives 
+people and AI agents confidential access to leading 
+AI models, and gives agents a way to transact through 
+Intents, allowing agents to pay for things across dozens of 
+blockchains.
+Each layer is built to feed the one beneath it. More AI 
+agents mean more Intents transactions, and more Intents 
+transactions mean more settlement on NEAR Protocol. It is 
+infrastructure for a world where humans, institutions, and AI 
+agents do business onchain.
+Overview of the NEAR Ecosystem
+(1)	
+NEAR AI Cloud offers two levels of privacy. Open-weight 
+models like DeepSeek run entirely inside the TEE, and NEAR 
+can produce a cryptographic proof that the expected model 
+ran and that no one, including NEAR, could see the data. 
+Frontier models like GPT, Claude, and Gemini are proprietary, 
+so they cannot be accessed with full privacy and encryption 
+like open-weight models. For these, NEAR runs a gateway 
+inside a TEE that strips the user's identity before passing the 
+request along, which gives anonymity from the model provider 
+rather than fully confidential use.
+
+04
+Runs AI on encrypted hardware that hides data, even from NEAR itself.
+—	
+Open-weight models like DeepSeek run fully encrypted
+—	
+Frontier models like Claude and GPT can be used anonymously
+—	
+Embedded AI agents keep your sensitive information protected
+—	
+Compute and agent hosting can be paid for by staking NEAR
+Powers apps like near.com that transact across 35+ blockchains.
+—	
+Send payments, swap crypto assets and tokenized equities, or trade perpetual futures
+—	
+Confidential mode hides transaction details from public view
+—	
+One user account holds assets from every supported blockchain
+—	
+A portion of revenue earned by NEAR Intents is used to buy back NEAR
+A settlement engine built for AI-scale commerce.
+—	
+Finalizes transactions in about a second
+—	
+Most transactions cost less than a penny
+—	
+At least 70% of every fee is burned (permanently removing NEAR from circulation)
+—	
+Adds capacity automatically as the network grows
+CONFIDENTIAL AI CLOUD
+CROSS-CHAIN EXECUTION
+HIGH-PERFORMANCE BLOCKCHAIN
+NEAR
+PROTOCOL
+NEAR
+INTENTS
+NEAR
+AI
+Humans
+Institutions
+AI Agents
+THE NEAR ECOSYSTEM
+Source: Bitwise Asset Management
+Use NEAR AI and NEAR Intents directly, or 
+through AI agents acting on their behalf.
+Agents and apps on NEAR AI can trade assets 
+and move money through NEAR Intents.
+Solvers compete to offer the best price, and the 
+NEAR Protocol settles every transaction.
+
+05
+NEAR’s native token, NEAR, is the economic engine of the 
+ecosystem. The NEAR token is designed to benefit from 
+the network’s growth in three ways.
+Transaction Fees and Token Burns
+Every transaction processed on the NEAR blockchain 
+requires a fee that is paid in NEAR. For simple transactions, 
+such as sending NEAR from one wallet to another, the 
+entire fee is subsequently burned—that is, an equivalent 
+number of NEAR tokens are permanently removed from 
+circulation. Transactions that involve applications, like 
+lending, borrowing, or trading on a DeFi app or using NEAR 
+Intents, pay out 30% of the fee to the application and burn 
+the remaining 70%. NEAR recently approved an upgrade 
+that eliminates the 30% payment; once it goes live, NEAR 
+will burn 100% of transaction fees, strengthening the 
+token’s value accrual and simplifying protocol economics.
+Staking
+Roughly 45% of all NEAR is staked. This refers to NEAR 
+that is pledged by holders to the validators that process 
+NEAR transactions and help secure the network. In 
+exchange for staking NEAR, holders receive rewards that 
+currently yield 4.5% per year. Staking keeps nearly half of 
+the supply committed to the network, reducing the amount 
+in circulation. In late 2025, the NEAR community improved 
+the supply-side dynamics of the NEAR token by cutting 
+the protocol’s inflation rate in half, from 5% to 2.5% per year, 
+and proposals could push it lower still. While this change 
+reduces the yield earned by stakers, the net impact is 
+lower NEAR token inflation and more sound tokenomics.
+Revenue-Driven Buybacks
+In addition to transaction fees on the NEAR blockchain, 
+NEAR also generates revenue from cross-chain swaps 
+facilitated by NEAR Intents. Most importantly for NEAR’s 
+long-term investment case, a “fee switch” was activated in 
+February 2026 that began using NEAR’s share of those 
+fees (after payouts to its partners and the applications 
+leveraging Intents) to buy back NEAR tokens on the open 
+market. Since the fee switch was turned on, NEAR Intents 
+users have paid over $29 million in fees, leading to $5.3 
+million in NEAR token buybacks.2
+Collectively, the value-accrual story is simple. As more 
+activity routes through NEAR’s infrastructure, its revenue 
+grows, and buybacks grow with it. Additionally, increasing 
+activity means more fees are burned, reducing supply 
+further. And staking keeps additional supply locked up 
+and committed to the network. If NEAR’s infrastructure 
+becomes the default home of the AI agent economy, 
+NEAR’s fees and demand for NEAR tokens should scale 
+with that economy.
+(2)	 Source: Bitwise Asset Management with data from Dune and 
+NEAR Revenue Tracker. Data as of September 30, 2026.
+Why the NEAR Token Has Value
+NEAR INTENTS: FEES AND TOKEN BUYBACKS
+Source: Bitwise Asset Management with data from Dune and DefiLlama. Data as of September 30, 2026.
+$8M
+$6M
+$4M
+$2M
+$0
+$197K
+$563K
+$259K
+$620K
+$619K
+$505K
+$723K
+$1.84M
+AUG'25
+SEP'25
+OCT'25
+NOV'25
+DEC'25
+JAN'26
+FEB'26
+MAR'26
+APR'26
+MAY'26
+JUN'26
+JUL'26
+AUG'26
+SEP'26
+Gross fees
+Buybacks
+
+06
+$5B
+$4B
+$3B
+$2B
+$1B
+$0
+JAN'25
+FEB'25
+MAR'25
+APR'25
+MAY'25
+JUN'25
+JUL'25
+AUG'25
+SEP'25
+OCT'25
+NOV'25
+DEC'25
+JAN'26
+FEB'26
+MAR'26
+APR'26
+MAY'26
+JUN'26
+JUL'26
+AUG'26
+SEP'26
+As crypto goes mainstream, more and more activity 
+involves moving assets across blockchains, and, 
+increasingly, AI agents acting on people’s behalf. NEAR’s 
+services sit underneath several of the market's most 
+important growth stories.
+—	
+Stablecoins, bitcoin, altcoins, and tokenized 
+real-world assets (like stocks and ETFs) live on 
+different networks, and the demand for moving and 
+reconciling them is likely to increase. Intents already 
+routes billions of dollars between chains every month.
+—	
+Institutions need confidentiality. Confidential Intents 
+brings private execution to public blockchains.
+—	
+For an agent to manage money or data on your 
+behalf, it needs verifiable, confidential, and tamper-
+resistant access to AI infrastructure. That is precisely 
+what NEAR’s hardware-secured AI stack provides.
+It’s worth being direct about where NEAR stands today. 
+While Intents has achieved measurable traction in cross-
+chain trading, the AI business is still in its early days. NEAR 
+AI has real products and credible partners, but reported 
+revenues have been modest so far.
+That makes NEAR a two-part story: a working, fast-
+growing execution layer today, and a moonshot built on 
+top of it. If AI agents become the dominant users of digital 
+infrastructure—as many technologists expect—and 
+NEAR becomes the settlement layer where they transact, 
+the value unlock would be enormous. The moonshot is 
+not required for NEAR to matter. But if it hits, it changes 
+everything.
+NEAR in Context
+NEAR INTENTS
+30-DAY REVENUE
++111.8% Change YoY
++896% Growth YoY
++512.5% Growth YoY
+$7.0B
+$4.8B
+$2.2M
+NEAR INTENTS: MONTHLY VOLUME
+MARKET
+CAPITALIZATION
+NEAR INTENTS
+30-DAY VOLUME
+Source: Bitwise Asset Management with data from CoinGecko and Dune.
+Data as of September 30, 2026.
+Brave is a privacy-focused web browser used by 126 million people every month, with 
+a crypto wallet and an AI assistant built in. When Brave users trade one crypto asset for 
+another, such as Bitcoin for Ethereum, NEAR’s network handles the trade behind the 
+scenes and can hide the details of that trade from the public. Brave is also piloting NEAR AI 
+Cloud for its Leo AI assistant, so users can chat with leading AI models like DeepSeek and 
+verify that their conversations stay private.
+
+07
+The Bitwise NEAR ETF (NRR) is not suitable for all investors. An investment in NRR is subject to a high degree of risk, has the potential 
+for significant volatility, and could result in significant or complete loss of investment. NRR is not an investment company registered 
+under the Investment Company Act of 1940, as amended (the “1940 Act”) and therefore is not subject to the same protections as ETFs 
+and mutual funds registered under the 1940 Act. An investment in NRR is not the same as a direct investment in the NEAR token.
+TICKER
+NRR
+EXCHANGE
+NYSE ARCA
+INCEPTION DATE
+09/28/2026
+SPONSOR FEE
+0.75%
+As with any early technology, the future holds risks for 
+NEAR. The biggest is execution. NEAR’s AI ambition is a 
+swing-for-the-fences bet on a market that is still taking 
+shape. Centralized AI platforms could keep users inside 
+their own walled gardens, agent commerce could develop 
+more slowly than expected, or it could settle on rails other 
+than NEAR’s. Investors should size positions with that 
+binary quality in mind: The AI upside is enormous, but it is 
+not guaranteed.
+Competition is real on every front. In one sense, NEAR 
+competes with Ethereum, Solana, and other Layer 1 
+blockchains for developers and applications (although it 
+also supports those ecosystems by improving cross-chain 
+functionality). And it certainly competes with a crowded 
+field of interoperability providers for cross-chain activity, as 
+well as with well-funded centralized AI companies for the 
+future of the agent economy.
+NEAR’s usage metrics can also be volatile. In early 2026, 
+activity on the NEAR base chain fell sharply when activity 
+on a single large consumer app dropped off. Today’s 
+growth engine, NEAR Intents, is dominated by stablecoin 
+and trading flows, and its fee and buyback mechanisms 
+have been live for less than a year.
+Lastly, NEAR’s tokenomics remain a work in progress. The 
+inflation reduction, fee switch, and buyback programs are 
+recent, and future governance decisions could refine or 
+reshape how value accrues to the NEAR token. Regulation 
+also remains a variable. While the U.S. regulatory 
+environment has turned constructive, rules governing core 
+elements that NEAR’s success depends on, from DeFi to 
+privacy tools to AI, are still being written.
+The Bitwise NEAR ETF is an exchange-traded product 
+that allows investors to gain cost-efficient exposure to 
+NEAR, the blockchain network building the infrastructure 
+for confidential, cross-chain commerce and AI agents. As 
+adoption of cross-chain trading, private execution, and AI 
+agents grows, NEAR is positioned to benefit.
+With NRR, investors can participate in NEAR’s upside 
+potential and potential staking rewards through an ETP 
+backed by crypto specialists.3 In choosing NRR, investors 
+gain access to a team of crypto experts with the tools, 
+insights, and specialized experience to help them navigate 
+the space with confidence.
+Risks and Considerations
+The Bitwise NEAR ETF (NRR)
+(3)	 Staking rewards are earned by the Trust and accrue to 
+shareholders as an increase in the Trust’s Net Asset Value 
+(NAV) per share. Rewards are not guaranteed and are subject 
+to change.
+
+08
+Risks and Important Information
+This material must be accompanied by a prospectus. 
+Please read the prospectus carefully before investing. To 
+obtain a current prospectus visit nrretf.com/welcome.
+Shares of ETPs are bought and sold at market price (not 
+NAV) and are not individually redeemed from the fund. 
+Brokerage commissions will reduce returns. The NAV may 
+not always correspond to the market price of NRR and, 
+as a result, creation units may be created or redeemed 
+at a value that is different from the market price of the 
+shares. Authorized participants’ buying and selling activity 
+associated with the creation and redemption of Creation 
+Units may adversely affect an investment in the Shares.
+The amount of NEAR represented by a Share will 
+continue to be reduced during the life of the Fund due to 
+the transfer of the Fund’s NEAR to pay for the sponsor’s 
+management fee, and to pay for litigation expenses or 
+other extraordinary expenses. This dynamic will occur 
+irrespective of whether the trading price of the Shares 
+rises or falls in response to changes in the price of NEAR.
+There is no guarantee or assurance that the Fund’s 
+methodology will result in the Fund achieving positive 
+investment returns or outperforming other investment 
+products.
+Investors may choose to use the Fund as a means of 
+investing indirectly in NEAR. Because the value of the 
+Shares is correlated with the value of the NEAR held by 
+the Fund, it is important to understand the investment 
+attributes of, and the market for, NEAR.
+NEAR Risk. There are significant risks and hazards 
+inherent in the NEAR market that may cause the price 
+of NEAR to fluctuate widely. The Fund’s NEAR may be 
+subject to loss, damage, theft, or restriction on access. 
+Investors considering a purchase of Shares should 
+carefully consider how much of their total assets should 
+be exposed to the NEAR market, and should fully 
+understand, be willing to assume, and have the financial 
+resources necessary to withstand the risks involved in the 
+Fund’s investment strategy.
+Liquidity Risk. The market for NEAR is still developing 
+and may be subject to periods of illiquidity. During such 
+times it may be difficult or impossible to buy or sell a 
+position at the desired price. Possible illiquid markets may 
+exacerbate losses or increase the variability between the 
+Fund’s NAV and its market price. The lack of active trading 
+markets for the Shares may result in losses on investors’ 
+investments at the time of disposition of Shares.
+Regulatory Risk. Future and current regulations by a U.S. or 
+foreign government or quasi-governmental agency could 
+have an adverse effect on an investment in the Fund.
+Blockchain Technology Risk. Certain of the Fund’s 
+investments may be subject to the risks associated with 
+investing in blockchain technology. The risks associated 
+with blockchain technology may not fully emerge until 
+the technology is widely used. Blockchain systems could 
+be vulnerable to fraud, particularly if a significant minority 
+of participants colluded to defraud the rest. Because 
+blockchain technology systems may operate across 
+many national boundaries and regulatory jurisdictions, it 
+is possible that blockchain technology may be subject to 
+widespread and inconsistent regulation. 
+Nondiversification Risk. The Fund is nondiversified 
+and will hold a single issue. As a result, a decline in the 
+market value of a particular issue held by the Fund may 
+affect the Fund’s value more than if it invested in a larger 
+number of issuers.
+Recency Risk. The Fund is recently organized, giving 
+prospective investors a limited track record on which 
+to base their investment decision. If the Fund is not 
+profitable, the Fund may terminate and liquidate at a time 
+that is disadvantageous to Shareholders.
+Bitwise Investment Advisers, LLC serves as the sponsor 
+of the Fund. Foreside Fund Services, LLC serves as the 
+Marketing Agent for NRR, and is not affiliated with Bitwise 
+Investment Advisers, LLC, Bitwise, or any of its affiliates.
+
+B I T W I S E I N V E S T M E N T S . C O M
