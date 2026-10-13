@@ -1,0 +1,800 @@
+{
+ "brief": "GS TMT spec sales wrap centred on AI/semis into Q3 earnings. ASML enters results with pricing power (reported 10% Korean spare-parts hike accepted by Samsung/SK Hynix from Jan 2027), supporting its services/parts business (~25% of 2025 revenue, growing to more than 30% in 2026); TSMC should beat and raise Q4 guidance but the debate is whether management gives 2027 capex visibility (GIR already raised 2027E/2028E capex to $85bn/$98bn). Rising memory costs (CXMT's 4F2 DRAM push adding competition) are forcing Samsung to cut Q4 smartphone output 20-30% and Apple to shift iPhone 18 Pro orders toward Pro Max. Nvidia is in early talks to acquire or expand into Reflection AI, driven by Jensen Huang's frustration at hyperscalers building custom ASICs away from Nvidia GPUs/CUDA, and to counter DeepSeek; Amazon is separately in talks for Decart AI after Anthropic passed on it. Prosus cut FY27/28 EPS 7%/9% on higher food-delivery investment, weaker Tencent forecasts and higher refinancing interest costs, though JET MAU growth is accelerating. US data-center capacity forecasts rise for 2026 but fall for 2027 on ERCOT political constraints.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "ASML enters Q3 results with solid demand and potential pricing upside from a reported 10% increase in Korean spare-parts prices, though expectations remain high.",
+   "anchor": "ASML enters results with solid demand, better positioning and potential pricing upside from a reported 10% increase in Korean spare-parts prices, though expectations remain high",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "TSMC should deliver a strong Q3 and may raise Q4 guidance, but the key debate is whether management offers visibility on 2027 capex.",
+   "anchor": "TSMC should deliver a strong Q3and may raise Q4 guidance, but the key debate is whether management offers any visibility on 2027 capex",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3-Q4 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "GIR raised its 2027E/2028E TSMC capex forecasts to US$85bn/US$98bn from US$78bn/US$82bn previously.",
+   "anchor": "GIR raised their 2027E/2028E CapEx forecasts to US$85bn/US$98bn (vs. US$78bn/US$82bn previously",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "ASML last quarter guided to FY27 low-NA EUV capacity of roughly 85 tools, with the buy-side expecting closer to 90, and confirmed potential capacity of more than 110 tools by 2028.",
+   "anchor": "ASML last quarter gave guidance for FY27 low-NA EUV capacity of roughly 85 tools (with buy-side more like 90) and confirm potential capacity of more than 110 tools by 2028",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "target",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "ASML broke ground on a 35-hectare manufacturing campus called Brainport Industries Campus North near Eindhoven, with the first phase expected to be completed in 2029.",
+   "anchor": "ASML broke ground on a 35-hectare manufacturing campus called Brainport Industries Campus North (BIC North) near Eindhoven, Netherlands",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "ASML is reportedly raising prices for all EUV and DUV spare parts in Korea by 10%, with Samsung Electronics and SK Hynix accepting the increase for deliveries from January 2027.",
+   "anchor": "ASML is reportedly(unconfirmed) raising prices for all EUV and DUV spare parts in Korea by 10%, with Samsung Electronics and SK Hynix accepting the increase for deliveries from January 2027",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "from January 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "ASML's services, parts and upgrades business represented around 25% of 2025 revenue and is expected to grow by more than 30% in 2026.",
+   "anchor": "which represented around 25% of 2025 revenue and is expected to grow by more than 30% in 2026",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "CXMT, which already has around 10% of global DRAM revenue and is rapidly adding capacity, aims to launch a server-memory product using its new 4F\u00b2 design by the end of 2026.",
+   "anchor": "CXMT, which already has around 10% of global DRAM revenue and is rapidly adding capacity, aims to launch a server-memory product using the technology by the end of 2026",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by end-2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Taiwan's OSAT companies could raise prices by up to 30% as AI demand and capacity constraints benefit ASE, KYEC, Powertech and Sigurd.",
+   "anchor": "Taiwan\u2019s OSAT companies could raise prices by up to 30% as AI demand and capacity constraints benefit ASE, KYEC, Powertech and Sigurd",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "ASX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "AMD has reportedly lifted GPU prices by around 10%, while Nvidia RTX 50-series prices in Germany have risen by up to 66%, versus 46% for AMD.",
+   "anchor": "AMD has reportedly lifted GPU prices by around 10%, while Nvidia RTX 50-series prices in Germany have risen by up to 66%, versus 46% for AMD",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "released",
+   "instruments": [
+    "AMD",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Higher memory costs may force Samsung to cut fourth-quarter smartphone output by 20-30%, potentially reducing 2026 production from 270m to around 200m units.",
+   "anchor": "Samsung to cut fourth-quarter smartphone output by 20\u201330%, potentially reducing 2026 production from 270m to around 200m units, as DRAM prices continue to climb",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "4Q 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Smartphone DRAM prices reportedly surged 175% YoY to US$145-146 in 3Q, with another ~20% QoQ increase expected in 4Q to US$180.",
+   "anchor": "Smartphone DRAM prices reportedly surged 175% YoY to US$145\u2013146 in 3Q, with another ~20% QoQ increase expected in 4Q to US$180",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q-4Q 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Apple reportedly cut iPhone 18 Pro component orders by up to 15% because of higher memory costs, but raised Pro Max orders by 10-15%, leaving overall Pro-series volumes broadly unchanged.",
+   "anchor": "Apple reportedly cut iPhone 18 Pro component orders by up to 15% because of higher memory costs, but raised Pro Max orders by 10\u201315%",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "The USITC has opened a preliminary Section 337 patent investigation into Vicor's vertical power-delivery technology, naming Infineon and 19 other companies, with the process expected to take 12-18 months.",
+   "anchor": "The USITC has opened a preliminary patent investigation into Vicor\u2019s vertical power-delivery technology, naming Infineon and 19 other companies. Process should take 12\u201318 months",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "released",
+   "instruments": [
+    "IFNNY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "12-18 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "The main near-term risks for Infineon from the Section 337 case are legal costs, customer uncertainty and potential licensing fees, with a broader settlement seen as the most likely outcome.",
+   "anchor": "the main near-term risks are legal costs, customer uncertainty and potential licensing fees, with a broader settlement the most likely outcome",
+   "topic": "Q3 AI semis earnings and pricing cycle",
+   "status": "forecast",
+   "instruments": [
+    "IFNNY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "NVIDIA is in early talks to acquire open-weight AI startup Reflection AI, last valued at around $25 billion, or to significantly expand its existing ~$800 million stake.",
+   "anchor": "NVIDIA according to the weekend FT is in early talks to acquire open-weight AI startup Reflection AI \u2014last valued at around $25 billion\u2014or to significantly expand its existing ~$800 million stake",
+   "topic": "AI frontier model M&A and competition",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "NVIDIA leadership, particularly CEO Jensen Huang, is frustrated that hyperscalers and frontier labs such as OpenAI, Google, Anthropic, and Meta are developing custom ASICs that reduce reliance on NVIDIA GPUs and CUDA.",
+   "anchor": "driven by frustration within NVIDIA leadership, particularly CEO Jensen Huang, over hyperscalers and frontier labs such as OpenAI, Google, Anthropic, and Meta developing custom ASICs that reduce reliance on NVIDIA GPUs and CUDA",
+   "topic": "AI frontier model M&A and competition",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Amazon is reportedly in talks to acquire Israeli AI start-up Decart AI for around $7bn, after Anthropic previously considered a roughly $6bn purchase but decided not to proceed.",
+   "anchor": "Amazon is reportedly in talks to acquire Israeli AI start-up Decart AI for around $7bn, with a deal potentially close if negotiations hold, after Anthropic previously considered a roughly $6bn purchase but decided not to proceed",
+   "topic": "AI frontier model M&A and competition",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Google is reportedly testing a new model called Carbon that is potentially competitive with Opus 5.5.",
+   "anchor": "Google reportedly testing Carbon, potentially competitive with Opus 5.5",
+   "topic": "AI frontier model M&A and competition",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Polymarket is pricing Google as a serious contender for best AI model by year end, while OpenAI and Anthropic have new models they have yet to reveal.",
+   "anchor": "Polymarket pricing Google as a serious contender for best model by year end, while OpenAI and Anthropic have new models they have yet to reveal",
+   "topic": "AI frontier model M&A and competition",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by year end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "GS raised its year-end 2026 US data center capacity forecast by 5 GW to 64 GW, while reducing its year-end 2027 forecast by 5 GW to 90 GW.",
+   "anchor": "We raise our year-end 2026 US data center capacity forecast by 5 GW to 64 GW, while reducing our year-end 2027 forecast by 5 GW to 90 GW",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year-end 2026 and 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "GS reduced its 2027 year-end ERCOT (Texas) data center capacity forecast by 1 GW, reflecting stricter interconnection requirements and political scrutiny of large-load additions.",
+   "anchor": "we reduce our 2027 year-end ERCOT (Texas) forecast by 1 GW, reflecting stricter interconnection requirements and political scrutiny of large-load additions",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "EU Utilities own around 25GW of connections to power grids that, based on recent transactions, could be worth EUR20bn.",
+   "anchor": "EU Utilities own c.25GW of connections to power grids; based on recent transactions, these assets could be worth \u20ac20bn",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Solaria could have around 45% optionality on its share price given monetization of its grid access.",
+   "anchor": "Solaria (CL) could have c.45% optionality on share price given monetization of their grid access",
+   "topic": "data center capacity buildout",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "New Finnish data center announcements from atNorth (230 MW) and Applied Digital (1,000 MW) add over 1.8 GW, or around 14 TWh of annual demand, roughly 17% of Finland's consumption.",
+   "anchor": "including from atNorth (230 MW) and Applied Digital (1,000 MW), add over 1.8 GW, or ~14 TWh of annual demand (~17% of Finland's consumption)",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "APLD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "GS stays Neutral on UPM despite strong data-center energy demand momentum, because energy is only 11% of UPM's EBITDA.",
+   "anchor": "stay Neutral on UPM as Energy is only 11% of EBITDA",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "GS's APAC data-center report places Shengyi, Weichai Power and Panasonic HD on its APAC Conviction List and identifies Vertiv and Envicool as key cooling enablers.",
+   "anchor": "Shengyi, Weichai Power and Panasonic HD on the APAC Conviction List and Vertiv and Envicool identified as key cooling enablers",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "VRT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Lumentum said its optical component capacity is effectively sold out into early 2029, driven by AI datacenter demand, with revenue potentially doubling YoY in 2026.",
+   "anchor": "Lumentum said its optical component capacity is effectively sold out into early 2029, driven by AI datacenter demand, with revenue potentially doubling YoY in 2026",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "LITE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "into early 2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Lumentum plans to expand its Tokyo-area manufacturing capacity and invest at least US$350mn.",
+   "anchor": "The company plans to expand its Tokyo-area manufacturing capacity and invest at least US$350mn",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "LITE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Prosus FY27/28 EPS estimates have been cut by 7%/9%, leaving them 5%/9% below consensus, reflecting higher food-delivery investment, lower Tencent forecasts and increased interest costs after a $1.65bn refinancing.",
+   "anchor": "FY27/28 EPS estimates have been cut by 7%/9%, leaving them 5%/9% below consensus, to reflect higher food-delivery investment, lower Tencent forecasts and increased interest costs after the $1.65bn refinancing",
+   "topic": "Prosus Naspers estimate cuts",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27/28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Prosus 1H27 adjusted EBITDA of $362m is forecast, 22% below consensus, with iFood subsidies, higher Despegar customer-acquisition costs and a softer travel market weighing on LatAm.",
+   "anchor": "1H27 adjusted EBITDA of $362m is forecast, 22% below consensus, with iFood subsidies, higher Despegar customer-acquisition costs and a softer travel market weighing on LatAm",
+   "topic": "Prosus Naspers estimate cuts",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "1H27, results 24 November"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "The Prosus discount to NAV has widened to 39%, broadly in line with its 38% long-term average, potentially partly due to its removal from the STOXX Europe 50.",
+   "anchor": "The Prosus discount to NAV has widened to 39%, broadly in line with its 38% long-term average, potentially partly due to its removal from the STOXX Europe 50",
+   "topic": "Prosus Naspers estimate cuts",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Prosus's JET market MAU growth is accelerating to 7.6% year on year in September, although the UK remains weak.",
+   "anchor": "JET market MAU growth accelerating to 7.6% year on year in September, although the UK remains weak",
+   "topic": "Prosus Naspers estimate cuts",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "The Prosus price target rises to EUR40 from EUR39, the Naspers target falls slightly to ZAR863 from ZAR864, and both stocks remain Neutral.",
+   "anchor": "The Prosus price target rises to \u20ac40 from \u20ac39, the Naspers target falls slightly to ZAR863 from ZAR864, and both stocks remain Neutral",
+   "topic": "Prosus Naspers estimate cuts",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Fundamental long-short managers were down 0.2% this week, with alpha down 0.3%, but are still up 12.5% year to date.",
+   "anchor": "Fundamental LS managers down 0.2% (alpha: -0.3%) this week but still up 12.5% YTD",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week; YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Systematic long-short managers were up 0.1% this week and up 20.8% year to date.",
+   "anchor": "Systematic LS managers up 0.1% this week and up 20.8% YTD",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week; YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "GS prime book flows were net sold globally this week, driven by EM and North America, while Europe was the only net-bought region, now net bought for 4 consecutive weeks.",
+   "anchor": "Global book was net sold driven by EM and North America. Europe was the only net bought region, now net bought for 4 consecutive weeks",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Info Tech and Communication Services were the most net-sold sectors in GS's prime book this week, net sold for a third consecutive week, while Industrials and Consumer Discretionary were the most net bought.",
+   "anchor": "Most net sold sectors were Info Tech and Communication Services (net sold for 3rd consecutive week) with Industrials and Consumer Discretionary being the most net bought ones",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "GS's PB week-over-week Top 10 increases in shorts by market value included three TMT names: BESI, Infineon and Publicis.",
+   "anchor": "our PB WoW Top 10 Increases in GS Shorts by $MV saw 3 TMT names on the list BESI (no surprise); IFX and PUB",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [
+    "BESIY",
+    "IFNNY",
+    "PUBGY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Some US hedge funds are using ASML as a funding short despite its attractive relative valuation, even as buy-side sentiment has grown more mixed with two-way flows.",
+   "anchor": "some US hedge funds are using ASML as a funding short despite its attractive relative valuation (which means that positioning is a better place than last quarter",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "INWIT's main shareholders Ardian and KKR-backed Oak Holdings 1, which own 32% and 39% respectively, are seeking to acquire the remaining 29% public float, with Mubadala in talks to join the consortium.",
+   "anchor": "Ardian and KKR-backed Oak Holdings 1, which own 32% and 39% respectively, are seeking to acquire the remaining 29% public float, with Mubadala in talks to join the consortium",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "INWIT faces lease disputes with key tenants TIM and Fastweb seeking lower rates, contributing to a roughly 27% fall in its shares over the past year and a market value of about EUR6.3bn.",
+   "anchor": "contributing to a roughly 27% fall in the shares over the past year and a market value of about \u20ac6.3bn",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Adam/GIR expects Publicis Q3 organic growth of 4.8%, broadly in line with consensus, although investor feedback suggests the buyside hurdle is over 5%.",
+   "anchor": "Adam/GIR expects organic growth of 4.8%, broadly in line with consensus, although investor feedback suggests the buyside hurdle is over 5%",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "PUBGY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Publicis's Q3 update is revenue-only, with no margin disclosure, and investors expect management to remain cautious on Q4 guidance, likely around 4-5%, because of tough comparatives.",
+   "anchor": "with guidance likely around 4\u20135%, while speaking positively but conservatively about 2027, supported by recent account wins, a c.200bp new-business tailwind and potential LiveRamp upside",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "PUBGY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Worldline slightly lowered its FY26 growth assumptions for FS, now expecting FS organic growth in FY26 at -6.6% versus -6% previously, with no change to MS growth.",
+   "anchor": "FS organic growth in FY26 at -6.6% vs -6% previously), with no changes to MS growth, resulting in broadly unchanged total organic revenue growth for FY26E at c.0%",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Telia plans to cut around 900 roles, including moving about 220 positions from its central Technology unit into country teams.",
+   "anchor": "cutting around 900 roles, including moving about 220 positions from the central Technology unit into country teams",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by end of 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Telia is targeting SEK 1bn of annual gross savings from its restructuring, with around SEK 600m of restructuring charges in Q4 2026.",
+   "anchor": "targeting SEK 1bn of annual gross savings",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2028 full run-rate"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Investor feedback holds that the US mobile market, a three-player oligopoly with blended ARPU of roughly EUR40-44 per month versus an EU average of only EUR14-15, should be SpaceX's priority over Europe.",
+   "anchor": "blended ARPU of roughly \u20ac40\u201344 per month and postpaid ARPU of $54\u201358, versus an EU average of only \u20ac14\u201315",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Polymarket prices a 26% chance of SpaceX launching a US mobile plan by June 2027 and 43% by the end of 2027.",
+   "anchor": "Polymarket prices a 26% chance of SpaceX launching a US mobile plan by June 2027 and 43% by the end of 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by June 2027 and end-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Elon Musk has promised affordable Starlink pricing in India, stepping up competition with Reliance Jio just days before Jio Platforms' planned IPO, which is targeting a $106bn valuation.",
+   "anchor": "Elon Musk has promised affordable Starlink pricing in India, stepping up competition with Reliance Jio just days before Jio Platforms\u2019 planned IPO, which is targeting a $106bn valuation",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Matching India's very low mobile data prices of around $0.08 per GB could be challenging for Starlink, which has not yet disclosed its tariffs.",
+   "anchor": "matching India\u2019s very low mobile data prices\u2014around $0.08 per GB\u2014could be challenging, and Starlink has not yet disclosed its tariffs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "TypeSafe AI claims its non-text automation model Jev is already used by a third of Fortune 500 companies, and the company has raised $870 million at a $7.5 billion valuation.",
+   "anchor": "TypeSafe claiming it is already used by a third of Fortune 500 companies, and the company has raised",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "The 'inference economy' cohort, including SNOW, CRWD, PANW, NET and PLTR, remains well bid and is trading at or near all-time highs even as AI semis names have stumbled this week.",
+   "anchor": "names like SNOW, CRWD,PANW, NET & PLTR all at/near ATHs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SNOW",
+    "CRWD",
+    "PANW",
+    "NET",
+    "PLTR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Raj Mahajan's note highlights Jevons' Paradox, suggesting AI lowers the cost of research but increases total R&D and token/compute spend, driving hyperscaler-scale infrastructure investment.",
+   "anchor": "It highlights Jevons\u2019 Paradox, suggesting AI lowers the cost of research but increases total R&D and token/compute spend, potentially reaching very large per-researcher inference costs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: AI & Semis in focus; Q3 reporting kicks off AMSL, TSCM, PUB; Inwit press ; Cutting Prosus estimates ; NVidia & Reflection; 12 Oct 2026",
+   "claim": "Raj Mahajan's note concludes that structural frictions such as capacity limits, market impact and financing constraints make a winner-take-all outcome in AI-driven quant investing unlikely.",
+   "anchor": "structural frictions (capacity limits, market impact, financing constraints) make a winner-take-all outcome unlikely, emphasizing sustainable competitive advantage as the key strategic question",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-13/20066__gs-tmt-spec-sales-ai-semis-in-focus-q3-reporting-kicks-off-a.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 55,
+  "matched": 55,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 15,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
