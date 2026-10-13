@@ -1,0 +1,483 @@
+ 
+Peak Muse? Growth Slows Just As Morgan Stanley 
+Tallies What Meta's "Free" Agent Really Costs 
+ 
+BY TYLER DURDEN 
+MONDAY, OCT 12, 2026 - 05:25 AM 
+For most of the past three years, the knock on Meta's AI strategy came down to one line: lots of 
+capex, no product. Then just over a month ago, on September 8, Meta launched Muse, an 
+agent that opens a browser, fills out forms, books the trip and (if you let it) cancels your gym 
+membership and even reallocates your savings. Meta stock jumped 27% in 12 sessions to a 
+$777.59 peak, the forward multiple went from 14x in late August to 21x, and the sell-side moved 
+on from fretting about capex to arguing over which trillion-dollar TAM to stack on top of it. 
+It didn't take long, however, for the first serious crack to show up. On Friday, Hunterbrook Media 
+citing alternative-data firm TickerTrends, reported that Muse downloads fell 8.1% week over 
+week and that daily net user additions have slowed 62.4% from the September surge. There is, 
+of course, a conflict of interest - Hunterbrook's affiliated fund disclosed it is short META - but that 
+doesn't mean the data is wrong. We flagged it over the weekend with a three-word summary: 
+Muse growth peaking 
+— zerohedge (@zerohedge) October 11, 2026 
+The timing is awkward for the bulls, because the most detailed piece of sell-side Muse work so 
+far, Morgan Stanley's report "23 Days of Musing...Top Investor Questions and Our Answers" 
+(available to pro subs), rests on a capacity analysis sized for 1 billion daily users. Brian Nowak, 
+who has Meta as a Top Pick with a $775 target, built the first bottom-up Muse cost-to-serve 
+model we've seen, along with a CPU capacity build, a Graviton deal sizing and a view on what 
+Meta and Amazon are haggling over. Below we go through the slowdown data first, then all of 
+Morgan Stanley's exhibits, with some napkin math the bank chose not to run and a look at what 
+the slowdown does to each of its answers. 
+Peak Muse? What The Data Actually Show 
+Here is what TickerTrends' numbers, as analyzed by Hunterbrook, say: 
+
+ 
+●​ Downloads: ~169.6K on October 6, down 21.1% from the 214.9K peak on September 
+24, the day after Connect. Downloads have stayed below that peak for 12 straight days. 
+On a weekly basis they averaged ~165K a day in the seven days to October 6, down 
+8.1% from ~180K the week before. 
+●​ Users: DAUs hit a new high of 2,730,919 on October 6, so the user base is still growing. 
+The pace of growth is what changed. Net additions averaged ~198K a day over 
+September 15-22, ~87K a day the following week and ~74K a day in the week to 
+October 6, which is 62.4% below the initial surge and 14.5% below the prior week. 
+●​ Engagement proxy: app-review volume fell 11.6% week over week to 4,716 in the seven 
+days through October 7, with iOS reviews down 22.5%. The daily count of 664 on 
+October 7 was 17.2% below the October 1 peak of 802. 
+ 
+
+ 
+ 
+Hunterbrook also compared Muse with Threads, Meta's last viral launch, which was at ~9.3mn 
+worldwide Android-only DAUs four weeks in (Similarweb), down from a peak near 50mn. Muse 
+has fewer users than Threads had at the same point. In fairness, Threads was a free, global, 
+sign-in-with-Instagram social app, while Muse launched in the US only (Canada followed 
+September 18) and wants a payment card even on the free tier. Threads also bled users much 
+faster after its debut, which Hunterbrook acknowledges. 
+Two caveats before anyone declares Muse dead. First, Hunterbrook is short, and says so at the 
+top of the piece. Second, nobody agrees on how many people use Muse. TickerTrends says 
+2.73mn DAUs. Similarweb, cited by Yahoo Finance on Thursday, had 2.18mn on October 5. 
+Sensor Tower, per Bloomberg on October 7, had 6.6mn downloads and 1.8mn DAUs. That's a 
+spread of about 50% between the highest and lowest estimate for the same week: 
+
+ 
+ 
+Every one of those estimates is under 3mn, and Morgan Stanley's capacity analysis below is 
+built around 1,000mn. On TickerTrends' number, Meta has already bought CPUs for roughly 366 
+times the users it has. To be fair, the note says plainly that it chose an aggressive adoption case 
+"to show the large amount of capacity Meta already has coming on." But it does put the "Muse is 
+taking over the internet" commentary in perspective. 
+Not everyone on the sell-side is fazed. Deutsche Bank's Benjamin Black, writing on the 
+Similarweb data, said Meta has "found a clear gap amongst current AI-agentic offerings" and 
+sees Muse reaching up to 8% of Meta's revenue by 2030 (a range of ~
+36bn). 
+2. 4𝑏𝑛𝑡𝑜~
+JPMorgan's Doug Anmuth, who raised his target to $920 after Connect, has stressed that "Meta 
+is not focused on the monetization of Muse in the near term," which is a polite way of saying 
+investors are paying for growth for now. That makes a growth slowdown more relevant to the 
+stock than it would be for a product already throwing off cash. 
+The market's verdict so far: a shrug. META slipped 0.3% on Friday to $718.67 after the report. 
+It's still up 17.1% since launch but 7.6% below its September 24 high. Over the same span the 
+S&P is up 1.8%, and Amazon, which blocked Muse from its store, has recovered to +2.1%. 
+
+ 
+ 
+How We Got Here 
+A quick recap. Meta introduced Muse on September 8. It runs on the Muse Spark model, gives 
+each user a dedicated "Muse Secure VM", and lives in its own app, on the web, inside 
+WhatsApp and on a native Mac client. Pricing works like a buffet: a free tier with a 100mn-token 
+weekly allowance, a $20/month "Power" tier (500mn tokens a week) and a $100/month 
+"Maximum" tier (3bn tokens a week). Connect (September 23) added a realtime avatar, Mac 
+computer control, glasses integration and a palm-sized 5G Muse device, and Muse for Small 
+Business followed September 29. On iOS Muse logged 1.43mn downloads in its first 12 days 
+vs. ChatGPT's 1.37mn over the same window, per JPMorgan, and hit No. 1 on both the App 
+Store and Google Play. 
+Then the friction started. Amazon blocked Muse from its site on the evening of September 20. 
+TickerTrends now tracks user reports of restrictions at Costco and Netflix as well, and telecom 
+carriers have reportedly started routing Muse's AI-originated customer-service calls away from 
+human agents, which neuters the "call on my behalf" feature. A zero-day that could let a local 
+app hijack a user's Muse account had to be hot-fixed. Hunterbrook separately reported last 
+month that Muse could be prompted to compile dossiers on members of vulnerable groups. 
+Meta also conceded that Muse's workspace file structure followed the OpenClaw blueprint, 
+though it says the code was written from scratch. 
+
+ 
+Regular readers will recall we covered the launch and the Amazon block in "Agentic Wars 
+Begin: Amazon Blocks Meta's Agents As Muse Takes World By Storm", followed by the Connect 
+deep-dive "The Muse Is Loose: Inside Zuckerberg's $100-A-Month Bet That You'll Let Facebook 
+Run Your Life". And when JPMorgan declared at the peak of the hype that Muse "has the 
+potential to become the most widely used consumer AI application since ChatGPT," we asked 
+the obvious follow-up: 
+JPM says "Muse has the potential to become the most widely used consumer AI application 
+since ChatGPT. " Is that true, or just the case until the next shinier, faster agent pops up in 5-7 
+days? 
+— zerohedge (@zerohedge) September 24, 2026 
+Downloads peaked that same day. We'll allow ourselves a modest victory lap and move on to 
+Morgan Stanley's six questions. 
+1. "How And When Could Meta Monetize Muse?" Answer: Not 
+Soon 
+The honest answer comes first, and it's refreshingly blunt for a Top Pick note: 
+"First, we expect Muse subscription revenue to be quite small for a while as Meta focuses on 
+scaling a user base, engagement and commercial behavior well before monetization. To this 
+point, we believe initial 'take rates' on the connection agreements are de minimis. But over the 
+long-term as the agentic behavior scales (think late '27/'28 at the earliest) we would expect Meta 
+to monetize through a real-time bidding auction market (businesses paying for 
+transactions/acquisitions) with businesses across the economy bidding based on return on 
+investment and paying Meta for completed transactions." (emphasis ours) 
+Translation: Meta wants to build for agents the same thing it built for ads, an auction where 
+businesses bid for outcomes. This time the outcome is a completed purchase made by your 
+agent. Nowak thinks the pool this eventually addresses is about $30 trillion of consumer spend, 
+of which roughly $17 trillion is retail and travel: 
+
+ 
+ 
+Source: Morgan Stanley 
+Morgan Stanley isn't alone on timing. BofA, which reiterated Buy with an $810 target on 
+September 22, said material revenue from ads, subscriptions or commissions is unlikely before 
+2028. Goldman's Eric Sheridan, who reiterated Buy on September 13 and called Meta's "scale 
+and distribution" the "most difficult-to-replicate assets in the consumer AI agent competition," 
+reportedly framed the "key question" as "whether monetization swiftly follows," and flagged 
+privacy and security as the single biggest risk. A week later came the zero-day. Goldman's $725 
+target, for the record, was overtaken by the stock eight days after it was set. Price targets tend 
+to follow price. 
+The slowdown matters most here. An auction for agent-driven transactions needs a very large, 
+very active user base before businesses will bid real money for it. Every week that net adds run 
+at 74K a day instead of 198K pushes that "late '27/'28 at the earliest" further out. In the 
+meantime MS says Muse is "a further source of data capture and profile build for Meta's core 
+products." Until the agent pays for itself, it pays by learning what you want, which happens to be 
+how Meta's existing business makes money. 
+
+ 
+2. "How Much Are Muse Serving Costs?" Anywhere From $3 To 
+$130 A Month. Per User. 
+This is the main event. Morgan Stanley splits Muse's compute bill into two pieces: GPU 
+inference, which scales with tokens consumed (the model reasoning through your request), and 
+the CPU sandbox, which scales with how often you activate Muse and how long your VM stays 
+provisioned (the browser, tools and code execution). The result: 
+"Our sensitivity work showcases how it ranges from 
+130 per user per month based on token 
+3 −
+consumption... The mix of these costs shifts with intensity as the CPU sandbox expense is the 
+larger cost driver for lower-usage users, while GPU inference becomes the dominant 
+component for users consuming the full token allowance." (emphasis ours) 
+ 
+Source: Morgan Stanley 
+The full model is worth studying line by line, because every assumption is in plain sight. On the 
+GPU side, MS uses its GB300 framework from The Paths to 25-50% GenAI ROIC (July 27): 
+410,256 GPUs per gigawatt, 3,500 tokens/second/GPU at 75% utilization, which works out to 
+33,962 trillion tokens per GW per year. Against $7.63bn of annual infrastructure cost per GW (IT 
+depreciation of $4.55bn, non-IT depreciation of $1.08bn and $2bn of energy and other opex), 
+that gives a serving cost of $0.225 per million tokens. On the CPU side, MS assumes ~10 
+
+ 
+minutes of provisioned sandbox per activation, a 2 vCPU/8GB VM priced at AWS on-demand 
+rates for AMD instances ($0.1217/hour), and 7.5GB of storage at $0.60/month. 
+ 
+Morgan Stanley's base case is the 25% column: a user who burns a quarter of the free 
+allowance (~108mn tokens a month over 20 sessions a day) costs $37.12 a month, or $445 a 
+year. Nowak calls that "more of a ceiling," because it assumes Meta rents all of its CPU sandbox 
+at AWS list prices, which it won't. Fair enough. Now put that next to the one figure Meta has a 
+long track record on, its revenue per user. MS pegs Meta's global ARPU (total revenue over 
+Family of Apps users) at ~$70 a year: 
+
+ 
+ 
+Yes, it's an apples-to-oranges comparison. ARPU is revenue across all of Meta's apps, and 
+Muse users are a self-selected subset (North American ARPU is "multiples higher," MS notes). 
+Still, a user at just 5% of the allowance ($124/year) costs more to serve than Meta's average 
+user generates in a year. Scale that up and it gets big fast: 1bn DAUs at the bank's 25% base 
+case would be ~$445bn a year of cost to serve, against MS's own 2026 revenue estimate for all 
+of Meta of $256bn. 
+And here the slowdown cuts the other way. At TickerTrends' 2.73mn DAUs, the same $445 a 
+year works out to ~$1.2bn annually, a rounding error against the $209bn of 2027 opex in MS's 
+model. Slower growth means a smaller compute bill. It also means a smaller future auction. 
+Meta is spending to buy an option on a billion-user agent, and the Hunterbrook data is a 
+reminder that the option still has to be exercised. 
+The paid tiers look even more generous. If we apply MS's $0.225/mn-token GPU cost to the full 
+allowances of the $20 and $100 tiers (our extrapolation, GPU only, before any CPU sandbox), a 
+maxed-out Power user would cost about $488 a month in inference and a maxed-out Maximum 
+user about $2,925: 
+
+ 
+ 
+Obviously almost nobody will use 100% of 3bn tokens a week, and agentic workloads lean 
+heavily on cached input tokens, which cost far less than MS's blended rate. Still, the 
+subscription tiers are plainly priced to win share, much as Meta's API was when it launched 
+Muse Spark 1.1 at roughly a quarter of rivals' prices ("AI Price War Breaks Out", Jul 9). How 
+generous? Hunterbrook found a TickerTrends executive whose Muse posts to social media 
+every 30 minutes for his hobby site. The agent keeps telling him it's out of credits, then keeps 
+posting anyway, with no card on file and no charges building up. A 48-posts-a-day social media 
+department for $0 is a great deal for him and a perfect illustration of where token pricing is 
+heading. We said as much in September: 
+Why is Meta handing out virtually unlimited agentic compute for Muse (to steal market share)? 
+"Meta has more computing capacity than they need for themselves in the near term" - UtilityDive 
+We are rushing head-first into a world of negative token prices 
+— zerohedge (@zerohedge) September 25, 2026 
+...and expanded on it last week: 
+Another observation: frontiers built out compute and locked commitments assuming they can 
+generate retail returns at enterprise levels when bulk of retail compute will go to 
+next-to-zero-cost agentic; high ROIC enterprises meanwhile will use a tiny fraction of available 
+compute 
+— zerohedge (@zerohedge) October 8, 2026 
+
+ 
+Morgan Stanley's view is that the cost is the moat: "we think this analysis does speak to the cost 
+prohibitive barriers to entry for smaller players to scale a competitive product to Meta," helped 
+by a $250bn core ad business growing 27% y/y "that is only getting stronger." Put differently, if 
+you aren't sitting on a $250bn ad machine, don't try this at home. 
+3. "Is Meta At Risk Of Being Capacity Constrained?" On CPUs, 
+No (And Less So Every Week) 
+This is the section that prompted our "No, META won't be buying new chips to scale Muse" 
+tweet on October 1. MS's answer is an emphatic no, at least on the CPU side: 
+"No, we estimate Meta is acquiring the equivalent CPU capacity in '26 alone to serve 1bn Muse 
+DAUs who spend 25% of their weekly token allowance. Even this 25% could be high but we 
+would rather assume adoption and use cases ramp in this instance to show the large amount of 
+capacity Meta already has coming on." (emphasis ours) 
+ 
+Source: Morgan Stanley 
+The bridge in Exhibit 10 is a nice piece of supply-chain detective work. MS estimates Meta 
+takes 20% of AMD's 10.9mn 2026 server CPU units, or 2.18mn chips at 126 cores and 2 
+threads each, for 549mn vCPUs. It adds ~360K NVIDIA Vera CPUs (88 cores, 2 threads) for 
+63mn vCPUs, plus 30mn Graviton5 cores from the AWS deal. The total is 643mn vCPUs, or 
+
+ 
+321mn Muse instances at 2 vCPUs each. On the demand side, 1bn DAUs × 12.5% active (3 
+hours out of 24) × 2x peak multiplier × 1.2x headroom = 300mn simultaneous instances, or 93% 
+of 2026 purchases. We checked the arithmetic and it foots. 
+ 
+Source: Morgan Stanley 
+Run the same formula on the actual user count and the picture changes. At 2.73mn DAUs, 
+Muse needs ~0.8mn simultaneous instances, about 0.25% of the 321mn MS says Meta is 
+buying. At 74K net adds a day, reaching 1bn DAUs would take roughly 37 years. Nobody 
+expects the pace to stay that low, but for now Meta's CPU problem is one of having far too many 
+of them. Not a bad problem to have, as long as the capacity can be redeployed (Zuckerberg has 
+floated renting out surplus compute, which BofA thinks could fetch up to $40bn per gigawatt). 
+MS says the cost is already in its numbers: 
+"Importantly, too, we believe these costs are already in our model for $209bn of '27 opex as the 
+CPUs are captured in our 
+225bn of capex in '26/'27 leading to $59bn of '27 D&A. And 
+145𝑏𝑛/
+our model also includes $26bn of third party compute deals in '27 (vs 
+4-5bn." (emphasis ours) 
+17𝑏𝑛𝑖𝑛'26), 𝑤ℎ𝑖𝑐ℎ𝑖𝑛𝑐𝑙𝑢𝑑𝑒𝑠𝐴𝑊𝑆𝐺𝑟𝑎𝑣𝑖𝑡𝑜𝑛𝑎𝑡𝑎𝑛𝑒𝑠𝑡𝑖𝑚𝑎𝑡𝑒𝑑~
+On Graviton specifically: Meta and AWS announced the "multibillion-dollar" Graviton5 deal on 
+April 24 for "tens of millions" of cores. MS pencils in 30mn cores at ~$0.02/core/hour, which 
+works out to ~$5.6bn of annualized revenue for AWS, or about 3 points of 2027 AWS growth. 
+
+ 
+So Meta is a multibillion-dollar AWS customer, and Amazon is blocking Meta's agent from its 
+store. Both are true at once. 
+ 
+Source: Morgan Stanley 
+Now the part MS doesn't address. The capacity answer covers CPUs only. Using the bank's 
+own GPU assumptions from Exhibit 9 (33,962tn tokens per GW per year), serving 1bn DAUs at 
+the same 25% allowance would take about 38GW of GB300 capacity running inference around 
+the clock. For context, Meta's flagship Hyperion campus is designed to scale to ~5GW. Even at 
+a 5% usage rate it's ~7.7GW: 
+
+ 
+ 
+Caveats apply: caching, distillation onto smaller models (Meta's 30B Muse Glimmer runs on a 
+single consumer GPU, Aug 10) and, as of this week, the fact that 2.7mn DAUs is a long way 
+from 1bn. At today's user count the same math gives about 0.1GW. The GPU constraint only 
+bites if Muse succeeds on the scale its bulls hope, in which case power and GPUs become the 
+bottleneck long before CPUs do. That's one more reason we keep saying "behind the meter" 
+generation should be mandatory for every AI campus. 
+4. The Enterprise Opportunity: Because $30 Trillion Wasn't 
+Enough 
+Having sized the consumer TAM at $30tn, MS adds another $25tn for global knowledge work. 
+"Meta is now addressing the $30tn consumer TAM and $25tn enterprise TAM," via Muse for 
+Small Businesses, WhatsApp/Messenger agentic tools, an enterprise push (Meta recently hired 
+a head of Meta Enterprise), Muse Coding and an eventual model API built on "Watermelon and 
+other models." That's $55tn of TAM, about half of world GDP, for a company whose 2026 
+revenue MS puts at $256bn. 
+
+ 
+ 
+The more interesting argument is architectural, and the past two weeks have made it more 
+relevant. MS says Meta for Enterprise exists partly to feed the consumer agent: 
+"Meta for Enterprise is also designed to fuel META's consumer agentic opportunity because we 
+believe companies' underlying 'Web 1.0' architecture needs to evolve to support agent-to-agent 
+interactions.... Muse pinging websites through browsers and calling human call centers isn't a 
+high-quality, consistent or repeatable experience that will scale." (emphasis ours) 
+Translation: an agent clicking through Expedia like a very fast intern makes a good demo and a 
+fragile business. The list of sites restricting Muse (Amazon, Costco, Netflix) and the carriers 
+screening its calls are exactly the problem MS is describing. The fix is businesses exposing 
+MCP/tool interfaces that agents call directly, and Meta would like to sell them the plumbing. MS 
+thinks SMBs will be easier to win than large enterprises, which "will likely look for more 
+cross-platform independence." Until that plumbing exists, a stalled download curve is partly a 
+function of how many doors Muse can actually open. 
+On monetization, MS points to Meta One, the subscription bundle that went worldwide on 
+September 17 (consumer tiers from $2.99 to $19.99; creator and business plans from $14.99 to 
+15-$50/month" can "scale quickly given the 
+499𝑎𝑚𝑜𝑛𝑡ℎ). 𝐶ℎ𝑎𝑟𝑔𝑖𝑛𝑔𝑏𝑢𝑠𝑖𝑛𝑒𝑠𝑠𝑒𝑠𝑎𝑛𝑑𝑖𝑛𝑓𝑙𝑢𝑒𝑛𝑐𝑒𝑟𝑠"
+100mn businesses on Meta Platforms." The sensitivity table shows what that's worth: 50mn 
+subscribers at 
+3.17) to 2028 EPS, and the high end (80mn at 
+20𝑎𝑑𝑑𝑠9. 1%(
+25)𝑎𝑑𝑑𝑠18. 1%(
+6.34). 
+
+ 
+ 
+MS also sizes an API business: 100MW of GB300 capacity dedicated to selling Meta's models 
+adds "4% (~$1) to '28 EPS." One housekeeping note for anyone rebuilding the model: several 
+intermediate rows in Exhibit 7 don't foot as printed. 100MW at 135kW per rack is ~740 racks 
+(the table shows 5), and $5,641mn of net income over 2,631mn shares is $2.14 (the table 
+shows 
+1 rather than the plumbing. 
+1. 24). 𝑊𝑒'𝑑𝑟𝑒𝑙𝑦𝑜𝑛𝑡ℎ𝑒ℎ𝑒𝑎𝑑𝑙𝑖𝑛𝑒~4%/~
+ 
+
+ 
+The enterprise push has collateral damage beyond Meta's P&L. On October 1 Needham's Laura 
+Martin estimated Apple could lose up to 
+7.5bn of EBITDA) if 
+10𝑏𝑛𝑎𝑦𝑒𝑎𝑟𝑜𝑓𝑠𝑒𝑟𝑣𝑖𝑐𝑒𝑠𝑟𝑒𝑣𝑒𝑛𝑢𝑒(~
+20% of App Store sales migrated to Muse Connectors. Meta took in more than 1,500 developer 
+applications for connectors in the first 168 hours. 
+5. Amazon And Meta: Frenemies With Benefits 
+Amazon's reason for blocking Muse, per spokesperson Lara Hendrickson, is that third-party 
+apps buying on customers' behalf "should operate openly and respect service provider 
+decisions." Reports add that Amazon accused Muse of not identifying itself as an AI agent and 
+of storing customer credentials without proper disclosure. MS reads it as a negotiation: 
+"Amazon is ~40% of the US e-commerce market and at the top of the e-commerce funnel and 
+wants to ensure this remains the case even as horizontal agents emerge... But merchant of 
+record, controlling the shopper experience (the role and offerings of Prime benefits, retail media, 
+what inventory do people see, upsell opportunities, etc.), and data sharing back to the Muse 
+agent are all important." 
+Nowak says any deal is unique for two reasons: "1) It is likely to be the first agentic partnership 
+with AMZN that sets a potential precedent structure for others to come and 2) in our view, META 
+needs AMZN's fulfillment and shipping prowess and AWS for its cloud capacity (CPU and GPU) 
+and model distribution (API access to Watermelon via Bedrock)." 
+Read that list again: Meta needs Amazon's logistics, Amazon's CPUs, Amazon's GPUs and 
+Amazon's model marketplace, and Amazon needs Meta to stop treating its storefront as a dumb 
+pipe. The slowdown shifts leverage a little toward Amazon. An agent adding 200K users a day 
+is a threat a retailer has to accommodate; one adding 74K a day can be made to wait. AMZN, 
+down 2% since launch as recently as October 2, is now up 2.1%. Whoever gives up "merchant 
+of record" status first loses the most. We'd bet on a structure where Amazon keeps the checkout 
+and the Prime upsell, and Meta gets a referral fee plus a shopper-intent data feed it will no 
+doubt describe as "privacy-preserving." 
+6. After A Re-Rate From 14x To 21x, What Now? 
+META trades at around 21x NTM consensus EPS, up from 14x before it settled the state AG 
+case (the August 26 social-media addiction settlement, worth up to ~$17bn), which turned out to 
+be the "clearing event" the bulls had been waiting for. MS thinks the multiple "largely reflects 
+META's position of strength, with a first mover advantage bringing a free Muse to market and 
+
+ 
+better models on the horizon." From here, further re-rating depends on 1) user adoption of 
+Muse, 2) commercial behavior on the agent platform and 3) "the competitive set of agentic 
+products rolled out by GOOGL/SPCX/privates." Item 1 is exactly what the Hunterbrook data 
+calls into question. The ten-year average multiple is 20.0x, and the stock sits just above it: 
+ 
+For the bulls MS adds that "META traded at 28X as recently as February 2025, so there is 
+precedent for taking the multiple higher." For the bears, the same chart shows it bottoming 
+under 10x in late 2022, the last time Meta spent heavily on a future that hadn't arrived yet. The 
+bank's $775 base case (23x the average of 
+35 '27/'28 EPS) is 7.8% above Friday's $718.67 
+34/
+close. The bull case is $1,000 (28x) and the bear case $450 (15x). As of September 30, options 
+implied ~36% odds of exceeding $775 within 12 months and ~14% odds of exceeding $1,000. 
+(The probability label is clipped in MS's own layout.) 
+
+ 
+ 
+Street targets remain far above the price: JPMorgan $920, BofA $810, Wells Fargo $796, 
+Tigress $995, with the average around $800 and virtually no Sells. Hunterbrook's short is, as far 
+as we can tell, the first prominent bet against the Muse story. The real test comes with Q3 
+results on November 4, when Meta will be asked for its own Muse numbers. Third-party 
+estimates currently range from 1.8mn to 2.7mn DAUs. 
+Meanwhile In China: Can Tencent Out-Muse Meta? 
+Muse's launch has also sent investors looking for the Chinese equivalent, and the South China 
+Morning Post (Oct 8) ran through the contenders, leaning on a recent Bernstein report and 
+BofA's Winnie Wu. Bernstein's framing is that the real prize in agents is "context lock-in": the 
+more an agent learns about a user's habits, history and workflows, the more useful it becomes 
+and the harder it is to replace. That's the same "data capture and profile build" Morgan Stanley 
+flags as Muse's interim payoff, and Bernstein says it favors Chinese platforms whose 
+ecosystems already span messaging, payments, e-commerce, workplace software and cloud. 
+BofA's Wu put the shift simply: "With a chatbot, it doesn't have a differentiation point. It's about 
+whether the agent can get things done for you." 
+The lineup, per Bernstein and SCMP: 
+
+ 
+ 
+Some observations of our own. 
+China's walled gardens are Muse's Amazon problem, times a billion. Wu's main caveat is that 
+China's mobile internet is dominated by "guarded" ecosystems, so a rival platform's agent may 
+never get access to tasks running through WeChat or Alipay. That's the same friction Muse is 
+hitting with Amazon, Costco and Netflix, except in China it's the default for the entire internet. It 
+also flips the advantage. An outside agent can't get in, and Tencent doesn't need to: Xiaowei 
+operates inside WeChat (roughly 1.4bn users) through mini programs, which are effectively the 
+structured, agent-callable interfaces Morgan Stanley says the "Web 1.0" internet must build 
+before agents can scale. Tencent already has the plumbing Meta is trying to sell. As Bernstein 
+puts it, Tencent is "a small leap of faith" away from a Muse of its own. 
+Distribution is the other gap. Muse's growth is being measured by downloads, and the 
+downloads are slowing. A WeChat agent doesn't need to be downloaded, since it's a swipe 
+away inside an app most Chinese smartphone users already open every day. Regular readers 
+will recall Tencent jumped 10.5%, its biggest gain since 2022, on the first reports of exactly that 
+product ("Tencent Soars Most Since 2022 On Report It's Set To Launch AI Agent For China's 
+Most Used App", Jun 2), three months before Muse launched. 
+Monetization runs the other way too. Wu notes Chinese consumers have historically been far 
+less willing than Americans to pay recurring software subscriptions, which rules out Muse-style 
+$20 and $100 tiers. But Tencent may not need them. With WeChat Pay processing trillions of 
+yuan a year, it can take a cut of the transactions its agent completes, which is the "businesses 
+
+ 
+paying for completed transactions" model Morgan Stanley doesn't expect Meta to reach until 
+"late '27/'28 at the earliest." 
+Compute cuts both ways. Wu's last hurdle is cost: agents like Muse need substantially more 
+compute than chatbots, and compute is exactly what export controls ration. Morgan Stanley's 
+model shows why. At low usage, the bigger cost in Muse's bill is the CPU sandbox, a dedicated 
+cloud VM per user running a browser. An agent that calls mini-program APIs inside its own 
+ecosystem instead of driving a browser should need far less of that (our inference, not 
+Bernstein's). China's constraint is on the GPU side, the one that dominates heavy usage, and 
+that's also the side Morgan Stanley never sized for Meta. 
+Net-net: China's giants start without Meta's compute advantage and with consumers who won't 
+pay subscriptions. But they have closed ecosystems in which the agent can actually complete 
+the task, payment rails to monetize it and distribution that doesn't depend on an app-store chart. 
+For an agent, the hard part is getting the task done, and that is the part Tencent already 
+controls. 
+Collateral Damage: The "Consumer Inertia" Short 
+One Muse trade has worked regardless of the download curve, and it sits in the companies 
+whose business model depends on customers being too lazy to switch. Goldman's desk flagged 
+it the day after META's 11% surge: 
+Here we go again... from Goldman: Most talked about theme on our desk today was the impact 
+of Agentic AI post Meta Muse and the shorting of “Consumer Inertia" names. Our basket, 
+GSXUSWCH (-2.58% today), which has been one of our most actively traded baskets in recent 
+sessions, consists of stocks in industries where customer retention is supported by "behavioral, 
+operational, contractual or financial switching costs." ...in other words, services that are hard to 
+cancel (unless you have Agentic AI do it for you). Some big movers within the basket today: 
+PLNT (-9.45%) NYT (-7.16%) SCHW (-6.11%) ALL (-5.55%) INTU (-3.87%) 
+— zerohedge (@zerohedge) September 22, 2026 
+
+ 
+ 
+Planet Fitness, whose business model has long relied on members never getting around to 
+cancelling, fell 9.45% that day. The New York Times (another notoriously hard cancel) fell 7.2%. 
+Schwab, Allstate and Intuit fell between 3.9% and 6.1%. Expedia and Booking dropped ~4% on 
+fears that agents will shop around while OTAs collect rent, and the S&P Financials fell as much 
+as 2.4% intraday. The logic is simple: if an agent can compare 40 auto insurance quotes in the 
+time it takes you to find your login, the "inertia premium" in a lot of recurring revenue goes away. 
+A slower Muse ramp buys these companies time. It doesn't change the direction, since Muse 
+won't be the only agent that can find the cancel button. 
+Bottom Line 
+Morgan Stanley's note is still the most useful piece of Muse research so far because it puts real 
+numbers on the question everyone was hand-waving: Muse costs between $3 and $130 per 
+user per month to run, with a $37 base case MS considers a ceiling. Meta has (by MS's count) 
+already bought the CPUs to serve a billion daily users, the costs are in the bank's $209bn 2027 
+opex forecast, and real monetization through an agentic ad auction isn't expected until "late 
+'27/'28 at the earliest." Nowak's conclusion: 
+"This again speaks to Meta's competitive advantage with its access to compute...and ability to 
+tactically scale ahead of others." (emphasis ours) 
+
+ 
+Our take: MS is right that compute is the moat, and the Hunterbrook data shows the moat on its 
+own won't fill the castle. Meta has capacity for a billion users and an estimated 1.8mn to 2.7mn 
+of them, arriving at a third of September's pace, while a growing list of websites and carriers 
+decide whether to let the agent in. In China, where every big platform is a walled garden, the 
+companies that own the gardens (Tencent above all) may find it easier to build the agent than 
+Meta does to get its agent through other people's doors. None of that threatens Meta's $250bn 
+ad business, and at today's user count Muse's compute bill is a rounding error. But the 
+14x-to-21x re-rating was paid for with a growth story, and on Friday that story picked up its first 
+real data point to the contrary, from a disclosed short seller. Sell-side targets still sit 8% to 38% 
+above the price, which is either a buying signal or a reminder that targets tend to follow price. 
+More in the full Morgan Stanley note available to pro subs. 
+ 
+ 
+ 
