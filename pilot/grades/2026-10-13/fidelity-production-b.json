@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "The binding constraint on AI infrastructure is power and grid access.",
+   "why": "Matches MS's framing (also echoed via an On Semiconductor quote in 19893: 'the bottleneck moves to power... from grid to site to core') that power, not chip supply, is the gating factor through the 2026-28/29 forecast window."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "we sized the US data center power shortfall at 57 GW from 2026-28. We forecast this is 32 GW net of time to power solutions... Net of innovative 'time to power' solutions, we project that US data center developers will face a 32-42GW Shortfall through 2028, 34-43% of demanded power.",
+   "why": "All figures (57 GW gross, 32 GW net, 32-42 GW shortfall range, 34-43%) match exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "we move our US share of global compute to 55% from 60% previously... While we expect international [capacity to grow]",
+   "why": "Exact match on the 60%-to-55% revision, and the source goes on to say international expansion doesn't have enough capacity to absorb the US shortfall, supporting the 'overseas expansion does not solve the domestic shortage' clause."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "the still durable bull case of compute demand outstripping compute supply (in turn, driving confidence in 2027+ capex)",
+   "why": "Direct match to Goldman's (Callahan desk) framing of the durable bull case and its link to 2027+ capex confidence."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "Nvidia confirmed our thesis that there is not enough power to meet demand, and there are more semiconductors being built than there are places to put them.",
+   "why": "Morgan Stanley's reading of the identical demand/supply gap: the chips (demand signal) exist but power infrastructure can't yet serve them, which is paraphrased faithfully as 'evidence of demand the industry cannot yet serve.'"
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "TSM preview .. reports Thursday 10/15 (pre-market) .. sentiment remains upbeat, though, TSM did just turn in its biggest 4-day pullback since late-July (down ~7% Tues-Fri of this past week)",
+   "why": "Exact match on date, pre-market timing, upbeat sentiment, ~7% four-day drop, and 'since late-July' comparison."
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source document ties a TSM/semis capex guidance walk-back to a 'power-constrained read' winning. 19902's debate is framed as whether management gives 2027 capex visibility at all, not a power-vs-demand framing; 19893's only 'power-constrained' usage is about ASICs losing share to GPUs, unrelated to guidance outcomes. This reads as the pulse's own synthesized invalidation line, not a sourced claim.",
+   "searched": [
+    "walks back",
+    "power-constrained",
+    "85bn / 98bn",
+    "guidance"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Our Morgan Stanley Thematics team forecasts 160 GW of incremental data center power demand from 2026-2029, 22 GW of which are already under construction and have a power grid connection. We also estimate 36 GW of available US grid capacity... there is 23 GW of BTM power generation equipment that has been procured... This leaves a 77 GW shortfall",
+   "why": "All figures match exactly: 160 GW, 22 GW under construction with grid connection, and the 77 GW residual shortfall after grid capacity (36 GW) and already-procured BTM equipment (23 GW) are netted out."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Incorporating these factors alongside SCACP, Bloom Energy's SOFC ranks #1, BorgWarner's Turbine Generator #2 and FTAI's Aeroderivative solution #3... Top ideas for onsite power equipment suppliers: Bloom Energy (BE), Baker Hughes (BKR), BorgWarner (BWA...), Cummins (CMI), ERock (EROC), FTAI Aviation (FTAI), INNIO (INIO), and Rolls [Royce]",
+   "why": "Ranking order and full equipment-ideas list match exactly; SCACP (Stranded Compute Adjusted Cost of Power) is defined in the source as adding the cost of idle/stranded compute waiting on power."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Sunrun and Tesla coordinated more than 140,000 residential batteries to deliver over 580 MW of peak power to the California grid for a three-hour evening dispatch. Of that capacity, 517 MW came from approximately 110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other manufacturers.",
+   "why": "Exact match on all figures (140,000 batteries, 580 MW, 517 MW/110,000 Powerwalls, 63 MW other manufacturers) and the California heat-wave context."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "we expect the ESS market to grow from 57 GWh in 2025 to 280 GWh by 2030... Our US Clean Tech team projects net additions to the US energy-storage market to grow at a 38% CAGR from 2025-2030, reaching 279 GWh annual deployments by 2030.",
+   "why": "Matches both figures the source gives for the same forecast (280 GWh vs 279 GWh is the source's own minor rounding variance, not a distortion), plus the 38% CAGR."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Since 1Q25 our estimate of the real neutral rate has risen from under 100bp to about 150bp, suggesting current policy is neutral or modestly restrictive.",
+   "why": "Exact match on the real neutral rate's rise from under/just-under 100bp to about 150bp since 1Q25."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "We forecast core CPI at 0.24% m/m in September (2.5%y/y), five basis points below August's 0.29% increase... We expect headline CPI at 0.62% m/m and 3.69% y/y, reflecting another sizable increase in gasoline prices.",
+   "why": "Verbatim match on every figure: 0.24% core m/m, 2.5% y/y, five bp below August's 0.29%, 0.62% headline m/m, 3.69% y/y, gasoline driver."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Thursday 15 Oct... Retail Sales Advance m/m Sep 0.3... Retail Sales Ex Auto m/m Sep 0.5... Retail Sales Control Group Sep 0.2",
+   "why": "Matches the forecast column exactly: 0.3% headline, 0.5% ex-auto, 0.2% control group, dated Oct 15."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Still, Sept CPI next week matters for the Oct meeting. We expect core CPI at 0.24% m/m, headline at 0.62%.",
+   "why": "MS explicitly frames the CPI print as the swing factor for its two-more-hikes call; a hotter-than-forecast core reading is the natural condition that would upend that call, consistent with the bank's own stated stance."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 0,
+ "unsupported": 1,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

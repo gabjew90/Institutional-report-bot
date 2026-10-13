@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+ "source_span": "We sized the US data center power shortfall at 57 GW from 2026-28. We forecast this is 32 GW net of time to power solutions, which translates to a 34% net US power shortfall through 2028.",
+ "source_chain": "A: US data centers face a 57GW gross / 32GW net power shortfall through 2028, so only large credit-worthy hyperscalers/neoclouds can secure energization (60-95% of global DC capacity adds) THEREFORE B: power scarcity, not chip supply, becomes the binding constraint, putting memory/optical/analog components and ASICs (lower tokens/GW than GPUs) at risk while NVDA/AVGO stay protected through 2027 THEREFORE C: MS cuts its US share of global compute forecast to 55% from 60% since overseas capacity can only partly offset the gap. Invalidation (stated in the note): the shortfall narrows only if behind-the-meter power (turbines, fuel cells, nuclear) or international expansion materialize faster than modeled \u2014 and the note explicitly argues international capacity is not enough to absorb the US shortfall.",
+ "pulse_chain": "A: MS sizes the power gap (57GW gross/32GW net, developers short 32-42GW = 34-43% of demand) as the binding constraint on the AI buildout through 2028 THEREFORE B: utilities will energize only credit-worthy buyers, so the largest clouds and AI-only clouds take 60-95% of global DC capacity THEREFORE C: disruption lands on memory/optics/small-dollar components and ASICs risk losing share to GPUs; MS cuts US compute share to 55% from 60%. The pulse then sets Goldman's Dell/memory read as the counter-argument and makes TSM's Oct 15 capex guidance ($85B 2027/$98B 2028) the condition that decides between a power-constrained read and an equipment-constrained read.",
+ "preserved": false,
+ "why": "The pulse reproduces MS's A-through-C chain faithfully but swaps the note's own stated invalidation (the shortfall narrows only if behind-the-meter power or international expansion outpaces the modeled gap, which MS says won't happen) for an unrelated condition it invents \u2014 TSM's capex guidance deciding between a 'power-constrained' and 'equipment-constrained' read.",
+ "dim": "mechanism",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

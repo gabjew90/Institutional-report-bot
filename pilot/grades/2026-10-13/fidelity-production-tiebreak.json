@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "why": "MS: 'Nvidia confirmed our thesis that there is not enough power to meet demand, and there are more semiconductors being built than there are places to put them' \u2014 the stance that power, not chip orders, is the gating factor through 2028 is a bank's own framing.",
+   "span": "Nvidia confirmed our thesis that there is not enough power to meet demand, and there are more semiconductors being built than there are places to put them."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "why": "57GW gross shortfall, 32GW net of time-to-power solutions, and 32-42GW/34-43% figures all match verbatim.",
+   "span": "US data center developers will face a 32-42GW Shortfall through 2028, 34-43% of demanded power... Our US power shortfall remains at 57GW, and moves to 32 GW net of time to [power solutions]"
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "why": "US compute share cut to 55% from 60%, and the doc explicitly states international expansion does not solve the US shortage.",
+   "span": "we move our US share of global compute to 55% from 60% previously... we don't see it as a solution to the US power problem."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "why": "Matches Goldman's stated bull case verbatim.",
+   "span": "the still durable bull case of compute demand outstripping compute supply (in turn, driving confidence in 2027+ capex)"
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "why": "MS's contrasting framing: the shortfall itself is evidence demand exceeds what can currently be served.",
+   "span": "there is not enough power to meet demand, and there are more semiconductors being built than there are places to put them"
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "why": "Exact match on date, timing, sentiment and the 7% four-day drop since late July.",
+   "span": "TSM preview .. reports Thursday 10/15 (pre-market) .. sentiment remains upbeat, though, TSM did just turn in its biggest 4-day pullback since late-July (down ~7% Tues-Fri of this past week)"
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "why": "Editorial invalidation condition grounded in the doc's own Broadcom precedent (guidance cut from >$100bn to $115bn framed as the power-constrained read materializing) and the TSM capex-outlook focus named in s6's source.",
+   "span": "after guiding for FY27 AI revenue well above $100bn in March, the company's most recent guidance from September was for $115bn, which is much less upside than investors initially anticipated"
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "why": "160GW demand, 22GW under construction with grid connection, and 77GW residual shortfall after grid capacity and procured BTM equipment are counted all match.",
+   "span": "Our Morgan Stanley Thematics team forecasts 160 GW of incremental data center power demand from 2026-2029, 22 GW of which are already under construction and have a power grid connection... This leaves a 77 GW shortfall"
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "why": "SCACP ranking order (Bloom #1, BorgWarner #2, FTAI #3) and the exact top-ideas list match.",
+   "span": "Bloom Energy's SOFC ranks #1, BorgWarner's Turbine Generator #2 and FTAI's Aeroderivative solution #3... Top ideas for onsite power equipment suppliers: Bloom Energy (BE), Baker Hughes (BKR), BorgWarner (BWA)... Cummins (CMI), ERock (EROC), FTAI Aviation (FTAI), INNIO (INIO), and Rolls [Royce]"
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "why": "140,000 batteries, 580MW total, 517MW/110,000 Powerwalls, 63MW from other manufacturers all match exactly.",
+   "span": "Sunrun and Tesla coordinated more than 140,000 residential batteries to deliver over 580 MW of peak power to the California grid... Of that capacity, 517 MW came from approximately 110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other manufacturers."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "why": "Both the 57GWh-to-280GWh path and the 38% CAGR-to-279GWh path appear in the same document describing the same US storage market forecast.",
+   "span": "we expect the ESS market to grow from 57 GWh in 2025 to 280 GWh by 2030... Our US Clean Tech team projects net additions to the US energy-storage market to grow at a 38% CAGR from 2025-2030, reaching 279 GWh annual deployments by 2030."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "why": "Exact match on the real neutral rate rise since 1Q25.",
+   "span": "Since 1Q25, our estimate of the real neutral policy rate has risen from a bit below 100bp to about 150bp."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "why": "Core and headline CPI forecast figures match exactly, correctly framed as a forecast (CPI had not yet printed).",
+   "span": "We forecast core CPI at 0.24% m/m in September (2.5%y/y), five basis points below August's 0.29% increase... we expect headline CPI at 0.62% m/m and 3.69% y/y"
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "why": "Headline, ex-auto, and control-group retail sales forecasts all match and are correctly framed as forecasts ('seen'), not prints.",
+   "span": "We expect headline retail sales rose 0.3%m/m in September, with sales ex autos up 0.5%m/m, and retail control group sales up 0.2%."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "why": "Editorial invalidation condition directly tied to the sourced core CPI forecast in s13 \u2014 a print above the 0.24%/2.5% forecast is what would change the Fed/neutral-rate argument.",
+   "span": "We forecast core CPI at 0.24% m/m in September (2.5%y/y), five basis points below August's 0.29% increase"
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

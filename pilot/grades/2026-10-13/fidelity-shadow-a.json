@@ -1,0 +1,145 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "The binding constraint on AI infrastructure is power and grid access.",
+   "why": "MS's own framing elsewhere in the note ('Power availability has become the primary constraint to further AI progress') supports this as the bank's stance, not an invented claim."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "we find a 57GW power shortfall before time to power solutions and a net shortfall of 32GW through 2028, 34% of total demanded power... data center developers will face a 32-42GW Shortfall through 2028, 34-43% of demanded power",
+   "why": "Every figure (57GW gross, 32-42GW net, 34-43%, 2026-2028 window) matches exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "companies with credit support, revenue visibility and large volume needs \u2013 like the hyperscalers \u2013 are getting access to power more quickly... forecasts capacity additions from the hyperscalers and neoclouds... at 60-95% of our forecasted global data center capacity",
+   "why": "60-95% figure and the credit-worthiness mechanism for which buyers get energized both match."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "still durable bull case of compute demand outstripping compute supply (in turn, driving confidence in 2027+ capex)",
+   "why": "Near-verbatim match of GS's own phrasing."
+  },
+  {
+   "id": "s5",
+   "grade": "unsupported",
+   "live_market": true,
+   "source_file": "pilot-data/pilot/source-text/2026-10-13/20059__gs-tmt-today-10-12-26.txt",
+   "span": "Thu 10/15... Earnings: Pre: ERIC, TSM",
+   "why": "Thursday Oct 15, before-the-open timing is confirmed (20059, and 19892's 'Thursday 15 Oct' calendar exhibit), and upbeat sentiment is supported ('TSMC should deliver a strong Q3 and may raise Q4 guidance', 20066). But the specific price move \u2014 fell about 7% over four days last week, biggest such drop since late July \u2014 has no support anywhere in the source set; this looks like an uncited live-market fact, not drawn from any research note.",
+   "searched": [
+    "TSM fell 7%",
+    "biggest drop since late July",
+    "TSM down 7%",
+    "four-day"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Our Morgan Stanley Thematics team forecasts 160 GW of incremental data center power demand from 2026-2029, 22 GW of which are already under construction and have a power grid connection... This leaves a 77 GW shortfall",
+   "why": "All three figures (160 GW, 22 GW, 77 GW) and the mechanism (grid capacity + procured BTM equipment netted out) match exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "it is important to distinguish between large mega-campuses (1 GW+) for training, and smaller inference nodes. We believe CCGTs or the grid are best suited to provide the primary source of power for large mega-sites (1 GW+)",
+   "why": "Direct match on the 1 GW+ training-campus/grid claim."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Sunrun and Tesla coordinated more than 140,000 residential batteries to deliver over 580 MW of peak power... Of that capacity, 517 MW came from approximately 110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other manufacturers",
+   "why": "Every figure matches exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Only \"several\" participants (which we assume is 4-5) \"viewed the current policy rate as not restrictive or only mildly restrictive\"",
+   "why": "Direct match, including MS's own 4-5 estimate for 'several'."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "headline at 0.62%. This is in line with core PCE at 0.23%... Core PCE ends 2026 at 3.0% (4Q/4Q) and 2027 at 2.6%",
+   "why": "All three figures match exactly."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "We expect headline retail sales rose 0.3%m/m in September, with sales ex autos up 0.5%m/m, and retail control group sales up 0.2%",
+   "why": "All three figures match exactly, dated to Thursday Oct 15 in the same exhibit."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Initial Jobless Claims / 10-Oct / 190 / 197",
+   "why": "190k forecast for the week ahead matches the calendar exhibit exactly."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Real GDP grows 2.4% (4Q/4Q) in 2026 and 2.3% in 2027... AI-related investment contributes around 60bps to real GDP growth in 2026 and 2027",
+   "why": "All figures match exactly."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "consumption is rising at a 2.6% annual rate, \u00bd point faster than last year... Elevated wealth supports consumption and \"animal spirits\" keep business spending elevated. GDP grows 3.0% in 2027",
+   "why": "The 2.6% run-rate and the 3.0%-in-2027 upside scenario (tied to elevated wealth and business spending) both match."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "investors try to understand what multiples are implying (e.g. will numbers going to go up 'enough' to support these multiples?)",
+   "why": "Faithful paraphrase of GS's own framing of the debate over whether earnings growth justifies the inference-economy group's multiples."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 0,
+ "unsupported": 1,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

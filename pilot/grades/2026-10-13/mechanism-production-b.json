@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+ "source_span": "in the event of a pause, we're likely to see the most disruption at the tail of the bullwhip... that looks like memory, optics, and other small dollar content components",
+ "source_chain": "US data centers face a 57GW gross / 32GW net power shortfall through 2028 (34% of demand) therefore power access concentrates among large, credit-worthy hyperscalers/neoclouds (60-95% of new capacity) while NVDA/AVGO's 2027 outlook stays intact on management's line-of-sight into chip placement therefore if a slowdown hits, the disruption lands downstream on memory, optics and small-dollar components, and ASICs lose share to GPUs; the invalidating condition is whether Nvidia/Broadcom's ~$800bn 12-month AI revenue outlook gets cut or orders are visibly pushed out/cancelled.",
+ "pulse_chain": "Same MS chain (57GW/32GW shortfall, concentration among credit-worthy hyperscalers, disruption lands on memory/optics/components, ASICs lose share to GPUs) is reproduced accurately, and the opposing Goldman read (Dell site visit: supply/memory is the gating factor, 'durable bull case of compute demand outstripping compute supply' supports 2027+ capex) is also accurately sourced to GS's TMT note. But the pulse then invents its own invalidation -- TSM's Thursday capex guidance ($85bn/$98bn 2027E/2028E) as the test of whether 'power-constrained' or 'equipment supply' is the binding limit -- a framing neither note states: GS's own TSM preview ties the print only to whether capex guidance confirms the compute-demand-outstrips-supply bull case, never to the power-shortfall debate, and the MS power note never mentions TSM at all.",
+ "preserved": false,
+ "why": "The pulse swaps the sources' actual invalidation conditions (NVDA/AVGO revenue outlook holding vs. GS's compute-demand-outstrips-supply capex thesis) for an invented adjudicator -- TSM guidance deciding 'power-constrained' vs. 'equipment supply' -- that is the pulse's own theory, not argued by either MS or GS.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

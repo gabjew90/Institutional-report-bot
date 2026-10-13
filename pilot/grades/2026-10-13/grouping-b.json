@@ -1,0 +1,39 @@
+{
+ "metric": 1,
+ "total_cards": 126,
+ "fragmentation_sets": [
+  {
+   "subject": "AI data-center power shortfall and its equity winners (BTM equipment suppliers, AI semis conviction, hyperscaler capacity/power access)",
+   "labels": [
+    "behind meter power outlook",
+    "ai semis energy barbell",
+    "data center capacity buildout"
+   ],
+   "cards": 33
+  }
+ ],
+ "fragmented_mass_share": 0.26,
+ "mis_merges": [
+  {
+   "label": "data center capacity buildout",
+   "subjects": [
+    "Morgan Stanley: hyperscaler/neocloud capacity additions and which players secure power (Amazon vs. Google)",
+    "Goldman Sachs: Dell's AI infrastructure demand, memory-constrained supply, and enterprise AI adoption"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Dell demand/margin story (FY27 revisions up ~100%, memory-constrained supply, early-innings enterprise adoption) is a distinct single-name earnings-adjacent thesis an editor would likely brief separately, and it is invisible under a label an editor would read as pure hyperscaler-power content."
+  }
+ ],
+ "pass": false,
+ "notes": "The three Morgan Stanley labels (BTM equipment TAM, AI-semis-vs-power-shortfall, and the MS portion of data-center capacity) read as one coherent power-shortfall report split into three reader labels; that would publish as one MAIN EVENT with named-winner movements, not three BRIEFS. Header states 126 total cards but only 78 appear under the listed labels, so the share is computed against the stated total, not the visible one.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,75 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "Power shortfall (57GW gross/32GW net/34%) is real, confirmed by Nvidia itself, therefore MS stays convicted NVDA/AVGO hit their combined ~$800bn 12-month outlook (visibility into placement, geographic diversification, tokens-per-watt), therefore if a slowdown hits it's memory/optics/small-dollar components and ASICs (losing share to GPUs) that absorb it, not NVDA/AVGO, therefore power access concentrates to large credit-worthy hyperscalers/neoclouds (60-95% of capacity adds), squeezing smaller/international/ASIC players (Google specifically challenged by its own incremental build), therefore upside hinges on BTM (11-49GW, 19GW base) and international expansion, but neither closes the US gap (US compute share cut to 55% from 60%), capped further by labor and political constraints.",
+   "brief_chain": "Power shortfall real (Nvidia confirms) -> MS stays convicted NVDA/AVGO hit ~$800bn outlook on visibility/diversification/tokens-per-watt -> if slowdown, memory/optics/small-dollar components and ASICs (losing share to GPUs) absorb it, not NVDA/AVGO -> power concentrates to credit-worthy hyperscalers/neoclouds (60-95%), squeezing smaller/intl/ASIC players, Google specifically challenged -> BTM (11-49GW/19GW base) and intl expansion are upside but insufficient, US share cut to 55% from 60%, labor/political cap scaling.",
+   "distortions": [
+    {
+     "what": "Brief lists only 3 of the source's 4 stated reasons for conviction (visibility into chip placement, geographic diversification, tokens-per-watt), omitting 'conservative management guidance that takes into account possible LPS shortage.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the stance (convicted on $800bn outlook) and its primary drivers are preserved; dropping one secondary supporting reason doesn't change the call."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "NDX grinds to another weekly win (4 straight, 6 of 7) but masks dispersion (software o/p semis ~800bps), therefore earnings-beat expectations are high but confidence in near-term alpha conversion is lower, leaving the bull case resting on compute-demand-outstrips-supply supporting 2027+ capex; separately sentiment is weak (UoM near 20yr lows, light GIR positioning) even as the index sits near highs; cyclicals underperform defensives (worst week since mid-Aug), R2K down 5 straight weeks, and Analog Semis decouples from ISM (opportunity or warning); TSM preview \u2014 upbeat sentiment despite a ~7% 4-day pullback, GIR models $85bn/$98bn 2027E/2028E capex and stable margins with N2-ramp upside; Dell channel check rejects AI-infra commoditization, cites memory-constrained supply as the growth gate and storage/opex leverage as the margin driver, enterprise adoption still early, FY27 revenue estimates up ~100% YoY; inference-economy software (SNOW/CRWD/PANW/NET/PLTR) stays bid near highs on a deployment-levered (not capex-levered) read, raising the question of whether earnings support current multiples into earnings season.",
+   "brief_chain": "NDX closes higher a 4th straight week (6 of 7) but masks dispersion (software o/p semis ~800bps) -> steady Mag7/semis beats expected but confidence in alpha conversion is lower -> bull case rests on compute demand outstripping supply for 2027+ capex; separately UoM sentiment near 20yr lows and light GIR positioning even near highs; cyclicals vs defensives worst week since mid-Aug, R2K down a 5th week, Analog Semis decouples from ISM (opportunity or warning); TSM upbeat into print despite biggest 4-day pullback since late July, GIR $85bn/$98bn capex, stable near-term margins, N2 upside; Dell visit rejects commoditization narrative, memory-constrained supply gates growth, storage/opex leverage drives margin, enterprise adoption early, FY27 revenue up ~100% YoY; inference-economy software stays bid near highs as deployment- not capex-levered, question of earnings supporting multiples into earnings season.",
+   "distortions": [
+    {
+     "what": "Brief drops the source's specific mention that one of the emerging 'questions' investors are weighing is 'momentum within the Personal Agent thematic.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 it's one example from a list of unspecified investor questions; the overarching read (beats expected, alpha-conversion confidence lower) is unchanged."
+    },
+    {
+     "what": "Brief omits the specific magnitude of TSM's pullback ('down ~7% Tues-Fri') while keeping the superlative framing ('biggest 4-day pullback since late July').",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the comparative claim (biggest pullback since late July) is preserved verbatim; only the raw percentage is dropped."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 2
+  },
+  {
+   "id": "d3",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "AI buildout collides with a grid that can't deliver fast enough, inference shifts to smaller/closer-to-user nodes, and political resistance makes mega-campuses harder to scale, therefore MS expects a structural shift to BTM power; it forecasts 160GW incremental US DC demand 2026-29 (22GW under construction, 36GW available grid, 23GW BTM already procured, leaving a 77GW shortfall filled by SOFCs/gas engines/turbines); MS introduces SCACP (LCOE + idle-GPU opportunity cost) ranking Bloom SOFC #1, BorgWarner turbine #2, FTAI aeroderivative #3; the grid still serves 1GW+ training campuses while BTM targets smaller inference nodes and C&I demand (40GW incremental through 2029, $240bn/120GW BTM TAM); storage/VPPs (Sunrun+Tesla dispatched 580MW from 140k+ batteries during a Sept heat wave) complement generation; political pushback reinforces rather than reverses the BTM shift.",
+   "brief_chain": "Grid can't deliver fast enough + inference shifts to smaller/closer nodes + political resistance to mega-campuses -> structural shift to BTM power/storage -> 160GW incremental demand 2026-29 (22GW under construction, 36GW available grid, 23GW BTM procured, 77GW shortfall filled by SOFC/gas engines/turbines) -> SCACP ranks Bloom SOFC #1, BorgWarner #2, FTAI #3 -> grid still serves 1GW+ campuses, BTM targets smaller inference + C&I (40GW/2029, $240bn/120GW TAM) -> storage/VPPs (Sunrun/Tesla 580MW/140k+ batteries, Sept heat wave) complement generation -> political pushback reinforces rather than reverses the BTM shift.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d4",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "MS's real neutral-rate estimate has risen from under 100bp to ~150bp since 1Q25, implying the current 3.75-4.00% funds rate is neutral-to-modestly-restrictive rather than accommodative, despite Chair Warsh framing the Sept hike as removing 'a dose of accommodation'; two FCI measures corroborate (FRBUS ~100bp tighter than end-Feb, driven mainly by higher 10Y yields; PCA at 0.78 std devs above average), both reading modestly restrictive but not unusually so; because policy isn't accommodative, the Fed doesn't need to catch up, so MS keeps its call for two more 25bp hikes (Dec, March) to 4.25-4.50%; FOMC minutes show only 4-5 participants saw policy as not/only-mildly restrictive, supporting a measured pace; separately, a 7th month of an oil-driven price shock has SPR at its lowest since 1984, and the effective tariff rate is rising from a 6.7% June-Aug average toward ~10% by year-end.",
+   "brief_chain": "Neutral rate risen to ~150bp from <100bp since 1Q25 -> current 3.75-4.00% rate is neutral-to-modestly-restrictive, not accommodative, despite Warsh's 'removal of accommodation' framing -> FRBUS (~100bp tighter, driven by 10Y yields) and PCA (0.78 SD) corroborate, both modestly restrictive not unusually so -> policy not accommodative so Fed needn't catch up, maintains two more 25bp hikes (Dec/March) to 4.25-4.50% -> FOMC minutes (4-5 participants saw policy as not/mildly restrictive) support measured pace -> separately, 7th month oil shock with SPR at lowest since 1984, and effective tariff rate rising from 6.7% (Jun-Aug avg) toward ~10% by year-end.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 3,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

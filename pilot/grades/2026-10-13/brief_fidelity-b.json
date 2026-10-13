@@ -1,0 +1,70 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "57GW gross / 32GW net / 34% US power shortfall through 2028, confirmed real by NVDA's own commentary -> MS stays convicted NVDA/AVGO hit their combined ~$800bn 12-month AI revenue outlook (management visibility into chip placement, geographic diversification, NVDA's higher tokens-per-GW) -> in a slowdown, risk falls on downstream components (memory, optics, analog/power-mgmt) and ASICs lose share to GPUs, not NVDA/AVGO -> power access concentrates among credit-worthy hyperscalers/neoclouds (60-95% of global DC capacity adds), squeezing smaller/international/ASIC-dependent players, GOOGL specifically squeezed by its own build pace -> upside from BTM (11-49GW, 19GW base) and international expansion insufficient to close the gap, so US compute-share cut to 55% from 60%, capped by labor and political constraints",
+   "brief_chain": "Same chain: power shortfall sized and confirmed by NVDA -> conviction NVDA/AVGO hit ~$800bn outlook on management visibility/diversification/tokens-per-watt -> slowdown risk falls on memory/optics/small-dollar components and ASICs, not NVDA/AVGO -> power concentrates among credit-worthy hyperscalers/neoclouds (60-95%), squeezing smaller/international/ASIC players, GOOGL specifically at risk -> BTM and international upside insufficient, US compute-share cut 60%->55%, capped by labor/politics",
+   "distortions": [
+    {
+     "what": "brief says 'tokens-per-watt' where source says 'tokens per gigawatt (GW)'",
+     "material": false,
+     "would_the_trade_change": "no \u2014 same comparative claim (NVDA's chips produce more usable compute per unit of scarce power than peers), just a different unit label for the same metric"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "NDX grinds to a 4th straight weekly gain (6 of 7) but dispersion emerges under the surface (software o/p semis ~800bps) -> investors expect steady Mag7/semis beats but have less confidence beats convert to near-term alpha, leaving the bull case resting on compute-demand-outstrips-supply supporting 2027+ capex -> separately, sentiment is weak (UoM near 20yr lows, GIR shows light positioning) -> cyclical weakness mounts (CYCS/DEFS worst week since mid-Aug, R2K down a 5th straight week, Analog Semis decoupling from its usual ISM relationship) framed as opportunity-or-warning -> TSM print (Thu) is the key near-term catalyst on capex/GM/AI-revenue-visibility despite its biggest 4-day pullback since late July -> Dell site visit rebuts commoditization narrative, points to supply/memory as the gating factor and storage/opex leverage as the margin driver, enterprise AI still early -> inference-economy software (SNOW/CRWD/PANW/NET/PLTR) stays bid near highs even as semis stumble, seen as deployment- not capex-levered, raising the question of whether growth supports current multiples into earnings season",
+   "brief_chain": "Same chain, same order and same causal links, with the added observation that sentiment stays weak 'even as the index sits near highs' tying item 2 back to item 1's NDX-near-ATHs framing",
+   "distortions": [
+    {
+     "what": "brief adds the clause 'even as the index sits near highs' when linking the sentiment/positioning item to the index level, a connective paraphrase drawing on item 1's own content rather than a new claim",
+     "material": false,
+     "would_the_trade_change": "no \u2014 it restates a fact already in the source (NDX near ATHs) to link two source items, it does not alter any stance, lean, or figure"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d3",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "AI buildout collides with a grid that can't deliver power fast enough, inference shifts to smaller nodes closer to users, and political resistance makes mega-campuses harder to scale -> MS expects a structural shift to behind-the-meter (BTM) power/storage -> forecasts 160GW incremental US DC power demand 2026-29 (22GW under construction w/ grid access, 36GW available grid capacity, 23GW BTM equipment already procured), leaving a 77GW shortfall to be filled by SOFCs, gas engines and turbines -> introduces SCACP (LCOE + stranded-compute opportunity cost of idle GPUs) ranking Bloom Energy's SOFC #1, BorgWarner's turbine generator #2, FTAI's aeroderivative solution #3 -> grid still serves large 1GW+ training campuses; BTM targets smaller inference nodes and C&I demand (40GW incremental through 2029, within a $240bn/120GW combined DC+C&I BTM TAM) -> storage and VPPs (Sunrun/Tesla dispatched 580MW from 140,000+ batteries during a September heat wave) complement generation -> political pushback against data centers reinforces rather than reverses the BTM shift",
+   "brief_chain": "Same chain and same figures throughout, including the heat-wave detail on the Sunrun/Tesla VPP dispatch and the combined $240bn/120GW TAM figure",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d4",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "MS's real-neutral-rate estimate rises from under 100bp to ~150bp since 1Q25 -> implies the current 3.75-4.00% fed funds rate is neutral-to-modestly-restrictive, not accommodative, despite Chair Warsh calling the September hike a removal of 'a dose of accommodation' -> corroborated by two financial-conditions measures: FRBUS index ~100bp tighter than end-Feb (mainly higher 10Y yields), PCA index 0.78 std devs above average -> both read modestly restrictive but not unusually so -> because policy isn't accommodative, the Fed doesn't need to catch up, so MS maintains its call for two more 25bp hikes (Dec, March) to 4.25-4.50% -> FOMC minutes show only 4-5 participants saw policy as not/only-mildly restrictive, supporting a measured rather than aggressive pace -> separately, tracks a 7th month of an oil-driven price shock with SPR at its lowest since 1984, and the effective US tariff rate rising from a 6.7% June-August average toward ~10% by year-end",
+   "brief_chain": "Same chain, same figures, same conclusion (two more 25bp hikes to 4.25-4.50%) and same separate oil/tariff tracker items",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 2,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

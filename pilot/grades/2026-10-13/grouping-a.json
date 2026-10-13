@@ -1,0 +1,29 @@
+{
+ "metric": 1,
+ "total_cards": 78,
+ "fragmentation_sets": [],
+ "fragmented_mass_share": 0.0,
+ "mis_merges": [
+  {
+   "label": "data center capacity buildout",
+   "subjects": [
+    "MS hyperscaler data-center power/capacity buildout (Amazon vs Google power-access positioning)",
+    "GS Dell AI-infrastructure earnings: commoditization pushback, memory supply constraints, margin drivers, FY27 estimate revisions"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Dell cards share no tickers or thesis with MS's hyperscaler power-access ranking (DELL vs AMZN/GOOGL/MSFT/META/CRWV/NBIS); an editor scanning this label would likely miss Dell's standalone estimate-revision/commoditization story or dilute it inside an unrelated power-buildout brief."
+  }
+ ],
+ "pass": false,
+ "notes": "The ledger header states 126 cards for the day, but only 78 appear across the listed reader topic labels (62%), and no misc bucket is shown, leaving 48 cards (38%) unaccounted for outside this metric's scoring scope. No fragmentation found: the behind-the-meter power, AI-semis-barbell, and hyperscaler-buildout labels look related but carry disjoint ticker baskets and distinct actionable calls, so they are properly separate subjects.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

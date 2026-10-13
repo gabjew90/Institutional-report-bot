@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+ "source_span": "this is not impacting Nvidia and Broadcom in 2027 ... but we believe this could affect downstream components, like memory, optical, and other components like power management and analog parts in a bear case ... What could drive power upside? Faster BTM builds (turbines/fuel cells). Int'l expansion is happening but there's not enough capacity to absorb the US shortfall.",
+ "source_chain": "The US data center power shortfall is real and binding (32-42GW net, 34-43% of demanded power through 2028), therefore capacity access concentrates among large, credit-worthy players who can secure power (hyperscalers/neoclouds taking 60-95% of new capacity), therefore NVDA/AVGO 2027 numbers are safe (chip placement is not the constraint) but downstream components \u2014 memory, optics, ASICs \u2014 are at risk in a bear case. Invalidation: faster behind-the-meter power solutions (turbines, fuel cells) or international expansion could close the shortfall, though MS notes international capacity alone is insufficient to absorb the full US gap.",
+ "pulse_chain": "Power, not chip orders, sets the AI buildout ceiling through 2028 (32-42GW / 34-43% shortfall), therefore access concentrates among the credit-worthy players utilities will sign with (hyperscalers/AI clouds, 60-95% of capacity), therefore Nvidia/Broadcom are safe (combined $800B revenue thesis holds) but memory/optics/small components and custom ASICs are at risk, with overseas expansion unable to solve the domestic shortage. Invalidation: TSM's October 15 capex guidance \u2014 confirming $85B/$98B for 2027/2028 means the binding limit is equipment supply, not electricity; guidance that walks the numbers back means the power-constrained read wins.",
+ "preserved": false,
+ "why": "MS's note never mentions TSM and gives a different invalidation (faster BTM power builds or international expansion closing the shortfall); the pulse drops that invalidation and substitutes TSM's October 15 capex print \u2014 borrowed from the separate Goldman TSM-preview item \u2014 as the decisive condition for the power-vs-chips debate, a resolution mechanism neither cited note argues.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

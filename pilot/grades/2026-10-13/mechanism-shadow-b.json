@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+ "source_span": "We project that US data center developers will face a 32-42GW Shortfall through 2028, 34-43% of demanded power... Nvidia and Broadcom have a combined market share in XPUs of ~90%... we move our US share of global compute to 55% from 60%",
+ "source_chain": "A US data center power shortfall (32-42GW net through 2028, 34-43% of demand) therefore only large, credit-worthy hyperscalers/neoclouds secure utility access and energize (60-95% of new global DC capacity) therefore downstream components (memory, optics, ASICs) risk losing share to GPUs while NVDA/AVGO (90% combined XPU share) still hit their ~$800bn combined 12-month outlook on geographic footprint and tokens-per-watt edge therefore MS cuts US share of global compute to 55% from 60%; invalidation: faster behind-the-meter power and international expansion could narrow the gap, but MS argues neither fully solves the US shortfall.",
+ "pulse_chain": "Electricity, not chip orders, is the binding constraint (57GW gross/32GW net, or 32-42GW/34-43% range, through 2028) therefore utilities sign with large credit-worthy hyperscalers/AI-clouds (60-95% of coming capacity) therefore memory/optics/other small components and custom ASICs risk losing share while NVDA/AVGO (90% of AI accelerator share) still clear their combined $800bn outlook on footprint and efficiency edge, and US compute share is cut to 55% from 60%; set against Goldman's Dell-sourced read that the same memory tightness signals demand outstripping supply and supports 2027+ capex; invalidation: Thursday's TSM print confirming or walking back GS's $85bn/$98bn 2027/2028 capex estimates decides which read is winning.",
+ "preserved": true,
+ "why": "Every step, figure, and attribution in the MS chain (shortfall size, access concentration, NVDA/AVGO resilience, downstream component risk, compute-share cut) and the contrasting GS/Dell memory-tightness argument is reproduced in the same direction with the same invalidation (the TSM print), just compressed and reworded.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

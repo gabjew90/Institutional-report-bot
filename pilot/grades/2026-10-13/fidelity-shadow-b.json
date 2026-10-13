@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "the bottleneck moves to power. And more specifically the entire power domain from grid to site to core... Power availability has become the primary constraint to further AI progress.",
+   "why": "MS's 'Key Recent Quotes on Power Shortfall' section, which the note builds its thesis around, frames power (not chip supply) as the binding constraint on the 2026-28 AI buildout, matching the sentence's framing."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "US data center power shortfall at 57 GW from 2026-28. We forecast this is 32 GW net of time to power solutions... developers will face a 32-42GW Shortfall through 2028, 34-43% of demanded power",
+   "why": "Every figure (57 GW gross, 32 GW net, 32-42 GW range, 34-43%) and the Morgan Stanley attribution match exactly."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "data center energization is being concentrated across a handful of large, credit-worthy players... hyperscalers and neoclouds (AMZN, GOOGL, MSFT, META, SPCX, CRWV, NBIS) at 60-95% of our forecasted global data center capacity coming online",
+   "why": "60-95% figure, the hyperscaler/neocloud framing, and the credit-worthy-player concentration point all match; attributed to Morgan Stanley's Internet team."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "the still durable bull case of compute demand outstripping compute supply (in turn, driving confidence in 2027+ capex)",
+   "why": "Near-verbatim match, correctly attributed to Goldman Sachs (Callahan TMT note)."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "TSM preview .. reports Thursday 10/15 (pre-market) .. sentiment remains upbeat, though, TSM did just turn in its biggest 4-day pullback since late-July (down ~7% Tues-Fri of this past week)",
+   "why": "Date, pre-market timing, upbeat sentiment, ~7% four-day decline, and 'since late-July' all match exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Our Morgan Stanley Thematics team forecasts 160 GW of incremental data center power demand from 2026-2029, 22 GW of which are already under construction and have a power grid connection... This leaves a 77 GW shortfall",
+   "why": "160 GW, 22 GW under construction with grid connection, and 77 GW shortfall figures match; the sentence's description of grid capacity and purchased equipment being netted out matches the surrounding paragraph (36 GW grid capacity, 23 GW procured BTM equipment)."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "it is important to distinguish between large mega-campuses (1 GW+) for training, and smaller inference nodes. We believe CCGTs or the grid are best suited to provide the primary source of power for large mega-sites (1 GW+)",
+   "why": "Directly supports the claim that 1 GW+ training campuses still rely on the grid."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Sunrun and Tesla coordinated more than 140,000 residential batteries to deliver over 580 MW of peak power to the California grid... Of that capacity, 517 MW came from approximately 110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other manufacturers",
+   "why": "Every figure (140,000 batteries, 580 MW, 517 MW/110,000 Powerwalls, 63 MW other) matches exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Only \"several\" participants (which we assume is 4-5) \"viewed the current policy rate as not restrictive or only mildly restrictive\"",
+   "why": "The 4-5 figure is explicitly Morgan Stanley's own stated assumption about the September FOMC minutes' 'several' language, matching the sentence exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "This is in line with core PCE at 0.23%... Core PCE ends 2026 at 3.0% (4Q/4Q) and 2027 at 2.6%",
+   "why": "0.23% September figure and the 3.0%/2.6% Q4/Q4 2026/2027 forecasts both match, attributed to Morgan Stanley."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "We expect headline retail sales rose 0.3%m/m in September, with sales ex autos up 0.5%m/m, and retail control group sales up 0.2%",
+   "why": "All three figures match exactly; October 15 date for the release confirmed by cross-reference to pilot-data/pilot/source-text/2026-10-13/20059__gs-tmt-today-10-12-26.txt ('Thu 10/15: US PPI & Retail Sales')."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "forecast a further decline in new claims to 190k in the week ahead",
+   "why": "Exact match."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Real GDP grows 2.4% (4Q/4Q) in 2026 and 2.3% in 2027... AI-related investment contributes around 60bps to real GDP growth in 2026 and 2027",
+   "why": "GDP figures and 60bps AI contribution for both years match exactly, attributed to Morgan Stanley."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "This year through 3Q, consumption is rising at a 2.6% annual rate, \u00bd point faster than last year... Elevated wealth supports consumption and \"animal spirits\" keep business spending elevated. GDP grows 3.0% in 2027, 0.5-1.0pp faster than the baseline",
+   "why": "2.6% annual consumption rate and 'half a point faster' match the current-quarter section; the 3.0% 2027 figure, elevated wealth, and business spending match the 'Animal Spirits' upside scenario in the same document's scenario table."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-13/20066__gs-tmt-spec-sales-ai-semis-in-focus-q3-reporting-kicks-off-a.txt",
+   "span": "investors try to understand what multiples are implying (e.g. will numbers going to go up 'enough' to support these multiples?), especially as we head into earnings season",
+   "why": "Goldman's note poses exactly this question (whether earnings growth will support current multiples) for the inference-economy cohort (SNOW, CRWD, PANW, NET, PLTR) heading into earnings season."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

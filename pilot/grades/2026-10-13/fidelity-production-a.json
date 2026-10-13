@@ -1,0 +1,153 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "The binding constraint on AI infrastructure is power and grid access. Our Global Thematics team, led by Stephen Byrd, has highlighted throughout recent research that we are entering an unprecedented power shortage.",
+   "why": "MS Global Thematics team states power/grid access, not chip supply, is the binding constraint on AI infrastructure buildout; sentence restates this stance."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "Our US power shortfall remains at 57GW, and moves to 32 GW net of time to power solutions... US data center developers will face a 32-42GW Shortfall through 2028, 34-43% of demanded power.",
+   "why": "Exact match on 57GW gross, 32GW net, 32-42GW shortfall range and 34-43% share figures, all attributed to Morgan Stanley."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19893__what-does-the-power-shortfall-mean-for-semis.txt",
+   "span": "we move our US share of global compute to 55% from 60% previously... we don't see it as a solution to the US power problem.",
+   "why": "Exact figure match (55% from 60%) and the overseas-expansion-doesn't-solve-shortage claim is MS's own stated conclusion in the same passage."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "the still durable bull case of compute demand outstripping compute supply (in turn, driving confidence in 2027+ capex)",
+   "why": "Verbatim thesis from the Goldman Sachs TMT note, correctly attributed to Goldman."
+  },
+  {
+   "id": "s5",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source document frames the MS power-shortfall data (or any related data) as 'evidence of demand the industry cannot yet serve' attributed to an unnamed second bank; the closest passage (19970) explicitly argues the opposite ('not a sign of healthy demand so much as a sign of power and shell scarcity').",
+   "searched": [
+    "evidence of demand",
+    "cannot serve / cannot yet serve",
+    "outstripping / outpac"
+   ]
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19902__gs-us-tmt-10-things-11-oct-2026.txt",
+   "span": "TSM preview .. reports Thursday 10/15 (pre-market) .. sentiment remains upbeat, though, TSM did just turn in its biggest 4-day pullback since late-July (down ~7% Tues-Fri of this past week)",
+   "why": "Exact match: date, pre-open timing, upbeat sentiment, ~7% four-day decline, biggest since late July."
+  },
+  {
+   "id": "s7",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source states that TSM guidance walking back capex numbers would represent 'the power-constrained read winning'; this is an invalidation condition not found in any source text.",
+   "searched": [
+    "walks back / walk back",
+    "power-constrained / power constrained"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Our Morgan Stanley Thematics team forecasts 160 GW of incremental data center power demand from 2026-2029, 22 GW of which are already under construction and have a power grid connection... This leaves a 77 GW shortfall",
+   "why": "Exact figure match for 160 GW, 22 GW under construction/grid-connected, and the resulting 77 GW shortfall, attributed to MS Thematics team."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "Incorporating these factors alongside SCACP, Bloom Energy's SOFC ranks #1, BorgWarner's Turbine Generator #2 and FTAI's Aeroderivative solution #3... Top ideas for onsite power equipment suppliers: Bloom Energy (BE), Baker Hughes (BKR), BorgWarner (BWA), Cummins (CMI), ERock (EROC), FTAI Aviation (FTAI), INNIO (INIO), and Rolls Royce",
+   "why": "SCACP (Stranded Compute Adjusted Cost of Power) is defined elsewhere in the doc as adding the monetized opportunity cost of idle GPUs; ranking order and equipment-idea list match exactly."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "During a heat wave on September 9, Sunrun and Tesla coordinated more than 140,000 residential batteries to deliver over 580 MW of peak power to the California grid... Of that capacity, 517 MW came from approximately 110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other manufacturers.",
+   "why": "Exact match on all figures: 140,000+ batteries, 580 MW, 517 MW/110,000 Powerwalls, 63 MW other manufacturers."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19891__living-on-the-edge-the-rise-of-distributed-power.txt",
+   "span": "we expect the ESS market to grow from 57 GWh in 2025 to 280 GWh by 2030... projects net additions to the US energy-storage market to grow at a 38% CAGR from 2025-2030, reaching 279 GWh annual deployments by 2030",
+   "why": "Exact match on 57 GWh to 280 GWh, 38% CAGR, and 279 GWh annual deployment figure."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Since 1Q25, our estimate of the real neutral policy rate has risen from a bit below 100bp to about 150bp.",
+   "why": "Exact match on figures, timeframe, and the real-neutral-rate framing; the plain-English gloss of basis points is accurate."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "We forecast core CPI at 0.24% m/m in September (2.5%y/y), five basis points below August's 0.29% increase... We expect headline CPI at 0.62% m/m and 3.69% y/y, reflecting another sizable increase in gasoline prices.",
+   "why": "Exact match on all four figures and the gasoline driver for headline CPI, correctly presented as a forecast, not a print."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-12/19892__us-economics-weekly-much-ado-about-neutral.txt",
+   "span": "Retail sales. We expect headline retail sales rose 0.3%m/m in September, with sales ex autos up 0.5%m/m, and retail control group sales up 0.2%.",
+   "why": "Exact figure match; document places this under the 'Thursday 15 Oct' calendar section, consistent with the Oct 15 date."
+  },
+  {
+   "id": "s15",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "No source states that a hotter core print is specifically what 'changes the argument' for the neutral-rate thesis; closest related passage calls overheating 'a risk scenario rather than a baseline,' which is not the same claim.",
+   "searched": [
+    "hotter core / hotter",
+    "argument",
+    "upside risk / surprise to the upside"
+   ]
+  }
+ ],
+ "faithful": 12,
+ "distorted": 0,
+ "unsupported": 3,
+ "faithful_rate": 0.8,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

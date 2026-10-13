@@ -1,0 +1,38 @@
+{
+ "metric": 1,
+ "total_cards": 78,
+ "fragmentation_sets": [
+  {
+   "subject": "Morgan Stanley's AI data-center power-shortfall thesis and its stock winners (equipment suppliers and semis conviction)",
+   "labels": [
+    "behind meter power outlook",
+    "ai semis energy barbell"
+   ],
+   "cards": 23
+  }
+ ],
+ "fragmented_mass_share": 0.2949,
+ "mis_merges": [
+  {
+   "label": "data center capacity buildout",
+   "subjects": [
+    "hyperscaler/neocloud data-center capacity and power-access buildout (Amazon, Google, Microsoft, Meta, CoreWeave, Nebius GW forecasts)",
+    "Dell AI-infrastructure supply constraints, enterprise-adoption stage, and margin/revenue outlook"
+   ],
+   "would_change_theme_selection": true,
+   "why": "Dell's distinct earnings-adjacent story (memory supply gating, early-innings enterprise adoption, margin and FY27 revisions) is a separate brief candidate that an editor would likely never surface on its own because it's buried inside a label whose other nine cards are about hyperscaler GW/power-access forecasts, not Dell."
+  }
+ ],
+ "pass": false,
+ "notes": "The header claims 126 cards for the day but only 78 appear under the 9 listed labels; the remaining ~48 (likely misc overflow or omitted labels) are not shown here and could not be assessed, so this grading covers only the visible 78. No cards here are labelled 'misc'.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
