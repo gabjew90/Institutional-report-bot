@@ -1,0 +1,494 @@
+{
+ "brief": "Goldman's Industrials & Materials desk opens with hedge funds reversing five weeks of US Industrials selling into the fastest net buying since early January (+1.8 SDs), concentrated in Aerospace & Defense, Construction & Engineering, Airlines and Industrial Conglomerates, even as the long/short ratio stays low (15th percentile 1-year). Into Q3 earnings, GS likes HII, WWD, TDG, ARXS, AVEX and is cautious on LMT, BAH, MRCY; expects strong aerospace aftermarket results on priced-in negativity, Boeing 737 MAX and 787 output still behind plan, and large-cap defense wrestling with peak DoD budget authorization risk. FAST (6% implied move, four straight post-earnings declines, consensus EBIT seen too high) and JBHT (stock down to $230 from $270-280 on a flagged EPS miss, but short interest halved) report this week. Chemicals: Q3 shaping up weaker than consensus as Middle East supply curtailment proved less bullish than expected; PE pricing has fallen but September may rise 3-5c/lb; PVC set to decline 2-4% in Q4 before a 2027 rebound. Housing: GS cuts 2026 single-family starts to 900k (-4.6% YOY) on higher mortgage rates, raises R&R forecasts on pricing, but sees seasonality and depressed valuations (52% near 52-week lows) as upside risk, favoring AWI, CSL, FBIN, IBP.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Hedge funds net bought US Industrials at the fastest pace since early January (+1.8 standard deviations over the past year), driven almost entirely by long buys, after selling the sector for 5 of the last 6-7 weeks.",
+   "anchor": "HFs net bought the sector at the fastest pace since early January (+1.8 SDs 1-year), driven almost entirely by long buys.",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Aerospace & Defense, Construction & Engineering, Airlines, and Industrial Conglomerates were the most net bought US Industrials subsectors by hedge funds last week.",
+   "anchor": "Aerospace & Defense, Construction & Engineering, Airlines, and Industrial Conglomerates were the most net bought subsectors.",
+   "topic": "hedge fund positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "The US Industrials long/short ratio among hedge funds stands at 1.73, in the 15th percentile versus the past year and 22nd percentile versus the past five years.",
+   "anchor": "US Industrials long/short ratio now stands at 1.73, in the 15th percentile vs. the past year and",
+   "topic": "hedge fund positioning and flows",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman likes HII, WWD, TDG, ARXS, and AVEX heading into Q3 2026 A&D earnings.",
+   "anchor": "Into the earnings season we like HII, WWD, TDG, ARXS, AVEX.",
+   "topic": "A&D earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "HII",
+    "WWD",
+    "TDG",
+    "ARXS",
+    "AVEX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman is cautious on LMT, BAH, and MRCY heading into Q3 2026 A&D earnings.",
+   "anchor": "We are cautious on LMT, BAH, MRCY.",
+   "topic": "A&D earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "LMT",
+    "BAH",
+    "MRCY"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman expects strong aerospace aftermarket results in Q3 2026 and positive 2027 commentary, with investor concerns already priced into the stocks.",
+   "anchor": "We like the set up for aerospace aftermarket as concerns are priced into stocks, but we expect strong results in 3Q and positive commentary",
+   "topic": "A&D earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Boeing has averaged approximately 41 737 MAX deliveries per month this summer (41 in August, 39 in July, 42 in June), with its plan to stabilize at 47 per month taking longer than anticipated.",
+   "anchor": "Boeing has averaged ~41/month deliveries of 737 MAX this summer (41 in August, 39 in",
+   "topic": "A&D earnings preview",
+   "status": "released",
+   "instruments": [
+    "BA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Boeing 787 production has stabilized at 8 per month, but the engine delivery rate needed to reach 10 per month has not been achieved.",
+   "anchor": "787 production has stabilized at 8/month, but the engine delivery performance needed to go to 10/month has not been",
+   "topic": "A&D earnings preview",
+   "status": "released",
+   "instruments": [
+    "BA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Business jet market fundamentals remain solid with tight supply-demand.",
+   "anchor": "Market fundamentals remain solid and supply-demand remains tight.",
+   "topic": "A&D earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman says large-cap diversified defense stocks are wrestling with the potential for being at peak DoD budget authorization, largely due to difficult baseline comparisons.",
+   "anchor": "large-cap diversified defense stocks are wrestling with the potential for being at peak DoD budget authorization",
+   "topic": "A&D earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman says Q3 2026 chemicals results are shaping up lower across the board versus consensus expectations, with more risk of missing estimates than beating.",
+   "anchor": "3Q26, in general, looks to be shaping up lower across the board versus consensus expectations coming into the quarter with more risk of missing",
+   "topic": "chemicals Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman says alternate supply sources such as China and demand destruction have tempered the chemical supply deficits created by the Middle East conflict, which was less bullish for basic chemicals than originally believed.",
+   "anchor": "alternate supply sources (e.g., China) and demand destruction have seemingly tempered deficits created by the Middle East conflict.",
+   "topic": "chemicals Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "July 2026 polyethylene pricing settled down 10 cents per pound, following a 15 cents per pound reduction in June.",
+   "anchor": "July PE pricing settled down 10 c/lb, following a 15 c/lb reduction in June.",
+   "topic": "chemicals Q3 earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "September 2026 polyethylene pricing had not settled as of October 9, 2026, but market participants expect a 3 to 5 cents per pound increase.",
+   "anchor": "market participants are optimistic about a 3-5 c/lb increase",
+   "topic": "chemicals Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman expects PVC prices to decline 2-4% in Q4 2026 on seasonality before rebounding 3-5% in 2027, after PVC prices fell about 2% sequentially in Q3 following an 18% sequential increase in Q2.",
+   "anchor": "We expect a decline of 2-4% during 4Q on seasonality with a 3-5% rebound in 2027.",
+   "topic": "chemicals Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q4 2026 and 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "US MTBE supply tightened in September 2026 due to a major plant outage on the US Gulf Coast, even as blending demand stayed supported by rising gasoline prices.",
+   "anchor": "regional MTBE supply tightened due to a major plant outage on the US Gulf Coast",
+   "topic": "chemicals Q3 earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Unplanned Q3 2026 outages among US chemical producers including DOW, LYB, and WLK were largely contained to sporadic mechanical and weather-related disruptions along the Gulf Coast, not widespread physical downtime.",
+   "anchor": "chlor-alkali and polyvinyl chloride (PVC) units operated by majors such as DOW, LYB, and WLK.",
+   "topic": "chemicals Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "DOW",
+    "LYB",
+    "WLK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman expects more muted Q3 2026 housing results, a moderation from a better-than-expected Q2 driven by share gains, product innovation, cost actions, and tariff refunds.",
+   "anchor": "we look for more muted outcomes this quarter",
+   "topic": "housing Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "The 30-year fixed mortgage rate is up 74 basis points since August 2026, hitting the low-to-mid-7% range.",
+   "anchor": "the 30-year fixed mortgage rate is up 74bps since August, hitting the low-to-mid-7% range",
+   "topic": "housing Q3 earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman now expects 2026 single-family housing starts to decline 4.6% year over year to 900,000, down from its prior 920,000 forecast.",
+   "anchor": "we now expect 2026 single-family starts to decline 4.6% YOY to 900k from",
+   "topic": "housing Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman is raising its 2026 and 2027 repair-and-remodel spending forecast to +6.7% and +2.0% respectively, from +3.1% and +0.9%, led by companies raising prices to offset inflation.",
+   "anchor": "we are raising our 2026 and 2027 R&R forecast to +6.7% and",
+   "topic": "housing Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman says 52% of its housing coverage is trading within 5% of 52-week lows, with the current demand moderation largely priced in, and notes seasonality implies upside into year-end.",
+   "anchor": "this outlook is largely priced in with 52% of our coverage trading within 5%",
+   "topic": "housing Q3 earnings preview",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman highlights Buy-rated building products names AWI, CSL, FBIN, and IBP as having idiosyncratic stories that can drive peer-relative outperformance in Q3 2026.",
+   "anchor": "we highlight the following Buy-rated building product names with idiosyncratic stories",
+   "topic": "housing Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AWI",
+    "CSL",
+    "FBIN",
+    "IBP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "FAST has a 6% implied move into this week's earnings, after the stock has fallen on earnings results for four consecutive quarters, an unusual streak for the name.",
+   "anchor": "6% implied move with the stock down on earnings four quarters in a row",
+   "topic": "industrial earnings preview",
+   "status": "level",
+   "instruments": [
+    "FAST"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "FAST short interest is elevated at 36 million shares, up from 24 million a year ago, with 6 days to cover; Goldman scores positioning a 3 out of 10 and says it feels more crowded short than in recent quarters.",
+   "anchor": "Short interest is elevated at 36mm shares up from 24mm a year ago and 6 days to cover.",
+   "topic": "industrial earnings preview",
+   "status": "released",
+   "instruments": [
+    "FAST"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "FAST's September sales benchmark is up 4% sequentially from August, equating to 16-17% year-over-year growth.",
+   "anchor": "September benchmark is up 4% sequentially from August which is +16-17% year",
+   "topic": "industrial earnings preview",
+   "status": "released",
+   "instruments": [
+    "FAST"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman believes consensus EBIT estimates for FAST look too high for both Q3 and Q4 2026.",
+   "anchor": "EBIT looks too high in Q3 and Q4.",
+   "topic": "industrial earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "FAST"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3-Q4 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "JBHT stock has retraced from the $270-280 level to $230 after the company flagged that Q3 2026 EPS could be down sequentially from Q2, when consensus had expected growth.",
+   "anchor": "Stock has retraced from the $270-280 level to $230 today after the company",
+   "topic": "industrial earnings preview",
+   "status": "released",
+   "instruments": [
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "JBHT consensus calls for 35% EPS growth in 2027 after 20% in 2026, despite a topline growth slowdown to 10% from 15%.",
+   "anchor": "Next year consensus calls for 35% EPS growth after 20% this year despite a slowdown in",
+   "topic": "industrial earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "2026-2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "JBHT short interest has come down markedly, with shares short of 2 million cut in half from earlier this year.",
+   "anchor": "shares short of 2mm cut in half from earlier this year",
+   "topic": "industrial earnings preview",
+   "status": "released",
+   "instruments": [
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Goldman scores JBHT positioning a 4 out of 10 into Q3 2026 earnings.",
+   "anchor": "We think positioning is a 4/10.",
+   "topic": "industrial earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "Weekend attacks on the Saudi capital's main airports drew concerns of a wider regional conflict, though markets reacted calmly.",
+   "anchor": "attacks over the weekend on the Saudi capital's main airports drawing concerns of a wider",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials A&D chemicals housing 12 Oct 2026",
+   "claim": "US consumer sentiment data released Friday showed current conditions at all-time lows.",
+   "anchor": "Consumer sentiment data from Friday worth flagging \u2013 current conditions at all time lows:",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-13/20071__gs-novak-gs-u-s-industrials-materials-a-d-chemicals-housing-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 33,
+  "matched": 33,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
