@@ -1,0 +1,263 @@
+ 
+Spot Is Four Times The Hurdle: What $50 
+Billion-A-Gigawatt Neocloud Rents Say About The 
+AI Revenue Gap 
+ 
+BY TYLER DURDEN 
+SUNDAY, OCT 11, 2026 - 05:44 PM 
+In the AI trade, everyone wants to know what a gigawatt is worth. 
+Thanks to a chart buried on page 7 of Goldman's latest SpaceX note, we now have an answer, 
+or rather three of them: $40-50 billion a year if you rent it out short-term, $20-30 billion if you 
+rent it out long-term, and roughly $12 billion if you're a hyperscaler who simply needs to earn a 
+decent return on it. The gap between those numbers is where the entire debate over AI 
+revenues, and the $1+ trillion a year of capex now chasing them, really lives. 
+Here is the chart in question, from Goldman internet analyst Eric Sheridan's Q3 preview of 
+SpaceX (SPCX) published on Monday (available to pro subs): 
+ 
+Source: Goldman 
+
+ 
+The navy bars are short-term capacity deals, the light blue ones are long-term hosting contracts. 
+And the message is unambiguous: right now, compute is so scarce that whoever owns a 
+powered, GPU-filled data hall can name their price... as long as the buyer only has to commit for 
+a few months. 
+Regular readers know we have been warning since last October that the AI buildout runs on 
+debt, and more recently that it runs on revenue numbers nobody can quite pin down. Below we 
+walk through what the neocloud rate card tells us about the economics of AI compute, why it 
+can't be extrapolated to the rest of the buildout, and where the tension between neocloud 
+revenue, hyperscaler revenue and actual end-user revenue lies. 
+The Rate Card: Spot $50, Term $20 
+Start with what Goldman actually found. SpaceX, which now houses xAI's Colossus compute, 
+announced two more hosting deals in the past quarter (one on its Q2 call, one at Goldman's 
+own Communacopia conference in September), and told investors they are "monetized at the 
+high end of the ~$30-50bn/GW range" it has historically discussed. And SpaceX is not alone: 
+Nebius (NBIS...) disclosed in August that short-term capacity deals in Q3 are being priced at ~
+40bn/GW pricing for its recent 
+40 −50𝑏𝑛/𝐺𝑊𝑤ℎ𝑖𝑙𝑒𝐶𝑜𝑟𝑒𝑊𝑒𝑎𝑣𝑒(𝐶𝑅𝑊𝑉...)𝑑𝑖𝑠𝑐𝑙𝑜𝑠𝑒𝑑𝑠𝑖𝑚𝑖𝑙𝑎𝑟~
+short-term capacity deals... Longer-term capacity deals across the industry continue to vary by 
+company but pointing to ~$20bn/GW as a sustainable pricing floor at current rates. IREN 
+(IREN...) disclosed in August that recent 3-year contracts are being priced at >
+25bn/GW, while NBIS disclosed longer-term deals being 
+20𝑏𝑛/𝐺𝑊𝑤𝑖𝑡ℎ𝑎𝑐𝑡𝑖𝑣𝑒𝑑𝑖𝑠𝑐𝑢𝑠𝑠𝑖𝑜𝑛𝑠𝑎𝑡~
+priced at similar ~$20-25bn/GW rates. 
+Deutsche Bank's Edison Yu goes even further. In his "Got compute?" note (also available to pro 
+subs), Yu backs out the GPU-hour pricing of each SpaceX deal and gets $50-51 million per MW 
+for Google and Reflection AI, and $60-61 million per MW for the two undisclosed customers, 
+i.e., as much as $61 billion per gigawatt, renting out GB300s at nearly $14 an hour: 
+
+ 
+ 
+Source: Deutsche Bank 
+Put differently, the term structure of AI compute is steeply inverted: buyers pay roughly double 
+for the privilege of not committing. That is what a market looks like when demand is real but 
+nobody (including the buyers) is willing to bet on it lasting. Physical commodity traders will 
+recognize the shape: it's backwardation, and it usually means the shortage is priced as 
+temporary. 
+It also explains why the neocloud model is so attractive to its owners. Goldman's hyperscaler 
+work puts all-in capex at roughly $42 billion per GW (more on that below). At $40-50 billion a 
+year of revenue, a neocloud recoups the entire build in about one year of rent; at the $20 billion 
+long-term floor, it takes two. Which is why the next detail matters so much: 
+One caveat to highlight is the duration risk of these hosting deals - with most of these deals 
+being 90-day cancellable on both sides, there is some risk that our assumption for revenues to 
+be recognized at current rates through contract expiry (2029 in most cases) is overly-bullish. 
+Translation: the $50 billion-a-gigawatt revenue stream that SpaceX is trying to borrow $40 billion 
+against is, contractually, a quarterly lease. We made the same point when SpaceX went looking 
+for a record $40 billion in chip-collateralized SPV debtlast week; Goldman has now put a 
+number on it. In its model, hosting/IaaS revenue goes from $1 billion in 2Q26 to more than $10 
+billion a quarter by 4Q26, and $45.5 billion in 2027 on just ~1GW of capacity, at an implied 
+$35-57 billion per GW: 
+
+ 
+ 
+Source: Deutsche Bank 
+Here Is The Problem: Spot Is Four Times The Hurdle 
+Now compare that rate card to what the rest of the AI economy needs to earn. 
+Last month Goldman's tech analysts tried to size the AI economy needed to justify hyperscaler 
+capex, and concluded that the six big US hyperscalers (Alphabet, Amazon, Microsoft, Meta, 
+Oracle and SpaceX) need roughly $1.42 trillion of cumulative AI revenue in 2028-30, or about 
+$11.6 billion per GW per year, to earn a 15% ROIC on their 2026-27 AI compute spend. Here is 
+the sensitivity grid (from "Sizing the AI Economy Needed to Justify ROIC on Hyperscaler AI 
+Capex", available to pro subs): 
+
+ 
+ 
+Even at a 30% ROIC and the most expensive capex assumption, the number never gets above 
+$18.6 billion per GW. Short-term neocloud rents are 2-4x that. Our chart below puts every 
+estimate we could find on one axis: 
+ 
+Two things jump out. 
+
+ 
+First, hyperscalers are paying neoclouds 4x what their own compute has to earn. Goldman 
+models Google's SpaceX deal at $45 billion per GW (Deutsche says 
+12 billion a GW from its 
+50𝑏𝑖𝑙𝑙𝑖𝑜𝑛). 𝑇ℎ𝑎𝑡𝑠𝑎𝑚𝑒𝐺𝑜𝑜𝑔𝑙𝑒, 𝑝𝑒𝑟𝐺𝑜𝑙𝑑𝑚𝑎𝑛'𝑠𝑅𝑂𝐼𝐶𝑓𝑟𝑎𝑚𝑒𝑤𝑜𝑟𝑘, 𝑛𝑒𝑒𝑑𝑠𝑗𝑢𝑠𝑡~
+own data centers. Nobody rationally pays a 4x premium for a commodity unless they can't get it 
+any other way, so this is not a sign of healthy demand so much as a sign of power and shell 
+scarcity: Google is renting because it can't build fast enough. Remember that the next time a 
+hyperscaler raises its capex guide (undoubtedly much higher). The moment self-built capacity 
+catches up, the premium on rented capacity goes away, and so does a big chunk of neocloud 
+revenue, which incidentally is a point we made two weeks ago. 
+The more data centers are lit, the faster this bubble pops 
+— zerohedge (@zerohedge) September 25, 2026 
+Second, even the bulls' token economics can't pay spot rents. JPMorgan's Gokul Hariharan, in a 
+framework for the next leg of AI infrastructure after what the bank's International Market 
+Intelligence desk called a "biblical de-rating" (available to pro subs), was about as constructive 
+as it gets: 
+Frontier-model vendors generate 60–80% inference gross margins and could earn $20–40bn of 
+annual revenue per GW from AI tokens (vs $10bn in 2025). 
+Do the napkin math. If compute is 20-40% of a lab's token revenue (i.e., a 60-80% gross 
+margin), then a lab paying $45 billion a year to rent a gigawatt would need to sell roughly 
+$110-225 billion of tokens off it, or three to eleven times JPM's own optimistic range. In other 
+words, nobody is renting spot capacity at $45 billion a gigawatt to serve paying customers at a 
+profit. They're renting it to train the next model, funded by the next round of equity or debt.... 
+well, mostly debt. 
+
+ 
+ 
+Source  
+Which is exactly the point Rothschild Redburn's Alexander Haissl made when he slapped Sell 
+ratings on CoreWeave and Nebius last month: compute pricing is rising, but who pays matters, 
+and the top-paying customers are mostly VC-funded startups and big tech companies using 
+compute for training rather than inference. In his words, "training demand can persist as long as 
+external capital remains available." Which, yes, is another point we made two weeks ago. 
+How many of those customers are funded by VCs who are also investors in Anthropic 
+— zerohedge (@zerohedge) September 23, 2026 
+Goldman's TMT desk is now flagging Oracle and Broadcom credit spreads as the key indicator 
+of concern over debt-funded AI capex, with Oracle 5Y CDS closing at a record 261bp on 
+Thursday. 
+
+ 
+ 
+Only Compute You Rent Out Earns Neocloud Rates 
+The cleanest illustration of the gap is inside Goldman's own SpaceX model. The ~1GW rented 
+to third parties earns $40.5 billion per GW. Everything SpaceX keeps for itself ("Other AI 
+revenues": Grok, X, enterprise, the Cursor acquisition) is modeled at $12-13 billion per GW, 
+almost exactly the hyperscaler hurdle. And the Street is even lower: back out the hosting deals 
+from Visible Alpha consensus and SpaceX's own compute is implicitly monetized at ~
+13 billion in 2028: 
+8𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑝𝑒𝑟𝐺𝑊𝑖𝑛2027𝑎𝑛𝑑~
+
+ 
+ 
+Goldman's bull case is that this is "significantly lower than current industry rates" and that if 
+SpaceX can monetize 75% of its non-hosting compute at the $20 billion long-term floor (leaving 
+25% for training at zero revenue), AI revenue would come in ~31% above Street for 2027 and 
+~9% above for 2028: 
+ 
+
+ 
+What if the 90-day leases do get cancelled? Then, Goldman says, SpaceX would need to earn 
+~$18 billion per GW on reallocated compute in 2028 to hit consensus, "a reasonable, if not 
+conservative, level of monetization compared to current industry rates": 
+ 
+Maybe. But note what "current industry rates" means here: the price of renting compute to 
+someone else at a moment of acute shortage. The bull case quietly assumes that compute used 
+in-house (or rented to whoever replaces today's tenants) will earn what scarce compute earns 
+today. The Street, which models $8-13 billion, is pricing the opposite: that once the shortage 
+ends, a gigawatt earns roughly what a hyperscaler needs it to earn, and not a penny more. 
+Oh, and there will be a lot more gigawatts. Goldman sees SpaceX alone going from 1.4GW in 
+2Q26 to ~7GW by end-2027 and ~10.6GW by end-2028: 
+
+ 
+ 
+Neocloud Revenue Is Somebody Else's Cost 
+Which brings us to the real tension between neocloud revenue, hyperscaler revenue and AI 
+"industry" revenue: they are largely the same dollar, counted several times. 
+Follow a single dollar of end-user spend. 
+1.​ An enterprise pays Anthropic, which books it gross (cloud partner cut included). 
+2.​ The cloud partner (AWS, Google) books its share as cloud revenue. 
+3.​ If that partner is short of capacity, it rents a gigawatt from SpaceX or CoreWeave, which 
+books it as hosting revenue. 
+4.​ Then SpaceX and CoreWeave pay Nvidia, which books it as data center revenue. 
+Add up "AI revenue" across the stack and you get a number several times larger than what end 
+users actually paid, and every layer above the end user is someone else's cost. 
+That's not a hypothetical. Just this week, AI equities puked after the FT reported that OpenAI's 
+annualized revenue was ~$50 billion at end-September, 
+70 billion MRR 
+20𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑏𝑒𝑙𝑜𝑤𝑡ℎ𝑒~
+number circulating. As Goldman's TMT specialist Sean Johnstone explained (available to pro 
+subs), the gap came from gross vs net reporting: 
+Anthropic reports closer to gross revenue (full customer spend through cloud partners, partner 
+cut booked as a cost). OpenAI has reported closer to net (mainly its own share). When some 
+investors tried to put the two on a like-for-like basis by grossing up OpenAI's figures, they 
+
+ 
+produced the higher ~
+70bn numbers... The episode highlights how 
+40𝑏𝑛(𝐴𝑢𝑔𝑢𝑠𝑡)𝑎𝑛𝑑𝑡ℎ𝑒𝑛~
+sensitive the complex has become to the precise trajectory of two private companies that use 
+different reporting conventions. 
+ 
+And then Bloomberg added that even the $50 billion was gamed exercise in reaching the 
+highest possible annualized number, i.e., "a projection of OpenAI's yearly sales based on a 
+shorter period": 
+
+ 
+ 
+The same desk also reminded clients of Brad Gerstner's mid-September framework: the top 
+three labs (Anthropic, OpenAI, SpaceX/xAI) were at a combined ~$100 billion run-rate in July 
+and needed to reach $180-200 billion by year-end "to keep the AI trade intact." And as 
+Johnstone notes, even that framework mixed Anthropic on gross, OpenAI on net and SpaceX 
+on a "closer to gross" basis "for its compute hosting contracts." In other words, part of the "lab 
+revenue" that is supposed to pay for compute is itself compute revenue. Diversification at its 
+finest. 
+The buyer base is also absurdly narrow. As we tweeted two weeks ago: 
+The top 10% of AI customers account for 99.5% of model-serving spend and 99% of neocloud 
+spend, leaving the bottom 90% of firms with 0.5% and 1%: Apollo https://t.co/npmKbOV75r 
+— zerohedge (@zerohedge) September 28, 2026 
+
+ 
+ 
+Put that next to Goldman's 90-day cancellation clauses and the picture is clear: neocloud 
+revenue rests on a handful of customers, most of them cash-burning labs and capacity-starved 
+hyperscalers, renting on paper they can walk away from in a quarter. 
+Spot Prices Don't Scale 
+Finally, the math that ties it together. Back out Goldman's $1.42 trillion revenue requirement at 
+$11.6 billion per GW per year and you get roughly 41GW of AI compute that the six US 
+hyperscalers are building with their 2026-27 capex (our approximation). Now price those 41GW 
+at each point on the rate card: 
+●​ At Goldman's 15% ROIC hurdle: ~$470 billion a year of AI revenue 
+●​ At the long-term hosting floor of $20 billion: ~$810 billion 
+●​ At today's short-term neocloud rate of ~$45 billion: ~$1.8 trillion 
+Compare that with the ~$100 billion the top three labs were running at in July, the 
+300 billion of annual AI 
+180 −200𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝐺𝑒𝑟𝑠𝑡𝑛𝑒𝑟𝑠𝑎𝑦𝑠𝑡ℎ𝑒𝑦𝑛𝑒𝑒𝑑𝑏𝑦𝑦𝑒𝑎𝑟−𝑒𝑛𝑑, 𝑎𝑛𝑑𝑡ℎ𝑒~
+revenue Goldman's Portfolio Strategy team says the market "now needs evidence of" to support 
+the current scale of investment: 
+
+ 
+ 
+Put differently, today's neocloud rates are a marginal price for scarce capacity, not an average 
+price the whole buildout can earn. Even the hurdle rate requires end-demand to grow roughly 
+2.5x from Gerstner's year-end target, and that is before anyone pays a neocloud a dime of 
+scarcity premium (or takes into account that an entire country named China exists with an 
+entirely separate, and much, much cheaper AI ecosystem). Which is also why Goldman's TMT 
+desk, summing up the bank's capex research, concluded with admirable understatement that 
+"future returns should increasingly come from selective winners... rather than owning anything 
+linked to AI capex." 
+Bottom Line 
+Goldman's Sheridan remains a buyer of SpaceX with a $230 price target, and argues that the 
+"supply constraints and lack of available capacity putting upward pressure on spot rates" give 
+him confidence SpaceX can monetize compute "at high ROICs even if these deals are 
+canceled." 
+He may be right about SpaceX, which has the power, the shells and the Nvidia relationship. But 
+for the AI complex as a whole, the rate card says something less flattering. Short-term rents of 
+$40-50 billion per GW are a scarcity premium paid mostly for training, mostly by capital-funded 
+buyers, on 90-day paper. The long-term market already prices compute at half that, the 
+hyperscalers need a quarter of it, and the Street is pricing in-house compute at the hurdle. With 
+
+ 
+capacity set to multiply (SpaceX alone more than 4x from year-end levels by 2028), the scarcity 
+premium is the thing least likely to survive, and as it compresses, the neocloud revenue that 
+props up hosting deals, chip-backed SPVs and lab "run-rates" compresses with it. 
+In compute (as in shipping, and everything else), nothing cures record rates like record rates. 
+The term curve is already telling you where AI compute is headed; the only question is whether 
+end-user revenue gets there first... or (more likely) the credit market, where chip-collateralized 
+obligations are priced as if spot were forever, figures it out on its own. 
+Much more in the full Goldman SpaceX Q3'26 preview and "Sizing the AI Economy Needed to 
+Justify ROIC on Hyperscaler AI Capex" notes, as well as Deutsche Bank's "Got compute?", all 
+available to pro subs. 
+ 
+ 
+ 
