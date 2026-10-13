@@ -1,0 +1,275 @@
+ 
+1 
+Convexity Maven 
+                                                                                                                   …it’s always about character 
+A Commentary by Harley Bassman 
+  
+                                                                                                                                                      October 13, 2026  
+ 
+“A Fat Cat in a Small Door” 
+ 
+ 
+ 
+ 
+ 
+On the Home page of my Convexity Maven site I propose: 
+ 
+It is Always about character, and; 
+It is Never different this time. 
+ 
+Thus, I will remind you that at times of financial panic, Negative Convexity is 
+almost always “Lurking at the Scene” (March 16, 2021). 
+ 
+More specifically, for the first time since early 2007, the nearly $200bn UST Bond 
+futures contract has become significantly Negatively Convex. 
+ 
+As I will reprise from “CBOT Delivery Shift” (January 17, 2008), the construction 
+of the listed futures contract can strangely create a Convexity Vortex in the 
+Treasury market (similar Mortgage-backed Securities), and has likely been a 
+contributor to the recent rapid increase in interest rates as so many Fat Bond 
+Traders simultaneously try to squeeze through a Small  iquidity Door. 
+ 
+NOTE: This is super nerdy; financial “civilians” can advance to page 6. 
+
+ 
+2 
+The Uncertainty of Delivery Shift 
+ 
+Hark back to that boring chapter on bond Duration and Convexity you skimmed 
+over at the start of your investment education.  You may recall that non-callable 
+fixed-coupon bonds exhibit Positive Convexity.  This is manifest as the Dv01 
+(Dollar value of a basis point) increasing as rates decline (prices up) and 
+shrinking as rates rise (prices down). 
+ 
+Pull up any Treasury security on a Yield Analysis screen, alter the rate, and 
+notice the “Value at Risk” (Dv01) changes.  It will adjust by roughly the 
+Convexity number quoted on that same screen.  
+ 
+There are three inputs to calculate Duration:   
+ 
+1) Coupon 
+2) Time to Maturity 
+3) Yield Level 
+ 
+It is this third factor, Yield Level, that creates the Convexity in a fixed-coupon 
+bond; this must be the case since the Coupon and Maturity cannot be altered.   
+ 
+[For further information, please read: “Inside the Yield Book” by Homer and 
+Leibowitz.  This 1972 classic is the bond bible and the only book I recommend.] 
+ 
+Financial futures contracts were created in 1976 to provide an active and 
+transparent market for Interest Rate trading.  To facilitate liquidity, the contract 
+was designed to accept a wide variety (basket) of securities for delivery.  Since 
+bonds have different Coupon  and Maturity dates, a process was created to 
+make them somewhat equivalent. 
+ 
+Thus, the creation of “Conversion Factors”.  Each eligible bond delivered to the 
+Exchange would receive the contract price times the Conversion Factor (similar 
+to how different grades of Wheat are delivered to CBOT silos).  This is known as 
+the Invoice Price.  The Conversion Factors are created via a fixed two-factor 
+matrix of Coupon and Time to Maturity – irrespective of the Yield Level. 
+ 
+Bond arbitrageurs, sometimes referred to as Basis Traders in the popular press, 
+buy and sell various bonds and futures contract pairs in an effort to optimize the 
+Invoice Price if they choose to deliver bonds to the CBOT Exchange at the expiry 
+of the futures contract. 
+ 
+The bond with the best Invoice Price is referred to as the Cheapest to Deliver 
+(CTD); the CTD is almost always the bond with the smallest net basis (the 
+spread between the bond’s invoice price and the future’s price). 
+
+ 
+3 
+Here is the conversion table for the “basket” of bonds eligible for delivery into 
+the CBOT December 2026 Bond Futures Contract.  The meaning of the various 
+colored lines will be detailed shortly. 
+ 
+ 
+
+ 
+4 
+The listed US Bond contract is stipulated as a 6% coupon security and will accept 
+delivery of bonds that mature from 15 and 25 years (2041 to 2051) hence.   
+ 
+Because Yield Level is not considered, the CTD can shift as rates change.  As 
+such, when 20yr interest rates are higher than the 6% coupon rate, the CTD will 
+be the longest maturity bonds in the delivery basket.  Conversely, when the 20yr 
+rate is below the 6% coupon, the shortest bonds to maturity will be the CTD. 
+ 
+From late 2008 until recently, the -malachite line- twenty-year UST rate had 
+been well below 6%, thus the CTD was mostly certain as one of the shortest 
+maturity bonds in the basket.  There was little risk of a “CTD shift”. 
+ 
+ 
+ 
+When the UST 20yr rate was near 5% in early July (right column) with a futures 
+price of 111.26, the -amazonite line- bond had a “net basis” of zero marking it as 
+the CTD.  This is the -chrysoprase shaded- bond on the conversion table above. 
+ 
+With rates below 5%, there was little uncertainty about which bond would be the 
+CTD, so this contract was effectively a single bond with a Duration of 11.03.  In 
+fact, from late 2007 until this summer, there was rarely CTD uncertainty. 
+ 
+ 
+
+ 
+5 
+The Delivery Option 
+ 
+After nearly twenty years, it is back to “fun times” for Wall Street’s Bond trading. 
+ 
+When the -rhodonite line- US Bond Futures Contract was trading above 110, the 
+CTD and its Duration and Convexity was known.  But once the price dipped 
+below that level, suddenly the Delivery Option became valuable.   
+ 
+ 
+ 
+The Delivery  ption is owned by the seller (shorts) of the futures contract.  They 
+have the option to delivery any of the eligible bonds in the  basket” (page 3). 
+ 
+As such, the owner (longs) of the futures contract suddenly does not know their 
+risk exposure to interest rate changes.  Making matters MUCH worse, the 
+construction of the two-factor Conversion table creates significant Negative 
+Convexity for the futures contract once the Delivery Option becomes “live”. 
+ 
+The -charoite line- bond became the CTD once the contract was near 106.78; 
+with a concomitant Duration of 11.63.  A bit longer, but still manageable. 
+ 
+With the -sodalite line- 20yr rate currently near 5.68% (102.25), the CTD has 
+shifted to a 13.24 Duration bond, fully 20% longer than only a few weeks ago.  
+This means that portfolio managers who seek to maintain a certain risk level 
+need to shed (or hedge) 20% of their fixed-income risk. 
+ 
+The nightmare scenario would be the 20yr rate crossing 6.0% and the CTD fully 
+extending to the -carnelian/jasper lines- with a Duration exceeding 17. 
+ 
+Back of the envelope, such a delivery switch would be equivalent to the 
+Treasury auctioning $110bn 20yr bonds over the course of four months. 
+
+ 
+6 
+A Lesson in Negative Convexity 
+ 
+As a reminder, Convexity can be defined as “unbalanced leverage”. 
+ 
+Let’s assume a 10yr bond yields 5% at par, and for simplicity say it will move up 
+8 points to 108 if rates decline to 4% and down 8 points to 92 if rates rise to 
+6%.  This is balanced leverage, or zero Convexity. 
+ 
+If I can buy a bond that goes up 10 points and only down 7 points for equal rate 
+moves, that is Positive Convexity.  Since I would always prefer this bond, I 
+should accept a lower yield, perhaps 4.75% for the better return profile. 
+ 
+Another bond only goes up 6, but down 12 points. This bond is Negatively 
+Convex, and I would need a much yield higher than 5% as risk compensation. 
+ 
+Mortgage-backed Securities (MBS) have this sort of performance profile, which is 
+why they trade 75bp to 100bp higher in yield than 10yr US Treasuries. 
+ 
+The -chalcopyrite line- current CTD bond has a Duration of 13.24.  But a 70bp 
+decline in rates will shorten its Duration to 11.03, while a 70bps increase in rates 
+will extend its Duration to 17.47.   
+ 
+When near a CTD shift, the bond contract will go down faster and up slower; and 
+portfolio managers who want to maintain a risk exposure need to buy bonds as 
+prices rise and sell bonds as prices fall.  Always trading the wrong way. 
+ 
+Since these are super-safe risk-free US Treasury bond futures; it is possible 
+buyers did not fully appreciate this challenging risk profile.  
+ 
+Thus, I might propose that the recent swift increase in interest rates may be 
+linked to CTD extension and the hedging activity of slow-footed risk managers  
+(a notion supported by the significant decline in CFTC reported positioning). 
+ 
+It is important to note that Negative Convexity is often pro-cyclical.  Here, as 
+bond prices decline the CDT switches to a longer Duration bond.  Ensuing hedge 
+selling pushes rates further and prompts another CDT shift to an even longer 
+Duration bond.  Lather, Rinse, Repeat. 
+ 
+One should consider 6% on the UST 20yr rate to be a bubbling Convexity Vortex. 
+ 
+Finally, the professional “basis traders” at the large Hedge Funds may soon 
+closeout their positions by selling US Treasuries, adding additional sell pressure. 
+ 
+The last time the 20yr rate breached 6% was November 1999 - Good times. 
+
+ 
+7 
+ 
+Macro Comments.... 
+ 
+As detailed in my Commentary "In Fed We Trust" – September 8, 2026, we have 
+a problem of "Trust", not inflation.  A Ten-year (inflation protected TIPs) Real 
+Rate of 2.90% is the market waving the "white flag" that we have a Fiscal 
+problem, not a Monetary problem. 
+ 
+The solution is a medium-term defined path to narrow our current 6.2% Fiscal 
+deficit, which could include: 
+ 
+1) Lifting the $184,500 cap on the Social Security tax (similar to Medicare)  
+2) Raising the "retirement" age  
+3) Means testing SS and Medicare  
+4) Eliminating the "step up basis" for the Estate Tax  
+5) Reviving some version of Simpson-Bowles 
+6) Passing "middle path" Immigration reform (and other 70/30 issues) as proof 
+that our political class can still function.  
+ 
+Bonus:  My recent Alpha Exchange Podcast - 
+https://www.youtube.com/watch?v=8Zii9xl-Md8 
+ 
+Special Heads Up:  Stay tuned for an announcement from my good friend and 
+partner Michael Green (@Profplum99) about a new ETF listing that monetizes 
+the “alpha factor” of the Passive Investment paradigm (I may join him). 
+ 
+Remember: For most investments, sizing is more important than entry level. 
+ 
+ 
+Harley S. Bassman 
+October 13, 202   
+ 
+Follow me on Twitter:  @ConvexityMaven                
+Your comments are always welcome at:  harley@bassman.net 
+ 
+If you would like to be added to my distribution, just ping me. 
+ 
+To become better educated on macro-economic fundamentals and policy, I urge 
+you to connect with my good friend, Michael Green, aka, @profplum99.  
+ 
+For reference literature on the financial markets - particularly about options and 
+derivatives - I will immodestly direct you to my educational archive at: 
+ 
+https://www.convexitymaven.com/classroom/ 
+
+ 
+8 
+If you still have kids in the house, please take a vacation that is more interesting 
+than the Four Seasons, Costa Rica – life is not a dress rehearsal.  The graveyards 
+are full of irreplaceable people. 
+Turn off the Crackberry (did I just date myself ?) and explore with the family.  
+You don’t need to break the bank, rent an RV and see the U.S.  We traveled with 
+our four kids on five incredible RV trips. 
+http://bassman.net 
+ 
+Special credit to Gerard Minack, the best macro analyst on the planet. 
+ 
+ 
+The Convexity Maven ("CM") is a publisher, not a registered investment advisor, and nothing in CM's Commentary is intended, and 
+it should not be construed, to be investment advice. CM's Commentary is for informational and entertainment use only.  
+Any mention in CM's Commentary of a particular security, index, derivative, or other instrument is neither a recommendation by CM 
+to buy, sell, or hold that security, index, derivative, or other instrument, nor does it constitute an opinion of CM as to the suitability of 
+that security, index, derivative, or other instrument for any particular purpose. CM is not in the business of giving investment advice 
+nor advice regarding the suitability for any purpose of any security, index, derivative, other instrument or trading strategy, and nothing 
+in CM's Commentary should be so used or relied upon. 
+CM hereby expressly disclaims any and all representations and warranties that: (a) the content of its Commentaries are correct, 
+accurate, complete, or reliable; (b) any of its Commentaries will be available at any particular time or place, or in any particular 
+medium; and (c) that any omission or error in any of its Commentaries will be corrected. 
+Although from time-to-time CM's Commentaries may link to or promote others' websites or services, CM is not responsible for and 
+does not control those websites or services. 
+CM's Commentary is published and distributed in accordance with applicable United States and foreign copyright and other laws. 
+For the record, the Convexity Maven publishes Commentaries and maintains a website as an exercise of the unlimited right to offer 
+non-commercial speech and publication under the First Amendment of the United States Constitution; notwithstanding our past 
+President. 
+At any given time, CM's principals may or may not have a financial interest in any or all the securities and 
+instruments discussed herein.   
+ 
+ 
