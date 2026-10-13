@@ -1205,3 +1205,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **prompt-session** — Gold brief headline "Central banks keep a floor under gold" with a $4,070 figure that is Goldman's downside scenario; `_LEANS` labels it a floor. WATCH lists $UNH under "big-bank earnings".
 - **observation** — Omnipulse fell back to classic again (no pilot-data file after 600s plus backup route).
 - **observation** — Waller's "more hikes needed" (in dump news) is absent from the RECAP; France and the Hormuz/Fed-odds near-miss clusters were not themes (per STEP 7).
+
+## 2026-10-13
+- **deterministic-fixable** — No driver file for 2026-10-13T14-08-29Z (also missing for 10-09 and 10-12), so re-rolls, SCRUB iterations and residuals are unauditable. Adversarial verdict also missing for 10-12 (series gap).
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 20:18 UTC (6h after the pulse, after-hours snapshot); RECAP live figures unauditable, fifth day running.
+- **deterministic-fixable** — TRADE BOARD shows `$HII Buy, PT $406`. The only HII entry in the dump (Goldman Novak) has blank rating, PT N/A, and "named among names the desk likes". `render_trade_board` should require the rating/PT to be in a source row.
+- **deterministic-fixable** — A body cut left a dangling "Pennsylvania's order is the template" after the driver removed the Pennsylvania sentence. Add a dangling-reference check after `omnipulse_body_cut`.
+- **prompt-session** — EDIT wrote "$JPM and $WFC landed a few cents under theirs"; JPM was 17 cents under ($5.75 vs $5.92). RECAP also says oil "barely moved" while $USO was +1.36%, and ends with corpus meta-narration.
+- **pilot-territory** — 21 adversarial findings on the Omnipulse body (16 unsupported-figure, 3 fabricated-event, 2 overstated-claim); none of the Morgan Stanley power/storage/neutral-rate figures are in the production dump. The pilot citation verifier should cover them before the body locks.
+- **observation** — Omnipulse day with a 16-PDF day count; Middle East/oil risk and sovereign-debt themes absent per STEP 7 (counts not re-derived).

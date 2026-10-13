@@ -778,3 +778,9 @@ The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full 
 
 - **judgment** (18:05 UTC, Ry_spaceman, "What would the sp500 gain for the year be if you removed the top 10 stocks"): the answer never gave the ex-top-10 return, swapped in the equal-weight index YTD as a "+8.5% to +11.8%" range, then concluded the index return is "an illusion driven entirely by" mega-caps. Equal weight includes the top 10, so it does not support that conclusion. The only tool call was `query_data` `SELECT 1`. Validator CLI could not run (aiohttp missing), so no class was evaluated. Not mechanically checkable. Prompt-session material: a "what if X were removed" question should either compute from constituent weights and returns or say it cannot, and a substitute metric must be labeled as a substitute.
 - **concern, no FAIL**: 16:50 UTC BK run-game answer ended with a restating wrap-up arrow.
+
+## 2026-10-12
+
+no findings (no FAIL dimensions). Concerns for session context only:
+- 14:05 "what happened to cbrs": no cause found in any tool, and the answer did not say so; it implied the drop followed the S-1 filings.
+- 17:17 X India revenue: FY24 subsidiary revenue given without the fiscal year or the subsidiary-vs-India-share caveat.
