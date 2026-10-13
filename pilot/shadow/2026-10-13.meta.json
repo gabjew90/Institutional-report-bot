@@ -1,0 +1,59 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 91,
+ "pack": {
+  "documents": 4,
+  "cards": 126,
+  "max_doc_id": 19902
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 83,
+  "brief_citations": 4,
+  "distinct_cards_cited": 81,
+  "card_count": 126,
+  "quintiles": [
+   12,
+   14,
+   16,
+   21,
+   20
+  ],
+  "edge_quintile_share": 0.386,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Goldman's technology desk reads the same memory tightness in the opposite direction.",
+    "cite": "",
+    "reason": "bank named (['goldman']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "The fix Morgan Stanley expects is power generated at the data center itself, bypassing the grid.",
+    "cite": "",
+    "reason": "bank named (['morgan stanley']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Morgan Stanley forecasts 0.24% on the month and 2.5% over the year, five basis points below August's 0.29% increase [c82], with headline CPI at 0.62% on the month and 3.69% over the year on another si",
+    "cite": "c82,c83",
+    "reason": "figures not in cited card(s): ['0.24%', '0.62%']"
+   },
+   {
+    "sentence": "Core PCE, the inflation gauge the Fed targets, is penciled at 0.23% for September [c118], with the firm looking for 3.0% at the end of 2026 and 2.6% at the end of 2027, measured fourth quarter over fo",
+    "cite": "c118,c119",
+    "reason": "figures not in cited card(s): ['0.23%']"
+   },
+   {
+    "sentence": "September retail sales follow on October 15, seen up 0.3% on the month, 0.5% excluding autos, and 0.2% for the control group [c122].",
+    "cite": "c122",
+    "reason": "figures not in cited card(s): ['0.3%', '0.5%']"
+   }
+  ],
+  "word_count": 1756
+ }
+}
