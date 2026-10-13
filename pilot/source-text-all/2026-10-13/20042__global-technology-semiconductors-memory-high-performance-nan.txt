@@ -1,0 +1,1379 @@
+Key stock takeaways: We view emerging high-performance NAND-based 
+solutions - including High-Bandwidth Flash (HBF) - as promising tools to address 
+a worsening memory constraint in AI inference.  We see a potential TAM of ~$40 
+- $150B at a GPU adoption rate of 15%-50% by 2030 given the rapid 
+proliferation of read-heavy and memory-intensive AI inference workloads - 
+despite potential challenges to adoption.  We believe that HBF memory can 
+meaningfully reduce the overall cost of inference throughput by increasing GPU 
+utilization, resulting a ~30% lower overall cost of inference throughput - 
+translating to as much as several hundreds of billions of hyperscaler CapEx 
+savings. 
+In a bull-case scenario that assumes rapid commercial adoption of HBF on 50% of 
+XPUs by late 2028, we see HBF bits accounting for ~4% of global NAND bit 
+shipments - but ~9% of NAND wafer capacity given its die size penalties - similar to 
+the HBM/DRAM dynamic.  We would point out that these NAND-based solutions 
+remain in the early development stages at a system level, and that a wide range of 
+outcomes exists that could drive a significantly greater or smaller impact to the 
+overall NAND supply/demand market dynamic.  Stepping back, we continue to 
+believe that limited supply additions will prolong tight NAND supply/demand in the 
+near term - and view HBF as potentially extending the duration of the current cycle.  
+While HBF is the technology approach that has received the most attention in the 
+technical literature, we would also highlight XL-Flash (from Kioxia) and zNAND-O 
+(from Samsung) as alternative approaches to achieving similar objectives. 
+We continue to favor SanDisk (SNDK, Buy) and SK Hynix (000660.KS) given their 
+technology leadership in HBF, and strong core business with improving product 
+mix.  We also see Samsung Electronics (005930.KS, Buy) as well positioned given 
+its strong NAND portfolio; we see Micron (MU, Neutral) as less of a direct 
+beneficiary given its primary focus on DRAM and lower exposure to NAND.  Although 
+we recognize challenges to widespread HBF adoption, we see promise in the 
+technology which could drive meaningfully higher cost/performance at the system 
+level, particularly in memory-intensive inference workloads.
+James Schneider, Ph.D. 
++1(212)357-2929 | 
+jim.schneider@gs.com 
+Goldman Sachs & Co. LLC 
+Khalil Fenina 
++1(212)357-6392 | khalil.fenina@gs.com 
+Goldman Sachs & Co. LLC 
+Giuni Lee 
++65-6889-1025 | giuni.lee@gs.com 
+Goldman Sachs (Singapore) Pte 
+Shuhei Nakamura 
++81(3)4587-9932 | 
+shuhei.nakamura@gs.com 
+Goldman Sachs Japan Co., Ltd. 
+Allen Chang 
++852-2978-2930 | 
+allen.k.chang@gs.com 
+Goldman Sachs (Asia) L.L.C. 
+Daiki Takayama 
++81(3)4587-9870 | 
+daiki.takayama@gs.com 
+Goldman Sachs Japan Co., Ltd. 
+Marshall Wong 
++1(646)446-0222 | 
+marshall.wong@gs.com 
+Goldman Sachs & Co. LLC 
+Anmol Makkar 
++1(212)357-1366 | 
+anmol.makkar@gs.com 
+Goldman Sachs & Co. LLC 
+Luya You 
++1(212)902-5297 | luya.you@gs.com 
+Goldman Sachs & Co. LLC 
+Liana Wadhwani 
++1(212)357-3204 | 
+liana.wadhwani@gs.com 
+Goldman Sachs & Co. LLC
+12 October 2026 | 5:00AM EDT
+ 
+Goldman Sachs does and seeks to do business with companies covered in its research reports. As a result, investors 
+should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. 
+Investors should consider this report as only a single factor in making their investment decision. For Reg AC 
+certification and other important disclosures, see the Disclosure Appendix, or go to 
+www.gs.com/research/hedge.html. Analysts employed by non-US affiliates are not registered/qualified as research 
+analysts with FINRA in the U.S. 
+Equity Research
+GLOBAL TECHNOLOGY: SEMICONDUCTORS - MEMORY 
+High-performance NAND could help crumble the AI “memory wall” 
+while driving meaningful CapEx savings
+ 
+ 
+
+Executive Summary 
+ 
+ 
+On balance, we are constructive on HBF technology, and it as a promising potential 
+solution to the intensifying memory constraint in AI inference. Our bullish view on the 
+technology’s potential is based on the following: 
+Proliferation of AI inference workloads will lead to structurally higher demand for 
+1.
+high-bandwidth, near-compute storage as context windows lengthen. 
+Highly cost-competitive near-compute memory capacity at comparable sequential 
+2.
+read bandwidth to HBM could result in attractive system-level economics and 
+accelerate adoption of HBF among hyperscalers. 
+NAND’s high density of NAND, coupled with HBF’s higher resulting GPU utilization, 
+3.
+will allow the technology to command a meaningful price premium while 
+simultaneously lowering system-level costs for hyperscalers and AI labs. 
+However, key challenges to adoption remain, namely latency concerns (particularly for 
+random read / write operations), endurance and thermal considerations, and 
+manufacturing resource intensity.  Despite these challenges, we see a significant 
+commercial opportunity in HBF and view the economics of its adoption as attractive - 
+even at a significant price premium relative to traditional NAND. 
+Background - Why is there a need for High-Bandwidth Flash? 
+ 
+ 
+The shift to inference requires much near-compute storage capacity, and HBF’s 
+similar sequential read bandwidth vs. HBM positions it well as a potential solution 
+to the memory constraint given NAND’s high density.  As more AI workflows shift 
+away from compute-heavy training and toward memory-intensive inference, context 
+windows are lengthening exponentially and scaling toward 10 mn+ tokens from a ~1.5 
+mn baseline (see Exhibit 1).  The KV (key value) cache required for these more 
+memory-intensive workloads is growing with larger context windows, broadly shifting 
+the memory bottleneck from purely bandwidth-related to a combined 
+bandwidth-capacity constraint.  Although we believe DRAM-based High Bandwidth 
+Memory (HBM) - and its subsequent iterations - is likely to lead in bandwidth and 
+performance, the technology is significantly capacity-constrained (current architectures 
+typically include ~192 GB per GPU) given current DRAM supply constraints.  AI 
+infrastructure operators are thus deploying additional GPU units to drive incremental 
+compute-adjacent memory capacity, resulting in meaningfully underutilized compute 
+capacity.  Through a strategic collaboration, SanDisk and SK Hynix have introduced High 
+Bandwidth Flash (HBF) as a proposed solution to this near-compute capacity constraint. 
+12 October 2026
+  2
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+ 
+We expect HBF pricing to be significantly below DRAM-based HBM4 contract 
+pricing (on a per GB basis) once commercial samples begin shipping in CY27 (see 
+Exhibit 3), despite the product’s pricing currently being undisclosed.  High 
+Bandwidth Flash (HBF) has been introduced an open-standard, near-compute memory 
+tier that stacks high-density 3D NAND flash into the AI accelerator package via 
+through-silicon vias (TSVs) and UCIe chiplet interconnects (see Exhibit 2). It establishes 
+an intermediate tier in the memory hierarchy, offering a bandwidth leap over standard 
+NAND SSDs and offers near-HBM bandwidth on a sequential read basis.  Governed 
+under the Open Compute Project (OCP) which includes SanDisk and SK Hynix, as well as 
+ASIC customer hyperscalers (namely Alphabet and Meta), HBF delivers up to 512 GB per 
+stack (vs. 16-32 GB per HBM stack) at sequential read bandwidths up to ~3.0 TB/s (see 
+Exhibit 5), per the technical literature. 
+ 
+ 
+Exhibit 1: Chart showing context window growth over time for common LLMs 
+GPT-3 2K
+GPT-4, 8K
+Claude 100K
+Claude 2.1, 200K
+Gemini 1.5 1M
+Gemini 1.5 2M
+Llama 4 Scout, 10M
+10K
+100K
+1M
+1M
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+Context window (tokens, log scale)
+ 
+ 
+Source: Hidekazu-Konishi, data compiled by Goldman Sachs Global Investment Research
+ 
+Exhibit 2: Cross-sectional architecture of High Bandwidth 
+Flash (HBF) 
+ 
+ 
+Source: SK Hynix
+12 October 2026
+  3
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+ 
+Advantages of HBF - Cost effectiveness and other benefits  
+ 
+ 
+We believe HBF can lower the overall cost of equivalent inference token output by 
+~30% or more, and lead to significant reductions in hyperscaler capital 
+expenditures through combined hybrid architectures with HBM and increased GPU 
+utilization.  Given NAND’s thermal and write endurance constraints, we believe HBF 
+stacks are likely to utilize SLC-based (single level cell) NAND to mitigate these risks - and 
+given the higher costs and die size penalties will be priced far above MLC - similar to the 
+relationship between HBM and conventional DRAM.  HBF’s interconnect specification 
+will likely also result in significantly lower output per wafer (given the larger physical size 
+of an HBF chip relative to an equivalent capacity standard NAND chip; we assume HBF 
+requires ~3.5X more die/wafer area vs. traditional NAND).  Even at a meaningful 
+premium, we see significant room for HBF to significantly lower inference output costs, 
+even at ~1mn token context length - with the benefit growing roughly linearly as 
+sequences scale higher (see Exhibit 4). 
+ 
+Exhibit 3: Memory hierarchy Diagram 
+HDD
+NAND SSD
+DRAM (DDR5)
+HBF
+HBM4
+SRAM
+0.1
+1
+10
+100
+1000
+10000
+100000
+0.01
+0.1
+1
+10
+100
+1000
+Bandwidth (GB per second, log scale)
+Cost per GB (USD, log scale)
+Conventional Storage
+Conventional Memory
+High-bandwidth Stack
+On-die Cache
+Fast but costly
+Fast and cheap (target zone)
+Slow and costly
+Cheap but slow
+ 
+ 
+Source: Goldman Sachs Global Investment Research
+12 October 2026
+  4
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+ 
+HBF could achieve meaningful cost advantages over HBM-only systems with higher 
+memory density, comparable sequential read bandwidth, and higher GPU 
+utilization. We highlight key technical points including: 
+Higher memory density: At ~512 GB per stack and ~4 TB per GPU (in SK Hynix’s 
+n
+proposed H3 architecture), HBF offers ~16X higher memory capacity vs. HBM.  This 
+density allows systems to process 2.6X larger batch sizes at 1M tokens and up to 
+18.8X larger batches at 10M tokens compared to pure-HBM setups - resulting in 
+serving throughput advantages widen alongside sequence length. This advantage is 
+estimated at ~1.25X at 1 mn tokens and ~6.14X at 10 mn tokens, according to 
+research published by SK Hynix. 
+Mitigating the bandwidth gap between DRAM and NAND: Although NAND lags 
+n
+DRAM in peak bandwidth, research from SK Hynix and SanDisk has shown that 
+sequential read bandwidth for HBF significantly narrows the gap with HBM and 
+achieves up to ~3 TB/s (see Exhibit 5).  Also, in most inference-heavy workloads, the 
+number of write operations is quite limited, reducing the significance of random read 
+or write bandwidth of memory. 
+~2.7X energy efficiency gain at scale: Although an individual HBF stack consumes 
+n
+2X to 4X more power in absolute terms (80-160W vs. 40W), its ability to process 
+significantly larger inference batches may yield up to ~2.7X higher 
+throughput-per-watt, with efficiency gains widening as context lengths scale, 
+according to research supported by SK Hynix. 
+Potential for XPU cost savings via higher utilization: By eliminating 
+n
+memory-capacity bottlenecks and maximizing GPU core utilization, 4 HBF-equipped 
+XPU accelerators can potentially match the aggregate serving throughput of an 
+8-XPU pure-HBM system (at 192 GB / 4 TB of HBM / HBF respectively per GPU, 
+ 
+Exhibit 4: Illustrative per 1mn token cost comparison HBM only vs. H3 GPU memory architecture and HBF price per GB 
+scenario analysis 
+On-Chip Memory Configuration
+HBM Only
+HBM-HBF Hybrid
+GPU Model
+Nvidia B200
+Nvidia B200
+HBM Capacity (GB) per GPU
+192
+192
+HBF Capacity (GB) per GPU
+0
+4,096
+Number of GPUs
+8
+4
+Total System HBM Capacity
+1,536
+768
+Total System HBF Capacity
+0
+16,384
+HBM Cost per GB ($)
+15.00
+15.00
+HBF price per GB
+-32.69%
+HBF Cost per GB ($)
+1.75
+1.75
+0.25
+$                           
+-56.10%
+0.50
+$                           
+-52.20%
+HBM Cost per GPU ($)
+2,880
+2,880
+0.75
+$                           
+-48.30%
+HBF Cost per GPU ($)
+0
+7,168
+1.00
+$                           
+-44.40%
+GPU Cost (incl. packaging, peripherals, but excl. memory) 
+7,620
+7,620
+1.25
+$                           
+-40.50%
+1.50
+$                           
+-36.59%
+Aggregate System Cost (GPUs + Memory)
+84,000
+70,672
+1.75
+$                           
+-32.69%
+2.00
+$                           
+-28.79%
+Aggregate System Price (GPUs + Memory) (70% GM)
+280,000
+235,573
+2.25
+$                           
+-24.89%
+2.50
+$                           
+-20.99%
+Illustrative Inference Throughput in TPS at a 1mn token 
+batch size (approximate)
+10,000
+12,500
+Cost per 1K inference output tokens per second
+$28.00
+$18.85
+Cost Efficiency Gain
+-32.69%
+Potential Cost Efficiency Gain for H3 at 4 GPUs
+ 
+ 
+Source: Company data, TrendForce, Goldman Sachs Global Investment Research
+12 October 2026
+  5
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+according to SanDisk). 
+ 
+HBF’s benefits are enhanced in hybrid architectures that help mitigate the 
+technology’s key drawbacks.  Since NAND flash access latency may prove sub-optimal 
+for real-time token generation in certain situations, SK Hynix has proposed its own “H3” 
+architecture, which consists of a hybrid HBM-HBF configuration.  The company claims 
+this helps address NAND’s write / random read bandwidth shortcomings by unifying 
+both memory types into a complementary, two-tier memory hierarchy.  We note the 
+combined architecture could potentially offer: 
+Zero shoreline penalty: HBF stacks are daisy-chained directly through the HBM 
+n
+base die, expanding on-package capacity without occupying the GPU’s limited 
+physical edge connections (see Exhibit 6) 
+Optimized workload partitioning: Low-cost HBF stores massive, static data 
+n
+structures (model weights and pre-computed KV caches), reserving valuable HBM 
+capacity exclusively for latency-critical live decoding. 
+Commercial and operational payoff: Offloading static memory expands 
+n
+concurrent batch capacity, enabling up to 2.7x higher throughput per watt (see 
+Exhibit 7). This reduces overall GPU cluster counts and facility power draw, lowering 
+total cost of ownership (TCO) and per-query serving costs. 
+ 
+ 
+Exhibit 5: Comparison between HBF and HBM 4 
+Comparison between HBF and HBM 4
+Category
+HBM 4
+HBF
+Capacity (GB)
+36
+512
+Price ($)
+~15.28
+N/A
+Power Consumption (Watt)
+Throughput per power 
+Sequential Read Bandwidth
+~2.0-3.3 TB/s
+~0.4-3 TB/s
+Latency 
+~20ns
+~10 μs (10000ns)
+Read granularity (bytes per read)
+32
+4096
+Write Endurance 
+High
+Low
+Excels in
+Write dominant  workload 
+Read dominant workload
+HBF is ~2-4x HBM
+HBF 1.25x higher for 1M tokens; 6.14x higher for 10M *
+ 
+ 
+Source: Silicon analyst, Hotchips conference, Goldman Sachs Global Investment Research
+ 
+Exhibit 6: Side cross sectional view of H3 
+ 
+ 
+Source: SK Hynix
+12 October 2026
+  6
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+ 
+HBF forecast model and potential commercial opportunity 
+ 
+ 
+We see a significant potential commercial opportunity in HBF and believe it could 
+account for up to ~4% of global NAND bit shipments by late 2028 in a bull case that 
+assumes a rapid and elevated adoption rate of 50% by 4Q28, which could equate to 
+an HBF TAM of ~$150 bn. In a more measured scenario that assumes a penetration rate 
+of ~15% of GPU units by late 2030 and a price per GB of HBF of $1.75 (which we view as 
+conservative), we see an annualized TAM for HBF of ~$40 bn. 
+We see HBF bits occupying up to ~9% of global NAND wafer capacity in a bull-case 
+adoption scenario given its SLC structure and larger die size. Relative to traditional 
+NAND, we assume a 3.5X higher wafer space usage per GB equivalent for HBF (roughly 
+similar to the DRAM/HBM ratio) and thus see it accounting for a larger share of global 
+NAND wafer capacity relative to its share of total NAND bits.  Assuming a bull case 
+scenario of a rapid ramp in HBF’s deployment to 50% of GPU units by late 2028, and 
+based on current industry forecasts for global NAND bit output and wafer capacity, we 
+see HBF accounting for ~4% of global NAND bits while simultaneously consuming over 
+9% of global NAND wafer capacity (see Exhibit 8). 
+ 
+Exhibit 7: Throughput & throughput per power comparison of HBM-only vs H3 
+ 
+ 
+Source: SK Hynix
+12 October 2026
+  7
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+ 
+ 
+Challenges to HBF adoption 
+ 
+ 
+Despite the promise of High-Bandwidth Flash, we note several key challenges to 
+adoption. 
+Bandwidth constraints and latency concerns: According to SanDisk, SK Hynix, and 
+n
+other studies, HBF offers comparable sequential read bandwidth to HBM4, although 
+ 
+Exhibit 8: HBF share of global NAND GB and global NAND wafer capacity 
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+14%
+16%
+18%
+20%
+0
+50,000,000,000
+100,000,000,000
+150,000,000,000
+200,000,000,000
+250,000,000,000
+300,000,000,000
+350,000,000,000
+400,000,000,000
+450,000,000,000
+500,000,000,000
+1Q26
+2Q26E
+3Q26E
+4Q26E
+1Q27E
+2Q27E
+3Q27E
+4Q27E
+1Q28E
+2Q28E
+3Q28E
+4Q28E
+Share of Global Wafer Capacity Used for HBF
+Worldwide NAND GB Shipments
+Total HBF GB
+ 
+ 
+Source: TrendForce, Goldman Sachs Global Investment Research
+ 
+Exhibit 9: Global HBF forecast model 
+1Q26
+2Q26E
+3Q26E
+4Q26E
+1Q27E
+2Q27E
+3Q27E
+4Q27E
+1Q28E
+2Q28E
+3Q28E
+4Q28E
+NVDA
+1,592
+1,866
+2,067
+2,265
+2,525
+2,393
+3,093
+3,345
+3,402
+3,447
+3,575
+3,588
+AMD
+127
+135
+146
+244
+266
+298
+343
+377
+358
+362
+365
+376
+AVGO
+1,254
+1,379
+1,614
+1,904
+1,828
+2,193
+2,522
+2,951
+2,951
+3,305
+3,438
+3,541
+MRVL
+110
+118
+148
+195
+152
+178
+208
+239
+206
+237
+278
+333
+Total (k Units)
+3,082
+3,499
+3,975
+4,608
+4,771
+5,062
+6,166
+6,912
+6,917
+7,351
+7,656
+7,838
+% w/ HBF
+0.00%
+0.00%
+0.00%
+5.00%
+10.00%
+17.50%
+25.00%
+30.00%
+35.00%
+40.00%
+45.00%
+50.00%
+k Units w/ HBF
+0
+0
+0
+230
+477
+886
+1,541
+2,074
+2,421
+2,940
+3,445
+3,919
+HBF GB per Unit
+4,096
+4,096
+4,096
+4,096
+4,096
+4,096
+4,096
+4,096
+4,096
+4,096
+4,096
+4,096
+Total HBF GB
+0
+0
+0
+943,769,934
+1,954,354,278
+3,628,252,884
+6,313,882,638
+8,493,715,308
+9,916,832,398
+12,044,213,194
+14,111,129,075
+16,051,941,696
+Global NAND GB Shipped
+250,502,593,784
+      
+274,274,827,172
+     
+299,837,605,810
+     
+326,345,845,374
+     
+340,103,507,470
+     
+374,978,692,941
+     
+393,082,944,774
+     
+405,412,980,472
+     
+417,575,369,886
+     
+430,102,630,983
+     
+443,005,709,912
+     
+456,295,881,210
+     
+QoQ Growth (%)
+9.32%
+8.84%
+4.22%
+10.25%
+4.83%
+3.14%
+3.00%
+3.00%
+3.00%
+3.00%
+% of WW NAND GB as HBF
+0.00%
+0.00%
+0.00%
+0.29%
+0.57%
+0.97%
+1.61%
+2.10%
+2.37%
+2.80%
+3.19%
+3.52%
+Estimated SanDisk GB Shipped
+80,147,536,031
+        
+80,147,536,031
+       
+80,147,536,031
+       
+80,147,536,031
+       
+1.01133E+11
+1.01133E+11
+1.01133E+11
+1.01133E+11
+1.11246E+11
+1.11246E+11
+1.11246E+11
+1.11246E+11
+% of SanDisk GB Shipped (illustrative, 
+100% market share)
+0.00%
+0.00%
+0.00%
+1.18%
+1.93%
+3.59%
+6.24%
+8.40%
+8.91%
+10.83%
+12.68%
+14.43%
+Global Wafer Starts in NAND
+4,011,000
+                  
+4,026,000
+                 
+4,092,000
+                 
+3,987,000
+                 
+4,071,000
+                 
+4,191,000
+                 
+4,263,000
+                 
+4,293,000
+                 
+4,722,300
+                 
+4,816,746
+                 
+4,913,081
+                 
+5,011,343
+                 
+Max Trad. NAND GB per 12in. Wafer
+131,072
+                      
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+131,072
+                    
+HBF to Trad. NAND Wafer Space Ratio
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+3.5x
+Max HBF GB per 12in. Wafer
+37,449
+                        
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+37,449
+                       
+Wafers Needed for HBF
+-
+                              
+-
+                             
+-
+                             
+25,201
+                       
+52,187
+                       
+96,885
+                       
+168,599
+                    
+226,807
+                    
+264,808
+                    
+321,615
+                    
+376,808
+                    
+428,633
+                    
+Share of Global Wafer Capacity           
+Used for HBF
+0.00%
+0.00%
+0.00%
+0.63%
+1.28%
+2.31%
+3.95%
+5.28%
+5.61%
+6.68%
+7.67%
+8.55%
+ 
+ 
+Source: TrendForce, Goldman Sachs Global Investment Research
+12 October 2026
+  8
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+we note that (1) HBM4E is currently in the sampling phase and delivers at least ~50% 
+higher bandwidth; (2) although inference workloads are read-dominant overall, any 
+write operations significantly reduces the effective bandwidth of HBF given its 
+NAND-based design; (3) HBF’s structurally lower write performance and endurance 
+relative to DRAM-based HBM results in its practical benefits being highly dependent 
+on its read performance keeping pace with the latest generations of HBM. 
+Variability of read/write ratio in inference: As context windows expand and 
+n
+workloads shift to read-heavy inference, occasional write operations in KV cache 
+remain essential: if no prefix cache hit occurs (i.e., the prompt / prefix is not found in 
+the existing KV cache), the read/write ratio is effectively zero.  Although this ratio will 
+likely become increasingly rare over time and inference remains highly 
+read-dominant, the variability of write operation frequency (and the resulting 
+meaningful bandwidth penalty for NAND-based HBF) could render the effective 
+bandwidth of HBF unpredictable in the early phases of any rollout. 
+Endurance, energy intensity, and thermal concerns: Because it is based on NAND 
+n
+flash, HBF tolerates a finite number of program/erase cycles - whereas DRAM-based 
+HBM offers far greater write endurance.  Also, the higher density of a HBF cube 
+result drives higher energy consumption per stack (~160 W per cube in SK Hynix’s H3 
+architecture, ~4X more power than HBM3E vs. ~2.5X more power than HBM4). Given 
+the peak power of most flagship accelerators of ~1,000-1,200 W, and the utilization 
+of 8 HBF stacks in H3, the power footprint of HBF alone can easily approach the 
+accelerator’s own constraints and result in new thermal issues. This excess heat may 
+further accelerate wear on the flash cells and complicate lifespan considerations. 
+Manufacturing resource intensity: As with HBM, HBF uses design changes to 
+n
+maximize bandwidth, including increased internal structural parallelism and 3D 
+packaging methods. It also uses ultra-wide on-package interconnect to alleviate the 
+external data bottleneck.  These advanced packaging techniques, the use of hybrid 
+bonding, and the ultra-wide interconnect all contribute to a more resource-intensive 
+and higher-cost manufacturing process, including a significantly higher wafer 
+consumption (most estimates suggest a 3X-4X higher cost relative to traditional 
+NAND, similar to the DRAM/HBM “trade ratio”). 
+In aggregate, we view HBF’s potential bandwidth limitations and resource intensity as 
+the most significant challenges facing wide adoption of the technology.  As context 
+windows lengthen and the share of inference workflows grows, we see improved 
+visibility on the read/write ratio in KV cache and on pricing as key variables. 
+Alternative approaches to scaling the memory wall - XL Flash and zNAND-O 
+ 
+ 
+We are constructive on the broad set of NAND-based technologies set to address 
+memory constraints in AI inference - and see alternative approaches such as XL 
+Flash and zNAND-O ultimately driving similar implications.  While HBF remains one 
+of the leading approaches to addressing current AI system memory constraints given 
+public backing from SanDisk and SK Hynix (and ongoing development from Samsung) 
+and significant peer-reviewed publications, other approaches have emerged, including 
+12 October 2026
+  9
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+“XL Flash.”  Introduced by Kioxia and built on the company’s BiCS Flash 3D NAND 
+architecture, the approach includes key architectural and design differences relative to 
+HBF which could potentially offer easier packaging integration and/or lower cost, 
+potentially at the expense of some performance.  We would also highlight Samsung’s 
+development of zNAND-O - similar in concept such as using TSV to connect 4 or 8 layer 
+vertical stacks of V-NAND dies, while targeting a different market segment in on-device 
+AI (smartphones, PCs, etc.).  Samsung is also developing zHBM for data centers where it 
+stacks the memory on top of the AI accelerator rather than next to it, to improve the 
+performance and power efficiency.  Although it is too early to tell which approach might 
+come to market first, we believe that all three approaches are ultimately aimed at 
+solving the “memory wall” problem by applying NAND-based system approaches to 
+increase context length while offering significant potential cost savings at the system 
+level. 
+XL flash may hold write, cost, and certain other advantages over HBF, although 
+based on publicly-available literature HBF appears well-suited for read-heavy AI 
+inference applications.  XL Flash utilizes standard PCIe, NVMe, and CXL system buses, 
+but relies on less dense SLC-based NAND, smaller transfer blocks, and larger die 
+architectures relative to traditional 3D NAND flash to maximize bandwidth, significantly 
+lower random read latency, and meaningfully increase write endurance; characteristics 
+that may render XL Flash better suited for write operations relative to HBF.  The 
+technology’s reliance on existing approaches to 3D NAND manufacturing, its lack of TSVs 
+(through-silicon vias, required for the stacking associated with HBF), and physical 
+separation from the GPU (vs. HBF using the same silicon interposer) may also lower the 
+upfront transition cost and perceived investment risks. 
+Individual stock implications: 
+ 
+ 
+ 
+SanDisk (SNDK, Buy): We remain constructive on SNDK and view the company as a 
+n
+well-positioned beneficiary of the potential widespread adoption of HBF given its 
+technology leadership in collaboration with SK Hynix and its low capital intensity 
+through its Kioxia manufacturing partnership - which we see as particularly 
+differentiating given the resource intensity of HBF.  We also believe the company can 
+simultaneously retain its solid core business in traditional NAND, which we expect to 
+continue to outperform on improving product mix and further progress on its BiCS 
+roadmap. 
+ 
+Exhibit 10: Select stocks within our coverage positioned to be affected by HBF 
+Company
+Ticker 
+Rating
+12 month price target 
+Current Price
+Upside/ downside
+Advanced Micro Devices
+AMD
+Buy
+$700
+$611
+14.5%
+Broadcom
+AVGO
+Buy
+$540
+$363
+48.9%
+Kioxia
+285A.T
+Buy
+¥38,667
+¥17,505
+120.9%
+Micron 
+MU
+Neutral
+$1,250
+$1,027
+21.7%
+Nvidia
+NVDA
+Buy
+$300
+$229
+30.7%
+Samsung
+005930.KS
+Buy
+₩500,000
+₩262,000
+90.8%
+Sandisk
+SNDK
+Buy
+$2,200
+$1,607
+36.9%
+SK Hynix 
+000660.KS
+Buy
+₩3,500,000
+₩1,681,000
+108.2%
+ 
+Note: Current Price is as of October 9, 2026. 
+ 
+Source: Goldman Sachs Global Investment Research
+12 October 2026
+  10
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+Kioxia Holdings (285A.T, Buy): We reiterate our Buy rating on Kioxia given our 
+n
+expectations on ongoing supply shortages in the NAND market and constructive 
+pricing outlook, which we believe should lead to positive street estimate revisions. 
+We also believe Kioxia is poised to announce a series of shareholder return, including 
+the resumption of dividend payment as well as continued share buyback. Regarding 
+XL-Flash, which is intended to expand the memory capacity of GPUs in inference 
+GPU servers, Kioxia plans to ship samples of a product achieving over 10 million IOPS 
+(storage processing speed) by the end of CY26. It also plans to ship samples of a 
+second-generation product with processing speed further increased to 100 million 
+IOPS in CY27. Compared to HB Flash (HBF), Kioxia’s SSD-based solution is 
+differentiated in that it does not require additional manufacturing processes such as 
+TSV.  
+SK Hynix (000660.KS, Buy): We maintain our positive view on Hynix and see the 
+n
+company as a potential leader in the HBF market. While the company’s focus 
+remains on higher-margin DRAM and HBM, Hynix is uniquely positioned to be a 
+prime beneficiary of HBF market expansion given its proactive initiatives in 
+co-development and industry standardization of HBF with SanDisk. Through 
+leveraging its advanced NAND technology, vast experience in producing various 
+types of NAND, and the advanced packaging expertise from HBM leadership, we 
+believe Hynix possesses the core competencies required for HBF commercialization.  
+Samsung Electronics (005930.KS, Buy, on CL): We maintain our Buy rating (on the 
+n
+APAC Conviction List) on SEC. Although SEC has not yet released specific details on 
+its work on HBF (although it did recently file a trademark application for “zHBF”), 
+recent announcements on its technology milestones—such as the TSV-integrated 
+zNAND-O architecture—demonstrate its active R&D in high-bandwidth NAND. 
+Supported by its largest NAND capacity globally and technology leadership, we 
+believe SEC will likely be ready to compete in the high-bandwidth NAND market, also 
+leveraging its superior cost management and packaging competitiveness. We 
+highlight SEC being the only company in the world that can produce DRAM and 
+NAND while having the foundry/logic/advanced packaging capabilities, which we 
+believe along with the industry’s largest memory capacity (for both DRAM and 
+NAND), will help the company to continue to lead across an increasingly multi-tiered 
+AI memory hierarchy.  
+Micron (MU, Neutral): While we expect the company to participate in any 
+n
+significant future HBF market, we view its focus on HBM and DRAM, its lack of 
+participation in the consortium governing HBF, and its prioritization of DRAM 
+greenfield capacity overall as likely to temper its potential future market share in the 
+novel NAND technology.  We are Neutral-rated on MU, primarily on the risks of HBM 
+pricing momentum slowing in 2028 given the prospects of meaningful supply 
+additions by the industry, as well as possible de-specing of HBM as HBF adoption 
+ramps.  We nevertheless see continued tailwinds for Micron’s business overall, but 
+view SK Hynix and SanDisk as more direct and nearer-term beneficiaries of any 
+HBF-related inflection in NAND demand. 
+Semi Cap Equipment: We view HBF as a modest incremental positive for 
+n
+semiconductor equipment demand, though the implications are more nuanced than 
+12 October 2026
+  11
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+a simple increase in NAND content. On one hand, HBF introduces additional 
+manufacturing complexity through TSVs, hybrid bonding, advanced packaging, 
+inspection, and test, which could benefit equipment suppliers with exposure to 
+packaging and integration workflows. On the other hand, HBF’s value proposition is 
+rooted in reducing memory capacity bottlenecks and improving GPU utilization, 
+which could ultimately lower the number of accelerators required for a given 
+inference workload. We nevertheless see the added packaging, integration, and 
+memory intensity as likely to offset any reduction in system-level hardware demand. 
+Digital Semis: We see an incrementally negative impact for a range of XPU 
+n
+accelerator makers, including Nvidia, Broadcom, AMD, and others - as the success of 
+any high-performance NAND approach is likely to reduce the number of accelerators 
+ultimately deployed at a similar performance level given the potential cost savings 
+involved.  We would point out that Nvidia is currently the only provider of 
+accelerators which controls the entire system stack from software to hardware 
+components - and hence it may be able to optimize the system-level design to 
+mitigate this impact, similar to what it has done by optimizing the HBM-NAND 
+balance in the current Rubin generation.
+12 October 2026
+  12
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+Disclosure Appendix 
+ 
+ 
+Reg AC 
+We, James Schneider, Ph.D., Khalil Fenina, Giuni Lee, Shuhei Nakamura, Allen Chang, Daiki Takayama, Marshall Wong, Anmol Makkar, Luya You and Liana 
+Wadhwani, hereby certify that all of the views expressed in this report accurately reflect our personal views about the subject company or companies 
+and its or their securities. We also certify that no part of our compensation was, is or will be, directly or indirectly, related to the specific 
+recommendations or views expressed in this report. 
+Unless otherwise stated, the individuals listed on the cover page of this report are analysts in Goldman Sachs’ Global Investment Research division. 
+Contributing Authors: James Schneider, Ph.D. Goldman Sachs & Co. LLC, Khalil Fenina Goldman Sachs & Co. LLC, Giuni Lee Goldman Sachs (Singapore) 
+Pte, Shuhei Nakamura Goldman Sachs Japan Co., Ltd., Allen Chang Goldman Sachs (Asia) L.L.C., Daiki Takayama Goldman Sachs Japan Co., Ltd., Marshall 
+Wong Goldman Sachs & Co. LLC, Anmol Makkar Goldman Sachs & Co. LLC, Luya You Goldman Sachs & Co. LLC, Liana Wadhwani Goldman Sachs & Co. 
+LLC. 
+Unless otherwise stated, the individuals listed in the Contributing Authors disclosure of this report are analysts in Goldman Sachs’ Global Investment 
+Research division. 
+GS Factor Profile 
+The Goldman Sachs Factor Profile provides investment context for a stock by comparing key attributes to the market (i.e. our universe of rated stocks) 
+and its sector peers. The four key attributes depicted are: Growth, Financial Returns, Multiple (e.g. valuation) and Integrated (a composite of Growth, 
+Financial Returns and Multiple). Growth, Financial Returns and Multiple are calculated by using normalized ranks for specific metrics for each stock. The 
+normalized ranks for the metrics are then averaged and converted into percentiles for the relevant attribute. The precise calculation of each metric may 
+vary depending on the fiscal year, industry and region, but the standard approach is as follows: 
+Growth is based on a stock’s forward-looking sales growth, EBITDA growth and EPS growth (for financial stocks, only EPS and sales growth), with a 
+higher percentile indicating a higher growth company. Financial Returns is based on a stock’s forward-looking ROE, ROCE and CROCI (for financial 
+stocks, only ROE), with a higher percentile indicating a company with higher financial returns. Multiple is based on a stock’s forward-looking P/E, P/B, 
+price/dividend (P/D), EV/EBITDA, EV/FCF and EV/Debt Adjusted Cash Flow (DACF) (for financial stocks, only P/E, P/B and P/D), with a higher percentile 
+indicating a stock trading at a higher multiple. The Integrated percentile is calculated as the average of the Growth percentile, Financial Returns 
+percentile and (100% - Multiple percentile). 
+Financial Returns and Multiple use the Goldman Sachs analyst forecasts at the fiscal year-end at least three quarters in the future. Growth uses inputs 
+for the fiscal year at least seven quarters in the future compared with the year at least three quarters in the future (on a per-share basis for all metrics). 
+For a more detailed description of how we calculate the GS Factor Profile, please contact your GS representative.  
+M&A Rank 
+Across our global coverage, we examine stocks using an M&A framework, considering both qualitative factors and quantitative factors (which may vary 
+across sectors and regions) to incorporate the potential that certain companies could be acquired. We then assign a M&A rank as a means of scoring 
+companies under our rated coverage from 1 to 3, with 1 representing high (30%-50%) probability of the company becoming an acquisition target, 2 
+representing medium (15%-30%) probability and 3 representing low (0%-15%) probability. For companies ranked 1 or 2, in line with our standard 
+departmental guidelines we incorporate an M&A component into our target price. M&A rank of 3 is considered immaterial and therefore does not 
+factor into our price target, and may or may not be discussed in research. 
+Quantum 
+Quantum is Goldman Sachs’ proprietary database providing access to detailed financial statement histories, forecasts and ratios. It can be used for 
+in-depth analysis of a single company, or to make comparisons between companies in different sectors and markets.  
+Disclosures 
+Distribution of ratings/investment banking relationships 
+Goldman Sachs Investment Research global Equity coverage universe 
+ 
+As of July 1, 2026, Goldman Sachs Global Investment Research had investment ratings on 3,104 equity securities. Goldman Sachs assigns stocks as Buys 
+and Sells on various regional Investment Lists; stocks not so assigned are deemed Neutral. Such assignments equate to Buy, Hold and Sell for the 
+purposes of the above disclosure required by the FINRA Rules. See ‘Ratings, Coverage universe and related definitions’ below. The Investment Banking 
+Relationships chart reflects the percentage of subject companies within each rating category for whom Goldman Sachs has provided investment 
+banking services within the previous twelve months.     
+Regulatory disclosures 
+Disclosures required by United States laws and regulations 
+See company-specific regulatory disclosures above for any of the following disclosures required as to companies referred to in this report: manager or 
+co-manager in a pending transaction; 1% or other ownership; compensation for certain services; types of client relationships; managed/co-managed 
+public offerings in prior periods; directorships; registered market maker. Goldman Sachs trades or may trade as a principal in debt securities (or in 
+related derivatives) of issuers discussed in this report.  
+The following are additional required disclosures: Ownership and material conflicts of interest: Goldman Sachs policy prohibits its analysts, 
+professionals reporting to analysts and members of their households from owning securities of any company in the analyst’s area of coverage.  Analyst 
+compensation:  Analysts are paid in part based on the profitability of Goldman Sachs, which includes investment banking revenues.  Analyst as officer 
+or director: Goldman Sachs policy generally prohibits its analysts, persons reporting to analysts or members of their households from serving as an 
+officer, director or advisor of any company in the analyst’s area of coverage.  Non-U.S. Analysts:  Non-U.S. analysts may not be associated persons of 
+Rating Distribution
+Investment Banking Relationships
+Buy
+Hold
+Sell
+Buy
+Hold
+Sell
+Global
+50%
+34%
+16%
+65%
+59%
+43%
+12 October 2026
+  13
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+Goldman Sachs & Co. LLC and therefore may not be subject to FINRA Rule 2241 or FINRA Rule 2242 restrictions on communications with a subject 
+company, public appearances and trading in securities covered by the analysts.  
+Additional disclosures required under the laws and regulations of jurisdictions other than the United States 
+The following disclosures are those required by the jurisdiction indicated, except to the extent already made above pursuant to United States laws and 
+regulations. Australia: Goldman Sachs Australia Pty Ltd and its affiliates are not authorised deposit-taking institutions (as that term is defined in the 
+Banking Act 1959 (Cth)) in Australia and do not provide banking services, nor carry on a banking business, in Australia. This research, and any access to 
+it, is intended only for “wholesale clients” within the meaning of the Australian Corporations Act, unless otherwise agreed by Goldman Sachs. In 
+producing research reports, members of Global Investment Research of Goldman Sachs Australia may attend site visits and other meetings hosted by 
+the companies and other entities which are the subject of its research reports. In some instances the costs of such site visits or meetings may be met in 
+part or in whole by the issuers concerned if Goldman Sachs Australia considers it is appropriate and reasonable in the specific circumstances relating to 
+the site visit or meeting. To the extent that the contents of this document contains any financial product advice, it is general advice only and has been 
+prepared by Goldman Sachs without taking into account a client’s objectives, financial situation or needs. A client should, before acting on any such 
+advice, consider the appropriateness of the advice having regard to the client’s own objectives, financial situation and needs. A copy of certain 
+Goldman Sachs Australia and New Zealand disclosure of interests and a copy of Goldman Sachs’ Australian Sell-Side Research Independence Policy 
+Statement are available at:  
+.  Brazil: Disclosure information in relation 
+to CVM Resolution n. 20 is available at  
+. Where applicable, the Brazil-registered analyst 
+primarily responsible for the content of this research report, as defined in Article 20 of CVM Resolution n. 20, is the first author named at the beginning 
+of this report, unless indicated otherwise at the end of the text.  Canada: This information is being provided to you for information purposes only and is 
+not, and under no circumstances should be construed as, an advertisement, offering or solicitation by Goldman Sachs & Co. LLC for purchasers of 
+securities in Canada to trade in any Canadian security. Goldman Sachs & Co. LLC is not registered as a dealer in any jurisdiction in Canada under 
+applicable Canadian securities laws and generally is not permitted to trade in Canadian securities and may be prohibited from selling certain securities 
+and products in certain jurisdictions in Canada. If you wish to trade in any Canadian securities or other products in Canada please contact Goldman 
+Sachs Canada Inc., an affiliate of The Goldman Sachs Group Inc., or another registered Canadian dealer.  Hong Kong: Further information on the 
+securities of covered companies referred to in this research may be obtained on request from Goldman Sachs (Asia) L.L.C.  India: Further information 
+on the subject company or companies referred to in this research may be obtained from Goldman Sachs (India) Securities Private Limited, Research 
+Analyst - SEBI Registration Number INH000001493, 10th Floor, Ascent-Worli, Sudam Kalu Ahire Marg, Worli, Mumbai-400 025, India, Corporate 
+Identity Number U74140MH2006FTC160634, Phone +91 22 6616 9000, Fax +91 22 6616 9001. Goldman Sachs may beneficially own 1% or more of 
+the securities (as such term is defined in clause 2 (h) the Indian Securities Contracts (Regulation) Act, 1956) of the subject company or companies 
+referred to in this research report. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or 
+provide any assurance of returns to investors. Goldman Sachs (India) Securities Private Limited compliance officer and investor grievance contact 
+details, a copy of the annual compliance audit report and other relevant information and disclosures can be found at this link: 
+ 
+.  Japan: See below.  Korea: This research, and any access to it, is intended only for 
+“professional investors” within the meaning of the Financial Services and Capital Markets Act, unless otherwise agreed by Goldman Sachs. Further 
+information on the subject company or companies referred to in this research may be obtained from Goldman Sachs (Asia) L.L.C., Seoul Branch.  New 
+Zealand: Goldman Sachs New Zealand Limited and its affiliates are neither “registered banks” nor “deposit takers” (as defined in the Reserve Bank of 
+New Zealand Act 1989) in New Zealand. This research, and any access to it, is intended for “wholesale clients” (as defined in the Financial Advisers Act 
+2008) unless otherwise agreed by Goldman Sachs. A copy of certain Goldman Sachs Australia and New Zealand disclosure of interests is available at: 
+ 
+.  Russia: Research reports distributed in the Russian Federation are not 
+advertising as defined in the Russian legislation, but are information and analysis not having product promotion as their main purpose and do not 
+provide appraisal within the meaning of the Russian legislation on appraisal activity. Research reports do not constitute a personalized investment 
+recommendation as defined in Russian laws and regulations, are not addressed to a specific client, and are prepared without analyzing the financial 
+circumstances, investment profiles or risk profiles of clients. Goldman Sachs assumes no responsibility for any investment decisions that may be taken 
+by a client or any other person based on this research report.  Singapore: Goldman Sachs (Singapore) Pte. (Company Number: 198602165W), which is 
+regulated by the Monetary Authority of Singapore, accepts legal responsibility for this research, and should be contacted with respect to any matters 
+arising from, or in connection with, this research.  Taiwan: This material is for reference only and must not be reprinted without permission. Investors 
+should carefully consider their own investment risk. Investment results are the responsibility of the individual investor.  United Kingdom: Persons who 
+would be categorized as retail clients in the United Kingdom, as such term is defined in the rules of the Financial Conduct Authority, should read this 
+research in conjunction with prior Goldman Sachs research on the covered companies referred to herein and should refer to the risk warnings that have 
+been sent to them by Goldman Sachs International. A copy of these risks warnings, and a glossary of certain financial terms used in this report, are 
+available from Goldman Sachs International on request.   
+European Union and United Kingdom: Disclosure information in relation to Article 6 (2) of the European Commission Delegated Regulation (EU) 
+(2016/958) supplementing Regulation (EU) No 596/2014 of the European Parliament and of the Council (including as that Delegated Regulation is 
+implemented into United Kingdom domestic law and regulation following the United Kingdom’s departure from the European Union and the European 
+Economic Area) with regard to regulatory technical standards for the technical arrangements for objective presentation of investment 
+recommendations or other information recommending or suggesting an investment strategy and for disclosure of particular interests or indications of 
+conflicts of interest is available at  
+ which states the European Policy for Managing Conflicts of 
+Interest in Connection with Investment Research.   
+Japan: Goldman Sachs Japan Co., Ltd. is a Financial Instrument Dealer registered with the Kanto Financial Bureau under registration number Kinsho 69, 
+and a member of Japan Securities Dealers Association, Financial Futures Association of Japan Type II Financial Instruments Firms Association, and 
+Investment Management Association of Japan. Sales and purchase of equities are subject to commission pre-determined with clients plus consumption 
+tax. See company-specific disclosures as to any applicable disclosures required by Japanese stock exchanges, the Japanese Securities Dealers 
+Association or the Japanese Securities Finance Company.   
+Ratings, coverage universe and related definitions 
+Buy (B), Neutral (N), Sell (S) Analysts recommend stocks as Buys or Sells for inclusion on various regional Investment Lists. Being assigned a Buy or Sell 
+on an Investment List is determined by a stock’s total return potential relative to its coverage universe. Any stock not assigned as a Buy or a Sell on an 
+Investment List with an active rating (i.e., a  stock that is not Rating Suspended, Not Rated, Early-Stage Biotech, Coverage Suspended or Not Covered), is 
+deemed Neutral. Each region manages Regional Conviction Lists, which are selected from Buy rated stocks on the respective region’s Investment Lists 
+and represent investment recommendations focused on the size of the total return potential and/or the likelihood of the realization of the return across 
+their respective areas of coverage.  The addition or removal of stocks from such Conviction Lists are managed by the Investment Review Committee or 
+other designated committee in each respective region and do not represent a change in the analysts’ investment rating for such stocks.    
+Total return potential represents the upside or downside differential between the current share price and the price target, including all paid or 
+anticipated dividends, expected during the time horizon associated with the price target. Price targets are required for all covered stocks. The total 
+return potential, price target and associated time horizon are stated in each report adding or reiterating an Investment List membership.  
+Coverage Universe: A list of all stocks in each coverage universe is available by primary analyst, stock and coverage universe at 
+12 October 2026
+  14
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+ 
+.    
+Not Rated (NR). The investment rating, target price and earnings estimates (where relevant) are removed pursuant to Goldman Sachs policy when 
+Goldman Sachs is acting in an advisory capacity in a merger or in a strategic transaction involving this company, when there are legal, regulatory or 
+policy constraints due to Goldman Sachs’ involvement in a transaction, and in certain other circumstances. Early-Stage Biotech (ES). An investment 
+rating and a target price are not assigned pursuant to Goldman Sachs policy when this company has neither a drug, treatment or medical device that 
+has passed a Phase II clinical trial nor a license to distribute a post-Phase II drug, treatment or medical device.  Rating Suspended (RS). Goldman Sachs 
+Research has suspended the investment rating and price target for this stock, because there is not a sufficient fundamental basis for determining an 
+investment rating or target price. The previous investment rating and target price, if any, are no longer in effect for this stock and should not be relied 
+upon.  Coverage Suspended (CS). Goldman Sachs has suspended coverage of this company.  Not Covered (NC). Goldman Sachs does not cover this 
+company.  
+Global product; distributing entities 
+Goldman Sachs Global Investment Research produces and distributes research products for clients of Goldman Sachs on a global basis. Analysts based 
+in Goldman Sachs offices around the world produce research on industries and companies, and research on macroeconomics, currencies, commodities 
+and portfolio strategy. This research is disseminated in Australia by Goldman Sachs Australia Pty Ltd (ABN 21 006 797 897); in Brazil by Goldman Sachs 
+do Brasil Corretora de Títulos e Valores Mobiliários S.A.; Public Communication Channel Goldman Sachs Brazil: 0800 727 5764 and / or 
+contatogoldmanbrasil@gs.com. Available Weekdays (except holidays), from 9am to 6pm. Canal de Comunicação com o Público Goldman Sachs Brasil: 
+0800 727 5764 e/ou contatogoldmanbrasil@gs.com. Horário de funcionamento: segunda-feira à sexta-feira (exceto feriados), das 9h às 18h; in Canada 
+by Goldman Sachs & Co. LLC; in Hong Kong by Goldman Sachs (Asia) L.L.C.; in India by Goldman Sachs (India) Securities Private Ltd.; in Japan by 
+Goldman Sachs Japan Co., Ltd.; in the Republic of Korea by Goldman Sachs (Asia) L.L.C., Seoul Branch; in New Zealand by Goldman Sachs New Zealand 
+Limited; in Russia by OOO Goldman Sachs; in Singapore by Goldman Sachs (Singapore) Pte. (Company Number: 198602165W); and in the United States 
+of America by Goldman Sachs & Co. LLC. Goldman Sachs International has approved this research in connection with its distribution in the United 
+Kingdom.  
+Goldman Sachs International (“GSI”), authorised by the Prudential Regulation Authority (“PRA”) and regulated by the Financial Conduct Authority 
+(“FCA”) and the PRA, has approved this research in connection with its distribution in the United Kingdom. 
+European Economic Area: Goldman Sachs Bank Europe SE (“GSBE”) is a credit institution incorporated in Germany and, within the Single Supervisory 
+Mechanism, subject to direct prudential supervision by the European Central Bank and in other respects supervised by German Federal Financial 
+Supervisory Authority (Bundesanstalt für Finanzdienstleistungsaufsicht, BaFin) and Deutsche Bundesbank and disseminates research within the 
+European Economic Area.  
+General disclosures 
+This research is for our clients only. Other than disclosures relating to Goldman Sachs, this research is based on current public information that we 
+consider reliable, but we do not represent it is accurate or complete, and it should not be relied on as such. The information, opinions, estimates and 
+forecasts contained herein are as of the date hereof and are subject to change without prior notification. We seek to update our research as 
+appropriate, but various regulations may prevent us from doing so. Other than certain industry reports published on a periodic basis, the large majority 
+of reports are published at irregular intervals as appropriate in the analyst’s judgment. 
+Goldman Sachs conducts a global full-service, integrated investment banking, investment management, and brokerage business. We have investment 
+banking and other business relationships with a substantial percentage of the companies covered by Global Investment Research. Goldman Sachs & Co. 
+LLC, the United States broker dealer, is a member of SIPC ( 
+).  
+Our salespeople, traders, and other professionals may provide oral or written market commentary or trading strategies to our clients and principal 
+trading desks that reflect opinions that are contrary to the opinions expressed in this research. Our asset management area, principal trading desks and 
+investing businesses may make investment decisions that are inconsistent with the recommendations or views expressed in this research. 
+The analysts named in this report may have from time to time discussed with our clients, including Goldman Sachs salespersons and traders, or may 
+discuss in this report, trading strategies that reference catalysts or events that may have a near-term impact on the market price of the equity securities 
+discussed in this report, which impact may be directionally counter to the analyst’s published price target expectations for such stocks. Any such 
+trading strategies are distinct from and do not affect the analyst’s fundamental equity rating for such stocks, which rating reflects a stock’s return 
+potential relative to its coverage universe as described herein. 
+We and our affiliates, officers, directors, and employees will from time to time have long or short positions in, act as principal in, make a market or act as 
+liquidity provider in, and buy or sell, any securities, derivatives, or other financial instruments referred to in this research (including any financial 
+instruments issued by the companies referred to herein), unless otherwise prohibited by regulation or Goldman Sachs policy.  
+The views attributed to third party presenters at Goldman Sachs arranged conferences, including individuals from other parts of Goldman Sachs, do not 
+necessarily reflect those of Global Investment Research and are not an official view of Goldman Sachs. 
+Any third party referenced herein, including any salespeople, traders and other professionals or members of their household, may have positions in the 
+products mentioned that are inconsistent with the views expressed by analysts named in this report. 
+This research is not an offer to sell or the solicitation of an offer to buy any security in any jurisdiction where such an offer or solicitation would be illegal. 
+It does not constitute a personal recommendation or take into account the particular investment objectives, financial situations, or needs of individual 
+clients. Clients should consider whether any advice or recommendation in this research is suitable for their particular circumstances and, if appropriate, 
+seek professional advice, including tax advice. The price and value of investments referred to in this research and the income from them may fluctuate. 
+Past performance is not a guide to future performance, future returns are not guaranteed, and a loss of original capital may occur. Fluctuations in 
+exchange rates could have adverse effects on the value or price of, or income derived from, certain investments.  
+Certain transactions, including those involving futures, options, and other derivatives, give rise to substantial risk and are not suitable for all investors. 
+Investors should review current options and futures disclosure documents which are available from Goldman Sachs sales representatives or at 
+ 
+ and  
+. Transaction 
+costs may be significant in option strategies calling for multiple purchase and sales of options such as spreads. Supporting documentation will be 
+supplied upon request.  
+Differing Levels of Service provided by Global Investment Research: The level and types of services provided to you by Goldman Sachs Global 
+Investment Research may vary as compared to that provided to internal and other external clients of GS, depending on various factors including your 
+individual preferences as to the frequency and manner of receiving communication, your risk profile and investment focus and perspective (e.g., 
+marketwide, sector specific, long term, short term), the size and scope of your overall client relationship with GS, and legal and regulatory constraints.  
+As an example, certain clients may request to receive notifications when research on specific securities is published, and certain clients may request 
+that specific data underlying analysts’ fundamental analysis available on our internal client websites be delivered to them electronically through data 
+12 October 2026
+  15
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
+
+feeds or otherwise. No change to an analyst’s fundamental research views (e.g., ratings, price targets, or material changes to earnings estimates for 
+equity securities), will be communicated to any client prior to inclusion of such information in a research report broadly disseminated through 
+electronic publication to our internal client websites or through other means, as necessary, to all clients who are entitled to receive such reports. 
+All research reports are disseminated and available to all clients simultaneously through electronic publication to our internal client websites. Not all 
+research content is redistributed to our clients or available to third-party aggregators, nor is Goldman Sachs responsible for the redistribution of our 
+research by third party aggregators. For research, models or other data related to one or more securities, markets or asset classes (including related 
+services) that may be available to you, please contact your GS representative or go to  
+. 
+Disclosure information is also available at  
+ or from Research Compliance, 200 West Street, New York, NY 
+10282. 
+© 2026 Goldman Sachs.  
+You are permitted to store, display, analyze, modify, reformat, and print the information made available to you via this service only for your own use.  
+You may not resell or reverse engineer this information to calculate or develop any index for disclosure and/or marketing or create any other derivative 
+works or commercial product(s), data or offering(s) without the express written consent of Goldman Sachs. You are not permitted to publish, transmit, 
+or otherwise reproduce this information, in whole or in part, in any format to any third party without the express written consent of Goldman Sachs. 
+This foregoing restriction includes, without limitation, using, extracting, downloading or retrieving this information, in whole or in part, to train or 
+finetune a machine learning or artificial intelligence system, or to provide or reproduce this information, in whole or in part, as a prompt or input to any 
+such system. 
+12 October 2026
+  16
+Goldman Sachs
+Global Technology: Semiconductors - Memory
+ 
+ 
