@@ -1,0 +1,552 @@
+{
+ "brief": "GS's morning TMT note leads with a coordinated overnight selloff across global tech/AI/semis after China's CXMT claimed a memory-chip breakthrough (a 4F\u00b2 design launching before year-end) that would place it ahead of Samsung and SK Hynix despite US sanctions on tool access; Musk's comments on China's manufacturing scale added to the pressure. Korea, Japan and Europe tech all fell, Kioxia and ASML dropped, and WDC, STX, MU and SNDK are down premarket, with SOXX on a sixth straight down day and Broadcom's CEO warning of overheating sentiment; ASML and TSM report this week. Separately: Applied Materials expects to double revenue without doubling headcount via AI; Alibaba priced new AI glasses near Meta's Ray-Ban level while Meta added a cheaper camera-free Muse model; China smartphone shipments fell a sixth straight quarter as Huawei grew and Apple's China volumes slipped. On earnings, JPM fell premarket on a FICC miss as bank earnings open Q3 season; GS previewed StubHub (GMS estimate above consensus, revenue estimate below, price target cut to $11) and its Live Entertainment coverage.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Korea's KOSPI fell as the global Tech/AI complex came under pressure globally overnight.",
+   "anchor": "global Tech / AI complex comping under pressure globally overnight. Korea finished -5.5%, with",
+   "topic": "AI semis weakness drivers",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Samsung and SK Hynix finished down 8% and 10% respectively, and Japan's Nikkei finished down 1.8% with Kioxia also falling.",
+   "anchor": "Samsung/Hynix finishing -8% and -10% respectively\u2026 Japan finished -1.8% with Kioxia finishing",
+   "topic": "AI semis weakness drivers",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "European Tech traded mixed with Euro Tech down 1.2% and ASML down 2%, as the Memory market appears central to the global selloff.",
+   "anchor": "while Europe is trading mixed with Euro Tech -1.2% (ASML -2%). The Memory market appears",
+   "topic": "AI semis weakness drivers",
+   "status": "level",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "China's CXMT claims of breakthroughs in memory chip technology are cited as the primary catalyst for today's move, with Musk's comments on China's entrance into the memory market also not helping.",
+   "anchor": "claims of breakthroughs in memory chip technology as the primary catalyst for today's move, with Musk",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "WDC and STX are each trading down 6% in the premarket amid the memory-sector selloff.",
+   "anchor": "each trading -6% in the pre, and MU/SNDK 4% and 5% respectively. Events in focus today are WDAY's",
+   "topic": "AI semis weakness drivers",
+   "status": "level",
+   "instruments": [
+    "WDC",
+    "STX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "MU and SNDK are trading down 4% and 5% respectively in the premarket amid the memory-sector selloff.",
+   "anchor": "each trading -6% in the pre, and MU/SNDK 4% and 5% respectively. Events in focus today are WDAY's",
+   "topic": "AI semis weakness drivers",
+   "status": "level",
+   "instruments": [
+    "MU",
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "ASML reports earnings tomorrow before the market open.",
+   "anchor": "horizon are: ASML report tomorrow pre open, and TSM print Thurs pre mkt.",
+   "topic": "AI semis weakness drivers",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "TSM reports earnings Thursday before the market open.",
+   "anchor": "horizon are: ASML report tomorrow pre open, and TSM print Thurs pre mkt.",
+   "topic": "AI semis weakness drivers",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Thursday"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "CXMT declared it achieved a breakthrough in chip technology that rivals like Samsung had pursued for years, an unsubstantiated claim that jolted stocks.",
+   "anchor": "achieved a breakthrough in chip technology that rivals like Samsung Electronics Co. had pursued for",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "CXMT plans to roll out chips using a self-developed 4F\u00b2 architecture that should launch before the end of the year.",
+   "anchor": "self-developed new architecture, featuring a so-called 4F\u00b2 design, which should launch before the end of",
+   "topic": "AI semis weakness drivers",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "before end of year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "If CXMT has achieved the 4F\u00b2 threshold, it got there before Samsung and SK Hynix despite US sanctions barring the Chinese firm's access to tools such as ASML's top-end machines.",
+   "anchor": "and SK Hynix Inc. \u2014 despite US sanctions that bar the Chinese firm's access to tools such as ASML",
+   "topic": "AI semis weakness drivers",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Musk said that once China figures out how to manufacture a product, its ability to scale is often greater than the rest of the world combined.",
+   "anchor": "manufacture a product, their ability to scale is often greater than the rest of the world combined,\" Musk",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Musk said RAM was a low-margin commodity only three years ago, and that CXMT may still find it more difficult to match Micron in high-bandwidth memory.",
+   "anchor": "RAM was a low margin commodity only 3 years ago.\" Musk also noted that CXMT may find it more",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Premarket semis weakness remains in focus, with SOXX down 153bps.",
+   "anchor": "Pre-market Semis weakness remains in focus (SOXX -153bps // on track",
+   "topic": "AI semis weakness drivers",
+   "status": "level",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Broadcom CEO Hock Tan warned of overheating market sentiment, with markets watching TSM and ASML earnings later this week.",
+   "anchor": "Broadcom CEO Hock Tan warning of overheating market sentiment (watching TSM + ASML earnings",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "TSM",
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "SPX futures are down 9bps, NDX futures are down 56bps, and R2K futures are up 29bps.",
+   "anchor": "SPX Futures -9bps // NDX Futures -56bps // R2K Futures +29bps // USGG10yr -4bps @",
+   "topic": "global overnight markets recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "The 10-year Treasury yield is at 5.189%.",
+   "anchor": "5.189% // WTI -2% @ $91.85. Pre-market Semis weakness remains in focus (SOXX -153bps // on track",
+   "topic": "global overnight markets recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "WTI crude is down 2% at $91.85.",
+   "anchor": "5.189% // WTI -2% @ $91.85. Pre-market Semis weakness remains in focus (SOXX -153bps // on track",
+   "topic": "global overnight markets recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "GS's S&P ex-AI basket finished up 64bps yesterday while 3-month high-beta momentum outperformed 12-month, as equal-weight outperformed market-cap-weight S&P in a muted, lowest-volume session of the year.",
+   "anchor": "Mkt-Cap weight S&P (our S&P ex. AI basket finished +64bps while 3M High Beta Momentum",
+   "topic": "global overnight markets recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Fed Governor Waller said higher long-term Treasury yields are doing some of the work of tighter monetary policy, particularly in housing and autos.",
+   "anchor": "Fed Governor Waller said higher long-term Treasury yields are \"doing some of the work\" of",
+   "topic": "global overnight markets recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Applied Materials expects to double revenue over the next few years without a commensurate rise in hiring, relying more on AI tools.",
+   "anchor": "Applied Materials Inc. expects to double revenue over the next few years, without a commensurate rise in",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next few years"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Applied Materials' new EPIC Center was created with a $5 billion capital investment to help chipmakers work with researchers and equipment partners.",
+   "anchor": "with a $5 billion capital investment \u2014 is meant to help chipmakers work with researchers and equipment",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Applied Materials had about 38,900 employees as of late July.",
+   "anchor": "give headcount forecasts for the coming years. The company had about 38,900 employees as late July.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Alibaba's new Qwen Glasses N1 series starts at 2,999 yuan ($450) before discounts, in line with Meta's Ray-Ban smart glasses pricing rather than undercutting it.",
+   "anchor": "2,999 yuan ($450) before discounts, they\u2019re no cheaper than industry leader Meta Platforms Inc.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "China's third-quarter smartphone shipments fell 15.4% from a year earlier to 57.9 million units, per IDC.",
+   "anchor": "China's third-quarter smartphone shipments fell 15.4% from a year earlier to 57.9 million units, research",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Huawei was the only major smartphone vendor in China to post double-digit growth in the third quarter, per IDC.",
+   "anchor": "firm IDC said on Tuesday. Huawei was the only major vendor to post double-digit growth. The firm",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Apple held 17.8% share of China smartphone shipments though its shipments there fell 4.3%, while Oppo, Vivo and Xiaomi all saw declines.",
+   "anchor": "17.8%, though its shipments in China fell 4.3%. Chinese rivals Oppo, Vivo and Xiaomi saw shipment",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Infosys stock is up 3% premarket after its chairman called AI-driven job-loss fears hogwash.",
+   "anchor": "Chairman Calls Job Fears \u2018Hogwash\u2019 as AI Spurs Business. Stock +3% in pre. Infosys",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INFY"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Infosys said it does not anticipate a material impact from the US decision to suspend new and pending PERM program applications.",
+   "anchor": "anticipate a material impact from the US decision to suspend new and pending applications under the",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "INFY"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Saudi Arabia intercepted a fresh round of Houthi ballistic missiles targeting Riyadh and Khamis Mushait.",
+   "anchor": "intercepted a fresh round of Houthi ballistic missiles targeting Riyadh and Khamis Mushait. (BBG)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "Meta's new camera-free smart glasses model is priced at $349 and is designed primarily for interaction with the new Muse AI assistant.",
+   "anchor": "priced at $349, designed primarily for interaction with the new Muse AI assistant.",
+   "topic": "Meta Muse Wonder launch",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "GS expects Q3'26 reported results for the Mobility/Delivery Internet sub-sector to come in broadly in line with, to slightly above, investor expectations.",
+   "anchor": "reported results to come in broadly inline with (to slightly above) investor expectations, with a",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "GS sees more sustained operating performance on the delivery side than mobility across its predictive industry work for reported results and forward commentary.",
+   "anchor": "verticals, we see more sustained operating performance on the delivery side across our work that attempts",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "JPM is down 3.6% in the premarket, driven by a miss in FICC, as big-bank earnings kick off this morning.",
+   "anchor": "this morning (JPM -3.6% in the pre driven by a miss in FICC).",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "released",
+   "instruments": [
+    "JPM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "GS expects StubHub's Q3'26 GMS at $2.65bn, above the $2.61bn consensus, and revenue at $510mm, below the $516mm consensus.",
+   "anchor": "five core discussions for investors: 1) we expect solid Q3'26 GMS of $2.65bn and revenue of $510mm vs",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [
+    "STUB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "GS reiterates its Buy rating on StubHub and cuts its 12-month price target from $16 to $11 to better reflect the current mark-to-market environment.",
+   "anchor": "rating on the shares and adjust our 12-month price target from $16 to $11 to better reflect the current",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "target",
+   "instruments": [
+    "STUB"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "12-month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Bartlett - GS TMT TODAY 10.13.26",
+   "claim": "GS previews key themes and expectations heading into 3Q26 earnings for its Live Entertainment coverage, including Live Nation, MSG Entertainment and Sphere Entertainment.",
+   "anchor": "Entertainment coverage, including Live Nation (LYV), MSG Entertainment (MSGE) and Sphere",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [
+    "LYV",
+    "MSGE",
+    "SPHR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "3Q26"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-13/20177__gs-bartlett-gs-tmt-today-10-13-26-13-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 37,
+  "matched": 37,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 10,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
