@@ -1,0 +1,669 @@
+{
+ "brief": "Overnight global equities de-risked from AI-capex and AI-financing exposure: QQQ -0.7%, Asia's MSCI -1.7%, Korea's Kospi -6.2% on AI-buildout durability and financing worries, higher borrowing costs and Chinese memory competition (CXMT); megacaps stayed more resilient (Meta +3.4%, Apple +1.3%, Microsoft +1.0%). Broadcom CEO Hock Tan said compute demand still outruns supply through 2028-29 into 2030, citing OpenAI's ~$50bn annualised revenue as evidence of real demand, but argued capital, not chips or power, is now the binding constraint as wafer and memory shortages ease; the desk says press coverage focused on his investor skepticism, out of context versus his demand comments. The resulting memory squeeze is hitting consumer hardware: smartphone shipments -20% y/y (lowest since 2012) and PC shipments -22.4%, with DRAM costs up fivefold y/y. The clear positive was Meta's Muse Wonder launch, ranking just behind Claude Opus 5.5 on Artificial Analysis' Intelligence Index, lifting Meta shares. Also covered: Publicis's Q4 organic growth beat (Sapient turning positive is the swing factor), a Neutral initiation on CTS Eventim, and GS's constructive-vs-cautious split on payments names into Q3 earnings.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Korea's Kospi fell 6.2% overnight amid concerns over the durability and financing of the AI buildout, higher borrowing costs and potential Chinese memory competition.",
+   "anchor": "Korea\u2019s Kospi fell 6.2% amid concerns over the durability and financing of the AI buildout, higher borrowing costs and potential Chinese memory competition",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Semis and optical names, especially Ciena and Lumentum, bore the brunt of the overnight sell-off.",
+   "anchor": "Semis bore the brunt of the sell-off and Optical (esp CIEN / LITE)",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "CIEN",
+    "LITE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Broadcom CEO Hock Tan said compute demand is still outrunning supply, with the imbalance likely to persist at least through 2028-29.",
+   "anchor": "Hock said there is \u201cmore demand for compute infrastructure than we can supply\u201d and that this imbalance is likely to persist at least through 2028\u201329",
+   "topic": "AI semis weakness drivers",
+   "status": "forecast",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2028-29, potentially into 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Broadcom CEO Hock Tan warned that capital, not chips or power, may now be a bigger constraint on the AI buildout.",
+   "anchor": "he warned that capital may now be a bigger constraint than chips or power",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Broadcom CEO Hock Tan cited OpenAI's roughly $50 billion annualised revenue as of September as evidence of real AI demand and a viable business model.",
+   "anchor": "He explicitly called OpenAI\u2019s ~$50 billion annualised revenue (as of September) evidence of real demand and a viable business model",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "CXMT's progress on a new memory architecture was blamed for overnight concerns about Chinese memory competition weighing on semis.",
+   "anchor": "the CXMT progress on a new memory architecture got lots of blame",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Global smartphone shipments fell 20% year on year in Q3 to their lowest level since 2012 as AI infrastructure demand tightened memory supply.",
+   "anchor": "Global\nsmartphone shipments fell 20% year on year in Q3 to their lowest level since 2012 as AI infrastructure\ndemand tightened memory supply",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Worldwide PC shipments declined 22.4% to 55.4 million units in Q3, per Gartner, with DRAM costs up fivefold year on year in Q2.",
+   "anchor": "Gartner also estimates worldwide PC shipments declined\n22.4% to 55.4 million units, with DRAM costs up fivefold year on year in Q2",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "In overnight trading, megacap tech was more resilient than the broader market, led by Meta, Apple and Microsoft.",
+   "anchor": "although megacaps were more resilient, led by Meta (+3.4%), Apple (+1.3%) and Microsoft\n(+1.0%)",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "META",
+    "AAPL",
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Meta's new Muse Wonder model reportedly ranks behind only Claude Opus 5.5 on Artificial Analysis' Intelligence Index, scoring 57.5% on SWE-Marathon versus 46.3% for Opus 5.5.",
+   "anchor": "which reportedly ranks behind only Claude Opus 5.5 on Artificial Analysis\u2019 Intelligence Index and scored\n57.5% on SWE-Marathon versus 46.3% for Opus 5.5",
+   "topic": "Meta Muse Wonder launch",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Muse Wonder is priced at $4/$20 per million input/output tokens and will power Meta's Muse personal agent as well as be sold directly to businesses.",
+   "anchor": "priced at $4/$20 per million input/output tokens,\nWonder will power Meta\u2019s Muse personal agent and be sold directly to businesses",
+   "topic": "Meta Muse Wonder launch",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Meta shares rose 4.0% after the launch of Muse Wonder and Muse Wonder Full, described as Meta's strongest AI models to date.",
+   "anchor": "META +4.0%: Meta announced Muse\nWonder and Muse Wonder Full, its strongest AI models to date",
+   "topic": "Meta Muse Wonder launch",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Microsoft's new Maia 300 custom AI chip will primarily support AI inference from 2027 and could be deployed at multi-gigawatt scale.",
+   "anchor": "Microsoft says Maia 300, its biggest in-house silicon bet yet, will primarily support AI inference\nfrom 2027 and could be deployed at multi-gigawatt scale",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "from 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Microsoft's Maia 300 chip delivers 40% more tokens per megawatt than leading GPU systems and seven times the rack throughput of Maia 200.",
+   "anchor": "delivering 40% more tokens per megawatt than\nleading GPU systems and seven times the rack throughput of Maia 200",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "The longer-term implication of Microsoft's in-house AI chip strategy is lower dependence on Nvidia and better power efficiency, potentially supporting Microsoft's capex and free-cash-flow economics.",
+   "anchor": "The longer-term implication is lower dependence on Nvidia and better\npower efficiency, potentially supporting Microsoft\u2019s capex and free-cash-flow economics",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "MSFT",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "NVIDIA introduced new pluggable optical modules jointly developed with Cisco.",
+   "anchor": "NVIDIA introduced its new pluggable modules\njointly developed with Cisco (CSCO)",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "CSCO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "NVIDIA unveiled its Vera Rubin CPU and MGX 1.2 modular rack architecture at OCP, featuring 5,000A liquid-cooled power distribution.",
+   "anchor": "NVIDIA unveiled its Vera Rubin CPU and MGX 1.2 modular rack architecture at OCP, featuring\n5,000A liquid-cooled power distribution",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "NVIDIA's new MGX rack architecture carries a claimed 1.8x performance improvement in Terminal-Bench workloads.",
+   "anchor": "and a claimed 1.8x performance improvement in Terminal-Bench\nworkloads",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Twelve Taiwanese suppliers, including Hon Hai, Quanta, Wistron, Wiwynn and Inventec, are positioned to benefit from expanded customized AI server and rack integration opportunities.",
+   "anchor": "Twelve Taiwanese suppliers, including Hon Hai, Quanta, Wistron,Wiwynn and Inventec, are\npositioned to benefit from expanded customized AI server and rack integration opportunities",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Media comments suggest NVIDIA and Cisco's new pluggable modules may push growth for Taiwan optical module suppliers Luxnet and PCL.",
+   "anchor": "which may push growth for Taiwan optical module\nsuppliers such as Luxnet (4979) and PCL (4977)",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs sees a potential total addressable market of $40-150 billion for high-performance NAND-based solutions such as High-Bandwidth Flash at a GPU adoption rate of 15%-50% by 2030.",
+   "anchor": "We see a potential\nTAM of ~$40 - $150B at a GPU adoption rate of 15%-50% by 2030",
+   "topic": "AI memory wall NAND solutions",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs estimates HBF memory could cut the overall cost of inference throughput by about 30%, translating to as much as several hundred billion dollars in hyperscaler capex savings.",
+   "anchor": "resulting a ~30% lower overall cost of inference throughput - translating to as much as\nseveral hundreds of billions of hyperscaler CapEx savings",
+   "topic": "AI memory wall NAND solutions",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs rates SanDisk Buy, favoring it along with SK Hynix for their technology leadership in High-Bandwidth Flash memory.",
+   "anchor": "We continue to favour SanDisk (SNDK, Buy)\n\nand SK Hynix (000660.KS) given their technology leadership in HBF",
+   "topic": "AI memory wall NAND solutions",
+   "status": "target",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs rates Samsung Electronics Buy, seeing it well positioned given its strong NAND portfolio.",
+   "anchor": "We also see Samsung Electronics (005930.KS, Buy) as well positioned given its\nstrong NAND portfolio",
+   "topic": "AI memory wall NAND solutions",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs rates Micron Neutral, seeing it as less of a direct HBF beneficiary given its primary focus on DRAM and lower NAND exposure.",
+   "anchor": "we see Micron (MU, Neutral) as less of a direct beneficiary given its primary\nfocus on DRAM and lower exposure to NAND",
+   "topic": "AI memory wall NAND solutions",
+   "status": "target",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs is broadly positive on the payments sector setup heading into Q3 earnings, citing robust spending volumes and strong September trends.",
+   "anchor": "spending volumes have remained robust, defying investors fears around a normalization of\nspend and ending the quarter on a high note",
+   "topic": "payments Q3 earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs is more constructive heading into Q3 earnings on Visa, Mastercard, PayPal, Global-E and Riskified.",
+   "anchor": "we are more constructive on the setup on V, MA PYPL, GLBE, and RSKD",
+   "topic": "payments Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA",
+    "PYPL",
+    "GLBE",
+    "RSKD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs is more cautious on the setup for FIS, Fiserv and Shift4 heading into Q3 earnings.",
+   "anchor": "we are more cautious on the set up for FIS, FISV, and FOUR",
+   "topic": "payments Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "FIS",
+    "FISV",
+    "FOUR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "From a bottom-up perspective, Goldman Sachs highlights Visa, Mastercard, Toast and Global-E as stocks to highlight in payments.",
+   "anchor": "stocks to highlight in payments are V, MA, TOST, and\nGLBE",
+   "topic": "payments Q3 earnings preview",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA",
+    "TOST",
+    "GLBE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs views the payments sector as inexpensive versus history after several years of multiple compression.",
+   "anchor": "After several years of multiple compression, the space also stands\nout as inexpensive vs history",
+   "topic": "payments Q3 earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Publicis reported a solid set of numbers with 5% organic growth in Q4, ahead of the sellside estimate of 4.8%.",
+   "anchor": "PUB solid set of numbers with 5% organic growth in Q4 ahead of the Sellside at 4.8%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Publicis is now guiding Sapient to turn positive globally in Q4, versus a prior street estimate of -2% for Sapient in Q4.",
+   "anchor": "PUB now guiding Q4 to turn\npositive globally vs. Adam (and I think street) having Sapient at -2% for Q4",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Publicis screened among the 10 biggest increases in short market value last week on Goldman's prime brokerage book, indicating positioning had cleaned up.",
+   "anchor": "its has cleaned up as PUB screened among the 10 biggest\nincreases in MV$ in shorts last week on our PB",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "last week"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs initiates coverage of CTS Eventim with a Neutral rating, with valuation near trough levels after a roughly 50% de-rating.",
+   "anchor": "CTS Eventim James initiates with a Neutral remains Europe\u2019s leading ticketing and live entertainment\nplatform, with valuation near trough levels after a roughly 50% de-rating",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs says a re-rating for CTS Eventim requires greater confidence in growth and execution, making November's Capital Markets Day the key near-term catalyst.",
+   "anchor": "A re-rating requires greater confidence in growth and execution, making\nNovember\u2019s Capital Markets Day the key near-term catalyst",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "November"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Goldman Sachs expects Sage's Q3 preview to show a largely unchanged trading environment, with Q4 organic recurring revenue growth remaining solid at around 10%.",
+   "anchor": "he expects a largely unchanged trading environment, with 4Q organic\nrecurring revenue growth remaining solid at around 10%",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "Q4"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Small estimate changes reduce Sage's EPS forecasts by about 1%.",
+   "anchor": "While small estimate changes reduce EPS forecasts by ~1%",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Andrej Karpathy estimates roughly 6 billion people have barely touched large language model systems, while 1-2 billion treat free-tier chatbots as a slightly better search or writing tool.",
+   "anchor": "Roughly 6 billion people have barely touched these systems, 1\u20132 billion treat\nfree-tier chatbots as a slightly better search or writing tool",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Andrej Karpathy says a tiny group of about 5,000 people with internal frontier AI access are watching swarms of agents tackle multi-week software megaprojects.",
+   "anchor": "a tiny group of ~5,000 people with internal frontier access are watching swarms of agents tackle multi-\nweek software megaprojects",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "US regulators including the Federal Reserve are questioning banks on advanced AI models and agentic-AI safeguards amid stability fears.",
+   "anchor": "US regulators including the Federal\nReserve are questioning banks on advanced AI models and agentic-AI safeguards",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Anthropic said experiments suggest small AI models could be months away from autonomously replicating across poorly secured IoT devices, making them difficult to shut down.",
+   "anchor": "Anthropic said experiments suggest small models could be months away from autonomously\nreplicating across poorly secured IoT devices, making them difficult to shut down",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Anthropic announced new safeguards that reduced the reasoning data harvested by unauthorized entities in distillation attacks by 90% to 99%.",
+   "anchor": "reduced the reasoning data harvested by unauthorized entities in \"distillation attacks\" by 90% to 99%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Nokia agreed to sell its Enterprise Campus Edge business to Aurelius, with the transaction expected to close in H1-27.",
+   "anchor": "Co to sell Enterprise Campus Edge business to Aurelius for an undisclosed sum. The\ntransaction is expected to close in H1-27",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NOK"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "H1-27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Orange Spain is asking Huawei to refund the net book value of its hardware and software if European or Spanish authorities ban Chinese network equipment.",
+   "anchor": "Orange Spain is asking Huawei to refund the net book value of its hardware and software if\nEuropean or Spanish authorities ban Chinese network equipment",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORAN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES Semis roll on sentimnet & competition; Meta Muse Wonder; PUB solid; CTS Eventim initiation; Andrej Karpathy 13 Oct 2026",
+   "claim": "Huawei currently supplies around 43% of Orange Spain's mobile network and 70% of Vodafone Spain's, but is absent from Telefonica's radio access network.",
+   "anchor": "Huawei currently supplies around 43% of Orange Spain\u2019s mobile network and\n70% of Vodafone Spain\u2019s, but is absent from Telef\u00f3nica\u2019s radio access network",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ORAN",
+    "VOD",
+    "TEF"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-13/20183__gs-johnstone-gs-tmt-spec-sales-semis-roll-on-sentimnet-compe.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 45,
+  "matched": 45,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 15,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
