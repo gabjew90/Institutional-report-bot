@@ -1,0 +1,790 @@
+{
+ "brief": "Day 1 of Q3 bank earnings (C, GS, JNJ, JPM, WFC) showed consumer spending and credit staying strong because the labor market keeps both up: card spend grew 10% YoY at JPM and 13% at C, while delinquencies and net credit losses fell YoY at C and WFC. JPM reflags its bullish consumer call from the October 12 Morning Briefing, citing Chase spending data showing September spending up 6.6% YoY, an acceleration from August's 5.3%, across all income cohorts, and sees Q3 earnings as a positive catalyst for Retail and Consumer Discretionary even though its JP2RTL basket is 8.7% off its August peak. Bank stocks C and WFC fell 5.6% and 3.1% despite in-line results; JPM's Rob O'Dwyer attributes the selloff to quant and passive flow given a flatter 2s10s curve, not fundamentals, and argues investors should fade the move and buy banks. Separately, AI and semis extended their slide while flows rotated into hyperscalers META, MSFT, GOOGL and AMZN, and JPM reiterates its Tactically Bullish US equity view into earnings, flagging a Momentum/Tech unwind and AI credit fears as the key risks.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's debit and credit card spend grew 10% year-on-year with continued momentum across lending categories including gas and travel.",
+   "anchor": "debit and credit spend grew 10% year-on-year with continued momentum across lending categories",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "JPM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Citigroup's card spend volume grew 13% and average loans grew 9%, both partially offset by declines in private label cards.",
+   "anchor": "Spend volume up 13% and average loans up 9%, both partially offset by declines in private label cards.",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Citigroup and Wells Fargo both reported delinquencies and net credit losses falling year over year.",
+   "anchor": "Delinquencies and net credit losses are falling year over year at C and WFC",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "C",
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Citigroup reported low corporate non-accrual loans and corporate net credit losses in the quarter.",
+   "anchor": "corporate non-accrual loans as well as corporate net credit losses remained low",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Wells Fargo said lower-income households remain more sensitive to financing costs, inflation and fuel expenses but appear stable.",
+   "anchor": "lower income households remain more sensitive to financing costs, inflation and higher living and fuel expenses, they appear to be stable",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Wells Fargo said consumer resilience should continue as long as the economy keeps growing and employment stays strong.",
+   "anchor": "as long as the economy continues to grow and employment stays strong, that should continue",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPMorgan continues to expect its card net charge-off rate to be approximately 3.2%.",
+   "anchor": "we continue to expect the card net charge-off rate to be approximately 3.2%",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "forecast",
+   "instruments": [
+    "JPM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Wells Fargo's charge-off ratio declined from both the second quarter and a year ago, with early-stage delinquencies at historically low levels.",
+   "anchor": "our charge-off ratio down from both the second quarter and a year ago, and early-stage delinquencies at historically low levels",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's Rob O'Dwyer suspects most investors will end up with Citigroup ROTCE numbers closer to 12% for the full year.",
+   "anchor": "suspect most people will end up with ROTCE numbers closer to 12% for FY",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "forecast",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Wells Fargo guided to a stable fourth-quarter net interest margin quarter over quarter, with NII pace increasing on loan and deposit growth.",
+   "anchor": "4Q NIM to be stable qoq, pace of NII in 4Q to increase with continued benefits from loan and deposit growth",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "forecast",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Wells Fargo expects 4Q26 loan growth higher than up mid-single-digits year over year, with no broad-based credit deterioration currently.",
+   "anchor": "Expect loan growth to be higher than up MSD in 4Q26 yoy. Not seeing any broad based credit deterioration currently.",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "forecast",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's Rob O'Dwyer says the bank stock weakness is a reason to fade the move lower and buy the group.",
+   "anchor": "that's a reason to fade this move lower and buy the group here",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "target",
+   "instruments": [
+    "C",
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "O'Dwyer says banks face a small technical headwind into the print from reduced capacity among the fundamental community to add to longs.",
+   "anchor": "in banks into the print is a small technical headwind here, in the sense that there is just less capacity from the fundamental community to add to longs",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "level",
+   "instruments": [
+    "C",
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Citigroup said the financial benefits from AI and automation this year have significantly outweighed its investments made year-to-date.",
+   "anchor": "we are seeing the financial benefits from AI and automation significantly outweigh the investments we have made year-to-date",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Chase spending data showed total consumer spending growth of 6.6% year over year in September, an acceleration from 5.3% in August.",
+   "anchor": "total spending growth in September was up 6.6% YoY, an acceleration compared to August\u2019s 5.3%",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "RETAIL_SALES",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Chase data showed upper-, middle-, and lower-income spending up 7.8%, 8.2%, and 6.6% year over year respectively in September.",
+   "anchor": "upper-, middle-, and lower-income spending were up 7.8%, 8.2%, and 6.6%, respectively",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "RETAIL_SALES",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Consumer bank data showed lower-, middle-, and higher-income household wage growth of 4.7%, 3.8%, and 3.7% in August.",
+   "anchor": "lower-, middle-, and higher-income household wage growth was 4.7%, 3.8%, and 3.7% in August",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's Retail basket (JP2RTL) is down 8.7% from its August peak as affordability and rising yields became headwinds.",
+   "anchor": "The JPM Retail basket (JP2RTL) was down 8.7% from the August peak",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The AI complex extended its slide with SOXX down and DRAM falling 3.4%, remaining the key drag on US equities.",
+   "anchor": "semis/memory extended the slide (SOXX was down 17bp, while DRAM -3.4%)",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Leadership rotated into hyperscalers as META rose 2.7% and ORCL rose 4.3% while AI/semis sold off.",
+   "anchor": "leadership rotated into hyperscalers (META +2.7%, ORCL +4.3%)",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "META",
+    "ORCL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Bank stocks underperformed despite in-line earnings and positive economic outlooks, with Citigroup down 5.6% and Wells Fargo down 3.1%.",
+   "anchor": "banks underperforming despite in-line earnings releases and quite positive economic outlooks; notable decliners include C -5.6% and WFC -3.1%",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "C",
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Mastercard and Visa outperformed as card volume growth from large-cap banks pointed to a supportive spending backdrop.",
+   "anchor": "Payments (MA and V) outperformed on the other hand as card volume growth from large-cap banks pointed to supportive backdrops",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "MA",
+    "V"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "NY Fed President Williams said he sees no need for a rate hike in 2027.",
+   "anchor": "he sees no need for rate hike in 2027",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Housing and Retail outperformed among rate-sensitive sectors following Williams's dovish remarks.",
+   "anchor": "we saw outperformance across multiple rate-sensitive sectors (Housing, Retail)",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The dollar eased, metals softened, and WTI reversed early weakness to finish higher in a cautious risk tone.",
+   "anchor": "the dollar eased, metals were softer, and WTI reversed early weakness to finish higher",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "In Europe, Semis, Defence and Momentum Long were among the session's underperformers while Software held up better.",
+   "anchor": "Semis, Defence and Momentum Long were among the underperformers, while Software held up better",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "US equities closed mixed with SPX flat, NDX down 0.3%, and RTY down 0.4%.",
+   "anchor": "SPX -0.0%, NDX -0.3%, RTY -0.4%",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "META initially sold off after moving its earnings date up a week to next Wednesday, October 21, sparking equity-raise speculation.",
+   "anchor": "META initially sold after moving its earning date up by a week (now reporting NEXT WED, 10/21)",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Google CFO Ruth Porat said GOOGL capex will be materially higher in 2027.",
+   "anchor": "Ruth Porat saying GOOGL capex will be materially higher in '27",
+   "topic": "AI semis weakness drivers",
+   "status": "forecast",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's flows data shows a big flight to mega cap and quality with notable hyperscaler demand in META, MSFT, GOOGL and AMZN.",
+   "anchor": "a big flight to mega cap / quality with demand for hyperscalers notable today (META, MSFT, GOOGL and AMZN all buy names today)",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [
+    "META",
+    "MSFT",
+    "GOOGL",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's healthcare desk said money is rotating out of healthcare broadly and into TMT, with multiple buyers of Mag7 names AMZN, GOOGL, MSFT and META.",
+   "anchor": "money is coming out of the space more broadly and rotating into TMT (we've seen multiple buyers of Mag7 to start AMZN, GOOGL, MSFT, META)",
+   "topic": "healthcare flows and rotation",
+   "status": "released",
+   "instruments": [
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JNJ was still a crowded long among hedge funds and the earnings print was not enough to satisfy that positioning.",
+   "anchor": "JNJ was still a crowded long amongst HFs and the print was not enough",
+   "topic": "healthcare flows and rotation",
+   "status": "released",
+   "instruments": [
+    "JNJ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's healthcare desk said flows are leaning defensive, selling biotech names Incyte and Cogent and buying distributors.",
+   "anchor": "we are selling biotech - INCY and COGT to name a few and buying distributors",
+   "topic": "healthcare flows and rotation",
+   "status": "released",
+   "instruments": [
+    "INCY",
+    "COGT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JNJ's Med Tech segment results were underwhelming though not surprising.",
+   "anchor": "JNJ Med tech segment was underwhelming but don't think there were any surprises there",
+   "topic": "healthcare flows and rotation",
+   "status": "released",
+   "instruments": [
+    "JNJ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Boston Scientific is seeing generalist investor demand for the first time in quite a while.",
+   "anchor": "We are better to buy in BSX seeing generalist demand for the first time in quite a while",
+   "topic": "healthcare flows and rotation",
+   "status": "released",
+   "instruments": [
+    "BSX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's healthcare desk sees the med tech group setting up for a tactical trade given tax loss supply and positive seasonality.",
+   "anchor": "the group sets up interesting for a tactical trade given the tax loss supply in the group, generally positive performance from a seasonality perspective",
+   "topic": "healthcare flows and rotation",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Visa is up 9.4% and Mastercard is up 8.9% month to date as continued spending strength buoys the payments group.",
+   "anchor": "V +9.4% MTD and MA +8.9% MTD as continued strength in spending buoys the group",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "MTD"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Citigroup's card volume growth accelerated 60 basis points to 13%, reported pre-market.",
+   "anchor": "C card volume growth accelerated 60bps to 13%",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Bank card volume results came in ahead of Street estimates, which had priced V and MA US volume decelerating 100 basis points.",
+   "anchor": "Street estimates that have V/MA U.S. Volume decelerating 100bps",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "V",
+    "MA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's card volume decelerated 40 basis points from the second quarter.",
+   "anchor": "JPM card volume decelerated 40bps from 2Q",
+   "topic": "bank earnings consumer credit read-through",
+   "status": "released",
+   "instruments": [
+    "JPM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM reiterates its Tactically Bullish US equity view heading into earnings season.",
+   "anchor": "we reiterate our view as we head into earnings",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Last week's OpenAI news, driven by an accounting misinterpretation, triggered a 3.4% decline on Thursday.",
+   "anchor": "an accounting misinterpretation led to a 3.4% decline on Thursday",
+   "topic": "US equity tactically bullish view",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Semis ended last week on a three-day losing streak.",
+   "anchor": "Semis ended the week on a 3-day losing streak",
+   "topic": "US equity tactically bullish view",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The SOX index is about 20% off its July lows and about 15% below its June all-time highs, which JPM views as an inflection point.",
+   "anchor": "The SOX is ~20% off its July lows and ~15% below its June ATHs",
+   "topic": "AI semis weakness drivers",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM thinks Semis can climb the wall of worry as recent Hynix and Samsung earnings point to ongoing thematic strength.",
+   "anchor": "We think Semis can climb this latest wall of worry as recent earnings updates from Hynix / Samsung point to on-going thematic strength",
+   "topic": "AI semis weakness drivers",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Breadth continues to deteriorate, which JPM thinks can reverse into or out of earnings season and buttress the rally.",
+   "anchor": "breadth continues to deteriorate which we think can reverse into / out of earnings season which will buttress the rally",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's key risks to the Tactically Bullish view are a Momentum/Tech unwind, a tech earnings miss, AI credit fears, a bond or equity vol spike, and weaker consumer data.",
+   "anchor": "Momentum / Tech Unwind; (ii) Tech Earnings Miss; (iii) AI Credit Fears / Spread Widening; (iv) Spike in Bond Vol / Equity Vol; (v) Weaker Consumer Data",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM says stronger bank earnings with a favorable consumer and lending outlook would help restart the Cyclicals trade and broaden the bull market.",
+   "anchor": "stronger earnings and a favorable consumer and lending outlook would be helpful in restarting the Cyclicals trade and broadening the bull market",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The market is currently pricing a December hike and then two more hikes in fiscal year 2027.",
+   "anchor": "which is currently pricing a Dec hike and then 2x hikes in FY27",
+   "topic": "US equity tactically bullish view",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's Monetization Menu keeps a preference for Tech and some Cyclicals, with the AI theme as a globally bullish view.",
+   "anchor": "a preference for Tech and some Cyclicals, with the AI theme being a globally bullish view",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM would focus the COVID Reopening theme on Cruise Lines, Hotels, and Retailers given consumer strength and insulation from elevated energy prices.",
+   "anchor": "we would focus on things like Cruise Lines, Hotels, and Retailers given the strength of the consumer and relative insulation from elevated energy prices",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Internationally and excluding the global AI theme, JPM likes Brazil and Japan.",
+   "anchor": "Internationally, and excluding the global AI theme, we like Brazil and Japan",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM still likes Tech as a core long but no longer pairs it with an RTY short given squeeze risk.",
+   "anchor": "still like Tech as a core long but would no longer pair with an RTY short given squeeze risk",
+   "topic": "US equity tactically bullish view",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-13/20209__jpm-us-market-intelligence-afternoon-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 53,
+  "matched": 53,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 4,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
