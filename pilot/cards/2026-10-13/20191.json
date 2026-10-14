@@ -1,0 +1,143 @@
+{
+ "brief": "Goldman's Quinn frames Memory and AI Semiconductor weakness as a Nasdaq headwind: GS's Memory and AI Semiconductor baskets fell 9.3% and 6.7% during October 5-12, partly on China's CXMT reporting \"key progress\" on a new memory-cell architecture competing with SK Hynix. Nasdaq lost 1.3% over the period versus S&P +0.4%. Leveraged Nasdaq positioning initially looked unconcerned, with Nasdaq's 3-month funding versus Fed Funds richening, but that premium to S&P reversed from its local peak alongside October 12th price weakness. In CFTC data, the 'Other' futures category's gross longs sat at one-year highs in notional terms and as a share of open interest as of October 6th, with positive short-term correlation to Memory and AI Semiconductor performance; the note says this category potentially reduced recently implemented length. Whether this carries over to Asset Manager sentiment is unresolved: Asset Manager gross longs on October 6th showed no significant relationship with either barometer.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "GS's Memory and AI Semiconductor baskets fell 9.3% and 6.7% respectively during October 5th through 12th.",
+   "anchor": "GS's Memory and AI Semiconductor baskets fell 9.3% and 6.7% during October 5th - 12th",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "Chinese memory chip maker CXMT reported key progress on a new cell architecture to boost memory density, presenting competition for SK Hynix.",
+   "anchor": "Chinese memory chip giant CXMT reported \"key progress\" on a new cell architecture to boost memory density, presenting competition for SK Hynix",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "Nasdaq lost 1.3% versus the S&P's +0.4% during the week of the memory and AI semiconductor selloff.",
+   "anchor": "Nasdaq lost 1.3% versus S&P +0.4%",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "Nasdaq's 3-month funding versus Fed Funds richened, consistent with leveraged Nasdaq positioning initially appearing unconcerned.",
+   "anchor": "Nasdaq 3 month funding versus Fed Funds richened",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "Nasdaq's funding premium to the S&P reversed from its local peak, particularly alongside index price weakness on October 12th.",
+   "anchor": "Nasdaq's premium to S&P reversed from its local peak, particularly alongside index price weakness on October 12th",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "CFTC data showed the 'Other' futures category's gross longs at one-year highs in notional terms and as a percentage of open interest as of October 6th.",
+   "anchor": "Other gross longs on October 6th resided at 1 year highs in notional terms and as a percentage of open interest",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "Short-term correlations between the 'Other' futures category's positioning and Memory and AI Semiconductor performance were positive.",
+   "anchor": "short-term correlations versus Memory and AI Semiconductors were positive",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "The 'Other' futures category potentially reduced recently implemented long Nasdaq positioning.",
+   "anchor": "at least one category - Other - potentially reduced recently implemented length",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Nasdaq Futures: Memory Meltdown",
+   "claim": "Asset Manager gross longs on October 6th showed no significant relationship with either the Memory or AI Semiconductor barometers.",
+   "anchor": "On October 6th, Asset Manager gross longs did not demonstrate a significant relationship with either barometer",
+   "topic": "AI semis weakness drivers",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-13/20191__gs-quinn-nasdaq-futures-memory-meltdown-13-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
