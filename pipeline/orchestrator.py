@@ -354,16 +354,23 @@ def _load_analyses_from_db(rows: list[dict]) -> list[PdfAnalysis]:
     return analyses
 
 
-async def run_daily_pulse(bot=None) -> DailyReport | None:
+async def run_daily_pulse(bot=None, *, backup: bool = False) -> DailyReport | None:
     """Generate and optionally send the Daily Market Pulse.
 
     Grabs all analyses since the last report was generated.
     If no prior report exists, falls back to today's analyses.
-    """
-    log.info("=== Starting Daily Market Pulse generation ===")
 
-    # Process remaining pending PDFs
-    await process_pending_queue()
+    backup=True is the stand-in for a scheduled pulse the Claude routine
+    did not deliver (2026-10-13): it leaves the PDF queue to the 5-minute
+    job already working it (running it here too would analyse the same
+    files twice) and labels itself under the headline.
+    """
+    log.info("=== Starting Daily Market Pulse generation"
+             + (" (BACKUP)" if backup else "") + " ===")
+
+    if not backup:
+        # Process remaining pending PDFs
+        await process_pending_queue()
 
     # Load analyses since the last report
     last_report_time = db.get_last_report_time()
@@ -400,6 +407,8 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
     report = await synthesize_daily_pulse(analyses, use_prev_context=True)
     if pending_note:
         report.markdown_content += pending_note
+    if backup:
+        report.banner = BACKUP_BANNER
 
     # Store in database
     report_id = db.insert_daily_report(
@@ -438,6 +447,10 @@ async def run_daily_pulse(bot=None) -> DailyReport | None:
 
     log.info(f"=== Daily Market Pulse complete: {report.pdf_count} reports ===")
     return report
+
+
+BACKUP_BANNER = ("⚠️ Backup pulse: the main pulse did not run this morning, so "
+                 "this one was written by the backup model and is less thorough.")
 
 
 async def reanalyze_recent_pdfs(

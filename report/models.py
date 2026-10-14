@@ -15,3 +15,5 @@ class DailyReport:
     report_id: int | None = None
     # Stats computed at synthesis time for display in the footer
     stats: dict = field(default_factory=dict)
+    # One line shown under the headline (the backup pulse labels itself)
+    banner: str = ""

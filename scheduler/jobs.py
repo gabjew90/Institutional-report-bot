@@ -66,6 +66,23 @@ def setup_scheduler(bot=None) -> AsyncIOScheduler:
         # silently. 12:30 local (ET) is comfortably past the routine's
         # worst observed finish: the 2026-08-07 run exhausted its full
         # 90-minute volume gate and still committed by 11:58 ET.
+        # Backup pulse (owner, 2026-10-13): when the Claude routine has not
+        # delivered by backup_pulse_hour:minute ET on a market day (out of
+        # Claude usage, a crash), the worker writes the pulse with Gemini.
+        # The 12:30 watchdog below then finds a pulse and stays quiet; the
+        # backup pings ops itself so the routine's failure is still seen.
+        scheduler.add_job(
+            _backup_pulse_job,
+            trigger=CronTrigger(
+                day_of_week="mon-fri", hour=settings.backup_pulse_hour,
+                minute=settings.backup_pulse_minute, timezone=tz,
+            ),
+            id="backup_pulse",
+            name="Backup pulse (Gemini) when the routine did not deliver",
+            kwargs={"bot": bot},
+            max_instances=1,
+            misfire_grace_time=1800,
+        )
         scheduler.add_job(
             _missing_pulse_watchdog_job,
             trigger=CronTrigger(
@@ -1335,6 +1352,59 @@ def research_feed_alert(gap_hours: float | None) -> str:
     return (f"Research feed: no new PDF in Dropbox for over {RESEARCH_FEED_MAX_GAP_HOURS} "
             f"hours ({age}). The bot is polling fine; check whatever fills Dropbox "
             f"/Current. The pulse and Omnipulse run on this research.")
+
+
+async def _backup_pulse_job(bot=None):
+    """Write the morning pulse with Gemini when the Claude routine has not
+    delivered one by the backup time (owner, 2026-10-13).
+
+    The routine runs on the owner's Claude subscription; if that usage runs
+    out at 10:00 there is no pulse at all (2026-08-11 it ran out mid-run).
+    This runs the same DRAFT/AUDIT prompts through Gemini, labels the result
+    a backup under the headline, and records it as the day's scheduled
+    pulse, so the next window starts from it. A routine pulse that lands
+    after this still posts; the room then sees both, the backup first."""
+    try:
+        import db
+        from datetime import datetime
+        from pytz import timezone as _tz
+
+        local_now = datetime.now(_tz(settings.timezone))
+        today = local_now.strftime("%Y-%m-%d")
+        if local_now.weekday() >= 5:
+            return
+        try:
+            import world_context
+            if world_context.is_us_market_holiday(today):
+                return
+        except Exception:
+            pass
+        if db.daily_pulse_delivered_on(today):
+            log.info(f"Backup pulse: the routine delivered for {today}")
+            return
+        if db.watchdog_already_alerted("backup_pulse", today):
+            log.info(f"Backup pulse: already ran for {today}")
+            return
+        # Recorded first, so a restart mid-run cannot post a second backup.
+        db.log_event(None, "backup_pulse", "started", today)
+        log.warning(f"Backup pulse: no scheduled pulse for {today} by "
+                    f"{local_now:%H:%M} ET; writing one with Gemini")
+        try:
+            from discord_bot.ops_alert import ops_alert
+            await ops_alert(
+                f"⚠️ No pulse from the routine by {local_now:%H:%M} ET on {today}. "
+                f"Posting the Gemini backup pulse. Check the routine (Claude usage?).",
+                dedupe_key=f"backup_pulse:{today}")
+        except Exception:
+            pass
+        from pipeline.orchestrator import run_daily_pulse
+        report = await run_daily_pulse(bot, backup=True)
+        if report:
+            log.info(f"Backup pulse delivered: {report.pdf_count} reports")
+        else:
+            log.warning("Backup pulse: no analyses to write from")
+    except Exception as e:
+        log.error(f"Backup pulse failed: {e}", exc_info=True)
 
 
 async def _missing_pulse_watchdog_job(bot=None):

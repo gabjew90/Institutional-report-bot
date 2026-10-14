@@ -186,7 +186,8 @@ def format_report_embeds(report: DailyReport) -> list[discord.Embed]:
     if not pulse_title:
         pulse_title = "Market Pulse"
     header_embed = discord.Embed(
-        description=f"# {pulse_title}\n## {_format_pulse_datetime()}",
+        description=(f"# {pulse_title}\n## {_format_pulse_datetime()}"
+                     + (f"\n{report.banner}" if getattr(report, "banner", "") else "")),
         color=0xFFD700,
     )
     embeds.append(header_embed)

@@ -26,8 +26,23 @@ import db
 log = logging.getLogger(__name__)
 
 
-def _get_client() -> genai.Client:
-    return genai.Client(api_key=settings.google_api_key)
+def _get_client():
+    # Recorded in gemini_calls like every other Gemini call site
+    # (ai_analysis/usage_ledger.py); this path runs only as the backup pulse.
+    from ai_analysis.usage_ledger import make_client
+    return make_client("backup_pulse")
+
+
+def _fill(template: str, **values) -> str:
+    """Substitute only the named {placeholders}, the way the routine does.
+    str.format raised on any other brace in the prompts: DRAFT_USER shows
+    the headline format as `# {title}` and AUDIT_USER gained
+    {adjudicated_themes_list}, so this path crashed with a KeyError before
+    writing anything (found 2026-10-13 while making it the backup pulse)."""
+    out = template
+    for k, v in values.items():
+        out = out.replace("{" + k + "}", str(v))
+    return out
 
 
 def _fmt_et(utc_iso: str) -> str:
@@ -2043,7 +2058,8 @@ async def synthesize_daily_pulse(
         + _format_high_conviction_calls(analyses)
     )
 
-    draft_prompt = DRAFT_USER.format(
+    draft_prompt = _fill(
+        DRAFT_USER,
         pdf_count=len(analyses),
         today=today_label,
         now=now_label,
@@ -2076,7 +2092,9 @@ async def synthesize_daily_pulse(
         "market hours — intraday" if "9:30" <= now_label[:5] < "16:00"
         else "pre-market or after-hours"
     )
-    audit_prompt = AUDIT_USER.format(
+    audit_prompt = _fill(
+        AUDIT_USER,
+        adjudicated_themes_list="(none: no adjudication in the backup pulse)",
         today=today_label,
         now=now_label,
         session_status=session_status,

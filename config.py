@@ -379,6 +379,10 @@ class Settings(BaseSettings):
     # Scheduled pulse fires at this time in the configured timezone
     daily_pulse_hour: int = 10  # 10 AM ET (moved from 9, 2026-07-02 — jobs-day actuals land pre-pulse)
     daily_pulse_minute: int = 0
+    # Backup pulse (2026-10-13): if no scheduled pulse has posted by this
+    # time ET on a market day, the worker writes one with Gemini.
+    backup_pulse_hour: int = 10
+    backup_pulse_minute: int = 45
     dropbox_poll_interval_minutes: int = 15
     process_interval_minutes: int = 5
 
