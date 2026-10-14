@@ -1,0 +1,625 @@
+{
+ "brief": "JPMorgan enters 3Q26 semis earnings season constructive but selective. YTD outperformance (SMH +68%) stems from AI infrastructure investment, supply tightness, and a broadening non-AI cyclical recovery, so JPM expects focus to shift from already-understood demand to supply constraints and how fast capacity can relieve them. Dynamics diverge by subsector, so JPM stays selective. Top picks are AVGO and MRVL, with NVDA, AMD, MU, SNDK, TXN, ADI, AMAT, LRCX, and KLAC also highlighted. In AI compute, supply (foundry, HBM, packaging, power), not demand, gates growth, pushing custom XPU share of accelerator units from about 32% in CY25 toward about 53% in CY27E and favoring AVGO and MRVL. Networking is framed as the fastest-growing AI-stack layer. In memory, structural shortage deepens through CY28 as Micron's SCA/LTA contracts lock over 75% of FY27 output and reset HBM pricing higher, which JPM argues should drive a sector re-rating despite YTD gains. In semicap, WFE growth decelerates from 31% in 2026 to 38% in 2027 then 17% in 2028, with the debate being whether cleanroom capacity, not demand, caps revenue conversion. JPM prefers KLAC on 2027 leverage. Auto stays cautious on falling vehicle production. Industrial and analog look cleaner on content gains and pricing.",
+ "cards": [
+  {
+   "claim": "JPMorgan enters the 3Q26 earnings season with a constructive but selective stance on the semiconductor and semiconductor capital equipment sector.",
+   "anchor": "entering the 3Q26 earnings season with a constructive, yet selective, stance \non the semis / semicap equipment sector",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q26",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "The semiconductor sector's year-to-date outperformance is reflected in the SMH ETF being up 68%.",
+   "anchor": "driven the group's YTD outperformance (SMH up 68%)",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "released",
+   "instruments": [
+    "SMH"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YTD 2026",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan's top picks in the semiconductor sector continue to be Broadcom and Marvell.",
+   "anchor": "Our top picks continue to be AVGO \nand MRVL",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [
+    "AVGO",
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "The share of JPMorgan's covered semiconductor and semicap companies with positive earnings revisions has remained solidly above 70% over the past several earnings seasons.",
+   "anchor": "The positive earnings revision trend accelerated in 1Q25 and has remained solidly above \n70% over the past several earnings seasons",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "past several quarters",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "S&P Mobility data suggests global light vehicle production volumes will decline 2% year over year in the third quarter of 2026.",
+   "anchor": "the latest S&P Mobility data suggesting that global light vehicle production volumes \nwill decline -2% Y/Y in 3Q26",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "3Q26",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "NXP Semiconductors reported lead times above 16 weeks for a meaningful portion of its portfolio.",
+   "anchor": "NXPI noted lead times \nabove 16 weeks for a meaningful portion of its portfolio",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "released",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "last quarter",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "ON Semiconductor said average lead times extended from about 27 weeks to about 32 weeks last quarter.",
+   "anchor": "while ON said average lead \ntimes extended from ~27 weeks to ~32 weeks last quarter",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "released",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "last quarter",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "NXP Semiconductors guided Industrial and IoT revenue to grow high-30% year over year and mid-single digits sequentially in the third quarter of 2026.",
+   "anchor": "NXPI guided Industrial & IoT to grow high-30% Y/Y and mid-single digits \nsequentially in C3Q, following 38% Y/Y growth in C2Q",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [
+    "NXPI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "C3Q26",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "ON Semiconductor expects its energy storage systems revenue to grow about 40% year over year in 2026.",
+   "anchor": "with ESS revenues \nexpected to grow ~40% Y/Y in 2026",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Analog Devices guided for above-seasonal industrial growth in the October quarter following a broad-based July-quarter recovery.",
+   "anchor": "ADI guided for above-seasonal industrial growth in the October quarter following a \nbroad-based July-quarter recovery",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [
+    "ADI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "October quarter",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan prefers analog companies with greater exposure to higher-growth, cleaner end markets such as Texas Instruments and Analog Devices over auto-levered names such as NXP Semiconductors and ON Semiconductor.",
+   "anchor": "we continue to prefer analog companies with greater exposure to higher-\ngrowth and/or cleaner end-markets",
+   "topic": "Q3 2026 earnings season outlook",
+   "status": "forecast",
+   "instruments": [
+    "TXN",
+    "ADI",
+    "NXPI",
+    "ON"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Street-consensus cloud capex for hyperscalers and neoclouds is now at $950 billion, $1.42 trillion, and $1.55 trillion for CY26, CY27, and CY28, up 97%, 47%, and 9% year over year respectively.",
+   "anchor": "consensus cloud (hyperscaler + neocloud) capex for CY26/CY27/CY28 now at $950B/\n$1.42T/$1.55T (+97%/+47%/+9% Y/Y",
+   "topic": "AI compute scarcity advantage",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY26-CY28",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Custom XPUs are gaining share of the AI accelerator unit TAM, rising from about 32% of units in CY25 to about 42% in CY26E and about 53% in CY27E.",
+   "anchor": "custom XPUs \ngaining share of the accelerator TAM (XPUs rising from ~32% of units in CY25 to \n~42% in CY26E and ~53% in CY27E)",
+   "topic": "AI compute scarcity advantage",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY25-CY27E",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Broadcom holds the number one share position in hyperscaler switching and routing silicon at about 70%.",
+   "anchor": "underpins AVGO\u2019s #1 share position in hyperscaler switching/\nrouting silicon (~70%)",
+   "topic": "AI compute scarcity advantage",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Broadcom's AI networking revenues rose more than 2.5 times year over year during its most recent quarter.",
+   "anchor": "with AI networking revenues rising more than 2.5x Y/Y during the \nmost recent quarter",
+   "topic": "AI compute scarcity advantage",
+   "status": "released",
+   "instruments": [
+    "AVGO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "most recent quarter",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Marvell management guided at its Investor Day to interconnect revenues potentially reaching about $37.5 billion by 2030.",
+   "anchor": "with management \nguiding interconnect revenues to potentially reach ~$37.5B by 2030",
+   "topic": "AI compute scarcity advantage",
+   "status": "forecast",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2030",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan forecasts Marvell's optical interconnect revenues to grow 84% year over year in 2026 and 82% year over year in 2027.",
+   "anchor": "we forecast optical interconnect revenues to grow +84% Y/Y this year \nand +82% Y/Y in 2027",
+   "topic": "AI compute scarcity advantage",
+   "status": "forecast",
+   "instruments": [
+    "MRVL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Astera Labs' PCIe 6 products already represent more than 50% of its revenues.",
+   "anchor": "PCIe 6 products already representing more \nthan 50% of revenues",
+   "topic": "AI compute scarcity advantage",
+   "status": "released",
+   "instruments": [
+    "ALAB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Nvidia continues to execute on the Vera Rubin ramp with purchase orders secured from every major hyperscaler, AI cloud, and system OEM.",
+   "anchor": "NVDA continues to execute on the Vera Rubin ramp with POs secured from every \nmajor hyperscaler",
+   "topic": "AI compute scarcity advantage",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan sees upside to AMD's approximately 41% x86 server CPU revenue share in the second quarter of 2026.",
+   "anchor": "we see upside to AMD\u2019s \n~41% x86 server CPU revenue share in 2Q26",
+   "topic": "AI compute scarcity advantage",
+   "status": "released",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2Q26",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan sees a 60%-plus revenue CAGR for AMD's server CPU business relative to mid-50s% TAM growth through 2030.",
+   "anchor": "we see 60%+ CAGR \nfor AMD relative to mid-50s% TAM growth through 2030",
+   "topic": "AI compute scarcity advantage",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2030",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Micron is now explicit that CY27 and CY28 will both run significantly tighter on supply than CY26.",
+   "anchor": "with MU now explicit that CY27/CY28 both run \nsignificantly tighter than CY26",
+   "topic": "memory structural re-rating",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27-CY28",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan's global memory team sees accumulated HBM shortage reaching 23 weeks by CY28.",
+   "anchor": "with accumulated HBM \nshortage reaching 23 weeks by CY28",
+   "topic": "memory structural re-rating",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by CY28",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Micron stepped up to 26 strategic customer agreements, from 16, covering more than 35% of revenue through 2030.",
+   "anchor": "MU stepped up to 26 SCAs (from 16) covering 35%+ of revenue through 2030",
+   "topic": "memory structural re-rating",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "through 2030",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "More than 75% of Micron's fiscal year 2027 output is already committed, marking unprecedented forward visibility for the memory industry.",
+   "anchor": "Notably, >75% of FY27 output is already \ncommitted, marking unprecedented forward visibility for memory",
+   "topic": "memory structural re-rating",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY27",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Micron is stepping up capital reinvestment, with fiscal year 2027 capex guided above $55 billion versus about $27 billion in fiscal year 2026.",
+   "anchor": "MU is \nstepping up both reinvestment (FY27 capex >$55B vs. ~$27B in FY26)",
+   "topic": "memory structural re-rating",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Micron locked in CY27 HBM pricing significantly higher year over year.",
+   "anchor": "MU locked in CY27 HBM pricing \n\u201csignificantly higher\u201d Y/Y",
+   "topic": "memory structural re-rating",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "CY27",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Micron's fiscal fourth-quarter 2026 data center SSD revenue was about $10 billion, roughly 10 times higher year over year.",
+   "anchor": "with MU\u2019s F4Q26 DC SSD rev of ~$10B \n(~10x Y/Y)",
+   "topic": "memory structural re-rating",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "F4Q26",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan forecasts blended HBM pricing to rise 54% year over year in CY27 and 25% year over year in CY28.",
+   "anchor": "We forecast blended HBM pricing +54%/+25% Y/\nY in CY27/CY28",
+   "topic": "memory structural re-rating",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY27-CY28",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan models wafer fab equipment spending to grow 31% year over year in 2026 to $163 billion, accelerating to 38% year over year growth in 2027 to $225 billion.",
+   "anchor": "we model \nWFE to grow +31% Y/Y in 2026 to $163B, accelerate to +38% Y/Y growth in 2027 to \n$225B",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2027",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan believes KLA currently has the most attractive risk/reward among the large-cap semicap equipment names.",
+   "anchor": "we believe KLAC currently has \nthe most attractive risk/reward amongst the large-caps",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "KLAC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "KLA shares are up about 66% year to date.",
+   "anchor": "KLAC shares are up ~66% YTD",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "KLAC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YTD 2026",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "KLA has lagged behind large-cap semicap peers Lam Research, up 91% year to date, and Applied Materials, up 102% year to date.",
+   "anchor": "the stock has lagged meaningfully behind large-cap semicap peers such as \nLRCX (+91%) and AMAT (+102%)",
+   "topic": "data center capacity buildout",
+   "status": "released",
+   "instruments": [
+    "KLAC",
+    "LRCX",
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "YTD 2026",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan's global team raised its capex estimates for TSMC to $64 billion, $86 billion, and $100 billion in 2026, 2027, and 2028.",
+   "anchor": "our global team \nrecently raised its capex estimates for the company to $64B / $86B / $100B in 2026 \n/ 2027 / 2028",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "JPMorgan forecasts DRAM capex to total about $413 billion over 2026-2028, up from about $368 billion previously.",
+   "anchor": "we \nforecast DRAM capex to total ~$413B over 2026-2028 (up from ~$368B prior)",
+   "topic": "data center capacity buildout",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-2028",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "IDC's updated 2026 global smartphone shipment forecast now calls for a 16.7% year over year decline, versus a 13.9% decline forecast a quarter ago.",
+   "anchor": "IDC\u2019s updated 2026 global smartphone shipment forecast now calls for a -16.7% Y/Y \ndecline (vs. -13.9% a quarter ago",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "IDC expects iOS shipments to decline only 1.3% year over year, versus 24.3% for Android.",
+   "anchor": "IDC expects iOS \nshipments to decline only -1.3% Y/Y (vs. -24.3% for Android)",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Cadence Design Systems' backlog exited the second quarter at a record $8.1 billion, with third-quarter revenue guided to about $1.61 billion and EPS to about $2.04, and full-year 2026 guided to about $6.3 billion in revenue and about $8.10 in EPS.",
+   "anchor": "Backlog exited 2Q at a record \n$8.1B and 3Q revenue is now guided to ~$1.61B and EPS to ~$2.04, while FY26 is \nguided to ~$6.3B in revenue and ~$8.10 in EPS",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "CDNS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY26",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Synopsys is now targeting a blended approximately 15% revenue CAGR from fiscal year 2026 to fiscal year 2030 and approximately 50% non-GAAP operating margin by fiscal year 2030.",
+   "anchor": "now targeting \na blended ~15% FY26-FY30E revenue CAGR and ~50% non-GAAP OPM by \nFY30E",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "FY26-FY30E",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Synopsys' move toward Application Optimized IP licensing and royalty monetization is demonstrated by a $1 billion multi-year agreement with Amazon.",
+   "anchor": "demonstrated by the $1B multi-year agreement with Amazon",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SNPS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  },
+  {
+   "claim": "Semiconductor and semicap equipment M&A deal volume stands at about $47 billion in 2025.",
+   "anchor": "semi and semicap deal volume stands at \n~$47B in 2025",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2025",
+   "bank": "J.P. Morgan",
+   "document": "3Q26 Sector Preview: Constructive Setup Intact as Supply Constraints, AI Momentum, and Cyclical Recovery Support Further Revisions / Continued Equity Outperformance"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-13/20200__jpm-semiconductors-semi-2026-10-12-5475317.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 41,
+  "matched": 41,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 6,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
