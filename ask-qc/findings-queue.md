@@ -784,3 +784,8 @@ The CONCERN (11:42:47, bulch, "Day today?"): the date was right but "final full 
 no findings (no FAIL dimensions). Concerns for session context only:
 - 14:05 "what happened to cbrs": no cause found in any tool, and the answer did not say so; it implied the drop followed the S-1 filings.
 - 17:17 X India revenue: FY24 subsidiary revenue given without the fiscal year or the subsidiary-vs-India-share caveat.
+
+## 2026-10-14
+
+- **judgment** (18:29 UTC, G, reply to "The next print will make this look like Pennie's"): the answer states an invented projection ("rescue will have to scale past $8 to $10 trillion") as fact. Only the $40T debt and $2.0T deficit were in grounding. `figure-provenance` logged `skipped-grounded`, so any model-invented figure on a grounded turn passes the check. Validator CLI returns no violations. Session material: the skip-on-grounded rule, and banter replies receiving Type 1 arrow blocks.
+- Observations, not FAILs: (1) `lookup_user_profile metric=trader` raised `TypeError: 'set' object is not subscriptable` at 21:22 UTC (code bug). (2) `validate:macro-unsourced` replaced a grounded WW2-cost answer with the "broker or data vendor" canned line at 18:26 UTC, over-firing on a non-market macro question; the same question answered correctly 60 seconds later. (3) 21:21 UTC reply ended `STOP` after several failing `query_data` calls.

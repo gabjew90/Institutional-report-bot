@@ -1214,3 +1214,14 @@ Not filing a fresh queue item for the staleness itself, per the
 - **prompt-session** — EDIT wrote "$JPM and $WFC landed a few cents under theirs"; JPM was 17 cents under ($5.75 vs $5.92). RECAP also says oil "barely moved" while $USO was +1.36%, and ends with corpus meta-narration.
 - **pilot-territory** — 21 adversarial findings on the Omnipulse body (16 unsupported-figure, 3 fabricated-event, 2 overstated-claim); none of the Morgan Stanley power/storage/neutral-rate figures are in the production dump. The pilot citation verifier should cover them before the body locks.
 - **observation** — Omnipulse day with a 16-PDF day count; Middle East/oil risk and sovereign-debt themes absent per STEP 7 (counts not re-derived).
+
+## 2026-10-15
+- **deterministic-fixable** — RECAP and Hot-core brief say producer prices "printed at 8:30" with only the estimates, and "the reaction matters more than the number". The (later) dump's calendar has `PPI m/m ACTUAL=1.34% vs est 0.6%`. Run `released-actual-missing` on post-EDIT text, and if the actual was not in the feed at run time the wording must say it is not yet in, never that the number is secondary. Confirm which case with the feed timestamp.
+- **deterministic-fixable** — "$JPM and $WFC landed a few cents under their estimates" repeats from the 10-13 pulse through `prev_consensus_block`. JPM was $5.57 vs $5.92 (Goldman note) or $5.75 vs $5.92 (10-13 pulse), not a few cents. Ledger lines that the pulse itself published should keep the numbers, and a check should compare "few cents" claims with the ledger gap.
+- **prompt-session** — Goldman derivatives brief says the desk favors $RSP "through the October 30 options expiry". The dump has the RSP idea and the Oct 30 call expiry as separate statements. The adversarial soft finding was recorded and shipped. A soft `overstated-claim` on a quoted trade attribution should get the repair pass.
+- **deterministic-fixable** — Series gaps: no pulse archive and no adversarial verdict for 2026-10-14; adversarial verdict missing for 10-12; `driver/` files missing for 10-06, 10-09, 10-12, 10-13.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 18:38Z, 4.5h after the pulse (sixth day running), so live RECAP figures cannot be audited.
+- **deterministic-fixable** — Coverage block counts banks named inside roundups as banks ("21 banks / 2 PDFs"), which ranked a ZeroHedge-sourced theme first and made it the lead. Count authoring sources separately.
+- **prompt-session** — Data-center power demand dropped although the coverage block says it must pair with AI capex when that is the primary slot. DRAFT NOTES do not explain the omission.
+- **prompt-session** — "Banks split on October" brief lost its named camps in EDIT. The headline promises a split and the body names SEB against "two desks".
+- **observation** — Omnipulse fell back to classic again (no file after 600s).
