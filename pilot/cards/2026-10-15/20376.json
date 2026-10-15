@@ -1,0 +1,174 @@
+{
+ "brief": "BTIG technical strategist Jonathan Krinsky argues the bond market just gave a 'news failure': the hot CPI print spiked the 30yr yield 8bps, but the move faded to under 2bps, which BTIG reads as confirming yields have made a tactical top. Consensus assumes lower yields are bullish for stocks, but BTIG's pain trade is the opposite: rates down, Nasdaq down. Semiconductors have already fallen alongside rates; if the Magnificent Seven follows, BTIG says that adds conviction to its 'Red October' call. The note also flags a market-structure inflection: after two-decade-low volumes, the longest SPX streak without a -1% day since 2020, and the longest NYSE 80%-downside-volume drought on record (back to 1996), today shows SPY volume ~15% above average, QQQ ~25% above average, SPX flirting with a -1% day, and 79% of NYSE volume in declining names. Separately, the SOX is down 6 straight days and SOXX 7 straight; BTIG expects a bounce soon per a 2000 analogy, but says to sell that bounce before a deeper decline.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "The 30-year Treasury yield spiked 8 basis points on the hot CPI print but has faded to a gain of less than 2 basis points, a 'news failure' BTIG reads as confirming a tactical top in yields.",
+   "anchor": "30yr yields spiked +8bps on the hot CPI print, but are now up less than 2bps.",
+   "topic": "Red October equity call",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "tactical"
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "BTIG's pain trade is rates down and Nasdaq down, contrary to the consensus view that lower yields are bullish for stocks.",
+   "anchor": "while the consensus view is lower yields = bullish stocks, the pain trade continues to be rates down, Nasdaq down.",
+   "topic": "Red October equity call",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "BTIG says a decline in the Magnificent Seven tracking falling rates, following semis which have already fallen with rates, would add conviction to its 'Red October' call.",
+   "anchor": "should we finally see Mag7 fall with rates, that would add conviction to our call for a 'Red October'.",
+   "topic": "Red October equity call",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "SPY volume is running about 15% above average and QQQ volume about 25% above average today.",
+   "anchor": "SPY volumes running ~15% above avg, QQQ ~25% above avg",
+   "topic": "Red October equity call",
+   "status": "released",
+   "instruments": [
+    "SPY",
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "The S&P 500 is flirting with a -1% down day while about 79% of NYSE volume is in declining stocks.",
+   "anchor": "SPX flirting with a -1% day, and ~79% of NYSE volume in declining stocks.",
+   "topic": "Red October equity call",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "The absence of a -1% S&P 500 down day had been the longest such streak since 2020.",
+   "anchor": "the lack of a -1% SPX down day (longest streak since 2020)",
+   "topic": "Red October equity call",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "There had been no day with 80% of NYSE volume in declining stocks for nearly a year, the longest such streak on record dating back to 1996.",
+   "anchor": "no 80% NYSE downside volume day in nearly a year (longest streak on record back to '96)",
+   "topic": "Red October equity call",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "Trading volumes had fallen to two-decade lows, with the Magnificent Seven acting as the 'Last Man Standing' propping up the market.",
+   "anchor": "the two-decade low volumes, how Mag7 was the 'Last Man Standing'",
+   "topic": "Red October equity call",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "The SOX semiconductor index has fallen for 6 consecutive days and the SOXX ETF has fallen for 7 consecutive days.",
+   "anchor": "SOX index down 6 days in a row, SOXX ETF down 7 days in a row.",
+   "topic": "Red October equity call",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "BTIG says the odds favor a bounce in semiconductors soon, with today lining up as a technical bottom based on an analogy to the 2000 market that has been eerily accurate.",
+   "anchor": "Odds favor a bounce soon and today lines up with a bottom if we follow the 2000 analogy which has been eerily accurate.",
+   "topic": "Red October equity call",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "soon"
+  },
+  {
+   "bank": "BTIG",
+   "document": "It Ain't What Ya Know That Gets You in Trouble(1)",
+   "claim": "BTIG expects the next semiconductor bounce to be one to lean heavily into on the sell side before a more drawn-out decline unfolds.",
+   "anchor": "The next bounce, however, is likely one to really lean into on the sell side before a more drawn out decline.",
+   "topic": "Red October equity call",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20376__it-ain-t-what-ya-know-that-gets-you-in-trouble-1.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 11,
+  "matched": 11,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
