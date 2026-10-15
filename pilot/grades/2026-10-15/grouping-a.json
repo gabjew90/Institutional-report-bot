@@ -1,0 +1,66 @@
+{
+ "metric": 1,
+ "total_cards": 700,
+ "fragmentation_sets": [
+  {
+   "subject": "Oct 14 hot-CPI-triggered, AI-led equity selloff (catalyst, index/sector reaction, credit stress, vol read, desk-flow mechanics, and a rival bank's bearish continuation call on the same tape)",
+   "labels": [
+    "cpi inflation surprise fed pricing",
+    "ai tech selloff",
+    "ai infrastructure financing cost capital",
+    "equity vol dispersion positioning",
+    "flight quality factor rotation",
+    "gs flow desk positioning",
+    "red october equity call",
+    "ai memory stock outflows"
+   ],
+   "cards": 85
+  },
+  {
+   "subject": "UBS Q3 2026 AI/semis-driven tech earnings season outlook (broad EPS-growth framework plus its Meta/Microsoft company-level evidence)",
+   "labels": [
+    "megacap tech earnings preview",
+    "q3 earnings growth outlook"
+   ],
+   "cards": 23
+  }
+ ],
+ "fragmented_mass_share": 0.15,
+ "mis_merges": [
+  {
+   "label": "elections uk growth",
+   "subjects": [
+    "US midterm election odds",
+    "Brazil presidential runoff / BRL forecast",
+    "French presidential election (Le Pen) odds",
+    "UK growth outlook and UK-EU summit"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Four unrelated single-country political/macro stories with no shared causal thread; each is a thin, low-conviction item that would not compete for a lead pick whether merged or split."
+  },
+  {
+   "label": "etf flow positioning",
+   "subjects": [
+    "energy MLP buying alongside the oil rally",
+    "growth-ETF (IWF/VUG/VONG) block trade",
+    "DRAM entry point ahead of hyperscaler earnings",
+    "EM ETF redemption-band pressure from dollar strength",
+    "developed-market (Japan-heavy) ETF selling"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Five disconnected sector flow blurbs stitched together only because they share a desk and instrument type (ETFs), not a subject; none is substantial enough alone to be a theme candidate."
+  }
+ ],
+ "pass": false,
+ "notes": "The dominant failure is the reader labeling by data type (CPI print, vol, credit, flow, rotation, a rival bank's framing) instead of by the single causal story they all describe, pushing fragmented mass to 15.4% versus the 10% bar; misc (12/700, 1.7%) is overflow and not counted. Both mis-merges are incidental roundup grab-bags rather than lead-worthy conflations, so neither would have changed theme selection.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

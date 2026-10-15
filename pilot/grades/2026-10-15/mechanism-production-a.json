@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-15/20224__long-one-corner-short-everything-else-goldman-says-the-ai-un.txt",
+ "source_span": "Where we part ways is the conclusion that the hardware dip 'ultimately gets bought.' The hyperscaler 'cushion' assumes the buildout keeps getting funded... The next tests come fast: ASML reports tomorrow before the open, TSMC on Thursday, plus SEMICON West headlines on capex, packaging and HBM all week.",
+ "source_chain": "Banks (JPM, Goldman) won't underwrite the GPU-risk tranche of the Volta loan themselves, therefore the real constraint on the AI trade is who funds the buildout and at what price, not whether demand exists, therefore Privorotsky's 'rotation, dip gets bought' read is wrong on the hardware leg -- invalidation/next test: ASML's report (Wed) and TSMC's report (Thu) are what will show whether financing stress is easing or deepening.",
+ "pulse_chain": "Credit markets (Oracle CDS, DM bond yields, Volta's loan terms) are charging more than equities reflect, therefore chip stocks fall even on a beat (ASML) because orders aren't setting the price, credit is, therefore the bear case is one big hyperscaler cutting capex -- invalidation: Meta's October 21 earnings as 'the first read on that' (cited to Goldman).",
+ "preserved": false,
+ "why": "No source in the day's folder names Meta's October 21 report, a capex cut, or that framing as the test of the thesis; the pulse invents this invalidation condition and attributes it to Goldman in place of the invalidation the sourced notes actually argue (ASML/TSMC prints this week, and whether AI financing keeps clearing).",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

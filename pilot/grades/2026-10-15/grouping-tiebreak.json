@@ -1,0 +1,55 @@
+{
+ "metric": 1,
+ "total_cards": 700,
+ "fragmentation_sets": [
+  {
+   "subject": "Oct 14 2026 hot-CPI-triggered equity selloff and the AI trade/credit unwind, including the contrarian 'Red October' read",
+   "labels": [
+    "cpi inflation surprise fed pricing",
+    "ai tech selloff",
+    "ai infrastructure financing cost capital",
+    "ai memory stock outflows",
+    "red october equity call"
+   ],
+   "cards": 49
+  }
+ ],
+ "fragmented_mass_share": 0.07,
+ "mis_merges": [
+  {
+   "label": "elections uk growth",
+   "subjects": [
+    "US midterm election odds",
+    "Brazil election outcome and BRL forecast call",
+    "French presidential election risk (Le Pen)",
+    "UK growth outlook (unrelated to any election)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The Brazil FX call and the UK growth outlook are substantive, self-contained theses with their own figures (BRL forecast revisions; GS's UK growth path through 2027) that an editor would plausibly run as their own brief, but buried under a generic 'elections' label they read as minor color and would likely be dropped or mis-scoped as a single throwaway politics item."
+  },
+  {
+   "label": "etf flow positioning",
+   "subjects": [
+    "Energy MLP ETF buying alongside the oil rally",
+    "Growth-factor ETF block trade (IWF/VUG/VONG)",
+    "DRAM/semis ETF entry point ahead of hyperscaler earnings",
+    "EM ETF flows amid dollar strength",
+    "Developed-market (Japan/EFA) ETF selling"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Each item is a single-line flow mention too thin on its own to become a pulse brief, so bundling them under one label does not cost the editor a theme they'd otherwise have picked \u2014 the natural outcome either way is that this reads as desk color, not a selected theme."
+  }
+ ],
+ "pass": false,
+ "notes": "Vol/dispersion ('equity vol dispersion positioning'), sector rotation ('flight quality factor rotation'), and generic flow-desk color ('gs flow desk positioning') all touch the same Oct 14 session but were kept as separate subjects: each carries an independent analytical angle (options-market structure, a forward quality-factor thesis, raw trading-floor stats) that a careful editor would more likely run as its own brief or Recap color rather than folding into the CPI/selloff main event. 'misc' holds 12 of 700 cards (1.7%) and is excluded from fragmented mass per the frozen rubric.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

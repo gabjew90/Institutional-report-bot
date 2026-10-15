@@ -1,0 +1,146 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20332__gs-milhous-mark-to-market-for-wednesday-14-oct-2026.txt",
+   "span": "SPX -111bps to 7718, NDX -202bps to 29,950, RTY -193bps to 2729",
+   "why": "GS Milhous confirms NDX -202bps to 29,950 and Russell (RTY) -193bps to 2,729 (same figures in 20328). JPM's afternoon briefing (20406) separately confirms the correction status: 'RTY is now 11% below its peak and in a correction.'"
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20338__gs-privorotsky-gs-basics-rates-calm-cost-of-capital-ttf-new-.txt",
+   "span": "CCC spreads around 1,250bp, over 200bp wider since September... the broader issue is whether the cost and availability of capital become prohibitive for lower quality borrowers",
+   "why": "Scene-setting transition sentence over the note's credit section, which locates the day's stress specifically among weak, high-borrowing-cost issuers (CCC-rated). Matches the bank's own framing; no figure or attribution of its own to check."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20338__gs-privorotsky-gs-basics-rates-calm-cost-of-capital-ttf-new-.txt",
+   "span": "CCC spreads around 1,250bp, over 200bp wider since September... Some of this is idiosyncratic distress in legacy media, cable and building products. ... Not necessarily convinced AI crowding out is driving CCC weakness as that seems more idiosyncratic",
+   "why": "Matches CCC level (~1,250bp), widening since September, and the legacy media/cable/building-products distress; the note explicitly disputes an AI/computing driver, supporting 'rather than anything about computing.'"
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20338__gs-privorotsky-gs-basics-rates-calm-cost-of-capital-ttf-new-.txt",
+   "span": "I remain fundamentally bullish on the technology. ... The winners remain those who control scarce compute and scarce capacity.",
+   "why": "Direct match to the analyst's stated view."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20338__gs-privorotsky-gs-basics-rates-calm-cost-of-capital-ttf-new-.txt",
+   "span": "If credit stress broadens, the implications extend well beyond AI to SMEs, consumers and the broader economy. ... There are a few in the AI vertical with notable increases in CDS that we should be watching.",
+   "why": "SMEs = small businesses; CDS (credit default swaps) = cost of default insurance. Conditional framing ('if...broadens') preserved. Published as a Goldman Sachs FICC & Equities note, so bank attribution is correct."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20388__core-inflation-reaccelerates-supporting-a-third-fed-hike-eng.txt",
+   "span": "Core goods inflation rose 0.25% m/m, more than triple its 0.07% three-month average",
+   "why": "Verbatim match (UBS)."
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20388__core-inflation-reaccelerates-supporting-a-third-fed-hike-eng.txt",
+   "span": "revise our forecast to include a third rate hike in March 2027 after rate hikes in September and December 2026, extending the hiking cycle from two moves... to three",
+   "why": "UBS's third-hike add (Sep+Dec 2026 plus Mar 2027) is confirmed in this file, and GS/JPM expecting the second hike in December is confirmed elsewhere (20348: 'the second hike in December'; 20406: 'we still expect the next Fed hike in December'). But no source supports 'market pricing of nearly five in total' \u2014 the market-pricing figures found are a 3-hike total (JPM, 20406: 'pricing a Dec hike and then 2x hikes in FY27') or 3 hikes by June 2027 (20254, Natixis). The sentence is grounded in real desk calls but attaches an unsupported aggregate figure.",
+   "searched": [
+    "nearly five",
+    "five hikes priced",
+    "125bp of hikes",
+    "cumulative hikes priced",
+    "total number of hikes priced through 2027"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "CPI (MoM) +0.65% for September vs. GS +0.59%, median forecast +0.6%, prior +0.40%",
+   "why": "Exact match (Goldman Sachs Economics Research)."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20388__core-inflation-reaccelerates-supporting-a-third-fed-hike-eng.txt",
+   "span": "with energy contributing nearly 40bps to the 65bps monthly gain",
+   "why": "Verbatim match (UBS)."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20388__core-inflation-reaccelerates-supporting-a-third-fed-hike-eng.txt",
+   "span": "Higher oil and jet fuel costs also continued to feed through to travel-related categories, with airfare inflation rising 1.2% m/m",
+   "why": "Verbatim match (UBS)."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20332__gs-milhous-mark-to-market-for-wednesday-14-oct-2026.txt",
+   "span": "FM and RM were better buyers of USTs across the curve",
+   "why": "FM/RM is standard desk shorthand for fast money/real money accounts; 'across the curve' = across maturities. Written in the context of the same day's equity selloff described earlier in the note."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20340__gs-soria-higher-rates-bid-for-quality-14-oct-2026.txt",
+   "span": "Quality can also be used as a hedge to AI, momentum or beta exposure given the strong negative correlation to these crowded themes. We continue to favor quality (GSP1QUAL), Defensives over Cyclicals... and like shorting... Low Quality Equities... which offers a cleaner rates expression",
+   "why": "Direct match on the hedge rationale, the quality/defensives-over-cyclicals preference, and the short low-quality-equities rates expression (Goldman Sachs FICC & Equities)."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20341__gs-vol-views-gs-vol-views-14-oct-2026.txt",
+   "span": "our Vol Panic Index reads 2.7/10",
+   "why": "Exact match."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20336__gs-novak-gs-u-s-industrials-materials-cpi-hvac-changes-picku.txt",
+   "span": "GIR \u2013 Joe out upgrading TT to Buy, LII and CARR downgrade to Neutral",
+   "why": "Exact match (Goldman Sachs GIR)."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text-all/2026-10-15/20390__ubs-house-view-daily-emea.txt",
+   "span": "We forecast earnings per share growth of 28% for the September quarter... we expect semiconductor profits alone to account for about half of S&P 500 earnings growth in the third quarter",
+   "why": "Exact match (UBS House View Daily EMEA)."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

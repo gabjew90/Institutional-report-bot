@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-15/20338__gs-privorotsky-gs-basics-rates-calm-cost-of-capital-ttf-new-.txt",
+ "source_span": "The issue is whether the cost of capital and physical bottlenecks prevent that demand from translating into actual spending... I suspect this is increasingly what concerns the semi supply chain, particularly around whether that becomes a 2027 or 2028 event... increasingly conscious that the limiting factor may not be demand, but our willingness and ability to finance and deliver the supply.",
+ "source_chain": "Privorotsky is 'fundamentally bullish' on AI demand and calls it accelerating, therefore the open question is only whether cost of capital/physical bottlenecks will EVENTUALLY (2027-2028, not now) stop that demand converting into spending, therefore today's muted ASML reaction is instead explained by the market wanting a bigger 2027 EPS upgrade, not by financing cost; invalidation is credit stress broadening from AI-adjacent CCC names into single-B/leveraged loans/primary issuance.",
+ "pulse_chain": "Oracle CDS near record and the Volta loan's high yield show lenders already charging more today, therefore chip stocks are falling now because of that financing cost, therefore ASML's demand beat and capacity-raise do not matter because credit signals, not orders, are setting the price; invalidation given is Meta's Oct 21 earnings as the first read on a capex cut ending the boom.",
+ "preserved": false,
+ "why": "The note hedges the financing constraint as a tentative 2027-2028 risk while staying bullish on present demand and blames ASML's flat reaction on a 2027-EPS-guidance gap, but the pulse turns that hedged future risk into a confirmed present-day cause of the selloff and swaps in its own reason for ASML's muted move plus a different invalidation (Meta earnings) than the note's own (credit stress migrating into single-B/leveraged loans).",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

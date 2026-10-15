@@ -1,0 +1,127 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d8",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Tech weakness (ASML's light print) offsets equity broadening -> China PPI/trade-surplus data show margin squeeze and an unresolved imbalance despite EU talks -> banks de-rate on valuation even as HFs buy the dip -> US CPI forecast higher, global inflation momentum turning up -> JPM stays tactically bullish globally (long US/Asia vs EU) while Positioning Intel shows EU positioning sliding well below the US.",
+   "brief_chain": "Same chain: broadening fades into tech weakness (ASML) -> China PPI/trade data signal margin squeeze, imbalance unresolved -> banks de-rate on valuation despite HF dip-buying, Kian stays OW EU banks -> CPI forecast higher -> JPM stays tactically bullish, Positioning Intel shows EU far below US.",
+   "distortions": [
+    {
+     "what": "Drops the 'alongside selective pressure' qualifier on JPM Econ's 3-6m de-escalation base case",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the base-case stance (managed de-escalation) is unchanged, only a secondary qualifier is omitted."
+    },
+    {
+     "what": "Says PPI 'outpaced consumer prices' where source says PPI rose faster than 'consumer goods' pricing",
+     "material": false,
+     "would_the_trade_change": "No \u2014 directionally identical read (producer prices outrunning goods inflation), no stance change."
+    },
+    {
+     "what": "Attributes the 'valuation not earnings' framing to the overall bank de-rating, when the source attributes it specifically to the US Banks desk's comment on investor frustration",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same underlying read, just generalized; doesn't change the OW stance or any trade."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 3
+  },
+  {
+   "id": "d5",
+   "tier": "top",
+   "bank": "JPMorgan",
+   "source_chain": "Hot core CPI spikes yields and hike odds, then yields fully reverse intraday on overreaction/quality-bid/AI-credit-event concerns -> equities sell off tech-led (SOXX 6 straight days down, CoreWeave bonds distressed) -> JPM econ still expects a December hike, sees room for further de-grossing but stays constructive/buy-the-dip -> BAC drags on a trading-revenue miss -> JPM reiterates Tactically Bullish, Tech/Cyclicals favored, no RTY short pairing.",
+   "brief_chain": "Same chain: CPI spikes then reverses hike odds -> tech-led selloff, SOXX/CoreWeave stress -> JPM econ still sees December hike, stays constructive -> BAC misses on trading revenue -> JPM stays Tactically Bullish, Tech/Cyclicals favored, no RTY short pairing.",
+   "distortions": [
+    {
+     "what": "'is now in a correction, 11% below its peak' follows the SPX/NDX/RTY list without re-naming RTY, creating surface ambiguity about which index it describes (source: RTY)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the singular clause correctly reads back to RTY (confirmed by the note's own BBG headline on Russell 2000's correction); the fact itself is accurate."
+    },
+    {
+     "what": "Merges BAC's stock decline with the separately reported -5% y/y trading-revenue figure into 'fell on weak trading revenue, down 5% y/y against peer growth'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 both facts are independently accurate in the source (stock fell on the miss; trading revenue -5% y/y vs peer growth), just compressed."
+    },
+    {
+     "what": "Reverses the source's causal order for CoreWeave ('bonds moved into distress as the stock fell 15.5%' vs source's 'stock fell ... as bonds moved into distress')",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same two facts, reordered; no change to figures or stance."
+    },
+    {
+     "what": "States the Oct 12 current Monetization Menu is 'no longer pairing the Tech long with an RTY short,' but that exact language is from the Oct 5 'old' menu revision, not the current Oct 12 text",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the current menu doesn't mention RTY at all, consistent with the prior decision never being reversed; the brief's characterization of the live stance is accurate."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 4
+  },
+  {
+   "id": "d3",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI-selloff jitters persist in Asia; ASML's beat lacks a 2027 upgrade so an early Korean-tech bounce fades back to down -> Fed's Williams signals on-hold bias, CPI is the test, bonds rally on one-sided positioning plus worries about a weakening ex-AI economy/consumer confidence -> energy (heating oil, TTF gas) presses new highs, Saudi-Houthi escalation adds infrastructure risk (though the latest strike missed oil assets) -> AI frontier competition keeps demand accelerating but widening CCC spreads mean cost of capital, not demand, is now the binding constraint, favoring hyperscalers who own scarce capacity.",
+   "brief_chain": "Asia 'partially retraces' the prior day's drop on ASML -> Fed on hold, CPI is the test, bonds rally on one-sided positioning and a 'resilient' ex-AI consumer -> energy strains, Saudi-Houthi escalation raises infrastructure risk -> AI demand vs rising cost of capital as the binding constraint, hyperscalers favored.",
+   "distortions": [
+    {
+     "what": "Says KOSPI/Samsung/Hynix 'partially retraced yesterday's 5.5% drop,' omitting that the source says the bounce faded and KOSPI is 'now small down,' with Samsung/Hynix also 'fading'",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 a reader would conclude Korean tech is stabilizing/green today, when the source says the recovery reversed and names are back in the red, a different read on whether the AI-selloff concern is abating or continuing."
+    },
+    {
+     "what": "Says bonds are rallying against 'a resilient ex-AI consumer,' but the source's parenthetical ('seen consumer confidence lately?') reads as flagging consumer-confidence weakness as one of the worries supporting the rally, not consumer resilience",
+     "material": true,
+     "would_the_trade_change": "Yes \u2014 this flips a growth-concern/weak-consumer signal into a resilient-consumer claim, changing the macro stance underlying the rates call."
+    },
+    {
+     "what": "Drops the source's caveat that the latest Saudi/Houthi-linked attack hit Aramco's corporate HQ rather than actual oil assets, when summarizing the escalation as 'raising risk to energy infrastructure'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the directional infrastructure-risk read stands either way; the caveat only tempers near-term severity, it doesn't flip the stance."
+    }
+   ],
+   "material_count": 2,
+   "non_material_count": 1
+  },
+  {
+   "id": "d16",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Index near highs but internals reward quality, reflecting a composition-of-growth shift as growth decelerates broadly -> Quality Pair up 20% on a short-leg selloff, works as a hedge vs crowded AI/momentum/beta -> same quality bias shows within AI (Mag-7 positioning at highs, hyperscalers outperforming their own widening credit) -> long-quality/short-momentum pair up 55% in 2026 -> technicals stretched (RSI 83), a softer CPI print or sign rates are peaking is the reversal trigger, hedged via a call option on the short-leg basket.",
+   "brief_chain": "Same chain essentially verbatim: quality rewarded under the surface on rates/growth deceleration -> Quality Pair up 20% on short-leg selloff, used as a crowded-trade hedge -> same bias within AI (Mag-7 positioning high, hyperscalers outperform their credit) -> pair up 55% in 2026 -> RSI 83 stretched, softer CPI/rate-peak as reversal trigger, call option hedge on the short leg.",
+   "distortions": [
+    {
+     "what": "Drops the Beta positioning figure (81st percentile) alongside Momentum's 78th percentile, keeping only Momentum",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the crowded-positioning hedge rationale stands on the Momentum stat alone; omitting the second figure doesn't change the recommended trade."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d11",
+   "tier": "rest",
+   "bank": "BTIG",
+   "source_chain": "30yr yield spike on hot CPI fades to under 2bps, a 'news failure' confirming a tactical top in yields -> pain trade is rates down/Nasdaq down, contra consensus -> semis already fell with rates, Mag7 following would add conviction to the 'Red October' call -> record low-volume/no-down-day streaks break today with elevated volume and poor breadth -> SOX/SOXX down 6-7 straight days, expect a 2000-analogy bounce to sell into before a deeper decline.",
+   "brief_chain": "Identical chain: CPI-driven yield spike fades = news failure confirming a tactical top -> pain trade is rates down/Nasdaq down -> semis down with rates, Mag7 following adds conviction to 'Red October' -> volume/breadth streaks break today -> SOX/SOXX 6-7 days down, bounce expected but to be sold before a deeper decline.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  }
+ ],
+ "material_total": 2,
+ "non_material_total": 9,
+ "audited": 5,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

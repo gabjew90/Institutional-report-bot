@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20221__when-goldman-jpm-won-t-hold-it-should-you-the-11-ai-chip-loa.txt",
+   "span": "Goldman's own trading desk also notes ... global equities weakened \"as investors continued to de-risk from AI-capex and AI-financing exposure.\"",
+   "why": "The 11% AI-chip loan piece documents lenders demanding sharply higher yields to finance the AI buildout and explicitly ties equity weakness to AI-financing de-risking; the JPM afternoon briefing (20406) shows ASML fell 3.9% 'despite a beat-and-raise,' supporting the 'beating its own sales targets does not change that' clause."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20331__gs-johnstone-gs-tmt-spec-sales-asml-beats-looking-to-build-m.txt",
+   "span": "the company upgraded its 2026 revenues to \u20ac44-45bn (vs \u20ac43-45bn prior)... The message from ASML is we cannot meet the demand we have from customers.",
+   "why": "2026 sales guide raised and demand-exceeds-capacity message both confirmed; the 3.9% fall is confirmed verbatim in 20406 ('ASML (-3.9% despite a beat-and-raise)')."
+  },
+  {
+   "id": "s3",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20221__when-goldman-jpm-won-t-hold-it-should-you-the-11-ai-chip-loa.txt",
+   "span": "if 11% is what it takes to clear a GPU loan in a market that, according to Goldman's Privorotsky, is still being bought on dips, it's worth asking what it costs after the next bad headline",
+   "why": "The BTIG 'sell any bounce in SOXX after seven straight losses' half is fully supported (20376, Krinsky: 'SOXX ETF down 7 days in a row... lean into on the sell side'). But the only source tying Privorotsky to dip-buying is about appetite for GPU-backed private credit/loans, not semiconductor/hardware equities; recasting it as 'the hardware dip ultimately gets bought' changes the subject from a credit-market observation to a bullish equity call and frames it as a direct bank-vs-bank counter to BTIG's stock call, which the source does not support.",
+   "searched": [
+    "hardware dip",
+    "bought on dips"
+   ]
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20268__pnc-economics-research-cpi-14-october-2026.txt",
+   "span": "The strength in core inflation was broad-based, with accelerations in shelter and core goods inflation... The Fed can, and should, look through one-time supply shocks. What it can't do is look through a demand shock",
+   "why": "Second straight core upside surprise confirmed in 20388/20277; shelter/goods as the drivers and PNC's framing that demand-driven components (vs. a gasoline-type supply shock) are what the Fed can't wave off support the editorial framing."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20256__us-macro-snapshot-september-cpi-recap-hotter-print-live-octo.txt",
+   "span": "core CPI rose 0.34% m/m (0.29% in August)... core CPI rose 2.6% (from 2.4%)",
+   "why": "Matches 0.3% vs 0.2% expected (per PNC 20268: 'increasing 0.33% against an expectation of 0.2%') and the 2.6% from 2.4% annual move exactly."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "OER increasing by 0.35% month-over-month... concentrated in the Midwest (+0.68%, SA by GS)",
+   "why": "Goldman source confirms OER (homeowners' housing cost) +0.35% and Midwest +0.68% exactly; PNC (20268) confirms diesel costs replacing tariffs as primary goods-inflation driver verbatim."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20268__pnc-economics-research-cpi-14-october-2026.txt",
+   "span": "Over the past three months, core CPI inflation has increased at a 3.4% annualized pace.",
+   "why": "Exact match, correctly attributed to PNC."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "we estimate that the core PCE price index rose 0.32% in September (vs. our expectation of 0.20% before the CPI release)... The upward revision to our September core PCE forecast",
+   "why": "Goldman explicitly raised its core PCE estimate on the CPI data; core PCE is standard shorthand for the Fed's preferred inflation gauge."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20268__pnc-economics-research-cpi-14-october-2026.txt",
+   "span": "The market moved to price October as roughly a coin flip, which feels appropriate... We continue to believe the Fed will hike in December and again in March",
+   "why": "Coin-flip framing for October matches PNC verbatim; multiple desks (PNC, TS Lombard's 90% Dec-hike pricing in 20259, Goldman's 87% Dec odds in 20332/20328) converge on December being far less contested than October."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20268__pnc-economics-research-cpi-14-october-2026.txt",
+   "span": "October rate hike odds jumped to just over 50% on the news... I wouldn't rule out another hike on October 28th [odds] shot up from about 5bps to about half of a 25bps rate hike",
+   "why": "PNC (~50%) and Scotiabank (20240, odds up to roughly half a hike, i.e. ~50%) both register near-50% odds right after the print and both frame the hike as still live, satisfying 'two desks say the print keeps it alive.'"
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20277__high-cpi-but-probably-not-in-itself-enough-to-tip-the-scales.txt",
+   "span": "Several members have indicated that they want to see more data before hiking again, which has raised the bar for another increase already at the 28 October meeting.",
+   "why": "Verbatim match, correctly attributed to SEB."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20332__gs-milhous-mark-to-market-for-wednesday-14-oct-2026.txt",
+   "span": "market now pricing in hike probabilities of 35% for October, and 87% in December",
+   "why": "Exact match, Goldman source, describes the pricing at/near the close."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20311__macro-at-a-glance-latest-views-and-forecasts-28.txt",
+   "span": "Raised our December 2026 Brent price forecast to $90/bbl (from $85/bbl) given ongoing downside risks to oil supply.",
+   "why": "Exact match, Goldman source; Brent last ~$106 confirmed in 20365 ('Brent Oil @ 106.26'); 106-90=16 checks out."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20281__seb-cu-iran-war-w33.txt",
+   "span": "Brent oil in 3m: scenario-weighted implied vs latest market price (USD/b): Implied: 97.0 Current: 100.6",
+   "why": "Exact match of the $97 scenario-weighted figure against the $100.6 market price cited in SEB's own note."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20219__everything-s-fine-goldman-s-pasquariello-says-breadth-isn-t-.txt",
+   "span": "123 S&P names are up 25% or more -- while only 42 are down 25% or more... Net exposure on Goldman's global prime book is in the 10th percentile of the past year",
+   "why": "Exact match on both figures, correctly attributed to Pasquariello/Goldman."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

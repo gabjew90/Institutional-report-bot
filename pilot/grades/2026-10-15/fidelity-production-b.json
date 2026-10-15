@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20221__when-goldman-jpm-won-t-hold-it-should-you-the-11-ai-chip-loa.txt",
+   "span": "The 11% AI Chip Loan Banks Refused To Underwrite ... 'a move to protect themselves from potential risks' ... can add ASML to the list of sell-the-news reactions on better earnings print (20321)",
+   "why": "Editorial framing tying two sourced facts: banks pricing AI chip debt at 11% / record-wide CDS (lenders demanding more to finance the buildout), and ASML's beat-and-raise still being sold (20321, 20406). Both components are independently supported."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20331__gs-johnstone-gs-tmt-spec-sales-asml-beats-looking-to-build-m.txt",
+   "span": "The message from ASML is we cannot meet the demand we have from customers ... upgraded its 2026 revenues to \u20ac44-45bn (vs \u20ac43-45bn prior)",
+   "why": "2026 guide raise and demand-exceeds-capacity quote both confirmed here; -3.9% fall confirmed in 20406 JPM afternoon briefing ('ASML (-3.9% despite a beat-and-raise)')."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20376__it-ain-t-what-ya-know-that-gets-you-in-trouble-1.txt",
+   "span": "SOXX ETF down 7 days in a row ... The next bounce, however, is likely one to really lean into on the sell side before a more drawn out decline.",
+   "why": "BTIG/Krinsky authorship confirmed by byline in same file. Privorotsky dip-buying attribution supported by 20221 ('a market that, according to Goldman's Privorotsky, is still being bought on dips')."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20388__core-inflation-reaccelerates-supporting-a-third-fed-hike-eng.txt",
+   "span": "Core CPI was also well above consensus expectations of 0.2% for a second consecutive month ... broader firmness across both core goods and core services",
+   "why": "Second straight upside surprise and shelter/goods as drivers confirmed (also PNC 20268); gasoline/headline-vs-core framing matches sources distinguishing energy-driven headline from stickier core."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "Core CPI (MoM) +0.33% for September vs. GS +0.24%, median forecast +0.2% ... Core CPI (YoY) +2.56% for September ... prior +2.45%",
+   "why": "0.3% vs 0.2% expected and 2.6% from 2.4% y/y both confirmed (also SEB 20277: 'previous 0.3%, 2.4%')."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "OER increasing by 0.35% month-over-month ... The strength in OER was concentrated in the Midwest (+0.68%, SA by GS) ... diesel costs is taking the baton from tariffs as the primary driver of goods inflation (PNC, 20268)",
+   "why": "Both figures and both bank attributions confirmed exactly."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20268__pnc-economics-research-cpi-14-october-2026.txt",
+   "span": "Over the past three months, core CPI inflation has increased at a 3.4% annualized pace.",
+   "why": "Exact figure and attribution match."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "we estimate that the core PCE price index rose 0.32% in September (vs. our expectation of 0.20% before the CPI release)",
+   "why": "Confirms Goldman raised its core PCE estimate on the CPI data."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20268__pnc-economics-research-cpi-14-october-2026.txt",
+   "span": "The market moved to price October as roughly a coin flip ... We continue to believe the Fed will hike in December",
+   "why": "Coin-flip framing for October 28 (date confirmed in 20217/20406) and December as uncontested both supported across multiple notes."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20277__high-cpi-but-probably-not-in-itself-enough-to-tip-the-scales.txt",
+   "span": "After the data, markets are back to pricing almost 50% probability for an increase.",
+   "why": "Near-50% confirmed by SEB and JPM (20406: 'Oct rate hike probability moved from ~20% to ~50%'); 'keeps it alive' matches PNC's headline 'October hike back in play' and Scotia's 'wouldn't rule out another hike.'"
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20277__high-cpi-but-probably-not-in-itself-enough-to-tip-the-scales.txt",
+   "span": "Several Fed members have indicated that they want to evaluate the effects of the September rate hike before tightening again ... This raises the bar for another increase at the 28 October meeting.",
+   "why": "Near-verbatim match, correctly attributed to SEB."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20328__gs-equities-color-us-equities-color-ugly-14-oct-2026.txt",
+   "span": "mkt now pricing hike probability odds: 35% Oct and 87%[December]",
+   "why": "Exact figures confirmed, also corroborated in 20332 Milhous file."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20311__macro-at-a-glance-latest-views-and-forecasts-28.txt",
+   "span": "Raised our December 2026 Brent price forecast to $90/bbl (from $85/bbl) given ongoing downside risks to oil supply.",
+   "why": "Forecast raise and reason confirmed exactly; Brent spot ~$106 confirmed in 20365 ('Brent Oil @ 106.26') and 20336 ('Brent $106')."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20281__seb-cu-iran-war-w33.txt",
+   "span": "Brent oil in 3m: scenario-weighted implied vs ... Implied: 97.0 ... Current: latest market price (USD/b): 100.6",
+   "why": "Exact figures and SEB attribution confirmed."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20219__everything-s-fine-goldman-s-pasquariello-says-breadth-isn-t-.txt",
+   "span": "123 S&P names are up 25% or more -- while only 42 are down 25% or more ... Net exposure on Goldman's global prime book is in the 10th percentile of the past year",
+   "why": "Exact figures and attribution confirmed."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

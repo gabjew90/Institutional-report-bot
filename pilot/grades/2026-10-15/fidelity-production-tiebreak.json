@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20338__gs-privorotsky-gs-basics-rates-calm-cost-of-capital-ttf-new-.txt",
+   "span": "The issue is whether the cost of capital and physical bottlenecks prevent that demand from translating into actual spending... you risk an air pocket in orders",
+   "why": "Goldman's Privorotsky frames the real risk as cost-of-capital/financing, not demand, directly supporting the causal claim; corroborated by the Volta 11% chip-loan piece (20221) showing lenders charging far more to finance AI builds, and by multiple notes (20321/20331/20406) confirming ASML's beat-and-raise did not stop the stock or sector from falling."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20406__jpm-us-market-intelligence-afternoon-briefing.txt",
+   "span": "underperformers include ASML (-3.9% despite a beat-and-raise)",
+   "why": "ASML's 2026 sales guide raise and 'cannot meet customer demand' are confirmed verbatim in 20331 ('upgraded its 2026 revenues to \u20ac44-45bn'; 'we cannot meet the demand we have from customers'); the -3.9% fall is confirmed in 20406; the credit-vs-orders framing matches 20224's conclusion that the debt market, not demand, is the constraint."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20376__it-ain-t-what-ya-know-that-gets-you-in-trouble-1.txt",
+   "span": "SOXX ETF down 7 days in a row...The next bounce, however, is likely one to really lean into on the sell side before a more drawn out decline",
+   "why": "BTIG's Krinsky note confirms seven straight SOXX losses and the sell-the-bounce call; Goldman's Privorotsky (20224) is quoted saying the hardware leg is 'a dip that ultimately gets bought.'"
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20256__us-macro-snapshot-september-cpi-recap-hotter-print-live-octo.txt",
+   "span": "core goods prices to rise 0.25% m/m, while higher rents and hotels pushed up shelter prices to 0.37%. ... Headline CPI rose 0.6% m/m on the back of energy prices, with gasoline rising 9.1%",
+   "why": "Source distinguishes shelter/goods driving the core upside surprise from gasoline driving the separate headline move; SEB (20277) independently calls it 'the second consecutive month' of upside surprise, supporting the 'second straight' framing."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "Core CPI (MoM) +0.33% for September vs. GS +0.24%, median forecast +0.2%",
+   "why": "0.33% rounds to 0.3% against a 0.2% median forecast; year-over-year move to 2.6% from 2.4% confirmed in 20277 ('2.6% y/y... previous 2.4%')."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "OER increasing by 0.35% month-over-month...concentrated in the Midwest (+0.68%, SA by GS)",
+   "why": "Goldman's OER (owners' equivalent rent, i.e. housing cost for homeowners) and Midwest figures match exactly; PNC's note (20268) states diesel costs are 'taking the baton from tariffs as the primary driver of goods inflation,' matching the second clause."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20268__pnc-economics-research-cpi-14-october-2026.txt",
+   "span": "Over the past three months, core CPI inflation has increased at a 3.4% annualized pace",
+   "why": "Exact figure match, attributed correctly to PNC."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20348__usa-core-cpi-above-expectations-3.txt",
+   "span": "we estimate that the core PCE price index rose 0.32% in September (vs. our expectation of 0.20% before the CPI release)",
+   "why": "Goldman explicitly revised its core PCE estimate upward following the CPI data; core PCE being the Fed's preferred gauge is standard accurate terminology, not sourced to a bank but not in dispute."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20328__gs-equities-color-us-equities-color-ugly-14-oct-2026.txt",
+   "span": "mkt now pricing hike probability odds: 35% Oct and 87% December. GIR continues to expect that the Fed will deliver a second hike in December",
+   "why": "October priced near a coin flip intraday (per 20406, ~50% right after the print) while December is treated as near-consensus across desks (GIR 87%, SEB ~90%, ING's base case, 20388's third-hike framing), supporting the 'nobody argues with December' characterization."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20406__jpm-us-market-intelligence-afternoon-briefing.txt",
+   "span": "Oct rate hike probability moved from ~20% to ~50% immediately after CPI, then reversed down to 33%",
+   "why": "Confirms near-50% odds right after the data; PNC's headline 'October hike back in play' and Natixis's 'Live October Meeting' are the two desks keeping the October hike alive."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20277__high-cpi-but-probably-not-in-itself-enough-to-tip-the-scales.txt",
+   "span": "Several Fed members have indicated that they want to evaluate the effects of the September rate hike",
+   "why": "Near-verbatim match to the sentence, correctly attributed to SEB."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20328__gs-equities-color-us-equities-color-ugly-14-oct-2026.txt",
+   "span": "mkt now pricing hike probability odds: 35% Oct and 87% December",
+   "why": "Exact figures and bank attribution match."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20311__macro-at-a-glance-latest-views-and-forecasts-28.txt",
+   "span": "Raised our December 2026 Brent price forecast to $90/bbl (from $85/bbl) given ongoing downside risks to oil supply",
+   "why": "Forecast raise, from/to figures and reason match exactly; Brent spot at $106 confirmed in 20336 ('Brent $106') and 20365 ('Brent Oil @ 106.26'); $106-$90=$16 arithmetic checks out."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20281__seb-cu-iran-war-w33.txt",
+   "span": "Brent oil in 3m: scenario-weighted implied vs ... Implied: 97.0 Current: latest market price 100.6",
+   "why": "Both figures appear exactly in SEB's table, correctly paired as the scenario-weighted 3-month view versus the other value in the same note."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-15/20219__everything-s-fine-goldman-s-pasquariello-says-breadth-isn-t-.txt",
+   "span": "123 S&P names are up 25% or more -- while only 42 are down 25% or more...Net exposure on Goldman's global prime book is in the 10th percentile",
+   "why": "Both figures and the attribution to Pasquariello match exactly; 'investor positioning' is a fair paraphrase of 'net exposure on Goldman's global prime book.'"
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

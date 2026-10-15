@@ -1,0 +1,78 @@
+{
+ "metric": 1,
+ "total_cards": 700,
+ "fragmentation_sets": [
+  {
+   "subject": "Hot September core CPI print triggers the Oct 14 broad equity selloff / AI-trade de-risking, including the credit-financing angle, the specific memory/AI outflow detail, and BTIG's opposing 'Red October' read of the same move",
+   "labels": [
+    "cpi inflation surprise fed pricing",
+    "ai tech selloff",
+    "ai infrastructure financing cost capital",
+    "ai memory stock outflows",
+    "red october equity call"
+   ],
+   "cards": 49
+  },
+  {
+   "subject": "The case for being tactically bullish on US equities (buyback dynamics, investor positioning/flows, and the historical base rate after narrow-leadership episodes)",
+   "labels": [
+    "tactically bullish equity view",
+    "us equity breadth concentration"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "UBS's Q3 tech earnings season preview (AI capex/semis/cloud driving the system-wide beat, then the Meta/Microsoft specifics)",
+   "labels": [
+    "megacap tech earnings preview",
+    "q3 earnings growth outlook"
+   ],
+   "cards": 23
+  },
+  {
+   "subject": "Flight-to-quality / duration-relief trade as the risk-off hedge on Oct 14",
+   "labels": [
+    "flight quality factor rotation",
+    "rates duration relief trades"
+   ],
+   "cards": 15
+  }
+ ],
+ "fragmented_mass_share": 0.36,
+ "mis_merges": [
+  {
+   "label": "elections uk growth",
+   "subjects": [
+    "US midterm election odds",
+    "Brazil presidential runoff and BRL forecast",
+    "French 2027 presidential election (Le Pen)",
+    "UK growth outlook and the UK-EU summit"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Four unrelated geographies with no stated causal link are bundled under one label, but each is thin forecast/calendar-tier content, not strong enough on its own to be a lead or brief candidate, so the merge doesn't cost an editor a theme."
+  },
+  {
+   "label": "etf flow positioning",
+   "subjects": [
+    "Energy MLP buying flows on the oil rally",
+    "Megacap growth ETF block trade",
+    "DRAM/memory ETF entry point ahead of hyperscaler earnings",
+    "EM and developed-market ETF redemption/outflow trends"
+   ],
+   "would_change_theme_selection": false,
+   "why": "One ETF-desk note touching five unrelated tickers/strategies is filed as one label, but each slice is minor desk color unlikely to be chosen as a brief regardless of grouping."
+  }
+ ],
+ "pass": false,
+ "notes": "Counts and the share are computed from the claims actually enumerable in the ledger text (280 total), not the 700 stated in the header, since the labels shown did not contain enough distinct claims to reach 700; the ratio should hold regardless of scale. misc holds 12/280 (~4%) of mass and is correctly excluded from fragmentation per the overflow rule. The dominant finding is Set 1: the CPI/Fed, AI-selloff, AI-financing, AI-outflow, and Red-October labels repeat the same Oct 14 index closes and the same 'generalist/long-only AI-memory outflow' line verbatim across labels, strong direct evidence of one subject split by framing.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-15/20338__gs-privorotsky-gs-basics-rates-calm-cost-of-capital-ttf-new-.txt",
+ "source_span": "The issue is whether the cost of capital and physical bottlenecks prevent that demand from translating into actual spending... If credit stress broadens, the implications extend well beyond AI to SMEs, consumers and the broader economy.",
+ "source_chain": "CCC credit spreads have widened sharply since September and HY is widening in aggregate (partly idiosyncratic to legacy media/cable/building products) therefore gigantic sovereign deficits plus AI financing needs through 2028 are competing for the same capital, so Privorotsky judges the binding constraint on AI spending is now the cost/availability of capital, not underlying demand (he stays bullish on the technology and on owners of scarce compute/capacity) therefore the thing to watch is stress migrating into single-B, leveraged loans and primary issuance; invalidation/break condition: if credit stress broadens, it hits SMEs, consumers and the broader economy, not just AI.",
+ "pulse_chain": "Index losses on 10/14 are concentrated in borrowing-cost-sensitive names (NeoClouds basket, CoreWeave bonds, SOXX losing streak) therefore CDS/spread widening (Oracle, data-center borrowers, cloud providers, CCC near 1,250bp since September, partly idiosyncratic to legacy media/cable/building products) shows Goldman's Privorotsky arguing the binding constraint on AI spending is now the cost and availability of capital, not demand, while he stays bullish on the technology and expects owners of scarce compute/capacity to win, against JPMorgan's dip-buying counter-view; invalidation: if the cost of money keeps rising for low-rated borrowers and stress broadens, the implications reach SMEs, consumers and the economy, not just AI, with named AI-linked CDS as the thing to watch, versus BB/single-B staying orderly and semis beating as the case for the dip.",
+ "preserved": true,
+ "why": "The pulse reproduces Privorotsky's full sequence (idiosyncratic CCC distress -> capital competing with sovereign deficits -> cost-of-capital not demand as the binding constraint -> watch for stress broadening to SMEs/consumers/the economy) correctly attributed to Goldman's Privorotsky, even though the citation marker on the transition sentence [d2] points to an unrelated Novak CPI/HVAC note rather than the Privorotsky file.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}
