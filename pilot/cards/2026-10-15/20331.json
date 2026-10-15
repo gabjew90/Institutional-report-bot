@@ -1,0 +1,721 @@
+{
+ "brief": "Goldman's TMT desk frames the morning around ASML's beat: Q3 gross margin hit 57.4%, it raised Q4 GM guidance to 57% and 2026 revenue to \u20ac44-45bn, and said 30% annual EUV capacity growth in 2027-28 will not meet customer demand, so it is looking to extend capacity further. Investor feedback was mixed. Against that, semis fell for a fifth session, led by memory and semicap names, as AI sentiment weakened on power and funding constraints, model competition and the risk custom silicon like Microsoft's Maia 300 reduces reliance on Nvidia and AMD. Debt-funded data-centre spending is raising circular-financing and credit-risk concerns, which the desk says is the biggest incremental worry for equity investors. GS's own flow was a 4/10 day with HF buying and LO/tech selling; SPX priced its lowest implied daily move of the year into tomorrow's CPI print. Separately, GS is bullish payments into Q3 (favoring V, MA, TOST, GLBE) and flags UK/EU telecom regulatory fights (Vodafone vs. SpaceX/Amazon spectrum, Netomnia/CMA, Ofcom/Openreach).",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML's Q3 gross margin beat expectations at 57.4% ahead of recent price increases, and the company is now guiding Q4 gross margin higher at 57%.",
+   "anchor": "Gross margin in Q3 beat (57.4%) ahead of a price increase and its now guiding Q4 higher at 57%",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML introduced 4Q26 sales guidance of \u20ac14.2-15.2bn, 3% above consensus at the midpoint.",
+   "anchor": "ASML is introduced 4Q26 sales guidance between \u20ac14.2-15.2bn , this is 3% above VA consensus at mid-point",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML upgraded its full-year 2026 revenue guidance to \u20ac44-45bn from \u20ac43-45bn prior, 1% above consensus at the midpoint.",
+   "anchor": "the company upgraded its 2026 revenues to \u20ac44-45bn (vs \u20ac43-45bn\nprior), which at the mid-point is 1% above VA cons",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML's implied 4Q26 EBIT guidance, from its revenue, gross margin and opex guides, is 7% above consensus.",
+   "anchor": "Taking the guide for revs, GMs and opex ASML's 4Q26\nEBIT is 7% above VA cons",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML said 30% annual EUV capacity growth in 2027 and 2028 will not be enough to meet customer demand, so it is looking at ways to further extend capacity beyond those years.",
+   "anchor": "it's becoming very clear that 30% in 2027, 30% in 2028 will not allow us to meet our\ncustomer demand",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML previously guided to FY27 low-NA EUV capacity of roughly 85 tools, with buy-side estimates closer to 90.",
+   "anchor": "guidance for FY27 low-NA EUV\ncapacity of roughly 85 tools (with buy-side more like 90)",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML confirmed potential EUV capacity of more than 110 tools by 2028.",
+   "anchor": "confirm potential capacity of more than 110 tools by\n2028",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Early investor feedback on ASML's results was mixed, with many investors wanting more color on the long-term capacity guide.",
+   "anchor": "Early investor feedback has been mixed many wanting more colour on the guide",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML said it cannot meet the customer demand it currently has.",
+   "anchor": "The message from ASML is we cannot meet the demand we have from\ncustomers",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "ASML said the impact of its recent price increases will start to become visible in the course of 2027, with the full impact seen starting in 2028.",
+   "anchor": "it will start to become visible partly in the course of 2027. The full impact of that you will\nstart to see in 2028",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "forecast",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS pushed back on bears who say there was no 2027 capacity upgrade, noting ASML already announced a massive capacity upgrade at Q2 and that more EUV machines cannot be built within a single quarter.",
+   "anchor": "they announced a massive upgrade at\nQ2 and more EUV machines do not get built in a quarter",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "AMAT shares fell 7% amid a sector-wide semiconductor selloff.",
+   "anchor": "price action in AMAT was not great down 7% amid a sector-wide selloff",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "AMAT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "MU and SNDK have fallen in seven of the past eight trading sessions amid a broader cooling in AI bottleneck trades.",
+   "anchor": "MU and SNDK have now fallen in seven of the past eight sessions.",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [
+    "MU",
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "PC hardware, IT services, selected software names and the Mag 7 remained firm even as semiconductors declined for a fifth straight session.",
+   "anchor": "In contrast, PC hardware, IT services, selected software names and the Mag 7 remained firm.",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Sentiment on AI and semiconductors has weakened amid concerns over power and funding constraints, uncertain returns and rising model competition.",
+   "anchor": "Sentiment has\nweakened amid concerns over power and funding constraints, uncertain returns, rising model competition",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Hyperscaler custom silicon, including Microsoft's Maia 300, raises the prospect of a longer-term shift away from sole reliance on Nvidia and AMD.",
+   "anchor": "hyperscaler custom silicon\u2014including Microsoft's Maia 300\u2014\nraises the prospect of a longer-term shift away from sole reliance on Nvidia and AMD",
+   "topic": "AI tech selloff",
+   "status": "forecast",
+   "instruments": [
+    "MSFT",
+    "NVDA",
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "The concern on AI power constraints is not a lack of demand, but whether enough electricity will be available to energise planned US data-centre capacity by 2028.",
+   "anchor": "The concern is not a lack of demand, but whether enough electricity will\nbe available to energise planned US data-centre capacity by 2028.",
+   "topic": "AI tech selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "by 2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Nvidia CEO Jensen Huang identified power, rather than chip availability, as the key constraint on AI infrastructure buildout.",
+   "anchor": "Nvidia CEO Jensen Huang has similarly identified power, rather than chip availability, as the key\nconstraint",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "New models from Meta and Google, cheaper open-weight Chinese models and falling token prices are increasing pressure on frontier labs.",
+   "anchor": "New models from Meta and Google, cheaper\nopen-weight Chinese models and falling token prices are increasing pressure on frontier labs",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [
+    "META",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Strong enterprise, sovereign and mid-tier neocloud orders would show that AI spending is broadening beyond frontier labs and hyperscalers, a positive catalyst for sentiment.",
+   "anchor": "Strong enterprise, sovereign and mid-tier neocloud orders would show that spending is broadening\nbeyond frontier labs and hyperscalers.",
+   "topic": "AI tech selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Robust hyperscaler capex guidance into 2027-28 and confirmation that custom silicon is additive to high-end GPUs would support the AI demand outlook.",
+   "anchor": "robust hyperscaler capex guidance into 2027\u201328 and\nconfirmation that custom silicon is additive to high-end GPUs would support the demand outlook.",
+   "topic": "AI tech selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "2027-28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "The semiconductor sector is in a holding pattern ahead of earnings results, which should be broadly supportive for hyperscalers and AI hardware companies near term.",
+   "anchor": "Near term, the sector is in a holding pattern ahead of results, which should be broadly\nsupportive for hyperscalers and AI hardware companies.",
+   "topic": "AI tech selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Investors are questioning how much chip demand depends on loss-making frontier labs such as OpenAI and Anthropic.",
+   "anchor": "Investors are questioning how much chip demand depends on loss-making\nfrontier labs such as OpenAI and Anthropic",
+   "topic": "AI infrastructure financing and cost of capital",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Debt-funded data-centre projects, higher borrowing costs and large spending commitments have increased fears around circular financing and credit risk.",
+   "anchor": "debt-funded data-centre projects, higher borrowing costs and\nlarge spending commitments have increased fears around circular financing and credit risk.",
+   "topic": "AI infrastructure financing and cost of capital",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Uncertainty about credit leading to delayed infrastructure deals is the incremental data point causing equity investors the biggest incremental concern.",
+   "anchor": "Uncertainty about\ncredit leading to infra deals delayed feels like the incremental data point causing equity investors the biggest\nincremental concern.",
+   "topic": "AI infrastructure financing and cost of capital",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS's trading floor activity was rated a 4 on a 1-10 scale, with hedge funds finishing moderate net buyers driven by macro products.",
+   "anchor": "Our floor was a 4 on a 1-10 scale in terms of overall activity levels with HFs finishing moderate net buyers\ndriven by macro products",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS saw generalist and long-only outflows from tech, AI and memory names again, with dollars largely rotating out of the sector.",
+   "anchor": "we\ndid see Generalist/LO outflows from Tech/AI/Memory again today (picked up on our desk late last week), with $s\nlargely rotating out of the sector.",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS trading volumes continue to be lighter, tracking -14% versus the 20-day moving average.",
+   "anchor": "Volumes\ncontinue to be lighter, tracking -14% vs the 20dma.",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "A customer bought 13,000 SPX 30 October 7500 put spreads delta neutral.",
+   "anchor": "Cust bought 13k SPX 30Oct Oct 7500 Put Spreads\ndelta neutral.",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Tomorrow's SPX straddle is pricing at 0.52%, with gamma repricing higher ahead of the CPI print.",
+   "anchor": "Tomorrow's SPX straddle goes out at 0.52% with gamma finally repricing higher ahead of the CPI",
+   "topic": "GS flow desk positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Going into today's session, SPX options implied the lowest one-day move of the year, and the CPI-day straddle is one of the lowest ever priced for that event.",
+   "anchor": "we went into today's session implying the lowest 1d move of the year (and this CPI straddle\nis one of the lowest for the event).",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Equity skew continued to steepen through most of the session on persistent demand for end-of-year downside protection over the past several sessions.",
+   "anchor": "We saw skew\ncontinue to steepen for most of the session off the back of persistent demand for end-of-year downside over the\npast several sessions.",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS continues to flag strength in the Quality factor (GSP1QUAL) as other high-beta momentum pockets of the market cause investor pain.",
+   "anchor": "we continue to flag the strength in the Quality factor\n(GSP1QUAL) as other high beta momentum pockets of the market fuel investor pain.",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS is broadly positive on the payments sector heading into Q3 earnings, citing several supportive factors.",
+   "anchor": "Heading into 3Q earnings we are broadly positive on the set up for the group, due to\nseveral factors",
+   "topic": "Payments Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS is more constructive on the earnings setup for V, MA, PYPL, GLBE and RSKD.",
+   "anchor": "we are more constructive on the setup on V,\nMA PYPL, GLBE, and RSKD",
+   "topic": "Payments Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "V",
+    "MA",
+    "PYPL",
+    "GLBE",
+    "RSKD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS is more cautious on the earnings setup for FIS, FISV and FOUR.",
+   "anchor": "we are more cautious on the set up for FIS, FISV, and FOUR.",
+   "topic": "Payments Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "FIS",
+    "FISV",
+    "FOUR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS highlights V, MA, TOST and GLBE as the stocks to favor in payments from a bottom-up perspective.",
+   "anchor": "stocks to\nhighlight in payments are V, MA, TOST, and GLBE",
+   "topic": "Payments Q3 earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "V",
+    "MA",
+    "TOST",
+    "GLBE"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "The payments sector stands out as inexpensive versus its own history after several years of multiple compression.",
+   "anchor": "the space also stands out as inexpensive vs history",
+   "topic": "Payments Q3 earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Wise plc appointed Barak Eilam to its Board of Directors as Chair Designate, succeeding David Wells who steps down as Chair in April 2027.",
+   "anchor": "Wise plc\nannounces the appointment of Barak Eilam to its Board of Directors as Chair Designate",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "April 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Vodafone asked EU regulators to intervene against the growing competitive threat from heavily capitalised, vertically integrated groups such as SpaceX and Amazon.",
+   "anchor": "Vodafone has asked EU regulators\nto intervene against the growing competitive threat from heavily capitalised, vertically integrated groups such as\nSpaceX and Amazon",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "VOD",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "SpaceX's $8 billion acquisition of nationwide 800 MHz spectrum for standalone direct-to-device services contributed to a sharp telecom sell-off on 9 October.",
+   "anchor": "SpaceX's $8 billion acquisition of nationwide 800 MHz spectrum for standalone direct-to-device\nservices",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Ofcom blocked Openreach from offering a nationwide \u00a39.50 monthly wholesale discount for new full-fibre customers.",
+   "anchor": "Ofcom has blocked\nOpenreach from offering a nationwide \u00a39.50 monthly wholesale discount for new full-fibre customers",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "BT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Lenders including Elliott Management, Sona Asset Management and Arini Capital Management sued Altice International in the New York State Supreme Court.",
+   "anchor": "Lenders including Elliott\nManagement, Sona Asset Management and Arini Capital Management have sued Altice International in the New\nYork State Supreme Court",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "AT&T agreed to sell its Mexican business for $2 billion in cash at closing, subject to adjustments.",
+   "anchor": "AT&T has agreed to sell its\nMexican business for $2 billion in cash at closing, subject to adjustments",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "T"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "freenet agreed to buy all remaining minority interests in Exaring AG, taking its ownership of waipu.tv to 100%, for about \u20ac76 million.",
+   "anchor": "all remaining minority interests in\nExaring AG, taking its ownership of waipu.tv to 100%, for an initial purchase price of about \u20ac76 million",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "GS said Q3 digital advertising trends remain strong, with resilient demand and continued budget shifts toward performance channels.",
+   "anchor": "Q3 digital advertising trends remain strong, with resilient demand and\ncontinued budget shifts toward performance channels",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Rightmove says users of its existing AI search tools already spend 40% longer on the platform and save more than twice as many properties.",
+   "anchor": "users of its existing AI search tools spend 40% longer on the platform,\nsave more than twice as many properties",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "SMG reported Q3 2026 new-car prices fell 2.61% quarter-on-quarter and 5.81% year-on-year, while used-car prices fell 0.78% q/q and 4.28% y/y.",
+   "anchor": "New-car prices fell 2.61% q/q and 5.81% y/y, while used-car prices declined 0.78% q/q and 4.28% y/y",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Johnstone - GS TMT SPEC SALES ASML beats & looking to build more; Semis AI sentiment is poor; VOD appeals to Brussels against Satellites; BT 14 Oct 2026",
+   "claim": "Publicis management reiterated 4.5-5% organic growth guidance and pointed to the top end if macro conditions remain stable.",
+   "anchor": "management reiterated 4.5\u20135% organic growth and pointed to the top end if macro conditions remain stable",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20331__gs-johnstone-gs-tmt-spec-sales-asml-beats-looking-to-build-m.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 49,
+  "matched": 49,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 11,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 8,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
