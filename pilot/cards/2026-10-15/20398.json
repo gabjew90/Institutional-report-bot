@@ -1,0 +1,741 @@
+{
+ "brief": "Heading into September-quarter megacap tech earnings, UBS flags three investor focuses: core-business health, the path to AI monetization, and 2027 implications of the AI investment cycle for capex and free cash flow. UBS expects a strong Q3 season, citing record positive tech guidance and Nasdaq earnings growth above 50%, driven by semiconductors. Meta's ad growth (27% in 2Q, consensus 23% in Q3) is backed by AI-driven engagement, but FY26 capex of $130-145bn and deeply negative consensus FCF raise investor wariness. Microsoft's Azure growth (44% in June, guided ~45% for September) and Copilot's shift to seat-plus-consumption pricing support growth, even as FY27 capex is seen up 51% to $240bn and Azure margins have compressed to the low 50s. Google Cloud's 82% growth beat consensus and Gemini sentiment has improved, though free cash flow turned negative for the first time. AWS grew 37% with a record 39.4% margin and $496bn backlog, while 2026 capex guidance rose 66% to $220bn. Apple guided iPhone revenue growth down to 9-11% on supply constraints and memory-driven margin pressure. UBS sees depressed Chinese hyperscaler valuations as oversold against high-teens earnings growth, preferring Alibaba's inflection over range-bound Tencent, which holds upside if AI demand broadens into agents.",
+ "cards": [
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS continues to favor AI platform and application beneficiaries and, within the AI enabling layer, infrastructure firms with strong pricing power and competitive supply-chain positioning.",
+   "anchor": "we continue to favor platform and application beneficiaries that are well-placed for AI-related use cases",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS continues to expect a strong Q3 2026 tech earnings season from a fundamental perspective.",
+   "anchor": "we continue to expect a strong 3Q earnings season from a fundamental perspective",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Positive earnings guidance above sell-side expectations for the technology sector is tracking at its highest level in 20 years.",
+   "anchor": "positive earnings guidance for the quarter, defined as guidance above sell-side expectations, is tracking at its highest level in 20 years within the technology sector",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "The Nasdaq Composite remains on track to deliver more than 50% year-over-year earnings growth in the third quarter of 2026.",
+   "anchor": "the Nasdaq Composite remains on track to deliver more than 50% year-over-year earnings growth in 3Q",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Meta's advertising revenue grew 27% year-over-year in the second quarter of 2026, with 14 points from impressions and 12 from ad units.",
+   "anchor": "an impressive 2Q26 ad revenue growth of 27% (14% from impressions and 12% from ad units)",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus expects Meta's advertising revenue to grow 23% year-over-year in the September 2026 quarter with a slight deceleration in the December quarter.",
+   "anchor": "consensus calls for 23% y/y growth in the September quarter and a slight deceleration in the December quarter",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September and December quarters"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS expects Meta's AI-driven engagement gains to translate into more time spent on the platform and higher monetization.",
+   "anchor": "Meta ultimately ends up driving more time spent on the platform and higher monetization",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Meta's Muse agentic consumer app launch received strongly positive reviews and adoption, likely buying the company near-term investor goodwill.",
+   "anchor": "launch and strongly positive reviews and adoption of the Meta Muse agentic consumer app",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Meta's FY26 capital expenditure guidance is USD 130 billion to USD 145 billion.",
+   "anchor": "current FY26 capex guidance of USD 130bn to USD 145bn",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus estimates reflect deeply negative free cash flow for Meta in FY26, which could pressure any further capex guidance increase.",
+   "anchor": "deeply negative free cash flow reflected in consensus estimates",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Microsoft's Azure revenue growth accelerated to 44% year-over-year in the June 2026 quarter, up from 42% in March 2026 and 40% in June 2025.",
+   "anchor": "Azure revenue growth accelerated to 44% in the June quarter (vs. 42% in March 2026 and 40% in June 2025.",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Microsoft guided Azure revenue growth to approximately 45% for the September 2026 quarter.",
+   "anchor": "Management guided Azure to approximately 45% for the September quarter",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS believes investor expectations for Microsoft's September-quarter Azure growth are modestly higher than published consensus and management guidance.",
+   "anchor": "published consensus is inline with management guidance, we suspect investor expectations are modestly higher",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Microsoft's M365 Copilot grew roughly 50% last quarter to more than 30 million paid seats, about 6% penetration of the M365 commercial installed base.",
+   "anchor": "M365 Copilot grew roughly 50% last quarter to more than 30mn paid seats, leaving it at roughly 6% penetration",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Investor expectations for Microsoft's Copilot are centered on another quarter of 10 million new seat additions.",
+   "anchor": "Investor expectations are likely centered around another quarter of 10mn new seat adds",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Microsoft's pivot of Copilot to a seat-plus-consumption pricing model likely reflects confidence in usage and customers' willingness to pay for consumption.",
+   "anchor": "management's change to the pricing model likely reflects confidence in Copilot usage and customers' willingness to pay for consumption",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus expects Microsoft to spend just over USD 52 billion on capital expenditures, including leases, in the September 2026 quarter.",
+   "anchor": "Consensus calls for just over USD 52bn in capital expenditures (including leases) in the September quarter",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus expects Microsoft's FY27 capital spending to rise 51% year-over-year to USD 240 billion.",
+   "anchor": "a 51% y/y increase in FY27 (June) spending to USD 240bn",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS believes Microsoft's Azure gross margins have compressed from roughly 60% in FY24 to the low 50% range currently.",
+   "anchor": "reasonable assumptions support a view that margins have compressed from roughly 60% in FY24 to the low 50% range currently",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Google Search grew 17% year-over-year in the June 2026 quarter.",
+   "anchor": "Search grew 17% y/y in the June quarter",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Google Search growth is expected to moderate to 15% in the September quarter and 13% in the December quarter as comparisons get tougher.",
+   "anchor": "growth is expected to moderate slightly to 15% and 13% in the September and December quarters, respectively",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September and December quarters"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Google Cloud delivered 82% year-over-year revenue growth to USD 24.8 billion in the June 2026 quarter, well above consensus.",
+   "anchor": "Google Cloud delivered a stunning 82% y/y revenue increase to USD 24.8bn, well above consensus",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus expects Google Cloud revenue growth of 92% in the September quarter and 93% in the December quarter, with UBS seeing modest upside risk.",
+   "anchor": "Consensus calls for 92% and 93% y/y growth in the September and December quarters, respectively",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September and December quarters"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS believes investor sentiment on Google's Gemini roadmap has improved following the late September launch of Gemini 4 Argon.",
+   "anchor": "investor sentiment has improved on this front with the late September launch of Gemini 4 Argon",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Google's free cash flow turned negative for the first time in the company's history in the June 2026 quarter.",
+   "anchor": "free cash flow turn negative for the first time in the company's history",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "GOOG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "AWS grew 37% year-over-year in the June 2026 quarter, its fastest growth rate in 18 quarters.",
+   "anchor": "AWS grew 37% y/y in the June quarter, its fastest growth rate in 18 quarters",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus expects AWS revenue growth to hold steady at 36% in both the September and December quarters.",
+   "anchor": "Consensus calls for relatively steady growth of 36% for both the September and December quarters",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September and December quarters"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Amazon's AWS backlog reached USD 496 billion in the second quarter of 2026, nearly double the fourth-quarter 2025 level.",
+   "anchor": "its strong backlog, which reached USD 496bn in 2Q26, nearly doubling the 4Q25 level",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "AWS margins expanded to a record 39.4% in the June 2026 quarter.",
+   "anchor": "AWS margins expanded to a record 39.4% in the June quarter",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Amazon guided to approximately USD 220 billion in total capital expenditure for 2026, a 66% year-over-year increase, mostly for AI and AWS infrastructure.",
+   "anchor": "Amazon guided to approximately USD 220bn (+66% y/y) in total capex for 2026",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus expects Amazon's capital expenditure to grow 30% in 2027.",
+   "anchor": "Current consensus calls for 30% growth in 2027",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Amazon's advertising revenue grew 26% year-over-year in the June 2026 quarter, accelerating from 22% in the first quarter.",
+   "anchor": "advertising revenue grew 26% y/y in the June quarter, accelerating from 22% in 1Q",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Consensus expects Amazon's advertising revenue growth to decelerate to 17% due to a tough year-over-year comparison.",
+   "anchor": "Consensus calls for a modest deceleration to 17%, in part due to the tough comparison in June",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Apple guided iPhone revenue growth of 9-11% year-over-year for the September 2026 quarter, down from 16% in June.",
+   "anchor": "management's guidance for 9-11% y/y revenue growth in the September quarter, down from 16% in June",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Apple's gross margin is expected to decline modestly to 47.6% in the September 2026 quarter from 48.0% in the prior quarter.",
+   "anchor": "Apple's gross margin is expected to decline modestly in the September quarter (47.6% consensus versus 48.0% in the prior quarter)",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Tariff refunds boosted Apple's gross margin by 250 basis points in the June 2026 quarter.",
+   "anchor": "tariff refunds which boosted June-quarter gross margin by 250bps",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Apple guided tariff refunds to provide a 100 basis point benefit to gross margin in the September 2026 quarter.",
+   "anchor": "guided to have a 100bps benefit in the September quarter",
+   "topic": "Megacap tech earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September quarter"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Rising memory costs cut more than 120 basis points from Apple's gross margin in the June 2026 quarter.",
+   "anchor": "Rising memory costs have already had a material impact on margins (more than -120bps in June)",
+   "topic": "Megacap tech earnings preview",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "The Chinese hyperscaler sector now trades below 12x forward P/E, below pre-DeepSeek levels and close to valuations near China's September 2024 policy pivot.",
+   "anchor": "The sector now trades below 12x forward P/E, below pre-DeepSeek levels and close to where it traded around 24 September 2024",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS expects high-teens earnings growth next year for Chinese hyperscalers alongside an emerging positive earnings-revision trend.",
+   "anchor": "high-teens earnings growth next year and an emerging positive earnings-revision trend",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS believes Alibaba is approaching an earnings inflection after multiple quarters of EBITA downgrades since June 2025.",
+   "anchor": "After multiple quarters of EBITA downgrades since June 2025, we believe Alibaba is approaching an earnings inflection",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS expects Alibaba's earnings improvement to extend into next year, marking the start of a positive earnings revision cycle.",
+   "anchor": "we expect the improvement to extend into next year, marking the beginning of a positive earnings revision cycle",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next year"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "Alibaba's recent equity placement could remain a near-term sentiment overhang on the stock.",
+   "anchor": "the recent equity placement could remain a near-term sentiment overhang",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "released",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS believes the probability of another Alibaba equity raise in the next six months is low.",
+   "anchor": "we believe the probability of another equity raise over the next six months is low",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next six months"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS expects Alibaba to outperform the sector as one of the few names with positive earnings revisions.",
+   "anchor": "we expect Alibaba to outperform the sector as one of the few names with positive earnings revision",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [
+    "BABA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS expects Tencent to remain range-bound in the near term as its later-starting negative earnings revision cycle takes longer to turn.",
+   "anchor": "We expect Tencent to remain range-bound in the near term",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near term"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS sees limited downside for Tencent given the resilience of its core businesses and its already depressed valuation.",
+   "anchor": "we also see limited downside given the resilience of Tencent's core businesses and its already depressed valuation",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS sees an underappreciated upside scenario for Tencent over the next six months if the global AI trade broadens from infrastructure toward agents and applications.",
+   "anchor": "we see an underappreciated upside scenario over the next six months: If the global AI trade broadens from infrastructure toward agents and applications",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next six months"
+  },
+  {
+   "bank": "UBS",
+   "document": "Transformational Innovation Opportunities (TRIO): Artificial Intelligence",
+   "claim": "UBS sees the risk-reward for Chinese hyperscaler earnings skewed to the upside despite the absence of an obvious near-term catalyst.",
+   "anchor": "the balance of risk as skewed to the upside, despite the absence of an obvious near-term catalyst",
+   "topic": "Chinese hyperscaler earnings outlook",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20398__transformational-innovation-opportunities-trio-en-1667631.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 49,
+  "matched": 49,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
