@@ -1,0 +1,66 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-10-15T14:07:57.832189Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=116; anchors 648/675 matched, 0 empty, 0 too_short (rate=0.96)",
+   "at": "2026-10-15T14:08:03.075707Z"
+  },
+  "omnipulse": {
+   "decision": "CLASSIC",
+   "detail": "omnipulse: none for 2026-10-15 (not published after 600s) -> classic pulse",
+   "at": "2026-10-15T14:18:15.403550Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-10-15T14:23:16.589555Z"
+  },
+  "lint": {
+   "decision": "DISPATCH_SCRUB",
+   "detail": "5 hard issue(s)",
+   "at": "2026-10-15T14:25:34.932098Z"
+  },
+  "scrub_relint": {
+   "decision": "CONTINUE",
+   "detail": "0 hard issues after SCRUB",
+   "at": "2026-10-15T14:26:08.982952Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-10-15T14:26:13.172353Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-10-15T14:26:18.272221Z"
+  },
+  "adversarial": {
+   "decision": "DISPATCH_REPAIR",
+   "detail": "1 hard finding(s); repair 1/2; items at adversarial_repair_items.json; after the repair agent, RE-DISPATCH the checker fresh, then run: gate adversarial --recheck",
+   "at": "2026-10-15T14:29:14.940949Z"
+  },
+  "adversarial_recheck": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings, 1 soft (recorded)",
+   "at": "2026-10-15T14:32:09.990833Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-10-15T14:32:14.746534Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 2,
+  "adversarial_repairs": 1
+ },
+ "lint": {
+  "last_hard": 0
+ }
+}
