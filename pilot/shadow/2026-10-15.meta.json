@@ -1,0 +1,49 @@
+{
+ "unread_source_files_at_edit": 13,
+ "given_up_at_edit": 91,
+ "pack": {
+  "documents": 12,
+  "cards": 338,
+  "max_doc_id": 20406
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 106,
+  "brief_citations": 2,
+  "distinct_cards_cited": 106,
+  "card_count": 338,
+  "quintiles": [
+   22,
+   16,
+   21,
+   28,
+   19
+  ],
+  "edge_quintile_share": 0.387,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Core goods inflation rose 0.25% on the month, more than triple its 0.07% three-month average [c87].",
+    "cite": "c87",
+    "reason": "figures not in cited card(s): ['0.25%']"
+   },
+   {
+    "sentence": "Core services inflation rose 0.37%, up from 0.33% in August and well above its 0.20% three-month pace [c88].",
+    "cite": "c88",
+    "reason": "figures not in cited card(s): ['0.37%']"
+   },
+   {
+    "sentence": "Bank of America fell 5.9% following scrutiny of its operational flexibility going forward [c9].",
+    "cite": "c9",
+    "reason": "bank named (['bank of america']) is not the bank of any cited card or brief"
+   }
+  ],
+  "word_count": 1731
+ }
+}
