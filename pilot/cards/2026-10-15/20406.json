@@ -1,0 +1,583 @@
+{
+ "brief": "JPM's Oct 14 afternoon note frames two questions: the bond-yield reversal and how long the tech selloff runs. Hotter-than-expected September core CPI (unrounded 0.335% m/m vs Street's 0.2% and Feroli's 0.18% estimates) pushed October hike odds from about 20% to about 50%, then back down to roughly 32-33% as 2Y yields fully reversed intraday. JPM econ (Reinhart) forecasts core PCE at 0.31% m/m, firm enough to put October in play but still expects the next hike in December. SPX fell 1.1%, NDX 2.0%, and RTY 1.9% and is now in a correction, 11% below its peak. The initial selloff was CPI-triggered but tech-led, with SOXX down a sixth straight day on AI financing and IPO-timeline concerns, and CoreWeave bonds moved into distress as the stock fell 15.5%. Positioning data (TPM at the 46th percentile, up from the 19th in late July) leaves room for further de-grossing, but JPM stays constructive and sees a possible dip-buying opportunity. BAC missed and fell on weak trading revenue, down 5% y/y against peer growth. JPM reiterates its Tactically Bullish view into earnings, with the Monetization Menu still favoring Tech and Cyclicals and no longer pairing the Tech long with an RTY short.",
+ "cards": [
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The S&P 500 fell 1.1%, the Nasdaq 100 fell 2.0%, and the Russell 2000 fell 1.9% on October 14.",
+   "anchor": "SPX -1.1%, NDX -2.0%, RTY -1.9%.",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The S&P 500 ended a 53-day streak without a 1% or greater decline on October 14.",
+   "anchor": "SPX ended a 53-day streak \nwithout a 1%+ decline",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The Russell 2000 is 11% below its peak and in a correction.",
+   "anchor": "RTY is now 11% below its peak and in a correction",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Cyclical stocks underperformed Defensive stocks by 7.0% on October 14.",
+   "anchor": "Cyclical underperformed Defensives by 7.0%",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The 2-year Treasury yield spiked nearly 16bp after the CPI release before reversing to close up 2bp, with the 10-year down 2bp and the 30-year down 4bp.",
+   "anchor": "2y yield spiking nearly 16bp initially, before \nreversing almost entirely at the close (2Y +2bp, 10Y -2bp, 30Y -4bp)",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's October rate hike probability moved from about 20% to about 50% immediately after the CPI release.",
+   "anchor": "Oct rate hike \nprobability moved from ~20% to ~50% immediately after CPI",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "October rate hike odds have fallen back to about 32%, with about 30bp of hikes priced through year-end.",
+   "anchor": "Those odds have \nsince fallen back to ~32%, with ~30bp of hikes priced through year-end",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year-end"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "September core CPI's unrounded month-over-month change was 0.335%, above the Street's 0.2% estimate and Feroli's 0.18% estimate.",
+   "anchor": "The \nunrounded MoM change of Core CPI is 0.335%, above the Street\u2019s 0.2%/Feroli\u2019s 0.18%",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM economist Abiel Reinhart forecasts core PCE at 0.31% month-over-month (3.1% year-over-year, 2.8% three-month annualized).",
+   "anchor": "Our forecast for core PCE is 0.31%m/m \n(3.1%oya, 2.8% 3m saar)",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Despite the core PCE forecast putting the October FOMC meeting in play, JPM economics still expects the next Fed hike in December.",
+   "anchor": "which is firm enough to put the October FOMC meeting in play, \nthough we still expect the next Fed hike in December",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "December"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "September core CPI's increase was broad-based, with core goods up 0.25% and core services up 0.37%.",
+   "anchor": "broad-based, with core goods up 0.25% and core services 0.37%",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Supercore CPI increased 0.42% in September.",
+   "anchor": "Rent and especially OER were firm, but supercore also \nincreased 0.42%",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Headline CPI exceeded swap market pricing by over 7bp, the largest upside surprise since the March 2024 CPI report.",
+   "anchor": "Headline CPI exceeded swap market pricing",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM economist Feroli expects September PPI to print 0.5% month-over-month headline (5.3% year-over-year) and 0.3% month-over-month core (4.4% year-over-year).",
+   "anchor": "Feroli (here) see Headline printing 0.5% \nMoM (5.3% YoY) and Core MoM printing 0.3% (4.4% YoY)",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Feroli sees Food PPI accelerating to 0.7%, with JPM's Commodities team expecting a spike in agricultural inflation into year-end and the first quarter of 2027.",
+   "anchor": "Food PPI, where he sees it accelerating higher, 0.7%, and our Commodities team \nexpected a spike in Ag inflation into year-end and 27Q1",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year-end and Q1 2027"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Feroli expects September Retail Sales to show a 0.4% month-over-month gain in the headline and a 0.2% gain in the Control Group.",
+   "anchor": "Feroli sees a 0.4% MoM gain in Headline and a \n0.2% gain in the Control Group",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "RETAIL_SALES",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "tomorrow"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The SOXX semiconductor ETF fell for a sixth straight day, with AI financing risk and IPO timelines still central to the selloff story.",
+   "anchor": "the SOXX fell for a sixth straight day, with financing risks and IPO timelines \nstill at the center of the story",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "ASML fell 3.9% despite reporting a beat-and-raise quarter.",
+   "anchor": "ASML (-3.9% despite a beat-and-raise)",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "ASML reported a strong quarter with margins well ahead of expectations and raised its Q4 guidance, citing customer orders placed as far out as 2030.",
+   "anchor": "Strong quarter, with margins well ahead of expectations and an \nincrease to the Q4 guide. Management cites s",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2030"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "CoreWeave fell 15.5% as its 2032 unsecured bonds moved into distress.",
+   "anchor": "CoreWeave (it fell \n15.5% as its 2032 unsecured bonds moved into distress)",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's Positioning Intelligence showed US equity positioning largely unchanged month-to-date, with TPM at a neutral 46th percentile versus about the 19th percentile near its late-July low.",
+   "anchor": "US positioning largely unchanged MTD, with TPM at a neutral \n~46th percentile. By comparison, TPM fell to around the 19th percentile near i",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM remains constructive on the tech sector and sees a possible opportunity to buy the dip despite potential further de-grossing into key tech catalysts.",
+   "anchor": "but we remain \nconstructive on the sector and still see a possible opportunity to buy the dip",
+   "topic": "AI tech selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "A headline about OpenAI's computing chief departure intensified the day's equity selloff.",
+   "anchor": "Headline on OpenAI\u2019s staff \ndeparture also intensified the selloff today",
+   "topic": "AI tech selloff",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Bank of America's overall trading revenue fell 5% year-over-year, versus Goldman Sachs up 37%, Citigroup up 6%, and JPMorgan up 15%.",
+   "anchor": "overall trading ended up -5% y/y, vs GS +37% y/y, C +6% y/y, JPM +15%",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC",
+    "GS",
+    "C",
+    "JPM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Bank of America's topline missed by 3%, driven by fee income, from a lower base of expectations after management guided lower at the Barclays conference.",
+   "anchor": "Topline is a 3% miss driven by fee \nincome even from a lower base of expectations given the gu",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Bank of America missed equities trading revenue by 1.5% and FICC revenue by 10%.",
+   "anchor": "they missed equities by \n1.5% (which is really notable given the performance of others) and FICC by 10%",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Bank of America fell 5.5% in pre-market trading following its earnings report.",
+   "anchor": "BAC -5.5% in pre, following topline a -3% miss driven by fee income",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM Market Intelligence reiterates its Tactically Bullish view heading into earnings season.",
+   "anchor": "TACTICALLY BULLISH \u2013 we reiterate our view as we head into earnings",
+   "topic": "Tactically Bullish equity view",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "The SOX semiconductor index is about 20% off its July lows and about 15% below its June all-time highs, which JPM views as an inflection point.",
+   "anchor": "The SOX is ~20% off its July lows and ~15% below its June ATHs, which \npoints to an inflection point given recent price action",
+   "topic": "Tactically Bullish equity view",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's Monetization Menu maintains a preference for Tech and some Cyclicals, with the AI theme as a globally bullish view.",
+   "anchor": "Our Menu remains relatively unchanged with a \npreference for Tech and some Cyclicals, with the A",
+   "topic": "Tactically Bullish equity view",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Internationally, excluding the global AI theme, JPM likes Brazil and Japan.",
+   "anchor": "and excluding the global AI theme, we like Brazil and \nJapan",
+   "topic": "Tactically Bullish equity view",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM still likes Tech as a core long but no longer pairs it with a Russell 2000 short, citing squeeze risk from a move lower in oil or yields.",
+   "anchor": "We still like Tech as a core long \nbut would no longer pair with an RTY short given squeeze risk from a move lowe",
+   "topic": "Tactically Bullish equity view",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's ETF desk reports buyers of energy MLPs (MLPA, MLPX, AMLP) and IEO this week, alongside the oil rally.",
+   "anchor": "Energy \u2013 MLP\u2019s (MLPA, MLPX, AMLP) have been in demand, as well as IEO (iShares \nOil/Gas E&P)",
+   "topic": "ETF flow positioning",
+   "status": "released",
+   "instruments": [
+    "MLPA",
+    "MLPX",
+    "AMLP",
+    "IEO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "week to date"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "A very large block of the IWF growth ETF was lifted on screen, with offers wanted in companion products VUG and VONG.",
+   "anchor": "a very large block of IWF (iShares R1 Growth) was \nlifted yesterday on screen, and we have seen of",
+   "topic": "ETF flow positioning",
+   "status": "released",
+   "instruments": [
+    "IWF",
+    "VUG",
+    "VONG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "yesterday"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's ETF desk sees opportunistic buyers in DRAM as the asset has retraced, calling it a possible entry point ahead of hyperscaler earnings.",
+   "anchor": "Buyers in DRAM \u2013 opportunistic bid",
+   "topic": "ETF flow positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "ahead of hyperscaler earnings"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Emerging market ETF trackers EEM and IEMG are trading cheap and closer to redemption bands amid dollar strength.",
+   "anchor": "the benchmark trackers (EEM, IEMG) are tra",
+   "topic": "ETF flow positioning",
+   "status": "released",
+   "instruments": [
+    "EEM",
+    "IEMG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "A large block of the EFA developed-markets ETF was sold by an asset manager into yesterday's close, with continued selling in Japan trackers EWJ and FLJP.",
+   "anchor": "manager right into the bell \nyesterday, and we have seen continued supply in Japan trackers (EWJ, FLJP)",
+   "topic": "ETF flow positioning",
+   "status": "released",
+   "instruments": [
+    "EFA",
+    "EWJ",
+    "FLJP"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "yesterday"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM's ETF desk expects an extension of the international ETF supply trend following the hotter-than-expected CPI print.",
+   "anchor": "With \ntodays hotter-than-expected CPI print I\u2019d expect an extensi",
+   "topic": "ETF flow positioning",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "JPM analyst John Ivankoe maintains an Overweight rating on Domino's Pizza with an unchanged December 2027 price target of $350.",
+   "anchor": "John remains focused on FCF and remains OW, no change \nto Dec-27 PT of $350",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "DPZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Dec-27"
+  },
+  {
+   "bank": "JPMorgan",
+   "document": "JPM US Market Intelligence : Afternoon Briefing",
+   "claim": "Restaurants positioning sits at one of the most extreme lows on JPM's book, with a long/short ratio of 0.5x at the 1st percentile since 2018.",
+   "anchor": "Restaurants positioning remains one of the more extreme low \nareas on our book with L/S ratio 0.5x at t",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since 2018"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20406__jpm-us-market-intelligence-afternoon-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 40,
+  "matched": 40,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 2,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
