@@ -1,0 +1,509 @@
+{
+ "brief": "JPM's morning briefing frames September CPI (Feroli: headline +0.55% m/m, 3.6% y/y; core +0.18% m/m, 2.4% y/y) as consistent with the Fed skipping October and hiking in December; a core print near 0.18% would push global yields lower and support rate-sensitive baskets. ASML's margin-led Q3 beat and raised FY26 sales guide lifted the stock 1.3% but did not restart the broader Semiconductor/Memory trade (Micron fell pre-market) after SOX's five-session losing streak; JPM's Scott Silver contrasts this quarter's low-single-digit estimate revisions with the prior quarter's ~30% cut that still saw the stock fall. Day-1 bank earnings (card spending +10% at JPM, +13% at Citi; falling delinquencies at Citi/Wells Fargo) read through to a resilient-consumer thesis JPM reflags using Chase data showing September spending growth accelerating to 6.6% y/y across income cohorts, even as the JPM Retail basket sits 8.7% below its August peak with light long/short positioning. JPM's Rob O'Dwyer argues bank weakness reflects quant/passive flow, not fundamentals, and is a buying opportunity. JPM reiterates its Tactically Bullish equity view into earnings, preferring Tech and Cyclicals.",
+ "cards": [
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM economist Michael Feroli forecasts September headline CPI at 0.55% month-over-month (3.6% year-over-year) and core CPI at 0.18% month-over-month (2.4% year-over-year).",
+   "anchor": "Feroli sees Headline MoM of 0.55% (3.6% YoY) and Core MoM of 0.18% (2.4% YoY)",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM expects a CPI print in line with its forecast to keep the bond market from pricing in an October rate hike, with a skip in October and a December hike remaining most likely.",
+   "anchor": "keep the bond market from re-pricing an October hike, instead continuing to see a skip and a December hike as most likely",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM expects global bond yields to move lower and rate-sensitive baskets to be supported if core CPI comes in around 0.18% month-over-month.",
+   "anchor": "If core MoM comes in around 0.18%, we'd expect yields to move lower globally, which tends to support rate-sensitive baskets",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM notes the market is currently pricing a December Fed hike followed by two more hikes in fiscal year 2027, and that dovish inflation prints removing hike expectations would push bond yields lower.",
+   "anchor": "dovish inflation prints could remove further hike expectations out of the market which is currently pricing a Dec hike and then 2x hikes in FY27",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "ASML's Q3 earnings beat was margin-led and the company raised its FY26 sales guidance.",
+   "anchor": "ASML drives the Semis basket higher on a margin-led Q3 beat and raising FY26 sales guide",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "ASML shares rose 1.3% after its strong earnings this morning.",
+   "anchor": "ASML's strong earnings earlier this morning drove the stock higher (+1.3%)",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "ASML's earnings beat and raise did not restart the broader Semiconductor and Memory trade.",
+   "anchor": "beat-and-raise drew a positive stock reaction but didn't restart the broader Semis / Memory trade",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Micron shares fell in pre-market trading and SK Hynix and TEL closed lower in Asia even as ASML rallied.",
+   "anchor": "MU -1.2% pre-market; SK Hynix / TEL closed lower in Asia",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "The Philadelphia Semiconductor Index posted five consecutive down sessions, its longest losing streak since July.",
+   "anchor": "After five straight down sessions in SOX (its longest losing streak since July)",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM's Scott Silver notes ASML's prior quarter saw roughly 30% estimate revisions and the stock fell, while this quarter's revisions are low-single-digit and the stock rose.",
+   "anchor": "Last print revisions were ~30% and stock went down and this print revisions are LSD and stock is up",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "ASML's previous quarterly disappointment was not about the underlying numbers, which included strong gross margins, but about the lack of clarity on 2027 capacity.",
+   "anchor": "the initial disappointment was never really about the underlying numbers, with gross margins in particular an the main positive, but rather the lack of clarity",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "The Philadelphia Semiconductor Index is about 20% off its July lows and about 15% below its June all-time highs.",
+   "anchor": "The SOX is ~20% off its July lows and ~15% below its June ATHs",
+   "topic": "ASML earnings reaction and semiconductor capacity",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Card spending grew 10% year-over-year at JPMorgan and 13% year-over-year at Citi.",
+   "anchor": "Card spending grew 10% year over year at JPM and 13% at C",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [
+    "JPM",
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Delinquencies and net credit losses fell year-over-year at Citi and Wells Fargo.",
+   "anchor": "Delinquencies and net credit losses are falling year over year at C and WFC",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [
+    "C",
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Citi reported low corporate non-accrual loans and low corporate net credit losses.",
+   "anchor": "C reporting low corporate non-accruals and net credit losses",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Wells Fargo said higher prices are weighing on consumer sentiment and lower-income households are more sensitive to financing costs, inflation and fuel, though that group remains stable.",
+   "anchor": "higher prices are weighing on sentiment and that lower-income households are more sensitive to financing costs, inflation and fuel",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Wells Fargo said the resilient consumer trend should continue as long as the economy keeps growing and employment stays strong, with no signs of that changing.",
+   "anchor": "as long as the economy continues to grow and employment stays strong, that should continue. And we're just not seeing signs of that changing",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Chase spending data showed total consumer spending growth of 6.6% year-over-year in September, an acceleration from 5.3% in August.",
+   "anchor": "total spending growth in September was up 6.6% YoY, an acceleration compared to August's 5.3%",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "September spending growth was up 7.8% year-over-year for upper-income, 8.2% for middle-income, and 6.6% for lower-income households.",
+   "anchor": "upper-, middle-, and lower-income spending were up 7.8%, 8.2%, and 6.6%, respectively",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Lower-, middle-, and higher-income household wage growth was 4.7%, 3.8%, and 3.7% respectively in August.",
+   "anchor": "lower-, middle-, and higher-income household wage growth was 4.7%, 3.8%, and 3.7% in August",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "JOBS",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "The JPM Retail basket (JP2RTL) was down 8.7% from its August peak as affordability concerns and rising yields weighed on the sector.",
+   "anchor": "The JPM Retail basket (JP2RTL) was down 8.7% from the August peak, as affordability and rising yields became headwinds for the sector",
+   "topic": "US consumer spending resilience",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM Positioning Intelligence shows the long/short ratio percentile since January 2018 for Retail (JP2RTL) at the 37th percentile and Consumer Discretionary (JP2CND) at the 38th percentile, as of October 8, 2025.",
+   "anchor": "the L/S Ratio %-ile since Jan 2018 for Retail (JP2RTL) and Consumer Discretionary (JP2CND) is at 37%-ile and 38%-ile",
+   "topic": "US consumer spending resilience",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM Market Intelligence remains bullish on the US consumer, citing historically strong cash levels and subsequent spending.",
+   "anchor": "Mkt Intel remains bullish on the US consumer, with the hypothesis supported by historically strong cash levels and subsequent spending",
+   "topic": "US consumer spending resilience",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Wells Fargo expects fourth-quarter net interest margin to be stable quarter-over-quarter while the pace of net interest income growth increases from loan and deposit growth and fixed-rate asset repricing.",
+   "anchor": "pace of NII in 4Q to increase with continued benefits from loan and deposit growth, as well as fixed rate asset repricing",
+   "topic": "Bank earnings season",
+   "status": "forecast",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Wells Fargo expects fourth-quarter 2026 loan growth to be higher than mid-single-digit year-over-year, with no broad-based credit deterioration currently.",
+   "anchor": "Expect loan growth to be higher than up MSD in 4Q26 yoy. Not seeing any broad based credit deterioration currently",
+   "topic": "Bank earnings season",
+   "status": "forecast",
+   "instruments": [
+    "WFC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "4Q26"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM suspects Citi is sandbagging its ROTCE guidance and expects most people will end up with ROTCE figures closer to 12% for the full year.",
+   "anchor": "they're basically just giving themselves flex investment in the business but suspect most people will end up with ROTCE numbers closer to 12% for FY",
+   "topic": "Bank earnings season",
+   "status": "forecast",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY"
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM's Rob O'Dwyer argues bank stock weakness is being driven by systematic and passive flow reacting to a flatter 2s10s curve, and sees that as a reason to fade the move and buy banks.",
+   "anchor": "if that is really the reason for banks being sold (presumably by systematic/quant investors) then that's a reason to fade this move lower and buy",
+   "topic": "Bank earnings season",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM reiterates its Tactically Bullish equity view heading into earnings season.",
+   "anchor": "TACTICALLY BULLISH \u2013 we reiterate our view as we head into earnings",
+   "topic": "Tactically Bullish equity view",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM flags risks to its Tactically Bullish view: a momentum or tech unwind, a tech earnings miss, AI credit fears or spread widening, and a spike in bond or equity volatility.",
+   "anchor": "Momentum / Tech Unwind; (ii) Tech Earnings Miss; (iii) AI Credit Fears / Spread Widening; (iv) Spike in Bond Vol / Equity Vol",
+   "topic": "Tactically Bullish equity view",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM lists macro data catalysts for its Tactically Bullish view: CPI on October 14, Retail Sales and PPI on October 15, Flash PMIs on October 23, and Fed Day on October 28.",
+   "anchor": "Macro Data \u2013 CPI on Oct 14, Retail Sales & PPI on Oct 15, Flash PMIs on Oct 23, and Fed Day on Oct 28",
+   "topic": "Tactically Bullish equity view",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM expects stronger bank earnings with a favorable consumer and lending outlook to help restart the Cyclicals trade.",
+   "anchor": "kicking off earnings season with stronger earnings and a favorable consumer and lending outlook would be helpful in restarting the Cyclicals trade and broadening",
+   "topic": "Tactically Bullish equity view",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM's Monetization Menu as of October 12 keeps a preference for Tech and some Cyclicals, with the AI theme viewed as a globally bullish view.",
+   "anchor": "preference for Tech and some Cyclicals, with the AI theme being a globally bullish view",
+   "topic": "Tactically Bullish equity view",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM favors Cruise Lines, Hotels, and Retailers within the COVID Reopening theme given consumer strength and relative insulation from elevated energy prices.",
+   "anchor": "we would focus on things like Cruise Lines, Hotels, and Retailers given the strength of the consumer and relative insulation from elevated energy prices",
+   "topic": "Tactically Bullish equity view",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "Internationally, excluding the global AI theme, JPM likes Brazil and Japan.",
+   "anchor": "Internationally, and excluding the global AI theme, we like Brazil and Japan",
+   "topic": "Tactically Bullish equity view",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "J.P. Morgan",
+   "document": "US Market Intelligence Morning Briefing",
+   "claim": "JPM still likes Tech as a core long but would no longer pair it with a Russell 2000 short, given squeeze risk from a move lower in oil.",
+   "anchor": "like Tech as a core long but would no longer pair with an RTY short given squeeze risk from a move lower in oil",
+   "topic": "Tactically Bullish equity view",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20404__jpm-us-market-intelligence-morning-briefing.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 35,
+  "matched": 35,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
