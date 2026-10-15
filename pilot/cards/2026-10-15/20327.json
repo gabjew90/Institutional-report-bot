@@ -1,0 +1,402 @@
+{
+ "brief": "GS's financials desk notes Day 2 of earnings stays choppy: when AI rallies, Financials often trade inversely, and when AI capex funding worries resurface, that link reasserts. Rates round-tripped this morning's CPI print; cyclicals-vs-defensives basket is -6% off early-October levels, with the market's broader cyclical exposure catching up to what Financials have signaled for a month. Price action is questioning earnings growth, not credit quality, which the desk says ranks near the bottom of current debate topics (pipelines, capital, operating leverage, margin levers). Sentiment on earnings reactions is sharply negative, with the desk unable to find a clear reason for Citigroup's prior-day underperformance. On single names: BAC -5%, worse than guided despite a better 2027 NII guide, bulls citing NII upside versus bears citing thin 10.9% capital ahead of GSIB pressure; PGR -6% on worsening Personal Auto pricing; STT -6% on a top-line miss despite better NII/NIM, bears emboldened against its +35% YTD run; MS -3% on a wealth margin miss but capital-markets results better than feared; BLK flat, a clean beat with 11% organic fee growth and margin up to 47.8%, drawing almost no pushback.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "GS's desk observes that when AI stocks rally, Financials have often traded lower in an inverse correlation.",
+   "anchor": "when AI goes higher, Fins has often traded lower at a inverse correlation",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "GS's Long cyclicals vs defensives basket is 6% off its early-October levels.",
+   "anchor": "GS\u2019 Long cyclicals vs defensives basket -6% off early October levels",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "early October"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Rates round-tripped the move from this morning's CPI print.",
+   "anchor": "Rates have round tripped this mornings CPI print",
+   "topic": "GS flow desk positioning",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "The tape is moving against names levered to economic growth.",
+   "anchor": "the tape is really moving against those levered to economic growth",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "GS says current price action is questioning the level of earnings growth ahead, not credit quality.",
+   "anchor": "the level of EARNINGS GROWTH we\u2019re going to see, not credit issues",
+   "topic": "Bank earnings season",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "GS says credit quality ranks near the bottom of what investors are currently debating in bank earnings reactions.",
+   "anchor": "credit quality is close to the bottom of the list on what people are debating about now",
+   "topic": "Bank earnings season",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Sentiment on this earnings season's reactions has been sharply negative, with investors latching onto negative datapoints far more than positive ones.",
+   "anchor": "The sentiment on these earnings reactions has been sharply negative, and people are latching on to negative datapoints far more intently than positive datapoints",
+   "topic": "Bank earnings season",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "GS's desk could not find a clear reason for Citigroup's underperformance the prior day, calling it narrative piling on to price action.",
+   "anchor": "this even seems to be\n\u2018narrative piling on to price action\u2019 with us struggling to even find reasons behind the underperformance in\nCitigroup yesterday",
+   "topic": "Bank earnings season",
+   "status": "level",
+   "instruments": [
+    "C"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Bank of America shares are down 5% as of send following its Q3 earnings report.",
+   "anchor": "BAC .. -5% (as of send) LINK to Ramsden/GIR first take",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Feedback summed up Bank of America's quarter as matching mid-quarter guidance on weaker trading and lack of expense offset, but even worse than indicated.",
+   "anchor": "it\u2019s what they guided to mid\nquarter in weaker trading and lack of expense offset, but even worse than what was indicated",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Bank of America stock was indicated down 8% premarket even though the company gave a better 2027 NII guide.",
+   "anchor": "Stock\nwas indicated -8% in the pre and we got a better 2027 NII guide",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Bears on Bank of America point to its 10.9% capital ratio and incoming GSIB pressure at the start of the new year leaving little excess capital.",
+   "anchor": "they are at 10.9% and we have GSIB\npressure coming at start of new year so there\u2019s not much excess capital at the moment",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "start of new year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Bears argue Bank of America may have to slow or pull back balance sheet growth going forward despite keeping a strong buyback pace in Q3.",
+   "anchor": "they kept a\nstrong pace with the buyback in 3Q but going forward may have to slow or pull back on balance sheet\ngrowth",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BAC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Progressive shares are down 6% following its earnings report.",
+   "anchor": "PGR \u2026 -6% .. LINK to Cox/GIR first take",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "PGR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Progressive's Personal Auto pricing trends worsened, with agency and direct annualized premium per policy down 5.0% and 3.6% respectively.",
+   "anchor": "worsening trends in pricing (agency/direct annualized premium per policy -5.0%/-3.6%)",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "PGR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Insurance specialists are debating whether competition from agents is already contributing to the slowdown in Progressive's Direct channel.",
+   "anchor": "slowdown in Direct (questions around whether agents already playing a\npart",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "PGR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "State Street shares are down 6% following its earnings report.",
+   "anchor": "STT .. -6% .. LINK to Blostein",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "STT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "State Street's top line missed on weaker Asset Servicing and other fees, while NII and NIM came in slightly better.",
+   "anchor": "Top line miss coming from Asset Servicing & other fees while NII & NIM was slightly better",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "STT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "State Street's implied Q4 guide represents 5% downside to GS's estimate versus the buyside expecting upside.",
+   "anchor": "the implied 4Q guide (5% downside to GS est vs buyside expecting upside)",
+   "topic": "Bank earnings season",
+   "status": "forecast",
+   "instruments": [
+    "STT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "4Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "State Street shares were up 35% year-to-date with a premium multiple versus the past 5 years heading into this earnings report.",
+   "anchor": "stock\u2019s outperformance (+35% YTD & premium multiple vs past 5 yrs heading into earnings)",
+   "topic": "Bank earnings season",
+   "status": "level",
+   "instruments": [
+    "STT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Morgan Stanley shares are down 3% following its earnings report.",
+   "anchor": "MS \u2026 -3% .. LINK to Ramsden/GIR first take",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "MS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Morgan Stanley's wealth management pretax margin missed consensus by 30 basis points.",
+   "anchor": "PT margin in wealth (30bps miss vs cons) got picked at",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "MS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "Morgan Stanley's Q3 capital markets items, including investment banking and trading, came in better than feared.",
+   "anchor": "markets items (IB, Trading) at MS was better than feared",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "MS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "BlackRock delivered a really good quarter with next to zero pushback, and the desk saw crowding at 8 out of 10.",
+   "anchor": "Really good quarter \u2013 have gotten next to zero pushback here (desk had crowding at a 8/10)",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BLK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "BlackRock's organic fee growth was 11% this quarter versus a bogey in the 8-9% range.",
+   "anchor": "organic fee growth (11% this qtr vs bogey in 8-9% range)",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BLK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS DeGrasse - Macro & Cyclicals remain in focus .. EPS Feedback .. 14 Oct 2026",
+   "claim": "BlackRock's adjusted margin rose to 47.8% from 45.9% last quarter and 44.5% the quarter before.",
+   "anchor": "margin (adj margin up to 47.8% vs 45.9% last qtr\nand 44.5% the qtr before",
+   "topic": "Bank earnings season",
+   "status": "released",
+   "instruments": [
+    "BLK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20327__gs-degrasse-macro-cyclicals-remain-in-focus-eps-feedback-14-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 26,
+  "matched": 26,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
