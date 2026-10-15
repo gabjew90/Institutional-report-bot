@@ -1,0 +1,212 @@
+{
+ "brief": "Goldman sales-trading note on 14 Oct 2026 lists four forces converging that day. Fed commentary had been mixed heading into CPI and the desk said the market was underpricing further hikes through 2027, with December hike odds at about 88%. AI funding concerns centered on the equity capital market cycle and credit and funding conditions for Neoclouds, with CoreWeave (CRWV) questions elevated. Semis lacked EPS-driven relief despite earnings beats this quarter: ASML fell 3.94% in New York, semis fell for a sixth straight session, and Mag7 positioning has crept higher even as three-month implied vols sit near multi-year lows, meaning hedging into earnings and year-end is cheap relative to the risk. Stagflationary pressures continue building, with Goldman's Stagflation Pair (GSPUSTAG) posting its largest YTD move. On the desk itself, client activity was underwhelming but anxiety was high; tech sell skew hit a four-week high, the Low Quality/Junk basket dropped 4.5% (the day's only greater-than-3-standard-deviation factor move) while the Quality Pair is up 13.6% over a month, and the SPX ex-AI basket outperformed, up 61bps, a top-five YTD move versus the index.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's desk said the market was underpricing the likelihood of more Fed hikes being priced in through 2027, with December hike odds settling at about 88% on the day.",
+   "anchor": "the market was underpricing the likelihood of more hikes being priced in through '27 (Dec hike odds settled at ~88% on the day)",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "FED",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "through 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's desk flagged AI funding concerns centered on where markets are in the equity capital market cycle.",
+   "anchor": "AI funding concerns (i.e. where we are in the equity capital market cycle)",
+   "topic": "AI infrastructure financing and cost of capital",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's desk noted a growing focus on credit markets and funding conditions for the Neoclouds, with CoreWeave (CRWV) questions elevated.",
+   "anchor": "a growing focus on credit markets/funding conditions for the Neoclouds (CRWV questions were high)",
+   "topic": "AI infrastructure financing and cost of capital",
+   "status": "level",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's desk said there has been a lack of EPS-driven relief in the AI/semis space, pointing to ASML finishing down 3.94% in New York trading.",
+   "anchor": "the lack of EPS driven relief in the space (ASML finished -3.94% in NY",
+   "topic": "AI tech selloff",
+   "status": "level",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's desk questioned whether earnings beats in the semis space will be rewarded this quarter.",
+   "anchor": "will you be rewarded for earnings beats this quarter?",
+   "topic": "AI tech selloff",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "this quarter"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Positioning within the Magnificent Seven has crept notably higher over the past few weeks, per Goldman's desk.",
+   "anchor": "positioning within Mag7 has crept notably higher over the past few weeks",
+   "topic": "AI tech selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "past few weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Three-month implied volatility for the Magnificent Seven is near multi-year lows, meaning the cost to hedge these names through earnings and year end is not high enough.",
+   "anchor": "Mag7 Implied Vol is near multi-year lows. In other words, the cost to hedge these names through earnings and Year End is NOT high enough.",
+   "topic": "AI tech selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "through earnings and Year End"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Semiconductors have fallen for six consecutive sessions, which Goldman's desk called an uncommon streak.",
+   "anchor": "Semis Red Streak Continues (6 consecutive down sessions are uncommon)",
+   "topic": "AI tech selloff",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's Stagflation Pair (GSPUSTAG) posted its largest move year-to-date, reflecting building stagflationary pressures.",
+   "anchor": "Stagflationary pressures continuing to build, with our Stagflation Pair (GSPUSTAG) having a top move YTD",
+   "topic": "Stagflation trade positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Investor activity on Goldman's desk was underwhelming on 14 October 2026, even as investor anxiety ran high based on client conversations.",
+   "anchor": "investor activity was underwhelming. However, based on our conversations, investor anxiety is high.",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's information technology sell skew hit its highest level in more than four weeks, driven by long-only and hedge fund long and short supply.",
+   "anchor": "Our info tech sell skew hit the highest in > 4 weeks (driven by LO supply + HF long & short supply).",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "in > 4 weeks"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Only one of Goldman's flagship factor baskets had a move greater than 3 standard deviations on the day, with the Low Quality/Junk basket finishing down 4.5%.",
+   "anchor": "only 1 of our flagship baskets had a >3 std dev move (Low Quality/Junk finished down 4.5%",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's Quality factor pair is up 13.6% over the past month.",
+   "anchor": "reminder our Quality Pair is now up 13.6% over the last 1 month)",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "last 1 month"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Kaplan - A few observations from today 14 Oct 2026",
+   "claim": "Goldman's SPX ex-AI basket finished the day up 61 basis points, its fifth-best move versus the S&P 500 year-to-date.",
+   "anchor": "our SPX ex. AI basket finished the day +61bps (top 5 move vs SPX YTD)",
+   "topic": "GS flow desk positioning",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "YTD"
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20333__gs-kaplan-a-few-observations-from-today-14-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 14,
+  "matched": 14,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
