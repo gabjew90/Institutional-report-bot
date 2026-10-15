@@ -1,0 +1,327 @@
+{
+  "pulse_date": "2026-10-15",
+  "window_label": "last-24h",
+  "themes": [
+    {
+      "theme": "ai tech credit risk",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 1,
+        "neutral": 20
+      },
+      "consensus_view": "Goldman Sachs and Natixis both point to stress in credit tied to AI spending, led by Oracle's default-insurance cost (CDS) sitting near record highs, while other desks only mention AI financing in passing.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs and Natixis both flag Oracle's 5-year credit default swap (the cost of insuring against its default) as elevated, and tech as weak in credit.",
+          "banks_for": [
+            "Goldman Sachs",
+            "Natixis"
+          ],
+          "evidence_quotes": [
+            "Oracle 5 year cds trades near record 261bps",
+            "with Tech clearly underperforming once again"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "core inflation drivers",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 5,
+        "skeptical": 1,
+        "neutral": 13
+      },
+      "consensus_view": "September core CPI came in above forecasts for a second month, and banks point to goods costs (tariffs, diesel and commodities), services and AI-related demand as the pressures, while the Fed is seen as facing a firmer inflation picture than expected.",
+      "facts_agreed": [
+        {
+          "claim": "September core CPI beat expectations, with the upside spread across goods and services.",
+          "banks_for": [
+            "Goldman Sachs",
+            "SEB"
+          ],
+          "evidence_quotes": [
+            "Core CPI increased by 0.33% in September, above expectations.",
+            "The surprise was broadly based for both goods and services"
+          ]
+        },
+        {
+          "claim": "Goods price gains are being pushed by input costs such as tariffs, commodities and diesel.",
+          "banks_for": [
+            "Scotiabank Economics",
+            "PNC Economics Research"
+          ],
+          "evidence_quotes": [
+            "This reflects pass through of commodities and tariffs",
+            "higher diesel costs is taking the baton from tariffs"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the core inflation trend is softening or re-accelerating",
+          "banks_for": [
+            "Natixis"
+          ],
+          "for_evidence": "September CPI Preview: Renewal of a softer trend",
+          "banks_against": [
+            "SEB"
+          ],
+          "against_evidence": "The surprise was broadly based for both goods and services"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "oil supply risk middle east",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 12
+      },
+      "consensus_view": "Only Goldman Sachs staked a view, raising its December 2026 Brent forecast because of ongoing oil supply risks, while other desks mention Middle East supply risk without taking a directional stance.",
+      "facts_agreed": [
+        {
+          "claim": "Goldman Sachs cites ongoing downside risks to oil supply as the reason it raised its year-end Brent forecast.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "given ongoing downside risks to oil supply"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "fed hike expectations",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 7,
+        "skeptical": 1,
+        "neutral": 10
+      },
+      "consensus_view": "Banks expect the Fed to hike again in December, but they split on whether it hikes on October 28 after the hot September core CPI, with Scotiabank and PNC keeping it live and SEB and Raymond James leaning toward a hold.",
+      "facts_agreed": [
+        {
+          "claim": "Scotiabank and PNC say the hot September core CPI print keeps an October 28 hike in play, with market odds near 50%.",
+          "banks_for": [
+            "Scotiabank Economics",
+            "PNC Economics Research"
+          ],
+          "evidence_quotes": [
+            "I wouldn't rule out another hike on October 28th",
+            "October rate hike odds jumped to just over 50% on the news"
+          ]
+        },
+        {
+          "claim": "Goldman Sachs and TS Lombard both expect at least one more Fed hike in December.",
+          "banks_for": [
+            "Goldman Sachs",
+            "TS Lombard"
+          ],
+          "evidence_quotes": [
+            "We expect the Fed to deliver one more 25bp hike in December",
+            "GIR continues to expect that the Fed will deliver a second hike in December",
+            "the probability of a 50BP hike in Dec is not 0"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the Fed hikes at the October 27-28 meeting",
+          "banks_for": [
+            "Scotiabank Economics"
+          ],
+          "for_evidence": "I wouldn't rule out another hike on October 28th",
+          "banks_against": [
+            "SEB"
+          ],
+          "against_evidence": "Several Fed members have said that the Fed can wait before hiking again"
+        },
+        {
+          "claim": "Size of the December hike (50bp or 25bp)",
+          "banks_for": [
+            "TS Lombard"
+          ],
+          "for_evidence": "the probability of a 50BP hike in Dec is not 0",
+          "banks_against": [
+            "Goldman Sachs"
+          ],
+          "against_evidence": "We expect the Fed to deliver one more 25bp hike in December"
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "chinese hyperscalers",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 0,
+        "neutral": 10
+      },
+      "consensus_view": "Banks mention Chinese hyperscalers mainly as part of the AI spending and earnings story, and only UBS has taken a directional view, saying the risk is skewed to the upside.",
+      "facts_agreed": [
+        {
+          "claim": "Several desks reference Chinese hyperscalers, their capex cycle and their earnings turn as a live subject without staking a directional view.",
+          "banks_for": [
+            "multiple desks (unattributed)"
+          ],
+          "evidence_quotes": [
+            "China tech capex cycle",
+            "Chinese hyperscalers earnings inflection",
+            "Hyperscaler cloud growth"
+          ]
+        },
+        {
+          "claim": "UBS sees the balance of risk skewed to the upside for Chinese hyperscalers, with fundamentals holding up better than sentiment implies.",
+          "banks_for": [
+            "UBS"
+          ],
+          "evidence_quotes": [
+            "we believe the balance of risk as skewed to the upside"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "ai trade and semiconductor weakness",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 3,
+        "skeptical": 4,
+        "neutral": 5
+      },
+      "consensus_view": "Chip and memory stocks have sold off for several days on worries about how the AI buildout gets paid for, while the equipment makers say customer demand still exceeds what they can supply.",
+      "facts_agreed": [
+        {
+          "claim": "Semiconductor stocks have fallen for several sessions in a row.",
+          "banks_for": [
+            "Bank J. Safra Sarasin",
+            "Deutsche Bank"
+          ],
+          "evidence_quotes": [
+            "Semiconductors and memory came under continued pressure, following Monday's fourth straight decline for the SOX",
+            "Philly semiconductor index (-0.23%) posting a 5th consecutive decline"
+          ]
+        },
+        {
+          "claim": "Doubts about financing the AI buildout are weighing on AI-linked stocks.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "what the credit markets are saying about the ability to continue to finance the AI trade",
+            "the AI trade has come under pressure in the repeat funders"
+          ]
+        },
+        {
+          "claim": "Chip equipment makers report demand above their capacity.",
+          "banks_for": [
+            "Goldman Sachs"
+          ],
+          "evidence_quotes": [
+            "not enough to fulfill the customer demand",
+            "we cannot meet the demand we have from customers"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether the chip selloff reflects a weakening upcycle or only a sentiment pullback",
+          "banks_for": [
+            "UBS"
+          ],
+          "for_evidence": "we view the duration and strength of the semiconductor upcycle as the more important driver",
+          "banks_against": [
+            "The Market Ear"
+          ],
+          "against_evidence": "When one of the generals of the AI trade starts falling, the rest of the army should pay attention."
+        }
+      ],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "french fiscal and debt concerns",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 0,
+        "skeptical": 0,
+        "neutral": 8
+      },
+      "consensus_view": "Banks across eight desks name France's public finances, borrowing costs and 2027 budget as a live concern, but none has staked a directional view yet.",
+      "facts_agreed": [
+        {
+          "claim": "Eight sources flag French public finances, government borrowing costs and the 2027 budget as a live subject, without taking a directional stance.",
+          "banks_for": [
+            "ZeroHedge",
+            "Bank J. Safra Sarasin",
+            "Schroders",
+            "The Market Ear",
+            "Natixis",
+            "SEB",
+            "Goldman Sachs",
+            "BNP Paribas"
+          ],
+          "evidence_quotes": [
+            "France fiscal and debt sustainability",
+            "French fiscal sustainability and 2027 election",
+            "France government borrowing costs",
+            "French 2027 draft budget revenue debate",
+            "French 2027 budget fiscal consolidation"
+          ]
+        }
+      ],
+      "facts_contested": [],
+      "falsifiable_predictions": []
+    },
+    {
+      "theme": "market concentration and valuation",
+      "selected": true,
+      "stance_counts": {
+        "supportive": 1,
+        "skeptical": 3,
+        "neutral": 5
+      },
+      "consensus_view": "Most desks see US stocks as unusually top-heavy and expensive, with a handful of giant companies carrying the index, while one Goldman view argues returns inside the market are better than the narrow headline suggests.",
+      "facts_agreed": [
+        {
+          "claim": "Banks agree the US equity market is unusually concentrated in a few large stocks and that valuations are stretched.",
+          "banks_for": [
+            "Goldman Sachs",
+            "ZeroHedge",
+            "Redwheel"
+          ],
+          "evidence_quotes": [
+            "5 companies carry as much benchmark weight and value as 434 constituents",
+            "60% of S&P 500 stocks are down 20% or more from their all-time highs",
+            "US equity valuations today are abnormally elevated, sitting well above the Nifty Fifty era"
+          ]
+        }
+      ],
+      "facts_contested": [
+        {
+          "claim": "Whether returns beneath the narrow index are healthy or weak",
+          "banks_for": [
+            "ZeroHedge , summarizing Goldman Sachs"
+          ],
+          "for_evidence": "returns within the market are better than many seem to be giving credit for",
+          "banks_against": [
+            "ZeroHedge"
+          ],
+          "against_evidence": "60% of S&P 500 stocks are down 20% or more from their all-time highs"
+        }
+      ],
+      "falsifiable_predictions": []
+    }
+  ],
+  "discarded_themes": []
+}
