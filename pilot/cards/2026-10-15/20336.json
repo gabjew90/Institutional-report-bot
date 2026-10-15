@@ -1,0 +1,648 @@
+{
+ "brief": "Goldman Sachs' Industrials & Materials desk opens with markets color (ASML's outlook boost lifts tech futures; crude bid up on Middle East attacks; IEA sees diesel constrained into 2027) before three analytical threads. First, China's September CPI (+0.9% yoy) and PPI (+5.0% yoy) beats drive GS to revise 2026/27 PPI forecasts up and CPI forecasts down, while China's trade surplus hit a record $133.5bn on broad-based export and import growth. Second, GS previews US September CPI, expecting core +0.24% (above 0.2% consensus) on an autos pickup and firmer airfares, with benign shelter keeping the print from running hotter, and expects the pace to slow into Q4 on shutdown-related distortions and fading tariff effects. Third, AZZ beat Q2 estimates on EPS, revenue and EBITDA and raised full-year guidance. Separately, GIR upgrades TT to Buy and downgrades LII/CARR to Neutral, arguing Applied HVAC's outperformance continues on stronger estimate revisions and AI/data-center-driven backlog, while Resi HVAC faces tougher competition. A pickup-truck note argues GM's 2026 Sierra/Silverado refresh should lift sales for 2-3 years based on prior Ford/GM/Stellantis refresh cycles, though GM guides volumes flattish through 2027 before the benefit shows more in 2028.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "China's headline CPI inflation rose to +0.9% year-over-year in September from +0.8% year-over-year in August.",
+   "anchor": "China's headline CPI inflation edged up to +0.9% yoy in September from +0.8% yoy in August",
+   "topic": "China inflation and trade data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "China's headline PPI inflation rose to +5.0% year-over-year in September from +3.8% year-over-year in August.",
+   "anchor": "Headline PPI inflation rose to +5.0% yoy in September from +3.8% yoy in August",
+   "topic": "China inflation and trade data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs is revising up its 2026/27 full-year China PPI inflation forecasts to 2.8%/0.3% from 2.0%/0.0% previously.",
+   "anchor": "forecasts, we are revising up our 2026/27 full-year PPI inflation forecasts to 2.8%/0.3% (vs. 2.0%/0.0%",
+   "topic": "China inflation and trade data",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026/2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs is revising down its 2026/27 full-year China CPI inflation forecasts to 0.8%/0.6% from 1.0%/1.0% previously, driven by weak domestic demand.",
+   "anchor": "to 0.8%/0.6% (vs. 1.0%/1.0% previously), driven by weak domestic demand and our expectations of",
+   "topic": "China inflation and trade data",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026/2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "China's September trade growth accelerated and came in significantly above consensus, with exports up 36.3% year-over-year and imports up 31.0% year-over-year.",
+   "anchor": "China's trade growth accelerated in September and came in significantly above consensus expectations (exports: +36.3% yoy, imports: +31.0% yoy).",
+   "topic": "China inflation and trade data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "China's trade surplus widened to a record US$133.5bn in September from US$119.1bn in August, the largest monthly surplus on record.",
+   "anchor": "Overall, the trade surplus widened to US$133.5bn (NSA) in September from US$119.1bn in August, marking the largest monthly surplus on record.",
+   "topic": "China inflation and trade data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects a 0.24% increase in September core CPI, above the 0.2% consensus estimate.",
+   "anchor": "We expect a 0.24% increase in September core CPI (vs.",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects September core CPI at +2.46% year-over-year, below the +2.5% consensus estimate.",
+   "anchor": "+0.2% consensus), corresponding to a year-over-year rate of +2.46% (vs. +2.5% consensus). We expect a",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects a 0.59% increase in September headline CPI, below the 0.6% consensus estimate, reflecting higher energy prices.",
+   "anchor": "0.59% increase in headline CPI (vs. +0.6% consensus), reflecting higher energy prices. Our forecast is",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs' September CPI forecast is consistent with a 0.20% increase in core PCE.",
+   "anchor": "consistent with a slightly smaller 0.20% increase in core PCE in September. We highlight three key",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PCE",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects a pickup in September autos inflation, with used car prices up 0.5% and new car prices up 0.2%.",
+   "anchor": "reflecting a 0.5% increase in used car prices, a 0.2% increase in new car prices, and a 0.2% increase in the",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs forecasts benign September shelter inflation, with a 0.20% increase in the OER category and a 0.17% increase in the rent category.",
+   "anchor": "the shelter categories\u2014a 0.20% increase in the OER category and a 0.17% increase in the rent category",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects a 3.0% increase in September airfares, reflecting higher jet fuel prices.",
+   "anchor": "Third, we expect a 3.0% increase in airfares, reflecting the impact of the further",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects monthly core CPI to increase around 0.2% in October, reflecting seasonal-factor distortions from last year's government shutdown.",
+   "anchor": "0.2% in October\u2014reflecting upward pressure from distortions to the seasonal factors caused by missing",
+   "topic": "CPI inflation surprise and Fed pricing",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "AZZ beat fiscal Q2 EPS estimates, reporting $2.00 versus $1.86 expected.",
+   "anchor": "AZZ Q2 beat EPS $2.00 vs. $1.86 on revenue that came",
+   "topic": "AZZ earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "AZZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q2 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "AZZ's fiscal Q2 revenue beat at $487mm versus $463mm expected, with Metal Coatings segment revenue up 23% and Precoat Metals up 12%.",
+   "anchor": "in ahead $487mm vs. $463mm with Metal Coatings up 23%, Precoat Metals up 12%. EBITDA beat",
+   "topic": "AZZ earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "AZZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q2 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "AZZ's fiscal Q2 EBITDA beat at $111mm versus $104mm expected, and the company repurchased $20mm of stock at an average price of $147 per share.",
+   "anchor": "$111mm vs. $104mm. Company repurchased $20mm of stock at $147 per share average.",
+   "topic": "AZZ earnings beat and guidance raise",
+   "status": "released",
+   "instruments": [
+    "AZZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal Q2 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "AZZ raised its fiscal 2027 EPS guidance to $7-7.30 from $6.75-7.15 previously, on revenue guidance of $1.825-1.875bn versus $1.8-1.85bn prior.",
+   "anchor": "February 2027 guidance moves up $7-7.30 vs. $6.75-7.15 EPS prior on revenue $1.825-1.875bn vs. $1.8-",
+   "topic": "AZZ earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "AZZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "AZZ raised its fiscal 2027 EBITDA guidance to $380-420mm from $375-415mm previously.",
+   "anchor": "EBITDA $380-420mm a touch higher than $375-415mm before.",
+   "topic": "AZZ earnings beat and guidance raise",
+   "status": "forecast",
+   "instruments": [
+    "AZZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "fiscal 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "AZZ's options market was pricing a 5% implied move for the stock around its fiscal Q2 earnings call.",
+   "anchor": "Call at 11am. 5% implied move.",
+   "topic": "AZZ earnings beat and guidance raise",
+   "status": "level",
+   "instruments": [
+    "AZZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "fiscal Q2 earnings call"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs upgraded TT to Buy.",
+   "anchor": "GIR \u2013 Joe out upgrading TT to Buy, LII and CARR downgrade to Neutral",
+   "topic": "Applied vs Resi HVAC positioning",
+   "status": "target",
+   "instruments": [
+    "TT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs downgraded LII and CARR to Neutral.",
+   "anchor": "GIR \u2013 Joe out upgrading TT to Buy, LII and CARR downgrade to Neutral",
+   "topic": "Applied vs Resi HVAC positioning",
+   "status": "target",
+   "instruments": [
+    "LII",
+    "CARR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "next 12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Over the past year, Applied HVAC (JCI, TT) has materially outperformed Resi HVAC (LII, CARR), with JCI up 47% and LII down 33%.",
+   "anchor": "materially outperformed Resi HVAC (LII, CARR) with dispersion being very wide (JCI: +47%, LII: -33%).",
+   "topic": "Applied vs Resi HVAC positioning",
+   "status": "released",
+   "instruments": [
+    "JCI",
+    "TT",
+    "LII",
+    "CARR"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "past year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects positive FY27 estimate revisions for JCI (+6% versus consensus) and TT (+4% versus consensus).",
+   "anchor": "(GS: +6% vs. consensus) and TT (GS: +4% vs. consensus), while",
+   "topic": "Applied vs Resi HVAC positioning",
+   "status": "forecast",
+   "instruments": [
+    "JCI",
+    "TT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs' FY27 estimates for LII (-4% versus consensus) and CARR (-3% versus consensus) are below consensus.",
+   "anchor": "our estimates for LII (GS: -4% vs. consensus) and CARR (GS: -3% vs. consensus) are below.",
+   "topic": "Applied vs Resi HVAC positioning",
+   "status": "forecast",
+   "instruments": [
+    "LII",
+    "CARR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs says the structure of the Resi HVAC market (LII, CARR) could be changing, with competition increasing and pricing becoming harder to achieve.",
+   "anchor": "Second, the structure of the Resi HVAC market could be changing with competition increasing and pricing harder to come by.",
+   "topic": "Applied vs Resi HVAC positioning",
+   "status": "forecast",
+   "instruments": [
+    "LII",
+    "CARR"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs expects demand for Applied HVAC (JCI, TT) to remain robust despite backlog rising about 50% on average this year for JCI and TT.",
+   "anchor": "demand for Applied HVAC to remain robust despite backlog rising ~50% on average this year for JCI and TT as the longer-cycle parts",
+   "topic": "Applied vs Resi HVAC positioning",
+   "status": "forecast",
+   "instruments": [
+    "JCI",
+    "TT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "this year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs says OEMs typically see a 2-3 year period of better sales after a refresh or new generation of trucks launches, absent large macro or cyclical events.",
+   "anchor": "1) OEMs typically see a 2-3 year period of better sales after a refresh/new generation of trucks is launched, absent large macro/cyclical events",
+   "topic": "Pickup truck refresh cycle and OEM earnings",
+   "status": "forecast",
+   "instruments": [
+    "F",
+    "GM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2-3 years post-refresh"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs says full-size pickups likely drive a significant portion of EBIT for Ford and GM.",
+   "anchor": "3) full-size pickups likely drive a significant portion of EBIT for F and GM.",
+   "topic": "Pickup truck refresh cycle and OEM earnings",
+   "status": "forecast",
+   "instruments": [
+    "F",
+    "GM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs: refresh cycles have historically driven higher sales for Ford, GM, and Stellantis for 2-3 years following a refresh.",
+   "anchor": "Refresh cycles drive higher sales for 2-3 years. We analyzed a key truck refresh cycle for each of Ford",
+   "topic": "Pickup truck refresh cycle and OEM earnings",
+   "status": "released",
+   "instruments": [
+    "F",
+    "GM",
+    "STLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "historical"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs: the last refresh cycles for Ford, GM, and Stellantis were in 2021, 2019, and 2019 respectively.",
+   "anchor": "For context, the last refresh cycles for Ford, GM, and Stellantis were in 2021, 2019, and 2019 respectively.",
+   "topic": "Pickup truck refresh cycle and OEM earnings",
+   "status": "released",
+   "instruments": [
+    "F",
+    "GM",
+    "STLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "historical"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "GM is launching its next-generation Sierra and Silverado later in 2026 as the MY27 model year.",
+   "anchor": "In terms of upcoming refreshes, GM is launching its next-gen Sierra and Silverado later this year (2026 as MY27),",
+   "topic": "Pickup truck refresh cycle and OEM earnings",
+   "status": "forecast",
+   "instruments": [
+    "GM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026/MY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Ford has committed to launching a refresh of its F-series by 2029, and Stellantis' Ram had its last refresh 10 years apart, implying a 2029 refresh for the light-duty model.",
+   "anchor": "Ford has committed to launching a refresh of its F-series by 2029, and Stellantis (Ram) had its last refresh 10 years apart",
+   "topic": "Pickup truck refresh cycle and OEM earnings",
+   "status": "forecast",
+   "instruments": [
+    "F",
+    "STLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2029"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "GM has said truck volumes from the back half of 2027 to the end of 2027 could be flattish as it ramps supply of new variants, with the refresh more material to sales in 2028.",
+   "anchor": "truck volumes into the back half of 2027 to the end of 2027 could be flattish as it ramps supply of the new variants, but",
+   "topic": "Pickup truck refresh cycle and OEM earnings",
+   "status": "forecast",
+   "instruments": [
+    "GM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "H2 2027-end 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Crude oil was bid up 100bps this morning, with Brent at $106 and WTI at $95, after a flare-up in Middle East attacks.",
+   "anchor": "In commodities, crude bid up 100bps with Brent $106 and WTI $95 after a flare-up in Middle East attacks.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "The IEA warned that diesel will remain constrained well into 2027.",
+   "anchor": "IEA warns that diesel will remain constrained well into 2027.",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "into 2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "ASML boosted its outlook and is searching for more ways to produce chip-making machines to meet demand.",
+   "anchor": "after ASML boosted its outlook and the company is searching for more ways to products chip-making",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "ASML"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "SAIC disclosed a CFO transition, naming Prabu Natarajan permanent EVP of the Civilian Business Group after he served as interim lead for several months.",
+   "anchor": "SAIC discloses CFO transition. Prabu Natarajan has been named permanent EVP of the Civilian Business Group after serving as interim lead of the past several",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SAIC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Goldman Sachs notes SAIC's incoming CFO move is somewhat surprising, going from a $70bn market-cap company to a $6bn one.",
+   "anchor": "assume the role in early December. Somewhat surprising move from $70bn market to $6bn.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "SAIC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "RTX was awarded a USAF contract worth up to $8bn.",
+   "anchor": "RTX awarded max $8bn USAF contract.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "RTX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "The 10-year Treasury yield continued its modest grind lower, last at 5.19%.",
+   "anchor": "10-year continues its modest grind lower 5.19% last, dollar steady",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "The dollar was steady, with the DXY near $102.",
+   "anchor": "dollar steady DXY $102 and Bitcoin down a touch to $83k.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials CPI HVAC changes pickup analysis 14 Oct 2026",
+   "claim": "Bitcoin ticked down to around $83k.",
+   "anchor": "dollar steady DXY $102 and Bitcoin down a touch to $83k.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-15/20336__gs-novak-gs-u-s-industrials-materials-cpi-hvac-changes-picku.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 44,
+  "matched": 43,
+  "failed": 1,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 9,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 1,
+  "needs_reask": false
+ }
+}
