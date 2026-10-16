@@ -1225,3 +1225,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **prompt-session** — Data-center power demand dropped although the coverage block says it must pair with AI capex when that is the primary slot. DRAFT NOTES do not explain the omission.
 - **prompt-session** — "Banks split on October" brief lost its named camps in EDIT. The headline promises a split and the body names SEB against "two desks".
 - **observation** — Omnipulse fell back to classic again (no file after 600s).
+
+## 2026-10-16
+- **observation** — Light-pulse day (no new bank research, 96h window). No STEP 7 self-review file exists for this run.
+- **deterministic-fixable** — First adversarial pass raised 4 hard findings because "checker lacked research context"; the raw first-pass verdict is not archived, so the series only keeps the recheck. Archive the first-pass file and give the checker the research context on light days.
+- **prompt-session** — RECAP says core retail sales rose 0.9% "after +1.2% the month before"; 1.2% is the headline prior, core prior was 1.4%. Also "about twenty minutes into the session" at 14:09Z (39 minutes after the open).
+- **prompt-session** — Goldman RSP idea fused with the separate "favors October 30 expiry for upside calls" statement ("favors owning $RSP ... through the October 30 options expiry"). Second consecutive day (see 10-15). Soft overstated-claim should trigger repair.
+- **prompt-session** — RECAP omits the CoreWeave sell-off that the Finnhub/CNBC/Reuters feed names as the morning's tech driver, and the Iran strike headline.
+- **deterministic-fixable** — Context dump written 15:29Z, 80 minutes after the pulse with a later market snapshot; live RECAP figures unauditable (seventh day running). Series gaps: no pulse or verdict for 10-14, no verdict for 10-12.
