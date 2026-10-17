@@ -1,0 +1,224 @@
+ 
+"The Nightmare Scenario": MOVE Creator Bassman 
+Warns The 20Y At 6% Could Unleash "Convexity 
+Vortex" 
+ 
+BY TYLER DURDEN 
+WEDNESDAY, OCT 14, 2026 - 11:44 PM 
+For the first time since early 2007, the plain-vanilla Treasury bond future is behaving like a 
+mortgage bond. 
+That is the warning from Harley Bassman, creator of the famous MOVE index of bond volatility 
+and the bond market's resident "Convexity Maven," who in his latest letter, "A Fat Cat in a Small 
+Door," argues that the nearly $200 billion CBOT bond contract has become "significantly 
+Negatively Convex," and that this little-understood piece of plumbing "has likely been a 
+contributor to the recent rapid increase in interest rates as so many Fat Bond Traders 
+simultaneously try to squeeze through a Small Liquidity Door." 
+And the door gets a lot smaller if the 20Y crosses 6%: 
+With the 20yr rate currently near 5.68% (102.25), the CTD has shifted to a 13.24 Duration bond, 
+fully 20% longer than only a few weeks ago. This means that portfolio managers who seek to 
+maintain a certain risk level need to shed (or hedge) 20% of their fixed-income risk. 
+ 
+The nightmare scenario would be the 20yr rate crossing 6.0% and the CTD fully extending... 
+with a Duration exceeding 17. 
+ 
+Back of the envelope, such a delivery switch would be equivalent to the Treasury auctioning 
+$110bn 20yr bonds over the course of four months. 
+In other words, a 6% handle on the 20Y could force the futures market to manufacture the 
+equivalent of $110 billion in new long-bond supply, right as Scott Bessent is (according to Citi) 
+getting ready to sell fewer 20s - or even cancel the tenor outright -  because nobody wants the 
+ones he's already selling. 
+
+ 
+There are signs: recall that last month's 20Y auction was a disaster: it priced at 5.420%, the 
+highest yield since the tenor was reintroduced in 2020, tailed by 2.0bps, and saw Indirects 
+plunge to 52.5%, the lowest on record. We put out this chart at the time: 
+ 
+Below we walk readers through how a "risk-free" futures contract turned into an MBS-style 
+convexity trap, look at CFTC and Bloomberg data suggesting the forced selling is already 
+underway, why Goldman thinks the worst of it is over, and why we think the next 35bps could do 
+more damage than the last 70. 
+(As an aside, Bassman himself warns that the first half of his note is "super nerdy." We'll try to 
+keep the nerd quotient manageable.) 
+How A Boring Contract Becomes A Mortgage Bond 
+Start with the mechanics. The CBOT bond contract was designed to accept a whole basket of 
+deliverable Treasuries: for the December 2026 contract, 59 eligible issues totaling $2.712 
+trillion, maturing between 15 and 25 years out (2041 to 2051). To make bonds with different 
+coupons and maturities roughly equivalent, the exchange assigns each one a "Conversion 
+Factor," and the short gets paid the futures price times that factor when delivering. 
+Here is the catch, per Bassman: the conversion factors come from "a fixed two-factor matrix of 
+Coupon and Time to Maturity - irrespective of the Yield Level." And yield level is precisely what 
+
+ 
+creates convexity in a bond. Here is the conversion table for the December basket (via the 
+Convexity Maven's note): 
+ 
+Because the contract is stipulated as a 6% coupon bond, which bond is "cheapest to deliver" 
+(CTD) depends on where rates sit relative to 6%: 
+●​ When the 20Y yield is below 6%, the CTD is one of the shortest bonds in the basket. 
+●​ When the 20Y yield is above 6%, the CTD becomes one of the longest. 
+For most of the period since late 2008, that was a non-issue: the 20Y sat comfortably below 6%, 
+the CTD was "mostly certain," and the contract effectively traded like a single bond. As the 20Y 
+chart Bassman includes (Bloomberg data) shows, that era is over: 
+
+ 
+ 
+The Delivery Option Wakes Up 
+"After nearly twenty years, it is back to 'fun times' for Wall Street's Bond trading," Bassman, 
+once a bond trading icon on the Merill bond floor, writes with what we assume is a straight face. 
+The short side of the futures contract owns the delivery option, i.e., the right to deliver any bond 
+in the basket. As long as the contract traded above 110, that option was worth little. Once it 
+dipped below that level, the option came alive, and the long side "suddenly does not know their 
+risk exposure to interest rate changes." Worse, the fixed conversion table "creates significant 
+Negative Convexity for the futures contract once the Delivery Option becomes 'live'." 
+Here is the US bond future since early 2024 (again via Bassman, Bloomberg data). Note the 
+waterfall since the summer: 
+
+ 
+ 
+The progression has been swift: 
+●​ Early July: with the 20Y near 5% and the contract at 111.26, the CTD was the T 4¾ 
+11/15/43, with a duration of 11.03. 
+●​ Near 106.78: the CTD shifted to the T 4¾ 02/15/45, duration 11.63. "A bit longer, but still 
+manageable." 
+●​ Now (102.25, 20Y near 5.68%): the CTD is the T 2½ 02/15/45, duration 13.24, fully 20% 
+longer than a few weeks ago. 
+Bassman's scenario grid shows what happens next. The column to watch is "up 35bp," which 
+takes the 20Y to 6.03%: 
+
+ 
+ 
+We rebuilt the duration column as a chart, because the jump speaks for itself: 
+ 
+Put differently, the last 70bps of selloff (from 4.98% to 5.68%) added 2.2 years of duration to the 
+contract. The next 35bps would add 3.6 years, as the CTD jumps to the T 1⅝ 11/15/50, and 
+another 35bps gets you to 17.47 years via the T 1⅜ 08/15/50. 
+
+ 
+Some napkin math on Bassman's $110 billion: spread over four months, that's about $27.5 
+billion a month of 20Y-equivalent selling. With regular 20Y auctions running at roughly $13-16 
+billion a month, that is like nearly tripling the size of every 20Y auction for four months straight. 
+For a tenor that already can't find buyers. (Approximate, but you get the idea.) 
+"Always Trading The Wrong Way" 
+Bassman's definition of convexity is "unbalanced leverage." A bond that goes up 10 points but 
+down only 7 for an equal rate move has positive convexity, and investors should accept a lower 
+yield for it. A bond that goes up 6 and down 12 is negatively convex, and buyers should demand 
+more. That is why MBS trade 75bp to 100bp over 10Y Treasuries, and why we have been 
+warning about the mortgage market's own convexity vortex since October 2022 (and why, back 
+in June, we noted that AI is reviving the bond market's volatility machine, with Bassman's help). 
+The current CTD now has the same lopsided profile: a 70bp rally shortens its duration to 11.03, 
+while a 70bp selloff extends it to 17.47. That's 2.2 years of downside in duration versus 4.2 
+years of upside, in Treasury futures of all things. Bassman again: 
+When near a CTD shift, the bond contract will go down faster and up slower; and portfolio 
+managers who want to maintain a risk exposure need to buy bonds as prices rise and sell 
+bonds as prices fall. Always trading the wrong way. 
+ 
+Since these are super-safe risk-free US Treasury bond futures; it is possible buyers did not fully 
+appreciate this challenging risk profile... 
+ 
+It is important to note that Negative Convexity is often pro-cyclical. Here, as bond prices decline 
+the CTD switches to a longer Duration bond. Ensuing hedge selling pushes rates further and 
+prompts another CTD shift to an even longer Duration bond. Lather, Rinse, Repeat. 
+Which brings us to the "slow-footed risk managers" Bassman suspects are behind the "swift 
+increase" in yields, "a notion supported by the significant decline in CFTC reported positioning." 
+The data back him up. As Bloomberg's Edward Bolingbroke reported Friday, money managers 
+shrank their bullish position in ultra-long bond futures by about $27 million per basis point of risk 
+in the two weeks ending Oct. 6, equivalent to roughly $38 billion worth of the current 10-year 
+note. That is "forced selling from asset managers, whose portfolio duration had extended due to 
+mechanics around the underlying securities involved in cheapest-to-deliver bonds." Asset 
+managers' net long in the ultra is now the smallest since September 2025: 
+
+ 
+ 
+Meanwhile, open interest in the ultra-long contract fell for seven straight sessions, a total of 
+almost $20 million per basis point in risk, while yields rose. Translation: longs heading for the 
+exit. 
+ 
+
+ 
+Goldman's futures strats saw the same thing from the other side. In Friday's US Equities Weekly 
+Rundown (available to pro subs), the desk flagged that institutional shorts in the long bond "had 
+risen sharply since mid-September" 
+ 
+And Goldman's broader gauge of real money duration exposure has slid to a -2 score, "an 
+increasing underweight." Plenty of fat cats have already tried the door. 
+ 
+Source: Goldman 
+
+ 
+Goldman: The Vortex Has (Mostly) Spun Itself Out 
+Not everyone thinks the worst is ahead. In last night's Global Markets Daily, "The Factors 
+Behind the Rise in US Yields" (also available to pro subs), Goldman rates strategist William 
+Marshall agrees that convexity has been a big part of the story, but argues the amplifier is 
+mostly spent: 
+Negative convexity dynamics related to MBS and Treasury futures have likely amplified moves 
+over the last month but should be a much smaller factor in further selloffs. 
+Goldman estimates roughly $60 billion in 10-year-equivalent MBS hedging flows since early 
+September, plus another $10-15 billion from asset managers adjusting for CTD switches in 
+futures. But "index-level MBS convexity is now about zero and CTD-switch risk is no longer 
+clearly asymmetric to higher yields," per the bank's morning summary of the note, which is one 
+reason Goldman says it's time to get more bullish on duration. 
+We'd also note that Bassman's grid points the other way: a 35bp rally from here shortens the 
+contract's duration by 1.6 years (to 11.63), while a 35bp selloff lengthens it by 3.6 years (to 
+16.84). If that isn't asymmetric, we'd hate to see what is. The charitable reading of Goldman's 
+view is that most of the hedging has already been done, and the CFTC data suggest a lot of it 
+has. The uncharitable reading is that the hedgers who are left are the slow-footed ones. 
+Then There Are The Basis Traders 
+Bassman's final technical warning may be the most important one: 
+Finally, the professional "basis traders" at the large Hedge Funds may soon closeout their 
+positions by selling US Treasuries, adding additional sell pressure. 
+Regular readers know we've been fixated on this one for years, and most recently last month 
+when we warned that at about $830 billion as of September 2025 (vs $430 billion on the eve of 
+the March 2020 seizure), the basis trade is "the largest single driver of hedge-fund demand for 
+Treasuries," and that "higher bond volatility is toxic for the basis trade."White put the line in the 
+sand at 5.25%-5.50% on yields, above which stocks and bonds start falling together. The 10Y 
+has spent most of the past two weeks above 5.25%. 
+Recall what happened the last time funds stepped back from the trade in 2020: an air pocket in 
+Treasury liquidity that forced the Fed to expand its balance sheet by $3 trillion. And as we laid 
+out in our primer on the biggest players in the $13.5 trillion repo market, the leverage behind 
+those trades hasn't gone anywhere. 
+
+ 
+Putting it together, here is the "nightmare scenario" sequence: the 20Y crosses 6%, the CTD 
+extends, asset managers sell futures to cut duration, futures cheapen versus cash, and the 
+basis traders on the other side, who are long cash bonds against those futures, get squeezed 
+out and sell their cash Treasuries too. Two sets of sellers, one small door. 
+Bassman's Real Worry: Trust 
+Bassman closes with the macro, and here he sounds a lot like Rabobank which today pinned 
+the 10Y's move above 5% on a debt-driven term premium. Repeating his September "In Fed 
+We Trust" thesis, Bassman says the bond market has a trust problem: 
+A Ten-year (inflation protected TIPs) Real Rate of 2.90% is the market waving the "white flag" 
+that we have a Fiscal problem, not a Monetary problem. 
+His fix for the 6.2% deficit: a defined medium-term path including i) lifting the $184,500 cap on 
+the Social Security tax, ii) raising the retirement age, iii) means testing Social Security and 
+Medicare, iv) eliminating the "step up basis" for the estate tax, v) reviving some version of 
+Simpson-Bowles, and vi) passing "middle path" immigration reform "as proof that our political 
+class can still function." 
+Unfortunately none of that has a snowball's chance in hell of happening - until there is a real 
+bond market crisis - but we admire his optimism. We'd put the odds of any of those passing 
+before the 20Y hits 6% at roughly the odds of a fat cat fitting through a cat flap. 
+Bottom Line 
+The good news is that there's still a cushion. The 20Y closed at 5.65% on Friday, per Treasury 
+data, after peaking at 5.71% on Oct. 7, and today's post-holiday rally (the 10Y slid as low as 
+5.18%, before reversing most of the move) buys some more room ahead of tomorrow's CPI. 
+The bad news is that the cushion is only about 30-35bps wide, and the 20Y has covered that 
+distance in a couple of weeks before. Bassman's verdict: 
+One should consider 6% on the UST 20yr rate to be a bubbling Convexity Vortex... The last time 
+the 20yr rate breached 6% was November 1999 - Good times. 
+We side with Bassman over Goldman. Goldman's case for duration (cheap valuations, 
+underweight positioning, "diminished" technical risk) can deliver a rally, and a soft CPI may well 
+deliver one this week. But the futures math is simple arithmetic: the contract's duration jumps by 
+more over the next 35bps than it did over the last 70, the CFTC data show asset managers are 
+already selling into it, and the basis traders on the other side are one vol spike away from 
+
+ 
+joining them. Add a Treasury that can't count on Japan, a European bond market going full 
+PIIGS and a 20Y auction that already flirted with failure, and 6% looks a lot closer than 35bps. 
+As for Washington's response, Citi expects Bessent to trim 20Y auctions by $3 billion a pop next 
+month. The bond future, on the other hand, can add $110 billion of 20Y-equivalent supply in four 
+months without asking anyone's permission. 
+And as for November 1999: good times indeed. Four months later the Nasdaq crashed.  
+Much more in the full Goldman "The Factors Behind the Rise in US Yields" and the Goldman 
+"US Equities Weekly Rundown" notes, both available to pro subs. Bassman's full letter is here. 
+ 
+ 
+ 
