@@ -1,0 +1,1600 @@
+M
+North America Insight
+Autos & Shared Mobility / Utilities & Clean Tech / 
+Energy / Industrials
+Living on the Edge: The Rise of 
+Distributed Power
+The AI buildout is colliding with a grid that cannot deliver power 
+fast enough. As inference moves compute closer to users, we 
+expect behind-the-meter power and storage to become core 
+infrastructure – a durable architectural shift with spillover from 
+data centers into C&I. 
+Morgan Stanley & Co. LLC
+Andrew S Percoco
+Equity Analyst
+ Andrew.Percoco@morganstanley.com  
+  +1 212 296-4322 
+David Arcaro, CFA
+Equity Analyst
+ David.Arcaro@morganstanley.com  
+  +1 212 761-1817 
+Stephen C Byrd
+Equity Analyst
+ Stephen.Byrd@morganstanley.com  
+  +1 212 761-3865 
+Adam Jonas, CFA
+Equity Analyst
+ Adam.Jonas@morganstanley.com  
+  +1 212 761-1726 
+Devin McDermott
+Equity Analyst and Commodities Strategist
+ Devin.McDermott@morganstanley.com  
+  +1 212 761-1125 
+Kristine T Liwag
+Equity Analyst
+ Kristine.Liwag@morganstanley.com  
+  +1 212 761-2980 
+Morgan Stanley & Co. International plc+
+Max R Yates
+Equity Analyst
+ Max.Yates@morganstanley.com  
+  +44 20 7425-1917 
+Morgan Stanley & Co. LLC
+Angel Castillo
+Equity Analyst
+ Angel.Castillo@morganstanley.com  
+  +1 212 761-1931 
+Joe Laetsch, CFA
+Equity Analyst
+ Joe.Laetsch@morganstanley.com  
+  +1 212 761-8804 
+Daniel Kutz
+Equity Analyst
+ Dan.Kutz@morganstanley.com  
+  
+Morgan Stanley Asia Limited+
+Jack Lu
+Equity Analyst
+ Jack.Lu@morganstanley.com  
+  +852 2848-5044 
+Morgan Stanley & Co. LLC
+Robert S Kad
+Equity Analyst
+ Robert.Kad@morganstanley.com  
+  +1 212 761-0065 
+Michelle M. Weaver, CFA
+Equity Strategist
+ Michelle.M.Weaver@morganstanley.com  
+  +1 212 296-5254 
+Ariana Salvatore
+Equity Strategist
+ Ariana.Salvatore@morganstanley.com  
+  
+AI infrastructure is approaching a physical tipping 
+point. The power shortfall is growing, inference is 
+increasingly suited to smaller nodes closer to 
+users, and political resistance is making the mega-
+campus data centers harder to scale. We believe 
+the result is a structural shift toward distributed 
+behind-the-meter (BTM) power.
+Key Takeaways 
+• Time-to-power is becoming as important as cost-of-power. We introduce 
+the Stranded Compute Adjusted Cost of Power (SCACP), which adds  the 
+economic cost of idle compute to the conventional Levelized Cost of 
+Electricity (LCOE). Technologies that can be deployed quickly can justify a 
+higher headline power cost because of the accelerated path to an energized 
+GPU. But economics are only part of the equation. Data center developers 
+must also weigh load-following capability, reliability and modularity, 
+emissions, noise and local/NIMBY considerations, and technology maturity. 
+These attributes matter  as projects move closer to population centers and 
+Morgan Stanley does and seeks to do business with 
+companies covered in Morgan Stanley Research. As a result, 
+investors should be aware that the firm may have a conflict of 
+interest that could affect the objectivity of Morgan Stanley 
+Research. Investors should consider Morgan Stanley 
+Research as only a single factor in making their investment 
+decision.
+For analyst certification and other important disclosures, 
+refer to the Disclosure Section, located at the end of this 
+report.
++= Analysts employed by non-U.S. affiliates are not registered 
+with FINRA, may not be associated persons of the member 
+and may not be subject to FINRA restrictions on 
+communications with a subject company, public appearances 
+and trading securities held by a research analyst account. 
+Key Takeaways
+A growing power shortfall, political pushback to data centers, and the shift from 
+training to inference likely pushes power and compute to the edge.
+Behind-the-meter (BTM) power is a structural architectural shift in how power is 
+consumed, in our view. 
+Front-of-the-meter (FTM) grid power is still relevant for many customers, but we 
+believe going 'off grid' will become more common for inference data center and 
+Commercial & Industrial (C&I) customers.  
+We forecast  a ~120 GW, or $240bn, power equipment TAM for BTM  solutions 
+through 2029 (77 GW DC + 40 GW C&I).  
+We build a composite scoring of several BTM power solutions. Bloom Energy's 
+SOFC, BorgWarner's Turbine Generator, and FTAI's aeroderivative solutions rank 
+highest on our scorecard. 
+October 6, 2026 04:01 AM GMT
+ 
+ 
+
+M
+North America Insight
+2
+face greater scrutiny around air quality, noise and community impact. 
+Incorporating these factors alongside SCACP, Bloom Energy's SOFC ranks 
+#1, BorgWarner's Turbine Generator #2 and FTAI's Aeroderivative solution 
+#3 for behind-the-meter power today (see Exhibit 4 ). 
+• We believe growth in BTM power drives a power flywheel effect. Growth 
+in BTM power for data centers is driving manufacturing scale and innovation 
+across fuel cells, turbines, microgrids and storage, lowering costs and 
+expanding the addressable market into commercial and industrial 
+applications. As such, we do not believe behind-the-meter power is merely a 
+bridge solution. We believe it will become a more conventional way to 
+consume power, particularly for Commercial & Industrial (C&I) customers, 
+where we estimate 40 GW of incremental power demand through  2029.
+• The grid will still play  an important role.  While we are bullish on growth in 
+behind-the-meter power generation, we believe the grid will still play a 
+major role for many customers.  We believe it is important to distinguish 
+between large mega-campuses (1 GW+) for training, and smaller inference 
+nodes. We believe CCGTs or the grid are best suited to provide the primary 
+source of power for large mega-sites (1 GW+) given economies of scale and 
+the proven nature of the technology. However, as AI compute moves to the 
+edge, we believe the opportunity for more modular solutions (fuel cells, 
+small turbines, etc) improves.  
+• Storage remains the balancing factor for data center power. We expect US 
+ESS deployments will reach 279 GWh in 2030, including 169 GWh of annual 
+data-center demand. Virtual Power Plants (VPPs), which involve aggregating 
+home solar + storage + EV battery capacity as a flexible source of power for 
+the grid during peak demand periods remains a small but growing part of the 
+equation. 
+• Physical AI creates a new distributed infrastructure layer. As vehicles, 
+robots and other hardware become more compute-intensive, each becomes a 
+potential inference node – and, where battery-equipped, a distributed power 
+asset. We estimate robot/EV compute capacity could grow to ~1.0 TW by 
+2040. 
+We compile a list of stocks within Morgan Stanley Research coverage that we 
+expect to be key beneficiaries of the movement towards BTM power and 
+storage. 
+• Top ideas for onsite power equipment suppliers: Bloom Energy (BE),  Baker 
+Hughes (BKR), BorgWarner (BWA –  see our corresponding upgrade here), 
+Cummins (CMI), ERock (EROC), FTAI Aviation (FTAI), INNIO (INIO),  and Rolls 
+Royce (RR). 
+• Top ideas within onsite power developers: Solaris (SEI), Liberty (LBRT),  
+Halliburton (HAL), Williams (WMB).
+• Key ESS/VPP providers:  Tesla (TSLA), Ford (F), Fluence (FLNC), BorgWarner 
+(BWA), Sunrun (RUN). 
+Morgan Stanley & Co. International plc+
+Ross Law, CFA
+Equity Analyst
+ Ross.Law@morganstanley.com  
+  +44 20 7677-0560 
+Morgan Stanley & Co. International plc, Seoul Branch+
+Young Suk Shin
+Equity Analyst
+ Young.Shin@morganstanley.com  
+  +82 2 399-4994 
+Morgan Stanley MUFG Securities Co., Ltd.+
+Takeshi Kitaura
+Equity Analyst
+ Takeshi.Kitaura@morganstanleymufg.com  
+  +81 3 6836-5427 
+Morgan Stanley & Co. LLC
+Daniela M Haigian
+Equity Analyst
+ Daniela.Haigian@morganstanley.com  
+  +1 212 761-6071 
+Alexandre Zimmermann
+Research Associate
+ Alexandre.Zimmermann@morganstanley.com  
+  +1 212 761-3617 
+Jeremy Herring
+Research Associate
+ Jeremy.Herring@morganstanley.com  
+  +1 212 761-4182 
+Stefan Diaz, CFA
+Equity Analyst
+ Stefan.Diaz@morganstanley.com  
+  +1 212 761-1834 
+Morgan Stanley & Co. International plc+
+Sara Chemello
+Research Associate
+ Sara.Chemello@morganstanley.com  
+  +44 20 7425-2931 
+Morgan Stanley & Co. LLC
+Jahvonte G Bain
+Research Associate
+ Jahvonte.Bain@morganstanley.com  
+  +1 212 761-9231 
+William Tackett, CFA
+Research Associate
+ William.Tackett@morganstanley.com  
+  +1 212 761-6028 
+Katherine A Bennorth
+Research Associate
+ Katie.A.Bennorth@morganstanley.com  
+  +1 212 761-3753 
+Autos & Shared Mobility
+North America
+Industry View
+In-Line
+
+M
+North America Insight
+Morgan Stanley Research
+3
+Exhibit 1:
+Distributed Power Mapping
+Source: Morgan Stanley Research
+
+M
+North America Insight
+4
+Executive Summary: Reaching  a Tipping Point 
+As AI penetrates deeper into the physical world, we expect compute to become 
+increasingly distributed. Vehicles, robots, drones and other intelligent hardware require 
+meaningful onboard compute to perform perception, prediction, planning and control – 
+often under latency, connectivity and safety constraints that make continuous reliance on 
+centralized cloud inference less practical. 
+Importantly, these assets are unlikely to utilize their compute capacity continuously. A 
+vehicle, for example, contains substantial processing capability but spends much of its life 
+parked. Over time, we believe this creates the potential for otherwise-idle compute to 
+serve external inference workloads, effectively turning millions of intelligent physical 
+assets into a Distributed Inference Cloud (DIC). The same logic can eventually extend 
+from vehicles to homes, humanoids, drones and other AI-enabled devices.
+We see these trends as mutually reinforcing. Distributed inference pushes compute 
+closer to the end user; distributed power allows those nodes to operate with greater 
+resilience and independence from constrained centralized infrastructure. As the number of 
+intelligent physical assets scales, the distinction between a compute asset and a power 
+asset increasingly begins to blur. While this represents the longer-term evolution of the 
+architecture, the forces driving decentralization are already visible today. 
+The centralized cloud model is  confronting two constraints: power scarcity and the 
+shift towards inference. The grid cannot deliver power fast enough to keep up with AI-
+driven demand while political pushback is making large-scale data center development 
+more difficult. At the same time, inference is more distributed and latency sensitive than 
+training, favoring compute closer to users. 
+Together, these forces are pushing compute and power toward a more distributed 
+architecture. Smaller edge facilities can bring inference closer to users, but they also 
+require faster, more localized power - often behind-the-meter. We believe the result is a 
+durable shift toward smaller, more self-sufficient compute-and-power nodes rather than a 
+handful of enormous grid-dependent campuses.
+The power shortfall is growing. Our Morgan Stanley Thematics team forecasts 160 GW 
+of incremental data center power demand from 2026-2029, 22 GW of which are already 
+under construction and have a power grid connection. We also estimate 36 GW of 
+available US grid capacity. After the available grid capacity is spoken for, we expect data 
+centers to largely deploy various behind-the-meter power generation. As it stands today, 
+there is 23 GW of BTM power generation equipment that has been procured by various 
+BTM power developers (SEI, PUMP, WMB, LBRT, HAL/VoltaGrid) that we expect to be 
+deployed at data center sites. This leaves a 77 GW shortfall, which we expect  to be 
+filled with various behind-the-meter power generation solutions including solid-oxide 
+fuel cells (SOFC), reciprocating gas engines, and gas turbines (aeros, HD, industrial, micro).
+
+M
+North America Insight
+Morgan Stanley Research
+5
+Exhibit 2:
+Data Center Power Shortage
+21.8
+36.2
+22.8
+2.8
+160.0
+76.5
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+Total US DC Power
+Demand
+Less: DCs Under
+Construction
+Less: Utility Grid Access
+Less: BTM
+Turbines/Engines (in
+backlog)
+Less: Nuclear Plant
+Siting (prob-wtd)
+Net Shortfall Through
+2029
+GW
+US Data Center Power Shortfall Through 2029 — Midpoint Scenario (GW)
+Source: Morgan Stanley Research estimates
+Not all onsite power is created equal. In an effort to analyze various behind the meter 
+power solutions we are introducing a ranking system. Cost is still important, but we 
+believe power supply decisions is increasingly being driven by (i) time to power 
+considerations, (ii) quality of power supply (load following, modularity/reliability), (iii) 
+noise considerations given the NIMBY movement around data centers, and (iv) gas 
+consumptions and emissions profile.  With this report, we created a metric to standardize 
+the levelized cost of electricity (LCOE) across various onsite power generation 
+technologies and compare that to the supply availability, which we refer to as the 
+Stranded Compute Adjusted Cost of Power (SCACP). SCACP takes the conventional 
+LCOE and adds a stranded compute premium, the monetized opportunity cost of GPUs, 
+capital and contracted revenue sitting idle during the interval between when the GPU is 
+purchased and when it is energized. 
+How to interpret this metric. The grid provides the lowest cost of power. However, given 
+delayed interconnection timelines (5-7 years) data centers developers waiting for this 
+source of power face significant opportunity costs. As a result, solutions that allow quick 
+time to power offer the most attractive unit economics for a data center through the end 
+of the decade. For example, Solid-Oxide Fuel Cells are towards the higher end of the 
+LCOE cost curve today, but also offer the quickest time to power for customer, as well as 
+other important attributes such as 800V DC power output, load following capabilities, 
+and low noise and emissions, which is increasingly important in the NIMBY data center 
+environment. 
+
+M
+North America Insight
+6
+Exhibit 3:
+Stranded Compute Adjusted Cost of Power
+$131
+$111
+$114
+$104
+$131
+$89
+$21
+$21
+$85
+$127
+$233
+$131
+$132
+$135
+$189
+$258
+$323
+$0
+$50
+$100
+$150
+$200
+$250
+$300
+$350
+SOFC
+Aero GT (CFM56)
+Micro Turbine
+Gas Recip
+IGT
+Grid Power
+BTM LCOE ($/MWh)
+Stranded Compute Premium ($/MWh)
+Source: Morgan Stanley Research estimates
+Layering in other considerations, such as load-following capabilities, emissions profile, 
+and noise/NIMBY considerations, we construct a composite ranking across various 
+technologies for behind-the-meter power consumption. We find that SOFCs, namely 
+from Bloom Energy, rank as the most attractive source of behind the meter power 
+today, while industrial gas turbines rank towards the bottom of the list based on the 
+various time-to-power, NIMBY, and emissions considerations. Note that in many cases, 
+these technologies may be working in tandem in a behind-the-meter microgrid 
+configuration and as such, should not always be considered direct competitors to each 
+other. It is also worth highlighting that this composite ranking has various weighting's 
+across the different characteristics - for example, we place a 50% score weighting on 
+SCACP, 15% on noise/NIMBY, 15% on technology maturity, and 10% on load following as 
+well as emissions profile. Developers may therefore have different priorities and 
+objectives, which could meaningfully affect the weighting assigned to each characteristic 
+(i.e. noise/NIMBY may be a more significant consideration in a densely populated region). 
+Please reach out to your MS sales rep if you are interested in a copy of our model. 
+Exhibit 4:
+Behind-the-Meter Power Composite Scoring: Today
+TECHNOLOGY
+SCACP
+($/MWh)
+SCACP
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+SOLID OXIDE FUEL CELL (SOFC)
+$131
+5.0
+3.5
+5.0
+4.0
+3.5
+4.5
+1
+MICRO TURBINE GENERATOR
+$135
+4.9
+4.5
+2.5
+2.5
+1.0
+3.7
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$132
+5.0
+2.5
+1.0
+2.5
+1.0
+3.4
+3
+RECIPROCATING GAS ENGINE (FAST START)
+$189
+3.2
+4.0
+3.0
+2.0
+5.0
+3.3
+4
+INDUSTRIAL GAS TURBINE
+$258
+1.0
+1.0
+1.0
+2.5
+5.0
+1.8
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power 
+applications.  
+
+M
+North America Insight
+Morgan Stanley Research
+7
+Exhibit 5:
+Top Ideas Across BTM Power Gen Equipment Suppliers
+Rank
+Technology
+BTM Score (/5)
+SCACP 
+($/MWh)
+Key Overweight-rated Stocks
+MS Analyst
+1
+SOLID OXIDE FUEL CELL (SOFC)
+4.5
+$131
+Bloom Energy (BE)
+David Arcaro
+2
+MICRO TURBINE GENERATOR
+3.7
+$135
+BorgWarner (BWA)
+Andrew Percoco
+3
+AERODERIVATIVE GAS TURBINE (RETROFITTED 
+CFM56)
+3.4
+$132
+FTAI Aviation (FTAI)
+Kristine Liwag
+4
+RECIPROCATING GAS ENGINE (FAST START)
+3.3
+$189
+INNIO Jenbacher (INIO), ERock (EROC), 
+Cummins (CMI)
+David Arcaro, Angel 
+Castillo
+5
+INDUSTRIAL GAS TURBINE
+1.8
+$258
+Baker Hughes (BKR)
+Joe Laetsch
+Source: Morgan Stanley Research estimates
+Time-to-power has a notable impact on the composite rankings. If we normalize for a 
+standard time to power, and solely analyze these technologies on a basis of cost of power 
+(i.e. assumes no wait time for delivery of the technology), we get different answers 
+( Exhibit 6 ), albeit with a narrowed range of scores.  In a world where there is unlimited 
+availability of across power gen technology providers, the time to power differential 
+narrows dramatically. This is particularly relevant as the market debate evolves around 
+how long the acute time-to-power issues last. 
+Exhibit 6:
+Behind-the-Meter Power Composite Scoring: Assuming No Time Premium 
+(2030)
+TECHNOLOGY
+BTM LCOE
+($/MWh)
+BTM LCOE
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+RECIPROCATING GAS ENGINE (FAST START)
+$110
+4.4
+4.0
+3.0
+2.0
+4.5
+3.8
+1
+SOLID OXIDE FUEL CELL (SOFC)
+$116
+3.7
+3.5
+5.0
+4.0
+3.5
+3.8
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$104
+5.0
+2.5
+1.0
+2.5
+2.0
+3.7
+3
+MICRO TURBINE GENERATOR
+$111
+4.2
+4.5
+2.5
+2.5
+1.0
+3.5
+4
+INDUSTRIAL GAS TURBINE
+$144
+1.0
+1.0
+1.0
+2.5
+5.0
+1.6
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power applications
+Energy storage serves as a complement to most onsite power technologies. Batteries 
+do not generate power, but they smooth the sub-second power transients that dense GPU 
+racks create, they allow for peak shaving, and are often times installed alongside 
+dispatchable power solutions. As a result, we expect hybrid configurations –  a fast 
+thermal source paired with storage for transient response and load following –  to become 
+the default onsite architecture. As such, we expect the ESS market to grow from 57 GWh 
+in 2025 to 280 GWh by 2030, of which ~60% will be for data center usage ( Exhibit 7 ).  
+
+M
+North America Insight
+8
+Exhibit 7:
+US Energy Storage Demand
+57 
+80 
+95 
+103 
+109 
+110 
+14 
+31 
+62 
+108 
+169 
+ -
+ 50
+ 100
+ 150
+ 200
+ 250
+ 300
+2025
+2026e
+2027e
+2028e
+2029e
+2030e
+GWh
+Non-DC Demand (Renewables+)
+Data Center ESS Demand
+Source: Morgan Stanley Research estimates
+Virtual power plants as a growing flex source of power. Virtual power plants, which can 
+come in various different form factors including Vehicle-to-Grid (bidirectional power from 
+EVs) or Home-to-Grid (residential solar + battery storage discharged to the grid during 
+peak periods). While VPPs take time to scale, there is growing evidence of their impact. 
+For example, Sunrun and Tesla recently coordinated more than 140,000 residential 
+batteries to deliver over 580 MW of peak power to the California grid for a three-hour 
+evening dispatch in September. We believe home-to-grid and vehicle-to-grid will become 
+more meaningful contributors to serving peak load requirements of the grid over time. 
+Exhibit 8:
+Virtual Power Plant Configuration
+Source: Morgan Stanley Research estimates
+The Distributed Power Flywheel
+This structural shift extends well beyond data centers. Rising grid power prices and lack 
+
+M
+North America Insight
+Morgan Stanley Research
+9
+of sufficient power, coupled with grid instability creates a powerful flywheel and 
+structural shift to onsite power. It first starts with data centers driving mass consumption 
+of power onsite, leading to significant innovation and manufacturing scale, which drives 
+down the cost of more nascent onsite power solutions (fuel cells, microgrids, and even 
+SMRs in the 2030s). This provides a stronger value proposition for other large consumers 
+of power, namely Commercial & Industrial (C&I)  to start leveraging onsite power 
+solutions. Reshoring of industrial manufacturing, a bipartisan effort, is also driving greater 
+electricity consumption more broadly, generating an even larger TAM for onsite solutions. 
+We forecast ~10 GW of incremental US C&I demand, annually through 2030 reflecting 
+our Utility teams onshoring scenario, which is additive to our BTM power TAM. 
+Exhibit 9:
+Potential US C&I Demand
+9.8
+10.2
+10.6
+11.0
+11.4
+11.9
+12.3
+12.8
+13.3
+0
+2
+4
+6
+8
+10
+12
+14
+2027E
+2028E
+2029E
+2030E
+2031E
+2032E
+2033E
+2034E
+2035E
+Incremental US C&I Demand (GW)
+Source: Morgan Stanley Research estimates
+
+M
+North America Insight
+10
+Behind-the-Meter Power as the Enabling Layer  
+The binding constraint on AI infrastructure is power and grid access. Our Global Thematics 
+team, led by Stephen Byrd, has highlighted throughout recent research that we are 
+entering an unprecedented power shortage. As a result, we believe there is a structural 
+"bring your own power" movement occurring across the US. We expect this trend to be 
+exacerbated by the growing local political pushback around data centers, which is 
+increasingly focused on the inflationary impact that data centers are having on local 
+energy prices. The clear answer in our view is smaller more distributed data centers 
+with localized on-site power tied directly to the data center. 
+The power shortfall is growing. We forecast 160 GW of incremental data center power 
+demand from 2026-2029, 22 GW of which are already under construction and have a 
+power grid connection. We also estimate 36 GW of available US grid capacity. As it stands 
+today, there is 23 GW of BTM power generation equipment that has been procured by 
+various BTM power developers (SEI, PUMP, WMB, LBRT, HAL/VoltaGrid)  that we expect to 
+be deployed at data center sites. This leaves a 77 GW shortfall, which we expect  to be 
+filled with various behind-the-meter power generation solutions including solid-oxide 
+fuel cells (SOFC), reciprocating gas engines, and gas turbines (aeros, HD, industrial, micro). 
+Exhibit 10: Data Center Power Shortage
+21.8
+36.2
+22.8
+2.8
+160.0
+76.5
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+Total US DC Power
+Demand
+Less: DCs Under
+Construction
+Less: Utility Grid Access
+Less: BTM
+Turbines/Engines (in
+backlog)
+Less: Nuclear Plant
+Siting (prob-wtd)
+Net Shortfall Through
+2029
+GW
+US Data Center Power Shortfall Through 2029 — Midpoint Scenario (GW)
+Source: Morgan Stanley Research estimates
+There are many different solutions to help bridge the gap, including: 
+• Natural Gas Turbines and Reciprocating Engines: the largest share by capacity 
+today, chosen due to maturity of technology, ability to provide prime power (high 
+capacity factor), and fuel availability, but carry emissions and permitting trade-offs.
+• Solid Oxide Fuel Cells (SOFCs):  Electrochemical generation (no combustion), 
+fuel-flexible across natural gas, biogas, and hydrogen, and increasingly chosen due 
+to its best-in-class time to power characteristics (<6 months). Additionally, in the 
+case of Bloom Energy (covered by Dave Arcaro), this technology can deliver high 
+voltage direct current (DC) power, which is becoming increasingly more important 
+in the data center market.  
+• Small Modular Reactors (SMRs): Offer continuous, high-uptime baseload power, 
+but on a 5-10 year permitting and construction timelines. Importantly, there are no 
+
+M
+North America Insight
+Morgan Stanley Research
+11
+commercially available SMRs on the market today, adding technology/construction 
+risk for prospective customers. 
+• Solar + Storage: Relatively low-cost and quick to build. However, solar + storage is 
+less prevalent in the behind-the-meter power market today due to lack of energy 
+density (i.e. need a lot of land) and intermittency, even when coupled with storage.
+• Vehicle-to-grid (V2G) and Virtual Power Plants (VPPs): Aggregating EV and 
+residential home batteries (paired with solar) as a distributed energy resource. 
+Modern V2G increasingly pairs reinforcement-learning-based charge/discharge 
+scheduling with real-time electricity pricing, letting vehicles and residential 
+customers charge when demand is low and discharge back to the grid (or to a co-
+located data center) when demand and prices spike. 
+• Microgrids (i.e. all of the above). Microgrids combine various power generation 
+and energy storage technologies into a small power grid, which is typically 
+distributed across multiple customers.  
+With various solutions available to the market, we built a model to standardize the 
+unit economics (Levelized Cost of Electricity)  across various power generation 
+solutions that we believe are well-suited for BTM applications. Within our analysis, we 
+compare five power-generation technologies on a single, apples-to-apples basis. Every 
+technology runs through an identical 15-year project model. The only inputs that differ 
+between them are the technology-specific costs and performance characteristics (heat 
+rate, non-fuel O&M, capex, etc.). Defining Levelized Cost of Electricty (LCOE): The price 
+of power the utility/asset owner must charge to a data center in order to earn a desired 
+return on invested capital (capex) and ongoing operating expenses. 
+Parameters that we hold constant. For every technology, we assume 60% debt / 40% 
+equity capital structure at a 7.5% cost of debt, 1.5% inflation, 21% income-tax rate, 1% 
+property tax, 15-year project life (i.e. PPA term), and an 80% capacity factor. Importantly, 
+we assume a 15% project return - the model backs into the revenue requirement (i.e. 
+power price on a $/MWh basis) needed to hit that return, based on the set of standard 
+project assumptions and technology-specific operating characteristics. 
+Flexed technology-specific inputs. There are four levers that we flex per technology: 
+• Total Capex ($/kW): This ranged from $1,500/kW for Solar Titan Turbines on the 
+low end to $3,500/kW on the high end for Bloom's SOFC. 
+• Fixed O&M ($/kW-yr): Ranging from  $25 for aeroderivative to $225 for Bloom's 
+SOFC. 
+• Plant heat rate (Btu/kWh): The fuel-efficiency driver, from 6,450 (SOFC) to 
+10,600 (IGT), which feeds fuel cost against a delivered gas price. 
+• Overbuild %: The amount of spare capacity that must be added onsite to ensure 
+sufficient redundancy and reliability.  Technologies with larger footprints (i.e. 50 
+MW+ gas turbines) typically require more overbuild vs. smaller footprint 
+technologies (300kW fuel cells) to achieve similar levels of reliability (4 or 5 9's of 
+reliability).  
+
+M
+North America Insight
+12
+Exhibit 11: Key Technology-Specific Operating Assumptions
+TECHNOLOGY
+CAPEX ($/KW)
+FIXED O&M 
+($/KW-YR)
+HEAT RATE 
+(BTU/KWH) OVERBUILD %
+LCOE 
+($/MWH)
+RECIPROCATING GAS ENGINE (FAST START)
+$1,650
+$75.0
+8,744
+13%
+$104
+AERODERIVATIVE GAS TURBINE (RETROFITTED CFM56)
+$1,650
+$25.0
+10,634
+25%
+$111
+MICRO TURBINE GENERATOR
+$1,750
+$75.0
+10,469
+10%
+$114
+INDUSTRIAL GAS TURBINE
+$1,500
+$120.0
+10,612
+20%
+$131
+SOLID OXIDE FUEL CELL (SOFC)
+$3,500
+$225.0
+6,450
+10%
+$131
+Source: EIA, Morgan Stanley Research estimates. Note that this represents 2026 capex estimates.
+Unit economics is a function of cost and time to power. Introducing the  Stranded 
+Compute Adjusted Cost of Power (SCACP). Cost is still important, but we believe power 
+supply decisions is increasingly being driven by (i) time to power considerations, (ii) 
+quality of power supply (load following, modularity/reliability), (iii) noise considerations 
+given the NIMBY movement around data centers, and (iv) gas consumptions and 
+emissions profile.  With this report, we created a metric to standardize the levelized cost 
+of electricity (LCOE) across various onsite power generation technologies and compare 
+that to the supply availability, which we refer to as the Stranded Compute Adjusted 
+Cost of Power (SCACP). 
+SCACP takes the conventional LCOE and adds a stranded compute premium – the 
+monetized opportunity cost of GPUs sitting idle during the interval between when the 
+GPU is purchased and when it is energized. The stranded compute premium assumes 
+$4,500/kW of economic benefit for every year of accelerated grid connection and 
+amortizes it over the energy per kW over the term of the project (reach out for our model 
+for more detail). The math:  every year of expedited power access is worth ~$42/MWh 
+over a 15 year project life: $4,500/kW opportunity cost divided by 105 MWh (15 year 
+project x 80% capacity factor x 8,760 hours in a year). 
+How to interpret this metric. The grid provides the lowest cost of power. However, given 
+delayed interconnection timelines (5-7 years) data centers developers waiting for this 
+source of power face significant opportunity costs and therefore the highest SCACP 
+( Exhibit 12 and Exhibit 13 ). Conversely, Solid-Oxide Fuel Cells are towards the higher end 
+of the LCOE cost curve today, but also offer the quickest time to power for customer, as 
+well as other important attributes such as 800V DC power output, load following 
+capabilities, and low noise and emissions output, which is increasingly important in the 
+NIMBY data center environment. 
+
+M
+North America Insight
+Morgan Stanley Research
+13
+Exhibit 12: Stranded Compute Adjusted Cost of Power ($/MWh)
+$131
+$111
+$114
+$104
+$131
+$89
+$21
+$21
+$85
+$127
+$233
+$131
+$132
+$135
+$189
+$258
+$323
+$0
+$50
+$100
+$150
+$200
+$250
+$300
+$350
+SOFC
+Aero GT
+(CFM56)
+Micro Turbine
+Gas Recip
+IGT
+Grid Power
+BTM LCOE ($/MWh)
+Stranded Compute Premium ($/MWh)
+Source: Morgan Stanley Research estimates
+Exhibit 13: Cost of Power vs. Time to Power
+IGT
+SOFC
+Micro Turbine
+Gas recips
+Aeroderivative
+Grid Power
+$80
+$90
+$100
+$110
+$120
+$130
+$140
+0.0
+1.0
+2.0
+3.0
+4.0
+5.0
+6.0
+7.0
+LCOE ($/MWh)
+Time to Power (Years)
+LCOE vs. Time to Power
+Source: Morgan Stanley Research estimates
+Layering in other considerations ( Exhibit 14 ), such as load-following capabilities, 
+emissions profile, and noise/NIMBY considerations, we construct a composite ranking 
+across various technologies for behind-the-meter power consumption. We find that 
+SOFCs, namely from Bloom Energy, rank as the most attractive source of behind the 
+meter power today, while industrial gas turbines rank towards the bottom of the list 
+based on the various time-to-power, NIMBY, and emissions considerations. Note that in 
+many cases, these technologies may be working in tandem in a behind-the-meter microgrid 
+configuration and as such, should not always be considered direct competitors to each 
+other. 
+It is also worth highlighting that this composite ranking has various weighting's across the 
+different characteristics - for example, we place a 50% score weighting on SCACP, 15% on 
+noise/NIMBY, 15% on technology maturity, and 10% on load following as well as emissions 
+profile. Developers may therefore have different priorities and objectives, which could 
+meaningfully affect the weighting assigned to each characteristic (i.e. noise/NIMBY may be 
+a more significant consideration in a densely populated region). Please reach out to your 
+MS sales rep if you are interested in a copy of our model.
+Exhibit 14: Behind the Meter Power Composite Ranking: Today
+TECHNOLOGY
+SCACP
+($/MWh)
+SCACP
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+SOLID OXIDE FUEL CELL (SOFC)
+$131
+5.0
+3.5
+5.0
+4.0
+3.5
+4.5
+1
+MICRO TURBINE GENERATOR
+$135
+4.9
+4.5
+2.5
+2.5
+1.0
+3.7
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$132
+5.0
+2.5
+1.0
+2.5
+1.0
+3.4
+3
+RECIPROCATING GAS ENGINE (FAST START)
+$189
+3.2
+4.0
+3.0
+2.0
+5.0
+3.3
+4
+INDUSTRIAL GAS TURBINE
+$258
+1.0
+1.0
+1.0
+2.5
+5.0
+1.8
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power applications
+
+M
+North America Insight
+14
+Exhibit 15: Key Behind-the-Meter Power Equipment Suppliers
+TECHNOLOGY
+COMPANY
+LISTING / TICKER
+FLAGSHIP PRODUCT / PLATFORM
+REPRESENTED 
+IN SCACP/LCOE 
+MODEL
+SOLID OXIDE FUEL CELL (SOFC)
+Bloom Energy
+NYSE: BE
+Energy Server (SOFC platform)
+✔
+Mitsubishi Heavy Industries
+TSE: 7011
+MEGAMIE pressurised SOFC / SOFC-GT hybrid
+FuelCell Energy
+NASDAQ: FCEL
+Solid oxide power & electrolysis platform
+Doosan Fuel Cell
+KRX: 336260
+SOFC (Ceres SteelCell licence), Iksan plant
+Ceres Power
+LSE: CWR
+SteelCell — technology licensor, not a genset OEM
+MICRO TURBINE GENERATOR
+BorgWarner (TurboCell)
+NYSE: BWA
+TG350 TurboCell turbine generator system (334 kWe)
+✔
+Capstone Green Energy
+Private (US)
+C200S / C600S / C1000S signature series
+AERODERIVATIVE GAS TURBINE
+FTAI Aviation (FTAI Power)
+NASDAQ: FTAI
+CFM56 Mod-1 aeroderivative genset (~25 MW)
+✔
+GE Vernova
+NYSE: GEV
+LM2500XPRESS / LM6000 / LM9000
+Siemens Energy
+XETRA: ENR
+SGT-A65 (Industrial Trent 60)
+Mitsubishi Power (PW Power Systems)
+TSE: 7011
+FT8 MOBILEPAC / SwiftPac
+ProEnergy
+Private (US)
+PE6000 packaged LM6000 units
+RECIPROCATING GAS ENGINE (FAST START)
+INNIO Jenbacher
+NASDAQ: INIO
+Jenbacher J620 Fast Start (Type 6 platform)
+✔
+Caterpillar
+NYSE: CAT
+Cat G3520 / CG260 gas gensets
+Wärtsilä
+HEL: WRT1V
+Wärtsilä 34SG / Balanced Power plants
+Rolls Royce (Power Systems-mtu)
+LSE: RR
+mtu Series 4000 L64 gas gensets
+Cummins
+NYSE: CMI
+HSK78G lean-burn gas genset
+ERock
+NYSE: EROC
+RockBlock 1.5–3.5 MW modular gas gensets / ERT500
+INDUSTRIAL GAS TURBINE
+Solar Turbines (Caterpillar)
+NYSE: CAT
+Titan 130 / Titan 250 (SoLoNOx)
+✔
+Siemens Energy
+XETRA: ENR
+SGT-800 / SGT-750
+GE Vernova
+NYSE: GEV
+NovaLT / 6B.03 heavy-duty frames
+Kawasaki Heavy Industries
+TSE: 7012
+GPB series gas turbine gensets
+Baker Hughes
+NASDAQ: BKR
+NovaLT12 / NovaLT16
+Source: Morgan Stanley Research
+Time-to-power has a notable impact on the composite rankings. If we normalize for a 
+standard time to power, and solely analyze these technologies on a basis of cost of power 
+(i.e. assumes no wait time for technology), we get different answers ( Exhibit 6 ), albeit 
+with a tighter range on the composite ranking. This is particularly relevant as the market 
+debate evolves around how long the acute time-to-power issues last. In a world where 
+there is unlimited availability of across power gen technology providers, the time to 
+power differential narrows dramatically and the winning technology then is based more 
+on the basis of cost and the other operating characteristics, rather than time to power. 
+Exhibit 16: Behind-the-Meter Power Composite Scoring: Assuming No Time Premium 
+(2030)
+TECHNOLOGY
+BTM LCOE
+($/MWh)
+BTM LCOE
+SCORE
+LOAD-
+FOLLOWING
+EMISSIONS
+NOISE /
+NIMBY
+TECHNOLOGY
+MATURITY
+COMPOSITE
+(/5)
+COMPOSITE
+RANK
+RECIPROCATING GAS ENGINE (FAST START)
+$110
+4.4
+4.0
+3.0
+2.0
+4.5
+3.8
+1
+SOLID OXIDE FUEL CELL (SOFC)
+$116
+3.7
+3.5
+5.0
+4.0
+3.5
+3.8
+2
+AERODERIVATIVE GAS TURBINE 
+(RETROFITTED CFM56)
+$104
+5.0
+2.5
+1.0
+2.5
+2.0
+3.7
+3
+MICRO TURBINE GENERATOR
+$111
+4.2
+4.5
+2.5
+2.5
+1.0
+3.5
+4
+INDUSTRIAL GAS TURBINE
+$144
+1.0
+1.0
+1.0
+2.5
+5.0
+1.6
+5
+Source: Morgan Stanley Research estimates. Note: we measure tech maturity on the basis of use case of that solution in the power applications
+Battery storage serves as a complementary balancing layer. As inference scales and 
+workloads become more user-facing, power demand will likely become more volatile and 
+less predictable. These inference-driven loads create sharp peaks rather than steady base-
+load requirements, increasing the value of peak-shaving and fast-response capacity. 
+Flexible power solutions are increasingly well positioned to absorb this volatility, offering 
+modularity, faster deployment timelines, rapid response to sudden load ramps, and the 
+ability to smooth peaks without requiring the overbuild of generation or transmission 
+infrastructure. As inference inflects, this flexibility should move from a “nice-to‑have” 
+to a system-level necessity, in our view.
+Energy storage systems (ESS) are a practical solution to help mitigate the power 
+
+M
+North America Insight
+Morgan Stanley Research
+15
+shortfall, particularly where grid access is constrained or new generation cannot be built 
+quickly enough. ESS are stationary battery systems that store and discharge electricity at 
+different times of the day to supply power either to the grid or directly to behind-the-
+meter customers. These systems capture excess generation and release power during 
+periods of elevated demand, enabling the grid to manage volatility without adding surplus 
+generation capacity. For instance, ESS will charge during off‑peak periods when power is 
+adequate and prices are low, and can discharge instantaneously as inference demand 
+spikes and electricity is most expensive. This reduces a facility’s maximum grid draw, 
+effectively “shaving” the top of the demand curve and lowering peak‑related costs such as 
+demand charges and capacity charges. Energy storage is also location‑agnostic and 
+modular, so it can be deployed directly at data centers, industrial facilities, or commercial 
+buildings where peak demand occurs. For a deeper dive in the opportunity for BESS at data 
+centers please see our note here. 
+Exhibit 17: Solar and Storage Unit Economics
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+110
+2025
+2027E
+2030E
+$/MWh
+Solar LCOE
+ESS LCOE (w/ ITC)
+Added Cost w/o ESS ITC
+20%, 3H 
+35%, 4H 
+40%, 4H 
+CCGT LCOE
+Source: Morgan Stanley Research estimates
+Exhibit 18: Standalone ESS Unit Economics
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+200
+2025
+2027E
+2030E
+$/MWh
+ESS LCOE with ITC
+Added Cost w/o ITC
+3 Hr 
+4 Hr 
+4 Hr 
+Gas Peaker LCOE
+CCGT LCOE
+Source: Morgan Stanley Research estimates
+We forecast meaningful growth in ESS demand over the next five years, driven by 
+three structural forces.
+• The rapid growth of AI inference workloads is making power demand more volatile 
+and peak‑heavy, increasing the need for ESS to perform peak-shaving and smooth 
+sudden load spikes.
+• ESS is increasingly being deployed as a practical mitigation to traditional power 
+capacity constraints, including limited availability of gas turbines, grid congestion, 
+and long interconnection timelines.
+• Growing penetration of renewables, which require storage to balance 
+intermittency. 
+In the US, we continue to see strong demand for FTM and BTM battery storage. The 
+US is one of the largest markets for energy storage globally, with potential to reach 
+~1,000 GWh of storage installed by 2030 vs. ~90 GWh in 2024. Our US Clean Tech team 
+
+M
+North America Insight
+16
+projects net additions to the US energy-storage market to grow at a 38% CAGR from 
+2025-2030, reaching 279 GWh annual deployments by 2030. This is driven by: (1) the 
+continuously improving economics of renewables + battery storage both at grid scale 
+(front-of-the-meter or FTM) and residential/commercial (behind-the-meter or BTM); (2) 
+increased storage penetration required to manage renewable energy asset intermittency 
+and grid reliability; (3) increased demand for decarbonization solutions in the Commercial 
+and Industrial sectors as well as demand for distributed generation (DG) solutions to help 
+lower utility bills; and (4) policy changes (such as OBBA, NEM 3.0 and IRA), which further 
+incentivize the adoption of battery storage. 
+Exhibit 19: We Project Cumulative Installed ESS Capacity in the 
+US to Reach ~1,000 GWh in 2030
+14
+26
+53
+91
+148
+228 
+323 
+427 
+536 
+646 
+0.3 
+14 
+45 
+107 
+215 
+384 
+0
+200
+400
+600
+800
+1,000
+1,200
+2021
+2022
+2023
+2024
+2025
+2026e
+2027e
+2028e
+2029e
+2030e
+Total Cumulative Deployment (GWh)
+Utility Scale Storage
+US Data Center
+Source: Morgan Stanley Research estimates
+Exhibit 20: Energy Storage Annual Demand – Data Center and 
+Non-Data Center (Renewables, Grid, etc.)
+57 
+80 
+95 
+103 
+109 
+110 
+14 
+31 
+62 
+108 
+169 
+ -
+ 50
+ 100
+ 150
+ 200
+ 250
+ 300
+2025
+2026e
+2027e
+2028e
+2029e
+2030e
+GWh
+Non-DC Demand (Renewables+)
+Data Center ESS Demand
+Source: Morgan Stanley Research estimates
+Virtual Power Plants: The Next Flex Load 
+Virtual Power Plants (VPPs) are emerging as one of the fastest ways to create 
+incremental grid capacity by extracting more capacity from assets that are already 
+connected to the grid. A VPP uses software to aggregate thousands of distributed energy 
+resources – residential batteries, rooftop solar, EVs, thermostats and flexible loads – and 
+dispatch them as if they were a single power plant. For a grid increasingly constrained by 
+load growth, transmission bottlenecks and lengthy interconnection timelines, the key 
+attraction is speed: much of the underlying hardware, land and grid connectivity already 
+exists. 
+
+M
+North America Insight
+Morgan Stanley Research
+17
+Exhibit 21: Virtual Power Plant Configuration
+Source: Morgan Stanley Research
+This is increasingly important because the US power problem is not simply a shortage of 
+energy. In many markets, the binding constraint is having enough capacity at a particular 
+location during a relatively small number of peak hours. VPPs aim to solve this problem. A 
+battery can discharge during the evening peak; a thermostat can temporarily reduce HVAC 
+consumption; an EV can shift charging until overnight. Aggregated across tens or 
+hundreds of thousands of customers, the result can be hundreds of megawatts of 
+incremental headroom without waiting for a new power plant or transmission line.
+RUN and TSLA are demonstrating that VPPs can operate at power-plant scale. The 
+strongest evidence that this concept can scale came in California in September 2026. 
+During a heat wave on September 9, Sunrun and Tesla coordinated more than 140,000 
+residential batteries to deliver over 580 MW of peak power to the California grid for a 
+three-hour evening dispatch. Of that capacity, 517 MW came from approximately 
+110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other 
+manufacturers. Importantly, Sunrun owned and operated 55% of the participating 
+Powerwalls and also dispatched more than 30,000 additional customer batteries. 
+A 580 MW dispatch is comparable in instantaneous output to a conventional power 
+plant, but it was assembled from assets distributed across customers' homes. The 
+batteries responded when California needed capacity most: the Demand Side Grid Support 
+program was triggered after CAISO's day-ahead locational marginal price exceeded $200/
+MWh, while PG&E simultaneously called an Emergency Load Reduction Program event 
+during the heat wave. A day later, Sunrun and Tesla supplied another 140+ MW at 
+Southern California Edison's request. 
+VPPs are beginning to intersect directly with the AI power constraint. For data centers, 
+this could become highly relevant. Rather than waiting several years for a utility to 
+upgrade a substation or transmission corridor to accommodate a new 100-500 MW load, 
+some portion of the required capacity could potentially be created by aggregating flexible 
+resources elsewhere on the constrained portion of the grid. That does not eliminate the 
+
+M
+North America Insight
+18
+need for traditional infrastructure, but it can increase effective utilization of the 
+infrastructure already in place and potentially bridge the period before permanent 
+upgrades arrive.
+Sunrun, Tesla and Renew Home have explicitly begun targeting this opportunity. In June 
+2026, the companies entered into a non-binding framework aimed at aggregating more 
+than 16 GW of flexible capacity from residential batteries, solar systems, smart 
+thermostats and EVs for utilities and hyperscalers. The stated strategy is to use existing 
+distributed resources to free transmission capacity, reduce distribution congestion and 
+create additional headroom for large new loads. The companies estimate they already 
+have more than 300 MW of potentially flexible resources in Virginia – the center of the 
+U.S. data-center market – with that figure potentially reaching at least 500 MW by 2030.
+Exhibit 22: VPP Growth
+Source: Ohm Analytics
+Supply vs. Demand Debate
+A key debate for onsite power equipment suppliers has been if the industry will be 
+oversupplied or if demand will continue to outpace supply by 2030.  Based on a bottom 
+up build of announced capacity plans, we estimate 149 GW of primary power gas 
+equipment supply (turbines, engines, fuel cells, etc.) by 2030. This would support 120 GW 
+of data center power, assuming 20% capacity overbuild at each data center site for 
+redundancy. Our MS data center model estimates ~150 GW of incremental data center 
+demand by 2030, thus keeping us bullish on supply/demand dynamics.  
+Exhibit 23: Power Gen Equipment Supply vs. Global Data Center Demand
+Total Demand & Supply–Demand Balance 
+2027E
+2028E
+2029E
+2030E
+Power Demand (DC only)
+GW/yr
+54.2
+84.4
+121.5
+151.9
+Overbuild Assumption
+20.0%
+20.0%
+20.0%
+20.0%
+Total Demand (including redundancy)
+GW/yr
+65.0
+101.2
+145.8
+182.3
+Total gas-gen equipment supply
+GW/yr
+88.9
+107.0
+127.7
+147.2
+Supply Surplus (Shortage)
+GW/yr
+19.9
+4.8
+-15.1
+-29.2
+Source: Morgan Stanley Research estimates. Reflective of prime power applications ex. engines for construction and mining machines
+Key considerations that keep us bullish:
+• Price still rising across the board. We are seeing prices rise meaningfully for large 
+frame gas turbines, industrial gas turbines, and grid pricing.
+• Pricing terms are still getting tighter. Down payment requirements for slot 
+reservations are rising, up to 25% for 2030 delivery of large frame turbines 
+currently.
+
+M
+North America Insight
+Morgan Stanley Research
+19
+• Rising and broadening demand for onsite power. Onsite power project sizes have 
+increased (multiple >2 GW projects announced) and customers have spanned 
+hyperscalers to other data center developers.
+• Demand locked in through 2028; 2030 now the pivot point. INIO and CAT are 
+fully booked through 2028 with pricing and shipment levels locked in. Competing 
+suppliers are signing supply agreements into the 2029 and 2030 years for onsite 
+power equipment. 
+• Supply potentially overstated and demand understated in 2030. Both supply 
+and demand for onsite power are not well understood in our view. Additional 
+supply is coming from many players but there is a meaningful amount of 
+equipment that is destined for non-data center markets, new entrant capacity is 
+speculative and less likely to disrupt pricing trends of established scale 
+incumbents, and quality of equipment varies significantly. On the demand side, 
+onsite power requires 10% to 35% overbuild of equipment relative to data center 
+consumption, and some new entrant technologies may be used for temporary 
+bridge power such that we would not consider it a cannibalization of prime power 
+applications.
+
+M
+North America Insight
+20
+Distributed Power Flywheel  
+ Behind the meter power production is not a new concept, but historically its been 
+primarily used as a backup source of power (diesel generators, etc.). That's rapidly 
+changing in our view. 
+Four key reasons that this is structural: 
+• Resilience. On-site generation plus islanding capability through local microgrids 
+protects against grid outages and extreme weather, where AI-workload downtime 
+can run into the millions of dollars per minute. This extends beyond data centers, 
+where we expect industrial applications (manufacturing, warehousing, hospitals, 
+etc.) to increasingly rely upon onsite power generation as a primary source of 
+power. 
+• Locality. For data centers, inference benefits from proximity to user and devices. 
+For the broader market, removing T&D infrastructure requirements also lowers 
+cost to deploy incremental power generation.
+• Incremental scalability. Smaller, faster-to-deploy increments beat committing to 
+multi-billion-dollar  capacity with concentrated project risk (permitting, local 
+regulatory pushback, etc.). 
+• Time-to-power. Outside of data centers, time to power remains an important 
+consideration, particularly for the onshoring of manufacturing. 
+• Inflationary pressure on grid electricity prices drives a durable wedge in the 
+economic moat for onsite power. 
+The distributed power flywheel. As data centers drive large-scale adoption of onsite 
+power, they accelerate manufacturing investment, product innovation and supply-chain 
+development across distributed power technologies. Greater scale should lower costs and 
+improve the maturity and reliability of solutions such as fuel cells, packaged microgrids 
+and, over time, SMRs. As the economics improve, we expect adoption to broaden beyond 
+data centers to C&I customers facing similar needs around grid access, resilience and time-
+to-power.
+
+M
+North America Insight
+Morgan Stanley Research
+21
+Exhibit 24: Distributed Power Flywheel
+Source: Morgan Stanley Research
+Onshoring of manufacturing drives the next leg of BTM power consumption. Beyond 
+data centers, reshoring in the US offerings a large secondary market for onsite power 
+solutions. Driven by bipartisan support and attractive policy incentives, the US is taking 
+strides to bring manufacturing back to the US after a decades long shift to regions with 
+cheaper labor markets. In partnership with our Multi-Industrials team, we've sensitized the 
+potential impact of the US growing its share of global manufacturing production such that 
+if the US were to return to a 20% share by 2050 (vs 16% in 2025) the industry would 
+require as much as 113 GW of incremental electricity capacity through 2035 to remain 
+on track, including commercial growth. Given the power shortages across the US, we 
+believe onsite power will play an increasingly important role in supporting the onshoring 
+of manufacturing. In building this TAM analysis, we've leveraged previous work with our 
+multi-industrial team: US Reshoring Flame Has Been Lit For $10tn Opportunity and CoTD: 
+What does US Reshoring Mean for Electricity Demand?
+
+M
+North America Insight
+22
+Exhibit 25: Potential US C&I Demand
+9.8
+10.2
+10.6
+11.0
+11.4
+11.9
+12.3
+12.8
+13.3
+0
+2
+4
+6
+8
+10
+12
+14
+2027E
+2028E
+2029E
+2030E
+2031E
+2032E
+2033E
+2034E
+2035E
+Incremental US C&I Demand (GW)
+Source: Morgan Stanley Research estimates
+Political Pushback Could Support BTM Power 
+The political climate is intensifying, which should benefit behind-the-meter solutions. 
+Retail electricity prices rose meaningfully in 2025 and are expected to keep rising, and 
+data centers have become the convenient explanation whether or not they are the 
+dominant cause.  Politics are becoming impossible to separate from the data center 
+build-out: We highlighted "The Politics of Energy" as one of our 10 thematic predictions to 
+watch heading in 2026, in particular the risk of rising backlash against data center growth 
+becoming a key wedge issue ahead of the midterm elections. This has played out so far: as 
+the issue rises in salience with voters, third parties report an estimated value of ~$156 
+billion of projects were cancelled or delayed in 2025, and $130 billion already in 1Q26. 
+These instances of local opposition have grown louder across state lines, as lawmakers at 
+the federal level are now introducing legislation toward this end. 
+Data center moratoriums have precedent, and are expanding at the state and local 
+level. To be sure, a growing number of localities have passed or proposed guardrails and 
+restrictions on data center projects: guardrails introduced include infrastructure cost-
+sharing requirements, ratepayer protection initiatives, environmental disclosure rules and 
+zoning changes. Restrictions have mostly been in the form of temporary moratoriums, 
+impacting future projects or those lacking vested status. Further, although the explicit 
+public opposition has tended to concentrate more in blue states and among Democratic-
+leaning voters, we're seeing state-wide data center moratorium proposals emerge roughly 
+evenly in Democratic trifectas, Republican trifectas, and divided governments. 
+Importantly, most efforts are aimed at slowing,  not reversing  the build-out, as many 
+of these policy initiatives are temporary. 
+Policy action is building as community pushback to data centers intensifies.  Texas is 
+auditing every data center advancing through ERCOT's interconnection process against 
+more than 474 GW of pending requests, ~90% data center-related, with major developers 
+indicating they will comply. Virginia's July 31 Rider T1 order moves Dominion toward "cost 
+causer pays" for direct-connect transmission. Ohio's debate has become electoral through 
+Vivek Ramaswamy's "Ohioans-First" proposal, which is not current law and is better read 
+as a sentiment indicator than a change to project economics. Pennsylvania Governor Josh 
+
+M
+North America Insight
+Morgan Stanley Research
+23
+Shapiro issued an executive order ending the state’s fast-track permitting program and 
+mandating that data center projects must first be approved by local officials. It also 
+prevents NDAs from being used, introduces new environmental standards, and 
+requirements to bring your own capacity. 
+We expect this conversation to spread as it gains relevance with voters ahead of the 
+midterms - the majority of community pushback is concentrated around 3 issues: (1) 
+Affordability and the concern that data center power consumption will raise consumer 
+power bills, (2) Environmental issues especially water use and air pollution, and (3) 
+Quality of life concerns including noise, dust, and traffic. 
+Exhibit 26: Core Concerns In Data Center Opposition
+Source: Morgan Stanley Research
+We recently published an update on data center opposition dynamics - for more, please see 
+Power Struggle: Data Center Pushback Update & Expert Call Takeaways.
