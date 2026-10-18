@@ -1,0 +1,979 @@
+15 October 2026
+U.S. Multi Industry & Electrical Equipment
+AI Data Center Interconnects: Copper Inside, Optical Outside, CPO
+in Between (webinar recap)
+Varun Govindaraj
++1 917 344 8543
+varun.govindaraj@bernsteinsg.com
+Daniel Zhu
++1 917 344 8309
+daniel.zhu@bernsteinsg.com
+Specialist Sales
+Steve Song
++1 917 344 8401
+steve.song@bernsteinsg.com
+Last month we initiated coverage of US interconnect manufacturers and networking
+equipment, with the evolving copper-versus-optics debate across AI data center
+interconnects a key theme. We also recently hosted an expert webinar with Brad Smith, a
+former NVIDIA leader with extensive experience across the copper and optical interconnect
+ecosystem. Summarizing the key takeaways from the discussion:
+Rising AI workloads fundamentally alter the interconnect problem: Traditional data
+centers historically were ~90% copper, ~8% multi-mode optics and ~2% single-mode
+optics, but AI fundamentally changes the architecture: a single AI application can run across
+a million+ GPUs. This creates substantially greater bandwidth, reach and port-density
+requirements. The debate is therefore about where the boundary between the ‘copper and
+optical’ ultimately sits.
+Copper inside, optics outside, CPO in between: Short-reach scale-up connectivity
+inside the rack remains predominantly copper (including through Vera Rubin / Vera Rubin
+Ultra), while longer-reach scale-out / scale-across connections increasingly require single-
+mode optics. The framework is therefore relatively simple: use copper inside the rack
+for as long as possible, CPO increasingly around network switches, and optics for
+longer-reach connections outside the rack.
+Physics ultimately defines the copper-to-optics transition: Copper reach compresses
+rapidly as signaling speeds increase, from ~2.5m at ~100Gbps to ~18 inches at ~200Gbps
+and ~12 inches at ~400Gbps; multi-mode optics also becomes reach-constrained at higher
+speeds. DSPs can extend electrical reach but introduce additional power, cost and latency
+problems, while single-mode optics becomes increasingly necessary across the hundreds-
+of-meters distances found in large AI data centers. Within the rack, the gating factor for
+greater optical adoption is ultimately whether rising GPU/HBM density pushes package-
+level I/O beyond what short-reach copper cables can practically support.
+CPO addresses an emerging switch-level constraint: As switch bandwidth and port
+density increase, the electrical connection between the switch ASIC and front-panel optical
+modules itself becomes challenging. CPO moves electrical-to-optical conversion adjacent
+to the switch silicon (thereby shortening that electrical path from ~18 inches to ~0.5 inches).
+The expert contrasted ~128 × 800Gbps ports on a current NVIDIA switch with ~512 ×
+800Gbps using CPO (a 4x increase in capacity). The resulting increase in switch radix can
+reduce the physical space associated with millions of pluggable transceivers.
+CPO adoption will be gradual: Silicon photonics (SiPh) is the underlying chip technology
+enabling increasingly dense optical connectivity around the switch, while CPO is the
+system-level architecture integrating those connections with the switch silicon.
+Overall, the transition toward CPO appears to be later than we had initially expected,
+with meaningful adoption only from 2030+; until then, scale-up is expected to
+remain predominantly copper.
+See the Disclosure Appendix of this report for required disclosures, analyst certifications and other
+important information. Alternatively, visit our  Global Research Disclosure Website.
+www.bernsteinresearch.com
+First Published: 15 Oct 2026 20:36 UTC  Completion Date: 15 Oct 2026 20:36 UTC
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+BERNSTEIN TICKER TABLE
+14 Oct 2026
+TTM
+Reported EPS
+Reported P/E (x)
+Closing
+Price
+Rel.
+Ticker
+Rating
+Cur
+Price
+Target
+Perf.
+Cur
+2025A
+2026E
+2027E
+2025A
+2026E
+2027E
+APH (Amphenol)
+O
+USD
+82.69
+99.00
+12.6%
+USD
+1.67
+2.65
+3.31
+49.5
+31.2
+25.0
+TEL (TE Connectivity)
+O
+USD
+210.25
+243.00
+(22.1)%
+USD
+9.26
+11.46
+12.98
+22.7
+18.4
+16.2
+LITE (Lumentum)
+O
+USD
+896.33
+1,220.00
+427.1%
+USD
+2.05
+8.37
+22.40
+438.2
+107.0
+40.0
+COHR (Coherent)
+O
+USD
+263.32
+350.00
+105.5%
+USD
+3.53
+5.58
+9.51
+74.5
+47.2
+27.7
+GLW (Corning)
+M
+USD
+140.89
+140.00
+39.5%
+USD
+2.54
+3.22
+4.16
+55.5
+43.8
+33.9
+SPX
+7,718.94
+O - Outperform, M - Market-Perform, U - Underperform, NR - Not Rated, CS - Coverage Suspended
+APH, TEL estimate is Adjusted EPS; APH, TEL valuation is Adjusted P/E (x);
+Source: Bloomberg, Bernstein estimates and analysis.
+INVESTMENT IMPLICATIONS
+We rate APH (PT $99) and TEL (PT $243) Outperform.
+We rate LITE (PT $1220), COHR (PT $350) Outperform and GLW (PT $140) Market-Perform.
+RESEARCH INDEX
+US Multi Industrials: Can we (inter)connect? Initiating coverage with Outperform on Amphenol and TE Connectivity
+US Networking: Scaling the bandwidth wall. Initiating with a positive view
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+2
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+DETAILS
+We hosted an expert webinar with Brad Smith, a former NVIDIA leader with experience across both copper and optical
+interconnect technologies. Smith has spent roughly half of his career across the copper and optics ecosystem, including serving
+as CEO of an optical solutions company, working in business development at a silicon-photonics foundry funded by Intel’s
+silicon-photonics business, running transceiver product lines, and subsequently joining Mellanox (later acquired by NVIDIA).
+Most recently, he worked across product marketing and management for the copper and optics product portfolio at NVIDIA.
+The discussion focused on the ongoing copper-versus-optics debate across AI data center interconnects, including the underlying
+physics driving the transition, where copper versus optics fit within current and future AI architectures, the evolution of CPO and
+competing architectures, and what ultimately determines how far optics moves inside the rack.
+What is the debate all about, and why does it exist in the first place?
+The starting point for the copper-versus-optics debate is that AI fundamentally changes the way compute infrastructure
+needs to be interconnected. Historically, the expert stated that ~90% of data center interconnects were copper, ~8% multi-
+mode optics and ~2% single-mode optics. This was broadly how the market operated prior to the acceleration of AI beginning
+August 2022. In traditional search / social media data centers, a single CPU could run ~10-12 applications simultaneously
+through virtualization. AI workloads turns that model to an extreme: one application can run across as many as a million GPUs.
+That architectural change places very different requirements on the network. According to the expert, single-mode optics
+(relevant to AI workloads) support upto ~500m-2km reaches required across increasingly large AI data centers. In contrast,
+both copper and multi-mode optics become progressively less viable as the combination of bandwidth and distance increases.
+This is ultimately what sits behind the current debate: vastly larger numbers of GPUs / CPUs increasingly need to operate
+together as one system, creating significantly greater requirements for bandwidth, port density and hence interconnects - both
+in terms of numbers and reach. The question is therefore where the boundary between copper and optics ultimately sits
+as AI architectures continue to scale.
+Framing the problem and key terminology
+It is helpful first to understand the different layers of AI connectivity. The expert described “scale-up” as connectivity within the
+rack, where GPUs are connected together to behave as a larger virtual GPU; “scale-out” connects multiple racks together; and
+“scale-across” connects entire data centers together. The discussion also referenced NVIDIA Fusion / NVLink connectivity as a
+mechanism to connect an external AI-chip subsystem into the broader NVIDIA GPU, networking and software stack, referred to
+in the discussion as “scale-in’. We could eventually have “scale-to-space” as orbital data centers eventually emerge.
+The distinction matters because inside and outside the rack remain fundamentally different connectivity problems. Inside the
+rack, distances are short and copper remains the predominant medium. Vera Rubin illustrates the current approach: the expert
+described ~18 inches as the maximum relevant copper wire length (for up to ~200Gbps interconnection speeds), with NVLink
+switching positioned centrally in the rack and compute trays above and below, connected through ~5,000 short copper cables.
+Even NVIDIA’s Vera Rubin generation was described as retaining copper PCBs (with layers of copper traces carrying high-speed
+signals).
+Future architectures can remove much of these copper cables without necessarily removing copper in its entirety. The expert
+described a Feynman-era architecture in which compute blades connect into a midplane PCB, replacing many of the individual
+cables with copper traces on the board itself, with NVLink switching positioned at the back. The architecture discussed
+included 4 such assemblies within a rack and was described as approaching ~1MW per rack. The expert also referenced
+commentary that implementing an equivalent architecture with optics would add ~60kW of power and $2M of cost, reinforcing
+why manufacturers are unlikely to use optics for an ~18-inch connection while copper remains technically viable.
+This leads to the expert’s broader framework for how the interconnect architecture evolves: copper inside the rack for
+as long as possible; CPO increasingly around network switches; and optics on the outside for the longer-reach
+connections between racks and across facilities (ie scale out / scale across). CPO is therefore central to the current
+discussion, but should not be interpreted as implying an imminent full transition from copper to optics throughout the AI data
+center, but a more gradual one.
+What eventually pushes optics deeper into the scale-up domain is the evolution of the compute package itself. The expert
+used the progression from Hopper to Blackwell to illustrate this. Hopper was described as having one GPU die with HBM
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+3
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+around it. TSMC’s CoWoS, (‘chip-on-wafer-on-substrate’) allows the memory to be positioned adjacent to the compute silicon.
+Blackwell moves to two dies with eight stacks of 12 HBM chips each, while future architectures are moving toward four dies
+and substantially more HBM on a package described as roughly the size of a mobile phone.
+As more compute and memory are concentrated within a package, I/O requirements rise accordingly and networking hence
+becomes the next constraint. The expert therefore identified the amount of silicon and memory that can be placed on a
+package as a key gating factor for when scale-up connectivity needs to become optical. The broader message remains
+evolutionary: the industry will continue using PCBs (with copper traces) and high-speed copper connections until package-level
+I/O requirements exceed what short-reach electrical connections can support within practical limits.
+Underlying physics: why the need for single-mode optics at all?
+The primary limitation of copper is physical: as signaling speed increases, achievable cable length declines. The expert
+illustrated this through the historical progression of copper cable links. A conventional Cat 5e/6-style connection can support
+~1Gbps over ~100m. At ~25Gbps, the reach falls to ~7m; at 50Gbps, ~3m; and at 100Gbps, ~2.5m. At the higher speeds
+relevant for AI workloads, passive copper reach compresses further, with the discussion citing ~18 inches for ~200Gbps and ~1
+ft / 12 inches at ~400Gbps. In practical terms, the expert suggested that copper effectively starts to disappear at ~400Gbps as
+its usable reach becomes increasingly limited.
+The expert explained the physics relatively simply: sending an electron through a wire creates a radio wave that radiates energy
+away from the conductor, leaving less energy available to maintain the signal farther along the wire. As signaling speeds rise,
+maintaining signal integrity therefore becomes progressively more difficult. Put simply, the faster the signal, the shorter the
+copper connection becomes.
+One way to extend electrical reach is to add a digital signal processor (DSP) that compensates for signal degradation and noise,
+creating an active electrical cable (AEC). The expert cited Credo as an supplier and referenced ~$1,200 cost (per unit) and
+~100-200 nanoseconds of latency for an AEC. With DSPs, ~200Gbps links can be pushed to ~2 meters, although the expert
+indicated that the approach becomes challenged at higher speeds and that ~400Gbps copper effectively runs out of reach.
+Importantly, multi-mode optics faces its own version of the reach problem. Historically, multi-mode optics provided a relatively
+inexpensive bridge between copper and the more expensive single-mode optics. However, multi-mode optics gets constrained
+with ~100m of reach at 50Gbps and ~50m at 100Gbps, while ~200Gbps multi-mode was described as not yet having emerged
+as a viable technology and remaining in R&D stage. For large AI data centers where connections can extend hundreds of meters,
+this increasingly pushes the architecture toward single-mode optics.
+However, single-mode optics introduces its own cost and complexity. The expert highlighted the challenge of precisely aligning
+fiber with lasers and photodetectors, is ~30-35% of transceiver cost at an increasingly sensitive 9-micron core for single-mode
+fiber (roughly the size of a red blood cell, think about aligning two red blood cells together). This reinforces the broader economic
+logic of the architecture: single-mode optics becomes increasingly important as reach increases, but there is little reason to
+absorb its additional cost and complexity for an 18-inch connection that copper can still serve.
+The optical transceiver architecture itself is also evolving to reduce power and cost. A conventional transceiver combines the
+transmitter and receiver: on the transmit side a laser is modulated to encode the signal, while the receiver uses a photodetector
+and amplification to recover it. Optical links also experience signal-integrity issues, including reflections across interfaces, and
+conventional transceivers therefore contain DSPs to maintain signal integrity. The expert cited approximately $150 of cost (per
+unit) and ~15-20W of power associated with the DSP.
+This has led to three broad approaches: Full-retimer optics (FRO) retains a DSP within the transceiver; low-power optics
+(LPO) eliminates the DSP entirely; and a hybrid approach retains signal processing on only one side of the link. The trade-
+off is straightforward: removing DSP functionality can reduce power and cost, but requires a more carefully engineered (and
+increasingly sensitive) link to maintain signal integrity.
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+4
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+EXHIBIT 1: How will the packaged optics evolution work?
+Source: Broadcom, Bernstein Asia Tech Hardware Team
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+5
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+Deep dive on co-package optics (CPO)
+Co-packaged optics (CPO) addresses a different problem: as switch bandwidth and port density increase, the electrical
+connection between the switch silicon and conventional front-panel optical modules itself becomes increasingly
+difficult. Traditional switch architectures place pluggable transceivers at the front panel, physically separated from the switch
+ASIC. CPO brings this electrical-to-optical conversion (through optical engines) adjacent to the switch chip, shrinking the
+distance between the electrical switch silicon and the optical interface from ~18 inches to ~0.5 inches (according to the expert).
+Hence, CPO is not synonymous with replacing every copper connection inside the rack, nor does it imply that every conventional
+optical transceiver disappears. Rather, CPO addresses the challenge of fitting increasing amounts of optical bandwidth around
+increasingly large and powerful switch silicon chips.
+CPO itself is not a new technology. Earlier efforts to manufacture CPO at scale struggled because there was insufficient market
+demand. The current cycle is different because AI workloads require substantially more bandwidth and connectivity, while
+investment in the underlying manufacturing ecosystem has accelerated. NVIDIA was characterized as an important driver of the
+current CPO push, alongside increasing activity from Broadcom, Cisco and Marvell. The expert noted that NVIDIA CPO switches
+began shipping in summer 2026, but characterized this as the beginning of the technology cycle, with more meaningful
+practical adoption expected from 2030 onwards and CPO initially deployed at the highest levels of the network before moving
+progressively downward, with technological maturity probably stretching into 2035 and beyond.
+The maturity of silicon photonics (SiPh) and the associated manufacturing ecosystem are central to enabling this transition.
+Please note that SiPh is the underlying chip technology, while CPO is the system-level packaging / architectural framework
+that integrates optical connectivity around the switch silicon. SiPh experienced an earlier investment cycle from ~2015-18
+but did not develop as anticipated and remained more expensive than competing technologies, leading many fabs to step
+back production. The expert argued that the technology has since caught up materially with market requirements, citing SiPh
+solutions enabling upto ~400Gbps links.
+One technology highlighted was the ring-resonator modulator, which can materially reduce the size of the optical modulation
+element. The expert contrasted a traditional SiPh modulator, described as closer to postage-stamp size (in terms of scale),
+with a ring resonator cited at ~20 microns in diameter. This becomes increasingly important as the number of connections
+around the switch grows and individual optical elements need to become smaller. The expert discussed NVIDIA’s investment
+in R&D and TSMC SiPh in this context, while GlobalFoundries was also cited among companies investing into the broader
+manufacturing ecosystem.
+Ultimately, the attraction of CPO is best understood through switch radix (or the total number of external ports / connections
+that a switch can support). The expert described large AI data centers as requiring ~15,000-25,000 network switches stacked
+across 4-5 layers because each individual switch has a limited number of ports. He contrasted a current NVIDIA switch
+configuration with ~128 800Gbps ports against a CPO configuration supporting ~512 800Gbps ports (a 4x increase in port
+capacity). At that level of density, conventional pluggable transceivers become increasingly difficult simply because of the
+physical space (and amount of power) they consume.
+Higher radix potentially allows the network to become flatter, reducing the number of switching layers and intermediate
+connections. Reliability also becomes increasingly relevant at these scales. The expert cited ~6-7 million transceivers in a single
+data center (today); with that many modules deployed, individual failures become frequent enough to matter operationally, a
+transceiver failure every few hours and the system potentially entering checkpoint mode once sufficient failures accumulate.
+CPO therefore addresses more than headline bandwidth: port density, physical space, network topology and system-level
+reliability all become part of the rationale
+Alternatives to CPO: co-packaged copper (CPC) and near-packaged optics (NPO)
+CPO is not the only technology in response to the electrical-reach and front-panel-density problem. One alternative is co-
+packaged copper (CPC), where high-speed copper connectors are placed directly around switch silicon (substrate). In CPC,
+the connector is brought directly onto or very close to the ASIC substrate. Instead of the high-speed signal traveling a relatively
+long distance through copper traces on the PCB (as in the current technology today), the signal enters a purpose-built copper
+cable almost immediately outside the silicon. TE Connectivity, Molex and Amphenol were cited as companies working on CPC
+solutions across switch chips and other semiconductor packages.
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+6
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+A second alternative is near-packaged optics (NPO). Instead of fully co-packaging the optics with the switch silicon (as is
+the case with CPC), NPO moves the transceiver inward from the front panel and positions it closer to the switch, including
+architectures where the optical modules point outward at a 90-degree orientation and provide additional channels. DSP
+functionality can also be removed depending on the implementation. The trade-off is physical size. As switch chips themselves
+become larger, surrounding them with sizable optical modules results in an increasingly larger package. The expert illustrated
+this by describing a large switch chip as roughly the size of a cell phone and the adjacent optical modules as the size of “small
+hot dogs”; once assembled, the overall footprint can approach the size of a laptop. NPO therefore solves part of the reach
+problem without taking the optics all the way into the package, but physical density eventually becomes a constraint.
+Multiple architectures are thus developing in parallel, while CPO itself is expected to begin at the upper layers of the network
+and broaden over time as manufacturing ecosystem matures.
+Other points of discussion
+• Inference / custom ASICs: Given that inference is application-specific with custom ASICs, it is difficult to prescribe
+one universal networking architecture for inference workloads. Custom ASICs can be optimized for specific workloads
+rather than providing the generalized GPU architecture offered by NVIDIA / AMD today which is more relevant for training
+workloads. Google was cited as an example for custom-made ASIC associated with YouTube workloads. These custom ASICs
+were described as being ‘first-generation’ ~500W TDP and air cooled. Distributed inference introduces another model,
+with clusters of different computers contributing to workloads and software bringing the outputs together to create tokens.
+Despite these differences, the expert’s near-term conclusion remained consistent: inference does not inherently require
+optics inside the rack today, and copper should continue to be used where bandwidth and reach allow it.
+• Optical circuit switching (OCS): The expert was also asked whether Google has an advantage through optical circuit
+switching (OCS). He emphasized that OCS itself is not a new technology, having been used in telecom networks for decades.
+Unlike an electronic switch, which the expert described as providing ~300 nanoseconds port-to-port switching, OCS acts
+more like a railroad junction node by establishing a direct optical path between specified ports, for example from port 1
+to port 6. This can be useful in reconfiguring resources, such as linking storage capacity to different GPU clusters, but the
+expert did not view OCS as replacing conventional electronic switching. Coherent was cited as a participant using liquid-
+crystal technology, while a MEMS-based approach by Lumentum was also discussed.
+• Laser architecture evolution: The discussion also covered the evolution of laser technology. The expert highlighted indium-
+phosphide lasers, noting that indium is a byproduct of zinc production and that ~70% of supply comes from China. Indium
+phosphide lasers historically served primarily telecom applications, and the AI optical build-out is placing substantially
+greater demands on the supply chain; high-power lasers were also described as more challenging from a manufacturing-
+yield perspective.
+• Fabrinet: Finally, the expert discussed Fabrinet’s positioning as the photonics architecture evolves. NVIDIA has used
+Fabrinet historically for transceiver manufacturing, while other suppliers also use outsourced manufacturing models. The
+expert characterized Fabrinet as a mainstream, high-quality manufacturing participant rather than a transceiver technology
+supplier itself, and noted that the company is scaling its optical capabilities going forward.
+The authors would like to thank Sakansh Mittal for his help in preparing this report.
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+7
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+DISCLOSURE APPENDIX
+I. REQUIRED DISCLOSURES
+References to "Bernstein" or the “Firm” in these disclosures relate to the following entities: Bernstein Institutional Services LLC
+(April 1, 2024 onwards), Sanford C. Bernstein & Co., LLC (pre April 1, 2024), Bernstein Autonomous LLP, BSG France S.A. (April 1,
+2024 onwards), Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司, Sanford C. Bernstein (Canada) Limited, Sanford
+C. Bernstein (India) Private Limited (SEBI registration no. INH000006378), Sanford C. Bernstein (Singapore) Private Limited,
+Sanford C. Bernstein Japan KK (サンフォード・C・バーンスタイン株式会社) and analysts employed by Société Générale
+Africa Technologies & Services to produce Bernstein research under a Global Services Agreement in place between Bernstein
+and Société Générale.
+Bernstein is part of a joint venture between Société Générale (SG) and AllianceBernstein, L.P. (AB). Unless specifically noted
+otherwise, for purposes of these disclosures, references to Bernstein’s “affiliates” relate to both SG and AB and their respective
+affiliates.
+VALUATION METHODOLOGY
+Amphenol Corporation
+We value APH at 28x NTM + 1 EPS of $3.5 giving us a TP of $99.
+TE Connectivity Ltd
+We value TEL at 17x NTM + 1 EPS of $14.3 giving us a TP of $243.
+Lumentum Holdings Inc
+We apply a ~35x multiple to our estimate of $35 in FY 28 EPS, and set our price target at $1,220.
+Coherent Corp
+We apply a ~22x multiple to our estimate of $16 in FY 28 EPS, and set our price target at $350.
+Corning Inc
+We apply a ~25x multiple to our estimate of $5.7 in FY 28 EPS, and set our price target at $140.
+RISKS
+Amphenol Corporation
+Faster than expected CPO uptake in designs, Competitive pressure from peer group (APH, Molex), Longer ramp for automotive
+thesis to play out (autonomy, electrification, etc.)
+TE Connectivity Ltd
+Faster than expected CPO uptake in designs, Competitive pressure from peer group (APH, Molex), Longer ramp for automotive
+thesis to play out (autonomy, electrification, etc.)
+Lumentum Holdings Inc
+Greater adoption of CW+SiPh lasers eases the InP bottleneck, reducing Lumentum and Coherent's pricing power
+China retaliates against US sanctions/tariffs on transceivers with export restrictions on InP, choking off supply
+Optical adoption lags amid continued CPO yield issues
+AI adoption decelerates, in turn leading to reduced investment in AI infrastructure
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+8
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+Coherent Corp
+Greater adoption of CW+SiPh lasers eases the InP bottleneck, reducing Lumentum and Coherent's pricing power
+China retaliates against US sanctions/tariffs on transceivers with export restrictions on InP, choking off supply
+Optical adoption lags amid continued CPO yield issues
+AI adoption decelerates, in turn leading to reduced investment in AI infrastructure
+Corning Inc
+Our price target for Corning could see upside if Optical adoption accelerates as CPO yield improves, driving upside to 2027-2028
+numbers
+Our price target for Corning could see upside if Reacceleration in the smartphone or autos markets supports a stronger growth
+outlook for Corning
+Our price target for Corning could see downside if AI adoption decelerates, in turn leading to reduced investment in AI
+infrastructure
+RATINGS DEFINITIONS, BENCHMARKS AND DISTRIBUTION
+EQUITY RATINGS DEFINITIONS
+Bernstein brand
+The Bernstein brand rates stocks based on forecasts of relative performance for the next 12 months versus the S&P 500 for
+stocks listed on the U.S. and Canadian exchanges, versus the Bloomberg Europe Developed Markets Large and Mid Cap Price
+Return Index EUR (EDME) for stocks listed on the European exchanges and emerging markets exchanges outside of the Asia
+Pacific region, versus the Bloomberg Japan Large and Mid Cap Price Return Index USD (JPL) for stocks listed on the Japanese
+exchanges, and versus the Bloomberg Asia ex-Japan Large and Mid Cap Price Return Index (ASIAX) for stocks listed on the Asian
+(ex-Japan) exchanges -unless otherwise specified.
+The Bernstein brand has three categories of ratings:
+• Outperform: Stock will outpace the market index by more than 15 pp
+• Market-Perform: Stock will perform in line with the market index to within +/-15 pp
+• Underperform: Stock will trail the performance of the market index by more than 15 pp
+Coverage Suspended: Coverage of a company under the Bernstein research brand has been suspended. Ratings and price targets
+are suspended temporarily, are no longer current, and should therefore not be relied upon.
+Not Rated: A rating assigned when the stock cannot be accurately valued, or the performance of the company accurately
+predicted, at the present time. The covering analyst may continue to publish research reports on the company to update investors
+on events and developments.
+Not Covered (NC) denotes companies that are not under coverage.
+Bernstein brand stock ratings are based on a 12-month time horizon.
+Autonomous brand – common stocks
+The Autonomous brand rates common stocks as indicated below. As our benchmarks we use the Bloomberg Europe 600
+Financials Price Return Index (E600BK) and Bloomberg Europe Dev Mkt Financials Large and Mid Cap Price Ret Index EUR
+(EDMFI) index for developed European banks and Payments, the Bloomberg Europe 600 Insurance Price Return Index (E600IN)
+for European insurers, the S&P 500 and S&P Financials for US banks and Payments coverage, S5LIFE for US Insurance, the S&P
+Insurance Select Industry (SPSIINS) for US Non-Life Insurers coverage, the Bloomberg Emerging Markets Financials Large, Mid
+and Small Cap Price Return Index (EMLSF) for emerging market banks and insurers and Payments, and the Bloomberg Japan
+Financials Large & Mid Cap Price Return Index (JPFILM) for Japanese Financials. Ratings are stated relative to the sector (not the
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+9
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+market).
+The Autonomous brand has three categories of common stock ratings:
+• Outperform (OP): Stock will outpace the relevant index by more than 10 pp
+• Neutral (N): Stock will perform in line with the market index to within +/-10 pp
+• Underperform (UP): Stock will trail the performance of the relevant index by more than 10 pp
+Coverage Suspended: Coverage of a company under the Autonomous research brand has been suspended. Ratings and price
+targets are suspended temporarily, are no longer current, and should therefore not be relied upon.
+Not Rated: A rating assigned when the stock cannot be accurately valued, or the performance of the company accurately
+predicted, at the present time. The covering analyst may continue to publish research reports on the company to update investors
+on events and developments.
+Those denoted as ‘Feature’ (e.g., Feature Outperform FOP, Feature Under Outperform FUP) are our core ideas.
+Not Covered (NC) denotes companies that are not under coverage.
+Autonomous brand common stock ratings are based on a 12-month time horizon.
+Autonomous brand – preferred stocks
+The Autonomous brand has three categories of preferred stock ratings:
+• Outperform (OP): The total return of the preferred instrument is expected to outperform preferred securities of other issuers
+operating in similar sectors or rating categories over the next six months.
+• Neutral (N): The total return of the preferred instrument is expected to perform in line with preferred securities of other issuers
+operating in similar sectors or rating categories over the next six months.
+• Underperform (UP): The total return of the preferred instrument is expected to underperform preferred securities of other
+issuers operating in similar sectors or rating categories over the next six months.
+Autonomous preferred stock ratings are based on a 6-month time horizon.
+AUTONOMOUS CREDIT RESEARCH
+Where this report contains investment recommendations for credit instruments, as defined in article 3(1)(35) of the Market Abuse
+Regulation, the information below is presented to comply with its disclosure requirements.
+The report may also include reference(s) to published opinions by other Autonomous or Bernstein analysts covering the equity
+securities of the issuer(s) referenced herein. Please note an investment recommendation for credit instruments published by the
+author(s) of this report may differ from the published view of the analyst covering equity securities for the issuer(s) contained in
+this report and vice versa.
+CREDIT RATINGS DEFINITIONS
+The Autonomous brand has three categories of credit ratings:
+• Credit Outperform (C-OP): The total return of the Reference Credit Instrument is expected to outperform the credit spread of
+bonds of other issuers operating in similar sectors or rating categories over the next six months.
+• Credit Neutral (C-N): The total return of the Reference Credit Instrument is expected to perform in line with the credit spread
+of bonds of other issuers operating in similar sectors or rating categories over the next six months.
+• Credit Underperform (C-UP): The total return of the Reference Credit Instrument is expected to underperform the credit spread
+of bonds of other issuers operating in similar sectors or rating categories over the next six months.
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+10
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+Autonomous credit ratings are based on a 6-month time horizon.
+A list of all investment recommendations produced by the author(s) of this report alongside credit ratings history are available
+upon request.
+It is at the sole discretion of the Firm as to when to initiate, update and cease research coverage. The Firm has established,
+maintains and relies on information barriers to control the flow of information contained in one or more areas (i.e. the private side)
+within the Firm, and into other areas, units, groups or affiliates (i.e. public side) of the Firm
+DISTRIBUTION OF EQUITY RATINGS/INVESTMENT BANKING SERVICES
+Equity Rating
+Market Abuse
+Regulation (MAR) and
+FINRA Rating Category
+Global Rating
+Distribution
+Investment Banking
+Relationships*
+Outperform
+BUY
+52.3%
+14.2%
+Market-Perform (Bernstein Brand)
+Neutral (Autonomous Brand)
+HOLD
+35.6%
+16.1%
+Underperform
+SELL
+12.1%
+13.6%
+* These figures represent the percentage of companies within each equity rating category for which affiliates of Bernstein have
+provided investment banking services within the previous 12 months.
+As of September 30, 2026. All figures are updated quarterly.
+PRICE CHARTS / RATINGS AND PRICE TARGET HISTORY
+Amphenol Corporation (APH) Rating History for Bernstein as of 10/14/2026
+$200
+$150
+$100
+$50
+$0
+Jan 24
+Apr 24
+Jul 24
+Oct 24
+Jan 25
+Apr 25
+Jul 25
+Oct 25
+Jan 26
+Apr 26
+Jul 26
+Oct 26
+I:O:$99.00
+09/22/2026
+Closing Price
+Price Target
+Outperform (O); Market-Perform (M); Underperform (U); Coverage Suspended (CS); Not Covered (NC)
+TE Connectivity Ltd (TEL) Rating History for Bernstein as of 10/14/2026
+$260
+$240
+$220
+$200
+$180
+$160
+$140
+$120
+$100
+Jan 24
+Apr 24
+Jul 24
+Oct 24
+Jan 25
+Apr 25
+Jul 25
+Oct 25
+Jan 26
+Apr 26
+Jul 26
+Oct 26
+I:O:$243.00
+09/22/2026
+Closing Price
+Price Target
+Outperform (O); Market-Perform (M); Underperform (U); Coverage Suspended (CS); Not Covered (NC)
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+11
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+Lumentum Holdings Inc (LITE) Rating History for Bernstein as of 10/14/2026
+$1,400
+$1,200
+$1,000
+$800
+$600
+$400
+$200
+$0
+Jan 24
+Apr 24
+Jul 24
+Oct 24
+Jan 25
+Apr 25
+Jul 25
+Oct 25
+Jan 26
+Apr 26
+Jul 26
+Oct 26
+I:O:$1,220.00
+09/29/2026
+Closing Price
+Price Target
+Outperform (O); Market-Perform (M); Underperform (U); Coverage Suspended (CS); Not Covered (NC)
+Coherent Corp (COHR) Rating History for Bernstein as of 10/14/2026
+$500
+$400
+$300
+$200
+$100
+$0
+Jan 24
+Apr 24
+Jul 24
+Oct 24
+Jan 25
+Apr 25
+Jul 25
+Oct 25
+Jan 26
+Apr 26
+Jul 26
+Oct 26
+I:O:$350.00
+09/29/2026
+Closing Price
+Price Target
+Outperform (O); Market-Perform (M); Underperform (U); Coverage Suspended (CS); Not Covered (NC)
+Corning Inc (GLW) Rating History for Bernstein as of 10/14/2026
+$300
+$250
+$200
+$150
+$100
+$50
+$0
+Jan 24
+Apr 24
+Jul 24
+Oct 24
+Jan 25
+Apr 25
+Jul 25
+Oct 25
+Jan 26
+Apr 26
+Jul 26
+Oct 26
+I:M:$140.00
+09/29/2026
+Closing Price
+Price Target
+Outperform (O); Market-Perform (M); Underperform (U); Coverage Suspended (CS); Not Covered (NC)
+All price target and closing price data in the chart(s) above are denominated in the currency noted in the Ticker Table of this report.
+CONFLICTS OF INTEREST
+Bernstein Autonomous LLP or BSG France SA, beneficially, has either a net long or short position of 0.5% or more of the total
+issued share capital of a class of common equity securities of the following MiFID eligible securities: Amphenol Corporation.
+SG and/or its affiliates beneficially own 0.5% or more of [the total issued share capital/any class of common equity securities]
+with a net [long/short] position of: Lumentum Holdings Inc.
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+12
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+Bernstein and/or affiliates have received compensation for investment banking services in the past twelve months from
+Lumentum Holdings Inc.
+Bernstein and/or affiliates have received compensation for non-investment banking securities-related products or services in the
+previous twelve months from the following clients: Amphenol Corporation and Corning Inc.
+An affiliate of Bernstein has received compensation for non-investment banking securities-related products or services in the
+previous twelve months from the following clients: Coherent Corp.
+Bernstein and/or affiliates expect to receive or intend to seek compensation for investment banking services in the next three
+months from Corning Inc.
+Certain affiliates of Bernstein act as market maker or liquidity provider in the equities securities of: Amphenol Corporation, TE
+Connectivity Ltd, Coherent Corp and Corning Inc.
+Affiliates of Bernstein managed or co-managed in the past twelve months a public offering of securities of Lumentum Holdings Inc.
+Bernstein and/or affiliates had an investment banking client relationship during the past twelve months with Lumentum Holdings
+Inc and Corning Inc.
+OTHER MATTERS
+The legal entity(ies) employing the analyst(s) listed in this report, and their location, can be determined by the country code of their
+phone number, as follows:
++1 Bernstein Institutional Services LLC; New York, New York, USA
++44 Bernstein Autonomous LLP; London UK
++212 Société Générale Global Solution Center Morocco, Casablanca, Morocco
++33 BSG France S.A.; Paris, France
++34 BSG France S.A.; Madrid, Spain
++41 Bernstein Autonomous LLP; Geneva, Switzerland
++49 BSG France S.A.; Frankfurt, Germany
++91 Sanford C. Bernstein (India) Private Limited; Mumbai, India
++852 Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司; Hong Kong, China
++65 Sanford C. Bernstein (Singapore) Private Limited; Singapore
++81 Sanford C. Bernstein Japan KK; Tokyo, Japan
+Where this report has been prepared by research analyst(s) employed by a non-US affiliate, such analyst(s), is/are (unless
+otherwise expressly noted below) not registered as associated persons of Bernstein Institutional Services LLC or any other SEC-
+registered broker-dealer and are not licensed or qualified as research analysts with FINRA. Accordingly, such analyst(s) may not
+be subject to FINRA’s restrictions regarding (among other things) communications by research analysts with a subject company,
+interactions between research analysts and investment banking personnel, participation by research analysts in solicitation and
+marketing activities relating to investment banking transactions, public appearances by research analysts, and trading securities
+held by a research analyst account.
+Where this report has been prepared by research analyst(s) employed by Société Générale Africa Technologies & Services (part
+of the Société Générale group of companies), it has been prepared on behalf of a Bernstein company under a Global Services
+Agreement in place between Bernstein and Société Générale.
+CERTIFICATION
+Each research analyst listed in this report, who is primarily responsible for the preparation of the content of this report, certifies
+that all of the views expressed in this publication accurately reflect that analyst's personal views about any and all of the subject
+securities or issuers and that no part of that analyst's compensation was, is, or will be, directly or indirectly, related to the specific
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+13
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+recommendations or views in this publication.
+II. ADDITIONAL GLOBAL CONFLICT DISCLOSURES
+It is at the sole discretion of the Firm as to when to initiate, update and cease research coverage. The Firm has established,
+maintains and relies on information barriers to control the flow of information contained in one or more areas (i.e., the private side)
+within the Firm, and into other areas, units, groups or affiliates (i.e., public side) of the Firm.
+III. OTHER IMPORTANT INFORMATION AND DISCLOSURES
+Separate branding is maintained for “Bernstein” and “Autonomous” research products.
+• Bernstein produces a number of different types of research products including, among others, fundamental analysis and
+quantitative analysis under both the “Autonomous” and “Bernstein” brands. Recommendations contained within one type of
+research product may differ from recommendations contained within other types of research products, whether as a result of
+differing time horizons, methodologies or otherwise. Furthermore, views or recommendations within a research product issued
+under one brand may differ from views or recommendations under the same type of research product issued under the other
+brand. The Research Ratings System for the two brands and other information related to those Rating Systems are included
+in the previous section.
+• Autonomous operates as a separate business unit within the following entities: Bernstein Institutional Services LLC,
+Bernstein Autonomous LLP, Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司 and Sanford C. Bernstein (India)
+Private Limited. For information relating to “Autonomous” branded products (including certain Sales materials) please visit:
+www.autonomous.com. For information relating to Bernstein branded products please visit: www.bernsteinresearch.com.
+Analysts are compensated based on aggregate contributions to the research franchise as measured by account penetration,
+productivity and proactivity of investment ideas. No analysts are compensated based on performance in, or contributions to,
+generating investment banking revenues.
+This report has been produced by an independent analyst as defined in Article 3 (1)(34)(i) of EU 596/2014 Market Abuse
+Regulation (“MAR”) and the same article of MAR as it forms part of United Kingdom domestic law by virtue of the European Union
+(Withdrawal) Act 2018.
+To our readers in the United States: Bernstein Institutional Services LLC, a broker-dealer registered with the U.S. Securities
+and Exchange Commission (“SEC”) and a member of the U.S. Financial Industry Regulatory Authority, Inc. (“FINRA”) is distributing
+this publication in the United States and accepts responsibility for its contents. Where this material contains an analysis of debt
+product(s), such material is intended only for institutional investors and is not subject to the US independence and disclosure
+standards applicable to debt research prepared for retail investors.
+Bernstein Institutional Services LLC may act as principal for its own account or as agent for another person (including an affiliate)
+in sales or purchases of any security which is a subject of this report. This report does not purport to meet the objectives or needs
+of any specific individuals, entities or accounts.
+To our readers in Canada: If this publication pertains to a Canadian domiciled company, it is being distributed in Canada by
+Sanford C. Bernstein (Canada) Limited, which is licensed and regulated by the Canadian Investment Regulatory Organization. If the
+publication pertains to a non-Canadian domiciled company, it is being distributed by Bernstein Institutional Services LLC, which
+is licensed and regulated by both the SEC and FINRA, into Canada under the International Dealers Exemption.
+This document may not be passed onto any person in Canada unless that person qualifies as "permitted client" as defined in
+Section 1.1 of NI 31-103.
+To our readers in Brazil: This report has been prepared by Bernstein Institutional Services LLC, and Banco BTG Pactual S.A.
+("BTG") is responsible for the distribution of this report in Brazil.
+To readers in the United Kingdom: This publication has been issued or approved for issue in the United Kingdom by Bernstein
+Autonomous LLP, authorised and regulated by the Financial Conduct Authority and located at 60 London Wall, London EC2M 5SH,
++44 (0)20-7170-5000. Registered in England & Wales No OC343985.
+This document is for distribution only to persons who (i) have professional experience in matters relating to investments falling
+within Article 19(5) of the Financial Services and Markets Act 2000 (Financial Promotion) Order 2005 (as amended, the “Financial
+Promotion Order”), (ii) are persons falling within Article 49(2)(a) to (d) (“high net worth companies, unincorporated associations,
+etc.”) of the Financial Promotion Order, (iii) are outside the United Kingdom, or (iv) are persons to whom an invitation or inducement
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+14
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+to engage in investment activity (within the meaning of section 21 of the FSMA) in connection with the issue or sale of any securities
+may otherwise lawfully be communicated or caused to be communicated (all such persons together being referred to as “relevant
+persons”). This document is directed only at relevant persons and must not be acted on or relied on by persons who are not relevant
+persons. Any investment or investment activity to which this document relates is available only to relevant persons and will be
+engaged in only with relevant persons.
+To our readers in the member states of the EEA: This publication is being distributed by BSG France SA, which is authorised
+and regulated by the Autorité de Contrôle Prudentiel et de Résolution (ACPR) and Autorité des Marchés Financiers (AMF).
+To our readers in Hong Kong: This publication is being distributed in Hong Kong by Sanford C. Bernstein (Hong Kong) Limited
+盛博香港有限公司, which is licensed and regulated by the Hong Kong Securities and Futures Commission (Central Entity No.
+AXC846) to carry out Type 4 (Advising on Securities) regulated activities and subject to the licensing conditions mentioned in
+the SFC Public Register (https://www.sfc.hk/publicregWeb/corp/AXC846/details)). This publication is solely for professional
+investors, as defined in the Securities and Futures Ordinance (Cap. 571). The purpose of this report is solely to provide an analysis
+of the issuers referred to in this report and is not intended for any purpose contrary to the laws of Hong Kong.
+To our readers in Singapore: This publication is being distributed in Singapore by Sanford C. Bernstein (Singapore) Private
+Limited, only to accredited investors or institutional investors, as defined in the Securities and Futures Act 2001 of Singapore
+("SFA"). Recipients in Singapore should contact Sanford C. Bernstein (Singapore) Private Limited in respect of matters arising from,
+or in connection with, this publication. Sanford C. Bernstein (Singapore) Private Limited is regulated by the Monetary Authority of
+Singapore and licensed under the SFA as a capital markets services licence holder for dealing in capital markets products that are
+securities and collective investment schemes and an exempt financial adviser for advising on, issuing and promulgating analyses
+and reports on securities. Sanford C. Bernstein (Singapore) Private Limited is registered in Singapore with Company Registration
+No. 20213710W and located at 8 Marina Boulevard, #12-01, Marina Bay Financial Centre, Singapore 018981, +65-6326-7000.
+To our readers in the People’s Republic of China: The securities referred to in this document are not being offered or sold and
+may not be offered or sold, directly or indirectly, in the People's Republic of China (for such purposes, not including the Hong Kong
+and Macau Special Administrative Regions or Taiwan, the “PRC”) in contravention of any applicable laws of the PRC.
+This document does not constitute an offer to sell or the solicitation of an offer to buy any securities in the PRC to any person to
+whom it is unlawful to make the offer or solicitation in the PRC.
+We do not represent that this document may be lawfully distributed, or that any securities may be lawfully offered, in compliance
+with any applicable registration or other requirements in the PRC, or pursuant to an exemption available thereunder, or assume
+any responsibility for facilitating any such distribution or offering. In particular, no action has been taken by us which would permit
+a public offering of any securities or distribution of this document in the PRC. Accordingly, the securities are not being offered
+or sold within the PRC by means of this document or any other document. Neither this document nor any advertisement or other
+offering material may be distributed or published in the PRC, except under circumstances that will result in compliance with any
+applicable laws and regulations.
+To our readers in Japan: This publication is being distributed in Japan by Sanford C. Bernstein Japan KK (サンフォード・
+C・バーンスタイン株式会社), which is registered in Japan as a Financial Instruments Business Operator with the Kanto Local
+Finance Bureau (registration number: The Director-General of Kanto Local Finance Bureau (FIBO) No.3387) and regulated by
+the Financial Services Agency. It is also a member of Investment Management Association of Japan. This publication is solely
+for qualified institutional investors in Japan only, as defined in Article 2, paragraph (3), items (i) of the Financial Instruments and
+Exchange Act.
+For the institutional client readers in Japan who have been granted access to the Bernstein website by Daiwa Securities Group Inc.
+(“Daiwa”), your access to this document should not be construed as meaning that Bernstein is providing you with investment advice
+for any purposes. Whilst Bernstein has prepared this document, your relationship is, and will remain with, Daiwa, and Bernstein
+has neither any contractual relationship with you nor any obligations towards you.
+To our readers in Australia: Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司 is responsible for distributing research
+in Australia. It is regulated by the Securities and Exchange Commission under U.S. laws, by the Financial Conduct Authority under
+U.K. laws, which differs from Australian laws. Sanford C. Bernstein (Hong Kong) Limited 盛博香港有限公司 is exempt from the
+requirement to hold an Australian financial services license under the Corporations Act 2001 in respect of the provision of the
+following financial services to wholesale clients:
+• providing financial product advice;
+• dealing in a financial product;
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+15
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+• making a market for a financial product; and
+• providing a custodial or depository service.
+To our readers in India: This publication is being distributed in India by Sanford C. Bernstein (India) Private Limited (SCB India)
+which is licensed and regulated by Securities and Exchange Board of India ("SEBI") as a research analyst entity under the SEBI
+(Research Analyst) Regulations, 2014, having registration no. INH000006378 and as a stock broker having registration no.
+INZ000213537. SCB India is currently engaged in the business of providing research and stock broking services. Please refer to
+www.bernsteinresearch.in for more information.
+• SCB India is a Private limited company incorporated under the Companies Act, 2013, on April 12, 2017 bearing corporate
+identification number U65999MH2017FTC293762, and registered office at Level 3A, 4th Floor, First International Financial
+Centre, Plot Nos C-54 and C-55, G Block, Near CBI Office, Bandra Kurla Complex, Bandra (East), Mumbai 400098,
+Maharashtra, India (Phone No: +91-22-68421401).
+• For details of Associates (i.e., affiliates/group companies) of SCB India, kindly email MUM-BERNSTEIN-
+InCompliance@bernsteinsg.com / scbincompliance@bernsteinsg.com.
+• SCB India does not have any disciplinary history as on the date of this report.
+• Except as noted above, SCB India and/or its Associates (i.e., affiliates/group companies), the Research Analysts authoring this
+report, and their relatives
+• do not have any financial interest in the subject company
+• do not have actual/beneficial ownership of one percent or more in securities of the subject company;
+• is not engaged in any investment banking activities for Indian companies, as such;
+• have not managed or co-managed a public offering in the past twelve months for any Indian companies;
+• have not received any compensation for investment banking services or merchant banking services from the subject
+company in the past 12 months;
+• have not received compensation for brokerage services from the subject company in the past twelve months;
+• have not received any compensation or other benefits from the subject company or third party related to the specific
+recommendations or views in this report; and
+• do not currently, but may in the future, act as a market maker in the financial instruments of the companies covered in the
+report.
+• do not have any conflict of interest in the subject company as of the date of this report.
+• Except as noted above, the subject company has not been a client of SCB India during twelve months preceding the date
+of distribution of this research report. Neither SCB India nor its Associates (i.e., affiliates/group companies) have received
+compensation for products or services other than investment banking, merchant banking or brokerage services from the
+subject company in the past twelve months.
+• The principal research analyst(s) who prepared this report, members of the analysts' team, and members of their households
+are not an officer, director, employee or advisory board member of the companies covered in the report.
+• Our 
+Compliance 
+officer 
+/ 
+Grievance 
+officer 
+is 
+Ms. 
+Rupal 
+Talati, 
+who 
+can 
+be 
+reached 
+at
++91-22-68421451, or MUM-BERNSTEIN-InCompliance@bernsteinsg.com / Scbin-investorgrievance@bernsteinsg.com /
+scbincompliance@bernsteinsg.com.
+• Kindly refer to the Research investor charter and Research Most Important Terms & Conditions (MITC) available at (https://
+bernsteinresearch.in/)
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+16
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+• Disclaimer: Registration granted by SEBI, and certification from NISM, is in no way a guarantee of performance of the
+intermediary or provide any assurance of returns to investors. Investments in securities market are subject to market risks. Read
+all the related documents carefully before investing.
+To our readers in Switzerland: This document is provided in Switzerland by or through Bernstein Autonomous LLP, and is
+provided only to qualified investors as defined in article 10 of the Swiss Collective Investment Scheme Act (“CISA”) and related
+provisions of the Collective Investment Scheme Ordinance and in strict compliance with applicable Swiss law and regulations.
+The products mentioned in this document may not be suitable for all types of investors. This document is based on the Directives
+on the Independence of Financial Research issued by the Swiss Bankers Association (SBA) in January 2008.
+To our readers in the Middle East: Bernstein Autonomous LLP, DIFC branch has its principal office at Gate Village 06, DIFC,
+Dubai, UAE. Bernstein Autonomous LLP, DIFC branch is regulated by the Dubai Financial Services Authority (DFSA) with the
+registration number CL10040 and is provisioned for Arranging Deals in Investments and Advising on Financial Products. All
+communications and services are directed at Professional Clients and Market Counterparties only (as defined in the DFSA
+rulebook). Persons other than Professional Clients and Market Counterparties, such as Retail Clients, are not the intended
+recipients of our communications or services.
+LEGAL
+All research publications are disseminated to our clients through posting on the firm's password protected websites,
+bernsteinresearch.com and autonomous.com. Certain, but not all, research publications are also made available to clients through
+third-party vendors or redistributed to clients through alternate electronic means as a convenience.
+This publication has been published and distributed in accordance with the Firm's policy for management of conflicts of interest
+in investment research, a copy of which is available from Bernstein Institutional Services LLC, Director of Compliance, 245 Park
+Avenue, New York, NY 10167. Additional disclosures and information regarding Bernstein's business are available on our website
+www.bernsteinresearch.com.
+The securities described herein may not be eligible for sale in all jurisdictions or to certain categories of investors where that
+permission profile is not consistent with the licenses held by the entities noted herein. This document is for distribution only as may
+be permitted by law. This publication is not directed to, or intended for distribution to or use by, any person or entity who is a citizen
+or resident of, or located in any locality, state, country or other jurisdiction where such distribution, publication, availability or use
+would be contrary to law or regulation or which would subject any of the entities referenced herein or any of their subsidiaries
+or affiliates to any registration or licensing requirement within such jurisdiction. This publication is based upon public sources
+we believe to be reliable, but no representation is made by us that the publication is accurate or complete. We do not undertake
+to advise you of any change in the reported information or in the opinions herein. This publication was prepared and issued by
+entity referred to herein for distribution to eligible counterparties or professional clients. This publication is not an offer to buy
+or sell any security, and it does not constitute investment, legal or tax advice. The investments referred to herein may not be
+suitable for you. Investors must make their own investment decisions in consultation with their professional advisors in light of
+their specific circumstances. The value of investments may fluctuate, and investments that are denominated in foreign currencies
+may fluctuate in value as a result of exposure to exchange rate movements. Information about past performance of an investment
+is not necessarily a guide to, indicator of, or assurance of, future performance.
+This report is directed to and intended only for our clients who are “eligible counterparties”, “professional clients”, “institutional
+investors” and/or “professional investors” as defined by the aforementioned regulators, and must not be redistributed to retail
+clients as defined by the aforementioned regulators. Retail clients who receive this report should note that the services of the
+entities noted herein are not available to them and should not rely on the material herein to make an investment decision. The result
+of such act will not hold the entities noted herein liable for any loss thus incurred as the entities noted herein are not registered/
+authorised/ licensed to deal with retail clients and will not enter into any contractual agreement/arrangement with retail clients.
+This report is provided subject to the terms and conditions of any agreement that the clients may have entered into with the entities
+noted herein. All research reports are disseminated on a simultaneous basis to eligible clients through electronic publication to
+our client portal.
+The information in this report was prepared by Bernstein solely for the internal business use of our clients. Clients may store,
+display, analyze, reformat and print the information in this report for this limited use only. Clients may not copy, alter, create
+derivative works, resell, reverse engineer, commercially exploit, share or distribute any part of the information contained herein
+for any purpose without Bernstein’s express written consent. These restrictions include extracting data or using the content to
+develop indices or other products. Further, you may not use this report, or any portion of this report, to train or finetune any third-
+party machine learning or artificial intelligence system, or as a prompt or input into any such system. You also may not, without
+Bernstein’s express written consent, do any of the foregoing in connection with your own internal machine learning or artificial
+intelligence system.
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+17
+
+Varun Govindaraj    +1 917 344 8543  varun.govindaraj@bernsteinsg.com
+15 October 2026
+Bernstein may use artificial intelligence tools in the preparation of its materials. Any such materials are reviewed by Bernstein’s
+research analysts prior to publication.
+This report has been prepared for information purposes only and is based on current public information that we consider reliable,
+but the entities noted herein do not warrant or represent (express or implied) as to the sources of information or data contained
+herein are accurate, complete, not misleading or as to its fitness for the purpose intended even though the entities noted herein
+rely on reputable or trustworthy data providers, it should not be relied upon as such. Opinions expressed are the author(s)’ current
+opinions as of the date appearing on the material only and we do not undertake to advise you of any change in the reported
+information or in the opinions herein.
+Any references to Societe Generale herein are purely factual, based upon publicly available information, and included for
+comparative purposes only. They do not constitute an opinion or recommendation with respect to the securities of Societe
+Generale.
+This publication was prepared and issued by the entity referred to herein for distribution to eligible counterparties or professional
+clients. The information in this report is intended for general circulation and does not constitute an offer to buy or sell any security,
+investment, legal or tax advice nor a personal recommendation, as defined by any of the aforementioned regulators. It does not
+take into account the particular investment objectives, financial situations, or needs of individual investors. The report has not been
+reviewed by any of the aforementioned regulators and does not represent any official recommendation from the aforementioned
+regulators. The investments referred to herein may not be suitable for you. Investors must make their own investment decisions in
+consultation with advice sought from a financial adviser regarding the suitability of the investment product, taking into account the
+specific investment objectives, financial situation or particular needs of any recipient of the recommendation, before the recipient
+makes a commitment to purchase the investment product.
+The analysis contained herein is based on numerous assumptions. Different assumptions could result in materially different
+results. The information in this report does not constitute, or form part of, any offer to sell or issue, or any offer to purchase or
+subscribe for shares, or to induce engagement in any other investment activity. The value of any securities or financial instruments
+mentioned in this report may fluctuate subject to market conditions. Information about past performance of an investment is
+not necessarily a guide to, indicative of, or assurance of future performance. Estimates of future performance mentioned by
+the research analyst in this report are based on assumptions that may not be realized due to unforeseen factors like market
+volatility/fluctuation. In relation to securities or financial instruments denominated in a foreign currency other than the clients’
+home currency, movements in exchange rates will have an effect on the value, either favorable or unfavorable. Before acting on any
+recommendations in this report, recipients should consider the appropriateness of investing in the subject securities or financial
+instruments mentioned in this report and, if necessary, seek independent professional advice.
+The securities described herein may not be eligible for sale in all jurisdictions or to certain categories of investors where that
+permission profile is not consistent with the licenses held by the entities noted herein. This document is for distribution only as may
+be permitted by law. It is not directed to, or intended for distribution to or use by, any person or entity who is a citizen or resident of or
+located in any locality, state, country or other jurisdiction where such distribution, publication, availability or use would be contrary
+to law or regulation or would subject the entities noted herein to any regulation or licensing requirement within such jurisdiction.
+Source: Bloomberg Index Services Limited. BLOOMBERG® is a trademark and service mark of Bloomberg Finance L.P. and its
+affiliates (collectively “Bloomberg”). Bloomberg or Bloomberg’s licensors own all proprietary rights in the Bloomberg Indices.
+Neither Bloomberg nor Bloomberg’s licensors approves or endorses this material, or guarantees the accuracy or completeness of
+any information herein, or makes any warranty, express or implied, as to the results to be obtained therefrom and, to the maximum
+extent allowed by law, neither shall have any liability or responsibility for injury or damages arising in connection therewith.
+No part of this material may be reproduced, distributed or transmitted or otherwise made available without prior consent of the
+entities noted herein. Copyright Bernstein Institutional Services LLC Bernstein Autonomous LLP, BSG France S.A., Sanford C.
+Bernstein (Hong Kong) Limited 盛博香港有限公司, Sanford C. Bernstein (Canada) Limited, Sanford C. Bernstein (India) Private
+Limited (SEBI registration no. INH000006378), Sanford C. Bernstein (Singapore) Private Limited and Sanford C. Bernstein Japan
+KK (サンフォード・C・バーンスタイン株式会社). All rights reserved. The trademarks and service marks contained herein are
+the property of their respective owners. Any unauthorized use or disclosure is strictly prohibited. The entities noted herein may
+pursue legal action if the unauthorized use results in any defamation and/or reputational risk to the entities noted herein and
+research published under the Bernstein and Autonomous brands.
+U.S. MULTI INDUSTRY & ELECTRICAL EQUIPMENT
+18
