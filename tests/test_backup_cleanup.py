@@ -91,3 +91,16 @@ def test_subject_matching():
     assert subject_on_date("$SCHW", NASDAQ_1015)
     assert subject_on_date("Charles Schwab", NASDAQ_1015)
     assert not subject_on_date("ASML", NASDAQ_1015)
+
+
+def test_review_2026_10_18_cleanup_edges():
+    """Code review: "Long-dated $TLT" is prose, an impossible date is left
+    alone, and a December pulse's "Jan" means next year."""
+    md, dropped = strip_house_calls("Long-dated $TLT yields hit 5.3% as supply grows.")
+    assert not dropped and "Long-dated" in md
+    seen = []
+    pulse = ("## WHAT TO WATCH\n- **Thursday, Feb 30:** XYZ earnings\n"
+             "- **Monday, Jan 5:** ABC earnings\n")
+    md, notes = clean_backup_pulse(pulse, today=date(2026, 12, 20),
+                                   fetch=lambda iso: seen.append(iso) or {"ABC": {"name": "Abc"}})
+    assert "Feb 30" in md and seen == ["2027-01-05"]

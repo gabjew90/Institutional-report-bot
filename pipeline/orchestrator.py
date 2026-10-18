@@ -414,7 +414,9 @@ async def run_daily_pulse(bot=None, *, backup: bool = False) -> DailyReport | No
         # and a misdated ASML line shipped on 10/14).
         try:
             from report.backup_cleanup import clean_backup_pulse
-            report.markdown_content, _notes = clean_backup_pulse(report.markdown_content)
+            # off the event loop: the Nasdaq date check is blocking HTTP
+            report.markdown_content, _notes = await asyncio.to_thread(
+                clean_backup_pulse, report.markdown_content)
             from scripts.pulse_lint import lint_markdown, classify_issues
             hard, soft = classify_issues(lint_markdown(report.markdown_content))
             log.info(f"Backup pulse lint after clean-up: {hard} hard, {soft} soft; {_notes}")

@@ -864,3 +864,15 @@ def test_a_reply_under_a_league_answer_stays_fantasy_2026_10_18():
     r = R.classify(q, fantasy_enabled=True, channel_name="🏈-fantasy-football-yapping-🏈")
     assert r.shape == R.FANTASY and r.prefetch, r
     assert R.classify(q, fantasy_enabled=True, channel_name="stonks").shape != R.FANTASY
+
+
+def test_review_2026_10_18_router_precision():
+    """Code review of the audit fixes: adjectives are not tickers, a named
+    stock survives the fund route, a stock's volume is not the market's."""
+    for q in ("that's fake news", "meme stock season is back", "great earnings from them"):
+        assert R.lower_context_tickers(q) == [], q
+    r = R.classify("which hedge funds added positions in NVDA")
+    assert r.shape != R.NEWS_EVENT or r.tickers == ["NVDA"]
+    assert "NVDA" in r.tickers
+    r = R.classify("how's nvda volume today")
+    assert r.prefetch != [(R.T_PRICE, {"symbols": ["SPY", "QQQ"], "with_volume": True})]

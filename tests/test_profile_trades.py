@@ -118,3 +118,15 @@ def test_a_share_close_up_thousands_of_percent_is_an_extraction_error():
     assert T.shown_gain(45.0, "stock") == 45.0
     assert T.shown_gain(1500.0, "unclear") is None
     assert T.shown_gain(1500.0, "put") == 1500.0
+
+
+def test_review_2026_10_18_comment_color_and_caps_survive():
+    """Code review: a percent in a strike-specific comment is color, and an
+    uppercase word on a chat-only line is not an old ticker."""
+    rows = [_row("close", "TSLA", 385, "call", "2026-10-06T15:00", gain=40.0)]
+    line = "**Recent trades.**\n- TSLA 385C — [closed +40% before the stock ran 15% more]\n"
+    assert T.ground_recent_trades(line, rows) == (line, [])
+    old = [_row("open", "IT", 200, "call", "2026-08-01T15:00")]
+    chat = "**Recent trades.**\n- Brazil ETF puts — [IT got crushed]\n- TSLA 385C — [closed +40%]\n"
+    text, _ = T.ground_recent_trades(chat, rows, older_rows=old + rows)
+    assert "Brazil" in text

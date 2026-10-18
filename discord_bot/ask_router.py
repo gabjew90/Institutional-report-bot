@@ -275,13 +275,26 @@ _LOWER_CONTEXT_RE = re.compile(
     r"|^\s*([a-z]{2,5})\s+(?:is|are)\s+report(?:s|ing)\b", re.I)
 
 
+# Words that sit in front of "news", "stock" or "earnings" as adjectives
+# ("fake news", "meme stock", "great earnings"): never a ticker there.
+_ADJ_BEFORE_COMPANY_WORD = {
+    "fake", "meme", "penny", "great", "strong", "weak", "solid", "huge", "breaking",
+    "sad", "insane", "fav", "fave", "top", "blue", "chip", "growth", "small", "mid",
+    "large", "tiny", "latest", "recent", "same", "whose", "which", "own", "dumb",
+    "smart", "shit", "trash", "garbage", "awful", "decent", "mixed", "terrible",
+    "amazing", "insider", "breakout", "boring", "safe", "risky", "cheap", "expensive",
+    "your", "their", "any", "more", "less", "most", "such", "what", "much",
+}
+
+
 def lower_context_tickers(text: str) -> list[str]:
     """Lowercase tokens named next to a company word, never a known word."""
     out: list[str] = []
     for m in _LOWER_CONTEXT_RE.finditer(text or ""):
         tok = next(g for g in m.groups() if g)
         t = tok.upper()
-        if tok != tok.lower() or t in _NOT_TICKERS or tok.lower() in _COMMON_WORDS:
+        if (tok != tok.lower() or t in _NOT_TICKERS or tok.lower() in _COMMON_WORDS
+                or tok.lower() in _ADJ_BEFORE_COMPANY_WORD):
             continue
         if t not in out:
             out.append(t)
@@ -994,7 +1007,8 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     # A fund's holdings are in its 13F filings, found by search; the fund's
     # name is not a ticker (2026-10-18 audit A10: "What are VARAs positions"
     # priced VARA, had no Google, and said the fund files no 13Fs).
-    if _HOLDINGS_RE.search(q) and (_FUND_WORD_RE.search(q) or _FUND_WORD_RE.search(_parent_text(question))):
+    if not strong and _HOLDINGS_RE.search(q) and (
+            _FUND_WORD_RE.search(q) or _FUND_WORD_RE.search(_parent_text(question))):
         r.shape, r.reason = NEWS_EVENT, "a fund's holdings"
         r.tickers = []
         return r
@@ -1009,7 +1023,7 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         return r
     # Market volume: the index ETFs' volume against their average (2026-10-18
     # audit A15: "how is today's volume for stocks" got no volume figure).
-    if _VOLUME_RE.search(q) and not strong:
+    if _VOLUME_RE.search(q) and not tickers:
         r.shape, r.reason = PRICE, "market volume"
         r.tickers = ["SPY", "QQQ"]
         r.prefetch = [(T_PRICE, {"symbols": ["SPY", "QQQ"], "with_volume": True})]

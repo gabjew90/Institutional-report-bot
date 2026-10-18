@@ -144,6 +144,10 @@ def _log_says(contract_rows: list[dict], exits: list[dict]) -> str:
     return "[no exit posted in the log]"
 
 
+# Capitalised words on a trade line that are not symbols.
+_NOT_SYMBOLS = {"OPEN", "EXIT", "CLOSED", "CLOSE", "LOG", "EXP", "IV", "OI", "ATM", "OTM", "ITM",
+                "DTE", "EOD", "AH", "PM", "AM", "ET", "YOLO", "CALL", "PUT", "CALLS", "PUTS", "IT",
+                "US", "AI", "ETF", "EPS", "TRIM", "ADD", "PER"}
 _PER_LOG_RE = re.compile(r"\s*\(?\b(?:per|in)\s+(?:the\s+)?(?:trade\s+)?log\b\)?", re.I)
 
 
@@ -177,7 +181,7 @@ def ground_recent_trades(profile_text: str, rows: list[dict],
     fixed, out_lines = [], []
     for line in m.group(2).split("\n"):
         if line.lstrip().startswith("-") and stale:
-            named = {w.upper() for w in re.findall(r"\$?\b([A-Z]{1,6})\b", line)}
+            named = {w.upper() for w in re.findall(r"\$?\b([A-Z]{2,6})\b", line)} - _NOT_SYMBOLS
             if named & stale and not named & set(by_ticker):
                 fixed.append(f"dropped stale line: {line.strip()[:100]}")
                 continue
@@ -194,6 +198,7 @@ def ground_recent_trades(profile_text: str, rows: list[dict],
         if ticker not in by_ticker:
             out_lines.append(line)
             continue
+        pinned = False   # the line's own gain picked its exit (M6)
         if cm and cm.group(1).upper() == ticker:
             key = (ticker, float(cm.group(2)), cm.group(3).lower())
             contract_rows = [r for r in by_ticker[ticker] if _key(r) == key]
@@ -209,7 +214,7 @@ def ground_recent_trades(profile_text: str, rows: list[dict],
                     if shown_gain(e.get("gain_pct"), e.get("contract_type")) is not None
                     and round(shown_gain(e.get("gain_pct"), e.get("contract_type")), 2) in head_gains]
             if same:
-                contract_exits = same
+                contract_exits, pinned = same, True
         if not contract_rows:
             out_lines.append(line)
             continue
@@ -239,8 +244,10 @@ def ground_recent_trades(profile_text: str, rows: list[dict],
             if g is not None:
                 bad = bool((g > 0 and _LOSS_RE.search(comment))
                            or (g < 0 and _WIN_RE.search(comment))
-                           # a comment quoting a different exit's gain
-                           or (quoted and round(abs(g), 2) not in {abs(q) for q in quoted}))
+                           # a comment quoting another exit's gain, on a line
+                           # whose own gain named its exit
+                           or (pinned and quoted
+                               and round(abs(g), 2) not in {abs(q) for q in quoted}))
         if bad:
             new = line[:com.start()] + _log_says(contract_rows, contract_exits)
             out_lines.append(new)

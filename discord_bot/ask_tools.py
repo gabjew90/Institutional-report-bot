@@ -1567,6 +1567,8 @@ def _slate_dates(date_arg: str, now_et) -> list[str]:
         days = [monday + timedelta(days=i) for i in range(5)]
         if a == "this_week":
             days = [d for d in days if d >= now_et.date()]
+            if not days:   # asked on the weekend: the coming week
+                days = [monday + timedelta(days=7 + i) for i in range(5)]
         return [d.isoformat() for d in days]
     return [date_arg.strip()]
 
@@ -1644,7 +1646,7 @@ async def _execute_earnings_slate(args: dict) -> dict:
             out["note"] = note
         return out
     ok = [d for d in days if d.get("status") == "ok"]
-    return {"status": "ok" if ok else (days[0].get("status") or "error"),
+    return {"status": "ok" if ok else ((days[0].get("status") if days else None) or "error"),
             "as_of": as_of, "dates": dates, "days": days, "note": note}
 
 

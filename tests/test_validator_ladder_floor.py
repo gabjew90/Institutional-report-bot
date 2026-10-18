@@ -28,7 +28,14 @@ def test_a_strip_that_would_gut_the_answer_ships_the_original():
     assert how == "shipped" and out == long
 
 
-def test_a_non_plumbing_rule_never_gets_the_canned_refusal():
+def test_a_grounded_answer_never_gets_the_canned_refusal():
+    a = "→ Core CPI came in at 0.3% this morning."
+    out, how = V.resolve_violations(a, None, tool_calls=[], strip_fn=lambda a, bad: "",
+                                    grounded=True)
+    assert out == a and V.SAFE_REFUSAL not in out
+
+
+def test_an_ungrounded_unsourced_print_still_gets_the_refusal():
     a = "→ Core CPI came in at 0.3% this morning."
     out, how = V.resolve_violations(a, None, tool_calls=[], strip_fn=lambda a, bad: "")
-    assert out == a and V.SAFE_REFUSAL not in out
+    assert how == "replaced" and out == V.SAFE_REFUSAL

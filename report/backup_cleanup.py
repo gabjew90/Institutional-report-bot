@@ -26,7 +26,8 @@ from ai_analysis.voice_rules import SOURCE_PREFIX_BANKS
 log = logging.getLogger(__name__)
 
 _CALL_START_RE = re.compile(
-    r"^(?:Long|Short|Buy|Sell|Own|Fade|Pair)\b[^.!?\n]*\$[A-Z]{1,6}\b", re.I)
+    # not "Long-dated $TLT yields..." or "Short-term"
+    r"^(?:Long|Short|Buy|Sell|Own|Fade|Pair)\b(?![-‐])[^.!?\n]*\$[A-Z]{1,6}\b", re.I)
 _SENTENCE_RE = re.compile(r"[^.!?\n]+[.!?]?")
 
 
@@ -134,7 +135,8 @@ def subject_on_date(subject: str, rows: dict) -> bool:
     return False
 
 
-def drop_misdated_earnings(md: str, year: int, fetch=None) -> tuple[str, list[str]]:
+def drop_misdated_earnings(md: str, year: int, fetch=None,
+                           today_month: int = 0) -> tuple[str, list[str]]:
     """Drop a WHAT TO WATCH earnings bullet whose company is not on Nasdaq's
     calendar for the date the bullet gives. Nasdaq unavailable keeps it."""
     if fetch is None:
@@ -146,7 +148,13 @@ def drop_misdated_earnings(md: str, year: int, fetch=None) -> tuple[str, list[st
         m = _WATCH_EARN_RE.match(line)
         if m:
             mon = _MONTHS[m.group(1)[:3].lower()]
-            iso = date(year, mon, int(m.group(2))).isoformat()
+            # a December pulse naming "Jan 5" means next year
+            y = year + 1 if today_month and mon < today_month - 6 else year
+            try:
+                iso = date(y, mon, int(m.group(2))).isoformat()
+            except ValueError:
+                out.append(line)   # "Feb 30": nothing to check against
+                continue
             if iso not in cache:
                 try:
                     cache[iso] = fetch(iso)
@@ -167,7 +175,7 @@ def clean_backup_pulse(md: str, today: date | None = None, fetch=None) -> tuple[
     md, calls = strip_house_calls(md)
     md = clean_punctuation(md)
     md = restructure(md)
-    md, misdated = drop_misdated_earnings(md, today.year, fetch=fetch)
+    md, misdated = drop_misdated_earnings(md, today.year, fetch=fetch, today_month=today.month)
     md = re.sub(r"\n{3,}", "\n\n", md)
     notes = {"house_calls_dropped": calls, "misdated_earnings_dropped": misdated}
     if calls or misdated:

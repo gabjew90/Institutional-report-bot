@@ -145,6 +145,8 @@ def unsupported_terms(line: str, haystack: str, known: set[str]) -> list[str]:
         digits = re.sub(r"[^\d.]", "", m.group(1)).strip(".")
         if len(digits.replace(".", "")) < 2:
             continue                    # "1", "5": too common to judge
+        if re.fullmatch(r"(?:19|20)\d\d", digits):
+            continue                    # a year is often arithmetic on the quote
         if not re.search(r"(?<![\d.])" + re.escape(digits) + r"(?!\d)", haystack.replace(",", "")):
             missing.append(m.group(1).strip())
     return missing

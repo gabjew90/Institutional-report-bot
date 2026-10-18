@@ -122,3 +122,12 @@ def test_a_week_is_one_call_with_every_weekday():
     r = _run({"date": "next_week"}, RAW, CAPS)
     assert r["status"] == "ok" and len(r["days"]) == 5
     assert all(d["after_close"][0]["symbol"] == "PANW" for d in r["days"])
+
+
+def test_this_week_on_a_weekend_is_the_coming_week():
+    """Code review 2026-10-18: Saturday's "this week" was an empty list and an IndexError."""
+    from datetime import datetime
+    from discord_bot import ask_tools as T
+    sat = datetime(2026, 10, 17, 10, 0)
+    assert T._slate_dates("this_week", sat) == [
+        "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"]

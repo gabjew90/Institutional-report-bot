@@ -83,3 +83,8 @@ def teardown_module(_):
     # the suite shares one DB; other tests count chat messages in a window
     db.get_connection().execute("DELETE FROM chat_messages WHERE author_id IN (?, ?)", (ME, OTHER))
     db.get_connection().commit()
+
+
+def test_a_year_in_the_framing_is_not_checked():
+    hay = G._norm("been doing this 5 years")
+    assert G.unsupported_terms("- Trader since 2021 — [been at it since 2021]", hay, set()) == []

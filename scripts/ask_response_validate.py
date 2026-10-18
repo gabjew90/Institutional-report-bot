@@ -1368,14 +1368,13 @@ def resolve_violations(answer: str, retry_answer: str | None,
     if fallback is None:
         if "unfetchable-link-claim" in rules:
             fallback = PASTE_REQUEST
-        elif "meta-plumbing" in rules:
+        elif "meta-plumbing" in rules or not ctx.get("grounded"):
             fallback = SAFE_REFUSAL
         else:
-            # The refusal is the prescribed line for an answer that is
-            # plumbing end to end. On any other rule it replaced a real
-            # answer: a WWII cost question got "pull it from your broker"
+            # A web-grounded answer is not replaced by the refusal: a
+            # grounded WWII cost answer got "pull it from your broker"
             # because "% of GDP" read as a macro print (2026-10-18 audit
-            # A8). Those answers ship as written when the strip fails.
+            # A8). An ungrounded one still is, as before.
             fallback = None
 
     # A blocked-URL answer is unfounded END TO END — it describes a page
