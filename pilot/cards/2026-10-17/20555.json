@@ -1,0 +1,322 @@
+{
+ "brief": "The Market Ear argues the AI-led equity selloff is showing signs of exhaustion. NDX futures printed an unusual hammer candle and SOX is testing both the lower boundary of its trading range and its longer-term trend line after crashing, both read as sellers losing control. Goldman's Lin reports aggressive global de-risking, net flows at -2.1 standard deviations and long sales outpacing shorts roughly 3 to 1, with the US 66% of global selling and tech leading. Global AI stocks had their second-largest net selling day in a year (-2.8 Z-score). Hedge funds have net sold AI stocks for five straight sessions, erasing their entire 2025 net accumulation. AI allocation has fallen to 26.1% (49th percentile) and the long/short ratio to 3.27 (7th percentile), still a large position but much less crowded. KOSPI is at its most oversold level since October 2022. CoreWeave's November $95 call has collapsed from $18 to $1 since September 8, and the options unwind may have amplified the stock's drop as dealers sold to hedge. Separately, Russell 2000 hedge fund shorts have grown with widening CDX high-yield spreads since July, leaving short positioning crowded enough that a sharp covering rally is plausible.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "NDX futures printed a large and unusual hammer candle, suggesting sellers are losing control after the recent selloff.",
+   "anchor": "NDX futures are putting in a huge and rather unusual hammer candle.",
+   "topic": "AI stock drawdown risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "SOX has crashed over the past few sessions and is now in extremely oversold territory.",
+   "anchor": "SOX has crashed over the past few sessions, but oversold conditions are now extreme.",
+   "topic": "AI stock drawdown risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Goldman's Lin reports aggressive global equity selling, with net flows at -2.1 standard deviations.",
+   "anchor": "Lin highlights aggressive global equity selling yesterday, with net flows at -2.1 standard deviations.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Long sales outpaced short sales by roughly 3 to 1 in the recent global equity selloff, pointing to outright risk reduction.",
+   "anchor": "Long sales outpaced short sales by roughly 3 to 1, pointing to outright risk reduction.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "The US accounted for 66% of global net equity selling, with tech leading the retreat.",
+   "anchor": "The US accounted for 66% of global net selling, with tech leading the retreat.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Korea and Taiwan also saw heavy equity liquidation in the recent global selloff.",
+   "anchor": "Korea and Taiwan also saw heavy liquidation",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Global AI stocks experienced their second-largest net selling day in a year, a -2.8 Z-score move.",
+   "anchor": "global AI stocks experienced their second-largest net selling in a year (-2.8 Z-score)",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Investors are dumping longs, particularly in AI and tech, rather than simply adding new shorts.",
+   "anchor": "investors are dumping longs, particularly in AI and tech, rather than simply adding shorts.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Hedge funds have net sold global AI stocks for five consecutive sessions.",
+   "anchor": "Hedge funds have net sold global AI stocks for five consecutive sessions.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Hedge funds' cumulative net buying of AI stocks since the start of 2025 has now been completely reversed.",
+   "anchor": "cumulative hedge fund net buying in the sector since the start of 2025 has now been completely reversed.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "Goldman says hedge fund net allocation to global AI stocks has fallen to 26.1%, down from 31.7% at the June peak.",
+   "anchor": "Net allocation to global AI stocks has fallen to 26.1%, down from 31.7% at the June peak",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "The aggregate hedge fund long/short ratio in AI stocks has dropped from 4.34 to 3.27, placing it in just the 7th percentile over the past year.",
+   "anchor": "the aggregate long/short ratio has dropped from 4.34 to 3.27, placing it in just the 7th percentile over the past year.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "KOSPI is at its most oversold level since October 2022.",
+   "anchor": "KOSPI is at its most oversold level since October 2022",
+   "topic": "AI stock drawdown risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "A trader referred to as Leopold reportedly loaded up on CoreWeave and other AI-related call options in early September, weeks before the latest selloff.",
+   "anchor": "Leopold reportedly loaded up on CoreWeave and other AI-related calls in early September",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "The CRWV November $95 call has collapsed from a high of $18 to just $1 since September 8.",
+   "anchor": "Consider the CRWV November $95 call, which has collapsed from a high of $18 to just $1 since September 8.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "The CRWV options unwind may also have amplified the broader AI stock selloff.",
+   "anchor": "The options unwind may also have amplified the selloff.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "DRAM prices have crashed back to the lows seen during the earlier Leopold-linked selloff.",
+   "anchor": "DRAM has crashed back to the Leopold lows",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "CRWV's RSI has returned to levels last seen during the initial stage of the selloff.",
+   "anchor": "CRWV's RSI has returned to levels last seen during the initial selloff.",
+   "topic": "AI stock drawdown risk",
+   "status": "level",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "With positioning washed out, options crushed and technicals deeply oversold, the note asks whether CRWV and the AI trade are setting up for a second-chance bounce.",
+   "anchor": "With positioning washed out, options crushed, and technicals deeply oversold, could this",
+   "topic": "AI stock drawdown risk",
+   "status": "forecast",
+   "instruments": [
+    "CRWV"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "The Russell 2000 is trading at deeply oversold levels.",
+   "anchor": "Russell is trading at deeply oversold levels.",
+   "topic": "Russell short squeeze setup",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "short term"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "CFTC data has shown a positive short-term correlation since July between changes in Russell 2000 hedge fund short positioning and CDX high-yield spreads.",
+   "anchor": "Since July, CFTC data has shown a positive short-term correlation between changes in Russell 2000 hedge fund short positioning and CDX high-yield spreads.",
+   "topic": "Russell short squeeze setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "wall street just dumped everything right before the next big squeeze",
+   "claim": "With Russell 2000 hedge fund short positioning now very large, the potential for a sharp short-covering rally is becoming increasingly interesting.",
+   "anchor": "With short positioning now very large, the potential for a sharp short-covering rally is becoming increasingly interesting.",
+   "topic": "Russell short squeeze setup",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-17/20555__wall-street-just-dumped-everything-right-before-the-next-big.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
