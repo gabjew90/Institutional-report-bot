@@ -1,0 +1,403 @@
+{
+ "brief": "Morgan Stanley argues AI infrastructure is hitting a physical tipping point: the grid cannot deliver power fast enough, political pushback is making mega-campus data centers harder to site, and inference is shifting compute toward smaller nodes closer to users. Together these forces push the industry toward distributed, behind-the-meter (BTM) power rather than a few giant grid-dependent campuses. The firm forecasts 160 GW of incremental US data center demand through 2029 against 36 GW of available grid capacity and 23 GW of already-procured BTM equipment, leaving a 77 GW shortfall to be filled by fuel cells, gas turbines and reciprocating engines, implying a ~120 GW/$240bn BTM equipment TAM. It introduces the Stranded Compute Adjusted Cost of Power (SCACP), adding an idle-GPU opportunity cost to LCOE, and ranks Bloom Energy's SOFC #1, BorgWarner's turbine #2 and FTAI's aeroderivative #3 today; without the time-to-power premium the ranking shifts toward cheaper technologies by 2030. Growth in data-center BTM power is expected to lower costs and spill into C&I demand (40 GW by 2029) and reshoring. Storage and VPPs (Sunrun/Tesla) complement generation; political opposition adds further pressure favoring onsite power.",
+ "cards": [
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley forecasts a ~120 GW, or $240bn, power equipment TAM for behind-the-meter solutions through 2029.",
+   "anchor": "We forecast a ~120 GW, or $240bn, power equipment TAM for BTM solutions through 2029",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "through 2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley ranks Bloom Energy's SOFC #1, BorgWarner's turbine generator #2 and FTAI's aeroderivative solution #3 for behind-the-meter power today.",
+   "anchor": "Bloom Energy's SOFC ranks #1, BorgWarner's Turbine Generator #2 and FTAI's Aeroderivative solution",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "BE",
+    "BWA",
+    "FTAI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "today"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley estimates 40 GW of incremental Commercial & Industrial power demand for behind-the-meter power through 2029.",
+   "anchor": "we estimate 40 GW of incremental power demand through 2029",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley believes CCGTs or the grid are best suited to provide the primary power source for large mega-campus data center sites (1 GW+).",
+   "anchor": "we believe CCGTs or the grid are best suited to provide the primary source of power for large mega-sites (1 GW+)",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley expects US energy storage system deployments to reach 279 GWh in 2030, including 169 GWh of annual data-center demand.",
+   "anchor": "We expect US ESS deployments will reach 279 GWh in 2030, including 169 GWh of annual data-center demand",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley estimates robot and EV compute capacity could grow to ~1.0 TW by 2040.",
+   "anchor": "We estimate robot/EV compute capacity could grow to ~1.0 TW by",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "by 2040"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "In Morgan Stanley's Stranded Compute Adjusted Cost of Power methodology, every year of expedited power access is worth ~$42/MWh over a 15-year project life.",
+   "anchor": "every year of expedited power access is worth ~$42/MWh over a 15 year project life",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "15 year project life"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley names Bloom Energy, Baker Hughes and BorgWarner among its top ideas for onsite power equipment suppliers.",
+   "anchor": "Top ideas for onsite power equipment suppliers: Bloom Energy (BE),  Baker Hughes (BKR), BorgWarner (BWA",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "BE",
+    "BKR",
+    "BWA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley also names Cummins, ERock, FTAI Aviation, INNIO and Rolls Royce among its top ideas for onsite power equipment suppliers.",
+   "anchor": "Cummins (CMI), ERock (EROC), FTAI Aviation (FTAI), INNIO (INIO),  and Rolls Royce (RR)",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "CMI",
+    "EROC",
+    "FTAI",
+    "INIO",
+    "RR"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley names Solaris, Liberty, Halliburton and Williams as its top ideas among onsite power developers.",
+   "anchor": "Top ideas within onsite power developers: Solaris (SEI), Liberty (LBRT),  Halliburton (HAL), Williams (WMB)",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "SEI",
+    "LBRT",
+    "HAL",
+    "WMB"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley names Tesla, Ford, Fluence, BorgWarner and Sunrun as its key ESS/VPP providers.",
+   "anchor": "Key ESS/VPP providers:  Tesla (TSLA), Ford (F), Fluence (FLNC), BorgWarner (BWA), Sunrun (RUN)",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "TSLA",
+    "F",
+    "FLNC",
+    "BWA",
+    "RUN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley's Thematics team forecasts 160 GW of incremental US data center power demand from 2026-2029.",
+   "anchor": "Our Morgan Stanley Thematics team forecasts 160 GW of incremental data center power demand from 2026-2029",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "2026-2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley estimates a 77 GW net US data center power shortfall through 2029 to be filled by behind-the-meter generation.",
+   "anchor": "This leaves a 77 GW shortfall, which we expect  to be filled with various behind-the-meter power generation solutions",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "through 2029"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley estimates 149 GW of primary power generation equipment supply by 2030 based on a bottom-up build of announced capacity plans.",
+   "anchor": "up build of announced capacity plans, we estimate 149 GW of primary power gas equipment supply (turbines, engines, fuel cells, etc.) by 2030",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley is bullish on supply/demand dynamics for onsite power equipment given ~150 GW of incremental data center demand by 2030.",
+   "anchor": "Our MS data center model estimates ~150 GW of incremental data center demand by 2030, thus keeping us bullish on supply/demand dynamics",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2030"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "INNIO and Caterpillar are fully booked through 2028 with pricing and shipment levels locked in for onsite power equipment.",
+   "anchor": "INIO and CAT are fully booked through 2028 with pricing and shipment levels locked in",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "INIO",
+    "CAT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "through 2028"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Sunrun and Tesla coordinated more than 140,000 residential batteries to deliver over 580 MW of peak power to the California grid during a September 2026 heat wave.",
+   "anchor": "Sunrun and Tesla coordinated more than 140,000 residential batteries to deliver over 580 MW of peak power to the California grid",
+   "topic": "AI power shortfall impact",
+   "status": "released",
+   "instruments": [
+    "RUN",
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Of the 580 MW dispatched in the September 2026 California event, 517 MW came from approximately 110,000 Tesla Powerwalls and 63 MW came from other manufacturers' batteries.",
+   "anchor": "517 MW came from approximately 110,000 Tesla Powerwalls, while another 63 MW came from batteries made by other manufacturers",
+   "topic": "AI power shortfall impact",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Sunrun, Tesla and Renew Home entered a non-binding framework in June 2026 aimed at aggregating more than 16 GW of flexible capacity for utilities and hyperscalers.",
+   "anchor": "the companies entered into a non-binding framework aimed at aggregating more than 16 GW of flexible capacity",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "RUN",
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "June 2026"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Sunrun, Tesla and Renew Home estimate they already have more than 300 MW of potentially flexible resources in Virginia.",
+   "anchor": "The companies estimate they already have more than 300 MW of potentially flexible resources in Virginia",
+   "topic": "AI power shortfall impact",
+   "status": "level",
+   "instruments": [
+    "RUN",
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley forecasts ~10 GW of incremental US Commercial & Industrial power demand annually through 2030 from manufacturing onshoring.",
+   "anchor": "We forecast ~10 GW of incremental US C&I demand, annually through 2030 reflecting our Utility teams onshoring scenario",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "annually through 2030"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Morgan Stanley estimates that if the US returns to a 20% share of global manufacturing production by 2050 (versus 16% in 2025), the industry would require as much as 113 GW of incremental electricity capacity.",
+   "anchor": "if the US were to return to a 20% share by 2050 (vs 16% in 2025) the industry would require as much as 113 GW",
+   "topic": "AI power shortfall impact",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "through 2035"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Third parties report an estimated ~$156 billion of data center projects were cancelled or delayed in 2025, and $130 billion already in 1Q26.",
+   "anchor": "third parties report an estimated value of ~$156 billion of projects were cancelled or delayed in 2025, and $130 billion already in 1Q26",
+   "topic": "Data center political pushback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2025 and 1Q26"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Texas is auditing every data center advancing through ERCOT's interconnection process against more than 474 GW of pending requests.",
+   "anchor": "Texas is auditing every data center advancing through ERCOT's interconnection process against more than 474 GW of pending requests",
+   "topic": "Data center political pushback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Virginia's July 31 Rider T1 order moves Dominion toward a \"cost causer pays\" model for direct-connect transmission.",
+   "anchor": "Virginia's July 31 Rider T1 order moves Dominion toward \"cost causer pays\" for direct-connect transmission",
+   "topic": "Data center political pushback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "July 31"
+  },
+  {
+   "bank": "Morgan Stanley",
+   "document": "Living on the Edge: The Rise of Distributed Power",
+   "claim": "Pennsylvania Governor Josh Shapiro issued an executive order ending the state's fast-track permitting program and requiring local approval of data center projects.",
+   "anchor": "Shapiro issued an executive order ending the state\u2019s fast-track permitting program and mandating that data center projects must first be approved by local officials",
+   "topic": "Data center political pushback",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-17/20513__ms-living-on-the-edge-the-rise-of-distributed-power.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 26,
+  "matched": 26,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
