@@ -1,0 +1,907 @@
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+TMT
+Semiconductors & Semiconductor Capital Equipment
+October 5, 2026
+U.S. Equity Research
+Price Target Change
+Agentic AI Driving ~30% of 2030E CPU Units, >$200B CPU TAM
+Ahead, Memory Tailwinds
+We share our updated thoughts on agentic AI tailwinds post META's Muse and OAI's Dots
+introduction. Key points: 1) Agentic AI adoption accelerating with Muse, reaching >5M
+users in 22 days (Ex-1), driving strong demand for Agentic Server CPUs, 2) OAI debuted
+Dots (agentic AI assistants) for deep integration of daily enterprise/work processes, 3)
+we estimate Agentic CPU TAM growing to $80B by 2030E, 123% 4Y CAGR, with units
+reaching ~30% of server CPUs, and 3) key beneficiaries ARM with AGI CPU, AMD (seeing
+~$220B CPU TAM by 2030E), and NVDA CPU revs ~$20B and 2x in 2027E. Raise PTs for
+AMD (OP) to $705 from $580, SNDK (OP) to $2,050, and DELL (OP) to $650, INTC (N)
+to $114 from $92, and SMCI (N) to $43 from $35. We see ARM, AMD, INTC, and NVDA
+benefiting strongly, with MU/SNDK seeing agentic AI memory demand.
+Key Points
+Agentic AI driving CPU TAM to >$200B by 2030E as agents drive the next phase of
+AI adoption. We see agentic workload penetration accelerating with user adoption and
+tasks per user growing rapidly as we believe: a) expanding agentic capability with tool
+calls, coding, multi-app processes, b) agent intelligence improving rapidly and can run
+24/7, c) multi-agent workflows add a strong scaling factor. We took a bottom-up look
+(Ex2-5) at agentic CPU demand, and see penetration growing from ~4% of CPU demand
+in 2026E to ~30% by 2030E. We estimate the CPU TAM growing from ~$68B in 2026E to
+~$209B by 2030E (32% 4Y CAGR) with agentic CPU reaching ~$80B (123% 4Y CAGR). We
+believe NVDA standalone CPU revs estimated at $20B in 2026E and could grow >100%
+y/y in 2027E and ARM a key LT beneficiary with its AGI CPU potentially gaining share
+with 2027E ramps while royalty growth remains strong from Vera/Graviton/Axion/Cobalt
+deployments.
+Close Agentic AI integration with Muse and Dots assistants as the key AI layer. META
+(covered by Lloyd Walmsley, Outperform, ) introduced Muse and OAI debuted Dots, its
+Agentic AI assistants, with the aim of being integrated into daily consumer/enterprise
+workflows, with deep 3rd party SW (incl. ~4,000 apps). We see AI assistant agents playing
+into the strong tailwinds, as we see: a) agent ecosystems and close SW stack integration
+potentially limiting migration between providers, b) CSPs competing to bring versatile
+LLM capabilities, and c) headwinds to scheduling, travel, organization SW.
+Reiterating ratings and raising PTs for key Agentic AI-exposed players. AMD - reiterate
+Outperform, raise PT to $705 from $580, while reiterating Neutral for INTC and raising
+PT to $114 from $92, with strong CPU tailwinds, lifting all boats while INTC could
+underperform peers. DELL - reiterate Outperform, raise PT to $650 from $600 - and SMCI
+- reiterate Neutral, raise PT to $43 from $35 - as we see strong traditional and AI server
+growth, partnered with strong agentic demand. SNDK - reiterate Outperform, raise PT to
+$2,050 from $1,875 - as we noted potentially 18% of NAND demand driven by Agentic
+AI by 2030E.
+MIZUHO SECURITIES USA LLC
+Connect With Our Analysts
+Vijay Rakesh | Managing Director
++1 312 294 8682 |  Vijay.Rakesh@mizuhogroup.com
+David Liu | Senior Associate
++1 201 626 1539 |  David.Liu@mizuhogroup.com
+Jacob Grandstaff | Senior Associate
++1 312 294 8694 |  Jacob.Grandstaff@mizuhogroup.com
+Rafal Tworkowski | Associate
++1 312 294 8632 |  Rafal.Tworkowski@mizuhogroup.com
+Symbol
+PT (Previous)
+Rating (Previous)
+Price
+AMD
+ $705.00 ($580.00)
+Outperform
+$631.75
+ARM
+$400.00
+Outperform
+$302.90
+CBRS
+$300.00
+Outperform
+$181.55
+DELL
+ $650.00 ($600.00)
+Outperform
+$552.29
+INTC
+ $114.00 ($92.00)
+Neutral
+$116.19
+MU
+$1,400.00
+Outperform
+$1,063.96
+NVDA
+$315.00
+Outperform
+$238.90
+SNDK
+ $2,050.00 ($1,875.00)Outperform
+$1,704.16
+SMCI
+ $43.00 ($35.00)
+Neutral
+$43.19
+Source: Bloomberg and Mizuho Securities USA
+Please refer to Page 10 of this report for important disclosure and analyst certification information. Mizuho Securities USA LLC does and seeks to do business
+with companies covered in its research reports. As a result, investors should be aware that the Firm may have a conflict of interest that could affect the objectivity of
+this report. Investors should consider this report as only a single factor in making their investment decision.
+1
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Agentic AI Workloads Positioned to Expand with the New
+Models from OAI, While Muse User Base Ramps as Lower
+Token Cost Supports Adoption
+OAI at its DevDay noted its weekly active users reached
+>1.2B, while announcing GPT-6.1 Sol (~7 days after GPT-6 Sol
+released) at 80% lower cost than Astra, while delivering similar
+performance with agentic capabilities. OAI also announced
+Ultrafast (we believe running on GPUs) for GPT-6 Astra enabling
+6-8x faster tokens at ~300 tok/s. We believe if OAI were to run
+these workloads on CBRS CS-3/4, we believe it could see >600
+tok/s per user. OAI also announced "Dots," an always on agents
+running on Astra design to be a work-space companion that
+can run tasks 24/7. META's Muse also reached >5m downloads
+since 9/8 (Ex-1), faster than ChatGPT (56 days), Grok (103 days)
+and Claude (493 days).
+Exhibit 1 - META's Muse Suprasses 5M Downloads
+22 Days After Launch
+Source: Sensor Tower
+Agentic Potentially Driving ~30% of CPU Demand by 2030E
+We took a bottom-up projection of the Agentic AI CPU shipment forecast where agentic-enabled
+MAU (monthly active users) grows at a 51% 4Y CAGR, reaching ~4.2T by 2030E and agentic tasks/
+user/day reaches 21.5K by 2030E (86% CAGR), with more agents, tool calls, code runs, checks, and
+advanced multi-app tasks, often running in the background 24/7. Our key driving assumptions are:
+1) agents become the default interaction layer by users with other platforms and environments,
+2) agents are reliable and smart enough to run, complete, and improve tasks on its own 24/7 for
+a majority of workflows, and 3) multiple agents can be invoked by the user to run multiple tasks,
+or to drive faster improvement on a singular task. We estimate Agentic AI CPU deployments will
+grow at 92% 4Y CAGR to 14.6M by 2030E, up from 1.1M in 2026E. We categorized Server CPUs
+by agentic, head-node, and traditional and note some overlap between the head-node CPUs and
+agentic only CPUs may exist (we used 5-25% of idle capacity for head-node CPUs).
+Exhibit 2 - AI Demand Driving CPUs to Half of Total
+Server CPUs Shipped
+0
+10
+20
+30
+40
+50
+60
+2025
+2026
+2027
+2028
+2029
+2030
+CPU Shipped (M)
+Agentic sockets
+Total head-node CPUs
+Traditional / other
+Source: company reports, Gartner, MSUSA estimates
+Exhibit 3 - Bottom-up Agentic AI CPU Demand Model
+Item
+Unit
+2025
+2026
+2027
+2028
+2029
+2030
+Assumptions - drivers
+MAU (agentic-enabled)
+M users
+200
+800
+2,000
+2,900
+3,480
+4,176
+Agentic tasks per MAU per day
+#
+300
+1,800
+6,300
+10,710
+16,065
+21,527
+CPU-seconds per task
+sec
+6
+7
+8
+8
+7
+7
+Cores per socket (fleet avg)
+cores
+112
+144
+166
+185
+200
+210
+DRAM per core
+GB
+7
+9
+10
+10
+10
+10
+NAND per server
+TB
+35
+33
+38
+47
+56
+68
+Annual shipments (+replacement)
+CPU cores shipped
+M
+8
+187
+1,684
+2,384
+2,815
+3,373
+  of which replacement
+M
+0
+0
+0
+0
+8
+187
+Agentic sockets
+M
+0.1
+1.3
+10.2
+12.9
+14.1
+16.0
+Agentic Servers shipped
+M
+0.0
+0.6
+5.1
+6.4
+7.0
+8.0
+% of global total servers
+%
+0%
+5%
+24%
+27%
+28%
+28%
+DRAM shipped
+PB
+51
+1,659
+16,145
+23,314
+28,351
+34,655
+NAND shipped
+EB
+1
+21
+191
+302
+396
+542
+Accelerator head-node CPUs
+GPU packages shipped
+M
+5.1
+6.2
+7.6
+8.1
+9.1
+10.4
+ASICs shipped
+M
+3.0
+4.7
+9.4
+16.7
+26.0
+38.0
+Total head-node CPUs
+M
+2.0
+3.6
+5.4
+7.4
+10.1
+13.7
+Head node CPUs used for Agentic
+M
+0.1
+0.2
+0.4
+0.7
+1.1
+1.4
+Agentic CPUs (net)
+M
+0.0
+1.1
+9.7
+12.2
+12.9
+14.6
+Source: company reports, techpowerup, gartner, MSUSA estimates.
+CPU TAM Accelerating with Agentic/Head-Node Tailwinds and Driving Memory Demand
+We split the Server CPU TAM by three segments: agentic, head-node, and traditional. We estimate
+agentic CPUs reaching ~$80B by 2030E (~123% 4Y CAGR), head-node CPUs to $68B (~61% 4Y
+CAGR), and traditional CPUs to $60B (~2% 4Y CAGR). Total Server CPU TAM we estimate reaches
+~$209B by 2030E (32% 4Y CAGR), and conservatively below AMD's target of >$220B. Our bottom
+up projection sees Agentic AI driving CPU, DRAM, and NAND growing to 22-30% of their respective
+total markets (number of bits shipped). Our model estimates Agentic AI CPU demand as a % of
+total server CPUs grows from ~4% today to ~30% by 2030E. Our blended ASP (agentic, head-node,
+traditional) for Server CPUs is expected to grow from ~$3K/unit in 2026E to >$5K/unit in 2030E.
+2
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Exhibit 4 - Agentic CPU TAM Crossing Over
+Traditional and Head-Node Server CPU by 2029
+Source: company reports, MSUSA estimates
+Exhibit 5 - Agentic CPU Reaching >30% of Global
+Servers
+4% 
+26% 
+29% 
+29% 
+30% 
+4% 
+27% 
+31% 
+30% 
+30% 
+2% 
+14% 
+19% 
+20% 
+22% 
+0%
+5%
+10%
+15%
+20%
+25%
+30%
+35%
+2026
+2027
+2028
+2029
+2030
+Agentic AI Share of Global Shipments
+% of global server CPUs
+% of global DRAM
+% of global NAND
+Source: company reports, MSUSA estimates.
+Agentic CPU Landscape - AMD, NVDA, and ARM as the Performance Leaders
+Near term, we see four leading edge CPUs, targeting growing Agentic AI workloads: 1) ARM's
+AGI CPU (136 cores, 272MB cache, 6TB DDR5, 300W) potentially offering the best cores/watt
+of the group as ARM's first HW product, but with supply potentially limited by volume ramps, 2)
+AMD Venice (256 cores, 1,024MB cache, 4TB DDR5, 600W for Zen6c compute dense), with cache-
+capacity ~2x vs Turin, but the highest TDP of 600W, 3) NVDA Vera (88 cores, 1.2TB/s via LPDDR5X
+SOCAMM, 450W), which sacrifices core count for per-core bandwidth and NVLink-C2C integration,
+but potentially could be best suited for small numbers of latency-sensitive agents rather than
+hundreds of slower agents running in parallel, and 4) INTC's Diamond Rapids (256 cores, 1.28GB
+cache, 1.6TB/s w/MRDIMM), which potentially leads on raw core count and cache, as we believe
+it could be launching in 2027E with potential delays and more performance metrics undisclosed.
+Broadly, we see ARM gaining CPU share at the cost of x86 with ramping ARM-based NVDA Vera
+and AGI CPU potentially ~doubling from by 2030E, while it also sees tailwinds from in-house CPUs
+at major CSPs also ramping.
+Exhibit 6 - Agentic AI CPU Comps
+ARM AGI CPU AMD Venice
+NVDA Vera
+INTC Diamond Rapids 
+Core Count
+136
+256
+88
+256
+Memory Type
+DDR5
+DDR5
+LPDDR5X SOCAMM
+DDR5 or MRDIMM
+Memory Capacity 
+6TB
+Up to 4TB
+1.5TB
+Not Disclosed
+Memory Bandwidth
+844.8GB/s
+1.024TB/s
+1.2TB/s
+1.6TB/s (w/ MRDIMM)
+Cache
+272MB
+1024MB
+164MB
+1.28GB
+I/O
+96 PCIe Gen 6, 
+CXL 3.0
+96 PCIe Gen 6, 
+CXL 3.1
+176 PCIe Gen 6, 
+CXL 3.1
+128 PCIe Gen 6, CXL 3.0
+TDP
+300W
+600W
+450W
+Not Disclosed
+Source: Company reports, MSUSA estimates
+Server CPU Space Continues to Ramp with Growing Reliance on NVDA and ARM as the Potential
+Disruptor
+We see server CPU revenues rapidly expanding, driven mainly by Agentic AI, as we note NVDA
+ramping well and ARM entering the fray with its first HW product. We see AMD and INTC both
+growing steadily from ~$12B/$17B in 2025 to ~$44B/$41B by 2028E, while NVDA we believe
+sees the steepest ramp, scaling from ~$7B to ~$60B, overtaking peers by 2027E as Vera ramps
+merchant CPU share with the introduction of its first Vera-only racks containing 72 GPUs alongside
+its GPU attach head nodes. We note ARM is expected to become a merchant CPU player starting
+in 2027E as its low-powered AGI CPU enters mas production with >$2B of orders already secured,
+while it also sees tailwinds from royalties on Vera/Cobalt/Graviton/Axion with CSPs ramping in-
+3
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+house CPU deployments alongside merchant CPUs. Separately, we believe DELL and SMCI's CPU-
+only server revenue could continue to drive upside into 2027E and beyond, with DELL scaling from
+~$19B in 2025 to ~$40B by 2028E, while SMCI potentially grows from $7B in 2025 to $17B fueled
+by Agentic AI orchestration demand, alongside traditional enterprise server deployments.
+Exhibit 7 - Vera Helping NVDA Become Merchant
+CPU Leader
+0
+10
+20
+30
+40
+50
+60
+70
+2024
+2025
+2026E
+2027E
+2028E
+Server CPU Revs ($B)
+AMD
+INTC
+ARM
+NVDA
+Source: Company reports, MUSA estimates
+Exhibit 8 - DELL Seeing Agentic AI Drive Strong Non-
+AI Server Revenues
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+2024
+2025
+2026E
+2027E
+2028E
+CPU Only Server Revs ($B)
+DELL
+SMCI
+Source: Company reports, Bloomberg, MSUSA estimates
+Token Demand Accelerating >4x y/y with Pricing Normalizing, as Agentic AI Potentially Needs
+5-30x More Tokens/Task
+We see daily token consumption growing >4x y/y into 2H26E, with multimodal AI (photo, video,
+audio, text) being implemented (non-text generation needing >3-50x more tokens), Agentic AI
+potentially growing token/tasks needed 5-30x vs standard chat query, and longer context
+windows. We note token pricing is moderating (Ex-9), being down >50% since mid-2026E as we
+believe open LLMs, more tokens per task and growing compute capacities are pushing it lower. We
+note a stronger push towards improving task efficiency with CSPs implementing prompt caching,
+routing to smaller LLMs, and latent-reasoning architecture to helps answer the token demand
+surge and drive more efficient usage with higher TCO.
+Exhibit 9 - Token Consumption Growing >4x y/y
+0
+50
+100
+150
+200
+250
+300
+350
+400
+Token Consumption Per Day (T)
+Source: Tokensperday, MSUSA
+Exhibit 10 - Token Pricing Normalizing at Lower
+Levels as Demand Remains Strong
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+Token Pricing ($/M Tokens)
+Source: Silicon Data, Bloomberg, MSUSA
+AMD - Reiterate Outperform, raise PT to $705 from $580, representing ~41x F27E P/E (prior:
+~34x), with C26/C27E EPS growing ~87%/123% y/y as AI server CPU demand accelerating with
+Agentic AI driving Turin/Genoa in the near-term with Venice now ramping, while it ramps MI400-
+series in 2026E and MI450 ramps at OAI, META starting 2H26E while AMD sees the AI accelerator
+market growing to a ~$1.4T TAM by 2030E.
+INTC - Reiterate Neutral, raise PT to $114 from $92, ~8x our F27E P/S (prior: ~6x), as we see
+multiple expansion across the CPU space impacting INTC and other Agentic AI peers, while we
+4
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+continue to be more positive on INTC’s server CPU ramps, as well as potential foundry wins with
+TPU on EMIB-T in 2028E and potential for other customers as CoWoS demand remains tight.
+DELL - Reiterate Outperform and raise PT to $650 from $600, ~18x our F28E EPS (prior: 17x),
+slightly below SOX (C27E) at ~19x as we estimate F27/28E EPS up 148%/up 38% y/y. We see
+DELL well positioned with Agentic AI server ramps, Vera-only racks potentially manufactured by
+DELL, and an AI server backlog of $95B. We also see its five-quarter pipeline remaining a multiple
+of backlog, with demand across enterprise, neocloud, and sovereign customers accelerating.
+SMCI - Reiterate our Neutral Rating and raise PT to $43 from $35, ~8x our F28E EPS (prior: ~6x
+F28E) as we see SMCI leading the server market with DELL, but with headwinds from some orders
+shifting to competitors while pricing pressure/financing remain a challenge near-term, with longer-
+term margins improving. We estimate F27/28E revs up 74%/11% and EPS up 35%/17% as AI server
+penetration increases.
+SNDK - Reiterate Outperform, raise PT to $2,050 from $1,875, ~9x our F27E EPS (prior ~8x), still
+a big discount vs. the SOX C27E P/E of 19x, with peer multiples moving higher. We see SNDK GM
+staying >80% with its NBM agreements, while EPS grows 5x F26-F28E, with continued inference
+and KVCache demand, with potential for SNDK to buy back 25-30% of the company with aggregate
+$30-50B of FCF 2027-28E. We note strong Agentic AI tailwinds with eSSD storage as the key AI
+enabler, potentially driving ~22% of NAND demand by 2030E
+5
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Price Target Calculation and Key Risks
+Advanced Micro Devices, Inc. (AMD)
+Investment Thesis
+We see AMD well-positioned as a second-place AI accelerator competitor after enjoying continued strength in DC compute with share
+gains as it ramps its Zen 5 Turin with missteps from its competitor. We believe AI accelerator demand remains strong as MI350-series
+ramps with MI400X on track 2026E, and beyond driving into the ~$1T TAM by 2030E (>40% 24-28E CAGR), currently dominated by
+NVDA, with upside from an estimated ~MSD% market share. 2026E could see continued strong roadmap execution with Zen 6 Medusa
+and Venice.
+Base Case/PT
+With AMD gaining server share, a potential PC rebound and upcoming AI product launches, we see a base case PT of $705, ~41x our
+F27E EPS.
+Bull Case/PT
+If AMD can win significant server/DC market and capitalize on growth in AI, AMD could drive EPS higher with accretive GMs and better
+than expected Instinct ramps, implying a bull case PT of $900, trading at ~47x our F27E upside EPS.
+Bear Case/PT
+If AMD is unable to maintain current roadmap execution momentum and loses server market share, AMD could see growth decline,
+leading to a downside ~34x our downside F27E EPS implying a bear case PT of $550.
+Risks
+AMD could see challenges with executing on its AI roadmap into 2026/27E.
+The PC market could continue to be slow into 2026E.
+We would also note AMD remains a distant second supplier to NVDA in the AI GPU race, with key software stack ROCm trailing CUDA.
+Arm Holdings plc (ARM)
+Investment Thesis
+ARM is a global leader in semiconductor intellectual property (IP), powering >99% of the world’s smartphones and has shipped 300B+
+Arm-based chips to date. Arm leverages a broad IP platform across client (smartphone, PC, XR and wearables), infrastructure (servers,
+cloud, networking, and 5G), automotive, and Internet-of-Things (IoT) end-markets to bring energy-efficient central processing units
+(CPU), graphics processing units (GPU), and system IP to its customers. We see ARM well positioned as the company should see
+increasing royalty revenues driven by 2-3x core counts gen/gen, increasing v9 penetration (~5% rate), 2-3x vs v8, CSS at 8-10%+ rates.
+ARM is expanding its TAM 10x+ with AGI CPU and potential AI ASIC products longer-term. We see strong growth opportunities in AI
+with CSPs AMZN/META/MSFT/GOOGL expanding Capex while ARM dominates efficient edge compute in Auto/Client, IoT.
+Base Case/PT
+We see ARM as a global leader in semiconductor IP, and increasing opportunities in DC, client and automotive to drive better units/
+content. We rate ARM Outperform with a $400 PT, ~2.5x F28E PEG.
+Bull Case/PT
+ARM could see stronger than anticipated demand and share gains driven by AI ramps, improved IoT, and faster transitions to v9. In our
+Bull case scenario, we see Arm share prices rising to $700, at ~4.4x our F28E PEG.
+Bear Case/PT
+If ARM sees slower v9 adoption, or is impacted by geopolitical headwinds with Arm China, we could see weaker earnings growth and
+softer ~0.9x F28E PEG, resulting in a Bear case scenario of $150.
+Risks
+ARM could see competition from emerging open-sourced architectures such as RISC-V, but could also see impacts from slower AI/
+handset markets as well as challenges sustaining higher royalty rates. We would also note that ARM’s current revenue mix is highly tied
+to the handset market, where it has ~100% market share, while its top 5 customers make up >50% of its revenues and sees investor
+6
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+concentration with Softbank still owning ~90% of shares. INTC-NVDA partnership is another risk, though we believe remains early with
+ARM maintaining strong 50-65% power efficiency advantages over x86.
+Cerebras Systems Inc. (CBRS)
+Investment Thesis
+CBRS is a differentiated AI enabler and Fast Inference leader. It has established a technology moat via its wafer scale engine (WSE)
+which embeds massive SRAM on chip, enabling up to 15x faster AI inference vs leading edge GPUs. Cerebras focuses on the fastest
+growing subsegment of the AI TAM in AI Inference (53% CAGR to $2T by 2030E), which we believe positions CBRS for significant upside.
+It has an expanding pipeline of customer engagements, anchored by key partnerships with OpenAI and AWS, with potential additional
+customers driving future upside into 2027/28E. CBRS is executing on its multi-generation roadmap from CS-3 to CS-5 and beyond, which
+we expect could continue to advance its leadership in fast inference. We believe Agentic AI proliferation with >1000x token generation
+(vs. reasoning-only tokens) could widen CBRS's advantage enabling faster LLM response times.
+Base Case/PT
+Our base case assumes CBRS executes on its roadmap and gains share as the AI Inference TAM grows fastest and customer ramps
+expand. We rate CBRS at Outperform, with a PT of $300, ~12x F28E P/S.
+Bull Case/PT
+If CBRS is able to penetrate meaningfully into hyperscalers and see adoption accelerate ahead of expectations, while also being able
+to secure the power capacity required, revenue could inflect significantly higher, and driving our bull case PT to $465, or an ~14x bull-
+case F28E P/S.
+Bear Case/PT
+Significant slow down in adoption for CBRS's product and a collapse in AI infrastructure spend could lead to a bear PT of $165, an
+~7x bear-case F28E P/S.
+Risks
+• Technology Roadmap – CBRS must continuously execute on its roadmap to maintain and widen its WSE technology moat.
+• Customer concentration – OpenAI is a key customer and growing to >80% of revenue.
+• Cloud revenue and execution - Cloud revenue is growing to >80% of revenue and will require significant Capex and timely execution
+throughout the AI Datacenter supply chain.
+• Geopolitical Risks – while we believe now de-risked, the Middle-East entities G42 (UAE) and MBZUAI accounted for a significant portion
+of 2025 revenue (~86%), but we note mix decreasing to <40% in F26E and <5% in F27E+ as OpenAI ramps.
+Dell Technologies Inc. (DELL)
+Investment Thesis
+We see DELL as a growing player in the AI server market, with broad exposure to Enterprise/Sovereign/CSP AI demand and with a
+growing pipeline (growing q/q, and we believe still multiples of its current backlog of $95B). We see DELL benefiting as Blackwell ramps
+DLC and Air-cooled servers with strength across enterprise, sovereign and CSP customers. We do see near-term headwinds from lower
+initial AI server OMs, but we highlight offsets from traditional compute server strength and its strong storage margins. We see potential
+tailwinds from DELL with increasing storage needs tied to AI server cluster ramps, as well as benefit from an expected corporate PC
+refresh, which could lead to higher adoption of AI PCs as refresh cycles have elongated to 3-4 years post-Covid vs. historical 2-3 years.
+However, we note increasing memory costs could weigh on near-term unit sales, but we think strong execution and corporate PC focus
+could help DELL take share. We believe DELL has negative WC due to strong supplier relationships and a strong balance sheet, which
+helps drive strong FCF to support its growth into the AI server market.
+Base Case/PT
+With a strong compute server market share, growing AI server share, and a pending corporate PC refresh, we rate DELL Outperform
+with a $650PT, ~18x our F28E EPS.
+Bull Case/PT
+If DELL can build off its strong AI server backlog and capture more of its continuously growing pipeline, as well as see strong ramps
+of AI PCs and corporate PC orders, we believe DELL's could trade at a ~22x P/E on our upside F28E EPS of $38.79, indicating a bull
+case PT of $850.
+7
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Bear Case/PT
+If DELL sees its AI share stagnate or fall and the PC refresh cycle takes longer than expected while also suffering from the current
+memory headwinds, we could see DELL trade at a ~15x P/E on our downside F28E EPS of $32.65, or a bear case PT of $500.
+Risks
+DELL risks include the potential slowing of AI server ramps, slower than expected AI PC ramps, a continued drawing out of corporate
+PC refreshes, customer concentration in the AI server market as DELL mostly services TIer-2 CSPs and enterprise customers who
+traditionally have less deployable capital than hyperscalers, margin sensitivity as ramping of AI servers could lead to compressed
+margins in the short-term as it offers deals to win share, competition with AI server builds all fairly similar and DLC server being expensive
+and leading customers potentially back to air-cooled, as well as geopolitical/macro risks.
+Intel Corporation (INTC)
+Investment Thesis
+We believe new CEO Lip-Bu Tan is driving new opportunities with a vision to return the company to growth trajectory to catch up with key
+peers AMD/NVDA in AI, Server, and PC. INTC's market opportunities remain abundant with server CPU strong, market share in PC, but a
+lagging AI portfolio with Gaudi. We also see some challenges with execution as its foundry but see trend improving with yields/margins
+moving higher. Despite AI accelerator roadmap lagging both AMD/NVDA we see potential improvements into 2027-28E. We believe
+INTC is seeing some L-T ASP/Margins tailwinds with EMIB/18A/14A foundry ramps while memory headwinds impact PC negatively,
+while Agentic AI and inference is creating strong demand for its CPUs.
+Base Case/PT
+While INTC has multiple potential tailwinds including AI opportunities, Foundry growth, and margin improvements as 18A ramps,
+execution risks remain. We rate INTC Neutral with a $114 PT, ~8x our F27E P/S.
+Bull Case/PT
+If INTC can generate better than expected DC/AI revenues, successfully ramp IFS, or unlock value with business unit spin-offs, INTC
+could see a $145 PT, with an upside revenue at $76.3B, delivering a multiple at ~10x upside F27E P/S.
+Bear Case/PT
+If INTC has issues with new nodes/product ramps, sees softer DC/AI, or sees foundry setbacks, we believe it could lead to share gains
+for AMD and NVDA, leading to a bear case PT at ~$83, with a downside top line of $69.2B, or 6x F27E P/S.
+Risks
+INTC will need to continue to execute in 2026E on its process node roadmap as well as gain traction in its Foundry business as new
+leadership continues to execute its longer-term vision. Further missteps could see it lose further share to AMD in PC and/or Server,
+as well as fall farther behind in the AI race to NVDA. We note additional headwinds have emerged with low wafer supply and memory
+supply tightness.
+Micron Technology, Inc. (MU)
+Investment Thesis
+We see MU benefiting from AI-driven tailwinds supporting HBM share gains led by NVDA, while AI-enabled PCs and phones could see
+DRAM and NAND content double longer term. We believe MU remains well positioned with leading edge DRAM nodes driving strong
+performance and cost-downs while it remains disciplined with wafer starts. We believe MU remains attractive with strong AI demand
+driving HBM, eSSDs, LP5 and high-density DIMM.
+Base Case/PT
+We see continued strength into C26E with better HBM pricing, industry supply discipline, and further ramps of leading edge products,
+offsetting legacy product weakness. We rate MU Outperform with a $1,400 PT, ~3x our F28E P/B.
+Bull Case/PT
+Extraneous shocks to supply, AI demand accelerating further with low inventory could drive DRAM/NAND prices higher earlier, as well
+as HBM ramps ahead of expectations, and drive upside to the stock, we believe towards ~$1,850, at ~6.5x our upside F28E P/B.
+Bear Case/PT
+8
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Higher than expected pricing pressure on NAND and DRAM, with softer than expected demand from Data Center, PC, or handsets, as
+well as slower than expected share gains in HBM, could see a return to broad-based memory oversupply and MU trade closer to ~3.5x
+our downside F28E P/B, or our bear case PT of $1,000.
+Risks
+Key risks include for MU include memory ASP declines and cyclicality, competitive and market share pressures, increased industry
+memory capacity and capex from competitors, higher than expected costs or yield issues, slower DRAM/NAND improvement and/or
+yield issues affecting ramps, and increased HBM competition, limiting MU’s share growth.
+NVIDIA Corporation (NVDA)
+Investment Thesis
+We see NVDA remaining the leader in the AI training and inference chips for Data Center applications, with the leading market share.
+We continue to see NVDA executing its roadmap towards >$1T Blackwell+Rubin revs C25-27E and into a >$3-4T TAM by 2030E as
+$25-45B/GW topline opportunity, with strong Blackwell ramps in 2026E, Vera Rubin and its Groq LPU now in production, with >30% ASP
+tailwinds on VR200 NVL72 racks. Additionally, we note upside from CPU ramps with Agentic AI as NVDA sees F27E CPU revs at ~$20B
+with F28E potentially up >100% y/y. We see Gaming (we estimate >75% PC share) are expected to remain healthy and stable, while
+NVDA’s automotive ADAS pipeline remains strong.
+Base Case/PT
+NVDA remains well-positioned in the machine learning, deep learning, and AI markets. Our $315 PT reflects ~20x our F28E EPS, within
+its historical range ~15-30x while remaining the unquestioned market share leader in merchant AI GPU shipments.
+Bull Case/PT
+NVDA has significant market-leading opportunities in the AI/DC, Gaming, and Automotive markets; we see a bull case PT of $450, ~24x
+our upside F28E EPS of $18.93.
+Bear Case/PT
+If NVDA is unable to maintain strong growth in key markets as well as fails to continue to capitalize on AI opportunities, we see a bear
+case PT of $185, at ~14x our downside F28E EPS of $13.72.
+Risks
+Escalations of export restrictions to China and other geopolitical tensions (Taiwan) or a significant pullback in AI Server spending could
+be major headwinds. We would also note limited CoWoS capacity at TSMC, and other suppliers, potential for FTC lawsuits, and growing
+competition both domestically and in China, where shipments have yet to resume following re-approval of shipments from the US govt.
+Super Micro Computer, Inc. (SMCI)
+Investment Thesis
+We see SMCI well positioned as a leader in the AI server market, with >75% ex-CSP share in 2024, though likely declining into 2025-26E
+as peers, such as DELL and others, increase capacity and ramp deployments. However, we see SMCI execution remaining strong with
+most deployments taking <8 weeks to stand up, ramping NVDA GB300 servers with liquid cooling and increasing SMCI's rack capacity.
+We believe the AI Server space continues to be lumpy with strong ramps, but also significant pricing and technology competition from
+larger OEMs. While SMCI appears to have resolved most of the internal controls regaining filing compliance the overall AI Server industry
+while a global growth market also faces intense competition from deep pocketed peers.
+Base Case/PT
+A strong AI server portfolio and leading market share position SMCI well with DLC penetration growing and execution strong, but
+increasing competition and limited margin expansion weigh. We rate SMCI Neutral with a $43 PT, or ~8x our F28E EPS with some near-
+term multiple compression.
+Bull Case/PT
+If ex-CSP AI demand growth accelerates into 2026E and DLC penetration grows ahead of ~30% estimated over the NTM with strong
+DCBBS ramps, SMCI could benefit, which we believe we could see SMCI trade at a $55 PT, ~9x our F28E upside EPS of $5.89.
+Bear Case/PT
+Accelerated share loss, as other key US Server Integrators ramp deployments driving increasing competition, and a slowdown in ex-
+CSP AI capex spend could negatively impact SMCI, and we see a potential bear case ~6x our F28E downside EPS of $5.34, for a $31 PT.
+9
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Risks
+1) Potential stalled revenue growth if AI server spending slows
+2) Customer concentration as its two major customers accounted for ~58% sales with the rise of hyperscaler AI server demand
+3) Elevated CCC, as SMCI pays back its suppliers faster than it receives payment from customers
+4) GM/OM sensitivity with limited AI server margins, increasing competition
+5) Technology risks as expensive liquid cooling adoption remains slow with customers preferring air-cooled solutions
+6) Supplier concentration risk with~ 64% of purchases from its largest supplier
+7) Internal control issues have yet to be resolved, potentially leading to further accounting headwinds
+Sandisk Corporation (SNDK)
+Investment Thesis
+We see Sandisk as a leading player in the NAND flash market with strong positioning across key end-markets, including Consumer,
+Client, and Cloud. We believe the growing data storage needs of next-gen AI models are accelerating while expanding beyond data
+centers, including edge devices such as smartphones and PCs, is driving strong demand for Sandisk's products, driving mid-to-high
+teens CAGR in NAND bit shipments. We also see tight wafer supply supporting NAND ASPs through C2027E. We believe Sandisk
+attractively positioned to capitalize on secular growth in data storage given its strong portfolio of current and next-gen NAND flash
+memory products.
+Base Case/PT
+We see Cloud strength and 2H-weighted better PC/Client demand setting up SNDK for top-line growth while benefiting from synergies
+via its JV with Kioxia as BiCS8 ramps, a strong product roadmap, eSSD share gain, and secular AI-demand exposure. In our base case,
+we see ~9x our F27E EPS for a $2,050 PT.
+Bull Case/PT
+Should pricing trends improve faster-than-expected or demand for memory storage products prove stronger-than-expected as AI
+demand drives eSSD higher, implying bull case PT of $2,600 at ~11x our upside F27E EPS.
+Bear Case/PT
+If NAND pricing fails to stage a recovery or starts to fall, we believe SNDK's top-line growth throughout our forecast horizon would likely
+be significantly pressured, resulting in an implied bear case PT of $1,600, or ~8x our downside F27E EPS.
+Risks
+Key risks to our outlook for SNDK include: 1) either a slower-than-expected recovery or further deterioration in NAND pricing driving
+slower top-line growth and worse-than-expected operating leverage; 2) failure of AI-enabled edge devices to gain traction with
+consumers leading to a less material than expected smartphone/PC upgrade cycle, implying lower demand for SNDK's memory
+products; 3) a slower-than-expected rollout or failure to commercialize next-gen memory products by SanDisk which allows competitors
+to take share from the company; and 4) increasing competition from domestic suppliers in the Chinese market potentially leading to
+share loss in a key region.
+Important Disclosures
+The disclosures for the subject companies of this report as well as the disclosures for Mizuho Securities USA LLC entire coverage universe can be found at https://
+msusa.bluematrix.com/sellside/Disclosures.action or obtained by contacting EQSupervisoryAnalystUS@mizuhogroup.com or via postal mail at Equity Research Editorial
+Department, Mizuho Securities USA LLC, 1271 Avenue of the Americas, 2nd FL, New York NY, 10020.
+Investment Risks and Valuation Methods can be located in the following section of this research report: Base Case PT and Key Risks.
+Receipt of Compensation
+Mizuho Securities USA LLC and or its affiliates makes a market in the following securities: Advanced Micro Devices, Inc., Cerebras Systems Inc., Dell Technologies Inc.
+and Intel Corporation
+Mizuho Securities USA LLC and or its affiliates has received compensation for investment banking services for Dell Technologies Inc., Intel Corporation, Micron Technology,
+Inc. and Sandisk Corporation in the past 12 months.
+Mizuho Securities USA LLC and or its affiliates have provided investment banking services for Dell Technologies Inc., Intel Corporation, Micron Technology, Inc. and Sandisk
+Corporation who are or were clients in the past 12 months.
+Mizuho Securities USA LLC and or its affiliates expects to receive or intends to seek compensation for investment banking services for Dell Technologies Inc. and Intel
+Corporation in the next 3 months.
+10
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Mizuho Securities USA LLC and or its affiliates has managed or co-managed a public offering of securities for Dell Technologies Inc., Intel Corporation, Micron Technology,
+Inc. and Sandisk Corporation in the past 12 months.
+Regulation Analyst Certification (AC)
+I, Vijay Rakesh, hereby certify that the views expressed in this research report accurately reflect my personal views about any and all the subject companies. No part of my
+compensation was, is or will be, directly or indirectly, related to the specific recommendations or views expressed in this research report.
+Rating Definitions
+As of 6/21/2024, Mizuho Securities USA (MSUSA) uses a relative rating system in which stocks are rated as Outperform, Neutral, or Underperform (see definitions below)
+relative to other companies covered by the analyst or a team of analysts that are deemed to be in the same industry (the “relevant industry coverage universe”). Investors
+should read the research report in its entirety, including the definitions of all ratings, and not infer its contents from the rating alone.
+Investment ratings are based on the following definitions: The expected total return calculation includes anticipated dividend yield.
+Outperform (O): The stock's total return is expected to outperform the unweighted, expected total return of the analyst's industry coverage universe over the next 12
+months.
+Neutral (N): The stock’s total return is expected to perform in line with the unweighted, expected total return of the analyst’s industry coverage universe over the next
+12 months.
+Underperform (U): The stock’s total return is expected to underperform the unweighted, expected total return of the analyst’s industry coverage universe over the next
+12 months.
+Restricted (R): In certain circumstances, MSUSA policy and/or applicable securities regulations preclude certain types of communications, including investment
+recommendations, during the course of Mizuho’s engagement in certain transactions and in certain other circumstances.
+Rating Suspended (RS): The rating and target price have been temporarily suspended due to market events that made coverage impracticable or to comply with
+applicable regulations and/or firm policies in certain circumstances.
+Not Covered (NC): MSUSA does not cover the company.
+For disclosure purposes only (NYSE and FINRA ratings distribution requirements), our Outperform, Neutral and Underperform ratings are displayed as Buy, Hold and
+Sell, respectively.
+Prior to 6/21/24, MSUSA’s ratings were Buy, Neutral and Underperform.
+Rating Distribution
+(As of October 5 )
+% of coverage
+IB service past 12 mo
+Buy (Outperform)
+63.01%
+55.76%
+Hold (Neutral)
+32.77%
+52.06%
+Sell (Underperform)
+4.22%
+44.00%
+For disclosure purposes only (NYSE and FINRA ratings distribution requirements), our Outperform, Neutral and Underperform ratings are displayed as Buy, Hold
+and Sell, respectively.
+For additional information: Please log on to http://www.mizuhosecurities.com/us or write to Mizuho Securities USA LLC 1271 Avenue of the Americas, 2nd FL, New York,
+NY 10020.
+Disclaimers
+This report has been prepared by Mizuho Securities USA LLC (“MSUSA”), a subsidiary of Mizuho Americas LLC, solely for the purpose of supplying information to the clients
+of MSUSA and/or its affiliates to whom it is distributed. This report is not, and should not be construed as, a solicitation or offer to buy or sell any securities or related
+financial products.
+This report has been prepared by MSUSA solely from publicly available information. The information contained herein is believed to be reliable but has not been independently
+verified. MSUSA makes no guarantee, representation or warranty, and MSUSA, MHSC and/or their affiliates, directors, employees or agents accept no responsibility or
+liability whatsoever as to the accuracy, completeness or appropriateness of such information or for any loss or damage arising from the use or further communication
+of this report or any part of it. Information contained herein may not be current due to, among other things, changes in the financial markets or economic environment.
+Opinions reflected in this report are subject to change without notice.
+This report does not constitute, and should not be used as a substitute for, tax, legal or investment advice. The report has been prepared without regard to the individual
+financial circumstances, needs or objectives of persons who receive it. The securities and investments related to the securities discussed in this report may not be suitable
+for all investors. Readers should independently evaluate particular investments and strategies, and seek the advice of a financial adviser before making any investment or
+entering into any transaction in relation to the securities mentioned in this report.
+MSUSA has no legal responsibility to any investor who directly or indirectly receives this material. Investment decisions are to be made by and remain as the sole responsibility
+of the investor. Investment involves risks. The price of securities may go down as well as up, and under certain circumstances investors may sustain total loss of investment.
+Past performance should not be taken as an indication or guarantee of future performance. Unless otherwise attributed, forecasts of future performance represent analysts’
+estimates based on factors they consider relevant. Actual performance may vary. Consequently, no express or implied warranty can be made regarding future performance.
+11
+ 
+
+Industry Report
+Semiconductors & Semiconductor Capital Equipment
+Any references in this report to Mizuho Financial Group, Inc. (“MHFG”), MHSC and/or its affiliates are based only on publicly available information. The authors of this report
+are prohibited from using or even obtaining any insider information. As a direct subsidiary of Mizuho Americas LLC and indirect subsidiary of MHFG, MSUSA does not, as
+a matter of corporate policy, cover MHFG or MHSC for investment recommendation purposes.
+MSUSA or other companies affiliated with MHFG, Mizuho Americas LLC or MHSC, together with their respective directors and officers, may have or take positions in the
+securities mentioned in this report, or derivatives of such securities or other securities issued by companies mentioned in this report, for their own account or the accounts
+of others, or enter into transactions contrary to any recommendations contained herein, and also may perform or seek to perform broking and other investment or securities
+related services for the companies mentioned in this report as well as other parties generally.
+Restrictions on Distribution
+This report is not directed to, or intended for distribution to or use by, any person who is a citizen or resident of, or entity located in, any locality, territory, state, country or
+other jurisdiction where such distribution, publication, availability or use would be contrary to or restricted by law or regulation. Persons or entities into whose possession
+this report comes should inform themselves about and observe such restrictions.
+United States: Mizuho Securities USA LLC, a subsidiary of Mizuho Americas LLC, 1271 Avenue of the Americas, 2nd Floor, New York, NY 10020, USA, contact number
++1-212-209-9300, distributes or approves the distribution of this report in the United States and takes responsibility for it. Any transaction by a US investor resulting from
+the information contained in this report may be effected only through MSUSA. Interested US investors should contact their MSUSA sales representative.
+United Kingdom/Germany/European Economic Area: This report is distributed in the United Kingdom by Mizuho International plc (MHI), Mizuho House, 30 Old Bailey,
+London EC4M 7AU. MHI is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority and
+is a member of the London Stock Exchange. This report is distributed in Germany by Mizuho Securities Europe GmbH (MHEU), Taunustor 1, 60310 Frankfurt, Germany.
+MHEU is authorised and regulated by the Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin). This report may be distributed in other member states of the European
+Economic Area by MHI and MHEU. For the avoidance of doubt this report is not intended for persons who are Retail Clients within the meaning of the FCA’s or the BaFin’s
+rules. Details of organizational and administrative controls for the prevention and avoidance of conflicts of interest can be found at https://www.mizuhogroup.com/emea/
+who-we-are/governance/mizuho-international-plc-legal-and-compliance/legal-disclosures.
+Japan: This report is distributed in Japan by Mizuho Securities Co., Ltd. (“MHSC”), Otemachi First Square Otemachi 1-chome, Chiyoda-ku, Tokyo 100-0004, Japan. Registered
+Financial Instruments Firm, No. 94 (Kinsho), issued by the Director, Kanto Local Finance Bureau. MHSC is a member of the Japan Securities Dealers Association, the Japan
+Securities Investment Advisers Association and the Financial Futures Association of Japan, and the Type II Financial Instruments Firms Association.
+Singapore: This report is distributed in Singapore by Mizuho Securities (Singapore) Pte. Ltd. (“MHSS”), a holder of a capital markets services license and an exempt financial
+adviser regulated by the Monetary Authority of Singapore. MHSS may distribute analyses or reports produced by its affiliates or other foreign research houses pursuant to
+an arrangement under Regulation 32C of the Financial Advisers Regulations. This report is only intended for distribution to “institutional investors”, “accredited investors” or
+“expert investors”, as defined under the Financial Advisers Regulations. Singapore recipients of this report should contact MHSS at 12 Marina View, #10-01A Asia Square
+Tower 2, Singapore 018961, for any matter arising from, or in connection with, this report.
+Hong Kong: This report is distributed in Hong Kong by Mizuho Securities Asia Ltd. (‘MHSA’), 14 - 15/F, K11 Atelier, 18 Salisbury Road, Tsim Sha Tsui, Kowloon, Hong Kong,
+a member of MHFG. MHSA is licensed and regulated by the Hong Kong Securities and Futures Commission. This report has been prepared for “professional investors” as
+defined in the Hong Kong Securities and Futures Ordinance. This report has been prepared in accordance with MHSA’s internal conflict of interest management policies.
+Details of MHSA’s organizational and administrative controls for the prevention and avoidance of conflicts of interest are available upon request.
+Australia: This report is being distributed in Australia by MHSA, which is exempted from the requirement to hold an Australian financial services license under the Corporation
+Act 2001 (“CA”) in respect of the financial services provided to the recipients. MHSA is regulated by the Securities and Futures Commission under the laws of Hong Kong,
+which differ from Australian laws. Distribution of this report is intended only for recipients who are “wholesale clients” within the meaning of the CA.
+Dubai: Mizuho International plc (DIFC Branch) is regulated by the Dubai Financial Services Authority and is authorized to provide financial services to Professional Clients
+and Market Counterparties only as defined by the DFSA rulebook. Mizuho International plc (DIFC Branch) registered address is Unit 501, Level 5, The Gate Building, East
+Wing, Dubai International Financial Centre, Dubai, U.A.E., Tel. +971 4 279 4400.
+If you do not wish to receive our reports in the future, please contact your sales person and request to be removed from receiving this distribution.
+© Mizuho Securities USA LLC. All Rights Reserved 2026. This document may not be altered, reproduced (including for purposes of training artificial intelligence models or
+tools), redistributed, passed on to any other party or used to create derivative works, in whole or in part, without the prior written consent of Mizuho Securities USA LLC.
+12
+ 
