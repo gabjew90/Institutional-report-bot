@@ -49,3 +49,13 @@ def test_what_happened_with_no_news_today_says_so_2026_10_18():
     assert "no company news dated today" in _today_news_slot(old, today=date(2026, 10, 12))
     new = {"digest": "- 2026-10-12: shares fell after a downgrade"}
     assert _today_news_slot(new, today=date(2026, 10, 12)) is None
+
+
+def test_a_bracket_of_several_source_tags_is_removed_2026_10_18():
+    from discord_bot.stock_outline import strip_source_tags
+    a = ("→ **ARM** closed at **$227.80** [live prices, ticker snapshot]\n"
+         "→ Goldman expects an in-line quarter [Goldman Sachs, exchange data]")
+    out = strip_source_tags(a, {"Goldman Sachs"})
+    assert "[" not in out and "**$227.80**" in out and "in-line quarter" in out
+    keep = "→ ranges [10, 20] stay"
+    assert strip_source_tags(keep, set()) == keep

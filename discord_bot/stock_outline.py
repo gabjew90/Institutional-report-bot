@@ -262,7 +262,14 @@ def strip_source_tags(answer: str, banks: set[str] | None = None) -> str:
             inside = before.count("(") > before.count(")")
             return f"{lead}{tag}" if inside else f"{lead}({tag})"
         return ""
-    return _SOURCE_TAG_RE.sub(_drop, text)
+    text = _SOURCE_TAG_RE.sub(_drop, text)
+    # Several tags in one bracket at the end of a line ("[live prices, ticker
+    # snapshot]", "[Goldman Sachs, exchange data]"), 2026-10-18 live harness.
+    return _TAG_LIST_RE.sub("", text)
+
+
+_TAG_LIST_RE = re.compile(
+    r"[ \t]*\[(?:[A-Za-z][A-Za-z.&' -]{1,30})(?:,\s*[A-Za-z][A-Za-z.&' -]{1,30})+\](?=[ \t]*(?:\n|$))")
 
 
 _GENERIC_TAGS = {"live prices", "company report", "consensus data", "exchange and filing data",
