@@ -1,0 +1,193 @@
+{
+ "brief": "Goldman notes a divergence between AI/semis price action and levered-ETF flows. The SOX index posted its worst week of the year (-11%), second worst since Liberation Day, and SMH fell for 9 straight sessions, the longest losing streak in its 15-year history; SPY, XLK and QQQ outperformed SMH for 10 straight sessions despite composition overlap. Despite this weakness, nearly $10bn flowed into levered ETFs last week, the largest weekly inflow in GS's dataset, led by SOXL (+$7bn, a record, 74% of inflows) and TQQQ (+$1.3bn). GS frames this as consistent with a historical pattern: levered-ETF flows are strongest on days of sharp market declines (-2\u03c3) and weakest on the best days (+2\u03c3), and larger in absolute size during steep selloffs. The week's inflows pushed cumulative YTD levered-ETF flows toward net-positive, which GS is watching because improving market conditions could amplify gross levered exposure (currently $152bn AUM, $386bn gross, the second-lowest since July).",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "The SOX index had its worst week of performance this year, down 11%, its second-worst week behind the Liberation Day selloff.",
+   "anchor": "The SOX index faced its worst week of performance this year (-11%), and its second worst behind Liberation Day",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "SMH has traded lower for 9 consecutive sessions, the longest downward streak in its 15-year operating history.",
+   "anchor": "SMH has traded lower for 9 consecutive sessions, the longest downward streak in its 15yr operating history",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [
+    "SMH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "SPY, XLK, and QQQ have outperformed SMH for 10 straight sessions despite notable composition overlap of 20%, 37%, and 45%.",
+   "anchor": "SPY,XLK, and QQQ have outperformed SMH for 10 straight sessions, even with notable overlaps in composition: 20%, 37%, 45%...",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [
+    "SPY",
+    "XLK",
+    "QQQ",
+    "SMH"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "Nearly $10 billion poured into levered ETFs last week, the largest weekly inflow in Goldman's dataset.",
+   "anchor": "nearly $10 billion poured into levered ETFs last week, which is the largest weekly inflow in our dataset",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "SOXL was the largest driver of levered ETF inflows, gathering a record +$7 billion, 74% of weekly net inflows.",
+   "anchor": "The largest driver of inflows was SOXL (+3x semis), which gathered +$7 billion (a record), contributing 74% of weekly net inflows",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [
+    "SOXL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "TQQQ was the second-largest contributor to levered ETF inflows, adding +$1.3 billion.",
+   "anchor": "TQQQ (+3x NDX) was the second-largest contributor, adding +$1.3 billion",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [
+    "TQQQ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "Levered ETF flows have historically been strongest on days when the broader market faced challenging price action, defined as -2 sigma events.",
+   "anchor": "have historically been strongest on days when the broader market has faced challenging price action (-2\u03c3 events)",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "Levered ETF flows have historically been weakest during the market's best days of performance, defined as +2 sigma events.",
+   "anchor": "weakest during the market\u2019s best days of performance (+2\u03c3)",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "Levered ETF flows are larger on an absolute basis when the market experiences steep declines.",
+   "anchor": "In addition to the contrasting flow behavior, it\u2019s worth noting that flows are larger on an absolute basis when the market experiences steep declines",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "The past week's inflows pushed cumulative YTD flows for levered ETFs into near net-positive territory.",
+   "anchor": "The strength over the past week pushed cumulative YTD flows for levered ETFs into near net-positive territory",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "If market conditions improve, the net increase in invested units could act as a multiplier on gross levered ETF exposure.",
+   "anchor": "if market conditions do improve, this net increase can act as a multiplier on gross levered ETF exposure",
+   "topic": "Equity positioning and flows",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS ETF Color: Inflows into levered ETFs",
+   "claim": "Levered ETFs currently represent $152 billion in AUM and $386 billion in gross exposure, the second-lowest mark since July.",
+   "anchor": "Levered ETFs currently represent $152 billion in AUM and $386 billion in gross exposure, the second-lowest mark since July",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-18/20876__gs-lucas-gs-etf-color-inflows-into-levered-etfs-18-oct-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 12,
+  "matched": 12,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 2,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
