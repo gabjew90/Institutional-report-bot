@@ -245,6 +245,9 @@ def extract_tickers(text: str, *, lowercase: bool = True,
             continue
         if t not in out:
             out.append(t)
+    for t in lower_context_tickers(text):
+        if t not in out:
+            out.append(t)
     return out
 
 
@@ -257,6 +260,34 @@ _LOWER_LEADIN_RE = re.compile(
     r"|happened\s+(?:to|with)|news\s+(?:on|for|about|regarding)"
     r"|think\s+(?:of|about)|thoughts?\s+on|(?:bullish|bearish)\s+on|(?:take|view|read)\s+on)\s+"
     r"(?:the\s+)?([a-z]{2,5})\b", re.I)
+# A lowercase ticker next to a company word: "lawsuit for arm", "investor
+# day mentions for amat", "elmt earnings" (2026-10-18 audit A7: arm and
+# amat got no news or price tool, and the bot said the Arm jury was still
+# deliberating a day after its verdict).
+_COMPANY_WORD = (r"(?:lawsuit|suit|case|verdict|ruling|investor\s+day|analyst\s+day|earnings|guidance"
+                 r"|mentions?|news|stock|shares|deal|merger|acquisition|buyback|offering|lock-?up"
+                 r"|downgrade|upgrade|price\s+target|ceo|cfo|contract|filing|dividend)")
+_LOWER_CONTEXT_RE = re.compile(
+    r"\b" + _COMPANY_WORD + r"\s+(?:for|on|of|from|against|with|at)\s+(?:the\s+)?([a-z]{2,5})\b"
+    # a lookahead, so "this lawsuit" does not consume "lawsuit for arm"
+    r"|\b([a-z]{2,5})(?:'s)?\s+(?=" + _COMPANY_WORD + r"\b)"
+    # "spcx is reporting after close on 10/20" (audit A9)
+    r"|^\s*([a-z]{2,5})\s+(?:is|are)\s+report(?:s|ing)\b", re.I)
+
+
+def lower_context_tickers(text: str) -> list[str]:
+    """Lowercase tokens named next to a company word, never a known word."""
+    out: list[str] = []
+    for m in _LOWER_CONTEXT_RE.finditer(text or ""):
+        tok = next(g for g in m.groups() if g)
+        t = tok.upper()
+        if tok != tok.lower() or t in _NOT_TICKERS or tok.lower() in _COMMON_WORDS:
+            continue
+        if t not in out:
+            out.append(t)
+    return out
+
+
 # "mu thoughts?" / "mu bull or bear?": the ticker precedes the view word,
 # which closes the question. Shared with _trailing_view so the uppercase
 # and lowercase paths accept the same phrasings.
@@ -342,7 +373,14 @@ _CHAT_RE = re.compile(
     # "how many times" is the room's history only when someone said or
     # posted something ("how many times do I need to 10x $100" is math,
     # 2026-10-10 audit)
-    r"|how\s+many\s+times\b[^?\n]{0,60}\b(?:said|say|says|posted|post|typed|mentioned|used|called|asked))\b",
+    r"|how\s+many\s+times\b[^?\n]{0,60}\b(?:said|say|says|posted|post|typed|mentioned|used|called|asked)"
+    # "what was the day that I called those soxl sellers..." and "in this
+    # discord" are about the room's own messages (2026-10-18 audit A6/A18:
+    # both fell to the catch-all, which has no chat search; one ended in an
+    # empty reply).
+    r"|(?:what|which)\s+(?:\w+\s+){0,3}(?:day|date|time)\b[^?\n]{0,40}\b(?:i|you|he|she|they|we|\w+)\s+(?:called|said|posted|wrote|typed)"
+    r"|when\s+did\s+(?:i|he|she|they|we|\w+)\s+(?:call|say|post|write|type)\b"
+    r"|in\s+(?:this|the|our)\s+(?:discord|server|chat|room|group)|in\s+here)\b",
     re.I)
 # "what did powell say" is a news question, not a room-history one; the
 # chat shape would strip Google and every market tool (2026-09-02 review).
@@ -616,7 +654,8 @@ _STAT_RE = re.compile(
     r"|(?:seasonal|seasonality)|(?:september|october|december|january)\s+(?:effect|returns?|performance)"
     r"|(?:how\s+often|what\s+percent(?:age)?\s+of)\b)", re.I)
 _NEWS_RE = re.compile(
-    r"\b(?:why\s+(?:is|are|did|was|were)\s+\S+\s+(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving)"
+    r"\b(?:why\s+(?:is|are|did|was|were)\s+\S+\s+(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving"
+    r"|dropping|dropped|crashing|bleeding|sliding|sinking|plunging|selling\s+off|pumping|surging|jumping|soaring|rallying|spiking)"
     r"|what\s+happened\s+(?:to|with)\b|odds\s+\S+\s+(?:beats?|misses?)|(?:beat|miss)\s+odds"
     r"|explain\s+\S+\s+(?:death|dump|rip|crash|move|drop|pop)|what(?:'s| is)\s+(?:going\s+on|the\s+news)\s+with"
     # Figures a reader expects sourced, not recalled (2026-09-03 ask
@@ -633,6 +672,51 @@ _NEWS_RE = re.compile(
     r"(?:election|race|vote|primary|runoff|referendum|mayor\w*|governor\w*|senate|house\s+seat)"
     r"|(?:election|runoff|primary|referendum)\s+results?"
     r")\b", re.I)
+# One field of a company's numbers (2026-10-18 audit A20).
+_SNAPSHOT_FIELD_RE = re.compile(
+    r"\b(?:shares\s+outstanding|share\s+count|(?:shares?\s+|free\s+)?float\b|market\s+cap(?:italization)?"
+    r"|short\s+interest|how\s+many\s+shares)", re.I)
+# A fund's positions (2026-10-18 audit A10). The fund word may sit in the
+# message replied to ("Private fund status: VARA ...").
+_HOLDINGS_RE = re.compile(
+    r"\b(?:positions?|holdings?|13-?f|portfolio|stakes?|what\s+(?:does|do|is|are)\s+\S+\s+(?:hold|holding|own|owning))\b",
+    re.I)
+_FUND_WORD_RE = re.compile(
+    r"\b(?:fund|funds|hedge|capital\s+management|asset\s+management|advisors|partners|13-?f|family\s+office)\b",
+    re.I)
+# Market-wide volume (2026-10-18 audit A15).
+_VOLUME_RE = re.compile(
+    r"\bvolume\b[^?\n]{0,40}\b(?:stocks?|market|today|so\s+far|spy|qqq|tape)\b"
+    r"|\b(?:stocks?|market|today'?s?|tape)\b[^?\n]{0,30}\bvolume\b", re.I)
+
+
+def _parent_text(question: str) -> str:
+    m = _REPLY_BLOCK_RE.search(question or "")
+    return m.group("parent") if m else ""
+
+
+_MENTION_ONLY_RE = re.compile(r"^\s*(?:(?:<@!?\d+>|@[\w.]+(?:\s+\([\w.]+\))?)[\s,]*)+[?!.]*\s*$")
+
+
+def mention_only(question: str) -> str:
+    """The tagged name when the asker's whole message is an @-mention under
+    a reply, else "". 2026-10-18 audit A19: bulch tagged abe under the bot's
+    ASML answer and got an NBIS analysis built from abe's quoted messages."""
+    if "[MESSAGE BEING REPLIED TO" not in (question or ""):
+        return ""
+    own = _last_line(question)
+    if not _MENTION_ONLY_RE.match(own):
+        return ""
+    m = re.search(r"@([\w.]+)", own)
+    return m.group(1) if m else "them"
+
+
+def mention_only_note(name: str) -> str:
+    return (f"TAGGED UNDER A MESSAGE: the asker's whole message is a tag of {name} under the "
+            f"message they replied to. Answer that message for {name}: restate its point for "
+            f"them in a line or two. Do not answer anything in the quoted recent messages.")
+
+
 # A correction that states an event is checked, not argued from memory
 # (2026-10-10 audit: "Wrong. Hitler Mussolini won." got a second joke). A
 # correction about the asker ("nope you lost") or a named room member
@@ -900,12 +984,36 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         if term:
             r.prefetch = [(T_CHAT, {"keyword": term, "days": 90})]
         return r
+    # A fund's holdings are in its 13F filings, found by search; the fund's
+    # name is not a ticker (2026-10-18 audit A10: "What are VARAs positions"
+    # priced VARA, had no Google, and said the fund files no 13Fs).
+    if _HOLDINGS_RE.search(q) and (_FUND_WORD_RE.search(q) or _FUND_WORD_RE.search(_parent_text(question))):
+        r.shape, r.reason = NEWS_EVENT, "a fund's holdings"
+        r.tickers = []
+        return r
+    # "spcx is reporting after close on 10/20" states one company's date:
+    # check that company, not the day's slate (2026-10-18 audit A9).
+    stated = lower_context_tickers(q) or (tickers if re.search(r"\b(?:is|are)\s+reporting\b", ql) else [])
+    if stated and re.search(r"\breport(?:s|ing)\b", ql) and len(stated) == 1:
+        r.tickers = stated
+        r.shape, r.reason = EARNINGS_DATE, "one company's stated report date"
+        r.prefetch = [(T_EDATE, {"symbol": stated[0]}), (T_PRICE, {"symbols": [stated[0]]})] + \
+            _stock_prefetch(stated[0], research=False)
+        return r
+    # Market volume: the index ETFs' volume against their average (2026-10-18
+    # audit A15: "how is today's volume for stocks" got no volume figure).
+    if _VOLUME_RE.search(q) and not strong:
+        r.shape, r.reason = PRICE, "market volume"
+        r.tickers = ["SPY", "QQQ"]
+        r.prefetch = [(T_PRICE, {"symbols": ["SPY", "QQQ"], "with_volume": True})]
+        return r
     if _SLATE_RE.search(q) and not _EDATE_RE.search(q):
-        if re.search(r"\b(?:this|next)\s+week\b", ql):
-            # The slate tool answers one date. Injecting today's names
-            # as the authoritative answer to a week question was wrong
-            # (2026-09-02 review); the model calls the tool per day.
-            r.shape, r.reason = EARNINGS_SLATE, "week slate: per-day tool, no prefetch"
+        wk = re.search(r"\b(this|next)\s+week\b", ql)
+        if wk:
+            # The slate answers a whole week in one call since 2026-10-18;
+            # per-day calls made "next week" take 549 s (audit A1).
+            r.shape, r.reason = EARNINGS_SLATE, f"{wk.group(1)} week slate"
+            r.prefetch = [(T_SLATE, {"date": f"{wk.group(1)}_week"})]
             return r
         r.shape, r.reason = EARNINGS_SLATE, "who-reports shape"
         date = "tomorrow" if re.search(r"\b(tomorrow|tmrw?)\b", ql) else ""
@@ -953,6 +1061,15 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         # asker's.
         if (T_FANTASY, {"topic": "matchups"}) not in r.prefetch:
             r.prefetch.append((T_FANTASY, {"topic": "matchups"}))
+        return r
+    # One field of the company's numbers (shares outstanding, float, market
+    # cap) is a data lookup: price and snapshot, no news and no outline, so
+    # the business-line rewrite cannot give a segment as the cause of a move
+    # nobody asked about (2026-10-18 audit A20).
+    if tickers and _SNAPSHOT_FIELD_RE.search(q) and not re.search(r"\bwhy\b", ql):
+        r.shape, r.reason = PRICE, "one snapshot field"
+        r.prefetch = [(T_PRICE, {"symbols": [price_symbol(tickers[0])]})] + \
+            _stock_prefetch(tickers[0], research=False)
         return r
     if _NEWS_RE.search(q):
         r.shape, r.reason = NEWS_EVENT, "why/what-happened/odds shape"
@@ -1038,12 +1155,17 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     # printed got consensus, "so is dogshit" got no data on CRWV). Only
     # here, after every other shape had its turn with the asker's words.
     carried = False
+    # a lowercase ticker beside a company word ("lawsuit for arm") is as
+    # good as a capitalised one (2026-10-18 audit A7)
+    named = [] if strong else lower_context_tickers(q)
+    if named:
+        strong = named
     if not tickers:
         parent = reply_parent_tickers(question)
         if parent:
             strong, carried = parent[:1], True
     if (strong and is_stock(strong[0]) and strong[0].lower() not in _COMMON_WORDS
-            and ("$" in q or _MARKET_WORD_RE.search(q) or (carried and "?" in q))):
+            and ("$" in q or named or _MARKET_WORD_RE.search(q) or (carried and "?" in q))):
         r.tickers = strong
         r.shape, r.reason = TICKER_OPINION, (
             "ticker from the replied-to message" if carried else "ticker with no other shape")
@@ -1087,7 +1209,15 @@ def reply_parent_tickers(question: str) -> list[str]:
                   question or "", re.S)
     if not m:
         return []
-    found = [t for t in extract_tickers(m.group(1), lowercase=False)
+    text = m.group(1)
+    if re.search(r"\[MESSAGE BEING REPLIED TO — from omniwiz\b", question or "", re.I):
+        # The bot's own answers name agencies and acronyms in capitals ("a $36
+        # million DLA contract"); only a cashtag, a "(TICKER)" or a bold
+        # "**TICKER" is the subject (2026-10-18 audit A13: DLA was researched
+        # and primed as the stock behind an ELMT answer).
+        marked = re.findall(r"\$([A-Z]{1,5})\b|\(([A-Z]{1,5})\)|\*\*([A-Z]{1,5})\b", text)
+        text = " ".join(f"${next(g for g in t if g)}" for t in marked)
+    found = [t for t in extract_tickers(text, lowercase=False)
              if is_stock(t) and t.lower() not in _COMMON_WORDS]
     return found if 1 <= len(found) <= 2 else []
 
@@ -1362,6 +1492,8 @@ SECTOR_BASKETS: list[tuple["re.Pattern", list[str]]] = [
     (re.compile(r"\b(?:nuclear|uranium)\b"), ["CCJ", "OKLO", "SMR"]),
     (re.compile(r"\b(?:solar)\b"), ["FSLR", "ENPH", "TAN"]),
     (re.compile(r"\b(?:biotech)\b"), ["XBI", "IBB"]),
+    # "why is crypto dropping" (2026-10-18 audit A22: no price, no news)
+    (re.compile(r"\b(?:crypto|cryptos|coins|alts|altcoins|bitcoin)\b"), ["BTC", "ETH", "SOL"]),
 ]
 
 

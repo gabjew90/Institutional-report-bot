@@ -1035,6 +1035,29 @@ def fetch_nasdaq_earnings_rows(date_iso: str) -> dict[str, dict] | None:
     return out or None
 
 
+_FX_CACHE: dict[str, float | None] = {}
+
+
+def _usd_per(currency: str) -> float | None:
+    """US dollars per one unit of `currency`, from Yahoo's FX chart
+    (e.g. TWDUSD=X). Cached for the process; None when unavailable."""
+    cur = (currency or "").upper()
+    if cur == "USD":
+        return 1.0
+    if cur in _FX_CACHE:
+        return _FX_CACHE[cur]
+    rate = None
+    try:
+        from report.market_data import _fetch_yahoo_extended_hours
+        q = _fetch_yahoo_extended_hours(f"{cur}USD=X") or {}
+        v = q.get("regular_close") or q.get("last_price")
+        rate = float(v) if v and float(v) > 0 else None
+    except Exception:
+        rate = None
+    _FX_CACHE[cur] = rate
+    return rate
+
+
 def fetch_symbol_profiles(
     symbols: list[str], pace_seconds: float = 1.1
 ) -> dict:
@@ -1060,8 +1083,16 @@ def fetch_symbol_profiles(
             f"&token={urllib.parse.quote(key)}"
         )
         p = _fetch_json(url) or {}
+        cap = float(p.get("marketCapitalization") or 0.0)
+        cur = str(p.get("currency") or "USD").upper()
+        if cap and cur != "USD":
+            # profile2 reports the cap in the company's own currency (TSM in
+            # Taiwan dollars read as a $64.6T company, 2026-10-18 audit C1).
+            # Unconvertible means unknown, stored as 0 like a failed lookup.
+            rate = _usd_per(cur)
+            cap = cap * rate if rate else 0.0
         out[sym] = {
-            "cap": float(p.get("marketCapitalization") or 0.0),
+            "cap": cap,
             "name": (p.get("name") or sym),
             "logo": (p.get("logo") or "").strip(),
         }

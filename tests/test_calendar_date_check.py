@@ -100,8 +100,11 @@ def test_fetcher_parses_the_nasdaq_payload_and_treats_empty_as_unavailable():
 def test_the_calendar_job_path_calls_the_check():
     import inspect
     src = inspect.getsource(cd.build_calendar_day)
-    assert "fetch_nasdaq_earnings_rows(date_iso)" in src
-    assert src.index("fetch_earnings_calendar_all(date_iso)") < src.index("fetch_nasdaq_earnings_rows(date_iso)")
+    # the check moved into reconcile_earnings, shared with /ask's slate tool
+    # (2026-10-18 audit A2)
+    assert "reconcile_earnings(date_iso, raw, _nasdaq_rows_for(date_iso)" in src
+    assert src.index("fetch_earnings_calendar_all(date_iso)") < src.index("_nasdaq_rows_for(date_iso)")
+    assert "fetch_nasdaq_earnings_rows(date_iso)" in inspect.getsource(cd._nasdaq_rows_for)
 
 
 # 2026-09-16: the reverse case. Finnhub parked General Mills on an

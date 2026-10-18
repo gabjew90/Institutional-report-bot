@@ -262,6 +262,30 @@ def _given_up(path: str, max_attempts: int) -> bool:
         return False
 
 
+def over_reader_cap(date: str, done: set, failed: set) -> set[int]:
+    """pdf_file_ids in one day folder that the pilot readers will never read.
+
+    The readers take at most MAX_PER_DAY documents per folder, newest first
+    by the bank's day and then by id (scripts/pilot_list_unread.py). A note
+    below that line used to wait the full lane timeout and then go to Gemini
+    anyway: 39 of 73, 30 of 54 and 29 of 54 lane notes on 10-13/15/17
+    (2026-10-18 audit R4). Same ranking here, so those go to Gemini at once.
+    A document with a failure record is left out of the ranking (the reader
+    may have retired it), which errs toward waiting."""
+    from github_bridge.pilot_publish import note_date_from_path
+    from scripts.pilot_list_unread import MAX_PER_DAY
+    if not MAX_PER_DAY:
+        return set()
+    docs = []
+    for r in db.get_lane_rows_any_status(f"{_prefix()}{date}/"):
+        pid = int(r["pdf_file_id"])
+        if f"{pid}.json" in failed and f"{pid}.json" not in done:
+            continue
+        docs.append((note_date_from_path(r.get("dropbox_path") or "") or date, pid))
+    docs.sort(reverse=True)
+    return {pid for _, pid in docs[MAX_PER_DAY:] if f"{pid}.json" not in done}
+
+
 def pull(now: datetime | None = None) -> dict:
     """One tick: ingest arrived records, route given-up and overdue
     documents to Gemini. Blocking (GitHub API); run it in a thread."""
@@ -281,11 +305,16 @@ def pull(now: datetime | None = None) -> dict:
                 if it.get("type") == "file"}
         failed = {it.get("name") for it in gh.list_dir(f"{root}/{failures}/{date}", ref=branch)
                   if it.get("type") == "file"}
+        over_cap = over_reader_cap(date, done, failed)
         for r in group:
             name = f"{int(r['pdf_file_id'])}.json"
             if name in done:
                 if _ingest(r):
                     out["ingested"] += 1
+                continue
+            if int(r["pdf_file_id"]) in over_cap:
+                if _to_gemini(r, "past the pilot readers' daily cap"):
+                    out["to_gemini"] += 1
                 continue
             if name in failed and _given_up(f"{root}/{failures}/{date}/{name}", max_attempts):
                 out["to_gemini"] += _to_gemini(r, f"lane gave up after {max_attempts} attempts")

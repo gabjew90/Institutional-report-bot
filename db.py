@@ -1596,6 +1596,7 @@ from db_parts.pdf import (  # noqa: E402,F401
     queue_for_opus_bridge,
     queue_for_claude_lane,
     get_lane_rows,
+    get_lane_rows_any_status,
     move_bridge_row,
     record_pipeline_event,
     reset_stale_processing,

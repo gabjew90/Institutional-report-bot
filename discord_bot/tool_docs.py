@@ -202,7 +202,8 @@ TOOL_DOCS["lookup_earnings_slate"] = (
     "timing YET, not that the company is absent: report the name and "
     "note the session is unconfirmed. Dropping it is the failure this "
     "tool exists to fix.\n"
-    "Args: date - 'YYYY-MM-DD', or 'tomorrow'; omit for today (ET)."
+    "Args: date - 'YYYY-MM-DD', 'tomorrow', 'this_week' or 'next_week' "
+    "(a week is ONE call, every weekday in it); omit for today (ET)."
 )
 
 TOOL_DOCS["lookup_earnings_date"] = (

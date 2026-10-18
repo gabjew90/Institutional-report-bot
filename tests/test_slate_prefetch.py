@@ -16,12 +16,12 @@ def test_the_room_questions_are_slate_questions():
         assert f(q), q
 
 
-def test_week_questions_are_slate_questions_without_a_prefetch():
-    # The slate tool answers one date; a week question must not be
-    # injected with today's names labelled authoritative.
-    for q in ("what earnings do we have this week", "who reports next week"):
+def test_week_questions_prefetch_the_whole_week():
+    # Since 2026-10-18 the slate tool answers a week in one call (audit A1),
+    # so a week question gets that week, never today's names.
+    for q, wk in (("what earnings do we have this week", "this_week"), ("who reports next week", "next_week")):
         r = R.classify(q)
-        assert r.shape == R.EARNINGS_SLATE and not r.prefetch, (q, r)
+        assert r.shape == R.EARNINGS_SLATE and r.prefetch == [(R.T_SLATE, {"date": wk})], (q, r)
 
 
 def test_single_symbol_and_post_print_questions_are_not():

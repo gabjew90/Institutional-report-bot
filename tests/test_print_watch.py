@@ -522,3 +522,25 @@ def test_statement_changes_list_the_sentences_that_moved():
     assert PW._sentences(abbr) == ["Growth in the U.S. economy slowed.", "For release at 2:00 p.m. EDT.",
                                    "Voting for were Stephen I. Miran and Lisa D. Cook."]
     assert PW.statement_changes(prev, prev + " " + abbr) == PW._sentences(abbr)
+
+
+def test_ppi_fills_the_calendar_row_and_arms_the_watch():
+    """2026-10-18 audit A3/P1: PPI printed 10/15 at 8:30 and the bot said it
+    was not out at 8:32, because no agency series filled the row. The
+    September 2026 index values are from the BLS API; the 2025 bases are
+    set to give the published year-over-year rates."""
+    obs = {
+        "WPSFD4": [("2026-09", 159.780), ("2026-08", 157.662)],
+        "WPUFD4": [("2026-09", 159.613), ("2025-09", 150.162)],
+        "WPSFD49104": [("2026-09", 156.172), ("2026-08", 155.110)],
+        "WPUFD49104": [("2026-09", 155.924), ("2025-09", 148.540)],
+    }
+    rows = [{"event": e, "country": "US", "time": "2026-10-15T12:30:00", "actual": None}
+            for e in ("PPI m/m", "Core PPI m/m", "PPI y/y", "Core PPI y/y")]
+    with patch("report.print_watch.fetch_observations", return_value=obs):
+        out = PW.enrich_rows_with_agency_actuals(rows)
+    assert [r["actual"] for r in out] == [1.3, 0.7, 6.3, 5.0]
+    assert out[0]["actual_source"] == "bls:WPSFD4"
+    ff = [{"event": "PPI m/m", "country": "US", "time": "2026-10-15T12:30:00"}]
+    assert [s.key for s in PW.due_releases("2026-10-15", ff, "08:30")] == ["ppi"]
+    assert "bls.gov" in PW.source_line(PW.PPI)

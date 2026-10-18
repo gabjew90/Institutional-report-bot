@@ -1480,8 +1480,8 @@ def _build_earnings_slate_tool():
                     properties={
                         "date": types.Schema(
                             type=types.Type.STRING,
-                            description=("'YYYY-MM-DD' or 'tomorrow'; "
-                                         "omit for today (ET)"),
+                            description=("'YYYY-MM-DD', 'tomorrow', 'this_week' or "
+                                         "'next_week'; omit for today (ET)"),
                         ),
                     },
                 ),
@@ -1551,90 +1551,101 @@ def _build_earnings_date_tool():
     )
 
 
+def _slate_dates(date_arg: str, now_et) -> list[str]:
+    """The ISO date(s) a slate request covers. 'this_week' / 'next_week' are
+    the weekdays of that week (this week from today on)."""
+    from datetime import timedelta
+    a = (date_arg or "").strip().lower().replace(" ", "_")
+    if not a:
+        return [now_et.strftime("%Y-%m-%d")]
+    if a == "tomorrow":
+        return [(now_et + timedelta(days=1)).strftime("%Y-%m-%d")]
+    if a in ("this_week", "next_week"):
+        monday = now_et.date() - timedelta(days=now_et.weekday())
+        if a == "next_week":
+            monday += timedelta(days=7)
+        days = [monday + timedelta(days=i) for i in range(5)]
+        if a == "this_week":
+            days = [d for d in days if d >= now_et.date()]
+        return [d.isoformat() for d in days]
+    return [date_arg.strip()]
+
+
+def _slate_day(date_iso: str, top_n: int = 25) -> dict:
+    """One date's slate from the calendar sheet's own reconciliation
+    (Finnhub checked against Nasdaq, Nasdaq's dollar caps). Caps Nasdaq
+    lacks come from the cache only: no per-symbol network call, which is
+    what made one week question take 549 s (2026-10-18 audit A1)."""
+    from report import calendar_data as _cd
+    from report import news_data as _nd
+
+    raw = _nd.fetch_earnings_calendar_all(date_iso)
+    if raw is None:
+        return {"date": date_iso, "status": "error", "error": "earnings feed unavailable right now"}
+    rec = _cd.reconcile_earnings(date_iso, raw, _cd._nasdaq_rows_for(date_iso), _cd.cached_caps)
+    caps, conf = rec["caps"], rec["confirmed"]
+    if not rec["bmo"] and not rec["amc"]:
+        return {"date": date_iso, "status": "empty",
+                "note": "no US earnings scheduled for this date"}
+
+    def _rows(syms, n):
+        ranked = sorted(syms, key=lambda s: -(caps.get(s, {}).get("cap") or 0))
+        return [{
+            "symbol": s,
+            "name": str(caps.get(s, {}).get("name") or s),
+            "market_cap_musd": round(float(caps.get(s, {}).get("cap") or 0)),
+            # an unconfirmed session is NOT absence from the slate
+            "session_confirmed": bool(conf.get(s)),
+        } for s in ranked[:n]]
+
+    return {"date": date_iso, "status": "ok",
+            "before_open": _rows(rec["bmo"], top_n), "after_close": _rows(rec["amc"], top_n),
+            "counts": {"before_open": len(rec["bmo"]), "after_close": len(rec["amc"])},
+            "dates_checked_against_nasdaq": rec["nasdaq_checked"]}
+
+
 async def _execute_earnings_slate(args: dict) -> dict:
-    """Today's (or a given date's) FULL earnings slate, cap-ranked.
+    """A date's (or a week's) FULL earnings slate, cap-ranked.
 
-    Built 2026-09-01 after the room asked "who reports after close
-    today" three times in one afternoon and got three different
-    partial answers, each missing PANW — the largest name on the
-    slate. Every one of those turns called NO tool: the earnings-date
-    tool's own docs sent broad "what reports today" sweeps to Google
-    Search, and a search snippet is a partial list by nature (one
-    answer was sourced to digrin.com).
+    Built 2026-09-01 after the room asked "who reports after close today"
+    three times in one afternoon and got three partial answers, each
+    missing PANW, the largest name on the slate: a search snippet is a
+    partial list by nature.
 
-    Same Finnhub feed and the same cap ranking the calendar graphic
-    uses, so the bot and the sheet can no longer disagree about who
-    reports.
+    2026-10-18 audit A1/A2: it read Finnhub alone, fetched every symbol's
+    cap one at a time, and answered one date per call, so "which big
+    companies report next week" took five calls and 549 s and gave GE, PM
+    and Gilead the wrong days. It now uses the calendar sheet's
+    reconciliation (calendar_data.reconcile_earnings) and answers a week in
+    one call, the days fetched concurrently.
     """
-    from datetime import datetime, timedelta
+    from datetime import datetime
 
     import pytz
 
-    date_iso = (args.get("date") or "").strip()
-    if not date_iso:
-        et = datetime.now(pytz.timezone(settings.timezone))
-        date_iso = et.strftime("%Y-%m-%d")
-    elif date_iso.lower() == "tomorrow":
-        et = datetime.now(pytz.timezone(settings.timezone)) + timedelta(days=1)
-        date_iso = et.strftime("%Y-%m-%d")
-
+    now_et = datetime.now(pytz.timezone(settings.timezone))
+    dates = _slate_dates(args.get("date") or "", now_et)
     as_of = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    note = ("Cap-ranked, top 25 per session (12 per session for a week), dates checked against Nasdaq's calendar. "
+            "session_confirmed=false means the feed has not stamped the timing, not "
+            "that the company is absent: report those names, noting the session is "
+            "unconfirmed.")
     try:
-        from report import calendar_data as _cd
-        from report import news_data as _nd
-
-        raw = await asyncio.to_thread(_nd.fetch_earnings_calendar_all,
-                                      date_iso)
-        if raw is None:
-            return {"status": "error", "as_of": as_of, "date": date_iso,
-                    "error": "earnings feed unavailable right now"}
-        bmo, amc, conf, seen = [], [], {}, set()
-        for r in raw:
-            sym = (r.get("symbol") or "").strip()
-            if not sym or sym in seen:
-                continue
-            seen.add(sym)
-            hour = (r.get("hour") or "").lower()
-            if hour == "bmo":
-                bmo.append(sym)
-                conf[sym] = True
-            else:
-                amc.append(sym)
-                conf[sym] = hour == "amc"
-        if not bmo and not amc:
-            return {"status": "empty", "as_of": as_of, "date": date_iso,
-                    "note": "no US earnings scheduled for this date"}
-
-        caps = await asyncio.to_thread(_cd._resolve_caps, bmo + amc)
-
-        def _rows(syms):
-            ranked = sorted(
-                syms, key=lambda s: -(caps.get(s, {}).get("cap") or 0))
-            return [{
-                "symbol": s,
-                "name": str(caps.get(s, {}).get("name") or s),
-                "market_cap_musd": round(
-                    float(caps.get(s, {}).get("cap") or 0)),
-                # Finnhub fills `hour` progressively through the day; an
-                # unconfirmed session is NOT absence from the slate, and
-                # saying so is what keeps a big name from vanishing.
-                "session_confirmed": bool(conf.get(s)),
-            } for s in ranked[:25]]
-
-        return {
-            "status": "ok", "as_of": as_of, "date": date_iso,
-            "before_open": _rows(bmo), "after_close": _rows(amc),
-            "counts": {"before_open": len(bmo), "after_close": len(amc)},
-            "note": ("Cap-ranked, top 25 per session. "
-                     "session_confirmed=false means Finnhub has not yet "
-                     "stamped the timing, not that the company is absent "
-                     "— report those names, noting the session is "
-                     "unconfirmed."),
-        }
+        top_n = 25 if len(dates) == 1 else 12   # a week of 25s is ~25 KB of prompt
+        days = await asyncio.gather(*(asyncio.to_thread(_slate_day, d, top_n) for d in dates))
     except Exception as e:
         log.warning(f"lookup_earnings_slate failed: {e}")
-        return {"status": "error", "as_of": as_of, "date": date_iso,
+        return {"status": "error", "as_of": as_of, "date": dates[0],
                 "error": f"{type(e).__name__}: {e}"}
+    if len(days) == 1:
+        d = days[0]
+        out = {**d, "as_of": as_of}
+        if d.get("status") == "ok":
+            out["note"] = note
+        return out
+    ok = [d for d in days if d.get("status") == "ok"]
+    return {"status": "ok" if ok else (days[0].get("status") or "error"),
+            "as_of": as_of, "dates": dates, "days": days, "note": note}
 
 
 async def _execute_earnings_date(args: dict) -> dict:
@@ -2201,8 +2212,9 @@ def _build_market_price_tool():
                     "'right now'.\n"
                     "  - 'live_extended_hours' — Yahoo extended-hours "
                     "print. `price` is the actual last AH/PRE trade; "
-                    "`change_pct` is from PRIOR-day close (full move "
-                    "incl. AH); `extended_hours_change_pct` is the AH "
+                    "after hours `change_pct` is from the PRIOR-day close (full move "
+                    "incl. AH), before the open it is from the latest close; "
+                    "`extended_hours_change_pct` is the AH "
                     "move from today's regular close; "
                     "`regular_session_close` is today's 4 PM close. "
                     "Describe as 'after-hours at $X (closed $Y, then "
@@ -2229,6 +2241,11 @@ def _build_market_price_tool():
                             type=types.Type.ARRAY,
                             items=types.Schema(type=types.Type.STRING),
                             description="Symbol tickers, e.g. ['TSLA', 'BTC'].",
+                        ),
+                        "with_volume": types.Schema(
+                            type=types.Type.BOOLEAN,
+                            description=("Also return each symbol's volume today so far and its "
+                                         "20-day average daily volume (a volume question)."),
                         ),
                     },
                 ),
@@ -2362,6 +2379,13 @@ async def _execute_market_price(args: dict) -> dict:
                 # action). Also surface ah_change_pct = AH move from
                 # the regular close so the model can describe both:
                 # "GTLB closed +X% then dropped Y% after-hours."
+                if expected_yh_session == "pre":
+                    # Before the open, Yahoo's regular_close IS the latest
+                    # close and prev_close is the session before it. The move
+                    # was measured across two sessions: QQQ "-3.2% pre-market"
+                    # when it was -1.23%, NVDA -2.1% for -0.3% (2026-10-18
+                    # audit A14). Measure from the latest close.
+                    prev_close = regular_close
                 change_pct = (
                     (last_price - prev_close) / prev_close * 100.0
                     if prev_close
@@ -2425,6 +2449,25 @@ async def _execute_market_price(args: dict) -> dict:
                 if cq:
                     quotes.append(cq)
                     continue
+                # Finnhub misses some listings (SpaceX, SPCX, listed 6/12/26:
+                # the bot called it "not a recognized US stock" and then an
+                # ETF, 2026-10-18 audit A9). Yahoo's chart before giving up.
+                try:
+                    yq = yh or await asyncio.to_thread(_md._fetch_yahoo_extended_hours, sym)
+                except Exception as e:
+                    log.info(f"yahoo fallback quote for {sym} raised: {e}")
+                    yq = None
+                if yq and yq.get("last_price") is not None:
+                    lp = float(yq["last_price"])
+                    pc = yq.get("prev_close")
+                    quotes.append({
+                        "symbol": sym, "price": lp,
+                        "change_pct": ((lp - float(pc)) / float(pc) * 100.0) if pc else None,
+                        "prev_close": pc, "source": "yahoo",
+                        "data_freshness": ("live_regular_session" if yq.get("last_session") == "regular"
+                                           else "last_print"),
+                    })
+                    continue
                 quotes.append({
                     "symbol": sym,
                     "error": f"no live feed for {sym} — not a recognized "
@@ -2481,6 +2524,17 @@ async def _execute_market_price(args: dict) -> dict:
     # Status like every other executor (2026-09-09): "ok" when at least
     # one symbol priced, "no_data" when every symbol failed. The phase-7
     # price backstop gates on status == "ok" and had never seen one.
+    # Volume today against the 20-day average (2026-10-18 audit A15:
+    # "how is today's volume" had no volume figure to give).
+    if args.get("with_volume"):
+        async def _vol(q):
+            if q.get("price") is None or q["symbol"] in _CRYPTO_SYMBOLS:
+                return
+            v = await asyncio.to_thread(_md.volume_vs_average, q["symbol"])
+            if v:
+                q["volume"] = v
+        await asyncio.gather(*(_vol(q) for q in quotes), return_exceptions=True)
+
     priced = any("price" in q and q.get("price") is not None for q in quotes)
     result = {
         "status": "ok" if priced else "no_data",

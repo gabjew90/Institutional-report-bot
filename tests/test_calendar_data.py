@@ -120,7 +120,10 @@ def _build_with(raw_rows, econ_rows=(), moves=None, caps=None, no_chain=None, co
         nd.fetch_us_major_releases_from_fred = lambda d: (None if fred_rows is None else list(fred_rows))
         # second-source date check (2026-09-14): None = Nasdaq
         # unavailable, so existing tests keep Finnhub's rows as given
-        nd.fetch_nasdaq_earnings_rows = lambda d: ({s: {'hour': '', 'cap': 0.0} for s in nasdaq} if nasdaq is not None else None)
+        nd.fetch_nasdaq_earnings_rows = lambda d: (
+            None if nasdaq is None else
+            {s: dict(v) for s, v in nasdaq.items()} if isinstance(nasdaq, dict) else
+            {s: {'hour': '', 'cap': 0.0} for s in nasdaq})
         # every symbol resolves to a distinct descending cap so ranking
         # is deterministic and never hits the network
         # Default caps sit BELOW MIN_CAP_ALWAYS_SHOW so the tier
@@ -1067,3 +1070,37 @@ def test_a_partial_day_with_rows_renders_in_both_layouts():
     assert R.render_calendar_png(day)[1:4] == b"PNG"
     day.conferences = [ConfRow("Morgan Stanley TMT", "09:00", ["NVDA", "AMD"], True)]
     assert R.render_calendar_png(day)[1:4] == b"PNG"
+
+
+def test_nasdaq_dollar_cap_beats_finnhub_home_currency_cap():
+    """2026-10-18 audit C1: Finnhub's profile2 cap is in the company's own
+    currency. ERIC's 316,914 (Swedish kronor) ranked and bolded it above
+    SCHW; Nasdaq's dollar cap wins whenever Nasdaq has one."""
+    day = _build_with(
+        [{"symbol": "ERIC", "hour": "bmo"}, {"symbol": "SCHW", "hour": "bmo"}],
+        caps={"ERIC": {"cap": 316914.0, "name": "Ericsson"},
+              "SCHW": {"cap": 166829.0, "name": "Charles Schwab"}},
+        nasdaq={"ERIC": {"hour": "bmo", "cap": 27000.0, "name": "Ericsson"},
+                "SCHW": {"hour": "bmo", "cap": 166829.0, "name": "Charles Schwab"}})
+    assert [r.symbol for r in day.bmo] == ["SCHW", "ERIC"]
+    eric = next(r for r in day.bmo if r.symbol == "ERIC")
+    assert eric.cap_musd == 27000.0 and not eric.important
+
+
+def test_profile_cap_in_a_foreign_currency_is_converted(monkeypatch):
+    from report import news_data as nd
+    monkeypatch.setattr(nd, "_fetch_json", lambda url: {
+        "marketCapitalization": 64571599.0, "currency": "TWD", "name": "TSMC"})
+    monkeypatch.setattr(nd, "_usd_per", lambda cur: 0.031)
+    monkeypatch.setattr(nd.settings, "finnhub_api_key", "k")
+    out = nd.fetch_symbol_profiles(["TSM"], pace_seconds=0)
+    assert round(out["TSM"]["cap"]) == round(64571599.0 * 0.031)
+
+
+def test_unconvertible_currency_is_unknown_not_wrong(monkeypatch):
+    from report import news_data as nd
+    monkeypatch.setattr(nd, "_fetch_json", lambda url: {
+        "marketCapitalization": 1843868.0, "currency": "INR", "name": "Wipro"})
+    monkeypatch.setattr(nd, "_usd_per", lambda cur: None)
+    monkeypatch.setattr(nd.settings, "finnhub_api_key", "k")
+    assert nd.fetch_symbol_profiles(["WIT"], pace_seconds=0)["WIT"]["cap"] == 0.0

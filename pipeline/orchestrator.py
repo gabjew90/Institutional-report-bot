@@ -409,6 +409,17 @@ async def run_daily_pulse(bot=None, *, backup: bool = False) -> DailyReport | No
         report.markdown_content += pending_note
     if backup:
         report.banner = BACKUP_BANNER
+        # The routine's pulse passes lint and validation before posting; the
+        # backup had none of it (2026-10-18 audit R3: house calls, semicolons
+        # and a misdated ASML line shipped on 10/14).
+        try:
+            from report.backup_cleanup import clean_backup_pulse
+            report.markdown_content, _notes = clean_backup_pulse(report.markdown_content)
+            from scripts.pulse_lint import lint_markdown, classify_issues
+            hard, soft = classify_issues(lint_markdown(report.markdown_content))
+            log.info(f"Backup pulse lint after clean-up: {hard} hard, {soft} soft; {_notes}")
+        except Exception as e:
+            log.warning(f"Backup pulse clean-up failed, posting as written: {e}")
 
     # Store in database
     report_id = db.insert_daily_report(

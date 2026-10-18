@@ -41,6 +41,7 @@ _DEGREE_ADVERBS = re.compile(
 RESEARCH_TERMS = {
     "cpi": r"\bcpi\b|consumer price|core inflation|shelter inflation",
     "jobs": r"payrolls?|\bnfp\b|unemployment|jobs report|labor market|hourly earnings",
+    "ppi": r"\bppi\b|producer price|wholesale (?:price|inflation)|pipeline (?:price|inflation)",
     "pce": r"\bpce\b|personal income|personal spending|saving rate|consumer spending",
     "fomc": r"\bfomc\b|\bfed\b.{0,40}\b(?:hike|cut|hold|decision|meeting|pause)|rate (?:hike|cut) odds|dot plot|fed funds",
 }

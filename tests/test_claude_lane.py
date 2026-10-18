@@ -310,3 +310,39 @@ def test_notes_arriving_in_the_pulse_window_go_to_gemini(monkeypatch):
 ])
 def test_titles_come_from_cleaned_file_names(name, title):
     assert L.title_from_file_name(name) == title
+
+
+def test_notes_past_the_reader_cap_go_to_gemini_at_once(tmp_path, lane_on, fake_gh, monkeypatch):
+    """2026-10-18 audit R4: the readers take 25 notes a folder, newest first by
+    the bank's day then id; a note below that line waited 120 min for nothing."""
+    import scripts.pilot_list_unread as plu
+    monkeypatch.setattr(plu, "MAX_PER_DAY", 2)
+    pids = []
+    for i, day in enumerate(["Oct 5", "Oct 6", "Oct 6", "Oct 5"]):
+        local = tmp_path / f"n{i}.pdf"
+        local.write_bytes(b"%PDF")
+        pid = db.insert_pdf_file(f"/Current/2026/October/{day}/GS/n{i}.pdf", f"n{i}.pdf", str(local))
+        db.update_pdf_status(pid, "PROCESSING")
+        _queue(pid)
+        pids.append(pid)
+    out = L.pull()
+    # the two Oct 6 notes are in scope; both Oct 5 notes are past the cap
+    assert out["to_gemini"] == 2
+    assert db.get_bridge_state(pids[1])["status"] == "committed"
+    assert db.get_bridge_state(pids[2])["status"] == "committed"
+    assert db.get_bridge_state(pids[0])["status"] == "fallback_to_gemini"
+    assert db.get_bridge_state(pids[3])["status"] == "fallback_to_gemini"
+
+
+def test_a_read_note_keeps_its_place_under_the_cap(tmp_path, lane_on, fake_gh, monkeypatch):
+    import scripts.pilot_list_unread as plu
+    monkeypatch.setattr(plu, "MAX_PER_DAY", 1)
+    a = db.insert_pdf_file("/Current/2026/October/Oct 6/GS/a.pdf", "a.pdf", "")
+    b = db.insert_pdf_file("/Current/2026/October/Oct 6/GS/b.pdf", "b.pdf", "")
+    assert L.over_reader_cap("2026-10-06", set(), set()) == set()  # nothing queued yet
+    _queue(a)
+    _queue(b)
+    # b is newer by id, so it holds the one slot; a is over the cap
+    assert L.over_reader_cap("2026-10-06", set(), set()) == {a}
+    # once a was read it is never routed away
+    assert L.over_reader_cap("2026-10-06", {f"{a}.json"}, set()) == set()

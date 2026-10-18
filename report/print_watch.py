@@ -146,10 +146,25 @@ PCE = ReleaseSpec(
     ],
     agency="BEA")
 
-SPECS = (CPI, JOBS, FOMC, PCE)
+# PPI (2026-10-18 audit A3/P1): on 10/15 the bot told the room PPI was not
+# out two minutes after it printed, because nothing filled the calendar
+# row's actual. Final demand SA for m/m, NSA for y/y, the way BLS headlines
+# them; core is final demand less foods and energy (WPSFD49104 +0.7% for
+# September 2026, matching the release table).
+PPI = ReleaseSpec(
+    key="ppi", title="PPI", release_et="08:30", headline="Producer Prices (PPI)",
+    ff_arming_events=("PPI m/m", "Core PPI m/m"),
+    lines=[
+        Line("Core PPI m/m", "WPSFD49104", "mom", "Core PPI m/m", display="Core PPI (on the month)"),
+        Line("Core PPI y/y", "WPUFD49104", "yoy", "Core PPI y/y", display="Core PPI (over the year)"),
+        Line("PPI m/m", "WPSFD4", "mom", "PPI m/m", display="Headline PPI", pair="headline"),
+        Line("PPI y/y", "WPUFD4", "yoy", "PPI y/y", display="Headline PPI", pair="headline"),
+    ])
+
+SPECS = (CPI, JOBS, FOMC, PCE, PPI)
 
 # The FEED side: which econ-calendar rows an agency series can fill.
-_ROW_TO_LINE = {ln.ff_event.lower(): ln for spec in (CPI, JOBS, PCE) for ln in spec.lines if ln.ff_event}
+_ROW_TO_LINE = {ln.ff_event.lower(): ln for spec in (CPI, JOBS, PCE, PPI) for ln in spec.lines if ln.ff_event}
 
 
 def source_available(source: str) -> bool:
@@ -608,6 +623,7 @@ SOURCES = {
     "jobs": "Source: bls.gov (Employment Situation) <https://www.bls.gov/news.release/empsit.toc.htm> · consensus: ForexFactory",
     "pce": "Source: bea.gov (NIPA tables 2.8.4, 2.6, 2.8.6) <https://www.bea.gov/data/personal-consumption-expenditures-price-index> · consensus: ForexFactory",
     "fomc": "Source: federalreserve.gov, FOMC statement",
+    "ppi": "Source: bls.gov (PPI release) <https://www.bls.gov/ppi/> · consensus: ForexFactory",
 }
 
 

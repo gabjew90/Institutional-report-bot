@@ -507,6 +507,19 @@ def get_lane_rows(status: str, path_prefix: str, limit: int = 100) -> list[dict]
     return [dict(r) for r in rows]
 
 
+def get_lane_rows_any_status(path_prefix: str) -> list[dict]:
+    """Every Claude-lane row under one day folder, whatever its status: the
+    set the pilot readers see in that folder (2026-10-18 audit R4)."""
+    rows = _db.get_connection().execute(
+        """SELECT b.pdf_file_id, b.status, b.bridge_filename, pf.dropbox_path
+           FROM bridge_ingestion_state b
+           JOIN pdf_files pf ON pf.id = b.pdf_file_id
+           WHERE b.bridge_filename LIKE ?""",
+        (path_prefix + "%",),
+    ).fetchall()
+    return [dict(r) for r in rows]
+
+
 def move_bridge_row(pdf_file_id: int, from_status: str, to_status: str,
                     reason: str | None = None) -> bool:
     """Move a bridge row only if it is still in `from_status`. True when

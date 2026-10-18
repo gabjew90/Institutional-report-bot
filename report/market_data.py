@@ -281,6 +281,32 @@ def fetch_price_history(
         return None
 
 
+def volume_vs_average(symbol: str, now: datetime | None = None) -> dict | None:
+    """Today's volume so far against the 20-session average, from the
+    daily history (2026-10-18). During the session the latest bar is
+    partial, so the payload says how far into the day it is."""
+    from datetime import timedelta as _td
+    from zoneinfo import ZoneInfo
+    now = now or datetime.now(ZoneInfo("America/New_York"))
+    bars = fetch_price_history(symbol, (now - _td(days=45)).strftime("%Y-%m-%d"))
+    if not bars or len(bars) < 6:
+        return None
+    last = bars[-1]
+    prior = [b["volume"] for b in bars[:-1] if b.get("volume")][-20:]
+    if not prior or not last.get("volume"):
+        return None
+    avg = sum(prior) / len(prior)
+    out = {"date": last["date"], "volume": int(last["volume"]),
+           "avg_20d": int(avg), "pct_of_avg": round(last["volume"] / avg * 100)}
+    if last["date"] == now.strftime("%Y-%m-%d"):
+        open_t = now.replace(hour=9, minute=30, second=0, microsecond=0)
+        mins = max(0, min(390, int((now - open_t).total_seconds() // 60)))
+        out["session_minutes_elapsed"] = mins
+        out["note"] = (f"volume so far today, {mins} of 390 session minutes in; "
+                       "compare with the share of the day elapsed, not the full-day average")
+    return out
+
+
 def price_move_since(symbol: str, start_iso: str) -> dict | None:
     """{first, last, pct} move for `symbol` from `start_iso` to now, or
     None when history isn't available."""

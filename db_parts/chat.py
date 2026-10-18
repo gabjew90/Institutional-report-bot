@@ -974,7 +974,9 @@ def trader_evidence(user_id: int, days: int = 21) -> dict:
         "ghosted": int(pts.get("entries_ghosted") or 0),
         "receipt_points": int(pts.get("points") or 0),
         "avg_gain_pct_on_closes": round(avg) if avg is not None else None,
-        "tickers": (led.get("tickers") or [])[:6],
+        # member_recent_tickers returns a set; slicing it raised TypeError on
+        # every trader rank (2026-10-18 audit A5).
+        "tickers": sorted(led.get("tickers") or ())[:6],
     }
 
 

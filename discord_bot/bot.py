@@ -858,6 +858,9 @@ _OCR_INLINE_TRUNCATE = 800
 # ("No response came back (reason: STOP)").
 _CHAT_SEARCH_MAX_ROUNDS = 6
 _ASK_PREFETCH_TIMEOUT_S = 8.0  # router prefetch deadline (2026-09-02)
+# Deadline for a tool the model calls itself (2026-10-18 audit A1: five
+# sequential slate calls with no deadline made one answer take 549 s).
+_ASK_TOOL_TIMEOUT_S = 25.0
 # Per-tool-result char clamp for the /ask function-calling loop.
 # 2026-07-17: an ask died with 400 INVALID_ARGUMENT (input exceeded the
 # 1M-token limit) — some tool result ballooned contents across rounds.
@@ -5498,6 +5501,12 @@ async def _ask_02_call_model_with_tools(
         contents.append(types.Content(role="user", parts=[types.Part.from_text(
             text=_ask_router.deferred_note(_ask_route.deferred_author))]))
         _ask_meta["guards"].append("deferred-question")
+    # A bare @-tag under a message: pass that message on (2026-10-18 audit A19)
+    _tagged = _ask_router.mention_only(question)
+    if _tagged:
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_ask_router.mention_only_note(_tagged))]))
+        _ask_meta["guards"].append("mention-only")
     if getattr(_ask_route, "context_tickers", None):
         contents.append(types.Content(role="user", parts=[types.Part.from_text(
             text=_ask_router.subject_note(_ask_route.context_tickers))]))
@@ -5721,7 +5730,16 @@ async def _ask_02_call_model_with_tools(
                 elif _query_refusal is not None:
                     result = _query_refusal
                 else:
-                    result = await executor(args)
+                    try:
+                        result = await asyncio.wait_for(executor(args),
+                                                        timeout=_ASK_TOOL_TIMEOUT_S)
+                    except asyncio.TimeoutError:
+                        log.warning(f"/ask: tool {fc.name} exceeded {_ASK_TOOL_TIMEOUT_S}s")
+                        _ask_meta["guards"].append(f"tool-timeout:{fc.name}")
+                        result = {"status": "error",
+                                  "error": (f"{fc.name} took too long and was stopped. Answer "
+                                            "from what you have and say that lookup did not "
+                                            "finish. Do NOT fabricate what it would have returned.")}
                 # A published book is the antecedent a later "No
                 # AVGO" refers to. Capture whose book and which
                 # tickers; the send site pairs it with the message
@@ -8625,6 +8643,13 @@ async def _ask_09_rank_and_regen_guards(
     if "outline" in _ask_meta.get("guards", []) and answer:
         # once more after the rewrites, in case one echoed a tag
         answer = _so.strip_source_tags(answer, set(_ask_meta.get("outline_banks") or []))
+    # block labels and status tokens on every answer ("[LEAGUE STATE]",
+    # "`past_no_data`"), 2026-10-18 audit F4/A27
+    from discord_bot import internal_labels as _il
+    _il_before = answer
+    answer = _il.strip(answer) if answer else answer
+    if answer != _il_before:
+        _ask_meta["guards"].append("internal-labels")
     return (answer, grounding_metadata)
 
 

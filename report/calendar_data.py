@@ -627,6 +627,122 @@ def _dedupe_econ(rows: list[EconRow]) -> list[EconRow]:
     return out
 
 
+def cached_caps(symbols: list[str]) -> dict:
+    """Market caps from the cache only, never the network: for /ask's
+    slate, where a per-symbol profile fetch cost minutes (2026-10-18)."""
+    return db.get_market_caps(symbols)
+
+
+def _nasdaq_rows_for(date_iso: str) -> dict | None:
+    try:
+        return news_data.fetch_nasdaq_earnings_rows(date_iso)
+    except Exception as e:
+        log.warning(f"calendar: Nasdaq date check unavailable ({e})")
+        return None
+
+
+def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
+                       resolve_caps) -> dict:
+    """Finnhub's earnings rows for one date, checked against Nasdaq's.
+
+    The one place the date, session and cap of an earnings row are decided.
+    The calendar sheet and /ask's lookup_earnings_slate both call it; before
+    2026-10-18 the slate tool read Finnhub alone and told the room GE, PM
+    and Gilead reported on days they did not, and missed SpaceX (audit A2).
+
+    `resolve_caps(symbols) -> {sym: {"cap", "name"}}` supplies caps for the
+    symbols Nasdaq has no dollar cap for. Returns bmo / amc symbol lists,
+    `confirmed` sessions, `caps`, and the QC lists."""
+    out = {"date_unconfirmed": [], "nasdaq_only_added": [], "session_from_nasdaq": []}
+    raw = list(raw or [])
+    # Second source on the report DATE (2026-09-14, Cracker Barrel: Finnhub
+    # kept a stale Monday date after the company announced 9/23). A row
+    # survives only if Nasdaq also lists the symbol for this date. When
+    # Nasdaq is down the sheet falls back to Finnhub alone, because a
+    # missing second source is not evidence that a report moved.
+    nasdaq_caps: dict[str, dict] = {}
+    if nasdaq_rows:
+        kept_raw, off = [], []
+        for r in raw:
+            sym = (r.get("symbol") or "").strip()
+            if sym and sym.upper() not in nasdaq_rows:
+                off.append(sym)
+            else:
+                kept_raw.append(r)
+        if off:
+            out["date_unconfirmed"] = sorted(set(off))
+            log.info(f"calendar: {len(off)} Finnhub row(s) for {date_iso} "
+                     f"not on Nasdaq's calendar, dropped: {out['date_unconfirmed'][:20]}")
+        raw = kept_raw
+        # The other direction (2026-09-16): a name Nasdaq lists that
+        # Finnhub has on another date (General Mills, estimated 9/15 by
+        # Finnhub, announced 9/23) never reached the sheet, because the
+        # check only removes rows. A Nasdaq-only name at or above the cap
+        # floor (on Nasdaq's own cap) is added with Nasdaq's session, and
+        # Nasdaq's cap and name stand in when the profile fetch fails.
+        have = {(r.get("symbol") or "").strip().upper() for r in raw}
+        added = []
+        for sym, info in nasdaq_rows.items():
+            if sym in have or float(info.get("cap") or 0) < MIN_CAP_ALWAYS_SHOW:
+                continue
+            raw.append({"symbol": sym, "hour": info.get("hour") or ""})
+            nasdaq_caps[sym] = {"cap": float(info.get("cap") or 0),
+                                "name": info.get("name") or sym, "logo": ""}
+            added.append(sym)
+        if added:
+            out["nasdaq_only_added"] = sorted(added)
+            log.info(f"calendar: {len(added)} Nasdaq-only name(s) for {date_iso} "
+                     f"added above the cap floor: {out['nasdaq_only_added']}")
+    else:
+        log.warning(f"calendar: Nasdaq date check skipped for {date_iso}; Finnhub dates unverified")
+
+    bmo_syms, amc_syms = [], []
+    confirmed: dict[str, bool] = {}
+    # Finnhub can return a symbol more than once for one date (a revised
+    # row, or the same name under two sessions). First row wins, or the
+    # cap ranking puts the same company on consecutive lines.
+    _seen: set[str] = set()
+    for r in raw:
+        sym = (r.get("symbol") or "").strip()
+        if not sym or sym in _seen:
+            continue
+        _seen.add(sym)
+        hour = (r.get("hour") or "").lower()
+        # Nasdaq's session, when it has one, fills a blank Finnhub hour
+        # and wins a conflict (2026-09-17: Darden, General Mills, Accenture).
+        nq_hour = ((nasdaq_rows or {}).get(sym.upper()) or {}).get("hour") or ""
+        if nq_hour and nq_hour != hour:
+            if hour in ("bmo", "amc"):
+                log.info(f"calendar: {sym} session {hour} (Finnhub) -> {nq_hour} (Nasdaq)")
+            out["session_from_nasdaq"].append(sym)
+            hour = nq_hour
+        # blank / dmh (during market hours) land in AMC, flagged unconfirmed
+        if hour == "bmo":
+            bmo_syms.append(sym)
+            confirmed[sym] = True
+        else:
+            amc_syms.append(sym)
+            confirmed[sym] = hour == "amc"
+
+    caps = resolve_caps(bmo_syms + amc_syms) or {}
+    for sym, info in nasdaq_caps.items():
+        if float((caps.get(sym) or {}).get("cap") or 0) <= 0:
+            caps[sym] = info
+    # Nasdaq's cap is in dollars; Finnhub's profile2 cap is in the company's
+    # reporting currency. TSM ranked at 64,571,599 $M (Taiwan dollars), and
+    # ERIC (Swedish kronor) and WIT (rupees) were bolded as $50B+ names
+    # above SCHW (2026-10-18 audit C1). Nasdaq wins whenever it has one.
+    for sym in bmo_syms + amc_syms:
+        nq = (nasdaq_rows or {}).get(sym.upper()) or {}
+        n_cap = float(nq.get("cap") or 0)
+        if n_cap > 0:
+            caps[sym] = {**(caps.get(sym) or {}), "cap": n_cap}
+            caps[sym].setdefault("name", nq.get("name") or sym)
+    out.update({"bmo": bmo_syms, "amc": amc_syms, "confirmed": confirmed, "caps": caps,
+                "nasdaq_checked": bool(nasdaq_rows)})
+    return out
+
+
 def build_calendar_day(date_iso: str) -> CalendarDay:
     """Assemble everything the renderer needs for one session date."""
     from world_context import bond_market_closed, is_us_market_holiday
@@ -703,95 +819,12 @@ def build_calendar_day(date_iso: str) -> CalendarDay:
         day.earnings_available = False
         return day
 
-    # Second source on the report DATE (2026-09-14, Cracker Barrel: Finnhub
-    # kept a stale Monday date after the company announced 9/23). A row
-    # survives only if Nasdaq also lists the symbol for this date. When
-    # Nasdaq is down the sheet falls back to Finnhub alone, because a
-    # missing second source is not evidence that a report moved.
-    try:
-        nasdaq_rows = news_data.fetch_nasdaq_earnings_rows(date_iso)
-    except Exception as e:
-        log.warning(f"calendar: Nasdaq date check unavailable ({e})")
-        nasdaq_rows = None
-    nasdaq_caps: dict[str, dict] = {}
-    if nasdaq_rows:
-        kept_raw, off = [], []
-        for r in raw:
-            sym = (r.get("symbol") or "").strip()
-            if sym and sym.upper() not in nasdaq_rows:
-                off.append(sym)
-            else:
-                kept_raw.append(r)
-        if off:
-            day.date_unconfirmed = sorted(set(off))
-            log.info(f"calendar: {len(day.date_unconfirmed)} Finnhub row(s) for {date_iso} "
-                     f"not on Nasdaq's calendar, dropped: {day.date_unconfirmed[:20]}")
-        raw = kept_raw
-        # The other direction (2026-09-16): a name Nasdaq lists that
-        # Finnhub has on another date (General Mills, estimated 9/15
-        # by Finnhub, announced 9/23) never reached the sheet, because
-        # the check only removes rows. A Nasdaq-only name at or above
-        # the cap floor (on Nasdaq's own cap) is added with Nasdaq's
-        # session. The micro-cap tail never enters the profile fetch;
-        # the added names do, and Nasdaq's cap and name stand in when
-        # that fetch fails (review 2026-09-17: a failed profile call is
-        # cached as 0 for the day, which would drop the name after it
-        # was logged as added).
-        have = {(r.get("symbol") or "").strip().upper() for r in raw}
-        added = []
-        for sym, info in nasdaq_rows.items():
-            if sym in have or float(info.get("cap") or 0) < MIN_CAP_ALWAYS_SHOW:
-                continue
-            raw.append({"symbol": sym, "hour": info.get("hour") or ""})
-            nasdaq_caps[sym] = {"cap": float(info.get("cap") or 0),
-                                "name": info.get("name") or sym, "logo": ""}
-            added.append(sym)
-        if added:
-            day.nasdaq_only_added = sorted(added)
-            log.info(f"calendar: {len(added)} Nasdaq-only name(s) for {date_iso} "
-                     f"added above the cap floor: {day.nasdaq_only_added}")
-    else:
-        log.warning(f"calendar: Nasdaq date check skipped for {date_iso}; Finnhub dates unverified")
-
-    bmo_syms, amc_syms = [], []
-    confirmed: dict[str, bool] = {}
-    # Finnhub can return a symbol more than once for one date (a revised
-    # row, or the same name under two sessions). Without a seen set the
-    # duplicate is ranked and rendered twice, and since ranking is by
-    # cap the two copies sort ADJACENT -- the sheet shows the same
-    # company on consecutive lines. First row wins.
-    _seen: set[str] = set()
-    for r in raw:
-        sym = (r.get("symbol") or "").strip()
-        if not sym or sym in _seen:
-            continue
-        _seen.add(sym)
-        hour = (r.get("hour") or "").lower()
-        # Nasdaq's session, when it has one, fills a blank Finnhub hour
-        # and wins a conflict (2026-09-17: Finnhub had Darden and General
-        # Mills with no session and Accenture after the close; Nasdaq had
-        # all three before the open, which is when they report). Recorded
-        # for QC either way.
-        nq_hour = ((nasdaq_rows or {}).get(sym.upper()) or {}).get("hour") or ""
-        if nq_hour and nq_hour != hour:
-            if hour in ("bmo", "amc"):
-                log.info(f"calendar: {sym} session {hour} (Finnhub) -> {nq_hour} (Nasdaq)")
-            day.session_from_nasdaq.append(sym)
-            hour = nq_hour
-        # blank / dmh (during market hours) land in AMC, FLAGGED —
-        # that's where a reader looks for them last, and the flag keeps
-        # the sheet honest that the session is Finnhub's gap, not fact.
-        if hour == "bmo":
-            bmo_syms.append(sym)
-            confirmed[sym] = True
-        else:
-            amc_syms.append(sym)
-            confirmed[sym] = hour == "amc"
-
-    caps = _resolve_caps(bmo_syms + amc_syms)
-    for sym, info in nasdaq_caps.items():
-        if float((caps.get(sym) or {}).get("cap") or 0) <= 0:
-            caps[sym] = info
+    rec = reconcile_earnings(date_iso, raw, _nasdaq_rows_for(date_iso), _resolve_caps)
+    day.date_unconfirmed = rec["date_unconfirmed"]
+    day.nasdaq_only_added = rec["nasdaq_only_added"]
+    day.session_from_nasdaq = rec["session_from_nasdaq"]
+    bmo_syms, amc_syms = rec["bmo"], rec["amc"]
+    confirmed, caps = rec["confirmed"], rec["caps"]
 
     # Names a bank wrote earnings content about recently (bold rows).
     # Best-effort: an empty set only costs the bold, never the sheet.

@@ -16,9 +16,10 @@ CASES = [
     ("who is reporting earnings after close", R.EARNINGS_SLATE, [R.T_SLATE]),
     ("what earnings are today", R.EARNINGS_SLATE, [R.T_SLATE]),
     ("any big earnings tomorrow", R.EARNINGS_SLATE, [R.T_SLATE]),
-    # A week question keeps the slate tools but is not prefetched: the
-    # tool answers one date and today's names are not the week.
-    ("what on the economic calendar for this week ? Who's reporting earnings", R.EARNINGS_SLATE, []),
+    # A week question prefetches the whole week in one slate call
+    # (2026-10-18 audit A1: per-day calls took 549 s).
+    ("what on the economic calendar for this week ? Who's reporting earnings", R.EARNINGS_SLATE, [R.T_SLATE]),
+    ("which big companies has earnings next week?", R.EARNINGS_SLATE, [R.T_SLATE]),
     # single-ticker earnings
     ("when does NVDA report", R.EARNINGS_DATE, [R.T_EDATE, R.T_SNAPSHOT, R.T_PRIMER]),
     ("did PLTR beat last quarter", R.EARNINGS_DATE, [R.T_EDATE, R.T_NEWS, R.T_SNAPSHOT, R.T_PRIMER]),
@@ -511,10 +512,16 @@ def test_every_router_tool_has_a_production_prefetch_executor():
 # and no search. These shapes now route to the web with FACT register.
 def test_sourced_figure_questions_route_to_the_web():
     for q in ("whats the probability according to kalshi or polymarket on fed raising rates",
-              "how much total market cap does 1$ of NVDA stock price moving represent",
-              "what's NVDA shares outstanding", "why didnt you tell us there was a cybercab event today"):
+              "why didnt you tell us there was a cybercab event today"):
         r = R.classify(q)
         assert r.shape == R.NEWS_EVENT and r.google_allowed() and r.is_factual, (q, r)
+    # One field of a named company's numbers is a data lookup since
+    # 2026-10-18 (audit A20): price and snapshot, still web-allowed.
+    for q in ("what's NVDA shares outstanding",
+              "how much total market cap does 1$ of NVDA stock price moving represent"):
+        r = R.classify(q)
+        assert r.shape == R.PRICE and r.google_allowed() and r.is_factual, (q, r)
+        assert (R.T_SNAPSHOT, {"symbol": "NVDA"}) in r.prefetch
     # "float" alone is a verb in this room.
     assert R.classify("float the idea to abe").shape == R.UNKNOWN
 
@@ -786,3 +793,64 @@ def test_start_sit_prefetches_named_players_2026_10_11():
     r = R.classify(q, fantasy_enabled=True, channel_name="🏈-fantasy-football-yapping-🏈",
                    asker_manager="bankerkyle")
     assert (R.T_FANTASY, {"topic": "projections", "players": q}) in r.prefetch
+
+
+# 2026-10-18 audit: questions that reached the catch-all with no data.
+def test_lowercase_ticker_beside_a_company_word():
+    for q, sym in (("How big is this lawsuit for arm", "ARM"),
+                   ("what was the investor day mentions for amat", "AMAT"),
+                   ("any news on elmt", "ELMT")):
+        r = R.classify(q)
+        assert r.tickers == [sym] and (R.T_NEWS, {"symbol": sym}) in r.prefetch, (q, r)
+    assert R.lower_context_tickers("this lawsuit is wild") == []
+
+
+def test_own_and_room_history_questions_get_chat():
+    for q in ("What was the day that I called those soxl 150 sellers pussies",
+              "in the last 13 days, what has been the clearest top signal in this discord",
+              "when did I call the top"):
+        assert R.classify(q).shape == R.CHAT_HISTORY, q
+
+
+def test_a_stated_report_date_checks_that_company():
+    r = R.classify("spcx is reporting after close on 10/20")
+    assert r.shape == R.EARNINGS_DATE and r.prefetch[0] == (R.T_EDATE, {"symbol": "SPCX"})
+    assert R.classify("who reports after close today").shape == R.EARNINGS_SLATE
+
+
+def test_crypto_move_prices_the_coins():
+    r = R.classify("why is crypto dropping")
+    assert r.shape == R.NEWS_EVENT and (R.T_PRICE, {"symbols": ["BTC", "ETH", "SOL"]}) in r.prefetch
+
+
+def test_market_volume_prices_the_index_etfs_with_volume():
+    r = R.classify("how is today's volume for stocks so far?")
+    assert r.shape == R.PRICE
+    assert r.prefetch == [(R.T_PRICE, {"symbols": ["SPY", "QQQ"], "with_volume": True})]
+
+
+def test_a_funds_holdings_go_to_search_not_a_ticker():
+    q = ("[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n"
+         '"→ **Private fund status**: **VARA** is a private fund"\n\n'
+         "[Arxfic's message to you]\nWhat are VARAs positions and sizes of positions?")
+    r = R.classify(q)
+    assert r.shape == R.NEWS_EVENT and r.tickers == [] and r.prefetch == [] and r.google_allowed()
+    # a member's positions stay the ledger
+    assert R.classify("what are abe's positions").shape == R.MEMBER_LEDGER
+
+
+def test_a_bare_tag_under_a_message_is_passed_on():
+    q = ('[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n"→ ASML reports Wednesday"\n\n'
+         "[bulch's message to you]\n@abe (abullish_xyz)")
+    assert R.mention_only(q) == "abe"
+    assert R.mention_only(q.replace("@abe (abullish_xyz)", "@abe what do you think")) == ""
+
+
+def test_a_bot_answers_capitals_are_not_its_subject():
+    """2026-10-18 audit A13: "a $36 million DLA contract" made DLA the stock."""
+    q = ("[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n"
+         '"→ **Lock-up expiration** near for **ELMT**, backed by a $36 million DLA contract"\n\n'
+         "[Sam's message to you]\nHow many shares unlocked?")
+    assert R.reply_parent_tickers(q) == ["ELMT"]
+    member = q.replace("from omniwiz", "from Sam").replace("**ELMT**", "ELMT")
+    assert "DLA" in R.reply_parent_tickers(member)
