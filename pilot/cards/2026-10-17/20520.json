@@ -1,0 +1,442 @@
+{
+ "brief": "Wolfe raises its power-sector sentiment meter two notches to a 4. A broader AI sell-off hit the week, but CEG's second big deal, a 3.6 GW generation agreement with GOOGL (2.7 GW existing plus 890 MW uprates), followed CEG's 690 MW AMZN deal at Calvert Cliffs and TLN's news that Mac is retiring, Terry becomes CEO, and TLN will run a $1.5B accelerated buyback, and together these shifted sentiment back toward the IPPs. CEG stays atop Wolfe's IPP pecking order, followed by VST. Wolfe now estimates CEG is about 35% contracted on an EPS basis at full ramp, moving it ahead of TLN (previously the leader at low-30s% of free cash flow) and VST (low-20s% of EBITDA); NRG remains largely uncontracted pending its first data-center deal. On regulation, FERC accepted most of PJM's Reliability Backstop Procurement proposal but sent back cost-allocation methodology for revision, pushing RBP's central procurement into early 2027, and separately rejected PJM's IRAS proposal except for the large-load registry. In Q3 commodities, PJM spot and forward power prices rose on record peak load and tight grid conditions, while ERCOT prices fell despite its own record peak load because renewables and storage absorbed the demand; natural gas and coal prices eased.",
+ "cards": [
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Wolfe moves its power-sector sentiment meter up two notches to a 4.",
+   "anchor": "We move our sentiment meter up two notches to a",
+   "topic": "CEG data center contract wave",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "CEG announced a deal with AMZN at Calvert Cliffs for 690 MW.",
+   "anchor": "CEG announced a deal with AMZN at Calvert Cliffs for 690 MWs",
+   "topic": "CEG data center contract wave",
+   "status": "released",
+   "instruments": [
+    "CEG",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "The CEG-AMZN Calvert Cliffs deal is made up of 500 MW of existing generation plus 190 MW of uprates.",
+   "anchor": "(500 MWs existing + 190 MWs uprates). But it was CEG's second deal that really",
+   "topic": "CEG data center contract wave",
+   "status": "released",
+   "instruments": [
+    "CEG",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "CEG's second deal of the week was a 3.6 GW generation agreement with GOOGL, including 2.7 GW tied to existing capacity.",
+   "anchor": "started to shift the narrative back in the IPPs favor \u2013 3.6 GWs with GOOGL (2.7 GWs",
+   "topic": "CEG data center contract wave",
+   "status": "released",
+   "instruments": [
+    "CEG",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "The CEG-GOOGL deal also includes 890 MW of uprates on top of the existing generation.",
+   "anchor": "existing + 890 MWs uprates). Turns out you can still contract existing generation",
+   "topic": "CEG data center contract wave",
+   "status": "released",
+   "instruments": [
+    "CEG",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "TLN announced that Mac is retiring, Terry is becoming CEO, and the company will run a $1.5B accelerated share buyback.",
+   "anchor": "announced Mac's retirement, with Terry becoming CEO, plus a $1.5B accelerated",
+   "topic": "CEG data center contract wave",
+   "status": "released",
+   "instruments": [
+    "TLN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "FERC accepted most of PJM's RBP proposal at the last hour but sent it back for revisions to some potentially unjust areas.",
+   "anchor": "11th hour \u2013 accepting most of PJM's proposal, but sent it back for some potentially",
+   "topic": "PJM RBP regulatory order",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "PJM plans to refile within 30 days, by 10/29, after which FERC will have 60 days to rule.",
+   "anchor": "within 30 days by 10/29 and then FERC will have 60 days to rule at the end of the",
+   "topic": "PJM RBP regulatory order",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year-end 2026"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "The RBP's central procurement timeline is pushed into early 2027.",
+   "anchor": "year. This pushes the RBP central procurement into early-2027, though the overall",
+   "topic": "PJM RBP regulatory order",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "early 2027"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "The overall RBP procurement size of 6.8 GW appears to be coming down as some capacity gets contracted bilaterally.",
+   "anchor": "procurement size of 6.8 GWs seems to be coming down with some of CEG's newly",
+   "topic": "PJM RBP regulatory order",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "FERC rejected all of PJM's IRAS proposal except the large load registry component.",
+   "anchor": "contracted MWs. Then Friday, FERC rejected all of IRAS except the large load registry",
+   "topic": "PJM RBP regulatory order",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "CEG stays on top of Wolfe's IPP pecking order.",
+   "anchor": "finding it would've disrupted existing commercial arrangements. CEG stays top of our",
+   "topic": "CEG data center contract wave",
+   "status": "level",
+   "instruments": [
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "At full ramp, CEG is about 35% contracted on an EPS basis.",
+   "anchor": "full ramp with ~35% of earnings contracted.",
+   "topic": "CEG data center contract wave",
+   "status": "forecast",
+   "instruments": [
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "full ramp"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Wolfe had previously estimated TLN as the leader at low-30s% of free cash flow contracted, followed by VST at low-20s% of EBITDA.",
+   "anchor": "the leader at low-30s% of FCF, followed by VST with low-20s% of EBITDA",
+   "topic": "CEG data center contract wave",
+   "status": "released",
+   "instruments": [
+    "TLN",
+    "VST"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "NRG still has very little of its earnings contracted as it awaits its first big data-center deal.",
+   "anchor": "NRG still has very little contracted as we await their first big DC deal.",
+   "topic": "CEG data center contract wave",
+   "status": "level",
+   "instruments": [
+    "NRG"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "PJM hit an all-time peak load of 168 GW in July.",
+   "anchor": "all-time peak load of 168 GWs this July and then saw several more peaks in late-summer through early-fall",
+   "topic": "PJM ERCOT power price recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "PJM's average spot price in Q3 was $68/MWh, up 49% year over year.",
+   "anchor": "the fall. The average spot price over Q3 was $68/MWh, up 49% YoY. Forwards have",
+   "topic": "PJM ERCOT power price recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "PJM-West forwards continue to hit new highs, sitting in the mid-$70s per MWh in 2027-2028.",
+   "anchor": "similarly continued to hit new highs, with PJM-West sitting in the mid-$70s/MWh in",
+   "topic": "PJM ERCOT power price recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "ERCOT power prices continue to fall even as ERCOT also had a relatively hot summer.",
+   "anchor": "2027-2028. Meanwhile, ERCOT prices continue to fall despite having a relatively hot",
+   "topic": "PJM ERCOT power price recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "ERCOT's average Q3 spot prices were down 0-10% year over year.",
+   "anchor": "from recent quarters. Average Q3 spot prices were down 0-10% YoY in ERCOT. The",
+   "topic": "PJM ERCOT power price recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "The decline in ERCOT forwards is most pronounced in the near term, with 2026/2027 forwards down 10-14%.",
+   "anchor": "move is most pronounced in the near-term, with 2026/2027 forwards down 10-14%",
+   "topic": "PJM ERCOT power price recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "2026/2027"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Spot natural gas averaged $2.89/MMBtu in Q3, an 18% year-over-year decrease.",
+   "anchor": "Natural gas steps down in price. Spot natural gas averaged $2.89/MMBtu in Q3, representing a 18% YoY decrease.",
+   "topic": "PJM ERCOT power price recap",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "PRB coal stayed flattish at $14.70 per ton.",
+   "anchor": "coal, PRB stayed flattish at $14.70/ton.",
+   "topic": "PJM ERCOT power price recap",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Wolfe assumes both the AMZN and GOOGL contracts were signed at a $5/MWh level.",
+   "anchor": "First, we assume that both the AMZN and GOOGL contracts were both signed at a $5/MWh",
+   "topic": "CEG data center contract wave",
+   "status": "forecast",
+   "instruments": [
+    "CEG",
+    "AMZN",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Wolfe estimates the AMZN contract translates to roughly a $95/MWh PPA price on the premium-priced BGE basis.",
+   "anchor": "premium to the energy curve + capacity. For AMZN, this translates to ~$95/MWh PPA price in the premium-priced BGE",
+   "topic": "CEG data center contract wave",
+   "status": "forecast",
+   "instruments": [
+    "CEG",
+    "AMZN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Wolfe estimates the GOOGL contract translates to roughly a $77/MWh PPA price, with about half the generation on PJM-West basis.",
+   "anchor": "basis. For GOOGL, this translates to a ~$77/MWh PPA price (as we understand half the generation is at PJM-West",
+   "topic": "CEG data center contract wave",
+   "status": "forecast",
+   "instruments": [
+    "CEG",
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Since their Q2 call, CEG has made 3 separate contract announcements totaling 4.1 GW of existing generation.",
+   "anchor": "just 2 months ago, CEG has had 3 separate contract announcements, which totaled 4.1 GWs of existing generation plus",
+   "topic": "CEG data center contract wave",
+   "status": "released",
+   "instruments": [
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Wolfe now estimates that 45% of CEG's carbon-free fleet is contracted on a TWh basis.",
+   "anchor": "1.1 GWs of new nuclear uprates. We now estimate that 45% of CEG's carbon-free fleet is contracted on a TWh-basis.",
+   "topic": "CEG data center contract wave",
+   "status": "forecast",
+   "instruments": [
+    "CEG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Wolfe Research",
+   "document": "The Wolfe Power Trip",
+   "claim": "Wolfe estimates TLN's percent contracted fell to the mid-20s% range because PJM power and spark spreads have improved the outlook.",
+   "anchor": "We estimate TLN's percent contracted fell to mid-20s% simply because PJM",
+   "topic": "CEG data center contract wave",
+   "status": "forecast",
+   "instruments": [
+    "TLN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-17/20520__wolfe-research-the-wolfe-power-trip-oct-13-2026.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 29,
+  "matched": 29,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
