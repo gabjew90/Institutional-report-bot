@@ -169,16 +169,45 @@ def fetch_game_states(season: str, week: int) -> dict[str, str]:
         log.info(f"sleeper schedule unavailable (undocumented): {e}")
         return {}
     states: dict[str, str] = {}
+    days: dict[str, str] = {}
     for g in games:
         if not isinstance(g, dict) or g.get("week") != int(week):
             continue
         s = str(g.get("status") or "")
         state = "final" if s == "complete" else "live" if s == "in_game" else "pre"
+        day = _day_label(str(g.get("date") or ""))
         for team in (g.get("home"), g.get("away")):
             if team:
                 states[str(team)] = state
+                if day:
+                    days[str(team)] = day
     _STATUS_CACHE[key] = (_time.monotonic(), states)
+    _DAYS_CACHE[key] = days
     return states
+
+
+_DAYS_CACHE: dict[tuple, dict[str, str]] = {}
+
+
+def _day_label(iso: str) -> str:
+    """'2026-10-15' -> 'Thu Oct 15'."""
+    from datetime import date
+    try:
+        d = date.fromisoformat(iso[:10])
+    except ValueError:
+        return ""
+    return f"{d:%a %b} {d.day}"
+
+
+def game_days(season: str, week: int) -> dict[str, str]:
+    """NFL team -> the day its game is played this week ('Thu Oct 15').
+    2026-10-18 audit F2: with no game day in the payload the bot put
+    Mahomes on Monday night (KC played Sunday) and JSN on Monday (SEA
+    played Thursday). {} when the schedule is down."""
+    key = (str(season), int(week))
+    if key not in _DAYS_CACHE:
+        fetch_game_states(season, week)
+    return _DAYS_CACHE.get(key) or {}
 
 
 # 'Bryce Young (QB, CAR)' -> 'CAR'. The resolver labels players from the
@@ -747,15 +776,19 @@ def build_topic_payload(
             return bool(s.get("gp") or s.get("gms_active"))
 
         states = fetch_game_states(season, wk) if season else {}
+        days = game_days(season, wk) if season else {}
 
         def _row(p, label: str, slot: str) -> dict:
             # no stats at all -> _started is False -> 'pre', the old
             # behaviour: every starter counts as still to play
             state = game_state(label, _started(p), states)
-            return {"player": label, "slot": slot, "projected": _pts(p),
-                    "actual": _actual(p),
-                    "game_started": state in ("live", "final") if state else _started(p),
-                    "game_state": state}
+            row = {"player": label, "slot": slot, "projected": _pts(p),
+                   "actual": _actual(p),
+                   "game_started": state in ("live", "final") if state else _started(p),
+                   "game_state": state}
+            if days.get(team_of(label)):
+                row["game_day"] = days[team_of(label)]
+            return row
 
         def _lineup(r: dict) -> dict:
             starters = [p for p in (r.get("starters") or []) if p]
@@ -780,8 +813,13 @@ def build_topic_payload(
             unknown = sum(x["projected"] or 0 for x in starters_rows
                           if x["game_state"] is None)
             total = round(scored + sum(rem_each) + unknown, 1)
+            # the day each starter still to play takes the field
+            # (2026-10-18 audit F2)
+            plays = {x["player"]: x["game_day"] for x in starters_rows
+                     if x["game_state"] == "pre" and x.get("game_day")}
             return {"players": rows, "projected_total": total,
                     "yet_to_play": yet, "playing_now": live,
+                    "yet_to_play_game_day": plays,
                     "remaining_projected": round(sum(rem_each), 1),
                     "_remaining_each": rem_each}
 
@@ -820,11 +858,13 @@ def build_topic_payload(
                     # starters left, projected final and win chance.
                     you = {"manager": out["manager"], "points": mine_pts,
                            "still_to_play": out["roster"]["yet_to_play"],
+                           "still_to_play_game_day": out["roster"].get("yet_to_play_game_day", {}),
                            "playing_now": out["roster"]["playing_now"]}
                     them = {"manager": _owner_label(
                                 roster_owner.get(other.get("roster_id"), ""), users_by_id),
                             "points": opp_pts,
                             "still_to_play": (opp_lineup or {}).get("yet_to_play", []),
+                            "still_to_play_game_day": (opp_lineup or {}).get("yet_to_play_game_day", {}),
                             "playing_now": (opp_lineup or {}).get("playing_now", []),
                             "players": (opp_lineup or {}).get("players", [])}
                     opp = {"you": you, "opponent": them}
@@ -876,7 +916,9 @@ def build_topic_payload(
             "is still on the board, for both sides. Use those names: never "
             "say 'depending on who is left' when the list is right here, "
             "and never say a side has no one left while playing_now names "
-            "someone. win_chance_pct is the bot's own estimate "
+            "someone. still_to_play_game_day gives the day each of those "
+            "players takes the field; name a game day only from it. "
+            "win_chance_pct is the bot's own estimate "
             "from points and projections; call it that, never Sleeper's or "
             "Kalshi's Win%, which no API exposes. Projections "
             "missing (null) means the endpoint was down; say so rather "

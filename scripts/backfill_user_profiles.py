@@ -616,6 +616,7 @@ def _verify_profile_claims(
     profile_text: str,
     trader_examples: list[str] | None,
     username: str,
+    author_id: int | None = None,
 ) -> dict:
     """Verify quoted phrases in the generated profile against the user's
     actual chat_messages. Catches hallucinated specifics that the model
@@ -665,7 +666,9 @@ def _verify_profile_claims(
         if not phrase:
             continue
         word_count = len(phrase.split())
-        if word_count < 4:
+        # Double-quoted spans of three words count (2026-10-18 audit M10: "Damn
+        # nigga stupid" was below the old four-word floor and misquoted).
+        if word_count < (3 if m.group(1) else 4):
             continue
         # Strip cashtags / hashtags from the lookup target — chat content
         # often has $TICKER but quote phrases might omit the dollar.
@@ -687,7 +690,8 @@ def _verify_profile_claims(
         # find_user_messages_matching is LIKE-based, case-insensitive.
         # A match means the user actually said something containing this.
         try:
-            hits = db.find_user_messages_matching(username, phrase, limit=1)
+            hits = db.find_user_messages_matching(
+                username, phrase, limit=1, **({"author_id": author_id} if author_id else {}))
         except Exception:
             hits = []
         if hits:
@@ -704,7 +708,7 @@ def _verify_profile_claims(
     # concatenations of the user's messages within a 180s gap.
     if unverified:
         still_unverified = []
-        bursts = _user_message_bursts(username)
+        bursts = _user_message_bursts(username, author_id)
         for phrase in unverified:
             pn = _burst_norm(phrase)
             if pn and any(pn in b for b in bursts):
@@ -760,7 +764,7 @@ def _burst_norm(s: str) -> str:
     return _re2.sub(r"\s+", " ", s).strip()
 
 
-def _user_message_bursts(username: str) -> list[str]:
+def _user_message_bursts(username: str, author_id: int | None = None) -> list[str]:
     """Whitespace-normalized, lowercased concatenations of the user's
     consecutive messages (gap <= _BURST_GAP_SECONDS). Fallback surface
     for verifying quotes the model stitched across a typing burst."""
@@ -768,8 +772,8 @@ def _user_message_bursts(username: str) -> list[str]:
 
     try:
         rows = db.find_user_messages_matching(
-            username, "%", limit=_BURST_FETCH_LIMIT
-        )
+            username, "%", limit=_BURST_FETCH_LIMIT,
+            **({"author_id": author_id} if author_id else {}))
     except Exception:
         return []
 
@@ -974,6 +978,22 @@ def _unanchored_bullets(profile_text: str) -> list[str]:
     return out
 
 
+def _drop_unanchored_bullets(profile_text: str) -> str:
+    """The profile without the bullets _unanchored_bullets would flag."""
+    import re as _re
+    out, section = [], ""
+    for line in (profile_text or "").split("\n"):
+        m = _re.match(r"\s*\*\*([^*]+?)\.?\*\*", line)
+        if m:
+            section = m.group(1).strip().rstrip(".")
+        if (section in _ANCHOR_SECTIONS and line.strip().startswith("-")
+                and "Insufficient signal" not in line
+                and not _ANCHOR_QUOTE_RE.search(line)):
+            continue
+        out.append(line)
+    return "\n".join(out)
+
+
 def _lint_profile(
     profile_text: str, msg_count: int, claim_check: dict | None = None,
 ) -> tuple[list[str], list[str]]:
@@ -1140,7 +1160,11 @@ def _load_user_data_from_store(
         uid = r.get("author_id")
         if not uid:
             continue
-        if uid not in user_meta:
+        # The name the room uses now: the newest message's display name
+        # (2026-10-18 audit M13: the header said "spockbones" while the room
+        # had been calling him "Fundamental Wock" for weeks).
+        _at = r.get("posted_at") or ""
+        if uid not in user_meta or _at >= user_meta[uid].get("_at", ""):
             user_meta[uid] = {
                 "username": r.get("author_username") or "",
                 "display_name": (
@@ -1148,6 +1172,7 @@ def _load_user_data_from_store(
                     or r.get("author_username")
                     or "Unknown"
                 ),
+                "_at": _at,
             }
         # Count attachment URLs as image_count proxy (vision is disabled;
         # this number isn't used downstream unless OCR enabled)
@@ -1496,6 +1521,22 @@ async def _generate_profile(
         today_utc=today_utc,
         prior_profile_block=prior_profile_block,
     )
+    # Other members this member names, by the names the room uses
+    # (2026-10-18 audit M4: "the Wock-support" was read as drug use; Wock
+    # is a member). Only names that appear in this sample, so the block
+    # stays a few lines.
+    try:
+        _named = db.members_named_in_text(msgs_block)
+        _named.pop(int(user_id), None)
+        if _named:
+            _disp = {r[0]: r[1] for r in db.get_connection().execute(
+                "SELECT user_id, display_name FROM user_profiles").fetchall()}
+            _lines = [f"- {', '.join(sorted(set(s))[:3])}: the member {_disp.get(uid) or uid}"
+                      for uid, s in list(_named.items())[:15]]
+            prompt += ("\n\n---\nROOM MEMBERS NAMED IN THESE MESSAGES (these words are people, "
+                       "not slang, drugs or places):\n" + "\n".join(_lines))
+    except Exception:
+        pass
     # Lint-retry feedback (2026-07-11): when the first generation failed
     # the profile lint, the violations are appended verbatim so the
     # retry fixes exactly what failed.
@@ -2599,7 +2640,7 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                         # Recent personal life material).
                         claim_check = _verify_profile_claims(
                             profile, None,
-                            meta.get("username", ""),
+                            meta.get("username", ""), author_id=uid,
                         )
 
                         # Profile lint (2026-07-11) — the spec finally has
@@ -2641,7 +2682,8 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                 _r = (None, None, None, None, None)
                             if _r and _r[0]:
                                 _r_claim = _verify_profile_claims(
-                                    _r[0], None, meta.get("username", "")
+                                    _r[0], None, meta.get("username", ""),
+                                    author_id=uid,
                                 )
                                 _r_hard, _r_soft = _lint_profile(
                                     _r[0], len(msgs), _r_claim
@@ -2664,6 +2706,24 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                                     _hard_v, _soft_v = _r_hard, _r_soft
                                     print("    lint retry improved — using it",
                                           flush=True)
+                            if _hard_v:
+                                # A profile that fails only because some bullets
+                                # carry no anchor quote ships without those
+                                # bullets instead of keeping a stale one
+                                # (2026-10-18 audit M14: trieukha500 kept a
+                                # profile 115 messages old).
+                                _trim = _drop_unanchored_bullets(profile)
+                                if _trim != profile:
+                                    _t_claim = _verify_profile_claims(
+                                        _trim, None, meta.get("username", ""),
+                                        author_id=uid)
+                                    _t_hard, _t_soft = _lint_profile(
+                                        _trim, len(msgs), _t_claim)
+                                    if not _t_hard:
+                                        profile, claim_check = _trim, _t_claim
+                                        _hard_v, _soft_v = _t_hard, _t_soft
+                                        print("    unanchored bullets dropped; "
+                                              "lint passes", flush=True)
                             if _hard_v:
                                 _has_prior = bool(
                                     (existing_profiles.get(uid) or {})
@@ -2753,13 +2813,26 @@ async def run(days: int, channels: list[str], *, force: bool = False) -> None:
                             profile, claim_check.get("unverified_quotes") or [])
                         for _d in _dq:
                             print(f"  [quotes] {meta['username']}: dropped {_d[:100]}")
+                        # Copypasta, invented framing, invented single-quoted
+                        # anchors and room-reaction claims (2026-10-18 audit
+                        # M1/M2/M5/M8): the bullet goes, nothing is rewritten.
+                        try:
+                            from scripts import profile_guards as _pg
+                            profile, _pgd = _pg.apply(
+                                profile, uid, claim_check.get("verified_quotes") or [])
+                            for _d in _pgd:
+                                print(f"  [guards] {meta['username']}: dropped {_d[:140]}")
+                            trader_rationale = _pg.fix_receipts_claim(trader_rationale, profile)
+                        except Exception as _e:
+                            print(f"  [guards] skipped for {uid}: {_e}")
                         # Recent-trades commentary may not claim an
                         # outcome the log lacks (2026-10-08 audit:
                         # "stopped out", "realized loss" on open trades).
                         try:
                             from scripts import profile_trades as _pt
                             profile, _fixed = _pt.ground_recent_trades(
-                                profile, _pt.member_trades(uid))
+                                profile, _pt.member_trades(uid),
+                                older_rows=_pt.member_trades(uid, days=365))
                             for _f in _fixed:
                                 print(f"  [trades] {meta['username']}: {_f}")
                         except Exception as _e:

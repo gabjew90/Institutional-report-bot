@@ -61,8 +61,11 @@ def _label(entry: dict) -> str | None:
 # answer whose figures all came from a member's quoted post, "Sleeper
 # league" on an answer built from chat). Research, news and the primer
 # carry words as much as numbers and stay cited when they ran.
+# The earnings slate is names, not numbers: an answer that lists who
+# reports uses it with no figure in common (2026-10-18 audit A29, the
+# "next week" answer had no Data line).
 NUMERIC_TOOLS = frozenset({
-    "lookup_market_price", "lookup_earnings_date", "lookup_earnings_slate",
+    "lookup_market_price", "lookup_earnings_date",
     "lookup_options_chain", "lookup_price_history", "lookup_economic_calendar",
     "lookup_fantasy_league", "lookup_ticker_snapshot", "lookup_trade_log",
     "lookup_room_positions", "lookup_treasury_auctions", "spy_holdings"})
@@ -73,6 +76,23 @@ def _loose(cores) -> set[str]:
     $405.42 to $405."""
     out = set(cores)
     out |= {c.split(".")[0] for c in cores if len(c.split(".")[0]) >= 2}
+    return out
+
+
+def _rounded(cores) -> set[str]:
+    """How an answer writes a payload number: rounded to one or two places
+    (0.2912 as 0.29) or scaled to thousands, millions or billions (76904704
+    as 76.9M). 2026-10-18 audit A29: the snapshot and price feeds behind
+    "76.9M shares" and "$0.29" went uncited."""
+    out = set()
+    for c in cores:
+        try:
+            v = float(c)
+        except ValueError:
+            continue
+        for x in (v, v / 1e3, v / 1e6, v / 1e9, v / 1e12):
+            if x >= 1 or x == v:
+                out |= {f"{x:.1f}", f"{x:.2f}"}
     return out
 
 
@@ -91,7 +111,8 @@ def _used(entry: dict, answer: str | None) -> bool:
     figs = entry.get("figs")
     if figs is None:            # no payload numbers recorded for this entry
         return True
-    return bool(_loose(figs) & _loose(payload_figs(answer)))
+    mine = _loose(payload_figs(answer))
+    return bool((_loose(figs) | _rounded(figs)) & mine)
 
 
 def footer(tool_trace: list[dict] | None, answer: str | None = None) -> str:
@@ -150,6 +171,10 @@ def numeric_cores(text: str) -> set[str]:
     return out
 
 
+# The bot's own no-answer lines (bot.py phase 9 fallbacks).
+_FALLBACK_PREFIXES = ("→ No response came back", "→ Thought myself in circles")
+
+
 def compose(grounding_footer: str, answer: str, news: dict | None,
             tool_trace: list[dict] | None) -> str:
     """The answer's citation block.
@@ -159,6 +184,8 @@ def compose(grounding_footer: str, answer: str, news: dict | None,
     from the news digest (a link cited for a headline the answer never
     used says nothing about where its numbers came from), then the Data
     line naming the bot's own feeds, which includes the news search."""
+    if (answer or "").lstrip().startswith(_FALLBACK_PREFIXES):
+        return ""   # nothing was answered, so nothing was sourced (audit A29)
     if grounding_footer:
         # Google sources plus the bot's own feeds: a grounding footer used
         # to replace the Data line, so a Yahoo price or calendar row went
@@ -176,3 +203,15 @@ def compose(grounding_footer: str, answer: str, news: dict | None,
     if data:
         out = out + "\n" + data.lstrip("\n") if out else data
     return out
+
+
+# A "Sources:" block the model wrote at the end of its answer: a header line
+# then only link lines.
+_MODEL_SOURCES_RE = re.compile(
+    r"\n+[ \t]*\**Sources?:?\**[ \t]*\n(?:[ \t]*(?:\[\d+\][ \t]*)?\[[^\]\n]+\]\(<?https?://[^\n]*\n?)+\s*$")
+
+
+def strip_model_sources(answer: str) -> str:
+    """Drop the model's own trailing Sources block; the system appends the
+    real one (2026-10-18 audit F7, a post with two)."""
+    return _MODEL_SOURCES_RE.sub("", answer or "").rstrip()

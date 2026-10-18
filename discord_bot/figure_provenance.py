@@ -294,9 +294,12 @@ def _from_asker(figs: list[Figure], missing_tokens: set, question: str) -> set:
                 continue
             v = _norm(f)
             hu = _half_unit(f.token) * _SCALE.get(f.unit, 1.0)
+            # Sums too: "$100 on +17,500 returns $17,600" adds the stake back
+            # (2026-10-18 audit F6: that line drew "Couldn't verify").
             if any(_close(a * q, v, hu)
                    or (q and _close(a / q, v, hu))
                    or (a and _close(q / a, v, hu))
+                   or _close(a + q, v, hu) or _close(a - q, v, hu)
                    for q in seeds for a in accepted):
                 out.add(f.token)
                 accepted.append(v)

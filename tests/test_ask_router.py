@@ -854,3 +854,13 @@ def test_a_bot_answers_capitals_are_not_its_subject():
     assert R.reply_parent_tickers(q) == ["ELMT"]
     member = q.replace("from omniwiz", "from Sam").replace("**ELMT**", "ELMT")
     assert "DLA" in R.reply_parent_tickers(member)
+
+
+def test_a_reply_under_a_league_answer_stays_fantasy_2026_10_18():
+    """Audit F3: "Weigh in on this." under a league answer got no league data."""
+    q = ("[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]\n"
+         '"might take more than a geopolitical crisis \n\nData: Sleeper league"\n\n'
+         "[Vincenzo's message to you]\nWeigh in on this.")
+    r = R.classify(q, fantasy_enabled=True, channel_name="🏈-fantasy-football-yapping-🏈")
+    assert r.shape == R.FANTASY and r.prefetch, r
+    assert R.classify(q, fantasy_enabled=True, channel_name="stonks").shape != R.FANTASY

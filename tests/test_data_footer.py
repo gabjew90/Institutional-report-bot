@@ -80,3 +80,38 @@ def test_a_probe_query_is_not_a_source_2026_10_11():
     assert footer(trace, "the top 10 are 38% of the index") == ""
     real = [{"tool": "query_data", "args": {"sql": "SELECT count(*) FROM pdf_files"}, "status": "ok"}]
     assert "research database" in footer(real, "120 notes")
+
+
+def test_rounded_and_scaled_payload_numbers_count_2026_10_18():
+    """Audit A29: "76.9M shares" and "$0.29" came from the snapshot and the
+    price feed, and neither was cited."""
+    from discord_bot import data_footer as D
+    trace = [{"tool": "lookup_ticker_snapshot", "status": "ok", "args": {"symbol": "ACH"},
+              "figs": ["76904704"]},
+             {"tool": "lookup_market_price", "status": "ok", "args": {"symbols": ["ACH"]},
+              "figs": ["0.2912", "-6.9"]}]
+    out = D.footer(trace, "→ **76.9M** shares outstanding, priced at **$0.29**.")
+    assert "Yahoo" in out or "snapshot" in out.lower() or "company" in out.lower(), out
+    assert "price" in out.lower(), out
+
+
+def test_the_slate_is_cited_on_a_names_only_answer():
+    from discord_bot import data_footer as D
+    trace = [{"tool": "lookup_earnings_slate", "status": "ok", "args": {"date": "next_week"},
+              "figs": ["885149"]}]
+    assert D.footer(trace, "→ **Monday**: FITB before the open") != ""
+
+
+def test_no_footer_on_the_empty_reply_fallback():
+    from discord_bot import data_footer as D
+    trace = [{"tool": "query_data", "status": "ok", "args": {"sql": "select * from analyst_trades"}}]
+    assert D.compose("", "→ No response came back (reason: STOP). Try again or rephrase.", None, trace) == ""
+
+
+def test_the_models_own_sources_block_is_dropped():
+    """Audit F7: #85 printed Sources twice."""
+    from discord_bot.data_footer import strip_model_sources
+    a = ("→ A **$100 wager** clears **$218,119**.\n\nSources: \n"
+         "[actionnetwork.com](<https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZ=>)")
+    assert strip_model_sources(a) == "→ A **$100 wager** clears **$218,119**."
+    assert strip_model_sources("→ no sources here") == "→ no sources here"

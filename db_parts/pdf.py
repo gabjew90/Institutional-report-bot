@@ -1341,8 +1341,18 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
             for t in (a.get("trade_ideas") or []) if isinstance(t, dict)
             and (sym in [str(x).upper() for x in (t.get("instruments") or [])] or _about(t.get("description")))
         ]
-        earnings = [str(x)[:500] for x in (a.get("earnings_insights") or []) if _about(str(x))]
-        insights = [str(x)[:500] for x in (a.get("key_insights") or []) if _about(str(x))]
+        # A line about a group the ticker belongs to ("IPPs (CEG, NRG, TLN,
+        # VST) trade at ~7x EBITDA") is labelled as such, or the desk's
+        # sector multiple is read as the stock's own (2026-10-18 audit A23).
+        def _scoped(text: str) -> str:
+            names = {t for t in _re.findall(r"\b[A-Z]{2,5}\b", text) if t != sym}
+            if sym in text.upper() and len(names) >= 2 and _re.search(
+                    r"\(([A-Z]{2,5},\s*){2,}[A-Z]{2,5}\)|(?:[A-Z]{2,5},\s*){2,}[A-Z]{2,5}", text):
+                return f"Group-wide line, not {sym} alone: {text}"
+            return text
+
+        earnings = [_scoped(str(x)[:500]) for x in (a.get("earnings_insights") or []) if _about(str(x))]
+        insights = [_scoped(str(x)[:500]) for x in (a.get("key_insights") or []) if _about(str(x))]
         # Only a rating or target action is the desk's call. Ingestion also
         # tags a note's reporting as a mover ("negative_catalyst_watch" on a
         # note that only said GS fell, 2026-10-06), and the desk got credit

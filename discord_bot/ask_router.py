@@ -952,6 +952,13 @@ def classify(question: str, *, fantasy_enabled: bool = False,
         return r
     if fantasy_enabled and _FANTASY_RE.search(q):
         return _as_fantasy(r, q, "fantasy words", asker_manager=asker_manager)
+    # A reply under the bot's own league answer stays a league question,
+    # whatever the reply says ("Weigh in on this." with a screenshot was
+    # routed as a market question and answered with no league data,
+    # 2026-10-18 audit F3).
+    if in_channel and "Data: Sleeper league" in _parent_text(question):
+        return _as_fantasy(r, q, "reply to a league answer", default_topic="matchups",
+                           asker_manager=asker_manager)
     if _LEDGER_RE.search(q):
         if in_channel and not _TRADING_LEDGER_RE.search(q):
             # "what's Declan's record" in the football channel is the

@@ -39,3 +39,13 @@ def test_every_inject_label_is_known():
     from discord_bot.internal_labels import _LABELS
     labels = set(re.findall(r'^        T_[A-Z]+: \(?"([A-Z][A-Z ]+),', src, re.M))
     assert labels and labels <= set(_LABELS), labels - set(_LABELS)
+
+
+def test_what_happened_with_no_news_today_says_so_2026_10_18():
+    """Audit A16: "what happened to cbrs" built a cause from an Oct 7 filing."""
+    from datetime import date
+    from discord_bot.stock_outline import _today_news_slot
+    old = {"digest": "- 2026-10-07: director reported an in-kind distribution"}
+    assert "no company news dated today" in _today_news_slot(old, today=date(2026, 10, 12))
+    new = {"digest": "- 2026-10-12: shares fell after a downgrade"}
+    assert _today_news_slot(new, today=date(2026, 10, 12)) is None

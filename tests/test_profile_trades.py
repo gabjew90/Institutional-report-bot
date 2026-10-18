@@ -2,6 +2,8 @@
 2026-10-08 audit cases)."""
 from datetime import date
 
+import db  # noqa: F401  (loads the facade before db_parts)
+
 from scripts import profile_trades as T
 
 
@@ -59,8 +61,33 @@ def test_invented_outcomes_on_open_trades_are_replaced_with_the_log():
     assert text.endswith('**Recent personal life.**\n- "y"\n')
 
 
-def test_no_log_rows_leaves_the_profile_alone():
-    assert T.ground_recent_trades(PROFILE, []) == (PROFILE, [])
+def test_no_log_rows_removes_only_the_per_log_claims():
+    # 2026-10-18 audit M9: "Open per log" for a member with no logged
+    # trades claims a log that does not exist; everything else stays.
+    text, fixed = T.ground_recent_trades(PROFILE, [])
+    assert fixed and "per log" not in text
+    assert text.replace("[OPEN — no exit posted]", "") == PROFILE.replace(
+        "[OPEN per log — no exit posted]", "")
+    plain = "**Recent trades.**\n- TSLA 385C — [still holding]\n"
+    assert T.ground_recent_trades(plain, []) == (plain, [])
+
+
+def test_a_strikeless_line_is_judged_by_its_own_exit_2026_10_18():
+    """Audit M6: "QQQ -94.65% [closed +88.74% per the log]"."""
+    rows = [_row("close", "QQQ", None, "", "2026-10-15T15:01", gain=-94.65),
+            _row("close", "QQQ", 725, "call", "2026-10-15T19:00", gain=88.74)]
+    text, fixed = T.ground_recent_trades(
+        "**Recent trades.**\n- QQQ (Exp 10-15): Gain -94.65% — [closed +88.74% per the log]\n", rows)
+    assert fixed and "[closed -94.65% per the log]" in text
+
+
+def test_a_ticker_traded_only_before_the_window_is_dropped():
+    rows = [_row("open", "TSLA", 385, "call", "2026-10-06T15:00")]
+    old = [_row("open", "SNDK", 1550, "call", "2026-08-27T15:00")]
+    text, fixed = T.ground_recent_trades(
+        "**Recent trades.**\n- SNDK 1550C — [big swing]\n- TSLA 385C — [still holding]\n",
+        rows, older_rows=old + rows)
+    assert "SNDK" not in text and "TSLA 385C" in text
 
 
 def test_a_bullet_that_starts_with_a_verb_is_checked():

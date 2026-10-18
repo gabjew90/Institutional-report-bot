@@ -144,20 +144,43 @@ def _log_says(contract_rows: list[dict], exits: list[dict]) -> str:
     return "[no exit posted in the log]"
 
 
-def ground_recent_trades(profile_text: str, rows: list[dict]) -> tuple[str, list[str]]:
+_PER_LOG_RE = re.compile(r"\s*\(?\b(?:per|in)\s+(?:the\s+)?(?:trade\s+)?log\b\)?", re.I)
+
+
+def ground_recent_trades(profile_text: str, rows: list[dict],
+                         older_rows: list[dict] | None = None) -> tuple[str, list[str]]:
     """Replace Recent-trades commentary that claims an outcome the log does
     not show. Returns the text and the replaced lines (for the run log).
     Lines about tickers the log does not hold are left alone: they come
-    from chat and cannot be checked here."""
+    from chat and cannot be checked here.
+
+    2026-10-18 audit: with no log rows at all, "Open per log" claims a log
+    that does not exist (M9), so "per log" goes; and a line about a ticker
+    the member traded only before this window (`older_rows`) is stale and
+    goes (M11: July trades listed as recent)."""
     m = _SECTION_RE.search(profile_text or "")
-    if not m or not rows:
+    if not m:
         return profile_text, []
+    if not rows:
+        body = m.group(2)
+        new_body = "\n".join(_PER_LOG_RE.sub("", ln) if ln.lstrip().startswith("-") else ln
+                             for ln in body.split("\n"))
+        if new_body == body:
+            return profile_text, []
+        return (profile_text[:m.start(2)] + new_body + profile_text[m.end(2):],
+                ["removed 'per log' claims: the member has no logged trades"])
     by_ticker: dict[str, list[dict]] = {}
     for r in rows:
         by_ticker.setdefault((r.get("ticker") or "").upper(), []).append(r)
+    stale = {(r.get("ticker") or "").upper() for r in (older_rows or [])} - set(by_ticker)
     exits = exits_by_contract(rows)
     fixed, out_lines = [], []
     for line in m.group(2).split("\n"):
+        if line.lstrip().startswith("-") and stale:
+            named = {w.upper() for w in re.findall(r"\$?\b([A-Z]{1,6})\b", line)}
+            if named & stale and not named & set(by_ticker):
+                fixed.append(f"dropped stale line: {line.strip()[:100]}")
+                continue
         com = _COMMENT_RE.search(line)
         if not line.lstrip().startswith("-") or not com:
             out_lines.append(line)
@@ -178,6 +201,15 @@ def ground_recent_trades(profile_text: str, rows: list[dict]) -> tuple[str, list
         else:
             contract_rows = by_ticker[ticker]
             contract_exits = [e for k, v in exits.items() if k[0] == ticker for e in v]
+            # No strike on the line: when its own gain is a logged exit's,
+            # the line is about that exit, not the ticker's latest one
+            # (2026-10-18 audit M6: "QQQ -94.65% [closed +88.74% per the log]").
+            head_gains = {round(float(x), 2) for x in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", head)}
+            same = [e for e in contract_exits
+                    if shown_gain(e.get("gain_pct"), e.get("contract_type")) is not None
+                    and round(shown_gain(e.get("gain_pct"), e.get("contract_type")), 2) in head_gains]
+            if same:
+                contract_exits = same
         if not contract_rows:
             out_lines.append(line)
             continue
@@ -206,7 +238,9 @@ def ground_recent_trades(profile_text: str, rows: list[dict]) -> tuple[str, list
             g = shown_gain(last.get("gain_pct"), last.get("contract_type"))
             if g is not None:
                 bad = bool((g > 0 and _LOSS_RE.search(comment))
-                           or (g < 0 and _WIN_RE.search(comment)))
+                           or (g < 0 and _WIN_RE.search(comment))
+                           # a comment quoting a different exit's gain
+                           or (quoted and round(abs(g), 2) not in {abs(q) for q in quoted}))
         if bad:
             new = line[:com.start()] + _log_says(contract_rows, contract_exits)
             out_lines.append(new)

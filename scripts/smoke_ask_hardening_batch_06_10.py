@@ -103,10 +103,13 @@ def test_dispatch_guards_executor_exceptions():
     not propagate. Anchor on the guard + the no-fabricate fallback."""
     import discord_bot.bot as bot_mod
     src = bot_mod._ask_pipeline_source()
-    assert "result = await executor(args)" in src
+    # Since 2026-10-18 the call runs under a deadline (audit A1):
+    # asyncio.wait_for(executor(args), ...)
+    call = "result = await asyncio.wait_for(executor(args),"
+    assert call in src
     # The try/except around the executor call with the degrade message
-    anchor = src.find("result = await executor(args)")
-    window = src[max(0, anchor - 200):anchor + 1200]
+    anchor = src.find(call)
+    window = src[max(0, anchor - 200):anchor + 2400]  # the deadline branch sits between
     assert "except Exception" in window, (
         "executor call must be wrapped in try/except"
     )

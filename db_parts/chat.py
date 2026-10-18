@@ -607,9 +607,13 @@ def find_users_mentioned_in_text(text: str) -> list[int]:
         profile_tokens_lower -= STOP
 
         matched = False
-        # Pass 1: standard word-boundary match against text_lower.
+        # Pass 1: standard word-boundary match against text_lower. A name
+        # used as a verb counts too: "I'm done wocking" is about Wock
+        # (2026-10-18 audit A21: the bot defined it as cough syrup).
         for needle in profile_tokens_lower:
-            if re.search(rf"\b{re.escape(needle)}\b", text_lower):
+            if re.search(rf"\b{re.escape(needle)}\b", text_lower) or (
+                    len(needle) >= 4 and needle.isalpha() and not _is_slur(needle)
+                    and re.search(rf"\b{re.escape(needle)}(?:ing|ed|in|s)\b", text_lower)):
                 matches.add(user_id)
                 matched = True
                 break
@@ -1323,6 +1327,7 @@ def find_user_messages_matching(
     needle: str,
     *,
     limit: int = 10,
+    author_id: int | None = None,
 ) -> list[dict]:
     """Substring-match a user's actual messages (case-insensitive).
     Returns rows newest-first. Used by the /ask flow to produce
@@ -1333,10 +1338,21 @@ def find_user_messages_matching(
     SQLite wildcards if they want); helper auto-wraps with % when
     no wildcard char present.
     """
-    if not username or not needle:
+    if not (username or author_id) or not needle:
         return []
     needle = needle.strip()
     pattern = needle if any(c in needle for c in ("%", "_")) else f"%{needle}%"
+    if author_id:
+        # Identity is author_id (CLAUDE.md): a username changes and a
+        # profile check by name missed a member's own lines (2026-10-18 M10).
+        rows = _db.get_connection().execute(
+            """SELECT discord_message_id, channel_name, content, posted_at,
+                      author_display, author_username
+               FROM chat_messages
+               WHERE author_id = ? AND content LIKE ? COLLATE NOCASE
+               ORDER BY posted_at DESC LIMIT ?""",
+            (int(author_id), pattern, int(limit))).fetchall()
+        return [dict(r) for r in rows]
     rows = _db.get_connection().execute(
         """SELECT discord_message_id, channel_name, content, posted_at,
                   author_display, author_username

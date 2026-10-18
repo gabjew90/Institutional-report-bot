@@ -184,6 +184,24 @@ def _risk_slot(snapshot: dict | None) -> str | None:
     return ("POSITIONING: " + ", ".join(bits) + " [exchange and filing data]") if bits else None
 
 
+def _today_news_slot(news: dict | None, today=None) -> str | None:
+    """For "what happened to X": say when the news search found nothing
+    dated today, so the answer says that instead of building a cause from
+    week-old items (2026-10-18 audit A16: "what happened to cbrs" was
+    answered with an Oct 7 director filing, read as a share purchase)."""
+    from datetime import datetime, timezone
+    from zoneinfo import ZoneInfo
+    today = today or datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
+    digest = (news or {}).get("digest") or ""
+    iso = today.isoformat()
+    from discord_bot.news_tool import _DATED_RE
+    if any((m := _DATED_RE.match(ln)) and m.group(1) == iso for ln in digest.splitlines()):
+        return None
+    return ("NEWS TODAY: the news search found no company news dated today; say so plainly, "
+            "then give the move against the market and the dated items as background only "
+            "[news search]")
+
+
 def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = None) -> str:
     """The outline block for a stock answer, or '' when the shape is not a
     single-stock view or there is nothing to outline. `results` maps a
@@ -195,6 +213,7 @@ def build_outline(results: dict, shape: str, symbol: str, fresh: dict | None = N
     slots = [
         _price_slot(results.get(R.T_PRICE), symbol, results.get(R.T_SNAPSHOT)),
         _result_slot(fresh, results.get(R.T_SNAPSHOT), results.get(R.T_NEWS)),
+        _today_news_slot(results.get(R.T_NEWS)) if shape == "news_event" and not fresh else None,
         _driver_slot(results.get(R.T_PRIMER)),
         *_desk_slots(results.get(R.T_RESEARCH), fresh),
         _options_slot(results.get(R.T_CHAIN)) if shape == "options_chain" else None,

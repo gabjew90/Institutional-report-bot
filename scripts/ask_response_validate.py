@@ -268,6 +268,10 @@ _MACRO_FIGURE = re.compile(
 )
 
 _MACRO_WINDOW = 110
+# A year before 2020 or a war/era word near the figure marks it historical.
+_HISTORIC_RE = re.compile(
+    r"\b(?:1[6-9]\d\d|200\d|201\d)\b|\b(?:war|wwii|ww2|world\s+war|great\s+depression"
+    r"|historic(?:al|ally)?|in\s+today'?s\s+dollars|inflation[-\s]adjusted)\b", re.I)
 _CALENDAR_TOOL = "lookup_economic_calendar"
 
 
@@ -288,6 +292,13 @@ def check_macro_unsourced(answer: str, tool_calls=None,
     for m in _MACRO_SERIES.finditer(text):
         lo = max(0, m.start() - _MACRO_WINDOW)
         hi = min(len(text), m.end() + _MACRO_WINDOW)
+        # "% of GDP" is a ratio, and a figure beside a past year or a war is
+        # history, not this month's print (2026-10-18 audit A8: a WWII cost
+        # answer was replaced with the canned refusal).
+        if re.match(r"GDP", m.group(0), re.I) and re.search(r"\bof\s+(?:the\s+)?(?:US\s+|U\.S\.\s+)?$", text[lo:m.start()], re.I):
+            continue
+        if _HISTORIC_RE.search(text[lo:hi]):
+            continue
         fig = _MACRO_FIGURE.search(text[lo:hi])
         if not fig:
             continue
@@ -1357,14 +1368,15 @@ def resolve_violations(answer: str, retry_answer: str | None,
     if fallback is None:
         if "unfetchable-link-claim" in rules:
             fallback = PASTE_REQUEST
-        elif rules == {"repetition-glitch"}:
-            # Production ships the ORIGINAL when the strip fails: a
-            # glitchy answer still carries the content, so something
-            # beats blank. Replacing it with a refusal would delete a
-            # correct answer over a duplicated clause.
-            fallback = None
-        else:
+        elif "meta-plumbing" in rules:
             fallback = SAFE_REFUSAL
+        else:
+            # The refusal is the prescribed line for an answer that is
+            # plumbing end to end. On any other rule it replaced a real
+            # answer: a WWII cost question got "pull it from your broker"
+            # because "% of GDP" read as a macro print (2026-10-18 audit
+            # A8). Those answers ship as written when the strip fails.
+            fallback = None
 
     # A blocked-URL answer is unfounded END TO END — it describes a page
     # nobody read. Excising sentences would leave the same fabrication
@@ -1376,6 +1388,12 @@ def resolve_violations(answer: str, retry_answer: str | None,
 
     bad = violating_sentences(answer, tool_calls, **ctx)
     stripped = strip_fn(answer, bad)
+    # A strip may trim an answer, never gut it (discord_bot.guard_floor).
+    # "why is crypto dropping" shipped as one line after this rung
+    # (2026-10-18 audit A22).
+    from discord_bot.guard_floor import gutted
+    if stripped and gutted(answer, stripped) and "meta-plumbing" not in rules:
+        return answer, "shipped"
     if stripped and not validate(stripped, tool_calls, **ctx):
         return stripped, "stripped"
     # BEYOND the repetition detector's ladder, deliberately. That one

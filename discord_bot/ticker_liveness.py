@@ -37,12 +37,20 @@ def _defines_acronym(answer: str, m: re.Match, acr: str) -> bool:
     start = answer.rfind("\n", 0, m.start()) + 1
     end = answer.find("\n", m.end())
     line = answer[start:end if end != -1 else len(answer)]
-    if _MARKET_WORDS_RE.search(line):
-        return False
     words = re.findall(r"[A-Za-z][A-Za-z\-]*", answer[start:m.start()])[-(len(acr) + 2):]
     # a name that carries the symbol itself is a company and its ticker
     # ("GMS Supply (GMS)"), never a definition
     if any(w.upper() == acr for w in words):
+        return False
+    # Every letter is the initial of the lowercase words just before it: a
+    # definition even on a trading line ("wafer fabrication equipment (WFE)"
+    # in a line about the stock selling off, 2026-10-18 audit A17). A
+    # capitalised name ("First Republic Corp (FRC)") is a company.
+    phrase = words[-len(acr):]
+    if (len(words) >= len(acr) >= 2 and "".join(w[0].upper() for w in phrase) == acr
+            and all(w[0].islower() for w in phrase)):
+        return True
+    if _MARKET_WORDS_RE.search(line):
         return False
     initials = [w[0].upper() for w in words]
     if len(words) < 2 or acr[0] not in initials:

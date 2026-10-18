@@ -1219,8 +1219,12 @@ async def _fetch_chat_context(
                 # The format lives in chat_context so the live harness
                 # (scripts/ask_live.py) builds the identical block.
                 dn = getattr(msg.author, "display_name", None) or msg.author.name
-                line = chat_context.line(chat_context.speaker(dn, msg.author.name),
-                                         text, image_placeholder)
+                _who = chat_context.speaker(dn, msg.author.name)
+                if msg.author.bot or getattr(msg, "webhook_id", None):
+                    # Chart bots and feeds are not members ("add bear in front
+                    # of everyone's name" named Tree Capital, 2026-10-18 audit A31)
+                    _who = chat_context.bot_speaker(dn)
+                line = chat_context.line(_who, text, image_placeholder)
                 # Track distinct non-bot authors for the profile lookup
                 if not msg.author.bot:
                     author_ids.add(msg.author.id)
@@ -2500,9 +2504,11 @@ def _unknown_member_names(
     Returns up to `limit` near-miss unknowns."""
     if not question:
         return []
-    # Only the asker's actual message region — injected blocks up top
-    # quote the bot/other members and would add noise.
-    tail = question.strip()[-600:]
+    # Only the asker's own words: the quoted blocks (reply parent, verbatim
+    # recent messages) flagged "Kill" and "Whatever" as unknown members
+    # (2026-10-18 audit A30).
+    from discord_bot.ask_router import asker_text as _own
+    tail = (_own(question) or question.strip())[-600:]
     known_low = (known_names_text or "").lower()
     out: list[str] = []
     seen: set[str] = set()
@@ -3135,6 +3141,13 @@ def _clean_voice_violations(text: str) -> tuple[str, list[str]]:
     # `x = 1, y = 2`. The semicolon note below always said so; until
     # this change nothing enforced it.
     def _mech(s: str) -> str:
+        # A range with a unit or currency on either side ("€11.0B–€12.0B")
+        # reads "to", and a dash glued to a digit before a word
+        # ("by 2027—rivaling") is a clause break (2026-10-18 audit A28: the
+        # first became "€11.0B, €12.0B", the second shipped as an em-dash).
+        # (bare "62–65%" and "$861–$881" stay as written, earlier pins)
+        s = re.sub(r'(\d[KMBkmbT])\s*[—–‒]\s*(?=[€£$]?\d)', r'\1 to ', s)
+        s = re.sub(r'(\d[KMBkmbT%]?)[—–‒](?=[A-Za-z])', r'\1, ', s)
         s = re.sub(
             r'(\d)\s+[—–‒]\s+(?=\$?\d|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|'
             r'Sept|Oct|Nov|Dec)[a-z]*\b)', r'\1 to ', s)
@@ -8944,6 +8957,11 @@ async def _ask_10_log_and_render(
         pass
 
     sources_footer = _build_sources_footer(grounding_metadata)
+    if sources_footer and answer:
+        # The model sometimes writes its own "Sources:" block; the system's
+        # comes after it, so the post showed two (2026-10-18 audit F7).
+        from discord_bot.data_footer import strip_model_sources as _sms
+        answer = _sms(answer)
     try:
         from discord_bot import data_footer as _data_footer
         # A banter reply with no figure cites nothing: Google links under a

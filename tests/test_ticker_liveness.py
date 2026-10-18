@@ -56,3 +56,16 @@ def test_a_company_name_carrying_its_symbol_is_still_checked():
     from discord_bot import ticker_liveness as TL
     ans = "→ Home Depot bought GMS Supply (GMS) last year."
     assert "GMS" in TL.introduced_tickers(ans, "who did home depot buy")
+
+
+def test_an_exact_acronym_is_a_definition_even_on_a_trading_line():
+    """2026-10-18 audit A17: the investor-day answer lost its key line, the
+    sell-off on "no wafer fabrication equipment (WFE) forecast"."""
+    import re
+    from discord_bot.ticker_liveness import _defines_acronym
+    a = ("→ **Omitted WFE guidance:** The stock faced heavy selling because management declined "
+         "to issue a forward wafer fabrication equipment (WFE) spending forecast")
+    m = re.search(r"\(WFE\)", a)
+    assert _defines_acronym(a, m, "WFE")
+    b = "→ Beacon Roofing (BECN) shares fell 4%"
+    assert not _defines_acronym(b, re.search(r"\(BECN\)", b), "BECN")

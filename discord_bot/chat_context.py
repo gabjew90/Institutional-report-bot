@@ -19,6 +19,12 @@ def speaker(display: str | None, username: str | None) -> str:
     return display or username or ""
 
 
+def bot_speaker(name: str | None) -> str:
+    """Another bot or a webhook feed in the channel: labelled so the model
+    never counts it as a member (2026-10-18 audit A31)."""
+    return f"{name or 'bot'} [a bot, not a member]"
+
+
 def line(who: str, text: str, image_placeholder: str = "") -> str:
     return f"{who}: {text or '(image)'}{image_placeholder}"
 

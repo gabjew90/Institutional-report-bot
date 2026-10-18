@@ -84,3 +84,14 @@ def test_a_rewrite_that_is_the_models_notes_is_rejected_2026_10_11():
     assert plausible_rewrite(before, good)
     assert not plausible_rewrite(before, "DeeP FRieD.")          # gutted
     assert not plausible_rewrite(before, "Here is the rewrite: " + good)
+
+
+def test_a_stake_added_back_is_sourced_2026_10_18():
+    """Audit F6: "$100 at +17,500 clears $17,500 profit, returning $17,600"
+    drew the couldn't-verify hedge; the return is the profit plus the stake."""
+    from discord_bot import figure_provenance as fp
+    ans = ("→ **Spot on.** At **+17,500** odds, a **$100 bill** riding on all three clears "
+           "**$17,500** in pure profit, returning **$17,600** total.")
+    ev = 'a 3-leg parlay would have paid roughly 175-to-1 odds (+17,500)'
+    rep = fp.check(ans, ev, "So a 100$ parlay wouldve paid 17.5k?")
+    assert rep.action not in ("stripped", "all-unsourced"), rep

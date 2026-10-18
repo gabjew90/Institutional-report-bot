@@ -39,3 +39,10 @@ def test_a_one_letter_display_name_matches_as_a_standalone_capital():
 def test_a_capital_letter_inside_a_longer_name_is_not_an_alias():
     _profile(910005, "abullish_xyz", "A Bullish Grand Nagus")
     assert 910005 not in db.find_users_mentioned_in_text("A good day for semis")
+
+
+def test_a_name_used_as_a_verb_finds_the_member_2026_10_18():
+    """Audit A21: "I'm done wocking" got a cough-syrup definition; Wock is a member."""
+    _profile(910006, "sleep04025", "Fundamental Wock")
+    assert 910006 in db.find_users_mentioned_in_text("I'm done wocking")
+    assert 910006 not in db.find_users_mentioned_in_text("wockhardt pharma")
