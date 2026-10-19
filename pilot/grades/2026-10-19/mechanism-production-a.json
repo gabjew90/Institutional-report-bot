@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt (core mechanism); corroborating: pilot/source-text/2026-10-18/20889__ms-lentini-following-ais-1-6-trillion-money-trail-mapping-th.txt, pilot/source-text/2026-10-18/20860__if-this-was-a-normal-week.txt, pilot/source-text/2026-10-18/20850__gs-miller-gsx-global-reflections-16-oct-2026.txt, pilot/source-text/2026-10-18/20851__gs-wilson-weekly-mash-16-oct-2026.txt",
+ "source_span": "On the week, IG cash widened just ~3bps, but ORCL Bonds & CDS moved +30-45bps wider... Capital hasn't disappeared. It's become far more discriminating... The question isn't whether investors still want credit risk. It's which risks they're willing to own, and at what price.",
+ "source_chain": "IG100 closes only ~2-3bp wider while single credits (Oracle +43bp to +320, CDS +30-40bp, Meta +14bp, CoreWeave yields to 15%) blow out, therefore the index-level calm hides a market sorting issuers rather than fleeing credit broadly, therefore CoreWeave becomes the 'beta barometer' for how far that discrimination runs, with distressed/equity buyers only starting to appear late week; invalidation (Academy Securities, same week): the differentiation stays orderly only while dealer liquidity in new issues holds and CoreWeave doesn't break its July lows, and Academy sizes the downside risk (10-20bp IG/3-5pts HY) as bigger than any move tighter.",
+ "pulse_chain": "Credit spreads on AI/hyperscaler debt hit YTD wides against a flat IG index (same Oracle/Meta/CDS/CoreWeave figures), therefore this is a sorting not a retreat: capital still wants credit risk but prices self-funding capacity vs. financing dependence (MS: AA+ hyperscalers at >30x interest coverage vs ~11x median IG are outside the squeeze; neoclouds funded on asset-level debt/converts are most exposed; CCC/HY data-center bonds already damaged), therefore Academy raises its alert from yellow to orange and sizes the escalation risk as bigger than any snapback tighter, while Goldman trades the differentiation (buy S&P ex-AI, expects Q3 ROI evidence); invalidation: CoreWeave testing its July lows, a break lower being next week's watch item, though distressed/equity buyers already showed up late in the week.",
+ "preserved": true,
+ "why": "Every 'therefore' step, bank attribution, and the invalidation condition (CoreWeave's July-lows test, Academy's orange-alert sizing) match each cited note's own argument and direction with no reversal, no swapped invalidation, and no invented mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

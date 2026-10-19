@@ -1,0 +1,87 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d17",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI/hyperscaler credit spreads hit YTD wides (historically associated with equities 15% lower) therefore the market debate shifted from near-term earnings revisions to capex-peak/financing/sustainability concerns therefore pessimism and put buying are rising therefore, since GS's non-AI call has worked and NDX multiples (21x) look like uncertainty not overvaluation, and since nets/leverage/cyclicals-vs-defensives positioning shows the market absorbing stress via rotation rather than index-level selling, GS still favors the broadening trade across five named ideas (ex-AI call spreads/Europe basket, Quality Comeback, ACA healthcare, Brazil re-rating, Taiwan AI hedges).",
+   "brief_chain": "Same chain: wide AI credit spreads historically preceded 15% lower equities therefore the debate moved from earnings revisions to capex-peaked/financing questions therefore pessimism/low breadth/high put volume therefore, with the non-AI call working and 21x NDX reflecting uncertainty not overvaluation, and positioning (nets 67th pct vs leverage 17th pct, cyclicals pricing only 2% growth) showing rotation absorbing stress, GS favors the broadening trade across the same five ideas.",
+   "distortions": [
+    {
+     "what": "Brief drops the hedge word 'nearly' from 'the last time spreads were nearly this high' and omits that the 2nd-highest put volume reading was 'right behind June of this year'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are precision/color losses, not changes to the call, conviction, or any level."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Hot September core CPI pushed 10yr yields above 5.30% therefore an AI-driven Nasdaq selloff triggered a flight to quality that pulled 10s back to 5.07% (Fed October hike priced out, GS Economics still sees pause-then-December-hike) therefore this growth-vs-inflation tension spilled into credit: index-level IG stayed calm while AI-exposed names (Oracle, CoreWeave) dispersed sharply therefore GS frames this as capital becoming more discriminating (financing self-sufficiency vs. financing-dependent growth) rather than retreating, a distinction GIR extends to AI project finance \u2014 where 2026 YTD issuance ($106bn+) is already nearly triple all of 2025's volume, GIR forecasts $300bn of 2027 global project-finance issuance plus $420bn of direct hyperscaler issuance, and a sample of HY data-center bond prices has fallen from $101.5 (June) to $94.7 (October) \u2014 alongside idiosyncratic single-name stress and loan-market resilience.",
+   "brief_chain": "Same chain through the credit-discrimination framing, but states 'issuance is forecast to nearly triple by 2027,' recasting the source's already-realized 2026-vs-2025 comparison as a forward 2027 forecast.",
+   "distortions": [
+    {
+     "what": "Source's 'nearly triple' figure describes 2026 YTD project-finance issuance ($106bn+, already surpassed) against 2025's full-year volume \u2014 a realized, backward-looking comparison. GIR's actual 2027 forecast is stated in dollar terms ($300bn global project finance + $420bn hyperscaler issuance), never phrased as tripling. The brief's 'issuance is forecast to nearly triple by 2027' reassigns an already-released historical ratio to a future forecast status.",
+     "material": true,
+     "would_the_trade_change": "The test's materiality criterion explicitly includes a figure's released/forecast/target status; the brief converts a realized/already-happened statistic into a forward forecast for a different year, which a reader would wrongly treat as GIR's 2027 growth call rather than this year's already-observed surge."
+    },
+    {
+     "what": "Brief compresses JetBlue, FMC, UWM, Asurion, and Acrisure single-name moves into 'idiosyncratic single-name stress (JetBlue, FMC, UWM) and loan-market resilience'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 no desk call or level is lost, only supporting color/breadth of examples."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 1
+  },
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "New lease-capex modeling adds $195bn to 2027 estimates, raising total hyperscaler/neocloud capex to $980bn (2026, +100% y/y), ~$1.58-1.6T (2027, +60% y/y), $1.8T (2028, +14% y/y) therefore at a 65% absorption rate this capex drives 5% of 2027 SPX sales and ~25% of SPX sales growth, with NVDA capturing nearly $700bn of the $1.0T reaching the index therefore the broader 42-name AI cohort grows 2027 sales 28% vs 5% for non-AI peers and drives 78% of 2027 S&P earnings growth therefore financing needs rise in 2027 as the hyperscaler cash-flow deficit widens, but AA-rated hyperscalers are price-insensitive to higher rates while lower-rated borrowers face tighter constraints therefore among downside risks, a Powering AI model projects a 32 GW net US power shortfall through 2028, which would delay energization (a timing mismatch) rather than cut chip demand, and midterm-election outcomes are one of three political/people/power constraints flagged as a downside risk to the buildout.",
+   "brief_chain": "Same chain and same figures throughout, including the AA-rated vs. lower-rated financing distinction and the 32 GW shortfall framed as a timing/energization risk rather than a demand cut, with midterms as a secondary political risk.",
+   "distortions": [
+    {
+     "what": "Brief collapses the source's three-part 'people, power, and politics' framing of AI-buildout constraints down to calling midterm-election outcomes simply 'a secondary political risk'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the underlying risk (midterm-driven policy uncertainty around data-center buildout) and its subordinate status relative to the power bottleneck are preserved; only the enumeration of the other two constraints is dropped."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "Memory stocks reversed from the hottest AI trade into a multi-session unwind (GS basket 600\u21922,675 June peak\u2192~1,900, -30%; Samsung/SK Hynix -22%/-26% over 5 sessions) therefore foreign investors sold $11.6bn of Korean tech over 8 sessions (SK Hynix 15 straight days, Samsung 5) while domestic buyers began absorbing supply therefore hedge funds have been net AI sellers for 5 sessions (net allocation 26.1% from a 31.7% June peak; long/short ratio 4.34\u21923.27, 7th percentile) therefore even as DDR5 spot prices keep rising and Samsung/SK Hynix trade at 1.2x/0.9x book (pricing a 2028 downturn), China's CXMT (~10% of global DRAM revenue) raises supply-shock fears despite uncertain HBM yields/qualification, therefore with SOX oversold (RSI 34) and bullish positioning flushed, conditions for a countertrend squeeze are emerging without guaranteeing a bottom.",
+   "brief_chain": "Same chain and same figures throughout (basket levels, country-level selling stats, hedge fund positioning stats, valuation multiples, CXMT share, SOX RSI), reaching the same non-committal squeeze-without-guaranteed-bottom conclusion.",
+   "distortions": [
+    {
+     "what": "Brief drops the source's melodramatic framing ('bloodbath,' 'memory massacre,' 'carnage') in favor of neutral terms like 'unwind'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 this is a tone/register change required by the pulse's own voice rules, not a change to any figure, stance, or conviction level."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 4,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

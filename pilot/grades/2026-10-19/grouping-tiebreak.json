@@ -1,0 +1,55 @@
+{
+ "metric": 1,
+ "total_cards": 830,
+ "fragmentation_sets": [
+  {
+   "subject": "GS credit weekly note: index-level calm masking rotation/dispersion across IG and leveraged finance",
+   "labels": [
+    "ig credit flows dispersion",
+    "leveraged finance credit dispersion"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Is this week's stock selloff a technical de-grossing event or a genuine AI-earnings-growth deceleration risk?",
+   "labels": [
+    "ai stock drawdown risk",
+    "equity positioning flows"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.0578,
+ "mis_merges": [
+  {
+   "label": "quality vs momentum rotation",
+   "subjects": [
+    "GS Quality factor pair-trade thesis (GSP1QUAL/GSPEQUAL crowding, stretched RSI, reversal risk)",
+    "Weekly global/regional equity performance recap (Europe outperformance, NIFTY, GS's India private-banks call, US defensive rotation, equal-weight SPX performance)"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The India private-banks call and country-performance stats carry no connection to the quality-crowding thesis and bury a standalone EM trade idea (duplicating ground already covered by the separate 'india anti ai rotation trade' label) while diluting the reversal-risk signal an editor needs to weigh the quality trade as its own brief."
+  },
+  {
+   "label": "us equity outlook",
+   "subjects": [
+    "Raymond James's bullish seasonal consolidation/rotation call (upward bias, buy the dip)",
+    "GS's weekly sector/factor performance recap plus GIR's growth-outlook downgrade, both pointing to rising caution (VIX spike, SMID underperformance, quality dominance, 'financial conditions no longer boosting GDP growth')"
+   ],
+   "would_change_theme_selection": true,
+   "why": "A label named for one bullish house view hides that most of its own cards argue the opposite; an editor scanning labels for the day's cautious/bearish candidate theme would never find GIR's growth-downgrade call sitting inside 'us equity outlook'."
+  }
+ ],
+ "pass": false,
+ "notes": "misc holds 12/830 cards (~1.4%), correctly excluded from fragmented mass. Both mis-merges stem from the same pattern: a GS/RJ weekly-recap note gets folded into a label named after one specific thesis, hiding a second, independently brief-worthy signal inside it.",
+ "dim": "grouping",
+ "agent": "tiebreak",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

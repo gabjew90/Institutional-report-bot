@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+ "source_span": "Capital hasn't disappeared. It's become far more discriminating... the market is increasingly differentiating between companies that can finance growth and those whose growth depends on financing remaining available.",
+ "source_chain": "AI-linked credit (CoreWeave, Oracle, neoclouds) sold off hard this week while the broad IG index barely moved (~2bps) therefore capital is not fleeing credit but discriminating within it therefore the market is pricing issuers by whether they can self-fund growth versus depend on financing staying open, with CCC/HY already showing the damage (15.4% yields, 1,045bps spreads) \u2014 invalidation/escalation flagged by Academy Securities: the widening has been orderly so far but dealers pulling back from two-week-old new issues is a liquidity warning sign that the move turns 'fast and furious' (10-20bps IG, 3-5pts HY), a bigger risk than a move tighter.",
+ "pulse_chain": "AI/hyperscaler credit spreads hit their widest of the year (CoreWeave 15% yields, Oracle +43bps to 320, Meta +14bps, CDS +30-40bps) while the broad IG index moved only ~2bps therefore this is a sorting, not a retreat: capital still wants credit risk but is now pricing an issuer's ability to finance its own growth against dependence on financing staying open (AA+ hyperscalers insulated per Morgan Stanley, neoclouds and CCC/HY most exposed) therefore Academy Securities (yellow-to-orange alert) expects the orderly widening to turn fast and furious (10-20bps IG, 3-5pts HY, a bigger risk than tightening), with dealers already pulling back from two-week-old issues \u2014 invalidation/catalyst: CoreWeave testing its July lows is the thing to watch, even as distressed/equity buyers were already stepping into its debt late in the week.",
+ "preserved": true,
+ "why": "The pulse reproduces GS Pasi's discriminating-not-fleeing mechanism verbatim in substance, correctly attributes the AA-hyperscaler/interest-coverage point to Morgan Stanley and the alert escalation/liquidity-warning/bp sizing to Academy Securities, and keeps Academy's own invalidation condition (CoreWeave's price action) as the forward-looking tell.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

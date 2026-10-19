@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+ "source_span": "Capital hasn't disappeared. It's become far more discriminating. The distinction matters... the market is increasingly differentiating between companies that can finance growth and those whose growth depends on financing remaining available.",
+ "source_chain": "A: Oracle widened ~43bps to +320, Meta ~14bps, Oracle CDS +30-40bps, CCC spreads breached 1,045bps, CoreWeave yields hit 15% -- while IG100 closed only ~2bps wider, masking the dispersion beneath. THEREFORE B: capital hasn't left credit, it has become discriminating -- sorting issuers that can self-fund growth from those whose growth depends on financing staying open. THEREFORE C: CoreWeave, at the center of the unwind, is the name to watch (distressed/equity buyers already appearing late week); corroborated same-day by Academy's Tchir (yellow-to-orange alert, fades 'orderly', sizes downside risk at 10-20bps IG/3-5pts HY as asymmetric to a move tighter), MS Lentini (AA+ hyperscalers' >30x interest coverage vs ~11x median IG insulates them), and GS's own desk buying the S&P 500 ex-AI basket into Q3 earnings for ROI proof. Invalidation: whether CoreWeave breaks its July lows (stress continuing) vs. the distressed-buyer bid holding (stabilizing).",
+ "pulse_chain": "A: Credit spreads on AI/hyperscaler debt widest of the year -- CoreWeave yields at 15%, Oracle +43bps to 320, Meta +14bps, Oracle CDS +30-40bps -- while the broad IG index is only ~2bps wider, hiding violent dispersion. THEREFORE B: this is a sorting, not a retreat -- capital prices an issuer's ability to finance its own growth against dependence on financing staying open; MS backs this with AA+ hyperscalers' >30x interest coverage vs ~11x median IG, neoclouds most exposed; below IG, CCC yields 15.4%/1,045bps and HY data-center bonds fell $101.5->$94.7. THEREFORE C: Academy raised its alert yellow-to-orange, expects fast-and-furious widening (10-20bps IG/3-5pts HY, bigger risk than a move tighter); Goldman trades it by buying the S&P 500 ex-AI basket and expects Q3 earnings to evidence AI spenders' ROI; CoreWeave is the scoreboard, testing July lows, a break lower is what to watch, though distressed/equity buyers already appeared late week.",
+ "preserved": true,
+ "why": "Every step, figure, and attribution in the pulse's chain -- the dispersion-under-a-calm-index setup, the 'sorting not retreat' mechanism (lifted near-verbatim from GS Pasi), the Academy alert escalation and sizing, the MS coverage-ratio support, the GS ex-AI trade and ROI catalyst, and the CoreWeave-July-lows invalidation -- traces to the correct named desk and preserves the same direction and invalidation as the source notes, with no reversal, misattribution, or invented mechanism.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

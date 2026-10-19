@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+ "source_span": "Capital hasn't disappeared. It's become far more discriminating...the market is increasingly differentiating between companies that can finance growth and those whose growth depends on financing remaining available.",
+ "source_chain": "IG100 closes ~2bp wider while underneath it Oracle/Meta bonds and CDS widen sharply, CoreWeave yields hit 15%, and CCC spreads breach 1,000bp+ (index calm masks violent dispersion) THEREFORE capital hasn't left credit, it has become far more discriminating by issuer THEREFORE the market is splitting borrowers into those that can finance their own growth and those whose growth depends on financing staying available, with the next test being earnings broadening into Industrials/Healthcare/Tech.",
+ "pulse_chain": "AI/hyperscaler spreads hit the year's widest level while the broad IG index is only ~2bp wider, hiding severe dispersion (CoreWeave yields at 15%, Oracle bonds +43bp/CDS +30-40bp, CCC yields ~15.4%/1045bp) THEREFORE this is a sorting, not a retreat \u2014 capital still wants credit risk THEREFORE it is now pricing an issuer's ability to finance its own growth (hyperscalers, AA+, high interest coverage per Morgan Stanley) against dependence on financing staying open (neoclouds, HY project finance), with Academy Securities escalating its alert from yellow to orange and sizing a bigger future widening, and Goldman trading the dispersion via an ex-AI basket; CoreWeave testing its July lows is flagged as the level that would mark a break lower.",
+ "preserved": true,
+ "why": "The pulse reproduces GS Pasi's exact thesis (index-level calm hiding discriminating dispersion, framed as sorting-not-retreat between self-funding and financing-dependent issuers) with matching figures (Oracle +43bp, Meta +14bp, CDS +30-40bp, IG +2bp) and correctly attributes the escalation language and bps sizing to Academy Securities, so the causal steps and bank attributions are intact even though the closing watch-item (CoreWeave's July lows) is an added monitoring point rather than a swapped invalidation.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

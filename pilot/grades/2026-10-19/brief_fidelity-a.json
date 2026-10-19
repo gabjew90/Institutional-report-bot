@@ -1,0 +1,76 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d17",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI credit spreads/hyperscaler complex are at YTD wides with capex-peaked fears and rising pessimism (low breadth, 2nd-highest put volume), therefore GS argues this is skepticism not overvaluation (NDX at 21x) given positioning asymmetry (nets elevated, net leverage low, cyclicals pricing only 2% growth), therefore GS reiterates the broadening trade across five named ideas (ex-AI call spreads + Europe basket, Quality Comeback, ACA healthcare, Brazil re-rating, Taiwan AI hedges).",
+   "brief_chain": "Same chain: AI credit stress and capex-peak debate drive rising pessimism, therefore GS calls it uncertainty not overvaluation (21x NDX) given the nets/leverage/cyclicals positioning backdrop, therefore GS still favors the broadening trade and lists the same five ideas.",
+   "distortions": [
+    {
+     "what": "Brief omits supporting specifics (586bps SPXXAI outperformance since Oct 6, the European ex-Secular-Themes basket's +4.5% rally, Europe Quality L/S's +7.5% 1-month return) that back up each of the five trade ideas.",
+     "material": false,
+     "would_the_trade_change": "No \u2014 these are magnitude/track-record details behind calls the brief already states correctly; omitting them doesn't change direction, instrument, or conviction."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d2",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Hot CPI briefly pushed yields up, but an AI-driven Nasdaq selloff flipped the market to a growth scare and drove yields back down, therefore credit is discriminating between self-financing and financing-dependent AI issuers (Oracle/CoreWeave widening sharply vs. calm index-level IG and steady inflows/CCC demand), therefore GIR flags AI project finance as the next scrutiny point given a realized surge in 2026 issuance and a large forward 2027 financing pipeline.",
+   "brief_chain": "Same chain through the credit-discrimination thesis, but closes by stating issuance is 'forecast to nearly triple by 2027' \u2014 a 2027 forecast framing the source never makes for that ratio.",
+   "distortions": [
+    {
+     "what": "Source's 'nearly triple' describes an already-realized comparison (2026 YTD project-finance issuance of $106bn+ vs. 2025's full-year volume), not a forward 2027 forecast. The source's actual 2027 forecast ($300bn global project finance + $420bn direct hyperscaler issuance \u2248 $720bn) is roughly 6.8x the $106bn 2026 YTD base, not 'nearly triple.' The brief reattaches a realized year-over-year stat to a forward year it was never computed for, misstating a figure's realized-vs-forecast status and understating how much the forward financing buildout actually scales.",
+     "material": true,
+     "would_the_trade_change": "It changes the reader's read of how acute the forward AI-financing scrutiny is \u2014 'nearly triple' materially understates a forecast GIR actually puts at ~6.8x, which bears on conviction in the piece's central 'capital is discriminating, financing risk is building' thesis, and it swaps a realized figure's status for a forecast one, one of the test's named triggers."
+    }
+   ],
+   "material_count": 1,
+   "non_material_count": 0
+  },
+  {
+   "id": "d7",
+   "tier": "top",
+   "bank": "Morgan Stanley",
+   "source_chain": "MS maps $1.6T of 2027 hyperscaler/neocloud capex (cash + new lease capex, which add $195bn) to supplier revenue at a 65% absorption rate, therefore this capex layer alone drives 5% of 2027 S&P 500 sales / ~25% of sales growth with NVDA the largest single beneficiary (~$700bn of the $1.0T reaching the index), therefore the broader 42-name AI cohort drives even more of index growth (28% 2027 sales growth vs. 5% non-AI, 78% of 2027 earnings growth), even as financing needs rise on a widening hyperscaler cash-flow deficit (AA-rated issuers price-insensitive, lower-rated exposed) and a 32GW power shortfall risks delaying rather than cutting chip demand, with midterm elections a secondary political risk to the buildout.",
+   "brief_chain": "Same chain, same figures throughout ($1.6T/$195bn/$980bn+100%/$1.58-1.6T+60%/$1.8T+14%, 65% absorption, 5%/25%, $700bn/$1.0T, 42-name cohort 28%/5% and 78%, AA-rated financing split, 32GW shortfall as a timing delay not a demand cut, midterms as secondary risk) \u2014 no figure or causal link altered.",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d5",
+   "tier": "rest",
+   "bank": "The Market Ear",
+   "source_chain": "Memory/AI unwind: Goldman's memory basket is ~30% off its June high, Samsung/SK Hynix down 22%/26% over five sessions, foreign Korean-tech selling ($11.6bn over 8 sessions) is being partly absorbed by domestic buyers, hedge funds are net sellers of global AI for five sessions (net allocation 26.1% from 31.7%, L/S ratio to 3.27, 7th percentile), yet DDR5 spot prices keep rising and depressed book-value multiples (1.2x/0.9x) already price a 2028 downturn, CXMT's rising DRAM share (~10%) stokes supply-shock fears though its HBM yields/qualification remain unproven, therefore with the SOX oversold (RSI 34) and bullish positioning flushed, conditions for a countertrend squeeze (not a confirmed bottom) are emerging.",
+   "brief_chain": "Same chain and same figures throughout, condensed but with no stance, figure-status, or conviction changes.",
+   "distortions": [
+    {
+     "what": "Brief omits that CXMT's supply-shock fear is specifically tied to a '4F\u00b2 technology announcement.'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the brief still conveys CXMT as the catalyst and correctly notes HBM yield/qualification uncertainty; dropping the specific technology name doesn't change the read."
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 1,
+ "non_material_total": 2,
+ "audited": 4,
+ "dim": "brief_fidelity",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

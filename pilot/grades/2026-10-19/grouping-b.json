@@ -1,0 +1,38 @@
+{
+ "metric": 1,
+ "total_cards": 830,
+ "fragmentation_sets": [
+  {
+   "subject": "AI/tech stock selloff: earnings-growth-deceleration fears paired with a violent systematic de-grossing event, including the related breadth/rotation read",
+   "labels": [
+    "ai stock drawdown risk",
+    "equity positioning flows"
+   ],
+   "cards": 24
+  }
+ ],
+ "fragmented_mass_share": 0.0289,
+ "mis_merges": [
+  {
+   "label": "ig credit flows dispersion",
+   "subjects": [
+    "IG credit market technicals, issuance and fund-flow dispersion",
+    "bank/broader earnings-season outlook broadening into Industrials, Healthcare and Technology"
+   ],
+   "would_change_theme_selection": false,
+   "why": "Only 3 of the label's 12 cards concern earnings-season outlook versus 9 on IG technicals, so an editor scanning this label would still pick the IG-dispersion theme and the thin earnings-season content isn't substantial enough on its own to be a missed brief."
+  }
+ ],
+ "pass": true,
+ "notes": "misc holds 12/830 cards (~1.4%) and is excluded from fragmented mass per the overflow rule. The RBC drawdown narrative and the GS/TME de-grossing event describe the same realized selloff from fundamental-cause vs flow-mechanics angles and would read as one MAIN EVENT brief.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

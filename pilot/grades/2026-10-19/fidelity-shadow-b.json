@@ -1,0 +1,139 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20850__gs-miller-gsx-global-reflections-16-oct-2026.txt",
+   "span": "AI Credit Spreads (GSUCHS30) and hyperscalers (GSXUHYPR) specifically are at the widest levels of the year. The last time spreads were nearly this high, the underlying equities were 15% lower.",
+   "why": "Matches widest-of-year spreads, the comparison point, and the 15% equity gap exactly."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "CoreWeave becomes the market's beta barometer: CRWV was at the center of the AI unwind, with yields hitting 15% this week",
+   "why": "15% yield figure and 'reference point/beta barometer' framing both supported."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20760__ms-us-equity-strategy-gvat-following-ai-s-1-6-trillion-money.txt",
+   "span": "Neoclouds have primarily relied on asset-level financing and convertible bonds for funding, and are the most sensitive companies to higher cost of debt.",
+   "why": "Near-verbatim match of funding structure and exposure claim."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20880__gs-quek-weekend-thoughts-42-53-tech-positioning-updates-18-o.txt",
+   "span": "we think markets could have overestimated the ability for CXMT to close the technology gap... significant ground to cover from customer qualifications, to mass production at high yield levels, and to further expansion into advanced nodes without direct access to EUV equipment... FII ownership in Korea Semis now sit at -2.5 SD below longer term history... looks like we are due for a tactical bounce",
+   "why": "All three claims (CXMT overestimation/qualification/yield/EUV, Korea FII ownership -2.5SD, tactical bounce call) appear together in this single Goldman note."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20687__prime-services-weekly-report-10-16-26.txt",
+   "span": "Info Tech was by far the most net sold global sector this week as the sector saw the largest % de-grossing in 2 months and the largest % net selling on our record (since 2016), driven by long and to a lesser extent short sales (4.7 to 1).",
+   "why": "Exact match on record-since-2016 framing, top-sold-sector claim, and long/short mix."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20852__record-tech-selling-vix-explosion-who-is-blowing-up.txt",
+   "span": "asset managers entered the session with their largest net short position in VIX futures on record... Aggressive buying in VIX futures sent the VIX to its highest level since July, while VVIX surged 17 points, one of its largest single-day moves in four years.",
+   "why": "All three figures (largest net short on record, VIX high since July, VVIX +17 pts/4yr) confirmed verbatim."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20851__gs-wilson-weekly-mash-16-oct-2026.txt; pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "on Monday we upgraded bonds to Over-Weight for the coming 12mths ('Giving credit to balance...'); GS Economics continues to expect an October pause followed by a December hike.",
+   "why": "Both the Monday bond upgrade and the economists' pause/hike call are explicit in Goldman notes."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20889__ms-lentini-following-ais-1-6-trillion-money-trail-mapping-th.txt",
+   "span": "We map hyperscaler and neocloud cash and lease capex to single-stock revenue. Our new lease capex estimates increase total AI investment by $195bn to $1.6tr in 2027.",
+   "why": "Accurately summarizes the report's purpose (revising/tracing the AI capex number)."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20889__ms-lentini-following-ais-1-6-trillion-money-trail-mapping-th.txt",
+   "span": "adding ~$195B to our 2027 capex estimates now totaling to $1.58T... Hyperscalers disclose commitments to pay more than $1.1T for leases that have not yet started",
+   "why": "Figures match exactly: $195B addition, $1.58T total, $1.1T+ disclosed lease commitments."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20889__ms-lentini-following-ais-1-6-trillion-money-trail-mapping-th.txt",
+   "span": "it still sees a 32 GW net US shortfall through 2028... If energized capacity falls short of chip deliveries, the spending risk is a mismatch in timing rather than a collapse in demand.",
+   "why": "32GW figure and the 'timing mismatch not demand destruction' framing both verbatim-supported."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20889__ms-lentini-following-ais-1-6-trillion-money-trail-mapping-th.txt",
+   "span": "Political pushback, to be sure, has become the wedge issue in the midterm elections... sentiment in this context we think is most positive in a Republican sweep... neutral under divided government, and weakest in a Democratic sweep.",
+   "why": "Midterm wedge-issue framing and weakest-under-Democratic-sweep conclusion both directly supported."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20878__gs-novak-gs-u-s-industrials-materials-10-12-26-10-16-26-week.txt",
+   "span": "Earnings kick into high gear this weak with 1/3 of industrials and materials set to report... as well as positioning scores from our desk on $10bn+ market cap reporters.",
+   "why": "1/3 reporting figure matches; note's content is centered on positioning/ownership scores, matching 'who owns what'."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20874__gs-degrasse-gs-financials-reits-sector-specialist-week-1-dow.txt",
+   "span": "bulls have in the past talked about leverage BX's funds & platform have to this theme [datacenters] ..while bears focused on pace of management fee growth & update on BREIT recovery / BREP fundraising given move higher in rates, and concerns about AI slowdown (given recent news in credit)",
+   "why": "Bull and bear framings on Blackstone match precisely, including BREIT/BREP and AI-slowdown-in-credit detail."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20878__gs-novak-gs-u-s-industrials-materials-10-12-26-10-16-26-week.txt",
+   "span": "GE... 5% implied move... Potential sources of upside could be addressing 2028 guidance (higher)... NOC... Folks lean negative NOC on fears around free cash flow for the year and recent FAXX contract loss... CSX... short interest is up meaningfully 43mm shares... folks are debating whether there is an M&A premium in CSX right now.",
+   "why": "GE's 5%-move/2028-guidance-upside framing, Northrop's FCF/FAXX bear case, and CSX's short-interest/M&A-premium debate all match this single Goldman industrials note."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20876__gs-lucas-gs-etf-color-inflows-into-levered-etfs-18-oct-2026.txt",
+   "span": "The SOX index faced its worst week of performance this year (-11%), and its second worst behind Liberation Day. SMH has traded lower for 9 consecutive sessions, the longest downward streak in its 15yr operating history.",
+   "why": "Exact match on worst-week/-11%/second-to-Liberation-Day and SMH's 9-session/15-year-record streak."
+  }
+ ],
+ "faithful": 15,
+ "distorted": 0,
+ "unsupported": 0,
+ "faithful_rate": 1.0,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

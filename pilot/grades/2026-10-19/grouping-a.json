@@ -1,0 +1,48 @@
+{
+ "metric": 1,
+ "total_cards": 830,
+ "fragmentation_sets": [
+  {
+   "subject": "This week's rotation out of mega-cap/AI-exposed tech into financials, REITs, and defensives (Goldman's weekly flow-of-funds note)",
+   "labels": [
+    "us equity outlook",
+    "financials reits sector rotation"
+   ],
+   "cards": 19
+  }
+ ],
+ "fragmented_mass_share": 0.0373,
+ "mis_merges": [
+  {
+   "label": "equity positioning flows",
+   "subjects": [
+    "Raymond James's market-breadth/rotation-readiness thesis (74% of S&P off highs, watching small-cap/equal-weight 200-day averages for a breadth break)",
+    "GS/TME's explanation of a specific violent down day as systematic fund de-grossing (gross exposure unwind) rather than a net-conviction change"
+   ],
+   "would_change_theme_selection": true,
+   "why": "The breadth-deterioration watch is a slower structural story distinct from the one-day forced-selling mechanics; an editor skimming this label would likely pick the more dramatic de-grossing stat and drop the breadth thesis as a theme entirely."
+  },
+  {
+   "label": "us equity outlook",
+   "subjects": [
+    "Raymond James's bullish seasonal/consolidation outlook",
+    "GS's weekly sector-rotation performance recap (industrials vs. materials, defensives, SMID/leverage, VIX, quality dominance) \u2014 the same subject fragmented with 'financials reits sector rotation'",
+    "GIR's growth-outlook downgrade note"
+   ],
+   "would_change_theme_selection": false,
+   "why": "The three threads could still be read together as one 'where the market stands' theme without an editor missing a lead theme, though the GIR growth-downgrade point risks being glossed over inside RJ's bullish framing."
+  }
+ ],
+ "pass": false,
+ "notes": "misc carries 12 of 830 cards (1.4%) as declared overflow, not counted as a mis-merge. Counts above come from the representative cards shown per label, not an exhaustive recount of all 830, so the mass share is approximate; the one true mis-merge is enough to fail regardless.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

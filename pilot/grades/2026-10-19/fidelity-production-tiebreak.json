@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "No source document frames the week as 'bonds sold off, not stocks.' The closest candidate (GS Pasi, 'Calm at the index, chaos beneath') is about IG bond-index calm masking single-name credit stress, not a stocks-vs-bonds comparison, and government bonds actually rallied this week (10yr yields fell ~15bps to 5.07%) while the Nasdaq fell ~4% and memory names fell 22-30% \u2014 the opposite of what the sentence asserts.",
+   "searched": [
+    "not stocks",
+    "bonds not",
+    "real story",
+    "calm at the index"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "CoreWeave becomes the market's beta barometer: CRWV was at the center of the AI unwind, with yields hitting 15% this week",
+   "why": "Matches the sentence's figure (15%) and the 'reference point for the whole trade' framing ('market's beta barometer')."
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "Capital hasn't disappeared. It's become far more discriminating.",
+   "why": "Goldman's framing that capital is differentiating rather than fleeing supports the 'sorting, not a retreat' characterization."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "CCC yields reached ~15.4% and spreads breached 1,045bps ... has fallen from $101.5 in June to $94.7 in October",
+   "why": "All four figures (15.4%, 1,045bps, $101.5, $94.7) match exactly."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20860__if-this-was-a-normal-week.txt",
+   "span": "bonds that are 1 to 2 weeks old ... the sense is that dealers are pulling back with liquidity and being cautious",
+   "why": "Academy Securities' trading desk describes exactly this dynamic \u2014 dealers pulling back on roughly two-week-old new issues."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20850__gs-miller-gsx-global-reflections-16-oct-2026.txt",
+   "span": "SPXXAI has outperformed the S&P 500 by 586bps since Oct 6 ... Call spreads are a relatively cheap way to own ex-AI upside",
+   "why": "Goldman's 586bps/Oct 6 figure matches exactly; the ROI claim is corroborated by a second Goldman note (20851: 'the biggest spenders are highly likely to begin evidencing much debated ROI' as Q3 earnings arrive)."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20851__gs-wilson-weekly-mash-16-oct-2026.txt",
+   "span": "CoreWeave has been central to many of the bearish themes; the stock's testing July-lows, so worth watching to see if it breaks lower next week",
+   "why": "Matches the July-lows/break-lower claim; the distressed/equity buyers detail is corroborated by 20879 ('we started to see some distressed and equity buyers of the debt late in the week')."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20819__memory-meltdown-from-unstoppable-to-uninvestable.txt",
+   "span": "Goldman's memory basket surged from around 600 to a June peak of 2,675, before reversing sharply toward 1,900. That's almost 30% off the highs.",
+   "why": "All figures match exactly (600, 2,675, 1,900, ~30%)."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20819__memory-meltdown-from-unstoppable-to-uninvestable.txt",
+   "span": "the stock market is pricing a deteriorating memory cycle that has yet to materialize in spot pricing",
+   "why": "Directly supports the divergence between physical pricing and equity pricing."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20819__memory-meltdown-from-unstoppable-to-uninvestable.txt",
+   "span": "DDR5 spot prices have continued moving higher ... Samsung trades at approximately 1.2x book value, while SK Hynix is around 0.9x, suggesting investors are already discounting a significant downturn by 2028",
+   "why": "Matches every figure exactly (1.2x, 0.9x, 2028)."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20852__record-tech-selling-vix-explosion-who-is-blowing-up.txt",
+   "span": "The biggest percentage net selling in Info Tech since GS records began in 2016 ... Tech was by far the most aggressively sold global sector this week ... Long liquidations drove most of the selling, with additional pressure from short sales.",
+   "why": "Near-verbatim match on all claims (record since 2016, most aggressively sold sector, long liquidation plus short pressure), corroborated by GS Prime Services weekly (20687)."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20688__us-equities-weekly-rundown-10-16-26.txt",
+   "span": "the average 3-month implied volatility for Mag7 stocks was hovering near multi-year lows ... downside protection is still not prohibitively expensive",
+   "why": "Direct match."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20851__gs-wilson-weekly-mash-16-oct-2026.txt",
+   "span": "on Monday we upgraded bonds to Over-Weight for the coming 12mths",
+   "why": "Matches the upgrade claim exactly; the pause/December-hike forecast is corroborated by 20879 ('GS Economics continues to expect an October pause followed by a December hike')."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20834__daily-us-en-1668135.txt",
+   "span": "We expect the Fed to raise rates by a further 50 basis points over the next 12 months, with increases in December and March, before keeping rates unchanged through late 2027. This remains less aggressive than market pricing of nearly 90 basis points of additional tightening.",
+   "why": "Matches all figures and the 'too hawkish' framing exactly."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20772__2026-10-16-rbc-bluebay-mark-dowding-is-client-spend-on-ai-st.txt",
+   "span": "we remain constructive at the front of the yield curve ... we have been more cautious on longer-dated bonds ... more biased towards a steepening trajectory",
+   "why": "Direct match on all three claims (constructive front end, cautious long end, steepener bias)."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 0,
+ "unsupported": 1,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

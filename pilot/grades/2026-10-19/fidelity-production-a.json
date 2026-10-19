@@ -1,0 +1,132 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "HYG declined 0.48% as AI-related selling and deteriorating liquidity weighed on the market. CCC yields reached ~15.4% and spreads breached 1,045bps",
+   "why": "Corporate credit (CoreWeave yields to 15%, CCC spreads to 1,045bps, HY project-bond prices down ~7pts) blew out hard this week while the same note has the Nasdaq down only ~4% and the S&P down ~1.9%, and Treasury yields actually fell. The credit/bond-market stress dwarfed the equity-index move, supporting the framing."
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "CoreWeave becomes the market's beta barometer: CRWV was at the center of the AI unwind, with yields hitting 15% this week"
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "Capital hasn't disappeared. It's become far more discriminating. The distinction matters as we enter earnings season"
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20879__gs-pasi-gs-whats-trending-across-credit-18-oct-2026.txt",
+   "span": "CCC yields reached ~15.4% and spreads breached 1,045bps ... average price of a sample of HY data center project finance bonds has fallen from $101.5 in June to $94.7 in October"
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20860__if-this-was-a-normal-week.txt",
+   "span": "Two-week-old new issues ... the sense is that dealers are pulling back with liquidity and being cautious"
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20850__gs-miller-gsx-global-reflections-16-oct-2026.txt",
+   "span": "Buy the broadening. Since the start of October, SPXXAI has outperformed the S&P 500 by 586bps since Oct 6",
+   "why": "First clause matches GS Miller's GSX note exactly; second clause (AI spenders evidencing ROI as Q3 earnings arrive) matches GS Wilson's Weekly Mash ('as we get through Q3 earnings the biggest spenders are highly likely to begin evidencing much debated ROI'), same bank, different desk \u2014 a reasonable 'Goldman' compression, not a misattribution."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20851__gs-wilson-weekly-mash-16-oct-2026.txt",
+   "span": "the stock's testing July-lows, so worth watching to see if it breaks lower next week amid the broader tech weakness",
+   "why": "Combined with 20879's 'we started to see some distressed and equity buyers of the debt late in the week' \u2014 both about CoreWeave, both Goldman."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20819__memory-meltdown-from-unstoppable-to-uninvestable.txt",
+   "span": "Goldman's memory basket surged from around 600 to a June peak of 2,675, before reversing sharply toward 1,900. That's almost 30% off the highs"
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20819__memory-meltdown-from-unstoppable-to-uninvestable.txt",
+   "span": "While memory equities have been hammered, DDR5 spot prices have continued moving higher ... the gap between the physical memory market and the equity market"
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20819__memory-meltdown-from-unstoppable-to-uninvestable.txt",
+   "span": "Goldman notes that Samsung trades at approximately 1.2x book value, while SK Hynix is around 0.9x, suggesting investors are already discounting a significant downturn by 2028"
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20687__prime-services-weekly-report-10-16-26.txt",
+   "span": "Info Tech was by far the most net sold global sector this week as the sector saw the largest % de-grossing in 2 months and the largest % net selling on our record (since 2016), driven by long and to a lesser extent short sales"
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20688__us-equities-weekly-rundown-10-16-26.txt",
+   "span": "the average 3-month implied volatility for Mag7 stocks was hovering near multi-year lows ... downside protection is still not prohibitively expensive"
+  },
+  {
+   "id": "s13",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20672__gs-twig-notes-this-week-in-global-research-october-16-2026-1.txt",
+   "span": "We raise equities to Overweight on a 3-month basis, but also shift bonds to Overweight on a 12-month basis",
+   "why": "The upgrade itself and the October-pause/December-hike economist call (also in 20879: 'GS Economics continues to expect an October pause followed by a December hike') are both confirmed. 'On Monday' is not supported anywhere in the corpus \u2014 the TWIG note recapping the call is dated Friday Oct 16 and contains no day-of-week attribution for when Mueller-Glissmann's piece ran. A specific, unsupported day attached to a real call is a distortion.",
+   "searched": [
+    "Monday",
+    "GOAL"
+   ]
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20834__daily-us-en-1668135.txt",
+   "span": "We expect the Fed to raise rates by a further 50 basis points over the next 12 months, with increases in December and March, before keeping rates unchanged through late 2027. This remains less aggressive than market pricing of nearly 90 basis points of additional tightening"
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-18/20772__2026-10-16-rbc-bluebay-mark-dowding-is-client-spend-on-ai-st.txt",
+   "span": "we remain constructive at the front of the yield curve ... we have been more cautious on longer-dated bonds ... we are more biased towards a steepening trajectory"
+  }
+ ],
+ "faithful": 14,
+ "distorted": 1,
+ "unsupported": 0,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}
