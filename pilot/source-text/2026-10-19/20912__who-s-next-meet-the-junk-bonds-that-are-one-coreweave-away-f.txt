@@ -1,0 +1,248 @@
+ 
+Who's Next? Meet The Junk Bonds That Are One 
+CoreWeave Away From Distress 
+ 
+BY TYLER DURDEN 
+FRIDAY, OCT 16, 2026 - 08:45 PM 
+CoreWeave's bonds are now trading like a distressed credit. The more interesting question is 
+who else is. 
+For the third day in a row, CoreWeave paper traded in deep distressed levels, starting the day in 
+freefall bfore recovering to close above 80 cents on the dollar, with the yield-to-worst on its 
+9.625% notes due 2032 closing the day around 14%. Reuters reported the April-issued 2031s 
+also yielding above 16%, "a level that typically signals distress," a day after five-year CDS 
+closed at a record 1,117bps, implying roughly 63% odds of default within five years. The bonds 
+clawed back part of the damage by midday, and then came the cheerleading from none other 
+than Jensen Huang: 
+*HUANG: COREWEAVE'S COST OF CAPITAL IS `ACTUALLY DECREASING' *HUANG: 
+`COREWEAVE'S STRENGTH IS IMPROVING EVERY DAY' recall that Nvidia helped rescue 
+CoreWeave's downsized IPO and holds a ~$2 billion stake 
+— zerohedge (@zerohedge) October 15, 2026 
+Bondholders who bought the 2032s when they were issued in June, and are now looking at a 
+price that starts with a 7, may have a different definition of "decreasing." 
+
+ 
+ 
+Last night, when we laid out why Gartner expects over 80% of neoclouds to fold, we hinted at 
+the bigger problem, and tweeted the chart that frames it: CoreWeave is the borrower on its own 
+unsecured bonds, and it is also the tenant that is supposed to pay the rent on a big chunk of the 
+junk-rated data center bonds issued by other companies. If CoreWeave's cost of capital is 
+"decreasing" at 16%, what does that make the cost of capital of the companies whose bonds 
+are backed by CoreWeave's lease payments? 
+That is what this post is about. Using the HY data center tracker in Morgan Stanley's latest 
+monthly "The State of AI Financing: A Pause, Not a Pullback" (available to pro subs), we map 
+which corners of the high yield market are wired to CoreWeave, which ones have a 
+better-capitalized tenant (or a Google backstop) standing behind them, and which ones the 
+market is already pricing as the next domino. 
+Crowding Out, One Marginal Borrower At A Time 
+Start with the mechanism. Goldman's Rich Privorotsky put it best in his Thursday morning note 
+(available to pro subs): 
+"Credit concerns have infiltrated the AI spending equilibrium, and the market increasingly seems 
+to be interpreting this as a growth shock. Perhaps this was always how crowding out would 
+manifest itself… through the marginal borrower. GS's global neocloud basket is down 20% in 
+five sessions, a roughly 1st pctl move over ten years, with selling accelerating." 
+
+ 
+And a few lines later, the sentence that should be pinned above every AI credit desk: "the 
+market is discovering that demand for compute can grow exponentially, but the capital available 
+to finance it cannot." 
+Privorotsky concludes that the new equilibrium "increasingly favours those with powered 
+capacity and strong balance sheets over the leveraged middlemen." 
+The high yield market is where the leveraged middlemen live. On Wednesday, Goldman's 
+cross-asset desk noted that HY cash slipped half a point as "CCCs continued to soften and HY 
+AI Datacenters underperformed with the beta to the CRWV move," while Oracle CDS blew out 
+31bps. Goldman's US credit sales strats show USD CCC spreads at 1,045bps, the widest in at 
+least three years and at the 100th percentile of the past year, while HY yields at 8.41% are at a 
+one-year high. Morgan Stanley flagged that "CCCs have widened by 400bp this year and 
+spreads are hitting 1000bp," and warned that "the impact of higher rates matters most for CCCs 
+as it exacerbates existing debt sustainability and refinancing worries." 
+Into that backdrop, AI has quietly become a meaningful slice of junk: per MS, AI-related 
+leveraged finance issuance is now ~$63 billion, with HY issuance above $50 billion year-to-date, 
+and AI exposure rose from 3% to 4% of the HY index in September alone: 
+ 
+Four percent doesn't sound like much until you remember that it is concentrated in a handful of 
+issuers, a handful of tenants and a handful of construction sites in Texas, North Dakota and 
+Nevada. Which brings us to the tracker. 
+
+ 
+Who Pays The Rent? 
+Morgan Stanley counts (at least) 20 project finance-style data center bonds in the HY market, 
+$45.6 billion of debt backing 4,063MW of critical IT capacity across eight tenants. Each bond is 
+issued by a special-purpose entity that owns a building (a "powered shell"), and gets repaid from 
+the lease payments of a single tenant. Here is the full list: 
+ 
+Now regroup the same table by who actually writes the rent check: 
+
+ 
+ 
+CoreWeave is the tenant on seven of the 20 bonds: $14.1 billion of debt, 31% of the total, 
+financing 1,512MW, or 37% of the capacity. That makes the neocloud whose own bonds now 
+yield 16% the single largest source of rent in the HY data center market, ahead of the 
+Google-backstopped Fluidstack deals (
+8.4 billion). The 
+11. 9𝑏𝑖𝑙𝑙𝑖𝑜𝑛)𝑎𝑛𝑑𝑁𝑣𝑖𝑑𝑖𝑎(
+CoreWeave-dependent issuers: 
+●​ Applied Digital (APLD): two bonds totaling 
+2.35 billion 9.25% 2030 and 
+3. 94𝑏𝑖𝑙𝑙𝑖𝑜𝑛(
+$1.59 billion 7% 2031, both at Polaris Forge in Ellendale, ND), and another $2.15 billion 
+Polaris Forge 2 bond with Oracle as the tenant. 
+●​ Core Scientific (CORZ): $3.3 billion, financing 590MW across Texas, Georgia, Oklahoma 
+and North Carolina, the single largest block of CoreWeave-leased capacity in the tracker. 
+●​ Galaxy Digital (GLXY): $3.51 billion of 9.875% notes for the Helios campus in Lubbock, 
+TX, not due for final delivery until March 2028. 
+●​ Edged ($1.3 billion, CoreWeave and Alibaba), Elk Grove Village ($0.9 billion) and DDC 
+01 Propco ($1.12 billion, Richmond, VA), the last of which priced on September 23, i.e., 
+three weeks before the roof caved in. 
+Forget circular financing, this is double exposure in the most literal sense. For example, a holder 
+of the Galaxy bond is exposed to construction risk in Lubbock and to CoreWeave's ability to pay 
+rent from 2028 onward. 
+
+ 
+Morgan Stanley's own wish list for data center bonds tells you where the bodies are buried: MS 
+favors deals with "high-quality tenants or IG credit support, lower LTC," and documents that "1) 
+require rent commencement once shells are delivered (regardless of power availability), and 2) 
+adequate protections or bondholder participation in case of a lease reassignment." Translation: 
+what matters is whether someone keeps paying the rent if the tenant can't, or won't. 
+The market has been pricing this for months. Here is the spread differential between 
+CoreWeave's own unsecured bonds and the HY data center bonds that have CoreWeave as the 
+tenant: 
+ 
+Put differently, investors have been willing to pay up for a first lien (secured) on a building 
+leased to CoreWeave over an unsecured claim on CoreWeave itself, which makes sense. The 
+question this week is how much that building is worth if the only tenant it was designed for is the 
+one in trouble. And for at least one issuer, the cushion was already thin: as of September 28, 
+Galaxy's 2031s traded at 559bps, just 66bps inside CoreWeave's own 2030 unsecured notes: 
+
+ 
+ 
+Priced By The Tenant 
+Lay out every bond's spread from Morgan Stanley's performance table, color-code it by tenant, 
+and the market's verdict on who is vulnerable becomes obvious: 
+ 
+
+ 
+As of September 28, the seven CoreWeave-tenant bonds averaged ~400bps, double the 
+~195bps on the four Google-backstopped Fluidstack deals (Cipher, TeraWulf, Flash and 
+Meridian) and well above the ~150bps on the Amazon-leased shells. Same asset class, same 
+structure, similar rating buckets; the only thing that changes is whose name is on the lease and 
+whether a hyperscaler has co-signed. Here is the full MS table, including year-to-date spread 
+changes and the equity performance of the listed sponsors: 
+ 
+A few things jump out: 
+●​ The widest bonds have a common thread. Zenith Arc (Jane Street tenant, Oklahoma, 
+final delivery October 2028) at 599bps and an 11.09% yield, Galaxy at 559bps/10.68%, 
+Edged at 498bps/9.92% (+160bps since issuance) and SoftBank-leased SE Cosmos at 
+451bps. Either a weak tenant, a long construction runway, or both. 
+●​ The one CoreWeave-tenant bond that held up is the one nearly finished. Applied 
+Digital's original 9.25% 2030s, with final delivery due October 31, 2026, traded at 104.75 
+and 218bps. The closer the shell is to energized and paying, the less the market cares 
+who the tenant is. The further out the delivery date, the more it does. 
+●​ The CoreWeave unsecureds were already at 625-808bps on September 28, with the 
+2031s and 2032s +295bpsyear-to-date. Those numbers are stale: the 2032s were at 
+85.80 then and touched 76 this morning. 
+The live market confirms the split. Per PitchBook, Cipher's Google-backstopped 7.125% 2030s 
+were still quoted near 99.875 on Thursday, while JPMorgan cut Applied Digital's project finance 
+
+ 
+bonds to Neutral from Overweight, citing a looming "supply overhang," with analysts estimating 
+Applied Digital may need roughly $8 billion more in secured project debt. Nothing says "supply 
+overhang" like a borrower that has to keep coming back to a market whose anchor tenant is 
+pricing in default. 
+There is also a vintage problem. MS's loan-to-cost vs. yield-to-call scatter shows the 2Q26 and 
+3Q26 cohorts (the bonds sold at the peak of the frenzy) clustered at 85-95% LTC and 13-17% 
+yield-to-call, i.e., the most recent deals have the least equity cushion and the highest required 
+returns: 
+ 
+Beyond CoreWeave: Oracle, Nvidia And Masa 
+CoreWeave is the most acute case, but it is by no means the only tenant the HY market is 
+nervous about. 
+Oracle. The two Oracle-leased bonds (Applied Digital's Polaris Forge 2 and Yondr's Loudoun 
+County shell) trade 185-220bps wide of Oracle's own unsecured bonds of similar maturity, after 
+the Yondr differential blew out to nearly 300bps in early September. Considering that Oracle 
+CDS widened another 31bps on Wednesday, and that Morgan Stanley warned last week that 
+data center delays could crush Oracle's debt, these bonds are the next pressure point: 
+
+ 
+ 
+Nvidia. The biggest single-tenant block after CoreWeave and Fluidstack is $8.4 billion of Tract 
+bonds in Storey County, NV, leased to Nvidia, owner of one of the best balance sheets on the 
+planet. And yet these bonds traded at 355-386bps on September 28, +143 to +162bps since 
+issuance, with MS noting that while HY data center bonds with IG tenants usually trade 
+80-240bps behind the tenant's own debt, the "TRACT/NVDA relationship [is] now an exception." 
+Translation: even a pristine tenant doesn't help much when final delivery isn't until mid-2028 and 
+the market has started to question how long Nvidia's balance sheet-as-a-service can keep 
+underwriting everyone else. 
+SoftBank. Then there is Masa. SoftBank sold a record $10 billion of USD junk bonds in 
+September (plus €1.14 billion more), and is the tenant on the $1 billion SE Cosmos shell in 
+Austin at 451bps. As we noted last week, Masa has worked his way down the capital structure 
+from equity to bridge loans to margin loans to retail bonds to record junk, and is now asking Gulf 
+sovereigns for another $100 billion. If OpenAI's funding chain wobbles, SoftBank's 9.7%-yielding 
+2034s will not be far behind. 
+Which leaves the cleanest names in the HY data center universe as the ones that never really 
+depended on a neocloud: the Amazon-leased shells and the Google-backstopped Fluidstack 
+deals. Even there, the backstops come with fine print, which is something life insurers (the 
+biggest buyers of this paper) are only now starting to read. As CoreWeave's co-founder 
+admitted this week that the company is looking to the greatest fools life insurers for funding, we 
+noted: 
+
+ 
+Remarkable admission from CoreWeave co-founder that life insurers (i.e., private credit) is this 
+bubble's dumbest money. As noted exactly a year ago, insurers will be this generation's "widows 
+and orphans" after the wipeout https://t.co/LINHZDEzki 
+— zerohedge (@zerohedge) October 15, 2026 
+"Overreacted In Pockets"... Says Everyone With A Buy Rating 
+To be fair, not everyone thinks the dominoes fall. Deutsche Bank's Brad Zelnick reiterated his 
+Buy and $150 target on CoreWeave in a note titled "Dislocation presenting buying opportunity" 
+(available to pro subs), arguing that "we struggle to find company specific factors that justify the 
+recent move." His case: available liquidity of $15.5 billion exiting the second quarter, a $2.6 
+billion DDTL at SOFR+550 and a $4.2 billion 2.875% convert since then, 60-65% of backlog 
+with investment grade customers, and unlevered IRRs on new contracts that he thinks have 
+jumped from ~15% to "~20%+." He does, however, concede the key point: "though CoreWeave 
+no doubt will need additional capital to fund existing backlog over the next 12-18 months," with 
+NTM operating cash flow of ~
+45 billion. 
+10𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑎𝑔𝑎𝑖𝑛𝑠𝑡𝑟𝑒𝑞𝑢𝑖𝑟𝑒𝑑𝑐𝑎𝑝𝑒𝑥𝑜𝑓~
+That is a $35 billion funding gap, and the number the market is suddenly (finally?) fixated on. If 
+even half of it had to be raised at the ~16% where CoreWeave's unsecured bonds now trade, 
+the extra interest bill would be roughly $2.8 billion a year, more than the entire $2.1 billion loss 
+analysts expect CoreWeave to post this year. "Cost of capital is actually decreasing" in Jensen's 
+head, it's soaring in the real world.  
+Goldman's Privorotsky - who a few weeks ago flipped decidedly bullish from his prior measured 
+stance - also leans contrarian on the equity side (the alternative is admitting he was wrong): "My 
+gut is we've overreacted in pockets. There are legitimate financing constraints, but they don't 
+invalidate the underlying demand story, and if rates stabilise lower they improve the equation." 
+Morgan Stanley, for its part, still thinks "for high-quality HY... risk-reward looks good when rates 
+stabilize." The operative words in both cases being "high-quality" and "if rates stabilize." With 
+the 10-year still above 5% and December hike odds elevated after Wednesday's hot CPI, 
+neither condition applies to a BB- shell in Lubbock whose only tenant just had its CDS priced at 
+double where Lehman was just days before it filed for bankruptcy.  
+Bottom Line 
+Morgan Stanley's own summary of the HY data center market reads like a warning label: 
+"Lower-quality issuers and project-level debt are more sensitive to the current rate 
+
+ 
+environment... headline risk around construction delays could continue to drive bouts of 
+volatility." Its prescription (high-quality tenants, IG credit support, low LTC, rent that starts 
+whether or not the power shows up) amounts to a list of everything the CoreWeave-tenant 
+bonds don't have. As for construction delays: after the blue sweep in November, the better 
+question will be which handful of data centers will actually power up on time? 
+So going back to the original question, who is as vulnerable as CoreWeave?  
+Start with the $14.1 billion of shells that depend on CoreWeave's rent, led by Galaxy, Core 
+Scientific, Applied Digital and Edged, then move to the long-dated construction stories (Zenith, 
+Tract) and the Oracle and SoftBank tenants. The bulls say the strong will absorb the weak, and 
+that "a lot of bad news is now getting priced." The more likely path, in our view, is that the 
+crowding-out Privorotsky describes keeps working its way through the marginal borrower, then 
+the marginal borrower's landlords, then the insurers who bought the paper because a 
+hyperscaler's name was somewhere in the offering memorandum. Having warned since last 
+October that AI had quietly become a debt bubble too, and having mapped where the credit 
+party ends earlier this month, we'll take the side of the bond market, which noticed weeks before 
+stocks did. Hedge funds appear to agree: as we detailed earlier, they just dumped AI stocks at 
+the second-fastest pace in a year. 
+Jensen Huang says CoreWeave's strength is "improving every day." The rent checks on $14 
+billion of junk bonds are counting on it. 
+Much more in the full Morgan Stanley "The State of AI Financing: A Pause, Not a Pullback" and 
+Deutsche Bank's "CoreWeave: Dislocation presenting buying opportunity", both available to pro 
+subs. 
+ 
+ 
+ 
