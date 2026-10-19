@@ -1,7 +1,7 @@
 {
- "attempts": 2,
- "given_up": false,
- "last_reason": "reader: {\"bank\":\"Morgan Stanley\",\"document\":\"Global Reflections\",\"claim\":\"TSMC delivered its 21st consecutive earnings beat and ",
+ "attempts": 3,
+ "given_up": true,
+ "last_reason": "reader: {\"bank\": \"Morgan Stanley\", \"document\": \"MS Savone - Global Reflections 17 Oct 2026\", \"claim\": \"Mike Wilson maintains his",
  "history": [
   {
    "at": "2026-10-18T21:13Z",
@@ -12,6 +12,11 @@
    "at": "2026-10-19T01:12Z",
    "run_id": "39183282867",
    "reason": "reader: {\"bank\":\"Morgan Stanley\",\"document\":\"Global Reflections\",\"claim\":\"TSMC delivered its 21st consecutive earnings beat and "
+  },
+  {
+   "at": "2026-10-19T05:09Z",
+   "run_id": "39202266255",
+   "reason": "reader: {\"bank\": \"Morgan Stanley\", \"document\": \"MS Savone - Global Reflections 17 Oct 2026\", \"claim\": \"Mike Wilson maintains his"
   }
  ]
 }
