@@ -1,0 +1,216 @@
+{
+ "brief": "Goldman's broad-based AI basket has fallen 20% in five sessions, towards the lower end of past unwind episodes, and the SOX has posted its first eight-day losing streak since September 2015 (down more than 15% over the stretch), while systematic multi-strategy funds had a 2.2 sigma down day (though they remain up 20% YTD). The note frames this as either a positioning unwind or the start of something more fundamental, citing two concerns: scrutiny of AI data centers' high-yield debt financing model, and Chinese hardware exports up about 36% year-over-year, which threatens the US hardware bottleneck thesis. Against that, the NDX forward P/E has fallen to about 21x, its lowest since the 2023 AI cycle began, and the index is testing its trendline from the March lows, seen as a potentially supportive setup into earnings season. Data-center capex estimates for 2027 keep rising despite higher rates, and AI financing costs remain not excessive versus the rest of the credit stack, though the gap widens further out the curve. Goldman's desk likes buying the non-AI basket (SPXXAI), expecting AI/non-AI dispersion to narrow as headline risk catches up with pricing.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "Goldman's broad-based AI basket has fallen 20% over the past five trading sessions, towards the lower end of recent unwind episodes.",
+   "anchor": "The GS broad-based AI basket is -20% over the past 5 sessions, towards the lower end of recent unwind episodes.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "past 5 sessions"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "The Philadelphia Semiconductor Index has fallen for eight straight trading days, its first eight-day losing streak since September 2015.",
+   "anchor": "SOX is lower for an eighth straight trading day, its first eight-day slide since September 2015; it fell for nine sessions in May 2006.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "eight trading days"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "The SOX-tracking ETF has fallen more than 15% during its ongoing eight-day losing streak.",
+   "anchor": "The ETF has fallen more than 15% over that stretch.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [
+    "SOXX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "eight-session stretch"
+  },
+  {
+   "bank": "Goldman Sachs Prime",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "Systematic multi-strategy funds had a 2.2 sigma negative performance day.",
+   "anchor": "Systematic funds (multi-strat) had a 2.2 sigma negative performance day yesterday.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "yesterday"
+  },
+  {
+   "bank": "Goldman Sachs Prime",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "Systematic funds are still up 20% year-to-date despite the recent negative performance day.",
+   "anchor": "Note that systematics are still up 20% YTD, though.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "year-to-date"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "The Nasdaq 100 is testing its trendline from the March lows, a potentially supportive backdrop for bulls into earnings season.",
+   "anchor": "an interesting backdrop for the NDX as the index tests its \u201ctrendline\u201d from the March lows",
+   "topic": "AI stock drawdown risk",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "The Nasdaq 100's forward P/E has fallen to about 21x, its lowest level since the AI cycle began in 2023.",
+   "anchor": "The forward P/E of the NDX is back to ~21x \u2013 the lows since the AI cycle kicked off in 2023.",
+   "topic": "AI stock drawdown risk",
+   "status": "level",
+   "instruments": [
+    "QQQ"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "Goldman's trading desk likes buying the S&P 500 ex-AI basket (SPXXAI) as an entry point to rotate out of AI concentration.",
+   "anchor": "We like buying SPXXAI. The conditions that justified the concentration in AI are now showing meaningful cracks,",
+   "topic": "AI stock drawdown risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "Goldman expects the dispersion between AI and non-AI stocks to narrow as AI-related headline risk catches up with equity pricing.",
+   "anchor": "We expect this dispersion to narrow as AI-related headline risk (financing costs, hardware demand, and capex discipline) catches up with equity pricing.",
+   "topic": "AI stock drawdown risk",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "The correlation between AI stocks and the S&P 500 ex-AI basket is reverting back lower.",
+   "anchor": "The correlation between AI and SPXXAI is reverting back lower again.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "AI data centers' high-yield debt has drawn increased scrutiny from credit investors, raising questions about the financing model behind GPU and data-center buildouts.",
+   "anchor": "AI data centers\u2019 high-yield debt has drawn increased scrutiny from credit investors, raising questions about the financing model underpinning aggressive GPU/data-center buildouts.",
+   "topic": "AI credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "Chinese hardware exports are up about 36% year-over-year, threatening the bottleneck thesis in US hardware.",
+   "anchor": "threatening the bottleneck thesis in US hardware. China is exporting ~36% more hardware than a year ago.",
+   "topic": "China hardware export risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "year-over-year"
+  },
+  {
+   "bank": "Apollo",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "Data center capex estimates for 2027 continue to rise despite higher interest rates.",
+   "anchor": "Data center capex estimates for 2027 continue to rise, despite higher rates.",
+   "topic": "AI credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Jim Reid",
+   "document": "can i get that without ai wall streets new favorite trade",
+   "claim": "AI-linked financing costs are not currently excessive relative to the rest of the credit stack, though the gap widens further out the curve.",
+   "anchor": "AI-linked financing costs are not excessive relative to the rest of the credit stack, although the gap opens up further out the curve.",
+   "topic": "AI credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-18/20817__can-i-get-that-without-ai-wall-streets-new-favorite-trade.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 14,
+  "matched": 14,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
