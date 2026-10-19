@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: {\"bank\":\"Morgan Stanley\",\"document\":\"Global Reflections\",\"claim\":\"Mall occupancy has exceeded pre-pandemic averages for ",
+ "last_reason": "reader: {\"bank\":\"Morgan Stanley\",\"document\":\"Global Reflections\",\"claim\":\"TSMC delivered its 21st consecutive earnings beat and ",
  "history": [
   {
    "at": "2026-10-18T21:13Z",
    "run_id": "39165833510",
    "reason": "reader: {\"bank\":\"Morgan Stanley\",\"document\":\"Global Reflections\",\"claim\":\"Mall occupancy has exceeded pre-pandemic averages for "
+  },
+  {
+   "at": "2026-10-19T01:12Z",
+   "run_id": "39183282867",
+   "reason": "reader: {\"bank\":\"Morgan Stanley\",\"document\":\"Global Reflections\",\"claim\":\"TSMC delivered its 21st consecutive earnings beat and "
   }
  ]
 }
