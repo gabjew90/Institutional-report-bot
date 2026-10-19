@@ -1233,3 +1233,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **prompt-session** — Goldman RSP idea fused with the separate "favors October 30 expiry for upside calls" statement ("favors owning $RSP ... through the October 30 options expiry"). Second consecutive day (see 10-15). Soft overstated-claim should trigger repair.
 - **prompt-session** — RECAP omits the CoreWeave sell-off that the Finnhub/CNBC/Reuters feed names as the morning's tech driver, and the Iran strike headline.
 - **deterministic-fixable** — Context dump written 15:29Z, 80 minutes after the pulse with a later market snapshot; live RECAP figures unauditable (seventh day running). Series gaps: no pulse or verdict for 10-14, no verdict for 10-12.
+
+## 2026-10-19
+- **pilot-territory** — Omnipulse body shipped with 15 adversarial findings (the committed copy shows 6: 5 unsupported-figure, 1 misattribution), 0 repaired. Unsupported items: Oracle "43 bps to 320", IG "2 bps" (Goldman says ~3), MS 30x coverage, Academy 10-20bp/3-5pt sizing, $1.1T lease commitments, MS Nvidia reinstatement at 15x. The pilot citation verifier should block these before the body locks.
+- **deterministic-fixable** — Adversarial verdict is committed abridged (6 of 15); the rest stay in /tmp. Archive the full verdict so the control series is complete.
+- **deterministic-fixable** — No STEP 7 self-review file for 10-19. Make preflight require qc-reviews/<ts>.md.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 20:18Z, 6h after the pulse (eighth day running); live RECAP figures unauditable and the dump's `prev_consensus_block` already quotes the published pulse. Dump the context at run time, not after.
+- **observation** — "78% of 2027 earnings growth" (MS) is not in the dump; the only 78% there is investment advisors' share of AI datacenter bond float. Possible figure mix-up, unverified.
+- **observation** — Series gaps persist: no pulse or verdict for 10-14, no verdict for 10-12, driver files missing for 10-06/09/12/13.
