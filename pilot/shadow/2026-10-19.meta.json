@@ -1,0 +1,39 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 25,
+  "cards": 830,
+  "max_doc_id": 20900
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 129,
+  "brief_citations": 3,
+  "distinct_cards_cited": 127,
+  "card_count": 830,
+  "quintiles": [
+   27,
+   21,
+   27,
+   25,
+   29
+  ],
+  "edge_quintile_share": 0.434,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "Morgan Stanley re-cut the AI spending number and traced where it goes.",
+    "cite": "",
+    "reason": "bank named (['morgan stanley']) is not the bank of any cited card or brief"
+   }
+  ],
+  "word_count": 1973
+ }
+}
