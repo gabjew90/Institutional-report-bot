@@ -1,0 +1,9 @@
+{
+ "hard_count": 0,
+ "soft_count": 2,
+ "exit_code": 4,
+ "violations": [
+  {"kind": "unreconciled-release-figure", "severity": "soft", "figure": "27", "event": "CPI", "matches_estimate": false, "message": "27% is the October hike probability (Deutsche Bank), not a CPI figure. False positive. Original message omitted for size."},
+  {"kind": "unreconciled-release-figure", "severity": "soft", "figure": "58", "event": "CPI", "matches_estimate": false, "message": "58% is the post-CPI intraday peak of the October hike probability (Deutsche Bank), not a CPI figure. False positive. Original message omitted for size."}
+ ]
+}

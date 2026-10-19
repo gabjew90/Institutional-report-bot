@@ -1,0 +1,105 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-10-19T14:07:40.806937Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=272; anchors 625/645 matched, 0 empty, 0 too_short (rate=0.969)",
+   "at": "2026-10-19T14:07:40.883718Z"
+  },
+  "omnipulse": {
+   "decision": "OMNIPULSE",
+   "detail": "omnipulse: 2026-10-19 ok, 6 themes -> omnipulse pulse",
+   "at": "2026-10-19T14:07:41.715431Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-10-19T14:08:45.641322Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "4 soft issue(s) only (jargon/coverage warnings) — routine may surface but SCRUB rewrite optional",
+   "at": "2026-10-19T14:09:53.563479Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-10-19T14:09:57.031830Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-10-19T14:09:57.100327Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-10-19T14:13:11.485666Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-10-19T14:13:13.562148Z"
+  }
+ },
+ "budgets": {},
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-10-19T14:07:40.806937Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-10-19T14:07:40.883718Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "OMNIPULSE",
+   "at": "2026-10-19T14:07:41.715431Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-10-19T14:08:45.641322Z"
+  },
+  {
+   "record": "omnipulse_body_voice",
+   "detail": "'Goldman thinks' -> 'In Goldman's view,'; 'UBS argues' -> 'In UBS's view,'; 'TS Lombard argues' -> 'In TS Lombard's view,'",
+   "at": "2026-10-19T14:09:53.399728Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-10-19T14:09:53.563479Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-10-19T14:09:57.031830Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-10-19T14:09:57.100327Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-10-19T14:13:11.485666Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-10-19T14:13:13.562148Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
