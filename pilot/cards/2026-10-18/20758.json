@@ -1,0 +1,836 @@
+{
+ "brief": "Mizuho argues agentic AI assistants (Meta's Muse, OpenAI's Dots) are accelerating demand for dedicated agentic server CPUs. Its bottom-up model has agentic CPU penetration rising from ~4% of server CPU demand in 2026E to ~30% by 2030E, taking total Server CPU TAM from ~$68B (2026E) to ~$209B by 2030E (32% CAGR), with the agentic segment itself reaching ~$80B (123% CAGR), head-node CPUs ~$68B (61% CAGR) and traditional CPUs only ~$60B (2% CAGR). The model assumes agentic-enabled MAU grows 51% CAGR and tasks per user per day grow 86% CAGR to ~21.5K by 2030E, driven by expanding agentic capability, 24/7 operation and multi-agent workflows; this also lifts DRAM and NAND shipments since agentic workloads are memory-intensive. Mizuho names ARM, AMD, INTC and NVDA as chip beneficiaries and MU/SNDK as memory beneficiaries, raising price targets on AMD ($705 from $580), SNDK ($2,050 from $1,875), DELL ($650 from $600), INTC ($114 from $92) and SMCI ($43 from $35) while reiterating existing ratings on each.",
+ "cards": [
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates the Agentic CPU TAM will grow to $80 billion by 2030E, a 123% 4-year CAGR, with units reaching ~30% of server CPUs.",
+   "anchor": "we estimate Agentic CPU TAM growing to $80B by 2030E, 123% 4Y CAGR, with units",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's total Server CPU TAM estimate of ~$209B by 2030E (32% CAGR) sits conservatively below AMD's own CPU TAM estimate of over $220B by 2030E.",
+   "anchor": "~$209B by 2030E (32% 4Y CAGR), and conservatively below AMD's target of >$220B.",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates Agentic AI CPU deployments will grow at a 92% 4-year CAGR to 14.6 million units by 2030E, up from 1.1 million in 2026E.",
+   "anchor": "grow at 92% 4Y CAGR to 14.6M by 2030E, up from 1.1M in 2026E. We categorized Server CPUs",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's model estimates Agentic AI CPU demand as a percentage of total server CPUs grows from ~4% today to ~30% by 2030E.",
+   "anchor": "total server CPUs grows from ~4% today to ~30% by 2030E. Our blended ASP (agentic, head-node,",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho expects the blended average selling price for Server CPUs to grow from ~$3K per unit in 2026E to more than $5K per unit in 2030E.",
+   "anchor": "traditional) for Server CPUs is expected to grow from ~$3K/unit in 2026E to >$5K/unit in 2030E.",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's model assumes agentic-enabled monthly active users grow at a 51% 4-year CAGR, reaching ~4.2T by 2030E.",
+   "anchor": "MAU (monthly active users) grows at a 51% 4Y CAGR, reaching ~4.2T by 2030E and agentic tasks/",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's model assumes agentic tasks per monthly active user per day reach ~21.5K by 2030E, an 86% 4-year CAGR.",
+   "anchor": "user/day reaches 21.5K by 2030E (86% CAGR), with more agents, tool calls, code runs, checks",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho splits the Server CPU TAM into agentic CPUs reaching ~$80B by 2030E (~123% 4-year CAGR) and head-node CPUs reaching ~$68B (~61% CAGR).",
+   "anchor": "agentic CPUs reaching ~$80B by 2030E (~123% 4Y CAGR), head-node CPUs to $68B (~61% 4Y",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates traditional (non-AI) server CPU TAM grows to only ~$60B by 2030E, a ~2% 4-year CAGR, far slower than the agentic segment.",
+   "anchor": "CAGR), and traditional CPUs to $60B (~2% 4Y CAGR). Total Server CPU TAM we estimate reaches",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho reiterates Outperform on AMD and raises its price target to $705 from $580, representing ~41x its F27E EPS estimate.",
+   "anchor": "AMD - Reiterate Outperform, raise PT to $705 from $580, representing ~41x F27E P/E (prior:",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bull case for AMD implies a price target of $900, trading at ~47x its upside F27E EPS estimate.",
+   "anchor": "than expected Instinct ramps, implying a bull case PT of $900, trading at ~47x our F27E upside EPS.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for AMD, triggered by loss of server market share, implies a price target of $550 at ~34x downside F27E EPS.",
+   "anchor": "leading to a downside ~34x our downside F27E EPS implying a bear case PT of $550.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho rates ARM Outperform with a $400 price target, ~2.5x its F28E PEG ratio.",
+   "anchor": "We rate ARM Outperform with a $400 PT, ~2.5x F28E PEG.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho describes ARM's AGI CPU (136 cores, 272MB cache, 6TB DDR5, 300W) as potentially offering the best cores-per-watt among leading agentic AI CPUs.",
+   "anchor": "AGI CPU (136 cores, 272MB cache, 6TB DDR5, 300W) potentially offering the best cores/watt",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho notes ARM's AGI CPU has already secured more than $2 billion of orders ahead of entering mass production in 2027E.",
+   "anchor": "in 2027E as its low-powered AGI CPU enters mas production with >$2B of orders already secured,",
+   "topic": "AI capex revenue flow-through",
+   "status": "released",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates NVDA's standalone CPU revenue at ~$20B in F27E.",
+   "anchor": "we note upside from CPU ramps with Agentic AI as NVDA sees F27E CPU revs at ~$20B",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F27E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho expects NVDA's CPU revenue to grow more than 100% year-over-year in F28E.",
+   "anchor": "with F28E potentially up >100% y/y.",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F28E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho rates NVDA Outperform with a $315 price target, reflecting ~20x its F28E EPS estimate.",
+   "anchor": "Our $315 PT reflects ~20x our F28E EPS, within",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho sees NVDA's roadmap driving toward more than $1 trillion in Blackwell+Rubin revenue in C25-27E and into a >$3-4 trillion TAM by 2030E.",
+   "anchor": "We continue to see NVDA executing its roadmap towards >$1T Blackwell+Rubin revs C25-27E and into a >$3-4T TAM by 2030E as",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bull case for NVDA implies a price target of $450, ~24x upside F28E EPS of $18.93.",
+   "anchor": "NVDA has significant market-leading opportunities in the AI/DC, Gaming, and Automotive markets; we see a bull case PT of $450, ~24x",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for NVDA implies a price target of $185, ~14x downside F28E EPS of $13.72.",
+   "anchor": "case PT of $185, at ~14x our downside F28E EPS of $13.72.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho reiterates Neutral on INTC and raises its price target to $114 from $92, representing ~8x its F27E P/S estimate.",
+   "anchor": "INTC - Reiterate Neutral, raise PT to $114 from $92, ~8x our F27E P/S (prior: ~6x),",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bull case for INTC implies a $145 price target with upside revenue of $76.3 billion, at ~10x upside F27E P/S.",
+   "anchor": "could see a $145 PT, with an upside revenue at $76.3B, delivering a multiple at ~10x upside F27E P/S.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for INTC, triggered by product and foundry setbacks that let AMD and NVDA gain share, implies a price target of ~$83 with downside revenue of $69.2 billion.",
+   "anchor": "for AMD and NVDA, leading to a bear case PT at ~$83, with a downside top line of $69.2B, or 6x F27E P/S.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "INTC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho reiterates Outperform on DELL and raises its price target to $650 from $600, ~18x its F28E EPS estimate.",
+   "anchor": "DELL - Reiterate Outperform and raise PT to $650 from $600, ~18x our F28E EPS (prior:",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho notes DELL has an AI server backlog of $95 billion.",
+   "anchor": "DELL, and an AI server backlog of $95B. We also see its five-quarter pipeline remaining a multiple",
+   "topic": "AI capex revenue flow-through",
+   "status": "released",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates DELL's EPS grows 148% in F27E and 38% in F28E, year-over-year.",
+   "anchor": "slightly below SOX (C27E) at ~19x as we estimate F27/28E EPS up 148%/up 38% y/y. We see",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F27E/F28E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bull case for DELL implies it could trade at ~22x P/E on upside F28E EPS of $38.79, indicating a bull case price target of $850.",
+   "anchor": "we believe DELL's could trade at a ~22x P/E on our upside F28E EPS of $38.79, indicating a bull",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for DELL implies it could trade at ~15x P/E on downside F28E EPS of $32.65, a bear case price target of $500.",
+   "anchor": "memory headwinds, we could see DELL trade at a ~15x P/E on our downside F28E EPS of $32.65, or a bear case PT of $500.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "DELL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho reiterates Neutral on SMCI and raises its price target to $43 from $35, ~8x its F28E EPS estimate.",
+   "anchor": "SMCI - Reiterate our Neutral Rating and raise PT to $43 from $35, ~8x our F28E EPS (prior: ~6x",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "SMCI"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates SMCI's F27/28E revenue grows 74%/11% and EPS grows 35%/17%, driven by increasing AI server penetration.",
+   "anchor": "term margins improving. We estimate F27/28E revs up 74%/11% and EPS up 35%/17% as AI server",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "SMCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F27E/F28E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bull case for SMCI implies a $55 price target, ~9x upside F28E EPS of $5.89.",
+   "anchor": "DCBBS ramps, SMCI could benefit, which we believe we could see SMCI trade at a $55 PT, ~9x our F28E upside EPS of $5.89.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "SMCI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for SMCI implies a $31 price target, ~6x downside F28E EPS of $5.34.",
+   "anchor": "and we see a potential bear case ~6x our F28E downside EPS of $5.34, for a $31 PT.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "SMCI"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho reiterates Outperform on SNDK and raises its price target to $2,050 from $1,875, ~9x its F27E EPS estimate.",
+   "anchor": "SNDK - Reiterate Outperform, raise PT to $2,050 from $1,875, ~9x our F27E EPS (prior ~8x),",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho notes SNDK has potential to buy back 25-30% of the company using aggregate free cash flow.",
+   "anchor": "and KVCache demand, with potential for SNDK to buy back 25-30% of the company with aggregate",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates SNDK will generate $30-50 billion of aggregate free cash flow in 2027-28E.",
+   "anchor": "$30-50B of FCF 2027-28E. We note strong Agentic AI tailwinds with eSSD storage as the key AI",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-28E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates SNDK's EPS grows 5x from F26E to F28E.",
+   "anchor": "staying >80% with its NBM agreements, while EPS grows 5x F26-F28E, with continued inference",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "F26E-F28E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates Agentic AI eSSD storage demand will drive ~22% of NAND demand by 2030E.",
+   "anchor": "enabler, potentially driving ~22% of NAND demand by 2030E",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho separately notes agentic AI could drive potentially 18% of NAND demand by 2030E.",
+   "anchor": "$2,050 from $1,875 - as we noted potentially 18% of NAND demand driven by Agentic",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "SNDK"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho rates MU Outperform with a $1,400 price target, ~3x its F28E price-to-book estimate.",
+   "anchor": "offsetting legacy product weakness. We rate MU Outperform with a $1,400 PT, ~3x our F28E P/B.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bull case for MU sees upside toward ~$1,850, at ~6.5x upside F28E price-to-book.",
+   "anchor": "as HBM ramps ahead of expectations, and drive upside to the stock, we believe towards ~$1,850, at ~6.5x our upside F28E P/B.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for MU implies a price target of $1,000, at ~3.5x downside F28E price-to-book.",
+   "anchor": "our downside F28E P/B, or our bear case PT of $1,000.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho rates CBRS Outperform with a $300 price target, ~12x F28E P/S.",
+   "anchor": "expand. We rate CBRS at Outperform, with a PT of $300, ~12x F28E P/S.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for CBRS, triggered by an AI infrastructure spending collapse, implies a bear price target of $165.",
+   "anchor": "Significant slow down in adoption for CBRS's product and a collapse in AI infrastructure spend could lead to a bear PT of $165, an",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho flags customer concentration risk for CBRS, with OpenAI growing to more than 80% of its revenue.",
+   "anchor": "Customer concentration \u2013 OpenAI is a key customer and growing to >80% of revenue.",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's Exhibit 1 reports Meta's Muse surpassed 5 million downloads 22 days after launch.",
+   "anchor": "Exhibit 1 - META's Muse Suprasses 5M Downloads",
+   "topic": "AI capex revenue flow-through",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho notes OpenAI's weekly active users reached more than 1.2 billion.",
+   "anchor": ">1.2B, while announcing GPT-6.1 Sol (~7 days after GPT-6 Sol",
+   "topic": "AI capex revenue flow-through",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho notes OpenAI's GPT-6.1 Sol was released at 80% lower cost than Astra while delivering similar performance.",
+   "anchor": "released) at 80% lower cost than Astra, while delivering similar",
+   "topic": "AI capex revenue flow-through",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho notes OpenAI's Ultrafast enables 6-8x faster tokens at approximately 300 tokens per second.",
+   "anchor": "6-8x faster tokens at ~300 tok/s. We believe if OAI were to run",
+   "topic": "AI capex revenue flow-through",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho believes that if OpenAI ran these workloads on Cerebras's CS-3/4 systems, it could see more than 600 tokens per second per user.",
+   "anchor": "these workloads on CBRS CS-3/4, we believe it could see >600",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "CBRS"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho sees daily token consumption growing more than 4x year-over-year into 2H26E.",
+   "anchor": "We see daily token consumption growing >4x y/y into 2H26E, with multimodal AI (photo, video,",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2H26E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho notes token pricing has fallen more than 50% since mid-2026E.",
+   "anchor": "windows. We note token pricing is moderating (Ex-9), being down >50% since mid-2026E as we",
+   "topic": "AI capex revenue flow-through",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho estimates Agentic AI tasks need 5-30x more tokens per task versus a standard chat query.",
+   "anchor": "Agentic AI potentially growing token/tasks needed 5-30x vs standard chat query, and longer context",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "AMD sees the AI accelerator market growing to a ~$1.4 trillion TAM by 2030E, per Mizuho's note.",
+   "anchor": "market growing to a ~$1.4T TAM by 2030E.",
+   "topic": "AI capex revenue flow-through",
+   "status": "forecast",
+   "instruments": [
+    "AMD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "by 2030E"
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bear case for ARM, triggered by slower v9 adoption or Arm China geopolitical headwinds, implies a $150 price target at ~0.9x F28E PEG.",
+   "anchor": "softer ~0.9x F28E PEG, resulting in a Bear case scenario of $150.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Mizuho",
+   "document": "Agentic AI Driving ~30% of 2030E CPU Units",
+   "claim": "Mizuho's bull case for ARM sees shares rising to $700, at ~4.4x F28E PEG.",
+   "anchor": "Bull case scenario, we see Arm share prices rising to $700, at ~4.4x our F28E PEG.",
+   "topic": "AI capex revenue flow-through",
+   "status": "target",
+   "instruments": [
+    "ARM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-18/20758__agentic-ai-driving-30-of-2030e-cpu-units.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 57,
+  "matched": 56,
+  "failed": 1,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 1,
+  "needs_reask": false
+ }
+}
