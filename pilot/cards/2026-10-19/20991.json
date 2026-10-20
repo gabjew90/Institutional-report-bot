@@ -1,0 +1,736 @@
+{
+ "brief": "A GS desk morning note opens with a risk-on bounce (tech-led S&P futures up, Asia mixed, Europe soft on France, VIX down) after last week's selloff, against ongoing Ukraine/Russia and France geopolitical escalation. Industrials/transports names that already reported (AYI, FUL, RPM, FAST, DAL, JBHT) show soft September topline and broad cost inflation (oil, freight, medical), but muted stock reaction, which the desk attributes to very low gross exposure. China data beat on trade (exports/imports up 36.3%/31.0% yoy, record $133.5bn surplus) but PPI beat consensus while CPI missed, a divergence GS reads as weak domestic demand, prompting it to raise its PPI forecast and cut its CPI forecast. Prime brokerage shows US equities net sold for the week, driven by Single Stock long/short unwinds, with 8 of 11 sectors sold and rotation into defensives (Health Care, Comm Svcs, Staples) out of cyclicals. The note then previews Q3 earnings for GE, GM, MMM, NOC, RTX, CSX, PKG, TSLA, URI and WCN with implied moves, valuation, and positioning/short-interest context.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "S&P futures were up 50bps pre-market, led by a rally in technology shares, following a 500bps selloff the prior week.",
+   "anchor": "S&P futures up 50bps pre-market led by a rally in technology shares after last week\u2019s 500bps sell off.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Geopolitical escalation across Ukraine/Russia and parts of France was met with low expectations around broader markets.",
+   "anchor": "Geopolitical escalation across Ukraine/Russia, parts of France were met with low expectations around broader markets.",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "GEOPOLITICS",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Overnight, the KOSPI led up 176bps, Japan was down 62bps, and Europe was heavy with France leading the downside off 130bps.",
+   "anchor": "Overnight saw the KOSPI lead up 176bps, Japan down 62bps with Europe heavy to start France leading the downside off 130bps.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "European natural gas was approaching $90 while crude eased off elevated levels, with Brent at $108 and WTI at $101.",
+   "anchor": "European gas notable approaching $90, crude taking a breather off elevated levels Brent $108, WTI $101.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OIL",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "The 10-year Treasury yield was holding at 5.08%.",
+   "anchor": "10-year holding 5.08%, dollar similar DXY $102",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "UST",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "The dollar index (DXY) was little changed around $102.",
+   "anchor": "dollar similar DXY $102 and Bitcoin bouncing along with markets up 250bps to $82.9k.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "DXY",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Bitcoin bounced alongside broader markets, up 250bps to $82.9k.",
+   "anchor": "Bitcoin bouncing along with markets up 250bps to $82.9k.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "BTC",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "The VIX was lower by 7% pre-market.",
+   "anchor": "VIX lower by 7% pre-market. Watching NAHB & Canada CPI today.",
+   "topic": "misc",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "SLGN headlines point to a potential $3.4bn deal for Trivium Packaging.",
+   "anchor": "SLGN headlines around a potential $3.4bn deal for Trivium Packaging otherwise quiet on the individual name front",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "SLGN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Among already-reported names (AYI, FUL, RPM, FAST, DAL, JBHT), September topline came in soft, with a lower exit rate than how the quarter started.",
+   "anchor": "topline in September is soft \u2013 lower exit rate than the way we started the quarter",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "AYI",
+    "FUL",
+    "RPM",
+    "FAST",
+    "DAL",
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Inflation was problematic across already-reported names, driven by oil, freight costs and medical costs.",
+   "anchor": "inflation is problematic all around \u2013 oil, freight costs, medical to name a few",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "AYI",
+    "FUL",
+    "RPM",
+    "FAST",
+    "DAL",
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Already-reported names showed muted stock reactions, with the biggest move only 3%, which the desk attributes to very low gross exposure.",
+   "anchor": "Names are not moving \u2013 biggest move so far is 3% - we think this is a function of very low gross exposure.",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "AYI",
+    "FUL",
+    "RPM",
+    "FAST",
+    "DAL",
+    "JBHT"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Chinese exports and imports climbed 36.3% yoy and 31.0% yoy respectively in nominal USD terms in September, both above consensus.",
+   "anchor": "Chinese exports and imports climbed 36.3% yoy and 31.0% yoy, respectively, in nominal USD terms in September",
+   "topic": "China trade and inflation data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "China's semiconductor exports and imports surged 136% yoy and 75% yoy respectively, driven almost entirely by higher prices rather than volume.",
+   "anchor": "Semiconductor exports and imports surged 136% yoy and 75% yoy, respectively, but the increases were driven almost entirely by higher prices.",
+   "topic": "China trade and inflation data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "China's September trade surplus reached a record high of $133.5bn.",
+   "anchor": "September\u2019s trade surplus reached a record high of $133.5bn.",
+   "topic": "China trade and inflation data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "China's PPI inflation surprised to the upside in September at 5.0% yoy versus the Bloomberg consensus of 4.4%.",
+   "anchor": "China\u2019s PPI inflation surprised to the upside in September, rising 5.0% yoy (vs. the Bloomberg consensus of 4.4%).",
+   "topic": "China trade and inflation data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "China's CPI inflation came in at only 0.9% yoy in September, slightly below the market expectation of 1.0%.",
+   "anchor": "CPI inflation was only 0.9% yoy, slightly below the market expectation of 1.0%.",
+   "topic": "China trade and inflation data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "GS reads the divergence between China's PPI and CPI as evidence of difficulty passing higher upstream prices to consumers and weak domestic demand.",
+   "anchor": "This divergence highlights the difficulty of passing higher commodity and upstream prices on to consumers, providing further evidence of weak domestic demand.",
+   "topic": "China trade and inflation data",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "GS revised up its full-year 2026/27 China PPI inflation forecasts to 2.8%/0.3% from 2.0%/0.0% previously.",
+   "anchor": "We have revised up our full-year 2026/27 PPI inflation forecasts to 2.8%/0.3% (from 2.0%/0.0% previously)",
+   "topic": "China trade and inflation data",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "PPI",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "full-year 2026/27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "GS revised down its China CPI inflation forecasts to 0.8%/0.6% from 1.0%/1.0% previously.",
+   "anchor": "revised down our CPI inflation forecasts to 0.8%/0.6% (from 1.0%/1.0% previously).",
+   "topic": "China trade and inflation data",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CPI",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "full-year 2026/27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "US equities were net sold on the week at -0.9 SDs versus the 1-year average, driven by long-and-short selling in Single Stocks.",
+   "anchor": "US equities were net sold on the week (-0.9 SDs 1-year), driven by long-and-short sales in Single Stocks",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Macro Products (Index and ETF combined) were marginally net sold at -0.1 SDs versus the 1-year average, driven by risk unwinds.",
+   "anchor": "Macro Products (Index and ETF combined) were marginally net sold (-0.1 SDs 1-year), driven by risk unwinds",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "US-listed ETF shorts decreased 1.9% (1.5% month/month), driven by covering in Small Cap and Credit ETFs, partially offset by shorting in Financials and Large Cap Equity ETFs.",
+   "anchor": "US-listed ETF shorts decreased -1.9% (-1.5% month/month), driven by covering in Small Cap and Credit ETFs",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Single Stocks saw the largest net selling in 8 weeks at -1.2 SDs versus the 1-year average, driven by long-and-short sales at a 1.5-to-1 ratio.",
+   "anchor": "Single Stocks collectively saw the largest net selling in 8 weeks (-1.2 SDs 1-year), driven by long-and-short sales (1.5 to 1).",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "8 of 11 sectors were net sold in prime positioning, led in dollar terms by Info Tech, Consumer Discretionary, Industrials and Financials.",
+   "anchor": "8 of 11 sectors were net sold, led in $ terms by Info Tech, Consumer Disc, Industrials, and Financials",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Health Care, Comm Services and Staples were net bought in prime positioning, suggesting an incrementally defensive posture.",
+   "anchor": "Health Care, Comm Svcs, and Staples were net bought, suggesting an incrementally defensive posture.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "GE's options market is implying a 5% move around its Tuesday October 20th earnings report.",
+   "anchor": "GE reports Tuesday October 20th pre-market around 6:30am with the call at 7:30am. 5% implied move.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "GE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "GE's valuation has retraced off peak levels from 35x EV/EBITDA to 28x.",
+   "anchor": "Valuation has retraced off peak levels from 35x EV / EBITDA to 28x on the screen.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "GE"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "The desk thinks being six months into the conflict with no end in sight could mean GE's maintenance decision-making takes a different direction than if the conflict were dismissed as temporary.",
+   "anchor": "This could mean maintenance decision making takes a different direction than dismissing the conflict as temporary.",
+   "topic": "Industrials earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "GE"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "GM's options market is implying a 5% move around its Tuesday October 20th earnings report.",
+   "anchor": "GM reports Tuesday October 20th at 6:30am with the call at 8:30am. 5% implied move in this one",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "GM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "GM has not missed headline earnings since Q2 2022 and has not missed EBIT since Q4'23.",
+   "anchor": "GM has not missed headline earnings since Q2 of 2022 and not missed EBIT since Q4\u201923.",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "GM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "MMM's options market is implying a 5% move around its Tuesday October 20th earnings report.",
+   "anchor": "MMM reports Tuesday October 20th pre-market at 6:30am with the at 9am. 5% implied move here.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "MMM"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "The desk thinks positioning in MMM skews net negative on the potential slowdown in organic growth and exposure to end markets folks do not want to be long.",
+   "anchor": "We think positioning skews net negative on the potential slowdown in organic as well as end markets that folks broadly do not want long exposure to.",
+   "topic": "Industrials earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "MMM"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "NOC's options market is implying a 5% move around its Tuesday October 20th earnings report.",
+   "anchor": "NOC reports Tuesday October 20th at 6:45am with the call at 9:30am. 5% implied move here with the",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "NOC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Market sentiment leans negative on NOC due to fears around free cash flow for the year and the recent FAXX contract loss.",
+   "anchor": "Folks lean negative NOC on fears around free cash flow for the year and recent FAXX contract loss.",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "NOC"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "full year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "RTX's options market is implying a 4% move around its Tuesday October 20th earnings report.",
+   "anchor": "RTX reports Tuesday October 20th pre-market at 6:55am with the call at 8:30am. 4% implied move here.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "RTX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "RTX's short interest remains objectively low at 13.6mm shares short.",
+   "anchor": "Short interest objectively remains low at 13.6mm shares short and conversations feel two ways.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "RTX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "CSX's options market is implying a 4% move around its Wednesday October 21st earnings report.",
+   "anchor": "CSX reports Wednesday October 21st after market around 4:01pm with the call at 4:30pm. 4% implied",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "CSX"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "CSX short interest is up meaningfully to 43mm shares from 25mm a year ago and sits at highs.",
+   "anchor": "short interest is up meaningfully 43mm shares, up from 25mm a year ago and at highs.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "CSX"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Deal odds for UNP/NSC have come in notably, and folks are debating whether there is an M&A premium in CSX right now.",
+   "anchor": "Deal odds for UNP NSC has come in notably and folks are debating whether there is an M&A premium in CSX right now.",
+   "topic": "Industrials earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "CSX",
+    "UNP",
+    "NSC"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "PKG's options market is implying a 4% move around its Wednesday October 21st earnings report.",
+   "anchor": "PKG reports Wednesday October 21st post market with the call the following morning at 10am. 4% implied move.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "PKG"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Within containerboard, one of the few crowded areas in paper and packaging, PKG is the most crowded name, followed by SW and then IP.",
+   "anchor": "containerboard is one of them with PKG at the top of the list followed by SW and lastly IP.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "PKG",
+    "SW",
+    "IP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "TSLA reports its Wednesday October 21st earnings after market close, with a 6% implied move for Q3.",
+   "anchor": "TSLA reports Wednesday October 21st post market around 4:07pm with the call at 5:30pm.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Essentially all of TSLA's top shareholders were adding to positions in the most recent quarter.",
+   "anchor": "Essentially all top shareholders were adding in the most recent quarter.",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "TSLA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "URI's stock has squeezed higher the last two quarters, up 10% and 23% in Q1'26 and Q2'26 respectively.",
+   "anchor": "Stock has squeezed the last two quarters up 10% and 23% in Q1\u201926 and Q2\u201926, respectively.",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "URI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "Within machinery, URI has become more crowded and is arguably the most crowded long in the space.",
+   "anchor": "URI has become more crowded and arguably the most crowded long in the space.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "URI"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "WCN's stock has been green in five of the last six quarters, with a couple of 8% moves, and has no options implied move this time.",
+   "anchor": "Stock is green give of the last six quarters with a couple of 8% moves.",
+   "topic": "Industrials earnings week setups",
+   "status": "released",
+   "instruments": [
+    "WCN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "WCN's earnings call focus will include potential updates on the Chiquita landfill remediation process following California's new AB 28 law on elevated-temperature landfill events.",
+   "anchor": "potential updates on the Chiquita landfill remediation process following a new law in California (AB 28)",
+   "topic": "Industrials earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "WCN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS Novak - GS U.S. Industrials & Materials China prime early EPS previews 19 Oct 2026",
+   "claim": "WCN's short interest is also elevated at 4mm shares, the highest level in a decade.",
+   "anchor": "Short interest also elevated at 4mm shares highest levels in a decade.",
+   "topic": "Industrials earnings week setups",
+   "status": "level",
+   "instruments": [
+    "WCN"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-19/20991__gs-novak-gs-u-s-industrials-materials-china-prime-early-eps-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 49,
+  "matched": 49,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 3,
+  "labels_over_cap": 0,
+  "misc_cards": 9,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
