@@ -1,0 +1,899 @@
+{
+ "brief": "GS TMT sales note: US equities had a rough week on hot inflation, higher oil and AI-trade worries. Semis fell an 8th session, memory weakened, and momentum unwound; hedge funds cut net exposure almost entirely via new shorts, not fewer longs, with long/short funds down 2.7% and record IT net selling. VIX futures traded 3.6x their 20-day average, GS's first real sign of index-protection panic after weeks of single-stock damage. The bigger development, per GS, is credit: AI-linked spreads widened for neoclouds and AI-lab-exposed names, which fell ~25% on the week, while Microsoft reportedly backs away from a neocloud deal. GS frames the debate as shifting from how fast AI capex grows to who funds it and where returns accrue; capex may be past peak, and credit quality/ROIC now weigh on equity valuations, with earnings season the key test. AI Hyperscaler Equities (GSXUHYPR) were 15% lower the last time spreads were this wide. Separately, Nvidia is pushing memory makers toward TSMC's 3nm for HBM dies; OpenAI's CFO says contracted compute could resell 3-5x above contract value, cited as a sign external AI financing is nearing its peak. The note also previews this week's TMT earnings: SAP, Meta, TXN, BESI, telcos, Pearson, RELX, Spotify, TSMC and Japan electronics.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "US semiconductor stocks fell for an eighth consecutive session as memory names weakened sharply and crowded momentum trades unwound.",
+   "anchor": "Semis fell for an eighth consecutive session, memory weakened sharply, and crowded momentum trades continued to unwind.",
+   "topic": "AI stock drawdown risk",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Global Tech saw its largest percentage net selling on record since 2016, with semis accounting for 57% of US technology net selling.",
+   "anchor": "Global Tech saw its largest percentage net selling on record since 2016, with semis accounting for 57% of US technology net selling.",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Hedge funds' reduction in net exposure since the end of July has come almost entirely from increasing shorts rather than reducing longs.",
+   "anchor": "essentially all of it since the end of July has come from an increase in shorts (not a reduction in longs)",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "since end of July"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Fundamental long/short hedge fund managers were down 2.7% for the week, and global books saw their largest net selling since the end of July.",
+   "anchor": "fundamental long/short managers down 2.7% for the week and global books seeing their largest net selling since the end of July",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "weekly"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "The week's hedge fund net selling was led by record selling in Information Technology.",
+   "anchor": "led by record selling in Information Technology",
+   "topic": "Equity positioning and flows",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "POSITIONING",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "weekly"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "VIX futures traded at 3.6 times their 20-day average.",
+   "anchor": "VIX futures traded 3.6x the 20-day average",
+   "topic": "VIX panic hedging spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS's Lee Copperfield said Friday was the first real sign of panic in index protection, after weeks of damage to individual stocks and client portfolios.",
+   "anchor": "Friday was the first real sign of panic in index protection, following weeks of significant damage in individual stocks and client portfolios",
+   "topic": "VIX panic hedging spike",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Neocloud stocks fell about 25% on the week as AI-related credit spreads widened, with investors questioning how parts of the AI ecosystem will finance continued capex.",
+   "anchor": "This saw neoclouds down ~25% on the week and investors increasingly questioning how parts of the AI ecosystem will finance continued capex",
+   "topic": "AI credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "weekly"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "The Telegraph reported that Microsoft is backing away from a neocloud deal over the weekend.",
+   "anchor": "the Telegraph reporting that MSFT is backing away from Neocloud deal over the weekend will not help sentiment",
+   "topic": "AI credit stress",
+   "status": "released",
+   "instruments": [
+    "MSFT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "weekend"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS says the AI investment debate is shifting from how fast AI spending can grow to who can fund that growth and what returns it ultimately generates.",
+   "anchor": "The debate is therefore shifting from simply how fast AI spending can grow to who can fund that growth, what returns the spending ultimately generates",
+   "topic": "AI credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS says that with AI capex growth potentially past its peak, credit quality, funding requirements and ROIC are becoming increasingly important to equity valuations.",
+   "anchor": "With AI capex growth potentially past its peak, credit quality, funding requirements and ROIC are becoming increasingly important to equity valuations",
+   "topic": "AI credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS frames the upcoming earnings season as a key test of whether strong fundamentals can arrest the deterioration in AI sentiment and price momentum.",
+   "anchor": "leaving the upcoming earnings season as a key test of whether strong fundamentals can arrest the deterioration in sentiment and price momentum",
+   "topic": "AI credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "upcoming earnings season"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS's AI Hyperscaler Equities basket (GSXUHYPR) was 15% lower the last time credit spreads were this wide.",
+   "anchor": "AI Hyperscaler Equities (GSXUHYPR) were 15% lower the last time spreads were this wide",
+   "topic": "AI credit stress",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "AI Beneficiary stocks versus the rest of the market are now down 25% from their highs, per GS.",
+   "anchor": "AI Beneficiaries vs the rest of the market are now down 25% from the highs",
+   "topic": "AI stock drawdown risk",
+   "status": "level",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Nvidia is pushing Samsung, SK Hynix and Micron to use TSMC's 3nm process for NVHBM base dies.",
+   "anchor": "Nvidia is pushing Samsung, SK Hynix and Micron to use TSMC\u2019s 3nm process for NVHBM base dies",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "NVDA",
+    "TSM",
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS says the near-term P&L impact on memory names from the TSMC 3nm HBM shift should be limited, since they retain turnkey production for standard HBM.",
+   "anchor": "The near-term P&L impact on the memory names should be limited, as they retain turnkey production for standard HBM",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "MU"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "near-term"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS views the TSMC 3nm HBM standardization as strategically positive for TSMC and as shifting more control over the HBM architecture toward Nvidia.",
+   "anchor": "strategically the move is positive for TSMC and shifts more control over the HBM architecture toward Nvidia",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "TSM",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS reinstated coverage of SES with a Buy rating and a \u20ac7.0 price target.",
+   "anchor": "GIR are reinstating coverage with a Buy on SES (\u20ac7.0 PT) and Neutral on Eutelsat (\u20ac1.6 PT)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS reinstated coverage of Eutelsat with a Neutral rating and a \u20ac1.6 price target.",
+   "anchor": "GIR are reinstating coverage with a Buy on SES (\u20ac7.0 PT) and Neutral on Eutelsat (\u20ac1.6 PT)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Accenture is reportedly looking to sell its Chinese operations for up to $1.5 billion, per the FT, though a sale has not been confirmed.",
+   "anchor": "Accenture looks to sell Chinese operations for up to $1.5 billion, FT reports, but a sale has not been confirmed",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Accenture forecasts 3% to 6% revenue growth for financial year 2027.",
+   "anchor": "the company forecasts 3% to 6% revenue growth for financial year 2027",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "ACN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "FY2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "OpenAI CFO Sarah Friar said OpenAI could sell all of its contracted compute commitments for 3 to 5 times their contract value.",
+   "anchor": "she could sell all of their contracted compute commitments up 3-5x from their contract value",
+   "topic": "AI credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Gavin Baker argued on X that the market may be approaching the peak of external financing as a percentage of the AI infrastructure buildout.",
+   "anchor": "I think we may be approaching the peak of external financing as a % of the AI infrastructure buildout",
+   "topic": "AI credit stress",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS sales sees SAP sentiment becoming far more constructive, now a more consensual long, helped by the precloses.",
+   "anchor": "Sentiment on this one has become far more constructive (now I think more consensual long) with the precloses helping",
+   "topic": "TMT earnings week setups",
+   "status": "released",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects SAP's Q3 results to be in-line-to-slightly-ahead, with current cloud backlog (CCB) as the swing factor.",
+   "anchor": "The quarter is in focus and is expected to be in-line-to-slightly-ahead Q3, with current cloud backlog (CCB) the swing factor",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects SAP's organic current cloud backlog (CCB) growth of about 23% ex-FX for Q3 2026, decelerating modestly through the rest of the year.",
+   "anchor": "continuing to expect c.23% organic CCB growth ex-FX for 3Q26, with a modest deceleration through the remainder of the year",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects SAP's FY26 cloud revenue growth of about 24% ex-FX, in line with company guidance.",
+   "anchor": "FY26 cloud revenue growth of c.24% ex-fx in line with guidance",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "SAP"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Meta shares are up 40% from their August lows following the Muse release.",
+   "anchor": "META \u2013 Shares up 40% from the August lows post Muse release",
+   "topic": "TMT earnings week setups",
+   "status": "released",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS is broadly in line with Street on Meta's Q3/FY26 revenue estimates but 2.4% ahead of Street on 2027 revenue.",
+   "anchor": "We are broadly in line with the street on Revenues for Q3/FY26 and 2.4% ahead on 2027",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "META"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "TXN has outperformed analog peers in CY3Q26, down about 6% versus a group average decline of about 10%.",
+   "anchor": "stock has outperformed analog peers in CY3Q26 (~-6% vs ~-10% group avg)",
+   "topic": "TMT earnings week setups",
+   "status": "released",
+   "instruments": [
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY3Q26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects TXN to post about 3% revenue upside, a Q4 guide roughly 2% above Street, and CY26 EPS about 2% above Street.",
+   "anchor": "GS expecting ~3% revenue upside, a 4Q guide ~2% above Street, and CY26 EPS ~2% above Street",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "TXN"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "CY2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects BESI's Q3 orders may still beat expectations following strong ASML and VAT prints, but views BESI as likely to remain a funding short.",
+   "anchor": "Q3 orders may still beat expectations following strong ASML and VAT prints, but BESI is likely to remain a funding short",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS forecasts Verizon will deliver Q3 revenue of $35.0bn and EBITDA of $13.8bn.",
+   "anchor": "Verizon is forecast to deliver Q3 revenue of $35.0bn and EBITDA of $13.8bn",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects Verizon's 2026 free cash flow to rise 10.5% to $22.2bn.",
+   "anchor": "2026 free cash flow should rise 10.5% to $22.2bn",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "VZ"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects AT&T to report Q3 revenue of $31.8bn, EBITDA of $12.5bn, and 416,000 postpaid phone additions.",
+   "anchor": "AT&T is expected to report revenue of $31.8bn and EBITDA of $12.5bn, with 416k postpaid phone additions",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "T"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS notes Telenor's short interest has risen and the stock increasingly looks like a consensus short.",
+   "anchor": "short interest has risen and the stock increasingly looks like a consensus short",
+   "topic": "TMT earnings week setups",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS notes Elisa shares remain a consensus short.",
+   "anchor": "the shares remain a consensus short",
+   "topic": "TMT earnings week setups",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects Pearson's Q3 organic growth to accelerate to around 5.5%, led by Assessment & Qualifications.",
+   "anchor": "Q3 organic growth is expected to accelerate to around 5.5%, led by Assessment & Qualifications",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "PSO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Pearson's short interest stands at 6.8% of free float, or 19 days to cover, per GS.",
+   "anchor": "note the SI a7 6.8% of free float or 19 day to cover",
+   "topic": "TMT earnings week setups",
+   "status": "level",
+   "instruments": [
+    "PSO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS's Adam expects RELX's 9M26 organic growth of around 7%, led by Risk at 8%, Legal at 10% and STM at 6%.",
+   "anchor": "Adam expects 9M26 organic growth of around 7%, led by Risk at 8%, Legal at 10% and STM at 6%",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "RELX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "9M26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS notes Legal represents only 12% of RELX's group EBIT, arguing the market is too bearish on AI disruption risk there.",
+   "anchor": "Legal represents only 12% of group EBIT",
+   "topic": "TMT earnings week setups",
+   "status": "level",
+   "instruments": [
+    "RELX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "RELX is trading at 17x 2027E EPS, and GS retains its positive view.",
+   "anchor": "Its trading at 17x 2027E EPS, we retain our Adam\u2019s view",
+   "topic": "TMT earnings week setups",
+   "status": "level",
+   "instruments": [
+    "RELX"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS expects Spotify Q3 revenue of \u20ac4.96bn, slightly below the \u20ac5.0bn guidance and consensus.",
+   "anchor": "Revenue of \u20ac4.96bn is expected, slightly below \u20ac5.0bn guidance and consensus",
+   "topic": "TMT earnings week setups",
+   "status": "forecast",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "Q3"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS retains its Buy rating on Spotify but reduces the price target to $645 from $655.",
+   "anchor": "The Buy rating is retained, with the price target reduced to $645 from $655",
+   "topic": "TMT earnings week setups",
+   "status": "target",
+   "instruments": [
+    "SPOT"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS upgrades Zeta to Buy from Neutral.",
+   "anchor": "We upgrade Zeta to Buy from Neutral and downgrade Klaviyo to Neutral from Buy",
+   "topic": "TMT earnings week setups",
+   "status": "target",
+   "instruments": [
+    "ZETA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS downgrades Klaviyo to Neutral from Buy.",
+   "anchor": "We upgrade Zeta to Buy from Neutral and downgrade Klaviyo to Neutral from Buy",
+   "topic": "TMT earnings week setups",
+   "status": "target",
+   "instruments": [
+    "KVYO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS says Zeta shares are up 65% YTD and sees a compelling 4x risk/reward skew with upside to numbers driving continued outperformance.",
+   "anchor": "ZETA shares are up 65% YTD, but we expect upside to numbers could drive continued outperformance and we see a compelling 4x risk/reward skew",
+   "topic": "TMT earnings week setups",
+   "status": "released",
+   "instruments": [
+    "ZETA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "YTD"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS upgrades Nichicon to Buy from Neutral as higher-voltage AI servers drive rapid growth in aluminium electrolytic capacitor demand.",
+   "anchor": "Nichicon is upgraded to Buy from Neutral as higher-voltage AI servers drive rapid growth in aluminium electrolytic capacitor demand",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "TSMC's A14 node targets risk production in 2027 and mass production in 2028.",
+   "anchor": "Its A14 node targets risk production in 2027 and mass production in 2028",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-2028"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "TSMC's Arizona Fab 2 is progressing ahead of schedule toward Q3 2027 mass production.",
+   "anchor": "Arizona Fab 2 is progressing ahead of schedule toward 3Q27 mass production",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "3Q27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "TSMC's second Kumamoto fab 3nm upgrade targets 6,000 wafers per month and qualifies for up to $4.1bn in Japanese government support.",
+   "anchor": "targeting 6,000 wafers per month and qualifying for up to US$4.1bn in government support",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [
+    "TSM"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Apple's foldable iPhone Duo launches in Taiwan with initial shipments of just over 10,000 units, potentially falling short of strong preorder demand.",
+   "anchor": "initial Taiwan shipments of just over 10,000 units, potentially falling short of strong preorder demand",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Oct 23"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Mediatek is reportedly engaging in Google's TPU v9 project, alongside AI ASIC expansion by GUC, Alchip and Faraday.",
+   "anchor": "Mediatek (2454) reportedly engaging in Google\u2019s TPU v9 project, as well as expansion by GUC (3443), Alchip (3661), and Faraday",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [
+    "GOOGL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS raises its global server TAM forecast by 31% in 2027E and 45% in 2028E across general and AI servers.",
+   "anchor": "We raise our global servers TAM by 31% / 45% in 2027 / 28E across general servers and AI servers",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2027-28E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "GS's AI server forecasts imply AI chip demand of 18m/29m/38m units in 2026-28E, or roughly 60%/50% ASIC penetration globally/global-tier by 2028E.",
+   "anchor": "imply AI chip demand of 18m / 29m / 38m in 2026-28E, or a ~60% / ~50% ASIC penetration rate",
+   "topic": "misc",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "2026-28E"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Virgin Media O2 carries around \u00a322bn of debt and faces pressure to deliver roughly \u00a3600m of cost savings through potential job cuts and lower capex.",
+   "anchor": "the group carries around \u00a322bn of debt, faces pressure to deliver roughly \u00a3600m of cost savings",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "CityFibre has asked its banks to write down a significant portion of its \u00a32bn loan in exchange for equity.",
+   "anchor": "CityFibre has asked its banks to write down a significant portion of its \u00a32bn loan in exchange for equity",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "CityFibre's restructuring follows a widening pre-tax loss of \u00a3545m, including nearly \u00a3400m of annual finance costs.",
+   "anchor": "the restructuring follows a widening pre-tax loss of \u00a3545m, including nearly \u00a3400m of annual finance costs",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Rightmove's October House Price Index shows the average price of a newly listed home rose 1.0% this month.",
+   "anchor": "the average price of a newly listed home has risen 1.0% this month",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "UK buyer enquiries are down 9% year-on-year and sales agreed have fallen 8%, per Rightmove.",
+   "anchor": "Buyer enquiries are down 9% year-on-year, while sales agreed have fallen 8%",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "year-on-year"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "TIM appointed Mirko Mischiatti as Chief Enterprise and Innovative Solutions Officer and Claudio Ongaro as Chief Technology Officer, effective 19 October 2026.",
+   "anchor": "TIM has appointed Mirko Mischiatti as Chief Enterprise and Innovative Solutions Officer and Claudio Ongaro as Chief Technology Officer",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "19 October 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "GS TMT SPEC SALES: Credit in focus & shorts scale",
+   "claim": "Blueprints AI's subscription service costs $3,200 to $8,500 per month and targets design firms, developers and property owners.",
+   "anchor": "The subscription service costs $3,200 to $8,500 per month and targets design firms, developers and property owners",
+   "topic": "misc",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-19/20987__gs-johnstone-gs-tmt-spec-sales-credit-in-focus-shorts-scale-.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 62,
+  "matched": 62,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 5,
+  "labels_over_cap": 0,
+  "misc_cards": 22,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
