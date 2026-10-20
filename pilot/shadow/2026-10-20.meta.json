@@ -1,0 +1,49 @@
+{
+ "unread_source_files_at_edit": 0,
+ "given_up_at_edit": 92,
+ "pack": {
+  "documents": 25,
+  "cards": 954,
+  "max_doc_id": 21022
+ },
+ "provenance": {
+  "model_requested": "claude-opus-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "76da3fd3b4b8"
+ },
+ "reasked": true,
+ "structural_problems": [],
+ "citations": {
+  "card_citations": 121,
+  "brief_citations": 12,
+  "distinct_cards_cited": 119,
+  "card_count": 954,
+  "quintiles": [
+   36,
+   31,
+   16,
+   20,
+   18
+  ],
+  "edge_quintile_share": 0.446,
+  "metric4_flag": false,
+  "failures": [
+   {
+    "sentence": "JPMorgan reads the same numbers as an overreaction.",
+    "cite": "",
+    "reason": "bank named (['jpmorgan']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Morgan Stanley put a number on 2027 AI spending and then traced where it lands.",
+    "cite": "",
+    "reason": "bank named (['morgan stanley']) is not the bank of any cited card or brief"
+   },
+   {
+    "sentence": "Goldman argues the 6 million pre-orders booked since June 25, about 90% of them the $99.99 Ultimate Edition, say nothing useful about demand, because digital distribution removed the reason to pre-ord",
+    "cite": "c137,c138,c164",
+    "reason": "figures not in cited card(s): ['99.99']"
+   }
+  ],
+  "word_count": 2045
+ }
+}
