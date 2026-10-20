@@ -1,0 +1,143 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "This is a meta-commentary line about the pulse's own evidence quality, not a claim traceable to any bank note; no source states or implies anything about its evidence being 'specific rather than atmospheric.'",
+   "searched": [
+    "atmospheric",
+    "specific rather than"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20981__gs-crook-gs-morning-1-connecting-you-to-gs-2-credit-update-3.txt",
+   "span": "our hyperscaler and data centre baskets are near all-time wides",
+   "why": "Goldman's Crook note (credit desk) states the hyperscaler credit basket is at/near record wides; corroborated by the embedded 'hyperscaler CDS just hit all time wides' line in the BofA/Hartnett note (21015), supporting 'cost of insuring hyperscaler debt against default hit a record.'"
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20912__who-s-next-meet-the-junk-bonds-that-are-one-coreweave-away-f.txt",
+   "span": "closed at a record 1,117bps, implying roughly 63% odds of default within five years",
+   "why": "Exact figures (1,117bps, 63%) for CoreWeave's five-year CDS match verbatim across multiple files (20912, 20918, 20921, 21016)."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20937__gs-garrett-weekend-prep-18-oct-2026.txt",
+   "span": "the \"gs panic\" started the week with a one handle \u2026 it finished the week at 7.4 \u2026 one of the sharpest rallies on record",
+   "why": "Coppersmith's 'first real sign of panic in index protection' (20936) and Goldman's separately-sourced 'gs panic' gauge move from a one-handle to 7.4 (20937/20984, Garrett) are both genuinely Goldman content; the sentence attributes the gauge to 'Goldman' generally, not specifically to Coppersmith, so there is no misattribution."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21016__the-pain-trade-was-long-ai-short-bonds-how-a-neocloud-burst-.txt",
+   "span": "headline prices rose 0.6% on the month and 3.7% on the year (vs 3.6% expected), with gasoline up 9.1% and accounting for more than half of the monthly gain... core rose 0.3%",
+   "why": "Every figure (0.6% m/m, 3.7% y/y vs 3.6% expected, core 0.3%, gasoline 9.1% driving over half the gain) matches verbatim."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20985__gs-goel-conversations-19-oct-2026.txt",
+   "span": "the weakness beneath the AI surface has not translated into indiscriminate selling elsewhere... SPX ex-AI has substantially outperformed the headline index",
+   "why": "Fair paraphrase of the Goldman desks' (Miller/Garrett/Goel) 'buy the broadening' / rotation-not-selloff thesis, backed by the ex-AI outperformance and breadth figures confirmed in s7."
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt",
+   "span": "The S&P 500 ex-AI (SPXXAI) has outperformed the S&P by 586bps since October 6",
+   "why": "All three figures confirmed: 586bps since Oct 6 (21018/20982); 'roughly 350 S&P constituents finishing higher last week' (20985); 'Health Care was the best S&P sector of the week, up 5.3%' (21014)."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21019__nvidia-gets-690bn-the-other-499-get-340bn-tracing-every-doll.txt",
+   "span": "Moore calls NVDA the best risk/reward \"as the market questions 2027 AI capex,\" at 15x FY28 EPS",
+   "why": "Morgan Stanley's Joe Moore is quoted calling Nvidia the best risk/reward at 15x FY28 EPS, matching the sentence exactly."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20996__gs-saboureault-positioning-mondays-week-42-19-oct-2026.txt",
+   "span": "the SOX index faced its worst week of performance this year (-11%)",
+   "why": "SOX -11% worst week (20996), 'SOX down 8 straight sessions' (20975), and Goldman's 'Semiconductors have de-rated from roughly 29x forward earnings this summer to 17x today' (20985) all confirmed."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21009__apple-is-doing-something-it-has-never-done-before.txt",
+   "span": "AAPL is trading near all-time highs, closing in on NVDA as the world's most valuable company... Apple has now decoupled from the rest of the Magnificent 7 as well",
+   "why": "Matches near-verbatim, including the divergence from SOX (chip names) and the rest of the Magnificent 7."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21009__apple-is-doing-something-it-has-never-done-before.txt",
+   "span": "A remarkable divergence that highlights the intensity of the flight to safety within tech... Apple is increasingly looking like both a defensive winner and a potential unintended beneficiary of the AI trade",
+   "why": "The 'flight to safety within tech' and 'unintended beneficiary' framing are both the source's own stance; 'rather than a funder of it' is a reasonable, non-contradictory gloss on Apple's light AI-capex profile versus the hyperscalers."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "2FQ27 Earnings Preview... GTA VI on November 19th... one of the largest AAA releases ever",
+   "why": "Note is dated 19 Oct 2026 and previews TTWO's fiscal Q2 (July-Sept, i.e. 'September quarter') results ahead of the Nov 19 GTA VI launch, ~5 weeks (31 days) from the note date; 'biggest game launch in years' is a mild understatement of the source's 'one of the largest AAA releases ever.'"
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "12m Price Target: $285.00 / Price: $205.28 / Upside: 38.8%... EV/GAAP EBITDA: 33.0x EV/GAAP EBITDA (from 35.0x)",
+   "why": "All figures match exactly: $285 target, $205.28 price, 38.8% upside, EBITDA multiple cut from 35x to 33x."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "GTA VI: Nov 19, 2026",
+   "why": "Direct match."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "we do not make any operating estimate revisions (on topline FY27 estimates) at this time as we wait for additional proof points around GTA VI unit performance",
+   "why": "Direct match."
+  }
+ ],
+ "faithful": 14,
+ "distorted": 0,
+ "unsupported": 1,
+ "faithful_rate": 0.933,
+ "dim": "fidelity",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

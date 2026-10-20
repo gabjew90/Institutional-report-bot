@@ -1,0 +1,53 @@
+{
+ "metric": 1,
+ "total_cards": 280,
+ "fragmentation_sets": [
+  {
+   "subject": "Friday's VIX/options panic and hedge-fund de-risking spike",
+   "labels": [
+    "equity positioning flows",
+    "vix panic hedging spike"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Rising yields driving a quality/defensive rotation trade (cyclicals/momentum pressured, GS catch-up/catch-down baskets)",
+   "labels": [
+    "us equity outlook",
+    "quality vs momentum rotation"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "JPM global regional equity positioning (DM long US/Asia vs Europe, plus EM-specific trade ideas, with Taiwan/Korea calls repeated in both)",
+   "labels": [
+    "us vs europe equity rotation",
+    "em equity trade ideas"
+   ],
+   "cards": 18
+  },
+  {
+   "subject": "JPM Q3 investment-grade credit technicals (issuance, ratings migration, fund flows)",
+   "labels": [
+    "ig ratings migration trends",
+    "ig issuance trends",
+    "ig credit flows dispersion"
+   ],
+   "cards": 15
+  }
+ ],
+ "fragmented_mass_share": 0.29,
+ "mis_merges": [],
+ "pass": false,
+ "notes": "Ledger header states 954 cards for the day but only 280 are enumerated under labels here; totals and share use the 280 actually shown. misc holds 12/280 (4.3%) of cards as declared overflow, not scored as fragmentation or mis-merge.",
+ "dim": "grouping",
+ "agent": "a",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}

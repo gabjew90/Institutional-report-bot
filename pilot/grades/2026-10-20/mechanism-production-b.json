@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt",
+ "source_span": "AI Credit Spreads (GSUCHS30) and hyperscalers (GSXUHYPR) specifically are at the widest levels of the year. The last time spreads were nearly this high, the underlying equities were 15% lower. ... Translation: either the hyperscaler bond market is wrong, or hyperscaler stocks have another 15% to fall.",
+ "source_chain": "Goldman's hyperscaler credit basket is at its widest of the year, a level last seen when the stocks were 15% lower (credit historically leads equities) [21018], therefore either the bond market is mispricing risk or the stocks have 15% to fall; that read is reinforced by record hyperscaler CDS, junk project-finance bonds down to $94 from $101, and CoreWeave-dependent concentration (7 of 20 bonds, $14bn, with CoreWeave's own 5yr CDS at 1,117bp implying 63% default odds) [20912, 20981]. JPMorgan's Rosenbaum counters that the widening (12bp WoW to 148bp, dispersion 21.2bp) is overdone because the $117bn of new hyperscaler debt skewed to higher-rated issuers, so ratings haven't deteriorated \u2014 unless earnings show weakness [21003/21021]. JPM's trading desk (Crosby) locates the real risk one rung down, in levered neocloud/project-finance/GPU-deal borrowers rather than the hyperscalers themselves [21021], while Goldman's own trader Shelofsky breaks from Miller to call the hyperscaler basket 70bp cheap and the year-end setup constructive [20981]. Invalidation: hyperscaler earnings this week (Meta) and next decide it, since earnings releases marked the prior wides last summer [21003].",
+ "pulse_chain": "Goldman's AI credit baskets sit at the widest of the year, a level last seen when hyperscaler stocks were 15% lower, therefore either the bond market is wrong or equities have another 15% to give \u2014 backed by record CDS, HY project-finance bonds at $94 vs $101 over summer, and CoreWeave concentration (7/20 bonds, $14bn, CoreWeave 5yr CDS at 1,117bp implying 63% default odds). JPMorgan's Rosenbaum reads the same data as overdone (12bp wider to 148bp widest since July 2026, dispersion 21.2bp highest since May 2025; $117bn debt increase offset by higher-rated issuance mix) unless earnings show weakness. JPMorgan's credit desk puts the real stress one rung down in GPU-capacity/project-finance/chip-deal borrowers. Goldman's own Shelofsky sides nearer JPMorgan, calling the basket 70bp cheap and the year-end setup constructive. Invalidation: this week's and next week's earnings (Meta Wednesday) settle it, since earnings marked the wides last summer too.",
+ "preserved": true,
+ "why": "Every step, figure, and invalidation condition (earnings this week/next, Meta) is reproduced with the same direction and the same bank attached to each claim (Miller's bear case, Rosenbaum's overdone case, Crosby's one-rung-down nuance, Shelofsky's constructive trading-desk view), with only compression and paraphrase, no reversed or invented steps.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

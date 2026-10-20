@@ -1,0 +1,148 @@
+{
+ "metric": 2,
+ "artifact": "production",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt",
+   "span": "The last time credit got this wide, in July, the stocks were roughly 15% lower than they are now.",
+   "why": "Goldman's Louis Miller's note states the same comparison between credit spread width now and in July, with hyperscaler equities 15% lower at that time."
+  },
+  {
+   "id": "s2",
+   "grade": "unsupported",
+   "live_market": false,
+   "source_file": "",
+   "span": "",
+   "why": "This is meta-commentary about the pulse's own reporting style, not a market fact or a bank's stance; no source document addresses it.",
+   "searched": [
+    "atmospheric",
+    "specific rather than"
+   ]
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt",
+   "span": "Hyperscaler CDS just hit a fresh record",
+   "why": "CDS (credit default swaps) is literally the cost of insuring debt against default; Goldman's note states it hit a fresh record."
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20981__gs-crook-gs-morning-1-connecting-you-to-gs-2-credit-update-3.txt",
+   "span": "Looking at the high yield project financing bonds, they're trading around $94, down from $101 in the summer.",
+   "why": "Exact match on both price levels and timeframe."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21021__jpm-us-market-intelligence-morning-briefing.txt",
+   "span": "the funding costs are now more about levered borrowers, specifically neoclouds, data center project finance, and GPU deals",
+   "why": "Quoted from JPMorgan's Credit Trading Desk (Christian Crosby); neoclouds = GPU-capacity renters, GPU deals = chip-purchase deals, matching the sentence's three categories."
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20916__ai-unwinds-hedge-funds-just-dumped-ai-stocks-at-the-2nd-fast.txt",
+   "span": "all of the cumulative net buying in this group since the start of 2025 by hedge funds has now been reversed",
+   "why": "Goldman Prime data shows the entire multi-year net buy was undone in one week (Oct 8-14), i.e. a full reversal, not a trim."
+  },
+  {
+   "id": "s7",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20916__ai-unwinds-hedge-funds-just-dumped-ai-stocks-at-the-2nd-fast.txt",
+   "span": "driven by long sales outpacing short sales 3.5 to 1. Put differently, this was mostly longs puking, with shorts merely adding insult to injury.",
+   "why": "The AI-specific unwind the sentence is describing (tied to s6) was explicitly driven by selling existing longs, not by adding shorts (longs outpaced shorts 3.5:1 per the same Goldman note). The 213.9%/83rd-percentile gross-leverage figure is real and correctly quoted (GS Garrett weekend prep), but it describes the broader US L/S book, not the AI-specific mechanism, and the sentence's claimed mechanism contradicts the AI-specific source.",
+   "searched": [
+    "213.9",
+    "added short positions",
+    "reversed it"
+   ]
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20982__gs-duttenhoefer-duttenhoefer-s-daily-19-10-2026-19-oct-2026.txt",
+   "span": "VIX +21% at 20 (highest since July); ... VIX futures traded 3.6x the 20d avg",
+   "why": "All three figures (VIX +21% to 20, VIX futures 3.6x 20-day average, Cboe index put volume all-time record) are each independently confirmed across multiple Goldman notes."
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20984__gs-garrett-weekend-prep-18-oct-2026.txt",
+   "span": "the \"gs panic\" started the week with a one handle \u2026 it finished the week at 7.4 \u2026 one of the sharpest rallies on record",
+   "why": "Matches exactly; and Lee Coppersmith's note (20936.meta.json confirms correct name) independently states the 'first real sign of panic in index protection' line."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21013__bessent-s-pop-quiz-citi-says-dealer-questions-confirm-20y-30.txt",
+   "span": "The bank remains tactically neutral on duration because \"rates continue to flip flop between AI slowdown concerns and rising energy costs\"",
+   "why": "Citi's neutral-duration stance and its stated reason match exactly; Jay Barry's JPMorgan 10s/30s steepener recommendation (21021) profits when 30y yields rise relative to 10y, matching the sentence's description."
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21003__jpm-credit-market-outlook.txt",
+   "span": "markets are pricing the same odds of a Fed hike (17%) as at the start of the week",
+   "why": "JPMorgan's note shows Fed-hike odds ending the week unchanged from where they started, i.e. a round trip over the week (five trading days)."
+  },
+  {
+   "id": "s12",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21016__the-pain-trade-was-long-ai-short-bonds-how-a-neocloud-burst-.txt",
+   "span": "headline prices rose 0.6% on the month and 3.7% on the year (vs 3.6% expected), with gasoline up 9.1% and accounting for more than half of the monthly gain, while core rose 0.3%",
+   "why": "Exact match on every figure in the sentence."
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21021__jpm-us-market-intelligence-morning-briefing.txt",
+   "span": "a hold could provide relief by removing residual near-term hike risk",
+   "why": "JPMorgan's briefing discusses the October 28 FOMC decision and states a hold removes residual near-term hike risk, matching the sentence."
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21014__catch-up-or-catch-down-goldman-says-either-way-momentum-lose.txt",
+   "span": "When the median stock is 15% off its high and the index 2%... of market breadth remains close to its narrowest level since the Dot-Com Bubble",
+   "why": "Both the 15%-off-high figure and the dot-com-era breadth comparison appear in the same Goldman (Ben Snider) note."
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21014__catch-up-or-catch-down-goldman-says-either-way-momentum-lose.txt",
+   "span": "For the \"catch-up\": consumer-facing laggards... Snider wants clients long the \"catch-up,\" hedged with the \"catch-down,\"... Goldman is sticking with its year-end S&P target of 8,000... and 8,700 over 12 months",
+   "why": "Every element (long consumer-facing laggards, hedge with defensive healthcare/staples, short momentum, S&P targets 8,000/8,700) matches Ben Snider's Goldman note."
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

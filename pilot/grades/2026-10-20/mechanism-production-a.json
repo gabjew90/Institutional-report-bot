@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "production",
+ "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt (cross-checked against 20981__gs-crook..., 20912__who-s-next-meet-the-junk-bonds..., 21003__jpm-credit-market-outlook.txt, 21021__jpm-us-market-intelligence-morning-briefing.txt)",
+ "source_span": "\"AI Credit Spreads (GSUCHS30) and hyperscalers (GSXUHYPR) specifically are at the widest levels of the year. The last time spreads were nearly this high, the underlying equities were 15% lower.\" ... \"Translation: either the hyperscaler bond market is wrong, or hyperscaler stocks have another 15% to fall.\"",
+ "source_chain": "Goldman's Louis Miller: hyperscaler/AI credit spreads have widened to the year's widest level while hyperscaler equities sit near highs, therefore (same spread level last seen in July coincided with equities 15% lower) either the bond market is mispricing risk or equities still have 15% to fall, therefore the debate has shifted from capex growth to how that capex gets financed. Invalidation, from the bank-vs-bank split the note itself sits inside: JPMorgan's Rosenbaum (21003/21021) counters that the $117bn YTD hyperscaler debt increase came from higher-rated issuers whose average rating improved, with the real levered stress one rung down in GPU/project-finance deals, so the widening is overdone unless earnings reveal fundamental weakness; Goldman's own Shelofsky (20981) sides with that read, calling the basket 70bps cheap and the year-end setup constructive. Earnings (starting with Meta) are the explicit resolving catalyst on both sides.",
+ "pulse_chain": "Goldman's two AI credit baskets sit at the year's widest levels while hyperscaler stocks are near highs; Miller's own precedent implies either the bond market is wrong or equities have 15% to fall, reinforced by record hyperscaler CDS, HY project-finance bonds down from $101 to $94, and the CoreWeave concentration (7 of 20 bonds, $14bn, CDS implying 63% default odds). JPMorgan's Rosenbaum reads it as overreaction: $117bn of new hyperscaler debt came from higher-rated issuers whose ratings improved, dispersion/spread moves (148bp, 21.2bp) notwithstanding, so it's overdone unless earnings show real weakness; JPMorgan's desk locates the true stress in GPU/project-finance/data-center borrowers one rung down; Goldman's Shelofsky sides with JPMorgan's read (70bps cheap, constructive into year-end). Earnings (Meta Wednesday) are named as the resolving catalyst.",
+ "preserved": true,
+ "why": "Every step, figure, bank attribution and the earnings invalidation in the pulse's chain matches what each named desk actually argued across the Miller, Shelofsky, Rosenbaum and JPM-briefing source notes, with no reversed step, swapped invalidation, or invented mechanism.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

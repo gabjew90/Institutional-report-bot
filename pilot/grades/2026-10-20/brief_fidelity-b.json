@@ -1,0 +1,92 @@
+{
+ "metric": "2a",
+ "briefs": [
+  {
+   "id": "d11",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Both credit and equity markets now debate availability AND cost of AI capital, therefore heavy risk reduction hit stocks/credit/cyclicals this week (CPI, oil, ASML/TSMC, rates re-impingement) therefore flows and options show genuine capitulation (largest tech-selling week in a decade, VIX to 20, record SPX puts), therefore Q3 earnings starting with META must restore confidence before his base case of Nov-Dec strength plays out",
+   "brief_chain": "New, more complicated AI-financing phase triggers heavy risk reduction across equities/credit/cyclicals this week, therefore flows/options confirm a genuine washout (largest tech-selling week in a decade, 35th-percentile AI exposure, VIX to 20, record SPX puts), therefore META-led Q3 earnings must restore confidence before the November-December strength base case",
+   "distortions": [
+    {
+     "what": "Brief says 'NDX and S&P broke down from their early-October breakout' as a compressed paraphrase of the source's 'NDX went 0-5 and S&P dropped 2%... lost that escape velocity'",
+     "material": false,
+     "would_the_trade_change": "No \u2014 same substantive claim (the early-October breakout failed this week), just compressed phrasing"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d22",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI financing scrutiny (CoreWeave, frontier-lab economics) widens AI credit spreads and erases the leaders-vs-laggards basket's H1 gains, therefore a sharp positioning unwind follows (VIX futures volume, record CBOE puts, net leverage down 3.2pts, largest Global Tech selling since 2016) and Nasdaq/semis sell off hard and de-rate, therefore GS desk voices call it rotation not capitulation given SPX-ex-AI outperformance, quality new highs, improved breadth and washed-out positioning, therefore this week's and next week's earnings will decide the next move",
+   "brief_chain": "AI-growth optimism gives way to a funding-cost debate that widens credit spreads and erases the leaders-vs-laggards basket's H1 gains, therefore a positioning unwind and tech/semi selloff follow, therefore GS frames this as rotation not capitulation given ex-AI outperformance, quality highs, better breadth and washed-out positioning/sentiment, therefore earnings confirmation this week and next decides the next move",
+   "distortions": [
+    {
+     "what": "Brief states 'GS calls this rotation, not capitulation' as a single attributed GS view; the source builds that conclusion across several named floor voices (Miller's 'rotate rather than collapse', the Synthesis's momentum-to-fundamental framing) rather than one explicit 'rotation not capitulation' line",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the synthesized characterization matches the combined substance of the named voices in the note"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d3",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "AI hyperscaler credit spreads are at the year's widest, and history says that gap implies either credit is wrong or stocks have 15% further to fall, therefore supporting credit/equity evidence (CDS records, CoreWeave-dependent junk bonds, AI basket down 25%) plus a capex-math shift (growth decelerating, EPS contribution turning negative by 2028) corroborate caution, therefore broader internals (puts, high beta, growth pessimism) confirm it while valuation (21x NDX) stays reasonable, therefore Miller calls for rotation not a crash and recommends five specific trades",
+   "brief_chain": "AI hyperscaler credit spreads at the year's widest imply either credit is wrong or stocks have 15% more to fall, therefore supporting evidence and a capex-to-earnings math shift (EPS contribution turning negative by 2028) corroborate caution, therefore broader internals support caution while NDX valuation stays undemanding, therefore Miller is not calling a crash but recommends five rotation-based trades",
+   "distortions": [],
+   "material_count": 0,
+   "non_material_count": 0
+  },
+  {
+   "id": "d1",
+   "tier": "top",
+   "bank": "Goldman Sachs",
+   "source_chain": "Hedge funds sold AI stocks for a sixth straight day to an extreme not seen since ChatGPT's launch, erasing roughly half of several fund cohorts' 2026 gains since June, therefore Wilson argues sentiment has overshot bearish just as it overshot bullish in late Q2, and with no evidence of slowing compute demand expects leadership to flip to the biggest self-funding AI spenders through Q3 earnings, therefore two catalysts (CoreWeave insurer-capital comment, frontier-lab economics debate) drove the week and CoreWeave itself cratered 15% with record CDS, therefore Wilson sees the break lower in bond yields as more significant than the equity moves (consistent with GS's bond upgrade, complicated by oil near $100), and ZeroHedge counters that any AI bounce is a positioning trade, not a verdict, until CoreWeave's bondholders say otherwise, with Meta's Oct 21 earnings the next test",
+   "brief_chain": "Hedge funds sold AI stocks for a sixth straight day to an extreme not seen since ChatGPT's launch, giving back roughly half 2026 gains since June, therefore Wilson calls this a bearish overshoot and expects leadership to flip to self-funding AI investors given no evidence of slowing compute demand, therefore two catalysts (insurer capital comment, frontier-lab debate) drove the week and hit CoreWeave hard, therefore Wilson reads the bond-yield break as more significant and consistent with GS's bond upgrade (complicated by oil near $100), and ZeroHedge counters any bounce is a positioning trade until CoreWeave bondholders say otherwise, with Meta's Oct 21 earnings the next test",
+   "distortions": [
+    {
+     "what": "Brief states Asia/TMT/global L/S funds 'gave back roughly half their 2026 gains since June' as one aggregate figure; per-cohort the source shows Asia gave back ~60% (40%\u219216%), TMT ~50% (24%\u219212%), and Global ~41% (17%\u219210%)",
+     "material": false,
+     "would_the_trade_change": "No \u2014 all three cohorts show a comparable large giveback in the 40-60% range; 'roughly half' is a fair aggregate rounding, not a changed magnitude of the call"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  },
+  {
+   "id": "d8",
+   "tier": "rest",
+   "bank": "TS Lombard",
+   "source_chain": "This is a preview of vulnerabilities for an upcoming AI-bust scenario note, not a bubble call or timing call, therefore: revenue growth is still mostly capex recycling not genuine end-user spend; revenue growth badly lags the return-on-capital hurdle rate; leverage is rising fast and concentrated outside hyperscalers' own pristine balance sheets; that debt isn't systemic alone but could cascade via cancelled orders into a chip glut; accounting quirks flatter balance sheets (stretched subprime comparison); and the trigger could be external \u2014 rate hikes or a political backlash (including public dislike of datacenters and job fears) rather than something internal to the boom",
+   "brief_chain": "Preview of vulnerabilities for an AI-bust scenario note, not a bubble call or timing call: revenue still mostly capex recycling; returns badly lag the capital hurdle rate; leverage rising fast outside hyperscalers' own balance sheets, toward $2tn by end-2027; non-systemic debt could still cascade into a chip glut via cancelled orders; accounting quirks flatter balance sheets (stretched subprime comparison); trigger could be external (rate hikes or political backlash)",
+   "distortions": [
+    {
+     "what": "Brief compresses the political-backlash trigger to 'political backlash against AI and datacenters,' dropping the source's specific detail that ordinary people dislike AI, don't want to live near datacenters, worry about jobs, and vote, with one high-profile accident able to turn AI toxic",
+     "material": false,
+     "would_the_trade_change": "No \u2014 the compressed version preserves the same vulnerability (politics as an external trigger) without changing its substance"
+    }
+   ],
+   "material_count": 0,
+   "non_material_count": 1
+  }
+ ],
+ "material_total": 0,
+ "non_material_total": 4,
+ "audited": 5,
+ "dim": "brief_fidelity",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "4088cf5290e7"
+ },
+ "failed": false,
+ "problems": []
+}

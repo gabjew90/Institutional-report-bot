@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt",
+ "source_span": "AI Credit Spreads (GSUCHS30) and hyperscalers (GSXUHYPR) specifically are at the widest levels of the year. The last time spreads were nearly this high, the underlying equities were 15% lower.",
+ "source_chain": "Hyperscaler credit spreads sit at the year's widest while hyperscaler equities have only begun to roll over, therefore (historical precedent) the last time credit was this wide the stocks were 15% lower than today, therefore either the bond market is wrong or the stocks have another 15% to fall; invalidation is the next hard data point, which Goldman frames as Microsoft's earnings alongside the Oct 28 Fed decision and which JPMorgan's own note (21003) frames as hyperscaler earnings generally, since 'earnings releases marked the wides in hyperscaler spreads this summer.'",
+ "pulse_chain": "Hyperscaler credit spreads (Goldman's baskets) sit at the year's widest while equities have only begun to roll over, therefore the same 15%-lower precedent applies, therefore either the bond market is wrong or equities have 15% to give (Miller's framing, attributed to Goldman), supported by CDS records, distressed CoreWeave-dependent data-center bonds and falling HY prices; JPMorgan's Rosenbaum counters the widening is overdone unless earnings show fundamental weakness, and JPM's credit desk (Crosby) locates the real stress one rung down in levered borrowers rather than hyperscalers themselves; Goldman's own Shelofsky leans toward JPM's constructive read; invalidation is explicitly earnings, with Meta this week and JPMorgan's point that earnings releases marked the summer wides.",
+ "preserved": true,
+ "why": "The pulse keeps Miller's credit-vs-equity gap and its 15%-either-way stakes intact, correctly attributes the 'overdone unless earnings weaken' counter and the one-rung-down stress read to JPMorgan (verified in 21003 and 21021), and swaps no invalidation condition \u2014 it sharpens the same earnings catalyst both notes already name (Microsoft/Fed Oct 28 in the GS write-up, 'earnings releases marked the wides' in JPM) into this week's Meta print, which is compression, not reversal.",
+ "dim": "mechanism",
+ "agent": "a",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

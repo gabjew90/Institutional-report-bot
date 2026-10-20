@@ -1,0 +1,140 @@
+{
+ "metric": 2,
+ "artifact": "shadow",
+ "sentences": [
+  {
+   "id": "s1",
+   "grade": "unsupported",
+   "live_market": false,
+   "why": "Self-referential editorial framing about the pulse's own evidence quality; not a bank's stance and not checkable against any source document.",
+   "searched": [
+    "atmospheric",
+    "specific rather than"
+   ]
+  },
+  {
+   "id": "s2",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21015__hartnett-the-sell-signal-is-over-now-watch-chip-prices.txt",
+   "span": "\"first data centers, now hyperscaler CDS just hit all time wides\""
+  },
+  {
+   "id": "s3",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21016__the-pain-trade-was-long-ai-short-bonds-how-a-neocloud-burst-.txt",
+   "span": "its five-year CDS closed at a record 1,117bps, which the market translates into roughly 63% odds of default within five years"
+  },
+  {
+   "id": "s4",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20936__gs-coppersmith-us-equities-heightened-demand-for-protection-.txt",
+   "span": "Friday was the first real sign of panic in index protection, following weeks of significant damage in individual stocks and client portfolios.",
+   "why": "Coppersmith quote confirmed in gs-coppersmith note; the panic-gauge one-handle-to-7.4 figure confirmed separately in GS Garrett's weekend prep (\"the 'gs panic' started the week with a one handle ... it finished the week at 7.4 ... one of the sharpest rallies on record\"), both Goldman desk sources, correctly not conflated as a single Coppersmith quote."
+  },
+  {
+   "id": "s5",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21016__the-pain-trade-was-long-ai-short-bonds-how-a-neocloud-burst-.txt",
+   "span": "headline prices rose 0.6% on the month and 3.7% on the year (vs 3.6% expected), with gasoline up 9.1% and accounting for more than half of the monthly gain, while core rose 0.3%"
+  },
+  {
+   "id": "s6",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20985__gs-goel-conversations-19-oct-2026.txt",
+   "span": "the weakness beneath the AI surface has not translated into indiscriminate selling elsewhere ... the broader market continues to rotate rather than collapse"
+  },
+  {
+   "id": "s7",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt",
+   "span": "The S&P 500 ex-AI (SPXXAI) has outperformed the S&P by 586bps since October 6",
+   "why": "350-constituent figure from gs-goel-conversations (\"roughly 350 S&P constituents finishing higher last week\"); Health Care 5.3% from catch-up-or-catch-down (\"Health Care was the best S&P sector of the week, up 5.3%\"); all Goldman desk sources."
+  },
+  {
+   "id": "s8",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21019__nvidia-gets-690bn-the-other-499-get-340bn-tracing-every-doll.txt",
+   "span": "Moore calls NVDA the best risk/reward \"as the market questions 2027 AI capex,\" at 15x FY28 EPS",
+   "why": "Joe Moore is Morgan Stanley's semis analyst (MS sees a $1 trillion accelerator market...), cited under a Semis section, supporting \"best risk and reward in chips.\""
+  },
+  {
+   "id": "s9",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20996__gs-saboureault-positioning-mondays-week-42-19-oct-2026.txt",
+   "span": "the SOX index faced its worst week of performance this year (-11%)",
+   "why": "Eighth-session streak from gs-bartlett (\"finishing down eight consecutive sessions, the longest streak since May '06\"); 29x-to-17x multiple from gs-goel-conversations (\"Semiconductors have de-rated from roughly 29x forward earnings this summer to 17x today\")."
+  },
+  {
+   "id": "s10",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/21009__apple-is-doing-something-it-has-never-done-before.txt",
+   "span": "AAPL is trading near all-time highs, closing in on NVDA as the world's most valuable company ... Apple has now decoupled from the rest of the Magnificent 7 as well"
+  },
+  {
+   "id": "s11",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20935__gs-callahan-gs-us-tmt-drawdown-18-oct-2026.txt",
+   "span": "AAPL ... remains the clearest beneficiary of flight-to-safety bid within tech",
+   "why": "\"Rather than a funder of it\" is interpretive framing added on top of sourced content (beneficiary of AI trade, flight to safety); it does not contradict or alter the sourced figures/claims, so treated as faithful synthesis rather than distortion."
+  },
+  {
+   "id": "s12",
+   "grade": "distorted",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "2FQ27 Earnings Preview ... 19 October 2026 | 1:48AM EDT ... release of GTA VI on November 19th",
+   "why": "The September-end quarter (2FQ27, EPS column \"9/26E\") and GTA VI's Nov 19 release date are both confirmed. But no source document states Take-Two's earnings report date, so the specific \"five weeks out\" gap is an invented figure not traceable to any source; the preview itself is dated Oct 19, only about four weeks before the Nov 19 launch, not five.",
+   "searched": [
+    "five weeks",
+    "5 weeks",
+    "report date TTWO",
+    "November 2",
+    "earnings calendar"
+   ]
+  },
+  {
+   "id": "s13",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "EV/GAAP EBITDA: 33.0x EV/GAAP EBITDA (from 35.0x) ... 12m Price Target: $285.00 Price: $205.28 Upside: 38.8%"
+  },
+  {
+   "id": "s14",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "GTA VI: Nov 19, 2026"
+  },
+  {
+   "id": "s15",
+   "grade": "faithful",
+   "live_market": false,
+   "source_file": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+   "span": "we do not make any operating estimate revisions (on topline FY27 estimates) at this time as we wait for additional proof points around GTA VI unit performance (in the weeks following the launch/release)"
+  }
+ ],
+ "faithful": 13,
+ "distorted": 1,
+ "unsupported": 1,
+ "faithful_rate": 0.867,
+ "dim": "fidelity",
+ "agent": "tiebreak",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "224632dfdf6a"
+ },
+ "failed": false,
+ "problems": []
+}

@@ -1,0 +1,19 @@
+{
+ "metric": 3,
+ "artifact": "shadow",
+ "source_file": "pilot-data/pilot/source-text/2026-10-19/21018__trick-or-treat-goldman-s-spooky-chart-pack-shows-ai-credit-p.txt",
+ "source_span": "AI Credit Spreads (GSUCHS30) and hyperscalers (GSXUHYPR) specifically are at the widest levels of the year. The last time spreads were nearly this high, the underlying equities were 15% lower... Translation: either the hyperscaler bond market is wrong, or hyperscaler stocks have another 15% to fall.",
+ "source_chain": "Goldman's hyperscaler/data-center AI credit spreads have widened to their widest levels of the year (A), therefore because the last time spreads were this wide the same equities were 15% lower than today's price (B), therefore the bond market and stock market now disagree and one side must be wrong: either credit is overpricing the risk or hyperscaler equities have another 15% to fall (C). Invalidation (per the note's own framing): the bet that AI damage stays contained to credit only holds if credit stabilizes rather than equities catching down to it.",
+ "pulse_chain": "Goldman's two AI credit baskets sit at their widest levels of the year (A), therefore because the last time debt traded this wide the same hyperscaler stocks were 15% lower than now (B), therefore that gap is the argument: either the bond market is wrong or those equities have another 15% to give (C). Invalidation: earnings this week (Meta Wednesday, 14% of the S&P reporting) settle which side is right, per JPMorgan's observation that earnings releases marked the prior wides in hyperscaler spreads.",
+ "preserved": true,
+ "why": "The pulse reproduces Miller's A-therefore-B-therefore-C chain and its 15%-gap conclusion almost verbatim with correct attribution to Goldman's Louis Miller, and supplies an invalidation (earnings resolve the credit/equity disagreement) that is consistent with the gap's own logic and is itself correctly sourced to JPMorgan rather than misattributed to Miller.",
+ "dim": "mechanism",
+ "agent": "b",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "b4bd713515b7"
+ },
+ "failed": false,
+ "problems": []
+}

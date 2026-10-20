@@ -1,0 +1,53 @@
+{
+ "metric": 1,
+ "total_cards": 954,
+ "fragmentation_sets": [
+  {
+   "subject": "Friday's equity-vol panic / positioning unwind (VIX spike, record put volume, hedge-fund de-grossing)",
+   "labels": [
+    "equity positioning flows",
+    "vix panic hedging spike"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "Rotation from cyclicals/momentum into quality/defensives as higher rates compress multiples",
+   "labels": [
+    "us equity outlook",
+    "quality vs momentum rotation"
+   ],
+   "cards": 24
+  },
+  {
+   "subject": "IG credit market conditions this week (issuance volume, ratings migration, fund flows) \u2014 one JPM credit update split by sub-topic",
+   "labels": [
+    "ig ratings migration trends",
+    "ig issuance trends",
+    "ig credit flows dispersion"
+   ],
+   "cards": 15
+  },
+  {
+   "subject": "JPM global equity positioning / regional trade ideas (DM rotation and EM calls from the same strategy note)",
+   "labels": [
+    "us vs europe equity rotation",
+    "em equity trade ideas"
+   ],
+   "cards": 18
+  }
+ ],
+ "fragmented_mass_share": 0.29,
+ "mis_merges": [],
+ "pass": false,
+ "notes": "Share computed over the 280 cards actually enumerated in this ledger excerpt (not the stated 954, which the visible label counts don't sum to); the two VIX/positioning labels share near-verbatim duplicate cards (e.g. 'VIX futures traded 3.6x their 20-day average' appears in both), the strongest single signal of fragmentation. No mis-merge rises to the 'distinct subjects, would change theme selection' bar \u2014 each label's contents stay on one coherent thesis even where a stray aside (e.g. the politics card inside ai power shortfall impact) brushes an adjacent topic.",
+ "dim": "grouping",
+ "agent": "b",
+ "artifact": "",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "2a4738ba17a7"
+ },
+ "failed": false,
+ "problems": []
+}
