@@ -1,0 +1,163 @@
+{
+ "brief": "Apple has been largely untouched by the recent tech-market selloff, diverging not only from the semiconductor index (SOX), which the note says is unsurprising, but now also from the rest of the Magnificent 7, a divergence the note calls remarkable. AAPL trades near all-time highs, closing in on NVDA as the world's most valuable company. The note frames Apple as tech's defensive play: its forward FCF yield of about 3.15% sits above the Nasdaq 100's (NDX), and Apple's rolling two-month correlation with the NDX has turned negative for the first time on record, which the note reads as a flight to safety within tech. The note also revives a September 23 thesis that Apple is an unintended beneficiary of the AI trade. Since that note, AAPL has outperformed NVDA, and the six-month performance gap between the two has widened further. Apple's implied volatility has risen as investors buy protection, but that stress is described as modest next to the broader surge of fear across tech.",
+ "cards": [
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "Apple's divergence versus the semiconductor index (SOX) during the current market selloff is not surprising.",
+   "anchor": "The massive divergence versus SOX isn't particularly surprising",
+   "topic": "Apple defensive decoupling",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "Apple has now decoupled from the rest of the Magnificent 7 as well.",
+   "anchor": "Apple has now decoupled from the rest of the Magnificent 7 as well.",
+   "topic": "Apple defensive decoupling",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "AAPL is trading near all-time highs and closing in on NVDA as the world's most valuable company.",
+   "anchor": "AAPL is trading near all-time highs, closing in on NVDA as the world's most valuable company.",
+   "topic": "Apple defensive decoupling",
+   "status": "level",
+   "instruments": [
+    "AAPL",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "Apple's forward FCF yield is around 3.15%, above that of the NDX.",
+   "anchor": "a forward FCF yield of around 3.15%, above that of the NDX.",
+   "topic": "Apple defensive decoupling",
+   "status": "level",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "Apple's rolling two-month correlation with the NDX has turned negative for the first time in history.",
+   "anchor": "Apple's rolling two-month correlation with the NDX has turned negative for the first time in history.",
+   "topic": "Apple defensive decoupling",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "Apple is increasingly looking like both a defensive winner and a potential unintended beneficiary of the AI trade.",
+   "anchor": "Apple is increasingly looking like both a defensive winner and a potential unintended beneficiary of the AI trade.",
+   "topic": "Apple defensive decoupling",
+   "status": "forecast",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "Since the September 23 note, AAPL has outperformed NVDA, and the six-month performance divergence between them is even more striking.",
+   "anchor": "Since then, AAPL has outperformed NVDA, but zoom out and the six-month performance divergence is even more striking.",
+   "topic": "Apple defensive decoupling",
+   "status": "released",
+   "instruments": [
+    "AAPL",
+    "NVDA"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "six months"
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "Apple's implied volatility has moved higher as investors scramble for equity protection.",
+   "anchor": "Apple volatility has moved higher as investors scramble for equity protection",
+   "topic": "Apple defensive decoupling",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "The Market Ear",
+   "document": "Apple Is Doing Something It Has Never Done Before",
+   "claim": "The stress in Apple remains modest compared to the explosion in fear across the broader tech space.",
+   "anchor": "the stress in Apple remains modest compared to the explosion in fear across the broader tech space.",
+   "topic": "Apple defensive decoupling",
+   "status": "released",
+   "instruments": [
+    "AAPL"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-19/21009__apple-is-doing-something-it-has-never-done-before.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 9,
+  "matched": 9,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 0,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
