@@ -1,12 +1,17 @@
 {
- "attempts": 1,
+ "attempts": 2,
  "given_up": false,
- "last_reason": "reader: drop since April 2025.\", \"anchor\": \"Bank of America, freshly fined $1.2 billion for anti-money-laundering failures, miss",
+ "last_reason": "reader: {\"bank\": \"LSEG Lipper\", \"document\": \"The Pain Trade Was Long AI, Short Bonds\", \"claim\": \"Money market funds saw $46.7 bi",
  "history": [
   {
    "at": "2026-10-19T22:08Z",
    "run_id": "39323953166",
    "reason": "reader: drop since April 2025.\", \"anchor\": \"Bank of America, freshly fined $1.2 billion for anti-money-laundering failures, miss"
+  },
+  {
+   "at": "2026-10-20T01:09Z",
+   "run_id": "39350927950",
+   "reason": "reader: {\"bank\": \"LSEG Lipper\", \"document\": \"The Pain Trade Was Long AI, Short Bonds\", \"claim\": \"Money market funds saw $46.7 bi"
   }
  ]
 }
