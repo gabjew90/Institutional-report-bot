@@ -828,3 +828,9 @@ Validator CLI could not run in the grader job (`No module named 'aiohttp'`), so 
 - **judgment** — 17:18 UTC, SUNNY, follow-up on dilution: ungrounded answer with no tools. It affirms a multi-year drawdown, asserts a warrant-driven share wall, and presents a reverse split as a remedy. Only the Citi 2011 split is verified. Suggested direction: historical-statistic questions should route to grounded search, not LOCAL/FACT.
 - **infra note (not FAIL)** — 19:00 UTC, BK: `fantasy-percent` guard stripped the only sentence, leaving a footer-only reply. The guard-floor (`guard_floor.gutted`) apparently did not stand down, or a short answer is below its 25-word floor. Candidate check: after all guards, if the body has fewer than 3 words besides the `Data:` footer, restore the raw model output.
 - **tooling note** — the CI validator CLI lacks `aiohttp`, so `repetition-glitch` is the only rule it can report. Triage by CLI is not informative until it is installed in the workflow.
+
+## 2026-10-19
+
+no findings (0 FAIL). Two CONCERNs for session material:
+- **judgment** — 11:50 UTC, Arxfic, "simulated returns": `figure-provenance` stripped the correct NOW 138P line (-14.9% from payload 2.56 vs entry 3.01) and the answer posted two of three positions with no disclosure. If a stripped bullet was one of a set the user asked for, the reply should say a position was dropped.
+- **judgment** — 19:39 UTC, Ry_spaceman, "whats the price of $tree token" as a reply to a Tree Capital promo: the bot priced LendingTree and said "not a crypto token". No token feed exists, so a decline is the better shape.

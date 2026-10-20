@@ -1241,3 +1241,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **deterministic-fixable** — `pulse-context/latest.json` dumped 20:18Z, 6h after the pulse (eighth day running); live RECAP figures unauditable and the dump's `prev_consensus_block` already quotes the published pulse. Dump the context at run time, not after.
 - **observation** — "78% of 2027 earnings growth" (MS) is not in the dump; the only 78% there is investment advisors' share of AI datacenter bond float. Possible figure mix-up, unverified.
 - **observation** — Series gaps persist: no pulse or verdict for 10-14, no verdict for 10-12, driver files missing for 10-06/09/12/13.
+
+## 2026-10-20
+- **prompt-session** — Breadth brief says Snider expects S&P earnings growth to slow "from 36% this year to 11% in 2027, or 18% once one-off accounting effects are stripped out". The dump has only 29% (2026) and 18% (2027), both adjusted. The 36% and 11% are unsupported and the adversarial pass did not flag them.
+- **deterministic-fixable** — The adversarial pass flagged "Health Care was the best sector at 5.3%" (unsupported-figure) and the soft finding shipped with 0 repairs. A soft unsupported-figure should trigger a repair or strip, as with the 10-16 and 10-19 shipments.
+- **deterministic-fixable** — No STEP 7 self-review file for 10-20 (second day running). Preflight should require `qc-reviews/<ts>.md`.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped at 18:38Z, over 4 hours after the pulse, with pdf_count 54 against 93 in the pulse header (ninth day running). Live RECAP figures and selection are unauditable. Dump at run time.
+- **observation** — The "seven of 20 AI data-center bonds / ~$14B behind CoreWeave" claim comes from ZeroHedge commentary explicitly marked "not Goldman", stated unattributed in the MAIN EVENT.
+- **observation** — The TRADE BOARD carries a One River Asset Management "OW" Google line. The board is meant to carry desk calls only. SpaceX earnings in WHAT TO WATCH has no date detail or estimate.
+- **observation** — Series gaps persist: no verdict for 10-12 and 10-14. Driver file is a condensed note with empty budgets.
