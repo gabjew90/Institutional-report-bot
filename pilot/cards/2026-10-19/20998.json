@@ -1,0 +1,776 @@
+{
+ "brief": "Ahead of Take-Two's 2FQ27 print, Goldman Sachs reiterates Buy and a $285 price target (38.8% upside), trimming the EV/GAAP EBITDA multiple to 33.0x from 35.0x and EV/FCF-SBC to 35x from 40x while raising estimates enough to hold the target flat. On GTA VI (releasing November 19th), GS argues pre-order units are not a valid demand proxy because digital distribution replaced the physical pre-order incentive that drove GTA V comparisons; Google Search and trailer viewership instead point to GTA VI as likely one of the largest AAA releases ever. GS frames FY27 bookings as conservative: implied GTA VI downloads of $1.9bn imply 34mm units, about 27% of a 125mm+ addressable install base, a figure GS calls likely overstated versus install base growth through CYE26; GS makes no estimate revisions yet, awaiting post-launch proof points. Beyond FY27, investor focus shifts to PC/online release timing (unannounced) and a 29-title FY27-29 pipeline, where specific titles matter more than quantity. NBA 2K27's lower review score points to a double-digit unit decline versus 2K26, while Red Dead Redemption and Borderlands show steadier growth. Industry data is mixed: the overall U.S. market fell 9% YoY in August even as Twitch and Steam engagement metrics were mostly positive.",
+ "cards": [
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs reiterates its Buy rating and $285 12-month price target on Take-Two, revising forward operating expense assumptions.",
+   "anchor": "We reiterate our Buy rating, adjust our forward operating estimates on the back of intra-quarter work, and maintain our 12-month price target of $285.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "target",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Take-Two's $285 price target implies 38.8% upside from the $205.28 share price.",
+   "anchor": "12m Price Target: $285.00 Price: $205.28 Upside: 38.8%",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "target",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": "12 months"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Grand Theft Auto VI is scheduled to release on November 19th, ahead of the holiday season.",
+   "anchor": "heading into the holiday season and release of GTA VI on November 19th",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs believes Grand Theft Auto VI pre-order unit sales are not indicative of the title's overall demand and that comparing them to GTA V's pre-order trends is inaccurate.",
+   "anchor": "pre-order unit sales are not indicative of the overall demand for the title, and comparing unit sale trends to GTA V is inaccurate",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs sees more upside than downside bias to its Take-Two FY27 operating estimates.",
+   "anchor": "we see there to be more of an upside (vs. downside) bias to operating estimates/performance",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs is not making any revisions to its Take-Two FY27 topline operating estimates at this time, pending additional proof points after GTA VI's launch.",
+   "anchor": "we do not make any operating estimate revisions (on topline FY27 estimates) at this time",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs assumes implied downloads will contribute $1.5 billion of incremental bookings to Take-Two's FY27 estimates.",
+   "anchor": "implied downloads will contribute $1.5bn in incremental bookings.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs' implied download bookings for GTA VI in FY27 are approximately $1.9 billion.",
+   "anchor": "trends outlined above, our implied download bookings for GTA VI in FY27 are ~$1.9bn.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs assumes titles outside the GTA franchise accounted for approximately $1.1 billion of implied download bookings in FY26.",
+   "anchor": "assume that titles outside of GTA accounted for ~$1.1bn in implied download bookings.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs' current estimates imply GTA VI unit sales of 34 million during FY27.",
+   "anchor": "the above implies that GTA VI unit sales will be 34mm during FY27",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "GTA VI's addressable install base today is composed of more than 125 million users.",
+   "anchor": "GTA VI\u2019s addressable install base today is composed of 125mm+ users across:",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs estimates the PlayStation 5 install base was approximately 93 million during March 2026.",
+   "anchor": "During March 2026, the PS5 install base was ~93mm",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": "March 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs believes the total Xbox X|S install base is more than 35 million today.",
+   "anchor": "we believe that the total Xbox X|S install base is 35mm+ today.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs' GTA VI unit sales assumptions imply approximately 27% penetration of the addressable install base today.",
+   "anchor": "our GTA VI unit assumptions would imply ~27% penetration of the addressable install base today",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs believes its 27% penetration estimate for GTA VI is likely overstated relative to the addressable install base at the end of calendar year 2026.",
+   "anchor": "this rate is likely overstated (relative to the addressable install base at CYE26)",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "CYE26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "GTA V sold in more than 29 million units during its first 6 weeks after its September 2013 release.",
+   "anchor": "the title sold-in 29mm+ units (link) during the first 6 weeks.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs' operating estimates imply a low-double-digit percentage uplift in first full fiscal year unit sales for GTA VI relative to GTA V.",
+   "anchor": "the first full fiscal year of unit sales implies a LDD % uplift relative to GTA V.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs believes GTA VI is likely to be one of the largest AAA game releases ever, noting Take-Two's last major AAA release was RDII in 2018.",
+   "anchor": "the title is likely to be one of the largest AAA releases ever (with TTWO\u2019s last major AAA release being RDII in 2018)",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "The extended trailer for GTA VI released on Netflix on August 27th reached more than 31 million views in about 4 days.",
+   "anchor": "Viewership of the extended look (released on August 27th) on Netflix reached 31mm+ views in ~4 days (link).",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Netflix's ranking in the US app store improved from 96 to 35 on the day it released the GTA VI extended trailer.",
+   "anchor": "ranking in the US app store improving from 96 to 35 on the day of the release.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs notes that indexed Google Search interest for GTA VI ahead of release is running about 50% below where Google Search data was tracking for GTA V ahead of its release.",
+   "anchor": "the indexed Google Search data in the months prior to release for GTA V (Exhibit 3) was ~50% lower relative to where Google Search data",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Since launching June 25th, GTA VI pre-order sales across PlayStation and Xbox have reached more than 6 million units.",
+   "anchor": "Since launching June 25th, pre-order sales for the title across PlayStation & Xbox have reached 6mm+",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs compares current GTA VI pre-order trends to GTA V, which sold more than 7 million units according to third-party data.",
+   "anchor": "comparing trends to GTA V (7mm+ units sold, according to 3P data [link])",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "GTA VI pre-orders have skewed heavily toward the Ultimate Edition, accounting for about 90% of pre-orders per SensorTower data.",
+   "anchor": "We would note that pre-orders have skewed heavily toward the Ultimate Edition (~90% per SensorTower data)",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Take-Two is selling the GTA VI Standard Edition to users for $79.99.",
+   "anchor": "\u201cStandard Edition\u201d which is being sold to users for $79.99.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Take-Two is selling the GTA VI Ultimate Edition for $99.99.",
+   "anchor": "with the \u201cUltimate Edition\u201d being sold for $99.99.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs estimates that each 7.5 million-unit swing in GTA VI sales combined with a 5-percentage-point change in premium mix results in a mid-single-digit percentage impact to Take-Two's FY27 total company bookings estimates.",
+   "anchor": "All else equal, each +/- 7.5mm units of GTA VI & + 5% change to premium mix",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": "FY27"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Take-Two management has noted that 29 titles are expected to be released across FY27-29 from both new and existing IP.",
+   "anchor": "mgmt. has noted that 29 titles are expected to be released across FY27-29 (from both new & existing",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27-29"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "NBA 2K27 has a Metacritic score of 78 versus NBA 2K26's score of 82.",
+   "anchor": "Given review scores surrounding 2K27 (Metacritic score of 78 vs. 2K26 score of 82)",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs expects NBA 2K27 first-year unit sales to be down by a double-digit percentage versus NBA 2K26.",
+   "anchor": "we expect for 2K27 unit sales (in the first year) to be down DD % vs. 2K26.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Recent NBA 2K franchise editions have sold more than 12 million units within their first year post-launch.",
+   "anchor": "2K titles have sold 12mm+ units.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs believes Red Dead Redemption franchise unit sales during FY27/28 could accelerate on the back of the GTA VI launch.",
+   "anchor": "In our view, franchise unit sales during FY27/28 could accelerate on the back of the launch of GTA VI.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": "FY27/28"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "The Borderlands franchise has grown unit sales at a mid-to-low-double-digit percentage rate and surpassed 100 million cumulative units as of the end of FY26.",
+   "anchor": "have grown at a MSD - LDD % growth rate - and as of FYE26, franchise have surpassed 100mm unit sales.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "FYE26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "The U.S. video game market was down 9% year over year during August 2026.",
+   "anchor": "The U.S. video game market was down -9% YoY during August 2026.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "U.S. video game content sales declined 10% year over year, led by declines in mobile.",
+   "anchor": "Content sales declined -10% YoY. The declines were lead by Mobile",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "U.S. video game hardware sales declined 3% year over year, largely driven by the lapping of the Switch 2 launch.",
+   "anchor": "Hardware sales declined -3% YoY. The decline was largely driven by the lapping of",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "U.S. video game accessories sales grew 3% year over year, returning to positive growth in August.",
+   "anchor": "Accessories sales grew +3% YoY. Accessories returned to positive growth in August,",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "August 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Remote Play Device spending grew 39% year over year within the accessories category.",
+   "anchor": "lead by Remote Play Device spending, which grew +39% YoY",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Average Twitch viewers grew year over year during September for the second consecutive month.",
+   "anchor": "The number of average viewers on Twitch during September grew (on a YoY basis) for the second month in a row.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "The number of active partners on Twitch continued to scale, growing 13% year over year in September 2026.",
+   "anchor": "the number of active partners (i.e. creators) on the platform has continued to scale (+13% YoY in September 2026).",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "September 2026"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Steam's peak number of users in games grew 5% year over year during Q3'26.",
+   "anchor": "growing +5% YoY. Purchase trends for Q3 overall declined both on a sequential and YoY",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "low",
+   "timeframe": "Q3'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Steam's total premium platform revenues declined 28% year over year during Q3'26.",
+   "anchor": "with total premium revenues for the platform declining by -28% YoY.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "released",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": "Q3'26"
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs lowers the EV/GAAP EBITDA multiple underlying its Take-Two price target to 33.0x from 35.0x.",
+   "anchor": "33.0x EV/GAAP EBITDA (from 35.0x) applied to our NTM + 1 year",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs lowers the EV/FCF-SBC multiple underlying its Take-Two valuation to 35x from 40x.",
+   "anchor": "35x EV/FCF-SBC (from 40x) applied to our NTM + 4 years estimates",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "level",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs flags possible game release delays or core franchise decay as a risk that could weigh on Take-Two shares.",
+   "anchor": "Possible game release delays &/or core franchise decay could weigh on",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs flags lower units and live services sales for Take-Two's key titles amid an uncertain macro environment as a risk to its Buy rating.",
+   "anchor": "Engagement and user growth - Lower units and live services sales (esp. in this",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs flags potential loss of licensing agreements for key IP and heightened government regulation as a risk to Take-Two shares.",
+   "anchor": "Regulation - Potential loss of licensing agreements for key IP & heightened",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs flags increased competition in the console and mobile markets as a risk to Take-Two shares.",
+   "anchor": "Competition - Increased competition in both the console and mobile market as",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs notes that industry consolidation could unlock synergies among Take-Two's competitors, heightening competitive risk.",
+   "anchor": "heightened competition as consolidation could unlock synergies amongst competitors.",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "Goldman Sachs",
+   "document": "Take-Two Interactive Software Inc. (TTWO): 2FQ27 Earnings Preview: Addressing the Key Debates & Operating Backdrop(1)",
+   "claim": "Goldman Sachs flags sustained or worse-than-expected macroeconomic headwinds as a risk to Take-Two shares.",
+   "anchor": "Macroeconomic environment - Current macroeconomic headwinds sustain and/or",
+   "topic": "Take-Two GTA VI earnings preview",
+   "status": "forecast",
+   "instruments": [
+    "TTWO"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "top",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-19/20998__take-two-interactive-software-inc-ttwo-2fq27-earnings-previe.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 50,
+  "matched": 50,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 1,
+  "labels_over_cap": 0,
+  "misc_cards": 0,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
