@@ -1250,3 +1250,11 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — The "seven of 20 AI data-center bonds / ~$14B behind CoreWeave" claim comes from ZeroHedge commentary explicitly marked "not Goldman", stated unattributed in the MAIN EVENT.
 - **observation** — The TRADE BOARD carries a One River Asset Management "OW" Google line. The board is meant to carry desk calls only. SpaceX earnings in WHAT TO WATCH has no date detail or estimate.
 - **observation** — Series gaps persist: no verdict for 10-12 and 10-14. Driver file is a condensed note with empty budgets.
+
+## 2026-10-21
+- **observation** — Light pulse (`body_source: light`, no new bank research). The context dump's `no_new_research` is true, the window is a 96h fallback, and the newest note is dated 10-19, so the call is consistent with the data. STEP 7's claim that a full corpus was mislabelled looks wrong. Still unexplained: nothing dated 10-20 on a Tuesday. Check Dropbox ingestion for the 10-20 folder.
+- **prompt-session** — The TRADE BOARD on a light day shows desk calls from notes up to four days old with no dates, next to a "no new research" note. Consider dating them or dropping the board on light days.
+- **deterministic-fixable** — Lint `top-3-theme-missing` / `discovered-theme-missing` fire on a light edition (6 soft issues). Skip them when `body_source: light`. EDIT also spent an 82K-char prompt on a 2.3K-char document.
+- **observation** — WATCH "No other tier-one data releases ... this week" and no Oct 28 FOMC, because the economic calendar fell back to a feed with no high-impact rows. Verify whether the FOMC was dropped by the fallback.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 15:32Z, 80+ minutes after the pulse, with a later market snapshot; live RECAP figures unauditable (tenth day running). Dump at run time.
+- **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
