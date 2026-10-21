@@ -1,0 +1,100 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-10-21T14:10:33.695569Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=365",
+   "at": "2026-10-21T14:10:33.751315Z"
+  },
+  "omnipulse": {
+   "decision": "LIGHT",
+   "detail": "no new bank research since the last pulse",
+   "at": "2026-10-21T14:10:33.886447Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "clean",
+   "at": "2026-10-21T14:11:26.469606Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "6 soft issue(s) only (jargon/coverage warnings) — routine may surface but SCRUB rewrite optional",
+   "at": "2026-10-21T14:12:14.163262Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-10-21T14:12:18.469056Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-10-21T14:12:18.542298Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-10-21T14:12:36.706437Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-10-21T14:12:36.745701Z"
+  }
+ },
+ "budgets": {},
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-10-21T14:10:33.695569Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-10-21T14:10:33.751315Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "LIGHT",
+   "at": "2026-10-21T14:10:33.886447Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-10-21T14:11:26.469606Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-10-21T14:12:14.163262Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-10-21T14:12:18.469056Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-10-21T14:12:18.542298Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-10-21T14:12:36.706437Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-10-21T14:12:36.745701Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
