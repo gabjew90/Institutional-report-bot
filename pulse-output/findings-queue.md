@@ -1258,3 +1258,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — WATCH "No other tier-one data releases ... this week" and no Oct 28 FOMC, because the economic calendar fell back to a feed with no high-impact rows. Verify whether the FOMC was dropped by the fallback.
 - **deterministic-fixable** — `pulse-context/latest.json` dumped 15:32Z, 80+ minutes after the pulse, with a later market snapshot; live RECAP figures unauditable (tenth day running). Dump at run time.
 - **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
+
+## 2026-10-22
+- **deterministic-fixable** — Economic calendar fell back to the blended feed (Finnhub down) and WATCH has no FOMC for 10/28 (second day running). Add the FOMC date to the fallback from `world_context`/official calendar, and ping ops when the fallback drops a known FOMC week.
+- **deterministic-fixable** — `released-actual-missing` false-positives on GDP (draft, cost a re-roll) and PCE (final, carried as residual) for events dated 10/29 that are listed as upcoming. Restrict the check to events whose release time has passed.
+- **deterministic-fixable** — Lint `top-3-theme-missing` / `discovered-theme-missing` fire on `body_source: light` (6 soft issues). Skip them on light days.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 15:28Z, about 80 minutes after the pulse, with a later market snapshot (eleventh day running). Live RECAP figures unauditable. Dump at run time.
+- **prompt-session** — TRADE BOARD on a light day lists undated desk calls beside "no new research" (repeat of 10/21). Date the lines or drop the board on light days.
+- **observation** — Light-day call with pdf_count 255 and a 96h window cutoff of 10/18. Log the new-research count and lookback in the gate detail so the call is auditable.
+- **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
