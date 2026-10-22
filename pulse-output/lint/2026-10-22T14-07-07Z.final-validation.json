@@ -1,0 +1,28 @@
+{
+ "violations": [
+  {
+   "kind": "unreconciled-release-figure",
+   "severity": "soft",
+   "message": "5% is stated for Pce but matches neither the ACTUAL nor prev on that event's RELEASED calendar row (row values: [0.34, 3.0, 3.1, 3.8]). Desk previews carry ESTIMATES (2026-07-15: consensus 3.88%/2.86% shipped as the CPI print; actual was 3.5%/2.6%). Verify the figure is the real print, label it as an expectation, or drop it.",
+   "figure": "5",
+   "event": "PCE",
+   "matches_estimate": false,
+   "sentence": "- **Thursday, October 29, 8:30 AM ET: first estimate of third-quarter economic growth and PCE (personal income and outlays).** No consensus posted yet. Both are high-impact prints, and the 10-year sit"
+  },
+  {
+   "kind": "released-actual-missing",
+   "severity": "hard",
+   "message": "Pce has already printed (ACTUAL=0.34%, 3%, 3.1%, 3.8%) and the pulse discusses it, but none of those values appear anywhere in the text. The 2026-08-12 CPI recap shipped three banks' forecasts and never the print. State the actual figure.",
+   "event": "PCE",
+   "actual": [
+    0.34,
+    3.0,
+    3.1,
+    3.8
+   ]
+  }
+ ],
+ "hard_count": 1,
+ "soft_count": 1,
+ "exit_code": 3
+}

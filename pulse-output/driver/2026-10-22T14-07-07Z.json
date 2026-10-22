@@ -1,0 +1,107 @@
+{
+ "gates": {
+  "holiday": {
+   "decision": "CONTINUE",
+   "detail": "",
+   "at": "2026-10-22T14:07:11.375741Z"
+  },
+  "volume": {
+   "decision": "CONTINUE",
+   "detail": "pdf_count=255",
+   "at": "2026-10-22T14:07:13.774281Z"
+  },
+  "omnipulse": {
+   "decision": "LIGHT",
+   "detail": "no new bank research since the last pulse",
+   "at": "2026-10-22T14:07:13.880770Z"
+  },
+  "draft_validate": {
+   "decision": "CONTINUE",
+   "detail": "soft violations only (advisory)",
+   "at": "2026-10-22T14:08:16.194252Z"
+  },
+  "lint": {
+   "decision": "SKIP_SCRUB",
+   "detail": "6 soft issue(s) only (jargon/coverage warnings) — routine may surface but SCRUB rewrite optional",
+   "at": "2026-10-22T14:09:01.732012Z"
+  },
+  "final_validate": {
+   "decision": "CONTINUE",
+   "detail": "no EDIT/SCRUB-introduced hard violations",
+   "at": "2026-10-22T14:09:04.535777Z"
+  },
+  "strip": {
+   "decision": "CONTINUE",
+   "detail": "no internal headers",
+   "at": "2026-10-22T14:09:04.611174Z"
+  },
+  "adversarial": {
+   "decision": "CONTINUE",
+   "detail": "0 hard findings",
+   "at": "2026-10-22T14:09:23.747050Z"
+  },
+  "preflight": {
+   "decision": "PASS",
+   "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit",
+   "at": "2026-10-22T14:09:29.569621Z"
+  }
+ },
+ "budgets": {
+  "draft_rerolls": 1
+ },
+ "history": [
+  {
+   "gate": "holiday",
+   "decision": "CONTINUE",
+   "at": "2026-10-22T14:07:11.375741Z"
+  },
+  {
+   "gate": "volume",
+   "decision": "CONTINUE",
+   "at": "2026-10-22T14:07:13.774281Z"
+  },
+  {
+   "gate": "omnipulse",
+   "decision": "LIGHT",
+   "at": "2026-10-22T14:07:13.880770Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "REROLL_DRAFT",
+   "at": "2026-10-22T14:08:05.584124Z"
+  },
+  {
+   "gate": "draft_validate",
+   "decision": "CONTINUE",
+   "at": "2026-10-22T14:08:16.194252Z"
+  },
+  {
+   "gate": "lint",
+   "decision": "SKIP_SCRUB",
+   "at": "2026-10-22T14:09:01.732012Z"
+  },
+  {
+   "gate": "final_validate",
+   "decision": "CONTINUE",
+   "at": "2026-10-22T14:09:04.535777Z"
+  },
+  {
+   "gate": "strip",
+   "decision": "CONTINUE",
+   "at": "2026-10-22T14:09:04.611174Z"
+  },
+  {
+   "gate": "adversarial",
+   "decision": "CONTINUE",
+   "at": "2026-10-22T14:09:23.747050Z"
+  },
+  {
+   "gate": "preflight",
+   "decision": "PASS",
+   "at": "2026-10-22T14:09:29.569621Z"
+  }
+ ],
+ "lint": {
+  "last_hard": 0
+ }
+}
