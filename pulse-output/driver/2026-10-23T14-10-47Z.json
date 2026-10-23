@@ -1,0 +1,15 @@
+{
+ "gates": {
+  "holiday": {"decision": "CONTINUE", "detail": "", "at": "2026-10-23T14:10:51.263148Z"},
+  "volume": {"decision": "CONTINUE", "detail": "pdf_count=93", "at": "2026-10-23T14:10:54.340550Z"},
+  "omnipulse": {"decision": "LIGHT", "detail": "no new bank research since the last pulse", "at": "2026-10-23T14:10:54.495519Z"},
+  "draft_validate": {"decision": "CONTINUE", "detail": "clean", "at": "2026-10-23T14:12:31.417802Z"},
+  "lint": {"decision": "SKIP_SCRUB", "detail": "5 soft issue(s) only", "at": "2026-10-23T14:13:15.195015Z"},
+  "final_validate": {"decision": "CONTINUE", "detail": "no EDIT/SCRUB-introduced hard violations", "at": "2026-10-23T14:14:36.028691Z"},
+  "strip": {"decision": "CONTINUE", "detail": "no internal headers", "at": "2026-10-23T14:14:55.618799Z"},
+  "adversarial": {"decision": "CONTINUE", "detail": "0 hard findings", "at": "2026-10-23T14:14:55.554466Z"},
+  "preflight": {"decision": "PASS", "detail": "all gates consulted, artifact sane -- proceed to STEP 6 commit", "at": "2026-10-23T14:14:55.661301Z"}
+ },
+ "budgets": {"draft_rerolls": 1},
+ "note": "abridged trail: first adversarial pass found 2 hard findings in _LEANS attributions (checker saw partial corpus), leans corrected from corpus and a fresh checker returned zero findings"
+}
