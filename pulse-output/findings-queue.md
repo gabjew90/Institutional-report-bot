@@ -1267,3 +1267,12 @@ Not filing a fresh queue item for the staleness itself, per the
 - **prompt-session** — TRADE BOARD on a light day lists undated desk calls beside "no new research" (repeat of 10/21). Date the lines or drop the board on light days.
 - **observation** — Light-day call with pdf_count 255 and a 96h window cutoff of 10/18. Log the new-research count and lookback in the gate detail so the call is auditable.
 - **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
+
+## 2026-10-23
+- **observation** — Third consecutive light edition (10-21, 10-22, 10-23). Context newest note is 10-19, window is the 96h fallback, nothing dated 10-20 to 10-22 in the dump. Check Dropbox ingestion for those folders; the Houthi/oil and AI-credit themes are live.
+- **deterministic-fixable** — `pulse-context/latest.json` dumped 15:24Z, about 74 minutes after the pulse, with a later market snapshot (twelfth day running). RECAP figures and the "Brent five-month high / UAE oil spill" line are unauditable. Dump at run time.
+- **prompt-session** — TRADE BOARD on a light day again lists undated desk calls (10-19 notes) beside "no new research". The One River GOOGL line comes from a fund manager's weekend letter (medium priority), not a desk call. Date the lines, restrict to desk sources, or drop the board on light days.
+- **deterministic-fixable** — Lint `top-3-theme-missing` / `discovered-theme-missing` still fire on light editions (5 soft issues today). Skip them on `body_source: light`.
+- **observation** — Driver file is an abridged note: a first adversarial pass with 2 hard `_LEANS` findings is described but not recorded, and the checker "saw a partial corpus". Record both passes in the trail.
+- **observation** — No STEP 7 self-review file for today in `qc-reviews/`.
+- **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
