@@ -115,3 +115,10 @@ def test_the_models_own_sources_block_is_dropped():
          "[actionnetwork.com](<https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZ=>)")
     assert strip_model_sources(a) == "→ A **$100 wager** clears **$218,119**."
     assert strip_model_sources("→ no sources here") == "→ no sources here"
+
+
+def test_a_model_written_data_line_is_dropped_2026_10_26():
+    from discord_bot.data_footer import strip_model_sources
+    a = "→ **Netflix** headlines the slate\n\nData: earnings slate (Nasdaq feed)"
+    assert strip_model_sources(a) == "→ **Netflix** headlines the slate"
+    assert strip_model_sources("→ the Data: line inside text stays") == "→ the Data: line inside text stays"

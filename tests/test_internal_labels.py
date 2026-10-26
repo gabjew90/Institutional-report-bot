@@ -59,3 +59,10 @@ def test_a_bracket_of_several_source_tags_is_removed_2026_10_18():
     assert "[" not in out and "**$227.80**" in out and "in-line quarter" in out
     keep = "→ ranges [10, 20] stay"
     assert strip_source_tags(keep, set()) == keep
+
+
+def test_latex_is_plain_2026_10_26():
+    from discord_bot import internal_labels as L
+    assert L.strip(r"→ **60,000 shares** $\times$ **$169.43** = **$10.2M**") == \
+        "→ **60,000 shares** x **$169.43** = **$10.2M**"
+    assert L.strip(r"up 5\% on $NVDA") == "up 5% on $NVDA"

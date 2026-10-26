@@ -4864,7 +4864,12 @@ async def _ask_00_setup_tools_and_context(
                     db.get_recent_bot_answers_in_channel,
                     channel_id=channel_id, limit=6,
                 )
-                for _row in (_room_answers or []):
+                # and this asker in every channel (2026-10-26 audit A22)
+                _anywhere = await asyncio.to_thread(
+                    db.get_recent_bot_answers_to_asker,
+                    asker_user_id=user_id, channel_id=None, limit=5,
+                )
+                for _row in (_room_answers or []) + (_anywhere or []):
                     _t = (_row.get("answer") or "")
                     if _t and _t not in _prior_bot_answer_texts:
                         _prior_bot_answer_texts.append(_t)
@@ -5454,6 +5459,17 @@ async def _ask_02_call_model_with_tools(
         _extra = (_ask_router.T_NEWS, {"symbol": _fresh["symbol"]})
         _pf_plan = list(_pf_plan) + [_extra]
         _pf_results = list(_pf_results) + [await _run_prefetch(*_extra)]
+    for (_t, _), _r in zip(_pf_plan, _pf_results):
+        if _t == _ask_router.T_SLATE and isinstance(_r, dict) and _r.get("week_outline"):
+            _ask_meta["slate_week"] = _r["week_outline"]     # phase 9 fills a skipped day
+    # the calendar feed's consensus and date against Yahoo's (2026-10-26 A11)
+    _snap_res = next((_r for (_t, _), _r in zip(_pf_plan, _pf_results)
+                      if _t == _ask_router.T_SNAPSHOT and isinstance(_r, dict)), None)
+    if _snap_res:
+        from discord_bot.ask_tools import reconcile_earnings_with_snapshot as _rec
+        for (_t, _), _r in zip(_pf_plan, _pf_results):
+            if _t == _ask_router.T_EDATE and isinstance(_r, dict) and _rec(_r, _snap_res):
+                _ask_meta["guards"].append("earnings:reconciled-with-yahoo")
     for (_pf_tool, _pf_args), _pf_res in zip(_pf_plan, _pf_results):
         if _pf_res is None:
             continue
@@ -5488,6 +5504,10 @@ async def _ask_02_call_model_with_tools(
             role="user",
             parts=[types.Part.from_text(text=_pf_text)],
         ))
+        # the filter ladder resends these: its rungs have no function tools,
+        # so a rung without the data answered from web snippets
+        # (2026-10-26 audit A28)
+        _ask_meta.setdefault("data_blocks", []).append(_pf_text)
     # A single-stock view gets its answer outline built in code: slots in
     # order, each fact with its true source (discord_bot/stock_outline.py,
     # 2026-10-01). Last block before the model writes.
@@ -5499,6 +5519,7 @@ async def _ask_02_call_model_with_tools(
         if _outline:
             contents.append(types.Content(role="user",
                                           parts=[types.Part.from_text(text=_outline)]))
+            _ask_meta.setdefault("data_blocks", []).append(_outline)
             _ask_meta["guards"].append("outline")
             _ask_meta["outline_banks"] = sorted(_so.outline_banks(_pf_by_tool.get(_ask_router.T_RESEARCH)))
     except Exception as e:
@@ -8314,6 +8335,7 @@ async def _ask_09_rank_and_regen_guards(
                         _sections.append(cross_window_block)
                     if _chat:
                         _sections.append(_chat)
+                    _sections.extend(_ask_meta.get("data_blocks") or [])
                     _sections.append(f"{separator}\n{question}")
                     try:
                         log.warning(f"/ask: filter block — {_rung} retry")
@@ -8379,6 +8401,7 @@ async def _ask_09_rank_and_regen_guards(
                         stripped_sections.append(cross_window_block)
                     if chat_context:
                         stripped_sections.append(chat_context)
+                    stripped_sections.extend(_ask_meta.get("data_blocks") or [])
                     stripped_sections.append(f"{separator}\n{question}")
                     stripped_content = "\n\n".join(stripped_sections)
                     log.warning(
@@ -8466,6 +8489,7 @@ async def _ask_09_rank_and_regen_guards(
                         masked_sections.append(
                             _mask_slur_tokens(chat_context)
                         )
+                    masked_sections.extend(_ask_meta.get("data_blocks") or [])
                     masked_sections.append(
                         f"{separator}\n{_mask_slur_tokens(question)}"
                     )
@@ -8680,6 +8704,15 @@ async def _ask_09_rank_and_regen_guards(
     answer = await _fantasy_percent_guard(
         answer, question, _ask_meta, client, ask_model, safety_settings, types,
         _tally_retry_usage)
+    # a week slate answer covers every day still to come (2026-10-26 A4)
+    if _ask_meta.get("slate_week") and answer:
+        from discord_bot import slate_week as _sw
+        import pytz as _sw_tz
+        answer, _sw_days = _sw.fill_missing_days(
+            answer, _ask_meta["slate_week"],
+            datetime.now(_sw_tz.timezone(settings.timezone)).date())
+        if _sw_days:
+            _ask_meta["guards"].append("slate-week:" + ",".join(_sw_days))
     # no reminder, timer or ping tool exists: never claim one (2026-10-08)
     from discord_bot import action_claims as _ac
     from discord_bot.ask_router import asker_text as _ac_last

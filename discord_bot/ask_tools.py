@@ -1731,6 +1731,13 @@ async def _execute_earnings_slate(args: dict) -> dict:
         log.warning(f"lookup_earnings_slate failed: {e}")
         return {"status": "error", "as_of": as_of, "date": dates[0],
                 "error": f"{type(e).__name__}: {e}"}
+    # After the open, today's before-open names have reported: an answer at
+    # 3:38 PM led with them (2026-10-26 audit A32).
+    if (now_et.hour, now_et.minute) >= (9, 30):
+        for d in days:
+            if d.get("date") == now_et.date().isoformat() and d.get("before_open"):
+                d["before_open_status"] = ("already reported this morning; lead with the "
+                                           "after-close names")
     if len(days) == 1:
         d = days[0]
         out = {**d, "as_of": as_of}
@@ -1738,8 +1745,11 @@ async def _execute_earnings_slate(args: dict) -> dict:
             out["note"] = note
         return out
     ok = [d for d in days if d.get("status") == "ok"]
+    from discord_bot.slate_week import week_outline
     return {"status": "ok" if ok else ((days[0].get("status") if days else None) or "error"),
-            "as_of": as_of, "dates": dates, "days": days, "note": note}
+            "as_of": as_of, "dates": dates, "days": days, "note": note,
+            # every day, biggest names first: answer each day (2026-10-26 A4)
+            "week_outline": week_outline(days)}
 
 
 async def _execute_earnings_date(args: dict) -> dict:
@@ -1807,6 +1817,42 @@ async def _execute_earnings_date(args: dict) -> dict:
         **result,
         "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     }
+
+
+def reconcile_earnings_with_snapshot(edate: dict, snap: dict) -> bool:
+    """Check the calendar feed's next report against Yahoo's in the same
+    turn, in place. Returns True when anything changed.
+
+    2026-10-26 audit A11: "when is MU earnings" answered "$43.39 EPS on
+    $69.3B" from Finnhub while the snapshot beside it had Yahoo's $38.28 /
+    $61.75B (Micron guided $38.15 / $61.5B), and stated Finnhub's projected
+    Dec 15 as fact. Yahoo's consensus wins a disagreement; the date is
+    called confirmed only when both feeds list it."""
+    nxt = (edate or {}).get("next")
+    g = ((snap or {}).get("growth") or {}) if (snap or {}).get("status") == "ok" else {}
+    if not isinstance(nxt, dict) or not nxt.get("date") or not g:
+        return False
+    changed = False
+    nq = g.get("next_quarter") or {}
+    fe, ye = nxt.get("eps_estimate"), nq.get("eps")
+    try:
+        differs = fe is not None and ye is not None and abs(float(fe) - ye) > 0.05 * abs(ye)
+    except (TypeError, ValueError):
+        differs = False
+    if differs:
+        nxt["eps_estimate"] = ye
+        nxt["revenue_estimate"] = nq.get("revenue")
+        nxt["consensus_source"] = ("Yahoo analyst consensus; the calendar feed's estimate "
+                                   "disagreed with it and is not used")
+        changed = True
+    ydate = (g.get("next_report") or {}).get("date")
+    if ydate and ydate[:10] == str(nxt["date"])[:10]:
+        nxt["date_status"] = "listed by both the calendar feed and Yahoo"
+    else:
+        nxt["date_status"] = ("projected, not confirmed: say the date is expected, not set"
+                              + (f" (Yahoo lists {ydate[:10]})" if ydate else ""))
+        changed = True
+    return changed
 
 
 def _relative_day_et(date_iso: str, timing: str = "", now=None) -> str:
@@ -2100,20 +2146,25 @@ async def _execute_options_chain(args: dict) -> dict:
                 "available_strikes": avail[:40],
                 "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
             }
-        return {
+        # Off hours Yahoo serves a zero bid and ask, zero open interest and
+        # a placeholder IV, which the bot called "current" (2026-10-26
+        # audit A25). The chain summary already withholds those.
+        live = (match.get("bid") or 0) > 0 or (match.get("ask") or 0) > 0
+        out = {
             "status": "ok",
             "symbol": symbol,
             "contract": {
                 "strike": match.get("strike"),
                 "contract_type": "put" if side == "puts" else "call",
                 "expiration_iso": chain.get("expiration_iso"),
-                "open_interest": match.get("openInterest"),
+                "open_interest": match.get("openInterest") if live else None,
                 "volume": match.get("volume"),
-                "implied_volatility": match.get("impliedVolatility"),
+                "implied_volatility": match.get("impliedVolatility") if live else None,
                 "bid": match.get("bid"),
                 "ask": match.get("ask"),
                 "last_price": match.get("lastPrice"),
                 "underlying_spot_price": raw.get("underlying_spot_price"),
+                "live_quotes": live,
             },
             "history_note": (
                 "SNAPSHOT ONLY — this is the current OI/volume/IV. No "
@@ -2123,6 +2174,13 @@ async def _execute_options_chain(args: dict) -> dict:
             "available_expirations": expirations[:12],
             "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
         }
+        if not live:
+            out["quotes_note"] = (
+                "This contract is not quoting right now (market closed or before the open): "
+                "bid and ask are zero, so implied volatility and open interest are withheld. "
+                "last_price is the last trade from the previous session; say so and never call "
+                "it the current price.")
+        return out
 
     summary = _md.summarize_options_chain(raw)
     as_of = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -2306,8 +2364,10 @@ def _build_market_price_tool():
                     "'right now'.\n"
                     "  - 'live_extended_hours' — Yahoo extended-hours "
                     "print. `price` is the actual last AH/PRE trade; "
-                    "after hours `change_pct` is from the PRIOR-day close (full move "
-                    "incl. AH), before the open it is from the latest close; "
+                    "after hours `change_pct` is the regular session's own move "
+                    "(today's close vs the prior close) and "
+                    "`change_incl_after_hours_pct` adds the AH print; before the "
+                    "open `change_pct` is from the latest close; "
                     "`extended_hours_change_pct` is the AH "
                     "move from today's regular close; "
                     "`regular_session_close` is today's 4 PM close. "
@@ -2501,7 +2561,7 @@ async def _execute_market_price(args: dict) -> dict:
                     if regular_close
                     else None
                 )
-                quotes.append({
+                q = {
                     "symbol": sym,
                     "price": last_price,
                     "change_pct": change_pct,
@@ -2510,7 +2570,15 @@ async def _execute_market_price(args: dict) -> dict:
                     "extended_hours_change_pct": ah_change_pct,
                     "source": "yahoo_extended_hours",
                     "data_freshness": "live_extended_hours",
-                })
+                }
+                if expected_yh_session == "post":
+                    # "up 1.4% today" after hours was the close-to-close move
+                    # plus the after-hours print; POWL had closed down 0.5%
+                    # (2026-10-26 audit A26). change_pct is the session's own
+                    # move; the after-hours move stays separate.
+                    q["change_pct"] = (regular_close - prev_close) / prev_close * 100.0
+                    q["change_incl_after_hours_pct"] = change_pct
+                quotes.append(q)
                 continue
 
             # Index and yield symbols (^TNX, ^GSPC) are Yahoo's: Finnhub has

@@ -29,8 +29,17 @@ _STATUS_RE = re.compile(
     r"|\b(?:" + "|".join(_STATUS_TOKENS) + r")\b")
 
 
+# LaTeX the model writes out of code-execution habit; Discord shows it raw
+# ("60,000 shares $\times$ $169.43", 2026-10-26 audit A32).
+_LATEX = ((re.compile(r"\$?\\times\$?"), "x"), (re.compile(r"\$?\\approx\$?"), "~"),
+          (re.compile(r"\$?\\pm\$?"), "±"), (re.compile(r"\$?\\cdot\$?"), "x"),
+          (re.compile(r"\\%"), "%"))
+
+
 def strip(answer: str) -> str:
     text = _LABEL_RE.sub("", answer or "")
+    for pat, plain in _LATEX:
+        text = pat.sub(plain, text)
     text = _STATUS_RE.sub("", text)
     text = re.sub(r"[ \t]+([.,;:!?])", r"\1", text)
     return re.sub(r"[ \t]{2,}", " ", text)

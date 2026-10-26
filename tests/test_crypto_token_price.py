@@ -27,3 +27,14 @@ def test_crypto_flag_prices_the_coin_not_the_stock(monkeypatch):
     monkeypatch.setattr(md, "_fetch_coingecko_by_symbol", lambda s: (_ for _ in ()).throw(AssertionError))
     out = asyncio.run(T._execute_market_price({"symbols": ["TREE"]}))
     assert out["quotes"][0]["price"] == 61.0
+
+
+def test_after_hours_change_is_the_session_move(monkeypatch):
+    """2026-10-26 audit A26: POWL "up 1.4% today" after hours had closed -0.5%."""
+    monkeypatch.setattr(md, "_session_label", lambda now: ("AFTER-HOURS", ""))
+    monkeypatch.setattr(md, "_fetch_yahoo_extended_hours", lambda s: {
+        "last_session": "post", "last_price": 101.4, "regular_close": 99.5, "prev_close": 100.0})
+    q = asyncio.run(T._execute_market_price({"symbols": ["POWL"]}))["quotes"][0]
+    assert round(q["change_pct"], 2) == -0.5
+    assert round(q["change_incl_after_hours_pct"], 2) == 1.4
+    assert round(q["extended_hours_change_pct"], 2) == 1.91

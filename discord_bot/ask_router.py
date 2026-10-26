@@ -808,6 +808,13 @@ _CORRECTION_RE = re.compile(
 # 14 (2026-10-07: "heading into tomorrow" was answered from two weeks).
 _NOW_WINDOW_RE = re.compile(
     r"\b(?:right\s+now|today|tonight|tomorrow|tmrw|this\s+week|currently|rn|heading\s+into)\b")
+# Every open position in the room, not only the crowded ones: "what open
+# positions does the chat have rn" listed two callers' books from raw SQL
+# and left out the members (2026-10-26 audit A23).
+_ROOM_LIST_RE = re.compile(
+    r"(?:open\s+)?positions?\s+(?:does|do|did)\s+(?:the\s+)?(?:chat|room|everyone|we|y'?all)"
+    r"\s+(?:have|hold|got)|(?:chat|room)(?:'s)?\s+open\s+positions"
+    r"|what(?:'s|s|\s+is)\s+everyone\s+(?:holding|in)\b", re.I)
 _CROWD_RE = re.compile(
     r"\b(?:piled\s+into|crowded\s+(?:position|trade|name|into)|most\s+crowded"
     # Subject then a position verb. Bare "we ... in" is excluded: "are we
@@ -1053,6 +1060,10 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     if in_channel and "Data: Sleeper league" in _parent_text(question):
         return _as_fantasy(r, q, "reply to a league answer", default_topic="matchups",
                            asker_manager=asker_manager)
+    if _ROOM_LIST_RE.search(q):
+        r.shape, r.reason = ROOM_CROWDING, "every open position in the room"
+        r.prefetch = [(T_ROOM, {"days": 3 if _NOW_WINDOW_RE.search(ql) else 14, "min_members": 1})]
+        return r
     if _LEDGER_RE.search(q):
         if in_channel and not _TRADING_LEDGER_RE.search(q):
             # "what's Declan's record" in the football channel is the

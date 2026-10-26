@@ -81,7 +81,7 @@ def get_recent_bot_answers_in_channel(
 
 def get_recent_bot_answers_to_asker(
     asker_user_id: int,
-    channel_id: int,
+    channel_id: int | None,
     limit: int = 5,
     max_age_days: int = 7,
 ) -> list[dict]:
@@ -94,15 +94,21 @@ def get_recent_bot_answers_to_asker(
     weeks-old answers, suppressing legitimately fresh re-answers when
     circumstances had changed (prices moved, news landed). 7 days
     covers the observed recycling window (the Grand Nagus case was 30
-    minutes apart) with a wide margin."""
+    minutes apart) with a wide margin.
+
+    channel_id None reads every channel: the same description of Wock
+    went to BK in two channels three hours apart (2026-10-26 audit A22)."""
+    where, params = "asker_user_id = ?", [int(asker_user_id)]
+    if channel_id is not None:
+        where += " AND channel_id = ?"
+        params.append(int(channel_id))
     rows = _db.get_connection().execute(
         "SELECT question, answer, answered_at "
         "FROM ask_bot_answers "
-        "WHERE asker_user_id = ? AND channel_id = ? "
+        f"WHERE {where} "
         "  AND answered_at >= datetime('now', ?) "
         "ORDER BY answered_at DESC, id DESC LIMIT ?",
-        (int(asker_user_id), int(channel_id),
-         f"-{int(max_age_days)} day", int(limit)),
+        (*params, f"-{int(max_age_days)} day", int(limit)),
     ).fetchall()
     return [dict(r) for r in rows]
 

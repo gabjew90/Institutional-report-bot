@@ -604,6 +604,14 @@ def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
                 continue  # inside FF's covered horizon — FF is source
             kept.append(row)
             fred_added += 1
+        # FRED's schedule has no FOMC or ISM dates: the agencies' published
+        # dates fill them on the same days (2026-10-26 audit R3, "when is
+        # fomc" answered from a search with the feed down).
+        _d = start
+        while _d <= end:
+            if not (ff_max and _d.isoformat() <= ff_max):
+                kept.extend(_official_releases_for(_d.isoformat()))
+            _d += timedelta(days=1)
         # The agency first (BLS carries the print within a minute of
         # 8:30; FRED lags by hours, 2026-09-11), then FRED for the rest.
         try:

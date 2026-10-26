@@ -33,11 +33,14 @@ def test_pre_market_move_is_from_the_latest_close():
     assert q["prev_close"] == 728.95
 
 
-def test_after_hours_move_still_spans_the_day():
+def test_after_hours_change_is_the_session_and_the_full_move_is_separate():
+    """2026-10-26 audit A26: change_pct after hours is the regular session's
+    own move; the move including the after-hours print has its own field."""
     yahoo = {"GTLB": {"last_price": 90.0, "last_session": "post",
                       "regular_close": 100.0, "prev_close": 95.0}}
     q = _quote(_run(["GTLB"], "AFTER-HOURS", yahoo), "GTLB")
-    assert round(q["change_pct"], 2) == round((90 - 95) / 95 * 100, 2)
+    assert round(q["change_pct"], 2) == round((100 - 95) / 95 * 100, 2)
+    assert round(q["change_incl_after_hours_pct"], 2) == round((90 - 95) / 95 * 100, 2)
     assert round(q["extended_hours_change_pct"], 1) == -10.0
 
 

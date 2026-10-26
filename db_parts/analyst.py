@@ -1485,15 +1485,30 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
     rows = conn.execute(
         """
         SELECT ticker, author_id, LOWER(COALESCE(action, '')),
-               LOWER(COALESCE(contract_type, ''))
+               LOWER(COALESCE(contract_type, '')), author, strike, expiry
         FROM analyst_trades
         WHERE is_trade = 1
           AND ticker IS NOT NULL AND ticker NOT IN ('', 'UNKNOWN')
           AND author_id IS NOT NULL
           AND posted_at >= datetime('now', ?)
+        ORDER BY posted_at
         """,
         (f"-{days} day",),
     ).fetchall()
+    # Listing mode (min_members 1, "what open positions does the chat
+    # have"): who holds each name and in what contract, entries with no
+    # logged exit, named by each author_id's latest name (2026-10-26 A23).
+    names: dict = {}
+    held: dict = defaultdict(dict)
+    for ticker, author_id, action, ctype, author, strike, expiry in rows:
+        names[author_id] = author
+        if action in ("open", "add"):
+            k = f"{strike:g}" if isinstance(strike, (int, float)) else str(strike or "")
+            leg = f"{k}{(ctype or ' ')[0].upper()}".strip() if k else (ctype or "shares")
+            held[ticker][author_id] = f"{leg} {expiry[5:]}" if expiry else leg
+        elif action == "close":
+            held[ticker].pop(author_id, None)
+    rows = [r[:4] for r in rows]
     entered: dict[str, set] = defaultdict(set)
     exited: dict[str, set] = defaultdict(set)
     entries: dict[str, int] = defaultdict(int)
@@ -1531,6 +1546,9 @@ def get_room_positions(days: int = 14, min_members: int = 2, limit: int = 12) ->
             "members_in_shares_or_other": len(side[ticker]["other"]),
             "share_of_active_members": round(n_in / len(active), 2) if active else None,
         })
+        if int(min_members) <= 1 and held[ticker]:
+            out[-1]["holders_no_exit_logged"] = [
+                {"who": names.get(a), "contract": c} for a, c in list(held[ticker].items())[:6]]
     out.sort(key=lambda r: (-r["members_entered"], -r["entries"], r["ticker"]))
     return {
         "window_days": days,

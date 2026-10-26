@@ -52,6 +52,23 @@ _RELEASE_EVENT_MAP = {
     "personal income and outlays": "PCE (Personal Income and Outlays)",
 }
 _RELEASE_TIME_ET = "08:30"
+# Second-tier releases, with their New York release times. With Finnhub's
+# economic calendar down and the ForexFactory week empty, the schedule had
+# only the six above, so "what data is out this week" got GDP and PCE for
+# the week after and Housing Starts was taken from a search (2026-10-26
+# audit A27). Names are FRED's release names (fred/releases, checked
+# 2026-10-26).
+_MEDIUM_RELEASES = {
+    "new residential construction": ("Housing Starts and Building Permits", "08:30"),
+    "unemployment insurance weekly claims report": ("Initial Jobless Claims", "08:30"),
+    "u.s. international trade in goods and services": ("Trade Balance", "08:30"),
+    "g.17 industrial production and capacity utilization": ("Industrial Production", "09:15"),
+    "new residential sales": ("New Home Sales", "10:00"),
+    "existing home sales": ("Existing Home Sales", "10:00"),
+    "job openings and labor turnover survey": ("JOLTS Job Openings", "10:00"),
+    "surveys of consumers": ("University of Michigan Consumer Sentiment", "10:00"),
+    "construction spending": ("Construction Spending", "10:00"),
+}
 
 # Actuals transforms — produce the number the pulse/desk actually quotes:
 #   yoy_pct   — % change vs 12 observations ago (monthly series)
@@ -175,6 +192,9 @@ def fetch_fred_release_schedule(days_ahead: int = 60) -> list[dict]:
     for rd in data.get("release_dates") or []:
         name = (rd.get("release_name") or "").strip().lower()
         event = _RELEASE_EVENT_MAP.get(name)
+        hhmm, impact = _RELEASE_TIME_ET, "high"
+        if not event and name in _MEDIUM_RELEASES:
+            (event, hhmm), impact = _MEDIUM_RELEASES[name], "medium"
         date_iso = (rd.get("date") or "")[:10]
         if not event or not date_iso:
             continue
@@ -184,7 +204,7 @@ def fetch_fred_release_schedule(days_ahead: int = 60) -> list[dict]:
         # 8:30 ET → UTC for the row's `time` field
         try:
             local = _ET.localize(datetime.strptime(
-                f"{date_iso} {_RELEASE_TIME_ET}", "%Y-%m-%d %H:%M"))
+                f"{date_iso} {hhmm}", "%Y-%m-%d %H:%M"))
             time_utc = local.astimezone(pytz.UTC).strftime(
                 "%Y-%m-%dT%H:%M:%S")
         except (ValueError, TypeError):
@@ -193,7 +213,7 @@ def fetch_fred_release_schedule(days_ahead: int = 60) -> list[dict]:
             "event": event,
             "country": "US",
             "time": time_utc,
-            "impact": "high",
+            "impact": impact,
             "estimate": None,
             "prev": None,
             "actual": None,

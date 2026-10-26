@@ -87,3 +87,17 @@ def test_entries_carry_their_direction():
                 row["members_in_shares_or_other"]) == (1, 2, 1)
     finally:
         _cleanup()
+
+
+def test_listing_mode_names_holders_with_no_exit_2026_10_26():
+    """Audit A23: "what open positions does the chat have" left out members."""
+    _cleanup()
+    try:
+        _seed([(911, "BK", "open", 1), (912, "Sam", "open", 1), (912, "Sam", "close", 1)])
+        res = db.get_room_positions(days=14, min_members=1, limit=50)
+        row = next(p for p in res["positions"] if p["ticker"] == _T)
+        assert row["holders_no_exit_logged"] == [{"who": "BK", "contract": "shares"}]
+        crowded = db.get_room_positions(days=14, min_members=2, limit=50)
+        assert all("holders_no_exit_logged" not in p for p in crowded["positions"])
+    finally:
+        _cleanup()

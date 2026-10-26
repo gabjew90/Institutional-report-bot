@@ -212,7 +212,17 @@ _MODEL_SOURCES_RE = re.compile(
     r"\n+[ \t]*\**Sources?:?\**[ \t]*\n(?:[ \t]*(?:\[\d+\][ \t]*)?\[[^\]\n]+\]\(<?https?://[^\n]*\n?)+\s*$")
 
 
+# A "Data: ..." line the model wrote itself (2026-10-26 audit A32: a post
+# with two Data footers).
+_MODEL_DATA_RE = re.compile(r"\n+[ \t]*\**Data:\**[ \t]+[^\n]*\s*$")
+
+
 def strip_model_sources(answer: str) -> str:
-    """Drop the model's own trailing Sources block; the system appends the
-    real one (2026-10-18 audit F7, a post with two)."""
-    return _MODEL_SOURCES_RE.sub("", answer or "").rstrip()
+    """Drop the model's own trailing Sources block and Data line; the
+    system appends the real ones (2026-10-18 audit F7, a post with two)."""
+    out = answer or ""
+    while True:
+        cut = _MODEL_DATA_RE.sub("", _MODEL_SOURCES_RE.sub("", out))
+        if cut == out:
+            return out.rstrip()
+        out = cut

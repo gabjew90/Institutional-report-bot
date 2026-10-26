@@ -110,6 +110,9 @@ def _desk_text(note: dict) -> str:
                 f"price target {c['price_target']}" if c.get("price_target") and str(c["price_target"]).upper() != "N/A" else None]
         head = ", ".join(b for b in bits if b and b != "N/A")
         text = f"{head}: {c.get('rationale') or ''}".strip(": ")
+        if c.get("call_by"):
+            # the note relays another broker's action (2026-10-26 audit A21)
+            text = f"reports {c['call_by']}'s call, not its own: {text}"
         # the desk's own numbers live in its earnings lines, not the call
         if first_earnings and first_earnings not in text:
             text += f". Its figures: {first_earnings}"

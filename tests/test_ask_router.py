@@ -912,3 +912,17 @@ def test_audit_2026_10_26_news_and_opinion_phrasings():
         r = R.classify(q)
         assert r.shape == shape and r.tickers == [t], q
     assert R.classify("how do you feel about me").shape == R.UNKNOWN
+
+
+def test_audit_2026_10_26_room_open_positions():
+    """Run-6 A23: every open position in the room, members included."""
+    r = R.classify("and what open positions does the chat have rn")
+    assert r.shape == R.ROOM_CROWDING and r.prefetch == [(R.T_ROOM, {"days": 3, "min_members": 1})]
+    assert R.classify("what are my open positions").shape == R.MEMBER_LEDGER
+    assert R.classify("what is the room piled into").prefetch == [(R.T_ROOM, {"days": 14})]
+
+
+def test_audit_2026_10_26_deferred_company_news():
+    """Run-6 A24: the parent "What was Tesla news" must fetch the news."""
+    r = R.classify("What was Tesla news")
+    assert r.tickers == ["TSLA"] and R.T_NEWS in [p[0] for p in r.prefetch]

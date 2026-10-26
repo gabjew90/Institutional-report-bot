@@ -83,6 +83,19 @@ def _get(path: str):
         return json.loads(resp.read().decode("utf-8"))
 
 
+def _records_through(out: dict, rosters: list[dict]) -> None:
+    """The last week the records include. Sleeper's current week runs
+    ahead of the records until that week's games are processed: "through
+    Week 6" was said during Week 6's Monday night game (2026-10-26 audit F3)."""
+    games = max((int((r.get("settings") or {}).get("wins") or 0)
+                 + int((r.get("settings") or {}).get("losses") or 0)
+                 + int((r.get("settings") or {}).get("ties") or 0) for r in rosters), default=0)
+    out["records_through_week"] = games
+    if games and games < int(out.get("week") or 0):
+        out["records_note"] = (f"Records and points cover weeks 1-{games} only; week "
+                               f"{out['week']} is not final. Say 'through week {games}'.")
+
+
 def fetch_state() -> dict:
     """League-wide NFL state: current week, season, season_type."""
     return _get("/state/nfl") or {}
@@ -614,6 +627,7 @@ def build_topic_payload(
             )
         )
         out["standings"] = rows
+        _records_through(out, rosters)
 
     elif topic == "matchups":
         mus = fetch_matchups(league_id, wk)
@@ -900,6 +914,7 @@ def build_topic_payload(
         rows.sort(key=lambda x: (-int(x["record"].split("-")[0]),
                                  -float(x["points_for"] or 0)))
         out["standings"] = rows
+        _records_through(out, rosters)
         out["note"] = (
             "Everything about this manager's week. Analyse from it: "
             "start/sit is bench vs starter at an eligible slot, the "

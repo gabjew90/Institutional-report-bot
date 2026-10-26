@@ -1358,6 +1358,13 @@ def research_for_ticker(symbol: str, days: int = 14, limit: int = 12) -> list[di
         # note that only said GS fell, 2026-10-06), and the desk got credit
         # for a view it never took; those lines are reporting, not calls.
         calls = [m for m in movers if _is_rating_call(m)]
+        for m in calls:
+            # a note relaying another broker's action is that broker's call
+            # (2026-10-26 audit A21: Safra credited with Piper Sandler's downgrade)
+            other = _quoted_broker(f"{m.get('action') or ''} {m.get('rationale') or ''}",
+                                   a.get("source") or "")
+            if other:
+                m["call_by"] = other
         insights = [f"(reported) {m.get('rationale')}" for m in movers
                     if not _is_rating_call(m) and m.get("rationale")][:2] + insights
         movers = calls
@@ -1434,10 +1441,54 @@ def recently_covered_tickers(days: int = 7) -> set[str]:
     return out
 
 
-def _is_rating_call(mover: dict) -> bool:
-    """A desk's own rating or price-target action, not a move it reported."""
+_PLACEHOLDERS = {"", "n/a", "na", "none", "null", "unrated", "not rated", "nr", "-", "unknown"}
+
+_BROKERS = ("Piper Sandler", "Bernstein", "Evercore", "Oppenheimer", "Cantor Fitzgerald", "Cantor",
+            "Raymond James", "KeyBanc", "Truist", "Needham", "Wedbush", "TD Cowen", "Stifel", "Baird",
+            "William Blair", "Loop Capital", "Rosenblatt", "Benchmark", "BTIG", "Mizuho", "Jefferies",
+            "Wolfe", "Guggenheim", "Macquarie", "BMO", "Scotiabank", "Citizens JMP", "Northland",
+            "B. Riley", "Craig-Hallum", "Susquehanna", "Morgan Stanley", "Goldman Sachs", "Goldman",
+            "JPMorgan", "J.P. Morgan", "Citi", "UBS", "Barclays", "Deutsche Bank", "HSBC",
+            "Wells Fargo", "Nomura", "Bank of America", "BofA", "RBC", "Melius", "Redburn",
+            "Morningstar", "Argus", "DA Davidson", "D.A. Davidson", "Roth", "Lake Street", "Arete")
+
+
+_HOUSE_ALIASES = {"bofa": "bank of america", "ms": "morgan stanley", "gs": "goldman",
+                  "db": "deutsche", "jpm": "jpmorgan", "citigroup": "citi"}
+
+
+def _same_house(source: str, broker: str) -> bool:
+    """The note's own desk under another spelling (JPM / JPMorgan, BofA /
+    Bank of America)."""
+    s = (source or "").strip().lower()
+    b = broker.lower().replace(".", "")
+    if not s:
+        return False
+    s = _HOUSE_ALIASES.get(s, s)
+    sw, bw = s.replace(".", "").split()[0], b.split()[0]
+    return s in b or b in s or bw.startswith(sw) or sw.startswith(bw)
+
+
+def _quoted_broker(text: str, source: str) -> str:
+    """The broker whose action a note relays, when it is not the note's
+    own desk: "Piper Sandler downgraded ...", "cut at Piper Sandler"."""
     import re as _re
-    if mover.get("rating") or mover.get("price_target"):
+    for b in _BROKERS:
+        if _same_house(source, b):
+            continue
+        if _re.search(r"(?<![A-Za-z])" + _re.escape(b) + r"(?![A-Za-z])", text or ""):
+            return b
+    return ""
+
+
+def _is_rating_call(mover: dict) -> bool:
+    """A desk's own rating or price-target action, not a move it reported.
+    A placeholder rating ("N/A") is no rating: The Market Ear and BofA were
+    shown issuing a "negative catalyst watch" for reporting a 9% drop
+    (2026-10-26 audit A21)."""
+    import re as _re
+    if any(str(mover.get(k) or "").strip().lower() not in _PLACEHOLDERS
+           for k in ("rating", "price_target")):
         return True
     return bool(_re.search(r"upgrad|downgrad|initiat|reiterat|target|rating|resum",
                            str(mover.get("action") or ""), _re.I))
