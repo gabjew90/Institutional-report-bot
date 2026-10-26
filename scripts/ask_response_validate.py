@@ -559,7 +559,9 @@ _NOT_A_LEVEL = re.compile(
     # audit: SPCX's "$0.14" EPS estimate and FVRR's all-time high were cut
     # as unsourced prices, A2/A10).
     r"|\bEPS\b|\bestimates?\b|\bconsensus\b|\bper share\b|\bguid(?:e|ance|ed)\b"
-    r"|\ball[- ]time high\b|\bATH\b|\bpeak(?:ed)?\b|\brecord high\b|\b52[- ]week\b",
+    # Not "52-week": "holding near its 52-week highs around $30,500" is a
+    # live level, and a snapshot-sourced range is exempt already (above).
+    r"|\ball[- ]time high\b|\bATH\b|\bpeak(?:ed)?\b|\brecord high\b",
     re.I,
 )
 
