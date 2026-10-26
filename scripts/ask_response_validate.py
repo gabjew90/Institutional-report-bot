@@ -1398,10 +1398,13 @@ def resolve_violations(answer: str, retry_answer: str | None,
     # "why is crypto dropping" shipped as one line after this rung
     # (2026-10-18 audit A22).
     from discord_bot.guard_floor import gutted
-    if "meta-plumbing" not in rules and (not (stripped or "").strip()
-                                         or gutted(answer, stripped)):
-        # A strip that empties a short answer is not a fix either: the SPCX
-        # date answer became "pull it from your broker" (2026-10-26 A2).
+    emptied = not (stripped or "").strip()
+    # A strip that empties a short answer built on a tool or a search is not
+    # a fix either: the SPCX date answer became "pull it from your broker"
+    # (2026-10-26 A2). One with neither source is still refused below.
+    if "meta-plumbing" not in rules and (
+            (emptied and (ctx.get("grounded") or tool_calls))
+            or (not emptied and gutted(answer, stripped))):
         return answer, "shipped"
     if stripped and not validate(stripped, tool_calls, **ctx):
         return stripped, "stripped"

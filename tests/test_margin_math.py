@@ -30,3 +30,9 @@ def test_the_executor_prices_and_computes(monkeypatch):
     assert out["equity_now"] == 16286 and out["equity_now_pct_of_position"] == 17.8
     assert out["below_maintenance_now"]["25%"] is True
     assert out["assumption"].startswith("the gross position split equally")
+
+
+def test_profit_margin_with_a_multiple_is_not_margin_math():
+    """Code review 2026-10-26: a valuation question about gross margin."""
+    assert R.classify("is MU cheap at 10x with that gross margin").reason != "margin math"
+    assert R.classify("margin call on 2x TQQQ").reason == "margin math"

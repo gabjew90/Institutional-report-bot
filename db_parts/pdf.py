@@ -1469,14 +1469,25 @@ def _same_house(source: str, broker: str) -> bool:
     return s in b or b in s or bw.startswith(sw) or sw.startswith(bw)
 
 
+_ACTION = (r"(?:upgrad|downgrad|initiat|reiterat|resum|rais|lower|cut|trim|lift|mov|start|assum)"
+           r"\w*")
+
+
 def _quoted_broker(text: str, source: str) -> str:
     """The broker whose action a note relays, when it is not the note's
-    own desk: "Piper Sandler downgraded ...", "cut at Piper Sandler"."""
+    own desk: "Piper Sandler downgraded ...", "cut at Piper Sandler". The
+    name must sit next to a rating action: a desk's own rationale that
+    argues with a rival ("we disagree with Morgan Stanley") or says
+    "Benchmark yields rose" is still the desk's call (code review
+    2026-10-26)."""
     import re as _re
     for b in _BROKERS:
         if _same_house(source, b):
             continue
-        if _re.search(r"(?<![A-Za-z])" + _re.escape(b) + r"(?![A-Za-z])", text or ""):
+        name = r"(?<![A-Za-z])" + _re.escape(b) + r"(?![A-Za-z])"
+        if (_re.search(name + r"(?:'s)?\s+(?:analysts?\s+)?(?:\w+\s+){0,2}?" + _ACTION, text or "", _re.I)
+                or _re.search(r"\b" + _ACTION + r"\b[^.;]{0,60}?\b(?:at|by)\s+" + name,
+                              text or "", _re.I)):
             return b
     return ""
 

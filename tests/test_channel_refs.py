@@ -13,3 +13,10 @@ def test_an_excluded_feed_channel_is_unread(monkeypatch):
     assert "<#1317740920258428959>" in C.note([1317740920258428959])
     assert C.unread_channels("what did kloh post in <#1400000000000000001>") == []
     assert C.unread_channels("no channel here") == []
+
+
+def test_a_question_with_its_own_ticker_is_answered_with_a_note():
+    """Code review 2026-10-26: a passing channel mention must not cancel the answer."""
+    assert C.asks_more("saw this in <#1317740920258428959>, what's NVDA at?")
+    assert not C.asks_more("Any activity on any of these names  from <#1317740920258428959>  ?")
+    assert "UNREAD CHANNEL" in C.context_note([1317740920258428959])

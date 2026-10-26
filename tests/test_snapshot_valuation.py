@@ -34,3 +34,9 @@ def test_valuation_questions_fetch_the_snapshot():
         r = R.classify(q)
         assert r.shape == R.PRICE and R.T_SNAPSHOT in [p[0] for p in r.prefetch], q
     assert R.classify("the pe is crazy").shape == R.UNKNOWN
+
+
+def test_bare_multiple_is_not_a_valuation_question():
+    """Code review 2026-10-26: "has multiple" minted HAS as a ticker."""
+    assert R.classify("he has multiple bags lol").tickers == []
+    assert R.classify("I bought NVDA multiple times").shape != R.PRICE

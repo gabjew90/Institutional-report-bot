@@ -11,7 +11,11 @@ from __future__ import annotations
 
 import re
 
-_MARGIN_RE = re.compile(r"\bmargin(?:ed)?\b|\bliquidat\w*|\bmargin\s+call", re.I)
+# Borrowing on margin, not a company's profit margin: "is MU cheap at 10x
+# with that gross margin" is a valuation question (code review 2026-10-26).
+_MARGIN_RE = re.compile(
+    r"\bmargin(?:ed)?[\s-]*call|\bmargin(?:ed)?\s+out\b|\bon\s+margin\b|\bmaintenance\s+margin"
+    r"|\b\d+(?:\.\d+)?\s*x\s+(?:margin|leverage|lev|leveraged)\b|\bliquidat\w*", re.I)
 _LEV_RE = re.compile(r"(?<![\w.])(\d+(?:\.\d+)?)\s*x\b", re.I)
 _ACCT_RE = re.compile(r"(?<![\w.$])\$?\s*(\d+(?:\.\d+)?)\s*([km])\b\s*\$?", re.I)
 _ENTRY_RE = re.compile(r"(?<![A-Za-z])\$?([A-Za-z]{2,5})\s*(?:@|at\s+)?\s*\$\s*(\d+(?:\.\d+)?)\b")

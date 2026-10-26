@@ -1136,6 +1136,7 @@ async def _execute_price_history(args: dict) -> dict:
         interval = "1d"
     events = sorted({str(d).strip()[:10] for d in (args.get("event_dates") or [])
                      if re.match(r"^\d{4}-\d{2}-\d{2}", str(d).strip())})[:10]
+    after_close = str(args.get("event_after_close") or "").lower() in ("true", "1")
     if events:
         # Returns after dated events, computed here (2026-10-26 audit A19:
         # SpaceX "+4.2% one week after the Aug 6 unlock" when Yahoo shows +23%).
@@ -1163,8 +1164,10 @@ async def _execute_price_history(args: dict) -> dict:
         }
     if events:
         return {"status": "ok", "symbol": symbol,
-                "returns_after_dates": [returns_after(hist, d) for d in events],
-                "how_to_read": ("base is the last close before the date; each horizon is "
+                "returns_after_dates": [returns_after(hist, d, after_close) for d in events],
+                "how_to_read": (("base is the close on the date (the event came after the "
+                                 "open)" if after_close else "base is the last close before the date")
+                                + "; each horizon is "
                                 "that many trading sessions later; a horizon that has not "
                                 "happened yet is marked so"),
                 "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")}
@@ -1181,12 +1184,14 @@ async def _execute_price_history(args: dict) -> dict:
 _HORIZONS = (("1_day", 1), ("1_week", 5), ("1_month", 21))
 
 
-def returns_after(hist: list[dict], event: str) -> dict:
+def returns_after(hist: list[dict], event: str, after_close: bool = False) -> dict:
     """Returns after one dated event from daily closes (oldest first): the
     base is the last close before the date, so an event that takes effect
-    at the open is measured from the session before it."""
+    at the open is measured from the session before it. `after_close` (an
+    after-close report, a 2 PM Fed decision) bases on that day's own close."""
     rows = [h for h in hist if h.get("close") is not None and h.get("date")]
-    before = [i for i, h in enumerate(rows) if str(h["date"])[:10] < event]
+    before = [i for i, h in enumerate(rows)
+              if (str(h["date"])[:10] <= event if after_close else str(h["date"])[:10] < event)]
     if not before:
         return {"date": event, "error": "no close before this date in the history"}
     b = before[-1]
@@ -1257,6 +1262,12 @@ def _build_price_history_tool():
                                          "each, computed from the closes. Use it for any "
                                          "'returns after X' question: find the dates with "
                                          "Google, then the returns come only from here."),
+                        ),
+                        "event_after_close": types.Schema(
+                            type=types.Type.BOOLEAN,
+                            description=("True when the events land after the open: an "
+                                         "after-close earnings report, a 2 PM Fed decision. "
+                                         "Returns are then measured from that day's close."),
                         ),
                     },
                     required=["symbol"],

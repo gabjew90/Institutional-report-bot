@@ -1104,3 +1104,13 @@ def test_unconvertible_currency_is_unknown_not_wrong(monkeypatch):
     monkeypatch.setattr(nd, "_usd_per", lambda cur: None)
     monkeypatch.setattr(nd.settings, "finnhub_api_key", "k")
     assert nd.fetch_symbol_profiles(["WIT"], pace_seconds=0)["WIT"]["cap"] == 0.0
+
+
+def test_keep_rule_uses_cap_before_home_currency_revenue_2026_10_26():
+    """Code review: Finnhub's revenue estimate is in home currency, so a
+    cached cap decides; revenue only for a name with no cap (SpaceX)."""
+    from report import calendar_data as cd
+    small_yen = {"symbol": "ZZJP", "revenueEstimate": 150_000_000_000}
+    assert not cd._too_big_to_drop(small_yen, {"ZZJP": {"cap": 3_000}})
+    assert cd._too_big_to_drop({"symbol": "SPCX", "revenueEstimate": 4.2e9}, {})
+    assert cd._too_big_to_drop({"symbol": "BIG"}, {"BIG": {"cap": 60_000}})

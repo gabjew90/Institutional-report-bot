@@ -638,18 +638,23 @@ def cached_caps(symbols: list[str]) -> dict:
 _KEEP_REVENUE_EST = 1_000_000_000
 
 
-def _too_big_to_drop(row: dict) -> bool:
-    try:
-        if float(row.get("revenueEstimate") or 0) >= _KEEP_REVENUE_EST:
-            return True
-    except (TypeError, ValueError):
-        pass
+def _too_big_to_drop(row: dict, caps: dict) -> bool:
+    """`caps` is the cached cap lookup for the rows Nasdaq lacks. Finnhub's
+    revenue estimate is in the company's home currency, so it decides only
+    for a name with no cached cap (SpaceX, a new listing with no profile):
+    with it, a mid-size yen or won reporter cleared $1B (code review
+    2026-10-26)."""
     sym = (row.get("symbol") or "").strip()
     try:
-        cap = float((db.get_market_caps([sym]).get(sym) or {}).get("cap") or 0)
-    except Exception:
+        cap = float((caps.get(sym) or {}).get("cap") or 0)
+    except (TypeError, ValueError):
         cap = 0.0
-    return cap >= EARN_IMPORTANT_CAP_MUSD
+    if cap > 0:
+        return cap >= EARN_IMPORTANT_CAP_MUSD
+    try:
+        return float(row.get("revenueEstimate") or 0) >= _KEEP_REVENUE_EST
+    except (TypeError, ValueError):
+        return False
 
 
 def _nasdaq_rows_for(date_iso: str) -> dict | None:
@@ -682,10 +687,16 @@ def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
     nasdaq_caps: dict[str, dict] = {}
     if nasdaq_rows:
         kept_raw, off, big_unconfirmed = [], [], []
+        absent = [s for s in ((r.get("symbol") or "").strip() for r in raw)
+                  if s and s.upper() not in nasdaq_rows]
+        try:
+            absent_caps = db.get_market_caps(absent) if absent else {}
+        except Exception:
+            absent_caps = {}
         for r in raw:
             sym = (r.get("symbol") or "").strip()
             if sym and sym.upper() not in nasdaq_rows:
-                if _too_big_to_drop(r):
+                if _too_big_to_drop(r, absent_caps):
                     # A large company Nasdaq has not listed YET stays, flagged
                     # unconfirmed. SpaceX ($2T) was on Finnhub for 10/20 but
                     # reached Nasdaq's list only after the 3 PM sheet, so the

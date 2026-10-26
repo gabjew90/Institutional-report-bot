@@ -31,3 +31,11 @@ def test_skipped_days_are_added_but_past_days_are_not():
     assert added == ["2026-10-21", "2026-10-22"] and "IBM" in out and "NFLX" not in out
     full = ans + " · IBM · $WDC"
     assert W.fill_missing_days(full, o, date(2026, 10, 20)) == (full, [])
+
+
+def test_one_letter_tickers_need_the_company_name():
+    """Code review 2026-10-26: "T" in ordinary text is not AT&T."""
+    o = W.week_outline([_day("2026-10-22", [("T", "AT&T Inc")], [("F", "Ford Motor")])])
+    out, added = W.fill_missing_days("→ Q3 F/X and T-bills", o, date(2026, 10, 20))
+    assert added == ["2026-10-22"]
+    assert W.fill_missing_days("→ Ford after the bell", o, date(2026, 10, 20))[1] == []

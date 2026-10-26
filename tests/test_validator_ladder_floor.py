@@ -59,6 +59,14 @@ def test_an_eps_estimate_and_an_all_time_high_are_not_live_prices_2026_10_26():
 
 
 def test_a_strip_that_empties_a_short_answer_ships_the_original():
+    """Audit A2: a short answer built on a tool or a search ships whole; one
+    with neither source still gets the refusal (code review 2026-10-26)."""
     a = "→ Core CPI came in at 0.3% this morning."
+    out, how = V.resolve_violations(a, None, tool_calls=["lookup_economic_calendar"],
+                                    strip_fn=lambda x, bad: "")
+    assert how in ("shipped", "clean") and out == a
+    out, how = V.resolve_violations(a, None, tool_calls=[], grounded=True,
+                                    strip_fn=lambda x, bad: "")
+    assert how in ("shipped", "clean") and out == a
     out, how = V.resolve_violations(a, None, tool_calls=[], strip_fn=lambda x, bad: "")
-    assert how == "shipped" and out == a
+    assert how == "replaced" and out == V.SAFE_REFUSAL

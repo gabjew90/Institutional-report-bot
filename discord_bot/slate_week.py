@@ -24,17 +24,30 @@ def week_outline(days: list[dict], per_session: int = PER_SESSION) -> list[dict]
         label = f"{dt:%a %b} {dt.day}"
         if d.get("status") != "ok":
             continue
-        parts, syms = [], []
+        parts, syms, names = [], [], []
         for key, name in (("before_open", "before the open"), ("after_close", "after the close")):
             rows = (d.get(key) or [])[:per_session]
             if rows:
                 parts.append(f"{name} " + ", ".join(f"{r.get('name') or r['symbol']} {r['symbol']}"
                                                     for r in rows))
                 syms += [r["symbol"] for r in rows]
+                names += [r.get("name") or "" for r in rows]
         if syms:
-            out.append({"date": dt.isoformat(), "symbols": syms,
+            out.append({"date": dt.isoformat(), "symbols": syms, "names": names,
                         "line": f"→ **{label}:** " + "; ".join(parts)})
     return out
+
+
+def _mentions(answer: str, symbol: str, name: str) -> bool:
+    """The answer names this company: a ticker of two letters or more, or
+    the company's first name word. A one-letter ticker (F, T, C) matches
+    ordinary text, so it counts only through the name (code review
+    2026-10-26)."""
+    if len(symbol) >= 2 and re.search(r"(?<![A-Za-z])\$?" + re.escape(symbol) + r"(?![A-Za-z])",
+                                      answer):
+        return True
+    word = (name or "").split(" ")[0].strip(",.")
+    return len(word) >= 4 and bool(re.search(r"\b" + re.escape(word) + r"\b", answer, re.I))
 
 
 def fill_missing_days(answer: str, outline: list[dict], today: date) -> tuple[str, list[str]]:
@@ -46,8 +59,8 @@ def fill_missing_days(answer: str, outline: list[dict], today: date) -> tuple[st
     for day in outline:
         if day["date"] < today.isoformat():
             continue
-        if any(re.search(r"(?<![A-Za-z])\$?" + re.escape(s) + r"(?![A-Za-z])", answer)
-               for s in day["symbols"]):
+        if any(_mentions(answer, s, n)
+               for s, n in zip(day["symbols"], day.get("names") or [""] * len(day["symbols"]))):
             continue
         added.append(day["date"])
         lines.append(day["line"])

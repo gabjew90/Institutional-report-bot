@@ -316,7 +316,7 @@ _LOWER_LEADIN_RE = re.compile(
 _COMPANY_WORD = (r"(?:lawsuit|suit|case|verdict|ruling|investor\s+day|analyst\s+day|earnings|guidance"
                  r"|mentions?|news|stock|shares|deal|merger|acquisition|buyback|offering|lock-?up"
                  r"|downgrade|upgrade|price\s+target|ceo|cfo|contract|filing|dividend"
-                 r"|valuation|multiple|forward\s+p/?e|p/?e(?:\s+ratio)?|price\s+to\s+sales)")
+                 r"|valuation|forward\s+p/?e|p/?e(?:\s+ratio)?|price\s+to\s+sales)")
 _LOWER_CONTEXT_RE = re.compile(
     r"\b" + _COMPANY_WORD + r"\s+(?:for|on|of|from|against|with|at)\s+(?:the\s+)?([a-z]{2,5})\b"
     # a lookahead, so "this lawsuit" does not consume "lawsuit for arm"
@@ -744,7 +744,7 @@ _NEWS_RE = re.compile(
     r")\b", re.I)
 # One field of a company's numbers (2026-10-18 audit A20).
 _VALUATION = (r"(?:forward\s+)?p\s*/\s*e\b|(?:forward\s+)?pe(?:\s+ratio)?\b|price[\s-]+to[\s-]+(?:sales|earnings)"
-              r"|p\s*/\s*s\b|valuation|earnings\s+multiple|(?:trading\s+at\s+)?(?:what\s+)?multiple")
+              r"|p\s*/\s*s\b|valuation|earnings\s+multiple|(?:what|which)\s+multiple")
 _SNAPSHOT_FIELD_RE = re.compile(
     r"\b(?:shares\s+outstanding|share\s+count|(?:shares?\s+|free\s+)?float\b|market\s+cap(?:italization)?"
     r"|short\s+interest|how\s+many\s+shares"

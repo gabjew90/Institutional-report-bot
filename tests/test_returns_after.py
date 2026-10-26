@@ -32,3 +32,9 @@ def test_executor_returns_event_returns(monkeypatch):
     out = asyncio.run(T._execute_price_history({"symbol": "SPCX", "event_dates": ["2026-08-06", "junk"]}))
     assert [r["date"] for r in out["returns_after_dates"]] == ["2026-08-06"]
     assert "points" not in out
+
+
+def test_after_close_event_bases_on_that_days_close():
+    """Code review 2026-10-26: an after-close report is measured from its own day."""
+    r = T.returns_after(_hist(), "2026-08-06", after_close=True)
+    assert r["base_date"] == "2026-08-06" and r["1_day"]["date"] == "2026-08-07"

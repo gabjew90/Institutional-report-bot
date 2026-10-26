@@ -5309,10 +5309,15 @@ async def _ask_02_call_model_with_tools(
     from discord_bot import channel_refs as _cr
     from discord_bot.ask_router import asker_text as _cr_asker
     _unread = _cr.unread_channels(_cr_asker(question))
-    if _unread:
+    if _unread and not _cr.asks_more(_cr_asker(question)):
         if out_meta is not None:
             out_meta.setdefault("guards", []).append("unread-channel")
         return _AskEarly(discord.Embed(description=_cr.note(_unread), color=0xE67E22))
+    if _unread:
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(
+            text=_cr.context_note(_unread))]))
+        if out_meta is not None:
+            out_meta.setdefault("guards", []).append("unread-channel:note")
 
     from ai_analysis.token_budget import get_budget, BudgetExceeded
     # Heuristic: input ~user_content chars / 4 + per-round 5000
@@ -7289,7 +7294,13 @@ async def _ask_07_validation_ladder(
         and not _grounding_has_sources(grounding_metadata)
         and not _trace_has_source(_ask_tool_trace)
     )
-    if _ask_meta.get("world_clock") and (_ground_trigger_web or _ground_trigger_shape):
+    # Only when the clock is the whole question: "is KRX open and why is
+    # Samsung down" still needs the search for its second half (code review
+    # 2026-10-26).
+    from discord_bot.ask_router import asker_text as _wc_asker
+    if (_ask_meta.get("world_clock") and (_ground_trigger_web or _ground_trigger_shape)
+            and not re.search(r"\b(?:why|news|happened|reason|headlines?|what\s+caused)\b",
+                              _wc_asker(question) or question, re.I)):
         # Times and open/closed status came from the computed world clock; a
         # search-only retry replaced a correct "KRX is open" with "closed"
         # (2026-10-26 audit A8).
