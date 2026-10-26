@@ -1475,6 +1475,7 @@ from db_parts.analyst import (  # noqa: E402,F401
     compute_caller_win_loss_summary,
     compute_member_points,
     format_member_ledger_line,
+    member_close_stats,
     member_ledger_summary,
     plausible_gain,
     member_recent_tickers,

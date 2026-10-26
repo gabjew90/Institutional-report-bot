@@ -130,3 +130,11 @@ def test_review_2026_10_18_comment_color_and_caps_survive():
     chat = "**Recent trades.**\n- Brazil ETF puts — [IT got crushed]\n- TSLA 385C — [closed +40%]\n"
     text, _ = T.ground_recent_trades(chat, rows, older_rows=old + rows)
     assert "Brazil" in text
+
+
+def test_an_open_trade_carries_no_pnl_2026_10_26():
+    """Audit A17: "ASTS 38P [OPEN] — [down 30%]" was served as current."""
+    rows = [_row("open", "ASTS", 38, "put", "2026-10-16T15:00")]
+    line = "**Recent trades.**\n- ASTS 38P — [defending the position while down 30%]\n"
+    text, fixed = T.ground_recent_trades(line, rows)
+    assert fixed and "down 30%" not in text and "[no exit posted in the log]" in text

@@ -237,7 +237,11 @@ def ground_recent_trades(profile_text: str, rows: list[dict],
         if not contract_exits:
             claims_loss = (_LOSS_RE.search(comment)
                            and not re.search(r"\bunrealized\b", comment, re.I))
-            bad = bool(_OUTCOME_RE.search(comment) or claims_loss)
+            # an open trade has no P&L in the log: "down 30%" is a guess that
+            # goes stale ("currently down 30% on ASTS puts" while they had
+            # printed, 2026-10-26 audit A17)
+            open_pnl = re.search(r"\b(?:down|up)\s+\d+(?:\.\d+)?\s*%|[+-]\d+(?:\.\d+)?\s*%", comment)
+            bad = bool(_OUTCOME_RE.search(comment) or claims_loss or open_pnl)
         else:
             last = sorted(contract_exits, key=lambda e: e.get("posted_at") or "")[-1]
             g = shown_gain(last.get("gain_pct"), last.get("contract_type"))

@@ -5534,6 +5534,13 @@ async def _ask_02_call_model_with_tools(
         contents.append(types.Content(role="user", parts=[types.Part.from_text(
             text=_ask_router.deferred_note(_ask_route.deferred_author))]))
         _ask_meta["guards"].append("deferred-question")
+    # Foreign market hours computed in code (2026-10-26 audit A7)
+    from discord_bot.world_clock import clock_note as _clock_note
+    _clock = _clock_note(_ask_router.asker_text(question) or question)
+    if _clock:
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(text=_clock)]))
+        _ask_meta["guards"].append("world-clock")
+        _ask_meta["world_clock"] = True
     # A bare @-tag under a message: pass that message on (2026-10-18 audit A19)
     _tagged = _ask_router.mention_only(question)
     if _tagged:
@@ -7250,6 +7257,12 @@ async def _ask_07_validation_ladder(
         and not _grounding_has_sources(grounding_metadata)
         and not _trace_has_source(_ask_tool_trace)
     )
+    if _ask_meta.get("world_clock") and (_ground_trigger_web or _ground_trigger_shape):
+        # Times and open/closed status came from the computed world clock; a
+        # search-only retry replaced a correct "KRX is open" with "closed"
+        # (2026-10-26 audit A8).
+        _ground_trigger_web = _ground_trigger_shape = False
+        _ask_meta["guards"].append("grounding:world-clock")
     if answer and (_ground_trigger_shape or _ground_trigger_web
                    or _ground_trigger_calendar):
         _ground_trigger_name = (

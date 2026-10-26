@@ -894,3 +894,10 @@ def test_audit_2026_10_26_router_cases():
         r = R.classify(logged + q)
         assert r.shape == R.UNKNOWN and r.prefetch == [(R.T_PRICE, {"symbols": ["AVGO"]})], q
     assert R.classify(logged + "should i buy the dip on it?").shape == R.TICKER_OPINION
+    # A18: a member's trades in a name are the ledger, not a stock view
+    assert R.classify("when was the last time Abe bought GLW calls and sold them "
+                      "profitably").shape == R.MEMBER_LEDGER
+    # the caller sets names_member when a room member is named
+    assert R.classify("did kloh sell his NVDA calls", names_member=True).shape == R.MEMBER_LEDGER
+    for q in ("should i buy NVDA", "is NVDA a buy"):
+        assert R.classify(q).shape == R.TICKER_OPINION, q

@@ -845,7 +845,20 @@ async def _execute_trade_log(args: dict) -> dict:
     except Exception as e:
         log.warning(f"lookup_trade_log chat-stated fetch failed: {e}")
 
-    if not profile_snippet and not chat_stated_trades:
+    # The member's logged closes as a computed record (2026-10-26 audit A6:
+    # a raw query with a 50,900% row printed "100% win rate, +1,919.7%").
+    record = None
+    try:
+        record = {
+            "all": await asyncio.to_thread(db.member_close_stats, user_id, max(int(days), 30)),
+            "calls": await asyncio.to_thread(db.member_close_stats, user_id, max(int(days), 30), "call"),
+            "puts": await asyncio.to_thread(db.member_close_stats, user_id, max(int(days), 30), "put"),
+            "note": ("Computed from the trade log's closes and trims, impossible gains removed. "
+                     "Quote these figures for a win rate or average; never compute one yourself."),
+        }
+    except Exception as e:
+        log.warning(f"lookup_trade_log close stats failed: {e}")
+    if not profile_snippet and not chat_stated_trades and not (record and record["all"]["closes_counted"]):
         return {
             "status": "empty",
             "as_of": as_of,
@@ -866,6 +879,7 @@ async def _execute_trade_log(args: dict) -> dict:
         "profile_recent_trades": profile_snippet or None,
         # Self-reported (NOT screenshot-verified). Their own chat words.
         "chat_stated_trades": chat_stated_trades,
+        "logged_record": record,
     }
 
 

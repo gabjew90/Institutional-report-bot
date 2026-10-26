@@ -1643,3 +1643,32 @@ def member_batch_context(channel, author_id: int, before: str,
         (val, int(author_id), before, since, int(n)),
     ).fetchall()
     return [dict(r) for r in reversed(rows)]
+
+
+def member_close_stats(author_id: int, days: int = 30,
+                       contract_type: str | None = None) -> dict:
+    """A member's closed trades as a record, computed in code: closes, wins,
+    losses, win rate and average gain, impossible gains removed
+    (plausible_gain). `contract_type` 'call' or 'put' narrows it.
+
+    2026-10-26 audit A6: "what's my win rate on calls" was answered from a
+    raw query that included a 50,900% row on ticker "unclear", and printed
+    "46 wins, 100% win rate, +1,919.7% avg"."""
+    sql = ("SELECT gain_pct, contract_type FROM analyst_trades "
+           "WHERE author_id = ? AND gain_pct IS NOT NULL AND gain_pct != 0 "
+           "  AND LOWER(action) IN ('close', 'trim') AND posted_at >= datetime('now', ?)")
+    params: list = [int(author_id), f"-{int(days)} day"]
+    if contract_type:
+        sql += " AND LOWER(contract_type) = ?"
+        params.append(contract_type.lower())
+    rows = _db.get_connection().execute(sql, params).fetchall()
+    gains = [g for g in (plausible_gain(r[0], r[1]) for r in rows) if g is not None]
+    wins = sum(1 for g in gains if g > 0)
+    losses = sum(1 for g in gains if g < 0)
+    return {
+        "days": int(days), "contract_type": contract_type or "all",
+        "closes_counted": len(gains), "closes_discarded_as_impossible": len(rows) - len(gains),
+        "wins": wins, "losses": losses,
+        "win_rate_pct": round(100.0 * wins / len(gains), 1) if gains else None,
+        "avg_gain_pct": round(sum(gains) / len(gains), 1) if gains else None,
+    }

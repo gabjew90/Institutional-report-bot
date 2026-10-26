@@ -104,7 +104,8 @@ TOOL_POLICY: dict[str, set[str]] = {
     ECON_CALENDAR: {T_ECON, T_SLATE, T_AUCTION, T_PRICE},
     PRICE_HISTORY: {T_HISTORY, T_PRICE} | _STOCK,
     COMPANY_PROFILE: {T_PRICE} | _STOCK,
-    MEMBER_LEDGER: {T_TRADES, T_QUERY, T_PROFILE, T_PRICE, T_CHAT},
+    # no raw SQL on a member record: the trade log computes it (2026-10-26 A6)
+    MEMBER_LEDGER: {T_TRADES, T_PROFILE, T_PRICE, T_CHAT},
     CHAT_HISTORY: {T_CHAT, T_PROFILE, T_QUERY},
     FANTASY: {T_FANTASY, T_CHAT},
     HISTORICAL_STAT: {T_HISTORY},
@@ -1026,6 +1027,14 @@ def classify(question: str, *, fantasy_enabled: bool = False,
             return _as_fantasy(r, q, "ledger words in the football channel",
                                asker_manager=asker_manager)
         r.shape, r.reason = MEMBER_LEDGER, "member ledger words"
+        return r
+    # A member's own trading in a name ("when did Abe last buy GLW calls and
+    # sell them for a profit") is the trade log, not a view on the stock
+    # (2026-10-26 audit A18: it got the GLW outline).
+    if (names_member or re.search(r"\b(?:abe|kyle|bk|jamal)\b", ql)) and re.search(
+            r"\b(?:bought|sold|closed|opened|traded|played|took|buy|sell|entered|exited)\b", ql) and (
+            tickers or re.search(r"\b(?:calls?|puts?|shares|position)\b", ql)):
+        r.shape, r.reason = MEMBER_LEDGER, "a member's trades in a name"
         return r
     # a "why" is about reasons even when it also names positions
     if _ROOM_OPINION_RE.search(q) and (re.search(r"\bwhy\b", ql) or not _CROWD_RE.search(q)):

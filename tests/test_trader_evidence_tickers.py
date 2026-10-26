@@ -52,3 +52,28 @@ def test_a_group_line_is_labelled_not_the_stocks_own_2026_10_18():
     ins = next(n for n in notes if n["title"] == "IPPs")["insights"]
     assert ins[0].startswith("Group-wide line, not VST alone:")
     assert ins[1] == "VST raised its buyback"
+
+
+def test_member_close_stats_drops_impossible_rows_2026_10_26():
+    """Audit A6: a 50,900% row on ticker "unclear" made "+1,919.7% avg"."""
+    import db
+    conn = db.get_connection()
+    conn.execute("DELETE FROM analyst_trades WHERE author_id = 930001")
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(analyst_trades)")}
+    base = {"author_id": 930001, "action": "close", "posted_at": "2099-01-01 00:00:00"}
+    rows = [dict(base, ticker="NVDA", contract_type="call", gain_pct=50.0),
+            dict(base, ticker="AMD", contract_type="call", gain_pct=-20.0),
+            dict(base, ticker="unclear", contract_type="unclear", gain_pct=50900.0)]
+    for i, r in enumerate(rows):
+        r = {k: v for k, v in r.items() if k in cols}
+        r.update({"discord_message_id": 930001000 + i, "discord_attachment_id": i,
+                  "author": "tester", "is_trade": 1, "tracking_mode": "member"})
+        r = {k: v for k, v in r.items() if k in cols}
+        conn.execute(f"INSERT INTO analyst_trades ({','.join(r)}) VALUES ({','.join('?'*len(r))})", list(r.values()))
+    conn.commit()
+    s = db.member_close_stats(930001, days=30)
+    assert s["closes_counted"] == 2 and s["closes_discarded_as_impossible"] == 1
+    assert s["win_rate_pct"] == 50.0 and s["avg_gain_pct"] == 15.0
+    assert db.member_close_stats(930001, days=30, contract_type="call")["wins"] == 1
+    conn.execute("DELETE FROM analyst_trades WHERE author_id = 930001")
+    conn.commit()
