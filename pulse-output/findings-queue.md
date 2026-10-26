@@ -1276,3 +1276,13 @@ Not filing a fresh queue item for the staleness itself, per the
 - **observation** — Driver file is an abridged note: a first adversarial pass with 2 hard `_LEANS` findings is described but not recorded, and the checker "saw a partial corpus". Record both passes in the trail.
 - **observation** — No STEP 7 self-review file for today in `qc-reviews/`.
 - **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
+
+## 2026-10-26
+- **deterministic-fixable** — The Monday 10-26 pulse used the Friday 10-23 context: `latest.json` has `today: 2026-10-23`, `now_label: 11:22 EDT`, dumped 10-23T15:24Z. RECAP is Friday's tape (hedged as such), WATCH "Today" is Friday's calendar. Gate on `context.today == run date` (and a dump timestamp near run time) before DRAFT, and fail loudly or rebuild the context.
+- **observation** — Fifth consecutive light edition with newest note dated 10-19 and a 96h/10-19 window cutoff. Check Dropbox ingestion and the light-day gate; the AI-credit themes (15, 10, 10, 8 banks) are live and the pulse never mentions them.
+- **deterministic-fixable** — WATCH has no FOMC for 10/28 (third day running) on the fallback economic feed (Finnhub down). Add the FOMC date to the fallback from `world_context`/official calendar and ping ops.
+- **deterministic-fixable** — Lint `top-3-theme-missing` / `discovered-theme-missing` still fire on `body_source: light` (5 soft issues). Skip them on light days.
+- **prompt-session** — TRADE BOARD on a light day lists undated desk calls (and a fund manager's letter, One River GOOGL) beside "no new research" (repeat of 10-21 to 10-23). Date the lines, restrict to desk sources, or drop the board on light days.
+- **observation** — RECAP line "Airlines reported fewer passengers in the third quarter as fuel costs pushed fares higher" has no match in the dump. Unverifiable, not proven wrong.
+- **observation** — No STEP 7 self-review file for today in `qc-reviews/` (last is 10-22).
+- **observation** — Series gaps persist: no verdict for 10-12 and 10-14.
