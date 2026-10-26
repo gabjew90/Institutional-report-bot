@@ -166,3 +166,23 @@ def bot_answers_mentioning(terms: list[str], days: int = 7, limit: int = 2) -> l
         (f"-{int(days)} day", *params, int(limit)),
     ).fetchall()
     return [dict(r) for r in rows]
+
+
+def asker_of_bot_answer(channel_id: int, text: str, hours: int = 48) -> int | None:
+    """Who asked the bot answer whose text is `text` (a reply's parent), by
+    matching its opening against the bot's recent answers in the channel.
+    2026-10-26 audit F1: a reply under the answer about 2Pale's game loaded
+    the replier's own league data."""
+    import re as _re
+    norm = lambda s: _re.sub(r"\s+", " ", (s or "")).strip()
+    probe = norm(text)[:80]
+    if len(probe) < 20:
+        return None
+    rows = _db.get_connection().execute(
+        "SELECT asker_user_id, answer FROM ask_bot_answers WHERE channel_id = ? "
+        "AND answered_at >= datetime('now', ?) ORDER BY id DESC LIMIT 60",
+        (int(channel_id), f"-{int(hours)} hour")).fetchall()
+    for uid, answer in rows:
+        if probe in norm(answer):
+            return int(uid)
+    return None

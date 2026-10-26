@@ -47,6 +47,13 @@ _WIN_WORDS_RE = re.compile(r"\b(?:win|wins|winning|won|chances?|odds|probabilit|
 _SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+|\n+")
 
 
+def _bot_parent(question: str) -> str:
+    """The text of the bot's own message the asker replied to, else ''."""
+    m = re.search(r"\[MESSAGE BEING REPLIED TO — from omniwiz[^\]]*\]\s*\n(.*?)(?=\n\[[^\]\n]*message to you\]|\Z)",
+                  question or "", re.S)
+    return m.group(1) if m else ""
+
+
 def stray_percents(answer: str, estimates: dict[str, int], question: str = "") -> list[str]:
     """Win percentages in the answer that are not one of the estimates.
     A percentage counts when its sentence is about winning, or when the
@@ -54,6 +61,10 @@ def stray_percents(answer: str, estimates: dict[str, int], question: str = "") -
     chat" answered "what % chance of winning" with no win word of its
     own). Target share, roster rate and snap share are percentages too."""
     allowed = {float(v) for v in estimates.values()}
+    # The bot's own figure in the answer being replied to was an estimate
+    # when it was given: BK's "He's cooked" under 2Pale's 11% stripped the
+    # whole reply (2026-10-26 audit F2).
+    allowed |= {float(m.group(1)) for m in _PCT_RE.finditer(_bot_parent(question))}
     # the router's win-chance pattern, not the broad word list: "who won
     # the trade?" does not make a target share a win chance
     from discord_bot.ask_router import _WIN_CHANCE_RE
@@ -84,7 +95,10 @@ def strip_stray(answer: str, estimates: dict[str, int], question: str = "") -> s
         elif any(s.strip(" →*") for s in good):
             kept.append(" ".join(good).rstrip())
     out = "\n".join(kept).strip()
-    if not out.strip(" →*\n") or out.strip() in ("→", ""):
+    # a footer alone ("Data: Sleeper league") is not an answer (2026-10-26 F2)
+    body = "\n".join(ln for ln in out.split("\n")
+                     if not re.match(r"\s*(?:Data|Sources?):", ln)).strip(" →*\n")
+    if not body:
         return NO_ESTIMATE_LINE
     return out
 

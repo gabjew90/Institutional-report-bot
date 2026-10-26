@@ -36,6 +36,29 @@ def test_a_grounded_answer_never_gets_the_canned_refusal():
 
 
 def test_an_ungrounded_unsourced_print_still_gets_the_refusal():
-    a = "→ Core CPI came in at 0.3% this morning."
-    out, how = V.resolve_violations(a, None, tool_calls=[], strip_fn=lambda a, bad: "")
+    # When the strip leaves something, an ungrounded violation that cannot be
+    # fixed still gets the refusal. A strip that leaves NOTHING ships the
+    # original since 2026-10-26 (audit A2: the refusal replaced a correct
+    # answer after a misfire), see the test below.
+    a = "→ Core CPI came in at 0.3% this morning. → It was hot."
+    out, how = V.resolve_violations(a, None, tool_calls=[],
+                                    strip_fn=lambda x, bad: "→ Core CPI came in at 0.3%.")
     assert how == "replaced" and out == V.SAFE_REFUSAL
+
+
+def test_an_eps_estimate_and_an_all_time_high_are_not_live_prices_2026_10_26():
+    """Audit A2/A10: SPCX's "$0.14" EPS estimate and FVRR's all-time high
+    were cut as unsourced prices."""
+    a = "→ **SPCX** reports after the close today; consensus EPS sits at **$0.14**."
+    assert V.check_unforced_price(a, tool_calls=[]) == []
+    b = "→ **FVRR** hit an all-time high of **$336.00** in February 2021."
+    assert V.check_unforced_price(b, tool_calls=[]) == []
+    c = "$NVDA trading at $181.20"
+    assert V.check_unforced_price(c, tool_calls=[])        # a live quote still needs the tool
+    assert V.check_unforced_price(c, tool_calls=["lookup_ticker_snapshot"]) == []
+
+
+def test_a_strip_that_empties_a_short_answer_ships_the_original():
+    a = "→ Core CPI came in at 0.3% this morning."
+    out, how = V.resolve_violations(a, None, tool_calls=[], strip_fn=lambda x, bad: "")
+    assert how == "shipped" and out == a

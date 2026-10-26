@@ -197,6 +197,41 @@ _KEEP = _CRYPTO | set(INDEX_SYMBOLS)
 _LOWER_KEEP_RE = re.compile(r"\b(btc|eth|sol|spx|ndx|vix|dow|rut)\b", re.I)
 
 
+# Company names the room types instead of tickers (2026-10-26 audit A3:
+# "WHAT ABOUT SPACEX BRO" got "spacex is private"; the router had taken
+# WHAT, ABOUT and BRO as tickers). Whole words, any case.
+COMPANY_TICKERS = {
+    "spacex": "SPCX", "space x": "SPCX", "nvidia": "NVDA", "tesla": "TSLA", "apple": "AAPL",
+    "microsoft": "MSFT", "amazon": "AMZN", "google": "GOOGL", "alphabet": "GOOGL",
+    "facebook": "META", "netflix": "NFLX", "micron": "MU", "broadcom": "AVGO",
+    "palantir": "PLTR", "coinbase": "COIN", "robinhood": "HOOD", "oracle": "ORCL",
+    "intel": "INTC", "salesforce": "CRM", "nebius": "NBIS", "coreweave": "CRWV",
+    "sandisk": "SNDK", "western digital": "WDC", "seagate": "STX", "boeing": "BA",
+    "walmart": "WMT", "costco": "COST", "disney": "DIS", "starbucks": "SBUX",
+    "jpmorgan": "JPM", "goldman": "GS", "berkshire": "BRK.B", "snowflake": "SNOW",
+    "shopify": "SHOP", "uber": "UBER", "airbnb": "ABNB", "rivian": "RIVN", "lucid": "LCID",
+}
+_COMPANY_RE = re.compile(r"\b(" + "|".join(sorted(map(re.escape, COMPANY_TICKERS), key=len, reverse=True))
+                         + r")\b", re.I)
+
+
+def company_tickers(text: str) -> list[str]:
+    out: list[str] = []
+    for m in _COMPANY_RE.finditer(text or ""):
+        t = COMPANY_TICKERS[m.group(1).lower()]
+        if t not in out:
+            out.append(t)
+    return out
+
+
+def _shouting(text: str) -> bool:
+    """Mostly capital letters over several words: the capitals are tone, not
+    tickers ("ARE YOU RETARDED. SPACEX IS PUBLIC")."""
+    letters = [c for c in text or "" if c.isalpha()]
+    words = re.findall(r"[A-Za-z]{2,}", text or "")
+    return len(words) >= 3 and letters and sum(c.isupper() for c in letters) / len(letters) > 0.7
+
+
 def price_symbol(t: str) -> str:
     return INDEX_SYMBOLS.get(t, t)
 
@@ -219,10 +254,19 @@ def extract_tickers(text: str, *, lowercase: bool = True,
             out.append(t)
     if out and not all_tiers:
         return out
+    # A company named in words ("spacex", "nvidia") is as good as its ticker.
+    for t in company_tickers(text):
+        if t not in out:
+            out.append(t)
+    if out and not all_tiers:
+        return out
+    shouting = _shouting(text)
     for m in _BARE_RE.finditer(text):
         t = m.group(1)
         if t in _NOT_TICKERS and t not in _KEEP:
             continue
+        if shouting and t not in _KEEP:
+            continue        # capitals are tone here, not symbols
         if t not in out:
             out.append(t)
     if out:
@@ -272,7 +316,10 @@ _LOWER_CONTEXT_RE = re.compile(
     # a lookahead, so "this lawsuit" does not consume "lawsuit for arm"
     r"|\b([a-z]{2,5})(?:'s)?\s+(?=" + _COMPANY_WORD + r"\b)"
     # "spcx is reporting after close on 10/20" (audit A9)
-    r"|^\s*([a-z]{2,5})\s+(?:is|are)\s+report(?:s|ing)\b", re.I)
+    r"|^\s*([a-z]{2,5})\s+(?:is|are)\s+report(?:s|ing)\b"
+    # "Your forgot spcx", "what about aapl" (2026-10-26 audit A3)
+    r"|\b(?:forgot|forget|missed|left\s+out|leaving\s+out|what\s+about|how\s+about)\s+\$?([a-z]{2,5})\b",
+    re.I)
 
 
 # Words that sit in front of "news", "stock" or "earnings" as adjectives
@@ -1181,10 +1228,33 @@ def classify(question: str, *, fantasy_enabled: bool = False,
     named = [] if strong else lower_context_tickers(q)
     if named:
         strong = named
+    # A company named in words is a deliberate subject ("WHAT ABOUT SPACEX").
+    named = named or [t for t in company_tickers(q) if t in strong]
+    # Under the bot's earnings answer, a named company is an earnings-date
+    # question (2026-10-26 audit A3: SPCX, the day it reported).
+    if named and re.search(r"\b(?:earnings|reports?|reporting|after close|before (?:the )?open)\b",
+                           _parent_text(question), re.I):
+        r.tickers = named[:1]
+        r.shape, r.reason = EARNINGS_DATE, "company named under an earnings answer"
+        r.prefetch = [(T_EDATE, {"symbol": named[0]}), (T_PRICE, {"symbols": [named[0]]})] + \
+            _stock_prefetch(named[0], research=False)
+        return r
     if not tickers:
         parent = reply_parent_tickers(question)
         if parent:
             strong, carried = parent[:1], True
+    # A ticker carried over from the replied-to message gets the full stock
+    # read only for a real question about it. "Plz no! Again?", "Do I
+    # close?" and "ASTS PUTS PRINTED RETARD" got a five-slot outline
+    # (2026-10-26 audit A9); a reaction gets the price and nothing else.
+    if (carried and strong and is_stock(strong[0])
+            and not ((_MARKET_WORD_RE.search(q) or re.search(r"\b(?:buy|sell|dip|short|long)\b", ql))
+                     and not _shouting(q))):
+        r.tickers = strong
+        r.reason = "reaction to a message about a ticker: price only"
+        r.prefetch = [(T_PRICE, {"symbols": [strong[0]]})]
+        r.shape = UNKNOWN
+        return r
     if (strong and is_stock(strong[0]) and strong[0].lower() not in _COMMON_WORDS
             and ("$" in q or named or _MARKET_WORD_RE.search(q) or (carried and "?" in q))):
         r.tickers = strong

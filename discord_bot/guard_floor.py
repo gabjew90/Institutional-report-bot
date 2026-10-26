@@ -62,3 +62,17 @@ def plausible_rewrite(before: str, after: str) -> bool:
     if b >= 8 and not (0.5 * b <= a <= 2.0 * b):
         return False
     return True
+
+
+def keeps_figures(before: str, after: str) -> bool:
+    """Every figure in `before` is still in `after` (formatting aside)."""
+    from discord_bot.data_footer import numeric_cores
+    return numeric_cores(before) <= numeric_cores(after)
+
+
+def acceptable_rewrite(before: str, after: str) -> bool:
+    """The one test a reword must pass before it replaces an answer: it reads
+    as a reply (plausible_rewrite) and keeps every figure. 2026-10-26 audit
+    A14: the repeat-avoidance reword dropped an answer's EPS and revenue
+    figures (#59) and turned another into a two-line fragment (#71)."""
+    return plausible_rewrite(before, after) and keeps_figures(before, after)

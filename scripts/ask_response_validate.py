@@ -554,7 +554,12 @@ _NOT_A_LEVEL = re.compile(
     r"|\bpayrolls?\b|\bCPI\b|\bPCE\b|\bGDP\b|\bclaims\b"
     r"|\breceipts?\b|\bparking\b|\bstipend\b|\bjury\b"
     r"|\bIPO\b|\braised\b|\bfunding\b|\bfloat\b|\bunlock"
-    r"|\bfollowers?\b|\bmessages?\b|\bmsgs?\b",
+    r"|\bfollowers?\b|\bmessages?\b|\bmsgs?\b"
+    # An estimate or a historical level is not a live quote (2026-10-26
+    # audit: SPCX's "$0.14" EPS estimate and FVRR's all-time high were cut
+    # as unsourced prices, A2/A10).
+    r"|\bEPS\b|\bestimates?\b|\bconsensus\b|\bper share\b|\bguid(?:e|ance|ed)\b"
+    r"|\ball[- ]time high\b|\bATH\b|\bpeak(?:ed)?\b|\brecord high\b|\b52[- ]week\b",
     re.I,
 )
 
@@ -588,7 +593,9 @@ def check_unforced_price(answer: str, tool_calls=None,
     quoted. It is a tool-call assertion, so it is checkable, so per
     CLAUDE.md rule 1 it belongs here instead.
     """
-    if _PRICE_TOOL in (tool_calls or []):
+    # The snapshot and the earnings tool carry the price too (2026-10-26:
+    # SPCX's answer drew on both and was still flagged).
+    if {_PRICE_TOOL, "lookup_ticker_snapshot", "lookup_earnings_date"} & set(tool_calls or []):
         return []
     text = answer or ""
     for m in _PRICE_LEVEL.finditer(text):
@@ -1391,7 +1398,10 @@ def resolve_violations(answer: str, retry_answer: str | None,
     # "why is crypto dropping" shipped as one line after this rung
     # (2026-10-18 audit A22).
     from discord_bot.guard_floor import gutted
-    if stripped and gutted(answer, stripped) and "meta-plumbing" not in rules:
+    if "meta-plumbing" not in rules and (not (stripped or "").strip()
+                                         or gutted(answer, stripped)):
+        # A strip that empties a short answer is not a fix either: the SPCX
+        # date answer became "pull it from your broker" (2026-10-26 A2).
         return answer, "shipped"
     if stripped and not validate(stripped, tool_calls, **ctx):
         return stripped, "stripped"

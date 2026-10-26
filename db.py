@@ -1496,6 +1496,7 @@ from db_parts.analyst import (  # noqa: E402,F401
     record_bot_book_post,
 )
 from db_parts.ask import (  # noqa: E402,F401
+    asker_of_bot_answer,
     count_ask_queries_today_for_user,
     get_recent_bot_answers_in_channel,
     bot_answers_mentioning,

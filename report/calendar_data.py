@@ -633,6 +633,25 @@ def cached_caps(symbols: list[str]) -> dict:
     return db.get_market_caps(symbols)
 
 
+# A Finnhub row Nasdaq does not list is kept, flagged, when the company is
+# this large: $1B+ of quarterly revenue expected, or a cached cap of $50B+.
+_KEEP_REVENUE_EST = 1_000_000_000
+
+
+def _too_big_to_drop(row: dict) -> bool:
+    try:
+        if float(row.get("revenueEstimate") or 0) >= _KEEP_REVENUE_EST:
+            return True
+    except (TypeError, ValueError):
+        pass
+    sym = (row.get("symbol") or "").strip()
+    try:
+        cap = float((db.get_market_caps([sym]).get(sym) or {}).get("cap") or 0)
+    except Exception:
+        cap = 0.0
+    return cap >= EARN_IMPORTANT_CAP_MUSD
+
+
 def _nasdaq_rows_for(date_iso: str) -> dict | None:
     try:
         return news_data.fetch_nasdaq_earnings_rows(date_iso)
@@ -662,17 +681,30 @@ def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
     # missing second source is not evidence that a report moved.
     nasdaq_caps: dict[str, dict] = {}
     if nasdaq_rows:
-        kept_raw, off = [], []
+        kept_raw, off, big_unconfirmed = [], [], []
         for r in raw:
             sym = (r.get("symbol") or "").strip()
             if sym and sym.upper() not in nasdaq_rows:
-                off.append(sym)
+                if _too_big_to_drop(r):
+                    # A large company Nasdaq has not listed YET stays, flagged
+                    # unconfirmed. SpaceX ($2T) was on Finnhub for 10/20 but
+                    # reached Nasdaq's list only after the 3 PM sheet, so the
+                    # sheet, its X post and /ask's slate all left it out
+                    # (2026-10-26 audit A1/C1).
+                    big_unconfirmed.append(sym)
+                    kept_raw.append({**r, "_date_unconfirmed": True})
+                else:
+                    off.append(sym)
             else:
                 kept_raw.append(r)
         if off:
             out["date_unconfirmed"] = sorted(set(off))
             log.info(f"calendar: {len(off)} Finnhub row(s) for {date_iso} "
                      f"not on Nasdaq's calendar, dropped: {out['date_unconfirmed'][:20]}")
+        if big_unconfirmed:
+            out["finnhub_only_kept"] = sorted(set(big_unconfirmed))
+            log.info(f"calendar: kept {out['finnhub_only_kept']} for {date_iso} "
+                     "although Nasdaq does not list them yet (large companies)")
         raw = kept_raw
         # The other direction (2026-09-16): a name Nasdaq lists that
         # Finnhub has on another date (General Mills, estimated 9/15 by
@@ -719,10 +751,10 @@ def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
         # blank / dmh (during market hours) land in AMC, flagged unconfirmed
         if hour == "bmo":
             bmo_syms.append(sym)
-            confirmed[sym] = True
+            confirmed[sym] = not r.get("_date_unconfirmed")
         else:
             amc_syms.append(sym)
-            confirmed[sym] = hour == "amc"
+            confirmed[sym] = hour == "amc" and not r.get("_date_unconfirmed")
 
     caps = resolve_caps(bmo_syms + amc_syms) or {}
     for sym, info in nasdaq_caps.items():
@@ -738,6 +770,14 @@ def reconcile_earnings(date_iso: str, raw: list[dict], nasdaq_rows: dict | None,
         if n_cap > 0:
             caps[sym] = {**(caps.get(sym) or {}), "cap": n_cap}
             caps[sym].setdefault("name", nq.get("name") or sym)
+    # A large name kept without Nasdaq's confirmation ranks with the large
+    # names even when no profile cap is available (Finnhub has no SPCX
+    # profile): it was kept because it is big.
+    for sym in out.get("finnhub_only_kept", []):
+        if float((caps.get(sym) or {}).get("cap") or 0) <= 0:
+            caps[sym] = {**(caps.get(sym) or {}), "cap": float(EARN_IMPORTANT_CAP_MUSD),
+                         "cap_estimated": True}
+            caps[sym].setdefault("name", sym)
     out.update({"bmo": bmo_syms, "amc": amc_syms, "confirmed": confirmed, "caps": caps,
                 "nasdaq_checked": bool(nasdaq_rows)})
     return out

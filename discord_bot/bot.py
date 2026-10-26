@@ -4673,11 +4673,27 @@ async def _ask_00_setup_tools_and_context(
     # that question: route on it, and aim the league lookup at its author
     # (2026-10-04, ask_router.deferred_question).
     _route_question = question
+    _reply_subject = ""
     _deferred = _ask_router.deferred_question(question, _BOT_USER_ID)
     if _deferred:
         _route_question = _deferred["question"]
         if _mgr is not None:
             _asker_manager = _mgr(_deferred["user_id"])
+    elif _mgr is not None and channel_id and "from omniwiz" in question[:200]:
+        # A reply under the bot's answer to someone else, not about the
+        # replier ("He's cooked", no I/me/my): that answer's manager is the
+        # subject (2026-10-26 audit F1: BK's reply under 2Pale's game loaded
+        # BK's own league data, and the 11% check then emptied the reply).
+        try:
+            _own = _ask_router.asker_text(question)
+            if not re.search(r"\b(?:i|me|my|mine|i'?m)\b", _own, re.I):
+                _parent_txt = _ask_router._parent_text(question)
+                _orig = await asyncio.to_thread(db.asker_of_bot_answer, channel_id, _parent_txt)
+                if _orig and _orig != user_id and _mgr(_orig):
+                    _asker_manager = _mgr(_orig)
+                    _reply_subject = _asker_manager
+        except Exception as e:
+            log.info(f"/ask: reply-subject lookup failed (non-fatal): {e}")
     # "what happened" names nothing: its subject is what the asker was
     # just looking at, in their own last messages (2026-10-02, the
     # Cornell answer to a Seagate/Western Digital question).
@@ -4710,6 +4726,10 @@ async def _ask_00_setup_tools_and_context(
     if _deferred and not (user_id and int(_deferred["user_id"]) == int(user_id)):
         _ask_route.deferred_author = _deferred["author"]
         _ask_route.reason = f"deferred to {_deferred['author']}'s question: {_ask_route.reason}"
+    if _reply_subject and _ask_route.shape == "fantasy":
+        # answer about the manager whose game the replied-to answer covered
+        _ask_route.deferred_author = _reply_subject
+        _ask_route.reason = f"reply about {_reply_subject}'s game: {_ask_route.reason}"
     if _context_tickers:
         _ask_route.context_tickers = _context_tickers
         _ask_route.reason = (f"subject from the asker's last messages "
@@ -6798,8 +6818,8 @@ async def _ask_06_roast_subject_guards(
                         _nm_answer = ""
                     if _nm_answer:
                         _nm_answer, _ = _clean_voice_violations(_nm_answer)
-                    from discord_bot.guard_floor import plausible_rewrite
-                    _nm_ok = plausible_rewrite(answer, _nm_answer) and any(
+                    from discord_bot.guard_floor import acceptable_rewrite
+                    _nm_ok = acceptable_rewrite(answer, _nm_answer) and any(
                         re.search(rf"\b{re.escape(h)}\b", _nm_answer,
                                   re.I)
                         for h in (_nm_disp, _nm_uname) if len(h) >= 3
@@ -7037,11 +7057,14 @@ async def _ask_06_roast_subject_guards(
                 _span_text = (_span_resp.text or "").strip()
                 if _span_text:
                     _span_text, _ = _clean_voice_violations(_span_text)
+                from discord_bot.guard_floor import acceptable_rewrite as _ok_rw
                 if _span_text and not _repeated_span(
                         _span_text, _span_pool) and not _repeated_joke(
-                        _span_text, _span_pool):
+                        _span_text, _span_pool) and _ok_rw(answer, _span_text):
                     answer = _span_text
                     _ask_meta["guards"].append("repeat-span:reworded")
+                elif _span_text:
+                    _ask_meta["guards"].append("repeat-span:reword-rejected")
             except Exception as _se:
                 log.warning(f"/ask: reword on repeat failed (non-fatal): {_se}")
 

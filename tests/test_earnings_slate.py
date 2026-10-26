@@ -131,3 +131,18 @@ def test_this_week_on_a_weekend_is_the_coming_week():
     sat = datetime(2026, 10, 17, 10, 0)
     assert T._slate_dates("this_week", sat) == [
         "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"]
+
+
+def test_a_large_name_nasdaq_has_not_listed_yet_is_kept_flagged_2026_10_26():
+    """Audit A1/C1: SpaceX (SPCX) was on Finnhub for 10/20 and reached
+    Nasdaq's list only after the sheet, so the date check dropped a $2T name
+    from the sheet, the X post and the slate. A large name now stays, marked
+    unconfirmed; a small one Nasdaq lacks is still dropped."""
+    nasdaq = {"GE": {"hour": "bmo", "cap": 303330.0, "name": "GE Aerospace"}}
+    raw = [{"symbol": "GE", "hour": "bmo"},
+           {"symbol": "SPCX", "hour": "amc", "revenueEstimate": 7.4e9},
+           {"symbol": "TINYQ", "hour": "amc", "revenueEstimate": 3e6}]
+    r = _run({"date": "2026-10-20"}, raw, {}, nasdaq=nasdaq)
+    amc = {x["symbol"]: x for x in r["after_close"]}
+    assert "SPCX" in amc and amc["SPCX"]["session_confirmed"] is False
+    assert "TINYQ" not in amc

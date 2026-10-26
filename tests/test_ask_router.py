@@ -876,3 +876,21 @@ def test_review_2026_10_18_router_precision():
     assert "NVDA" in r.tickers
     r = R.classify("how's nvda volume today")
     assert r.prefetch != [(R.T_PRICE, {"symbols": ["SPY", "QQQ"], "with_volume": True})]
+
+
+def test_audit_2026_10_26_router_cases():
+    """Run-6 audit: SPCX follow-ups (A3) and reactions under a stock message (A9)."""
+    nl = chr(10)
+    earn = ("[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]" + nl
+            + '"→ **After the bell:** NFLX, ISRG  Data: earnings calendar (Finnhub, Nasdaq)"' + nl + nl
+            + "[SV's message to you]" + nl)
+    for q in ("WHAT ABOUT SPACEX BRO", "Your forgot spcx", "ARE YOU RETARDED. SPACEX IS PUBLIC UNDER THE TICKER SPCX"):
+        r = R.classify(earn + q)
+        assert r.shape == R.EARNINGS_DATE and r.tickers == ["SPCX"], q
+    assert R.extract_tickers("WHAT ABOUT SPACEX BRO") == ["SPCX"]
+    logged = ("[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]" + nl
+              + '"📝 Logged: OPEN **AVGO 340C 10-23** @3.10"' + nl + nl + "[Monsoon's message to you]" + nl)
+    for q in ("Plz no ! Again ?", "Do I close ?", "ASTS PUTS PRINTED RETARD"):
+        r = R.classify(logged + q)
+        assert r.shape == R.UNKNOWN and r.prefetch == [(R.T_PRICE, {"symbols": ["AVGO"]})], q
+    assert R.classify(logged + "should i buy the dip on it?").shape == R.TICKER_OPINION

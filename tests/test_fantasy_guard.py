@@ -101,3 +101,29 @@ def test_a_shared_last_name_is_not_the_opponents_player():
     s = dict(_SIDES, you_players=_SIDES["you_players"] + ["Michael Wilson"])
     assert wrong_side("→ You still have Wilson to play.", s) == []
     assert wrong_side("→ You still have Garrett Wilson to play.", s)
+
+
+def test_audit_2026_10_26_empty_reply_and_parent_percent():
+    """F2: BK's "He's cooked" under the bot's 11% answer was stripped to a
+    bare "Data: Sleeper league" footer."""
+    from discord_bot import fantasy_guard as fg
+    nl = chr(10)
+    q = ("[MESSAGE BEING REPLIED TO — from omniwiz — user_id 1]" + nl
+         + '"→ leaving you with roughly an **11%** win probability"' + nl + nl
+         + "[BK's message to you]" + nl + "It ain't gonna happen. He's cooked")
+    a = "0-5 and staring down a hole with an 11% win probability is a tough spot." + nl + nl + "Data: Sleeper league"
+    assert fg.stray_percents(a, {}, q) == []
+    bad = "→ You have a 64% win probability." + nl + nl + "Data: Sleeper league"
+    assert fg.strip_stray(bad, {}, "") == fg.NO_ESTIMATE_LINE
+
+
+def test_audit_2026_10_26_reply_subject_lookup():
+    """F1: the asker of the bot answer being replied to is found by its text."""
+    import db
+    conn = db.get_connection()
+    conn.execute("DELETE FROM ask_bot_answers WHERE channel_id = 777")
+    conn.commit()
+    db.record_ask_bot_answer(asker_user_id=4242, channel_id=777, question="am i winning",
+                             answer="→ **No.** You're sitting at **0-5** on the season and down 55.52 to 32.04")
+    assert db.asker_of_bot_answer(777, "→ **No.** You're sitting at **0-5** on the season and down 55.52 to 32.04") == 4242
+    assert db.asker_of_bot_answer(777, "something else entirely, long enough to probe") is None
