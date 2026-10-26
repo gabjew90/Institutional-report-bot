@@ -138,3 +138,12 @@ def test_an_open_trade_carries_no_pnl_2026_10_26():
     line = "**Recent trades.**\n- ASTS 38P — [defending the position while down 30%]\n"
     text, fixed = T.ground_recent_trades(line, rows)
     assert fixed and "down 30%" not in text and "[no exit posted in the log]" in text
+
+
+def test_stale_lines_drop_with_an_empty_window_2026_10_26():
+    """Audit M5: the stale filter did not run when the 30-day log was empty."""
+    old = [_row("open", "SNDK", 1550, "call", "2026-08-27T15:00")]
+    text, fixed = T.ground_recent_trades(
+        "**Recent trades.**\n- SNDK 1550C [OPEN per log] — [big swing]\n- Brazil puts — [chat only]\n",
+        [], older_rows=old)
+    assert "SNDK" not in text and "Brazil puts" in text and fixed

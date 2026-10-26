@@ -299,7 +299,7 @@ Anti-patterns:
 
 Before you write any quoted line, mentally check: "Is this exact phrase in {display_name}'s own messages below?" If the answer is no, don't quote it — describe the behavior instead. A scrubbed quote isn't theirs. An invented quote is worse — it puts words in their mouth that the room will catch.
 
-**The [bracketed] framing adds no facts.** No price, market level, date, event, place, job, habit or motive that the MESSAGES and trades below do not show: a stock's chart position they never posted, a trading style no message describes, a job read into a joke ("I'm the best man" is not a wedding career). The bot repeats these notes to the room as fact. The joke comes from the wording, never from an invented detail. A message marked "(replying to X)" or "(to @X)" is said to or about X: it is never a fact about this user's own life or trades.
+**The [bracketed] framing adds no facts.** No price, market level, date, event, place, job, habit or motive that the MESSAGES and trades below do not show: a stock's chart position they never posted, a trading style no message describes, a job read into a joke ("I'm the best man" is not a wedding career). The bot repeats these notes to the room as fact. The joke comes from the wording, never from an invented detail. A message marked "(replying to X)" or "(to @X)" is said to or about X: it is never a fact about this user's own life or trades. The quoted text inside "(replying to X: "...")" and inside "[said just before, by others: ...]" is OTHER people's words, shown so you can tell what the line answers: never quote it, and a joke or story it sets up is about the person it names, not this user.
 
 When real quotes are thin (lurker, short window, low signal), the profile sections get shorter — that's correct. Padding with invented or borrowed quotes is the failure mode this rule prevents.
 
@@ -1096,6 +1096,37 @@ def _lint_profile(
     return (hard, soft)
 
 
+_CTX_CHARS = 120        # characters of each context message
+_CTX_LINE_MAX = 160     # only a short line gets context: long posts carry their own
+_CTX_WINDOW_S = 600     # a message more than 10 minutes earlier is not what it answered
+
+
+def _context_before(prev: list, uid, posted_at: str, content: str) -> list[tuple[str, str]]:
+    """Up to two messages by others just before this one in its channel,
+    as (name, text), for a short line only (2026-10-26 audit M1)."""
+    if not uid or not content or len(content) > _CTX_LINE_MAX:
+        return []
+    try:
+        t = datetime.fromisoformat(posted_at.replace("Z", "+00:00"))
+    except ValueError:
+        return []
+    out = []
+    for at, a_id, name, text in reversed(prev):
+        if a_id == uid:
+            break               # the member's own earlier line: they started this
+        try:
+            gap = (t - datetime.fromisoformat(at.replace("Z", "+00:00"))).total_seconds()
+        except (ValueError, TypeError):     # TypeError: aware vs naive timestamps
+            break
+        if gap > _CTX_WINDOW_S:
+            break
+        if text:
+            out.append((name, text[:_CTX_CHARS]))
+        if len(out) == 2:
+            break
+    return list(reversed(out))
+
+
 def _load_user_data_from_store(
     channels: list[str] | None, days: int
 ) -> tuple[dict, dict, dict, dict, dict]:
@@ -1156,8 +1187,24 @@ def _load_user_data_from_store(
         if r.get("author_id"):
             _NAME_BY_ID[str(r["author_id"])] = (r.get("author_display")
                                                 or r.get("author_username") or "")
+    # What a line answered: the parent's text and the channel's last two
+    # messages by others. Without them a joke about someone else became the
+    # member's own life (2026-10-26 audit M1: kloh "fathered a child with a
+    # goth girl" was a joke about Grand; Cemini's "orange juice obsession"
+    # was about another trader). Rows arrive oldest first.
+    _text_of_msg = {r.get("discord_message_id"): (r.get("content") or "").strip()
+                    for r in rows if r.get("discord_message_id")}
+    _recent_in_channel: dict[str, list] = defaultdict(list)
     for r in rows:
         uid = r.get("author_id")
+        _ch = r.get("channel_name") or ""
+        _prev = _recent_in_channel[_ch]
+        _before = _context_before(_prev, uid, r.get("posted_at") or "",
+                                  (r.get("content") or "").strip())
+        _prev.append((r.get("posted_at") or "", uid,
+                      r.get("author_display") or r.get("author_username") or "",
+                      (r.get("content") or "").strip()))
+        del _prev[:-3]
         if not uid:
             continue
         # The name the room uses now: the newest message's display name
@@ -1201,6 +1248,10 @@ def _load_user_data_from_store(
                          if r.get("reply_parent_id")
                          and _author_id_of_msg.get(r.get("reply_parent_id")) != uid
                          else None),
+            "reply_text": (_text_of_msg.get(r.get("reply_parent_id")) or "")[:_CTX_CHARS]
+                          if r.get("reply_parent_id")
+                          and _author_id_of_msg.get(r.get("reply_parent_id")) != uid else "",
+            "before": _before,
         })
         # Slur counting runs against the full searchable surface — text
         # body + embed snippets + OCR'd screenshot content. A meme with a
@@ -1360,10 +1411,15 @@ def _format_messages_block(messages: list[dict]) -> str:
         if parts:
             text = _resolve_mentions(" | ".join(parts))
             to = m.get("reply_to")
-            if to:
+            if to and m.get("reply_text"):
+                text = f'(replying to {to}: "{_resolve_mentions(m["reply_text"])}") {text}'
+            elif to:
                 text = f"(replying to {to}) {text}"
             elif re.match(r"\s*@\S", text):
                 text = f"(to {text.split()[0]}) {text}"
+            if m.get("before") and not to:
+                text += " [said just before, by others: " + " | ".join(
+                    f'{n}: "{_resolve_mentions(t)}"' for n, t in m["before"]) + "]"
             out.append(f"{prefix}: {text}")
         else:
             out.append(f"{prefix}: [empty / sticker]")

@@ -166,13 +166,27 @@ def ground_recent_trades(profile_text: str, rows: list[dict],
     if not m:
         return profile_text, []
     if not rows:
+        # A ticker traded only before the window is stale here too: with an
+        # empty 30-day log this branch used to skip the check, and seven
+        # profiles listed 30-day-old trades as recent (2026-10-26 audit M5).
+        stale = {(r.get("ticker") or "").upper() for r in (older_rows or [])}
         body = m.group(2)
-        new_body = "\n".join(_PER_LOG_RE.sub("", ln) if ln.lstrip().startswith("-") else ln
-                             for ln in body.split("\n"))
-        if new_body == body:
+        kept, notes, per_log = [], [], False
+        for ln in body.split("\n"):
+            if ln.lstrip().startswith("-"):
+                named = {w.upper() for w in re.findall(r"\$?\b([A-Z]{2,6})\b", ln)} - _NOT_SYMBOLS
+                if named & stale:
+                    notes.append(f"dropped stale line: {ln.strip()[:100]}")
+                    continue
+                cut = _PER_LOG_RE.sub("", ln)
+                per_log = per_log or cut != ln
+                ln = cut
+            kept.append(ln)
+        if per_log:
+            notes.append("removed 'per log' claims: the member has no logged trades")
+        if not notes:
             return profile_text, []
-        return (profile_text[:m.start(2)] + new_body + profile_text[m.end(2):],
-                ["removed 'per log' claims: the member has no logged trades"])
+        return profile_text[:m.start(2)] + "\n".join(kept) + profile_text[m.end(2):], notes
     by_ticker: dict[str, list[dict]] = {}
     for r in rows:
         by_ticker.setdefault((r.get("ticker") or "").upper(), []).append(r)
