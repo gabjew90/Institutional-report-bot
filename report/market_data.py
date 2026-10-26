@@ -61,6 +61,31 @@ def _fetch_binance_24h(symbol: str) -> dict | None:
         return None
 
 
+def _fetch_coingecko_by_symbol(symbol: str) -> dict | None:
+    """A coin Binance.US does not list, from CoinGecko's keyless API: the
+    coin with this symbol and the best market-cap rank (2026-10-26 audit
+    A5: the TREE token was answered with LendingTree's stock price)."""
+    found = _fetch_json("https://api.coingecko.com/api/v3/search?query="
+                        + urllib.parse.quote(symbol.lower()))
+    coins = [c for c in (found or {}).get("coins") or []
+             if str(c.get("symbol") or "").upper() == symbol.upper() and c.get("id")]
+    if not coins:
+        return None
+    coins.sort(key=lambda c: c.get("market_cap_rank") or 10**9)
+    top = coins[0]
+    px = _fetch_json("https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd"
+                     "&include_24hr_change=true&include_market_cap=true&ids="
+                     + urllib.parse.quote(top["id"]))
+    row = (px or {}).get(top["id"]) or {}
+    try:
+        price = float(row["usd"])
+    except (KeyError, TypeError, ValueError):
+        return None
+    return {"price": price, "change_24h": row.get("usd_24h_change"),
+            "market_cap": row.get("usd_market_cap"), "name": top.get("name"),
+            "other_coins_with_symbol": [c.get("name") for c in coins[1:4]]}
+
+
 def _fetch_binance_midnight(symbol: str) -> float | None:
     """Get today's 00:00 UTC open price via Binance klines (no auth, generous limits).
 

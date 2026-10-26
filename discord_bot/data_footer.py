@@ -13,7 +13,7 @@ import re
 
 # tool name -> what the reader is told the figures came from
 FEEDS: dict[str, str] = {
-    "lookup_market_price": "live prices (Finnhub, Binance.US, Yahoo)",
+    "lookup_market_price": "live prices (Finnhub, Binance.US, CoinGecko, Yahoo)",
     "lookup_earnings_date": "earnings calendar (Finnhub, Nasdaq)",
     "lookup_earnings_slate": "earnings calendar (Finnhub, Nasdaq)",
     "lookup_options_chain": "options chain (Yahoo)",
@@ -26,6 +26,7 @@ FEEDS: dict[str, str] = {
     "lookup_research": "bank research notes",
     "lookup_ticker_snapshot": "company and trading data (Yahoo)",
     "lookup_treasury_auctions": "Treasury auction results (TreasuryDirect)",
+    "margin_math": "margin math from the question's figures and live prices",
     "spy_holdings": "S&P 500 figures from SPY's holdings and prices (Yahoo)",
     "ticker_news": "news search (Google)",
     "ticker_primer": "company background (Google)",
@@ -68,7 +69,7 @@ NUMERIC_TOOLS = frozenset({
     "lookup_market_price", "lookup_earnings_date",
     "lookup_options_chain", "lookup_price_history", "lookup_economic_calendar",
     "lookup_fantasy_league", "lookup_ticker_snapshot", "lookup_trade_log",
-    "lookup_room_positions", "lookup_treasury_auctions", "spy_holdings"})
+    "lookup_room_positions", "lookup_treasury_auctions", "spy_holdings", "margin_math"})
 
 
 def _loose(cores) -> set[str]:

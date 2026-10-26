@@ -901,3 +901,14 @@ def test_audit_2026_10_26_router_cases():
     assert R.classify("did kloh sell his NVDA calls", names_member=True).shape == R.MEMBER_LEDGER
     for q in ("should i buy NVDA", "is NVDA a buy"):
         assert R.classify(q).shape == R.TICKER_OPINION, q
+
+
+def test_audit_2026_10_26_news_and_opinion_phrasings():
+    """Run-6 A20: these fetched nothing."""
+    for q, shape, t in (("why did googl dump", R.NEWS_EVENT, "GOOGL"),
+                        ("why is MRNA going down", R.NEWS_EVENT, "MRNA"),
+                        ("news driving nuai", R.NEWS_EVENT, "NUAI"),
+                        ("how do we feel about hood", R.TICKER_OPINION, "HOOD")):
+        r = R.classify(q)
+        assert r.shape == shape and r.tickers == [t], q
+    assert R.classify("how do you feel about me").shape == R.UNKNOWN

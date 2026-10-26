@@ -99,6 +99,7 @@ from discord_bot.snapshot_tool import (  # noqa: E402,F401  re-exported for the 
 from discord_bot.ask_tools import (  # noqa: E402,F401  the TreasuryDirect auction tool
     _build_treasury_auctions_tool,
     _execute_treasury_auctions,
+    _execute_margin_math,
 )
 from discord_bot.research_tool import (  # noqa: E402
     _build_research_tool,
@@ -5299,6 +5300,15 @@ async def _ask_02_call_model_with_tools(
     # tool-call loop, total per-question spend can hit 50k+ tokens
     # on a thrashing question. Reserve conservatively for the full
     # loop budget; record actual after.
+    # a channel the bot never stores is answered in code (2026-10-26 audit A15)
+    from discord_bot import channel_refs as _cr
+    from discord_bot.ask_router import asker_text as _cr_asker
+    _unread = _cr.unread_channels(_cr_asker(question))
+    if _unread:
+        if out_meta is not None:
+            out_meta.setdefault("guards", []).append("unread-channel")
+        return _AskEarly(discord.Embed(description=_cr.note(_unread), color=0xE67E22))
+
     from ai_analysis.token_budget import get_budget, BudgetExceeded
     # Heuristic: input ~user_content chars / 4 + per-round 5000
     # output cap, scaled by max rounds.
@@ -5372,6 +5382,7 @@ async def _ask_02_call_model_with_tools(
         _ask_router.T_PRIMER: _execute_ticker_primer,
         _ask_router.T_CHAT: _execute_chat_search,
         _ask_router.T_AUCTION: _execute_treasury_auctions,
+        _ask_router.T_MARGIN: _execute_margin_math,
     }
     _ask_meta["route_shape"] = _ask_route.shape
     # Read by the tool loop: a shape without chat search must not reach

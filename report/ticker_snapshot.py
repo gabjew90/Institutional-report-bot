@@ -208,7 +208,9 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
     'after the close'); a row without epsActual is a scheduled report.
     quarterly_revenue: [(quarter_end_iso, revenue)], any order."""
     out: dict = {}
-    for period, key in (("0q", "next_quarter"), ("0y", "fiscal_year")):
+    # "+1y" is next fiscal year, which a forward P/E is usually quoted on
+    # (2026-10-26 audit A12: no forward P/E existed, the bot invented one)
+    for period, key in (("0q", "next_quarter"), ("0y", "fiscal_year"), ("+1y", "next_fiscal_year")):
         r, e = (rev_est or {}).get(period) or {}, (eps_est or {}).get(period) or {}
         row = {
             "revenue": _num(r.get("avg")), "revenue_year_ago": _num(r.get("yearAgoRevenue")),
@@ -260,6 +262,43 @@ def growth_block(rev_est: dict, eps_est: dict, eps_history: list[dict],
     if rev_reports:
         out["revenue_reports"] = rev_reports
     return out
+
+
+def valuation(price: float | None, market_cap: float | None, trailing_eps: float | None,
+              growth: dict) -> dict:
+    """Price over earnings and sales, computed here so the model never
+    supplies a multiple (2026-10-26 audit A12/A13: "N/A" twice, then an
+    invented 68-72x against negative EPS). A loss has no P/E: the row says
+    so instead of carrying a negative multiple."""
+    out: dict = {}
+    if not price:
+        return out
+    for key, eps in (("trailing", trailing_eps),
+                     ("this_fiscal_year", (growth.get("fiscal_year") or {}).get("eps")),
+                     ("next_fiscal_year", (growth.get("next_fiscal_year") or {}).get("eps"))):
+        if eps is None:
+            continue
+        out[f"pe_{key}"] = round(price / eps, 1) if eps > 0 else f"none (EPS -${abs(eps):,.2f}, a loss)"
+    if market_cap:
+        for key in ("fiscal_year", "next_fiscal_year"):
+            rev = (growth.get(key) or {}).get("revenue")
+            if rev and rev > 0:
+                out[f"price_to_sales_{'this_fiscal_year' if key == 'fiscal_year' else key}"] = (
+                    round(market_cap / rev, 1))
+    return out
+
+
+def render_valuation(v: dict) -> str | None:
+    if not v:
+        return None
+    labels = (("pe_trailing", "P/E on the last 12 months' EPS"),
+              ("pe_this_fiscal_year", "P/E on this fiscal year's consensus EPS"),
+              ("pe_next_fiscal_year", "forward P/E on next fiscal year's consensus EPS"),
+              ("price_to_sales_this_fiscal_year", "price to this fiscal year's consensus sales"),
+              ("price_to_sales_next_fiscal_year", "price to next fiscal year's consensus sales"))
+    bits = [f"{label} {v[k]}x" if isinstance(v[k], (int, float)) else f"{label}: {v[k]}"
+            for k, label in labels if k in v]
+    return "valuation (computed from the price and consensus): " + ", ".join(bits)
 
 
 def _fetch_growth(t, sym: str) -> dict:
@@ -341,6 +380,11 @@ def fetch(symbol: str) -> dict:
     # cost the growth lines, not the business, float and filings above.
     if snap.get("status") == "ok" and time.monotonic() - t0 < GROWTH_BUDGET_S:
         snap["growth"] = _fetch_growth(t, sym)
+    if snap.get("status") == "ok":
+        val = valuation(snap.get("price"), snap.get("market_cap"),
+                        _num(info.get("trailingEps")), snap.get("growth") or {})
+        if val:
+            snap["valuation"] = val
     # Cache only a complete read: a snapshot built after the quote summary
     # failed has no business line, float or filings, and serving it for
     # 15 minutes turns one Yahoo hiccup into a quarter hour of thin answers.
@@ -388,7 +432,8 @@ def render_growth(g: dict) -> list[str]:
     """Growth first, the dollar figure beside it."""
     lines = []
     for key, label in (("next_quarter", "quarter to be reported next"),
-                       ("fiscal_year", "this fiscal year")):
+                       ("fiscal_year", "this fiscal year"),
+                       ("next_fiscal_year", "next fiscal year")):
         row = g.get(key)
         if not row:
             continue
@@ -493,6 +538,9 @@ def render(snap: dict) -> str:
     if bs:
         lines.append("balance sheet: " + ", ".join(bs))
     lines += render_growth(s.get("growth") or {})
+    vline = render_valuation(s.get("valuation") or {})
+    if vline:
+        lines.append(vline)
     offs = s.get("offering_filings_12m") or []
     if offs:
         lines.append("offering registrations filed in the last 12 months: "

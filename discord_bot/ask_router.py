@@ -78,6 +78,8 @@ T_AUCTION = "lookup_treasury_auctions"
 T_NEWS = "ticker_news"
 # Prefetch only: discord_bot/primer_tool.py, the stored business primer.
 T_PRIMER = "ticker_primer"
+# Prefetch only: discord_bot/margin_math.py with live prices (2026-10-26 A16).
+T_MARGIN = "margin_math"
 ALL_TOOLS = {T_GOOGLE, T_CHAT, T_PROFILE, T_TRADES, T_PRICE, T_CHAIN, T_ECON, T_EDATE,
              T_SLATE, T_QUERY, T_HISTORY, T_FANTASY, T_ROOM, T_RESEARCH, T_SNAPSHOT,
              T_AUCTION}
@@ -302,7 +304,9 @@ def extract_tickers(text: str, *, lowercase: bool = True,
 _LOWER_LEADIN_RE = re.compile(
     r"\b(?:why\s+(?:is|are|did|was)|explain|what(?:'s|s| is)|how(?:'s|s| is)|is|odds|off|about|on|in"
     # "what happened to twst" (2026-10-06: the price came from Google only)
-    r"|happened\s+(?:to|with)|news\s+(?:on|for|about|regarding)"
+    r"|happened\s+(?:to|with)|news\s+(?:on|for|about|regarding|driving|behind|moving)"
+    # "news driving nuai", "how do we feel about hood" (2026-10-26 audit A20)
+    r"|feel\s+(?:about|on)"
     r"|think\s+(?:of|about)|thoughts?\s+on|(?:bullish|bearish)\s+on|(?:take|view|read)\s+on)\s+"
     r"(?:the\s+)?([a-z]{2,5})\b", re.I)
 # A lowercase ticker next to a company word: "lawsuit for arm", "investor
@@ -311,7 +315,8 @@ _LOWER_LEADIN_RE = re.compile(
 # deliberating a day after its verdict).
 _COMPANY_WORD = (r"(?:lawsuit|suit|case|verdict|ruling|investor\s+day|analyst\s+day|earnings|guidance"
                  r"|mentions?|news|stock|shares|deal|merger|acquisition|buyback|offering|lock-?up"
-                 r"|downgrade|upgrade|price\s+target|ceo|cfo|contract|filing|dividend)")
+                 r"|downgrade|upgrade|price\s+target|ceo|cfo|contract|filing|dividend"
+                 r"|valuation|multiple|forward\s+p/?e|p/?e(?:\s+ratio)?|price\s+to\s+sales)")
 _LOWER_CONTEXT_RE = re.compile(
     r"\b" + _COMPANY_WORD + r"\s+(?:for|on|of|from|against|with|at)\s+(?:the\s+)?([a-z]{2,5})\b"
     # a lookahead, so "this lawsuit" does not consume "lawsuit for arm"
@@ -716,7 +721,11 @@ _STAT_RE = re.compile(
     r"|(?:how\s+often|what\s+percent(?:age)?\s+of)\b)", re.I)
 _NEWS_RE = re.compile(
     r"\b(?:why\s+(?:is|are|did|was|were)\s+\S+\s+(?:up|down|ripping|dumping|green|red|off|tanking|mooning|falling|rising|moving"
-    r"|dropping|dropped|crashing|bleeding|sliding|sinking|plunging|selling\s+off|pumping|surging|jumping|soaring|rallying|spiking)"
+    r"|dropping|dropped|crashing|bleeding|sliding|sinking|plunging|selling\s+off|pumping|surging|jumping|soaring|rallying|spiking"
+    # base forms after "did" and "going up/down" ("why did googl dump",
+    # "why is MRNA going down", 2026-10-26 audit A20)
+    r"|dump|tank|drop|crash|rip|pump|moon|fall|sell\s+off|go\s+(?:up|down)|going\s+(?:up|down))"
+    r"|(?:news|what(?:'s|s|\s+is))\s+(?:driving|behind|moving)\s+\$?[A-Za-z]{1,5}\b"
     r"|what\s+happened\s+(?:to|with)\b|odds\s+\S+\s+(?:beats?|misses?)|(?:beat|miss)\s+odds"
     r"|explain\s+\S+\s+(?:death|dump|rip|crash|move|drop|pop)|what(?:'s| is)\s+(?:going\s+on|the\s+news)\s+with"
     # Figures a reader expects sourced, not recalled (2026-09-03 ask
@@ -734,9 +743,13 @@ _NEWS_RE = re.compile(
     r"|(?:election|runoff|primary|referendum)\s+results?"
     r")\b", re.I)
 # One field of a company's numbers (2026-10-18 audit A20).
+_VALUATION = (r"(?:forward\s+)?p\s*/\s*e\b|(?:forward\s+)?pe(?:\s+ratio)?\b|price[\s-]+to[\s-]+(?:sales|earnings)"
+              r"|p\s*/\s*s\b|valuation|earnings\s+multiple|(?:trading\s+at\s+)?(?:what\s+)?multiple")
 _SNAPSHOT_FIELD_RE = re.compile(
     r"\b(?:shares\s+outstanding|share\s+count|(?:shares?\s+|free\s+)?float\b|market\s+cap(?:italization)?"
-    r"|short\s+interest|how\s+many\s+shares)", re.I)
+    r"|short\s+interest|how\s+many\s+shares"
+    # valuation, computed in the snapshot (2026-10-26 audit A12)
+    r"|" + _VALUATION + r")", re.I)
 # A fund's positions (2026-10-18 audit A10). The fund word may sit in the
 # message replied to ("Private fund status: VARA ...").
 _HOLDINGS_RE = re.compile(
@@ -816,11 +829,31 @@ _ROOM_WHO = (r"(?:y'?all|yall|the\s+room|(?:the\s+)?chat|they\s+all|u\s+guys|you
 _ROOM_OPINION_RE = re.compile(
     rf"\bwhy\s+(?:are|r|is|do|does)?\s*{_ROOM_WHO}"
     rf"|\b{_ROOM_WHO}\s+(?:so\s+|all\s+)?(?:bullish|bearish|buying|loading|piling)\b", re.I)
+_TOKEN_RE = re.compile(
+    r"\b(?:tokens?|coins?|memecoins?|shitcoins?|altcoins?|wallets?|airdrops?|on-?chain"
+    r"|pump\.?fun|contract\s+address)\b", re.I)
+_TOKEN_WORD = r"(?:token|coin|memecoin|shitcoin|altcoin)"
+
+
+def _token_tickers(q: str, tickers: list[str], parent: str) -> list[str]:
+    """Tickers the asker means as a coin: the token word sits next to the
+    ticker ("$tree token", "the TREE coin"), or the replied-to message is
+    about a token and the asker wrote the ticker as a cashtag. A token word
+    elsewhere ("should I buy NVDA or coins") prices nothing as a coin."""
+    out = [t for t in tickers
+           if re.search(r"(?<![A-Za-z])\$?" + re.escape(t) + r"\s+" + _TOKEN_WORD + r"s?\b"
+                        r"|\b" + _TOKEN_WORD + r"s?\s+\$?" + re.escape(t) + r"\b", q, re.I)]
+    if not out and _TOKEN_RE.search(parent or ""):
+        out = [t for t in tickers if re.search(r"\$" + re.escape(t) + r"\b", q, re.I)]
+    return out[:5]
+
+
 _SINGLE_TICKER_OPINION_RE = re.compile(r"\b(?:thoughts?\s+on|bullish|bearish|buy|sell|long|short)\b", re.I)
 # A view on a named stock. "how is X looking" stays a price question
 # (_PRICE_RE), so only the "how does X look" form is here.
 _OPINION_RE = re.compile(
     r"\b(?:what\s+do\s+(?:you|u|ya)\s+think\s+(?:of|about|on)|thoughts?\s+on"
+    r"|how\s+(?:do|does)\s+(?:we|you|u|ya|yall|y'all|everyone|the\s+room)\s+feel\s+(?:about|on)"
     r"|(?:your|ur)\s+(?:take|read|view|opinion)\s+on|opinion\s+on|(?:bullish|bearish)\s+on"
     r"|how\s+(?:does|do)\s+\S+\s+look(?:ing)?\b|should\s+i\s+(?:buy|sell|hold|short|long|add|trim)"
     r"|worth\s+(?:buying|a\s+buy|holding|a\s+look)|(?:into|going\s+into|ahead\s+of)\s+(?:the\s+)?(?:print|earnings|er|report)"
@@ -1035,6 +1068,23 @@ def classify(question: str, *, fantasy_enabled: bool = False,
             r"\b(?:bought|sold|closed|opened|traded|played|took|buy|sell|entered|exited)\b", ql) and (
             tickers or re.search(r"\b(?:calls?|puts?|shares|position)\b", ql)):
         r.shape, r.reason = MEMBER_LEDGER, "a member's trades in a name"
+        return r
+    # A coin that shares a stock's symbol: "$tree token" under a wallet ad
+    # got LendingTree's price and "no such token" (2026-10-26 audit A5).
+    # "will he get a margin call at 4x on NBIS $175": the arithmetic, not
+    # the stock outline (2026-10-26 audit A16)
+    from discord_bot import margin_math as _mm
+    margin = _mm.parse(q)
+    if margin:
+        r.shape, r.reason = PRICE, "margin math"
+        r.tickers = [p["symbol"] for p in margin["positions"]] or tickers
+        r.prefetch = [(T_MARGIN, margin)]
+        return r
+    coins = _token_tickers(q, tickers, _parent_text(question))
+    if coins:
+        r.shape, r.reason = PRICE, "a crypto token"
+        r.tickers = coins
+        r.prefetch = [(T_PRICE, {"symbols": coins, "crypto": True})]
         return r
     # a "why" is about reasons even when it also names positions
     if _ROOM_OPINION_RE.search(q) and (re.search(r"\bwhy\b", ql) or not _CROWD_RE.search(q)):
@@ -1373,6 +1423,10 @@ def inject_text(tool: str, result: dict, has_images: bool = False) -> str:
                  "the feed, give consensus and prior as such, and never fill the actual from memory or from the "
                  "previous month."),
         T_HISTORY: "PRICE HISTORY, system-fetched. Any period return or level path comes from here.",
+        T_MARGIN: ("MARGIN MATH, computed by the system from the asker's own numbers and live prices. "
+                   "Every figure in the answer comes from here: the equity ratio now, the drop from "
+                   "entry that triggers a call at each maintenance level, and the assumption it rests on, "
+                   "which the answer states."),
         T_RESEARCH: ("INSTITUTIONAL RESEARCH ON THE TICKER, system-fetched from the bank notes "
                      "the bot ingested. This is the primary source for a view question. One arrow "
                      "per bank view, and every arrow carries the desk's own numbers from the "

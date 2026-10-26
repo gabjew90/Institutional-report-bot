@@ -899,15 +899,30 @@ _CRYPTO_SYMBOLS = frozenset({
 })
 
 
-async def _crypto_quote(sym: str) -> dict | None:
+async def _crypto_quote(sym: str, deep: bool = False) -> dict | None:
     """A live Binance.US quote for `sym` (as {SYM}USDT), or None if the
     pair doesn't exist / the fetch fails. The single crypto builder used
-    by both the priority path and the stock-miss fallback."""
+    by both the priority path and the stock-miss fallback. `deep` (the
+    asker said token or coin) also tries CoinGecko, which lists coins
+    Binance.US does not; it stays off the stock-miss path so a mistyped
+    ticker is never priced as some coin."""
     from report import market_data as _md
     try:
         data = await asyncio.to_thread(_md._fetch_binance_24h, f"{sym}USDT")
     except Exception:
-        return None
+        data = None
+    if not data and deep:
+        try:
+            cg = await asyncio.to_thread(_md._fetch_coingecko_by_symbol, sym)
+        except Exception:
+            cg = None
+        if cg:
+            out = {"symbol": sym, "name": cg["name"], "price": cg["price"],
+                   "change_pct": cg["change_24h"], "market_cap_usd": cg["market_cap"],
+                   "prev_close": None, "source": "coingecko", "data_freshness": "live_24_7"}
+            if cg["other_coins_with_symbol"]:
+                out["other_coins_with_symbol"] = cg["other_coins_with_symbol"]
+            return out
     if not data:
         return None
     return {
@@ -921,6 +936,21 @@ async def _crypto_quote(sym: str) -> dict | None:
         # when mixed with after-hours stock quotes in one batch.
         "data_freshness": "live_24_7",
     }
+
+
+async def _execute_margin_math(args: dict) -> dict:
+    """Prefetch only (ask_router.T_MARGIN): the asker's margin setup with
+    each named position priced (2026-10-26 audit A16)."""
+    from discord_bot import margin_math as _mm
+    positions = [p for p in (args.get("positions") or []) if p.get("symbol") and p.get("entry")]
+    prices: dict[str, float] = {}
+    if positions:
+        res = await _execute_market_price({"symbols": [p["symbol"] for p in positions]})
+        for q in res.get("quotes") or []:
+            if q.get("price") is not None:
+                prices[str(q.get("symbol"))] = float(q["price"])
+    return {"status": "ok", **_mm.compute(float(args["leverage"]), args.get("account"),
+                                          positions, prices)}
 
 
 def _build_economic_calendar_tool():
@@ -1104,6 +1134,14 @@ async def _execute_price_history(args: dict) -> dict:
     interval = str(args.get("interval") or "1d").strip().lower()
     if interval not in ("1d", "1wk", "1mo"):
         interval = "1d"
+    events = sorted({str(d).strip()[:10] for d in (args.get("event_dates") or [])
+                     if re.match(r"^\d{4}-\d{2}-\d{2}", str(d).strip())})[:10]
+    if events:
+        # Returns after dated events, computed here (2026-10-26 audit A19:
+        # SpaceX "+4.2% one week after the Aug 6 unlock" when Yahoo shows +23%).
+        from datetime import date as _date, timedelta
+        start = (_date.fromisoformat(events[0]) - timedelta(days=10)).isoformat()
+        end, interval = None, "1d"
     if not start:
         from datetime import timedelta
         start = (datetime.utcnow() - timedelta(days=90)).strftime("%Y-%m-%d")
@@ -1123,6 +1161,13 @@ async def _execute_price_history(args: dict) -> dict:
                 f"do NOT invent a series"
             ),
         }
+    if events:
+        return {"status": "ok", "symbol": symbol,
+                "returns_after_dates": [returns_after(hist, d) for d in events],
+                "how_to_read": ("base is the last close before the date; each horizon is "
+                                "that many trading sessions later; a horizon that has not "
+                                "happened yet is marked so"),
+                "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")}
     return {
         "status": "ok",
         "symbol": symbol,
@@ -1131,6 +1176,30 @@ async def _execute_price_history(args: dict) -> dict:
         "count": len(hist[-400:]),
         "as_of": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
     }
+
+
+_HORIZONS = (("1_day", 1), ("1_week", 5), ("1_month", 21))
+
+
+def returns_after(hist: list[dict], event: str) -> dict:
+    """Returns after one dated event from daily closes (oldest first): the
+    base is the last close before the date, so an event that takes effect
+    at the open is measured from the session before it."""
+    rows = [h for h in hist if h.get("close") is not None and h.get("date")]
+    before = [i for i, h in enumerate(rows) if str(h["date"])[:10] < event]
+    if not before:
+        return {"date": event, "error": "no close before this date in the history"}
+    b = before[-1]
+    base = float(rows[b]["close"])
+    out = {"date": event, "base_date": str(rows[b]["date"])[:10], "base_close": round(base, 2)}
+    for name, n in _HORIZONS:
+        if b + n < len(rows):
+            c = float(rows[b + n]["close"])
+            out[name] = {"date": str(rows[b + n]["date"])[:10], "close": round(c, 2),
+                         "return_pct": round((c / base - 1) * 100, 1)}
+        else:
+            out[name] = f"not yet: {len(rows) - 1 - b} sessions since"
+    return out
 
 
 def _build_price_history_tool():
@@ -1179,6 +1248,15 @@ def _build_price_history_tool():
                         "interval": types.Schema(
                             type=types.Type.STRING,
                             description="'1d' | '1wk' | '1mo'.",
+                        ),
+                        "event_dates": types.Schema(
+                            type=types.Type.ARRAY,
+                            items=types.Schema(type=types.Type.STRING),
+                            description=("ISO dates of events (unlocks, earnings, Fed days). "
+                                         "Returns the 1-day, 1-week and 1-month return after "
+                                         "each, computed from the closes. Use it for any "
+                                         "'returns after X' question: find the dates with "
+                                         "Google, then the returns come only from here."),
                         ),
                     },
                     required=["symbol"],
@@ -2263,6 +2341,12 @@ def _build_market_price_tool():
                             description=("Also return each symbol's volume today so far and its "
                                          "20-day average daily volume (a volume question)."),
                         ),
+                        "crypto": types.Schema(
+                            type=types.Type.BOOLEAN,
+                            description=("True when the asker means a crypto token or coin "
+                                         "('$tree token'): a symbol a stock also uses is priced "
+                                         "as the coin."),
+                        ),
                     },
                 ),
             )
@@ -2343,9 +2427,14 @@ async def _execute_market_price(args: dict) -> dict:
 
     timestamp = now_et.strftime("%Y-%m-%d %H:%M %Z")
 
+    crypto_first = bool(args.get("crypto"))
     quotes: list[dict] = []
     for sym in symbols:
-        if sym in _CRYPTO_SYMBOLS:
+        cq = (await _crypto_quote(sym, deep=True)
+              if crypto_first and sym not in _CRYPTO_SYMBOLS else None)
+        if cq:
+            quotes.append(cq)
+        elif sym in _CRYPTO_SYMBOLS:
             cq = await _crypto_quote(sym)
             if cq:
                 quotes.append(cq)
