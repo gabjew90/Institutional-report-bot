@@ -606,9 +606,12 @@ def _fetch_economic_events_raw(start, end) -> tuple[list[dict], str]:
             fred_added += 1
         # FRED's schedule has no FOMC or ISM dates: the agencies' published
         # dates fill them on the same days (2026-10-26 audit R3, "when is
-        # fomc" answered from a search with the feed down).
+        # fomc" answered from a search with the feed down). They extend a
+        # live schedule, the way fetch_us_major_releases_from_fred does: with
+        # FRED off, or nothing else served, they must not make a dead feed
+        # look available.
         _d = start
-        while _d <= end:
+        while settings.fred_api_key and kept and _d <= end:
             if not (ff_max and _d.isoformat() <= ff_max):
                 kept.extend(_official_releases_for(_d.isoformat()))
             _d += timedelta(days=1)

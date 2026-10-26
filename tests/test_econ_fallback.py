@@ -24,9 +24,23 @@ def test_fred_schedule_carries_second_tier_releases(monkeypatch):
 
 def test_fallback_adds_the_fomc_decision(monkeypatch):
     monkeypatch.setattr(N.settings, "finnhub_api_key", "")
+    monkeypatch.setattr(N.settings, "fred_api_key", "k")
     monkeypatch.setattr(N, "_fetch_ff_economic_events", lambda: [])
-    monkeypatch.setattr(F, "fetch_fred_release_schedule", lambda *a, **k: [])
+    # FRED serves the week (a GDP row), so the schedule is live
+    monkeypatch.setattr(F, "fetch_fred_release_schedule", lambda *a, **k: [
+        {"event": "GDP (Gross Domestic Product)", "country": "US", "time": "2026-10-29T12:30:00",
+         "impact": "high", "source": "fred"}])
     monkeypatch.setattr(F, "enrich_rows_with_fred_actuals", lambda rows: rows)
     rows, _ = N._fetch_economic_events_raw(date(2026, 10, 26), date(2026, 10, 30))
     fomc = [r for r in rows if r["event"] == "FOMC Statement"]
     assert fomc and fomc[0]["time"] == "2026-10-28T18:00:00"
+
+
+def test_official_dates_do_not_make_a_dead_feed_look_alive(monkeypatch):
+    import pytest
+    monkeypatch.setattr(N.settings, "finnhub_api_key", "")
+    monkeypatch.setattr(N.settings, "fred_api_key", "k")
+    monkeypatch.setattr(N, "_fetch_ff_economic_events", lambda: [])
+    monkeypatch.setattr(F, "fetch_fred_release_schedule", lambda *a, **k: [])
+    with pytest.raises(N.EconomicCalendarUnavailable):
+        N._fetch_economic_events_raw(date(2026, 10, 26), date(2026, 10, 30))
