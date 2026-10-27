@@ -1,0 +1,238 @@
+ 
+HSBC Destroys Goldman's CoreWeave Upgrade: 
+"The More It Invests, The More The Value 
+Destruction"; Sees Crash To $39  
+ 
+BY TYLER DURDEN 
+TUESDAY, OCT 20, 2026 - 05:55 PM 
+Goldman's CoreWeave upgrade lasted about one trading session. 
+Yesterday morning, Goldman's Gabriela Borges, likely having received a tap on the shoulder 
+from either upper management, or Jensen himself, upgraded CoreWeave to Buy (while cutting 
+the price target from $139 to $106), arguing that investors were overestimating the rise in the 
+neocloud's cost of capital and underestimating what it can charge per megawatt. The stock 
+spiked as high as $66 on the news, and then, as we noted in Monday's wrap, the dead-cat 
+bounce was promptly trounced, with the stock giving back the entire upgrade pop and then 
+some, even as Cathie Wood's ARK bought the dip. 
+ 
+ 
+
+ 
+And this morning HSBC came in to finish the job. In a note titled "Reduce: Debt market woes 
+and moderating LLM revenues exacerbate structural concerns" (available to pro subs), analyst 
+Abhishek Shukla reiterated his Reduce rating and $39 price target, 36.5% below Friday's close, 
+and laid out what reads like a point-by-point rebuttal of Goldman's "Finance 101" thesis. Here is 
+the key paragraph: 
+"If we include the favorable impact of customer advances and negative working capital, we 
+estimate CoreWeave earns an average 2026-30e ROIC of 8.9%, below its cost of borrowing. 
+The more the company invests with this return profile, the more the value destruction, in our 
+opinion. Many peers operating in GPU-focused cloud infrastructure earn similarly low ROIC, but 
+their cost of borrowing has been a lot lower." 
+In other words, every new data center CoreWeave builds makes the problem bigger. Which, for 
+a company whose entire equity story is building more data centers, is a bit of an issue. And the 
+market agrees: CoreWeave is down almost 4% premarket, at a fresh 52-week low around $58.6 
+and its lowest level since mid-2025. 
+Finance 101, Meet Finance 102 
+Recall that Goldman's upgrade rested on the spread between CoreWeave's unlevered IRR and 
+its WACC, and on two assumptions in particular: a 10% cost of new debt, and new long-term 
+contracts signing at around $13 million per megawatt of annual revenue. 
+Here is the funny thing: HSBC uses the exact same 10% long-term pretax cost of debt in its 
+DCF. Its WACC (9.7%) is actually lower than the 11.8% Goldman plugged into its illustrative 
+contract math. And yet HSBC gets to $39 while Goldman gets to $106. 
+So what's different? Well, almost everything about what CoreWeave earns. HSBC expects the 
+company to generate $12 million per MW per year in 2027, versus $17-18 million per MW for 
+hyperscalers, and it thinks that gap is structural: 
+"We believe hyperscalers are able to earn significantly higher revenue per MW as they rent their 
+capacity under more lucrative short-term contracts, have significant general purpose cloud 
+business that is more differentiated (as opposed to commoditized GPU focused business of 
+neoclouds) and have a number of small customers that take full technology stack from 
+hyperscalers, while neoclouds earn the bulk of their revenue from large customers that take only 
+commoditized bare metal instances." 
+Translated into HSBC's revenue-per-gigawatt math, CoreWeave earns about $12.1 billion per 
+Nvidia-equivalent GW in 2027, versus $18.2 billion for Microsoft Azure and $21.7 billion for 
+ 
+
+ 
+AWS. Only Oracle's cloud is in the same zip code, which is not exactly the company you want to 
+be compared with right now. 
+ 
+Goldman's $13 million per MW starting assumption isn't far from HSBC's $12 million on the 
+surface. The difference is that Goldman thinks pricing is "biased to the upside" over the next 24 
+months, while HSBC thinks the neocloud model locks CoreWeave into the low end of the range 
+for good. 
+A Landlord With Weak Credit 
+But why can't CoreWeave just charge what Azure charges? Because of who it can afford to rent 
+to. HSBC's argument is that neoclouds are trapped by their own balance sheets: 
+"Neoclouds including CoreWeave have weak balance sheets and cannot easily build 
+speculative capacity. Neoclouds generally depend on debt to build capacity. Debt holders 
+typically demand full visibility on debt repayment, which forces neoclouds to sign long-term 
+rental agreements with large, creditworthy customers that cover the entire repayment duration 
+for the loan. This often precludes neoclouds from the lucrative short-term rental market." 
+Put differently, the asset-backed DDTL machine that Goldman sees as CoreWeave's great 
+advantage is precisely what, in HSBC's view, keeps it from earning hyperscaler-type returns: the 
+lender wants a 5-year take-or-pay contract with OpenAI or Microsoft, and OpenAI or Microsoft 
+wants bare metal at a discount. HSBC calculates that CoreWeave's RPO covers 5.0 years of its 
+ 
+
+ 
+cloud revenue, versus 2.5 years at Amazon and 3.4 years at Google and Microsoft. Lots of 
+visibility, and not much pricing power to go with it. 
+ 
+HSBC also cites a summarized comment from Nebius' CEO in September that probably 
+describes the neocloud food chain better than any sell-side model: 
+"Neoclouds sell it at USD10-15/MW to people (ie, hyperscalers) who then sell it to companies 
+developing applications (eg, Anthropic) at USD20-30/MW, sometimes USD50 short term, which 
+then resell on the token level at USD100/MW." 
+In that chain, the neocloud is the one with the debt, the depreciation and the lowest price. And 
+speaking of depreciation, HSBC walks through why CoreWeave's margin will never look like its 
+peers': revenue is about 33% of gross assets (ex-construction and leases), and with GPUs 
+depreciated over six years, depreciation alone eats roughly 50% of revenue. Add data center 
+rent (17-18% of revenue) and power (5-6%), and more than 70% of costs are fixed. Hence 
+HSBC's long-term non-GAAP operating margin of 15-16%, versus management's guidance of 
+about 25%. 
+The result is single-digit ROIC as far as the eye can see: HSBC has CoreWeave at 4.9% in 
+2027 and 5.0% in 2030 (high single digits including customer advances), against AWS in the 
+mid-to-high teens and Microsoft around 14%. 
+ 
+
+ 
+ 
+The $40 Million Megawatt May Be A Summer Fling 
+One of Goldman's key upside arguments was that short-term (3-6 month) contracts are signing 
+at $40 million per MW, roughly 4x the blended portfolio (something we ran the rent math on 
+earlier this month). HSBC agrees those deals happened. It just doesn't think they last: 
+"We believe much faster than expected revenue growth at LLM providers resulted in a shortage 
+of compute capacity, which likely resulted in a rush to secure capacity boosting spot prices... 
+Our analysis indicates that the growth rate of LLM provider revenue has moderated (from a very 
+high base) in the last three months. This is likely dampening the short-term GPU rental contracts 
+that neoclouds might sign." 
+HSBC's chart of annualized revenue at the major LLM providers shows what it means. By our 
+eyeball reading, run-rate revenue went from roughly $44 billion in March to about $105 billion in 
+July, then crept to around $115 billion by September. That's a 140% jump in four months, 
+followed by maybe 10% in two. Still growth, sure, just nowhere near the pace that sends labs 
+scrambling for $40 million megawatts. 
+ 
+
+ 
+ 
+It's worth noting that HSBC also flags that SpaceX's May deals with Anthropic and Google 
+(which could earn SpaceX $22-50 million per MW) are cancellable on three months' notice. 
+Great pricing, as long as nobody cancels. 
+The LLM economics debate also happens to be one of the two catalysts Goldman's own FICC 
+desk blamed for last week's carnage. 
+"2 catalysts directly led last's weeks sharpest price moves :: 1/ the reported comments from 
+CoreWeave co-founder McBee on insurance’s “unlimited” / “all the money in the world” capital 
+availability, reported in the FT; and 2/ a more robust & urgent debate on the business model 
+definition & evolution of frontier labs, their economics & the competitive dynamic between 
+closed models & open" - Goldman Mark Wilson, FICC 
+— zerohedge (@zerohedge) October 20, 2026 
+The Bond Market Is Closed... And That's The Problem 
+The cleverest part of Goldman's note was arguing that CoreWeave's 13.5-15% unsecured yields 
+aren't representative of its true cost of debt, because the unsecured market has been closed to 
+new CoreWeave issuance for months. As we put it yesterday, that's one way to make a yield 
+disappear. 
+HSBC reads the same yields the other way: 
+ 
+
+ 
+"We note that yields on CoreWeave's bonds are now in the 14-15% range, suggesting market 
+concerns over credit worthiness. This may hamper the company's ability to finance speculative 
+capacity or capacity that is backed by only short-term contracts. This removes one key upside 
+for the stock, in our opinion." 
+Here is the 2031s, via Goldman's credit desk (which, unlike Goldman's equity analysts, has 
+been tracking the blowout in real time): 
+ 
+The logic is simple. The secured DDTL route only works for capacity backed by long-term 
+creditworthy offtake, which is exactly the low-margin bare metal business described above. The 
+high-margin spot business needs speculative capacity, and speculative capacity needs the 
+unsecured market Goldman just told us is closed. So the market Goldman says to ignore is the 
+one that funds the upside Goldman is paying for. 
+HSBC adds that consensus is "assuming a significant reduction in the interest rate that 
+CoreWeave will need to pay on its debt, which seems increasingly unlikely to us." Its model has 
+CoreWeave's implied interest rate at 9.0% in 2029, versus 7.8% for the Street, a 112bps gap. 
+Maybe the Street knows something about CoreWeave's refinancing that the bond market 
+doesn't. Probably not. 
+Regular readers know this is where we have been all along: CoreWeave's stock imploded last 
+Wednesday as stocks finally noticed what credit had been screaming for weeks, with five-year 
+CDS closing at a record 1,117bps, and we followed up with the junk bonds that are one 
+CoreWeave away from distress. Benzinga notes the 2031s still yield just over 15% this morning, 
+ 
+
+ 
+modestly off last week's 16%+ peak, which is the kind of "relief" only a distressed credit could 
+love. 
+Same Company, Different Planet 
+Put it all together and HSBC's numbers are in a different galaxy from the Street's. Interestingly, 
+the revenue gap is fairly modest: HSBC is 9.6% below consensus on 2030 revenue. The 
+damage is all in margins and interest. HSBC's 2030 non-GAAP operating profit of $11.2 billion is 
+46% below consensus, and its EPS estimates for 2028-2030 are 54-71% below. Goldman, 
+meanwhile, raised its 2028 EPS to $3.36, or 3.5x HSBC's $0.96: 
+ 
+The cash flow picture is even starker. Goldman's base case has free cash flow turning positive 
+in 2030, at which point CoreWeave becomes "self-funded." HSBC has FCF at -
+22.9 billion in 2027 and still -$5.9 billion in 2030, with net debt climbing 
+25. 8𝑏𝑖𝑙𝑙𝑖𝑜𝑛𝑡ℎ𝑖𝑠𝑦𝑒𝑎𝑟, −
+from $17.5 billion at end-2025 to $92.3 billion by 2030. And if you treat share-based 
+compensation as an actual expense (crazy, we know), HSBC expects CoreWeave to remain 
+lossmaking through 2029. 
+On valuation, CoreWeave trades at 14.7x 2030e EV/non-GAAP EBIT after SBC versus 7-11x for 
+the hyperscalers, and at 0.78x EV/RPO versus 0.34x for Oracle. In other words, investors are 
+paying a premium for a business with lower margins, lower returns and a higher cost of debt 
+than the companies it's being compared to, which HSBC calls "unsustainable." 
+ 
+
+ 
+ 
+ 
+Which brings us to the sell-side's price targets. Against a premarket price of about 
+106), BNP Paribas (recently cut to $117 from 
+58. 6, 𝐻𝑆𝐵𝐶𝑠𝑒𝑒𝑠33%𝑑𝑜𝑤𝑛𝑠𝑖𝑑𝑒, 𝑤ℎ𝑖𝑙𝑒𝐺𝑜𝑙𝑑𝑚𝑎𝑛(
+150) see anywhere from 81% to 156% upside. JPMorgan also jumped in 
+169)𝑎𝑛𝑑𝐸𝑣𝑒𝑟𝑐𝑜𝑟𝑒𝐼𝑆𝐼(
+this morning to say debt fears are overdone, according to Investing.com, though it still expects 
+free cash flow to stay negative until 2030. That's quite a range for a company with $103.7 billion 
+ 
+
+ 
+in contracted backlog: either a screaming buy, or a reminder that price targets tend to follow 
+price, and not the other way around. 
+ 
+Who Gets The Victory Lap? 
+Two more details are worth noting. First, HSBC has been here all along: it has had a Reduce on 
+CoreWeave since initiating in July 2025 with a $32 target, when the stock was trading around 
+$120. Its target has bounced between $32 and $44 ever since, while the stock went to $142 and 
+back. Second, while Goldman's disclosure appendix showed it managing a pending CoreWeave 
+underwriting, owning 1% or more of the stock and collecting investment banking fees, HSBC's 
+CoreWeave disclosure checklist is blank. None of that makes either analysis right or wrong, but 
+it's probably worth keeping in mind. 
+HSBC's own verdict on whether any of this is temporary: 
+"Unless we are wrong about asset turnover, it is highly unlikely that depreciation would be a 
+lower percentage of revenue. All companies in the GPU cloud infrastructure space have 
+consistently maintained that they are able to monetize GPUs within days or weeks of installing 
+them in data centers. Consequently, poor asset turnover earned by CoreWeave and its peers 
+reflects the poor competitive dynamics of the business and is not a result of short-term growth 
+pains, in our opinion." 
+ 
+
+ 
+Yesterday we said we side with the credit market, and HSBC just gave that view a full DCF. 
+Goldman's bull case needs pricing per MW to rise by a third, the spot market to stay hot, and 
+financing to stay open on attractive terms. HSBC's bear case only needs the status quo: 
+commoditized bare metal at $12 million per MW, 15% bonds, and LLM revenue growth that is 
+merely very fast instead of parabolic. We know which one requires fewer miracles. 
+CoreWeave also has plenty of company. The neocloud listings that tried to follow it to market 
+are dropping like flies, the latest being Korea's Elice, which cratered as much as 32% on its 
+debut this morning, a few days after Gartner predicted over 80% of neoclouds will fold by 2030. 
+Here is the updated casualty list: 
+ 
+Of course, none of this should surprise anyone who has been reading us since last October, 
+when we warned that AI had quietly become a debt bubble too: when the business model 
+depends on borrowing at 10% to earn 9%, the equity is the last to find out. The next test comes 
+tomorrow with Meta's earnings, and if CoreWeave's biggest customers so much as blink on 
+capex, the $40 million megawatt may become a $40 million memory. 
+Much more in the full HSBC "Reduce: Debt market woes and moderating LLM revenues 
+exacerbate structural concerns" note and Goldman's "CoreWeave: Upgrade to Buy", both 
+available to pro subs. 
+ 
+ 
+ 
+ 
