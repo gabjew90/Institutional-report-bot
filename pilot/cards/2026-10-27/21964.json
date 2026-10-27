@@ -1,0 +1,331 @@
+{
+ "brief": "BTIG's technical note argues the midterm-election 'clearing event' rally is unlikely this year. Historically the SPX has averaged a -13.76% drawdown in the June-December window of midterm years, but the index is down only 4.5% since June 1, the second-smallest such drawdown since 1962 (2006 was smaller at -3.6%, but that year had a separate -7.7% drawdown earlier). The post-midterm rally normally happens because SPX is weak heading into the vote; this year's setup is the opposite, so BTIG expects further downside rather than a rally, with SPX likely testing its 200-day moving average near 7300, where an overshoot (as in March) would not surprise. Supporting evidence: small-caps, mid-caps, transports and semis have already tested their 200-DMAs; 33% of 2026's days have shown price/breadth divergence, which BTIG says is unsustainable; put/call ratios show no hedging; B-vs-CCC junk spreads just hit a rare 7.8%+ level that in four prior cases preceded SPX drawdowns of at least -11.8%; and hyperscaler/investment-grade tech CDS are widening even as tech trades near highs. BTIG pairs long equal-weight software against semis, which it expects to keep underperforming, and flags industrials, healthcare, restaurants, airlines and casinos as other vulnerable groups. Separately, BTIG rates Chipotle a Buy with a $45 target against a $28.14 close.",
+ "cards": [
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Since 1962, the SPX has averaged a -13.76% drawdown during the June-December window of midterm election years, versus just a -4.5% drawdown seen so far this cycle.",
+   "anchor": "the SPX has averaged a -13.76% drawdown at some point in the June-December window during mid-term election years",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "SPX is typically weak heading into midterm elections, which is why stocks usually rally afterward, but this year has the opposite setup.",
+   "anchor": "SPX typically is weak INTO the elections. We have the opposite set-up this year.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "BTIG expects the SPX to decline rather than rally after the midterm elections, against the consensus view of a post-midterm rally.",
+   "anchor": "while consensus is that we see a post midterm rally, we think the opposite is actually more likely",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "BTIG expects the SPX to test its 200-day moving average next, which would bring the index toward 7300 at minimum.",
+   "anchor": "We suspect SPX is next, which would bring it towards 7300 at a minimum.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "BTIG would not be surprised if the SPX overshoots its 200-day moving average to the downside, as happened in March of this year.",
+   "anchor": "an overshoot of the 200 DMA would also not be surprising like we saw in March of this year",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "forecast",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "33% of trading days in 2026 have seen price and breadth move in opposite directions, a pattern BTIG expects to end soon.",
+   "anchor": "33% of days in 2026 have seen price and breadth move in opposite directions",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Put/call ratios remain well below the levels seen in March and July of this year.",
+   "anchor": "Put/Call ratios remain well below levels seen in March and even July of this year.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "VIX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Since 1996, this is only the fifth time B versus CCC credit spreads have widened to 7.8% or more.",
+   "anchor": "Since 1996 this is just the fifth time that B vs. CCC spreads have reached 7.8% or more.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "In the four prior occasions B versus CCC spreads reached this level, the SPX was at a minimum -11.8% from its 52-week high.",
+   "anchor": "In the four prior occurrences, the SPX was at a minimum -11.8% from a 52wk high.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Twice when B versus CCC spreads previously reached current levels, the SPX was already in a -30% drawdown.",
+   "anchor": "Twice it was already in a -30% drawdown by the time spreads hit where they are now.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "The SPX's current -2% drawdown stands out against the junk-spread history and suggests downside risk for stocks.",
+   "anchor": "The current -2% drawdown on SPX certainly stands out and suggests downside risk for stocks.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Semiconductors were given a chance to bounce off support but failed that test.",
+   "anchor": "we gave semis a chance to bounce off support, but they failed that test.",
+   "topic": "software vs semis rotation",
+   "status": "released",
+   "instruments": [
+    "SOXX",
+    "SMH",
+    "XSD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "The 200-day moving average is holding for SOXX and SMH, but the equal-weight semiconductor ETF XSD has already lost its 200-day moving average.",
+   "anchor": "While the 200 DMA is holding for SOXX and SMH, the equal-weight (XSD) has already lost its 200 DMA.",
+   "topic": "software vs semis rotation",
+   "status": "released",
+   "instruments": [
+    "SOXX",
+    "SMH",
+    "XSD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "BTIG continues to think semiconductors work lower over the coming weeks and months.",
+   "anchor": "We continue to think semis work lower over the coming weeks and months.",
+   "topic": "software vs semis rotation",
+   "status": "forecast",
+   "instruments": [
+    "SOXX",
+    "SMH",
+    "XSD"
+   ],
+   "macro_key": "",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": "coming weeks and months"
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Hyperscaler credit default swap spreads continue to widen, and investment-grade tech CDS is now the widest it has been since 2022.",
+   "anchor": "Hyper Scaler CDS continues to widen, and IG Tech CDS is now the widest it's been since 2022",
+   "topic": "AI capital cost repricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "The S&P 500 Tech Sector is trading just a few percent below its all-time highs even as investment-grade tech CDS hits its widest level since 2022.",
+   "anchor": "While the S&P 500 Tech Sector is just a few % below all-time highs, the IG Tech CDS is now the widest since 2022.",
+   "topic": "AI capital cost repricing",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Business development companies are at multi-year lows, unable to sustain a rally, and have diverged meaningfully from software.",
+   "anchor": "BDCs at multi-year lows, unable to sustain a rally, and have diverged meaningfully from software.",
+   "topic": "corporate credit stress",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "CREDIT",
+   "direction": "bearish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Equal-weight software is breaking out of a two-year range with relative strength at year-to-date highs, making it BTIG's preferred momentum trade.",
+   "anchor": "Equal-weight Software breaking out of a two-year range with relative strength at YTD highs. If looking for momentum, this is the spot.",
+   "topic": "software vs semis rotation",
+   "status": "released",
+   "instruments": [
+    "XSW"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "high",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "Equal-weight software (XSW) is breaking out against equal-weight semiconductors (XSD) from a one-year base.",
+   "anchor": "Equal-weight software (XSW) vs. equal-weight semis (XSD) breaking out of a one-year base.",
+   "topic": "software vs semis rotation",
+   "status": "released",
+   "instruments": [
+    "XSW",
+    "XSD"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "BTIG flags Industrials, Healthcare, Restaurants, Airlines, and Casinos as other vulnerable sector groups.",
+   "anchor": "Other Vulnerable Groups. Industrials, Healthcare, Restaurants, Airlines, Casinos",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "OTHER",
+   "direction": "bearish",
+   "conviction": "low",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "BTIG rates Chipotle Mexican Grill a Buy with a $45 price target against a $28.14 closing price.",
+   "anchor": "Chipotle Mexican Grill, Inc. (CMG, Buy, $45 PT;  Closing Price: $28.14)",
+   "topic": "misc",
+   "status": "target",
+   "instruments": [
+    "CMG"
+   ],
+   "macro_key": "",
+   "direction": "bullish",
+   "conviction": "medium",
+   "timeframe": ""
+  },
+  {
+   "bank": "BTIG",
+   "document": "Midterms Unlikely a 'Clearing Event'",
+   "claim": "2006 had a smaller drawdown than this year at -3.6%, but that year had a separate -7.7% drawdown from May through mid-June.",
+   "anchor": "Only 2006 was smaller at -3.6%, but there was a -7.7% drawdown from \nMay through mid-June of that year.",
+   "topic": "SPX 200 DMA bearish setup",
+   "status": "released",
+   "instruments": [],
+   "macro_key": "SPX",
+   "direction": "neutral",
+   "conviction": "low",
+   "timeframe": ""
+  }
+ ],
+ "reader_tier": "rest",
+ "source_text_path": "pilot-data/pilot/source-text/2026-10-27/21964__midterms-unlikely-a-clearing-event.txt",
+ "provenance": {
+  "model_requested": "claude-sonnet-5",
+  "model_version_returned": "unreported",
+  "prompt_sha": "a25f1754b1b8"
+ },
+ "verify": {
+  "total": 22,
+  "matched": 22,
+  "failed": 0,
+  "too_short": 0,
+  "label_count": 4,
+  "labels_over_cap": 0,
+  "misc_cards": 1,
+  "macro_key_invalid": 0,
+  "macro_key_coerced": 0,
+  "reasked": 1,
+  "dropped": 0,
+  "needs_reask": false
+ }
+}
