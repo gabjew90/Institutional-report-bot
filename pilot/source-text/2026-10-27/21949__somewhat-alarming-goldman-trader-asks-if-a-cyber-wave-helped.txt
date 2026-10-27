@@ -1,0 +1,99 @@
+ 
+"Somewhat Alarming": Goldman Trader Asks If A 
+Cyber Wave Helped Sink AI Stocks As Critical 
+Vulnerabilities Explode 10x 
+ 
+BY TYLER DURDEN 
+FRIDAY, OCT 23, 2026 - 07:10 PM 
+Wednesday, October 21 was a very bad day to be running a website, a Java application or a 
+Python environment... 
+All three got hit at once: 
+●​ PHP: Wiz disclosed "PHP2Shell", a pair of memory-safety flaws in PHP's core engine 
+(CVSS up to 9.2) allowing unauthenticated remote code execution. PHP powers some 
+70% of websites, and according to Wiz, every PHP version released in the last decade 
+has at least one of the bugs. The researchers found them using AI. 
+●​ Java: Oracle issued an emergency security alert for CVE-2026-91403 (CVSS 9.1), a flaw 
+in how Java applications validate certificate chains that could let an attacker forge 
+certificates and make a malicious site appear trusted. 
+●​ Python: LiteLLM, an open-source AI gateway library with roughly 23 million weekly 
+downloads, had a malicious release pushed to PyPI and Docker, its second supply chain 
+attack this year. The payload steals cloud credentials, SSH keys and the login files for AI 
+coding tools; per Wiz, attackers were testing stolen AWS credentials against Amazon 
+Bedrock about four and a half hours later. 
+For those keeping score, we flagged the PHP flaw on Thursday morning, a day before it showed 
+up on Goldman's radar: 
+AI Discovers Critical Security Flaw Affecting Technology Behind 70% Of All Websites 
+— zerohedge (@zerohedge) October 22, 2026 
+Which brings us to Goldman's EMEA head of delta-one trading Rich Privorotsky, who devoted a 
+section of his Friday "GS Basics" note (available to pro subs) to what he calls a "somewhat 
+alarming" pace of incidents: 
+ 
+
+ 
+"The sheer pace of issues emerging is somewhat alarming. Critical PHP exploits, a serious Java 
+vulnerability and a Python ecosystem supply chain compromise, all occurring simultaneously. I 
+wonder whether some of this contributed to the AI concerns yesterday." 
+ 
+The Chart 
+The chart in question, from Epoch AI, tracks critical and high severity vulnerabilities disclosed by 
+21 major tech organizations, from Adobe and Apple to Microsoft, Nvidia and Oracle. For three 
+years the monthly count bounced between roughly 100 and 500. Then it went vertical: 
+high-severity CVEs are now running at roughly 2,900 a month, about ten times the 2022-2025 
+norm, with critical ones up to around 600 (figures read off the chart, so approximate). Note the 
+dotted line marking when the hockey stick began: the announcement of Anthropic's Claude 
+Mythos Preview. 
+ 
+
+ 
+ 
+Epoch itself cautions that "reporting procedures, labeling, and cadence vary substantially 
+between organizations," so some of this is likely more bugs being found rather than more bugs 
+existing. But that's precisely the point. 
+AI Vs. AI 
+The PHP2Shell disclosure is a case study. Wiz says its researchers used frontier models 
+(Google's Gemini 4 Argon and OpenAI's GPT-5.6 Sol) for discovery, exploit development and 
+patch validation, and calls it an "AI inflection point": a single researcher did in a week what 
+would previously have taken a world-class team months. That is great news if the researcher 
+works for Wiz. It's less great when the same capability is available to everyone else, and as we 
+noted back in June, a Chinese open-weight model already matches Mythos on some 
+cybersecurity tasks. 
+Privorotsky draws the obvious conclusion: 
+"In hindsight, feels quite bullish for cybersecurity. AI is dramatically reducing the cost of finding 
+and exploiting vulnerabilities, while the attack surface continues to expand with token growth. 
+Hard to imagine security spending doesn't accelerate materially. Curious where we start seeing 
+the secondary impacts across software, cloud infrastructure and the broader digital economy." 
+ 
+
+ 
+That's quite the reversal from March, when cybersecurity stocks tumbled on the first reports of 
+Anthropic's "step change" model, on fears that AI would make the defenders obsolete. Seven 
+months later, the bull case is that AI makes the defenders indispensable. 
+Agents In The Bank Vault 
+The attack surface also extends well beyond code. This week brought reports that major US 
+banks are detecting unauthorized AI agents accessing customer accounts, following Schwab 
+and JPMorgan restricting third-party AI agentsearlier in the week. Goldman's TMT specialist 
+Sean Johnstone notes the nuance: David Sacks argues that much of this is customers willingly 
+handing their credentials to their own AI assistants, "a potential breach of bank terms, rather 
+than necessarily a cyberattack," while Morgan Stanley says it has not seen rogue agents on its 
+platforms. Still, Johnstone adds, "customer consent alone does not resolve the risks around 
+transaction authority, unintended actions and liability." 
+Goldman's FX desk (Matt Atherton) went a step further, explicitly listing "negative AI-related 
+news flow (PHP hacking & US banking issues with AI agents)" alongside capex cuts and 
+borrowing costs in this week's "semi-perfect storm" of catalysts for the AI selloff. 
+Did Cyber Help Sink AI? 
+Probably not on its own. As we discuss in today's companion piece on Goldman's AI 
+cost-of-capital warning, the bigger story is the price of money: Meta CDS at a record, junk 
+spreads through Goldman's downside case, and a hedge fund de-grossing for the history books. 
+But cyber made Privorotsky's list of the things "people are worried about," right alongside 
+gigawatts and midterms, and it adds a new line item to the AI bill. 
+And that is the uncomfortable part. Privorotsky is right that someone gets paid: security vendors, 
+and maybe the frontier labs selling the bug-hunting models. But everyone else pays: every 
+company running PHP, Java or a Python stack now has to patch faster, rotate credentials more 
+often and budget for an attack surface that grows with every token. For the AI trade, that is one 
+more cost on top of capital that is no longer cheap, and for the "broader digital economy" 
+Privorotsky mentions, it's a tax nobody had budgeted for. 
+We'll be watching next week's hyperscaler calls for any mention of security spend. Our guess: it 
+gets mentioned, and the number is higher than anyone modeled. 
+Much more in the full Privorotsky "GS Basics - Systematic Unwinds. Repricing AI Capital Costs. 
+Cyber Incidents" note, available to pro subs. 
+ 
