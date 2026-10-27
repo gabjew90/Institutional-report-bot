@@ -261,6 +261,20 @@ def _lines(answer: str) -> list[str]:
     return [p for p in re.split(r"(?<=[.!?])\s+", text) if p.strip()]
 
 
+def supported_text(gm) -> str:
+    """The passages of a grounded answer that Google's grounding marks as
+    backed by at least one search result (`grounding_supports`). The
+    search results themselves carry only a title and a link, so these
+    passages are the only text a grounded figure can be checked against
+    (2026-10-27). Duck-typed: anything without supports gives ''."""
+    out = []
+    for s in (getattr(gm, "grounding_supports", None) or []):
+        text = getattr(getattr(s, "segment", None), "text", None)
+        if text and (getattr(s, "grounding_chunk_indices", None) or []):
+            out.append(text)
+    return "\n".join(out)
+
+
 def _norm(f: Figure) -> float:
     return f.value * _SCALE.get(f.unit, 1.0)
 

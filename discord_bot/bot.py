@@ -859,6 +859,10 @@ _OCR_INLINE_TRUNCATE = 800
 # ("No response came back (reason: STOP)").
 _CHAT_SEARCH_MAX_ROUNDS = 6
 _ASK_PREFETCH_TIMEOUT_S = 8.0  # router prefetch deadline (2026-09-02)
+# Figure provenance on web-grounded answers acts only when True; until
+# then it runs in shadow (phase 7, 2026-10-27). Flip after the strip rate
+# measured from the `grounded-shadow` guards is reviewed.
+_FP_GROUNDED_LIVE = False
 # A search then a price history, both in code (discord_bot/event_returns.py).
 _ASK_PREFETCH_TIMEOUT_BY_TOOL = {"event_returns": 14.0}
 # Deadline for a tool the model calls itself (2026-10-18 audit A1: five
@@ -5638,6 +5642,9 @@ async def _ask_02_call_model_with_tools(
             _round_gm_chunks.extend(
                 getattr(_rgm, "grounding_chunks", None) or []
             )
+            # what each round's search backed, for the figure check (phase 7)
+            from discord_bot.figure_provenance import supported_text as _fp_sup
+            _ask_meta.setdefault("grounded_passages", []).append(_fp_sup(_rgm))
         except (AttributeError, IndexError, TypeError):
             pass
         # Tally actual usage per round so the budget reflects
@@ -7721,28 +7728,44 @@ async def _ask_07_validation_ladder(
             log.warning(f"/ask: grounded retry call failed: {e}")
 
     # Figure provenance (2026-09-03): shape-blind, last in the ladder.
-    # On a FACT answer that nothing web-grounded, every number must be
-    # in what the turn saw (injected blocks, tool payloads, sandbox
-    # output, the question, chat context) or its line goes. Web-grounded
-    # answers are skipped: their sources are the footer, and the SDK's
-    # chunks carry no snippet text to check against. Total: any failure
-    # inside leaves the answer as it was.
+    # On a FACT answer, every number must be in what the turn saw
+    # (injected blocks, tool payloads, sandbox output, the question, chat
+    # context) or its line goes. A web-grounded answer's evidence also
+    # holds the passages Google's grounding marks as backed by a result
+    # (figure_provenance.supported_text, 2026-10-27); the results carry
+    # no text of their own. Grounded answers run in SHADOW until
+    # _FP_GROUNDED_LIVE: the check is recorded in the guards and the log
+    # and the answer is left alone, so the strip rate can be measured
+    # before it touches a post. Total: any failure inside leaves the
+    # answer as it was.
     try:
         # A chart turn is exempt: figures read off the attached image
         # have no text evidence to match (2026-09-03 sweep, the BTC
         # chart replies).
         _fp_images = bool(_ask_meta.get("images"))
-        if answer and _route_is_factual and not _grounding_web_source_count(grounding_metadata) \
-                and not _fp_images:
+        _fp_grounded = bool(_grounding_web_source_count(grounding_metadata))
+        if answer and _route_is_factual and not _fp_images:
             from discord_bot import figure_provenance as _fp
             _ev = _ask_evidence_text(contents, response, question, user_content)
+            if _fp_grounded:
+                _ev += "\n" + "\n".join(_ask_meta.get("grounded_passages") or []) \
+                       + "\n" + _fp.supported_text(grounding_metadata)
             # The ladder's hedge is not part of the body under review:
             # detach it, check, reattach (2026-09-09).
             _fp_hedged = answer.endswith(_UNVERIFIED_HEDGE)
             _fp_body = answer[: -len(_UNVERIFIED_HEDGE)] if _fp_hedged else answer
             from discord_bot.ask_router import asker_text as _fp_asker
             _rep = _fp.check(_fp_body, _ev, _fp_asker(question))
-            if _rep.action == "stripped":
+            if _fp_grounded and not _FP_GROUNDED_LIVE:
+                _fp_toks = [f.token for f in _rep.unsourced][:4]
+                _ask_meta["guards"].append(
+                    f"figure-provenance:grounded-shadow:{_rep.action}"
+                    + (f":{len(_rep.stripped_lines)}:" + ",".join(_fp_toks) if _rep.unsourced else ""))
+                if _rep.action in ("stripped", "all-unsourced"):
+                    log.info(f"/ask: figure provenance (shadow, grounded) would act "
+                             f"({_rep.action}) on {_fp_toks}: {_rep.stripped_lines[:3]} "
+                             f"(q={question[:80]!r})")
+            elif _rep.action == "stripped":
                 answer = _rep.answer + (_UNVERIFIED_HEDGE if _fp_hedged else "")
                 _ask_meta["guards"].append(f"figure-provenance:stripped:{len(_rep.stripped_lines)}")
                 log.warning(
@@ -7758,8 +7781,7 @@ async def _ask_07_validation_ladder(
             elif _rep.action == "error":
                 _ask_meta["guards"].append("figure-provenance:error")
         elif answer and _route_is_factual:
-            _ask_meta["guards"].append(
-                "figure-provenance:skipped-" + ("image" if _fp_images else "grounded"))
+            _ask_meta["guards"].append("figure-provenance:skipped-image")
     except Exception as _fpe:
         log.warning(f"/ask: figure provenance guard failed (non-fatal): {_fpe}")
     return (answer, grounding_metadata, response)

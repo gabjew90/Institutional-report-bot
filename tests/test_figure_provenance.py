@@ -132,7 +132,9 @@ def test_ladder_runs_the_check_last_and_only_on_fact_answers():
     # The skip must use the count of chunks the READER sees, not every
     # chunk the SDK populated: on 2026-09-04 an answer stamped
     # `ungrounded` with no Sources footer still skipped as "grounded".
-    assert "_route_is_factual and not _grounding_web_source_count" in tail
+    assert "_fp_grounded = bool(_grounding_web_source_count(grounding_metadata))" in tail
+    # grounded answers run in shadow until the flag flips (2026-10-27)
+    assert "if _fp_grounded and not _FP_GROUNDED_LIVE:" in tail
     assert "return (answer, grounding_metadata, response)" in src[i:]
     assert "except Exception as _fpe" in tail, "the guard must be total"
 
@@ -304,3 +306,26 @@ def test_a_wrong_margin_is_not_waved_through():
     ans = "→ Tulch leads by 5.1 points (119.88 to 116.56).\n\n→ Abe has 116.56."
     rep = FP.check(ans, "119.88 116.56")
     assert rep.action == "stripped" and "5.1" in rep.stripped_lines[0]
+
+
+def test_grounded_passages_are_evidence_2026_10_27():
+    """A grounded figure is sourced when Google's grounding marks the
+    passage carrying it as backed by a result; the results have no text."""
+    from types import SimpleNamespace as N
+    gm = N(grounding_supports=[
+        N(segment=N(text="Micron reported revenue of **$54.23 billion**"), grounding_chunk_indices=[0, 1]),
+        N(segment=N(text="an unbacked line with 9.9%"), grounding_chunk_indices=[])])
+    sup = FP.supported_text(gm)
+    assert "$54.23 billion" in sup and "9.9%" not in sup
+    assert FP.supported_text(None) == "" and FP.supported_text(N()) == ""
+    ans = "→ Revenue came in at $54.23 billion.\n\n→ The stock fell 11.4% after."
+    rep = FP.check(ans, sup)
+    assert [f.token for f in rep.unsourced] == ["11.4%"]
+    assert rep.stripped_lines == ["→ The stock fell 11.4% after."]
+
+
+def test_shadow_flag_is_off_and_rounds_keep_their_passages():
+    from discord_bot import bot as B
+    assert B._FP_GROUNDED_LIVE is False
+    src = B._ask_pipeline_source()
+    assert '_ask_meta.setdefault("grounded_passages", []).append(_fp_sup(_rgm))' in src
