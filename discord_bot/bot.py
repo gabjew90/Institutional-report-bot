@@ -4564,6 +4564,8 @@ def _ask_pipeline_source() -> str:
     parts = [_inspect.getsource(g["_answer_with_gemini"])]
     for name in sorted(n for n in g if re.match(r"_ask_\d\d_", n)):
         parts.append(_inspect.getsource(g[name]))
+    # the failure replies, moved out of _answer_with_gemini 2026-10-26
+    parts.append(_inspect.getsource(g["_ask_error_message"]))
     return chr(10).join(parts)
 
 
@@ -9546,31 +9548,39 @@ async def _answer_with_gemini(
             )
         except Exception:
             pass
-        err_str = str(e).lower()
-        # Map common error classes to in-voice replies. Full exception is
-        # logged above for debugging; users see only the short message.
-        if "429" in err_str or "resource_exhausted" in err_str or "quota" in err_str:
-            msg = "Easy — going too fast. Give it a minute and try again."
-        elif "401" in err_str or "403" in err_str or "unauthorized" in err_str or "permission" in err_str:
-            msg = "Config issue on the API key — admin needs to check it."
-        elif "500" in err_str or "503" in err_str or "timeout" in err_str or "unavailable" in err_str:
-            msg = "Google's hiccuping. Try again in a sec."
-        elif "failed_precondition" in err_str or "precondition" in err_str:
-            # NOT the user's fault. FAILED_PRECONDITION is an account or
-            # API-state problem (billing, feature enablement, a transient
-            # backend precondition) that happens to carry a 400. It was
-            # falling through to the "rephrase your question" branch
-            # below, which sent a member chasing a problem that was never
-            # theirs -- observed on a reply to the calendar post, where
-            # the question was fine and the API was mid-wobble.
-            msg = "API's in a bad state on my end, not your question. Give it a minute."
-        elif "remoteprotocol" in err_str or "peer closed" in err_str                 or "incomplete" in err_str:
-            msg = "Connection dropped mid-answer. Try again."
-        elif "400" in err_str or "invalid" in err_str:
-            msg = "Something about that question broke the model. Try rephrasing."
-        else:
-            msg = "Something broke on my end. Try again in a sec."
+        msg = _ask_error_message(str(e).lower())
         return discord.Embed(description=msg, color=0xE74C3C)
+
+
+def _ask_error_message(err_str: str) -> str:
+    """The in-voice reply for a failed /ask, from the lowercased error."""
+    # Map common error classes to in-voice replies. Full exception is
+    # logged above for debugging; users see only the short message.
+    if "429" in err_str or "resource_exhausted" in err_str or "quota" in err_str:
+        msg = "Easy — going too fast. Give it a minute and try again."
+    elif ("401" in err_str or "403" in err_str or "unauthorized" in err_str or "permission" in err_str
+          # an invalid key comes back as a 400, which read as "rephrase
+          # your question" for six asks on 2026-10-26 (deleted /ask key)
+          or "api_key_invalid" in err_str or "api key not valid" in err_str):
+        msg = "Config issue on the API key — admin needs to check it."
+    elif "500" in err_str or "503" in err_str or "timeout" in err_str or "unavailable" in err_str:
+        msg = "Google's hiccuping. Try again in a sec."
+    elif "failed_precondition" in err_str or "precondition" in err_str:
+        # NOT the user's fault. FAILED_PRECONDITION is an account or
+        # API-state problem (billing, feature enablement, a transient
+        # backend precondition) that happens to carry a 400. It was
+        # falling through to the "rephrase your question" branch
+        # below, which sent a member chasing a problem that was never
+        # theirs -- observed on a reply to the calendar post, where
+        # the question was fine and the API was mid-wobble.
+        msg = "API's in a bad state on my end, not your question. Give it a minute."
+    elif "remoteprotocol" in err_str or "peer closed" in err_str                 or "incomplete" in err_str:
+        msg = "Connection dropped mid-answer. Try again."
+    elif "400" in err_str or "invalid" in err_str:
+        msg = "Something about that question broke the model. Try rephrasing."
+    else:
+        msg = "Something broke on my end. Try again in a sec."
+    return msg
 
 
 def _fmt_ts(iso_str: str | None) -> str:
