@@ -1,8 +1,16 @@
-"""HIGH documents analysed by the Claude lane instead of Gemini (2026-10-06).
+"""HIGH and MEDIUM documents analysed by the Claude lane instead of Gemini.
 
-The cutover switch for phase 1 of docs/superpowers/specs/2026-10-06-
-retire-gemini-pdf-pipeline-design.md. Off unless
-HIGH_INGESTION_BACKEND=claude_lane.
+The cutover switches for phases 1 and 2 of docs/superpowers/specs/2026-10-06-
+retire-gemini-pdf-pipeline-design.md: HIGH_INGESTION_BACKEND=claude_lane
+(2026-10-06) and MEDIUM_INGESTION_BACKEND=claude_lane (2026-10-27, owner).
+Each is off unless set.
+
+A MEDIUM note's text goes to source-text-all/ (the graders' folder), never
+to source-text/, which is the frozen Omnipulse readers' corpus; its meta
+carries "lane": true so the lane reads only the MEDIUM notes handed to it,
+not the ones Gemini already analysed. The lane takes HIGH notes first in
+every run (scripts/pilot_analyze.py pending), and the readers' daily cap
+applies to HIGH notes only.
 
 With it on:
 
@@ -61,13 +69,25 @@ def reachable() -> bool:
     return bool(settings.github_token) and bool(settings.github_repo)
 
 
-def enabled() -> bool:
-    """New HIGH documents go to the lane."""
+def enabled(priority: str = "high") -> bool:
+    """New documents of this priority go to the lane."""
+    backend = {"high": settings.high_ingestion_backend,
+               "medium": getattr(settings, "medium_ingestion_backend", "gemini")}.get(
+        (priority or "").lower())
     return (
-        settings.high_ingestion_backend == "claude_lane"
+        backend == "claude_lane"
         and reachable()
         and bool(getattr(settings, "pilot_publish_enabled", False))
     )
+
+
+def _priority(row: dict) -> str:
+    """The triage priority stored with a lane row; rows from before MEDIUM
+    joined the lane are HIGH."""
+    try:
+        return str(json.loads(row.get("triage_json") or "{}").get("priority") or "high").lower()
+    except (ValueError, AttributeError):
+        return "high"
 
 
 # The routine fires on its own UTC cron ("0 14 * * 1-5", CLAUDE.md) while
@@ -135,10 +155,11 @@ def title_from_file_name(file_name: str) -> str:
 
 def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
              total_pages: int, dropbox_path: str = "") -> bool:
-    """Give one HIGH document to the lane. False means "run Gemini now":
-    the switch is off, or the source text could not be put where the
-    lane reads it. Never raises."""
-    if not enabled():
+    """Give one HIGH or MEDIUM document to the lane. False means "run
+    Gemini now": the switch for its priority is off, or the source text
+    could not be put where the lane reads it. Never raises."""
+    priority = (getattr(triage, "priority", "") or "high").lower()
+    if not enabled(priority):
         return False
     if in_pulse_window():
         log.info(f"claude lane: {pdf_file_id} arrived in the pulse window; Gemini runs")
@@ -146,7 +167,9 @@ def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
     try:
         from github_bridge import client as gh
         from github_bridge.pilot_publish import meta_path_for, publish_high_document
+        from scripts.pilot_config import SOURCE_TEXT_ALL_DIR, SOURCE_TEXT_DIR
         branch = _pilot()[0]
+        base = SOURCE_TEXT_DIR if priority == "high" else SOURCE_TEXT_ALL_DIR
         # A document handed off before (a retry) keeps its first folder, so
         # it is never published twice under two dates.
         prior = db.get_bridge_state(pdf_file_id) or {}
@@ -154,18 +177,20 @@ def hand_off(*, pdf_file_id: int, file_name: str, triage, full_text: str,
         date = _date_of(prior_path) if prior_path.startswith(_prefix()) else _today()
         published = publish_high_document(
             pdf_file_id=pdf_file_id, file_name=file_name, source=triage.source,
-            title=title_from_file_name(file_name), priority="high", published_at=None,
+            title=title_from_file_name(file_name), priority=priority, published_at=None,
             full_text=full_text, total_pages=total_pages, date=date,
-            dropbox_path=dropbox_path)
+            dropbox_path=dropbox_path,
+            # HIGH meta stays as the frozen readers know it
+            lane=priority == "medium")
         # False also means "already there" (a retried document); the lane
         # reads it either way.
-        if not published and not gh.get_file(meta_path_for(pdf_file_id, date), ref=branch):
+        if not published and not gh.get_file(meta_path_for(pdf_file_id, date, base), ref=branch):
             log.warning(f"claude lane: source text for {pdf_file_id} not on {branch}; Gemini runs")
             return False
         db.queue_for_claude_lane(pdf_file_id, analysis_path(pdf_file_id, date),
                                  json.dumps(asdict(triage)))
         db.log_event(pdf_file_id, "claude_lane", "queued",
-                     f"HIGH -> Claude lane ({triage.source} / {triage.report_type})")
+                     f"{priority.upper()} -> Claude lane ({triage.source} / {triage.report_type})")
         log.info(f"claude lane: handed off {pdf_file_id} ({file_name})")
         return True
     except Exception as e:
@@ -224,7 +249,7 @@ def _ingest(row: dict) -> bool:
             pdf_file_id=pdf_file_id,
             triage_json=row.get("triage_json"),
             analysis_json=json.dumps(a),
-            priority="high",
+            priority=str(triage.get("priority") or "high").lower(),
             pages_analyzed=int(a.get("pages_analyzed") or 0),
             total_pages=int(a.get("total_pages") or 0),
             # Gemini's spend only (the triage). The lane runs on the Claude
@@ -278,6 +303,8 @@ def over_reader_cap(date: str, done: set, failed: set) -> set[int]:
         return set()
     docs = []
     for r in db.get_lane_rows_any_status(f"{_prefix()}{date}/"):
+        if _priority(r) != "high":
+            continue        # the readers read HIGH only; MEDIUM has no cap
         pid = int(r["pdf_file_id"])
         if f"{pid}.json" in failed and f"{pid}.json" not in done:
             continue

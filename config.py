@@ -485,6 +485,10 @@ class Settings(BaseSettings):
     # sweep 30 minutes before the scheduled pulse.
     # Acceptable values: "gemini" | "opus_bridge" | "claude_lane"
     high_ingestion_backend: str = "gemini"
+    # MEDIUM deep analysis backend (2026-10-27, owner): "claude_lane" hands
+    # MEDIUM PDFs to the same lane, behind the HIGH notes in each run;
+    # same timeout and fallbacks. Acceptable values: "gemini" | "claude_lane"
+    medium_ingestion_backend: str = "gemini"
     claude_lane_timeout_minutes: int = 120
     opus_bridge_timeout_minutes: int = 30
     # PDFs over these limits skip the bridge and go straight to Gemini fallback.

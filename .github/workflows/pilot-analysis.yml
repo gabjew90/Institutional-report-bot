@@ -1,6 +1,8 @@
 # Claude analysis lane (spec docs/superpowers/specs/2026-10-06-retire-gemini-
-# pdf-pipeline-design.md, phase 1). For every HIGH document the pilot
-# publishes, run the production deep-analysis prompt through Claude and
+# pdf-pipeline-design.md, phases 1 and 2). For every HIGH document the pilot
+# publishes, and every MEDIUM document the worker hands to the lane
+# (source-text-all/, meta "lane": true, HIGH first), run the production
+# deep-analysis prompt through Claude and
 # commit a complete pdf_analyses-shaped record to pilot/analyses/. Runs
 # beside the frozen pilot readers (own concurrency group, own paths);
 # the worker dispatches it (github_bridge/workflow_dispatch.py).

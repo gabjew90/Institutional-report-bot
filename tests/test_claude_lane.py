@@ -346,3 +346,86 @@ def test_a_read_note_keeps_its_place_under_the_cap(tmp_path, lane_on, fake_gh, m
     assert L.over_reader_cap("2026-10-06", set(), set()) == {a}
     # once a was read it is never routed away
     assert L.over_reader_cap("2026-10-06", {f"{a}.json"}, set()) == set()
+
+
+# --- MEDIUM through the lane (2026-10-27, owner) -------------------------
+
+MEDIUM = TriageResult(priority="medium", report_type="equity_research", key_tickers=[],
+                      summary="s", source="UBS", input_tokens=800, output_tokens=30)
+
+
+def test_medium_stays_on_gemini_until_its_own_switch(tmp_path, lane_on, fake_gh, monkeypatch):
+    assert settings.medium_ingestion_backend == "gemini"
+    pid, _ = _pdf(tmp_path, "med-off.pdf")
+    assert not L.hand_off(pdf_file_id=pid, file_name="med-off.pdf", triage=MEDIUM,
+                          full_text="t", total_pages=1)
+    assert db.get_bridge_state(pid) is None
+
+
+def test_medium_goes_to_the_graders_folder_marked_for_the_lane(tmp_path, lane_on, fake_gh, monkeypatch):
+    """Never source-text/: that is the frozen readers' corpus."""
+    monkeypatch.setattr(settings, "medium_ingestion_backend", "claude_lane")
+    monkeypatch.setattr(settings, "high_ingestion_backend", "gemini")
+    pid, _ = _pdf(tmp_path, "med.pdf")
+    seen = {}
+    import github_bridge.pilot_publish as pp
+    monkeypatch.setattr(pp, "publish_high_document", lambda **kw: seen.update(kw) or True)
+    assert L.hand_off(pdf_file_id=pid, file_name="med.pdf", triage=MEDIUM,
+                      full_text="text", total_pages=4)
+    assert seen["priority"] == "medium" and seen["lane"] is True
+    assert db.get_bridge_state(pid)["status"] == "committed"
+    # HIGH is off here, and its own switch decides it
+    assert not L.hand_off(pdf_file_id=pid + 1000, file_name="h.pdf", triage=TRIAGE,
+                          full_text="t", total_pages=1)
+
+
+def test_an_already_published_medium_is_checked_in_its_own_folder(tmp_path, lane_on, fake_gh, monkeypatch):
+    monkeypatch.setattr(settings, "medium_ingestion_backend", "claude_lane")
+    pid, _ = _pdf(tmp_path, "med-again.pdf")
+    import github_bridge.pilot_publish as pp
+    from scripts.pilot_config import SOURCE_TEXT_ALL_DIR
+    monkeypatch.setattr(pp, "publish_high_document", lambda **kw: False)
+    fake_gh.files[pp.meta_path_for(pid, L._today(), SOURCE_TEXT_ALL_DIR)] = "{}"
+    assert L.hand_off(pdf_file_id=pid, file_name="med-again.pdf", triage=MEDIUM,
+                      full_text="t", total_pages=1)
+
+
+def test_a_medium_record_is_stored_as_medium(tmp_path, lane_on, fake_gh):
+    pid, _ = _pdf(tmp_path, "med-arrived.pdf")
+    db.queue_for_claude_lane(pid, L.analysis_path(pid, "2026-10-06"), json.dumps(MEDIUM.__dict__))
+    fake_gh.files[L.analysis_path(pid, "2026-10-06")] = _record(pid)
+    assert L.pull()["ingested"] == 1
+    assert _latest(pid)["priority"] == "medium"
+
+
+def test_medium_notes_do_not_count_toward_the_reader_cap(tmp_path, lane_on, fake_gh, monkeypatch):
+    import scripts.pilot_list_unread as plu
+    monkeypatch.setattr(plu, "MAX_PER_DAY", 1)
+    h = db.insert_pdf_file("/Current/2026/October/Oct 6/GS/h.pdf", "h.pdf", "")
+    m = db.insert_pdf_file("/Current/2026/October/Oct 6/UBS/m.pdf", "m.pdf", "")
+    _queue(h)
+    db.queue_for_claude_lane(m, L.analysis_path(m, "2026-10-06"), json.dumps(MEDIUM.__dict__))
+    # m is newer by id but MEDIUM: the one HIGH slot stays h's, and m is never capped
+    assert L.over_reader_cap("2026-10-06", set(), set()) == set()
+
+
+def test_orchestrator_offers_medium_documents_to_the_lane(tmp_path, lane_on, monkeypatch):
+    import pipeline.orchestrator as orch
+    pid, local = _pdf(tmp_path, "orch-med.pdf")
+
+    async def triage(*a, **k):
+        return MEDIUM
+
+    async def deep(**kw):
+        raise AssertionError("Gemini deep analysis must not run")
+
+    monkeypatch.setattr(orch, "extract_text_per_page",
+                        lambda p: [SimpleNamespace(text="page one")])
+    monkeypatch.setattr(orch, "triage_pdf", triage)
+    monkeypatch.setattr(orch, "analyze_pdf_deep", deep)
+    handed = []
+    monkeypatch.setattr(L, "hand_off", lambda **kw: handed.append(kw) or True)
+    out = asyncio.run(orch.process_single_pdf(
+        {"id": pid, "file_name": "orch-med.pdf", "local_path": str(local),
+         "dropbox_path": "/Current/UBS/orch-med.pdf"}))
+    assert out is None and handed[0]["triage"].priority == "medium"

@@ -128,3 +128,28 @@ def test_a_market_ear_document_keeps_its_banned_source(tmp_path):
     rec = PA.finalize(str(raw), text, meta, str(tmp_path / "a.json"), "m")
     assert rec["analysis"]["source"] == "The Market Ear"
     assert rec["claude_source"] == "Goldman Sachs"
+
+
+def _medium(root, doc_id, date, lane):
+    st = root / "pilot" / "source-text-all" / date
+    st.mkdir(parents=True, exist_ok=True)
+    text_rel = f"pilot/source-text-all/{date}/{doc_id}__ubs.txt"
+    (root / text_rel).write_text(TEXT, encoding="utf-8")
+    meta = {"pdf_file_id": int(doc_id), "file_name": "UBS.pdf", "source": "UBS",
+            "title": "UBS", "priority": "medium", "text_path": text_rel}
+    if lane:
+        meta["lane"] = True
+    (st / f"{doc_id}.meta.json").write_text(json.dumps(meta), encoding="utf-8")
+
+
+def test_pending_takes_high_first_then_only_marked_medium_2026_10_27(tmp_path):
+    """The graders' folder also holds MEDIUM notes Gemini analysed; only the
+    ones handed to the lane are read, and every HIGH note comes before them."""
+    today = dt.date.today().isoformat()
+    yesterday = (dt.date.today() - dt.timedelta(days=1)).isoformat()
+    _medium(tmp_path, "30001", today, lane=True)
+    _medium(tmp_path, "30002", today, lane=False)
+    _doc(tmp_path, "18282", yesterday)
+    rows = PA.pending(tmp_path / "pilot", days=3, limit=25)
+    assert [r[0] for r in rows] == ["18282", "30001"]
+    assert PA.pending(tmp_path / "pilot", days=3, limit=1)[0][0] == "18282"

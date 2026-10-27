@@ -49,12 +49,14 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
                           published_at: str | None,
                           full_text: str, total_pages: int = 0,
                           date: str | None = None,
-                          dropbox_path: str = "") -> bool:
+                          dropbox_path: str = "", lane: bool = False) -> bool:
     """Commit one HIGH document's text + meta. True when published.
 
     `date` names the folder; by default it is the document's own date
     (`published_at`), else today. The Claude-lane hand-off passes the
-    date it will look for the analysis under (github_bridge/claude_lane.py).
+    date it will look for the analysis under (github_bridge/claude_lane.py)
+    and `lane=True`, which marks the meta so the lane analyses a MEDIUM
+    note in source-text-all/ (2026-10-27).
 
     Best-effort by contract: this runs inside the analysis pipeline
     and must never be able to fail an analysis. Every exit is a return,
@@ -120,6 +122,8 @@ def publish_high_document(*, pdf_file_id: int, file_name: str,
             # the bank's day, from the Dropbox day folder: the readers take
             # the newest first (scripts/pilot_list_unread.py, 2026-10-07)
             "note_date": note_date_from_path(dropbox_path),
+            # handed to the Claude analysis lane (github_bridge/claude_lane.py)
+            **({"lane": True} if lane else {}),
         }, indent=1),
             f"pilot: meta {pdf_file_id}", ref=PILOT_BRANCH)
         log.info(f"pilot: published {pdf_file_id} ({source}) "

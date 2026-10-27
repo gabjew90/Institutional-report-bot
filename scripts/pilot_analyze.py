@@ -3,7 +3,9 @@ pdf-pipeline-design.md, phase 1). Runs on a GitHub runner from
 .github/workflows/pilot-analysis.yml, beside the frozen pilot readers.
 
 For each HIGH document the pilot publishes (pilot/source-text/<date>/
-<id>.meta.json), Claude runs the SAME deep-analysis prompt Gemini runs in
+<id>.meta.json), and each MEDIUM document the worker hands to the lane
+(pilot/source-text-all/<date>/<id>.meta.json marked "lane", 2026-10-27),
+Claude runs the SAME deep-analysis prompt Gemini runs in
 production (ai_analysis/prompts.py ANALYSIS_SYSTEM_PROMPT and
 ANALYSIS_USER_PROMPT_TEXT_ONLY), and the answer goes through the SAME
 post-processing (ai_analysis/analysis_build.build_analysis: field
@@ -43,26 +45,34 @@ def _failures(root: Path, date: str, doc_id: str) -> Path:
 
 
 def pending(root: Path, days: int, limit: int) -> list[tuple[str, str, str, str]]:
+    """Documents with no analysis yet, HIGH first: every HIGH note of the
+    last `days` days (source-text/), then the MEDIUM notes the worker
+    handed to the lane (source-text-all/ with "lane": true in the meta,
+    2026-10-27). source-text-all/ also holds MEDIUM notes Gemini already
+    analysed, for the graders; the mark keeps those out."""
     today = dt.date.today()
+    dates = [(today - dt.timedelta(days=back)).isoformat() for back in range(days)]
     out = []
-    for back in range(days):
-        date = (today - dt.timedelta(days=back)).isoformat()
-        for meta in sorted((root / "source-text" / date).glob("*.meta.json")):
-            doc_id = meta.name.split(".")[0]
-            if (root / ANALYSES / date / f"{doc_id}.json").exists():
-                continue
-            f = _failures(root, date, doc_id)
-            if f.exists() and json.loads(f.read_text()).get("attempts", 0) >= MAX_ATTEMPTS:
-                continue
-            m = json.loads(meta.read_text(encoding="utf-8"))
-            text = m.get("text_path") or ""
-            # text_path is relative to the pilot-data checkout
-            text_abs = root.parent / text if text else None
-            if not text_abs or not text_abs.exists():
-                continue
-            out.append((doc_id, str(text_abs), str(meta), date))
-            if len(out) >= limit:
-                return out
+    for folder, lane_only in (("source-text", False), ("source-text-all", True)):
+        for date in dates:
+            for meta in sorted((root / folder / date).glob("*.meta.json")):
+                doc_id = meta.name.split(".")[0]
+                if (root / ANALYSES / date / f"{doc_id}.json").exists():
+                    continue
+                f = _failures(root, date, doc_id)
+                if f.exists() and json.loads(f.read_text()).get("attempts", 0) >= MAX_ATTEMPTS:
+                    continue
+                m = json.loads(meta.read_text(encoding="utf-8"))
+                if lane_only and not m.get("lane"):
+                    continue
+                text = m.get("text_path") or ""
+                # text_path is relative to the pilot-data checkout
+                text_abs = root.parent / text if text else None
+                if not text_abs or not text_abs.exists():
+                    continue
+                out.append((doc_id, str(text_abs), str(meta), date))
+                if len(out) >= limit:
+                    return out
     return out
 
 

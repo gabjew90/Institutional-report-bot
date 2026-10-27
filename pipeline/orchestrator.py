@@ -103,7 +103,8 @@ async def process_single_pdf(pdf_data: dict, use_claude_lane: bool = True) -> Pd
                 output_tokens=0,
             )
         else:
-            if triage.priority == "high" and use_claude_lane:
+            # HIGH and MEDIUM, each behind its own switch (claude_lane.enabled)
+            if triage.priority in ("high", "medium") and use_claude_lane:
                 from github_bridge import claude_lane
                 # GitHub round trips: off the event loop
                 if await asyncio.to_thread(
