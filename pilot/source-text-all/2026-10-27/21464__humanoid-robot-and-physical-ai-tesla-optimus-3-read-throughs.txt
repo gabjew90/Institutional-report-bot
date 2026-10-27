@@ -1,0 +1,1418 @@
+www.jpmorganmarkets.com
+Asia Pacific Equity Research
+22 October 2026
+This material is neither intended to be distributed to Mainland China investors nor to provide securities investment consultancy services within the territory of 
+Mainland China. This material or any portion hereof may not be reprinted, sold or redistributed without the written consent of J.P. Morgan.                                     
+Humanoid Robot and Physical 
+AI
+ 
+Tesla Optimus 3 read-throughs – deployment 
+progress, technical bottlenecks, and stock implications
+ 
+Infrastructure, Industrials & 
+Transport
+Karen Li, CFA AC
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+J.P. Morgan Securities (Asia Pacific) Limited/ 
+J.P. Morgan Broking (Hong Kong) Limited
+Sonny Lee
+(82-2) 758 5716
+sonny.lee@jpmorgan.com
+J.P. Morgan Securities (Far East) Limited, 
+Seoul Branch
+Tomohiko Sano
+(1-212) 622-1099
+tomohiko.sano@jpmorgan.com
+J.P. Morgan Securities LLC
+Sunny Su
+(852) 2800 8551
+sunny.su@jpmorgan.com
+J.P. Morgan Securities (Asia Pacific) Limited/ 
+J.P. Morgan Broking (Hong Kong) Limited
+Beatrice Lam
+(852) 2800-8738
+beatrice.lam@jpmorgan.com
+J.P. Morgan Securities (Asia Pacific) Limited/ 
+J.P. Morgan Broking (Hong Kong) Limited
+Jenny Qiu, CFA
+(852) 2800 8503
+jenny.qiu@jpmorgan.com
+J.P. Morgan Securities (Asia Pacific) Limited/ 
+J.P. Morgan Broking (Hong Kong) Limited
+Neil Zhang
+(852) 2800-8598
+neil.zhang@jpmorgan.com
+J.P. Morgan Securities (Asia Pacific) Limited/ 
+J.P. Morgan Broking (Hong Kong) Limited
+See page 5 for analyst certification and important disclosures, including non-US analyst disclosures.
+Tesla (covered by Rajat Gupta, N rating) held its 3Q 2026 earnings briefing 
+this morning. While the market was watching a range of topics including FSD, 
+capex, and core auto margins, our focus was on the latest updates for the 
+Optimus humanoid robot. Elon Musk provided several important messages for 
+the sector. He confirmed that Optimus production has started at Fremont, and 
+signaled that Tesla could be ready to start shipping Optimus robots to other 
+companies by the end of next year. While this is a more confident timeline 
+than some had expected, Musk was clear that the ramp will be gradual, with 
+volume guidance of 10k–20k units before launching external sales—below the 
+most bullish market hopes. He described the manufacturing process as an S-
+curve, emphasizing that “10,000 things” need to work correctly and that the 
+slowest component or process will set the pace for the entire ramp. Musk 
+highlighted the robot’s hand as the main hardware bottleneck, and achieving 
+human-like dexterity, reliability, and onboard intelligence remains a 
+challenge. Tesla’s immediate focus is on deploying Optimus internally in its 
+own factories for dangerous or repetitive tasks, with external commercial 
+shipments targeted for late 2027. Consumer applications are further out. Musk 
+also noted that a video demonstration of Optimus performing non-pre-scripted 
+tasks is expected within the next one to two months, and that the integration of 
+the next-generation AI5 chip in 2027 should provide a significant boost in 
+compute power and enable more complex behaviors.
+Our CIIF tour takeaways (see Humanoid Robot & Physical AI: Robotics tour 
+takeaways: CIIF 2026—Ecosystem demand, workflow integration, and what’s 
+next for the sector) also support this more selective stance. The most tangible 
+demand we observed was not at the robot OEM level, but among suppliers of 
+sensors, 3D vision, data-collection devices, reducers, and dexterous hands. 
+Leader Drive’s management was notably concrete about Physical AI already 
+contributing over 35% of its business, and it is planning multi-year capacity 
+expansion. Orbbec highlighted a sharp ramp in robotics-related orders, 
+especially for data-collection hardware and 3D vision modules. However, the 
+demand is still “ecosystem demand”—R&D, pilots, and data collection—
+rather than mass end-user deployment. The gap between humanoid robot 
+demos and industrial-grade automation remains wide, and the real bottlenecks 
+are now around perception consistency, manipulation reliability, and the 
+ability to deliver repeatable ROI in real-world workflows.
+Our stock views: Against this backdrop, we have become more selective on 
+the broader humanoid robot supply chain as expectations realign. The recent 
+rally in Chinese robotics OEMs—led by Unitree and UBTech—has been 
+sentiment-driven, and we remain cautious on these names in the near term as 
+the market digests Tesla’s more gradual production outlook. We see a risk of 
+disappointment over the next 1–3 months as expectations reset and operational 
+progress is reassessed, particularly for Unitree, Estun, and UBTech. At the 
+same time, we continue to see Hengli Hydraulic and Sanhua Intelligent as the 
+best-positioned Tesla bot supply chain plays, both confirmed suppliers that 
+
+2
+Asia Pacific Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+have not priced in much of the Tesla bot optimism and now trade at attractive 
+P/E-based valuations after giving back most of their gains since 1H25. Both 
+companies have solid underlying businesses and valuations near or below 
+historical mid-cycle mean. Leader Drive remains our top pick among 
+component names, given its proven moat, scalability, and more concrete 
+Physical AI contribution, as reinforced by our CIIF meetings. Orbbec follows, 
+with strong technology positioning in 3D vision and data-collection tooling, 
+though we remain mindful of the near-term earnings risk. Our pecking order 
+remains: Hengli Hydraulic = Sanhua Intelligent (both OW) > Leader Drive 
+(OW) > Orbbec (OW) > Inovance (N) > UBTech (N) > Estun = Unitree (both 
+UW).
+Table 1: Key subsystems and development status of Tesla Optimus
+Subsystem/Capability
+Tesla Optimus (3Q 
+2026 update)
+Status/Commentary
+Bottleneck/Next Milestone
+Hand (Dexterous hand)
+Main hardware 
+bottleneck
+Musk highlighted the hand as the 
+most difficult part, with human-like 
+dexterity and reliability still a 
+challenge
+Improving hand design, 
+durability, and tactile sensing; 
+key gating item for 
+industrial/consumer use
+Eye (Vision/Perception)
+Not specifically 
+detailed
+No explicit update on vision 
+system, camera, or LiDAR; robust 
+perception implied as necessary 
+for non-pre-scripted tasks
+Consistent, reliable perception 
+for unstructured tasks; 
+integration with “brain” and 
+model
+Chip (AI5)
+AI5 chip integration 
+targeted for April 
+2027
+AI5 to provide c.10x compute vs. 
+AI4; expected to enable more 
+complex, generalizable behaviors
+Hardware integration, software 
+stack migration, and validation 
+in real-world tasks
+GPU/Compute
+Not detailed
+No explicit mention of GPU or 
+compute bottlenecks, but AI5 is 
+expected to be a major step up
+Sufficient compute for real-time, 
+non-pre-scripted task execution
+Brain (Onboard intelligence)
+Still in development
+Musk emphasized need for further 
+improvements in onboard 
+intelligence and software to 
+manage many degrees of freedom
+Video demo of non-pre-scripted 
+tasks expected in 1–2 months; 
+ongoing closed-loop learning
+Model (AI/Software)
+Ongoing iteration
+Focus on enabling Optimus to 
+perform tasks that are not pre-
+programmed; software and model 
+still evolving
+Demonstration of generalizable, 
+non-scripted behaviors; 
+integration with new chip
+Production plan
+Gradual ramp, S-
+curve
+Production started at Fremont; the 
+initial output of 10k–20k units will 
+be for Tesla Academy; slowest 
+process/component sets the pace
+Internal deployment in Tesla 
+factories; external shipments 
+targeted for end-2027
+Supply chain
+Reducing China 
+reliance
+Musk noted deliberate effort to 
+localize and diversify supply chain, 
+adding complexity to ramp
+Localized sourcing, scaling non-
+China suppliers, and managing 
+global logistics
+Battery/Power
+Not detailed
+No direct update on battery tech, 
+runtime, or energy density
+Long-duration reliability and 
+safe operation for industrial 
+tasks
+Factory deployment
+Initial customers
+Optimus to be used in industrial 
+applications at first, such as 
+dangerous repetitive tasks
+Would be extended to 
+household products as Tesla 
+scales up 
+Source: Tesla 3Q26 briefing and public disclosures. 
+Read-throughs from Tesla 3Q26 briefing and Optimus update
+• Elon Musk’s latest commentary on Optimus signals a more measured 
+ramp-up, with the initial volume ramp-up guidance of 10k–20k units 
+coming in below market expectations. During Tesla’s 3Q 2026 earnings 
+call, Musk stated that while production has begun at Fremont, the company 
+is taking a cautious approach to scaling. He guided to 10k–20k units within a 
+12-month timeframe, below prior market hopes, and described the 
+manufacturing process as an S-curve, with “10,000 things” that need to work 
+
+3
+Asia Pacific  Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+correctly. The slowest component or process will set the pace for the entire 
+ramp. Musk was explicit that the desire to reduce reliance on the Chinese 
+supply chain is adding to the complexity.
+• Tesla’s internal deployment strategy for Optimus is focused on self-play 
+and training data generation, with external commercial shipments still 
+at least a year away. Musk explained that Tesla’s immediate priority is to 
+deploy Optimus robots for practical tasks, and Tesla is building an Optimus 
+Academy where Optimus can do self-play and generate training data. As for 
+the profile of initial customers, Tesla is considering industrial applications 
+notably dangerous, repetitive, or ergonomically difficult tasks 24/7. This 
+internal-first approach allows Tesla to collect proprietary real-world data, 
+validate reliability, and iterate on both hardware and software before 
+offering the robots to external customers. Musk stated that commercial 
+shipments to outside companies are roughly a year away, and that broader 
+consumer applications will follow only after reliability and cost targets are 
+met.
+• Tesla’s 3Q 2026 update highlighted the hand, onboard intelligence, and 
+compute roadmap, while providing limited detail on reducers, vision, or 
+battery. Musk was explicit that the hand remains the main hardware 
+bottleneck for Optimus, citing the challenge of achieving human-like 
+dexterity, reliability, and long-duration operation. On the “brain” and 
+software side, Musk emphasized the need for further improvements in 
+onboard intelligence and the ability to manage the robot’s many degrees of 
+freedom, with the next major milestone being a video demonstration of 
+Optimus performing non-pre-scripted tasks within the next one to two 
+months. Tesla confirmed plans to integrate its next-generation AI5 chip into 
+Optimus around April 2027, which management described as providing 
+roughly an order of magnitude more compute than the current AI4 and 
+enabling more complex, generalizable behaviors. However, there was no 
+specific mention of vision systems, cameras, or battery technology, while 
+Optimus Engineering Lead highlighted their relatively high confidence in 
+body electrotechnical system. Musk did reiterate that the production ramp 
+will be gradual, with the slowest component or process setting the pace, and 
+that the company is deliberately reducing reliance on the Chinese supply 
+chain, which adds to the complexity of scaling.
+• Musk’s commentary reinforced that the path to mass adoption will be 
+gradual, with initial customers likely to be industrial rather than 
+residential. Musk reiterated that the first external use cases for Optimus will 
+be in industrial settings, where the robot can take on tasks that are dangerous 
+or highly repetitive. He was clear that consumer applications are still further 
+out, as the company needs to prove reliability, safety, and cost-effectiveness 
+in more controlled environments first. Tesla’s own regulatory filings also 
+acknowledged that the company has not yet commercialized Bots and cannot 
+predict demand from commercial or consumer applications, underscoring 
+the early stage of the industry.
+
+4
+Asia Pacific Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+Table 2: Global Humanoid Robot Comp
+Source: Bloomberg Finance L.P., J.P. Morgan estimates. Estimates for Not Covered (NC) companies are based on Bloomberg consensus data. Japanese names have financial years ending 
+March. As of 21 October 2026.
+BBG
+JPM rating Last Price
+JPM PT
+Upside/
+Mkt Cap aily turnoveYTD stock
+Ticker
+LC
+LC
+Downside
+US$Mn
+US$Mn
+perf.
+FY26E
+FY27E
+FY26E
+FY27E
+FY26E
+FY27E
+FY26E
+FY27E
+FY26E
+FY27E
+China 
+Unitree
+688836 CH
+UW
+515
+300
+-42%
+31,200
+405.1
+NA
+345.4
+236.7
+121%
+46%
+8.4
+9.3
+73.9
+51.6
+66%
+43%
+Leader Drive
+688017 CH
+OW
+258
+358
+39%
+7,076
+345.2
+34%
+255.1
+130.1
+36%
+96%
+5.1
+9.6
+52.5
+28.1
+58%
+87%
+Estun
+002747 CH 
+UW
+26
+21
+-19%
+3,556
+236.7
+10%
+92.8
+68.2
+462%
+36%
+9.7
+9.4
+5.1
+4.5
+8%
+7%
+Sanhua Intelligent-A
+002050 CH
+OW
+33
+51
+55%
+19,771
+277.2
+-40%
+29.1
+24.9
+17%
+17%
+12.8
+14.6
+3.9
+3.5
+9%
+13%
+Sanhua Intelligent-H
+2050 HK
+OW
+23
+38
+69%
+19,771
+20.4
+-41%
+16.9
+14.5
+17%
+17%
+12.8
+14.6
+NA
+NA
+9%
+13%
+Ningbo Tuopu
+601689 CH
+UW
+42
+48
+13%
+11,031
+164.0
+-45%
+26.5
+23.2
+-1%
+14%
+11.1
+11.7
+2.2
+1.9
+16%
+13%
+Minth
+425 HK
+OW
+22
+54
+145%
+3,285
+11.8
+-31%
+7.2
+6.1
+7%
+18%
+12.3
+13.2
+0.8
+0.7
+9%
+14%
+Zhongda Leader
+002896 CH
+NC
+55
+NA
+NA
+1,629
+89.2
+-38%
+97.1
+81.4
+23%
+19%
+8.7
+9.7
+8.4
+6.7
+25%
+25%
+Shuanhuan
+002472 CH
+NC
+39
+NA
+NA
+4,930
+122.8
+-18%
+23.4
+19.9
+13%
+18%
+13.0
+13.7
+3.2
+2.8
+8%
+14%
+Ningbo Joyson
+600699 CH
+N
+21
+20
+-5%
+4,582
+123.6
+-33%
+18.5
+15.3
+16%
+21%
+8.8
+9.9
+0.5
+0.5
+2%
+4%
+Hengli Hydrulic
+601100 CH
+OW
+83
+126
+52%
+16,662
+104.6
+-24%
+35.2
+26.6
+8%
+32%
+17.3
+20.2
+8.3
+6.8
+26%
+22%
+Robosense
+2498 HK
+OW
+15
+45
+203%
+892
+9.3
+-59%
+NM
+24.3
+-26%
+NM
+-4.7
+4.5
+2.1
+1.3
+45%
+57%
+Johnson Electric
+179 HK
+N
+14
+18
+33%
+1,611
+10.4
+-54%
+7.8
+11.5
+NA
+-32%
+7.4
+5.9
+0.4
+0.4
+NA
+1%
+Wolong Electric
+600580 CH
+N
+24
+31
+27%
+5,700
+178.3
+-50%
+46.8
+29.7
+-37%
+58%
+7.3
+10.7
+2.5
+2.2
+-4%
+12%
+Orbbec
+688322 CH
+OW
+93
+110
+19%
+5,738
+137.3
+3%
+142.8
+64.4
+NA
+122%
+7.5
+13.1
+28.4
+15.3
+NA
+86%
+Horizon Robotics
+9660 HK
+OW
+4
+9
+135%
+7,737
+73.3
+-56%
+NM
+NM
+156%
+-44%
+-38.9
+-23.4
+9.8
+6.3
+61%
+55%
+UBTech robotics
+9880 HK
+N
+67
+74
+10%
+4,367
+49.8
+-47%
+NM
+139.8
+-62%
+-151%
+-5.7
+3.0
+7.3
+4.6
+99%
+59%
+Shenzhen Dobot
+2432 HK
+NC
+17
+NA
+NA
+859
+6.9
+-55%
+NM
+NM
+84%
+-56%
+-4.0
+-1.6
+7.4
+5.2
+54%
+41%
+Zhaowei Machinery
+003021 CH
+NC
+76
+NA
+NA
+2,827
+38.0
+-39%
+82.6
+61.0
+-16%
+35%
+5.0
+5.8
+10.2
+8.9
+-1%
+14%
+Laifual Drive
+3952 HK
+NC
+29
+NA
+NA
+388
+1.0
+NA
+NM
+59.2
+NA
+-156%
+-29.0
+3.2
+6.3
+3.6
+NA
+74%
+Geekplus
+2590 HK
+NC
+6
+NA
+NA
+1,059
+9.0
+-70%
+131.2
+21.5
+-47%
+NM
+2.0
+3.6
+1.7
+1.3
+30%
+32%
+Mech Mind
+9615 HK
+NC
+87
+NA
+NA
+1,384
+4.6
+NA
+NA
+NA
+NA
+NA
+NA
+NA
+NA
+NA
+NA
+NA
+Xpeng
+9868 HK
+N
+37
+45
+22%
+9,043
+62.7
+-53%
+NM
+NM
+119%
+-27%
+-13.4
+-10.9
+0.7
+0.6
+11%
+22%
+Xpeng
+XPEV US
+N
+10
+12
+16%
+9,508
+77.3
+-51%
+NM
+NM
+119%
+-27%
+-13.4
+-10.9
+0.8
+0.6
+11%
+22%
+Average
+67.5
+45.7
+47%
+1%
+1.4
+5.9
+7.7
+5.0
+25%
+31%
+Asia (ex-China)
+Hiwin
+2049 TT
+UW
+308.00
+160
+-48%
+3,360
+46.1
+59%
+56.4
+48.0
+37%
+18%
+5.2
+6.0
+4.1
+3.8
+9%
+8%
+Bizlink
+3665 TT
+OW
+1950.00
+3,100
+59%
+12,002
+236.5
+28%
+28.7
+16.2
+46%
+77%
+25.4
+33.8
+3.7
+2.5
+48%
+50%
+Sinbon
+3023 TT
+N
+308.00
+235
+-24%
+2,280
+10.5
+60%
+23.3
+19.6
+5%
+19%
+19.3
+21.6
+2.2
+2.1
+6%
+9%
+TM Robot
+4585 TT
+NC
+276.50
+NA
+NA
+892
+2.1
+-18%
+60.6
+36.7
+NA
+65%
+NA
+NA
+13.4
+10.1
+NA
+32%
+HDS
+6324 JP
+NC
+5390.00
+NA
+NA
+3,283
+46.3
+43%
+78.1
+53.9
+NM
+45%
+7.9
+10.5
+6.8
+5.9
+30%
+16%
+Nidec
+6594 JP
+UW
+1762.00
+1,500
+-15%
+13,287
+122.1
+-17%
+14.9
+12.5
+8%
+19%
+15.7
+16.0
+0.7
+0.7
+6%
+5%
+Yaskawa
+6506 JP
+NC
+4204.00
+NA
+NA
+7,089
+138.7
+-12%
+24.1
+18.9
+23%
+28%
+9.1
+11.0
+1.9
+1.7
+12%
+9%
+Fanuc
+6954 JP
+NC
+5823.00
+NA
+NA
+36,167
+220.7
+-4%
+26.4
+24.6
+28%
+7%
+10.8
+11.4
+5.9
+5.5
+15%
+7%
+Minebea Mitsumi
+6479 JP
+OW
+3284.00
+5,100
+55%
+8,868
+64.3
+5%
+13.9
+12.1
+38%
+15%
+9.5
+9.9
+0.8
+0.7
+11%
+6%
+Hyundai Mobis
+012330 ks
+OW
+346000.00
+620,000
+79%
+23,473
+142.5
+-7%
+6.5
+5.9
+17%
+12%
+8.8
+9.0
+0.5
+0.5
+3%
+3%
+HL Mando
+204320 ks
+N
+38950.00
+49,000
+26%
+1,381
+13.8
+-34%
+9.8
+8.7
+6%
+12%
+6.4
+6.8
+0.2
+0.2
+5%
+4%
+Hyundai motor
+005380 KS
+OW
+309500.00
+440,000
+42%
+47,563
+283.1
+4%
+9.8
+8.9
+-21%
+11%
+6.9
+7.3
+0.3
+0.3
+1%
+4%
+Average
+29.4
+22.2
+19%
+27%
+11.4
+13.0
+3.4
+2.8
+13%
+13%
+Ex-Asia
+NVIDIA
+NVDA US
+OW
+216.47
+320
+48%
+5,216,927
+25,424.8
+16%
+46.3
+23.4
+60%
+97%
+104.2
+99.8
+24.4
+12.8
+66%
+91%
+Tesla
+TSLA US
+N
+373.71
+415
+11%
+1,477,175
+13,071.3
+-17%
+261.3
+257.7
+-11%
+1%
+5.9
+5.6
+13.7
+11.9
+14%
+15%
+Siemens
+SIE GR
+OW
+263.05
+345
+31%
+230,822
+302.9
+10%
+21.6
+18.4
+6%
+17%
+13.8
+15.2
+2.5
+2.3
+5%
+8%
+Schaeffler
+SHA0 GR
+N
+5.86
+9
+45%
+6,213
+7.2
+-30%
+10.9
+9.5
+2%
+15%
+17.1
+18.1
+0.2
+0.2
+-2%
+0%
+Average
+85.0
+77.2
+14%
+33%
+35.2
+34.7
+10.2
+6.8
+21%
+28%
+Global humanoid average
+55.0
+41.1
+34%
+13%
+8.0
+11.1
+6.6
+4.5
+21%
+25%
+P/E (x)
+Revenue growth Y/Y
+EPS Growth
+ROE (%)
+P/S (x)
+
+5
+Asia Pacific  Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+Companies Discussed in This Report (all prices in this report as of market close on 21 October 2026, unless otherwise 
+indicated)
+Estun Automation - A(002747.SZ/Rmb26.08/UW), Jiangsu Hengli Hydraulic - A(601100.SS/Rmb84.30/OW), Leader 
+Harmonious Drive System Co.(688017.SS/Rmb257.68/OW), Orbbec - A(688322.SS/Rmb92.80/OW), Shenzhen Inovance 
+Technology Co. Ltd - A(300124.SZ/Rmb49.90/N), UBTECH Robotics - H(9880.HK/HK$67.35/N), Unitree Robotics - 
+A(688836.SS/Rmb515.00/UW), Zhejiang Sanhua Intelligent Controls - A(002050.SZ/Rmb32.93/OW), Zhejiang Sanhua 
+Intelligent Controls - H(2050.HK/HK$22.50/OW) 
+Analyst Certification: The Research Analyst(s) denoted by an “AC” on the cover of this report certifies (or, where multiple Research 
+Analysts are primarily responsible for this report, the Research Analyst denoted by an “AC” on the cover or within the document 
+individually certifies, with respect to each security or issuer that the Research Analyst covers in this research) that: (1) all of the views 
+expressed in this report accurately reflect the Research Analyst’s personal views about any and all of the subject securities or issuers; and 
+(2) no part of any of the Research Analyst's compensation was, is, or will be directly or indirectly related to the specific recommendations 
+or views expressed by the Research Analyst(s) in this report. For all Korea-based Research Analysts listed on the front cover, if 
+applicable, they also certify, as per KOFIA requirements, that the Research Analyst’s analysis was made in good faith and that the views 
+reflect the Research Analyst’s own opinion, without undue influence or intervention.
+All authors named within this report are Research Analysts who produce independent research unless otherwise specified. In Europe, 
+Sector Specialists (Sales and Trading) may be shown on this report as contacts but are not authors of the report or part of the Research 
+Department.
+Important Disclosures 
+Company-Specific Disclosures: J.P. Morgan does and seeks to do business with companies covered in its research reports. As a result, 
+investors should be aware that the firm may have a conflict of interest that could affect the objectivity of this report. Investors should 
+consider this report as only a single factor in making their investment decision. Important disclosures, including price charts and credit 
+opinion history tables (if applicable), are available for compendium reports and all J.P. Morgan–covered companies, and certain non-
+covered companies, by visiting   Research Analyst’s, or the Research Analyst’s team’s, coverage 
+universe); Neutral (over the duration of the price target indicated in this report, we expect this stock will perform in line with the average 
+total return of the stocks in the Research Analyst’s, or the Research Analyst’s team’s, coverage universe); and Underweight (over the 
+duration of the price target indicated in this report, we expect this stock will underperform the average total return of the stocks in the 
+Research Analyst’s, or the Research Analyst’s team’s, coverage universe. NR is Not Rated. In this case, J.P. Morgan has removed the 
+rating and, if applicable, the price target, for this stock because of either a lack of a sufficient fundamental basis or for legal, regulatory or 
+policy reasons. The previous rating and, if applicable, the price target, no longer should be relied upon. An NR designation is not a 
+recommendation or a rating. Some stocks under coverage have a rating but no price target; in these cases, we expect the stock will 
+outperform/perform in line/underperform the average total return of the stocks in the Research Analyst’s, or the Research Analyst’s 
+team’s, coverage universe of the relevant duration of the region. In our Asia (ex-Australia and ex-India) and U.K. small- and mid-cap 
+Equity Research, each stock’s expected total return is compared to the expected total return of a benchmark country market index, not to 
+those Research Analysts’ coverage universe. If it does not appear in the Important Disclosures section of this report, the certifying 
+Research Analyst’s coverage universe can be found on J.P. Morgan’s Research website,  
+
+6
+Asia Pacific Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+J.P. Morgan Equity Research Ratings Distribution, as of October 03, 2026
+Overweight
+(buy)
+Neutral
+(hold)
+Underweight
+(sell)
+J.P. Morgan Global Equity Research Coverage*
+53%
+35%
+12%
+    IB clients**
+83%
+81%
+72%
+JPMS Equity Research Coverage*
+51%
+37%
+12%
+    IB clients**
+95%
+93%
+88%
+*Please note that the percentages may not add to 100% because of rounding.
+**Percentage of subject companies within each of the "buy," "hold" and "sell" categories for which J.P. Morgan has provided investment banking 
+services within the previous 12 months. 
+For purposes of FINRA ratings distribution rules only, our Overweight rating falls into a buy rating category; our Neutral rating falls into a hold rating 
+category; and our Underweight rating falls into a sell rating category. Please note that stocks with an NR designation are not included in the table above. 
+This information is current as of the end of the most recent calendar quarter.
+Equity Valuation and Risks: For valuation methodology and risks associated with covered companies or price targets for covered 
+companies, please see the most recent company-specific research report at  n’s implementation of the FICC research exemption and guidance on relevant F
+All research material made available to clients are simultaneously available on our client website, J.P. Morgan Markets, unless 
+specifically permitted by relevant laws. Not all research content is redistributed, e-mailed or made available to third-party aggregators. 
+For all research material available on a particular stock, please contact your sales representative.
+Any long form nomenclature for references to China; Hong Kong; Taiwan; and Macau within this research material are Mainland China; 
+Hong Kong SAR (China); Taiwan (China); and Macau SAR (China).
+J.P. Morgan Research may, from time to time, write on issuers or securities targeted by economic or financial sanctions imposed or 
+administered by the governmental authorities of the U.S., EU, UK or other relevant jurisdictions (Sanctioned Securities). Nothing in this 
+report is intended to be read or construed as encouraging, facilitating, promoting or otherwise approving investment or dealing in such 
+Sanctioned Securities. Clients should be aware of their own legal and compliance obligations when making investment decisions. 
+Digital assets, which may also be referred to as virtual or crypto assets or crypto currencies (e.g. bitcoin), discussed in this research report 
+are subject to a rapidly changing regulatory landscape. The application of relevant laws in respect of such assets may be unsettled, and the 
+legality of any digital asset investment may be unclear. Prior to making any investment decision regarding any digital asset, investors 
+should seek their own legal advice and be aware of any legal considerations regarding the purchase, holding or selling of such an 
+investment. For relevant regulatory advisories on digital assets, including bitcoin and ethereum, please see 
+ 
+
+7
+Asia Pacific  Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+The author(s) of this research report may not be licensed to carry on regulated activities in your jurisdiction and, if not licensed, do not 
+hold themselves out as being able to do so. 
+Exchange-Traded Funds (ETFs): J.P. Morgan Securities LLC (“JPMS”) acts as authorized participant for substantially all U.S.-listed 
+ETFs. To the extent that any ETFs are mentioned in this report, JPMS may earn commissions and transaction-based compensation in 
+connection with the distribution of those ETF shares and may earn fees for performing other trade-related services, such as securities 
+lending to short sellers of the ETF shares. JPMS may also perform services for the ETFs themselves, including acting as a broker or 
+dealer to the ETFs. In addition, affiliates of JPMS may perform services for the ETFs, including trust, custodial, administration, lending, 
+index calculation and/or maintenance and other services. 
+Options and Futures related research: If the information contained herein regards options- or futures-related research, such information 
+is available only to persons who have received the proper options or futures risk disclosure documents. Please contact your J.P. Morgan 
+Representative or visit  es (“J.P. Morgan Private Bank”), research is provided to you by J.P. Morgan Private Bank and not by any other division 
+of J.P. Morgan, including, but not limited to, the J.P. Morgan Corporate and Investment Bank and its Global Research division.
+Legal entity responsible for the production and distribution of research: The legal entity identified below the name of the Reg AC 
+Research Analyst who authored this material is the legal entity responsible for the production of this research. Where multiple Reg AC 
+Research Analysts authored this material with different legal entities identified below their names, these legal entities are jointly 
+responsible for the production of this research. Where more than one legal entity is listed under an analyst’s name, the first legal entity is 
+responsible for the production unless stated otherwise. Research Analysts from various J.P. Morgan affiliates may have contributed to the 
+production of this material but may not be licensed to carry out regulated activities in your jurisdiction (and do not hold themselves out as 
+being able to do so). Unless otherwise stated below in the legal entity disclosures, this material has been distributed by the legal entity 
+responsible for production, or where more than one legal entity is listed under the analyst’s name, the first legal entity will be responsible 
+for distribution. If you have any queries, please contact the relevant Research Analyst in your jurisdiction or the entity in your jurisdiction 
+that has distributed this research material.
+Legal Entities Disclosures and Country-/Region-Specific Disclosures:
+Argentina: JPMorgan Chase Bank N.A Sucursal Buenos Aires is regulated by Banco Central de la República Argentina (“BCRA”- 
+Central Bank of Argentina) and Comisión Nacional de Valores (“CNV”- Argentinian Securities Commission - ALYC y AN Integral 
+N°51). 
+Australia: J.P. Morgan Securities Australia Limited (“JPMSAL”) (ABN 61 003 245 234/AFS Licence No: 238066) is regulated by the 
+Australian Securities and Investments Commission and is a Market Participant of ASX Limited, a Clearing and Settlement Participant of 
+ASX Clear Pty Limited and a Clearing Participant of ASX Clear (Futures) Pty Limited. This material is issued and distributed in Australia 
+by or on behalf of JPMSAL only to "wholesale clients" (as defined in section 761G of the Corporations Act 2001). A list of all financial 
+products covered can be found by visiting  
+with J.P. Morgan Australia’s Research Independence Policy which can be found at the following link: J.P. Morgan Australia - Research 
+Independence Policy. 
+Brazil: Banco J.P. Morgan S.A. is regulated by the Comissao de Valores Mobiliarios (CVM) and by the Central Bank of Brazil. 
+Ombudsman J.P. Morgan: 0800-7700847 / 0800-7700810 (For Hearing Impaired) / ouvidoria.jp.morgan@jpmchase.com. 
+Canada: J.P. Morgan Securities Canada Inc. is a registered investment dealer, regulated by the Canadian Investment Regulatory 
+Organization and the Ontario Securities Commission and is the participating member on Canadian exchanges. This material is distributed 
+in Canada by or on behalf of J.P.Morgan Securities Canada Inc. 
+Chile: Inversiones J.P. Morgan Limitada is an unregulated entity incorporated in Chile. 
+China: J.P. Morgan Securities (China) Company Limited has been approved by CSRC to conduct the securities investment consultancy 
+business. 
+Colombia: Banco J.P. Morgan Colombia S.A. is supervised by the Superintendencia Financiera de Colombia (SFC). Any reference in 
+this material to products or services offered abroad by entities other than the Bank in Colombia is included exclusively for descriptive 
+
+8
+Asia Pacific Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+purposes. Such references do not constitute, and should not be construed as, promotional activity or the provision of financial products or 
+services within Colombian territory, as defined under applicable Colombian regulation. 
+Dubai International Financial Centre (DIFC): JPMorgan Chase Bank, N.A., Dubai Branch is regulated by the Dubai Financial 
+Services Authority (DFSA) and its registered address is Dubai International Financial Centre - The Gate, West Wing, Level 3 and 9 PO 
+Box 506551, Dubai, UAE. This material has been distributed by JP Morgan Chase Bank, N.A., Dubai Branch to persons regarded as 
+professional clients or market counterparties as defined under the DFSA rules. 
+European Economic Area (EEA): Unless specified to the contrary, research is distributed in the EEA by J.P. Morgan SE (“JPM SE”), 
+which is authorised as a credit institution by the Federal Financial Supervisory Authority (Bundesanstalt für 
+Finanzdienstleistungsaufsicht, BaFin) and jointly supervised by the BaFin, the German Central Bank (Deutsche Bundesbank) and the 
+European Central Bank (ECB). JPM SE is a company headquartered in Frankfurt with registered address at TaunusTurm, Taunustor 1, 
+Frankfurt am Main, 60310, Germany. The material has been distributed in the EEA to persons regarded as professional investors (or 
+equivalent) pursuant to Art. 4 para. 1 no. 10 and Annex II of MiFID II and its respective implementation in their home jurisdictions 
+(“EEA professional investors”). This material must not be acted on or relied on by persons who are not EEA professional investors. Any 
+investment or investment activity to which this material relates is only available to EEA relevant persons and will be engaged in only with 
+EEA relevant persons. 
+Hong Kong: J.P. Morgan Securities (Asia Pacific) Limited (CE number AAJ321) is regulated by the Hong Kong Monetary Authority and 
+the Securities and Futures Commission in Hong Kong, and J.P. Morgan Broking (Hong Kong) Limited (CE number AAB027) is 
+regulated by the Securities and Futures Commission in Hong Kong. JP Morgan Chase Bank, N.A., Hong Kong Branch (CE Number 
+AAL996) is regulated by the Hong Kong Monetary Authority and the Securities and Futures Commission, is organized under the laws of 
+the United States with limited liability. Where the distribution of this material is a regulated activity in Hong Kong, the material is 
+distributed in Hong Kong by or through J.P. Morgan Securities (Asia Pacific) Limited and/or J.P. Morgan Broking (Hong Kong) Limited. 
+India: J.P. Morgan India Private Limited (Corporate Identity Number - U67120MH1992FTC068724), having its registered office at J.P. 
+Morgan Tower, Off. C.S.T. Road, Kalina, Santacruz - East, Mumbai – 400098, is registered with the Securities and Exchange Board of 
+India (SEBI) as a ‘Research Analyst’ having registration number INH000001873. J.P. Morgan India Private Limited is also registered 
+with SEBI as a member of the National Stock Exchange of India Limited and the Bombay Stock Exchange Limited (SEBI Registration 
+Number – INZ000239730) and as a Merchant Banker (SEBI Registration Number - MB/INM000002970). Telephone: 91-22-6157 3000, 
+Facsimile: 91-22-6157 3990 and Website:  xchange (“Bolsa 
+Mexicana de Valores”) and the Institutional Stock Exchange (“Bolsa Institucional de Valores”), and it is authorized to act as a broker 
+dealer by the National Banking and Securities Exchange Commission (“Comisión Nacional Bancaria y de Valores”). 
+New Zealand: This material is issued and distributed by JPMSAL in New Zealand only to "wholesale clients" (as defined in the Financial 
+Markets Conduct Act 2013). JPMSAL is registered as a Financial Service Provider under the Financial Service providers (Registration 
+and Dispute Resolution) Act of 2008. 
+Nigeria: J.P. Morgan Chase Representative Office (Nigeria) Limited is regulated by the Central Bank of Nigeria.
+Philippines: J.P. Morgan Securities Philippines Inc. is a Trading Participant of the Philippine Stock Exchange and a member of the 
+Securities Clearing Corporation of the Philippines and the Securities Investor Protection Fund. It is regulated by the Securities and 
+Exchange Commission. 
+Singapore: This material is issued and distributed in Singapore by or through J.P. Morgan Securities Singapore Private Limited (JPMSS) 
+[MDDI (P) 070/08/2026 and Co. Reg. No.: 199405335R], which is a member of the Singapore Exchange Securities Trading Limited, 
+and/or JPMorgan Chase Bank, N.A., Singapore branch (JPMCB Singapore), both of which are regulated by the Monetary Authority of 
+Singapore. This material is issued and distributed in Singapore only to accredited investors, expert investors and institutional investors, as 
+
+9
+Asia Pacific  Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+defined in Section 4A of the Securities and Futures Act, Cap. 289 (SFA). This material is not intended to be issued or distributed to any 
+retail investors or any other investors that do not fall into the classes of “accredited investors,” “expert investors” or “institutional 
+investors,” as defined under Section 4A of the SFA. Recipients of this material in Singapore are to contact JPMSS or JPMCB Singapore 
+in respect of any matters arising from, or in connection with, the material. 
+South Africa: J.P. Morgan Equities South Africa Proprietary Limited and JPMorgan Chase Bank, N.A., Johannesburg Branch are 
+members of the Johannesburg Securities Exchange and are regulated by the Financial Services Conduct Authority (FSCA). 
+Taiwan: J.P. Morgan Securities (Taiwan) Limited is a participant of the Taiwan Stock Exchange (company-type) and regulated by the 
+Taiwan Securities and Futures Bureau. Material relating to equity securities is issued and distributed in Taiwan by J.P. Morgan Securities 
+(Taiwan) Limited, subject to the license scope and the applicable laws and the regulations in Taiwan. To the extent that J.P. Morgan 
+Securities (Taiwan) Limited produces research materials on securities not listed on the Taiwan Stock Exchange or Taipei 
+Exchange (“Non-Taiwan Listed Securities”), these materials shall not constitute securities recommendations for the purpose of 
+applicable Taiwan regulations, and, for the avoidance of doubt, J.P. Morgan Securities (Taiwan) Limited does not act as broker 
+for Non-Taiwan Listed Securities. According to Paragraph 2, Article 7-1 of Operational Regulations Governing Securities Firms 
+Recommending Trades in Securities to Customers (as amended or supplemented) and/or other applicable laws or regulations, please note 
+that the recipient of this material is not permitted to engage in any activities in connection with the material that may give rise to conflicts 
+of interests, unless otherwise disclosed in the “Important Disclosures” in this material. 
+Thailand: This material is issued and distributed in Thailand by JPMorgan Securities (Thailand) Ltd., which is a member of the Stock 
+Exchange of Thailand and is regulated by the Ministry of Finance and the Securities and Exchange Commission. The registered address is 
+548 One City Center Building, 50th Floor, Ploenchit Road, Lumphini, Pathum Wan, Bangkok 10330. 
+UK: Research is produced in the UK by J.P. Morgan Securities plc (“JPMS plc”) which is a member of the London Stock Exchange and 
+is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation 
+Authority or J.P. Morgan Markets Limited (“JPMML Ltd”) which is authorised and regulated by the Financial Conduct Authority. Unless 
+specified to the contrary, this material is distributed in the UK by JPMS plc and is directed in the UK only to: (a) persons having 
+professional experience in matters relating to investments falling within article 19(5) of the Financial Services and Markets Act 2000 
+(Financial Promotion) (Order) 2005 (“the FPO”); (b) persons outlined in article 49 of the FPO (high net worth companies, unincorporated 
+associations or partnerships, the trustees of high value trusts, etc.); or (c) any persons to whom this communication may otherwise 
+lawfully be made; all such persons being referred to as "UK relevant persons". This material must not be acted on or relied on by persons 
+who are not UK relevant persons. Any investment or investment activity to which this material relates is only available to UK relevant 
+persons and will be engaged in only with UK relevant persons. A description of J.P. Morgan EMEA’s policy for prevention and 
+avoidance of conflicts of interest related to the production of Research can be found at the following link: J.P. Morgan EMEA - Research 
+Independence Policy. 
+U.S.: J.P. Morgan Securities LLC (“JPMS”) is a member of the NYSE, FINRA, SIPC, and the NFA. JPMorgan Chase Bank, N.A. is a 
+member of the FDIC. Material published by non-U.S. affiliates is distributed in the U.S. by JPMS who accepts responsibility for its 
+content.
+General: Additional information is available upon request. The information in this material has been obtained from sources believed to be 
+reliable. While all reasonable care has been taken to ensure that the facts stated in this material are accurate and that the forecasts, 
+opinions and expectations contained herein are fair and reasonable, JPMorgan Chase & Co. or its affiliates and/or subsidiaries 
+(collectively J.P. Morgan) make no representations or warranties whatsoever to the completeness or accuracy of the material provided, 
+except with respect to any disclosures relative to J.P. Morgan and the Research Analyst's involvement with the issuer that is the subject of 
+the material. Accordingly, no reliance should be placed on the accuracy, fairness or completeness of the information contained in this 
+material. There may be certain discrepancies with data and/or limited content in this material as a result of calculations, adjustments, 
+translations to different languages, and/or local regulatory restrictions, as applicable. These discrepancies should not impact the overall 
+investment analysis, views and/or recommendations of the subject company(ies) that may be discussed in the material. Artificial 
+intelligence tools may have been used in the preparation of this material, including assisting in data analysis, pattern recognition, and 
+content drafting for research material. J.P. Morgan accepts no liability whatsoever for any loss arising from any use of this material or its 
+contents, and neither J.P. Morgan nor any of its respective directors, officers or employees, shall be in any way responsible for the 
+contents hereof, apart from the liabilities and responsibilities that may be imposed on them by the relevant regulatory authority in the 
+jurisdiction in question, or the regulatory regime thereunder. Opinions, forecasts or projections contained in this material represent J.P. 
+Morgan's current opinions or judgment as of the date of the material only and are therefore subject to change without notice. Periodic 
+updates may be provided on companies/industries based on company-specific developments or announcements, market conditions or any 
+other publicly available information. There can be no assurance that future results or events will be consistent with any such opinions, 
+forecasts or projections, which represent only one possible outcome. Furthermore, such opinions, forecasts or projections are subject to 
+certain risks, uncertainties and assumptions that have not been verified, and future actual results or events could differ materially. The 
+value of, or income from, any investments referred to in this material may fluctuate and/or be affected by changes in exchange rates. All 
+pricing is indicative as of the close of market for the securities discussed, unless otherwise stated. Past performance is not indicative of 
+future results. Accordingly, investors may receive back less than originally invested. This material is not intended as an offer or 
+solicitation for the purchase or sale of any financial instrument. The opinions and recommendations herein do not take into account 
+individual client circumstances, objectives, or needs and are not intended as recommendations of particular securities, financial 
+instruments or strategies to particular clients. This material may include views on structured securities, options, futures and other 
+
+10
+Asia Pacific Equity Research
+22 October 2026
+Karen Li, CFA
+(852) 2800-8589
+karen.yy.li@jpmorgan.com
+derivatives. These are complex instruments, may involve a high degree of risk and may be appropriate investments only for sophisticated 
+investors who are capable of understanding and assuming the risks involved. The recipients of this material must make their own 
+independent decisions regarding any securities or financial instruments mentioned herein and should seek advice from such independent 
+financial, legal, tax or other adviser as they deem necessary. J.P. Morgan may trade as a principal on the basis of the Research Analysts’ 
+views and research, and it may also engage in transactions for its own account or for its clients’ accounts in a manner inconsistent with the 
+views taken in this material, and J.P. Morgan is under no obligation to ensure that such other communication is brought to the attention of 
+any recipient of this material. Others within J.P. Morgan, including Strategists, Sales staff and other Research Analysts, may take views 
+that are inconsistent with those taken in this material. Employees of J.P. Morgan not involved in the preparation of this material may have 
+investments in the securities (or derivatives of such securities) mentioned in this material and may trade them in ways different from those 
+discussed in this material. This material is not an advertisement for or marketing of any issuer, its products or services, or its securities in 
+any jurisdiction.
+Confidentiality and Security Notice: This transmission may contain information that is privileged, confidential, legally privileged, 
+and/or exempt from disclosure under applicable law. If you are not the intended recipient, you are hereby notified that any disclosure, 
+copying, distribution, or use of the information contained herein (including any reliance thereon) is STRICTLY PROHIBITED. Although 
+this transmission and any attachments are believed to be free of any virus or other defect that might affect any computer system into 
+which it is received and opened, it is the responsibility of the recipient to ensure that it is virus free and no responsibility is accepted by 
+JPMorgan Chase & Co., its subsidiaries and affiliates, as applicable, for any loss or damage arising in any way from its use. If you 
+received this transmission in error, please immediately contact the sender and destroy the material in its entirety, whether in electronic or 
+hard copy format. This message is subject to electronic monitoring:  n (“Information”) is reproduced by permission of MSCI Inc., its affiliates and informa
+(“MSCI”) ©2026. No reproduction or dissemination of the Information is permitted without an appropriate license. MSCI MAKES NO 
+EXPRESS OR IMPLIED WARRANTIES (INCLUDING MERCHANTABILITY OR FITNESS) AS TO THE INFORMATION AND 
+DISCLAIMS ALL LIABILITY TO THE EXTENT PERMITTED BY LAW. No Information constitutes investment advice, except for 
+any applicable Information from MSCI ESG Research. Subject also to msci.com/disclaimer 
+Any mentions of third-party trademarks, brand names, products, and services are for referential purposes only and any mention thereof is 
+not meant to imply any sponsorship, endorsement, or affiliation.
+Sustainalytics: Certain information, data, analyses and opinions contained herein are reproduced by permission of Sustainalytics and: (1) 
+includes the proprietary information of Sustainalytics; (2) may not be copied or redistributed except as specifically authorized; (3) do not 
+constitute investment advice nor an endorsement of any product or project; (4) are provided solely for informational purposes; and (5) are 
+not warranted to be complete, accurate or timely. Sustainalytics is not responsible for any trading decisions, damages or other losses 
+related to it or its use. The use of the data is subject to conditions available at  . ©2026 
+Sustainalytics. All Rights Reserved. 
+"Other Disclosures" last revised October 17, 2026. 
+Copyright 2026 JPMorgan Chase & Co. All rights reserved. This material or any portion hereof may not be reprinted, sold or 
+redistributed without the written consent of J.P. Morgan. Without prior written consent from J.P. Morgan, it is prohibited to (A) 
+use or share any material, commentary, information or other data received from J.P. Morgan or an authorized third-party ("J.P. 
+Morgan Data") in any artificial intelligence ("AI") systems or models, or (B) use automated means, including robots, crawlers, 
+web-scrapers or other automated tools or scripts, to access, collect, extract or harvest any J.P. Morgan Data, including scraping of 
+user data, content, metadata, pricing information or other information. #$J&098$#*P 
+Completed    22 Oct 2026 12:08 PM HKT
+Disseminated    22 Oct 2026 12:10 PM HKT
